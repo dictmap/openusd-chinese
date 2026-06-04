@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-040">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 UsdImagingNurbsPatchAdapter Class Reference 补充中文优先的类职责、读取重点、关键属性/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, key attribute/method groups, and terminology for UsdImagingNurbsPatchAdapter Class Reference while retaining English page names, class names, method names, attribute names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`UsdImagingNurbsPatchAdapter` 为 `UsdGeomNurbsPatch` 提供 delegate support，是 USD Imaging 体系中面向 NURBS patch schema 的 prim adapter。</span></li>
+        <li><span class="zh">页面结构中的 `Data access` 分组和 `GetPoints()`、`GetTopology()` 表明该 adapter 重点把 NURBS patch 的点数据和拓扑数据暴露给 imaging/Hydra。</span></li>
+        <li><span class="zh">`GetImagingSubprims()`、`GetImagingSubprimType()`、`GetImagingSubprimData()` 用于把一个 USD prim 拆成 imaging 层可理解的 subprim 数据。</span></li>
+        <li><span class="zh">`Populate()`、`TrackVariability()`、`ProcessPropertyChange()`、`InvalidateImagingSubprim()` 分别对应初始填充、可变性追踪、属性变更处理和 subprim 缓存失效。</span></li>
+        <li><span class="zh">本页适合与 `UsdImagingDelegate` 一起读：delegate 负责总的数据交换，adapter 负责具体 schema 类型如何转成 imaging 数据。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">NURBS patch：</span><span class="en">NURBS patch</span></li>
+        <li><span class="zh">prim adapter：</span><span class="en">prim adapter</span></li>
+        <li><span class="zh">imaging 子 prim：</span><span class="en">subprim</span></li>
+        <li><span class="zh">拓扑：</span><span class="en">topology</span></li>
+        <li><span class="zh">可变性：</span><span class="en">variability</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

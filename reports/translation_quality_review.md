@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-04T19:39:56.871Z
+Generated: 2026-06-04T19:50:27.921Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-04T19:39:56.871Z
 
 ## Grade Counts
 
-- draft_template_only: 190
-- draft_needs_translation: 208
+- draft_template_only: 185
+- draft_needs_translation: 213
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -108,11 +108,11 @@ Generated: 2026-06-04T19:39:56.871Z
 | 42 | draft_needs_translation | bilingual_draft | 393 | 40/37 | 0 | 0 | `full_site/api/class_usd_geom_mesh.html` |
 | 43 | draft_needs_translation | bilingual_draft | 365 | 40/37 | 0 | 0 | `full_site/api/class_usd_geom_primvars_a_p_i.html` |
 | 44 | draft_needs_translation | bilingual_draft | 308 | 32/29 | 0 | 0 | `full_site/api/class_usd_imaging_adapter_registry.html` |
-| 45 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/class_usd_imaging_delegate.html` |
-| 46 | draft_template_only | bilingual_draft | 142 | 22/24 | 0 | 0 | `full_site/api/class_usd_imaging_nurbs_patch_adapter.html` |
-| 47 | draft_template_only | bilingual_draft | 146 | 23/25 | 0 | 0 | `full_site/api/class_usd_lux_disk_light.html` |
-| 48 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/class_usd_lux_shaping_a_p_i.html` |
-| 49 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/class_usd_physics_joint.html` |
+| 45 | draft_needs_translation | bilingual_draft | 392 | 40/37 | 0 | 0 | `full_site/api/class_usd_imaging_delegate.html` |
+| 46 | draft_needs_translation | bilingual_draft | 320 | 33/30 | 0 | 0 | `full_site/api/class_usd_imaging_nurbs_patch_adapter.html` |
+| 47 | draft_needs_translation | bilingual_draft | 363 | 34/31 | 0 | 0 | `full_site/api/class_usd_lux_disk_light.html` |
+| 48 | draft_needs_translation | bilingual_draft | 385 | 40/37 | 0 | 0 | `full_site/api/class_usd_lux_shaping_a_p_i.html` |
+| 49 | draft_needs_translation | bilingual_draft | 362 | 40/37 | 0 | 0 | `full_site/api/class_usd_physics_joint.html` |
 | 50 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/class_usd_prim.html` |
 | 51 | draft_template_only | bilingual_draft | 146 | 23/25 | 0 | 0 | `full_site/api/class_usd_proc_generative_procedural.html` |
 | 52 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/class_usd_schema_registry.html` |

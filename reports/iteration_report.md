@@ -2,6 +2,30 @@
 
 源页面：<https://openusd.org/release/api/index.html>
 
+## 第 171 轮：UsdImaging/UsdLux/UsdPhysics class 页面精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口、Git 状态和进度记录，确认本轮 5 个 UsdImaging/UsdLux/UsdPhysics class 目标页均存在且均为 `draft_template_only`。
+- 本轮严格只处理 5 页：`full_site/api/class_usd_imaging_delegate.html`、`full_site/api/class_usd_imaging_nurbs_patch_adapter.html`、`full_site/api/class_usd_lux_disk_light.html`、`full_site/api/class_usd_lux_shaping_a_p_i.html`、`full_site/api/class_usd_physics_joint.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_class_batch_040.mjs`，为 5 页插入 `api-class-quality-pass-040` 中文精修导读区块；每页包含类职责、读取重点、关键属性/方法分组和术语对照，保留英文页面名、类名、方法名、属性名、template 参数、代码、链接和原英文摘录。
+- 本轮中文层覆盖 `UsdImagingDelegate` 作为 Hydra `Hd` core 与 USD scene graph 的主要转换层、path conversion 和数据查询职责；`UsdImagingNurbsPatchAdapter` 对 `UsdGeomNurbsPatch` 的 delegate support、subprim 数据和 topology/points 访问；`UsdLuxDiskLight` 的 XY plane 圆盘光、-Z 轴发光和 `radius` 属性；`UsdLuxShapingAPI` 的 light emission shaping、cone/focus/IES 属性和可应用 API schema 语义；`UsdPhysicsJoint` 的 rigid body joint、D6 joint 默认自由度、body relationships、local frames、break/collision/articulation 属性。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 190 / `draft_needs_translation` 208 / `good_bilingual` 8 变为 `draft_template_only` 185 / `draft_needs_translation` 213 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；本轮 5 页均可通过本地最终入口访问。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+- GitHub 同步：本轮验证通过后运行 `scripts/sync_openusd_to_github.ps1`，提交信息为 `OpenUSD bilingual round 171: UsdImaging UsdLux UsdPhysics classes`。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是完整翻译每个构造函数、方法、参数、返回值和继承关系。
+- 全量仍有 185 个 `draft_template_only` 和 213 个 `draft_needs_translation`；大量 Usd core、UsdShade、UsdStage、Vdf、模块入口、索引页、源码页和部分 release 草稿仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理当前质量队列中用户可读价值较高的 `class_usd_prim.html`、`class_usd_proc_generative_procedural.html`、`class_usd_schema_registry.html`、`class_usd_shade_output.html`、`class_usd_stage_cache.html`。
+2. 对 Usd core/UsdShade/Stage cache class 页面补中文用途说明、schema 或 runtime 职责、关键属性/方法分组、术语对照和局部结构说明，保留类名、方法名、属性名、template 参数、代码和链接原样。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证；验证通过后同步 GitHub，并记录分级变化与提交结果。
+
 ## 第 170 轮：Usd/UsdGeom/UsdImaging class 页面精修
 已完成：
 

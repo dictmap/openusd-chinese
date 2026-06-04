@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-040">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 UsdImagingDelegate Class Reference 补充中文优先的类职责、读取重点、关键属性/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, key attribute/method groups, and terminology for UsdImagingDelegate Class Reference while retaining English page names, class names, method names, attribute names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`UsdImagingDelegate` 是 Hydra `Hd` core 与 USD scene graph 之间的主要 translation layer，负责把 USD 场景数据转换成 Hydra 可消费的数据访问接口。</span></li>
+        <li><span class="zh">页面结构中的 `RigidXformOverridesMap`、`SubdivTags`、`ApplyPendingUpdates()`、path conversion 和各类 `Get*()` 方法说明它同时管理缓存路径、变换覆盖、细分标签、显示目的和几何/材质查询。</span></li>
+        <li><span class="zh">`ConvertCachePathToIndexPath()` 与 `ConvertIndexPathToCachePath()` 用来在 imaging cache path 与 render index path 之间映射；这是理解 USD prim 路径和 Hydra prim 路径差异的关键入口。</span></li>
+        <li><span class="zh">`GetBasisCurvesTopology()`、`GetCameraParamValue()`、`GetCoordSysBindings()`、`GetDisplayStyle()` 等方法体现 delegate 会把不同 schema 的数据统一暴露给 Hydra。</span></li>
+        <li><span class="zh">阅读本页时应把它放在 `UsdImagingAdapterRegistry` 之后理解：registry 负责构造 adapter，delegate 则在 stage/render index 之间汇总和分发数据。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">转换层：</span><span class="en">translation layer</span></li>
+        <li><span class="zh">Hydra 核心：</span><span class="en">Hydra core</span></li>
+        <li><span class="zh">场景图：</span><span class="en">scene graph</span></li>
+        <li><span class="zh">缓存路径：</span><span class="en">cache path</span></li>
+        <li><span class="zh">render index 路径：</span><span class="en">render index path</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
