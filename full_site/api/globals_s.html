@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-file-members-quality-pass-048">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 File Members : s 补充中文优先的用途说明、字母索引读法、常见条目分类和术语对照；英文页面名、API 名称、函数名、变量名、宏名、类型名、头文件名、operator 符号、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first purpose notes, alphabet-index reading guidance, common entry grouping, and terminology for File Members : s while retaining English page names, API names, function names, variable names, macro names, type names, header names, operator symbols, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`globals_s.html` 是 File Members 的字母 `s` 索引页，当前摘录主要由 `SDF_*` 宏和 `Sdf*` 函数/类型构成，应按 Sdf scene description 层入口阅读。</span></li>
+        <li><span class="zh">`SDF_DEFINE_ABSTRACT_FILE_FORMAT`、`SDF_DEFINE_FILE_FORMAT`、`SDF_FILE_FORMAT_FACTORY_ACCESS` 属于 Sdf file format 注册/工厂访问相关宏；宏名、大小写和下划线保持原样。</span></li>
+        <li><span class="zh">`SdfAnchorAssetPaths()`、`SdfComputeAssetPathRelativeToLayer()` 与 asset path 和 layer 相对路径相关；它们常用于把资产路径锚定到 layer 或计算相对资产路径。</span></li>
+        <li><span class="zh">`SdfComposeTimeSampleMaps()`、`SdfConvertToValidMetadataDictionary()`、`SdfConvertUnit()`、`SdfCopySpec()` 分别涉及 time samples composition、metadata dictionary 清理、单位转换和 spec 拷贝。</span></li>
+        <li><span class="zh">`SdfCreatePrimAttributeInLayer()`、`SdfCreatePrimInLayer()`、`SdfCreateRelationshipInLayer()`、`SdfCreateVariantInLayer()` 是在 layer 中创建 attribute、prim、relationship 和 variant spec 的 authoring helper；它们应与 `SdfLayer`、`SdfPrimSpec`、`SdfAttributeSpec` 等页面一起阅读。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Sdf 场景描述层：</span><span class="en">Sdf</span></li>
+        <li><span class="zh">文件格式：</span><span class="en">file format</span></li>
+        <li><span class="zh">资产路径：</span><span class="en">asset path</span></li>
+        <li><span class="zh">layer：</span><span class="en">layer</span></li>
+        <li><span class="zh">spec 规格对象：</span><span class="en">spec</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

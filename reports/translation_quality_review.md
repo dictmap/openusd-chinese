@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-04T21:52:14.049Z
+Generated: 2026-06-04T22:12:44.536Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-04T21:52:14.049Z
 
 ## Grade Counts
 
-- draft_template_only: 150
-- draft_needs_translation: 248
+- draft_template_only: 145
+- draft_needs_translation: 253
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -32,11 +32,6 @@ Generated: 2026-06-04T21:52:14.049Z
 | 1 | draft_template_only | 62 | `full_site/api/_c_l_i11_8h_source.html` | 源码页面草稿：CLI11.h / CLI11.h |
 | 8 | draft_template_only | 62 | `full_site/api/binding_map_8h_source.html` | 源码页面草稿：bindingMap.h / bindingMap.h |
 | 164 | draft_template_only | 62 | `full_site/api/geom_model_a_p_i_adapter_8h_source.html` | 源码页面草稿：geomModelAPIAdapter.h / geomModelAPIAdapter.h |
-| 188 | draft_template_only | 62 | `full_site/api/globals_j.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
-| 189 | draft_template_only | 62 | `full_site/api/globals_l.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
-| 190 | draft_template_only | 62 | `full_site/api/globals_o.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
-| 191 | draft_template_only | 62 | `full_site/api/globals_p.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
-| 192 | draft_template_only | 62 | `full_site/api/globals_s.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
 | 193 | draft_template_only | 62 | `full_site/api/globals_t.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
 | 195 | draft_template_only | 62 | `full_site/api/globals_u.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
 | 196 | draft_template_only | 62 | `full_site/api/globals_v.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
@@ -59,6 +54,11 @@ Generated: 2026-06-04T21:52:14.049Z
 | 243 | draft_template_only | 62 | `full_site/api/pxr_display_filter_adapter_8h_source.html` | 源码页面草稿：pxrDisplayFilterAdapter.h / pxrDisplayFilterAdapter.h |
 | 244 | draft_template_only | 62 | `full_site/api/riley_param_schema_8h_source.html` | 源码页面草稿：rileyParamSchema.h / rileyParamSchema.h |
 | 254 | draft_template_only | 62 | `full_site/api/system_diagnostics_8h_source.html` | 源码页面草稿：systemDiagnostics.h / systemDiagnostics.h |
+| 255 | draft_template_only | 62 | `full_site/api/tf_page_front.html` | API 模块草稿：Tf: Tools Foundations / Tf: Tools Foundations |
+| 278 | draft_template_only | 62 | `full_site/api/var_8h_source.html` | 源码页面草稿：var.h / var.h |
+| 314 | draft_template_only | 62 | `full_site/release/tut_usd_tutorials.html` | 页面草稿：USD Tutorials / USD Tutorials |
+| 315 | draft_template_only | 62 | `full_site/release/tut_usdview_plugin.html` | 页面草稿：Creating a Usdview Plugin / Creating a Usdview Plugin |
+| 350 | draft_template_only | 62 | `full_site/release/user_guides/schemas/usdMedia/overview.html` | 页面草稿：Overview / Overview |
 
 ## All Pages
 
@@ -251,11 +251,11 @@ Generated: 2026-06-04T21:52:14.049Z
 | 185 | draft_needs_translation | bilingual_draft | 275 | 13/10 | 0 | 0 | `full_site/api/globals_func.html` |
 | 186 | draft_needs_translation | bilingual_draft | 272 | 13/10 | 0 | 0 | `full_site/api/globals_g.html` |
 | 187 | draft_needs_translation | bilingual_draft | 263 | 13/10 | 0 | 0 | `full_site/api/globals_h.html` |
-| 188 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/globals_j.html` |
-| 189 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/globals_l.html` |
-| 190 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/globals_o.html` |
-| 191 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/globals_p.html` |
-| 192 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/globals_s.html` |
+| 188 | draft_needs_translation | bilingual_draft | 312 | 13/10 | 0 | 0 | `full_site/api/globals_j.html` |
+| 189 | draft_needs_translation | bilingual_draft | 371 | 13/10 | 0 | 0 | `full_site/api/globals_l.html` |
+| 190 | draft_needs_translation | bilingual_draft | 338 | 13/10 | 0 | 0 | `full_site/api/globals_o.html` |
+| 191 | draft_needs_translation | bilingual_draft | 272 | 13/10 | 0 | 0 | `full_site/api/globals_p.html` |
+| 192 | draft_needs_translation | bilingual_draft | 274 | 13/10 | 0 | 0 | `full_site/api/globals_s.html` |
 | 193 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/globals_t.html` |
 | 194 | draft_template_only | bilingual_draft | 94 | 10/12 | 0 | 0 | `full_site/api/globals_type.html` |
 | 195 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/globals_u.html` |

@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-file-members-quality-pass-048">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 File Members : p 补充中文优先的用途说明、字母索引读法、常见条目分类和术语对照；英文页面名、API 名称、函数名、变量名、宏名、类型名、头文件名、operator 符号、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first purpose notes, alphabet-index reading guidance, common entry grouping, and terminology for File Members : p while retaining English page names, API names, function names, variable names, macro names, type names, header names, operator symbols, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`globals_p.html` 是 File Members 的字母 `p` 索引页，当前摘录主要由 `Pcp` composition 相关条目构成，应按 Pcp 组合系统入口阅读。</span></li>
+        <li><span class="zh">`PCP_INVALID_INDEX`、`PcpArcInfoVector`、`PcpArcType` 来自 `types.h` 或 `composeSite.h`，用于 composition arc、索引值和 arc 信息集合等基础类型/常量。</span></li>
+        <li><span class="zh">`PcpComposeSiteChildNames()`、`PcpComposeSiteHasPrimSpecs()`、`PcpComposeSiteHasSpecs()`、`PcpComposeSiteHasSymmetry()`、`PcpComposeSiteHasValueClips()` 等函数检查某个 compose site 上是否存在 child、spec、symmetry 或 value clips 信息。</span></li>
+        <li><span class="zh">`PcpComposeSiteInherits()`、`PcpComposeSitePayloads()`、`PcpComposeSiteReferences()`、`PcpComposeSiteSpecializes()`、`PcpComposeSiteVariantSelections()` 等条目对应 USD composition arcs 的不同来源，函数名应保持英文原样。</span></li>
+        <li><span class="zh">阅读本页时把 `PcpComposeSite*` 视为一组 composition 查询 helper：它们帮助分析某个 site 的 inherits、payloads、references、specializes、variant selections、permissions 和 prim sites，而不是直接编辑 scene description。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Pcp 组合系统：</span><span class="en">Pcp</span></li>
+        <li><span class="zh">组合站点：</span><span class="en">compose site</span></li>
+        <li><span class="zh">组合弧：</span><span class="en">composition arc</span></li>
+        <li><span class="zh">payloads：</span><span class="en">payloads</span></li>
+        <li><span class="zh">变体选择：</span><span class="en">variant selections</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
