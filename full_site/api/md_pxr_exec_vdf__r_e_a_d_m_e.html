@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-docs-quality-pass-053">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Vdf: Vectorized Data Flow 补充中文优先的用途说明、流程/概念边界、阅读顺序和术语对照；英文模块名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、类型名、头文件名、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first purpose notes, workflow and concept boundaries, reading order, and terminology for Vdf: Vectorized Data Flow while retaining English module names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, type names, header names, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`Vdf: Vectorized Data Flow` 是 OpenExec 体系最底层的数据流基础之一，负责构建和求值 vectorized dataflow networks。</span></li>
+        <li><span class="zh">核心对象是 `VdfNetwork`、`VdfNode` 和 `VdfConnection`：network 承载图，node 执行计算，connection 表示数据从 node outputs 流向 node inputs。</span></li>
+        <li><span class="zh">本页应先作为 `ef`、`exec`、`execUsd` 的依赖背景阅读；如果不了解 Vdf graph，后续 execution foundation 和 computation evaluation 会比较难定位。</span></li>
+        <li><span class="zh">官方摘录里的 `netorks` 拼写保留原样；中文导读只解释语义，不改写官方英文页面名和原始 API 名称。</span></li>
+        <li><span class="zh">阅读顺序建议：先看 Key Concepts，再进入 `VdfNetwork`、`VdfNode`、`VdfConnection` class 页，最后回到 OpenExec overview 理解更高层 computation 如何落到 Vdf 图。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">向量化数据流：</span><span class="en">Vectorized Data Flow</span></li>
+        <li><span class="zh">VdfNetwork：</span><span class="en">VdfNetwork</span></li>
+        <li><span class="zh">VdfNode：</span><span class="en">VdfNode</span></li>
+        <li><span class="zh">VdfConnection：</span><span class="en">VdfConnection</span></li>
+        <li><span class="zh">从节点输出到节点输入：</span><span class="en">node outputs to node inputs</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

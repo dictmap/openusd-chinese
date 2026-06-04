@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-docs-quality-pass-053">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Usdview Black Box Testing 补充中文优先的用途说明、流程/概念边界、阅读顺序和术语对照；英文模块名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、类型名、头文件名、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first purpose notes, workflow and concept boundaries, reading order, and terminology for Usdview Black Box Testing while retaining English module names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, type names, header names, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`Usdview Black Box Testing` 记录那些不适合或不容易加入 `testusdview` 自动化 harness 的 usdview 行为测试场景。</span></li>
+        <li><span class="zh">页面开头说明：当修复或部署某个 feature，却不适合新增 `testusdview` testcase 时，应把测试补充到这里，形成可追踪的手工/黑盒测试规范。</span></li>
+        <li><span class="zh">当前摘录重点是 viewport prim vising/invising：在 viewport 中选择或多选 prims/models，再用 Make Invisible、Make Visible、Vis Only、Remove Session Visibility 等 hotkeys 检查行为。</span></li>
+        <li><span class="zh">页面还包含 Vis and Draw Mode Columns Do Not Affect Selection、Prim View Framing 等测试主题；这些标题说明测试关注 UI 交互状态是否影响选择和 framed view 行为。</span></li>
+        <li><span class="zh">阅读本页时应把 Goal 与 Method 分开：Goal 描述需要保证的行为，Method 描述如何操作 usdview 复现；中文层只补测试意图，不改变 hotkey/action 名称。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">testusdview：</span><span class="en">testusdview</span></li>
+        <li><span class="zh">视口：</span><span class="en">viewport</span></li>
+        <li><span class="zh">Make Invisible：</span><span class="en">Make Invisible</span></li>
+        <li><span class="zh">会话可见性：</span><span class="en">Session Visibility</span></li>
+        <li><span class="zh">Prim 视图取景：</span><span class="en">Prim View Framing</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-docs-quality-pass-053">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Development Practices For usdview 补充中文优先的用途说明、流程/概念边界、阅读顺序和术语对照；英文模块名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、类型名、头文件名、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first purpose notes, workflow and concept boundaries, reading order, and terminology for Development Practices For usdview while retaining English module names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, type names, header names, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`Development Practices For usdview` 是 usdview 开发实践说明，当前摘录集中在 GUI 修改和测试要求，不是普通用户使用 usdview 的教程。</span></li>
+        <li><span class="zh">GUI 部分最重要的规则是不要手工编辑 `.ui` files；因为 Qt XML format fragile，且不同平台工具对坏结构的容忍度不一致，应优先使用 `qdesigner5`。</span></li>
+        <li><span class="zh">如果确实手工改了 `.ui` 文件，提交前至少要用 `qdesigner5` 加载、确认无错误、再保存导出的文件，避免后续开发者遇到无关格式差异。</span></li>
+        <li><span class="zh">Testing 部分要求运行 `pxr/usdImaging/bin/testusdview` 中的测试，并在可能时新增测试；无法用 `testusdview` 覆盖的 feature 应补充到 black box testing 文档。</span></li>
+        <li><span class="zh">本页适合贡献者阅读：它约束的是修改 usdview UI 与测试资产/行为的流程，中文导读保留 `qdesigner5`、`.ui`、`testusdview` 和 `blackBoxTesting.md` 原样。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">usdview：</span><span class="en">usdview</span></li>
+        <li><span class="zh">.ui 文件：</span><span class="en">.ui files</span></li>
+        <li><span class="zh">qdesigner5：</span><span class="en">qdesigner5</span></li>
+        <li><span class="zh">testusdview：</span><span class="en">testusdview</span></li>
+        <li><span class="zh">黑盒测试：</span><span class="en">black box testing</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

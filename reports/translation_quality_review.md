@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-04T23:06:52.726Z
+Generated: 2026-06-04T23:29:51.948Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-04T23:06:52.726Z
 
 ## Grade Counts
 
-- draft_template_only: 125
-- draft_needs_translation: 273
+- draft_template_only: 120
+- draft_needs_translation: 278
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -54,11 +54,11 @@ Generated: 2026-06-04T23:06:52.726Z
 | 298 | draft_template_only | 64 | `full_site/release/search.html` | 搜索 / Search - Universal Scene Description 26.05 documentation |
 | 69 | draft_template_only | 66 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | API 页面草稿：hf Directory / hf Directory |
 | 212 | draft_template_only | 66 | `full_site/api/journal_8h.html` | API 页面草稿：journal.h File / journal.h File |
-| 225 | draft_template_only | 66 | `full_site/api/md_pxr_exec_vdf__r_e_a_d_m_e.html` | API 页面草稿：Vdf: Vectorized Data Flow / Vdf: Vectorized Data Flow |
 | 246 | draft_template_only | 66 | `full_site/api/sdr_glslfx_page_front.html` | API 模块草稿：SdrGlslfx: Glslfx parser for Sdr / SdrGlslfx: Glslfx parser for Sdr |
 | 248 | draft_template_only | 66 | `full_site/api/sparse_vectorized_input_traverser_8h.html` | API 页面草稿：sparseVectorizedInputTraverser.h File / sparseVectorizedInputTraverser.h File |
 | 260 | draft_template_only | 66 | `full_site/api/usd_hydra_page_front.html` | API 模块草稿：UsdHydra: USD Hydra Schemas / UsdHydra: USD Hydra Schemas |
 | 262 | draft_template_only | 66 | `full_site/api/usd_media_page_front.html` | API 模块草稿：UsdMedia: USD Media Schema / UsdMedia: USD Media Schema |
+| 266 | draft_template_only | 66 | `full_site/api/usd_proc_page_front.html` | API 模块草稿：UsdProc: USD Schemas for Procedurals / UsdProc: USD Schemas for Procedurals |
 
 ## All Pages
 
@@ -288,11 +288,11 @@ Generated: 2026-06-04T23:06:52.726Z
 | 222 | draft_needs_translation | bilingual_draft | 327 | 19/16 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd_docs_overview.html` |
 | 223 | draft_needs_translation | bilingual_draft | 348 | 21/18 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html` |
 | 224 | draft_needs_translation | bilingual_draft | 324 | 22/19 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html` |
-| 225 | draft_template_only | bilingual_draft | 66 | 3/5 | 0 | 0 | `full_site/api/md_pxr_exec_vdf__r_e_a_d_m_e.html` |
-| 226 | draft_template_only | bilingual_draft | 70 | 4/6 | 0 | 0 | `full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html` |
-| 227 | draft_template_only | bilingual_draft | 82 | 7/9 | 0 | 0 | `full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html` |
-| 228 | draft_template_only | bilingual_draft | 94 | 10/12 | 0 | 0 | `full_site/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html` |
-| 229 | draft_template_only | bilingual_draft | 150 | 24/26 | 0 | 0 | `full_site/api/md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html` |
+| 225 | draft_needs_translation | bilingual_draft | 302 | 14/11 | 0 | 0 | `full_site/api/md_pxr_exec_vdf__r_e_a_d_m_e.html` |
+| 226 | draft_needs_translation | bilingual_draft | 351 | 15/12 | 0 | 0 | `full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html` |
+| 227 | draft_needs_translation | bilingual_draft | 345 | 18/15 | 0 | 0 | `full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html` |
+| 228 | draft_needs_translation | bilingual_draft | 361 | 21/18 | 0 | 0 | `full_site/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html` |
+| 229 | draft_needs_translation | bilingual_draft | 339 | 35/32 | 0 | 0 | `full_site/api/md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html` |
 | 230 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/modules.html` |
 | 231 | draft_template_only | bilingual_draft | 72 | 2/4 | 0 | 0 | `full_site/api/namespacemembers_func.html` |
 | 232 | draft_template_only | bilingual_draft | 72 | 2/4 | 0 | 0 | `full_site/api/namespacemembers_type.html` |
