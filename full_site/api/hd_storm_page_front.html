@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-mixed-quality-pass-046">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 HdStorm : Real-time Hydra renderer plugin 补充中文优先的用途说明、模块边界、关键入口和术语对照；英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first purpose notes, module boundaries, key entry points, and terminology for HdStorm : Real-time Hydra renderer plugin while retaining English page names, class names, method names, attribute names, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`HdStorm` 是包装 Storm Hydra render delegate 的 real-time Hydra renderer plugin，是面向实时渲染的插件入口。</span></li>
+        <li><span class="zh">英文摘录说明 Storm 通过 Hydra graphics interface `Hgi` 支持 OpenGL、Metal 和 Vulkan graphics APIs；因此本页重点是插件层，而不是具体后端 API 实现细节。</span></li>
+        <li><span class="zh">`HdStorm` 是 thin plugin layer；大部分 rendering functionality 位于 `HdSt` library，上一轮已对 `HdSt` 模块入口做过中文导读。</span></li>
+        <li><span class="zh">阅读本页时应把 `HdStorm` 理解为对外 renderer plugin 名称/入口，把渲染状态、buffer、draw dispatch 和 render pass 细节留给 `HdSt` 页面。</span></li>
+        <li><span class="zh">如果从应用集成角度阅读，本页用于判断何时选择 Storm renderer，以及它如何通过 `Hgi` 抽象跨图形 API。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">HdStorm：</span><span class="en">HdStorm</span></li>
+        <li><span class="zh">Storm：</span><span class="en">Storm</span></li>
+        <li><span class="zh">Hgi：</span><span class="en">Hgi</span></li>
+        <li><span class="zh">OpenGL：</span><span class="en">OpenGL</span></li>
+        <li><span class="zh">Vulkan：</span><span class="en">Vulkan</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

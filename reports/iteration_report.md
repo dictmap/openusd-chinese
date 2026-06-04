@@ -2,6 +2,30 @@
 
 源页面：<https://openusd.org/release/api/index.html>
 
+## 第 177 轮：Hydra/Hio/Hierarchy 页面精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `e5efec5`，本轮 5 个目标页均存在且均为 `draft_template_only`。
+- 本轮严格只处理 5 页：`full_site/api/hd_embree_page_front.html`、`full_site/api/hd_storm_page_front.html`、`full_site/api/hdx_page_front.html`、`full_site/api/hierarchy.html`、`full_site/api/hio_page_front.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_mixed_batch_046.mjs`，为 5 页插入 `api-mixed-quality-pass-046` 中文精修导读区块；每页包含用途说明、阅读重点、关键类型/模块边界和术语对照，保留英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原英文摘录。
+- 本轮中文层覆盖：`HdEmbree` 的 Intel Embree raytracing kernels、Hydra renderer plugin living documentation、`Sync`、`Commit Resources`、`Executing tasks`、`Renderer Plugin`、`Embree Scene Ownership`、`Configuration` 和 `Unit Test`；`HdStorm` 作为 Storm render delegate 插件层、Hgi 后端与 `HdSt` core rendering functionality 的关系；`Hdx` 的 Hydra extensions、常用 task 和 `HdxTaskController`；`hierarchy.html` 的 Doxygen inheritance list / graphical hierarchy 读法；`Hio` 的 Hydra Resource I/O、`HioGlslfx`、`glslfx`、`HioImage`、`HioStb_Image`、`HioOIIO_Image` 和 `HioFieldTextureData`。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 160 / `draft_needs_translation` 238 / `good_bilingual` 8 变为 `draft_template_only` 155 / `draft_needs_translation` 243 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`：409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`：398/398 draft 预览通过，本轮 5 页均可通过本地最终入口访问。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+- GitHub 同步：本轮验证通过后运行 `scripts/sync_openusd_to_github.ps1`，提交信息为 `OpenUSD bilingual round 177: Hydra Hio hierarchy entries`。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是完整翻译每一个函数、方法、参数、返回值、模块条目和继承关系。
+- 全量仍有 155 个 `draft_template_only` 和 243 个 `draft_needs_translation`；大量 File Members、group 页面、模块入口、目录/继承辅助页、源码页和部分 release 草稿仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理当前质量队列中用户可读价值较高的 `globals_defs.html`、`globals_enum.html`、`globals_eval.html`、`group__group___exec___attribute___comptuations.html`、`group__group__hd__collection_predicates.html`。
+2. 对 globals/group 索引页补中文用途说明、条目阅读方法、API 分组边界和术语对照，保留宏名、枚举名、枚举值、函数名、类名、template 参数、代码和链接原样。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证；验证通过后同步 GitHub，并记录分级变化与提交结果。
+
 ## 第 176 轮：CLI/robin_map/Gf/Hd/HdSt 页面精修
 已完成：
 

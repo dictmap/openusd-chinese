@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-mixed-quality-pass-046">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 HdEmbree : Embree-based Hydra renderer plugin 补充中文优先的用途说明、模块边界、关键入口和术语对照；英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first purpose notes, module boundaries, key entry points, and terminology for HdEmbree : Embree-based Hydra renderer plugin while retaining English page names, class names, method names, attribute names, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`HdEmbree` 是基于 Intel Embree raytracing kernels 的 Hydra renderer plugin，主要定位是最小化示例和 renderer plugin API 的 living documentation。</span></li>
+        <li><span class="zh">英文 Overview 列出 `HdEmbreeConfig`、`HdEmbreeInstancer`、`HdEmbreeMesh`、`HdEmbreeRendererPlugin`、`HdEmbreeRenderDelegate`、`HdEmbreeRenderParam`、`HdEmbreeRenderPass`、`HdEmbreeRenderer` 等核心类。</span></li>
+        <li><span class="zh">页面结构中的 `Sync`、`Commit Resources`、`Executing tasks` 对应 Hydra 执行路径：从 `HdSceneDelegate` 同步数据，经资源提交后由 render task 驱动渲染。</span></li>
+        <li><span class="zh">`Renderer Plugin`、`Embree Scene Ownership`、`Configuration` 和 `Unit Test` 说明本模块既展示插件注册，也展示 Embree scene 生命周期和测试配置边界。</span></li>
+        <li><span class="zh">阅读本页时应把 `rtc` 前缀理解为 Embree raytracing core API，并把 `HdEngine::Execute`、`HdRenderIndex`、`HdxRenderTask`、`HdCamera`、`HdRenderBuffer` 放在 Hydra 运行链条中核对。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">HdEmbree：</span><span class="en">HdEmbree</span></li>
+        <li><span class="zh">Embree：</span><span class="en">Embree</span></li>
+        <li><span class="zh">渲染器插件：</span><span class="en">renderer plugin</span></li>
+        <li><span class="zh">render delegate：</span><span class="en">render delegate</span></li>
+        <li><span class="zh">光线追踪内核：</span><span class="en">raytracing kernels</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

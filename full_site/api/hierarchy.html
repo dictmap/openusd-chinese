@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-mixed-quality-pass-046">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Hierarchy 补充中文优先的用途说明、模块边界、关键入口和术语对照；英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first purpose notes, module boundaries, key entry points, and terminology for Class Hierarchy while retaining English page names, class names, method names, attribute names, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`Class Hierarchy` 是 Doxygen 生成的继承关系入口，用于按类继承和基类/派生类关系浏览 OpenUSD API，而不是某个单独模块的说明页。</span></li>
+        <li><span class="zh">英文摘录说明该 inheritance list roughly alphabetically sorted；它包含 `ExecSystem::_ChangeProcessor`、`SdfSchemaBase::_SpecDefiner`、`HdSceneIndexObserver::AddedPrimEntry`、`ArAsset`、`ArResolver` 等跨模块条目。</span></li>
+        <li><span class="zh">本页适合用来从抽象基类进入具体实现，例如从 `ArAsset` 到 `ArFilesystemAsset`、`ArInMemoryAsset`，或从 resolver/cache/context 类理解 Asset Resolution 继承结构。</span></li>
+        <li><span class="zh">`Go to the graphical class hierarchy` 是图形化继承视图入口；本地复刻中仍应通过清单内链接跳转本地页面，清单外链接走 uncovered placeholder。</span></li>
+        <li><span class="zh">阅读本页时不要按正文顺序逐项翻译所有类名，而应把它作为索引：保留类名原样，补充如何用继承关系定位 API 家族。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Class Hierarchy：</span><span class="en">Class Hierarchy</span></li>
+        <li><span class="zh">继承列表：</span><span class="en">inheritance list</span></li>
+        <li><span class="zh">基类：</span><span class="en">base class</span></li>
+        <li><span class="zh">派生类：</span><span class="en">derived class</span></li>
+        <li><span class="zh">图形化层级：</span><span class="en">graphical hierarchy</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
