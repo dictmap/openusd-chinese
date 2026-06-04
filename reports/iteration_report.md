@@ -2,6 +2,29 @@
 
 源页面：<https://openusd.org/release/api/index.html>
 
+## 第 174 轮：Tf/Trace/UsdSkel class 页面精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `36910fd`，本轮 5 个目标页均存在且均为 `draft_template_only`。
+- 本轮严格只处理 5 页：`full_site/api/class_tf_dense_hash_map.html`、`full_site/api/class_tf_py_lock.html`、`full_site/api/class_tf_token.html`、`full_site/api/class_trace_event_data.html`、`full_site/api/class_usd_skel_imaging_data_source_skeleton_prim.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_class_batch_043.mjs`，为 5 页插入 `api-class-quality-pass-043` 中文精修导读区块；每页包含类职责、读取重点、关键类型/方法分组和术语对照，保留英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原英文摘录。
+- 本轮中文层覆盖 `TfDenseHashMap` 的小规模 vector storage、`TfHashMap` API 兼容、`HashFn`/`EqualKey`/`Threshold` template 参数；`TfPyLock` 的 Python GIL、thread state、`Acquire()`/`Release()` 与 allow-threads 状态转换；`TfToken` 的 registered string handle、常数时间比较/hash、`HashSet` 与 interned string 语义；`TraceEventData` 的 TraceEvent payload、多类型 getter、`TraceEvent::DataType` 和 `WriteJson()`；`UsdSkelImagingDataSourceSkeletonPrim` 的 UsdSkel Skeleton prim data source、Hydra data source 适配和 `GetNames()`。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 175 / `draft_needs_translation` 223 / `good_bilingual` 8 变为 `draft_template_only` 170 / `draft_needs_translation` 228 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`：409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`：398/398 draft 预览通过；本轮 5 页均可通过本地最终入口访问。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+- GitHub 同步：本轮验证通过后运行 `scripts/sync_openusd_to_github.ps1`，提交信息为 `OpenUSD bilingual round 174: Tf Trace UsdSkel classes`。
+
+差距：
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是完整翻译每一个构造函数、方法、参数、返回值和继承关系。
+- 全量仍有 170 个 `draft_template_only` 和 228 个 `draft_needs_translation`；大量 Vdf/Vt/class/API 索引、模块入口、源码页和部分 release 草稿仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理当前质量队列中用户可读价值较高的 `class_vdf_grapher_options.html`、`class_vdf_node.html`、`class_vdf_read_write_accessor.html`、`class_vdf_test_utils_1_1_node.html`、`class_vt_value_ref.html`。
+2. 对 Vdf/Vt class 页面补中文用途说明、对象职责、关键类型/方法分组、术语对照和局部结构说明，保留类名、方法名、属性名、template 参数、数学符号、代码和链接原样。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证；验证通过后同步 GitHub，并记录分级变化与提交结果。
+
 ## 第 173 轮：Sdf/Sdr/UsdValidation/UsdVol/Vdf class 页面精修
 已完成：
 

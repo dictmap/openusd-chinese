@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-04T20:22:05.725Z
+Generated: 2026-06-04T20:38:15.729Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-04T20:22:05.725Z
 
 ## Grade Counts
 
-- draft_template_only: 175
-- draft_needs_translation: 223
+- draft_template_only: 170
+- draft_needs_translation: 228
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -99,10 +99,10 @@ Generated: 2026-06-04T20:22:05.725Z
 | 33 | draft_needs_translation | bilingual_draft | 367 | 40/37 | 0 | 0 | `full_site/api/class_sdf_prim_spec.html` |
 | 34 | draft_needs_translation | bilingual_draft | 382 | 34/31 | 0 | 0 | `full_site/api/class_sdf_usdz_file_format.html` |
 | 35 | draft_needs_translation | bilingual_draft | 404 | 40/37 | 0 | 0 | `full_site/api/class_sdr_shader_property.html` |
-| 36 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/class_tf_dense_hash_map.html` |
-| 37 | draft_template_only | bilingual_draft | 118 | 16/18 | 0 | 0 | `full_site/api/class_tf_py_lock.html` |
-| 38 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/class_tf_token.html` |
-| 39 | draft_template_only | bilingual_draft | 130 | 19/21 | 0 | 0 | `full_site/api/class_trace_event_data.html` |
+| 36 | draft_needs_translation | bilingual_draft | 395 | 40/37 | 0 | 0 | `full_site/api/class_tf_dense_hash_map.html` |
+| 37 | draft_needs_translation | bilingual_draft | 354 | 27/24 | 0 | 0 | `full_site/api/class_tf_py_lock.html` |
+| 38 | draft_needs_translation | bilingual_draft | 418 | 40/37 | 0 | 0 | `full_site/api/class_tf_token.html` |
+| 39 | draft_needs_translation | bilingual_draft | 335 | 30/27 | 0 | 0 | `full_site/api/class_trace_event_data.html` |
 | 40 | draft_needs_translation | bilingual_draft | 391 | 40/37 | 0 | 0 | `full_site/api/class_usd_attribute_limits.html` |
 | 41 | draft_needs_translation | bilingual_draft | 382 | 40/37 | 0 | 0 | `full_site/api/class_usd_geom_basis_curves.html` |
 | 42 | draft_needs_translation | bilingual_draft | 393 | 40/37 | 0 | 0 | `full_site/api/class_usd_geom_mesh.html` |
@@ -117,7 +117,7 @@ Generated: 2026-06-04T20:22:05.725Z
 | 51 | draft_needs_translation | bilingual_draft | 371 | 34/31 | 0 | 0 | `full_site/api/class_usd_proc_generative_procedural.html` |
 | 52 | draft_needs_translation | bilingual_draft | 344 | 40/37 | 0 | 0 | `full_site/api/class_usd_schema_registry.html` |
 | 53 | draft_needs_translation | bilingual_draft | 365 | 40/37 | 0 | 0 | `full_site/api/class_usd_shade_output.html` |
-| 54 | draft_template_only | bilingual_draft | 90 | 9/11 | 0 | 0 | `full_site/api/class_usd_skel_imaging_data_source_skeleton_prim.html` |
+| 54 | draft_needs_translation | bilingual_draft | 278 | 20/17 | 0 | 0 | `full_site/api/class_usd_skel_imaging_data_source_skeleton_prim.html` |
 | 55 | draft_needs_translation | bilingual_draft | 399 | 40/37 | 0 | 0 | `full_site/api/class_usd_stage_cache.html` |
 | 56 | draft_needs_translation | bilingual_draft | 409 | 40/37 | 0 | 0 | `full_site/api/class_usd_validation_error.html` |
 | 57 | draft_needs_translation | bilingual_draft | 394 | 40/37 | 0 | 0 | `full_site/api/class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html` |

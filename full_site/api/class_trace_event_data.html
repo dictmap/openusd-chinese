@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-043">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 TraceEventData Class Reference 补充中文优先的类职责、读取重点、关键类型/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, key type/method groups, and terminology for TraceEventData Class Reference while retaining English page names, class names, method names, attribute names, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`TraceEventData` 保存可写入 `TraceEvent` 的数据，是 Trace 子系统记录事件 payload 时使用的轻量值容器。</span></li>
+        <li><span class="zh">英文摘录说明该类 holds data that can be stored in TraceEvents；构造函数重载较多，表示它可接收 bool、int、uint、float、string 等多种数据类型。</span></li>
+        <li><span class="zh">`GetBool()`、`GetInt()`、`GetUInt()`、`GetFloat()`、`GetString()` 和 `GetType()` 是读取 payload 值和类型的主要接口。</span></li>
+        <li><span class="zh">`WriteJson()` 用于把事件数据序列化到 `JsWriter`，因此它直接关系到 trace report 或 profiling 输出中的可读字段。</span></li>
+        <li><span class="zh">阅读本页时应把 `TraceEventData` 与 `TraceEvent::DataType` 一起看：前者保存值，后者描述值类型，调用方需要按类型读取对应 getter。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">TraceEventData：</span><span class="en">TraceEventData</span></li>
+        <li><span class="zh">TraceEvent：</span><span class="en">TraceEvent</span></li>
+        <li><span class="zh">载荷：</span><span class="en">payload</span></li>
+        <li><span class="zh">DataType：</span><span class="en">DataType</span></li>
+        <li><span class="zh">WriteJson：</span><span class="en">WriteJson</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
