@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-04T22:40:46.585Z
+Generated: 2026-06-04T23:00:02.223Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-04T22:40:46.585Z
 
 ## Grade Counts
 
-- draft_template_only: 135
-- draft_needs_translation: 263
+- draft_template_only: 130
+- draft_needs_translation: 268
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -33,11 +33,6 @@ Generated: 2026-06-04T22:40:46.585Z
 | 8 | draft_template_only | 62 | `full_site/api/binding_map_8h_source.html` | 源码页面草稿：bindingMap.h / bindingMap.h |
 | 164 | draft_template_only | 62 | `full_site/api/geom_model_a_p_i_adapter_8h_source.html` | 源码页面草稿：geomModelAPIAdapter.h / geomModelAPIAdapter.h |
 | 207 | draft_template_only | 62 | `full_site/api/hgi_2shader_program_8h_source.html` | 源码页面草稿：shaderProgram.h / shaderProgram.h |
-| 215 | draft_template_only | 62 | `full_site/api/md_pxr_exec_ef__r_e_a_d_m_e.html` | API 页面草稿：Ef: Execution Foundation / Ef: Execution Foundation |
-| 216 | draft_template_only | 62 | `full_site/api/md_pxr_exec_esf__r_e_a_d_m_e.html` | API 页面草稿：Esf: Execution Scene Foundation / Esf: Execution Scene Foundation |
-| 217 | draft_template_only | 62 | `full_site/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html` | API 页面草稿：EsfUsd: Execution Scene Foundation for Usd / EsfUsd: Execution Scene Foundation for Usd |
-| 218 | draft_template_only | 62 | `full_site/api/md_pxr_exec_exec__r_e_a_d_m_e.html` | API 页面草稿：Exec: Execution sytem core / Exec: Execution sytem core |
-| 219 | draft_template_only | 62 | `full_site/api/md_pxr_exec_exec_geom__r_e_a_d_m_e.html` | API 页面草稿：ExecGeom: Execution for UsdGeom / ExecGeom: Execution for UsdGeom |
 | 220 | draft_template_only | 62 | `full_site/api/md_pxr_exec_exec_ir__r_e_a_d_m_e.html` | API 页面草稿：ExecIr: OpenExec implementation of invertible rigs / ExecIr: OpenExec implementation of invertible rigs |
 | 221 | draft_template_only | 62 | `full_site/api/md_pxr_exec_exec_usd__r_e_a_d_m_e.html` | API 页面草稿：ExecUsd: Execution system for Usd / ExecUsd: Execution system for Usd |
 | 230 | draft_template_only | 62 | `full_site/api/modules.html` | API 页面草稿：Modules / Modules |
@@ -59,6 +54,11 @@ Generated: 2026-06-04T22:40:46.585Z
 | 293 | draft_template_only | 64 | `full_site/release/plugins.html` | USD 第三方插件 / USD Third-Party Plugins |
 | 297 | draft_template_only | 64 | `full_site/release/release_schedule.html` | 发布时间表 / Release Schedule |
 | 298 | draft_template_only | 64 | `full_site/release/search.html` | 搜索 / Search - Universal Scene Description 26.05 documentation |
+| 69 | draft_template_only | 66 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | API 页面草稿：hf Directory / hf Directory |
+| 212 | draft_template_only | 66 | `full_site/api/journal_8h.html` | API 页面草稿：journal.h File / journal.h File |
+| 225 | draft_template_only | 66 | `full_site/api/md_pxr_exec_vdf__r_e_a_d_m_e.html` | API 页面草稿：Vdf: Vectorized Data Flow / Vdf: Vectorized Data Flow |
+| 246 | draft_template_only | 66 | `full_site/api/sdr_glslfx_page_front.html` | API 模块草稿：SdrGlslfx: Glslfx parser for Sdr / SdrGlslfx: Glslfx parser for Sdr |
+| 248 | draft_template_only | 66 | `full_site/api/sparse_vectorized_input_traverser_8h.html` | API 页面草稿：sparseVectorizedInputTraverser.h File / sparseVectorizedInputTraverser.h File |
 
 ## All Pages
 
@@ -278,11 +278,11 @@ Generated: 2026-06-04T22:40:46.585Z
 | 212 | draft_template_only | bilingual_draft | 66 | 3/5 | 0 | 0 | `full_site/api/journal_8h.html` |
 | 213 | draft_needs_translation | bilingual_draft | 310 | 14/11 | 0 | 0 | `full_site/api/js_page_front.html` |
 | 214 | draft_needs_translation | bilingual_draft | 311 | 15/12 | 0 | 0 | `full_site/api/kind_page_front.html` |
-| 215 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/md_pxr_exec_ef__r_e_a_d_m_e.html` |
-| 216 | draft_template_only | bilingual_draft | 62 | 2/3 | 0 | 0 | `full_site/api/md_pxr_exec_esf__r_e_a_d_m_e.html` |
-| 217 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html` |
-| 218 | draft_template_only | bilingual_draft | 62 | 2/3 | 0 | 0 | `full_site/api/md_pxr_exec_exec__r_e_a_d_m_e.html` |
-| 219 | draft_template_only | bilingual_draft | 62 | 2/3 | 0 | 0 | `full_site/api/md_pxr_exec_exec_geom__r_e_a_d_m_e.html` |
+| 215 | draft_needs_translation | bilingual_draft | 345 | 13/10 | 0 | 0 | `full_site/api/md_pxr_exec_ef__r_e_a_d_m_e.html` |
+| 216 | draft_needs_translation | bilingual_draft | 349 | 13/9 | 0 | 0 | `full_site/api/md_pxr_exec_esf__r_e_a_d_m_e.html` |
+| 217 | draft_needs_translation | bilingual_draft | 334 | 13/10 | 0 | 0 | `full_site/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html` |
+| 218 | draft_needs_translation | bilingual_draft | 342 | 13/9 | 0 | 0 | `full_site/api/md_pxr_exec_exec__r_e_a_d_m_e.html` |
+| 219 | draft_needs_translation | bilingual_draft | 326 | 13/9 | 0 | 0 | `full_site/api/md_pxr_exec_exec_geom__r_e_a_d_m_e.html` |
 | 220 | draft_template_only | bilingual_draft | 62 | 2/3 | 0 | 0 | `full_site/api/md_pxr_exec_exec_ir__r_e_a_d_m_e.html` |
 | 221 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd__r_e_a_d_m_e.html` |
 | 222 | draft_template_only | bilingual_draft | 86 | 8/10 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd_docs_overview.html` |

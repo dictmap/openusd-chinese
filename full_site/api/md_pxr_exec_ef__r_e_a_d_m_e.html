@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-openexec-quality-pass-051">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Ef: Execution Foundation 补充中文优先的模块定位、依赖关系、阅读顺序和术语对照；英文模块名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、类型名、头文件名、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first module positioning, dependency guidance, reading order, and terminology for Ef: Execution Foundation while retaining English module names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, type names, header names, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`Ef: Execution Foundation` 是 OpenExec 执行基础层入口，位置在 `vdf` 之上；阅读时应先把它理解为对 `Vdf` data flow 的执行节点、执行器接口、缓存和遍历工具的扩展层。</span></li>
+        <li><span class="zh">英文摘录明确说 `ef` extends functionality provided by `vdf`，因此本页不是用户场景 schema，也不是 USD authoring API，而是供执行网络构建与求值使用的底层库说明。</span></li>
+        <li><span class="zh">`VdfNode` 是本页最关键的跳转对象之一，表示 data flow network 中的节点类型；`VdfExecutorInterface` 则提示本库和执行器抽象、网络求值流程有关。</span></li>
+        <li><span class="zh">本页的中文导读保留 `vdf`、`VdfNode`、`VdfExecutorInterface` 原名，因为这些名称本身就是后续 API class 页和模块页的稳定检索键。</span></li>
+        <li><span class="zh">阅读顺序建议：先打开 `vdf` 理解 data flow graph，再回到 `ef` 看 execution foundation 如何补充 node 类型、value cache、network traversal 和 utility functions。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">执行基础层：</span><span class="en">Execution Foundation</span></li>
+        <li><span class="zh">数据流网络：</span><span class="en">data flow network</span></li>
+        <li><span class="zh">VdfNode：</span><span class="en">VdfNode</span></li>
+        <li><span class="zh">VdfExecutorInterface：</span><span class="en">VdfExecutorInterface</span></li>
+        <li><span class="zh">网络遍历：</span><span class="en">network traversal</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

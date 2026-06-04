@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-openexec-quality-pass-051">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 ExecGeom: Execution for UsdGeom 补充中文优先的模块定位、依赖关系、阅读顺序和术语对照；英文模块名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、类型名、头文件名、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first module positioning, dependency guidance, reading order, and terminology for ExecGeom: Execution for UsdGeom while retaining English module names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, type names, header names, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`ExecGeom` 是面向 `UsdGeom` schemas 的 execution registration 层；英文摘录说明它 built on top of `execUsd`，因此它依赖 USD 集成层而不是直接连接最底层 `vdf`。</span></li>
+        <li><span class="zh">本页核心语义是注册 computations，让执行系统可以基于 `UsdGeom` schema 表达的数据计算结果；这通常和几何属性、prim 数据、schema-defined behavior 的求值有关。</span></li>
+        <li><span class="zh">`execUsd` 链接是本页关键上游：先理解 `ExecUsd` 如何让执行系统访问 USD，再看 `ExecGeom` 如何为 `UsdGeom` 相关 schema 提供计算注册。</span></li>
+        <li><span class="zh">本页不是 `UsdGeom` schema 的完整教程，也不替代 `UsdGeomMesh`、`UsdGeomXformable` 等类页；它更像 OpenExec 到几何 schema domain 的桥接说明。</span></li>
+        <li><span class="zh">阅读时保留 `ExecGeom`、`execUsd`、`UsdGeom`、`schemas`、`computations` 原名，中文层只解释它们在 OpenExec 模块依赖图中的位置和职责。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">UsdGeom 执行集成层：</span><span class="en">ExecGeom</span></li>
+        <li><span class="zh">UsdGeom schema 集合：</span><span class="en">UsdGeom schemas</span></li>
+        <li><span class="zh">注册：</span><span class="en">registration</span></li>
+        <li><span class="zh">schema 领域：</span><span class="en">schema domain</span></li>
+        <li><span class="zh">计算结果：</span><span class="en">computed result</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

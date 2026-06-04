@@ -2,6 +2,30 @@
 
 源页面：<https://openusd.org/release/api/index.html>
 
+## 第 182 轮：OpenExec foundation/core/geometry README 入口页精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `49a279e`，本轮 5 个 OpenExec 目标页均存在且均为 `draft_template_only`。
+- 本轮严格只处理 5 页：`full_site/api/md_pxr_exec_ef__r_e_a_d_m_e.html`、`full_site/api/md_pxr_exec_esf__r_e_a_d_m_e.html`、`full_site/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html`、`full_site/api/md_pxr_exec_exec__r_e_a_d_m_e.html`、`full_site/api/md_pxr_exec_exec_geom__r_e_a_d_m_e.html`；没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_api_openexec_batch_051.mjs`，为 5 页插入 `api-openexec-quality-pass-051` 中文精修导读区块；每页包含模块定位、依赖关系、阅读顺序和术语对照，保留英文模块名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、类型名、头文件名、链接和原英文摘录。
+- 本轮中文层覆盖：`Ef` 作为 `vdf` 之上的 execution foundation、`VdfNode`、`VdfExecutorInterface`、value cache 和 network traversal；`Esf` 作为非公开 scene description object access interface；`EsfUsd` 作为 `Esf` 到 `UsdStage` scene objects 的 USD 适配层；`Exec` 作为 built on `vdf`/`ef`/`esf` 的 execution system core，覆盖 defining computations、ingesting scenes、compiling/evaluating data flow networks；`ExecGeom` 作为 built on `execUsd` 的 `UsdGeom` computation registration 层。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 135 / `draft_needs_translation` 263 / `good_bilingual` 8 变为 `draft_template_only` 130 / `draft_needs_translation` 268 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；本轮 5 页均可通过本地最终入口访问。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+- GitHub 同步：本轮验证通过后运行 `scripts/sync_openusd_to_github.ps1`，提交信息为 `OpenUSD bilingual round 182: OpenExec foundation core geom entries`。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是完整翻译 OpenExec 每一个类、接口、函数、参数、网络求值细节和教程段落。
+- 全量仍有 130 个 `draft_template_only` 和 268 个 `draft_needs_translation`；OpenExec `ExecIr`、`ExecUsd`、overview/tutorial、Vdf README、usdview 开发说明、Sdf boolean expressions、Validation、namespace/module 索引和源码页仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理当前质量队列中用户可读价值较高且仍为模板草稿的 OpenExec 后续入口：`md_pxr_exec_exec_ir__r_e_a_d_m_e.html`、`md_pxr_exec_exec_usd__r_e_a_d_m_e.html`、`md_pxr_exec_exec_usd_docs_overview.html`、`md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html`、`md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html`。
+2. 对 ExecIr、ExecUsd、OpenExec overview 和前两篇 tutorial 补中文用途说明、概念边界、计算求值流程、术语对照和局部结构说明，保留模块名、API 名称、代码、数学符号、模板参数和链接原样。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证；验证通过后同步 GitHub，并记录分级变化与提交结果。
+
 ## 第 181 轮：File Members/Hierarchy/Js/Kind 入口页精修
 已完成：
 

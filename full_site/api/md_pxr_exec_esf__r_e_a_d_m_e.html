@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-openexec-quality-pass-051">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Esf: Execution Scene Foundation 补充中文优先的模块定位、依赖关系、阅读顺序和术语对照；英文模块名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、类型名、头文件名、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first module positioning, dependency guidance, reading order, and terminology for Esf: Execution Scene Foundation while retaining English module names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, type names, header names, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`Esf: Execution Scene Foundation` 是执行系统访问 scene description objects 的接口层；英文摘录标注 `not meant for public use`，说明它主要服务 OpenExec 内部实现。</span></li>
+        <li><span class="zh">本页核心语义是把执行系统和场景描述对象连接起来，使 execution system 能在构建和求值 execution networks 时读取场景对象。</span></li>
+        <li><span class="zh">`esf` 本身不绑定到某一种具体 USD stage；它定义抽象接口和 scene foundation 边界，后续 `EsfUsd` 才把这些接口落到 `UsdStage` 上。</span></li>
+        <li><span class="zh">阅读时不要把 `Esf` 当成公开 authoring API；更合适的理解是执行网络编译阶段使用的 scene access adapter contract。</span></li>
+        <li><span class="zh">当前页面链接较少，因此中文导读重点补足模块定位、公开性限制、与 `Exec`/`EsfUsd` 的分工，而保留官方英文摘录作为核对依据。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">执行场景基础层：</span><span class="en">Execution Scene Foundation</span></li>
+        <li><span class="zh">场景描述对象：</span><span class="en">scene description object</span></li>
+        <li><span class="zh">执行网络：</span><span class="en">execution network</span></li>
+        <li><span class="zh">内部使用：</span><span class="en">internal use</span></li>
+        <li><span class="zh">适配接口契约：</span><span class="en">adapter contract</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
