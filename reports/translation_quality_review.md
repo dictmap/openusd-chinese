@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-04T19:50:27.921Z
+Generated: 2026-06-04T20:00:42.761Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-04T19:50:27.921Z
 
 ## Grade Counts
 
-- draft_template_only: 185
-- draft_needs_translation: 213
+- draft_template_only: 180
+- draft_needs_translation: 218
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -113,12 +113,12 @@ Generated: 2026-06-04T19:50:27.921Z
 | 47 | draft_needs_translation | bilingual_draft | 363 | 34/31 | 0 | 0 | `full_site/api/class_usd_lux_disk_light.html` |
 | 48 | draft_needs_translation | bilingual_draft | 385 | 40/37 | 0 | 0 | `full_site/api/class_usd_lux_shaping_a_p_i.html` |
 | 49 | draft_needs_translation | bilingual_draft | 362 | 40/37 | 0 | 0 | `full_site/api/class_usd_physics_joint.html` |
-| 50 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/class_usd_prim.html` |
-| 51 | draft_template_only | bilingual_draft | 146 | 23/25 | 0 | 0 | `full_site/api/class_usd_proc_generative_procedural.html` |
-| 52 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/class_usd_schema_registry.html` |
-| 53 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/class_usd_shade_output.html` |
+| 50 | draft_needs_translation | bilingual_draft | 384 | 40/37 | 0 | 0 | `full_site/api/class_usd_prim.html` |
+| 51 | draft_needs_translation | bilingual_draft | 371 | 34/31 | 0 | 0 | `full_site/api/class_usd_proc_generative_procedural.html` |
+| 52 | draft_needs_translation | bilingual_draft | 344 | 40/37 | 0 | 0 | `full_site/api/class_usd_schema_registry.html` |
+| 53 | draft_needs_translation | bilingual_draft | 365 | 40/37 | 0 | 0 | `full_site/api/class_usd_shade_output.html` |
 | 54 | draft_template_only | bilingual_draft | 90 | 9/11 | 0 | 0 | `full_site/api/class_usd_skel_imaging_data_source_skeleton_prim.html` |
-| 55 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/class_usd_stage_cache.html` |
+| 55 | draft_needs_translation | bilingual_draft | 399 | 40/37 | 0 | 0 | `full_site/api/class_usd_stage_cache.html` |
 | 56 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/class_usd_validation_error.html` |
 | 57 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html` |
 | 58 | draft_template_only | bilingual_draft | 162 | 27/29 | 0 | 0 | `full_site/api/class_vdf_context.html` |

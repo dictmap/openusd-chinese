@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-041">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 UsdSchemaRegistry Class Reference 补充中文优先的类职责、读取重点、关键属性/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, key attribute/method groups, and terminology for UsdSchemaRegistry Class Reference while retaining English page names, class names, method names, attribute names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`UsdSchemaRegistry` 是 singleton registry，用于访问已注册 USD `IsA` schema 和 applied API schema 的 schema type information 与 prim definitions。</span></li>
+        <li><span class="zh">英文摘录说明 registry 还保存 generated schemas 中的数据，这些数据来自每个 schema-defining module 处理 `schema.usda` 后生成的 `generatedSchema.usda`。</span></li>
+        <li><span class="zh">`SchemaInfo` 描述一个已注册 schema 的信息；`VersionPolicy`、`FindSchemaInfo()`、`FindSchemaInfosInFamily()` 用于处理 schema 家族、版本和查询。</span></li>
+        <li><span class="zh">`FindConcretePrimDefinition()`、`FindAbstractPrimDefinition()`、`FindAppliedAPIPrimDefinition()` 和 `BuildComposedPrimDefinition()` 是从 schema 定义构建 prim definition 的主要入口。</span></li>
+        <li><span class="zh">`GetAPISchemaCanOnlyApplyToTypeNames()` 与 auto-apply API schema 相关；阅读本页时应把它看作 USD schema 系统的元数据和定义查询中心。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">schema 注册表：</span><span class="en">schema registry</span></li>
+        <li><span class="zh">IsA schema：</span><span class="en">IsA schema</span></li>
+        <li><span class="zh">已应用 API schema：</span><span class="en">applied API schema</span></li>
+        <li><span class="zh">prim 定义：</span><span class="en">prim definition</span></li>
+        <li><span class="zh">generatedSchema.usda：</span><span class="en">generatedSchema.usda</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

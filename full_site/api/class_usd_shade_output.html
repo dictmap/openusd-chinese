@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-041">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 UsdShadeOutput Class Reference 补充中文优先的类职责、读取重点、关键属性/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, key attribute/method groups, and terminology for UsdShadeOutput Class Reference while retaining English page names, class names, method names, attribute names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`UsdShadeOutput` 封装 shader 或 node-graph output，是一种 connectable attribute，表示带类型的外部计算值。</span></li>
+        <li><span class="zh">页面结构将方法分为 `Connections API` 和 `UsdAttribute API`：前者管理输出连接，后者暴露底层 `UsdAttribute` 的访问能力。</span></li>
+        <li><span class="zh">`CanConnect()`、`ConnectToSource()`、`DisconnectSource()`、`ClearSource()`、`ClearSources()` 是连接管理的核心入口，用于连接到 shader/node graph 的输出源或清理连接。</span></li>
+        <li><span class="zh">`SourceInfoVector` 和 `ConnectionModification` 体现本类需要保存 source 信息并控制连接修改方式；`GetAttr()` 可取得底层 attribute。</span></li>
+        <li><span class="zh">`ClearSdrMetadata()`、`ClearSdrMetadataByKey()` 表明 output 可携带 Sdr metadata；阅读本页时应结合 `UsdShadeInput`、`UsdShadeConnectableAPI` 和材质网络理解。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">输出：</span><span class="en">output</span></li>
+        <li><span class="zh">可连接属性：</span><span class="en">connectable attribute</span></li>
+        <li><span class="zh">节点图：</span><span class="en">node graph</span></li>
+        <li><span class="zh">源：</span><span class="en">source</span></li>
+        <li><span class="zh">Sdr metadata：</span><span class="en">Sdr metadata</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
