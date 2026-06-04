@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-035">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 GfRay Class Reference 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for GfRay Class Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`GfRay` 是 Gf Basic Geometry 中用于 intersection testing 的三维射线类型，由 origin 和 direction 组成。</span></li>
+        <li><span class="zh">英文摘录特别说明默认情况下 `GfRay` 不会把 direction vector 归一化为 unit length；如果算法假定单位方向，调用方需要自己确认或归一化。</span></li>
+        <li><span class="zh">射线相交计算包含 start point，也就是 distance 为 0 时也被定义为 intersecting；这会影响拾取、裁剪和最近交点判断。</span></li>
+        <li><span class="zh">关联类型包括 `GfVec3d`、`GfMatrix4d`、`GfPlane`、`GfRange3d`、`GfBBox3d`、`GfLine` 和 `GfLineSeg`，说明它常与平面、包围盒、线和线段相交查询配合使用。</span></li>
+        <li><span class="zh">本轮中文层按 origin/direction、非归一化约定、intersection distance 和相关几何类型分组；方法名和数学符号保留原样。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">射线：</span><span class="en">ray</span></li>
+        <li><span class="zh">原点：</span><span class="en">origin</span></li>
+        <li><span class="zh">方向向量：</span><span class="en">direction vector</span></li>
+        <li><span class="zh">单位长度：</span><span class="en">unit length</span></li>
+        <li><span class="zh">相交测试：</span><span class="en">intersection testing</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

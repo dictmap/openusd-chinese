@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-035">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 HdDataSourceLocator Class 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for HdDataSourceLocator Class while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`HdDataSourceLocator` 表示一个可以识别 data source 位置的对象，是 Hydra 数据源定位语义的一部分。</span></li>
+        <li><span class="zh">英文摘录说明 Data Source Locators 是 short lists of tokens；这些 tokens 组合起来表示某个给定 data source 的位置。</span></li>
+        <li><span class="zh">关联类型主要是 `TfToken`，说明 locator 的路径片段不是普通字符串列表，而是 tokenized、可比较和可复用的标识序列。</span></li>
+        <li><span class="zh">阅读本页时应重点关注 locator 构造、token path 组合、前缀/后缀匹配、比较、hash 和与 data source container 的协作方式；具体方法以后续 member list 为准。</span></li>
+        <li><span class="zh">本页中文层保留 `HdDataSourceLocator`、`data source`、`TfToken` 等核心 API 术语，避免把 Hydra data source 与 USD layer/path 概念混同。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">数据源定位器：</span><span class="en">data source locator</span></li>
+        <li><span class="zh">短 token 列表：</span><span class="en">short list of tokens</span></li>
+        <li><span class="zh">TfToken：</span><span class="en">TfToken</span></li>
+        <li><span class="zh">Hydra 数据源：</span><span class="en">Hydra data source</span></li>
+        <li><span class="zh">token 路径：</span><span class="en">token path</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

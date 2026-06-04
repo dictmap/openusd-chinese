@@ -2,6 +2,30 @@
 
 源页面：<https://openusd.org/release/api/index.html>
 
+## 第 166 轮：Gf/Glf/Hd class 页面精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口、Git 状态和进度记录，确认本轮 5 个 class 目标页均存在且均为 `draft_template_only`。
+- 本轮严格只处理 5 页：`full_site/api/class_gf_range1d.html`、`full_site/api/class_gf_ray.html`、`full_site/api/class_gf_vec2i.html`、`full_site/api/class_glf_draw_target.html`、`full_site/api/class_hd_data_source_locator.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_class_batch_035.mjs`，为 5 页插入 `api-class-quality-pass-035` 中文精修导读区块；每页包含类职责、相关类型、关键语义、术语对照和结构提醒，保留英文页面名、类名、方法名、template 参数、代码、链接和原英文摘录。
+- 本轮中文层覆盖 `GfRange1d` 的一维 interval、empty range、`max < min` 与 `[FLT_MAX,-FLT_MAX]` 约定；`GfRay` 的 origin/direction、非归一化 direction vector 和 intersection distance 语义；`GfVec2i` 的二维 int vector、component 和 dot product 语境；`GlfDrawTarget` 的 GL render target、multiple image attachments、depth buffer 与 texture sampler；`HdDataSourceLocator` 的 Hydra data source token path 定位语义。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 215 / `draft_needs_translation` 183 / `good_bilingual` 8 变为 `draft_template_only` 210 / `draft_needs_translation` 188 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；5 个目标页均带有本轮 marker，坏编码风险 0。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+- GitHub 同步：本轮验证通过后运行 `scripts/sync_openusd_to_github.ps1`，同步提交见本轮末尾 Git 记录。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是完整翻译每个构造函数、方法、参数、返回值和继承关系。
+- 全量仍有 210 个 `draft_template_only` 和 188 个 `draft_needs_translation`；大量 class/API 页面、源码页和部分 release/API 草稿仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理当前质量队列中的 `class_hd_instance_registry.html`、`class_hd_render_buffer.html`、`class_hd_scene_delegate.html`、`class_hd_st_dispatch_buffer.html`、`class_hd_st_render_pass_state.html`。
+2. 对 Hd / Hydra class 页面补中文用途说明、类职责、关键方法/成员分组、术语对照和局部结构说明，保留类名、方法名、template 参数、数学符号和链接原样。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证；验证通过后同步 GitHub，并记录分级变化与提交结果。
+
 ## 第 165 轮：Ef/Esf/Gf class 页面精修
 已完成：
 
