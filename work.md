@@ -1,5 +1,28 @@
 # 工作记录
 
+## 第 176 轮：CLI/robin_map/Gf/Hd/HdSt 页面精修
+已完成：
+
+- 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `6db3753`，本轮 5 个目标页均存在且均为 `draft_template_only`。
+- 本轮严格只处理 5 页：`full_site/api/classpxr___c_l_i_1_1_c_l_i_1_1_app.html`、`full_site/api/classpxr__tsl_1_1robin__map.html`、`full_site/api/gf_page_front.html`、`full_site/api/hd_page_front.html`、`full_site/api/hd_st_page_front.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_mixed_batch_045.mjs`，每页新增 `api-mixed-quality-pass-045` 中文精修导读区块，包含用途说明、读取重点、关键类型/模块边界和术语对照；保留英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原英文摘录。
+- 本轮中文层覆盖 `CLI::App` 的 command line program、subcommands、parsing/help、`add_option` 和 `.start` 调用语义；`pxr_tsl::robin_map` 的 open-addressing、robin hood hashing、template 参数和 growth policy；`Gf` 模块的 Graphics Foundations、Linear Algebra、Basic Mathematical Operations、Basic Geometry 与 Debugging output；`Hd` 模块作为 multiple scene graphs 与 multiple renderers 之间通信的 Hydra Framework；`HdSt` 模块作为 HdStorm core rendering functionality、renderIndex 数据拉取、command buffers、GPU resources 和 cached playback。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 165 / `draft_needs_translation` 233 / `good_bilingual` 8 变为 `draft_template_only` 160 / `draft_needs_translation` 238 / `good_bilingual` 8。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`：409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`：398/398 draft 预览通过；本轮 5 页均可通过本地最终入口访问。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+- GitHub 同步：本轮验证通过后运行 `scripts/sync_openusd_to_github.ps1`，提交信息为 `OpenUSD bilingual round 176: CLI robin_map Gf Hd HdSt entries`。
+
+差距：
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是完整翻译每一个构造函数、方法、参数、返回值、模块条目和继承关系。
+- 全量仍有 160 个 `draft_template_only` 和 238 个 `draft_needs_translation`；大量 File Members、模块入口、group 页面、源码页和部分 release 草稿仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理当前质量队列中用户可读价值较高的 `hd_embree_page_front.html`、`hd_storm_page_front.html`、`hdx_page_front.html`、`hierarchy.html`、`hio_page_front.html`。
+2. 对 Hydra 相关模块入口和 class hierarchy 页面补中文用途说明、模块边界、关键类型/入口和术语对照，保留类名、方法名、属性名、template 参数、数学符号、代码和链接原样。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证；验证通过后同步 GitHub，并记录分级变化与提交结果。
+
 ## 第 175 轮：Vdf/Vt class 页面精修
 已完成：
 

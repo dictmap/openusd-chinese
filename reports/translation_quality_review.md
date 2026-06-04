@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-04T20:54:53.754Z
+Generated: 2026-06-04T21:11:50.219Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-04T20:54:53.754Z
 
 ## Grade Counts
 
-- draft_template_only: 165
-- draft_needs_translation: 233
+- draft_template_only: 160
+- draft_needs_translation: 238
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -42,7 +42,6 @@ Generated: 2026-06-04T20:54:53.754Z
 | 196 | draft_template_only | 62 | `full_site/api/globals_v.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
 | 198 | draft_template_only | 62 | `full_site/api/globals_w.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
 | 199 | draft_template_only | 62 | `full_site/api/globals.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
-| 203 | draft_template_only | 62 | `full_site/api/hd_page_front.html` | API 模块草稿：Hd : The Hydra Framework / Hd : The Hydra Framework |
 | 205 | draft_template_only | 62 | `full_site/api/hd_storm_page_front.html` | API 模块草稿：HdStorm : Real-time Hydra renderer plugin / HdStorm : Real-time Hydra renderer plugin |
 | 207 | draft_template_only | 62 | `full_site/api/hgi_2shader_program_8h_source.html` | 源码页面草稿：shaderProgram.h / shaderProgram.h |
 | 208 | draft_template_only | 62 | `full_site/api/hierarchy.html` | API 页面草稿：Class Hierarchy / Class Hierarchy |
@@ -59,6 +58,7 @@ Generated: 2026-06-04T20:54:53.754Z
 | 234 | draft_template_only | 62 | `full_site/api/namespaces.html` | 命名空间参考草稿：Namespace List / Namespace List |
 | 238 | draft_template_only | 62 | `full_site/api/page_ts_ts_test.html` | API 页面草稿：The TsTest Framework / The TsTest Framework |
 | 239 | draft_template_only | 62 | `full_site/api/pages.html` | API 页面草稿：Related Pages / Related Pages |
+| 240 | draft_template_only | 62 | `full_site/api/parallel_speculation_executor_engine_8h_source.html` | 源码页面草稿：parallelSpeculationExecutorEngine.h / parallelSpeculationExecutorEngine.h |
 
 ## All Pages
 
@@ -128,8 +128,8 @@ Generated: 2026-06-04T20:54:53.754Z
 | 62 | draft_needs_translation | bilingual_draft | 317 | 28/25 | 0 | 0 | `full_site/api/class_vdf_test_utils_1_1_node.html` |
 | 63 | draft_needs_translation | bilingual_draft | 408 | 40/37 | 0 | 0 | `full_site/api/class_vt_value_ref.html` |
 | 64 | draft_needs_translation | bilingual_draft | 288 | 12/9 | 0 | 0 | `full_site/api/classes.html` |
-| 65 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/classpxr___c_l_i_1_1_c_l_i_1_1_app.html` |
-| 66 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/classpxr__tsl_1_1robin__map.html` |
+| 65 | draft_needs_translation | bilingual_draft | 364 | 40/37 | 0 | 0 | `full_site/api/classpxr___c_l_i_1_1_c_l_i_1_1_app.html` |
+| 66 | draft_needs_translation | bilingual_draft | 353 | 40/37 | 0 | 0 | `full_site/api/classpxr__tsl_1_1robin__map.html` |
 | 67 | draft_template_only | bilingual_draft | 106 | 13/15 | 0 | 0 | `full_site/api/copy_utils_8h.html` |
 | 68 | draft_needs_translation | bilingual_draft | 278 | 12/10 | 0 | 0 | `full_site/api/deprecated.html` |
 | 69 | draft_template_only | bilingual_draft | 66 | 3/4 | 0 | 0 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` |
@@ -228,7 +228,7 @@ Generated: 2026-06-04T20:54:53.754Z
 | 162 | draft_needs_translation | bilingual_draft | 295 | 13/10 | 0 | 0 | `full_site/api/functions_z.html` |
 | 163 | draft_needs_translation | bilingual_draft | 233 | 13/10 | 0 | 0 | `full_site/api/functions.html` |
 | 164 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/geom_model_a_p_i_adapter_8h_source.html` |
-| 165 | draft_template_only | bilingual_draft | 66 | 3/5 | 0 | 0 | `full_site/api/gf_page_front.html` |
+| 165 | draft_needs_translation | bilingual_draft | 292 | 14/11 | 0 | 0 | `full_site/api/gf_page_front.html` |
 | 166 | draft_needs_translation | bilingual_draft | 335 | 13/9 | 0 | 0 | `full_site/api/glf_page_front.html` |
 | 167 | draft_needs_translation | bilingual_draft | 319 | 13/10 | 0 | 0 | `full_site/api/globals_c.html` |
 | 168 | draft_template_only | bilingual_draft | 90 | 9/11 | 0 | 0 | `full_site/api/globals_defs.html` |
@@ -266,8 +266,8 @@ Generated: 2026-06-04T20:54:53.754Z
 | 200 | draft_template_only | bilingual_draft | 90 | 9/11 | 0 | 0 | `full_site/api/group__group___exec___attribute___comptuations.html` |
 | 201 | draft_template_only | bilingual_draft | 82 | 7/9 | 0 | 0 | `full_site/api/group__group__hd__collection_predicates.html` |
 | 202 | draft_template_only | bilingual_draft | 98 | 11/13 | 0 | 0 | `full_site/api/hd_embree_page_front.html` |
-| 203 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/hd_page_front.html` |
-| 204 | draft_template_only | bilingual_draft | 66 | 3/5 | 0 | 0 | `full_site/api/hd_st_page_front.html` |
+| 203 | draft_needs_translation | bilingual_draft | 267 | 13/10 | 0 | 0 | `full_site/api/hd_page_front.html` |
+| 204 | draft_needs_translation | bilingual_draft | 257 | 14/11 | 0 | 0 | `full_site/api/hd_st_page_front.html` |
 | 205 | draft_template_only | bilingual_draft | 62 | 2/3 | 0 | 0 | `full_site/api/hd_storm_page_front.html` |
 | 206 | draft_template_only | bilingual_draft | 66 | 3/5 | 0 | 0 | `full_site/api/hdx_page_front.html` |
 | 207 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/hgi_2shader_program_8h_source.html` |

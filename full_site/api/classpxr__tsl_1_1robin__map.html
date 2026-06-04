@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-mixed-quality-pass-045">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 pxr_tsl::robin_map&lt; Key, T, Hash, KeyEqual, Allocator, StoreHash, GrowthPolicy &gt; Class Template Reference 补充中文优先的用途说明、读取重点、关键类型/模块边界和术语对照；英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first purpose notes, reading guidance, key type/module boundaries, and terminology for pxr_tsl::robin_map&lt; Key, T, Hash, KeyEqual, Allocator, StoreHash, GrowthPolicy &gt; Class Template Reference while retaining English page names, class names, method names, attribute names, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`pxr_tsl::robin_map` 是基于 open-addressing 与 robin hood hashing algorithm 的 hash map 实现，并使用 backward shift deletion 处理删除后的探测序列。</span></li>
+        <li><span class="zh">template 参数 `Key`、`T`、`Hash`、`KeyEqual`、`Allocator`、`StoreHash` 和 `GrowthPolicy` 决定 key/value 类型、散列策略、比较规则、内存分配和增长策略。</span></li>
+        <li><span class="zh">页面结构中的 typedefs 如 `key_type`、`mapped_type`、`value_type`、`iterator`、`const_iterator`、`hasher`、`key_equal` 对应标准关联容器接口。</span></li>
+        <li><span class="zh">多个 constructor overload 说明该容器支持不同初始 bucket count、allocator、hash/equal/growth policy 或 initializer 输入方式。</span></li>
+        <li><span class="zh">`pxr_tsl::rh::power_of_two_growth_policy&lt;2&gt;` 和 `bucket_entry` 是底层实现细节；阅读时应把它看作高性能 utility container，而不是 USD scene description API。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">robin_map：</span><span class="en">robin_map</span></li>
+        <li><span class="zh">开放寻址：</span><span class="en">open-addressing</span></li>
+        <li><span class="zh">robin hood hashing：</span><span class="en">robin hood hashing</span></li>
+        <li><span class="zh">GrowthPolicy：</span><span class="en">GrowthPolicy</span></li>
+        <li><span class="zh">后移删除：</span><span class="en">backward shift deletion</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
