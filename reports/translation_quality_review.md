@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-04T23:47:43.515Z
+Generated: 2026-06-04T23:54:25.000Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-04T23:47:43.515Z
 
 ## Grade Counts
 
-- draft_template_only: 115
-- draft_needs_translation: 283
+- draft_template_only: 110
+- draft_needs_translation: 288
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -33,8 +33,6 @@ Generated: 2026-06-04T23:47:43.515Z
 | 8 | draft_template_only | 62 | `full_site/api/binding_map_8h_source.html` | 源码页面草稿：bindingMap.h / bindingMap.h |
 | 164 | draft_template_only | 62 | `full_site/api/geom_model_a_p_i_adapter_8h_source.html` | 源码页面草稿：geomModelAPIAdapter.h / geomModelAPIAdapter.h |
 | 207 | draft_template_only | 62 | `full_site/api/hgi_2shader_program_8h_source.html` | 源码页面草稿：shaderProgram.h / shaderProgram.h |
-| 238 | draft_template_only | 62 | `full_site/api/page_ts_ts_test.html` | API 页面草稿：The TsTest Framework / The TsTest Framework |
-| 239 | draft_template_only | 62 | `full_site/api/pages.html` | API 页面草稿：Related Pages / Related Pages |
 | 240 | draft_template_only | 62 | `full_site/api/parallel_speculation_executor_engine_8h_source.html` | 源码页面草稿：parallelSpeculationExecutorEngine.h / parallelSpeculationExecutorEngine.h |
 | 243 | draft_template_only | 62 | `full_site/api/pxr_display_filter_adapter_8h_source.html` | 源码页面草稿：pxrDisplayFilterAdapter.h / pxrDisplayFilterAdapter.h |
 | 244 | draft_template_only | 62 | `full_site/api/riley_param_schema_8h_source.html` | 源码页面草稿：rileyParamSchema.h / rileyParamSchema.h |
@@ -59,6 +57,8 @@ Generated: 2026-06-04T23:47:43.515Z
 | 266 | draft_template_only | 66 | `full_site/api/usd_proc_page_front.html` | API 模块草稿：UsdProc: USD Schemas for Procedurals / UsdProc: USD Schemas for Procedurals |
 | 268 | draft_template_only | 66 | `full_site/api/usd_ri_page_front.html` | API 模块草稿：UsdRi: USD RenderMan Utilities / UsdRi: USD RenderMan Utilities |
 | 271 | draft_template_only | 66 | `full_site/api/usd_shaders_page_front.html` | API 模块草稿：UsdShaders: Definitions and Implementations of Usd* Shader Nodes / UsdShaders: Definitions and Implementations of Usd* Shader Nodes |
+| 272 | draft_template_only | 66 | `full_site/api/usd_skel_page_front.html` | API 模块草稿：UsdSkel: USD Skeleton Schema and API / UsdSkel: USD Skeleton Schema and API |
+| 277 | draft_template_only | 66 | `full_site/api/usddraco_page_front.html` | API 模块草稿：UsdDraco: Draco File Format Plugin / UsdDraco: Draco File Format Plugin |
 
 ## All Pages
 
@@ -298,11 +298,11 @@ Generated: 2026-06-04T23:47:43.515Z
 | 232 | draft_needs_translation | bilingual_draft | 256 | 13/10 | 0 | 0 | `full_site/api/namespacemembers_type.html` |
 | 233 | draft_needs_translation | bilingual_draft | 273 | 13/10 | 0 | 0 | `full_site/api/namespacemembers.html` |
 | 234 | draft_needs_translation | bilingual_draft | 230 | 13/10 | 0 | 0 | `full_site/api/namespaces.html` |
-| 235 | draft_template_only | bilingual_draft | 106 | 13/15 | 0 | 0 | `full_site/api/page__execution__system__design.html` |
-| 236 | draft_template_only | bilingual_draft | 110 | 14/16 | 0 | 0 | `full_site/api/page_ts_regression.html` |
-| 237 | draft_template_only | bilingual_draft | 126 | 18/20 | 0 | 0 | `full_site/api/page_ts_status.html` |
-| 238 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/page_ts_ts_test.html` |
-| 239 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/pages.html` |
+| 235 | draft_needs_translation | bilingual_draft | 315 | 24/21 | 0 | 0 | `full_site/api/page__execution__system__design.html` |
+| 236 | draft_needs_translation | bilingual_draft | 327 | 25/22 | 0 | 0 | `full_site/api/page_ts_regression.html` |
+| 237 | draft_needs_translation | bilingual_draft | 326 | 29/26 | 0 | 0 | `full_site/api/page_ts_status.html` |
+| 238 | draft_needs_translation | bilingual_draft | 257 | 13/10 | 0 | 0 | `full_site/api/page_ts_ts_test.html` |
+| 239 | draft_needs_translation | bilingual_draft | 336 | 13/10 | 0 | 0 | `full_site/api/pages.html` |
 | 240 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/parallel_speculation_executor_engine_8h_source.html` |
 | 241 | draft_template_only | bilingual_draft | 110 | 14/16 | 0 | 0 | `full_site/api/pcp_page_front.html` |
 | 242 | draft_template_only | bilingual_draft | 78 | 6/8 | 0 | 0 | `full_site/api/plug_page_front.html` |

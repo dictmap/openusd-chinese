@@ -2,6 +2,29 @@
 
 源页面：<https://openusd.org/release/api/index.html>
 
+## 第 186 轮：OpenExec/Ts/Related Pages 文档页精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `1a0cc1f`，本轮 5 个目标页均存在且均为 `draft_template_only`。
+- 本轮严格只处理 5 页：`full_site/api/page__execution__system__design.html`、`full_site/api/page_ts_regression.html`、`full_site/api/page_ts_status.html`、`full_site/api/page_ts_ts_test.html`、`full_site/api/pages.html`；没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_api_pages_batch_055.mjs`，为 5 页插入 `api-pages-quality-pass-055` 中文精修导读区块；每页包含页面用途、阅读重点、结构说明和术语对照，保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、链接和原英文摘录。
+- 本轮中文层覆盖：`OpenExec System Design` 的 compilation、scheduling、evaluation、Engine Architecture、Network、Schedulers、Data Managers、Executors 和 `EfLeafNode` 阅读路径；`Regressive Splines in USD` 的 Bezier parametric `{x=f(t), y=f(t)}`、regressive segments、anti-regression 和 authoring mode；`USD Anim Project Status` 的 IN DEVELOPMENT 状态、Mostly Complete、Still to Come、Hermite Evaluation、Attribute Value Resolution、usdview 与测试文档边界；`The TsTest Framework` 的 validate/graph/compare spline evaluations、backend、`tsTest_...`、`TsTest_Grapher`、`matplotlib` 和 baseline helper；`Related Pages` 的 Doxygen related pages 导航、Developer Guides、module front pages 与本地路由说明。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 115 / `draft_needs_translation` 283 / `good_bilingual` 8 变为 `draft_template_only` 110 / `draft_needs_translation` 288 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；本轮 5 页均可通过本地最终入口访问。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+- GitHub 同步：本轮验证通过后运行 `scripts/sync_openusd_to_github.ps1`，提交信息为 `OpenUSD bilingual round 186: OpenExec Ts related pages`。
+
+差距：
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是完整翻译每个 OpenExec 设计小节、Ts 状态条目、TsTest 细节或 Related Pages 中所有链接目标说明。
+- 全量仍有 110 个 `draft_template_only` 和 288 个 `draft_needs_translation`；Pcp/Plug/Sdf/Sdr 模块入口、tokens structs、部分文件页、API 类页和源码页仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理当前质量队列中仍为模板草稿的高价值 API 模块入口页：`pcp_page_front.html`、`plug_page_front.html`、`sdf_page_front.html`、`sdr_glslfx_page_front.html`、`sdr_page_front.html`。
+2. 对 Pcp、Plug、Sdf、SdrGlslfx、Sdr 补中文用途说明、模块边界、核心概念、阅读路径和术语对照，保留 API 名称、页面名、代码、属性名、类型名和链接原样。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证；验证通过后同步 GitHub，并记录分级变化与提交结果。
+
 ## 第 185 轮：Modules/Namespace 索引入口页精修
 已完成：
 

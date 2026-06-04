@@ -1,5 +1,27 @@
 # 工作记录
 
+## 第 186 轮：OpenExec/Ts/Related Pages 文档页精修
+
+- 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `1a0cc1f`，本轮 5 个目标页均存在且均为 `draft_template_only`。
+- 本轮严格只处理 5 页：`full_site/api/page__execution__system__design.html`、`full_site/api/page_ts_regression.html`、`full_site/api/page_ts_status.html`、`full_site/api/page_ts_ts_test.html`、`full_site/api/pages.html`；没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_api_pages_batch_055.mjs`，每页新增 `api-pages-quality-pass-055` 中文精修导读区块，包含页面用途、阅读重点、结构说明和术语对照；保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、链接和原英文摘录。
+- 本轮中文层覆盖：OpenExec System Design 的 compilation/scheduling/evaluation 与 Engine Architecture；Regressive Splines 的 Bezier parametric 表示、regressive segments、anti-regression 和 authoring mode；USD Anim Project Status 的 IN DEVELOPMENT 状态、Mostly Complete/Still to Come 与 USD integration；TsTest Framework 的 spline evaluation 验证、绘图、比较、backend、`matplotlib` 和 baseline helper；Related Pages 的相关页面导航和本地路由说明。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 115 / `draft_needs_translation` 283 / `good_bilingual` 8 变为 `draft_template_only` 110 / `draft_needs_translation` 288 / `good_bilingual` 8。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+- GitHub 同步：验证通过后运行 `scripts/sync_openusd_to_github.ps1`，提交信息为 `OpenUSD bilingual round 186: OpenExec Ts related pages`。
+
+差距：
+- 本轮 5 页仍是 `draft_needs_translation`，不是完整翻译每个设计段落、状态项、测试框架细节或 Related Pages 的所有链接说明。
+- 全量仍有 110 个 `draft_template_only` 和 288 个 `draft_needs_translation`，后续需继续按每轮最多 5 页推进。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理 `full_site/api/pcp_page_front.html`、`full_site/api/plug_page_front.html`、`full_site/api/sdf_page_front.html`、`full_site/api/sdr_glslfx_page_front.html`、`full_site/api/sdr_page_front.html`。
+2. 对 Pcp、Plug、Sdf、SdrGlslfx、Sdr 模块入口补中文用途说明、模块边界、核心概念、阅读路径和术语对照。
+3. 保持本地链接策略，验证通过后同步 GitHub，并记录质量分级变化、验证结果和提交结果。
+
 ## 第 185 轮：Modules/Namespace 索引入口页精修
 已完成：
 

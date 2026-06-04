@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-pages-quality-pass-055">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 The TsTest Framework 补充中文优先的用途说明、结构读法、概念边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、类型名、头文件名、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first purpose notes, structure-reading guidance, concept boundaries, and terminology for The TsTest Framework while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, type names, header names, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`The TsTest Framework` 描述 TsTest 测试框架，用于 validate、graph 和 compare spline evaluations；它既测试 Ts 本身，也可通过其他 backends 与外部引擎对比。</span></li>
+        <li><span class="zh">TsTest lives inside the Ts library；所有以 `tsTest`、`wrapTsTest` 或 `TsTest` 为前缀的文件都属于该框架。</span></li>
+        <li><span class="zh">Framework 类别包含 base implementation、data structures、generic evaluation interface 和 graphical output；`tsTest_Evaluator` 提供通用求值接口。</span></li>
+        <li><span class="zh">摘录中的 `tsTest_SampleTimes`、`tsTest_Types`、`TsTest_Grapher`、`tsTest_CompareBaseline` 分别服务采样时间、求值接口数据类型、图像输出和 baseline 对比。</span></li>
+        <li><span class="zh">`TsTest_Grapher` 依赖 Python `matplotlib`；阅读时应区分 C++/wrapper 数据结构、Python graph helper 和测试 baseline helper。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">TsTest：</span><span class="en">TsTest</span></li>
+        <li><span class="zh">样条求值：</span><span class="en">spline evaluation</span></li>
+        <li><span class="zh">后端：</span><span class="en">backend</span></li>
+        <li><span class="zh">基线：</span><span class="en">baseline</span></li>
+        <li><span class="zh">matplotlib：</span><span class="en">matplotlib</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-pages-quality-pass-055">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 OpenExec System Design 补充中文优先的用途说明、结构读法、概念边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、类型名、头文件名、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first purpose notes, structure-reading guidance, concept boundaries, and terminology for OpenExec System Design while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, type names, header names, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`OpenExec System Design` 是 OpenExec 设计说明页，解释一个通用 computation engine 如何从 authored scene description 和 registered definitions 编译 execution network。</span></li>
+        <li><span class="zh">页面结构按 Object Model、Computations、Phases of Execution、Engine Architecture 展开；其中执行阶段分为 Compilation、Scheduling、Evaluation。</span></li>
+        <li><span class="zh">官方摘录说明 OpenExec 用于 rigging、animation、layout、crowds、shading、lighting 和部分 simulation workflows；生产中已有 computations 包括 posed point positions、object visibility、bounding boxes。</span></li>
+        <li><span class="zh">Engine Architecture 部分的 Network、Schedulers、Data Managers、Executors 是理解系统实现的四个关键入口；`EfLeafNode` 链接提示底层节点实现细节。</span></li>
+        <li><span class="zh">阅读顺序建议：先看 guiding principles 和 Phases of Execution，再追踪 built-in computations、Plugin computations 和 `EfLeafNode`，避免把该页当作普通 API 函数索引。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">执行网络：</span><span class="en">execution network</span></li>
+        <li><span class="zh">编译：</span><span class="en">compilation</span></li>
+        <li><span class="zh">调度：</span><span class="en">scheduling</span></li>
+        <li><span class="zh">求值：</span><span class="en">evaluation</span></li>
+        <li><span class="zh">数据管理器：</span><span class="en">Data Managers</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
