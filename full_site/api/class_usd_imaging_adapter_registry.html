@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-039">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 UsdImagingAdapterRegistry Class Reference 补充中文优先的类职责、读取重点、关键属性/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, key attribute/method groups, and terminology for UsdImagingAdapterRegistry Class Reference while retaining English page names, class names, method names, attribute names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`UsdImagingAdapterRegistry` 是 PrimAdapter plug-ins 的 registry，用来查找并构造 USD Imaging 适配器。</span></li>
+        <li><span class="zh">英文摘录强调它保存的是 adapter factories，而不是 adapter instances；实际 adapter instances 通常通过 `ConstructAdapter()` 创建，并随 per-stage data 存放。</span></li>
+        <li><span class="zh">`ConstructAdapter()` 用于按 prim/type 构造 prim adapter；`ConstructAPISchemaAdapter()` 和 `ConstructKeylessAPISchemaAdapters()` 面向 API schema adapters。</span></li>
+        <li><span class="zh">`GetAdapterKeys()`、`GetAPISchemaAdapterKeys()`、`HasAdapter()`、`HasAPISchemaAdapter()` 用于查询 registry 中可用的 adapter key；`AreExternalPluginsEnabled()` 反映外部插件是否参与。</span></li>
+        <li><span class="zh">本页属于 USD Imaging 与 Hydra 交界处：它不直接渲染 prim，而是把 USD schema/type 映射到能向 imaging delegate/Hydra 提供数据的 adapter。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">PrimAdapter：</span><span class="en">PrimAdapter</span></li>
+        <li><span class="zh">adapter 工厂：</span><span class="en">adapter factory</span></li>
+        <li><span class="zh">adapter 实例：</span><span class="en">adapter instance</span></li>
+        <li><span class="zh">API schema adapter：</span><span class="en">API schema adapter</span></li>
+        <li><span class="zh">按 stage 保存的数据：</span><span class="en">per-stage data</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
