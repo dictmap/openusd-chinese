@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-038">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 PcpPropertyIndex Class Reference 补充中文优先的类职责、读取重点、相关 API 关系和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, related API context, and terminology for PcpPropertyIndex Class Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`PcpPropertyIndex` 是针对某个 property 的 composition index，用来汇总所有会给该 property 贡献 opinions 的 scene description sites。</span></li>
+        <li><span class="zh">英文摘录强调它遵循 composition semantics；因此阅读时应把它放在 Pcp 组合语义下理解，而不是把它当作单个 `SdfPropertySpec` 的简单列表。</span></li>
+        <li><span class="zh">核心成员包括 `GetPropertyRange()`、`GetNumLocalSpecs()`、`GetLocalErrors()`、`IsEmpty()` 和 `Swap()`，分别对应遍历贡献节点、统计本地 specs、查看局部错误、判断空索引和交换索引内容。</span></li>
+        <li><span class="zh">`PcpPropertyIterator` 是 friend，说明 property index 主要通过 iterator/range 访问贡献 opinions；后续完整翻译应继续补充 iterator 的顺序和错误传播语义。</span></li>
+        <li><span class="zh">本页应与上一轮已精修的 `PcpArc` 一起阅读：`PcpArc` 描述组合图中的边，`PcpPropertyIndex` 则面向某个 property 汇总组合后的 opinion 来源。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">property 组合索引：</span><span class="en">property index</span></li>
+        <li><span class="zh">意见 / authored opinion：</span><span class="en">opinion</span></li>
+        <li><span class="zh">场景描述站点：</span><span class="en">scene description site</span></li>
+        <li><span class="zh">组合语义：</span><span class="en">composition semantics</span></li>
+        <li><span class="zh">局部错误：</span><span class="en">local errors</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

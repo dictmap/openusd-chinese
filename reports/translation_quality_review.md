@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-04T19:10:46.742Z
+Generated: 2026-06-04T19:20:15.508Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-04T19:10:46.742Z
 
 ## Grade Counts
 
-- draft_template_only: 200
-- draft_needs_translation: 198
+- draft_template_only: 195
+- draft_needs_translation: 203
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -92,11 +92,11 @@ Generated: 2026-06-04T19:10:46.742Z
 | 26 | draft_needs_translation | bilingual_draft | 344 | 37/34 | 0 | 0 | `full_site/api/class_hgi_g_l_graphics_cmds.html` |
 | 27 | draft_needs_translation | bilingual_draft | 312 | 24/21 | 0 | 0 | `full_site/api/class_pcp_arc.html` |
 | 28 | draft_needs_translation | bilingual_draft | 375 | 29/26 | 0 | 0 | `full_site/api/class_pcp_error_unresolved_prim_path.html` |
-| 29 | draft_template_only | bilingual_draft | 118 | 16/18 | 0 | 0 | `full_site/api/class_pcp_property_index.html` |
-| 30 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/class_sdf_children_view.html` |
-| 31 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/class_sdf_layer.html` |
-| 32 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/class_sdf_path.html` |
-| 33 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/class_sdf_prim_spec.html` |
+| 29 | draft_needs_translation | bilingual_draft | 365 | 27/24 | 0 | 0 | `full_site/api/class_pcp_property_index.html` |
+| 30 | draft_needs_translation | bilingual_draft | 413 | 40/37 | 0 | 0 | `full_site/api/class_sdf_children_view.html` |
+| 31 | draft_needs_translation | bilingual_draft | 392 | 40/37 | 0 | 0 | `full_site/api/class_sdf_layer.html` |
+| 32 | draft_needs_translation | bilingual_draft | 395 | 40/37 | 0 | 0 | `full_site/api/class_sdf_path.html` |
+| 33 | draft_needs_translation | bilingual_draft | 367 | 40/37 | 0 | 0 | `full_site/api/class_sdf_prim_spec.html` |
 | 34 | draft_template_only | bilingual_draft | 146 | 23/25 | 0 | 0 | `full_site/api/class_sdf_usdz_file_format.html` |
 | 35 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/class_sdr_shader_property.html` |
 | 36 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/class_tf_dense_hash_map.html` |

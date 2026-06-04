@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-038">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 SdfPrimSpec Class Reference 补充中文优先的类职责、读取重点、相关 API 关系和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, related API context, and terminology for SdfPrimSpec Class Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`SdfPrimSpec` 表示 `SdfLayer` 中的 prim description；每个 `SdfPrimSpec` 都定义在某个 layer 内，并通过它在该 layer namespace hierarchy 中的 `SdfPath` 标识。</span></li>
+        <li><span class="zh">英文摘录说明 `SdfPrimSpec` 可通过 `New()` 创建：既可以作为 layer 的 root-level prim，也可以作为其他 `SdfPrimSpec` 的 child 来扩展 hierarchy。</span></li>
+        <li><span class="zh">`SdfCreatePrimInLayer()` 可用于快速创建 primSpecs hierarchy；这类 helper 适合 authoring 脚本中批量补齐中间 prim 路径。</span></li>
+        <li><span class="zh">页面结构包含 `Public Types`、member functions 和相关 links，阅读重点通常是 specifier/typeName、attributes、relationships、metadata、nameChildren、propertyChildren 等 authored 数据。</span></li>
+        <li><span class="zh">要把 `SdfPrimSpec` 与运行时 `UsdPrim` 区分开：前者是某个 layer 中的底层 authored spec，后者是 stage composition 后面向用户的 prim 视图。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">prim 描述：</span><span class="en">prim description</span></li>
+        <li><span class="zh">根层级 prim：</span><span class="en">root-level prim</span></li>
+        <li><span class="zh">命名空间层级：</span><span class="en">namespace hierarchy</span></li>
+        <li><span class="zh">已编写 spec：</span><span class="en">authored spec</span></li>
+        <li><span class="zh">UsdPrim：</span><span class="en">UsdPrim</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

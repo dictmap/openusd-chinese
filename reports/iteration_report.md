@@ -2,6 +2,29 @@
 
 源页面：<https://openusd.org/release/api/index.html>
 
+## 第 169 轮：Pcp/Sdf class 页面精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口、Git 状态和进度记录，确认本轮 5 个 Pcp/Sdf class 目标页均存在且均为 `draft_template_only`。
+- 本轮严格只处理 5 页：`full_site/api/class_pcp_property_index.html`、`full_site/api/class_sdf_children_view.html`、`full_site/api/class_sdf_layer.html`、`full_site/api/class_sdf_path.html`、`full_site/api/class_sdf_prim_spec.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_class_batch_038.mjs`，为 5 页插入 `api-class-quality-pass-038` 中文精修导读区块；每页包含类职责、读取重点、相关 API 关系、关键方法/成员分组和术语对照，保留英文页面名、类名、方法名、template 参数、代码、链接和原英文摘录。
+- 本轮中文层覆盖 `PcpPropertyIndex` 的 property composition index、opinion 来源和 `PcpPropertyIterator` 访问语义；`SdfChildrenView` 的 `_ChildPolicy`、`_Predicate`、`_Adapter` template view 角色；`SdfLayer` 的 scene description container、`SdfData` data model、File I/O、metadata 和 muting 职责；`SdfPath` 的 storage key、namespace identity、absolute/relative path 和 relationship target 语义；`SdfPrimSpec` 的 layer 内 prim description、root-level prim、child hierarchy 和 `UsdPrim` 区分。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 200 / `draft_needs_translation` 198 / `good_bilingual` 8 变为 `draft_template_only` 195 / `draft_needs_translation` 203 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+- GitHub 同步：本轮验证通过后运行 `scripts/sync_openusd_to_github.ps1`，提交信息为 `OpenUSD bilingual round 169: PcpPropertyIndex Sdf core classes`。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是完整翻译每个构造函数、方法、参数、返回值和继承关系。
+- 全量仍有 195 个 `draft_template_only` 和 203 个 `draft_needs_translation`；大量 Usd/UsdGeom/UsdImaging/UsdLux/API class 页面、源码页和部分草稿仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理当前质量队列中的 `class_usd_attribute_limits.html`、`class_usd_geom_basis_curves.html`、`class_usd_geom_mesh.html`、`class_usd_geom_primvars_a_p_i.html`、`class_usd_imaging_adapter_registry.html`。
+2. 对 Usd/UsdGeom/UsdImaging class 页面补中文用途说明、schema 或 adapter 职责、关键属性/方法分组、术语对照和局部结构说明，保留类名、方法名、属性名、template 参数、代码和链接原样。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证；验证通过后同步 GitHub，并记录分级变化与提交结果。
+
 ## 第 168 轮：Hd/Hdx/Hgi/Pcp class 页面精修
 已完成：
 
