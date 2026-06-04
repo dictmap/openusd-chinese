@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>页面草稿：Referencing Layers / Referencing Layers</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    header{background:#17202a;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
+    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>页面草稿：Referencing Layers / Referencing Layers</h1>
+    <div class="meta">https://openusd.org/release/tut_referencing_layers.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
+      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+    </section>
+    <section data-cn-refinement="release-tutorial-quality-pass-001">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Referencing Layers 补充中文优先的阅读路径和术语说明；英文页面名、链接、代码和原文摘录继续保留，用于和官方文档一一对应。</p>
+      <p class="en">This section adds Chinese-first reading guidance for Referencing Layers while retaining the English page name, links, code, and source excerpts for one-to-one comparison with the official documentation.</p>
+      <ul>
+        <li><span class="zh">本教程演示把前面教程创建的 Stage 引用到新的 Stage 中。核心概念是 reference composition arc：当前 prim 可以把另一个 layer 或 prim 的内容组合进来。</span></li>
+        <li><span class="zh">引用不是复制文件内容，而是在 composition 阶段把外部场景描述组合成最终结果。这让资产可以复用、分层发布，并允许上层在不修改源资产的情况下覆盖意见。</span></li>
+        <li><span class="zh">HelloWorld.usda 和 referencingLayers 示例代码用于展示最小工作流：打开或创建 layer，建立引用，再检查组合后的 Stage 是否包含目标 prim。</span></li>
+        <li><span class="zh">后续阅读 payload、sublayer、variant 和 inherits 时，都应把 reference 当作 composition arc 家族中的一员来理解。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">引用：</span><span class="en">reference</span></li>
+        <li><span class="zh">组合弧：</span><span class="en">composition arc</span></li>
+        <li><span class="zh">层：</span><span class="en">layer</span></li>
+        <li><span class="zh">舞台：</span><span class="en">Stage</span></li>
+        <li><span class="zh">覆盖意见：</span><span class="en">override</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 1 级标题：Referencing Layers</span><span class="en">Referencing Layers</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">This tutorial walks you through referencing the stage that we created in the previous tutorials into a new stage. The HelloWorld.usda that we will use as our starting point and all the code for this exercise is in the extras/usd/tutorials/referencingLayers folder.</p>
+<p class="en">Author the defaultPrim metadata on the layer that you want to reference. This is the name of the root prim that will be referenced. If it is not authored here, then the referencing client must specify the root prim path it wants from the referenced layer. We also want to author a transformation on the default root prim, so that we can override it later; to do this we use the UsdGeomXformCommonAPI schema , which we will discuss further, later.</p>
+<p class="en">Copy extras/usd/tutorials/referencingLayers/HelloWorld.usda to a folder of your choice. In that folder, create and run a new Python script with the following code:</p>
+    </section>
+<section>
+      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
+<pre><code>from pxr import Usd , UsdGeom stage = Usd . Stage . Open ( 'HelloWorld.usda' ) hello = stage . GetPrimAtPath ( '/hello' ) stage . SetDefaultPrim ( hello ) UsdGeom . XformCommonAPI ( hello ) . SetTranslate (( 4 , 5 , 6 )) print ( stage . GetRootLayer () . ExportToString ()) stage . GetRootLayer () . Save ()</code></pre>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Configure your Environment</a></li>
+<li><a href="https://github.com/PixarAnimationStudios/OpenUSD/tree/v26.05">USD 26.05</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_xform_common_a_p_i.html&amp;title=UsdGeomXformCommonAPI+schema" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_xform_common_a_p_i.html">UsdGeomXformCommonAPI schema</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/tut_referencing_layers.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

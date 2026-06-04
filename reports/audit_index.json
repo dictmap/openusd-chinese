@@ -1,0 +1,592 @@
+{
+  "generated_at": "2026-06-04T18:35:54.824Z",
+  "root": "C:\\Users\\robot\\Documents\\成长学习库\\openusd_api_cn_repro",
+  "scope_note": "Report index for the bounded OpenUSD bilingual reproduction. It indexes the fixed audit chain and validation artifacts without adding pages, mirroring more official content, or storing official body text.",
+  "official_scope_urls": [
+    "https://openusd.org/release/index.html",
+    "https://openusd.org/release/api/index.html"
+  ],
+  "entries": [
+    {
+      "key": "chinese_first_order_contract",
+      "purpose": "Checks that Chinese labels/explanations precede the retained English originals across all local pages.",
+      "command": "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_chinese_first_order_contract.mjs",
+      "script": {
+        "exists": true,
+        "relative_path": "scripts/audit_openusd_chinese_first_order_contract.mjs",
+        "size_bytes": 8043,
+        "modified_at": "2026-06-03T14:27:23.276Z"
+      },
+      "json_report": {
+        "exists": true,
+        "relative_path": "reports/chinese_first_order_contract_audit.json",
+        "size_bytes": 5818,
+        "modified_at": "2026-06-03T18:54:16.729Z"
+      },
+      "md_report": {
+        "exists": true,
+        "relative_path": "reports/chinese_first_order_contract_audit.md",
+        "size_bytes": 1096,
+        "modified_at": "2026-06-03T18:54:16.730Z"
+      },
+      "parsed": true,
+      "passed": true,
+      "selected_counts": {
+        "pages_checked": 9,
+        "ordered_cn_en_term_pairs": 881,
+        "ordered_zh_en_pairs": 354,
+        "pages_with_chinese_first_layer": 9
+      }
+    },
+    {
+      "key": "entry_label_contract",
+      "purpose": "Checks key release/API entry hrefs, Chinese labels, and original English names.",
+      "command": "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_entry_label_contract.mjs",
+      "script": {
+        "exists": true,
+        "relative_path": "scripts/audit_openusd_entry_label_contract.mjs",
+        "size_bytes": 9397,
+        "modified_at": "2026-06-03T13:50:35.349Z"
+      },
+      "json_report": {
+        "exists": true,
+        "relative_path": "reports/entry_label_contract_audit.json",
+        "size_bytes": 5591,
+        "modified_at": "2026-06-03T18:54:16.824Z"
+      },
+      "md_report": {
+        "exists": true,
+        "relative_path": "reports/entry_label_contract_audit.md",
+        "size_bytes": 694,
+        "modified_at": "2026-06-03T18:54:16.825Z"
+      },
+      "parsed": true,
+      "passed": true,
+      "selected_counts": {
+        "release_entry_links_bilingual": 8,
+        "api_entry_cards_bilingual": 3,
+        "adjacent_title_pairs_bilingual": 6
+      }
+    },
+    {
+      "key": "entry_structure_parity",
+      "purpose": "Checks Sphinx/Doxygen shell parity, release navigation groups, API entry links, and adjacent-page shells.",
+      "command": "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_entry_structure_parity.mjs",
+      "script": {
+        "exists": true,
+        "relative_path": "scripts/audit_openusd_entry_structure_parity.mjs",
+        "size_bytes": 10073,
+        "modified_at": "2026-06-03T14:20:07.009Z"
+      },
+      "json_report": {
+        "exists": true,
+        "relative_path": "reports/entry_structure_parity_audit.json",
+        "size_bytes": 7898,
+        "modified_at": "2026-06-03T18:54:16.919Z"
+      },
+      "md_report": {
+        "exists": true,
+        "relative_path": "reports/entry_structure_parity_audit.md",
+        "size_bytes": 995,
+        "modified_at": "2026-06-03T18:54:16.920Z"
+      },
+      "parsed": true,
+      "passed": true,
+      "selected_counts": {
+        "release_local_markers": 11,
+        "api_local_markers": 16,
+        "api_entry_links_local": 3,
+        "adjacent_pages_passed": 6
+      }
+    },
+    {
+      "key": "primary_entry_coverage",
+      "purpose": "Checks the two requested primary entry pages and the local API redirect.",
+      "command": "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_primary_entry_coverage.mjs",
+      "script": {
+        "exists": true,
+        "relative_path": "scripts/audit_openusd_primary_entry_coverage.mjs",
+        "size_bytes": 8420,
+        "modified_at": "2026-06-03T18:10:49.531Z"
+      },
+      "json_report": {
+        "exists": true,
+        "relative_path": "reports/primary_entry_coverage.json",
+        "size_bytes": 5726,
+        "modified_at": "2026-06-03T18:54:17.003Z"
+      },
+      "md_report": {
+        "exists": true,
+        "relative_path": "reports/primary_entry_coverage.md",
+        "size_bytes": 886,
+        "modified_at": "2026-06-03T18:54:17.004Z"
+      },
+      "parsed": true,
+      "passed": true,
+      "selected_counts": {
+        "pages": 3,
+        "release_cn_terms": 321,
+        "api_entry_cards": 3
+      }
+    },
+    {
+      "key": "official_entry_freshness",
+      "purpose": "Fetches only the two official entry URLs and checks live markers against local outputs.",
+      "command": "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_official_entry_freshness.mjs",
+      "script": {
+        "exists": true,
+        "relative_path": "scripts/audit_openusd_official_entry_freshness.mjs",
+        "size_bytes": 9935,
+        "modified_at": "2026-06-03T13:34:33.550Z"
+      },
+      "json_report": {
+        "exists": true,
+        "relative_path": "reports/official_entry_freshness_audit.json",
+        "size_bytes": 5418,
+        "modified_at": "2026-06-03T18:54:18.373Z"
+      },
+      "md_report": {
+        "exists": true,
+        "relative_path": "reports/official_entry_freshness_audit.md",
+        "size_bytes": 960,
+        "modified_at": "2026-06-03T18:54:18.373Z"
+      },
+      "parsed": true,
+      "passed": true,
+      "selected_counts": {
+        "official_urls": 2,
+        "live_pages_ok": 2,
+        "failed_checks": 0
+      }
+    },
+    {
+      "key": "responsive_layout_contract",
+      "purpose": "Checks viewport metadata, local bilingual CSS attachment, and mobile layout contracts.",
+      "command": "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_responsive_layout_contract.mjs",
+      "script": {
+        "exists": true,
+        "relative_path": "scripts/audit_openusd_responsive_layout_contract.mjs",
+        "size_bytes": 8429,
+        "modified_at": "2026-06-03T18:17:56.859Z"
+      },
+      "json_report": {
+        "exists": true,
+        "relative_path": "reports/responsive_layout_contract_audit.json",
+        "size_bytes": 5704,
+        "modified_at": "2026-06-03T18:54:18.554Z"
+      },
+      "md_report": {
+        "exists": true,
+        "relative_path": "reports/responsive_layout_contract_audit.md",
+        "size_bytes": 806,
+        "modified_at": "2026-06-03T18:54:18.556Z"
+      },
+      "parsed": true,
+      "passed": true,
+      "selected_counts": {
+        "pages_checked": 9,
+        "pages_with_viewport": 9,
+        "responsive_css_files": 2
+      }
+    },
+    {
+      "key": "page_metadata_contract",
+      "purpose": "Checks zh-CN metadata, bilingual titles, scope notes, and preservation-policy markers.",
+      "command": "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_page_metadata_contract.mjs",
+      "script": {
+        "exists": true,
+        "relative_path": "scripts/audit_openusd_page_metadata_contract.mjs",
+        "size_bytes": 10388,
+        "modified_at": "2026-06-03T14:12:49.125Z"
+      },
+      "json_report": {
+        "exists": true,
+        "relative_path": "reports/page_metadata_contract_audit.json",
+        "size_bytes": 6574,
+        "modified_at": "2026-06-03T18:54:18.457Z"
+      },
+      "md_report": {
+        "exists": true,
+        "relative_path": "reports/page_metadata_contract_audit.md",
+        "size_bytes": 1292,
+        "modified_at": "2026-06-03T18:54:18.457Z"
+      },
+      "parsed": true,
+      "passed": true,
+      "selected_counts": {
+        "pages_checked": 9,
+        "zh_cn_lang_pages": 9,
+        "bilingual_or_redirect_titles": 9,
+        "chinese_english_layer_pages": 9
+      }
+    },
+    {
+      "key": "term_consistency",
+      "purpose": "Checks critical bilingual terms, preserved API/tool names, and forbidden translations.",
+      "command": "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_term_consistency.mjs",
+      "script": {
+        "exists": true,
+        "relative_path": "scripts/audit_openusd_term_consistency.mjs",
+        "size_bytes": 7827,
+        "modified_at": "2026-06-03T18:01:29.706Z"
+      },
+      "json_report": {
+        "exists": true,
+        "relative_path": "reports/term_consistency_audit.json",
+        "size_bytes": 7415,
+        "modified_at": "2026-06-03T18:54:18.648Z"
+      },
+      "md_report": {
+        "exists": true,
+        "relative_path": "reports/term_consistency_audit.md",
+        "size_bytes": 679,
+        "modified_at": "2026-06-03T18:54:18.648Z"
+      },
+      "parsed": true,
+      "passed": true,
+      "selected_counts": {
+        "pages": 9,
+        "term_pairs": 14,
+        "preserved_names": 13
+      }
+    },
+    {
+      "key": "navigation_coverage",
+      "purpose": "Checks release navigation groups, adjacent links, API navigation assets, and API entry links.",
+      "command": "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_navigation_coverage.mjs",
+      "script": {
+        "exists": true,
+        "relative_path": "scripts/audit_openusd_navigation_coverage.mjs",
+        "size_bytes": 8002,
+        "modified_at": "2026-06-03T18:23:33.874Z"
+      },
+      "json_report": {
+        "exists": true,
+        "relative_path": "reports/navigation_coverage_audit.json",
+        "size_bytes": 4730,
+        "modified_at": "2026-06-03T18:54:18.731Z"
+      },
+      "md_report": {
+        "exists": true,
+        "relative_path": "reports/navigation_coverage_audit.md",
+        "size_bytes": 602,
+        "modified_at": "2026-06-03T18:54:18.732Z"
+      },
+      "parsed": true,
+      "passed": true,
+      "selected_counts": {
+        "release_adjacent_links_present": 5,
+        "api_navigation_assets_present": 6,
+        "api_entry_links_present": 3
+      }
+    },
+    {
+      "key": "source_provenance",
+      "purpose": "Checks manifest entries, official URLs, source snapshots, local outputs, and generators.",
+      "command": "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_source_provenance.mjs",
+      "script": {
+        "exists": true,
+        "relative_path": "scripts/audit_openusd_source_provenance.mjs",
+        "size_bytes": 7484,
+        "modified_at": "2026-06-03T13:02:05.811Z"
+      },
+      "json_report": {
+        "exists": true,
+        "relative_path": "reports/source_provenance_audit.json",
+        "size_bytes": 5842,
+        "modified_at": "2026-06-03T18:54:18.835Z"
+      },
+      "md_report": {
+        "exists": true,
+        "relative_path": "reports/source_provenance_audit.md",
+        "size_bytes": 582,
+        "modified_at": "2026-06-03T18:54:18.837Z"
+      },
+      "parsed": true,
+      "passed": true,
+      "selected_counts": {
+        "entries": 8,
+        "primary_scope_entries": 2,
+        "active_adjacent_scope_entries": 6
+      }
+    },
+    {
+      "key": "style_asset_contract",
+      "purpose": "Checks Doxygen/Sphinx assets, local bilingual CSS, and page asset markers.",
+      "command": "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_style_asset_contract.mjs",
+      "script": {
+        "exists": true,
+        "relative_path": "scripts/audit_openusd_style_asset_contract.mjs",
+        "size_bytes": 8603,
+        "modified_at": "2026-06-03T13:17:27.106Z"
+      },
+      "json_report": {
+        "exists": true,
+        "relative_path": "reports/style_asset_contract_audit.json",
+        "size_bytes": 8833,
+        "modified_at": "2026-06-03T18:54:19.025Z"
+      },
+      "md_report": {
+        "exists": true,
+        "relative_path": "reports/style_asset_contract_audit.md",
+        "size_bytes": 576,
+        "modified_at": "2026-06-03T18:54:19.027Z"
+      },
+      "parsed": true,
+      "passed": true,
+      "selected_counts": {
+        "doxygen_assets": 19,
+        "sphinx_assets": 17,
+        "release_css_selectors": 7,
+        "api_css_selectors": 7
+      }
+    },
+    {
+      "key": "scope_boundary",
+      "purpose": "Checks the bounded local HTML, source snapshot, manifest, and report set.",
+      "command": "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_scope_boundaries.mjs",
+      "script": {
+        "exists": true,
+        "relative_path": "scripts/audit_openusd_scope_boundaries.mjs",
+        "size_bytes": 7522,
+        "modified_at": "2026-06-04T08:47:33.357Z"
+      },
+      "json_report": {
+        "exists": true,
+        "relative_path": "reports/scope_boundary_audit.json",
+        "size_bytes": 5709,
+        "modified_at": "2026-06-04T08:48:27.329Z"
+      },
+      "md_report": {
+        "exists": true,
+        "relative_path": "reports/scope_boundary_audit.md",
+        "size_bytes": 753,
+        "modified_at": "2026-06-04T08:48:27.331Z"
+      },
+      "parsed": true,
+      "passed": true,
+      "selected_counts": {
+        "html_pages": 10,
+        "source_snapshots": 8,
+        "primary_scope_entries": 2,
+        "active_adjacent_scope_entries": 6
+      }
+    },
+    {
+      "key": "link_audit",
+      "purpose": "Classifies local resources, external links, out-of-scope official relative links, and anchors.",
+      "command": "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_repro_links.mjs",
+      "script": {
+        "exists": true,
+        "relative_path": "scripts/audit_openusd_repro_links.mjs",
+        "size_bytes": 4478,
+        "modified_at": "2026-06-03T10:44:28.713Z"
+      },
+      "json_report": {
+        "exists": true,
+        "relative_path": "reports/link_audit.json",
+        "size_bytes": 70755,
+        "modified_at": "2026-06-03T18:54:19.933Z"
+      },
+      "md_report": {
+        "exists": true,
+        "relative_path": "reports/link_audit.md",
+        "size_bytes": 723,
+        "modified_at": "2026-06-03T18:54:19.935Z"
+      },
+      "parsed": true,
+      "passed": true,
+      "selected_counts": {
+        "local_exists": 343,
+        "external": 62,
+        "official_relative_out_of_scope": 3340
+      }
+    },
+    {
+      "key": "http_preview",
+      "purpose": "Serves local output over HTTP and checks pages plus CSS/JS/image/font resources.",
+      "command": "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_http_preview.mjs",
+      "script": {
+        "exists": true,
+        "relative_path": "scripts/audit_openusd_http_preview.mjs",
+        "size_bytes": 8583,
+        "modified_at": "2026-06-03T18:17:36.753Z"
+      },
+      "json_report": {
+        "exists": true,
+        "relative_path": "reports/http_preview_audit.json",
+        "size_bytes": 4066,
+        "modified_at": "2026-06-03T18:54:20.449Z"
+      },
+      "md_report": {
+        "exists": true,
+        "relative_path": "reports/http_preview_audit.md",
+        "size_bytes": 1241,
+        "modified_at": "2026-06-03T18:54:20.451Z"
+      },
+      "parsed": true,
+      "passed": true,
+      "selected_counts": {
+        "pages": 9,
+        "local_assets_checked": 141
+      }
+    },
+    {
+      "key": "full_draft_preview",
+      "purpose": "Serves the project root over HTTP and checks every bilingual_draft page plus final HTML entry links.",
+      "command": "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_full_draft_preview.mjs",
+      "script": {
+        "exists": true,
+        "relative_path": "scripts/audit_openusd_full_draft_preview.mjs",
+        "size_bytes": 8552,
+        "modified_at": "2026-06-03T19:45:24.005Z"
+      },
+      "json_report": {
+        "exists": true,
+        "relative_path": "reports/full_draft_preview_audit.json",
+        "size_bytes": 179626,
+        "modified_at": "2026-06-04T18:33:37.942Z"
+      },
+      "md_report": {
+        "exists": true,
+        "relative_path": "reports/full_draft_preview_audit.md",
+        "size_bytes": 30974,
+        "modified_at": "2026-06-04T18:33:37.947Z"
+      },
+      "parsed": true,
+      "passed": true,
+      "selected_counts": {
+        "draft_pages": 398,
+        "pages_checked": 398,
+        "final_entry_links": 398,
+        "failed_pages": 0
+      }
+    },
+    {
+      "key": "translation_quality",
+      "purpose": "Classifies every local page by bilingual translation depth, template-only draft risk, bad-encoding risk, and unexpected official links.",
+      "command": "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_translation_quality.mjs",
+      "script": {
+        "exists": true,
+        "relative_path": "scripts/audit_openusd_translation_quality.mjs",
+        "size_bytes": 9327,
+        "modified_at": "2026-06-04T09:09:58.108Z"
+      },
+      "json_report": {
+        "exists": true,
+        "relative_path": "reports/translation_quality_review.json",
+        "size_bytes": 686555,
+        "modified_at": "2026-06-04T18:33:30.875Z"
+      },
+      "md_report": {
+        "exists": true,
+        "relative_path": "reports/translation_quality_review.md",
+        "size_bytes": 54384,
+        "modified_at": "2026-06-04T18:33:30.878Z"
+      },
+      "parsed": true,
+      "passed": true,
+      "selected_counts": {
+        "total_pages": 406
+      }
+    },
+    {
+      "key": "validation",
+      "purpose": "Final local structure, content, report, and fixed-chain validation.",
+      "command": "powershell -ExecutionPolicy Bypass -File .\\openusd_api_cn_repro\\scripts\\validate_openusd_api_repro.ps1",
+      "script": {
+        "exists": true,
+        "relative_path": "scripts/validate_openusd_api_repro.ps1",
+        "size_bytes": 45968,
+        "modified_at": "2026-06-04T08:49:49.300Z"
+      },
+      "json_report": {
+        "exists": true,
+        "relative_path": "reports/validation_report.json",
+        "size_bytes": 48236,
+        "modified_at": "2026-06-04T18:34:40.070Z"
+      },
+      "md_report": {
+        "exists": true,
+        "relative_path": null
+      },
+      "parsed": true,
+      "passed": true,
+      "selected_counts": {
+        "required_check_count": 281,
+        "failed_check_count": 0
+      }
+    }
+  ],
+  "counts": {
+    "audit_entries": 16,
+    "total_entries": 17,
+    "audit_scripts_present": 16,
+    "audit_json_reports_present": 16,
+    "audit_markdown_reports_present": 16,
+    "audit_reports_passed": 16,
+    "validation_required_checks": 281,
+    "validation_failed_checks": 0,
+    "checks": 7,
+    "failed_checks": 0
+  },
+  "checks": [
+    {
+      "check": "report_index:all_audit_scripts_exist",
+      "passed": true,
+      "details": {
+        "missing_scripts": []
+      }
+    },
+    {
+      "check": "report_index:all_audit_json_reports_exist",
+      "passed": true,
+      "details": {
+        "missing_reports": []
+      }
+    },
+    {
+      "check": "report_index:all_audit_markdown_reports_exist",
+      "passed": true,
+      "details": {
+        "missing_reports": []
+      }
+    },
+    {
+      "check": "report_index:all_audits_passed",
+      "passed": true,
+      "details": {
+        "failed_audits": []
+      }
+    },
+    {
+      "check": "report_index:validation_report_ready",
+      "passed": true,
+      "details": {
+        "validation": {
+          "required_check_count": 281,
+          "failed_check_count": 0
+        }
+      }
+    },
+    {
+      "check": "report_index:fixed_chain_size_ready",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "check": "report_index:scope_counts_still_bounded",
+      "passed": true,
+      "details": {
+        "scope_boundary": {
+          "html_pages": 10,
+          "source_snapshots": 8,
+          "primary_scope_entries": 2,
+          "active_adjacent_scope_entries": 6
+        }
+      }
+    }
+  ],
+  "failed_checks": [],
+  "passed": true
+}

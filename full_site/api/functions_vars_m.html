@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables</h1>
+    <div class="meta">https://openusd.org/release/api/functions_vars_m.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section data-cn-refinement="api-functions-vars-quality-pass-026">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Variables - M 补充中文优先的变量索引用法、模块边界和术语对照；英文页面名、API 符号、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first variable-index notes, module boundaries, and terminology for Class Members - Variables - M while retaining English page names, API symbols, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">functions_vars_m.html 是变量索引 M 段，覆盖 PcpDependency/PcpArc、VdfScheduleInput、Hydra display/repr/AOV、UsdRenderSpec、UsdPhysics shape/joint/collision group、SdfLayerHints 和多组 schema token。</span></li>
+        <li><span class="zh">PcpDependency、PcpArc、PcpCulledDependency 与 PcpErrorInvalidAuthoredRelocation 是 composition 依赖、arc 和 relocation 诊断相关入口；它们应与 render/physics token 分开阅读。</span></li>
+        <li><span class="zh">HdGeomSubset、HdDisplayStyle、HdReprSelector、HdAovDescriptor、HdRenderBufferDescriptor 和 SdrShaderNodeDiscoveryResult 指向 Hydra 表示、AOV、render buffer 与 shader discovery。</span></li>
+        <li><span class="zh">UsdPhysicsShapeDesc、UsdPhysicsDistanceJointDesc、UsdPhysicsMeshShapeDesc、UsdPhysicsCollisionGroupDesc 与 UsdSkelBakeSkinningParms 说明本页也跨越 physics shape/joint、collision group 和 skel bake skinning。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">组合弧：</span><span class="en">composition arc</span></li>
+        <li><span class="zh">层提示：</span><span class="en">layer hints</span></li>
+        <li><span class="zh">表示选择器：</span><span class="en">repr selector</span></li>
+        <li><span class="zh">稀疏输出遍历器：</span><span class="en">sparse output traverser</span></li>
+        <li><span class="zh">UTF-8 码点：</span><span class="en">UTF-8 code point</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 3 级结构：- m -</span><span class="en">- m -</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">Index entries include: UsdHydraTokensType; PcpDependency; PcpArc; PcpCulledDependency; UsdVolTokensType; UsdShadeTokensType; UsdRenderTokensType; UsdLuxTokensType; HdGeomSubset; HdDisplayStyle; UsdPhysicsShapeDesc; UsdMtlxTokensType; UsdRiTokensType; HdReprSelector; UsdPhysicsDistanceJointDesc; ConfigBase.</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_hydra_tokens_type.html&amp;title=UsdHydraTokensType" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_hydra_tokens_type.html">UsdHydraTokensType</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_pcp_dependency.html&amp;title=PcpDependency" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_pcp_dependency.html">PcpDependency</a></li>
+<li><a href="class_pcp_arc.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_pcp_arc.html">PcpArc</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_pcp_culled_dependency.html&amp;title=PcpCulledDependency" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_pcp_culled_dependency.html">PcpCulledDependency</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_vol_tokens_type.html&amp;title=UsdVolTokensType" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_vol_tokens_type.html">UsdVolTokensType</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fschedule_node_8h.html&amp;title=VdfScheduleInput" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/schedule_node_8h.html">VdfScheduleInput</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_shade_tokens_type.html&amp;title=UsdShadeTokensType" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_shade_tokens_type.html">UsdShadeTokensType</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fusd_render_2spec_8h.html&amp;title=UsdRenderSpec" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/usd_render_2spec_8h.html">UsdRenderSpec</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_render_tokens_type.html&amp;title=UsdRenderTokensType" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_render_tokens_type.html">UsdRenderTokensType</a></li>
+<li><a href="struct_usd_lux_tokens_type.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/struct_usd_lux_tokens_type.html">UsdLuxTokensType</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_hd_geom_subset.html&amp;title=HdGeomSubset" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_hd_geom_subset.html">HdGeomSubset</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_hd_display_style.html&amp;title=HdDisplayStyle" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_hd_display_style.html">HdDisplayStyle</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_physics_shape_desc.html&amp;title=UsdPhysicsShapeDesc" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_physics_shape_desc.html">UsdPhysicsShapeDesc</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_mtlx_tokens_type.html&amp;title=UsdMtlxTokensType" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_mtlx_tokens_type.html">UsdMtlxTokensType</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_ri_tokens_type.html&amp;title=UsdRiTokensType" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_ri_tokens_type.html">UsdRiTokensType</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_repr_selector.html&amp;title=HdReprSelector" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_repr_selector.html">HdReprSelector</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_physics_distance_joint_desc.html&amp;title=UsdPhysicsDistanceJointDesc" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_physics_distance_joint_desc.html">UsdPhysicsDistanceJointDesc</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclasspxr___c_l_i_1_1_c_l_i_1_1_config_base.html&amp;title=ConfigBase" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/classpxr___c_l_i_1_1_c_l_i_1_1_config_base.html">ConfigBase</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_utf8_code_point.html&amp;title=TfUtf8CodePoint" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_utf8_code_point.html">TfUtf8CodePoint</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf_sparse_output_traverser.html&amp;title=VdfSparseOutputTraverser" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf_sparse_output_traverser.html">VdfSparseOutputTraverser</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_media_tokens_type.html&amp;title=UsdMediaTokensType" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_media_tokens_type.html">UsdMediaTokensType</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_skel_bake_skinning_parms.html&amp;title=UsdSkelBakeSkinningParms" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_skel_bake_skinning_parms.html">UsdSkelBakeSkinningParms</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_physics_collision_group_desc.html&amp;title=UsdPhysicsCollisionGroupDesc" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_physics_collision_group_desc.html">UsdPhysicsCollisionGroupDesc</a></li>
+<li><a href="struct_usd_geom_tokens_type.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/struct_usd_geom_tokens_type.html">UsdGeomTokensType</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_physics_mesh_shape_desc.html&amp;title=UsdPhysicsMeshShapeDesc" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_physics_mesh_shape_desc.html">UsdPhysicsMeshShapeDesc</a></li>
+<li><a href="struct_usd_physics_tokens_type.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/struct_usd_physics_tokens_type.html">UsdPhysicsTokensType</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_pcp_error_invalid_authored_relocation.html&amp;title=PcpErrorInvalidAuthoredRelocation" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_pcp_error_invalid_authored_relocation.html">PcpErrorInvalidAuthoredRelocation</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_sdr_shader_node_discovery_result.html&amp;title=SdrShaderNodeDiscoveryResult" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_sdr_shader_node_discovery_result.html">SdrShaderNodeDiscoveryResult</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdf_layer_hints.html&amp;title=SdfLayerHints" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdf_layer_hints.html">SdfLayerHints</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_u_i_tokens_type.html&amp;title=UsdUITokensType" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_u_i_tokens_type.html">UsdUITokensType</a></li>
+<li><a href="classpxr___c_l_i_1_1_c_l_i_1_1_app.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/classpxr___c_l_i_1_1_c_l_i_1_1_app.html">App</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_tokens_type.html&amp;title=UsdTokensType" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_tokens_type.html">UsdTokensType</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclasspxr___c_l_i_1_1_c_l_i_1_1_option_base.html&amp;title=OptionBase%3C+CRTP+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/classpxr___c_l_i_1_1_c_l_i_1_1_option_base.html">OptionBase&lt; CRTP &gt;</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_hd_aov_descriptor.html&amp;title=HdAovDescriptor" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_hd_aov_descriptor.html">HdAovDescriptor</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_hd_render_buffer_descriptor.html&amp;title=HdRenderBufferDescriptor" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_hd_render_buffer_descriptor.html">HdRenderBufferDescriptor</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/functions_vars_m.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

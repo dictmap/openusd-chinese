@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API 模块草稿：Work: Multi-threaded Dispatch / Work: Multi-threaded Dispatch</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>API 模块草稿：Work: Multi-threaded Dispatch / Work: Multi-threaded Dispatch</h1>
+    <div class="meta">https://openusd.org/release/api/work_page_front.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 1 级结构：Work: Multi-threaded Dispatch</span><span class="en">Work: Multi-threaded Dispatch</span></li>
+<li><span class="zh">第 1 级结构：Summary</span><span class="en">Summary</span></li>
+<li><span class="zh">第 1 级结构：Initializing and Limiting Multithreading</span><span class="en">Initializing and Limiting Multithreading</span></li>
+<li><span class="zh">第 1 级结构：Simple &quot;Parallel For&quot; Example</span><span class="en">Simple &quot;Parallel For&quot; Example</span></li>
+<li><span class="zh">第 1 级结构：Providing an Alternate Work Implementation</span><span class="en">Providing an Alternate Work Implementation</span></li>
+<li><span class="zh">第 2 级结构：Parallel Algorithms API</span><span class="en">Parallel Algorithms API</span></li>
+<li><span class="zh">第 2 级结构：Concurrency Limiting API</span><span class="en">Concurrency Limiting API</span></li>
+<li><span class="zh">第 2 级结构：Dispatching Tasks API</span><span class="en">Dispatching Tasks API</span></li>
+<li><span class="zh">第 2 级结构：Caveats of an Alternate Work Backend.</span><span class="en">Caveats of an Alternate Work Backend.</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">Summary The work library is intended to simplify the use of multithreading in the context of our software ecosystem. This library is intended as a thin abstraction layer on top of a multithreading subsystem. The abstraction serves two purposes: To simplify the use of common constructs like &quot;Parallel For&quot; To centralize our dependency on a particular multithreading subsystem (e.g., TBB, etc.). Because of the way multithreading subsystems work and because of the way they need to interact with each other in managing...</p>
+<p class="en">Because of the way multithreading subsystems work and because of the way they need to interact with each other in managing system resources, it is not generally practical for each client to use whatever threading system they like (e.g., TBB for one client, OpenMP for another).</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="work_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/work_page_front.html">Providing an Alternate Work Implementation</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fthread_limits_8h.html&amp;title=WorkSetConcurrencyLimitArgument" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/thread_limits_8h.html">WorkSetConcurrencyLimitArgument</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Floops_8h.html&amp;title=WorkParallelForN" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/loops_8h.html">WorkParallelForN</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Floops_8h_source.html&amp;title=loops.h%3A168" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/loops_8h_source.html">loops.h:168</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_work_dispatcher.html&amp;title=WorkDispatcher" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_work_dispatcher.html">WorkDispatcher</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/work_page_front.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,226 @@
+{
+  "generated_at": "2026-06-03T18:54:18.550Z",
+  "root": "C:\\Users\\robot\\Documents\\成长学习库\\openusd_api_cn_repro",
+  "scope_note": "Responsive layout contract audit for the existing bilingual OpenUSD entry pages. It checks viewport metadata, local bilingual CSS attachment, mobile grid fallback, and long-text wrapping markers without adding pages or mirroring more official content.",
+  "pages": [
+    {
+      "page": "release_index.html",
+      "group": "release",
+      "has_viewport": true,
+      "has_expected_css": true,
+      "responsive_markers": {
+        "scope_or_layer": true,
+        "local_bilingual_terms": true
+      }
+    },
+    {
+      "page": "intro.html",
+      "group": "release",
+      "has_viewport": true,
+      "has_expected_css": true,
+      "responsive_markers": {
+        "scope_or_layer": true,
+        "local_bilingual_terms": true
+      }
+    },
+    {
+      "page": "apiDocs.html",
+      "group": "release",
+      "has_viewport": true,
+      "has_expected_css": true,
+      "responsive_markers": {
+        "scope_or_layer": true,
+        "local_bilingual_terms": true
+      }
+    },
+    {
+      "page": "glossary.html",
+      "group": "release",
+      "has_viewport": true,
+      "has_expected_css": true,
+      "responsive_markers": {
+        "scope_or_layer": true,
+        "local_bilingual_terms": true
+      }
+    },
+    {
+      "page": "toolset.html",
+      "group": "release",
+      "has_viewport": true,
+      "has_expected_css": true,
+      "responsive_markers": {
+        "scope_or_layer": true,
+        "local_bilingual_terms": true
+      }
+    },
+    {
+      "page": "index.html",
+      "group": "api",
+      "has_viewport": true,
+      "has_expected_css": true,
+      "responsive_markers": {
+        "scope_or_layer": true,
+        "local_bilingual_terms": true
+      }
+    },
+    {
+      "page": "_usd__overview_and_purpose.html",
+      "group": "api",
+      "has_viewport": true,
+      "has_expected_css": true,
+      "responsive_markers": {
+        "scope_or_layer": true,
+        "local_bilingual_terms": true
+      }
+    },
+    {
+      "page": "usd_page_front.html",
+      "group": "api",
+      "has_viewport": true,
+      "has_expected_css": true,
+      "responsive_markers": {
+        "scope_or_layer": true,
+        "local_bilingual_terms": true
+      }
+    },
+    {
+      "page": "api/index.html",
+      "group": "redirect",
+      "has_viewport": true,
+      "has_expected_css": true,
+      "responsive_markers": {
+        "scope_or_layer": true,
+        "local_bilingual_terms": true
+      }
+    }
+  ],
+  "counts": {
+    "pages_checked": 9,
+    "pages_with_viewport": 9,
+    "release_css_pages": 5,
+    "api_css_pages": 3,
+    "api_route_guide_steps": 3,
+    "responsive_css_files": 2,
+    "checks": 9,
+    "failed_checks": 0
+  },
+  "css_contracts": {
+    "release_css_markers": [
+      "@media (max-width: 640px)",
+      ".cn-glossary-grid",
+      ".cn-tool-grid",
+      "grid-template-columns: 1fr",
+      "overflow-wrap: break-word",
+      ".cn-tool-options code"
+    ],
+    "api_css_markers": [
+      "@media (max-width: 700px)",
+      ".cn-api-entry-grid",
+      ".cn-api-route-list",
+      ".cn-api-route-step",
+      "grid-template-columns: 1fr",
+      "overflow-wrap: break-word",
+      ".textblock img",
+      "max-width: 100%"
+    ]
+  },
+  "checks": [
+    {
+      "check": "responsive:all_pages_have_viewport",
+      "passed": true,
+      "details": {
+        "missing_viewport": []
+      }
+    },
+    {
+      "check": "responsive:release_pages_link_local_css",
+      "passed": true,
+      "details": {
+        "release_pages": [
+          "release_index.html",
+          "intro.html",
+          "apiDocs.html",
+          "glossary.html",
+          "toolset.html"
+        ]
+      }
+    },
+    {
+      "check": "responsive:api_pages_link_local_css",
+      "passed": true,
+      "details": {
+        "api_pages": [
+          "index.html",
+          "_usd__overview_and_purpose.html",
+          "usd_page_front.html"
+        ]
+      }
+    },
+    {
+      "check": "responsive:release_css_has_mobile_contract",
+      "passed": true,
+      "details": {
+        "required_markers": [
+          "@media (max-width: 640px)",
+          ".cn-glossary-grid",
+          ".cn-tool-grid",
+          "grid-template-columns: 1fr",
+          "overflow-wrap: break-word",
+          ".cn-tool-options code"
+        ],
+        "missing_markers": []
+      }
+    },
+    {
+      "check": "responsive:api_css_has_mobile_contract",
+      "passed": true,
+      "details": {
+        "required_markers": [
+          "@media (max-width: 700px)",
+          ".cn-api-entry-grid",
+          ".cn-api-route-list",
+          ".cn-api-route-step",
+          "grid-template-columns: 1fr",
+          "overflow-wrap: break-word",
+          ".textblock img",
+          "max-width: 100%"
+        ],
+        "missing_markers": []
+      }
+    },
+    {
+      "check": "responsive:primary_entry_grids_present",
+      "passed": true,
+      "details": {
+        "api_grid": "cn-api-entry-grid",
+        "release_cards": "usd-index-card-header-color"
+      }
+    },
+    {
+      "check": "responsive:api_route_guide_mobile_contract",
+      "passed": true,
+      "details": {
+        "route_guides": 1,
+        "route_steps": 3,
+        "mobile_contract": true
+      }
+    },
+    {
+      "check": "responsive:adjacent_grids_present",
+      "passed": true,
+      "details": {
+        "glossary_grid": "cn-glossary-grid",
+        "toolset_grid": "cn-tool-grid"
+      }
+    },
+    {
+      "check": "responsive:bilingual_markers_still_present",
+      "passed": true,
+      "details": {
+        "pages_without_markers": []
+      }
+    }
+  ],
+  "failed_checks": [],
+  "passed": true
+}

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API 页面草稿：Validation / Validation</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>API 页面草稿：Validation / Validation</h1>
+    <div class="meta">https://openusd.org/release/api/md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 1 级结构：Validation</span><span class="en">Validation</span></li>
+<li><span class="zh">第 1 级结构：Running Validator Tests</span><span class="en">Running Validator Tests</span></li>
+<li><span class="zh">第 1 级结构：Creating Custom Validators</span><span class="en">Creating Custom Validators</span></li>
+<li><span class="zh">第 2 级结构：Plugin Validators</span><span class="en">Plugin Validators</span></li>
+<li><span class="zh">第 2 级结构：Explicit Validators</span><span class="en">Explicit Validators</span></li>
+<li><span class="zh">第 2 级结构：Choosing a Registration Path</span><span class="en">Choosing a Registration Path</span></li>
+<li><span class="zh">第 2 级结构：Adding Fixers</span><span class="en">Adding Fixers</span></li>
+<li><span class="zh">第 1 级结构：Creating Custom Validators in Python</span><span class="en">Creating Custom Validators in Python</span></li>
+<li><span class="zh">第 2 级结构：Performance Considerations</span><span class="en">Performance Considerations</span></li>
+<li><span class="zh">第 2 级结构：Task Function Signatures</span><span class="en">Task Function Signatures</span></li>
+<li><span class="zh">第 2 级结构：Explicit Registration Examples</span><span class="en">Explicit Registration Examples</span></li>
+<li><span class="zh">第 3 级结构：Layer Validator</span><span class="en">Layer Validator</span></li>
+<li><span class="zh">第 3 级结构：Stage Validator</span><span class="en">Stage Validator</span></li>
+<li><span class="zh">第 3 级结构：Prim Validator</span><span class="en">Prim Validator</span></li>
+<li><span class="zh">第 2 级结构：Plugin Registration Example</span><span class="en">Plugin Registration Example</span></li>
+<li><span class="zh">第 2 级结构：How Python Plugin Validators Are Triggered</span><span class="en">How Python Plugin Validators Are Triggered</span></li>
+<li><span class="zh">第 3 级结构：Python Plugin Directory Structure</span><span class="en">Python Plugin Directory Structure</span></li>
+<li><span class="zh">第 3 级结构：Example plugInfo.json (Python scenario)</span><span class="en">Example plugInfo.json (Python scenario)</span></li>
+<li><span class="zh">第 3 级结构：Example &lt;strong&gt;init&lt;/strong&gt;.py</span><span class="en">Example &lt;strong&gt;init&lt;/strong&gt;.py</span></li>
+<li><span class="zh">第 2 级结构：Running a Python Validator</span><span class="en">Running a Python Validator</span></li>
+<li><span class="zh">第 2 级结构：Grouping Validators Into a Suite</span><span class="en">Grouping Validators Into a Suite</span></li>
+<li><span class="zh">第 2 级结构：Notes</span><span class="en">Notes</span></li>
+<li><span class="zh">第 1 级结构：Additional Examples</span><span class="en">Additional Examples</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">The OpenUSD Validation framework provides a system to validate assets, verifying core rules, schema rules, and client-provided rules via plugins, to ensure assets are robust and interchangeable between different USD workflows. UsdValidationValidators are used to run validation tests. A single UsdValidationValidator instance represents a single validation test that can result in zero or more named validation errors when run. For example a &quot;usdValidation:CompositionErrorTest&quot; validator might test for multiple type...</p>
+<p class="en">Each Validator instance has metadata represented by UsdValidationValidatorMetadata. Validator metadata includes:</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_validation_validator.html&amp;title=UsdValidationValidators" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_validation_validator.html">UsdValidationValidators</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fvalidator_8h.html&amp;title=UsdValidationValidatorMetadata" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/validator_8h.html">UsdValidationValidatorMetadata</a></li>
+<li><a href="md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html">&quot;Explicit Validators&quot;</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_validation_context.html&amp;title=UsdValidationContext" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_validation_context.html">UsdValidationContext</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_validation_registry.html&amp;title=UsdValidationRegistry" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_validation_registry.html">UsdValidationRegistry</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_sphere.html&amp;title=UsdGeomSphere" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_sphere.html">UsdGeomSphere</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_gprim.html&amp;title=UsdGeomGprim" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_gprim.html">UsdGeomGprim</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_imageable.html&amp;title=UsdGeomImageable" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_imageable.html">UsdGeomImageable</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_validation_validator_suite.html&amp;title=UsdValidationValidatorSuites" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_validation_validator_suite.html">UsdValidationValidatorSuites</a></li>
+<li><a href="class_usd_validation_error.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_usd_validation_error.html">UsdValidationErrors</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_validation_error_type.html&amp;title=UsdValidationErrorType" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_validation_error_type.html">UsdValidationErrorType</a></li>
+<li><a href="class_sdf_layer.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_sdf_layer.html">SdfLayer</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_stage.html&amp;title=UsdStage" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_stage.html">UsdStage</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_validation_fixer.html&amp;title=UsdValidationFixers" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_validation_fixer.html">UsdValidationFixers</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vt_value.html&amp;title=VtValue" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vt_value.html">VtValue</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_interval.html&amp;title=GfInterval%3A%3AGetFullInterval%28%29" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_interval.html">GfInterval::GetFullInterval()</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_edit_target.html&amp;title=UsdEditTarget" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_edit_target.html">UsdEditTarget</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fgroup___usd_validate_task_fn__group.html&amp;title=UsdValidateLayerTaskFn" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/group___usd_validate_task_fn__group.html">UsdValidateLayerTaskFn</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fregistry_manager_8h.html&amp;title=TF_REGISTRY_FUNCTION" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/registry_manager_8h.html">TF_REGISTRY_FUNCTION</a></li>
+<li><a href="class_tf_token.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_tf_token.html">TfToken</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_validation_time_range.html&amp;title=UsdValidationTimeRange" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_validation_time_range.html">UsdValidationTimeRange</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Ftoken_8h_source.html&amp;title=token.h%3A71" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/token_8h_source.html">token.h:71</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fusd_validation_2usd_validation_2registry_8h_source.html&amp;title=registry.h%3A166" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/usd_validation_2usd_validation_2registry_8h_source.html">registry.h:166</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Ftime_range_8h_source.html&amp;title=timeRange.h%3A38" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/time_range_8h_source.html">timeRange.h:38</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fvalidator_8h_source.html&amp;title=validator.h%3A108" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/validator_8h_source.html">validator.h:108</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fregistry_manager_8h_source.html&amp;title=registryManager.h%3A201" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/registry_manager_8h_source.html">registryManager.h:201</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_time_code.html&amp;title=UsdTimeCode" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_time_code.html">UsdTimeCode</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Ftoken_8h.html&amp;title=TfTokenVector" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/token_8h.html">TfTokenVector</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fedit_target_8h_source.html&amp;title=editTarget.h%3A64" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/edit_target_8h_source.html">editTarget.h:64</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fusd_2time_code_8h_source.html&amp;title=timeCode.h%3A72" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/usd_2time_code_8h_source.html">timeCode.h:72</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fusd_validation_2usd_validation_2error_8h_source.html&amp;title=error.h%3A240" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/usd_validation_2usd_validation_2error_8h_source.html">error.h:240</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

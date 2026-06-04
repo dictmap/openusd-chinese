@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members</h1>
+    <div class="meta">https://openusd.org/release/api/globals_func_s.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section data-cn-refinement="api-file-members-func-quality-pass-032">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 File Members - Functions - S 补充中文优先的函数索引用法、模块边界和术语对照；英文页面名、API 符号、函数名、头文件名、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first function-index notes, module boundaries, and terminology for File Members - Functions - S while retaining English page names, API symbols, function names, header names, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">globals_func_s.html 是 File Members 函数子索引 S 段，条目主要覆盖 Sdf 工具函数，并少量包含 StageLoadRules 与 filesystem discovery helpers。</span></li>
+        <li><span class="zh">`SdfAnchorAssetPaths()`、`SdfComputeAssetPathRelativeToLayer()` 与 asset path/layer 解析相关；阅读时应把资产路径锚定、相对路径计算和 layer 语境放在一起理解。</span></li>
+        <li><span class="zh">`SdfCopySpec()`、`SdfCreatePrimAttributeInLayer()`、`SdfCreatePrimInLayer()`、`SdfCreateRelationshipInLayer()`、`SdfCreateVariantInLayer()` 指向在 layer 中复制或创建 spec 的工具入口。</span></li>
+        <li><span class="zh">`SdfGetRoleNameForValueTypeName()`、`SdfGetTypeForValueTypeName()`、`SdfGetNameForUnit()` 等函数属于 value type、role、unit 查询和转换语境，适合与 `types.h` 对照阅读。</span></li>
+        <li><span class="zh">本页的中文层按 asset path、spec 创建、类型/单位查询和辅助工具分组说明，保留 Sdf 函数名、头文件名与英文摘录，避免破坏 API 检索。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">资产路径锚定：</span><span class="en">asset path anchoring</span></li>
+        <li><span class="zh">相对 layer 的路径：</span><span class="en">layer-relative path</span></li>
+        <li><span class="zh">复制 spec：</span><span class="en">copy spec</span></li>
+        <li><span class="zh">值类型名称：</span><span class="en">value type name</span></li>
+        <li><span class="zh">单位转换：</span><span class="en">unit conversion</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 3 级结构：- s -</span><span class="en">- s -</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">Index entries include: SdfAnchorAssetPaths() : assetPath.h; SdfComposeTimeSampleMaps() : types.h; SdfComputeAssetPathRelativeToLayer() : layerUtils.h; SdfConvertToValidMetadataDictionary() : types.h; SdfConvertUnit() : types.h; SdfCopySpec() : copyUtils.h; SdfCreatePrimAttributeInLayer() : attributeSpec.h; SdfCreatePrimInLayer() : primSpec.h; SdfCreateRelationshipInLayer() : relationshipSpec.h; SdfCreateVariantInLayer() : variantSpec.h; SdfDefaultUnit() : types.h; SdfFindReferenceByIdentity() : reference.h; SdfGetNameForUnit() : types.h; SdfGetRoleNameForValueTypeName() : types.h; SdfGetTypeForValueTypeName() ...</p>
+<p class="en">Index entries include: filesystemDiscoveryHelpers.h.</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fasset_path_8h.html&amp;title=assetPath.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/asset_path_8h.html">assetPath.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fusd_2sdf_2types_8h.html&amp;title=types.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/usd_2sdf_2types_8h.html">types.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Flayer_utils_8h.html&amp;title=layerUtils.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/layer_utils_8h.html">layerUtils.h</a></li>
+<li><a href="copy_utils_8h.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/copy_utils_8h.html">copyUtils.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fattribute_spec_8h.html&amp;title=attributeSpec.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/attribute_spec_8h.html">attributeSpec.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fprim_spec_8h.html&amp;title=primSpec.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/prim_spec_8h.html">primSpec.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Frelationship_spec_8h.html&amp;title=relationshipSpec.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/relationship_spec_8h.html">relationshipSpec.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fvariant_spec_8h.html&amp;title=variantSpec.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/variant_spec_8h.html">variantSpec.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Freference_8h.html&amp;title=reference.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/reference_8h.html">reference.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fdeclare_handles_8h.html&amp;title=declareHandles.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/declare_handles_8h.html">declareHandles.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Ffilesystem_discovery_helpers_8h.html&amp;title=filesystemDiscoveryHelpers.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/filesystem_discovery_helpers_8h.html">filesystemDiscoveryHelpers.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstage_load_rules_8h.html&amp;title=stageLoadRules.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/stage_load_rules_8h.html">stageLoadRules.h</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/globals_func_s.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

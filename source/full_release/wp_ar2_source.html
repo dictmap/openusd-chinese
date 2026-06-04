@@ -1,0 +1,1872 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asset Resolution (Ar) 2.0 &mdash; Universal Scene Description 26.05 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/pxr_custom.css?v=f3eac5de" />
+
+  
+    <link rel="shortcut icon" href="https://openusd.org/images/USDIcon.ico"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=34cee20b"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+      <script src="_static/js/versions.js?v=aa17b01a"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Coordinate Systems in USD Proposal" href="wp_coordsys.html" />
+    <link rel="prev" title="Asset Previews in USD" href="wp_asset_previews.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #606060" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Universal Scene Description
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Learn</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction to USD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_to_openexec.html">Introduction to OpenExec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Terms and Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tut_usd_tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tut_helloworld.html">Hello World - Creating Your First USD Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_helloworld_redux.html">Hello World Redux - Using Generic Prims</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_inspect_and_author_props.html">Inspecting and Authoring Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_referencing_layers.html">Referencing Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_converting_between_layer_formats.html">Converting Between Layer Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_traversing_stage.html">Traversing a Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_authoring_variants.html">Authoring Variants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_variants_example_in_katana.html">Variants Example in Katana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_xforms.html">Transformations, Animation, and Layer Offsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_simple_shading.html">Simple Shading in USD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_end_to_end.html">End to End Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_houdini_example.html">Houdini USD Example Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_generating_new_schema.html">Generating New Schema Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_usdview_plugin.html">Creating a Usdview Plugin</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dl_downloads.html">Downloads and Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usd_products.html">Products Using USD</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/collections_and_patterns.html">Collections and Patterns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/collections_and_patterns.html#basic-usage">Basic Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/collections_and_patterns.html#configuring-membership-mode">Configuring Membership Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/collections_and_patterns.html#relationship-mode-collections">Relationship-Mode Collections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/collections_and_patterns.html#configuring-relationship-mode-collections">Configuring Relationship-Mode Collections</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/collections_and_patterns.html#pattern-based-collections">Pattern-Based Collections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/collections_and_patterns.html#path-expressions">Path Expressions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/collections_and_patterns.html#path-patterns">Path Patterns</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/collections_and_patterns.html#additional-expressions-considerations">Additional Expressions Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/collections_and_patterns.html#configuring-pattern-based-collections">Configuring Pattern-Based Collections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/collections_and_patterns.html#getting-the-expression-for-a-relationship-mode-collection">Getting the Expression for a Relationship-Mode Collection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/color_user_guide.html">Color</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/color_user_guide.html#working-with-color-in-openusd">Working With Color in OpenUSD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/color_user_guide.html#color-spaces-supported-by-openusd">Color Spaces Supported by OpenUSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/color_user_guide.html#working-with-color-space-schemas">Working With Color Space Schemas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/color_user_guide.html#color-space-inheritance-and-resolution">Color Space Inheritance and Resolution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/color_user_guide.html#default-color-space">Default Color Space</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/color_user_guide.html#what-is-a-color-space">What is a Color Space?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/color_user_guide.html#gamut-limitations-and-considerations">Gamut Limitations and Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/color_user_guide.html#common-white-points">Common White Points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/color_user_guide.html#linear-vs-non-linear-spaces">Linear vs. Non-Linear Spaces</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/color_user_guide.html#considerations-in-content-creation">Considerations in Content Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/color_user_guide.html#glossary-of-color-terms">Glossary of Color Terms</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/namespace_editing.html">Namespace Editing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/namespace_editing.html#using-usdnamespaceeditor">Using UsdNamespaceEditor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#setting-editor-options">Setting Editor Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#working-with-relocates">Working With Relocates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#fixing-paths-for-moved-objects">Fixing Paths For Moved Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#applying-edits-to-dependent-stages">Applying Edits to Dependent Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#batch-edits">Batch Edits</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/namespace_editing.html#namespace-editing-best-practices">Namespace Editing Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#use-canapplyedits-to-validate-edit-operations">Use CanApplyEdits() To Validate Edit Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#built-in-properties-from-schemas-are-not-editable">Built-In Properties From Schemas Are Not Editable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#be-aware-of-relocates-performance-impact">Be Aware of Relocates Performance Impact</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/render_user_guide.html">Rendering with USD</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/render_user_guide.html#configuring-imageable-content">Configuring Imageable Content</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#configuring-the-stage-coordinate-system">Configuring the Stage Coordinate System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#understanding-render-visibility">Understanding Render Visibility</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#using-the-visibility-attribute">Using the Visibility Attribute</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#using-imageable-purpose">Using Imageable Purpose</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#understanding-intrinsic-and-explicit-normals">Understanding Intrinsic and Explicit Normals</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/render_user_guide.html#working-with-lights">Working with Lights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#using-light-linking-to-filter-objects-affected-by-lights">Using Light-linking to Filter Objects Affected by Lights</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/render_user_guide.html#working-with-materials">Working with Materials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#using-the-usd-preview-material">Using the USD Preview Material</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#using-glslfx-shaders">Using GLSLFX Shaders</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#working-with-primvars">Working with Primvars</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#primvar-interpolation">Primvar Interpolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#indexed-primvars">Indexed Primvars</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#consuming-primvars-in-materials">Consuming Primvars in Materials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#material-primvar-fallbacks">Material Primvar Fallbacks</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#using-material-binding-purpose">Using Material Binding Purpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#binding-materials-to-collections">Binding Materials to Collections</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#setting-collection-binding-strength">Setting Collection Binding Strength</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#combining-collection-binding-with-material-binding-purpose">Combining Collection Binding with Material Binding Purpose</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#using-material-render-contexts">Using Material Render Contexts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/render_user_guide.html#working-with-image-file-formats">Working With Image File Formats</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#guidelines-for-all-supported-image-formats">Guidelines for All Supported Image Formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#jpeg">JPEG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#png">PNG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#openexr">OpenEXR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#av1-image-file-format-avif">AV1 Image File Format (AVIF)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/render_user_guide.html#defining-the-render-camera">Defining the Render Camera</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#configuring-motion-blur">Configuring Motion Blur</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/render_user_guide.html#configuring-render-settings">Configuring Render Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/primvars.html">Primvars</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/primvars.html#primvar-interpolation-modes">Primvar Interpolation Modes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/primvars.html#constant-interpolation">Constant Interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/primvars.html#uniform-interpolation">Uniform Interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/primvars.html#vertex-interpolation">Vertex Interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/primvars.html#varying-interpolation">Varying Interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/primvars.html#facevarying-interpolation">faceVarying Interpolation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/primvars.html#primvars-and-the-scene-namespace">Primvars and the Scene Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/primvars.html#indexed-primvars">Indexed Primvars</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/primvars.html#indexed-primvars-and-attribute-blocks">Indexed Primvars and Attribute Blocks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/primvars.html#primvar-element-size">Primvar Element Size</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/schemas/index.html">Schema Domains</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/schemas/usdLux/usdLux_toc.html">Lights (usdLux)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#usdlux-schemas-and-concepts">UsdLux Schemas and Concepts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#light-units">Light Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#understanding-light-contributions">Understanding Light Contributions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#light-shaping">Light Shaping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#shadows">Shadows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#mesh-lights">Mesh Lights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#light-linking-and-shadow-linking">Light-linking and Shadow-linking</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/BoundableLightBase.html">BoundableLightBase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/BoundableLightBase.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/BoundableLightBase.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/BoundableLightBase.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/BoundableLightBase.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/CylinderLight.html">CylinderLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/CylinderLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/CylinderLight.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/CylinderLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/CylinderLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/DiskLight.html">DiskLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DiskLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DiskLight.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DiskLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DiskLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/DistantLight.html">DistantLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DistantLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DistantLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DistantLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight.html">DomeLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight_1.html">DomeLight_1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight_1.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight_1.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight_1.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/GeometryLight.html">GeometryLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/GeometryLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/GeometryLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/GeometryLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/LightAPI.html">LightAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/LightAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/LightFilter.html">LightFilter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/LightFilter.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/LightFilter.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/LightFilter.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/LightListAPI.html">LightListAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/LightListAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/ListAPI.html">ListAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/ListAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/MeshLightAPI.html">MeshLightAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/MeshLightAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/NonboundableLightBase.html">NonboundableLightBase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/NonboundableLightBase.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/NonboundableLightBase.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/NonboundableLightBase.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLight.html">PluginLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLightFilter.html">PluginLightFilter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLightFilter.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLightFilter.html#inherited-properties-lightfilter">Inherited Properties (<span class="xref std std-ref">LightFilter</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLightFilter.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLightFilter.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/PortalLight.html">PortalLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PortalLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PortalLight.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PortalLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PortalLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/RectLight.html">RectLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/RectLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/RectLight.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/RectLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/RectLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/ShadowAPI.html">ShadowAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/ShadowAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/ShapingAPI.html">ShapingAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/ShapingAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/SphereLight.html">SphereLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/SphereLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/SphereLight.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/SphereLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/SphereLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/VolumeLightAPI.html">VolumeLightAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/VolumeLightAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/schemas/usdMedia/usdMedia_toc.html">Media (usdMedia)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdMedia/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdMedia/overview.html#working-with-media">Working With Media</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdMedia/AssetPreviewsAPI.html">AssetPreviewsAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdMedia/SpatialAudio.html">SpatialAudio</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdMedia/SpatialAudio.html#spatialaudio-and-layer-offsets">SpatialAudio and Layer Offsets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdMedia/SpatialAudio.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdMedia/SpatialAudio.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdMedia/SpatialAudio.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/schemas/usdRender/usdRender_toc.html">Render (usdRender)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdRender/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/overview.html#best-practices">Best Practices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/overview.html#using-usdrender-to-control-how-prims-are-rendered">Using UsdRender to Control How Prims Are Rendered</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/overview.html#working-with-renderproduct">Working with RenderProduct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/overview.html#configuring-multi-pass-renders-with-renderpass">Configuring Multi-pass Renders with RenderPass</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdRender/RenderPass.html">RenderPass</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderPass.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdRender/RenderProduct.html">RenderProduct</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderProduct.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderProduct.html#inherited-properties-rendersettingsbase">Inherited Properties (<span class="xref std std-ref">RenderSettingsBase</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdRender/RenderSettings.html">RenderSettings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderSettings.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderSettings.html#inherited-properties-rendersettingsbase">Inherited Properties (<span class="xref std std-ref">RenderSettingsBase</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdRender/RenderSettingsBase.html">RenderSettingsBase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderSettingsBase.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdRender/RenderVar.html">RenderVar</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderVar.html#properties">Properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/schemas/usdUI/usdUI_toc.html">UI (usdUI)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/overview.html#working-with-node-graphs">Working With Node Graphs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/overview.html#working-with-accessibility-information">Working With Accessibility Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/overview.html#working-with-ui-hints">Working With UI Hints</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/AttributeHints.html">AttributeHints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/AttributeHints.html#attributehints-fields">AttributeHints fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/ObjectHints.html">ObjectHints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/ObjectHints.html#objecthints-fields">ObjectHints fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/PrimHints.html">PrimHints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/PrimHints.html#primhints-fields">PrimHints fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/PropertyHints.html">PropertyHints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/PropertyHints.html#propertyhints-fields">PropertyHints fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/AccessibilityAPI.html">AccessibilityAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/AccessibilityAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/Backdrop.html">Backdrop</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/Backdrop.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/NodeGraphNodeAPI.html">NodeGraphNodeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/NodeGraphNodeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/SceneGraphPrimAPI.html">SceneGraphPrimAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/SceneGraphPrimAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/schemas/usdVol/usdVol_toc.html">Volumes (usdVol)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/overview.html#working-with-volumes">Working With Volumes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/overview.html#working-with-fields">Working With Fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/overview.html#working-with-particle-fields">Working With Particle Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/Field3DAsset.html">Field3DAsset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Field3DAsset.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Field3DAsset.html#inherited-properties-volumefieldasset">Inherited Properties (<span class="xref std std-ref">VolumeFieldAsset</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Field3DAsset.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Field3DAsset.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/FieldAsset.html">FieldAsset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldAsset.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldAsset.html#inherited-properties-volumefieldasset">Inherited Properties (<span class="xref std std-ref">VolumeFieldAsset</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldAsset.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldAsset.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/FieldBase.html">FieldBase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldBase.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldBase.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldBase.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/OpenVDBAsset.html">OpenVDBAsset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/OpenVDBAsset.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/OpenVDBAsset.html#inherited-properties-volumefieldasset">Inherited Properties (<span class="xref std std-ref">VolumeFieldAsset</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/OpenVDBAsset.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/OpenVDBAsset.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField.html">ParticleField</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField.html#inherited-properties-gprim">Inherited Properties (<span class="xref std std-ref">Gprim</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html">ParticleField3DGaussianSplat</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#inherited-properties-gprim">Inherited Properties (<span class="xref std std-ref">Gprim</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldKernelBaseAPI.html">ParticleFieldKernelBaseAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldKernelConstantSurfletAPI.html">ParticleFieldKernelConstantSurfletAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldKernelGaussianEllipsoidAPI.html">ParticleFieldKernelGaussianEllipsoidAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html">ParticleFieldKernelGaussianSurfletAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html">ParticleFieldOpacityAttributeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html">ParticleFieldOrientationAttributeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html">ParticleFieldPositionAttributeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html">ParticleFieldPositionBaseAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldRadianceBaseAPI.html">ParticleFieldRadianceBaseAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html">ParticleFieldScaleAttributeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html">ParticleFieldSphericalHarmonicsAttributeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/Volume.html">Volume</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Volume.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Volume.html#inherited-properties-gprim">Inherited Properties (<span class="xref std std-ref">Gprim</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Volume.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Volume.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Volume.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldAsset.html">VolumeFieldAsset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldAsset.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldAsset.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldAsset.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldBase.html">VolumeFieldBase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldBase.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldBase.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldBase.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/time_and_animated_values.html">Time and Animated Values</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/time_and_animated_values.html#understanding-timecodes">Understanding TimeCodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/time_and_animated_values.html#working-with-timecodes-programmatically">Working With TimeCodes Programmatically</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/time_and_animated_values.html#mapping-timecodes-to-real-time">Mapping TimeCodes to Real Time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/time_and_animated_values.html#specifying-layer-start-and-end-times">Specifying Layer Start and End Times</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/time_and_animated_values.html#using-timecode-ranges">Using TimeCode Ranges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/time_and_animated_values.html#working-with-automatic-and-explicit-timecode-remapping-across-composition">Working with Automatic and Explicit TimeCode Remapping Across Composition</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/time_and_animated_values.html#automatic-scaling-of-timecodespersecond">Automatic Scaling of timeCodesPerSecond</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/time_and_animated_values.html#configuring-timecode-scaling-and-offsets-using-layeroffsets">Configuring TimeCode Scaling and Offsets Using LayerOffsets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/time_and_animated_values.html#combining-automatic-scaling-and-layer-offsets">Combining Automatic Scaling and Layer Offsets</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/variable_expressions.html">Variable Expressions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/variable_expressions.html#defining-expression-variables-in-a-layer">Defining Expression Variables in a Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#string"><span class="mono">string</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#bool"><span class="mono">bool</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#int64"><span class="mono">int64</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#type"><span class="mono">&lt;type&gt;[]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#none"><span class="mono">None</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#expression-variables-and-composition">Expression Variables and Composition</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/variable_expressions.html#authoring-variable-expressions">Authoring Variable Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/variable_expressions.html#expression-function-reference">Expression Function Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#defined-variable-name"><span class="mono">defined(&lt;variable name&gt;, …)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#if-condition-true-value-false-value"><span class="mono">if(&lt;condition&gt;, &lt;true-value&gt;, &lt;false-value&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#if-condition-true-value"><span class="mono">if(&lt;condition&gt;, &lt;true-value&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#and-x-y"><span class="mono">and(&lt;x&gt;, &lt;y&gt;, …)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#or-x-y"><span class="mono">or(&lt;x&gt;, &lt;y&gt;, …)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#not-x"><span class="mono">not(&lt;x&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#eq-x-y"><span class="mono">eq(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#neq-x-y"><span class="mono">neq(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#lt-x-y"><span class="mono">lt(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#leq-x-y"><span class="mono">leq(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#gt-x-y"><span class="mono">gt(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#geq-x-y"><span class="mono">geq(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#contains-list-or-string-value"><span class="mono">contains(&lt;list_or_string&gt;, &lt;value&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#at-list-or-string-index"><span class="mono">at(&lt;list_or_string&gt;, &lt;index&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#len-list-or-string"><span class="mono">len(&lt;list_or_string&gt;)</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/variable_expressions.html#examples">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#flexible-variant-selections">Flexible Variant Selections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#asset-valued-texture-file-attribute">Asset-valued Texture File Attribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#conditionally-include-sublayers">Conditionally Include Sublayers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="apiDocs.html">API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="toolset.html">Toolset</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdedit">usdedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdcat">usdcat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usddiff">usddiff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdview">usdview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdrecord">usdrecord</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdresolve">usdresolve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdtree">usdtree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdzip">usdzip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdchecker">usdchecker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdfixbrokenpixarschemas">usdfixbrokenpixarschemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdstitch">usdstitch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdstitchclips">usdstitchclips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usddumpcrate">usddumpcrate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#sdfdump">sdfdump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#sdffilter">sdffilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdmeasureperformance">usdmeasureperformance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdgenschema">usdGenSchema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdgenschemafromsdr">usdgenschemafromsdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdinitschema">usdInitSchema</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="spec.html">Specifications</a><ul>
+<li class="toctree-l2"><a class="reference external" href="https://aousd.org/blog/foundations-of-open-3d-development-introducing-aousd-core-specification-1-0/">USD Core Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spec_usdpreviewsurface.html">UsdPreviewSurface Specification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdpreviewsurface.html#goal">Goal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdpreviewsurface.html#core-nodes">Core Nodes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#preview-surface">Preview Surface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#texture-reader">Texture Reader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#primvar-reader">Primvar Reader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#transform2d">Transform2d</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdpreviewsurface.html#usd-sample">USD Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdpreviewsurface.html#other-notes">Other Notes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#texture-coordinate-orientation-in-usd">Texture Coordinate Orientation in USD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#roughness-vs-glossiness">Roughness vs Glossiness</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdpreviewsurface.html#changes-by-version">Changes, by Version</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#version-2-0-initial-public-specification">Version 2.0 - Initial Public Specification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#version-2-2-before-type-changes">Version 2.2 - Before Type Changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#version-2-3">Version 2.3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#version-2-4">Version 2.4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#version-2-5">Version 2.5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#version-2-6-current-head">Version 2.6 - Current Head</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="spec_usdz.html">Usdz File Format Specification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdz.html#purpose">Purpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdz.html#usdz-specification">Usdz Specification</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#foundation">Foundation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#zip-constraints">Zip Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#layout">Layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#file-types">File Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#usd-constraints">USD Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#editability">Editability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#accessibility">Accessibility</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdz.html#packaging-considerations-for-streaming-and-encapsulation">Packaging Considerations for Streaming and Encapsulation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#file-ordering-within-package-for-streaming">File Ordering Within Package for Streaming</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#usdz-reproducibleresults">For Reproducible Results, Encapsulate Using Anchored Asset Paths</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdz.html#mime-type">MIME Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdz.html#toolset">Toolset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdz.html#changes-by-version">Changes, by Version</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#version-1-3-current-head">Version 1.3 - Current Head</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="wp.html">Proposals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html">Adapting UsdLux to Accommodate Geometry Lights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#introduction-and-background">Introduction and Background</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#mesh-light-support-in-the-industry">Mesh Light Support in the Industry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#goals">Goals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#workflow-considerations">Workflow Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#design-space-and-issues">Design Space and Issues</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#dual-prim-geometry-light-problems">Dual-Prim Geometry Light Problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#single-prim-geometry-light">Single-Prim Geometry Light</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#usdlux-lightapi-om">UsdLux LightAPI OM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#light-lightapi">Light -&gt; LightAPI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#introduce-convenience-base-classes">Introduce Convenience Base Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#preserve-existing-usdlux-concrete-schemas">Preserve Existing UsdLux Concrete Schemas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#deprecate-geometrylight">Deprecate GeometryLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#how-do-we-identify-the-appropriate-sdrshadernode-for-a-light">How do we Identify the Appropriate SdrShaderNode for a Light?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#lights-with-materials">Lights with Materials?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#proposal-and-behaviors">Proposal and Behaviors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#shading-and-emission">Shading and Emission</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#volumes">Volumes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#primvars-in-light-networks">Primvars in Light Networks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_usdlux_for_renderers.html">Adapting UsdLux to the Needs of Renderers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_renderers.html#background-and-goals">Background and Goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_renderers.html#foundational-technologies-in-usd">Foundational Technologies in USD</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#sdr">Sdr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#usd-schemas">USD Schemas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#usdimaging-and-hydra">UsdImaging and Hydra</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_renderers.html#proposals">Proposals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#changes-to-usdlux">Changes to UsdLux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#changes-to-usdimaging">Changes to UsdImaging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#changes-to-hd">Changes to Hd</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#changes-to-hdprman-and-other-render-delegates">Changes to HdPrman and Other Render Delegates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_asset_previews.html">Asset Previews in USD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_asset_previews.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_asset_previews.html#proposal">Proposal</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_asset_previews.html#object-model">Object Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_asset_previews.html#concrete-encoding">Concrete Encoding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_asset_previews.html#schema">Schema</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Asset Resolution (Ar) 2.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#background-and-goals">Background and Goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tasks">Tasks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general-cleanup">General Cleanup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-documentation-and-examples">Add Documentation and Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-identifier-concept">Add Identifier Concept</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#remove-repository-and-search-path">Remove Repository and Search Path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#improve-resolve-and-asset-info">Improve Resolve and Asset Info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#remove-filesystem-specific-code">Remove Filesystem-specific Code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-asset-writing-interface">Add Asset Writing Interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-uri-resolvers">Add URI Resolvers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#allow-creation-of-arresolvercontext-from-strings">Allow Creation of ArResolverContext From Strings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#remove-arresolver-configureresolverforasset">Remove ArResolver::ConfigureResolverForAsset</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rollout-and-transition">Rollout and Transition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#proposed-api">Proposed API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_coordsys.html">Coordinate Systems in USD Proposal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_coordsys.html#purpose">Purpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_coordsys.html#requirements">Requirements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_coordsys.html#coordinate-systems-are-identified-by-name-in-shaders">Coordinate Systems are Identified by Name in Shaders</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_coordsys.html#proposed-api-schema">Proposed API Schema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_coordsys.html#recording-a-frame-of-reference">Recording a Frame of Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_coordsys.html#binding-frames-of-reference">Binding Frames of Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_coordsys.html#coordsysapi">CoordSysAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_coordsys.html#usd-sample-and-analysis">USD Sample and Analysis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_coordsys.html#analysis-coordinate-systems-evaluated">Analysis: Coordinate Systems Evaluated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_coordsys.html#analysis-coordinate-system-binding-and-consumption">Analysis: Coordinate System Binding and Consumption</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_coordsys.html#projections-cameras-and-coordsysapi">Projections, Cameras, and CoordSysAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_connectable_nodes.html">Generalizing Connectable Nodes Beyond UsdShade</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_connectable_nodes.html#background-and-goals">Background and Goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_connectable_nodes.html#proposal">Proposal</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#node-definition-as-api-schema">Node Definition as API Schema</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#plugin-defined-connectableapi-behavior">Plugin-defined ConnectableAPI Behavior</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#connectability-rules-for-usdshade-types">Connectability Rules for UsdShade Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#intended-use-in-usdlux-and-usdri-renderman-usd-schema">Intended use in UsdLux and UsdRi (RenderMan USD schema)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_connectable_nodes.html#discussion">Discussion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#sdr-ndr">Sdr &amp; Ndr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#flexibility-of-connectability-callbacks">Flexibility of Connectability Callbacks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#non-shading-networks">Non-shading Networks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_render_settings.html">Render Settings in USD Proposal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#purpose-and-scope">Purpose and Scope</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#overall-design-and-concerns">Overall Design and Concerns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#concrete-schemas">Concrete Schemas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#renderer-specific-schemas">Renderer-Specific Schemas</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#prim-and-scene-organization">Prim and Scene Organization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#discovering-render-settings">Discovering Render Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#selecting-and-combining-render-settings">Selecting and Combining Render Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#grouping-rendervars-and-renderproducts">Grouping RenderVars and RenderProducts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#discovering-all-potential-shader-based-rendervars">Discovering All Potential Shader-based RenderVars</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#workflow-considerations">Workflow Considerations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#interactive-vs-batch-rendering">Interactive vs. Batch Rendering</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#examples">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#discussion-and-questions">Discussion and Questions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#id-variables">ID variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#stereo-rendering">Stereo Rendering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#camera-exposure-curves">Camera Exposure Curves</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#denoising-color-correction-and-tasks">Denoising, Color Correction, and Tasks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#why-locality-of-overrides-is-valuable">Why Locality of Overrides is Valuable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#image-mapping-related-options-on-camera-or-rendersettings">Image-Mapping-Related Options on Camera or RenderSettings?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#crop-windows-and-region-of-interest">Crop Windows and Region-of-Interest</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_rigid_body_physics.html">Rigid Body Physics in USD Proposal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_rigid_body_physics.html#purpose-and-scope">Purpose and Scope</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_rigid_body_physics.html#overall-design-concerns">Overall Design Concerns</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#rigid-body-simulation-primer">Rigid Body Simulation Primer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#usd-implementation">USD Implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_rigid_body_physics.html#concrete-schemas">Concrete Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_rigid_body_physics.html#examples">Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#box-on-box">Box on Box</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#box-on-quad">Box on Quad</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#spheres-with-materials">Spheres with Materials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#group-filtering">Group Filtering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#pair-filtering">Pair Filtering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#joint">Joint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#distance-joint">Distance Joint</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_schema_versioning.html">Schema Versioning in USD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_schema_versioning.html#introduction">Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#challenges-to-schema-versioning-in-usd">Challenges to Schema Versioning in USD</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_schema_versioning.html#proposal-for-per-schema-versioning">Proposal for Per-Schema Versioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#version-representation-in-schemas">Version Representation in Schemas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#schema-registry">Schema Registry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#usdprim-schema-related-api">UsdPrim Schema-related API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#considerations-for-auto-apply-api-schemas">Considerations for Auto-apply API Schemas</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_schema_versioning.html#risks-questions-limitations">Risks, Questions, Limitations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_schema_versioning.html#guidelines-for-schema-versioning">Guidelines for Schema Versioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#criteria-for-versioning">Criteria for Versioning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#do-not-version-a-schema-when">Do not Version a Schema When…</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#do-version-a-schema-when">Do Version a Schema When…</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_schema_versioning.html#pixar-examples-past-and-future">Pixar Examples, Past and Future</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#usdlux-connectability">UsdLux Connectability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#light-lightapi">Light → LightAPI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#visibility-to-visibilityapi">Visibility to VisibilityAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_schema_versioning.html#schemaversioning-codegen-support">Possible Code Generation Changes to Support Versioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#base-schema-class-is-always-the-latest-version-of-the-family">Base Schema Class is Always the Latest Version of the Family</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#class-per-version-with-typedef-mapping-to-current-or-latest-version-class">Class Per Version with Typedef Mapping to “Current” or “Latest” Version-Class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#single-c-class-that-provides-api-for-all-versions-of-the-schema-family">Single C++ Class That Provides API for ALL Versions of the Schema Family</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#compatible-cluster-classes-with-disambiguating-method-names">“Compatible Cluster” Classes with Disambiguating Method Names</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_stage_variables.html">Stage Variable Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wp_usdaudio.html">UsdAudio Proposal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdaudio.html#goal">Goal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdaudio.html#initial-requirements">Initial Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdaudio.html#proposed-prim-schema">Proposed Prim Schema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdaudio.html#spatialaudio">SpatialAudio</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdaudio.html#usd-sample">USD Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdaudio.html#other-notes-questions">Other Notes/Questions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdaudio.html#sdftimecode-and-time-scaling">SdfTimeCode and Time Scaling</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_usdshade.html">UsdShade Material Assignment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdshade.html#background">Background</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdshade.html#basic-proposal-for-collection-based-assignment">Basic Proposal for Collection-Based Assignment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#example-collection-based-assignment">Example Collection-Based Assignment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#refinement-1-specifying-binding-strength">Refinement 1: Specifying Binding Strength</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#refinement-2-material-purpose">Refinement 2: Material Purpose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#material-resolve-determining-the-bound-material-for-any-geometry-prim">Material Resolve: Determining the Bound Material for any Geometry Prim</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#usdshade-api">UsdShade API</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdshade.html#analysis-of-collection-based-binding">Analysis of Collection-Based Binding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdshade.html#integration">Integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#katana-import">Katana Import</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#maya-i-o">Maya I/O</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#houdini">Houdini</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdshade.html#remaining-questions">Remaining Questions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#performance">Performance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#implication-on-renderer-instancing">Implication on Renderer Instancing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#material-layering">Material Layering</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usdfaq.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usdfaq.html#general-questions">General Questions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-is-usd-and-why-should-i-use-it">What is USD and why should I use it?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-programming-languages-are-supported">What programming languages are supported?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#isn-t-usd-just-another-file-format">Isn’t USD just another file format?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#so-what-file-formats-does-usd-support">So what file formats does USD support?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-file-format-is-my-usd-file">What file format is my <span class="mono">.usd</span> file?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-character-encoding-does-usda-support">What character encoding does <span class="mono">.usda</span> support?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#how-can-i-convert-usd-files-between-binary-and-text">How can I convert USD files between binary and text?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-data-types-are-supported">What data types are supported?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-does-a-usd-file-look-like">What does a USD file look like?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usdfaq.html#subtler-aspects-of-scene-description-and-composition">Subtler Aspects of Scene Description and Composition</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#i-have-some-layers-i-want-to-combine-should-i-use-sublayers-or-references">I have some layers I want to combine: Should I use SubLayers or References?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-happens-to-overs-when-their-underlying-prim-is-moved-to-a-different-location-in-the-scenegraph">What happens to “overs” when their underlying prim is moved to a different location in the scenegraph?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#when-can-you-delete-a-reference-or-other-deletable-thing">When can you delete a reference (or other deletable thing)?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="usdfaq.html#list-edited-string-token-and-int-metadata">List-edited string, token, and int metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="usdfaq.html#list-edited-relationships-and-connections">List-edited relationships and connections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="usdfaq.html#list-edited-composition-arcs">List-edited composition arcs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-s-the-difference-between-an-over-and-a-typeless-def">What’s the difference between an “over” and a “typeless def” ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#why-can-t-i-instance-a-leaf-mesh-prim-directly">Why Can’t I Instance a Leaf Mesh Prim Directly?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usdfaq.html#build-and-runtime-issues">Build and Runtime Issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#how-do-i-use-the-tf-debug-mechanism">How do I use the <code class="docutils literal notranslate"><span class="pre">TF_DEBUG</span></code> mechanism?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#why-isn-t-python-finding-usd-modules">Why Isn’t Python Finding USD Modules?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#why-isn-t-this-plugin-being-built">Why Isn’t This Plugin Being Built?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#why-doesn-t-the-openusd-runtime-recognize-the-usd-file-format">Why doesn’t the OpenUSD runtime recognize the USD file format?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#why-isn-t-my-app-finding-usd-dlls-and-plugins-on-windows">Why Isn’t My App Finding USD DLLs and Plugins on Windows?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="maxperf.html">Performance Considerations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="maxperf.html#use-an-allocator-optimized-for-multithreading">Use an allocator optimized for multithreading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maxperf.html#use-binary-usd-files-for-geometry-and-shading-caches">Use binary “.usd” files for geometry and shading caches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maxperf.html#package-assets-with-payloads">Package assets with payloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maxperf.html#what-makes-a-usd-scene-heavy-expensive">What makes a USD scene heavy/expensive?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ref_performance_metrics.html">Performance Metrics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ref_performance_metrics.html#what-we-measure">What We Measure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref_performance_metrics.html#what-environment-is-used">What Environment Is Used</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#linux">Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#macos">macOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#windows">Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#usd-build">USD Build</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ref_performance_metrics.html#metrics">Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#performance-graphs-per-platform">Performance Graphs Per Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#standard-shader-ball">Standard Shader Ball</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#kitchen-set">Kitchen Set</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#alab">ALab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#moore-lane">Moore Lane</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ref_performance_metrics.html#running-performance-metrics-locally">Running Performance Metrics Locally</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#adding-custom-metrics">Adding Custom Metrics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">Third Party Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plugins_renderman.html">RenderMan USD Imaging Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plugins_renderman.html#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="plugins_renderman.html#building-hdprman">Building hdPrman</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins_renderman.html#running-hdprman">Running hdPrman</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="plugins_renderman.html#developer">Developer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="plugins_renderman.html#supported-render-pass-aovs">Supported Render Pass AOVs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plugins_alembic.html">Alembic USD Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plugins_alembic.html#known-limitations">Known Limitations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Collaborate</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/PixarAnimationStudios/OpenUSD">Source Code &#64; GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.openusd.org">OpenUSD Forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing_to_usd.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing_to_usd.html#contributor-license-agreement">Contributor License Agreement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing_to_usd.html#coding-conventions">Coding Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing_to_usd.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing_to_usd.html#git-workflow">Git Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing_to_usd.html#github-issues">GitHub Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing_to_usd.html#making-major-changes">Making Major Changes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing_to_usd.html#step-1-get-consensus-for-major-changes">Step 1. Get consensus for major changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing_to_usd.html#step-2-make-code-changes">Step 2. Make code changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing_to_usd.html#step-3-test-code-changes">Step 3. Test code changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing_to_usd.html#step-4-submit-code-for-review">Step 4. Submit code for review</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing_to_usd.html#step-5-pixar-will-test-and-land-your-changes">Step 5. Pixar will test and land your changes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_schedule.html">Release Schedule</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Press</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="press_opensource_release.html">Open Source Release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="press_opensource_announce.html">Open Source Announcement</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #606060" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Universal Scene Description</a>
+      </nav>
+
+      <div class="wy-nav-content">
+  <style>
+    .version_warning {
+        margin-bottom: 10px;
+    }
+  </style>
+  <div class="version_warning_placeholder"></div>
+  
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="wp.html">Proposals</a></li>
+      <li class="breadcrumb-item active">Asset Resolution (Ar) 2.0</li>
+  <li class="wy-breadcrumbs-aside">
+    <div class="version_switcher_placeholder"></div>
+  </li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="asset-resolution-ar-2-0">
+<h1>Asset Resolution (Ar) 2.0<a class="headerlink" href="#asset-resolution-ar-2-0" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This proposal has been implemented. This document exists for historical
+reference and may be outdated. For up-to-date documentation, see the
+<a class="reference external" href="api/ar_page_front.html">Ar overview page</a>.</p>
+</div>
+<p>Copyright © 2020, Pixar Animation Studios,  <em>version 1.0</em></p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#background-and-goals" id="id20">Background and Goals</a></p></li>
+<li><p><a class="reference internal" href="#tasks" id="id21">Tasks</a></p>
+<ul>
+<li><p><a class="reference internal" href="#general-cleanup" id="id22">General Cleanup</a></p></li>
+<li><p><a class="reference internal" href="#add-documentation-and-examples" id="id23">Add Documentation and Examples</a></p></li>
+<li><p><a class="reference internal" href="#add-identifier-concept" id="id24">Add Identifier Concept</a></p></li>
+<li><p><a class="reference internal" href="#remove-repository-and-search-path" id="id25">Remove Repository and Search Path</a></p></li>
+<li><p><a class="reference internal" href="#improve-resolve-and-asset-info" id="id26">Improve Resolve and Asset Info</a></p></li>
+<li><p><a class="reference internal" href="#remove-filesystem-specific-code" id="id27">Remove Filesystem-specific Code</a></p></li>
+<li><p><a class="reference internal" href="#add-asset-writing-interface" id="id28">Add Asset Writing Interface</a></p></li>
+<li><p><a class="reference internal" href="#add-uri-resolvers" id="id29">Add URI Resolvers</a></p></li>
+<li><p><a class="reference internal" href="#allow-creation-of-arresolvercontext-from-strings" id="id30">Allow Creation of ArResolverContext From Strings</a></p></li>
+<li><p><a class="reference internal" href="#remove-arresolver-configureresolverforasset" id="id31">Remove ArResolver::ConfigureResolverForAsset</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#rollout-and-transition" id="id32">Rollout and Transition</a></p></li>
+<li><p><a class="reference internal" href="#proposed-api" id="id33">Proposed API</a></p></li>
+</ul>
+</nav>
+<section id="background-and-goals">
+<h2><a class="toc-backref" href="#id20" role="doc-backlink">Background and Goals</a><a class="headerlink" href="#background-and-goals" title="Link to this heading"></a></h2>
+<p>The Ar 2.0 project is an effort to revise the Ar (Asset Resolution) library used
+by USD to interface with a user’s asset management and storage infrastructure.</p>
+<p>The initial version of Ar was implemented prior to USD’s open source release
+in 2016. The primary focus at the time was to extract Pixar-specific
+implementation details from the USD codebase in preparation for USD’s public
+release. Although Ar was intended to be a general-purpose interface, it was not
+entirely successful in that regard. For example, Ar was geared towards assets
+stored on a traditional filesystem, and parts of USD still assume that asset
+paths are filesystem paths that can be manipulated as such. Also, some
+Pixar-specific concepts like repository paths and search paths are still present
+in the interface.</p>
+<p>Ar 2.0 aims to address these issues, as well as incorporate feedback and add
+support for new use cases that have developed over the last few years.</p>
+</section>
+<section id="tasks">
+<h2><a class="toc-backref" href="#id21" role="doc-backlink">Tasks</a><a class="headerlink" href="#tasks" title="Link to this heading"></a></h2>
+<section id="general-cleanup">
+<h3><a class="toc-backref" href="#id22" role="doc-backlink">General Cleanup</a><a class="headerlink" href="#general-cleanup" title="Link to this heading"></a></h3>
+<p>The <span class="mono">ArResolver</span> interface will be reimplemented using the non-virtual
+interface (NVI) pattern (as described <a class="reference external" href="http://www.gotw.ca/publications/mill18.htm">here</a>) to provide more flexibility and
+potentially allow future changes without breaking the public interface.</p>
+<p>In the sections below, we will be presenting the proposed new public API for
+<span class="mono">ArResolver</span>. See the proposed headers for details on the virtual functions
+used to override behavior.</p>
+<p>The API on <span class="mono">ArResolver</span> will all be marked const to aid with writing
+const-correct code and as an indicator that these functions may be called
+concurrently and must be thread-safe (following the semantics used by the
+Standard Library).</p>
+</section>
+<section id="add-documentation-and-examples">
+<h3><a class="toc-backref" href="#id23" role="doc-backlink">Add Documentation and Examples</a><a class="headerlink" href="#add-documentation-and-examples" title="Link to this heading"></a></h3>
+<p>More extensive documentation and example resolver implementations will be
+provided as part of this work.</p>
+</section>
+<section id="add-identifier-concept">
+<h3><a class="toc-backref" href="#id24" role="doc-backlink">Add Identifier Concept</a><a class="headerlink" href="#add-identifier-concept" title="Link to this heading"></a></h3>
+<p>The current <span class="mono">ArResolver</span> interface contains a number of functions that are
+used primarily in <span class="mono">Sdf</span> to compute identifiers for <span class="mono">SdfLayer</span> objects
+given an asset path or an (anchoring asset path, relative asset path) pair,
+e.g., for calls to <span class="mono">SdfLayer::FindOrOpen</span> or <span class="mono">CreateNew</span>. These
+functions lack clear documentation and introduce confusing concepts, some of
+which are remnants of Pixar-specific implementation details. To simplify the
+interface, these functions will be removed:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Removed</span><a class="headerlink" href="#id1" title="Link to this code"></a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ArResolver</span><span class="o">::</span><span class="n">AnchorRelativePath</span>
+<span class="n">ArResolver</span><span class="o">::</span><span class="n">IsRelativePath</span>
+<span class="n">ArResolver</span><span class="o">::</span><span class="n">IsRepositoryPath</span>
+<span class="n">ArResolver</span><span class="o">::</span><span class="n">IsSearchPath</span>
+<span class="n">ArResolver</span><span class="o">::</span><span class="n">ComputeNormalizedPath</span>
+<span class="n">ArResolver</span><span class="o">::</span><span class="n">ComputeRepositoryPath</span>
+</pre></div>
+</div>
+</div>
+<p>and replaced with:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Added</span><a class="headerlink" href="#id2" title="Link to this code"></a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ArIdentifier</span>
+<span class="nf">ArResolver::CreateIdentifier</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">assetPath</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="n">ArIdentifier</span>
+<span class="nf">ArResolver::CreateIdentifier</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ArIdentifier</span><span class="o">&amp;</span><span class="w"> </span><span class="n">anchorIdentifier</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">assetPath</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="n">ArIdentifier</span>
+<span class="nf">ArResolver::CreateIdentifierForNewAsset</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">assetPath</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="n">ArIdentifier</span>
+<span class="nf">ArResolver::CreateIdentifierForNewAsset</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ArIdentifier</span><span class="o">&amp;</span><span class="w"> </span><span class="n">anchorIdentifier</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">assetPath</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<p>These functions are responsible for taking an asset path and computing an
+<span class="mono">ArIdentifier</span> that refers to a logical asset. An <span class="mono">ArIdentifier</span> is a
+simple wrapper around a <span class="mono">std::string</span> to allow clients to more clearly
+indicate intent, as opposed to using bare <span class="mono">std::string</span> objects everywhere.</p>
+<p>This identifier has consequences for operations like <span class="mono">SdfLayer::Reload,</span>
+which re-resolve the identifier to see if an update is necessary. In the
+simplest cases, the identifier may just be the same as the input asset path, but
+for more complex resolution behaviors determining the identifier may be more
+involved.</p>
+<p>For example, the <span class="mono">ArDefaultResolver</span> implementation included with USD
+supports normal filesystem paths, like <code class="file docutils literal notranslate"><span class="pre">/Dir/File.usd</span></code> or
+<code class="file docutils literal notranslate"><span class="pre">./Dir/File.usd</span></code>. In these cases, the corresponding identifier would
+simply be the normalized, absolutized (anchored either to the current working
+directory or the supplied anchor path) forms of these paths. So, calling
+<span class="mono">SdfLayer::FindOrOpen</span> with these paths would return SdfLayer objects with
+identifiers <code class="file docutils literal notranslate"><span class="pre">/Dir/File.usd</span></code> and <code class="file docutils literal notranslate"><span class="pre">/current/working/dir/Dir/File.usd</span></code>.</p>
+<p><span class="mono">ArDefaultResolver</span> also supports “search paths” that look like
+<code class="file docutils literal notranslate"><span class="pre">Dir/File.usd</span></code>. For these paths, <span class="mono">ArDefaultResolver</span> searches an
+:ordered list of directories specified by the <span class="mono">ArDefaultResolverContext</span> by
+:prepending those directories to the path and returning the first one that
+:exists on disk. For these search paths, the corresponding identifier is the
+:search path itself. So, calling <span class="mono">SdfLayer::FindOrOpen</span> with the above path
+:would return an SdfLayer with identifier <code class="file docutils literal notranslate"><span class="pre">Dir/File.usd</span></code>. Calling
+:<span class="mono">SdfLayer::Reload</span> on this layer would cause the identifier to be resolved
+:again, but since the identifier was kept in search path form
+:<span class="mono">ArDefaultResolver</span> knows to re-run the search to see if the asset had
+:been installed in a new directory in the search order.</p>
+<p>The <span class="mono">CreateIdentifierForNewAsset</span> functions are separated from
+<span class="mono">CreateIdentifier</span> to support existing functionality where calling
+<span class="mono">SdfLayer::CreateNew</span> with a particular asset path may return an
+<span class="mono">SdfLayer</span> with a different identifier than calling
+<span class="mono">SdfLayer::FindOrOpen</span> with the same asset path. This distinction will show
+up again in the <span class="mono">Resolve</span> functions described in the next section.</p>
+<p>For example, when using <span class="mono">ArDefaultResolver</span> calling
+<span class="mono">SdfLayer::CreateNew</span> will always anchor the given path to the current
+working directory. Calling <span class="mono">SdfLayer::CreateNew</span> with a search path like
+<code class="file docutils literal notranslate"><span class="pre">Dir/File.usd</span></code> will always result in an <span class="mono">SdfLayer</span> with identifier
+<code class="file docutils literal notranslate"><span class="pre">/current/working/dir/Dir/File.usd</span></code> and create the new layer at that
+path. Calling <span class="mono">SdfLayer::FindOrOpen</span> with that same search path would
+instead return an <span class="mono">SdfLayer</span> with identifier <code class="file docutils literal notranslate"><span class="pre">Dir/File.usd</span></code> as
+described above.</p>
+</section>
+<section id="remove-repository-and-search-path">
+<h3><a class="toc-backref" href="#id25" role="doc-backlink">Remove Repository and Search Path</a><a class="headerlink" href="#remove-repository-and-search-path" title="Link to this heading"></a></h3>
+<p>The addition of the identifier concept above allows us to remove the repository
+path and search path concepts from Ar. Aside from the functions mentioned above,
+the following will also be removed from Ar and related libraries:</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Removed</span><a class="headerlink" href="#id3" title="Link to this code"></a></div>
+<div class="highlight-cp notranslate"><div class="highlight"><pre><span></span><span class="n">ArAssetInfo</span><span class="p">::</span><span class="n">repoPath</span>
+<span class="n">SdfLayer</span><span class="p">::</span><span class="n">GetRepositoryPath</span>
+</pre></div>
+</div>
+</div>
+<p>Repository paths are currently used as an additional index in the
+<span class="mono">SdfLayer</span> registry. This will also be removed as part of this work.</p>
+</section>
+<section id="improve-resolve-and-asset-info">
+<h3><a class="toc-backref" href="#id26" role="doc-backlink">Improve Resolve and Asset Info</a><a class="headerlink" href="#improve-resolve-and-asset-info" title="Link to this heading"></a></h3>
+<p>The Resolve functions on <span class="mono">ArResolver</span> will be modified to:</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Changed</span><a class="headerlink" href="#id4" title="Link to this code"></a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ArResolvedPath</span><span class="w"> </span><span class="nf">Resolve</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ArIdentifier</span><span class="o">&amp;</span><span class="w"> </span><span class="n">identifier</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ArAssetInfo</span><span class="o">*</span><span class="w"> </span><span class="n">assetInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="n">ArResolvedPath</span><span class="w"> </span><span class="nf">ResolveForNewAsset</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ArIdentifier</span><span class="o">&amp;</span><span class="w"> </span><span class="n">identifier</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ArAssetInfo</span><span class="o">*</span><span class="w"> </span><span class="n">assetInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<p>Similar to <span class="mono">ArIdentifier,</span> an <span class="mono">ArResolvedPath</span> is a simple wrapper
+around a <span class="mono">std::string</span> that makes it clear to clients when they are
+interacting with a resolved vs. unresolved path. This will help resolve
+confusion around whether other <span class="mono">ArResolver</span> APIs are expected to handle
+resolved or unresolved paths – the APIs that require a resolved path will be
+updated to take these objects as parameters instead of a bare
+<span class="mono">std::string</span>.</p>
+<p>We considered the idea of allowing resolvers to store arbitrary blind data in an
+<span class="mono">ArResolvedPath.</span> This would allow resolvers to store additional
+information during asset resolution that could be used later when calling other
+<span class="mono">ArResolver</span> functions, like <span class="mono">OpenAsset.</span> However, there were concerns
+that clients would fill the blind data with information <em>required</em> to consume
+the resolved path in these APIs. This would potentially break the ability to
+replace an authored asset path in a USD layer with its resolved path to ‘bake
+in’ the asset resolution for workflows like asset isolation/freezing. These
+concerns led to this idea being dropped, at least for now.</p>
+<p>Like <span class="mono">CreateIdentifierForNewAsset,</span> <span class="mono">ResolveForNewAsset</span> is required
+primarily for <span class="mono">SdfLayer::CreateNew</span> to resolve the given asset path to a
+location where a new layer may be written. <span class="mono">Resolve</span> cannot be used for
+this purpose, since it is expected to return an empty resolved path if no asset
+exists at a given location. <span class="mono">ResolveForNewAsset</span> is a replacement for
+<span class="mono">ArResolver::ComputeLocalPath</span> and will allow us to remove a number of
+other related functions for layer creation as well:</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">Removed</span><a class="headerlink" href="#id5" title="Link to this code"></a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ArResolver</span><span class="o">::</span><span class="n">ComputeLocalPath</span>
+<span class="n">ArResolver</span><span class="o">::</span><span class="n">CanCreateNewLayerWithIdentifier</span>
+<span class="n">ArResolver</span><span class="o">::</span><span class="n">CanWriteLayerToPath</span>
+</pre></div>
+</div>
+</div>
+<p>Both <span class="mono">Resolve</span> and <span class="mono">ResolveForNewAsset</span> will accept an optional
+<span class="mono">ArAssetInfo</span> to populate during resolution. In the old <span class="mono">ArResolver</span>
+interface, this was done via a separate <span class="mono">ResolveWithAssetInfo</span> function to
+avoid adding a default parameter to a public virtual function. Using the public
+NVI pattern avoids this issue, allowing us to remove <span class="mono">ResolveWithAssetInfo</span>
+and reduce the size of the C++ API. (Note, however, that
+<span class="mono">ResolveWithAssetInfo</span> and <span class="mono">ResolveForNewAssetWithAssetInfo</span> will
+still exist in the Python API since there is no concept of an optional output
+parameter in Python.) These functions will be the only ones expected to populate
+an <span class="mono">ArAssetInfo;</span> the <span class="mono">UpdateAssetInfo</span> function will be removed.</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">Removed</span><a class="headerlink" href="#id6" title="Link to this code"></a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ArResolver</span><span class="o">::</span><span class="n">ResolveWithAssetInfo</span>
+<span class="n">ArResolver</span><span class="o">::</span><span class="n">UpdateAssetInfo</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="remove-filesystem-specific-code">
+<h3><a class="toc-backref" href="#id27" role="doc-backlink">Remove Filesystem-specific Code</a><a class="headerlink" href="#remove-filesystem-specific-code" title="Link to this heading"></a></h3>
+<p>Remnants of Ar’s filesystem-centric origins still exist in the ArResolver
+interface and various parts of the USD codebase. A large part of the Ar 2.0
+project will be finding and replacing these remnants with Ar-based abstractions.</p>
+<p>The <span class="mono">ArResolver::FetchToLocalResolvedPath</span> function was an early attempt at
+supporting asset systems that did not store their data directly on disk. The
+idea was that USD would call this function to save assets from remote data
+stores onto the local filesystem. This was necessary because, at the time, USD
+only supported reading data from files on disk. Since then, much of the codebase
+has been updated to use the <span class="mono">ArAsset</span> API, which provides a more general
+interface for reading data from any backing store and does not require assets to
+be saved locally. So, these functions will be removed:</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">Removed</span><a class="headerlink" href="#id7" title="Link to this code"></a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ArResolver</span><span class="o">::</span><span class="n">FetchToLocalResolvedPath</span>
+<span class="n">SdfFileFormat</span><span class="o">::</span><span class="n">LayersAreFileBased</span>
+</pre></div>
+</div>
+</div>
+<p>The primary downside of this removal is that it potentially makes interacting
+with 3rd-party libraries that require a file on disk more difficult. For
+example, the Alembic library requires a file path to open an Alembic archive. To
+support non-filesystem asset stores, the usdAbc plugin could have used
+FetchToLocalResolvedPath to save a <span class="mono">.abc</span> file to the local disk and
+passed that file path to the Alembic API. This would give the <span class="mono">ArResolver</span>
+implementation control over how and where the .abc file would be saved. Without
+this function, an alternate approach would be needed. One possibility is that
+the usdAbc plugin could use the <span class="mono">ArAsset</span> API to open the .abc file from
+its data store and then save the file to a temporary location. But, that would
+move control of the localization process to the usdAbc plugin itself.</p>
+</section>
+<section id="add-asset-writing-interface">
+<h3><a class="toc-backref" href="#id28" role="doc-backlink">Add Asset Writing Interface</a><a class="headerlink" href="#add-asset-writing-interface" title="Link to this heading"></a></h3>
+<p>The <span class="mono">ArAsset</span> API allows USD to read data from non-filesystem locations and
+most of the USD codebase that reads data from assets has been updated to take
+advantage of this. However, parts of USD that write data out (for example, the
+<span class="mono">.usd/.usda/.usdc</span> file formats) still use filesystem-specific API to
+do so. To fully separate USD from filesystems, an API for writing data will be
+added to <span class="mono">ArResolver:</span></p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">Added</span><a class="headerlink" href="#id8" title="Link to this code"></a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ArWritableAsset</span><span class="o">&gt;</span>
+<span class="n">ArResolver</span><span class="o">::</span><span class="n">OpenAssetForUpdate</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ArResolvedPath</span><span class="o">&amp;</span><span class="w"> </span><span class="n">resolvedPath</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ArWritableAsset</span><span class="o">&gt;</span>
+<span class="n">ArResolver</span><span class="o">::</span><span class="n">OpenAssetForReplace</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ArResolvedPath</span><span class="o">&amp;</span><span class="w"> </span><span class="n">resolvedPath</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="c1">/// \class ArWritableAsset</span>
+<span class="c1">/// Interface for writing to an asset.</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ArWritableAsset</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">Write</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">offset</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<p>These functions will return instances of a new <span class="mono">ArWritableAsset</span> interface
+that provide an interface for writing bytes to some destination. This interface
+has been kept as minimal as possible to make it easier to implement. However,
+resolvers are not required to implement these functions and may return a NULL
+pointer if they do not support writes.</p>
+<p>The USD codebase (particularly the file formats that ship with USD) will be
+modified to use this new API for writing data. This will allow us to remove
+<span class="mono">ArResolver::CreatePathForLayer</span>.</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">Removed</span><a class="headerlink" href="#id9" title="Link to this code"></a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ArResolver</span><span class="o">::</span><span class="n">CreatePathForLayer</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="add-uri-resolvers">
+<h3><a class="toc-backref" href="#id29" role="doc-backlink">Add URI Resolvers</a><a class="headerlink" href="#add-uri-resolvers" title="Link to this heading"></a></h3>
+<p>Ar 2.0 will add native support for multiple resolver implementations based on
+URI scheme. This will allow users to easily plug in support for multiple asset
+systems and forms of asset paths without needing to modify the existing resolver
+implementation. Ar will still require a “primary” resolver that will handle
+asset paths without an associated URI or an unhandled URI.</p>
+<p>To implement a URI resolver, users would implement an <span class="mono">ArResolver</span> subclass
+and associate it with a given URI scheme or schemes in that subclass’ entry in
+the corresponding <span class="mono">plugInfo.json</span> file. At runtime, Ar would parse
+given asset paths to determine their URI scheme and dispatch it to the
+associated URI resolver. If no URI scheme is present in the asset path or no URI
+resolver for the scheme is found, Ar will dispatch the asset path to the primary
+resolver that is used today.</p>
+<p>For example, a user might implement an <span class="mono">HTTPResolver</span> that handles
+<span class="mono">http:</span> and <span class="mono">https:</span> asset paths like:</p>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">URI Resolver Example</span><a class="headerlink" href="#id10" title="Link to this code"></a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">httpResolver</span><span class="p">.</span><span class="n">h</span><span class="o">/</span><span class="p">.</span><span class="n">cpp</span><span class="o">:</span>
+
+<span class="c1">/// \class HTTPResolver</span>
+<span class="c1">/// ArResolver implementation handling http and https asset paths.</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HTTPResolver</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">ArResolver</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// ... implementation!</span>
+<span class="p">};</span>
+
+<span class="n">plugInfo</span><span class="p">.</span><span class="n">json</span><span class="o">:</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;Plugins&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s">&quot;Info&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s">&quot;Types&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="s">&quot;HTTPResolver&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">&quot;bases&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;ArResolver&quot;</span><span class="p">],</span>
+<span class="w">                    </span><span class="s">&quot;uriSchemes&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;http&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;https&quot;</span><span class="p">]</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">...</span>
+<span class="w">     </span><span class="p">],</span>
+<span class="w">     </span><span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>At runtime, the <span class="mono">HTTPResolver</span> would be registered alongside the default
+<span class="mono">ArDefaultResolver.</span> Ar would handle dispatching to the appropriate
+resolver automatically, so:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ArGetResolver</span><span class="p">().</span><span class="n">Resolve</span><span class="p">(</span><span class="s">&quot;https://...&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">HTTPResolver</span>
+<span class="n">ArGetResolver</span><span class="p">().</span><span class="n">Resolve</span><span class="p">(</span><span class="s">&quot;/foo/bar/...&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">ArDefaultResolver</span>
+</pre></div>
+</div>
+<p><span class="mono">ArResolverContext</span> is a container used to supply additional data to
+resolve implementations for use during asset resolution. Support for multiple
+resolvers will be added so that context objects for different resolvers can be
+held in a single <span class="mono">ArResolverContext</span> object and passed through to
+<span class="mono">UsdStage</span> and other consumers as they are today. For example,
+<span class="mono">ArDefaultResolver</span> has an associated <span class="mono">ArDefaultResolverContext</span> that
+allows clients to specify directories to search when resolving a search
+path. The <span class="mono">HTTPResolver</span> might have a context object to allow users to
+specify credentials for retrieving assets from a web server:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">httpResolverContext</span><span class="p">.</span><span class="n">h</span><span class="o">/</span><span class="p">.</span><span class="n">cpp</span><span class="o">:</span>
+
+<span class="c1">/// \class HTTPResolverContext</span>
+<span class="c1">/// Context object for use with ArResolverContext that provides extra</span>
+<span class="c1">/// information when resolving http and https asset paths.</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HTTPResolverContext</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">HTTPResolverContext</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">password</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>A client could create a <span class="mono">UsdStage</span> using these context objects like:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ArResolverContext</span><span class="w"> </span><span class="n">ctx</span><span class="p">({</span>
+<span class="w">    </span><span class="n">HTTPResolverContext</span><span class="p">(</span><span class="s">&quot;user&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;12345&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">ArDefaultResolverContext</span><span class="p">({</span><span class="s">&quot;/search/dir/1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/search/dir/2&quot;</span><span class="p">})</span>
+<span class="p">});</span>
+
+<span class="n">UsdStage</span><span class="w"> </span><span class="n">newStage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UsdStage</span><span class="o">::</span><span class="n">Open</span><span class="p">(...,</span><span class="w"> </span><span class="n">ctx</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Note that binding an <span class="mono">ArResolverContext</span> via <span class="mono">ArResolverContextBinder</span>
+will override any <span class="mono">ArResolverContext</span> that had previously been bound. This
+behavior ensures consistency, for example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ArResolverContext</span><span class="w"> </span><span class="n">ctx_1</span><span class="p">({</span>
+<span class="w">    </span><span class="n">ArDefaultResolverContext</span><span class="p">({</span><span class="s">&quot;/search/dir/3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/search/dir/4&quot;</span><span class="p">})</span>
+<span class="p">});</span>
+
+<span class="n">ArResolverContext</span><span class="w"> </span><span class="n">ctx_2</span><span class="p">({</span>
+<span class="w">    </span><span class="n">HTTPResolverContext</span><span class="p">(</span><span class="s">&quot;user&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;12345&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">ArDefaultResolverContext</span><span class="p">({</span><span class="s">&quot;/search/dir/1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/search/dir/2&quot;</span><span class="p">})</span>
+<span class="p">});</span>
+
+<span class="n">ArResolverContextBinder</span><span class="w"> </span><span class="nf">binder_2</span><span class="p">(</span><span class="n">ctx_2</span><span class="p">);</span>
+
+<span class="c1">// Create a new UsdStage that will bind ctx_1 when resolving asset paths.</span>
+<span class="c1">// In particular, this means that the HTTPResolverContext specified in</span>
+<span class="c1">// ctx_2 should not be used when resolving asset paths on this stage,</span>
+<span class="c1">// even though no HTTPResolverContext object was specified in ctx_1.</span>
+<span class="n">UsdStage</span><span class="w"> </span><span class="n">newStage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UsdStage</span><span class="o">::</span><span class="n">Open</span><span class="p">(...,</span><span class="w"> </span><span class="n">ctx_1</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="allow-creation-of-arresolvercontext-from-strings">
+<h3><a class="toc-backref" href="#id30" role="doc-backlink">Allow Creation of ArResolverContext From Strings</a><a class="headerlink" href="#allow-creation-of-arresolvercontext-from-strings" title="Link to this heading"></a></h3>
+<p>The <span class="mono">ArResolver</span> interface currently allows implementations to create a
+default resolver context or a resolver context for a given asset via
+<span class="mono">CreateDefaultContext</span> and <span class="mono">CreateDefaultContextForAsset.</span> However,
+this level of control is insufficient for DCCs and plugins that want to allow
+users to specify other resolver contexts that are specific to their resolver
+implementation. To support this, a new function will be added to allow
+<span class="mono">ArResolverContext</span> objects to be created from strings:</p>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">Added</span><a class="headerlink" href="#id11" title="Link to this code"></a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">ArResolverContext</span>
+<span class="nf">ArResolverContext::CreateFromString</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">str</span><span class="p">);</span>
+
+<span class="k">static</span><span class="w"> </span><span class="n">ArResolverContext</span>
+<span class="nf">ArResolverContext::CreateFromString</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">strs</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<p>These functions will call protected virtual functions on <span class="mono">ArResolver</span> to
+allow resolvers to parse the given string and return an appropriate
+<span class="mono">ArResolverContext</span> object. Using the first overload would pass the given
+string to the primary resolver to parse and return an <span class="mono">ArResolverContext.</span>
+An example usage might look like:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ArResolverContext</span><span class="w"> </span><span class="n">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ArResolverContext</span><span class="o">::</span><span class="n">CreateFromString</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;/search/dir/1:/search/dir/2&quot;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>The second form is used to create an <span class="mono">ArResolverContext</span> for multiple
+resolvers. An example usage might look like:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ArResolverContext</span><span class="w"> </span><span class="n">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ArResolverContext</span><span class="o">::</span><span class="n">CreateFromString</span><span class="p">({</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;http&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;username=user,pw=12345&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/search/dir/1:/search/dir/2&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>In this case, <span class="mono">ArResolverContext</span> will use the URI resolver associated with
+the <span class="mono">http</span> scheme to create a context using the “username=…” string, use the
+primary resolver to create a context using the “/search/…” string, then
+combine them into the returned <span class="mono">ArResolverContext</span> object.</p>
+<p>Note that the public API is defined on <span class="mono">ArResolverContext.</span> This made more
+sense for organization and avoids some ambiguities that would arise
+(particularly for multiple resolver support) if this API was put on
+<span class="mono">ArResolver</span> instead. For consistency, the existing functions for creating
+default contexts will also be moved to <span class="mono">ArResolverContext</span>.</p>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">Added</span><a class="headerlink" href="#id12" title="Link to this code"></a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">ArResolverContext</span>
+<span class="nf">ArResolverContext::CreateDefault</span><span class="p">();</span>
+
+<span class="k">static</span><span class="w"> </span><span class="n">ArResolverContext</span>
+<span class="nf">ArResolverContext::CreateDefaultForAsset</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">assetPath</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-text">Removed</span><a class="headerlink" href="#id13" title="Link to this code"></a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ArResolver</span><span class="o">::</span><span class="n">CreateDefaultContext</span>
+<span class="n">ArResolver</span><span class="o">::</span><span class="n">CreateDefaultContextForAsset</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="remove-arresolver-configureresolverforasset">
+<h3><a class="toc-backref" href="#id31" role="doc-backlink">Remove ArResolver::ConfigureResolverForAsset</a><a class="headerlink" href="#remove-arresolver-configureresolverforasset" title="Link to this heading"></a></h3>
+<p>This function allows resolvers the opportunity to configure themselves in
+applications that only load a single asset. This seems like an odd and
+unnecessarily specific case to call out and does not cover any use cases where
+multiple assets may be loaded. Animal Logic’s Maya USD plugin actually hijacks
+this function and allows users to pass in a general configuration string instead
+of an asset path; this will hopefully no longer be necessary with the new
+ability to create <span class="mono">ArResolverContext</span> objects from strings.</p>
+<p>To simplify the <span class="mono">ArResolver</span> API, this function will be removed.</p>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-text">Removed</span><a class="headerlink" href="#id14" title="Link to this code"></a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ArResolver</span><span class="o">::</span><span class="n">ConfigureResolverForAsset</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="rollout-and-transition">
+<h2><a class="toc-backref" href="#id32" role="doc-backlink">Rollout and Transition</a><a class="headerlink" href="#rollout-and-transition" title="Link to this heading"></a></h2>
+<p>Ar 2.0 will substantially modify the <span class="mono">ArResolver</span> interface and other
+related classes. To maintain backwards compatibility with existing
+<span class="mono">ArResolver</span> implementations and client code sites, users will be able to
+specify whether they want to enable Ar 2.0 at build time. If enabled, the
+<span class="mono">AR_VERSION</span> flag will be defined and to 2 and the Ar 2.0 changes will be
+built and installed, causing old code to break if not updated to accommodate
+those changes. If disabled, <span class="mono">AR_VERSION</span> will be set to 1 and Ar will
+revert back to the code that exists today, ensuring no change in behavior or
+build breakages.</p>
+<p>For its initial release, Ar 2.0 will be disabled by default. The current Ar
+implementation will remain the default for backwards compatibility, but will be
+deprecated. Users will be able to enable Ar 2.0 using the build flag to begin
+testing and transitioning their resolver implementations and client code to the
+new interface. Ar 2.0 will be enabled by default in the subsequent release, and
+the old Ar implementation will be removed at that time.</p>
+</section>
+<section id="proposed-api">
+<h2><a class="toc-backref" href="#id33" role="doc-backlink">Proposed API</a><a class="headerlink" href="#proposed-api" title="Link to this heading"></a></h2>
+<p>The following are rough sketches of the proposed new interface on
+<span class="mono">ArResolver</span> and related classes. These are not final and subject to
+change.</p>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-text">ar/resolver.h</span><a class="headerlink" href="#id15" title="Link to this code"></a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">/// \class ArResolver</span>
+<span class="c1">///</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ArResolver</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">/// Identifiers</span>
+<span class="w">    </span><span class="c1">/// @{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">ArIdentifier</span><span class="w"> </span><span class="n">CreateIdentifier</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">assetPath</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">ArIdentifier</span><span class="w"> </span><span class="nf">CreateIdentifier</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">ArIdentifier</span><span class="o">&amp;</span><span class="w"> </span><span class="n">anchorIdentifier</span><span class="p">,</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">assetPath</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">ArIdentifier</span><span class="w"> </span><span class="nf">CreateIdentifierForNewAsset</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">assetPath</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">ArIdentifier</span><span class="w"> </span><span class="nf">CreateIdentifierForNewAsset</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">ArIdentifier</span><span class="o">&amp;</span><span class="w"> </span><span class="n">anchorIdentifier</span><span class="p">,</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">assetPath</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="k">protected</span><span class="o">:</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">ArIdentifier</span><span class="w"> </span><span class="n">_CreateIdentifier</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">assetPath</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">ArIdentifier</span><span class="w"> </span><span class="nf">_CreateIdentifier</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">ArIdentifier</span><span class="o">&amp;</span><span class="w"> </span><span class="n">anchorIdentifier</span><span class="p">,</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">assetPath</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">ArIdentifier</span><span class="w"> </span><span class="nf">_CreateIdentifierForNewAsset</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">assetPath</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">ArIdentifier</span><span class="w"> </span><span class="nf">_CreateIdentifierForNewAsset</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">ArIdentifier</span><span class="o">&amp;</span><span class="w"> </span><span class="n">anchorIdentifier</span><span class="p">,</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">assetPath</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">/// @}</span>
+
+<span class="w">    </span><span class="c1">/// Resolve</span>
+<span class="w">    </span><span class="c1">/// @{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">ArResolvedPath</span><span class="w"> </span><span class="n">Resolve</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">ArIdentifier</span><span class="o">&amp;</span><span class="w"> </span><span class="n">identifier</span><span class="p">,</span>
+<span class="w">        </span><span class="n">ArAssetInfo</span><span class="o">*</span><span class="w"> </span><span class="n">assetInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">/// By default this function is just a convenience wrapper that</span>
+<span class="w">    </span><span class="c1">/// is equivalent to Resolve(CreateIdentifier(assetPath), assetInfo);</span>
+<span class="w">    </span><span class="n">ArResolvedPath</span><span class="w"> </span><span class="nf">Resolve</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">assetPath</span><span class="p">,</span>
+<span class="w">        </span><span class="n">ArAssetInfo</span><span class="o">*</span><span class="w"> </span><span class="n">assetInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">ArResolvedPath</span><span class="w"> </span><span class="nf">ResolveForNewAsset</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">ArIdentifier</span><span class="o">&amp;</span><span class="w"> </span><span class="n">identifier</span><span class="p">,</span>
+<span class="w">        </span><span class="n">ArAssetInfo</span><span class="o">*</span><span class="w"> </span><span class="n">assetInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">/// By default this function is just a convenience wrapper that</span>
+<span class="w">    </span><span class="c1">/// is equivalent to Resolve(CreateIdentifierForNewAsset(assetPath), assetInfo);</span>
+<span class="w">    </span><span class="n">ArResolvedPath</span><span class="w"> </span><span class="nf">ResolveForNewAsset</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">assetPath</span><span class="p">,</span>
+<span class="w">        </span><span class="n">ArAssetInfo</span><span class="o">*</span><span class="w"> </span><span class="n">assetInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="k">protected</span><span class="o">:</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">ArResolvedPath</span><span class="w"> </span><span class="n">_Resolve</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">assetPath</span>
+<span class="w">        </span><span class="n">ArAssetInfo</span><span class="o">*</span><span class="w"> </span><span class="n">assetInfo</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">_Resolve</span><span class="p">(</span><span class="n">CreateIdentifier</span><span class="p">(</span><span class="n">assetPath</span><span class="p">),</span><span class="w"> </span><span class="n">assetInfo</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">ArResolvedPath</span><span class="w"> </span><span class="n">_Resolve</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">ArIdentifier</span><span class="o">&amp;</span><span class="w"> </span><span class="n">identifier</span><span class="p">,</span>
+<span class="w">        </span><span class="n">ArAssetInfo</span><span class="o">*</span><span class="w"> </span><span class="n">assetInfo</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">ArResolvedPath</span><span class="w"> </span><span class="nf">_ResolveForNewAsset</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">assetPath</span>
+<span class="w">        </span><span class="n">ArAssetInfo</span><span class="o">*</span><span class="w"> </span><span class="n">assetInfo</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">_ResolveForNewAsset</span><span class="p">(</span><span class="n">CreateIdentifierForNewAsset</span><span class="p">(</span><span class="n">assetPath</span><span class="p">),</span><span class="w"> </span><span class="n">assetInfo</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">ArResolvedPath</span><span class="w"> </span><span class="nf">_ResolveForNewAsset</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">ArIdentifier</span><span class="o">&amp;</span><span class="w"> </span><span class="n">identifier</span><span class="p">,</span>
+<span class="w">        </span><span class="n">ArAssetInfo</span><span class="o">*</span><span class="w"> </span><span class="n">assetInfo</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">/// @}</span>
+
+<span class="w">    </span><span class="c1">/// Asset Access and Metadata</span>
+<span class="w">    </span><span class="c1">/// @{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ArAsset</span><span class="o">&gt;</span><span class="w"> </span><span class="n">OpenAsset</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">ArResolvedPath</span><span class="o">&amp;</span><span class="w"> </span><span class="n">resolvedPath</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// By default returns NULL pointer to indicate that the</span>
+<span class="w">    </span><span class="c1">// resolver has no write capabilities.</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ArWritableAsset</span><span class="o">&gt;</span><span class="w"> </span><span class="n">OpenAssetForReplace</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">ArResolvedPath</span><span class="o">&amp;</span><span class="w"> </span><span class="n">resolvedPath</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// By default returns NULL pointer to indicate that the</span>
+<span class="w">    </span><span class="c1">// resolver has no write capabilities.</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ArWritableAsset</span><span class="o">&gt;</span><span class="w"> </span><span class="n">OpenAssetForUpdate</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">ArResolvedPath</span><span class="o">&amp;</span><span class="w"> </span><span class="n">resolvedPath</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">GetExtension</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">ArResolvedPath</span><span class="o">&amp;</span><span class="w"> </span><span class="n">resolvedPath</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">VtValue</span><span class="w"> </span><span class="nf">GetModificationTimestamp</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">ArResolvedPath</span><span class="o">&amp;</span><span class="w"> </span><span class="n">resolvedPath</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="k">protected</span><span class="o">:</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ArAsset</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_OpenAsset</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">ArResolvedPath</span><span class="o">&amp;</span><span class="w"> </span><span class="n">resolvedPath</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ArWritableAsset</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_OpenAssetForReplace</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">ArResolvedPath</span><span class="o">&amp;</span><span class="w"> </span><span class="n">resolvedPath</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ArWritableAsset</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_OpenAssetForUpdate</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">ArResolvedPath</span><span class="o">&amp;</span><span class="w"> </span><span class="n">resolvedPath</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">_GetExtension</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">ArResolvedPath</span><span class="o">&amp;</span><span class="w"> </span><span class="n">resolvedPath</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">VtValue</span><span class="w"> </span><span class="nf">_GetModificationTimestamp</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">ArResolvedPath</span><span class="o">&amp;</span><span class="w"> </span><span class="n">resolvedPath</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">/// @}</span>
+
+<span class="w">    </span><span class="c1">/// Context Management</span>
+<span class="w">    </span><span class="c1">/// @{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">BindContext</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">ArResolverContext</span><span class="o">&amp;</span><span class="w"> </span><span class="n">context</span><span class="p">,</span>
+<span class="w">        </span><span class="n">VtValue</span><span class="o">*</span><span class="w"> </span><span class="n">bindingData</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">UnbindContext</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">ArResolverContext</span><span class="o">&amp;</span><span class="w"> </span><span class="n">context</span><span class="p">,</span>
+<span class="w">        </span><span class="n">VtValue</span><span class="o">*</span><span class="w"> </span><span class="n">bindingData</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">RefreshContext</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">ArResolverContext</span><span class="o">&amp;</span><span class="w"> </span><span class="n">context</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">ArResolverContext</span><span class="w"> </span><span class="nf">GetCurrentContext</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="k">protected</span><span class="o">:</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">_BindContext</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">ArResolverContext</span><span class="o">&amp;</span><span class="w"> </span><span class="n">context</span><span class="p">,</span>
+<span class="w">        </span><span class="n">VtValue</span><span class="o">*</span><span class="w"> </span><span class="n">bindingData</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">_UnbindContext</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">ArResolverContext</span><span class="o">&amp;</span><span class="w"> </span><span class="n">context</span><span class="p">,</span>
+<span class="w">        </span><span class="n">VtValue</span><span class="o">*</span><span class="w"> </span><span class="n">bindingData</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">_RefreshContext</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">ArResolverContext</span><span class="o">&amp;</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">ArResolverContext</span><span class="w"> </span><span class="nf">_GetCurrentContext</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// These functions are called by public API on ArResolverContext</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">ArResolverContext</span><span class="w"> </span><span class="nf">_CreateDefaultContext</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">ArResolverContext</span><span class="w"> </span><span class="nf">_CreateContextForAsset</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">assetPath</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">ArResolverContext</span><span class="w"> </span><span class="nf">_CreateContextFromString</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">configStr</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">/// @}</span>
+
+<span class="w">    </span><span class="c1">/// Scoped Caches</span>
+<span class="w">    </span><span class="c1">/// @{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">BeginCacheScope</span><span class="p">(</span>
+<span class="w">        </span><span class="n">VtValue</span><span class="o">*</span><span class="w"> </span><span class="n">cacheScopeData</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">EndCacheScope</span><span class="p">(</span>
+<span class="w">        </span><span class="n">VtValue</span><span class="o">*</span><span class="w"> </span><span class="n">cacheScopeData</span><span class="p">);</span>
+
+<span class="k">protected</span><span class="o">:</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">BeginCacheScope</span><span class="p">(</span>
+<span class="w">        </span><span class="n">VtValue</span><span class="o">*</span><span class="w"> </span><span class="n">cacheScopeData</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">EndCacheScope</span><span class="p">(</span>
+<span class="w">        </span><span class="n">VtValue</span><span class="o">*</span><span class="w"> </span><span class="n">cacheScopeData</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">/// @}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-text">ar/identifier.h</span><a class="headerlink" href="#id16" title="Link to this code"></a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ArIdentifier</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">ArIdentifier</span><span class="p">();</span>
+<span class="w">    </span><span class="k">explicit</span><span class="w"> </span><span class="n">ArIdentifier</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ArIdentifier</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ArIdentifier</span><span class="o">&amp;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ArIdentifier</span><span class="p">(</span><span class="n">ArIdentifier</span><span class="o">&amp;&amp;</span><span class="p">);</span>
+<span class="w">    </span><span class="o">~</span><span class="n">ArIdentifier</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">ArIdentifier</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ArIdentifier</span><span class="o">&amp;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ArIdentifier</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">ArIdentifier</span><span class="o">&amp;&amp;</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ArIdentifier</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ArIdentifier</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Return true if this identifier has a value, false if empty.</span>
+<span class="w">    </span><span class="k">explicit</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="kt">bool</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Return the identifier&#39;s value.</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="nf">GetValue</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-text">ar/resolvedPath.h</span><a class="headerlink" href="#id17" title="Link to this code"></a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ArResolvedPath</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="k">explicit</span><span class="w"> </span><span class="n">ArResolvedPath</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ArResolvedPath</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ArResolvedPath</span><span class="o">&amp;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ArResolvedPath</span><span class="p">(</span><span class="n">ArResolvedPath</span><span class="o">&amp;&amp;</span><span class="p">);</span>
+<span class="w">    </span><span class="o">~</span><span class="n">ArResolvedPath</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">ArResolvedPath</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ArResolvedPath</span><span class="o">&amp;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ArResolvedPath</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">ArResolvedPath</span><span class="o">&amp;&amp;</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ArResolvedPath</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ArResolvedPath</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+
+<span class="w">    </span><span class="c1">// Return true if this object has a non-empty resolved path, false otherwise.</span>
+<span class="w">    </span><span class="k">explicit</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="kt">bool</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Return resolved path.</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="nf">GetValue</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-text">ar/resolverContext.h</span><a class="headerlink" href="#id18" title="Link to this code"></a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ArResolverContext</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// These factory methods call into protected methods on ArResolver</span>
+<span class="w">    </span><span class="c1">// to allow resolvers to customize behavior.</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">ArResolverContext</span><span class="w"> </span><span class="n">CreateDefault</span><span class="p">();</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">ArResolverContext</span><span class="w"> </span><span class="nf">CreateForAsset</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">assetPath</span><span class="p">);</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">ArResolverContext</span><span class="w"> </span><span class="nf">CreateFromString</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">configStr</span><span class="p">);</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">ArResolverContext</span><span class="w"> </span><span class="nf">CreateFromString</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;&gt;&amp;</span><span class="w"> </span><span class="n">configStr</span><span class="p">);</span>
+
+
+<span class="w">    </span><span class="n">ArResolverContext</span><span class="p">();</span>
+
+
+<span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="n">Context</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="n">ArResolverContext</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Context</span><span class="o">&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">contexts</span><span class="p">);</span>
+
+
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-text">ar/writableAsset.h</span><a class="headerlink" href="#id19" title="Link to this code"></a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ArWritableAsset</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">ArWritableAsset</span><span class="p">();</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">Write</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">offset</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="wp_asset_previews.html" class="btn btn-neutral float-left" title="Asset Previews in USD" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="wp_coordsys.html" class="btn btn-neutral float-right" title="Coordinate Systems in USD Proposal" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Pixar Animation Studios.</p>
+  </div>
+
+   
+<!-- Additional content for Read-the-Docs theme footer, see https://github.com/readthedocs/sphinx_rtd_theme/blob/master/sphinx_rtd_theme/footer.html --> 
+<a class="usd-tos-footer-style" href="https://disneytermsofuse.com/">Terms of Use</a>
+
+
+</footer>
+        </div>
+
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,1877 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UsdShade Material Assignment &mdash; Universal Scene Description 26.05 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/pxr_custom.css?v=f3eac5de" />
+
+  
+    <link rel="shortcut icon" href="https://openusd.org/images/USDIcon.ico"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=34cee20b"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+      <script src="_static/js/versions.js?v=aa17b01a"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="USD Frequently Asked Questions" href="usdfaq.html" />
+    <link rel="prev" title="UsdAudio Proposal" href="wp_usdaudio.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #606060" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Universal Scene Description
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Learn</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction to USD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_to_openexec.html">Introduction to OpenExec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Terms and Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tut_usd_tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tut_helloworld.html">Hello World - Creating Your First USD Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_helloworld_redux.html">Hello World Redux - Using Generic Prims</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_inspect_and_author_props.html">Inspecting and Authoring Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_referencing_layers.html">Referencing Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_converting_between_layer_formats.html">Converting Between Layer Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_traversing_stage.html">Traversing a Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_authoring_variants.html">Authoring Variants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_variants_example_in_katana.html">Variants Example in Katana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_xforms.html">Transformations, Animation, and Layer Offsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_simple_shading.html">Simple Shading in USD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_end_to_end.html">End to End Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_houdini_example.html">Houdini USD Example Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_generating_new_schema.html">Generating New Schema Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_usdview_plugin.html">Creating a Usdview Plugin</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dl_downloads.html">Downloads and Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usd_products.html">Products Using USD</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/collections_and_patterns.html">Collections and Patterns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/collections_and_patterns.html#basic-usage">Basic Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/collections_and_patterns.html#configuring-membership-mode">Configuring Membership Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/collections_and_patterns.html#relationship-mode-collections">Relationship-Mode Collections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/collections_and_patterns.html#configuring-relationship-mode-collections">Configuring Relationship-Mode Collections</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/collections_and_patterns.html#pattern-based-collections">Pattern-Based Collections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/collections_and_patterns.html#path-expressions">Path Expressions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/collections_and_patterns.html#path-patterns">Path Patterns</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/collections_and_patterns.html#additional-expressions-considerations">Additional Expressions Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/collections_and_patterns.html#configuring-pattern-based-collections">Configuring Pattern-Based Collections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/collections_and_patterns.html#getting-the-expression-for-a-relationship-mode-collection">Getting the Expression for a Relationship-Mode Collection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/color_user_guide.html">Color</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/color_user_guide.html#working-with-color-in-openusd">Working With Color in OpenUSD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/color_user_guide.html#color-spaces-supported-by-openusd">Color Spaces Supported by OpenUSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/color_user_guide.html#working-with-color-space-schemas">Working With Color Space Schemas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/color_user_guide.html#color-space-inheritance-and-resolution">Color Space Inheritance and Resolution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/color_user_guide.html#default-color-space">Default Color Space</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/color_user_guide.html#what-is-a-color-space">What is a Color Space?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/color_user_guide.html#gamut-limitations-and-considerations">Gamut Limitations and Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/color_user_guide.html#common-white-points">Common White Points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/color_user_guide.html#linear-vs-non-linear-spaces">Linear vs. Non-Linear Spaces</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/color_user_guide.html#considerations-in-content-creation">Considerations in Content Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/color_user_guide.html#glossary-of-color-terms">Glossary of Color Terms</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/namespace_editing.html">Namespace Editing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/namespace_editing.html#using-usdnamespaceeditor">Using UsdNamespaceEditor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#setting-editor-options">Setting Editor Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#working-with-relocates">Working With Relocates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#fixing-paths-for-moved-objects">Fixing Paths For Moved Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#applying-edits-to-dependent-stages">Applying Edits to Dependent Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#batch-edits">Batch Edits</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/namespace_editing.html#namespace-editing-best-practices">Namespace Editing Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#use-canapplyedits-to-validate-edit-operations">Use CanApplyEdits() To Validate Edit Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#built-in-properties-from-schemas-are-not-editable">Built-In Properties From Schemas Are Not Editable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#be-aware-of-relocates-performance-impact">Be Aware of Relocates Performance Impact</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/render_user_guide.html">Rendering with USD</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/render_user_guide.html#configuring-imageable-content">Configuring Imageable Content</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#configuring-the-stage-coordinate-system">Configuring the Stage Coordinate System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#understanding-render-visibility">Understanding Render Visibility</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#using-the-visibility-attribute">Using the Visibility Attribute</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#using-imageable-purpose">Using Imageable Purpose</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#understanding-intrinsic-and-explicit-normals">Understanding Intrinsic and Explicit Normals</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/render_user_guide.html#working-with-lights">Working with Lights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#using-light-linking-to-filter-objects-affected-by-lights">Using Light-linking to Filter Objects Affected by Lights</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/render_user_guide.html#working-with-materials">Working with Materials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#using-the-usd-preview-material">Using the USD Preview Material</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#using-glslfx-shaders">Using GLSLFX Shaders</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#working-with-primvars">Working with Primvars</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#primvar-interpolation">Primvar Interpolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#indexed-primvars">Indexed Primvars</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#consuming-primvars-in-materials">Consuming Primvars in Materials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#material-primvar-fallbacks">Material Primvar Fallbacks</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#using-material-binding-purpose">Using Material Binding Purpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#binding-materials-to-collections">Binding Materials to Collections</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#setting-collection-binding-strength">Setting Collection Binding Strength</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#combining-collection-binding-with-material-binding-purpose">Combining Collection Binding with Material Binding Purpose</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#using-material-render-contexts">Using Material Render Contexts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/render_user_guide.html#working-with-image-file-formats">Working With Image File Formats</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#guidelines-for-all-supported-image-formats">Guidelines for All Supported Image Formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#jpeg">JPEG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#png">PNG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#openexr">OpenEXR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#av1-image-file-format-avif">AV1 Image File Format (AVIF)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/render_user_guide.html#defining-the-render-camera">Defining the Render Camera</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#configuring-motion-blur">Configuring Motion Blur</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/render_user_guide.html#configuring-render-settings">Configuring Render Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/primvars.html">Primvars</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/primvars.html#primvar-interpolation-modes">Primvar Interpolation Modes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/primvars.html#constant-interpolation">Constant Interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/primvars.html#uniform-interpolation">Uniform Interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/primvars.html#vertex-interpolation">Vertex Interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/primvars.html#varying-interpolation">Varying Interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/primvars.html#facevarying-interpolation">faceVarying Interpolation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/primvars.html#primvars-and-the-scene-namespace">Primvars and the Scene Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/primvars.html#indexed-primvars">Indexed Primvars</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/primvars.html#indexed-primvars-and-attribute-blocks">Indexed Primvars and Attribute Blocks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/primvars.html#primvar-element-size">Primvar Element Size</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/schemas/index.html">Schema Domains</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/schemas/usdLux/usdLux_toc.html">Lights (usdLux)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#usdlux-schemas-and-concepts">UsdLux Schemas and Concepts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#light-units">Light Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#understanding-light-contributions">Understanding Light Contributions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#light-shaping">Light Shaping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#shadows">Shadows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#mesh-lights">Mesh Lights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#light-linking-and-shadow-linking">Light-linking and Shadow-linking</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/BoundableLightBase.html">BoundableLightBase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/BoundableLightBase.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/BoundableLightBase.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/BoundableLightBase.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/BoundableLightBase.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/CylinderLight.html">CylinderLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/CylinderLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/CylinderLight.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/CylinderLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/CylinderLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/DiskLight.html">DiskLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DiskLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DiskLight.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DiskLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DiskLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/DistantLight.html">DistantLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DistantLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DistantLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DistantLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight.html">DomeLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight_1.html">DomeLight_1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight_1.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight_1.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight_1.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/GeometryLight.html">GeometryLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/GeometryLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/GeometryLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/GeometryLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/LightAPI.html">LightAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/LightAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/LightFilter.html">LightFilter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/LightFilter.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/LightFilter.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/LightFilter.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/LightListAPI.html">LightListAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/LightListAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/ListAPI.html">ListAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/ListAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/MeshLightAPI.html">MeshLightAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/MeshLightAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/NonboundableLightBase.html">NonboundableLightBase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/NonboundableLightBase.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/NonboundableLightBase.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/NonboundableLightBase.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLight.html">PluginLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLightFilter.html">PluginLightFilter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLightFilter.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLightFilter.html#inherited-properties-lightfilter">Inherited Properties (<span class="xref std std-ref">LightFilter</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLightFilter.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLightFilter.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/PortalLight.html">PortalLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PortalLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PortalLight.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PortalLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PortalLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/RectLight.html">RectLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/RectLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/RectLight.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/RectLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/RectLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/ShadowAPI.html">ShadowAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/ShadowAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/ShapingAPI.html">ShapingAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/ShapingAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/SphereLight.html">SphereLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/SphereLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/SphereLight.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/SphereLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/SphereLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/VolumeLightAPI.html">VolumeLightAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/VolumeLightAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/schemas/usdMedia/usdMedia_toc.html">Media (usdMedia)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdMedia/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdMedia/overview.html#working-with-media">Working With Media</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdMedia/AssetPreviewsAPI.html">AssetPreviewsAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdMedia/SpatialAudio.html">SpatialAudio</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdMedia/SpatialAudio.html#spatialaudio-and-layer-offsets">SpatialAudio and Layer Offsets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdMedia/SpatialAudio.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdMedia/SpatialAudio.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdMedia/SpatialAudio.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/schemas/usdRender/usdRender_toc.html">Render (usdRender)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdRender/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/overview.html#best-practices">Best Practices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/overview.html#using-usdrender-to-control-how-prims-are-rendered">Using UsdRender to Control How Prims Are Rendered</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/overview.html#working-with-renderproduct">Working with RenderProduct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/overview.html#configuring-multi-pass-renders-with-renderpass">Configuring Multi-pass Renders with RenderPass</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdRender/RenderPass.html">RenderPass</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderPass.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdRender/RenderProduct.html">RenderProduct</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderProduct.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderProduct.html#inherited-properties-rendersettingsbase">Inherited Properties (<span class="xref std std-ref">RenderSettingsBase</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdRender/RenderSettings.html">RenderSettings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderSettings.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderSettings.html#inherited-properties-rendersettingsbase">Inherited Properties (<span class="xref std std-ref">RenderSettingsBase</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdRender/RenderSettingsBase.html">RenderSettingsBase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderSettingsBase.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdRender/RenderVar.html">RenderVar</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderVar.html#properties">Properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/schemas/usdUI/usdUI_toc.html">UI (usdUI)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/overview.html#working-with-node-graphs">Working With Node Graphs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/overview.html#working-with-accessibility-information">Working With Accessibility Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/overview.html#working-with-ui-hints">Working With UI Hints</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/AttributeHints.html">AttributeHints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/AttributeHints.html#attributehints-fields">AttributeHints fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/ObjectHints.html">ObjectHints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/ObjectHints.html#objecthints-fields">ObjectHints fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/PrimHints.html">PrimHints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/PrimHints.html#primhints-fields">PrimHints fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/PropertyHints.html">PropertyHints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/PropertyHints.html#propertyhints-fields">PropertyHints fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/AccessibilityAPI.html">AccessibilityAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/AccessibilityAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/Backdrop.html">Backdrop</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/Backdrop.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/NodeGraphNodeAPI.html">NodeGraphNodeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/NodeGraphNodeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/SceneGraphPrimAPI.html">SceneGraphPrimAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/SceneGraphPrimAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/schemas/usdVol/usdVol_toc.html">Volumes (usdVol)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/overview.html#working-with-volumes">Working With Volumes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/overview.html#working-with-fields">Working With Fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/overview.html#working-with-particle-fields">Working With Particle Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/Field3DAsset.html">Field3DAsset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Field3DAsset.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Field3DAsset.html#inherited-properties-volumefieldasset">Inherited Properties (<span class="xref std std-ref">VolumeFieldAsset</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Field3DAsset.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Field3DAsset.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/FieldAsset.html">FieldAsset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldAsset.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldAsset.html#inherited-properties-volumefieldasset">Inherited Properties (<span class="xref std std-ref">VolumeFieldAsset</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldAsset.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldAsset.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/FieldBase.html">FieldBase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldBase.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldBase.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldBase.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/OpenVDBAsset.html">OpenVDBAsset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/OpenVDBAsset.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/OpenVDBAsset.html#inherited-properties-volumefieldasset">Inherited Properties (<span class="xref std std-ref">VolumeFieldAsset</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/OpenVDBAsset.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/OpenVDBAsset.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField.html">ParticleField</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField.html#inherited-properties-gprim">Inherited Properties (<span class="xref std std-ref">Gprim</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html">ParticleField3DGaussianSplat</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#inherited-properties-gprim">Inherited Properties (<span class="xref std std-ref">Gprim</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldKernelBaseAPI.html">ParticleFieldKernelBaseAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldKernelConstantSurfletAPI.html">ParticleFieldKernelConstantSurfletAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldKernelGaussianEllipsoidAPI.html">ParticleFieldKernelGaussianEllipsoidAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html">ParticleFieldKernelGaussianSurfletAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html">ParticleFieldOpacityAttributeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html">ParticleFieldOrientationAttributeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html">ParticleFieldPositionAttributeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html">ParticleFieldPositionBaseAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldRadianceBaseAPI.html">ParticleFieldRadianceBaseAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html">ParticleFieldScaleAttributeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html">ParticleFieldSphericalHarmonicsAttributeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/Volume.html">Volume</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Volume.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Volume.html#inherited-properties-gprim">Inherited Properties (<span class="xref std std-ref">Gprim</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Volume.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Volume.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Volume.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldAsset.html">VolumeFieldAsset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldAsset.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldAsset.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldAsset.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldBase.html">VolumeFieldBase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldBase.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldBase.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldBase.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/time_and_animated_values.html">Time and Animated Values</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/time_and_animated_values.html#understanding-timecodes">Understanding TimeCodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/time_and_animated_values.html#working-with-timecodes-programmatically">Working With TimeCodes Programmatically</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/time_and_animated_values.html#mapping-timecodes-to-real-time">Mapping TimeCodes to Real Time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/time_and_animated_values.html#specifying-layer-start-and-end-times">Specifying Layer Start and End Times</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/time_and_animated_values.html#using-timecode-ranges">Using TimeCode Ranges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/time_and_animated_values.html#working-with-automatic-and-explicit-timecode-remapping-across-composition">Working with Automatic and Explicit TimeCode Remapping Across Composition</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/time_and_animated_values.html#automatic-scaling-of-timecodespersecond">Automatic Scaling of timeCodesPerSecond</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/time_and_animated_values.html#configuring-timecode-scaling-and-offsets-using-layeroffsets">Configuring TimeCode Scaling and Offsets Using LayerOffsets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/time_and_animated_values.html#combining-automatic-scaling-and-layer-offsets">Combining Automatic Scaling and Layer Offsets</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/variable_expressions.html">Variable Expressions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/variable_expressions.html#defining-expression-variables-in-a-layer">Defining Expression Variables in a Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#string"><span class="mono">string</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#bool"><span class="mono">bool</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#int64"><span class="mono">int64</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#type"><span class="mono">&lt;type&gt;[]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#none"><span class="mono">None</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#expression-variables-and-composition">Expression Variables and Composition</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/variable_expressions.html#authoring-variable-expressions">Authoring Variable Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/variable_expressions.html#expression-function-reference">Expression Function Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#defined-variable-name"><span class="mono">defined(&lt;variable name&gt;, …)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#if-condition-true-value-false-value"><span class="mono">if(&lt;condition&gt;, &lt;true-value&gt;, &lt;false-value&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#if-condition-true-value"><span class="mono">if(&lt;condition&gt;, &lt;true-value&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#and-x-y"><span class="mono">and(&lt;x&gt;, &lt;y&gt;, …)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#or-x-y"><span class="mono">or(&lt;x&gt;, &lt;y&gt;, …)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#not-x"><span class="mono">not(&lt;x&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#eq-x-y"><span class="mono">eq(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#neq-x-y"><span class="mono">neq(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#lt-x-y"><span class="mono">lt(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#leq-x-y"><span class="mono">leq(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#gt-x-y"><span class="mono">gt(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#geq-x-y"><span class="mono">geq(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#contains-list-or-string-value"><span class="mono">contains(&lt;list_or_string&gt;, &lt;value&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#at-list-or-string-index"><span class="mono">at(&lt;list_or_string&gt;, &lt;index&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#len-list-or-string"><span class="mono">len(&lt;list_or_string&gt;)</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/variable_expressions.html#examples">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#flexible-variant-selections">Flexible Variant Selections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#asset-valued-texture-file-attribute">Asset-valued Texture File Attribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#conditionally-include-sublayers">Conditionally Include Sublayers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="apiDocs.html">API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="toolset.html">Toolset</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdedit">usdedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdcat">usdcat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usddiff">usddiff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdview">usdview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdrecord">usdrecord</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdresolve">usdresolve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdtree">usdtree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdzip">usdzip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdchecker">usdchecker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdfixbrokenpixarschemas">usdfixbrokenpixarschemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdstitch">usdstitch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdstitchclips">usdstitchclips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usddumpcrate">usddumpcrate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#sdfdump">sdfdump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#sdffilter">sdffilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdmeasureperformance">usdmeasureperformance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdgenschema">usdGenSchema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdgenschemafromsdr">usdgenschemafromsdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdinitschema">usdInitSchema</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="spec.html">Specifications</a><ul>
+<li class="toctree-l2"><a class="reference external" href="https://aousd.org/blog/foundations-of-open-3d-development-introducing-aousd-core-specification-1-0/">USD Core Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spec_usdpreviewsurface.html">UsdPreviewSurface Specification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdpreviewsurface.html#goal">Goal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdpreviewsurface.html#core-nodes">Core Nodes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#preview-surface">Preview Surface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#texture-reader">Texture Reader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#primvar-reader">Primvar Reader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#transform2d">Transform2d</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdpreviewsurface.html#usd-sample">USD Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdpreviewsurface.html#other-notes">Other Notes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#texture-coordinate-orientation-in-usd">Texture Coordinate Orientation in USD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#roughness-vs-glossiness">Roughness vs Glossiness</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdpreviewsurface.html#changes-by-version">Changes, by Version</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#version-2-0-initial-public-specification">Version 2.0 - Initial Public Specification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#version-2-2-before-type-changes">Version 2.2 - Before Type Changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#version-2-3">Version 2.3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#version-2-4">Version 2.4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#version-2-5">Version 2.5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#version-2-6-current-head">Version 2.6 - Current Head</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="spec_usdz.html">Usdz File Format Specification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdz.html#purpose">Purpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdz.html#usdz-specification">Usdz Specification</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#foundation">Foundation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#zip-constraints">Zip Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#layout">Layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#file-types">File Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#usd-constraints">USD Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#editability">Editability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#accessibility">Accessibility</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdz.html#packaging-considerations-for-streaming-and-encapsulation">Packaging Considerations for Streaming and Encapsulation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#file-ordering-within-package-for-streaming">File Ordering Within Package for Streaming</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#usdz-reproducibleresults">For Reproducible Results, Encapsulate Using Anchored Asset Paths</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdz.html#mime-type">MIME Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdz.html#toolset">Toolset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdz.html#changes-by-version">Changes, by Version</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#version-1-3-current-head">Version 1.3 - Current Head</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="wp.html">Proposals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html">Adapting UsdLux to Accommodate Geometry Lights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#introduction-and-background">Introduction and Background</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#mesh-light-support-in-the-industry">Mesh Light Support in the Industry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#goals">Goals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#workflow-considerations">Workflow Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#design-space-and-issues">Design Space and Issues</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#dual-prim-geometry-light-problems">Dual-Prim Geometry Light Problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#single-prim-geometry-light">Single-Prim Geometry Light</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#usdlux-lightapi-om">UsdLux LightAPI OM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#light-lightapi">Light -&gt; LightAPI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#introduce-convenience-base-classes">Introduce Convenience Base Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#preserve-existing-usdlux-concrete-schemas">Preserve Existing UsdLux Concrete Schemas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#deprecate-geometrylight">Deprecate GeometryLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#how-do-we-identify-the-appropriate-sdrshadernode-for-a-light">How do we Identify the Appropriate SdrShaderNode for a Light?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#lights-with-materials">Lights with Materials?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#proposal-and-behaviors">Proposal and Behaviors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#shading-and-emission">Shading and Emission</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#volumes">Volumes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#primvars-in-light-networks">Primvars in Light Networks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_usdlux_for_renderers.html">Adapting UsdLux to the Needs of Renderers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_renderers.html#background-and-goals">Background and Goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_renderers.html#foundational-technologies-in-usd">Foundational Technologies in USD</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#sdr">Sdr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#usd-schemas">USD Schemas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#usdimaging-and-hydra">UsdImaging and Hydra</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_renderers.html#proposals">Proposals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#changes-to-usdlux">Changes to UsdLux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#changes-to-usdimaging">Changes to UsdImaging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#changes-to-hd">Changes to Hd</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#changes-to-hdprman-and-other-render-delegates">Changes to HdPrman and Other Render Delegates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_asset_previews.html">Asset Previews in USD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_asset_previews.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_asset_previews.html#proposal">Proposal</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_asset_previews.html#object-model">Object Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_asset_previews.html#concrete-encoding">Concrete Encoding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_asset_previews.html#schema">Schema</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_ar2.html">Asset Resolution (Ar) 2.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_ar2.html#background-and-goals">Background and Goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_ar2.html#tasks">Tasks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#general-cleanup">General Cleanup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#add-documentation-and-examples">Add Documentation and Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#add-identifier-concept">Add Identifier Concept</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#remove-repository-and-search-path">Remove Repository and Search Path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#improve-resolve-and-asset-info">Improve Resolve and Asset Info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#remove-filesystem-specific-code">Remove Filesystem-specific Code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#add-asset-writing-interface">Add Asset Writing Interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#add-uri-resolvers">Add URI Resolvers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#allow-creation-of-arresolvercontext-from-strings">Allow Creation of ArResolverContext From Strings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#remove-arresolver-configureresolverforasset">Remove ArResolver::ConfigureResolverForAsset</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_ar2.html#rollout-and-transition">Rollout and Transition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_ar2.html#proposed-api">Proposed API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_coordsys.html">Coordinate Systems in USD Proposal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_coordsys.html#purpose">Purpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_coordsys.html#requirements">Requirements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_coordsys.html#coordinate-systems-are-identified-by-name-in-shaders">Coordinate Systems are Identified by Name in Shaders</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_coordsys.html#proposed-api-schema">Proposed API Schema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_coordsys.html#recording-a-frame-of-reference">Recording a Frame of Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_coordsys.html#binding-frames-of-reference">Binding Frames of Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_coordsys.html#coordsysapi">CoordSysAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_coordsys.html#usd-sample-and-analysis">USD Sample and Analysis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_coordsys.html#analysis-coordinate-systems-evaluated">Analysis: Coordinate Systems Evaluated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_coordsys.html#analysis-coordinate-system-binding-and-consumption">Analysis: Coordinate System Binding and Consumption</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_coordsys.html#projections-cameras-and-coordsysapi">Projections, Cameras, and CoordSysAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_connectable_nodes.html">Generalizing Connectable Nodes Beyond UsdShade</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_connectable_nodes.html#background-and-goals">Background and Goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_connectable_nodes.html#proposal">Proposal</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#node-definition-as-api-schema">Node Definition as API Schema</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#plugin-defined-connectableapi-behavior">Plugin-defined ConnectableAPI Behavior</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#connectability-rules-for-usdshade-types">Connectability Rules for UsdShade Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#intended-use-in-usdlux-and-usdri-renderman-usd-schema">Intended use in UsdLux and UsdRi (RenderMan USD schema)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_connectable_nodes.html#discussion">Discussion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#sdr-ndr">Sdr &amp; Ndr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#flexibility-of-connectability-callbacks">Flexibility of Connectability Callbacks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#non-shading-networks">Non-shading Networks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_render_settings.html">Render Settings in USD Proposal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#purpose-and-scope">Purpose and Scope</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#overall-design-and-concerns">Overall Design and Concerns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#concrete-schemas">Concrete Schemas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#renderer-specific-schemas">Renderer-Specific Schemas</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#prim-and-scene-organization">Prim and Scene Organization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#discovering-render-settings">Discovering Render Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#selecting-and-combining-render-settings">Selecting and Combining Render Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#grouping-rendervars-and-renderproducts">Grouping RenderVars and RenderProducts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#discovering-all-potential-shader-based-rendervars">Discovering All Potential Shader-based RenderVars</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#workflow-considerations">Workflow Considerations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#interactive-vs-batch-rendering">Interactive vs. Batch Rendering</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#examples">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#discussion-and-questions">Discussion and Questions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#id-variables">ID variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#stereo-rendering">Stereo Rendering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#camera-exposure-curves">Camera Exposure Curves</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#denoising-color-correction-and-tasks">Denoising, Color Correction, and Tasks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#why-locality-of-overrides-is-valuable">Why Locality of Overrides is Valuable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#image-mapping-related-options-on-camera-or-rendersettings">Image-Mapping-Related Options on Camera or RenderSettings?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#crop-windows-and-region-of-interest">Crop Windows and Region-of-Interest</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_rigid_body_physics.html">Rigid Body Physics in USD Proposal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_rigid_body_physics.html#purpose-and-scope">Purpose and Scope</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_rigid_body_physics.html#overall-design-concerns">Overall Design Concerns</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#rigid-body-simulation-primer">Rigid Body Simulation Primer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#usd-implementation">USD Implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_rigid_body_physics.html#concrete-schemas">Concrete Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_rigid_body_physics.html#examples">Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#box-on-box">Box on Box</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#box-on-quad">Box on Quad</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#spheres-with-materials">Spheres with Materials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#group-filtering">Group Filtering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#pair-filtering">Pair Filtering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#joint">Joint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#distance-joint">Distance Joint</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_schema_versioning.html">Schema Versioning in USD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_schema_versioning.html#introduction">Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#challenges-to-schema-versioning-in-usd">Challenges to Schema Versioning in USD</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_schema_versioning.html#proposal-for-per-schema-versioning">Proposal for Per-Schema Versioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#version-representation-in-schemas">Version Representation in Schemas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#schema-registry">Schema Registry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#usdprim-schema-related-api">UsdPrim Schema-related API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#considerations-for-auto-apply-api-schemas">Considerations for Auto-apply API Schemas</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_schema_versioning.html#risks-questions-limitations">Risks, Questions, Limitations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_schema_versioning.html#guidelines-for-schema-versioning">Guidelines for Schema Versioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#criteria-for-versioning">Criteria for Versioning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#do-not-version-a-schema-when">Do not Version a Schema When…</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#do-version-a-schema-when">Do Version a Schema When…</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_schema_versioning.html#pixar-examples-past-and-future">Pixar Examples, Past and Future</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#usdlux-connectability">UsdLux Connectability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#light-lightapi">Light → LightAPI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#visibility-to-visibilityapi">Visibility to VisibilityAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_schema_versioning.html#schemaversioning-codegen-support">Possible Code Generation Changes to Support Versioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#base-schema-class-is-always-the-latest-version-of-the-family">Base Schema Class is Always the Latest Version of the Family</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#class-per-version-with-typedef-mapping-to-current-or-latest-version-class">Class Per Version with Typedef Mapping to “Current” or “Latest” Version-Class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#single-c-class-that-provides-api-for-all-versions-of-the-schema-family">Single C++ Class That Provides API for ALL Versions of the Schema Family</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#compatible-cluster-classes-with-disambiguating-method-names">“Compatible Cluster” Classes with Disambiguating Method Names</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_stage_variables.html">Stage Variable Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wp_usdaudio.html">UsdAudio Proposal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdaudio.html#goal">Goal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdaudio.html#initial-requirements">Initial Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdaudio.html#proposed-prim-schema">Proposed Prim Schema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdaudio.html#spatialaudio">SpatialAudio</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdaudio.html#usd-sample">USD Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdaudio.html#other-notes-questions">Other Notes/Questions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdaudio.html#sdftimecode-and-time-scaling">SdfTimeCode and Time Scaling</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">UsdShade Material Assignment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#background">Background</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basic-proposal-for-collection-based-assignment">Basic Proposal for Collection-Based Assignment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-collection-based-assignment">Example Collection-Based Assignment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#refinement-1-specifying-binding-strength">Refinement 1: Specifying Binding Strength</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#refinement-2-material-purpose">Refinement 2: Material Purpose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#material-resolve-determining-the-bound-material-for-any-geometry-prim">Material Resolve: Determining the Bound Material for any Geometry Prim</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#usdshade-api">UsdShade API</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#analysis-of-collection-based-binding">Analysis of Collection-Based Binding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#integration">Integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#katana-import">Katana Import</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#maya-i-o">Maya I/O</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#houdini">Houdini</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#remaining-questions">Remaining Questions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#performance">Performance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#implication-on-renderer-instancing">Implication on Renderer Instancing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#material-layering">Material Layering</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usdfaq.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usdfaq.html#general-questions">General Questions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-is-usd-and-why-should-i-use-it">What is USD and why should I use it?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-programming-languages-are-supported">What programming languages are supported?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#isn-t-usd-just-another-file-format">Isn’t USD just another file format?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#so-what-file-formats-does-usd-support">So what file formats does USD support?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-file-format-is-my-usd-file">What file format is my <span class="mono">.usd</span> file?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-character-encoding-does-usda-support">What character encoding does <span class="mono">.usda</span> support?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#how-can-i-convert-usd-files-between-binary-and-text">How can I convert USD files between binary and text?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-data-types-are-supported">What data types are supported?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-does-a-usd-file-look-like">What does a USD file look like?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usdfaq.html#subtler-aspects-of-scene-description-and-composition">Subtler Aspects of Scene Description and Composition</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#i-have-some-layers-i-want-to-combine-should-i-use-sublayers-or-references">I have some layers I want to combine: Should I use SubLayers or References?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-happens-to-overs-when-their-underlying-prim-is-moved-to-a-different-location-in-the-scenegraph">What happens to “overs” when their underlying prim is moved to a different location in the scenegraph?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#when-can-you-delete-a-reference-or-other-deletable-thing">When can you delete a reference (or other deletable thing)?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="usdfaq.html#list-edited-string-token-and-int-metadata">List-edited string, token, and int metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="usdfaq.html#list-edited-relationships-and-connections">List-edited relationships and connections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="usdfaq.html#list-edited-composition-arcs">List-edited composition arcs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-s-the-difference-between-an-over-and-a-typeless-def">What’s the difference between an “over” and a “typeless def” ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#why-can-t-i-instance-a-leaf-mesh-prim-directly">Why Can’t I Instance a Leaf Mesh Prim Directly?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usdfaq.html#build-and-runtime-issues">Build and Runtime Issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#how-do-i-use-the-tf-debug-mechanism">How do I use the <code class="docutils literal notranslate"><span class="pre">TF_DEBUG</span></code> mechanism?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#why-isn-t-python-finding-usd-modules">Why Isn’t Python Finding USD Modules?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#why-isn-t-this-plugin-being-built">Why Isn’t This Plugin Being Built?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#why-doesn-t-the-openusd-runtime-recognize-the-usd-file-format">Why doesn’t the OpenUSD runtime recognize the USD file format?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#why-isn-t-my-app-finding-usd-dlls-and-plugins-on-windows">Why Isn’t My App Finding USD DLLs and Plugins on Windows?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="maxperf.html">Performance Considerations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="maxperf.html#use-an-allocator-optimized-for-multithreading">Use an allocator optimized for multithreading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maxperf.html#use-binary-usd-files-for-geometry-and-shading-caches">Use binary “.usd” files for geometry and shading caches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maxperf.html#package-assets-with-payloads">Package assets with payloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maxperf.html#what-makes-a-usd-scene-heavy-expensive">What makes a USD scene heavy/expensive?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ref_performance_metrics.html">Performance Metrics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ref_performance_metrics.html#what-we-measure">What We Measure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref_performance_metrics.html#what-environment-is-used">What Environment Is Used</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#linux">Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#macos">macOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#windows">Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#usd-build">USD Build</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ref_performance_metrics.html#metrics">Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#performance-graphs-per-platform">Performance Graphs Per Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#standard-shader-ball">Standard Shader Ball</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#kitchen-set">Kitchen Set</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#alab">ALab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#moore-lane">Moore Lane</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ref_performance_metrics.html#running-performance-metrics-locally">Running Performance Metrics Locally</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#adding-custom-metrics">Adding Custom Metrics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">Third Party Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plugins_renderman.html">RenderMan USD Imaging Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plugins_renderman.html#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="plugins_renderman.html#building-hdprman">Building hdPrman</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins_renderman.html#running-hdprman">Running hdPrman</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="plugins_renderman.html#developer">Developer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="plugins_renderman.html#supported-render-pass-aovs">Supported Render Pass AOVs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plugins_alembic.html">Alembic USD Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plugins_alembic.html#known-limitations">Known Limitations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Collaborate</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/PixarAnimationStudios/OpenUSD">Source Code &#64; GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.openusd.org">OpenUSD Forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing_to_usd.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing_to_usd.html#contributor-license-agreement">Contributor License Agreement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing_to_usd.html#coding-conventions">Coding Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing_to_usd.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing_to_usd.html#git-workflow">Git Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing_to_usd.html#github-issues">GitHub Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing_to_usd.html#making-major-changes">Making Major Changes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing_to_usd.html#step-1-get-consensus-for-major-changes">Step 1. Get consensus for major changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing_to_usd.html#step-2-make-code-changes">Step 2. Make code changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing_to_usd.html#step-3-test-code-changes">Step 3. Test code changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing_to_usd.html#step-4-submit-code-for-review">Step 4. Submit code for review</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing_to_usd.html#step-5-pixar-will-test-and-land-your-changes">Step 5. Pixar will test and land your changes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_schedule.html">Release Schedule</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Press</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="press_opensource_release.html">Open Source Release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="press_opensource_announce.html">Open Source Announcement</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #606060" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Universal Scene Description</a>
+      </nav>
+
+      <div class="wy-nav-content">
+  <style>
+    .version_warning {
+        margin-bottom: 10px;
+    }
+  </style>
+  <div class="version_warning_placeholder"></div>
+  
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="wp.html">Proposals</a></li>
+      <li class="breadcrumb-item active">UsdShade Material Assignment</li>
+  <li class="wy-breadcrumbs-aside">
+    <div class="version_switcher_placeholder"></div>
+  </li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="usdshade-material-assignment">
+<h1>UsdShade Material Assignment<a class="headerlink" href="#usdshade-material-assignment" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This proposal has been implemented. This document exists for historical
+reference and may be outdated. For up-to-date documentation, see the
+<a class="reference external" href="api/usd_shade_page_front.html">UsdShade overview page</a>.</p>
+</div>
+<p>Copyright © 2017, Pixar Animation Studios,  <em>version 1.0</em></p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#background" id="id6">Background</a></p></li>
+<li><p><a class="reference internal" href="#basic-proposal-for-collection-based-assignment" id="id7">Basic Proposal for Collection-Based Assignment</a></p>
+<ul>
+<li><p><a class="reference internal" href="#example-collection-based-assignment" id="id8">Example Collection-Based Assignment</a></p></li>
+<li><p><a class="reference internal" href="#refinement-1-specifying-binding-strength" id="id9">Refinement 1: Specifying Binding Strength</a></p></li>
+<li><p><a class="reference internal" href="#refinement-2-material-purpose" id="id10">Refinement 2: Material Purpose</a></p></li>
+<li><p><a class="reference internal" href="#material-resolve-determining-the-bound-material-for-any-geometry-prim" id="id11">Material Resolve: Determining the Bound Material for any Geometry Prim</a></p></li>
+<li><p><a class="reference internal" href="#usdshade-api" id="id12">UsdShade API</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#analysis-of-collection-based-binding" id="id13">Analysis of Collection-Based Binding</a></p></li>
+<li><p><a class="reference internal" href="#integration" id="id14">Integration</a></p>
+<ul>
+<li><p><a class="reference internal" href="#katana-import" id="id15">Katana Import</a></p></li>
+<li><p><a class="reference internal" href="#maya-i-o" id="id16">Maya I/O</a></p></li>
+<li><p><a class="reference internal" href="#houdini" id="id17">Houdini</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#remaining-questions" id="id18">Remaining Questions</a></p>
+<ul>
+<li><p><a class="reference internal" href="#performance" id="id19">Performance</a></p></li>
+<li><p><a class="reference internal" href="#implication-on-renderer-instancing" id="id20">Implication on Renderer Instancing</a></p></li>
+<li><p><a class="reference internal" href="#material-layering" id="id21">Material Layering</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="background">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Background</a><a class="headerlink" href="#background" title="Link to this heading"></a></h2>
+<p>In UsdShade of summer 2017, material assignment is expressed as a single-target
+relationship that identifies a Material that should be bound to the anchoring
+prim and all of its descendants, unless some descendant itself possesses a
+direct material assignment, in which case its binding will be considered
+stronger than the inherited one. “Material resolution” itself is somewhat more
+nuanced, because what actually matters to a particular renderer is not truly the
+bound Material, but the Material <em>output</em> (referred to sometimes as <em>terminals</em>
+or <em>ports</em> ) that the renderer understands: each output identifies a shading
+network, and different renderers may consume different shading networks. In the
+example below, the Material <span class="mono sdfpath">/PreviewMaterial</span> bound to a root prim
+<span class="mono sdfpath">/Bob</span> may provide only a <span class="mono">glslfx:surface</span> output, while a
+descendant Mesh prim <span class="mono sdfpath">/Bob/Geom/Body</span> may bind a Material
+<span class="mono sdfpath">/Skin</span> that only defines a renderman-specific, <span class="mono">ri:bxdf</span>
+output. Even though the ancestral binding is weaker (for the mesh) than the
+descendant-binding, when a GL renderer asks <span class="mono sdfpath">/Bob/Geom/Body</span> what
+shading network it should use, the answer should be the <span class="mono">glslfx:surface</span>
+defined on the ancestor prim. This nuance points out that addressing the problem
+of binding materials must be done in consideration of the larger problem of
+identifying useful shading networks; we will address this problem in the second
+half of this proposal.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Resolving Hierarchically-bound Materials</span><a class="headerlink" href="#id1" title="Link to this code"></a></div>
+<div class="highlight-usda notranslate"><div class="highlight"><pre><span></span><span class="k k-Tokens">def</span><span class="w"> </span>Material<span class="w"> </span><span class="s">&quot;PreviewMaterial&quot;</span>
+<span class="p">{</span>
+<span class="w">     </span><span class="na">outputs:glslfx:surface</span><span class="p">.</span>connect<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">&lt;/PreviewMaterial/PreviewSurface.outputs:surface&gt;</span>
+
+<span class="w">     </span><span class="k k-Tokens">def</span><span class="w"> </span>Shader<span class="w"> </span><span class="s">&quot;PreviewSurface&quot;</span>
+<span class="w">     </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k k-Tokens">def</span><span class="w"> </span>Material<span class="w"> </span><span class="s">&quot;Skin&quot;</span>
+<span class="p">{</span>
+<span class="w">     </span><span class="na">outputs:ri:surface</span><span class="p">.</span>connect<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">&lt;/Skin/pxrSurface1.outputs:bxdf&gt;</span>
+
+<span class="w">     </span><span class="k k-Tokens">def</span><span class="w"> </span>Shader<span class="w"> </span><span class="s">&quot;pxrSurface1&quot;</span>
+<span class="w">     </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k k-Tokens">def</span><span class="w"> </span>Xform<span class="w"> </span><span class="s">&quot;Bob&quot;</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">rel</span><span class="w"> </span><span class="na">material:binding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">&lt;/PreviewMaterial&gt;</span>
+
+<span class="w">     </span><span class="k k-Tokens">def</span><span class="w"> </span>Xform<span class="w"> </span><span class="s">&quot;Geom&quot;</span>
+<span class="w">     </span><span class="p">{</span>
+<span class="w">             </span><span class="k k-Tokens">def</span><span class="w"> </span>Mesh<span class="w"> </span><span class="s">&quot;Body&quot;</span>
+<span class="w">             </span><span class="p">{</span>
+<span class="w">                     </span><span class="kt">rel</span><span class="w"> </span><span class="na">material:binding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">&lt;/Skin&gt;</span>
+<span class="w">             </span><span class="p">}</span>
+<span class="w">     </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>In the several years we have been using this binding mechanism, we have bumped
+up against two key limitations:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p><strong>Direct bindings cannot be established for gprims inside aggregate
+instances without breaking the instances.</strong></p>
+<p>This can be problematic in systems like Maya that natively allow unique
+shader bindings to instances, as recently reported in <a class="reference external" href="https://github.com/PixarAnimationStudios/OpenUSD/issues/332">Issue 332</a> . This has
+been problematic for our Katana-based set-shading workflows, as well, in
+which a set of unshaded, instanced components are referenced into a set,
+and we wish to bind set-level Materials to the primitives inside the
+components.</p>
+</li>
+<li><p><strong>For high-level distinctions like “preview” vs “full” rendering, wherein
+we frequently wish to bind materials at different granularity, it can be
+onerous to manage and interrogate multiple materials bound at different
+points in the hierarchy.</strong></p>
+<p>This is especially true in Katana, where the cost of examining a material
+in order to discover whether it is the one you want is high.</p>
+</li>
+</ol>
+</div></blockquote>
+<p>Other systems, such as Katana, Houdini Material Style Sheets, MaterialX, and
+Maya allow materials to be assigned to a <em>collection</em> that identifies the gprims
+(or ancestors of gprims) that should bind to the given Material. In USD,
+collections are represented by <em>include</em> and <em>exclude</em> relationships in the
+<a class="reference external" href="./api/class_usd_collection_a_p_i.html">UsdCollectionAPI</a> schema, and relationships authored “outside”
+instances are completely free to target prims <strong>inside</strong> instances, in which
+case USD core will readily resolve the targets to “ <a class="reference external" href="api/_usd__page__scenegraph_instancing.html#Usd_ScenegraphInstancing_InstanceProxies">instance proxy prims</a>”.
+This means that we can create collections above/outside instances that refer to
+constituents of <em>individual instances,</em> and bind the collections to Materials
+defined either inside or outside of instances.</p>
+<p>In this document we present a model for binding materials via collections, with
+an eye towards efficient evaluation and paying only for the mental/pipeline
+complexity you need, together with a new concept we call material purpose whose
+goal is to make it easier for users and renderers to manage and discover the
+materials relevant to a particular rendering task.</p>
+</section>
+<section id="basic-proposal-for-collection-based-assignment">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">Basic Proposal for Collection-Based Assignment</a><a class="headerlink" href="#basic-proposal-for-collection-based-assignment" title="Link to this heading"></a></h2>
+<p>Currently, the <span class="mono">material:binding</span> relationship is restricted to targeting
+a single Material. We propose adding an additional set of binding properties
+that can appear on any prim, <span class="mono">material:binding:collection:XXX</span> that
+identifies a (Material, Collection) pair to be bound:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p><span class="mono">material:binding:collection</span> defines a namespace of binding
+relationships to be applied in namespace order, with the earliest ordered
+binding relationship the strongest.  Generally, we expect binding
+collections to be non-intersecting, and therefore order to be
+unimportant, but when ordering is necessary, it relies on the hosting
+prim’s <a class="reference external" href="./api/class_usd_prim.html#aa3d8915481ff6280c22c60de4a833423">native property ordering</a>.</p></li>
+<li><p>For a <span class="mono">material:binding:collection:NAME</span> relationship to be a valid
+binding, it must target a single Material and a single Collection, and
+represents the binding of the targeted Material to all of the prims
+identified by the Collection that live beneath the binding relationshp’s
+prim in namespace. The name chosen as the last element of the binding
+property’s name is irrelevant, save that:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>it establishes an identity for the binding that is unique on the
+prim. Attempting to establish two collection bindings of the same
+name on the same prim will result in the first binding simply being
+overridden. In the future, we may allow a single colllection binding
+to target multiple collections, if we can establish a reasonable
+round-tripping pattern for applications like Maya.</p></li>
+<li><p>NAME must be a single token, <strong>not</strong> a namespaced token sequence.
+This restriction facilitates advanced features (purpose) described
+later in this document.</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>If a prim has both authored <span class="mono">material:binding</span> and authored
+<span class="mono">material:binding:collection:XXX</span> properties, the “direct”
+<span class="mono">material:binding</span> is weaker than the collection-based assignments,
+reflecting our belief that the combination would appear primarily to
+define a “fallback” material to be used by any child prims that are not
+targeted by a more specific assignment.</p></li>
+<li><p>The “specificity” with which a prim is included in a collection <strong>is
+irrelevant</strong> to the binding strength of the collection. For example, if a
+prim contains the <strong>ordered</strong> collection bindings
+<span class="mono">material:binding:collection:metalBits</span> and
+<span class="mono">material:binding:collection:plasticBits</span>, each of which targets a
+collection of the same name, then if <em>metalBits</em> includes
+<span class="mono sdfpath">/Chair/Back</span>, while <em>plasticBits</em> includes
+<span class="mono sdfpath">/Chair/Back/Brace/Rivet</span>, the binding for
+<span class="mono sdfpath">/Chair/Back/Brace/Rivet</span> will be <strong>metalBits</strong> , because the
+<em>metalBits</em> collection is bound more strongly than the <em>plasticBits</em> ,
+and includes an ancestor of <span class="mono sdfpath">/Chair/Back/Brace/Rivet</span>.</p></li>
+</ol>
+</div></blockquote>
+<p>This formulation addresses both of the concerns raised in the last section:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Because we still require a <span class="mono">material:binding:collection:NAME</span>
+relationship on a prim or one of its ancestors, it is irrelevant whether
+any Collection associated with the binding identifies objects in
+arbitrary corners of the scenegraph, because we know we will only need to
+care about objects at or below the bound prim.</p></li>
+<li><p>The rule presented in item (3) above provides resolution behavior for a
+single prim. For collections bound on different prims, the simple rule
+already in use for direct bindings applies: bindings lower in namespace
+(closer to leaf gprims) are stronger than bindings on ancestors.</p></li>
+</ol>
+</div></blockquote>
+<section id="example-collection-based-assignment">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Example Collection-Based Assignment</a><a class="headerlink" href="#example-collection-based-assignment" title="Link to this heading"></a></h3>
+<p>Let us suppose we have a set constructed of unshaded, instanced assets. The set
+contains a group model called <span class="mono">Desk_Assembly</span> at some point in its
+namespace, and the <span class="mono">Desk_Assembly</span> contains a number of groups and
+component models, among them, a number of referenced, instanced, “Pencil”
+models. The shading artist locates (in a shader library) or creates Materials
+for <span class="mono">PinkPearl</span> and <span class="mono">YellowPaint</span> and adds them to the set - the
+Materials themselves can live anywhere in the scene. The shading artist then
+creates collections that identify all of the erasers in all of the pencils, and
+all of the wooden shafts of the pencils, authoring them on <span class="mono">Desk_Assembly</span>
+or some other set-level prim (need not be a direct ancestor of the Pencil
+instances); although the declarative collections may wind up being large if
+there are many pencils, the procedural representation (such as authored in
+Katana) from which we baked the collections would generally be quite compact. To
+each collection, the artist binds the appropriate Material. Finally, the artist
+would add two material assignments (again on an ancestor of the instanced
+pencils) that identifies the two collections. The result might look something
+like:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Set-Shaded Office_set</span><a class="headerlink" href="#id2" title="Link to this code"></a></div>
+<div class="highlight-usda notranslate"><div class="highlight"><pre><span></span><span class="c1">#usda 1.0</span>
+
+<span class="k k-Tokens">over</span><span class="w"> </span><span class="s">&quot;Office_set&quot;</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k k-Tokens">def</span><span class="w"> </span>Scope<span class="w"> </span><span class="s">&quot;Materials&quot;</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k k-Tokens">def</span><span class="w"> </span>Material<span class="w"> </span><span class="s">&quot;Default&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="k k-Tokens">def</span><span class="w"> </span>Material<span class="w"> </span><span class="s">&quot;PinkPearl&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="k k-Tokens">def</span><span class="w"> </span>Material<span class="w"> </span><span class="s">&quot;YellowPaint&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">             </span><span class="p">...</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="p">...</span>
+
+<span class="w">    </span><span class="k k-Tokens">over</span><span class="w"> </span><span class="s">&quot;Desk_Assembly&quot;</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">             </span><span class="kt">rel</span><span class="w"> </span><span class="na">material:binding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">&lt;/Office_set/Materials/Default&gt;</span>
+<span class="w">             </span><span class="kt">rel</span><span class="w"> </span><span class="na">material:binding:collection:Erasers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nn">&lt;/Office_set/Materials/PinkPearl&gt;</span><span class="p">,</span>
+<span class="w">                                                   </span><span class="nn">&lt;/Office_set/Desk_Assembly/Cup_grp.collection:Erasers&gt;</span><span class="p">]</span>
+<span class="w">             </span><span class="kt">rel</span><span class="w"> </span><span class="na">material:binding:collection:Shafts</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="p">[</span><span class="nn">&lt;/Office_set/Materials/YellowPaint&gt;</span><span class="p">,</span>
+<span class="w">                                                   </span><span class="nn">&lt;/Office_set/Desk_Assembly/Cup_grp.collection:Shafts&gt;</span><span class="w"> </span><span class="p">]</span>
+
+<span class="w">        </span><span class="k k-Tokens">over</span><span class="w"> </span><span class="s">&quot;Cup_grp&quot;</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">rel</span><span class="w"> </span><span class="na">collection:Erasers:expansionRule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;expandPrims&quot;</span>
+<span class="w">            </span><span class="kt">rel</span><span class="w"> </span><span class="na">collection:Erasers:includes</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                </span><span class="p">[</span><span class="nn">&lt;/Office_set/Desk_Assembly/Cup_grp/Pencil_1/Geom/EraserHead&gt;</span><span class="p">,</span>
+<span class="w">                 </span><span class="nn">&lt;/Office_set/Desk_Assembly/Cup_grp/Pencil_2/Geom/EraserHead&gt;</span><span class="p">,</span>
+<span class="w">                 </span><span class="nn">&lt;/Office_set/Desk_Assembly/Cup_grp/Pencil_3/Geom/EraserHead&gt;</span><span class="p">,</span>
+<span class="w">                 </span><span class="nn">&lt;/Office_set/Desk_Assembly/Cup_grp/Pencil_4/Geom/EraserHead&gt;</span><span class="p">]</span>
+<span class="w">            </span><span class="kt">rel</span><span class="w"> </span><span class="na">collection:Shafts:expansionRule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;expandPrims&quot;</span>
+<span class="w">            </span><span class="kt">rel</span><span class="w"> </span><span class="na">collection:Shafts:includes</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                </span><span class="p">[</span><span class="nn">&lt;/Office_set/Desk_Assembly/Cup_grp/Pencil_1/Geom/Shaft&gt;</span><span class="p">,</span>
+<span class="w">                 </span><span class="nn">&lt;/Office_set/Desk_Assembly/Cup_grp/Pencil_2/Geom/Shaft&gt;</span><span class="p">,</span>
+<span class="w">                 </span><span class="nn">&lt;/Office_set/Desk_Assembly/Cup_grp/Pencil_3/Geom/Shaft&gt;</span><span class="p">,</span>
+<span class="w">                 </span><span class="nn">&lt;/Office_set/Desk_Assembly/Cup_grp/Pencil_4/Geom/Shaft&gt;</span><span class="p">]</span>
+
+<span class="w">            </span><span class="c1"># The Pencil_N instances are children of &quot;Cup_grp&quot;, but for our purposes, do not</span>
+<span class="w">            </span><span class="c1"># even need to be addressed/overridden directly at all in the shading layer, because</span>
+<span class="w">            </span><span class="c1"># we can express all the required data on ancestor prims!</span>
+
+<span class="w">            </span><span class="p">...</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The <span class="mono">material:binding</span> of the “Default” Material serves the role of
+a “fallback material”, which will provide a material definition for any
+prim in the Desk_Assembly that possesses no other material bindings. It
+will also be present in the list of bound materials to be resolved for
+<strong>all prims</strong> in the assembly, but at a weaker strength</p></li>
+</ul>
+</div>
+</section>
+<section id="refinement-1-specifying-binding-strength">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Refinement 1: Specifying Binding Strength</a><a class="headerlink" href="#refinement-1-specifying-binding-strength" title="Link to this heading"></a></h3>
+<p>The <span class="mono">Office_set</span> above is a simple set-shading example, because none of the
+component models were shaded as component assets. For <em>simple</em> assets and uses
+of UsdShade, what we have presented thus far should be sufficient. But let us
+consider a more realistic example in a film pipeline, in which some of the
+assets referenced into a set are unshaded, but some <strong>have already been shaded</strong>
+at the asset-level, so that as the assets are referenced into the set, they
+bring their materials and material assignments along with them. Because
+bindings established on components will be stronger than bindings established on
+grouping models introduced at the containing set-level, it may now be difficult
+or impossible to assign materials “at the set level” using established and
+favored tools. For referenced, uninstanced models, it will be <em>possible</em> to
+override the component-level bindings via many direct overrides on the bound
+prims. But for <strong>instanced components</strong> , we may not even have that option if
+the bindings are established internally to the component models, without
+uninstancing the components, which we wish to avoid.</p>
+<p>Thinking ahead also to how we will represent layered materials and facilitate
+such authoring actions as “here at the set-level, I want to add a layer of dirt
+onto all (or some) of the prim materials in some sub-tree”, we may desire the
+ability to specify a modifier to the binding that can determine:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>whether the binding should be weaker (the default) or <strong>stronger</strong> than
+bindings that appear lower in namespace</p></li>
+<li><p>Alternatively, whether the bound material should be consumed as a named
+material layer by layered materials beneath the bound prim in
+namespace… this is speculative since we do not yet know exactly how we
+will specify layered materials, but it suggests that a binding modifier
+might better be cast as a string/token rather than bool.</p></li>
+</ul>
+</div></blockquote>
+<p>Possessing such an ability can also help with a key problem for component assets
+that, beneath their root, reference in other complete assets, namely, that it
+leads to Materials showing up in unusual/unexpected places, which is a
+particular problem in Katana, which expects Materials to be in particular
+places. With the ability to add bindings on the referencing (enclosing) model
+that targets and overrides bindings on its referenced sub-models, we can provide
+a model structure in which all used-Materials for a component model can be
+discovered without needing to explore the entire model.</p>
+<p>We can add a “<span class="mono">token bindMaterialAs</span>” metadatum to the binding schema that
+allows the bindings on a prim to individually specify their target
+strength/layer. We stipulate the metadata appear on each binding relationship
+rather than on the bound prim, because it keeps related data together, for
+diagnostic ease, and because copying a binding property from one prim to another
+will work without needing to remember to copy some of the source prim’s metadata
+along with the relationship. Let us revisit the Desk_set example, and presume
+that some of the referenced assets may already possess material bindings that we
+wish to stomp, at the set-level. This would require two applications of the
+metadatum: one for each of the collection-based bindings, but <strong>not</strong> for the
+“direct” binding, because it is just intended as a fallback:</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Set-Shaded Office_set</span><a class="headerlink" href="#id3" title="Link to this code"></a></div>
+<div class="highlight-usda notranslate"><div class="highlight"><pre><span></span><span class="c1">#usda 1.0</span>
+
+<span class="k k-Tokens">over</span><span class="w"> </span><span class="s">&quot;Office_set&quot;</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k k-Tokens">def</span><span class="w"> </span>Scope<span class="w"> </span><span class="s">&quot;Materials&quot;</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k k-Tokens">def</span><span class="w"> </span>Material<span class="w"> </span><span class="s">&quot;Default&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="k k-Tokens">def</span><span class="w"> </span>Material<span class="w"> </span><span class="s">&quot;PinkPearl&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="k k-Tokens">def</span><span class="w"> </span>Material<span class="w"> </span><span class="s">&quot;YellowPaint&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">             </span><span class="p">...</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="p">...</span>
+
+<span class="w">    </span><span class="k k-Tokens">over</span><span class="w"> </span><span class="s">&quot;Desk_Assembly&quot;</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">             </span><span class="c1"># We do not want to make the default material binding any stronger</span>
+<span class="w">             </span><span class="kt">rel</span><span class="w"> </span><span class="na">material:binding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">&lt;/Office_set/Materials/Default&gt;</span>
+<span class="w">             </span><span class="kt">rel</span><span class="w"> </span><span class="na">material:binding:collection:Erasers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nn">&lt;/Office_set/Materials/PinkPearl&gt;</span><span class="p">,</span>
+<span class="w">                                                   </span><span class="nn">&lt;/Office_set/Desk_Assembly/Cup_grp.collection:Erasers&gt;</span><span class="p">]</span><span class="w"> </span><span class="p">(</span>
+<span class="w">                     </span>bindMaterialAs<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;strongerThanDescendants&quot;</span>
+<span class="w">             </span><span class="p">)</span>
+<span class="w">             </span><span class="kt">rel</span><span class="w"> </span><span class="na">material:binding:collection:Shafts</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="p">[</span><span class="nn">&lt;/Office_set/Materials/YellowPaint&gt;</span><span class="p">,</span>
+<span class="w">                                                   </span><span class="nn">&lt;/Office_set/Desk_Assembly/Cup_grp.collection:Shafts&gt;</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">(</span>
+<span class="w">                     </span>bindMaterialAs<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;strongerThanDescendants&quot;</span>
+<span class="w">             </span><span class="p">)</span>
+
+<span class="w">       </span><span class="c1"># No other changes required to collections or references...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>The <span class="mono">bindMaterialAs</span> metadatum could be extended, in the future, to accept
+tokens such as “layer:dirt” to facilitate layer injection, but initially would
+just possess the two values “<span class="mono">weakerThanDescendants</span>” and
+“<span class="mono">strongerThanDescendants</span>”.</p>
+</section>
+<section id="refinement-2-material-purpose">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Refinement 2: Material Purpose</a><a class="headerlink" href="#refinement-2-material-purpose" title="Link to this heading"></a></h3>
+<p>The basic material binding scheme presented here, without the
+<span class="mono">bindMaterialAs</span> refinement presented in the last section, should be
+sufficient for many uses of USD, but even TurboSquid’s <a class="reference external" href="https://www.turbosquid.com/stemcell-3d-models">StemCell</a> technology packages one set of
+textures feeding specular/gloss signals “For use in DCCs and offline renderers”
+and another set of textures feeding Metallic PBR “for real-time game engines”.
+This distinction between <span class="bi">full</span> <strong>render</strong> <strong>materials</strong> and <span class="bi">preview</span>
+<strong>render materials</strong> is common in the VFX industry. From Pixar’s own experience,
+we find it desirable to potentially have both full and preview materials - <em>and
+the binding of geometry to these materials</em> - available at the same time in a
+scene, with the ability for an application to switch between them without
+needing to recompose the scene.</p>
+<p>In Pixar’s pipeline, the “full” shading is authored for consumption by
+Renderman, and the “preview” shading authored to be consumed by Hydra’s OpenGL
+“stream” backend - but the association of full or preview with particular
+renderers need not be made; for example, we should be able to produce a
+Renderman render that consumes preview materials. The concept we are
+discriminating is not which particular renderer is important, but what the goal
+or <strong>purpose</strong> of a given render is, and to choose the “one material used to
+shade a particular gprim” based on that criterion. We therefore propose to
+introduce the <em>optional</em> concept of <strong>material purpose</strong> to our binding schema
+and material resolution algorithm, with possible values:</p>
+<blockquote>
+<div><ul>
+<li><p><strong>full</strong></p>
+<p>When the purpose of the render is entirely about visualizing the truest
+representation of a scene, considering all lighting and material
+information, at highest fidelity.</p>
+</li>
+<li><p><strong>preview</strong></p>
+<p>When the render is in service of some other goal (such as scene
+manipulation, modeling, or realtime playback). Latency and speed are
+generally of greater concern for preview renders, therefore preview
+materials might generally be designed to be “lighterweight” than full
+materials. However, there might be more fundamental representational
+differences between full and preview, should the domain benefit from it.
+For example, preview materials might be employed to emphasize or
+categorize objects along some dimension(s) not important for a final
+render, but useful for selection and manipulation, such as rendering all
+fruits one way and all vegetables another so as not to pick an unintended
+edible.</p>
+</li>
+</ul>
+</div></blockquote>
+<p>We see no reason to limit the possible purposes for material use in a pipeline
+or DCC, but to promote reliable interchange, we propose to make <strong>full</strong> and
+<strong>preview</strong> purposes canonical.</p>
+<p>Having settled on the concept, we need to decide how material purpose is
+encoded. While it would be possible to use naming schemes in Material output
+terminals to encode purpose <em>within materials</em> , we find it more useful to
+encode purpose <em>as part of the material binding itself</em> . Recording purpose as
+a material binding property rather than as an internal property of Materials has
+two key advantages:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>It is possible for a prim to bind multiple materials for different
+purposes, each material having distinct public interfaces. This is a need
+that comes up regularly in Pixar’s character pipeline, and is a
+problem-spot for our current “single binding” schema.</p></li>
+<li><p>Material resolution, using purpose as the primary selector, need only
+examine the bindings, not the materials themselves, in order to locate
+“the one material” for a gprim. For some DCC’s this provides a
+substantial performance benefit.</p></li>
+</ul>
+</div></blockquote>
+<p>To understand how purpose is encoded and could be used, let us consider an
+extension of the first example in this document that demonstrated hierarchical
+material resolution:</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Resolving Hierarchically-bound Materials</span><a class="headerlink" href="#id4" title="Link to this code"></a></div>
+<div class="highlight-usda notranslate"><div class="highlight"><pre><span></span><span class="k k-Tokens">def</span><span class="w"> </span>Material<span class="w"> </span><span class="s">&quot;PreviewMaterial&quot;</span>
+<span class="p">{</span>
+<span class="w">     </span><span class="na">outputs:glslfx:surface</span><span class="p">.</span>connect<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">&lt;/PreviewMaterial/PreviewSurface.outputs:surface&gt;</span>
+
+<span class="w">     </span><span class="k k-Tokens">def</span><span class="w"> </span>Shader<span class="w"> </span><span class="s">&quot;PreviewSurface&quot;</span>
+<span class="w">     </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k k-Tokens">def</span><span class="w"> </span>Material<span class="w"> </span><span class="s">&quot;Skin&quot;</span>
+<span class="p">{</span>
+<span class="w">     </span><span class="na">outputs:ri:surface</span><span class="p">.</span>connect<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">&lt;/Skin/pxrSurface1.outputs:bxdf&gt;</span>
+
+<span class="w">     </span><span class="k k-Tokens">def</span><span class="w"> </span>Shader<span class="w"> </span><span class="s">&quot;pxrSurface1&quot;</span>
+<span class="w">     </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k k-Tokens">def</span><span class="w"> </span>Material<span class="w"> </span><span class="s">&quot;Leather&quot;</span>
+<span class="p">{</span>
+<span class="w">     </span><span class="na">outputs:surface</span><span class="p">.</span>connect<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">&lt;/Leather/uberSurface.outputs:out&gt;</span>
+
+<span class="w">     </span><span class="k k-Tokens">def</span><span class="w"> </span>Shader<span class="w"> </span><span class="s">&quot;uberSurface&quot;</span>
+<span class="w">     </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="k k-Tokens">def</span><span class="w"> </span>Xform<span class="w"> </span><span class="s">&quot;Bob&quot;</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">rel</span><span class="w"> </span><span class="na">material:binding:preview</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">&lt;/PreviewMaterial&gt;</span>
+
+<span class="w">     </span><span class="k k-Tokens">def</span><span class="w"> </span>Xform<span class="w"> </span><span class="s">&quot;Geom&quot;</span>
+<span class="w">     </span><span class="p">{</span>
+<span class="w">             </span><span class="k k-Tokens">def</span><span class="w"> </span>Mesh<span class="w"> </span><span class="s">&quot;Body&quot;</span>
+<span class="w">             </span><span class="p">{</span>
+<span class="w">                     </span><span class="kt">rel</span><span class="w"> </span><span class="na">material:binding:full</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">&lt;/Skin&gt;</span>
+<span class="w">             </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k k-Tokens">def</span><span class="w"> </span>Mesh<span class="w"> </span><span class="s">&quot;Belt&quot;</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">rel</span><span class="w"> </span><span class="na">material:binding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">&lt;/Leather&gt;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">     </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>In this example we see three bindings, to three different materials. Of note:</p>
+<blockquote>
+<div><ul>
+<li><p><strong>Purpose is encoded by relationship name</strong></p>
+<p>Rather than as metadata on the binding relationship. This makes the
+purpose more salient in most DCC’s, and also makes the encoding of
+multiple bindings on a single prim easier to maintain and understand
+(since, as metadata, we would need to arbitrarily adjust binding property
+names for uniqueness if we wanted to bind different materials to the same
+collection for different purposes).</p>
+</li>
+<li><p><strong>We preserve the ability to add bindings with no specific purpose</strong></p>
+<p>The binding on <span class="mono sdfpath">/Bob/Geom/Belt</span> is the current, simple
+<span class="mono">material:binding</span> relationship. The <strong>semantic</strong> associated with a
+no-purpose binding is to serve as a “fallback” or “all purpose” binding,
+when a specific purpose is requested, but no more-specific binding is
+available. This addresses several concerns:</p>
+<blockquote>
+<div><ul>
+<li><p><strong>Backwards compatibility</strong></p>
+<p>Existing material bindings continue to work in the new scheme, in
+perpetuity</p>
+</li>
+<li><p><strong>Simple needs result in simple scene description</strong></p>
+<p>Assets whose shading does not require special handling can simply bind
+Materials without any specific purpose, which means they will be
+available for all purpose requests.</p>
+</li>
+<li><p><strong>Aids deployment of “library materials” -</strong></p>
+<p>If we have taken the time to craft reusable materials that contain
+both preview-usable and final-render-usable shaders, it would be
+unfortunate to require that each gprim we bind actually create <em>two</em>
+binding relationships targetting the same prim. We can instead just
+use the all-purpose binding.</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Similarly for collection-based bindings…</strong> the binding property for a
+<em>preview</em> material looks like</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-usda notranslate"><div class="highlight"><pre><span></span><span class="kt">rel</span><span class="w"> </span><span class="na">material:binding:collection:preview:Erasers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">&lt;/Materials/PinkPearl&gt;</span>
+</pre></div>
+</div>
+<p>Thus, simply from the number of tokens in a valid binding relationship’s name,
+we immediately know its role:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Two tokens</strong> : the fallback, “all purpose”, direct binding,
+<span class="mono">material:binding</span></p></li>
+<li><p><strong>Three tokens</strong> : a purpose-restricted, direct, fallback binding,
+e.g. <span class="mono">material:binding:preview</span></p></li>
+<li><p><strong>Four tokens</strong> : an all-purpose, collection-based binding,
+e.g. <span class="mono">material:binding:collection:metalBits</span></p></li>
+<li><p><strong>Five tokens</strong> : a purpose-restricted, collection-based binding,
+e.g. <span class="mono">material:binding:collection:full:metalBits</span></p></li>
+</ul>
+</div></blockquote>
+<p>So, using the example, if we asked for the <span class="bi">preview</span> purpose Materials for
+either of the gprims, we would get <span class="mono sdfpath">/PreviewMaterial</span>, because the
+<span class="mono">material:binding:preview</span> binding on <span class="mono sdfpath">/Bob</span> provides a
+preview-purpose material for all descendant prims, and there are no other
+preview-specific bindings beneath it in namespace. If we ask for the <span class="bi">full</span>
+binding, we will get <span class="mono sdfpath">/Skin</span> for <span class="mono sdfpath">/Bob/Geom/Body</span> thanks
+to its <span class="mono">material:binding:full</span> binding, <strong>and</strong> get <span class="mono sdfpath">/Leather</span>
+for <span class="mono sdfpath">/Bob/Geom/Belt</span>, because its <span class="mono">material:binding</span>
+relationship will substitute for lack of a specific <span class="bi">full</span> purpose binding.
+Finally, were we to remove or block the <span class="mono">material:binding:preview</span> binding
+on <span class="mono sdfpath">/Bob</span> and then resolve the <em>preview</em> bindings, we would get <strong>no
+binding</strong> for <span class="mono sdfpath">/Bob/Geom/Body</span>, but <span class="mono sdfpath">/Leather</span> for
+<span class="mono sdfpath">/Bob/Geom/Belt</span>, again because the all-purpose binding fills in for
+preview just as it does for full.</p>
+</section>
+<section id="material-resolve-determining-the-bound-material-for-any-geometry-prim">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Material Resolve: Determining the Bound Material for any Geometry Prim</a><a class="headerlink" href="#material-resolve-determining-the-bound-material-for-any-geometry-prim" title="Link to this heading"></a></h3>
+<p>We define <em>Material Resolve</em> as the process by which a renderer selects, for
+each renderable primitive, <strong>the single</strong> <span class="mono">UsdShadeMaterial</span> from which it
+should extract the data needed to build the shading/displacement
+shaders/operators it will use in illumination and displacement calculations. In
+either the existing, direct-binding-only, or in the proposed, dual
+direct/collection binding systems, there will often be an ordered list of
+<em>possible</em> Materials from which to choose - i.e. Materials bound to the given
+prim or its ancestor prims.</p>
+<p>The material resolve algorithm in place prior to this new OM required clients to
+potentially search through all of the materials in the list, starting with the
+strongest, stopping only when they find the particular output terminal they were
+seeking - or if they ran out of Material candidates. In addition to the onus of
+needing to examine all of the materials, this meant that there might not be “one
+bound material” since we were, in theory, free to author surface and
+displacement terminals/networks on different Materials, bound at different
+points in the hierarchy.</p>
+<p>With the introduction of <strong>Material Purpose</strong> , we seek to simplify the resolve
+step by parameterizing it with material purpose, and requiring that each
+Material contain all the shading required for the purpose, so that there <em>can</em>
+be a single result Material from the resolve process. At the client API level,
+we accept just a single purpose ( <em>preview</em> or <em>full</em> ), to which is
+automatically added the all-purpose binding as a second, weaker binding source.
+If needed, we can optionally provide API that returns the actual purpose
+(specified or all-purpose fallback) that we resolved, as well as the prim on
+which the winning binding was found, etc.</p>
+<p>Following is very un-optimized pseudocode for <span class="mono">GetBoundMaterial()</span>, for a
+given prim <span class="bi">prim</span> :</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">GetBoundMaterial()</span><a class="headerlink" href="#id5" title="Link to this code"></a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">UsdShadeMaterial</span><span class="w"> </span><span class="nf">GetBoundMaterial</span><span class="p">(</span><span class="n">UsdPrim</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="w"> </span><span class="n">prim</span><span class="p">,</span><span class="w"> </span><span class="n">TfToken</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="o">&amp;</span><span class="n">materialPurpose</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">TfToken</span><span class="o">&gt;</span><span class="w"> </span><span class="n">materialPurposes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">materialPurpose</span><span class="p">,</span><span class="w"> </span><span class="n">UsdShadeMaterial</span><span class="o">::</span><span class="n">AllPurpose</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="w"> </span><span class="n">purpose</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">materialPurposes</span><span class="p">){</span>
+<span class="w">        </span><span class="n">UsdShadeMaterial</span><span class="o">&gt;</span><span class="w"> </span><span class="n">boundMaterial</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prim</span><span class="p">;</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">IsPseudoRoot</span><span class="p">();</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">GetParent</span><span class="p">())</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">             </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">DirectBindingStrongerThanDescendants</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">purpose</span><span class="p">)</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="n">boundMaterial</span><span class="p">)</span>
+<span class="w">             </span><span class="p">{</span>
+<span class="w">                     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">UsdShadeMaterial</span><span class="w"> </span><span class="n">directBind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetDirectlyBoundMaterialForPurpose</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">purpose</span><span class="p">))</span>
+<span class="w">                    </span><span class="n">boundMaterial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">directBind</span><span class="p">;</span>
+<span class="w">             </span><span class="p">}</span>
+
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="w"> </span><span class="n">collBinding</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">GetCollectionMaterialBindingsForPurpose</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">purpose</span><span class="p">))</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                 </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">collBinding</span><span class="p">.</span><span class="n">GetCollection</span><span class="p">().</span><span class="n">Contains</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span><span class="w"> </span><span class="k">and</span>
+<span class="w">                    </span><span class="p">(</span><span class="n">collBinding</span><span class="p">.</span><span class="n">IsStrongerThanDescendants</span><span class="p">()</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="n">boundMaterial</span><span class="p">)){</span>
+<span class="w">                    </span><span class="n">boundMaterial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">collBinding</span><span class="p">.</span><span class="n">GetMaterial</span><span class="p">();</span>
+<span class="w">                    </span><span class="c1">// The first one we match will always be the only one we care about</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">             </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">boundMaterial</span><span class="p">)</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">boundMaterial</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">UsdShadeMaterial</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="usdshade-api">
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">UsdShade API</a><a class="headerlink" href="#usdshade-api" title="Link to this heading"></a></h3>
+<p>Currently, material binding is exposed as a handful of static methods on
+<span class="mono">UsdShadeMaterial</span>. Given the substantial added functionality and API we
+are adding to binding, we propose to follow a similar path to that taken with
+UsdSkel, and add a <span class="mono">UsdShadeMaterialBindingAPI</span>, to be applied to geometry
+prims, which contains all binding-related mutators and queries.</p>
+</section>
+</section>
+<section id="analysis-of-collection-based-binding">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">Analysis of Collection-Based Binding</a><a class="headerlink" href="#analysis-of-collection-based-binding" title="Link to this heading"></a></h2>
+<p><strong>Pros</strong></p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>This encoding maps well to how material assignment is often authored in
+Katana, especially in set-shading workflows. It also closely matches
+MaterialX’s encoding of material assignments. The lack of ability to
+assign materials to sub-instanced geometry was also one of the early
+(awaiting resolution) stumbling blocks for the Autodesk engineering team
+investigating USD-encoded shading.</p></li>
+<li><p>This encoding captures grouping information that we have found useful in
+the past, but have needed to compute more expensively, just-in-time. For
+example, optimizations like shader coalescing in the REYES architecture
+derived benefits from finding all the gprims bound to each shader, so
+that the shader could be emitted and bound just once, followed by all
+affected gprims. While that particular optimization may no longer be
+relevant in the RIS architecture, the fact that we can now easily reason
+about the collection of objects bound to each shader may be beneficial in
+other computations.</p></li>
+<li><p>This encoding allows a more formal handoff from modeling to shading,
+especially for complex models. Rather than relying on naming conventions
+to identify all the window glass in a building, or all the
+same-construction bolts in a car, the modeler can craft and ship the
+collections that identify these generally uniformly-shadable groups of
+prims (and facesets).</p></li>
+</ol>
+</div></blockquote>
+<p><strong>Cons</strong></p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Although both the direct-binding encoding and collection-based encoding
+require a traversal of ancestors to discover any single gprim’s
+assignment, the amount of work required to answer the question for a
+single gprim is tremendously more expensive for the collection-based
+encoding, because we may need to resolve all collections bound to all of
+the gprim’s ancestors to perform membership tests in all of them. It is
+a practical requirement that we provide an efficient, memoized
+computation for material assignment for use by any client that wants to
+look up assignments one gprim at a time, which currently is all known
+clients.</p></li>
+<li><p>If material-assignment collections and bindings are authored on component
+model roots, as one might reasonably decide to do, and the models are
+instanced (as is common in Pixar’s pipeline), then the “Prototypes” for
+these instances on the <span class="mono">UsdStage</span> will have no binding information,
+because we do not compose any properties on the root prims of prototypes,
+whose properties would all be overridable by the instances themselves.
+The collections and bindings will be expressed on the <strong>instance roots</strong>
+themselves, which, by the nature of instancing, can freely vary,
+per-instance. Given that we do not expect to need or want to vary the
+bindings on every instance, we would prefer to be able to reap the
+benefits of instancing that we get from knowing that data is encapsulated
+inside a prototype, and therefore need be computed only once and shared
+by all instances. Therefore we propose to promote <strong>authoring collections
+and bindings inside component models</strong> . In Pixar’s pipeline, this would
+mean authoring collections and material bindings on
+<span class="mono sdfpath">/MODEL/Geom</span>. This need not be a schema requirement, but
+computations will be much more efficient if the pattern is followed.</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="integration">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Integration</a><a class="headerlink" href="#integration" title="Link to this heading"></a></h2>
+<section id="katana-import">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Katana Import</a><a class="headerlink" href="#katana-import" title="Link to this heading"></a></h3>
+<p>We have considerable flexibility in how we translate collection-based bindings
+in pxrUsdIn. With our eye on round-tripping, we might want to preserve the
+UsdShade encoding as closely as possible; the biggest impact (apart from a new
+data model/presentation for downstream-pipeline users) is the need to create a
+new material resolver op that gets injected into the proper place in the recipe.
+Steve LaVietes believes that it should be able to leverage Katana’s existing
+infrastructure for pattern-based evaluation, and should be at no substantial
+performance disadvantage over direct bindings. <strong>However</strong> , although we will
+likely find it convenient to encode the majority of our collection-based
+bindings such that the collections are authored on ancestors of the prims
+targeted by the collection, there is no performance reason in USD for requiring
+that collections target only objects beneath their owning prim, and we do not
+want to place such a restriction on clients ability to organize collections.
+The Katana implementation must be prepared for such a situation, though we will
+advertise “best practice” for material collection authoring to get the best
+Katana consumption performance.</p>
+</section>
+<section id="maya-i-o">
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">Maya I/O</a><a class="headerlink" href="#maya-i-o" title="Link to this heading"></a></h3>
+<p>Collection-based material binding maps quite well to Maya’s native encoding.
+Maya does not support, however:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Hierarchical resolution of materials (as described in the opening example
+of this document). Therefore, this is a problem we already face (and
+currently ignore) in importing USD into Maya.</p></li>
+<li><p>Any notion of “binding point” in the geometry hierarchy. In Maya, all
+collections (sets) and materials are global in scope (except for the
+unique, per-instance binding arrays, which are logically associated with
+the instance in the dag), and material-binding sets simply apply to all
+targets of the set. We would need to figure out a way to preserve binding
+information on Maya import if round-tripping is a concern.</p></li>
+</ul>
+</div></blockquote>
+<p>We may hope for a closer match to Maya with its MaterialX-inspired
+pattern/collection bindings.</p>
+</section>
+<section id="houdini">
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">Houdini</a><a class="headerlink" href="#houdini" title="Link to this heading"></a></h3>
+<p>We have not yet explored Houdini I/O implications deeply, but hope to soon.</p>
+</section>
+</section>
+<section id="remaining-questions">
+<h2><a class="toc-backref" href="#id18" role="doc-backlink">Remaining Questions</a><a class="headerlink" href="#remaining-questions" title="Link to this heading"></a></h2>
+<section id="performance">
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">Performance</a><a class="headerlink" href="#performance" title="Link to this heading"></a></h3>
+<p>There is no question that the “material resolve” algorithm for any given, single
+prim, can become substantially more expensive with collection-based material
+assignment. Previously, we needed only to resolve a single relationship for each
+ancestor of any prim. Now, in addition to resolving that same relationship, we
+may need to evaluate the prim’s path against any number of collections targeted
+by the <span class="mono">material:bind:collections</span> relationships. The only reasonable way
+to resolve materials involves either a top-down (pre or as part of main)
+traversal of the scene to discover, compute, and cache results efficiently, or
+with memoization. The former approach is more threading-friendly, and the option
+we will likely pursue for UsdImaging, however the “computer” we would provide
+would also submit to requests that would memoize only the sub-computations
+needed to answer queries for single prims, allowing subsequent queries to reuse
+the results, when applicable.</p>
+<p>A potential concern about memory consumption has been raised over such a caching
+computer; we will need to monitor memory consumption in both batch and
+interactive rendering applications.</p>
+</section>
+<section id="implication-on-renderer-instancing">
+<h3><a class="toc-backref" href="#id20" role="doc-backlink">Implication on Renderer Instancing</a><a class="headerlink" href="#implication-on-renderer-instancing" title="Link to this heading"></a></h3>
+<p>A primary motivator for this change to material binding is to support
+(re)shading of instanced assets without needing to break the instancing. This
+does not deteriorate the two primary advantages we derive from instancing -
+reduced prim count on a <span class="mono">UsdStage</span>, and sharing of diced geometry in
+renderers - but it does mean renderers that directly support aggregate
+instancing (Renderman and HdStream for sure, not Arnold, unsure about other
+renderers) will need to gracefully fall back to gprim-level instancing when two
+aggregate instances bind different sets of materials. Is this something that Hd
+itself addresses? Or does it want to pass along (aggregate instance, resolved
+materials closure) pairs to backends to apply/transform as they deem necessary?</p>
+<p>It is interesting to note that Houdini already allows a similar, but very much
+more powerful and procedural mechanism that allows material and
+material-parameter overrides that can penetrate into “packed prims”, Houdini’s
+equivalent of aggregate instances. This mechanism is called <a class="reference external" href="http://www.sidefx.com/docs/houdini/shade/stylesheets">Material
+Stylesheets</a> ; it is
+similar in spirit to Pixar’s refinement of Katana’s “Material Override” operator
+(MOP) when the MOP is used in the mode that ties its application to specific
+parts of the geometry hierarchy - however MOPs cannot vary instance-specific
+geometry inside of Katana native instances. On the other hand, Houdini’s
+Material Stylesheets can only be consumed (we believe) by the Mantra renderer.</p>
+</section>
+<section id="material-layering">
+<h3><a class="toc-backref" href="#id21" role="doc-backlink">Material Layering</a><a class="headerlink" href="#material-layering" title="Link to this heading"></a></h3>
+<p>Although there is little possibility we can answer this question prior to
+<strong>having</strong> a material layering scheme, the question remains of what interaction
+collection-based assignment would have with material layering.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="wp_usdaudio.html" class="btn btn-neutral float-left" title="UsdAudio Proposal" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="usdfaq.html" class="btn btn-neutral float-right" title="USD Frequently Asked Questions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Pixar Animation Studios.</p>
+  </div>
+
+   
+<!-- Additional content for Read-the-Docs theme footer, see https://github.com/readthedocs/sphinx_rtd_theme/blob/master/sphinx_rtd_theme/footer.html --> 
+<a class="usd-tos-footer-style" href="https://disneytermsofuse.com/">Terms of Use</a>
+
+
+</footer>
+        </div>
+
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

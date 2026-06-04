@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables</h1>
+    <div class="meta">https://openusd.org/release/api/functions_vars_v.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section data-cn-refinement="api-functions-vars-quality-pass-027">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Variables - V 补充中文优先的变量索引用法、模块边界和术语对照；英文页面名、API 符号、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first variable-index notes, module boundaries, and terminology for Class Members - Variables - V while retaining English page names, API symbols, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">functions_vars_v.html 是变量索引 V 段，页面较短，但仍混合了 App、ConfigBase、ExecUsdValueOverride、ExecValueOverride、UsdMtlxUsdTypeInfo、ArAssetInfo、SdrShaderNodeDiscoveryResult、UsdSchemaRegistry::SchemaInfo 和多组 schema token。</span></li>
+        <li><span class="zh">ExecUsdValueOverride 与 ExecValueOverride 是执行系统中的 value override 入口；它们应该与 App/ConfigBase 这类命令行或配置基类条目区分开。</span></li>
+        <li><span class="zh">UsdMtlxUsdTypeInfo 表示 MaterialX 与 USD 类型映射相关信息，SdrShaderNodeDiscoveryResult 负责 shader node discovery 结果，UsdSchemaRegistry::SchemaInfo 则指向 schema 注册表元数据。</span></li>
+        <li><span class="zh">UsdRiTokensType、UsdGeomTokensType、UsdVolTokensType、UsdShadeTokensType 与 UsdLuxTokensType 是 domain token 表，不翻译 API 名称；中文只解释它们分别属于 RenderMan、geometry、volume、shading 和 lighting 领域。</span></li>
+        <li><span class="zh">由于本页英文原文和符号密度高，中文导读特意按执行系统、类型映射、资产信息、shader discovery、schema registry、domain tokens 分组，避免用户误以为 V 段只有一个笼统变量列表。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">值覆盖：</span><span class="en">value override</span></li>
+        <li><span class="zh">MaterialX/USD 类型信息：</span><span class="en">MaterialX USD type info</span></li>
+        <li><span class="zh">schema 注册表信息：</span><span class="en">schema registry info</span></li>
+        <li><span class="zh">shader 节点发现：</span><span class="en">shader node discovery</span></li>
+        <li><span class="zh">领域 token 表：</span><span class="en">domain token table</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 3 级结构：- v -</span><span class="en">- v -</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">Index entries include: App; ConfigBase; UsdRiTokensType; UsdMtlxUsdTypeInfo; UsdGeomTokensType; UsdVolTokensType; ArAssetInfo; SdrShaderNodeDiscoveryResult; UsdSchemaRegistry::SchemaInfo; UsdShadeTokensType; UsdLuxTokensType.</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="classpxr___c_l_i_1_1_c_l_i_1_1_app.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/classpxr___c_l_i_1_1_c_l_i_1_1_app.html">App</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclasspxr___c_l_i_1_1_c_l_i_1_1_config_base.html&amp;title=ConfigBase" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/classpxr___c_l_i_1_1_c_l_i_1_1_config_base.html">ConfigBase</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fexec_usd_2value_override_8h.html&amp;title=ExecUsdValueOverride" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/exec_usd_2value_override_8h.html">ExecUsdValueOverride</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fexec_2value_override_8h.html&amp;title=ExecValueOverride" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/exec_2value_override_8h.html">ExecValueOverride</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_ri_tokens_type.html&amp;title=UsdRiTokensType" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_ri_tokens_type.html">UsdRiTokensType</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_mtlx_usd_type_info.html&amp;title=UsdMtlxUsdTypeInfo" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_mtlx_usd_type_info.html">UsdMtlxUsdTypeInfo</a></li>
+<li><a href="struct_usd_geom_tokens_type.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/struct_usd_geom_tokens_type.html">UsdGeomTokensType</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_vol_tokens_type.html&amp;title=UsdVolTokensType" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_vol_tokens_type.html">UsdVolTokensType</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_ar_asset_info.html&amp;title=ArAssetInfo" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_ar_asset_info.html">ArAssetInfo</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_sdr_shader_node_discovery_result.html&amp;title=SdrShaderNodeDiscoveryResult" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_sdr_shader_node_discovery_result.html">SdrShaderNodeDiscoveryResult</a></li>
+<li><a href="class_usd_schema_registry.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_usd_schema_registry.html">UsdSchemaRegistry::SchemaInfo</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_shade_tokens_type.html&amp;title=UsdShadeTokensType" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_shade_tokens_type.html">UsdShadeTokensType</a></li>
+<li><a href="struct_usd_lux_tokens_type.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/struct_usd_lux_tokens_type.html">UsdLuxTokensType</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/functions_vars_v.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

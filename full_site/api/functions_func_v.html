@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions</h1>
+    <div class="meta">https://openusd.org/release/api/functions_func_v.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section data-cn-refinement="api-functions-func-quality-pass-017">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Functions - V 补充中文优先的函数索引用法、模块辨识和术语对照；英文页面名、API 符号、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first function-index usage notes, module-reading guidance, and terminology for Class Members - Functions - V while retaining the English page name, API symbols, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">functions_func_v.html 是 V 段函数成员索引，当前内容以 validate/validation、value、vector、Vdf 数据访问和 USD 验证入口为主。</span></li>
+        <li><span class="zh">UsdValidationContext、UsdValidationValidator、UsdAttributeLimits、UsdAttributeLimits::ValidationResult、CLI App/Validator 共同构成验证相关线索；它们适合从这里进入 schema、attribute limit 或命令行校验逻辑。</span></li>
+        <li><span class="zh">UsdSkelTopology、UsdSkelBindingAPI、UsdSkelBlendShape、UsdGeomMesh、UsdGeomSubset、UsdGeomPrimvar、UsdCollectionAPI 和 UsdRiSplineAPI 是用户更可能直接查阅的高层 API；本页只负责定位，具体成员说明仍需进入对应 class 页。</span></li>
+        <li><span class="zh">Vdf_BoxedContainer、Vdf_BoxedRanges、Vdf_VectorAccessor、Vdf_VectorImplCompressed、Vdf_VectorImplContiguous、Vdf_VectorSubrangeAccessor、Vdf_WeightSlotArray 和 VdfConnectorMap 等条目偏底层执行/向量存储；中文层保留下划线类名和 template 参数，方便与源码符号对应。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">验证上下文：</span><span class="en">validation context</span></li>
+        <li><span class="zh">属性限制：</span><span class="en">attribute limits</span></li>
+        <li><span class="zh">混合形状：</span><span class="en">blend shape</span></li>
+        <li><span class="zh">向量访问器：</span><span class="en">vector accessor</span></li>
+        <li><span class="zh">装箱范围：</span><span class="en">boxed range</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 3 级结构：- v -</span><span class="en">- v -</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">Index entries include: HdStGLSLProgram; PxOsdMeshTopology; SdfBooleanExpression; UsdAttributeLimits; UsdCollectionAPI; UsdRiSplineAPI; UsdSkelTopology; UsdValidationContext; UsdValidationValidator; App; UsdGeomSubset; UsdSkelBindingAPI; UsdSkelBlendShape; UsdGeomMesh; UsdAttributeLimits::ValidationResult; Validator.</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_st_g_l_s_l_program.html&amp;title=HdStGLSLProgram" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_st_g_l_s_l_program.html">HdStGLSLProgram</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_px_osd_mesh_topology.html&amp;title=PxOsdMeshTopology" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_px_osd_mesh_topology.html">PxOsdMeshTopology</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdf_boolean_expression.html&amp;title=SdfBooleanExpression" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdf_boolean_expression.html">SdfBooleanExpression</a></li>
+<li><a href="class_usd_attribute_limits.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_usd_attribute_limits.html">UsdAttributeLimits</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_collection_a_p_i.html&amp;title=UsdCollectionAPI" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_collection_a_p_i.html">UsdCollectionAPI</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_ri_spline_a_p_i.html&amp;title=UsdRiSplineAPI" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_ri_spline_a_p_i.html">UsdRiSplineAPI</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_skel_topology.html&amp;title=UsdSkelTopology" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_skel_topology.html">UsdSkelTopology</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_validation_context.html&amp;title=UsdValidationContext" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_validation_context.html">UsdValidationContext</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_validation_validator.html&amp;title=UsdValidationValidator" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_validation_validator.html">UsdValidationValidator</a></li>
+<li><a href="classpxr___c_l_i_1_1_c_l_i_1_1_app.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/classpxr___c_l_i_1_1_c_l_i_1_1_app.html">App</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_subset.html&amp;title=UsdGeomSubset" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_subset.html">UsdGeomSubset</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_skel_binding_a_p_i.html&amp;title=UsdSkelBindingAPI" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_skel_binding_a_p_i.html">UsdSkelBindingAPI</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_skel_blend_shape.html&amp;title=UsdSkelBlendShape" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_skel_blend_shape.html">UsdSkelBlendShape</a></li>
+<li><a href="class_usd_geom_mesh.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_usd_geom_mesh.html">UsdGeomMesh</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_attribute_limits_1_1_validation_result.html&amp;title=UsdAttributeLimits%3A%3AValidationResult" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_attribute_limits_1_1_validation_result.html">UsdAttributeLimits::ValidationResult</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclasspxr___c_l_i_1_1_c_l_i_1_1_validator.html&amp;title=Validator" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/classpxr___c_l_i_1_1_c_l_i_1_1_validator.html">Validator</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_resolve_info.html&amp;title=UsdResolveInfo" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_resolve_info.html">UsdResolveInfo</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_esf_attribute_query_interface.html&amp;title=EsfAttributeQueryInterface" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_esf_attribute_query_interface.html">EsfAttributeQueryInterface</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_attribute.html&amp;title=UsdAttribute" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_attribute.html">UsdAttribute</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_attribute_query.html&amp;title=UsdAttributeQuery" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_attribute_query.html">UsdAttributeQuery</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_primvar.html&amp;title=UsdGeomPrimvar" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_primvar.html">UsdGeomPrimvar</a></li>
+<li><a href="class_sdf_children_view.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_sdf_children_view.html">SdfChildrenView&lt; _ChildPolicy, _Predicate, _Adapter &gt;</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclasspxr___c_l_i_1_1_c_l_i_1_1_config_base.html&amp;title=ConfigBase" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/classpxr___c_l_i_1_1_c_l_i_1_1_config_base.html">ConfigBase</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_pcp_prim_index_inputs.html&amp;title=PcpPrimIndexInputs" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_pcp_prim_index_inputs.html">PcpPrimIndexInputs</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf___boxed_container.html&amp;title=Vdf_BoxedContainer%3C+T+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf___boxed_container.html">Vdf_BoxedContainer&lt; T &gt;</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf___boxed_ranges.html&amp;title=Vdf_BoxedRanges" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf___boxed_ranges.html">Vdf_BoxedRanges</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf___executor_data_manager_interface.html&amp;title=Vdf_ExecutorDataManagerInterface%3C+DerivedClass%2C+DataHandle+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf___executor_data_manager_interface.html">Vdf_ExecutorDataManagerInterface&lt; DerivedClass, DataHandle &gt;</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf___parallel_executor_data_manager_interface.html&amp;title=Vdf_ParallelExecutorDataManagerInterface%3C+DerivedClass%2C+DataHandle+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf___parallel_executor_data_manager_interface.html">Vdf_ParallelExecutorDataManagerInterface&lt; DerivedClass, DataHandle &gt;</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf___parallel_executor_data_vector.html&amp;title=Vdf_ParallelExecutorDataVector" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf___parallel_executor_data_vector.html">Vdf_ParallelExecutorDataVector</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf___vector_accessor.html&amp;title=Vdf_VectorAccessor%3C+T+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf___vector_accessor.html">Vdf_VectorAccessor&lt; T &gt;</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf___vector_impl_compressed.html&amp;title=Vdf_VectorImplCompressed%3C+TYPE+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf___vector_impl_compressed.html">Vdf_VectorImplCompressed&lt; TYPE &gt;</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf___vector_impl_contiguous.html&amp;title=Vdf_VectorImplContiguous%3C+TYPE+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf___vector_impl_contiguous.html">Vdf_VectorImplContiguous&lt; TYPE &gt;</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf___vector_subrange_accessor.html&amp;title=Vdf_VectorSubrangeAccessor%3C+T+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf___vector_subrange_accessor.html">Vdf_VectorSubrangeAccessor&lt; T &gt;</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf___weight_slot_array.html&amp;title=Vdf_WeightSlotArray" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf___weight_slot_array.html">Vdf_WeightSlotArray</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf_connector_map.html&amp;title=VdfConnectorMap%3C+Connector+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf_connector_map.html">VdfConnectorMap&lt; Connector &gt;</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf_connector_specs.html&amp;title=VdfConnectorSpecs%3C+T+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf_connector_specs.html">VdfConnectorSpecs&lt; T &gt;</a></li>
+<li><a href="class_vdf_context.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_vdf_context.html">VdfContext</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf_dataless_executor.html&amp;title=VdfDatalessExecutor" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf_dataless_executor.html">VdfDatalessExecutor</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf_data_manager_based_executor.html&amp;title=VdfDataManagerBasedExecutor%3C+DataManagerType%2C+BaseClass+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf_data_manager_based_executor.html">VdfDataManagerBasedExecutor&lt; DataManagerType, BaseClass &gt;</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf_data_manager_vector.html&amp;title=VdfDataManagerVector%3C+DeallocationMode+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf_data_manager_vector.html">VdfDataManagerVector&lt; DeallocationMode &gt;</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/functions_func_v.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

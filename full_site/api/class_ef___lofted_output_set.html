@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>类参考草稿：Ef_LoftedOutputSet Class / Ef_LoftedOutputSet Class</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>类参考草稿：Ef_LoftedOutputSet Class / Ef_LoftedOutputSet Class</h1>
+    <div class="meta">https://openusd.org/release/api/class_ef___lofted_output_set.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section data-cn-refinement="api-class-quality-pass-034">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Ef_LoftedOutputSet Class 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for Ef_LoftedOutputSet Class while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`Ef_LoftedOutputSet` 是 Ef 执行系统内部的辅助类，用于代表 `EfPageCacheBasedExecutor` 跟踪 lofted outputs。</span></li>
+        <li><span class="zh">页面英文摘录说明 lofted outputs 是求值期间从 page cache 取得值的 outputs；因此阅读本类时应把它放在 page cache based execution、output provenance 和重新求值缓存语境里。</span></li>
+        <li><span class="zh">关联类型包括 `VdfNetwork`、`VdfOutput`、`VdfMask`、`VdfId`、`VdfNode`，说明该类需要在 Vdf 网络、输出遮罩和节点标识之间建立集合关系。</span></li>
+        <li><span class="zh">本页不是用户层 USD authoring API，更偏执行器实现细节；中文导读保留 `lofted output`、`page cache`、`EfPageCacheBasedExecutor` 等英文术语，避免误译成场景层级概念。</span></li>
+        <li><span class="zh">后续完整翻译应继续补齐 member list 中的构造、插入、查询、mask/node 相关方法；本轮只补类职责、模块边界和阅读路径。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">lofted output：</span><span class="en">lofted output</span></li>
+        <li><span class="zh">page cache：</span><span class="en">page cache</span></li>
+        <li><span class="zh">执行器：</span><span class="en">executor</span></li>
+        <li><span class="zh">Vdf 网络：</span><span class="en">Vdf network</span></li>
+        <li><span class="zh">输出遮罩：</span><span class="en">output mask</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 1 级结构：Ef_LoftedOutputSet Class Reference</span><span class="en">Ef_LoftedOutputSet Class Reference</span></li>
+<li><span class="zh">第 2 级结构：Public Member Functions</span><span class="en">Public Member Functions</span></li>
+<li><span class="zh">第 2 级结构：Detailed Description</span><span class="en">Detailed Description</span></li>
+<li><span class="zh">第 2 级结构：Member Function Documentation</span><span class="en">Member Function Documentation</span></li>
+<li><span class="zh">第 2 级结构：◆ Add()</span><span class="en">◆ Add()</span></li>
+<li><span class="zh">第 2 级结构：◆ Clear()</span><span class="en">◆ Clear()</span></li>
+<li><span class="zh">第 2 级结构：◆ CollectLoftedDependencies()</span><span class="en">◆ CollectLoftedDependencies()</span></li>
+<li><span class="zh">第 2 级结构：◆ GetSize()</span><span class="en">◆ GetSize()</span></li>
+<li><span class="zh">第 2 级结构：◆ Remove()</span><span class="en">◆ Remove()</span></li>
+<li><span class="zh">第 2 级结构：◆ RemoveAllOutputsForNode()</span><span class="en">◆ RemoveAllOutputsForNode()</span></li>
+<li><span class="zh">第 2 级结构：◆ Resize()</span><span class="en">◆ Resize()</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">Tracks the set of lofted outputs (outputs whose values were sourced from the page cache during evaluation) on behalf of EfPageCacheBasedExecutor . Definition at line 35 of file loftedOutputSet.h .</p>
+<p class="en">Tracks the set of lofted outputs (outputs whose values were sourced from the page cache during evaluation) on behalf of EfPageCacheBasedExecutor . More...</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_ef___lofted_output_set-members.html&amp;title=List+of+all+members" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_ef___lofted_output_set-members.html">List of all members</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_ef_page_cache_based_executor.html&amp;title=EfPageCacheBasedExecutor" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_ef_page_cache_based_executor.html">EfPageCacheBasedExecutor</a></li>
+<li><a href="class_ef___lofted_output_set.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_ef___lofted_output_set.html">More...</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Flofted_output_set_8h_source.html&amp;title=loftedOutputSet.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/lofted_output_set_8h_source.html">loftedOutputSet.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf_network.html&amp;title=VdfNetwork" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf_network.html">VdfNetwork</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf_output.html&amp;title=VdfOutput" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf_output.html">VdfOutput</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf_mask.html&amp;title=VdfMask" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf_mask.html">VdfMask</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fexec_2vdf_2types_8h.html&amp;title=VdfId" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/exec_2vdf_2types_8h.html">VdfId</a></li>
+<li><a href="class_vdf_node.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_vdf_node.html">VdfNode</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/class_ef___lofted_output_set.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

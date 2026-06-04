@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API 模块草稿：UsdUtils: USD Utilities / UsdUtils: USD Utilities</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>API 模块草稿：UsdUtils: USD Utilities / UsdUtils: USD Utilities</h1>
+    <div class="meta">https://openusd.org/release/api/usd_utils_page_front.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 1 级结构：UsdUtils: USD Utilities</span><span class="en">UsdUtils: USD Utilities</span></li>
+<li><span class="zh">第 1 级结构：Overview</span><span class="en">Overview</span></li>
+<li><span class="zh">第 1 级结构：User Processing Functions</span><span class="en">User Processing Functions</span></li>
+<li><span class="zh">第 2 级结构：Defining A Procession Function</span><span class="en">Defining A Procession Function</span></li>
+<li><span class="zh">第 2 级结构：Modifying AssetPaths and Dependencies</span><span class="en">Modifying AssetPaths and Dependencies</span></li>
+<li><span class="zh">第 2 级结构：Removing Asset paths</span><span class="en">Removing Asset paths</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">Overview UsdUtils contains utility classes and functions for managing, inspecting, editing and creating USD assets. The high-level grouping of classes and functions is as follows: Authoring provides functionality for copying metadata between layers. Coalescing diagnostic delegate provides a utility to aggregate warnings and statuses emitted from Tf's diagnostic management system. Conditionally abort diagnostic delegate provides a utility that can be used to abort operations for a non fatal USD error or warning e...</p>
+<p class="en">Localization routines can be customized by supplying your own processing function which will be invoked as asset paths are discovered during dependency traversal.</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fauthoring_8h.html&amp;title=Authoring" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/authoring_8h.html">Authoring</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fcoalescing_diagnostic_delegate_8h.html&amp;title=Coalescing+diagnostic+delegate" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/coalescing_diagnostic_delegate_8h.html">Coalescing diagnostic delegate</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fconditional_abort_diagnostic_delegate_8h_source.html&amp;title=Conditionally+abort+diagnostic+delegate" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/conditional_abort_diagnostic_delegate_8h_source.html">Conditionally abort diagnostic delegate</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstitch_8h.html&amp;title=Stitching" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/stitch_8h.html">Stitching</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2F_usd__page__value_clips.html&amp;title=value+clips" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/_usd__page__value_clips.html">value clips</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstitch_clips_8h.html&amp;title=stitchClips" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/stitch_clips_8h.html">stitchClips</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fdependencies_8h.html&amp;title=Dependency+analysis+and+asset+packaging" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/dependencies_8h.html">Dependency analysis and asset packaging</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdf_reference.html&amp;title=references" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdf_reference.html">references</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdf_payload.html&amp;title=payloads" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdf_payload.html">payloads</a></li>
+<li><a href="class_sdf_layer.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_sdf_layer.html">sublayers</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fusdz_package_8h.html&amp;title=UsdUtilsCreateNewUsdzPackage" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/usdz_package_8h.html">UsdUtilsCreateNewUsdzPackage</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fintrospection_8h.html&amp;title=Introspection" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/introspection_8h.html">Introspection</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_stage.html&amp;title=UsdStage" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_stage.html">UsdStage</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fpipeline_8h.html&amp;title=Pipeline" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/pipeline_8h.html">Pipeline</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fusd_utils_2stage_cache_8h.html&amp;title=StageCache" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/usd_utils_2stage_cache_8h.html">StageCache</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_utils_stage_cache.html&amp;title=UsdUtilsStageCache" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_utils_stage_cache.html">UsdUtilsStageCache</a></li>
+<li><a href="class_usd_stage_cache.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_usd_stage_cache.html">UsdStageCache</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_utils_dependency_info.html&amp;title=UsdUtilsDependencyInfo" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_utils_dependency_info.html">UsdUtilsDependencyInfo</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fuser_processing_func_8h_source.html&amp;title=userProcessingFunc.h%3A28" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/user_processing_func_8h_source.html">userProcessingFunc.h:28</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdf_file_format.html&amp;title=SdfFileFormat%3A%3AIsPackage" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdf_file_format.html">SdfFileFormat::IsPackage</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fpackage_utils_8h.html&amp;title=ArIsPackageRelativePath" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/package_utils_8h.html">ArIsPackageRelativePath</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/usd_utils_page_front.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

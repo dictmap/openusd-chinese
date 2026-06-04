@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>类参考草稿：TfToken Class Reference String Utilities / TfToken Class Reference String Utilities</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>类参考草稿：TfToken Class Reference String Utilities / TfToken Class Reference String Utilities</h1>
+    <div class="meta">https://openusd.org/release/api/class_tf_token.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 1 级结构：TfToken Class Reference String Utilities</span><span class="en">TfToken Class Reference String Utilities</span></li>
+<li><span class="zh">第 2 级结构：Classes</span><span class="en">Classes</span></li>
+<li><span class="zh">第 2 级结构：Public Types</span><span class="en">Public Types</span></li>
+<li><span class="zh">第 2 级结构：Public Member Functions</span><span class="en">Public Member Functions</span></li>
+<li><span class="zh">第 2 级结构：Static Public Member Functions</span><span class="en">Static Public Member Functions</span></li>
+<li><span class="zh">第 2 级结构：Friends</span><span class="en">Friends</span></li>
+<li><span class="zh">第 2 级结构：Detailed Description</span><span class="en">Detailed Description</span></li>
+<li><span class="zh">第 2 级结构：Member Typedef Documentation</span><span class="en">Member Typedef Documentation</span></li>
+<li><span class="zh">第 2 级结构：◆ HashSet</span><span class="en">◆ HashSet</span></li>
+<li><span class="zh">第 2 级结构：◆ Set</span><span class="en">◆ Set</span></li>
+<li><span class="zh">第 2 级结构：Member Enumeration Documentation</span><span class="en">Member Enumeration Documentation</span></li>
+<li><span class="zh">第 2 级结构：◆ _ImmortalTag</span><span class="en">◆ _ImmortalTag</span></li>
+<li><span class="zh">第 2 级结构：Constructor &amp; Destructor Documentation</span><span class="en">Constructor &amp; Destructor Documentation</span></li>
+<li><span class="zh">第 2 级结构：◆ TfToken() [1/7]</span><span class="en">◆ TfToken() [1/7]</span></li>
+<li><span class="zh">第 2 级结构：◆ TfToken() [2/7]</span><span class="en">◆ TfToken() [2/7]</span></li>
+<li><span class="zh">第 2 级结构：◆ TfToken() [3/7]</span><span class="en">◆ TfToken() [3/7]</span></li>
+<li><span class="zh">第 2 级结构：◆ ~TfToken()</span><span class="en">◆ ~TfToken()</span></li>
+<li><span class="zh">第 2 级结构：◆ TfToken() [4/7]</span><span class="en">◆ TfToken() [4/7]</span></li>
+<li><span class="zh">第 2 级结构：◆ TfToken() [5/7]</span><span class="en">◆ TfToken() [5/7]</span></li>
+<li><span class="zh">第 2 级结构：◆ TfToken() [6/7]</span><span class="en">◆ TfToken() [6/7]</span></li>
+<li><span class="zh">第 2 级结构：◆ TfToken() [7/7]</span><span class="en">◆ TfToken() [7/7]</span></li>
+<li><span class="zh">第 2 级结构：Member Function Documentation</span><span class="en">Member Function Documentation</span></li>
+<li><span class="zh">第 2 级结构：◆ data()</span><span class="en">◆ data()</span></li>
+<li><span class="zh">第 2 级结构：◆ Find()</span><span class="en">◆ Find()</span></li>
+<li><span class="zh">第 2 级结构：◆ GetString()</span><span class="en">◆ GetString()</span></li>
+<li><span class="zh">第 2 级结构：◆ GetText()</span><span class="en">◆ GetText()</span></li>
+<li><span class="zh">第 2 级结构：◆ Hash()</span><span class="en">◆ Hash()</span></li>
+<li><span class="zh">第 2 级结构：◆ IsEmpty()</span><span class="en">◆ IsEmpty()</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">Token for efficient comparison, assignment, and hashing of known strings. A TfToken is a handle for a registered string, and can be compared, assigned, and hashed in constant time. It is useful when a bounded number of strings are used as fixed symbols (but never modified). For example, the set of avar names in a shot is large but bounded, and once an avar name is discovered, it is never manipulated. If these names were passed around as strings, every comparison and hash would be linear in the number of characte...</p>
+<p class="en">Token for efficient comparison, assignment, and hashing of known strings. More...</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_token-members.html&amp;title=List+of+all+members" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_token-members.html">List of all members</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fgroup__group__tf___string.html&amp;title=String+Utilities" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/group__group__tf___string.html">String Utilities</a></li>
+<li><a href="class_tf_token.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_tf_token.html">More...</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Ftoken_8h_source.html&amp;title=token.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/token_8h_source.html">token.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_tf_token_1_1_hash_functor.html&amp;title=HashFunctor" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_tf_token_1_1_hash_functor.html">HashFunctor</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_tf_token_fast_arbitrary_less_than.html&amp;title=TfTokenFastArbitraryLessThan" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_tf_token_fast_arbitrary_less_than.html">TfTokenFastArbitraryLessThan</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_hash.html&amp;title=TfHash" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_hash.html">TfHash</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Ftoken_8h.html&amp;title=TfToTokenVector%28%29" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/token_8h.html">TfToTokenVector()</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/class_tf_token.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

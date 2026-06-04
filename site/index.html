@@ -1,0 +1,218 @@
+<!-- Bilingual Chinese-English reproduction of the OpenUSD API index page. Source: https://openusd.org/release/api/index.html -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.6"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Universal Scene Description: 通用场景描述 (USD) / Universal Scene Description (USD)</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="usd_style.css" rel="stylesheet" type="text/css"/>
+<link href="openusd_cn.css" rel="stylesheet" type="text/css"/>
+<link rel="shortcut icon" href="images/USDIcon.ico"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeParagraphLink.init()
+</script>
+<script>
+function AddWarningBanner()
+{
+  const loc = new URL(location.href);
+  var apiIndex = loc.pathname.indexOf("/api/");
+  if (apiIndex >= 0) {
+    var truncString = loc.pathname.slice(0,apiIndex);
+    var preApiIndex = truncString.lastIndexOf("/");
+    var verString = truncString.slice(preApiIndex + 1);
+    if (verString !== "release") {
+      var relURL = loc.pathname.substring(0,preApiIndex) + "/release" + loc.pathname.substring(apiIndex);
+      var banner = document.createElement("div");
+      banner.className = "non_release_version_warning";
+      if (verString === "dev") {
+        banner.innerHTML = "此文档对应 USD 的开发中版本。当前发布版请见 <a href='" + relURL + "'>this page</a>。";
+      } else {
+        banner.innerHTML = "此文档对应 USD 的较旧版本。当前发布版请见 <a href='" + relURL + "'>this page</a>。";
+      }
+      document.body.insertBefore(banner,document.body.childNodes[0]);
+    }
+  }
+}
+</script>
+</head>
+<body onload="AddWarningBanner()">
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="USDLogoDocs.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div>
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;"
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('index.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">通用场景描述 (USD) / Universal Scene Description (USD) </div></div>
+</div>
+<div class="contents">
+<div class="textblock"><div class="cn-repro-note">
+  <p class="zh">本页对照官方 <a class="el" href="index.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/index.html">OpenUSD API 首页</a>制作中英双语入口层；本地相邻入口限定为 <a class="el" href="_usd__overview_and_purpose.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/_usd__overview_and_purpose.html">Overview and Purpose</a> 与 <a class="el" href="usd_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_page_front.html">Usd API</a>，API 名称、页面名和链接保持原样。</p>
+  <p class="en">This page is a bilingual entry layer aligned with the official <a class="el" href="index.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/index.html">OpenUSD API index</a>. The local adjacent API scope is limited to <a class="el" href="_usd__overview_and_purpose.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/_usd__overview_and_purpose.html">Overview and Purpose</a> and <a class="el" href="usd_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_page_front.html">Usd API</a>; API names, page names, and links are preserved.</p>
+  <p class="zh">API 首页是进入 Doxygen 参考的总入口。建议先看 Overview and Purpose，理解 OpenUSD 库如何分层；再进入 Usd API，阅读 Stage、Prim、Property、Attribute、Relationship 和 composition 操作的核心对象模型。</p>
+  <p class="en">The API index is the main entry into the Doxygen reference. Read Overview and Purpose first to understand how the OpenUSD libraries are layered, then enter the Usd API to study Stage, Prim, Property, Attribute, Relationship, and the core object model for composition.</p>
+  <p class="zh">左侧模块树保留英文模块名，是为了和 C++ 头文件、Python 包、构建日志和官方搜索保持一致；中文层负责说明阅读顺序、模块职责和本地链接状态。</p>
+  <p class="en">The left module tree keeps English module names so it remains aligned with C++ headers, Python packages, build logs, and official search; the Chinese layer explains reading order, module roles, and local-link status.</p>
+  <p class="zh">如果页面链接属于当前 406 页清单，本站会打开本地双语 HTML；如果链接指向未纳入清单的 OpenUSD 内部页，会进入本地缺口提示页，只有明确标注的官方原页链接才会外跳。</p>
+  <p class="en">If a link belongs to the current 406-page inventory, this site opens the local bilingual HTML; if it points to an OpenUSD internal page outside the inventory, it opens the local coverage-gap notice, and only explicitly marked official-source links leave the local site.</p>
+  <p class="zh">这页仍是入口页，不替代完整 API 手册；后续精修会继续把高频模块、核心类页和用户指南页从 draft 提升为更密集的段落级双语。</p>
+  <p class="en">This page remains an entry page rather than a replacement for the full API manual; later refinement rounds will continue promoting high-frequency modules, core class pages, and user-guide pages from draft to denser paragraph-level bilingual coverage.</p>
+  <p class="zh">实际查 API 时，可以把本页当成路线图：先确定自己要找的是基础类型、资产解析、scenegraph、几何 schema、材质 shader、灯光、物理还是工具支持，再沿模块链接进入对应页面。</p>
+  <p class="en">In practical API lookup, use this page as a route map: first decide whether you need foundational types, asset resolution, scenegraph APIs, geometry schemas, material shaders, lighting, physics, or tooling support, then follow the module links into the relevant pages.</p>
+</div>
+<div class="image">
+<img src="USDLogoLrgWithAlpha.png" alt=""/>
+</div>
+<div class="bilingual-block">
+  <p class="zh"><b>USD 是一个用于创作、组合与读取层级化组织的场景描述的系统。</b></p>
+  <p class="en"><b>USD is a system for authoring, composing, and reading hierarchically organized scene description.</b></p>
+</div>
+<div class="bilingual-block">
+  <p class="zh">USD 由一组模块组成，可以在数字内容创作应用之间，以可扩展方式编码并交换静态以及按时间采样的 3D 几何和着色数据。面向特定领域的 schema 模块，会在 USD 与具体领域无关的核心之上定义几何和着色的编码方式。</p>
+  <p class="en">USD comprises a set of modules that scalably encode and interchange static and time-sampled 3D geometry and shading data between Digital Content Creation applications. Domain-specific schema modules define the geometry and shading encoding atop USD's domain-agnostic core.</p>
+</div>
+<div class="bilingual-block bilingual-actions">
+  <p class="zh">继续阅读 <a class="el" href="_usd__overview_and_purpose.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/_usd__overview_and_purpose.html">USD 的目标与总体架构</a>，或直接进入 <a class="el" href="usd_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_page_front.html">Usd API</a> 的核心页面。</p>
+  <p class="en">Continue reading about <a class="el" href="_usd__overview_and_purpose.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/_usd__overview_and_purpose.html">USD's purpose and overall architecture</a>, or jump directly into the core of the <a class="el" href="usd_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_page_front.html">Usd API.</a></p>
+</div>
+<div class="cn-api-entry-map" aria-label="API entry map">
+  <h2><span class="cn-term">API 入口速览</span><span class="en-term">API Entry Map</span></h2>
+  <div class="cn-api-entry-grid">
+    <a class="cn-api-entry-card" href="_usd__overview_and_purpose.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/_usd__overview_and_purpose.html">
+      <span class="cn-term">目标与总体架构</span>
+      <span class="en-term">Overview and Purpose</span>
+      <span class="zh">先理解 USD 模块、场景描述、composition 和 schema 分层的整体定位。</span>
+      <span class="en">Start with USD modules, scene description, composition, and schema layering.</span>
+    </a>
+    <a class="cn-api-entry-card" href="usd_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_page_front.html">
+      <span class="cn-term">Usd 核心 API</span>
+      <span class="en-term">Usd API</span>
+      <span class="zh">进入 Usd 核心手册，查看 Stage、Prim、TimeCode 等关键类入口。</span>
+      <span class="en">Enter the Usd core manual for Stage, Prim, TimeCode, and related key classes.</span>
+    </a>
+    <a class="cn-api-entry-card" href="https://openusd.org/license">
+      <span class="cn-term">许可证</span>
+      <span class="en-term">TOST license</span>
+      <span class="zh">保留官方 license 链接，便于从本地复刻页回到权威来源。</span>
+      <span class="en">Keep the official license link available from the local bilingual entry.</span>
+    </a>
+  </div>
+</div>
+<div class="cn-api-route-guide" aria-label="API route guide">
+  <h2><span class="cn-term">API 阅读路线</span><span class="en-term">API Route Guide</span></h2>
+  <div class="cn-api-route-list">
+    <div class="cn-api-route-step">
+      <a class="el" href="_usd__overview_and_purpose.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/_usd__overview_and_purpose.html">Overview and Purpose</a>
+      <p class="zh">先从目标、模块分层和 composition 语境建立整体图景，再进入具体类页。</p>
+      <p class="en">Start with the goals, module layers, and composition context before reading individual class pages.</p>
+    </div>
+    <div class="cn-api-route-step">
+      <a class="el" href="usd_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_page_front.html">Usd API</a>
+      <p class="zh">再进入核心 Usd 手册，把 Stage、Prim、Layer 和 TimeCode 等入口放到同一条 API 主线上理解。</p>
+      <p class="en">Then use the core Usd manual to read Stage, Prim, Layer, TimeCode, and related APIs as one main path.</p>
+    </div>
+    <div class="cn-api-route-step">
+      <a class="el" href="https://openusd.org/license">TOST license</a>
+      <p class="zh">最后保留官方许可证入口；法律文本仍以 OpenUSD 官方页面为权威来源。</p>
+      <p class="en">Keep the official license entry available; the OpenUSD page remains the authoritative legal source.</p>
+    </div>
+  </div>
+</div>
+<hr  />
+<div class="bilingual-block">
+  <p class="zh">USD 根据 <a href="https://openusd.org/license">TOST license</a> 分发。</p>
+  <p class="en">USD is distributed under the <a href="https://openusd.org/license">TOST license</a>.</p>
+</div>
+</div></div>
+</div>
+</div>
+<div id="nav-path" class="navpath">
+  <ul>
+    <li class="footer">&copy; Copyright 2026, Pixar Animation Studios. | <a href="https://disneytermsofuse.com/">Terms of Use</a> | Generated on Wed Apr 22 2026 16:02:21 by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 <span class="cn-footer-note">| 中文双语复刻层：本地学习用途，官方英文链接保留。</span></li>
+  </ul>
+</div>
+</body>
+</html>

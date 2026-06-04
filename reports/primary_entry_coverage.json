@@ -1,0 +1,211 @@
+{
+  "generated_at": "2026-06-03T18:54:16.999Z",
+  "root": "C:\\Users\\robot\\Documents\\成长学习库\\openusd_api_cn_repro",
+  "scope_note": "Primary entry coverage audit for the two user-requested official entry pages and the local API redirect. This checks structure, bilingual markers, critical links, local images, and source snapshot anchors without expanding to a full-site mirror.",
+  "pages": [
+    {
+      "page": "release_index.html",
+      "official_url": "https://openusd.org/release/index.html",
+      "source_snapshot": "source/openusd_release_index_source.html",
+      "local_output": "site/release_index.html",
+      "counts": {
+        "cn_term": 321,
+        "en_term": 321,
+        "zh_blocks": 4,
+        "en_blocks": 4
+      },
+      "checks": [
+        {
+          "check": "release:source_is_official_entry_snapshot",
+          "passed": true,
+          "details": {}
+        },
+        {
+          "check": "release:keeps_sphinx_layout_markers",
+          "passed": true,
+          "details": {}
+        },
+        {
+          "check": "release:keeps_primary_entry_terms",
+          "passed": true,
+          "details": {}
+        },
+        {
+          "check": "release:keeps_critical_local_links",
+          "passed": true,
+          "details": {
+            "required_links": [
+              "intro.html",
+              "apiDocs.html",
+              "glossary.html",
+              "toolset.html",
+              "api/index.html"
+            ]
+          }
+        },
+        {
+          "check": "release:has_balanced_bilingual_terms",
+          "passed": true,
+          "details": {
+            "cn_term": 321,
+            "en_term": 321,
+            "zh_blocks": 4,
+            "en_blocks": 4
+          }
+        },
+        {
+          "check": "release:uses_local_primary_images",
+          "passed": true,
+          "details": {}
+        },
+        {
+          "check": "release:has_no_remote_openusd_image_refs",
+          "passed": true,
+          "details": {}
+        }
+      ]
+    },
+    {
+      "page": "index.html",
+      "official_url": "https://openusd.org/release/api/index.html",
+      "source_snapshot": "source/openusd_api_index_source.html",
+      "local_output": "site/index.html",
+      "counts": {
+        "bilingual_blocks": 4,
+        "api_entry_cards": 3,
+        "api_route_steps": 3,
+        "scope_notes": 1,
+        "zh_blocks": 11,
+        "en_blocks": 11,
+        "cn_term": 5,
+        "en_term": 5
+      },
+      "checks": [
+        {
+          "check": "api:source_is_official_entry_snapshot",
+          "passed": true,
+          "details": {}
+        },
+        {
+          "check": "api:keeps_doxygen_layout_markers",
+          "passed": true,
+          "details": {}
+        },
+        {
+          "check": "api:keeps_primary_title_and_english_name",
+          "passed": true,
+          "details": {}
+        },
+        {
+          "check": "api:has_scope_note",
+          "passed": true,
+          "details": {
+            "bilingual_blocks": 4,
+            "api_entry_cards": 3,
+            "api_route_steps": 3,
+            "scope_notes": 1,
+            "zh_blocks": 11,
+            "en_blocks": 11,
+            "cn_term": 5,
+            "en_term": 5
+          }
+        },
+        {
+          "check": "api:has_bilingual_intro_blocks",
+          "passed": true,
+          "details": {
+            "bilingual_blocks": 4,
+            "api_entry_cards": 3,
+            "api_route_steps": 3,
+            "scope_notes": 1,
+            "zh_blocks": 11,
+            "en_blocks": 11,
+            "cn_term": 5,
+            "en_term": 5
+          }
+        },
+        {
+          "check": "api:has_entry_map_cards",
+          "passed": true,
+          "details": {
+            "bilingual_blocks": 4,
+            "api_entry_cards": 3,
+            "api_route_steps": 3,
+            "scope_notes": 1,
+            "zh_blocks": 11,
+            "en_blocks": 11,
+            "cn_term": 5,
+            "en_term": 5
+          }
+        },
+        {
+          "check": "api:has_route_guide",
+          "passed": true,
+          "details": {
+            "bilingual_blocks": 4,
+            "api_entry_cards": 3,
+            "api_route_steps": 3,
+            "scope_notes": 1,
+            "zh_blocks": 11,
+            "en_blocks": 11,
+            "cn_term": 5,
+            "en_term": 5
+          }
+        },
+        {
+          "check": "api:keeps_critical_links",
+          "passed": true,
+          "details": {
+            "required_links": [
+              "_usd__overview_and_purpose.html",
+              "usd_page_front.html",
+              "https://openusd.org/license"
+            ]
+          }
+        },
+        {
+          "check": "api:uses_local_primary_images",
+          "passed": true,
+          "details": {}
+        },
+        {
+          "check": "api:has_no_remote_openusd_image_refs",
+          "passed": true,
+          "details": {}
+        }
+      ]
+    },
+    {
+      "page": "api/index.html",
+      "official_url": "local redirect for release page api/index.html link",
+      "source_snapshot": null,
+      "local_output": "site/api/index.html",
+      "counts": {},
+      "checks": [
+        {
+          "check": "api_redirect:keeps_local_relative_target",
+          "passed": true,
+          "details": {}
+        },
+        {
+          "check": "api_redirect:keeps_bilingual_explanation",
+          "passed": true,
+          "details": {}
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "pages": 3,
+    "checks": 19,
+    "failed_checks": 0,
+    "release_cn_terms": 321,
+    "release_en_terms": 321,
+    "api_bilingual_blocks": 4,
+    "api_entry_cards": 3,
+    "api_route_steps": 3,
+    "api_scope_notes": 1
+  },
+  "failed_checks": [],
+  "passed": true
+}

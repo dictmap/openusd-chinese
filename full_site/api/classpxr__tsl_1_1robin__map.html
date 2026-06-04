@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API 页面草稿：robin_map&lt; Key, T, Hash, KeyEqual, Allocator, StoreHash, GrowthPolicy &gt; Class Template / robin_map&lt; Key, T, Hash, KeyEqual, Allocator, StoreHash, GrowthPolicy &gt; Class Template</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>API 页面草稿：robin_map&lt; Key, T, Hash, KeyEqual, Allocator, StoreHash, GrowthPolicy &gt; Class Template / robin_map&lt; Key, T, Hash, KeyEqual, Allocator, StoreHash, GrowthPolicy &gt; Class Template</h1>
+    <div class="meta">https://openusd.org/release/api/classpxr__tsl_1_1robin__map.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 1 级结构：robin_map&lt; Key, T, Hash, KeyEqual, Allocator, StoreHash, GrowthPolicy &gt; Class Template Reference</span><span class="en">robin_map&lt; Key, T, Hash, KeyEqual, Allocator, StoreHash, GrowthPolicy &gt; Class Template Reference</span></li>
+<li><span class="zh">第 2 级结构：Public Types</span><span class="en">Public Types</span></li>
+<li><span class="zh">第 2 级结构：Public Member Functions</span><span class="en">Public Member Functions</span></li>
+<li><span class="zh">第 2 级结构：Static Public Member Functions</span><span class="en">Static Public Member Functions</span></li>
+<li><span class="zh">第 2 级结构：Friends</span><span class="en">Friends</span></li>
+<li><span class="zh">第 2 级结构：Detailed Description</span><span class="en">Detailed Description</span></li>
+<li><span class="zh">第 2 级结构：Member Typedef Documentation</span><span class="en">Member Typedef Documentation</span></li>
+<li><span class="zh">第 2 级结构：◆ allocator_type</span><span class="en">◆ allocator_type</span></li>
+<li><span class="zh">第 2 级结构：◆ const_iterator</span><span class="en">◆ const_iterator</span></li>
+<li><span class="zh">第 2 级结构：◆ const_pointer</span><span class="en">◆ const_pointer</span></li>
+<li><span class="zh">第 2 级结构：◆ const_reference</span><span class="en">◆ const_reference</span></li>
+<li><span class="zh">第 2 级结构：◆ difference_type</span><span class="en">◆ difference_type</span></li>
+<li><span class="zh">第 2 级结构：◆ hasher</span><span class="en">◆ hasher</span></li>
+<li><span class="zh">第 2 级结构：◆ iterator</span><span class="en">◆ iterator</span></li>
+<li><span class="zh">第 2 级结构：◆ key_equal</span><span class="en">◆ key_equal</span></li>
+<li><span class="zh">第 2 级结构：◆ key_type</span><span class="en">◆ key_type</span></li>
+<li><span class="zh">第 2 级结构：◆ mapped_type</span><span class="en">◆ mapped_type</span></li>
+<li><span class="zh">第 2 级结构：◆ pointer</span><span class="en">◆ pointer</span></li>
+<li><span class="zh">第 2 级结构：◆ reference</span><span class="en">◆ reference</span></li>
+<li><span class="zh">第 2 级结构：◆ size_type</span><span class="en">◆ size_type</span></li>
+<li><span class="zh">第 2 级结构：◆ value_type</span><span class="en">◆ value_type</span></li>
+<li><span class="zh">第 2 级结构：Constructor &amp; Destructor Documentation</span><span class="en">Constructor &amp; Destructor Documentation</span></li>
+<li><span class="zh">第 2 级结构：◆ robin_map() [1/11]</span><span class="en">◆ robin_map() [1/11]</span></li>
+<li><span class="zh">第 2 级结构：◆ robin_map() [2/11]</span><span class="en">◆ robin_map() [2/11]</span></li>
+<li><span class="zh">第 2 级结构：◆ robin_map() [3/11]</span><span class="en">◆ robin_map() [3/11]</span></li>
+<li><span class="zh">第 2 级结构：◆ robin_map() [4/11]</span><span class="en">◆ robin_map() [4/11]</span></li>
+<li><span class="zh">第 2 级结构：◆ robin_map() [5/11]</span><span class="en">◆ robin_map() [5/11]</span></li>
+<li><span class="zh">第 2 级结构：◆ robin_map() [6/11]</span><span class="en">◆ robin_map() [6/11]</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">template&lt;class Key, class T, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;, class Allocator = std::allocator&lt;std::pair&lt;Key, T&gt;&gt;, bool StoreHash = false, class GrowthPolicy = pxr_tsl::rh::power_of_two_growth_policy&lt;2&gt;&gt; class pxr_tsl::robin_map&lt; Key, T, Hash, KeyEqual, Allocator, StoreHash, GrowthPolicy &gt;</p>
+<p class="en">Implementation of a hash map using open-addressing and the robin hood hashing algorithm with backward shift deletion. More...</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclasspxr__tsl_1_1robin__map-members.html&amp;title=List+of+all+members" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/classpxr__tsl_1_1robin__map-members.html">List of all members</a></li>
+<li><a href="classpxr__tsl_1_1robin__map.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/classpxr__tsl_1_1robin__map.html">More...</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Frobin__map_8h_source.html&amp;title=robin_map.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/robin__map_8h_source.html">robin_map.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclasspxr__tsl_1_1detail__robin__hash_1_1robin__hash_1_1robin__iterator.html&amp;title=ht%3A%3Aiterator" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/classpxr__tsl_1_1detail__robin__hash_1_1robin__hash_1_1robin__iterator.html">ht::iterator</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclasspxr__tsl_1_1rh_1_1power__of__two__growth__policy.html&amp;title=pxr_tsl%3A%3Arh%3A%3Apower_of_two_growth_policy" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/classpxr__tsl_1_1rh_1_1power__of__two__growth__policy.html">pxr_tsl::rh::power_of_two_growth_policy</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclasspxr__tsl_1_1detail__robin__hash_1_1bucket__entry.html&amp;title=pxr_tsl%3A%3Adetail_robin_hash%3A%3Abucket_entry" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/classpxr__tsl_1_1detail__robin__hash_1_1bucket__entry.html">pxr_tsl::detail_robin_hash::bucket_entry</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fnamespacepxr__tsl.html&amp;title=pxr_tsl" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/namespacepxr__tsl.html">pxr_tsl</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/classpxr__tsl_1_1robin__map.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

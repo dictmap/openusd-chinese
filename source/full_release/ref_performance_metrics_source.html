@@ -1,0 +1,2723 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Performance Metrics &mdash; Universal Scene Description 26.05 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/pxr_custom.css?v=f3eac5de" />
+
+  
+    <link rel="shortcut icon" href="https://openusd.org/images/USDIcon.ico"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=34cee20b"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+      <script src="_static/js/versions.js?v=aa17b01a"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="USD Third-Party Plugins" href="plugins.html" />
+    <link rel="prev" title="Maximizing USD Performance" href="maxperf.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #606060" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Universal Scene Description
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Learn</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction to USD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_to_openexec.html">Introduction to OpenExec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Terms and Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tut_usd_tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tut_helloworld.html">Hello World - Creating Your First USD Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_helloworld_redux.html">Hello World Redux - Using Generic Prims</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_inspect_and_author_props.html">Inspecting and Authoring Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_referencing_layers.html">Referencing Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_converting_between_layer_formats.html">Converting Between Layer Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_traversing_stage.html">Traversing a Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_authoring_variants.html">Authoring Variants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_variants_example_in_katana.html">Variants Example in Katana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_xforms.html">Transformations, Animation, and Layer Offsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_simple_shading.html">Simple Shading in USD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_end_to_end.html">End to End Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_houdini_example.html">Houdini USD Example Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_generating_new_schema.html">Generating New Schema Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_usdview_plugin.html">Creating a Usdview Plugin</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dl_downloads.html">Downloads and Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usd_products.html">Products Using USD</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/collections_and_patterns.html">Collections and Patterns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/collections_and_patterns.html#basic-usage">Basic Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/collections_and_patterns.html#configuring-membership-mode">Configuring Membership Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/collections_and_patterns.html#relationship-mode-collections">Relationship-Mode Collections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/collections_and_patterns.html#configuring-relationship-mode-collections">Configuring Relationship-Mode Collections</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/collections_and_patterns.html#pattern-based-collections">Pattern-Based Collections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/collections_and_patterns.html#path-expressions">Path Expressions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/collections_and_patterns.html#path-patterns">Path Patterns</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/collections_and_patterns.html#additional-expressions-considerations">Additional Expressions Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/collections_and_patterns.html#configuring-pattern-based-collections">Configuring Pattern-Based Collections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/collections_and_patterns.html#getting-the-expression-for-a-relationship-mode-collection">Getting the Expression for a Relationship-Mode Collection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/color_user_guide.html">Color</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/color_user_guide.html#working-with-color-in-openusd">Working With Color in OpenUSD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/color_user_guide.html#color-spaces-supported-by-openusd">Color Spaces Supported by OpenUSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/color_user_guide.html#working-with-color-space-schemas">Working With Color Space Schemas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/color_user_guide.html#color-space-inheritance-and-resolution">Color Space Inheritance and Resolution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/color_user_guide.html#default-color-space">Default Color Space</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/color_user_guide.html#what-is-a-color-space">What is a Color Space?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/color_user_guide.html#gamut-limitations-and-considerations">Gamut Limitations and Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/color_user_guide.html#common-white-points">Common White Points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/color_user_guide.html#linear-vs-non-linear-spaces">Linear vs. Non-Linear Spaces</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/color_user_guide.html#considerations-in-content-creation">Considerations in Content Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/color_user_guide.html#glossary-of-color-terms">Glossary of Color Terms</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/namespace_editing.html">Namespace Editing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/namespace_editing.html#using-usdnamespaceeditor">Using UsdNamespaceEditor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#setting-editor-options">Setting Editor Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#working-with-relocates">Working With Relocates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#fixing-paths-for-moved-objects">Fixing Paths For Moved Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#applying-edits-to-dependent-stages">Applying Edits to Dependent Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#batch-edits">Batch Edits</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/namespace_editing.html#namespace-editing-best-practices">Namespace Editing Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#use-canapplyedits-to-validate-edit-operations">Use CanApplyEdits() To Validate Edit Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#built-in-properties-from-schemas-are-not-editable">Built-In Properties From Schemas Are Not Editable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#be-aware-of-relocates-performance-impact">Be Aware of Relocates Performance Impact</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/render_user_guide.html">Rendering with USD</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/render_user_guide.html#configuring-imageable-content">Configuring Imageable Content</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#configuring-the-stage-coordinate-system">Configuring the Stage Coordinate System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#understanding-render-visibility">Understanding Render Visibility</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#using-the-visibility-attribute">Using the Visibility Attribute</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#using-imageable-purpose">Using Imageable Purpose</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#understanding-intrinsic-and-explicit-normals">Understanding Intrinsic and Explicit Normals</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/render_user_guide.html#working-with-lights">Working with Lights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#using-light-linking-to-filter-objects-affected-by-lights">Using Light-linking to Filter Objects Affected by Lights</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/render_user_guide.html#working-with-materials">Working with Materials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#using-the-usd-preview-material">Using the USD Preview Material</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#using-glslfx-shaders">Using GLSLFX Shaders</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#working-with-primvars">Working with Primvars</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#primvar-interpolation">Primvar Interpolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#indexed-primvars">Indexed Primvars</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#consuming-primvars-in-materials">Consuming Primvars in Materials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#material-primvar-fallbacks">Material Primvar Fallbacks</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#using-material-binding-purpose">Using Material Binding Purpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#binding-materials-to-collections">Binding Materials to Collections</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#setting-collection-binding-strength">Setting Collection Binding Strength</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#combining-collection-binding-with-material-binding-purpose">Combining Collection Binding with Material Binding Purpose</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#using-material-render-contexts">Using Material Render Contexts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/render_user_guide.html#working-with-image-file-formats">Working With Image File Formats</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#guidelines-for-all-supported-image-formats">Guidelines for All Supported Image Formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#jpeg">JPEG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#png">PNG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#openexr">OpenEXR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#av1-image-file-format-avif">AV1 Image File Format (AVIF)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/render_user_guide.html#defining-the-render-camera">Defining the Render Camera</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#configuring-motion-blur">Configuring Motion Blur</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/render_user_guide.html#configuring-render-settings">Configuring Render Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/primvars.html">Primvars</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/primvars.html#primvar-interpolation-modes">Primvar Interpolation Modes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/primvars.html#constant-interpolation">Constant Interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/primvars.html#uniform-interpolation">Uniform Interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/primvars.html#vertex-interpolation">Vertex Interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/primvars.html#varying-interpolation">Varying Interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/primvars.html#facevarying-interpolation">faceVarying Interpolation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/primvars.html#primvars-and-the-scene-namespace">Primvars and the Scene Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/primvars.html#indexed-primvars">Indexed Primvars</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/primvars.html#indexed-primvars-and-attribute-blocks">Indexed Primvars and Attribute Blocks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/primvars.html#primvar-element-size">Primvar Element Size</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/schemas/index.html">Schema Domains</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/schemas/usdLux/usdLux_toc.html">Lights (usdLux)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#usdlux-schemas-and-concepts">UsdLux Schemas and Concepts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#light-units">Light Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#understanding-light-contributions">Understanding Light Contributions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#light-shaping">Light Shaping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#shadows">Shadows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#mesh-lights">Mesh Lights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#light-linking-and-shadow-linking">Light-linking and Shadow-linking</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/BoundableLightBase.html">BoundableLightBase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/BoundableLightBase.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/BoundableLightBase.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/BoundableLightBase.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/BoundableLightBase.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/CylinderLight.html">CylinderLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/CylinderLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/CylinderLight.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/CylinderLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/CylinderLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/DiskLight.html">DiskLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DiskLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DiskLight.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DiskLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DiskLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/DistantLight.html">DistantLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DistantLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DistantLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DistantLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight.html">DomeLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight_1.html">DomeLight_1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight_1.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight_1.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight_1.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/GeometryLight.html">GeometryLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/GeometryLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/GeometryLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/GeometryLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/LightAPI.html">LightAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/LightAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/LightFilter.html">LightFilter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/LightFilter.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/LightFilter.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/LightFilter.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/LightListAPI.html">LightListAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/LightListAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/ListAPI.html">ListAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/ListAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/MeshLightAPI.html">MeshLightAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/MeshLightAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/NonboundableLightBase.html">NonboundableLightBase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/NonboundableLightBase.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/NonboundableLightBase.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/NonboundableLightBase.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLight.html">PluginLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLightFilter.html">PluginLightFilter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLightFilter.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLightFilter.html#inherited-properties-lightfilter">Inherited Properties (<span class="xref std std-ref">LightFilter</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLightFilter.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLightFilter.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/PortalLight.html">PortalLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PortalLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PortalLight.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PortalLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PortalLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/RectLight.html">RectLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/RectLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/RectLight.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/RectLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/RectLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/ShadowAPI.html">ShadowAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/ShadowAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/ShapingAPI.html">ShapingAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/ShapingAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/SphereLight.html">SphereLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/SphereLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/SphereLight.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/SphereLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/SphereLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/VolumeLightAPI.html">VolumeLightAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/VolumeLightAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/schemas/usdMedia/usdMedia_toc.html">Media (usdMedia)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdMedia/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdMedia/overview.html#working-with-media">Working With Media</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdMedia/AssetPreviewsAPI.html">AssetPreviewsAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdMedia/SpatialAudio.html">SpatialAudio</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdMedia/SpatialAudio.html#spatialaudio-and-layer-offsets">SpatialAudio and Layer Offsets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdMedia/SpatialAudio.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdMedia/SpatialAudio.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdMedia/SpatialAudio.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/schemas/usdRender/usdRender_toc.html">Render (usdRender)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdRender/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/overview.html#best-practices">Best Practices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/overview.html#using-usdrender-to-control-how-prims-are-rendered">Using UsdRender to Control How Prims Are Rendered</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/overview.html#working-with-renderproduct">Working with RenderProduct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/overview.html#configuring-multi-pass-renders-with-renderpass">Configuring Multi-pass Renders with RenderPass</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdRender/RenderPass.html">RenderPass</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderPass.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdRender/RenderProduct.html">RenderProduct</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderProduct.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderProduct.html#inherited-properties-rendersettingsbase">Inherited Properties (<span class="xref std std-ref">RenderSettingsBase</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdRender/RenderSettings.html">RenderSettings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderSettings.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderSettings.html#inherited-properties-rendersettingsbase">Inherited Properties (<span class="xref std std-ref">RenderSettingsBase</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdRender/RenderSettingsBase.html">RenderSettingsBase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderSettingsBase.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdRender/RenderVar.html">RenderVar</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderVar.html#properties">Properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/schemas/usdUI/usdUI_toc.html">UI (usdUI)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/overview.html#working-with-node-graphs">Working With Node Graphs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/overview.html#working-with-accessibility-information">Working With Accessibility Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/overview.html#working-with-ui-hints">Working With UI Hints</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/AttributeHints.html">AttributeHints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/AttributeHints.html#attributehints-fields">AttributeHints fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/ObjectHints.html">ObjectHints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/ObjectHints.html#objecthints-fields">ObjectHints fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/PrimHints.html">PrimHints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/PrimHints.html#primhints-fields">PrimHints fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/PropertyHints.html">PropertyHints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/PropertyHints.html#propertyhints-fields">PropertyHints fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/AccessibilityAPI.html">AccessibilityAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/AccessibilityAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/Backdrop.html">Backdrop</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/Backdrop.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/NodeGraphNodeAPI.html">NodeGraphNodeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/NodeGraphNodeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/SceneGraphPrimAPI.html">SceneGraphPrimAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/SceneGraphPrimAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/schemas/usdVol/usdVol_toc.html">Volumes (usdVol)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/overview.html#working-with-volumes">Working With Volumes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/overview.html#working-with-fields">Working With Fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/overview.html#working-with-particle-fields">Working With Particle Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/Field3DAsset.html">Field3DAsset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Field3DAsset.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Field3DAsset.html#inherited-properties-volumefieldasset">Inherited Properties (<span class="xref std std-ref">VolumeFieldAsset</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Field3DAsset.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Field3DAsset.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/FieldAsset.html">FieldAsset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldAsset.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldAsset.html#inherited-properties-volumefieldasset">Inherited Properties (<span class="xref std std-ref">VolumeFieldAsset</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldAsset.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldAsset.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/FieldBase.html">FieldBase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldBase.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldBase.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldBase.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/OpenVDBAsset.html">OpenVDBAsset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/OpenVDBAsset.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/OpenVDBAsset.html#inherited-properties-volumefieldasset">Inherited Properties (<span class="xref std std-ref">VolumeFieldAsset</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/OpenVDBAsset.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/OpenVDBAsset.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField.html">ParticleField</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField.html#inherited-properties-gprim">Inherited Properties (<span class="xref std std-ref">Gprim</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html">ParticleField3DGaussianSplat</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#inherited-properties-gprim">Inherited Properties (<span class="xref std std-ref">Gprim</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldKernelBaseAPI.html">ParticleFieldKernelBaseAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldKernelConstantSurfletAPI.html">ParticleFieldKernelConstantSurfletAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldKernelGaussianEllipsoidAPI.html">ParticleFieldKernelGaussianEllipsoidAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html">ParticleFieldKernelGaussianSurfletAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html">ParticleFieldOpacityAttributeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html">ParticleFieldOrientationAttributeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html">ParticleFieldPositionAttributeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html">ParticleFieldPositionBaseAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldRadianceBaseAPI.html">ParticleFieldRadianceBaseAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html">ParticleFieldScaleAttributeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html">ParticleFieldSphericalHarmonicsAttributeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/Volume.html">Volume</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Volume.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Volume.html#inherited-properties-gprim">Inherited Properties (<span class="xref std std-ref">Gprim</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Volume.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Volume.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Volume.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldAsset.html">VolumeFieldAsset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldAsset.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldAsset.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldAsset.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldBase.html">VolumeFieldBase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldBase.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldBase.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldBase.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/time_and_animated_values.html">Time and Animated Values</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/time_and_animated_values.html#understanding-timecodes">Understanding TimeCodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/time_and_animated_values.html#working-with-timecodes-programmatically">Working With TimeCodes Programmatically</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/time_and_animated_values.html#mapping-timecodes-to-real-time">Mapping TimeCodes to Real Time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/time_and_animated_values.html#specifying-layer-start-and-end-times">Specifying Layer Start and End Times</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/time_and_animated_values.html#using-timecode-ranges">Using TimeCode Ranges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/time_and_animated_values.html#working-with-automatic-and-explicit-timecode-remapping-across-composition">Working with Automatic and Explicit TimeCode Remapping Across Composition</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/time_and_animated_values.html#automatic-scaling-of-timecodespersecond">Automatic Scaling of timeCodesPerSecond</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/time_and_animated_values.html#configuring-timecode-scaling-and-offsets-using-layeroffsets">Configuring TimeCode Scaling and Offsets Using LayerOffsets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/time_and_animated_values.html#combining-automatic-scaling-and-layer-offsets">Combining Automatic Scaling and Layer Offsets</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/variable_expressions.html">Variable Expressions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/variable_expressions.html#defining-expression-variables-in-a-layer">Defining Expression Variables in a Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#string"><span class="mono">string</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#bool"><span class="mono">bool</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#int64"><span class="mono">int64</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#type"><span class="mono">&lt;type&gt;[]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#none"><span class="mono">None</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#expression-variables-and-composition">Expression Variables and Composition</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/variable_expressions.html#authoring-variable-expressions">Authoring Variable Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/variable_expressions.html#expression-function-reference">Expression Function Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#defined-variable-name"><span class="mono">defined(&lt;variable name&gt;, …)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#if-condition-true-value-false-value"><span class="mono">if(&lt;condition&gt;, &lt;true-value&gt;, &lt;false-value&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#if-condition-true-value"><span class="mono">if(&lt;condition&gt;, &lt;true-value&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#and-x-y"><span class="mono">and(&lt;x&gt;, &lt;y&gt;, …)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#or-x-y"><span class="mono">or(&lt;x&gt;, &lt;y&gt;, …)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#not-x"><span class="mono">not(&lt;x&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#eq-x-y"><span class="mono">eq(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#neq-x-y"><span class="mono">neq(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#lt-x-y"><span class="mono">lt(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#leq-x-y"><span class="mono">leq(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#gt-x-y"><span class="mono">gt(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#geq-x-y"><span class="mono">geq(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#contains-list-or-string-value"><span class="mono">contains(&lt;list_or_string&gt;, &lt;value&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#at-list-or-string-index"><span class="mono">at(&lt;list_or_string&gt;, &lt;index&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#len-list-or-string"><span class="mono">len(&lt;list_or_string&gt;)</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/variable_expressions.html#examples">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#flexible-variant-selections">Flexible Variant Selections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#asset-valued-texture-file-attribute">Asset-valued Texture File Attribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#conditionally-include-sublayers">Conditionally Include Sublayers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="apiDocs.html">API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="toolset.html">Toolset</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdedit">usdedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdcat">usdcat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usddiff">usddiff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdview">usdview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdrecord">usdrecord</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdresolve">usdresolve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdtree">usdtree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdzip">usdzip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdchecker">usdchecker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdfixbrokenpixarschemas">usdfixbrokenpixarschemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdstitch">usdstitch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdstitchclips">usdstitchclips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usddumpcrate">usddumpcrate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#sdfdump">sdfdump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#sdffilter">sdffilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdmeasureperformance">usdmeasureperformance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdgenschema">usdGenSchema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdgenschemafromsdr">usdgenschemafromsdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdinitschema">usdInitSchema</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="spec.html">Specifications</a><ul>
+<li class="toctree-l2"><a class="reference external" href="https://aousd.org/blog/foundations-of-open-3d-development-introducing-aousd-core-specification-1-0/">USD Core Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spec_usdpreviewsurface.html">UsdPreviewSurface Specification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdpreviewsurface.html#goal">Goal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdpreviewsurface.html#core-nodes">Core Nodes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#preview-surface">Preview Surface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#texture-reader">Texture Reader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#primvar-reader">Primvar Reader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#transform2d">Transform2d</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdpreviewsurface.html#usd-sample">USD Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdpreviewsurface.html#other-notes">Other Notes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#texture-coordinate-orientation-in-usd">Texture Coordinate Orientation in USD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#roughness-vs-glossiness">Roughness vs Glossiness</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdpreviewsurface.html#changes-by-version">Changes, by Version</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#version-2-0-initial-public-specification">Version 2.0 - Initial Public Specification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#version-2-2-before-type-changes">Version 2.2 - Before Type Changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#version-2-3">Version 2.3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#version-2-4">Version 2.4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#version-2-5">Version 2.5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#version-2-6-current-head">Version 2.6 - Current Head</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="spec_usdz.html">Usdz File Format Specification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdz.html#purpose">Purpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdz.html#usdz-specification">Usdz Specification</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#foundation">Foundation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#zip-constraints">Zip Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#layout">Layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#file-types">File Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#usd-constraints">USD Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#editability">Editability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#accessibility">Accessibility</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdz.html#packaging-considerations-for-streaming-and-encapsulation">Packaging Considerations for Streaming and Encapsulation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#file-ordering-within-package-for-streaming">File Ordering Within Package for Streaming</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#usdz-reproducibleresults">For Reproducible Results, Encapsulate Using Anchored Asset Paths</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdz.html#mime-type">MIME Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdz.html#toolset">Toolset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdz.html#changes-by-version">Changes, by Version</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#version-1-3-current-head">Version 1.3 - Current Head</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="wp.html">Proposals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html">Adapting UsdLux to Accommodate Geometry Lights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#introduction-and-background">Introduction and Background</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#mesh-light-support-in-the-industry">Mesh Light Support in the Industry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#goals">Goals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#workflow-considerations">Workflow Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#design-space-and-issues">Design Space and Issues</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#dual-prim-geometry-light-problems">Dual-Prim Geometry Light Problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#single-prim-geometry-light">Single-Prim Geometry Light</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#usdlux-lightapi-om">UsdLux LightAPI OM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#light-lightapi">Light -&gt; LightAPI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#introduce-convenience-base-classes">Introduce Convenience Base Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#preserve-existing-usdlux-concrete-schemas">Preserve Existing UsdLux Concrete Schemas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#deprecate-geometrylight">Deprecate GeometryLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#how-do-we-identify-the-appropriate-sdrshadernode-for-a-light">How do we Identify the Appropriate SdrShaderNode for a Light?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#lights-with-materials">Lights with Materials?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#proposal-and-behaviors">Proposal and Behaviors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#shading-and-emission">Shading and Emission</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#volumes">Volumes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#primvars-in-light-networks">Primvars in Light Networks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_usdlux_for_renderers.html">Adapting UsdLux to the Needs of Renderers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_renderers.html#background-and-goals">Background and Goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_renderers.html#foundational-technologies-in-usd">Foundational Technologies in USD</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#sdr">Sdr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#usd-schemas">USD Schemas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#usdimaging-and-hydra">UsdImaging and Hydra</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_renderers.html#proposals">Proposals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#changes-to-usdlux">Changes to UsdLux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#changes-to-usdimaging">Changes to UsdImaging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#changes-to-hd">Changes to Hd</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#changes-to-hdprman-and-other-render-delegates">Changes to HdPrman and Other Render Delegates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_asset_previews.html">Asset Previews in USD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_asset_previews.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_asset_previews.html#proposal">Proposal</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_asset_previews.html#object-model">Object Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_asset_previews.html#concrete-encoding">Concrete Encoding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_asset_previews.html#schema">Schema</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_ar2.html">Asset Resolution (Ar) 2.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_ar2.html#background-and-goals">Background and Goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_ar2.html#tasks">Tasks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#general-cleanup">General Cleanup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#add-documentation-and-examples">Add Documentation and Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#add-identifier-concept">Add Identifier Concept</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#remove-repository-and-search-path">Remove Repository and Search Path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#improve-resolve-and-asset-info">Improve Resolve and Asset Info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#remove-filesystem-specific-code">Remove Filesystem-specific Code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#add-asset-writing-interface">Add Asset Writing Interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#add-uri-resolvers">Add URI Resolvers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#allow-creation-of-arresolvercontext-from-strings">Allow Creation of ArResolverContext From Strings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#remove-arresolver-configureresolverforasset">Remove ArResolver::ConfigureResolverForAsset</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_ar2.html#rollout-and-transition">Rollout and Transition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_ar2.html#proposed-api">Proposed API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_coordsys.html">Coordinate Systems in USD Proposal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_coordsys.html#purpose">Purpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_coordsys.html#requirements">Requirements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_coordsys.html#coordinate-systems-are-identified-by-name-in-shaders">Coordinate Systems are Identified by Name in Shaders</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_coordsys.html#proposed-api-schema">Proposed API Schema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_coordsys.html#recording-a-frame-of-reference">Recording a Frame of Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_coordsys.html#binding-frames-of-reference">Binding Frames of Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_coordsys.html#coordsysapi">CoordSysAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_coordsys.html#usd-sample-and-analysis">USD Sample and Analysis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_coordsys.html#analysis-coordinate-systems-evaluated">Analysis: Coordinate Systems Evaluated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_coordsys.html#analysis-coordinate-system-binding-and-consumption">Analysis: Coordinate System Binding and Consumption</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_coordsys.html#projections-cameras-and-coordsysapi">Projections, Cameras, and CoordSysAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_connectable_nodes.html">Generalizing Connectable Nodes Beyond UsdShade</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_connectable_nodes.html#background-and-goals">Background and Goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_connectable_nodes.html#proposal">Proposal</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#node-definition-as-api-schema">Node Definition as API Schema</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#plugin-defined-connectableapi-behavior">Plugin-defined ConnectableAPI Behavior</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#connectability-rules-for-usdshade-types">Connectability Rules for UsdShade Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#intended-use-in-usdlux-and-usdri-renderman-usd-schema">Intended use in UsdLux and UsdRi (RenderMan USD schema)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_connectable_nodes.html#discussion">Discussion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#sdr-ndr">Sdr &amp; Ndr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#flexibility-of-connectability-callbacks">Flexibility of Connectability Callbacks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#non-shading-networks">Non-shading Networks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_render_settings.html">Render Settings in USD Proposal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#purpose-and-scope">Purpose and Scope</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#overall-design-and-concerns">Overall Design and Concerns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#concrete-schemas">Concrete Schemas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#renderer-specific-schemas">Renderer-Specific Schemas</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#prim-and-scene-organization">Prim and Scene Organization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#discovering-render-settings">Discovering Render Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#selecting-and-combining-render-settings">Selecting and Combining Render Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#grouping-rendervars-and-renderproducts">Grouping RenderVars and RenderProducts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#discovering-all-potential-shader-based-rendervars">Discovering All Potential Shader-based RenderVars</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#workflow-considerations">Workflow Considerations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#interactive-vs-batch-rendering">Interactive vs. Batch Rendering</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#examples">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#discussion-and-questions">Discussion and Questions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#id-variables">ID variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#stereo-rendering">Stereo Rendering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#camera-exposure-curves">Camera Exposure Curves</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#denoising-color-correction-and-tasks">Denoising, Color Correction, and Tasks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#why-locality-of-overrides-is-valuable">Why Locality of Overrides is Valuable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#image-mapping-related-options-on-camera-or-rendersettings">Image-Mapping-Related Options on Camera or RenderSettings?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#crop-windows-and-region-of-interest">Crop Windows and Region-of-Interest</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_rigid_body_physics.html">Rigid Body Physics in USD Proposal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_rigid_body_physics.html#purpose-and-scope">Purpose and Scope</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_rigid_body_physics.html#overall-design-concerns">Overall Design Concerns</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#rigid-body-simulation-primer">Rigid Body Simulation Primer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#usd-implementation">USD Implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_rigid_body_physics.html#concrete-schemas">Concrete Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_rigid_body_physics.html#examples">Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#box-on-box">Box on Box</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#box-on-quad">Box on Quad</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#spheres-with-materials">Spheres with Materials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#group-filtering">Group Filtering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#pair-filtering">Pair Filtering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#joint">Joint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#distance-joint">Distance Joint</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_schema_versioning.html">Schema Versioning in USD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_schema_versioning.html#introduction">Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#challenges-to-schema-versioning-in-usd">Challenges to Schema Versioning in USD</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_schema_versioning.html#proposal-for-per-schema-versioning">Proposal for Per-Schema Versioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#version-representation-in-schemas">Version Representation in Schemas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#schema-registry">Schema Registry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#usdprim-schema-related-api">UsdPrim Schema-related API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#considerations-for-auto-apply-api-schemas">Considerations for Auto-apply API Schemas</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_schema_versioning.html#risks-questions-limitations">Risks, Questions, Limitations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_schema_versioning.html#guidelines-for-schema-versioning">Guidelines for Schema Versioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#criteria-for-versioning">Criteria for Versioning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#do-not-version-a-schema-when">Do not Version a Schema When…</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#do-version-a-schema-when">Do Version a Schema When…</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_schema_versioning.html#pixar-examples-past-and-future">Pixar Examples, Past and Future</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#usdlux-connectability">UsdLux Connectability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#light-lightapi">Light → LightAPI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#visibility-to-visibilityapi">Visibility to VisibilityAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_schema_versioning.html#schemaversioning-codegen-support">Possible Code Generation Changes to Support Versioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#base-schema-class-is-always-the-latest-version-of-the-family">Base Schema Class is Always the Latest Version of the Family</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#class-per-version-with-typedef-mapping-to-current-or-latest-version-class">Class Per Version with Typedef Mapping to “Current” or “Latest” Version-Class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#single-c-class-that-provides-api-for-all-versions-of-the-schema-family">Single C++ Class That Provides API for ALL Versions of the Schema Family</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_schema_versioning.html#compatible-cluster-classes-with-disambiguating-method-names">“Compatible Cluster” Classes with Disambiguating Method Names</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_stage_variables.html">Stage Variable Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wp_usdaudio.html">UsdAudio Proposal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdaudio.html#goal">Goal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdaudio.html#initial-requirements">Initial Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdaudio.html#proposed-prim-schema">Proposed Prim Schema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdaudio.html#spatialaudio">SpatialAudio</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdaudio.html#usd-sample">USD Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdaudio.html#other-notes-questions">Other Notes/Questions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdaudio.html#sdftimecode-and-time-scaling">SdfTimeCode and Time Scaling</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_usdshade.html">UsdShade Material Assignment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdshade.html#background">Background</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdshade.html#basic-proposal-for-collection-based-assignment">Basic Proposal for Collection-Based Assignment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#example-collection-based-assignment">Example Collection-Based Assignment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#refinement-1-specifying-binding-strength">Refinement 1: Specifying Binding Strength</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#refinement-2-material-purpose">Refinement 2: Material Purpose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#material-resolve-determining-the-bound-material-for-any-geometry-prim">Material Resolve: Determining the Bound Material for any Geometry Prim</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#usdshade-api">UsdShade API</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdshade.html#analysis-of-collection-based-binding">Analysis of Collection-Based Binding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdshade.html#integration">Integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#katana-import">Katana Import</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#maya-i-o">Maya I/O</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#houdini">Houdini</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdshade.html#remaining-questions">Remaining Questions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#performance">Performance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#implication-on-renderer-instancing">Implication on Renderer Instancing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#material-layering">Material Layering</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usdfaq.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usdfaq.html#general-questions">General Questions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-is-usd-and-why-should-i-use-it">What is USD and why should I use it?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-programming-languages-are-supported">What programming languages are supported?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#isn-t-usd-just-another-file-format">Isn’t USD just another file format?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#so-what-file-formats-does-usd-support">So what file formats does USD support?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-file-format-is-my-usd-file">What file format is my <span class="mono">.usd</span> file?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-character-encoding-does-usda-support">What character encoding does <span class="mono">.usda</span> support?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#how-can-i-convert-usd-files-between-binary-and-text">How can I convert USD files between binary and text?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-data-types-are-supported">What data types are supported?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-does-a-usd-file-look-like">What does a USD file look like?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usdfaq.html#subtler-aspects-of-scene-description-and-composition">Subtler Aspects of Scene Description and Composition</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#i-have-some-layers-i-want-to-combine-should-i-use-sublayers-or-references">I have some layers I want to combine: Should I use SubLayers or References?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-happens-to-overs-when-their-underlying-prim-is-moved-to-a-different-location-in-the-scenegraph">What happens to “overs” when their underlying prim is moved to a different location in the scenegraph?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#when-can-you-delete-a-reference-or-other-deletable-thing">When can you delete a reference (or other deletable thing)?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="usdfaq.html#list-edited-string-token-and-int-metadata">List-edited string, token, and int metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="usdfaq.html#list-edited-relationships-and-connections">List-edited relationships and connections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="usdfaq.html#list-edited-composition-arcs">List-edited composition arcs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-s-the-difference-between-an-over-and-a-typeless-def">What’s the difference between an “over” and a “typeless def” ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#why-can-t-i-instance-a-leaf-mesh-prim-directly">Why Can’t I Instance a Leaf Mesh Prim Directly?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usdfaq.html#build-and-runtime-issues">Build and Runtime Issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#how-do-i-use-the-tf-debug-mechanism">How do I use the <code class="docutils literal notranslate"><span class="pre">TF_DEBUG</span></code> mechanism?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#why-isn-t-python-finding-usd-modules">Why Isn’t Python Finding USD Modules?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#why-isn-t-this-plugin-being-built">Why Isn’t This Plugin Being Built?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#why-doesn-t-the-openusd-runtime-recognize-the-usd-file-format">Why doesn’t the OpenUSD runtime recognize the USD file format?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#why-isn-t-my-app-finding-usd-dlls-and-plugins-on-windows">Why Isn’t My App Finding USD DLLs and Plugins on Windows?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="maxperf.html">Performance Considerations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="maxperf.html#use-an-allocator-optimized-for-multithreading">Use an allocator optimized for multithreading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maxperf.html#use-binary-usd-files-for-geometry-and-shading-caches">Use binary “.usd” files for geometry and shading caches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maxperf.html#package-assets-with-payloads">Package assets with payloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maxperf.html#what-makes-a-usd-scene-heavy-expensive">What makes a USD scene heavy/expensive?</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Performance Metrics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-we-measure">What We Measure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-environment-is-used">What Environment Is Used</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#linux">Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#macos">macOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usd-build">USD Build</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#metrics">Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#performance-graphs-per-platform">Performance Graphs Per Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#standard-shader-ball">Standard Shader Ball</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kitchen-set">Kitchen Set</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alab">ALab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#moore-lane">Moore Lane</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#running-performance-metrics-locally">Running Performance Metrics Locally</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#adding-custom-metrics">Adding Custom Metrics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">Third Party Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plugins_renderman.html">RenderMan USD Imaging Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plugins_renderman.html#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="plugins_renderman.html#building-hdprman">Building hdPrman</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins_renderman.html#running-hdprman">Running hdPrman</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="plugins_renderman.html#developer">Developer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="plugins_renderman.html#supported-render-pass-aovs">Supported Render Pass AOVs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plugins_alembic.html">Alembic USD Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plugins_alembic.html#known-limitations">Known Limitations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Collaborate</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/PixarAnimationStudios/OpenUSD">Source Code &#64; GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.openusd.org">OpenUSD Forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing_to_usd.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing_to_usd.html#contributor-license-agreement">Contributor License Agreement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing_to_usd.html#coding-conventions">Coding Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing_to_usd.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing_to_usd.html#git-workflow">Git Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing_to_usd.html#github-issues">GitHub Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing_to_usd.html#making-major-changes">Making Major Changes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing_to_usd.html#step-1-get-consensus-for-major-changes">Step 1. Get consensus for major changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing_to_usd.html#step-2-make-code-changes">Step 2. Make code changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing_to_usd.html#step-3-test-code-changes">Step 3. Test code changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing_to_usd.html#step-4-submit-code-for-review">Step 4. Submit code for review</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing_to_usd.html#step-5-pixar-will-test-and-land-your-changes">Step 5. Pixar will test and land your changes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_schedule.html">Release Schedule</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Press</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="press_opensource_release.html">Open Source Release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="press_opensource_announce.html">Open Source Announcement</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #606060" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Universal Scene Description</a>
+      </nav>
+
+      <div class="wy-nav-content">
+  <style>
+    .version_warning {
+        margin-bottom: 10px;
+    }
+  </style>
+  <div class="version_warning_placeholder"></div>
+  
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Performance Metrics</li>
+  <li class="wy-breadcrumbs-aside">
+    <div class="version_switcher_placeholder"></div>
+  </li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="performance-metrics">
+<span id="id1"></span><h1>Performance Metrics<a class="headerlink" href="#performance-metrics" title="Link to this heading"></a></h1>
+<p>As of release 24.11, for each release, USD generates performance metrics using a
+specific set of assets and specific hardware and software configurations. This
+page describes what metrics are collected, what hardware and software
+configurations are used, the actual metrics results, and how to generate the
+metrics locally.</p>
+<nav class="contents local" id="table-of-contents">
+<p class="topic-title">Table of Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#what-we-measure" id="id14">What We Measure</a></p></li>
+<li><p><a class="reference internal" href="#what-environment-is-used" id="id15">What Environment Is Used</a></p>
+<ul>
+<li><p><a class="reference internal" href="#linux" id="id16">Linux</a></p></li>
+<li><p><a class="reference internal" href="#macos" id="id17">macOS</a></p></li>
+<li><p><a class="reference internal" href="#windows" id="id18">Windows</a></p></li>
+<li><p><a class="reference internal" href="#usd-build" id="id19">USD Build</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#metrics" id="id20">Metrics</a></p>
+<ul>
+<li><p><a class="reference internal" href="#performance-graphs-per-platform" id="id21">Performance Graphs Per Platform</a></p></li>
+<li><p><a class="reference internal" href="#standard-shader-ball" id="id22">Standard Shader Ball</a></p></li>
+<li><p><a class="reference internal" href="#kitchen-set" id="id23">Kitchen Set</a></p></li>
+<li><p><a class="reference internal" href="#alab" id="id24">ALab</a></p></li>
+<li><p><a class="reference internal" href="#moore-lane" id="id25">Moore Lane</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#running-performance-metrics-locally" id="id26">Running Performance Metrics Locally</a></p>
+<ul>
+<li><p><a class="reference internal" href="#adding-custom-metrics" id="id27">Adding Custom Metrics</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="what-we-measure">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">What We Measure</a><a class="headerlink" href="#what-we-measure" title="Link to this heading"></a></h2>
+<p>For a given asset, our performance script captures the following metrics by
+default (items in <strong>bold</strong> are reported on this page):</p>
+<ul class="simple">
+<li><p>Time to load and configure USD plugins for <strong class="program">usdview</strong></p></li>
+<li><p><strong>Time to open the stage</strong></p></li>
+<li><p>Time to reset the <strong class="program">usdview</strong> prim browser</p></li>
+<li><p>Time to initialize the <strong class="program">usdview</strong> UI</p></li>
+<li><p><strong>Time to render first image</strong> (in <strong class="program">usdview</strong>)</p></li>
+<li><p><strong>Time to shutdown Hydra</strong></p></li>
+<li><p><strong>Time to close the stage</strong></p></li>
+<li><p>Time to tear down the <strong class="program">usdview</strong> UI</p></li>
+<li><p><strong>Total time to start and quit</strong> <strong class="program">usdview</strong></p></li>
+<li><p>Time to traverse the prims in the stage</p></li>
+</ul>
+<p>We run 100 iterations for each asset, and capture the minimum and maximum times
+for that set of iterations. We also calculate the mean time across the 100
+iterations.</p>
+<p>For each asset, we first warm the filesystem cache by loading the
+asset in <strong class="program">usdview</strong>, to ensure we’re not including cache performance
+issues in our metrics.</p>
+<p>All assets used to measure performance are assumed to be available
+locally. Time to download assets is not measured or included as part of
+the gathered performance metrics.</p>
+</section>
+<section id="what-environment-is-used">
+<span id="perf-environments"></span><h2><a class="toc-backref" href="#id15" role="doc-backlink">What Environment Is Used</a><a class="headerlink" href="#what-environment-is-used" title="Link to this heading"></a></h2>
+<p>This section describes the computing environment used to generate the
+published performance metrics. The following operating systems and hardware are
+currently used.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Machine specifications are subject to change. If specifications do change
+for a give release, historical performance measurements will be run to
+backfill any outdated data.</p>
+</div>
+<section id="linux">
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">Linux</a><a class="headerlink" href="#linux" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>OS</strong>: AlmaLinux 9</p></li>
+<li><p><strong>CPU</strong>: AMD EPYC 9654 96-Core Processor</p></li>
+<li><p><strong>CPU Utilization</strong>: 47 Core(s), 47 Logical Processor(s) (no hyperthreading)</p></li>
+<li><p><strong>RAM</strong>: 145GB</p></li>
+<li><p><strong>GPU</strong>: NVIDIA L40S-24Q</p></li>
+</ul>
+</section>
+<section id="macos">
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">macOS</a><a class="headerlink" href="#macos" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>OS</strong>: macOS 14.3</p></li>
+<li><p><strong>CPU</strong>: Apple M2 Ultra (20 Core)</p></li>
+<li><p><strong>RAM</strong>: 192GB</p></li>
+<li><p><strong>GPU</strong>: Apple M2 Ultra GPU (76 Core)</p></li>
+</ul>
+</section>
+<section id="windows">
+<h3><a class="toc-backref" href="#id18" role="doc-backlink">Windows</a><a class="headerlink" href="#windows" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>OS</strong>: Microsoft Windows 11 Enterprise</p></li>
+<li><p><strong>CPU</strong>: AMD EPYC 7763 64-Core Processor, 2450 Mhz</p></li>
+<li><p><strong>CPU Utilization</strong>: 31 Core(s), 31 Logical Processor(s) (no hyperthreading)</p></li>
+<li><p><strong>RAM</strong>: 128GB</p></li>
+<li><p><strong>GPU</strong>: NVIDIA RTXA6000-24Q</p></li>
+</ul>
+</section>
+<section id="usd-build">
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">USD Build</a><a class="headerlink" href="#usd-build" title="Link to this heading"></a></h3>
+<p>For each of the operating systems and hardware platforms listed previously, we
+build USD with the same build configuration. We use a stock invocation of
+<code class="docutils literal notranslate"><span class="pre">build_usd.py</span></code> with the default options (release build, Python components,
+imaging and USD imaging components, usdview, etc). Note that this build uses
+the default system memory allocator, and does not use an alternate allocator
+(as described in <a class="reference internal" href="maxperf.html#maxperf-optimized-allocator"><span class="std std-ref">Use an allocator optimized for multithreading</span></a>).</p>
+</section>
+</section>
+<section id="metrics">
+<h2><a class="toc-backref" href="#id20" role="doc-backlink">Metrics</a><a class="headerlink" href="#metrics" title="Link to this heading"></a></h2>
+<p>Metrics are all measured in seconds.</p>
+<section id="performance-graphs-per-platform">
+<h3><a class="toc-backref" href="#id21" role="doc-backlink">Performance Graphs Per Platform</a><a class="headerlink" href="#performance-graphs-per-platform" title="Link to this heading"></a></h3>
+<p>The following graphs show the time (in seconds) to open and close
+<strong class="program">usdview</strong> for each asset. Graphs are provided for Linux, macOS, and
+Windows platforms (as described in <a class="reference internal" href="#perf-environments"><span class="std std-ref">What Environment Is Used</span></a>). Performance
+data from the four most recent releases is reported on a rolling basis.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A full historical rerun on linux was performed for the 26.03 release due
+to changes in machine configuration.</p>
+<p>Interpret the metrics on this page with caution. Variation may arise from
+a variety of sources, including run-to-run inconsistency in how the GL
+driver schedules its flushes against our requests. Investigation on these
+is ongoing.</p>
+</div>
+<a class="reference internal image-reference" href="_images/linux.svg"><img alt="_images/linux.svg" src="_images/linux.svg" style="width: 500px;" />
+</a>
+<a class="reference internal image-reference" href="_images/macos.svg"><img alt="_images/macos.svg" src="_images/macos.svg" style="width: 500px;" />
+</a>
+<a class="reference internal image-reference" href="_images/windows.svg"><img alt="_images/windows.svg" src="_images/windows.svg" style="width: 500px;" />
+</a>
+</section>
+<section id="standard-shader-ball">
+<h3><a class="toc-backref" href="#id22" role="doc-backlink">Standard Shader Ball</a><a class="headerlink" href="#standard-shader-ball" title="Link to this heading"></a></h3>
+<p>This asset is designed to be a comprehensive test of a broad array of material
+properties in a single render. Geometry is expressed using USD, materials are
+defined using MaterialX, texture maps are provided in OpenEXR format and encoded
+using the Academy Color Encoding System ACEScg color space.</p>
+<p>In our performance sweep we use the <code class="docutils literal notranslate"><span class="pre">mtlx_bubblegum</span></code> material. Note the
+image below may not exactly match the image generated during the performance
+run; the primary intention is not necessarily to exercise specific renderers.</p>
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/usd-wg/assets/main/full_assets/StandardShaderBall/media/example_materials/mtlx_bubblegum.jpg"><img alt="https://raw.githubusercontent.com/usd-wg/assets/main/full_assets/StandardShaderBall/media/example_materials/mtlx_bubblegum.jpg" src="https://raw.githubusercontent.com/usd-wg/assets/main/full_assets/StandardShaderBall/media/example_materials/mtlx_bubblegum.jpg" style="width: 300px;" />
+</a>
+<p>The shader ball asset can be <a class="reference external" href="https://github.com/usd-wg/assets/tree/main/full_assets/StandardShaderBall">downloaded here</a>.</p>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">Linux Metrics (min/max/mean in seconds)</span><a class="headerlink" href="#id2" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Metric</p></th>
+<th class="head"><p>25.08</p></th>
+<th class="head"><p>25.11</p></th>
+<th class="head"><p>26.03</p></th>
+<th class="head"><p>26.05</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Open stage</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.080814</div>
+<div class="line">max: 0.127205</div>
+<div class="line">mean: 0.09721862</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.098586</div>
+<div class="line">max: 0.152453</div>
+<div class="line">mean: 0.1147789</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.102143</div>
+<div class="line">max: 0.141323</div>
+<div class="line">mean: 0.12018247</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.108347</div>
+<div class="line">max: 0.142785</div>
+<div class="line">mean: 0.12522259</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Render first image</p></td>
+<td><div class="line-block">
+<div class="line">min: 1.042727</div>
+<div class="line">max: 4.979227</div>
+<div class="line">mean: 1.09743982</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 1.061915</div>
+<div class="line">max: 4.389524</div>
+<div class="line">mean: 1.11305927</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 1.05858</div>
+<div class="line">max: 4.813072</div>
+<div class="line">mean: 1.11026738</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 1.132672</div>
+<div class="line">max: 5.047174</div>
+<div class="line">mean: 1.18685452</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Close stage</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.000865</div>
+<div class="line">max: 0.007715</div>
+<div class="line">mean: 0.0011852</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.000612</div>
+<div class="line">max: 0.007621</div>
+<div class="line">mean: 0.0009525</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.000585</div>
+<div class="line">max: 0.00771</div>
+<div class="line">mean: 0.00113363</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.000627</div>
+<div class="line">max: 0.00862</div>
+<div class="line">mean: 0.00108197</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Shut down Hydra</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.035267</div>
+<div class="line">max: 0.043886</div>
+<div class="line">mean: 0.03759213</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.035256</div>
+<div class="line">max: 0.044038</div>
+<div class="line">mean: 0.03787955</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.035166</div>
+<div class="line">max: 0.041641</div>
+<div class="line">mean: 0.03717791</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.038391</div>
+<div class="line">max: 0.046654</div>
+<div class="line">mean: 0.04102367</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-text">macOS Metrics (min/max/mean in seconds)</span><a class="headerlink" href="#id3" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Metric</p></th>
+<th class="head"><p>25.08</p></th>
+<th class="head"><p>25.11</p></th>
+<th class="head"><p>26.03</p></th>
+<th class="head"><p>26.05</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Open stage</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.08957</div>
+<div class="line">max: 0.094074</div>
+<div class="line">mean: 0.09161377</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.096033</div>
+<div class="line">max: 0.106589</div>
+<div class="line">mean: 0.10036488</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.124269</div>
+<div class="line">max: 0.135039</div>
+<div class="line">mean: 0.1273308</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.12139</div>
+<div class="line">max: 0.129204</div>
+<div class="line">mean: 0.12521404</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Render first image</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.734351</div>
+<div class="line">max: 0.771068</div>
+<div class="line">mean: 0.75320206</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 1.088926</div>
+<div class="line">max: 1.434863</div>
+<div class="line">mean: 1.11545414</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.743375</div>
+<div class="line">max: 1.198365</div>
+<div class="line">mean: 0.76448214</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.787785</div>
+<div class="line">max: 1.314961</div>
+<div class="line">mean: 0.80603199</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Close stage</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.000229</div>
+<div class="line">max: 0.000765</div>
+<div class="line">mean: 0.00027705</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.000119</div>
+<div class="line">max: 0.000491</div>
+<div class="line">mean: 0.00016517</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.000121</div>
+<div class="line">max: 0.000378</div>
+<div class="line">mean: 0.00017008</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.000138</div>
+<div class="line">max: 0.000498</div>
+<div class="line">mean: 0.0001761</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Shut down Hydra</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.012992</div>
+<div class="line">max: 0.021094</div>
+<div class="line">mean: 0.01651058</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.012247</div>
+<div class="line">max: 0.020553</div>
+<div class="line">mean: 0.01637388</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.012409</div>
+<div class="line">max: 0.020834</div>
+<div class="line">mean: 0.01706989</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.012981</div>
+<div class="line">max: 0.022092</div>
+<div class="line">mean: 0.01737945</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-text">Windows Metrics (min/max/mean in seconds)</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Metric</p></th>
+<th class="head"><p>25.08</p></th>
+<th class="head"><p>25.11</p></th>
+<th class="head"><p>26.03</p></th>
+<th class="head"><p>26.05</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Open stage</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.307208</div>
+<div class="line">max: 0.330622</div>
+<div class="line">mean: 0.31348188</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.298701</div>
+<div class="line">max: 0.315642</div>
+<div class="line">mean: 0.30742671</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.263552</div>
+<div class="line">max: 0.277434</div>
+<div class="line">mean: 0.27102602</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.261372</div>
+<div class="line">max: 0.281605</div>
+<div class="line">mean: 0.27079815</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Render first image</p></td>
+<td><div class="line-block">
+<div class="line">min: 2.200855</div>
+<div class="line">max: 2.395714</div>
+<div class="line">mean: 2.29471476</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 2.184459</div>
+<div class="line">max: 8.745092</div>
+<div class="line">mean: 2.3044740200000002</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 2.140281</div>
+<div class="line">max: 2.4015</div>
+<div class="line">mean: 2.23789929</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 2.275701</div>
+<div class="line">max: 8.259477</div>
+<div class="line">mean: 2.43007551</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Close stage</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.001129</div>
+<div class="line">max: 0.002772</div>
+<div class="line">mean: 0.00170384</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.000316</div>
+<div class="line">max: 0.001709</div>
+<div class="line">mean: 0.00068915</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.00033</div>
+<div class="line">max: 0.000791</div>
+<div class="line">mean: 0.00044066</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.000341</div>
+<div class="line">max: 0.000752</div>
+<div class="line">mean: 0.00045084</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Shut down Hydra</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.062921</div>
+<div class="line">max: 0.072712</div>
+<div class="line">mean: 0.06641849</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.060228</div>
+<div class="line">max: 0.069912</div>
+<div class="line">mean: 0.06285791</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.06344</div>
+<div class="line">max: 0.071558</div>
+<div class="line">mean: 0.06660486</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.069612</div>
+<div class="line">max: 0.07776</div>
+<div class="line">mean: 0.07274253</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="kitchen-set">
+<h3><a class="toc-backref" href="#id23" role="doc-backlink">Kitchen Set</a><a class="headerlink" href="#kitchen-set" title="Link to this heading"></a></h3>
+<p>This asset provides a complex kitchen scene.</p>
+<a class="reference internal image-reference" href="https://openusd.org/images/Kitchen_set_thumb.png"><img alt="https://openusd.org/images/Kitchen_set_thumb.png" src="https://openusd.org/images/Kitchen_set_thumb.png" style="width: 500px;" />
+</a>
+<p>The Kitchen Set asset can be <a class="reference external" href="https://openusd.org/release/dl_kitchen_set.html">downloaded here</a>.</p>
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-text">Linux Metrics (min/max/mean in seconds)</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Metric</p></th>
+<th class="head"><p>25.08</p></th>
+<th class="head"><p>25.11</p></th>
+<th class="head"><p>26.03</p></th>
+<th class="head"><p>26.05</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Open stage</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.044437</div>
+<div class="line">max: 0.07722</div>
+<div class="line">mean: 0.0531934</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.043523</div>
+<div class="line">max: 0.08078</div>
+<div class="line">mean: 0.0529231</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.048359</div>
+<div class="line">max: 0.090553</div>
+<div class="line">mean: 0.05856095</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.047789</div>
+<div class="line">max: 0.076912</div>
+<div class="line">mean: 0.05592291</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Render first image</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.206491</div>
+<div class="line">max: 0.218515</div>
+<div class="line">mean: 0.21256221</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.218023</div>
+<div class="line">max: 0.233961</div>
+<div class="line">mean: 0.22471585</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.217668</div>
+<div class="line">max: 0.243507</div>
+<div class="line">mean: 0.22705873</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.218671</div>
+<div class="line">max: 0.237097</div>
+<div class="line">mean: 0.22637969</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Close stage</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.007912</div>
+<div class="line">max: 0.019898</div>
+<div class="line">mean: 0.009916930000000001</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.008055</div>
+<div class="line">max: 0.020271</div>
+<div class="line">mean: 0.00992871</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.008124</div>
+<div class="line">max: 0.021591</div>
+<div class="line">mean: 0.01004208</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.008197</div>
+<div class="line">max: 0.02467</div>
+<div class="line">mean: 0.01009473</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Shut down Hydra</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.032992</div>
+<div class="line">max: 0.043855</div>
+<div class="line">mean: 0.03467746</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.034244</div>
+<div class="line">max: 0.040128</div>
+<div class="line">mean: 0.03604341</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.033784</div>
+<div class="line">max: 0.038803</div>
+<div class="line">mean: 0.03593167</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.030789</div>
+<div class="line">max: 0.0356</div>
+<div class="line">mean: 0.03314213</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-text">macOS Metrics (min/max/mean in seconds)</span><a class="headerlink" href="#id6" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Metric</p></th>
+<th class="head"><p>25.08</p></th>
+<th class="head"><p>25.11</p></th>
+<th class="head"><p>26.03</p></th>
+<th class="head"><p>26.05</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Open stage</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.063966</div>
+<div class="line">max: 0.080906</div>
+<div class="line">mean: 0.0698448</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.061154</div>
+<div class="line">max: 0.084453</div>
+<div class="line">mean: 0.0677701</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.085585</div>
+<div class="line">max: 0.109018</div>
+<div class="line">mean: 0.09204828</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.081513</div>
+<div class="line">max: 0.114839</div>
+<div class="line">mean: 0.0883299</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Render first image</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.269227</div>
+<div class="line">max: 0.290286</div>
+<div class="line">mean: 0.27491572999999997</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.259431</div>
+<div class="line">max: 0.27281</div>
+<div class="line">mean: 0.26522798000000003</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.259301</div>
+<div class="line">max: 0.273705</div>
+<div class="line">mean: 0.26457672</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.261286</div>
+<div class="line">max: 0.274061</div>
+<div class="line">mean: 0.26642707</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Close stage</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.002026</div>
+<div class="line">max: 0.003375</div>
+<div class="line">mean: 0.00240484</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.002038</div>
+<div class="line">max: 0.003781</div>
+<div class="line">mean: 0.00244283</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.002021</div>
+<div class="line">max: 0.003675</div>
+<div class="line">mean: 0.00247759</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.001925</div>
+<div class="line">max: 0.00337</div>
+<div class="line">mean: 0.00238511</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Shut down Hydra</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.016196</div>
+<div class="line">max: 0.029243</div>
+<div class="line">mean: 0.02228483</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.017222</div>
+<div class="line">max: 0.02856</div>
+<div class="line">mean: 0.023692190000000002</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.01651</div>
+<div class="line">max: 0.031314</div>
+<div class="line">mean: 0.02202539</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.015542</div>
+<div class="line">max: 0.026238</div>
+<div class="line">mean: 0.02142616</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id7">
+<caption><span class="caption-text">Windows Metrics (min/max/mean in seconds)</span><a class="headerlink" href="#id7" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Metric</p></th>
+<th class="head"><p>25.08</p></th>
+<th class="head"><p>25.11</p></th>
+<th class="head"><p>26.03</p></th>
+<th class="head"><p>26.05</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Open stage</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.111981</div>
+<div class="line">max: 0.137971</div>
+<div class="line">mean: 0.12011667</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.105351</div>
+<div class="line">max: 0.120111</div>
+<div class="line">mean: 0.11219626</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.10763</div>
+<div class="line">max: 0.123955</div>
+<div class="line">mean: 0.11461558</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.099474</div>
+<div class="line">max: 0.116492</div>
+<div class="line">mean: 0.10618527</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Render first image</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.370883</div>
+<div class="line">max: 0.410614</div>
+<div class="line">mean: 0.38819254</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.387114</div>
+<div class="line">max: 0.430436</div>
+<div class="line">mean: 0.40021584</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.387877</div>
+<div class="line">max: 0.417364</div>
+<div class="line">mean: 0.39946686</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.385847</div>
+<div class="line">max: 0.415152</div>
+<div class="line">mean: 0.39539667</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Close stage</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.018721</div>
+<div class="line">max: 0.026777</div>
+<div class="line">mean: 0.02178006</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.01869</div>
+<div class="line">max: 0.028976</div>
+<div class="line">mean: 0.02328194</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.019835</div>
+<div class="line">max: 0.032572</div>
+<div class="line">mean: 0.02471053</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.018316</div>
+<div class="line">max: 0.029745</div>
+<div class="line">mean: 0.02298045</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Shut down Hydra</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.040022</div>
+<div class="line">max: 0.047903</div>
+<div class="line">mean: 0.04345859</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.045518</div>
+<div class="line">max: 0.05392</div>
+<div class="line">mean: 0.049226980000000004</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.045756</div>
+<div class="line">max: 0.054098</div>
+<div class="line">mean: 0.04928151</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.041524</div>
+<div class="line">max: 0.04916</div>
+<div class="line">mean: 0.04623087</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="alab">
+<h3><a class="toc-backref" href="#id24" role="doc-backlink">ALab</a><a class="headerlink" href="#alab" title="Link to this heading"></a></h3>
+<p>ALab is a full production scene created by Animal Logic and contains over 300
+assets, complete with high-quality textures and two characters with looping
+animation in shot context. Supplied as four separate downloads: the full
+production scene, high-quality textures, shot cameras matching the ALab trailer,
+and baked procedural fur and fabric for the animated characters.</p>
+<p>The metrics have been measured with the base asset merged with the additional
+“techvars” info.</p>
+<a class="reference internal image-reference" href="https://animallogic.com/wp-content/uploads/2022/08/LoopySequence02.gif"><img alt="https://animallogic.com/wp-content/uploads/2022/08/LoopySequence02.gif" src="https://animallogic.com/wp-content/uploads/2022/08/LoopySequence02.gif" style="width: 500px;" />
+</a>
+<p>The ALab asset can be <a class="reference external" href="https://animallogic.com/alab/">downloaded here</a>.</p>
+<table class="docutils align-default" id="id8">
+<caption><span class="caption-text">Linux Metrics (min/max/mean in seconds)</span><a class="headerlink" href="#id8" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Metric</p></th>
+<th class="head"><p>25.08</p></th>
+<th class="head"><p>25.11</p></th>
+<th class="head"><p>26.03</p></th>
+<th class="head"><p>26.05</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Open stage</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.259405</div>
+<div class="line">max: 0.373835</div>
+<div class="line">mean: 0.32127596</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.262824</div>
+<div class="line">max: 0.381295</div>
+<div class="line">mean: 0.3155681</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.278403</div>
+<div class="line">max: 0.377748</div>
+<div class="line">mean: 0.3208941</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.241601</div>
+<div class="line">max: 0.318423</div>
+<div class="line">mean: 0.27954225</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Render first image</p></td>
+<td><div class="line-block">
+<div class="line">min: 5.756927</div>
+<div class="line">max: 6.10323</div>
+<div class="line">mean: 5.90948085</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 6.034976</div>
+<div class="line">max: 6.376652</div>
+<div class="line">mean: 6.20103818</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 6.002758</div>
+<div class="line">max: 6.374273</div>
+<div class="line">mean: 6.17849757</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 5.810938</div>
+<div class="line">max: 6.169416</div>
+<div class="line">mean: 5.93609673</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Close stage</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.112777</div>
+<div class="line">max: 0.139937</div>
+<div class="line">mean: 0.11702461</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.10802</div>
+<div class="line">max: 0.130206</div>
+<div class="line">mean: 0.11329438</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.107958</div>
+<div class="line">max: 0.13805</div>
+<div class="line">mean: 0.11300532</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.106509</div>
+<div class="line">max: 0.130405</div>
+<div class="line">mean: 0.1123268</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Shut down Hydra</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.502722</div>
+<div class="line">max: 0.833467</div>
+<div class="line">mean: 0.6238108</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.530892</div>
+<div class="line">max: 0.882976</div>
+<div class="line">mean: 0.65899259</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.542178</div>
+<div class="line">max: 0.844146</div>
+<div class="line">mean: 0.65962838</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.563382</div>
+<div class="line">max: 0.868353</div>
+<div class="line">mean: 0.70578134</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id9">
+<caption><span class="caption-text">macOS Metrics (min/max/mean in seconds)</span><a class="headerlink" href="#id9" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Metric</p></th>
+<th class="head"><p>25.08</p></th>
+<th class="head"><p>25.11</p></th>
+<th class="head"><p>26.03</p></th>
+<th class="head"><p>26.05</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Open stage</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.404042</div>
+<div class="line">max: 0.525631</div>
+<div class="line">mean: 0.43365319</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.387289</div>
+<div class="line">max: 0.476831</div>
+<div class="line">mean: 0.41920031</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.401131</div>
+<div class="line">max: 0.479708</div>
+<div class="line">mean: 0.43101433</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.374424</div>
+<div class="line">max: 0.477764</div>
+<div class="line">mean: 0.42913736</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Render first image</p></td>
+<td><div class="line-block">
+<div class="line">min: 2.692878</div>
+<div class="line">max: 3.149042</div>
+<div class="line">mean: 2.90695481</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 3.374587</div>
+<div class="line">max: 3.796386</div>
+<div class="line">mean: 3.59016131</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 3.247161</div>
+<div class="line">max: 3.697333</div>
+<div class="line">mean: 3.51718546</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 3.196071</div>
+<div class="line">max: 3.900934</div>
+<div class="line">mean: 3.59978127</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Close stage</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.032976</div>
+<div class="line">max: 0.045111</div>
+<div class="line">mean: 0.03838184</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.032904</div>
+<div class="line">max: 0.046616</div>
+<div class="line">mean: 0.03683789</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.03243</div>
+<div class="line">max: 0.044327</div>
+<div class="line">mean: 0.0365513</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.032126</div>
+<div class="line">max: 0.050107</div>
+<div class="line">mean: 0.03739121</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Shut down Hydra</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.125249</div>
+<div class="line">max: 0.160093</div>
+<div class="line">mean: 0.14434834</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.142813</div>
+<div class="line">max: 0.177915</div>
+<div class="line">mean: 0.15281977</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.135475</div>
+<div class="line">max: 0.170974</div>
+<div class="line">mean: 0.15313856</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.140115</div>
+<div class="line">max: 0.166896</div>
+<div class="line">mean: 0.15124781</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id10">
+<caption><span class="caption-text">Windows Metrics (min/max/mean in seconds)</span><a class="headerlink" href="#id10" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Metric</p></th>
+<th class="head"><p>25.08</p></th>
+<th class="head"><p>25.11</p></th>
+<th class="head"><p>26.03</p></th>
+<th class="head"><p>26.05</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Open stage</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.388397</div>
+<div class="line">max: 0.501158</div>
+<div class="line">mean: 0.40847451</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.388077</div>
+<div class="line">max: 0.416403</div>
+<div class="line">mean: 0.4029927</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.397166</div>
+<div class="line">max: 0.587801</div>
+<div class="line">mean: 0.41254627</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.378314</div>
+<div class="line">max: 0.523401</div>
+<div class="line">mean: 0.39922649</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Render first image</p></td>
+<td><div class="line-block">
+<div class="line">min: 7.661506</div>
+<div class="line">max: 8.938386</div>
+<div class="line">mean: 7.95734312</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 7.782884</div>
+<div class="line">max: 8.019821</div>
+<div class="line">mean: 7.89220199</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 7.648056</div>
+<div class="line">max: 8.347713</div>
+<div class="line">mean: 7.87855149</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 7.585018</div>
+<div class="line">max: 8.511921</div>
+<div class="line">mean: 7.9203183600000004</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Close stage</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.309628</div>
+<div class="line">max: 0.373266</div>
+<div class="line">mean: 0.33488903000000003</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.317541</div>
+<div class="line">max: 0.405188</div>
+<div class="line">mean: 0.35938741</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.340327</div>
+<div class="line">max: 0.432633</div>
+<div class="line">mean: 0.38996225</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.317643</div>
+<div class="line">max: 0.496103</div>
+<div class="line">mean: 0.3783046</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Shut down Hydra</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.275811</div>
+<div class="line">max: 0.522579</div>
+<div class="line">mean: 0.36632579</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.329635</div>
+<div class="line">max: 0.572838</div>
+<div class="line">mean: 0.44994447</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.351016</div>
+<div class="line">max: 0.632485</div>
+<div class="line">mean: 0.50048855</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.377651</div>
+<div class="line">max: 0.643099</div>
+<div class="line">mean: 0.52348612</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="moore-lane">
+<h3><a class="toc-backref" href="#id25" role="doc-backlink">Moore Lane</a><a class="headerlink" href="#moore-lane" title="Link to this heading"></a></h3>
+<p>4004 Moore Lane is a fully composed, high-quality scene for the purpose of
+testing various visual computing issues. The house itself was wrapped around a
+number of typical problem areas for light transport and noise sampling. This
+includes things like thin openings in exterior walls, recessed area light
+sources, deeply shadowed corners, and high-frequency details. The exterior
+landscape surrounding the house consisted of a relatively simple ecosystem of
+instanced plants which could provide some additional levels of complexity. In
+addition to the geometry itself being designed to exacerbate some typical
+issues, the USD structure itself was created for several layers of testing.</p>
+<p>The metrics have been measured using the contained
+<span class="mono">MooreLane_ASWF_0623.usda</span> file.</p>
+<a class="reference internal image-reference" href="https://dpel.aswf.io/images/4004/render_20181.jpeg"><img alt="https://dpel.aswf.io/images/4004/render_20181.jpeg" src="https://dpel.aswf.io/images/4004/render_20181.jpeg" style="width: 500px;" />
+</a>
+<p>The Moore Lane asset can be <a class="reference external" href="https://dpel.aswf.io/4004-moore-lane/">downloaded here</a>.</p>
+<table class="docutils align-default" id="id11">
+<caption><span class="caption-text">Linux Metrics (min/max/mean in seconds)</span><a class="headerlink" href="#id11" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Metric</p></th>
+<th class="head"><p>25.08</p></th>
+<th class="head"><p>25.11</p></th>
+<th class="head"><p>26.03</p></th>
+<th class="head"><p>26.05</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Open stage</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.046413</div>
+<div class="line">max: 0.068611</div>
+<div class="line">mean: 0.04868188</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.045243</div>
+<div class="line">max: 0.061459</div>
+<div class="line">mean: 0.04774144</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.051093</div>
+<div class="line">max: 0.059576</div>
+<div class="line">mean: 0.05292827</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.049433</div>
+<div class="line">max: 0.068931</div>
+<div class="line">mean: 0.05256769</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Render first image</p></td>
+<td><div class="line-block">
+<div class="line">min: 7.601377</div>
+<div class="line">max: 8.01067</div>
+<div class="line">mean: 7.79920461</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 7.024242</div>
+<div class="line">max: 7.330487</div>
+<div class="line">mean: 7.1917083</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 7.106522</div>
+<div class="line">max: 7.491846</div>
+<div class="line">mean: 7.30991904</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 7.113698</div>
+<div class="line">max: 7.396277</div>
+<div class="line">mean: 7.21710089</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Close stage</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.034998</div>
+<div class="line">max: 0.04429</div>
+<div class="line">mean: 0.03687787</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.034029</div>
+<div class="line">max: 0.038338</div>
+<div class="line">mean: 0.03618818</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.033988</div>
+<div class="line">max: 0.038964</div>
+<div class="line">mean: 0.03618142</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.034322</div>
+<div class="line">max: 0.041997</div>
+<div class="line">mean: 0.03567777</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Shut down Hydra</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.99897</div>
+<div class="line">max: 1.103792</div>
+<div class="line">mean: 1.03985028</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.997761</div>
+<div class="line">max: 1.145262</div>
+<div class="line">mean: 1.0445001</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 1.001618</div>
+<div class="line">max: 1.119256</div>
+<div class="line">mean: 1.04177241</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.796864</div>
+<div class="line">max: 1.011868</div>
+<div class="line">mean: 0.83473395</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id12">
+<caption><span class="caption-text">macOS Metrics (min/max/mean in seconds)</span><a class="headerlink" href="#id12" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Metric</p></th>
+<th class="head"><p>25.08</p></th>
+<th class="head"><p>25.11</p></th>
+<th class="head"><p>26.03</p></th>
+<th class="head"><p>26.05</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Open stage</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.082767</div>
+<div class="line">max: 0.086665</div>
+<div class="line">mean: 0.08393583</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.0779</div>
+<div class="line">max: 0.083264</div>
+<div class="line">mean: 0.07919203</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.103792</div>
+<div class="line">max: 0.115776</div>
+<div class="line">mean: 0.10550355</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.098452</div>
+<div class="line">max: 0.103779</div>
+<div class="line">mean: 0.09996708</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Render first image</p></td>
+<td><div class="line-block">
+<div class="line">min: 4.836536</div>
+<div class="line">max: 5.79493</div>
+<div class="line">mean: 5.2620495</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 4.928251</div>
+<div class="line">max: 5.818517</div>
+<div class="line">mean: 5.27123588</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 4.825569</div>
+<div class="line">max: 5.729761</div>
+<div class="line">mean: 5.17014079</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 4.78398</div>
+<div class="line">max: 5.725201</div>
+<div class="line">mean: 5.1418585</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Close stage</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.003405</div>
+<div class="line">max: 0.008938</div>
+<div class="line">mean: 0.0039708</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.003165</div>
+<div class="line">max: 0.008126</div>
+<div class="line">mean: 0.0034966899999999998</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.003239</div>
+<div class="line">max: 0.007467</div>
+<div class="line">mean: 0.00347463</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.003191</div>
+<div class="line">max: 0.008941</div>
+<div class="line">mean: 0.00384508</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Shut down Hydra</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.115016</div>
+<div class="line">max: 0.220803</div>
+<div class="line">mean: 0.12306854</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.121073</div>
+<div class="line">max: 0.137621</div>
+<div class="line">mean: 0.12819004</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.121472</div>
+<div class="line">max: 0.188133</div>
+<div class="line">mean: 0.13085061</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.104195</div>
+<div class="line">max: 0.171836</div>
+<div class="line">mean: 0.12383931</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id13">
+<caption><span class="caption-text">Windows Metrics (min/max/mean in seconds)</span><a class="headerlink" href="#id13" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Metric</p></th>
+<th class="head"><p>25.08</p></th>
+<th class="head"><p>25.11</p></th>
+<th class="head"><p>26.03</p></th>
+<th class="head"><p>26.05</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Open stage</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.143945</div>
+<div class="line">max: 0.169911</div>
+<div class="line">mean: 0.1492643</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.135837</div>
+<div class="line">max: 0.148618</div>
+<div class="line">mean: 0.14251247</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.125819</div>
+<div class="line">max: 0.141703</div>
+<div class="line">mean: 0.1328517</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.116097</div>
+<div class="line">max: 0.131661</div>
+<div class="line">mean: 0.12227848</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Render first image</p></td>
+<td><div class="line-block">
+<div class="line">min: 8.738549</div>
+<div class="line">max: 10.169592</div>
+<div class="line">mean: 9.10423748</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 8.113206</div>
+<div class="line">max: 9.48835</div>
+<div class="line">mean: 8.81574719</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 7.307756</div>
+<div class="line">max: 9.21315</div>
+<div class="line">mean: 8.49179167</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 8.443403</div>
+<div class="line">max: 9.740621</div>
+<div class="line">mean: 9.20294465</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Close stage</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.094702</div>
+<div class="line">max: 0.116359</div>
+<div class="line">mean: 0.10147604</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.094986</div>
+<div class="line">max: 0.124853</div>
+<div class="line">mean: 0.10156746999999999</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.096086</div>
+<div class="line">max: 0.127534</div>
+<div class="line">mean: 0.1035804</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.095105</div>
+<div class="line">max: 0.121288</div>
+<div class="line">mean: 0.10279636</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Shut down Hydra</p></td>
+<td><div class="line-block">
+<div class="line">min: 0.31048</div>
+<div class="line">max: 0.415117</div>
+<div class="line">mean: 0.36670874999999997</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.321071</div>
+<div class="line">max: 0.470964</div>
+<div class="line">mean: 0.38557374</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.354215</div>
+<div class="line">max: 0.457584</div>
+<div class="line">mean: 0.41048186</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">min: 0.349249</div>
+<div class="line">max: 0.474159</div>
+<div class="line">mean: 0.41690432</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="running-performance-metrics-locally">
+<h2><a class="toc-backref" href="#id26" role="doc-backlink">Running Performance Metrics Locally</a><a class="headerlink" href="#running-performance-metrics-locally" title="Link to this heading"></a></h2>
+<p>We encourage developers to run the USD performance metrics to measure
+performance impacts of OpenUSD code contributions. Performance metrics can
+also be run to validate local runtime environments and hardware configurations.</p>
+<p>Performance metrics are generating using the <strong class="program">usdmeasureperformance.py</strong>
+script found in <code class="docutils literal notranslate"><span class="pre">pxr/extras/performance</span></code>. See the
+<a class="reference internal" href="toolset.html#usdmeasureperformance"><span class="std std-ref">usdmeasureperformance tool docs</span></a> for more
+information on the different parameters available.</p>
+<p><strong class="program">usdmeasureperformance.py</strong> uses <strong class="program">usdview</strong> and
+<strong class="program">testusdview</strong>, so you will need to make sure those are in your current
+path, or aliased properly.</p>
+<p>For gathering the metrics published on this page, the following parameters
+are used (for each asset):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">usdmeasureperformance</span><span class="o">.</span><span class="n">py</span> <span class="o">&lt;</span><span class="n">asset</span><span class="o">.</span><span class="n">usda</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">i</span> <span class="mi">100</span> <span class="o">-</span><span class="n">a</span> <span class="nb">min</span> <span class="o">-</span><span class="n">o</span> <span class="o">&lt;</span><span class="n">metrics</span> <span class="n">output</span> <span class="n">filename</span><span class="o">.</span><span class="n">yaml</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Optionally, <cite>–tracedir &lt;dir&gt;</cite> will output trace information to <cite>dir</cite> that may aid in
+performance debugging.</p>
+<section id="adding-custom-metrics">
+<h3><a class="toc-backref" href="#id27" role="doc-backlink">Adding Custom Metrics</a><a class="headerlink" href="#adding-custom-metrics" title="Link to this heading"></a></h3>
+<p>You can add your own custom metrics and have <strong class="program">usdmeasureperformance.py</strong>
+include them as part of the set of metrics that it measures.</p>
+<p>To define a custom metric, create a script file that defines a
+<code class="docutils literal notranslate"><span class="pre">testUsdviewInputFunction()</span></code> function that will be passed to <code class="docutils literal notranslate"><span class="pre">testusdview</span></code>.
+For example, if you wanted to add a metric named “process prims”, that
+traversed the stage and processed each prim in some way, you might have a
+<code class="docutils literal notranslate"><span class="pre">processPrimsMetric.py</span></code> script that looks something like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pxr</span><span class="w"> </span><span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdUtils</span><span class="p">,</span> <span class="n">Usdviewq</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">testUsdviewInputFunction</span><span class="p">(</span><span class="n">appController</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">Usdviewq</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;process prims&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">):</span>
+        <span class="n">stage</span> <span class="o">=</span> <span class="n">appController</span><span class="o">.</span><span class="n">_dataModel</span><span class="o">.</span><span class="n">stage</span>
+        <span class="k">for</span> <span class="n">prim</span> <span class="ow">in</span> <span class="n">stage</span><span class="o">.</span><span class="n">Traverse</span><span class="p">():</span>
+            <span class="c1"># process prim as needed, etc</span>
+</pre></div>
+</div>
+<p>See also the “traverse stage” example in <code class="docutils literal notranslate"><span class="pre">pxr/extras/performance/explicitMetrics/stageTraversalMetric.py</span></code>.</p>
+<p>To include your custom metrics when running <strong class="program">usdmeasureperformance.py</strong>,
+add your metrics script name and metric name as part of the <code class="docutils literal notranslate"><span class="pre">--custom-metrics</span></code>
+script parameter. For example, if you wanted to include the “process prims”
+metric example for “MyTestAsset.usda”, you would use a
+<strong class="program">usdmeasureperformance.py</strong> command line similar to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">usdmeasureperformance</span><span class="o">.</span><span class="n">py</span> <span class="n">MyTestAsset</span><span class="o">.</span><span class="n">usda</span> <span class="o">--</span><span class="n">custom</span><span class="o">-</span><span class="n">metrics</span> <span class="n">processPrimsMetric</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="s1">&#39;process prims&#39;</span>
+</pre></div>
+</div>
+<p><strong class="program">usdmeasureperformance.py</strong> will look for your custom metric script
+relative to the directory from which the <strong class="program">usdmeasureperformance.py</strong>
+script is run.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="maxperf.html" class="btn btn-neutral float-left" title="Maximizing USD Performance" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="plugins.html" class="btn btn-neutral float-right" title="USD Third-Party Plugins" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Pixar Animation Studios.</p>
+  </div>
+
+   
+<!-- Additional content for Read-the-Docs theme footer, see https://github.com/readthedocs/sphinx_rtd_theme/blob/master/sphinx_rtd_theme/footer.html --> 
+<a class="usd-tos-footer-style" href="https://disneytermsofuse.com/">Terms of Use</a>
+
+
+</footer>
+        </div>
+
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

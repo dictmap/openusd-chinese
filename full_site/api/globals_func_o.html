@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members</h1>
+    <div class="meta">https://openusd.org/release/api/globals_func_o.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section data-cn-refinement="api-file-members-func-quality-pass-032">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 File Members - Functions - O 补充中文优先的函数索引用法、模块边界和术语对照；英文页面名、API 符号、函数名、头文件名、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first function-index notes, module boundaries, and terminology for File Members - Functions - O while retaining English page names, API symbols, function names, header names, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">globals_func_o.html 是 File Members 函数子索引 O 段，本地 406 页范围里没有 q/r 段文件，因此本轮按实际存在的 O/P/S/T/U 五页推进。</span></li>
+        <li><span class="zh">本页主要收集 operator overload 条目，包括 `operator+()`、`operator==()`、`operator&gt;&gt;()` 和 `operator^()`；这些符号应作为 C++ 运算符函数名保留，不翻译成普通中文词。</span></li>
+        <li><span class="zh">`operator+()` 链到 `indexedWeightsOperand.h`，适合从索引进入 UsdSkel indexed weights operand 的合并或加法语义核对；实际参数、返回值和异常行为需查看头文件页面。</span></li>
+        <li><span class="zh">`operator==()` 链到 `dictionary.h`，`operator&gt;&gt;()` 链到 `timeCodeRange.h`，说明本页混合容器比较、时间码范围流读取，以及 Gf vector 运算等不同模块入口。</span></li>
+        <li><span class="zh">`operator^()` 链到 `vec3d.h`、`vec3f.h`、`vec3h.h`，在 Gf 三维向量上下文里通常对应叉积式运算；中文导读只说明导航和模块边界，不替代具体 overload 文档。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">运算符重载：</span><span class="en">operator overload</span></li>
+        <li><span class="zh">函数子索引：</span><span class="en">function sub-index</span></li>
+        <li><span class="zh">索引权重操作数：</span><span class="en">indexed weights operand</span></li>
+        <li><span class="zh">流提取运算符：</span><span class="en">stream extraction operator</span></li>
+        <li><span class="zh">向量运算：</span><span class="en">vector operation</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 3 级结构：- o -</span><span class="en">- o -</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">Index entries include: operator+() : indexedWeightsOperand.h; operator==() : dictionary.h; operator&gt;&gt;() : timeCodeRange.h; operator^() : vec3d.h , vec3f.h , vec3h.h.</p>
+<p class="en">Index entries include: vec2f.h; stopwatch.h; ostreamMethods.h; enum.h; vec4i.h; vec4h.h; vec4f.h; vec4d.h; vec3i.h; vec3h.h; vec3f.h; vec3d.h; vec2i.h; vec2h.h; bbox3d.h; transform.h.</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Findexed_weights_operand_8h.html&amp;title=indexedWeightsOperand.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/indexed_weights_operand_8h.html">indexedWeightsOperand.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fdictionary_8h.html&amp;title=dictionary.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/dictionary_8h.html">dictionary.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fgroup__group__gf___debugging_output.html&amp;title=vec2f.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/group__group__gf___debugging_output.html">vec2f.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fgroup__group__tf___debugging_output.html&amp;title=stopwatch.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/group__group__tf___debugging_output.html">stopwatch.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fasset_path_8h.html&amp;title=assetPath.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/asset_path_8h.html">assetPath.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Flayer_offset_8h.html&amp;title=layerOffset.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/layer_offset_8h.html">layerOffset.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fpayload_8h.html&amp;title=payload.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/payload_8h.html">payload.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Freference_8h.html&amp;title=reference.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/reference_8h.html">reference.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fsdf_2time_code_8h.html&amp;title=timeCode.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/sdf_2time_code_8h.html">timeCode.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fusd_2sdf_2types_8h.html&amp;title=types.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/usd_2sdf_2types_8h.html">types.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstage_load_rules_8h.html&amp;title=stageLoadRules.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/stage_load_rules_8h.html">stageLoadRules.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Ftime_code_range_8h.html&amp;title=timeCodeRange.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/time_code_range_8h.html">timeCodeRange.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Ftime_8h.html&amp;title=time.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/time_8h.html">time.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Ftime_interval_8h.html&amp;title=timeInterval.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/time_interval_8h.html">timeInterval.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fvec3d_8h.html&amp;title=vec3d.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/vec3d_8h.html">vec3d.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fvec3f_8h.html&amp;title=vec3f.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/vec3f_8h.html">vec3f.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fvec3h_8h.html&amp;title=vec3h.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/vec3h_8h.html">vec3h.h</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/globals_func_o.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,2028 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schema Versioning in USD &mdash; Universal Scene Description 26.05 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/pxr_custom.css?v=f3eac5de" />
+
+  
+    <link rel="shortcut icon" href="https://openusd.org/images/USDIcon.ico"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=34cee20b"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+      <script src="_static/js/versions.js?v=aa17b01a"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Stage Variable Expressions" href="wp_stage_variables.html" />
+    <link rel="prev" title="Rigid Body Physics in USD Proposal" href="wp_rigid_body_physics.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #606060" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Universal Scene Description
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Learn</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction to USD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_to_openexec.html">Introduction to OpenExec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Terms and Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tut_usd_tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tut_helloworld.html">Hello World - Creating Your First USD Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_helloworld_redux.html">Hello World Redux - Using Generic Prims</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_inspect_and_author_props.html">Inspecting and Authoring Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_referencing_layers.html">Referencing Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_converting_between_layer_formats.html">Converting Between Layer Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_traversing_stage.html">Traversing a Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_authoring_variants.html">Authoring Variants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_variants_example_in_katana.html">Variants Example in Katana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_xforms.html">Transformations, Animation, and Layer Offsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_simple_shading.html">Simple Shading in USD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_end_to_end.html">End to End Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_houdini_example.html">Houdini USD Example Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_generating_new_schema.html">Generating New Schema Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_usdview_plugin.html">Creating a Usdview Plugin</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dl_downloads.html">Downloads and Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usd_products.html">Products Using USD</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/collections_and_patterns.html">Collections and Patterns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/collections_and_patterns.html#basic-usage">Basic Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/collections_and_patterns.html#configuring-membership-mode">Configuring Membership Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/collections_and_patterns.html#relationship-mode-collections">Relationship-Mode Collections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/collections_and_patterns.html#configuring-relationship-mode-collections">Configuring Relationship-Mode Collections</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/collections_and_patterns.html#pattern-based-collections">Pattern-Based Collections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/collections_and_patterns.html#path-expressions">Path Expressions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/collections_and_patterns.html#path-patterns">Path Patterns</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/collections_and_patterns.html#additional-expressions-considerations">Additional Expressions Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/collections_and_patterns.html#configuring-pattern-based-collections">Configuring Pattern-Based Collections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/collections_and_patterns.html#getting-the-expression-for-a-relationship-mode-collection">Getting the Expression for a Relationship-Mode Collection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/color_user_guide.html">Color</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/color_user_guide.html#working-with-color-in-openusd">Working With Color in OpenUSD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/color_user_guide.html#color-spaces-supported-by-openusd">Color Spaces Supported by OpenUSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/color_user_guide.html#working-with-color-space-schemas">Working With Color Space Schemas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/color_user_guide.html#color-space-inheritance-and-resolution">Color Space Inheritance and Resolution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/color_user_guide.html#default-color-space">Default Color Space</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/color_user_guide.html#what-is-a-color-space">What is a Color Space?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/color_user_guide.html#gamut-limitations-and-considerations">Gamut Limitations and Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/color_user_guide.html#common-white-points">Common White Points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/color_user_guide.html#linear-vs-non-linear-spaces">Linear vs. Non-Linear Spaces</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/color_user_guide.html#considerations-in-content-creation">Considerations in Content Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/color_user_guide.html#glossary-of-color-terms">Glossary of Color Terms</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/namespace_editing.html">Namespace Editing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/namespace_editing.html#using-usdnamespaceeditor">Using UsdNamespaceEditor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#setting-editor-options">Setting Editor Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#working-with-relocates">Working With Relocates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#fixing-paths-for-moved-objects">Fixing Paths For Moved Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#applying-edits-to-dependent-stages">Applying Edits to Dependent Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#batch-edits">Batch Edits</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/namespace_editing.html#namespace-editing-best-practices">Namespace Editing Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#use-canapplyedits-to-validate-edit-operations">Use CanApplyEdits() To Validate Edit Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#built-in-properties-from-schemas-are-not-editable">Built-In Properties From Schemas Are Not Editable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/namespace_editing.html#be-aware-of-relocates-performance-impact">Be Aware of Relocates Performance Impact</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/render_user_guide.html">Rendering with USD</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/render_user_guide.html#configuring-imageable-content">Configuring Imageable Content</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#configuring-the-stage-coordinate-system">Configuring the Stage Coordinate System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#understanding-render-visibility">Understanding Render Visibility</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#using-the-visibility-attribute">Using the Visibility Attribute</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#using-imageable-purpose">Using Imageable Purpose</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#understanding-intrinsic-and-explicit-normals">Understanding Intrinsic and Explicit Normals</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/render_user_guide.html#working-with-lights">Working with Lights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#using-light-linking-to-filter-objects-affected-by-lights">Using Light-linking to Filter Objects Affected by Lights</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/render_user_guide.html#working-with-materials">Working with Materials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#using-the-usd-preview-material">Using the USD Preview Material</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#using-glslfx-shaders">Using GLSLFX Shaders</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#working-with-primvars">Working with Primvars</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#primvar-interpolation">Primvar Interpolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#indexed-primvars">Indexed Primvars</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#consuming-primvars-in-materials">Consuming Primvars in Materials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#material-primvar-fallbacks">Material Primvar Fallbacks</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#using-material-binding-purpose">Using Material Binding Purpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#binding-materials-to-collections">Binding Materials to Collections</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#setting-collection-binding-strength">Setting Collection Binding Strength</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/render_user_guide.html#combining-collection-binding-with-material-binding-purpose">Combining Collection Binding with Material Binding Purpose</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#using-material-render-contexts">Using Material Render Contexts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/render_user_guide.html#working-with-image-file-formats">Working With Image File Formats</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#guidelines-for-all-supported-image-formats">Guidelines for All Supported Image Formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#jpeg">JPEG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#png">PNG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#openexr">OpenEXR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#av1-image-file-format-avif">AV1 Image File Format (AVIF)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/render_user_guide.html#defining-the-render-camera">Defining the Render Camera</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/render_user_guide.html#configuring-motion-blur">Configuring Motion Blur</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/render_user_guide.html#configuring-render-settings">Configuring Render Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/primvars.html">Primvars</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/primvars.html#primvar-interpolation-modes">Primvar Interpolation Modes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/primvars.html#constant-interpolation">Constant Interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/primvars.html#uniform-interpolation">Uniform Interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/primvars.html#vertex-interpolation">Vertex Interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/primvars.html#varying-interpolation">Varying Interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/primvars.html#facevarying-interpolation">faceVarying Interpolation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/primvars.html#primvars-and-the-scene-namespace">Primvars and the Scene Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/primvars.html#indexed-primvars">Indexed Primvars</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/primvars.html#indexed-primvars-and-attribute-blocks">Indexed Primvars and Attribute Blocks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/primvars.html#primvar-element-size">Primvar Element Size</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/schemas/index.html">Schema Domains</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/schemas/usdLux/usdLux_toc.html">Lights (usdLux)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#usdlux-schemas-and-concepts">UsdLux Schemas and Concepts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#light-units">Light Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#understanding-light-contributions">Understanding Light Contributions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#light-shaping">Light Shaping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#shadows">Shadows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#mesh-lights">Mesh Lights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/overview.html#light-linking-and-shadow-linking">Light-linking and Shadow-linking</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/BoundableLightBase.html">BoundableLightBase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/BoundableLightBase.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/BoundableLightBase.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/BoundableLightBase.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/BoundableLightBase.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/CylinderLight.html">CylinderLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/CylinderLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/CylinderLight.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/CylinderLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/CylinderLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/DiskLight.html">DiskLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DiskLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DiskLight.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DiskLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DiskLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/DistantLight.html">DistantLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DistantLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DistantLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DistantLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight.html">DomeLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight_1.html">DomeLight_1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight_1.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight_1.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/DomeLight_1.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/GeometryLight.html">GeometryLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/GeometryLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/GeometryLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/GeometryLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/LightAPI.html">LightAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/LightAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/LightFilter.html">LightFilter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/LightFilter.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/LightFilter.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/LightFilter.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/LightListAPI.html">LightListAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/LightListAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/ListAPI.html">ListAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/ListAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/MeshLightAPI.html">MeshLightAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/MeshLightAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/NonboundableLightBase.html">NonboundableLightBase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/NonboundableLightBase.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/NonboundableLightBase.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/NonboundableLightBase.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLight.html">PluginLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLightFilter.html">PluginLightFilter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLightFilter.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLightFilter.html#inherited-properties-lightfilter">Inherited Properties (<span class="xref std std-ref">LightFilter</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLightFilter.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PluginLightFilter.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/PortalLight.html">PortalLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PortalLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PortalLight.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PortalLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/PortalLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/RectLight.html">RectLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/RectLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/RectLight.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/RectLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/RectLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/ShadowAPI.html">ShadowAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/ShadowAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/ShapingAPI.html">ShapingAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/ShapingAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/SphereLight.html">SphereLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/SphereLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/SphereLight.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/SphereLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/SphereLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdLux/VolumeLightAPI.html">VolumeLightAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdLux/VolumeLightAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/schemas/usdMedia/usdMedia_toc.html">Media (usdMedia)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdMedia/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdMedia/overview.html#working-with-media">Working With Media</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdMedia/AssetPreviewsAPI.html">AssetPreviewsAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdMedia/SpatialAudio.html">SpatialAudio</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdMedia/SpatialAudio.html#spatialaudio-and-layer-offsets">SpatialAudio and Layer Offsets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdMedia/SpatialAudio.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdMedia/SpatialAudio.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdMedia/SpatialAudio.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/schemas/usdRender/usdRender_toc.html">Render (usdRender)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdRender/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/overview.html#best-practices">Best Practices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/overview.html#using-usdrender-to-control-how-prims-are-rendered">Using UsdRender to Control How Prims Are Rendered</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/overview.html#working-with-renderproduct">Working with RenderProduct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/overview.html#configuring-multi-pass-renders-with-renderpass">Configuring Multi-pass Renders with RenderPass</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdRender/RenderPass.html">RenderPass</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderPass.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdRender/RenderProduct.html">RenderProduct</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderProduct.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderProduct.html#inherited-properties-rendersettingsbase">Inherited Properties (<span class="xref std std-ref">RenderSettingsBase</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdRender/RenderSettings.html">RenderSettings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderSettings.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderSettings.html#inherited-properties-rendersettingsbase">Inherited Properties (<span class="xref std std-ref">RenderSettingsBase</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdRender/RenderSettingsBase.html">RenderSettingsBase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderSettingsBase.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdRender/RenderVar.html">RenderVar</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdRender/RenderVar.html#properties">Properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/schemas/usdUI/usdUI_toc.html">UI (usdUI)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/overview.html#working-with-node-graphs">Working With Node Graphs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/overview.html#working-with-accessibility-information">Working With Accessibility Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/overview.html#working-with-ui-hints">Working With UI Hints</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/AttributeHints.html">AttributeHints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/AttributeHints.html#attributehints-fields">AttributeHints fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/ObjectHints.html">ObjectHints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/ObjectHints.html#objecthints-fields">ObjectHints fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/PrimHints.html">PrimHints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/PrimHints.html#primhints-fields">PrimHints fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/PropertyHints.html">PropertyHints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/PropertyHints.html#propertyhints-fields">PropertyHints fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/AccessibilityAPI.html">AccessibilityAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/AccessibilityAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/Backdrop.html">Backdrop</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/Backdrop.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/NodeGraphNodeAPI.html">NodeGraphNodeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/NodeGraphNodeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdUI/SceneGraphPrimAPI.html">SceneGraphPrimAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdUI/SceneGraphPrimAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/schemas/usdVol/usdVol_toc.html">Volumes (usdVol)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/overview.html#working-with-volumes">Working With Volumes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/overview.html#working-with-fields">Working With Fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/overview.html#working-with-particle-fields">Working With Particle Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/Field3DAsset.html">Field3DAsset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Field3DAsset.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Field3DAsset.html#inherited-properties-volumefieldasset">Inherited Properties (<span class="xref std std-ref">VolumeFieldAsset</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Field3DAsset.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Field3DAsset.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/FieldAsset.html">FieldAsset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldAsset.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldAsset.html#inherited-properties-volumefieldasset">Inherited Properties (<span class="xref std std-ref">VolumeFieldAsset</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldAsset.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldAsset.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/FieldBase.html">FieldBase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldBase.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldBase.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/FieldBase.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/OpenVDBAsset.html">OpenVDBAsset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/OpenVDBAsset.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/OpenVDBAsset.html#inherited-properties-volumefieldasset">Inherited Properties (<span class="xref std std-ref">VolumeFieldAsset</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/OpenVDBAsset.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/OpenVDBAsset.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField.html">ParticleField</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField.html#inherited-properties-gprim">Inherited Properties (<span class="xref std std-ref">Gprim</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html">ParticleField3DGaussianSplat</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#inherited-properties-gprim">Inherited Properties (<span class="xref std std-ref">Gprim</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldKernelBaseAPI.html">ParticleFieldKernelBaseAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldKernelConstantSurfletAPI.html">ParticleFieldKernelConstantSurfletAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldKernelGaussianEllipsoidAPI.html">ParticleFieldKernelGaussianEllipsoidAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html">ParticleFieldKernelGaussianSurfletAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html">ParticleFieldOpacityAttributeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html">ParticleFieldOrientationAttributeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html">ParticleFieldPositionAttributeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html">ParticleFieldPositionBaseAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldRadianceBaseAPI.html">ParticleFieldRadianceBaseAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html">ParticleFieldScaleAttributeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html">ParticleFieldSphericalHarmonicsAttributeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/Volume.html">Volume</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Volume.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Volume.html#inherited-properties-gprim">Inherited Properties (<span class="xref std std-ref">Gprim</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Volume.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Volume.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/Volume.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldAsset.html">VolumeFieldAsset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldAsset.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldAsset.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldAsset.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldBase.html">VolumeFieldBase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldBase.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldBase.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/schemas/usdVol/VolumeFieldBase.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/time_and_animated_values.html">Time and Animated Values</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/time_and_animated_values.html#understanding-timecodes">Understanding TimeCodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/time_and_animated_values.html#working-with-timecodes-programmatically">Working With TimeCodes Programmatically</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/time_and_animated_values.html#mapping-timecodes-to-real-time">Mapping TimeCodes to Real Time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/time_and_animated_values.html#specifying-layer-start-and-end-times">Specifying Layer Start and End Times</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/time_and_animated_values.html#using-timecode-ranges">Using TimeCode Ranges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/time_and_animated_values.html#working-with-automatic-and-explicit-timecode-remapping-across-composition">Working with Automatic and Explicit TimeCode Remapping Across Composition</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/time_and_animated_values.html#automatic-scaling-of-timecodespersecond">Automatic Scaling of timeCodesPerSecond</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/time_and_animated_values.html#configuring-timecode-scaling-and-offsets-using-layeroffsets">Configuring TimeCode Scaling and Offsets Using LayerOffsets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="user_guides/time_and_animated_values.html#combining-automatic-scaling-and-layer-offsets">Combining Automatic Scaling and Layer Offsets</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/variable_expressions.html">Variable Expressions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/variable_expressions.html#defining-expression-variables-in-a-layer">Defining Expression Variables in a Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#string"><span class="mono">string</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#bool"><span class="mono">bool</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#int64"><span class="mono">int64</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#type"><span class="mono">&lt;type&gt;[]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#none"><span class="mono">None</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#expression-variables-and-composition">Expression Variables and Composition</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/variable_expressions.html#authoring-variable-expressions">Authoring Variable Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/variable_expressions.html#expression-function-reference">Expression Function Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#defined-variable-name"><span class="mono">defined(&lt;variable name&gt;, …)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#if-condition-true-value-false-value"><span class="mono">if(&lt;condition&gt;, &lt;true-value&gt;, &lt;false-value&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#if-condition-true-value"><span class="mono">if(&lt;condition&gt;, &lt;true-value&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#and-x-y"><span class="mono">and(&lt;x&gt;, &lt;y&gt;, …)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#or-x-y"><span class="mono">or(&lt;x&gt;, &lt;y&gt;, …)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#not-x"><span class="mono">not(&lt;x&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#eq-x-y"><span class="mono">eq(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#neq-x-y"><span class="mono">neq(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#lt-x-y"><span class="mono">lt(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#leq-x-y"><span class="mono">leq(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#gt-x-y"><span class="mono">gt(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#geq-x-y"><span class="mono">geq(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#contains-list-or-string-value"><span class="mono">contains(&lt;list_or_string&gt;, &lt;value&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#at-list-or-string-index"><span class="mono">at(&lt;list_or_string&gt;, &lt;index&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#len-list-or-string"><span class="mono">len(&lt;list_or_string&gt;)</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_guides/variable_expressions.html#examples">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#flexible-variant-selections">Flexible Variant Selections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#asset-valued-texture-file-attribute">Asset-valued Texture File Attribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_guides/variable_expressions.html#conditionally-include-sublayers">Conditionally Include Sublayers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="apiDocs.html">API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="toolset.html">Toolset</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdedit">usdedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdcat">usdcat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usddiff">usddiff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdview">usdview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdrecord">usdrecord</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdresolve">usdresolve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdtree">usdtree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdzip">usdzip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdchecker">usdchecker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdfixbrokenpixarschemas">usdfixbrokenpixarschemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdstitch">usdstitch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdstitchclips">usdstitchclips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usddumpcrate">usddumpcrate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#sdfdump">sdfdump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#sdffilter">sdffilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdmeasureperformance">usdmeasureperformance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdgenschema">usdGenSchema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdgenschemafromsdr">usdgenschemafromsdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdinitschema">usdInitSchema</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="spec.html">Specifications</a><ul>
+<li class="toctree-l2"><a class="reference external" href="https://aousd.org/blog/foundations-of-open-3d-development-introducing-aousd-core-specification-1-0/">USD Core Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spec_usdpreviewsurface.html">UsdPreviewSurface Specification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdpreviewsurface.html#goal">Goal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdpreviewsurface.html#core-nodes">Core Nodes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#preview-surface">Preview Surface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#texture-reader">Texture Reader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#primvar-reader">Primvar Reader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#transform2d">Transform2d</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdpreviewsurface.html#usd-sample">USD Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdpreviewsurface.html#other-notes">Other Notes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#texture-coordinate-orientation-in-usd">Texture Coordinate Orientation in USD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#roughness-vs-glossiness">Roughness vs Glossiness</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdpreviewsurface.html#changes-by-version">Changes, by Version</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#version-2-0-initial-public-specification">Version 2.0 - Initial Public Specification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#version-2-2-before-type-changes">Version 2.2 - Before Type Changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#version-2-3">Version 2.3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#version-2-4">Version 2.4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#version-2-5">Version 2.5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdpreviewsurface.html#version-2-6-current-head">Version 2.6 - Current Head</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="spec_usdz.html">Usdz File Format Specification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdz.html#purpose">Purpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdz.html#usdz-specification">Usdz Specification</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#foundation">Foundation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#zip-constraints">Zip Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#layout">Layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#file-types">File Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#usd-constraints">USD Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#editability">Editability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#accessibility">Accessibility</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdz.html#packaging-considerations-for-streaming-and-encapsulation">Packaging Considerations for Streaming and Encapsulation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#file-ordering-within-package-for-streaming">File Ordering Within Package for Streaming</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#usdz-reproducibleresults">For Reproducible Results, Encapsulate Using Anchored Asset Paths</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdz.html#mime-type">MIME Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdz.html#toolset">Toolset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec_usdz.html#changes-by-version">Changes, by Version</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spec_usdz.html#version-1-3-current-head">Version 1.3 - Current Head</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="wp.html">Proposals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html">Adapting UsdLux to Accommodate Geometry Lights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#introduction-and-background">Introduction and Background</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#mesh-light-support-in-the-industry">Mesh Light Support in the Industry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#goals">Goals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#workflow-considerations">Workflow Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#design-space-and-issues">Design Space and Issues</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#dual-prim-geometry-light-problems">Dual-Prim Geometry Light Problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#single-prim-geometry-light">Single-Prim Geometry Light</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#usdlux-lightapi-om">UsdLux LightAPI OM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#light-lightapi">Light -&gt; LightAPI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#introduce-convenience-base-classes">Introduce Convenience Base Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#preserve-existing-usdlux-concrete-schemas">Preserve Existing UsdLux Concrete Schemas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#deprecate-geometrylight">Deprecate GeometryLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#how-do-we-identify-the-appropriate-sdrshadernode-for-a-light">How do we Identify the Appropriate SdrShaderNode for a Light?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#lights-with-materials">Lights with Materials?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#proposal-and-behaviors">Proposal and Behaviors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#shading-and-emission">Shading and Emission</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#volumes">Volumes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_geometry_lights.html#primvars-in-light-networks">Primvars in Light Networks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_usdlux_for_renderers.html">Adapting UsdLux to the Needs of Renderers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_renderers.html#background-and-goals">Background and Goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_renderers.html#foundational-technologies-in-usd">Foundational Technologies in USD</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#sdr">Sdr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#usd-schemas">USD Schemas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#usdimaging-and-hydra">UsdImaging and Hydra</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdlux_for_renderers.html#proposals">Proposals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#changes-to-usdlux">Changes to UsdLux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#changes-to-usdimaging">Changes to UsdImaging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#changes-to-hd">Changes to Hd</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdlux_for_renderers.html#changes-to-hdprman-and-other-render-delegates">Changes to HdPrman and Other Render Delegates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_asset_previews.html">Asset Previews in USD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_asset_previews.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_asset_previews.html#proposal">Proposal</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_asset_previews.html#object-model">Object Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_asset_previews.html#concrete-encoding">Concrete Encoding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_asset_previews.html#schema">Schema</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_ar2.html">Asset Resolution (Ar) 2.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_ar2.html#background-and-goals">Background and Goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_ar2.html#tasks">Tasks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#general-cleanup">General Cleanup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#add-documentation-and-examples">Add Documentation and Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#add-identifier-concept">Add Identifier Concept</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#remove-repository-and-search-path">Remove Repository and Search Path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#improve-resolve-and-asset-info">Improve Resolve and Asset Info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#remove-filesystem-specific-code">Remove Filesystem-specific Code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#add-asset-writing-interface">Add Asset Writing Interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#add-uri-resolvers">Add URI Resolvers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#allow-creation-of-arresolvercontext-from-strings">Allow Creation of ArResolverContext From Strings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_ar2.html#remove-arresolver-configureresolverforasset">Remove ArResolver::ConfigureResolverForAsset</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_ar2.html#rollout-and-transition">Rollout and Transition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_ar2.html#proposed-api">Proposed API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_coordsys.html">Coordinate Systems in USD Proposal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_coordsys.html#purpose">Purpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_coordsys.html#requirements">Requirements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_coordsys.html#coordinate-systems-are-identified-by-name-in-shaders">Coordinate Systems are Identified by Name in Shaders</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_coordsys.html#proposed-api-schema">Proposed API Schema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_coordsys.html#recording-a-frame-of-reference">Recording a Frame of Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_coordsys.html#binding-frames-of-reference">Binding Frames of Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_coordsys.html#coordsysapi">CoordSysAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_coordsys.html#usd-sample-and-analysis">USD Sample and Analysis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_coordsys.html#analysis-coordinate-systems-evaluated">Analysis: Coordinate Systems Evaluated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_coordsys.html#analysis-coordinate-system-binding-and-consumption">Analysis: Coordinate System Binding and Consumption</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_coordsys.html#projections-cameras-and-coordsysapi">Projections, Cameras, and CoordSysAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_connectable_nodes.html">Generalizing Connectable Nodes Beyond UsdShade</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_connectable_nodes.html#background-and-goals">Background and Goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_connectable_nodes.html#proposal">Proposal</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#node-definition-as-api-schema">Node Definition as API Schema</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#plugin-defined-connectableapi-behavior">Plugin-defined ConnectableAPI Behavior</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#connectability-rules-for-usdshade-types">Connectability Rules for UsdShade Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#intended-use-in-usdlux-and-usdri-renderman-usd-schema">Intended use in UsdLux and UsdRi (RenderMan USD schema)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_connectable_nodes.html#discussion">Discussion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#sdr-ndr">Sdr &amp; Ndr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#flexibility-of-connectability-callbacks">Flexibility of Connectability Callbacks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_connectable_nodes.html#non-shading-networks">Non-shading Networks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_render_settings.html">Render Settings in USD Proposal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#purpose-and-scope">Purpose and Scope</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#overall-design-and-concerns">Overall Design and Concerns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#concrete-schemas">Concrete Schemas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#renderer-specific-schemas">Renderer-Specific Schemas</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#prim-and-scene-organization">Prim and Scene Organization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#discovering-render-settings">Discovering Render Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#selecting-and-combining-render-settings">Selecting and Combining Render Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#grouping-rendervars-and-renderproducts">Grouping RenderVars and RenderProducts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#discovering-all-potential-shader-based-rendervars">Discovering All Potential Shader-based RenderVars</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#workflow-considerations">Workflow Considerations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#interactive-vs-batch-rendering">Interactive vs. Batch Rendering</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#examples">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_render_settings.html#discussion-and-questions">Discussion and Questions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#id-variables">ID variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#stereo-rendering">Stereo Rendering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#camera-exposure-curves">Camera Exposure Curves</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#denoising-color-correction-and-tasks">Denoising, Color Correction, and Tasks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#why-locality-of-overrides-is-valuable">Why Locality of Overrides is Valuable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#image-mapping-related-options-on-camera-or-rendersettings">Image-Mapping-Related Options on Camera or RenderSettings?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_render_settings.html#crop-windows-and-region-of-interest">Crop Windows and Region-of-Interest</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_rigid_body_physics.html">Rigid Body Physics in USD Proposal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_rigid_body_physics.html#purpose-and-scope">Purpose and Scope</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_rigid_body_physics.html#overall-design-concerns">Overall Design Concerns</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#rigid-body-simulation-primer">Rigid Body Simulation Primer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#usd-implementation">USD Implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_rigid_body_physics.html#concrete-schemas">Concrete Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_rigid_body_physics.html#examples">Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#box-on-box">Box on Box</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#box-on-quad">Box on Quad</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#spheres-with-materials">Spheres with Materials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#group-filtering">Group Filtering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#pair-filtering">Pair Filtering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#joint">Joint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_rigid_body_physics.html#distance-joint">Distance Joint</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Schema Versioning in USD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#challenges-to-schema-versioning-in-usd">Challenges to Schema Versioning in USD</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#proposal-for-per-schema-versioning">Proposal for Per-Schema Versioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#version-representation-in-schemas">Version Representation in Schemas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#schema-registry">Schema Registry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#usdprim-schema-related-api">UsdPrim Schema-related API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#considerations-for-auto-apply-api-schemas">Considerations for Auto-apply API Schemas</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#risks-questions-limitations">Risks, Questions, Limitations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#guidelines-for-schema-versioning">Guidelines for Schema Versioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#criteria-for-versioning">Criteria for Versioning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#do-not-version-a-schema-when">Do not Version a Schema When…</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#do-version-a-schema-when">Do Version a Schema When…</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pixar-examples-past-and-future">Pixar Examples, Past and Future</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#usdlux-connectability">UsdLux Connectability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#light-lightapi">Light → LightAPI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#visibility-to-visibilityapi">Visibility to VisibilityAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#schemaversioning-codegen-support">Possible Code Generation Changes to Support Versioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#base-schema-class-is-always-the-latest-version-of-the-family">Base Schema Class is Always the Latest Version of the Family</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-per-version-with-typedef-mapping-to-current-or-latest-version-class">Class Per Version with Typedef Mapping to “Current” or “Latest” Version-Class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#single-c-class-that-provides-api-for-all-versions-of-the-schema-family">Single C++ Class That Provides API for ALL Versions of the Schema Family</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compatible-cluster-classes-with-disambiguating-method-names">“Compatible Cluster” Classes with Disambiguating Method Names</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_stage_variables.html">Stage Variable Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wp_usdaudio.html">UsdAudio Proposal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdaudio.html#goal">Goal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdaudio.html#initial-requirements">Initial Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdaudio.html#proposed-prim-schema">Proposed Prim Schema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdaudio.html#spatialaudio">SpatialAudio</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdaudio.html#usd-sample">USD Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdaudio.html#other-notes-questions">Other Notes/Questions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdaudio.html#sdftimecode-and-time-scaling">SdfTimeCode and Time Scaling</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wp_usdshade.html">UsdShade Material Assignment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdshade.html#background">Background</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdshade.html#basic-proposal-for-collection-based-assignment">Basic Proposal for Collection-Based Assignment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#example-collection-based-assignment">Example Collection-Based Assignment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#refinement-1-specifying-binding-strength">Refinement 1: Specifying Binding Strength</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#refinement-2-material-purpose">Refinement 2: Material Purpose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#material-resolve-determining-the-bound-material-for-any-geometry-prim">Material Resolve: Determining the Bound Material for any Geometry Prim</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#usdshade-api">UsdShade API</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdshade.html#analysis-of-collection-based-binding">Analysis of Collection-Based Binding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdshade.html#integration">Integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#katana-import">Katana Import</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#maya-i-o">Maya I/O</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#houdini">Houdini</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wp_usdshade.html#remaining-questions">Remaining Questions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#performance">Performance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#implication-on-renderer-instancing">Implication on Renderer Instancing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wp_usdshade.html#material-layering">Material Layering</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usdfaq.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usdfaq.html#general-questions">General Questions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-is-usd-and-why-should-i-use-it">What is USD and why should I use it?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-programming-languages-are-supported">What programming languages are supported?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#isn-t-usd-just-another-file-format">Isn’t USD just another file format?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#so-what-file-formats-does-usd-support">So what file formats does USD support?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-file-format-is-my-usd-file">What file format is my <span class="mono">.usd</span> file?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-character-encoding-does-usda-support">What character encoding does <span class="mono">.usda</span> support?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#how-can-i-convert-usd-files-between-binary-and-text">How can I convert USD files between binary and text?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-data-types-are-supported">What data types are supported?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-does-a-usd-file-look-like">What does a USD file look like?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usdfaq.html#subtler-aspects-of-scene-description-and-composition">Subtler Aspects of Scene Description and Composition</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#i-have-some-layers-i-want-to-combine-should-i-use-sublayers-or-references">I have some layers I want to combine: Should I use SubLayers or References?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-happens-to-overs-when-their-underlying-prim-is-moved-to-a-different-location-in-the-scenegraph">What happens to “overs” when their underlying prim is moved to a different location in the scenegraph?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#when-can-you-delete-a-reference-or-other-deletable-thing">When can you delete a reference (or other deletable thing)?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="usdfaq.html#list-edited-string-token-and-int-metadata">List-edited string, token, and int metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="usdfaq.html#list-edited-relationships-and-connections">List-edited relationships and connections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="usdfaq.html#list-edited-composition-arcs">List-edited composition arcs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#what-s-the-difference-between-an-over-and-a-typeless-def">What’s the difference between an “over” and a “typeless def” ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#why-can-t-i-instance-a-leaf-mesh-prim-directly">Why Can’t I Instance a Leaf Mesh Prim Directly?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usdfaq.html#build-and-runtime-issues">Build and Runtime Issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#how-do-i-use-the-tf-debug-mechanism">How do I use the <code class="docutils literal notranslate"><span class="pre">TF_DEBUG</span></code> mechanism?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#why-isn-t-python-finding-usd-modules">Why Isn’t Python Finding USD Modules?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#why-isn-t-this-plugin-being-built">Why Isn’t This Plugin Being Built?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#why-doesn-t-the-openusd-runtime-recognize-the-usd-file-format">Why doesn’t the OpenUSD runtime recognize the USD file format?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usdfaq.html#why-isn-t-my-app-finding-usd-dlls-and-plugins-on-windows">Why Isn’t My App Finding USD DLLs and Plugins on Windows?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="maxperf.html">Performance Considerations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="maxperf.html#use-an-allocator-optimized-for-multithreading">Use an allocator optimized for multithreading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maxperf.html#use-binary-usd-files-for-geometry-and-shading-caches">Use binary “.usd” files for geometry and shading caches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maxperf.html#package-assets-with-payloads">Package assets with payloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maxperf.html#what-makes-a-usd-scene-heavy-expensive">What makes a USD scene heavy/expensive?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ref_performance_metrics.html">Performance Metrics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ref_performance_metrics.html#what-we-measure">What We Measure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref_performance_metrics.html#what-environment-is-used">What Environment Is Used</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#linux">Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#macos">macOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#windows">Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#usd-build">USD Build</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ref_performance_metrics.html#metrics">Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#performance-graphs-per-platform">Performance Graphs Per Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#standard-shader-ball">Standard Shader Ball</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#kitchen-set">Kitchen Set</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#alab">ALab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#moore-lane">Moore Lane</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ref_performance_metrics.html#running-performance-metrics-locally">Running Performance Metrics Locally</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ref_performance_metrics.html#adding-custom-metrics">Adding Custom Metrics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">Third Party Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plugins_renderman.html">RenderMan USD Imaging Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plugins_renderman.html#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="plugins_renderman.html#building-hdprman">Building hdPrman</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins_renderman.html#running-hdprman">Running hdPrman</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="plugins_renderman.html#developer">Developer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="plugins_renderman.html#supported-render-pass-aovs">Supported Render Pass AOVs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plugins_alembic.html">Alembic USD Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plugins_alembic.html#known-limitations">Known Limitations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Collaborate</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/PixarAnimationStudios/OpenUSD">Source Code &#64; GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.openusd.org">OpenUSD Forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing_to_usd.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing_to_usd.html#contributor-license-agreement">Contributor License Agreement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing_to_usd.html#coding-conventions">Coding Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing_to_usd.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing_to_usd.html#git-workflow">Git Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing_to_usd.html#github-issues">GitHub Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing_to_usd.html#making-major-changes">Making Major Changes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing_to_usd.html#step-1-get-consensus-for-major-changes">Step 1. Get consensus for major changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing_to_usd.html#step-2-make-code-changes">Step 2. Make code changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing_to_usd.html#step-3-test-code-changes">Step 3. Test code changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing_to_usd.html#step-4-submit-code-for-review">Step 4. Submit code for review</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing_to_usd.html#step-5-pixar-will-test-and-land-your-changes">Step 5. Pixar will test and land your changes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_schedule.html">Release Schedule</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Press</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="press_opensource_release.html">Open Source Release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="press_opensource_announce.html">Open Source Announcement</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #606060" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Universal Scene Description</a>
+      </nav>
+
+      <div class="wy-nav-content">
+  <style>
+    .version_warning {
+        margin-bottom: 10px;
+    }
+  </style>
+  <div class="version_warning_placeholder"></div>
+  
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="wp.html">Proposals</a></li>
+      <li class="breadcrumb-item active">Schema Versioning in USD</li>
+  <li class="wy-breadcrumbs-aside">
+    <div class="version_switcher_placeholder"></div>
+  </li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="schema-versioning-in-usd">
+<h1>Schema Versioning in USD<a class="headerlink" href="#schema-versioning-in-usd" title="Link to this heading"></a></h1>
+<p>Copyright © 2022, Pixar Animation Studios,  <em>version 1.5</em></p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction" id="id5">Introduction</a></p>
+<ul>
+<li><p><a class="reference internal" href="#challenges-to-schema-versioning-in-usd" id="id6">Challenges to Schema Versioning in USD</a></p>
+<ul>
+<li><p><a class="reference internal" href="#composition-makes-prim-version-a-difficult-query" id="id7">Composition Makes Prim Version a Difficult Query</a></p></li>
+<li><p><a class="reference internal" href="#multi-level-authoring-api-s-may-complicate-versioned-scene-description" id="id8">Multi-level Authoring API’s May Complicate Versioned Scene Description</a></p></li>
+<li><p><a class="reference internal" href="#prims-can-possess-numerous-api-schemas" id="id9">Prims Can Possess Numerous API Schemas</a></p></li>
+<li><p><a class="reference internal" href="#impact-of-versioning-on-usd-speed-and-scalability" id="id10">Impact of Versioning on USD Speed and Scalability</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#proposal-for-per-schema-versioning" id="id11">Proposal for Per-Schema Versioning</a></p>
+<ul>
+<li><p><a class="reference internal" href="#version-representation-in-schemas" id="id12">Version Representation in Schemas</a></p>
+<ul>
+<li><p><a class="reference internal" href="#schema-types-with-versioned-schema-names" id="id13">Schema Types with Versioned Schema Names</a></p></li>
+<li><p><a class="reference internal" href="#c-schema-classes" id="id14">C++ Schema Classes</a></p></li>
+<li><p><a class="reference internal" href="#schema-inheritance" id="id15">Schema Inheritance</a></p></li>
+<li><p><a class="reference internal" href="#explicit-built-in-api-schemas-not-auto-apply" id="id16">Explicit Built-in API Schemas (not auto-apply)</a></p></li>
+<li><p><a class="reference internal" href="#api-schema-version-conflicts" id="id17">API Schema Version Conflicts</a></p></li>
+<li><p><a class="reference internal" href="#multiple-apply-api-schemas" id="id18">Multiple-Apply API Schemas</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#schema-registry" id="id19">Schema Registry</a></p></li>
+<li><p><a class="reference internal" href="#usdprim-schema-related-api" id="id20">UsdPrim Schema-related API</a></p></li>
+<li><p><a class="reference internal" href="#considerations-for-auto-apply-api-schemas" id="id21">Considerations for Auto-apply API Schemas</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#risks-questions-limitations" id="id22">Risks, Questions, Limitations</a></p></li>
+<li><p><a class="reference internal" href="#guidelines-for-schema-versioning" id="id23">Guidelines for Schema Versioning</a></p>
+<ul>
+<li><p><a class="reference internal" href="#criteria-for-versioning" id="id24">Criteria for Versioning</a></p></li>
+<li><p><a class="reference internal" href="#do-not-version-a-schema-when" id="id25">Do not Version a Schema When…</a></p></li>
+<li><p><a class="reference internal" href="#do-version-a-schema-when" id="id26">Do Version a Schema When…</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#pixar-examples-past-and-future" id="id27">Pixar Examples, Past and Future</a></p>
+<ul>
+<li><p><a class="reference internal" href="#usdlux-connectability" id="id28">UsdLux Connectability</a></p></li>
+<li><p><a class="reference internal" href="#light-lightapi" id="id29">Light → LightAPI</a></p></li>
+<li><p><a class="reference internal" href="#visibility-to-visibilityapi" id="id30">Visibility to VisibilityAPI</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#schemaversioning-codegen-support" id="id31">Possible Code Generation Changes to Support Versioning</a></p>
+<ul>
+<li><p><a class="reference internal" href="#base-schema-class-is-always-the-latest-version-of-the-family" id="id32">Base Schema Class is Always the Latest Version of the Family</a></p></li>
+<li><p><a class="reference internal" href="#class-per-version-with-typedef-mapping-to-current-or-latest-version-class" id="id33">Class Per Version with Typedef Mapping to “Current” or “Latest” Version-Class</a></p></li>
+<li><p><a class="reference internal" href="#single-c-class-that-provides-api-for-all-versions-of-the-schema-family" id="id34">Single C++ Class That Provides API for ALL Versions of the Schema Family</a></p></li>
+<li><p><a class="reference internal" href="#compatible-cluster-classes-with-disambiguating-method-names" id="id35">“Compatible Cluster” Classes with Disambiguating Method Names</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="introduction">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Introduction</a><a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>Pixar has been executing changes to schemas in the USD project nearly since
+the project’s inception, as our understanding of and requirements for core
+schemas has evolved.  However, these changes have been developed and deployed
+with the “contained ecosystem” perspective that we can afford as an animation
+studio, namely, that:</p>
+<ol class="arabic simple">
+<li><p>New versions of the software containing the changes will be available to
+all consumers of affected assets</p></li>
+<li><p>Any assets that are considered “active” can relatively easily be
+regenerated using the new version of the software</p></li>
+</ol>
+<p>These assumptions, combined with bespoke backwards-compatibility code for
+consuming “old style” data until all necessary assets have been regenerated,
+have allowed us to make substantive changes without altering schema identity,
+i.e. without explicitly versioning any schemas.  However, as USD has grown
+and been adopted in numerous industries and consumer products, these
+assumptions obviously cannot hold.  Further, a key consideration for some USD
+adopters is the ability to write future software that can robustly consume
+USD assets authored ten or more years ago.  For these reasons, we must now
+provide a means of encoding <strong>in USD documents</strong>, the schema versions used to
+encode data.</p>
+<section id="challenges-to-schema-versioning-in-usd">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Challenges to Schema Versioning in USD</a><a class="headerlink" href="#challenges-to-schema-versioning-in-usd" title="Link to this heading"></a></h3>
+<p>There are (at least) four challenges to providing robust and useful
+versioning support in USD itself, due to USD’s inherent characteristics and
+requirements.</p>
+<section id="composition-makes-prim-version-a-difficult-query">
+<h4><a class="toc-backref" href="#id7" role="doc-backlink">Composition Makes Prim Version a Difficult Query</a><a class="headerlink" href="#composition-makes-prim-version-a-difficult-query" title="Link to this heading"></a></h4>
+<p>Due to the nature of composition, scene description authored at different
+times, in different packages, in different USD variants can all be swirled
+together to create a single “composed” UsdPrim.  Even if we were to record
+the schema version used to create <strong>every primSpec in every layer</strong>, including
+overs, what could we possibly do if versions in different collaborating
+primSpecs disagreed?  It will likely be necessary to compromise and assume
+each UsdPrim to have a single version, computed through value resolution;
+this will, however, introduce complexities for possible “schema upgrading”
+support, mentioned below.</p>
+</section>
+<section id="multi-level-authoring-api-s-may-complicate-versioned-scene-description">
+<h4><a class="toc-backref" href="#id8" role="doc-backlink">Multi-level Authoring API’s May Complicate Versioned Scene Description</a><a class="headerlink" href="#multi-level-authoring-api-s-may-complicate-versioned-scene-description" title="Link to this heading"></a></h4>
+<p>Imagine that we address the previous challenge in the most straightforward
+way, by associating a version tag (e.g. metadata) with “the strongest
+defining primSpec” for typed schemas.  The generated
+<span class="mono">SchemaClass::Define()</span> methods provide an opportune and logical place
+to add a version tag immediately upon defining the prim.  But lower-level
+methods exist and are used for defining prims, such as
+<a class="reference external" href="./api/class_usd_stage.html#a6151ae804f7145e451d9aafdde347730">UsdStage::DefinePrim</a>, as well as the much lower-level
+<a class="reference external" href="./api/class_sdf_prim_spec.html#a3f62dadcfac6417147c5267d3b3df1d6">SdfPrimSpec::New</a>, and they know nothing of schemas or versions,
+so anyone using these lower-level API’s must remember to record schema
+version when defining a prim, which seems brittle.</p>
+</section>
+<section id="prims-can-possess-numerous-api-schemas">
+<h4><a class="toc-backref" href="#id9" role="doc-backlink">Prims Can Possess Numerous API Schemas</a><a class="headerlink" href="#prims-can-possess-numerous-api-schemas" title="Link to this heading"></a></h4>
+<p>Any API schema applied to a prim may also be versioned over time, which means
+that the straightforward “version tag” approach is insufficient: versions
+must either be stored as a dictionary on each prim, or be turned into a
+per-schema attribute, adding greater weight and cost.</p>
+</section>
+<section id="impact-of-versioning-on-usd-speed-and-scalability">
+<h4><a class="toc-backref" href="#id10" role="doc-backlink">Impact of Versioning on USD Speed and Scalability</a><a class="headerlink" href="#impact-of-versioning-on-usd-speed-and-scalability" title="Link to this heading"></a></h4>
+<p>One of the things we value most highly about USD is the speed with which we
+can open a Stage on a very large scene and be ready to start reading data out
+of it in multiple threads.  A UsdStage intentionally limits the number of
+pieces of data it needs to read in order to “compose” a UsdPrim while opening
+a Stage, or loading or mutating parts of the stage, because each piece of
+data must be independently resolved through the composed prim’s full “prim
+index”. Adding a new metadatum (e.g. “schemaVersion”) to be read on each of
+potentially millions of composed prims may cause a noticeable performance
+regression, but would be critical to providing support for versioning in the
+UsdSchemaRegistry (i.e. so that the <a class="reference external" href="./api/class_usd_prim_type_info.html">UsdPrimTypeInfo</a> and
+<a class="reference external" href="./api/class_usd_prim_definition.html">UsdPrimDefinition</a> that the registry creates are version-specific).</p>
+</section>
+</section>
+</section>
+<section id="proposal-for-per-schema-versioning">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">Proposal for Per-Schema Versioning</a><a class="headerlink" href="#proposal-for-per-schema-versioning" title="Link to this heading"></a></h2>
+<p>This covers per-schema versioning which allows us to create a new version of
+an individual Typed or applied API schema while continuing to support scene
+description that has been created using a prior version of that schema. This
+is the baseline of what we expect to cover to support versioning. In section
+<a class="reference external" href="#schemaversioning-codegen-support">Possible Code Generation Changes to Support Versioning</a>, we describe additional steps we can take to make client
+interaction with versioned schemas easier.</p>
+<section id="version-representation-in-schemas">
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">Version Representation in Schemas</a><a class="headerlink" href="#version-representation-in-schemas" title="Link to this heading"></a></h3>
+<p>The schema version will be embedded in the schema identifier itself as a suffix, e.g. “SphereLight_2” is version 2 of the SphereLight schema.</p>
+<ul class="simple">
+<li><p>This matches the way we express versions in Sdr shader definitions already.</p></li>
+<li><p>Only major versions will be supported for now. Support for minor versions
+could always be added in the future if there is a compelling reason for it.</p></li>
+<li><p>Version 0 of a schema will be represented without a version suffix. For
+example “SphereLight” is version 0 of SphereLight; “SphereLight_0” will not
+be allowed as a schema identifier. All current existing schemas will
+automatically be their own version 0.</p></li>
+</ul>
+<p>We considered encoding a schema’s version as a separate attribute or metadata
+field on a prim instead of embedding it in the prim’s type name.  As
+discussed above, there are many disadvantages to this that made us decide
+against that approach; in further detail:</p>
+<ul class="simple">
+<li><p>The separate attribute/metadata value would need to be resolved separately
+from the type name in order to get the full identifier of the schema which
+has negative performance implications over just being able to resolve the
+type name.</p></li>
+<li><p>The separate version would be subject to unintended consequences from
+composition in that overs could change the version without knowing what
+schema type they apply to.</p></li>
+<li><p>Applied API schemas are authored as a listOp of schema identifier tokens. A
+representation of versions for each API schema would be necessary if the
+version is not embedded in the schema identifier and is also prone to
+composition causing issues.</p></li>
+</ul>
+<section id="schema-types-with-versioned-schema-names">
+<h4><a class="toc-backref" href="#id13" role="doc-backlink">Schema Types with Versioned Schema Names</a><a class="headerlink" href="#schema-types-with-versioned-schema-names" title="Link to this heading"></a></h4>
+<p>We will use the following nomenclature to describe the different types and
+type names associated with a schema type.</p>
+<ul class="simple">
+<li><p><strong>Schema Identifier</strong> - This is the name of the schema as it appears in the
+schema.usda that defines the schema and is what a prim’s type name must be
+set to in order to associate it with that schema (for Typed schemas; for
+API schemas this is the name added to the apiSchemas metadata to apply the
+API to the prim). The schema identifier is where the schema version is
+embedded and will be unique per schema type and version.</p></li>
+<li><p><strong>Schema Type</strong> - This is the <a class="reference external" href="./api/class_tf_type.html">TfType</a> that represents each schema
+definition. Every version of a schema will have its own unique TfType,
+e.g. if the usdLux schema defined “SphereLight”, “SphereLight_1”, and
+“SphereLight_2”, they would have the schema types of UsdLuxSphereLight,
+UsdLuxSphereLight_1, and UsdLuxSphereLight_2 respectively.</p></li>
+<li><p><strong>Schema Family</strong> - This is the name that represents all versions of what
+would be considered the same schema. This will be the same as the schema
+identifier of version 0 of the schema, i.e. the schema name with no version
+suffix. So with the SphereLight example above, “SphereLight”,
+“SphereLight_1”, and “SphereLight_2” would all have the schema family of
+“SphereLight”.  But, moving forward, GUI that communicates high-level “prim
+type information” to users may want to query for schema family rather than
+schema identifier (currently returned by UsdPrim::GetTypeName() et al).</p></li>
+</ul>
+<p>The TfTypes for schema definitions will be generated exactly as they are
+now. The UsdSchemaRegistry will be on the hook for parsing the schema family
+and versions from the schema types and identifiers to provide the API for
+reasoning about the versions of schema types.</p>
+</section>
+<section id="c-schema-classes">
+<h4><a class="toc-backref" href="#id14" role="doc-backlink">C++ Schema Classes</a><a class="headerlink" href="#c-schema-classes" title="Link to this heading"></a></h4>
+<p>Just as we generate a separate TfType for each version of a schema, we also
+will generate a separate C++ class for each schema version (that isn’t
+codeless). In the baseline implementation, these schema classes are not
+interrelated, i.e. they’re generated as if they are just separate
+schemas. <a class="reference external" href="#schemaversioning-codegen-support">Below</a>, we explain the options
+we’ve considered for a cohesive API among versioned schema classes of the
+same schema family.</p>
+</section>
+<section id="schema-inheritance">
+<h4><a class="toc-backref" href="#id15" role="doc-backlink">Schema Inheritance</a><a class="headerlink" href="#schema-inheritance" title="Link to this heading"></a></h4>
+<p>Since schema inheritance is specified via schema identifier and versions are
+embedded into the schema identifier, each version of a schema definition
+inherits from a specific version of the base schema definition it inherits
+from. Thus if a base schema class is upgraded to a new version, all schemas
+that inherit from it must be upgraded to a new version that inherits from the
+base schema’s new version. Depending on the base schema, adding a new version
+could require new versions of dozens if not hundreds of other schemas. Thus,
+<strong>tremendous care must be taken when deciding whether a base schema should be
+versioned</strong>.</p>
+<p>We also will not allow a Typed schema to inherit from another version of
+the schema from the same family. For example, if we were to add a new version
+of the Sphere schema as “Sphere_1”, Sphere_1 would <em>not</em> be allowed to inherit
+the Sphere schema itself. This is to prevent the situation of a prim with
+TypeName “Sphere_1” being both a Sphere and Sphere_1 and therefore version 0
+and version 1 at the same time. This inheritance restriction will be enforced
+by usdGenSchema.</p>
+</section>
+<section id="explicit-built-in-api-schemas-not-auto-apply">
+<h4><a class="toc-backref" href="#id16" role="doc-backlink">Explicit Built-in API Schemas (not auto-apply)</a><a class="headerlink" href="#explicit-built-in-api-schemas-not-auto-apply" title="Link to this heading"></a></h4>
+<p>As with schema inheritance, built-in API schemas are included in other
+schemas by schema identifier (e.g. as <a class="reference external" href="https://github.com/PixarAnimationStudios/OpenUSD/blob/release/pxr/usd/usdLux/schema.usda#L223-L235">LightAPI is a built-in of MeshLightAPI</a>)
+so they will always be built-in with a specific version. If an API schema
+that is included as built-in API schema for one or more other schemas is
+upgraded to a new version, then all of those schemas that include the API
+schema as built-in would need to be updated to include the new version,
+likely by creating new versions of each of the dependent schemas. In this
+way, adding a new version of an API schema used as a built-in API schema can
+have the same potential breadth of impact as versioning an inherited base
+schema type and the same care must be taken when deciding whether these API
+schemas should be versioned.</p>
+</section>
+<section id="api-schema-version-conflicts">
+<h4><a class="toc-backref" href="#id17" role="doc-backlink">API Schema Version Conflicts</a><a class="headerlink" href="#api-schema-version-conflicts" title="Link to this heading"></a></h4>
+<p>Any given prim can possess exactly one version of a Typed schema, since a
+composed USD prim has a single TypeName (with the schema inheritance
+restriction we’ve already mentioned).  However, a prim can have many API schemas
+applied, and therefore can end up with more than one version <em>of the same API
+schema family</em> applied to it in scene description. Precisely because a prim
+cannot be made to be two versions of a Typed schema at the same time, a
+composed prim definition will not be allowed to contain multiple versions of
+the same applied API schema family. This restriction applies regardless of
+how the API schemas are applied, be it any combination of authored API
+schemas on prim or built-in/auto-apply API schemas already included for prim
+definitions registered in the schema registry.</p>
+<p>We will prevent the inclusion of multiple versions of an API schema at
+authoring time wherever possible (like during schema generation and the
+ApplyAPI methods). However, it’s impossible to prevent all occurrences this
+way (e.g. when the apiSchemas metadata is authored manually, composed from
+separately-authored layers, or not all schemas have been fully updated after
+an API schema version bump). So, in the cases where we do encounter more than
+one version of an applied API schema in a prim definition, the first version
+of the API schema encountered (i.e. the strongest API schema) will win and
+all other versions of that same API schema family will be ignored by the
+UsdPrimDefinition.</p>
+<p>In the case where the inclusion of an API schema would cause a version
+conflict and the API is included because it is a built-in of another API schema,
+the whole of the API schema that includes it is considered a version conflict
+and is rejected from the prim definition. For example, the existing LightAPI in
+UsdLux includes the built-in API schemas CollectionAPI:lightLink and
+CollectionAPI:shadowLink. Let’s say that we’ve also added a new version of
+CollectionAPI, namely CollectionAPI_1. If a prim, had version 1 of CollectionAPI,
+“CollectionAPI_1:lightLink” applied, and then LightAPI applied (in that
+strength order), <strong>LightAPI and both of its included schemas, CollectionAPI:lightLink
+and CollectionAPI:shadowLink would be rejected</strong> because its included
+CollectionAPI:lightLink would cause a version conflict.</p>
+<p>Although not addressed in detail here, we do note that allowing multiple
+versions of an API schema to be applied to the same prim might facilitate
+interchange between DCCs that are running different versions of USD. We
+believe that a preferable approach with fewer side-effects for accomplishing
+this same goal might be to extend the existing feature of <a class="reference external" href="https://openusd.org/release/api/_usd__page__object_model.html#Usd_OM_FallbackPrimTypes">fallback prim types</a>
+to apply to authored API schemas (currently the feature is only defined for
+concrete prim type names) and to automatically determine fallback types for
+schema versions that are authored but don’t exist in the USD version. But
+this is out of scope for this proposal.</p>
+</section>
+<section id="multiple-apply-api-schemas">
+<h4><a class="toc-backref" href="#id18" role="doc-backlink">Multiple-Apply API Schemas</a><a class="headerlink" href="#multiple-apply-api-schemas" title="Link to this heading"></a></h4>
+<p>Multiple apply API schemas, like <a class="reference external" href="./api/class_usd_collection_a_p_i.html">UsdCollectionAPI</a>, which provide a
+“schema template” that can be applied multiple times with different instance
+names will also be versionable in the same way as single apply API
+schemas. Similarly to single apply API schemas, we will prevent the inclusion
+of multiple versions of the same multiple apply API schema family <strong>for the
+same instance name</strong>, however different instance names can use different
+versions of the multiple apply schema.</p>
+<p>So, for example, if we add a new version “CollectionAPI_1” of the
+“CollectionAPI” schema family, a prim could define its applied API schemas
+as:</p>
+<div class="highlight-usda notranslate"><div class="highlight"><pre><span></span><span class="n n-Builtins">apiSchemas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="err">“</span><span class="na">CollectionAPI_1:foo</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="err">“</span><span class="na">CollectionAPI:bar</span><span class="err">”</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>and both API schemas would be applied with the “foo” instance using version 1
+and the “bar” instance as version 0. However, if the API schemas were:</p>
+<div class="highlight-usda notranslate"><div class="highlight"><pre><span></span><span class="n n-Builtins">apiSchemas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="err">“</span><span class="na">CollectionAPI_1:foo</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="err">“</span><span class="na">CollectionAPI:foo</span><span class="err">”</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>then only version 1 of the schema would be applied with the “foo” instance
+since we can’t have the two versions of a schema using the same instance name
+and as stated above we will just choose the strongest one.</p>
+</section>
+</section>
+<section id="schema-registry">
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">Schema Registry</a><a class="headerlink" href="#schema-registry" title="Link to this heading"></a></h3>
+<p>Since we will have a unique TfType for each version of schema definition, the
+<a class="reference external" href="./api/class_usd_schema_registry.html">UsdSchemaRegistry</a> is already prepared to handle the mapping of
+versioned schema type to versioned schema definition without any
+changes. However, the schema registry will be tasked with providing the API
+for reasoning about the family of schemas and its version.</p>
+<p>We’ll provide a new structure for holding all the relevant information about
+each schema type:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">SchemaInfo</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">TfType</span><span class="w"> </span><span class="n">type</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TfToken</span><span class="w"> </span><span class="n">identifier</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TfToken</span><span class="w"> </span><span class="n">family</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UsdSchemaVersion</span><span class="w"> </span><span class="n">version</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UsdSchemaKind</span><span class="w"> </span><span class="n">kind</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>We’ll provide API for getting the <span class="mono">SchemaInfo</span> from type, identifier,
+family and version, or templated C++ schema class:</p>
+<ul class="simple">
+<li><p><span class="mono">const SchemaInfo *FindSchemaInfo(TfType schemaType)</span></p></li>
+<li><p><span class="mono">const SchemaInfo *FindSchemaInfo(TfToken schemaIdentifier)</span></p></li>
+<li><p><span class="mono">const SchemaInfo *FindSchemaInfo(TfToken schemaFamily, UsdSchemaVersion version)</span></p></li>
+<li><p><span class="mono">template &lt;class SchemaType&gt; const SchemaInfo *FindSchemaInfo()</span></p></li>
+</ul>
+<p>We’ll also provide API for getting the schema info for all or a subset of all
+versions of a schemas in a schema family:</p>
+<ul class="simple">
+<li><p><span class="mono">const std::vector&lt;const SchemaInfo *&gt; &amp;FindSchemaInfosInFamily(TfToken schemaFamily)</span></p></li>
+<li><p><span class="mono">std::vector&lt;const SchemaInfo *&gt; FindSchemaInfosInFamily(TfToken schemaFamily, UsdSchemaVersion version, VersionPolicy versionPolicy)</span></p></li>
+</ul>
+<p>The latter of these two functions takes the additional - <span class="mono">VersionPolicy</span>
+enum parameter which, along with the provided version, specifies which subset of
+the schema family’s versioned schemas should be returned. The VersionPolicy enum
+options will be:</p>
+<ul class="simple">
+<li><p><span class="mono">All</span> - Return all schemas in the schema family regardless of version.</p></li>
+<li><p><span class="mono">GreaterThan</span> - Return any schema in the schema family whose version is
+strictly greater than the input schema version.</p></li>
+<li><p><span class="mono">GreaterThanOrEqual</span> - Return any schema in the schema family whose
+version is the same or greater than the input schema version.</p></li>
+<li><p><span class="mono">LessThan</span> - Return any schema in the schema family whose version is
+strictly less than the input schema version.</p></li>
+<li><p><span class="mono">LessThanOrEqual</span> - Return any schema in the schema family whose version
+is the same or less than the input schema version.</p></li>
+</ul>
+</section>
+<section id="usdprim-schema-related-api">
+<h3><a class="toc-backref" href="#id20" role="doc-backlink">UsdPrim Schema-related API</a><a class="headerlink" href="#usdprim-schema-related-api" title="Link to this heading"></a></h3>
+<p>Individual UsdPrims will still have a specific type name and list of applied
+API schema names that are bundled together in the UsdPrimTypeInfo for the
+prim. Since type names and API schema names will have the schema version
+embedded, the resulting UsdPrimTypeInfo will automatically have the version
+information about the schemas that make up the prim’s type.</p>
+<p>UsdPrim has <span class="mono">IsA</span> methods for querying about what Typed schema type it
+is and <span class="mono">HasAPI</span> methods for querying whether a particular API schema is
+applied. All of these methods either take a TfType parameter representing the
+schema type or are templated on the C++ schema class type. By default, these
+functions will continue to work as they do today, returning true only if they
+find a match for the given schema type. In other words, they will not
+automatically be aware of how schema types may be versions within a schema
+family.</p>
+<p>However, additional related functions, namely <span class="mono">IsInFamily</span>
+and <span class="mono">HasAPIInFamily</span>, will be added that are schema family and version
+aware. These two functions will take the same <span class="mono">VersionPolicy</span> enum
+parameter that will be added for the schema registry in order to specify
+which schema types to check for based on the schema family and version of the
+schema type provided.</p>
+<p>For example, if the “Sphere” schema has 3 versions, “Sphere” “Sphere_1” and
+“Sphere_2”, with the TfTypes <span class="mono">UsdGeomSphere</span>, <span class="mono">UsdGeomSphere_1</span>,
+and <span class="mono">UsdGeomSphere_2</span> respectively then we can have the following
+<span class="mono">IsA</span>/<span class="mono">IsInFamily</span> queries:</p>
+<ul class="simple">
+<li><p><span class="mono">IsA&lt;UsdGeomSphere_1&gt;()</span> returns true for “Sphere_1” only</p></li>
+<li><p><span class="mono">IsInFamily&lt;UsdGeomSphere_1&gt;(All)</span> returns true for “Sphere”,
+“Sphere_1”, and “Sphere_2”</p></li>
+<li><p><span class="mono">IsInFamily&lt;UsdGeomSphere_1&gt;(GreaterThanOrEqual)</span> returns true for
+“Sphere_1” and “Sphere_2”</p></li>
+<li><p><span class="mono">IsInFamily&lt;UsdGeomSphere_1&gt;(LessThan)</span> returns true for “Sphere”
+only</p></li>
+</ul>
+<p>A similar example can be created for an API schema and
+<span class="mono">HasAPI</span>/<span class="mono">HasAPIInFamily</span>, e.g if UsdGeom’s “VisibilityAPI” has
+“VisilbiltyAPI_1” and “VisibilityAPI_2” we’d similarly be able to have the
+following queries:</p>
+<ul class="simple">
+<li><p><span class="mono">HasAPI&lt;UsdGeomVisibilityAPI_1&gt;()</span> returns true for “VisibilityAPI_1”
+only</p></li>
+<li><p><span class="mono">HasAPIInFamily&lt;UsdGeomVisibilityAPI_1&gt;(All)</span> returns true for
+“VisibilityAPI”, “VisibilityAPI_1”, and “VisibilityAPI_2”</p></li>
+<li><p><span class="mono">HasAPIInFamily&lt;UsdGeomVisibilityAPI_1&gt;(GreaterThanOrEqual)</span>
+returns true for “VisibilityAPI_1” and “VisibilityAPI_2”</p></li>
+<li><p><span class="mono">HasAPIInFamily&lt;UsdGeomVisibilityAPI_1&gt;(LessThan)</span> returns true for
+“VisibilityAPI” only</p></li>
+</ul>
+<p>Additionally, since API schemas may be multiple apply, which therefore must
+be applied with an instance name, we’ll have the following semantics for
+<span class="mono">HasAPI</span>/<span class="mono">HasAPIInFamily</span> with multiple apply schema types. If
+for example “CollectionAPI” has versioned schemas “CollectionAPI_1” and
+“CollectionAPI_2”:</p>
+<ul class="simple">
+<li><p><span class="mono">HasAPI&lt;UsdCollectionAPI_1&gt;()</span> returns true for any instance of
+“CollectionAPI_1” but not instances of “CollectionAPI” or “CollectionAPI_2”</p></li>
+<li><p><span class="mono">HasAPI&lt;UsdCollectionAPI_1&gt;(“foo”)</span> returns true for only the
+specific API schema instance “Collection_1:foo”</p></li>
+<li><p><span class="mono">HasAPIInFamily&lt;UsdCollectionAPI_1&gt;(All)</span> returns true for any instance
+of any of “CollectionAPI”, “CollectionAPI_1”, and “CollectionAPI_2”</p></li>
+<li><p><span class="mono">HasAPIInFamily&lt;UsdCollectionAPI_1&gt;(“foo”, All)</span> returns true for only
+“foo” instances of any version of “CollectionAPI”, so “CollectionAPI:foo”,
+“CollectionAPI_1:foo”, and “CollectionAPI_2:foo” only</p></li>
+</ul>
+<p>While the existing methods on UsdPrim for querying a prim’s schema
+associations through a TfType or C++ class could technically be sufficient
+after providing the overloads proposed above, it would be useful to be able
+to call these same methods providing a schema family and version or just a
+schema identifier token. So we propose adding additional overloads for
+<span class="mono">IsA</span> and <span class="mono">HasAPI</span> to do so:</p>
+<ul class="simple">
+<li><p><span class="mono">IsA(TfToken schemaIdentifer)</span></p></li>
+<li><p><span class="mono">IsA(TfToken schemaFamily, UsdSchemaVersion version)</span></p></li>
+<li><p><span class="mono">HasAPI(TfToken schemaIdentifer)</span></p></li>
+<li><p><span class="mono">HasAPI(TfToken schemaFamily, UsdSchemaVersion version)</span></p></li>
+<li><p><span class="mono">HasAPI(TfToken schemaIdentifer, TfToken instanceName)</span></p></li>
+<li><p><span class="mono">HasAPI(TfToken schemaFamily, UsdSchemaVersion version, TfToken instanceName)</span></p></li>
+</ul>
+<p>And as logically follows, these similar overloads for <span class="mono">IsInFamily</span> and
+<span class="mono">HasAPIInFamily</span></p>
+<ul class="simple">
+<li><p><span class="mono">IsInFamily(TfToken schemaIdentifer, VersionPolicy versionPolicy)</span></p></li>
+<li><p><span class="mono">IsInFamily(TfToken schemaFamily)</span></p></li>
+<li><p><span class="mono">IsInFamily(TfToken schemaFamily, UsdSchemaVersion version, VersionPolicy versionPolicy)</span></p></li>
+<li><p><span class="mono">HasAPIInFamily(TfToken schemaIdentifer, VersionPolicy versionPolicy)</span></p></li>
+<li><p><span class="mono">HasAPIInFamily(TfToken schemaFamily)</span></p></li>
+<li><p><span class="mono">HasAPIInFamily(TfToken schemaFamily, UsdSchemaVersion version, VersionPolicy versionPolicy)</span></p></li>
+<li><p><span class="mono">HasAPIInFamily(TfToken schemaIdentifer, VersionPolicy versionPolicy, TfToken instanceName)</span></p></li>
+<li><p><span class="mono">HasAPIInFamily(TfToken schemaFamily, TfToken  instanceName)</span></p></li>
+<li><p><span class="mono">HasAPIInFamily(TfToken schemaFamily, UsdSchemaVersion version, VersionPolicy versionPolicy, TfToken  instanceName)</span></p></li>
+</ul>
+<p>Example queries with schema identifier:</p>
+<ul class="simple">
+<li><p><span class="mono">IsA(“Sphere”)</span> returns true for “Sphere” only</p></li>
+<li><p><span class="mono">IsA(“Sphere_1”)</span> returns true for “Sphere_1” only</p></li>
+<li><p><span class="mono">IsInFamily(“Sphere_1”, All)</span> returns true for “Sphere”, “Sphere_1”,
+and “Sphere_2”</p></li>
+</ul>
+<p>Example queries with family and version:</p>
+<ul class="simple">
+<li><p><span class="mono">IsA(“Sphere”, 0)</span> returns true for “Sphere” only</p></li>
+<li><p><span class="mono">IsA(“Sphere”, 1)</span> returns true for “Sphere_1” only</p></li>
+<li><p><span class="mono">IsInFamily(“Sphere”, 1, GreaterThanOrEqual)</span> returns true for
+“Sphere_1” and “Sphere_2”</p></li>
+</ul>
+<p>We expect that there will be use cases where it is useful to check if a prim
+is a schema or has an API schema of a certain family and get the particular
+version of the compatible schema directly. Instead of overloading IsInFamily
+and HasAPIInFamily further, we propose adding the following new functions to
+UsdPrim to get the version if a compatible schema is present on a prim:</p>
+<ul class="simple">
+<li><p><span class="mono">bool GetVersionIfIsInFamily(TfToken schemaFamily, UsdSchemaVersion *version)</span></p></li>
+<li><p><span class="mono">bool GetVersionIfHasAPIInFamily(TfToken schemaFamily, UsdSchemaVersion *version)</span></p></li>
+<li><p><span class="mono">bool GetVersionIfHasAPIInFamily(TfToken schemaFamily, TfToken instanceName, UsdSchemaVersion *version)</span></p></li>
+</ul>
+<p>These functions are the equivalent of calling IsInFamily or
+HasAPIInFamily with a schema family name and versionPolicy = All with the
+addition of parsing and outputting the version from the prim’s compatible schema
+type if the function would return true.</p>
+<p>UsdPrim also has the ApplyAPI, CanApplyAPI, and RemoveAPI methods for editing
+the ordered set of API schemas applied to a prim. Like HasAPI, these methods
+also either take a TfType parameter representing the schema type, or are
+templated on the C++ schema class type. So, like HasAPI, these will have
+additional overloads introduced that take a schema identifier and take a
+schema family and version:</p>
+<ul class="simple">
+<li><p><span class="mono">ApplyAPI(TfToken schemaIdentifer)</span></p></li>
+<li><p><span class="mono">ApplyAPI(TfToken schemaFamily, UsdVersion version)</span></p></li>
+<li><p><span class="mono">ApplyAPI(TfToken schemaIdentifer, TfToken &amp;instanceName)</span></p></li>
+<li><p><span class="mono">ApplyAPI(TfToken schemaFamily, UsdSchemaVersion version, TfToken instanceName)</span></p></li>
+<li><p><span class="mono">CanApplyAPI(TfToken schemaIdentifer, std::string *whyNot = nullptr)</span></p></li>
+<li><p><span class="mono">CanApplyAPI(TfToken schemaFamily, UsdVersion version, std::string *whyNot = nullptr)</span></p></li>
+<li><p><span class="mono">CanApplyAPI(TfToken schemaIdentifer, TfToken &amp;instanceName, std::string *whyNot = nullptr)</span></p></li>
+<li><p><span class="mono">CanApplyAPI(TfToken schemaFamily, UsdSchemaVersion version, TfToken instanceName, std::string *whyNot = nullptr)</span></p></li>
+<li><p><span class="mono">RemoveAPI(TfToken schemaIdentifer)</span></p></li>
+<li><p><span class="mono">RemoveAPI(TfToken schemaFamily, UsdVersion version)</span></p></li>
+<li><p><span class="mono">RemoveAPI(TfToken schemaIdentifer, TfToken &amp;instanceName)</span></p></li>
+<li><p><span class="mono">RemoveAPI(TfToken schemaFamily, UsdSchemaVersion version, TfToken instanceName)</span></p></li>
+</ul>
+<p>In addition to the new overloads, there are additional version-aware updates
+that could be made to CanApplyAPI and RemoveAPI that seem sensible, but we do
+not plan, at this time, to implement them. A possible update to CanApplyAPI
+would be to check for an existing applied schema of the same family but
+different version in the prim’s current applied API schemas, and return false
+if one is found (see <a class="reference external" href="#api-schema-version-conflicts">API Schema Version Conflicts</a>).
+A possible update to RemoveAPI would be to provide an overload that allows the same
+enum value as HasAPIInFamily in order to remove any or all versions in a schema
+family or for all versions greater than or less than a version within the schema
+family. While these changes could be useful, we are deferring consideration
+of these particular changes to maintain the current simplicity of these
+functions, as they do not even consider the prim’s fully composed API schemas
+list in their current implementation.</p>
+</section>
+<section id="considerations-for-auto-apply-api-schemas">
+<h3><a class="toc-backref" href="#id21" role="doc-backlink">Considerations for Auto-apply API Schemas</a><a class="headerlink" href="#considerations-for-auto-apply-api-schemas" title="Link to this heading"></a></h3>
+<p>In this section, we call out the <em>possible</em> full support we could provide
+for auto-apply API schema versioning. However, we only plan to implement the
+necessities right now, outlined in <em>Case 2</em> below. I.e., the support we will
+provide for auto-apply API schemas is that we will ensure that if more than one
+version of an auto-applied API schema are applied to the same schema, the
+<strong>latest version</strong> of the auto-applied API schema will always be the version applied.</p>
+<p>The full set of behaviors we could have for supporting versioning in auto-apply
+API schemas are best explained through an example. Right now, we have an API schema
+called PxrMeshLightAPI, which exists in the USD RenderMan plugin, to extend
+RenderMan properties to MeshLightAPI and VolumeLightAPI in usdLux. Thus
+<a class="reference external" href="https://github.com/PixarAnimationStudios/OpenUSD/blob/v22.05/third_party/renderman-24/plugin/usdRiPxr/schema.usda#L1649-L1651">PxrMeshLightAPI is set to auto-apply to MeshLightAPI and VolumeLightAPI</a>
+and becomes a built-in API of those schemas at runtime. Here, we run this
+schema, PxrMeshLIghtAPI, through a hypothetical versioning scenario to
+explain the behaviors we need to support.</p>
+<p><strong>Case 1:</strong> MeshLightAPI is version-upgraded to create MeshLightAPI_1.</p>
+<p>In this case, we still want PxrMeshLightAPI to auto-apply to both versions of
+MeshLightAPI, but we don’t want to have to update PxrMeshLightAPI every time
+a schema it auto-applies to is versioned just to keep it from falling
+off. Thus, schemas that are set up to auto-apply to another schema will
+auto-apply to ALL schemas of the indicated version or later.</p>
+<p><strong>Case 2:</strong> After upgrading MeshLightAPI to MeshLightAPI_1, we find that
+PxrMeshLightAPI needs to be upgraded to PxrMeshLightAPI_1 to correctly extend
+MeshLightAPI_1.</p>
+<p>In this case we create a new version of the auto-apply schema,
+PxrMeshLightAPI_1, and set it to auto-apply to MeshLightAPI_1. But because of
+the rule established in case 1, the old PxrMeshLightAPI would still
+auto-apply to both MeshLightAPI and MeshLightAPI_1, resulting in
+MeshLightAPI_1 having both versions, PxrMeshLightAPI_1 and PxrMeshLightAPI,
+applied! To prevent this conflict, which was clearly not the
+schema-maintainer’s intent, we use another rule: if more than one version of
+the same schema tries to auto-apply to the same schema, <strong>only the latest
+version of the auto-applied schema is applied.</strong> Following this rule, we’d
+end up with PxrMeshLightAPI applying to MeshLightAPI and PxrMeshLightAPI_1
+applying to MeshLightAPI_1.</p>
+<p>Note that this case’s rule would be enforced automatically by the rules laid
+out in the API Schema Conflicts section if the latest version of the auto
+apply schema were to be considered as applied first relative to its other
+versions.</p>
+<p><strong>Case 3:</strong> VolumeLightAPI is now version upgraded to VolumeLightAPI_1, and
+starting with VolumeLightAPI_1, it no longer makes sense for any version of
+PxrMeshLightAPI to auto-apply to it (maybe instead we want a new
+PxrVolumeLightAPI to auto-apply to VolumeLightAPI_1).</p>
+<p>Though not specifically called out in case 2, PxrMeshLightAPI_1 is already
+set to auto-apply only to MeshLightAPI_1 (VolumeLightAPI is not included),
+but the exclusion of VolumeLightAPI doesn’t stop the original PxrMeshLightAPI
+from continuing to auto-apply to VolumeLightAPI version 0 and later. While we
+do want the version zero of PxrMeshLightAPI to continue to apply to the
+version zero of VolumeLightAPI, we do not want it applying to the new
+VolumeLightAPI_1. Thus, we need to introduce a mechanism for <strong>specifying
+auto-apply blocks</strong> that we can use to indicate that no version of
+PxrMeshLightAPI should apply to VolumeLIghtAPI_1 or any of its later
+versions. These auto-apply blocks will be specifiable either directly in
+PxrMeshLightAPI_1’s schema definition directly or through extra plugInfo in
+the auto-apply schema’s library.</p>
+</section>
+</section>
+<section id="risks-questions-limitations">
+<h2><a class="toc-backref" href="#id22" role="doc-backlink">Risks, Questions, Limitations</a><a class="headerlink" href="#risks-questions-limitations" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>There may be a performance cost to the IsA and HasAPI methods related to
+checking for any version of the schema type.</p></li>
+<li><p>Should the new overloads of IsA, HasA, ApplyAPI described in <a class="reference external" href="#usdprim-schema-related-api">UsdPrim
+Schema-related API</a> use new function names
+instead of the existing TfType param functions for additional clarity?</p></li>
+<li><p>We have not discussed “schema upgrading”, as we do not believe it is a
+problem amenable to automatically code-generated solutions.  We leave it an
+open issue for future consideration.</p></li>
+<li><p>Per-schema versioning cannot capture the nuance of <strong>all</strong> kinds of schema
+changes.  For example, changing an API schema from non-applied to applied
+(which we are doing for <a class="reference external" href="./api/class_usd_shade_coord_sys_a_p_i.html">UsdShadeCoordSysAPI</a>) does not benefit
+from schema versioning, because there is no scene description describing
+the “previous version”.  In other words, retaining backwards compatibility
+would mean <strong>never</strong> being able to reliably ask the question
+<span class="mono">HasAPI&lt;NewlyAppliedSchemaAPI&gt;(All)</span>.  We believe that providing
+efficient backwards compatibility for such changes would require
+“domain-level versioning”, where, for example, every layer would record the
+version(s) of each schema domain used to create scene description, and the
+stage would integrate and present those (min, max) per-domain versions,
+allowing custom code to resort to expensive queries (e.g. looking for
+particular or any authored properties of an API schema to answer
+<span class="mono">HasAPI()</span>) only when dealing with assets known to be “old”.  However,
+in addition to being difficult to maintain, this approach presents
+difficulties for efficient change-processing, therefore we choose, for now,
+to accept this limitation rather than propose domain-level versioning.</p></li>
+<li><p>There may be an additional coding cost for clients when adopting new
+versions of schemas while retaining support for older versions. While we
+have considered many approaches for attempting to alleviate this cost, by
+providing API in the generated C++ classes that could handle multiple
+versions of the same schema, all of these approaches brought up new
+workflow issues that led us to conclude that “doing nothing” (at least in
+the automated class generation sense) would be the best approach for now.
+We describe some of the options we considered in section <a class="reference external" href="#schemaversioning-codegen-support">Possible Code
+Generation Changes to Support Versioning</a></p></li>
+</ul>
+</section>
+<section id="guidelines-for-schema-versioning">
+<h2><a class="toc-backref" href="#id23" role="doc-backlink">Guidelines for Schema Versioning</a><a class="headerlink" href="#guidelines-for-schema-versioning" title="Link to this heading"></a></h2>
+<p>The primary purpose of schema versioning is to maintain behavioral
+compatibility with existing assets. It is not meant to be used solely to
+maintain compatibility with existing code,  although it is certainly a
+secondary goal to maintain code compatibility wherever we can, after
+versioning a schema.</p>
+<section id="criteria-for-versioning">
+<h3><a class="toc-backref" href="#id24" role="doc-backlink">Criteria for Versioning</a><a class="headerlink" href="#criteria-for-versioning" title="Link to this heading"></a></h3>
+<p>A schema should be versioned if the following criteria are met:</p>
+<ol class="arabic simple">
+<li><p>A prim that conforms to the current version of the schema would behave
+differently when consumed by any existing downstream components
+(rendering, import into other DCCs, etc.) after the schema is updated.</p></li>
+<li><p>Preserving the behavior of assets written to conform to the current
+version of the schema for downstream components is necessary after the
+schema is updated.</p></li>
+<li><p>The benefits of preserving compatibility with the current schema version
+outweighs the impact of adding/maintaining a new version of the schema.</p></li>
+</ol>
+</section>
+<section id="do-not-version-a-schema-when">
+<h3><a class="toc-backref" href="#id25" role="doc-backlink">Do not Version a Schema When…</a><a class="headerlink" href="#do-not-version-a-schema-when" title="Link to this heading"></a></h3>
+<p>the change is not expected to cause behavioral changes to a schema and
+therefore should not require versioning, such as:</p>
+<ul class="simple">
+<li><p>Adding a new attribute to a schema with a fallback value that should have
+no effect. For example, if we were to add a “tipRadius” attribute to
+UsdGeom’s Cone with fallback value of 0. Without this attributes Cone’s
+already use an effective “tipRadius” of 0 so no existing Cones should
+change.</p></li>
+<li><p>Removing an attribute that has never been used or is no longer supported by
+any downstream clients.</p></li>
+<li><p>Adding, removing, or renaming an attribute that serves just as an
+info/documentation field, like a “comments” or a “notes” attribute.</p></li>
+<li><p>Changing certain metadata on properties that are informational or
+organizational only such as displayName, displayGroup, doc, and hidden.</p></li>
+<li><p>Updating a token attribute’s allowedTokens field to  add a new allowed token.</p></li>
+<li><p>Adding/removing a built-in API in a way that would not immediately change
+behavior. For example adding ShadowAPI to DistantLight but also overriding
+inputs:shadow:enable to false in the DistantLight itself to keep shadows
+disabled by default.</p></li>
+<li><p>Promoting a non-applied API schema into an applied schema, since, as
+described above, the non-applied schema had no scene description typeName,
+therefore we have no tools to reason about the old vs new type, and
+versioning is pointless.</p></li>
+</ul>
+</section>
+<section id="do-version-a-schema-when">
+<h3><a class="toc-backref" href="#id26" role="doc-backlink">Do Version a Schema When…</a><a class="headerlink" href="#do-version-a-schema-when" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Adding a new attribute to a schema with a fallback value that could affect
+existing prims of that type. For example, if we were to add a “tipRadius”
+attribute to UsdGeom’s Cylinder with any fallback value. Existing Cylinders
+without this attribute could end up undesirably tapered if their radius
+attribute value doesn’t happen to match the “tipRadius” fallback.</p></li>
+<li><p>Removing an attribute that is used by imaging for a prim, like if we were
+to remove the “size” attribute from UsdGeom’s Cube.</p></li>
+<li><p>Renaming an attribute that is used by imaging for a prim, like if we were
+to rename the “radius” attribute in Sphere to “size”.</p></li>
+<li><p>Changing the type of an existing attribute, for example, if we were to
+change Sphere’s “radius” attribute from a float type to a double type. We
+expect to know the type of an attribute’s value at compile time, so even
+though the attribute types seem compatible, they won’t be in most use
+cases.</p></li>
+<li><p>Changing the fallback value for an attribute that would have an impact,
+like if we were to change the fallback for “size” in Cube from 2 to 1</p></li>
+<li><p>Making a property metadata change that would have a behavioral
+effect. Metadata examples include “interpolation” or “connectability”</p></li>
+<li><p>Making a change to a token attribute’s allowedTokens field other than
+adding a new allowed token, i.e. removing or renaming an allowed
+token. Removing a possibly used value from allowedTokens will typically
+indicate that that value should no longer be supported in downstream
+clients.</p></li>
+<li><p>Adding or removing a built-in API that would immediately change the
+behavior of that prim type. For example adding ShadowAPI as a built-in to
+UsdLux’s DistantLight would now cause all existing DistantLights to cast
+shadows since shadows are enabled by default when ShadowAPI is included.</p></li>
+<li><p>Changing the base-schema from which a schema derives; even if such a change
+were not to result in the addition or removal of any properties, it would
+change the results of IsA/HasAPI queries on the new version.</p></li>
+</ul>
+</section>
+</section>
+<section id="pixar-examples-past-and-future">
+<h2><a class="toc-backref" href="#id27" role="doc-backlink">Pixar Examples, Past and Future</a><a class="headerlink" href="#pixar-examples-past-and-future" title="Link to this heading"></a></h2>
+<section id="usdlux-connectability">
+<h3><a class="toc-backref" href="#id28" role="doc-backlink">UsdLux Connectability</a><a class="headerlink" href="#usdlux-connectability" title="Link to this heading"></a></h3>
+<p>The following is an example of a change we made that <strong>could have benefitted
+from schema versioning</strong>, but we did not because of the effort required to
+design and implement versioning, and the timeline we had for making the
+changes to UsdLux.</p>
+<p>In a prior release, as part of an update to our UsdLux library, we changed
+all existing concrete lights to be UsdShade connectable. This involved
+converting all attributes on light schemas in UsdLux to have the “inputs:”
+prefix to indicate their connectability, so “intensity” became
+“inputs:intensity”, “exposure” became “inputs:exposure”, etc. We were able to
+maintain some code support via schema generation by making sure that the C++
+schema class accessors stayed the same, e.g. GetIntensityAttr is still the
+generated function that returns “inputs:intensity” instead of
+“intensity”. However, in UsdImaging we immediately updated the light adapters
+to accept the new prefixed attributes, immediately cutting off support for
+the old attributes and therefore light created with the original schema.</p>
+<p>This change would have benefitted from versioning as we could have deployed
+different imaging adapters for the old and new lights keyed off the versioned
+schema that would have allowed them to remain compatible with the old and new
+attribute names. And while this change would have involved versioning a base
+class, namely the subsequently-deprecated UsdLuxLight, it would have been
+manageable since only around ten UsdLuxLight-derived lights existed, and the
+required changes were fairly mechanical. However, even if we had already
+possessed a schema versioning mechanism, we still may have decided not to
+version the light schemas, as we had not been using the UsdLux schemas yet in
+production and may have tried to avoid starting with all of our lights
+already version bumped.</p>
+</section>
+<section id="light-lightapi">
+<h3><a class="toc-backref" href="#id29" role="doc-backlink">Light → LightAPI</a><a class="headerlink" href="#light-lightapi" title="Link to this heading"></a></h3>
+<p>The following is an example of a complex change that <strong>did not require schema
+versioning.</strong></p>
+<p>In a prior release we made another large structural change to the UsdLux
+light schemas, in which we replaced the UsdLuxLight base class (which held
+properties that were shared by all lights) with the UsdLuxLightAPI API schema
+which was instead built-in to all the light schemas. Structurally, this
+change was complex and involved the following changes:</p>
+<ul class="simple">
+<li><p>We moved all the properties and functionality of the UsdLuxLight base
+schema into the UsdLuxLightAPI schema.</p></li>
+<li><p>We replaced the UsdLuxLight base class with two new base schema classes,
+BoundableLightBase and NonboundableLightBase, which both included
+UsdLuxLightAPI as a built-in.</p></li>
+<li><p>Every existing concrete UsdLux light was changed to inherit from the new
+bases; DistantLight and DomeLight in particular were switched to inherit
+from NobBoundableLightBase which meant they would no longer inherit from
+Boundable or have an extent attribute.</p></li>
+<li><p>Every concrete UsdLux light added the light:shaderId attribute, whose value
+now indicates the shader to associate with the light, replacing the prior
+mechanism of inferring the light’s shader ID from its typeName.</p></li>
+</ul>
+<p>Despite the complexity of this change, it had no meaningful impact on the
+behavior of any existing light assets for the following reasons:</p>
+<ul class="simple">
+<li><p>The existing property names and fallback values for the concrete lights
+remained unchanged after all of these schema changes were done.</p></li>
+<li><p>Even though DistantLight and DomeLight were no longer Boundable after this
+change, there was no real impact as no client code was expecting these
+lights to be boundable or have a meaningful extent in the first place.</p></li>
+<li><p>The fallback for the new light:shaderId attribute on each light was set to
+be the same as the light’s type name, meaning that the communicated ID for
+the light shader of existing lights was still the same after the update.</p></li>
+</ul>
+<p>This change, of course,  required downstream code updates, especially in
+places that relied on the existence of UsdLuxLight, but as long as client
+code was updated with the new version of the USD schema, light assets would
+behave equivalently in the old and new version of the software. This asset
+compatibility is why this complex structural schema change would not have
+required any versioning of the light schemas.</p>
+</section>
+<section id="visibility-to-visibilityapi">
+<h3><a class="toc-backref" href="#id30" role="doc-backlink">Visibility to VisibilityAPI</a><a class="headerlink" href="#visibility-to-visibilityapi" title="Link to this heading"></a></h3>
+<p>The following is an example of a schema change we intend to make in 2023 that
+would benefit from schema versioning, but <strong>we would still choose not to use
+versioning because the impact would be too extensive.</strong></p>
+<p>We are working on a proposal to move the visibility-related properties, such
+as “visibility” and “purpose”, from UsdGeomImageable into the
+UsdGeomVisibilityAPI instead. Visibility opinions would then be expressed by
+<strong>applying</strong> the UsdGeomVisibilityAPI to a prim and then authoring the
+visibility opinions. With this schema adjustment, we expect that client code
+that cares about visibility would be able to use the application of
+VisibiltyAPI as a requirement for a prim to participate in visibility
+computations, potentially avoiding more expensive attribute value resolves on
+the visibility attributes when VisibilityAPI is not applied; the change also
+allows visibility-related opinions to be expressed on prims that are not
+currently Imageable, such as “typeless def” prims and UsdGeomSubsets. However
+we have a strong desire to maintain backward compatibility with existing
+assets where Imageable prims may hold visibility opinions without
+VisibilityAPI applied.</p>
+<p>If we move the visibility attributes out of UsdGeomImageable without
+versioning, we can still maintain backward compatibility by checking for the
+existence of the attributes on Imageable prims even if the VisibilityAPI is
+not applied. However, this defeats the point of avoiding a costly attribute
+lookup when the prim does not have a VisibiltyAPI. If we versioned
+UsdGeomImageable to UsdGeomImageable_1 before moving the visibility
+attributes, we would be able to discern from the prim’s type whether we have
+a UsdGeomImageable_1 and should check for VisibilityAPI, or whether we have
+an older UsdGeomImageable, in which case we must always resolve the
+visibility attribute.</p>
+<p>However, the impact of versioning a base class like UsdGeomImageable is
+<strong>massive</strong>. Roughly one hundred schemas in the primary repository directly
+or indirectly inherit from UsdGeomImageable, so version bumping
+UsdGeomImageable to UsdGeomImageable_1 requires that we version bump all one
+hundred of those derived schemas so that they can inherit from the new
+Imageable_1. This also would require anyone with Imageable-derived schemas of
+their own to version bump those too if they want them to be compatible with
+the new Imageable.</p>
+<p>The impact of versioning such a low-level base schema leads us to believe
+that the negatives outweigh the benefits of versioning in this case, and that
+making a one-time breaking change here will benefit us in the long
+run. Therefore we do not expect to use versioning even though it would
+otherwise be a strong versioning candidate.  Instead, we will provide
+backwards-compatibility for old assets in related UsdGeom and UsdImaging
+computations for a sunsetting period, and also provide a fixup tool that will
+apply the VisibilityAPI wherever <span class="mono">visibility</span> or <span class="mono">purpose</span> opinions
+are expressed.</p>
+</section>
+</section>
+<section id="schemaversioning-codegen-support">
+<span id="id4"></span><h2><a class="toc-backref" href="#id31" role="doc-backlink">Possible Code Generation Changes to Support Versioning</a><a class="headerlink" href="#schemaversioning-codegen-support" title="Link to this heading"></a></h2>
+<p>One of our key design goals is to leverage the C++ compiler to help catch
+client-side oversights in adapting to new versions of schemas, for regular,
+code-generated schemas.  The main problem with this approach is that applying
+it straightforwardly, as we have proposed, means code changes are always
+required for clients to adopt new versions of schema families if they
+leverage the C++ classes for the schemas - even if the version-change would
+not truly change the client’s handling of the data.  We considered many
+approaches for providing “version unified” and “aliased” C++ classes for
+schema versions, but they brought up new workflow issues that led us to
+conclude that “doing nothing” (at least in the automated class generation
+sense) would be the best approach. Here are quick summaries of the approaches
+we have considered, for reference and discussion.</p>
+<p>Note that, even given our design goal of leveraging the compiler, we
+recognize that for schemas that version a number of times, we may wish to
+reduce code bloat by suppressing code-generation for “old versions”.  Thus,
+we do plan to enable “codeless-ness” on a per-schema/version basis (as of
+22.11 codeless-ness is only specifiable at the domain-level).</p>
+<section id="base-schema-class-is-always-the-latest-version-of-the-family">
+<h3><a class="toc-backref" href="#id32" role="doc-backlink">Base Schema Class is Always the Latest Version of the Family</a><a class="headerlink" href="#base-schema-class-is-always-the-latest-version-of-the-family" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Example</strong>: Given schema identifiers “Sphere”, “Sphere_1”, and “Sphere_2”,
+usdGenSchema would generate the UsdGeomSphere class from the latest
+version, “Sphere_2”.  Thus clients adopting a new software release
+automatically target the latest version in that release, with no code
+changes; however, if the generated code has changed, compiler errors will
+direct attention appropriately.</p></li>
+<li><p>Classes for older versions could be generated as UsdGeomSphere_1 and
+UsdGeomSphere_0 if desired.</p></li>
+<li><p><strong>Problems with this approach</strong>:</p>
+<ul>
+<li><p>This provides no way of locking to the current latest version in your
+code if the latest version changes down the line.</p></li>
+<li><p>Also has the problem that the registered type for the latest version of
+the schema changes when a new version is added in order to free up the
+class type again, and the type for the latest version does not (of
+course) match the identifier.</p></li>
+<li><p>Of particular note, the “original” version zero of the family will never
+have a matching identifier and type once an additional version is added.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="class-per-version-with-typedef-mapping-to-current-or-latest-version-class">
+<h3><a class="toc-backref" href="#id33" role="doc-backlink">Class Per Version with Typedef Mapping to “Current” or “Latest” Version-Class</a><a class="headerlink" href="#class-per-version-with-typedef-mapping-to-current-or-latest-version-class" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Example</strong>: Given schemas “Sphere”, “Sphere_1”, and “Sphere_2”,
+usdGenSchema would generate the UsdGeomSphere_0, UsdGeomSphere_1, and
+UsdGeomSphere_2 classes for each schema version. The header file
+usdGeom/sphere.h would provide a typedef setting <span class="mono">UsdGeomSphere =
+UsdGeomSphere_2</span>.</p></li>
+<li><p><strong>Problems with this approach</strong>:</p>
+<ul>
+<li><p>Typedefing to UsdGeomSphere_Latest or UsdGeomSphere_Current (instead of
+UsdGeomSphere) so that version 0 can always use UsdGeomSphere… <strong>or</strong></p></li>
+<li><p>Retyping <strong>all unversioned schemas</strong> (yes, all schemas in existence) to have
+the “_0” prefix and immediately providing the latest version typedef for
+these.</p></li>
+<li><p>Still has the problem that the type of version 0 will change (from
+UsdGeomSphere to UsdGeomSphere_0) on first versioning of the
+schema. There are potential ways to solve this that bring in their own
+issues:</p></li>
+<li><p>The equivalent of this typedef would need to be implemented in python as
+well.</p></li>
+<li><p>Allowing clients to override the typedef in order to lock UsdGeomSphere
+to a different version than the latest would introduce additional
+complexity.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="single-c-class-that-provides-api-for-all-versions-of-the-schema-family">
+<h3><a class="toc-backref" href="#id34" role="doc-backlink">Single C++ Class That Provides API for ALL Versions of the Schema Family</a><a class="headerlink" href="#single-c-class-that-provides-api-for-all-versions-of-the-schema-family" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Example</strong>: Given schemas “Sphere”, “Sphere_1”, and “Sphere_2”,
+usdGenSchema would generate the UsdGeomSphere class providing a union of
+accessors for properties from all three versions of the schema.  The
+“unified schema class” would have direct methods for querying the prim’s
+version.</p></li>
+<li><p><strong>Problems with this approach</strong>:</p>
+<ul>
+<li><p>There may be incompatibilities between versions of the schema that cannot
+be provided in the same class (e.g. the schema’s base class has changed)</p></li>
+<li><p>By combining all versions into one class it is very hard to tell which
+schema versions the API is compatible with, if properties change between
+versions. The documentation would provide such enumeration, but that is
+insufficient to keep code up to date between version changes.  Thus, this
+approach <strong>violates our stated key design goal</strong>.  Which leads us to:</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="compatible-cluster-classes-with-disambiguating-method-names">
+<h3><a class="toc-backref" href="#id35" role="doc-backlink">“Compatible Cluster” Classes with Disambiguating Method Names</a><a class="headerlink" href="#compatible-cluster-classes-with-disambiguating-method-names" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Example</strong>: Given schemas “Sphere”, “Sphere_1”, and “Sphere_2”,
+usdGenSchema would generate the UsdGeomSphere_0, UsdGeomSphere_1, and
+UsdGeomSphere_2 classes for each schema version. UsdGeomSphere_0 would have
+API for version 0 only. UsdGeomSphere_1 would have API compatible with
+versions 0 and 1. UsdGeomSphere_2 would have API compatible with all three
+versions.  The point, here, is that we would likely <strong>suppress code
+generation</strong> for the older schema classes, since the newer one will be
+usable to interact with all versions.</p></li>
+<li><p>We still allow for the potential of “incompatible changes” between
+versions, such as changing base-classes, and will therefore provide
+mechanisms by which the schema.usda can specify what the <em>compatible</em>
+versions of the family are for each new version.</p></li>
+<li><p>Methods would be named in a way that would indicate which versions of the
+schema they are compatible with, e.g.</p>
+<ul>
+<li><p><span class="mono">GetXXXAttr</span> - all versions</p></li>
+<li><p><span class="mono">GetV1AndLaterAttr</span> - version 1 and later</p></li>
+<li><p><span class="mono">GetV1AndEarlierAttr</span> - version 1 and earlier</p></li>
+</ul>
+</li>
+<li><p><strong>Problems with this approach</strong>:</p>
+<ul>
+<li><p>Requires a runtime query to determine which version you are working with,
+i.e. cannot be inferred from the code unless we use explicit version
+checks.</p></li>
+<li><p>Client code cannot automatically keep up with the latest version unless we
+add the typedef system on top of this (which has the issues mentioned
+above)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="wp_rigid_body_physics.html" class="btn btn-neutral float-left" title="Rigid Body Physics in USD Proposal" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="wp_stage_variables.html" class="btn btn-neutral float-right" title="Stage Variable Expressions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Pixar Animation Studios.</p>
+  </div>
+
+   
+<!-- Additional content for Read-the-Docs theme footer, see https://github.com/readthedocs/sphinx_rtd_theme/blob/master/sphinx_rtd_theme/footer.html --> 
+<a class="usd-tos-footer-style" href="https://disneytermsofuse.com/">Terms of Use</a>
+
+
+</footer>
+        </div>
+
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

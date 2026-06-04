@@ -1,0 +1,181 @@
+{
+  "generated_at": "2026-06-04T16:40:00+08:00",
+  "scope_name": "OpenUSD release and API all-pages bilingual reproduction",
+  "scope_mode": "all_discovered_release_and_api_html_pages",
+  "primary_scope": [
+    {
+      "official_url": "https://openusd.org/release/index.html",
+      "source_snapshot": "source/openusd_release_index_source.html",
+      "local_output": "site/release_index.html",
+      "generator": "scripts/build_release_index_bilingual.mjs",
+      "status": "active_bilingual_entry",
+      "notes": [
+        "Sphinx structure and official links preserved.",
+        "Chinese labels are added alongside original English labels.",
+        "Local assets are mirrored for the generated page."
+      ]
+    },
+    {
+      "official_url": "https://openusd.org/release/api/index.html",
+      "source_snapshot": "source/openusd_api_index_source.html",
+      "local_output": "site/index.html",
+      "generator": "manual_bilingual_doxygen_entry",
+      "status": "active_bilingual_entry",
+      "notes": [
+        "Doxygen structure and official links preserved.",
+        "Body text is bilingual with API names unchanged.",
+        "A Chinese-first scope note points back to the official API index and states that API names, page names, and links are preserved.",
+        "The API entry map adds three Chinese-first cards while preserving the original page and link names.",
+        "The API route guide adds three Chinese-first reading steps for the same official API entry links.",
+        "site/api/index.html redirects release page API links to this local output."
+      ]
+    }
+  ],
+  "active_adjacent_scope": [
+    {
+      "official_url": "https://openusd.org/release/intro.html",
+      "official_relative_path": "intro.html",
+      "source_snapshot": "source/openusd_release_intro_source.html",
+      "local_output": "site/intro.html",
+      "generator": "scripts/build_intro_bilingual.mjs",
+      "status": "active_adjacent_bilingual_entry",
+      "notes": [
+        "First adjacent entry from release/index.html.",
+        "Official English body and Sphinx structure preserved.",
+        "Headings, local contents, navigation, and scope note have Chinese labels alongside English originals.",
+        "Previous-home links are rewritten to local release_index.html to avoid conflicting with API site/index.html."
+      ]
+    },
+    {
+      "official_url": "https://openusd.org/release/apiDocs.html",
+      "official_relative_path": "apiDocs.html",
+      "source_snapshot": "source/openusd_release_apiDocs_source.html",
+      "local_output": "site/apiDocs.html",
+      "generator": "scripts/build_apiDocs_bilingual.mjs",
+      "status": "active_adjacent_bilingual_entry",
+      "notes": [
+        "Release reference bridge into the Doxygen API documentation.",
+        "Official English body and Sphinx structure preserved.",
+        "The USD C++ API Documentation button keeps api/index.html, resolved locally by site/api/index.html.",
+        "Home links are rewritten to local release_index.html."
+      ]
+    },
+    {
+      "official_url": "https://openusd.org/release/glossary.html",
+      "official_relative_path": "glossary.html",
+      "source_snapshot": "source/openusd_release_glossary_source.html",
+      "local_output": "site/glossary.html",
+      "generator": "scripts/build_glossary_bilingual.mjs",
+      "status": "active_adjacent_bilingual_entry",
+      "notes": [
+        "Release terminology entry for stable bilingual term alignment.",
+        "Official Sphinx structure, English definitions, and links are preserved.",
+        "Contents, headings, and core high-frequency terms include Chinese labels and an added quick-map summary.",
+        "Ninety-two definition sections now include Chinese-first briefs, covering all independent glossary sections found in the source page while preserving the official English definitions.",
+        "Only the two glossary-local image assets referenced by this page are mirrored."
+      ]
+    },
+    {
+      "official_url": "https://openusd.org/release/toolset.html",
+      "official_relative_path": "toolset.html",
+      "source_snapshot": "source/openusd_release_toolset_source.html",
+      "local_output": "site/toolset.html",
+      "generator": "scripts/build_toolset_bilingual.mjs",
+      "status": "active_adjacent_bilingual_entry",
+      "notes": [
+        "Release Reference command-line tool entry.",
+        "Official Sphinx structure, command usage blocks, option names, and links are preserved.",
+        "Nineteen command summaries, six workflow scenario guides, and per-tool bilingual briefs are added with command names left unchanged.",
+        "Nineteen commands now include Chinese-first option guides while official CLI flags and usage blocks are preserved.",
+        "Six dense commands now include focused Chinese-first long-option reading notes while official long option descriptions stay in English.",
+        "No extra page-local images are required."
+      ]
+    },
+    {
+      "official_url": "https://openusd.org/release/api/_usd__overview_and_purpose.html",
+      "official_relative_path": "_usd__overview_and_purpose.html",
+      "source_snapshot": "source/openusd_api_overview_and_purpose_source.html",
+      "local_output": "site/_usd__overview_and_purpose.html",
+      "generator": "scripts/build_api_overview_bilingual.mjs",
+      "status": "active_adjacent_bilingual_entry",
+      "notes": [
+        "Direct adjacent conceptual entry from the API index.",
+        "Official Doxygen structure, API names, and links are preserved.",
+        "Major paragraphs, headings, and module list entries are presented with Chinese first and English original retained."
+      ]
+    },
+    {
+      "official_url": "https://openusd.org/release/api/usd_page_front.html",
+      "official_relative_path": "usd_page_front.html",
+      "source_snapshot": "source/openusd_api_usd_page_front_source.html",
+      "local_output": "site/usd_page_front.html",
+      "generator": "scripts/build_usd_page_front_bilingual.mjs",
+      "status": "active_adjacent_bilingual_entry",
+      "notes": [
+        "Direct Usd core API front page linked from the API index.",
+        "Official Doxygen layout, manual hierarchy, class names, and links are preserved.",
+        "API Manual entries and Key Classes summaries include Chinese labels with English originals retained."
+      ]
+    }
+  ],
+  "adjacent_entry_priority": [],
+  "full_scope_inventory": {
+    "report": "reports/all_pages_inventory.json",
+    "markdown": "reports/all_pages_inventory.md",
+    "total_pages": 406,
+    "release_pages": 126,
+    "api_pages": 280,
+    "bilingual_complete_pages": 8,
+    "bilingual_draft_pages": 398,
+    "pending_full_scope_pages": 0,
+    "latest_release_batch_report": "reports/release_full_batch_report.json",
+    "latest_release_batch_markdown": "reports/release_full_batch_report.md",
+    "selection_policy": "all discovered release/API HTML pages, not high-value adjacent filtering",
+    "latest_api_batch_report": "reports/api_full_batch_report.json",
+    "latest_api_batch_markdown": "reports/api_full_batch_report.md"
+  },
+  "link_policy": {
+    "local_assets": "must_exist",
+    "explicit_official_links": "preserve_official_url",
+    "known_internal_release_api_html_links": "rewrite_to_local_inventory_output",
+    "internal_release_api_html_links_not_in_inventory": "route_to_site_uncovered_openusd_page_placeholder",
+    "api_and_schema_names": "preserve_english_original",
+    "page_titles": "add_chinese_label_while_preserving_english_original"
+  },
+  "current_validation": {
+    "validation_report": "reports/validation_report.json",
+    "link_audit_report": "reports/link_audit.json",
+    "audit_index_report": "reports/audit_index.json",
+    "chinese_first_order_contract_audit_report": "reports/chinese_first_order_contract_audit.json",
+    "entry_label_contract_audit_report": "reports/entry_label_contract_audit.json",
+    "entry_structure_parity_audit_report": "reports/entry_structure_parity_audit.json",
+    "page_metadata_contract_audit_report": "reports/page_metadata_contract_audit.json",
+    "primary_entry_coverage_report": "reports/primary_entry_coverage.json",
+    "official_entry_freshness_audit_report": "reports/official_entry_freshness_audit.json",
+    "responsive_layout_contract_audit_report": "reports/responsive_layout_contract_audit.json",
+    "navigation_coverage_audit_report": "reports/navigation_coverage_audit.json",
+    "source_provenance_audit_report": "reports/source_provenance_audit.json",
+    "style_asset_contract_audit_report": "reports/style_asset_contract_audit.json",
+    "term_consistency_audit_report": "reports/term_consistency_audit.json",
+    "scope_boundary_audit_report": "reports/scope_boundary_audit.json",
+    "http_preview_audit_report": "reports/http_preview_audit.json",
+    "api_route_guide_browser_audit_report": "reports/api_route_guide_browser_audit.json",
+    "api_route_guide_browser_screenshot": "reports/api_route_guide_browser_view.png",
+    "api_route_guide_browser_wide_audit_report": "reports/api_route_guide_browser_wide_audit.json",
+    "api_route_guide_browser_wide_screenshot": "reports/api_route_guide_browser_wide_view.png",
+    "full_draft_preview_audit_report": "reports/full_draft_preview_audit.json",
+    "full_draft_preview_audit_markdown": "reports/full_draft_preview_audit.md",
+    "local_preview_index_report": "reports/local_preview_index.json",
+    "local_preview_index_markdown": "reports/local_preview_index.md",
+    "all_pages_inventory_report": "reports/all_pages_inventory.json",
+    "all_pages_inventory_markdown": "reports/all_pages_inventory.md",
+    "release_full_batch_report": "reports/release_full_batch_report.json",
+    "release_full_batch_markdown": "reports/release_full_batch_report.md",
+    "final_html_entry": "openusd_bilingual_final.html",
+    "final_html_entry_generator": "scripts/build_final_html_entry.mjs",
+    "last_known_validation_checks": 275,
+    "last_known_failed_checks": 0,
+    "api_full_batch_report": "reports/api_full_batch_report.json",
+    "api_full_batch_markdown": "reports/api_full_batch_report.md"
+  }
+}

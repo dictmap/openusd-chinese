@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions</h1>
+    <div class="meta">https://openusd.org/release/api/functions_func_x.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section data-cn-refinement="api-functions-func-quality-pass-017">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Functions - X 补充中文优先的函数索引用法、模块辨识和术语对照；英文页面名、API 符号、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first function-index usage notes, module-reading guidance, and terminology for Class Members - Functions - X while retaining the English page name, API symbols, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">functions_func_x.html 是 X 段函数成员索引，当前条目很短，主要围绕 GfVec2/3/4 系列数学向量和 UsdGeomXformable::XformQuery 展开。</span></li>
+        <li><span class="zh">GfVec2d、GfVec2f、GfVec2h、GfVec2i 到 GfVec4d、GfVec4f、GfVec4h、GfVec4i 覆盖不同维度和精度的向量类型；后缀 d/f/h/i 分别对应 double、float、half、int 风格的数值表示。</span></li>
+        <li><span class="zh">UsdGeomXformable::XformQuery 是变换查询入口，通常用于缓存和读取 xform stack 的组合结果；它和 GfVec 向量类型一起出现时，读者应区分数学容器类型与 scene prim 变换查询 API。</span></li>
+        <li><span class="zh">本页因为条目少，中文导读重点是解释 X 段的阅读边界：它不是完整 Gf 数学库教程，也不是 UsdGeom xform 教程；后续完整翻译需要进入向量类和 XformQuery class 页逐项补签名与示例。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">向量类型：</span><span class="en">vector type</span></li>
+        <li><span class="zh">半精度：</span><span class="en">half precision</span></li>
+        <li><span class="zh">变换栈：</span><span class="en">xform stack</span></li>
+        <li><span class="zh">变换查询：</span><span class="en">transform query</span></li>
+        <li><span class="zh">数值后缀：</span><span class="en">numeric suffix</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 3 级结构：- x -</span><span class="en">- x -</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">Index entries include: GfVec2d; GfVec2f; GfVec2h; GfVec2i; GfVec3d; GfVec3f; GfVec3h; GfVec3i; GfVec4d; GfVec4f; GfVec4h; GfVec4i; UsdGeomXformable::XformQuery.</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_vec2d.html&amp;title=GfVec2d" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_vec2d.html">GfVec2d</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_vec2f.html&amp;title=GfVec2f" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_vec2f.html">GfVec2f</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_vec2h.html&amp;title=GfVec2h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_vec2h.html">GfVec2h</a></li>
+<li><a href="class_gf_vec2i.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_gf_vec2i.html">GfVec2i</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_vec3d.html&amp;title=GfVec3d" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_vec3d.html">GfVec3d</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_vec3f.html&amp;title=GfVec3f" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_vec3f.html">GfVec3f</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_vec3h.html&amp;title=GfVec3h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_vec3h.html">GfVec3h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_vec3i.html&amp;title=GfVec3i" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_vec3i.html">GfVec3i</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_vec4d.html&amp;title=GfVec4d" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_vec4d.html">GfVec4d</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_vec4f.html&amp;title=GfVec4f" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_vec4f.html">GfVec4f</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_vec4h.html&amp;title=GfVec4h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_vec4h.html">GfVec4h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_vec4i.html&amp;title=GfVec4i" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_vec4i.html">GfVec4i</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_xformable_1_1_xform_query.html&amp;title=UsdGeomXformable%3A%3AXformQuery" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_xformable_1_1_xform_query.html">UsdGeomXformable::XformQuery</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/functions_func_x.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

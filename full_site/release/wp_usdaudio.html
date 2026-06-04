@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UsdAudio 提案 / UsdAudio Proposal</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    header{background:#17202a;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
+    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>UsdAudio 提案 / UsdAudio Proposal</h1>
+    <div class="meta">https://openusd.org/release/wp_usdaudio.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
+      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+    </section>
+    <section>
+      <h2>中文导读 / Chinese Reading Notes</h2>
+      <ul>
+<li><span class="zh">该 proposal 是 USD 音频 schema 的历史设计文档，页面声明已实现并指向 UsdMediaSpatialAudio。</span></li>
+<li><span class="zh">目标是为 USD 场景中的音频元素提供 interchange schema，支持定时播放、空间位置/方向和 ambient sound。</span></li>
+<li><span class="zh">设计要求音频数据通过 assetPath 指向外部文件或流，schema 不直接嵌入音频数据，也不试图成为音频编辑工具格式。</span></li>
+<li><span class="zh">本地页保留 SpatialAudio、filePath、auralMode、playbackMode、startTime、mediaOffset、level 和 timeCodesPerSecond 示例入口。</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 1 级标题：UsdAudio Proposal</span><span class="en">UsdAudio Proposal</span></li>
+<li><span class="zh">第 2 级标题：Goal</span><span class="en">Goal</span></li>
+<li><span class="zh">第 2 级标题：Initial Requirements</span><span class="en">Initial Requirements</span></li>
+<li><span class="zh">第 2 级标题：Proposed Prim Schema</span><span class="en">Proposed Prim Schema</span></li>
+<li><span class="zh">第 3 级标题：SpatialAudio</span><span class="en">SpatialAudio</span></li>
+<li><span class="zh">第 2 级标题：USD Sample</span><span class="en">USD Sample</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">This proposal has been implemented. This document exists for historical reference and may be outdated. For up-to-date documentation, see the UsdMediaSpatialAudio page .</p>
+<p class="en">The goal of this proposal is to define a standard schema for adding audio support to USD. The schema must support basic, timed-start audio playback, as well as the ability to identify sounds as having well-defined locations (and orientations) in space. The primary purpose of the new schema is to provide an interchange solution to audio elements embedded in USD scenes and animations. Given that interchange is the main goal, we want to keep the following schema simple, providing what we believe are the minimal requirements to play audio elements in the scene. This schema is not intended as a document format for an audio editing tool since more complex operations on sound elements are not supported. The addition of such a schema may lead to thoughts about describing interactive environments in USD, including such features as triggers for sounds. While encoding triggers for sounds and other actions may be a worthwhile area of future investigation, we defer any consideration of triggers or interactive environments for now in the interests of simplicity and resources .</p>
+<p class="en">The USD schema should not directly contain any audio data but should refer to an audio file or stream via an assetPath</p>
+    </section>
+<section>
+      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
+<pre><code>#usda 1.0 ( upAxis = &quot;Z&quot; endTimeCode = 200 startTimeCode = 1 timeCodesPerSecond = 24 ) def Xform &quot;Sounds&quot; { def SpatialAudio &quot;AmbientSound&quot; { # We need not encode startTime, mediaOffset, or level as the fallback # values suffice for ambient sound. Playback will begin at timeCode 1 uniform asset filePath = @AmbientSound.mp3@ uniform token auralMode = &quot;nonSpatial&quot; uniform token playbackMode = &quot;loopFromStage&quot; } def SpatialAudio &quot;WoodysVoice&quot; { # SpatialAudio xform. This prim might typically be located # as a child ...</code></pre>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_media_spatial_audio.html&amp;title=UsdMediaSpatialAudio+page" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_media_spatial_audio.html">UsdMediaSpatialAudio page</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_xformable.html&amp;title=UsdGeomXformable" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_xformable.html">UsdGeomXformable</a></li>
+<li><a href="../api/usd_lux_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_lux_page_front.html">UsdLux</a></li>
+<li><a href="../../site/glossary.html" data-local-route="mapped" data-official-href="https://openusd.org/release/glossary.html">timeCodesPerSecond</a></li>
+<li><a href="https://www.w3.org/TR/webaudio/">Web Audio API</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/wp_usdaudio.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

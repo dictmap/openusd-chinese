@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API 模块草稿：UsdLux: USD Lighting Schema / UsdLux: USD Lighting Schema</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>API 模块草稿：UsdLux: USD Lighting Schema / UsdLux: USD Lighting Schema</h1>
+    <div class="meta">https://openusd.org/release/api/usd_lux_page_front.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 1 级结构：UsdLux: USD Lighting Schema</span><span class="en">UsdLux: USD Lighting Schema</span></li>
+<li><span class="zh">第 1 级结构：Overview</span><span class="en">Overview</span></li>
+<li><span class="zh">第 1 级结构：Design Notes and Usage Guide</span><span class="en">Design Notes and Usage Guide</span></li>
+<li><span class="zh">第 2 级结构：LightAPI and &quot;Being a Light&quot;</span><span class="en">LightAPI and &quot;Being a Light&quot;</span></li>
+<li><span class="zh">第 2 级结构：Encapsulation Rules</span><span class="en">Encapsulation Rules</span></li>
+<li><span class="zh">第 2 级结构：Geometry</span><span class="en">Geometry</span></li>
+<li><span class="zh">第 2 级结构：Quantities and Units</span><span class="en">Quantities and Units</span></li>
+<li><span class="zh">第 3 级结构：Exposure</span><span class="en">Exposure</span></li>
+<li><span class="zh">第 2 级结构：Properties &amp; Behavior</span><span class="en">Properties &amp; Behavior</span></li>
+<li><span class="zh">第 2 级结构：Extensibility</span><span class="en">Extensibility</span></li>
+<li><span class="zh">第 2 级结构：Plugin Lights and Light Filters</span><span class="en">Plugin Lights and Light Filters</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">Overview UsdLux provides a representation for lights and related components that are common to many graphics environments and therefore suitable for interchange. The goal of UsdLux is to serve as a basis for: passing lighting setups from a creation environment to a renderer best-effort portability of setups across environments, to the degree that they share capabilities The UsdLux core includes: common light types UsdLuxCylinderLight UsdLuxDiskLight UsdLuxDistantLight UsdLuxDomeLight UsdLuxRectLight UsdLuxSphere...</p>
+<p class="en">This core can be extended to add more types of lights, filters, or other features.</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_lux_cylinder_light.html&amp;title=UsdLuxCylinderLight" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_lux_cylinder_light.html">UsdLuxCylinderLight</a></li>
+<li><a href="class_usd_lux_disk_light.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_usd_lux_disk_light.html">UsdLuxDiskLight</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_lux_distant_light.html&amp;title=UsdLuxDistantLight" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_lux_distant_light.html">UsdLuxDistantLight</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_lux_dome_light.html&amp;title=UsdLuxDomeLight" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_lux_dome_light.html">UsdLuxDomeLight</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_lux_rect_light.html&amp;title=UsdLuxRectLight" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_lux_rect_light.html">UsdLuxRectLight</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_lux_sphere_light.html&amp;title=UsdLuxSphereLight" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_lux_sphere_light.html">UsdLuxSphereLight</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_lux_boundable_light_base.html&amp;title=UsdLuxBoundableLightBase" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_lux_boundable_light_base.html">UsdLuxBoundableLightBase</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_boundable.html&amp;title=UsdGeomBoundable" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_boundable.html">UsdGeomBoundable</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_lux_nonboundable_light_base.html&amp;title=UsdLuxNonboundableLightBase" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_lux_nonboundable_light_base.html">UsdLuxNonboundableLightBase</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_xformable.html&amp;title=UsdGeomXformable" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_xformable.html">UsdGeomXformable</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_lux_light_a_p_i.html&amp;title=UsdLuxLightAPI" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_lux_light_a_p_i.html">UsdLuxLightAPI</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_lux_mesh_light_a_p_i.html&amp;title=UsdLuxMeshLightAPI" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_lux_mesh_light_a_p_i.html">UsdLuxMeshLightAPI</a></li>
+<li><a href="class_usd_geom_mesh.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_usd_geom_mesh.html">UsdGeomMesh</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_lux_volume_light_a_p_i.html&amp;title=UsdLuxVolumeLightAPI" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_lux_volume_light_a_p_i.html">UsdLuxVolumeLightAPI</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_vol_volume.html&amp;title=UsdVolVolume" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_vol_volume.html">UsdVolVolume</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_lux_light_list_a_p_i.html&amp;title=UsdLuxLightListAPI" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_lux_light_list_a_p_i.html">UsdLuxLightListAPI</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_collection_a_p_i.html&amp;title=UsdCollectionAPI" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_collection_a_p_i.html">UsdCollectionAPI</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_lux_shadow_a_p_i.html&amp;title=UsdLuxShadowAPI" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_lux_shadow_a_p_i.html">UsdLuxShadowAPI</a></li>
+<li><a href="class_usd_lux_shaping_a_p_i.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_usd_lux_shaping_a_p_i.html">UsdLuxShapingAPI</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_lux_light_filter.html&amp;title=UsdLuxLightFilter" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_lux_light_filter.html">UsdLuxLightFilter</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_lux_portal_light.html&amp;title=UsdLuxPortalLight" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_lux_portal_light.html">UsdLuxPortalLight</a></li>
+<li><a href="usd_lux_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_lux_page_front.html">plugin types</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_lux_plugin_light.html&amp;title=UsdLuxPluginLight" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_lux_plugin_light.html">UsdLuxPluginLight</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_lux_plugin_light_filter.html&amp;title=UsdLuxPluginLightFilter" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_lux_plugin_light_filter.html">UsdLuxPluginLightFilter</a></li>
+<li><a href="hierarchy.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/hierarchy.html">class hierarchy</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2F_usd__page__generating_schemas.html&amp;title=built+in" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/_usd__page__generating_schemas.html">built in</a></li>
+<li><a href="usd_shade_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_shade_page_front.html">UsdShade encapsulation rules</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_shade_node_graph.html&amp;title=UsdShadeNodeGraph" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_shade_node_graph.html">UsdShadeNodeGraph</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_shade_material.html&amp;title=UsdShadeMaterial" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_shade_material.html">UsdShadeMaterial</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_camera.html&amp;title=UsdGeomCamera%3A%3AGetExposureAttr%28%29" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_camera.html">UsdGeomCamera::GetExposureAttr()</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdr_registry.html&amp;title=SdrRegistry" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdr_registry.html">SdrRegistry</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_shade_shader.html&amp;title=UsdShadeShader" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_shade_shader.html">UsdShadeShader</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/usd_lux_page_front.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

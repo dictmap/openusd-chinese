@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alembic USD 插件 / Alembic USD Plugin</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    header{background:#17202a;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>Alembic USD 插件 / Alembic USD Plugin</h1>
+    <div class="meta">https://openusd.org/release/plugins_alembic.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
+      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+    </section>
+    <section data-cn-refinement="release-guide-quality-pass-003">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Alembic USD Plugin 补充中文优先的阅读路径、关键概念说明和术语对照；英文页面名、链接、代码、命令和原文摘录继续保留，便于和官方文档逐项核对。</p>
+      <p class="en">This section adds Chinese-first reading guidance for Alembic USD Plugin while retaining the English page name, links, code, commands, and source excerpts for comparison with the official documentation.</p>
+      <ul>
+        <li><span class="zh">Alembic USD Plugin 页面说明 usdAbc 文件格式插件如何让 USD 工具读取和处理 Alembic 数据；它适合用作 Alembic 互操作入口，而不是 USD 核心概念入门页。</span></li>
+        <li><span class="zh">官方页强调该插件默认不构建，必须在 CMake 中启用 PXR_BUILD_ALEMBIC_PLUGIN；因此本地中文层保留构建开关和版本限制，避免用户误以为发行包必然带有 Alembic 支持。</span></li>
+        <li><span class="zh">usdAbc 展示的是 custom file format plugin 模式：USD 通过插件接口把外部格式映射进统一的 stage/layer 访问体验，后续工具仍可使用熟悉的 USD 命令链处理数据。</span></li>
+        <li><span class="zh">Known Limitations 和 Advanced Build Configuration 相关链接应与正文一起阅读；API 名称、CMake 选项、文件扩展名 .usda/.usdc 继续保持原样。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Alembic USD 插件：</span><span class="en">Alembic USD Plugin</span></li>
+        <li><span class="zh">Alembic 插件构建开关：</span><span class="en">PXR_BUILD_ALEMBIC_PLUGIN</span></li>
+        <li><span class="zh">Alembic 文件格式插件：</span><span class="en">usdAbc</span></li>
+        <li><span class="zh">自定义文件格式插件：</span><span class="en">custom file format plugin</span></li>
+        <li><span class="zh">高级构建配置：</span><span class="en">Advanced Build Configuration</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 2 级标题：Known Limitations</span><span class="en">Known Limitations</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">The Alembic USD plugin is not built by default. To enable it, the PXR_BUILD_ALEMBIC_PLUGIN option must be specified when running CMake. Check the 3rd Party Library and Application Versions document for the Alembic library versions that have been used for testing.</p>
+<p class="en">For more information see our page on Advanced Build Configuration .</p>
+<p class="en">As shipped, USD supports its own text (usda) and binary (usdc) file formats. However, it is possible for USD to support additional formats by providing it with a custom file format plugin. One of these plugins, usdAbc, which provides the ability to interact with Alembic files, is included in the pxr/usd/plugin directory of the USD distribution. In this example, we’ll demonstrate the extended USD functionality using the existing USD tools.</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/release_index.html" data-local-route="mapped" data-official-href="https://openusd.org/release/index.html">Universal Scene Description</a></li>
+<li><a href="../../site/intro.html" data-local-route="mapped" data-official-href="https://openusd.org/release/intro.html">Introduction to USD</a></li>
+<li><a href="intro_to_openexec.html" data-local-route="mapped" data-official-href="https://openusd.org/release/intro_to_openexec.html">Introduction to OpenExec</a></li>
+<li><a href="../../site/glossary.html" data-local-route="mapped" data-official-href="https://openusd.org/release/glossary.html">Terms and Concepts</a></li>
+<li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Tutorials</a></li>
+<li><a href="tut_helloworld.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_helloworld.html">Hello World - Creating Your First USD Stage</a></li>
+<li><a href="tut_helloworld_redux.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_helloworld_redux.html">Hello World Redux - Using Generic Prims</a></li>
+<li><a href="tut_inspect_and_author_props.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_inspect_and_author_props.html">Inspecting and Authoring Properties</a></li>
+<li><a href="tut_referencing_layers.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_referencing_layers.html">Referencing Layers</a></li>
+<li><a href="tut_converting_between_layer_formats.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_converting_between_layer_formats.html">Converting Between Layer Formats</a></li>
+<li><a href="tut_traversing_stage.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_traversing_stage.html">Traversing a Stage</a></li>
+<li><a href="tut_authoring_variants.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_authoring_variants.html">Authoring Variants</a></li>
+<li><a href="tut_variants_example_in_katana.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_variants_example_in_katana.html">Variants Example in Katana</a></li>
+<li><a href="tut_xforms.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_xforms.html">Transformations, Animation, and Layer Offsets</a></li>
+<li><a href="tut_simple_shading.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_simple_shading.html">Simple Shading in USD</a></li>
+<li><a href="tut_end_to_end.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_end_to_end.html">End to End Example</a></li>
+<li><a href="tut_houdini_example.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_houdini_example.html">Houdini USD Example Workflow</a></li>
+<li><a href="tut_generating_new_schema.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_generating_new_schema.html">Generating New Schema Classes</a></li>
+<li><a href="tut_usdview_plugin.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usdview_plugin.html">Creating a Usdview Plugin</a></li>
+<li><a href="dl_downloads.html" data-local-route="mapped" data-official-href="https://openusd.org/release/dl_downloads.html">Downloads and Videos</a></li>
+<li><a href="usd_products.html" data-local-route="mapped" data-official-href="https://openusd.org/release/usd_products.html">Products Using USD</a></li>
+<li><a href="user_guides/collections_and_patterns.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/collections_and_patterns.html">Collections and Patterns</a></li>
+<li><a href="user_guides/color_user_guide.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/color_user_guide.html">Color</a></li>
+<li><a href="user_guides/namespace_editing.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/namespace_editing.html">Namespace Editing</a></li>
+<li><a href="user_guides/render_user_guide.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html">Rendering with USD</a></li>
+<li><a href="user_guides/primvars.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/primvars.html">Primvars</a></li>
+<li><a href="user_guides/schemas/index.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/index.html">Schema Domains</a></li>
+<li><a href="user_guides/schemas/usdLux/usdLux_toc.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/usdLux_toc.html">Lights (usdLux)</a></li>
+<li><a href="user_guides/schemas/usdLux/overview.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/overview.html">Overview</a></li>
+<li><a href="user_guides/schemas/usdLux/BoundableLightBase.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/BoundableLightBase.html">BoundableLightBase</a></li>
+<li><a href="user_guides/schemas/usdLux/CylinderLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/CylinderLight.html">CylinderLight</a></li>
+<li><a href="user_guides/schemas/usdLux/DiskLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DiskLight.html">DiskLight</a></li>
+<li><a href="user_guides/schemas/usdLux/DistantLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DistantLight.html">DistantLight</a></li>
+<li><a href="user_guides/schemas/usdLux/DomeLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight.html">DomeLight</a></li>
+<li><a href="user_guides/schemas/usdLux/DomeLight_1.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight_1.html">DomeLight_1</a></li>
+<li><a href="user_guides/schemas/usdLux/GeometryLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/GeometryLight.html">GeometryLight</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/plugins_alembic.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

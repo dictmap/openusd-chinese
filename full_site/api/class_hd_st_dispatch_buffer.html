@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>类参考草稿：HdStDispatchBuffer Class / HdStDispatchBuffer Class</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>类参考草稿：HdStDispatchBuffer Class / HdStDispatchBuffer Class</h1>
+    <div class="meta">https://openusd.org/release/api/class_hd_st_dispatch_buffer.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 1 级结构：HdStDispatchBuffer Class Reference</span><span class="en">HdStDispatchBuffer Class Reference</span></li>
+<li><span class="zh">第 2 级结构：Public Member Functions</span><span class="en">Public Member Functions</span></li>
+<li><span class="zh">第 2 级结构：Protected Member Functions</span><span class="en">Protected Member Functions</span></li>
+<li><span class="zh">第 2 级结构：Additional Inherited Members</span><span class="en">Additional Inherited Members</span></li>
+<li><span class="zh">第 2 级结构：Detailed Description</span><span class="en">Detailed Description</span></li>
+<li><span class="zh">第 2 级结构：Constructor &amp; Destructor Documentation</span><span class="en">Constructor &amp; Destructor Documentation</span></li>
+<li><span class="zh">第 2 级结构：◆ HdStDispatchBuffer()</span><span class="en">◆ HdStDispatchBuffer()</span></li>
+<li><span class="zh">第 2 级结构：◆ ~HdStDispatchBuffer()</span><span class="en">◆ ~HdStDispatchBuffer()</span></li>
+<li><span class="zh">第 2 级结构：Member Function Documentation</span><span class="en">Member Function Documentation</span></li>
+<li><span class="zh">第 2 级结构：◆ _AddResource()</span><span class="en">◆ _AddResource()</span></li>
+<li><span class="zh">第 2 级结构：◆ AddBufferResourceView()</span><span class="en">◆ AddBufferResourceView()</span></li>
+<li><span class="zh">第 2 级结构：◆ CopyData()</span><span class="en">◆ CopyData()</span></li>
+<li><span class="zh">第 2 级结构：◆ DebugDump()</span><span class="en">◆ DebugDump()</span></li>
+<li><span class="zh">第 2 级结构：◆ GarbageCollect()</span><span class="en">◆ GarbageCollect()</span></li>
+<li><span class="zh">第 2 级结构：◆ GetBufferArrayRange()</span><span class="en">◆ GetBufferArrayRange()</span></li>
+<li><span class="zh">第 2 级结构：◆ GetCommandNumUints()</span><span class="en">◆ GetCommandNumUints()</span></li>
+<li><span class="zh">第 2 级结构：◆ GetCount()</span><span class="en">◆ GetCount()</span></li>
+<li><span class="zh">第 2 级结构：◆ GetEntireResource()</span><span class="en">◆ GetEntireResource()</span></li>
+<li><span class="zh">第 2 级结构：◆ GetResource() [1/2]</span><span class="en">◆ GetResource() [1/2]</span></li>
+<li><span class="zh">第 2 级结构：◆ GetResource() [2/2]</span><span class="en">◆ GetResource() [2/2]</span></li>
+<li><span class="zh">第 2 级结构：◆ GetResources()</span><span class="en">◆ GetResources()</span></li>
+<li><span class="zh">第 2 级结构：◆ Reallocate()</span><span class="en">◆ Reallocate()</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">A VBO of a simple array of unsigned integers. This buffer is used to prepare data on the GPU for indirect dispatch i.e. to be consumed by MultiDrawIndirect or DispatchComputeIndirect. At the same time, interleaved subsets of the array are bound in several different ways to provide additional data interface to shaders. For each binding, we define 'BufferResourceView' on top of the uint array. HdBufferArray aggregates those views and HdResourceBinder binds them with specified binding method and interleaved offset....</p>
+<p class="en">A VBO of a simple array of unsigned integers. More...</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_st_dispatch_buffer-members.html&amp;title=List+of+all+members" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_st_dispatch_buffer-members.html">List of all members</a></li>
+<li><a href="class_hd_st_dispatch_buffer.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_hd_st_dispatch_buffer.html">More...</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fdispatch_buffer_8h_source.html&amp;title=dispatchBuffer.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/dispatch_buffer_8h_source.html">dispatchBuffer.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fgraph_legend.html&amp;title=legend" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/graph_legend.html">legend</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_st_resource_registry.html&amp;title=HdStResourceRegistry" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_st_resource_registry.html">HdStResourceRegistry</a></li>
+<li><a href="class_tf_token.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_tf_token.html">TfToken</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_hd_tuple_type.html&amp;title=HdTupleType" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_hd_tuple_type.html">HdTupleType</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_st_buffer_resource.html&amp;title=HdStBufferResource" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_st_buffer_resource.html">HdStBufferResource</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_buffer_array.html&amp;title=HdBufferArray" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_buffer_array.html">HdBufferArray</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/class_hd_st_dispatch_buffer.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

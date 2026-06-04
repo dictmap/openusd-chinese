@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions</h1>
+    <div class="meta">https://openusd.org/release/api/functions_func_t.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section data-cn-refinement="api-functions-func-quality-pass-017">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Functions - T 补充中文优先的函数索引用法、模块辨识和术语对照；英文页面名、API 符号、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first function-index usage notes, module-reading guidance, and terminology for Class Members - Functions - T while retaining the English page name, API symbols, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">functions_func_t.html 是 Class Members - Functions 索引的 T 段，条目集中在 Tf 基础设施、Vdf executor、UsdUtils diagnostic delegate 和少量 UsdImaging/Hd 入口；它适合作为调试、执行和 Python 绑定相关函数的跳转页。</span></li>
+        <li><span class="zh">VdfDatalessExecutor、VdfDataManagerBasedExecutor、VdfExecutorDataManager、VdfExecutorInterface、VdfParallelExecutorDataManager 与 VdfSpeculationExecutor 指向 Vdf 执行网络的不同 executor/data manager 组合；阅读时要保留 DataManagerType、BaseClass、DerivedClass、EngineType 等 template 参数。</span></li>
+        <li><span class="zh">TfDiagnosticBase、TfDiagnosticTransport、TfDiagnosticTrap、TfErrorMark、TfErrorTransport 与 UsdUtilsCoalescingDiagnosticDelegate 属于诊断、错误收集和错误传输线索；它们和 Vdf 执行器常在调试或批量报告问题时一起出现。</span></li>
+        <li><span class="zh">TfAnyWeakPtr、TfDelegatedCountPtr、TfDenseHashMap、TfDenseHashSet、TfPyArg、TfPyCall、TfPyLock、TfPyObjWrapper、TfPyOverride 等条目属于 Tf 容器、智能指针和 Python 绑定支撑层；中文导读保留英文 API 名，避免弱指针、锁和 Python 调用包装语义被误读。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">执行器：</span><span class="en">executor</span></li>
+        <li><span class="zh">数据管理器：</span><span class="en">data manager</span></li>
+        <li><span class="zh">诊断传输：</span><span class="en">diagnostic transport</span></li>
+        <li><span class="zh">弱指针：</span><span class="en">weak pointer</span></li>
+        <li><span class="zh">Python 绑定：</span><span class="en">Python binding</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 3 级结构：- t -</span><span class="en">- t -</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">Index entries include: VtValue; OptionBase ; UsdUtilsCoalescingDiagnosticDelegate; VdfDatalessExecutor; VdfDataManagerBasedExecutor ; VdfExecutorDataManager ; VdfExecutorInterface; VdfParallelExecutorDataManager ; VdfSpeculationExecutor ; VdfExecutorBufferData; Exec_ComputationBuilderRelationshipAccessor ; UsdviewqHydraObserver; HdChangeTracker; UsdImagingGLEngine; TfAnyWeakPtr; TfAtomicOfstreamWrapper.</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vt_value.html&amp;title=VtValue" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vt_value.html">VtValue</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclasspxr___c_l_i_1_1_c_l_i_1_1_option_base.html&amp;title=OptionBase%3C+CRTP+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/classpxr___c_l_i_1_1_c_l_i_1_1_option_base.html">OptionBase&lt; CRTP &gt;</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_utils_coalescing_diagnostic_delegate.html&amp;title=UsdUtilsCoalescingDiagnosticDelegate" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_utils_coalescing_diagnostic_delegate.html">UsdUtilsCoalescingDiagnosticDelegate</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf_dataless_executor.html&amp;title=VdfDatalessExecutor" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf_dataless_executor.html">VdfDatalessExecutor</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf_data_manager_based_executor.html&amp;title=VdfDataManagerBasedExecutor%3C+DataManagerType%2C+BaseClass+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf_data_manager_based_executor.html">VdfDataManagerBasedExecutor&lt; DataManagerType, BaseClass &gt;</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf_executor_data_manager.html&amp;title=VdfExecutorDataManager%3C+DerivedClass+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf_executor_data_manager.html">VdfExecutorDataManager&lt; DerivedClass &gt;</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf_executor_interface.html&amp;title=VdfExecutorInterface" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf_executor_interface.html">VdfExecutorInterface</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf_parallel_executor_data_manager.html&amp;title=VdfParallelExecutorDataManager%3C+DerivedClass+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf_parallel_executor_data_manager.html">VdfParallelExecutorDataManager&lt; DerivedClass &gt;</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf_speculation_executor.html&amp;title=VdfSpeculationExecutor%3C+EngineType%2C+DataManagerType+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf_speculation_executor.html">VdfSpeculationExecutor&lt; EngineType, DataManagerType &gt;</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf_executor_buffer_data.html&amp;title=VdfExecutorBufferData" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf_executor_buffer_data.html">VdfExecutorBufferData</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fgroup__group___exec___value_specifiers.html&amp;title=Exec_ComputationBuilderRelationshipAccessor%3C+allowed+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/group__group___exec___value_specifiers.html">Exec_ComputationBuilderRelationshipAccessor&lt; allowed &gt;</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usdviewq_hydra_observer.html&amp;title=UsdviewqHydraObserver" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usdviewq_hydra_observer.html">UsdviewqHydraObserver</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_change_tracker.html&amp;title=HdChangeTracker" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_change_tracker.html">HdChangeTracker</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_imaging_g_l_engine.html&amp;title=UsdImagingGLEngine" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_imaging_g_l_engine.html">UsdImagingGLEngine</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_any_weak_ptr.html&amp;title=TfAnyWeakPtr" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_any_weak_ptr.html">TfAnyWeakPtr</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_atomic_ofstream_wrapper.html&amp;title=TfAtomicOfstreamWrapper" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_atomic_ofstream_wrapper.html">TfAtomicOfstreamWrapper</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_base_exception.html&amp;title=TfBaseException" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_base_exception.html">TfBaseException</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_expired_prim_access_error.html&amp;title=UsdExpiredPrimAccessError" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_expired_prim_access_error.html">UsdExpiredPrimAccessError</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_big_r_w_mutex.html&amp;title=TfBigRWMutex" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_big_r_w_mutex.html">TfBigRWMutex</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_bits.html&amp;title=TfBits" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_bits.html">TfBits</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_compressed_bits.html&amp;title=TfCompressedBits" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_compressed_bits.html">TfCompressedBits</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_delegated_count_ptr.html&amp;title=TfDelegatedCountPtr%3C+ValueType+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_delegated_count_ptr.html">TfDelegatedCountPtr&lt; ValueType &gt;</a></li>
+<li><a href="class_tf_dense_hash_map.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_tf_dense_hash_map.html">TfDenseHashMap&lt; Key, Data, HashFn, EqualKey, Threshold &gt;</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_dense_hash_set.html&amp;title=TfDenseHashSet%3C+Element%2C+HashFn%2C+EqualElement%2C+Threshold+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_dense_hash_set.html">TfDenseHashSet&lt; Element, HashFn, EqualElement, Threshold &gt;</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_diagnostic_base.html&amp;title=TfDiagnosticBase" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_diagnostic_base.html">TfDiagnosticBase</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_diagnostic_transport.html&amp;title=TfDiagnosticTransport" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_diagnostic_transport.html">TfDiagnosticTransport</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_diagnostic_trap.html&amp;title=TfDiagnosticTrap" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_diagnostic_trap.html">TfDiagnosticTrap</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_enum.html&amp;title=TfEnum" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_enum.html">TfEnum</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_error_mark.html&amp;title=TfErrorMark" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_error_mark.html">TfErrorMark</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_error_transport.html&amp;title=TfErrorTransport" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_error_transport.html">TfErrorTransport</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_iterator.html&amp;title=TfIterator%3C+T%2C+Reverse+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_iterator.html">TfIterator&lt; T, Reverse &gt;</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_pattern_matcher.html&amp;title=TfPatternMatcher" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_pattern_matcher.html">TfPatternMatcher</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_pointer_and_bits.html&amp;title=TfPointerAndBits%3C+T+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_pointer_and_bits.html">TfPointerAndBits&lt; T &gt;</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_py_arg.html&amp;title=TfPyArg" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_py_arg.html">TfPyArg</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_tf_py_call.html&amp;title=TfPyCall%3C+Return+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_tf_py_call.html">TfPyCall&lt; Return &gt;</a></li>
+<li><a href="class_tf_py_lock.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_tf_py_lock.html">TfPyLock</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_py_method_result.html&amp;title=TfPyMethodResult" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_py_method_result.html">TfPyMethodResult</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_py_obj_wrapper.html&amp;title=TfPyObjWrapper" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_py_obj_wrapper.html">TfPyObjWrapper</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_py_override.html&amp;title=TfPyOverride" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_py_override.html">TfPyOverride</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_tf_py_raise_on_error.html&amp;title=TfPyRaiseOnError%3C+Base+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_tf_py_raise_on_error.html">TfPyRaiseOnError&lt; Base &gt;</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/functions_func_t.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

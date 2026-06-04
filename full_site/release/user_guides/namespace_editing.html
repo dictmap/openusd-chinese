@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>页面草稿：Namespace Editing / Namespace Editing</title>
+  <link rel="icon" href="../../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    header{background:#17202a;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
+    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>页面草稿：Namespace Editing / Namespace Editing</h1>
+    <div class="meta">https://openusd.org/release/user_guides/namespace_editing.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
+      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+    </section>
+    <section data-cn-refinement="release-guide-quality-pass-003">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Namespace Editing 补充中文优先的阅读路径、关键概念说明和术语对照；英文页面名、链接、代码、命令和原文摘录继续保留，便于和官方文档逐项核对。</p>
+      <p class="en">This section adds Chinese-first reading guidance for Namespace Editing while retaining the English page name, links, code, commands, and source excerpts for comparison with the official documentation.</p>
+      <ul>
+        <li><span class="zh">Namespace editing 指在 stage 上删除、移动、重命名或重设父级一个 composed prim/property；它处理的是组合后的命名空间路径，不只是单个 layer 里的文本替换。</span></li>
+        <li><span class="zh">和直接编辑 SdfLayer 或 UsdStage 的局部操作不同，本页讨论的 namespace edit 需要考虑 LayerStack、EditTarget、path fixups 以及跨层组合后路径是否仍然一致。</span></li>
+        <li><span class="zh">relocates composition arc 是非破坏性重定位的重要机制：当资产引用来自外部或需要保持原文件稳定时，可以通过重定位表达新的命名空间布局。</span></li>
+        <li><span class="zh">阅读时应把 delete、move、rename、reparenting 看成一组有组合语义的编辑操作；中文说明只解释行为边界，API 名称和路径示例保持原样。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">命名空间编辑：</span><span class="en">namespace edit</span></li>
+        <li><span class="zh">层栈：</span><span class="en">LayerStack</span></li>
+        <li><span class="zh">编辑目标：</span><span class="en">EditTarget</span></li>
+        <li><span class="zh">重定位组合弧：</span><span class="en">relocates</span></li>
+        <li><span class="zh">重设父级：</span><span class="en">reparenting</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 1 级标题：Namespace Editing</span><span class="en">Namespace Editing</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">A namespace edit is an operation that removes or changes the namespace path of a composed prim or property on a stage. Edit operations currently include deleting and moving (renaming and/or reparenting) a composed prim or property.</p>
+<p class="en">While it is possible to do some of these operations using Sdf or UsdStage APIs, these APIs can only edit prims or properties on a single layer. Additionally, any paths targeting the moved or deleted objects will need to be manually fixed. Use namespace editing to easily and safely delete or move prims and properties across the LayerStack . Namespace editing handles edits for objects composed from multiple layers and handles changing EditTargets or fixing paths targeting the edited objects, automatically.</p>
+<p class="en">Namespace also provides non-destructive editing of prims defined across composition arcs by adding the relocates composition arc if needed. By using relocates, namespace editing ensures non-destructive edits by not modifying the source of a composition arc. This is necessary for workflows where you might not be able to make changes to the source of the composition arc directly (e.g. you’re referencing prims from assets maintained by a different department that are also being referenced elsewhere).</p>
+    </section>
+<section>
+      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
+<pre><code>#usda 1.0 ( ) def Scope &quot;modelScope&quot; ( ) { def &quot;model1&quot; ( ) { custom string department = &quot;department A&quot; } }</code></pre>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../../site/glossary.html" data-local-route="mapped" data-official-href="https://openusd.org/release/glossary.html">LayerStack</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/user_guides/namespace_editing.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

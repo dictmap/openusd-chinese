@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members</h1>
+    <div class="meta">https://openusd.org/release/api/globals_func_w.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section data-cn-refinement="api-file-members-mixed-quality-pass-033">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 File Members - Functions - W 补充中文优先的索引用法、模块边界和术语对照；英文页面名、API 符号、函数名、头文件名、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first index notes, module boundaries, and terminology for File Members - Functions - W while retaining English page names, API symbols, function names, header names, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">globals_func_w.html 是 File Members 函数子索引 W 段，主要覆盖 Work 模块的并发限制、并行循环、并行归约、排序和 detached task 工具。</span></li>
+        <li><span class="zh">`WorkGetConcurrencyLimit()`、`WorkSetConcurrencyLimit()`、`WorkSetMaximumConcurrencyLimit()` 等函数来自 `threadLimits.h`，用于查询和设置 Work 并发上限。</span></li>
+        <li><span class="zh">`WorkParallelForEach()`、`WorkParallelForN()`、`WorkParallelForTBBRange()` 和 `WorkSerialForN()` 来自 `loops.h`，表示并行或串行循环调度入口。</span></li>
+        <li><span class="zh">`WorkParallelReduceN()` 与 `WorkParallelSort()` 分别来自 `reduce.h` 和 `sort.h`，属于批量任务的并行归约和排序工具；`WorkRunDetachedTask()` 则指向后台 detached task。</span></li>
+        <li><span class="zh">本页是 Work task utilities 的函数导航页；中文导读保留 Work 函数名、TBB、thread limits 等英文术语，帮助读者从索引跳入具体头文件。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">并发上限：</span><span class="en">concurrency limit</span></li>
+        <li><span class="zh">并行循环：</span><span class="en">parallel loop</span></li>
+        <li><span class="zh">并行归约：</span><span class="en">parallel reduce</span></li>
+        <li><span class="zh">分离任务：</span><span class="en">detached task</span></li>
+        <li><span class="zh">作用域化并行：</span><span class="en">scoped parallelism</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 3 级结构：- w -</span><span class="en">- w -</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">Index entries include: WorkGetConcurrencyLimit() : threadLimits.h; WorkGetConcurrencyLimitSetting() : threadLimits.h; WorkGetPhysicalConcurrencyLimit() : threadLimits.h; WorkHasConcurrency() : threadLimits.h; WorkMoveDestroyAsync() : utils.h; WorkParallelForEach() : loops.h; WorkParallelForN() : loops.h; WorkParallelForTBBRange() : loops.h; WorkParallelReduceN() : reduce.h; WorkParallelSort() : sort.h; WorkRunDetachedTask() : detachedTask.h; WorkSerialForN() : loops.h; WorkSetConcurrencyLimit() : threadLimits.h; WorkSetConcurrencyLimitArgument() : threadLimits.h; WorkSetMaximumConcurrencyLimit() : threadLimits...</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fthread_limits_8h.html&amp;title=threadLimits.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/thread_limits_8h.html">threadLimits.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fbase_2work_2utils_8h.html&amp;title=utils.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/base_2work_2utils_8h.html">utils.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Floops_8h.html&amp;title=loops.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/loops_8h.html">loops.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Freduce_8h.html&amp;title=reduce.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/reduce_8h.html">reduce.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fsort_8h.html&amp;title=sort.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/sort_8h.html">sort.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fdetached_task_8h.html&amp;title=detachedTask.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/detached_task_8h.html">detachedTask.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fwith_scoped_parallelism_8h.html&amp;title=withScopedParallelism.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/with_scoped_parallelism_8h.html">withScopedParallelism.h</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/globals_func_w.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

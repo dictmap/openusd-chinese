@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>类参考草稿：GfDualQuatf Class Reference final Linear Algebra / GfDualQuatf Class Reference final Linear Algebra</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>类参考草稿：GfDualQuatf Class Reference final Linear Algebra / GfDualQuatf Class Reference final Linear Algebra</h1>
+    <div class="meta">https://openusd.org/release/api/class_gf_dual_quatf.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section data-cn-refinement="api-class-quality-pass-034">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 GfDualQuatf Class Reference 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for GfDualQuatf Class Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`GfDualQuatf` 是 Gf Linear Algebra 中的 float 精度 dual quaternion 类型，包含 real part quaternion 和 dual part quaternion。</span></li>
+        <li><span class="zh">dual quaternion 用于表示 rotation 与 translation 的组合，常见于刚体变换、蒙皮或插值语境；本页引用的论文链接用于进一步理解 dual quaternion 数学背景。</span></li>
+        <li><span class="zh">关联类型包括 `GfQuatf`、`GfVec3f`、`GfDualQuatd`、`GfDualQuath` 和 `GF_MIN_VECTOR_LENGTH`，说明本类与 float/double/half 精度变体及向量长度容差相关。</span></li>
+        <li><span class="zh">阅读本类时应区分 quaternion 的 real part 与 dual part，并保留 dual、real、rotation、translation、normalize 等数学术语原样或中英对照。</span></li>
+        <li><span class="zh">本轮不展开每个构造函数和运算符签名，只补类定位、数学用途、相关类型和术语；后续完整翻译应覆盖构造、归一化、变换提取和运算符。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">对偶四元数：</span><span class="en">dual quaternion</span></li>
+        <li><span class="zh">实部：</span><span class="en">real part</span></li>
+        <li><span class="zh">对偶部：</span><span class="en">dual part</span></li>
+        <li><span class="zh">旋转和平移：</span><span class="en">rotation and translation</span></li>
+        <li><span class="zh">线性代数：</span><span class="en">linear algebra</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 1 级结构：GfDualQuatf Class Reference final Linear Algebra</span><span class="en">GfDualQuatf Class Reference final Linear Algebra</span></li>
+<li><span class="zh">第 2 级结构：Public Types</span><span class="en">Public Types</span></li>
+<li><span class="zh">第 2 级结构：Public Member Functions</span><span class="en">Public Member Functions</span></li>
+<li><span class="zh">第 2 级结构：Static Public Member Functions</span><span class="en">Static Public Member Functions</span></li>
+<li><span class="zh">第 2 级结构：Friends</span><span class="en">Friends</span></li>
+<li><span class="zh">第 2 级结构：Detailed Description</span><span class="en">Detailed Description</span></li>
+<li><span class="zh">第 2 级结构：Member Typedef Documentation</span><span class="en">Member Typedef Documentation</span></li>
+<li><span class="zh">第 2 级结构：◆ ScalarType</span><span class="en">◆ ScalarType</span></li>
+<li><span class="zh">第 2 级结构：Constructor &amp; Destructor Documentation</span><span class="en">Constructor &amp; Destructor Documentation</span></li>
+<li><span class="zh">第 2 级结构：◆ GfDualQuatf() [1/7]</span><span class="en">◆ GfDualQuatf() [1/7]</span></li>
+<li><span class="zh">第 2 级结构：◆ GfDualQuatf() [2/7]</span><span class="en">◆ GfDualQuatf() [2/7]</span></li>
+<li><span class="zh">第 2 级结构：◆ GfDualQuatf() [3/7]</span><span class="en">◆ GfDualQuatf() [3/7]</span></li>
+<li><span class="zh">第 2 级结构：◆ GfDualQuatf() [4/7]</span><span class="en">◆ GfDualQuatf() [4/7]</span></li>
+<li><span class="zh">第 2 级结构：◆ GfDualQuatf() [5/7]</span><span class="en">◆ GfDualQuatf() [5/7]</span></li>
+<li><span class="zh">第 2 级结构：◆ GfDualQuatf() [6/7]</span><span class="en">◆ GfDualQuatf() [6/7]</span></li>
+<li><span class="zh">第 2 级结构：◆ GfDualQuatf() [7/7]</span><span class="en">◆ GfDualQuatf() [7/7]</span></li>
+<li><span class="zh">第 2 级结构：Member Function Documentation</span><span class="en">Member Function Documentation</span></li>
+<li><span class="zh">第 2 级结构：◆ GetConjugate()</span><span class="en">◆ GetConjugate()</span></li>
+<li><span class="zh">第 2 级结构：◆ GetDual()</span><span class="en">◆ GetDual()</span></li>
+<li><span class="zh">第 2 级结构：◆ GetIdentity()</span><span class="en">◆ GetIdentity()</span></li>
+<li><span class="zh">第 2 级结构：◆ GetInverse()</span><span class="en">◆ GetInverse()</span></li>
+<li><span class="zh">第 2 级结构：◆ GetLength()</span><span class="en">◆ GetLength()</span></li>
+<li><span class="zh">第 2 级结构：◆ GetNormalized()</span><span class="en">◆ GetNormalized()</span></li>
+<li><span class="zh">第 2 级结构：◆ GetReal()</span><span class="en">◆ GetReal()</span></li>
+<li><span class="zh">第 2 级结构：◆ GetTranslation()</span><span class="en">◆ GetTranslation()</span></li>
+<li><span class="zh">第 2 级结构：◆ GetZero()</span><span class="en">◆ GetZero()</span></li>
+<li><span class="zh">第 2 级结构：◆ Normalize()</span><span class="en">◆ Normalize()</span></li>
+<li><span class="zh">第 2 级结构：◆ operator!=()</span><span class="en">◆ operator!=()</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">Basic type: a real part quaternion and a dual part quaternion. This class represents a generalized dual quaternion that has a real part and a dual part quaternions. Dual quaternions are used to represent a combination of rotation and translation. References: https://www.cs.utah.edu/~ladislav/kavan06dual/kavan06dual.pdf https://faculty.sites.iastate.edu/jia/files/inline-files/dual-quaternion.pdf Definition at line 49 of file dualQuatf.h .</p>
+<p class="en">Basic type: a real part quaternion and a dual part quaternion. More...</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_dual_quatf-members.html&amp;title=List+of+all+members" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_dual_quatf-members.html">List of all members</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fgroup__group__gf___linear_algebra.html&amp;title=Linear+Algebra" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/group__group__gf___linear_algebra.html">Linear Algebra</a></li>
+<li><a href="class_gf_dual_quatf.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_gf_dual_quatf.html">More...</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fdual_quatf_8h_source.html&amp;title=dualQuatf.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/dual_quatf_8h_source.html">dualQuatf.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_quatf.html&amp;title=GfQuatf" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_quatf.html">GfQuatf</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_vec3f.html&amp;title=GfVec3f" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_vec3f.html">GfVec3f</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_dual_quatd.html&amp;title=GfDualQuatd" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_dual_quatd.html">GfDualQuatd</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_dual_quath.html&amp;title=GfDualQuath" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_dual_quath.html">GfDualQuath</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fgroup__group__gf___basic_math.html&amp;title=GF_MIN_VECTOR_LENGTH" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/group__group__gf___basic_math.html">GF_MIN_VECTOR_LENGTH</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/class_gf_dual_quatf.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

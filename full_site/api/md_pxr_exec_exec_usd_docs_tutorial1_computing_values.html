@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API 页面草稿：OpenExec Tutorial 1: Computing Values / OpenExec Tutorial 1: Computing Values</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>API 页面草稿：OpenExec Tutorial 1: Computing Values / OpenExec Tutorial 1: Computing Values</h1>
+    <div class="meta">https://openusd.org/release/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 1 级结构：OpenExec Tutorial 1: Computing Values</span><span class="en">OpenExec Tutorial 1: Computing Values</span></li>
+<li><span class="zh">第 1 级结构：Overview</span><span class="en">Overview</span></li>
+<li><span class="zh">第 1 级结构：Create a UsdStage</span><span class="en">Create a UsdStage</span></li>
+<li><span class="zh">第 1 级结构：Create an ExecUsdSystem</span><span class="en">Create an ExecUsdSystem</span></li>
+<li><span class="zh">第 1 级结构：Build an ExecUsdRequest</span><span class="en">Build an ExecUsdRequest</span></li>
+<li><span class="zh">第 1 级结构：Prepare the request</span><span class="en">Prepare the request</span></li>
+<li><span class="zh">第 1 级结构：Compute values</span><span class="en">Compute values</span></li>
+<li><span class="zh">第 1 级结构：Extract computed values</span><span class="en">Extract computed values</span></li>
+<li><span class="zh">第 1 级结构：Putting it all together</span><span class="en">Putting it all together</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">The code used in this tutorial is available in USD/extras/exec/examples/computingValues/ Overview The purpose of this tutorial is to demonstrate how to use OpenExec APIs to request values to be computed. For this tutorial, we will make use of the computeLocalToWorldTransform computations provided by UsdGeomXformable prims. The result of this computation on a given Xform is a 4x4 matrix that transforms points local to that Xform into points in world-space. The result of this computation depends on two values: The...</p>
+<p class="en">Note: The API that is presented here is the lowest-level API, designed for performance-intensive clients, such as an imaging system. OpenExec will eventually include convenience APIs, layered on top of the API shown here, for use cases that don't require maximum performance and for use cases that adhere to certain patterns that allow for more convenient API while still maintaining maxiumum performance.</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_xformable.html&amp;title=UsdGeomXformable" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_xformable.html">UsdGeomXformable</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_stage.html&amp;title=UsdStage" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_stage.html">UsdStage</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_exec_usd_system.html&amp;title=ExecUsdSystem" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_exec_usd_system.html">ExecUsdSystem</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fexec_usd_2system_8h_source.html&amp;title=system.h%3A46" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/exec_usd_2system_8h_source.html">system.h:46</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_exec_usd_request.html&amp;title=ExecUsdRequest" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_exec_usd_request.html">ExecUsdRequest</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_exec_usd_value_key.html&amp;title=ExecUsdValueKey" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_exec_usd_value_key.html">ExecUsdValueKey</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_object.html&amp;title=UsdObject" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_object.html">UsdObject</a></li>
+<li><a href="class_tf_token.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_tf_token.html">TfToken</a></li>
+<li><a href="class_sdf_path.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_sdf_path.html">SdfPath</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fexec_usd_2request_8h_source.html&amp;title=request.h%3A32" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/exec_usd_2request_8h_source.html">request.h:32</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fpath_8h_source.html&amp;title=path.h%3A281" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/path_8h_source.html">path.h:281</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_exec_usd_cache_view.html&amp;title=ExecUsdCacheView" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_exec_usd_cache_view.html">ExecUsdCacheView</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fexec_usd_2cache_view_8h_source.html&amp;title=cacheView.h%3A28" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/exec_usd_2cache_view_8h_source.html">cacheView.h:28</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vt_value.html&amp;title=VtValue" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vt_value.html">VtValue</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_matrix4d.html&amp;title=GfMatrix4d" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_matrix4d.html">GfMatrix4d</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fmatrix4d_8h_source.html&amp;title=matrix4d.h%3A71" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/matrix4d_8h_source.html">matrix4d.h:71</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fvt_2value_8h_source.html&amp;title=value.h%3A90" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/vt_2value_8h_source.html">value.h:90</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fmatrix4d_8h.html&amp;title=pxr%2Fbase%2Fgf%2Fmatrix4d.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/matrix4d_8h.html">pxr/base/gf/matrix4d.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fdiagnostic_lite_8h.html&amp;title=pxr%2Fbase%2Ftf%2FdiagnosticLite.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/diagnostic_lite_8h.html">pxr/base/tf/diagnosticLite.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fexec_2exec_geom_2tokens_8h.html&amp;title=pxr%2Fexec%2FexecGeom%2Ftokens.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/exec_2exec_geom_2tokens_8h.html">pxr/exec/execGeom/tokens.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fexec_usd_2cache_view_8h.html&amp;title=pxr%2Fexec%2FexecUsd%2FcacheView.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/exec_usd_2cache_view_8h.html">pxr/exec/execUsd/cacheView.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fexec_usd_2request_8h.html&amp;title=pxr%2Fexec%2FexecUsd%2Frequest.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/exec_usd_2request_8h.html">pxr/exec/execUsd/request.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fexec_usd_2system_8h.html&amp;title=pxr%2Fexec%2FexecUsd%2Fsystem.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/exec_usd_2system_8h.html">pxr/exec/execUsd/system.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fexec_usd_2value_key_8h.html&amp;title=pxr%2Fexec%2FexecUsd%2FvalueKey.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/exec_usd_2value_key_8h.html">pxr/exec/execUsd/valueKey.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fusd_2usd_2stage_8h.html&amp;title=pxr%2Fusd%2Fusd%2Fstage.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/usd_2usd_2stage_8h.html">pxr/usd/usd/stage.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fgroup__group__tf___diagnostic.html&amp;title=TF_AXIOM" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/group__group__tf___diagnostic.html">TF_AXIOM</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fcolor_8h.html&amp;title=GfIsClose" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/color_8h.html">GfIsClose</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_vec3d.html&amp;title=GfVec3d" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_vec3d.html">GfVec3d</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fvec3d_8h_source.html&amp;title=vec3d.h%3A46" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/vec3d_8h_source.html">vec3d.h:46</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fcolor_8h_source.html&amp;title=color.h%3A114" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/color_8h_source.html">color.h:114</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fbase_2tf_2diagnostic_8h_source.html&amp;title=diagnostic.h%3A193" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/base_2tf_2diagnostic_8h_source.html">diagnostic.h:193</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

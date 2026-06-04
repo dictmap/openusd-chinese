@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>类参考草稿：GfMatrix2f Class Reference Linear Algebra / GfMatrix2f Class Reference Linear Algebra</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>类参考草稿：GfMatrix2f Class Reference Linear Algebra / GfMatrix2f Class Reference Linear Algebra</h1>
+    <div class="meta">https://openusd.org/release/api/class_gf_matrix2f.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section data-cn-refinement="api-class-quality-pass-034">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 GfMatrix2f Class Reference 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for GfMatrix2f Class Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`GfMatrix2f` 是 Gf Linear Algebra 中的 2x2 float matrix 基础类型，用于存储 2x2 浮点矩阵。</span></li>
+        <li><span class="zh">英文摘录明确矩阵按 row-major order 定义，因此 `matrix[i][j]` 表示第 i 行第 j 列的元素；这个索引约定必须在中文中清楚保留。</span></li>
+        <li><span class="zh">关联类型包括 `GfVec2f` 和 `GfMatrix2d`，说明它与二维向量和 double 精度 2x2 矩阵有对应关系。</span></li>
+        <li><span class="zh">阅读本类时应重点关注构造、identity/zero、transpose、inverse、determinant、row/column 访问、乘法和比较等矩阵基础操作；具体方法名以后续 member list 为准。</span></li>
+        <li><span class="zh">本页不是几何场景对象，而是低层数学值类型；中文导读保留 `GfMatrix2f`、`GfVec2f`、row-major、matrix[i][j] 等 API 和数学符号。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">2x2 矩阵：</span><span class="en">2x2 matrix</span></li>
+        <li><span class="zh">float 元素：</span><span class="en">float elements</span></li>
+        <li><span class="zh">行主序：</span><span class="en">row-major order</span></li>
+        <li><span class="zh">矩阵索引：</span><span class="en">matrix index</span></li>
+        <li><span class="zh">线性代数：</span><span class="en">linear algebra</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 1 级结构：GfMatrix2f Class Reference Linear Algebra</span><span class="en">GfMatrix2f Class Reference Linear Algebra</span></li>
+<li><span class="zh">第 2 级结构：Public Types</span><span class="en">Public Types</span></li>
+<li><span class="zh">第 2 级结构：Public Member Functions</span><span class="en">Public Member Functions</span></li>
+<li><span class="zh">第 2 级结构：Static Public Attributes</span><span class="en">Static Public Attributes</span></li>
+<li><span class="zh">第 2 级结构：Friends</span><span class="en">Friends</span></li>
+<li><span class="zh">第 2 级结构：Detailed Description</span><span class="en">Detailed Description</span></li>
+<li><span class="zh">第 2 级结构：Member Typedef Documentation</span><span class="en">Member Typedef Documentation</span></li>
+<li><span class="zh">第 2 级结构：◆ ScalarType</span><span class="en">◆ ScalarType</span></li>
+<li><span class="zh">第 2 级结构：Constructor &amp; Destructor Documentation</span><span class="en">Constructor &amp; Destructor Documentation</span></li>
+<li><span class="zh">第 2 级结构：◆ GfMatrix2f() [1/9]</span><span class="en">◆ GfMatrix2f() [1/9]</span></li>
+<li><span class="zh">第 2 级结构：◆ GfMatrix2f() [2/9]</span><span class="en">◆ GfMatrix2f() [2/9]</span></li>
+<li><span class="zh">第 2 级结构：◆ GfMatrix2f() [3/9]</span><span class="en">◆ GfMatrix2f() [3/9]</span></li>
+<li><span class="zh">第 2 级结构：◆ GfMatrix2f() [4/9]</span><span class="en">◆ GfMatrix2f() [4/9]</span></li>
+<li><span class="zh">第 2 级结构：◆ GfMatrix2f() [5/9]</span><span class="en">◆ GfMatrix2f() [5/9]</span></li>
+<li><span class="zh">第 2 级结构：◆ GfMatrix2f() [6/9]</span><span class="en">◆ GfMatrix2f() [6/9]</span></li>
+<li><span class="zh">第 2 级结构：◆ GfMatrix2f() [7/9]</span><span class="en">◆ GfMatrix2f() [7/9]</span></li>
+<li><span class="zh">第 2 级结构：◆ GfMatrix2f() [8/9]</span><span class="en">◆ GfMatrix2f() [8/9]</span></li>
+<li><span class="zh">第 2 级结构：◆ GfMatrix2f() [9/9]</span><span class="en">◆ GfMatrix2f() [9/9]</span></li>
+<li><span class="zh">第 2 级结构：Member Function Documentation</span><span class="en">Member Function Documentation</span></li>
+<li><span class="zh">第 2 级结构：◆ data() [1/2]</span><span class="en">◆ data() [1/2]</span></li>
+<li><span class="zh">第 2 级结构：◆ data() [2/2]</span><span class="en">◆ data() [2/2]</span></li>
+<li><span class="zh">第 2 级结构：◆ Get()</span><span class="en">◆ Get()</span></li>
+<li><span class="zh">第 2 级结构：◆ GetArray() [1/2]</span><span class="en">◆ GetArray() [1/2]</span></li>
+<li><span class="zh">第 2 级结构：◆ GetArray() [2/2]</span><span class="en">◆ GetArray() [2/2]</span></li>
+<li><span class="zh">第 2 级结构：◆ GetColumn()</span><span class="en">◆ GetColumn()</span></li>
+<li><span class="zh">第 2 级结构：◆ GetDeterminant()</span><span class="en">◆ GetDeterminant()</span></li>
+<li><span class="zh">第 2 级结构：◆ GetInverse()</span><span class="en">◆ GetInverse()</span></li>
+<li><span class="zh">第 2 级结构：◆ GetRow()</span><span class="en">◆ GetRow()</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">Stores a 2x2 matrix of float elements. A basic type. Matrices are defined to be in row-major order, so matrix[i][j] indexes the element in the i th row and the j th column. Definition at line 44 of file matrix2f.h .</p>
+<p class="en">Stores a 2x2 matrix of float elements. More...</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_matrix2f-members.html&amp;title=List+of+all+members" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_matrix2f-members.html">List of all members</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fgroup__group__gf___linear_algebra.html&amp;title=Linear+Algebra" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/group__group__gf___linear_algebra.html">Linear Algebra</a></li>
+<li><a href="class_gf_matrix2f.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_gf_matrix2f.html">More...</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fmatrix2f_8h_source.html&amp;title=matrix2f.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/matrix2f_8h_source.html">matrix2f.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_vec2f.html&amp;title=GfVec2f" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_vec2f.html">GfVec2f</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_matrix2d.html&amp;title=GfMatrix2d" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_matrix2d.html">GfMatrix2d</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/class_gf_matrix2f.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

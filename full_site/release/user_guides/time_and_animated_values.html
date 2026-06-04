@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>时间与动画值 / Time and Animated Values</title>
+  <link rel="icon" href="../../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    header{background:#17202a;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
+    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>时间与动画值 / Time and Animated Values</h1>
+    <div class="meta">https://openusd.org/release/user_guides/time_and_animated_values.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
+      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+    </section>
+    <section>
+      <h2>中文导读 / Chinese Reading Notes</h2>
+      <ul>
+<li><span class="zh">该页解释 USD 中 TimeCode 与 TimeSamples 的建模方式：动画值不是单一静态值，而是按时间坐标变化。</span></li>
+<li><span class="zh">TimeCode 在 USD 中是无单位 double 值，不等同于 FPS 或 SMPTE；实际播放时间通过 timeCodesPerSecond、framesPerSecond 等元数据映射。</span></li>
+<li><span class="zh">页面覆盖 layer 的 start/end time、TimeCode 范围、clips，以及 composition 过程中的自动和显式 timeCode remapping。</span></li>
+<li><span class="zh">本地页保留 timeSamples、timecode typed attribute 和 metadata 的 USDA 示例，方便检查动画属性与时间码值类型语法。</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 1 级标题：Time and Animated Values</span><span class="en">Time and Animated Values</span></li>
+<li><span class="zh">第 2 级标题：Understanding TimeCodes</span><span class="en">Understanding TimeCodes</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">OpenUSD supports authoring animated values that do not resolve to a single static value but vary in value over time. This functionality is typically used for describing animations in a USD scene, but can be used for any scenario where time-varying values are needed, such as simulations.</p>
+<p class="en">To support animated values, OpenUSD provides features to author animated values, query and interpolate values over time, and work with “clips” of animated data.</p>
+<p class="en">Working with Automatic and Explicit TimeCode Remapping Across Composition</p>
+    </section>
+<section>
+      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
+<pre><code>double xformOp:translateX . timeSamples = { 1 : 0 , 25 : 10 , 99 : 5 , }</code></pre>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../../site/glossary.html" data-local-route="mapped" data-official-href="https://openusd.org/release/glossary.html">TimeSamples</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/user_guides/time_and_animated_values.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>性能指标 / Performance Metrics</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    header{background:#17202a;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>性能指标 / Performance Metrics</h1>
+    <div class="meta">https://openusd.org/release/ref_performance_metrics.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
+      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 2 级标题：What We Measure</span><span class="en">What We Measure</span></li>
+<li><span class="zh">第 2 级标题：What Environment Is Used</span><span class="en">What Environment Is Used</span></li>
+<li><span class="zh">第 3 级标题：Linux</span><span class="en">Linux</span></li>
+<li><span class="zh">第 3 级标题：macOS</span><span class="en">macOS</span></li>
+<li><span class="zh">第 3 级标题：Windows</span><span class="en">Windows</span></li>
+<li><span class="zh">第 3 级标题：USD Build</span><span class="en">USD Build</span></li>
+<li><span class="zh">第 2 级标题：Metrics</span><span class="en">Metrics</span></li>
+<li><span class="zh">第 3 级标题：Performance Graphs Per Platform</span><span class="en">Performance Graphs Per Platform</span></li>
+<li><span class="zh">第 3 级标题：Standard Shader Ball</span><span class="en">Standard Shader Ball</span></li>
+<li><span class="zh">第 3 级标题：Kitchen Set</span><span class="en">Kitchen Set</span></li>
+<li><span class="zh">第 3 级标题：ALab</span><span class="en">ALab</span></li>
+<li><span class="zh">第 3 级标题：Moore Lane</span><span class="en">Moore Lane</span></li>
+<li><span class="zh">第 2 级标题：Running Performance Metrics Locally</span><span class="en">Running Performance Metrics Locally</span></li>
+<li><span class="zh">第 3 级标题：Adding Custom Metrics</span><span class="en">Adding Custom Metrics</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">As of release 24.11, for each release, USD generates performance metrics using a specific set of assets and specific hardware and software configurations. This page describes what metrics are collected, what hardware and software configurations are used, the actual metrics results, and how to generate the metrics locally.</p>
+<p class="en">For a given asset, our performance script captures the following metrics by default (items in bold are reported on this page):</p>
+<p class="en">Time to load and configure USD plugins for usdview</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/release_index.html" data-local-route="mapped" data-official-href="https://openusd.org/release/index.html">Universal Scene Description</a></li>
+<li><a href="../../site/intro.html" data-local-route="mapped" data-official-href="https://openusd.org/release/intro.html">Introduction to USD</a></li>
+<li><a href="intro_to_openexec.html" data-local-route="mapped" data-official-href="https://openusd.org/release/intro_to_openexec.html">Introduction to OpenExec</a></li>
+<li><a href="../../site/glossary.html" data-local-route="mapped" data-official-href="https://openusd.org/release/glossary.html">Terms and Concepts</a></li>
+<li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Tutorials</a></li>
+<li><a href="tut_helloworld.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_helloworld.html">Hello World - Creating Your First USD Stage</a></li>
+<li><a href="tut_helloworld_redux.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_helloworld_redux.html">Hello World Redux - Using Generic Prims</a></li>
+<li><a href="tut_inspect_and_author_props.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_inspect_and_author_props.html">Inspecting and Authoring Properties</a></li>
+<li><a href="tut_referencing_layers.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_referencing_layers.html">Referencing Layers</a></li>
+<li><a href="tut_converting_between_layer_formats.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_converting_between_layer_formats.html">Converting Between Layer Formats</a></li>
+<li><a href="tut_traversing_stage.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_traversing_stage.html">Traversing a Stage</a></li>
+<li><a href="tut_authoring_variants.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_authoring_variants.html">Authoring Variants</a></li>
+<li><a href="tut_variants_example_in_katana.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_variants_example_in_katana.html">Variants Example in Katana</a></li>
+<li><a href="tut_xforms.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_xforms.html">Transformations, Animation, and Layer Offsets</a></li>
+<li><a href="tut_simple_shading.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_simple_shading.html">Simple Shading in USD</a></li>
+<li><a href="tut_end_to_end.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_end_to_end.html">End to End Example</a></li>
+<li><a href="tut_houdini_example.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_houdini_example.html">Houdini USD Example Workflow</a></li>
+<li><a href="tut_generating_new_schema.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_generating_new_schema.html">Generating New Schema Classes</a></li>
+<li><a href="tut_usdview_plugin.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usdview_plugin.html">Creating a Usdview Plugin</a></li>
+<li><a href="dl_downloads.html" data-local-route="mapped" data-official-href="https://openusd.org/release/dl_downloads.html">Downloads and Videos</a></li>
+<li><a href="usd_products.html" data-local-route="mapped" data-official-href="https://openusd.org/release/usd_products.html">Products Using USD</a></li>
+<li><a href="user_guides/collections_and_patterns.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/collections_and_patterns.html">Collections and Patterns</a></li>
+<li><a href="user_guides/color_user_guide.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/color_user_guide.html">Color</a></li>
+<li><a href="user_guides/namespace_editing.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/namespace_editing.html">Namespace Editing</a></li>
+<li><a href="user_guides/render_user_guide.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html">Rendering with USD</a></li>
+<li><a href="user_guides/primvars.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/primvars.html">Primvars</a></li>
+<li><a href="user_guides/schemas/index.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/index.html">Schema Domains</a></li>
+<li><a href="user_guides/schemas/usdLux/usdLux_toc.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/usdLux_toc.html">Lights (usdLux)</a></li>
+<li><a href="user_guides/schemas/usdLux/overview.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/overview.html">Overview</a></li>
+<li><a href="user_guides/schemas/usdLux/BoundableLightBase.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/BoundableLightBase.html">BoundableLightBase</a></li>
+<li><a href="user_guides/schemas/usdLux/CylinderLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/CylinderLight.html">CylinderLight</a></li>
+<li><a href="user_guides/schemas/usdLux/DiskLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DiskLight.html">DiskLight</a></li>
+<li><a href="user_guides/schemas/usdLux/DistantLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DistantLight.html">DistantLight</a></li>
+<li><a href="user_guides/schemas/usdLux/DomeLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight.html">DomeLight</a></li>
+<li><a href="user_guides/schemas/usdLux/DomeLight_1.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight_1.html">DomeLight_1</a></li>
+<li><a href="user_guides/schemas/usdLux/GeometryLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/GeometryLight.html">GeometryLight</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/ref_performance_metrics.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

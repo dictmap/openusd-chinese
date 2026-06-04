@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>类参考草稿：SdfLayer Class / SdfLayer Class</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>类参考草稿：SdfLayer Class / SdfLayer Class</h1>
+    <div class="meta">https://openusd.org/release/api/class_sdf_layer.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 1 级结构：SdfLayer Class Reference</span><span class="en">SdfLayer Class Reference</span></li>
+<li><span class="zh">第 2 级结构：Classes</span><span class="en">Classes</span></li>
+<li><span class="zh">第 2 级结构：Public Member Functions</span><span class="en">Public Member Functions</span></li>
+<li><span class="zh">第 2 级结构：Static Public Member Functions</span><span class="en">Static Public Member Functions</span></li>
+<li><span class="zh">第 2 级结构：Protected Member Functions</span><span class="en">Protected Member Functions</span></li>
+<li><span class="zh">第 2 级结构：Friends</span><span class="en">Friends</span></li>
+<li><span class="zh">第 2 级结构：Primary API</span><span class="en">Primary API</span></li>
+<li><span class="zh">第 2 级结构：Traversal</span><span class="en">Traversal</span></li>
+<li><span class="zh">第 2 级结构：Prims</span><span class="en">Prims</span></li>
+<li><span class="zh">第 2 级结构：File I/O</span><span class="en">File I/O</span></li>
+<li><span class="zh">第 2 级结构：Identification</span><span class="en">Identification</span></li>
+<li><span class="zh">第 2 级结构：Metadata</span><span class="en">Metadata</span></li>
+<li><span class="zh">第 2 级结构：Muting</span><span class="en">Muting</span></li>
+<li><span class="zh">第 2 级结构：Additional Inherited Members</span><span class="en">Additional Inherited Members</span></li>
+<li><span class="zh">第 2 级结构：Detailed Description</span><span class="en">Detailed Description</span></li>
+<li><span class="zh">第 2 级结构：Member Typedef Documentation</span><span class="en">Member Typedef Documentation</span></li>
+<li><span class="zh">第 2 级结构：◆ FileFormatArguments</span><span class="en">◆ FileFormatArguments</span></li>
+<li><span class="zh">第 2 级结构：◆ RootPrimsView</span><span class="en">◆ RootPrimsView</span></li>
+<li><span class="zh">第 2 级结构：◆ TraversalFunction</span><span class="en">◆ TraversalFunction</span></li>
+<li><span class="zh">第 2 级结构：Constructor &amp; Destructor Documentation</span><span class="en">Constructor &amp; Destructor Documentation</span></li>
+<li><span class="zh">第 2 级结构：◆ ~SdfLayer()</span><span class="en">◆ ~SdfLayer()</span></li>
+<li><span class="zh">第 2 级结构：◆ SdfLayer()</span><span class="en">◆ SdfLayer()</span></li>
+<li><span class="zh">第 2 级结构：Member Function Documentation</span><span class="en">Member Function Documentation</span></li>
+<li><span class="zh">第 2 级结构：◆ AddToMutedLayers()</span><span class="en">◆ AddToMutedLayers()</span></li>
+<li><span class="zh">第 2 级结构：◆ Apply()</span><span class="en">◆ Apply()</span></li>
+<li><span class="zh">第 2 级结构：◆ ApplyRootPrimOrder()</span><span class="en">◆ ApplyRootPrimOrder()</span></li>
+<li><span class="zh">第 2 级结构：◆ CanApply()</span><span class="en">◆ CanApply()</span></li>
+<li><span class="zh">第 2 级结构：◆ Clear()</span><span class="en">◆ Clear()</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">A scene description container that can combine with other such containers to form simple component assets, and successively larger aggregates. The contents of an SdfLayer adhere to the SdfData data model. A layer can be ephemeral, or be an asset accessed and serialized through the ArAsset and ArResolver interfaces. The SdfLayer class provides a consistent API for accesing and serializing scene description, using any data store provided by Ar plugins. Sdf itself provides a UTF-8 text format for layers identified ...</p>
+<p class="en">A scene description container that can combine with other such containers to form simple component assets, and successively larger aggregates. More...</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdf_layer-members.html&amp;title=List+of+all+members" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdf_layer-members.html">List of all members</a></li>
+<li><a href="class_sdf_layer.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_sdf_layer.html">More...</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Flayer_8h_source.html&amp;title=layer.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/layer_8h_source.html">layer.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fgraph_legend.html&amp;title=legend" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/graph_legend.html">legend</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdf_layer_1_1_detached_layer_rules.html&amp;title=DetachedLayerRules" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdf_layer_1_1_detached_layer_rules.html">DetachedLayerRules</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdf_change_list.html&amp;title=SdfChangeList" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdf_change_list.html">SdfChangeList</a></li>
+<li><a href="class_sdf_path.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_sdf_path.html">SdfPath</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fusd_2sdf_2types_8h.html&amp;title=SdfSpecType" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/usd_2sdf_2types_8h.html">SdfSpecType</a></li>
+<li><a href="class_tf_token.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_tf_token.html">TfToken</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vt_value.html&amp;title=VtValue" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vt_value.html">VtValue</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdf_abstract_data_value.html&amp;title=SdfAbstractDataValue" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdf_abstract_data_value.html">SdfAbstractDataValue</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdf_abstract_data_const_value.html&amp;title=SdfAbstractDataConstValue" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdf_abstract_data_const_value.html">SdfAbstractDataConstValue</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdf_list_proxy.html&amp;title=SdfSubLayerProxy" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdf_list_proxy.html">SdfSubLayerProxy</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdf_layer_offset.html&amp;title=SdfLayerOffset" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdf_layer_offset.html">SdfLayerOffset</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_sdf_namespace_edit_detail.html&amp;title=SdfNamespaceEditDetail%3A%3AResult" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_sdf_namespace_edit_detail.html">SdfNamespaceEditDetail::Result</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdf_batch_namespace_edit.html&amp;title=SdfBatchNamespaceEdit" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdf_batch_namespace_edit.html">SdfBatchNamespaceEdit</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fnamespace_edit_8h.html&amp;title=SdfNamespaceEditDetailVector" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/namespace_edit_8h.html">SdfNamespaceEditDetailVector</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_ref_base.html&amp;title=TfRefBase" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_ref_base.html">TfRefBase</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_ref_ptr.html&amp;title=TfRefPtr" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_ref_ptr.html">TfRefPtr</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_weak_base.html&amp;title=TfWeakBase" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_weak_base.html">TfWeakBase</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_ar_asset_info.html&amp;title=ArAssetInfo" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_ar_asset_info.html">ArAssetInfo</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdf_schema_base.html&amp;title=SdfSchemaBase" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdf_schema_base.html">SdfSchemaBase</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdf_layer_hints.html&amp;title=SdfLayerHints" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdf_layer_hints.html">SdfLayerHints</a></li>
+<li><a href="class_sdf_children_view.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_sdf_children_view.html">SdfPrimSpecView</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdf_spec.html&amp;title=SdfSpec" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdf_spec.html">SdfSpec</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_ar_resolved_path.html&amp;title=ArResolvedPath" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_ar_resolved_path.html">ArResolvedPath</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdf_asset_path.html&amp;title=SdfAssetPath" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdf_asset_path.html">SdfAssetPath</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vt_dictionary.html&amp;title=VtDictionary" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vt_dictionary.html">VtDictionary</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdf_data.html&amp;title=SdfData" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdf_data.html">SdfData</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_ar_asset.html&amp;title=ArAsset" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_ar_asset.html">ArAsset</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_ar_resolver.html&amp;title=ArResolver" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_ar_resolver.html">ArResolver</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdf_file_format.html&amp;title=SdfFileFormat" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdf_file_format.html">SdfFileFormat</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2F_sdf__page__variable_expressions.html&amp;title=Variable+Expressions" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/_sdf__page__variable_expressions.html">Variable Expressions</a></li>
+<li><a href="deprecated.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/deprecated.html">Deprecated:</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdf_attribute_spec.html&amp;title=SdfAttributeSpec" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdf_attribute_spec.html">SdfAttributeSpec</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdf_layer_state_delegate_base.html&amp;title=SdfLayerStateDelegateBase" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdf_layer_state_delegate_base.html">SdfLayerStateDelegateBase</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdf_property_spec.html&amp;title=SdfPropertySpec" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdf_property_spec.html">SdfPropertySpec</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/class_sdf_layer.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

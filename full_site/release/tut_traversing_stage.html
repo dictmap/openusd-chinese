@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>页面草稿：Traversing a Stage / Traversing a Stage</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    header{background:#17202a;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
+    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>页面草稿：Traversing a Stage / Traversing a Stage</h1>
+    <div class="meta">https://openusd.org/release/tut_traversing_stage.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
+      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+    </section>
+    <section data-cn-refinement="release-tutorial-quality-pass-001">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Traversing a Stage 补充中文优先的阅读路径和术语说明；英文页面名、链接、代码和原文摘录继续保留，用于和官方文档一一对应。</p>
+      <p class="en">This section adds Chinese-first reading guidance for Traversing a Stage while retaining the English page name, links, code, and source excerpts for one-to-one comparison with the official documentation.</p>
+      <ul>
+        <li><span class="zh">本教程讲如何遍历 UsdStage 上组合后的 prim。它是实现成像客户端、USD 导入器、检查工具和批处理转换器时最常见的访问模式之一。</span></li>
+        <li><span class="zh">遍历看到的是 composition 之后的 composed prims，而不是单个 layer 的原始文本。也就是说，reference、sublayer、variant 等组合结果都会影响遍历视图。</span></li>
+        <li><span class="zh">教程会使用 Referencing Layers 产生的 layer，因此阅读顺序应先理解引用，再看遍历；这样更容易理解为什么 Stage 中会出现来自外部 layer 的 prim。</span></li>
+        <li><span class="zh">实际写工具时，遍历通常要结合 prim path、type name、active/loaded 状态和 schema 判断；不要只把它理解成简单的树形打印。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">遍历：</span><span class="en">Traverse</span></li>
+        <li><span class="zh">USD 舞台：</span><span class="en">UsdStage</span></li>
+        <li><span class="zh">组合后的 prim：</span><span class="en">composed prims</span></li>
+        <li><span class="zh">Prim 路径：</span><span class="en">prim path</span></li>
+        <li><span class="zh">模式：</span><span class="en">schema</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 1 级标题：Traversing a Stage</span><span class="en">Traversing a Stage</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">This tutorial covers API for traversing the composed prims on a UsdStage . This is the typical pattern for implementing imaging clients, USD importers to other DCC applications, etc. We will use the layers produced in Referencing Layers . You will need the referenced layer, HelloWorld.usda , and the referencing layer, RefExample.usda , which are in the USD/extras/usd/tutorials/traversingStage folder. Please copy that folder to a working directory and make its contents writable.</p>
+<p class="en">Open RefExample.usda in usdview and bring up the interpreter by hitting i or the Window ‣ Interpreter menu item.</p>
+<p class="en">The interpreter has a built-in usdviewApi object that contains a number of convenient variables and functions for working with usdview and the UsdStage it has open.</p>
+    </section>
+<section>
+      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
+<pre><code>&gt;&gt;&gt; [ x for x in usdviewApi . stage . Traverse ()] [Usd.Prim(&lt;/refSphere&gt;), Usd.Prim(&lt;/refSphere/world&gt;), Usd.Prim(&lt;/refSphere2&gt;), Usd.Prim(&lt;/refSphere2/world&gt;)]</code></pre>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Configure your Environment</a></li>
+<li><a href="https://github.com/PixarAnimationStudios/OpenUSD/tree/v26.05">USD 26.05</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_stage.html&amp;title=UsdStage" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_stage.html">UsdStage</a></li>
+<li><a href="tut_referencing_layers.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_referencing_layers.html">Referencing Layers</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/tut_traversing_stage.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

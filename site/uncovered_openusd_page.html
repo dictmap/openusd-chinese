@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>未覆盖 OpenUSD 页面 / Uncovered OpenUSD Page</title>
+  <link rel="icon" href="images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    main{max-width:900px;margin:0 auto;padding:42px 20px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:22px}
+    h1{margin:0 0 12px;font-size:30px;letter-spacing:0}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    code{background:#eef2f7;border:1px solid #d8dee8;border-radius:4px;padding:2px 5px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <main>
+    <section>
+      <span class="status">not_in_current_local_scope</span>
+      <h1>未覆盖 OpenUSD 页面 / Uncovered OpenUSD Page</h1>
+      <p>这个链接指向 OpenUSD release/API 内部 HTML，但当前 406 页本地清单里还没有对应的双语 HTML。因此我没有直接跳到官方英文站，而是在这里标出缺口。</p>
+      <p>This internal OpenUSD HTML target is not present in the current 406-page local inventory, so this local placeholder marks the gap instead of silently jumping to the official English site.</p>
+      <p><strong>目标 / Target:</strong> <code id="target"></code></p>
+      <p><a id="official" href="#">打开官方原页 / Open official page</a></p>
+      <p><a href="../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+    </section>
+  </main>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const official = params.get("official") || "";
+    const title = params.get("title") || official;
+    document.title = (title ? title + " - " : "") + "未覆盖 OpenUSD 页面";
+    document.getElementById("target").textContent = official || "Unknown target";
+    const link = document.getElementById("official");
+    if (official) {
+      link.href = official;
+    } else {
+      link.removeAttribute("href");
+    }
+  </script>
+</body>
+</html>

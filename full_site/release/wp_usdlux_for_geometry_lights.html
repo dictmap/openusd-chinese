@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>适配几何灯光的 UsdLux / Adapting UsdLux to Accommodate Geometry Lights</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    header{background:#17202a;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
+    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>适配几何灯光的 UsdLux / Adapting UsdLux to Accommodate Geometry Lights</h1>
+    <div class="meta">https://openusd.org/release/wp_usdlux_for_geometry_lights.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
+      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+    </section>
+    <section>
+      <h2>中文导读 / Chinese Reading Notes</h2>
+      <ul>
+<li><span class="zh">该 proposal 讨论如何调整 UsdLux 以支持 geometry/mesh lights，页面声明已实现并指向 UsdLux overview。</span></li>
+<li><span class="zh">背景是不同渲染器对 mesh light 的理解不同：有的把 mesh 作为 light shape，有的通过材质 emission/glow 识别发光几何。</span></li>
+<li><span class="zh">文档比较 dual-prim geometry light 和 single-prim geometry light 的问题，并提出通过 LightAPI 调整 object model。</span></li>
+<li><span class="zh">本地页保留 LightAPI、GeometryLight deprecation、convenience base classes、light:shaderId、material emission 同步等关键设计入口。</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 1 级标题：Adapting UsdLux to Accommodate Geometry Lights</span><span class="en">Adapting UsdLux to Accommodate Geometry Lights</span></li>
+<li><span class="zh">第 2 级标题：Introduction and Background</span><span class="en">Introduction and Background</span></li>
+<li><span class="zh">第 3 级标题：Mesh Light Support in the Industry</span><span class="en">Mesh Light Support in the Industry</span></li>
+<li><span class="zh">第 3 级标题：Goals</span><span class="en">Goals</span></li>
+<li><span class="zh">第 3 级标题：Workflow Considerations</span><span class="en">Workflow Considerations</span></li>
+<li><span class="zh">第 4 级标题：Emission and Glow: In Sync Except When Not</span><span class="en">Emission and Glow: In Sync Except When Not</span></li>
+<li><span class="zh">第 4 级标题：Lighting Post-Modeling</span><span class="en">Lighting Post-Modeling</span></li>
+<li><span class="zh">第 2 级标题：Design Space and Issues</span><span class="en">Design Space and Issues</span></li>
+<li><span class="zh">第 3 级标题：Dual-Prim Geometry Light Problems</span><span class="en">Dual-Prim Geometry Light Problems</span></li>
+<li><span class="zh">第 3 级标题：Single-Prim Geometry Light</span><span class="en">Single-Prim Geometry Light</span></li>
+<li><span class="zh">第 2 级标题：UsdLux LightAPI OM</span><span class="en">UsdLux LightAPI OM</span></li>
+<li><span class="zh">第 3 级标题：Light -&gt; LightAPI</span><span class="en">Light -&gt; LightAPI</span></li>
+<li><span class="zh">第 3 级标题：Introduce Convenience Base Classes</span><span class="en">Introduce Convenience Base Classes</span></li>
+<li><span class="zh">第 3 级标题：Preserve Existing UsdLux Concrete Schemas</span><span class="en">Preserve Existing UsdLux Concrete Schemas</span></li>
+<li><span class="zh">第 3 级标题：Deprecate GeometryLight</span><span class="en">Deprecate GeometryLight</span></li>
+<li><span class="zh">第 3 级标题：How do we Identify the Appropriate SdrShaderNode for a Light?</span><span class="en">How do we Identify the Appropriate SdrShaderNode for a Light?</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">This proposal has been implemented. This document exists for historical reference and may be outdated. For up-to-date documentation, see the UsdLux overview page .</p>
+<p class="en">Emission and Glow: In Sync Except When Not</p>
+<p class="en">Preserve Existing UsdLux Concrete Schemas</p>
+    </section>
+<section>
+      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
+<pre><code>token light:shaderId = &quot;&quot;</code></pre>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../api/usd_lux_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_lux_page_front.html">UsdLux overview page</a></li>
+<li><a href="https://rmanwiki.pixar.com/display/REN23/PxrMeshLight">RenderMan</a></li>
+<li><a href="https://docs.arnoldrenderer.com/display/a5AFMUG/Ai+Mesh+Light">Arnold</a></li>
+<li><a href="https://docs.otoy.com/StandaloneH_STA/StandaloneManual.htm">Octane</a></li>
+<li><a href="https://documentation.3delightcloud.com/display/3DFM9/Area+and+Mesh+Light">3Delight NSI</a></li>
+<li><a href="https://groups.google.com/g/usd-interest/c/wsBarHHGXH8/m/A6XAo3S_AQAJ">this usd-interest discussion</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_boundable.html&amp;title=boundable" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_boundable.html">boundable</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/wp_usdlux_for_geometry_lights.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>页面草稿：DomeLight / DomeLight</title>
+  <link rel="icon" href="../../../../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    header{background:#17202a;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
+    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>页面草稿：DomeLight / DomeLight</h1>
+    <div class="meta">https://openusd.org/release/user_guides/schemas/usdLux/DomeLight.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
+      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+    </section>
+    <section data-cn-refinement="usdLux-schema-quality-pass-004">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 DomeLight 补充中文优先的用途说明、属性阅读重点和术语对照；英文页面名、链接、代码、命令和原文摘录继续保留，便于和官方 usdLux schema 文档核对。</p>
+      <p class="en">This section adds Chinese-first usage notes, property reading guidance, and terminology for DomeLight while retaining the English page name, links, code, commands, and source excerpts for comparison with the official usdLux schema documentation.</p>
+      <ul>
+        <li><span class="zh">DomeLight 从非常远的外部环境向内发光，常用于天空、环境贴图或 HDR image 驱动的 Image Based Lighting (IBL)。</span></li>
+        <li><span class="zh">默认朝向让 dome 顶极与世界 +Y 轴对齐，并遵循 OpenEXR latitude-longitude map 约定；阅读时应保留 OpenEXR、HDR、IBL 等英文术语，避免和普通贴图方向混淆。</span></li>
+        <li><span class="zh">DomeLight 适合给整个场景提供环境照明，不等同于局部点光或面积光；它通常和具体区域灯共同使用，一个负责整体环境，一个负责重点照明。</span></li>
+        <li><span class="zh">本页链接到 OpenEXR specification 和 DomeLight_1，后续精修应继续补充 texture、orientation 与渲染器环境采样之间的对应关系。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">穹顶环境光：</span><span class="en">DomeLight</span></li>
+        <li><span class="zh">高动态范围图像：</span><span class="en">High Dynamic Range (HDR)</span></li>
+        <li><span class="zh">基于图像的照明：</span><span class="en">Image Based Lighting (IBL)</span></li>
+        <li><span class="zh">经纬度环境贴图：</span><span class="en">latitude-longitude maps</span></li>
+        <li><span class="zh">OpenEXR 规范：</span><span class="en">OpenEXR specification</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 1 级标题：DomeLight</span><span class="en">DomeLight</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">An intrinsic light that emits light inwards from a very distant external environment, such as a sky, or a light environment captured in a High Dynamic Range (HDR) image used for Image Based Lighting (IBL).</p>
+<p class="en">Use DomeLights to simulate environment lighting.</p>
+<p class="en">The dome’s default orientation is such that its top pole is aligned with the world’s +Y axis. This adheres to the OpenEXR specification for latitude-longitude maps. From the OpenEXR documentation:</p>
+    </section>
+<section>
+      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
+<pre><code>#usda 1.0 ( ) def Scope &quot;Lights&quot; { def DomeLight &quot;Dome&quot; { asset inputs:texture:file = @orientationLatLong.tex@ } } def Xform &quot;TestGeom&quot; { def Sphere &quot;Sphere1&quot; ( prepend apiSchemas = [ &quot;MaterialBindingAPI&quot; ] ) { rel material:binding = &lt;/Material&gt; } } def Material &quot;Material&quot; { token outputs:ri:surface . connect = &lt;/Material/Surface.outputs:out&gt; def Shader &quot;Surface&quot; { uniform token info:id = &quot;PxrSurface&quot; float inputs:diffuseGain = 0.3 color3f inputs:specularEdgeColor = ( 1 , 1 , 1 ) color3f inputs:specularFaceColor...</code></pre>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="https://openexr.com/en/latest/index.html">OpenEXR specification</a></li>
+<li><a href="DomeLight_1.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight_1.html">DomeLight_1</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

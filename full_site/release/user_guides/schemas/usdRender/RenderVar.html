@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>页面草稿：RenderVar / RenderVar</title>
+  <link rel="icon" href="../../../../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    header{background:#17202a;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
+    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>页面草稿：RenderVar / RenderVar</h1>
+    <div class="meta">https://openusd.org/release/user_guides/schemas/usdRender/RenderVar.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
+      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+    </section>
+    <section data-cn-refinement="usdRender-schema-quality-pass-006">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 RenderVar 补充中文优先的用途说明、属性阅读重点和术语对照；英文页面名、链接、代码、命令、属性名和原文摘录继续保留，便于和官方 usdRender/usdMedia schema 文档核对。</p>
+      <p class="en">This section adds Chinese-first usage notes, property reading guidance, and terminology for RenderVar while retaining the English page name, links, code, commands, property names, and source excerpts for comparison with the official usdRender/usdMedia schema documentation.</p>
+      <ul>
+        <li><span class="zh">RenderVar 表示渲染器计算出的某个数据量或 channel，常被称为 arbitrary output variable (AOV)。</span></li>
+        <li><span class="zh">示例包括 camera-space depth、shader 输出的 color/alpha、light path expressions (LPEs)，以及渲染器自身的 per-pixel computation time 等。</span></li>
+        <li><span class="zh">RenderVar prim 的名称会驱动渲染器输出的数据变量名称；例如名为 alpha 的 RenderVar 通常表示输出名为 alpha 的 alpha channel。</span></li>
+        <li><span class="zh">USD 还没有强制统一 RenderVar 名称和格式，因此 renderer-specific RenderVars 是预期行为；阅读 source 信息时要区分 shader output、depth/normals 和 LPE。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">渲染变量：</span><span class="en">RenderVar</span></li>
+        <li><span class="zh">任意输出变量：</span><span class="en">arbitrary output variable (AOV)</span></li>
+        <li><span class="zh">相机空间深度：</span><span class="en">camera-space depth</span></li>
+        <li><span class="zh">光路表达式：</span><span class="en">light path expressions (LPEs)</span></li>
+        <li><span class="zh">数据来源信息：</span><span class="en">source information</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 1 级标题：RenderVar</span><span class="en">RenderVar</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">A quantity or ‘channel’ of computed data, produced by a renderer. These are sometimes referred to as arbitrary output variables (AOVs). Examples of render variables include geometric measurements such as camera-space depth, quantities emitted by material shaders such as color or alpha channels, light path expressions (LPE’s), and quantities intrinsic to the renderer such as computation time per pixel.</p>
+<p class="en">The name of the RenderVar prim drives the name of the data variable that the renderer will produce. For example, a RenderVar named “alpha” typically would indicate the renderer should produce alpha channel data, named “alpha”, in the render output. Note that USD does not yet enforce a set of universal RenderVar names and formats, so renderer-specific RenderVars are expected.</p>
+<p class="en">RenderVars can also specify “source” information for the data, such as output from a shader, renderer outputs such as depth or normals, or a light path expression (LPE).</p>
+    </section>
+<section>
+      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
+<pre><code>def RenderVar &quot;color&quot; { string sourceName = &quot;Ci&quot; } def RenderVar &quot;alpha&quot; { token dataType = &quot;float&quot; string sourceName = &quot;a&quot; } def RenderVar &quot;directDiffuse&quot; { string sourceName = &quot;C&lt;RD&gt;[&lt;L.&gt;O]&quot; token sourceType = &quot;lpe&quot; } def RenderVar &quot;id&quot; { token dataType = &quot;int&quot; string sourceName = &quot;id&quot; }</code></pre>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li>No same-site document links extracted.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/user_guides/schemas/usdRender/RenderVar.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

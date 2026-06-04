@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API 页面草稿：Universal Scene Description: Class Members - Related Functions / Universal Scene Description: Class Members - Related Functions</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>API 页面草稿：Universal Scene Description: Class Members - Related Functions / Universal Scene Description: Class Members - Related Functions</h1>
+    <div class="meta">https://openusd.org/release/api/functions_rela_t.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section data-cn-refinement="api-functions-related-quality-pass-022">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Related Functions - T 补充中文优先的索引用法、模块边界和术语对照；英文页面名、API 符号、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first index notes, module boundaries, and terminology for Class Members - Related Functions - T while retaining English page names, API symbols, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">functions_rela_t.html 是 related functions 索引的 T 段，条目数量较少，但跨越 Tf 引用计数、Ef 时间/向量键、Pcp 实例键、SdfSpec、TfToken 和 Python 方法结果包装。</span></li>
+        <li><span class="zh">TfRefPtr&lt;T&gt; 与 TfRefBase 通常对应引用指针、引用基类、比较、输出或辅助构造类 related function；模板参数 T 应保持原样，方便与 C++ API 对照。</span></li>
+        <li><span class="zh">Ef_VectorKey、EfTime 更偏执行/时间采样语境；PcpInstanceKey 用于 composition 实例键，SdfSpec 用于 scene description spec 基础对象，TfToken 用于 token 化字符串。</span></li>
+        <li><span class="zh">TfPyMethodResult 表示 Python binding 返回值相关类型；如果读者在绑定层定位问题，应把本页当作跳转索引，而不是把所有 Python 行为都归在 TfToken 或 TfRefPtr 下。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">引用指针：</span><span class="en">reference pointer</span></li>
+        <li><span class="zh">引用基类：</span><span class="en">reference base</span></li>
+        <li><span class="zh">实例键：</span><span class="en">instance key</span></li>
+        <li><span class="zh">规格对象：</span><span class="en">spec object</span></li>
+        <li><span class="zh">Python 方法结果：</span><span class="en">Python method result</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 3 级结构：- t -</span><span class="en">- t -</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">Index entries include: TfRefPtr ; TfRefBase; Ef_VectorKey; EfTime; PcpInstanceKey; SdfSpec; TfToken; TfPyMethodResult.</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_ref_ptr.html&amp;title=TfRefPtr%3C+T+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_ref_ptr.html">TfRefPtr&lt; T &gt;</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_ref_base.html&amp;title=TfRefBase" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_ref_base.html">TfRefBase</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_ef___vector_key.html&amp;title=Ef_VectorKey" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_ef___vector_key.html">Ef_VectorKey</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_ef_time.html&amp;title=EfTime" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_ef_time.html">EfTime</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_pcp_instance_key.html&amp;title=PcpInstanceKey" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_pcp_instance_key.html">PcpInstanceKey</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdf_spec.html&amp;title=SdfSpec" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdf_spec.html">SdfSpec</a></li>
+<li><a href="class_tf_token.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_tf_token.html">TfToken</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_py_method_result.html&amp;title=TfPyMethodResult" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_py_method_result.html">TfPyMethodResult</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/functions_rela_t.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

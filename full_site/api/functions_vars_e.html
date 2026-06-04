@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables</h1>
+    <div class="meta">https://openusd.org/release/api/functions_vars_e.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section data-cn-refinement="api-functions-vars-quality-pass-024">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Variables - E 补充中文优先的变量索引用法、模块边界和术语对照；英文页面名、API 符号、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first variable-index notes, module boundaries, and terminology for Class Members - Variables - E while retaining English page names, API symbols, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">functions_vars_e.html 是变量索引 E 段，条目较少但集中在 UsdGeom token、Sdf namespace edit detail、physics joint/limit、Hydra mesh repr、VtArray edit builder 和 Pcp error/layer stack。</span></li>
+        <li><span class="zh">SdfNamespaceEditDetail、PcpDependentNamespaceEdits、PcpLayerStackIdentifier 与 UsdFlattenResolveAssetPathContext 属于 namespace edit、composition layer stack 和资产路径 flatten 语境。</span></li>
+        <li><span class="zh">UsdPhysicsJointDrive、UsdPhysicsJointLimit、UsdPhysicsJointDesc 与 UsdRenderTokensType、UsdMediaTokensType、UsdTokensType 混列；中文层按 physics、render/media token 和 USD core token 分开阅读。</span></li>
+        <li><span class="zh">VtArrayEditBuilder&lt;ELEM&gt; 与 PcpPrimIndexOutputs、PcpErrorBase、PcpErrorVariableExpressionError 说明本页也包含数组编辑构造器、prim index 输出和变量表达式错误入口。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">命名空间编辑细节：</span><span class="en">namespace edit detail</span></li>
+        <li><span class="zh">关节限制：</span><span class="en">joint limit</span></li>
+        <li><span class="zh">数组编辑构造器：</span><span class="en">array edit builder</span></li>
+        <li><span class="zh">资产路径上下文：</span><span class="en">asset path context</span></li>
+        <li><span class="zh">层栈标识符：</span><span class="en">layer stack identifier</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 3 级结构：- e -</span><span class="en">- e -</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">Index entries include: UsdGeomTokensType; SdfNamespaceEditDetail; UsdPhysicsJointDrive; UsdPhysicsJointLimit; HdMeshReprDesc; UsdImagingGLEngine::Parameters; SdfZipFile::FileInfo; VtArrayEditBuilder ; UsdMediaTokensType; PcpDependentNamespaceEdits; PcpErrorBase; UsdTokensType; App; UsdPhysicsJointDesc; UsdRenderTokensType; PcpErrorVariableExpressionError.</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="struct_usd_geom_tokens_type.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/struct_usd_geom_tokens_type.html">UsdGeomTokensType</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_sdf_namespace_edit_detail.html&amp;title=SdfNamespaceEditDetail" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_sdf_namespace_edit_detail.html">SdfNamespaceEditDetail</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_physics_joint_drive.html&amp;title=UsdPhysicsJointDrive" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_physics_joint_drive.html">UsdPhysicsJointDrive</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_physics_joint_limit.html&amp;title=UsdPhysicsJointLimit" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_physics_joint_limit.html">UsdPhysicsJointLimit</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_hd_mesh_repr_desc.html&amp;title=HdMeshReprDesc" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_hd_mesh_repr_desc.html">HdMeshReprDesc</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_imaging_g_l_engine.html&amp;title=UsdImagingGLEngine%3A%3AParameters" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_imaging_g_l_engine.html">UsdImagingGLEngine::Parameters</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdf_zip_file.html&amp;title=SdfZipFile%3A%3AFileInfo" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdf_zip_file.html">SdfZipFile::FileInfo</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vt_array_edit_builder.html&amp;title=VtArrayEditBuilder%3C+ELEM+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vt_array_edit_builder.html">VtArrayEditBuilder&lt; ELEM &gt;</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_media_tokens_type.html&amp;title=UsdMediaTokensType" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_media_tokens_type.html">UsdMediaTokensType</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_pcp_dependent_namespace_edits.html&amp;title=PcpDependentNamespaceEdits" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_pcp_dependent_namespace_edits.html">PcpDependentNamespaceEdits</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_pcp_error_base.html&amp;title=PcpErrorBase" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_pcp_error_base.html">PcpErrorBase</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_tokens_type.html&amp;title=UsdTokensType" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_tokens_type.html">UsdTokensType</a></li>
+<li><a href="classpxr___c_l_i_1_1_c_l_i_1_1_app.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/classpxr___c_l_i_1_1_c_l_i_1_1_app.html">App</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_physics_joint_desc.html&amp;title=UsdPhysicsJointDesc" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_physics_joint_desc.html">UsdPhysicsJointDesc</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_render_tokens_type.html&amp;title=UsdRenderTokensType" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_render_tokens_type.html">UsdRenderTokensType</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_pcp_error_variable_expression_error.html&amp;title=PcpErrorVariableExpressionError" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_pcp_error_variable_expression_error.html">PcpErrorVariableExpressionError</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fflatten_utils_8h.html&amp;title=UsdFlattenResolveAssetPathContext" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/flatten_utils_8h.html">UsdFlattenResolveAssetPathContext</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_pcp_prim_index_outputs.html&amp;title=PcpPrimIndexOutputs" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_pcp_prim_index_outputs.html">PcpPrimIndexOutputs</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_pcp_layer_stack_identifier.html&amp;title=PcpLayerStackIdentifier" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_pcp_layer_stack_identifier.html">PcpLayerStackIdentifier</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/functions_vars_e.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

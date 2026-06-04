@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>页面草稿：ParticleFieldPositionBaseAPI / ParticleFieldPositionBaseAPI</title>
+  <link rel="icon" href="../../../../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    header{background:#17202a;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
+    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>页面草稿：ParticleFieldPositionBaseAPI / ParticleFieldPositionBaseAPI</h1>
+    <div class="meta">https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
+      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+    </section>
+    <section data-cn-refinement="usdVol-remaining-quality-pass-010">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 ParticleFieldPositionBaseAPI 补充中文优先的用途说明、属性阅读重点和术语对照；英文页面名、链接、代码、命令、属性名、数学符号和原文摘录继续保留，便于和官方 usdVol schema 文档核对。</p>
+      <p class="en">This section adds Chinese-first usage notes, property reading guidance, and terminology for ParticleFieldPositionBaseAPI while retaining the English page name, links, code, commands, property names, math notation, and source excerpts for comparison with the official usdVol schema documentation.</p>
+      <ul>
+        <li><span class="zh">ParticleFieldPositionBaseAPI 定义 ParticleField position data 的基础 applied schema，positions 数量同时决定 ParticleField 中的 particle 数量。</span></li>
+        <li><span class="zh">如果没有 position data，则 ParticleField 不包含粒子；这说明位置数据是粒子场存在性的基础，不只是一个可选属性。</span></li>
+        <li><span class="zh">其他 per-particle data 会被调整到与 positions 数量一致：数据过多会 truncate，数据少于 positions 会 discard，并回退到默认值。</span></li>
+        <li><span class="zh">该 base schema 也承担 validation 角色，确保定义 position 的 applied schema 总是在 ParticleField 上存在。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">粒子位置数据：</span><span class="en">position data</span></li>
+        <li><span class="zh">粒子数量：</span><span class="en">number of particles</span></li>
+        <li><span class="zh">逐粒子数据：</span><span class="en">per-particle data</span></li>
+        <li><span class="zh">截断：</span><span class="en">truncated</span></li>
+        <li><span class="zh">默认值：</span><span class="en">default value</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 1 级标题：ParticleFieldPositionBaseAPI</span><span class="en">ParticleFieldPositionBaseAPI</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">Defines a base applied schema for ParticleField position data.</p>
+<p class="en">The number of positions provided is also used to determine the number of particles in a ParticleField. If no position data is present, then the ParticleField contains no particles. Any other per-particle data, such as scale or orientation, is adjusted to match the number of positions – truncated if more per-particle data is provided, or discarded if the per-particle data has fewer entries than the number of positions. For other per-particle data fields, if no data is provided, or it is discarded then its default value will be used.</p>
+<p class="en">This is a base schema that ParticleField characteristics schemas typically will have as a built-in applied schema. This allows validation to verify that an applied schema that defines position is always present for a ParticleField.</p>
+    </section>
+
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li>No same-site document links extracted.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>页面草稿：RenderProduct / RenderProduct</title>
+  <link rel="icon" href="../../../../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    header{background:#17202a;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
+    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>页面草稿：RenderProduct / RenderProduct</h1>
+    <div class="meta">https://openusd.org/release/user_guides/schemas/usdRender/RenderProduct.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
+      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+    </section>
+    <section data-cn-refinement="usdRender-schema-quality-pass-006">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 RenderProduct 补充中文优先的用途说明、属性阅读重点和术语对照；英文页面名、链接、代码、命令、属性名和原文摘录继续保留，便于和官方 usdRender/usdMedia schema 文档核对。</p>
+      <p class="en">This section adds Chinese-first usage notes, property reading guidance, and terminology for RenderProduct while retaining the English page name, links, code, commands, property names, and source excerpts for comparison with the official usdRender/usdMedia schema documentation.</p>
+      <ul>
+        <li><span class="zh">RenderProduct 表示一次渲染产生的单个输出 artifact，例如渲染图像文件、depth buffer 或其他类似文件的结果。</span></li>
+        <li><span class="zh">一个 RenderProduct 可以组合一个或多个 RenderVars，把多个渲染变量写入同一个输出产品；因此它位于 RenderSettings 与 RenderVar 之间的输出组织层。</span></li>
+        <li><span class="zh">阅读时应把 RenderProduct 看成“输出容器”，而不是具体的颜色、深度或 alpha 通道本身；具体通道由 RenderVar 描述。</span></li>
+        <li><span class="zh">后续精修可继续补齐文件路径、分辨率、产品名称和多个 RenderProduct 如何对应多路输出的场景。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">渲染输出产品：</span><span class="en">RenderProduct</span></li>
+        <li><span class="zh">渲染输出产物：</span><span class="en">render output artifact</span></li>
+        <li><span class="zh">渲染图像文件：</span><span class="en">rendered image file</span></li>
+        <li><span class="zh">深度缓冲：</span><span class="en">depth buffer</span></li>
+        <li><span class="zh">渲染变量集合：</span><span class="en">RenderVars</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 1 级标题：RenderProduct</span><span class="en">RenderProduct</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">Represents a single render output artifact, such as a rendered image file, output depth buffer, or other file-like artifact. A RenderProduct combines one or more RenderVars into the output artifact.</p>
+    </section>
+<section>
+      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
+<pre><code>def RenderProduct &quot;PrimaryProduct&quot; { token productName = &quot;/output/render000009.png&quot; rel orderedVars = [ &lt;/Render/Vars/color&gt; , &lt;/Render/Vars/alpha&gt; , &lt;/Render/Vars/directDiffuse&gt; ] }</code></pre>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="RenderVar.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/RenderVar.html">RenderVars</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/user_guides/schemas/usdRender/RenderProduct.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

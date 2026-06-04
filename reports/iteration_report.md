@@ -1,0 +1,4464 @@
+# OpenUSD API 中英双语复刻迭代报告
+
+源页面：<https://openusd.org/release/api/index.html>
+
+## 第 165 轮：Ef/Esf/Gf class 页面精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认本轮 5 个 class 目标页均存在且均为 `draft_template_only`。
+- 本轮严格只处理 5 页：`full_site/api/class_ef___lofted_output_set.html`、`full_site/api/class_esf_property_interface.html`、`full_site/api/class_gf_dual_quatf.html`、`full_site/api/class_gf_matrix2f.html`、`full_site/api/class_gf_matrix4f.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_class_batch_034.mjs`，为 5 页插入 `api-class-quality-pass-034` 中文精修导读区块；每页包含类职责、相关类型、关键语义、术语对照和结构提醒，保留英文页面名、类名、方法名、template 参数、代码、链接和原英文摘录。
+- 本轮中文层覆盖 `Ef_LoftedOutputSet` 的 lofted outputs、page cache、`EfPageCacheBasedExecutor` 和 Vdf output/mask/node 关系；`EsfPropertyInterface` 的 scene adapter property abstraction、`UsdProperty` 只读接口和 `EsfJournal` 重新编译条件记录；`GfDualQuatf` 的 real/dual quaternion 与 rotation/translation 表示；`GfMatrix2f` 的 2x2 float matrix 和 row-major `matrix[i][j]` 约定；`GfMatrix4f` 的 4x4 matrix、row vectors 约定和 3D transform 方法。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 220 / `draft_needs_translation` 178 / `good_bilingual` 8 变为 `draft_template_only` 215 / `draft_needs_translation` 183 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；5 个目标页均带有本轮 marker，坏编码风险 0。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是完整翻译每个构造函数、方法、参数、返回值和继承关系。
+- 全量仍有 215 个 `draft_template_only` 和 183 个 `draft_needs_translation`；大量 class/API 页面、源码页和部分 release/API 草稿仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理当前质量队列中的 `class_gf_range1d.html`、`class_gf_ray.html`、`class_gf_vec2i.html`、`class_glf_draw_target.html`、`class_hd_data_source_locator.html`。
+2. 对 class/API 页面补中文用途说明、类职责、关键方法/成员分组、术语对照和局部结构说明，保留类名、方法名、template 参数、数学符号和链接原样。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证，并记录分级变化。
+
+## 第 164 轮：API File Members V/W/总函数索引与 G/H 字母索引精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认本轮 5 个目标页均存在且均为 `draft_template_only`。
+- 本轮严格只处理 5 页：`full_site/api/globals_func_v.html`、`full_site/api/globals_func_w.html`、`full_site/api/globals_func.html`、`full_site/api/globals_g.html`、`full_site/api/globals_h.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_file_members_mixed_batch_033.mjs`，为 5 页插入 `api-file-members-mixed-quality-pass-033` 中文精修导读区块；每页包含索引用法、模块边界、术语对照和结构提醒，保留英文页面名、API 符号、函数名、头文件名、代码、链接和原英文摘录。
+- 本轮中文层覆盖 V 段 Vdf execution network、masked output vector、VtDictionary；W 段 Work 并发限制、parallel loop、reduce、sort、detached task；总函数索引页中的 Arch debugger、file system、virtual memory、memory alignment 和 resolver context；G 字母索引中的 Gf constants/math/gamma/vector/geometry；H 字母索引中的 `hash_value()` 与 Hio OpenVDB grid asset utilities。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 225 / `draft_needs_translation` 173 / `good_bilingual` 8 变为 `draft_template_only` 220 / `draft_needs_translation` 178 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；5 个目标页均带有本轮 marker，坏编码风险 0。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是逐项函数签名、参数、返回值、类成员和头文件正文的完整翻译。
+- 全量仍有 220 个 `draft_template_only` 和 178 个 `draft_needs_translation`；大量 class/API 页面、源码页和部分 release/API 草稿仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理当前质量队列中的 `class_ef___lofted_output_set.html`、`class_esf_property_interface.html`、`class_gf_dual_quatf.html`、`class_gf_matrix2f.html`、`class_gf_matrix4f.html`。
+2. 对 class/API 页面补中文用途说明、类职责、关键方法/成员分组、术语对照和局部结构说明，保留类名、方法名、template 参数和链接原样。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证，并记录分级变化。
+
+## 第 163 轮：API File Members 函数索引 O/P/S/T/U 精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认本轮继续按最多 5 页推进。
+- 复查上一轮建议队列时确认 `full_site/api/globals_func_q.html` 与 `full_site/api/globals_func_r.html` 不存在，也不在当前 406 页清单内；本轮没有新建这两个页面，而是按当前可发现的非源码索引顺序处理 `O/P/S/T/U` 五页。
+- 本轮严格只处理 5 个 File Members 函数索引页：`full_site/api/globals_func_o.html`、`full_site/api/globals_func_p.html`、`full_site/api/globals_func_s.html`、`full_site/api/globals_func_t.html`、`full_site/api/globals_func_u.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_file_members_func_batch_032.mjs`，为 5 页插入 `api-file-members-func-quality-pass-032` 中文精修导读区块；每页包含函数索引用法、模块边界、术语对照和结构提醒，保留英文页面名、API 符号、函数名、头文件名、代码、链接和原英文摘录。
+- 本轮中文层覆盖 O 段 operator overload 与 Gf/vector/timeCode 相关入口；P 段 Pcp composition site 工具；S 段 Sdf asset path、spec 创建、value type/unit 查询；T 段 Tf debug/token/path/string/dlopen/Python interop 工具；U 段 Usd/UsdGeom/UsdShade/UsdUtils/UsdPhysics 入口。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 230 / `draft_needs_translation` 168 / `good_bilingual` 8 变为 `draft_template_only` 225 / `draft_needs_translation` 173 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；5 个目标页均带有本轮 marker，坏编码风险 0。
+- 重新运行 `scripts/audit_openusd_report_index.mjs`、`scripts/validate_openusd_api_repro.ps1` 和报告索引复查：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是逐项函数签名、参数、返回值和头文件正文的完整翻译。
+- 全量仍有 225 个 `draft_template_only` 和 173 个 `draft_needs_translation`；大量 `_source.html` 源码页、class/API 页面和部分 release/API 草稿仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理当前存在的 `globals_func_v.html`、`globals_func_w.html`、`globals_func.html`、`globals_g.html`、`globals_h.html`。
+2. 对 File Members / API 索引页继续补中文用途说明、导航方式、术语对照和局部结构说明，仍不把导读层误标为最终完成。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证，并记录分级变化。
+
+## 第 162 轮：API File Members 函数索引 E/G/H/J/L 精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认本轮目标均为 `draft_template_only`。
+- 本轮严格只处理 5 个 File Members 函数索引页：`full_site/api/globals_func_e.html`、`full_site/api/globals_func_g.html`、`full_site/api/globals_func_h.html`、`full_site/api/globals_func_j.html`、`full_site/api/globals_func_l.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_file_members_func_batch_031.mjs`，为 5 页插入 `api-file-members-func-quality-pass-031` 中文精修导读区块；每页包含函数索引用法、模块边界、术语对照和结构提醒，保留英文页面名、API 符号、函数名、头文件名、代码、链接和原英文摘录。
+- 本轮中文层覆盖 E 段 `EfGetFirstValidInputValue()` 与 `firstValidInputValue.h`；G 段 Gf 数学、gamma、component-wise vector、cross product、closest-points 等函数；H 段 `hash_value()` 与 Hio OpenVDB grid asset utilities；J 段 Js JSON convert/find/parse/write 工具；L 段 `LoadUsdPhysicsFromRange()` 与 UsdPhysics parse utilities。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 235 / `draft_needs_translation` 163 / `good_bilingual` 8 变为 `draft_template_only` 230 / `draft_needs_translation` 168 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；5 个目标页均带有本轮 marker，坏编码风险 0。
+- 重新运行 `scripts/audit_openusd_report_index.mjs`、`scripts/validate_openusd_api_repro.ps1` 和报告索引复查：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是逐项函数签名、参数、返回值和头文件正文的完整翻译。
+- 全量仍有 230 个 `draft_template_only` 和 168 个 `draft_needs_translation`；大量 `_source.html` 源码页、class/API 页面和部分 release/API 草稿仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理 `globals_func_o.html`、`globals_func_p.html`、`globals_func_q.html`、`globals_func_r.html`、`globals_func_s.html`。
+2. 对 File Members 函数索引页继续补中文用途说明、导航方式、术语对照和局部结构说明，仍不把导读层误标为最终完成。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证，并记录分级变化。
+
+## 第 161 轮：API 文件成员与 Glf 入口页 draft 精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认本轮目标均为 `draft_template_only`。
+- 本轮严格只处理 5 个页面，并按用户要求跳过低优先级 `_source.html` 源码页：`full_site/api/executor_invalidation_data_8h.html`、`full_site/api/glf_page_front.html`、`full_site/api/globals_c.html`、`full_site/api/globals_e.html`、`full_site/api/globals_func_c.html`。
+- 新增 `scripts/refine_openusd_api_file_members_batch_030.mjs`，为 5 页插入 `api-file-members-quality-pass-030` 中文精修导读区块；每页包含 API/file-member 索引用法、模块边界、术语对照和结构提醒，保留英文页面名、API 符号、函数名、头文件名、代码、链接和原英文摘录。
+- 本轮中文层覆盖 `executorInvalidationData.h` 文件引用页的 include dependency graph、反向 include 关系和 Exec/Vdf 文件定位；Glf 模块入口的 OpenGL output utility classes 定位；`globals_c.html` 中 `CombineError()`、`CombineResult()`、`CombineUnbatched()` 与 `CustomUsdPhysicsTokens`；`globals_e.html` 中 Ef/Exec 执行系统条目；`globals_func_c.html` 中 namespaceEdit.h 的函数子索引。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 240 / `draft_needs_translation` 158 / `good_bilingual` 8 变为 `draft_template_only` 235 / `draft_needs_translation` 163 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；5 个目标页均带有本轮 marker，坏编码风险 0。
+- 重新运行 `scripts/audit_openusd_report_index.mjs`、`scripts/validate_openusd_api_repro.ps1` 和报告索引复查：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是逐项文件成员、函数签名、宏、变量和头文件正文的完整翻译。
+- 全量仍有 235 个 `draft_template_only` 和 163 个 `draft_needs_translation`；大量 `_source.html` 源码页、class/API 页面和部分 release/API 草稿仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理 `globals_func_e.html`、`globals_func_g.html`、`globals_func_h.html`、`globals_func_j.html`、`globals_func_l.html`。
+2. 对 File Members 函数索引页继续补中文用途说明、导航方式、术语对照和局部结构说明，仍不把导读层误标为最终完成。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证，并记录分级变化。
+
+## 第 160 轮：API Class Members W-Z 与总索引页 draft 精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认本轮目标均为 `draft_template_only`。
+- 本轮严格只处理 5 个 API Class Members 索引页：`full_site/api/functions_w.html`、`full_site/api/functions_x.html`、`full_site/api/functions_y.html`、`full_site/api/functions_z.html`、`full_site/api/functions.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_functions_members_tail_batch_029.mjs`，为 5 页插入 `api-functions-members-tail-quality-pass-029` 中文精修导读区块；每页包含类成员索引用法、模块边界、术语对照和结构提醒，保留英文页面名、API 符号、template 参数、数学符号、链接、代码和原英文摘录。
+- 本轮中文层覆盖 W 段的 Work/Vdf/Ef 执行与缓存、Sdf/Pcp 路径表达式和 namespace edit、GfVec4、UsdShade/UsdSkel/UsdGeom/UsdHydra tokens、Ar/Hio/Trace/Glf/SdfFileFormat 等；X/Y/Z 段的 GfVec2/3/4、UsdGeom/UsdLux/UsdPhysics/UsdVol tokens、UsdGeomXformable::XformQuery 与 VdfExecutorBufferData；总索引页的 Vdf execution、Hydra/Storm buffer、scene index plugins、Trace/Tf/Ar/UsdShade/Sdf/Exec/Ef/plugin registry/GfColor 等入口。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 245 / `draft_needs_translation` 153 / `good_bilingual` 8 变为 `draft_template_only` 240 / `draft_needs_translation` 158 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；5 个目标页均带有本轮 marker，坏编码风险 0。
+- 重新运行 `scripts/audit_openusd_report_index.mjs`、`scripts/validate_openusd_api_repro.ps1` 和报告索引复查：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是逐项类成员、函数签名、变量字段和成员文档的完整翻译。
+- 全量仍有 240 个 `draft_template_only` 和 158 个 `draft_needs_translation`；大量 `_source.html` 源码页、class/API 页面和部分 release/API 草稿仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，按 `translation_quality_review` 中的优先队列选择高价值 API 索引、入口或指南页；低优先处理 `_source.html` 源码页。
+2. 如果下一轮仍处理 API 索引页，继续补中文用途说明、导航方式、术语对照和局部结构说明，仍不把导读层误标为最终完成。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证，并记录分级变化。
+
+## 第 159 轮：API Variables W-Z 与总索引页 draft 精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认本轮目标均为 `draft_template_only`。
+- 本轮严格只处理 5 个 API 变量索引页：`full_site/api/functions_vars_w.html`、`full_site/api/functions_vars_x.html`、`full_site/api/functions_vars_y.html`、`full_site/api/functions_vars_z.html`、`full_site/api/functions_vars.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_functions_vars_batch_028.mjs`，为 5 页插入 `api-functions-vars-quality-pass-028` 中文精修导读区块；每页包含变量索引用法、模块边界、术语对照和结构提醒，保留英文页面名、API 符号、template 参数、数学符号、链接、代码和原英文摘录。
+- 本轮中文层覆盖 W 段的 PcpDependentNamespaceEdits、UsdShade/UsdSkel/UsdGeom/UsdHydra tokens、UsdSkelImagingWeightAndSubShapeIndex 和 Vdf_WeightSlot；X 段的 UsdGeom/UsdPhysics token；Y 段的 UsdGeom/UsdLux/UsdPhysics token；Z 段的 UsdGeom/UsdLux/UsdPhysics/UsdVol token；总索引页的 GfColor、HdBufferArray、字母分段导航和清单外链接本地缺口策略。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 250 / `draft_needs_translation` 148 / `good_bilingual` 8 变为 `draft_template_only` 245 / `draft_needs_translation` 153 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；5 个目标页均带有本轮 marker，坏编码风险 0。
+- 重新运行 `scripts/audit_openusd_report_index.mjs`、`scripts/validate_openusd_api_repro.ps1` 和报告索引复查：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是逐项变量、字段、签名和成员文档的完整翻译。
+- 全量仍有 245 个 `draft_template_only` 和 153 个 `draft_needs_translation`；后续 Class Members W-Z/总索引、源码页和大量 class/API 页面仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理 `functions_w.html`、`functions_x.html`、`functions_y.html`、`functions_z.html`、`functions.html`。
+2. 对 Class Members 索引页继续补中文用途说明、导航方式、术语对照和局部结构说明，仍不把导读层误标为最终完成。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证，并记录分级变化。
+
+## 第 158 轮：API Variables R-V 索引页 draft 精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认本轮目标均为 `draft_template_only`。
+- 本轮严格只处理 5 个 API 变量索引页：`full_site/api/functions_vars_r.html`、`full_site/api/functions_vars_s.html`、`full_site/api/functions_vars_t.html`、`full_site/api/functions_vars_u.html`、`full_site/api/functions_vars_v.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_functions_vars_batch_027.mjs`，为 5 页插入 `api-functions-vars-quality-pass-027` 中文精修导读区块；每页包含变量索引用法、模块边界、术语对照和结构提醒，保留英文页面名、API 符号、template 参数、数学符号、链接、代码和原英文摘录。
+- 本轮中文层覆盖 R 段的 schema tokens、UsdPhysics shape/material/articulation、Hydra/Embree/AOV、Pcp error、ArAssetInfo 与 Sdr discovery；S 段的大量 UsdGeom schema class、API schema、Sdf namespace edit、scene index、skel bake 和 rigid body；T 段的 Pcp error/relocation、joint drive、trace、named texture handle、schema info 和 connection source info；U 段的 SdfZipFile、GfRange、Pcp dependency、imaging property mapping、HdMeshReprDesc 和 Embree；V 段的 Exec value override、MaterialX USD type info、schema registry、shader discovery、asset info 和 domain tokens。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 255 / `draft_needs_translation` 143 / `good_bilingual` 8 变为 `draft_template_only` 250 / `draft_needs_translation` 148 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；5 个目标页均带有本轮 marker，坏编码风险 0。
+- 重新运行 `scripts/audit_openusd_report_index.mjs`、`scripts/validate_openusd_api_repro.ps1` 和报告索引复查：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是逐项变量、字段、签名和成员文档的完整翻译。
+- 全量仍有 250 个 `draft_template_only` 和 148 个 `draft_needs_translation`；后续 variables W-Z、variables 总索引、Class Members W-Z/总索引和大量 class/API 页面仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理 `functions_vars_w.html`、`functions_vars_x.html`、`functions_vars_y.html`、`functions_vars_z.html`、`functions_vars.html`。
+2. 对 variables 索引页继续补中文用途说明、导航方式、术语对照和局部结构说明，仍不把导读层误标为最终完成。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证，并记录分级变化。
+
+## 第 157 轮：API Variables M-Q 索引页 draft 精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认本轮目标均为 `draft_template_only`。
+- 本轮严格只处理 5 个 API 变量索引页：`full_site/api/functions_vars_m.html`、`full_site/api/functions_vars_n.html`、`full_site/api/functions_vars_o.html`、`full_site/api/functions_vars_p.html`、`full_site/api/functions_vars_q.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_functions_vars_batch_026.mjs`，为 5 页插入 `api-functions-vars-quality-pass-026` 中文精修导读区块；每页包含页面专属中文变量索引用法说明、模块边界、术语对照和结构提醒。
+- 本轮中文层覆盖 M 段的 Pcp dependency/arc、Vdf schedule input、Hydra display/repr/AOV、render spec、physics shape/joint/collision group；N 段的 TfMallocTag call tree/call stack、primvar、named texture handle、registered variant set、validation metadata、Pcp changes；O 段的 TfRefPtrTracker trace、Hydra picking/instance context、Pcp reference/relocation errors、Exec value override；P 段的 Pcp layer stack/prim index outputs、Hydra scene index/Embree prototype、UsdSkel imaging、physics object/rigid body；Q 段的 UsdVolTokensType 短页定位。
+- 初次质量审计发现 `functions_vars_p.html` 中文量仍偏薄，本轮只在该页补充更明确的中文分组说明，未新增第 6 页。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 260 / `draft_needs_translation` 138 / `good_bilingual` 8 变为 `draft_template_only` 255 / `draft_needs_translation` 143 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；5 个目标页均带有本轮 marker，坏编码风险 0。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是逐项变量、字段、签名和成员文档的完整翻译。
+- 全量仍有 255 个 `draft_template_only` 和 143 个 `draft_needs_translation`；后续 variables R-Z、variables 总索引、Class Members W-Z/总索引和大量 class/API 页面仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理 `functions_vars_r.html`、`functions_vars_s.html`、`functions_vars_t.html`、`functions_vars_u.html`、`functions_vars_v.html`。
+2. 对 variables 索引页继续补中文用途说明、导航方式、术语对照和局部结构说明，仍不把导读层误标为最终完成。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证，并记录分级变化。
+
+## 第 156 轮：API Variables H-L 索引页 draft 精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认本轮目标均为 `draft_template_only`。
+- 本轮严格只处理 5 个 API 变量索引页：`full_site/api/functions_vars_h.html`、`full_site/api/functions_vars_i.html`、`full_site/api/functions_vars_j.html`、`full_site/api/functions_vars_k.html`、`full_site/api/functions_vars_l.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_functions_vars_batch_025.mjs`，为 5 页插入 `api-functions-vars-quality-pass-025` 中文精修导读区块；每页包含页面专属中文变量索引用法说明、模块边界、术语对照和结构提醒。
+- 本轮中文层覆盖 H 段的 physics shape desc、HdStShaderCode texture handle、property mapping；I 段的 imaging/instancer、Vdf schedule/data vector、Sdf/Pcp namespace edit、physics/validation；J 段的 D6 joint、HdEmbreeConfig、UsdSkel/physics tokens；K 段的 validator metadata、schema registry、rigid body desc；L 段的 Pcp relocation/layer stack、UsdSkel bake skinning、linear units、physics joint desc、Exec provider resolution 和多 domain tokens。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 265 / `draft_needs_translation` 133 / `good_bilingual` 8 变为 `draft_template_only` 260 / `draft_needs_translation` 138 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；5 个目标页均带有本轮 marker，坏编码风险 0。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是逐项变量、字段、签名和成员文档的完整翻译。
+- 全量仍有 260 个 `draft_template_only` 和 138 个 `draft_needs_translation`；后续 variables M-Q、R-Z、variables 总索引和大量 class/API 页面仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理 `functions_vars_m.html`、`functions_vars_n.html`、`functions_vars_o.html`、`functions_vars_p.html`、`functions_vars_q.html`。
+2. 对 variables 索引页继续补中文用途说明、导航方式、术语对照和局部结构说明，仍不把导读层误标为最终完成。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证，并记录分级变化。
+
+## 第 155 轮：API Variables C-G 索引页 draft 精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认本轮目标均为 `draft_template_only`。
+- 本轮严格只处理 5 个 API 变量索引页：`full_site/api/functions_vars_c.html`、`full_site/api/functions_vars_d.html`、`full_site/api/functions_vars_e.html`、`full_site/api/functions_vars_f.html`、`full_site/api/functions_vars_g.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_functions_vars_batch_024.mjs`，为 5 页插入 `api-functions-vars-quality-pass-024` 中文精修导读区块；每页包含页面专属中文变量索引用法说明、模块边界、术语对照和结构提醒。
+- 本轮中文层覆盖 C 段的 token table、Hydra/AOV、Pcp error、physics desc；D 段的 RenderVar、CameraUtil/GfCamera、Tf spin mutex、Pcp cache/layer stack changes、validation metadata；E 段的 namespace edit、joint limit、VtArrayEditBuilder、asset path context；F 段的 UsdImaging data source mapping、schema registry、physics articulation/collision group、composition field edit；G 段的 schema token、UsdPhysicsSceneDesc、HdMeshReprDesc 和 GL engine parameters。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 270 / `draft_needs_translation` 128 / `good_bilingual` 8 变为 `draft_template_only` 265 / `draft_needs_translation` 133 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；5 个目标页均带有本轮 marker，坏编码风险 0。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是逐项变量、字段、签名和成员文档的完整翻译。
+- 全量仍有 265 个 `draft_template_only` 和 133 个 `draft_needs_translation`；后续 variables H-L、M-Z、variables 总索引和大量 class/API 页面仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理 `functions_vars_h.html`、`functions_vars_i.html`、`functions_vars_j.html`、`functions_vars_k.html`、`functions_vars_l.html`。
+2. 对 variables 索引页继续补中文用途说明、导航方式、术语对照和局部结构说明，仍不把导读层误标为最终完成。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证，并记录分级变化。
+
+## 第 154 轮：API Typedefs、Class Members U/V 与 Variables A/B 索引页 draft 精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认本轮目标均为 `draft_template_only`。
+- 本轮严格只处理 5 个 API 索引页：`full_site/api/functions_type.html`、`full_site/api/functions_u.html`、`full_site/api/functions_v.html`、`full_site/api/functions_vars_a.html`、`full_site/api/functions_vars_b.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_functions_type_vars_batch_023.mjs`，为 5 页插入 `api-functions-type-vars-quality-pass-023` 中文精修导读区块；每页包含页面专属中文索引用法说明、模块边界、术语对照和结构提醒。
+- 本轮中文层覆盖 typedef/alias 索引里的 Vdf executor、Sdf/Usd range、Tf/Vt 容器；Class Members U/V 的 USD stage/prim/material、Hydra shader/time sample/render buffer、validation、Vdf iterator、Exec value override；Variables A/B 的 token table、AOV、scene index、UsdSkel imaging、physics shape desc、Sdr shader discovery 与 Hgi mip info。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；清单外 class/API 链接继续经 `site/uncovered_openusd_page.html` 承接并保留 `data-official-href` 供追溯。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 275 / `draft_needs_translation` 123 / `good_bilingual` 8 变为 `draft_template_only` 270 / `draft_needs_translation` 128 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；5 个目标页均带有本轮 marker，坏编码风险 0。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是逐项 typedef、class member、变量、签名和成员文档的完整翻译。
+- 全量仍有 270 个 `draft_template_only` 和 128 个 `draft_needs_translation`；后续 functions_vars_c 之后的变量索引页和大量 class/API 页面仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理 `functions_vars_c.html`、`functions_vars_d.html`、`functions_vars_e.html`、`functions_vars_f.html`、`functions_vars_g.html`。
+2. 对 variables 索引页继续补中文用途说明、导航方式、术语对照和局部结构说明，仍不把导读层误标为最终完成。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证，并记录分级变化。
+
+## 第 153 轮：API related S/T 与 Class Members S/T 索引页 draft 精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认本轮目标均为 `draft_template_only`。
+- 本轮严格只处理 5 个 API 索引页：`full_site/api/functions_rela_s.html`、`full_site/api/functions_rela_t.html`、`full_site/api/functions_rela.html`、`full_site/api/functions_s.html`、`full_site/api/functions_t.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_functions_related_batch_022.mjs`，为 5 页插入 `api-functions-related-quality-pass-022` 中文精修导读区块；每页包含页面专属中文索引用法说明、模块边界、术语对照和结构提醒。
+- 本轮中文层覆盖 related S/T 的 Sdf predicate/path expression、Vdf/Vt value 容器、TfRefPtr/TfRefBase、PcpInstanceKey、SdfSpec、TfToken、TfPyMethodResult；同时覆盖 Class Members S/T 的 Sdf/UsdStage/UsdTimeCode、Hydra/Embree sampler、scene delegate、Vdf executor、Pcp error、Tf 基础设施和 UsdPhysicsJointDrive。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；目标页官方 URL 仅保留在“打开官方原页 / Open official page”导航链接中。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 280 / `draft_needs_translation` 118 / `good_bilingual` 8 变为 `draft_template_only` 275 / `draft_needs_translation` 123 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；5 个目标页均带有本轮 marker，坏编码风险 0。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是逐项 related function、class member、变量、签名和成员文档的完整翻译。
+- 全量仍有 275 个 `draft_template_only` 和 123 个 `draft_needs_translation`；后续 functions_type、functions_u/v、functions_vars_* 索引页和大量 class/API 页面仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理 `functions_type.html`、`functions_u.html`、`functions_v.html`、`functions_vars_a.html`、`functions_vars_b.html`。
+2. 对 functions/type/vars 索引页继续补中文用途说明、导航方式、术语对照和局部结构说明，仍不把导读层误标为最终完成。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证，并记录分级变化。
+
+## 第 152 轮：API Class Members Q/R 与 related G/H/O 索引页 draft 精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认本轮继续按最多 5 页推进。
+- 本轮严格只处理 5 个 API 索引页：`full_site/api/functions_q.html`、`full_site/api/functions_r.html`、`full_site/api/functions_rela_g.html`、`full_site/api/functions_rela_h.html`、`full_site/api/functions_rela_o.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_functions_related_batch_021.mjs`，为 5 页插入 `api-functions-related-quality-pass-021` 中文精修导读区块；每页包含页面专属中文索引用法说明、模块辨识、术语对照和结构提醒。
+- 本轮中文层覆盖 Q 段 UsdVol/Sdf layer/CLI ConfigBase，R 段 physics shape desc、Sdf/Ar/Hio file access、Vdf accessor、Hydra buffer，以及 related G/H/O 的 Gf math、Ar/Sdf/Tf/Usd 相关函数入口。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；目标页实际 `href` 抽查确认非预期官方外跳为 0。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 285 / `draft_needs_translation` 113 / `good_bilingual` 8 变为 `draft_template_only` 280 / `draft_needs_translation` 118 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；5 个目标页均带有本轮 marker，坏编码风险 0。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是逐项 class member、related function、签名和成员文档的完整翻译。
+- 全量仍有 280 个 `draft_template_only` 和 118 个 `draft_needs_translation`；后续 related/type/vars 索引页和大量 class/API 页面仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理 `functions_rela_s.html`、`functions_rela_t.html`、`functions_rela.html`、`functions_s.html`、`functions_t.html`。
+2. 对 functions/related 索引页继续补中文用途说明、导航方式、术语对照和局部结构说明，仍不把导读层误标为最终完成。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证，并记录分级变化。
+
+## 第 151 轮：API Class Members L-P 索引页 draft 精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认本轮目标仍按最多 5 页推进。
+- 本轮严格只处理 5 个 API Class Members 索引页：`full_site/api/functions_l.html`、`full_site/api/functions_m.html`、`full_site/api/functions_n.html`、`full_site/api/functions_o.html`、`full_site/api/functions_p.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_functions_members_batch_020.mjs`，为 5 页插入 `api-functions-members-quality-pass-020` 中文精修导读区块；每页包含 4 条页面专属中文类成员索引用法说明和 5 条术语对照。
+- 本轮中文层覆盖 L 段 Pcp relocation/UsdPhysics joint/Sdf 数据层，M 段 Sdf expression/UsdGeom/Pcp map/Hydra/Trace，N 段 Hydra scene index/PcpError 诊断，O 段 Ar/Sdf package/Hydra schema，P 段 Sdr shader parser/usdVol particle field/Pcp layer stack。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；实际 `href` 抽查确认 5 个目标页非预期官方外跳为 0。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 290 / `draft_needs_translation` 108 / `good_bilingual` 8 变为 `draft_template_only` 285 / `draft_needs_translation` 113 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；5 个目标页均带有本轮 marker，坏编码风险 0。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是逐项类成员、枚举值、函数签名和成员说明的完整翻译。
+- 全量仍有 285 个 `draft_template_only` 和 113 个 `draft_needs_translation`；后续 Class Members Q/R、related/type/vars 索引页和大量 class/API 页面仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理相邻 API 索引页 `functions_q.html`、`functions_r.html`、`functions_rela_g.html`、`functions_rela_h.html`、`functions_rela_o.html`。
+2. 对 functions_* 索引页继续补中文用途说明、导航方式、术语对照和局部结构说明，仍不把导读层误标为最终完成。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证，并记录分级变化。
+
+## 第 150 轮：API Class Members G-K 索引页 draft 精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认本轮目标仍按最多 5 页推进。
+- 本轮严格只处理 5 个 API Class Members 索引页：`full_site/api/functions_g.html`、`full_site/api/functions_h.html`、`full_site/api/functions_i.html`、`full_site/api/functions_j.html`、`full_site/api/functions_k.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_functions_members_batch_019.mjs`，为 5 页插入 `api-functions-members-quality-pass-019` 中文精修导读区块；每页包含 4 条页面专属中文类成员索引用法说明和 5 条术语对照。
+- 本轮中文层覆盖 G 段 Hydra/Hgi/GfMatrix/resource registry，H 段 UsdPhysics shape desc/Sdf/Pcp/Usd 对象，I 段 schema token/Pcp map/Hydra buffer/Sdf namespace edit，J 段 physics joint/UsdSkel/JSON，K 段 Sdf notice/TfNotice/validator metadata/resource layout。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；实际 `href` 抽查确认 5 个目标页非预期官方外跳为 0。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 295 / `draft_needs_translation` 103 / `good_bilingual` 8 变为 `draft_template_only` 290 / `draft_needs_translation` 108 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；5 个目标页均带有本轮 marker，坏编码风险 0。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是逐项类成员、枚举值、函数签名和成员说明的完整翻译。
+- 全量仍有 290 个 `draft_template_only` 和 108 个 `draft_needs_translation`；后续 Class Members L-R/S-V/type/rela 等索引页和大量 class/API 页面仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理相邻 API 索引页 `functions_l.html`、`functions_m.html`、`functions_n.html`、`functions_o.html`、`functions_p.html`。
+2. 对 functions_* 索引页继续补中文用途说明、导航方式、术语对照和局部结构说明，仍不把导读层误标为最终完成。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证，并记录分级变化。
+
+## 第 149 轮：API functions_func 尾页与相邻索引页 draft 精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认本轮目标仍按最多 5 页推进。
+- 本轮严格只处理 5 个 API 索引页：`full_site/api/functions_func_y.html`、`full_site/api/functions_func_z.html`、`full_site/api/functions_enum.html`、`full_site/api/functions_eval.html`、`full_site/api/functions_func.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_functions_index_batch_018.mjs`，为 5 页插入 `api-functions-index-quality-pass-018` 中文精修导读区块；每页包含 4 条页面专属中文索引用法说明和 5 条术语对照。
+- 本轮中文层覆盖 Y/Z 段 GfVec 分量与 VdfExecutorBufferData、`functions_enum` 的枚举类型索引、`functions_eval` 的枚举值索引，以及 `functions_func` 的函数成员总索引和 Hydra/Vdf/Trace 模块导航。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；实际 `href` 抽查确认 5 个目标页非预期官方外跳为 0。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 300 / `draft_needs_translation` 98 / `good_bilingual` 8 变为 `draft_template_only` 295 / `draft_needs_translation` 103 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；5 个目标页均带有本轮 marker，坏编码风险 0。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是逐项枚举值、函数签名、参数和成员说明的完整翻译。
+- 全量仍有 295 个 `draft_template_only` 和 103 个 `draft_needs_translation`；functions_func 系列模板草稿已清完，但其他 functions_* 索引页和大量 class/API 页面仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理相邻 API 索引页 `functions_g.html`、`functions_h.html`、`functions_i.html`、`functions_j.html`、`functions_k.html`。
+2. 对 functions_* 索引页继续补中文用途说明、导航方式、术语对照和局部结构说明，仍不把导读层误标为最终完成。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证，并记录分级变化。
+
+## 第 148 轮：API functions_func 索引页 draft 精修（五）
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认本轮目标仍按最多 5 页推进。
+- 本轮严格只处理 5 个 API functions_func 函数成员索引页：`full_site/api/functions_func_t.html`、`full_site/api/functions_func_u.html`、`full_site/api/functions_func_v.html`、`full_site/api/functions_func_w.html`、`full_site/api/functions_func_x.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_functions_func_batch_017.mjs`，为 5 页插入 `api-functions-func-quality-pass-017` 中文精修导读区块；每页包含 4 条页面专属中文索引用法说明和 5 条术语对照。
+- 本轮中文层覆盖 T 段 Tf/Vdf executor/diagnostic/Python binding，U 段 UsdStage/VtValue/GfRange/HdSt/Vdf update，V 段 validation/UsdSkel/Vdf vector，W 段 Work task/write/wait/Trace/JsWriter，X 段 GfVec 与 UsdGeomXformable::XformQuery。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；实际 `href` 抽查确认 5 个目标页非预期官方外跳为 0。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 305 / `draft_needs_translation` 93 / `good_bilingual` 8 变为 `draft_template_only` 300 / `draft_needs_translation` 98 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；5 个目标页均带有本轮 marker，坏编码风险 0。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是逐项函数签名、参数和成员说明的完整翻译。
+- 全量仍有 300 个 `draft_template_only` 和 98 个 `draft_needs_translation`；functions_func 剩余模板草稿只剩 `functions_func_y.html` 和 `functions_func_z.html`，之后需要进入其他 API 索引页和核心 class 页。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理 `functions_func_y.html`、`functions_func_z.html`，再选择 `functions_enum.html`、`functions_eval.html`、`functions_func.html` 这类相邻 API 索引页。
+2. 对剩余 functions_func 与相邻索引页继续补中文用途说明、导航方式、术语对照和局部结构说明，仍不把导读层误标为最终完成。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证，并记录分级变化。
+
+## 第 147 轮：API functions_func 索引页 draft 精修（四）
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认本轮目标仍按最多 5 页推进。
+- 本轮严格只处理 5 个 API functions_func 函数成员索引页：`full_site/api/functions_func_o.html`、`full_site/api/functions_func_p.html`、`full_site/api/functions_func_q.html`、`full_site/api/functions_func_r.html`、`full_site/api/functions_func_s.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_functions_func_batch_016.mjs`，为 5 页插入 `api-functions-func-quality-pass-016` 中文精修导读区块；每页包含 4 条页面专属中文索引用法说明和 5 条术语对照。
+- 本轮中文层覆盖 O 段 asset resolver/package/layer/Hydra plugin handle，P 段 predicate/shader parser/usdVol particle field/Pcp composition，Q 段 Sdf query 与 CLI ConfigBase 边界，R 段 read accessor/file format/buffer range/Trace，S 段 time code/sampler/scene delegate/scoped lock/namespace edit。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；实际 `href` 抽查确认 5 个目标页非预期官方外跳为 0。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 310 / `draft_needs_translation` 88 / `good_bilingual` 8 变为 `draft_template_only` 305 / `draft_needs_translation` 93 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；5 个目标页均带有本轮 marker，坏编码风险 0。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是逐项函数签名、参数和成员说明的完整翻译。
+- 全量仍有 305 个 `draft_template_only` 和 93 个 `draft_needs_translation`；functions_func 剩余字母页还有 7 个模板草稿，之后还会进入 functions_rela、functions_type、functions_vars 等索引页。
+
+下一轮目标：
+
+1. 继续最多 5 页，从 API 队列中按顺序优先选择 `functions_func_t.html`、`functions_func_u.html`、`functions_func_v.html`、`functions_func_w.html`、`functions_func_x.html`。
+2. 对 functions_func 剩余字母页继续补中文用途说明、导航方式、术语对照和局部结构说明，仍不把导读层误标为最终完成。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证，并记录分级变化。
+
+## 第 146 轮：API functions_func 索引页 draft 精修（三）
+已完成：
+
+- 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口和进度记录，确认本轮继续按最多 5 页推进。
+- 本轮严格只处理 5 个 API 函数成员索引页：`full_site/api/functions_func_j.html`、`functions_func_k.html`、`functions_func_l.html`、`functions_func_m.html`、`functions_func_n.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_functions_func_batch_015.mjs`，为 5 页插入 `api-functions-func-quality-pass-015` 中文精修导读区块，包含 4 条中文函数索引用法/模块辨识说明和 5 条术语对照。
+- 本轮中文层覆盖 J 段 JSON/UsdSkel/SdfPath 少量索引、K 段 SdfChildrenView 与 SdfNotice、L 段 UsdLux/Sdf/Plug/Trace/Vdf 交叉入口、M 段 expression/UsdGeom/EditTarget/Hd/Trace 条目，以及 N 段 Hydra scene index 和 PcpError 诊断入口。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本地链接策略未被本轮编辑破坏。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 315 / `draft_needs_translation` 83 / `good_bilingual` 8 变为 `draft_template_only` 310 / `draft_needs_translation` 88 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 单页抽查确认 5 页均带有本轮 marker，坏编码风险为 0、非预期官方外跳为 0；`audit_openusd_full_draft_preview` 398/398 draft 预览通过。
+
+差距：
+
+- 本轮仍是页面级中文导读、术语和索引使用说明，不是逐项函数签名、参数和成员说明的完整翻译。
+- 全量仍有 310 个 `draft_template_only` 和 88 个 `draft_needs_translation`；functions_func 后续字母页仍需要继续按每轮最多 5 页推进。
+
+下一轮目标：
+
+1. 继续最多 5 页，从 API 队列中按顺序优先选择 `functions_func_o.html`、`functions_func_p.html`、`functions_func_q.html`、`functions_func_r.html`、`functions_func_s.html`。
+2. 对 functions_func 系列继续补中文用途说明、导航方式、术语对照和局部结构说明，仍不把导读层误标为最终完成。
+3. 每轮继续保存可检查 HTML，并复跑链接路由、翻译质量审计、draft 预览审计、报告索引和总验证。
+
+## 第 145 轮：API functions_func 索引页 draft 精修（二）
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认本轮继续按最多 5 页推进。
+- 本轮严格只处理 5 个 API 函数成员索引页：`full_site/api/functions_func_e.html`、`functions_func_f.html`、`functions_func_g.html`、`functions_func_h.html`、`functions_func_i.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_functions_func_batch_014.mjs`，为 5 页插入 `api-functions-func-quality-pass-014` 中文精修导读区块，包含 4 条中文函数索引用法/模块辨识说明和 5 条术语对照。
+- 本轮中文层覆盖 Ef 执行框架与缓存、Gf/Sdf/Pcp/Hgi/Hd/Vdf 模块分布、Hydra 资源与 buffer array、USD core 对象和 UsdShade/UsdSkel 交叉条目，以及 StageCache/FileFormat/PopulationMask/MemoryTag 等 I 段索引入口。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本地链接策略未被本轮编辑破坏。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 320 / `draft_needs_translation` 78 / `good_bilingual` 8 变为 `draft_template_only` 315 / `draft_needs_translation` 83 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 单页抽查确认 5 页均带有本轮 marker，坏编码风险为 0、非预期官方外跳为 0；`audit_openusd_full_draft_preview` 398/398 draft 预览通过。
+
+差距：
+
+- 本轮仍是页面级中文导读、术语和索引使用说明，不是逐项函数签名、参数和成员说明的完整翻译。
+- 全量仍有 315 个 `draft_template_only` 和 83 个 `draft_needs_translation`；functions_func 后续字母页仍较多，需要继续按每轮最多 5 页推进。
+
+下一轮目标：
+
+1. 继续最多 5 页，从 API 队列中按顺序优先选择 `functions_func_j.html`、`functions_func_k.html`、`functions_func_l.html`、`functions_func_m.html`、`functions_func_n.html`。
+2. 对 functions_func 系列继续补中文用途说明、导航方式、术语对照和局部结构说明，仍不把导读层误标为最终完成。
+3. 每轮继续保存可检查 HTML，并复跑链接路由、翻译质量审计、draft 预览审计、报告索引和总验证。
+
+## 第 144 轮：API functions_func 索引页 draft 精修（一）
+
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认本轮目标是 functions_func 系列函数成员索引页。
+- 本轮严格只处理 5 页：`full_site/api/functions_func_~.html`、`functions_func_a.html`、`functions_func_b.html`、`functions_func_c.html`、`functions_func_d.html`；继续跳过 `_source.html` 源码页和单个头文件页。
+- 新增 `scripts/refine_openusd_api_functions_func_batch_013.mjs`，为 5 页插入 `api-functions-func-quality-pass-013` 中文精修导读区块，包含 4 条中文函数索引用法/模块辨识说明和 5 条术语对照。
+- 本轮中文层覆盖符号段函数索引、Tf scoped lock/mutex、SdfChildrenView/SdfListProxy/TfSpan/VtArray 容器视图、Pcp/Trace/CameraUtil/UsdCollectionAPI 交叉条目，以及 GfMatrix/GfVec 数学类型函数索引。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，files_changed 为 0；本地链接策略未被本轮编辑破坏。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 325 / `draft_needs_translation` 73 / `good_bilingual` 8 变为 `draft_template_only` 320 / `draft_needs_translation` 78 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 单页抽查确认 5 页均带有本轮 marker，坏编码风险为 0、非预期官方外跳为 0；`audit_openusd_full_draft_preview` 398/398 draft 预览通过。
+
+差距：
+
+- 本轮仍是页面级中文导读与函数索引用法说明，不是逐项函数签名和成员说明的完整翻译。
+- 全量仍有 320 个 `draft_template_only` 和 78 个 `draft_needs_translation`；functions_func 后续字母页仍较多，需要继续按每轮最多 5 页推进。
+
+下一轮目标：
+
+1. 继续最多 5 页，从 API 队列中优先选择 `functions_func_e.html`、`functions_func_f.html`、`functions_func_g.html`、`functions_func_h.html`、`functions_func_i.html`。
+2. 对 functions_func 系列继续补中文用途说明、导航方式、术语对照和局部结构说明，仍不把导读层误标为最终完成。
+3. 每轮继续保存可检查 HTML，并复跑链接路由、翻译质量审计、draft 预览审计、报告索引和总验证。
+
+## 第 143 轮：API functions 索引页 draft 精修（二）
+
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认本轮继续处理 API 索引页而不是源码页。
+- 本轮严格只处理 5 页：`full_site/api/functions_~.html`、`functions_c.html`、`functions_d.html`、`functions_e.html`、`functions_f.html`；继续低优先处理 `_source.html` 和单个头文件页。
+- 新增 `scripts/refine_openusd_api_functions_batch_012.mjs`，为 5 页插入 `api-functions-quality-pass-012` 中文精修导读区块，包含 4 条中文索引用法/模块辨识说明和 5 条术语对照。
+- 本轮中文层覆盖符号段索引、Pcp/Trace/Hd/UsdCollectionAPI 交叉条目、GfMatrix/GfVec/Tf/Vt 基础类型、UsdTimeCode/Sdf namespace edit/Ef executor 条目，以及 token table/schema registry/file format/Sdr discovery 等索引阅读方式。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，files_changed 为 0；本地链接策略未被本轮编辑破坏。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 330 / `draft_needs_translation` 68 / `good_bilingual` 8 变为 `draft_template_only` 325 / `draft_needs_translation` 73 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 单页抽查确认 5 页均带有本轮 marker，坏编码风险为 0、非预期官方外跳为 0；`audit_openusd_full_draft_preview` 398/398 draft 预览通过。
+
+差距：
+
+- 本轮仍是页面级中文导读与索引用法说明，不是逐项 API 成员完整翻译。
+- 全量仍有 325 个 `draft_template_only` 和 73 个 `draft_needs_translation`；API 队列里还会继续出现 functions_func、functions_rela、functions_type、functions_vars 等索引页，需要按可读价值筛选推进。
+
+下一轮目标：
+
+1. 继续最多 5 页，从 API 队列中优先选择 `functions_func_~.html`、`functions_func_a.html`、`functions_func_b.html`、`functions_func_c.html`、`functions_func_d.html` 等索引页。
+2. 对 functions_func 系列补中文用途说明、导航方式、术语对照和局部结构说明，仍不把导读层误标为最终完成。
+3. 每轮继续保存可检查 HTML，并复跑链接路由、翻译质量审计、draft 预览审计、报告索引和总验证。
+
+## 第 142 轮：API 索引页 draft 精修（一）
+
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认队列已进入 API 源码/索引页阶段。
+- 本轮跳过 `_source.html` 源码页和单个头文件页，优先筛选 5 个用户可读价值较高的 API 索引/入口页：`full_site/api/classes.html`、`deprecated.html`、`files.html`、`functions_a.html`、`functions_b.html`。
+- 新增 `scripts/refine_openusd_api_index_batch_011.mjs`，为 5 页插入 `api-index-quality-pass-011` 中文精修导读区块，包含 4 条中文索引用法/导航说明和 5 条术语对照。
+- 本轮补充了 Class Index 的模块前缀导航、Deprecated List 的迁移用途、File List 的头文件/源码页边界、Class Members 字母索引的符号查找方式，以及模板容器/并行执行相关条目的阅读策略。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，files_changed 为 0；本地链接策略未被本轮编辑破坏。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 335 / `draft_needs_translation` 63 / `good_bilingual` 8 变为 `draft_template_only` 330 / `draft_needs_translation` 68 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 单页抽查确认 5 页均带有本轮 marker，坏编码风险为 0；`audit_openusd_full_draft_preview` 398/398 draft 预览通过，报告索引 16/16 通过，总验证 281 checks passed, 0 failed。
+
+差距：
+
+- 本轮仍是页面级中文导读与索引用法说明，不是逐项 API 成员完整翻译。
+- 全量仍有 330 个 `draft_template_only` 和 68 个 `draft_needs_translation`；后续 API 队列中仍有大量源码页和字母索引页，需要继续筛选，低优先处理 `_source.html`。
+
+下一轮目标：
+
+1. 继续最多 5 页，从 API 队列中优先选择用户可读价值较高的索引页，例如 `functions_~.html`、`functions_c.html`、`functions_d.html`、`functions_e.html`、`functions_f.html`。
+2. 对被选 API 索引页补中文用途说明、导航方式、术语对照和局部结构说明，仍不把导读层误标为最终完成。
+3. 每轮继续保存可检查 HTML，并复跑链接路由、翻译质量审计、draft 预览审计、报告索引和总验证。
+
+## 第 141 轮：usdVol 剩余高价值 schema draft 精修
+
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认继续按质量队列推进。
+- 本轮没有为凑满 5 页去处理紧随其后的 API 源码页；实际只精修剩余 4 个高价值 usdVol 页面：`full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html`、`ParticleFieldPositionBaseAPI.html`、`ParticleFieldRadianceBaseAPI.html`、`usdVol_toc.html`。
+- 新增 `scripts/refine_openusd_usdVol_remaining_batch_010.mjs`，为 4 页插入 `usdVol-remaining-quality-pass-010` 中文精修导读区块，包含 4 条中文用途/属性阅读说明和 5 条术语对照。
+- 本轮补充了 GaussianSurflet 的 XY plane/off-plane opacity、PositionBaseAPI 的 particle count 和 per-particle data 对齐规则、RadianceBaseAPI 的 radiance definition validation、usdVol_toc 的 Volumes/Fields/Particle Fields 阅读路线。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，files_changed 为 0；本地链接策略未被本轮编辑破坏。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 339 / `draft_needs_translation` 59 / `good_bilingual` 8 变为 `draft_template_only` 335 / `draft_needs_translation` 63 / `good_bilingual` 8；本轮 4 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 单页抽查确认 4 页均带有本轮 marker，坏编码风险为 0；`audit_openusd_full_draft_preview` 398/398 draft 预览通过，报告索引 16/16 通过，总验证 281 checks passed, 0 failed。
+
+差距：
+
+- 本轮仍是页面级中文导读与术语层，不是逐段完整翻译；usdVol 剩余页后续仍需补属性表、公式解释和示例段落级对照。
+- 全量仍有 335 个 `draft_template_only` 和 63 个 `draft_needs_translation`；下一轮队列已进入 API 源码/索引页，需要继续筛选用户可读价值高的页面，不能机械处理低价值源码页。
+
+下一轮目标：
+
+1. 继续最多 5 页，但优先从 API 队列中筛选用户可读价值高的索引/入口页，例如 `classes.html`、`deprecated.html`、`files.html` 等；低优先处理 `_source.html` 源码页。
+2. 对被选 API 索引页补中文用途说明、导航方式、术语对照和局部结构说明，仍不把导读层误标为最终完成。
+3. 每轮继续保存可检查 HTML，并复跑链接路由、翻译质量审计、draft 预览审计、报告索引和总验证。
+
+## 第 140 轮：usdVol volume/particle kernel schema draft 精修
+
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认继续按每轮最多 5 页的质量精修节奏推进。
+- 新增 `scripts/refine_openusd_usdVol_schema_batch_009.mjs`，本轮严格只处理 5 页：`full_site/release/user_guides/schemas/usdVol/Field3DAsset.html`、`OpenVDBAsset.html`、`ParticleFieldKernelBaseAPI.html`、`ParticleFieldKernelConstantSurfletAPI.html`、`ParticleFieldKernelGaussianEllipsoidAPI.html`。
+- 每页新增 `usdVol-schema-quality-pass-009` 中文精修导读区块，包含 4 条中文用途/属性阅读说明和 5 条术语对照；API 名称、页面名、代码、命令、属性名、数学符号和官方英文摘录保持原样。
+- 本轮补充了 Field3DAsset 的 `.f3d` 体积场引用、OpenVDBAsset 的 `.vdb` 稀疏体积网格、ParticleFieldKernelBaseAPI 的 spatial basis function、ConstantSurflet 的圆盘支持域和 GaussianEllipsoid 的 3-sigma/Gaussian falloff。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，files_changed 为 0；本地链接策略未被本轮编辑破坏。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 344 / `draft_needs_translation` 54 / `good_bilingual` 8 变为 `draft_template_only` 339 / `draft_needs_translation` 59 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 单页抽查确认 5 页均带有本轮 marker，坏编码风险为 0；`audit_openusd_full_draft_preview` 398/398 draft 预览通过，报告索引 16/16 通过，总验证 281 checks passed, 0 failed。
+
+差距：
+
+- 本轮仍是页面级中文导读与术语层，不是逐段完整翻译；usdVol kernel 页后续仍需补属性表、公式解释和示例段落级对照。
+- 全量仍有 339 个 `draft_template_only` 和 59 个 `draft_needs_translation`，不能把导读层误标为完成。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理质量报告队列中的 schema 指南页。
+2. 建议下一组：`user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html`、`ParticleFieldPositionBaseAPI.html`、`ParticleFieldRadianceBaseAPI.html`、`usdVol_toc.html`，再选择一个高价值 API 入口或等待下一轮继续。
+3. 每轮继续保存可检查 HTML，并复跑链接路由、翻译质量审计、draft 预览审计、报告索引和总验证。
+
+## 第 139 轮：usdUI hints schema draft 精修
+
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认继续按每轮最多 5 页的质量精修节奏推进。
+- 新增 `scripts/refine_openusd_usdUI_hints_batch_008.mjs`，本轮严格只处理 5 页：`full_site/release/user_guides/schemas/usdUI/ObjectHints.html`、`PrimHints.html`、`PropertyHints.html`、`SceneGraphPrimAPI.html`、`usdUI_toc.html`。
+- 每页新增 `usdUI-hints-quality-pass-008` 中文精修导读区块，包含 4 条中文用途/属性阅读说明和 5 条术语对照；API 名称、页面名、代码、命令、属性名、路径写法和官方英文摘录保持原样。
+- 本轮补充了 ObjectHints 的 displayName/hidden、PrimHints 的 display groups 和条件显示、PropertyHints 的 property-level hints、SceneGraphPrimAPI 的场景图描述信息、usdUI_toc 的 UI hints/accessibility/node graph 阅读路线。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，files_changed 为 0；本地链接策略未被本轮编辑破坏。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 349 / `draft_needs_translation` 49 / `good_bilingual` 8 变为 `draft_template_only` 344 / `draft_needs_translation` 54 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 单页抽查确认 5 页均带有本轮 marker，坏编码风险为 0；`audit_openusd_full_draft_preview` 398/398 draft 预览通过，报告索引 16/16 通过，总验证 281 checks passed, 0 failed。
+
+差距：
+
+- 本轮仍是页面级中文导读与术语层，不是逐段完整翻译；usdUI hints 页后续仍需补属性表、示例段落和更细的 UI 条件表达式解释。
+- 全量仍有 344 个 `draft_template_only` 和 54 个 `draft_needs_translation`，不能把导读层误标为完成。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理质量报告队列中的 schema 指南页。
+2. 建议下一组：`user_guides/schemas/usdVol/Field3DAsset.html`、`OpenVDBAsset.html`、`ParticleFieldKernelBaseAPI.html`、`ParticleFieldKernelConstantSurfletAPI.html`、`ParticleFieldKernelGaussianEllipsoidAPI.html`。
+3. 每轮继续保存可检查 HTML，并复跑链接路由、翻译质量审计、draft 预览审计、报告索引和总验证。
+
+## 第 138 轮：usdRender/usdUI schema draft 精修
+
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认继续按每轮最多 5 页的质量精修节奏推进。
+- 新增 `scripts/refine_openusd_usdUI_schema_batch_007.mjs`，本轮严格只处理 5 页：`full_site/release/user_guides/schemas/usdRender/usdRender_toc.html`、`full_site/release/user_guides/schemas/usdUI/AccessibilityAPI.html`、`AttributeHints.html`、`Backdrop.html`、`NodeGraphNodeAPI.html`。
+- 每页新增 `usdUI-schema-quality-pass-007` 中文精修导读区块，包含 4 条中文用途/属性阅读说明和 5 条术语对照；API 名称、页面名、代码、命令、属性名、路径写法和官方英文摘录保持原样。
+- 本轮补充了 usdRender 目录阅读路线、AccessibilityAPI 的 label/description/priority、AttributeHints 的 UI hints/ordering、Backdrop 的节点图分组、NodeGraphNodeAPI 的 `ui:nodegraph:node:*` 布局属性。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，files_changed 为 0；本地链接策略未被本轮编辑破坏。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 354 / `draft_needs_translation` 44 / `good_bilingual` 8 变为 `draft_template_only` 349 / `draft_needs_translation` 49 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 单页抽查确认 5 页均带有本轮 marker，坏编码风险为 0；`audit_openusd_full_draft_preview` 398/398 draft 预览通过，报告索引 16/16 通过，总验证 281 checks passed, 0 failed。
+
+差距：
+
+- 本轮仍是页面级中文导读与术语层，不是逐段完整翻译；usdUI schema 页后续仍需补属性表、继承关系和示例段落级对照。
+- 全量仍有 349 个 `draft_template_only` 和 49 个 `draft_needs_translation`，不能把导读层误标为完成。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理质量报告队列中的 schema 指南页。
+2. 建议下一组：`user_guides/schemas/usdUI/ObjectHints.html`、`PrimHints.html`、`PropertyHints.html`、`SceneGraphPrimAPI.html`、`usdUI_toc.html`。
+3. 每轮继续保存可检查 HTML，并复跑链接路由、翻译质量审计、draft 预览审计、报告索引和总验证。
+
+## 第 137 轮：usdMedia/usdRender schema draft 精修
+
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认继续按每轮最多 5 页的质量精修节奏推进。
+- 新增 `scripts/refine_openusd_usdRender_schema_batch_006.mjs`，本轮严格只处理 5 页：`full_site/release/user_guides/schemas/usdMedia/usdMedia_toc.html`、`full_site/release/user_guides/schemas/usdRender/RenderPass.html`、`RenderProduct.html`、`RenderSettings.html`、`RenderVar.html`。
+- 每页新增 `usdRender-schema-quality-pass-006` 中文精修导读区块，包含 4 条中文用途/属性阅读说明和 5 条术语对照；API 名称、页面名、代码、命令、属性名、路径写法和官方英文摘录保持原样。
+- 本轮补充了 usdMedia 目录阅读路线、RenderPass 的 renderer/scene configuration、RenderProduct 的输出 artifact、RenderSettings 的全局设置与 RenderProducts/RenderVars、RenderVar 的 AOV/channel/source 信息。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，files_changed 为 0；本地链接策略未被本轮编辑破坏。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 359 / `draft_needs_translation` 39 / `good_bilingual` 8 变为 `draft_template_only` 354 / `draft_needs_translation` 44 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 单页抽查确认 5 页均带有本轮 marker，坏编码风险为 0；`audit_openusd_full_draft_preview` 398/398 draft 预览通过，报告索引 16/16 通过，总验证 281 checks passed, 0 failed。
+
+差距：
+
+- 本轮仍是页面级中文导读与术语层，不是逐段完整翻译；Render schema 页后续仍需补属性表、继承关系和示例段落级对照。
+- 全量仍有 354 个 `draft_template_only` 和 44 个 `draft_needs_translation`，不能把导读层误标为完成。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理质量报告队列中的 schema 指南页。
+2. 建议下一组：`user_guides/schemas/usdRender/usdRender_toc.html`、`user_guides/schemas/usdUI/AccessibilityAPI.html`、`AttributeHints.html`、`Backdrop.html`、`NodeGraphNodeAPI.html`。
+3. 每轮继续保存可检查 HTML，并复跑链接路由、翻译质量审计、draft 预览审计、报告索引和总验证。
+
+## 第 136 轮：usdLux/usdMedia schema draft 精修
+
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认当前仍是 8 个 `good_bilingual` + 398 个 `bilingual_draft` 的质量精修阶段。
+- 新增 `scripts/refine_openusd_schema_media_batch_005.mjs`，本轮严格只处理 5 页：`full_site/release/user_guides/schemas/usdLux/RectLight.html`、`SphereLight.html`、`usdLux_toc.html`、`full_site/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html`、`SpatialAudio.html`。
+- 每页新增 `schema-media-quality-pass-005` 中文精修导读区块，包含 4 条中文用途/属性阅读说明和 5 条术语对照；API 名称、页面名、代码、命令、属性名、路径写法和官方英文摘录保持原样。
+- 本轮补充了 RectLight 的矩形面积光、SphereLight 的 one-sided/treatAsPoint、usdLux_toc 的灯光 schema 阅读路线、AssetPreviewsAPI 的 thumbnail previews、SpatialAudio 的 filePath/auralMode/playbackMode/mediaOffset。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，files_changed 为 0；本地链接策略未被本轮编辑破坏。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 364 / `draft_needs_translation` 34 / `good_bilingual` 8 变为 `draft_template_only` 359 / `draft_needs_translation` 39 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 单页抽查确认 5 页均带有本轮 marker，坏编码风险为 0；`audit_openusd_full_draft_preview` 398/398 draft 预览通过，报告索引 16/16 通过，总验证 281 checks passed, 0 failed。
+
+差距：
+
+- 本轮仍是页面级中文导读与术语层，不是逐段完整翻译；schema 属性页后续仍需补属性表、继承关系和示例段落级对照。
+- 全量仍有 359 个 `draft_template_only` 和 39 个 `draft_needs_translation`，不能把导读层误标为完成。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理质量报告队列中的 schema 指南页。
+2. 建议下一组：`user_guides/schemas/usdMedia/usdMedia_toc.html`、`user_guides/schemas/usdRender/RenderPass.html`、`RenderProduct.html`、`RenderSettings.html`、`RenderVar.html`。
+3. 每轮继续保存可检查 HTML，并复跑链接路由、翻译质量审计、draft 预览审计、报告索引和总验证。
+
+## 第 135 轮：usdLux schema 属性页 draft 精修（一）
+
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认继续按每轮最多 5 页的质量精修节奏推进。
+- 新增 `scripts/refine_openusd_usdLux_schema_batch_004.mjs`，本轮严格只处理 5 个 usdLux schema 页：`full_site/release/user_guides/schemas/usdLux/CylinderLight.html`、`DiskLight.html`、`DistantLight.html`、`DomeLight.html`、`LightListAPI.html`。
+- 每页新增 `usdLux-schema-quality-pass-004` 中文精修导读区块，包含 4 条中文用途/属性阅读说明和 5 条术语对照；API 名称、页面名、代码、命令、属性名、路径写法和官方英文摘录保持原样。
+- 本轮补充了 CylinderLight 圆柱侧面发光、DiskLight 圆盘发光方向、DistantLight 方向光与 `inputs:angle`、DomeLight HDR/IBL 环境照明、LightListAPI 的 `ComputeLightList()` 遍历用途说明。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，files_changed 为 0；本地链接策略未被本轮编辑破坏。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 369 / `draft_needs_translation` 29 / `good_bilingual` 8 变为 `draft_template_only` 364 / `draft_needs_translation` 34 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 单页抽查确认 5 页均带有本轮 marker，坏编码风险为 0；`audit_openusd_full_draft_preview` 398/398 draft 预览通过，报告索引 16/16 通过，总验证 281 checks passed, 0 failed。
+
+差距：
+
+- 本轮仍是页面级中文导读与术语层，不是逐段完整翻译；这些 schema 页后续还需要继续补属性表、继承关系和示例段落级对照。
+- 全量仍有 364 个 `draft_template_only` 和 34 个 `draft_needs_translation`，不能把导读层误标为完成。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理质量报告队列中的 schema 指南页。
+2. 建议下一组：`user_guides/schemas/usdLux/RectLight.html`、`SphereLight.html`、`usdLux_toc.html`、`user_guides/schemas/usdMedia/AssetPreviewsAPI.html`、`SpatialAudio.html`。
+3. 每轮继续保存可检查 HTML，并复跑链接路由、翻译质量审计、draft 预览审计、报告索引和总验证。
+
+## 第 134 轮：release 用户指南与插件入口 draft 精修
+
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口和进度记录，确认当前仍不是完成态：406 页中 8 页为 `good_bilingual`，398 页仍为 `bilingual_draft`。
+- 新增 `scripts/refine_openusd_release_guides_batch_003.mjs`，本轮严格只处理 5 页：`full_site/release/tut_variants_example_in_katana.html`、`full_site/release/user_guides/collections_and_patterns.html`、`full_site/release/user_guides/namespace_editing.html`、`full_site/release/user_guides/schemas/index.html`、`full_site/release/plugins_alembic.html`。
+- 每页新增 `release-guide-quality-pass-003` 中文精修导读区块，包含 4 条中文阅读说明和 5 条术语对照；API 名称、页面名、代码、命令、文件扩展名和官方原页链接保持原样。
+- 本轮补充了 Katana variant 历史教程、Collections 两种模式、Namespace Editing 组合语义、Schema Domains 索引用法、Alembic 插件构建与 usdAbc 互操作说明。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，files_changed 为 0；清单内 OpenUSD 链接继续路由到本地页面，清单外内部链接继续路由到 `site/uncovered_openusd_page.html`。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 374 / `draft_needs_translation` 24 / `good_bilingual` 8 变为 `draft_template_only` 369 / `draft_needs_translation` 29 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 单页抽查确认 5 页均带有本轮 marker，坏编码风险为 0；`audit_openusd_full_draft_preview` 398/398 draft 预览通过，报告索引 16/16 通过，总验证 281 checks passed, 0 failed。
+
+差距：
+
+- 本轮仍是页面级中文导读、术语和局部结构说明，不是逐段完整翻译；相关页面仍需后续继续做段落级双语。
+- 全量仍有 369 个 `draft_template_only` 和 29 个 `draft_needs_translation`，不能把 `pending_full_scope=0` 或 `bilingual_draft` 当作完成。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理当前质量报告队列中的 schema 指南页。
+2. 建议下一组：`user_guides/schemas/usdLux/CylinderLight.html`、`DiskLight.html`、`DistantLight.html`、`DomeLight.html`、`LightListAPI.html`。
+3. 每轮继续保存可检查 HTML，并复跑链接路由、翻译质量审计、draft 预览审计、报告索引和总验证。
+
+## 第 133 轮：release 入门教程 draft 精修（二）
+
+已完成：
+
+- 基于最新 `translation_quality_review` 继续质量精修阶段；本轮没有扩大范围，也没有批量清空 draft，只处理 5 个 release 教程页。
+- 新增并修正 `scripts/refine_openusd_release_tutorial_batch_002.mjs`，为 `tut_helloworld.html`、`tut_inspect_and_author_props.html`、`tut_converting_between_layer_formats.html`、`tut_simple_shading.html`、`tut_xforms.html` 插入中文精修导读和术语对照。
+- 5 页均保留英文页面名、链接、代码、命令和原文摘录；中文层补充阅读顺序、API 关系、文件格式、UsdShade、xformOp、LayerOffset、TimeCode 等关键概念解释。
+- 首次执行脚本后质量分级未变化，已查明是插入锚点匹配未命中；修正后重新执行并复跑审计，避免把未生效改动记录为完成。
+- 翻译质量分级更新为 `good_bilingual` 8、`draft_needs_translation` 24、`draft_template_only` 374；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 链接路由检查通过：409 个 HTML 文件、406 个 inventory 页面，非显式官方链接继续本地化或路由到 `site/uncovered_openusd_page.html`。
+- `audit_openusd_full_draft_preview` 通过：398/398 draft 页面可本地预览，失败本地资源 0；`audit_openusd_report_index` 16/16 通过；`validate_openusd_api_repro.ps1` 281 checks passed, 0 failed。
+
+差距：
+
+- 本轮仍是页面级中文导读与术语层，不是逐段完整翻译；相关页面仍需后续进入更细的段落级翻译阶段。
+- 398 个 draft 中还有 374 个模板草稿，不能以 `pending_full_scope=0` 或 `bilingual_draft` 作为完成依据。
+
+下一轮目标：
+
+1. 继续最多 5 页，从当前优先队列中选择 release 教程、用户指南、schema 指南和插件入口页，低优先处理纯源码页。
+2. 推荐下一组：`tut_variants_example_in_katana.html`、`user_guides/collections_and_patterns.html`、`user_guides/namespace_editing.html`、`user_guides/schemas/index.html`、`plugins_alembic.html`。
+3. 继续保存可检查 HTML，并复跑链接路由、翻译质量审计、draft 预览审计、报告索引和总验证。
+
+## 第 132 轮：release 规范与教程 draft 精修
+
+已完成：
+
+- 基于 `reports/translation_quality_review.*` 继续质量提升阶段；本轮没有扩大范围，也没有一次性清空 draft，只处理 5 个用户可读价值较高的 release/tutorial 页面。
+- 新增 `scripts/refine_openusd_release_tutorial_batch.mjs`，以可重复运行方式为 `spec.html`、`tut_authoring_variants.html`、`tut_helloworld_redux.html`、`tut_referencing_layers.html`、`tut_traversing_stage.html` 插入中文精修导读和术语对照。
+- 5 个页面均保留英文页面名、链接、代码和原文摘录；中文层补充阅读路径、关键概念解释和术语映射。
+- 重新运行链接路由，409 个 HTML 文件检查通过，清单内 OpenUSD 内部链接继续路由到本地页面，清单外内部链接继续路由到 `site/uncovered_openusd_page.html`。
+- 翻译质量分级更新为 `good_bilingual` 8、`draft_needs_translation` 19、`draft_template_only` 379；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`、`scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`：398/398 draft 预览通过，报告索引 16/16 通过，总验证 281 checks passed, 0 failed。
+
+差距：
+
+- 本轮补的是页面级中文导读与术语层，不是逐段完整翻译。
+- 379 个页面仍是 `draft_template_only`，19 个页面需要继续从导读层推进到段落级翻译。
+
+下一轮目标：
+
+1. 继续每轮最多 5 页，优先 release 教程、schema 指南、概念页和核心 API 入口。
+2. 跳过或低优先处理纯源码页，除非它们被高价值页面频繁链接或用户明确要求。
+3. 每轮继续保存 HTML、运行质量审计和总验证，并记录分级变化。
+
+## 第 1 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 保存官方 API 首页 HTML 快照。
+- 下载首页所需的 Doxygen 样式、脚本、搜索资源和图片。
+- 补齐 CSS 引用的导航背景、搜索图标、折叠图标和分隔条图片。
+- 创建 `site/index.html`，保留源页的 Doxygen 顶部区、侧边导航区、搜索窗口、正文区和页脚区。
+- 将正文改为中英双语：中文主句在上，英文原句在下。
+- 保留官方链接：`_usd__overview_and_purpose.html`、`usd_page_front.html`、`https://openusd.org/license`。
+- 创建验证脚本并准备输出 JSON 报告。
+- 创建 5 分钟 heartbeat 自动化，后续继续补齐。
+- 已运行验证脚本，结构和内容检查通过。
+
+差距：
+
+- 当前只复刻了用户指定的 `api/index.html` 首页。
+- 侧边导航、搜索和菜单仍使用 Doxygen 原始英文资源。
+- 两个相邻入口页尚未做双语复刻。
+- 内置浏览器访问本地 `file://` 页面被安全策略拦截，因此本轮没有浏览器截图证据。
+
+下一轮目标：
+
+1. 运行验证脚本并修复失败项。
+2. 使用浏览器检查本地渲染。
+3. 如首页稳定，开始纳入 `_usd__overview_and_purpose.html` 与 `usd_page_front.html` 的双语入口复刻。
+
+## 第 2 轮
+
+时间：2026-06-03
+
+范围新增：
+
+- `https://openusd.org/release/index.html`
+
+已完成：
+
+- 保存 release 文档首页 HTML 快照：`source/openusd_release_index_source.html`。
+- 下载 Sphinx 主题的 `_static` CSS、JS 和字体资源。
+- 创建 `scripts/build_release_index_bilingual.mjs`，从源快照可重复生成双语 release 首页。
+- 生成 `site/release_index.html`，保留 Sphinx 侧栏、面包屑、卡片入口、官方链接和英文原文，并在关键入口添加中文对应。
+- 生成 `site/api/index.html`，让 release 页中的 `api/index.html` 链接能跳转到本地 API 双语页。
+- 更新 5 分钟自动化任务，使范围覆盖 release 文档首页和 API 首页。
+- 扩展验证脚本，当前 95 项检查通过，0 项失败。
+
+差距：
+
+- release 页目前优先覆盖一级目录、关键卡片和核心入口链接；大量深层目录节点仍保留英文原名。
+- `site/release_index.html` 的 banner 图和 USD Logo 仍使用官方图片 URL，未完全本地镜像。
+- 浏览器 `file://` 渲染仍受当前安全策略限制，本轮未产生截图。
+
+下一轮目标：
+
+1. 继续扩展 release 页术语表，覆盖 User Guides 与 Reference 下更多二级目录。
+2. 若允许本地 HTTP 预览，检查 Sphinx 页面真实渲染。
+3. 选择 `intro.html` 或 `apiDocs.html` 作为下一批双语入口页。
+
+## 第 3 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 将 release 首页使用的官方视觉资产本地化到 `site/images/`：
+  - `USDLogoUnsized.svg`
+  - `USDLogo24.svg`
+  - `piper-banner.jpg`
+- 更新 `scripts/build_release_index_bilingual.mjs`，生成页使用本地 Logo 与 banner 图。
+- 在 `site/openusd_release_cn.css` 中覆盖侧栏首页图标为本地 `images/USDLogo24.svg`。
+- 扩展 release 首页术语表，从 35 项增加到 168 项；重点覆盖 User Guides、Schema Domains、Time and Animated Values、Variable Expressions、Reference、Specifications 和部分 Proposals。
+- 重新生成 `site/release_index.html`，当前 `cn-term`/`en-term` 双语标记各 196 处。
+- 更新验证脚本，将本地图片资产和更高术语覆盖阈值纳入检查。
+- 最新验证：100 项检查通过，0 项失败。
+
+差距：
+
+- favicon 仍保留官方 URL。
+- Proposals 下的大量深层标题还没有完全覆盖。
+- 浏览器 `file://` 渲染仍受当前安全策略限制，本轮未产生截图。
+
+下一轮目标：
+
+1. 补充 Proposals 目录的更深层双语标题。
+2. 决定下一批相邻入口页优先级：`intro.html`、`apiDocs.html` 或 API 入口的 `_usd__overview_and_purpose.html`。
+3. 若能改用安全允许的本地 HTTP 预览，再补渲染截图证据。
+
+## 第 4 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 下载并本地化 `USDIcon.ico`，API 页与 release 页 favicon 均改为 `images/USDIcon.ico`。
+- 将 Sphinx 自定义 CSS 中的 `USDLogo24.svg` 远程引用改为本地 `../../images/USDLogo24.svg`。
+- 扩展 release 首页生成脚本术语表，从 168 项增加到 190 项，补充教程标题和通用属性标题。
+- 新增嵌套 `Inherited Properties (<span>...</span>)` 处理规则，保留 schema 名，增加中文“继承属性”。
+- 重新生成 `site/release_index.html`，当前 `cn-term` 与 `en-term` 各 321 处。
+- 验证脚本新增“输出文件不引用 `openusd.org/images` 远程图片”和“至少 300 组双语标记”检查。
+- 最新验证：104 项检查通过，0 项失败。
+
+差距：
+
+- schema/API 类名仍保留英文原名，这是刻意保留，不按普通标题翻译。
+- Proposals 深层标题仍可继续扩充。
+- 浏览器 `file://` 渲染仍受当前安全策略限制，本轮未产生截图。
+
+下一轮目标：
+
+1. 扩充 Proposals 深层标题。
+2. 建立下一批相邻入口页的生成模板。
+3. 继续保持 API 名称、schema 名称和链接原样。
+
+## 第 5 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 新增 `scripts/audit_openusd_repro_links.mjs`，审计 `release_index.html`、`index.html`、`api/index.html` 的 `href` 和 `src`。
+- 生成 `reports/link_audit.json` 和 `reports/link_audit.md`。
+- 将链接分为本地存在、外部链接、锚点/空链接、范围外官方相对文档链接、缺失本地资源链接。
+- 审计结果：本地资源缺失 0 个，本地引用 42 个，外部链接 17 个，范围外官方相对文档链接 638 个。
+- 将链接审计结果纳入主验证脚本。
+- 将 `link_audit.json` 的范围外链接记录改为总数加 200 条样本，避免报告字段歧义。
+- 最新验证：109 项检查通过，0 项失败。
+
+策略确认：
+
+- 本地资产链接必须存在。
+- 尚未纳入双语范围的官方文档页继续保留官方相对链接，不当作失败。
+- API 名称、schema 名称和页面名继续保留英文原名，只在适合的位置追加中文标签。
+
+下一轮目标：
+
+1. 选择第一批相邻入口页并生成独立双语页面。
+2. 对 `intro.html`、`apiDocs.html`、`_usd__overview_and_purpose.html`、`usd_page_front.html` 做范围优先级排序。
+3. 继续让链接审计区分“已本地化”和“范围外保留”。
+
+## 第 6 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 新增 `reports/scope_manifest.json` 和 `reports/scope_manifest.md`。
+- 明确主范围只包含两个官方入口页：
+  - `https://openusd.org/release/index.html`
+  - `https://openusd.org/release/api/index.html`
+- 固定下一批相邻入口优先级：
+  1. `intro.html`
+  2. `apiDocs.html`
+  3. `_usd__overview_and_purpose.html`
+  4. `usd_page_front.html`
+  5. `glossary.html`
+  6. `toolset.html`
+- 将链接策略写入 manifest：本地资源必须存在，范围外官方相对文档链接保留，API/schema/命令名保留英文原名。
+- 主验证脚本新增 scope manifest 检查。
+
+下一轮目标：
+
+1. 如果继续扩展，优先生成 `intro.html` 双语入口页。
+2. 将新增页面纳入 link audit 的 `pages` 列表。
+3. 保持当前两个主入口页验证稳定。
+
+## 第 7 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 抓取 `https://openusd.org/release/intro.html`，保存到 `source/openusd_release_intro_source.html`。
+- 新增 `scripts/build_intro_bilingual.mjs`。
+- 生成 `site/intro.html`，作为 release 首页第一相邻入口页。
+- 页面策略：保留官方英文正文与 Sphinx 结构；补中文标题、目录、导航按钮、面包屑和范围说明；API/schema/页面链接保留原样。
+- 将 `intro.html` 的 Previous 首页链接改到 `release_index.html`，避免指向当前本地 API 页 `site/index.html`。
+- 将 `intro.html` 纳入链接审计。
+- 更新 `scope_manifest`，把 `intro.html` 从候选入口升级为 active adjacent scope。
+- 最新链接审计：4 个页面，本地资源缺失 0 个，本地引用 65 个，外部链接 31 个，范围外官方相对文档链接 1314 个。
+- 最新验证：119 项检查通过，0 项失败。
+
+下一轮目标：
+
+1. 优先处理 `apiDocs.html`，作为 release 文档到 API 文档的桥接页。
+2. 或处理 API 相邻入口 `_usd__overview_and_purpose.html`，增强 API 首页的概念链路。
+3. 新增页面继续纳入链接审计和 scope manifest。
+
+## 第 8 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 抓取 `https://openusd.org/release/apiDocs.html`，保存到 `source/openusd_release_apiDocs_source.html`。
+- 新增 `scripts/build_apiDocs_bilingual.mjs`。
+- 生成 `site/apiDocs.html`，作为 release 文档到 Doxygen API 文档的桥接页。
+- 页面策略：保留官方英文正文、Sphinx 结构和 `USD C++ API Documentation` 按钮；补中文标题、面包屑、导航按钮、页脚和范围说明；API 页面名和 `api/index.html` 链接保持原样。
+- 将 `apiDocs.html` 的首页链接改到 `release_index.html`，避免指向当前本地 API 页 `site/index.html`。
+- 将 `apiDocs.html` 纳入链接审计。
+- 更新 `scope_manifest`，把 `apiDocs.html` 从候选入口升级为 active adjacent scope。
+- 最新链接审计：5 个页面，本地资源缺失 0 个，本地引用 86 个，外部链接 35 个，范围外官方相对文档链接 1938 个。
+- 最新验证：124 项检查通过，0 项失败。
+
+下一轮目标：
+
+1. 优先处理 API 相邻入口 `_usd__overview_and_purpose.html`，增强 API 首页的概念链路。
+2. 或处理 `usd_page_front.html`，补齐 API front page 的本地双语入口。
+3. 继续保持链接审计和 scope manifest 同步更新。
+
+## 第 9 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 抓取 `https://openusd.org/release/api/_usd__overview_and_purpose.html`，保存到 `source/openusd_api_overview_and_purpose_source.html`。
+- 新增 `scripts/build_api_overview_bilingual.mjs`。
+- 生成 `site/_usd__overview_and_purpose.html`，作为 API 首页的第一相邻概念入口页。
+- 页面策略：保留官方 Doxygen 结构、导航初始化、API 名称、模块名、类名和链接目标；主要标题、段落和模块列表项均以中文在上、英文原文在下呈现。
+- 扩展 `site/openusd_cn.css`，补双语列表项和双语标题显示样式。
+- 将 `_usd__overview_and_purpose.html` 纳入链接审计。
+- 更新 `scope_manifest`，把 `_usd__overview_and_purpose.html` 从候选入口升级为 active adjacent scope。
+- 最新链接审计：6 个页面，本地资源缺失 0 个，本地引用 114 个，外部链接 43 个，范围外官方相对文档链接 2010 个。
+- 最新验证：132 项检查通过，0 项失败。
+
+差距：
+
+- `usd_page_front.html` 仍未纳入本地双语范围，是当前 API 首页的下一个直接入口。
+- Doxygen 侧栏和搜索数据仍沿用官方英文资源；本轮只处理正文入口页，不扩展整站索引数据。
+- 浏览器 `file://` 渲染仍受当前安全策略限制，本轮继续以静态链接审计和结构验证为证据。
+
+下一轮目标：
+
+1. 优先处理 `usd_page_front.html`，补齐 API front page 的本地双语入口。
+2. 继续保持 API 名称、schema 名称、类名、函数名和链接目标原样。
+3. 新增页面继续纳入 link audit、validation 和 scope manifest。
+
+## 第 10 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 抓取 `https://openusd.org/release/api/usd_page_front.html`，保存到 `source/openusd_api_usd_page_front_source.html`。
+- 新增 `scripts/build_usd_page_front_bilingual.mjs`。
+- 生成 `site/usd_page_front.html`，作为 API 首页直达的 Usd core API front page。
+- 页面策略：保留官方 Doxygen 布局、导航初始化、API Manual 目录层级、类名和链接目标；模块说明、目录标签和 Key Classes 摘要添加中文在前、英文原文保留的双语层。
+- 扩展 `site/openusd_cn.css`，补充 `cn-term`、`en-term`、`zh-inline`、`en-inline` 和 `key-class-line` 样式。
+- 将 `usd_page_front.html` 纳入链接审计。
+- 更新 `scope_manifest`，把 `usd_page_front.html` 从候选入口升级为 active adjacent scope。
+- 最新链接审计：7 个页面，本地资源缺失 0 个，本地引用 140 个，外部链接 45 个，范围外官方相对文档链接 2065 个。
+- 最新验证：140 项检查通过，0 项失败。
+
+差距：
+
+- Doxygen 侧栏和搜索数据仍沿用官方英文资源；本轮只处理 API front page 正文和目录入口。
+- `glossary.html` 与 `toolset.html` 仍未纳入本地双语范围。
+- 浏览器 `file://` 渲染仍受当前安全策略限制，本轮继续以静态链接审计和结构验证为证据。
+
+下一轮目标：
+
+1. 优先评估 `glossary.html`，用于稳定中英术语对照。
+2. 或处理 `toolset.html`，补齐 release Reference 中的工具入口。
+3. 新增页面继续纳入 link audit、validation 和 scope manifest。
+
+## 第 11 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 抓取 `https://openusd.org/release/glossary.html`，保存到 `source/openusd_release_glossary_source.html`。
+- 新增 `scripts/build_glossary_bilingual.mjs`。
+- 生成 `site/glossary.html`，作为 release 首页的术语与概念相邻入口页。
+- 页面策略：保留官方 Sphinx 结构、英文定义全文和链接；优先为术语目录、页面标题和正文术语标题添加中文术语标签；新增 18 个核心术语速览卡片，避免只是把大篇幅英文定义未加工复制成唯一内容。
+- 仅补齐本页实际引用的两张图片：`site/_images/glossary_radiusSpline.png`、`site/_images/glossary_usdviewValidation.png`。
+- 扩展 `site/openusd_release_cn.css`，补 glossary 速览卡片样式。
+- 将 `glossary.html` 纳入链接审计。
+- 更新 `scope_manifest`，把 `glossary.html` 从候选入口升级为 active adjacent scope。
+- 最新链接审计：8 个页面，本地资源缺失 0 个，本地引用 204 个，外部链接 51 个，范围外官方相对文档链接 2829 个。
+- 最新验证：149 项检查通过，0 项失败。
+
+差距：
+
+- glossary 的官方英文定义已保留，但逐条定义的完整中文翻译尚未展开；当前先完成术语对照入口和核心术语速览。
+- `toolset.html` 仍未纳入本地双语范围，是当前剩余相邻入口优先级。
+- 浏览器 `file://` 渲染仍受当前安全策略限制，本轮继续以静态链接审计和结构验证为证据。
+
+下一轮目标：
+
+1. 优先处理 `toolset.html`，补齐 release Reference 中的命令行工具入口。
+2. 或小批量推进 glossary 定义翻译，但不一次性无选择复制/翻译整页。
+3. 新增页面继续纳入 link audit、validation 和 scope manifest。
+
+## 第 12 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 抓取 `https://openusd.org/release/toolset.html`，保存到 `source/openusd_release_toolset_source.html`。
+- 新增 `scripts/build_toolset_bilingual.mjs`。
+- 生成 `site/toolset.html`，作为 release Reference 的命令行工具入口页。
+- 页面策略：保留官方 Sphinx 结构、命令用法块、选项名、命令名和链接；新增 19 个工具速览卡片，并在每个工具小节标题后加入中文在前、英文保留的用途说明。
+- 扩展 `site/openusd_release_cn.css`，补 toolset 速览卡片和工具说明样式。
+- 将 `toolset.html` 纳入链接审计。
+- 更新 `scope_manifest`，把 `toolset.html` 从候选入口升级为 active adjacent scope；原计划相邻入口优先级已清空。
+- 最新链接审计：9 个页面，本地资源缺失 0 个，本地引用 335 个，外部链接 58 个，范围外官方相对文档链接 3340 个。
+- 最新验证：156 项检查通过，0 项失败。
+
+差距：
+
+- 工具页官方用法块和选项说明仍以英文原文为主；本轮先补命令级中文速览和工具小节说明。
+- glossary 定义逐条中文翻译仍未展开。
+- 浏览器 `file://` 渲染仍受当前安全策略限制，本轮继续以静态链接审计和结构验证为证据。
+
+下一轮目标：
+
+1. 原计划相邻入口已覆盖，下一轮不再扩大整站范围。
+2. 小批量推进 glossary 高频定义翻译，或 toolset 高频选项解释。
+3. 继续保持新增内容进入 link audit、validation 和 scope manifest。
+
+## 第 13 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 对照当前两个官方入口页确认范围仍为 OpenUSD 26.05 release/API 文档；本轮不扩展页面，只精修已纳入范围的 `glossary.html`。
+- 更新 `scripts/build_glossary_bilingual.mjs`，在 14 个高频术语小节标题后插入定义级双语说明：`Active / Inactive`、`API Schema`、`Asset`、`Asset Resolution`、`Attribute`、`Composition`、`Composition Arcs`、`Layer`、`Payload`、`Prim`、`Stage`、`Value Resolution`、`Variant`、`VariantSet`。
+- 更新 `site/openusd_release_cn.css`，新增 `cn-definition-brief` 样式，使定义解释与官方英文定义区分但仍保持 Sphinx 页面结构。
+- 重新生成 `site/glossary.html`，局部自检结果为 14 条定义说明、397 个 `cn-term`、0 个嵌套 `cn-term`、0 个远程 OpenUSD 图片引用。
+- 扩展 `scripts/validate_openusd_api_repro.ps1`，新增 `glossary:has_definition_briefs` 验证项。
+- 最新链接审计：9 个页面，本地资源缺失 0 个，本地引用 335 个，外部链接 58 个，范围外官方相对文档链接 3340 个。
+- 最新验证：157 项检查通过，0 项失败。
+
+差距：
+
+- glossary 仍未逐条完整中文翻译所有官方定义；本轮只做高频术语定义级小批量补充，避免无选择翻译整页。
+- toolset 的命令选项级中文解释仍未展开。
+- 浏览器 `file://` 渲染仍受当前安全策略限制，本轮继续以静态链接审计、结构验证和生成脚本可重复性作为证据。
+
+下一轮目标：
+
+1. 继续小批量补 glossary 余下高频定义解释，优先覆盖 `References`、`Relationship`、`Metadata`、`Primvar`、`TimeCode`。
+2. 或补 toolset 高频选项说明，保持命令名、参数名和官方用法块不改。
+3. 每轮继续重新生成、审计、验证并更新 scope manifest。
+
+## 第 14 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 继续按当前范围精修 `glossary.html`，没有扩大到整站镜像。
+- 对照 `source/openusd_release_glossary_source.html` 中实际 anchor，确认第二批高频术语小节存在。
+- 更新 `scripts/build_glossary_bilingual.mjs`，新增 14 条定义级中文解释：`Kind`、`List Editing`、`Load / Unload`、`Metadata`、`Model`、`Namespace`、`Primvar`、`Property`、`References`、`Relationship`、`Schema`、`TimeCode`、`TimeSample`、`Visibility`。
+- 将 glossary 顶部说明改为动态显示 `28` 个高频定义小节，避免说明文案落后于实际覆盖量。
+- 扩展 `scripts/validate_openusd_api_repro.ps1` 的 `glossary:has_definition_briefs` 门槛，从至少 14 条提高到至少 28 条，并增加 `References`、`Primvar`、`TimeCode` 关键词检查。
+- 重新生成 `site/glossary.html`，局部自检结果为 28 条定义说明、397 个 `cn-term`、0 个嵌套 `cn-term`、0 个远程 OpenUSD 图片引用。
+- 最新链接审计：9 个页面，本地资源缺失 0 个，本地引用 335 个，外部链接 58 个，范围外官方相对文档链接 3340 个。
+- 最新验证：157 项检查通过，0 项失败。
+
+差距：
+
+- glossary 仍未逐条完整翻译全部官方定义；目前是术语入口、核心卡片和 28 个高频定义说明。
+- toolset 的参数和选项说明仍主要保留官方英文原文，尚未加入选项级中文导读。
+- 浏览器 `file://` 渲染仍受当前安全策略限制，本轮继续以生成脚本、静态链接审计和结构验证作为证据。
+
+下一轮目标：
+
+1. 优先评估 toolset 高频选项解释，保持命令名、参数名和官方用法块原样。
+2. 或继续小批量补 glossary：`Clips`、`Collection`、`Flatten`、`Instancing`、`Interpolation`。
+3. 继续每轮重新生成、审计、验证并更新报告。
+
+## 第 15 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 按第 14 轮目标继续精修 `toolset.html`，没有扩大到整站镜像。
+- 对照 `source/openusd_release_toolset_source.html` 和当前生成页，确认命令小节、官方 usage 块和 options 块仍保留。
+- 更新 `scripts/build_toolset_bilingual.mjs`，新增 12 个高频命令的选项导读：`usdedit`、`usdcat`、`usdview`、`usdrecord`、`usdresolve`、`usdtree`、`usdzip`、`usdchecker`、`usdstitchclips`、`usdmeasureperformance`、`usdGenSchema`、`usdInitSchema`。
+- 选项导读策略：CLI flag、参数名、命令名和官方 usage 块不翻译、不改写；每个条目增加中文解释和对应英文 guide。
+- 更新 `site/openusd_release_cn.css`，新增 `cn-tool-options` 选项导读样式。
+- 扩展 `scripts/validate_openusd_api_repro.ps1`，新增 `toolset:has_option_guides` 验证项。
+- 重新生成 `site/toolset.html`，局部自检结果为 19 个工具卡片、19 条工具说明、12 个选项导读、59 个选项条目、19 个 usage 块、0 个远程 OpenUSD 图片引用。
+- 最新链接审计：9 个页面，本地资源缺失 0 个，本地引用 335 个，外部链接 58 个，范围外官方相对文档链接 3340 个。
+- 最新验证：158 项检查通过，0 项失败。
+
+差距：
+
+- toolset 还有若干低频命令未补选项导读，例如 `usddiff`、`usdfixbrokenpixarschemas`、`usdstitch`、`usddumpcrate`、`sdfdump`、`sdffilter`、`usdgenschemafromsdr`。
+- glossary 仍未逐条完整翻译全部官方定义，目前是术语入口、核心卡片和 28 个高频定义说明。
+- 浏览器 `file://` 渲染仍受当前安全策略限制，本轮继续以生成脚本、静态链接审计和结构验证作为证据。
+
+下一轮目标：
+
+1. 继续补齐 toolset 余下命令的选项导读，优先 `usddiff`、`usdfixbrokenpixarschemas`、`usdstitch`、`usddumpcrate`、`sdfdump`、`sdffilter`。
+2. 或继续小批量补 glossary：`Clips`、`Collection`、`Flatten`、`Instancing`、`Interpolation`。
+3. 继续每轮重新生成、审计、验证并更新报告。
+
+## 第 16 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 继续按当前范围精修 `toolset.html`，没有扩大到整站镜像。
+- 对照 `source/openusd_release_toolset_source.html` 抽取余下命令的官方 options 和 usage 结构。
+- 更新 `scripts/build_toolset_bilingual.mjs`，为 7 个剩余命令新增选项导读：`usddiff`、`usdfixbrokenpixarschemas`、`usdstitch`、`usddumpcrate`、`sdfdump`、`sdffilter`、`usdgenschemafromsdr`。
+- toolset 选项导读达到 19/19 命令覆盖；CLI flag、参数名、命令名和官方 usage 块保持原样。
+- 调高 `scripts/validate_openusd_api_repro.ps1` 的 `toolset:has_option_guides` 门槛，从至少 12 个选项导读提高到至少 19 个，并增加 `--backup`、`--summary`、`--noreadme`、`--arraySizeLimit` 等关键 flag 检查。
+- 重新生成 `site/toolset.html`，局部自检结果为 19 个工具卡片、19 条工具说明、19 个选项导读、87 个选项条目、19 个 usage 块、0 个远程 OpenUSD 图片引用。
+- 最新链接审计：9 个页面，本地资源缺失 0 个，本地引用 335 个，外部链接 58 个，范围外官方相对文档链接 3340 个。
+- 最新验证：158 项检查通过，0 项失败。
+
+差距：
+
+- glossary 仍未逐条完整翻译全部官方定义，目前是术语入口、核心卡片和 28 个高频定义说明。
+- 浏览器 `file://` 渲染仍受当前安全策略限制，本轮继续以生成脚本、静态链接审计和结构验证作为证据。
+- toolset 已完成命令级与选项级导读覆盖，但每个 option 的官方长说明仍以英文原文保留，未做逐行翻译。
+
+下一轮目标：
+
+1. 优先继续小批量补 glossary：`Clips`、`Collection`、`Flatten`、`Instancing`、`Interpolation`。
+2. 或在可用本地 HTTP 预览时做 Sphinx/Doxygen 布局抽查。
+3. 继续每轮重新生成、审计、验证并更新报告。
+
+## 第 17 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 对照两个官方入口页确认当前仍为 OpenUSD 26.05 release/API 文档；本轮不扩大页面范围。
+- 继续精修 `glossary.html`，新增第三批 12 条定义级中文解释：`Attribute Connection`、`Attribute Variability`、`Clips`、`Collection`、`Flatten`、`Inherits`、`Instancing`、`Interpolation`、`Layer Offset`、`Localize`、`Purpose`、`Specializes`。
+- 更新 `scripts/build_glossary_bilingual.mjs`，所有新增说明仍插入在对应 glossary 小节标题后，官方英文定义全文保留。
+- glossary 顶部说明自动更新为 `40` 个高频定义小节。
+- 调高 `scripts/validate_openusd_api_repro.ps1` 的 `glossary:has_definition_briefs` 门槛，从至少 28 条提高到至少 40 条，并增加 `Clips`、`Collection`、`Instancing`、`Interpolation` 关键词检查。
+- 重新生成 `site/glossary.html`，局部自检结果为 40 条定义说明、397 个 `cn-term`、0 个嵌套 `cn-term`、0 个远程 OpenUSD 图片引用。
+- 最新链接审计：9 个页面，本地资源缺失 0 个，本地引用 335 个，外部链接 58 个，范围外官方相对文档链接 3340 个。
+- 最新验证：158 项检查通过，0 项失败。
+
+差距：
+
+- glossary 仍未逐条完整翻译全部官方定义，目前是术语入口、核心卡片和 40 个高频定义说明。
+- toolset 已完成命令级与选项级导读覆盖，但每个 option 的官方长说明仍以英文原文保留，未做逐行翻译。
+- 浏览器 `file://` 渲染仍受当前安全策略限制，本轮继续以生成脚本、静态链接审计和结构验证作为证据。
+
+下一轮目标：
+
+1. 继续小批量补 glossary：`Spline`、`Value Clips`、`Relocates`、`SubLayers`、`Session Layer`。
+2. 或在可用本地 HTTP 预览时做 Sphinx/Doxygen 布局抽查。
+3. 继续每轮重新生成、审计、验证并更新报告。
+
+## 第 18 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 对照两个官方入口页确认当前仍为 OpenUSD 26.05 release/API 文档；本轮继续在既有 9 个本地页面范围内精修，不扩大到整站镜像。
+- 继续补齐 `glossary.html` 高频术语定义说明，新增 12 条定义级中文解释：`Def`、`Default Value`、`Direct Opinion`、`Fallback`、`LayerStack`、`Opinions`、`Relocates`、`Session Layer`、`Spline`、`SubLayers`、`Value Clips`、`Root LayerStack`。
+- 更新 `scripts/build_glossary_bilingual.mjs`，所有新增说明仍插入在对应 glossary 小节标题后，官方英文定义全文保留。
+- glossary 顶部说明自动更新为 `52` 个高频定义小节。
+- 调高 `scripts/validate_openusd_api_repro.ps1` 的 `glossary:has_definition_briefs` 门槛，从至少 40 条提高到至少 52 条，并增加 `Spline`、`Value Clips`、`Relocates`、`SubLayers`、`Session Layer` 等关键词检查。
+- 重新生成 `site/glossary.html`，局部自检结果为 52 条定义说明、397 个 `cn-term`、0 个嵌套 `cn-term`、0 个远程 OpenUSD 图片引用。
+- 最新链接审计：9 个页面，本地资源缺失 0 个，本地引用 335 个，外部链接 58 个，范围外官方相对文档链接 3340 个。
+- 最新验证：158 项检查通过，0 项失败。
+
+差距：
+
+- glossary 仍未逐条完整翻译全部官方定义，目前是术语入口、核心卡片和 52 个高频定义说明。
+- toolset 已完成命令级与选项级导读覆盖，但每个 option 的官方长说明仍以英文原文保留，未做逐行翻译。
+- 浏览器 `file://` 渲染仍受当前安全策略限制，本轮继续以生成脚本、静态链接审计和结构验证作为证据。
+
+下一轮目标：
+
+1. 继续小批量补 glossary：`Animation Block`、`Change Processing`、`Path Translation`、`Variant` 等仍可补中文定义说明的术语。
+2. 或在可用本地 HTTP 预览时做 Sphinx/Doxygen 布局抽查。
+3. 继续每轮重新生成、审计、验证并更新报告。
+
+## 第 19 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 对照两个官方入口页确认当前仍为 OpenUSD 26.05 release/API 文档；本轮继续在既有 9 个本地页面范围内精修，不扩大到整站镜像。
+- 继续补齐 `glossary.html` 高频术语定义说明，新增 12 条定义级中文解释：`Animation Block`、`Change Processing`、`Class`、`Group`、`Hydra`、`LIVERPS Strength Ordering`、`Over`、`Path Translation`、`PrimStack`、`PseudoRoot`、`Specifier`、`EditTarget`。
+- 更新 `scripts/build_glossary_bilingual.mjs`，新增说明仍插入在对应 glossary 小节标题后，官方英文定义全文保留。
+- 修正 `EditTarget` 的插入锚点，使用源页实际的 `<section id="edittarget">`，避免误用 span id 导致该定义说明跳过。
+- glossary 顶部说明自动更新为 `64` 个高频定义小节。
+- 调高 `scripts/validate_openusd_api_repro.ps1` 的 `glossary:has_definition_briefs` 门槛，从至少 52 条提高到至少 64 条，并增加 `Animation Block`、`Change Processing`、`LIVERPS Strength Ordering`、`Path Translation`、`PrimStack`、`PseudoRoot`、`Specifier`、`EditTarget` 等关键词检查。
+- 重新生成 `site/glossary.html`，局部自检结果为 64 条定义说明、397 个 `cn-term`、0 个嵌套 `cn-term`、0 个远程 OpenUSD 图片引用。
+- 最新链接审计：9 个页面，本地资源缺失 0 个，本地引用 335 个，外部链接 58 个，范围外官方相对文档链接 3340 个。
+- 最新验证：158 项检查通过，0 项失败。
+
+差距：
+
+- glossary 仍未逐条完整翻译全部官方定义，目前是术语入口、核心卡片和 64 个高频定义说明。
+- toolset 已完成命令级与选项级导读覆盖，但每个 option 的官方长说明仍以英文原文保留，未做逐行翻译。
+- 浏览器 `file://` 渲染仍受当前安全策略限制，本轮继续以生成脚本、静态链接审计和结构验证作为证据。
+
+下一轮目标：
+
+1. 继续小批量补 glossary：`Animated Value`、`AssetInfo`、`Assembly`、`Attribute Block`、`Component`、`Connection`、`Crate File Format` 等仍可补中文定义说明的术语。
+2. 或在可用本地 HTTP 预览时做 Sphinx/Doxygen 布局抽查。
+3. 继续每轮重新生成、审计、验证并更新报告。
+
+## 第 20 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 对照两个官方入口页确认当前仍为 OpenUSD 26.05 release/API 文档；本轮继续在既有 9 个本地页面范围内精修，不扩大到整站镜像。
+- 继续补齐 `glossary.html` 高频术语定义说明，新增 12 条定义级中文解释：`Animated Value`、`AssetInfo`、`Assembly`、`Attribute Block`、`Component`、`Computation Input Parameters`、`Computation`、`Connection`、`Crate File Format`、`Gprim`、`Index`、`Instanceable`。
+- 更新 `scripts/build_glossary_bilingual.mjs`，新增说明仍插入在对应 glossary 小节标题后，官方英文定义全文保留。
+- glossary 顶部说明自动更新为 `76` 个高频定义小节。
+- 调高 `scripts/validate_openusd_api_repro.ps1` 的 `glossary:has_definition_briefs` 门槛，从至少 64 条提高到至少 76 条，并增加 `Animated Value`、`AssetInfo`、`Assembly`、`Attribute Block`、`Computation Input Parameters`、`Crate File Format`、`Gprim`、`Index`、`Instanceable` 等关键词检查。
+- 重新生成 `site/glossary.html`，局部自检结果为 76 条定义说明、397 个 `cn-term`、0 个嵌套 `cn-term`、0 个远程 OpenUSD 图片引用。
+- 最新链接审计：9 个页面，本地资源缺失 0 个，本地引用 335 个，外部链接 58 个，范围外官方相对文档链接 3340 个。
+- 最新验证：158 项检查通过，0 项失败。
+
+差距：
+
+- glossary 仍未逐条完整翻译全部官方定义，目前是术语入口、核心卡片和 76 个高频定义说明。
+- toolset 已完成命令级与选项级导读覆盖，但每个 option 的官方长说明仍以英文原文保留，未做逐行翻译。
+- 浏览器 `file://` 渲染仍受当前安全策略限制，本轮继续以生成脚本、静态链接审计和结构验证作为证据。
+
+下一轮目标：
+
+1. 继续小批量补 glossary：`IsA Schema`、`Model Hierarchy`、`OpenExec`、`Path`、`Prim Definition`、`PrimSpec`、`Population Mask` 等仍可补中文定义说明的术语。
+2. 或在可用本地 HTTP 预览时做 Sphinx/Doxygen 布局抽查。
+3. 继续每轮重新生成、审计、验证并更新报告。
+
+## 第 21 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 对照两个官方入口页确认当前仍为 OpenUSD 26.05 release/API 文档；本轮继续在既有 9 个本地页面范围内精修，不扩大到整站镜像。
+- 对照 `source/openusd_release_glossary_source.html` 只选择已有独立 `<section id>` 且尚未覆盖的术语，避免使用不存在的 `Population Mask` 小节。
+- 继续补齐 `glossary.html` 高频术语定义说明，新增 12 条定义级中文解释：`IsA Schema`、`Model Hierarchy`、`OpenExec`、`Path`、`Prim Definition`、`PrimSpec`、`PropertySpec`、`PropertyStack`、`Proxy`、`Stage Traversal`、`Subcomponent`、`TimeCodes Scaled to Real Time`。
+- 更新 `scripts/build_glossary_bilingual.mjs`，新增说明仍插入在对应 glossary 小节标题后，官方英文定义全文保留。
+- glossary 顶部说明自动更新为 `88` 个高频定义小节。
+- 调高 `scripts/validate_openusd_api_repro.ps1` 的 `glossary:has_definition_briefs` 门槛，从至少 76 条提高到至少 88 条，并增加 `IsA Schema`、`Model Hierarchy`、`OpenExec`、`Prim Definition`、`PropertySpec`、`Stage Traversal`、`TimeCodes Scaled to Real Time` 等关键词检查。
+- 重新生成 `site/glossary.html`，局部自检结果为 88 条定义说明、397 个 `cn-term`、0 个嵌套 `cn-term`、0 个远程 OpenUSD 图片引用。
+- 最新链接审计：9 个页面，本地资源缺失 0 个，本地引用 335 个，外部链接 58 个，范围外官方相对文档链接 3340 个。
+- 最新验证：158 项检查通过，0 项失败。
+
+差距：
+
+- glossary 仍未逐条完整翻译全部官方定义，目前是术语入口、核心卡片和 88 个高频定义说明；按源页独立小节计，余下可补定义说明已很少。
+- toolset 已完成命令级与选项级导读覆盖，但每个 option 的官方长说明仍以英文原文保留，未做逐行翻译。
+- 浏览器 `file://` 渲染仍受当前安全策略限制，本轮继续以生成脚本、静态链接审计和结构验证作为证据。
+
+下一轮目标：
+
+1. 优先补齐余下 glossary 小节：`Typed Schema`、`User Properties`、`Validation`、`Variability`。
+2. 或在可用本地 HTTP 预览时做 Sphinx/Doxygen 布局抽查。
+3. 继续每轮重新生成、审计、验证并更新报告。
+
+## 第 22 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 对照两个官方入口页确认当前仍为 OpenUSD 26.05 release/API 文档；本轮继续在既有 9 个本地页面范围内精修，不扩大到整站镜像。
+- 对照 `source/openusd_release_glossary_source.html` 和生成脚本中的 `definitionBriefs`，确认第 21 轮后仅剩 4 个未覆盖的独立 glossary 小节。
+- 补齐 `glossary.html` 余下独立术语定义说明，新增 4 条定义级中文解释：`Typed Schema`、`User Properties`、`Validation`、`Variability`。
+- 更新 `scripts/build_glossary_bilingual.mjs`，新增说明仍插入在对应 glossary 小节标题后，官方英文定义全文保留。
+- glossary 顶部说明自动更新为 `92` 个定义级小节；局部扫描结果显示源页独立 glossary 小节剩余未覆盖项为 `0`。
+- 调高 `scripts/validate_openusd_api_repro.ps1` 的 `glossary:has_definition_briefs` 门槛，从至少 88 条提高到至少 92 条，并增加 `Typed Schema`、`User Properties`、`Validation`、`Variability` 关键词检查。
+- 重新生成 `site/glossary.html`，局部自检结果为 92 条定义说明、397 个 `cn-term`、0 个嵌套 `cn-term`、0 个远程 OpenUSD 图片引用。
+- 最新链接审计：9 个页面，本地资源缺失 0 个，本地引用 335 个，外部链接 58 个，范围外官方相对文档链接 3340 个。
+- 最新验证：158 项检查通过，0 项失败。
+
+差距：
+
+- glossary 独立术语小节的中文定义说明已覆盖完成，但官方定义正文仍以英文原文完整保留，未逐段翻译全部长段落。
+- toolset 已完成命令级与选项级导读覆盖，但每个 option 的官方长说明仍以英文原文保留，未做逐行翻译。
+- 浏览器 `file://` 渲染仍受当前安全策略限制，本轮继续以生成脚本、静态链接审计和结构验证作为证据。
+
+下一轮目标：
+
+1. 优先做 release/API 入口页与相邻页的本地 HTTP 布局抽查，确认 Sphinx 和 Doxygen 视觉层没有明显断裂。
+2. 或检查 `toolset.html` 的 option 长说明是否需要小批量中文导读。
+3. 继续每轮重新生成、审计、验证并更新报告；仍不扩大到整站。
+
+## 第 23 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 对照两个官方入口页确认当前仍为 OpenUSD 26.05 release/API 文档；本轮继续在既有 9 个本地页面范围内精修，不扩大到整站镜像。
+- 新增 `scripts/audit_openusd_http_preview.mjs`，用 Node 临时静态服务器从 HTTP 访问当前 9 个本地页面。
+- HTTP 预览审计覆盖页面可访问性、Sphinx 页面核心布局标记、Doxygen 页面 top/sidebar/content/search 标记、跳转页标记，以及本地 CSS/JS/图片/字体资源响应。
+- 生成 `reports/http_preview_audit.json` 和 `reports/http_preview_audit.md`。
+- 将 HTTP 预览审计纳入 `scripts/validate_openusd_api_repro.ps1`，新增 `http_preview_audit:passed` 和 `http_preview_audit:all_pages_and_assets_ok` 两项检查。
+- 最新链接审计：9 个页面，本地资源缺失 0 个，本地引用 335 个，外部链接 58 个，范围外官方相对文档链接 3340 个。
+- 最新 HTTP 预览审计：9 个页面通过，141 个本地资源通过，失败页面 0 个，失败资源 0 个。
+- 最新验证：160 项检查通过，0 项失败。
+
+差距：
+
+- HTTP 预览审计确认页面和本地资源能通过本地服务器访问，但不是像素级截图比对。
+- glossary 独立术语小节的中文定义说明已覆盖完成，但官方定义正文仍以英文原文完整保留，未逐段翻译全部长段落。
+- toolset 已完成命令级与选项级导读覆盖，但每个 option 的官方长说明仍以英文原文保留，未做逐行翻译。
+
+下一轮目标：
+
+1. 检查 `toolset.html` 的 option 长说明是否需要小批量中文导读。
+2. 或抽查 release/API 入口页正文结构，检查是否还有中英标签覆盖不足的一级入口标题。
+3. 继续每轮重新生成、审计、HTTP 预览、验证并更新报告；仍不扩大到整站。
+
+## 第 24 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 对照两个官方入口页确认当前仍为 OpenUSD 26.05 release/API 文档；本轮继续在既有 9 个本地页面范围内精修，不扩大到整站镜像。
+- 更新 `scripts/build_toolset_bilingual.mjs`，为 `toolset.html` 新增 6 个工作流场景导读：资产检查与快速诊断、文本查看/对比/扁平化导出、USDZ 打包与交付前检查、时间采样聚合与 Value Clips、Schema 模块初始化与生成、性能测量与底层结构排查。
+- 场景导读只组合已在本页范围内的命令名，保留 `usdchecker`、`usdzip`、`usdstitchclips`、`usdGenSchema`、`usdmeasureperformance` 等命令原样，不改写官方 usage 和 option 文本。
+- 更新 `site/openusd_release_cn.css`，新增 `cn-tool-scenarios` 和 `cn-tool-scenario` 样式。
+- 扩展 `scripts/validate_openusd_api_repro.ps1`，新增 `toolset:has_workflow_scenarios` 检查。
+- 更新 `scripts/audit_openusd_http_preview.mjs`，让 `toolset.html` 的 HTTP 预览审计必须包含 `cn-tool-scenarios` 标记。
+- 重新生成 `site/toolset.html`，局部自检结果为 19 个工具卡片、6 个工作流场景导读、19 条工具说明、19 个 option guide、0 个远程 OpenUSD 图片引用。
+- 最新链接审计：9 个页面，本地资源缺失 0 个，本地引用 335 个，外部链接 58 个，范围外官方相对文档链接 3340 个。
+- 最新 HTTP 预览审计：9 个页面通过，141 个本地资源通过，失败页面 0 个，失败资源 0 个。
+- 最新验证：161 项检查通过，0 项失败。
+
+差距：
+
+- toolset 已新增命令级、工作流场景级和 option guide 级导读，但每个 option 的官方长说明仍以英文原文保留，未逐行翻译。
+- glossary 独立术语小节的中文定义说明已覆盖完成，但官方定义正文仍以英文原文完整保留，未逐段翻译全部长段落。
+- HTTP 预览审计不是像素级截图比对，仍主要检查页面可访问性、核心布局标记和本地资源响应。
+
+下一轮目标：
+
+1. 抽查 release/API 入口页正文结构，检查是否还有中英标签覆盖不足的一级入口标题。
+2. 或继续检查 `toolset.html` 官方 option 长说明是否需要小批量中文导读，但不逐行翻译整页。
+3. 继续每轮重新生成、审计、HTTP 预览、验证并更新报告；仍不扩大到整站。
+
+## 第 25 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 继续在既有 9 个本地页面范围内工作，不扩大到整站镜像。
+- 对照两个官方主入口页和本地源快照，新增主入口覆盖审计 `scripts/audit_openusd_primary_entry_coverage.mjs`。
+- 审计覆盖 `site/release_index.html`、`site/index.html` 和 `site/api/index.html`，检查 Sphinx/Doxygen 核心结构、关键入口链接、主图本地化、双语块/术语标记数量和本地跳转页。
+- 生成 `reports/primary_entry_coverage.json` 与 `reports/primary_entry_coverage.md`；结果为 3 个入口相关页面、16 项检查全部通过。
+- 将主入口覆盖审计纳入 `scripts/validate_openusd_api_repro.ps1`，新增报告文件和 `primary_entry_coverage` 内容检查。
+- 更新 `README.md`、`reports/scope_manifest.json`、`reports/scope_manifest.md` 和 `work.md`，记录新的审计链和本轮验证结果。
+- 最新主入口覆盖审计：3 个入口相关页面通过，16 项检查通过，失败 0 项。
+- 最新链接审计：9 个页面，本地资源缺失 0 个，外部链接 58 个，范围外官方相对文档链接 3340 个。
+- 最新 HTTP 预览审计：9 个页面通过，141 个本地资源通过，失败页面 0 个，失败资源 0 个。
+- 最新验证：166 项检查通过，0 项失败。
+
+差距：
+
+- 主入口覆盖审计是结构和标记级检查，不是像素级截图比对。
+- glossary 的独立术语小节中文说明已覆盖完成，但官方定义正文仍保留英文原文，未逐段翻译全部长段落。
+- toolset 的命令、usage 和 option 原文保持英文；目前已加命令级、工作流级和 option guide 级中文导读，未逐行翻译每个 option 长说明。
+
+下一轮目标：
+
+1. 优先抽查 `toolset.html` 的官方 option 长说明，判断是否需要继续加少量中文导读。
+2. 或检查 API 首页是否需要更细的术语标签层，但 API 名称、页面名和链接保持原样。
+3. 继续每轮运行主入口覆盖审计、链接审计、HTTP 预览审计和总验证，并更新报告。
+
+## 第 26 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 继续在既有 9 个本地页面范围内工作，不扩大到整站镜像。
+- 对照两个官方入口页确认当前仍为 OpenUSD 26.05 release/API 文档；本轮聚焦 API 主入口页的可读入口层。
+- 更新 `site/index.html`，在 API 首页 Doxygen 正文内新增 `cn-api-entry-map`，提供 3 个 API 入口速览卡片：`Overview and Purpose`、`Usd API`、`TOST license`。
+- 入口卡片只指向已在范围内的 `_usd__overview_and_purpose.html`、`usd_page_front.html` 和官方 `https://openusd.org/license`；API 名称、页面名和链接保持原样。
+- 更新 `site/openusd_cn.css`，新增 API 入口速览卡片布局样式，保持与 Doxygen 页面相容的紧凑结构。
+- 扩展 `scripts/audit_openusd_primary_entry_coverage.mjs`，新增 API 入口地图检查和 `api_entry_cards` 统计。
+- 扩展 `scripts/audit_openusd_http_preview.mjs`，让 API 首页 HTTP 预览必须包含 `cn-api-entry-map`。
+- 扩展 `scripts/validate_openusd_api_repro.ps1`，新增 `api:has_entry_map_cards`、`api:entry_map_styles_present` 检查，并提高主入口覆盖报告的 API 卡片要求。
+- 更新 `README.md`、`reports/scope_manifest.json`、`reports/scope_manifest.md` 和 `work.md`，记录新的 API 入口速览与验证结果。
+- 最新主入口覆盖审计：3 个入口相关页面通过，17 项检查通过，API 入口卡片 3 个，失败 0 项。
+- 最新链接审计：9 个页面，本地资源缺失 0 个，本地引用 337 个，外部链接 59 个，范围外官方相对文档链接 3340 个。
+- 最新 HTTP 预览审计：9 个页面通过，141 个本地资源通过，失败页面 0 个，失败资源 0 个。
+- 最新验证：168 项检查通过，0 项失败。
+
+差距：
+
+- API 入口速览是结构和导航层增强，不是像素级复刻对比。
+- glossary 独立术语小节中文说明已覆盖完成，但官方定义正文仍保留英文原文，未逐段翻译全部长段落。
+- toolset 的命令、usage 和 option 原文保持英文；目前已加命令级、工作流级和 option guide 级中文导读，未逐行翻译每个 option 长说明。
+
+下一轮目标：
+
+1. 优先检查 `toolset.html` 的 option 长说明是否需要继续加少量中文导读。
+2. 或检查 API 首页入口速览在窄宽度下是否需要更细的布局约束。
+3. 继续每轮运行主入口覆盖审计、链接审计、HTTP 预览审计和总验证，并更新报告。
+
+## 第 27 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 继续在既有 9 个本地页面范围内工作，不扩大到整站镜像。
+- 对照两个官方入口页确认当前仍为 OpenUSD 26.05 release/API 文档；本轮聚焦 API 主入口页的复刻范围说明。
+- 更新 `site/index.html`，在 Doxygen 正文 logo 前新增 `cn-repro-note`，以中文优先、英文保留的方式说明本页对应官方 `https://openusd.org/release/api/index.html`。
+- 范围说明明确本地相邻 API 范围限定为 `Overview and Purpose` 与 `Usd API`，并保留 API names、page names、links 原样。
+- 扩展 `scripts/audit_openusd_primary_entry_coverage.mjs`，新增 `api:has_scope_note` 检查和 `api_scope_notes` 统计。
+- 扩展 `scripts/audit_openusd_http_preview.mjs`，让 API 首页 HTTP 预览必须包含 `cn-repro-note` 与 `cn-api-entry-map`。
+- 扩展 `scripts/validate_openusd_api_repro.ps1`，新增 `api:has_scope_note` 检查，并要求主入口覆盖报告记录至少 1 个 API scope note。
+- 更新 `README.md`、`reports/scope_manifest.json`、`reports/scope_manifest.md` 和 `work.md`，记录新的 API 范围说明与验证结果。
+- 最新主入口覆盖审计：3 个入口相关页面通过，18 项检查通过，API 范围说明 1 个，API 入口卡片 3 个，失败 0 项。
+- 最新链接审计：9 个页面，本地资源缺失 0 个，本地引用 341 个，外部链接 61 个，范围外官方相对文档链接 3340 个。
+- 最新 HTTP 预览审计：9 个页面通过，141 个本地资源通过，失败页面 0 个，失败资源 0 个。
+- 最新验证：169 项检查通过，0 项失败。
+
+差距：
+
+- API 范围说明和入口速览是结构层增强，不是像素级截图比对。
+- glossary 独立术语小节中文说明已覆盖完成，但官方定义正文仍保留英文原文，未逐段翻译全部长段落。
+- toolset 的命令、usage 和 option 原文保持英文；目前已加命令级、工作流级和 option guide 级中文导读，未逐行翻译每个 option 长说明。
+
+下一轮目标：
+
+1. 优先检查 `toolset.html` 的 option 长说明是否需要继续加少量中文导读。
+2. 或检查 API 首页范围说明和入口速览在窄宽度下是否需要更细的布局约束。
+3. 继续每轮运行主入口覆盖审计、链接审计、HTTP 预览审计和总验证，并更新报告。
+
+## 第 28 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 继续在既有 9 个本地页面范围内工作，不扩大到整站镜像。
+- 对照两个官方入口页确认当前仍为 OpenUSD 26.05 release/API 文档；本轮新增范围边界审计，不改官方正文。
+- 新增 `scripts/audit_openusd_scope_boundaries.mjs`，检查本地 HTML 页面白名单、源快照白名单、主范围数量、相邻范围数量、必需报告和范围外链接策略。
+- 生成 `reports/scope_boundary_audit.json` 与 `reports/scope_boundary_audit.md`。
+- 范围边界审计结果为 9 个本地 HTML 页面、8 个源快照、2 个主入口、6 个相邻入口，6 项检查全部通过。
+- 将范围边界审计纳入 `scripts/validate_openusd_api_repro.ps1`，新增脚本/报告必需文件检查，以及 `scope_boundary_audit:passed`、`scope_boundary_audit:limited_to_current_scope` 内容检查。
+- 更新 `README.md`、`reports/scope_manifest.json`、`reports/scope_manifest.md` 和 `work.md`，把范围边界审计纳入固定验证链。
+- 最新主入口覆盖审计：3 个入口相关页面通过，18 项检查通过，API 范围说明 1 个，API 入口卡片 3 个，失败 0 项。
+- 最新范围边界审计：9 个本地 HTML、8 个源快照、2 个主入口、6 个相邻入口，6 项检查通过，失败 0 项。
+- 最新链接审计：9 个页面，本地资源缺失 0 个，本地引用 341 个，外部链接 61 个，范围外官方相对文档链接 3340 个。
+- 最新 HTTP 预览审计：9 个页面通过，141 个本地资源通过，失败页面 0 个，失败资源 0 个。
+- 最新验证：174 项检查通过，0 项失败。
+
+差距：
+
+- 范围边界审计能证明本地文件范围受控，但不是像素级截图比对。
+- glossary 独立术语小节中文说明已覆盖完成，但官方定义正文仍保留英文原文，未逐段翻译全部长段落。
+- toolset 的命令、usage 和 option 原文保持英文；目前已加命令级、工作流级和 option guide 级中文导读，未逐行翻译每个 option 长说明。
+
+下一轮目标：
+
+1. 优先检查 `toolset.html` 的 option 长说明是否需要继续加少量中文导读。
+2. 或检查 API 首页范围说明和入口速览在窄宽度下是否需要更细的布局约束。
+3. 继续每轮运行主入口覆盖审计、范围边界审计、链接审计、HTTP 预览审计和总验证，并更新报告。
+
+## 第 29 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 继续在既有 9 个本地页面范围内工作，不扩大到整站镜像。
+- 对照两个官方入口页确认当前仍为 OpenUSD 26.05 release/API 文档；本轮新增术语一致性审计，不改官方正文。
+- 新增 `scripts/audit_openusd_term_consistency.mjs`，扫描当前 9 个本地 HTML 页面，检查 14 组关键中英术语对、13 个必须保留的 API/class/tool 英文名称，以及 7 个常见错误中文替换不得出现。
+- 术语审计统计全站双语标记量：`cn-term` 874、`en-term` 874、`zh` blocks 333、`en` blocks 333、glossary 定义说明 92、tool option guide 19。
+- 生成 `reports/term_consistency_audit.json` 与 `reports/term_consistency_audit.md`。
+- 按当前页面实际用词校正审计项：`_usd__overview_and_purpose.html` 使用 `概述与目的 / Overview and Purpose`。
+- 将术语一致性审计纳入 `scripts/validate_openusd_api_repro.ps1`，新增脚本/报告必需文件检查，以及 `term_consistency_audit:passed`、`term_consistency_audit:core_terms_and_names_ready` 内容检查。
+- 将术语一致性报告加入 `scripts/audit_openusd_scope_boundaries.mjs` 的必需报告列表。
+- 更新 `README.md`、`reports/scope_manifest.json`、`reports/scope_manifest.md` 和 `work.md`，把术语一致性审计纳入固定验证链。
+- 最新主入口覆盖审计：3 个入口相关页面通过，18 项检查通过，API 范围说明 1 个，API 入口卡片 3 个，失败 0 项。
+- 最新术语一致性审计：9 个页面、14 组关键中英术语、13 个保留英文名称、7 个禁用误译检查全部通过。
+- 最新范围边界审计：9 个本地 HTML、8 个源快照、2 个主入口、6 个相邻入口，6 项检查通过，失败 0 项。
+- 最新链接审计：9 个页面，本地资源缺失 0 个，本地引用 341 个，外部链接 61 个，范围外官方相对文档链接 3340 个。
+- 最新 HTTP 预览审计：9 个页面通过，141 个本地资源通过，失败页面 0 个，失败资源 0 个。
+- 最新验证：179 项检查通过，0 项失败。
+
+差距：
+
+- 术语一致性审计是关键词和标记级护栏，不是全文翻译质量评估。
+- glossary 独立术语小节中文说明已覆盖完成，但官方定义正文仍保留英文原文，未逐段翻译全部长段落。
+- toolset 的命令、usage 和 option 原文保持英文；目前已加命令级、工作流级和 option guide 级中文导读，未逐行翻译每个 option 长说明。
+
+下一轮目标：
+
+1. 优先检查 `toolset.html` 的 option 长说明是否需要继续加少量中文导读。
+2. 或检查 API 首页范围说明和入口速览在窄宽度下是否需要更细的布局约束。
+3. 继续每轮运行主入口覆盖审计、术语一致性审计、范围边界审计、链接审计、HTTP 预览审计和总验证，并更新报告。
+
+## 第 30 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 继续在既有 9 个本地页面范围内工作，不扩大到整站镜像。
+- 对照两个官方入口页确认当前仍为 OpenUSD 26.05 release/API 文档；本轮新增导航覆盖审计，不改官方正文。
+- 新增 `scripts/audit_openusd_navigation_coverage.mjs`，检查 release 源页和生成页的 `Learn`、`User Guides`、`Reference`、`Specifications` 导航分组，确认中文标签与英文原名并列保留。
+- 导航审计检查 release 主入口中的 5 个相邻入口链接：`intro.html`、`glossary.html`、`apiDocs.html`、`toolset.html`、`api/index.html`。
+- 导航审计检查 out-of-scope 但应保留的官方相对链接示例：`spec.html`、`tutorials.html`、`user_guides/variable_expressions.html`。
+- 导航审计检查 API 首页 Doxygen 导航壳：`main-nav`、`side-nav`、`initNavTree`、`searchBox`，以及 6 个 API 导航资源。
+- 导航审计检查 API 入口链接 `_usd__overview_and_purpose.html`、`usd_page_front.html`、`https://openusd.org/license` 和本地 `api/index.html` 跳转。
+- 生成 `reports/navigation_coverage_audit.json` 与 `reports/navigation_coverage_audit.md`。
+- 将导航覆盖报告加入 `scripts/audit_openusd_scope_boundaries.mjs` 的必需报告列表。
+- 将导航覆盖审计纳入 `scripts/validate_openusd_api_repro.ps1`，新增脚本/报告必需文件检查，以及 `navigation_coverage_audit:passed`、`navigation_coverage_audit:release_and_api_navigation_ready` 内容检查。
+- 更新 `README.md`、`reports/scope_manifest.json`、`reports/scope_manifest.md` 和 `work.md`，把导航覆盖审计纳入固定验证链。
+- 最新主入口覆盖审计：3 个入口相关页面通过，18 项检查通过，API 范围说明 1 个，API 入口卡片 3 个，失败 0 项。
+- 最新术语一致性审计：9 个页面、14 组关键中英术语、13 个保留英文名称、7 个禁用误译检查全部通过。
+- 最新导航覆盖审计：8 项检查通过，release 相邻入口链接 5 个、API 导航资源 6 个、API 入口链接 3 个、API 入口卡片 3 个。
+- 最新范围边界审计：9 个本地 HTML、8 个源快照、2 个主入口、6 个相邻入口，6 项检查通过，失败 0 项。
+- 最新链接审计：9 个页面，本地资源缺失 0 个，本地引用 341 个，外部链接 61 个，范围外官方相对文档链接 3340 个。
+- 最新 HTTP 预览审计：9 个页面通过，141 个本地资源通过，失败页面 0 个，失败资源 0 个。
+- 最新验证：184 项检查通过，0 项失败。
+
+差距：
+
+- 导航覆盖审计是结构和链接级护栏，不是像素级截图比对。
+- glossary 独立术语小节中文说明已覆盖完成，但官方定义正文仍保留英文原文，未逐段翻译全部长段落。
+- toolset 的命令、usage 和 option 原文保持英文；目前已加命令级、工作流级和 option guide 级中文导读，未逐行翻译每个 option 长说明。
+
+下一轮目标：
+
+1. 优先检查 `toolset.html` 的 option 长说明是否需要继续加少量中文导读。
+2. 或检查 API 首页范围说明和入口速览在窄宽度下是否需要更细的布局约束。
+3. 继续每轮运行主入口覆盖审计、术语一致性审计、导航覆盖审计、范围边界审计、链接审计、HTTP 预览审计和总验证，并更新报告。
+
+## 第 31 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 继续在既有 9 个本地页面范围内工作，不扩大到整站镜像。
+- 对照两个官方入口页确认当前仍为 OpenUSD 26.05 release/API 文档；本轮新增源快照溯源审计，不改官方正文。
+- 新增 `scripts/audit_openusd_source_provenance.mjs`，读取 `reports/scope_manifest.json` 的 2 个 primary scope 和 6 个 active adjacent scope。
+- 溯源审计逐项检查 official URL、source snapshot、local output、generator 是否存在；Sphinx/Doxygen 源类型是否匹配；源页标题和本地双语标记是否保留。
+- 溯源审计单独检查 `site/api/index.html` 仍是指向 `../index.html` 的本地 API 跳转辅助页。
+- 生成 `reports/source_provenance_audit.json` 与 `reports/source_provenance_audit.md`。
+- 将源快照溯源报告加入 `scripts/audit_openusd_scope_boundaries.mjs` 的必需报告列表。
+- 将源快照溯源审计纳入 `scripts/validate_openusd_api_repro.ps1`，新增脚本/报告必需文件检查，以及 `source_provenance_audit:passed`、`source_provenance_audit:manifest_entries_ready` 内容检查。
+- 更新 `README.md`、`reports/scope_manifest.json`、`reports/scope_manifest.md` 和 `work.md`，把源快照溯源审计纳入固定验证链。
+- 最新主入口覆盖审计：3 个入口相关页面通过，18 项检查通过，API 范围说明 1 个，API 入口卡片 3 个，失败 0 项。
+- 最新术语一致性审计：9 个页面、14 组关键中英术语、13 个保留英文名称、7 个禁用误译检查全部通过。
+- 最新导航覆盖审计：8 项检查通过，release 相邻入口链接 5 个、API 导航资源 6 个、API 入口链接 3 个、API 入口卡片 3 个。
+- 最新源快照溯源审计：8 个 manifest 条目、5 个 Sphinx 源、3 个 Doxygen 源，5 项检查通过，失败 0 项。
+- 最新范围边界审计：9 个本地 HTML、8 个源快照、2 个主入口、6 个相邻入口，6 项检查通过，失败 0 项。
+- 最新链接审计：9 个页面，本地资源缺失 0 个，本地引用 341 个，外部链接 61 个，范围外官方相对文档链接 3340 个。
+- 最新 HTTP 预览审计：9 个页面通过，141 个本地资源通过，失败页面 0 个，失败资源 0 个。
+- 最新验证：189 项检查通过，0 项失败。
+
+差距：
+
+- 源快照溯源审计是文件绑定和结构级护栏，不是实时网络内容 diff。
+- glossary 独立术语小节中文说明已覆盖完成，但官方定义正文仍保留英文原文，未逐段翻译全部长段落。
+- toolset 的命令、usage 和 option 原文保持英文；目前已加命令级、工作流级和 option guide 级中文导读，未逐行翻译每个 option 长说明。
+
+下一轮目标：
+
+1. 优先检查 `toolset.html` 的 option 长说明是否需要继续加少量中文导读。
+2. 或检查 API 首页范围说明和入口速览在窄宽度下是否需要更细的布局约束。
+3. 继续每轮运行主入口覆盖审计、术语一致性审计、导航覆盖审计、源快照溯源审计、范围边界审计、链接审计、HTTP 预览审计和总验证，并更新报告。
+
+## 第 32 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 继续在既有 9 个本地页面范围内工作，不扩大到整站镜像。
+- 对照两个官方入口页确认当前仍为 OpenUSD 26.05 release/API 文档；本轮新增样式与资产契约审计，不改官方正文。
+- 新增 `scripts/audit_openusd_style_asset_contract.mjs`，检查 Doxygen 核心样式/脚本/Logo 资源、Sphinx `_static` 样式/脚本/字体资源、release 图片、glossary 图片和本地双语 CSS。
+- 样式审计检查 `site/openusd_release_cn.css` 的 7 个 release 双语选择器，以及 `site/openusd_cn.css` 的 7 个 API 双语选择器。
+- 样式审计检查 6 个关键页面的资产标记：`release_index.html`、`glossary.html`、`toolset.html`、`index.html`、`_usd__overview_and_purpose.html`、`usd_page_front.html`。
+- 样式审计继续约束生成页和本地 CSS 不依赖远程 `https://openusd.org/images` 图片。
+- 生成 `reports/style_asset_contract_audit.json` 与 `reports/style_asset_contract_audit.md`。
+- 将样式与资产契约报告加入 `scripts/audit_openusd_scope_boundaries.mjs` 的必需报告列表。
+- 将样式与资产契约审计纳入 `scripts/validate_openusd_api_repro.ps1`，新增脚本/报告必需文件检查，以及 `style_asset_contract_audit:passed`、`style_asset_contract_audit:assets_and_styles_ready` 内容检查。
+- 更新 `README.md`、`reports/scope_manifest.json`、`reports/scope_manifest.md` 和 `work.md`，把样式与资产契约审计纳入固定验证链。
+- 最新样式与资产契约审计：19 个 Doxygen 资产、17 个 Sphinx 资产、8 个 release/本地双语资产、14 个双语 CSS 选择器、6 个页面资产标记检查全部通过。
+- 最新主入口覆盖审计：3 个入口相关页面通过，18 项检查通过，API 范围说明 1 个，API 入口卡片 3 个，失败 0 项。
+- 最新术语一致性审计：9 个页面、14 组关键中英术语、13 个保留英文名称、7 个禁用误译检查全部通过。
+- 最新导航覆盖审计：8 项检查通过，release 相邻入口链接 5 个、API 导航资源 6 个、API 入口链接 3 个、API 入口卡片 3 个。
+- 最新源快照溯源审计：8 个 manifest 条目、5 个 Sphinx 源、3 个 Doxygen 源，5 项检查通过，失败 0 项。
+- 最新范围边界审计：9 个本地 HTML、8 个源快照、2 个主入口、6 个相邻入口，6 项检查通过，失败 0 项。
+- 最新链接审计：9 个页面，本地资源缺失 0 个，本地引用 341 个，外部链接 61 个，范围外官方相对文档链接 3340 个。
+- 最新 HTTP 预览审计：9 个页面通过，141 个本地资源通过，失败页面 0 个，失败资源 0 个。
+- 最新验证：194 项检查通过，0 项失败。
+
+差距：
+
+- 样式与资产契约审计是静态资产和选择器级护栏，不是像素级截图比对。
+- glossary 独立术语小节中文说明已覆盖完成，但官方定义正文仍保留英文原文，未逐段翻译全部长段落。
+- toolset 的命令、usage 和 option 原文保持英文；目前已加命令级、工作流级和 option guide 级中文导读，未逐行翻译每个 option 长说明。
+
+下一轮目标：
+
+1. 优先检查 `toolset.html` 的 option 长说明是否需要继续加少量中文导读。
+2. 或检查 API 首页范围说明和入口速览在窄宽度下是否需要更细的布局约束。
+3. 继续每轮运行主入口覆盖审计、术语一致性审计、导航覆盖审计、源快照溯源审计、样式与资产契约审计、范围边界审计、链接审计、HTTP 预览审计和总验证，并更新报告。
+
+## 第 33 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 继续在既有 9 个本地页面范围内工作，不扩大到整站镜像。
+- 对照两个官方入口页确认当前仍为 OpenUSD 26.05 release/API 文档；本轮新增官方入口实时新鲜度审计，不改官方正文。
+- 新增 `scripts/audit_openusd_official_entry_freshness.mjs`，只拉取 `https://openusd.org/release/index.html` 和 `https://openusd.org/release/api/index.html` 两个用户指定 URL。
+- 审计报告只保存 live 状态、标题、关键标记计数、缺失标记列表、源快照对齐和本地输出对齐，不保存官方正文，也不扩展为整站镜像。
+- release live 标记覆盖 `USD Home`、`Universal Scene Description 26.05 documentation`、`Introduction to USD`、`Terms and Concepts`、`API Documentation`、`Toolset`、`api/index.html` 和 `piper-banner.jpg`。
+- API live 标记覆盖 `Universal Scene Description (USD)`、`Generated on Wed Apr 22 2026`、官方简介句、`_usd__overview_and_purpose.html`、`usd_page_front.html`、`USDLogoLrgWithAlpha.png` 和 `https://openusd.org/license`。
+- 生成 `reports/official_entry_freshness_audit.json` 与 `reports/official_entry_freshness_audit.md`。
+- 将官方入口实时新鲜度报告加入 `scripts/audit_openusd_scope_boundaries.mjs` 的必需报告列表。
+- 将官方入口实时新鲜度审计纳入 `scripts/validate_openusd_api_repro.ps1`，新增脚本/报告必需文件检查，以及 `official_entry_freshness_audit:passed`、`official_entry_freshness_audit:release_and_api_live_markers_ready` 内容检查。
+- 更新 `README.md`、`reports/scope_manifest.json`、`reports/scope_manifest.md` 和 `work.md`，把官方入口实时新鲜度审计纳入固定验证链。
+- 最新官方入口实时新鲜度审计：2 个官方 URL 返回 200，release 8 个 live 标记、API 7 个 live 标记、2 个源快照和 3 个本地输出全部通过。
+- 最新主入口覆盖审计：3 个入口相关页面通过，18 项检查通过，API 范围说明 1 个，API 入口卡片 3 个，失败 0 项。
+- 最新术语一致性审计：9 个页面、14 组关键中英术语、13 个保留英文名称、7 个禁用误译检查全部通过。
+- 最新导航覆盖审计：8 项检查通过，release 相邻入口链接 5 个、API 导航资源 6 个、API 入口链接 3 个、API 入口卡片 3 个。
+- 最新源快照溯源审计：8 个 manifest 条目、5 个 Sphinx 源、3 个 Doxygen 源，5 项检查通过，失败 0 项。
+- 最新样式与资产契约审计：19 个 Doxygen 资产、17 个 Sphinx 资产、8 个 release/本地双语资产、14 个双语 CSS 选择器、6 个页面资产标记检查全部通过。
+- 最新范围边界审计：9 个本地 HTML、8 个源快照、2 个主入口、6 个相邻入口，6 项检查通过，失败 0 项。
+- 最新链接审计：9 个页面，本地资源缺失 0 个，本地引用 341 个，外部链接 61 个，范围外官方相对文档链接 3340 个。
+- 最新 HTTP 预览审计：9 个页面通过，141 个本地资源通过，失败页面 0 个，失败资源 0 个。
+- 最新验证：199 项检查通过，0 项失败。
+
+差距：
+
+- 官方入口实时新鲜度审计是入口结构和标记级护栏，不是官方页面全文翻译 diff。
+- glossary 独立术语小节中文说明已覆盖完成，但官方定义正文仍保留英文原文，未逐段翻译全部长段落。
+- toolset 的命令、usage 和 option 原文保持英文；目前已加命令级、工作流级和 option guide 级中文导读，未逐行翻译每个 option 长说明。
+
+下一轮目标：
+
+1. 优先检查 `toolset.html` 的 option 长说明是否需要继续加少量中文导读。
+2. 或检查 API 首页范围说明和入口速览在窄宽度下是否需要更细的布局约束。
+3. 继续每轮运行主入口覆盖审计、官方入口实时新鲜度审计、术语一致性审计、导航覆盖审计、源快照溯源审计、样式与资产契约审计、范围边界审计、链接审计、HTTP 预览审计和总验证，并更新报告。
+
+## 第 34 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 继续在既有 9 个本地页面范围内工作，不新增页面、不扩大到整站镜像。
+- 对照两个官方入口页的当前结构与本地源快照，确认 release/API 主入口仍围绕 OpenUSD 26.05 文档入口和 Doxygen API 首页；本轮聚焦窄宽度布局契约。
+- 为 `site/openusd_cn.css` 补充 API 双语入口层的响应式约束：图片最大宽度、双语块和范围说明的长文本换行、API 入口卡片网格在 700px 以下降为单列。
+- 为 `site/openusd_release_cn.css` 补充 release 双语层的响应式约束：中文/英文术语长文本换行、范围说明和 glossary/toolset 摘要块换行、glossary/toolset 网格在 640px 以下降为单列、命令 option 代码片段避免窄屏挤压。
+- 为 `site/api/index.html` 本地 API 跳转页补充 viewport meta，保持 `../index.html` 本地跳转不变。
+- 新增 `scripts/audit_openusd_responsive_layout_contract.mjs`，检查 9 个本地页面的 viewport、本地双语 CSS 挂载、移动端网格降级和长文本换行契约。
+- 生成 `reports/responsive_layout_contract_audit.json` 与 `reports/responsive_layout_contract_audit.md`。
+- 将响应式布局契约报告加入 `scripts/audit_openusd_scope_boundaries.mjs` 的必需报告列表。
+- 将响应式布局契约审计纳入 `scripts/validate_openusd_api_repro.ps1`，新增脚本/报告必需文件检查，以及 `responsive_layout_contract_audit:passed`、`responsive_layout_contract_audit:viewport_and_css_contract_ready` 内容检查。
+- 更新 `README.md`、`reports/scope_manifest.json`、`reports/scope_manifest.md` 和 `work.md`，把响应式布局契约审计纳入固定验证链。
+- 最新响应式布局契约审计：9 个页面都有 viewport，5 个 release 页面挂载 release 双语 CSS，3 个 API 页面挂载 API 双语 CSS，2 个响应式 CSS 契约通过，失败 0 项。
+- 最新主入口覆盖审计：3 个入口相关页面通过，18 项检查通过，API 范围说明 1 个，API 入口卡片 3 个，失败 0 项。
+- 最新官方入口实时新鲜度审计：2 个官方 URL 返回 200，release 8 个 live 标记、API 7 个 live 标记、2 个源快照和 3 个本地输出全部通过。
+- 最新术语一致性审计：9 个页面、14 组关键中英术语、13 个保留英文名称、7 个禁用误译检查全部通过。
+- 最新导航覆盖审计：8 项检查通过，release 相邻入口链接 5 个、API 导航资源 6 个、API 入口链接 3 个、API 入口卡片 3 个。
+- 最新源快照溯源审计：8 个 manifest 条目、5 个 Sphinx 源、3 个 Doxygen 源，5 项检查通过，失败 0 项。
+- 最新样式与资产契约审计：19 个 Doxygen 资产、17 个 Sphinx 资产、8 个 release/本地双语资产、14 个双语 CSS 选择器、6 个页面资产标记检查全部通过。
+- 最新范围边界审计：9 个本地 HTML、8 个源快照、2 个主入口、6 个相邻入口，6 项检查通过，失败 0 项。
+- 最新链接审计：9 个页面，本地资源缺失 0 个，本地引用 341 个，外部链接 61 个，范围外官方相对文档链接 3340 个。
+- 最新 HTTP 预览审计：9 个页面通过，141 个本地资源通过，失败页面 0 个，失败资源 0 个。
+- 最新验证：204 项检查通过，0 项失败。
+
+差距：
+
+- 响应式布局契约审计是 CSS/HTML 结构级护栏，不是像素级截图比对。
+- glossary 独立术语小节中文说明已覆盖完成，但官方定义正文仍保留英文原文，未逐段翻译全部长段落。
+- toolset 的命令、usage 和 option 原文保持英文；目前已加命令级、工作流级和 option guide 级中文导读，未逐行翻译每个 option 长说明。
+
+下一轮目标：
+
+1. 优先检查 `toolset.html` 的 option 长说明是否需要继续加少量中文导读。
+2. 或对 release/API 主入口做更细的入口链接文案覆盖审计；仍不新增页面范围。
+3. 继续每轮运行主入口覆盖审计、官方入口实时新鲜度审计、响应式布局契约审计、术语一致性审计、导航覆盖审计、源快照溯源审计、样式与资产契约审计、范围边界审计、链接审计、HTTP 预览审计和总验证，并更新报告。
+
+## 第 35 轮
+
+时间：2026-06-03
+
+已完成：
+
+- 继续在既有 9 个本地页面和 8 个源快照范围内工作，不新增页面、不扩大到整站镜像。
+- 对照两个官方入口页确认 release 首页仍暴露 Learn、User Guides、Reference、Specifications 等入口组，API 首页仍暴露 Overview and Purpose、Usd API 和 license 入口；本轮聚焦入口链接文案覆盖。
+- 新增 `scripts/audit_openusd_entry_label_contract.mjs`，检查关键入口链接的 href、中文标签和英文原名是否同时保留。
+- 审计 release 首页 8 个关键入口链接：`intro.html`、`glossary.html`、`apiDocs.html`、`toolset.html`、`api/index.html`、`tut_usd_tutorials.html`、`spec.html`、`usdfaq.html`。
+- 审计 release 首页 4 个导航分组中英标签：Learn、User Guides、Reference、Specifications。
+- 审计 API 首页 3 个入口卡片：`_usd__overview_and_purpose.html`、`usd_page_front.html`、`https://openusd.org/license`。
+- 审计 `apiDocs.html` 的 `api/index.html` bridge 按钮和 `site/api/index.html` 的 `../index.html` 本地跳转说明。
+- 审计 6 个相邻页标题是否保留中文标签和英文原名：`intro.html`、`apiDocs.html`、`glossary.html`、`toolset.html`、`_usd__overview_and_purpose.html`、`usd_page_front.html`。
+- 生成 `reports/entry_label_contract_audit.json` 与 `reports/entry_label_contract_audit.md`。
+- 将入口标签契约报告加入 `scripts/audit_openusd_scope_boundaries.mjs` 的必需报告列表。
+- 将入口标签契约审计纳入 `scripts/validate_openusd_api_repro.ps1`，新增脚本/报告必需文件检查，以及 `entry_label_contract_audit:passed`、`entry_label_contract_audit:release_api_and_adjacent_labels_ready` 内容检查。
+- 更新 `README.md`、`reports/scope_manifest.json`、`reports/scope_manifest.md` 和 `work.md`，把入口标签契约审计纳入固定验证链。
+- 最新入口标签契约审计：8 个 release 入口链接、4 个 release 导航分组、3 个 API 入口卡片、2 个 bridge/redirect 链接和 6 个相邻页标题全部通过。
+- 最新主入口覆盖审计：3 个入口相关页面通过，18 项检查通过，API 范围说明 1 个，API 入口卡片 3 个，失败 0 项。
+- 最新官方入口实时新鲜度审计：2 个官方 URL 返回 200，release 8 个 live 标记、API 7 个 live 标记、2 个源快照和 3 个本地输出全部通过。
+- 最新响应式布局契约审计：9 个页面都有 viewport，5 个 release 页面挂载 release 双语 CSS，3 个 API 页面挂载 API 双语 CSS，2 个响应式 CSS 契约通过，失败 0 项。
+- 最新术语一致性审计：9 个页面、14 组关键中英术语、13 个保留英文名称、7 个禁用误译检查全部通过。
+- 最新导航覆盖审计：8 项检查通过，release 相邻入口链接 5 个、API 导航资源 6 个、API 入口链接 3 个、API 入口卡片 3 个。
+- 最新源快照溯源审计：8 个 manifest 条目、5 个 Sphinx 源、3 个 Doxygen 源，5 项检查通过，失败 0 项。
+- 最新样式与资产契约审计：19 个 Doxygen 资产、17 个 Sphinx 资产、8 个 release/本地双语资产、14 个双语 CSS 选择器、6 个页面资产标记检查全部通过。
+- 最新范围边界审计：9 个本地 HTML、8 个源快照、2 个主入口、6 个相邻入口，6 项检查通过，失败 0 项。
+- 最新链接审计：9 个页面，本地资源缺失 0 个，本地引用 341 个，外部链接 61 个，范围外官方相对文档链接 3340 个。
+- 最新 HTTP 预览审计：9 个页面通过，141 个本地资源通过，失败页面 0 个，失败资源 0 个。
+- 最新验证：209 项检查通过，0 项失败。
+
+差距：
+
+- 入口标签契约审计是 href 周边标签和页面标题级护栏，不是逐链接全文翻译审计。
+- glossary 独立术语小节中文说明已覆盖完成，但官方定义正文仍保留英文原文，未逐段翻译全部长段落。
+- toolset 的命令、usage 和 option 原文保持英文；目前已加命令级、工作流级和 option guide 级中文导读，未逐行翻译每个 option 长说明。
+
+下一轮目标：
+
+1. 优先检查 `toolset.html` 的 option 长说明是否需要继续加少量中文导读。
+2. 或为固定验证链补一个报告索引/审计索引总表，方便快速定位各轮产物；仍不新增页面范围。
+3. 继续每轮运行入口标签契约审计、主入口覆盖审计、官方入口实时新鲜度审计、响应式布局契约审计、术语一致性审计、导航覆盖审计、源快照溯源审计、样式与资产契约审计、范围边界审计、链接审计、HTTP 预览审计和总验证，并更新报告。
+## 第 36 轮
+时间：2026-06-03
+
+已完成：
+
+- 继续在既有 9 个本地 HTML 和 8 个源快照范围内维护，不新增页面、不扩大到整站镜像。
+- 新增 `scripts/audit_openusd_report_index.mjs`，为固定审计链建立报告索引，覆盖脚本、JSON 报告、Markdown 报告、通过状态和最终验证计数。
+- 报告索引只汇总现有产物路径、计数和通过状态，不保存官方正文，也不做新的官方页面镜像。
+- 生成 `reports/audit_index.json` 和 `reports/audit_index.md`，当前索引覆盖 11 个审计条目、12 个总条目、11 个审计脚本、11 份 JSON 报告、11 份 Markdown 报告和最终验证报告。
+- 将 `audit_index.json` 纳入 `scripts/audit_openusd_scope_boundaries.mjs` 的必需报告列表。
+- 将报告索引接入 `scripts/validate_openusd_api_repro.ps1`，新增脚本/报告必需文件检查，以及 `audit_index:passed` 和 `audit_index:fixed_chain_ready` 两项内容检查。
+- 更新 `README.md`、`reports/scope_manifest.json`、`reports/scope_manifest.md` 和 `work.md`，把报告索引写入固定验证链与范围状态。
+- 本轮报告索引处理了 PowerShell 生成 JSON 可能带 UTF-8 BOM 的情况，避免 `validation_report.json` 解析失败。
+- 最新报告索引审计：11 个审计脚本、11 份 JSON 报告、11 份 Markdown 报告、11 个审计报告通过，最终验证失败数 0，索引检查失败数 0。
+- 最新入口标签契约审计：8 个 release 入口链接、4 个 release 导航分组、3 个 API 入口卡片、2 个 bridge/redirect 链接和 6 个相邻页标题全部通过。
+- 最新主入口覆盖审计：3 个入口相关页面、18 项检查、321/321 组 release 术语标记、4 个 API 双语介绍块、3 个 API 入口卡片和 1 个 API 范围说明全部通过。
+- 最新官方入口实时新鲜度审计：2 个官方 URL 返回 200，release 8 个 live 标记、API 7 个 live 标记、2 个源快照和 3 个本地输出全部通过。
+- 最新响应式布局契约审计：9 个页面 viewport、5 个 release CSS 挂载页、3 个 API CSS 挂载页和 2 个响应式 CSS 契约全部通过。
+- 最新术语一致性审计：9 个页面、14 组关键中英术语、13 个保留英文名称、7 个禁用误译检查、874/874 个中英文术语标记、333/333 个中英文块、92 条 glossary 定义说明和 19 个 tool option guide 全部通过。
+- 最新导航覆盖审计：8 项检查通过，release 相邻入口链接 5 个、API 导航资源 6 个、API 入口链接 3 个、API 入口卡片 3 个。
+- 最新源快照溯源审计：8 个 manifest 条目、2 个主入口、6 个相邻入口、5 个 Sphinx 源和 3 个 Doxygen 源全部通过。
+- 最新样式与资产契约审计：19 个 Doxygen 资产、17 个 Sphinx 资产、8 个 release/本地双语资产、7 个 release CSS 选择器、7 个 API CSS 选择器和 6 个页面资源标记全部通过。
+- 最新范围边界审计：9 个本地 HTML、8 个源快照、2 个主入口和 6 个相邻入口保持有界。
+- 最新链接审计：9 个本地页面，本地存在引用 341 个、外部链接 61 个、范围外官方相对文档链接 3340 个，本地资源缺失 0 个。
+- 最新 HTTP 预览审计：9 个页面和 141 个本地 CSS/JS/图片/字体资源全部通过，失败页面 0 个、失败资源 0 个。
+- 最新总验证：214 项检查通过，0 项失败。
+
+差距：
+
+- 报告索引是固定审计链的产物发现和状态汇总，不是页面正文级 diff，也不是截图/像素级视觉比对。
+- glossary 官方定义正文仍保留英文原文，已补 92 条定义级中文导读，但未逐段翻译所有长定义。
+- toolset 的命令、usage 和 option 原文保持英文；目前已加命令级、工作流级和 option guide 级中文导读，未逐行翻译每个 option 长说明。
+
+下一轮目标：
+
+1. 继续用报告索引驱动固定审计链，优先定位任何变红的入口、样式、链接或范围报告。
+2. 如不新增页面范围，优先小批量检查 `toolset.html` 的 option 长说明是否需要继续添加中文导读。
+3. 继续每轮运行入口标签契约、主入口覆盖、官方新鲜度、响应式、术语、导航、溯源、样式资产、范围、链接、HTTP 预览、报告索引和总验证，并更新报告。
+
+## 第 37 轮
+时间：2026-06-03
+
+已完成：
+
+- 继续保持既有 9 个本地 HTML 和 8 个源快照范围，不新增页面、不扩大到整站镜像。
+- 对照两个官方入口页的当前结构约束，新增 `scripts/audit_openusd_page_metadata_contract.mjs`，专门检查页面级中文主导契约。
+- 新审计覆盖 9 个本地 HTML：`release_index.html`、`intro.html`、`apiDocs.html`、`glossary.html`、`toolset.html`、`index.html`、`_usd__overview_and_purpose.html`、`usd_page_front.html` 和 `api/index.html`。
+- 检查项包括 `lang="zh-CN"`、viewport、中文优先且保留英文原页面名的 `<title>`、范围说明、名称/链接/CLI flag 保留策略，以及每页是否仍同时具有中文层和英文层。
+- 生成 `reports/page_metadata_contract_audit.json` 和 `reports/page_metadata_contract_audit.md`；当前 9 个页面的语言声明、viewport、双语/跳转标题、release/API/redirect 范围说明和中文/英文层全部通过。
+- 将 `page_metadata_contract_audit.json` 纳入 `scripts/audit_openusd_scope_boundaries.mjs` 的必需报告列表。
+- 将页面元数据契约审计纳入 `scripts/validate_openusd_api_repro.ps1`，新增脚本/报告必需文件检查，以及 `page_metadata_contract_audit:passed`、`page_metadata_contract_audit:zh_cn_titles_scope_ready` 两项内容检查。
+- 更新 `scripts/audit_openusd_report_index.mjs`，固定审计链从 11 个审计条目提升到 12 个审计条目。
+- 更新 `README.md`、`reports/scope_manifest.json`、`reports/scope_manifest.md` 和 `work.md`，把页面元数据契约写入固定验证链与范围状态。
+- 最新页面元数据契约审计：9 个页面检查，9 个 `zh-CN` 页面，9 个 viewport，9 个双语/跳转标题，5 个 release 范围说明、3 个 API 范围说明、1 个 redirect 范围说明，9 个中文/英文层页面，7 项检查失败 0。
+- 最新报告索引审计：12 个审计条目、13 个总条目、12 个审计脚本、12 份 JSON 报告、12 份 Markdown 报告、12 个审计报告通过，最终验证失败数 0，索引检查失败数 0。
+- 最新总验证：219 项检查通过，0 项失败。
+
+差距：
+
+- 页面元数据契约是标题、语言声明、范围说明和保留策略级护栏，不是官方正文逐段 diff 或截图级视觉比对。
+- glossary 官方定义正文仍保留英文原文，已补 92 条定义级中文导读，但未逐段翻译所有长定义。
+- toolset 的命令、usage 和 option 原文保持英文；目前已加命令级、工作流级和 option guide 级中文导读，未逐行翻译每个 option 长说明。
+
+下一轮目标：
+
+1. 继续用报告索引和页面元数据契约定位固定链中任何变红的页面级问题。
+2. 如继续补内容，优先小批量检查 `toolset.html` 的 option 长说明是否需要更细中文导读。
+3. 继续每轮运行页面元数据、入口标签、主入口覆盖、官方新鲜度、响应式、术语、导航、溯源、样式资产、范围、链接、HTTP 预览、报告索引和总验证，并更新报告。
+
+## 第 38 轮
+时间：2026-06-03
+
+已完成：
+
+- 继续保持既有 9 个本地 HTML 和 8 个源快照范围，不新增页面、不扩大到整站镜像。
+- 对照当前两个官方入口页确认 release 入口仍围绕 Sphinx 文档首页、Learn/User Guides/Reference/Specifications 等导航分组，API 入口仍围绕 Doxygen API 首页、搜索/导航树和 `_usd__overview_and_purpose.html`、`usd_page_front.html`、license 三个核心入口。
+- 新增 `scripts/audit_openusd_entry_structure_parity.mjs`，以结构标记方式比较源快照与本地输出，不保存官方正文。
+- 新审计检查 release 官方源快照的 Sphinx 外壳标记、本地 release 页的 Sphinx/双语外壳标记、4 个 release 导航分组、API 官方源快照的 Doxygen 外壳标记、本地 API 页的 Doxygen/双语外壳标记、3 个 API 入口链接，以及 6 个相邻页的 Sphinx/Doxygen 家族外壳。
+- 生成 `reports/entry_structure_parity_audit.json` 和 `reports/entry_structure_parity_audit.md`。
+- 将 `entry_structure_parity_audit.json` 纳入 `scripts/audit_openusd_scope_boundaries.mjs` 的必需报告列表。
+- 将入口结构保真审计纳入 `scripts/validate_openusd_api_repro.ps1`，新增脚本/报告必需文件检查，以及 `entry_structure_parity_audit:passed`、`entry_structure_parity_audit:sphinx_doxygen_shells_ready` 两项内容检查。
+- 更新 `scripts/audit_openusd_report_index.mjs`，固定审计链从 12 个审计条目提升到 13 个审计条目。
+- 更新 `README.md`、`reports/scope_manifest.json`、`reports/scope_manifest.md` 和 `work.md`，把入口结构保真审计写入固定验证链与范围状态。
+- 最新入口结构保真审计：release 官方结构标记 12/12，本地 release 结构标记 11/11，release 导航分组源/本地 4/4，API 官方结构标记 14/14，本地 API 结构标记 16/16，API 入口链接源/本地 3/3，6 个相邻页外壳全部通过，7 项检查失败 0。
+- 最新报告索引审计：13 个审计条目、14 个总条目、13 个审计脚本、13 份 JSON 报告、13 份 Markdown 报告、13 个审计报告通过，最终验证失败数 0，索引检查失败数 0。
+- 最新总验证：224 项检查通过，0 项失败。
+
+差距：
+
+- 入口结构保真审计是结构标记级护栏，不是视觉截图 diff，也不是官方正文逐段 diff。
+- glossary 官方定义正文仍保留英文原文，已补 92 条定义级中文导读，但未逐段翻译所有长定义。
+- toolset 的命令、usage 和 option 原文保持英文；目前已加命令级、工作流级和 option guide 级中文导读，未逐行翻译每个 option 长说明。
+
+下一轮目标：
+
+1. 继续用入口结构保真、页面元数据和报告索引三层护栏定位固定链中任何变红的结构问题。
+2. 如继续补内容，优先小批量检查 `toolset.html` 的 option 长说明是否需要更细中文导读。
+3. 继续每轮运行入口结构、页面元数据、入口标签、主入口覆盖、官方新鲜度、响应式、术语、导航、溯源、样式资产、范围、链接、HTTP 预览、报告索引和总验证，并更新报告。
+
+## 第 39 轮
+时间：2026-06-03
+
+已完成：
+
+- 继续保持既有 9 个本地 HTML 和 8 个源快照范围，不新增页面、不扩大到整站镜像。
+- 对照两个官方入口页确认当前入口结构未变化，本轮聚焦用户要求中的“中文为主并保留对应英文原文”顺序护栏。
+- 新增 `scripts/audit_openusd_chinese_first_order_contract.mjs`，检查所有本地页面中的中文标签/解释是否位于保留英文原文之前。
+- 新审计覆盖 9 个本地 HTML，检查 `cn-term/en-term` 术语对、`zh/en` 正文块和 `api/index.html` 本地跳转页的中英句子顺序。
+- 生成 `reports/chinese_first_order_contract_audit.json` 和 `reports/chinese_first_order_contract_audit.md`。
+- 将 `chinese_first_order_contract_audit.json` 纳入 `scripts/audit_openusd_scope_boundaries.mjs` 的必需报告列表。
+- 将中文优先顺序审计纳入 `scripts/validate_openusd_api_repro.ps1`，新增脚本/报告必需文件检查，以及 `chinese_first_order_contract_audit:passed`、`chinese_first_order_contract_audit:terms_blocks_and_redirect_ready` 两项内容检查。
+- 更新 `scripts/audit_openusd_report_index.mjs`，固定审计链从 13 个审计条目提升到 14 个审计条目。
+- 更新 `README.md`、`reports/scope_manifest.json`、`reports/scope_manifest.md` 和 `work.md`，把中文优先顺序审计写入固定验证链与范围状态。
+- 最新中文优先顺序审计：9 个页面检查，874/874 组 `cn-term/en-term` 为中文在前，333/333 组 `zh/en` 为中文在前，1 个本地 API 跳转页中文句子在前，9 个页面均有中文优先层，7 项检查失败 0。
+- 最新报告索引审计：14 个审计条目、15 个总条目、14 个审计脚本、14 份 JSON 报告、14 份 Markdown 报告、14 个审计报告通过，最终验证失败数 0，索引检查失败数 0。
+- 最新总验证：229 项检查通过，0 项失败。
+
+差距：
+
+- 中文优先顺序审计是局部双语块顺序护栏，不是官方正文逐段翻译完整度审计，也不是视觉截图 diff。
+- glossary 官方定义正文仍保留英文原文，已补 92 条定义级中文导读，但未逐段翻译所有长定义。
+- toolset 的命令、usage 和 option 原文保持英文；目前已加命令级、工作流级和 option guide 级中文导读，未逐行翻译每个 option 长说明。
+
+下一轮目标：
+
+1. 继续用中文优先顺序、入口结构保真、页面元数据和报告索引四层护栏定位固定链中任何变红的问题。
+2. 如继续补内容，优先小批量检查 `toolset.html` 的 option 长说明是否需要更细中文导读。
+3. 继续每轮运行中文优先顺序、入口结构、页面元数据、入口标签、主入口覆盖、官方新鲜度、响应式、术语、导航、溯源、样式资产、范围、链接、HTTP 预览、报告索引和总验证，并更新报告。
+
+## 第 40 轮
+时间：2026-06-03
+
+已完成：
+
+- 继续保持既有 9 个本地 HTML 和 8 个源快照范围，不新增页面、不扩大到整站镜像。
+- 对照两个官方入口页确认当前入口仍围绕 OpenUSD 26.05 release/API 文档；本轮只补 `toolset.html` 的小批量长选项导读，不复制官方长正文。
+- 更新 `scripts/build_toolset_bilingual.mjs`，为 6 个密集命令新增 `cn-tool-deep-note` 长选项说明导读：`usdchecker`、`usdstitchclips`、`sdfdump`、`sdffilter`、`usdgenschemafromsdr`、`usdInitSchema`。
+- 每个长选项导读保持 CLI flag、命令名、API/schema 名称和官方 usage/option 长说明原样，只增加中文优先的阅读提示与对应英文说明。
+- 扩展 `site/openusd_release_cn.css`，新增 `cn-tool-deep-note` 样式和窄屏 code 换行约束。
+- 更新 `scripts/audit_openusd_term_consistency.mjs`，统计 `cn_tool_deep_notes` 并新增 `terms:toolset_deep_option_notes_present` 检查。
+- 更新 `scripts/validate_openusd_api_repro.ps1`，新增 `toolset:has_deep_option_notes` 检查，并把术语一致性总检查扩展到 6 个 deep option notes。
+- 重新生成 `site/toolset.html`；局部自检结果为 6 个长选项导读、19 个 option guide、157/157 个 `zh/en` 块，`Long-option reading notes` 标记存在。
+- 重新运行完整固定审计链和两次总验证；最终验证报告、报告索引和 scope manifest 均已更新。
+- 最新中文优先顺序审计：9 个页面检查，880/880 组 `cn-term/en-term` 为中文在前，351/351 组 `zh/en` 为中文在前，1 个本地 API 跳转页中文句子在前，9 个页面均有中文优先层，7 项检查失败 0。
+- 最新术语一致性审计：9 个页面、14 组关键中英术语、13 个保留英文名称、7 个禁用误译检查、880/880 个中英文术语标记、351/351 个中英文块、92 条 glossary 定义说明、19 个 tool option guide 和 6 个 tool deep option notes 全部通过。
+- 最新报告索引审计：14 个审计条目、15 个总条目、14 个审计脚本、14 份 JSON 报告、14 份 Markdown 报告和 230 项最终验证检查全部对齐，失败 0。
+- 最新总验证：230 项检查通过，0 项失败。
+
+差距：
+- `toolset.html` 仍保留官方 usage、option 长说明和示例英文原文；本轮新增的是 6 个密集命令的中文阅读导读，不是逐行翻译全部 option 长说明。
+- glossary 官方定义正文仍保留英文原文，已补 92 条定义级中文导读，但未逐段翻译所有长定义。
+- 当前固定审计链是结构、链接、术语、顺序、范围和本地资源护栏，不是像素级截图比对。
+
+下一轮目标：
+
+1. 继续用中文优先顺序、入口结构保真、页面元数据和报告索引定位固定链状态。
+2. 如继续补内容，优先评估 `toolset.html` 是否还需要第二批少量长选项导读，或检查 API 首页入口卡片在窄宽度下的文本密度。
+3. 继续每轮运行中文优先顺序、入口结构、页面元数据、入口标签、主入口覆盖、官方新鲜度、响应式、术语、导航、溯源、样式资产、范围、链接、HTTP 预览、报告索引和总验证，并更新报告。
+
+## 第 41 轮
+时间：2026-06-04
+
+已完成：
+
+- 继续保持既有 9 个本地 HTML 和 8 个源快照范围，不新增页面、不扩大到整站镜像。
+- 对照 `https://openusd.org/release/index.html` 和 `https://openusd.org/release/api/index.html` 确认本轮仍围绕两个官方入口；本轮只补 API 首页入口阅读路线。
+- 更新 `site/index.html`，在现有 `cn-api-entry-map` 之后新增 `cn-api-route-guide`，包含 3 条中文优先的 API 阅读路线：`Overview and Purpose`、`Usd API`、`TOST license`。
+- 新增路线导读只复用官方 API 首页已有的 3 个入口链接：`_usd__overview_and_purpose.html`、`usd_page_front.html`、`https://openusd.org/license`；API 名称、页面名和链接保持原样。
+- 更新 `site/openusd_cn.css`，新增 `cn-api-route-guide`、`cn-api-route-list`、`cn-api-route-step` 样式和窄屏单列约束，降低 API 入口卡片下方说明的文本密度。
+- 更新 `scripts/audit_openusd_primary_entry_coverage.mjs`，统计 `api_route_steps` 并新增 `api:has_route_guide` 检查。
+- 更新 `scripts/validate_openusd_api_repro.ps1`，新增 `api:has_route_guide` 检查，并要求主入口覆盖报告包含至少 3 条 API route guide steps。
+- 重新运行受影响审计、完整固定审计链和两次总验证；最终验证报告和 scope manifest 均已更新。
+- 最新主入口覆盖审计：3 个入口相关页面通过，19 项检查通过，API 范围说明 1 个，API 入口卡片 3 个，API route guide steps 3 个，失败 0 项。
+- 最新中文优先顺序审计：9 个页面检查，881/881 组 `cn-term/en-term` 为中文在前，354/354 组 `zh/en` 为中文在前，1 个本地 API 跳转页中文句子在前，9 个页面均有中文优先层，7 项检查失败 0。
+- 最新术语一致性审计：9 个页面、14 组关键中英术语、13 个保留英文名称、7 个禁用误译检查、881/881 个中英文术语标记、354/354 个中英文块、92 条 glossary 定义说明、19 个 tool option guide 和 6 个 tool deep option notes 全部通过。
+- 最新报告索引审计：14 个审计条目、15 个总条目、14 个审计脚本、14 份 JSON 报告、14 份 Markdown 报告和 231 项最终验证检查全部对齐，失败 0。
+- 最新总验证：231 项检查通过，0 项失败。
+
+差距：
+
+- API 首页新增的是入口路线级中文导读，不是 API 手册全量翻译；相邻 API 页面仍按已纳入范围的 `Overview and Purpose` 与 `Usd API` 优先维护。
+- 当前固定审计链是结构、链接、术语、顺序、范围和本地资源护栏，不是像素级截图比对。
+- `toolset.html` 仍保留官方 usage、option 长说明和示例英文原文；目前只做小批量中文阅读导读。
+
+下一轮目标：
+
+1. 继续用中文优先顺序、主入口覆盖、入口结构保真、页面元数据和报告索引定位固定链状态。
+2. 如继续补内容，优先检查 API 首页新增 route guide 在 HTTP 预览和窄屏布局下是否还需要更细约束，或评估 `toolset.html` 是否需要第二批少量长选项导读。
+3. 继续每轮运行中文优先顺序、入口结构、页面元数据、入口标签、主入口覆盖、官方新鲜度、响应式、术语、导航、溯源、样式资产、范围、链接、HTTP 预览、报告索引和总验证，并更新报告。
+
+## 第 42 轮
+时间：2026-06-04
+
+已完成：
+
+- 继续保持既有 9 个本地 HTML 和 8 个源快照范围，不新增页面、不扩大到整站镜像。
+- 对照 `https://openusd.org/release/index.html` 和 `https://openusd.org/release/api/index.html` 确认当前官方入口仍为 OpenUSD 26.05 release/API 文档；本轮只把第 41 轮新增的 API route guide 固化进预览与响应式护栏。
+- 更新 `scripts/audit_openusd_http_preview.mjs`，让 API 首页 HTTP 预览必须包含 `cn-api-route-guide`，同时继续检查 Doxygen 外壳、搜索框、范围说明和入口卡片。
+- 更新 `scripts/audit_openusd_responsive_layout_contract.mjs`，把 `.cn-api-route-list` 和 `.cn-api-route-step` 纳入 API CSS 移动端契约，并新增 `responsive:api_route_guide_mobile_contract` 检查。
+- 响应式审计现在统计 `api_route_guide_steps`，确认 `site/index.html` 中 3 条 API 阅读路线存在，且移动端 CSS 将 route guide 切到单列。
+- 更新 `scripts/validate_openusd_api_repro.ps1`，新增 `http_preview_audit:api_route_guide_visible` 检查，并要求响应式审计报告包含至少 3 条 API route guide steps。
+- 重新运行 HTTP 预览审计、响应式审计、完整总验证、报告索引和第二次总验证；最终验证报告、报告索引和 scope manifest 均已更新。
+- 最新 HTTP 预览审计：9 个本地页面全部通过，141 个本地 CSS/JS/图片/字体资源全部通过，API 首页 required marker 数提升到 8，缺失标记 0。
+- 最新响应式布局契约审计：9 个页面检查，9 个 viewport，5 个 release CSS 页面，3 个 API CSS 页面，3 条 API route guide steps，9 项检查失败 0。
+- 最新报告索引审计：14 个审计条目、15 个总条目、14 个审计脚本、14 份 JSON 报告、14 份 Markdown 报告和 232 项最终验证检查全部对齐，失败 0。
+- 最新总验证：232 项检查通过，0 项失败。
+
+差距：
+
+- 本轮是验证护栏补强，不新增官方正文翻译；API 首页 route guide 内容仍限定在官方 API 首页已有的 3 个入口链接。
+- HTTP 预览检查的是本地页面可访问性、关键标记和资源响应，不是浏览器截图或像素级视觉比对。
+- 当前范围仍不包含 release/API 全站所有深层页面；范围外官方相对链接继续保持原链接。
+
+下一轮目标：
+
+1. 继续用 HTTP 预览、响应式布局、主入口覆盖和中文优先顺序审计定位固定链状态。
+2. 如继续补内容，优先评估 `toolset.html` 是否需要第二批少量长选项导读，或为 API route guide 做一次浏览器截图级抽查。
+3. 继续每轮运行中文优先顺序、入口结构、页面元数据、入口标签、主入口覆盖、官方新鲜度、响应式、术语、导航、溯源、样式资产、范围、链接、HTTP 预览、报告索引和总验证，并更新报告。
+
+## 第 43 轮
+时间：2026-06-04
+
+已完成：
+
+- 继续保持既有 9 个本地 HTML 和 8 个源快照范围，不新增页面、不扩大到整站镜像。
+- 对照 `https://openusd.org/release/index.html` 和 `https://openusd.org/release/api/index.html` 确认当前官方入口仍为 OpenUSD 26.05 release/API 文档；本轮只把 API route guide 纳入导航链接护栏。
+- 更新 `scripts/audit_openusd_navigation_coverage.mjs`，提取 `site/index.html` 中的 `cn-api-route-step` 块，并检查 3 个官方 API 首页入口链接是否都出现在 route step 中。
+- 导航覆盖审计新增 `api_route_steps` 和 `api_route_step_links_present` 计数，并新增 `navigation:api_route_guide_links_present` 检查。
+- 更新 `scripts/validate_openusd_api_repro.ps1`，将 route guide 链接计数纳入 `navigation_coverage_audit:release_and_api_navigation_ready`，并新增 `navigation_coverage_audit:api_route_guide_links_ready` 检查。
+- 重新运行导航覆盖审计、入口标签审计、完整总验证、报告索引和第二次总验证；最终验证报告、报告索引和 scope manifest 均已更新。
+- 最新导航覆盖审计：9 项检查通过，release 相邻链接 5 个，API 导航资源 6 个，API 入口链接 3 个，API 入口卡片 3 个，API route steps 3 个，API route step links 3 个，失败 0。
+- 最新报告索引审计：14 个审计条目、15 个总条目、14 个审计脚本、14 份 JSON 报告、14 份 Markdown 报告和 233 项最终验证检查全部对齐，失败 0。
+- 最新总验证：233 项检查通过，0 项失败。
+
+差距：
+
+- 本轮是导航链接审计补强，不新增官方正文翻译；API route guide 仍限定在官方 API 首页已有的 3 个入口链接。
+- 导航覆盖审计检查链接存在性和所在结构块，不做点击后的深层页面全文校验；深层相邻入口仍由已纳入范围的两个 API 相邻页维护。
+- 当前范围仍不包含 release/API 全站所有深层页面；范围外官方相对链接继续保持原链接。
+
+下一轮目标：
+
+1. 继续用导航覆盖、HTTP 预览、响应式布局、主入口覆盖和中文优先顺序审计定位固定链状态。
+2. 如继续补内容，优先评估 `toolset.html` 是否需要第二批少量长选项导读，或为 API route guide 做一次浏览器截图级抽查。
+3. 继续每轮运行中文优先顺序、入口结构、页面元数据、入口标签、主入口覆盖、官方新鲜度、响应式、术语、导航、溯源、样式资产、范围、链接、HTTP 预览、报告索引和总验证，并更新报告。
+
+## 第 44 轮
+时间：2026-06-04
+
+已完成：
+
+- 继续保持既有 9 个本地 HTML 和 8 个源快照范围，不新增页面、不扩大到整站镜像。
+- 对照 `https://openusd.org/release/index.html` 和 `https://openusd.org/release/api/index.html` 确认当前官方入口仍为 OpenUSD 26.05 release/API 文档；本轮只对 API route guide 做浏览器级可见性抽查。
+- 用临时 `127.0.0.1` 静态预览打开 `site/index.html`，避免直接访问 `file://` 本地文件；检查 route guide 的 DOM 布局、文本、链接、所在位置和水平溢出。
+- 保存浏览器截图：`reports/api_route_guide_browser_view.png`。
+- 新增浏览器抽查报告：`reports/api_route_guide_browser_audit.json` 和 `reports/api_route_guide_browser_audit.md`。
+- 浏览器抽查 6 项全部通过：route guide 存在、3 条 route steps、3 个预期链接、位于 entry map 之后、无水平溢出、滚动后可见。
+- 更新 `scripts/validate_openusd_api_repro.ps1`，把浏览器抽查 JSON/Markdown/PNG 纳入必需文件，并新增 `api_route_guide_browser_audit:passed` 与 `api_route_guide_browser_audit:route_guide_visible_and_linked` 两项内容检查。
+- 重新运行完整总验证、报告索引和第二次总验证；最终验证报告、报告索引和 scope manifest 均已更新。
+- 最新浏览器抽查：6 项检查通过，route steps 3，route links 3，抽查视口 661 x 731，失败 0。
+- 最新报告索引审计：14 个审计条目、15 个总条目、14 个审计脚本、14 份 JSON 报告、14 份 Markdown 报告和 238 项最终验证检查全部对齐，失败 0。
+- 最新总验证：238 项检查通过，0 项失败。
+
+差距：
+
+- 本轮浏览器抽查是针对 API 首页 route guide 的局部 smoke check，不是整站截图巡检，也不是像素级 diff。
+- 当前截图视口来自本轮浏览器会话，可覆盖窄屏/中等宽度可见性；宽屏截图仍可作为后续补充。
+- 当前范围仍不包含 release/API 全站所有深层页面；范围外官方相对链接继续保持原链接。
+
+下一轮目标：
+
+1. 继续用浏览器抽查、导航覆盖、HTTP 预览、响应式布局、主入口覆盖和中文优先顺序审计定位固定链状态。
+2. 如继续补内容，优先评估 `toolset.html` 是否需要第二批少量长选项导读，或补一张宽屏 API route guide 浏览器截图。
+3. 继续每轮运行中文优先顺序、入口结构、页面元数据、入口标签、主入口覆盖、官方新鲜度、响应式、术语、导航、溯源、样式资产、范围、链接、HTTP 预览、报告索引和总验证，并更新报告。
+
+## 第 45 轮
+时间：2026-06-04
+
+已完成：
+
+- 继续保持既有 9 个本地 HTML 和 8 个源快照范围，不新增页面、不扩大到整站镜像。
+- 对照 `https://openusd.org/release/index.html` 和 `https://openusd.org/release/api/index.html` 确认当前官方入口仍为 OpenUSD 26.05 release/API 文档；本轮只补 API route guide 的宽屏浏览器抽查。
+- 先尝试在当前标签设置 1280x720 宽屏视口并截图；首次截图捕获超时，已恢复临时静态服务和浏览器 viewport，不把失败产物纳入最终验证。
+- 按浏览器 viewport 能力文档改用新标签设置 1280x720 视口，重新打开临时 `127.0.0.1` 预览并滚动到 `cn-api-route-guide`。
+- 保存宽屏浏览器截图：`reports/api_route_guide_browser_wide_view.png`。
+- 新增宽屏浏览器抽查报告：`reports/api_route_guide_browser_wide_audit.json` 和 `reports/api_route_guide_browser_wide_audit.md`。
+- 宽屏浏览器抽查 8 项全部通过：route guide 存在、可见、3 条 route steps、3 个预期链接、位于 entry map 之后、无水平溢出、实际视口 1280x720、截图已保存。
+- 更新 `scripts/validate_openusd_api_repro.ps1`，把宽屏浏览器抽查 JSON/Markdown/PNG 纳入必需文件，并新增 `api_route_guide_browser_wide_audit:passed` 与 `api_route_guide_browser_wide_audit:route_guide_visible_and_linked` 两项内容检查。
+- 重新运行完整总验证、报告索引和第二次总验证；最终验证报告、报告索引和 scope manifest 均已更新。
+- 最新宽屏浏览器抽查：8 项检查通过，route steps 3，route links 3，视口 1280 x 720，route list columns 4，截图已保存，失败 0。
+- 最新报告索引审计：14 个审计条目、15 个总条目、14 个审计脚本、14 份 JSON 报告、14 份 Markdown 报告和 243 项最终验证检查全部对齐，失败 0。
+- 最新总验证：243 项检查通过，0 项失败。
+
+差距：
+
+- 本轮宽屏浏览器抽查仍是 API 首页 route guide 的局部 smoke check，不是整站截图巡检，也不是像素级 diff。
+- 失败的首次宽屏截图尝试已恢复并未纳入最终验证；最终保留的是新标签 1280x720 成功截图与报告。
+- 当前范围仍不包含 release/API 全站所有深层页面；范围外官方相对链接继续保持原链接。
+
+下一轮目标：
+
+1. 继续用浏览器抽查、导航覆盖、HTTP 预览、响应式布局、主入口覆盖和中文优先顺序审计定位固定链状态。
+2. 如继续补内容，优先回到 `toolset.html`，评估是否需要第二批少量长选项导读；或补一个轻量报告把两张 API route guide 截图和 JSON 审计串起来。
+3. 继续每轮运行中文优先顺序、入口结构、页面元数据、入口标签、主入口覆盖、官方新鲜度、响应式、术语、导航、溯源、样式资产、范围、链接、HTTP 预览、报告索引和总验证，并更新报告。
+
+## 第 46 轮
+时间：2026-06-04
+
+已完成：
+
+- 按用户“其他页面和子页面都兼顾一下，给我个链接试试”的要求，把自动化提示更新为：主范围仍是 release/API 两个入口，同时有界兼顾从入口可达的高价值相邻页面和子页面，不做整站镜像。
+- 继续保持既有 9 个本地 HTML 和 8 个源快照范围，不新增官方正文页面、不扩大为全站镜像。
+- 对照 `https://openusd.org/release/index.html` 和 `https://openusd.org/release/api/index.html` 确认当前官方入口仍为 OpenUSD 26.05 release/API 文档；本轮补本地预览索引而不是复制更多官方正文。
+- 新增 `scripts/build_local_preview_index.mjs`，读取 `reports/scope_manifest.json`，生成当前本地可点页面的预览索引。
+- 新增 `reports/local_preview_index.json` 和 `reports/local_preview_index.md`，列出 `http://127.0.0.1:8067/` 下 9 个页面：2 个主入口、6 个 active adjacent 页面和 1 个本地 API redirect。
+- 本轮检测到 `http://127.0.0.1:8067/index.html` 预览服务可用，API 首页包含 `cn-api-route-guide`。
+- 更新 `scripts/validate_openusd_api_repro.ps1`，把本地预览索引脚本、JSON 和 Markdown 纳入必需文件，并新增 `local_preview_index:passed` 与 `local_preview_index:current_scope_links_ready` 两项内容检查。
+- 更新 `README.md`、`reports/scope_manifest.json`、`reports/scope_manifest.md` 和 `work.md`，记录本地预览链接索引和新的验证计数。
+- 重新运行完整固定审计链、预览索引生成、总验证、报告索引和第二次总验证；最终验证报告、报告索引和 scope manifest 均已更新。
+- 最新本地预览索引：9 个页面、9 个存在、9 个唯一预览 URL、预览服务探测 ok。
+- 最新报告索引审计：14 个审计条目、15 个总条目、14 个审计脚本、14 份 JSON 报告、14 份 Markdown 报告和 248 项最终验证检查全部对齐，失败 0。
+- 最新总验证：248 项检查通过，0 项失败。
+
+差距：
+
+- 本轮新增的是本地预览入口索引和验证护栏，不新增新的官方页面正文翻译。
+- 预览索引只列出当前有界范围内已经产出的 9 个本地 HTML；release/API 中未纳入范围的深层页面仍保留官方相对链接。
+- `http://127.0.0.1:8067/` 链接依赖当前本地静态服务；若服务关闭，可用 README 中的 `Start-Process` 文件方式或重新启动静态服务。
+
+下一轮目标：
+
+1. 继续用本地预览索引、HTTP 预览、导航覆盖、响应式布局、主入口覆盖和中文优先顺序审计定位固定链状态。
+2. 如继续扩展“其他页面和子页面”，先从 release/API 入口已链接且高价值的相邻入口中小范围选择，并同步更新 scope manifest、源快照、生成脚本和范围边界审计。
+3. 继续每轮运行中文优先顺序、入口结构、页面元数据、入口标签、主入口覆盖、官方新鲜度、响应式、术语、导航、溯源、样式资产、范围、链接、HTTP 预览、本地预览索引、报告索引和总验证，并更新报告。
+
+## 第 47 轮
+时间：2026-06-04
+
+已完成：
+
+- 按用户“最后产出是个html”的要求，新增最终 HTML 总入口 `openusd_bilingual_final.html`。
+- 新增 `scripts/build_final_html_entry.mjs`，从 `reports/local_preview_index.json` 和 `reports/validation_report.json` 生成最终 HTML，避免手工维护链接清单。
+- 最终 HTML 保留中文为主、English retained 的交付口径，并集中链接当前 9 个本地页面、对应本地预览 URL 和官方原页 URL。
+- 最终 HTML 使用 `site/images/USDLogoUnsized.svg` 和 `site/images/piper-banner.jpg`，保持 OpenUSD 文档视觉资产，不新增外部图片依赖。
+- 更新 `scripts/validate_openusd_api_repro.ps1`，把最终 HTML 和生成脚本纳入必需文件，并新增 `final_html_entry:has_final_output_marker`、`final_html_entry:links_current_scope_pages` 两项验证。
+- 修复生成脚本中的模板反引号问题，并处理 PowerShell 生成 JSON 可能带 UTF-8 BOM 的解析问题。
+- 启动项目根目录 HTTP 预览服务，最终入口可通过 `http://127.0.0.1:8068/openusd_bilingual_final.html` 打开；HTTP 探测返回 200，且包含 `final-html-entry` 标记和 `data-page-count="9"`。
+- 更新 `README.md`、`reports/scope_manifest.json`、`reports/scope_manifest.md` 和 `work.md`，明确最终产出是 HTML。
+- 重新运行最终 HTML 生成、完整总验证、报告索引和第二次总验证；最终验证报告与报告索引已对齐。
+- 最新报告索引审计：14 个审计条目、15 个总条目、14 个审计脚本、14 份 JSON 报告、14 份 Markdown 报告和 252 项最终验证检查全部对齐，失败 0。
+- 最新总验证：252 项检查通过，0 项失败。
+
+差距：
+
+- `openusd_bilingual_final.html` 是最终总入口页，不是额外官方正文页面；`site/` 中官方复刻范围仍保持 9 个本地 HTML。
+- 本轮没有新增新的 OpenUSD 官方子页面翻译；子页面扩展仍需要按 scope manifest 小范围纳入、生成、审计。
+- `http://127.0.0.1:8068/` 是项目根目录预览服务；`8067` 仍用于 `site/` 目录预览。
+
+下一轮目标：
+
+1. 以 `openusd_bilingual_final.html` 作为用户试用入口，继续检查其链接、布局和移动端显示。
+2. 如果继续补子页面，优先选择 release/API 入口已链接且高价值的相邻页面，避免直接扩成全站镜像。
+3. 继续每轮运行最终 HTML 生成、本地预览索引、报告索引和总验证，并更新进度报告。
+
+## 第 48 轮
+时间：2026-06-04
+
+已完成：
+
+- 按用户纠正“不是高价值相邻页面和子页面，是所有”，把自动化名称和提示更新为全量复刻：覆盖 release 文档与 release/api API 文档下可发现的所有 HTML 页面。
+- 新增 `scripts/discover_openusd_all_pages.mjs`，从官方 release toctree、API Doxygen navtree/menu 和现有完成页生成全量页面清单，不再按高价值相邻页筛选。
+- 先尝试 live recursive crawl；API 侧页面量较大，3 分钟未完成后停止该进程，改为当前轮可稳定复现的导航全量清单路径。
+- 新增 `reports/all_pages_inventory.json` 和 `reports/all_pages_inventory.md`，当前发现 406 个官方 HTML 页面：126 个 release 页面、280 个 API 页面。
+- 当前 8 个官方页面标记为 `bilingual_complete`；398 个页面标记为 `pending_full_scope`，后续自动化按该队列继续生成和验证。
+- 更新 `scripts/build_final_html_entry.mjs`，最终 HTML 不再只显示 9 个本地入口，而是显示 406 页全量清单、完成状态、待处理状态、本地计划路径和官方原页链接。
+- 更新 `scripts/validate_openusd_api_repro.ps1`，新增 all-pages inventory 必需文件与内容检查，并要求最终 HTML 带 `data-scope-mode="all"` 和全量清单标记。
+- 修复报告索引/验证报告在失败后互相引用的自举问题；只允许上一轮 `validation_report_ready` 陈旧失败作为过渡，重建后报告索引回到 0 失败。
+- 更新 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，明确 scope mode 为 all discovered release/API HTML pages。
+- 重新运行全量清单、最终 HTML、总验证、报告索引和第二次总验证；最终验证报告与报告索引已对齐。
+- 最新报告索引审计：14 个审计条目、15 个总条目、14 个审计脚本、14 份 JSON 报告、14 份 Markdown 报告和 258 项最终验证检查全部对齐，失败 0。
+- 最新总验证：258 项检查通过，0 项失败。
+
+差距：
+
+- 406 页已经进入全量清单和最终 HTML，但当前本地双语完成页仍是 8 个官方页面加 1 个本地跳转页；398 个页面仍待逐页生成。
+- 本轮没有把 398 个待处理页面直接伪造成已完成页面；最终 HTML 会明确显示 `pending_full_scope`。
+- 当前全量发现采用官方导航/toctree 清单；live recursive crawl 后续可以做成可恢复队列继续扩展和交叉校验。
+
+下一轮目标：
+
+1. 从 `reports/all_pages_inventory.json` 读取 `pending_full_scope` 队列，按批次生成下一组 release/API 页面。
+2. 每新增一批页面，同步更新 source snapshots、local outputs、scope manifest、all-pages inventory 和验证规则。
+3. 继续以 `openusd_bilingual_final.html` 作为最终 HTML 入口，展示所有页面的完成状态。
+
+## 第 49 轮 时间：2026-06-04
+
+已完成：
+
+- 按全量范围从 `reports/all_pages_inventory.json` 读取 `pending_full_scope` 队列，新增批次生成脚本 `scripts/build_release_full_batch.mjs`。
+- 生成 10 个 release 队列的可检查 `bilingual_draft` HTML，输出到 `full_site/release/`；对应官方源快照保存到 `source/full_release/`。
+- 最新一批 5 个页面记录在 `reports/release_full_batch_report.json` 和 `reports/release_full_batch_report.md`：`maxperf.html`、`plugins_alembic.html`、`plugins_renderman.html`、`plugins.html`、`press_opensource_announce.html`。
+- 重新运行全量发现清单，当前 406 个官方 HTML 页面中，8 个为 `bilingual_complete`，10 个为 `bilingual_draft`，388 个为 `pending_full_scope`。
+- 更新 `scripts/build_final_html_entry.mjs`，最终 HTML 统计区现在显示 complete、draft、pending 三类状态；`openusd_bilingual_final.html` 已重建并继续作为最终 HTML 入口。
+- 更新 `scripts/validate_openusd_api_repro.ps1`，把 release 批次脚本、批次报告、draft 计数和 draft 文件存在性纳入验证。
+- 更新 `reports/scope_manifest.json`、`reports/scope_manifest.md` 和 `README.md`，记录全量 draft 增量和当前覆盖状态。
+- 重新运行总验证与报告索引；最新验证为 264 项检查通过，0 项失败。
+
+差距：
+
+- `bilingual_draft` 是可检查草稿页，包含中文优先范围说明、页面结构、官方英文摘录、链接与导航；还不是逐段完整精译页。
+- API 侧 280 个页面当前仍主要处于 `pending_full_scope`，本轮先推进 release 队列。
+- 388 个页面仍需继续按队列生成、校验、再逐步补齐更密集的中英对照。
+
+下一轮目标：
+
+1. 继续从全量 `pending_full_scope` 队列取下一批页面，优先维持 `source/full_release/`、`full_site/release/`、`reports/release_full_batch_report.*` 与 `reports/all_pages_inventory.*` 的一致性。
+2. 增加 draft 页的本地预览抽查或轻量链接检查，确认 `full_site/release/` 下的新页面可从最终 HTML 入口直接打开。
+3. 在 release 批次稳定后，建立 API 队列的同类 draft 生成脚本，覆盖 `full_site/api/`。
+
+## 第 50 轮 时间：2026-06-04
+
+已完成：
+
+- 先检查 `reports/all_pages_inventory.json`、`reports/validation_report.json`、`reports/release_full_batch_report.json`、`openusd_bilingual_final.html` 和 `full_site/release/` 当前状态，确认上一轮为 406 total / 8 complete / 10 draft / 388 pending，验证 264 项通过。
+- 扩展 `scripts/build_release_full_batch.mjs`，新增 `OPENUSD_REFRESH_DRAFTS=1` 刷新模式，可重新生成已有 `bilingual_draft` 页面而不推进 pending 队列。
+- 补齐 release draft 标题清理：去掉 Sphinx 锚点图标字符，处理 `&mdash;` / `&ndash;`，并为当前批次页面增加中文标题映射。
+- 刷新已有 10 个 release draft 页面，确认 `full_site/release/contributing_to_usd.html` 标题已变为 `贡献指南 / Contributing to USD`。
+- 从 `pending_full_scope` 队列新增 5 个 release draft 页面：`press_opensource_release.html`、`ref_performance_metrics.html`、`release_schedule.html`、`search.html`、`spec_usdpreviewsurface.html`。
+- 重新运行全量发现清单，当前状态更新为 406 total / 8 complete / 15 draft / 383 pending。
+- 更新 `scripts/validate_openusd_api_repro.ps1`，新增 `all_pages_inventory:draft_files_match_inventory`，要求清单里的 draft 数量与 `full_site/` 实际 HTML 文件数量一致。
+- 重新生成 `reports/local_preview_index.*`、`openusd_bilingual_final.html`、`reports/audit_index.*`，并同步 `reports/scope_manifest.*`、`README.md` 和 `work.md`。
+- 最新总验证为 265 项检查通过，0 项失败。
+
+差距：
+
+- 15 个 `bilingual_draft` 仍是结构化草稿页，保留英文原文摘录和链接，尚未达到 8 个 `bilingual_complete` 页的逐段双语密度。
+- API 全量队列仍未开始批量 draft 生成，280 个 API 页面中除已完成入口/相邻页外仍处于 pending。
+- `full_site/release/` 目前已有文件一致性检查，但还缺少专门的 HTTP preview/link smoke audit。
+
+下一轮目标：
+
+1. 为 `full_site/release/` 增加轻量 HTTP 预览或链接抽查报告，确认 draft 页面能从最终 HTML 入口可用地打开。
+2. 继续按 release pending 队列生成下一批 draft，或开始建立 `scripts/build_api_full_batch.mjs` 覆盖 `full_site/api/`。
+3. 继续保持 `reports/all_pages_inventory.json`、`openusd_bilingual_final.html`、`reports/release_full_batch_report.*` 和总验证报告对齐。
+
+## 第 51 轮 时间：2026-06-04
+
+已完成：
+
+- 先检查全量清单、最终 HTML、批次报告和验证状态，确认当前为 406 total / 8 complete / 15 draft / 383 pending，验证 265 项通过。
+- 新增 `scripts/audit_openusd_full_draft_preview.mjs`，用项目根目录临时 HTTP 服务检查 `reports/all_pages_inventory.json` 中所有 `bilingual_draft` 页面。
+- 新审计会检查每个 draft 页 HTTP 200、`zh-CN`、`bilingual_draft`、中文/英文层、官方 URL、返回最终 HTML 的链接、本地资源响应，以及最终 HTML 是否链接该 draft 页。
+- 生成 `reports/full_draft_preview_audit.json` 和 `reports/full_draft_preview_audit.md`；当前 15 个 draft 页面全部通过，最终 HTML 链接 15 个，本地资源检查 15 个，失败 0。
+- 将新审计纳入 `scripts/audit_openusd_report_index.mjs`，固定审计链从 14 个审计项扩展为 15 个审计项。
+- 将新审计报告加入 `scripts/audit_openusd_scope_boundaries.mjs` 的必需报告守卫。
+- 将新审计脚本、JSON/Markdown 报告和内容检查纳入 `scripts/validate_openusd_api_repro.ps1`。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 继续显示 406 页、8 complete、15 draft、383 pending，并写入最新 270 项验证计数。
+- 同步 `reports/scope_manifest.*`、`README.md` 和 `work.md`。
+- 最新总验证为 270 项检查通过，0 项失败。
+
+差距：
+
+- 本轮主要补可用性审计，没有新增新的 draft 页面；release draft 仍停留在 15 个。
+- `full_draft_preview_audit` 是 HTTP/link smoke audit，不是浏览器截图级视觉审计，也不是逐段翻译质量审计。
+- API 侧批量 draft 生成仍未开始，`full_site/api/` 仍为空。
+
+下一轮目标：
+
+1. 继续从 release pending 队列新增下一批 draft，或开始创建 API 队列的 `build_api_full_batch.mjs`。
+2. 若继续推进 release 队列，保持 `full_draft_preview_audit`、`all_pages_inventory`、`release_full_batch_report` 和最终 HTML 同步更新。
+3. 后续可对 draft 页增加更密集的段落级中英对照，但仍要明确区分 `bilingual_draft` 和 `bilingual_complete`。
+
+## 第 52 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查 `reports/all_pages_inventory.json`、`reports/validation_report.json`、`reports/release_full_batch_report.json`、`reports/full_draft_preview_audit.json`、`openusd_bilingual_final.html` 和进度记录，确认上一轮状态为 406 total / 8 complete / 15 draft / 383 pending，验证 270 项通过。
+- 新增 `scripts/build_api_full_batch.mjs`，按全量清单中的 API `pending_full_scope` 队列生成可检查 `bilingual_draft` 页面，输出到 `full_site/api/`，源快照保存到 `source/full_api/`。
+- 本轮生成 5 个 API draft：`_c_l_i11_8h_source.html`、`_developer__guides.html`、`_usd_skel__intro.html`、`annotated.html`、`ar_page_front.html`。
+- 新增 `reports/api_full_batch_report.json` 和 `reports/api_full_batch_report.md`，记录批次 URL、标题、源快照、本地输出、HTTP 状态、标题层级、链接数和摘录数。
+- 将 API 批处理脚本和报告接入 `scripts/validate_openusd_api_repro.ps1`，新增 `api_full_batch:passed` 与 `api_full_batch:draft_pages_ready` 检查。
+- 扩展 `scripts/audit_openusd_scope_boundaries.mjs` 的必需报告集合，纳入 all-pages inventory、local preview index、release batch 和 API batch 报告。
+- 重新运行全量发现清单，当前状态更新为 406 total / 8 complete / 20 draft / 378 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 继续显示 406 页全量清单，并已链接新增 5 个 API draft。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 20 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录 API 批次和最新覆盖状态。
+- 最新总验证为 275 项检查通过，0 项失败。
+
+差距：
+
+- 新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留英文 API 名称、链接和有限原文摘录；尚未达到 8 个 `bilingual_complete` 页面那种逐段双语密度。
+- API 侧 280 个页面中仍有大量页面处于 `pending_full_scope`；本轮重点是跑通 API 批次链路，而不是一次性生成所有 API 页面。
+- `_c_l_i11_8h_source.html` 和 `annotated.html` 这类源码/索引页体量较大，后续需要针对源码页、类索引页和模块页分别优化摘要提取策略。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 增强 `build_api_full_batch.mjs` 对 Doxygen 源码页、类页、模块页的标题和摘要提取规则，减少空摘录页。
+3. 继续运行 `full_draft_preview_audit`、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 53 轮 时间：2026-06-04
+
+已完成：
+
+- 先检查 `reports/all_pages_inventory.json`、`reports/validation_report.json`、`reports/api_full_batch_report.json`、`reports/full_draft_preview_audit.json`、`openusd_bilingual_final.html`、`full_site/api/` 和进度记录，确认上一轮状态为 406 total / 8 complete / 20 draft / 378 pending，验证 275 项通过。
+- 增强 `scripts/build_api_full_batch.mjs` 的 Doxygen 正文摘录策略：补充 textblock、段落、目录描述、源码行抽取，并过滤 license/copyright 类源码页噪声。
+- 刷新首批 5 个 API draft，修复 `_c_l_i11_8h_source.html` 等源码页空摘录问题，让源码页至少保留可读的英文源码片段和中文说明。
+- 重新运行全量发现清单后继续推进 API `pending_full_scope` 队列，新增 5 个 API draft：`class_gf_matrix2f.html`、`class_gf_matrix4f.html`、`class_gf_range1d.html`、`class_gf_ray.html`、`class_gf_vec2i.html`。
+- 最新 `reports/api_full_batch_report.json` 记录本轮 5 个新增 API draft，HTTP 状态均为 200，每页均有 2 条摘录，源快照写入 `source/full_api/`，本地 HTML 写入 `full_site/api/`。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 30 draft / 368 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 30 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 30 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 重新运行范围边界审计、报告索引和总验证；最新总验证仍为 275 项检查通过，0 项失败。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 API 批次、覆盖状态和验证结果。
+
+差距：
+
+- 30 个 `bilingual_draft` 仍是结构化草稿页，强调中文优先说明、官方链接、标题层级和英文摘录；尚未达到逐段完整精译的 `bilingual_complete` 密度。
+- API 全量范围仍有 368 个页面处于 `pending_full_scope`，其中大部分是类页、源码页、文件页和模块页，需要继续按队列批量生成。
+- 当前 API 摘要提取已经能减少空摘录，但不同 Doxygen 页型仍需要更细分的标题、描述、member table 和源码行抽取规则。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 继续拆分 API 类页、源码页、文件页和目录索引页的摘要提取策略，让 draft 页信息密度更接近可阅读入口。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 104 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 280 draft / 118 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`usd_semantics_overview.html`、`usd_shade_page_front.html`、`usd_shaders_page_front.html`、`usd_skel_page_front.html`、`usd_u_i_page_front.html`。
+- 本批 5 个 API module/overview 页面 HTTP 状态均为 200，摘录数均为 2 条，链接数为 1-19。
+- 抽查确认本批摘录质量有效：UsdSemantics 保留 semantic labeling 和 hierarchical inheritance 说明，UsdShade 保留 material/shading network 与 ConnectableAPI/Sdr 入口，UsdShaders 保留 UsdPreviewSurface/UsdUVTexture shader definitions 说明，UsdSkel 保留 skeleton schema/API manual 与 introduction/schema/API 入口，UsdUI 保留 UI layout/accessibility hints 与 NodeGraph/Object/Prim/Property hints 入口。
+- 本批未发现 `More...`、include graph、source-code、`Definition at line ...`、`[!note]`、`&zwnj;` 或零宽字符噪声残留。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 285 draft / 113 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 285 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 285 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 module/overview 批次、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整 module/overview 文档逐段翻译。
+- UsdShade 和 UsdSkel 页面信息量较大，当前保留 shading network/skeleton API manual 入口和关键摘要；如要完整学习，需要后续做专项逐段双语化。
+- API pending 队列仍有 113 个页面，需要继续覆盖 utilities、volume/file-format plugin、source 等后续页面，并继续检查低链接页面摘录质量。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `usd_utils_page_front.html`、`usd_vol_page_front.html`、`usdabc_page_front.html`、`usddraco_page_front.html` 和 `var_8h_source.html` 等 utility/plugin/source 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 103 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 275 draft / 123 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`usd_mtlx_page_front.html`、`usd_physics_page_front.html`、`usd_proc_page_front.html`、`usd_render_page_front.html`、`usd_ri_page_front.html`。
+- 本批 5 个 API module front page HTTP 状态均为 200，摘录数均为 2 条，链接数为 1-37。
+- 抽查确认本批摘录质量有效：UsdMtlx 保留 MaterialX file format、shader discovery/parsing 和 UsdShade/Sdr concept mappings，UsdPhysics 保留 rigid body physics overview、stage units 与 schema/API 入口，UsdProc 保留 GenerativeProcedural schema 入口，UsdRender 保留 render settings/product/var/pass 概览，UsdRi 保留 RenderMan utility 和 `usdRi/rmanUtilities.h` 入口。
+- 本批未发现 `More...`、include graph、source-code、`Definition at line ...`、`&zwnj;` 或零宽字符噪声残留。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 280 draft / 118 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 280 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 280 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 API module front pages 批次、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整 module front page 文档逐段翻译。
+- UsdPhysics 页面信息量较大，当前保留 rigid-body physics overview、单位/scene/API 入口等摘要；如要完整学习 physics schema，需要后续做专项逐段双语化。
+- API pending 队列仍有 118 个页面，需要继续批量覆盖并逐步增加 UsdShade/UsdSkel/UsdUI 等模块页专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `usd_semantics_overview.html`、`usd_shade_page_front.html`、`usd_shaders_page_front.html`、`usd_skel_page_front.html` 和 `usd_u_i_page_front.html` 等后续 module/overview 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 102 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 270 draft / 128 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`usd_app_utils_page_front.html`、`usd_geom_page_front.html`、`usd_hydra_page_front.html`、`usd_lux_page_front.html`、`usd_media_page_front.html`。
+- 本批 5 个 API Usd module front page HTTP 状态均为 200，摘录数均为 2 条，链接数为 1-37。
+- 抽查确认本批摘录质量有效：UsdAppUtils 保留工具模块 overview 与 Frame Format Strings 入口，UsdGeom 保留 geometry schema overview 与 Imageable/Xformable/Gprim/Mesh 等关键入口，UsdHydra 保留 Hydra schemas 与 deprecated shading-token 说明，UsdLux 保留 lighting schema/module overview 与 light/filter/API 入口，UsdMedia 保留 media schema overview 与 AssetPreviewsAPI/SpatialAudio 入口。
+- 本批未发现 `More...`、include graph、source-code、`Definition at line ...`、`&zwnj;` 或零宽字符噪声残留。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 275 draft / 123 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 275 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 275 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 Usd module front pages 批次、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整 module front page 文档逐段翻译。
+- Usd module front pages 信息密度较高，当前保留 overview 和关键入口链接；后续如要完整阅读，需要对 module front pages 做更细的逐段双语化。
+- API pending 队列仍有 123 个页面，需要继续批量覆盖并逐步增加 Usd module/source 页面专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `usd_mtlx_page_front.html`、`usd_physics_page_front.html`、`usd_proc_page_front.html`、`usd_render_page_front.html` 和 `usd_ri_page_front.html` 等后续 module 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 69 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查全量清单、验证报告、API 批次报告、draft 预览审计、最终 HTML 和当前 API draft 文件数，确认上一轮状态为 406 total / 8 complete / 105 draft / 293 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`functions_func_k.html`、`functions_func_l.html`、`functions_func_m.html`、`functions_func_n.html`、`functions_func_o.html`。
+- 本批 5 个 Functions 成员索引分段页 HTTP 状态均为 200，每页均提取到 1 条 `Index entries include` 摘录；链接数为 2-40，未出现空摘录。
+- 重点复查了短索引页 `functions_func_k.html`，确认其保留有效索引摘录：`SdfChildrenView` 与 `SdfNotice::LayerInfoDidChange`。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 110 draft / 288 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 110 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 110 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 重新运行本地预览索引、范围边界审计和总验证；最新总验证仍为 275 项检查通过，0 项失败。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 functions_func 短索引页批次、摘录质量和验证结果。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整函数成员索引逐项翻译。
+- `functions_func_k.html` 只有 2 个同站链接，当前仍有有效索引摘录，但短索引页后续可能需要更细的摘要规则。
+- API pending 队列仍有 288 个页面，需要继续批量覆盖并逐步增加 functions_func/index 页专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 继续检查 functions_func/index 页的摘录质量，关注短索引页是否需要专门摘要规则。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 54 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查全量清单、验证报告、API 批次报告、draft 预览审计、最终 HTML 和当前 API draft 文件数，确认上一轮状态为 406 total / 8 complete / 30 draft / 368 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`class_glf_draw_target.html`、`class_hd_data_source_locator.html`、`class_hd_instance_registry.html`、`class_hd_render_buffer.html`、`class_hd_scene_delegate.html`。
+- 最新 `reports/api_full_batch_report.json` 显示 5 个新增页面 HTTP 状态均为 200，每页均提取 2 条英文摘录；本地输出写入 `full_site/api/`，源快照写入 `source/full_api/`。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 35 draft / 363 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 35 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 35 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 重新运行本地预览索引、范围边界审计、报告索引和总验证；最新总验证仍为 275 项检查通过，0 项失败。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 API 类页批次、覆盖状态和验证结果。
+
+差距：
+
+- 本轮新增的 5 个 API 类页仍是结构化 `bilingual_draft`，已经保留页面标题、链接、英文摘录和中文优先说明，但还不是逐段完整双语精译。
+- API pending 队列仍有 363 个页面，Hydra/Hd、Gf、Usd、源码和文件索引类页面仍需持续批量覆盖。
+- 当前总验证关注结构、链接、状态、预览可用性和报告一致性；对 API member table 的语义质量和类页逐项说明仍需后续增强。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 针对 Hydra/Hd 类页检查成员链接、继承关系和简述摘录，继续提升类页草稿的信息密度。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 55 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查全量清单、验证报告、API 批次报告、draft 预览审计、最终 HTML 和当前 API draft 文件数，确认上一轮状态为 406 total / 8 complete / 35 draft / 363 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`class_hd_st_dispatch_buffer.html`、`class_hd_st_render_pass_state.html`、`class_hd_task.html`、`class_hdx_pick_from_render_buffer_task.html`、`class_hgi_g_l_graphics_cmds.html`。
+- 最新 `reports/api_full_batch_report.json` 显示 5 个新增页面 HTTP 状态均为 200，每页均提取 2 条英文摘录；本地输出写入 `full_site/api/`，源快照写入 `source/full_api/`。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 40 draft / 358 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 40 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 40 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 重新运行本地预览索引、范围边界审计、报告索引和总验证；最新总验证仍为 275 项检查通过，0 项失败。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 API 类页批次、覆盖状态和验证结果。
+
+差距：
+
+- 本轮新增的 5 个 API 类页仍为结构化 `bilingual_draft`，包含中文优先说明、官方英文摘录和链接保留，但尚未扩展到完整 member table 逐项双语说明。
+- API pending 队列仍有 358 个页面，后续还要覆盖更多 Hgi、Usd、Sdf、Tf、源码页和文件索引页。
+- 当前验证仍偏结构与可用性，后续需要针对 API 类页增加成员表、继承信息、typedef/function 摘录质量的专项审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 在批量覆盖稳定后，为 API 类页增加 member table / inheritance / brief description 的轻量质量检查。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 56 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查全量清单、验证报告、API 批次报告、draft 预览审计、最终 HTML 和当前 API draft 文件数，确认上一轮状态为 406 total / 8 complete / 40 draft / 358 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`class_pcp_arc.html`、`class_pcp_error_unresolved_prim_path.html`、`class_pcp_property_index.html`、`class_sdf_children_view.html`、`class_sdf_layer.html`。
+- 最新 `reports/api_full_batch_report.json` 显示 5 个新增页面 HTTP 状态均为 200，每页均提取 2 条英文摘录；本地输出写入 `full_site/api/`，源快照写入 `source/full_api/`。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 45 draft / 353 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 45 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 45 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 重新运行本地预览索引、范围边界审计、报告索引和总验证；最新总验证仍为 275 项检查通过，0 项失败。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 Pcp/Sdf API 类页批次、覆盖状态和验证结果。
+
+差距：
+
+- 本轮新增的 5 个 Pcp/Sdf API 类页仍是结构化 `bilingual_draft`，保留官方页面名、API 名称、链接和英文摘录，但尚未对成员表逐项翻译。
+- `class_sdf_layer.html` 链接较多，后续需要更细的成员表摘要和术语说明，避免只停留在页面级概览。
+- API pending 队列仍有 353 个页面，后续还要覆盖更多 Usd/Sdf/Tf/Vt/Hgi 类页、源码页和文件索引页。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 针对 Sdf/Pcp 类页增加术语说明和 member table 摘录质量检查，逐步提升 draft 的可读性。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 57 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查全量清单、验证报告、API 批次报告、draft 预览审计、最终 HTML 和当前 API draft 文件数，确认上一轮状态为 406 total / 8 complete / 45 draft / 353 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`class_sdf_path.html`、`class_sdf_prim_spec.html`、`class_sdf_usdz_file_format.html`、`class_sdr_shader_property.html`、`class_tf_dense_hash_map.html`。
+- 最新 `reports/api_full_batch_report.json` 显示 5 个新增页面 HTTP 状态均为 200，每页均提取 2 条英文摘录；本地输出写入 `full_site/api/`，源快照写入 `source/full_api/`。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 50 draft / 348 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 50 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 50 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 重新运行本地预览索引、范围边界审计、报告索引和总验证；最新总验证仍为 275 项检查通过，0 项失败。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 Sdf/Sdr/Tf API 类页批次、覆盖状态和验证结果。
+
+差距：
+
+- 本轮新增的 5 个 Sdf/Sdr/Tf API 类页仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开所有成员表。
+- `class_sdf_path.html` 与 `class_sdf_prim_spec.html` 是后续值得做深度术语说明的页面，当前仍停留在草稿摘要层。
+- API pending 队列仍有 348 个页面，继续需要批量覆盖并逐步增加页型专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 评估是否为 Sdf/Pcp/Tf 相关类页增加术语说明片段或 member table 质量检查。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 58 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查全量清单、验证报告、API 批次报告、draft 预览审计、最终 HTML 和当前 API draft 文件数，确认上一轮状态为 406 total / 8 complete / 50 draft / 348 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`class_tf_py_lock.html`、`class_tf_token.html`、`class_trace_event_data.html`、`class_usd_attribute_limits.html`、`class_usd_geom_basis_curves.html`。
+- 最新 `reports/api_full_batch_report.json` 显示 5 个新增页面 HTTP 状态均为 200，每页均提取 2 条英文摘录；本地输出写入 `full_site/api/`，源快照写入 `source/full_api/`。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 55 draft / 343 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 55 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 55 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 重新运行本地预览索引、范围边界审计、报告索引和总验证；最新总验证仍为 275 项检查通过，0 项失败。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 Tf/Trace/Usd/UsdGeom API 类页批次、覆盖状态和验证结果。
+
+差距：
+
+- 本轮新增的 5 个 API 类页仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整成员表。
+- `class_usd_geom_basis_curves.html` 链接较多，后续需要更细的成员摘要和术语说明，避免只停留在页面级概览。
+- API pending 队列仍有 343 个页面，需要继续批量覆盖并逐步增加类页专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 对 UsdGeom/Tf 类页评估 member table 摘录质量，必要时补充页型专项审计。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 59 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查全量清单、验证报告、API 批次报告、draft 预览审计、最终 HTML 和当前 API draft 文件数，确认上一轮状态为 406 total / 8 complete / 55 draft / 343 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`class_usd_geom_mesh.html`、`class_usd_geom_primvars_a_p_i.html`、`class_usd_imaging_adapter_registry.html`、`class_usd_imaging_delegate.html`、`class_usd_imaging_nurbs_patch_adapter.html`。
+- 最新 `reports/api_full_batch_report.json` 显示 5 个新增页面 HTTP 状态均为 200，每页均提取 2 条英文摘录；本地输出写入 `full_site/api/`，源快照写入 `source/full_api/`。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 60 draft / 338 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 60 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 60 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 重新运行本地预览索引、范围边界审计、报告索引和总验证；最新总验证仍为 275 项检查通过，0 项失败。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 UsdGeom/UsdImaging API 类页批次、覆盖状态和验证结果。
+
+差距：
+
+- 本轮新增的 5 个 API 类页仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整成员表。
+- `class_usd_geom_mesh.html`、`class_usd_geom_primvars_a_p_i.html` 和 `class_usd_imaging_delegate.html` 链接较多，后续需要更细的成员摘要和术语说明。
+- API pending 队列仍有 338 个页面，需要继续批量覆盖并逐步增加类页专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 对 UsdGeom/UsdImaging 类页评估 member table 摘录质量，必要时补充页型专项审计。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 60 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查全量清单、验证报告、API 批次报告、draft 预览审计、最终 HTML 和当前 API draft 文件数，确认上一轮状态为 406 total / 8 complete / 60 draft / 338 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`class_usd_lux_disk_light.html`、`class_usd_lux_shaping_a_p_i.html`、`class_usd_physics_joint.html`、`class_usd_prim.html`、`class_usd_proc_generative_procedural.html`。
+- 最新 `reports/api_full_batch_report.json` 显示 5 个新增页面 HTTP 状态均为 200，每页均提取 2 条英文摘录；本地输出写入 `full_site/api/`，源快照写入 `source/full_api/`。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 65 draft / 333 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 65 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 65 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 重新运行本地预览索引、范围边界审计、报告索引和总验证；最新总验证仍为 275 项检查通过，0 项失败。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 UsdLux/UsdPhysics/Usd/UsdProc API 类页批次、覆盖状态和验证结果。
+
+差距：
+
+- 本轮新增的 5 个 API 类页仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整成员表。
+- `class_usd_prim.html` 链接较多且概念核心，后续需要更细的成员摘要和术语说明。
+- API pending 队列仍有 333 个页面，需要继续批量覆盖并逐步增加类页专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 对 UsdPrim/UsdPhysics/UsdLux 类页评估 member table 摘录质量，必要时补充页型专项审计。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 61 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查全量清单、验证报告、API 批次报告、draft 预览审计、最终 HTML 和当前 API draft 文件数，确认上一轮状态为 406 total / 8 complete / 65 draft / 333 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`class_usd_schema_registry.html`、`class_usd_shade_output.html`、`class_usd_skel_imaging_data_source_skeleton_prim.html`、`class_usd_stage_cache.html`、`class_usd_validation_error.html`。
+- 最新 `reports/api_full_batch_report.json` 显示 5 个新增页面 HTTP 状态均为 200，每页均提取 2 条英文摘录；本地输出写入 `full_site/api/`，源快照写入 `source/full_api/`。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 70 draft / 328 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 70 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 70 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 重新运行本地预览索引、范围边界审计、报告索引和总验证；最新总验证仍为 275 项检查通过，0 项失败。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 UsdSchema/UsdShade/UsdStage/Validation API 类页批次、覆盖状态和验证结果。
+
+差距：
+
+- 本轮新增的 5 个 API 类页仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整成员表。
+- `class_usd_schema_registry.html` 和 `class_usd_stage_cache.html` 是后续值得增强术语和成员摘要的页面。
+- API pending 队列仍有 328 个页面，需要继续批量覆盖并逐步增加类页专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 对 UsdSchema/UsdStage/UsdShade 类页评估 member table 摘录质量，必要时补充页型专项审计。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 62 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查全量清单、验证报告、API 批次报告、draft 预览审计、最终 HTML 和当前 API draft 文件数，确认上一轮状态为 406 total / 8 complete / 70 draft / 328 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html`、`class_vdf_context.html`、`class_vdf_grapher_options.html`、`class_vdf_node.html`、`class_vdf_read_write_accessor.html`。
+- 最新 `reports/api_full_batch_report.json` 显示 5 个新增页面 HTTP 状态均为 200，每页均提取 2 条英文摘录；本地输出写入 `full_site/api/`，源快照写入 `source/full_api/`。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 75 draft / 323 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 75 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 75 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 重新运行本地预览索引、范围边界审计、报告索引和总验证；最新总验证仍为 275 项检查通过，0 项失败。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 UsdVol/Vdf API 类页批次、覆盖状态和验证结果。
+
+差距：
+
+- 本轮新增的 5 个 API 类页仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整成员表。
+- Vdf 类页后续需要更细的节点、上下文和访问器术语说明。
+- API pending 队列仍有 323 个页面，需要继续批量覆盖并逐步增加类页专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 对 Vdf/UsdVol 类页评估 member table 摘录质量，必要时补充页型专项审计。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 63 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查全量清单、验证报告、API 批次报告、draft 预览审计、最终 HTML 和当前 API draft 文件数，确认上一轮状态为 406 total / 8 complete / 75 draft / 323 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`class_vdf_test_utils_1_1_node.html`、`class_vt_value_ref.html`、`classes.html`、`classpxr___c_l_i_1_1_c_l_i_1_1_app.html`、`classpxr__tsl_1_1robin__map.html`。
+- 发现 `classes.html` 是目录索引页且初次摘录为 0，增强 `scripts/build_api_full_batch.mjs`，为 class/struct/namespace/group/functions/files/pages 等索引链接生成 `Index entries include` 英文摘录。
+- 重新生成当前 API 批次后，`classes.html` 摘录数从 0 提升为 1，其余新增页面保持 2 条摘录；5 个新增页面 HTTP 状态均为 200。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 80 draft / 318 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 80 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 80 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 重新运行本地预览索引、范围边界审计、报告索引和总验证；最新总验证仍为 275 项检查通过，0 项失败。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 Vdf/Vt/classes/pxr API 页批次、目录页摘录兜底和验证结果。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整成员表。
+- `classes.html` 已有索引摘录，但仍只是目录级摘要，不是类索引全量翻译。
+- API pending 队列仍有 318 个页面，需要继续批量覆盖并逐步增加类页、目录页和源码页专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 继续检查目录页、类页和源码页的摘录质量，必要时补充页型专项审计。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 64 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查全量清单、验证报告、API 批次报告、draft 预览审计、最终 HTML 和当前 API draft 文件数，确认上一轮状态为 406 total / 8 complete / 80 draft / 318 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`copy_utils_8h.html`、`deprecated.html`、`dir_aa3bf17f9d6f68169ce0fa9df97655e9.html`、`executor_invalidation_data_8h.html`、`files.html`。
+- 发现 `dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` 是目录页且初次摘录为 0，增强 `scripts/build_api_full_batch.mjs`，从 Doxygen `memberdecls` 文件表提取 `Directory entries include files` 摘录。
+- 重新生成当前 API 批次后，目录页摘录数从 0 提升为 1，其他新增页面保持 2 条摘录；5 个新增页面 HTTP 状态均为 200。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 85 draft / 313 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 85 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 85 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 重新运行本地预览索引、范围边界审计和总验证；最新总验证仍为 275 项检查通过，0 项失败。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 file/deprecated/directory/file-list API 页批次、目录页摘录兜底和验证结果。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整文件表或弃用条目表。
+- `dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` 已有文件列表摘录，但仍只是目录级摘要，不是目录下文件逐项翻译。
+- API pending 队列仍有 313 个页面，需要继续批量覆盖并逐步增加 directory/file/index 页专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 继续检查 directory/file/index 页的摘录质量，避免空摘录 draft 进入最终入口。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 65 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查全量清单、验证报告、API 批次报告、draft 预览审计、最终 HTML 和当前 API draft 文件数，确认上一轮状态为 406 total / 8 complete / 85 draft / 313 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`functions_~.html`、`functions_a.html`、`functions_b.html`、`functions_c.html`、`functions_d.html`。
+- 本批 5 个 Class Members 分段索引页 HTTP 状态均为 200，每页均提取 2 条 `Index entries include` 摘录和 40 个同站链接，未出现空摘录。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 90 draft / 308 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 90 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 90 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 重新运行本地预览索引、范围边界审计和总验证；最新总验证仍为 275 项检查通过，0 项失败。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 Class Members 索引页批次、摘录质量和验证结果。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整成员索引逐项翻译。
+- `functions_*` 页面是大索引分段，当前只抽取前 16 个代表性条目进入摘录，不代表成员索引全量翻译。
+- API pending 队列仍有 308 个页面，需要继续批量覆盖并逐步增加 functions/index 页专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 继续检查 functions/index 页的摘录质量，确保分段索引页不会出现空摘录或无效导航摘录。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 66 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查全量清单、验证报告、API 批次报告、draft 预览审计、最终 HTML 和当前 API draft 文件数，确认上一轮状态为 406 total / 8 complete / 90 draft / 308 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`functions_e.html`、`functions_enum.html`、`functions_eval.html`、`functions_f.html`、`functions_func_~.html`。
+- 本批 5 个 Class Members / Enumerations / Enumerator / Functions 分段索引页 HTTP 状态均为 200，均提取到 `Index entries include` 摘录；摘录数为 1-2 条，链接数为 18-40，未出现空摘录。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 95 draft / 303 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 95 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 95 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 重新运行本地预览索引、范围边界审计和总验证；最新总验证仍为 275 项检查通过，0 项失败。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 functions/enum/eval 索引页批次、摘录质量和验证结果。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整成员索引逐项翻译。
+- `functions_enum.html`、`functions_eval.html` 和 `functions_func_~.html` 当前只有 1 条索引摘录，能通过可检查要求，但仍不是完整条目翻译。
+- API pending 队列仍有 303 个页面，需要继续批量覆盖并逐步增加 functions_func/index 页专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 继续检查 functions_func/index 页的摘录质量，确保分段索引页不会出现空摘录或无效导航摘录。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 82 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、脚本、验证报告、范围清单、全量页面清单、最终 HTML 和进度报告，确认上一轮状态为 406 total / 8 complete / 170 draft / 228 pending，验证 275 项通过。
+- 检查下一批 API pending 队列，确认本轮覆盖 `functions_vars_z.html`、`functions_vars.html`、`functions_w.html`、`functions_x.html` 和 `functions_y.html`。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`functions_vars_z.html`、`functions_vars.html`、`functions_w.html`、`functions_x.html`、`functions_y.html`。
+- 本批 5 个索引页 HTTP 状态均为 200，摘录数为 1-2 条，链接数为 2-40，未出现空摘录。
+- 重点复查短索引页 `functions_vars.html` 和 `functions_vars_z.html`，确认摘录保留 `GfColor`、`HdBufferArray`，以及 `UsdGeomTokensType`、`UsdLuxTokensType`、`UsdPhysicsTokensType`、`UsdVolTokensType` 等变量索引条目。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 175 draft / 223 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 175 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 175 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 Variables 收尾与 Class Members w-y 批次、摘录质量和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整成员索引逐项翻译。
+- `functions_vars.html` 和 `functions_vars_z.html` 都属于极短索引页，当前有有效摘录，但后续同类短页仍需要持续抽查。
+- API pending 队列仍有 223 个页面；全量覆盖还需要继续批量推进。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 优先覆盖 `functions_z.html`、`functions.html`、`geom_model_a_p_i_adapter_8h_source.html`、`gf_page_front.html`、`glf_page_front.html`，或以最新 pending 队列为准。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 83 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、脚本、验证报告、范围清单、全量页面清单、最终 HTML 和进度报告，确认上一轮状态为 406 total / 8 complete / 175 draft / 223 pending，验证 275 项通过。
+- 检查下一批 API pending 队列，确认本轮覆盖 `functions_z.html`、`functions.html`、`geom_model_a_p_i_adapter_8h_source.html`、`gf_page_front.html` 和 `glf_page_front.html`。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`functions_z.html`、`functions.html`、`geom_model_a_p_i_adapter_8h_source.html`、`gf_page_front.html`、`glf_page_front.html`。
+- 本批 5 个页面 HTTP 状态均为 200，摘录数为 1-2 条，链接数为 0-40，未出现空摘录。
+- 重点复查低链接模块页 `glf_page_front.html` 与 `gf_page_front.html`，确认 `glf_page_front.html` 保留官方短句 `Utility classes for OpenGL output.`，`gf_page_front.html` 保留 Graphics Foundations 概览。
+- 抽查 `functions_z.html` 和 `functions.html`，确认 Class Members z/汇总索引保留 `UsdGeomTokensType`、`UsdLuxTokensType`、`UsdPhysicsTokensType`、`GfVec*` 和 `TraceCounterAccumulator` 等条目。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 180 draft / 218 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 180 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 180 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 Class Members 收尾、Gf/Glf 模块页与源码页批次、摘录质量和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整 API 条目逐项翻译。
+- `glf_page_front.html` 官方源页本身很短，本地 draft 链接数为 0；当前有有效原文摘录，但后续 0 链接/低链接模块页仍需要持续抽查。
+- API pending 队列仍有 218 个页面；全量覆盖还需要继续批量推进。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 以最新 pending 队列为准继续覆盖后续 group 页面、header source 页面或模块 front page，并重点检查 0 链接/低链接短页的摘录质量。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 84 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、脚本、验证报告、范围清单、全量页面清单、最终 HTML 和进度报告，确认上一轮状态为 406 total / 8 complete / 180 draft / 218 pending，验证 275 项通过。
+- 检查下一批 API pending 队列，确认本轮覆盖 `globals_c.html`、`globals_defs.html`、`globals_e.html`、`globals_enum.html` 和 `globals_eval.html`。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 初次抽查发现 `globals_enum.html` 和 `globals_eval.html` 没有抽到有效原文摘录，只落到 `No concise paragraph excerpt extracted.` 占位句；本轮将其视为质量问题并先修脚本。
+- 增强 `scripts/build_api_full_batch.mjs`，新增 Doxygen `<div class="contents"><li>...</li>` 列表项摘录规则，用于 File Members、Enumerations、Enumerator 等非段落索引页。
+- 重跑同一批 `globals_*` 页面，最终本批 5 个页面 HTTP 状态均为 200，摘录数为 1-2 条，链接数为 2-40，未出现空摘录。
+- 本轮新增 API draft：`globals_c.html`、`globals_defs.html`、`globals_e.html`、`globals_enum.html`、`globals_eval.html`。
+- 重点复查 `globals_enum.html` 和 `globals_eval.html`，确认保留 `ArchMemoryProtection`、`PcpArcType`、`SdfSpecifier`、`UsdInterpolationType`、`UsdInterpolationTypeHeld`、`UsdListPosition*`、`UsdResolveInfoSource*` 等索引条目。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 185 draft / 213 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 185 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 185 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 globals 索引批次、脚本修复、摘录质量和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整 file member 条目逐项翻译。
+- `globals_enum.html` 和 `globals_eval.html` 的 heading 数为 0，这是 Doxygen 源页结构特征；当前通过 contents 列表摘录补足可读信息，但后续同类页面仍需要重点抽查。
+- API pending 队列仍有 213 个页面；全量覆盖还需要继续批量推进。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `globals_func_c.html`、`globals_func_e.html`、`globals_func_g.html`、`globals_func_h.html`、`globals_func_j.html` 等 File Members functions 索引页。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 85 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、脚本、验证报告、范围清单、全量页面清单、最终 HTML 和进度报告，确认上一轮状态为 406 total / 8 complete / 185 draft / 213 pending，验证 275 项通过。
+- 检查下一批 API pending 队列，确认本轮覆盖 `globals_func_c.html`、`globals_func_e.html`、`globals_func_g.html`、`globals_func_h.html` 和 `globals_func_j.html`。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`globals_func_c.html`、`globals_func_e.html`、`globals_func_g.html`、`globals_func_h.html`、`globals_func_j.html`。
+- 本批 5 个页面 HTTP 状态均为 200，摘录数为 1-2 条，链接数为 1-39，未出现空摘录。
+- 抽查低链接页和长索引页，确认 `CombineError()`、`CombineResult()`、`EfGetFirstValidInputValue()`、`GfAbs()`、`GfClamp()`、`GfCross()`、`HioOpenVDBGridFromAsset()`、`JsParseString()`、`JsWriteValue()` 等函数索引摘录有效。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 190 draft / 208 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 190 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 190 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 File Members functions 索引批次、摘录质量和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整函数索引逐项翻译。
+- `globals_func_c.html` 和 `globals_func_e.html` 同站链接数只有 1，当前有有效函数摘录，但后续低链接 functions 页仍需要持续抽查。
+- API pending 队列仍有 208 个页面；全量覆盖还需要继续批量推进。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `globals_func_l.html`、`globals_func_o.html`、`globals_func_p.html`、`globals_func_s.html`、`globals_func_t.html` 等后续 File Members functions 索引页。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 70 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、脚本清单、全量清单、API 批次报告、draft 预览审计、最终 HTML 和验证报告，确认上一轮状态为 406 total / 8 complete / 110 draft / 288 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`functions_func_p.html`、`functions_func_q.html`、`functions_func_r.html`、`functions_func_s.html`、`functions_func_t.html`。
+- 本批 5 个 Functions 成员索引分段页 HTTP 状态均为 200，每页均提取到 1 条 `Index entries include` 摘录；链接数为 3-40，未出现空摘录。
+- 重点复查了短索引页 `functions_func_q.html`，确认其保留有效索引摘录：`SdfAbstractData`、`SdfLayer` 与 `ConfigBase`。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 115 draft / 283 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 115 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 115 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 functions_func_p-t 批次、摘录质量和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整函数成员索引逐项翻译。
+- `functions_func_q.html` 只有 3 个同站链接，当前有有效索引摘录，但后续短索引页仍需要持续抽查。
+- API pending 队列仍有 283 个页面，需要继续批量覆盖，并逐步扩展到 functions_func 后续分段之外的索引页质量检查。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 继续检查短索引页摘录质量，确保低链接数页面不会出现空摘录或无效导航摘录。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 71 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、脚本清单、全量清单、API 批次报告、draft 预览审计、最终 HTML 和验证报告，确认上一轮状态为 406 total / 8 complete / 115 draft / 283 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`functions_func_u.html`、`functions_func_v.html`、`functions_func_w.html`、`functions_func_x.html`、`functions_func_y.html`。
+- 本批 5 个 Functions 成员索引分段页 HTTP 状态均为 200，每页均提取到 1 条 `Index entries include` 摘录；链接数为 13-40，未出现空摘录。
+- 重点复查了短索引页 `functions_func_x.html` 与 `functions_func_y.html`，确认其保留有效索引摘录，包含 GfVec 系列、`UsdGeomXformable::XformQuery` 与 `VdfExecutorBufferData`。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 120 draft / 278 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 120 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 120 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 functions_func_u-y 批次、摘录质量和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整函数成员索引逐项翻译。
+- `functions_func_x.html` 与 `functions_func_y.html` 只有 13 个同站链接，当前有有效索引摘录，但短索引页仍需要持续抽查。
+- API pending 队列仍有 278 个页面；functions_func 分段接近尾部，后续会转入其它 API 索引页类型，需要继续检查摘录规则是否适配。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML同步。
+2. 收尾 functions_func 分段并检查后续 API 索引页类型，避免 `functions_rela`、`functions_type` 等页面出现空摘录。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 72 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML 和验证报告，确认上一轮状态为 406 total / 8 complete / 120 draft / 278 pending，验证 275 项通过。
+- 检查下一批 API pending 队列，确认将从 `functions_func_z.html`、`functions_func.html` 转入 `functions_g.html`、`functions_h.html`、`functions_i.html` 等 Class Members 分段页。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`functions_func_z.html`、`functions_func.html`、`functions_g.html`、`functions_h.html`、`functions_i.html`。
+- 本批 5 个索引页 HTTP 状态均为 200，摘录数为 1-2 条，链接数为 8-40，未出现空摘录。
+- 重点复查了低链接数 `functions_func_z.html` 和新类型 `functions_g.html`，确认其保留有效索引摘录，包含 GfVec、`UsdMediaTokensType`、Hd/Hgi 相关条目。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 125 draft / 273 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 125 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 125 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 functions_func 收尾和 functions_g-i 批次、摘录质量和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整成员索引逐项翻译。
+- `functions_func_z.html` 只有 8 个同站链接，当前有有效索引摘录，但短索引页仍需要持续抽查。
+- API pending 队列仍有 273 个页面；后续 Class Members 分段和其它索引页类型还需要继续验证摘录规则。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML同步。
+2. 覆盖 `functions_j.html`、`functions_l.html`、`functions_m.html` 等后续 Class Members 分段，并检查低链接数索引页摘录质量。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 73 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML 和验证报告，确认上一轮状态为 406 total / 8 complete / 125 draft / 273 pending，验证 275 项通过。
+- 检查下一批 API pending 队列，确认将覆盖 `functions_j.html`、`functions_k.html`、`functions_l.html`、`functions_m.html`、`functions_n.html` 等 Class Members 分段页。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`functions_j.html`、`functions_k.html`、`functions_l.html`、`functions_m.html`、`functions_n.html`。
+- 本批 5 个索引页 HTTP 状态均为 200，每页均提取到 2 条 `Index entries include` 摘录；链接数为 10-40，未出现空摘录。
+- 重点复查了低链接数 `functions_j.html` 与 `functions_k.html`，确认其保留有效索引摘录，包含 HdEmbreeConfig、UsdPhysics、Sdf/Tf/UsdSchema 等相关条目。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 130 draft / 268 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 130 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 130 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 functions_j-n 批次、摘录质量和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整成员索引逐项翻译。
+- `functions_j.html` 与 `functions_k.html` 链接数较低，当前有有效摘录，但低链接索引页仍需要逐轮抽查。
+- API pending 队列仍有 268 个页面；后续将进入 relation/type 等更多索引页类型，需要继续验证摘录规则。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML同步。
+2. 覆盖 `functions_o.html`、`functions_p.html`、`functions_q.html`、`functions_r.html` 和 `functions_rela_g.html` 等后续索引页，并检查 relation 页摘录规则。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 74 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML 和验证报告，确认上一轮状态为 406 total / 8 complete / 130 draft / 268 pending，验证 275 项通过。
+- 检查下一批 API pending 队列，确认将覆盖 `functions_o.html`、`functions_p.html`、`functions_q.html`、`functions_r.html` 和首个 `functions_rela_g.html` Related Functions 分段页。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`functions_o.html`、`functions_p.html`、`functions_q.html`、`functions_r.html`、`functions_rela_g.html`。
+- 本批 5 个索引页 HTTP 状态均为 200，摘录数为 1-2 条，链接数为 4-40，未出现空摘录。
+- 重点复查了低链接数 `functions_q.html` 与 relation 页 `functions_rela_g.html`，确认其保留有效索引摘录，包含 SdfAbstractData/SdfLayer/ConfigBase 与 GfLine/GfRay/GfQuaternion 等相关条目。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 135 draft / 263 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 135 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 135 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 functions_o-r 与 functions_rela_g 批次、摘录质量和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整成员索引逐项翻译。
+- `functions_q.html` 只有 4 个同站链接，`functions_rela_g.html` 只有 6 个同站链接，当前有有效摘录，但 relation 页仍需要持续抽查。
+- API pending 队列仍有 263 个页面；Related Functions 汇总和后续 relation/type 索引页还需要继续验证摘录规则。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML同步。
+2. 覆盖 `functions_rela_h.html`、`functions_rela_o.html`、`functions_rela_s.html`、`functions_rela_t.html` 和 `functions_rela.html` 等后续 relation 索引页，并检查低链接摘录质量。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 75 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML 和验证报告，确认上一轮状态为 406 total / 8 complete / 135 draft / 263 pending，验证 275 项通过。
+- 检查下一批 API pending 队列，确认将覆盖 `functions_rela_h.html`、`functions_rela_o.html`、`functions_rela_s.html`、`functions_rela_t.html` 与 `functions_rela.html` Related Functions 分段和汇总页。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`functions_rela_h.html`、`functions_rela_o.html`、`functions_rela_s.html`、`functions_rela_t.html`、`functions_rela.html`。
+- 本批 5 个 relation 索引页 HTTP 状态均为 200，每页均提取到 1 条 `Index entries include` 摘录；链接数为 1-40，未出现空摘录。
+- 重点复查了短汇总页 `functions_rela.html` 与低链接页 `functions_rela_t.html`，确认其保留有效索引摘录，包含 `UsdShadeMaterialBindingAPI`、`TfRefPtr`、`TfRefBase`、`SdfSpec` 与 `TfToken` 等相关条目。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 140 draft / 258 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 140 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 140 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 Related Functions 批次、摘录质量和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整 relation 成员索引逐项翻译。
+- `functions_rela.html` 只有 1 个同站链接，当前有有效摘录，但极短索引页仍需要持续抽查。
+- API pending 队列仍有 258 个页面；后续将转入 `functions_type.html` 等 type 索引页，需要继续验证摘录规则。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML同步。
+2. 覆盖 `functions_s.html`、`functions_t.html`、`functions_type.html`、`functions_u.html`、`functions_v.html` 等后续索引页，并检查 type 页摘录质量。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 76 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML 和验证报告，确认上一轮状态为 406 total / 8 complete / 140 draft / 258 pending，验证 275 项通过。
+- 检查下一批 API pending 队列，确认将覆盖 `functions_s.html`、`functions_t.html`、`functions_type.html`、`functions_u.html` 与 `functions_v.html`。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`functions_s.html`、`functions_t.html`、`functions_type.html`、`functions_u.html`、`functions_v.html`。
+- 本批 5 个索引页 HTTP 状态均为 200，摘录数为 1-2 条，链接数均为 40，未出现空摘录；`functions_type.html` 有 21 个 heading，作为 type 索引页进入本地 draft 覆盖。
+- 重点复查了 `functions_type.html` 与普通成员页 `functions_s.html`，确认其保留有效索引摘录，包含 Vdf/Sdf/Hd/Vt 类型条目，以及 UsdTimeCode、HdEmbree、UsdImaging 等成员条目。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 145 draft / 253 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 145 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 145 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 Class Members 和 type 索引页批次、摘录质量和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整成员或 type 索引逐项翻译。
+- `functions_type.html` 虽有有效摘录，但 type 页标题层级更多，后续可能需要专门摘要规则来覆盖更多 heading。
+- API pending 队列仍有 253 个页面；下一批将进入 `functions_vars_*` 变量索引页，需要继续验证摘录规则。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML同步。
+2. 覆盖 `functions_vars_a.html`、`functions_vars_b.html`、`functions_vars_c.html`、`functions_vars_d.html` 和 `functions_vars_e.html` 等变量索引页，并检查 vars 页摘录质量。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 77 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML 和验证报告，确认上一轮状态为 406 total / 8 complete / 145 draft / 253 pending，验证 275 项通过。
+- 检查下一批 API pending 队列，确认将覆盖 `functions_vars_a.html`、`functions_vars_b.html`、`functions_vars_c.html`、`functions_vars_d.html` 与 `functions_vars_e.html`。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`functions_vars_a.html`、`functions_vars_b.html`、`functions_vars_c.html`、`functions_vars_d.html`、`functions_vars_e.html`。
+- 本批 5 个 Variables 索引页 HTTP 状态均为 200，每页均提取到 1 条 `Index entries include` 摘录；链接数为 19-40，未出现空摘录。
+- 重点复查了低链接数 `functions_vars_b.html` 与 `functions_vars_e.html`，确认其保留有效变量索引摘录，包含 `UsdUITokensType`、`UsdGeomTokensType`、`UsdPhysicsJointDrive` 与 `VtArrayEditBuilder` 等相关条目。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 150 draft / 248 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 150 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 150 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 Variables 索引页批次、摘录质量和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整变量索引逐项翻译。
+- `functions_vars_b.html` 与 `functions_vars_e.html` 链接数相对较低，当前有有效摘录，但后续 vars 页仍需要持续抽查。
+- API pending 队列仍有 248 个页面；后续变量索引页仍未覆盖完，需要继续批量推进。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML同步。
+2. 覆盖 `functions_vars_f.html`、`functions_vars_g.html`、`functions_vars_h.html`、`functions_vars_i.html` 和 `functions_vars_j.html` 等后续变量索引页，并检查低链接 vars 页摘录质量。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 78 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML 和验证报告，确认上一轮状态为 406 total / 8 complete / 150 draft / 248 pending，验证 275 项通过。
+- 检查下一批 API pending 队列，确认将覆盖 `functions_vars_f.html`、`functions_vars_g.html`、`functions_vars_h.html`、`functions_vars_i.html` 与 `functions_vars_j.html`。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`functions_vars_f.html`、`functions_vars_g.html`、`functions_vars_h.html`、`functions_vars_i.html`、`functions_vars_j.html`。
+- 本批 5 个 Variables 索引页 HTTP 状态均为 200，每页均提取到 1 条 `Index entries include` 摘录；链接数为 5-34，未出现空摘录。
+- 重点复查了低链接数 `functions_vars_g.html` 与 `functions_vars_j.html`，确认其保留有效变量索引摘录，包含 UsdMedia/UsdProc/UsdLux tokens、`UsdPhysicsSceneDesc`、`HdEmbreeConfig` 与 `UsdPhysicsJointDesc` 等相关条目。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 155 draft / 243 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 155 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 155 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 Variables 索引页批次、摘录质量和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整变量索引逐项翻译。
+- `functions_vars_j.html` 只有 5 个同站链接，当前有有效摘录，但短 vars 页仍需要持续抽查。
+- API pending 队列仍有 243 个页面；变量索引页仍未覆盖完，需要继续批量推进。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML同步。
+2. 覆盖 `functions_vars_k.html`、`functions_vars_l.html`、`functions_vars_m.html`、`functions_vars_n.html` 和 `functions_vars_o.html` 等后续变量索引页，并检查低链接 vars 页摘录质量。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 79 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML 和验证报告，确认上一轮状态为 406 total / 8 complete / 155 draft / 243 pending，验证 275 项通过。
+- 检查下一批 API pending 队列，确认将覆盖 `functions_vars_k.html`、`functions_vars_l.html`、`functions_vars_m.html`、`functions_vars_n.html` 与 `functions_vars_o.html`。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`functions_vars_k.html`、`functions_vars_l.html`、`functions_vars_m.html`、`functions_vars_n.html`、`functions_vars_o.html`。
+- 本批 5 个 Variables 索引页 HTTP 状态均为 200，每页均提取到 1 条 `Index entries include` 摘录；链接数为 5-35，未出现空摘录。
+- 重点复查了低链接数 `functions_vars_k.html` 与 `functions_vars_l.html`，确认其保留有效变量索引摘录，包含 `UsdPhysicsTokensType`、`UsdSchemaRegistry::SchemaInfo`、`UsdPhysicsRigidBodyDesc`、`PcpNamespaceEdits` 与 `UsdGeomLinearUnits` 等相关条目。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 160 draft / 238 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 160 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 160 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 Variables 索引页批次、摘录质量和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整变量索引逐项翻译。
+- `functions_vars_k.html` 只有 5 个同站链接，当前有有效摘录，但短 vars 页仍需要持续抽查。
+- API pending 队列仍有 238 个页面；变量索引页仍未覆盖完，需要继续批量推进。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML同步。
+2. 覆盖 `functions_vars_p.html`、`functions_vars_q.html`、`functions_vars_r.html`、`functions_vars_s.html` 和 `functions_vars_t.html` 等后续变量索引页，并检查低链接 vars 页摘录质量。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 80 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML 和验证报告，确认上一轮状态为 406 total / 8 complete / 160 draft / 238 pending，验证 275 项通过。
+- 检查下一批 API pending 队列，确认将覆盖 `functions_vars_p.html`、`functions_vars_q.html`、`functions_vars_r.html`、`functions_vars_s.html` 与 `functions_vars_t.html`。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`functions_vars_p.html`、`functions_vars_q.html`、`functions_vars_r.html`、`functions_vars_s.html`、`functions_vars_t.html`。
+- 本批 5 个 Variables 索引页 HTTP 状态均为 200，每页均提取到 1 条 `Index entries include` 摘录；链接数为 1-40，未出现空摘录。
+- 重点复查了极短页 `functions_vars_q.html` 与 `functions_vars_t.html`，确认其保留有效变量索引摘录，包含 `UsdVolTokensType`、`PcpErrorUnresolvedPrimPath`、`UsdPhysicsJointDrive`、`UsdHydraTokensType` 与 `UsdMediaTokensType` 等相关条目。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 165 draft / 233 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 165 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 165 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 Variables 索引页批次、摘录质量和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整变量索引逐项翻译。
+- `functions_vars_q.html` 只有 1 个同站链接，当前有有效摘录，但极短 vars 页仍需要持续抽查。
+- API pending 队列仍有 233 个页面；变量索引页仍未覆盖完，需要继续批量推进。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML同步。
+2. 覆盖 `functions_vars_u.html`、`functions_vars_v.html`、`functions_vars_w.html`、`functions_vars_x.html` 和 `functions_vars_y.html` 等后续变量索引页，并检查极短 vars 页摘录质量。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 81 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML 和验证报告，确认上一轮状态为 406 total / 8 complete / 165 draft / 233 pending，验证 275 项通过。
+- 检查下一批 API pending 队列，确认将覆盖 `functions_vars_u.html`、`functions_vars_v.html`、`functions_vars_w.html`、`functions_vars_x.html` 与 `functions_vars_y.html`。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`functions_vars_u.html`、`functions_vars_v.html`、`functions_vars_w.html`、`functions_vars_x.html`、`functions_vars_y.html`。
+- 本批 5 个 Variables 索引页 HTTP 状态均为 200，每页均提取到 1 条 `Index entries include` 摘录；链接数为 2-17，未出现空摘录。
+- 重点复查了极短页 `functions_vars_x.html` 与 `functions_vars_y.html`，确认其保留有效变量索引摘录，包含 `UsdGeomTokensType`、`UsdPhysicsTokensType` 与 `UsdLuxTokensType` 等相关条目。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 170 draft / 228 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 170 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 170 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 Variables 索引页批次、摘录质量和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整变量索引逐项翻译。
+- `functions_vars_x.html` 与 `functions_vars_y.html` 链接数分别只有 2 和 3，当前有有效摘录，但极短 vars 页仍需要持续抽查。
+- API pending 队列仍有 228 个页面；变量汇总页和后续成员索引页还需要继续批量推进。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML同步。
+2. 覆盖 `functions_vars_z.html`、`functions_vars.html`、`functions_w.html`、`functions_x.html` 和 `functions_y.html` 等变量汇总与后续成员索引页，并检查极短索引页摘录质量。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 68 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查全量清单、验证报告、API 批次报告、draft 预览审计、最终 HTML 和当前 API draft 文件数，确认上一轮状态为 406 total / 8 complete / 100 draft / 298 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`functions_func_f.html`、`functions_func_g.html`、`functions_func_h.html`、`functions_func_i.html`、`functions_func_j.html`。
+- 本批 5 个 Functions 成员索引分段页 HTTP 状态均为 200，每页均提取到 1 条 `Index entries include` 摘录；链接数为 5-40，未出现空摘录。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 105 draft / 293 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 105 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 105 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 重新运行本地预览索引、范围边界审计和总验证；最新总验证仍为 275 项检查通过，0 项失败。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 functions_func 分段索引页批次、摘录质量和验证结果。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整函数成员索引逐项翻译。
+- `functions_func_j.html` 只有 5 个同站链接，当前仍有有效索引摘录，但后续同类短索引页可能需要更细的摘要规则。
+- API pending 队列仍有 293 个页面，需要继续批量覆盖并逐步增加 functions_func/index 页专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 继续检查 functions_func/index 页的摘录质量，关注短索引页是否需要专门摘要规则。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 67 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查全量清单、验证报告、API 批次报告、draft 预览审计、最终 HTML 和当前 API draft 文件数，确认上一轮状态为 406 total / 8 complete / 95 draft / 303 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`functions_func_a.html`、`functions_func_b.html`、`functions_func_c.html`、`functions_func_d.html`、`functions_func_e.html`。
+- 本批 5 个 Functions 成员索引分段页 HTTP 状态均为 200，每页均提取到 1 条 `Index entries include` 摘录和 40 个同站链接，未出现空摘录。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 100 draft / 298 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 100 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 100 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 重新运行本地预览索引、范围边界审计和总验证；最新总验证仍为 275 项检查通过，0 项失败。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 functions_func 分段索引页批次、摘录质量和验证结果。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整函数成员索引逐项翻译。
+- `functions_func_*` 分段页当前每页 1 条代表性索引摘录，能通过可检查要求，但仍不是完整条目翻译。
+- API pending 队列仍有 298 个页面，需要继续批量覆盖并逐步增加 functions_func/index 页专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 继续检查 functions_func/index 页的摘录质量，确保分段索引页不会出现空摘录或无效导航摘录。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 86 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML 和验证报告，确认上一轮状态为 406 total / 8 complete / 190 draft / 208 pending，验证 275 项通过。
+- 检查下一批 API pending 队列，确认本轮覆盖 `globals_func_l.html`、`globals_func_o.html`、`globals_func_p.html`、`globals_func_s.html` 与 `globals_func_t.html`。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`globals_func_l.html`、`globals_func_o.html`、`globals_func_p.html`、`globals_func_s.html`、`globals_func_t.html`。
+- 本批 5 个 File Members functions 索引页 HTTP 状态均为 200，摘录数为 1-2 条，链接数为 1-31，未出现空摘录。
+- 抽查确认函数索引摘录有效：`LoadUsdPhysicsFromRange()`、`operator+()`、`operator==()`、`PcpComposeSite*`、`SdfAnchorAssetPaths()`、`TF_DEBUG_CODES()` 与 `TfAbs()` 等条目均保留在英文原文层。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 195 draft / 203 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 195 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 195 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 File Members functions 索引页批次、摘录质量和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整函数索引逐项翻译。
+- `globals_func_l.html` 只有 1 个同站链接，当前有有效函数摘录，但低链接 functions 页仍需要持续抽查。
+- API pending 队列仍有 203 个页面，需要继续批量覆盖并逐步增加 File Members 索引页专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `globals_func_u.html`、`globals_func_v.html`、`globals_func_w.html`、`globals_func.html` 和 `globals_g.html` 等后续 File Members 索引页。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 87 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML 和验证报告，确认上一轮状态为 406 total / 8 complete / 195 draft / 203 pending，验证 275 项通过。
+- 检查下一批 API pending 队列，确认本轮覆盖 `globals_func_u.html`、`globals_func_v.html`、`globals_func_w.html`、`globals_func.html` 与 `globals_g.html`。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`globals_func_u.html`、`globals_func_v.html`、`globals_func_w.html`、`globals_func.html`、`globals_g.html`。
+- 本批 5 个 File Members 索引页 HTTP 状态均为 200，摘录数为 1-2 条，链接数为 7-40，未出现空摘录。
+- 抽查确认索引摘录有效：`UsdAppUtilsGetCameraAtPath()`、`Vdf_DataManagerVectorAllocate()`、`WorkGetConcurrencyLimit()`、`ArchAbort()`、`GfAbs()`、`GfClamp()` 与 `GfCross()` 等条目均保留在英文原文层。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 200 draft / 198 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 200 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 200 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 File Members 索引页批次、摘录质量和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整 File Members 条目逐项翻译。
+- `globals_func_w.html` 链接数为 7，当前有有效 Work* 函数摘录，但低链接索引页仍需要持续抽查。
+- API pending 队列仍有 198 个页面，需要继续批量覆盖并逐步增加 File Members 索引页专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `globals_h.html`、`globals_j.html`、`globals_l.html`、`globals_o.html` 和 `globals_p.html` 等后续 File Members 索引页。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 88 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML 和验证报告，确认上一轮状态为 406 total / 8 complete / 200 draft / 198 pending，验证 275 项通过。
+- 检查下一批 API pending 队列，确认本轮覆盖 `globals_h.html`、`globals_j.html`、`globals_l.html`、`globals_o.html` 与 `globals_p.html`。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`globals_h.html`、`globals_j.html`、`globals_l.html`、`globals_o.html`、`globals_p.html`。
+- 本批 5 个 File Members 索引页 HTTP 状态均为 200，摘录数均为 2 条，链接数为 1-17，未出现空摘录。
+- 抽查确认索引摘录有效：`hash_value()`、`HioOpenVDBGridFromAsset()`、`JsParseString()`、`LoadUsdPhysicsFromRange()`、`operator+()`、`operator==()` 与 `PcpComposeSite*` 等条目均保留在英文原文层。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 205 draft / 193 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 205 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 205 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 File Members 索引页批次、摘录质量和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整 File Members 条目逐项翻译。
+- `globals_l.html` 只有 1 个同站链接，当前有有效 `LoadUsdPhysicsFromRange()` 摘录，但低链接索引页仍需要持续抽查。
+- API pending 队列仍有 193 个页面，需要继续批量覆盖并逐步增加 File Members 索引页专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `globals_s.html`、`globals_t.html`、`globals_type.html`、`globals_u.html` 和 `globals_v.html` 等后续 File Members 索引页。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 89 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML 和验证报告，确认上一轮状态为 406 total / 8 complete / 205 draft / 193 pending，验证 275 项通过。
+- 检查下一批 API pending 队列，确认本轮覆盖 `globals_s.html`、`globals_t.html`、`globals_type.html`、`globals_u.html` 与 `globals_v.html`。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`globals_s.html`、`globals_t.html`、`globals_type.html`、`globals_u.html`、`globals_v.html`。
+- 本批 5 个 File Members 索引页 HTTP 状态均为 200，摘录数均为 2 条，链接数为 15-40；`globals_type.html` 提取到 9 个标题，未出现空摘录。
+- 抽查确认索引摘录有效：`SdfAnchorAssetPaths()`、`TF_DEBUG_CODES`、`ArchConstFileMapping`、`SdfNamespaceEditVector`、`USD_GEOM_VALIDATION_ERROR_NAME_TOKENS`、`Vdf_DataManagerVectorAllocate()` 与 `VdfConnectionVector` 等条目均保留在英文原文层。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 210 draft / 188 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 210 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 210 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 File Members 索引页批次、摘录质量和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整 File Members 条目逐项翻译。
+- `globals_type.html` 已能提取类型别名摘录，但类型页和后续 group 页仍需要持续观察摘要规则是否足够稳定。
+- API pending 队列仍有 188 个页面，需要继续批量覆盖并逐步增加 group/API 分组页专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `globals_vars.html`、`globals_w.html`、`globals.html`、`group__group___exec___attribute___comptuations.html` 和 `group__group__hd__collection_predicates.html` 等后续索引/分组页。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 90 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML 和验证报告，确认上一轮状态为 406 total / 8 complete / 210 draft / 188 pending，验证 275 项通过。
+- 检查下一批 API pending 队列，确认本轮覆盖 `globals_vars.html`、`globals_w.html`、`globals.html`、`group__group___exec___attribute___comptuations.html` 与 `group__group__hd__collection_predicates.html`。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 初次抽查发现两个 group 页只有页面简介摘要，未保留成员列表；随后增强 `scripts/build_api_full_batch.mjs`，新增 Doxygen `memberdecls` 摘录规则，并重建同批页面。
+- 本轮新增 API draft：`globals_vars.html`、`globals_w.html`、`globals.html`、`group__group___exec___attribute___comptuations.html`、`group__group__hd__collection_predicates.html`。
+- 本批 5 个索引/分组页 HTTP 状态均为 200，摘录数为 1-2 条，链接数为 5-21，未出现空摘录。
+- 抽查确认索引与 group 成员摘录有效：`PCP_INVALID_INDEX`、`UsdGeomTokens`、`WorkGetConcurrencyLimit()`、`AR_DECLARE_RESOLVER_CONTEXT`、`computeValue`、`computeResolvedValue`、`computePath` 与 `HdGetCollectionPredicateLibrary()` 等条目均保留在英文原文层。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 215 draft / 183 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 215 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 215 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮索引/分组页批次、脚本修复、摘录质量和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整 group/API 分组条目逐项翻译。
+- `memberdecls` 摘录规则已覆盖本批 group 页，但后续 module front pages 和更多 group 页仍需要持续观察摘要质量。
+- API pending 队列仍有 183 个页面，需要继续批量覆盖并逐步增加 group/module 页专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `hd_embree_page_front.html`、`hd_page_front.html`、`hd_st_page_front.html`、`hd_storm_page_front.html` 和 `hdx_page_front.html` 等 API module front pages。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 91 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML 和验证报告，确认上一轮状态为 406 total / 8 complete / 215 draft / 183 pending，验证 275 项通过。
+- 检查下一批 API pending 队列，确认本轮覆盖 `hd_embree_page_front.html`、`hd_page_front.html`、`hd_st_page_front.html`、`hd_storm_page_front.html` 与 `hdx_page_front.html`。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`hd_embree_page_front.html`、`hd_page_front.html`、`hd_st_page_front.html`、`hd_storm_page_front.html`、`hdx_page_front.html`。
+- 本批 5 个 API module front pages HTTP 状态均为 200，摘录数为 1-2 条，链接数为 0-14，未出现空摘录。
+- 抽查确认 module front 摘录有效：`HdEmbree` 保留 Embree-based renderer plugin overview，`Hd` 保留 Hydra framework 简介，`HdSt` 保留 HdStorm core rendering overview，`HdStorm` 保留 renderer plugin 简介，`Hdx` 保留 Hydra extensions overview。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 220 draft / 178 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 220 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 220 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 module front pages 批次、摘录质量和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整 module 文档逐段翻译。
+- `hd_st_page_front.html` 链接数为 0，但有有效 overview 原文摘录；后续低链接 module/source 页面仍需要持续抽查。
+- API pending 队列仍有 178 个页面，需要继续批量覆盖并逐步增加 source/hierarchy/module 页专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `hgi_2shader_program_8h_source.html`、`hierarchy.html`、`hio_page_front.html`、`inherits.html` 和 `journal_8h.html` 等源码/层级/module 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 92 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查全量清单、API 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 220 draft / 178 pending，验证 275 项通过。
+- 增强 `scripts/build_api_full_batch.mjs` 的 source/hierarchy 摘录规则：新增 hierarchy directory 摘录、inherits image-map 摘录、area link 保留、source/index 数字链接过滤和 `More...` 噪声清理。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`hgi_2shader_program_8h_source.html`、`hierarchy.html`、`hio_page_front.html`、`inherits.html`、`journal_8h.html`。
+- 本批 5 个 API source/hierarchy/module/file 页面 HTTP 状态均为 200，摘录数为 1-2 条，链接数为 4-40。
+- 抽查确认 source/hierarchy 摘录有效：`hgi_2shader_program_8h_source.html` 保留 `HgiShaderProgram` 与源码摘录，`hierarchy.html` 保留 `ExecSystem::_ChangeProcessor` 与 `SdfSchemaBase` 层级条目，`inherits.html` 保留 graphical hierarchy 条目，`journal_8h.html` 保留 `EsfJournal` 成员摘录。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 225 draft / 173 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 225 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 225 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮脚本修复、source/hierarchy 批次、摘录质量和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整源码、层级图或文件页逐项翻译。
+- `inherits.html` 的 Doxygen image-map 只能稳定提取 title/description 级摘录，部分条目缺少直观类名；后续如要提高 1:1 阅读性，需要为 image-map href 增加更好的类名反解规则。
+- API pending 队列仍有 173 个页面，需要继续批量覆盖并逐步增加 module/README/Markdown 页面专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `js_page_front.html`、`kind_page_front.html`、`md_pxr_exec_ef__r_e_a_d_m_e.html`、`md_pxr_exec_esf__r_e_a_d_m_e.html` 和 `md_pxr_exec_esf_usd__r_e_a_d_m_e.html` 等 module/README 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 93 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML 和验证报告，确认上一轮状态为 406 total / 8 complete / 225 draft / 173 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`js_page_front.html`、`kind_page_front.html`、`md_pxr_exec_ef__r_e_a_d_m_e.html`、`md_pxr_exec_esf__r_e_a_d_m_e.html`、`md_pxr_exec_esf_usd__r_e_a_d_m_e.html`。
+- 本批 5 个 API module/README 页面 HTTP 状态均为 200，摘录数为 1-2 条，链接数为 0-3。
+- 首次抽查发现 README/Markdown 页存在“完整段落 + 首句”重复摘录和 `&zwj;` 实体噪声；随后增强 `scripts/build_api_full_batch.mjs`，清理 `&zwj;`、将 `[!note]` 转为 `Note:`、修复标点前空格，并跳过已被长摘录包含的短摘录。
+- 重建同批页面后抽查确认摘录质量有效：`js_page_front.html` 保留 JSON I/O 与 Python `json` 提示，`kind_page_front.html` 保留 runtime-extensible taxonomy 与 builtin kind hierarchy，`md_pxr_exec_ef__r_e_a_d_m_e.html` 保留 ef/vdf 关系与 `VdfNode`/`VdfExecutorInterface`，`md_pxr_exec_esf__r_e_a_d_m_e.html` 与 `md_pxr_exec_esf_usd__r_e_a_d_m_e.html` 保留执行系统场景访问说明。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 230 draft / 168 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 230 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 230 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 README/module 批次、摘录规则修复、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整 README 文档逐段翻译。
+- `md_pxr_exec_esf__r_e_a_d_m_e.html` 官方页面同站链接数为 0，当前依赖正文摘录保证可读性；后续短链接 README 页仍需持续抽查。
+- API pending 队列仍有 168 个页面，需要继续批量覆盖并逐步增加 README/module 页面专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `md_pxr_exec_exec__r_e_a_d_m_e.html`、`md_pxr_exec_exec_geom__r_e_a_d_m_e.html`、`md_pxr_exec_exec_ir__r_e_a_d_m_e.html`、`md_pxr_exec_vdf__r_e_a_d_m_e.html` 和 `md_pxr_exec_vdf_test_utils__r_e_a_d_m_e.html` 等后续 Exec/Vdf README 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 94 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML 和验证报告，确认上一轮状态为 406 total / 8 complete / 230 draft / 168 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`md_pxr_exec_exec__r_e_a_d_m_e.html`、`md_pxr_exec_exec_geom__r_e_a_d_m_e.html`、`md_pxr_exec_exec_ir__r_e_a_d_m_e.html`、`md_pxr_exec_exec_usd__r_e_a_d_m_e.html`、`md_pxr_exec_exec_usd_docs_overview.html`。
+- 本批 5 个 API Exec/ExecUsd README/overview 页面 HTTP 状态均为 200，摘录数为 1-2 条，链接数为 1-8。
+- 抽查确认 README 摘录质量有效：`md_pxr_exec_exec__r_e_a_d_m_e.html` 保留 exec/vdf/ef/esf 关系与 data flow network 说明，`md_pxr_exec_exec_geom__r_e_a_d_m_e.html` 保留 execUsd 与 UsdGeom schema computation 关系，`md_pxr_exec_exec_ir__r_e_a_d_m_e.html` 保留 invertible controllers 说明，`md_pxr_exec_exec_usd__r_e_a_d_m_e.html` 保留 primary entry point、registration、UsdStage ingest 与 evaluation 条目，`md_pxr_exec_exec_usd_docs_overview.html` 保留 OpenExec computations、UsdStage ingest 与教程概览。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 235 draft / 163 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 235 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 235 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 Exec/ExecUsd README 批次、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整 OpenExec README/overview 文档逐段翻译。
+- `md_pxr_exec_exec_ir__r_e_a_d_m_e.html` 官方原文中存在较长摘要和拼写噪声，当前仅保留原文摘录，不主动改写 API 文档原文。
+- API pending 队列仍有 163 个页面，需要继续批量覆盖并逐步增加教程页、namespace 索引页和后续 README 页专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html`、`md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html`、`md_pxr_exec_vdf__r_e_a_d_m_e.html`、`md_pxr_exec_vdf_test_utils__r_e_a_d_m_e.html` 和 `namespacemembers.html` 等后续教程/README/索引页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 95 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML 和验证报告，确认上一轮状态为 406 total / 8 complete / 235 draft / 163 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html`、`md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html`、`md_pxr_exec_vdf__r_e_a_d_m_e.html`、`md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html`、`md_pxr_usd_imaging_usdviewq_black_box_testing.html`。
+- 本批 5 个 API tutorial/README/test 页面 HTTP 状态均为 200，摘录数均为 2 条，链接数为 0-31。
+- 首次抽查发现 tutorial2 页存在近似重复摘要，随后增强 `scripts/build_api_full_batch.mjs`，新增教程 code-path-only 过滤、教程 code path + Overview 前缀归一化、截断省略号比较归一化。
+- 重建同批页面后抽查确认摘录质量有效：tutorial1 保留 Computing Values 总览与 low-level API note；tutorial2 保留 defining computations 总览与 Computing Values 承接说明；Vdf README 保留 VdfNetwork/VdfNode/VdfConnection；usdviewq README 保留 GUI 修改与测试实践；blackBoxTesting 保留 testusdview harness 与 viewport visibility 测试目标。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 240 draft / 158 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 240 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 240 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮教程/README/测试页批次、脚本修复、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整教程、README 或测试说明逐段翻译。
+- usdviewq 两个页面官方同站链接数为 0，当前依赖正文摘录保证可读性；后续低链接 README/test 页面仍需持续抽查。
+- API pending 队列仍有 158 个页面，需要继续批量覆盖并逐步增加 validation/module/namespace 索引页面专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `md_pxr_usd_sdf_doxygen_boolean_expressions.html`、`md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html`、`modules.html`、`namespacemembers.html` 和 `namespacemembers_func.html` 等后续 validation/module/namespace 索引页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 96 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 240 draft / 158 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`md_pxr_usd_sdf_doxygen_boolean_expressions.html`、`md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html`、`modules.html`、`namespacemembers_func.html`、`namespacemembers_type.html`。
+- 本批 5 个 API validation/module/namespace 页面 HTTP 状态均为 200，摘录数均为 2 条，链接数为 1-40。
+- 首次抽查发现 namespace 成员页标题过于泛化、Validation 页第二条摘录与第一条重叠较多，随后增强 `scripts/build_api_full_batch.mjs` 的标题回退和重叠摘录过滤。
+- 重建同批页面后抽查确认质量有效：`namespacemembers_func.html` 和 `namespacemembers_type.html` 分别显示 Functions/Typedefs；Validation 页保留 framework overview 与 metadata 说明；Modules 页保留 Bits/Multithreading/Math/String/System/Memory 等模块入口；Boolean Expressions 页保留 boolean expression language 和 `VtValue::Cast` 等链接。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 245 draft / 153 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 245 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 245 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 validation/module/namespace 批次、脚本修复、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整 Boolean/Validation/Modules/Namespace Members 逐项翻译。
+- `namespacemembers_type.html` 官方链接和正文条目较少，当前只能保留 `pxr_tsl` 相关 typedef 摘录；后续低信息量索引页仍需抽查，避免只有导航噪声。
+- API pending 队列仍有 153 个页面，需要继续批量覆盖并逐步增加 namespace/design/Ts 文档页专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `namespacemembers.html`、`namespaces.html`、`page__execution__system__design.html`、`page_ts_regression.html` 和 `page_ts_status.html` 等后续 namespace/design/Ts 文档页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 97 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 245 draft / 153 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`namespacemembers.html`、`namespaces.html`、`page__execution__system__design.html`、`page_ts_regression.html`、`page_ts_status.html`。
+- 本批 5 个 API namespace/design/Ts 文档页面 HTTP 状态均为 200，摘录数均为 2 条，链接数为 1-19。
+- 抽查确认本批摘录质量有效：`namespacemembers.html` 保留 documented namespace members 与 ShaderMetadataHelpers/VdfTestUtils/pxr_tsl 条目；`namespaces.html` 保留 pxr_tsl、ShaderMetadataHelpers、VdfTestUtils 命名空间列表；`page__execution__system__design.html` 保留 general-purpose computation engine 与 guiding principles；`page_ts_regression.html` 保留 Bezier/regressive segment 说明；`page_ts_status.html` 保留 USD Anim in-development 状态与 loop/evaluation 说明。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 250 draft / 148 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 250 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 250 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 namespace/design/Ts 文档批次、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整 namespace/design/Ts 文档逐段翻译。
+- `page_ts_status.html` 官方原文包含 in-development 状态和较长路线说明，当前只保留首批摘录；后续如要高保真阅读，需要对 Ts 文档做专项逐段双语化。
+- API pending 队列仍有 148 个页面，需要继续批量覆盖并逐步增加 TsTest/Related Pages/source/module 页面专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `page_ts_ts_test.html`、`pages.html`、`parallel_speculation_executor_engine_8h_source.html`、`pcp_page_front.html` 和 `plug_page_front.html` 等 TsTest/Related Pages/source/module 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 98 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 250 draft / 148 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`page_ts_ts_test.html`、`pages.html`、`parallel_speculation_executor_engine_8h_source.html`、`pcp_page_front.html`、`plug_page_front.html`。
+- 本批 5 个 API TsTest/Related/source/module 页面 HTTP 状态均为 200，摘录数均为 2 条，链接数为 0-40。
+- 首次抽查发现 source 页链接列表会出现纯数字锚文本，随后增强 `scripts/build_api_full_batch.mjs` 的链接过滤，跳过纯数字和 `More...` 锚文本。
+- 重建同批页面后抽查确认质量有效：`parallel_speculation_executor_engine_8h_source.html` 链接显示为 `VdfParallelSpeculationExecutorEngine`、`VdfParallelExecutorEngineBase`、`VdfEvaluationState` 等可读 API 名称；`page_ts_ts_test.html` 保留 TsTest framework 和 grapher/baseline 说明；`pages.html` 保留 Related Pages 文档入口列表；`pcp_page_front.html` 保留 Layering & Referencing / Prim Cache Population 说明；`plug_page_front.html` 保留 PlugPlugin、PlugRegistry 和 TfType 说明。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 255 draft / 143 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 255 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 255 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 TsTest/Related/source/module 批次、脚本修复、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整 TsTest、Related Pages、source 或 Pcp/Plug module 文档逐段翻译。
+- `page_ts_ts_test.html` 官方同站链接数为 0，当前依赖正文和索引摘录保证可读性；后续低链接文档页仍需继续抽查。
+- API pending 队列仍有 143 个页面，需要继续批量覆盖并逐步增加 source/module/struct 页面专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `pxr_display_filter_adapter_8h_source.html`、`riley_param_schema_8h_source.html`、`sdf_page_front.html`、`sdr_glslfx_page_front.html` 和 `sdr_page_front.html` 等 source/module 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 99 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 255 draft / 143 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`pxr_display_filter_adapter_8h_source.html`、`riley_param_schema_8h_source.html`、`sdf_page_front.html`、`sdr_glslfx_page_front.html`、`sdr_page_front.html`。
+- 本批 5 个 API source/Sdf/Sdr 页面 HTTP 状态均为 200，摘录数为 1-2 条，链接数为 0-37。
+- 首次抽查发现 `sdf_page_front.html` 链接列表存在 `&zwnj;` 零宽实体残留，随后增强 `scripts/build_api_full_batch.mjs` 的 `cleanText()` 实体清理规则。
+- 重建同批页面后抽查确认质量有效：`sdf_page_front.html` 不再包含零宽字符残留，保留 SdfPath、SdfLayer、SdfPrimSpec、UsdPrim、SdfLayerStateDelegateBase 等可读链接；`pxr_display_filter_adapter_8h_source.html` 保留 UsdRiPxrImagingDisplayFilterAdapter、UsdImagingPrimAdapter、UsdPrim 等 source/API 条目；`riley_param_schema_8h_source.html` 保留 HdSchema、Builder、Build 等条目；`sdr_glslfx_page_front.html` 保留 glslfx parser for Sdr 简介；`sdr_page_front.html` 保留 shader discovery / SdrRegistry、SdrShaderNode、SdrShaderProperty 入口。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 260 draft / 138 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 260 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 260 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 source/Sdf/Sdr 批次、脚本修复、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整 source 或 Sdf/Sdr module 文档逐段翻译。
+- `sdr_glslfx_page_front.html` 官方同站链接数为 0、摘录数为 1，当前只保留 glslfx parser for Sdr 简介；后续低链接短模块页仍需继续抽查。
+- API pending 队列仍有 138 个页面，需要继续批量覆盖并逐步增加 source/struct 页面专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `sparse_vectorized_input_traverser_8h.html`、`struct_hgi_sampler_desc.html`、`struct_usd_geom_tokens_type.html`、`struct_usd_lux_tokens_type.html` 和 `struct_usd_physics_tokens_type.html` 等 source/struct 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 100 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 260 draft / 138 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`sparse_vectorized_input_traverser_8h.html`、`struct_hgi_sampler_desc.html`、`struct_usd_geom_tokens_type.html`、`struct_usd_lux_tokens_type.html`、`struct_usd_physics_tokens_type.html`。
+- 本批 5 个 API source/struct token 页面 HTTP 状态均为 200，摘录数均为 2 条，链接数为 3-40。
+- 首次抽查发现 `struct_hgi_sampler_desc.html` 的第二条摘录带有 Doxygen brief 链接文本 `More...`，随后增强 `scripts/build_api_full_batch.mjs` 的 `compactExcerpt()` 段尾噪声清理规则。
+- 重建同批页面后抽查确认质量有效：`struct_hgi_sampler_desc.html` 不再出现 `More...` 摘录噪声，保留 GPU sampler 描述、debugName、magFilter、minFilter、mipFilter、addressMode/borderColor 等字段说明；`sparse_vectorized_input_traverser_8h.html` 保留 VdfSparseVectorizedInputTraverser 条目；`struct_usd_geom_tokens_type.html`、`struct_usd_lux_tokens_type.html` 和 `struct_usd_physics_tokens_type.html` 保留静态 TfTokens 简介与有效 Member entries。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 265 draft / 133 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 265 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 265 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 source/struct token 批次、脚本修复、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整 source 或 struct member 文档逐段翻译。
+- `struct_hgi_sampler_desc.html` 官方同站链接数为 3，当前依赖标题层级和正文摘录保证可读性；后续低链接 struct 页面仍需继续抽查。
+- API pending 队列仍有 133 个页面，需要继续批量覆盖并逐步增加 source/struct/module 页面专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `struct_usd_skel_tokens_type.html`、`system_diagnostics_8h_source.html`、`tf_page_front.html`、`trace_page_front.html` 和 `usd_2usd_2object_8h.html` 等 struct/source/module 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 101 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 265 draft / 133 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`struct_usd_skel_tokens_type.html`、`system_diagnostics_8h_source.html`、`tf_page_front.html`、`trace_page_front.html`、`usd_2usd_2object_8h.html`。
+- 本批 5 个 API struct/source/module/file 页面 HTTP 状态均为 200，摘录数均为 2 条，链接数为 7-40。
+- 首次抽查发现 `usd_2usd_2object_8h.html` 第一条摘录是 include graph 说明，页面链接里也保留了 `Go to the source code of this file.`，随后增强 `scripts/build_api_full_batch.mjs` 的导航噪声过滤。
+- 第二次抽查发现 `usd_2usd_2object_8h.html` 仍保留 `Definition at line ...` source-location 句子，继续增强 `isNavigationOnlyExcerpt()`，统一过滤这种低信息量 Doxygen 位置说明。
+- 重建同批页面后抽查确认质量有效：`usd_2usd_2object_8h.html` 保留 UsdObject、UsdObjType、UsdIsConvertible、UsdIsConcrete 等 member 摘录；`struct_usd_skel_tokens_type.html` 保留 UsdSkelTokens 简介和 bindTransforms、blendShapes、jointNames 等 token 条目；`system_diagnostics_8h_source.html` 保留 ExecSystem::Diagnostics、InvalidateAll、GraphNetwork 和源码片段；`tf_page_front.html` 保留 Tf foundation grouping、TfRefPtr/TfWeakPtr/TfType/TfDebug 等入口；`trace_page_front.html` 保留 TraceCollector、TraceEvent、TraceReporter 和 TRACE instrumentation 说明。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 270 draft / 128 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 270 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 270 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 struct/source/module/file 批次、脚本修复、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整 module 或 file/member 文档逐段翻译。
+- `tf_page_front.html` 和 `trace_page_front.html` 属于模块入口页，当前保留 overview 和关键入口链接；后续如要完整阅读，需要对 module front pages 做更细的逐段双语化。
+- API pending 队列仍有 128 个页面，需要继续批量覆盖并逐步增加 Usd module front pages 专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`full_site/api/`、`reports/api_full_batch_report.*`、`reports/all_pages_inventory.*` 和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `usd_app_utils_page_front.html`、`usd_geom_page_front.html`、`usd_hydra_page_front.html`、`usd_lux_page_front.html` 和 `usd_media_page_front.html` 等 Usd module front pages。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 105 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 285 draft / 113 pending，验证 275 项通过。
+- 继续运行 `scripts/build_api_full_batch.mjs`，从 API `pending_full_scope` 队列新增 5 个 `bilingual_draft` 页面。
+- 本轮新增 API draft：`usd_utils_page_front.html`、`usd_vol_page_front.html`、`usdabc_page_front.html`、`usddraco_page_front.html`、`var_8h_source.html`。
+- 本批 5 个 API utility/plugin/source 页面 HTTP 状态均为 200，摘录数为 1-2 条，链接数为 0-36。
+- 抽查确认本批摘录质量有效：UsdUtils 保留 utility overview 和工具/API 入口，UsdVol 保留 volume schema overview，UsdAbc/UsdDraco 保留 file format plugin overview，var_8h_source 保留 SdfAssetPath、UsdRenderVar、UsdTyped 等索引入口和短源码片段。
+- 本批未发现 `More...`、include graph、source-code、Definition at line、`[!note]` 或零宽字符噪声残留。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 290 draft / 108 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 290 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 290 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 utility/plugin/source 批次、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 API 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整 utility、schema、plugin 或 source 文档逐段翻译。
+- source/file-format plugin 页当前保留概览、索引入口和短摘录，没有展开完整源码或插件文档逐段翻译。
+- API/release pending 队列仍有 108 个页面，需要继续批量覆盖，并逐步加强 release tutorial/spec 页的专项质量审计。
+
+下一轮目标：
+
+1. 继续从 API/release `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_api/`、`source/full_release/`、`full_site/api/`、`full_site/release/`、批次报告、全量清单和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `vt_page_front.html`、`work_page_front.html`、`spec_usdz.html`、`spec.html` 和 `tut_authoring_variants.html` 等后续 API/release 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 106 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、API/release 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 290 draft / 108 pending，验证 275 项通过。
+- 检查最新 pending 队列后确认本轮应覆盖全量前段，而不是只继续 API：`vt_page_front.html`、`work_page_front.html`、`spec_usdz.html`、`spec.html` 和 `tut_authoring_variants.html`。
+- 以 `OPENUSD_BATCH_SIZE=2` 运行 `scripts/build_api_full_batch.mjs`，新增 2 个 API `bilingual_draft` 页面：`vt_page_front.html`、`work_page_front.html`。
+- 以 `OPENUSD_BATCH_SIZE=3` 运行 `scripts/build_release_full_batch.mjs`，新增 3 个 release `bilingual_draft` 页面：`spec_usdz.html`、`spec.html`、`tut_authoring_variants.html`。
+- 增强 `scripts/build_release_full_batch.mjs`：release draft 现在优先从 Sphinx `articleBody` 抽取 h1-h4、正文链接和目录页摘录；无段落目录页会生成 `Index entries include ...` 摘录；`release_full_batch_report.json` 新增 `excerpt_count` 字段。
+- 本批 5 个页面 HTTP 状态均为 200；API 页面摘录数均为 2 条、链接数为 3-5；release 页面摘录数为 1-3 条、链接数为 3-7。
+- 抽查确认本批摘录质量有效：Vt 保留 VtValue/VtArray type abstraction 摘录，Work 保留 multithreaded dispatch 摘录，spec_usdz 保留 packaging/file-ordering/asset-path 摘录，spec 保留三个 specification 入口，Authoring Variants 保留 tutorial 步骤摘录。
+- 本批未发现 `More...`、include graph、source-code、Definition at line、`[!note]` 或零宽字符噪声残留。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 295 draft / 103 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 295 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 295 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 API/release 混合批次、release 脚本修复、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和链接，但没有展开完整 API module、spec 或 tutorial 文档逐段翻译。
+- release tutorial/spec 页当前保留正文摘录和关键链接，尚未做命令块、代码块、表格和步骤级逐段中英对照。
+- API/release pending 队列仍有 103 个页面，需要继续批量覆盖，并逐步加强 release tutorial 页的专项质量审计。
+
+下一轮目标：
+
+1. 继续从 release `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_release/`、`full_site/release/`、`reports/release_full_batch_report.*`、全量清单和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `tut_converting_between_layer_formats.html`、`tut_end_to_end.html`、`tut_generating_new_schema.html`、`tut_helloworld_redux.html` 和 `tut_helloworld.html` 等 release tutorial 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 107 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、release 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 295 draft / 103 pending，验证 275 项通过。
+- 检查最新 pending 队列后确认本轮继续覆盖 release tutorial 前段：`tut_converting_between_layer_formats.html`、`tut_end_to_end.html`、`tut_generating_new_schema.html`、`tut_helloworld_redux.html` 和 `tut_helloworld.html`。
+- 以 `OPENUSD_BATCH_SIZE=5` 运行 `scripts/build_release_full_batch.mjs`，新增 5 个 release `bilingual_draft` 页面。
+- 增强 `scripts/build_release_full_batch.mjs`：release tutorial draft 现在会加入“代码与命令摘录 / Code and Command Excerpts”区块，受限提取每页最多 4 个 `<pre>` 代码/命令块，并在 `release_full_batch_report.json` 中记录 `code_snippet_count`。
+- 本批 5 个 release tutorial 页面 HTTP 状态均为 200，摘录数为 2-3 条，正文链接数为 2-7，代码/命令摘录数均为 1。
+- 抽查确认本批摘录质量有效：layer format tutorial 保留 `usdcat` 命令，end-to-end 保留 `create_asset.py` 命令，schema generation 保留 `schema.usda` 片段，HelloWorld/Redux 保留 `CreateNew`、`DefinePrim` 和 `UsdGeom` 代码片段。
+- 本批未发现 `More...`、include graph、source-code、Definition at line、`[!note]` 或零宽字符噪声残留。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 300 draft / 98 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 300 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 300 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 release tutorial 批次、代码摘录脚本增强、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 release tutorial 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录、正文链接和短代码/命令摘录，但没有展开完整教程逐段翻译。
+- 当前代码/命令摘录是受限样本，不替代完整教程代码块复刻；后续若要更高保真，需要为 tutorial 页面增加步骤级、代码块级中英对照。
+- release/API pending 队列仍有 98 个页面，需要继续批量覆盖，并逐步加强 release tutorial 页的专项质量审计。
+
+下一轮目标：
+
+1. 继续从 release `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_release/`、`full_site/release/`、`reports/release_full_batch_report.*`、全量清单和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `tut_houdini_example.html`、`tut_inspect_and_author_props.html`、`tut_referencing_layers.html`、`tut_simple_shading.html` 和 `tut_traversing_stage.html` 等后续 release tutorial 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 108 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、release 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 300 draft / 98 pending，验证 275 项通过。
+- 检查最新 pending 队列后确认本轮继续覆盖 release tutorial：`tut_houdini_example.html`、`tut_inspect_and_author_props.html`、`tut_referencing_layers.html`、`tut_simple_shading.html` 和 `tut_traversing_stage.html`。
+- 以 `OPENUSD_BATCH_SIZE=5` 运行 `scripts/build_release_full_batch.mjs`，新增 5 个 release `bilingual_draft` 页面。
+- 本批 5 个 release tutorial 页面 HTTP 状态均为 200，摘录数均为 3 条，正文链接数为 0-4，代码/命令摘录数均为 1。
+- 抽查确认本批摘录质量有效：Houdini 历史工作流保留 Solaris 替代说明和 `usdview` 命令，Inspecting/Authoring Properties 保留 `Stage.Open`/`GetPrimAtPath` 代码，Referencing Layers 保留 `SetDefaultPrim`/`XformCommonAPI` 代码，Simple Shading 保留 `UsdShade`/`UsdGeom` 建模与材质代码，Traversing Stage 保留 `usdviewApi.stage.Traverse` 交互示例。
+- 本批未发现 `More...`、include graph、source-code、Definition at line、`[!note]` 或零宽字符噪声残留。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 305 draft / 93 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 305 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 305 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 release tutorial 批次、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 release tutorial 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录、正文链接和短代码/命令摘录，但没有展开完整教程逐段翻译。
+- Houdini historical workflow 页面官方正文同站链接数为 0，当前依靠正文摘录和 `usdview` 命令保证可读性。
+- release/API pending 队列仍有 93 个页面，需要继续批量覆盖，并逐步加强 user guide 页的专项质量审计。
+
+下一轮目标：
+
+1. 继续从 release `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_release/`、`full_site/release/`、`reports/release_full_batch_report.*`、全量清单和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `tut_usd_tutorials.html`、`tut_usdview_plugin.html`、`tut_variants_example_in_katana.html`、`tut_xforms.html` 和 `usd_products.html` 等后续 release 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 109 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、release 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 305 draft / 93 pending，验证 275 项通过。
+- 检查最新 pending 队列后确认本轮继续覆盖 release 页面：`tut_usd_tutorials.html`、`tut_usdview_plugin.html`、`tut_variants_example_in_katana.html`、`tut_xforms.html` 和 `usd_products.html`。
+- 以 `OPENUSD_BATCH_SIZE=5` 运行 `scripts/build_release_full_batch.mjs`，新增 5 个 release `bilingual_draft` 页面。
+- 本批 5 个 release 页面 HTTP 状态均为 200，摘录数为 2-3 条，正文链接数为 1-36，代码/命令摘录数为 0-1。
+- 抽查确认本批摘录质量有效：USD Tutorials 目录页保留 Github、Toolset、Hello World、Referencing Layers、Traversing Stage、Authoring Variants 等教程入口链接，Usdview Plugin 保留 PluginContainer 设置和 `mkdir` 命令，Katana variants 保留历史说明和 Foundry plugin 链接，Xforms 保留 `usdview`/UpAxis/timeCodes 链接和脚本摘录，Products Using USD 保留产品分组标题和 3Delight/Adobe/AMD/Apple 等外链。
+- 本批未发现 `More...`、include graph、source-code、Definition at line、`[!note]` 或零宽字符噪声残留。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 310 draft / 88 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 310 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 310 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 release 后续批次、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 release 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录、正文链接和短代码/命令摘录，但没有展开完整教程或产品清单逐段翻译。
+- `tut_usd_tutorials.html`、`tut_variants_example_in_katana.html` 和 `usd_products.html` 属于目录/说明型页面，官方正文没有需要保留的代码块，本轮代码/命令摘录数为 0。
+- release/API pending 队列仍有 88 个页面，需要继续批量覆盖，并开始加强 user guide 页的专项质量审计。
+
+下一轮目标：
+
+1. 继续从 release `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_release/`、`full_site/release/`、`reports/release_full_batch_report.*`、全量清单和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `usdfaq.html`、`user_guides/collections_and_patterns.html`、`user_guides/color_user_guide.html`、`user_guides/namespace_editing.html` 和 `user_guides/primvars.html` 等后续 release user guide 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 110 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、release 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 310 draft / 88 pending，验证 275 项通过，最终入口 HTTP 200。
+- 检查最新 pending 队列后确认本轮继续覆盖 release/user guide 页面：`usdfaq.html`、`user_guides/collections_and_patterns.html`、`user_guides/color_user_guide.html`、`user_guides/namespace_editing.html` 和 `user_guides/primvars.html`。
+- 首次生成后发现 `user_guides/...` 官方子页面被扁平化到 `full_site/release/*.html`，这会与全量清单期望路径不一致；随即修复 `scripts/build_release_full_batch.mjs`，改为按官方 `/release/...` 相对路径写入 `full_site/release/...` 与 `source/full_release/...`。
+- 同步修复新增页面的 favicon 和“返回最终 HTML 总入口”链接，使其按页面深度生成正确相对路径；已删除本轮初次生成的 4 个扁平化临时文件。
+- 重新以 `OPENUSD_BATCH_SIZE=5` 运行 `scripts/build_release_full_batch.mjs`，新增 5 个 release `bilingual_draft` 页面，输出路径现为 `full_site/release/usdfaq.html` 与 `full_site/release/user_guides/...`。
+- 本批 5 个 release/user guide 页面 HTTP 状态均为 200，摘录数均为 3 条，正文链接数为 0-11，代码/命令摘录数为 0-1。
+- 抽查确认本批摘录质量有效：FAQ 保留 Overview and Purpose、glossary、Alembic、MaterialX、FileFormatArguments、Unicode 链接和 `usdcat` 命令；Collections 保留 collection membership 与 `CollectionAPI` 示例；Color guide 保留 Color Programmer’s Guide、UsdRender、MaterialX、OCIO 链接；Namespace Editing 保留 LayerStack 链接和 usda 示例；Primvars 保留 interpolation modes 与 mesh primvar 示例。
+- 本批未发现 `More...`、include graph、source-code、Definition at line、`[!note]` 或零宽字符噪声残留。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 315 draft / 83 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 315 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 315 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮脚本修复、release/user guide 批次、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 release/user guide 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录、正文链接和短代码/命令摘录，但没有展开完整 FAQ 或 user guide 逐段翻译。
+- Collections、Primvars 等 user guide 页官方正文中的深层例子很多，本轮只保留受限代码摘录；后续如要更高保真，需要为 user guide 页增加步骤/示例级中英对照。
+- release/API pending 队列仍有 83 个页面，下一段开始进入更多 `user_guides/schemas/...` 深层 schema 页面，需要持续验证嵌套路径、返回链接和本地资源。
+
+下一轮目标：
+
+1. 继续从 release `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_release/`、`full_site/release/`、`reports/release_full_batch_report.*`、全量清单和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `user_guides/render_user_guide.html`、`user_guides/schemas/index.html`、`user_guides/schemas/usdLux/BoundableLightBase.html`、`user_guides/schemas/usdLux/CylinderLight.html` 和 `user_guides/schemas/usdLux/DiskLight.html` 等后续 release user guide/schema 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 111 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、release 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 315 draft / 83 pending，验证 275 项通过，最终入口 HTTP 200。
+- 确认 `scripts/build_release_full_batch.mjs` 仍保留第 110 轮加入的 `releaseRelativePathFromUrl`、`hrefToRoot` 和嵌套目录创建逻辑，适合继续生成深层 `user_guides/schemas/...` 页面。
+- 检查最新 pending 队列后确认本轮继续覆盖 release user guide/schema 页面：`user_guides/render_user_guide.html`、`user_guides/schemas/index.html`、`user_guides/schemas/usdLux/BoundableLightBase.html`、`user_guides/schemas/usdLux/CylinderLight.html` 和 `user_guides/schemas/usdLux/DiskLight.html`。
+- 以 `OPENUSD_BATCH_SIZE=5` 运行 `scripts/build_release_full_batch.mjs`，新增 5 个 release `bilingual_draft` 页面，输出路径保留 `user_guides/...` 和 `user_guides/schemas/usdLux/...` 深层目录。
+- 本批 5 个 release user guide/schema 页面 HTTP 状态均为 200，摘录数为 1-3 条，正文链接数为 0-36，代码/命令摘录数为 0-1。
+- 抽查确认本批摘录质量有效：Rendering with USD 保留 `UsdGeom` 链接和 `upAxis` USDA 示例，Schema Domains 保留 Lights/usdLux、BoundableLightBase、CylinderLight、DiskLight、DistantLight、DomeLight、LightAPI 等 schema 入口，BoundableLightBase 保留 Properties、Inherited Properties、extent、xformOpOrder、proxyPrim 等结构，CylinderLight/DiskLight 保留 intrinsic light 说明和 USDA light 示例。
+- 深层页面的 favicon 和“返回最终 HTML 总入口”链接按页面深度生成，例如 `user_guides/schemas/usdLux/*.html` 使用 `../../../../../openusd_bilingual_final.html`，本轮本地资源审计失败 0。
+- 本批未发现 `More...`、include graph、source-code、Definition at line、`[!note]` 或零宽字符噪声残留。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 320 draft / 78 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 320 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 320 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 release schema 批次、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 release user guide/schema 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录、正文链接和短代码/命令摘录，但没有展开完整 schema 属性逐项中文解释。
+- BoundableLightBase 等 schema 页面当前主要保留标题层级和少量摘录，后续如果要更高保真，需要为 Properties 与 Inherited Properties 增加属性级双语表格。
+- release/API pending 队列仍有 78 个页面，下一段继续是多个 `usdLux` schema 页面，需要持续验证深层路径、返回链接和本地资源。
+
+下一轮目标：
+
+1. 继续从 release `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_release/`、`full_site/release/`、`reports/release_full_batch_report.*`、全量清单和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `user_guides/schemas/usdLux/DistantLight.html`、`user_guides/schemas/usdLux/DomeLight_1.html`、`user_guides/schemas/usdLux/DomeLight.html`、`user_guides/schemas/usdLux/GeometryLight.html` 和 `user_guides/schemas/usdLux/LightAPI.html` 等后续 usdLux schema 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 112 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、release 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 320 draft / 78 pending，验证 275 项通过，最终入口 HTTP 200。
+- 确认 `scripts/build_release_full_batch.mjs` 仍保留子目录路径、深层返回入口和代码摘录计数逻辑，适合继续生成 `user_guides/schemas/usdLux/...` 页面。
+- 检查最新 pending 队列后确认本轮继续覆盖 release usdLux schema 页面：`user_guides/schemas/usdLux/DistantLight.html`、`user_guides/schemas/usdLux/DomeLight_1.html`、`user_guides/schemas/usdLux/DomeLight.html`、`user_guides/schemas/usdLux/GeometryLight.html` 和 `user_guides/schemas/usdLux/LightAPI.html`。
+- 以 `OPENUSD_BATCH_SIZE=5` 运行 `scripts/build_release_full_batch.mjs`，新增 5 个 release `bilingual_draft` 页面，输出路径均保留 `user_guides/schemas/usdLux/...` 深层目录。
+- 本批 5 个 release usdLux schema 页面 HTTP 状态均为 200，摘录数为 2-3 条，正文链接数为 0-3，代码/命令摘录数为 0-1。
+- 抽查确认本批摘录质量有效：DistantLight 保留 directional light 说明和 USDA 示例，DomeLight_1 保留 guideRadius、inputs:texture:file、inputs:texture:format、light:shaderId、poleAxis、portals 等属性结构和 OpenEXR/DomeLight 链接，DomeLight 保留 environment lighting、HDR/IBL 说明、OpenEXR/DomeLight_1 链接和 USDA 示例，GeometryLight 保留 geometry/light:shaderId 及继承属性结构，LightAPI 保留 light-linking、UsdShade、Collections 链接和 collection/lightLink、inputs:color、inputs:intensity 等属性结构。
+- 深层页面的 favicon 和“返回最终 HTML 总入口”链接均使用 `../../../../../...` 级别的正确相对路径，本轮本地资源审计失败 0。
+- 本批未发现 `More...`、include graph、source-code、Definition at line、`[!note]` 或零宽字符噪声残留。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 325 draft / 73 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 325 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 325 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 release usdLux schema 批次、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 usdLux schema 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录、正文链接和短代码/命令摘录，但没有展开完整 schema 属性逐项中文解释。
+- DomeLight_1、GeometryLight、LightAPI 等属性密集页面当前主要保留标题层级和少量正文摘录，后续高保真阶段应补属性级双语表格。
+- release/API pending 队列仍有 73 个页面，下一段继续是多个 `usdLux` schema 页面，需要继续验证深层路径、返回链接和本地资源。
+
+下一轮目标：
+
+1. 继续从 release `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_release/`、`full_site/release/`、`reports/release_full_batch_report.*`、全量清单和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `user_guides/schemas/usdLux/LightFilter.html`、`user_guides/schemas/usdLux/LightListAPI.html`、`user_guides/schemas/usdLux/ListAPI.html`、`user_guides/schemas/usdLux/MeshLightAPI.html` 和 `user_guides/schemas/usdLux/NonboundableLightBase.html` 等后续 usdLux schema 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+## 第 113 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、release 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 325 draft / 73 pending，验证 275 项通过，最终入口 HTTP 200。
+- 确认 `scripts/build_release_full_batch.mjs` 仍保留子目录路径、深层返回入口和代码摘录计数逻辑，适合继续生成 `user_guides/schemas/usdLux/...` 页面。
+- 检查最新 pending 队列后确认本轮继续覆盖 release usdLux schema 页面：`user_guides/schemas/usdLux/LightFilter.html`、`user_guides/schemas/usdLux/LightListAPI.html`、`user_guides/schemas/usdLux/ListAPI.html`、`user_guides/schemas/usdLux/MeshLightAPI.html` 和 `user_guides/schemas/usdLux/NonboundableLightBase.html`。
+- 以 `OPENUSD_BATCH_SIZE=5` 运行 `scripts/build_release_full_batch.mjs`，新增 5 个 release `bilingual_draft` 页面，输出路径均保留 `user_guides/schemas/usdLux/...` 深层目录。
+- 本批 5 个 release usdLux schema 页面 HTTP 状态均为 200，摘录数为 1-3 条，正文链接数为 0-3，代码/命令摘录数为 0-1。
+- 抽查确认本批摘录质量有效：LightFilter 保留 Representing Filters on Lights、UsdShade node encapsulation、Collections and Patterns 链接以及 `collection:filterLink:includeRoot`/`lightFilter:shaderId` 属性结构；LightListAPI 保留 `ComputeLightList()` Python 示例；ListAPI 保留 deprecated 说明和 LightListAPI 链接；MeshLightAPI 保留 Mesh Lights 链接和 `light:materialSyncMode`/`light:shaderId` 属性结构；NonboundableLightBase 保留 Representing Non-boundable Lights 链接与继承属性结构。
+- 深层页面的 favicon 和“返回最终 HTML 总入口”链接均使用 `../../../../../...` 级别的正确相对路径，本轮本地资源审计失败 0。
+- 本批未发现 `More...`、include graph、source-code、Definition at line、`[!note]` 或零宽字符噪声残留。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 330 draft / 68 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 330 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 330 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 release usdLux schema 批次、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 usdLux schema 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录、正文链接和短代码/命令摘录，但没有展开完整 schema 属性逐项中文解释。
+- LightFilter、LightListAPI、MeshLightAPI 等页面当前主要保留结构化标题和关键摘录；后续高保真阶段应补属性级双语表格和代码示例上下文。
+- release/API pending 队列仍有 68 个页面，下一段继续是多个 `usdLux` schema 页面，需要继续验证深层路径、返回链接和本地资源。
+
+下一轮目标：
+
+1. 继续从 release `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_release/`、`full_site/release/`、`reports/release_full_batch_report.*`、全量清单和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `user_guides/schemas/usdLux/overview.html`、`user_guides/schemas/usdLux/PluginLight.html`、`user_guides/schemas/usdLux/PluginLightFilter.html`、`user_guides/schemas/usdLux/PortalLight.html` 和 `user_guides/schemas/usdLux/RectLight.html` 等后续 usdLux schema 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 114 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、release 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 330 draft / 68 pending，验证 275 项通过。
+- 确认 `scripts/build_release_full_batch.mjs` 仍保留子目录路径、深层返回入口、Sphinx `articleBody` 摘录和代码摘录计数逻辑，适合继续生成 `user_guides/schemas/usdLux/...` 页面。
+- 检查最新 pending 队列后确认本轮继续覆盖 release usdLux schema 页面：`user_guides/schemas/usdLux/overview.html`、`user_guides/schemas/usdLux/PluginLight.html`、`user_guides/schemas/usdLux/PluginLightFilter.html`、`user_guides/schemas/usdLux/PortalLight.html` 和 `user_guides/schemas/usdLux/RectLight.html`。
+- 以 `OPENUSD_BATCH_SIZE=5` 运行 `scripts/build_release_full_batch.mjs`，新增 5 个 release `bilingual_draft` 页面，输出路径均保留 `user_guides/schemas/usdLux/...` 深层目录。
+- 本批 5 个 release usdLux schema 页面 HTTP 状态均为 200，摘录数为 1-3 条，正文链接数为 0-2，代码/命令摘录数为 0-1。
+- 抽查确认本批摘录质量有效：overview 保留 UsdLux schema domain 概览、feature 列表和 RectLight USDA 示例；PluginLight 保留外部 Sdr shader node 识别说明和 Xformable/Imageable 继承属性结构；PluginLightFilter 保留 UsdShadeNodeDefAPI、filterLink collection、`collection:filterLink:includeRoot` 和 `lightFilter:shaderId` 结构；PortalLight 保留 dome light sampling portal、`inputs:height`、`inputs:width` 和 `light:shaderId` 结构；RectLight 保留 soft box/linear light 说明、`inputs:width`、`inputs:height`、`inputs:texture:file` 示例。
+- 深层页面的 favicon 和“返回最终 HTML 总入口”链接均使用 `../../../../../...` 级别的正确相对路径，本轮本地资源审计失败 0。
+- 本批未发现 `More...`、include graph、source-code、Definition at line、`[!note]` 或零宽字符噪声残留。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 335 draft / 63 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 335 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 335 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 release usdLux schema 批次、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 usdLux schema 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录、正文链接和短代码/命令摘录，但没有展开完整 schema 属性逐项中文解释。
+- PluginLight、PluginLightFilter、PortalLight、RectLight 等页面当前保留关键属性名和少量摘录；后续高保真阶段应补属性级双语表格和更完整 USDA 示例上下文。
+- release/API pending 队列仍有 63 个页面，下一段继续是多个 `usdLux` schema 页面，需要继续验证深层路径、返回链接和本地资源。
+
+下一轮目标：
+
+1. 继续从 release `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_release/`、`full_site/release/`、`reports/release_full_batch_report.*`、全量清单和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `user_guides/schemas/usdLux/ShadowAPI.html`、`user_guides/schemas/usdLux/ShapingAPI.html`、`user_guides/schemas/usdLux/SphereLight.html`、`user_guides/schemas/usdLux/usdLux_toc.html` 和 `user_guides/schemas/usdLux/VolumeLightAPI.html` 等后续 usdLux schema 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 115 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、release 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 335 draft / 63 pending，验证 275 项通过。
+- 确认本轮继续覆盖 release usdLux schema pending 队列：`user_guides/schemas/usdLux/ShadowAPI.html`、`user_guides/schemas/usdLux/ShapingAPI.html`、`user_guides/schemas/usdLux/SphereLight.html`、`user_guides/schemas/usdLux/usdLux_toc.html` 和 `user_guides/schemas/usdLux/VolumeLightAPI.html`。
+- 以 `OPENUSD_BATCH_SIZE=5` 运行 `scripts/build_release_full_batch.mjs`，新增 5 个 release `bilingual_draft` 页面，输出路径均保留 `user_guides/schemas/usdLux/...` 深层目录。
+- 本批 5 个 release usdLux schema 页面 HTTP 状态均为 200，摘录数为 1-3 条，正文链接数为 0-22，代码/命令摘录数为 0-1。
+- 抽查确认本批摘录质量有效：ShadowAPI 保留 shadow color/distance/falloff 控制说明和 Shadows 链接；ShapingAPI 保留 light spread、cone angle、focus/softness 等塑形属性说明；SphereLight 保留 point/spherical light 说明和 Sphere/Cube 示例摘录；usdLux_toc 保留 Overview、UsdLux Schemas and Concepts、Light Units 等目录入口；VolumeLightAPI 保留 Volume prim light behavior、materialSyncMode 和 VolumeLight shaderId 说明。
+- 深层页面的 favicon 和“返回最终 HTML 总入口”链接均使用 `../../../../../...` 级别的正确相对路径，本轮本地资源审计失败 0。
+- 本批未发现 `More...`、include graph、source-code、Definition at line、`[!note]` 或零宽字符噪声残留。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 340 draft / 58 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 340 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 340 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 release usdLux schema 批次、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 usdLux schema 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录、正文链接和短代码/命令摘录，但没有展开完整 schema 属性逐项中文解释。
+- ShadowAPI、ShapingAPI、VolumeLightAPI 等属性型页面当前保留关键属性名和少量摘录；后续高保真阶段应补属性级双语表格和更完整示例上下文。
+- release/API pending 队列仍有 58 个页面，下一段将从 usdMedia 和 usdRender schema 页面继续推进，仍需持续验证深层路径、返回链接和本地资源。
+
+下一轮目标：
+
+1. 继续从 release `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_release/`、`full_site/release/`、`reports/release_full_batch_report.*`、全量清单和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `user_guides/schemas/usdMedia/AssetPreviewsAPI.html`、`user_guides/schemas/usdMedia/overview.html`、`user_guides/schemas/usdMedia/SpatialAudio.html`、`user_guides/schemas/usdMedia/usdMedia_toc.html` 和 `user_guides/schemas/usdRender/overview.html` 等后续 release schema 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 116 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、release 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 340 draft / 58 pending，验证 275 项通过。
+- 确认本轮继续覆盖 release schema pending 队列：`user_guides/schemas/usdMedia/AssetPreviewsAPI.html`、`user_guides/schemas/usdMedia/overview.html`、`user_guides/schemas/usdMedia/SpatialAudio.html`、`user_guides/schemas/usdMedia/usdMedia_toc.html` 和 `user_guides/schemas/usdRender/overview.html`。
+- 以 `OPENUSD_BATCH_SIZE=5` 运行 `scripts/build_release_full_batch.mjs`，新增 5 个 release `bilingual_draft` 页面，输出路径保留 `user_guides/schemas/usdMedia/...` 和 `user_guides/schemas/usdRender/...` 深层目录。
+- 本批 5 个 release schema 页面 HTTP 状态均为 200，摘录数为 1-3 条，正文链接数为 0-3，代码/命令摘录数为 0-1。
+- 抽查确认本批摘录质量有效：AssetPreviewsAPI 保留 thumbnail/preview render 用途说明和链接缩略图示例；usdMedia overview 保留 audio、SpatialAudio、AssetPreviewsAPI 关联说明；SpatialAudio 保留 filePath、auralMode、playback settings 和 Speech/Ambient 示例摘录；usdMedia_toc 保留 Overview、Working With Media、AssetPreviewsAPI、SpatialAudio 等目录入口；usdRender overview 保留 final-quality render、render pass、render product/var/settings 等渲染配置概览。
+- 深层页面的 favicon 和“返回最终 HTML 总入口”链接均使用 `../../../../../...` 级别的正确相对路径，本轮本地资源审计失败 0。
+- 本批未发现 `More...`、include graph、source-code、Definition at line、`[!note]` 或零宽字符噪声残留。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 345 draft / 53 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 345 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 345 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 release schema 批次、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 release schema 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录、正文链接和短代码/命令摘录，但没有展开完整属性表、示例解释或渲染流程逐段翻译。
+- usdMedia 与 usdRender 的 overview 类页面当前保留关键概览和目录入口；后续高保真阶段应补更完整的 schema 关系图、属性级双语表格和代码示例上下文。
+- release/API pending 队列仍有 53 个页面，下一段将继续覆盖 usdRender schema 页面，仍需持续验证深层路径、返回链接和本地资源。
+
+下一轮目标：
+
+1. 继续从 release `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_release/`、`full_site/release/`、`reports/release_full_batch_report.*`、全量清单和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `user_guides/schemas/usdRender/RenderPass.html`、`user_guides/schemas/usdRender/RenderProduct.html`、`user_guides/schemas/usdRender/RenderSettings.html`、`user_guides/schemas/usdRender/RenderSettingsBase.html` 和 `user_guides/schemas/usdRender/RenderVar.html` 等后续 usdRender schema 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 117 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、release 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 345 draft / 53 pending，验证 275 项通过。
+- 确认本轮继续覆盖 release usdRender schema pending 队列：`user_guides/schemas/usdRender/RenderPass.html`、`user_guides/schemas/usdRender/RenderProduct.html`、`user_guides/schemas/usdRender/RenderSettings.html`、`user_guides/schemas/usdRender/RenderSettingsBase.html` 和 `user_guides/schemas/usdRender/RenderVar.html`。
+- 以 `OPENUSD_BATCH_SIZE=5` 运行 `scripts/build_release_full_batch.mjs`，新增 5 个 release `bilingual_draft` 页面，输出路径保留 `user_guides/schemas/usdRender/...` 深层目录。
+- 本批 5 个 release usdRender schema 页面 HTTP 状态均为 200，摘录数为 1-3 条，正文链接数为 0-5，代码/命令摘录数均为 1。
+- 抽查确认本批摘录质量有效：RenderPass 保留 renderer/scene configuration 与多 pass 渲染说明；RenderProduct 保留单个输出 artifact、RenderVars 组合和 PrimaryProduct 示例；RenderSettings 保留全局渲染设置、输出配置和 renderer-specific API schemas 说明；RenderSettingsBase 保留 camera aperture 与 image aspect ratio mismatch 策略说明；RenderVar 保留 AOV/channel、变量命名、source information 和 LPE 等摘录。
+- 深层页面的 favicon 和“返回最终 HTML 总入口”链接均使用 `../../../../../...` 级别的正确相对路径，本轮本地资源审计失败 0。
+- 本批未发现 `More...`、include graph、source-code、Definition at line、`[!note]` 或零宽字符噪声残留。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 350 draft / 48 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 350 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 350 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 release usdRender schema 批次、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 release usdRender schema 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录、正文链接和短代码/命令摘录，但没有展开完整属性表、渲染流程图或示例逐段翻译。
+- RenderSettings 与 RenderSettingsBase 这类属性密集页面当前保留关键概览和局部摘录；后续高保真阶段应补属性级双语表格、取值策略说明和代码示例上下文。
+- release/API pending 队列仍有 48 个页面，下一段将进入 `usdRender_toc` 与 `usdUI` schema 页面，仍需持续验证深层路径、返回链接和本地资源。
+
+下一轮目标：
+
+1. 继续从 release `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_release/`、`full_site/release/`、`reports/release_full_batch_report.*`、全量清单和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `user_guides/schemas/usdRender/usdRender_toc.html`、`user_guides/schemas/usdUI/AccessibilityAPI.html`、`user_guides/schemas/usdUI/AttributeHints.html`、`user_guides/schemas/usdUI/Backdrop.html` 和 `user_guides/schemas/usdUI/NodeGraphNodeAPI.html` 等后续 release schema 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 118 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、release 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 350 draft / 48 pending，验证 275 项通过。
+- 确认本轮继续覆盖 release usdRender/usdUI schema pending 队列：`user_guides/schemas/usdRender/usdRender_toc.html`、`user_guides/schemas/usdUI/AccessibilityAPI.html`、`user_guides/schemas/usdUI/AttributeHints.html`、`user_guides/schemas/usdUI/Backdrop.html` 和 `user_guides/schemas/usdUI/NodeGraphNodeAPI.html`。
+- 以 `OPENUSD_BATCH_SIZE=5` 运行 `scripts/build_release_full_batch.mjs`，新增 5 个 release `bilingual_draft` 页面，输出路径保留 `user_guides/schemas/usdRender/...` 和 `user_guides/schemas/usdUI/...` 深层目录。
+- 本批 5 个 release schema 页面 HTTP 状态均为 200，摘录数为 1-3 条，正文链接数为 0-6，代码/命令摘录数为 0-1。
+- 抽查确认本批摘录质量有效：usdRender_toc 保留 Overview、Best Practices、RenderSettings、RenderProduct、RenderVar 等目录入口；AccessibilityAPI 保留 label/description/priority 辅助访问信息说明和示例；AttributeHints 保留 valueLabels、valueLabelsOrder、ObjectHints、PropertyHints 关联；Backdrop 保留 node graph grouping、colored rectangle 和材质节点示例摘录；NodeGraphNodeAPI 保留 node position、displayColor、stackingOrder、docURI 等节点图 UI 信息。
+- 深层页面的 favicon 和“返回最终 HTML 总入口”链接均使用 `../../../../../...` 级别的正确相对路径，本轮本地资源审计失败 0。
+- 本批未发现 `More...`、include graph、source-code、Definition at line、`[!note]`、`&zwnj;` 或零宽字符噪声残留。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 355 draft / 43 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 355 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 355 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 release schema 批次、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 release schema 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录、正文链接和短代码/命令摘录，但没有展开完整 UI schema 属性表或示例逐段翻译。
+- AccessibilityAPI、AttributeHints、Backdrop 和 NodeGraphNodeAPI 当前保留关键说明与示例摘录；后续高保真阶段应补 metadata/API schema 属性级双语表格和 UI 行为解释。
+- release/API pending 队列仍有 43 个页面，下一段将继续覆盖 `usdUI` schema 页面，仍需持续验证深层路径、返回链接和本地资源。
+
+下一轮目标：
+
+1. 继续从 release `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_release/`、`full_site/release/`、`reports/release_full_batch_report.*`、全量清单和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `user_guides/schemas/usdUI/ObjectHints.html`、`user_guides/schemas/usdUI/overview.html`、`user_guides/schemas/usdUI/PrimHints.html`、`user_guides/schemas/usdUI/PropertyHints.html` 和 `user_guides/schemas/usdUI/SceneGraphPrimAPI.html` 等后续 usdUI schema 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 119 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、release 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 355 draft / 43 pending，验证 275 项通过。
+- 确认本轮继续覆盖 release usdUI schema pending 队列：`user_guides/schemas/usdUI/ObjectHints.html`、`user_guides/schemas/usdUI/overview.html`、`user_guides/schemas/usdUI/PrimHints.html`、`user_guides/schemas/usdUI/PropertyHints.html` 和 `user_guides/schemas/usdUI/SceneGraphPrimAPI.html`。
+- 以 `OPENUSD_BATCH_SIZE=5` 运行 `scripts/build_release_full_batch.mjs`，新增 5 个 release `bilingual_draft` 页面，输出路径保留 `user_guides/schemas/usdUI/...` 深层目录。
+- 本批 5 个 release usdUI schema 页面 HTTP 状态均为 200，摘录数为 1-3 条，正文链接数为 0-2，代码/命令摘录数均为 1。
+- 抽查确认本批摘录质量有效：ObjectHints 保留 displayName/hidden UI hints 和 Placeholder 示例；usdUI overview 保留 node graph、NodeGraphNodeAPI、SceneGraphPrimAPI、Backdrops、assistive UI 与 UI hints 概览；PrimHints 保留 displayGroupsExpanded、displayGroupsShownIf 和 ObjectHints 关联；PropertyHints 保留 displayGroup、shownIf、ObjectHints 与 PrimHints 关联；SceneGraphPrimAPI 保留 ui:displayGroup、ui:displayName 和 shader node 示例摘录。
+- 深层页面的 favicon 和“返回最终 HTML 总入口”链接均使用 `../../../../../...` 级别的正确相对路径，本轮本地资源审计失败 0。
+- 本批未发现 `More...`、include graph、source-code、Definition at line、`[!note]`、`&zwnj;` 或零宽字符噪声残留。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 360 draft / 38 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 360 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 360 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 release usdUI schema 批次、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 usdUI schema 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录、正文链接和短代码/命令摘录，但没有展开完整 UI metadata 字典表或示例逐段翻译。
+- PrimHints 与 PropertyHints 当前保留 display group、shownIf 和示例摘录；后续高保真阶段应补充条件表达式、显示组行为和对象/属性继承关系的双语说明。
+- release/API pending 队列仍有 38 个页面，下一段将从 `usdUI_toc` 转入 `usdVol` schema 页面，仍需持续验证深层路径、返回链接和本地资源。
+
+下一轮目标：
+
+1. 继续从 release `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_release/`、`full_site/release/`、`reports/release_full_batch_report.*`、全量清单和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `user_guides/schemas/usdUI/usdUI_toc.html`、`user_guides/schemas/usdVol/Field3DAsset.html`、`user_guides/schemas/usdVol/FieldAsset.html`、`user_guides/schemas/usdVol/FieldBase.html` 和 `user_guides/schemas/usdVol/OpenVDBAsset.html` 等后续 release schema 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 120 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、release 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 360 draft / 38 pending，验证 275 项通过。
+- 确认本轮继续覆盖 release usdUI/usdVol schema pending 队列：`user_guides/schemas/usdUI/usdUI_toc.html`、`user_guides/schemas/usdVol/Field3DAsset.html`、`user_guides/schemas/usdVol/FieldAsset.html`、`user_guides/schemas/usdVol/FieldBase.html` 和 `user_guides/schemas/usdVol/OpenVDBAsset.html`。
+- 以 `OPENUSD_BATCH_SIZE=5` 运行 `scripts/build_release_full_batch.mjs`，新增 5 个 release `bilingual_draft` 页面，输出路径保留 `user_guides/schemas/usdUI/...` 和 `user_guides/schemas/usdVol/...` 深层目录。
+- 本批 5 个 release schema 页面 HTTP 状态均为 200，摘录数为 1-3 条，正文链接数为 1-9，代码/命令摘录数为 0-1。
+- 抽查确认本批摘录质量有效：usdUI_toc 保留 Overview、Working With Node Graphs、Working With Accessibility Information、UI Hints、Display Groups 等目录入口；Field3DAsset 保留 Field3D volume field、filePath timeSamples 和 density field 示例；FieldAsset 与 FieldBase 保留 deprecated/VolumeFieldAsset/VolumeFieldBase 迁移说明；OpenVDBAsset 保留 OpenVDB volume grid、fieldIndex、fieldName、filePath timeSamples 和 densityVDB 示例。
+- 深层页面的 favicon 和“返回最终 HTML 总入口”链接均使用 `../../../../../...` 级别的正确相对路径，本轮本地资源审计失败 0。
+- 本批未发现 `More...`、include graph、source-code、Definition at line、`[!note]`、`&zwnj;` 或零宽字符噪声残留。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 365 draft / 33 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 365 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 365 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 release usdUI/usdVol schema 批次、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 release schema 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录、正文链接和短代码/命令摘录，但没有展开完整 volume field 属性表或示例逐段翻译。
+- FieldAsset 与 FieldBase 当前只保留 deprecated 迁移方向和继承属性摘录；后续高保真阶段应补 VolumeFieldAsset/VolumeFieldBase 的属性级双语说明与数据类型约束。
+- release/API pending 队列仍有 33 个页面，下一段将继续覆盖 `usdVol` schema 页面，仍需持续验证深层路径、返回链接和本地资源。
+
+下一轮目标：
+
+1. 继续从 release `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_release/`、`full_site/release/`、`reports/release_full_batch_report.*`、全量清单和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `user_guides/schemas/usdVol/overview.html`、`user_guides/schemas/usdVol/ParticleField.html`、`user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html`、`user_guides/schemas/usdVol/ParticleFieldKernelBaseAPI.html` 和 `user_guides/schemas/usdVol/ParticleFieldKernelConstantSurfletAPI.html` 等后续 usdVol schema 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 121 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、release 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 365 draft / 33 pending，验证 275 项通过。
+- 确认本轮继续覆盖 release usdVol schema pending 队列：`user_guides/schemas/usdVol/overview.html`、`user_guides/schemas/usdVol/ParticleField.html`、`user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html`、`user_guides/schemas/usdVol/ParticleFieldKernelBaseAPI.html` 和 `user_guides/schemas/usdVol/ParticleFieldKernelConstantSurfletAPI.html`。
+- 以 `OPENUSD_BATCH_SIZE=5` 运行 `scripts/build_release_full_batch.mjs`，新增 5 个 release `bilingual_draft` 页面，输出路径保留 `user_guides/schemas/usdVol/...` 深层目录。
+- 本批 5 个 release usdVol schema 页面 HTTP 状态均为 200，摘录数为 2-3 条，正文链接数为 0-1，代码/命令摘录数为 0-1。
+- 抽查确认本批摘录质量有效：usdVol overview 保留 volumes/volumetric data、OpenVDB/Field3D、particle fields 和 3D Gaussian splats 说明；ParticleField 保留 base schema、derived types 和自定义 schema 继承方向；ParticleField3DGaussianSplat 保留 original 3D Gaussian Splats technique、built-in schema 和 rendering hints；ParticleFieldKernelBaseAPI 保留 spatial basis function 和 validation 语义；ParticleFieldKernelConstantSurfletAPI 保留 step-function falloff、bounded disk、ellipse transform 和 splat center 说明。
+- 深层页面的 favicon 和“返回最终 HTML 总入口”链接均使用 `../../../../../...` 级别的正确相对路径，本轮本地资源审计失败 0。
+- 本批未发现 `More...`、include graph、source-code、Definition at line、`[!note]`、`&zwnj;` 或零宽字符噪声残留。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 370 draft / 28 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 370 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 370 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 release usdVol schema 批次、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 usdVol schema 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录、正文链接和短代码/命令摘录，但没有展开完整粒子场属性表或 3DGS 数据语义逐段翻译。
+- ParticleField3DGaussianSplat 与 kernel API 页面当前保留核心概览；后续高保真阶段应补 built-in schema、rendering hints、kernel transform 和 opacity/falloff 语义的属性级双语表格。
+- release/API pending 队列仍有 28 个页面，下一段继续覆盖 `usdVol` 的 kernel/attribute API 页面，仍需持续验证深层路径、返回链接和本地资源。
+
+下一轮目标：
+
+1. 继续从 release `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_release/`、`full_site/release/`、`reports/release_full_batch_report.*`、全量清单和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `user_guides/schemas/usdVol/ParticleFieldKernelGaussianEllipsoidAPI.html`、`user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html`、`user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html`、`user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html` 和 `user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html` 等后续 usdVol schema 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 122 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、release 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 370 draft / 28 pending，验证 275 项通过。
+- 确认本轮继续覆盖 release usdVol schema pending 队列：`user_guides/schemas/usdVol/ParticleFieldKernelGaussianEllipsoidAPI.html`、`user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html`、`user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html`、`user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html` 和 `user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html`。
+- 首次运行 `scripts/build_release_full_batch.mjs` 时官方站 HTTPS 建连出现一次 `ECONNRESET`，未写入新状态；立即重试后成功完成本批生成。
+- 以 `OPENUSD_BATCH_SIZE=5` 运行 `scripts/build_release_full_batch.mjs`，新增 5 个 release `bilingual_draft` 页面，输出路径保留 `user_guides/schemas/usdVol/...` 深层目录。
+- 本批 5 个 release usdVol schema 页面 HTTP 状态均为 200，摘录数均为 3 条，正文链接数为 0-1，代码/命令摘录数为 0。
+- 抽查确认本批摘录质量有效：ParticleFieldKernelGaussianEllipsoidAPI 保留 Gaussian ellipsoid kernel、identity transform、standard deviation、3-sigma/99.7% 说明；ParticleFieldKernelGaussianSurfletAPI 保留 Gaussian surflet kernel、XY plane、off-plane opacity 0 和 3-sigma 说明；ParticleFieldOpacityAttributeAPI 保留 [0, 1] 线性 opacity 与 PLY/Gaussian splats transformed data 区分；ParticleFieldOrientationAttributeAPI 和 ParticleFieldPositionAttributeAPI 保留 float/half 类型与 consumer prefer float 说明。
+- 深层页面的“返回最终 HTML 总入口”链接使用 `../../../../../...` 级别的正确相对路径，本轮本地资源审计失败 0。
+- 本批未发现 `More...`、include graph、source-code、Definition at line、`[!note]`、`&zwnj;` 或零宽字符噪声残留。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 375 draft / 23 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 375 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 375 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 release usdVol kernel/attribute API 批次、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 usdVol schema 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和少量正文链接，但没有展开完整属性表、数据类型约束或 3DGS 训练数据映射说明。
+- Gaussian kernel 与 attribute API 页面当前保留核心定义和短摘录；后续高保真阶段应补 kernel transform、opacity/falloff、float/half 类型选择和数据消费策略的属性级双语表格。
+- release/API pending 队列仍有 23 个页面，下一段继续覆盖 `usdVol` 后续属性 API 与剩余 release 页面，仍需持续验证深层路径、返回链接和本地资源。
+
+下一轮目标：
+
+1. 继续从 release `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_release/`、`full_site/release/`、`reports/release_full_batch_report.*`、全量清单和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html`、`user_guides/schemas/usdVol/ParticleFieldRadianceBaseAPI.html`、`user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html`、`user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html` 和 `user_guides/schemas/usdVol/usdVol_toc.html` 等后续 release 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 123 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查源快照目录、双语输出目录、全量清单、release 批次报告、draft 预览审计、最终 HTML、脚本和验证报告，确认上一轮状态为 406 total / 8 complete / 375 draft / 23 pending，验证 275 项通过，最终入口 HTTP 200。
+- 确认本轮继续覆盖 release usdVol schema pending 队列：`user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html`、`user_guides/schemas/usdVol/ParticleFieldRadianceBaseAPI.html`、`user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html`、`user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html` 和 `user_guides/schemas/usdVol/usdVol_toc.html`。
+- 以 `OPENUSD_BATCH_SIZE=5` 运行 `scripts/build_release_full_batch.mjs`，新增 5 个 release `bilingual_draft` 页面，输出路径保留 `user_guides/schemas/usdVol/...` 深层目录。
+- 本批 5 个 release usdVol schema 页面 HTTP 状态均为 200，摘录数为 1-3 条，正文链接数为 0-21，代码/命令摘录数为 0；其中 `usdVol_toc.html` 保留 21 个目录链接。
+- 抽查确认本批摘录质量有效：ParticleFieldPositionBaseAPI 保留 position data、particle count 与 per-particle data 关系说明；ParticleFieldRadianceBaseAPI 保留 radiance definition 与 validation presence 说明；ParticleFieldScaleAttributeAPI 保留 linear scales 和 PLY/Gaussian splats log-format 区分；ParticleFieldSphericalHarmonicsAttributeAPI 保留 spherical harmonics degree/coefficient 与 degree constant across particles 说明；`usdVol_toc.html` 保留 Overview、Working With Volumes、Working With Fields、Working With Particle Fields、Field3DAsset 等目录入口。
+- 深层页面的“返回最终 HTML 总入口”链接使用 `../../../../../...` 级别的正确相对路径，本轮本地资源审计失败 0。
+- 本批未发现 `More...`、include graph、source-code、Definition at line、`[!note]`、`&zwnj;` 或零宽字符噪声残留。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 380 draft / 18 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 380 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 380 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 release usdVol attribute/TOC 批次、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增的 5 个 usdVol schema 页面仍是结构化 `bilingual_draft`，保留页面级中英说明、官方英文摘录和目录链接，但没有展开完整属性表、数据类型约束或逐段示例解释。
+- `usdVol_toc.html` 当前保留目录入口与中英导读，尚未对每个目录项补充完整中文路线说明。
+- release/API pending 队列仍有 18 个页面，下一段开始覆盖剩余 Volume schema 页面和 release 用户指南/白皮书页面，仍需持续验证深层路径、返回链接和本地资源。
+
+下一轮目标：
+
+1. 继续从 release `pending_full_scope` 队列生成下一批 draft，并保持 `source/full_release/`、`full_site/release/`、`reports/release_full_batch_report.*`、全量清单和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `user_guides/schemas/usdVol/Volume.html`、`user_guides/schemas/usdVol/VolumeFieldAsset.html`、`user_guides/schemas/usdVol/VolumeFieldBase.html`、`user_guides/time_and_animated_values.html` 和 `user_guides/variable_expressions.html` 等后续 release 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 回退记录 时间：2026-06-04
+
+已完成：
+
+- 用户确认“一次性生成 18 个页面”的质量不合适，要求回退并继续按原来的 5 页节奏推进。
+- 已删除误生成的 18 个本地 draft HTML：`user_guides/schemas/usdVol/Volume.html`、`VolumeFieldAsset.html`、`VolumeFieldBase.html`、`user_guides/time_and_animated_values.html`、`user_guides/variable_expressions.html`、`wp_ar2.html`、`wp_asset_previews.html`、`wp_connectable_nodes.html`、`wp_coordsys.html`、`wp_render_settings.html`、`wp_rigid_body_physics.html`、`wp_schema_versioning.html`、`wp_stage_variables.html`、`wp_usdaudio.html`、`wp_usdlux_for_geometry_lights.html`、`wp_usdlux_for_renderers.html`、`wp_usdshade.html` 和 `wp.html`。
+- 同步删除上述 18 页在 `source/full_release/` 下的源快照，避免清单把低质量页面误判为当前有效 draft。
+- 将 `reports/release_full_batch_report.json` 和 `.md` 恢复为第 123 轮最后接受的 5 页批次：`ParticleFieldPositionBaseAPI`、`ParticleFieldRadianceBaseAPI`、`ParticleFieldScaleAttributeAPI`、`ParticleFieldSphericalHarmonicsAttributeAPI`、`usdVol_toc`。
+- 重新运行全量发现、最终入口构建和 draft 预览审计，当前状态恢复为 406 total / 8 complete / 380 draft / 18 pending。
+
+后续策略：
+
+1. 不再一次性清空剩余 pending。
+2. 后续继续每轮 5 个页面，优先覆盖 `user_guides/schemas/usdVol/Volume.html`、`VolumeFieldAsset.html`、`VolumeFieldBase.html`、`user_guides/time_and_animated_values.html` 和 `user_guides/variable_expressions.html`。
+3. 每一批继续保留中文为主、英文原文保留、API 名称和链接不改，并跑本地验证后再记录。
+
+## 第 124 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查 `reports/all_pages_inventory.json`、`reports/release_full_batch_report.json`、`reports/full_draft_preview_audit.json`、脚本和最终入口，确认回退后状态为 406 total / 8 complete / 380 draft / 18 pending。
+- 同步更新 automation `openusd-api` 的提示，明确后续严格每轮最多处理 5 个 `pending_full_scope` 页面，保留此前 18 页低质量批次已回退的约束。
+- 增强 `scripts/build_release_full_batch.mjs`：新增标题归一化、剩余 release 页面标题中文映射、页面级中文导读区块，并在批次报告中记录 `chinese_note_count`。
+- 按 5 页节奏生成本轮 release draft：`user_guides/schemas/usdVol/Volume.html`、`user_guides/schemas/usdVol/VolumeFieldAsset.html`、`user_guides/schemas/usdVol/VolumeFieldBase.html`、`user_guides/time_and_animated_values.html`、`user_guides/variable_expressions.html`。
+- 本批 5 页 HTTP 状态均为 200；每页新增 4 条页面级中文导读，摘录数为 1-3 条，链接数为 0-2，代码/命令摘录数为 0-1。
+- 质量抽查确认：Volume 保留体积效果、Volume 继承关系、field:* relationships 和 OpenVDBAsset 示例；VolumeFieldAsset 保留外部文件型体积场、filePath、fieldName、fieldIndex、fieldDataType、vectorDataRoleHint；VolumeFieldBase 保留 UsdVol field schema 基类语义；Time and Animated Values 保留 TimeCode、TimeSamples、timeCodesPerSecond、LayerOffsets 与 timeSamples 示例；USD Variable Expressions 保留 expressionVariables、asset path/reference/variant selection 与 ASSET_PATH/VARIANT_CHOICE 示例。
+- 抽查 5 个新增 HTML：标题均为中文优先并保留英文页面名，均包含 `Chinese Reading Notes`，未发现 `U+FFFD`、`锟`、`Ã`、`Â`、`â` 等坏编码标记。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 385 draft / 13 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 385 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 385 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 5 页批次、脚本增强、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增 5 页仍标记为 `bilingual_draft`，虽然增加了页面级中文导读，但还不是逐段完整翻译或属性表全量复刻。
+- 剩余 13 个 pending 页面主要是 release 提案/白皮书类页面，正文较长，后续仍应坚持 5 页一轮并做页面级导读，不应恢复一次性清空策略。
+
+下一轮目标：
+
+1. 继续从 release `pending_full_scope` 队列生成下一批 5 个 draft，并保持 `source/full_release/`、`full_site/release/`、`reports/release_full_batch_report.*`、全量清单和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `wp_ar2.html`、`wp_asset_previews.html`、`wp_connectable_nodes.html`、`wp_coordsys.html` 和 `wp_render_settings.html` 等剩余 release 提案页。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 125 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查 `reports/all_pages_inventory.json`、`reports/release_full_batch_report.json`、`reports/full_draft_preview_audit.json`、`reports/validation_report.json`、`reports/scope_manifest.json` 和最终入口，确认上一轮状态为 406 total / 8 complete / 385 draft / 13 pending，最终入口 HTTP 200。
+- 读取本轮 5 个官方 proposal 页的标题、段落、列表和代码片段，用于补专门中文导读：`wp_ar2.html`、`wp_asset_previews.html`、`wp_connectable_nodes.html`、`wp_coordsys.html`、`wp_render_settings.html`。
+- 增强 `scripts/build_release_full_batch.mjs` 的页面级中文导读映射，新增 Ar 2.0、Asset Previews、Connectable Nodes、Coordinate Systems、Render Settings 五个 proposal 页的导读。
+- 按默认 5 页节奏运行 `scripts/build_release_full_batch.mjs`，新增 5 个 release `bilingual_draft` 页面：`wp_ar2.html`、`wp_asset_previews.html`、`wp_connectable_nodes.html`、`wp_coordsys.html`、`wp_render_settings.html`。
+- 本批 5 页 HTTP 状态均为 200；每页 4 条中文导读，摘录数均为 3 条，链接数为 1-9，代码/命令摘录数为 0-1。
+- 质量抽查确认：Ar 2.0 保留 ArResolver、NVI、Identifier、Resolve/AssetInfo 等设计入口；Asset Previews 保留 prim/defaultPrim 预览关联、assetInfo 字典和 thumbnails/defaultImage 示例；Connectable Nodes 保留 UsdShadeNodeDefAPI、UsdShadeConnectableAPI、schema plugin callback 和 UsdLux/UsdRi 动机；Coordinate Systems 保留 UsdShadeCoordSysAPI、coordSys:* relationship、scoped inheritance 和 usda 示例；Render Settings 保留 RenderSettings、RenderVar、RenderProduct、RenderSettingsBase 与 camera/resolution 示例。
+- 抽查 5 个新增 HTML：标题均为中文优先并保留英文页面名，均包含 `Chinese Reading Notes`，未发现 `U+FFFD`、`锟`、`Ã`、`Â`、`â` 等坏编码标记。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 390 draft / 8 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 390 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 390 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 5 页批次、脚本增强、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增 5 个 proposal 页仍是 `bilingual_draft`，有页面级中文导读和关键英文摘录，但不是完整白皮书逐段翻译。
+- 剩余 8 个 pending 页面仍以 release proposal/白皮书为主，正文长且结构差异较大，下一轮仍应最多 5 页推进。
+
+下一轮目标：
+
+1. 继续从 release `pending_full_scope` 队列生成下一批最多 5 个 draft，并保持 `source/full_release/`、`full_site/release/`、`reports/release_full_batch_report.*`、全量清单和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `wp_rigid_body_physics.html`、`wp_schema_versioning.html`、`wp_stage_variables.html`、`wp_usdaudio.html` 和 `wp_usdlux_for_geometry_lights.html` 等剩余 release proposal 页面。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 126 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查 `reports/all_pages_inventory.json`、`reports/release_full_batch_report.json`、`reports/full_draft_preview_audit.json`、`reports/validation_report.json`、`reports/scope_manifest.json` 和最终入口，确认上一轮状态为 406 total / 8 complete / 390 draft / 8 pending，最终入口 HTTP 200。
+- 读取本轮 5 个官方 proposal 页的标题、段落、列表和代码片段，用于补专门中文导读：`wp_rigid_body_physics.html`、`wp_schema_versioning.html`、`wp_stage_variables.html`、`wp_usdaudio.html`、`wp_usdlux_for_geometry_lights.html`。
+- 增强 `scripts/build_release_full_batch.mjs` 的页面级中文导读映射，新增 Rigid Body Physics、Schema Versioning、Stage Variable Expressions、UsdAudio、UsdLux Geometry Lights 五个页面的导读。
+- 按默认 5 页节奏运行 `scripts/build_release_full_batch.mjs`，新增 5 个 release `bilingual_draft` 页面：`wp_rigid_body_physics.html`、`wp_schema_versioning.html`、`wp_stage_variables.html`、`wp_usdaudio.html`、`wp_usdlux_for_geometry_lights.html`。
+- 本批 5 页 HTTP 状态均为 200；每页 4 条中文导读，摘录数为 1-3 条，链接数为 1-8，代码/命令摘录数为 0-1。
+- 质量抽查确认：Rigid Body Physics 保留 PhysicsScene、刚体、约束、碰撞、质量属性和单位等入口；Schema Versioning 保留 per-schema versioning、API schema conflicts、multiple-apply API schemas 和 apiSchemas 示例；Stage Variable Expressions 正确保留迁移提示，不伪造旧正文；UsdAudio 保留 SpatialAudio、filePath、auralMode、playbackMode 和时间码示例；UsdLux Geometry Lights 保留 LightAPI、GeometryLight、light:shaderId 和 material emission 同步设计入口。
+- 抽查 5 个新增 HTML：标题均为中文优先并保留英文页面名，均有中文层、英文摘录和必要代码片段，未发现 `U+FFFD`、`锟`、`Ã`、`Â`、`â` 等坏编码标记。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 395 draft / 3 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 395 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 395 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录本轮 5 页批次、脚本增强、覆盖计数和验证状态。
+
+差距：
+
+- 本轮新增 5 个 proposal 页仍是 `bilingual_draft`，有页面级中文导读和关键英文摘录，但不是完整白皮书逐段翻译。
+- 剩余 `pending_full_scope` 只有 3 个页面；下一轮不应为了凑满 5 页而扩大范围或重复生成，按实际 3 页处理即可。
+
+下一轮目标：
+
+1. 继续从 release `pending_full_scope` 队列生成最后最多 3 个 draft，并保持 `source/full_release/`、`full_site/release/`、`reports/release_full_batch_report.*`、全量清单和最终 HTML 同步。
+2. 以最新 pending 队列为准覆盖 `wp_usdlux_for_renderers.html`、`wp_usdshade.html` 和 `wp.html`。
+3. 每轮继续运行 `full_draft_preview_audit`、范围边界审计、报告索引和总验证，确保新增 draft 均可从 `openusd_bilingual_final.html` 本地打开。
+
+## 第 127 轮 时间：2026-06-04
+
+已完成：
+
+- 先复查 `reports/all_pages_inventory.json`、`reports/release_full_batch_report.json`、`reports/full_draft_preview_audit.json`、`reports/validation_report.json`、`reports/scope_manifest.json` 和最终入口，确认上一轮状态为 406 total / 8 complete / 395 draft / 3 pending，最终入口 HTTP 200。
+- 读取最后 3 个官方 proposal 页的标题、段落、列表和代码片段，用于补专门中文导读：`wp_usdlux_for_renderers.html`、`wp_usdshade.html`、`wp.html`。
+- 增强 `scripts/build_release_full_batch.mjs` 的页面级中文导读映射，新增 UsdLux for Renderers、UsdShade Material Assignment 和 Proposals 汇总页的导读。
+- 按实际剩余 3 页运行 `scripts/build_release_full_batch.mjs`，新增 3 个 release `bilingual_draft` 页面：`wp_usdlux_for_renderers.html`、`wp_usdshade.html`、`wp.html`；没有为了凑 5 页扩大范围。
+- 本批 3 页 HTTP 状态均为 200；每页 4 条中文导读，摘录数为 1-3 条，链接数为 1-13，代码/命令摘录数为 0-1。
+- 质量抽查确认：UsdLux for Renderers 保留 Sdr、UsdSchemaRegistry、UsdLuxPluginLight、UsdLuxPluginLightFilter 和 render delegate 设计入口；UsdShade Material Assignment 保留 material:binding、PreviewMaterial/Skin 和 renderer-specific material outputs 示例；Proposals 保留 OpenUSD-proposals 迁移说明和 13 个 proposal 列表入口。
+- 抽查 3 个新增 HTML：标题均为中文优先并保留英文页面名，均有中文层、英文摘录和必要代码/链接，未发现 `U+FFFD`、`锟`、`Ã`、`Â`、`â` 等坏编码标记。
+- 重新运行 `scripts/discover_openusd_all_pages.mjs`，当前状态更新为 406 total / 8 complete / 398 draft / 0 pending。
+- 重建 `openusd_bilingual_final.html`，最终 HTML 已链接 398 个 draft，并继续显示全量 406 页 complete/draft/pending 状态。
+- 重新运行 `reports/full_draft_preview_audit.json`，当前 398 个 draft 页面全部通过临时 HTTP 访问、最终 HTML 链接和本地资源检查，失败 0。
+- 修正 `scripts/validate_openusd_api_repro.ps1` 中两个旧验证条件：原逻辑仍要求 `pending_full_scope_pages > 0`，现改为以 `bilingual_complete + bilingual_draft + pending_full_scope == total_pages` 判断全量覆盖，因此 pending 清零后验证仍能正确通过。
+- 重新运行 `scripts/validate_openusd_api_repro.ps1`，当前 275 项总验证全部通过；重新运行 `scripts/audit_openusd_report_index.mjs`，报告索引 15 个审计报告全部通过；最终入口 `http://127.0.0.1:8068/openusd_bilingual_final.html` 返回 HTTP 200。
+- 同步 `reports/scope_manifest.json`、`reports/scope_manifest.md`、`README.md` 和 `work.md`，记录最后 3 页批次、覆盖计数和验证状态。
+
+差距：
+
+- 全量发现清单已无 `pending_full_scope`，但 398 个覆盖页仍是 `bilingual_draft`，不是逐段完整翻译或最终校对版。
+- 后续如果继续迭代，应转入质量提升阶段，例如按页面类型抽样精修 proposal/schema/tutorial/API draft，而不是继续 pending 队列。
+
+下一轮目标：
+
+1. 若继续自动化，先将策略从“补 pending 队列”改成“分批质量精修/抽查”，避免在 pending 为 0 时重复生成。
+2. 可优先从本轮最后 proposal 页、长 proposal 页和 schema 属性密集页中挑选少量页面做段落级中文补强。
+3. 每轮仍需运行 `full_draft_preview_audit`、报告索引和总验证，确保最终入口可用。
+
+## 第 128 轮 时间：2026-06-04
+
+已完成：
+
+- 针对用户反馈“很多链接跳到原始英文网站”，检查当前页面 `site/_usd__overview_and_purpose.html`、API/release draft 页和最终入口，确认旧生成逻辑把大量 OpenUSD 站内 HTML 链接保留为官方 URL 或错误相对路径。
+- 新增 `scripts/route_openusd_internal_links_local.mjs`：读取 `reports/all_pages_inventory.json`，把 406 清单内的 OpenUSD release/API HTML 链接改写为本地相对路径；对不在 406 清单内但仍属于 OpenUSD 内部 HTML 的链接，改写到本地 `site/uncovered_openusd_page.html` 缺口提示页；只有明确标注“官方原页 / Open official page”的链接继续外跳。
+- 新增 `site/uncovered_openusd_page.html`，用于显示未纳入当前清单的内部目标 URL，并提供明确的官方原页按钮，避免用户点击时无提示地离开本地复刻站点。
+- 重新生成 8 个原本较完整的入口/相邻页和最终入口，清除第一版过度路由造成的本地导航污染；随后使用收紧后的路由脚本重新改写链接。
+- `reports/local_link_routing_report.json/.md` 记录当前路由状态：409 个 HTML 文件检查，4975 个链接路由到已有本地页，4914 个清单外内部链接路由到本地缺口页，408 个显式官方原页链接保留。
+- 抽查 `site/_usd__overview_and_purpose.html`：`arch_page_front.html`、`tf_page_front.html` 等已跳本地 `full_site/api/...`；`class_usd_stage.html` 等当前 406 清单外页面跳本地缺口页；非显式官方外链为 0。
+- 抽查 `full_site/release/wp_usdshade.html`：`UsdShade overview page` 已跳本地 `../api/usd_shade_page_front.html`，只有“打开官方原页 / Open official page”保留官方 URL。
+- 将本地路由报告纳入 `scripts/validate_openusd_api_repro.ps1`，新增路由报告通过、406 本地输出存在、内部链接本地路由数量三类检查。
+- 重新运行 `scripts/validate_openusd_api_repro.ps1`，当前 281 项总验证全部通过；`scripts/audit_openusd_full_draft_preview.mjs` 确认 398/398 draft 页面通过；`scripts/audit_openusd_report_index.mjs` 通过；最终入口 HTTP 200。
+- 同步 `README.md`、`work.md`、`reports/scope_manifest.json` 和 `reports/scope_manifest.md`，明确 398 个 `bilingual_draft` 是草稿覆盖页，不是逐段完整翻译。
+
+差距：
+
+- 本轮解决的是站内链接本地化和状态说明问题；398 个 draft 页面仍主要是中文导读 + 英文摘录保留，不是最终完整翻译。
+- 路由报告中的 4914 个清单外内部链接说明当前 406 页发现清单并未覆盖 Doxygen 中全部类/函数/源文件交叉链接；这些现在不会直接跳官方站，但仍只是本地缺口提示页。
+
+下一轮目标：
+
+1. 若继续做质量提升，先按 5 页一组选择 `bilingual_draft` 页面做段落级中文补强，并把状态从 draft 逐步提升到更高质量标记。
+2. 对清单外缺口页，可先按点击频率或核心 API 重要性扩展局部清单，例如 `class_usd_stage.html`、`class_vt_array.html`、`class_vt_value.html` 等当前 Overview 页高频目标。
+3. 每轮保持 `route_openusd_internal_links_local.mjs`、`full_draft_preview_audit`、报告索引和总验证同步运行。
+
+## 第 129 轮 时间：2026-06-04
+
+已完成：
+
+- 针对用户要求“逐个检查一下翻译效果”，新增只读质检脚本 `scripts/audit_openusd_translation_quality.mjs`，不改正文，逐页检查 406 个本地 HTML 的中英层厚度、draft 模板痕迹、坏编码风险和非预期官方外跳。
+- 生成 `reports/translation_quality_review.json` 和 `reports/translation_quality_review.md`，把每页分为 `good_bilingual`、`draft_template_only`、`thin_chinese`、`draft_needs_translation` 等等级，并给出本轮 focus batch 与后续优先队列。
+- 使用浏览器实际打开当前页 `site/_usd__overview_and_purpose.html`，确认渲染层中文正常、英文保留正常、非预期官方外跳为 0；PowerShell 中看到的乱码属于终端显示层，不是该页面实际渲染。
+- 使用浏览器抽查清单前 5 个 draft：`_c_l_i11_8h_source.html`、`_developer__guides.html`、`_usd_skel__intro.html`、`annotated.html`、`ar_page_front.html`。均无坏编码和非预期官方外跳，但翻译层基本只有范围说明和结构标签，属于 `draft_template_only`。
+- 质检结果显示：406 页中 3 页为 `good_bilingual`，389 页为 `draft_template_only`，5 页为 `thin_chinese`，9 页为 `draft_needs_translation`。这说明当前全量覆盖可打开，但绝大多数 draft 还不是可接受的完整双语翻译。
+- 将翻译质检报告纳入 `scripts/audit_openusd_report_index.mjs`，并消除索引报告与总验证报告之间的循环失败状态；当前报告索引为 16 个审计报告 / 17 个总条目，失败 0。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 页面 HTTP 预览通过；重新运行 `scripts/validate_openusd_api_repro.ps1`，281 项总验证通过，失败 0。
+
+差距：
+
+- 这轮是逐页质检与分级，不是翻译正文精修。多数页面仍然需要按 5 页一组进入段落级中文补强。
+- API 源码页和类列表页价值不同，后续不应机械按低中文字符数排序全量翻译；应优先处理用户会阅读的指南、概念页、schema 页面和核心 API 入口。
+
+下一轮目标：
+
+1. 按 5 页一组进入翻译精修，优先从本轮 focus batch 中的 `Developer Guides`、`UsdSkel Introduction`、`Class List`、`Ar: Asset Resolution` 等可读性入口开始。
+2. 对每页补充页面级中文导读、关键段落中文解释和必要术语表，同时保留英文原文与 API 名称。
+3. 每轮精修后继续运行 `audit_openusd_translation_quality.mjs`、`full_draft_preview_audit`、报告索引和总验证。
+
+## 第 130 轮 时间：2026-06-04
+
+已完成：
+
+- 针对用户指出“自动化呢？还有很多没完成”，检查现有 `openusd-api` 自动化，应用返回该自动化已不存在；重新创建当前线程 heartbeat 自动化，名称为 `OpenUSD 双语复刻精修`，自动化 id 为 `openusd`，节奏为 5 分钟一轮。
+- 新自动化提示词已从旧的“补 pending_full_scope 队列”改为“基于 `reports/translation_quality_review.*` 每轮最多精修 5 个未达标页面”，并明确 pending 已为 0、不要一次性大批量改完、不要把 draft 壳当完成页。
+- 新增 `scripts/refine_openusd_translation_batch.mjs`，用于给选定页面插入可重复刷新的 `中文精修导读 / Chinese Reading Notes` 区块，避免重建整页时破坏已有链接路由。
+- 本轮精修 5 个用户可读入口页：`full_site/api/_developer__guides.html`、`full_site/api/_usd_skel__intro.html`、`full_site/api/annotated.html`、`full_site/api/ar_page_front.html`、`full_site/api/arch_page_front.html`。每页补充 4 条页面级中文导读和 5 条术语对照，保留英文/API 名称和原英文摘录。
+- 浏览器抽查 `full_site/api/ar_page_front.html`：中文导读渲染正常，英文/API 名称保留，坏编码 0，非预期官方外跳 0。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查，已有本地路由状态保持稳定，files_changed 为 0。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，当前分级从 389 个 `draft_template_only` 降为 384 个；本轮 5 页均提升为 `draft_needs_translation`，说明已有页面专属中文导读，但仍不是最终逐段完整翻译。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 页面 HTTP 预览通过；`scripts/audit_openusd_report_index.mjs` 通过；`scripts/validate_openusd_api_repro.ps1` 281 项总验证通过，失败 0。
+
+差距：
+
+- 本轮 5 页完成的是第一层精修：页面级中文导读和术语层，不是逐段完整翻译；仍需后续轮次继续把 `draft_needs_translation` 提升到更完整的段落级双语。
+- 全量仍有 384 个 `draft_template_only` 页面，后续自动化应继续按 5 页一组推进，而不是重走 pending 清单。
+
+下一轮目标：
+
+1. 自动化下一轮继续从 `translation_quality_review` 选择最多 5 个未达标且用户可读价值高的页面，优先 release 教程、schema 指南、概念页和核心 API 入口。
+2. 对纯源码页保持低优先级，除非它们被高价值页面反复链接或用户明确要求。
+3. 每轮继续保存 HTML、运行链接路由、翻译质检、full draft preview、报告索引和总验证，并记录质量分级变化。
+## 第 131 轮：用户截图页正文级双语修正
+
+已完成：
+
+- 针对用户在本地 `site/intro.html` 截图中指出的正文未翻译问题，复查源快照、生成脚本、双语页面、链接路由和翻译质量报告。
+- 确认 `intro.html` 原先主要是标题/导航/范围说明双语，主体段落仍大量英文裸露，因此不能仅凭 `bilingual_complete` 状态视为达标。
+- 增强 `scripts/build_intro_bilingual.mjs`，为 `Introduction to USD` 主要章节插入中文在前的正文级阅读层，并保留英文原文、API 名称、页面名和原链接结构。
+- 重新生成 `site/intro.html` 并运行 `scripts/route_openusd_internal_links_local.mjs`，避免普通站内 OpenUSD 链接跳回官方英文站。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，`site/intro.html` 已提升为 `good_bilingual`；脚本抽查显示正文中文约 2951 字、坏编码 0、非预期官方外跳 0。
+- 当前质量报告仍显示 4 个 `thin_chinese` 完成页：`site/index.html`、`site/release_index.html`、`site/apiDocs.html`、`site/usd_page_front.html`，下一轮优先处理。
+- 本轮继续在最多 5 页范围内处理这 4 个薄弱完成页：补强 `site/index.html`，并增强 `build_release_index_bilingual.mjs`、`build_apiDocs_bilingual.mjs`、`build_usd_page_front_bilingual.mjs` 后重新生成对应 HTML。
+- 重新运行链接路由和翻译质量审计后，8 个 `bilingual_complete` 页面全部达到 `good_bilingual`；当前分级为 `good_bilingual` 8、`draft_needs_translation` 14、`draft_template_only` 384。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`、`scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`：398/398 draft 预览通过，报告索引 16/16 通过，总验证 281 checks passed, 0 failed。
+
+差距：
+
+- 全量 406 页已经有本地 HTML，且 8 个完成页已达到当前质量审计的 `good_bilingual`；但 398 页仍是 `bilingual_draft`，多数只具备中文导读与英文摘录，不是逐段完整翻译。
+- 后续验收必须以 `translation_quality_review` 的分级为准，不能只看 pending 是否为 0。
+
+下一轮目标：
+
+1. 保持每轮最多 5 页的节奏。
+2. 下一轮从 `reports/translation_quality_review.md` 的 draft 队列中选择 5 个用户可读价值高的页面，优先教程、schema 指南、概念页和核心 API 入口。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总验证。

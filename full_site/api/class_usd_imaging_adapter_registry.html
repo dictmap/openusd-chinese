@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>类参考草稿：UsdImagingAdapterRegistry Class / UsdImagingAdapterRegistry Class</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>类参考草稿：UsdImagingAdapterRegistry Class / UsdImagingAdapterRegistry Class</h1>
+    <div class="meta">https://openusd.org/release/api/class_usd_imaging_adapter_registry.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 1 级结构：UsdImagingAdapterRegistry Class Reference</span><span class="en">UsdImagingAdapterRegistry Class Reference</span></li>
+<li><span class="zh">第 2 级结构：Public Types</span><span class="en">Public Types</span></li>
+<li><span class="zh">第 2 级结构：Public Member Functions</span><span class="en">Public Member Functions</span></li>
+<li><span class="zh">第 2 级结构：Static Public Member Functions</span><span class="en">Static Public Member Functions</span></li>
+<li><span class="zh">第 2 级结构：Friends</span><span class="en">Friends</span></li>
+<li><span class="zh">第 2 级结构：Detailed Description</span><span class="en">Detailed Description</span></li>
+<li><span class="zh">第 2 级结构：Member Typedef Documentation</span><span class="en">Member Typedef Documentation</span></li>
+<li><span class="zh">第 2 级结构：◆ ApiSchemaAdapters</span><span class="en">◆ ApiSchemaAdapters</span></li>
+<li><span class="zh">第 2 级结构：Member Function Documentation</span><span class="en">Member Function Documentation</span></li>
+<li><span class="zh">第 2 级结构：◆ AreExternalPluginsEnabled()</span><span class="en">◆ AreExternalPluginsEnabled()</span></li>
+<li><span class="zh">第 2 级结构：◆ ConstructAdapter()</span><span class="en">◆ ConstructAdapter()</span></li>
+<li><span class="zh">第 2 级结构：◆ ConstructAPISchemaAdapter()</span><span class="en">◆ ConstructAPISchemaAdapter()</span></li>
+<li><span class="zh">第 2 级结构：◆ ConstructKeylessAPISchemaAdapters()</span><span class="en">◆ ConstructKeylessAPISchemaAdapters()</span></li>
+<li><span class="zh">第 2 级结构：◆ GetAdapterKeys()</span><span class="en">◆ GetAdapterKeys()</span></li>
+<li><span class="zh">第 2 级结构：◆ GetAPISchemaAdapterKeys()</span><span class="en">◆ GetAPISchemaAdapterKeys()</span></li>
+<li><span class="zh">第 2 级结构：◆ GetInstance()</span><span class="en">◆ GetInstance()</span></li>
+<li><span class="zh">第 2 级结构：◆ HasAdapter()</span><span class="en">◆ HasAdapter()</span></li>
+<li><span class="zh">第 2 级结构：◆ HasAPISchemaAdapter()</span><span class="en">◆ HasAPISchemaAdapter()</span></li>
+<li><span class="zh">第 2 级结构：Friends And Related Function Documentation</span><span class="en">Friends And Related Function Documentation</span></li>
+<li><span class="zh">第 2 级结构：◆ TfSingleton&lt; UsdImagingAdapterRegistry &gt;</span><span class="en">◆ TfSingleton&lt; UsdImagingAdapterRegistry &gt;</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">Registry of PrimAdapter plug-ins. Note: this is a registry of adapter factories, and not adapter instances; we expect to store adapter instances (created via ConstructAdapter) with per-stage data. Definition at line 45 of file adapterRegistry.h .</p>
+<p class="en">Registry of PrimAdapter plug-ins. More...</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_imaging_adapter_registry-members.html&amp;title=List+of+all+members" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_imaging_adapter_registry-members.html">List of all members</a></li>
+<li><a href="class_usd_imaging_adapter_registry.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_usd_imaging_adapter_registry.html">More...</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fadapter_registry_8h_source.html&amp;title=adapterRegistry.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/adapter_registry_8h_source.html">adapterRegistry.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fgraph_legend.html&amp;title=legend" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/graph_legend.html">legend</a></li>
+<li><a href="class_tf_token.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_tf_token.html">TfToken</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_imaging_prim_adapter.html&amp;title=UsdImagingPrimAdapter" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_imaging_prim_adapter.html">UsdImagingPrimAdapter</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Ftoken_8h.html&amp;title=TfTokenVector" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/token_8h.html">TfTokenVector</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_imaging_a_p_i_schema_adapter.html&amp;title=UsdImagingAPISchemaAdapter" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_imaging_a_p_i_schema_adapter.html">UsdImagingAPISchemaAdapter</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_singleton.html&amp;title=TfSingleton%3C+UsdImagingAdapterRegistry+%3E" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_singleton.html">TfSingleton&lt; UsdImagingAdapterRegistry &gt;</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/class_usd_imaging_adapter_registry.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

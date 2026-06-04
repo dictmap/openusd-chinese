@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API 页面草稿：Deprecated List / Deprecated List</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>API 页面草稿：Deprecated List / Deprecated List</h1>
+    <div class="meta">https://openusd.org/release/api/deprecated.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section data-cn-refinement="api-index-quality-pass-011">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Deprecated List 补充中文优先的索引用法、导航策略和术语对照；英文页面名、链接、API 符号、模板参数、代码和原文摘录继续保留，便于和官方 API 文档核对。</p>
+      <p class="en">This section adds Chinese-first index usage notes, navigation guidance, and terminology for Deprecated List while retaining the English page name, links, API symbols, template parameters, code, and source excerpts for comparison with the official API documentation.</p>
+      <ul>
+        <li><span class="zh">Deprecated List 汇总已弃用的成员、类型和函数，主要用于迁移旧代码和识别不应继续新增依赖的 API。</span></li>
+        <li><span class="zh">本页应和具体类/成员页面一起读：索引告诉你哪些 API 已弃用，具体页面通常说明替代 API、兼容性原因或过渡路径。</span></li>
+        <li><span class="zh">例如 ArAssetInfo::repoPath、ArResolver::IsRepositoryPath、CustomUsdPhysicsTokens 等条目代表不同模块的历史接口；中文说明保留完整符号名。</span></li>
+        <li><span class="zh">使用该页时不要机械删除旧 API 调用，应先确认当前 OpenUSD 版本、替代方法和项目兼容性要求，再安排迁移。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">弃用 API 列表：</span><span class="en">Deprecated List</span></li>
+        <li><span class="zh">向后兼容：</span><span class="en">backward compatibility</span></li>
+        <li><span class="zh">替代 API：</span><span class="en">replacement API</span></li>
+        <li><span class="zh">成员：</span><span class="en">member</span></li>
+        <li><span class="zh">迁移：</span><span class="en">migration</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 1 级结构：Deprecated List</span><span class="en">Deprecated List</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">Member ArAssetInfo::repoPath The repository path corresponding to the resolved asset. Member ArResolver::_IsRepositoryPath (const std::string &amp;path) const Return true if the given path is a repository path, false otherwise. Default implementation returns false. Member ArResolver::IsRepositoryPath (const std::string &amp;path) const Returns true if the given path is a repository path. Member CustomUsdPhysicsTokens Use UsdPhysicsCustomTokens instead of CustomUsdPhysicsTokens, this struct is kept for backward compatibi...</p>
+<p class="en">Deprecated in favor of SdrShaderNodeMetadata::Get* and SdrShaderPropertyMetadata::Get* methods on int metadata</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_ar_asset_info.html&amp;title=ArAssetInfo%3A%3ArepoPath" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_ar_asset_info.html">ArAssetInfo::repoPath</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_ar_resolver.html&amp;title=ArResolver%3A%3A_IsRepositoryPath" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_ar_resolver.html">ArResolver::_IsRepositoryPath</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fparse_utils_8h.html&amp;title=CustomUsdPhysicsTokens" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/parse_utils_8h.html">CustomUsdPhysicsTokens</a></li>
+<li><a href="class_gf_range1d.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_gf_range1d.html">GfRange1d::ExtendBy</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_range1f.html&amp;title=GfRange1f%3A%3AExtendBy" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_range1f.html">GfRange1f::ExtendBy</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_range2d.html&amp;title=GfRange2d%3A%3AExtendBy" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_range2d.html">GfRange2d::ExtendBy</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_vec2d.html&amp;title=GfVec2d" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_vec2d.html">GfVec2d</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_range2f.html&amp;title=GfRange2f%3A%3AExtendBy" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_range2f.html">GfRange2f::ExtendBy</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_vec2f.html&amp;title=GfVec2f" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_vec2f.html">GfVec2f</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_range3d.html&amp;title=GfRange3d%3A%3AExtendBy" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_range3d.html">GfRange3d::ExtendBy</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_vec3d.html&amp;title=GfVec3d" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_vec3d.html">GfVec3d</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_range3f.html&amp;title=GfRange3f%3A%3AExtendBy" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_range3f.html">GfRange3f::ExtendBy</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_vec3f.html&amp;title=GfVec3f" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_vec3f.html">GfVec3f</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_gf_rect2i.html&amp;title=GfRect2i%3A%3AIntersect" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_gf_rect2i.html">GfRect2i::Intersect</a></li>
+<li><a href="group__group__hd__collection_predicates.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/group__group__hd__collection_predicates.html">group_hd_collectionPredicates</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hdar_system_schema.html&amp;title=HdarSystemSchema%3A%3ABuildRetained" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hdar_system_schema.html">HdarSystemSchema::BuildRetained</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hdar_system_schema_1_1_builder.html&amp;title=Builder" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hdar_system_schema_1_1_builder.html">Builder</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_instanced_by_schema.html&amp;title=HdInstancedBySchema%3A%3ABuildRetained" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_instanced_by_schema.html">HdInstancedBySchema::BuildRetained</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_instanced_by_schema_1_1_builder.html&amp;title=Builder" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_instanced_by_schema_1_1_builder.html">Builder</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_instancer_topology_schema.html&amp;title=HdInstancerTopologySchema%3A%3ABuildRetained" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_instancer_topology_schema.html">HdInstancerTopologySchema::BuildRetained</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_instancer_topology_schema_1_1_builder.html&amp;title=Builder" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_instancer_topology_schema_1_1_builder.html">Builder</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_instance_schema.html&amp;title=HdInstanceSchema%3A%3ABuildRetained" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_instance_schema.html">HdInstanceSchema::BuildRetained</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_instance_schema_1_1_builder.html&amp;title=Builder" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_instance_schema_1_1_builder.html">Builder</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_legacy_task_schema.html&amp;title=HdLegacyTaskSchema%3A%3ABuildRetained" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_legacy_task_schema.html">HdLegacyTaskSchema::BuildRetained</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_legacy_task_schema_1_1_builder.html&amp;title=Builder" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_legacy_task_schema_1_1_builder.html">Builder</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_material_connection_schema.html&amp;title=HdMaterialConnectionSchema%3A%3ABuildRetained" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_material_connection_schema.html">HdMaterialConnectionSchema::BuildRetained</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_material_connection_schema_1_1_builder.html&amp;title=Builder" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_material_connection_schema_1_1_builder.html">Builder</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_material_interface_mapping_schema.html&amp;title=HdMaterialInterfaceMappingSchema%3A%3ABuildRetained" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_material_interface_mapping_schema.html">HdMaterialInterfaceMappingSchema::BuildRetained</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_material_interface_mapping_schema_1_1_builder.html&amp;title=Builder" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_material_interface_mapping_schema_1_1_builder.html">Builder</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_material_interface_parameter_schema.html&amp;title=HdMaterialInterfaceParameterSchema%3A%3ABuildRetained" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_material_interface_parameter_schema.html">HdMaterialInterfaceParameterSchema::BuildRetained</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_material_interface_parameter_schema_1_1_builder.html&amp;title=Builder" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_material_interface_parameter_schema_1_1_builder.html">Builder</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_material_interface_schema.html&amp;title=HdMaterialInterfaceSchema%3A%3ABuildRetained" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_material_interface_schema.html">HdMaterialInterfaceSchema::BuildRetained</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_material_interface_schema_1_1_builder.html&amp;title=Builder" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_material_interface_schema_1_1_builder.html">Builder</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_material_network_schema.html&amp;title=HdMaterialNetworkSchema%3A%3ABuildRetained" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_material_network_schema.html">HdMaterialNetworkSchema::BuildRetained</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_material_network_schema_1_1_builder.html&amp;title=Builder" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_material_network_schema_1_1_builder.html">Builder</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_material_node_parameter_schema.html&amp;title=HdMaterialNodeParameterSchema%3A%3ABuildRetained" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_material_node_parameter_schema.html">HdMaterialNodeParameterSchema::BuildRetained</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_material_node_parameter_schema_1_1_builder.html&amp;title=Builder" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_material_node_parameter_schema_1_1_builder.html">Builder</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_material_node_schema.html&amp;title=HdMaterialNodeSchema%3A%3ABuildRetained" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_material_node_schema.html">HdMaterialNodeSchema::BuildRetained</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_material_node_schema_1_1_builder.html&amp;title=Builder" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_material_node_schema_1_1_builder.html">Builder</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_material_override_schema.html&amp;title=HdMaterialOverrideSchema%3A%3ABuildRetained" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_material_override_schema.html">HdMaterialOverrideSchema::BuildRetained</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/deprecated.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

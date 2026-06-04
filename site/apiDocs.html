@@ -1,0 +1,1110 @@
+<!-- Generated adjacent bilingual entry from source/openusd_release_apiDocs_source.html. Source URL: https://openusd.org/release/apiDocs.html -->
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API 文档 / API Documentation &mdash; Universal Scene Description 26.05 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/pxr_custom.css?v=f3eac5de" />
+      <link rel="stylesheet" type="text/css" href="openusd_release_cn.css" />
+
+  
+    <link rel="shortcut icon" href="images/USDIcon.ico"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=34cee20b"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+      <script src="_static/js/versions.js?v=aa17b01a"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="USD 工具集 / USD Toolset" href="toolset.html" />
+    <link rel="prev" title="USD 变量表达式 / USD Variable Expressions" href="user_guides/variable_expressions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #606060" >
+
+          
+          
+          <a href="release_index.html" class="icon icon-home">
+            <span class="cn-term">通用场景描述</span><span class="en-term">Universal Scene Description</span>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档 / Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text"><span class="cn-term">学习</span><span class="en-term">Learn</span></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction to USD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../full_site/release/intro_to_openexec.html" data-local-route="mapped" data-official-href="https://openusd.org/release/intro_to_openexec.html">Introduction to OpenExec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Terms and Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../full_site/release/tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/tut_helloworld.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_helloworld.html">Hello World - Creating Your First USD Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/tut_helloworld_redux.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_helloworld_redux.html">Hello World Redux - Using Generic Prims</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/tut_inspect_and_author_props.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_inspect_and_author_props.html">Inspecting and Authoring Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/tut_referencing_layers.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_referencing_layers.html">Referencing Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/tut_converting_between_layer_formats.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_converting_between_layer_formats.html">Converting Between Layer Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/tut_traversing_stage.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_traversing_stage.html">Traversing a Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/tut_authoring_variants.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_authoring_variants.html">Authoring Variants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/tut_variants_example_in_katana.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_variants_example_in_katana.html">Variants Example in Katana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/tut_xforms.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_xforms.html">Transformations, Animation, and Layer Offsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/tut_simple_shading.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_simple_shading.html">Simple Shading in USD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/tut_end_to_end.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_end_to_end.html">End to End Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/tut_houdini_example.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_houdini_example.html">Houdini USD Example Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/tut_generating_new_schema.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_generating_new_schema.html">Generating New Schema Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/tut_usdview_plugin.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usdview_plugin.html">Creating a Usdview Plugin</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../full_site/release/dl_downloads.html" data-local-route="mapped" data-official-href="https://openusd.org/release/dl_downloads.html">Downloads and Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../full_site/release/usd_products.html" data-local-route="mapped" data-official-href="https://openusd.org/release/usd_products.html">Products Using USD</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text"><span class="cn-term">用户指南</span><span class="en-term">User Guides</span></span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../full_site/release/user_guides/collections_and_patterns.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/collections_and_patterns.html">Collections and Patterns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/collections_and_patterns.html#basic-usage" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/collections_and_patterns.html#basic-usage">Basic Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/collections_and_patterns.html#configuring-membership-mode" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/collections_and_patterns.html#configuring-membership-mode">Configuring Membership Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/collections_and_patterns.html#relationship-mode-collections" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/collections_and_patterns.html#relationship-mode-collections">Relationship-Mode Collections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/collections_and_patterns.html#configuring-relationship-mode-collections" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/collections_and_patterns.html#configuring-relationship-mode-collections">Configuring Relationship-Mode Collections</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/collections_and_patterns.html#pattern-based-collections" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/collections_and_patterns.html#pattern-based-collections">Pattern-Based Collections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/collections_and_patterns.html#path-expressions" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/collections_and_patterns.html#path-expressions">Path Expressions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/collections_and_patterns.html#path-patterns" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/collections_and_patterns.html#path-patterns">Path Patterns</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/collections_and_patterns.html#additional-expressions-considerations" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/collections_and_patterns.html#additional-expressions-considerations">Additional Expressions Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/collections_and_patterns.html#configuring-pattern-based-collections" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/collections_and_patterns.html#configuring-pattern-based-collections">Configuring Pattern-Based Collections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/collections_and_patterns.html#getting-the-expression-for-a-relationship-mode-collection" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/collections_and_patterns.html#getting-the-expression-for-a-relationship-mode-collection">Getting the Expression for a Relationship-Mode Collection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../full_site/release/user_guides/color_user_guide.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/color_user_guide.html">Color</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/color_user_guide.html#working-with-color-in-openusd" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/color_user_guide.html#working-with-color-in-openusd">Working With Color in OpenUSD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/color_user_guide.html#color-spaces-supported-by-openusd" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/color_user_guide.html#color-spaces-supported-by-openusd">Color Spaces Supported by OpenUSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/color_user_guide.html#working-with-color-space-schemas" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/color_user_guide.html#working-with-color-space-schemas">Working With Color Space Schemas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/color_user_guide.html#color-space-inheritance-and-resolution" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/color_user_guide.html#color-space-inheritance-and-resolution">Color Space Inheritance and Resolution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/color_user_guide.html#default-color-space" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/color_user_guide.html#default-color-space">Default Color Space</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/color_user_guide.html#what-is-a-color-space" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/color_user_guide.html#what-is-a-color-space">What is a Color Space?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/color_user_guide.html#gamut-limitations-and-considerations" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/color_user_guide.html#gamut-limitations-and-considerations">Gamut Limitations and Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/color_user_guide.html#common-white-points" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/color_user_guide.html#common-white-points">Common White Points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/color_user_guide.html#linear-vs-non-linear-spaces" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/color_user_guide.html#linear-vs-non-linear-spaces">Linear vs. Non-Linear Spaces</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/color_user_guide.html#considerations-in-content-creation" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/color_user_guide.html#considerations-in-content-creation">Considerations in Content Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/color_user_guide.html#glossary-of-color-terms" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/color_user_guide.html#glossary-of-color-terms">Glossary of Color Terms</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../full_site/release/user_guides/namespace_editing.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/namespace_editing.html">Namespace Editing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/namespace_editing.html#using-usdnamespaceeditor" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/namespace_editing.html#using-usdnamespaceeditor">Using UsdNamespaceEditor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/namespace_editing.html#setting-editor-options" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/namespace_editing.html#setting-editor-options">Setting Editor Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/namespace_editing.html#working-with-relocates" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/namespace_editing.html#working-with-relocates">Working With Relocates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/namespace_editing.html#fixing-paths-for-moved-objects" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/namespace_editing.html#fixing-paths-for-moved-objects">Fixing Paths For Moved Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/namespace_editing.html#applying-edits-to-dependent-stages" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/namespace_editing.html#applying-edits-to-dependent-stages">Applying Edits to Dependent Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/namespace_editing.html#batch-edits" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/namespace_editing.html#batch-edits">Batch Edits</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/namespace_editing.html#namespace-editing-best-practices" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/namespace_editing.html#namespace-editing-best-practices">Namespace Editing Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/namespace_editing.html#use-canapplyedits-to-validate-edit-operations" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/namespace_editing.html#use-canapplyedits-to-validate-edit-operations">Use CanApplyEdits() To Validate Edit Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/namespace_editing.html#built-in-properties-from-schemas-are-not-editable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/namespace_editing.html#built-in-properties-from-schemas-are-not-editable">Built-In Properties From Schemas Are Not Editable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/namespace_editing.html#be-aware-of-relocates-performance-impact" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/namespace_editing.html#be-aware-of-relocates-performance-impact">Be Aware of Relocates Performance Impact</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html">Rendering with USD</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#configuring-imageable-content" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#configuring-imageable-content">Configuring Imageable Content</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#configuring-the-stage-coordinate-system" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#configuring-the-stage-coordinate-system">Configuring the Stage Coordinate System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#understanding-render-visibility" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#understanding-render-visibility">Understanding Render Visibility</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#using-the-visibility-attribute" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#using-the-visibility-attribute">Using the Visibility Attribute</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#using-imageable-purpose" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#using-imageable-purpose">Using Imageable Purpose</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#understanding-intrinsic-and-explicit-normals" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#understanding-intrinsic-and-explicit-normals">Understanding Intrinsic and Explicit Normals</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#working-with-lights" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#working-with-lights">Working with Lights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#using-light-linking-to-filter-objects-affected-by-lights" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#using-light-linking-to-filter-objects-affected-by-lights">Using Light-linking to Filter Objects Affected by Lights</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#working-with-materials" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#working-with-materials">Working with Materials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#using-the-usd-preview-material" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#using-the-usd-preview-material">Using the USD Preview Material</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#using-glslfx-shaders" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#using-glslfx-shaders">Using GLSLFX Shaders</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#working-with-primvars" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#working-with-primvars">Working with Primvars</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#primvar-interpolation" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#primvar-interpolation">Primvar Interpolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#indexed-primvars" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#indexed-primvars">Indexed Primvars</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#consuming-primvars-in-materials" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#consuming-primvars-in-materials">Consuming Primvars in Materials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#material-primvar-fallbacks" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#material-primvar-fallbacks">Material Primvar Fallbacks</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#using-material-binding-purpose" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#using-material-binding-purpose">Using Material Binding Purpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#binding-materials-to-collections" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#binding-materials-to-collections">Binding Materials to Collections</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#setting-collection-binding-strength" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#setting-collection-binding-strength">Setting Collection Binding Strength</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#combining-collection-binding-with-material-binding-purpose" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#combining-collection-binding-with-material-binding-purpose">Combining Collection Binding with Material Binding Purpose</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#using-material-render-contexts" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#using-material-render-contexts">Using Material Render Contexts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#working-with-image-file-formats" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#working-with-image-file-formats">Working With Image File Formats</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#guidelines-for-all-supported-image-formats" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#guidelines-for-all-supported-image-formats">Guidelines for All Supported Image Formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#jpeg" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#jpeg">JPEG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#png" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#png">PNG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#openexr" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#openexr">OpenEXR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#av1-image-file-format-avif" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#av1-image-file-format-avif">AV1 Image File Format (AVIF)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#defining-the-render-camera" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#defining-the-render-camera">Defining the Render Camera</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#configuring-motion-blur" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#configuring-motion-blur">Configuring Motion Blur</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/render_user_guide.html#configuring-render-settings" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html#configuring-render-settings">Configuring Render Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../full_site/release/user_guides/primvars.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/primvars.html">Primvars</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/primvars.html#primvar-interpolation-modes" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/primvars.html#primvar-interpolation-modes">Primvar Interpolation Modes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/primvars.html#constant-interpolation" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/primvars.html#constant-interpolation">Constant Interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/primvars.html#uniform-interpolation" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/primvars.html#uniform-interpolation">Uniform Interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/primvars.html#vertex-interpolation" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/primvars.html#vertex-interpolation">Vertex Interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/primvars.html#varying-interpolation" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/primvars.html#varying-interpolation">Varying Interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/primvars.html#facevarying-interpolation" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/primvars.html#facevarying-interpolation">faceVarying Interpolation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/primvars.html#primvars-and-the-scene-namespace" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/primvars.html#primvars-and-the-scene-namespace">Primvars and the Scene Namespace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/primvars.html#indexed-primvars" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/primvars.html#indexed-primvars">Indexed Primvars</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/primvars.html#indexed-primvars-and-attribute-blocks" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/primvars.html#indexed-primvars-and-attribute-blocks">Indexed Primvars and Attribute Blocks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/primvars.html#primvar-element-size" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/primvars.html#primvar-element-size">Primvar Element Size</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../full_site/release/user_guides/schemas/index.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/index.html">Schema Domains</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/usdLux_toc.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/usdLux_toc.html">Lights (usdLux)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/overview.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/overview.html#usdlux-schemas-and-concepts" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/overview.html#usdlux-schemas-and-concepts">UsdLux Schemas and Concepts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/overview.html#light-units" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/overview.html#light-units">Light Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/overview.html#understanding-light-contributions" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/overview.html#understanding-light-contributions">Understanding Light Contributions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/overview.html#light-shaping" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/overview.html#light-shaping">Light Shaping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/overview.html#shadows" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/overview.html#shadows">Shadows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/overview.html#mesh-lights" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/overview.html#mesh-lights">Mesh Lights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/overview.html#light-linking-and-shadow-linking" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/overview.html#light-linking-and-shadow-linking">Light-linking and Shadow-linking</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/BoundableLightBase.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/BoundableLightBase.html">BoundableLightBase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/BoundableLightBase.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/BoundableLightBase.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/BoundableLightBase.html#inherited-properties-boundable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/BoundableLightBase.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/BoundableLightBase.html#inherited-properties-xformable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/BoundableLightBase.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/BoundableLightBase.html#inherited-properties-imageable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/BoundableLightBase.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/CylinderLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/CylinderLight.html">CylinderLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/CylinderLight.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/CylinderLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/CylinderLight.html#inherited-properties-boundable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/CylinderLight.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/CylinderLight.html#inherited-properties-xformable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/CylinderLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/CylinderLight.html#inherited-properties-imageable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/CylinderLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/DiskLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DiskLight.html">DiskLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/DiskLight.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DiskLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/DiskLight.html#inherited-properties-boundable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DiskLight.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/DiskLight.html#inherited-properties-xformable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DiskLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/DiskLight.html#inherited-properties-imageable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DiskLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/DistantLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DistantLight.html">DistantLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/DistantLight.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DistantLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/DistantLight.html#inherited-properties-xformable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DistantLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/DistantLight.html#inherited-properties-imageable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DistantLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/DomeLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight.html">DomeLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/DomeLight.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/DomeLight.html#inherited-properties-xformable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/DomeLight.html#inherited-properties-imageable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/DomeLight_1.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight_1.html">DomeLight_1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/DomeLight_1.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight_1.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/DomeLight_1.html#inherited-properties-xformable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight_1.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/DomeLight_1.html#inherited-properties-imageable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight_1.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/GeometryLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/GeometryLight.html">GeometryLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/GeometryLight.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/GeometryLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/GeometryLight.html#inherited-properties-xformable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/GeometryLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/GeometryLight.html#inherited-properties-imageable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/GeometryLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/LightAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/LightAPI.html">LightAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/LightAPI.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/LightAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/LightFilter.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/LightFilter.html">LightFilter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/LightFilter.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/LightFilter.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/LightFilter.html#inherited-properties-xformable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/LightFilter.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/LightFilter.html#inherited-properties-imageable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/LightFilter.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/LightListAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/LightListAPI.html">LightListAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/LightListAPI.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/LightListAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/ListAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/ListAPI.html">ListAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/ListAPI.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/ListAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/MeshLightAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/MeshLightAPI.html">MeshLightAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/MeshLightAPI.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/MeshLightAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/NonboundableLightBase.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/NonboundableLightBase.html">NonboundableLightBase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/NonboundableLightBase.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/NonboundableLightBase.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/NonboundableLightBase.html#inherited-properties-xformable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/NonboundableLightBase.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/NonboundableLightBase.html#inherited-properties-imageable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/NonboundableLightBase.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/PluginLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/PluginLight.html">PluginLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/PluginLight.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/PluginLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/PluginLight.html#inherited-properties-xformable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/PluginLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/PluginLight.html#inherited-properties-imageable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/PluginLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/PluginLightFilter.html">PluginLightFilter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/PluginLightFilter.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html#inherited-properties-lightfilter" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/PluginLightFilter.html#inherited-properties-lightfilter">Inherited Properties (<span class="xref std std-ref">LightFilter</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html#inherited-properties-xformable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/PluginLightFilter.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html#inherited-properties-imageable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/PluginLightFilter.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/PortalLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/PortalLight.html">PortalLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/PortalLight.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/PortalLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/PortalLight.html#inherited-properties-boundable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/PortalLight.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/PortalLight.html#inherited-properties-xformable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/PortalLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/PortalLight.html#inherited-properties-imageable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/PortalLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/RectLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/RectLight.html">RectLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/RectLight.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/RectLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/RectLight.html#inherited-properties-boundable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/RectLight.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/RectLight.html#inherited-properties-xformable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/RectLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/RectLight.html#inherited-properties-imageable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/RectLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/ShadowAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/ShadowAPI.html">ShadowAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/ShadowAPI.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/ShadowAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/ShapingAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/ShapingAPI.html">ShapingAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/ShapingAPI.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/ShapingAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/SphereLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/SphereLight.html">SphereLight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/SphereLight.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/SphereLight.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/SphereLight.html#inherited-properties-boundable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/SphereLight.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/SphereLight.html#inherited-properties-xformable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/SphereLight.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/SphereLight.html#inherited-properties-imageable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/SphereLight.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/VolumeLightAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/VolumeLightAPI.html">VolumeLightAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdLux/VolumeLightAPI.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/VolumeLightAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdMedia/usdMedia_toc.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdMedia/usdMedia_toc.html">Media (usdMedia)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdMedia/overview.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdMedia/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdMedia/overview.html#working-with-media" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdMedia/overview.html#working-with-media">Working With Media</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html">AssetPreviewsAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdMedia/SpatialAudio.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdMedia/SpatialAudio.html">SpatialAudio</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdMedia/SpatialAudio.html#spatialaudio-and-layer-offsets" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdMedia/SpatialAudio.html#spatialaudio-and-layer-offsets">SpatialAudio and Layer Offsets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdMedia/SpatialAudio.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdMedia/SpatialAudio.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdMedia/SpatialAudio.html#inherited-properties-xformable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdMedia/SpatialAudio.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdMedia/SpatialAudio.html#inherited-properties-imageable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdMedia/SpatialAudio.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdRender/usdRender_toc.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/usdRender_toc.html">Render (usdRender)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdRender/overview.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdRender/overview.html#best-practices" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/overview.html#best-practices">Best Practices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdRender/overview.html#using-usdrender-to-control-how-prims-are-rendered" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/overview.html#using-usdrender-to-control-how-prims-are-rendered">Using UsdRender to Control How Prims Are Rendered</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdRender/overview.html#working-with-renderproduct" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/overview.html#working-with-renderproduct">Working with RenderProduct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdRender/overview.html#configuring-multi-pass-renders-with-renderpass" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/overview.html#configuring-multi-pass-renders-with-renderpass">Configuring Multi-pass Renders with RenderPass</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdRender/RenderPass.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/RenderPass.html">RenderPass</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdRender/RenderPass.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/RenderPass.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdRender/RenderProduct.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/RenderProduct.html">RenderProduct</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdRender/RenderProduct.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/RenderProduct.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdRender/RenderProduct.html#inherited-properties-rendersettingsbase" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/RenderProduct.html#inherited-properties-rendersettingsbase">Inherited Properties (<span class="xref std std-ref">RenderSettingsBase</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdRender/RenderSettings.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/RenderSettings.html">RenderSettings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdRender/RenderSettings.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/RenderSettings.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdRender/RenderSettings.html#inherited-properties-rendersettingsbase" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/RenderSettings.html#inherited-properties-rendersettingsbase">Inherited Properties (<span class="xref std std-ref">RenderSettingsBase</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdRender/RenderSettingsBase.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/RenderSettingsBase.html">RenderSettingsBase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdRender/RenderSettingsBase.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/RenderSettingsBase.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdRender/RenderVar.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/RenderVar.html">RenderVar</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdRender/RenderVar.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/RenderVar.html#properties">Properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdUI/usdUI_toc.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdUI/usdUI_toc.html">UI (usdUI)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdUI/overview.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdUI/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdUI/overview.html#working-with-node-graphs" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdUI/overview.html#working-with-node-graphs">Working With Node Graphs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdUI/overview.html#working-with-accessibility-information" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdUI/overview.html#working-with-accessibility-information">Working With Accessibility Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdUI/overview.html#working-with-ui-hints" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdUI/overview.html#working-with-ui-hints">Working With UI Hints</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdUI/AttributeHints.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdUI/AttributeHints.html">AttributeHints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdUI/AttributeHints.html#attributehints-fields" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdUI/AttributeHints.html#attributehints-fields">AttributeHints fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdUI/ObjectHints.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdUI/ObjectHints.html">ObjectHints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdUI/ObjectHints.html#objecthints-fields" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdUI/ObjectHints.html#objecthints-fields">ObjectHints fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdUI/PrimHints.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdUI/PrimHints.html">PrimHints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdUI/PrimHints.html#primhints-fields" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdUI/PrimHints.html#primhints-fields">PrimHints fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdUI/PropertyHints.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdUI/PropertyHints.html">PropertyHints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdUI/PropertyHints.html#propertyhints-fields" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdUI/PropertyHints.html#propertyhints-fields">PropertyHints fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdUI/AccessibilityAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdUI/AccessibilityAPI.html">AccessibilityAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdUI/AccessibilityAPI.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdUI/AccessibilityAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdUI/Backdrop.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdUI/Backdrop.html">Backdrop</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdUI/Backdrop.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdUI/Backdrop.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdUI/NodeGraphNodeAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdUI/NodeGraphNodeAPI.html">NodeGraphNodeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdUI/NodeGraphNodeAPI.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdUI/NodeGraphNodeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdUI/SceneGraphPrimAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdUI/SceneGraphPrimAPI.html">SceneGraphPrimAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdUI/SceneGraphPrimAPI.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdUI/SceneGraphPrimAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/usdVol_toc.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/usdVol_toc.html">Volumes (usdVol)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/overview.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/overview.html#working-with-volumes" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/overview.html#working-with-volumes">Working With Volumes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/overview.html#working-with-fields" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/overview.html#working-with-fields">Working With Fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/overview.html#working-with-particle-fields" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/overview.html#working-with-particle-fields">Working With Particle Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/Field3DAsset.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/Field3DAsset.html">Field3DAsset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/Field3DAsset.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/Field3DAsset.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/Field3DAsset.html#inherited-properties-volumefieldasset" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/Field3DAsset.html#inherited-properties-volumefieldasset">Inherited Properties (<span class="xref std std-ref">VolumeFieldAsset</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/Field3DAsset.html#inherited-properties-xformable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/Field3DAsset.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/Field3DAsset.html#inherited-properties-imageable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/Field3DAsset.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/FieldAsset.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/FieldAsset.html">FieldAsset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/FieldAsset.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/FieldAsset.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/FieldAsset.html#inherited-properties-volumefieldasset" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/FieldAsset.html#inherited-properties-volumefieldasset">Inherited Properties (<span class="xref std std-ref">VolumeFieldAsset</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/FieldAsset.html#inherited-properties-xformable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/FieldAsset.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/FieldAsset.html#inherited-properties-imageable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/FieldAsset.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/FieldBase.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/FieldBase.html">FieldBase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/FieldBase.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/FieldBase.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/FieldBase.html#inherited-properties-xformable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/FieldBase.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/FieldBase.html#inherited-properties-imageable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/FieldBase.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/OpenVDBAsset.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/OpenVDBAsset.html">OpenVDBAsset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/OpenVDBAsset.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/OpenVDBAsset.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/OpenVDBAsset.html#inherited-properties-volumefieldasset" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/OpenVDBAsset.html#inherited-properties-volumefieldasset">Inherited Properties (<span class="xref std std-ref">VolumeFieldAsset</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/OpenVDBAsset.html#inherited-properties-xformable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/OpenVDBAsset.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/OpenVDBAsset.html#inherited-properties-imageable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/OpenVDBAsset.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleField.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleField.html">ParticleField</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleField.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleField.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleField.html#inherited-properties-gprim" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleField.html#inherited-properties-gprim">Inherited Properties (<span class="xref std std-ref">Gprim</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleField.html#inherited-properties-boundable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleField.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleField.html#inherited-properties-xformable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleField.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleField.html#inherited-properties-imageable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleField.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html">ParticleField3DGaussianSplat</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#inherited-properties-gprim" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#inherited-properties-gprim">Inherited Properties (<span class="xref std std-ref">Gprim</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#inherited-properties-boundable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#inherited-properties-xformable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#inherited-properties-imageable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelBaseAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldKernelBaseAPI.html">ParticleFieldKernelBaseAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelConstantSurfletAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldKernelConstantSurfletAPI.html">ParticleFieldKernelConstantSurfletAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianEllipsoidAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianEllipsoidAPI.html">ParticleFieldKernelGaussianEllipsoidAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html">ParticleFieldKernelGaussianSurfletAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html">ParticleFieldOpacityAttributeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html">ParticleFieldOrientationAttributeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html">ParticleFieldPositionAttributeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html">ParticleFieldPositionBaseAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleFieldRadianceBaseAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldRadianceBaseAPI.html">ParticleFieldRadianceBaseAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html">ParticleFieldScaleAttributeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html">ParticleFieldSphericalHarmonicsAttributeAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/Volume.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/Volume.html">Volume</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/Volume.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/Volume.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/Volume.html#inherited-properties-gprim" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/Volume.html#inherited-properties-gprim">Inherited Properties (<span class="xref std std-ref">Gprim</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/Volume.html#inherited-properties-boundable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/Volume.html#inherited-properties-boundable">Inherited Properties (<span class="xref std std-ref">Boundable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/Volume.html#inherited-properties-xformable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/Volume.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/Volume.html#inherited-properties-imageable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/Volume.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/VolumeFieldAsset.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/VolumeFieldAsset.html">VolumeFieldAsset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/VolumeFieldAsset.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/VolumeFieldAsset.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/VolumeFieldAsset.html#inherited-properties-xformable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/VolumeFieldAsset.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/VolumeFieldAsset.html#inherited-properties-imageable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/VolumeFieldAsset.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/VolumeFieldBase.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/VolumeFieldBase.html">VolumeFieldBase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/VolumeFieldBase.html#properties" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/VolumeFieldBase.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/VolumeFieldBase.html#inherited-properties-xformable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/VolumeFieldBase.html#inherited-properties-xformable">Inherited Properties (<span class="xref std std-ref">Xformable</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/schemas/usdVol/VolumeFieldBase.html#inherited-properties-imageable" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/VolumeFieldBase.html#inherited-properties-imageable">Inherited Properties (<span class="xref std std-ref">Imageable</span>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../full_site/release/user_guides/time_and_animated_values.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/time_and_animated_values.html">Time and Animated Values</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/time_and_animated_values.html#understanding-timecodes" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/time_and_animated_values.html#understanding-timecodes">Understanding TimeCodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/time_and_animated_values.html#working-with-timecodes-programmatically" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/time_and_animated_values.html#working-with-timecodes-programmatically">Working With TimeCodes Programmatically</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/time_and_animated_values.html#mapping-timecodes-to-real-time" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/time_and_animated_values.html#mapping-timecodes-to-real-time">Mapping TimeCodes to Real Time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/time_and_animated_values.html#specifying-layer-start-and-end-times" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/time_and_animated_values.html#specifying-layer-start-and-end-times">Specifying Layer Start and End Times</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/time_and_animated_values.html#using-timecode-ranges" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/time_and_animated_values.html#using-timecode-ranges">Using TimeCode Ranges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/time_and_animated_values.html#working-with-automatic-and-explicit-timecode-remapping-across-composition" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/time_and_animated_values.html#working-with-automatic-and-explicit-timecode-remapping-across-composition">Working with Automatic and Explicit TimeCode Remapping Across Composition</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/time_and_animated_values.html#automatic-scaling-of-timecodespersecond" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/time_and_animated_values.html#automatic-scaling-of-timecodespersecond">Automatic Scaling of timeCodesPerSecond</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/time_and_animated_values.html#configuring-timecode-scaling-and-offsets-using-layeroffsets" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/time_and_animated_values.html#configuring-timecode-scaling-and-offsets-using-layeroffsets">Configuring TimeCode Scaling and Offsets Using LayerOffsets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/user_guides/time_and_animated_values.html#combining-automatic-scaling-and-layer-offsets" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/time_and_animated_values.html#combining-automatic-scaling-and-layer-offsets">Combining Automatic Scaling and Layer Offsets</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html">Variable Expressions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#defining-expression-variables-in-a-layer" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#defining-expression-variables-in-a-layer">Defining Expression Variables in a Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#string" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#string"><span class="mono">string</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#bool" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#bool"><span class="mono">bool</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#int64" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#int64"><span class="mono">int64</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#type" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#type"><span class="mono">&lt;type&gt;[]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#none" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#none"><span class="mono">None</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#expression-variables-and-composition" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#expression-variables-and-composition">Expression Variables and Composition</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#authoring-variable-expressions" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#authoring-variable-expressions">Authoring Variable Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#expression-function-reference" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#expression-function-reference">Expression Function Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#defined-variable-name" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#defined-variable-name"><span class="mono">defined(&lt;variable name&gt;, …)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#if-condition-true-value-false-value" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#if-condition-true-value-false-value"><span class="mono">if(&lt;condition&gt;, &lt;true-value&gt;, &lt;false-value&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#if-condition-true-value" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#if-condition-true-value"><span class="mono">if(&lt;condition&gt;, &lt;true-value&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#and-x-y" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#and-x-y"><span class="mono">and(&lt;x&gt;, &lt;y&gt;, …)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#or-x-y" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#or-x-y"><span class="mono">or(&lt;x&gt;, &lt;y&gt;, …)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#not-x" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#not-x"><span class="mono">not(&lt;x&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#eq-x-y" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#eq-x-y"><span class="mono">eq(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#neq-x-y" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#neq-x-y"><span class="mono">neq(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#lt-x-y" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#lt-x-y"><span class="mono">lt(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#leq-x-y" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#leq-x-y"><span class="mono">leq(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#gt-x-y" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#gt-x-y"><span class="mono">gt(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#geq-x-y" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#geq-x-y"><span class="mono">geq(&lt;x&gt;, &lt;y&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#contains-list-or-string-value" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#contains-list-or-string-value"><span class="mono">contains(&lt;list_or_string&gt;, &lt;value&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#at-list-or-string-index" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#at-list-or-string-index"><span class="mono">at(&lt;list_or_string&gt;, &lt;index&gt;)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#len-list-or-string" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#len-list-or-string"><span class="mono">len(&lt;list_or_string&gt;)</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#examples" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#examples">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#flexible-variant-selections" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#flexible-variant-selections">Flexible Variant Selections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#asset-valued-texture-file-attribute" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#asset-valued-texture-file-attribute">Asset-valued Texture File Attribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/user_guides/variable_expressions.html#conditionally-include-sublayers" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html#conditionally-include-sublayers">Conditionally Include Sublayers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text"><span class="cn-term">参考</span><span class="en-term">Reference</span></span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><span class="cn-term">API 文档</span><span class="en-term">API Documentation</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="toolset.html"><span class="cn-term">工具集</span><span class="en-term">Toolset</span></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdedit">usdedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdcat">usdcat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usddiff">usddiff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdview">usdview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdrecord">usdrecord</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdresolve">usdresolve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdtree">usdtree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdzip">usdzip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdchecker">usdchecker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdfixbrokenpixarschemas">usdfixbrokenpixarschemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdstitch">usdstitch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdstitchclips">usdstitchclips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usddumpcrate">usddumpcrate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#sdfdump">sdfdump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#sdffilter">sdffilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdmeasureperformance">usdmeasureperformance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdgenschema">usdGenSchema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdgenschemafromsdr">usdgenschemafromsdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolset.html#usdinitschema">usdInitSchema</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../full_site/release/spec.html" data-local-route="mapped" data-official-href="https://openusd.org/release/spec.html"><span class="cn-term">规范</span><span class="en-term">Specifications</span></a><ul>
+<li class="toctree-l2"><a class="reference external" href="https://aousd.org/blog/foundations-of-open-3d-development-introducing-aousd-core-specification-1-0/">USD Core Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/spec_usdpreviewsurface.html" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdpreviewsurface.html">UsdPreviewSurface Specification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/spec_usdpreviewsurface.html#goal" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdpreviewsurface.html#goal">Goal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/spec_usdpreviewsurface.html#core-nodes" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdpreviewsurface.html#core-nodes">Core Nodes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/spec_usdpreviewsurface.html#preview-surface" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdpreviewsurface.html#preview-surface">Preview Surface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/spec_usdpreviewsurface.html#texture-reader" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdpreviewsurface.html#texture-reader">Texture Reader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/spec_usdpreviewsurface.html#primvar-reader" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdpreviewsurface.html#primvar-reader">Primvar Reader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/spec_usdpreviewsurface.html#transform2d" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdpreviewsurface.html#transform2d">Transform2d</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/spec_usdpreviewsurface.html#usd-sample" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdpreviewsurface.html#usd-sample">USD Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/spec_usdpreviewsurface.html#other-notes" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdpreviewsurface.html#other-notes">Other Notes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/spec_usdpreviewsurface.html#texture-coordinate-orientation-in-usd" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdpreviewsurface.html#texture-coordinate-orientation-in-usd">Texture Coordinate Orientation in USD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/spec_usdpreviewsurface.html#roughness-vs-glossiness" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdpreviewsurface.html#roughness-vs-glossiness">Roughness vs Glossiness</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/spec_usdpreviewsurface.html#changes-by-version" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdpreviewsurface.html#changes-by-version">Changes, by Version</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/spec_usdpreviewsurface.html#version-2-0-initial-public-specification" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdpreviewsurface.html#version-2-0-initial-public-specification">Version 2.0 - Initial Public Specification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/spec_usdpreviewsurface.html#version-2-2-before-type-changes" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdpreviewsurface.html#version-2-2-before-type-changes">Version 2.2 - Before Type Changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/spec_usdpreviewsurface.html#version-2-3" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdpreviewsurface.html#version-2-3">Version 2.3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/spec_usdpreviewsurface.html#version-2-4" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdpreviewsurface.html#version-2-4">Version 2.4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/spec_usdpreviewsurface.html#version-2-5" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdpreviewsurface.html#version-2-5">Version 2.5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/spec_usdpreviewsurface.html#version-2-6-current-head" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdpreviewsurface.html#version-2-6-current-head">Version 2.6 - Current Head</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/spec_usdz.html" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdz.html">Usdz File Format Specification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/spec_usdz.html#purpose" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdz.html#purpose">Purpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/spec_usdz.html#usdz-specification" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdz.html#usdz-specification">Usdz Specification</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/spec_usdz.html#foundation" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdz.html#foundation">Foundation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/spec_usdz.html#zip-constraints" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdz.html#zip-constraints">Zip Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/spec_usdz.html#layout" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdz.html#layout">Layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/spec_usdz.html#file-types" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdz.html#file-types">File Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/spec_usdz.html#usd-constraints" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdz.html#usd-constraints">USD Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/spec_usdz.html#editability" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdz.html#editability">Editability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/spec_usdz.html#accessibility" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdz.html#accessibility">Accessibility</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/spec_usdz.html#packaging-considerations-for-streaming-and-encapsulation" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdz.html#packaging-considerations-for-streaming-and-encapsulation">Packaging Considerations for Streaming and Encapsulation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/spec_usdz.html#file-ordering-within-package-for-streaming" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdz.html#file-ordering-within-package-for-streaming">File Ordering Within Package for Streaming</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/spec_usdz.html#usdz-reproducibleresults" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdz.html#usdz-reproducibleresults">For Reproducible Results, Encapsulate Using Anchored Asset Paths</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/spec_usdz.html#mime-type" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdz.html#mime-type">MIME Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/spec_usdz.html#toolset" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdz.html#toolset"><span class="cn-term">工具集</span><span class="en-term">Toolset</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/spec_usdz.html#changes-by-version" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdz.html#changes-by-version">Changes, by Version</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/spec_usdz.html#version-1-3-current-head" data-local-route="mapped" data-official-href="https://openusd.org/release/spec_usdz.html#version-1-3-current-head">Version 1.3 - Current Head</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../full_site/release/wp.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp.html"><span class="cn-term">提案</span><span class="en-term">Proposals</span></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/wp_usdlux_for_geometry_lights.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_geometry_lights.html">Adapting UsdLux to Accommodate Geometry Lights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_usdlux_for_geometry_lights.html#introduction-and-background" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_geometry_lights.html#introduction-and-background">Introduction and Background</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdlux_for_geometry_lights.html#mesh-light-support-in-the-industry" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_geometry_lights.html#mesh-light-support-in-the-industry">Mesh Light Support in the Industry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdlux_for_geometry_lights.html#goals" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_geometry_lights.html#goals">Goals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdlux_for_geometry_lights.html#workflow-considerations" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_geometry_lights.html#workflow-considerations">Workflow Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_usdlux_for_geometry_lights.html#design-space-and-issues" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_geometry_lights.html#design-space-and-issues">Design Space and Issues</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdlux_for_geometry_lights.html#dual-prim-geometry-light-problems" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_geometry_lights.html#dual-prim-geometry-light-problems">Dual-Prim Geometry Light Problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdlux_for_geometry_lights.html#single-prim-geometry-light" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_geometry_lights.html#single-prim-geometry-light">Single-Prim Geometry Light</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_usdlux_for_geometry_lights.html#usdlux-lightapi-om" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_geometry_lights.html#usdlux-lightapi-om">UsdLux LightAPI OM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdlux_for_geometry_lights.html#light-lightapi" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_geometry_lights.html#light-lightapi">Light -&gt; LightAPI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdlux_for_geometry_lights.html#introduce-convenience-base-classes" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_geometry_lights.html#introduce-convenience-base-classes">Introduce Convenience Base Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdlux_for_geometry_lights.html#preserve-existing-usdlux-concrete-schemas" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_geometry_lights.html#preserve-existing-usdlux-concrete-schemas">Preserve Existing UsdLux Concrete Schemas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdlux_for_geometry_lights.html#deprecate-geometrylight" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_geometry_lights.html#deprecate-geometrylight">Deprecate GeometryLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdlux_for_geometry_lights.html#how-do-we-identify-the-appropriate-sdrshadernode-for-a-light" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_geometry_lights.html#how-do-we-identify-the-appropriate-sdrshadernode-for-a-light">How do we Identify the Appropriate SdrShaderNode for a Light?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdlux_for_geometry_lights.html#lights-with-materials" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_geometry_lights.html#lights-with-materials">Lights with Materials?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_usdlux_for_geometry_lights.html#proposal-and-behaviors" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_geometry_lights.html#proposal-and-behaviors">Proposal and Behaviors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdlux_for_geometry_lights.html#shading-and-emission" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_geometry_lights.html#shading-and-emission">Shading and Emission</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdlux_for_geometry_lights.html#volumes" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_geometry_lights.html#volumes">Volumes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdlux_for_geometry_lights.html#primvars-in-light-networks" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_geometry_lights.html#primvars-in-light-networks">Primvars in Light Networks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/wp_usdlux_for_renderers.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_renderers.html">Adapting UsdLux to the Needs of Renderers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_usdlux_for_renderers.html#background-and-goals" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_renderers.html#background-and-goals">Background and Goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_usdlux_for_renderers.html#foundational-technologies-in-usd" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_renderers.html#foundational-technologies-in-usd">Foundational Technologies in USD</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdlux_for_renderers.html#sdr" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_renderers.html#sdr">Sdr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdlux_for_renderers.html#usd-schemas" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_renderers.html#usd-schemas">USD Schemas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdlux_for_renderers.html#usdimaging-and-hydra" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_renderers.html#usdimaging-and-hydra">UsdImaging and Hydra</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_usdlux_for_renderers.html#proposals" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_renderers.html#proposals"><span class="cn-term">提案</span><span class="en-term">Proposals</span></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdlux_for_renderers.html#changes-to-usdlux" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_renderers.html#changes-to-usdlux">Changes to UsdLux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdlux_for_renderers.html#changes-to-usdimaging" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_renderers.html#changes-to-usdimaging">Changes to UsdImaging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdlux_for_renderers.html#changes-to-hd" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_renderers.html#changes-to-hd">Changes to Hd</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdlux_for_renderers.html#changes-to-hdprman-and-other-render-delegates" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_renderers.html#changes-to-hdprman-and-other-render-delegates">Changes to HdPrman and Other Render Delegates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/wp_asset_previews.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_asset_previews.html">Asset Previews in USD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_asset_previews.html#introduction" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_asset_previews.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_asset_previews.html#proposal" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_asset_previews.html#proposal">Proposal</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_asset_previews.html#object-model" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_asset_previews.html#object-model">Object Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_asset_previews.html#concrete-encoding" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_asset_previews.html#concrete-encoding">Concrete Encoding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_asset_previews.html#schema" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_asset_previews.html#schema">Schema</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/wp_ar2.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_ar2.html">Asset Resolution (Ar) 2.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_ar2.html#background-and-goals" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_ar2.html#background-and-goals">Background and Goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_ar2.html#tasks" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_ar2.html#tasks">Tasks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_ar2.html#general-cleanup" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_ar2.html#general-cleanup">General Cleanup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_ar2.html#add-documentation-and-examples" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_ar2.html#add-documentation-and-examples">Add Documentation and Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_ar2.html#add-identifier-concept" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_ar2.html#add-identifier-concept">Add Identifier Concept</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_ar2.html#remove-repository-and-search-path" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_ar2.html#remove-repository-and-search-path">Remove Repository and Search Path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_ar2.html#improve-resolve-and-asset-info" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_ar2.html#improve-resolve-and-asset-info">Improve Resolve and Asset Info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_ar2.html#remove-filesystem-specific-code" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_ar2.html#remove-filesystem-specific-code">Remove Filesystem-specific Code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_ar2.html#add-asset-writing-interface" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_ar2.html#add-asset-writing-interface">Add Asset Writing Interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_ar2.html#add-uri-resolvers" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_ar2.html#add-uri-resolvers">Add URI Resolvers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_ar2.html#allow-creation-of-arresolvercontext-from-strings" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_ar2.html#allow-creation-of-arresolvercontext-from-strings">Allow Creation of ArResolverContext From Strings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_ar2.html#remove-arresolver-configureresolverforasset" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_ar2.html#remove-arresolver-configureresolverforasset">Remove ArResolver::ConfigureResolverForAsset</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_ar2.html#rollout-and-transition" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_ar2.html#rollout-and-transition">Rollout and Transition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_ar2.html#proposed-api" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_ar2.html#proposed-api">Proposed API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/wp_coordsys.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_coordsys.html">Coordinate Systems in USD Proposal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_coordsys.html#purpose" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_coordsys.html#purpose">Purpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_coordsys.html#requirements" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_coordsys.html#requirements">Requirements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_coordsys.html#coordinate-systems-are-identified-by-name-in-shaders" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_coordsys.html#coordinate-systems-are-identified-by-name-in-shaders">Coordinate Systems are Identified by Name in Shaders</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_coordsys.html#proposed-api-schema" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_coordsys.html#proposed-api-schema">Proposed API Schema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_coordsys.html#recording-a-frame-of-reference" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_coordsys.html#recording-a-frame-of-reference">Recording a Frame of Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_coordsys.html#binding-frames-of-reference" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_coordsys.html#binding-frames-of-reference">Binding Frames of Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_coordsys.html#coordsysapi" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_coordsys.html#coordsysapi">CoordSysAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_coordsys.html#usd-sample-and-analysis" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_coordsys.html#usd-sample-and-analysis">USD Sample and Analysis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_coordsys.html#analysis-coordinate-systems-evaluated" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_coordsys.html#analysis-coordinate-systems-evaluated">Analysis: Coordinate Systems Evaluated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_coordsys.html#analysis-coordinate-system-binding-and-consumption" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_coordsys.html#analysis-coordinate-system-binding-and-consumption">Analysis: Coordinate System Binding and Consumption</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_coordsys.html#projections-cameras-and-coordsysapi" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_coordsys.html#projections-cameras-and-coordsysapi">Projections, Cameras, and CoordSysAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/wp_connectable_nodes.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_connectable_nodes.html">Generalizing Connectable Nodes Beyond UsdShade</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_connectable_nodes.html#background-and-goals" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_connectable_nodes.html#background-and-goals">Background and Goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_connectable_nodes.html#proposal" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_connectable_nodes.html#proposal">Proposal</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_connectable_nodes.html#node-definition-as-api-schema" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_connectable_nodes.html#node-definition-as-api-schema">Node Definition as API Schema</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_connectable_nodes.html#plugin-defined-connectableapi-behavior" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_connectable_nodes.html#plugin-defined-connectableapi-behavior">Plugin-defined ConnectableAPI Behavior</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_connectable_nodes.html#connectability-rules-for-usdshade-types" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_connectable_nodes.html#connectability-rules-for-usdshade-types">Connectability Rules for UsdShade Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_connectable_nodes.html#intended-use-in-usdlux-and-usdri-renderman-usd-schema" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_connectable_nodes.html#intended-use-in-usdlux-and-usdri-renderman-usd-schema">Intended use in UsdLux and UsdRi (RenderMan USD schema)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_connectable_nodes.html#discussion" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_connectable_nodes.html#discussion">Discussion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_connectable_nodes.html#sdr-ndr" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_connectable_nodes.html#sdr-ndr">Sdr &amp; Ndr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_connectable_nodes.html#flexibility-of-connectability-callbacks" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_connectable_nodes.html#flexibility-of-connectability-callbacks">Flexibility of Connectability Callbacks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_connectable_nodes.html#non-shading-networks" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_connectable_nodes.html#non-shading-networks">Non-shading Networks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/wp_render_settings.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_render_settings.html">Render Settings in USD Proposal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_render_settings.html#purpose-and-scope" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_render_settings.html#purpose-and-scope">Purpose and Scope</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_render_settings.html#overall-design-and-concerns" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_render_settings.html#overall-design-and-concerns">Overall Design and Concerns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_render_settings.html#concrete-schemas" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_render_settings.html#concrete-schemas">Concrete Schemas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_render_settings.html#renderer-specific-schemas" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_render_settings.html#renderer-specific-schemas">Renderer-Specific Schemas</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_render_settings.html#prim-and-scene-organization" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_render_settings.html#prim-and-scene-organization">Prim and Scene Organization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_render_settings.html#discovering-render-settings" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_render_settings.html#discovering-render-settings">Discovering Render Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_render_settings.html#selecting-and-combining-render-settings" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_render_settings.html#selecting-and-combining-render-settings">Selecting and Combining Render Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_render_settings.html#grouping-rendervars-and-renderproducts" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_render_settings.html#grouping-rendervars-and-renderproducts">Grouping RenderVars and RenderProducts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_render_settings.html#discovering-all-potential-shader-based-rendervars" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_render_settings.html#discovering-all-potential-shader-based-rendervars">Discovering All Potential Shader-based RenderVars</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_render_settings.html#workflow-considerations" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_render_settings.html#workflow-considerations">Workflow Considerations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_render_settings.html#interactive-vs-batch-rendering" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_render_settings.html#interactive-vs-batch-rendering">Interactive vs. Batch Rendering</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_render_settings.html#examples" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_render_settings.html#examples">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_render_settings.html#discussion-and-questions" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_render_settings.html#discussion-and-questions">Discussion and Questions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_render_settings.html#id-variables" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_render_settings.html#id-variables">ID variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_render_settings.html#stereo-rendering" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_render_settings.html#stereo-rendering">Stereo Rendering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_render_settings.html#camera-exposure-curves" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_render_settings.html#camera-exposure-curves">Camera Exposure Curves</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_render_settings.html#denoising-color-correction-and-tasks" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_render_settings.html#denoising-color-correction-and-tasks">Denoising, Color Correction, and Tasks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_render_settings.html#why-locality-of-overrides-is-valuable" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_render_settings.html#why-locality-of-overrides-is-valuable">Why Locality of Overrides is Valuable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_render_settings.html#image-mapping-related-options-on-camera-or-rendersettings" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_render_settings.html#image-mapping-related-options-on-camera-or-rendersettings">Image-Mapping-Related Options on Camera or RenderSettings?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_render_settings.html#crop-windows-and-region-of-interest" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_render_settings.html#crop-windows-and-region-of-interest">Crop Windows and Region-of-Interest</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/wp_rigid_body_physics.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_rigid_body_physics.html">Rigid Body Physics in USD Proposal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_rigid_body_physics.html#purpose-and-scope" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_rigid_body_physics.html#purpose-and-scope">Purpose and Scope</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_rigid_body_physics.html#overall-design-concerns" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_rigid_body_physics.html#overall-design-concerns">Overall Design Concerns</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_rigid_body_physics.html#rigid-body-simulation-primer" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_rigid_body_physics.html#rigid-body-simulation-primer">Rigid Body Simulation Primer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_rigid_body_physics.html#usd-implementation" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_rigid_body_physics.html#usd-implementation">USD Implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_rigid_body_physics.html#concrete-schemas" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_rigid_body_physics.html#concrete-schemas">Concrete Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_rigid_body_physics.html#examples" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_rigid_body_physics.html#examples">Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_rigid_body_physics.html#box-on-box" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_rigid_body_physics.html#box-on-box">Box on Box</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_rigid_body_physics.html#box-on-quad" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_rigid_body_physics.html#box-on-quad">Box on Quad</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_rigid_body_physics.html#spheres-with-materials" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_rigid_body_physics.html#spheres-with-materials">Spheres with Materials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_rigid_body_physics.html#group-filtering" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_rigid_body_physics.html#group-filtering">Group Filtering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_rigid_body_physics.html#pair-filtering" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_rigid_body_physics.html#pair-filtering">Pair Filtering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_rigid_body_physics.html#joint" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_rigid_body_physics.html#joint">Joint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_rigid_body_physics.html#distance-joint" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_rigid_body_physics.html#distance-joint">Distance Joint</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/wp_schema_versioning.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_schema_versioning.html">Schema Versioning in USD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_schema_versioning.html#introduction" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_schema_versioning.html#introduction">Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_schema_versioning.html#challenges-to-schema-versioning-in-usd" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_schema_versioning.html#challenges-to-schema-versioning-in-usd">Challenges to Schema Versioning in USD</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_schema_versioning.html#proposal-for-per-schema-versioning" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_schema_versioning.html#proposal-for-per-schema-versioning">Proposal for Per-Schema Versioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_schema_versioning.html#version-representation-in-schemas" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_schema_versioning.html#version-representation-in-schemas">Version Representation in Schemas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_schema_versioning.html#schema-registry" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_schema_versioning.html#schema-registry">Schema Registry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_schema_versioning.html#usdprim-schema-related-api" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_schema_versioning.html#usdprim-schema-related-api">UsdPrim Schema-related API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_schema_versioning.html#considerations-for-auto-apply-api-schemas" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_schema_versioning.html#considerations-for-auto-apply-api-schemas">Considerations for Auto-apply API Schemas</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_schema_versioning.html#risks-questions-limitations" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_schema_versioning.html#risks-questions-limitations">Risks, Questions, Limitations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_schema_versioning.html#guidelines-for-schema-versioning" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_schema_versioning.html#guidelines-for-schema-versioning">Guidelines for Schema Versioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_schema_versioning.html#criteria-for-versioning" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_schema_versioning.html#criteria-for-versioning">Criteria for Versioning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_schema_versioning.html#do-not-version-a-schema-when" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_schema_versioning.html#do-not-version-a-schema-when">Do not Version a Schema When…</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_schema_versioning.html#do-version-a-schema-when" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_schema_versioning.html#do-version-a-schema-when">Do Version a Schema When…</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_schema_versioning.html#pixar-examples-past-and-future" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_schema_versioning.html#pixar-examples-past-and-future">Pixar Examples, Past and Future</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_schema_versioning.html#usdlux-connectability" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_schema_versioning.html#usdlux-connectability">UsdLux Connectability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_schema_versioning.html#light-lightapi" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_schema_versioning.html#light-lightapi">Light → LightAPI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_schema_versioning.html#visibility-to-visibilityapi" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_schema_versioning.html#visibility-to-visibilityapi">Visibility to VisibilityAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_schema_versioning.html#schemaversioning-codegen-support" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_schema_versioning.html#schemaversioning-codegen-support">Possible Code Generation Changes to Support Versioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_schema_versioning.html#base-schema-class-is-always-the-latest-version-of-the-family" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_schema_versioning.html#base-schema-class-is-always-the-latest-version-of-the-family">Base Schema Class is Always the Latest Version of the Family</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_schema_versioning.html#class-per-version-with-typedef-mapping-to-current-or-latest-version-class" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_schema_versioning.html#class-per-version-with-typedef-mapping-to-current-or-latest-version-class">Class Per Version with Typedef Mapping to “Current” or “Latest” Version-Class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_schema_versioning.html#single-c-class-that-provides-api-for-all-versions-of-the-schema-family" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_schema_versioning.html#single-c-class-that-provides-api-for-all-versions-of-the-schema-family">Single C++ Class That Provides API for ALL Versions of the Schema Family</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_schema_versioning.html#compatible-cluster-classes-with-disambiguating-method-names" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_schema_versioning.html#compatible-cluster-classes-with-disambiguating-method-names">“Compatible Cluster” Classes with Disambiguating Method Names</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/wp_stage_variables.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_stage_variables.html">Stage Variable Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/wp_usdaudio.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdaudio.html">UsdAudio Proposal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_usdaudio.html#goal" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdaudio.html#goal">Goal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_usdaudio.html#initial-requirements" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdaudio.html#initial-requirements">Initial Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_usdaudio.html#proposed-prim-schema" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdaudio.html#proposed-prim-schema">Proposed Prim Schema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdaudio.html#spatialaudio" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdaudio.html#spatialaudio">SpatialAudio</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_usdaudio.html#usd-sample" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdaudio.html#usd-sample">USD Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_usdaudio.html#other-notes-questions" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdaudio.html#other-notes-questions">Other Notes/Questions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdaudio.html#sdftimecode-and-time-scaling" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdaudio.html#sdftimecode-and-time-scaling">SdfTimeCode and Time Scaling</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/wp_usdshade.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdshade.html">UsdShade Material Assignment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_usdshade.html#background" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdshade.html#background">Background</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_usdshade.html#basic-proposal-for-collection-based-assignment" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdshade.html#basic-proposal-for-collection-based-assignment">Basic Proposal for Collection-Based Assignment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdshade.html#example-collection-based-assignment" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdshade.html#example-collection-based-assignment">Example Collection-Based Assignment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdshade.html#refinement-1-specifying-binding-strength" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdshade.html#refinement-1-specifying-binding-strength">Refinement 1: Specifying Binding Strength</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdshade.html#refinement-2-material-purpose" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdshade.html#refinement-2-material-purpose">Refinement 2: Material Purpose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdshade.html#material-resolve-determining-the-bound-material-for-any-geometry-prim" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdshade.html#material-resolve-determining-the-bound-material-for-any-geometry-prim">Material Resolve: Determining the Bound Material for any Geometry Prim</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdshade.html#usdshade-api" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdshade.html#usdshade-api">UsdShade API</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_usdshade.html#analysis-of-collection-based-binding" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdshade.html#analysis-of-collection-based-binding">Analysis of Collection-Based Binding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_usdshade.html#integration" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdshade.html#integration">Integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdshade.html#katana-import" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdshade.html#katana-import">Katana Import</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdshade.html#maya-i-o" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdshade.html#maya-i-o">Maya I/O</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdshade.html#houdini" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdshade.html#houdini">Houdini</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/wp_usdshade.html#remaining-questions" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdshade.html#remaining-questions">Remaining Questions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdshade.html#performance" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdshade.html#performance">Performance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdshade.html#implication-on-renderer-instancing" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdshade.html#implication-on-renderer-instancing">Implication on Renderer Instancing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/wp_usdshade.html#material-layering" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdshade.html#material-layering">Material Layering</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../full_site/release/usdfaq.html" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/usdfaq.html#general-questions" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html#general-questions">General Questions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/usdfaq.html#what-is-usd-and-why-should-i-use-it" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html#what-is-usd-and-why-should-i-use-it">What is USD and why should I use it?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/usdfaq.html#what-programming-languages-are-supported" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html#what-programming-languages-are-supported">What programming languages are supported?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/usdfaq.html#isn-t-usd-just-another-file-format" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html#isn-t-usd-just-another-file-format">Isn’t USD just another file format?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/usdfaq.html#so-what-file-formats-does-usd-support" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html#so-what-file-formats-does-usd-support">So what file formats does USD support?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/usdfaq.html#what-file-format-is-my-usd-file" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html#what-file-format-is-my-usd-file">What file format is my <span class="mono">.usd</span> file?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/usdfaq.html#what-character-encoding-does-usda-support" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html#what-character-encoding-does-usda-support">What character encoding does <span class="mono">.usda</span> support?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/usdfaq.html#how-can-i-convert-usd-files-between-binary-and-text" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html#how-can-i-convert-usd-files-between-binary-and-text">How can I convert USD files between binary and text?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/usdfaq.html#what-data-types-are-supported" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html#what-data-types-are-supported">What data types are supported?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/usdfaq.html#what-does-a-usd-file-look-like" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html#what-does-a-usd-file-look-like">What does a USD file look like?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/usdfaq.html#subtler-aspects-of-scene-description-and-composition" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html#subtler-aspects-of-scene-description-and-composition">Subtler Aspects of Scene Description and Composition</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/usdfaq.html#i-have-some-layers-i-want-to-combine-should-i-use-sublayers-or-references" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html#i-have-some-layers-i-want-to-combine-should-i-use-sublayers-or-references">I have some layers I want to combine: Should I use SubLayers or References?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/usdfaq.html#what-happens-to-overs-when-their-underlying-prim-is-moved-to-a-different-location-in-the-scenegraph" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html#what-happens-to-overs-when-their-underlying-prim-is-moved-to-a-different-location-in-the-scenegraph">What happens to “overs” when their underlying prim is moved to a different location in the scenegraph?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/usdfaq.html#when-can-you-delete-a-reference-or-other-deletable-thing" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html#when-can-you-delete-a-reference-or-other-deletable-thing">When can you delete a reference (or other deletable thing)?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/usdfaq.html#list-edited-string-token-and-int-metadata" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html#list-edited-string-token-and-int-metadata">List-edited string, token, and int metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/usdfaq.html#list-edited-relationships-and-connections" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html#list-edited-relationships-and-connections">List-edited relationships and connections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/usdfaq.html#list-edited-composition-arcs" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html#list-edited-composition-arcs">List-edited composition arcs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/usdfaq.html#what-s-the-difference-between-an-over-and-a-typeless-def" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html#what-s-the-difference-between-an-over-and-a-typeless-def">What’s the difference between an “over” and a “typeless def” ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/usdfaq.html#why-can-t-i-instance-a-leaf-mesh-prim-directly" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html#why-can-t-i-instance-a-leaf-mesh-prim-directly">Why Can’t I Instance a Leaf Mesh Prim Directly?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/usdfaq.html#build-and-runtime-issues" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html#build-and-runtime-issues">Build and Runtime Issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/usdfaq.html#how-do-i-use-the-tf-debug-mechanism" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html#how-do-i-use-the-tf-debug-mechanism">How do I use the <code class="docutils literal notranslate"><span class="pre">TF_DEBUG</span></code> mechanism?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/usdfaq.html#why-isn-t-python-finding-usd-modules" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html#why-isn-t-python-finding-usd-modules">Why Isn’t Python Finding USD Modules?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/usdfaq.html#why-isn-t-this-plugin-being-built" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html#why-isn-t-this-plugin-being-built">Why Isn’t This Plugin Being Built?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/usdfaq.html#why-doesn-t-the-openusd-runtime-recognize-the-usd-file-format" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html#why-doesn-t-the-openusd-runtime-recognize-the-usd-file-format">Why doesn’t the OpenUSD runtime recognize the USD file format?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/usdfaq.html#why-isn-t-my-app-finding-usd-dlls-and-plugins-on-windows" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html#why-isn-t-my-app-finding-usd-dlls-and-plugins-on-windows">Why Isn’t My App Finding USD DLLs and Plugins on Windows?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../full_site/release/maxperf.html" data-local-route="mapped" data-official-href="https://openusd.org/release/maxperf.html">Performance Considerations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/maxperf.html#use-an-allocator-optimized-for-multithreading" data-local-route="mapped" data-official-href="https://openusd.org/release/maxperf.html#use-an-allocator-optimized-for-multithreading">Use an allocator optimized for multithreading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/maxperf.html#use-binary-usd-files-for-geometry-and-shading-caches" data-local-route="mapped" data-official-href="https://openusd.org/release/maxperf.html#use-binary-usd-files-for-geometry-and-shading-caches">Use binary “.usd” files for geometry and shading caches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/maxperf.html#package-assets-with-payloads" data-local-route="mapped" data-official-href="https://openusd.org/release/maxperf.html#package-assets-with-payloads">Package assets with payloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/maxperf.html#what-makes-a-usd-scene-heavy-expensive" data-local-route="mapped" data-official-href="https://openusd.org/release/maxperf.html#what-makes-a-usd-scene-heavy-expensive">What makes a USD scene heavy/expensive?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../full_site/release/ref_performance_metrics.html" data-local-route="mapped" data-official-href="https://openusd.org/release/ref_performance_metrics.html">Performance Metrics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/ref_performance_metrics.html#what-we-measure" data-local-route="mapped" data-official-href="https://openusd.org/release/ref_performance_metrics.html#what-we-measure">What We Measure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/ref_performance_metrics.html#what-environment-is-used" data-local-route="mapped" data-official-href="https://openusd.org/release/ref_performance_metrics.html#what-environment-is-used">What Environment Is Used</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/ref_performance_metrics.html#linux" data-local-route="mapped" data-official-href="https://openusd.org/release/ref_performance_metrics.html#linux">Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/ref_performance_metrics.html#macos" data-local-route="mapped" data-official-href="https://openusd.org/release/ref_performance_metrics.html#macos">macOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/ref_performance_metrics.html#windows" data-local-route="mapped" data-official-href="https://openusd.org/release/ref_performance_metrics.html#windows">Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/ref_performance_metrics.html#usd-build" data-local-route="mapped" data-official-href="https://openusd.org/release/ref_performance_metrics.html#usd-build">USD Build</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/ref_performance_metrics.html#metrics" data-local-route="mapped" data-official-href="https://openusd.org/release/ref_performance_metrics.html#metrics">Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/ref_performance_metrics.html#performance-graphs-per-platform" data-local-route="mapped" data-official-href="https://openusd.org/release/ref_performance_metrics.html#performance-graphs-per-platform">Performance Graphs Per Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/ref_performance_metrics.html#standard-shader-ball" data-local-route="mapped" data-official-href="https://openusd.org/release/ref_performance_metrics.html#standard-shader-ball">Standard Shader Ball</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/ref_performance_metrics.html#kitchen-set" data-local-route="mapped" data-official-href="https://openusd.org/release/ref_performance_metrics.html#kitchen-set">Kitchen Set</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/ref_performance_metrics.html#alab" data-local-route="mapped" data-official-href="https://openusd.org/release/ref_performance_metrics.html#alab">ALab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/ref_performance_metrics.html#moore-lane" data-local-route="mapped" data-official-href="https://openusd.org/release/ref_performance_metrics.html#moore-lane">Moore Lane</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/ref_performance_metrics.html#running-performance-metrics-locally" data-local-route="mapped" data-official-href="https://openusd.org/release/ref_performance_metrics.html#running-performance-metrics-locally">Running Performance Metrics Locally</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/ref_performance_metrics.html#adding-custom-metrics" data-local-route="mapped" data-official-href="https://openusd.org/release/ref_performance_metrics.html#adding-custom-metrics">Adding Custom Metrics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../full_site/release/plugins.html" data-local-route="mapped" data-official-href="https://openusd.org/release/plugins.html">Third Party Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/plugins_renderman.html" data-local-route="mapped" data-official-href="https://openusd.org/release/plugins_renderman.html">RenderMan USD Imaging Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/plugins_renderman.html#configuration" data-local-route="mapped" data-official-href="https://openusd.org/release/plugins_renderman.html#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/plugins_renderman.html#building-hdprman" data-local-route="mapped" data-official-href="https://openusd.org/release/plugins_renderman.html#building-hdprman">Building hdPrman</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/plugins_renderman.html#running-hdprman" data-local-route="mapped" data-official-href="https://openusd.org/release/plugins_renderman.html#running-hdprman">Running hdPrman</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/plugins_renderman.html#developer" data-local-route="mapped" data-official-href="https://openusd.org/release/plugins_renderman.html#developer">Developer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../full_site/release/plugins_renderman.html#supported-render-pass-aovs" data-local-route="mapped" data-official-href="https://openusd.org/release/plugins_renderman.html#supported-render-pass-aovs">Supported Render Pass AOVs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/plugins_alembic.html" data-local-route="mapped" data-official-href="https://openusd.org/release/plugins_alembic.html">Alembic USD Plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/plugins_alembic.html#known-limitations" data-local-route="mapped" data-official-href="https://openusd.org/release/plugins_alembic.html#known-limitations">Known Limitations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Collaborate</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/PixarAnimationStudios/OpenUSD">Source Code &#64; GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.openusd.org">OpenUSD Forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../full_site/release/contributing_to_usd.html" data-local-route="mapped" data-official-href="https://openusd.org/release/contributing_to_usd.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/contributing_to_usd.html#contributor-license-agreement" data-local-route="mapped" data-official-href="https://openusd.org/release/contributing_to_usd.html#contributor-license-agreement">Contributor License Agreement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/contributing_to_usd.html#coding-conventions" data-local-route="mapped" data-official-href="https://openusd.org/release/contributing_to_usd.html#coding-conventions">Coding Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/contributing_to_usd.html#pull-request-guidelines" data-local-route="mapped" data-official-href="https://openusd.org/release/contributing_to_usd.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/contributing_to_usd.html#git-workflow" data-local-route="mapped" data-official-href="https://openusd.org/release/contributing_to_usd.html#git-workflow">Git Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/contributing_to_usd.html#github-issues" data-local-route="mapped" data-official-href="https://openusd.org/release/contributing_to_usd.html#github-issues">GitHub Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../full_site/release/contributing_to_usd.html#making-major-changes" data-local-route="mapped" data-official-href="https://openusd.org/release/contributing_to_usd.html#making-major-changes">Making Major Changes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/contributing_to_usd.html#step-1-get-consensus-for-major-changes" data-local-route="mapped" data-official-href="https://openusd.org/release/contributing_to_usd.html#step-1-get-consensus-for-major-changes">Step 1. Get consensus for major changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/contributing_to_usd.html#step-2-make-code-changes" data-local-route="mapped" data-official-href="https://openusd.org/release/contributing_to_usd.html#step-2-make-code-changes">Step 2. Make code changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/contributing_to_usd.html#step-3-test-code-changes" data-local-route="mapped" data-official-href="https://openusd.org/release/contributing_to_usd.html#step-3-test-code-changes">Step 3. Test code changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/contributing_to_usd.html#step-4-submit-code-for-review" data-local-route="mapped" data-official-href="https://openusd.org/release/contributing_to_usd.html#step-4-submit-code-for-review">Step 4. Submit code for review</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../full_site/release/contributing_to_usd.html#step-5-pixar-will-test-and-land-your-changes" data-local-route="mapped" data-official-href="https://openusd.org/release/contributing_to_usd.html#step-5-pixar-will-test-and-land-your-changes">Step 5. Pixar will test and land your changes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../full_site/release/contributors.html" data-local-route="mapped" data-official-href="https://openusd.org/release/contributors.html">Contributors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../full_site/release/release_schedule.html" data-local-route="mapped" data-official-href="https://openusd.org/release/release_schedule.html">Release Schedule</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Press</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../full_site/release/press_opensource_release.html" data-local-route="mapped" data-official-href="https://openusd.org/release/press_opensource_release.html">Open Source Release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../full_site/release/press_opensource_announce.html" data-local-route="mapped" data-official-href="https://openusd.org/release/press_opensource_announce.html">Open Source Announcement</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #606060" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="release_index.html"><span class="cn-term">通用场景描述</span><span class="en-term">Universal Scene Description</span></a>
+      </nav>
+
+      <div class="wy-nav-content">
+  <style>
+    .version_warning {
+        margin-bottom: 10px;
+    }
+  </style>
+  <div class="version_warning_placeholder"></div>
+  
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="release_index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="cn-term">API 文档</span><span class="en-term">API Documentation</span></li>
+  <li class="wy-breadcrumbs-aside">
+    <div class="version_switcher_placeholder"></div>
+  </li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+<div class="cn-repro-scope admonition note">
+<p class="admonition-title"><span class="cn-term">API 桥接页</span><span class="en-term">API bridge page</span></p>
+<p class="zh">本页是 release 文档到 Doxygen API 文档的桥接入口。按钮链接保留为 <code>api/index.html</code>，并在本地跳转到已复刻的 API 首页。</p>
+<p class="en">This page bridges the release documentation to the Doxygen API documentation. The button link remains <code>api/index.html</code> and locally redirects to the reproduced API index.</p>
+<p class="zh">阅读 API 文档时，建议先从 Overview and Purpose 理解库的分层：底层是 Sdf、Vt、Tf、Ar 等基础模块，上层的 Usd、UsdGeom、UsdShade、UsdLux 等 schema 模块面向具体场景描述任务。</p>
+<p class="en">When reading the API documentation, start with Overview and Purpose to understand the layering: lower modules such as Sdf, Vt, Tf, and Ar provide foundations, while schema modules such as Usd, UsdGeom, UsdShade, and UsdLux target concrete scene-description work.</p>
+<p class="zh">本页只承担桥接和导航职责；真正的 Doxygen API 首页在本地 <code>site/index.html</code>，Usd core front page 在 <code>site/usd_page_front.html</code>，二者会保留英文类名、模块名和链接。</p>
+<p class="en">This page is only a bridge and navigation page; the reproduced Doxygen API index is <code>site/index.html</code>, and the Usd core front page is <code>site/usd_page_front.html</code>, both retaining English class names, module names, and links.</p>
+<p class="zh">如果某个 API 链接已经在 406 页清单内，本地页面会直接打开；如果它是清单外的 OpenUSD 内部 HTML，本地站点会先显示缺口提示，而不是无提示跳回官方英文站。</p>
+<p class="en">If an API link is in the 406-page inventory, it opens locally; if it is an out-of-inventory OpenUSD internal HTML page, the local site shows a coverage-gap notice instead of silently leaving for the official English site.</p>
+<p class="zh">中文层用于说明阅读路径和术语关系；API 名称、C++ 类名、页面名、文件名和代码片段继续使用官方英文，方便和源码、编译日志以及搜索结果互相对应。</p>
+<p class="en">The Chinese layer explains reading paths and terminology; API names, C++ class names, page names, file names, and code fragments remain in official English so they match source code, build logs, and search results.</p>
+<p class="zh">建议把这页当作从叙述性文档进入参考文档的门廊：如果你在教程或用户指南中遇到类名，就回到 API 首页按模块查找；如果你在 API 页遇到概念不清楚，再回到 release 文档中的术语、教程和用户指南。</p>
+<p class="en">Treat this page as the doorway from narrative documentation into reference documentation: when a tutorial or user guide mentions a class, return to the API index by module; when an API page leaves a concept unclear, return to terms, tutorials, and user guides in the release documentation.</p>
+<p class="zh">API 文档通常不会像教程那样按任务讲解，而是按模块、类、函数和文件组织信息。因此本地双语层会优先补阅读顺序和术语对照，帮助你知道先看哪一层、再查哪一个对象。</p>
+<p class="en">API documentation is usually organized by modules, classes, functions, and files rather than by task. The local bilingual layer therefore emphasizes reading order and term mapping so you know which layer to read first and which object to inspect next.</p>
+<p class="zh">本页中的按钮、侧栏、上一页和下一页链接都保留官方结构；中文只补充导航含义，不改变原有页面关系，这样本地复刻仍能和官方站点一一对应。</p>
+<p class="en">Buttons, sidebars, previous links, and next links retain the official structure. Chinese text adds navigation meaning without changing page relationships, keeping this local reproduction aligned one to one with the official site.</p>
+<p class="zh">如果你只想快速进入代码参考，直接点击 USD C++ API Documentation；如果你需要先理解模块之间的关系，先从 API 首页的阅读路线进入 Overview and Purpose，再回到具体模块或类页。</p>
+<p class="en">If you only need code reference, go directly through USD C++ API Documentation; if you first need module relationships, use the API index reading route to enter Overview and Purpose before returning to specific modules or class pages.</p>
+<p class="zh">本地复刻会把这类桥接页作为导航枢纽处理：中文说明告诉你为什么点击，英文标题和链接保持官方原样，便于后续和官方页面、源码符号以及搜索结果对照。</p>
+<p class="en">This local reproduction treats bridge pages as navigation hubs: Chinese text explains why a link matters, while English titles and links stay official so they remain comparable with official pages, source symbols, and search results.</p>
+</div>
+             
+  <section id="api-documentation">
+<h1><span class="cn-term">API 文档</span><span class="en-term">API Documentation</span><a class="headerlink" href="#api-documentation" title="Link to this heading"></a></h1>
+<p><a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-outline-primary reference external" href="api/index.html"><span><span class="cn-term">USD C++ API 文档</span><span class="en-term">USD C++ API Documentation</span></span></a></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../full_site/release/user_guides/variable_expressions.html" class="btn btn-neutral float-left" title="USD 变量表达式 / USD Variable Expressions" accesskey="p" rel="prev" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/variable_expressions.html"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> <span class="cn-term">上一页</span><span class="en-term">Previous</span></a>
+        <a href="toolset.html" class="btn btn-neutral float-right" title="USD 工具集 / USD Toolset" accesskey="n" rel="next"><span class="cn-term">下一页</span><span class="en-term">Next</span> <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Pixar Animation Studios.</p>
+  </div>
+
+   
+<!-- Additional content for Read-the-Docs theme footer, see https://github.com/readthedocs/sphinx_rtd_theme/blob/master/sphinx_rtd_theme/footer.html --> 
+<a class="usd-tos-footer-style" href="https://disneytermsofuse.com/">Terms of Use</a>
+
+
+<p class="cn-footer-note">中文双语复刻层：API 桥接入口，本地学习用途，官方 API 名称与链接保留。 / Bilingual API bridge layer for local study; official API names and links are preserved.</p>
+</footer>
+        </div>
+
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

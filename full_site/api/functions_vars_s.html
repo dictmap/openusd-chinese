@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables</h1>
+    <div class="meta">https://openusd.org/release/api/functions_vars_s.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section data-cn-refinement="api-functions-vars-quality-pass-027">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Variables - S 补充中文优先的变量索引用法、模块边界和术语对照；英文页面名、API 符号、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first variable-index notes, module boundaries, and terminology for Class Members - Variables - S while retaining English page names, API symbols, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">functions_vars_s.html 是变量索引 S 段，当前最密集的是 UsdGeom schema class 群，同时还包含 SdfNamespaceEdit、UsdSkelBakeSkinningParms、UsdPhysicsRigidBodyDesc、HdMergingSceneIndex::InputScene 和若干 API schema。</span></li>
+        <li><span class="zh">UsdGeomBasisCurves、UsdGeomBoundable、UsdGeomCamera、UsdGeomCapsule、UsdGeomCone、UsdGeomCube、UsdGeomCurves、UsdGeomCylinder、UsdGeomGprim、UsdGeomMesh、UsdGeomPointBased、UsdGeomPointInstancer、UsdGeomPoints、UsdGeomScope 与 UsdGeomSphere 等名称必须保持原样，因为它们就是可点击的 Doxygen/API 符号。</span></li>
+        <li><span class="zh">这一页不是逐个讲解所有 UsdGeom 类的正文，而是把 S 字母下的 class member variables 收到一个索引入口；中文导读的作用是帮助读者先识别 geometry schema、API schema、scene index、physics/skel 几类上下文。</span></li>
+        <li><span class="zh">UsdAPISchemaBase、UsdClipsAPI、UsdCollectionAPI、UsdColorSpaceAPI、UsdColorSpaceDefinitionAPI、UsdGeomModelAPI、UsdGeomMotionAPI 与 UsdGeomPrimvarsAPI 属于 API schema 或辅助 schema；它们和具体几何 prim schema 的角色不同。</span></li>
+        <li><span class="zh">SdfNamespaceEdit 表示命名空间编辑动作，HdMergingSceneIndex::InputScene 指向 Hydra scene index 合并输入，UsdSkelBakeSkinningParms 与 UsdPhysicsRigidBodyDesc 则分别属于骨骼烘焙和刚体描述；这些跨域条目应按模块边界阅读。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">几何 schema：</span><span class="en">geometry schema</span></li>
+        <li><span class="zh">API schema：</span><span class="en">API schema</span></li>
+        <li><span class="zh">scene index 输入：</span><span class="en">scene index input</span></li>
+        <li><span class="zh">命名空间编辑：</span><span class="en">namespace edit</span></li>
+        <li><span class="zh">蒙皮烘焙参数：</span><span class="en">bake skinning parameters</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 3 级结构：- s -</span><span class="en">- s -</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">Index entries include: SdfNamespaceEdit; HdEmbreeConfig; UsdSkelBakeSkinningParms; UsdPhysicsRigidBodyDesc; UsdGeomTokensType; UsdSkelTokensType; UsdVolTokensType; HdMergingSceneIndex::InputScene; UsdLuxTokensType; UsdUITokensType; UsdAPISchemaBase; UsdClipsAPI; UsdCollectionAPI; UsdColorSpaceAPI; UsdColorSpaceDefinitionAPI; UsdGeomBasisCurves.</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_sdf_namespace_edit.html&amp;title=SdfNamespaceEdit" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_sdf_namespace_edit.html">SdfNamespaceEdit</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_embree_config.html&amp;title=HdEmbreeConfig" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_embree_config.html">HdEmbreeConfig</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_skel_bake_skinning_parms.html&amp;title=UsdSkelBakeSkinningParms" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_skel_bake_skinning_parms.html">UsdSkelBakeSkinningParms</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_physics_rigid_body_desc.html&amp;title=UsdPhysicsRigidBodyDesc" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_physics_rigid_body_desc.html">UsdPhysicsRigidBodyDesc</a></li>
+<li><a href="struct_usd_geom_tokens_type.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/struct_usd_geom_tokens_type.html">UsdGeomTokensType</a></li>
+<li><a href="struct_usd_skel_tokens_type.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/struct_usd_skel_tokens_type.html">UsdSkelTokensType</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_vol_tokens_type.html&amp;title=UsdVolTokensType" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_vol_tokens_type.html">UsdVolTokensType</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_merging_scene_index.html&amp;title=HdMergingSceneIndex%3A%3AInputScene" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_merging_scene_index.html">HdMergingSceneIndex::InputScene</a></li>
+<li><a href="struct_usd_lux_tokens_type.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/struct_usd_lux_tokens_type.html">UsdLuxTokensType</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_u_i_tokens_type.html&amp;title=UsdUITokensType" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_u_i_tokens_type.html">UsdUITokensType</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_a_p_i_schema_base.html&amp;title=UsdAPISchemaBase" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_a_p_i_schema_base.html">UsdAPISchemaBase</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_clips_a_p_i.html&amp;title=UsdClipsAPI" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_clips_a_p_i.html">UsdClipsAPI</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_collection_a_p_i.html&amp;title=UsdCollectionAPI" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_collection_a_p_i.html">UsdCollectionAPI</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_color_space_a_p_i.html&amp;title=UsdColorSpaceAPI" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_color_space_a_p_i.html">UsdColorSpaceAPI</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_color_space_definition_a_p_i.html&amp;title=UsdColorSpaceDefinitionAPI" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_color_space_definition_a_p_i.html">UsdColorSpaceDefinitionAPI</a></li>
+<li><a href="class_usd_geom_basis_curves.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_usd_geom_basis_curves.html">UsdGeomBasisCurves</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_boundable.html&amp;title=UsdGeomBoundable" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_boundable.html">UsdGeomBoundable</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_camera.html&amp;title=UsdGeomCamera" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_camera.html">UsdGeomCamera</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_capsule.html&amp;title=UsdGeomCapsule" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_capsule.html">UsdGeomCapsule</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_capsule__1.html&amp;title=UsdGeomCapsule_1" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_capsule__1.html">UsdGeomCapsule_1</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_cone.html&amp;title=UsdGeomCone" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_cone.html">UsdGeomCone</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_cube.html&amp;title=UsdGeomCube" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_cube.html">UsdGeomCube</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_curves.html&amp;title=UsdGeomCurves" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_curves.html">UsdGeomCurves</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_cylinder.html&amp;title=UsdGeomCylinder" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_cylinder.html">UsdGeomCylinder</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_cylinder__1.html&amp;title=UsdGeomCylinder_1" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_cylinder__1.html">UsdGeomCylinder_1</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_gprim.html&amp;title=UsdGeomGprim" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_gprim.html">UsdGeomGprim</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_hermite_curves.html&amp;title=UsdGeomHermiteCurves" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_hermite_curves.html">UsdGeomHermiteCurves</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_imageable.html&amp;title=UsdGeomImageable" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_imageable.html">UsdGeomImageable</a></li>
+<li><a href="class_usd_geom_mesh.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_usd_geom_mesh.html">UsdGeomMesh</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_model_a_p_i.html&amp;title=UsdGeomModelAPI" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_model_a_p_i.html">UsdGeomModelAPI</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_motion_a_p_i.html&amp;title=UsdGeomMotionAPI" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_motion_a_p_i.html">UsdGeomMotionAPI</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_nurbs_curves.html&amp;title=UsdGeomNurbsCurves" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_nurbs_curves.html">UsdGeomNurbsCurves</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_nurbs_patch.html&amp;title=UsdGeomNurbsPatch" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_nurbs_patch.html">UsdGeomNurbsPatch</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_plane.html&amp;title=UsdGeomPlane" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_plane.html">UsdGeomPlane</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_point_based.html&amp;title=UsdGeomPointBased" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_point_based.html">UsdGeomPointBased</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_point_instancer.html&amp;title=UsdGeomPointInstancer" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_point_instancer.html">UsdGeomPointInstancer</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_points.html&amp;title=UsdGeomPoints" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_points.html">UsdGeomPoints</a></li>
+<li><a href="class_usd_geom_primvars_a_p_i.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_usd_geom_primvars_a_p_i.html">UsdGeomPrimvarsAPI</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_scope.html&amp;title=UsdGeomScope" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_scope.html">UsdGeomScope</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_sphere.html&amp;title=UsdGeomSphere" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_sphere.html">UsdGeomSphere</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/functions_vars_s.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>

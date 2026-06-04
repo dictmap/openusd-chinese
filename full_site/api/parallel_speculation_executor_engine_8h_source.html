@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>源码页面草稿：parallelSpeculationExecutorEngine.h / parallelSpeculationExecutorEngine.h</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="status">bilingual_draft</span>
+    <h1>源码页面草稿：parallelSpeculationExecutorEngine.h / parallelSpeculationExecutorEngine.h</h1>
+    <div class="meta">https://openusd.org/release/api/parallel_speculation_executor_engine_8h_source.html</div>
+  </header>
+  <main>
+    <section>
+      <h2>范围说明 / Scope Note</h2>
+      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
+      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    </section>
+    <section>
+      <h2>页面结构 / Page Structure</h2>
+      <ul>
+<li><span class="zh">第 1 级结构：parallelSpeculationExecutorEngine.h</span><span class="en">parallelSpeculationExecutorEngine.h</span></li>
+      </ul>
+    </section>
+    <section>
+      <h2>原文摘录 / English Source Excerpts</h2>
+<p class="en">Index entries include: VdfParallelSpeculationExecutorEngine; VdfParallelExecutorEngineBase; VdfParallelSpeculationExecutorEngine; Base; VdfEvaluationState; VdfNode; VdfOutput; VdfSchedule::OutputId; VdfExecutorInterface; VdfParallelSpeculationExecutorEngine::; VdfParallelSpeculationExecutorEngine::_DetectCycle; GetExecutor; VdfParallelSpeculationExecutorEngine::_Touch; VdfParallelSpeculationExecutorEngine::_FinalizeOutput; VdfExecutorBufferData; HasOwnership.</p>
+<p class="en">Source excerpt: #ifndef PXR_EXEC_VDF_PARALLEL_SPECULATION_EXECUTOR_ENGINE_H #define PXR_EXEC_VDF_PARALLEL_SPECULATION_EXECUTOR_ENGINE_H #include &quot; pxr/pxr.h &quot; #include &quot; pxr/exec/vdf/parallelExecutorEngineBase.h &quot; #include &quot; pxr/exec/vdf/speculationExecutorBase.h &quot; #include PXR_NAMESPACE_OPEN_SCOPE template class VdfParallelSpeculationExecutorEngine: public VdfParallelExecutorEngineBase &lt;</p>
+    </section>
+    <section>
+      <h2>本页链接 / Page Links</h2>
+      <ul>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fparallel_speculation_executor_engine_8h.html&amp;title=Go+to+the+documentation+of+this+file." data-local-route="uncovered" data-official-href="https://openusd.org/release/api/parallel_speculation_executor_engine_8h.html">Go to the documentation of this file.</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fpxr_8h.html&amp;title=pxr%2Fpxr.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/pxr_8h.html">pxr/pxr.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fparallel_executor_engine_base_8h.html&amp;title=pxr%2Fexec%2Fvdf%2FparallelExecutorEngineBase.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/parallel_executor_engine_base_8h.html">pxr/exec/vdf/parallelExecutorEngineBase.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fspeculation_executor_base_8h.html&amp;title=pxr%2Fexec%2Fvdf%2FspeculationExecutorBase.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/speculation_executor_base_8h.html">pxr/exec/vdf/speculationExecutorBase.h</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf_parallel_speculation_executor_engine.html&amp;title=VdfParallelSpeculationExecutorEngine" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf_parallel_speculation_executor_engine.html">VdfParallelSpeculationExecutorEngine</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf_parallel_executor_engine_base.html&amp;title=VdfParallelExecutorEngineBase" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf_parallel_executor_engine_base.html">VdfParallelExecutorEngineBase</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf_evaluation_state.html&amp;title=VdfEvaluationState" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf_evaluation_state.html">VdfEvaluationState</a></li>
+<li><a href="class_vdf_node.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_vdf_node.html">VdfNode</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf_output.html&amp;title=VdfOutput" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf_output.html">VdfOutput</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf_schedule_1_1_output_id.html&amp;title=VdfSchedule%3A%3AOutputId" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf_schedule_1_1_output_id.html">VdfSchedule::OutputId</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fschedule_tasks_8h.html&amp;title=VdfScheduleTaskIndex" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/schedule_tasks_8h.html">VdfScheduleTaskIndex</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf_executor_interface.html&amp;title=VdfExecutorInterface" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf_executor_interface.html">VdfExecutorInterface</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf_executor_buffer_data.html&amp;title=VdfExecutorBufferData" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf_executor_buffer_data.html">VdfExecutorBufferData</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf_mask.html&amp;title=VdfMask" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf_mask.html">VdfMask</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_vdf_vector.html&amp;title=VdfVector" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_vdf_vector.html">VdfVector</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fevaluation_state_8h_source.html&amp;title=evaluationState.h%3A30" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/evaluation_state_8h_source.html">evaluationState.h:30</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fexecutor_buffer_data_8h_source.html&amp;title=executorBufferData.h%3A32" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/executor_buffer_data_8h_source.html">executorBufferData.h:32</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fexecutor_interface_8h_source.html&amp;title=executorInterface.h%3A45" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/executor_interface_8h_source.html">executorInterface.h:45</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fmask_8h_source.html&amp;title=mask.h%3A37" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/mask_8h_source.html">mask.h:37</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fexec_2vdf_2node_8h_source.html&amp;title=node.h%3A53" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/exec_2vdf_2node_8h_source.html">node.h:53</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fexec_2vdf_2output_8h_source.html&amp;title=output.h%3A32" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/exec_2vdf_2output_8h_source.html">output.h:32</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fparallel_executor_engine_base_8h_source.html&amp;title=parallelExecutorEngineBase.h%3A59" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/parallel_executor_engine_base_8h_source.html">parallelExecutorEngineBase.h:59</a></li>
+<li><a href="parallel_speculation_executor_engine_8h_source.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/parallel_speculation_executor_engine_8h_source.html">parallelSpeculationExecutorEngine.h:37</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fschedule_8h_source.html&amp;title=schedule.h%3A91" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/schedule_8h_source.html">schedule.h:91</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fvector_8h_source.html&amp;title=vector.h%3A56" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/vector_8h_source.html">vector.h:56</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fschedule_tasks_8h_source.html&amp;title=scheduleTasks.h%3A29" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/schedule_tasks_8h_source.html">scheduleTasks.h:29</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fdir_1d43f220d4da368b75944030615bc443.html&amp;title=pxr" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/dir_1d43f220d4da368b75944030615bc443.html">pxr</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fdir_fb94dd5eafa6eb82b9b11b9ff0f3b75c.html&amp;title=exec" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/dir_fb94dd5eafa6eb82b9b11b9ff0f3b75c.html">exec</a></li>
+<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fdir_956ad4652dcf9e1b9174b2244f2ba760.html&amp;title=vdf" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/dir_956ad4652dcf9e1b9174b2244f2ba760.html">vdf</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>导航 / Navigation</h2>
+      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="https://openusd.org/release/api/parallel_speculation_executor_engine_8h_source.html">打开官方原页 / Open official page</a></p>
+    </section>
+  </main>
+</body>
+</html>
