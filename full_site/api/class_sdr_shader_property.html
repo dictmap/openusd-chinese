@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-042">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 SdrShaderProperty Class Reference 补充中文优先的类职责、读取重点、关键属性/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, key attribute/method groups, and terminology for SdrShaderProperty Class Reference while retaining English page names, class names, method names, attribute names, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`SdrShaderProperty` 表示 `SdrShaderNode` 上的一个 property，可以是 input 或 output，用来描述 shader 节点接口中的类型、默认值、metadata 和连接能力。</span></li>
+        <li><span class="zh">英文摘录强调 property 必须有 name 与 type，也可以携带更多 metadata；`CanConnectTo()` 则用于判断另一个 `SdrShaderProperty` 是否可以连接到当前 property。</span></li>
+        <li><span class="zh">`GetDefaultValue()`、`GetDefaultValueAsSdfType()`、`GetArraySize()` 和 `GetTypeAsSdfType()` 是读取值类型与默认值转换的重点方法，适合与 USD/Sdf 类型系统对照阅读。</span></li>
+        <li><span class="zh">`GetHelp()`、`GetHints()`、`GetLabel()`、`GetMetadata()` 和 `GetInfoString()` 面向 UI、文档和 renderer/plugin 集成；它们不是计算 shader 输出，而是描述接口元数据。</span></li>
+        <li><span class="zh">页面提到 `SdrTokenMap` metadata 已弃用并推荐 `SdrShaderPropertyMetadata`；后续维护材质节点描述时应优先使用新的 metadata 枚举/键。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">SdrShaderProperty：</span><span class="en">SdrShaderProperty</span></li>
+        <li><span class="zh">SdrShaderNode：</span><span class="en">SdrShaderNode</span></li>
+        <li><span class="zh">输入或输出：</span><span class="en">input or output</span></li>
+        <li><span class="zh">元数据：</span><span class="en">metadata</span></li>
+        <li><span class="zh">可连接性：</span><span class="en">connectability</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

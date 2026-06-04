@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-042">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 VdfContext Class Reference 补充中文优先的类职责、读取重点、关键属性/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, key attribute/method groups, and terminology for VdfContext Class Reference while retaining English page names, class names, method names, attribute names, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`VdfContext` 是传给 computation callbacks 的 parameter bundle，也是计算函数访问输入值的唯一 API。</span></li>
+        <li><span class="zh">英文摘录强调函数只能通过 context 访问 inputs；因此 `GetInputValue()`、`GetInputValuePtr()` 和 `HasInputValue()` 是读取输入的核心入口。</span></li>
+        <li><span class="zh">`IsOutputRequested()` 用来判断某个输出是否被请求；`SetOutput()` 和 `SetEmptyOutput()` 用来把计算结果写回 Vdf 执行网络，避免为未请求输出做多余工作。</span></li>
+        <li><span class="zh">`CodingError()` 和 `GetNodeDebugName()` 提供错误报告与调试上下文；在复杂 Vdf graph 中，这些方法有助于定位具体 node 和 callback。 </span></li>
+        <li><span class="zh">阅读本页时应把 `VdfContext` 理解为执行期上下文，而不是持久数据容器；它服务于一次 computation 调用的输入读取、输出设置和调试。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">VdfContext：</span><span class="en">VdfContext</span></li>
+        <li><span class="zh">计算回调：</span><span class="en">computation callback</span></li>
+        <li><span class="zh">输入值：</span><span class="en">input value</span></li>
+        <li><span class="zh">被请求的输出：</span><span class="en">requested output</span></li>
+        <li><span class="zh">Vdf 图：</span><span class="en">Vdf graph</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
