@@ -12,7 +12,8 @@ if (-not (Test-Path $KeyPath)) {
     throw "SSH key not found: $KeyPath"
 }
 
-$env:GIT_SSH_COMMAND = "ssh -i `"$KeyPath`" -o IdentitiesOnly=yes"
+$KeyPathForGit = $KeyPath -replace "\\", "/"
+$env:GIT_SSH_COMMAND = "ssh -i `"$KeyPathForGit`" -o IdentitiesOnly=yes"
 
 function Invoke-Git {
     & git @args
@@ -25,7 +26,7 @@ if (-not (Test-Path ".git")) {
     Invoke-Git init -b main | Out-Null
 }
 
-Invoke-Git config core.sshCommand "ssh -i $KeyPath -o IdentitiesOnly=yes"
+Invoke-Git config core.sshCommand "ssh -i $KeyPathForGit -o IdentitiesOnly=yes"
 Invoke-Git config core.autocrlf false
 
 if (-not (git config user.name)) {
