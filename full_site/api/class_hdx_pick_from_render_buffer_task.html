@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-037">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 HdxPickFromRenderBufferTask Class 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for HdxPickFromRenderBufferTask Class while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`HdxPickFromRenderBufferTask` 是 Hdx 中用于对已有 ID buffers 执行 picking queries 的任务类。</span></li>
+        <li><span class="zh">英文摘录说明该任务会把 `HdxPickTaskContextParams` 提供的 pick frustum 重映射到生成 ID buffers 时使用的 camera frustum。</span></li>
+        <li><span class="zh">随后它只针对 pick frustum 覆盖到的 ID buffer 子集运行 pick query；这使它适合从已有 render buffer 中做对象/元素拾取，而不是重新渲染完整场景。</span></li>
+        <li><span class="zh">关联类型包括 `HdxPickFromRenderBufferTaskParams`、`HdSceneDelegate`、`HdRenderIndex`、`HdxTask`、`Hgi`、`HdDriver` 等，说明它横跨 Hdx task、GPU 接口和 scene delegate。</span></li>
+        <li><span class="zh">本页中文层保留 pick frustum、camera frustum、ID buffer、pick query 等术语；后续完整翻译应补参数结构、Sync、执行流程和结果读取。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">拾取查询：</span><span class="en">picking query</span></li>
+        <li><span class="zh">ID buffer：</span><span class="en">ID buffer</span></li>
+        <li><span class="zh">拾取视锥：</span><span class="en">pick frustum</span></li>
+        <li><span class="zh">相机视锥：</span><span class="en">camera frustum</span></li>
+        <li><span class="zh">渲染缓冲：</span><span class="en">render buffer</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

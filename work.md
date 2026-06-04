@@ -1,5 +1,29 @@
 # 工作记录
 
+## 第 168 轮：Hd/Hdx/Hgi/Pcp class 页面精修
+已完成：
+
+- 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、Git 状态和进度记录，确认本轮 5 个 Hd/Hdx/Hgi/Pcp class 目标页均存在且均为 `draft_template_only`。
+- 本轮严格只处理 5 页：`full_site/api/class_hd_task.html`、`full_site/api/class_hdx_pick_from_render_buffer_task.html`、`full_site/api/class_hgi_g_l_graphics_cmds.html`、`full_site/api/class_pcp_arc.html`、`full_site/api/class_pcp_error_unresolved_prim_path.html`；继续低优先处理 `_source.html` 源码页。
+- 新增 `scripts/refine_openusd_api_class_batch_037.mjs`，每页新增 `api-class-quality-pass-037` 中文精修导读区块，包含类职责、相关类型、关键语义、术语对照和结构提醒；保留英文页面名、类名、方法名、template 参数、代码、链接和原英文摘录。
+- 本轮中文层覆盖 `HdTask` 的 Hydra render 工作单元、资源准备、3D/2D render pass 与 `HdEngine::Execute()` 调度语境；`HdxPickFromRenderBufferTask` 的 ID buffer、pick frustum 到 camera frustum 重映射和 picking query；`HgiGLGraphicsCmds` 的 OpenGL backend graphics commands、pipeline handle 和 HgiGL device 语境；`PcpArc` 的 prim index source/target node、composition arc 与 `PcpMapExpression`；`PcpErrorUnresolvedPrimPath` 的 asset path resolved/loaded 失败错误语义。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 205 / `draft_needs_translation` 193 / `good_bilingual` 8 变为 `draft_template_only` 200 / `draft_needs_translation` 198 / `good_bilingual` 8。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；5 个目标页均带有本轮 marker，坏编码风险 0。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+- GitHub 同步：本轮验证通过后运行 `scripts/sync_openusd_to_github.ps1`，提交信息为 `OpenUSD bilingual round 168: HdTask HdxPick HgiGL PcpArc PcpError`。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是完整翻译每个构造函数、方法、参数、返回值和继承关系。
+- 全量仍有 200 个 `draft_template_only` 和 198 个 `draft_needs_translation`；大量 class/API 页面、源码页和部分 release/API 草稿仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理当前质量队列中的 `class_pcp_property_index.html`、`class_sdf_children_view.html`、`class_sdf_layer.html`、`class_sdf_path.html`、`class_sdf_prim_spec.html`。
+2. 对 Pcp/Sdf class 页面补中文用途说明、类职责、关键方法/成员分组、术语对照和局部结构说明，保留类名、方法名、template 参数、路径符号和链接原样。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证；验证通过后同步 GitHub，并记录分级变化与提交结果。
+
 ## 第 167 轮：Hd/HdSt class 页面精修
 已完成：
 

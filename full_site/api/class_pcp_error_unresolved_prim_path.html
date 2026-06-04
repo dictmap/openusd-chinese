@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-037">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 PcpErrorUnresolvedPrimPath Class 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for PcpErrorUnresolvedPrimPath Class while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`PcpErrorUnresolvedPrimPath` 表示 asset paths 无法同时 resolved 和 loaded 的 Pcp 错误类型。</span></li>
+        <li><span class="zh">它来自 `errors.h`，关联基类为 `PcpErrorBase`，说明它属于 composition / asset resolution 期间的错误报告对象。</span></li>
+        <li><span class="zh">关联类型还包括 `PcpSite`、`SdfPath`、`PcpArcType`，提示错误通常需要说明发生位置、相关路径和触发该错误的 composition arc 类型。</span></li>
+        <li><span class="zh">阅读本页时应把 resolved 与 loaded 分开理解：resolved 是资产路径解析成功，loaded 是解析后的资源可实际载入；本错误强调两者不能同时满足。</span></li>
+        <li><span class="zh">本轮中文层不改写类名和错误类型，只补错误语义、上下文类型和排查方向；后续完整翻译应补错误字段、格式化输出和诊断信息。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">未解析的 prim 路径：</span><span class="en">unresolved prim path</span></li>
+        <li><span class="zh">资产路径：</span><span class="en">asset path</span></li>
+        <li><span class="zh">已解析：</span><span class="en">resolved</span></li>
+        <li><span class="zh">已加载：</span><span class="en">loaded</span></li>
+        <li><span class="zh">组合错误：</span><span class="en">composition error</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-037">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 HdTask Class Reference 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for HdTask Class Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`HdTask` 是 Hydra render 期间执行的一项 work unit，属于 abstract task 基类。</span></li>
+        <li><span class="zh">开发者可继承 `HdTask` 来准备 resources、运行 3D render passes、运行 compositing 或 color correction 等 2D render passes，或协调应用程序和其他 renderer 的集成。</span></li>
+        <li><span class="zh">关联类型包括 `SdfPath`、`HdSceneDelegate`、`HdRenderIndex`、`TfTokenVector`、`HdDriver` 等，说明 task 会在 render index、scene delegate 和驱动上下文之间同步数据。</span></li>
+        <li><span class="zh">派生任务包括 `HdxRenderTask`、`HdxPickTask`、`HdxSelectionTask`、`HdxShadowTask`、`HdxPresentTask`、`HdxVisualizeAovTask` 等；阅读时应把 task 看作 `HdEngine::Execute()` 调度的工作节点。</span></li>
+        <li><span class="zh">后续完整翻译应补 `Sync`、prepare、execute、dirty bits 和 task 参数语义；本轮只补任务定位、常见派生类和 Hydra 调度语境。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">工作单元：</span><span class="en">unit of work</span></li>
+        <li><span class="zh">Hydra 渲染：</span><span class="en">Hydra render</span></li>
+        <li><span class="zh">render pass：</span><span class="en">render pass</span></li>
+        <li><span class="zh">场景委托：</span><span class="en">scene delegate</span></li>
+        <li><span class="zh">HdEngine::Execute()：</span><span class="en">HdEngine::Execute()</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

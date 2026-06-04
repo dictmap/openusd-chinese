@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-04T19:00:39.955Z
+Generated: 2026-06-04T19:10:46.742Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-04T19:00:39.955Z
 
 ## Grade Counts
 
-- draft_template_only: 205
-- draft_needs_translation: 193
+- draft_template_only: 200
+- draft_needs_translation: 198
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -87,11 +87,11 @@ Generated: 2026-06-04T19:00:39.955Z
 | 21 | draft_needs_translation | bilingual_draft | 387 | 40/37 | 0 | 0 | `full_site/api/class_hd_scene_delegate.html` |
 | 22 | draft_needs_translation | bilingual_draft | 340 | 34/31 | 0 | 0 | `full_site/api/class_hd_st_dispatch_buffer.html` |
 | 23 | draft_needs_translation | bilingual_draft | 327 | 35/32 | 0 | 0 | `full_site/api/class_hd_st_render_pass_state.html` |
-| 24 | draft_template_only | bilingual_draft | 134 | 20/22 | 0 | 0 | `full_site/api/class_hd_task.html` |
-| 25 | draft_template_only | bilingual_draft | 110 | 14/16 | 0 | 0 | `full_site/api/class_hdx_pick_from_render_buffer_task.html` |
-| 26 | draft_template_only | bilingual_draft | 158 | 26/28 | 0 | 0 | `full_site/api/class_hgi_g_l_graphics_cmds.html` |
-| 27 | draft_template_only | bilingual_draft | 106 | 13/15 | 0 | 0 | `full_site/api/class_pcp_arc.html` |
-| 28 | draft_template_only | bilingual_draft | 126 | 18/20 | 0 | 0 | `full_site/api/class_pcp_error_unresolved_prim_path.html` |
+| 24 | draft_needs_translation | bilingual_draft | 321 | 31/28 | 0 | 0 | `full_site/api/class_hd_task.html` |
+| 25 | draft_needs_translation | bilingual_draft | 312 | 25/22 | 0 | 0 | `full_site/api/class_hdx_pick_from_render_buffer_task.html` |
+| 26 | draft_needs_translation | bilingual_draft | 344 | 37/34 | 0 | 0 | `full_site/api/class_hgi_g_l_graphics_cmds.html` |
+| 27 | draft_needs_translation | bilingual_draft | 312 | 24/21 | 0 | 0 | `full_site/api/class_pcp_arc.html` |
+| 28 | draft_needs_translation | bilingual_draft | 375 | 29/26 | 0 | 0 | `full_site/api/class_pcp_error_unresolved_prim_path.html` |
 | 29 | draft_template_only | bilingual_draft | 118 | 16/18 | 0 | 0 | `full_site/api/class_pcp_property_index.html` |
 | 30 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/class_sdf_children_view.html` |
 | 31 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/class_sdf_layer.html` |
