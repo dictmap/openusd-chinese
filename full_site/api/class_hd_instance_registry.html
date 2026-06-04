@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-036">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 HdInstanceRegistry&lt; VALUE &gt; Class Template 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for HdInstanceRegistry&lt; VALUE &gt; Class Template while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`HdInstanceRegistry&lt; VALUE &gt;` 是 Hydra 中用于管理 `HdInstance` 的 dictionary container，模板参数 `VALUE` 表示实例记录或缓存值的具体类型。</span></li>
+        <li><span class="zh">英文摘录只给出核心定位：它是 `HdInstance` 的字典容器；因此本页应按 registry / lookup / value lifetime 的容器语义阅读，而不是渲染任务本身。</span></li>
+        <li><span class="zh">关联文件为 `instanceRegistry.h`，关联类型为 `HdInstance`；这说明该类处在 instancing 管理层，通常服务于共享实例、资源复用或按 key 查找实例状态。</span></li>
+        <li><span class="zh">阅读本类时应重点保留 template、dictionary container、registry、VALUE 和 HdInstance 等术语，避免把实例注册表误解为 USD prim 列表。</span></li>
+        <li><span class="zh">后续完整翻译应补成员函数如何插入、查找、复用和释放实例；本轮只补类职责、模板边界和阅读路径。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">类模板：</span><span class="en">class template</span></li>
+        <li><span class="zh">字典容器：</span><span class="en">dictionary container</span></li>
+        <li><span class="zh">实例注册表：</span><span class="en">instance registry</span></li>
+        <li><span class="zh">VALUE：</span><span class="en">VALUE</span></li>
+        <li><span class="zh">HdInstance：</span><span class="en">HdInstance</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

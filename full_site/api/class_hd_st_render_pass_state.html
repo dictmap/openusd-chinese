@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-036">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 HdStRenderPassState Class 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for HdStRenderPassState Class while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`HdStRenderPassState` 是 Storm/HdSt render pass 之间共享的 rendering parameters 集合，用来表达 GL states、uniforms 或 shaders。</span></li>
+        <li><span class="zh">英文摘录说明这些参数 used among render passes；因此它不是单个 draw item，而是 render pass 执行时需要的状态包。</span></li>
+        <li><span class="zh">关联类型包括 `GfVec4f`、`GfVec4d`、`GfVec4i`、`GfMatrix4d`、`HdCamera`、`CameraUtilFraming`、`HgiGraphicsCmdsDesc`、`HgiGraphicsPipelineDesc`、`HgiCapabilities`、`Hgi` 等，说明它连接相机、framing、pipeline desc 和 Hgi 图形命令。</span></li>
+        <li><span class="zh">阅读本页时应把 viewport/framing、camera matrices、render pass GL/Hgi state、shader/uniform 配置分开；具体方法以后续 member list 为准。</span></li>
+        <li><span class="zh">本页中文层保留 `HdStRenderPassState`、GL states、uniforms、shaders、HgiGraphicsPipelineDesc 等术语，避免把状态对象误解为渲染缓冲或 scene delegate。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">render pass 状态：</span><span class="en">render pass state</span></li>
+        <li><span class="zh">GL 状态：</span><span class="en">GL states</span></li>
+        <li><span class="zh">uniforms：</span><span class="en">uniforms</span></li>
+        <li><span class="zh">图形管线：</span><span class="en">graphics pipeline</span></li>
+        <li><span class="zh">相机 framing：</span><span class="en">camera framing</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

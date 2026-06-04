@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-036">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 HdStDispatchBuffer Class 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for HdStDispatchBuffer Class while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`HdStDispatchBuffer` 是 Storm/HdSt 中的 GPU dispatch buffer，英文摘录称其为 simple array of unsigned integers 的 VBO。</span></li>
+        <li><span class="zh">该 buffer 用于在 GPU 上准备 indirect dispatch 数据，可被 `MultiDrawIndirect` 或 `DispatchComputeIndirect` 消费；这说明它服务于 draw/compute 的间接调度路径。</span></li>
+        <li><span class="zh">同一 uint array 的 interleaved subsets 会以不同方式绑定，为 shaders 提供额外数据接口；每个绑定会在 uint array 之上定义 `BufferResourceView`。</span></li>
+        <li><span class="zh">`HdBufferArray` 聚合这些 views，`HdResourceBinder` 按指定 binding method 和 interleaved offset 绑定资源；关联类型包括 `HdStResourceRegistry`、`TfToken`、`HdTupleType`、`HdStBufferResource` 和 `HdBufferArray`。</span></li>
+        <li><span class="zh">本页中文层保留 VBO、indirect dispatch、MultiDrawIndirect、DispatchComputeIndirect、BufferResourceView 等 GPU/API 术语；后续完整翻译应补资源创建、绑定和同步方法。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">VBO：</span><span class="en">VBO</span></li>
+        <li><span class="zh">间接调度：</span><span class="en">indirect dispatch</span></li>
+        <li><span class="zh">无符号整数数组：</span><span class="en">unsigned integer array</span></li>
+        <li><span class="zh">BufferResourceView：</span><span class="en">BufferResourceView</span></li>
+        <li><span class="zh">交错偏移：</span><span class="en">interleaved offset</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
