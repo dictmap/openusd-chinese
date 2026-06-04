@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-054">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Namespace Members 补充中文优先的索引用途、条目类型、阅读路径和术语对照；英文 namespace、function、typedef、module、class、operator、macro、enum、type、header、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first index purpose, entry-type guidance, reading paths, and terminology for Namespace Members while retaining English namespace, function, typedef, module, class, operator, macro, enum, type, header, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`namespacemembers.html` 是 namespace members 总索引，混合列出 functions、typedefs 和 operator 条目，并给出它们所属的 namespace。</span></li>
+        <li><span class="zh">当前摘录同时包含 `ShaderMetadataHelpers` 函数、`VdfTestUtils::CreateSpeculationExecutor()`、`pxr_tsl` 的 `robin_pg_map`/`robin_pg_set`、以及 `operator&lt;&lt;()` 条目。</span></li>
+        <li><span class="zh">阅读时先按条目类型分流：带 `()` 的一般是函数，`operator&lt;&lt;()` 是运算符重载，`robin_pg_map`/`robin_pg_set` 是 typedef；再根据右侧 namespace 链接进入上下文。</span></li>
+        <li><span class="zh">本页常用于“知道成员名但不知道所属 namespace”的反向检索，因此所有 member 名称和 namespace 名称必须保留英文原样。</span></li>
+        <li><span class="zh">与 `namespacemembers_func.html` 和 `namespacemembers_type.html` 的区别是：本页是总览，后两页按 function/typedef 进一步过滤。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">命名空间成员：</span><span class="en">Namespace Members</span></li>
+        <li><span class="zh">成员索引：</span><span class="en">member index</span></li>
+        <li><span class="zh">函数：</span><span class="en">function</span></li>
+        <li><span class="zh">运算符重载：</span><span class="en">operator overload</span></li>
+        <li><span class="zh">类型别名：</span><span class="en">typedef</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

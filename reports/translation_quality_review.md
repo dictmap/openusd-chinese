@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-04T23:29:51.948Z
+Generated: 2026-06-04T23:47:43.515Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-04T23:29:51.948Z
 
 ## Grade Counts
 
-- draft_template_only: 120
-- draft_needs_translation: 278
+- draft_template_only: 115
+- draft_needs_translation: 283
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -33,8 +33,6 @@ Generated: 2026-06-04T23:29:51.948Z
 | 8 | draft_template_only | 62 | `full_site/api/binding_map_8h_source.html` | 源码页面草稿：bindingMap.h / bindingMap.h |
 | 164 | draft_template_only | 62 | `full_site/api/geom_model_a_p_i_adapter_8h_source.html` | 源码页面草稿：geomModelAPIAdapter.h / geomModelAPIAdapter.h |
 | 207 | draft_template_only | 62 | `full_site/api/hgi_2shader_program_8h_source.html` | 源码页面草稿：shaderProgram.h / shaderProgram.h |
-| 230 | draft_template_only | 62 | `full_site/api/modules.html` | API 页面草稿：Modules / Modules |
-| 234 | draft_template_only | 62 | `full_site/api/namespaces.html` | 命名空间参考草稿：Namespace List / Namespace List |
 | 238 | draft_template_only | 62 | `full_site/api/page_ts_ts_test.html` | API 页面草稿：The TsTest Framework / The TsTest Framework |
 | 239 | draft_template_only | 62 | `full_site/api/pages.html` | API 页面草稿：Related Pages / Related Pages |
 | 240 | draft_template_only | 62 | `full_site/api/parallel_speculation_executor_engine_8h_source.html` | 源码页面草稿：parallelSpeculationExecutorEngine.h / parallelSpeculationExecutorEngine.h |
@@ -59,6 +57,8 @@ Generated: 2026-06-04T23:29:51.948Z
 | 260 | draft_template_only | 66 | `full_site/api/usd_hydra_page_front.html` | API 模块草稿：UsdHydra: USD Hydra Schemas / UsdHydra: USD Hydra Schemas |
 | 262 | draft_template_only | 66 | `full_site/api/usd_media_page_front.html` | API 模块草稿：UsdMedia: USD Media Schema / UsdMedia: USD Media Schema |
 | 266 | draft_template_only | 66 | `full_site/api/usd_proc_page_front.html` | API 模块草稿：UsdProc: USD Schemas for Procedurals / UsdProc: USD Schemas for Procedurals |
+| 268 | draft_template_only | 66 | `full_site/api/usd_ri_page_front.html` | API 模块草稿：UsdRi: USD RenderMan Utilities / UsdRi: USD RenderMan Utilities |
+| 271 | draft_template_only | 66 | `full_site/api/usd_shaders_page_front.html` | API 模块草稿：UsdShaders: Definitions and Implementations of Usd* Shader Nodes / UsdShaders: Definitions and Implementations of Usd* Shader Nodes |
 
 ## All Pages
 
@@ -293,11 +293,11 @@ Generated: 2026-06-04T23:29:51.948Z
 | 227 | draft_needs_translation | bilingual_draft | 345 | 18/15 | 0 | 0 | `full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html` |
 | 228 | draft_needs_translation | bilingual_draft | 361 | 21/18 | 0 | 0 | `full_site/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html` |
 | 229 | draft_needs_translation | bilingual_draft | 339 | 35/32 | 0 | 0 | `full_site/api/md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html` |
-| 230 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/modules.html` |
-| 231 | draft_template_only | bilingual_draft | 72 | 2/4 | 0 | 0 | `full_site/api/namespacemembers_func.html` |
-| 232 | draft_template_only | bilingual_draft | 72 | 2/4 | 0 | 0 | `full_site/api/namespacemembers_type.html` |
-| 233 | draft_template_only | bilingual_draft | 72 | 2/4 | 0 | 0 | `full_site/api/namespacemembers.html` |
-| 234 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/namespaces.html` |
+| 230 | draft_needs_translation | bilingual_draft | 303 | 13/10 | 0 | 0 | `full_site/api/modules.html` |
+| 231 | draft_needs_translation | bilingual_draft | 252 | 13/10 | 0 | 0 | `full_site/api/namespacemembers_func.html` |
+| 232 | draft_needs_translation | bilingual_draft | 256 | 13/10 | 0 | 0 | `full_site/api/namespacemembers_type.html` |
+| 233 | draft_needs_translation | bilingual_draft | 273 | 13/10 | 0 | 0 | `full_site/api/namespacemembers.html` |
+| 234 | draft_needs_translation | bilingual_draft | 230 | 13/10 | 0 | 0 | `full_site/api/namespaces.html` |
 | 235 | draft_template_only | bilingual_draft | 106 | 13/15 | 0 | 0 | `full_site/api/page__execution__system__design.html` |
 | 236 | draft_template_only | bilingual_draft | 110 | 14/16 | 0 | 0 | `full_site/api/page_ts_regression.html` |
 | 237 | draft_template_only | bilingual_draft | 126 | 18/20 | 0 | 0 | `full_site/api/page_ts_status.html` |

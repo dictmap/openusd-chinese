@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-054">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Modules 补充中文优先的索引用途、条目类型、阅读路径和术语对照；英文 namespace、function、typedef、module、class、operator、macro、enum、type、header、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first index purpose, entry-type guidance, reading paths, and terminology for Modules while retaining English namespace, function, typedef, module, class, operator, macro, enum, type, header, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`modules.html` 是 Doxygen 生成的 API modules 总入口，用于按功能组进入 Arch、Gf、Tf 等模块分组，而不是某个单独类或函数的正文说明。</span></li>
+        <li><span class="zh">当前摘录从 `Bits`、`Multithreading`、`Math`、`Strings`、`System Functions`、`Memory Management`、`Diagnostics`、`Symbol Visibility` 等 Arch 基础组开始，再进入 Gf/Tf 等模块。</span></li>
+        <li><span class="zh">阅读时应把 module 名称保留原样，把中文理解放在用途层：例如 `Bits` 对应机器位布局相关函数，`Linear Algebra` 对应 Gf 线性代数，`Diagnostic Facilities` 对应 Tf 诊断机制。</span></li>
+        <li><span class="zh">本页链接数量多，适合做导航页：先根据模块前缀 `Arch`、`Gf`、`Tf` 判断层级，再进入具体 group 页查看函数、宏、类和详细说明。</span></li>
+        <li><span class="zh">本地复刻中清单内 group 链接应跳本地页面；清单外内部链接走 `site/uncovered_openusd_page.html`，只有 `Open official page` 保持外跳。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">模块索引：</span><span class="en">Modules</span></li>
+        <li><span class="zh">功能分组：</span><span class="en">group</span></li>
+        <li><span class="zh">平台/系统基础层：</span><span class="en">Arch</span></li>
+        <li><span class="zh">Graphics Foundations：</span><span class="en">Gf</span></li>
+        <li><span class="zh">基础工具层：</span><span class="en">Tf</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -1,5 +1,29 @@
 # 工作记录
 
+## 第 185 轮：Modules/Namespace 索引入口页精修
+已完成：
+
+- 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `01e7cca`，本轮 5 个 API 索引目标页均存在且均为 `draft_template_only`。
+- 本轮严格只处理 5 页：`full_site/api/modules.html`、`full_site/api/namespacemembers_func.html`、`full_site/api/namespacemembers_type.html`、`full_site/api/namespacemembers.html`、`full_site/api/namespaces.html`；没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_api_index_batch_054.mjs`，每页新增 `api-index-quality-pass-054` 中文精修导读区块，包含索引用途、条目类型、阅读路径和术语对照；保留英文 namespace、function、typedef、module、class、operator、macro、enum、type、header、链接和原文摘录。
+- 本轮中文层覆盖：`modules.html` 的 Arch/Gf/Tf module group 导航和 Bits、Multithreading、Linear Algebra、Diagnostic Facilities 等分组读法；`namespacemembers_func.html` 的 `ShaderMetadataHelpers`、`VdfTestUtils`、`pxr_CLI::CLI::enums`、`std` 函数索引读法；`namespacemembers_type.html` 的 `pxr_tsl`、`robin_pg_map`、`robin_pg_set` typedef 索引；`namespacemembers.html` 的 function/operator/typedef 混合成员总索引；`namespaces.html` 的 `pxr_tsl`、`ShaderMetadataHelpers`、`std`、`VdfTestUtils` namespace 列表和测试辅助类阅读路径。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 120 / `draft_needs_translation` 278 / `good_bilingual` 8 变为 `draft_template_only` 115 / `draft_needs_translation` 283 / `good_bilingual` 8。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过，本轮 5 页均可通过本地最终入口访问。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+- GitHub 同步：本轮验证通过后运行 `scripts/sync_openusd_to_github.ps1`，提交信息为 `OpenUSD bilingual round 185: Modules namespace indexes`。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是完整翻译每一个 module group、namespace member、function、typedef 或 namespace 说明。
+- 全量仍有 115 个 `draft_template_only` 和 283 个 `draft_needs_translation`；OpenExec system design、Ts 页面、Related Pages、Pcp/Plug/Sdf/Sdr 模块入口、tokens structs、源码页仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理当前质量队列中仍为模板草稿的高价值文档/索引页：`page__execution__system__design.html`、`page_ts_regression.html`、`page_ts_status.html`、`page_ts_ts_test.html`、`pages.html`。
+2. 对 OpenExec System Design、Regressive Splines、USD Anim Project Status、TsTest Framework 和 Related Pages 补中文用途说明、结构读法、概念边界和术语对照，保留页面名、API 名称、代码、数学符号、模板参数和链接原样。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证；验证通过后同步 GitHub，并记录分级变化与提交结果。
+
 ## 第 184 轮：Vdf/usdview/Sdf Boolean/Validation 文档页精修
 已完成：
 
