@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-04T23:00:02.223Z
+Generated: 2026-06-04T23:06:52.726Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-04T23:00:02.223Z
 
 ## Grade Counts
 
-- draft_template_only: 130
-- draft_needs_translation: 268
+- draft_template_only: 125
+- draft_needs_translation: 273
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -33,8 +33,6 @@ Generated: 2026-06-04T23:00:02.223Z
 | 8 | draft_template_only | 62 | `full_site/api/binding_map_8h_source.html` | 源码页面草稿：bindingMap.h / bindingMap.h |
 | 164 | draft_template_only | 62 | `full_site/api/geom_model_a_p_i_adapter_8h_source.html` | 源码页面草稿：geomModelAPIAdapter.h / geomModelAPIAdapter.h |
 | 207 | draft_template_only | 62 | `full_site/api/hgi_2shader_program_8h_source.html` | 源码页面草稿：shaderProgram.h / shaderProgram.h |
-| 220 | draft_template_only | 62 | `full_site/api/md_pxr_exec_exec_ir__r_e_a_d_m_e.html` | API 页面草稿：ExecIr: OpenExec implementation of invertible rigs / ExecIr: OpenExec implementation of invertible rigs |
-| 221 | draft_template_only | 62 | `full_site/api/md_pxr_exec_exec_usd__r_e_a_d_m_e.html` | API 页面草稿：ExecUsd: Execution system for Usd / ExecUsd: Execution system for Usd |
 | 230 | draft_template_only | 62 | `full_site/api/modules.html` | API 页面草稿：Modules / Modules |
 | 234 | draft_template_only | 62 | `full_site/api/namespaces.html` | 命名空间参考草稿：Namespace List / Namespace List |
 | 238 | draft_template_only | 62 | `full_site/api/page_ts_ts_test.html` | API 页面草稿：The TsTest Framework / The TsTest Framework |
@@ -59,6 +57,8 @@ Generated: 2026-06-04T23:00:02.223Z
 | 225 | draft_template_only | 66 | `full_site/api/md_pxr_exec_vdf__r_e_a_d_m_e.html` | API 页面草稿：Vdf: Vectorized Data Flow / Vdf: Vectorized Data Flow |
 | 246 | draft_template_only | 66 | `full_site/api/sdr_glslfx_page_front.html` | API 模块草稿：SdrGlslfx: Glslfx parser for Sdr / SdrGlslfx: Glslfx parser for Sdr |
 | 248 | draft_template_only | 66 | `full_site/api/sparse_vectorized_input_traverser_8h.html` | API 页面草稿：sparseVectorizedInputTraverser.h File / sparseVectorizedInputTraverser.h File |
+| 260 | draft_template_only | 66 | `full_site/api/usd_hydra_page_front.html` | API 模块草稿：UsdHydra: USD Hydra Schemas / UsdHydra: USD Hydra Schemas |
+| 262 | draft_template_only | 66 | `full_site/api/usd_media_page_front.html` | API 模块草稿：UsdMedia: USD Media Schema / UsdMedia: USD Media Schema |
 
 ## All Pages
 
@@ -283,11 +283,11 @@ Generated: 2026-06-04T23:00:02.223Z
 | 217 | draft_needs_translation | bilingual_draft | 334 | 13/10 | 0 | 0 | `full_site/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html` |
 | 218 | draft_needs_translation | bilingual_draft | 342 | 13/9 | 0 | 0 | `full_site/api/md_pxr_exec_exec__r_e_a_d_m_e.html` |
 | 219 | draft_needs_translation | bilingual_draft | 326 | 13/9 | 0 | 0 | `full_site/api/md_pxr_exec_exec_geom__r_e_a_d_m_e.html` |
-| 220 | draft_template_only | bilingual_draft | 62 | 2/3 | 0 | 0 | `full_site/api/md_pxr_exec_exec_ir__r_e_a_d_m_e.html` |
-| 221 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd__r_e_a_d_m_e.html` |
-| 222 | draft_template_only | bilingual_draft | 86 | 8/10 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd_docs_overview.html` |
-| 223 | draft_template_only | bilingual_draft | 94 | 10/12 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html` |
-| 224 | draft_template_only | bilingual_draft | 98 | 11/13 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html` |
+| 220 | draft_needs_translation | bilingual_draft | 344 | 13/9 | 0 | 0 | `full_site/api/md_pxr_exec_exec_ir__r_e_a_d_m_e.html` |
+| 221 | draft_needs_translation | bilingual_draft | 333 | 13/10 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd__r_e_a_d_m_e.html` |
+| 222 | draft_needs_translation | bilingual_draft | 327 | 19/16 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd_docs_overview.html` |
+| 223 | draft_needs_translation | bilingual_draft | 348 | 21/18 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html` |
+| 224 | draft_needs_translation | bilingual_draft | 324 | 22/19 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html` |
 | 225 | draft_template_only | bilingual_draft | 66 | 3/5 | 0 | 0 | `full_site/api/md_pxr_exec_vdf__r_e_a_d_m_e.html` |
 | 226 | draft_template_only | bilingual_draft | 70 | 4/6 | 0 | 0 | `full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html` |
 | 227 | draft_template_only | bilingual_draft | 82 | 7/9 | 0 | 0 | `full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html` |

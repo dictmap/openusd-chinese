@@ -1,5 +1,29 @@
 # 工作记录
 
+## 第 183 轮：OpenExec ExecIr/ExecUsd/overview/tutorial 精修
+已完成：
+
+- 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `f4001a0`，本轮 5 个 OpenExec 目标页均存在且均为 `draft_template_only`。
+- 本轮严格只处理 5 页：`full_site/api/md_pxr_exec_exec_ir__r_e_a_d_m_e.html`、`full_site/api/md_pxr_exec_exec_usd__r_e_a_d_m_e.html`、`full_site/api/md_pxr_exec_exec_usd_docs_overview.html`、`full_site/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html`、`full_site/api/md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html`；没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_api_openexec_batch_052.mjs`，每页新增 `api-openexec-quality-pass-052` 中文精修导读区块，包含模块定位、流程说明、阅读顺序和术语对照；保留英文模块名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、类型名、头文件名、链接和原英文摘录。
+- 本轮中文层覆盖：`ExecIr` 作为 built on `execUsd` 的 invertible rigs/controllers 实验性实现层；`ExecUsd` 作为 OpenExec 主入口，覆盖 schema computational behaviors 注册、`UsdStage` 摄取、data flow network 编译和 vectorized/multithreaded evaluation；`OpenExec Overview` 的 computations、registered computations、computed outputs、plugin/builtin computations 和 tutorials/advanced topics 入口；Tutorial 1 的 `ExecUsdSystem`、`ExecUsdRequest`、`ExecUsdValueKey`、`ExecUsdCacheView`、`VtValue` 低层 value request 流程；Tutorial 2 的 `EXEC_REGISTER_COMPUTATIONS_FOR_SCHEMA`、Computation Registration、Input Registrations、`VdfContext` 和 callback function 流程。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 130 / `draft_needs_translation` 268 / `good_bilingual` 8 变为 `draft_template_only` 125 / `draft_needs_translation` 273 / `good_bilingual` 8。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过，本轮 5 页均可通过本地最终入口访问。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+- GitHub 同步：本轮验证通过后运行 `scripts/sync_openusd_to_github.ps1`，提交信息为 `OpenUSD bilingual round 183: OpenExec ExecUsd tutorials entries`。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是完整翻译 OpenExec tutorial 的全部代码块、注释、callback 参数、注册宏细节和 caveats。
+- 全量仍有 125 个 `draft_template_only` 和 273 个 `draft_needs_translation`；Vdf README、usdview 开发说明、Sdf boolean expressions、Validation、Modules/Namespace 索引、OpenExec system design、Pcp/Plug/Sdf/Sdr 模块入口和源码页仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理当前质量队列中用户可读价值较高且仍为模板草稿的文档页：`md_pxr_exec_vdf__r_e_a_d_m_e.html`、`md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html`、`md_pxr_usd_imaging_usdviewq_black_box_testing.html`、`md_pxr_usd_sdf_doxygen_boolean_expressions.html`、`md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html`。
+2. 对 Vdf、usdview development practices、usdview black box testing、Sdf Boolean Expressions 和 Validation 页面补中文用途说明、流程/概念边界、术语对照和局部结构说明，保留模块名、API 名称、代码、数学符号、模板参数和链接原样。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证；验证通过后同步 GitHub，并记录分级变化与提交结果。
+
 ## 第 182 轮：OpenExec foundation/core/geometry README 入口页精修
 已完成：
 

@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-openexec-quality-pass-052">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 OpenExec Tutorial 1: Computing Values 补充中文优先的模块定位、流程说明、阅读顺序和术语对照；英文模块名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、类型名、头文件名、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first module positioning, workflow guidance, reading order, and terminology for OpenExec Tutorial 1: Computing Values while retaining English module names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, type names, header names, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">Tutorial 1 演示如何使用 OpenExec APIs 请求并计算 values；示例代码位于 `USD/extras/exec/examples/computingValues/`，正文流程比单个 API 索引更重要。</span></li>
+        <li><span class="zh">示例使用 `UsdGeomXformable` prims 提供的 `computeLocalToWorldTransform` computations，结果是把 Xform local-space 点转换到 world-space 的 `GfMatrix4d` 4x4 matrix。</span></li>
+        <li><span class="zh">页面结构给出实际调用顺序：Create a `UsdStage`、Create an `ExecUsdSystem`、Build an `ExecUsdRequest`、Prepare the request、Compute values、Extract computed values、Putting it all together。</span></li>
+        <li><span class="zh">本教程展示的是 lowest-level API，面向 imaging system 等性能敏感客户端；官方摘录说明未来会有 convenience APIs，因此当前阅读重点是性能路径和对象职责，而不是简化封装。</span></li>
+        <li><span class="zh">关键类型需要原样保留并串起来理解：`ExecUsdSystem` 表示系统入口，`ExecUsdRequest` 表示请求集合，`ExecUsdValueKey` 标识请求值，`ExecUsdCacheView` 用于读取求值缓存，`VtValue` 承载结果。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">计算值：</span><span class="en">Computing Values</span></li>
+        <li><span class="zh">计算局部到世界变换：</span><span class="en">computeLocalToWorldTransform</span></li>
+        <li><span class="zh">ExecUsdSystem：</span><span class="en">ExecUsdSystem</span></li>
+        <li><span class="zh">ExecUsdRequest：</span><span class="en">ExecUsdRequest</span></li>
+        <li><span class="zh">ExecUsdCacheView：</span><span class="en">ExecUsdCacheView</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

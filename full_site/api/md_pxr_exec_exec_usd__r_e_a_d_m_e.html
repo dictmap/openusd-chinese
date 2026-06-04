@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-openexec-quality-pass-052">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 ExecUsd: Execution system for Usd 补充中文优先的模块定位、流程说明、阅读顺序和术语对照；英文模块名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、类型名、头文件名、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first module positioning, workflow guidance, reading order, and terminology for ExecUsd: Execution system for Usd while retaining English module names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, type names, header names, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`ExecUsd` 是 OpenExec 的主要入口，英文摘录说明它 built on top of `exec` and `esfUsd`，负责把 OpenExec core 与 USD 场景对象连接起来。</span></li>
+        <li><span class="zh">本页列出的三项能力是阅读主线：注册与 USD schemas 关联的 computational behaviors、摄取 `UsdStage` 并编译 data flow network、请求 values 以进行高效 vectorized / multithreaded evaluation。</span></li>
+        <li><span class="zh">`UsdStage` 是本页的关键输入对象；OpenExec 会从 stage 中实例化 computations，并在内部 data flow network 中创建表示这些 computations 的 nodes。</span></li>
+        <li><span class="zh">本页链接到 `OpenExec overview`，它是概念和教程入口；如果只想知道怎么请求计算值，应继续看 Tutorial 1，如果要定义 schema computations，应继续看 Tutorial 2。</span></li>
+        <li><span class="zh">保留 `ExecUsd`、`ExecUsdSystem`、`ExecUsdRequest`、`ExecUsdValueKey` 等后续 API 名称原样；中文导读只说明它们在请求、准备和读取计算结果流程中的位置。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 执行系统入口：</span><span class="en">ExecUsd</span></li>
+        <li><span class="zh">计算行为：</span><span class="en">computational behavior</span></li>
+        <li><span class="zh">UsdStage 摄取：</span><span class="en">UsdStage ingestion</span></li>
+        <li><span class="zh">向量化求值：</span><span class="en">vectorized evaluation</span></li>
+        <li><span class="zh">多线程求值：</span><span class="en">multithreaded evaluation</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
