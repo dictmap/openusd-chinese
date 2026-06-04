@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-04T22:28:06.720Z
+Generated: 2026-06-04T22:40:46.585Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-04T22:28:06.720Z
 
 ## Grade Counts
 
-- draft_template_only: 140
-- draft_needs_translation: 258
+- draft_template_only: 135
+- draft_needs_translation: 263
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -32,10 +32,7 @@ Generated: 2026-06-04T22:28:06.720Z
 | 1 | draft_template_only | 62 | `full_site/api/_c_l_i11_8h_source.html` | 源码页面草稿：CLI11.h / CLI11.h |
 | 8 | draft_template_only | 62 | `full_site/api/binding_map_8h_source.html` | 源码页面草稿：bindingMap.h / bindingMap.h |
 | 164 | draft_template_only | 62 | `full_site/api/geom_model_a_p_i_adapter_8h_source.html` | 源码页面草稿：geomModelAPIAdapter.h / geomModelAPIAdapter.h |
-| 198 | draft_template_only | 62 | `full_site/api/globals_w.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
-| 199 | draft_template_only | 62 | `full_site/api/globals.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
 | 207 | draft_template_only | 62 | `full_site/api/hgi_2shader_program_8h_source.html` | 源码页面草稿：shaderProgram.h / shaderProgram.h |
-| 211 | draft_template_only | 62 | `full_site/api/inherits.html` | API 页面草稿：Class Hierarchy / Class Hierarchy |
 | 215 | draft_template_only | 62 | `full_site/api/md_pxr_exec_ef__r_e_a_d_m_e.html` | API 页面草稿：Ef: Execution Foundation / Ef: Execution Foundation |
 | 216 | draft_template_only | 62 | `full_site/api/md_pxr_exec_esf__r_e_a_d_m_e.html` | API 页面草稿：Esf: Execution Scene Foundation / Esf: Execution Scene Foundation |
 | 217 | draft_template_only | 62 | `full_site/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html` | API 页面草稿：EsfUsd: Execution Scene Foundation for Usd / EsfUsd: Execution Scene Foundation for Usd |
@@ -59,6 +56,9 @@ Generated: 2026-06-04T22:28:06.720Z
 | 365 | draft_template_only | 62 | `full_site/release/user_guides/schemas/usdUI/overview.html` | 页面草稿：Overview / Overview |
 | 374 | draft_template_only | 62 | `full_site/release/user_guides/schemas/usdVol/overview.html` | 页面草稿：Overview / Overview |
 | 283 | draft_template_only | 64 | `full_site/release/contributors.html` | 历史贡献者 / USD Contributors (Historical) |
+| 293 | draft_template_only | 64 | `full_site/release/plugins.html` | USD 第三方插件 / USD Third-Party Plugins |
+| 297 | draft_template_only | 64 | `full_site/release/release_schedule.html` | 发布时间表 / Release Schedule |
+| 298 | draft_template_only | 64 | `full_site/release/search.html` | 搜索 / Search - Universal Scene Description 26.05 documentation |
 
 ## All Pages
 
@@ -261,8 +261,8 @@ Generated: 2026-06-04T22:28:06.720Z
 | 195 | draft_needs_translation | bilingual_draft | 270 | 13/10 | 0 | 0 | `full_site/api/globals_u.html` |
 | 196 | draft_needs_translation | bilingual_draft | 290 | 13/10 | 0 | 0 | `full_site/api/globals_v.html` |
 | 197 | draft_needs_translation | bilingual_draft | 282 | 17/13 | 0 | 0 | `full_site/api/globals_vars.html` |
-| 198 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/globals_w.html` |
-| 199 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/globals.html` |
+| 198 | draft_needs_translation | bilingual_draft | 298 | 13/10 | 0 | 0 | `full_site/api/globals_w.html` |
+| 199 | draft_needs_translation | bilingual_draft | 306 | 13/10 | 0 | 0 | `full_site/api/globals.html` |
 | 200 | draft_needs_translation | bilingual_draft | 372 | 20/17 | 0 | 0 | `full_site/api/group__group___exec___attribute___comptuations.html` |
 | 201 | draft_needs_translation | bilingual_draft | 326 | 18/15 | 0 | 0 | `full_site/api/group__group__hd__collection_predicates.html` |
 | 202 | draft_needs_translation | bilingual_draft | 281 | 22/19 | 0 | 0 | `full_site/api/hd_embree_page_front.html` |
@@ -274,10 +274,10 @@ Generated: 2026-06-04T22:28:06.720Z
 | 208 | draft_needs_translation | bilingual_draft | 314 | 13/10 | 0 | 0 | `full_site/api/hierarchy.html` |
 | 209 | draft_needs_translation | bilingual_draft | 251 | 13/10 | 0 | 0 | `full_site/api/hio_page_front.html` |
 | 210 | good_bilingual | bilingual_complete | 515 | 16/21 | 0 | 0 | `site/index.html` |
-| 211 | draft_template_only | bilingual_draft | 62 | 2/3 | 0 | 0 | `full_site/api/inherits.html` |
+| 211 | draft_needs_translation | bilingual_draft | 333 | 13/9 | 0 | 0 | `full_site/api/inherits.html` |
 | 212 | draft_template_only | bilingual_draft | 66 | 3/5 | 0 | 0 | `full_site/api/journal_8h.html` |
-| 213 | draft_template_only | bilingual_draft | 66 | 3/5 | 0 | 0 | `full_site/api/js_page_front.html` |
-| 214 | draft_template_only | bilingual_draft | 70 | 4/6 | 0 | 0 | `full_site/api/kind_page_front.html` |
+| 213 | draft_needs_translation | bilingual_draft | 310 | 14/11 | 0 | 0 | `full_site/api/js_page_front.html` |
+| 214 | draft_needs_translation | bilingual_draft | 311 | 15/12 | 0 | 0 | `full_site/api/kind_page_front.html` |
 | 215 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/md_pxr_exec_ef__r_e_a_d_m_e.html` |
 | 216 | draft_template_only | bilingual_draft | 62 | 2/3 | 0 | 0 | `full_site/api/md_pxr_exec_esf__r_e_a_d_m_e.html` |
 | 217 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html` |

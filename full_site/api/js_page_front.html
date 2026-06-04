@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-mixed-quality-pass-050">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Js: JSON I/O 补充中文优先的用途说明、索引读法、模块边界和术语对照；英文页面名、API 名称、类名、函数名、变量名、宏名、类型名、头文件名、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first purpose notes, index-reading guidance, module boundaries, and terminology for Js: JSON I/O while retaining English page names, API names, class names, function names, variable names, macro names, type names, header names, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`Js: JSON I/O` 是 USD 基础库中的 JSON 输入/输出模块入口，提供从 C++ 解析和写出 JSON 数据的方法，不是 JavaScript 运行时说明。</span></li>
+        <li><span class="zh">英文 Overview 说明该库可在 arbitrary recursive container structures 与 JSON standard 描述的 value abstraction 之间转换，并隐藏 parsing/serialization 具体实现细节。</span></li>
+        <li><span class="zh">顶层入口位于 `js/json.h`；具体函数可与 `globals_j.html` 中的 `JsParseStream()`、`JsParseString()`、`JsWriteToStream()`、`JsWriteToString()`、`JsWriteValue()` 对照阅读。</span></li>
+        <li><span class="zh">该库强调符合本仓库 coding standards，给 C++ 开发者提供一致接口；如果在 Python 中处理 JSON，应使用 Python 标准库 `json` 模块，因为本库不提供 Python bindings。</span></li>
+        <li><span class="zh">阅读本页时把它放在基础设施层：它服务于配置、metadata 或工具数据的 JSON 表示，而不直接表达 USD scene graph、composition 或 schema 行为。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">JSON 输入/输出：</span><span class="en">JSON I/O</span></li>
+        <li><span class="zh">递归容器：</span><span class="en">recursive container</span></li>
+        <li><span class="zh">解析：</span><span class="en">parsing</span></li>
+        <li><span class="zh">序列化：</span><span class="en">serialization</span></li>
+        <li><span class="zh">Python 绑定：</span><span class="en">Python bindings</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

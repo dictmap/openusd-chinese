@@ -1,5 +1,29 @@
 # 工作记录
 
+## 第 181 轮：File Members/Hierarchy/Js/Kind 入口页精修
+已完成：
+
+- 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `ab15e51`，本轮 5 个目标页均存在且均为 `draft_template_only`。
+- 本轮严格只处理 5 页：`full_site/api/globals_w.html`、`full_site/api/globals.html`、`full_site/api/inherits.html`、`full_site/api/js_page_front.html`、`full_site/api/kind_page_front.html`；没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_api_mixed_batch_050.mjs`，每页新增 `api-mixed-quality-pass-050` 中文精修导读区块，包含用途说明、索引/层级/模块阅读方法、术语对照和结构提示；保留英文页面名、API 名称、函数名、变量名、类型名、头文件名、模板参数、代码、链接和原英文摘录。
+- 本轮中文层覆盖：`globals_w.html` 的 Work 并发限制、parallel loop/reduce/sort、detached task、threadLimits 与 Work helper；`globals.html` 的 File Members 根索引、`AR_`/`ARCH_` 前缀、Resolver/Arch 宏和头文件链接读法；`inherits.html` 的 graphical class hierarchy、`hierarchy.html` textual hierarchy、本地继承链接和 Ar/CLI/Vdf/Arch 条目读法；`js_page_front.html` 的 C++ JSON I/O、recursive container、parse/write entrypoint、`js/json.h` 和 Python 标准库边界；`kind_page_front.html` 的 runtime-extensible taxonomy、`TfToken`、`KindRegistry::GetBaseKind()`、`KindRegistry::IsA()`、model root 分类和 `PlugRegistry` 扩展方式。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 140 / `draft_needs_translation` 258 / `good_bilingual` 8 变为 `draft_template_only` 135 / `draft_needs_translation` 263 / `good_bilingual` 8。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过，本轮 5 页均可通过本地最终入口访问。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+- GitHub 同步：本轮验证通过后运行 `scripts/sync_openusd_to_github.ps1`，提交信息为 `OpenUSD bilingual round 181: File Members hierarchy Js Kind entries`。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是完整翻译每一个函数、宏、变量、类、头文件说明和继承节点。
+- 全量仍有 135 个 `draft_template_only` 和 263 个 `draft_needs_translation`；OpenExec README/教程、模块入口、命名空间索引、部分指南页和源码页仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理当前质量队列中用户可读价值较高且仍为模板草稿的 OpenExec README 入口：`md_pxr_exec_ef__r_e_a_d_m_e.html`、`md_pxr_exec_esf__r_e_a_d_m_e.html`、`md_pxr_exec_esf_usd__r_e_a_d_m_e.html`、`md_pxr_exec_exec__r_e_a_d_m_e.html`、`md_pxr_exec_exec_geom__r_e_a_d_m_e.html`。
+2. 对 OpenExec execution foundation / scene foundation / Usd integration / core / geometry integration 页补中文用途说明、模块边界、关键概念、术语对照和局部结构说明，保留模块名、API 名称、代码、数学符号、模板参数和链接原样。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证；验证通过后同步 GitHub，并记录分级变化与提交结果。
+
 ## 第 180 轮：File Members t/type/u/v/vars 索引页精修
 已完成：
 

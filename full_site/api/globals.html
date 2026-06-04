@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-mixed-quality-pass-050">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 File Members : root index 补充中文优先的用途说明、索引读法、模块边界和术语对照；英文页面名、API 名称、类名、函数名、变量名、宏名、类型名、头文件名、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first purpose notes, index-reading guidance, module boundaries, and terminology for File Members : root index while retaining English page names, API names, class names, function names, variable names, macro names, type names, header names, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`globals.html` 是 Doxygen File Members 的根索引页，用于进入全局函数、宏、类型、变量和字母分组；它不是某个单独 API 模块的正文说明。</span></li>
+        <li><span class="zh">当前摘录从字母 `a` 条目开始，包含 `AR_DECLARE_RESOLVER_CONTEXT`、`AR_DEFINE_PACKAGE_RESOLVER`、`AR_DEFINE_RESOLVER` 等 Asset Resolution 注册宏。</span></li>
+        <li><span class="zh">`ARCH_AXIOM`、`ARCH_CACHE_LINE_SIZE`、`ARCH_CONSTRUCTOR`、`ARCH_DEBUGGER_TRAP`、`ARCH_ERROR`、`ARCH_NOINLINE`、`ARCH_PRINTF_FUNCTION` 等条目来自 `arch` 基础层，用于平台、调试、对齐、属性和诊断支持。</span></li>
+        <li><span class="zh">页面链接指向 `defineResolverContext.h`、`definePackageResolver.h`、`error.h`、`align.h`、`attributes.h`、`threads.h`、`fileSystem.h`、`resolver.h` 等头文件，应优先通过这些链接进入具体声明。</span></li>
+        <li><span class="zh">阅读本页时不要把索引条目翻译成普通段落；正确做法是保留标识符原样，并在中文导读中解释如何按前缀 `AR_`、`ARCH_`、`TF_`、`USD_` 等分组检索。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">文件级成员：</span><span class="en">File Members</span></li>
+        <li><span class="zh">根索引：</span><span class="en">root index</span></li>
+        <li><span class="zh">宏：</span><span class="en">macro</span></li>
+        <li><span class="zh">头文件：</span><span class="en">header file</span></li>
+        <li><span class="zh">资产解析：</span><span class="en">asset resolution</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
