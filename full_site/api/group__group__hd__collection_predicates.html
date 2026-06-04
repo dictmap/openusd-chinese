@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-index-group-quality-pass-047">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Hydra Collection Predicate API 补充中文优先的用途说明、索引读法、API 分组边界和术语对照；英文页面名、API 名称、类名、函数名、宏名、枚举名、枚举值、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first purpose notes, index-reading guidance, API grouping boundaries, and terminology for Hydra Collection Predicate API while retaining English page names, API names, class names, function names, macro names, enum names, enumerator values, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`Hydra Collection Predicate API` 是 Hydra group 页面，描述用于 scene index prim 的 path expression predicate 函数集合；它面向集合筛选和路径表达式求值，而不是单个渲染任务。</span></li>
+        <li><span class="zh">英文摘录说明这些函数用于在 scene index 的 prim 上求值的 path expressions；因此阅读时应把 `SdfPathExpression`、scene index、prim predicate 和 collection membership 联系起来。</span></li>
+        <li><span class="zh">`HdGetCollectionPredicateLibrary()` 返回一组基础 predicate function library，用于让 `SdfPathExpression` 在 Hydra scene index 上判断某个 prim 是否满足集合条件。</span></li>
+        <li><span class="zh">本页的 `Usage Examples` 和 `Function Documentation` 应优先用来理解 predicate 函数如何被表达式调用；函数名、`Hd` 前缀和 `SdfPathExpression` 名称都保持原样。</span></li>
+        <li><span class="zh">在本地复刻中，该页应作为 Hydra collections 的索引入口：后续阅读可继续跳到 `HdCollectionExpressionEvaluator`、scene index、collection predicate 或相关 path expression 页面。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Hydra 集合谓词 API：</span><span class="en">Hydra Collection Predicate API</span></li>
+        <li><span class="zh">谓词函数：</span><span class="en">predicate function</span></li>
+        <li><span class="zh">SdfPathExpression：</span><span class="en">SdfPathExpression</span></li>
+        <li><span class="zh">scene index：</span><span class="en">scene index</span></li>
+        <li><span class="zh">集合成员关系：</span><span class="en">collection membership</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

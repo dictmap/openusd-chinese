@@ -2,6 +2,30 @@
 
 源页面：<https://openusd.org/release/api/index.html>
 
+## 第 178 轮：File Members 与 Exec/Hd group 索引页精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `ef1fd2e`，本轮 5 个目标页均存在且均为 `draft_template_only`。
+- 本轮严格只处理 5 页：`full_site/api/globals_defs.html`、`full_site/api/globals_enum.html`、`full_site/api/globals_eval.html`、`full_site/api/group__group___exec___attribute___comptuations.html`、`full_site/api/group__group__hd__collection_predicates.html`；没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_api_index_group_batch_047.mjs`，为 5 页插入 `api-index-group-quality-pass-047` 中文精修导读区块；每页包含用途说明、索引读法、API 分组边界和术语对照，保留英文页面名、API 名称、类名、函数名、宏名、枚举名、枚举值、template 参数、数学符号、代码、链接和原英文摘录。
+- 本轮中文层覆盖：`globals_defs.html` 的 File Members macro definitions、`AR_DECLARE_RESOLVER_CONTEXT`、`AR_DEFINE_PACKAGE_RESOLVER`、`AR_DEFINE_RESOLVER` 和 `ARCH_*` 宏读法；`globals_enum.html` 的 `Arch`、`Exec`、`Pcp`、`Sdf`、`Sdr`、`Tf`、`Usd` 枚举类型分组；`globals_eval.html` 的 `UsdInterpolationType*`、`UsdListPosition*`、`UsdLoad*`、`UsdResolveInfoSource*` 枚举值语义；`Attribute Computations Builtin Exec Computations` 的 `computeValue`、`computeResolvedValue`、`computePath`；`Hydra Collection Predicate API` 的 `SdfPathExpression`、scene index predicate 和 `HdGetCollectionPredicateLibrary()`。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 155 / `draft_needs_translation` 243 / `good_bilingual` 8 变为 `draft_template_only` 150 / `draft_needs_translation` 248 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`：409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`：398/398 draft 预览通过，本轮 5 页均可通过本地最终入口访问。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+- GitHub 同步：本轮验证通过后运行 `scripts/sync_openusd_to_github.ps1`，提交信息为 `OpenUSD bilingual round 178: File Members Exec Hd group entries`。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是完整翻译每一个宏定义、枚举类型、枚举值、函数说明、group 条目和示例段落。
+- 全量仍有 150 个 `draft_template_only` 和 248 个 `draft_needs_translation`；大量 File Members 字母索引、OpenExec 说明页、模块入口、指南页、源码页和部分 release 草稿仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理当前质量队列中仍为模板草稿的 File Members 字母索引页：`globals_j.html`、`globals_l.html`、`globals_o.html`、`globals_p.html`、`globals_s.html`。
+2. 对这些索引页补中文用途说明、字母索引读法、常见条目分类和术语对照，保留函数名、变量名、宏名、类型名、头文件名、template 参数、代码和链接原样。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证；验证通过后同步 GitHub，并记录分级变化与提交结果。
+
 ## 第 177 轮：Hydra/Hio/Hierarchy 页面精修
 已完成：
 

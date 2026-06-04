@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-index-group-quality-pass-047">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 File Members : Enumerator Values 补充中文优先的用途说明、索引读法、API 分组边界和术语对照；英文页面名、API 名称、类名、函数名、宏名、枚举名、枚举值、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first purpose notes, index-reading guidance, API grouping boundaries, and terminology for File Members : Enumerator Values while retaining English page names, API names, class names, function names, macro names, enum names, enumerator values, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`globals_eval.html` 是 File Members 的枚举值索引页，关注 enum 里的具体取值，例如 `UsdInterpolationTypeHeld`、`UsdLoadWithDescendants` 或 `UsdResolveInfoSourceFallback`。</span></li>
+        <li><span class="zh">英文摘录列出的 `UsdInterpolationTypeHeld` 与 `UsdInterpolationTypeLinear` 用于解释时间采样值如何插值；`Held` 表示保持上一采样值，`Linear` 表示线性插值语义。</span></li>
+        <li><span class="zh">`UsdListPositionBackOfAppendList`、`UsdListPositionFrontOfPrependList` 等值对应 USD list-editing 的位置策略，描述新增条目进入 prepend/append list 的前端还是后端。</span></li>
+        <li><span class="zh">`UsdLoadWithDescendants` 与 `UsdLoadWithoutDescendants` 控制 payload/load 操作是否影响 descendant；这类枚举值常用于 stage load policy 和按需加载场景。</span></li>
+        <li><span class="zh">`UsdResolveInfoSourceDefault`、`Fallback`、`None`、`Spline`、`TimeSamples`、`Value` 等值说明属性值解析结果来自默认值、fallback、spline、time samples 或 authored value；这些名称可帮助调试属性取值来源。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">枚举值：</span><span class="en">Enumerator Value</span></li>
+        <li><span class="zh">插值：</span><span class="en">interpolation</span></li>
+        <li><span class="zh">列表编辑：</span><span class="en">list editing</span></li>
+        <li><span class="zh">加载策略：</span><span class="en">load policy</span></li>
+        <li><span class="zh">解析信息来源：</span><span class="en">resolve info source</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

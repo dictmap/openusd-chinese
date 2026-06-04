@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-04T21:28:47.817Z
+Generated: 2026-06-04T21:52:14.049Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-04T21:28:47.817Z
 
 ## Grade Counts
 
-- draft_template_only: 155
-- draft_needs_translation: 243
+- draft_template_only: 150
+- draft_needs_translation: 248
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -231,10 +231,10 @@ Generated: 2026-06-04T21:28:47.817Z
 | 165 | draft_needs_translation | bilingual_draft | 292 | 14/11 | 0 | 0 | `full_site/api/gf_page_front.html` |
 | 166 | draft_needs_translation | bilingual_draft | 335 | 13/9 | 0 | 0 | `full_site/api/glf_page_front.html` |
 | 167 | draft_needs_translation | bilingual_draft | 319 | 13/10 | 0 | 0 | `full_site/api/globals_c.html` |
-| 168 | draft_template_only | bilingual_draft | 90 | 9/11 | 0 | 0 | `full_site/api/globals_defs.html` |
+| 168 | draft_needs_translation | bilingual_draft | 368 | 20/17 | 0 | 0 | `full_site/api/globals_defs.html` |
 | 169 | draft_needs_translation | bilingual_draft | 297 | 13/10 | 0 | 0 | `full_site/api/globals_e.html` |
-| 170 | draft_template_only | bilingual_draft | 72 | 2/3 | 0 | 0 | `full_site/api/globals_enum.html` |
-| 171 | draft_template_only | bilingual_draft | 72 | 2/3 | 0 | 0 | `full_site/api/globals_eval.html` |
+| 170 | draft_needs_translation | bilingual_draft | 312 | 13/9 | 0 | 0 | `full_site/api/globals_enum.html` |
+| 171 | draft_needs_translation | bilingual_draft | 305 | 13/9 | 0 | 0 | `full_site/api/globals_eval.html` |
 | 172 | draft_needs_translation | bilingual_draft | 298 | 13/10 | 0 | 0 | `full_site/api/globals_func_c.html` |
 | 173 | draft_needs_translation | bilingual_draft | 340 | 13/9 | 0 | 0 | `full_site/api/globals_func_e.html` |
 | 174 | draft_needs_translation | bilingual_draft | 312 | 13/10 | 0 | 0 | `full_site/api/globals_func_g.html` |
@@ -263,8 +263,8 @@ Generated: 2026-06-04T21:28:47.817Z
 | 197 | draft_template_only | bilingual_draft | 78 | 6/7 | 0 | 0 | `full_site/api/globals_vars.html` |
 | 198 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/globals_w.html` |
 | 199 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/globals.html` |
-| 200 | draft_template_only | bilingual_draft | 90 | 9/11 | 0 | 0 | `full_site/api/group__group___exec___attribute___comptuations.html` |
-| 201 | draft_template_only | bilingual_draft | 82 | 7/9 | 0 | 0 | `full_site/api/group__group__hd__collection_predicates.html` |
+| 200 | draft_needs_translation | bilingual_draft | 372 | 20/17 | 0 | 0 | `full_site/api/group__group___exec___attribute___comptuations.html` |
+| 201 | draft_needs_translation | bilingual_draft | 326 | 18/15 | 0 | 0 | `full_site/api/group__group__hd__collection_predicates.html` |
 | 202 | draft_needs_translation | bilingual_draft | 281 | 22/19 | 0 | 0 | `full_site/api/hd_embree_page_front.html` |
 | 203 | draft_needs_translation | bilingual_draft | 267 | 13/10 | 0 | 0 | `full_site/api/hd_page_front.html` |
 | 204 | draft_needs_translation | bilingual_draft | 257 | 14/11 | 0 | 0 | `full_site/api/hd_st_page_front.html` |
