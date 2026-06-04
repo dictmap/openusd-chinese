@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-044">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 VdfGrapherOptions Class Reference 补充中文优先的类职责、读取重点、关键类型/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, key type/method groups, and terminology for VdfGrapherOptions Class Reference while retaining English page names, class names, method names, attribute names, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`VdfGrapherOptions` 用来配置 `VdfGrapher` 的输出方式，是 Vdf network 可视化/调试时控制图形内容、样式和过滤规则的选项对象。</span></li>
+        <li><span class="zh">英文摘录说明它 configures aspects of `VdfGrapher` output；页面结构中的 `DisplayStyle`、`NodeFilterCallback`、`NodeStyleCallback` 与 `NodeLimitVector` 是读懂本页的关键。</span></li>
+        <li><span class="zh">`AddNodeToGraph()`、`GetNodesToGraph()` 和 `DebugNameFilter()` 控制哪些 node 会被绘制；这些方法面向图裁剪，不改变 Vdf graph 本身。</span></li>
+        <li><span class="zh">`GetColor()`、`GetAnnotation()`、`GetDisplayStyle()`、`GetDrawMasks()`、`GetDrawAffectsMasks()` 和 `GetDrawColorizedConnectionsOnly()` 控制输出图的可读性和调试信息密度。</span></li>
+        <li><span class="zh">`GetPageWidth()`、`GetPageHeight()`、`GetPrintSingleOutputs()`、`GetOmitUnconnectedSpecs()` 等设置偏向导出布局和噪声控制；阅读时应把它看作 graph rendering options。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">VdfGrapher：</span><span class="en">VdfGrapher</span></li>
+        <li><span class="zh">DisplayStyle：</span><span class="en">DisplayStyle</span></li>
+        <li><span class="zh">节点过滤回调：</span><span class="en">NodeFilterCallback</span></li>
+        <li><span class="zh">节点样式回调：</span><span class="en">NodeStyleCallback</span></li>
+        <li><span class="zh">图输出：</span><span class="en">graph output</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

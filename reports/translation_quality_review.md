@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-04T20:38:15.729Z
+Generated: 2026-06-04T20:54:53.754Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-04T20:38:15.729Z
 
 ## Grade Counts
 
-- draft_template_only: 170
-- draft_needs_translation: 228
+- draft_template_only: 165
+- draft_needs_translation: 233
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -122,11 +122,11 @@ Generated: 2026-06-04T20:38:15.729Z
 | 56 | draft_needs_translation | bilingual_draft | 409 | 40/37 | 0 | 0 | `full_site/api/class_usd_validation_error.html` |
 | 57 | draft_needs_translation | bilingual_draft | 394 | 40/37 | 0 | 0 | `full_site/api/class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html` |
 | 58 | draft_needs_translation | bilingual_draft | 408 | 38/35 | 0 | 0 | `full_site/api/class_vdf_context.html` |
-| 59 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/class_vdf_grapher_options.html` |
-| 60 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/class_vdf_node.html` |
-| 61 | draft_template_only | bilingual_draft | 106 | 13/15 | 0 | 0 | `full_site/api/class_vdf_read_write_accessor.html` |
-| 62 | draft_template_only | bilingual_draft | 122 | 17/19 | 0 | 0 | `full_site/api/class_vdf_test_utils_1_1_node.html` |
-| 63 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/class_vt_value_ref.html` |
+| 59 | draft_needs_translation | bilingual_draft | 376 | 40/37 | 0 | 0 | `full_site/api/class_vdf_grapher_options.html` |
+| 60 | draft_needs_translation | bilingual_draft | 382 | 40/37 | 0 | 0 | `full_site/api/class_vdf_node.html` |
+| 61 | draft_needs_translation | bilingual_draft | 323 | 24/21 | 0 | 0 | `full_site/api/class_vdf_read_write_accessor.html` |
+| 62 | draft_needs_translation | bilingual_draft | 317 | 28/25 | 0 | 0 | `full_site/api/class_vdf_test_utils_1_1_node.html` |
+| 63 | draft_needs_translation | bilingual_draft | 408 | 40/37 | 0 | 0 | `full_site/api/class_vt_value_ref.html` |
 | 64 | draft_needs_translation | bilingual_draft | 288 | 12/9 | 0 | 0 | `full_site/api/classes.html` |
 | 65 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/classpxr___c_l_i_1_1_c_l_i_1_1_app.html` |
 | 66 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/classpxr__tsl_1_1robin__map.html` |
