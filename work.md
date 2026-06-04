@@ -1,5 +1,29 @@
 # 工作记录
 
+## 第 180 轮：File Members t/type/u/v/vars 索引页精修
+已完成：
+
+- 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `d8bf199`，本轮 5 个目标页均存在且均为 `draft_template_only`。
+- 本轮严格只处理 5 页：`full_site/api/globals_t.html`、`full_site/api/globals_type.html`、`full_site/api/globals_u.html`、`full_site/api/globals_v.html`、`full_site/api/globals_vars.html`；没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_api_file_members_batch_049.mjs`，每页新增 `api-file-members-quality-pass-049` 中文精修导读区块，包含用途说明、索引读法、条目类型区别和术语对照；保留英文页面名、API 名称、函数名、变量名、宏名、类型名、头文件名、operator 符号、template 参数、代码、链接和原英文摘录。
+- 本轮中文层覆盖：`globals_t.html` 的 `TF_ADD_ENUM_NAME`、`TF_AXIOM`、`TF_CODING_ERROR`、`TF_DEBUG`、`TF_DECLARE_PUBLIC_TOKENS()` 与 Tf diagnostic/debug/token/ref pointer 宏；`globals_type.html` 的 `Arch*` callback/type aliases、`Ef*`/`Exec*` 类型、`GfHalf`、`Pcp*` 类型、`SdfNamespaceEdit*` 与 `SdfRelocate*`；`globals_u.html` 的 `USD_*_VALIDATION_*_TOKENS` 与 `USD_LINEAR_INTERPOLATION_TYPES`；`globals_v.html` 的 Vdf data manager、connection/mask、network utility 和 masked output vector 条目；`globals_vars.html` 的 `Usd*Tokens`、`UsdPrim*Predicate`、`TfUtf8InvalidCodePoint`、`usdPhysicsSentinelLimit` 与全局 token/predicate 变量。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 145 / `draft_needs_translation` 253 / `good_bilingual` 8 变为 `draft_template_only` 140 / `draft_needs_translation` 258 / `good_bilingual` 8。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`：409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`：398/398 draft 预览通过，本轮 5 页均可通过本地最终入口访问。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+- GitHub 同步：本轮验证通过后运行 `scripts/sync_openusd_to_github.ps1`，提交信息为 `OpenUSD bilingual round 180: File Members t type u v vars entries`。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是完整翻译每一个宏、typedef、token 集、Vdf 函数、变量、predicate、参数和跳转目标。
+- 全量仍有 140 个 `draft_template_only` 和 258 个 `draft_needs_translation`；OpenExec 说明页、模块入口、指南页、源码页和部分 release 草稿仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理当前质量队列中用户可读价值较高且仍为模板草稿的 `globals_w.html`、`globals.html`、`inherits.html`、`js_page_front.html`、`kind_page_front.html`。
+2. 对 File Members 汇总、继承辅助页、Js JSON I/O 模块入口和 Kind categorization 模块入口补中文用途说明、索引读法、模块边界和术语对照，保留 API 名称、函数名、变量名、类型名、头文件名、代码和链接原样。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证；验证通过后同步 GitHub，并记录分级变化与提交结果。
+
 ## 第 179 轮：File Members j/l/o/p/s 字母索引页精修
 已完成：
 

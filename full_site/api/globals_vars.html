@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-file-members-quality-pass-049">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 File Members : Variables 补充中文优先的用途说明、索引读法、条目类型区别和术语对照；英文页面名、API 名称、函数名、变量名、宏名、类型名、头文件名、operator 符号、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first purpose notes, index-reading guidance, entry-type distinctions, and terminology for File Members : Variables while retaining English page names, API names, function names, variable names, macro names, type names, header names, operator symbols, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`globals_vars.html` 是 File Members 的变量索引页，列出全局变量、token 集、predicate 常量和 sentinel 等条目；它与 `globals_type.html` 和字母索引页用途不同。</span></li>
+        <li><span class="zh">`PCP_INVALID_INDEX` 是 Pcp 基础常量；`SdfMapperParametersMap` 属于 Sdf mapper 参数映射；`TfUtf8InvalidCodePoint` 来自 Unicode 工具层，表示无效 UTF-8 code point。</span></li>
+        <li><span class="zh">`UsdGeomTokens`、`UsdHydraTokens`、`UsdLuxTokens`、`UsdMediaTokens`、`UsdMtlxTokens`、`UsdPhysicsTokens` 是不同 schema/domain 的 token 集入口，变量名保持原样。</span></li>
+        <li><span class="zh">`usdPhysicsSentinelLimit` 来自 physics parser/description 语境，可作为特殊边界或 sentinel 值；需要具体含义时应跳到 `parseDesc.h` 或 UsdPhysics 文档核对。</span></li>
+        <li><span class="zh">`UsdPrimAllPrimsPredicate`、`UsdPrimDefaultPredicate`、`UsdPrimHasClassSpecifier`、`UsdPrimHasDefiningSpecifier`、`UsdPrimIsAbstract`、`UsdPrimIsActive` 是 UsdPrim 过滤/查询 predicate 常量，常用于遍历 stage 或筛选 prim。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">变量索引：</span><span class="en">variable index</span></li>
+        <li><span class="zh">token 集：</span><span class="en">token set</span></li>
+        <li><span class="zh">谓词/过滤条件：</span><span class="en">predicate</span></li>
+        <li><span class="zh">哨兵值：</span><span class="en">sentinel</span></li>
+        <li><span class="zh">码点：</span><span class="en">code point</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

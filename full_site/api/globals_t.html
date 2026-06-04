@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-file-members-quality-pass-049">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 File Members : t 补充中文优先的用途说明、索引读法、条目类型区别和术语对照；英文页面名、API 名称、函数名、变量名、宏名、类型名、头文件名、operator 符号、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first purpose notes, index-reading guidance, entry-type distinctions, and terminology for File Members : t while retaining English page names, API names, function names, variable names, macro names, type names, header names, operator symbols, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`globals_t.html` 是 File Members 的字母 `t` 索引页，当前摘录主要由 `TF_*` 基础设施宏构成，应按 Tf module 的宏入口阅读。</span></li>
+        <li><span class="zh">`TF_ADD_ENUM_NAME`、`TF_BITS_FOR_ENUM_VALUES`、`TF_BITS_FOR_VALUES` 与 enum/value 位数和名称注册相关；这些宏服务于类型/枚举元数据，宏名保持原样。</span></li>
+        <li><span class="zh">`TF_AXIOM`、`TF_CODING_ERROR`、`TF_DEBUG`、`TF_DEBUG_CODES`、`TF_DEBUG_MSG`、`TF_DEBUG_TIMED_SCOPE` 属于 diagnostics/debug 支撑，常用于错误上报、调试开关和计时范围标记。</span></li>
+        <li><span class="zh">`TF_DECLARE_PUBLIC_TOKENS()`、`TF_DECLARE_REF_PTRS`、`TF_DECLARE_WEAK_AND_REF_PTRS` 等条目用于 token 或智能指针声明；它们通常出现在 schema、registry、clips API、shader node 或静态 token 头文件中。</span></li>
+        <li><span class="zh">阅读本页时按用途分组比逐行翻译更有效：enum/register test、diagnostic/debug、token declaration、ref pointer declaration、environment symbol 等是主要阅读线索。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Tf 基础设施：</span><span class="en">Tf</span></li>
+        <li><span class="zh">诊断宏：</span><span class="en">diagnostic macro</span></li>
+        <li><span class="zh">调试代码：</span><span class="en">debug code</span></li>
+        <li><span class="zh">公开 token 集：</span><span class="en">public tokens</span></li>
+        <li><span class="zh">引用计数指针：</span><span class="en">ref pointer</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

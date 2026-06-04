@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-04T22:12:44.536Z
+Generated: 2026-06-04T22:28:06.720Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-04T22:12:44.536Z
 
 ## Grade Counts
 
-- draft_template_only: 145
-- draft_needs_translation: 253
+- draft_template_only: 140
+- draft_needs_translation: 258
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -32,9 +32,6 @@ Generated: 2026-06-04T22:12:44.536Z
 | 1 | draft_template_only | 62 | `full_site/api/_c_l_i11_8h_source.html` | 源码页面草稿：CLI11.h / CLI11.h |
 | 8 | draft_template_only | 62 | `full_site/api/binding_map_8h_source.html` | 源码页面草稿：bindingMap.h / bindingMap.h |
 | 164 | draft_template_only | 62 | `full_site/api/geom_model_a_p_i_adapter_8h_source.html` | 源码页面草稿：geomModelAPIAdapter.h / geomModelAPIAdapter.h |
-| 193 | draft_template_only | 62 | `full_site/api/globals_t.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
-| 195 | draft_template_only | 62 | `full_site/api/globals_u.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
-| 196 | draft_template_only | 62 | `full_site/api/globals_v.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
 | 198 | draft_template_only | 62 | `full_site/api/globals_w.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
 | 199 | draft_template_only | 62 | `full_site/api/globals.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
 | 207 | draft_template_only | 62 | `full_site/api/hgi_2shader_program_8h_source.html` | 源码页面草稿：shaderProgram.h / shaderProgram.h |
@@ -59,6 +56,9 @@ Generated: 2026-06-04T22:12:44.536Z
 | 314 | draft_template_only | 62 | `full_site/release/tut_usd_tutorials.html` | 页面草稿：USD Tutorials / USD Tutorials |
 | 315 | draft_template_only | 62 | `full_site/release/tut_usdview_plugin.html` | 页面草稿：Creating a Usdview Plugin / Creating a Usdview Plugin |
 | 350 | draft_template_only | 62 | `full_site/release/user_guides/schemas/usdMedia/overview.html` | 页面草稿：Overview / Overview |
+| 365 | draft_template_only | 62 | `full_site/release/user_guides/schemas/usdUI/overview.html` | 页面草稿：Overview / Overview |
+| 374 | draft_template_only | 62 | `full_site/release/user_guides/schemas/usdVol/overview.html` | 页面草稿：Overview / Overview |
+| 283 | draft_template_only | 64 | `full_site/release/contributors.html` | 历史贡献者 / USD Contributors (Historical) |
 
 ## All Pages
 
@@ -256,11 +256,11 @@ Generated: 2026-06-04T22:12:44.536Z
 | 190 | draft_needs_translation | bilingual_draft | 338 | 13/10 | 0 | 0 | `full_site/api/globals_o.html` |
 | 191 | draft_needs_translation | bilingual_draft | 272 | 13/10 | 0 | 0 | `full_site/api/globals_p.html` |
 | 192 | draft_needs_translation | bilingual_draft | 274 | 13/10 | 0 | 0 | `full_site/api/globals_s.html` |
-| 193 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/globals_t.html` |
-| 194 | draft_template_only | bilingual_draft | 94 | 10/12 | 0 | 0 | `full_site/api/globals_type.html` |
-| 195 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/globals_u.html` |
-| 196 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/globals_v.html` |
-| 197 | draft_template_only | bilingual_draft | 78 | 6/7 | 0 | 0 | `full_site/api/globals_vars.html` |
+| 193 | draft_needs_translation | bilingual_draft | 293 | 13/10 | 0 | 0 | `full_site/api/globals_t.html` |
+| 194 | draft_needs_translation | bilingual_draft | 319 | 21/18 | 0 | 0 | `full_site/api/globals_type.html` |
+| 195 | draft_needs_translation | bilingual_draft | 270 | 13/10 | 0 | 0 | `full_site/api/globals_u.html` |
+| 196 | draft_needs_translation | bilingual_draft | 290 | 13/10 | 0 | 0 | `full_site/api/globals_v.html` |
+| 197 | draft_needs_translation | bilingual_draft | 282 | 17/13 | 0 | 0 | `full_site/api/globals_vars.html` |
 | 198 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/globals_w.html` |
 | 199 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/globals.html` |
 | 200 | draft_needs_translation | bilingual_draft | 372 | 20/17 | 0 | 0 | `full_site/api/group__group___exec___attribute___comptuations.html` |
