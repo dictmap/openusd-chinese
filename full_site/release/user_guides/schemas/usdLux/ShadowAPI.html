@@ -56,6 +56,27 @@
         <li><span class="zh">阴影链接：</span><span class="en">shadow-linking</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-105">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`ShadowAPI` 提供 shadow color、shadow distance、shadow falloff 等阴影外观控制。官方明确这些是 non-physical controls，适合艺术控制，而不是物理精确照明模拟；阅读时应把它和 `LightAPI` 的 shadow-linking 区分开。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for ShadowAPI while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`inputs:shadow:color` 调整灯光投射阴影的颜色，适合风格化或美术调色；它不是能量守恒或真实光传输参数。</span></li>
+        <li><span class="zh">`inputs:shadow:distance`、`inputs:shadow:falloff` 和 `inputs:shadow:falloffGamma` 共同影响阴影随距离变化的衰减曲线，常用于限制阴影影响范围或调整过渡软硬。</span></li>
+        <li><span class="zh">`inputs:shadow:enable` 是是否让该灯参与阴影渲染的开关；它不删除灯光、不移除 link collection，只影响阴影行为是否启用。</span></li>
+        <li><span class="zh">`LightAPI` 的 shadow-linking 选择哪些对象进入阴影关系，`ShadowAPI` 则控制阴影如何显示。两个概念应分开翻译，不能合并成一个“阴影设置”。</span></li>
+        <li><span class="zh">这些属性的实际视觉效果依赖 renderer 支持。中文层应记录 schema 意图和属性边界，同时保留 `non-physical controls` 这个英文术语提醒读者不要做物理含义过度推断。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">阴影控制 API schema：</span><span class="en">ShadowAPI</span></li>
+        <li><span class="zh">非物理艺术控制：</span><span class="en">non-physical controls</span></li>
+        <li><span class="zh">阴影颜色输入属性：</span><span class="en">inputs:shadow:color</span></li>
+        <li><span class="zh">阴影距离输入属性：</span><span class="en">inputs:shadow:distance</span></li>
+        <li><span class="zh">阴影衰减 gamma 输入属性：</span><span class="en">inputs:shadow:falloffGamma</span></li>
+        <li><span class="zh">阴影链接：</span><span class="en">shadow-linking</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

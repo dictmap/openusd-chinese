@@ -54,6 +54,27 @@
         <li><span class="zh">OpenEXR 规范：</span><span class="en">OpenEXR specification</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-105">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`DomeLight` 是从极远外部环境向内发光的 intrinsic light，常用于 sky、HDR environment map 和 Image Based Lighting (IBL)。本页重点是环境照明语义、`inputs:texture:file` 贴图入口、OpenEXR latitude-longitude map 方向约定，以及它和局部面积光之间的分工。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for DomeLight while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`DomeLight` 的光不是从某个局部面积或点发出，而是从 very distant external environment 向场景内部照明；中文说明应把它定位为环境光入口，而不是普通几何灯。</span></li>
+        <li><span class="zh">`inputs:texture:file = @orientationLatLong.tex@` 示例说明环境贴图以 asset path 形式进入灯光 schema。路径字面量、asset 引用语法和 texture 属性名必须保留英文原样。</span></li>
+        <li><span class="zh">官方说明强调 dome top pole 默认对齐 world +Y axis，并遵循 OpenEXR latitude-longitude maps 约定。排查环境贴图方向时，应同时检查贴图极点、stage up axis 和 prim transform。</span></li>
+        <li><span class="zh">`DomeLight` 适合提供全局 sky/HDR/IBL 光照；如果需要窗口采样引导，应结合 `PortalLight` 和 dome 的 portals relationship，而不是把 portal 当成另一个普通面积灯。</span></li>
+        <li><span class="zh">本页还链接 `DomeLight_1`，后续阅读应区分无后缀 `DomeLight` 页面与带 `_1` 后缀页面的版本/生成上下文，不要把两个页面的链接目标混写。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">穹顶环境光：</span><span class="en">DomeLight</span></li>
+        <li><span class="zh">内建灯光 schema：</span><span class="en">intrinsic light</span></li>
+        <li><span class="zh">基于图像的照明：</span><span class="en">Image Based Lighting</span></li>
+        <li><span class="zh">环境贴图文件输入属性：</span><span class="en">inputs:texture:file</span></li>
+        <li><span class="zh">经纬度环境贴图：</span><span class="en">latitude-longitude maps</span></li>
+        <li><span class="zh">世界坐标 +Y 轴：</span><span class="en">world +Y axis</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

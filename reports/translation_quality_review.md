@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T19:07:00.621Z
+Generated: 2026-06-05T19:27:27.361Z
 
 ## Summary
 
@@ -55,10 +55,10 @@ Generated: 2026-06-05T19:07:00.621Z
 | 85 | draft_needs_translation | 283 | `full_site/api/functions_func_d.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
 | 92 | draft_needs_translation | 283 | `full_site/api/functions_func_k.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
 | 152 | draft_needs_translation | 283 | `full_site/api/functions_vars_u.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
-| 335 | draft_needs_translation | 284 | `full_site/release/user_guides/schemas/usdLux/LightListAPI.html` | 页面草稿：LightListAPI / LightListAPI |
 | 312 | draft_needs_translation | 285 | `full_site/release/tut_simple_shading.html` | 页面草稿：Simple Shading in USD / Simple Shading in USD |
 | 153 | draft_needs_translation | 286 | `full_site/api/functions_vars_v.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 | 301 | draft_needs_translation | 286 | `full_site/release/spec.html` | 页面草稿：Specifications / Specifications |
+| 317 | draft_needs_translation | 286 | `full_site/release/tut_xforms.html` | 页面草稿：Transformations, Animation, and Layer Offsets / Transformations, Animation, and Layer Offsets |
 
 ## All Pages
 
@@ -394,20 +394,20 @@ Generated: 2026-06-05T19:07:00.621Z
 | 328 | draft_needs_translation | bilingual_draft | 531 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/DiskLight.html` |
 | 329 | draft_needs_translation | bilingual_draft | 545 | 24/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/DistantLight.html` |
 | 330 | draft_needs_translation | bilingual_draft | 657 | 39/32 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/DomeLight_1.html` |
-| 331 | draft_needs_translation | bilingual_draft | 292 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/DomeLight.html` |
+| 331 | draft_needs_translation | bilingual_draft | 580 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/DomeLight.html` |
 | 332 | draft_needs_translation | bilingual_draft | 616 | 35/28 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/GeometryLight.html` |
 | 333 | draft_needs_translation | bilingual_draft | 567 | 40/33 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/LightAPI.html` |
 | 334 | draft_needs_translation | bilingual_draft | 589 | 35/28 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/LightFilter.html` |
-| 335 | draft_needs_translation | bilingual_draft | 284 | 12/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/LightListAPI.html` |
+| 335 | draft_needs_translation | bilingual_draft | 547 | 24/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/LightListAPI.html` |
 | 336 | draft_needs_translation | bilingual_draft | 437 | 17/14 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/ListAPI.html` |
-| 337 | draft_needs_translation | bilingual_draft | 410 | 17/13 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/MeshLightAPI.html` |
+| 337 | draft_needs_translation | bilingual_draft | 655 | 29/20 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/MeshLightAPI.html` |
 | 338 | draft_needs_translation | bilingual_draft | 402 | 21/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/NonboundableLightBase.html` |
 | 339 | draft_needs_translation | bilingual_draft | 367 | 17/15 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/overview.html` |
 | 340 | draft_needs_translation | bilingual_draft | 402 | 21/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/PluginLight.html` |
 | 341 | draft_needs_translation | bilingual_draft | 410 | 24/22 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html` |
-| 342 | draft_needs_translation | bilingual_draft | 437 | 26/24 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/PortalLight.html` |
+| 342 | draft_needs_translation | bilingual_draft | 686 | 38/31 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/PortalLight.html` |
 | 343 | draft_needs_translation | bilingual_draft | 526 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/RectLight.html` |
-| 344 | draft_needs_translation | bilingual_draft | 409 | 20/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/ShadowAPI.html` |
+| 344 | draft_needs_translation | bilingual_draft | 693 | 32/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/ShadowAPI.html` |
 | 345 | draft_needs_translation | bilingual_draft | 367 | 22/20 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/ShapingAPI.html` |
 | 346 | draft_needs_translation | bilingual_draft | 559 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/SphereLight.html` |
 | 347 | draft_needs_translation | bilingual_draft | 510 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/usdLux_toc.html` |

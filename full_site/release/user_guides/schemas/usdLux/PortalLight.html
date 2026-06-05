@@ -56,6 +56,27 @@
         <li><span class="zh">portal 宽度输入：</span><span class="en">inputs:width</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-105">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`PortalLight` 是位于 local XY plane 的 rectangular portal，用来引导 `DomeLight` 采样。它的重点不是直接照亮场景的面积灯语义，而是通过 `inputs:height`、`inputs:width`、`-Z direction` 和 dome 的 portals relationship 表达环境光采样窗口。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for PortalLight while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">官方摘录中的 `guides sampling of a dome light` 是核心语义：`PortalLight` 帮助环境光在窗口、门洞、开口等区域更有效采样，不等同于 `RectLight` 这类直接发光面积灯。</span></li>
+        <li><span class="zh">`PortalLight` 在 local XY plane 中定义矩形，并向 local `-Z` direction 传递采样方向；实际场景中的朝向取决于 prim transform 和 `xformOpOrder`。</span></li>
+        <li><span class="zh">`inputs:height` 控制 local Y axis 尺寸，`inputs:width` 控制 local X axis 尺寸。默认 rectangle 为 1 unit 只是局部基础尺寸，不代表最终世界空间大小。</span></li>
+        <li><span class="zh">本页应和 `DomeLight` 一起读：`DomeLight` 的 `portals` relationship 指向 portal，portal 提供采样引导窗口，两者共同构成环境光采样加速/定向表达。</span></li>
+        <li><span class="zh">`light:shaderId` 保留 portal light shader 标识入口；不同 render delegate 对 portal sampling 的支持可能不同，中文层应解释结构语义，不承诺所有渲染器效果一致。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">传送门灯光/采样入口灯：</span><span class="en">PortalLight</span></li>
+        <li><span class="zh">矩形采样入口：</span><span class="en">rectangular portal</span></li>
+        <li><span class="zh">本地 XY 平面：</span><span class="en">local XY plane</span></li>
+        <li><span class="zh">本地 -Z 方向：</span><span class="en">-Z direction</span></li>
+        <li><span class="zh">portal 高度输入属性：</span><span class="en">inputs:height</span></li>
+        <li><span class="zh">DomeLight 的 portal 关系：</span><span class="en">portals relationship</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

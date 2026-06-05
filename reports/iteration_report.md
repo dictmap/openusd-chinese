@@ -6007,3 +6007,31 @@
 1. 继续最多 5 页，优先处理仍较薄且用户会实际阅读的 `usdLux` schema 页面。
 2. 建议处理：`full_site/release/user_guides/schemas/usdLux/DomeLight.html`、`full_site/release/user_guides/schemas/usdLux/LightListAPI.html`、`full_site/release/user_guides/schemas/usdLux/PortalLight.html`、`full_site/release/user_guides/schemas/usdLux/MeshLightAPI.html`、`full_site/release/user_guides/schemas/usdLux/ShadowAPI.html`。
 3. 后续可继续 `NonboundableLightBase.html`、`PluginLight.html`、`VolumeLightAPI.html`，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `_source.html`、`search.html` 和目录页。
+## 第 236 轮：DomeLight、LightListAPI、PortalLight、MeshLightAPI 与 ShadowAPI 补强
+
+已完成：
+
+- 先复核仓库、远端和报告状态：本地 `main` 干净，上一次 GitHub 同步提交为 `a414328`，远端 `origin/main` 指向 `a414328d50f6a934d4a1668e7495249c7e4191b9`。
+- 新增并执行 `scripts/refine_openusd_release_batch_105.mjs`，本轮标记为 `release-quality-pass-105`。
+- 严格只精修 5 页：
+  - `full_site/release/user_guides/schemas/usdLux/DomeLight.html`
+  - `full_site/release/user_guides/schemas/usdLux/LightListAPI.html`
+  - `full_site/release/user_guides/schemas/usdLux/PortalLight.html`
+  - `full_site/release/user_guides/schemas/usdLux/MeshLightAPI.html`
+  - `full_site/release/user_guides/schemas/usdLux/ShadowAPI.html`
+- 每页新增 5 条中文二次精修导读和 6 条术语对照，覆盖 `DomeLight` 的 HDR/IBL、`inputs:texture:file`、OpenEXR latitude-longitude map 和 `PortalLight` 关系，`LightListAPI` 的 traversal、`ComputeLightList()`、`ComputeModeIgnoreCache` 与 light path 列表，`PortalLight` 的 local XY plane、`-Z direction`、`inputs:height`/`inputs:width` 和 dome sampling 引导，`MeshLightAPI` 的 applied API、`materialGlowTintsLight`、`MeshLight` shaderId 和 mesh emission 迁移边界，以及 `ShadowAPI` 的 non-physical controls、shadow color/distance/falloff/falloffGamma/enable 与 shadow-linking 区分。
+- 目标页质量回读显示 5 页均为 `draft_needs_translation`，坏编码 0，非预期官方外跳 0；中文字符分别为 580、547、686、655、693；中英块分别为 24/18、24/17、38/31、29/20、32/25。
+- 本轮分级计数保持不变：`draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因：处理对象开始前已是 `draft_needs_translation`，本轮属于补强精修，不是从模板草稿晋级。
+- 已运行并通过：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1`；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步结果：本轮验证通过后使用 `OpenUSD bilingual round 236: usdLux dome list portal mesh shadow pass` 提交并推送本轮 HTML、脚本、报告和 `work.md`。
+
+当前差距：
+
+- 全量 406 页仍不是完成态：8 页 `good_bilingual`，398 页仍为 `bilingual_draft`；其中 387 页为 `draft_needs_translation`，11 页为 `draft_template_only`。
+- 本轮继续提升 5 个 usdLux schema 页面的中文阅读层厚度，但仍不是逐段完整翻译；后续继续按最多 5 页节奏推进。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理仍较薄且用户会实际阅读的 `usdLux` schema 页面。
+2. 建议处理：`full_site/release/user_guides/schemas/usdLux/NonboundableLightBase.html`、`full_site/release/user_guides/schemas/usdLux/PluginLight.html`、`full_site/release/user_guides/schemas/usdLux/VolumeLightAPI.html`、`full_site/release/user_guides/schemas/usdLux/overview.html`、`full_site/release/user_guides/schemas/usdLux/ShapingAPI.html`。
+3. 后续可继续 `full_site/release/user_guides/schemas/usdLux/ListAPI.html`、`PluginLightFilter.html`、`BoundableLightBase.html`，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `_source.html`、`search.html` 和目录页。

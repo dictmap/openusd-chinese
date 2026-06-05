@@ -54,6 +54,27 @@
         <li><span class="zh">灯光通用 API schema：</span><span class="en">LightAPI</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-105">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`LightListAPI` 不定义新的灯光类型，而是在 traversal 期间发现和收集场景中的灯光。它的核心阅读线索是 `ComputeLightList()`、`ComputeModeIgnoreCache`、descendant lights、cache 行为以及返回的 light path 列表。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for LightListAPI while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`LightListAPI` 的用途是 discover lights in a scene during traversal；它回答“这个子树下有哪些灯”，而 `LightAPI` 回答“这个 prim 是否具备灯光能力”。</span></li>
+        <li><span class="zh">`ComputeLightList()` 会遍历并 gather lights，例如 applied `LightAPI` 的 prim。中文导读应保留函数名和 API 名，避免翻译成无法搜索的中文函数描述。</span></li>
+        <li><span class="zh">`ComputeModeIgnoreCache` 表示这次计算忽略已有缓存，直接遍历收集。大型场景中 cache 是否可用会影响性能和结果新鲜度，因此它不是普通布尔选项。</span></li>
+        <li><span class="zh">官方 Python 示例从 `stage.GetPrimAtPath(&quot;/World&quot;)` 构造 `UsdLux.LightListAPI`，再遍历 `computedLights`。阅读时应把返回值理解为 light paths，而不是直接的灯光对象列表。</span></li>
+        <li><span class="zh">后续逐段翻译应补齐 gather、cache、invalidate、traversal scope 的关系，尤其是当灯光增删或 `LightAPI` 应用状态改变时，缓存列表可能需要重新计算。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">灯光列表 API schema：</span><span class="en">LightListAPI</span></li>
+        <li><span class="zh">场景遍历：</span><span class="en">traversal</span></li>
+        <li><span class="zh">计算灯光列表函数：</span><span class="en">ComputeLightList()</span></li>
+        <li><span class="zh">忽略缓存计算模式：</span><span class="en">ComputeModeIgnoreCache</span></li>
+        <li><span class="zh">通用灯光 API schema：</span><span class="en">LightAPI</span></li>
+        <li><span class="zh">灯光路径列表：</span><span class="en">light paths</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
