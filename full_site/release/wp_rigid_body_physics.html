@@ -65,6 +65,27 @@
         <li><span class="zh">关节/约束：</span><span class="en">Joints</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-125">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`Rigid Body Physics in USD Proposal` 描述 USD 中刚体物理 schema 的设计边界。它关注 `UsdPhysics` 如何表达 rigid body、collision、joint、mass 和 physics scene 等可交换数据，而不是把某个求解器、积分器或实时仿真运行时固化进 USD 核心。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for Rigid Body Physics in USD Proposal while preserving English page names, API names, schema names, property names, commands, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">USD physics schema 的目标是把物理意图写入 scene description：哪些 prim 是刚体、哪些 shape 参与碰撞、质量属性如何声明、关节如何连接对象。</span></li>
+        <li><span class="zh">`RigidBodyAPI`、`CollisionAPI`、`MassAPI`、`PhysicsScene` 和 joint schema 通常以 API schema 或专用 prim 的形式组合使用；最终行为仍取决于 simulator 或 plugin。</span></li>
+        <li><span class="zh">proposal 中的 collision geometry 不等同于 render geometry；工具可选择简化形状、近似网格或单独 collision representation 来满足性能和稳定性要求。</span></li>
+        <li><span class="zh">关节、驱动、limit 和 collision filtering 需要结合 scene graph 层级和 composition 解析；单看某个属性不能判断仿真是否会稳定运行。</span></li>
+        <li><span class="zh">本页应作为 schema 设计背景阅读；实际项目还需要检查当前 `UsdPhysics` API、目标 simulator 的支持矩阵和验证报告。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 物理 schema 集：</span><span class="en">UsdPhysics</span></li>
+        <li><span class="zh">刚体 API schema：</span><span class="en">RigidBodyAPI</span></li>
+        <li><span class="zh">碰撞 API schema：</span><span class="en">CollisionAPI</span></li>
+        <li><span class="zh">质量 API schema：</span><span class="en">MassAPI</span></li>
+        <li><span class="zh">物理场景：</span><span class="en">PhysicsScene</span></li>
+        <li><span class="zh">碰撞过滤：</span><span class="en">collision filtering</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

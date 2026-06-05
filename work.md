@@ -3219,3 +3219,13 @@
 - 验证结果：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1` 均通过；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
 - GitHub 同步：验证通过后使用 `OpenUSD bilingual round 255: proposals schema audio lux previews pass` 同步本轮 HTML、脚本、报告和 `work.md`。
 - 下一轮最多 5 页目标：`full_site/release/wp_usdlux_for_geometry_lights.html`、`full_site/release/wp_coordsys.html`、`full_site/release/wp_ar2.html`、`full_site/release/wp_connectable_nodes.html`、`full_site/release/wp_rigid_body_physics.html`；之后按 `translation_quality_review` 继续选择用户可读价值高的 API/guide/class/group/release 页面，低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+## 第 256 轮：Geometry Lights、CoordSys、Ar 2.0、Connectable Nodes 与 Rigid Body Physics
+
+- 基线：本地 `main` 基于上一轮同步提交 `a78908d`，`origin/main` 一致，起始工作区干净。全量仍为 406 个 HTML 页面，质量计数为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。
+- 新增并执行 `scripts/refine_openusd_release_batch_125.mjs`，标记 `release-quality-pass-125`；严格只精修 5 页：`full_site/release/wp_usdlux_for_geometry_lights.html`、`full_site/release/wp_coordsys.html`、`full_site/release/wp_ar2.html`、`full_site/release/wp_connectable_nodes.html`、`full_site/release/wp_rigid_body_physics.html`。
+- 补强内容：每页新增 5 条中文导读和 6 条术语对照，覆盖几何灯光、命名坐标系、资产解析、可连接节点和刚体物理 proposal 的历史背景、schema/API 边界与常见误读风险；API 名称、schema 名称、属性名、token 字面量和链接保持原样。
+- 质量回读：5 页均无占位坏词，`release-quality-pass-125` 均只出现 1 次；中文字符分别为 849、862、825、856、857，中文/英文块分别为 45/34、40/29、35/24、40/29、53/42。
+- 分级变化：计数保持不变，仍为 `draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因是本轮对象已是 `draft_needs_translation`，属于二次补强，不是模板草稿晋级。
+- 验证结果：翻译质量审计、链接路由、full draft preview、报告索引和 `validate_openusd_api_repro.ps1` 均已通过；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步：本轮复验通过后使用 `OpenUSD bilingual round 256: geometry coords ar connectable physics pass` 同步本轮 HTML、脚本、报告和 `work.md`。
+- 下一轮最多 5 页目标：`full_site/api/namespacemembers.html`、`full_site/api/globals_s.html`、`full_site/api/globals_func.html`、`full_site/api/functions_vars_w.html`、`full_site/api/functions_func_n.html`；之后可继续 `functions_func_t.html`、`deprecated.html`、`hd_embree_page_front.html`、`globals_vars.html`、`classes.html`，继续低优先处理 `search.html`、目录页和 `_source.html`。

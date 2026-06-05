@@ -65,6 +65,27 @@
         <li><span class="zh">程序化纹理：</span><span class="en">procedural texture</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-125">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`Coordinate Systems in USD Proposal` 解释 USD 如何在场景中声明、绑定和消费命名坐标系。它的重点不是简单的矩阵换算，而是通过 `CoordSysAPI`、`coordSys` 关系和 binding 语义，让 shading、lookdev、procedural 节点或 renderer 能够引用模型、组件或局部空间。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for Coordinate Systems in USD Proposal while preserving English page names, API names, schema names, property names, commands, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`CoordSysAPI` 用于在 prim 上声明可命名的 coordinate system；这些命名空间可以被下游节点引用，从而避免把空间含义硬编码到 shader 参数或工具约定中。</span></li>
+        <li><span class="zh">坐标系 binding 的强弱、继承和覆盖要结合 USD composition 读取；同名 binding 在不同层或不同 prim 层级上出现时，最终结果取决于组合后的 scenegraph。</span></li>
+        <li><span class="zh">proposal 中的坐标系主要服务于 shading 和资产互换场景，不能误读为替代 `xformOp`、`UsdGeomXformable` 或物理模拟坐标系的通用机制。</span></li>
+        <li><span class="zh">命名坐标系常出现在模型根、材质网络或 procedural 生成流程中；阅读链接和示例时应同时关注 prim path、relationship target 和 consumer 端的解析规则。</span></li>
+        <li><span class="zh">本地复刻保留 `coordSys`、`binding rels`、`UsdShade` 等英文术语，便于和 API 文档、USDA 示例及 renderer 实现逐项对照。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">坐标系 API schema：</span><span class="en">CoordSysAPI</span></li>
+        <li><span class="zh">坐标系命名空间：</span><span class="en">coordSys</span></li>
+        <li><span class="zh">绑定关系：</span><span class="en">binding rels</span></li>
+        <li><span class="zh">消费端节点或系统：</span><span class="en">consumer</span></li>
+        <li><span class="zh">模型根 prim：</span><span class="en">model root</span></li>
+        <li><span class="zh">可变换几何 schema：</span><span class="en">UsdGeomXformable</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

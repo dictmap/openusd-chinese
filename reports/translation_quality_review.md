@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T23:18:33.424Z
+Generated: 2026-06-05T23:30:27.648Z
 
 ## Summary
 
@@ -457,16 +457,16 @@ Generated: 2026-06-05T23:18:33.424Z
 | 391 | draft_needs_translation | bilingual_draft | 680 | 37/24 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/VolumeFieldBase.html` |
 | 392 | draft_needs_translation | bilingual_draft | 653 | 31/20 | 0 | 0 | `full_site/release/user_guides/time_and_animated_values.html` |
 | 393 | draft_needs_translation | bilingual_draft | 687 | 30/19 | 0 | 0 | `full_site/release/user_guides/variable_expressions.html` |
-| 394 | draft_needs_translation | bilingual_draft | 514 | 23/17 | 0 | 0 | `full_site/release/wp_ar2.html` |
+| 394 | draft_needs_translation | bilingual_draft | 755 | 35/24 | 0 | 0 | `full_site/release/wp_ar2.html` |
 | 395 | draft_needs_translation | bilingual_draft | 707 | 35/24 | 0 | 0 | `full_site/release/wp_asset_previews.html` |
-| 396 | draft_needs_translation | bilingual_draft | 521 | 28/22 | 0 | 0 | `full_site/release/wp_connectable_nodes.html` |
-| 397 | draft_needs_translation | bilingual_draft | 509 | 28/22 | 0 | 0 | `full_site/release/wp_coordsys.html` |
+| 396 | draft_needs_translation | bilingual_draft | 789 | 40/29 | 0 | 0 | `full_site/release/wp_connectable_nodes.html` |
+| 397 | draft_needs_translation | bilingual_draft | 790 | 40/29 | 0 | 0 | `full_site/release/wp_coordsys.html` |
 | 398 | draft_needs_translation | bilingual_draft | 661 | 33/22 | 0 | 0 | `full_site/release/wp_render_settings.html` |
-| 399 | draft_needs_translation | bilingual_draft | 554 | 41/35 | 0 | 0 | `full_site/release/wp_rigid_body_physics.html` |
+| 399 | draft_needs_translation | bilingual_draft | 783 | 53/42 | 0 | 0 | `full_site/release/wp_rigid_body_physics.html` |
 | 400 | draft_needs_translation | bilingual_draft | 674 | 44/33 | 0 | 0 | `full_site/release/wp_schema_versioning.html` |
 | 401 | draft_needs_translation | bilingual_draft | 736 | 30/17 | 0 | 0 | `full_site/release/wp_stage_variables.html` |
 | 402 | draft_needs_translation | bilingual_draft | 722 | 35/24 | 0 | 0 | `full_site/release/wp_usdaudio.html` |
-| 403 | draft_needs_translation | bilingual_draft | 485 | 33/27 | 0 | 0 | `full_site/release/wp_usdlux_for_geometry_lights.html` |
+| 403 | draft_needs_translation | bilingual_draft | 773 | 45/34 | 0 | 0 | `full_site/release/wp_usdlux_for_geometry_lights.html` |
 | 404 | draft_needs_translation | bilingual_draft | 685 | 44/33 | 0 | 0 | `full_site/release/wp_usdlux_for_renderers.html` |
 | 405 | draft_needs_translation | bilingual_draft | 671 | 31/20 | 0 | 0 | `full_site/release/wp_usdshade.html` |
 | 406 | draft_needs_translation | bilingual_draft | 716 | 30/17 | 0 | 0 | `full_site/release/wp.html` |

@@ -65,6 +65,27 @@
         <li><span class="zh">非材质着色网络：</span><span class="en">non-shading networks</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-125">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`Generalizing Connectable Nodes Beyond UsdShade` 说明如何把可连接节点模型从材质 shading 网络推广到更广泛的 USD schema。它关注 `UsdShadeConnectableAPI`、input/output、source resolution、NodeGraph 和连接验证，让 lights、procedural nodes 或其他域可以共享一致的连接语义。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for Generalizing Connectable Nodes Beyond UsdShade while preserving English page names, API names, schema names, property names, commands, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">本 proposal 的关键不是新增某一种节点类型，而是把 connectable 的共同规则抽象出来，使不同 schema 可以复用连接发现、连接创建和 source 查询逻辑。</span></li>
+        <li><span class="zh">`UsdShadeConnectableAPI` 保留在名称中，是因为历史上连接模型来自 UsdShade；但 proposal 讨论的是跨域复用，不应把它局限为材质专用能力。</span></li>
+        <li><span class="zh">连接关系需要区分 input、output、interface input、NodeGraph 内部连接和外部暴露接口；这些层次决定了 authoring 工具如何建立和验证网络。</span></li>
+        <li><span class="zh">source resolution 既要处理直接连接，也要处理穿过 NodeGraph 的接口转发；如果只看关系 target，容易漏掉最终 producer 或类型兼容性检查。</span></li>
+        <li><span class="zh">本页适合和 `UsdLux` 插件灯光、procedural schema、material network 页面一起阅读，以理解为什么连接语义需要稳定的 API 边界。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">可连接节点 API：</span><span class="en">UsdShadeConnectableAPI</span></li>
+        <li><span class="zh">输入端口：</span><span class="en">input</span></li>
+        <li><span class="zh">输出端口：</span><span class="en">output</span></li>
+        <li><span class="zh">节点图：</span><span class="en">NodeGraph</span></li>
+        <li><span class="zh">连接源解析：</span><span class="en">source resolution</span></li>
+        <li><span class="zh">接口输入：</span><span class="en">interface input</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

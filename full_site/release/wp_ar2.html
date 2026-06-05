@@ -65,6 +65,27 @@
         <li><span class="zh">非虚接口模式：</span><span class="en">non-virtual interface</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-125">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`Asset Resolution (Ar) 2.0` 讨论 USD 资产路径解析体系的第二代设计。它的核心是 `ArResolver`、resolver context、asset identifier 和 repository path 之间的边界，而不是把所有 asset path 直接展开为本地文件系统路径。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for Asset Resolution (Ar) 2.0 while preserving English page names, API names, schema names, property names, commands, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`ArResolver` 是 USD 解析 asset path 的抽象入口；不同项目可以用自定义 resolver 把标识符映射到版本库、包、远程服务或普通文件。</span></li>
+        <li><span class="zh">resolver context 影响同一个 asset identifier 的解析结果，因此 layer 打开、reference 解析和包内资源定位都必须在正确上下文中完成。</span></li>
+        <li><span class="zh">proposal 区分 authored asset path、resolved path、repository path 和 normalized identifier；这些概念混在一起会导致缓存、去重和版本选择错误。</span></li>
+        <li><span class="zh">`ArDefaultResolver` 只是默认实现，不代表 Ar 体系只能服务文件系统；大型资产库通常会在 resolver 中编码项目、镜头、版本和权限策略。</span></li>
+        <li><span class="zh">阅读本页时应保留 `ArResolver`、`ArResolverContext`、`asset identifier` 等英文 API 词，避免把 proposal 简化成路径拼接教程。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">资产解析器：</span><span class="en">ArResolver</span></li>
+        <li><span class="zh">解析上下文：</span><span class="en">resolver context</span></li>
+        <li><span class="zh">资产标识符：</span><span class="en">asset identifier</span></li>
+        <li><span class="zh">仓库路径：</span><span class="en">repository path</span></li>
+        <li><span class="zh">解析后路径：</span><span class="en">resolved path</span></li>
+        <li><span class="zh">默认资产解析器：</span><span class="en">ArDefaultResolver</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

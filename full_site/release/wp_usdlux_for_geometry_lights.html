@@ -65,6 +65,27 @@
         <li><span class="zh">灯光 shader 标识属性：</span><span class="en">light:shaderId</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-125">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`Adapting UsdLux to Accommodate Geometry Lights` 是 UsdLux 几何灯光设计的历史 proposal。阅读时应把它理解为 schema 和渲染系统协作的设计说明：场景中的几何体通过 `GeometryLight`、`MeshLightAPI`、`UsdGeomGprim` 和 `UsdLuxLightAPI` 表达发光语义，而最终采样、能量归一化和渲染器近似仍由 renderer delegate 或具体 renderer 决定。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for Adapting UsdLux to Accommodate Geometry Lights while preserving English page names, API names, schema names, property names, commands, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">proposal 的核心目标是让几何对象可以稳定参与照明表达，而不是要求 USD 在核心层实现一个统一的光传输模型；USD 负责可组合的场景描述，渲染器负责解释和求值。</span></li>
+        <li><span class="zh">`GeometryLight` 和 `MeshLightAPI` 关注把发光能力附着到已有 geometry 上，因此它们和普通 `UsdLuxLight` 的建模方式不同：一个强调形状即光源，一个强调专用 light prim。</span></li>
+        <li><span class="zh">当页面提到 emission、area light 或 mesh light 时，应保留这些英文术语，并区分 material emission、light schema 和 renderer-specific sampling 三个层次。</span></li>
+        <li><span class="zh">几何灯光通常需要考虑 visibility、purpose、instancing、material binding 和 transform 组合；这些信息来自 USD 场景图，而不是单个 light schema 独立决定。</span></li>
+        <li><span class="zh">当前读者应把本页作为历史背景和迁移线索，再回到 `UsdLux` schema 页面核对实际 API、属性名和 renderer 支持范围。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">几何灯光 schema：</span><span class="en">GeometryLight</span></li>
+        <li><span class="zh">网格灯光 API schema：</span><span class="en">MeshLightAPI</span></li>
+        <li><span class="zh">USD 几何基元：</span><span class="en">UsdGeomGprim</span></li>
+        <li><span class="zh">UsdLux 灯光 API schema：</span><span class="en">UsdLuxLightAPI</span></li>
+        <li><span class="zh">材质发光：</span><span class="en">material emission</span></li>
+        <li><span class="zh">渲染代理：</span><span class="en">renderer delegate</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
