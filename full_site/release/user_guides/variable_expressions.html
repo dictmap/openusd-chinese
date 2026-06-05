@@ -44,6 +44,27 @@
 <li><span class="zh">官方示例展示 ASSET_PATH 与 VARIANT_CHOICE 如何同时驱动 reference 路径和 variant 选择，本地页保留代码摘录用于核对语法。</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-074">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 USD Variable Expressions 补充中文优先的概念边界、阅读顺序、语义风险和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds Chinese-first conceptual boundaries, reading order, semantic cautions, and terminology for USD Variable Expressions while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">Variable expressions 是运行时求值的字符串机制，用于用 layer metadata 中的 `expressionVariables` 动态配置 USD 场景。</span></li>
+        <li><span class="zh">表达式变量可用于 asset paths、subLayers、references、payloads、asset-valued attributes、metadata 和 variant selections 等位置。</span></li>
+        <li><span class="zh">`expressionVariables` 支持 string、bool、int64、数组和 `None` 等类型；在 USDA 中常通过反引号表达式把变量嵌入路径或选择值。</span></li>
+        <li><span class="zh">官方示例中的 `ASSET_PATH` 与 `VARIANT_CHOICE` 分别控制 reference asset path 与 variant selection，适合做多资产、多版本或多环境切换。</span></li>
+        <li><span class="zh">本页应和 stage/session layer 组合一起理解：变量表达式改变的是解析出的值，不要求复制大量 scene description 数据。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">变量表达式：</span><span class="en">Variable expressions</span></li>
+        <li><span class="zh">表达式变量 metadata 字典：</span><span class="en">expressionVariables</span></li>
+        <li><span class="zh">资产路径：</span><span class="en">asset paths</span></li>
+        <li><span class="zh">引用 / 负载：</span><span class="en">references / payloads</span></li>
+        <li><span class="zh">变体选择：</span><span class="en">variant selections</span></li>
+        <li><span class="zh">运行时求值：</span><span class="en">runtime evaluation</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -2,6 +2,24 @@
 
 源页面：<https://openusd.org/release/api/index.html>
 
+## 第 205 轮：VolumeFieldBase、时间/变量表达式与 proposal 页精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `5b327a3`，当前分级为 `draft_template_only` 21 / `draft_needs_translation` 377 / `good_bilingual` 8。
+- 本轮严格只处理 5 个未达标页面：`full_site/release/user_guides/schemas/usdVol/VolumeFieldBase.html`、`full_site/release/user_guides/time_and_animated_values.html`、`full_site/release/user_guides/variable_expressions.html`、`full_site/release/wp_render_settings.html`、`full_site/release/wp_stage_variables.html`，5 页均为 `draft_template_only`，没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_release_batch_074.mjs`，为 5 页插入 `release-quality-pass-074` 中文精修导读区块；每页补充概念边界、阅读顺序、语义风险和术语对照，同时保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录。
+- 本轮中文层覆盖：`VolumeFieldBase` 作为所有 UsdVol field schema 抽象基础类、`Volume` 通过 `field:*` relationships 连接字段 prim、自定义 field schema 继承边界；`Time and Animated Values` 的 `TimeCode`、`timeSamples`、`timeCodesPerSecond`、`framesPerSecond`、`LayerOffset` 与 timeCode remapping；`USD Variable Expressions` 的 `expressionVariables`、asset paths、references/payloads、metadata、variant selections 和运行时求值；`Render Settings in USD Proposal` 的 historical reference 状态、`RenderSettings` / `RenderProduct` / `RenderVar` schema 分工；`Stage Variable Expressions` 的 OpenUSD-proposals 迁移提示和与用户指南页的区别。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 21 / `draft_needs_translation` 377 / `good_bilingual` 8 变为 `draft_template_only` 16 / `draft_needs_translation` 382 / `good_bilingual` 8；本轮 5 页均从模板草稿转入 `draft_needs_translation`。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398 个 `bilingual_draft` 页面全部具备本地可检查 HTML 和最终入口链接，`failed_pages` 为 0。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`，报告索引通过，总验证 `PASSED`，`validation_required_checks` 281 / `validation_failed_checks` 0。
+- GitHub 同步计划：验证通过后使用提交信息 `OpenUSD bilingual round 205: volume field time variables proposals` 推送本轮 HTML、脚本、报告和 `work.md`。
+
+差距与下一轮：
+
+- 当前 398 个 `bilingual_draft` 仍不是完整段落级翻译；本轮只是把 5 个高价值模板页推进到可读中文精修草稿。
+- 仍有 `draft_template_only` 16 页，其中多为 `_source.html` 源码页、搜索页或目录页；下一轮优先最多处理 `full_site/release/wp_usdaudio.html`、`full_site/release/wp_usdshade.html`、`full_site/release/wp.html`、`full_site/api/copy_utils_8h.html`、`full_site/api/journal_8h.html`，继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+
 ## 第 204 轮：usdVol particle attribute 与 Volume 页面精修
 已完成：
 

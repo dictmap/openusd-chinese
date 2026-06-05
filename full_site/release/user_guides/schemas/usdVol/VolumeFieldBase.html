@@ -44,6 +44,27 @@
 <li><span class="zh">页面同时列出从 Xformable 和 Imageable 继承的常用属性，例如 xformOpOrder、purpose、visibility 和 proxyPrim。</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-074">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 VolumeFieldBase 补充中文优先的概念边界、阅读顺序、语义风险和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds Chinese-first conceptual boundaries, reading order, semantic cautions, and terminology for VolumeFieldBase while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`VolumeFieldBase` 是所有 UsdVol field schema 的抽象基础类；它本身不是具体体积文件、grid 或 renderer 数据格式。</span></li>
+        <li><span class="zh">`Volume` 通过 `field:*` relationships 连接到 `VolumeFieldBase` 派生 prim，因此本页的关键作用是给体积字段 prim 提供共同类型边界。</span></li>
+        <li><span class="zh">自定义 UsdVol field schema 应直接或间接继承 `VolumeFieldBase`，这样 `Volume`、shader 输入和工具链才能把它识别为合法 field provider。</span></li>
+        <li><span class="zh">继承自 `Xformable` 与 `Imageable` 的 `xformOpOrder`、`purpose`、`visibility`、`proxyPrim` 仍是场景组织属性，不等同于 field payload 本身。</span></li>
+        <li><span class="zh">阅读本页时应和 `Volume`、`VolumeFieldAsset`、`OpenVDBAsset`、`Field3DAsset` 一起核对：容器 prim、字段 prim 和外部体积资产各自承担不同职责。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">体积字段抽象基础类：</span><span class="en">VolumeFieldBase</span></li>
+        <li><span class="zh">UsdVol 体积字段 schema：</span><span class="en">UsdVol field schema</span></li>
+        <li><span class="zh">体积字段关系：</span><span class="en">field:* relationships</span></li>
+        <li><span class="zh">体积容器 prim：</span><span class="en">Volume</span></li>
+        <li><span class="zh">可变换 / 可成像基础能力：</span><span class="en">Xformable / Imageable</span></li>
+        <li><span class="zh">体积字段实际数据载荷：</span><span class="en">field payload</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

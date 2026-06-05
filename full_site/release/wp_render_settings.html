@@ -44,6 +44,27 @@
 <li><span class="zh">本地页保留 RenderSettingsBase、camera、resolution、pixelAspectRatio、RenderVar 和 RenderProduct 等 schema 示例与设计入口。</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-074">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Render Settings in USD Proposal 补充中文优先的概念边界、阅读顺序、语义风险和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds Chinese-first conceptual boundaries, reading order, semantic cautions, and terminology for Render Settings in USD Proposal while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">这是一篇已实现 proposal 的历史参考页；当前用法应优先参考 `UsdRender overview`，但本页仍能说明设计动机和 schema 拆分方式。</span></li>
+        <li><span class="zh">proposal 目标是在 USD scene configuration 中表达启动渲染所需的 camera、outputs 和 renderer configuration，而不是完整 VFX final-frame 作业系统。</span></li>
+        <li><span class="zh">`RenderSettings` 描述全局渲染配置，`RenderProduct` 描述输出 artifact，`RenderVar` 描述 AOV/渲染变量；三者共同组成 UsdRender 的主要配置模型。</span></li>
+        <li><span class="zh">`RenderSettingsBase` 中的 `camera`、`resolution`、`pixelAspectRatio` 等属性展示了设置如何在 schema 层被声明和继承。</span></li>
+        <li><span class="zh">阅读时应注意 historical/outdated 提示：它解释为什么这样设计，不代表所有细节都是最新 API 文档的权威入口。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">渲染设置 prim：</span><span class="en">RenderSettings</span></li>
+        <li><span class="zh">渲染输出产品 prim：</span><span class="en">RenderProduct</span></li>
+        <li><span class="zh">渲染变量 / AOV prim：</span><span class="en">RenderVar</span></li>
+        <li><span class="zh">渲染设置基础 schema：</span><span class="en">RenderSettingsBase</span></li>
+        <li><span class="zh">相机 / 分辨率：</span><span class="en">camera / resolution</span></li>
+        <li><span class="zh">历史参考：</span><span class="en">historical reference</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

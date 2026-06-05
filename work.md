@@ -1,5 +1,15 @@
 # 工作记录
 
+## 第 205 轮：VolumeFieldBase、时间/变量表达式与 proposal 页精修
+- 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、git 状态和远端 main，确认上一轮远端提交为 `5b327a3`，当前分级为 `draft_template_only` 21 / `draft_needs_translation` 377 / `good_bilingual` 8。
+- 本轮严格只处理 5 个未达标页面：`full_site/release/user_guides/schemas/usdVol/VolumeFieldBase.html`、`full_site/release/user_guides/time_and_animated_values.html`、`full_site/release/user_guides/variable_expressions.html`、`full_site/release/wp_render_settings.html`、`full_site/release/wp_stage_variables.html`，没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_release_batch_074.mjs`，每页插入 `release-quality-pass-074` 中文精修导读区块，覆盖概念边界、阅读顺序、语义风险和术语对照；保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录。
+- 本轮中文层覆盖：`VolumeFieldBase` 的 UsdVol field schema 抽象基础、`field:*` relationships 和字段 prim 边界；`Time and Animated Values` 的 `TimeCode`、`timeSamples`、`timeCodesPerSecond`、`framesPerSecond`、`LayerOffset` 与 remapping；`USD Variable Expressions` 的 `expressionVariables`、asset paths、references/payloads、metadata、variant selections 和运行时求值；`Render Settings in USD Proposal` 的 historical reference 状态与 `RenderSettings` / `RenderProduct` / `RenderVar` 分工；`Stage Variable Expressions` 的 OpenUSD-proposals 迁移状态。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 21 / `draft_needs_translation` 377 / `good_bilingual` 8 变为 `draft_template_only` 16 / `draft_needs_translation` 382 / `good_bilingual` 8；本轮 5 页均从模板草稿转入 `draft_needs_translation`。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398 个草稿页全部通过本地预览检查。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`，报告索引通过，总验证 `PASSED`，`validation_required_checks` 281 / `validation_failed_checks` 0。
+- 验证通过后准备以 `OpenUSD bilingual round 205: volume field time variables proposals` 同步 GitHub；下一轮优先最多处理 `full_site/release/wp_usdaudio.html`、`full_site/release/wp_usdshade.html`、`full_site/release/wp.html`、`full_site/api/copy_utils_8h.html`、`full_site/api/journal_8h.html`，继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+
 ## 第 204 轮：usdVol particle attribute 与 Volume 页面精修
 - 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、git 状态和远端 main，确认上一轮远端提交为 `ef1d011`，当前分级为 `draft_template_only` 26 / `draft_needs_translation` 372 / `good_bilingual` 8。
 - 本轮严格只处理 5 个未达标页面：`full_site/release/user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html`、`full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html`、`full_site/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html`、`full_site/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html`、`full_site/release/user_guides/schemas/usdVol/Volume.html`，没有新增或处理第 6 页。
