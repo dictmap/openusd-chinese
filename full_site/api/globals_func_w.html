@@ -54,6 +54,27 @@
         <li><span class="zh">作用域化并行：</span><span class="en">scoped parallelism</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-093">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 File Members - Functions - W 增补二次精修说明，重点解释 File Members 宽索引与函数索引的区别、模块归属、头文件来源、教程步骤、跨页跳转顺序和术语对照。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于与官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for File Members - Functions - W. It explains the difference between broad File Members indexes and function indexes, module ownership, header provenance, tutorial steps, cross-page navigation, and terminology while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`globals_func_w.html` 是 File Members 函数索引 W 段，当前主要集中在 `Work` 并行工具层；它与 `globals_w.html` 的宽索引不同，只收集文件级函数入口。</span></li>
+        <li><span class="zh">`WorkGetConcurrencyLimit()`、`WorkSetConcurrencyLimit()`、`WorkSetMaximumConcurrencyLimit()` 来自 `threadLimits.h`，用于控制 OpenUSD Work 模块并发上限，阅读时应注意进程级配置、调用时机和测试环境对并行度的影响。</span></li>
+        <li><span class="zh">`WorkParallelForN()`、`WorkParallelForEach()`、`WorkParallelReduceN()`、`WorkParallelSort()` 等函数分别对应并行循环、遍历、归约和排序；它们不是 Hydra 专属工具，而是基础设施层的通用任务调度封装。</span></li>
+        <li><span class="zh">`WorkDetachedTask` 与 `WorkWithScopedParallelism` 相关入口强调任务生命周期和作用域控制：前者关注后台任务，后者关注局部并行策略，不应与 `std::thread` 或普通同步 primitive 直接等同。</span></li>
+        <li><span class="zh">如果正在调优性能，应把本页和 `Trace`、Vdf/Ef execution、Hydra render task 等页面一起看；如果只是查 API 签名，应从本索引继续跳到 `work` 模块头文件页核对参数和异常约定。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Work 并行模块：</span><span class="en">Work module</span></li>
+        <li><span class="zh">并发上限：</span><span class="en">concurrency limit</span></li>
+        <li><span class="zh">并行循环：</span><span class="en">parallel loop</span></li>
+        <li><span class="zh">并行归约：</span><span class="en">parallel reduce</span></li>
+        <li><span class="zh">分离任务：</span><span class="en">detached task</span></li>
+        <li><span class="zh">作用域并行策略：</span><span class="en">scoped parallelism</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

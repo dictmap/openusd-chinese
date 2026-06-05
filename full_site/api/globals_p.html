@@ -54,6 +54,27 @@
         <li><span class="zh">变体选择：</span><span class="en">variant selections</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-093">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 File Members - P 增补二次精修说明，重点解释 File Members 宽索引与函数索引的区别、模块归属、头文件来源、教程步骤、跨页跳转顺序和术语对照。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于与官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for File Members - P. It explains the difference between broad File Members indexes and function indexes, module ownership, header provenance, tutorial steps, cross-page navigation, and terminology while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`globals_p.html` 是 File Members 的 P 段宽索引，当前主要围绕 `Pcp` composition 相关符号，也包含 path translation、layer stack identifier、plugin interface 或 exception 支撑入口。</span></li>
+        <li><span class="zh">`Pcp` 是 OpenUSD composition engine 的核心前缀；遇到 `PcpPrimIndex`、`PcpPropertyIndex`、`PcpNodeRef`、`PcpLayerStackIdentifier` 等符号时，应把它们放到引用、继承、变体、payload、specializes 和 layer stack 求值语境中理解。</span></li>
+        <li><span class="zh">`composeSite.h`、`layerStackIdentifier.h`、`pathTranslation.h` 等链接提示本页条目往往服务于 composition site 查询、路径映射和层栈定位；这些内容比普通 `SdfPath` 字符串处理更接近组合算法内部。</span></li>
+        <li><span class="zh">与 `globals_func_p.html` 相比，本页可能同时列出类型、宏、变量和函数；如果要查具体函数参数，应去函数专页或 header；如果要理解概念，应回到 Pcp 模块入口和相关 class 页面。</span></li>
+        <li><span class="zh">中文层保留 `Pcp`、`SdfPath`、`layer stack`、`prim index` 等英文术语，重点解释宽索引和函数索引的区别，以及 Pcp 符号在组合系统中的定位。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Pcp 组合系统：</span><span class="en">Pcp composition</span></li>
+        <li><span class="zh">组合站点：</span><span class="en">composition site</span></li>
+        <li><span class="zh">层栈标识：</span><span class="en">layer stack identifier</span></li>
+        <li><span class="zh">路径转换：</span><span class="en">path translation</span></li>
+        <li><span class="zh">prim 索引：</span><span class="en">prim index</span></li>
+        <li><span class="zh">宽符号索引：</span><span class="en">wide symbol index</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

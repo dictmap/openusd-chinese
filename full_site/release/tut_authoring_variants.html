@@ -52,6 +52,27 @@
         <li><span class="zh">非破坏性编辑：</span><span class="en">non-destructive editing</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-093">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Authoring Variants 增补二次精修说明，重点解释 File Members 宽索引与函数索引的区别、模块归属、头文件来源、教程步骤、跨页跳转顺序和术语对照。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于与官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for Authoring Variants. It explains the difference between broad File Members indexes and function indexes, module ownership, header provenance, tutorial steps, cross-page navigation, and terminology while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`tut_authoring_variants.html` 是 release 教程页，重点是如何在已有 prim 上创作 `variant set` 和 `variant selection`；它比 API 索引更接近实际资产作者工作流，应按步骤理解 Python 代码和 USDA 结果。</span></li>
+        <li><span class="zh">变体适合表达同一资产的模型、材质、LOD、配置或造型差异；关键不是复制整份资产，而是在 composition 中把可切换意见组织到同一个 prim 的 variant set 下。</span></li>
+        <li><span class="zh">阅读示例时要关注 `GetVariantSets()`、`AddVariantSet()`、`AddVariant()`、`SetVariantSelection()` 和 `with variantSet.GetVariantEditContext()` 这类 API 的顺序：先声明变体集，再声明候选变体，再进入变体编辑上下文写入意见。</span></li>
+        <li><span class="zh">Variant opinion 仍然参与 LIVERPS strength ordering；如果下游 layer 重新选择 variant 或提供更强 opinion，最终 stage 结果会随 composition 强度变化，这一点是理解非破坏性资产变体的核心。</span></li>
+        <li><span class="zh">建议把本教程和 `tut_referencing_layers.html`、`tut_inspect_and_author_props.html`、`wp_stage_variables.html` 一起读：前者解释引用和属性创作，后者帮助区分 stage variables 与 variant selection 的职责边界。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">变体集：</span><span class="en">variant set</span></li>
+        <li><span class="zh">变体选择：</span><span class="en">variant selection</span></li>
+        <li><span class="zh">变体编辑上下文：</span><span class="en">variant edit context</span></li>
+        <li><span class="zh">组合意见：</span><span class="en">composition opinion</span></li>
+        <li><span class="zh">LIVERPS 强度顺序：</span><span class="en">LIVERPS strength ordering</span></li>
+        <li><span class="zh">非破坏性变体表达：</span><span class="en">non-destructive variation</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

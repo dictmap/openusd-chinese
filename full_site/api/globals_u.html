@@ -54,6 +54,27 @@
         <li><span class="zh">schema 域：</span><span class="en">schema domain</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-093">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 File Members - U 增补二次精修说明，重点解释 File Members 宽索引与函数索引的区别、模块归属、头文件来源、教程步骤、跨页跳转顺序和术语对照。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于与官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for File Members - U. It explains the difference between broad File Members indexes and function indexes, module ownership, header provenance, tutorial steps, cross-page navigation, and terminology while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`globals_u.html` 是 File Members 的 U 段宽索引，既可能包含宏、常量、类型、变量，也可能包含函数；它不同于 `globals_func_u.html` 这类函数专页，阅读时要先看条目右侧的 header 来源。</span></li>
+        <li><span class="zh">本页当前摘录里 `USD_*`、`Usd*Tokens`、validator tokens、schema tokens 和 utility headers 较多，适合把它看作 USD schema、validation、metrics、collection、camera、prim flags 与 renderer utility 的入口集合。</span></li>
+        <li><span class="zh">`validatorTokens.h`、`tokens.h`、`metrics.h`、`collectionMembershipQuery.h`、`primFlags.h`、`object.h`、`camera.h`、`rmanUtilities.h` 等链接说明 U 段并不属于单一模块，而是按字母把跨模块符号聚合到一起。</span></li>
+        <li><span class="zh">读者如果要查某个 token 字面量，应继续进入对应 `TokensType` 或 header 页；如果要查工具函数，应进入函数锚点或具体模块入口，例如 `UsdGeom`、`UsdUtils`、`UsdShade`、`UsdRi` 或 validation 相关页面。</span></li>
+        <li><span class="zh">中文层保留 `USD_*`、`UsdGeomTokens`、`UsdUtils`、`UsdRi`、`validatorTokens.h` 等英文符号，重点补充条目分类、header 来源和跨模块跳转策略，避免把 U 段误读成一篇连续教程。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">宽 File Members 索引：</span><span class="en">wide File Members index</span></li>
+        <li><span class="zh">token 字面量：</span><span class="en">token literal</span></li>
+        <li><span class="zh">验证器 token：</span><span class="en">validator tokens</span></li>
+        <li><span class="zh">schema token：</span><span class="en">schema tokens</span></li>
+        <li><span class="zh">头文件来源：</span><span class="en">header provenance</span></li>
+        <li><span class="zh">跨模块符号：</span><span class="en">cross-module symbol</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

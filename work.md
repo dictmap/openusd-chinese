@@ -1,5 +1,17 @@
 # 工作记录
 
+## 第 224 轮：File Members U/W/G/P 与 Authoring Variants 二次精修
+- 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、git 状态和远端 main，确认上一轮远端提交为 `1f87d76`，当前分级为 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8。
+- 本轮严格只处理 5 个未达标页面：`full_site/api/globals_u.html`、`full_site/api/globals_func_w.html`、`full_site/api/globals_g.html`、`full_site/api/globals_p.html`、`full_site/release/tut_authoring_variants.html`；这些页面本轮开始时均已是 `draft_needs_translation`，目标是补强 File Members 宽索引、Work 函数索引和 Authoring Variants 教程页的中文阅读方法，没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_release_batch_093.mjs`，每页插入 `release-quality-pass-093` 二次精修导读区块，覆盖 File Members 宽索引与函数索引的区别、模块归属、头文件来源、Work 并行工具、Gf 数学符号、Pcp 组合系统、variant authoring 步骤、跨页跳转顺序和术语对照；保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录。
+- 本轮中文覆盖：`globals_u.html` 的 `USD_*` token、validator tokens、schema tokens、header provenance 和跨模块符号；`globals_func_w.html` 的 Work concurrency limit、parallel loop、parallel reduce、parallel sort、detached task 和 scoped parallelism；`globals_g.html` 的 Gf tolerance、vector/matrix/quaternion/dual quaternion、ray/plane 和 gamma/color 入口；`globals_p.html` 的 Pcp composition、layer stack identifier、path translation、prim index 和宽符号索引；`tut_authoring_variants.html` 的 `variant set`、`variant selection`、`GetVariantEditContext()`、LIVERPS strength ordering 和非破坏性资产变体。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级保持 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8；本轮对象原本已是 `draft_needs_translation`，所以分级计数保持不变是预期结果。目标页中文正文量提升到 `606-642` 字区间，但仍是 `bilingual_draft`，未误标为完成。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398 个 `bilingual_draft` 页面全部具备本地可检查 HTML 和最终入口链接，`failed_pages` 为 0。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`，报告索引通过，总体验证 `PASSED`，`validation_required_checks` 281 / `validation_failed_checks` 0。
+- GitHub 同步结果：验证通过后使用提交信息 `OpenUSD bilingual round 224: globals u w g p variants pass` 同步本轮 HTML、脚本、报告和 `work.md`，并通过 `git log` 与远端 main 校验推送结果。
+- 下一轮目标：优先最多处理 `full_site/api/globals_func_e.html`、`full_site/api/globals_func_o.html`、`full_site/api/globals_func_l.html`、`full_site/api/globals.html`、`full_site/api/globals_t.html`；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+
 ## 第 223 轮：Hydra/Hdx 入口、File Members P/T 与 Class Members-A 二次精修
 - 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、git 状态和远端 main，确认上一轮远端提交为 `be0350d`，当前分级为 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8。
 - 本轮严格只处理 5 个未达标页面：`full_site/api/hdx_page_front.html`、`full_site/api/hd_page_front.html`、`full_site/api/globals_func_p.html`、`full_site/api/functions_a.html`、`full_site/api/globals_func_t.html`；这些页面本轮开始时均已是 `draft_needs_translation`，目标是补强 Hydra/Hdx 模块入口、File Members 函数索引 P/T 和 Class Members A 索引的中文阅读方法，没有新增或处理第 6 页。
