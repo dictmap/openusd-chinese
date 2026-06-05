@@ -65,6 +65,27 @@
         <li><span class="zh">体积着色器：</span><span class="en">volume shader</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-118">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`Volume` 是 usdVol 中用于表达 smoke、fire 等体积效果的可渲染容器 prim。它自身负责场景层级、变换、材质绑定、purpose 和可见性等图元能力；真正的体积字段数据则通过 `field:*` relationships 指向 `VolumeFieldBase` 派生 prim。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for Volume while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Volume` 继承 `Gprim` 和 `Imageable`，因此它不是单纯的数据句柄，而是能参与渲染、变换、材质绑定和可见性控制的场景对象。</span></li>
+        <li><span class="zh">体积数据通过 relationship 连接，而不是作为普通属性直接写在 `Volume` 上；这让一个 Volume 可以组织多个命名 field，如 `density`、`extinction` 或自定义输入。</span></li>
+        <li><span class="zh">`field:*` relationship 的后缀名通常与 volume shader 的输入名对应，renderer 会据此把具体 field provider 绑定到 shader 参数。</span></li>
+        <li><span class="zh">示例中的 `OpenVDBAsset` 子 prim 是一种 field provider；同样的 `Volume` 也可以引用 `Field3DAsset` 或其他 `VolumeFieldBase` 派生 prim。</span></li>
+        <li><span class="zh">调试体积不可见时，需要分层检查：`Volume` 可见性和材质绑定、`field:*` target、外部文件路径、field name，以及 renderer 对该 field schema 的支持。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">可渲染体积容器：</span><span class="en">Volume</span></li>
+        <li><span class="zh">几何图元基类：</span><span class="en">Gprim</span></li>
+        <li><span class="zh">可成像 schema：</span><span class="en">Imageable</span></li>
+        <li><span class="zh">extinction 体积字段关系：</span><span class="en">field:extinction</span></li>
+        <li><span class="zh">体积着色器：</span><span class="en">volume shader</span></li>
+        <li><span class="zh">体积字段提供者：</span><span class="en">field provider</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

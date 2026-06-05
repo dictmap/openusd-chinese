@@ -56,6 +56,27 @@
         <li><span class="zh">可见性属性：</span><span class="en">visibility</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-118">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`FieldBase` 是旧的体积 field 基类入口，官方已经标注为 deprecated，并建议改用 `VolumeFieldBase`。因此本页的中文导读重点是兼容和迁移：维护旧 USD 文件时识别它，新建 schema 时转向现代 `VolumeFieldBase` / `VolumeFieldAsset` 体系。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for FieldBase while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`FieldBase` 不应作为新资产或新 schema 的首选基础类；它主要帮助读者理解历史文件和旧工具输出。</span></li>
+        <li><span class="zh">迁移时要同时检查旧 `FieldBase` 派生 prim 和旧 `FieldAsset` 用法，因为现代结构通常拆成 `VolumeFieldBase` 身份和 `VolumeFieldAsset` 文件型资产边界。</span></li>
+        <li><span class="zh">即使本页很短，也要保留 `deprecated` 原文；这是兼容性和 API 生命周期信息，不能被翻译成普通的“较旧”而弱化。</span></li>
+        <li><span class="zh">旧 field prim 仍可能被 `Volume` 的 `field:*` relationships 引用；迁移不能只改类名，还要确认 relationship target、字段名和 shader 输入映射。</span></li>
+        <li><span class="zh">中文层应把 `FieldBase` 和 `VolumeFieldBase` 的差异说清楚：前者是历史兼容入口，后者是当前体积字段基类。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">旧体积字段基类：</span><span class="en">FieldBase</span></li>
+        <li><span class="zh">已弃用：</span><span class="en">deprecated</span></li>
+        <li><span class="zh">现代体积字段基类：</span><span class="en">VolumeFieldBase</span></li>
+        <li><span class="zh">旧文件型字段资产：</span><span class="en">FieldAsset</span></li>
+        <li><span class="zh">现代文件型体积字段资产：</span><span class="en">VolumeFieldAsset</span></li>
+        <li><span class="zh">迁移：</span><span class="en">migration</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

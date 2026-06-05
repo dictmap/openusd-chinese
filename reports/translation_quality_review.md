@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T21:59:48.482Z
+Generated: 2026-06-05T22:11:37.706Z
 
 ## Summary
 
@@ -435,11 +435,11 @@ Generated: 2026-06-05T21:59:48.482Z
 | 369 | draft_needs_translation | bilingual_draft | 538 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/usdUI_toc.html` |
 | 370 | draft_needs_translation | bilingual_draft | 825 | 36/24 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/Field3DAsset.html` |
 | 371 | draft_needs_translation | bilingual_draft | 425 | 27/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/FieldAsset.html` |
-| 372 | draft_needs_translation | bilingual_draft | 408 | 21/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/FieldBase.html` |
+| 372 | draft_needs_translation | bilingual_draft | 670 | 33/24 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/FieldBase.html` |
 | 373 | draft_needs_translation | bilingual_draft | 817 | 36/24 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/OpenVDBAsset.html` |
-| 374 | draft_needs_translation | bilingual_draft | 348 | 15/13 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/overview.html` |
-| 375 | draft_needs_translation | bilingual_draft | 409 | 28/26 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleField.html` |
-| 376 | draft_needs_translation | bilingual_draft | 417 | 30/28 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html` |
+| 374 | draft_needs_translation | bilingual_draft | 592 | 27/20 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/overview.html` |
+| 375 | draft_needs_translation | bilingual_draft | 659 | 40/33 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleField.html` |
+| 376 | draft_needs_translation | bilingual_draft | 631 | 42/35 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html` |
 | 377 | draft_needs_translation | bilingual_draft | 695 | 36/24 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelBaseAPI.html` |
 | 378 | draft_needs_translation | bilingual_draft | 696 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelConstantSurfletAPI.html` |
 | 379 | draft_needs_translation | bilingual_draft | 809 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianEllipsoidAPI.html` |
@@ -452,7 +452,7 @@ Generated: 2026-06-05T21:59:48.482Z
 | 386 | draft_needs_translation | bilingual_draft | 562 | 29/22 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html` |
 | 387 | draft_needs_translation | bilingual_draft | 586 | 30/23 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html` |
 | 388 | draft_needs_translation | bilingual_draft | 561 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/usdVol_toc.html` |
-| 389 | draft_needs_translation | bilingual_draft | 439 | 18/12 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/Volume.html` |
+| 389 | draft_needs_translation | bilingual_draft | 690 | 30/19 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/Volume.html` |
 | 390 | draft_needs_translation | bilingual_draft | 821 | 42/31 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/VolumeFieldAsset.html` |
 | 391 | draft_needs_translation | bilingual_draft | 680 | 37/24 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/VolumeFieldBase.html` |
 | 392 | draft_needs_translation | bilingual_draft | 653 | 31/20 | 0 | 0 | `full_site/release/user_guides/time_and_animated_values.html` |

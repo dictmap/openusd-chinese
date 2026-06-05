@@ -3145,3 +3145,13 @@
 - 验证结果：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1` 均通过；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
 - GitHub 同步：验证通过后使用 `OpenUSD bilingual round 248: volume field particle attrs pass` 同步本轮 HTML、脚本、报告和 `work.md`。
 - 下一轮最多 5 页目标：`full_site/release/user_guides/schemas/usdVol/overview.html`、`full_site/release/user_guides/schemas/usdVol/FieldBase.html`、`full_site/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html`、`full_site/release/user_guides/schemas/usdVol/ParticleField.html`、`full_site/release/user_guides/schemas/usdVol/Volume.html`；之后按 `translation_quality_review` 继续选择用户可读价值高的 API/guide/class/group/release 页面。
+## 第 249 轮：usdVol overview、FieldBase、ParticleField 与 Volume 补强
+
+- 基线：本地 `main` 基于上一轮同步提交 `b8a9655`，`origin/main` 一致；起始工作区干净。全量仍为 406 个 HTML 页面，质量计数为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。
+- 新增并执行 `scripts/refine_openusd_release_batch_118.mjs`，标记 `release-quality-pass-118`；严格只精修 5 页：`full_site/release/user_guides/schemas/usdVol/overview.html`、`full_site/release/user_guides/schemas/usdVol/FieldBase.html`、`full_site/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html`、`full_site/release/user_guides/schemas/usdVol/ParticleField.html`、`full_site/release/user_guides/schemas/usdVol/Volume.html`。
+- 补强内容：每页新增 5 条中文导读和 6 条术语对照，覆盖 usdVol 阅读路线、`Volume` 容器与 `field:*` relationships、`FieldBase` deprecated 迁移边界、`ParticleField3DGaussianSplat` 的 3DGS 数据组合，以及 `ParticleField` concrete base schema 与 `Volume` / `PointInstancer` 的语义区分；API 名称、schema 名称、属性名、代码片段、token 字面量和链接保持原样。
+- 质量回读：5 页均无占位坏词，`release-quality-pass-118` 均只出现 1 次；中文字符分别为 658、729、690、718、756，中文/英文块分别为 27/20、33/24、42/35、40/33、30/19。
+- 分级变化：计数保持不变，仍为 `draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因是本轮对象已是 `draft_needs_translation`，属于二次补强，不是模板草稿晋级。
+- 验证结果：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1` 均通过；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步：验证通过后使用 `OpenUSD bilingual round 249: usdvol overview field particle volume pass` 同步本轮 HTML、脚本、报告和 `work.md`。
+- 下一轮最多 5 页目标：`full_site/release/tut_end_to_end.html`、`full_site/release/tut_generating_new_schema.html`、`full_site/release/tut_houdini_example.html`、`full_site/release/tut_usd_tutorials.html`、`full_site/release/tut_usdview_plugin.html`；之后按 `translation_quality_review` 继续选择用户可读价值高的 API/guide/class/group/release 页面。

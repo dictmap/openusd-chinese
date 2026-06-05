@@ -56,6 +56,27 @@
         <li><span class="zh">三维高斯 splat：</span><span class="en">3D Gaussian splats</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-118">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">usdVol 概览页是体积、外部体积场和粒子场 schema 的阅读入口。它把 `Volume` 容器、`field:*` relationships、`OpenVDBAsset` / `Field3DAsset` 文件引用，以及 `ParticleField` / 3D Gaussian splats 这些较新的粒子场能力放在同一个领域图中说明。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for usdVol Overview while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">阅读顺序建议从 `Volume` 开始：先理解它只是可渲染体积容器，再通过 `field:*` relationship 连接到实际 field provider prim。</span></li>
+        <li><span class="zh">OpenVDB 和 Field3D 是外部体积文件来源；它们解释稀疏体积数据如何进入 USD 场景，但不替代 `Volume` 的场景层级、变换、材质绑定和 purpose 语义。</span></li>
+        <li><span class="zh">`ParticleField` 分支服务于逐粒子数据和 3D Gaussian splats 等空间计算场景，和传统 grid-based volume fields 属于同一 usdVol domain 下的不同表示方式。</span></li>
+        <li><span class="zh">概览示例中的 `field:density = &lt;/Volume/densityVDB&gt;` 是关键桥梁：relationship 名称会被 renderer 或 shader 解释为具体体积输入名。</span></li>
+        <li><span class="zh">如果要扩展 usdVol，应先判断新增数据源是 grid/file-based field、procedural field，还是 per-particle field；不同方向应继承不同 schema 家族。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">OpenUSD 体积 schema 领域：</span><span class="en">usdVol</span></li>
+        <li><span class="zh">可渲染体积容器：</span><span class="en">Volume</span></li>
+        <li><span class="zh">体积字段关系：</span><span class="en">field:* relationship</span></li>
+        <li><span class="zh">OpenVDB 外部体积资产：</span><span class="en">OpenVDBAsset</span></li>
+        <li><span class="zh">Field3D 外部体积资产：</span><span class="en">Field3DAsset</span></li>
+        <li><span class="zh">粒子场 schema：</span><span class="en">ParticleField</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

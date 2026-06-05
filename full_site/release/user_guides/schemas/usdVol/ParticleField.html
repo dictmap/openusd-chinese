@@ -56,6 +56,27 @@
         <li><span class="zh">包围范围属性：</span><span class="en">extent</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-118">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`ParticleField` 是 usdVol 中粒子场表示的 concrete base schema。它可用于原型和自定义扩展，但实际 3DGS 等工作流通常会使用派生类型，例如 `ParticleField3DGaussianSplat`，以获得更清晰的数据约束、验证路径和渲染器采用边界。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for ParticleField while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`ParticleField` 是 concrete base schema，意味着可以创建该 prim 做原型，但页面也明确提示实践中更推荐实例化具体派生类型。</span></li>
+        <li><span class="zh">它继承 `Gprim`、`Boundable`、`Xformable` 和 `Imageable`，所以仍是场景 prim：可以参与变换、定界、可见性、purpose 和渲染流程。</span></li>
+        <li><span class="zh">粒子场的关键数据通常来自 applied schema 提供的 per-particle attributes，而不是直接由 `ParticleField` 一个类包办所有属性。</span></li>
+        <li><span class="zh">自定义粒子场 schema 应从 `ParticleField` 继承，以便工具链知道这是 usdVol 粒子场家族的一员，而不是普通点集或网格。</span></li>
+        <li><span class="zh">阅读时要区分 `ParticleField`、`Volume` 和 `PointInstancer`：三者都可能与大量空间样本有关，但 schema 语义和渲染解释完全不同。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">粒子场基础 schema：</span><span class="en">ParticleField</span></li>
+        <li><span class="zh">可实例化基础 schema：</span><span class="en">concrete base schema</span></li>
+        <li><span class="zh">几何图元基类：</span><span class="en">Gprim</span></li>
+        <li><span class="zh">可定界 schema：</span><span class="en">Boundable</span></li>
+        <li><span class="zh">可应用 schema：</span><span class="en">applied schema</span></li>
+        <li><span class="zh">点实例化器：</span><span class="en">PointInstancer</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -56,6 +56,27 @@
         <li><span class="zh">渲染提示：</span><span class="en">rendering hints</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-118">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`ParticleField3DGaussianSplat` 是面向原始 3D Gaussian Splats technique 的具体 `ParticleField` 派生 schema。它不是泛泛的点云容器，而是组合 position、scale、orientation、opacity、radiance 和 kernel 等内建 applied schema 来表达 3DGS 所需数据。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for ParticleField3DGaussianSplat while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">本页的关键短语是 original 3D Gaussian Splats technique；翻译时应保留 `3D Gaussian Splats` / `3DGS`，避免改写成普通粒子渲染或点云。</span></li>
+        <li><span class="zh">`ParticleField3DGaussianSplat` 继承自 `ParticleField`，但提供更具体的验证和 renderer adoption 路径；实际项目通常应实例化它而不是裸 `ParticleField`。</span></li>
+        <li><span class="zh">3DGS 数据需要多组 per-particle arrays 对齐：position 给中心，scale/orientation 给椭球姿态，opacity/radiance 给视觉贡献，kernel 定义空间支撑。</span></li>
+        <li><span class="zh">如果某些属性 API 缺失，schema 可能仍能被解析，但 renderer 是否能可靠采用取决于具体验证规则和渲染后端支持。</span></li>
+        <li><span class="zh">本页应和 `ParticleFieldPositionAttributeAPI`、`ParticleFieldOpacityAttributeAPI`、kernel API 与 radiance API 一起阅读，才能形成完整数据模型。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">3D Gaussian Splat 粒子场 schema：</span><span class="en">ParticleField3DGaussianSplat</span></li>
+        <li><span class="zh">三维高斯溅射表示：</span><span class="en">3DGS</span></li>
+        <li><span class="zh">逐粒子数组：</span><span class="en">per-particle arrays</span></li>
+        <li><span class="zh">辐射亮度或发光贡献：</span><span class="en">radiance</span></li>
+        <li><span class="zh">不透明度：</span><span class="en">opacity</span></li>
+        <li><span class="zh">渲染器采用支持：</span><span class="en">renderer adoption</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
