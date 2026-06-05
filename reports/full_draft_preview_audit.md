@@ -1,8 +1,8 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-05T18:34:28.008Z
+Generated: 2026-06-05T18:50:23.718Z
 
-Transient base URL: `http://127.0.0.1:57393/`
+Transient base URL: `http://127.0.0.1:55986/`
 
 Result:
 

@@ -54,6 +54,27 @@
         <li><span class="zh">光强属性：</span><span class="en">intensity</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-103">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`DiskLight` 是位于 XY plane、沿 `-Z axis` 单侧发光的 circular disk intrinsic light。它适合表达摄影 soft box、圆形灯板、荧光灯或其他较柔和的面光源，示例中使用 `radius = 0.8` 和 `intensity = 20.0`。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for DiskLight while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">官方说明中的 `centered in the XY plane` 与 `along the -Z axis` 决定了默认局部方向。若灯光朝向不对，通常应检查 prim transform，而不是改写 schema 语义。</span></li>
+        <li><span class="zh">`radius` 控制圆盘大小，`inputs:intensity` 控制光强。更大的圆盘通常更接近柔和面积光，但最终阴影质量仍取决于 renderer sampling、单位约定和光照模型。</span></li>
+        <li><span class="zh">官方用途列表提到 soft boxes、linear lights、fluorescent lights 和 light panels。虽然 `DiskLight` 是圆盘，文档仍把它放在面光源模拟语境中，应保留这些英文应用词。</span></li>
+        <li><span class="zh">示例中的 `def DiskLight &quot;Light1&quot;`、`inputs:radius`、`inputs:color`、`inputs:intensity`、`xformOp:translate` 都是可复制的 usda 语法，中文层只能解释，不能替换这些字面量。</span></li>
+        <li><span class="zh">`DiskLight`、`RectLight`、`SphereLight` 和 `CylinderLight` 都是常用 `usdLux` intrinsic lights；本页重点是圆盘几何、单侧发光方向和半径属性。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">圆盘光源：</span><span class="en">DiskLight</span></li>
+        <li><span class="zh">圆形发光盘：</span><span class="en">circular disk</span></li>
+        <li><span class="zh">XY 平面：</span><span class="en">XY plane</span></li>
+        <li><span class="zh">-Z 轴：</span><span class="en">-Z axis</span></li>
+        <li><span class="zh">半径输入属性：</span><span class="en">inputs:radius</span></li>
+        <li><span class="zh">光强输入属性：</span><span class="en">inputs:intensity</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T18:33:50.852Z
+Generated: 2026-06-05T18:49:46.109Z
 
 ## Summary
 
@@ -51,7 +51,6 @@ Generated: 2026-06-05T18:33:50.852Z
 | 54 | draft_needs_translation | 278 | `full_site/api/class_usd_skel_imaging_data_source_skeleton_prim.html` | 类参考草稿：UsdSkelImagingDataSourceSkeletonPrim Class / UsdSkelImagingDataSourceSkeletonPrim Class |
 | 68 | draft_needs_translation | 278 | `full_site/api/deprecated.html` | API 页面草稿：Deprecated List / Deprecated List |
 | 202 | draft_needs_translation | 281 | `full_site/api/hd_embree_page_front.html` | API 模块草稿：HdEmbree : Embree-based hydra renderer plugin. / HdEmbree : Embree-based hydra renderer plugin. |
-| 356 | draft_needs_translation | 281 | `full_site/release/user_guides/schemas/usdRender/RenderSettings.html` | 页面草稿：RenderSettings / RenderSettings |
 | 197 | draft_needs_translation | 282 | `full_site/api/globals_vars.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
 | 85 | draft_needs_translation | 283 | `full_site/api/functions_func_d.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
 | 92 | draft_needs_translation | 283 | `full_site/api/functions_func_k.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
@@ -59,6 +58,7 @@ Generated: 2026-06-05T18:33:50.852Z
 | 335 | draft_needs_translation | 284 | `full_site/release/user_guides/schemas/usdLux/LightListAPI.html` | 页面草稿：LightListAPI / LightListAPI |
 | 312 | draft_needs_translation | 285 | `full_site/release/tut_simple_shading.html` | 页面草稿：Simple Shading in USD / Simple Shading in USD |
 | 153 | draft_needs_translation | 286 | `full_site/api/functions_vars_v.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
+| 301 | draft_needs_translation | 286 | `full_site/release/spec.html` | 页面草稿：Specifications / Specifications |
 
 ## All Pages
 
@@ -391,8 +391,8 @@ Generated: 2026-06-05T18:33:50.852Z
 | 325 | draft_needs_translation | bilingual_draft | 313 | 12/9 | 0 | 0 | `full_site/release/user_guides/schemas/index.html` |
 | 326 | draft_needs_translation | bilingual_draft | 398 | 23/19 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/BoundableLightBase.html` |
 | 327 | draft_needs_translation | bilingual_draft | 302 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/CylinderLight.html` |
-| 328 | draft_needs_translation | bilingual_draft | 296 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/DiskLight.html` |
-| 329 | draft_needs_translation | bilingual_draft | 296 | 12/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/DistantLight.html` |
+| 328 | draft_needs_translation | bilingual_draft | 531 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/DiskLight.html` |
+| 329 | draft_needs_translation | bilingual_draft | 545 | 24/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/DistantLight.html` |
 | 330 | draft_needs_translation | bilingual_draft | 414 | 27/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/DomeLight_1.html` |
 | 331 | draft_needs_translation | bilingual_draft | 292 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/DomeLight.html` |
 | 332 | draft_needs_translation | bilingual_draft | 382 | 23/21 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/GeometryLight.html` |
@@ -419,9 +419,9 @@ Generated: 2026-06-05T18:33:50.852Z
 | 353 | draft_needs_translation | bilingual_draft | 349 | 17/15 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/overview.html` |
 | 354 | draft_needs_translation | bilingual_draft | 502 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderPass.html` |
 | 355 | draft_needs_translation | bilingual_draft | 555 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderProduct.html` |
-| 356 | draft_needs_translation | bilingual_draft | 281 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderSettings.html` |
-| 357 | draft_needs_translation | bilingual_draft | 385 | 20/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderSettingsBase.html` |
-| 358 | draft_needs_translation | bilingual_draft | 513 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderVar.html` |
+| 356 | draft_needs_translation | bilingual_draft | 544 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderSettings.html` |
+| 357 | draft_needs_translation | bilingual_draft | 659 | 32/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderSettingsBase.html` |
+| 358 | draft_needs_translation | bilingual_draft | 792 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderVar.html` |
 | 359 | draft_needs_translation | bilingual_draft | 482 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/usdRender_toc.html` |
 | 360 | draft_needs_translation | bilingual_draft | 289 | 12/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/AccessibilityAPI.html` |
 | 361 | draft_needs_translation | bilingual_draft | 295 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/AttributeHints.html` |

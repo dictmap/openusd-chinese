@@ -2863,3 +2863,31 @@
 1. 继续最多 5 页。
 2. 建议处理：`full_site/release/user_guides/schemas/usdRender/RenderSettings.html`、`full_site/release/user_guides/schemas/usdRender/RenderVar.html`、`full_site/release/user_guides/schemas/usdRender/RenderSettingsBase.html`、`full_site/release/user_guides/schemas/usdLux/DiskLight.html`、`full_site/release/user_guides/schemas/usdLux/DistantLight.html`。
 3. 不处理不存在的 `full_site/release/user_guides/schemas/usdMedia/SpatialAudioAndLayerOffsets.html`；继续低优先处理 `_source.html`、`search.html` 和目录页。
+
+## 第 234 轮：RenderSettings/RenderVar/RenderSettingsBase 与 Disk/Distant Light 补强
+
+已完成：
+
+- 复核当前 git 状态和远端：上一轮同步提交为 `1ff962a`，`origin/main` 一致。
+- 新增并执行 `scripts/refine_openusd_release_batch_103.mjs`，本轮标记 `release-quality-pass-103`。
+- 严格只精修 5 页：
+  - `full_site/release/user_guides/schemas/usdRender/RenderSettings.html`
+  - `full_site/release/user_guides/schemas/usdRender/RenderVar.html`
+  - `full_site/release/user_guides/schemas/usdRender/RenderSettingsBase.html`
+  - `full_site/release/user_guides/schemas/usdLux/DiskLight.html`
+  - `full_site/release/user_guides/schemas/usdLux/DistantLight.html`
+- 质量回读显示 5 页均为 `draft_needs_translation`，坏编码 0，非预期官方外跳 0；中文字符分别为 544、792、659、531、545。
+- 本轮分级计数保持不变：`draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因：处理对象已经是 `draft_needs_translation`，本轮为第二层补强精修，不是从模板草稿晋级。
+- 已运行并通过：翻译质量审计、链接路由、full draft preview、报告索引和 `validate_openusd_api_repro.ps1`。
+- GitHub 同步结果：本轮通过 `sync_openusd_to_github.ps1` 以 `OpenUSD bilingual round 234: render settings vars disk distant pass` 提交并推送。
+
+当前差距：
+
+- 全量仍为 8 个 `good_bilingual`、398 个 `bilingual_draft`；`bilingual_draft` 仍不是完整翻译。
+- 剩余未完成质量队列中，11 页仍是 `draft_template_only`，其余 387 页仍需逐轮补强。
+
+下一轮目标：
+
+1. 继续最多 5 页。
+2. 建议处理：`full_site/release/user_guides/schemas/usdLux/CylinderLight.html`、`full_site/release/user_guides/schemas/usdLux/DomeLight_1.html`、`full_site/release/user_guides/schemas/usdLux/GeometryLight.html`、`full_site/release/user_guides/schemas/usdLux/LightAPI.html`、`full_site/release/user_guides/schemas/usdLux/LightFilter.html`。
+3. 后续可继续 `full_site/release/user_guides/schemas/usdRender/RenderPass.html`，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面。

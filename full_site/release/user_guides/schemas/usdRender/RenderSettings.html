@@ -54,6 +54,27 @@
         <li><span class="zh">可渲染用途分类：</span><span class="en">imageable purposes</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-103">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`RenderSettings` 封装一次 scene render invocation 的全局设置：渲染器使用哪些 settings、输出哪些 `RenderProduct`，以及哪些 `includedPurposes` 应参与渲染。它是 `RenderSettingsBase`、`RenderProduct` 和 `RenderVar` 之间的聚合入口。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for RenderSettings while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">官方摘要强调 `single invocation of rendering the scene`。这表示一个 `RenderSettings` prim 通常描述一次渲染调用的配置集合，而不是某个材质、光源或单个输出通道。</span></li>
+        <li><span class="zh">`products` relationship 指向一个或多个 `RenderProduct`，后者再组合具体 `RenderVar`。维护中文层时应把 `RenderSettings -&gt; RenderProduct -&gt; RenderVar` 的链条讲清楚，避免把全局设置、输出产品和变量通道混为一谈。</span></li>
+        <li><span class="zh">`includedPurposes` 用来限制哪些 imageable purposes 被渲染，例如示例里的 `render` 和 `default`。这些 token 字面量必须保留原样，因为它们直接对应 USD purpose 语义。</span></li>
+        <li><span class="zh">`RenderSettings` 继承 `RenderSettingsBase` 的 camera、resolution、pixelAspectRatio、aspectRatioConformPolicy、dataWindowNDC、disableMotionBlur 等属性；本页只列出 RenderSettings 自身属性时，也要提醒读者回看基类属性。</span></li>
+        <li><span class="zh">官方说明提到 renderers may apply or auto-apply API schemas 来编码 renderer-specific global configuration，例如 RenderMan options。中文不应把这些扩展写死为某个渲染器的唯一行为。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">渲染设置：</span><span class="en">RenderSettings</span></li>
+        <li><span class="zh">渲染设置基类：</span><span class="en">RenderSettingsBase</span></li>
+        <li><span class="zh">渲染输出产品：</span><span class="en">RenderProduct</span></li>
+        <li><span class="zh">纳入渲染的 purpose 列表：</span><span class="en">includedPurposes</span></li>
+        <li><span class="zh">渲染器特定全局配置：</span><span class="en">renderer-specific global configuration</span></li>
+        <li><span class="zh">单次调用：</span><span class="en">single invocation</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

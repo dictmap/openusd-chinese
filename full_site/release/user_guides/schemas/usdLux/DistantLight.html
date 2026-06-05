@@ -54,6 +54,27 @@
         <li><span class="zh">近似平行光线：</span><span class="en">parallel rays</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-103">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`DistantLight` 表达来自远处、近似平行的 directional light，默认沿 `-Z axis` 照射。它常用于 sunlight 这类 broad source；`inputs:angle` 控制光线 spread 和阴影柔和度，`inputs:intensity` 控制强度。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for DistantLight while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">与 point 或 area lights 不同，`DistantLight` 主要由方向、angle 和 intensity 决定效果；它模拟非常远的光源，因此位置通常没有局部近场光源那样直观的衰减含义。</span></li>
+        <li><span class="zh">官方示例把 `inputs:angle` 设为 `1.0`，使光照 spread 更宽并软化阴影，同时把 `inputs:intensity` 从默认 `50000` 降到 `10000`。这些数值是理解示例效果的关键。</span></li>
+        <li><span class="zh">`directional light`、`sunlight`、`parallel rays` 和 `broad sources of light` 都应保留英文对照，因为灯光艺术、渲染器 UI 和 DCC 文档中常直接使用这些词。</span></li>
+        <li><span class="zh">`DistantLight` 不等同于 `DomeLight`：前者提供方向性远光，后者更常表达环境光或 IBL。两者可以在同一场景中配合，但阅读本页时不要混淆。</span></li>
+        <li><span class="zh">后续补全逐段翻译时，应保留 `inputs:angle`、`inputs:intensity`、`-Z axis`、`DistantLight` 等字面量，并把 shadow softness 与 angle 的关系说明清楚。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">远距光源：</span><span class="en">DistantLight</span></li>
+        <li><span class="zh">方向光：</span><span class="en">directional light</span></li>
+        <li><span class="zh">太阳光：</span><span class="en">sunlight</span></li>
+        <li><span class="zh">近似平行光线：</span><span class="en">parallel rays</span></li>
+        <li><span class="zh">角度输入属性：</span><span class="en">inputs:angle</span></li>
+        <li><span class="zh">阴影柔和度：</span><span class="en">shadow softness</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

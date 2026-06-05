@@ -75,6 +75,27 @@
         <li><span class="zh">光线路径表达式：</span><span class="en">light path expression</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-103">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`RenderVar` 定义渲染器应计算并交给输出产品的一个变量或 channel，常见为 AOV。它关注变量的语义和来源，例如 `sourceName`、`sourceType`、`dataType`，而不直接决定最终文件名或产品组织。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for RenderVar while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`RenderVar` prim 名称通常用于驱动输出变量名，例如 `alpha`、`depth` 或 renderer-specific AOV 名称；但 USD 没有强制统一所有 RenderVar 名称，所以读者必须结合 renderer 文档和 source 属性确认含义。</span></li>
+        <li><span class="zh">`sourceName` 是变量来源的名称，可能是 shader output、built-in renderer output 或 LPE 字符串；`sourceType` 说明来源类别，例如 `lpe`；`dataType` 用来说明输出数据类型。</span></li>
+        <li><span class="zh">Light path expression 例如 `C&lt;RD&gt;[&lt;L.&gt;O]` 这类字符串不能翻译或重新排版。任何空格、大小写、尖括号或 token 变化都可能让 renderer 解析成不同表达式。</span></li>
+        <li><span class="zh">`RenderVar` 与 `RenderProduct` 的关系是“变量到产品”的组织关系：一个 product 可以收集多个 vars，而一个 var 的语义也可能被不同产品复用，具体取决于 scene description。</span></li>
+        <li><span class="zh">后续逐段翻译时，应保留 AOV、channel、sourceName、sourceType、dataType、LPE、shader output 等英文术语，同时用中文说明它们在渲染管线中的角色。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">渲染变量：</span><span class="en">RenderVar</span></li>
+        <li><span class="zh">任意输出变量：</span><span class="en">AOV</span></li>
+        <li><span class="zh">来源名称：</span><span class="en">sourceName</span></li>
+        <li><span class="zh">来源类型：</span><span class="en">sourceType</span></li>
+        <li><span class="zh">数据类型：</span><span class="en">dataType</span></li>
+        <li><span class="zh">光线路径表达式：</span><span class="en">light path expression</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
