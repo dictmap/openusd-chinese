@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T09:20:43.056Z
+Generated: 2026-06-05T09:31:23.681Z
 
 ## Summary
 
@@ -43,12 +43,7 @@ Generated: 2026-06-05T09:20:43.056Z
 | 390 | draft_needs_translation | 206 | `full_site/release/user_guides/schemas/usdVol/VolumeFieldAsset.html` | 体积场资产 VolumeFieldAsset / VolumeFieldAsset |
 | 388 | draft_needs_translation | 213 | `full_site/release/user_guides/schemas/usdVol/usdVol_toc.html` | 页面草稿：Volumes (usdVol) / Volumes (usdVol) |
 | 369 | draft_needs_translation | 225 | `full_site/release/user_guides/schemas/usdUI/usdUI_toc.html` | 页面草稿：UI (usdUI) / UI (usdUI) |
-| 84 | draft_needs_translation | 230 | `full_site/api/functions_func_c.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
 | 234 | draft_needs_translation | 230 | `full_site/api/namespaces.html` | 命名空间参考草稿：Namespace List / Namespace List |
-| 139 | draft_needs_translation | 231 | `full_site/api/functions_vars_h.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
-| 89 | draft_needs_translation | 232 | `full_site/api/functions_func_h.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
-| 149 | draft_needs_translation | 232 | `full_site/api/functions_vars_r.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
-| 163 | draft_needs_translation | 233 | `full_site/api/functions.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
 | 104 | draft_needs_translation | 234 | `full_site/api/functions_func_w.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
 | 379 | draft_needs_translation | 234 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianEllipsoidAPI.html` | 页面草稿：ParticleFieldKernelGaussianEllipsoidAPI / ParticleFieldKernelGaussianEllipsoidAPI |
 | 380 | draft_needs_translation | 235 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html` | 页面草稿：ParticleFieldKernelGaussianSurfletAPI / ParticleFieldKernelGaussianSurfletAPI |
@@ -59,6 +54,11 @@ Generated: 2026-06-05T09:20:43.056Z
 | 122 | draft_needs_translation | 239 | `full_site/api/functions_rela_h.html` | API 页面草稿：Universal Scene Description: Class Members - Related Functions / Universal Scene Description: Class Members - Related Functions |
 | 159 | draft_needs_translation | 239 | `full_site/api/functions_w.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
 | 358 | draft_needs_translation | 239 | `full_site/release/user_guides/schemas/usdRender/RenderVar.html` | 页面草稿：RenderVar / RenderVar |
+| 377 | draft_needs_translation | 241 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelBaseAPI.html` | 页面草稿：ParticleFieldKernelBaseAPI / ParticleFieldKernelBaseAPI |
+| 102 | draft_needs_translation | 242 | `full_site/api/functions_func_u.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
+| 183 | draft_needs_translation | 243 | `full_site/api/globals_func_v.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
+| 364 | draft_needs_translation | 244 | `full_site/release/user_guides/schemas/usdUI/ObjectHints.html` | 页面草稿：ObjectHints / ObjectHints |
+| 138 | draft_needs_translation | 245 | `full_site/api/functions_vars_g.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 
 ## All Pages
 
@@ -147,12 +147,12 @@ Generated: 2026-06-05T09:20:43.056Z
 | 81 | draft_needs_translation | bilingual_draft | 293 | 12/9 | 0 | 0 | `full_site/api/functions_func_~.html` |
 | 82 | draft_needs_translation | bilingual_draft | 261 | 12/9 | 0 | 0 | `full_site/api/functions_func_a.html` |
 | 83 | draft_needs_translation | bilingual_draft | 266 | 12/9 | 0 | 0 | `full_site/api/functions_func_b.html` |
-| 84 | draft_needs_translation | bilingual_draft | 230 | 12/9 | 0 | 0 | `full_site/api/functions_func_c.html` |
+| 84 | draft_needs_translation | bilingual_draft | 507 | 24/16 | 0 | 0 | `full_site/api/functions_func_c.html` |
 | 85 | draft_needs_translation | bilingual_draft | 283 | 12/9 | 0 | 0 | `full_site/api/functions_func_d.html` |
 | 86 | draft_needs_translation | bilingual_draft | 297 | 12/9 | 0 | 0 | `full_site/api/functions_func_e.html` |
 | 87 | draft_needs_translation | bilingual_draft | 259 | 12/9 | 0 | 0 | `full_site/api/functions_func_f.html` |
 | 88 | draft_needs_translation | bilingual_draft | 258 | 12/9 | 0 | 0 | `full_site/api/functions_func_g.html` |
-| 89 | draft_needs_translation | bilingual_draft | 232 | 12/9 | 0 | 0 | `full_site/api/functions_func_h.html` |
+| 89 | draft_needs_translation | bilingual_draft | 467 | 24/16 | 0 | 0 | `full_site/api/functions_func_h.html` |
 | 90 | draft_needs_translation | bilingual_draft | 262 | 12/9 | 0 | 0 | `full_site/api/functions_func_i.html` |
 | 91 | draft_needs_translation | bilingual_draft | 296 | 12/9 | 0 | 0 | `full_site/api/functions_func_j.html` |
 | 92 | draft_needs_translation | bilingual_draft | 283 | 12/9 | 0 | 0 | `full_site/api/functions_func_k.html` |
@@ -202,7 +202,7 @@ Generated: 2026-06-05T09:20:43.056Z
 | 136 | draft_needs_translation | bilingual_draft | 474 | 24/16 | 0 | 0 | `full_site/api/functions_vars_e.html` |
 | 137 | draft_needs_translation | bilingual_draft | 411 | 24/16 | 0 | 0 | `full_site/api/functions_vars_f.html` |
 | 138 | draft_needs_translation | bilingual_draft | 245 | 12/9 | 0 | 0 | `full_site/api/functions_vars_g.html` |
-| 139 | draft_needs_translation | bilingual_draft | 231 | 12/9 | 0 | 0 | `full_site/api/functions_vars_h.html` |
+| 139 | draft_needs_translation | bilingual_draft | 457 | 24/16 | 0 | 0 | `full_site/api/functions_vars_h.html` |
 | 140 | draft_needs_translation | bilingual_draft | 534 | 24/16 | 0 | 0 | `full_site/api/functions_vars_i.html` |
 | 141 | draft_needs_translation | bilingual_draft | 254 | 12/9 | 0 | 0 | `full_site/api/functions_vars_j.html` |
 | 142 | draft_needs_translation | bilingual_draft | 497 | 24/16 | 0 | 0 | `full_site/api/functions_vars_k.html` |
@@ -212,7 +212,7 @@ Generated: 2026-06-05T09:20:43.056Z
 | 146 | draft_needs_translation | bilingual_draft | 462 | 24/16 | 0 | 0 | `full_site/api/functions_vars_o.html` |
 | 147 | draft_needs_translation | bilingual_draft | 254 | 13/9 | 0 | 0 | `full_site/api/functions_vars_p.html` |
 | 148 | draft_needs_translation | bilingual_draft | 273 | 12/9 | 0 | 0 | `full_site/api/functions_vars_q.html` |
-| 149 | draft_needs_translation | bilingual_draft | 232 | 13/9 | 0 | 0 | `full_site/api/functions_vars_r.html` |
+| 149 | draft_needs_translation | bilingual_draft | 433 | 25/16 | 0 | 0 | `full_site/api/functions_vars_r.html` |
 | 150 | draft_needs_translation | bilingual_draft | 293 | 13/9 | 0 | 0 | `full_site/api/functions_vars_s.html` |
 | 151 | draft_needs_translation | bilingual_draft | 262 | 13/9 | 0 | 0 | `full_site/api/functions_vars_t.html` |
 | 152 | draft_needs_translation | bilingual_draft | 283 | 13/9 | 0 | 0 | `full_site/api/functions_vars_u.html` |
@@ -226,7 +226,7 @@ Generated: 2026-06-05T09:20:43.056Z
 | 160 | draft_needs_translation | bilingual_draft | 292 | 13/10 | 0 | 0 | `full_site/api/functions_x.html` |
 | 161 | draft_needs_translation | bilingual_draft | 292 | 13/10 | 0 | 0 | `full_site/api/functions_y.html` |
 | 162 | draft_needs_translation | bilingual_draft | 295 | 13/10 | 0 | 0 | `full_site/api/functions_z.html` |
-| 163 | draft_needs_translation | bilingual_draft | 233 | 13/10 | 0 | 0 | `full_site/api/functions.html` |
+| 163 | draft_needs_translation | bilingual_draft | 459 | 25/17 | 0 | 0 | `full_site/api/functions.html` |
 | 164 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/geom_model_a_p_i_adapter_8h_source.html` |
 | 165 | draft_needs_translation | bilingual_draft | 292 | 14/11 | 0 | 0 | `full_site/api/gf_page_front.html` |
 | 166 | draft_needs_translation | bilingual_draft | 335 | 13/9 | 0 | 0 | `full_site/api/glf_page_front.html` |

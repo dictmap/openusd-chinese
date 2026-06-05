@@ -53,6 +53,27 @@
         <li><span class="zh">schema API：</span><span class="en">schema API</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-083">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Functions - C 增补 API 索引页二次精修说明，重点解释 Doxygen 字母桶的阅读方式、跨模块条目的归类边界，以及何时应跳转到目标 class 或 schema 文档。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - Functions - C API index page. It explains how to read Doxygen letter buckets, how to group cross-module entries, and when to jump to the target class or schema documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">这是函数成员索引的 C 字母页，常见语义包括 create、compute、compose、connect、copy、clear、contains；它用于函数定位，不等同于 C 字母模块教程。</span></li>
+        <li><span class="zh">`PcpPrimIndexInputs`、`SdfPathPattern`、`SdfLayer` 与 `UsdCollectionAPI` 指向 composition、路径模式、layer 和 collection 相关函数，应按 scene description 与 collection filtering 线索阅读。</span></li>
+        <li><span class="zh">`TraceEventList`、`TraceAggregateNode`、`VdfTypeDispatchTable&lt;Fn&gt;` 和 `CallbackNodeType` 属于性能追踪、类型分发或执行回调支撑；它们和 schema API 条目只是共享 C 段。</span></li>
+        <li><span class="zh">`CameraUtilFraming`、`CameraUtilScreenWindowParameters` 面向相机取景和 screen window 参数；`HdBasisCurvesTopology` 则偏 Hydra 几何拓扑。</span></li>
+        <li><span class="zh">本页列出大量 applied API schema 的 create/compute 类函数入口，例如 `UsdColorSpaceAPI`、`UsdGeomMotionAPI`、`UsdLuxLightAPI`、`UsdPhysicsRigidBodyAPI`；阅读时应跳转到具体 API schema 页面确认适用 prim 和属性。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">函数索引：</span><span class="en">function index</span></li>
+        <li><span class="zh">prim index 输入：</span><span class="en">prim index inputs</span></li>
+        <li><span class="zh">路径模式：</span><span class="en">path pattern</span></li>
+        <li><span class="zh">类型分发表：</span><span class="en">type dispatch table</span></li>
+        <li><span class="zh">相机取景：</span><span class="en">camera framing</span></li>
+        <li><span class="zh">可应用 API schema：</span><span class="en">applied API schema</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -54,6 +54,27 @@
         <li><span class="zh">禁止子节点组合弧：</span><span class="en">prohibited child arc</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-083">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Variables - R 增补 API 索引页二次精修说明，重点解释 Doxygen 字母桶的阅读方式、跨模块条目的归类边界，以及何时应跳转到目标 class 或 schema 文档。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - Variables - R API index page. It explains how to read Doxygen letter buckets, how to group cross-module entries, and when to jump to the target class or schema documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">R 段成员变量页横跨 token tables、UsdPhysics descriptors、Hydra/Embree render context、Pcp diagnostics、Ar asset metadata 和 Sdr shader discovery。</span></li>
+        <li><span class="zh">`UsdVolTokensType`、`UsdGeomTokensType`、`UsdRenderTokensType`、`UsdLuxTokensType`、`UsdRiTokensType`、`UsdHydraTokensType`、`UsdSkelTokensType` 与 `UsdPhysicsTokensType` 应先按 schema domain 分组。</span></li>
+        <li><span class="zh">`UsdPhysicsCapsuleShapeDesc`、`UsdPhysicsConeShapeDesc`、`UsdPhysicsCylinderShapeDesc`、`UsdPhysicsSphereShapeDesc`、`UsdPhysicsJointDesc`、`UsdPhysicsRigidBodyDesc`、`UsdPhysicsRigidBodyMaterialDesc` 与 `UsdPhysicsArticulationDesc` 构成 physics descriptor 主线。</span></li>
+        <li><span class="zh">`HdEmbreeConfig`、`HdEmbreeInstanceContext`、`HdEmbreePrototypeContext`、`HdDisplayStyle`、`HdRenderPassAovBinding`、`UsdImagingGLEngine::Parameters` 与 `UsdRenderSpec::Product` 属于 Hydra/Embree/AOV/render product。</span></li>
+        <li><span class="zh">`PcpErrorArcToProhibitedChild`、`PcpErrorBase`、`PcpLayerStackIdentifier`、`SdfNamespaceEditDetail`、`TfUtf8CodePoint`、`ArAssetInfo`、`SdrShaderNodeDiscoveryResult` 与 `OptionBase&lt;CRTP&gt;` 是跨模块诊断和工具条目，中文层单独标出以避免和 token 表混淆。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">schema token 表：</span><span class="en">schema token table</span></li>
+        <li><span class="zh">物理描述结构：</span><span class="en">physics descriptor</span></li>
+        <li><span class="zh">AOV 绑定：</span><span class="en">AOV binding</span></li>
+        <li><span class="zh">渲染产品：</span><span class="en">render product</span></li>
+        <li><span class="zh">资产元数据：</span><span class="en">asset metadata</span></li>
+        <li><span class="zh">禁止子节点组合弧：</span><span class="en">prohibited child arc</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -54,6 +54,27 @@
         <li><span class="zh">连接器规格：</span><span class="en">connector specs</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-083">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members 增补 API 索引页二次精修说明，重点解释 Doxygen 字母桶的阅读方式、跨模块条目的归类边界，以及何时应跳转到目标 class 或 schema 文档。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members API index page. It explains how to read Doxygen letter buckets, how to group cross-module entries, and when to jump to the target class or schema documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`functions.html` 是 Class Members 总索引入口，本页当前对应符号/下划线分组；它不是完整 API 目录的替代品，而是进入具体字母页和类成员条目的根节点。</span></li>
+        <li><span class="zh">`VdfExtensibleNode`、`VdfNode`、`VdfConnectorSpecs&lt;T&gt;`、`VdfExecutionStats`、`VdfScheduler`、`VdfDatalessExecutor`、`VdfExecutorInterface`、`VdfDataManagerBasedExecutor` 构成 Vdf computation graph 与 execution system 主线。</span></li>
+        <li><span class="zh">`HdStDispatchBuffer`、`HdStTextureObject`、`HdStInterleavedMemoryManager::_StripedInterleavedBuffer`、`HdStVBOMemoryManager::_StripedBufferArray`、`HdBufferSource`、`HdVtBufferSource` 与 `HdStExtComp*` 属于 Hydra/Storm buffer、VBO、texture 和 ext computation。</span></li>
+        <li><span class="zh">`HdGpSceneIndexPlugin`、`HdPrman_*SceneIndexPlugin`、`HdSceneIndexPlugin`、`HdSceneIndexPluginRegistry`、`HdsiDebuggingSceneIndexPlugin` 是 scene index plugin 与 registry 相关入口。</span></li>
+        <li><span class="zh">`TraceCounterAccumulator`、`TraceReporterBase`、`TfEnum`、`ArResolver`、`UsdShadeConnectableAPIBehavior`、`SdfUsdaFileFormat`、`ExecSystem`、`EfMaskedSubExecutor`、`HfPluginRegistry` 与 `GfColor` 说明总索引跨越 trace、Tf、Ar、UsdShade、Sdf、Exec/Ef、plugin registry 和 Gf 基础类型。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">成员索引总入口：</span><span class="en">member index root</span></li>
+        <li><span class="zh">计算图：</span><span class="en">computation graph</span></li>
+        <li><span class="zh">执行系统：</span><span class="en">execution system</span></li>
+        <li><span class="zh">VBO 内存：</span><span class="en">VBO memory</span></li>
+        <li><span class="zh">scene index 插件：</span><span class="en">scene index plugin</span></li>
+        <li><span class="zh">插件注册表：</span><span class="en">plugin registry</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

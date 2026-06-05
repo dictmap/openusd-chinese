@@ -53,6 +53,27 @@
         <li><span class="zh">可连接 API：</span><span class="en">connectable API</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-083">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Functions - H 增补 API 索引页二次精修说明，重点解释 Doxygen 字母桶的阅读方式、跨模块条目的归类边界，以及何时应跳转到目标 class 或 schema 文档。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - Functions - H API index page. It explains how to read Doxygen letter buckets, how to group cross-module entries, and when to jump to the target class or schema documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">这是 H 段函数成员索引，函数名常围绕 `Has*`、`Handle*`、`Hold*`、`Hash*` 展开；本页需要按 Sdf/Pcp/Usd/Hydra/Shade/Skel 分区阅读。</span></li>
+        <li><span class="zh">`SdfAbstractData`、`SdfChildrenView`、`SdfData`、`SdfPrimSpec`、`SdfAttributeSpec`、`SdfLayer` 是 scene description 数据结构和 layer 访问线索。</span></li>
+        <li><span class="zh">`PcpCache`、`PcpPrimIndex` 和 `UsdNotice::ObjectsChanged` 应归入 composition cache、prim index 和对象变更通知；它们常用于理解变化传播和索引重建。</span></li>
+        <li><span class="zh">`UsdPrim`、`UsdObject`、`UsdAttribute`、`UsdProperty`、`UsdRelationship`、`UsdStage`、`UsdVariantSet`、`UsdResolveInfo` 与 `UsdAttributeQuery` 是用户常见的 USD object model 查询入口。</span></li>
+        <li><span class="zh">`UsdShadeConnectableAPI`、`UsdShadeInput`、`UsdShadeOutput`、`UsdSkelSkeletonQuery`、`UsdSkelSkinningQuery`、`HdRenderParam`、`HgiShaderSection` 和 `VdfExecutorInterface` 表明 H 段还跨越 shading、skinning、render param 和 execution support。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">场景描述数据：</span><span class="en">scene description data</span></li>
+        <li><span class="zh">组合缓存：</span><span class="en">composition cache</span></li>
+        <li><span class="zh">对象变更通知：</span><span class="en">object change notice</span></li>
+        <li><span class="zh">对象模型：</span><span class="en">object model</span></li>
+        <li><span class="zh">可连接 API：</span><span class="en">connectable API</span></li>
+        <li><span class="zh">蒙皮查询：</span><span class="en">skinning query</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
