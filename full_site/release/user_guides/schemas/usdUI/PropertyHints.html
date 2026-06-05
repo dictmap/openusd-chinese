@@ -54,6 +54,27 @@
         <li><span class="zh">在界面中显示：</span><span class="en">shown in a UI</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-099">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`PropertyHints` 是 `usdUI` 中面向 property 的 UI 提示 schema。它补充的是 property-level hints，例如 `displayGroup` 和 `shownIf`，帮助工具决定属性在界面中的分组与条件显示；它不改变属性值、composition、schema fallback 或渲染语义。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for PropertyHints while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">本页应和 `ObjectHints`、`PrimHints` 一起读：`ObjectHints` 处理通用对象级 `displayName` 和 `hidden`，`PrimHints` 处理 prim 内部 display group 的展开与条件可见性，`PropertyHints` 则落在每个 property 自身的分组与显示条件上。</span></li>
+        <li><span class="zh">官方示例中的 `displayGroup = &quot;Display Group 1&quot;` 和 `shownIf = &quot;showProperties == 1&quot;` 都是 UI 规则，不应翻译或改写表达式；工具会据此判断 `exampleAttribute`、`exampleRelationship` 是否显示在对应分组中。</span></li>
+        <li><span class="zh">`shownIf` 表达式依赖同一 prim 或上下文中的其他属性值时，读者应把它理解为界面可见性条件，而不是 USD composition arc、`visibility` 属性或渲染过滤规则。</span></li>
+        <li><span class="zh">空字符串 `displayGroup = &quot;&quot;` 表示没有放入命名 display group，和隐藏属性不同；是否隐藏仍由 `hidden` 或 `shownIf` 等 UI hint 决定。</span></li>
+        <li><span class="zh">排查 DCC UI 中属性排列或可见性问题时，建议先看 property 的 `uiHints` dictionary，再回看 prim 级和 object 级 hints，避免把界面展示问题误判为 schema 数据错误。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">属性级 UI 提示：</span><span class="en">PropertyHints</span></li>
+        <li><span class="zh">属性级提示：</span><span class="en">property-level hints</span></li>
+        <li><span class="zh">显示分组：</span><span class="en">displayGroup</span></li>
+        <li><span class="zh">条件显示表达式：</span><span class="en">shownIf</span></li>
+        <li><span class="zh">示例属性：</span><span class="en">exampleAttribute</span></li>
+        <li><span class="zh">UI 提示字典：</span><span class="en">uiHints</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

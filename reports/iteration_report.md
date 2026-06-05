@@ -2,6 +2,24 @@
 
 源页面：<https://openusd.org/release/api/index.html>
 
+## 第 230 轮：PropertyHints、RadianceBase、Field3DAsset、usdLux 与 RenderPass 二次精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `8f5ca14`，当前分级为 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8。
+- 本轮严格只处理 5 个未达标页面：`full_site/release/user_guides/schemas/usdUI/PropertyHints.html`、`full_site/release/user_guides/schemas/usdVol/ParticleFieldRadianceBaseAPI.html`、`full_site/release/user_guides/schemas/usdVol/Field3DAsset.html`、`full_site/release/user_guides/schemas/usdLux/usdLux_toc.html`、`full_site/release/user_guides/schemas/usdRender/RenderPass.html`；这些页面本轮开始时均已是 `draft_needs_translation`，目标是补强较薄的 usdUI property hints、usdVol radiance/Field3D、usdLux 目录和 usdRender pass 页面，没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_release_batch_099.mjs`，每页插入 `release-quality-pass-099` 二次精修导读区块，覆盖 `PropertyHints` 的 `displayGroup` / `shownIf` / `uiHints` 语义，`ParticleFieldRadianceBaseAPI` 的 radiance definition data 与 applied schema 验证契约，`Field3DAsset` 的 `.f3d` 外部资源、`fieldName`、`filePath` 与 `timeSamples`，`usdLux_toc.html` 的 `LightAPI`、boundable/non-boundable lights、`ShapingAPI`、`ShadowAPI`、`LightFilter` 与 `Light Units` 阅读路线，以及 `RenderPass` 的 `renderSource`、`RenderSettings`、`RenderProduct`、`RenderVar` 和 collection-based scene configuration 分工；保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录。
+- 本轮中文覆盖指标：`PropertyHints.html` 为 `draft_needs_translation`、中文 532 字、24/18 中英块；`ParticleFieldRadianceBaseAPI.html` 为 535 字、24/17；`Field3DAsset.html` 为 537 字、24/17；`usdLux_toc.html` 为 510 字、24/16；`RenderPass.html` 为 502 字、24/18；5 页均 `badEncodingCount=0` 且 `unexpectedOfficialLinks=0`。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级保持 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8；本轮对象原本已是 `draft_needs_translation`，所以分级计数保持不变是预期结果。398 个 `bilingual_draft` 仍不是完整段落级翻译，未误标为完成。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398 个 `bilingual_draft` 页面全量预览通过，`failed_pages` 为 0，最终入口链接覆盖 398/398。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`，报告索引通过，总体验证 `PASSED`，`validation_required_checks` 281 / `validation_failed_checks` 0。
+- GitHub 同步结果：验证通过后使用提交信息 `OpenUSD bilingual round 230: property radiance field lux renderpass pass` 同步本轮 HTML、脚本、报告和 `work.md`，并通过 `git log` 与远端 main 校验推送结果。
+
+差距与下一轮：
+
+- 当前 398 个 `bilingual_draft` 仍不是完整段落级翻译；本轮是对已纳入 draft 的 release/schema/API 页面做第二层质量补强，分级计数不变是预期结果。
+- 剩余 `draft_template_only` 11 页基本是 `_source.html` 源码页、`search.html` 或目录页；下一轮建议继续处理较薄且用户可读价值较高的 release/schema/API 页面，最多处理 `full_site/release/user_guides/schemas/usdUI/NodeGraphNodeAPI.html`、`full_site/release/user_guides/schemas/usdVol/OpenVDBAsset.html`、`full_site/release/tut_inspect_and_author_props.html`、`full_site/api/functions_vars_q.html`、`full_site/release/user_guides/schemas/usdUI/SceneGraphPrimAPI.html`，继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+
 ## 第 229 轮：usdUI hints、usdRender 目录、变量索引 P 与 TsTest 二次精修
 已完成：
 

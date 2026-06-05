@@ -54,6 +54,27 @@
         <li><span class="zh">USD 集合：</span><span class="en">USD collection</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-099">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`RenderPass` 表示 multi-pass rendering workflow 中一次独立 render pass 的 renderer configuration 与 scene configuration。它用于组织前景、背景、合成等 pass 级配置，不等同于 `RenderProduct` 输出产品或 `RenderVar` AOV 变量。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for RenderPass while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">官方示例中的 foreground、background、composite 三个 pass 说明 `RenderPass` 可以把同一场景拆成多个渲染阶段，再由后续 pass 组合输出结果。</span></li>
+        <li><span class="zh">`renderSource` 可以指向 `RenderSettings` prim，也可以指向外部渲染配置文件；Houdini Rop 和 Nuke write node 示例说明它可对接 DCC 或合成工具中的 pass 配置。</span></li>
+        <li><span class="zh">`collection:renderVisibility:*` 相关属性把 scene configuration 交给 USD collection，决定哪些 prim 对当前 render pass 可见；这和输出文件路径、AOV 声明是不同层级。</span></li>
+        <li><span class="zh">`passType = &quot;prman&quot;` 和 `command = [ &quot;prman&quot; ]` 属于示例中的 renderer/command 配置，应保持英文和代码字面量原样，避免破坏可复制的 USDA 片段。</span></li>
+        <li><span class="zh">阅读 usdRender 时可把职责分开：`RenderSettings` 聚合渲染设置，`RenderProduct` 描述输出产品，`RenderVar` 描述输出变量，`RenderPass` 描述一次 pass 的渲染器与场景选择。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">渲染 pass：</span><span class="en">RenderPass</span></li>
+        <li><span class="zh">多 pass 渲染工作流：</span><span class="en">multi-pass rendering workflow</span></li>
+        <li><span class="zh">渲染来源关系：</span><span class="en">renderSource</span></li>
+        <li><span class="zh">渲染设置：</span><span class="en">RenderSettings</span></li>
+        <li><span class="zh">渲染输出产品：</span><span class="en">RenderProduct</span></li>
+        <li><span class="zh">渲染输出变量：</span><span class="en">RenderVar</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

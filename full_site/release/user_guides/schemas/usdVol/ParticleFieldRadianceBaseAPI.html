@@ -54,6 +54,27 @@
         <li><span class="zh">验证约束：</span><span class="en">validation</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-099">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`ParticleFieldRadianceBaseAPI` 定义 `ParticleField` radiance definition data 的基础 applied schema。它的重点是为粒子场辐射度数据建立可验证的 schema 契约，让声明 radiance 的特征 schema 不会缺失必要的应用 schema 层。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for ParticleFieldRadianceBaseAPI while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">本页的核心句是 base applied schema：它不是单独的几何类型，也不是粒子位置、半径或 opacity 描述，而是给 `ParticleField` 的 radiance 定义提供共享基础。</span></li>
+        <li><span class="zh">官方说明中的 `ParticleField characteristics schemas` 通常会内建该 applied schema，这意味着具体特征 schema 可以继承同一套 radiance 语义入口，便于验证器和渲染管线识别。</span></li>
+        <li><span class="zh">`validation` 是阅读关键：如果某个 applied schema 声称提供 radiance definitions，验证逻辑应能确认相应 schema 层确实存在于 `ParticleField` 上。</span></li>
+        <li><span class="zh">radiance 相关数据常与颜色、能量、球谐或体积粒子渲染解释有关，但本页本身只建立基础 schema 关系，不应把它等同于某个具体 renderer 的采样实现。</span></li>
+        <li><span class="zh">继续翻译这类页面时应保留 `ParticleField`、`radiance definition data`、`applied schema`、`validation` 等英文术语，因为它们同时是 schema 文档、验证输出和工具搜索关键字。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">粒子场辐射度基础 API：</span><span class="en">ParticleFieldRadianceBaseAPI</span></li>
+        <li><span class="zh">辐射度定义数据：</span><span class="en">radiance definition data</span></li>
+        <li><span class="zh">应用 schema：</span><span class="en">applied schema</span></li>
+        <li><span class="zh">粒子场特征 schema：</span><span class="en">ParticleField characteristics schemas</span></li>
+        <li><span class="zh">验证：</span><span class="en">validation</span></li>
+        <li><span class="zh">粒子场：</span><span class="en">ParticleField</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T17:14:59.210Z
+Generated: 2026-06-05T17:36:15.547Z
 
 ## Summary
 
@@ -40,11 +40,6 @@ Generated: 2026-06-05T17:14:59.210Z
 | 278 | draft_template_only | 62 | `full_site/api/var_8h_source.html` | 源码页面草稿：var.h / var.h |
 | 298 | draft_template_only | 64 | `full_site/release/search.html` | 搜索 / Search - Universal Scene Description 26.05 documentation |
 | 69 | draft_template_only | 66 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | API 页面草稿：hf Directory / hf Directory |
-| 367 | draft_needs_translation | 258 | `full_site/release/user_guides/schemas/usdUI/PropertyHints.html` | 页面草稿：PropertyHints / PropertyHints |
-| 385 | draft_needs_translation | 262 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldRadianceBaseAPI.html` | 页面草稿：ParticleFieldRadianceBaseAPI / ParticleFieldRadianceBaseAPI |
-| 370 | draft_needs_translation | 263 | `full_site/release/user_guides/schemas/usdVol/Field3DAsset.html` | 页面草稿：Field3DAsset / Field3DAsset |
-| 347 | draft_needs_translation | 264 | `full_site/release/user_guides/schemas/usdLux/usdLux_toc.html` | 页面草稿：Lights (usdLux) / Lights (usdLux) |
-| 354 | draft_needs_translation | 264 | `full_site/release/user_guides/schemas/usdRender/RenderPass.html` | 页面草稿：RenderPass / RenderPass |
 | 373 | draft_needs_translation | 267 | `full_site/release/user_guides/schemas/usdVol/OpenVDBAsset.html` | 页面草稿：OpenVDBAsset / OpenVDBAsset |
 | 310 | draft_needs_translation | 270 | `full_site/release/tut_inspect_and_author_props.html` | 页面草稿：Inspecting and Authoring Properties / Inspecting and Authoring Properties |
 | 363 | draft_needs_translation | 271 | `full_site/release/user_guides/schemas/usdUI/NodeGraphNodeAPI.html` | 页面草稿：NodeGraphNodeAPI / NodeGraphNodeAPI |
@@ -59,6 +54,11 @@ Generated: 2026-06-05T17:14:59.210Z
 | 311 | draft_needs_translation | 277 | `full_site/release/tut_referencing_layers.html` | 页面草稿：Referencing Layers / Referencing Layers |
 | 54 | draft_needs_translation | 278 | `full_site/api/class_usd_skel_imaging_data_source_skeleton_prim.html` | 类参考草稿：UsdSkelImagingDataSourceSkeletonPrim Class / UsdSkelImagingDataSourceSkeletonPrim Class |
 | 68 | draft_needs_translation | 278 | `full_site/api/deprecated.html` | API 页面草稿：Deprecated List / Deprecated List |
+| 125 | draft_needs_translation | 278 | `full_site/api/functions_rela_t.html` | API 页面草稿：Universal Scene Description: Class Members - Related Functions / Universal Scene Description: Class Members - Related Functions |
+| 180 | draft_needs_translation | 278 | `full_site/api/globals_func_s.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
+| 313 | draft_needs_translation | 279 | `full_site/release/tut_traversing_stage.html` | 页面草稿：Traversing a Stage / Traversing a Stage |
+| 343 | draft_needs_translation | 279 | `full_site/release/user_guides/schemas/usdLux/RectLight.html` | 页面草稿：RectLight / RectLight |
+| 352 | draft_needs_translation | 279 | `full_site/release/user_guides/schemas/usdMedia/usdMedia_toc.html` | 页面草稿：Media (usdMedia) / Media (usdMedia) |
 
 ## All Pages
 
@@ -410,14 +410,14 @@ Generated: 2026-06-05T17:14:59.210Z
 | 344 | draft_needs_translation | bilingual_draft | 409 | 20/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/ShadowAPI.html` |
 | 345 | draft_needs_translation | bilingual_draft | 367 | 22/20 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/ShapingAPI.html` |
 | 346 | draft_needs_translation | bilingual_draft | 299 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/SphereLight.html` |
-| 347 | draft_needs_translation | bilingual_draft | 264 | 12/9 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/usdLux_toc.html` |
+| 347 | draft_needs_translation | bilingual_draft | 510 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/usdLux_toc.html` |
 | 348 | draft_needs_translation | bilingual_draft | 389 | 17/13 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/VolumeLightAPI.html` |
 | 349 | draft_needs_translation | bilingual_draft | 304 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html` |
 | 350 | draft_needs_translation | bilingual_draft | 398 | 15/13 | 0 | 0 | `full_site/release/user_guides/schemas/usdMedia/overview.html` |
 | 351 | draft_needs_translation | bilingual_draft | 295 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdMedia/SpatialAudio.html` |
 | 352 | draft_needs_translation | bilingual_draft | 279 | 12/9 | 0 | 0 | `full_site/release/user_guides/schemas/usdMedia/usdMedia_toc.html` |
 | 353 | draft_needs_translation | bilingual_draft | 349 | 17/15 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/overview.html` |
-| 354 | draft_needs_translation | bilingual_draft | 264 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderPass.html` |
+| 354 | draft_needs_translation | bilingual_draft | 502 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderPass.html` |
 | 355 | draft_needs_translation | bilingual_draft | 284 | 12/9 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderProduct.html` |
 | 356 | draft_needs_translation | bilingual_draft | 281 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderSettings.html` |
 | 357 | draft_needs_translation | bilingual_draft | 385 | 20/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderSettingsBase.html` |
@@ -430,10 +430,10 @@ Generated: 2026-06-05T17:14:59.210Z
 | 364 | draft_needs_translation | bilingual_draft | 536 | 24/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/ObjectHints.html` |
 | 365 | draft_needs_translation | bilingual_draft | 360 | 15/13 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/overview.html` |
 | 366 | draft_needs_translation | bilingual_draft | 508 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/PrimHints.html` |
-| 367 | draft_needs_translation | bilingual_draft | 258 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/PropertyHints.html` |
+| 367 | draft_needs_translation | bilingual_draft | 532 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/PropertyHints.html` |
 | 368 | draft_needs_translation | bilingual_draft | 281 | 12/9 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/SceneGraphPrimAPI.html` |
 | 369 | draft_needs_translation | bilingual_draft | 538 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/usdUI_toc.html` |
-| 370 | draft_needs_translation | bilingual_draft | 263 | 12/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/Field3DAsset.html` |
+| 370 | draft_needs_translation | bilingual_draft | 537 | 24/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/Field3DAsset.html` |
 | 371 | draft_needs_translation | bilingual_draft | 425 | 27/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/FieldAsset.html` |
 | 372 | draft_needs_translation | bilingual_draft | 408 | 21/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/FieldBase.html` |
 | 373 | draft_needs_translation | bilingual_draft | 267 | 12/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/OpenVDBAsset.html` |
@@ -448,7 +448,7 @@ Generated: 2026-06-05T17:14:59.210Z
 | 382 | draft_needs_translation | bilingual_draft | 359 | 17/15 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html` |
 | 383 | draft_needs_translation | bilingual_draft | 364 | 17/15 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html` |
 | 384 | draft_needs_translation | bilingual_draft | 477 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html` |
-| 385 | draft_needs_translation | bilingual_draft | 262 | 12/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldRadianceBaseAPI.html` |
+| 385 | draft_needs_translation | bilingual_draft | 535 | 24/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldRadianceBaseAPI.html` |
 | 386 | draft_needs_translation | bilingual_draft | 340 | 17/15 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html` |
 | 387 | draft_needs_translation | bilingual_draft | 323 | 18/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html` |
 | 388 | draft_needs_translation | bilingual_draft | 561 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/usdVol_toc.html` |

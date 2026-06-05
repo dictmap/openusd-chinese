@@ -1,5 +1,14 @@
 # 工作记录
 
+## 第 230 轮：PropertyHints、RadianceBase、Field3DAsset、usdLux 与 RenderPass 二次精修
+- 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、git 状态和远端 main，确认上一轮远端提交为 `8f5ca14`，当前分级仍为 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8。
+- 本轮严格只处理 5 个未达标页面：`full_site/release/user_guides/schemas/usdUI/PropertyHints.html`、`full_site/release/user_guides/schemas/usdVol/ParticleFieldRadianceBaseAPI.html`、`full_site/release/user_guides/schemas/usdVol/Field3DAsset.html`、`full_site/release/user_guides/schemas/usdLux/usdLux_toc.html`、`full_site/release/user_guides/schemas/usdRender/RenderPass.html`；没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_release_batch_099.mjs`，每页插入 `release-quality-pass-099` 二次精修导读区块，补充 property UI hints、ParticleField radiance applied schema、Field3D 外部 `.f3d` 资源、usdLux 灯光 schema 导航和 RenderPass 多 pass 渲染配置的中文阅读说明与术语对照。
+- 本轮审计指标：目标页分别达到 `PropertyHints.html` 532 字 24/18、`ParticleFieldRadianceBaseAPI.html` 535 字 24/17、`Field3DAsset.html` 537 字 24/17、`usdLux_toc.html` 510 字 24/16、`RenderPass.html` 502 字 24/18；5 页均保持 `draft_needs_translation`，`badEncodingCount=0`，`unexpectedOfficialLinks=0`。
+- 重新运行 `audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1`：质量分级保持不变是预期结果，链接路由 `files_changed=0`，draft 预览 398/398 通过，总体验证 `PASSED`，281 checks passed / 0 failed。
+- GitHub 同步结果：验证通过后使用提交信息 `OpenUSD bilingual round 230: property radiance field lux renderpass pass` 同步本轮 HTML、脚本、报告和 `work.md`，并通过 `git log` 与远端 main 校验推送结果。
+- 下一轮目标：最多处理 `full_site/release/user_guides/schemas/usdUI/NodeGraphNodeAPI.html`、`full_site/release/user_guides/schemas/usdVol/OpenVDBAsset.html`、`full_site/release/tut_inspect_and_author_props.html`、`full_site/api/functions_vars_q.html`、`full_site/release/user_guides/schemas/usdUI/SceneGraphPrimAPI.html`；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+
 ## 第 229 轮：usdUI hints、usdRender 目录、变量索引 P 与 TsTest 二次精修
 - 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、git 状态和远端 main，确认上一轮远端提交为 `e22ba44`，当前分级为 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8。
 - 本轮严格只处理 5 个未达标页面：`full_site/release/user_guides/schemas/usdUI/ObjectHints.html`、`full_site/release/user_guides/schemas/usdUI/PrimHints.html`、`full_site/release/user_guides/schemas/usdRender/usdRender_toc.html`、`full_site/api/functions_vars_p.html`、`full_site/api/page_ts_ts_test.html`；这些页面本轮开始时均已是 `draft_needs_translation`，目标是补强较薄的 usdUI hints、usdRender 目录、API 变量索引 P 段和 TsTest 框架页，没有新增或处理第 6 页。

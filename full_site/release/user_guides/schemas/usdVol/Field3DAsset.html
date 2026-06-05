@@ -54,6 +54,27 @@
         <li><span class="zh">外部体积数据：</span><span class="en">external volume data</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-099">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`Field3DAsset` 是 `usdVol` 中用于引用外部 Field3D volume field 的 `Field` schema。它把 `.f3d` 文件、字段名、数据类型和用途接入 USD 场景，但不会把外部体素数据直接嵌入当前 USDA 文本。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for Field3DAsset while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">官方示例 `densityField3D` 表示一个从 `.f3d` 文件中读取单个 `density` field 的 Field3D 体积场；`Field3DAsset` 是 USD 场景和外部 Field3D 数据之间的引用层。</span></li>
+        <li><span class="zh">`fieldDataType = &quot;float&quot;` 描述字段数据类型，`fieldName = &quot;density&quot;` 选择外部文件中的命名字段，`fieldPurpose = &quot;cluster_0&quot;` 描述该 field 的用途或分组语义。</span></li>
+        <li><span class="zh">`filePath` 是 asset 路径，并且示例把它放在 `timeSamples` 中，说明不同时间样本可以指向不同 `.f3d` 文件；这对缓存序列和动画体积数据很重要。</span></li>
+        <li><span class="zh">页面中的 Field3D GitHub 链接是外部项目来源，不属于 OpenUSD 内部 406 页清单；它应保留为普通外部链接，用于了解 Field3D 文件格式和库背景。</span></li>
+        <li><span class="zh">排查 `Field3DAsset` 时应先确认路径解析、字段名、数据类型和时间样本是否对应外部文件，再检查 USD schema 本身，避免把外部资源缺失误判为页面或 schema 错误。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Field3D 体积场资产：</span><span class="en">Field3DAsset</span></li>
+        <li><span class="zh">Field3D 体积场：</span><span class="en">Field3D volume field</span></li>
+        <li><span class="zh">.f3d 文件：</span><span class="en">.f3d file</span></li>
+        <li><span class="zh">字段数据类型：</span><span class="en">fieldDataType</span></li>
+        <li><span class="zh">字段名：</span><span class="en">fieldName</span></li>
+        <li><span class="zh">时间样本：</span><span class="en">timeSamples</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

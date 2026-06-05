@@ -54,6 +54,27 @@
         <li><span class="zh">灯光单位：</span><span class="en">Light Units</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-099">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`usdLux_toc.html` 是 `usdLux` 灯光 schema 的目录入口。它帮助读者从 Overview 和 Concepts 进入 `LightAPI`、boundable/non-boundable lights、light shaping、shadow、filter、plugin light 与 Light Units，而不是描述某个单独灯光类的完整属性。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for Lights (usdLux) while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">建议阅读顺序是先看 `Overview` 与 `UsdLux Schemas and Concepts`，理解 `LightAPI` 如何赋予 prim 灯光能力，再进入 `BoundableLightBase` 与 `NonboundableLightBase` 的分类。</span></li>
+        <li><span class="zh">`CylinderLight`、`DiskLight`、`DomeLight`、`RectLight`、`SphereLight` 等具体 schema 表达不同光源形状或投射方式，名称应保持英文原样，因为它们也是页面名和 API 标识。</span></li>
+        <li><span class="zh">`ShapingAPI`、`ShadowAPI`、`LightFilter`、`PluginLight`、`PluginLightFilter` 展示 usdLux 对光形控制、阴影控制、过滤器和渲染器扩展点的覆盖范围。</span></li>
+        <li><span class="zh">`Light Units` 入口用于理解灯光强度单位和物理解释；这类概念会影响 renderer 和 DCC 工具中的参数展示，但目录页本身不绑定具体 render delegate。</span></li>
+        <li><span class="zh">目录页的主要价值是导航与术语定位；精读具体属性时应跳转到 schema 页面，再对照本目录确认当前 schema 在 usdLux 层级中的位置。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 灯光 schema 领域：</span><span class="en">usdLux</span></li>
+        <li><span class="zh">灯光能力 API：</span><span class="en">LightAPI</span></li>
+        <li><span class="zh">有边界灯光基类：</span><span class="en">BoundableLightBase</span></li>
+        <li><span class="zh">无边界灯光基类：</span><span class="en">NonboundableLightBase</span></li>
+        <li><span class="zh">灯光过滤器：</span><span class="en">LightFilter</span></li>
+        <li><span class="zh">灯光单位：</span><span class="en">Light Units</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
