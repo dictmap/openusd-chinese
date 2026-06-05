@@ -75,6 +75,27 @@
         <li><span class="zh">内建应用 schema：</span><span class="en">built-in applied schema</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-115">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`ParticleFieldPositionBaseAPI` 是 `ParticleField` position data 的基础 applied schema。它的核心阅读点是：positions 数量定义粒子数量，其他 orientation、scale、radiance、kernel 等特征数据需要与这个粒子数量保持一致。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for ParticleFieldPositionBaseAPI while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">没有 position data 时，`ParticleField` 可被视为没有可枚举粒子；因此 position schema 是很多 particle-field characteristics schema 的基础入口。</span></li>
+        <li><span class="zh">positions 描述粒子中心或锚点位置，但不描述粒子形状。形状和空间影响范围需要结合 `ParticleFieldKernelBaseAPI` 或具体 kernel API 阅读。</span></li>
+        <li><span class="zh">当页面讨论 validation 时，应理解为多个 per-particle arrays 需要和 positions 数量对齐；这类规则属于 schema 数据一致性，不是渲染器采样算法本身。</span></li>
+        <li><span class="zh">`ParticleFieldPositionBaseAPI` 是 base applied schema，具体 position attribute API 可能扩展数据存储细节；中文导读应保留 base/API 的层级关系。</span></li>
+        <li><span class="zh">和 `OpenVDBAsset`、`Field3DAsset` 这类体积资产入口相比，`ParticleFieldPositionBaseAPI` 面向离散粒子场，不是直接引用栅格体积文件。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">粒子场位置基础 API：</span><span class="en">ParticleFieldPositionBaseAPI</span></li>
+        <li><span class="zh">位置数据：</span><span class="en">position data</span></li>
+        <li><span class="zh">位置数组：</span><span class="en">positions</span></li>
+        <li><span class="zh">粒子场：</span><span class="en">ParticleField</span></li>
+        <li><span class="zh">粒子场特征 schema：</span><span class="en">characteristics schemas</span></li>
+        <li><span class="zh">数据一致性验证：</span><span class="en">validation</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

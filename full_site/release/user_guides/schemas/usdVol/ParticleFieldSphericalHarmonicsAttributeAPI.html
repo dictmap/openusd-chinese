@@ -56,6 +56,27 @@
         <li><span class="zh">视角相关颜色：</span><span class="en">view-dependent color</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-115">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`ParticleFieldSphericalHarmonicsAttributeAPI` 描述 `ParticleField` 的 spherical harmonics radiance 属性数据。本轮补强重点是把 radiance base、degree、coefficient array 和每粒子数据布局分开说明，避免把球谐系数误读成普通颜色数组或单个体素属性。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for ParticleFieldSphericalHarmonicsAttributeAPI while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`ParticleFieldRadianceBaseAPI` 先建立 radiance definition 的存在性契约；`ParticleFieldSphericalHarmonicsAttributeAPI` 再说明以 spherical harmonics 形式存储 radiance 的具体属性。</span></li>
+        <li><span class="zh">`degree` 控制球谐展开阶数，决定每个粒子需要多少 coefficient；翻译和导读时应保留 `degree` 字面量，不要把它写成普通数组长度。</span></li>
+        <li><span class="zh">coefficients 通常按粒子和球谐项组织，阅读时要区分 per-particle 数据布局与整张 `ParticleField` 的 particle count；位置数量仍由 position schema 决定。</span></li>
+        <li><span class="zh">该 API 适合表示随方向变化的 radiance，而不是只记录单一 RGB 值。若页面提到 spherical harmonics，中文说明应强调方向性辐射度近似。</span></li>
+        <li><span class="zh">和 kernel API 对照阅读时，kernel 决定粒子影响的空间 basis function，spherical harmonics radiance 决定该粒子在方向域中的辐射度表达，两者互补而非替代。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">粒子场球谐辐射度属性 API：</span><span class="en">ParticleFieldSphericalHarmonicsAttributeAPI</span></li>
+        <li><span class="zh">粒子场辐射度基础 API：</span><span class="en">ParticleFieldRadianceBaseAPI</span></li>
+        <li><span class="zh">球谐函数：</span><span class="en">spherical harmonics</span></li>
+        <li><span class="zh">球谐展开阶数：</span><span class="en">degree</span></li>
+        <li><span class="zh">球谐系数数组：</span><span class="en">coefficients</span></li>
+        <li><span class="zh">逐粒子：</span><span class="en">per-particle</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

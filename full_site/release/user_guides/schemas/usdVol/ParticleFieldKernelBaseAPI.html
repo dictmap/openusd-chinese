@@ -75,6 +75,27 @@
         <li><span class="zh">验证契约：</span><span class="en">validation contract</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-115">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`ParticleFieldKernelBaseAPI` 是粒子场 kernel data 的基础 applied schema。本轮补强强调 kernel 的职责边界：它定义每个粒子的空间 basis function 入口，具体 kernel 形状和 falloff 由 Gaussian、surflet 或其他派生 API 表达。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for ParticleFieldKernelBaseAPI while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`ParticleFieldKernelBaseAPI` 不直接规定某个具体公式，而是为 particle field 声明 kernel data 存在这一层可验证契约。</span></li>
+        <li><span class="zh">具体页面如 `ParticleFieldKernelGaussianEllipsoidAPI`、`ParticleFieldKernelGaussianSurfletAPI`、`ParticleFieldKernelConstantSurfletAPI` 才说明 ellipsoid、surflet 或 constant surflet 的实际形状语义。</span></li>
+        <li><span class="zh">kernel data 决定粒子对空间的影响方式，position data 决定粒子在哪里；两者通常要一起阅读，不能只凭 kernel 推断粒子数量。</span></li>
+        <li><span class="zh">如果 radiance 或 opacity API 同时存在，kernel 只是空间权重或支持域的一部分，颜色、透明度、方向性 radiance 仍由各自 attribute API 管理。</span></li>
+        <li><span class="zh">中文补强应保留 `kernel`、`basis function`、`falloff`、`surflet` 等英文术语，避免把它们笼统翻成“滤波器”而丢失体积粒子语义。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">粒子场 kernel 基础 API：</span><span class="en">ParticleFieldKernelBaseAPI</span></li>
+        <li><span class="zh">粒子 kernel 数据：</span><span class="en">kernel data</span></li>
+        <li><span class="zh">基函数：</span><span class="en">basis function</span></li>
+        <li><span class="zh">衰减函数或衰减方式：</span><span class="en">falloff</span></li>
+        <li><span class="zh">表面小片 kernel：</span><span class="en">surflet</span></li>
+        <li><span class="zh">高斯椭球 kernel：</span><span class="en">Gaussian ellipsoid</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -75,6 +75,27 @@
         <li><span class="zh">粒子场：</span><span class="en">ParticleField</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-115">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`ParticleFieldRadianceBaseAPI` 定义粒子场 radiance definition data 的基础 applied schema。它不直接规定某一种 radiance 编码，而是为后续 spherical harmonics、常量辐射度或其他 radiance attribute API 提供共同入口。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for ParticleFieldRadianceBaseAPI while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">该页面的关键词是 radiance definition，而不是具体颜色模型。中文导读应说明它建立“粒子场有辐射度定义”这一层 schema 契约。</span></li>
+        <li><span class="zh">若后续页面使用 `ParticleFieldSphericalHarmonicsAttributeAPI`，应先确认 radiance base 的语义，再解释 spherical harmonics degree 和 coefficients。</span></li>
+        <li><span class="zh">radiance 描述辐射度或发光相关数据，opacity、scale、orientation、position 等属性由其他 API 负责；这些 per-particle 数据通常需要在粒子数量上对齐。</span></li>
+        <li><span class="zh">它和 `VolumeLightAPI` 不同：`VolumeLightAPI` 面向体积对象作为光源的 applied API，`ParticleFieldRadianceBaseAPI` 面向粒子场中每粒子的 radiance 数据契约。</span></li>
+        <li><span class="zh">本地复刻应保留 `radiance`、`ParticleFieldRadianceBaseAPI`、`ParticleFieldSphericalHarmonicsAttributeAPI` 等英文名，避免影响用户按 schema 名称交叉检索。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">粒子场辐射度基础 API：</span><span class="en">ParticleFieldRadianceBaseAPI</span></li>
+        <li><span class="zh">辐射度定义数据：</span><span class="en">radiance definition data</span></li>
+        <li><span class="zh">辐射度：</span><span class="en">radiance</span></li>
+        <li><span class="zh">不透明度：</span><span class="en">opacity</span></li>
+        <li><span class="zh">体积光应用 API：</span><span class="en">VolumeLightAPI</span></li>
+        <li><span class="zh">球谐辐射度表示：</span><span class="en">spherical harmonics radiance</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

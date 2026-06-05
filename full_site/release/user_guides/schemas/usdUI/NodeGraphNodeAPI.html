@@ -75,6 +75,27 @@
         <li><span class="zh">节点展开状态属性：</span><span class="en">ui:nodegraph:node:expansionState</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-115">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`NodeGraphNodeAPI` 是 `usdUI` 中给 node graph 节点补充编辑器布局 metadata 的 applied API schema。本轮补强重点放在 `ui:nodegraph:node:*` 属性族的阅读边界：它们描述图编辑器中的节点位置、颜色、层叠和文档提示，不改变 `UsdShade` 或 MaterialX 节点的真实连接与求值。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for NodeGraphNodeAPI while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`ui:nodegraph:node:pos` 记录节点在图形编辑器中的二维布局坐标，便于 DCC tool 复现作者整理过的 node graph 视图；它不是 prim 的 `xformOp`，也不会移动 stage 中的几何体。</span></li>
+        <li><span class="zh">`ui:nodegraph:node:displayColor` 是节点 UI 颜色提示，适合用来区分纹理、混合、输出等视觉分组；渲染结果仍由 shader prim、inputs、outputs 和 connections 决定。</span></li>
+        <li><span class="zh">`ui:nodegraph:node:stackingOrder` 表达图界面中的相对深度或覆盖顺序，常和 `Backdrop` 一起阅读；它不等价于 composition strength、layer strength 或 namespace 排序。</span></li>
+        <li><span class="zh">如果页面同时出现 `SceneGraphPrimAPI`、`Backdrop` 和 `NodeGraphNodeAPI`，可以按职责拆开：scene graph 显示名和分组、背景矩形分区、单个节点的布局 metadata。</span></li>
+        <li><span class="zh">中文层应保留 `NodeGraphNodeAPI`、`node graph`、`ui:nodegraph:node:pos`、`displayColor`、`stackingOrder` 等字面量，方便用户在 schema 文件、USDA 示例和工具脚本中直接检索。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">节点图节点 UI metadata API：</span><span class="en">NodeGraphNodeAPI</span></li>
+        <li><span class="zh">节点图中的节点位置属性：</span><span class="en">ui:nodegraph:node:pos</span></li>
+        <li><span class="zh">节点图中的节点显示颜色：</span><span class="en">ui:nodegraph:node:displayColor</span></li>
+        <li><span class="zh">节点图中的节点层叠顺序：</span><span class="en">ui:nodegraph:node:stackingOrder</span></li>
+        <li><span class="zh">节点图背景分组 schema：</span><span class="en">Backdrop</span></li>
+        <li><span class="zh">USD 着色网络模块：</span><span class="en">UsdShade</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
