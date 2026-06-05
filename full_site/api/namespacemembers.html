@@ -54,6 +54,27 @@
         <li><span class="zh">类型别名：</span><span class="en">typedef</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-126">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`Namespace Members` 是 Doxygen namespace 成员总索引页，适合在只知道 free function、operator、typedef 或 helper 名称时反查所属 namespace。它不是某个模块的教程页，而是把 `ShaderMetadataHelpers`、`VdfTestUtils`、`pxr_tsl`、`pxr_CLI` 和 `std` 等不同 namespace 的成员放在同一个交叉引用入口中。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Namespace Members while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">阅读本页时先判断条目类型：带 `()` 的通常是函数或 operator，`operator&lt;&lt;()` 是运算符重载，`robin_pg_map` / `robin_pg_set` 这类条目是 typedef 或 using alias。</span></li>
+        <li><span class="zh">`ShaderMetadataHelpers` 条目通常服务 shader metadata 解析和发现流程，应和 `Sdr`、`Ndr`、shader node discovery 文档一起看，而不是单独解释成普通字符串工具。</span></li>
+        <li><span class="zh">`VdfTestUtils::CreateSpeculationExecutor()` 属于 Vdf 测试和执行图工具链；它出现在 namespace 总索引中，是因为成员按 namespace 归类，而不是因为它和 shader metadata 同域。</span></li>
+        <li><span class="zh">`pxr_tsl` 中的 robin hash map/set 类型反映底层容器选择；中文导读只说明用途和阅读路径，类型名、namespace 名和 template 参数必须保留英文原样。</span></li>
+        <li><span class="zh">本页和 `namespacemembers_func.html`、`namespacemembers_type.html` 的关系是总览与过滤页关系：若只查函数可进入 function 过滤页，若只查 typedef 可进入 type 过滤页。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">命名空间成员总索引：</span><span class="en">Namespace Members</span></li>
+        <li><span class="zh">非成员函数：</span><span class="en">free function</span></li>
+        <li><span class="zh">运算符重载：</span><span class="en">operator overload</span></li>
+        <li><span class="zh">类型别名：</span><span class="en">typedef</span></li>
+        <li><span class="zh">shader metadata helper 命名空间：</span><span class="en">ShaderMetadataHelpers</span></li>
+        <li><span class="zh">Vdf 测试工具命名空间：</span><span class="en">VdfTestUtils</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

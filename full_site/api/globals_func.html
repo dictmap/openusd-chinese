@@ -54,6 +54,27 @@
         <li><span class="zh">解析器上下文：</span><span class="en">resolver context</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-126">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`globals_func.html` 是文件级函数总索引，按字母段汇总 OpenUSD 的 free functions、C API 风格 helper 和跨模块工具函数。页面开头常见 `Arch*` 和 `Ar*` 条目，分别指向平台基础设施与 asset resolution；它们不是 class member method，也不属于单一模块教程。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for File Members - Functions while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`ArchAbort()`、`ArchDebuggerAttach()`、`ArchDebuggerTrap()` 和 `ArchDebuggerWait()` 属于 `debugger.h` / platform utility 范畴，适合排查调试器、崩溃和 trap 行为。</span></li>
+        <li><span class="zh">`ArchAbsPath()`、`ArchCloseAllFiles()`、`ArchCommitVirtualMemoryRange()`、`ArchAlignedAlloc()` 等条目跨文件系统、daemon、virtual memory 和内存对齐工具，不能按 USD schema API 解读。</span></li>
+        <li><span class="zh">`ArchBitPatternToDouble()`、`ArchBitPatternToFloat()`、`ArchCountTrailingZeros()` 等函数属于低层位模式和数学工具；需要签名时应跳转到对应头文件页面。</span></li>
+        <li><span class="zh">`Ar*` 函数和 resolver context 相关条目应按 asset resolution 入口阅读，和 `ArResolver`、`ArResolverContext`、package utilities 以及 Python resolver context 对照。</span></li>
+        <li><span class="zh">作为总索引页，本页的正确用法是从函数名定位到具体头文件或模块页；中文导读不改写函数名，也不把底层 utility 误标为用户指南内容。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">文件级函数总索引：</span><span class="en">File Members - Functions</span></li>
+        <li><span class="zh">文件级非成员函数：</span><span class="en">free functions</span></li>
+        <li><span class="zh">Arch 平台工具：</span><span class="en">Arch utilities</span></li>
+        <li><span class="zh">调试器工具：</span><span class="en">debugger utilities</span></li>
+        <li><span class="zh">虚拟内存：</span><span class="en">virtual memory</span></li>
+        <li><span class="zh">解析器上下文：</span><span class="en">resolver context</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

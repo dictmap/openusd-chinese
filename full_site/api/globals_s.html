@@ -54,6 +54,27 @@
         <li><span class="zh">spec 规格对象：</span><span class="en">spec</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-126">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`globals_s.html` 是 File Members 的 `s` 字母段索引，主要聚合 `SDF_*` 宏、`Sdf*` free functions、Sdf 类型和若干 scene description helper。它的价值是定位头文件和符号入口，而不是替代 `SdfLayer`、`SdfPath`、`SdfPrimSpec` 等具体 API 页面。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for File Members - S while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`SDF_DEFINE_ABSTRACT_FILE_FORMAT`、`SDF_DEFINE_FILE_FORMAT`、`SDF_FILE_FORMAT_FACTORY_ACCESS` 等宏应按 file format plugin 注册和工厂访问机制理解，宏名必须保持英文原样。</span></li>
+        <li><span class="zh">`SdfAnchorAssetPaths()` 与 `SdfComputeAssetPathRelativeToLayer()` 关注 asset path 和 layer 的相对定位；阅读时应同时检查参数中的 layer、anchor path 和 authored path。</span></li>
+        <li><span class="zh">`SdfComposeTimeSampleMaps()` 指向 time samples 的组合逻辑，适合和 layer stack、value resolution 语境一起阅读，而不是把它看成普通 map merge 工具。</span></li>
+        <li><span class="zh">`SdfCreatePrimInLayer()`、`SdfCreatePrimAttributeInLayer()`、`SdfCreateRelationshipInLayer()` 和 `SdfCreateVariantInLayer()` 是 layer authoring helper，最终结果仍要落到 Sdf spec 对象。</span></li>
+        <li><span class="zh">本页条目跨越宏、函数和类型；中文说明只帮助分类和导航，具体签名、默认参数、错误语义仍应跳转到对应头文件或目标 API 页面核对。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">File Members 的 S 字母段：</span><span class="en">File Members - S</span></li>
+        <li><span class="zh">Sdf 宏：</span><span class="en">SDF_* macro</span></li>
+        <li><span class="zh">文件格式插件：</span><span class="en">file format plugin</span></li>
+        <li><span class="zh">资产路径：</span><span class="en">asset path</span></li>
+        <li><span class="zh">时间采样：</span><span class="en">time samples</span></li>
+        <li><span class="zh">写入辅助函数：</span><span class="en">authoring helper</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
