@@ -44,6 +44,27 @@
 <li><span class="zh">官方示例使用 OpenVDBAsset 作为密度场资产，保留 USDA 片段以便核对 field:extinction、filePath 和 fieldName 的写法。</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-073">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Volume 补充中文优先的 schema 用途、数据范围/类型阅读路径、schema 边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds Chinese-first schema purpose, data range and type reading paths, schema boundaries, and terminology for Volume while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`Volume` 是可渲染体积容器，用于表达 smoke、fire 等 volume effect；它继承 `Gprim` 和 `Imageable`，因此可以变换、渲染、绑定材质并参与 purpose/visibility 控制。</span></li>
+        <li><span class="zh">体积数据不直接写在 `Volume` 上，而是通过 `field:*` relationships 指向 `VolumeFieldBase` 派生 prim；关系名如 `field:extinction` 或 `field:density` 会映射到 volume shader 的同名输入。</span></li>
+        <li><span class="zh">示例中的 `OpenVDBAsset` prim 通过 `filePath` 指向 `/vdbdata/smoke_plume.101.vdb`，再用 `fieldName = &quot;density&quot;` 指定文件内部 grid/field。</span></li>
+        <li><span class="zh">`Volume` 页面应和 `usdVol overview`、`OpenVDBAsset`、`Field3DAsset`、`VolumeFieldAsset`、`VolumeFieldBase` 一起读，以区分容器 prim、外部文件资产和具体体积字段。</span></li>
+        <li><span class="zh">已有早期中文导读说明了基本用途；本轮补强重点是 `field:*` relationship、shader 输入映射和外部体积数据路径，不改变原 USDA 片段。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">可渲染体积 prim：</span><span class="en">Volume</span></li>
+        <li><span class="zh">体积效果：</span><span class="en">volume effect</span></li>
+        <li><span class="zh">体积字段关系：</span><span class="en">field:* relationship</span></li>
+        <li><span class="zh">体积场基础 schema：</span><span class="en">VolumeFieldBase</span></li>
+        <li><span class="zh">消光字段关系：</span><span class="en">field:extinction</span></li>
+        <li><span class="zh">体积着色器：</span><span class="en">volume shader</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

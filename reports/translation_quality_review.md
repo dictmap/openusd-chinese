@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T07:20:50.757Z
+Generated: 2026-06-05T07:29:25.883Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-05T07:20:50.757Z
 
 ## Grade Counts
 
-- draft_template_only: 26
-- draft_needs_translation: 372
+- draft_template_only: 21
+- draft_needs_translation: 377
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -41,13 +41,8 @@ Generated: 2026-06-05T07:20:50.757Z
 | 298 | draft_template_only | 64 | `full_site/release/search.html` | 搜索 / Search - Universal Scene Description 26.05 documentation |
 | 69 | draft_template_only | 66 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | API 页面草稿：hf Directory / hf Directory |
 | 212 | draft_template_only | 66 | `full_site/api/journal_8h.html` | API 页面草稿：journal.h File / journal.h File |
-| 382 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html` | 页面草稿：ParticleFieldOrientationAttributeAPI / ParticleFieldOrientationAttributeAPI |
-| 383 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html` | 页面草稿：ParticleFieldPositionAttributeAPI / ParticleFieldPositionAttributeAPI |
-| 386 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html` | 页面草稿：ParticleFieldScaleAttributeAPI / ParticleFieldScaleAttributeAPI |
-| 387 | draft_template_only | 74 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html` | 页面草稿：ParticleFieldSphericalHarmonicsAttributeAPI / ParticleFieldSphericalHarmonicsAttributeAPI |
 | 67 | draft_template_only | 106 | `full_site/api/copy_utils_8h.html` | API 页面草稿：copyUtils.h File / copyUtils.h File |
 | 405 | draft_template_only | 136 | `full_site/release/wp_usdshade.html` | UsdShade 材质分配 / UsdShade Material Assignment |
-| 389 | draft_template_only | 154 | `full_site/release/user_guides/schemas/usdVol/Volume.html` | 体积 Volume / Volume |
 | 398 | draft_template_only | 160 | `full_site/release/wp_render_settings.html` | USD 渲染设置提案 / Render Settings in USD Proposal |
 | 393 | draft_template_only | 161 | `full_site/release/user_guides/variable_expressions.html` | USD 变量表达式 / USD Variable Expressions |
 | 391 | draft_template_only | 162 | `full_site/release/user_guides/schemas/usdVol/VolumeFieldBase.html` | 体积场基础类 VolumeFieldBase / VolumeFieldBase |
@@ -59,6 +54,11 @@ Generated: 2026-06-05T07:20:50.757Z
 | 118 | draft_needs_translation | 185 | `full_site/api/functions_p.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
 | 144 | draft_needs_translation | 185 | `full_site/api/functions_vars_m.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 | 134 | draft_needs_translation | 189 | `full_site/api/functions_vars_c.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
+| 137 | draft_needs_translation | 190 | `full_site/api/functions_vars_f.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
+| 395 | draft_needs_translation | 190 | `full_site/release/wp_asset_previews.html` | USD 中的资产预览 / Asset Previews in USD |
+| 128 | draft_needs_translation | 191 | `full_site/api/functions_t.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
+| 140 | draft_needs_translation | 194 | `full_site/api/functions_vars_i.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
+| 404 | draft_needs_translation | 195 | `full_site/release/wp_usdlux_for_renderers.html` | 面向渲染器需求的 UsdLux / Adapting UsdLux to the Needs of Renderers |
 
 ## All Pages
 
@@ -445,14 +445,14 @@ Generated: 2026-06-05T07:20:50.757Z
 | 379 | draft_needs_translation | bilingual_draft | 234 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianEllipsoidAPI.html` |
 | 380 | draft_needs_translation | bilingual_draft | 235 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html` |
 | 381 | draft_needs_translation | bilingual_draft | 352 | 17/15 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html` |
-| 382 | draft_template_only | bilingual_draft | 70 | 5/8 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html` |
-| 383 | draft_template_only | bilingual_draft | 70 | 5/8 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html` |
+| 382 | draft_needs_translation | bilingual_draft | 359 | 17/15 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html` |
+| 383 | draft_needs_translation | bilingual_draft | 364 | 17/15 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html` |
 | 384 | draft_needs_translation | bilingual_draft | 238 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html` |
 | 385 | draft_needs_translation | bilingual_draft | 262 | 12/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldRadianceBaseAPI.html` |
-| 386 | draft_template_only | bilingual_draft | 70 | 5/8 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html` |
-| 387 | draft_template_only | bilingual_draft | 74 | 6/9 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html` |
+| 386 | draft_needs_translation | bilingual_draft | 340 | 17/15 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html` |
+| 387 | draft_needs_translation | bilingual_draft | 323 | 18/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html` |
 | 388 | draft_needs_translation | bilingual_draft | 213 | 12/9 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/usdVol_toc.html` |
-| 389 | draft_template_only | bilingual_draft | 154 | 6/5 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/Volume.html` |
+| 389 | draft_needs_translation | bilingual_draft | 439 | 18/12 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/Volume.html` |
 | 390 | draft_needs_translation | bilingual_draft | 206 | 18/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/VolumeFieldAsset.html` |
 | 391 | draft_template_only | bilingual_draft | 162 | 13/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/VolumeFieldBase.html` |
 | 392 | draft_template_only | bilingual_draft | 162 | 7/6 | 0 | 0 | `full_site/release/user_guides/time_and_animated_values.html` |

@@ -35,6 +35,27 @@
       <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
       <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="release-quality-pass-073">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 ParticleFieldOrientationAttributeAPI 补充中文优先的 schema 用途、数据范围/类型阅读路径、schema 边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds Chinese-first schema purpose, data range and type reading paths, schema boundaries, and terminology for ParticleFieldOrientationAttributeAPI while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`ParticleFieldOrientationAttributeAPI` 定义 ParticleField orientation data 的 applied schema，用于给每个粒子或 splat 提供朝向数据。</span></li>
+        <li><span class="zh">`orientations` 与 `orientationsh` 分别提供 float 和 half 类型，便于在精度和数据 footprint 之间取舍；消费者如果两者都存在，应优先使用 float version。</span></li>
+        <li><span class="zh">orientation 数组长度应与 position data 的长度一致；position data 来自任意 `ParticleFieldPositionBaseAPI` 派生 schema，因此位置数据是对齐其他逐粒子属性的基准。</span></li>
+        <li><span class="zh">如果 orientation 数组太长，会按 position 定义的粒子数量 truncate；如果太短，则该数据会被 ignored，避免不完整数组被误解释为有效粒子朝向。</span></li>
+        <li><span class="zh">阅读本页时应和 `ParticleFieldPositionAttributeAPI`、`ParticleFieldScaleAttributeAPI` 和 `ParticleField3DGaussianSplat` 一起核对，以理解每个 splat 的空间姿态。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">粒子场朝向属性 API：</span><span class="en">ParticleFieldOrientationAttributeAPI</span></li>
+        <li><span class="zh">朝向数据：</span><span class="en">orientation data</span></li>
+        <li><span class="zh">float 朝向数组：</span><span class="en">orientations</span></li>
+        <li><span class="zh">half 朝向数组：</span><span class="en">orientationsh</span></li>
+        <li><span class="zh">粒子场位置基础 API：</span><span class="en">ParticleFieldPositionBaseAPI</span></li>
+        <li><span class="zh">截断 / 忽略：</span><span class="en">truncated / ignored</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

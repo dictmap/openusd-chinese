@@ -1,5 +1,26 @@
 # 工作记录
 
+## 第 204 轮：usdVol particle attribute 与 Volume 页面精修
+- 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、git 状态和远端 main，确认上一轮远端提交为 `ef1d011`，当前分级为 `draft_template_only` 26 / `draft_needs_translation` 372 / `good_bilingual` 8。
+- 本轮严格只处理 5 个未达标页面：`full_site/release/user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html`、`full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html`、`full_site/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html`、`full_site/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html`、`full_site/release/user_guides/schemas/usdVol/Volume.html`，没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_release_batch_073.mjs`，每页插入 `release-quality-pass-073` 中文精修导读区块，覆盖 schema 用途、数据范围/类型阅读路径、schema 边界和术语对照；保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录。
+- 本轮中文层覆盖：`ParticleFieldOrientationAttributeAPI` 的 `orientations`/`orientationsh`、float/half 取舍、position 长度对齐和 truncate/ignored 规则；`ParticleFieldPositionAttributeAPI` 的 `positions`/`positionsh`、粒子数量定义和空数组语义；`ParticleFieldScaleAttributeAPI` 的 linear scales、PLY `log-format` transformed data、`scales`/`scalesh`；`ParticleFieldSphericalHarmonicsAttributeAPI` 的 `radiance:sphericalHarmonicsDegree`、coefficients、float/half 系数和 view-dependent radiance；`Volume` 的 `field:*` relationship、`VolumeFieldBase` 派生 prim、`field:extinction`、`OpenVDBAsset`、`filePath`、`fieldName` 和 volume shader 输入映射。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 26 / `draft_needs_translation` 372 / `good_bilingual` 8 变为 `draft_template_only` 21 / `draft_needs_translation` 377 / `good_bilingual` 8；本轮 5 页均从模板草稿转入 `draft_needs_translation`。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`，报告索引审计通过，总验证 281 checks passed / 0 failed。
+- GitHub 同步：验证通过后使用 `scripts/sync_openusd_to_github.ps1`，提交信息为 `OpenUSD bilingual round 204: usdVol particle attributes volume`。
+
+差距：
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是完整翻译每一个 particle attribute 或 Volume 页面的全部属性、示例、数组布局、数学定义和渲染器实现细节。
+- 全量仍有 21 个 `draft_template_only` 和 377 个 `draft_needs_translation`，后续需要继续按每轮最多 5 页推进。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理 `full_site/release/user_guides/schemas/usdVol/VolumeFieldBase.html`，并从 `translation_quality_review` 中再选择 4 个未达标但用户可读价值高的 API/release/class/group 页面；若剩余模板草稿主要是低价值 `search.html`、目录页或 `_source.html`，可少于 5 页处理。
+2. 对 `VolumeFieldBase` 补中文用途说明、抽象基类边界、field/resource 关系和术语对照；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+3. 保持本地链接策略，验证通过后同步 GitHub，并记录质量分级变化、验证结果和提交结果。
+
 ## 第 203 轮：usdVol field/particle schema 页面精修
 - 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、git 状态和远端 main，确认上一轮远端提交为 `95af2a8`，当前分级为 `draft_template_only` 31 / `draft_needs_translation` 367 / `good_bilingual` 8。
 - 本轮严格只处理 5 个未达标页面：`full_site/release/user_guides/schemas/usdVol/FieldBase.html`、`full_site/release/user_guides/schemas/usdVol/overview.html`、`full_site/release/user_guides/schemas/usdVol/ParticleField.html`、`full_site/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html`、`full_site/release/user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html`，没有新增或处理第 6 页。
