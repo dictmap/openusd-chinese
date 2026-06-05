@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-mixed-quality-pass-058">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 object.h File 补充中文优先的页面定位、阅读路径、概念边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first page positioning, reading paths, concept boundaries, and terminology for object.h File while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`object.h File` 是 USD scenegraph object 基础类型的 header 参考页，核心类是 `UsdObject`。</span></li>
+        <li><span class="zh">`UsdObject` 是 `UsdPrim`、`UsdProperty`、`UsdAttribute`、`UsdRelationship` 等 scenegraph object 的公共基类，提供共同 API 和对象类型查询基础。</span></li>
+        <li><span class="zh">`UsdObjType` 枚举包含 `UsdTypeObject`、`UsdTypePrim`、`UsdTypeProperty`、`UsdTypeAttribute`、`UsdTypeRelationship`、`Usd_NumObjTypes`，用于表示 USD object 的类型层级。</span></li>
+        <li><span class="zh">`UsdIsSubtype()` 判断 `subType` 是否等于或派生自 `baseType`，`UsdIsConvertible()` 判断对象类型是否可转换，`UsdIsConcrete()` 判断是否为具体对象类型，即 Prim、Attribute 或 Relationship。</span></li>
+        <li><span class="zh">本页 include 链接很多，涉及 `UsdStage`、`prim_data_8h.html`、`SdfPath`、`TfToken`、schema registry、value type 和 stage load rules；阅读时先抓 object type 语义，再按需要看源码。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 对象基类：</span><span class="en">UsdObject</span></li>
+        <li><span class="zh">USD 对象类型枚举：</span><span class="en">UsdObjType</span></li>
+        <li><span class="zh">类型子类判断：</span><span class="en">UsdIsSubtype</span></li>
+        <li><span class="zh">类型可转换判断：</span><span class="en">UsdIsConvertible</span></li>
+        <li><span class="zh">具体对象类型判断：</span><span class="en">UsdIsConcrete</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

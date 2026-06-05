@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T00:13:52.159Z
+Generated: 2026-06-05T00:20:02.524Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-05T00:13:52.159Z
 
 ## Grade Counts
 
-- draft_template_only: 100
-- draft_needs_translation: 298
+- draft_template_only: 95
+- draft_needs_translation: 303
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -37,7 +37,6 @@ Generated: 2026-06-05T00:13:52.159Z
 | 243 | draft_template_only | 62 | `full_site/api/pxr_display_filter_adapter_8h_source.html` | 源码页面草稿：pxrDisplayFilterAdapter.h / pxrDisplayFilterAdapter.h |
 | 244 | draft_template_only | 62 | `full_site/api/riley_param_schema_8h_source.html` | 源码页面草稿：rileyParamSchema.h / rileyParamSchema.h |
 | 254 | draft_template_only | 62 | `full_site/api/system_diagnostics_8h_source.html` | 源码页面草稿：systemDiagnostics.h / systemDiagnostics.h |
-| 255 | draft_template_only | 62 | `full_site/api/tf_page_front.html` | API 模块草稿：Tf: Tools Foundations / Tf: Tools Foundations |
 | 278 | draft_template_only | 62 | `full_site/api/var_8h_source.html` | 源码页面草稿：var.h / var.h |
 | 314 | draft_template_only | 62 | `full_site/release/tut_usd_tutorials.html` | 页面草稿：USD Tutorials / USD Tutorials |
 | 315 | draft_template_only | 62 | `full_site/release/tut_usdview_plugin.html` | 页面草稿：Creating a Usdview Plugin / Creating a Usdview Plugin |
@@ -59,6 +58,7 @@ Generated: 2026-06-05T00:13:52.159Z
 | 277 | draft_template_only | 66 | `full_site/api/usddraco_page_front.html` | API 模块草稿：UsdDraco: Draco File Format Plugin / UsdDraco: Draco File Format Plugin |
 | 294 | draft_template_only | 66 | `full_site/release/press_opensource_announce.html` | 开源公告 / Open Source Announcement |
 | 295 | draft_template_only | 66 | `full_site/release/press_opensource_release.html` | 开源发布 / Open Source Release |
+| 305 | draft_template_only | 66 | `full_site/release/tut_end_to_end.html` | 页面草稿：End to End Example / End to End Example |
 
 ## All Pages
 
@@ -316,12 +316,12 @@ Generated: 2026-06-05T00:13:52.159Z
 | 250 | draft_needs_translation | bilingual_draft | 441 | 40/37 | 0 | 0 | `full_site/api/struct_usd_geom_tokens_type.html` |
 | 251 | draft_needs_translation | bilingual_draft | 381 | 40/37 | 0 | 0 | `full_site/api/struct_usd_lux_tokens_type.html` |
 | 252 | draft_needs_translation | bilingual_draft | 411 | 40/37 | 0 | 0 | `full_site/api/struct_usd_physics_tokens_type.html` |
-| 253 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/struct_usd_skel_tokens_type.html` |
+| 253 | draft_needs_translation | bilingual_draft | 397 | 40/37 | 0 | 0 | `full_site/api/struct_usd_skel_tokens_type.html` |
 | 254 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/system_diagnostics_8h_source.html` |
-| 255 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/tf_page_front.html` |
-| 256 | draft_template_only | bilingual_draft | 86 | 8/10 | 0 | 0 | `full_site/api/trace_page_front.html` |
-| 257 | draft_template_only | bilingual_draft | 98 | 11/13 | 0 | 0 | `full_site/api/usd_2usd_2object_8h.html` |
-| 258 | draft_template_only | bilingual_draft | 70 | 4/6 | 0 | 0 | `full_site/api/usd_app_utils_page_front.html` |
+| 255 | draft_needs_translation | bilingual_draft | 334 | 13/10 | 0 | 0 | `full_site/api/tf_page_front.html` |
+| 256 | draft_needs_translation | bilingual_draft | 320 | 19/16 | 0 | 0 | `full_site/api/trace_page_front.html` |
+| 257 | draft_needs_translation | bilingual_draft | 332 | 22/19 | 0 | 0 | `full_site/api/usd_2usd_2object_8h.html` |
+| 258 | draft_needs_translation | bilingual_draft | 405 | 15/12 | 0 | 0 | `full_site/api/usd_app_utils_page_front.html` |
 | 259 | draft_template_only | bilingual_draft | 134 | 20/22 | 0 | 0 | `full_site/api/usd_geom_page_front.html` |
 | 260 | draft_template_only | bilingual_draft | 66 | 3/5 | 0 | 0 | `full_site/api/usd_hydra_page_front.html` |
 | 261 | draft_template_only | bilingual_draft | 102 | 12/14 | 0 | 0 | `full_site/api/usd_lux_page_front.html` |

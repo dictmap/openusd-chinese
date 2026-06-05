@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-mixed-quality-pass-058">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Trace: Performance tracking 补充中文优先的页面定位、阅读路径、概念边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first page positioning, reading paths, concept boundaries, and terminology for Trace: Performance tracking while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`Trace: Performance tracking` 是 OpenUSD 的性能跟踪模块入口，用于 counting、timing、measuring 和 recording events。</span></li>
+        <li><span class="zh">`TraceCollector` 负责记录 `TraceEvent` 对象，`TraceReporter` 负责基于 `TraceCollector` 收集到的事件生成 reports；这三者是本页最核心的类链接。</span></li>
+        <li><span class="zh">Instrumentation 通过在代码里添加 `TRACE` macros 完成，示例需要包含 `pxr/base/trace/trace.h`；Python tracing 也被支持。</span></li>
+        <li><span class="zh">Recording and Reporting 与 Performance Overhead 小节用于判断何时开启 tracing、如何收集报告、以及 instrumentation 对性能的影响边界。</span></li>
+        <li><span class="zh">阅读时先看 Overview 和 Instrumentation，再跳到 `Trace Details`；如果只想定位 API，优先查 `TraceCollector`、`TraceEvent`、`TraceReporter` 和 `trace_8h.html`。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">性能跟踪：</span><span class="en">Trace</span></li>
+        <li><span class="zh">跟踪事件收集器：</span><span class="en">TraceCollector</span></li>
+        <li><span class="zh">跟踪事件：</span><span class="en">TraceEvent</span></li>
+        <li><span class="zh">跟踪报告器：</span><span class="en">TraceReporter</span></li>
+        <li><span class="zh">埋点/插桩：</span><span class="en">instrumentation</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
