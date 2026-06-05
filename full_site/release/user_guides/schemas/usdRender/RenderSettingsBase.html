@@ -35,6 +35,27 @@
       <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
       <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="release-quality-pass-071">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 RenderSettingsBase 补充中文优先的 schema 用途、属性/关系阅读路径、领域边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds Chinese-first schema purpose, property and relationship reading paths, domain boundaries, and terminology for RenderSettingsBase while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`RenderSettingsBase` 是抽象基础类，用来定义可同时出现在 `RenderSettings` prim 或 `RenderProduct` prim 上的渲染设置。</span></li>
+        <li><span class="zh">`aspectRatioConformPolicy` 处理 camera aperture 与 image aspect ratio 不一致时的适配策略；它需要和 `Camera` aperture、`resolution`、`pixelAspectRatio` 一起读。</span></li>
+        <li><span class="zh">`camera` relationship 指定渲染相机；如果未显式指定，渲染器可能使用默认相机或 viewport 当前相机，因此正式输出流程应避免依赖不明确默认值。</span></li>
+        <li><span class="zh">`dataWindowNDC`、`disableDepthOfField` 和 `disableMotionBlur` 这类属性属于渲染控制层，不改变 scene geometry；它们表达渲染调用如何采样和裁剪画面。</span></li>
+        <li><span class="zh">示例 `NoBlurRenderSettings` 用 `disableMotionBlur = 1` 演示关闭运动模糊；中文层只解释属性语义，属性名、关系名和示例代码继续保留英文原样。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">渲染设置基础类：</span><span class="en">RenderSettingsBase</span></li>
+        <li><span class="zh">宽高比适配策略：</span><span class="en">aspectRatioConformPolicy</span></li>
+        <li><span class="zh">渲染相机关系：</span><span class="en">camera</span></li>
+        <li><span class="zh">输出分辨率：</span><span class="en">resolution</span></li>
+        <li><span class="zh">NDC 数据窗口：</span><span class="en">dataWindowNDC</span></li>
+        <li><span class="zh">禁用运动模糊：</span><span class="en">disableMotionBlur</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

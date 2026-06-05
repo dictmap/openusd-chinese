@@ -35,6 +35,27 @@
       <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
       <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="release-quality-pass-071">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 usdUI Overview 补充中文优先的 schema 用途、属性/关系阅读路径、领域边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds Chinese-first schema purpose, property and relationship reading paths, domain boundaries, and terminology for usdUI Overview while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`usdUI` 领域面向通用 user interface metadata，重点是让 DCC Tools、编辑器和资产浏览界面能更好地展示 USD 对象，而不是改变场景求值或渲染结果。</span></li>
+        <li><span class="zh">本页的 node graph 示例使用 `NodeGraphNodeAPI` 描述节点位置、颜色和展开状态，用 `Backdrop` 组织复杂节点网络，并保留 Material/Shader 关系路径。</span></li>
+        <li><span class="zh">`SceneGraphPrimAPI`、`ObjectHints`、`PrimHints`、`PropertyHints` 和 `AttributeHints` 负责显示名、分组、隐藏状态、条件显示和其他 UI hints。</span></li>
+        <li><span class="zh">无障碍信息由 `AccessibilityAPI` 覆盖；这类元数据面向 assistive UI，和几何、材质、灯光 schema 的职责不同。</span></li>
+        <li><span class="zh">阅读本页应把 `usdUI` 看成工具界面的协作层：它帮助用户理解和操作复杂网络，但不会替代 `UsdShade`、`UsdLux` 或 `UsdRender` 的核心数据语义。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD UI schema 领域：</span><span class="en">usdUI</span></li>
+        <li><span class="zh">节点图节点 API：</span><span class="en">NodeGraphNodeAPI</span></li>
+        <li><span class="zh">节点图背景框：</span><span class="en">Backdrop</span></li>
+        <li><span class="zh">场景图 prim API：</span><span class="en">SceneGraphPrimAPI</span></li>
+        <li><span class="zh">界面提示：</span><span class="en">UI hints</span></li>
+        <li><span class="zh">无障碍信息 API：</span><span class="en">AccessibilityAPI</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

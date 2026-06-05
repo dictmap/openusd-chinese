@@ -35,6 +35,27 @@
       <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
       <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="release-quality-pass-071">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 usdMedia Overview 补充中文优先的 schema 用途、属性/关系阅读路径、领域边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds Chinese-first schema purpose, property and relationship reading paths, domain boundaries, and terminology for usdMedia Overview while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`usdMedia` 领域用于把 audio、thumbnails 和其他媒体信息关联到 USD assets；它不改变几何或材质，而是补充资产在浏览、播放和 DCC 工具中的媒体语义。</span></li>
+        <li><span class="zh">本页的 `Working With Media` 示例同时展示 `AssetPreviewsAPI` 和 `SpatialAudio`：前者通过 `assetInfo.previews.thumbnails` 提供缩略图，后者通过 `filePath`、`auralMode`、`startTime` 和 `endTime` 描述音频播放。</span></li>
+        <li><span class="zh">阅读时可先把 `AssetPreviewsAPI` 理解为资产浏览器入口，把 `SpatialAudio` 理解为场景时间线上的声音 prim；两者都保留外部资源路径，因此 asset path 和 token 字面量必须原样核对。</span></li>
+        <li><span class="zh">示例中的 `Speech` 与 `Ambient` 代表两类常见音频：定位明确的 spatial audio 和不依赖位置的 ambient audio；实际播放、循环和偏移效果还取决于消费端工具。</span></li>
+        <li><span class="zh">本页是 usdMedia 的概览入口，不是每个属性的完整规范；后续应结合 `AssetPreviewsAPI`、`SpatialAudio` 和 toc 页面继续补齐段落级双语。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 媒体 schema 领域：</span><span class="en">usdMedia</span></li>
+        <li><span class="zh">资产预览 API schema：</span><span class="en">AssetPreviewsAPI</span></li>
+        <li><span class="zh">空间音频 schema：</span><span class="en">SpatialAudio</span></li>
+        <li><span class="zh">缩略图：</span><span class="en">thumbnail</span></li>
+        <li><span class="zh">听觉模式：</span><span class="en">auralMode</span></li>
+        <li><span class="zh">环境音频：</span><span class="en">ambient audio</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

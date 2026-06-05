@@ -35,6 +35,27 @@
       <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
       <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="release-quality-pass-071">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 FieldAsset 补充中文优先的 schema 用途、属性/关系阅读路径、领域边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds Chinese-first schema purpose, property and relationship reading paths, domain boundaries, and terminology for FieldAsset while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`FieldAsset` 已 deprecated，官方建议使用 `VolumeFieldAsset`；因此本页首先应作为迁移提示来读，不应把旧 schema 当作新项目首选。</span></li>
+        <li><span class="zh">它继承 `VolumeFieldAsset` 的 `fieldDataType`、`fieldIndex`、`fieldName`、`filePath` 和 `vectorDataRoleHint` 等属性，用于描述存储在外部文件资产中的体积场数据。</span></li>
+        <li><span class="zh">`filePath` 指向外部体积数据资源，`fieldName` 对应文件内部字段名，`fieldIndex` 可在多个字段或数组场景中定位目标 field；这些属性需要和 Volume 的 `field:*` relationship 一起理解。</span></li>
+        <li><span class="zh">继承自 `Xformable` 和 `Imageable` 的 `xformOpOrder`、`visibility`、`purpose` 等属性说明旧 FieldAsset 仍是场景中的可变换、可显示 prim，但核心语义是体积 field 资源引用。</span></li>
+        <li><span class="zh">后续翻译应把本页与 `VolumeFieldAsset`、`FieldBase`、`Field3DAsset`、`OpenVDBAsset` 和 `Volume` 放在同一阅读链路中，明确旧 schema、抽象基类和具体文件格式 schema 的边界。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">旧体积场资产 schema：</span><span class="en">FieldAsset</span></li>
+        <li><span class="zh">已弃用：</span><span class="en">deprecated</span></li>
+        <li><span class="zh">体积场资产抽象 schema：</span><span class="en">VolumeFieldAsset</span></li>
+        <li><span class="zh">场数据类型：</span><span class="en">fieldDataType</span></li>
+        <li><span class="zh">字段名：</span><span class="en">fieldName</span></li>
+        <li><span class="zh">外部资源路径：</span><span class="en">filePath</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
