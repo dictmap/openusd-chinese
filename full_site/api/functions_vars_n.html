@@ -53,6 +53,27 @@
         <li><span class="zh">骨骼引导数据：</span><span class="en">skel guide data</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-081">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Variables - N 增补 API 索引页二次精修说明，重点解释 Doxygen 字母桶的阅读方式、跨模块条目的归类边界，以及何时应跳转到目标 class 或 schema 文档。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - Variables - N API index page. It explains how to read Doxygen letter buckets, how to group cross-module entries, and when to jump to the target class or schema documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">N 段成员变量页主要聚合 name、node、network、num、new 等变量名，实际跨越 Tf 内存诊断、Hydra primvar、shader discovery、validation、Pcp changes 和 Vdf scheduling。</span></li>
+        <li><span class="zh">`TfMallocTag::CallTree::PathNode` 与 `TfMallocTag::CallStackInfo` 是内存标记、调用树和调用栈诊断入口；这些条目适合和性能/内存定位一起阅读。</span></li>
+        <li><span class="zh">`HdPrimvarDescriptor`、`HdStShaderCode::NamedTextureHandle`、`HdxPickHit` 与 `UsdSkelImagingSkelGuideData` 属于 Hydra/Storm/picking/skel imaging 语境。</span></li>
+        <li><span class="zh">`UsdUtilsRegisteredVariantSet`、`UsdValidationValidatorMetadata`、`Validator` 与 `SdrShaderNodeDiscoveryResult` 指向 variant set 注册、验证器元数据和 shader node discovery。</span></li>
+        <li><span class="zh">`PcpLayerStackChanges`、`PcpDependentNamespaceEdits::CompositionFieldEdit`、`PcpNamespaceEdits::CacheSite`、`SdfNamespaceEdit` 与 `VdfScheduleNode` 表明本页也包含 composition change、namespace edit 和执行调度状态。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">调用树路径节点：</span><span class="en">call tree path node</span></li>
+        <li><span class="zh">调用栈信息：</span><span class="en">call stack info</span></li>
+        <li><span class="zh">primvar 描述符：</span><span class="en">primvar descriptor</span></li>
+        <li><span class="zh">具名纹理句柄：</span><span class="en">named texture handle</span></li>
+        <li><span class="zh">已注册变体集：</span><span class="en">registered variant set</span></li>
+        <li><span class="zh">图层栈变更：</span><span class="en">layer stack changes</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

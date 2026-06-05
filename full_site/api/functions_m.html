@@ -53,6 +53,27 @@
         <li><span class="zh">聚合节点：</span><span class="en">aggregate node</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-081">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - M 增补 API 索引页二次精修说明，重点解释 Doxygen 字母桶的阅读方式、跨模块条目的归类边界，以及何时应跳转到目标 class 或 schema 文档。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - M API index page. It explains how to read Doxygen letter buckets, how to group cross-module entries, and when to jump to the target class or schema documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">M 段类成员把 `Make*`、`Map*`、`Match*`、`Merge*`、`Move*` 等命名聚在一起；阅读时应先识别所属模块，再跳转到具体 class 页面确认函数签名。</span></li>
+        <li><span class="zh">`SdfPathExpression`、`SdfBooleanExpression`、`SdfPredicateExpression`、`SdfVariableExpression` 和 `SdfPathExpressionEval&lt;DomainType&gt;` 是路径表达式、谓词表达式和变量表达式求值线索，适合和 collection filtering 一起阅读。</span></li>
+        <li><span class="zh">`UsdGeomImageable`、`UsdGeomXformable`、`UsdPrim`、`UsdPrimCompositionQueryArc`、`UsdSchemaRegistry` 与 `UsdEditTarget` 是用户常见 USD core/geometry/schema/editing 入口。</span></li>
+        <li><span class="zh">`PcpMapExpression`、`PcpMapFunction`、`PcpArc` 和 `PcpDependency` 指向 composition path mapping；这些条目和 `HdChangeTracker`、`HdEmbreeRenderer`、`VdfParallelTaskSync`、`TraceCollector` 只是同属 M 字母桶。</span></li>
+        <li><span class="zh">本页的中文说明重点帮助用户区分 expression evaluation、composition mapping、USD scenegraph、Hydra render tracking、Trace/Vdf performance 几类线索，避免把索引页当作连续说明文。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">路径表达式：</span><span class="en">path expression</span></li>
+        <li><span class="zh">谓词表达式：</span><span class="en">predicate expression</span></li>
+        <li><span class="zh">编辑目标：</span><span class="en">edit target</span></li>
+        <li><span class="zh">映射函数：</span><span class="en">map function</span></li>
+        <li><span class="zh">变化追踪器：</span><span class="en">change tracker</span></li>
+        <li><span class="zh">并行任务同步：</span><span class="en">parallel task sync</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
