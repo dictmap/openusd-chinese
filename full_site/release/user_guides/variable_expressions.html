@@ -65,6 +65,27 @@
         <li><span class="zh">运行时求值：</span><span class="en">runtime evaluation</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-113">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`Variable Expressions` 是 USD 中运行时求值的字符串表达机制，可由 layer metadata 里的 `expressionVariables` 驱动 asset path、reference、payload、metadata、variant selection 等值。它适合表达可配置资产路径和选择项，而不是替代普通属性创作。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for USD Variable Expressions while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`expressionVariables` 定义在 layer metadata 中，常见值类型包括 string、bool、int64、数组和 `None`。这些变量会在表达式求值时参与替换。</span></li>
+        <li><span class="zh">USDA 示例中的反引号表达式必须保留原样，例如 `@`&quot;${ASSET_PATH}/extraAssets.usda&quot;`@` 和 ```${VARIANT_CHOICE}``` 这类语法决定解析行为。</span></li>
+        <li><span class="zh">变量表达式可用于 references、payloads、asset-valued attributes、metadata 和 variant selections；但并非所有属性值都适合变量化，读者应确认目标字段支持表达式。</span></li>
+        <li><span class="zh">`ASSET_PATH` 与 `VARIANT_CHOICE` 分别展示路径和变体选择的动态化。一个影响 asset resolution，一个影响 composition 中选择哪个 variant。</span></li>
+        <li><span class="zh">变量表达式会增加运行时配置能力，也会增加调试成本。发布资产时应记录默认变量、可选值和求值上下文，避免在不同工具中得到不一致结果。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">表达式变量 metadata：</span><span class="en">expressionVariables</span></li>
+        <li><span class="zh">变量表达式：</span><span class="en">variable expression</span></li>
+        <li><span class="zh">asset 类型属性：</span><span class="en">asset-valued attributes</span></li>
+        <li><span class="zh">变体选择：</span><span class="en">variant selection</span></li>
+        <li><span class="zh">示例资产路径变量：</span><span class="en">ASSET_PATH</span></li>
+        <li><span class="zh">示例变体选择变量：</span><span class="en">VARIANT_CHOICE</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

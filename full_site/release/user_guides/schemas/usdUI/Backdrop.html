@@ -54,6 +54,27 @@
         <li><span class="zh">视觉提示：</span><span class="en">visual indication</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-113">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`Backdrop` 是 usdUI 中用于 node graph 可视化组织的 schema。它把一组相关节点放在可见的背景矩形中，帮助作者理解材质网络、程序节点或 UI graph 的逻辑分区；它不改变 shader、material、连接或计算结果。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for Backdrop while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Backdrop` 的核心语义是 visual grouping。它通常表现为 colored rectangle，用于把多个 graph node 放到同一个视觉区域，而不是创建新的执行节点。</span></li>
+        <li><span class="zh">示例中 `NodeGraphNodeAPI` 仍然控制单个节点的 `ui:nodegraph:node:pos`、颜色或排序等 UI 元数据；`Backdrop` 则描述节点组的背景和区域。</span></li>
+        <li><span class="zh">在复杂 `UsdShade` 或 MaterialX 网络中，Backdrop 可以表达“这些节点属于同一功能块”，例如颜色处理、纹理采样、混合或输出阶段。</span></li>
+        <li><span class="zh">中文说明应保留 `Backdrop`、`NodeGraphNodeAPI`、`node graph`、`colored rectangle` 等术语，因为这些名称会出现在 schema、UI 和工具脚本中。</span></li>
+        <li><span class="zh">Backdrop 属于 authoring UI hint，不是渲染指令。即使渲染器忽略它，材质网络的语义仍由 shader prim、inputs、outputs 和 connections 决定。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">节点图背景分组 schema：</span><span class="en">Backdrop</span></li>
+        <li><span class="zh">节点图：</span><span class="en">node graph</span></li>
+        <li><span class="zh">视觉分组：</span><span class="en">visual grouping</span></li>
+        <li><span class="zh">彩色背景矩形：</span><span class="en">colored rectangle</span></li>
+        <li><span class="zh">节点图单节点 UI 元数据 API：</span><span class="en">NodeGraphNodeAPI</span></li>
+        <li><span class="zh">节点图中的节点位置属性：</span><span class="en">ui:nodegraph:node:pos</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

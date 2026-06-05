@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T20:56:22.086Z
+Generated: 2026-06-05T21:06:05.197Z
 
 ## Summary
 
@@ -58,7 +58,7 @@ Generated: 2026-06-05T20:56:22.086Z
 | 7 | draft_needs_translation | 289 | `full_site/api/arch_page_front.html` | Arch：架构相关 / Arch: Architecture Dependent |
 | 96 | draft_needs_translation | 289 | `full_site/api/functions_func_o.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
 | 196 | draft_needs_translation | 290 | `full_site/api/globals_v.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
-| 362 | draft_needs_translation | 290 | `full_site/release/user_guides/schemas/usdUI/Backdrop.html` | 页面草稿：Backdrop / Backdrop |
+| 71 | draft_needs_translation | 291 | `full_site/api/files.html` | API 页面草稿：File List / File List |
 
 ## All Pages
 
@@ -388,7 +388,7 @@ Generated: 2026-06-05T20:56:22.086Z
 | 322 | draft_needs_translation | bilingual_draft | 541 | 24/18 | 0 | 0 | `full_site/release/user_guides/namespace_editing.html` |
 | 323 | draft_needs_translation | bilingual_draft | 333 | 16/14 | 0 | 0 | `full_site/release/user_guides/primvars.html` |
 | 324 | draft_needs_translation | bilingual_draft | 380 | 16/14 | 0 | 0 | `full_site/release/user_guides/render_user_guide.html` |
-| 325 | draft_needs_translation | bilingual_draft | 313 | 12/9 | 0 | 0 | `full_site/release/user_guides/schemas/index.html` |
+| 325 | draft_needs_translation | bilingual_draft | 582 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/index.html` |
 | 326 | draft_needs_translation | bilingual_draft | 670 | 35/26 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/BoundableLightBase.html` |
 | 327 | draft_needs_translation | bilingual_draft | 546 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/CylinderLight.html` |
 | 328 | draft_needs_translation | bilingual_draft | 531 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/DiskLight.html` |
@@ -424,8 +424,8 @@ Generated: 2026-06-05T20:56:22.086Z
 | 358 | draft_needs_translation | bilingual_draft | 1070 | 48/32 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderVar.html` |
 | 359 | draft_needs_translation | bilingual_draft | 704 | 36/23 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/usdRender_toc.html` |
 | 360 | draft_needs_translation | bilingual_draft | 518 | 24/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/AccessibilityAPI.html` |
-| 361 | draft_needs_translation | bilingual_draft | 295 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/AttributeHints.html` |
-| 362 | draft_needs_translation | bilingual_draft | 290 | 12/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/Backdrop.html` |
+| 361 | draft_needs_translation | bilingual_draft | 545 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/AttributeHints.html` |
+| 362 | draft_needs_translation | bilingual_draft | 552 | 24/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/Backdrop.html` |
 | 363 | draft_needs_translation | bilingual_draft | 621 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/NodeGraphNodeAPI.html` |
 | 364 | draft_needs_translation | bilingual_draft | 536 | 24/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/ObjectHints.html` |
 | 365 | draft_needs_translation | bilingual_draft | 360 | 15/13 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/overview.html` |
@@ -455,8 +455,8 @@ Generated: 2026-06-05T20:56:22.086Z
 | 389 | draft_needs_translation | bilingual_draft | 439 | 18/12 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/Volume.html` |
 | 390 | draft_needs_translation | bilingual_draft | 557 | 30/24 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/VolumeFieldAsset.html` |
 | 391 | draft_needs_translation | bilingual_draft | 441 | 25/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/VolumeFieldBase.html` |
-| 392 | draft_needs_translation | bilingual_draft | 441 | 19/13 | 0 | 0 | `full_site/release/user_guides/time_and_animated_values.html` |
-| 393 | draft_needs_translation | bilingual_draft | 419 | 18/12 | 0 | 0 | `full_site/release/user_guides/variable_expressions.html` |
+| 392 | draft_needs_translation | bilingual_draft | 653 | 31/20 | 0 | 0 | `full_site/release/user_guides/time_and_animated_values.html` |
+| 393 | draft_needs_translation | bilingual_draft | 687 | 30/19 | 0 | 0 | `full_site/release/user_guides/variable_expressions.html` |
 | 394 | draft_needs_translation | bilingual_draft | 514 | 23/17 | 0 | 0 | `full_site/release/wp_ar2.html` |
 | 395 | draft_needs_translation | bilingual_draft | 480 | 23/17 | 0 | 0 | `full_site/release/wp_asset_previews.html` |
 | 396 | draft_needs_translation | bilingual_draft | 521 | 28/22 | 0 | 0 | `full_site/release/wp_connectable_nodes.html` |

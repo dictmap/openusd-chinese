@@ -65,6 +65,27 @@
         <li><span class="zh">时间码重映射：</span><span class="en">timeCode remapping</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-113">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`Time and Animated Values` 说明 USD 如何通过 `TimeCode` 和 `timeSamples` 表达动画值。`TimeCode` 是无单位 double 时间坐标，实际播放和帧率解释需要结合 `timeCodesPerSecond`、`framesPerSecond`、layer offset 和 clips 等元数据。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for Time and Animated Values while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`timeSamples` 是属性在多个时间坐标上的取值表，例如 `1 : 0`、`25 : 10`、`99 : 5`。这些数字是时间键，不是数组下标。</span></li>
+        <li><span class="zh">`TimeCode` 不直接等同于 FPS 或 SMPTE。相同的 time sample 键在不同 `timeCodesPerSecond` 设置下可对应不同实际秒数。</span></li>
+        <li><span class="zh">`startTimeCode` 和 `endTimeCode` 描述 stage 或 layer 的播放范围；它们不会自动创建动画，只定义时间线边界或默认查看范围。</span></li>
+        <li><span class="zh">composition 中可能出现 automatic 或 explicit timeCode remapping。通过 reference、sublayer 或 clips 引入动画时，时间可以被 offset 或 scale。</span></li>
+        <li><span class="zh">维护中文层时应保留 `TimeCode`、`timeSamples`、`timeCodesPerSecond`、`framesPerSecond`、`LayerOffset` 等术语，避免把时间偏移误解成几何空间位移。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 无单位时间坐标：</span><span class="en">TimeCode</span></li>
+        <li><span class="zh">属性时间采样值表：</span><span class="en">timeSamples</span></li>
+        <li><span class="zh">每秒时间码数 metadata：</span><span class="en">timeCodesPerSecond</span></li>
+        <li><span class="zh">每秒帧数 metadata：</span><span class="en">framesPerSecond</span></li>
+        <li><span class="zh">开始时间码：</span><span class="en">startTimeCode</span></li>
+        <li><span class="zh">结束时间码：</span><span class="en">endTimeCode</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

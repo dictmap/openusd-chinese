@@ -3079,3 +3079,20 @@
 - GitHub 同步：使用 `OpenUSD bilingual round 243: specs formats katana namespace accessibility pass` 提交并推送。
 - 当前差距：全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`；其中 387 页为 `draft_needs_translation`、11 页为 `draft_template_only`，`bilingual_draft` 仍不是完整翻译。
 - 下一轮最多 5 页目标：`full_site/release/user_guides/schemas/usdUI/Backdrop.html`、`full_site/release/user_guides/schemas/usdUI/AttributeHints.html`、`full_site/release/user_guides/schemas/index.html`、`full_site/release/user_guides/variable_expressions.html`、`full_site/release/user_guides/time_and_animated_values.html`。
+## 第 244 轮：usdUI Backdrop/AttributeHints、Schema Domains、Variable Expressions 与 Time Values 补强
+
+- 复核当前仓库与远端：上一轮同步提交为 `16ddbe0`，本地 `main` 与 `origin/main` 一致。
+- 新增并执行 `scripts/refine_openusd_release_batch_113.mjs`，标记 `release-quality-pass-113`。
+- 本轮严格只处理 5 页：
+  - `full_site/release/user_guides/schemas/usdUI/Backdrop.html`
+  - `full_site/release/user_guides/schemas/usdUI/AttributeHints.html`
+  - `full_site/release/user_guides/schemas/index.html`
+  - `full_site/release/user_guides/variable_expressions.html`
+  - `full_site/release/user_guides/time_and_animated_values.html`
+- 每页新增 5 条中文导读和 6 条术语对照；API 名称、schema 名称、属性名、代码片段、token 字面量、表达式语法与链接保持原样。
+- 质量回读：5 页均为 `draft_needs_translation`，坏编码 0，非预期官方外跳 0；中文字符分别为 552、545、582、687、653；中文/英文块分别为 24/17、24/18、24/16、30/19、31/20。
+- 分级计数保持不变：`draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因是本轮页面原本已经属于 `draft_needs_translation`，本轮为二次补强，不是模板草稿晋级。
+- 验证：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs`、`validate_openusd_api_repro.ps1` 均通过；链接路由 `files_changed=0`，总验证 `PASSED`。
+- GitHub 同步：使用 `OpenUSD bilingual round 244: usdUI schema time variables pass` 提交并推送。
+- 当前差距：全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`；其中 387 页为 `draft_needs_translation`、11 页为 `draft_template_only`，`bilingual_draft` 仍不是完整翻译。
+- 下一轮最多 5 页目标：`full_site/release/user_guides/schemas/usdUI/ObjectHints.html`、`full_site/release/user_guides/schemas/usdUI/PrimHints.html`、`full_site/release/user_guides/schemas/usdUI/PropertyHints.html`、`full_site/release/user_guides/schemas/usdUI/SceneGraphPrimAPI.html`、`full_site/release/wp_stage_variables.html`。

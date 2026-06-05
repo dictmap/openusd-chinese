@@ -54,6 +54,27 @@
         <li><span class="zh">可选属性值：</span><span class="en">possible values</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-113">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`AttributeHints` 为 UI 中展示的 attribute 提供属性级提示，重点包括 displayName、hidden、valueLabels 和 valueLabelsOrder。它帮助工具把原始属性值映射成更适合用户阅读的标签和排序，不改变属性真实取值。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for AttributeHints while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`valueLabels` 把属性可能的原始值映射到 UI label，例如把 priority 的数字值映射为 `very low`、`med`、`high` 等展示文本。</span></li>
+        <li><span class="zh">`valueLabelsOrder` 指定这些 label 在 UI 中的展示顺序。它影响界面排序，不意味着 USD 属性本身按这个数组存储。</span></li>
+        <li><span class="zh">`displayName` 和 `hidden` 可以来自 ObjectHints，也可以在属性 metadata 中提供；阅读时应区分 prim 级 UI hint 和 attribute 级 UI hint。</span></li>
+        <li><span class="zh">示例中的 `int priority = 1` 仍是实际属性值；UI hint 只是解释如何在用户界面中呈现它。翻译时不要把数字值改写成中文枚举。</span></li>
+        <li><span class="zh">`AttributeHints` 适合和 `ObjectHints`、`PropertyHints` 一起读：一个处理属性值展示，一个处理对象级提示，一个处理 property 级更广泛的 UI metadata。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">属性级 UI 提示 schema：</span><span class="en">AttributeHints</span></li>
+        <li><span class="zh">界面显示名称：</span><span class="en">displayName</span></li>
+        <li><span class="zh">是否在界面隐藏：</span><span class="en">hidden</span></li>
+        <li><span class="zh">属性值到显示标签的映射：</span><span class="en">valueLabels</span></li>
+        <li><span class="zh">显示标签排序：</span><span class="en">valueLabelsOrder</span></li>
+        <li><span class="zh">UI 提示 metadata 字典：</span><span class="en">uiHints</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
