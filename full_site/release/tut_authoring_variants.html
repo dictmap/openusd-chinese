@@ -73,6 +73,27 @@
         <li><span class="zh">非破坏性变体表达：</span><span class="en">non-destructive variation</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-110">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`Authoring Variants` 教程说明如何在同一个 prim 上创作 variant set，并通过 variant selection 切换模型、材质、LOD 或配置差异。它不是复制资产，而是在 USD composition 中把可选意见组织到同一资产结构下。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for Authoring Variants while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`GetVariantSets()`、`AddVariantSet()`、`AddVariant()`、`SetVariantSelection()` 的顺序很重要：先取得变体集合容器，再声明变体集，再添加候选变体，最后选择当前编辑或查看的变体。</span></li>
+        <li><span class="zh">`with variantSet.GetVariantEditContext()` 是把后续 authoring opinions 写入当前 variant 的关键上下文。没有进入该上下文，属性或 prim 编辑可能写到普通 layer opinion 中。</span></li>
+        <li><span class="zh">variant selection 是 composition 输入之一；下游 layer 可以重新选择变体，也可以用更强 opinion 覆盖部分结果。中文说明应把 variant 与普通属性 override 的关系讲清楚。</span></li>
+        <li><span class="zh">变体适合表达同一资产的可选形态，例如模型版本、材质方案、LOD、造型或配置。它不适合表达时间动画帧，也不应和 `timeSamples` 混为一谈。</span></li>
+        <li><span class="zh">本教程应和引用、属性创作、stage variables 等页面一起读：引用决定资产如何组合进来，属性创作决定具体意见，variant set 提供同一 prim 下的可切换分支。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">变体集：</span><span class="en">variant set</span></li>
+        <li><span class="zh">变体选择：</span><span class="en">variant selection</span></li>
+        <li><span class="zh">变体编辑上下文：</span><span class="en">GetVariantEditContext</span></li>
+        <li><span class="zh">组合意见：</span><span class="en">composition opinion</span></li>
+        <li><span class="zh">覆盖意见：</span><span class="en">override</span></li>
+        <li><span class="zh">时间采样数据：</span><span class="en">timeSamples</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

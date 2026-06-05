@@ -77,6 +77,27 @@
         <li><span class="zh">禁用运动模糊：</span><span class="en">disableMotionBlur</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-110">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`RenderSettingsBase` 是 `RenderSettings` 与 `RenderProduct` 可共享的抽象设置基础类。它把相机关系、分辨率、像素宽高比、NDC 数据窗口、景深和运动模糊开关等成像控制集中定义出来，便于具体 schema 复用。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for RenderSettingsBase while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`camera` relationship 指定渲染相机；如果没有显式指定，工具或渲染器可能回退到 viewport 或默认相机。正式资产或批渲染流程中应优先 author 明确的相机关系。</span></li>
+        <li><span class="zh">`resolution` 与 `pixelAspectRatio` 共同决定输出图像的像素尺寸和像素形状；它们和 `aspectRatioConformPolicy` 一起处理 camera aperture 与 image aspect ratio 的适配。</span></li>
+        <li><span class="zh">`dataWindowNDC` 使用 normalized device coordinates 描述渲染数据窗口。它影响成像裁剪区域，不改变 scene geometry，也不应该被翻译成模型空间包围盒。</span></li>
+        <li><span class="zh">`disableMotionBlur` 与 `disableDepthOfField` 是渲染采样效果控制项。示例 `NoBlurRenderSettings` 只演示关闭运动模糊，不表示 USD scene 中对象没有速度或相机没有焦距。</span></li>
+        <li><span class="zh">本页是基类页，很多属性会在 `RenderSettings` 或 `RenderProduct` 页面再次出现。中文补强应说明继承关系和复用边界，而不是把每个派生 schema 都当成独立定义。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">渲染设置基础 schema：</span><span class="en">RenderSettingsBase</span></li>
+        <li><span class="zh">宽高比适配策略：</span><span class="en">aspectRatioConformPolicy</span></li>
+        <li><span class="zh">渲染相机关系：</span><span class="en">camera</span></li>
+        <li><span class="zh">NDC 数据窗口：</span><span class="en">dataWindowNDC</span></li>
+        <li><span class="zh">禁用景深：</span><span class="en">disableDepthOfField</span></li>
+        <li><span class="zh">禁用运动模糊：</span><span class="en">disableMotionBlur</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

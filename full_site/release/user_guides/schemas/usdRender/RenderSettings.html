@@ -75,6 +75,27 @@
         <li><span class="zh">单次调用：</span><span class="en">single invocation</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-110">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`RenderSettings` 是一次 render invocation 的聚合入口：它把 `RenderSettingsBase` 的相机和成像控制、`products` 关系指向的 `RenderProduct`、以及 `includedPurposes` 等场景过滤条件组织在一起。阅读本页时应先区分全局设置、输出产品和变量通道，再回看具体属性。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for RenderSettings while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`RenderSettings` 不直接表示图像文件或 AOV，它描述渲染调用使用的配置集合；最终文件或 buffer 由 `RenderProduct` 描述，具体通道由 `RenderVar` 描述。</span></li>
+        <li><span class="zh">`products` relationship 是本页的关键关系：它把一个设置 prim 连接到一个或多个输出产品。中文说明应保留 `RenderSettings -&gt; RenderProduct -&gt; RenderVar` 的链条，避免把三个 schema 的职责合并。</span></li>
+        <li><span class="zh">`includedPurposes` 控制哪些 imageable purpose 被纳入渲染，例如 `render`、`default` 这样的 token 字面量。它属于场景可见性和用途过滤语义，不是材质或灯光开关。</span></li>
+        <li><span class="zh">`RenderSettings` 继承 `camera`、`resolution`、`pixelAspectRatio`、`dataWindowNDC`、`disableMotionBlur` 等基类属性；本页读到产品关系时，也要回到 `RenderSettingsBase` 理解成像窗口和采样控制。</span></li>
+        <li><span class="zh">官方提到 renderer-specific global configuration 可以通过 renderer 自动或显式应用的 API schemas 表达。翻译时应保留 `API schemas`、`renderer-specific` 和渲染器名称，避免误写成 USD 核心统一属性。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">渲染设置 prim：</span><span class="en">RenderSettings</span></li>
+        <li><span class="zh">一次渲染调用：</span><span class="en">render invocation</span></li>
+        <li><span class="zh">渲染输出产品关系：</span><span class="en">products</span></li>
+        <li><span class="zh">参与渲染的 imageable purpose 列表：</span><span class="en">includedPurposes</span></li>
+        <li><span class="zh">渲染器特定全局配置：</span><span class="en">renderer-specific global configuration</span></li>
+        <li><span class="zh">可应用的 API schema：</span><span class="en">API schemas</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

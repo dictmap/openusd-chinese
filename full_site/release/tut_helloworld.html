@@ -75,6 +75,27 @@
         <li><span class="zh">环境配置：</span><span class="en">environment configuration</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-110">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`Hello World` 教程是 USD Python 入门的最小可运行闭环：创建 `Usd.Stage`，在 `/hello` 和 `/hello/world` 路径上定义 typed prim，最后把 root layer 保存为 `HelloWorld.usda`。本页价值在于建立 stage、layer、prim path 和 typed schema 的基础关系。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for Hello World - Creating Your First USD Stage while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Usd.Stage.CreateNew('HelloWorld.usda')` 创建可编辑 stage，并把新的 root layer 绑定到目标 `.usda` 文件。中文解释应把 stage 和文件层区分开：stage 是编辑入口，layer 是持久化载体。</span></li>
+        <li><span class="zh">`UsdGeom.Xform.Define(stage, '/hello')` 会在 `/hello` 定义一个 transform prim；`UsdGeom.Sphere.Define(stage, '/hello/world')` 会在其子路径定义球体 prim。路径层级体现 USD namespace。</span></li>
+        <li><span class="zh">`Define` 在目标路径上创建或确保 typed prim 存在，和只查找 prim 的 `GetPrimAtPath` 不同。入门读者需要先理解 authoring API 与 query API 的区别。</span></li>
+        <li><span class="zh">`stage.GetRootLayer().Save()` 是闭环的最后一步；如果没有保存，内存中的 stage 修改不会写入 `HelloWorld.usda`。保留这行代码对复现实验很重要。</span></li>
+        <li><span class="zh">后续引用、属性创作、遍历和变体教程都会复用这个 stage 思路。维护本页时应优先保证代码顺序、路径字面量和 `.usda` 文件名不被翻译或改写。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">创建新 USD stage：</span><span class="en">Usd.Stage.CreateNew</span></li>
+        <li><span class="zh">定义 Xform typed prim：</span><span class="en">UsdGeom.Xform.Define</span></li>
+        <li><span class="zh">定义 Sphere typed prim：</span><span class="en">UsdGeom.Sphere.Define</span></li>
+        <li><span class="zh">prim 路径字面量：</span><span class="en">/hello/world</span></li>
+        <li><span class="zh">stage 的根层：</span><span class="en">root layer</span></li>
+        <li><span class="zh">教程输出的 USD 文本文件：</span><span class="en">HelloWorld.usda</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
