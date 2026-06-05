@@ -2,6 +2,24 @@
 
 源页面：<https://openusd.org/release/api/index.html>
 
+## 第 210 轮：API 成员索引 T/I/V/O/D 页二次精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `817fdd9`，当前分级为 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8。
+- 本轮严格只处理 5 个未达标页面：`full_site/api/functions_t.html`、`full_site/api/functions_vars_i.html`、`full_site/api/functions_v.html`、`full_site/api/functions_o.html`、`full_site/api/functions_vars_d.html`；这些页面本轮开始时均已是 `draft_needs_translation`，本轮目标是补强 Doxygen API 索引页的中文阅读方法和模块归类，不新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_release_batch_079.mjs`，为 5 页插入 `release-quality-pass-079` API 索引页二次精修导读区块；每页补充 Doxygen 字母桶阅读方法、跨模块条目归类、跳转边界和术语对照，同时保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录。
+- 本轮中文覆盖：`functions_t.html` 补强 Vdf executor/Tf/Pcp error/UsdPhysics/TokensType 索引归类；`functions_vars_i.html` 补强 imaging/instancer/primvar、Sdr/schema registry、Vdf scheduling/data vectors、Sdf/Pcp/physics/validation 变量线索；`functions_v.html` 补强 validation context/validator、Vdf iterators、Exec value overrides、geometry/skeleton/schema 条目；`functions_o.html` 补强 Ar resolver/package/layer、Pcp/Sdf namespace、Hydra handles/schema、pick/display/trace 条目；`functions_vars_d.html` 补强 RenderVar/render buffer/camera、Tf spin mutex、Pcp cache/errors、physics material/joint drive、validation metadata。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级保持 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8；本轮处理对象原本已是 `draft_needs_translation`，因此分级计数保持不变是预期结果。5 页中文正文量已提升到 `573-593` 字区间，仍保持 `bilingual_draft` 状态，未误标为完成。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398 个 `bilingual_draft` 页面全部具备本地可检查 HTML 和最终入口链接，`failed_pages` 为 0。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`，报告索引通过，总验证 `PASSED`，`validation_required_checks` 281 / `validation_failed_checks` 0。
+- GitHub 同步计划：验证通过后使用提交信息 `OpenUSD bilingual round 210: api index t i v o d pass` 推送本轮 HTML、脚本、报告和 `work.md`。
+
+差距与下一轮：
+
+- 当前 398 个 `bilingual_draft` 仍不是完整段落级翻译；本轮是对已有 API 索引 draft 页做二次质量补强，分级计数不变是预期结果。
+- 剩余 `draft_template_only` 11 页基本是 `_source.html` 源码页、`search.html` 或目录页；下一轮优先最多处理 `full_site/api/functions_u.html`、`full_site/api/functions_vars_a.html`、`full_site/api/functions_h.html`、`full_site/api/functions_r.html`、`full_site/api/functions_l.html`，之后可继续 `functions_m.html`、`functions_vars_o.html`、`functions_s.html`、`functions_vars_n.html`、`functions_vars_e.html`，继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+
 ## 第 209 轮：API 成员索引页二次精修
 已完成：
 

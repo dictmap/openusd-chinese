@@ -53,6 +53,27 @@
         <li><span class="zh">Prim 索引输入：</span><span class="en">prim index inputs</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-079">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - V 增补 API 索引页二次精修说明，重点解释 Doxygen 字母桶的阅读方式、跨模块条目的归类边界，以及何时应跳转到目标 class 或 schema 文档。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - V API index page. It explains how to read Doxygen letter buckets, how to group cross-module entries, and when to jump to the target class or schema documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`functions_v.html` 汇总 V 字母类成员，既有函数也有类型和数据成员；它适合做符号导航，不适合作为模块概念的线性讲解。</span></li>
+        <li><span class="zh">USD validation 相关条目应按 validator、validation context、validation error 与 error sites 的职责区分，避免把校验框架看成单个函数调用。</span></li>
+        <li><span class="zh">Vdf iterator、Exec value override 和执行数据条目属于执行系统线索；这些条目需要结合 class 页面理解生命周期、缓存和求值阶段。</span></li>
+        <li><span class="zh">`UsdGeom`、`UsdSkel`、`UsdRi`、`UsdVol` 等 schema 条目说明本页跨越几何、骨骼、RenderMan 兼容和体积域；中文说明只给出导航边界。</span></li>
+        <li><span class="zh">遇到 `value`、`valid`、`visit` 等通用词开头成员时，应依赖所属 class 和命名空间判断意义，而不是只看成员名本身。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">校验上下文：</span><span class="en">validation context</span></li>
+        <li><span class="zh">校验器：</span><span class="en">validator</span></li>
+        <li><span class="zh">值覆盖：</span><span class="en">value override</span></li>
+        <li><span class="zh">迭代器：</span><span class="en">iterator</span></li>
+        <li><span class="zh">schema 条目：</span><span class="en">schema entry</span></li>
+        <li><span class="zh">命名空间：</span><span class="en">namespace</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
