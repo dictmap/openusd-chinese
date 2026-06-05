@@ -54,6 +54,27 @@
         <li><span class="zh">覆盖意见：</span><span class="en">override</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-111">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`Referencing Layers` 讲的是把已有 USD layer 或其中的 prim 作为 reference composition arc 组合进新的 stage。它强调资产复用和非破坏性覆盖：上层 stage 可以引用源资产，再添加更强 opinion，而不需要复制或修改源文件内容。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for Referencing Layers while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`stage = Usd.Stage.Open('HelloWorld.usda')` 先打开源 stage，随后通过 `SetDefaultPrim` 给被引用层指定默认入口；默认 prim 是很多引用工作流能否顺利定位资产根 prim 的关键。</span></li>
+        <li><span class="zh">reference 不是文件复制。它在 composition 阶段把目标 layer 或 prim 的意见组合进当前 prim，因此源资产可以独立发布、缓存和更新。</span></li>
+        <li><span class="zh">`UsdGeom.XformCommonAPI(hello).SetTranslate((4, 5, 6))` 演示在源层上 author transform；后续引用它时，上层仍可追加或覆盖自己的 transform opinion。</span></li>
+        <li><span class="zh">阅读本页要区分 reference、sublayer 和 payload：reference 通常把资产 prim 组合到某个命名空间位置，sublayer 合并整层意见，payload 则偏向可延迟加载的重资产内容。</span></li>
+        <li><span class="zh">本教程是理解 variants、payloads、inherits 和 specializes 的基础。中文层应保留 `composition arc`、`defaultPrim`、`reference` 等英文术语，便于和 USD 组合强度规则对照。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">引用组合弧：</span><span class="en">reference</span></li>
+        <li><span class="zh">默认 prim 入口：</span><span class="en">defaultPrim</span></li>
+        <li><span class="zh">组合弧：</span><span class="en">composition arc</span></li>
+        <li><span class="zh">打开已有 stage：</span><span class="en">Usd.Stage.Open</span></li>
+        <li><span class="zh">设置默认 prim：</span><span class="en">SetDefaultPrim</span></li>
+        <li><span class="zh">上层覆盖意见：</span><span class="en">override opinion</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

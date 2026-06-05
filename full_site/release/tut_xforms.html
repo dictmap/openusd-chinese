@@ -54,6 +54,27 @@
         <li><span class="zh">时间码：</span><span class="en">TimeCode</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-111">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`Transformations, Animation, and Layer Offsets` 把静态几何、`xformOp` 动画、time samples、reference 和 `Sdf.LayerOffset` 放在同一个 spinning top 示例中。它展示 USD 如何在层组合中复用动画，并通过 offset 和 scale 重定时。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for Transformations, Animation, and Layer Offsets while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdGeom.Xform` 与 `xformOp` 描述局部变换栈；阅读动画段落时要关注 op 顺序，因为 translate、rotate、scale 的组合顺序会影响最终变换矩阵。</span></li>
+        <li><span class="zh">`stage.SetStartTimeCode(1)` 和 `stage.SetEndTimeCode(192)` 建立 stage 的时间范围；time samples 则给属性在不同 `TimeCode` 上 author 值。</span></li>
+        <li><span class="zh">`Sdf.LayerOffset` 用于在引用或子层组合时改变时间映射。offset 平移时间，scale 缩放时间，二者可以让同一动画资产在不同 stage 中以不同节奏播放。</span></li>
+        <li><span class="zh">本页不只是变换 API 教程，也是在解释 composition 与时间域的交互。reference 引入动画层后，layer offset 会影响被组合进来的时间采样如何落到当前 stage 时间线上。</span></li>
+        <li><span class="zh">维护中文层时应保留 `UsdGeom.Xform`、`xformOp`、`Sdf.LayerOffset`、`TimeCode`、`time samples` 等术语原样，避免把 layer offset 误解为几何空间偏移。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">变换操作：</span><span class="en">xformOp</span></li>
+        <li><span class="zh">时间采样：</span><span class="en">time samples</span></li>
+        <li><span class="zh">USD 时间码：</span><span class="en">TimeCode</span></li>
+        <li><span class="zh">层时间偏移：</span><span class="en">Sdf.LayerOffset</span></li>
+        <li><span class="zh">时间平移量：</span><span class="en">offset</span></li>
+        <li><span class="zh">时间缩放倍率：</span><span class="en">scale</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

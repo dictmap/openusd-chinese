@@ -54,6 +54,27 @@
         <li><span class="zh">材质绑定：</span><span class="en">material binding</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-111">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`Simple Shading in USD` 演示如何用 `UsdShade` 建立材质网络并绑定到几何体。阅读重点是区分 `Material`、shader prim、input/output 连接、纹理坐标读取和 material binding，而不是把它当作单纯的贴图路径示例。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for Simple Shading in USD while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdPreviewSurface` 是跨工具预览材质的核心 shader 标识；`UsdUVTexture` 和 `UsdPrimvarReader_float2` 则分别承担纹理采样和 UV primvar 读取角色。</span></li>
+        <li><span class="zh">示例通常先创建 model root 和 geometry，再创建 `Material` 与 shading network，最后把材质绑定到几何体。这个顺序对应资产发布时常见的组织结构。</span></li>
+        <li><span class="zh">`inputs` 与 `outputs` 是理解 UsdShade graph 的关键：纹理节点输出连接到 surface shader 输入，material 的 surface output 再连接到最终 shader 输出。</span></li>
+        <li><span class="zh">`UsdShade.MaterialBindingAPI` 表达材质绑定关系；绑定本身不修改 mesh 拓扑，也不等同于把材质数据复制到每个 face 上。</span></li>
+        <li><span class="zh">保留 `UsdPreviewSurface`、`UsdUVTexture`、`UsdPrimvarReader_float2`、`st` 等 token 字面量非常重要，因为 DCC、Hydra 和渲染器会按这些名字解释网络语义。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 着色和材质网络框架：</span><span class="en">UsdShade</span></li>
+        <li><span class="zh">USD 预览表面 shader：</span><span class="en">UsdPreviewSurface</span></li>
+        <li><span class="zh">USD UV 纹理 shader：</span><span class="en">UsdUVTexture</span></li>
+        <li><span class="zh">float2 primvar 读取 shader：</span><span class="en">UsdPrimvarReader_float2</span></li>
+        <li><span class="zh">材质绑定 API：</span><span class="en">MaterialBindingAPI</span></li>
+        <li><span class="zh">常用纹理坐标 primvar 名：</span><span class="en">st</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

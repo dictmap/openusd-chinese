@@ -54,6 +54,27 @@
         <li><span class="zh">带类型 schema：</span><span class="en">typed schema</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-111">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`Hello World Redux` 回到入门示例，但把重点从 `UsdGeom.Xform.Define` / `UsdGeom.Sphere.Define` 转向 `stage.DefinePrim(path, typeName)`。这页适合用来理解 USD 文件中的类型名字符串如何映射到 typed prim，以及工具在缺少高级 schema 封装时如何保持通用 authoring 能力。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for Hello World Redux - Using Generic Prims while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`stage.DefinePrim('/hello', 'Xform')` 和 `stage.DefinePrim('/hello/world', 'Sphere')` 直接使用 typeName 字符串；中文说明应保留 `Xform`、`Sphere` 和路径字面量，避免把它们翻译成普通描述词。</span></li>
+        <li><span class="zh">Generic Prims 的价值在工具链中尤其明显：导入器、转换器或检查器可能不知道某个扩展 schema 的专用 Python wrapper，但仍可通过 typeName 创建或保留对应 prim。</span></li>
+        <li><span class="zh">与 `Hello World` 教程相比，本页不是改变 scene 结果，而是改变 authoring API 路径。两个教程生成的层级相近，差别在于强类型 schema API 与通用 `DefinePrim` 的取舍。</span></li>
+        <li><span class="zh">`HelloWorldRedux.usda` 是教程输出文件名，不能翻译或改写；它用于和前一页 `HelloWorld.usda` 对比，展示同一基本结构可由不同 API 风格创作。</span></li>
+        <li><span class="zh">读者应把本页看作兼容性教程：typed schema API 更易读、更安全，generic API 更适合未知类型、批处理和跨插件 schema 的工具场景。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">按路径和 typeName 定义 prim：</span><span class="en">stage.DefinePrim</span></li>
+        <li><span class="zh">通用 prim 创作方式：</span><span class="en">Generic Prims</span></li>
+        <li><span class="zh">USD prim 类型名字串：</span><span class="en">typeName</span></li>
+        <li><span class="zh">变换 prim 类型名：</span><span class="en">Xform</span></li>
+        <li><span class="zh">球体 prim 类型名：</span><span class="en">Sphere</span></li>
+        <li><span class="zh">本教程输出层文件：</span><span class="en">HelloWorldRedux.usda</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

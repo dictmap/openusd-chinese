@@ -54,6 +54,27 @@
         <li><span class="zh">灯光链接：</span><span class="en">light-linking</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-111">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`Collections and Patterns` 说明如何用 `CollectionAPI` 描述场景中的成员集合。核心是区分 relationship-mode 与 expression-mode：前者通过显式 include/exclude 关系维护成员，后者通过 `membershipExpression` 和路径模式动态计算成员。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for Collections and Patterns while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">collection 可以包含 prim、property，也可以包含其他 collection；它常被 light-linking、material binding、visibility 控制和批量工具用于表达一组异质对象。</span></li>
+        <li><span class="zh">relationship-mode 使用 `collection:name:includes` 和 `collection:name:excludes` 关系来维护成员。它清晰、可审计，适合成员较稳定或需要明确列举的集合。</span></li>
+        <li><span class="zh">expression-mode 使用 `pathExpression collection:name:membershipExpression` 按路径模式计算成员。它适合大规模命名空间匹配，但读者必须理解 pattern 语法和 expansion rule。</span></li>
+        <li><span class="zh">同一个 collection 不应混用两种模式。`collection:name:mode` 的值决定消费端应按关系目标还是表达式计算成员，混淆会导致成员结果不可预测。</span></li>
+        <li><span class="zh">示例里的 `CollectionAPI:relCollection`、`CollectionAPI:expCollection`、`/World/Clothing/Shirts/Red*//` 都应原样保留；中文解释只补充成员计算和下游消费语义。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">集合 API schema：</span><span class="en">CollectionAPI</span></li>
+        <li><span class="zh">关系目标模式：</span><span class="en">relationship-mode</span></li>
+        <li><span class="zh">表达式模式：</span><span class="en">expression-mode</span></li>
+        <li><span class="zh">成员表达式：</span><span class="en">membershipExpression</span></li>
+        <li><span class="zh">包含关系目标：</span><span class="en">includes</span></li>
+        <li><span class="zh">排除关系目标：</span><span class="en">excludes</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

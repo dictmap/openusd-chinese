@@ -6196,3 +6196,34 @@
 1. 继续最多 5 页，优先处理存在且更薄、用户会实际阅读的教程和用户指南页。
 2. 建议处理：`full_site/release/tut_helloworld_redux.html`、`full_site/release/tut_referencing_layers.html`、`full_site/release/tut_simple_shading.html`、`full_site/release/tut_xforms.html`、`full_site/release/user_guides/collections_and_patterns.html`。
 3. 后续继续按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面，低优先处理 `_source.html`、`search.html` 和目录页。
+## 第 242 轮：HelloWorld Redux、Referencing、Simple Shading、Xforms 与 Collections 补强
+
+已完成：
+
+- 复核当前 git 状态、远端和审计报告：本地 `main` 基于上一轮同步提交 `44d70a8`，`origin/main` 一致。
+- 新增并执行 `scripts/refine_openusd_release_batch_111.mjs`，本轮标记为 `release-quality-pass-111`。
+- 严格只精修 5 页：
+  - `full_site/release/tut_helloworld_redux.html`
+  - `full_site/release/tut_referencing_layers.html`
+  - `full_site/release/tut_simple_shading.html`
+  - `full_site/release/tut_xforms.html`
+  - `full_site/release/user_guides/collections_and_patterns.html`
+- 每页补入 5 条中文二次精修导读和 6 条术语对照：覆盖 `stage.DefinePrim` 与 generic prim、reference composition arc、`UsdShade` 材质网络、`xformOp` / `Sdf.LayerOffset` 动画重定时，以及 `CollectionAPI` 的 relationship-mode 与 expression-mode。
+- 质量回读显示 5 页均为 `draft_needs_translation`，坏编码 0，非预期官方外跳 0：
+  - `tut_helloworld_redux.html`：中文字符 566，中文/英文块 24/18。
+  - `tut_referencing_layers.html`：中文字符 541，中文/英文块 24/18。
+  - `tut_simple_shading.html`：中文字符 520，中文/英文块 25/19。
+  - `tut_xforms.html`：中文字符 526，中文/英文块 26/20。
+  - `collections_and_patterns.html`：中文字符 549，中文/英文块 24/18。
+- 本轮分级计数保持不变：`draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因：处理对象开始前已经是 `draft_needs_translation`，本轮属于二次补强精修，不是从模板草稿晋级。
+- 已运行并通过：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1`；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步结果：本轮验证通过后使用 `OpenUSD bilingual round 242: redux references shading xforms collections pass` 提交并推送。
+
+当前差距：
+- 全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`，`bilingual_draft` 仍不是完整翻译。
+- 剩余质量队列中 11 页仍为 `draft_template_only`，基本是 `_source.html`、`search.html` 或目录页；其余 387 页仍需继续逐轮补强。
+
+下一轮目标：
+1. 继续最多 5 页，优先处理存在且较薄的 release 规格、教程和用户指南页。
+2. 建议处理：`full_site/release/spec.html`、`full_site/release/tut_converting_between_layer_formats.html`、`full_site/release/tut_variants_example_in_katana.html`、`full_site/release/user_guides/namespace_editing.html`、`full_site/release/user_guides/schemas/usdUI/AccessibilityAPI.html`。
+3. 后续继续按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面，低优先处理 `_source.html`、`search.html` 和目录页。

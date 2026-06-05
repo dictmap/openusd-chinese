@@ -3045,3 +3045,20 @@
 - GitHub 同步：使用 `OpenUSD bilingual round 241: render settings hello variants pass` 提交并推送。
 - 当前差距：全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`；其中 387 页为 `draft_needs_translation`、11 页为 `draft_template_only`，`bilingual_draft` 仍不是完整翻译。
 - 下一轮最多 5 页目标：`full_site/release/tut_helloworld_redux.html`、`full_site/release/tut_referencing_layers.html`、`full_site/release/tut_simple_shading.html`、`full_site/release/tut_xforms.html`、`full_site/release/user_guides/collections_and_patterns.html`。
+## 第 242 轮：HelloWorld Redux、Referencing、Simple Shading、Xforms 与 Collections 补强
+
+- 复核当前仓库与远端：上一轮同步提交为 `44d70a8`，本地 `main` 与 `origin/main` 一致。
+- 新增并执行 `scripts/refine_openusd_release_batch_111.mjs`，标记 `release-quality-pass-111`。
+- 本轮严格只处理 5 页：
+  - `full_site/release/tut_helloworld_redux.html`
+  - `full_site/release/tut_referencing_layers.html`
+  - `full_site/release/tut_simple_shading.html`
+  - `full_site/release/tut_xforms.html`
+  - `full_site/release/user_guides/collections_and_patterns.html`
+- 每页新增 5 条中文导读和 6 条术语对照；API 名称、属性名、代码片段、教程文件名、token 字面量、路径表达式与链接保持原样。
+- 质量回读：5 页均为 `draft_needs_translation`，坏编码 0，非预期官方外跳 0；中文字符分别为 566、541、520、526、549；中文/英文块分别为 24/18、24/18、25/19、26/20、24/18。
+- 分级计数保持不变：`draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因是本轮页面原本已经属于 `draft_needs_translation`，本轮为二次补强，不是模板草稿晋级。
+- 验证：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs`、`validate_openusd_api_repro.ps1` 均通过；链接路由 `files_changed=0`，总验证 `PASSED`。
+- GitHub 同步：使用 `OpenUSD bilingual round 242: redux references shading xforms collections pass` 提交并推送。
+- 当前差距：全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`；其中 387 页为 `draft_needs_translation`、11 页为 `draft_template_only`，`bilingual_draft` 仍不是完整翻译。
+- 下一轮最多 5 页目标：`full_site/release/spec.html`、`full_site/release/tut_converting_between_layer_formats.html`、`full_site/release/tut_variants_example_in_katana.html`、`full_site/release/user_guides/namespace_editing.html`、`full_site/release/user_guides/schemas/usdUI/AccessibilityAPI.html`。

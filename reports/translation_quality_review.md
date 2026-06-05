@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T20:35:03.593Z
+Generated: 2026-06-05T20:46:06.093Z
 
 ## Summary
 
@@ -42,12 +42,10 @@ Generated: 2026-06-05T20:35:03.593Z
 | 69 | draft_template_only | 66 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | API 页面草稿：hf Directory / hf Directory |
 | 233 | draft_needs_translation | 273 | `full_site/api/namespacemembers.html` | 命名空间参考草稿：Namespace Members / Namespace Members |
 | 192 | draft_needs_translation | 274 | `full_site/api/globals_s.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
-| 307 | draft_needs_translation | 274 | `full_site/release/tut_helloworld_redux.html` | 页面草稿：Hello World Redux - Using Generic Prims / Hello World Redux - Using Generic Prims |
 | 185 | draft_needs_translation | 275 | `full_site/api/globals_func.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
 | 154 | draft_needs_translation | 276 | `full_site/api/functions_vars_w.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 | 95 | draft_needs_translation | 277 | `full_site/api/functions_func_n.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
 | 101 | draft_needs_translation | 277 | `full_site/api/functions_func_t.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
-| 311 | draft_needs_translation | 277 | `full_site/release/tut_referencing_layers.html` | 页面草稿：Referencing Layers / Referencing Layers |
 | 54 | draft_needs_translation | 278 | `full_site/api/class_usd_skel_imaging_data_source_skeleton_prim.html` | 类参考草稿：UsdSkelImagingDataSourceSkeletonPrim Class / UsdSkelImagingDataSourceSkeletonPrim Class |
 | 68 | draft_needs_translation | 278 | `full_site/api/deprecated.html` | API 页面草稿：Deprecated List / Deprecated List |
 | 202 | draft_needs_translation | 281 | `full_site/api/hd_embree_page_front.html` | API 模块草稿：HdEmbree : Embree-based hydra renderer plugin. / HdEmbree : Embree-based hydra renderer plugin. |
@@ -55,10 +53,12 @@ Generated: 2026-06-05T20:35:03.593Z
 | 85 | draft_needs_translation | 283 | `full_site/api/functions_func_d.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
 | 92 | draft_needs_translation | 283 | `full_site/api/functions_func_k.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
 | 152 | draft_needs_translation | 283 | `full_site/api/functions_vars_u.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
-| 312 | draft_needs_translation | 285 | `full_site/release/tut_simple_shading.html` | 页面草稿：Simple Shading in USD / Simple Shading in USD |
 | 153 | draft_needs_translation | 286 | `full_site/api/functions_vars_v.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 | 301 | draft_needs_translation | 286 | `full_site/release/spec.html` | 页面草稿：Specifications / Specifications |
-| 317 | draft_needs_translation | 286 | `full_site/release/tut_xforms.html` | 页面草稿：Transformations, Animation, and Layer Offsets / Transformations, Animation, and Layer Offsets |
+| 64 | draft_needs_translation | 288 | `full_site/api/classes.html` | API 页面草稿：Class Index / Class Index |
+| 7 | draft_needs_translation | 289 | `full_site/api/arch_page_front.html` | Arch：架构相关 / Arch: Architecture Dependent |
+| 96 | draft_needs_translation | 289 | `full_site/api/functions_func_o.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
+| 360 | draft_needs_translation | 289 | `full_site/release/user_guides/schemas/usdUI/AccessibilityAPI.html` | 页面草稿：AccessibilityAPI / AccessibilityAPI |
 
 ## All Pages
 
@@ -370,20 +370,20 @@ Generated: 2026-06-05T20:35:03.593Z
 | 304 | draft_needs_translation | bilingual_draft | 303 | 14/13 | 0 | 0 | `full_site/release/tut_converting_between_layer_formats.html` |
 | 305 | draft_needs_translation | bilingual_draft | 382 | 16/14 | 0 | 0 | `full_site/release/tut_end_to_end.html` |
 | 306 | draft_needs_translation | bilingual_draft | 352 | 17/15 | 0 | 0 | `full_site/release/tut_generating_new_schema.html` |
-| 307 | draft_needs_translation | bilingual_draft | 274 | 12/11 | 0 | 0 | `full_site/release/tut_helloworld_redux.html` |
+| 307 | draft_needs_translation | bilingual_draft | 566 | 24/18 | 0 | 0 | `full_site/release/tut_helloworld_redux.html` |
 | 308 | draft_needs_translation | bilingual_draft | 860 | 37/25 | 0 | 0 | `full_site/release/tut_helloworld.html` |
 | 309 | draft_needs_translation | bilingual_draft | 361 | 16/14 | 0 | 0 | `full_site/release/tut_houdini_example.html` |
 | 310 | draft_needs_translation | bilingual_draft | 764 | 37/26 | 0 | 0 | `full_site/release/tut_inspect_and_author_props.html` |
-| 311 | draft_needs_translation | bilingual_draft | 277 | 12/11 | 0 | 0 | `full_site/release/tut_referencing_layers.html` |
-| 312 | draft_needs_translation | bilingual_draft | 285 | 13/12 | 0 | 0 | `full_site/release/tut_simple_shading.html` |
+| 311 | draft_needs_translation | bilingual_draft | 541 | 24/18 | 0 | 0 | `full_site/release/tut_referencing_layers.html` |
+| 312 | draft_needs_translation | bilingual_draft | 520 | 25/19 | 0 | 0 | `full_site/release/tut_simple_shading.html` |
 | 313 | draft_needs_translation | bilingual_draft | 795 | 36/25 | 0 | 0 | `full_site/release/tut_traversing_stage.html` |
 | 314 | draft_needs_translation | bilingual_draft | 375 | 15/13 | 0 | 0 | `full_site/release/tut_usd_tutorials.html` |
 | 315 | draft_needs_translation | bilingual_draft | 349 | 15/12 | 0 | 0 | `full_site/release/tut_usdview_plugin.html` |
 | 316 | draft_needs_translation | bilingual_draft | 304 | 12/11 | 0 | 0 | `full_site/release/tut_variants_example_in_katana.html` |
-| 317 | draft_needs_translation | bilingual_draft | 286 | 14/13 | 0 | 0 | `full_site/release/tut_xforms.html` |
+| 317 | draft_needs_translation | bilingual_draft | 526 | 26/20 | 0 | 0 | `full_site/release/tut_xforms.html` |
 | 318 | draft_needs_translation | bilingual_draft | 544 | 37/35 | 0 | 0 | `full_site/release/usd_products.html` |
 | 319 | draft_needs_translation | bilingual_draft | 425 | 22/20 | 0 | 0 | `full_site/release/usdfaq.html` |
-| 320 | draft_needs_translation | bilingual_draft | 300 | 12/11 | 0 | 0 | `full_site/release/user_guides/collections_and_patterns.html` |
+| 320 | draft_needs_translation | bilingual_draft | 549 | 24/18 | 0 | 0 | `full_site/release/user_guides/collections_and_patterns.html` |
 | 321 | draft_needs_translation | bilingual_draft | 383 | 16/14 | 0 | 0 | `full_site/release/user_guides/color_user_guide.html` |
 | 322 | draft_needs_translation | bilingual_draft | 309 | 12/11 | 0 | 0 | `full_site/release/user_guides/namespace_editing.html` |
 | 323 | draft_needs_translation | bilingual_draft | 333 | 16/14 | 0 | 0 | `full_site/release/user_guides/primvars.html` |
