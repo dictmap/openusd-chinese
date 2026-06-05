@@ -75,6 +75,27 @@
         <li><span class="zh">数字内容创作工具：</span><span class="en">DCC Tool</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-114">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`PrimHints` 面向 prim 内部属性组的 UI 展示。它可以描述 display groups 的展开状态、显示条件和属性归类方式，使 DCC tool 在展示一个 prim 时更符合作者意图。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for PrimHints while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`displayGroupsExpanded` 控制 display group 初始是否展开，例如示例里 `Controller` 展开、`Widget Settings` 折叠。这是 UI 初始状态，不改变属性值。</span></li>
+        <li><span class="zh">`displayGroupsShownIf` 使用条件表达式决定某个 group 是否显示，例如 `widgetReadOnlyMode == 0`。表达式中的属性名和比较值必须保留原样。</span></li>
+        <li><span class="zh">属性自身通过 `displayGroup` 指定所属组；`PrimHints` 则描述这些组在 prim UI 中如何呈现，两者需要一起读。</span></li>
+        <li><span class="zh">如果只需要改 prim 名称或隐藏整个 prim，应看 `ObjectHints`；如果需要控制某个属性是否显示或属于哪个组，应看 `PropertyHints` 和 `PrimHints`。</span></li>
+        <li><span class="zh">本页的中文补强应突出 UI layout 语义，避免把 display group 误解成 USD namespace scope 或 composition group。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">prim 级 UI 提示 schema：</span><span class="en">PrimHints</span></li>
+        <li><span class="zh">显示组初始展开状态：</span><span class="en">displayGroupsExpanded</span></li>
+        <li><span class="zh">显示组条件显示表达式：</span><span class="en">displayGroupsShownIf</span></li>
+        <li><span class="zh">属性所属显示组：</span><span class="en">displayGroup</span></li>
+        <li><span class="zh">示例条件属性名：</span><span class="en">widgetReadOnlyMode</span></li>
+        <li><span class="zh">界面布局：</span><span class="en">UI layout</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

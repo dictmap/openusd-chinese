@@ -75,6 +75,27 @@
         <li><span class="zh">数字内容创作工具界面：</span><span class="en">DCC tool UI</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-114">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`ObjectHints` 是 usdUI 中最通用的 UI metadata 层，可附加在 prim 或 property 等 USD objects 上。它主要提供 `displayName`、`hidden` 等界面提示，帮助 DCC tool 或编辑器以更可读的方式展示对象，而不改变 composition 或属性真实值。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for ObjectHints while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`uiHints` 是 metadata 字典，示例中的 `displayName = &quot;ModelA placeholder&quot;` 只影响界面显示名称，不会重命名 prim，也不会改变 namespace path。</span></li>
+        <li><span class="zh">`hidden = 1` 表示默认在 UI 中隐藏该对象或属性；它不是 USD 可见性 `visibility`，也不会影响 Hydra 或渲染器是否绘制几何。</span></li>
+        <li><span class="zh">`ObjectHints` 适用于 broader USD object 层级，`PrimHints`、`PropertyHints`、`AttributeHints` 则进一步细化 prim、property 和 attribute 的界面组织。</span></li>
+        <li><span class="zh">示例中 `Placeholder` prim 和 `isAnnotated` attribute 都带有 `uiHints`，说明同一机制可以服务 prim 和 property 两类对象。</span></li>
+        <li><span class="zh">维护中文层时要把 UI metadata 和 scene data 分开：前者服务作者界面和交互体验，后者决定 stage composition、schema 属性和渲染行为。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">通用 USD object UI 提示 schema：</span><span class="en">ObjectHints</span></li>
+        <li><span class="zh">UI metadata 字典：</span><span class="en">uiHints</span></li>
+        <li><span class="zh">界面显示名：</span><span class="en">displayName</span></li>
+        <li><span class="zh">界面隐藏提示：</span><span class="en">hidden</span></li>
+        <li><span class="zh">USD 对象：</span><span class="en">USD objects</span></li>
+        <li><span class="zh">命名空间路径：</span><span class="en">namespace path</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

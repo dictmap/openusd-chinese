@@ -75,6 +75,27 @@
         <li><span class="zh">应用型 API schema：</span><span class="en">applied API schema</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-114">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`SceneGraphPrimAPI` 是 usdUI 中为场景图或节点图 prim 添加描述性 UI 信息的 applied API schema。它可提供 `ui:displayGroup`、`ui:displayName` 等 metadata，帮助编辑器组织节点说明，不改变 shader 连接、material 网络或渲染语义。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for SceneGraphPrimAPI while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">示例中 `prepend apiSchemas = [ &quot;SceneGraphPrimAPI&quot; ]` 表示把该 applied API 附加到 Shader prim；它不是创建新的 shader 类型。</span></li>
+        <li><span class="zh">`ui:displayGroup = &quot;MyMaterial Nodes&quot;` 用于把节点归类到用户界面分组；这和 `UsdShade` graph 的实际连接关系是两层概念。</span></li>
+        <li><span class="zh">`ui:displayName = &quot;Preview Surface Node&quot;` 是编辑器可显示名称，和 prim 名称 `PreviewSurface` 不同；不要把 display name 当作 namespace rename。</span></li>
+        <li><span class="zh">该页面适合和 `NodeGraphNodeAPI`、`Backdrop` 一起读：一个提供 scene graph 描述，一个提供节点位置/样式，一个提供视觉分组背景。</span></li>
+        <li><span class="zh">中文层应明确 SceneGraphPrimAPI 是 editor metadata，不应把它误写成材质执行语义或 Hydra 渲染控制。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">场景图 prim UI metadata API：</span><span class="en">SceneGraphPrimAPI</span></li>
+        <li><span class="zh">应用型 API schema：</span><span class="en">applied API schema</span></li>
+        <li><span class="zh">UI 显示分组属性：</span><span class="en">ui:displayGroup</span></li>
+        <li><span class="zh">UI 显示名称属性：</span><span class="en">ui:displayName</span></li>
+        <li><span class="zh">着色器 prim：</span><span class="en">Shader prim</span></li>
+        <li><span class="zh">编辑器元数据：</span><span class="en">editor metadata</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

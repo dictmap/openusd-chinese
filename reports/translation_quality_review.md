@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T21:06:05.197Z
+Generated: 2026-06-05T21:16:46.152Z
 
 ## Summary
 
@@ -427,11 +427,11 @@ Generated: 2026-06-05T21:06:05.197Z
 | 361 | draft_needs_translation | bilingual_draft | 545 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/AttributeHints.html` |
 | 362 | draft_needs_translation | bilingual_draft | 552 | 24/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/Backdrop.html` |
 | 363 | draft_needs_translation | bilingual_draft | 621 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/NodeGraphNodeAPI.html` |
-| 364 | draft_needs_translation | bilingual_draft | 536 | 24/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/ObjectHints.html` |
+| 364 | draft_needs_translation | bilingual_draft | 747 | 36/24 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/ObjectHints.html` |
 | 365 | draft_needs_translation | bilingual_draft | 360 | 15/13 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/overview.html` |
-| 366 | draft_needs_translation | bilingual_draft | 508 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/PrimHints.html` |
-| 367 | draft_needs_translation | bilingual_draft | 532 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/PropertyHints.html` |
-| 368 | draft_needs_translation | bilingual_draft | 559 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/SceneGraphPrimAPI.html` |
+| 366 | draft_needs_translation | bilingual_draft | 744 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/PrimHints.html` |
+| 367 | draft_needs_translation | bilingual_draft | 735 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/PropertyHints.html` |
+| 368 | draft_needs_translation | bilingual_draft | 758 | 36/23 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/SceneGraphPrimAPI.html` |
 | 369 | draft_needs_translation | bilingual_draft | 538 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/usdUI_toc.html` |
 | 370 | draft_needs_translation | bilingual_draft | 537 | 24/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/Field3DAsset.html` |
 | 371 | draft_needs_translation | bilingual_draft | 425 | 27/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/FieldAsset.html` |
@@ -464,7 +464,7 @@ Generated: 2026-06-05T21:06:05.197Z
 | 398 | draft_needs_translation | bilingual_draft | 661 | 33/22 | 0 | 0 | `full_site/release/wp_render_settings.html` |
 | 399 | draft_needs_translation | bilingual_draft | 554 | 41/35 | 0 | 0 | `full_site/release/wp_rigid_body_physics.html` |
 | 400 | draft_needs_translation | bilingual_draft | 457 | 32/26 | 0 | 0 | `full_site/release/wp_schema_versioning.html` |
-| 401 | draft_needs_translation | bilingual_draft | 484 | 18/10 | 0 | 0 | `full_site/release/wp_stage_variables.html` |
+| 401 | draft_needs_translation | bilingual_draft | 736 | 30/17 | 0 | 0 | `full_site/release/wp_stage_variables.html` |
 | 402 | draft_needs_translation | bilingual_draft | 471 | 23/17 | 0 | 0 | `full_site/release/wp_usdaudio.html` |
 | 403 | draft_needs_translation | bilingual_draft | 485 | 33/27 | 0 | 0 | `full_site/release/wp_usdlux_for_geometry_lights.html` |
 | 404 | draft_needs_translation | bilingual_draft | 473 | 32/26 | 0 | 0 | `full_site/release/wp_usdlux_for_renderers.html` |

@@ -75,6 +75,27 @@
         <li><span class="zh">UI 提示字典：</span><span class="en">uiHints</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-114">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`PropertyHints` 面向 property 的 UI metadata，常用于声明某个 attribute 或 relationship 的 `displayGroup`、`shownIf`、`displayName` 和 `hidden`。它影响工具界面中的展示方式，不改变 property 的值、关系目标或连接语义。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for PropertyHints while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`displayGroup` 把 property 放入某个 UI 分组；空字符串可表示没有特定分组。该字段是界面组织提示，不是 USD namespace 或 class 继承结构。</span></li>
+        <li><span class="zh">`shownIf = &quot;showProperties == 1&quot;` 表示根据条件显示 property。条件表达式中的 `showProperties` 是实际属性名，不能翻译或改写。</span></li>
+        <li><span class="zh">PropertyHints 可以同时作用于 attribute 和 relationship；示例中的 `exampleAttribute` 和 `exampleRelationship` 都带有 `uiHints`。</span></li>
+        <li><span class="zh">`hidden` 与 `shownIf` 都是 UI 层提示。前者更像默认隐藏标记，后者表达条件可见性；二者都不等价于删除 property。</span></li>
+        <li><span class="zh">阅读本页时建议和 `PrimHints` 对照：PropertyHints 给单个 property 添加提示，PrimHints 管理 prim 内 display groups 的整体显示策略。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">property 级 UI 提示 schema：</span><span class="en">PropertyHints</span></li>
+        <li><span class="zh">attribute 或 relationship：</span><span class="en">property</span></li>
+        <li><span class="zh">条件显示表达式：</span><span class="en">shownIf</span></li>
+        <li><span class="zh">示例 attribute：</span><span class="en">exampleAttribute</span></li>
+        <li><span class="zh">示例 relationship：</span><span class="en">exampleRelationship</span></li>
+        <li><span class="zh">界面显示分组：</span><span class="en">displayGroup</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
