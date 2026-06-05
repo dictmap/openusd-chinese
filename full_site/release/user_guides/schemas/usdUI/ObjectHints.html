@@ -54,6 +54,27 @@
         <li><span class="zh">数字内容创作工具界面：</span><span class="en">DCC tool UI</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-098">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`ObjectHints` 是 usdUI 中面向所有可在 UI 展示的 USD objects 的通用提示层。它处理 `displayName`、`hidden` 等用户界面信息，帮助 DCC tool 以更友好的名称和默认显示状态呈现 prim 或 property，但不改变 scene composition、属性值或渲染语义。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for ObjectHints while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">本页的关键是区分 UI metadata 和核心场景数据。`uiHints` dictionary 中的 `displayName` 和 `hidden` 只影响工具界面如何呈现对象，不等同于 `visibility`、purpose、load state 或 composition arc。</span></li>
+        <li><span class="zh">官方示例把 `Placeholder` prim 的 `displayName` 设为 `ModelA placeholder`，并把 `isAnnotated` attribute 的 `displayName` 设为 `Model is annotated`；这些字符串应原样保留，因为它们是用户界面可见文本。</span></li>
+        <li><span class="zh">`hidden = 1` 表示该对象在 UI 中默认隐藏，不表示属性不存在，也不表示导出、求值或渲染阶段忽略该属性；工具仍可选择提供高级开关或过滤器来显示它。</span></li>
+        <li><span class="zh">`ObjectHints` 作用范围比 `PrimHints` 和 `PropertyHints` 更基础：它跨 prim 和 property 提供通用对象级提示，后两者再针对 prim 内部布局或 property 级行为补充更具体信息。</span></li>
+        <li><span class="zh">如果在 schema 文档或 USDA 示例中排查 UI 显示问题，先找 `uiHints` dictionary，再看具体 key 是否属于 `ObjectHints`、`PrimHints`、`PropertyHints` 或 `AttributeHints` 的语义范围。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">对象级 UI 提示：</span><span class="en">ObjectHints</span></li>
+        <li><span class="zh">UI 提示字典：</span><span class="en">uiHints</span></li>
+        <li><span class="zh">界面显示名：</span><span class="en">displayName</span></li>
+        <li><span class="zh">界面默认隐藏：</span><span class="en">hidden</span></li>
+        <li><span class="zh">USD 对象：</span><span class="en">USD objects</span></li>
+        <li><span class="zh">数字内容创作工具界面：</span><span class="en">DCC tool UI</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

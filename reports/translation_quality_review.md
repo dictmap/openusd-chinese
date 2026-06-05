@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T16:58:49.338Z
+Generated: 2026-06-05T17:14:59.210Z
 
 ## Summary
 
@@ -40,11 +40,6 @@ Generated: 2026-06-05T16:58:49.338Z
 | 278 | draft_template_only | 62 | `full_site/api/var_8h_source.html` | 源码页面草稿：var.h / var.h |
 | 298 | draft_template_only | 64 | `full_site/release/search.html` | 搜索 / Search - Universal Scene Description 26.05 documentation |
 | 69 | draft_template_only | 66 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | API 页面草稿：hf Directory / hf Directory |
-| 364 | draft_needs_translation | 244 | `full_site/release/user_guides/schemas/usdUI/ObjectHints.html` | 页面草稿：ObjectHints / ObjectHints |
-| 366 | draft_needs_translation | 246 | `full_site/release/user_guides/schemas/usdUI/PrimHints.html` | 页面草稿：PrimHints / PrimHints |
-| 359 | draft_needs_translation | 248 | `full_site/release/user_guides/schemas/usdRender/usdRender_toc.html` | 页面草稿：Render (usdRender) / Render (usdRender) |
-| 147 | draft_needs_translation | 254 | `full_site/api/functions_vars_p.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
-| 238 | draft_needs_translation | 257 | `full_site/api/page_ts_ts_test.html` | API 页面草稿：The TsTest Framework / The TsTest Framework |
 | 367 | draft_needs_translation | 258 | `full_site/release/user_guides/schemas/usdUI/PropertyHints.html` | 页面草稿：PropertyHints / PropertyHints |
 | 385 | draft_needs_translation | 262 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldRadianceBaseAPI.html` | 页面草稿：ParticleFieldRadianceBaseAPI / ParticleFieldRadianceBaseAPI |
 | 370 | draft_needs_translation | 263 | `full_site/release/user_guides/schemas/usdVol/Field3DAsset.html` | 页面草稿：Field3DAsset / Field3DAsset |
@@ -59,6 +54,11 @@ Generated: 2026-06-05T16:58:49.338Z
 | 307 | draft_needs_translation | 274 | `full_site/release/tut_helloworld_redux.html` | 页面草稿：Hello World Redux - Using Generic Prims / Hello World Redux - Using Generic Prims |
 | 185 | draft_needs_translation | 275 | `full_site/api/globals_func.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
 | 154 | draft_needs_translation | 276 | `full_site/api/functions_vars_w.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
+| 95 | draft_needs_translation | 277 | `full_site/api/functions_func_n.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
+| 101 | draft_needs_translation | 277 | `full_site/api/functions_func_t.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
+| 311 | draft_needs_translation | 277 | `full_site/release/tut_referencing_layers.html` | 页面草稿：Referencing Layers / Referencing Layers |
+| 54 | draft_needs_translation | 278 | `full_site/api/class_usd_skel_imaging_data_source_skeleton_prim.html` | 类参考草稿：UsdSkelImagingDataSourceSkeletonPrim Class / UsdSkelImagingDataSourceSkeletonPrim Class |
+| 68 | draft_needs_translation | 278 | `full_site/api/deprecated.html` | API 页面草稿：Deprecated List / Deprecated List |
 
 ## All Pages
 
@@ -210,7 +210,7 @@ Generated: 2026-06-05T16:58:49.338Z
 | 144 | draft_needs_translation | bilingual_draft | 424 | 24/16 | 0 | 0 | `full_site/api/functions_vars_m.html` |
 | 145 | draft_needs_translation | bilingual_draft | 460 | 24/16 | 0 | 0 | `full_site/api/functions_vars_n.html` |
 | 146 | draft_needs_translation | bilingual_draft | 462 | 24/16 | 0 | 0 | `full_site/api/functions_vars_o.html` |
-| 147 | draft_needs_translation | bilingual_draft | 254 | 13/9 | 0 | 0 | `full_site/api/functions_vars_p.html` |
+| 147 | draft_needs_translation | bilingual_draft | 488 | 25/16 | 0 | 0 | `full_site/api/functions_vars_p.html` |
 | 148 | draft_needs_translation | bilingual_draft | 273 | 12/9 | 0 | 0 | `full_site/api/functions_vars_q.html` |
 | 149 | draft_needs_translation | bilingual_draft | 433 | 25/16 | 0 | 0 | `full_site/api/functions_vars_r.html` |
 | 150 | draft_needs_translation | bilingual_draft | 293 | 13/9 | 0 | 0 | `full_site/api/functions_vars_s.html` |
@@ -301,7 +301,7 @@ Generated: 2026-06-05T16:58:49.338Z
 | 235 | draft_needs_translation | bilingual_draft | 315 | 24/21 | 0 | 0 | `full_site/api/page__execution__system__design.html` |
 | 236 | draft_needs_translation | bilingual_draft | 327 | 25/22 | 0 | 0 | `full_site/api/page_ts_regression.html` |
 | 237 | draft_needs_translation | bilingual_draft | 326 | 29/26 | 0 | 0 | `full_site/api/page_ts_status.html` |
-| 238 | draft_needs_translation | bilingual_draft | 257 | 13/10 | 0 | 0 | `full_site/api/page_ts_ts_test.html` |
+| 238 | draft_needs_translation | bilingual_draft | 531 | 25/17 | 0 | 0 | `full_site/api/page_ts_ts_test.html` |
 | 239 | draft_needs_translation | bilingual_draft | 336 | 13/10 | 0 | 0 | `full_site/api/pages.html` |
 | 240 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/parallel_speculation_executor_engine_8h_source.html` |
 | 241 | draft_needs_translation | bilingual_draft | 350 | 25/22 | 0 | 0 | `full_site/api/pcp_page_front.html` |
@@ -422,14 +422,14 @@ Generated: 2026-06-05T16:58:49.338Z
 | 356 | draft_needs_translation | bilingual_draft | 281 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderSettings.html` |
 | 357 | draft_needs_translation | bilingual_draft | 385 | 20/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderSettingsBase.html` |
 | 358 | draft_needs_translation | bilingual_draft | 513 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderVar.html` |
-| 359 | draft_needs_translation | bilingual_draft | 248 | 12/9 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/usdRender_toc.html` |
+| 359 | draft_needs_translation | bilingual_draft | 482 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/usdRender_toc.html` |
 | 360 | draft_needs_translation | bilingual_draft | 289 | 12/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/AccessibilityAPI.html` |
 | 361 | draft_needs_translation | bilingual_draft | 295 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/AttributeHints.html` |
 | 362 | draft_needs_translation | bilingual_draft | 290 | 12/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/Backdrop.html` |
 | 363 | draft_needs_translation | bilingual_draft | 271 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/NodeGraphNodeAPI.html` |
-| 364 | draft_needs_translation | bilingual_draft | 244 | 12/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/ObjectHints.html` |
+| 364 | draft_needs_translation | bilingual_draft | 536 | 24/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/ObjectHints.html` |
 | 365 | draft_needs_translation | bilingual_draft | 360 | 15/13 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/overview.html` |
-| 366 | draft_needs_translation | bilingual_draft | 246 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/PrimHints.html` |
+| 366 | draft_needs_translation | bilingual_draft | 508 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/PrimHints.html` |
 | 367 | draft_needs_translation | bilingual_draft | 258 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/PropertyHints.html` |
 | 368 | draft_needs_translation | bilingual_draft | 281 | 12/9 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/SceneGraphPrimAPI.html` |
 | 369 | draft_needs_translation | bilingual_draft | 538 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/usdUI_toc.html` |

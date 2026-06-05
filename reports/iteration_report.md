@@ -2,6 +2,24 @@
 
 源页面：<https://openusd.org/release/api/index.html>
 
+## 第 229 轮：usdUI hints、usdRender 目录、变量索引 P 与 TsTest 二次精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `e22ba44`，当前分级为 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8。
+- 本轮严格只处理 5 个未达标页面：`full_site/release/user_guides/schemas/usdUI/ObjectHints.html`、`full_site/release/user_guides/schemas/usdUI/PrimHints.html`、`full_site/release/user_guides/schemas/usdRender/usdRender_toc.html`、`full_site/api/functions_vars_p.html`、`full_site/api/page_ts_ts_test.html`；这些页面本轮开始时均已是 `draft_needs_translation`，目标是补强较薄的 usdUI hints、usdRender 目录、API 变量索引 P 段和 TsTest 框架页，没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_release_batch_098.mjs`，每页插入 `release-quality-pass-098` 二次精修导读区块，覆盖 `ObjectHints` 的 `uiHints`、`displayName`、`hidden` 和 UI metadata 边界，`PrimHints` 的 `displayGroupsExpanded`、`displayGroupsShownIf`、`displayGroup` 与条件显示规则，`usdRender_toc.html` 的 `RenderSettings`/`RenderProduct`/`RenderVar`/`RenderPass` 阅读路线，`functions_vars_p.html` 的 Pcp/token struct/class member variable 索引用法，以及 `page_ts_ts_test.html` 的 TsTest framework/backend/baseline/grapher 分工；保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录。
+- 本轮中文覆盖：`ObjectHints.html` 的 UI metadata 与核心场景数据区分、`uiHints` dictionary、`displayName`、`hidden` 和 DCC tool UI；`PrimHints.html` 的 display groups 展开/条件显示、`widgetReadOnlyMode == 0` 表达式和 property `displayGroup`；`usdRender_toc.html` 的 Overview、Best Practices、RenderSettings、RenderProduct、RenderVar、RenderPass 和默认渲染入口；`functions_vars_p.html` 的 `PcpLayerStackIdentifier`、`PcpPrimIndexOutputs`、`UsdRenderTokensType`、`CameraUtilFraming` 和跨模块变量索引；`page_ts_ts_test.html` 的 `tsTest_Evaluator`、`tsTest_SampleTimes`、`TsTest_Grapher`、`tsTest_CompareBaseline`、backend 和 baseline。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级保持 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8；本轮对象原本已是 `draft_needs_translation`，所以分级计数保持不变是预期结果。按质量审计口径，目标页中文正文量已提升到 `482-536` 字区间，但仍是 `bilingual_draft`，未误标为完成。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398 个 `bilingual_draft` 页面全部具备本地可检查 HTML 和最终入口链接，`failed_pages` 为 0。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`，报告索引通过，总体验证 `PASSED`，`validation_required_checks` 281 / `validation_failed_checks` 0。
+- GitHub 同步结果：验证通过后使用提交信息 `OpenUSD bilingual round 229: ui render index tstest pass` 同步本轮 HTML、脚本、报告和 `work.md`，并通过 `git log` 与远端 main 校验推送结果。
+
+差距与下一轮：
+
+- 当前 398 个 `bilingual_draft` 仍不是完整段落级翻译；本轮是对已纳入 draft 的 usdUI hints、usdRender 目录、变量索引和 TsTest 页面做第二层质量补强，分级计数不变是预期结果。
+- 剩余 `draft_template_only` 11 页基本是 `_source.html` 源码页、`search.html` 或目录页；下一轮建议继续处理较薄且用户可读价值较高的 release/schema/API 页面，最多处理 `full_site/release/user_guides/schemas/usdUI/PropertyHints.html`、`full_site/release/user_guides/schemas/usdVol/ParticleFieldRadianceBaseAPI.html`、`full_site/release/user_guides/schemas/usdVol/Field3DAsset.html`、`full_site/release/user_guides/schemas/usdLux/usdLux_toc.html`、`full_site/release/user_guides/schemas/usdRender/RenderPass.html`，继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+
 ## 第 228 轮：ParticleField kernel、PositionBase 与 RenderVar 二次精修
 已完成：
 

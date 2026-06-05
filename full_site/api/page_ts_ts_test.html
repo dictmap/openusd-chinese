@@ -54,6 +54,27 @@
         <li><span class="zh">matplotlib：</span><span class="en">matplotlib</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-098">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`The TsTest Framework` 描述 Ts 库内部用于 validate、graph 和 compare spline evaluations 的测试框架。它可测试 Ts 自身，也可通过 other backends 调用外部引擎进行对比，因此阅读时要把 framework、backend、baseline 和 grapher 的职责分开。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for The TsTest Framework while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`TsTest` 文件命名通常以 `tsTest`、`wrapTsTest` 或 `TsTest` 为前缀；这些前缀是定位相关 header、cpp、Python wrapper 和测试辅助脚本的主要线索，应保持英文原样。</span></li>
+        <li><span class="zh">`tsTest_Evaluator` 提供 generic evaluation interface，适合连接不同求值后端；这解释了为什么同一套 test data 可以被 Ts 或其他 evaluation engine 比较。</span></li>
+        <li><span class="zh">`tsTest_SampleTimes` 和 `tsTest_Types` 偏向数据结构与采样时间选择；`TsTest_Grapher` 负责用 Python/matplotlib 生成图像；`tsTest_CompareBaseline` 负责 baseline 文件生成、结果比较和差异图。</span></li>
+        <li><span class="zh">本页中的 `validate`、`graph`、`compare` 三个动作对应测试闭环：先定义 spline evaluation 输入和采样点，再运行 backend 求值，最后与 baseline 或图形结果比较。</span></li>
+        <li><span class="zh">如果目标是排查 Ts 曲线行为，不应只看测试框架入口；还要沿链接进入具体 evaluator、sample times、types、grapher 和 compare baseline 条目，确认失败发生在数据准备、求值、图形输出还是基线比较阶段。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Ts 测试框架：</span><span class="en">TsTest</span></li>
+        <li><span class="zh">样条求值：</span><span class="en">spline evaluations</span></li>
+        <li><span class="zh">求值后端：</span><span class="en">backend</span></li>
+        <li><span class="zh">基线结果：</span><span class="en">baseline</span></li>
+        <li><span class="zh">图形输出工具：</span><span class="en">grapher</span></li>
+        <li><span class="zh">采样时间集合：</span><span class="en">sample times</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

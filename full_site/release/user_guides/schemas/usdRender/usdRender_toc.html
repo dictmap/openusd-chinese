@@ -54,6 +54,27 @@
         <li><span class="zh">渲染相机：</span><span class="en">Render Camera</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-098">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`usdRender_toc.html` 是 usdRender schema 领域的目录页，用来组织 Overview、Best Practices、RenderPass、RenderProduct、RenderSettings、RenderVar 等入口。它适合先建立渲染配置对象之间的分工，再进入单个 schema 属性页。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for Render (usdRender) while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">阅读顺序建议从 `Overview` 和 `Best Practices` 开始，再进入 `Understand Which Schemas to Use`，最后按目标选择 `RenderSettings`、`RenderProduct`、`RenderVar` 或 `RenderPass`。</span></li>
+        <li><span class="zh">`Group UsdRender Prims`、`Provide a Default RenderSettings`、`Designate a Render Camera` 等条目说明 usdRender 既关心输出变量，也关心渲染 prim 的组织、默认设置和相机入口。</span></li>
+        <li><span class="zh">`RenderSettings` 通常聚合一次渲染作业的主要配置，`RenderProduct` 表示输出产品，`RenderVar` 表示输出变量或 AOV，`RenderPass` 表示渲染 pass；这些名称保留英文以便跨页搜索。</span></li>
+        <li><span class="zh">本目录页不是 renderer plugin 文档，也不描述某个 render delegate 的私有选项；它定义的是 USD scene 中用于表达渲染意图的 schema 层结构。</span></li>
+        <li><span class="zh">如果只想找 AOV 或 LPE，应直接跳 `RenderVar`；如果要设置分辨率、相机和输出产品，应从 `RenderSettings` 和 `RenderProduct` 相关页面开始。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 渲染 schema 领域：</span><span class="en">usdRender</span></li>
+        <li><span class="zh">渲染设置：</span><span class="en">RenderSettings</span></li>
+        <li><span class="zh">渲染输出产品：</span><span class="en">RenderProduct</span></li>
+        <li><span class="zh">渲染输出变量：</span><span class="en">RenderVar</span></li>
+        <li><span class="zh">渲染 pass：</span><span class="en">RenderPass</span></li>
+        <li><span class="zh">任意输出变量：</span><span class="en">AOV</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

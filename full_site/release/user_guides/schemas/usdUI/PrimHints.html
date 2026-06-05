@@ -54,6 +54,27 @@
         <li><span class="zh">条件界面提示：</span><span class="en">conditional UI hints</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-098">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`PrimHints` 是 usdUI 中面向 prim 的 UI 提示 schema，重点描述 prim 内部 display groups 如何在工具界面中显示、展开和按条件出现。它通常与 `ObjectHints` 配合使用：`ObjectHints` 处理 prim 名称和隐藏状态，`PrimHints` 处理 prim 内属性组的界面布局。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for PrimHints while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">官方示例中的 `displayGroupsExpanded` 和 `displayGroupsShownIf` 是阅读重点：前者决定 `Controller`、`Widget Settings` 等组初始是否展开，后者通过表达式决定某个组是否显示。</span></li>
+        <li><span class="zh">`widgetReadOnlyMode == 0` 是条件表达式，不应翻译或改写；它会被工具解释为 UI 显示规则，而不是 USD composition 或属性默认值规则。</span></li>
+        <li><span class="zh">属性上的 `displayGroup = &quot;Controller&quot;` 或 `displayGroup = &quot;Widget Settings&quot;` 把 property 放入对应 UI group；prim 级 dictionary 再控制这些 group 的展开和可见性。</span></li>
+        <li><span class="zh">`PrimHints` 不替代属性值、metadata authoring 或 schema validation。它的目标是让 DCC UI 更易扫读和编辑，而不是改变 prim 在 stage 中的计算结果。</span></li>
+        <li><span class="zh">排查界面显示时建议按层级阅读：先看 prim 是否有 `ObjectHints` 的 `displayName`/`hidden`，再看 `PrimHints` 的 display group 字典，最后看每个 property 自己的 `uiHints`。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">prim 级 UI 提示：</span><span class="en">PrimHints</span></li>
+        <li><span class="zh">显示组展开状态：</span><span class="en">displayGroupsExpanded</span></li>
+        <li><span class="zh">显示组条件可见性：</span><span class="en">displayGroupsShownIf</span></li>
+        <li><span class="zh">属性所属显示组：</span><span class="en">displayGroup</span></li>
+        <li><span class="zh">条件界面提示：</span><span class="en">conditional UI hints</span></li>
+        <li><span class="zh">数字内容创作工具：</span><span class="en">DCC Tool</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
