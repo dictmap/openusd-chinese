@@ -54,6 +54,27 @@
         <li><span class="zh">scene delegate：</span><span class="en">scene delegate</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-092">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Hd : The Hydra Framework 增补 API 索引、模块入口或 File Members 函数页的二次精修说明，重点解释 Doxygen 字母桶、模块边界、函数族归属、跨页跳转顺序和术语对照。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于与官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for Hd : The Hydra Framework. It explains how to read Doxygen letter buckets, module boundaries, function-family ownership, cross-page navigation, and terminology while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`hd_page_front.html` 是 Hydra Framework 的核心入口页，说明 `Hd` 如何在 scene graph 与 renderer 之间建立通信层；它比 `Hdx` 更底层，读者应优先关注 render index、scene delegate、scene index、task、buffer source 和 data source 等基础概念。</span></li>
+        <li><span class="zh">`HdRenderIndex`、`HdSceneDelegate`、`HdTask`、`HdRprim`、`HdSprim`、`HdBprim`、`HdBufferSource`、`HdDataSource` 与 `HdSceneIndexBase` 是本页后续跳转时最常见的锚点，分别对应索引、场景查询、任务、可渲染对象、状态对象、缓冲数据和 scene index 流。</span></li>
+        <li><span class="zh">Hydra 的价值在于把 multiple scene graphs 和 multiple renderers 解耦：USD 不是唯一数据源，Storm/Embree/RenderMan 等 renderer 也不是唯一后端；`Hd` 提供的是中间协议和数据同步框架。</span></li>
+        <li><span class="zh">阅读 `Hd` 时要区分旧式 scene delegate 流和较新的 scene index 流；前者围绕 delegate pull model，后者更强调可组合的过滤、变换和增量通知。中文导读不替换官方英文接口说明，只补充导航顺序。</span></li>
+        <li><span class="zh">如果正在查具体渲染行为，通常从本页跳到 `HdSt` 或具体 render delegate；如果正在查 USD 数据如何进入 Hydra，则继续读 `UsdImaging`、adapter registry 和 scene index plugin。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Hydra 框架：</span><span class="en">Hydra Framework</span></li>
+        <li><span class="zh">渲染索引：</span><span class="en">render index</span></li>
+        <li><span class="zh">场景代理：</span><span class="en">scene delegate</span></li>
+        <li><span class="zh">场景索引：</span><span class="en">scene index</span></li>
+        <li><span class="zh">缓冲数据源：</span><span class="en">buffer source</span></li>
+        <li><span class="zh">数据源：</span><span class="en">data source</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

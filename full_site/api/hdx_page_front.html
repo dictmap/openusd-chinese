@@ -54,6 +54,27 @@
         <li><span class="zh">selection task：</span><span class="en">selection task</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-092">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Hdx : Hydra extensions 增补 API 索引、模块入口或 File Members 函数页的二次精修说明，重点解释 Doxygen 字母桶、模块边界、函数族归属、跨页跳转顺序和术语对照。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于与官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for Hdx : Hydra extensions. It explains how to read Doxygen letter buckets, module boundaries, function-family ownership, cross-page navigation, and terminology while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`hdx_page_front.html` 是 `Hdx` 模块入口页，重点不是定义 Hydra 的核心抽象，而是在 `Hd` 之上收集常用 task、selection、picking、color correction、present task 和交互式 viewport 支撑代码；阅读时应先把它看作 Hydra 应用层扩展包。</span></li>
+        <li><span class="zh">`HdxTaskController`、`HdxRenderTask`、`HdxSelectionTask`、`HdxPickTask`、`HdxColorCorrectionTask`、`HdxPresentTask` 等类型通常服务于 usdview、工具视口或调试视口，把渲染索引、相机、AOV、选择高亮和最终显示组织成可调度任务。</span></li>
+        <li><span class="zh">如果目标是理解 scene data 如何进入 Hydra，应先读 `Hd`、`HdSceneDelegate`、`HdSceneIndex` 和 adapter；如果目标是实现一个工具窗口或扩展已有 viewport，则从 `Hdx` 的 task/controller 入口开始更直接。</span></li>
+        <li><span class="zh">本页中的英文摘录往往很短，中文补充的作用是帮助读者判断 `Hdx` 与 `HdSt`、`Hgi`、`UsdImaging` 的边界：`Hdx` 偏 workflow/task glue，`HdSt` 偏 Storm render delegate，`Hgi` 偏图形 API 抽象，`UsdImaging` 偏 USD 到 Hydra 的适配。</span></li>
+        <li><span class="zh">保留 `Hdx`、`Hd`、`HdSt`、`Hgi`、`UsdImaging` 等英文 API 名称，便于继续在 Doxygen、源码和 GitHub 中检索；中文只解释模块职责、典型入口和跨模块跳转顺序。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Hydra 扩展层：</span><span class="en">Hydra extensions</span></li>
+        <li><span class="zh">任务控制器：</span><span class="en">task controller</span></li>
+        <li><span class="zh">选择任务：</span><span class="en">selection task</span></li>
+        <li><span class="zh">拾取任务：</span><span class="en">pick task</span></li>
+        <li><span class="zh">显示提交任务：</span><span class="en">present task</span></li>
+        <li><span class="zh">视口工作流：</span><span class="en">viewport workflow</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

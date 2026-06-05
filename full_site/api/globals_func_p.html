@@ -54,6 +54,27 @@
         <li><span class="zh">路径翻译：</span><span class="en">path translation</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-092">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 File Members - Functions - P 增补 API 索引、模块入口或 File Members 函数页的二次精修说明，重点解释 Doxygen 字母桶、模块边界、函数族归属、跨页跳转顺序和术语对照。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于与官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for File Members - Functions - P. It explains how to read Doxygen letter buckets, module boundaries, function-family ownership, cross-page navigation, and terminology while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`globals_func_p.html` 是 File Members 函数索引 P 段，当前条目集中在 `Pcp` composition site、path、permission、payload 或 plugin 相关辅助函数；它更适合当作按函数名定位头文件的入口，而不是概念教程。</span></li>
+        <li><span class="zh">与 Class Members 索引不同，File Members 记录的是文件级函数、宏或非成员工具函数；遇到 `Pcp` 前缀时，应优先关联 composition、layer stack、prim index、property index 和 namespace/path mapping。</span></li>
+        <li><span class="zh">`Pcp` 系列函数常与 `SdfPath`、`SdfLayer`、`PcpNodeRef`、`PcpPrimIndex`、`PcpPropertyIndex`、`PcpCache` 一起出现，读者应把它们放在 composition engine 的上下文中理解，而不是把 P 段当作普通字符串函数列表。</span></li>
+        <li><span class="zh">如果条目来源指向 `composeSite.h`、`mapFunction.h`、`pathTranslation.h` 或类似 header，应继续打开对应头文件/类页核对函数签名、参数语义和错误处理；索引页本身只提供导航线索。</span></li>
+        <li><span class="zh">中文层保持 `Pcp`、`SdfPath`、`PcpPrimIndex`、`PcpNodeRef` 等符号原样，避免破坏代码搜索；说明重点放在函数族、模块边界、典型跳转路径和阅读风险。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">文件级函数：</span><span class="en">file member function</span></li>
+        <li><span class="zh">组合站点：</span><span class="en">composition site</span></li>
+        <li><span class="zh">prim 索引：</span><span class="en">prim index</span></li>
+        <li><span class="zh">属性索引：</span><span class="en">property index</span></li>
+        <li><span class="zh">路径转换：</span><span class="en">path translation</span></li>
+        <li><span class="zh">层栈：</span><span class="en">layer stack</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

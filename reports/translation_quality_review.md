@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T15:13:11.119Z
+Generated: 2026-06-05T15:35:50.216Z
 
 ## Summary
 
@@ -136,7 +136,7 @@ Generated: 2026-06-05T15:13:11.119Z
 | 70 | draft_needs_translation | bilingual_draft | 352 | 13/10 | 0 | 0 | `full_site/api/executor_invalidation_data_8h.html` |
 | 71 | draft_needs_translation | bilingual_draft | 291 | 12/10 | 0 | 0 | `full_site/api/files.html` |
 | 72 | draft_needs_translation | bilingual_draft | 317 | 12/10 | 0 | 0 | `full_site/api/functions_~.html` |
-| 73 | draft_needs_translation | bilingual_draft | 270 | 12/10 | 0 | 0 | `full_site/api/functions_a.html` |
+| 73 | draft_needs_translation | bilingual_draft | 663 | 24/17 | 0 | 0 | `full_site/api/functions_a.html` |
 | 74 | draft_needs_translation | bilingual_draft | 520 | 24/17 | 0 | 0 | `full_site/api/functions_b.html` |
 | 75 | draft_needs_translation | bilingual_draft | 534 | 24/17 | 0 | 0 | `full_site/api/functions_c.html` |
 | 76 | draft_needs_translation | bilingual_draft | 518 | 24/17 | 0 | 0 | `full_site/api/functions_d.html` |
@@ -242,9 +242,9 @@ Generated: 2026-06-05T15:13:11.119Z
 | 176 | draft_needs_translation | bilingual_draft | 283 | 13/9 | 0 | 0 | `full_site/api/globals_func_j.html` |
 | 177 | draft_needs_translation | bilingual_draft | 299 | 13/9 | 0 | 0 | `full_site/api/globals_func_l.html` |
 | 178 | draft_needs_translation | bilingual_draft | 332 | 13/10 | 0 | 0 | `full_site/api/globals_func_o.html` |
-| 179 | draft_needs_translation | bilingual_draft | 269 | 13/9 | 0 | 0 | `full_site/api/globals_func_p.html` |
+| 179 | draft_needs_translation | bilingual_draft | 628 | 25/16 | 0 | 0 | `full_site/api/globals_func_p.html` |
 | 180 | draft_needs_translation | bilingual_draft | 278 | 13/10 | 0 | 0 | `full_site/api/globals_func_s.html` |
-| 181 | draft_needs_translation | bilingual_draft | 270 | 13/10 | 0 | 0 | `full_site/api/globals_func_t.html` |
+| 181 | draft_needs_translation | bilingual_draft | 647 | 25/17 | 0 | 0 | `full_site/api/globals_func_t.html` |
 | 182 | draft_needs_translation | bilingual_draft | 518 | 25/17 | 0 | 0 | `full_site/api/globals_func_u.html` |
 | 183 | draft_needs_translation | bilingual_draft | 516 | 25/17 | 0 | 0 | `full_site/api/globals_func_v.html` |
 | 184 | draft_needs_translation | bilingual_draft | 272 | 13/9 | 0 | 0 | `full_site/api/globals_func_w.html` |
@@ -266,10 +266,10 @@ Generated: 2026-06-05T15:13:11.119Z
 | 200 | draft_needs_translation | bilingual_draft | 372 | 20/17 | 0 | 0 | `full_site/api/group__group___exec___attribute___comptuations.html` |
 | 201 | draft_needs_translation | bilingual_draft | 326 | 18/15 | 0 | 0 | `full_site/api/group__group__hd__collection_predicates.html` |
 | 202 | draft_needs_translation | bilingual_draft | 281 | 22/19 | 0 | 0 | `full_site/api/hd_embree_page_front.html` |
-| 203 | draft_needs_translation | bilingual_draft | 267 | 13/10 | 0 | 0 | `full_site/api/hd_page_front.html` |
+| 203 | draft_needs_translation | bilingual_draft | 629 | 25/17 | 0 | 0 | `full_site/api/hd_page_front.html` |
 | 204 | draft_needs_translation | bilingual_draft | 565 | 26/18 | 0 | 0 | `full_site/api/hd_st_page_front.html` |
 | 205 | draft_needs_translation | bilingual_draft | 596 | 25/16 | 0 | 0 | `full_site/api/hd_storm_page_front.html` |
-| 206 | draft_needs_translation | bilingual_draft | 266 | 14/11 | 0 | 0 | `full_site/api/hdx_page_front.html` |
+| 206 | draft_needs_translation | bilingual_draft | 633 | 26/18 | 0 | 0 | `full_site/api/hdx_page_front.html` |
 | 207 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/hgi_2shader_program_8h_source.html` |
 | 208 | draft_needs_translation | bilingual_draft | 314 | 13/10 | 0 | 0 | `full_site/api/hierarchy.html` |
 | 209 | draft_needs_translation | bilingual_draft | 542 | 25/17 | 0 | 0 | `full_site/api/hio_page_front.html` |
