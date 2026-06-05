@@ -75,6 +75,27 @@
         <li><span class="zh">颜色贴图：</span><span class="en">color map</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-107">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`RectLight` 是从矩形一侧发光的 boundable intrinsic light。前几轮已补充 XY plane、`-Z` 方向、soft box 和 texture 示例；本轮进一步强调 authoring 时 width/height、transform、texture、shaping 与照明意图之间的组合关系。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for RectLight while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`inputs:width` 与 `inputs:height` 定义局部矩形尺寸，`xformOp:translate` 和 `xformOp:rotateXYZ` 决定它在世界中的位置与朝向。尺寸和 transform 应分开调试，不要把朝向问题误改成宽高问题。</span></li>
+        <li><span class="zh">示例中的 `inputs:texture:file = @checkerboard.png@` 表示矩形灯可以使用 color map；贴图影响发光颜色分布，但并不改变矩形的几何边界或默认发光方向。</span></li>
+        <li><span class="zh">`inputs:intensity`、`inputs:color`、texture 和 shaping 参数会共同影响外观。中文说明应保留这些属性字面量，方便读者将文档示例映射到 USD 编辑器或 DCC 面板。</span></li>
+        <li><span class="zh">官方示例把 `RectLight` 放在 Sphere 和 Cube 附近，是为了展示局部面积光与被照物之间的空间关系；读者应同时看灯的 transform、被照物 transform 和 `upAxis`。</span></li>
+        <li><span class="zh">`RectLight` 适合 soft boxes、linear lights、fluorescent lights、light panels，但如果资产需要圆盘、球形或圆柱发光体，应转向 `DiskLight`、`SphereLight` 或 `CylinderLight`，不要用矩形灯硬拟合所有形状。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">矩形灯：</span><span class="en">RectLight</span></li>
+        <li><span class="zh">矩形灯宽度输入属性：</span><span class="en">inputs:width</span></li>
+        <li><span class="zh">矩形灯高度输入属性：</span><span class="en">inputs:height</span></li>
+        <li><span class="zh">灯光颜色贴图文件输入属性：</span><span class="en">inputs:texture:file</span></li>
+        <li><span class="zh">XYZ 欧拉旋转变换操作：</span><span class="en">xformOp:rotateXYZ</span></li>
+        <li><span class="zh">摄影柔光箱：</span><span class="en">soft box</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -56,6 +56,27 @@
         <li><span class="zh">可成像 schema：</span><span class="en">Imageable</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-107">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`BoundableLightBase` 是 `RectLight`、`SphereLight` 等 boundable intrinsic lights 的基类。它的关键语义是这些灯有可用于场景范围、可视化、选择和某些渲染决策的空间边界，同时仍通过 `LightAPI` 继承通用灯光功能。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for BoundableLightBase while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`boundable` 不只是“可以看见”的意思，而是指灯光 prim 具备可用于 bounds 计算的空间范围。`RectLight`、`SphereLight`、`DiskLight`、`CylinderLight` 都应从这个角度理解。</span></li>
+        <li><span class="zh">与 `NonboundableLightBase` 对比时，本页强调有限几何形状和局部空间范围；环境光、方向光这类没有有限 bounds 的灯不应套用这里的阅读方式。</span></li>
+        <li><span class="zh">`BoundableLightBase` 提供的是基类语义，具体尺寸仍由派生灯型属性决定，例如 `RectLight` 的 width/height、`SphereLight` 的 radius、`DiskLight` 的 radius 或 `CylinderLight` 的 length/radius。</span></li>
+        <li><span class="zh">继承 `LightAPI` 意味着 intensity、exposure、color、light-linking、shadow-linking 等通用概念仍从 `LightAPI` 阅读；本页只说明这些能力如何落在有边界的 intrinsic lights 上。</span></li>
+        <li><span class="zh">排查视口选择、包围盒显示或灯光 gizmo 时，应先确认具体灯是否派生自 `BoundableLightBase`，再检查尺寸属性和 prim transform，而不是只看是否应用了 `LightAPI`。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">可包围灯基类：</span><span class="en">BoundableLightBase</span></li>
+        <li><span class="zh">有边界内建灯光：</span><span class="en">boundable intrinsic lights</span></li>
+        <li><span class="zh">场景包围范围：</span><span class="en">scene bounds</span></li>
+        <li><span class="zh">几何范围属性：</span><span class="en">extent</span></li>
+        <li><span class="zh">矩形灯：</span><span class="en">RectLight</span></li>
+        <li><span class="zh">球形灯：</span><span class="en">SphereLight</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

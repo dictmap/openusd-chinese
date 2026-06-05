@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T19:42:13.031Z
+Generated: 2026-06-05T19:54:43.146Z
 
 ## Summary
 
@@ -389,7 +389,7 @@ Generated: 2026-06-05T19:42:13.031Z
 | 323 | draft_needs_translation | bilingual_draft | 333 | 16/14 | 0 | 0 | `full_site/release/user_guides/primvars.html` |
 | 324 | draft_needs_translation | bilingual_draft | 380 | 16/14 | 0 | 0 | `full_site/release/user_guides/render_user_guide.html` |
 | 325 | draft_needs_translation | bilingual_draft | 313 | 12/9 | 0 | 0 | `full_site/release/user_guides/schemas/index.html` |
-| 326 | draft_needs_translation | bilingual_draft | 398 | 23/19 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/BoundableLightBase.html` |
+| 326 | draft_needs_translation | bilingual_draft | 670 | 35/26 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/BoundableLightBase.html` |
 | 327 | draft_needs_translation | bilingual_draft | 546 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/CylinderLight.html` |
 | 328 | draft_needs_translation | bilingual_draft | 531 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/DiskLight.html` |
 | 329 | draft_needs_translation | bilingual_draft | 545 | 24/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/DistantLight.html` |
@@ -399,17 +399,17 @@ Generated: 2026-06-05T19:42:13.031Z
 | 333 | draft_needs_translation | bilingual_draft | 567 | 40/33 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/LightAPI.html` |
 | 334 | draft_needs_translation | bilingual_draft | 589 | 35/28 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/LightFilter.html` |
 | 335 | draft_needs_translation | bilingual_draft | 547 | 24/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/LightListAPI.html` |
-| 336 | draft_needs_translation | bilingual_draft | 437 | 17/14 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/ListAPI.html` |
+| 336 | draft_needs_translation | bilingual_draft | 755 | 29/21 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/ListAPI.html` |
 | 337 | draft_needs_translation | bilingual_draft | 655 | 29/20 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/MeshLightAPI.html` |
 | 338 | draft_needs_translation | bilingual_draft | 709 | 33/24 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/NonboundableLightBase.html` |
 | 339 | draft_needs_translation | bilingual_draft | 653 | 29/22 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/overview.html` |
 | 340 | draft_needs_translation | bilingual_draft | 732 | 33/24 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/PluginLight.html` |
-| 341 | draft_needs_translation | bilingual_draft | 410 | 24/22 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html` |
+| 341 | draft_needs_translation | bilingual_draft | 697 | 36/29 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html` |
 | 342 | draft_needs_translation | bilingual_draft | 686 | 38/31 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/PortalLight.html` |
-| 343 | draft_needs_translation | bilingual_draft | 526 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/RectLight.html` |
+| 343 | draft_needs_translation | bilingual_draft | 820 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/RectLight.html` |
 | 344 | draft_needs_translation | bilingual_draft | 693 | 32/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/ShadowAPI.html` |
 | 345 | draft_needs_translation | bilingual_draft | 660 | 34/27 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/ShapingAPI.html` |
-| 346 | draft_needs_translation | bilingual_draft | 559 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/SphereLight.html` |
+| 346 | draft_needs_translation | bilingual_draft | 841 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/SphereLight.html` |
 | 347 | draft_needs_translation | bilingual_draft | 510 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/usdLux_toc.html` |
 | 348 | draft_needs_translation | bilingual_draft | 685 | 29/20 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/VolumeLightAPI.html` |
 | 349 | draft_needs_translation | bilingual_draft | 617 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html` |

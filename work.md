@@ -2963,3 +2963,27 @@
 1. 继续最多 5 页。
 2. 建议处理：`full_site/release/user_guides/schemas/usdLux/ListAPI.html`、`full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html`、`full_site/release/user_guides/schemas/usdLux/BoundableLightBase.html`、`full_site/release/user_guides/schemas/usdLux/RectLight.html`、`full_site/release/user_guides/schemas/usdLux/SphereLight.html`。
 3. 后续继续按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面，低优先处理 `_source.html`、`search.html` 和目录页。
+## 第 238 轮：ListAPI、PluginLightFilter、BoundableLightBase、RectLight 与 SphereLight 补强
+
+- 复核当前 git 状态和远端：上一轮同步提交为 `eaf0cd6`，`origin/main` 一致。
+- 新增并执行 `scripts/refine_openusd_release_batch_107.mjs`，本轮标记 `release-quality-pass-107`。
+- 严格只精修 5 页：
+  - `full_site/release/user_guides/schemas/usdLux/ListAPI.html`
+  - `full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html`
+  - `full_site/release/user_guides/schemas/usdLux/BoundableLightBase.html`
+  - `full_site/release/user_guides/schemas/usdLux/RectLight.html`
+  - `full_site/release/user_guides/schemas/usdLux/SphereLight.html`
+- 每页补入 5 条中文二次精修导读和 6 条术语对照：覆盖 `ListAPI` 的 deprecated 兼容层与 `LightListAPI` 迁移边界、`PluginLightFilter` 的 Sdr/UsdShade 插件过滤器入口、`BoundableLightBase` 的 scene bounds/extent 基类语义、`RectLight` 的 width/height/texture/transform 组合阅读，以及 `SphereLight` 的 radius/treatAsPoint/zero-area renderer 支持边界。
+- 质量回读：5 页均为 `draft_needs_translation`，坏编码 0，非预期官方外跳 0；中文字符分别为 755、697、670、820、841，中文/英文块分别为 29/21、36/29、35/26、36/25、36/25。
+- 本轮分级计数保持不变：`draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因：处理对象已经是 `draft_needs_translation`，本轮为二次补强精修，不是从模板草稿晋级。
+- 已运行并通过：翻译质量审计、链接路由、full draft preview、报告索引和 `validate_openusd_api_repro.ps1`；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步结果：本轮验证通过后使用 `OpenUSD bilingual round 238: usdLux list filter bound rect sphere pass` 提交并推送。
+
+当前差距：
+- 全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`；`bilingual_draft` 仍不是完整翻译。
+- 剩余质量队列中 11 页仍为 `draft_template_only`，基本是 `_source.html`、`search.html` 或目录页；其余 387 页仍需继续逐轮补强。
+
+下一轮目标：
+1. 继续最多 5 页。
+2. 建议处理：`full_site/release/user_guides/schemas/usdRender/RenderPass.html`、`full_site/release/user_guides/schemas/usdRender/RenderProduct.html`、`full_site/release/tut_inspect_and_author_props.html`、`full_site/release/tut_traversing_stage.html`、`full_site/release/user_guides/schemas/usdMedia/SpatialAudio.html`。
+3. 后续继续按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面，低优先处理 `_source.html`、`search.html` 和目录页。

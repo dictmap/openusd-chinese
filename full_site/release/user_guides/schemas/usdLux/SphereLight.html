@@ -75,6 +75,27 @@
         <li><span class="zh">点光源：</span><span class="en">point light</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-107">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`SphereLight` 用球体表面表达点状或球状光源。前几轮已覆盖 one-sided、`treatAsPoint` 和 zero-area lights；本轮进一步强调 `inputs:radius`、transform、示例数值和 renderer 支持如何共同决定最终照明和阴影软硬。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for SphereLight while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`inputs:radius` 是 `SphereLight` 最核心的形状参数。半径越大，面积光特征越明显，阴影通常更柔；半径趋近于零时才接近 point light 阅读方式。</span></li>
+        <li><span class="zh">`treatAsPoint` 需要 renderer 支持 zero-area lights 才有意义。中文导读应把它写成渲染器相关的行为开关，而不是保证所有实现都产生同样结果的标准视觉承诺。</span></li>
+        <li><span class="zh">官方示例中 `inputs:radius = 0.8`、`inputs:intensity = 20.0`、`xformOp:translate = (4, 0, 1)` 共同说明示例灯的位置、大小和亮度；这些数值应保留以便复现实验。</span></li>
+        <li><span class="zh">因为 `SphereLight` 是 one-sided，球体内部不发光；如果模型把灯放进封闭罩或几何内部，需要检查 renderer 如何处理内外表面、可见性和阴影。</span></li>
+        <li><span class="zh">`SphereLight` 常用于 light bulbs、headlamps 等近似球形或点状光源；如果光源是面板、圆盘或管状，则应分别考虑 `RectLight`、`DiskLight` 或 `CylinderLight`。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">球形灯：</span><span class="en">SphereLight</span></li>
+        <li><span class="zh">球形灯半径输入属性：</span><span class="en">inputs:radius</span></li>
+        <li><span class="zh">按点光处理的开关：</span><span class="en">treatAsPoint</span></li>
+        <li><span class="zh">零面积灯：</span><span class="en">zero-area lights</span></li>
+        <li><span class="zh">点光源：</span><span class="en">point light</span></li>
+        <li><span class="zh">单面发光灯：</span><span class="en">one-sided light</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

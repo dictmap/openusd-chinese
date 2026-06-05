@@ -56,6 +56,27 @@
         <li><span class="zh">兼容旧资产的阅读层：</span><span class="en">compatibility layer</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-107">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`ListAPI` 是旧版灯光列表 API schema，官方明确说明它提供与 `LightListAPI` 相同的功能，但已经 deprecated。阅读本页的重点不是把它当作新项目入口，而是识别旧资产中的 `lightList` 数据、理解缓存行为，并把迁移目标指向 `LightListAPI`。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for ListAPI while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`ListAPI` 的存在主要服务于兼容旧 USD 文件和旧工具链。新资产、新 schema 文档和新代码注释应优先引用 `LightListAPI`，不要把本页作为推荐入口传播。</span></li>
+        <li><span class="zh">`lightList:cacheBehavior` 是旧 schema 中最需要保留原名的属性之一；它描述 light list 结果是否以及如何被缓存，影响 traversal 期间发现灯光的性能和新鲜度。</span></li>
+        <li><span class="zh">如果工具读取到 `ListAPI`，应先确认目标 prim 是否只是历史 authoring 结果，再决定保留、迁移或由导出器重写。中文导读不应暗示所有旧属性都可以无条件删除。</span></li>
+        <li><span class="zh">本页应和 `LightListAPI` 一起阅读：`ListAPI` 解释 deprecated compatibility surface，`LightListAPI` 解释当前推荐的 traversal、`ComputeLightList()` 和 cache mode 行为。</span></li>
+        <li><span class="zh">链接和属性名仍要保持英文原样，尤其是 `ListAPI`、`LightListAPI`、`lightList`、`lightList:cacheBehavior`，因为这些字面量直接用于搜索历史资产、脚本和 schema 文档。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">旧版灯光列表 API schema：</span><span class="en">ListAPI</span></li>
+        <li><span class="zh">推荐使用的灯光列表 API schema：</span><span class="en">LightListAPI</span></li>
+        <li><span class="zh">已弃用：</span><span class="en">deprecated</span></li>
+        <li><span class="zh">旧版灯光列表命名空间：</span><span class="en">lightList</span></li>
+        <li><span class="zh">灯光列表缓存行为属性：</span><span class="en">lightList:cacheBehavior</span></li>
+        <li><span class="zh">兼容层接口：</span><span class="en">compatibility surface</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

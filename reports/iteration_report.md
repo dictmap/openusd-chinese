@@ -6068,3 +6068,36 @@
 1. 继续最多 5 页，优先处理仍较薄且用户会实际阅读的 `usdLux` schema 页面。
 2. 建议处理：`full_site/release/user_guides/schemas/usdLux/ListAPI.html`、`full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html`、`full_site/release/user_guides/schemas/usdLux/BoundableLightBase.html`、`full_site/release/user_guides/schemas/usdLux/RectLight.html`、`full_site/release/user_guides/schemas/usdLux/SphereLight.html`。
 3. 后续可继续按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `_source.html`、`search.html` 和目录页。
+## 第 238 轮：ListAPI、PluginLightFilter、BoundableLightBase、RectLight 与 SphereLight 补强
+
+已完成：
+
+- 复核当前 git 状态、远端和报告：本地 `main` 基于上一轮同步提交 `eaf0cd6`，`origin/main` 一致。
+- 新增并执行 `scripts/refine_openusd_release_batch_107.mjs`，本轮标记为 `release-quality-pass-107`。
+- 严格只精修 5 页：
+  - `full_site/release/user_guides/schemas/usdLux/ListAPI.html`
+  - `full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html`
+  - `full_site/release/user_guides/schemas/usdLux/BoundableLightBase.html`
+  - `full_site/release/user_guides/schemas/usdLux/RectLight.html`
+  - `full_site/release/user_guides/schemas/usdLux/SphereLight.html`
+- 每页补入 5 条中文二次精修导读和 6 条术语对照：覆盖 `ListAPI` 的 deprecated 兼容层与 `LightListAPI` 迁移边界、`PluginLightFilter` 的 Sdr/UsdShade 插件过滤器入口、`BoundableLightBase` 的 scene bounds/extent 基类语义、`RectLight` 的 width/height/texture/transform 组合阅读，以及 `SphereLight` 的 radius/treatAsPoint/zero-area renderer 支持边界。
+- 质量回读显示 5 页均为 `draft_needs_translation`，坏编码 0，非预期官方外跳 0：
+  - `ListAPI.html`：中文字符 755，中文/英文块 29/21。
+  - `PluginLightFilter.html`：中文字符 697，中文/英文块 36/29。
+  - `BoundableLightBase.html`：中文字符 670，中文/英文块 35/26。
+  - `RectLight.html`：中文字符 820，中文/英文块 36/25。
+  - `SphereLight.html`：中文字符 841，中文/英文块 36/25。
+- 本轮分级计数保持不变：`draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因：处理对象开始前已是 `draft_needs_translation`，本轮属于第二层补强精修，不会改变当前审计分级。
+- 已运行并通过：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1`；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步结果：本轮验证通过后使用 `OpenUSD bilingual round 238: usdLux list filter bound rect sphere pass` 提交并推送。
+
+当前差距：
+
+- 全量 406 页仍不是完成态：8 页 `good_bilingual`；398 页仍为 `bilingual_draft`，其中 387 页为 `draft_needs_translation`、11 页为 `draft_template_only`。
+- 本轮继续提升 5 个 usdLux schema 页面的中文阅读层厚度，但仍不是逐段完整翻译；后续继续按最多 5 页节奏推进。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理较薄且用户会实际阅读的教程、usdRender 或 usdMedia schema 页面。
+2. 建议处理：`full_site/release/user_guides/schemas/usdRender/RenderPass.html`、`full_site/release/user_guides/schemas/usdRender/RenderProduct.html`、`full_site/release/tut_inspect_and_author_props.html`、`full_site/release/tut_traversing_stage.html`、`full_site/release/user_guides/schemas/usdMedia/SpatialAudio.html`。
+3. 后续继续按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `_source.html`、`search.html` 和目录页。

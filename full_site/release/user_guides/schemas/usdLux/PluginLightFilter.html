@@ -56,6 +56,27 @@
         <li><span class="zh">渲染器特定的：</span><span class="en">renderer-specific</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-107">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`PluginLightFilter` 是 light filter 的插件扩展入口，用来通过外部 `SdrShadingNode` definition 和 `UsdShadeNodeDefAPI` 暴露 renderer-specific filter。它的核心价值在于连接 usdLux 的过滤器框架和渲染器插件，而不是把所有过滤器参数固化为 OpenUSD 核心 schema。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for PluginLightFilter while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`PluginLightFilter` 与 `LightFilter` 的关系类似 `PluginLight` 与具体内建灯型的关系：schema 提供可发现、可连接的入口，具体过滤算法和参数由 Sdr 节点及 render delegate 解释。</span></li>
+        <li><span class="zh">`UsdShadeNodeDefAPI` 表示该 prim 可以携带或引用 node definition 信息。阅读时应把它看作 shader/filter 描述桥梁，而不是普通的用户可见 UI metadata。</span></li>
+        <li><span class="zh">如果某个 renderer 提供自定义 barn door、gobo、projection 或衰减过滤器，`PluginLightFilter` 可作为承载入口；但具体属性是否可移植取决于对应 Sdr 节点和 renderer 支持。</span></li>
+        <li><span class="zh">`filterLink` 或相关 linking 机制决定过滤器作用于哪些灯光或集合，插件 filter 的存在不自动意味着它会影响所有 lights；连接关系仍需逐项检查。</span></li>
+        <li><span class="zh">中文层只解释插件边界、Sdr 发现路径和 renderer 依赖，不应把 renderer-specific 参数翻译成看似通用的标准属性。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">插件灯光过滤器 schema：</span><span class="en">PluginLightFilter</span></li>
+        <li><span class="zh">灯光过滤器基类：</span><span class="en">LightFilter</span></li>
+        <li><span class="zh">Sdr 着色节点：</span><span class="en">SdrShadingNode</span></li>
+        <li><span class="zh">UsdShade 节点定义 API：</span><span class="en">UsdShadeNodeDefAPI</span></li>
+        <li><span class="zh">渲染代理：</span><span class="en">render delegate</span></li>
+        <li><span class="zh">过滤器链接关系：</span><span class="en">filterLink</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
