@@ -54,6 +54,27 @@
         <li><span class="zh">标签/描述/优先级三元组：</span><span class="en">label/description/priority</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-112">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`AccessibilityAPI` 是 usdUI 领域的 applied API schema，用于在 prim 上提供可被 runtime accessibility frameworks 使用的信息。它表达 label、description、priority 这类无障碍元数据，不改变几何、材质或渲染结果。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for AccessibilityAPI while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`AccessibilityAPI:default` 出现在 `prepend apiSchemas` 中，表示把命名实例的 applied API 附加到目标 prim；示例中的 `default` 是实例名，应保留英文原样。</span></li>
+        <li><span class="zh">`accessibility:default:label` 是给辅助工具和 UI 展示的短名称；它通常应简洁、可读，并能帮助语音控制或屏幕阅读器识别对象。</span></li>
+        <li><span class="zh">`accessibility:default:description` 提供更长描述，适合解释对象外观、用途或交互线索；它是用户体验元数据，不应被当作渲染说明。</span></li>
+        <li><span class="zh">`accessibility:default:priority` 可帮助 runtime 或 assistive tooling 决定提示顺序或重要性。token 值如 `standard` 必须保留原样。</span></li>
+        <li><span class="zh">该 schema 适合和 `ObjectHints`、`PrimHints`、`PropertyHints` 等 usdUI 页面一起读：它们共同把资产语义和运行时 UI/交互提示连接起来。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">无障碍信息 API schema：</span><span class="en">AccessibilityAPI</span></li>
+        <li><span class="zh">无障碍框架：</span><span class="en">accessibility frameworks</span></li>
+        <li><span class="zh">辅助工具：</span><span class="en">assistive tooling</span></li>
+        <li><span class="zh">短标签：</span><span class="en">label</span></li>
+        <li><span class="zh">详细描述：</span><span class="en">description</span></li>
+        <li><span class="zh">呈现优先级：</span><span class="en">priority</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

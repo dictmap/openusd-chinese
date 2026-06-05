@@ -54,6 +54,27 @@
         <li><span class="zh">重设父级：</span><span class="en">reparenting</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-112">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`Namespace Editing` 讨论在 composed stage 上删除、移动、重命名或 reparent prim/property。它处理的是组合后的命名空间路径和跨层 path fixups，不是简单地在单个 `.usda` 文本里改字符串。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for Namespace Editing while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">namespace edit 的对象是 composed prim 或 property；操作包括 delete、move、rename 和 reparenting。读者应先确认当前 edit target 和 layer stack，避免把意见写到错误层。</span></li>
+        <li><span class="zh">直接使用 `SdfLayer` 或局部 `UsdStage` API 只能编辑单层中的对象，难以自动修复所有跨层 path target；namespace editing 关注的是组合语义下的安全路径更新。</span></li>
+        <li><span class="zh">`relocates` composition arc 可表达非破坏性重定位：源资产保持原始结构，上层通过 relocates 改变组合后的命名空间布局。</span></li>
+        <li><span class="zh">path fixups 很重要：移动或删除对象后，relationships、connections、inherits、specializes、variant 里的路径引用都可能需要同步更新。</span></li>
+        <li><span class="zh">维护中文层时保留 `LayerStack`、`EditTarget`、`relocates`、`reparenting` 等术语原样，帮助读者和 API/规范文本对照。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">命名空间编辑：</span><span class="en">namespace edit</span></li>
+        <li><span class="zh">层栈：</span><span class="en">LayerStack</span></li>
+        <li><span class="zh">当前编辑目标：</span><span class="en">EditTarget</span></li>
+        <li><span class="zh">路径引用修复：</span><span class="en">path fixups</span></li>
+        <li><span class="zh">重定位组合弧：</span><span class="en">relocates</span></li>
+        <li><span class="zh">重设父级：</span><span class="en">reparenting</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

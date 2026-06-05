@@ -54,6 +54,27 @@
         <li><span class="zh">usdcat 输出转换参数：</span><span class="en">usdcat -o</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-112">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`Converting Between Layer Formats` 说明如何在 `.usda`、`.usdc` 和 `.usd` 等原生 USD layer 格式之间转换。核心工具是 `usdcat`：它既能查看 layer 内容，也能通过 `-o` 输出参数把同一 layer 写成目标格式。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for Converting Between Layer Formats while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`.usda` 是可读的文本 layer 格式，适合 diff、教学和人工检查；`.usdc` 是 crate 二进制格式，通常更适合大规模资产的读取效率和发布体积。</span></li>
+        <li><span class="zh">`.usd` 是通用扩展名，底层可以是文本或二进制；USD 打开文件时会检测实际格式，因此不要把 `.usd` 简化理解成某一种固定编码。</span></li>
+        <li><span class="zh">`usdcat Sphere.usda` 用于查看 layer 内容；`usdcat input.usda -o output.usdc` 这类命令用于转换输出。命令、flag、扩展名和文件名都应保留英文原样。</span></li>
+        <li><span class="zh">格式转换不应该改变 USD scene 的语义；如果转换后内容表现不同，应优先检查 layer 内容、资产路径、插件可用性或外部依赖，而不是只看扩展名。</span></li>
+        <li><span class="zh">本页适合和 toolset、usdchecker、usddiff 等工具页一起读：一个解释格式转换，一个解释验证和差异检查，共同支撑发布流程。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 文本 layer 格式：</span><span class="en">.usda</span></li>
+        <li><span class="zh">USD crate 二进制 layer 格式：</span><span class="en">.usdc</span></li>
+        <li><span class="zh">可自动检测底层格式的 USD 扩展名：</span><span class="en">.usd</span></li>
+        <li><span class="zh">查看和转换 USD layer 的命令行工具：</span><span class="en">usdcat</span></li>
+        <li><span class="zh">输出目标参数：</span><span class="en">-o</span></li>
+        <li><span class="zh">层文件格式：</span><span class="en">layer format</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

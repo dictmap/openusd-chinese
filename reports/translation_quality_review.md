@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T20:46:06.093Z
+Generated: 2026-06-05T20:56:22.086Z
 
 ## Summary
 
@@ -54,11 +54,11 @@ Generated: 2026-06-05T20:46:06.093Z
 | 92 | draft_needs_translation | 283 | `full_site/api/functions_func_k.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
 | 152 | draft_needs_translation | 283 | `full_site/api/functions_vars_u.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 | 153 | draft_needs_translation | 286 | `full_site/api/functions_vars_v.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
-| 301 | draft_needs_translation | 286 | `full_site/release/spec.html` | 页面草稿：Specifications / Specifications |
 | 64 | draft_needs_translation | 288 | `full_site/api/classes.html` | API 页面草稿：Class Index / Class Index |
 | 7 | draft_needs_translation | 289 | `full_site/api/arch_page_front.html` | Arch：架构相关 / Arch: Architecture Dependent |
 | 96 | draft_needs_translation | 289 | `full_site/api/functions_func_o.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
-| 360 | draft_needs_translation | 289 | `full_site/release/user_guides/schemas/usdUI/AccessibilityAPI.html` | 页面草稿：AccessibilityAPI / AccessibilityAPI |
+| 196 | draft_needs_translation | 290 | `full_site/api/globals_v.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
+| 362 | draft_needs_translation | 290 | `full_site/release/user_guides/schemas/usdUI/Backdrop.html` | 页面草稿：Backdrop / Backdrop |
 
 ## All Pages
 
@@ -364,10 +364,10 @@ Generated: 2026-06-05T20:46:06.093Z
 | 298 | draft_template_only | bilingual_draft | 64 | 2/3 | 0 | 0 | `full_site/release/search.html` |
 | 299 | draft_needs_translation | bilingual_draft | 454 | 30/28 | 0 | 0 | `full_site/release/spec_usdpreviewsurface.html` |
 | 300 | draft_needs_translation | bilingual_draft | 430 | 30/28 | 0 | 0 | `full_site/release/spec_usdz.html` |
-| 301 | draft_needs_translation | bilingual_draft | 286 | 12/9 | 0 | 0 | `full_site/release/spec.html` |
+| 301 | draft_needs_translation | bilingual_draft | 567 | 24/16 | 0 | 0 | `full_site/release/spec.html` |
 | 302 | good_bilingual | bilingual_complete | 2519 | 157/199 | 0 | 0 | `site/toolset.html` |
 | 303 | draft_needs_translation | bilingual_draft | 940 | 36/25 | 0 | 0 | `full_site/release/tut_authoring_variants.html` |
-| 304 | draft_needs_translation | bilingual_draft | 303 | 14/13 | 0 | 0 | `full_site/release/tut_converting_between_layer_formats.html` |
+| 304 | draft_needs_translation | bilingual_draft | 604 | 26/20 | 0 | 0 | `full_site/release/tut_converting_between_layer_formats.html` |
 | 305 | draft_needs_translation | bilingual_draft | 382 | 16/14 | 0 | 0 | `full_site/release/tut_end_to_end.html` |
 | 306 | draft_needs_translation | bilingual_draft | 352 | 17/15 | 0 | 0 | `full_site/release/tut_generating_new_schema.html` |
 | 307 | draft_needs_translation | bilingual_draft | 566 | 24/18 | 0 | 0 | `full_site/release/tut_helloworld_redux.html` |
@@ -379,13 +379,13 @@ Generated: 2026-06-05T20:46:06.093Z
 | 313 | draft_needs_translation | bilingual_draft | 795 | 36/25 | 0 | 0 | `full_site/release/tut_traversing_stage.html` |
 | 314 | draft_needs_translation | bilingual_draft | 375 | 15/13 | 0 | 0 | `full_site/release/tut_usd_tutorials.html` |
 | 315 | draft_needs_translation | bilingual_draft | 349 | 15/12 | 0 | 0 | `full_site/release/tut_usdview_plugin.html` |
-| 316 | draft_needs_translation | bilingual_draft | 304 | 12/11 | 0 | 0 | `full_site/release/tut_variants_example_in_katana.html` |
+| 316 | draft_needs_translation | bilingual_draft | 576 | 24/18 | 0 | 0 | `full_site/release/tut_variants_example_in_katana.html` |
 | 317 | draft_needs_translation | bilingual_draft | 526 | 26/20 | 0 | 0 | `full_site/release/tut_xforms.html` |
 | 318 | draft_needs_translation | bilingual_draft | 544 | 37/35 | 0 | 0 | `full_site/release/usd_products.html` |
 | 319 | draft_needs_translation | bilingual_draft | 425 | 22/20 | 0 | 0 | `full_site/release/usdfaq.html` |
 | 320 | draft_needs_translation | bilingual_draft | 549 | 24/18 | 0 | 0 | `full_site/release/user_guides/collections_and_patterns.html` |
 | 321 | draft_needs_translation | bilingual_draft | 383 | 16/14 | 0 | 0 | `full_site/release/user_guides/color_user_guide.html` |
-| 322 | draft_needs_translation | bilingual_draft | 309 | 12/11 | 0 | 0 | `full_site/release/user_guides/namespace_editing.html` |
+| 322 | draft_needs_translation | bilingual_draft | 541 | 24/18 | 0 | 0 | `full_site/release/user_guides/namespace_editing.html` |
 | 323 | draft_needs_translation | bilingual_draft | 333 | 16/14 | 0 | 0 | `full_site/release/user_guides/primvars.html` |
 | 324 | draft_needs_translation | bilingual_draft | 380 | 16/14 | 0 | 0 | `full_site/release/user_guides/render_user_guide.html` |
 | 325 | draft_needs_translation | bilingual_draft | 313 | 12/9 | 0 | 0 | `full_site/release/user_guides/schemas/index.html` |
@@ -423,7 +423,7 @@ Generated: 2026-06-05T20:46:06.093Z
 | 357 | draft_needs_translation | bilingual_draft | 956 | 44/32 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderSettingsBase.html` |
 | 358 | draft_needs_translation | bilingual_draft | 1070 | 48/32 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderVar.html` |
 | 359 | draft_needs_translation | bilingual_draft | 704 | 36/23 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/usdRender_toc.html` |
-| 360 | draft_needs_translation | bilingual_draft | 289 | 12/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/AccessibilityAPI.html` |
+| 360 | draft_needs_translation | bilingual_draft | 518 | 24/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/AccessibilityAPI.html` |
 | 361 | draft_needs_translation | bilingual_draft | 295 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/AttributeHints.html` |
 | 362 | draft_needs_translation | bilingual_draft | 290 | 12/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/Backdrop.html` |
 | 363 | draft_needs_translation | bilingual_draft | 621 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/NodeGraphNodeAPI.html` |
