@@ -2,6 +2,29 @@
 
 源页面：<https://openusd.org/release/api/index.html>
 
+## 第 188 轮：Vdf header / Hgi sampler / Usd token 页面精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `e20a66b`，本轮 5 个目标页均存在且均为 `draft_template_only`。
+- 本轮严格只处理 5 页：`full_site/api/sparse_vectorized_input_traverser_8h.html`、`full_site/api/struct_hgi_sampler_desc.html`、`full_site/api/struct_usd_geom_tokens_type.html`、`full_site/api/struct_usd_lux_tokens_type.html`、`full_site/api/struct_usd_physics_tokens_type.html`；没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_api_struct_token_batch_057.mjs`，为 5 页插入 `api-struct-token-quality-pass-057` 中文精修导读区块；每页包含页面定位、字段或 token 集合阅读方式、常见使用边界和术语对照，保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和原文摘录。
+- 本轮中文层覆盖：`sparseVectorizedInputTraverser.h` 的 `VdfSparseVectorizedInputTraverser`、`VdfNetwork`、output-to-input sparse traversal、vectorized 输入依赖和 Vdf node/input/output/mask 相关链接；`HgiSamplerDesc` 的 `magFilter`、`minFilter`、`mipFilter`、`addressModeU/V/W`、`borderColor`、`enableCompare`、`compareFunction` 和 `debugName`；`UsdGeomTokensType` 的 `UsdGeomTokens`、`TfToken`、property names、allowedTokens、`allTokens` 和几何 schema token 分组；`UsdLuxTokensType` 的 light linking、shadow linking、filter linking、光源 schema token 和 `inputs*` 属性 token；`UsdPhysicsTokensType` 的物理属性 token、collision approximation、joint/rigid body 相关 token 与 multiple-apply API 模板派生名。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 105 / `draft_needs_translation` 293 / `good_bilingual` 8 变为 `draft_template_only` 100 / `draft_needs_translation` 298 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；本轮 5 页均可通过本地最终入口访问。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+- GitHub 同步：本轮验证通过后运行 `scripts/sync_openusd_to_github.ps1`，提交信息为 `OpenUSD bilingual round 188: Vdf sampler Usd token entries`。
+
+差距：
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是完整翻译每个 header include、struct 字段、token 条目、allowed value 或相关类页。
+- 全量仍有 100 个 `draft_template_only` 和 298 个 `draft_needs_translation`；`UsdSkelTokens`、Tf/Trace/UsdAppUtils 模块入口、object.h、更多 tokens/page_front/class/source 页面仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理当前质量队列中仍为模板草稿的页面：`struct_usd_skel_tokens_type.html`、`tf_page_front.html`、`trace_page_front.html`、`usd_2usd_2object_8h.html`、`usd_app_utils_page_front.html`。
+2. 对 token/module/header 页面补中文用途说明、阅读路径、常见字段或 token 集合边界和术语对照，保留 API 名称、类型名、token 字面量、头文件名和链接原样。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证；验证通过后同步 GitHub，并记录分级变化与提交结果。
+
 ## 第 187 轮：Pcp/Plug/Sdf/Sdr 模块入口页精修
 已完成：
 

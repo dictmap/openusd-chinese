@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-struct-token-quality-pass-057">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 sparseVectorizedInputTraverser.h File 补充中文优先的页面定位、字段或 token 集合阅读方式、常见使用边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first page positioning, field or token reading guidance, common usage boundaries, and terminology for sparseVectorizedInputTraverser.h File while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`sparseVectorizedInputTraverser.h File` 是 Vdf 执行网络相关 header 页，核心条目是 `VdfSparseVectorizedInputTraverser`。</span></li>
+        <li><span class="zh">`VdfSparseVectorizedInputTraverser` 用于在 `VdfNetwork` 中做 output-to-input 方向的 sparse traversal，并以 vectorized 方式处理依赖输入；它不是普通容器遍历器。</span></li>
+        <li><span class="zh">本页链接到 `connection_8h.html`、`masked_output_vector_8h.html`、`sparse_output_traverser_8h.html`、`exec_2vdf_2input_8h.html`、`mask_8h.html`、`masked_output_8h.html`、`exec_2vdf_2node_8h.html`、`exec_2vdf_2output_8h.html` 等 Vdf 基础结构。</span></li>
+        <li><span class="zh">阅读顺序建议先看 `VdfSparseVectorizedInputTraverser` 类页，再回到 `VdfNetwork` 的 node/input/output/mask 概念；源码链接适合查模板实现和遍历状态，而不是先读。</span></li>
+        <li><span class="zh">本地复刻中保留 source code、header include、directory 与 class 链接；清单内页面走本地路由，清单外 source/目录页按占位策略处理，官方原页链接仍单独保留。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Vdf 稀疏向量化输入遍历器：</span><span class="en">VdfSparseVectorizedInputTraverser</span></li>
+        <li><span class="zh">稀疏遍历：</span><span class="en">sparse traversal</span></li>
+        <li><span class="zh">从输出到输入的方向：</span><span class="en">output-to-input direction</span></li>
+        <li><span class="zh">Vdf 执行网络：</span><span class="en">VdfNetwork</span></li>
+        <li><span class="zh">带掩码的输出：</span><span class="en">masked output</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

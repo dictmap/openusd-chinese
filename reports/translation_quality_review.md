@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T00:04:02.886Z
+Generated: 2026-06-05T00:13:52.159Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-05T00:04:02.886Z
 
 ## Grade Counts
 
-- draft_template_only: 105
-- draft_needs_translation: 293
+- draft_template_only: 100
+- draft_needs_translation: 298
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -50,7 +50,6 @@ Generated: 2026-06-05T00:04:02.886Z
 | 298 | draft_template_only | 64 | `full_site/release/search.html` | 搜索 / Search - Universal Scene Description 26.05 documentation |
 | 69 | draft_template_only | 66 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | API 页面草稿：hf Directory / hf Directory |
 | 212 | draft_template_only | 66 | `full_site/api/journal_8h.html` | API 页面草稿：journal.h File / journal.h File |
-| 248 | draft_template_only | 66 | `full_site/api/sparse_vectorized_input_traverser_8h.html` | API 页面草稿：sparseVectorizedInputTraverser.h File / sparseVectorizedInputTraverser.h File |
 | 260 | draft_template_only | 66 | `full_site/api/usd_hydra_page_front.html` | API 模块草稿：UsdHydra: USD Hydra Schemas / UsdHydra: USD Hydra Schemas |
 | 262 | draft_template_only | 66 | `full_site/api/usd_media_page_front.html` | API 模块草稿：UsdMedia: USD Media Schema / UsdMedia: USD Media Schema |
 | 266 | draft_template_only | 66 | `full_site/api/usd_proc_page_front.html` | API 模块草稿：UsdProc: USD Schemas for Procedurals / UsdProc: USD Schemas for Procedurals |
@@ -59,6 +58,7 @@ Generated: 2026-06-05T00:04:02.886Z
 | 272 | draft_template_only | 66 | `full_site/api/usd_skel_page_front.html` | API 模块草稿：UsdSkel: USD Skeleton Schema and API / UsdSkel: USD Skeleton Schema and API |
 | 277 | draft_template_only | 66 | `full_site/api/usddraco_page_front.html` | API 模块草稿：UsdDraco: Draco File Format Plugin / UsdDraco: Draco File Format Plugin |
 | 294 | draft_template_only | 66 | `full_site/release/press_opensource_announce.html` | 开源公告 / Open Source Announcement |
+| 295 | draft_template_only | 66 | `full_site/release/press_opensource_release.html` | 开源发布 / Open Source Release |
 
 ## All Pages
 
@@ -311,11 +311,11 @@ Generated: 2026-06-05T00:04:02.886Z
 | 245 | draft_needs_translation | bilingual_draft | 348 | 24/21 | 0 | 0 | `full_site/api/sdf_page_front.html` |
 | 246 | draft_needs_translation | bilingual_draft | 365 | 14/10 | 0 | 0 | `full_site/api/sdr_glslfx_page_front.html` |
 | 247 | draft_needs_translation | bilingual_draft | 355 | 15/12 | 0 | 0 | `full_site/api/sdr_page_front.html` |
-| 248 | draft_template_only | bilingual_draft | 66 | 3/5 | 0 | 0 | `full_site/api/sparse_vectorized_input_traverser_8h.html` |
-| 249 | draft_template_only | bilingual_draft | 126 | 18/20 | 0 | 0 | `full_site/api/struct_hgi_sampler_desc.html` |
-| 250 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/struct_usd_geom_tokens_type.html` |
-| 251 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/struct_usd_lux_tokens_type.html` |
-| 252 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/struct_usd_physics_tokens_type.html` |
+| 248 | draft_needs_translation | bilingual_draft | 338 | 14/11 | 0 | 0 | `full_site/api/sparse_vectorized_input_traverser_8h.html` |
+| 249 | draft_needs_translation | bilingual_draft | 387 | 29/26 | 0 | 0 | `full_site/api/struct_hgi_sampler_desc.html` |
+| 250 | draft_needs_translation | bilingual_draft | 441 | 40/37 | 0 | 0 | `full_site/api/struct_usd_geom_tokens_type.html` |
+| 251 | draft_needs_translation | bilingual_draft | 381 | 40/37 | 0 | 0 | `full_site/api/struct_usd_lux_tokens_type.html` |
+| 252 | draft_needs_translation | bilingual_draft | 411 | 40/37 | 0 | 0 | `full_site/api/struct_usd_physics_tokens_type.html` |
 | 253 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/struct_usd_skel_tokens_type.html` |
 | 254 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/system_diagnostics_8h_source.html` |
 | 255 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/tf_page_front.html` |
