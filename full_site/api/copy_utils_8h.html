@@ -34,6 +34,27 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="release-quality-pass-075">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 copyUtils.h File 补充中文优先的页面定位、关键机制、阅读边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds Chinese-first page positioning, key mechanisms, reading boundaries, and terminology for copyUtils.h File while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`copyUtils.h` 是 Sdf 层级中用于 spec copying 的 API 索引页；它不是源码页，但列出了高级 spec copy 相关类型和函数入口。</span></li>
+        <li><span class="zh">`SdfCopySpec()` 是核心函数入口，用于在 layer/path 之间复制 spec；页面有两个 overload，应结合参数签名和 `SdfLayer`、`SdfPath` 一起阅读。</span></li>
+        <li><span class="zh">`SdfShouldCopyChildrenFn` 与 `SdfShouldCopyValueFn` 是回调类型，用来决定 children 或 field/value 是否应在复制过程中保留。</span></li>
+        <li><span class="zh">`SdfCopySpecsValueEdit`、`TfToken` 和 `VtValue` 相关链接说明高级复制 API 可对字段值进行筛选、编辑或替换，而不是简单逐字节复制。</span></li>
+        <li><span class="zh">阅读本页时保留 `SdfCopySpec`、`SdfSpecType`、`SdfPath` 等英文 API 名称，因为这些名称直接对应 C++/Python API 和 Doxygen 索引。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Sdf spec 复制工具头文件：</span><span class="en">copyUtils.h</span></li>
+        <li><span class="zh">复制 spec 的函数入口：</span><span class="en">SdfCopySpec()</span></li>
+        <li><span class="zh">children 复制判定回调：</span><span class="en">SdfShouldCopyChildrenFn</span></li>
+        <li><span class="zh">value/field 复制判定回调：</span><span class="en">SdfShouldCopyValueFn</span></li>
+        <li><span class="zh">复制过程中的值编辑对象：</span><span class="en">SdfCopySpecsValueEdit</span></li>
+        <li><span class="zh">高级 spec 复制 API：</span><span class="en">Advanced Spec Copying API</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

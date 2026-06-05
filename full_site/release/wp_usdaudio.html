@@ -44,6 +44,27 @@
 <li><span class="zh">本地页保留 SpatialAudio、filePath、auralMode、playbackMode、startTime、mediaOffset、level 和 timeCodesPerSecond 示例入口。</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-075">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 UsdAudio Proposal 补充中文优先的页面定位、关键机制、阅读边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds Chinese-first page positioning, key mechanisms, reading boundaries, and terminology for UsdAudio Proposal while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdAudio Proposal` 是已实现的历史 proposal；当前 API 入口应优先看 `UsdMediaSpatialAudio`，本页主要用于理解 schema 设计动机。</span></li>
+        <li><span class="zh">proposal 的范围是为 USD 场景中的音频元素提供 interchange schema，支持 timed-start playback、空间位置/方向以及 ambient sound。</span></li>
+        <li><span class="zh">音频数据不直接嵌入 USD，而是通过 `assetPath`/`filePath` 指向外部文件或流；这保持了 scene description 与媒体 payload 的边界。</span></li>
+        <li><span class="zh">`startTime`、`mediaOffset`、`level` 和 `timeCodesPerSecond` 用来把音频播放与 USD 时间轴对齐，但该 schema 不覆盖复杂音频编辑、trigger 或交互式环境逻辑。</span></li>
+        <li><span class="zh">阅读示例时应把 `SpatialAudio` prim 当作带位置的声音源：位置/方向来自可变换 prim 语义，音频播放参数来自 UsdMedia/UsdAudio 属性。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">UsdAudio 历史提案：</span><span class="en">UsdAudio Proposal</span></li>
+        <li><span class="zh">当前空间音频 schema 入口：</span><span class="en">UsdMediaSpatialAudio</span></li>
+        <li><span class="zh">定时开始播放：</span><span class="en">timed-start playback</span></li>
+        <li><span class="zh">外部音频资产路径：</span><span class="en">assetPath / filePath</span></li>
+        <li><span class="zh">环境声：</span><span class="en">ambient sound</span></li>
+        <li><span class="zh">媒体内部起始偏移：</span><span class="en">mediaOffset</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

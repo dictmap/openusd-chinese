@@ -34,6 +34,27 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="release-quality-pass-075">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 journal.h File 补充中文优先的页面定位、关键机制、阅读边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds Chinese-first page positioning, key mechanisms, reading boundaries, and terminology for journal.h File while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`journal.h` 是 OpenExec/ESF 相关的 API File 页面，当前本地页列出的主要类是 `EsfJournal`。</span></li>
+        <li><span class="zh">官方摘录说明 `EsfJournal` stores a collection of edit reasons associated with scene objects；也就是说它记录场景对象相关的 edit reasons 集合。</span></li>
+        <li><span class="zh">该页链接了 `edit_reason_8h.html`、`dense_hash_map_8h.html`、`TfToken`、`SdfPath` 等依赖，表明 journal 数据会和路径、token、哈希容器及 ESF API 边界一起使用。</span></li>
+        <li><span class="zh">阅读时应把它作为 Exec scene interface 的辅助诊断/记录结构，而不是通用 USD Layer edit log 或用户层面的撤销栈。</span></li>
+        <li><span class="zh">本页目前可读信息很短；中文精修层只解释索引项和依赖含义，不伪造 `EsfJournal` 的未摘录成员函数细节。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">ESF journal 头文件：</span><span class="en">journal.h</span></li>
+        <li><span class="zh">ESF 编辑原因记录集合：</span><span class="en">EsfJournal</span></li>
+        <li><span class="zh">编辑原因：</span><span class="en">edit reasons</span></li>
+        <li><span class="zh">场景对象：</span><span class="en">scene objects</span></li>
+        <li><span class="zh">Exec 场景接口：</span><span class="en">Exec scene interface</span></li>
+        <li><span class="zh">诊断/记录结构：</span><span class="en">diagnostic / record structure</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
