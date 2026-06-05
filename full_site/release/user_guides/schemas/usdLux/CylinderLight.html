@@ -54,6 +54,27 @@
         <li><span class="zh">管状荧光灯：</span><span class="en">tube-shaped fluorescent lights</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-104">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`CylinderLight` 是从 cylinder 侧面向外发光的 intrinsic light，默认圆柱中心在原点、major axis 位于 X axis。阅读时要特别注意：它不从 flat end-caps 发光，示例通过 `inputs:length`、`inputs:radius` 和 `inputs:shaping:cone:angle` 控制光带形状。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for CylinderLight while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">官方摘要里的 `does not emit light from the flat end-caps` 是核心约束。翻译时应明确只有圆柱侧面发光，不能把它解释成两端也发光的封闭体积光源。</span></li>
+        <li><span class="zh">`inputs:length = 3` 和 `inputs:radius = 0.25` 分别决定圆柱发光体长度和半径；它们与 transform 一起决定灯光在场景中的可见形状和照明范围。</span></li>
+        <li><span class="zh">`inputs:shaping:cone:angle = 45` 与 `xformOp:rotateXYZ` 共同让示例光带变窄。中文说明应保留 shaping 属性名，因为它属于 `usdLux` 灯光 shaping 语义的一部分。</span></li>
+        <li><span class="zh">`CylinderLight` 可模拟 tube-shaped fluorescent lights、linear lights、light panels 和 building interiors 中的 commercial lighting。保留这些英文用途词有助于和 DCC/renderer UI 对齐。</span></li>
+        <li><span class="zh">在与 `DiskLight`、`RectLight` 对比时，本页重点是线性/管状面积光；如果需要表达点光或球形光，应转向 `SphereLight`，不要滥用 `CylinderLight`。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">圆柱光源：</span><span class="en">CylinderLight</span></li>
+        <li><span class="zh">主轴：</span><span class="en">major axis</span></li>
+        <li><span class="zh">圆柱端盖：</span><span class="en">flat end-caps</span></li>
+        <li><span class="zh">长度输入属性：</span><span class="en">inputs:length</span></li>
+        <li><span class="zh">光锥角输入属性：</span><span class="en">inputs:shaping:cone:angle</span></li>
+        <li><span class="zh">管状荧光灯：</span><span class="en">tube-shaped fluorescent lights</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

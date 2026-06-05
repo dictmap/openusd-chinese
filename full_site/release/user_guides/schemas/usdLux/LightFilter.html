@@ -56,6 +56,27 @@
         <li><span class="zh">UsdShade 材质容器：</span><span class="en">UsdShade Material</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-104">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`LightFilter` 用于调制 light 的效果，通常通过 `LightAPI` 的 `light:filters` relationship 与灯光关联。它自身也是 UsdShade connectable prim/container，可以拥有实现 filter 逻辑的 connectable children。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for LightFilter while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`collection:filterLink:includeRoot` 控制 filterLink collection 的默认包含行为；通过 collection 可以决定哪些 geometry prims 会被该 filter 影响。</span></li>
+        <li><span class="zh">`lightFilter:shaderId` 指定 light filter shader identifier。若 filter 依赖 shader 子网络，相关 shader nodes 可以作为 connectable children 嵌套在 `LightFilter` 下。</span></li>
+        <li><span class="zh">官方说明强调 `LightFilter` 可以嵌套在 light prim 下，也可以包含 connectable children；但不能随意放入无关的 connectable container，例如 `UsdShade Material`。</span></li>
+        <li><span class="zh">`Representing Filters on Lights`、`UsdShade node encapsulation` 和 `Collections and Patterns` 是理解本页的三条关键背景路径：分别解释 filter 语义、封装规则和 collection 选择机制。</span></li>
+        <li><span class="zh">Light filters 的应用顺序和具体效果往往依赖 renderer 支持。中文层应解释结构和关系，不应承诺所有 renderer 都有同样的 filter 视觉结果。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">灯光过滤器：</span><span class="en">LightFilter</span></li>
+        <li><span class="zh">过滤器链接集合：</span><span class="en">filterLink collection</span></li>
+        <li><span class="zh">filterLink 根包含属性：</span><span class="en">collection:filterLink:includeRoot</span></li>
+        <li><span class="zh">过滤器 shader 标识：</span><span class="en">lightFilter:shaderId</span></li>
+        <li><span class="zh">可连接容器：</span><span class="en">connectable container</span></li>
+        <li><span class="zh">UsdShade 材质容器：</span><span class="en">UsdShade Material</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -56,6 +56,27 @@
         <li><span class="zh">stage 上轴：</span><span class="en">up axis</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-104">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`DomeLight_1` 表达从远处外部环境向内发光的 dome light，常用于 sky、HDR environment 和 Image Based Lighting (IBL)。它带有版本后缀，应与无后缀 `DomeLight` 区分阅读。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for DomeLight_1 while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`inputs:texture:file` 指向环境贴图资源，`inputs:texture:format` 描述贴图格式。路径、格式 token 和 `OpenEXR` 等术语应保持英文原样，方便工具链解析。</span></li>
+        <li><span class="zh">`poleAxis` 决定 dome 的默认朝向；fallback 值 `scene` 表示 dome 顶极对齐 stage up axis。环境贴图方向错误时，通常应检查 `poleAxis`、stage up axis 和 transform。</span></li>
+        <li><span class="zh">`portals` relationship 用于把 DomeLight 与 PortalLight 等采样引导对象关联。阅读时应理解它影响 light sampling/visibility 引导，而不是普通几何父子关系。</span></li>
+        <li><span class="zh">`DomeLight_1` 与 `DistantLight` 的角色不同：DomeLight 面向环境光/IBL，DistantLight 面向方向性远光。两者可以配合，但不能互相替代。</span></li>
+        <li><span class="zh">页面名称中的 `_1` 是 schema/version 语境的一部分。本地复刻和中文说明都应保留 `DomeLight_1` 字面量，避免误导读者跳到另一个 schema 页面。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">DomeLight 版本化 schema：</span><span class="en">DomeLight_1</span></li>
+        <li><span class="zh">基于图像的光照：</span><span class="en">Image Based Lighting</span></li>
+        <li><span class="zh">环境贴图文件输入属性：</span><span class="en">inputs:texture:file</span></li>
+        <li><span class="zh">环境贴图格式输入属性：</span><span class="en">inputs:texture:format</span></li>
+        <li><span class="zh">穹顶极轴：</span><span class="en">poleAxis</span></li>
+        <li><span class="zh">PortalLight 关系：</span><span class="en">portals</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -56,6 +56,27 @@
         <li><span class="zh">Sdr 着色节点：</span><span class="en">Sdr shader node</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-104">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`GeometryLight` 表示由 geometric prim 向外发光的历史 schema，通常关联 `Mesh`。官方页面明确标注该 schema 已 deprecated，应优先使用 applied to a Mesh 的 `MeshLight` 或现代 `MeshLightAPI` 路径。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for GeometryLight while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">本页最重要的信息是 deprecated/migration 边界：它仍需要保留以解释旧资产和历史 Doxygen 链接，但新资产创作不应优先选择 `GeometryLight`。</span></li>
+        <li><span class="zh">`geometry` relationship 指向作为 light source 的几何体。它不是普通 material binding，也不是渲染可见性关系，而是把几何 prim 与发光语义连接起来。</span></li>
+        <li><span class="zh">`light:shaderId` 是 GeometryLight 的 shader identifier；页面同时提到 USD 会注册 source type 为 `USD` 的 `Sdr shader node`，帮助渲染器识别灯光输入。</span></li>
+        <li><span class="zh">中文导读应把 `GeometryLight` 与 `MeshLight`、`MeshLightAPI` 的迁移关系讲清楚，并保留 `deprecated` 英文词，方便读者在旧文档和新 schema 间定位。</span></li>
+        <li><span class="zh">如果后续补全逐段翻译，应强调旧文件兼容和迁移阅读，而不是把本页包装成推荐的新灯光建模方式。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">几何体光源：</span><span class="en">GeometryLight</span></li>
+        <li><span class="zh">已弃用：</span><span class="en">deprecated</span></li>
+        <li><span class="zh">Mesh 光源：</span><span class="en">MeshLight</span></li>
+        <li><span class="zh">Mesh 光源 API：</span><span class="en">MeshLightAPI</span></li>
+        <li><span class="zh">几何光源关系：</span><span class="en">geometry relationship</span></li>
+        <li><span class="zh">Sdr 着色节点：</span><span class="en">Sdr shader node</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

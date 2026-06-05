@@ -5979,3 +5979,31 @@
 1. 继续最多 5 页，优先处理已确认存在且用户会实际阅读的 `usdLux` schema 页面。
 2. 下一轮建议目标：`full_site/release/user_guides/schemas/usdLux/CylinderLight.html`、`full_site/release/user_guides/schemas/usdLux/DomeLight_1.html`、`full_site/release/user_guides/schemas/usdLux/GeometryLight.html`、`full_site/release/user_guides/schemas/usdLux/LightAPI.html`、`full_site/release/user_guides/schemas/usdLux/LightFilter.html`。
 3. 后续可继续 `full_site/release/user_guides/schemas/usdRender/RenderPass.html` 或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `_source.html`、`search.html` 和目录页。
+## 第 235 轮：Cylinder/Dome/Geometry Light 与 LightAPI/LightFilter 补强
+
+已完成：
+
+- 先复核仓库、远端和报告状态：本地 `main` 干净，上一次 GitHub 同步提交为 `6b2f014`，远端 `origin/main` 指向 `6b2f0140449089d67ecda562086f481e765b9a98`。
+- 新增并执行 `scripts/refine_openusd_release_batch_104.mjs`，本轮标记为 `release-quality-pass-104`。
+- 严格只精修 5 页：
+  - `full_site/release/user_guides/schemas/usdLux/CylinderLight.html`
+  - `full_site/release/user_guides/schemas/usdLux/DomeLight_1.html`
+  - `full_site/release/user_guides/schemas/usdLux/GeometryLight.html`
+  - `full_site/release/user_guides/schemas/usdLux/LightAPI.html`
+  - `full_site/release/user_guides/schemas/usdLux/LightFilter.html`
+- 每页新增 5 条中文二次精修导读和 6 条术语对照，覆盖 `CylinderLight` 的圆柱侧面发光、end-caps 边界、tube-shaped fluorescent light 场景，`DomeLight_1` 的 HDR / IBL / `poleAxis` / portals，`GeometryLight` 的 deprecated 状态与 `MeshLightAPI` 迁移方向，`LightAPI` 的 common light inputs、light-linking、shadow-linking、filters 和 connectable prim 边界，以及 `LightFilter` 的 filter linking、shaderId、connectable container 和 UsdShade 封装规则。
+- 目标页质量回读显示 5 页均为 `draft_needs_translation`，坏编码 0，非预期官方外跳 0；中文字符分别为 546、657、616、567、589；中英块分别为 24/18、39/32、35/28、40/33、35/28。
+- 本轮分级计数保持不变：`draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因：处理对象开始前已是 `draft_needs_translation`，本轮属于补强精修，不是从模板草稿晋级。
+- 已运行并通过：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1`；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步结果：本轮验证通过后准备通过 `sync_openusd_to_github.ps1` 以 `OpenUSD bilingual round 235: usdLux cylinder dome geometry filter pass` 提交并推送。
+
+当前差距：
+
+- 全量 406 页仍不是完成态：8 页 `good_bilingual`，398 页仍为 `bilingual_draft`；其中 387 页为 `draft_needs_translation`，11 页为 `draft_template_only`。
+- 本轮提升了 5 个 usdLux schema 页面的中文阅读层厚度，但仍不是逐段完整翻译；后续继续按最多 5 页节奏推进。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理仍较薄且用户会实际阅读的 `usdLux` schema 页面。
+2. 建议处理：`full_site/release/user_guides/schemas/usdLux/DomeLight.html`、`full_site/release/user_guides/schemas/usdLux/LightListAPI.html`、`full_site/release/user_guides/schemas/usdLux/PortalLight.html`、`full_site/release/user_guides/schemas/usdLux/MeshLightAPI.html`、`full_site/release/user_guides/schemas/usdLux/ShadowAPI.html`。
+3. 后续可继续 `NonboundableLightBase.html`、`PluginLight.html`、`VolumeLightAPI.html`，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `_source.html`、`search.html` 和目录页。

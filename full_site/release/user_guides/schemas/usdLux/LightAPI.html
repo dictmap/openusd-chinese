@@ -56,6 +56,27 @@
         <li><span class="zh">UsdShade 节点封装规则：</span><span class="en">UsdShade node encapsulation</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-104">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`LightAPI` 是让一个 prim 获得 light capabilities 的 API schema。它定义通用灯光输入、light-linking/shadow-linking collection、`light:filters`、`light:shaderId` 以及 UsdShade connectable prim 规则，是理解具体 `usdLux` 灯光 schema 的基础页。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for LightAPI while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`inputs:color`、`inputs:intensity`、`inputs:exposure`、`inputs:diffuse`、`inputs:specular` 等属性是多个灯光 schema 共享的核心输入。中文说明应保留属性名并解释其作用层级。</span></li>
+        <li><span class="zh">`collection:lightLink:includeRoot` 与 `collection:shadowLink:includeRoot` 支持 light-linking 和 shadow-linking，用 collection 决定哪些 geometry 受光照或阴影影响。</span></li>
+        <li><span class="zh">`light:filters` relationship 连接 `LightFilter` prim；`light:materialSyncMode` 和 `light:shaderId` 则与材质同步、shader 标识和渲染器解释有关。</span></li>
+        <li><span class="zh">官方说明指出带 `LightAPI` 的 prim 是 UsdShade networks 中的 connectable prim，并应遵守 UsdShade node encapsulation。普通 connectable container 下不能随意嵌套灯光。</span></li>
+        <li><span class="zh">`LightAPI` 是读 `DiskLight`、`CylinderLight`、`DomeLight_1`、`LightFilter` 等页面的公共背景。后续逐段翻译应优先补齐 collection/linking/filter/connectability 四条线索。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">灯光 API schema：</span><span class="en">LightAPI</span></li>
+        <li><span class="zh">灯光能力：</span><span class="en">light capabilities</span></li>
+        <li><span class="zh">灯光链接：</span><span class="en">light-linking</span></li>
+        <li><span class="zh">阴影链接：</span><span class="en">shadow-linking</span></li>
+        <li><span class="zh">灯光过滤器关系：</span><span class="en">light:filters</span></li>
+        <li><span class="zh">可连接 prim：</span><span class="en">connectable prim</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
