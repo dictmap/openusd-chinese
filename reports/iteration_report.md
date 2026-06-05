@@ -2,6 +2,30 @@
 
 源页面：<https://openusd.org/release/api/index.html>
 
+## 第 192 轮：UsdShade/UsdShaders/UsdSkel/UsdUI/UsdUtils 模块入口页精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `3062e73`，本轮 5 个目标页均存在且均为 `draft_template_only`。
+- 本轮严格只处理 5 页：`full_site/api/usd_shade_page_front.html`、`full_site/api/usd_shaders_page_front.html`、`full_site/api/usd_skel_page_front.html`、`full_site/api/usd_u_i_page_front.html`、`full_site/api/usd_utils_page_front.html`，没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_api_usd_schema_batch_061.mjs`，为 5 页插入 `api-usd-schema-quality-pass-061` 中文精修导读区块；每页包含模块用途、schema/API 边界、阅读路径和术语对照，并继续保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和原文摘录。
+- 本轮中文层覆盖：`UsdShade` 的 `UsdShadeNodeGraph`、`UsdShadeMaterial`、`UsdShadeShader`、`UsdShadeConnectableAPI`、`UsdShadeInput`、`UsdShadeOutput`、interface connections、connection resolution 和 material binding；`UsdShaders` 的 `UsdPreviewSurface`、`UsdUVTexture`、UsdShade-based shader definitions、`glslfx`、`oso`、OSL 与 shader node definition/implementation 边界；`UsdSkel` 的 `SkelRoot`、`Skeleton`、`SkelAnimation`、joint influences、geom bind transform、joint hierarchy 和 Linear Blend Skinning；`UsdUI` 的 `UsdUINodeGraphNodeAPI`、UI hints、accessibility information、`UsdUIObjectHints`、`UsdUIPrimHints`、`UsdUIPropertyHints` 和 `UsdUIAttributeHints`；`UsdUtils` 的 authoring、diagnostic delegates、stitching/value clips、dependency analysis、asset packaging、localization、user processing functions、`UsdUtilsStageCache` 和 `UsdStageCache`。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 85 / `draft_needs_translation` 313 / `good_bilingual` 8 变为 `draft_template_only` 80 / `draft_needs_translation` 318 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；本轮 5 页均可通过本地最终入口访问。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`，报告索引审计通过，总验证 281 checks passed / 0 failed。
+- GitHub 同步：本轮验证通过后使用 `scripts/sync_openusd_to_github.ps1`，提交信息为 `OpenUSD bilingual round 192: Shade Shaders Skel UI Utils entries`。
+
+差距：
+
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是完整翻译每个 UsdShade 网络规则、UsdShaders shader 定义、UsdSkel 手册章节、UsdUI hints schema 或 UsdUtils 工具函数。
+- 全量仍有 80 个 `draft_template_only` 和 318 个 `draft_needs_translation`，后续需要继续按每轮最多 5 页推进。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理 `full_site/api/usd_vol_page_front.html`、`full_site/api/usdabc_page_front.html`、`full_site/api/usddraco_page_front.html`、`full_site/api/vt_page_front.html`、`full_site/api/work_page_front.html`。
+2. 对 Vol/USD file format plugins/Vt/Work 模块入口补中文用途说明、schema/API 边界、核心类或工具入口、阅读路径和术语对照。
+3. 保持本地链接策略，继续运行质量审计、链接路由、draft 预览、报告索引和总验证；验证通过后同步 GitHub，并记录质量分级变化、验证结果和提交结果。
+
 ## 第 191 轮：UsdPhysics/UsdProc/UsdRender/UsdRi/UsdSemantics 模块入口页精修
 已完成：
 

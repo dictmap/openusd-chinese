@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T00:39:38.737Z
+Generated: 2026-06-05T00:49:02.950Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-05T00:39:38.737Z
 
 ## Grade Counts
 
-- draft_template_only: 85
-- draft_needs_translation: 313
+- draft_template_only: 80
+- draft_needs_translation: 318
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -49,8 +49,6 @@ Generated: 2026-06-05T00:39:38.737Z
 | 298 | draft_template_only | 64 | `full_site/release/search.html` | 搜索 / Search - Universal Scene Description 26.05 documentation |
 | 69 | draft_template_only | 66 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | API 页面草稿：hf Directory / hf Directory |
 | 212 | draft_template_only | 66 | `full_site/api/journal_8h.html` | API 页面草稿：journal.h File / journal.h File |
-| 271 | draft_template_only | 66 | `full_site/api/usd_shaders_page_front.html` | API 模块草稿：UsdShaders: Definitions and Implementations of Usd* Shader Nodes / UsdShaders: Definitions and Implementations of Usd* Shader Nodes |
-| 272 | draft_template_only | 66 | `full_site/api/usd_skel_page_front.html` | API 模块草稿：UsdSkel: USD Skeleton Schema and API / UsdSkel: USD Skeleton Schema and API |
 | 277 | draft_template_only | 66 | `full_site/api/usddraco_page_front.html` | API 模块草稿：UsdDraco: Draco File Format Plugin / UsdDraco: Draco File Format Plugin |
 | 294 | draft_template_only | 66 | `full_site/release/press_opensource_announce.html` | 开源公告 / Open Source Announcement |
 | 295 | draft_template_only | 66 | `full_site/release/press_opensource_release.html` | 开源发布 / Open Source Release |
@@ -59,6 +57,8 @@ Generated: 2026-06-05T00:39:38.737Z
 | 321 | draft_template_only | 66 | `full_site/release/user_guides/color_user_guide.html` | 页面草稿：Color User’s Guide / Color User’s Guide |
 | 323 | draft_template_only | 66 | `full_site/release/user_guides/primvars.html` | 页面草稿：Primvars / Primvars |
 | 324 | draft_template_only | 66 | `full_site/release/user_guides/render_user_guide.html` | 页面草稿：Rendering with USD / Rendering with USD |
+| 290 | draft_template_only | 70 | `full_site/release/maxperf.html` | 最大化 USD 性能 / Maximizing USD Performance |
+| 306 | draft_template_only | 70 | `full_site/release/tut_generating_new_schema.html` | 页面草稿：Generating New Schema Classes / Generating New Schema Classes |
 
 ## All Pages
 
@@ -333,11 +333,11 @@ Generated: 2026-06-05T00:39:38.737Z
 | 267 | draft_needs_translation | bilingual_draft | 414 | 27/24 | 0 | 0 | `full_site/api/usd_render_page_front.html` |
 | 268 | draft_needs_translation | bilingual_draft | 367 | 14/11 | 0 | 0 | `full_site/api/usd_ri_page_front.html` |
 | 269 | draft_needs_translation | bilingual_draft | 436 | 27/24 | 0 | 0 | `full_site/api/usd_semantics_overview.html` |
-| 270 | draft_template_only | bilingual_draft | 110 | 14/16 | 0 | 0 | `full_site/api/usd_shade_page_front.html` |
-| 271 | draft_template_only | bilingual_draft | 66 | 3/5 | 0 | 0 | `full_site/api/usd_shaders_page_front.html` |
-| 272 | draft_template_only | bilingual_draft | 66 | 3/5 | 0 | 0 | `full_site/api/usd_skel_page_front.html` |
-| 273 | draft_template_only | bilingual_draft | 74 | 5/7 | 0 | 0 | `full_site/api/usd_u_i_page_front.html` |
-| 274 | draft_template_only | bilingual_draft | 82 | 7/9 | 0 | 0 | `full_site/api/usd_utils_page_front.html` |
+| 270 | draft_needs_translation | bilingual_draft | 385 | 26/23 | 0 | 0 | `full_site/api/usd_shade_page_front.html` |
+| 271 | draft_needs_translation | bilingual_draft | 362 | 15/12 | 0 | 0 | `full_site/api/usd_shaders_page_front.html` |
+| 272 | draft_needs_translation | bilingual_draft | 325 | 15/12 | 0 | 0 | `full_site/api/usd_skel_page_front.html` |
+| 273 | draft_needs_translation | bilingual_draft | 371 | 17/14 | 0 | 0 | `full_site/api/usd_u_i_page_front.html` |
+| 274 | draft_needs_translation | bilingual_draft | 370 | 19/16 | 0 | 0 | `full_site/api/usd_utils_page_front.html` |
 | 275 | draft_template_only | bilingual_draft | 142 | 22/24 | 0 | 0 | `full_site/api/usd_vol_page_front.html` |
 | 276 | draft_template_only | bilingual_draft | 78 | 6/8 | 0 | 0 | `full_site/api/usdabc_page_front.html` |
 | 277 | draft_template_only | bilingual_draft | 66 | 3/4 | 0 | 0 | `full_site/api/usddraco_page_front.html` |

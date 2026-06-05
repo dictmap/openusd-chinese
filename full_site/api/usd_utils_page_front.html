@@ -34,6 +34,27 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-usd-schema-quality-pass-061">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 UsdUtils: USD Utilities 补充中文优先的模块用途、schema/API 边界、阅读路径和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first module purpose, schema/API boundaries, reading paths, and terminology for UsdUtils: USD Utilities while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`UsdUtils: USD Utilities` 汇集用于 managing、inspecting、editing 和 creating USD assets 的工具类与函数；它是资产处理和管线辅助工具箱，而不是单一 schema 模块。</span></li>
+        <li><span class="zh">Overview 中的高层分组包括 authoring、diagnostic delegates、stitching/value clips、dependency analysis and asset packaging、introspection、pipeline 和 stage cache；阅读时应按任务类型跳转，而不是顺序逐项翻译。</span></li>
+        <li><span class="zh">资产打包和依赖分析相关链接包括 `UsdUtilsDependencyInfo`、references、payloads、sublayers、`UsdUtilsCreateNewUsdzPackage`、`SdfFileFormat::IsPackage`、`ArIsPackageRelativePath` 等，用于识别、复制或重写资产路径。</span></li>
+        <li><span class="zh">`User Processing Functions` 说明 localization routines 可通过自定义 processing function 在 dependency traversal 发现 asset paths 时介入；常见操作包括修改 AssetPaths、处理 dependencies 或移除不需要的 asset paths。</span></li>
+        <li><span class="zh">`UsdUtilsStageCache` 与 `UsdStageCache` 用于 stage 缓存和复用；diagnostic delegate 相关工具可聚合警告/状态或在 non-fatal USD error/warning 时中止操作，适合批处理资产管线中的质量门禁。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 工具模块：</span><span class="en">UsdUtils</span></li>
+        <li><span class="zh">依赖分析：</span><span class="en">Dependency Analysis</span></li>
+        <li><span class="zh">资产打包：</span><span class="en">Asset Packaging</span></li>
+        <li><span class="zh">本地化/依赖复制：</span><span class="en">Localization</span></li>
+        <li><span class="zh">用户处理函数：</span><span class="en">User Processing Function</span></li>
+        <li><span class="zh">Stage 缓存：</span><span class="en">StageCache</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

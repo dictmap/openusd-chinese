@@ -34,6 +34,27 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-usd-schema-quality-pass-061">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 UsdUI: USD UI Schemas 补充中文优先的模块用途、schema/API 边界、阅读路径和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first module purpose, schema/API boundaries, reading paths, and terminology for UsdUI: USD UI Schemas while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`UsdUI: USD UI Schemas` 用于把 client graphical user interface tools 需要的展示信息编码到 USD prims 上，帮助 UI 组织和呈现 prim、property 或 graph nodes。</span></li>
+        <li><span class="zh">本模块信息不指导 3D rendering，也不改变 stage 中数据的渲染结果；它描述的是 `UsdStage` 图结构中的节点在工具 UI 中如何可视化、布局、提示和辅助访问。</span></li>
+        <li><span class="zh">`UsdUINodeGraphNodeAPI` 负责记录参与 interconnected graph 的 prim 的布局信息；`UsdUIObjectHints`、`UsdUIPrimHints`、`UsdUIPropertyHints`、`UsdUIAttributeHints` 则分别面向 `UsdObject`、`UsdPrim`、`UsdProperty` 和 `UsdAttribute` 提供 UI hints。</span></li>
+        <li><span class="zh">`Accessibility Information` 涉及 assistive UI 可用的辅助信息；`UI Hints` 则用于建议 prims 和 properties 应如何在 UI 中展示，例如分组、标签、排序或工具可读提示。</span></li>
+        <li><span class="zh">阅读时应将 UsdUI 与 `UsdGeom`、`UsdShade` 等内容 schema 分开：UsdUI 是元信息和工具提示层，服务编辑器、节点图、属性面板和辅助界面，不承担几何、材质或渲染行为。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD UI schema：</span><span class="en">UsdUI</span></li>
+        <li><span class="zh">节点图布局 API：</span><span class="en">UsdUINodeGraphNodeAPI</span></li>
+        <li><span class="zh">界面提示：</span><span class="en">UI Hints</span></li>
+        <li><span class="zh">无障碍辅助信息：</span><span class="en">Accessibility Information</span></li>
+        <li><span class="zh">USD 对象：</span><span class="en">UsdObject</span></li>
+        <li><span class="zh">USD 属性：</span><span class="en">UsdProperty</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

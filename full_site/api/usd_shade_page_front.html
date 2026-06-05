@@ -34,6 +34,27 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-usd-schema-quality-pass-061">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 UsdShade: USD Shading Schema 补充中文优先的模块用途、schema/API 边界、阅读路径和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first module purpose, schema/API boundaries, reading paths, and terminology for UsdShade: USD Shading Schema while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`UsdShade: USD Shading Schema` 是 USD 中创建、封装和绑定 materials 与 shading networks 的核心入口；它描述网络结构和材质绑定语义，而不是实现某个渲染器的 shader 执行。</span></li>
+        <li><span class="zh">阅读主线应从 `UsdShadeNodeGraph`、`UsdShadeMaterial`、`UsdShadeShader` 三类对象开始：node graph 组织可复用网络，material 封装对几何可绑定的材质接口，shader 表示具体 shading 节点。</span></li>
+        <li><span class="zh">`UsdShadeConnectableAPI`、`UsdShadeInput`、`UsdShadeOutput` 和 `UsdAttribute` connections 是连接机制的核心；需要特别区分 input value、valid shader connection、interface connection 与 connection resolution utilities。</span></li>
+        <li><span class="zh">`Encapsulation and Sharing` 解释 containers 与 primitive shading nodes 的分层：外层 material 或 node graph 可以暴露参数，内部 shader 网络可以被封装和共享，连接规则决定哪些对象能彼此连接。</span></li>
+        <li><span class="zh">后半部分连接 `SdrRegistry`、`SdrShaderNode`、`SdrShaderProperty`、`UsdShadeShaderDefParserPlugin` 与 `UsdShadeMaterialBindingAPI`，用于理解 shader definition discovery、UsdShade-based shader definition 和 geometry material binding 的关系。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 着色 schema：</span><span class="en">UsdShade</span></li>
+        <li><span class="zh">材质封装对象：</span><span class="en">UsdShadeMaterial</span></li>
+        <li><span class="zh">着色节点图：</span><span class="en">UsdShadeNodeGraph</span></li>
+        <li><span class="zh">着色节点：</span><span class="en">UsdShadeShader</span></li>
+        <li><span class="zh">可连接 API：</span><span class="en">UsdShadeConnectableAPI</span></li>
+        <li><span class="zh">材质绑定：</span><span class="en">Material Binding</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
