@@ -53,6 +53,27 @@
         <li><span class="zh">谓词函数调用：</span><span class="en">predicate function call</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-084">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - K 增补 API 索引页二次精修说明，重点解释 Doxygen 字母桶的阅读方式、跨模块条目的归类边界，以及何时应跳转到目标 class、schema、header 或 group 文档。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - K API index page. It explains how to read Doxygen letter buckets, how to group cross-module entries, and when to jump to target class, schema, header, or group documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`functions_k.html` 是较短的 K 段成员索引，但它横跨 Sdf children view、通知系统、validation metadata、UsdPhysics token、Hio GLSLFX resource layout、predicate expression 和 schema/model API。</span></li>
+        <li><span class="zh">`SdfChildrenView&lt;_ChildPolicy, _Predicate, _Adapter&gt;` 是按策略、谓词与适配器遍历子项的视图类型；它的 template 参数含义比普通容器更重要，应保留英文名称并跳转 class 页查看。</span></li>
+        <li><span class="zh">`SdfNotice::LayerInfoDidChange` 与 `TfNotice` 共同提示通知机制主线：前者是 Sdf layer info 变化通知，后者是 Tf notice 基类，涉及监听注册、发送与生命周期管理。</span></li>
+        <li><span class="zh">`UsdValidationValidatorMetadata`、`UsdPhysicsTokensType`、`UsdPhysicsRigidBodyDesc`、`UsdModelAPI` 和 `UsdSchemaRegistry::SchemaInfo` 分别指向验证器元数据、物理 token/刚体描述、model API 与 schema registry。</span></li>
+        <li><span class="zh">`HioGlslfxResourceLayout`、`SdfPredicateExpression::FnCall` 和 `UsdGeomTokensType` 是本页的渲染资源布局、谓词函数调用与几何 token 线索；K 段条目少，但模块跨度并不小。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">子项视图：</span><span class="en">children view</span></li>
+        <li><span class="zh">通知基类：</span><span class="en">notice base class</span></li>
+        <li><span class="zh">验证器元数据：</span><span class="en">validator metadata</span></li>
+        <li><span class="zh">资源布局：</span><span class="en">resource layout</span></li>
+        <li><span class="zh">谓词函数调用：</span><span class="en">predicate function call</span></li>
+        <li><span class="zh">模型 API：</span><span class="en">model API</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

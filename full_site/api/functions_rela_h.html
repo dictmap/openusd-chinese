@@ -53,6 +53,27 @@
         <li><span class="zh">加载规则：</span><span class="en">load rules</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-084">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Related Functions - H 增补 API 索引页二次精修说明，重点解释 Doxygen 字母桶的阅读方式、跨模块条目的归类边界，以及何时应跳转到目标 class、schema、header 或 group 文档。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - Related Functions - H API index page. It explains how to read Doxygen letter buckets, how to group cross-module entries, and when to jump to target class, schema, header, or group documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`functions_rela_h.html` 是 related functions 的 H 段索引，主体是 `Gf` 数学类型的 helper/hash/stream/比较等外部函数，同时夹带 Ar、Pcp、Sdf、Tf 和 UsdStage 的基础设施入口。</span></li>
+        <li><span class="zh">`GfBBox3d`、`GfDualQuatd/f/h`、`GfMatrix2/3/4d/f`、`GfQuatd/f/h`、`GfQuaternion`、`GfRange1/2/3d/f`、`GfRotation` 与 `GfVec2/3/4d/f/h/i` 应作为数学类型 related functions 组阅读。</span></li>
+        <li><span class="zh">`ArResolverContext` 提示资产解析上下文相关 helper；`PcpInstanceKey` 则属于 composition 实例化键，二者都不属于 Gf 数学类型，索引中只是因为函数名同在 H 段而并列。</span></li>
+        <li><span class="zh">`SdfHandle&lt;T&gt;`、`SdfUnregisteredValue`、`TfPyObjWrapper`、`UsdStageCache::Id` 和 `UsdStageLoadRules` 分别涉及句柄、未注册值、Python 对象包装、stage cache id 与 stage 加载规则。</span></li>
+        <li><span class="zh">使用本页时建议先筛出目标类型，再进入对应 class 文档确认 related function 的签名、重载和语义；中文层不翻译 `GfVec4f`、`UsdStageLoadRules` 等类型名，避免破坏检索。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">相关函数：</span><span class="en">related functions</span></li>
+        <li><span class="zh">辅助函数：</span><span class="en">helper function</span></li>
+        <li><span class="zh">双四元数：</span><span class="en">dual quaternion</span></li>
+        <li><span class="zh">解析上下文：</span><span class="en">resolver context</span></li>
+        <li><span class="zh">stage 加载规则：</span><span class="en">stage load rules</span></li>
+        <li><span class="zh">Python 对象包装器：</span><span class="en">Python object wrapper</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

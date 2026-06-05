@@ -54,6 +54,27 @@
         <li><span class="zh">执行缓存：</span><span class="en">execution cache</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-084">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - W 增补 API 索引页二次精修说明，重点解释 Doxygen 字母桶的阅读方式、跨模块条目的归类边界，以及何时应跳转到目标 class、schema、header 或 group 文档。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - W API index page. It explains how to read Doxygen letter buckets, how to group cross-module entries, and when to jump to target class, schema, header, or group documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`functions_w.html` 是 Class Members 的 W 段总索引，和 `functions_func_w.html` 相比，它同时收录变量、类型、token 和函数成员，因此模块混合度更高。</span></li>
+        <li><span class="zh">`WorkTaskGraph`、`WorkSingularTask`、`VdfParallelTaskWaitlist`、`Vdf_WeightSlot`、`VdfContext`、`VdfNetwork::EditMonitor`、`EfDependencyCache`、`EfLeafNodeCache` 和 `EfPageCacheStorage` 是 Work/Vdf/Ef 执行与缓存相关条目的核心组。</span></li>
+        <li><span class="zh">`SdfPathExpression`、`SdfPredicateExpression`、`SdfPathExpression::ExpressionReference`、`PcpDependentNamespaceEdits`、`SdfNotice::LayerMutenessChanged` 与 `TfRefPtrTracker` 指向 path expression、composition edit、layer muteness notice 和引用指针跟踪。</span></li>
+        <li><span class="zh">`GfVec4d/f/h/i` 是 Gf 四维向量类型；`UsdShadeTokensType`、`UsdSkelTokensType`、`UsdGeomTokensType`、`UsdHydraTokensType`、`UsdSkelImagingWeightAndSubShapeIndex` 是 schema token 或 skeleton imaging 数据线索。</span></li>
+        <li><span class="zh">`ArFilesystemWritableAsset`、`ArWritableAsset`、`ArResolver`、`HioImage`、`TraceSerialization`、`TraceEventData`、`JsWriter`、`GlfDrawTarget`、`SdfFileFormat` 和 `TfScriptModuleLoader` 则覆盖资产写入、解析、图片、trace、JSON writer、OpenGL draw target、文件格式与脚本模块加载。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">类成员索引：</span><span class="en">class member index</span></li>
+        <li><span class="zh">权重槽位：</span><span class="en">weighted slot</span></li>
+        <li><span class="zh">依赖命名空间编辑：</span><span class="en">dependent namespace edit</span></li>
+        <li><span class="zh">引用指针跟踪器：</span><span class="en">reference pointer tracker</span></li>
+        <li><span class="zh">骨骼成像：</span><span class="en">skeleton imaging</span></li>
+        <li><span class="zh">绘制目标：</span><span class="en">draw target</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

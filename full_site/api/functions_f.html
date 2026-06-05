@@ -53,6 +53,27 @@
         <li><span class="zh">数据源映射：</span><span class="en">data source mapping</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-084">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - F 增补 API 索引页二次精修说明，重点解释 Doxygen 字母桶的阅读方式、跨模块条目的归类边界，以及何时应跳转到目标 class、schema、header 或 group 文档。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - F API index page. It explains how to read Doxygen letter buckets, how to group cross-module entries, and when to jump to target class, schema, header, or group documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`functions_f.html` 是 Class Members 的 F 段索引，条目混合 token table、field definition、file format、filter、schema registry、shader discovery、Hydra/Storm/RenderMan 适配器和 physics descriptor。</span></li>
+        <li><span class="zh">`UsdGeomTokensType`、`UsdHydraTokensType`、`UsdTokensType`、`UsdShadeTokensType`、`UsdVolTokensType`、`UsdRenderTokensType`、`UsdMediaTokensType`、`UsdLuxTokensType` 与 `UsdPhysicsTokensType` 都是生成 schema token 集合，token 字面量必须保持原样。</span></li>
+        <li><span class="zh">`SdfSchemaBase::FieldDefinition`、`SdfSchemaBase::_SpecDefiner`、`UsdSchemaRegistry::SchemaInfo` 和 `PcpDependentNamespaceEdits::CompositionFieldEdit` 更接近 schema/metadata/composition field 语境，可用于追踪 USD 文件中字段如何被定义、编辑与解释。</span></li>
+        <li><span class="zh">`SdfFileFormat`、`SdfLayer`、`SdfUsdcFileFormat`、`SdfUsdFileFormat`、`SdfUsdzFileFormat`、`PcpPrimIndexInputs` 说明 F 段也覆盖 layer 格式与 prim index 输入，阅读时应与 Sdr/Hgi/Hd 条目分开。</span></li>
+        <li><span class="zh">`SdrShaderNodeDiscoveryResult`、`_SdrFilesystemDiscoveryPlugin`、`HgiBlitCmds`、`HgiGLBlitCmds`、`HdBprim`、`HdEmbreeMesh`、`HdPrmanLight` 和 `HdPrmanLightFilter` 指向 shader discovery、GPU blit、Hydra bprim 与 renderer adapter，属于渲染/插件线索。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">字段定义：</span><span class="en">field definition</span></li>
+        <li><span class="zh">文件格式：</span><span class="en">file format</span></li>
+        <li><span class="zh">组合字段编辑：</span><span class="en">composition field edit</span></li>
+        <li><span class="zh">shader 发现：</span><span class="en">shader discovery</span></li>
+        <li><span class="zh">blit 命令：</span><span class="en">blit commands</span></li>
+        <li><span class="zh">渲染器适配器：</span><span class="en">renderer adapter</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
