@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T10:17:58.420Z
+Generated: 2026-06-05T10:40:58.472Z
 
 ## Summary
 
@@ -53,12 +53,12 @@ Generated: 2026-06-05T10:17:58.420Z
 | 364 | draft_needs_translation | 244 | `full_site/release/user_guides/schemas/usdUI/ObjectHints.html` | 页面草稿：ObjectHints / ObjectHints |
 | 366 | draft_needs_translation | 246 | `full_site/release/user_guides/schemas/usdUI/PrimHints.html` | 页面草稿：PrimHints / PrimHints |
 | 359 | draft_needs_translation | 248 | `full_site/release/user_guides/schemas/usdRender/usdRender_toc.html` | 页面草稿：Render (usdRender) / Render (usdRender) |
-| 175 | draft_needs_translation | 250 | `full_site/api/globals_func_h.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
 | 231 | draft_needs_translation | 252 | `full_site/api/namespacemembers_func.html` | 命名空间参考草稿：Functions / Functions |
 | 147 | draft_needs_translation | 254 | `full_site/api/functions_vars_p.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 | 308 | draft_needs_translation | 255 | `full_site/release/tut_helloworld.html` | 页面草稿：Hello World - Creating Your First USD Stage / Hello World - Creating Your First USD Stage |
 | 232 | draft_needs_translation | 256 | `full_site/api/namespacemembers_type.html` | 命名空间参考草稿：Typedefs / Typedefs |
 | 238 | draft_needs_translation | 257 | `full_site/api/page_ts_ts_test.html` | API 页面草稿：The TsTest Framework / The TsTest Framework |
+| 367 | draft_needs_translation | 258 | `full_site/release/user_guides/schemas/usdUI/PropertyHints.html` | 页面草稿：PropertyHints / PropertyHints |
 
 ## All Pages
 
@@ -150,13 +150,13 @@ Generated: 2026-06-05T10:17:58.420Z
 | 84 | draft_needs_translation | bilingual_draft | 507 | 24/16 | 0 | 0 | `full_site/api/functions_func_c.html` |
 | 85 | draft_needs_translation | bilingual_draft | 283 | 12/9 | 0 | 0 | `full_site/api/functions_func_d.html` |
 | 86 | draft_needs_translation | bilingual_draft | 297 | 12/9 | 0 | 0 | `full_site/api/functions_func_e.html` |
-| 87 | draft_needs_translation | bilingual_draft | 259 | 12/9 | 0 | 0 | `full_site/api/functions_func_f.html` |
-| 88 | draft_needs_translation | bilingual_draft | 258 | 12/9 | 0 | 0 | `full_site/api/functions_func_g.html` |
+| 87 | draft_needs_translation | bilingual_draft | 539 | 24/16 | 0 | 0 | `full_site/api/functions_func_f.html` |
+| 88 | draft_needs_translation | bilingual_draft | 575 | 24/16 | 0 | 0 | `full_site/api/functions_func_g.html` |
 | 89 | draft_needs_translation | bilingual_draft | 467 | 24/16 | 0 | 0 | `full_site/api/functions_func_h.html` |
 | 90 | draft_needs_translation | bilingual_draft | 262 | 12/9 | 0 | 0 | `full_site/api/functions_func_i.html` |
 | 91 | draft_needs_translation | bilingual_draft | 296 | 12/9 | 0 | 0 | `full_site/api/functions_func_j.html` |
 | 92 | draft_needs_translation | bilingual_draft | 283 | 12/9 | 0 | 0 | `full_site/api/functions_func_k.html` |
-| 93 | draft_needs_translation | bilingual_draft | 259 | 12/9 | 0 | 0 | `full_site/api/functions_func_l.html` |
+| 93 | draft_needs_translation | bilingual_draft | 576 | 24/16 | 0 | 0 | `full_site/api/functions_func_l.html` |
 | 94 | draft_needs_translation | bilingual_draft | 499 | 24/16 | 0 | 0 | `full_site/api/functions_func_m.html` |
 | 95 | draft_needs_translation | bilingual_draft | 277 | 12/9 | 0 | 0 | `full_site/api/functions_func_n.html` |
 | 96 | draft_needs_translation | bilingual_draft | 289 | 12/9 | 0 | 0 | `full_site/api/functions_func_o.html` |
@@ -182,7 +182,7 @@ Generated: 2026-06-05T10:17:58.420Z
 | 116 | draft_needs_translation | bilingual_draft | 447 | 24/17 | 0 | 0 | `full_site/api/functions_n.html` |
 | 117 | draft_needs_translation | bilingual_draft | 532 | 24/17 | 0 | 0 | `full_site/api/functions_o.html` |
 | 118 | draft_needs_translation | bilingual_draft | 460 | 24/17 | 0 | 0 | `full_site/api/functions_p.html` |
-| 119 | draft_needs_translation | bilingual_draft | 259 | 12/10 | 0 | 0 | `full_site/api/functions_q.html` |
+| 119 | draft_needs_translation | bilingual_draft | 635 | 24/17 | 0 | 0 | `full_site/api/functions_q.html` |
 | 120 | draft_needs_translation | bilingual_draft | 476 | 24/17 | 0 | 0 | `full_site/api/functions_r.html` |
 | 121 | draft_needs_translation | bilingual_draft | 295 | 12/9 | 0 | 0 | `full_site/api/functions_rela_g.html` |
 | 122 | draft_needs_translation | bilingual_draft | 545 | 24/16 | 0 | 0 | `full_site/api/functions_rela_h.html` |
@@ -238,7 +238,7 @@ Generated: 2026-06-05T10:17:58.420Z
 | 172 | draft_needs_translation | bilingual_draft | 298 | 13/10 | 0 | 0 | `full_site/api/globals_func_c.html` |
 | 173 | draft_needs_translation | bilingual_draft | 340 | 13/9 | 0 | 0 | `full_site/api/globals_func_e.html` |
 | 174 | draft_needs_translation | bilingual_draft | 312 | 13/10 | 0 | 0 | `full_site/api/globals_func_g.html` |
-| 175 | draft_needs_translation | bilingual_draft | 250 | 13/9 | 0 | 0 | `full_site/api/globals_func_h.html` |
+| 175 | draft_needs_translation | bilingual_draft | 587 | 25/16 | 0 | 0 | `full_site/api/globals_func_h.html` |
 | 176 | draft_needs_translation | bilingual_draft | 283 | 13/9 | 0 | 0 | `full_site/api/globals_func_j.html` |
 | 177 | draft_needs_translation | bilingual_draft | 299 | 13/9 | 0 | 0 | `full_site/api/globals_func_l.html` |
 | 178 | draft_needs_translation | bilingual_draft | 332 | 13/10 | 0 | 0 | `full_site/api/globals_func_o.html` |

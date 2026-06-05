@@ -54,6 +54,27 @@
         <li><span class="zh">Stage 加载规则：</span><span class="en">stage load rules</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-088">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 File Members - Functions - H 增补 API 索引或 File Members 页面二次精修说明，重点解释 Doxygen 字母桶、函数成员索引、文件级函数索引和跨模块条目的归类边界，以及何时应跳转到目标 class、schema、header、group 或用户指南。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the File Members - Functions - H API index or File Members page. It explains how to read Doxygen letter buckets, function-member indexes, file-level function indexes, and cross-module entry boundaries, and when to jump to target class, schema, header, group, or user-guide documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`globals_func_h.html` 是 File Members 函数索引 H 段，当前条目很少，主要用于定位 `hash_value()` 以及 Hio OpenVDB asset helper；这类页面应按头文件来源而不是按函数名前缀机械阅读。</span></li>
+        <li><span class="zh">`hash_value()` 同时出现在 `token.h` 和 `stageLoadRules.h`，通常用于让 `TfToken`、stage load rules 或相关轻量值对象进入哈希容器；具体 overload、参数类型和 namespace 需要进入头文件页核对。</span></li>
+        <li><span class="zh">`HioOpenVDBGridFromAsset()` 与 `HioOpenVDBGridsFromAsset()` 来自 `imaging/hioOpenVDB/utils.h`，应理解为从 asset 读取一个或多个 OpenVDB grid 的 Hio utility，而不是 usdVol schema 本身。</span></li>
+        <li><span class="zh">本页把 `token.h`、`stageLoadRules.h` 和 `utils.h` 放在同一个 H 段，是 Doxygen File Members 索引的结果；中文层要明确它们分别属于 Tf token/hash、Usd stage load policy 和 Hio OpenVDB imaging utility。</span></li>
+        <li><span class="zh">继续遵守本地链接策略：清单内 `token_8h.html`、`stage_load_rules_8h.html` 和 `imaging_2hio_open_v_d_b_2utils_8h.html` 应路由到本地页面；只有“打开官方原页 / Open official page”保留外跳。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">文件级函数成员：</span><span class="en">file member function</span></li>
+        <li><span class="zh">哈希重载：</span><span class="en">hash overload</span></li>
+        <li><span class="zh">stage 加载规则：</span><span class="en">stage load rules</span></li>
+        <li><span class="zh">OpenVDB 网格资产：</span><span class="en">OpenVDB grid asset</span></li>
+        <li><span class="zh">Hio 工具函数：</span><span class="en">Hio utility</span></li>
+        <li><span class="zh">头文件来源：</span><span class="en">header origin</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

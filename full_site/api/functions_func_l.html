@@ -53,6 +53,27 @@
         <li><span class="zh">最近最少使用缓存：</span><span class="en">LRU cache</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-088">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Functions - L 增补 API 索引或 File Members 页面二次精修说明，重点解释 Doxygen 字母桶、函数成员索引、文件级函数索引和跨模块条目的归类边界，以及何时应跳转到目标 class、schema、header、group 或用户指南。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - Functions - L API index or File Members page. It explains how to read Doxygen letter buckets, function-member indexes, file-level function indexes, and cross-module entry boundaries, and when to jump to target class, schema, header, group, or user-guide documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`functions_func_l.html` 是 L 段函数成员索引，常见语义包括 load、list、link、lookup、lock、log 和 lifetime；本页实际覆盖 CLI formatter、Tf/Vdf 基础类型、UsdLux light base、Sdf data/layer、UsdStage load rules、Hydra scene index plugin、Trace 和 Vdf execution stats。</span></li>
+        <li><span class="zh">`UsdLuxBoundableLightBase` 与 `UsdLuxNonboundableLightBase` 是阅读本页时最明显的 schema 边界：前者与有几何边界的灯光相关，后者面向不具备 boundable 几何范围的灯光基类，二者都应保留英文类名并跳转到 class 页查看属性。</span></li>
+        <li><span class="zh">`SdfAbstractData`、`SdfData`、`SdfLayer`、`SdfSpec`、`UsdPrimDefinition` 和 `UsdPrimDefinition::Property` 属于数据层、layer/spec 与 prim definition；它们说明 L 段并不只是 load API，还包含 schema definition lookup 相关成员。</span></li>
+        <li><span class="zh">`PlugPlugin`、`TfScriptModuleLoader`、`HdSceneIndexPluginRegistry`、`UsdStage`、`UsdStageLoadRules` 和 `UsdPrim` 将插件加载、Python script module、scene index plugin、stage payload/load rule 连接在一起；阅读时要区分 plugin discovery 与 stage composition/load policy。</span></li>
+        <li><span class="zh">`TraceReporter`、`TfMallocTag::CallTree`、`HdRenderThread`、`ExecutionStats`、`VdfExecutionStats`、`VdfEvaluationState`、`VdfExecutorErrorLogger`、`VdfLRUCache&lt;Key, Value, Hash&gt;`、`GfMultiInterval` 和 `TsKnotMap` 是性能诊断、执行统计、缓存和时间采样工具线索。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">加载规则：</span><span class="en">load rules</span></li>
+        <li><span class="zh">有边界灯光基类：</span><span class="en">boundable light base</span></li>
+        <li><span class="zh">prim 定义：</span><span class="en">prim definition</span></li>
+        <li><span class="zh">脚本模块加载器：</span><span class="en">script module loader</span></li>
+        <li><span class="zh">scene index 插件注册表：</span><span class="en">scene index plugin registry</span></li>
+        <li><span class="zh">执行统计：</span><span class="en">execution statistics</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

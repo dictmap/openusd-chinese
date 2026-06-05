@@ -53,6 +53,27 @@
         <li><span class="zh">场景代理：</span><span class="en">scene delegate</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-088">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Functions - G 增补 API 索引或 File Members 页面二次精修说明，重点解释 Doxygen 字母桶、函数成员索引、文件级函数索引和跨模块条目的归类边界，以及何时应跳转到目标 class、schema、header、group 或用户指南。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - Functions - G API index or File Members page. It explains how to read Doxygen letter buckets, function-member indexes, file-level function indexes, and cross-module entry boundaries, and when to jump to target class, schema, header, group, or user-guide documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`functions_func_g.html` 是 G 段函数成员索引，常见语义围绕 get/generate/grow/gather 展开；本页条目集中在 Hydra resource registry、Storm buffer array、Hgi graphics interface、Gf matrix 和 Hd data source 几条主线。</span></li>
+        <li><span class="zh">`HdBufferArray`、`HdInstanceRegistry&lt;VALUE&gt;`、`HdResourceRegistry`、`HdStBufferArrayRegistry`、`HdStResourceRegistry`、`HdStDispatchBuffer` 和 Storm VBO memory manager 条目应放在 Hydra/Storm 资源生命周期中阅读，重点是 GPU/CPU buffer 的分配、查找、复用和失效。</span></li>
+        <li><span class="zh">`Hgi`、`HgiGL`、`HgiGLDevice`、`HgiBlitCmds` 和 `HgiGLBlitCmds` 属于 graphics interface/backend 线索；它们不是 USD scene description 层，而是 Hydra 渲染后端提交命令和设备资源的入口。</span></li>
+        <li><span class="zh">`GfMatrix2d`、`GfMatrix2f`、`GfMatrix3d`、`GfMatrix3f`、`GfMatrix4d`、`GfMatrix4f` 代表 Gf math 类型；遇到同一字母索引中的矩阵条目时，应跳到具体 class 页查看维度、精度和变换语义。</span></li>
+        <li><span class="zh">`ArResolverContext`、`Ef_PageCache`、`Exec_CacheView`、`ExecUsdCacheView`、`UsdClipsAPI`、`HdDataSourceLegacyPrim`、`HdMapContainerDataSource`、`HdOverlayContainerDataSource` 和 render delegate handle 条目显示 G 段索引还横跨 asset resolution、execution cache、value clips、scene index/data source 与 plugin handle；索引页只负责导航，不替代目标类说明。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">资源注册表：</span><span class="en">resource registry</span></li>
+        <li><span class="zh">buffer array 生命周期：</span><span class="en">buffer array lifecycle</span></li>
+        <li><span class="zh">图形接口后端：</span><span class="en">graphics interface backend</span></li>
+        <li><span class="zh">矩阵精度：</span><span class="en">matrix precision</span></li>
+        <li><span class="zh">执行缓存视图：</span><span class="en">execution cache view</span></li>
+        <li><span class="zh">数据源容器：</span><span class="en">data source container</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
