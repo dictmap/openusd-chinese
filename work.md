@@ -1,5 +1,15 @@
 # 工作记录
 
+## 第 220 轮：API E/related/namespace/A/I 索引页二次精修
+- 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、git 状态和远端 main，确认上一轮远端提交为 `b4b1df0`，当前分级为 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8。
+- 本轮严格只处理 5 个未达标页面：`full_site/api/functions_e.html`、`full_site/api/functions_rela.html`、`full_site/api/namespacemembers_func.html`、`full_site/api/functions_func_a.html`、`full_site/api/functions_func_i.html`；这些页面本轮开始时均已是 `draft_needs_translation`，目标是补强 Doxygen API 索引、related functions 和 namespace functions 索引中文阅读方法，没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_release_batch_089.mjs`，每页插入 `release-quality-pass-089` 二次精修导读区块，覆盖 Doxygen 字母桶、函数成员索引、namespace ownership、related function 边界、跨模块条目归类、跳转边界和术语对照；保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录。
+- 本轮中文覆盖：`functions_e.html` 的 time code、namespace edits、Ef/Vdf execution cache 和 prim range；`functions_rela.html` 的 `UsdShadeMaterialBindingAPI`、material binding、collection-based binding 和 binding strength；`namespacemembers_func.html` 的 `ShaderMetadataHelpers`、`VdfTestUtils`、`operator<<()` 和 debugging output group；`functions_func_a.html` 的 scoped locks、Trace visitor、Sdf namespace edit、population mask、Hydra/Storm shader 和 change tracker；`functions_func_i.html` 的 stage cache id、Pcp map expression/function、Sdf file format、Hydra buffer range、memory diagnostics 和 Vdf scheduling。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级保持 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8；本轮对象原本已是 `draft_needs_translation`，所以分级计数保持不变是预期结果。目标页中文正文量提升到 `590-711` 字区间，但仍是 `bilingual_draft`，未误标为完成。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398 个草稿页全部通过本地预览检查。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`，报告索引通过，总验证 `PASSED`，`validation_required_checks` 281 / `validation_failed_checks` 0。
+- GitHub 同步：验证通过后以 `OpenUSD bilingual round 220: api index e related namespace a i pass` 同步本轮 HTML、脚本、报告和 `work.md`；下一轮优先最多处理 `full_site/api/functions_func_v.html`、`full_site/api/functions_vars_t.html`、`full_site/api/hd_storm_page_front.html`、`full_site/release/tut_helloworld.html`、`full_site/api/globals_h.html`，继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+
 ## 第 219 轮：API G/F/L/Q 与 File Members-H 索引页二次精修
 - 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、git 状态和远端 main，确认上一轮远端提交为 `b878abd`，当前分级为 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8。
 - 本轮严格只处理 5 个未达标页面：`full_site/api/functions_func_g.html`、`full_site/api/functions_func_f.html`、`full_site/api/functions_func_l.html`、`full_site/api/functions_q.html`、`full_site/api/globals_func_h.html`；这些页面本轮开始时均已是 `draft_needs_translation`，目标是补强 Doxygen API 索引和 File Members 函数索引中文阅读方法，没有新增或处理第 6 页。

@@ -2,6 +2,24 @@
 
 源页面：<https://openusd.org/release/api/index.html>
 
+## 第 220 轮：API E/related/namespace/A/I 索引页二次精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `b4b1df0`，当前分级为 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8。
+- 本轮严格只处理 5 个未达标页面：`full_site/api/functions_e.html`、`full_site/api/functions_rela.html`、`full_site/api/namespacemembers_func.html`、`full_site/api/functions_func_a.html`、`full_site/api/functions_func_i.html`；这些页面本轮开始时均已是 `draft_needs_translation`，目标是补强 Doxygen API 索引、related functions 和 namespace functions 索引的中文阅读方法，没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_release_batch_089.mjs`，为 5 页插入 `release-quality-pass-089` 二次精修导读区块；每页补充 Doxygen 字母桶、函数成员索引、namespace ownership、related function 边界、跨模块条目归类和术语对照，同时保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录。
+- 本轮中文覆盖：`functions_e.html` 补强 E 段总成员索引、`UsdTimeCode`/`UsdUtilsTimeCodeRange`、Sdf/Pcp namespace edits、Ef/Vdf execution cache 和 prim range/container；`functions_rela.html` 补强 related functions 页面类型、`UsdShadeMaterialBindingAPI`、material binding、collection-based binding 和 binding strength；`namespacemembers_func.html` 补强 namespace function index、`ShaderMetadataHelpers`、`VdfTestUtils`、`operator<<()` 和 debugging output group；`functions_func_a.html` 补强 scoped locks、Trace visitor/reporting、Sdf namespace edit、population mask、Hydra/Storm shader 和 change tracker；`functions_func_i.html` 补强 stage cache id、Pcp map expression/function、Sdf file format、Hydra buffer ranges、memory diagnostics 和 Vdf scheduling。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级保持 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8；本轮处理对象原本已是 `draft_needs_translation`，因此分级计数保持不变是预期结果。目标页中文正文量已提升到 `590-711` 字区间，仍保持 `bilingual_draft` 状态，未误标为完成。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398 个 `bilingual_draft` 页面全部具备本地可检查 HTML 和最终入口链接，`failed_pages` 为 0。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`，报告索引通过，总验证 `PASSED`，`validation_required_checks` 281 / `validation_failed_checks` 0。
+- GitHub 同步结果：验证通过后使用提交信息 `OpenUSD bilingual round 220: api index e related namespace a i pass` 同步本轮 HTML、脚本、报告和 `work.md`，并通过 `git log` 与远端 main 校验推送结果。
+
+差距与下一轮：
+
+- 当前 398 个 `bilingual_draft` 仍不是完整段落级翻译；本轮是对已有 API/namespace/related functions 索引 draft 页做二次质量补强，分级计数不变是预期结果。
+- 剩余 `draft_template_only` 11 页基本是 `_source.html` 源码页、`search.html` 或目录页；下一轮优先最多处理 `full_site/api/functions_func_v.html`、`full_site/api/functions_vars_t.html`、`full_site/api/hd_storm_page_front.html`、`full_site/release/tut_helloworld.html`、`full_site/api/globals_h.html`，之后可继续 `full_site/api/functions_func_s.html`、`full_site/api/namespacemembers_type.html`、`full_site/api/functions_b.html`、`full_site/api/functions_func_b.html`、`full_site/api/functions_func.html`，继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+
 ## 第 219 轮：API G/F/L/Q 与 File Members-H 索引页二次精修
 已完成：
 

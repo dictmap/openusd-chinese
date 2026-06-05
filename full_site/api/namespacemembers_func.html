@@ -54,6 +54,27 @@
         <li><span class="zh">元数据解析：</span><span class="en">metadata parsing</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-089">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Namespace Members - Functions 增补 API 索引、命名空间函数索引或 related functions 页面二次精修说明，重点解释 Doxygen 字母桶、函数成员索引、namespace ownership、related function 边界和跨模块条目的归类方式，以及何时应跳转到目标 class、schema、namespace、header、group 或用户指南。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Namespace Members - Functions API index, namespace-function index, or related-functions page. It explains how to read Doxygen letter buckets, function-member indexes, namespace ownership, related-function boundaries, and cross-module entry groupings, and when to jump to target class, schema, namespace, header, group, or user-guide documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`namespacemembers_func.html` 是 Namespace Members: Functions 索引页，条目按函数名列出并链接到所属 namespace 或 group；它服务于跨 namespace 查找函数，而不是 class member lookup。</span></li>
+        <li><span class="zh">`ShaderMetadataHelpers` 中的 `ComputeShownIfFromMetadata()`、`CreateStringFromStringVec()`、`GetRoleFromMetadata()` 和 `ParseSdfValue()` 应归入 shader metadata parsing/formatting 线索，常用于读取 shader definition 或 metadata 中的辅助字段。</span></li>
+        <li><span class="zh">`VdfTestUtils` 的 `CreateSpeculationExecutor()` 表明 namespace function 索引也包含测试工具函数；它对理解 Vdf executor 测试有用，但不应被误读为用户层稳定运行时 API。</span></li>
+        <li><span class="zh">`operator&lt;&lt;()` 链到 `pxr_CLI::CLI::enums` 和 `std`/debugging output group，说明该页也承载 stream output/operator overload 一类函数；函数名和 namespace 必须保留英文，中文只解释用途。</span></li>
+        <li><span class="zh">阅读本页时建议三步走：先看函数名和 namespace，再判断它属于 shader metadata、Vdf test utility、CLI enum output 或 Tf debugging group，最后进入 namespace/group 页核对签名、include 和可见性。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">命名空间函数索引：</span><span class="en">namespace function index</span></li>
+        <li><span class="zh">shader 元数据辅助函数：</span><span class="en">shader metadata helper</span></li>
+        <li><span class="zh">测试工具函数：</span><span class="en">test utility function</span></li>
+        <li><span class="zh">运算符重载：</span><span class="en">operator overload</span></li>
+        <li><span class="zh">调试输出分组：</span><span class="en">debugging output group</span></li>
+        <li><span class="zh">命名空间归属：</span><span class="en">namespace ownership</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

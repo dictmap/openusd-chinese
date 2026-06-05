@@ -53,6 +53,27 @@
         <li><span class="zh">验证器：</span><span class="en">validator</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-089">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Functions - A 增补 API 索引、命名空间函数索引或 related functions 页面二次精修说明，重点解释 Doxygen 字母桶、函数成员索引、namespace ownership、related function 边界和跨模块条目的归类方式，以及何时应跳转到目标 class、schema、namespace、header、group 或用户指南。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - Functions - A API index, namespace-function index, or related-functions page. It explains how to read Doxygen letter buckets, function-member indexes, namespace ownership, related-function boundaries, and cross-module entry groupings, and when to jump to target class, schema, namespace, header, group, or user-guide documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`functions_func_a.html` 是 A 段函数成员索引，条目数量多且跨度大，常见语义包括 acquire、add、append、apply、assign、activate 和 access；本页应按 Sdf/Tf/Trace/Vdf/Hd/Usd/Work 等模块分层阅读。</span></li>
+        <li><span class="zh">`TfBigRWMutex::ScopedLock`、`TfPyLock`、`TfSpinMutex`、`TfSpinMutex::ScopedLock`、`TfSpinRWMutex` 与 `TfSpinRWMutex::ScopedLock` 属于线程同步和作用域锁线索；这些类型的用法必须进入目标类页面确认锁粒度和生命周期。</span></li>
+        <li><span class="zh">`TraceCollection::Visitor`、`TraceEventTree`、`TraceEventNode`、`TraceAggregateTree` 和 `TraceReporter` 组成 tracing/visitor/reporting 主线；`VdfIndexedWeightsOperand`、`Ef_LoftedOutputSet`、`EsfJournal` 和 Vdf test `Network` 则偏 execution/evaluation 框架。</span></li>
+        <li><span class="zh">`SdfPath`、`SdfBatchNamespaceEdit`、`SdfVariableExpression::FunctionBuilder`、`PcpPrimIndex` 和 `UsdStagePopulationMask` 共同指向 scene description、namespace edit、variable expression、composition index 与 stage population control。</span></li>
+        <li><span class="zh">`HgiGLDevice`、`GlfDrawTarget`、`HdStRenderPassShader`、`HdStShaderCode`、`HdStDispatchBuffer`、`HdPerfLog`、`HdUnitTestDelegate`、`HdChangeTracker` 和 `HdStResourceRegistry` 应放在 Hydra/Storm/rendering support 中阅读；`UsdGeomPointInstancer` 与 `UsdAttribute` 则回到 USD schema/object model。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">作用域锁：</span><span class="en">scoped lock</span></li>
+        <li><span class="zh">Trace 访问器：</span><span class="en">trace visitor</span></li>
+        <li><span class="zh">命名空间批量编辑：</span><span class="en">namespace edit batch</span></li>
+        <li><span class="zh">填充掩码：</span><span class="en">population mask</span></li>
+        <li><span class="zh">渲染 pass shader：</span><span class="en">render pass shader</span></li>
+        <li><span class="zh">变更跟踪器：</span><span class="en">change tracker</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

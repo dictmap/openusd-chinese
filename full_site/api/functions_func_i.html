@@ -53,6 +53,27 @@
         <li><span class="zh">内存标记：</span><span class="en">memory tag</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-089">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Functions - I 增补 API 索引、命名空间函数索引或 related functions 页面二次精修说明，重点解释 Doxygen 字母桶、函数成员索引、namespace ownership、related function 边界和跨模块条目的归类方式，以及何时应跳转到目标 class、schema、namespace、header、group 或用户指南。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - Functions - I API index, namespace-function index, or related-functions page. It explains how to read Doxygen letter buckets, function-member indexes, namespace ownership, related-function boundaries, and cross-module entry groupings, and when to jump to target class, schema, namespace, header, group, or user-guide documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`functions_func_i.html` 是 I 段函数成员索引，常见语义包括 id、insert、initialize、include、is 和 iterator；本页条目覆盖 stage cache、Pcp map、Sdf layer/file format、Usd collection、validation、Hydra buffer range、memory diagnostics 和 Exec/Vdf。</span></li>
+        <li><span class="zh">`UsdStageCache::Id`、`UsdStagePopulationMask`、`UsdCollectionAPI`、`UsdPrimRange` 和 `UsdValidationTimeRange` 说明 I 段包含 stage/cache identity、集合、遍历范围和验证时间范围；这些条目应和用户指南中的 stage loading/validation 概念分开核对。</span></li>
+        <li><span class="zh">`PcpMapExpression`、`PcpMapFunction`、`PcpPrimIndexInputs` 与 `SdfLayer::DetachedLayerRules` 属于 composition/path mapping/layer loading 线索；它们解释路径映射、prim index 输入和 detached layer 规则，不是普通文件路径工具。</span></li>
+        <li><span class="zh">`SdfFileFormat`、`SdfUsdaFileFormat`、`SdfUsdcFileFormat`、`SdfUsdFileFormat`、`SdfUsdzFileFormat` 和 `SdfLayer` 指向 layer/file format 实现；阅读时要保留格式名英文，确认 ASCII、Crate、package 等语义。</span></li>
+        <li><span class="zh">`HdBufferArray`、`HdBufferArrayRange`、`HdStInterleavedMemoryManager::_StripedInterleavedBufferRange`、`HdStVBOMemoryManager::_StripedBufferArrayRange`、`HdxOitBufferAccessor`、`GlfContextCaps`、`HdDataSourceLocatorSet`、`ArchMallocHook`、`TfMallocTag`、`VdfSchedule` 和 `VdfExecutorInterface` 展示本页还跨到渲染 buffer、OpenGL/Hydra capabilities、内存诊断和执行调度。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">stage cache 标识：</span><span class="en">stage cache id</span></li>
+        <li><span class="zh">映射表达式：</span><span class="en">map expression</span></li>
+        <li><span class="zh">分离 layer 规则：</span><span class="en">detached layer rules</span></li>
+        <li><span class="zh">文件格式实现：</span><span class="en">file format implementation</span></li>
+        <li><span class="zh">buffer array 范围：</span><span class="en">buffer array range</span></li>
+        <li><span class="zh">内存诊断：</span><span class="en">memory diagnostics</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

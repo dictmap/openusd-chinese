@@ -53,6 +53,27 @@
         <li><span class="zh">执行器：</span><span class="en">executor</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-089">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - E 增补 API 索引、命名空间函数索引或 related functions 页面二次精修说明，重点解释 Doxygen 字母桶、函数成员索引、namespace ownership、related function 边界和跨模块条目的归类方式，以及何时应跳转到目标 class、schema、namespace、header、group 或用户指南。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - E API index, namespace-function index, or related-functions page. It explains how to read Doxygen letter buckets, function-member indexes, namespace ownership, related-function boundaries, and cross-module entry groupings, and when to jump to target class, schema, namespace, header, group, or user-guide documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`functions_e.html` 是 Class Members 总索引的 E 段，当前条目把 time code、namespace edits、execution/evaluation cache、容器和 prim range 混在同一个 Doxygen 字母桶中；阅读时应先按模块拆分，再进入目标 class 页核对签名。</span></li>
+        <li><span class="zh">`UsdTimeCode` 与 `UsdUtilsTimeCodeRange` 属于时间采样、动画值和帧范围工具；`EfTime`、`EfTimeInputNode`、`EfTimeInterval` 则属于 execution/evaluation framework 中的时间输入和时间区间对象，二者都和 time 有关但不在同一 API 层级。</span></li>
+        <li><span class="zh">`SdfNamespaceEditDetail`、`SdfCopySpecsValueEdit` 和 `PcpNamespaceEdits` 共同指向 namespace edit/copy/edit-result 线索；它们用于理解路径重命名、移动、复制 spec 或 Pcp 层级编辑的底层结果，不等同于用户层面的简单 prim rename 命令。</span></li>
+        <li><span class="zh">`Ef_OutputValueCache`、`EfDependencyCache`、`EfLeafNodeCache`、`EfMaskedSubExecutor`、`EfPageCacheExecutor&lt;EngineType, DataManagerType&gt;`、`EfPageCacheSubExecutor&lt;EngineType, DataManagerType&gt;` 和 `VdfIsolatedSubnetwork` 应放在执行缓存、page cache 和 subnetwork evaluation 中阅读。</span></li>
+        <li><span class="zh">`VtArray&lt;ELEM&gt;`、`TfSmallVector&lt;T, N&gt;`、`TfDenseHashMap`、`TfDenseHashSet`、`TfSpan&lt;T&gt;`、`TfUtf8CodePointView`、`UsdPrimRange`、`UsdPrimSiblingRange`、`UsdPrimSubtreeRange` 与 `UsdNotice::ObjectsChanged::PathRange` 是基础容器和范围遍历线索；索引页只帮助定位，不替代容器语义说明。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">字母桶：</span><span class="en">letter bucket</span></li>
+        <li><span class="zh">命名空间编辑细节：</span><span class="en">namespace edit detail</span></li>
+        <li><span class="zh">执行缓存：</span><span class="en">execution cache</span></li>
+        <li><span class="zh">页面缓存执行器：</span><span class="en">page cache executor</span></li>
+        <li><span class="zh">prim 范围遍历：</span><span class="en">prim range traversal</span></li>
+        <li><span class="zh">时间码范围：</span><span class="en">time code range</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
