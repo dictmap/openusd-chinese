@@ -54,6 +54,27 @@
         <li><span class="zh">媒体时间偏移：</span><span class="en">mediaOffset</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-102">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`SpatialAudio` 定义场景中音频播放所需的属性，包括播放哪个音频文件、以什么 `auralMode` 播放，以及由 `startTime`、`endTime`、`playbackMode` 和 `mediaOffset` 组合出的播放时序。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for SpatialAudio while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`filePath` 指向要播放的媒体资源，`auralMode` 描述声音在场景中的听觉模式。翻译时应保留这些 schema property names，中文只解释用途。</span></li>
+        <li><span class="zh">`startTime`、`endTime`、`playbackMode` 和 `mediaOffset` 共同决定音频何时开始、何时停止、是否循环或如何偏移。检查动画 stage 时，音频 timing 应和 timeCodes 一起看。</span></li>
+        <li><span class="zh">官方示例提到 Speech 和 Ambient prims，暗示同一场景可以同时拥有对白类声音和环境类声音。中文导读应帮助读者区分声音内容、空间位置和播放策略。</span></li>
+        <li><span class="zh">`SpatialAudio` 属于 `usdMedia`，它并不替代外部音频引擎；它在 USD scene description 中表达音频意图，让工具和播放端能发现、调度和同步媒体。</span></li>
+        <li><span class="zh">若 stage 或引用 layer 存在 layer offset，音频的 `mediaOffset` 与 USD time remapping 可能一起影响实际听到的时间点。后续补全应保留官方属性名和数值示例。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">空间音频：</span><span class="en">SpatialAudio</span></li>
+        <li><span class="zh">音频文件路径属性：</span><span class="en">filePath</span></li>
+        <li><span class="zh">听觉模式属性：</span><span class="en">auralMode</span></li>
+        <li><span class="zh">播放模式属性：</span><span class="en">playbackMode</span></li>
+        <li><span class="zh">媒体偏移属性：</span><span class="en">mediaOffset</span></li>
+        <li><span class="zh">环境声音 prim：</span><span class="en">Ambient</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

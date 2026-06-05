@@ -54,6 +54,27 @@
         <li><span class="zh">数字内容创作工具：</span><span class="en">DCC tool</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-102">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`AssetPreviewsAPI` 用于把资产和预览缩略图关联起来，典型用途是为 DCC asset browser、系统资产浏览器或管线工具提供 preview render 图像。它描述的是资产预览元数据，不等同于渲染任务输出。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for AssetPreviewsAPI while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">页面中的 thumbnail previews 应理解为资产层面的 UX 辅助信息：浏览资产库时先显示缩略图，用户再决定是否加载完整 USD 资产或打开更重的预览。</span></li>
+        <li><span class="zh">`preview render` thumbnails 通常来自离线渲染、资产发布流程或管线缓存；`AssetPreviewsAPI` 负责把这些图像路径挂到资产上，而不是定义如何渲染这些图像。</span></li>
+        <li><span class="zh">示例重点是“如何 link thumbnails to an asset”。翻译时应保留 asset、thumbnail、default image、file path 等术语，并避免把 schema 属性名改写成中文。</span></li>
+        <li><span class="zh">在 DCC 工具中，缩略图可能被用于 asset icons、搜索结果、拖拽面板或系统级 asset browser。中文导读应突出它面向浏览体验，而不是几何、材质或音频行为。</span></li>
+        <li><span class="zh">如果一个资产没有预览图，工具仍然可以加载 USD；`AssetPreviewsAPI` 只是补充可视索引。维护页面时应保留官方示例和链接，方便读者对照具体 usda 写法。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">资产预览 API：</span><span class="en">AssetPreviewsAPI</span></li>
+        <li><span class="zh">缩略图预览：</span><span class="en">thumbnail previews</span></li>
+        <li><span class="zh">预览渲染图：</span><span class="en">preview render</span></li>
+        <li><span class="zh">DCC 资产浏览器：</span><span class="en">DCC asset browser</span></li>
+        <li><span class="zh">默认图像：</span><span class="en">default image</span></li>
+        <li><span class="zh">资产元数据：</span><span class="en">asset metadata</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

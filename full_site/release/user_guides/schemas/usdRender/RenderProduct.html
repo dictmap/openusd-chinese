@@ -54,6 +54,27 @@
         <li><span class="zh">渲染变量集合：</span><span class="en">RenderVars</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-102">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`RenderProduct` 表示一个具体的 render output artifact，例如渲染图像、depth buffer 或其他 file-like artifact。它把一个或多个 `RenderVar` 组合成一个输出目标，是 `RenderSettings` 描述渲染交付物时的重要节点。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for RenderProduct while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`RenderProduct` 不直接等同于 `RenderVar`。`RenderVar` 描述要写出的变量或 AOV，`RenderProduct` 描述这些变量被写入哪个输出 artifact 以及如何作为产品组织。</span></li>
+        <li><span class="zh">`RenderSettings` 通常汇总渲染配置并引用 products；`RenderPass` 更偏向一次渲染过程或通道组织。读本页时应把 `RenderProduct` 放在 settings、vars、pass 的关系网中理解。</span></li>
+        <li><span class="zh">官方摘要中的 rendered image file、output depth buffer、file-like artifact 都是输出物示例。中文说明应保留这些英文词，方便与 renderer UI、Hydra delegate 和管线脚本对应。</span></li>
+        <li><span class="zh">一个 product 可以组合 one or more `RenderVars`，因此它常被看作最终文件或缓冲区的容器。维护页面时不应把每个 `RenderVar` 误写成独立文件，除非具体配置如此指定。</span></li>
+        <li><span class="zh">如果后续扩展逐段翻译，优先解释 product 与 camera、resolution、vars、file path/output target 的关系，但属性名和示例代码必须保持官方原样。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">渲染输出产品：</span><span class="en">RenderProduct</span></li>
+        <li><span class="zh">渲染变量：</span><span class="en">RenderVar</span></li>
+        <li><span class="zh">渲染设置：</span><span class="en">RenderSettings</span></li>
+        <li><span class="zh">渲染通道：</span><span class="en">RenderPass</span></li>
+        <li><span class="zh">输出产物：</span><span class="en">output artifact</span></li>
+        <li><span class="zh">深度缓冲：</span><span class="en">depth buffer</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

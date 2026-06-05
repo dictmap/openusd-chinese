@@ -54,6 +54,27 @@
         <li><span class="zh">模式：</span><span class="en">schema</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-102">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`Traversing a Stage` 说明如何遍历 `UsdStage` 上已经组合完成的 prim。阅读时要把它看作 imaging clients、USD importers 和 DCC 桥接工具的基础模式：脚本看到的是组合后的 stage 视图，而不是单个 layer 文件的原始片段。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for Traversing a Stage while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">本教程使用 `Referencing Layers` 产生的 `HelloWorld.usda` 和 `RefExample.usda`。`HelloWorld.usda` 是被引用层，`RefExample.usda` 是引用层；遍历 `UsdStage` 时看到的是两者组合后的 prim namespace。</span></li>
+        <li><span class="zh">`usdview` 的 interpreter 可以通过键盘 `i` 或 `Window &gt; Interpreter` 打开。教程中的命令通常依赖当前打开的 stage，因此复制示例文件、保持可写和确认工作目录是复现实验的前置条件。</span></li>
+        <li><span class="zh">`usdviewApi` 是 interpreter 内置对象，提供访问当前 `UsdStage`、选择项和便利函数的入口。翻译时应保留 `usdviewApi`、`UsdStage`、`prim`、`stage` 等 API/术语字面量。</span></li>
+        <li><span class="zh">遍历 composed prims 的价值在于消费者无需手动追踪每条 reference、sublayer 或 composition arc；导入器和渲染前端通常只关心最终可见的 prim tree 和属性解析结果。</span></li>
+        <li><span class="zh">如果后续补全逐段翻译，应区分 layer traversal 与 stage traversal：前者检查文件内容，后者检查组合结果。本页标题中的 `Stage` 指 USD 的组合场景对象，不应翻译成普通舞台。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">遍历 Stage：</span><span class="en">Traversing a Stage</span></li>
+        <li><span class="zh">USD 组合场景对象：</span><span class="en">UsdStage</span></li>
+        <li><span class="zh">组合后的 prim：</span><span class="en">composed prims</span></li>
+        <li><span class="zh">USD 查看器：</span><span class="en">usdview</span></li>
+        <li><span class="zh">usdview 内置 API 对象：</span><span class="en">usdviewApi</span></li>
+        <li><span class="zh">交互式解释器：</span><span class="en">interpreter</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

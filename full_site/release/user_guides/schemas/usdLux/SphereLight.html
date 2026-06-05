@@ -54,6 +54,27 @@
         <li><span class="zh">半径属性：</span><span class="en">radius</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-102">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`SphereLight` 是从球体向外发光的 intrinsic light。它是 one-sided light，球体内部不发光；当 `treatAsPoint` 为 true 且 renderer 支持 zero-area lights 时，也可作为零半径 point light 使用。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for SphereLight while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">官方说明中的 `emits light outwards from a sphere` 和 `no light is emitted inside the sphere` 是阅读本页的核心。中文应明确这是向外发射的球形光源，而不是内外双面发光体。</span></li>
+        <li><span class="zh">`treatAsPoint` 控制是否把该光源当作 point light 使用；但官方同时限定 renderer must support zero-area lights，因此这是 renderer 能力相关行为，不应写成所有渲染器必然支持。</span></li>
+        <li><span class="zh">`SphereLights` 常用于模拟 light bulbs、headlamps 等点状或球状光源。翻译时保留这些英文用途词，方便美术、灯光和渲染人员与工具界面对照。</span></li>
+        <li><span class="zh">示例中半径为 `0.8` 的 `SphereLight` 放在 Sphere 和 Cube 附近，说明 radius 会影响光源几何大小和可视/照明语义。不要把示例数值替换为泛化描述。</span></li>
+        <li><span class="zh">本页属于 `usdLux` schema；后续逐段补全时应保留 `SphereLight`、`radius`、`treatAsPoint`、`zero-area lights`、`point light` 等字面量，避免破坏搜索和脚本引用。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">球形光源：</span><span class="en">SphereLight</span></li>
+        <li><span class="zh">内建光源：</span><span class="en">intrinsic light</span></li>
+        <li><span class="zh">单面光源：</span><span class="en">one-sided light</span></li>
+        <li><span class="zh">按点光源处理属性：</span><span class="en">treatAsPoint</span></li>
+        <li><span class="zh">零面积光源：</span><span class="en">zero-area lights</span></li>
+        <li><span class="zh">点光源：</span><span class="en">point light</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

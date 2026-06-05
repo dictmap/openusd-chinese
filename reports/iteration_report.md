@@ -5911,3 +5911,37 @@
 1. 继续最多 5 页，优先处理用户会实际阅读的教程、schema 指南和 API 索引页。
 2. 下一轮建议目标：`full_site/release/tut_traversing_stage.html`、`full_site/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html`、`full_site/release/user_guides/schemas/usdRender/RenderProduct.html`、`full_site/release/user_guides/schemas/usdMedia/SpatialAudio.html`、`full_site/release/user_guides/schemas/usdLux/SphereLight.html`。
 3. 后续可继续 `full_site/release/user_guides/schemas/usdRender/RenderSettings.html` 或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `_source.html` 和 `search.html`。
+
+## 第 233 轮：Stage 遍历、AssetPreviews、RenderProduct、SpatialAudio 与 SphereLight 补强
+
+已完成：
+
+- 先复核仓库、远端和报告状态：本地 `main` 干净，上一次 GitHub 同步提交为 `e36183b`，远端 `origin/main` 指向 `e36183bdee48526db592fb4107a63674371decac`。
+- 严格按本轮最多 5 页处理，新增脚本 `scripts/refine_openusd_release_batch_102.mjs`，标记为 `release-quality-pass-102`。
+- 本轮精修页面：
+  - `full_site/release/tut_traversing_stage.html`
+  - `full_site/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html`
+  - `full_site/release/user_guides/schemas/usdRender/RenderProduct.html`
+  - `full_site/release/user_guides/schemas/usdMedia/SpatialAudio.html`
+  - `full_site/release/user_guides/schemas/usdLux/SphereLight.html`
+- 每页新增 5 条中文二次精修导读和 6 条术语对照，覆盖 `UsdStage` 组合遍历、asset preview thumbnails、`RenderProduct` 与 `RenderVar`/`RenderSettings` 的关系、`SpatialAudio` 播放属性，以及 `SphereLight` 的 one-sided/treatAsPoint/zero-area light 语义。
+- 目标页质量回读：
+  - `tut_traversing_stage.html`：`draft_needs_translation`，中文字符 576，中文/英文块 24/18，坏编码 0，非预期外跳 0。
+  - `AssetPreviewsAPI.html`：`draft_needs_translation`，中文字符 617，中文/英文块 24/18，坏编码 0，非预期外跳 0。
+  - `RenderProduct.html`：`draft_needs_translation`，中文字符 555，中文/英文块 24/16，坏编码 0，非预期外跳 0。
+  - `SpatialAudio.html`：`draft_needs_translation`，中文字符 578，中文/英文块 24/18，坏编码 0，非预期外跳 0。
+  - `SphereLight.html`：`draft_needs_translation`，中文字符 559，中文/英文块 24/18，坏编码 0，非预期外跳 0。
+- 分级计数保持不变：`draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8；原因是本轮 5 页开始前已处于 `draft_needs_translation`，本轮属于第二层补强精修，不会改变当前审计分级。
+- 审计与验证结果：`audit_openusd_translation_quality.mjs` 通过；`route_openusd_internal_links_local.mjs` 通过且 `files_changed=0`；`audit_openusd_full_draft_preview.mjs` 通过，398/398 draft 页面可预览；`audit_openusd_report_index.mjs` 通过；`validate_openusd_api_repro.ps1` 通过。
+- GitHub 同步结果：本轮记录随 `OpenUSD bilingual round 233: traversal previews renderproduct audio sphere pass` 提交并推送到 `origin/main`。
+
+差距：
+
+- 全量 406 页仍不是完成态：8 页 `good_bilingual`，398 页仍为 `bilingual_draft`；其中 387 页为 `draft_needs_translation`，11 页为 `draft_template_only`。
+- 本轮继续提升 5 页的中文阅读层厚度，但仍不是逐段完整翻译；后续继续按最多 5 页节奏推进。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理已确认存在且用户会实际阅读的 schema/API 页面。
+2. 下一轮建议目标：`full_site/release/user_guides/schemas/usdRender/RenderSettings.html`、`full_site/release/user_guides/schemas/usdRender/RenderVar.html`、`full_site/release/user_guides/schemas/usdRender/RenderSettingsBase.html`、`full_site/release/user_guides/schemas/usdLux/DiskLight.html`、`full_site/release/user_guides/schemas/usdLux/DistantLight.html`。
+3. 已确认 `full_site/release/user_guides/schemas/usdMedia/SpatialAudioAndLayerOffsets.html` 不存在，不要新建；继续低优先处理 `_source.html`、`search.html` 和目录页。
