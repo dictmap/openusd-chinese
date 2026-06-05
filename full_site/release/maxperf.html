@@ -54,6 +54,27 @@
         <li><span class="zh">payload 资产组织：</span><span class="en">payloads</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-121">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`Maximizing USD Performance` 面向生产级 USD 场景的性能实践。它关注读取、组合、预览、introspection 和大型资产交互的成本，帮助读者理解什么会让 USD scene 变重，以及如何用 payload、composition、asset organization 和 metrics 定位问题。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for Maximizing USD Performance while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">性能问题通常来自多个层级叠加：layer stack、composition arcs、payloads、geometry cache、shading cache 和过细或过深的场景组织都可能增加成本。</span></li>
+        <li><span class="zh">从 release 24.11 起，Pixar 发布多种资产的 performance metrics；读者应把本页和 `Performance Metrics` 页面一起读，而不是只凭经验判断场景是否重。</span></li>
+        <li><span class="zh">优化前要先量化：区分打开 stage、composition、遍历、渲染准备和交互式 viewport 响应时间，避免把所有延迟都归因于同一处。</span></li>
+        <li><span class="zh">payload 和分层组织可以改善大场景加载，但如果依赖关系、变体或引用组织不当，也可能引入新的 composition 成本。</span></li>
+        <li><span class="zh">中文导读应保留 `payload`、`composition`、`layer stack`、`performance metrics` 等术语原文，方便和工具日志、诊断输出对照。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">性能指标：</span><span class="en">performance metrics</span></li>
+        <li><span class="zh">组合求值：</span><span class="en">composition</span></li>
+        <li><span class="zh">按需载入负载：</span><span class="en">payload</span></li>
+        <li><span class="zh">层栈：</span><span class="en">layer stack</span></li>
+        <li><span class="zh">场景 introspection 检查：</span><span class="en">introspection</span></li>
+        <li><span class="zh">视口：</span><span class="en">viewport</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

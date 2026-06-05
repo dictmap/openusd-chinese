@@ -54,6 +54,27 @@
         <li><span class="zh">图层：</span><span class="en">layers</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-121">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`USD Third-Party Plugins` 说明 USD 如何通过 plugin 机制把第三方库接入不同系统部分。页面中的 Hydra render delegate、file format plugin、schema plugin 和工具插件都叫 plugin，但接入点、生命周期和数据边界并不相同。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for USD Third-Party Plugins while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">Hydra render delegate plugin 负责让第三方 renderer 接入 USD Imaging；它影响成像和渲染，不负责定义新的 USD 文件格式。</span></li>
+        <li><span class="zh">file format plugin 负责把外部文件格式映射为 USD representations，让相关文件可作为 layer 在 USD 中使用。</span></li>
+        <li><span class="zh">schema plugin 负责引入新的 schema 类型、API schema 或领域扩展；它和渲染 delegate、文件格式插件的部署和验证路径不同。</span></li>
+        <li><span class="zh">阅读插件清单时应区分官方内置模块、Pixar 维护插件和第三方或 studio 自行维护插件；链接有效性和版本兼容性需要按外部项目核对。</span></li>
+        <li><span class="zh">本地路由策略只镜像 406 清单内页面，外部插件项目保持外跳或 uncovered 处理；不要为了补全插件生态而新建未在清单中的页面。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">第三方插件：</span><span class="en">third-party plugins</span></li>
+        <li><span class="zh">Hydra 渲染代理：</span><span class="en">Hydra render delegate</span></li>
+        <li><span class="zh">文件格式插件：</span><span class="en">file format plugin</span></li>
+        <li><span class="zh">schema 插件：</span><span class="en">schema plugin</span></li>
+        <li><span class="zh">USD 表示：</span><span class="en">USD representations</span></li>
+        <li><span class="zh">层：</span><span class="en">layer</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

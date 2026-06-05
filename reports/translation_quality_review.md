@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T22:30:00.514Z
+Generated: 2026-06-05T22:43:41.064Z
 
 ## Summary
 
@@ -347,17 +347,17 @@ Generated: 2026-06-05T22:30:00.514Z
 | 281 | good_bilingual | bilingual_complete | 515 | 10/27 | 0 | 0 | `site/apiDocs.html` |
 | 282 | draft_needs_translation | bilingual_draft | 429 | 24/22 | 0 | 0 | `full_site/release/contributing_to_usd.html` |
 | 283 | draft_needs_translation | bilingual_draft | 379 | 14/12 | 0 | 0 | `full_site/release/contributors.html` |
-| 284 | draft_needs_translation | bilingual_draft | 377 | 20/16 | 0 | 0 | `full_site/release/dl_downloads.html` |
+| 284 | draft_needs_translation | bilingual_draft | 640 | 32/23 | 0 | 0 | `full_site/release/dl_downloads.html` |
 | 285 | draft_needs_translation | bilingual_draft | 400 | 18/14 | 0 | 0 | `full_site/release/genindex.html` |
 | 286 | good_bilingual | bilingual_complete | 862 | 112/509 | 0 | 0 | `site/glossary.html` |
 | 287 | good_bilingual | bilingual_complete | 509 | 10/331 | 0 | 0 | `site/release_index.html` |
 | 288 | draft_needs_translation | bilingual_draft | 395 | 28/26 | 0 | 0 | `full_site/release/intro_to_openexec.html` |
 | 289 | good_bilingual | bilingual_complete | 2736 | 53/46 | 0 | 0 | `site/intro.html` |
-| 290 | draft_needs_translation | bilingual_draft | 380 | 17/15 | 0 | 0 | `full_site/release/maxperf.html` |
+| 290 | draft_needs_translation | bilingual_draft | 625 | 29/22 | 0 | 0 | `full_site/release/maxperf.html` |
 | 291 | draft_needs_translation | bilingual_draft | 673 | 24/18 | 0 | 0 | `full_site/release/plugins_alembic.html` |
-| 292 | draft_needs_translation | bilingual_draft | 337 | 18/15 | 0 | 0 | `full_site/release/plugins_renderman.html` |
-| 293 | draft_needs_translation | bilingual_draft | 370 | 14/12 | 0 | 0 | `full_site/release/plugins.html` |
-| 294 | draft_needs_translation | bilingual_draft | 339 | 16/14 | 0 | 0 | `full_site/release/press_opensource_announce.html` |
+| 292 | draft_needs_translation | bilingual_draft | 575 | 30/22 | 0 | 0 | `full_site/release/plugins_renderman.html` |
+| 293 | draft_needs_translation | bilingual_draft | 622 | 26/19 | 0 | 0 | `full_site/release/plugins.html` |
+| 294 | draft_needs_translation | bilingual_draft | 585 | 28/21 | 0 | 0 | `full_site/release/press_opensource_announce.html` |
 | 295 | draft_needs_translation | bilingual_draft | 380 | 16/14 | 0 | 0 | `full_site/release/press_opensource_release.html` |
 | 296 | draft_needs_translation | bilingual_draft | 446 | 27/25 | 0 | 0 | `full_site/release/ref_performance_metrics.html` |
 | 297 | draft_needs_translation | bilingual_draft | 383 | 14/12 | 0 | 0 | `full_site/release/release_schedule.html` |
