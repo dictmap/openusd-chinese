@@ -56,6 +56,27 @@
         <li><span class="zh">Python 插件：</span><span class="en">Python plugin</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-119">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`Creating a Usdview Plugin` 演示如何为 `usdview` 编写 Python plugin，并通过 usdview API 扩展查看器行为。阅读本页时，应区分 plugin discovery、Python package layout、`PluginContainer`、UI action 注册和运行时 API 调用。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for Creating a Usdview Plugin while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">本教程面向想扩展 `usdview` 的开发者；如果只是查看 USD 文件，应先掌握基础 `usdview` 命令和环境配置。</span></li>
+        <li><span class="zh">`mkdir -p &lt;some path&gt;/usdviewPlugins/tutorialPlugin/` 是目录结构示例，`&lt;some path&gt;` 是占位符，命令文本本身应保持原样。</span></li>
+        <li><span class="zh">`PluginContainer` 负责把插件代码组织成 usdview 可发现、可加载的容器；它不是普通 Python 脚本入口。</span></li>
+        <li><span class="zh">插件能否工作取决于多层条件：目录是否在搜索路径、Python 包是否可导入、usdview API 是否调用正确、UI action 是否注册到界面。</span></li>
+        <li><span class="zh">调试插件时应分层确认 discovery、import、container 初始化、menu/action 注册和回调执行，而不是只看 UI 是否出现按钮。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">usdview 插件：</span><span class="en">usdview plugin</span></li>
+        <li><span class="zh">usdview API：</span><span class="en">usdview API</span></li>
+        <li><span class="zh">插件容器：</span><span class="en">PluginContainer</span></li>
+        <li><span class="zh">教程插件目录：</span><span class="en">tutorialPlugin</span></li>
+        <li><span class="zh">插件发现：</span><span class="en">plugin discovery</span></li>
+        <li><span class="zh">界面动作：</span><span class="en">UI action</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

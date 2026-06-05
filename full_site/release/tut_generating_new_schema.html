@@ -56,6 +56,27 @@
         <li><span class="zh">USD 安装根目录变量：</span><span class="en">USD_INSTALL_ROOT</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-119">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`Generating New Schema Classes` 面向需要扩展 USD schema 的开发者。它围绕 `schema.usda`、`usdGenSchema`、CMake 安装前缀和生成出的 C++/Python 绑定展开；中文导读应强调这是 schema authoring contract，而不是普通用户编辑场景文件的教程。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for Generating New Schema Classes while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`usdGenSchema` 依赖 `jinja2` 和 `argparse`，如果构建 USD 时依赖不可用，该工具不会安装；环境前提是本页最先要确认的内容。</span></li>
+        <li><span class="zh">`schema.usda` 中的 `GLOBAL`、`libraryName`、`subLayers` 和 schema prim 定义会直接影响生成的类型名、命名空间和插件库结构。</span></li>
+        <li><span class="zh">教程里的 `.usda` 片段必须保持原样，因为它是 schema 生成输入；中文层可以解释字段意图，但不能改动代码、注释、token 或命名空间。</span></li>
+        <li><span class="zh">阅读 `Types of Schema Classes` 时要区分 concrete typed schema、single-apply API schema 和 multiple-apply API schema，否则会误选扩展模型。</span></li>
+        <li><span class="zh">生成 schema 后还要考虑构建、安装、插件发现和 API 文档；本页不是只生成代码文件，更是把 schema 类型纳入 USD 插件系统。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD schema 代码生成工具：</span><span class="en">usdGenSchema</span></li>
+        <li><span class="zh">schema 定义文件：</span><span class="en">schema.usda</span></li>
+        <li><span class="zh">schema 库名字段：</span><span class="en">libraryName</span></li>
+        <li><span class="zh">子层声明：</span><span class="en">subLayers</span></li>
+        <li><span class="zh">具名 concrete schema：</span><span class="en">concrete typed schema</span></li>
+        <li><span class="zh">API schema：</span><span class="en">API schema</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

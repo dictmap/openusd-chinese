@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T22:11:37.706Z
+Generated: 2026-06-05T22:21:01.059Z
 
 ## Summary
 
@@ -368,17 +368,17 @@ Generated: 2026-06-05T22:11:37.706Z
 | 302 | good_bilingual | bilingual_complete | 2519 | 157/199 | 0 | 0 | `site/toolset.html` |
 | 303 | draft_needs_translation | bilingual_draft | 940 | 36/25 | 0 | 0 | `full_site/release/tut_authoring_variants.html` |
 | 304 | draft_needs_translation | bilingual_draft | 604 | 26/20 | 0 | 0 | `full_site/release/tut_converting_between_layer_formats.html` |
-| 305 | draft_needs_translation | bilingual_draft | 382 | 16/14 | 0 | 0 | `full_site/release/tut_end_to_end.html` |
-| 306 | draft_needs_translation | bilingual_draft | 352 | 17/15 | 0 | 0 | `full_site/release/tut_generating_new_schema.html` |
+| 305 | draft_needs_translation | bilingual_draft | 678 | 28/21 | 0 | 0 | `full_site/release/tut_end_to_end.html` |
+| 306 | draft_needs_translation | bilingual_draft | 585 | 29/22 | 0 | 0 | `full_site/release/tut_generating_new_schema.html` |
 | 307 | draft_needs_translation | bilingual_draft | 566 | 24/18 | 0 | 0 | `full_site/release/tut_helloworld_redux.html` |
 | 308 | draft_needs_translation | bilingual_draft | 860 | 37/25 | 0 | 0 | `full_site/release/tut_helloworld.html` |
-| 309 | draft_needs_translation | bilingual_draft | 361 | 16/14 | 0 | 0 | `full_site/release/tut_houdini_example.html` |
+| 309 | draft_needs_translation | bilingual_draft | 579 | 28/21 | 0 | 0 | `full_site/release/tut_houdini_example.html` |
 | 310 | draft_needs_translation | bilingual_draft | 764 | 37/26 | 0 | 0 | `full_site/release/tut_inspect_and_author_props.html` |
 | 311 | draft_needs_translation | bilingual_draft | 541 | 24/18 | 0 | 0 | `full_site/release/tut_referencing_layers.html` |
 | 312 | draft_needs_translation | bilingual_draft | 520 | 25/19 | 0 | 0 | `full_site/release/tut_simple_shading.html` |
 | 313 | draft_needs_translation | bilingual_draft | 795 | 36/25 | 0 | 0 | `full_site/release/tut_traversing_stage.html` |
-| 314 | draft_needs_translation | bilingual_draft | 375 | 15/13 | 0 | 0 | `full_site/release/tut_usd_tutorials.html` |
-| 315 | draft_needs_translation | bilingual_draft | 349 | 15/12 | 0 | 0 | `full_site/release/tut_usdview_plugin.html` |
+| 314 | draft_needs_translation | bilingual_draft | 623 | 27/20 | 0 | 0 | `full_site/release/tut_usd_tutorials.html` |
+| 315 | draft_needs_translation | bilingual_draft | 557 | 27/19 | 0 | 0 | `full_site/release/tut_usdview_plugin.html` |
 | 316 | draft_needs_translation | bilingual_draft | 576 | 24/18 | 0 | 0 | `full_site/release/tut_variants_example_in_katana.html` |
 | 317 | draft_needs_translation | bilingual_draft | 526 | 26/20 | 0 | 0 | `full_site/release/tut_xforms.html` |
 | 318 | draft_needs_translation | bilingual_draft | 544 | 37/35 | 0 | 0 | `full_site/release/usd_products.html` |
