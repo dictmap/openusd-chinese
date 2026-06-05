@@ -33,6 +33,27 @@
       <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
       <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="release-quality-pass-064">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 RenderMan USD Imaging Plugin 补充中文优先的页面用途、阅读路径、结构边界和术语对照；英文页面名、API 名称、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于逐项核对官方原页。</p>
+      <p class="en">This section adds Chinese-first page purpose, reading path, structure boundaries, and terminology for RenderMan USD Imaging Plugin while retaining English page names, API names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`RenderMan USD Imaging Plugin` 介绍 `hdPrman`，它是 USD Imaging/Hydra 侧使用 RenderMan renderer 的插件入口，不是 RenderMan 本身的完整用户手册。</span></li>
+        <li><span class="zh">官方摘录说明 `hdPrman` 不会随 USD 默认构建；构建它需要安装 RenderMan 25.0 或更新版本，并通常通过 `build_usd.py` 配置相关 build options。</span></li>
+        <li><span class="zh">`Configuration`、`Building hdPrman` 和 `Running hdPrman` 分别对应环境配置、构建过程和运行方式；阅读时应保留 `hdPrman`、`build_usd.py`、RenderMan 版本号和命令原样。</span></li>
+        <li><span class="zh">`Developer` 与 `Supported Render Pass AOVs` 面向开发者和渲染通道输出支持情况，适合需要调试 Hydra render delegate 或 AOV 管线的人继续深入。</span></li>
+        <li><span class="zh">本页的边界是 RenderMan USD Imaging plugin：它连接 USD Imaging 与 RenderMan，不应混同于通用 Hydra 文档、RenderMan shading 文档或 `UsdRender` schema 参考。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">RenderMan 的 Hydra/USD Imaging 插件：</span><span class="en">hdPrman</span></li>
+        <li><span class="zh">USD 成像层：</span><span class="en">USD Imaging</span></li>
+        <li><span class="zh">Hydra 渲染架构：</span><span class="en">Hydra</span></li>
+        <li><span class="zh">RenderMan 渲染器：</span><span class="en">RenderMan renderer</span></li>
+        <li><span class="zh">USD 构建脚本：</span><span class="en">build_usd.py</span></li>
+        <li><span class="zh">任意输出变量：</span><span class="en">AOVs</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -2,6 +2,29 @@
 
 源页面：<https://openusd.org/release/api/index.html>
 
+## 第 195 轮：release 性能/插件/开源新闻页精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `42ea166`，本轮 5 个目标页均存在且均为 `draft_template_only`。
+- 本轮严格只处理 5 页：`full_site/release/maxperf.html`、`full_site/release/plugins_renderman.html`、`full_site/release/plugins.html`、`full_site/release/press_opensource_announce.html`、`full_site/release/press_opensource_release.html`，没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_release_batch_064.mjs`，为 5 页插入 `release-quality-pass-064` 中文精修导读区块；每页包含页面用途、阅读路径、结构边界和术语对照，并继续保留英文页面名、API 名称、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录。
+- 本轮中文层覆盖：`Maximizing USD Performance` 的 low-latency access、production-scale 3D datasets、allocator、binary `.usd`、payloads 和 heavy/expensive scene 判断；`RenderMan USD Imaging Plugin` 的 `hdPrman`、USD Imaging、Hydra、RenderMan 25.0+、`build_usd.py`、build/run 配置和 AOV；`USD Third-Party Plugins` 的 Hydra render delegate、file format plugin、USD representations 和 layers；`Open Source Announcement` 的 2015 开源意向、scene graph、non-destructive editing、layered overrides、variation 和 inheritance；`Open Source Release` 的 2016 正式开源发布、DCC tools、scalable solution、collaborative production workflows 和 development process。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 70 / `draft_needs_translation` 328 / `good_bilingual` 8 变为 `draft_template_only` 65 / `draft_needs_translation` 333 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；本轮 5 页均可通过本地最终入口访问。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`，报告索引审计通过，总验证 281 checks passed / 0 failed。
+- GitHub 同步：本轮验证通过后使用 `scripts/sync_openusd_to_github.ps1`，提交信息为 `OpenUSD bilingual round 195: performance plugins press pages`。
+
+差距：
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是完整翻译性能建议全文、RenderMan 插件构建细节、第三方插件清单或两篇新闻稿全文。
+- 全量仍有 65 个 `draft_template_only` 和 333 个 `draft_needs_translation`，后续需要继续按每轮最大 5 页推进。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理 `full_site/release/products.html`、`full_site/release/release_notes.html`、`full_site/release/release_toc.html`、`full_site/release/toolset.html`、`full_site/release/usd_faq.html`。
+2. 对 products、release notes、release TOC、toolset 和 FAQ 页面补中文用途说明、页面边界、阅读路径和术语对照，保留页面名、链接、代码和官方英文摘录。
+3. 保持本地链接策略，继续运行质量审计、链接路由、draft 预览、报告索引和总验证；验证通过后同步 GitHub，并记录质量分级变化、验证结果和提交结果。
+
 ## 第 194 轮：release 贡献/下载/索引/OpenExec 入门页精修
 已完成：
 

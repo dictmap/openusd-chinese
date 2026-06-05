@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T02:25:37.367Z
+Generated: 2026-06-05T02:38:53.257Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-05T02:25:37.367Z
 
 ## Grade Counts
 
-- draft_template_only: 70
-- draft_needs_translation: 328
+- draft_template_only: 65
+- draft_needs_translation: 333
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -43,22 +43,22 @@ Generated: 2026-06-05T02:25:37.367Z
 | 350 | draft_template_only | 62 | `full_site/release/user_guides/schemas/usdMedia/overview.html` | 页面草稿：Overview / Overview |
 | 365 | draft_template_only | 62 | `full_site/release/user_guides/schemas/usdUI/overview.html` | 页面草稿：Overview / Overview |
 | 374 | draft_template_only | 62 | `full_site/release/user_guides/schemas/usdVol/overview.html` | 页面草稿：Overview / Overview |
-| 293 | draft_template_only | 64 | `full_site/release/plugins.html` | USD 第三方插件 / USD Third-Party Plugins |
 | 297 | draft_template_only | 64 | `full_site/release/release_schedule.html` | 发布时间表 / Release Schedule |
 | 298 | draft_template_only | 64 | `full_site/release/search.html` | 搜索 / Search - Universal Scene Description 26.05 documentation |
 | 69 | draft_template_only | 66 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | API 页面草稿：hf Directory / hf Directory |
 | 212 | draft_template_only | 66 | `full_site/api/journal_8h.html` | API 页面草稿：journal.h File / journal.h File |
-| 294 | draft_template_only | 66 | `full_site/release/press_opensource_announce.html` | 开源公告 / Open Source Announcement |
-| 295 | draft_template_only | 66 | `full_site/release/press_opensource_release.html` | 开源发布 / Open Source Release |
 | 305 | draft_template_only | 66 | `full_site/release/tut_end_to_end.html` | 页面草稿：End to End Example / End to End Example |
 | 309 | draft_template_only | 66 | `full_site/release/tut_houdini_example.html` | 页面草稿：Houdini USD Example Workflow / Houdini USD Example Workflow |
 | 321 | draft_template_only | 66 | `full_site/release/user_guides/color_user_guide.html` | 页面草稿：Color User’s Guide / Color User’s Guide |
 | 323 | draft_template_only | 66 | `full_site/release/user_guides/primvars.html` | 页面草稿：Primvars / Primvars |
 | 324 | draft_template_only | 66 | `full_site/release/user_guides/render_user_guide.html` | 页面草稿：Rendering with USD / Rendering with USD |
-| 290 | draft_template_only | 70 | `full_site/release/maxperf.html` | 最大化 USD 性能 / Maximizing USD Performance |
 | 306 | draft_template_only | 70 | `full_site/release/tut_generating_new_schema.html` | 页面草稿：Generating New Schema Classes / Generating New Schema Classes |
 | 336 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdLux/ListAPI.html` | 页面草稿：ListAPI / ListAPI |
 | 337 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdLux/MeshLightAPI.html` | 页面草稿：MeshLightAPI / MeshLightAPI |
+| 339 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdLux/overview.html` | 页面草稿：Overview / Overview |
+| 348 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdLux/VolumeLightAPI.html` | 页面草稿：VolumeLightAPI / VolumeLightAPI |
+| 353 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdRender/overview.html` | 页面草稿：Overview / Overview |
+| 381 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html` | 页面草稿：ParticleFieldOpacityAttributeAPI / ParticleFieldOpacityAttributeAPI |
 
 ## All Pages
 
@@ -353,12 +353,12 @@ Generated: 2026-06-05T02:25:37.367Z
 | 287 | good_bilingual | bilingual_complete | 509 | 10/331 | 0 | 0 | `site/release_index.html` |
 | 288 | draft_needs_translation | bilingual_draft | 395 | 28/26 | 0 | 0 | `full_site/release/intro_to_openexec.html` |
 | 289 | good_bilingual | bilingual_complete | 2736 | 53/46 | 0 | 0 | `site/intro.html` |
-| 290 | draft_template_only | bilingual_draft | 70 | 5/8 | 0 | 0 | `full_site/release/maxperf.html` |
+| 290 | draft_needs_translation | bilingual_draft | 380 | 17/15 | 0 | 0 | `full_site/release/maxperf.html` |
 | 291 | draft_needs_translation | bilingual_draft | 313 | 12/11 | 0 | 0 | `full_site/release/plugins_alembic.html` |
-| 292 | draft_template_only | bilingual_draft | 74 | 6/8 | 0 | 0 | `full_site/release/plugins_renderman.html` |
-| 293 | draft_template_only | bilingual_draft | 64 | 2/5 | 0 | 0 | `full_site/release/plugins.html` |
-| 294 | draft_template_only | bilingual_draft | 66 | 4/7 | 0 | 0 | `full_site/release/press_opensource_announce.html` |
-| 295 | draft_template_only | bilingual_draft | 66 | 4/7 | 0 | 0 | `full_site/release/press_opensource_release.html` |
+| 292 | draft_needs_translation | bilingual_draft | 337 | 18/15 | 0 | 0 | `full_site/release/plugins_renderman.html` |
+| 293 | draft_needs_translation | bilingual_draft | 370 | 14/12 | 0 | 0 | `full_site/release/plugins.html` |
+| 294 | draft_needs_translation | bilingual_draft | 339 | 16/14 | 0 | 0 | `full_site/release/press_opensource_announce.html` |
+| 295 | draft_needs_translation | bilingual_draft | 380 | 16/14 | 0 | 0 | `full_site/release/press_opensource_release.html` |
 | 296 | draft_template_only | bilingual_draft | 110 | 15/18 | 0 | 0 | `full_site/release/ref_performance_metrics.html` |
 | 297 | draft_template_only | bilingual_draft | 64 | 2/5 | 0 | 0 | `full_site/release/release_schedule.html` |
 | 298 | draft_template_only | bilingual_draft | 64 | 2/3 | 0 | 0 | `full_site/release/search.html` |

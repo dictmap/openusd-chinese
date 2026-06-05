@@ -33,6 +33,27 @@
       <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
       <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="release-quality-pass-064">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Maximizing USD Performance 补充中文优先的页面用途、阅读路径、结构边界和术语对照；英文页面名、API 名称、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于逐项核对官方原页。</p>
+      <p class="en">This section adds Chinese-first page purpose, reading path, structure boundaries, and terminology for Maximizing USD Performance while retaining English page names, API names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`Maximizing USD Performance` 是面向生产级 USD 数据集的性能实践页，核心目标是降低读取、预览和 introspection 的延迟，而不是讲解单个 API 的语义。</span></li>
+        <li><span class="zh">官方摘录强调 Pixar 在电影制作管线中依赖 USD 访问 production-scale 3D datasets；因此本页建议多围绕 asset structure、file format 和 payload 组织方式来理解。</span></li>
+        <li><span class="zh">`Use an allocator optimized for multithreading` 是构建层面的建议，说明内存分配器可能造成显著性能差异；这类优化不改变 USD 文件语义，但会影响运行时吞吐。</span></li>
+        <li><span class="zh">`Use binary &quot;.usd&quot; files for geometry and shading caches` 和 `Package assets with payloads` 分别强调二进制缓存与 payload 组织，对大几何、材质缓存和可延迟加载资产尤其重要。</span></li>
+        <li><span class="zh">`What makes a USD scene heavy/expensive?` 用来定位重场景来源，例如层结构、composition、payload、geometry cache 和 shading cache；阅读时应结合 `Performance Metrics` 页面核对具体资产指标。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">性能注意事项：</span><span class="en">Performance Considerations</span></li>
+        <li><span class="zh">低延迟访问：</span><span class="en">low-latency access</span></li>
+        <li><span class="zh">生产级 3D 数据集：</span><span class="en">production-scale 3D datasets</span></li>
+        <li><span class="zh">内存分配器：</span><span class="en">allocator</span></li>
+        <li><span class="zh">二进制 .usd 文件：</span><span class="en">binary .usd files</span></li>
+        <li><span class="zh">payload 资产组织：</span><span class="en">payloads</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
