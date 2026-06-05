@@ -56,6 +56,27 @@
         <li><span class="zh">OpenColorIO：</span><span class="en">OCIO</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-120">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`Color User's Guide` 解释 OpenUSD 如何记录和传递 color space information。它面向内容作者、工具配置者和 renderer 开发者，重点是 canonical interoperable color spaces、自定义颜色空间、`renderingColorSpace`、MaterialX 和 OCIO 等系统之间的边界。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for Color User's Guide while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">颜色值本身和 color space metadata 要分开理解：同样的 RGB 数值在不同色彩空间下含义不同，渲染结果也可能不同。</span></li>
+        <li><span class="zh">`canonical interoperable color spaces` 是为了跨工具一致解释颜色；自定义颜色空间需要工具链和 renderer 明确支持，不能只写一个名称就假设全部兼容。</span></li>
+        <li><span class="zh">`renderingColorSpace` 与 `UsdRender` schema 相关，通常影响渲染输出或渲染上下文的颜色解释；翻译时应保留属性名原文。</span></li>
+        <li><span class="zh">MaterialX 和 OCIO 是外部生态中的重要上下文；本地复刻保留外部链接，但读者应把它们看作颜色管理系统背景，而不是 406 页清单内本地页面。</span></li>
+        <li><span class="zh">调试颜色不一致时，应检查 authored color space、材质网络、texture 色彩空间、OCIO 配置、renderer 默认值和最终输出色彩空间。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">颜色空间：</span><span class="en">color space</span></li>
+        <li><span class="zh">规范互操作颜色空间：</span><span class="en">canonical interoperable color spaces</span></li>
+        <li><span class="zh">自定义颜色空间：</span><span class="en">custom color spaces</span></li>
+        <li><span class="zh">渲染颜色空间属性：</span><span class="en">renderingColorSpace</span></li>
+        <li><span class="zh">MaterialX 材质标准：</span><span class="en">MaterialX</span></li>
+        <li><span class="zh">OpenColorIO：</span><span class="en">OCIO</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

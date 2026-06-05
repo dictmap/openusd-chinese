@@ -56,6 +56,27 @@
         <li><span class="zh">逐 face-vertex 插值模式：</span><span class="en">faceVarying</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-120">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`Primvars` 说明 USD 中 primvar 作为可在几何表面或体积上插值的特殊 attribute，如何把 texture coordinates、displayColor、材质覆盖和其他 surface/volume-varying signals 传给 shader 或下游工具。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for Primvars while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">本页的关键不是普通 attribute，而是带有 interpolation 语义的 primvar；同一个数值数组在 `constant`、`uniform`、`varying`、`vertex`、`faceVarying` 下会有不同解释。</span></li>
+        <li><span class="zh">`primvars:displayColor` 示例用于可视化插值模式，不应被误解为 primvars 只能表示颜色；texture coordinates、mask、custom data 都可能通过 primvar 传递。</span></li>
+        <li><span class="zh">阅读 Mesh 示例时要同时看 `faceVertexCounts`、`faceVertexIndices` 和 primvar 数组长度；插值模式决定数组元素如何映射到 mesh 拓扑。</span></li>
+        <li><span class="zh">primvar 会影响材质和渲染结果，因此它不是注释型 metadata；资产作者、材质作者和 renderer 都需要约定一致的名称、类型和 interpolation。</span></li>
+        <li><span class="zh">调试 primvar 时建议分层检查：命名空间是否为 `primvars:*`、类型是否匹配、interpolation 是否正确、数组长度是否与拓扑一致、shader 是否读取同名输入。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">可插值图元变量：</span><span class="en">primvar</span></li>
+        <li><span class="zh">插值模式：</span><span class="en">interpolation</span></li>
+        <li><span class="zh">面顶点级插值：</span><span class="en">faceVarying</span></li>
+        <li><span class="zh">显示颜色：</span><span class="en">displayColor</span></li>
+        <li><span class="zh">纹理坐标：</span><span class="en">texture coordinates</span></li>
+        <li><span class="zh">随表面变化的信号：</span><span class="en">surface-varying signal</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

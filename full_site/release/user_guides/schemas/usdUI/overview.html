@@ -56,6 +56,27 @@
         <li><span class="zh">无障碍信息 API：</span><span class="en">AccessibilityAPI</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-120">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`usdUI` overview 说明面向 DCC 工具、节点图和资产浏览器的 UI metadata schema。它帮助工具表达 node position、display color、labels、groups 和 Backdrop 等界面线索，但不改变 scene composition、shader 求值或最终渲染结果。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for usdUI Overview while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`usdUI` 应被理解为工具协作层：它让复杂 node graph 更易读、更易编辑，但核心数据语义仍由 `UsdShade`、`UsdRender`、`UsdLux` 等领域定义。</span></li>
+        <li><span class="zh">`NodeGraphNodeAPI` 关注节点图布局和显示状态，`SceneGraphPrimAPI` 关注场景图中的标签和分组，`Backdrop` 用于视觉组织节点。</span></li>
+        <li><span class="zh">示例中的 `ui:nodegraph:node:*` 属性是 UI metadata，不是 shader 输入；它们影响编辑器呈现，不应被 renderer 当作材质计算参数。</span></li>
+        <li><span class="zh">工具可以忽略或部分支持 usdUI metadata，因此资产不能依赖这些 UI hints 来表达必需的渲染或 composition 语义。</span></li>
+        <li><span class="zh">调试 UI 显示异常时，应检查 applied API、metadata 属性名、命名空间、工具版本和是否支持对应 usdUI schema。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD UI metadata schema 领域：</span><span class="en">usdUI</span></li>
+        <li><span class="zh">节点图节点 UI API：</span><span class="en">NodeGraphNodeAPI</span></li>
+        <li><span class="zh">场景图 prim UI API：</span><span class="en">SceneGraphPrimAPI</span></li>
+        <li><span class="zh">节点图背景框：</span><span class="en">Backdrop</span></li>
+        <li><span class="zh">节点图 UI metadata 命名空间：</span><span class="en">ui:nodegraph:node:*</span></li>
+        <li><span class="zh">数字内容创作工具：</span><span class="en">DCC Tools</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

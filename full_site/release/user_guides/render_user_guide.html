@@ -56,6 +56,27 @@
         <li><span class="zh">灯光链接过滤：</span><span class="en">Light-linking</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-120">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`Rendering with USD` 汇总 USD 为可复现渲染提供的约定和规则。它覆盖 viewport 预览与 final frame 渲染之间的差异，并把 stage、资产、坐标系、材质、光照、可见性、purpose、render settings 和 renderer 支持边界放在同一条检查线上。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for Rendering with USD while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">本页适合在配置生产渲染前通读，因为很多问题不是单个 shader 错误，而是 stage 组织、坐标系、材质绑定或 render settings 缺失导致。</span></li>
+        <li><span class="zh">interactive renders 通常可依赖较多默认值，final frame renders 则更需要显式的 render configuration、outputs、passes 和色彩空间设置。</span></li>
+        <li><span class="zh">阅读本页时应把 `UsdRender` schema、`UsdShade` 材质、`UsdLux` 灯光、`UsdGeom` 几何和 `UsdVol` 体积联系起来，而不是只看一个模块。</span></li>
+        <li><span class="zh">可复现渲染需要资产作者和 renderer 对同一批 schema 约定有一致理解；文档中的 token、属性名和 schema 名称必须保留英文原样。</span></li>
+        <li><span class="zh">排查渲染差异时，先确认 renderer 是否支持相关 OpenUSD schema，再检查 authored opinions、fallback defaults 和 renderer-specific 配置。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 渲染用户指南：</span><span class="en">Rendering with USD</span></li>
+        <li><span class="zh">交互式渲染：</span><span class="en">interactive renders</span></li>
+        <li><span class="zh">最终帧渲染：</span><span class="en">final frame renders</span></li>
+        <li><span class="zh">渲染配置：</span><span class="en">render configuration</span></li>
+        <li><span class="zh">渲染器特定：</span><span class="en">renderer-specific</span></li>
+        <li><span class="zh">可复现渲染：</span><span class="en">reproducible render</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

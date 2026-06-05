@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T22:21:01.059Z
+Generated: 2026-06-05T22:30:00.514Z
 
 ## Summary
 
@@ -384,10 +384,10 @@ Generated: 2026-06-05T22:21:01.059Z
 | 318 | draft_needs_translation | bilingual_draft | 544 | 37/35 | 0 | 0 | `full_site/release/usd_products.html` |
 | 319 | draft_needs_translation | bilingual_draft | 425 | 22/20 | 0 | 0 | `full_site/release/usdfaq.html` |
 | 320 | draft_needs_translation | bilingual_draft | 549 | 24/18 | 0 | 0 | `full_site/release/user_guides/collections_and_patterns.html` |
-| 321 | draft_needs_translation | bilingual_draft | 383 | 16/14 | 0 | 0 | `full_site/release/user_guides/color_user_guide.html` |
+| 321 | draft_needs_translation | bilingual_draft | 657 | 28/21 | 0 | 0 | `full_site/release/user_guides/color_user_guide.html` |
 | 322 | draft_needs_translation | bilingual_draft | 541 | 24/18 | 0 | 0 | `full_site/release/user_guides/namespace_editing.html` |
-| 323 | draft_needs_translation | bilingual_draft | 333 | 16/14 | 0 | 0 | `full_site/release/user_guides/primvars.html` |
-| 324 | draft_needs_translation | bilingual_draft | 380 | 16/14 | 0 | 0 | `full_site/release/user_guides/render_user_guide.html` |
+| 323 | draft_needs_translation | bilingual_draft | 580 | 28/21 | 0 | 0 | `full_site/release/user_guides/primvars.html` |
+| 324 | draft_needs_translation | bilingual_draft | 625 | 28/21 | 0 | 0 | `full_site/release/user_guides/render_user_guide.html` |
 | 325 | draft_needs_translation | bilingual_draft | 582 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/index.html` |
 | 326 | draft_needs_translation | bilingual_draft | 670 | 35/26 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/BoundableLightBase.html` |
 | 327 | draft_needs_translation | bilingual_draft | 546 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/CylinderLight.html` |
@@ -416,7 +416,7 @@ Generated: 2026-06-05T22:21:01.059Z
 | 350 | draft_needs_translation | bilingual_draft | 661 | 27/20 | 0 | 0 | `full_site/release/user_guides/schemas/usdMedia/overview.html` |
 | 351 | draft_needs_translation | bilingual_draft | 855 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdMedia/SpatialAudio.html` |
 | 352 | draft_needs_translation | bilingual_draft | 804 | 36/23 | 0 | 0 | `full_site/release/user_guides/schemas/usdMedia/usdMedia_toc.html` |
-| 353 | draft_needs_translation | bilingual_draft | 349 | 17/15 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/overview.html` |
+| 353 | draft_needs_translation | bilingual_draft | 577 | 29/22 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/overview.html` |
 | 354 | draft_needs_translation | bilingual_draft | 762 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderPass.html` |
 | 355 | draft_needs_translation | bilingual_draft | 809 | 36/23 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderProduct.html` |
 | 356 | draft_needs_translation | bilingual_draft | 846 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderSettings.html` |
@@ -428,7 +428,7 @@ Generated: 2026-06-05T22:21:01.059Z
 | 362 | draft_needs_translation | bilingual_draft | 552 | 24/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/Backdrop.html` |
 | 363 | draft_needs_translation | bilingual_draft | 909 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/NodeGraphNodeAPI.html` |
 | 364 | draft_needs_translation | bilingual_draft | 747 | 36/24 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/ObjectHints.html` |
-| 365 | draft_needs_translation | bilingual_draft | 360 | 15/13 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/overview.html` |
+| 365 | draft_needs_translation | bilingual_draft | 591 | 27/20 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/overview.html` |
 | 366 | draft_needs_translation | bilingual_draft | 744 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/PrimHints.html` |
 | 367 | draft_needs_translation | bilingual_draft | 735 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/PropertyHints.html` |
 | 368 | draft_needs_translation | bilingual_draft | 758 | 36/23 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/SceneGraphPrimAPI.html` |

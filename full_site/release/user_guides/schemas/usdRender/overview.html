@@ -56,6 +56,27 @@
         <li><span class="zh">最终帧：</span><span class="en">final frame</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-120">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`usdRender` overview 是最终质量渲染配置 schema 的入口页。它说明如何用 `RenderSettings`、`RenderProduct`、`RenderVar` 和 `RenderPass` 等对象，把渲染分解、输出文件、分辨率、色彩空间和 renderer 可执行配置标准化写入 USD 场景。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for usdRender Overview while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`usdRender` 的目标不是替代 renderer，而是用标准 schema 描述 renderer 可以尽力应用的渲染配置。</span></li>
+        <li><span class="zh">viewport 预览可能只需要少量默认值，但 film/final quality 渲染通常需要明确 `products`、`orderedVars`、`renderSource`、resolution 和 color space。</span></li>
+        <li><span class="zh">`RenderSettings` 通常组织一次渲染任务，`RenderProduct` 描述输出目标，`RenderVar` 描述 AOV/变量输出，`RenderPass` 描述 pass 层级和可见性配置。</span></li>
+        <li><span class="zh">概览页中的示例 `Scope &quot;Render&quot;` 是推荐组织方式之一；中文导读应解释结构意图，但不要改写 USDA 片段。</span></li>
+        <li><span class="zh">实际渲染是否完全遵循配置取决于 renderer 支持范围；因此文档中的 standardized way 和 best ability 两个边界都很重要。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 渲染配置 schema 领域：</span><span class="en">usdRender</span></li>
+        <li><span class="zh">渲染设置：</span><span class="en">RenderSettings</span></li>
+        <li><span class="zh">渲染输出产品：</span><span class="en">RenderProduct</span></li>
+        <li><span class="zh">渲染变量或 AOV：</span><span class="en">RenderVar</span></li>
+        <li><span class="zh">渲染 pass：</span><span class="en">RenderPass</span></li>
+        <li><span class="zh">渲染颜色空间：</span><span class="en">renderingColorSpace</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

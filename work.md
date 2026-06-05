@@ -3165,3 +3165,13 @@
 - 验证结果：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1` 均通过；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
 - GitHub 同步：验证通过后使用 `OpenUSD bilingual round 250: release tutorials workflow pass` 同步本轮 HTML、脚本、报告和 `work.md`。
 - 下一轮最多 5 页目标：`full_site/release/user_guides/primvars.html`、`full_site/release/user_guides/render_user_guide.html`、`full_site/release/user_guides/color_user_guide.html`、`full_site/release/user_guides/schemas/usdRender/overview.html`、`full_site/release/user_guides/schemas/usdUI/overview.html`；之后按 `translation_quality_review` 继续选择用户可读价值高的 API/guide/class/group/release 页面。
+## 第 251 轮：Primvars、Rendering、Color、usdRender Overview 与 usdUI Overview 补强
+
+- 基线：本地 `main` 基于上一轮同步提交 `088a5dd`，`origin/main` 一致；起始工作区干净。全量仍为 406 个 HTML 页面，质量计数为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。
+- 新增并执行 `scripts/refine_openusd_release_batch_120.mjs`，标记 `release-quality-pass-120`；严格只精修 5 页：`full_site/release/user_guides/primvars.html`、`full_site/release/user_guides/render_user_guide.html`、`full_site/release/user_guides/color_user_guide.html`、`full_site/release/user_guides/schemas/usdRender/overview.html`、`full_site/release/user_guides/schemas/usdUI/overview.html`。
+- 补强内容：每页新增 5 条中文导读和 6 条术语对照，覆盖 primvar 插值模式与拓扑映射、可复现渲染配置、颜色空间与 `renderingColorSpace`、`usdRender` 的 `RenderSettings` / `RenderProduct` / `RenderVar` / `RenderPass` 路线，以及 `usdUI` 的 `NodeGraphNodeAPI`、`SceneGraphPrimAPI`、Backdrop 和 UI metadata 边界。
+- 质量回读：5 页均无占位坏词，`release-quality-pass-120` 均只出现 1 次；中文字符分别为 646、691、716、643、657，中文/英文块分别为 28/21、28/21、28/21、29/22、27/20。
+- 分级变化：计数保持不变，仍为 `draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因是本轮对象已是 `draft_needs_translation`，属于二次补强，不是模板草稿晋级。
+- 验证结果：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1` 均通过；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步：验证通过后使用 `OpenUSD bilingual round 251: primvars render color overview pass` 同步本轮 HTML、脚本、报告和 `work.md`。
+- 下一轮最多 5 页目标：`full_site/release/plugins_renderman.html`、`full_site/release/press_opensource_announce.html`、`full_site/release/plugins.html`、`full_site/release/dl_downloads.html`、`full_site/release/maxperf.html`；之后可继续 `contributors.html`、`press_opensource_release.html`、`release_schedule.html` 或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面。
