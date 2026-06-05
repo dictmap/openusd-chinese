@@ -53,6 +53,27 @@
         <li><span class="zh">跟踪采集器：</span><span class="en">trace collector</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-087">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Functions - R 增补 API 索引或模块入口页二次精修说明，重点解释 Doxygen 字母桶、File Members 与模块 front page 的阅读方式、跨模块条目的归类边界，以及何时应跳转到目标 class、schema、header、group 或用户指南。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - Functions - R API index or module-front page. It explains how to read Doxygen letter buckets, File Members, and module front pages, how to group cross-module entries, and when to jump to target class, schema, header, group, or user-guide documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`functions_func_r.html` 是 R 段函数成员索引，常见语义包括 read、range、register、remove、record、reset、resolve；本页实际横跨 Ar/Hio/Sdf 资源读取、Vdf 数据访问、Hd/HdSt buffer、Trace 和 UsdAppUtils。</span></li>
+        <li><span class="zh">`ArAsset`、`ArFilesystemAsset`、`ArInMemoryAsset`、`HioGlslfxConfig` 与 `HioImage` 是资源读取和 image/shader container 支撑入口；`SdfFileFormat`、`SdfUsdaFileFormat`、`SdfUsdcFileFormat`、`SdfUsdFileFormat` 和 `SdfUsdzFileFormat` 指向 USD layer/file format 读取路径。</span></li>
+        <li><span class="zh">`SdfChildrenView&lt;_ChildPolicy, _Predicate, _Adapter&gt;`、`SdfListProxy&lt;_TypePolicy&gt;`、`TfSpan&lt;T&gt;`、`VtArray&lt;ELEM&gt;`、`VdfConnectorMap&lt;Connector&gt;` 与 `VdfInputSpecs` 是容器视图、list proxy、span、数组和 connector/input specs 线索。</span></li>
+        <li><span class="zh">`VdfVector::ReadAccessor&lt;TYPE&gt;` 与 `VdfVector::ReadWriteAccessor&lt;TYPE&gt;` 需要保留 template 参数；它们用于 Vdf vector 数据读取/读写访问，不应翻译成单个固定 C++ 类型。</span></li>
+        <li><span class="zh">`HdBufferArrayRange`、`HdStInterleavedMemoryManager::_StripedInterleavedBufferRange`、`HdStVBOMemoryManager::_StripedBufferArrayRange`、`HdStCommandBuffer`、`HdStTextureHandle`、`TraceSerialization`、`TraceCounterHolder`、`TraceCollector` 和 `UsdAppUtilsFrameRecorder` 显示本页还涉及 GPU buffer range、command buffer、texture handle、trace serialization 和 frame recording。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">资源读取路径：</span><span class="en">resource read path</span></li>
+        <li><span class="zh">文件格式读取器：</span><span class="en">file format reader</span></li>
+        <li><span class="zh">列表代理：</span><span class="en">list proxy</span></li>
+        <li><span class="zh">读写访问器：</span><span class="en">read-write accessor</span></li>
+        <li><span class="zh">缓冲区范围：</span><span class="en">buffer range</span></li>
+        <li><span class="zh">帧记录器：</span><span class="en">frame recorder</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

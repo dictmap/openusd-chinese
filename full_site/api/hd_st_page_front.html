@@ -54,6 +54,27 @@
         <li><span class="zh">primvar data：</span><span class="en">primvar data</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-087">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 HdSt: Rendering functionality for HdStorm 增补 API 索引或模块入口页二次精修说明，重点解释 Doxygen 字母桶、File Members 与模块 front page 的阅读方式、跨模块条目的归类边界，以及何时应跳转到目标 class、schema、header、group 或用户指南。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the HdSt: Rendering functionality for HdStorm API index or module-front page. It explains how to read Doxygen letter buckets, File Members, and module front pages, how to group cross-module entries, and when to jump to target class, schema, header, group, or user-guide documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`hd_st_page_front.html` 是 `HdSt` 模块 front page，核心定位是 `HdStorm` render delegate 的 rendering implementation layer；它不是 `Hd` framework 的总览，也不是 `Hdx` task/controller 层。</span></li>
+        <li><span class="zh">官方摘录强调 `HdSt` 会从 Hydra `renderIndex` 拉取来自一个或多个 scenegraph inputs 的数据，并创建一个或多个 command buffers 来聚合并共享 GPU resources，例如 primvar data。</span></li>
+        <li><span class="zh">`primvar data`、GPU buffers、command buffers、render pass state、texture handles、dispatch buffers 和 cached playback 是阅读 `HdSt` 类页面时的关键词；它们解释 Storm 如何把 scene data 变成可提交给 Hgi/graphics backend 的资源。</span></li>
+        <li><span class="zh">`HdSt` 既要处理 dynamically changing scenes，也要优化 cached playback；因此读者遇到 dirty bits、buffer invalidation、resource registry 或 draw item 更新时，应把它们放在动态同步和缓存复用之间理解。</span></li>
+        <li><span class="zh">本地复刻页暂未抽取同站 class 链接，但后续阅读可围绕 `HdStRenderPassState`、`HdStDispatchBuffer`、`HdStBufferArrayRegistry`、`HdStCommandBuffer`、`HdStTextureHandle`、`HdStShaderCode` 等 Storm 实现类展开。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Storm 实现层：</span><span class="en">Storm implementation layer</span></li>
+        <li><span class="zh">renderIndex 数据拉取：</span><span class="en">renderIndex data pull</span></li>
+        <li><span class="zh">命令缓冲聚合：</span><span class="en">command buffer aggregation</span></li>
+        <li><span class="zh">GPU 资源共享：</span><span class="en">GPU resource sharing</span></li>
+        <li><span class="zh">缓存播放：</span><span class="en">cached playback</span></li>
+        <li><span class="zh">脏位标记：</span><span class="en">dirty bits</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
