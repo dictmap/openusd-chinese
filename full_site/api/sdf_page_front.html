@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-module-front-quality-pass-056">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Sdf: Scene Description Foundations 补充中文优先的模块定位、阅读路径、概念边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、变量名、类型名、头文件名、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first module positioning, reading paths, concept boundaries, and terminology for Sdf: Scene Description Foundations while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, variable names, type names, header names, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`Sdf: Scene Description Foundations` 是 USD scene description 的基础层，负责 layer、path、prim spec、property spec、文件格式和基础值类型等低层抽象。</span></li>
+        <li><span class="zh">官方摘录说明 Sdf 提供把 scene description 序列化到参考文本格式或插件定义格式的基础设施，并提供 `SdfPath`、`SdfLayer`、`SdfPrimSpec` 等用于交互的 primitive abstractions。</span></li>
+        <li><span class="zh">Overview、Layering and Referencing、Layers and Opinions、Prim Spec、Plugin Metadata、File Format Plugins、Variable Expressions 是本页的主要结构；其中 `SdfLayer` 是文件/层级单位，`SdfPrimSpec` 是 layer 内的 prim 描述单位。</span></li>
+        <li><span class="zh">Sdf 与 Usd 的边界要分清：`SdfLayer` / `SdfPrimSpec` 操作 authored scene description，`UsdStage` / `UsdPrim` 则在更高层提供 composition 后的 scenegraph 视图。</span></li>
+        <li><span class="zh">本页链接较多，包含 `SdfPropertySpec`、`SdfAttributeSpec`、`SdfRelationshipSpec`、`SdfAssetPath`、`SdfTimeCode`、`TfToken` 和大量 `Gf` 数学类型；阅读时先抓住 layer/spec/path，再查具体值类型。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Scene Description Foundations：</span><span class="en">Sdf</span></li>
+        <li><span class="zh">场景描述层：</span><span class="en">SdfLayer</span></li>
+        <li><span class="zh">prim 规格：</span><span class="en">SdfPrimSpec</span></li>
+        <li><span class="zh">意见/ authored 意见：</span><span class="en">opinion</span></li>
+        <li><span class="zh">文件格式插件：</span><span class="en">file format plugin</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

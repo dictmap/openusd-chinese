@@ -1,5 +1,27 @@
 # 工作记录
 
+## 第 187 轮：Pcp/Plug/Sdf/Sdr 模块入口页精修
+
+- 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `0b38aa3`，本轮 5 个目标页均存在且均为 `draft_template_only`。
+- 本轮严格只处理 5 页：`full_site/api/pcp_page_front.html`、`full_site/api/plug_page_front.html`、`full_site/api/sdf_page_front.html`、`full_site/api/sdr_glslfx_page_front.html`、`full_site/api/sdr_page_front.html`；没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_api_module_front_batch_056.mjs`，每页新增 `api-module-front-quality-pass-056` 中文精修导读区块，包含模块定位、阅读路径、概念边界和术语对照；保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、变量名、类型名、头文件名、链接和原文摘录。
+- 本轮中文层覆盖：Pcp 的 composition / Layering & Referencing、`PcpCache`、`PcpPrimIndex`、path translation 和 diagnostics；Plug 的插件发现、注册、metadata、`TfType`、`PlugRegistry::RegisterPlugins` 和 `PlugNotice::DidRegisterPlugins`；Sdf 的 `SdfLayer`、`SdfPrimSpec`、`SdfPath`、file format plugins 和 authored opinions；SdrGlslfx 的 `glslfx parser` 定位；Sdr 的 shader definition discovery、lazy parsing、`SdrRegistry`、`SdrShaderNode` 和 `SdrShaderProperty`。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 110 / `draft_needs_translation` 288 / `good_bilingual` 8 变为 `draft_template_only` 105 / `draft_needs_translation` 293 / `good_bilingual` 8。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+- GitHub 同步：验证通过后运行 `scripts/sync_openusd_to_github.ps1`，提交信息为 `OpenUSD bilingual round 187: Pcp Plug Sdf Sdr module fronts`。
+
+差距：
+- 本轮 5 页仍是 `draft_needs_translation`，不是完整翻译每个 Pcp、Plug、Sdf、SdrGlslfx、Sdr 小节、字段、参数、返回值或链接目标说明。
+- 全量仍有 105 个 `draft_template_only` 和 293 个 `draft_needs_translation`，后续需继续按每轮最多 5 页推进。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理 `full_site/api/sparse_vectorized_input_traverser_8h.html`、`full_site/api/struct_hgi_sampler_desc.html`、`full_site/api/struct_usd_geom_tokens_type.html`、`full_site/api/struct_usd_lux_tokens_type.html`、`full_site/api/struct_usd_physics_tokens_type.html`。
+2. 对 header/struct/token 页面补中文用途说明、字段或 token 集合阅读方式、常见使用边界和术语对照。
+3. 保持本地链接策略，验证通过后同步 GitHub，并记录质量分级变化、验证结果和提交结果。
+
 ## 第 186 轮：OpenExec/Ts/Related Pages 文档页精修
 
 - 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `1a0cc1f`，本轮 5 个目标页均存在且均为 `draft_template_only`。

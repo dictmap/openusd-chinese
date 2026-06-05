@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-04T23:54:25.000Z
+Generated: 2026-06-05T00:04:02.886Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-04T23:54:25.000Z
 
 ## Grade Counts
 
-- draft_template_only: 110
-- draft_needs_translation: 288
+- draft_template_only: 105
+- draft_needs_translation: 293
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -50,7 +50,6 @@ Generated: 2026-06-04T23:54:25.000Z
 | 298 | draft_template_only | 64 | `full_site/release/search.html` | 搜索 / Search - Universal Scene Description 26.05 documentation |
 | 69 | draft_template_only | 66 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | API 页面草稿：hf Directory / hf Directory |
 | 212 | draft_template_only | 66 | `full_site/api/journal_8h.html` | API 页面草稿：journal.h File / journal.h File |
-| 246 | draft_template_only | 66 | `full_site/api/sdr_glslfx_page_front.html` | API 模块草稿：SdrGlslfx: Glslfx parser for Sdr / SdrGlslfx: Glslfx parser for Sdr |
 | 248 | draft_template_only | 66 | `full_site/api/sparse_vectorized_input_traverser_8h.html` | API 页面草稿：sparseVectorizedInputTraverser.h File / sparseVectorizedInputTraverser.h File |
 | 260 | draft_template_only | 66 | `full_site/api/usd_hydra_page_front.html` | API 模块草稿：UsdHydra: USD Hydra Schemas / UsdHydra: USD Hydra Schemas |
 | 262 | draft_template_only | 66 | `full_site/api/usd_media_page_front.html` | API 模块草稿：UsdMedia: USD Media Schema / UsdMedia: USD Media Schema |
@@ -59,6 +58,7 @@ Generated: 2026-06-04T23:54:25.000Z
 | 271 | draft_template_only | 66 | `full_site/api/usd_shaders_page_front.html` | API 模块草稿：UsdShaders: Definitions and Implementations of Usd* Shader Nodes / UsdShaders: Definitions and Implementations of Usd* Shader Nodes |
 | 272 | draft_template_only | 66 | `full_site/api/usd_skel_page_front.html` | API 模块草稿：UsdSkel: USD Skeleton Schema and API / UsdSkel: USD Skeleton Schema and API |
 | 277 | draft_template_only | 66 | `full_site/api/usddraco_page_front.html` | API 模块草稿：UsdDraco: Draco File Format Plugin / UsdDraco: Draco File Format Plugin |
+| 294 | draft_template_only | 66 | `full_site/release/press_opensource_announce.html` | 开源公告 / Open Source Announcement |
 
 ## All Pages
 
@@ -304,13 +304,13 @@ Generated: 2026-06-04T23:54:25.000Z
 | 238 | draft_needs_translation | bilingual_draft | 257 | 13/10 | 0 | 0 | `full_site/api/page_ts_ts_test.html` |
 | 239 | draft_needs_translation | bilingual_draft | 336 | 13/10 | 0 | 0 | `full_site/api/pages.html` |
 | 240 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/parallel_speculation_executor_engine_8h_source.html` |
-| 241 | draft_template_only | bilingual_draft | 110 | 14/16 | 0 | 0 | `full_site/api/pcp_page_front.html` |
-| 242 | draft_template_only | bilingual_draft | 78 | 6/8 | 0 | 0 | `full_site/api/plug_page_front.html` |
+| 241 | draft_needs_translation | bilingual_draft | 350 | 25/22 | 0 | 0 | `full_site/api/pcp_page_front.html` |
+| 242 | draft_needs_translation | bilingual_draft | 389 | 17/14 | 0 | 0 | `full_site/api/plug_page_front.html` |
 | 243 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/pxr_display_filter_adapter_8h_source.html` |
 | 244 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/riley_param_schema_8h_source.html` |
-| 245 | draft_template_only | bilingual_draft | 106 | 13/15 | 0 | 0 | `full_site/api/sdf_page_front.html` |
-| 246 | draft_template_only | bilingual_draft | 66 | 3/4 | 0 | 0 | `full_site/api/sdr_glslfx_page_front.html` |
-| 247 | draft_template_only | bilingual_draft | 70 | 4/6 | 0 | 0 | `full_site/api/sdr_page_front.html` |
+| 245 | draft_needs_translation | bilingual_draft | 348 | 24/21 | 0 | 0 | `full_site/api/sdf_page_front.html` |
+| 246 | draft_needs_translation | bilingual_draft | 365 | 14/10 | 0 | 0 | `full_site/api/sdr_glslfx_page_front.html` |
+| 247 | draft_needs_translation | bilingual_draft | 355 | 15/12 | 0 | 0 | `full_site/api/sdr_page_front.html` |
 | 248 | draft_template_only | bilingual_draft | 66 | 3/5 | 0 | 0 | `full_site/api/sparse_vectorized_input_traverser_8h.html` |
 | 249 | draft_template_only | bilingual_draft | 126 | 18/20 | 0 | 0 | `full_site/api/struct_hgi_sampler_desc.html` |
 | 250 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/struct_usd_geom_tokens_type.html` |

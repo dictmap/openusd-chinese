@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-module-front-quality-pass-056">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Sdr: Shader Definition Registry 补充中文优先的模块定位、阅读路径、概念边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、变量名、类型名、头文件名、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first module positioning, reading paths, concept boundaries, and terminology for Sdr: Shader Definition Registry while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, variable names, type names, header names, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`Sdr: Shader Definition Registry` 提供可扩展框架，用于发现、延迟解析并查询 shader 信息；它把不同 shading system 的差异隐藏在统一 registry 接口后。</span></li>
+        <li><span class="zh">Background 说明 shader 是接收 input 并产生 output 的程序，可由不同语言和运行时实现；复杂 pipeline 不希望直接耦合每个 shading system 的内部表示。</span></li>
+        <li><span class="zh">Sdr 的核心思想是 pipeline 只需保留 `identifier` 和 `shadingSystem` 两项数据，就能通过 registry 找到 shader node、属性、输入输出、元数据和解析结果。</span></li>
+        <li><span class="zh">`SdrRegistry` 是发现与查询入口，`SdrShaderNode` 表示具体 shader definition，`SdrShaderProperty` 表示 shader 的输入、输出或属性描述；这三者是本页后续跳转的主线。</span></li>
+        <li><span class="zh">阅读时应把 Sdr 与 UsdShade / MaterialX / renderer-specific shader discovery 分开理解：Sdr 管 shader definition registry，UsdShade 管 USD 场景里的材质网络表达。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Shader Definition Registry：</span><span class="en">Sdr</span></li>
+        <li><span class="zh">着色器定义注册表：</span><span class="en">SdrRegistry</span></li>
+        <li><span class="zh">着色器节点定义：</span><span class="en">SdrShaderNode</span></li>
+        <li><span class="zh">着色器属性定义：</span><span class="en">SdrShaderProperty</span></li>
+        <li><span class="zh">着色系统：</span><span class="en">shadingSystem</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
