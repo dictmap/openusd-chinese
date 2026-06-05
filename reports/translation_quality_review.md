@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T03:42:05.433Z
+Generated: 2026-06-05T03:51:27.670Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-05T03:42:05.433Z
 
 ## Grade Counts
 
-- draft_template_only: 56
-- draft_needs_translation: 342
+- draft_template_only: 51
+- draft_needs_translation: 347
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -38,17 +38,12 @@ Generated: 2026-06-05T03:42:05.433Z
 | 244 | draft_template_only | 62 | `full_site/api/riley_param_schema_8h_source.html` | 源码页面草稿：rileyParamSchema.h / rileyParamSchema.h |
 | 254 | draft_template_only | 62 | `full_site/api/system_diagnostics_8h_source.html` | 源码页面草稿：systemDiagnostics.h / systemDiagnostics.h |
 | 278 | draft_template_only | 62 | `full_site/api/var_8h_source.html` | 源码页面草稿：var.h / var.h |
-| 314 | draft_template_only | 62 | `full_site/release/tut_usd_tutorials.html` | 页面草稿：USD Tutorials / USD Tutorials |
-| 315 | draft_template_only | 62 | `full_site/release/tut_usdview_plugin.html` | 页面草稿：Creating a Usdview Plugin / Creating a Usdview Plugin |
 | 350 | draft_template_only | 62 | `full_site/release/user_guides/schemas/usdMedia/overview.html` | 页面草稿：Overview / Overview |
 | 365 | draft_template_only | 62 | `full_site/release/user_guides/schemas/usdUI/overview.html` | 页面草稿：Overview / Overview |
 | 374 | draft_template_only | 62 | `full_site/release/user_guides/schemas/usdVol/overview.html` | 页面草稿：Overview / Overview |
 | 298 | draft_template_only | 64 | `full_site/release/search.html` | 搜索 / Search - Universal Scene Description 26.05 documentation |
 | 69 | draft_template_only | 66 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | API 页面草稿：hf Directory / hf Directory |
 | 212 | draft_template_only | 66 | `full_site/api/journal_8h.html` | API 页面草稿：journal.h File / journal.h File |
-| 321 | draft_template_only | 66 | `full_site/release/user_guides/color_user_guide.html` | 页面草稿：Color User’s Guide / Color User’s Guide |
-| 323 | draft_template_only | 66 | `full_site/release/user_guides/primvars.html` | 页面草稿：Primvars / Primvars |
-| 324 | draft_template_only | 66 | `full_site/release/user_guides/render_user_guide.html` | 页面草稿：Rendering with USD / Rendering with USD |
 | 336 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdLux/ListAPI.html` | 页面草稿：ListAPI / ListAPI |
 | 337 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdLux/MeshLightAPI.html` | 页面草稿：MeshLightAPI / MeshLightAPI |
 | 339 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdLux/overview.html` | 页面草稿：Overview / Overview |
@@ -59,6 +54,11 @@ Generated: 2026-06-05T03:42:05.433Z
 | 383 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html` | 页面草稿：ParticleFieldPositionAttributeAPI / ParticleFieldPositionAttributeAPI |
 | 386 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html` | 页面草稿：ParticleFieldScaleAttributeAPI / ParticleFieldScaleAttributeAPI |
 | 387 | draft_template_only | 74 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html` | 页面草稿：ParticleFieldSphericalHarmonicsAttributeAPI / ParticleFieldSphericalHarmonicsAttributeAPI |
+| 344 | draft_template_only | 82 | `full_site/release/user_guides/schemas/usdLux/ShadowAPI.html` | 页面草稿：ShadowAPI / ShadowAPI |
+| 357 | draft_template_only | 82 | `full_site/release/user_guides/schemas/usdRender/RenderSettingsBase.html` | 页面草稿：RenderSettingsBase / RenderSettingsBase |
+| 338 | draft_template_only | 86 | `full_site/release/user_guides/schemas/usdLux/NonboundableLightBase.html` | 页面草稿：NonboundableLightBase / NonboundableLightBase |
+| 340 | draft_template_only | 86 | `full_site/release/user_guides/schemas/usdLux/PluginLight.html` | 页面草稿：PluginLight / PluginLight |
+| 372 | draft_template_only | 86 | `full_site/release/user_guides/schemas/usdVol/FieldBase.html` | 页面草稿：FieldBase / FieldBase |
 
 ## All Pages
 
@@ -377,17 +377,17 @@ Generated: 2026-06-05T03:42:05.433Z
 | 311 | draft_needs_translation | bilingual_draft | 277 | 12/11 | 0 | 0 | `full_site/release/tut_referencing_layers.html` |
 | 312 | draft_needs_translation | bilingual_draft | 285 | 13/12 | 0 | 0 | `full_site/release/tut_simple_shading.html` |
 | 313 | draft_needs_translation | bilingual_draft | 279 | 12/11 | 0 | 0 | `full_site/release/tut_traversing_stage.html` |
-| 314 | draft_template_only | bilingual_draft | 62 | 3/6 | 0 | 0 | `full_site/release/tut_usd_tutorials.html` |
-| 315 | draft_template_only | bilingual_draft | 62 | 3/5 | 0 | 0 | `full_site/release/tut_usdview_plugin.html` |
+| 314 | draft_needs_translation | bilingual_draft | 375 | 15/13 | 0 | 0 | `full_site/release/tut_usd_tutorials.html` |
+| 315 | draft_needs_translation | bilingual_draft | 349 | 15/12 | 0 | 0 | `full_site/release/tut_usdview_plugin.html` |
 | 316 | draft_needs_translation | bilingual_draft | 304 | 12/11 | 0 | 0 | `full_site/release/tut_variants_example_in_katana.html` |
 | 317 | draft_needs_translation | bilingual_draft | 286 | 14/13 | 0 | 0 | `full_site/release/tut_xforms.html` |
 | 318 | draft_needs_translation | bilingual_draft | 544 | 37/35 | 0 | 0 | `full_site/release/usd_products.html` |
 | 319 | draft_needs_translation | bilingual_draft | 425 | 22/20 | 0 | 0 | `full_site/release/usdfaq.html` |
 | 320 | draft_needs_translation | bilingual_draft | 300 | 12/11 | 0 | 0 | `full_site/release/user_guides/collections_and_patterns.html` |
-| 321 | draft_template_only | bilingual_draft | 66 | 4/7 | 0 | 0 | `full_site/release/user_guides/color_user_guide.html` |
+| 321 | draft_needs_translation | bilingual_draft | 383 | 16/14 | 0 | 0 | `full_site/release/user_guides/color_user_guide.html` |
 | 322 | draft_needs_translation | bilingual_draft | 309 | 12/11 | 0 | 0 | `full_site/release/user_guides/namespace_editing.html` |
-| 323 | draft_template_only | bilingual_draft | 66 | 4/7 | 0 | 0 | `full_site/release/user_guides/primvars.html` |
-| 324 | draft_template_only | bilingual_draft | 66 | 4/7 | 0 | 0 | `full_site/release/user_guides/render_user_guide.html` |
+| 323 | draft_needs_translation | bilingual_draft | 333 | 16/14 | 0 | 0 | `full_site/release/user_guides/primvars.html` |
+| 324 | draft_needs_translation | bilingual_draft | 380 | 16/14 | 0 | 0 | `full_site/release/user_guides/render_user_guide.html` |
 | 325 | draft_needs_translation | bilingual_draft | 313 | 12/9 | 0 | 0 | `full_site/release/user_guides/schemas/index.html` |
 | 326 | draft_template_only | bilingual_draft | 94 | 11/12 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/BoundableLightBase.html` |
 | 327 | draft_needs_translation | bilingual_draft | 302 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/CylinderLight.html` |

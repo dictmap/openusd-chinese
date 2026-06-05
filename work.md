@@ -1,5 +1,26 @@
 # 工作记录
 
+## 第 198 轮：release 教程/用户指南页精修
+- 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `6d56cf8`，当前分级为 `draft_template_only` 56 / `draft_needs_translation` 342 / `good_bilingual` 8。
+- 本轮严格只处理 5 个未达标页面：`full_site/release/tut_usd_tutorials.html`、`full_site/release/tut_usdview_plugin.html`、`full_site/release/user_guides/color_user_guide.html`、`full_site/release/user_guides/primvars.html`、`full_site/release/user_guides/render_user_guide.html`，没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_release_batch_067.mjs`，每页新增 `release-quality-pass-067` 中文精修导读区块，包含页面用途、阅读边界、关键概念和术语对照；保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录。
+- 本轮中文层覆盖：`USD Tutorials` 的教程索引、环境设置、Python bindings 和 USD Toolset；`Creating a Usdview Plugin` 的 Python plugin、`PluginContainer`、目录结构和 plugin discovery；`Color User's Guide` 的 color spaces、`renderingColorSpace`、MaterialX 和 OCIO；`Primvars` 的 interpolation modes、`primvars:displayColor` 和 Hydra/Storm 可视化；`Rendering with USD` 的 Imageable、`upAxis`、interactive/final frame renders、normals 和 Light-linking。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 56 / `draft_needs_translation` 342 / `good_bilingual` 8 变为 `draft_template_only` 51 / `draft_needs_translation` 347 / `good_bilingual` 8。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`，报告索引审计通过，总验证 281 checks passed / 0 failed。
+- GitHub 同步：验证通过后运行 `scripts/sync_openusd_to_github.ps1`，提交信息为 `OpenUSD bilingual round 198: tutorials color primvars rendering`。
+
+差距：
+- 本轮 5 页仍是 `draft_needs_translation`，不是完整翻译教程总入口、usdview 插件教程、Color 指南、Primvars 指南或 Rendering with USD 全文。
+- 全量仍有 51 个 `draft_template_only` 和 347 个 `draft_needs_translation`，后续需要继续按每轮最大 5 页推进。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理 `full_site/release/user_guides/schemas/usdLux/BoundableLightBase.html`、`DomeLight_1.html`、`GeometryLight.html`、`LightAPI.html`、`LightFilter.html`。
+2. 对 usdLux schema 页补中文用途说明、属性/关系阅读路径、schema 边界和术语对照。
+3. 保持本地链接策略，验证通过后同步 GitHub，并记录质量分级变化、验证结果和提交结果。
+
 ## 第 197 轮：release 规格/教程页精修
 - 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、Git 状态和远端 main，确认上一轮本地提交为 `3ca738e`，当前分级为 `draft_template_only` 61 / `draft_needs_translation` 337 / `good_bilingual` 8。
 - 本轮严格只处理 5 个未达标页面：`full_site/release/spec_usdpreviewsurface.html`、`full_site/release/spec_usdz.html`、`full_site/release/tut_end_to_end.html`、`full_site/release/tut_generating_new_schema.html`、`full_site/release/tut_houdini_example.html`，没有新增或处理第 6 页。

@@ -35,6 +35,27 @@
       <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
       <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="release-quality-pass-067">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Primvars 补充中文优先的页面用途、阅读边界、关键概念和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds Chinese-first page purpose, reading boundaries, key concepts, and terminology for Primvars while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`Primvars` 说明 primvar 这种特殊 attribute 如何在 geometric prim 的 surface/volume 上插值，用于向 shader/material 传递 per-primitive overrides 或任意随表面/体变化的信号。</span></li>
+        <li><span class="zh">`Primvar Interpolation Modes` 是本页核心：USD 支持五种 primvar interpolation modes，后续各节通过 Mesh Gprim、两个 quads 和 `primvars:displayColor` 示例帮助可视化差异。</span></li>
+        <li><span class="zh">`constant`、`uniform`、`vertex`、`varying`、`faceVarying` 等插值模式名必须保留英文原样；中文解释应关注它们分别在 prim、face、point、surface sample 或 face-vertex 层级上的取值语义。</span></li>
+        <li><span class="zh">代码摘录里的 `primvars:displayColor`、`interpolation = &quot;constant&quot;`、`xformOp:translate` 和 `xformOpOrder` 是可核对的 USD 语法，不能改写为中文。</span></li>
+        <li><span class="zh">本页适合与 rendering、shading、texture coordinates 和 Hydra/Storm 可视化一起读；primvar 不是普通 metadata，它直接影响材质、渲染和几何信号解释。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Primvar 变量：</span><span class="en">Primvar</span></li>
+        <li><span class="zh">属性：</span><span class="en">attribute</span></li>
+        <li><span class="zh">插值：</span><span class="en">interpolation</span></li>
+        <li><span class="zh">逐 primitive 覆盖：</span><span class="en">per-primitive overrides</span></li>
+        <li><span class="zh">显示颜色 primvar：</span><span class="en">displayColor</span></li>
+        <li><span class="zh">逐 face-vertex 插值模式：</span><span class="en">faceVarying</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
