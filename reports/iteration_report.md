@@ -6625,3 +6625,37 @@
 1. 继续最多 5 页，优先处理仍较薄且用户可读价值高的 release proposal 页面。
 2. 建议下一组：`full_site/release/wp.html`、`full_site/release/wp_schema_versioning.html`、`full_site/release/wp_usdaudio.html`、`full_site/release/wp_usdlux_for_renderers.html`、`full_site/release/wp_asset_previews.html`。
 3. 之后可继续按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+
+## 第 255 轮：Proposals、Schema Versioning、UsdAudio、UsdLux Renderers 与 Asset Previews 补强
+
+已完成：
+
+- 复核当前 git 状态、远端和审计报告：本地 `main` 基于上一轮同步提交 `c380e8a`，`origin/main` 一致；起始工作区干净。全量仍为 406 个 HTML 页面，质量计数为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。
+- 新增并执行 `scripts/refine_openusd_release_batch_124.mjs`，本轮标记为 `release-quality-pass-124`。
+- 严格只精修 5 页：
+  - `full_site/release/wp.html`
+  - `full_site/release/wp_schema_versioning.html`
+  - `full_site/release/wp_usdaudio.html`
+  - `full_site/release/wp_usdlux_for_renderers.html`
+  - `full_site/release/wp_asset_previews.html`
+- 每页新增 5 条中文补强导读和 6 条术语对照；重点覆盖 proposal 目录页的 `OpenUSD-proposals` 迁移边界、Schema Versioning 的 per-schema versioning / `UsdSchemaRegistry` / `apiSchemas` 冲突、UsdAudio 的 `UsdMediaSpatialAudio` / `filePath` / `mediaOffset` / `timeCodesPerSecond`、UsdLux renderers proposal 中的 Sdr definitions / connectable lights / plugin light，以及 Asset Previews 中的 `assetInfo` / `previews` / `thumbnails` / `defaultPrim`。
+- 质量回读：5 页均无 `TODO` / `待翻译` / `机器翻译占位`，`release-quality-pass-124` 均只出现 1 次：
+  - `wp.html`：中文字符 779，中文/英文块 30/17。
+  - `wp_schema_versioning.html`：中文字符 742，中文/英文块 44/33。
+  - `wp_usdaudio.html`：中文字符 788，中文/英文块 35/24。
+  - `wp_usdlux_for_renderers.html`：中文字符 756，中文/英文块 44/33。
+  - `wp_asset_previews.html`：中文字符 781，中文/英文块 35/24。
+- 本轮分级计数保持不变：`draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因：处理对象开始前已属 `draft_needs_translation`，本轮是二次补强精修，不是从模板草稿晋级。
+- 已运行并通过：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1`；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步结果：本轮验证通过后使用 `OpenUSD bilingual round 255: proposals schema audio lux previews pass` 提交并推送，本轮 HTML、脚本、报告和 `work.md` 随提交同步。
+
+当前差距：
+
+- 全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`；其中 387 页为 `draft_needs_translation`、11 页为 `draft_template_only`，`bilingual_draft` 仍不是完整翻译。
+- 剩余 `draft_template_only` 11 页仍基本是 `_source.html` 源码页、`search.html` 或目录页，继续低优先处理。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理仍较薄且用户可读价值高的 release proposal 页面。
+2. 建议下一组：`full_site/release/wp_usdlux_for_geometry_lights.html`、`full_site/release/wp_coordsys.html`、`full_site/release/wp_ar2.html`、`full_site/release/wp_connectable_nodes.html`、`full_site/release/wp_rigid_body_physics.html`。
+3. 之后可继续按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。

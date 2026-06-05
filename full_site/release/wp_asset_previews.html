@@ -65,6 +65,27 @@
         <li><span class="zh">纹理卡片/替身显示：</span><span class="en">texture cards</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-124">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`Asset Previews in USD` 解决资产库快速浏览问题：通过在 prim 的 `assetInfo` 中编码 preview / thumbnail 信息，应用可以读取预生成预览，而不必打开并渲染完整 stage。stage 级默认预览通常通过 defaultPrim 关联。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for Asset Previews in USD while preserving English page names, API names, schema names, property names, commands, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">proposal 选择把 preview 关联到 prim 而不是 layer，这让同一个 layer 中的不同 asset prim 可以拥有不同预览信息。</span></li>
+        <li><span class="zh">`assetInfo` 字典用于保存 `previews`、`thumbnails`、`defaultImage` 等信息，旧版 USD 应用也能通过通用 metadata API 读取部分内容。</span></li>
+        <li><span class="zh">预览资产是轻量索引信息，不等同于完整几何、材质或 render product；它服务于 asset browser、catalog 和 thumbnail workflow。</span></li>
+        <li><span class="zh">本页与 `UsdGeomModel` texture cards 的区别在于：preview metadata 面向资产发现和浏览，texture cards 面向可渲染场景表达。</span></li>
+        <li><span class="zh">使用预览时仍需管理 asset paths、默认 prim、分层引用和资源有效性；本地导读保留 usda 示例中的 token 与字段名，方便和工具输出对照。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">资产信息字典：</span><span class="en">assetInfo</span></li>
+        <li><span class="zh">预览信息：</span><span class="en">previews</span></li>
+        <li><span class="zh">缩略图：</span><span class="en">thumbnails</span></li>
+        <li><span class="zh">默认预览图：</span><span class="en">defaultImage</span></li>
+        <li><span class="zh">默认 prim：</span><span class="en">defaultPrim</span></li>
+        <li><span class="zh">资产浏览器：</span><span class="en">asset browser</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

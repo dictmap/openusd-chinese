@@ -65,6 +65,27 @@
         <li><span class="zh">版本冲突：</span><span class="en">version conflict</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-124">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`Schema Versioning in USD` 讨论 schema 演化、per-schema versioning、API schema stacking、auto-apply API schemas、multiple-apply API schemas 和 version conflicts。它的核心不是单个版本号格式，而是 composition 与 schema 注册如何共同处理版本化类型。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for Schema Versioning in USD while preserving English page names, API names, schema names, property names, commands, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`per-schema versioning` 让同一 schema family 中的不同版本显式表达，而不是依赖全局 USD 版本号推断所有类型行为。</span></li>
+        <li><span class="zh">版本化 schema 名称、C++ schema class、codegen 策略和 `UsdSchemaRegistry` 之间需要保持一致，否则会影响类型发现、API 访问和文档对应关系。</span></li>
+        <li><span class="zh">`built-in API schemas`、`auto-apply API schemas` 与 `multiple-apply API schemas` 在版本解析时风险不同，尤其要关注组合后 `apiSchemas` 列表中的冲突。</span></li>
+        <li><span class="zh">本页的示例强调 schema inheritance 和 composition 对最终 prim 类型的影响；阅读时不能只看局部 layer 中写入的一个 schema token。</span></li>
+        <li><span class="zh">当前实现或 API 入口可能已随版本演进调整，proposal 用于理解历史设计动机；具体行为仍应查当前 `UsdPrim`、`UsdSchemaRegistry` 和相关 schema 文档。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">按 schema 单独版本化：</span><span class="en">per-schema versioning</span></li>
+        <li><span class="zh">schema 家族：</span><span class="en">schema family</span></li>
+        <li><span class="zh">USD schema 注册表：</span><span class="en">UsdSchemaRegistry</span></li>
+        <li><span class="zh">API schema 列表：</span><span class="en">apiSchemas</span></li>
+        <li><span class="zh">自动应用 API schemas：</span><span class="en">auto-apply API schemas</span></li>
+        <li><span class="zh">版本冲突：</span><span class="en">version conflicts</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

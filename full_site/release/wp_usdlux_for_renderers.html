@@ -65,6 +65,27 @@
         <li><span class="zh">渲染代理：</span><span class="en">render delegates</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-124">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`Adapting UsdLux to the Needs of Renderers` 解释为什么 UsdLux 需要更好适配高质量渲染器：许多 renderer 把 lights、light filters 和 integrators 表达为 shader-like networks，因此 proposal 引入 Sdr definitions、connectable lights 和 plugin light 类型来减少硬编码转换。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for Adapting UsdLux to the Needs of Renderers while preserving English page names, API names, schema names, property names, commands, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">proposal 的核心是让 lights / light filters 具备 Connectable 能力，使 renderer delegate 可以通过连接网络和 Sdr metadata 数据驱动地解释灯光参数。</span></li>
+        <li><span class="zh">`UsdLuxPluginLight` 与 `UsdLuxPluginLightFilter` 用于扩展 renderer-specific light/filter，而不要求核心 UsdLux 为每个渲染器硬编码一个 schema。</span></li>
+        <li><span class="zh">`Sdr`、`UsdSchemaRegistry` 和 Hydra/render delegate 的关系是阅读重点：schema 描述场景数据，Sdr 描述节点定义，render delegate 决定如何消费。</span></li>
+        <li><span class="zh">`PortalLight`、light filters 和 integrator-like controls 的语义可能随 renderer 实现不同而变化，中文说明不应把它们改写成统一物理模型。</span></li>
+        <li><span class="zh">当前 API 入口应结合 `UsdLux overview`、schema 页面和具体 renderer 文档核对；本页主要保留历史设计背景和问题拆解。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Sdr 节点定义：</span><span class="en">Sdr definitions</span></li>
+        <li><span class="zh">可连接灯光：</span><span class="en">connectable lights</span></li>
+        <li><span class="zh">UsdLux 插件灯光：</span><span class="en">UsdLuxPluginLight</span></li>
+        <li><span class="zh">UsdLux 插件灯光过滤器：</span><span class="en">UsdLuxPluginLightFilter</span></li>
+        <li><span class="zh">渲染代理：</span><span class="en">render delegate</span></li>
+        <li><span class="zh">灯光过滤器：</span><span class="en">light filters</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

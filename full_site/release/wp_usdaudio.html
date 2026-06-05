@@ -65,6 +65,27 @@
         <li><span class="zh">媒体内部起始偏移：</span><span class="en">mediaOffset</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-124">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`UsdAudio Proposal` 是音频 schema 的历史设计页，当前阅读应优先关联 `UsdMediaSpatialAudio`。proposal 的边界是为 USD stage 中的音频元素提供 interchange schema，而不是把 USD 变成音频编辑格式或把音频数据嵌入场景文件。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for UsdAudio Proposal while preserving English page names, API names, schema names, property names, commands, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`filePath` 使用 assetPath 指向外部音频文件或流；USD 负责场景引用和播放语义，音频采样数据仍由外部媒体资产承载。</span></li>
+        <li><span class="zh">`auralMode`、`playbackMode`、`startTime`、`mediaOffset`、`level` 等属性描述音频播放方式、时序偏移和音量语义，应保留英文属性名。</span></li>
+        <li><span class="zh">`timeCodesPerSecond` 影响时间轴解释；将媒体 offset 与 stage timeCode 对齐时，需要区分音频文件时间、USD 时间和播放起点。</span></li>
+        <li><span class="zh">proposal 支持 spatial audio 和 ambient sound 两类常见需求：前者依赖位置/方向，后者更接近场景全局或非空间化声音。</span></li>
+        <li><span class="zh">本页适合理解 UsdMedia 音频设计动机；实际 schema 字段、默认值和插件支持仍应回到当前 `UsdMediaSpatialAudio` 文档核对。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">UsdMedia 空间音频 schema：</span><span class="en">UsdMediaSpatialAudio</span></li>
+        <li><span class="zh">音频文件路径属性：</span><span class="en">filePath</span></li>
+        <li><span class="zh">听觉模式：</span><span class="en">auralMode</span></li>
+        <li><span class="zh">播放模式：</span><span class="en">playbackMode</span></li>
+        <li><span class="zh">媒体偏移：</span><span class="en">mediaOffset</span></li>
+        <li><span class="zh">每秒时间码数量：</span><span class="en">timeCodesPerSecond</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
