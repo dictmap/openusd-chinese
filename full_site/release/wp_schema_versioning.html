@@ -44,6 +44,27 @@
 <li><span class="zh">本地页保留 apiSchemas 中带版本后缀的示例，以及 schema inheritance、UsdPrim schema API 和代码生成选择的阅读入口。</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-076">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Schema Versioning in USD 追加第二层中文精修说明，重点补足 proposal 的历史状态、对象模型、当前 API 入口和常见误读风险；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds a second Chinese-first refinement layer for Schema Versioning in USD, focusing on proposal history, object model, current API entry points, and common interpretation risks while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">本 proposal 处理 USD schema 演化问题：同一 stage 中可能组合来自不同版本 schema 的数据，且 prim 可叠加多个 API schemas。</span></li>
+        <li><span class="zh">composition 让“prim 的版本”很难成为单一查询结果，因此 proposal 更偏向 per-schema versioning，而不是给整个 prim 贴一个全局版本。</span></li>
+        <li><span class="zh">版本信息可体现在 versioned schema names、C++ schema class/codegen 策略和 `apiSchemas` 列表中，例如 `CollectionAPI_1:foo` 与 `CollectionAPI:bar`。</span></li>
+        <li><span class="zh">built-in API schemas、auto-apply API schemas、multiple-apply API schemas 都会影响 version conflict 判断和 schema inheritance 解释。</span></li>
+        <li><span class="zh">阅读时要把 scene description 中的 authored schema tokens、运行时 `UsdPrim` type info、以及生成的 C++ API 类分开理解，避免把它们当成同一层数据。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Schema 版本化：</span><span class="en">Schema Versioning</span></li>
+        <li><span class="zh">按 schema 版本化：</span><span class="en">per-schema versioning</span></li>
+        <li><span class="zh">API schema 列表 metadata：</span><span class="en">apiSchemas</span></li>
+        <li><span class="zh">多实例应用 API schema：</span><span class="en">multiple-apply API schema</span></li>
+        <li><span class="zh">自动应用 API schema：</span><span class="en">auto-apply API schema</span></li>
+        <li><span class="zh">版本冲突：</span><span class="en">version conflict</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -44,6 +44,27 @@
 <li><span class="zh">本地页保留 LightAPI、GeometryLight deprecation、convenience base classes、light:shaderId、material emission 同步等关键设计入口。</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-076">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Adapting UsdLux to Accommodate Geometry Lights 追加第二层中文精修说明，重点补足 proposal 的历史状态、对象模型、当前 API 入口和常见误读风险；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds a second Chinese-first refinement layer for Adapting UsdLux to Accommodate Geometry Lights, focusing on proposal history, object model, current API entry points, and common interpretation risks while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">本 proposal 聚焦 geometry/mesh lights：不同渲染器可能把发光几何建模为 light shape，也可能通过 material emission/glow 推导光源。</span></li>
+        <li><span class="zh">文档比较 dual-prim 与 single-prim geometry light 的问题，核心是避免几何、材质发光和灯光对象模型之间出现重复或不一致。</span></li>
+        <li><span class="zh">`LightAPI` 的对象模型调整让可发光的几何 prim 能以 API schema 形式获得 light 行为，同时保留既有 UsdLux concrete schemas。</span></li>
+        <li><span class="zh">`GeometryLight` deprecation、convenience base classes 和 `light:shaderId` 说明 proposal 试图兼容旧 schema、renderer shader 识别和 DCC 工作流。</span></li>
+        <li><span class="zh">阅读时应把 material emission/glow 同步问题和 light linking/illumination 语义分开：发光材质可产生视觉亮度，但 renderer 是否把它当作可采样光源还取决于 light API 与 delegate。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">几何灯光：</span><span class="en">geometry lights</span></li>
+        <li><span class="zh">网格灯光：</span><span class="en">mesh lights</span></li>
+        <li><span class="zh">灯光 API schema：</span><span class="en">LightAPI</span></li>
+        <li><span class="zh">旧几何灯光 schema：</span><span class="en">GeometryLight</span></li>
+        <li><span class="zh">材质发光 / glow：</span><span class="en">material emission / glow</span></li>
+        <li><span class="zh">灯光 shader 标识属性：</span><span class="en">light:shaderId</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

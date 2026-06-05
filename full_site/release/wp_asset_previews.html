@@ -44,6 +44,27 @@
 <li><span class="zh">本地页保留 assetInfo/previews/thumbnails/defaultImage 的 usda 示例，也保留它与 UsdGeomModel texture cards 的差异说明。</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-076">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Asset Previews in USD 追加第二层中文精修说明，重点补足 proposal 的历史状态、对象模型、当前 API 入口和常见误读风险；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds a second Chinese-first refinement layer for Asset Previews in USD, focusing on proposal history, object model, current API entry points, and common interpretation risks while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`Asset Previews in USD` 解决的是资产库浏览性能问题：不必实时打开并渲染完整 USD stage，也能读取预生成 thumbnail/preview。</span></li>
+        <li><span class="zh">proposal 选择把 preview 数据挂在 prim 的 `assetInfo` 下，而不是挂在 layer 上；stage 级预览通常可通过 `defaultPrim` 的 `assetInfo` 找到。</span></li>
+        <li><span class="zh">`previews`、`thumbnails`、`defaultImage` 的嵌套字典设计保持 forward-looking：今天可只有基本缩略图，未来可扩展更多 preview 类型。</span></li>
+        <li><span class="zh">它和 `UsdGeomModel` texture cards 不同：texture cards 是可渲染替身/视图表现，asset preview 更像轻量索引元数据，服务浏览器、资产管理器和目录 UI。</span></li>
+        <li><span class="zh">阅读示例时应保留 `assetInfo`、`previews`、`thumbnails`、`defaultImage` 原名，因为这些 key 是数据互操作约定。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">资产预览：</span><span class="en">Asset Previews</span></li>
+        <li><span class="zh">资产信息 metadata 字典：</span><span class="en">assetInfo</span></li>
+        <li><span class="zh">预览 / 缩略图：</span><span class="en">previews / thumbnails</span></li>
+        <li><span class="zh">默认缩略图资产：</span><span class="en">defaultImage</span></li>
+        <li><span class="zh">stage 默认 prim：</span><span class="en">defaultPrim</span></li>
+        <li><span class="zh">纹理卡片/替身显示：</span><span class="en">texture cards</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

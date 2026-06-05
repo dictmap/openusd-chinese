@@ -2,6 +2,24 @@
 
 源页面：<https://openusd.org/release/api/index.html>
 
+## 第 207 轮：高价值 release proposal 页第二层精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `66034c5`，当前分级为 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8。
+- 本轮严格只处理 5 个未达标页面：`full_site/release/wp_asset_previews.html`、`full_site/release/wp_usdlux_for_renderers.html`、`full_site/release/wp_ar2.html`、`full_site/release/wp_schema_versioning.html`、`full_site/release/wp_usdlux_for_geometry_lights.html`；5 页本轮开始时均已是 `draft_needs_translation`，因此本轮目标是补强中文解释质量，而不是减少 `draft_template_only` 计数。
+- 新增 `scripts/refine_openusd_release_batch_076.mjs`，为 5 页插入 `release-quality-pass-076` 第二层中文精修导读区块；每页补充 proposal 历史状态、对象模型、当前 API 入口和常见误读风险，同时保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录。
+- 本轮中文层覆盖：`Asset Previews in USD` 的 `assetInfo`、`previews`、`thumbnails`、`defaultImage` 与 texture cards 边界；`Adapting UsdLux to the Needs of Renderers` 的 Sdr definitions、Connectable lights、`UsdLuxPluginLight`、render delegates；`Asset Resolution (Ar) 2.0` 的 `Identifier`、`Resolve`、`AssetInfo`、resolver context 和 non-virtual interface；`Schema Versioning in USD` 的 per-schema versioning、`apiSchemas`、multiple-apply/auto-apply API schemas 和 version conflict；`Adapting UsdLux to Accommodate Geometry Lights` 的 mesh lights、`LightAPI`、`GeometryLight` deprecation、material emission/glow 和 `light:shaderId`。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级保持 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8；本轮 5 页的中文正文量已提升到约 515-574 字区间，但仍保持 `bilingual_draft` 状态，未误标为完成。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398 个 `bilingual_draft` 页面全部具备本地可检查 HTML 和最终入口链接，`failed_pages` 为 0。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`，报告索引通过，总验证 `PASSED`，`validation_required_checks` 281 / `validation_failed_checks` 0。
+- GitHub 同步计划：验证通过后使用提交信息 `OpenUSD bilingual round 207: proposal second pass asset lux ar schema` 推送本轮 HTML、脚本、报告和 `work.md`。
+
+差距与下一轮：
+
+- 当前 398 个 `bilingual_draft` 仍不是完整段落级翻译；本轮是对已有 draft 页做二次质量补强，分级计数不变是预期结果。
+- 剩余 `draft_template_only` 11 页基本是 `_source.html` 源码页、`search.html` 或目录页；下一轮优先最多处理尚未二次补强的 release proposal 页 `full_site/release/wp_connectable_nodes.html`、`full_site/release/wp_coordsys.html`、`full_site/release/wp_rigid_body_physics.html`，如需要满 5 页再从 `translation_quality_review` 中选择用户可读价值较高的 API 索引或指南页，继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+
 ## 第 206 轮：proposal 汇总/音频/材质与 API File 页精修
 已完成：
 

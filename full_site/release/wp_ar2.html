@@ -44,6 +44,27 @@
 <li><span class="zh">本地页保留 Identifier、Resolve、AssetInfo、asset writing、resolver context string 等任务入口，便于追踪 Ar 2.0 的设计动机。</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-076">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Asset Resolution (Ar) 2.0 追加第二层中文精修说明，重点补足 proposal 的历史状态、对象模型、当前 API 入口和常见误读风险；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds a second Chinese-first refinement layer for Asset Resolution (Ar) 2.0, focusing on proposal history, object model, current API entry points, and common interpretation risks while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`Asset Resolution (Ar) 2.0` 是 ArResolver 现代化设计记录，目标是让 USD 更好适配资产管理系统、云/数据库路径和非传统文件系统。</span></li>
+        <li><span class="zh">旧接口中的 repository/search path 概念与 Pixar 早期实现绑定较深；proposal 通过 cleanup 和新概念降低 resolver 实现者的负担。</span></li>
+        <li><span class="zh">`Identifier` 概念用于区分用户输入的资产路径、锚定后的标识符和最终 resolved asset；这有助于避免路径正规化、相对路径和上下文解析混在一起。</span></li>
+        <li><span class="zh">公开 resolver API 标记为 `const` 并采用 non-virtual interface 风格，是为了让并发调用、缓存和线程安全语义更清楚。</span></li>
+        <li><span class="zh">阅读本页时应把 `Resolve`、`AssetInfo`、asset writing 和 resolver context string 当成任务分组；当前细节仍需回到 `Ar overview` 与具体 resolver API。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">资产解析器：</span><span class="en">ArResolver</span></li>
+        <li><span class="zh">资产标识符：</span><span class="en">Identifier</span></li>
+        <li><span class="zh">解析资产路径：</span><span class="en">Resolve</span></li>
+        <li><span class="zh">资产信息：</span><span class="en">AssetInfo</span></li>
+        <li><span class="zh">解析上下文：</span><span class="en">resolver context</span></li>
+        <li><span class="zh">非虚接口模式：</span><span class="en">non-virtual interface</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

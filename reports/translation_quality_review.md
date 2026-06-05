@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T07:58:54.217Z
+Generated: 2026-06-05T08:07:51.109Z
 
 ## Summary
 
@@ -45,20 +45,20 @@ Generated: 2026-06-05T07:58:54.217Z
 | 144 | draft_needs_translation | 185 | `full_site/api/functions_vars_m.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 | 134 | draft_needs_translation | 189 | `full_site/api/functions_vars_c.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 | 137 | draft_needs_translation | 190 | `full_site/api/functions_vars_f.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
-| 395 | draft_needs_translation | 190 | `full_site/release/wp_asset_previews.html` | USD 中的资产预览 / Asset Previews in USD |
 | 128 | draft_needs_translation | 191 | `full_site/api/functions_t.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
 | 140 | draft_needs_translation | 194 | `full_site/api/functions_vars_i.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
-| 404 | draft_needs_translation | 195 | `full_site/release/wp_usdlux_for_renderers.html` | 面向渲染器需求的 UsdLux / Adapting UsdLux to the Needs of Renderers |
 | 131 | draft_needs_translation | 196 | `full_site/api/functions_v.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
 | 117 | draft_needs_translation | 197 | `full_site/api/functions_o.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
-| 394 | draft_needs_translation | 197 | `full_site/release/wp_ar2.html` | Asset Resolution (Ar) 2.0 资产解析 / Asset Resolution (Ar) 2.0 |
-| 403 | draft_needs_translation | 198 | `full_site/release/wp_usdlux_for_geometry_lights.html` | 适配几何灯光的 UsdLux / Adapting UsdLux to Accommodate Geometry Lights |
 | 135 | draft_needs_translation | 199 | `full_site/api/functions_vars_d.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
-| 400 | draft_needs_translation | 201 | `full_site/release/wp_schema_versioning.html` | USD Schema 版本化 / Schema Versioning in USD |
 | 130 | draft_needs_translation | 204 | `full_site/api/functions_u.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
 | 132 | draft_needs_translation | 204 | `full_site/api/functions_vars_a.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 | 390 | draft_needs_translation | 206 | `full_site/release/user_guides/schemas/usdVol/VolumeFieldAsset.html` | 体积场资产 VolumeFieldAsset / VolumeFieldAsset |
 | 110 | draft_needs_translation | 207 | `full_site/api/functions_h.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
+| 120 | draft_needs_translation | 208 | `full_site/api/functions_r.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
+| 114 | draft_needs_translation | 209 | `full_site/api/functions_l.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
+| 115 | draft_needs_translation | 209 | `full_site/api/functions_m.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
+| 146 | draft_needs_translation | 210 | `full_site/api/functions_vars_o.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
+| 127 | draft_needs_translation | 213 | `full_site/api/functions_s.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
 
 ## All Pages
 
@@ -457,17 +457,17 @@ Generated: 2026-06-05T07:58:54.217Z
 | 391 | draft_needs_translation | bilingual_draft | 441 | 25/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/VolumeFieldBase.html` |
 | 392 | draft_needs_translation | bilingual_draft | 441 | 19/13 | 0 | 0 | `full_site/release/user_guides/time_and_animated_values.html` |
 | 393 | draft_needs_translation | bilingual_draft | 419 | 18/12 | 0 | 0 | `full_site/release/user_guides/variable_expressions.html` |
-| 394 | draft_needs_translation | bilingual_draft | 197 | 11/10 | 0 | 0 | `full_site/release/wp_ar2.html` |
-| 395 | draft_needs_translation | bilingual_draft | 190 | 11/10 | 0 | 0 | `full_site/release/wp_asset_previews.html` |
+| 394 | draft_needs_translation | bilingual_draft | 514 | 23/17 | 0 | 0 | `full_site/release/wp_ar2.html` |
+| 395 | draft_needs_translation | bilingual_draft | 480 | 23/17 | 0 | 0 | `full_site/release/wp_asset_previews.html` |
 | 396 | draft_needs_translation | bilingual_draft | 215 | 16/15 | 0 | 0 | `full_site/release/wp_connectable_nodes.html` |
 | 397 | draft_needs_translation | bilingual_draft | 214 | 16/15 | 0 | 0 | `full_site/release/wp_coordsys.html` |
 | 398 | draft_needs_translation | bilingual_draft | 442 | 21/15 | 0 | 0 | `full_site/release/wp_render_settings.html` |
 | 399 | draft_needs_translation | bilingual_draft | 251 | 29/28 | 0 | 0 | `full_site/release/wp_rigid_body_physics.html` |
-| 400 | draft_needs_translation | bilingual_draft | 201 | 20/19 | 0 | 0 | `full_site/release/wp_schema_versioning.html` |
+| 400 | draft_needs_translation | bilingual_draft | 457 | 32/26 | 0 | 0 | `full_site/release/wp_schema_versioning.html` |
 | 401 | draft_needs_translation | bilingual_draft | 484 | 18/10 | 0 | 0 | `full_site/release/wp_stage_variables.html` |
 | 402 | draft_needs_translation | bilingual_draft | 471 | 23/17 | 0 | 0 | `full_site/release/wp_usdaudio.html` |
-| 403 | draft_needs_translation | bilingual_draft | 198 | 21/20 | 0 | 0 | `full_site/release/wp_usdlux_for_geometry_lights.html` |
-| 404 | draft_needs_translation | bilingual_draft | 195 | 20/19 | 0 | 0 | `full_site/release/wp_usdlux_for_renderers.html` |
+| 403 | draft_needs_translation | bilingual_draft | 485 | 33/27 | 0 | 0 | `full_site/release/wp_usdlux_for_geometry_lights.html` |
+| 404 | draft_needs_translation | bilingual_draft | 473 | 32/26 | 0 | 0 | `full_site/release/wp_usdlux_for_renderers.html` |
 | 405 | draft_needs_translation | bilingual_draft | 409 | 19/13 | 0 | 0 | `full_site/release/wp_usdshade.html` |
 | 406 | draft_needs_translation | bilingual_draft | 452 | 18/10 | 0 | 0 | `full_site/release/wp.html` |
 
