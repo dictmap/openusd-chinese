@@ -53,6 +53,27 @@
         <li><span class="zh">Primvar 描述符：</span><span class="en">primvar descriptor</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-082">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - I 增补 API 索引页二次精修说明，重点解释 Doxygen 字母桶的阅读方式、跨模块条目的归类边界，以及何时应跳转到目标 class 或 schema 文档。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - I API index page. It explains how to read Doxygen letter buckets, how to group cross-module entries, and when to jump to the target class or schema documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">I 段类成员常围绕 id、index、insert、include、instance、input 等词展开；本页实际跨越 stage cache、schema metadata、Pcp mapping、Hydra buffer、Sdf layer 和 validation。</span></li>
+        <li><span class="zh">`UsdStageCache::Id`、`UsdSchemaRegistry::SchemaInfo`、`SdrShaderNodeDiscoveryResult`、`UsdRenderTokensType`、`UsdHydraTokensType`、`UsdGeomTokensType` 和 `UsdLuxTokensType` 是 metadata/token/schema discovery 线索。</span></li>
+        <li><span class="zh">`PcpMapExpression`、`PcpMapFunction`、`PcpPrimIndexInputs`、`PcpDependency`、`UsdStagePopulationMask`、`UsdCollectionAPI`、`UsdPrimRange` 和 `SdfNamespaceEdit` 应归入 composition、population mask、collection 和 namespace edit。</span></li>
+        <li><span class="zh">`HdBufferArray`、`HdBufferArrayRange`、`HdSt*BufferRange`、`HdPrimvarDescriptor`、`HdPerfLog`、`HdStRenderParam` 与 `HioImage` 偏 Hydra buffer、render param、primvar 和 image IO。</span></li>
+        <li><span class="zh">本页不是 I 字母 API 的教程；中文导读只帮助用户把混在一起的 schema、composition、Hydra、Sdf/Usd object 和 validation 条目拆开，再通过链接进入具体类页。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Stage 缓存 ID：</span><span class="en">stage cache id</span></li>
+        <li><span class="zh">schema 信息：</span><span class="en">schema info</span></li>
+        <li><span class="zh">填充掩码：</span><span class="en">population mask</span></li>
+        <li><span class="zh">prim index 输入：</span><span class="en">prim index inputs</span></li>
+        <li><span class="zh">缓冲数组：</span><span class="en">buffer array</span></li>
+        <li><span class="zh">图像 IO：</span><span class="en">image IO</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

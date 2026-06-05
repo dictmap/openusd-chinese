@@ -53,6 +53,27 @@
         <li><span class="zh">几何 token：</span><span class="en">geometry token</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-082">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Variables - K 增补 API 索引页二次精修说明，重点解释 Doxygen 字母桶的阅读方式、跨模块条目的归类边界，以及何时应跳转到目标 class 或 schema 文档。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - Variables - K API index page. It explains how to read Doxygen letter buckets, how to group cross-module entries, and when to jump to the target class or schema documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">K 段成员变量页很短，短页仍需要保留清晰边界：当前条目只覆盖 validation metadata、schema registry、UsdPhysics rigid body/tokens 和 UsdGeom tokens。</span></li>
+        <li><span class="zh">`UsdValidationValidatorMetadata` 是 validation system 的元数据入口，通常用于理解 validator 名称、适用范围、错误分类或注册信息。</span></li>
+        <li><span class="zh">`UsdSchemaRegistry::SchemaInfo` 是 schema registry 的结构信息入口，和 generated schema、plugin schema、schema type metadata 相关。</span></li>
+        <li><span class="zh">`UsdPhysicsRigidBodyDesc` 与 `UsdPhysicsTokensType` 属于物理 domain；其中一个是 rigid body 描述结构，一个是 token 常量集合，不应混读。</span></li>
+        <li><span class="zh">`UsdGeomTokensType` 属于几何 schema token 集合；本页适合做 K 字母变量定位，完整语义仍需跳转到 validation、schema registry、UsdPhysics 或 UsdGeom 的目标页面。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">验证器元数据：</span><span class="en">validator metadata</span></li>
+        <li><span class="zh">schema 注册表：</span><span class="en">schema registry</span></li>
+        <li><span class="zh">schema 信息：</span><span class="en">schema info</span></li>
+        <li><span class="zh">刚体描述结构：</span><span class="en">rigid body descriptor</span></li>
+        <li><span class="zh">物理 token：</span><span class="en">physics tokens</span></li>
+        <li><span class="zh">几何 token：</span><span class="en">geometry tokens</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

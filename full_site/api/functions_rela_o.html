@@ -53,6 +53,27 @@
         <li><span class="zh">辅助重载：</span><span class="en">helper overload</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-082">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Related Functions - O 增补 API 索引页二次精修说明，重点解释 Doxygen 字母桶的阅读方式、跨模块条目的归类边界，以及何时应跳转到目标 class 或 schema 文档。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - Related Functions - O API index page. It explains how to read Doxygen letter buckets, how to group cross-module entries, and when to jump to the target class or schema documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">这是 related functions 的 O 字母页，列出的不是类内部成员，而是与类型相关的非成员函数、运算符重载、hash、输出、比较或辅助构造函数。</span></li>
+        <li><span class="zh">`UsdGeomPrimvar`、`UsdGeomXformOp`、`UsdObject`、`UsdPrimSiblingRange`、`UsdPrimSubtreeRange`、`UsdShadeInput`、`UsdShadeOutput`、`UsdSkelAnimQuery` 和 `UsdSkelSkeletonQuery` 是 USD 对象与查询类型相关的高价值入口。</span></li>
+        <li><span class="zh">`TfEnum`、`TfToken`、`SdrVersion`、`SdfHandle&lt;T&gt;`、`SdfListProxy&lt;_TypePolicy&gt;`、`VtArrayEdit&lt;ELEM&gt;` 与 `VtValue` 属于基础设施、handle/list proxy 和值容器；相关函数常用于流输出、比较和容器辅助操作。</span></li>
+        <li><span class="zh">`GfDualQuat*`、`GfMatrix*`、`GfQuat*`、`GfRange*`、`GfRotation`、`GfSize2` 等数学类型占据较大比例，说明本页也可作为 Gf 数学类型运算符和 helper overload 的入口。</span></li>
+        <li><span class="zh">阅读时先确认条目是 related function 而非 member function，再按 USD schema object、Tf/Sdf/Vt infrastructure、Gf math 三条线索跳转，避免把函数归属误判到某个 class 内。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">相关函数：</span><span class="en">related functions</span></li>
+        <li><span class="zh">运算符重载：</span><span class="en">operator overload</span></li>
+        <li><span class="zh">prim 范围：</span><span class="en">prim range</span></li>
+        <li><span class="zh">着色输入：</span><span class="en">shade input</span></li>
+        <li><span class="zh">值容器：</span><span class="en">value container</span></li>
+        <li><span class="zh">Gf 数学类型：</span><span class="en">Gf math type</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

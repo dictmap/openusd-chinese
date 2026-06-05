@@ -53,6 +53,27 @@
         <li><span class="zh">着色器发现：</span><span class="en">shader discovery</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-082">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - N 增补 API 索引页二次精修说明，重点解释 Doxygen 字母桶的阅读方式、跨模块条目的归类边界，以及何时应跳转到目标 class 或 schema 文档。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - N API index page. It explains how to read Doxygen letter buckets, how to group cross-module entries, and when to jump to the target class or schema documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">N 段类成员页常出现 name、node、new、next、num、namespace 等词；本页最重要的阅读边界是 Hydra scene index pipeline 与 Pcp error diagnostics。</span></li>
+        <li><span class="zh">`HdCachingSceneIndex`、`HdFlatteningSceneIndex`、`HdGpGenerativeProceduralFilteringSceneIndex`、`HdPrefixingSceneIndex`、`HdRenderIndex`、`HdRetainedSceneIndex` 和 `HdxTaskControllerSceneIndex` 是 Hydra scene index 管线入口。</span></li>
+        <li><span class="zh">`PcpErrorArcCycle`、`PcpErrorArcPermissionDenied`、`PcpErrorInvalidAssetPath`、`PcpErrorInvalidAuthoredRelocation` 等条目属于 composition 错误类型，阅读时应按诊断对象分类，不应理解为普通控制流。</span></li>
+        <li><span class="zh">`App`、`ConfigItem`、`Validator`、`UsdValidationValidatorMetadata`、`UsdUtilsRegisteredVariantSet`、`UsdRenderSpec::Product` 和 `SdrShaderNodeDiscoveryResult` 指向 CLI/config、validation、variant set、render product 和 shader discovery。</span></li>
+        <li><span class="zh">`TfMallocTag::CallTree::PathNode`、`HdPrimvarDescriptor`、`HdStShaderCode::NamedTextureHandle`、`GlfDrawTarget` 与 `GlfUniformBlock` 表明本页还包含内存诊断、Hydra primvar/texture handle 和 GL 支撑条目。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">scene index 管线：</span><span class="en">scene index pipeline</span></li>
+        <li><span class="zh">组合错误：</span><span class="en">composition error</span></li>
+        <li><span class="zh">渲染产品：</span><span class="en">render product</span></li>
+        <li><span class="zh">shader 发现：</span><span class="en">shader discovery</span></li>
+        <li><span class="zh">具名纹理句柄：</span><span class="en">named texture handle</span></li>
+        <li><span class="zh">uniform block：</span><span class="en">uniform block</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
