@@ -56,6 +56,27 @@
         <li><span class="zh">对数格式：</span><span class="en">log-format</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-116">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`ParticleFieldScaleAttributeAPI` 为 `ParticleField` 提供逐粒子的 scale factor data。它通常与 position、orientation 和 kernel API 一起决定每个粒子或 splat 的实际空间尺寸，而不是替代 prim 的整体 transform。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for ParticleFieldScaleAttributeAPI while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">scale data 是 per-particle attribute；它描述每个粒子本身的缩放，而不是把整个 `ParticleField` prim 作为一个对象统一缩放。</span></li>
+        <li><span class="zh">对于 Gaussian ellipsoid，scale 往往决定各轴半径或支撑域大小；对于 surflet，scale 会影响局部圆盘或表面小片在世界空间中的尺寸。</span></li>
+        <li><span class="zh">scale 数组应与 positions 数量对齐，否则不同粒子的尺寸数据无法可靠关联；这类检查属于 schema 数据一致性。</span></li>
+        <li><span class="zh">scale 只改变 kernel 支撑域或 splat 尺寸，不定义 radiance、opacity 或颜色；这些视觉量由 radiance/opacity attribute API 管理。</span></li>
+        <li><span class="zh">中文导读应区分 `scale factor data` 与 `xformOp:scale`：前者是粒子场特征数据，后者是 prim 变换栈中的变换操作。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">粒子场缩放属性 API：</span><span class="en">ParticleFieldScaleAttributeAPI</span></li>
+        <li><span class="zh">缩放因子数据：</span><span class="en">scale factor data</span></li>
+        <li><span class="zh">kernel 支撑范围：</span><span class="en">kernel support</span></li>
+        <li><span class="zh">粒子场：</span><span class="en">ParticleField</span></li>
+        <li><span class="zh">prim 级缩放变换：</span><span class="en">xformOp:scale</span></li>
+        <li><span class="zh">不透明度：</span><span class="en">opacity</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

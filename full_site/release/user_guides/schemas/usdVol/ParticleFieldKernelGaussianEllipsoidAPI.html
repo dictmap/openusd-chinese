@@ -75,6 +75,27 @@
         <li><span class="zh">软边界：</span><span class="en">soft boundary</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-116">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`ParticleFieldKernelGaussianEllipsoidAPI` 使用 Gaussian ellipsoid 描述粒子对三维空间的平滑贡献范围。本轮补强强调它与 surflet kernel 的差异：ellipsoid 表示体积型、可各向异性缩放的支撑域，falloff 是平滑的 Gaussian 近似。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for ParticleFieldKernelGaussianEllipsoidAPI while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">Gaussian ellipsoid kernel 通常需要和 position、orientation、scale 数据一起解释：position 给中心，orientation 给局部坐标系，scale 给椭球轴向尺寸。</span></li>
+        <li><span class="zh">该 API 不直接描述 radiance、opacity 或颜色；它只说明粒子影响空间的 basis function，辐射度和不透明度由对应 attribute API 表达。</span></li>
+        <li><span class="zh">与 `ParticleFieldKernelGaussianSurfletAPI` 相比，ellipsoid 是 volumetric support；surflet 更偏向局部表面片。两者都可使用 Gaussian falloff，但几何支撑维度不同。</span></li>
+        <li><span class="zh">与 `ParticleFieldKernelConstantSurfletAPI` 相比，本页不是硬边界常量贡献，而是平滑衰减的体积核；翻译时应保留 `Gaussian` 和 `ellipsoid` 字面量。</span></li>
+        <li><span class="zh">如果页面只有简短英文摘录，中文补强应提供阅读路线，而不是替官方定义发明新的公式；具体数值和数组布局仍以官方 schema 为准。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">粒子场高斯椭球 kernel API：</span><span class="en">ParticleFieldKernelGaussianEllipsoidAPI</span></li>
+        <li><span class="zh">高斯椭球：</span><span class="en">Gaussian ellipsoid</span></li>
+        <li><span class="zh">体积型支撑域：</span><span class="en">volumetric support</span></li>
+        <li><span class="zh">各向异性缩放：</span><span class="en">anisotropic scale</span></li>
+        <li><span class="zh">基函数：</span><span class="en">basis function</span></li>
+        <li><span class="zh">高斯衰减：</span><span class="en">Gaussian falloff</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

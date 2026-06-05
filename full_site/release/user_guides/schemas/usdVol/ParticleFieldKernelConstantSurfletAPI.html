@@ -75,6 +75,27 @@
         <li><span class="zh">硬支撑边界：</span><span class="en">hard support boundary</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-116">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`ParticleFieldKernelConstantSurfletAPI` 描述 `ParticleField` 的 constant surflet kernel。它适合表达硬边界的平面 splat：未变换时在局部 XY plane 的单位圆盘内贡献固定值，圆盘外不贡献；具体位置、朝向和缩放仍要结合 position、orientation、scale 等 attribute API 阅读。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for ParticleFieldKernelConstantSurfletAPI while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">constant surflet 的重点是 surface-like support：它更像附着在局部平面上的圆盘支撑域，而不是填满三维体积的 ellipsoid kernel。</span></li>
+        <li><span class="zh">页面中关于单位圆盘、XY plane、opacity 1.0 和 0.0 的描述应保留数值与英文术语，避免把硬边界写成平滑衰减。</span></li>
+        <li><span class="zh">如果同时使用 `ParticleFieldOrientationAttributeAPI` 和 `ParticleFieldScaleAttributeAPI`，它们会改变 surflet 在世界空间中的朝向和尺寸；kernel 页面本身不单独定义这些 per-particle transform 数据。</span></li>
+        <li><span class="zh">`ParticleFieldKernelGaussianSurfletAPI` 与本页同属 surflet 家族，但使用 Gaussian falloff；本页的 constant 语义强调支撑域内部固定贡献。</span></li>
+        <li><span class="zh">和 `ParticleFieldKernelGaussianEllipsoidAPI` 对照时，constant surflet 是平面小片，Gaussian ellipsoid 是三维椭球体支撑；中文导读要把 surface support 与 volume support 分开。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">粒子场 constant surflet kernel API：</span><span class="en">ParticleFieldKernelConstantSurfletAPI</span></li>
+        <li><span class="zh">常量表面小片 kernel：</span><span class="en">constant surflet</span></li>
+        <li><span class="zh">单位圆盘：</span><span class="en">unit disk</span></li>
+        <li><span class="zh">XY 平面：</span><span class="en">XY plane</span></li>
+        <li><span class="zh">不透明度或贡献值：</span><span class="en">opacity</span></li>
+        <li><span class="zh">支撑域：</span><span class="en">support domain</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

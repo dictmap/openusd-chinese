@@ -56,6 +56,27 @@
         <li><span class="zh">截断 / 忽略：</span><span class="en">truncated / ignored</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-116">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`ParticleFieldOrientationAttributeAPI` 为 `ParticleField` 提供逐粒子的 orientation data。它常用于 splat 或各向异性 kernel，让每个粒子的局部坐标系可以独立旋转；粒子数量、中心位置和尺寸仍分别由 position 与 scale 数据约束。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for ParticleFieldOrientationAttributeAPI while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">orientation data 描述粒子或 splat 的朝向，不等价于 prim 级别的 `xformOp`；前者是 per-particle attribute，后者是场景层级变换。</span></li>
+        <li><span class="zh">该 API 应与 `ParticleFieldPositionAttributeAPI`、`ParticleFieldScaleAttributeAPI` 和 kernel API 一起阅读，才能完整解释每个粒子的空间姿态。</span></li>
+        <li><span class="zh">对于 Gaussian ellipsoid 或 surflet，orientation 会影响局部轴向如何映射到世界空间；若没有 orientation，通常只能按默认局部方向解释。</span></li>
+        <li><span class="zh">orientation array 的元素数量应与 positions 等 per-particle arrays 对齐；这是数据一致性问题，不是渲染器随意插值的规则。</span></li>
+        <li><span class="zh">中文层应保留 `orientation`、`ParticleFieldOrientationAttributeAPI`、`splat`、`per-particle` 等术语，方便和 schema 名称及工具属性匹配。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">粒子场朝向属性 API：</span><span class="en">ParticleFieldOrientationAttributeAPI</span></li>
+        <li><span class="zh">朝向数据：</span><span class="en">orientation data</span></li>
+        <li><span class="zh">逐粒子：</span><span class="en">per-particle</span></li>
+        <li><span class="zh">粒子小片或溅射基元：</span><span class="en">splat</span></li>
+        <li><span class="zh">局部坐标系：</span><span class="en">local frame</span></li>
+        <li><span class="zh">prim 级变换操作：</span><span class="en">xformOp</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

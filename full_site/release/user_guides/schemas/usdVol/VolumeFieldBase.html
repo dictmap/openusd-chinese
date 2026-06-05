@@ -65,6 +65,27 @@
         <li><span class="zh">体积字段实际数据载荷：</span><span class="en">field payload</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-116">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`VolumeFieldBase` 是所有 `UsdVol` field schema 的抽象基础类。它的作用是给 field provider prim 建立共同类型边界，使 `Volume` 可以通过 `field:*` relationships 连接到具体体积字段，而不是直接把本页理解成 OpenVDB 或 Field3D 文件格式。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for VolumeFieldBase while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`VolumeFieldBase` 本身是 abstract schema；具体可用字段通常由 `OpenVDBAsset`、`Field3DAsset` 或自定义 field schema 提供。</span></li>
+        <li><span class="zh">`Volume` 和 `VolumeFieldBase` 是两个层级：前者表示体积容器，后者及其派生 prim 表示可被关系引用的字段数据来源。</span></li>
+        <li><span class="zh">自定义 UsdVol field schema 应直接或间接继承 `VolumeFieldBase`，这样工具链、schema 检查和 shader 输入才能识别它是合法 field provider。</span></li>
+        <li><span class="zh">`field:*` relationships 是连接 `Volume` 与 field prim 的关键；中文导读应保留该命名形式，避免改成普通属性或路径说明。</span></li>
+        <li><span class="zh">阅读本页时应把类型边界、关系连接和具体文件资产分开：base class 负责 schema 归类，asset schema 负责外部体积数据定位。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">体积字段抽象基础类：</span><span class="en">VolumeFieldBase</span></li>
+        <li><span class="zh">OpenUSD 体积 schema 模块：</span><span class="en">UsdVol</span></li>
+        <li><span class="zh">体积容器 schema：</span><span class="en">Volume</span></li>
+        <li><span class="zh">field 命名空间关系：</span><span class="en">field:* relationships</span></li>
+        <li><span class="zh">OpenVDB 体积资产 schema：</span><span class="en">OpenVDBAsset</span></li>
+        <li><span class="zh">体积字段提供者：</span><span class="en">field provider</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
