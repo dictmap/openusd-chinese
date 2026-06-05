@@ -75,6 +75,27 @@
         <li><span class="zh">深度缓冲：</span><span class="en">depth buffer</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-108">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`RenderProduct` 表示单个 render output artifact，例如图像文件、depth buffer 或其他 file-like artifact。它通过 `productName` 命名输出目标，并通过 `orderedVars` 把一个或多个 `RenderVar` 组织到同一个输出产品中。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for RenderProduct while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`RenderProduct` 的核心不是渲染算法，而是输出组织。`productName = &quot;/output/render000009.png&quot;` 给出输出 artifact 的目标名或路径，具体写文件行为仍由 renderer 或工具执行。</span></li>
+        <li><span class="zh">`orderedVars` 是有序 relationship 列表，示例中把 `color`、`alpha`、`directDiffuse` 等 `RenderVar` 写入同一 product；有序性对多通道输出或文件格式映射很重要。</span></li>
+        <li><span class="zh">本页应和 `RenderVar` 一起阅读：`RenderVar` 定义输出什么变量或 AOV，`RenderProduct` 定义这些变量进入哪个 artifact，`RenderSettings` 则引用 products 形成渲染配置。</span></li>
+        <li><span class="zh">如果一个渲染任务需要多张图片、多个 buffer 或不同输出格式，通常会出现多个 `RenderProduct`；不要把所有输出都塞进一个 product 的中文描述里。</span></li>
+        <li><span class="zh">术语 `render output artifact`、`file-like artifact`、`productName`、`orderedVars` 应保留英文，以便和 USD 文件、Doxygen 页面及 renderer UI 对齐。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">渲染输出产品 schema：</span><span class="en">RenderProduct</span></li>
+        <li><span class="zh">渲染输出产物：</span><span class="en">render output artifact</span></li>
+        <li><span class="zh">输出产品名称属性：</span><span class="en">productName</span></li>
+        <li><span class="zh">有序渲染变量关系：</span><span class="en">orderedVars</span></li>
+        <li><span class="zh">渲染变量 schema：</span><span class="en">RenderVar</span></li>
+        <li><span class="zh">任意输出变量：</span><span class="en">AOV</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

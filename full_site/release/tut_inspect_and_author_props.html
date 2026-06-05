@@ -75,6 +75,27 @@
         <li><span class="zh">已创作意见：</span><span class="en">authored opinion</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-108">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`Inspecting and Authoring Properties` 是 `Hello World` 之后的属性读写教程。它从 `Usd.Stage.Open('HelloWorld.usda')` 打开 stage，使用 `GetPrimAtPath('/hello')` 和 `GetPrimAtPath('/hello/world')` 取得 prim，再演示如何检查和 author properties。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for Inspecting and Authoring Properties while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Stage.Open -&gt; GetPrimAtPath -&gt; GetAttribute/Get/Set` 是本页最重要的 API 线索。中文说明应把它写成从 stage 到 prim 再到 property value 的访问链，而不是零散函数列表。</span></li>
+        <li><span class="zh">`HelloWorld.usda`、`/hello`、`/hello/world` 是教程可复现实验的路径字面量，不能翻译或改写；读者需要用这些路径直接对照 Python 脚本。</span></li>
+        <li><span class="zh">教程讨论的是 prim 上包含 geometric data 的 properties。读取 `attribute.Get()` 得到的是当前 composition 后的值，写入 `attribute.Set()` 则是在当前 edit target 中 author 新 opinion。</span></li>
+        <li><span class="zh">`from pxr import Usd, Vt` 提醒读者 `Vt` 数组类型会出现在几何属性数据中；翻译时保留 `Vt`，并把它解释为 USD/Python 数据容器相关模块。</span></li>
+        <li><span class="zh">本页的实用价值在于调试和小脚本 authoring：先确认 prim 是否存在，再检查 attribute 是否有效，最后区分读取当前值与写入新 opinion 的层级影响。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">打开 USD stage 的 API：</span><span class="en">Usd.Stage.Open</span></li>
+        <li><span class="zh">按路径取得 prim：</span><span class="en">GetPrimAtPath</span></li>
+        <li><span class="zh">取得属性对象：</span><span class="en">GetAttribute</span></li>
+        <li><span class="zh">读取属性当前值：</span><span class="en">attribute.Get</span></li>
+        <li><span class="zh">写入 authored opinion：</span><span class="en">attribute.Set</span></li>
+        <li><span class="zh">USD 值类型容器模块：</span><span class="en">Vt</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

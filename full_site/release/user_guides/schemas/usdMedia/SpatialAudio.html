@@ -75,6 +75,27 @@
         <li><span class="zh">环境声音 prim：</span><span class="en">Ambient</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-108">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`SpatialAudio` 在 USD scene description 中表达音频播放意图：`filePath` 指向音频资源，`auralMode` 描述播放模式，`startTime`、`endTime`、`playbackMode` 和 `mediaOffset` 共同决定播放时序。它不是音频引擎本身，而是让工具和播放端能发现、同步和调度声音。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for SpatialAudio while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">示例中的 `Speech` prim 位于 `Cube` 内部，并设置 `auralMode = &quot;spatial&quot;`，说明声音可以与场景空间位置绑定；父 prim transform 会影响空间化解释。</span></li>
+        <li><span class="zh">`Ambient` prim 使用非空间化的环境声音语义，适合背景或全局音轨。中文说明应保留 `spatial`、`nonSpatial` 等 token 字面量，便于和文件示例核对。</span></li>
+        <li><span class="zh">`startTime = 240`、`endTime = 480` 与 stage 的 `timeCodesPerSecond = 24` 一起决定音频播放时间窗；读者应按 USD timeCode 而不是普通秒数直接理解这些值。</span></li>
+        <li><span class="zh">`playbackMode = &quot;onceFromStartToEnd&quot;` 表示从开始到结束播放一次；如果后续页面列出 loop 或 offset 模式，应和 `mediaOffset` 一起解释媒体内部时间与 stage 时间的映射。</span></li>
+        <li><span class="zh">`filePath = @mySpeech.mp3@` 是 asset path 引用，必须保留 `@...@` 语法；路径解析、打包和媒体可用性仍由资产解析器和播放端负责。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">空间音频 schema：</span><span class="en">SpatialAudio</span></li>
+        <li><span class="zh">音频资源路径属性：</span><span class="en">filePath</span></li>
+        <li><span class="zh">听觉模式属性：</span><span class="en">auralMode</span></li>
+        <li><span class="zh">播放模式属性：</span><span class="en">playbackMode</span></li>
+        <li><span class="zh">媒体内部时间偏移：</span><span class="en">mediaOffset</span></li>
+        <li><span class="zh">每秒 timeCode 数：</span><span class="en">timeCodesPerSecond</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

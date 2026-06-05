@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T19:54:43.146Z
+Generated: 2026-06-05T20:04:02.233Z
 
 ## Summary
 
@@ -373,10 +373,10 @@ Generated: 2026-06-05T19:54:43.146Z
 | 307 | draft_needs_translation | bilingual_draft | 274 | 12/11 | 0 | 0 | `full_site/release/tut_helloworld_redux.html` |
 | 308 | draft_needs_translation | bilingual_draft | 608 | 25/18 | 0 | 0 | `full_site/release/tut_helloworld.html` |
 | 309 | draft_needs_translation | bilingual_draft | 361 | 16/14 | 0 | 0 | `full_site/release/tut_houdini_example.html` |
-| 310 | draft_needs_translation | bilingual_draft | 521 | 25/19 | 0 | 0 | `full_site/release/tut_inspect_and_author_props.html` |
+| 310 | draft_needs_translation | bilingual_draft | 764 | 37/26 | 0 | 0 | `full_site/release/tut_inspect_and_author_props.html` |
 | 311 | draft_needs_translation | bilingual_draft | 277 | 12/11 | 0 | 0 | `full_site/release/tut_referencing_layers.html` |
 | 312 | draft_needs_translation | bilingual_draft | 285 | 13/12 | 0 | 0 | `full_site/release/tut_simple_shading.html` |
-| 313 | draft_needs_translation | bilingual_draft | 576 | 24/18 | 0 | 0 | `full_site/release/tut_traversing_stage.html` |
+| 313 | draft_needs_translation | bilingual_draft | 795 | 36/25 | 0 | 0 | `full_site/release/tut_traversing_stage.html` |
 | 314 | draft_needs_translation | bilingual_draft | 375 | 15/13 | 0 | 0 | `full_site/release/tut_usd_tutorials.html` |
 | 315 | draft_needs_translation | bilingual_draft | 349 | 15/12 | 0 | 0 | `full_site/release/tut_usdview_plugin.html` |
 | 316 | draft_needs_translation | bilingual_draft | 304 | 12/11 | 0 | 0 | `full_site/release/tut_variants_example_in_katana.html` |
@@ -414,11 +414,11 @@ Generated: 2026-06-05T19:54:43.146Z
 | 348 | draft_needs_translation | bilingual_draft | 685 | 29/20 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/VolumeLightAPI.html` |
 | 349 | draft_needs_translation | bilingual_draft | 617 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html` |
 | 350 | draft_needs_translation | bilingual_draft | 398 | 15/13 | 0 | 0 | `full_site/release/user_guides/schemas/usdMedia/overview.html` |
-| 351 | draft_needs_translation | bilingual_draft | 578 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdMedia/SpatialAudio.html` |
+| 351 | draft_needs_translation | bilingual_draft | 855 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdMedia/SpatialAudio.html` |
 | 352 | draft_needs_translation | bilingual_draft | 540 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdMedia/usdMedia_toc.html` |
 | 353 | draft_needs_translation | bilingual_draft | 349 | 17/15 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/overview.html` |
-| 354 | draft_needs_translation | bilingual_draft | 502 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderPass.html` |
-| 355 | draft_needs_translation | bilingual_draft | 555 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderProduct.html` |
+| 354 | draft_needs_translation | bilingual_draft | 762 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderPass.html` |
+| 355 | draft_needs_translation | bilingual_draft | 809 | 36/23 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderProduct.html` |
 | 356 | draft_needs_translation | bilingual_draft | 544 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderSettings.html` |
 | 357 | draft_needs_translation | bilingual_draft | 659 | 32/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderSettingsBase.html` |
 | 358 | draft_needs_translation | bilingual_draft | 792 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderVar.html` |

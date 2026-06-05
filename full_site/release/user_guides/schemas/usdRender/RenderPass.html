@@ -75,6 +75,27 @@
         <li><span class="zh">渲染输出变量：</span><span class="en">RenderVar</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-108">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`RenderPass` 描述 multi-pass rendering workflow 中一次 render pass 的 renderer configuration 与 scene configuration。它不等同于输出文件，也不等同于 AOV；它把 `renderSource`、`command`、`passType` 和 collection-based visibility 组合成一次可执行或可交给 DCC/renderer 的 pass 配置。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for RenderPass while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`renderSource` 可以是指向 `RenderSettings` prim 的 relationship，也可以指向外部配置文件或 DCC 节点；官方举例中的 Houdini Rop、Nuke write node 说明它是 pass 配置入口，而不是渲染结果本身。</span></li>
+        <li><span class="zh">`passType = &quot;prman&quot;` 与 `command = [&quot;prman&quot;]` 展示了 pass 可以携带 renderer 类型和启动命令。翻译时应保留 token 与命令字面量，避免破坏脚本和工具链对照。</span></li>
+        <li><span class="zh">`collection:renderVisibility:includeRoot` 与 `collection:renderVisibility:includes` 把当前 pass 的可见对象交给 USD collection 表达；foreground/background pass 的差异通常来自 collection，而不是来自不同的输出产品。</span></li>
+        <li><span class="zh">阅读 usdRender 时可按职责分层：`RenderSettings` 汇总设置，`RenderProduct` 描述输出 artifact，`RenderVar` 描述输出变量，`RenderPass` 描述单次 pass 的渲染器和场景选择。</span></li>
+        <li><span class="zh">composite pass 示例提醒读者，`RenderPass` 也可表示合成阶段；这类 pass 可能引用外部配置或节点，而不一定直接渲染场景几何。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">渲染 pass schema：</span><span class="en">RenderPass</span></li>
+        <li><span class="zh">渲染来源关系：</span><span class="en">renderSource</span></li>
+        <li><span class="zh">pass 类型 token：</span><span class="en">passType</span></li>
+        <li><span class="zh">渲染命令数组：</span><span class="en">command</span></li>
+        <li><span class="zh">渲染可见集合包含关系：</span><span class="en">collection:renderVisibility:includes</span></li>
+        <li><span class="zh">多 pass 渲染工作流：</span><span class="en">multi-pass rendering workflow</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

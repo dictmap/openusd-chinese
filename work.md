@@ -2987,3 +2987,27 @@
 1. 继续最多 5 页。
 2. 建议处理：`full_site/release/user_guides/schemas/usdRender/RenderPass.html`、`full_site/release/user_guides/schemas/usdRender/RenderProduct.html`、`full_site/release/tut_inspect_and_author_props.html`、`full_site/release/tut_traversing_stage.html`、`full_site/release/user_guides/schemas/usdMedia/SpatialAudio.html`。
 3. 后续继续按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面，低优先处理 `_source.html`、`search.html` 和目录页。
+## 第 239 轮：RenderPass、RenderProduct、属性教程、Stage 遍历与 SpatialAudio 补强
+
+- 复核当前 git 状态和远端：上一轮同步提交为 `a86ede1`，`origin/main` 一致。
+- 新增并执行 `scripts/refine_openusd_release_batch_108.mjs`，本轮标记 `release-quality-pass-108`。
+- 严格只精修 5 页：
+  - `full_site/release/user_guides/schemas/usdRender/RenderPass.html`
+  - `full_site/release/user_guides/schemas/usdRender/RenderProduct.html`
+  - `full_site/release/tut_inspect_and_author_props.html`
+  - `full_site/release/tut_traversing_stage.html`
+  - `full_site/release/user_guides/schemas/usdMedia/SpatialAudio.html`
+- 每页补入 5 条中文二次精修导读和 6 条术语对照：覆盖 `RenderPass` 的 `renderSource`、`passType`、`command` 与 collection-based visibility，`RenderProduct` 的 `productName` 与 `orderedVars` 输出组织，属性教程中的 `Usd.Stage.Open`、`GetPrimAtPath`、`GetAttribute/Get/Set` 访问链，Stage 遍历教程中的 `usdviewApi.stage.Traverse()` 与 composed stage view，以及 `SpatialAudio` 的 `filePath`、`auralMode`、`playbackMode`、`mediaOffset` 与 timeCode 播放时序。
+- 质量回读：5 页均为 `draft_needs_translation`，坏编码 0，非预期官方外跳 0；中文字符分别为 762、809、764、795、855，中文/英文块分别为 36/25、36/23、37/26、36/25、36/25。
+- 本轮分级计数保持不变：`draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因：处理对象已经是 `draft_needs_translation`，本轮为二次补强精修，不是从模板草稿晋级。
+- 已运行并通过：翻译质量审计、链接路由、full draft preview、报告索引和 `validate_openusd_api_repro.ps1`；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步结果：本轮验证通过后使用 `OpenUSD bilingual round 239: render product tutorials spatial audio pass` 提交并推送。
+
+当前差距：
+- 全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`；`bilingual_draft` 仍不是完整翻译。
+- 剩余质量队列中 11 页仍为 `draft_template_only`，基本是 `_source.html`、`search.html` 或目录页；其余 387 页仍需继续逐轮补强。
+
+下一轮目标：
+1. 继续最多 5 页。
+2. 建议处理：`full_site/release/user_guides/schemas/usdMedia/overview.html`、`full_site/release/user_guides/schemas/usdMedia/usdMedia_toc.html`、`full_site/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html`、`full_site/release/user_guides/schemas/usdRender/usdRender_toc.html`、`full_site/release/wp_render_settings.html`。
+3. 后续继续按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面，低优先处理 `_source.html`、`search.html` 和目录页。

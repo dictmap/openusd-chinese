@@ -75,6 +75,27 @@
         <li><span class="zh">交互式解释器：</span><span class="en">interpreter</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-108">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`Traversing a Stage` 说明如何遍历 `UsdStage` 上已经 composition 完成的 prim。示例使用 `usdviewApi.stage.Traverse()`，返回的是 composed stage view 中可遍历的 `Usd.Prim`，这正是 imaging clients、USD importers 和 DCC 桥接工具常用的基础模式。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for Traversing a Stage while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`stage.Traverse()` 遍历的是组合后的 stage 视图，不是逐个 layer 文件的原始内容。读者应把 referenced layer 和 referencing layer 的差异交给 USD composition 处理。</span></li>
+        <li><span class="zh">示例输出 `Usd.Prim(&lt;/refSphere&gt;)`、`Usd.Prim(&lt;/refSphere/world&gt;)`、`Usd.Prim(&lt;/refSphere2&gt;)`、`Usd.Prim(&lt;/refSphere2/world&gt;)` 展示 traversal 会按 stage 层级返回 prim 路径。</span></li>
+        <li><span class="zh">`usdviewApi` 是 usdview interpreter 提供的便利对象。教程要求在 usdview 中打开 `RefExample.usda` 并通过 `i` 或 Window -&gt; Interpreter 进入交互环境，这些操作步骤应保留英文名称。</span></li>
+        <li><span class="zh">对 importer 或 imaging client 来说，traversal 的结果通常是后续判断 prim type、读取属性、构造渲染或导入对象的入口，而不是最终业务逻辑本身。</span></li>
+        <li><span class="zh">如果后续补全 predicate、active/inactive、loaded/unloaded 等遍历条件，应明确这些是 traversal 过滤语义，不要和 layer composition 或 namespace editing 混淆。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">遍历 Stage：</span><span class="en">Traversing a Stage</span></li>
+        <li><span class="zh">USD 舞台：</span><span class="en">UsdStage</span></li>
+        <li><span class="zh">遍历组合后 prim 的 API：</span><span class="en">stage.Traverse()</span></li>
+        <li><span class="zh">usdview 解释器辅助对象：</span><span class="en">usdviewApi</span></li>
+        <li><span class="zh">USD 图元对象：</span><span class="en">Usd.Prim</span></li>
+        <li><span class="zh">USD 组合结果：</span><span class="en">composition</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
