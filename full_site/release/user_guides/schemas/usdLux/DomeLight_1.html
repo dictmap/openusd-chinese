@@ -35,6 +35,27 @@
       <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
       <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="release-quality-pass-068">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 DomeLight_1 补充中文优先的 schema 用途、属性/关系阅读路径、继承或连接边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds Chinese-first schema purpose, property and relationship reading paths, inheritance or connection boundaries, and terminology for DomeLight_1 while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`DomeLight_1` 描述从远处外部环境向内发光的 DomeLight 版本，用于 sky、HDR environment 和 Image Based Lighting (IBL) 等环境光照场景。</span></li>
+        <li><span class="zh">`inputs:texture:file` 与 `inputs:texture:format` 是读取 HDR/IBL 贴图的关键入口；`OpenEXR specification` 链接说明格式侧背景，文件路径和格式 token 需要保持英文原样。</span></li>
+        <li><span class="zh">`poleAxis` 决定 dome 的默认朝向；fallback 值 `scene` 表示 dome 顶极会对齐 stage 的 up axis，这一点会影响环境贴图方向和视觉结果。</span></li>
+        <li><span class="zh">`portals` 关系用于与 PortalLight 等光照采样/引导概念配合；阅读时应和 `DomeLight`、`PortalLight` 以及现代 usdLux 文档一起核对版本差异。</span></li>
+        <li><span class="zh">`DomeLight_1` 带版本后缀，不能和无后缀 `DomeLight` 混同；中文说明保留该页面名，避免用户误以为它就是当前唯一 DomeLight 定义。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">DomeLight 版本化 schema：</span><span class="en">DomeLight_1</span></li>
+        <li><span class="zh">高动态范围图像：</span><span class="en">HDR</span></li>
+        <li><span class="zh">基于图像的光照：</span><span class="en">Image Based Lighting</span></li>
+        <li><span class="zh">穹顶极轴方向：</span><span class="en">poleAxis</span></li>
+        <li><span class="zh">PortalLight 关系：</span><span class="en">portals</span></li>
+        <li><span class="zh">stage 上轴：</span><span class="en">up axis</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

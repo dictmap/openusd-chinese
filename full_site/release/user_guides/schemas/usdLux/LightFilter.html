@@ -35,6 +35,27 @@
       <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
       <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="release-quality-pass-068">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 LightFilter 补充中文优先的 schema 用途、属性/关系阅读路径、继承或连接边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds Chinese-first schema purpose, property and relationship reading paths, inheritance or connection boundaries, and terminology for LightFilter while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`LightFilter` 用于调制灯光效果，通常通过 `LightAPI` 的 `light:filters` relationship 与灯光关联。</span></li>
+        <li><span class="zh">`collection:filterLink:includeRoot` 控制 filterLink collection 的默认包含行为；通过该 collection 可以指定哪些 geometry Prims 被包含或排除，从而决定是否受该 light filter 影响。</span></li>
+        <li><span class="zh">`lightFilter:shaderId` 指定 light filter 的 shader 标识；如果 filter 需要实现着色逻辑，相关 shader 子节点可作为 connectable children 嵌套在 LightFilter 下。</span></li>
+        <li><span class="zh">官方摘录说明 `LightFilter` 本身是 connectable prim/container，可以嵌套其他可连接子节点，也可以嵌套在 light prim 下；但不能放在无关的 connectable container 里，例如 `UsdShade Material`。</span></li>
+        <li><span class="zh">`Representing Filters on Lights`、`UsdShade node encapsulation` 和 `Collections and Patterns` 是理解本页的三条延伸路径：分别解释过滤器语义、可连接容器规则和 collection 选择机制。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">灯光过滤器：</span><span class="en">LightFilter</span></li>
+        <li><span class="zh">过滤器链接集合：</span><span class="en">filterLink collection</span></li>
+        <li><span class="zh">filterLink 根包含属性：</span><span class="en">collection:filterLink:includeRoot</span></li>
+        <li><span class="zh">过滤器 shader 标识：</span><span class="en">lightFilter:shaderId</span></li>
+        <li><span class="zh">可连接容器：</span><span class="en">connectable container</span></li>
+        <li><span class="zh">UsdShade 材质容器：</span><span class="en">UsdShade Material</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

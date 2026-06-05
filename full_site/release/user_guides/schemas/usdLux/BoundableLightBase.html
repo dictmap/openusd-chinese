@@ -35,6 +35,27 @@
       <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
       <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="release-quality-pass-068">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 BoundableLightBase 补充中文优先的 schema 用途、属性/关系阅读路径、继承或连接边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds Chinese-first schema purpose, property and relationship reading paths, inheritance or connection boundaries, and terminology for BoundableLightBase while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`BoundableLightBase` 是 boundable intrinsic lights 的基类，面向 `RectLight`、`SphereLight` 等有空间边界和 extent 的具体灯光 schema。</span></li>
+        <li><span class="zh">该页的核心是把 `LightAPI` 的灯光能力直接提供给 concrete derived lights；阅读时应把它理解为灯光 schema 继承结构的一层，而不是可直接实例化的终端灯光类型。</span></li>
+        <li><span class="zh">`Inherited Properties (Boundable)` 中的 `extent` 决定可包围范围；`Inherited Properties (Xformable)` 与 `Imageable` 中的 `xformOpOrder`、`visibility`、`purpose` 等属性影响变换、可见性和渲染用途。</span></li>
+        <li><span class="zh">`Representing Boundable Lights` 是重要延伸链接，用于理解有边界 intrinsic lights 的建模和示例；本页只给出 schema 属性入口和简短定义。</span></li>
+        <li><span class="zh">API 名称、属性名和派生灯光名必须保持原样，中文层只说明继承关系、使用场景和属性阅读顺序。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">有边界灯光基类：</span><span class="en">BoundableLightBase</span></li>
+        <li><span class="zh">内建灯光：</span><span class="en">intrinsic lights</span></li>
+        <li><span class="zh">灯光能力 API：</span><span class="en">LightAPI</span></li>
+        <li><span class="zh">包围范围属性：</span><span class="en">extent</span></li>
+        <li><span class="zh">可变换 schema：</span><span class="en">Xformable</span></li>
+        <li><span class="zh">可成像 schema：</span><span class="en">Imageable</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
