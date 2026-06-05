@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T07:02:30.772Z
+Generated: 2026-06-05T07:20:50.757Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-05T07:02:30.772Z
 
 ## Grade Counts
 
-- draft_template_only: 31
-- draft_needs_translation: 367
+- draft_template_only: 26
+- draft_needs_translation: 372
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -38,19 +38,14 @@ Generated: 2026-06-05T07:02:30.772Z
 | 244 | draft_template_only | 62 | `full_site/api/riley_param_schema_8h_source.html` | 源码页面草稿：rileyParamSchema.h / rileyParamSchema.h |
 | 254 | draft_template_only | 62 | `full_site/api/system_diagnostics_8h_source.html` | 源码页面草稿：systemDiagnostics.h / systemDiagnostics.h |
 | 278 | draft_template_only | 62 | `full_site/api/var_8h_source.html` | 源码页面草稿：var.h / var.h |
-| 374 | draft_template_only | 62 | `full_site/release/user_guides/schemas/usdVol/overview.html` | 页面草稿：Overview / Overview |
 | 298 | draft_template_only | 64 | `full_site/release/search.html` | 搜索 / Search - Universal Scene Description 26.05 documentation |
 | 69 | draft_template_only | 66 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | API 页面草稿：hf Directory / hf Directory |
 | 212 | draft_template_only | 66 | `full_site/api/journal_8h.html` | API 页面草稿：journal.h File / journal.h File |
-| 381 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html` | 页面草稿：ParticleFieldOpacityAttributeAPI / ParticleFieldOpacityAttributeAPI |
 | 382 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html` | 页面草稿：ParticleFieldOrientationAttributeAPI / ParticleFieldOrientationAttributeAPI |
 | 383 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html` | 页面草稿：ParticleFieldPositionAttributeAPI / ParticleFieldPositionAttributeAPI |
 | 386 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html` | 页面草稿：ParticleFieldScaleAttributeAPI / ParticleFieldScaleAttributeAPI |
 | 387 | draft_template_only | 74 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html` | 页面草稿：ParticleFieldSphericalHarmonicsAttributeAPI / ParticleFieldSphericalHarmonicsAttributeAPI |
-| 372 | draft_template_only | 86 | `full_site/release/user_guides/schemas/usdVol/FieldBase.html` | 页面草稿：FieldBase / FieldBase |
 | 67 | draft_template_only | 106 | `full_site/api/copy_utils_8h.html` | API 页面草稿：copyUtils.h File / copyUtils.h File |
-| 375 | draft_template_only | 114 | `full_site/release/user_guides/schemas/usdVol/ParticleField.html` | 页面草稿：ParticleField / ParticleField |
-| 376 | draft_template_only | 122 | `full_site/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html` | 页面草稿：ParticleField3DGaussianSplat / ParticleField3DGaussianSplat |
 | 405 | draft_template_only | 136 | `full_site/release/wp_usdshade.html` | UsdShade 材质分配 / UsdShade Material Assignment |
 | 389 | draft_template_only | 154 | `full_site/release/user_guides/schemas/usdVol/Volume.html` | 体积 Volume / Volume |
 | 398 | draft_template_only | 160 | `full_site/release/wp_render_settings.html` | USD 渲染设置提案 / Render Settings in USD Proposal |
@@ -59,6 +54,11 @@ Generated: 2026-06-05T07:02:30.772Z
 | 392 | draft_template_only | 162 | `full_site/release/user_guides/time_and_animated_values.html` | 时间与动画值 / Time and Animated Values |
 | 406 | draft_template_only | 165 | `full_site/release/wp.html` | 提案汇总 / Proposals |
 | 402 | draft_template_only | 177 | `full_site/release/wp_usdaudio.html` | UsdAudio 提案 / UsdAudio Proposal |
+| 401 | draft_template_only | 178 | `full_site/release/wp_stage_variables.html` | Stage 变量表达式 / Stage Variable Expressions |
+| 143 | draft_needs_translation | 182 | `full_site/api/functions_vars_l.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
+| 118 | draft_needs_translation | 185 | `full_site/api/functions_p.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
+| 144 | draft_needs_translation | 185 | `full_site/api/functions_vars_m.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
+| 134 | draft_needs_translation | 189 | `full_site/api/functions_vars_c.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 
 ## All Pages
 
@@ -435,16 +435,16 @@ Generated: 2026-06-05T07:02:30.772Z
 | 369 | draft_needs_translation | bilingual_draft | 225 | 12/9 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/usdUI_toc.html` |
 | 370 | draft_needs_translation | bilingual_draft | 263 | 12/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/Field3DAsset.html` |
 | 371 | draft_needs_translation | bilingual_draft | 425 | 27/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/FieldAsset.html` |
-| 372 | draft_template_only | bilingual_draft | 86 | 9/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/FieldBase.html` |
+| 372 | draft_needs_translation | bilingual_draft | 408 | 21/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/FieldBase.html` |
 | 373 | draft_needs_translation | bilingual_draft | 267 | 12/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/OpenVDBAsset.html` |
-| 374 | draft_template_only | bilingual_draft | 62 | 3/6 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/overview.html` |
-| 375 | draft_template_only | bilingual_draft | 114 | 16/19 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleField.html` |
-| 376 | draft_template_only | bilingual_draft | 122 | 18/21 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html` |
+| 374 | draft_needs_translation | bilingual_draft | 348 | 15/13 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/overview.html` |
+| 375 | draft_needs_translation | bilingual_draft | 409 | 28/26 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleField.html` |
+| 376 | draft_needs_translation | bilingual_draft | 417 | 30/28 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html` |
 | 377 | draft_needs_translation | bilingual_draft | 241 | 12/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelBaseAPI.html` |
 | 378 | draft_needs_translation | bilingual_draft | 236 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelConstantSurfletAPI.html` |
 | 379 | draft_needs_translation | bilingual_draft | 234 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianEllipsoidAPI.html` |
 | 380 | draft_needs_translation | bilingual_draft | 235 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html` |
-| 381 | draft_template_only | bilingual_draft | 70 | 5/8 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html` |
+| 381 | draft_needs_translation | bilingual_draft | 352 | 17/15 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html` |
 | 382 | draft_template_only | bilingual_draft | 70 | 5/8 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html` |
 | 383 | draft_template_only | bilingual_draft | 70 | 5/8 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html` |
 | 384 | draft_needs_translation | bilingual_draft | 238 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html` |

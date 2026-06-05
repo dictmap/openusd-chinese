@@ -35,6 +35,27 @@
       <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
       <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="release-quality-pass-072">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 ParticleField 补充中文优先的 schema 用途、属性/数学阅读路径、迁移或渲染边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds Chinese-first schema purpose, property and math reading paths, migration or rendering boundaries, and terminology for ParticleField while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`ParticleField` 是描述 concrete ParticleField implementations 的基础 schema，例如 `ParticleField3DGaussianSplat`；如果要扩展自定义粒子场 schema，应从它继承。</span></li>
+        <li><span class="zh">它是 concrete base schema，可以直接创建用于原型验证，但实际生产通常实例化派生类型，因为派生类型会提供更明确的 validation 和 renderer-adoption 路径。</span></li>
+        <li><span class="zh">页面列出的 `Gprim`、`Boundable`、`Xformable`、`Imageable` 继承属性说明 ParticleField 仍是可渲染、可定界、可变换的场景 prim，而不只是裸数组数据。</span></li>
+        <li><span class="zh">粒子数量、位置、opacity、orientation、scale、radiance 和 spherical harmonics 等通常由 applied API schema 补充；本页只定义粒子场的基础容器语义。</span></li>
+        <li><span class="zh">阅读时应把 `ParticleField` 放在 usdVol 的 particle fields 分支中理解，并和 `Working With Particle Fields`、`ParticleField3DGaussianSplat` 及各个 AttributeAPI 页面一起核对。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">粒子场基础 schema：</span><span class="en">ParticleField</span></li>
+        <li><span class="zh">可实例化基础 schema：</span><span class="en">concrete base schema</span></li>
+        <li><span class="zh">派生类型：</span><span class="en">derived types</span></li>
+        <li><span class="zh">渲染器采用路径：</span><span class="en">renderer-adoption</span></li>
+        <li><span class="zh">几何 prim 基类：</span><span class="en">Gprim</span></li>
+        <li><span class="zh">包围范围属性：</span><span class="en">extent</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -35,6 +35,27 @@
       <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
       <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="release-quality-pass-072">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 ParticleFieldOpacityAttributeAPI 补充中文优先的 schema 用途、属性/数学阅读路径、迁移或渲染边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds Chinese-first schema purpose, property and math reading paths, migration or rendering boundaries, and terminology for ParticleFieldOpacityAttributeAPI while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`ParticleFieldOpacityAttributeAPI` 定义 ParticleField opacity data 的 applied schema，用于给每个粒子或 splat 提供不透明度数据。</span></li>
+        <li><span class="zh">官方摘录强调 opacity 应在 `[0, 1]` 范围内，并按传统 linear computer graphics opacity 解释；它不是某些 Gaussian splats PLY 文件中需要 sigmoid activation function 处理的 transformed data。</span></li>
+        <li><span class="zh">`opacities` 与 `opacitiesh` 分别提供 float 和 half 类型，便于在精度和数据 footprint 之间取舍；消费者如果两者都存在，应优先使用 float version。</span></li>
+        <li><span class="zh">该页面适合和 `ParticleField3DGaussianSplat`、kernel 页面、orientation/scale/radiance/spherical harmonics AttributeAPI 一起读，形成完整的逐粒子数据模型。</span></li>
+        <li><span class="zh">中文层保持 `opacities`、`opacitiesh`、`sigmoid activation function`、`float`、`half` 等术语原样，以免误改属性名或数据处理含义。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">粒子场不透明度属性 API：</span><span class="en">ParticleFieldOpacityAttributeAPI</span></li>
+        <li><span class="zh">不透明度数据：</span><span class="en">opacity data</span></li>
+        <li><span class="zh">float 不透明度数组：</span><span class="en">opacities</span></li>
+        <li><span class="zh">half 不透明度数组：</span><span class="en">opacitiesh</span></li>
+        <li><span class="zh">线性计算机图形不透明度：</span><span class="en">linear computer graphics opacity</span></li>
+        <li><span class="zh">sigmoid 激活函数：</span><span class="en">sigmoid activation function</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

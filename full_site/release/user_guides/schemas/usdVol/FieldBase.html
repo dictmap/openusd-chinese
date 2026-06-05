@@ -35,6 +35,27 @@
       <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
       <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="release-quality-pass-072">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 FieldBase 补充中文优先的 schema 用途、属性/数学阅读路径、迁移或渲染边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds Chinese-first schema purpose, property and math reading paths, migration or rendering boundaries, and terminology for FieldBase while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`FieldBase` 已 deprecated，官方建议改用 `VolumeFieldBase`；因此本页首先是迁移提示，而不是新项目应优先采用的体积场 schema。</span></li>
+        <li><span class="zh">它仍继承 `Xformable` 与 `Imageable`，所以页面会列出 `xformOpOrder`、`proxyPrim`、`purpose`、`visibility` 等通用属性；这些属性描述场景中 prim 的变换与可见性，不是体积场数据本身。</span></li>
+        <li><span class="zh">阅读时应把 `FieldBase` 和上一轮的 `FieldAsset` 区分开：`FieldBase` 是旧的 field 基类入口，`FieldAsset` 是旧的外部体积场资产入口；两者都应迁移到 `VolumeFieldBase`/`VolumeFieldAsset` 体系。</span></li>
+        <li><span class="zh">本页没有复杂示例，关键价值是告诉维护者旧 schema 的兼容边界；后续段落级翻译应链接到 `VolumeFieldBase` 解释现代用法。</span></li>
+        <li><span class="zh">中文层保留 `deprecated`、`VolumeFieldBase`、`Xformable`、`Imageable` 和属性名原文，便于与官方 API 和现有 USD 文件逐项核对。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">旧体积场基础 schema：</span><span class="en">FieldBase</span></li>
+        <li><span class="zh">已弃用：</span><span class="en">deprecated</span></li>
+        <li><span class="zh">现代体积场基础 schema：</span><span class="en">VolumeFieldBase</span></li>
+        <li><span class="zh">可变换 prim 基类：</span><span class="en">Xformable</span></li>
+        <li><span class="zh">可显示 prim 基类：</span><span class="en">Imageable</span></li>
+        <li><span class="zh">可见性属性：</span><span class="en">visibility</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
