@@ -2939,3 +2939,27 @@
 1. 继续最多 5 页。
 2. 建议处理：`full_site/release/user_guides/schemas/usdLux/NonboundableLightBase.html`、`full_site/release/user_guides/schemas/usdLux/PluginLight.html`、`full_site/release/user_guides/schemas/usdLux/VolumeLightAPI.html`、`full_site/release/user_guides/schemas/usdLux/overview.html`、`full_site/release/user_guides/schemas/usdLux/ShapingAPI.html`。
 3. 后续可继续 `full_site/release/user_guides/schemas/usdLux/ListAPI.html`、`PluginLightFilter.html`、`BoundableLightBase.html`，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面。
+## 第 237 轮：NonboundableLightBase、PluginLight、VolumeLightAPI、Overview 与 ShapingAPI 补强
+
+- 复核当前 git 状态和远端：上一轮同步提交为 `fa5afbb`，`origin/main` 一致。
+- 新增并执行 `scripts/refine_openusd_release_batch_106.mjs`，本轮标记 `release-quality-pass-106`。
+- 严格只精修 5 页：
+  - `full_site/release/user_guides/schemas/usdLux/NonboundableLightBase.html`
+  - `full_site/release/user_guides/schemas/usdLux/PluginLight.html`
+  - `full_site/release/user_guides/schemas/usdLux/VolumeLightAPI.html`
+  - `full_site/release/user_guides/schemas/usdLux/overview.html`
+  - `full_site/release/user_guides/schemas/usdLux/ShapingAPI.html`
+- 每页补入 5 条中文二次精修导读和 6 条术语对照：覆盖 non-boundable light 的 scene bounds/positional information 边界、`PluginLight` 的 `Sdr shader node` 与 `render delegate` 扩展关系、`VolumeLightAPI` 的 applied API/material sync/shaderId 语义、`usdLux` overview 的 schema 域导航路径，以及 `ShapingAPI` 的 cone/focus/IES profile 控制。
+- 质量回读：5 页均为 `draft_needs_translation`，坏编码 0，非预期官方外跳 0；中文字符分别为 709、732、685、653、660，中文/英文块分别为 33/24、33/24、29/20、29/22、34/27。
+- 本轮分级计数保持不变：`draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因：处理对象已经是 `draft_needs_translation`，本轮为二次补强精修，不是从模板草稿晋级。
+- 已运行并通过：翻译质量审计、链接路由、full draft preview、报告索引和 `validate_openusd_api_repro.ps1`；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步结果：本轮验证通过后使用 `OpenUSD bilingual round 237: usdLux nonbound plugin volume shaping pass` 提交并推送。
+
+当前差距：
+- 全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`；`bilingual_draft` 仍不是完整翻译。
+- 剩余质量队列中 11 页仍为 `draft_template_only`，基本是 `_source.html`、`search.html` 或目录页；其余 387 页仍需继续逐轮补强。
+
+下一轮目标：
+1. 继续最多 5 页。
+2. 建议处理：`full_site/release/user_guides/schemas/usdLux/ListAPI.html`、`full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html`、`full_site/release/user_guides/schemas/usdLux/BoundableLightBase.html`、`full_site/release/user_guides/schemas/usdLux/RectLight.html`、`full_site/release/user_guides/schemas/usdLux/SphereLight.html`。
+3. 后续继续按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面，低优先处理 `_source.html`、`search.html` 和目录页。

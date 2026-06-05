@@ -56,6 +56,27 @@
         <li><span class="zh">可成像 schema：</span><span class="en">Imageable</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-106">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`NonboundableLightBase` 是 `DistantLight`、`DomeLight` 等非 boundable intrinsic light 的基类。阅读本页时要抓住两个边界：这类灯没有 scene bounds，通常不依赖位置做照明计算；但它仍然通过 `LightAPI` 继承通用灯光能力，并作为具体非包围灯 schema 的共享基础。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for NonboundableLightBase while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`NonboundableLightBase` 与 `BoundableLightBase` 的关键区别在于是否具有可用于场景包围盒的几何范围。非 boundable 灯没有 `extent` 语义，不应被解释为有面积或体积的局部发光体。</span></li>
+        <li><span class="zh">官方示例把 `DistantLight`、`DomeLight` 归入此类，是因为它们表达方向性或环境性照明，而不是位于某个有限包围盒内的发光几何。</span></li>
+        <li><span class="zh">页面说明中的 `typically do not use positional information` 是建模和渲染解释的要点：移动 prim 的 transform 可能仍影响方向或组织关系，但不应像点光、面光那样用位置衰减来理解。</span></li>
+        <li><span class="zh">`NonboundableLightBase` 提供 `LightAPI` 的直接功能入口，因此强度、曝光、颜色、linking 等通用灯光概念仍应沿用 `LightAPI` 语义，而不是在本页重新发明一套属性解释。</span></li>
+        <li><span class="zh">继承自 `Imageable` 的 `proxyPrim`、`purpose`、`visibility` 只说明 prim 仍处于 USD 图元体系中；这些 inherited properties 不会让非 boundable 灯获得几何 bounds。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">非包围灯基类：</span><span class="en">NonboundableLightBase</span></li>
+        <li><span class="zh">内建灯光 schema：</span><span class="en">intrinsic light</span></li>
+        <li><span class="zh">场景包围范围：</span><span class="en">scene bounds</span></li>
+        <li><span class="zh">位置信息：</span><span class="en">positional information</span></li>
+        <li><span class="zh">可包围灯基类：</span><span class="en">BoundableLightBase</span></li>
+        <li><span class="zh">通用灯光 API schema：</span><span class="en">LightAPI</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

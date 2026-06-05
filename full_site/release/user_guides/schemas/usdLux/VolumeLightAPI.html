@@ -56,6 +56,27 @@
         <li><span class="zh">体积灯光 shader 标识：</span><span class="en">VolumeLight</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-106">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`VolumeLightAPI` 是应用到 `Volume` prim 的 applied API，用来给体积数据赋予灯光行为。它优于直接把 `LightAPI` 应用于 Volume，因为它预设了体积发光常用的内建行为，例如 `light:materialSyncMode = materialGlowTintsLight` 和 `light:shaderId = VolumeLight`。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for VolumeLightAPI while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`VolumeLightAPI` 不创建新的体积 prim 类型，而是在已有 `Volume` prim 上叠加 light behavior。翻译时要保留 applied API 的概念，避免让读者以为这是一个独立几何 light prim。</span></li>
+        <li><span class="zh">`light:materialSyncMode` 默认可改写为 `materialGlowTintsLight`，这表示 Volume 绑定的材质会参与灯光着色，是体积材质和灯光发射之间的关键桥接。</span></li>
+        <li><span class="zh">`light:shaderId` 默认值 `VolumeLight` 给 renderer 或插件提供识别入口。该 token 应保持英文原样，因为它可能直接对应渲染端的 shader 或实现分支。</span></li>
+        <li><span class="zh">相比 `MeshLightAPI`，本页目标对象是 volume data；相同点是二者都把已有场景对象转为发光体，不同点是材质采样、体积密度和 renderer 支持会影响最终结果。</span></li>
+        <li><span class="zh">实际排查时要同时看 `UsdVol` 场定义、材质绑定、`VolumeLightAPI` 是否应用，以及目标 renderer 是否支持体积发光；schema 存在本身不等于所有 renderer 都能产生同等视觉效果。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">体积灯光 API schema：</span><span class="en">VolumeLightAPI</span></li>
+        <li><span class="zh">体积 prim：</span><span class="en">Volume prim</span></li>
+        <li><span class="zh">应用型 API schema：</span><span class="en">applied API</span></li>
+        <li><span class="zh">灯光材质同步模式：</span><span class="en">light:materialSyncMode</span></li>
+        <li><span class="zh">材质 glow 参与灯光着色的 token：</span><span class="en">materialGlowTintsLight</span></li>
+        <li><span class="zh">灯光 shader 标识：</span><span class="en">light:shaderId</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -56,6 +56,27 @@
         <li><span class="zh">IES 文件标准：</span><span class="en">ANSI/IES LM-63-19</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-106">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`ShapingAPI` 控制灯光发射的形状和分布，包括 cone angle、cone softness、focus、focus tint 以及 IES profile。它常用于聚光灯、舞台灯、摄影灯等需要控制光束形态的场景；这些属性是灯光外观控制，不应和灯光强度、shadow linking 或过滤器混为一谈。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for ShapingAPI while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`inputs:shaping:cone:angle` 以 degrees 表示相对主轴的角度限制。较小角度会形成更窄的光 cone，可用于 spot light 风格的照明。</span></li>
+        <li><span class="zh">`inputs:shaping:cone:softness` 控制光 cone 边缘过渡，和 angle 一起决定光束硬边或软边；翻译时应把 softness 解释为边缘柔化，而不是简单的亮度降低。</span></li>
+        <li><span class="zh">`inputs:shaping:focus` 与 `inputs:shaping:focusTint` 影响光束集中程度和焦点着色，可用于艺术控制。它们不替代材质颜色或灯光基础 color，而是在 shaping 层参与外观调节。</span></li>
+        <li><span class="zh">`inputs:shaping:ies:file`、`inputs:shaping:ies:angleScale`、`inputs:shaping:ies:normalize` 涉及 IES profile；`ANSI/IES LM-63-19`、文件路径和 token 字面量都应保持英文原样。</span></li>
+        <li><span class="zh">`ShapingAPI` 是否产生预期视觉效果依赖目标 renderer 支持。中文导读应说明 schema 意图和属性边界，同时避免承诺所有渲染器都会完全一致地实现 IES 或 focus 行为。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">灯光塑形 API schema：</span><span class="en">ShapingAPI</span></li>
+        <li><span class="zh">光锥角度输入属性：</span><span class="en">inputs:shaping:cone:angle</span></li>
+        <li><span class="zh">光锥边缘柔化输入属性：</span><span class="en">inputs:shaping:cone:softness</span></li>
+        <li><span class="zh">聚焦输入属性：</span><span class="en">inputs:shaping:focus</span></li>
+        <li><span class="zh">IES 配光曲线：</span><span class="en">IES profile</span></li>
+        <li><span class="zh">IES 文件格式标准：</span><span class="en">ANSI/IES LM-63-19</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

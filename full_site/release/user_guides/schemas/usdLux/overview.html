@@ -56,6 +56,27 @@
         <li><span class="zh">schema 领域：</span><span class="en">schema domain</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-106">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`usdLux` overview 是灯光 schema 域的导航页，说明 OpenUSD 如何表达常见 3D 图形照明、阴影、light filters 和相关行为。阅读时应把它当作概念地图：先理解 `LightAPI` 提供的灯光能力，再分辨 boundable、non-boundable、mesh、volume、plugin、shaping、shadow 和 linking 等专门主题。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for UsdLux overview while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdLux` 的设计目标是 portable and efficient lighting representation。中文层应强调它服务于跨工具、跨 renderer 的场景描述，而不是某一个渲染器的私有灯光格式。</span></li>
+        <li><span class="zh">`Endowing Light Capabilities` 小节解释 `LightAPI` 如何把灯光能力赋给 prim；这条线索适合和 `MeshLightAPI`、`VolumeLightAPI` 等 applied API 页面一起阅读。</span></li>
+        <li><span class="zh">`Representing Boundable Lights` 小节中的 `RectLight` 示例展示了 transform、尺寸和 schema 属性如何共同定义局部面积灯。代码块里的 `xformOpOrder`、`xformOp:translate`、`xformOp:rotateXYZ` 必须保留原样。</span></li>
+        <li><span class="zh">overview 中列出的 shadows、light filters、linking、portals 等不是独立孤岛；它们共同决定灯光如何作用于对象、如何产生阴影、如何被过滤或限制影响范围。</span></li>
+        <li><span class="zh">本页也是本地复刻站点的阅读枢纽：后续内部链接应优先跳到 406 清单内的本地页面，只有明确官方原页入口才应保留外跳。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">OpenUSD 灯光 schema 域：</span><span class="en">UsdLux</span></li>
+        <li><span class="zh">通用灯光能力 API：</span><span class="en">LightAPI</span></li>
+        <li><span class="zh">可包围灯：</span><span class="en">boundable lights</span></li>
+        <li><span class="zh">非包围灯：</span><span class="en">non-boundable lights</span></li>
+        <li><span class="zh">灯光过滤器：</span><span class="en">light filters</span></li>
+        <li><span class="zh">变换操作顺序属性：</span><span class="en">xformOpOrder</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
