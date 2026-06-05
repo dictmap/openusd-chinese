@@ -2,6 +2,29 @@
 
 源页面：<https://openusd.org/release/api/index.html>
 
+## 第 197 轮：release 规格/教程页精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口、Git 状态和远端 main，确认上一轮本地提交为 `3ca738e`，当前分级为 `draft_template_only` 61 / `draft_needs_translation` 337 / `good_bilingual` 8。
+- 本轮严格只处理 5 个未达标页面：`full_site/release/spec_usdpreviewsurface.html`、`full_site/release/spec_usdz.html`、`full_site/release/tut_end_to_end.html`、`full_site/release/tut_generating_new_schema.html`、`full_site/release/tut_houdini_example.html`，5 页均为 `draft_template_only`，没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_release_batch_066.mjs`，为 5 页插入 `release-quality-pass-066` 中文精修导读区块；每页包含页面用途、阅读边界、关键概念和术语对照，并继续保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录。
+- 本轮中文层覆盖：`UsdPreviewSurface Specification` 的 preview material、Core Nodes、Preview Surface、Texture Reader、Primvar Reader、Transform2d 和版本演进；`Usdz File Format Specification` 的 zip archive、Zip Constraints、Layout、File Types、anchored asset paths、MIME Type 和 `usdzip`；`End to End Example` 的极简 pipeline、`USD/extras/usd/tutorials/endToEnd`、assets/scripts/models 和 `shadingVariantLayer`；`Generating New Schema Classes` 的 `schema.usda`、`usdGenSchema`、`jinja2`、`argparse`、`USD_INSTALL_ROOT` 和 schema class 类型；`Houdini USD Example Workflow` 的历史教程边界、Houdini USD plugin 移除、Houdini Solaris 替代和 `usdview` 示例。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 61 / `draft_needs_translation` 337 / `good_bilingual` 8 变为 `draft_template_only` 56 / `draft_needs_translation` 342 / `good_bilingual` 8；本轮 5 页均从模板草稿转入 `draft_needs_translation`。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；本轮 5 页均可通过本地最终入口访问。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`，报告索引审计通过，总验证 281 checks passed / 0 failed。
+- GitHub 同步：本轮验证通过后使用 `scripts/sync_openusd_to_github.ps1`，提交信息为 `OpenUSD bilingual round 197: specs and tutorial pages`。
+
+差距：
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是完整翻译 UsdPreviewSurface 全规范、usdz 全格式规范、端到端教程、schema 生成教程或 Houdini 历史教程全文。
+- 全量仍有 56 个 `draft_template_only` 和 342 个 `draft_needs_translation`，后续需要继续按每轮最大 5 页推进。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理仍为模板草稿且用户可读价值较高的 `full_site/release/tut_usd_tutorials.html`、`full_site/release/tut_usdview_plugin.html`、`full_site/release/user_guides/color_user_guide.html`、`full_site/release/user_guides/primvars.html`、`full_site/release/user_guides/render_user_guide.html`。
+2. 对教程目录、usdview 插件教程、Color 用户指南、Primvars 和 Rendering with USD 补中文用途说明、页面边界、阅读路径和术语对照；继续低优先处理 `search.html` 和 `_source.html` 源码页。
+3. 保持本地链接策略，继续运行质量审计、链接路由、draft 预览、报告索引和总验证；验证通过后同步 GitHub，并记录质量分级变化、验证结果和提交结果。
+
 ## 第 196 轮：release 产品/FAQ/发布节奏/性能指标/Alembic 页精修
 已完成：
 

@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T03:00:34.422Z
+Generated: 2026-06-05T03:42:05.433Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-05T03:00:34.422Z
 
 ## Grade Counts
 
-- draft_template_only: 61
-- draft_needs_translation: 337
+- draft_template_only: 56
+- draft_needs_translation: 342
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -46,12 +46,9 @@ Generated: 2026-06-05T03:00:34.422Z
 | 298 | draft_template_only | 64 | `full_site/release/search.html` | 搜索 / Search - Universal Scene Description 26.05 documentation |
 | 69 | draft_template_only | 66 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | API 页面草稿：hf Directory / hf Directory |
 | 212 | draft_template_only | 66 | `full_site/api/journal_8h.html` | API 页面草稿：journal.h File / journal.h File |
-| 305 | draft_template_only | 66 | `full_site/release/tut_end_to_end.html` | 页面草稿：End to End Example / End to End Example |
-| 309 | draft_template_only | 66 | `full_site/release/tut_houdini_example.html` | 页面草稿：Houdini USD Example Workflow / Houdini USD Example Workflow |
 | 321 | draft_template_only | 66 | `full_site/release/user_guides/color_user_guide.html` | 页面草稿：Color User’s Guide / Color User’s Guide |
 | 323 | draft_template_only | 66 | `full_site/release/user_guides/primvars.html` | 页面草稿：Primvars / Primvars |
 | 324 | draft_template_only | 66 | `full_site/release/user_guides/render_user_guide.html` | 页面草稿：Rendering with USD / Rendering with USD |
-| 306 | draft_template_only | 70 | `full_site/release/tut_generating_new_schema.html` | 页面草稿：Generating New Schema Classes / Generating New Schema Classes |
 | 336 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdLux/ListAPI.html` | 页面草稿：ListAPI / ListAPI |
 | 337 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdLux/MeshLightAPI.html` | 页面草稿：MeshLightAPI / MeshLightAPI |
 | 339 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdLux/overview.html` | 页面草稿：Overview / Overview |
@@ -59,6 +56,9 @@ Generated: 2026-06-05T03:00:34.422Z
 | 353 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdRender/overview.html` | 页面草稿：Overview / Overview |
 | 381 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html` | 页面草稿：ParticleFieldOpacityAttributeAPI / ParticleFieldOpacityAttributeAPI |
 | 382 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html` | 页面草稿：ParticleFieldOrientationAttributeAPI / ParticleFieldOrientationAttributeAPI |
+| 383 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html` | 页面草稿：ParticleFieldPositionAttributeAPI / ParticleFieldPositionAttributeAPI |
+| 386 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html` | 页面草稿：ParticleFieldScaleAttributeAPI / ParticleFieldScaleAttributeAPI |
+| 387 | draft_template_only | 74 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html` | 页面草稿：ParticleFieldSphericalHarmonicsAttributeAPI / ParticleFieldSphericalHarmonicsAttributeAPI |
 
 ## All Pages
 
@@ -362,17 +362,17 @@ Generated: 2026-06-05T03:00:34.422Z
 | 296 | draft_needs_translation | bilingual_draft | 446 | 27/25 | 0 | 0 | `full_site/release/ref_performance_metrics.html` |
 | 297 | draft_needs_translation | bilingual_draft | 383 | 14/12 | 0 | 0 | `full_site/release/release_schedule.html` |
 | 298 | draft_template_only | bilingual_draft | 64 | 2/3 | 0 | 0 | `full_site/release/search.html` |
-| 299 | draft_template_only | bilingual_draft | 122 | 18/21 | 0 | 0 | `full_site/release/spec_usdpreviewsurface.html` |
-| 300 | draft_template_only | bilingual_draft | 122 | 18/21 | 0 | 0 | `full_site/release/spec_usdz.html` |
+| 299 | draft_needs_translation | bilingual_draft | 454 | 30/28 | 0 | 0 | `full_site/release/spec_usdpreviewsurface.html` |
+| 300 | draft_needs_translation | bilingual_draft | 430 | 30/28 | 0 | 0 | `full_site/release/spec_usdz.html` |
 | 301 | draft_needs_translation | bilingual_draft | 286 | 12/9 | 0 | 0 | `full_site/release/spec.html` |
 | 302 | good_bilingual | bilingual_complete | 2519 | 157/199 | 0 | 0 | `site/toolset.html` |
 | 303 | draft_needs_translation | bilingual_draft | 272 | 12/11 | 0 | 0 | `full_site/release/tut_authoring_variants.html` |
 | 304 | draft_needs_translation | bilingual_draft | 303 | 14/13 | 0 | 0 | `full_site/release/tut_converting_between_layer_formats.html` |
-| 305 | draft_template_only | bilingual_draft | 66 | 4/7 | 0 | 0 | `full_site/release/tut_end_to_end.html` |
-| 306 | draft_template_only | bilingual_draft | 70 | 5/8 | 0 | 0 | `full_site/release/tut_generating_new_schema.html` |
+| 305 | draft_needs_translation | bilingual_draft | 382 | 16/14 | 0 | 0 | `full_site/release/tut_end_to_end.html` |
+| 306 | draft_needs_translation | bilingual_draft | 352 | 17/15 | 0 | 0 | `full_site/release/tut_generating_new_schema.html` |
 | 307 | draft_needs_translation | bilingual_draft | 274 | 12/11 | 0 | 0 | `full_site/release/tut_helloworld_redux.html` |
 | 308 | draft_needs_translation | bilingual_draft | 255 | 13/11 | 0 | 0 | `full_site/release/tut_helloworld.html` |
-| 309 | draft_template_only | bilingual_draft | 66 | 4/7 | 0 | 0 | `full_site/release/tut_houdini_example.html` |
+| 309 | draft_needs_translation | bilingual_draft | 361 | 16/14 | 0 | 0 | `full_site/release/tut_houdini_example.html` |
 | 310 | draft_needs_translation | bilingual_draft | 270 | 13/12 | 0 | 0 | `full_site/release/tut_inspect_and_author_props.html` |
 | 311 | draft_needs_translation | bilingual_draft | 277 | 12/11 | 0 | 0 | `full_site/release/tut_referencing_layers.html` |
 | 312 | draft_needs_translation | bilingual_draft | 285 | 13/12 | 0 | 0 | `full_site/release/tut_simple_shading.html` |

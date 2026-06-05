@@ -33,6 +33,27 @@
       <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
       <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="release-quality-pass-066">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 UsdPreviewSurface Specification 补充中文优先的页面用途、阅读边界、关键概念和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds Chinese-first page purpose, reading boundaries, key concepts, and terminology for UsdPreviewSurface Specification while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdPreviewSurface Specification` 是预览材质规范页，目标是在 film 与 game pipelines 之间提供一个可互换、可由 USD/Hydra 随附生产渲染器原生支持的基础材质节点集合。</span></li>
+        <li><span class="zh">`Goal` 与 `Core Nodes` 是阅读主线：先理解 preview material 的互换定位，再看 `Preview Surface`、`Texture Reader`、`Primvar Reader` 和 `Transform2d` 如何组成可移植材质网络。</span></li>
+        <li><span class="zh">`Preview Surface` 关注 metallic/specular workflow、roughness、opacity、normal 等通用材质输入；这些输入名属于规范字段，应保留英文原样，中文只解释视觉语义和互换边界。</span></li>
+        <li><span class="zh">`Texture Coordinate Orientation in USD` 与 `Roughness vs Glossiness` 是跨工具差异的关键说明；阅读时要把坐标方向、粗糙度/光泽度转换视为资产交换规则，而不是单个渲染器实现细节。</span></li>
+        <li><span class="zh">`Changes, by Version` 记录规范演进，尤其 `Version 2.6 - Current Head`；如果实现或工具链依赖特定输入类型，应同时核对当前版本与历史版本差异。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">UsdPreviewSurface 规范：</span><span class="en">UsdPreviewSurface Specification</span></li>
+        <li><span class="zh">预览材质：</span><span class="en">preview material</span></li>
+        <li><span class="zh">核心节点：</span><span class="en">Core Nodes</span></li>
+        <li><span class="zh">预览表面节点：</span><span class="en">Preview Surface</span></li>
+        <li><span class="zh">纹理读取节点：</span><span class="en">Texture Reader</span></li>
+        <li><span class="zh">primvar 读取节点：</span><span class="en">Primvar Reader</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
