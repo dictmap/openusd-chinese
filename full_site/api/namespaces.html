@@ -54,6 +54,27 @@
         <li><span class="zh">单元测试：</span><span class="en">unit tests</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-096">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Namespace List 增补二次精修说明，重点解释 release schema 目录页、具体 schema 属性页、Doxygen namespace 列表和 ParticleField kernel API 的阅读路线、模块边界、属性语义、跨页跳转顺序和术语对照。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于与官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for Namespace List. It explains reading paths, module boundaries, property semantics, cross-page navigation, and terminology for release schema table-of-contents pages, concrete schema property pages, Doxygen namespace lists, and ParticleField kernel APIs while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`namespaces.html` 是 Doxygen namespace 维度的入口页，适合从 `pxr_tsl`、`ShaderMetadataHelpers`、`VdfTestUtils`、`std` 等 namespace 进入函数、typedef 和测试辅助类；它不是 class list 或 module front page。</span></li>
+        <li><span class="zh">`pxr_tsl` 指向 robin_map/robin_set 相关容器实现，`ShaderMetadataHelpers` 指向 shader metadata parsing utilities，`VdfTestUtils` 指向构造 Vdf test network 的 helper classes；这些 namespace 的用途差异很大。</span></li>
+        <li><span class="zh">在 `VdfTestUtils` 下看到 `CallbackNode`、`ExecutionStats`、`Network`、`Node`、`OutputAccessor` 等条目时，应理解它们是测试/辅助上下文中的 Vdf 网络对象，而不是生产 API 的主入口。</span></li>
+        <li><span class="zh">如果用户按 namespace 查 API，本页很有价值；如果用户按类名查 API，应去 `annotated.html` 或 class 页面；如果按文件查符号，应去 `files.html` 或 File Members 索引。</span></li>
+        <li><span class="zh">中文导读保留 namespace 和 class 名称原样，重点补充 namespace 列表的导航用途、与 class/file/module 索引的区别，以及测试辅助 namespace 的边界。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">命名空间列表：</span><span class="en">namespace list</span></li>
+        <li><span class="zh">已记录命名空间：</span><span class="en">documented namespace</span></li>
+        <li><span class="zh">测试辅助工具：</span><span class="en">test utilities</span></li>
+        <li><span class="zh">shader 元数据：</span><span class="en">shader metadata</span></li>
+        <li><span class="zh">容器命名空间：</span><span class="en">container namespace</span></li>
+        <li><span class="zh">按命名空间导航：</span><span class="en">namespace navigation</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

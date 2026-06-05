@@ -54,6 +54,27 @@
         <li><span class="zh">无障碍信息：</span><span class="en">Accessibility Information</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-096">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 UI (usdUI) 增补二次精修说明，重点解释 release schema 目录页、具体 schema 属性页、Doxygen namespace 列表和 ParticleField kernel API 的阅读路线、模块边界、属性语义、跨页跳转顺序和术语对照。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于与官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for UI (usdUI). It explains reading paths, module boundaries, property semantics, cross-page navigation, and terminology for release schema table-of-contents pages, concrete schema property pages, Doxygen namespace lists, and ParticleField kernel APIs while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`usdUI_toc.html` 是 `usdUI` schema 领域目录页，核心作用是把 UI hints、display groups、node graph UI、accessibility information 和 property/prim/object hints 组织成入口列表。</span></li>
+        <li><span class="zh">`ObjectHints`、`PrimHints`、`PropertyHints`、`AttributeHints` 分别服务于不同粒度的 UI metadata；读者应先判断提示挂在对象、prim、property 还是 attribute 上，再进入对应页面。</span></li>
+        <li><span class="zh">`AccessibilityAPI` 关注无障碍信息，`Backdrop`、`NodeGraphNodeAPI`、`SceneGraphPrimAPI` 关注节点图和场景图 UI 辅助；这些 schema 不改变核心 scene composition，只为工具和用户界面提供 metadata。</span></li>
+        <li><span class="zh">usdUI 文档适合和具体 DCC 或编辑器工具一起理解：它让工具知道如何分组、显示、隐藏、标注或组织属性，而不是定义几何、材质、渲染或物理行为。</span></li>
+        <li><span class="zh">中文层保留 `usdUI`、`ObjectHints`、`PropertyHints`、`AccessibilityAPI`、`Backdrop` 等英文 schema 名称，避免破坏 API 搜索和页面跳转。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD UI schema 领域：</span><span class="en">usdUI</span></li>
+        <li><span class="zh">界面提示：</span><span class="en">UI hints</span></li>
+        <li><span class="zh">显示分组：</span><span class="en">display groups</span></li>
+        <li><span class="zh">无障碍信息：</span><span class="en">accessibility information</span></li>
+        <li><span class="zh">节点图界面：</span><span class="en">node graph UI</span></li>
+        <li><span class="zh">元数据 schema：</span><span class="en">metadata schema</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

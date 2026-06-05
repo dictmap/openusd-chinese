@@ -1,5 +1,17 @@
 # 工作记录
 
+## 第 227 轮：usdVol/usdUI 目录、VolumeFieldAsset、Namespace List 与 GaussianEllipsoid 二次精修
+- 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、git 状态和远端 main，确认上一轮远端提交为 `8588cf1`，当前分级为 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8。
+- 本轮严格只处理 5 个未达标页面：`full_site/release/user_guides/schemas/usdVol/VolumeFieldAsset.html`、`full_site/release/user_guides/schemas/usdVol/usdVol_toc.html`、`full_site/release/user_guides/schemas/usdUI/usdUI_toc.html`、`full_site/api/namespaces.html`、`full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianEllipsoidAPI.html`；这些页面本轮开始时均已是 `draft_needs_translation`，目标是转向较薄的 release schema 目录、具体 schema 属性页、Doxygen namespace 列表和 ParticleField kernel API，没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_release_batch_096.mjs`，每页插入 `release-quality-pass-096` 二次精修导读区块，覆盖 `VolumeFieldAsset` 属性语义、`usdVol` 目录阅读路线、`usdUI` UI hints/accessibility/node graph 入口、Doxygen `Namespace List` 导航边界和 `ParticleFieldKernelGaussianEllipsoidAPI` 的 Gaussian ellipsoid kernel；保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录。
+- 本轮中文覆盖：`VolumeFieldAsset.html` 的 `filePath`、`fieldName`、`fieldIndex`、`fieldDataType`、`vectorDataRoleHint` 和 `field:*` relationship 区分；`usdVol_toc.html` 的 `Volume`、`FieldBase`、`OpenVDBAsset`、`Field3DAsset`、`ParticleField` 阅读顺序；`usdUI_toc.html` 的 `ObjectHints`、`PrimHints`、`PropertyHints`、`AttributeHints`、`AccessibilityAPI`、`Backdrop` 和 node graph UI；`namespaces.html` 的 `pxr_tsl`、`ShaderMetadataHelpers`、`VdfTestUtils` 和 namespace/class/file/module 索引区别；`ParticleFieldKernelGaussianEllipsoidAPI.html` 的 `standard deviation`、`3-sigma point`、`Gaussian falloff`、`splat support` 和 soft boundary。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级保持 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8；本轮对象原本已是 `draft_needs_translation`，所以分级计数保持不变是预期结果。目标页中文正文量提升到 `538-561` 字区间，但仍是 `bilingual_draft`，未误标为完成。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398 个 `bilingual_draft` 页面全部具备本地可检查 HTML 和最终入口链接，`failed_pages` 为 0。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`，报告索引通过，总体验证 `PASSED`，`validation_required_checks` 281 / `validation_failed_checks` 0。
+- GitHub 同步结果：验证通过后使用提交信息 `OpenUSD bilingual round 227: schema toc namespaces gaussian pass` 同步本轮 HTML、脚本、报告和 `work.md`，并通过 `git log` 与远端 main 校验推送结果。
+- 下一轮目标：继续处理较薄且用户可读价值较高的 release/schema/API 页面，最多处理 `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html`、`full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelConstantSurfletAPI.html`、`full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html`、`full_site/release/user_guides/schemas/usdRender/RenderVar.html`、`full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelBaseAPI.html`；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+
 ## 第 226 轮：File Members C/E/J/G 与宏定义索引二次精修
 - 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、git 状态和远端 main，确认上一轮远端提交为 `6685010`，当前分级为 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8。
 - 本轮严格只处理 5 个未达标页面：`full_site/api/globals_func_c.html`、`full_site/api/globals_e.html`、`full_site/api/globals_func_j.html`、`full_site/api/globals_func_g.html`、`full_site/api/globals_defs.html`；这些页面本轮开始时均已是 `draft_needs_translation`，目标是补强 File Members 函数页、宽索引和宏定义索引的中文阅读方法，没有新增或处理第 6 页。

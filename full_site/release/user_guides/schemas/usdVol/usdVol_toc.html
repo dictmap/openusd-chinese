@@ -54,6 +54,27 @@
         <li><span class="zh">粒子场：</span><span class="en">Particle Fields</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-096">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Volumes (usdVol) 增补二次精修说明，重点解释 release schema 目录页、具体 schema 属性页、Doxygen namespace 列表和 ParticleField kernel API 的阅读路线、模块边界、属性语义、跨页跳转顺序和术语对照。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于与官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for Volumes (usdVol). It explains reading paths, module boundaries, property semantics, cross-page navigation, and terminology for release schema table-of-contents pages, concrete schema property pages, Doxygen namespace lists, and ParticleField kernel APIs while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`usdVol_toc.html` 是 `usdVol` schema 领域目录页，适合先建立阅读路线：先看 Overview，再看 Working With Volumes/Fields，最后进入 `Volume`、`FieldBase`、`VolumeFieldAsset`、`OpenVDBAsset` 和粒子场相关页面。</span></li>
+        <li><span class="zh">`Volume` 表示可放进场景层级中的体积 prim；`Field`/`FieldBase` 表示体积数据字段；`VolumeFieldAsset`、`OpenVDBAsset`、`Field3DAsset` 处理外部文件型体积数据；三者职责不能混读。</span></li>
+        <li><span class="zh">ParticleField 系列页面覆盖 point-based 或 splat-based 体积表达：位置、kernel、opacity、orientation、radiance、scale、spherical harmonics 等 API 分别描述逐粒子数据、核函数和渲染相关属性。</span></li>
+        <li><span class="zh">目录页里的 schema 名称同时是页面名、API 名和检索关键词，应保留英文；中文导读的作用是说明哪些页面是概览、哪些页面是具体 schema、哪些页面是属性 API。</span></li>
+        <li><span class="zh">如果目标是实现体积资产，推荐阅读顺序是 `overview` -&gt; `Volume` -&gt; `FieldBase` -&gt; 文件型 field schema 或 `ParticleField` schema；如果目标是排查属性，应直接进入目标 schema 属性表。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 体积 schema 领域：</span><span class="en">usdVol</span></li>
+        <li><span class="zh">体积 prim：</span><span class="en">Volume</span></li>
+        <li><span class="zh">场基类：</span><span class="en">FieldBase</span></li>
+        <li><span class="zh">外部场资产：</span><span class="en">external field asset</span></li>
+        <li><span class="zh">粒子场：</span><span class="en">ParticleField</span></li>
+        <li><span class="zh">schema 目录页：</span><span class="en">schema table of contents</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
