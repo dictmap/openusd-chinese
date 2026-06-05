@@ -53,6 +53,27 @@
         <li><span class="zh">命名空间编辑：</span><span class="en">namespace edit</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-091">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Functions - S 增补 API 索引、namespace typedefs 或函数成员总入口页面的二次精修说明，重点解释 Doxygen 字母桶、函数/类型别名索引、模块归属、容器与执行系统条目的边界，以及何时应跳转到目标 class、namespace、header、group、模块入口或用户指南。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - Functions - S API index, namespace typedefs page, or function-member root page. It explains how to read Doxygen letter buckets, function/type-alias indexes, module ownership, container and execution-system boundaries, and when to jump to target class, namespace, header, group, module-front, or user-guide documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`functions_func_s.html` 是 S 段函数成员索引，常见语义包括 save、sample、schedule、set、spline、scoped lock 和 scene delegate；当前页面横跨 time/sample、Embree sampler、UsdImaging adapter、Sdf layer/file format、Vdf scheduler 和 Trace collector。</span></li>
+        <li><span class="zh">`UsdTimeCode`、`TsSpline`、`UsdStage`、`SdfLayer`、`SdfZipFileWriter`、`SdfFileFormat`、`SdfUsdaFileFormat`、`SdfUsdcFileFormat` 与 `SdfUsdFileFormat` 可作为时间值、样条曲线、stage/layer 保存和文件格式相关函数的定位入口。</span></li>
+        <li><span class="zh">`HdEmbreeBufferSampler`、`HdEmbreeConstantSampler`、`HdEmbreePrimvarSampler`、`HdEmbreeSubdivVertexSampler`、`HdEmbreeTriangleFaceVaryingSampler`、`HdEmbreeTriangleVertexSampler` 和 `HdEmbreeUniformSampler` 属于 Embree 渲染后端采样器族。</span></li>
+        <li><span class="zh">`HdSceneDelegate`、`HdSceneIndexAdapterSceneDelegate`、`UsdImagingDelegate`、`UsdImagingPrimAdapter`、`UsdImagingInstanceAdapter` 和 `UsdImagingPointInstancerAdapter` 表明 S 段也包含 Hydra scene delegate 与 USD imaging adapter 的切换点。</span></li>
+        <li><span class="zh">`TfBigRWMutex::ScopedLock`、`TfSpinMutex::ScopedLock`、`TfSpinRWMutex::ScopedLock` 是 RAII scoped lock 线索；`SdfAllowed`、`SdfAssetPath`、`SdfBatchNamespaceEdit`、`SdfNamespaceEdit`、`SdfPathExpression`、`HdRenderIndex`、`VdfScheduler` 和 `TraceCollector` 则分别落在 Sdf validation/path、Hydra render index、Vdf scheduling 和 tracing。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Embree 采样器：</span><span class="en">Embree sampler</span></li>
+        <li><span class="zh">scene delegate：</span><span class="en">scene delegate</span></li>
+        <li><span class="zh">imaging 适配器：</span><span class="en">imaging adapter</span></li>
+        <li><span class="zh">作用域锁：</span><span class="en">scoped lock</span></li>
+        <li><span class="zh">文件格式保存路径：</span><span class="en">file format save path</span></li>
+        <li><span class="zh">调度器：</span><span class="en">scheduler</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

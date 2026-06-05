@@ -53,6 +53,27 @@
         <li><span class="zh">跟踪报告器：</span><span class="en">trace reporter</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-091">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Functions 增补 API 索引、namespace typedefs 或函数成员总入口页面的二次精修说明，重点解释 Doxygen 字母桶、函数/类型别名索引、模块归属、容器与执行系统条目的边界，以及何时应跳转到目标 class、namespace、header、group、模块入口或用户指南。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - Functions API index, namespace typedefs page, or function-member root page. It explains how to read Doxygen letter buckets, function/type-alias indexes, module ownership, container and execution-system boundaries, and when to jump to target class, namespace, header, group, module-front, or user-guide documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`functions_func.html` 是 Class Members - Functions 总索引页，用来进入具体字母分段和目标 class；它不是某个模块的概念页，不能用单一主题概括所有条目。</span></li>
+        <li><span class="zh">`TraceCounterAccumulator`、`TraceReporterBase`、`VdfExtensibleNode`、`VdfNode`、`VdfConnectorSpecs&lt;T&gt;`、`VdfExecutionStats`、`VdfScheduler`、`ExecSystem`、`EfMaskedSubExecutor`、`EfPageCacheBasedExecutor`、`VdfDatalessExecutor` 和 `VdfExecutorInterface` 说明总索引大量覆盖 execution network、tracing 和 performance 统计。</span></li>
+        <li><span class="zh">`HdStDispatchBuffer`、`HdStInterleavedMemoryManager::_StripedInterleavedBuffer`、`HdStVBOMemoryManager::_StripedBufferArray`、`HdStTextureObject`、`HdBufferSource`、`HdVtBufferSource` 和 `HdStExtComp*BufferSource` 属于 Hydra/Storm buffer、texture 和 ext computation support。</span></li>
+        <li><span class="zh">`HdGpSceneIndexPlugin`、`HdPrman_*SceneIndexPlugin`、`HdSceneIndexPlugin`、`HdsiDebuggingSceneIndexPlugin`、`HdSceneIndexPluginRegistry`、`HfPluginRegistry` 和 `HdResourceRegistry` 表示本页也是 scene index/plugin registry 和 resource registry 的入口。</span></li>
+        <li><span class="zh">`ArResolver`、`UsdShadeConnectableAPIBehavior`、`SdfUsdaFileFormat`、`TfEnum`、`HfPluginRegistry` 等条目展示资产解析、UsdShade connectable behavior、文件格式和基础枚举支持；中文导读的作用是帮助读者先按模块筛选，再跳到 class 页面。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">函数索引根页：</span><span class="en">function index root</span></li>
+        <li><span class="zh">执行网络：</span><span class="en">execution network</span></li>
+        <li><span class="zh">Trace 报告器：</span><span class="en">trace reporter</span></li>
+        <li><span class="zh">scene index 插件：</span><span class="en">scene index plugin</span></li>
+        <li><span class="zh">资源注册表：</span><span class="en">resource registry</span></li>
+        <li><span class="zh">可连接 API 行为：</span><span class="en">connectable API behavior</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

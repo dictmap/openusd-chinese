@@ -53,6 +53,27 @@
         <li><span class="zh">拓扑验证：</span><span class="en">topology validation</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-091">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Functions - B 增补 API 索引、namespace typedefs 或函数成员总入口页面的二次精修说明，重点解释 Doxygen 字母桶、函数/类型别名索引、模块归属、容器与执行系统条目的边界，以及何时应跳转到目标 class、namespace、header、group、模块入口或用户指南。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - Functions - B API index, namespace typedefs page, or function-member root page. It explains how to read Doxygen letter buckets, function/type-alias indexes, module ownership, container and execution-system boundaries, and when to jump to target class, namespace, header, group, module-front, or user-guide documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`functions_func_b.html` 是 B 段函数成员索引，和 `functions_b.html` 相比更偏具体函数入口；本页仍以容器、缓存、buffer、绑定和渲染状态为主要线索。</span></li>
+        <li><span class="zh">`SdfChildrenView`、`SdfListProxy`、`TfSmallVector`、`TfSpan`、`VtArray`、`TfIterator`、`TfDenseHashMap`、`TfDenseHashSet`、`VtDictionary` 与 `TfPyLock` 是基础容器、视图、hash 和 Python lock 支撑，不应与 Hydra buffer 概念混读。</span></li>
+        <li><span class="zh">`Ef_PageCache`、`EfInputValueBlock`、`Vdf_WeightSlotArray`、`VdfConnectorMap`、`VdfConnectorSpecs`、`VdfIteratorRange`、`VdfMask` 与 `VdfNodeSet` 属于 execution/evaluation graph，适合从这里跳转到 Vdf/Ef 相关 class 页面核对函数签名。</span></li>
+        <li><span class="zh">`GlfGLQueryObject`、`GlfDrawTarget`、`GlfUniformBlock`、`HdDataSourceLocatorSet`、`HdStRenderPassState` 和 `PxOsdMeshTopologyValidation` 指向 GL/Hydra/Storm 渲染支撑、data source locator 与 topology validation。</span></li>
+        <li><span class="zh">`ArPackageResolver`、`ArResolver`、`TfNotice::Probe`、`TraceCollector`、`UsdShadeCoordSysAPI` 和 `UsdShadeMaterialBindingAPI` 说明 B 段还包含 asset resolver、notice/tracing 和 UsdShade binding/coordSys 入口；这些条目需要按模块跳转而不是逐项翻译。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">函数成员字母桶：</span><span class="en">function-member bucket</span></li>
+        <li><span class="zh">页面缓存：</span><span class="en">page cache</span></li>
+        <li><span class="zh">buffer 来源：</span><span class="en">buffer source</span></li>
+        <li><span class="zh">渲染 pass 状态：</span><span class="en">render pass state</span></li>
+        <li><span class="zh">包解析器：</span><span class="en">package resolver</span></li>
+        <li><span class="zh">材质绑定 API：</span><span class="en">material binding API</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

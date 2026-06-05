@@ -1,5 +1,15 @@
 # 工作记录
 
+## 第 222 轮：API S/B 函数索引、B 总索引与 namespace typedefs 二次精修
+- 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、git 状态和远端 main，确认上一轮远端提交为 `9d91bb0`，当前分级为 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8。
+- 本轮严格只处理 5 个未达标页面：`full_site/api/functions_func_s.html`、`full_site/api/namespacemembers_type.html`、`full_site/api/functions_b.html`、`full_site/api/functions_func_b.html`、`full_site/api/functions_func.html`；这些页面本轮开始时均已是 `draft_needs_translation`，目标是补强 Doxygen 函数索引、类成员总索引和 namespace typedefs 页中文阅读方法，没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_release_batch_091.mjs`，每页插入 `release-quality-pass-091` 二次精修导读区块，覆盖 Doxygen 字母桶、函数/类型别名索引、模块归属、容器与执行系统条目边界、跳转边界和术语对照；保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录。
+- 本轮中文覆盖：`functions_func_s.html` 的 Embree sampler、Hydra scene delegate、UsdImaging adapter、Sdf file format、Vdf scheduler 和 scoped lock；`namespacemembers_type.html` 的 `pxr_tsl`、`robin_pg_map`、`robin_pg_set`、typedef index 与 robin hood hashing；`functions_b.html` 的 Sdf/Tf/Vt 容器视图、Vdf parallel evaluation、Ef page cache、prim traversal 和 diagnostics；`functions_func_b.html` 的容器、Ef/Vdf execution graph、Glf/Hd/HdSt 渲染支撑、Ar resolver、Trace 和 UsdShade binding；`functions_func.html` 的 function index root、execution network、Trace reporter、Storm buffer/texture、scene index plugins、resource registry 和 connectable API behavior。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级保持 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8；本轮对象原本已是 `draft_needs_translation`，所以分级计数保持不变是预期结果。目标页中文正文量提升到 `577-690` 字区间，但仍是 `bilingual_draft`，未误标为完成。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398 个草稿页全部通过本地预览检查。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`，报告索引通过，总验证 `PASSED`，`validation_required_checks` 281 / `validation_failed_checks` 0。
+- GitHub 同步：验证通过后以 `OpenUSD bilingual round 222: api index s b typedef root pass` 同步本轮 HTML、脚本、报告和 `work.md`；下一轮优先最多处理 `full_site/api/hdx_page_front.html`、`full_site/api/hd_page_front.html`、`full_site/api/globals_func_p.html`、`full_site/api/functions_a.html`、`full_site/api/globals_func_t.html`，继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+
 ## 第 221 轮：API V/T、HdStorm、HelloWorld 与 File Members-H 二次精修
 - 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、git 状态和远端 main，确认上一轮远端提交为 `45d5c96`，当前分级为 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8。
 - 本轮严格只处理 5 个未达标页面：`full_site/api/functions_func_v.html`、`full_site/api/functions_vars_t.html`、`full_site/api/hd_storm_page_front.html`、`full_site/release/tut_helloworld.html`、`full_site/api/globals_h.html`；这些页面本轮开始时均已是 `draft_needs_translation`，目标是补强 Doxygen 函数/变量索引、模块入口、教程页和 File Members 索引中文阅读方法，没有新增或处理第 6 页。

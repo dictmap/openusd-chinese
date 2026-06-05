@@ -53,6 +53,27 @@
         <li><span class="zh">模板参数：</span><span class="en">template parameter</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-091">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - B 增补 API 索引、namespace typedefs 或函数成员总入口页面的二次精修说明，重点解释 Doxygen 字母桶、函数/类型别名索引、模块归属、容器与执行系统条目的边界，以及何时应跳转到目标 class、namespace、header、group、模块入口或用户指南。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - B API index, namespace typedefs page, or function-member root page. It explains how to read Doxygen letter buckets, function/type-alias indexes, module ownership, container and execution-system boundaries, and when to jump to target class, namespace, header, group, module-front, or user-guide documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`functions_b.html` 是 Class Members 总索引 B 段，条目集中在 begin/buffer/block/bind 等语义附近；当前内容覆盖 Sdf/Tf/Vt 容器视图、Vdf data manager、Ef page cache、Hydra data source、USD prim range 和 Tf diagnostics。</span></li>
+        <li><span class="zh">`SdfChildrenView&lt;_ChildPolicy, _Predicate, _Adapter&gt;`、`SdfListProxy&lt;_TypePolicy&gt;`、`SdfPathTable&lt;MappedType&gt;`、`SdfZipFile`、`TfSmallVector&lt;T, N&gt;`、`TfSpan&lt;T&gt;`、`VtArray&lt;ELEM&gt;`、`VtDictionary` 和 `TfIterator&lt;T, Reverse&gt;` 共同构成基础容器/视图/迭代器线索。</span></li>
+        <li><span class="zh">`VdfDataManagerHashTable`、`VdfDataManagerVector&lt;DeallocationMode&gt;`、`VdfExecutorDataManager&lt;DerivedClass&gt;`、`VdfParallelDataManagerVector`、`VdfParallelExecutorDataManager`、`VdfParallelExecutorEngine` 和 `VdfParallelSpeculationExecutorEngine` 属于 Vdf 执行数据管理和并行求值主线。</span></li>
+        <li><span class="zh">`Ef_PageCache`、`EfInputValueBlock`、`Vdf_WeightSlotArray`、`VdfConnectorMap&lt;Connector&gt;`、`VdfConnectorSpecs&lt;T&gt;`、`VdfIteratorRange&lt;Iterator&gt;`、`VdfMask` 与 `VdfNodeSet` 应和 execution/evaluation graph 一起阅读，而非普通 STL 容器。</span></li>
+        <li><span class="zh">`UsdUITokensType`、`UsdGeomTokensType`、`TsSpline`、`GlfGLQueryObject`、`HdDataSourceLocatorSet`、`PxOsdMeshTopologyValidation`、`TfErrorMark`、`UsdPrimRange`、`UsdPrimSiblingRange`、`UsdPrimSubtreeRange`、`UsdUtilsTimeCodeRange` 和 `TfPyLock` 展示 B 段还覆盖 UI/Geom token、spline、GL query、Hydra locator、topology validation、diagnostics 和 prim traversal。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">类成员字母桶：</span><span class="en">class member bucket</span></li>
+        <li><span class="zh">容器视图：</span><span class="en">container view</span></li>
+        <li><span class="zh">并行求值：</span><span class="en">parallel evaluation</span></li>
+        <li><span class="zh">连接器规格：</span><span class="en">connector specs</span></li>
+        <li><span class="zh">prim 遍历：</span><span class="en">prim traversal</span></li>
+        <li><span class="zh">诊断标记：</span><span class="en">diagnostic marker</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
