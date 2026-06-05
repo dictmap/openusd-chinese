@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T16:17:38.135Z
+Generated: 2026-06-05T16:29:43.820Z
 
 ## Summary
 
@@ -231,15 +231,15 @@ Generated: 2026-06-05T16:17:38.135Z
 | 165 | draft_needs_translation | bilingual_draft | 292 | 14/11 | 0 | 0 | `full_site/api/gf_page_front.html` |
 | 166 | draft_needs_translation | bilingual_draft | 335 | 13/9 | 0 | 0 | `full_site/api/glf_page_front.html` |
 | 167 | draft_needs_translation | bilingual_draft | 319 | 13/10 | 0 | 0 | `full_site/api/globals_c.html` |
-| 168 | draft_needs_translation | bilingual_draft | 368 | 20/17 | 0 | 0 | `full_site/api/globals_defs.html` |
-| 169 | draft_needs_translation | bilingual_draft | 297 | 13/10 | 0 | 0 | `full_site/api/globals_e.html` |
+| 168 | draft_needs_translation | bilingual_draft | 716 | 32/24 | 0 | 0 | `full_site/api/globals_defs.html` |
+| 169 | draft_needs_translation | bilingual_draft | 610 | 25/17 | 0 | 0 | `full_site/api/globals_e.html` |
 | 170 | draft_needs_translation | bilingual_draft | 312 | 13/9 | 0 | 0 | `full_site/api/globals_enum.html` |
 | 171 | draft_needs_translation | bilingual_draft | 305 | 13/9 | 0 | 0 | `full_site/api/globals_eval.html` |
-| 172 | draft_needs_translation | bilingual_draft | 298 | 13/10 | 0 | 0 | `full_site/api/globals_func_c.html` |
+| 172 | draft_needs_translation | bilingual_draft | 683 | 25/17 | 0 | 0 | `full_site/api/globals_func_c.html` |
 | 173 | draft_needs_translation | bilingual_draft | 744 | 25/16 | 0 | 0 | `full_site/api/globals_func_e.html` |
-| 174 | draft_needs_translation | bilingual_draft | 312 | 13/10 | 0 | 0 | `full_site/api/globals_func_g.html` |
+| 174 | draft_needs_translation | bilingual_draft | 655 | 25/17 | 0 | 0 | `full_site/api/globals_func_g.html` |
 | 175 | draft_needs_translation | bilingual_draft | 587 | 25/16 | 0 | 0 | `full_site/api/globals_func_h.html` |
-| 176 | draft_needs_translation | bilingual_draft | 283 | 13/9 | 0 | 0 | `full_site/api/globals_func_j.html` |
+| 176 | draft_needs_translation | bilingual_draft | 626 | 25/16 | 0 | 0 | `full_site/api/globals_func_j.html` |
 | 177 | draft_needs_translation | bilingual_draft | 670 | 25/16 | 0 | 0 | `full_site/api/globals_func_l.html` |
 | 178 | draft_needs_translation | bilingual_draft | 719 | 25/17 | 0 | 0 | `full_site/api/globals_func_o.html` |
 | 179 | draft_needs_translation | bilingual_draft | 628 | 25/16 | 0 | 0 | `full_site/api/globals_func_p.html` |

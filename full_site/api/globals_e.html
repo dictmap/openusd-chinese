@@ -54,6 +54,27 @@
         <li><span class="zh">验证错误类型：</span><span class="en">validation error type</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-095">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 File Members - E 增补二次精修说明，重点解释 File Members 函数页、宽索引和宏定义索引的阅读差异，以及模块前缀、头文件来源、函数族归属、宏/运算符语义和跨页跳转顺序。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于与官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for File Members - E. It explains how to read File Members function pages, broad indexes, and macro-definition indexes, with emphasis on module prefixes, header provenance, function-family ownership, macro/operator semantics, and cross-page navigation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`globals_e.html` 是 File Members 的 E 段宽索引，当前内容主要横跨 `Ef` 与 `Exec` 执行系统：既有函数，也有容器 typedef、注册宏、callback 类型和 validation error 类型。</span></li>
+        <li><span class="zh">`EfGetFirstValidInputValue()`、`EfInputValueBlockVector`、`EfPageCacheCommitRequestVector` 指向 Ef 的输入值选择、输入值块和 page cache commit 请求；这些条目应与 evaluation cache 和 execution value flow 一起理解。</span></li>
+        <li><span class="zh">`Exec_ComputationBuilderProviderTypes`、`EXEC_REGISTER_COMPUTATIONS_FOR_SCHEMA`、`ExecCallbackFn`、`ExecIrResult`、`ExecValidationErrorType` 属于 OpenExec/ExecUsd 的 computation registration、callback、IR result 和 validation error 语境。</span></li>
+        <li><span class="zh">这页和 `globals_func_e.html` 的区别在于：`globals_func_e.html` 只列函数，而本页混合函数、类型、宏和 enum-like 条目；阅读时先按 `Ef`/`Exec` 前缀分流，再跳转到对应 README、设计页或头文件。</span></li>
+        <li><span class="zh">中文补强保留 `Ef`、`Exec`、`EXEC_REGISTER_COMPUTATIONS_FOR_SCHEMA` 等符号原样，强调它们是执行系统基础设施的一部分，而不是通用 USD authoring API。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Ef 执行框架：</span><span class="en">Ef</span></li>
+        <li><span class="zh">Exec 执行系统：</span><span class="en">Exec</span></li>
+        <li><span class="zh">计算注册：</span><span class="en">computation registration</span></li>
+        <li><span class="zh">回调函数：</span><span class="en">callback function</span></li>
+        <li><span class="zh">中间表示结果：</span><span class="en">IR result</span></li>
+        <li><span class="zh">验证错误类型：</span><span class="en">validation error type</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

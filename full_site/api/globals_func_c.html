@@ -54,6 +54,27 @@
         <li><span class="zh">namespaceEdit.h：</span><span class="en">namespaceEdit.h</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-095">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 File Members - Functions - C 增补二次精修说明，重点解释 File Members 函数页、宽索引和宏定义索引的阅读差异，以及模块前缀、头文件来源、函数族归属、宏/运算符语义和跨页跳转顺序。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于与官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for File Members - Functions - C. It explains how to read File Members function pages, broad indexes, and macro-definition indexes, with emphasis on module prefixes, header provenance, function-family ownership, macro/operator semantics, and cross-page navigation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`globals_func_c.html` 是 File Members 函数索引 C 段，当前聚焦 `SdfNamespaceEdit` 工具链中的 `CombineError()`、`CombineResult()` 与 `CombineUnbatched()`；它是 namespace edit 合并语义的入口，而不是 prim composition 教程。</span></li>
+        <li><span class="zh">`namespaceEdit.h` 是本页最关键的头文件来源。阅读时应把这些函数和 batched namespace edits、rename/reparent/delete 等层级路径编辑联系起来，而不是和 Pcp composition、variant selection 或 asset resolver 混在一起。</span></li>
+        <li><span class="zh">`CombineError()` 更偏向合并失败时的诊断描述，`CombineResult()` 更偏向返回合并后的状态或结果对象，`CombineUnbatched()` 则提示它处理未批处理的 edit 序列；具体参数和错误策略必须继续进入头文件确认。</span></li>
+        <li><span class="zh">如果目标是理解 USD 场景中 prim path 如何被编辑，应继续阅读 `SdfBatchNamespaceEdit`、`SdfNamespaceEdit` 和 `SdfPath` 相关页面；如果目标是 composition 强度或 layer stack 求值，应转到 Pcp 页面。</span></li>
+        <li><span class="zh">中文层保留函数名、括号和 `namespaceEdit.h` 原样，重点解释三者在 namespace edit 合并流程中的不同位置，避免将 `Combine*` 泛化为普通数组合并函数。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">命名空间编辑：</span><span class="en">namespace edit</span></li>
+        <li><span class="zh">批处理编辑：</span><span class="en">batched edit</span></li>
+        <li><span class="zh">未批处理编辑：</span><span class="en">unbatched edit</span></li>
+        <li><span class="zh">合并结果：</span><span class="en">combine result</span></li>
+        <li><span class="zh">合并错误：</span><span class="en">combine error</span></li>
+        <li><span class="zh">路径编辑：</span><span class="en">path edit</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

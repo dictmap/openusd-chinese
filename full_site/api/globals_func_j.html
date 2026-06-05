@@ -54,6 +54,27 @@
         <li><span class="zh">容器转换：</span><span class="en">container conversion</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-095">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 File Members - Functions - J 增补二次精修说明，重点解释 File Members 函数页、宽索引和宏定义索引的阅读差异，以及模块前缀、头文件来源、函数族归属、宏/运算符语义和跨页跳转顺序。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于与官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for File Members - Functions - J. It explains how to read File Members function pages, broad indexes, and macro-definition indexes, with emphasis on module prefixes, header provenance, function-family ownership, macro/operator semantics, and cross-page navigation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`globals_func_j.html` 是 File Members 函数索引 J 段，当前集中在 `Js` JSON 工具函数；它的用途是从函数名跳到 JSON conversion、lookup、parse 和 write 的实现位置。</span></li>
+        <li><span class="zh">`JsConvertToContainerType()` 来自 `converter.h`，关注 JSON 值到容器类型的转换；它的 template/类型约束不能从索引页推断，必须进入头文件或调用点确认。</span></li>
+        <li><span class="zh">`JsFindValue()` 来自 `utils.h`，适合用于在 JSON-like 数据结构中查找字段或值；它和 parse/write 函数同属 Js 工具域，但职责是查询而不是解析或序列化。</span></li>
+        <li><span class="zh">`JsParseStream()`、`JsParseString()`、`JsWriteToStream()`、`JsWriteToString()`、`JsWriteValue()` 来自 `json.h`，分别覆盖输入流、字符串输入、输出流、字符串输出和值序列化；阅读时可按 input/output 两类分组。</span></li>
+        <li><span class="zh">如果目标是 USD layer 或 USDA 解析，应转向 Sdf/Usd 文件格式页面；本页只说明通用 JSON helper，不应把 `Js` 误当成 USD scene description parser。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Js JSON 辅助工具：</span><span class="en">Js JSON helpers</span></li>
+        <li><span class="zh">转换辅助函数：</span><span class="en">conversion helper</span></li>
+        <li><span class="zh">JSON 查找：</span><span class="en">JSON lookup</span></li>
+        <li><span class="zh">解析输入流：</span><span class="en">parse stream</span></li>
+        <li><span class="zh">写入字符串：</span><span class="en">write string</span></li>
+        <li><span class="zh">序列化：</span><span class="en">serialization</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
