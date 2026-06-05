@@ -54,6 +54,27 @@
         <li><span class="zh">自定义指标：</span><span class="en">custom metrics</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-123">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`Performance Metrics` 记录 USD release 的性能基准资产、环境、采集指标和复现实验方式。它应与 `Maximizing USD Performance` 配合阅读：前者给出可比较的测量方法，后者给出优化思路。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for Performance Metrics while preserving English page names, API names, schema names, property names, commands, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`What We Measure` 说明脚本观察的操作边界，例如加载 `usdview` 插件、打开 stage、遍历 prim、渲染或交互响应；不要把单项指标泛化为整体性能结论。</span></li>
+        <li><span class="zh">`What Environment Is Used` 对 Linux、macOS、Windows 和 USD Build 做约束说明；比较结果时必须同时比较硬件、平台、构建选项和资产版本。</span></li>
+        <li><span class="zh">`Standard Shader Ball`、`Kitchen Set`、`ALab`、`Moore Lane` 是基准资产或图表入口，名称和图表标签保留英文便于追踪官方数据。</span></li>
+        <li><span class="zh">`Running Performance Metrics` 是本地复现入口；如果复现结果不同，应先检查环境差异、缓存状态、构建类型和测试资产，而不是直接判定回归。</span></li>
+        <li><span class="zh">本页只记录性能测量和参考数据，不替代 profiler、trace 或生产场景诊断；实际优化仍需结合 scene composition、payload、layers 和 renderer 行为。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">性能指标：</span><span class="en">Performance Metrics</span></li>
+        <li><span class="zh">测量内容：</span><span class="en">What We Measure</span></li>
+        <li><span class="zh">USD 构建配置：</span><span class="en">USD Build</span></li>
+        <li><span class="zh">标准 Shader Ball 资产：</span><span class="en">Standard Shader Ball</span></li>
+        <li><span class="zh">Kitchen Set 资产：</span><span class="en">Kitchen Set</span></li>
+        <li><span class="zh">运行性能指标测试：</span><span class="en">Running Performance Metrics</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

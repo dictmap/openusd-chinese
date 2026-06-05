@@ -54,6 +54,27 @@
         <li><span class="zh">primvar 读取节点：</span><span class="en">Primvar Reader</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-123">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`UsdPreviewSurface Specification` 定义跨 film 与 game pipelines 可互换的基础预览材质节点集合。阅读主线是 Goal、Core Nodes、Preview Surface、Texture Reader、Primvar Reader 和 Transform2d，而不是某个单一渲染器的私有 shading 文档。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for UsdPreviewSurface Specification while preserving English page names, API names, schema names, property names, commands, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Preview Surface` 的输入如 metallic、roughness、opacity、normal 等属于规范字段，应保留英文；中文说明只解释视觉语义和互换边界。</span></li>
+        <li><span class="zh">`Texture Reader`、`Primvar Reader` 与 `Transform2d` 共同描述纹理采样、primvar 输入和 UV 变换如何进入 preview material network。</span></li>
+        <li><span class="zh">该规范目标是提供基础互换材质，不覆盖所有 renderer-specific shading 能力；复杂材质仍可能需要 renderer-specific outputs 或完整 UsdShade 网络。</span></li>
+        <li><span class="zh">film pipeline 与 game pipeline 对实时预览、离线渲染和资产交换的需求不同；`UsdPreviewSurface` 作为共同子集，帮助工具在不同环境中保持可见结果接近。</span></li>
+        <li><span class="zh">本地中文补强保留 `UsdPreviewSurface`、节点名、输入名、token literal 和公式/参数名称，避免破坏材质网络和 API 文档之间的对应关系。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 预览表面材质：</span><span class="en">UsdPreviewSurface</span></li>
+        <li><span class="zh">核心节点：</span><span class="en">Core Nodes</span></li>
+        <li><span class="zh">预览表面节点：</span><span class="en">Preview Surface</span></li>
+        <li><span class="zh">纹理读取节点：</span><span class="en">Texture Reader</span></li>
+        <li><span class="zh">primvar 读取节点：</span><span class="en">Primvar Reader</span></li>
+        <li><span class="zh">二维变换节点：</span><span class="en">Transform2d</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

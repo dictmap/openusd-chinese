@@ -54,6 +54,27 @@
         <li><span class="zh">usdz 打包工具：</span><span class="en">usdzip</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-123">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`Usdz File Format Specification` 定义 `.usdz` 包装格式的约束：它基于 zip archive，但为了 streaming、alignment、first file、allowed file types 和 USD asset resolution 施加额外规则。不能把 `.usdz` 简单理解为任意 zip 包。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for Usdz File Format Specification while preserving English page names, API names, schema names, property names, commands, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Zip Constraints` 是本页的关键：`.usdz` 通常要求未压缩存储、特定对齐和可随机访问布局，以便运行时直接读取包内 USD 与资源。</span></li>
+        <li><span class="zh">`Layout` 与 `File Types` 决定哪些文件可以进入包、文件顺序如何影响默认层、以及纹理、材质和 USD 层如何被 asset paths 引用。</span></li>
+        <li><span class="zh">`Packaging Considerations for Streaming and Random Access` 说明 `.usdz` 的设计目标不仅是打包，还包括在移动端、AR 或预览场景中的高效访问。</span></li>
+        <li><span class="zh">`usdzip`、`MIME type`、`FileFormat plugin`、`.usdz`、`.usd`、`.usda`、`.usdc` 等字面量必须保留，中文只解释用途和边界。</span></li>
+        <li><span class="zh">可编辑性、可访问性和安全限制属于格式契约的一部分；如果要生成 `.usdz`，应同时核对工具链、资源路径和包内文件类型约束。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">usdz 包装格式：</span><span class="en">usdz</span></li>
+        <li><span class="zh">zip 归档：</span><span class="en">zip archive</span></li>
+        <li><span class="zh">zip 约束：</span><span class="en">Zip Constraints</span></li>
+        <li><span class="zh">随机访问：</span><span class="en">random access</span></li>
+        <li><span class="zh">USD 打包工具：</span><span class="en">usdzip</span></li>
+        <li><span class="zh">媒体类型：</span><span class="en">MIME type</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

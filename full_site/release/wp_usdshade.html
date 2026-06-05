@@ -65,6 +65,27 @@
         <li><span class="zh">材质解析：</span><span class="en">material resolve</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-123">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`UsdShade Material Assignment` 是历史设计提案，解释 material binding、collection-based assignment、binding strength、material purpose 和 material resolve 如何共同决定最终渲染材质。它应与 `UsdShade overview page` 对照阅读，而不是当作最新 API 参考的替代品。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for UsdShade Material Assignment while preserving English page names, API names, schema names, property names, commands, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">direct material binding 会被 descendant 上更强或更近的绑定覆盖；读者需要同时看绑定位置、collection membership 和 binding strength，而不是只看第一个 `material:binding` relationship。</span></li>
+        <li><span class="zh">`material purpose` 用来区分 preview、full、allPurpose 等不同消费场景；渲染器是否能使用某个 material output，仍取决于 renderer-specific outputs 和节点网络兼容性。</span></li>
+        <li><span class="zh">collection-based binding 适合批量分配材质，但会引入集合定义、包含/排除规则和命名强度的解析顺序；中文导读保留这些英文术语以便对照 usda 示例。</span></li>
+        <li><span class="zh">页面中提到的 `PreviewMaterial`、`Skin`、`renderer-specific outputs` 和 `collection-based binding` 都是理解材质解析的关键词，不应被翻译成无法检索的中文专名。</span></li>
+        <li><span class="zh">本地补强只解释 proposal 的阅读边界和语义关系；实际实现细节、类接口和 schema 字段仍应以当前 `UsdShade` API 文档为准。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">材质绑定：</span><span class="en">material binding</span></li>
+        <li><span class="zh">基于集合的材质分配：</span><span class="en">collection-based assignment</span></li>
+        <li><span class="zh">绑定强度：</span><span class="en">binding strength</span></li>
+        <li><span class="zh">材质用途：</span><span class="en">material purpose</span></li>
+        <li><span class="zh">材质解析：</span><span class="en">material resolve</span></li>
+        <li><span class="zh">渲染器专用输出：</span><span class="en">renderer-specific outputs</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
