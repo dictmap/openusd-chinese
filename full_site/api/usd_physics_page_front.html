@@ -34,6 +34,27 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-usd-schema-quality-pass-060">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 UsdPhysics: USD Physics Schema 补充中文优先的模块用途、schema/API 边界、阅读路径和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first module purpose, schema/API boundaries, reading paths, and terminology for UsdPhysics: USD Physics Schema while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`UsdPhysics: USD Physics Schema` 是 USD 中描述刚体物理、碰撞、质量、材质、关节和场景级物理参数的 schema 入口；它负责编码可交换的物理场景描述，而不是实现具体求解器。</span></li>
+        <li><span class="zh">本页的阅读主线是先看 `Purpose and Scope` 与 `Overall Design Concerns`，理解它只覆盖最小公共刚体物理概念；再看 `USD Implementation`，确认哪些内容通过 prim schema、API schema 和 attributes authoring 表达。</span></li>
+        <li><span class="zh">`UsdPhysicsScene` 用于场景级物理设置；单位相关内容需要和 `UsdGeomTokensType::metersPerUnit`、`UsdStage::SetTimeCodesPerSecond()`、`UsdPhysicsTokensType::kilogramsPerUnit`、`UsdPhysicsGetStageKilogramsPerUnit()` 一起读。</span></li>
+        <li><span class="zh">刚体部分重点区分 `UsdPhysicsRigidBodyAPI`、`UsdPhysicsMassAPI`、`UsdPhysicsCollisionAPI`、`UsdPhysicsMeshCollisionAPI`、`UsdPhysicsMaterialAPI`、`UsdPhysicsArticulationRootAPI` 的职责边界：运动主体、质量属性、碰撞形状、网格近似、物理材质和关节系统根分别由不同 API 承担。</span></li>
+        <li><span class="zh">关节章节覆盖 `UsdPhysicsJoint`、`UsdPhysicsSphericalJoint`、`UsdPhysicsRevoluteJoint`、`UsdPhysicsPrismaticJoint`、`UsdPhysicsDistanceJoint`、`UsdPhysicsFixedJoint`，并解释 joint reference frames、jointed bodies、collision filtering 等 authoring 语义；这些 API 名称和 token 字面量应保持英文原样。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 物理 schema 模块：</span><span class="en">UsdPhysics</span></li>
+        <li><span class="zh">刚体：</span><span class="en">Rigid Body</span></li>
+        <li><span class="zh">物理场景：</span><span class="en">Physics Scene</span></li>
+        <li><span class="zh">碰撞形状：</span><span class="en">Collision Shape</span></li>
+        <li><span class="zh">关节：</span><span class="en">Joint</span></li>
+        <li><span class="zh">关节系统根：</span><span class="en">Articulation Root</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

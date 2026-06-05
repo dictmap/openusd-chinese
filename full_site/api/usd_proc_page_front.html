@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-usd-schema-quality-pass-060">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 UsdProc: USD Schemas for Procedurals 补充中文优先的模块用途、schema/API 边界、阅读路径和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first module purpose, schema/API boundaries, reading paths, and terminology for UsdProc: USD Schemas for Procedurals while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`UsdProc: USD Schemas for Procedurals` 用来描述 procedural data，让下游系统能够识别某个 prim 代表由程序生成或扩展的数据，而不必把生成结果全部提前烘焙进 stage。</span></li>
+        <li><span class="zh">当前模块范围很窄，官方页明确指出初始形式只有一个 schema：`UsdProcGenerativeProcedural`；因此本页应被理解为 procedural schema 的入口，而不是完整 procedural runtime 文档。</span></li>
+        <li><span class="zh">`UsdProcGenerativeProcedural` 关注 scene description 层的声明：它说明这个 prim 是一个 generative procedural 以及下游系统应如何发现或调用相关能力；实际生成逻辑仍由具体插件、Hydra 或应用侧系统实现。</span></li>
+        <li><span class="zh">与 Hydra 相关的阅读应跳到 `UsdHydraGenerativeProceduralAPI`、`HdGpGenerativeProcedural` 或对应模块页；不要把 `UsdProc` 本身误解为渲染器、求值器或几何生成器实现。</span></li>
+        <li><span class="zh">本地精修保留 `UsdProcGenerativeProcedural`、schema 名称和官方链接，并补充中文说明，帮助用户把 procedural prim 的 authoring 语义与运行时插件边界分开。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD procedural schema 模块：</span><span class="en">UsdProc</span></li>
+        <li><span class="zh">程序化对象：</span><span class="en">Procedural</span></li>
+        <li><span class="zh">生成式程序化对象：</span><span class="en">Generative Procedural</span></li>
+        <li><span class="zh">场景描述：</span><span class="en">scene description</span></li>
+        <li><span class="zh">运行时插件：</span><span class="en">runtime plugin</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

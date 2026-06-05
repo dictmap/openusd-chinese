@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-usd-schema-quality-pass-060">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 UsdRi: USD RenderMan Utilities 补充中文优先的模块用途、schema/API 边界、阅读路径和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first module purpose, schema/API boundaries, reading paths, and terminology for UsdRi: USD RenderMan Utilities while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`UsdRi: USD RenderMan Utilities` 是面向 RenderMan 互操作的工具层；它帮助 author 带有 RenderMan-specific information 的 USD，并提供 USD 值与 Ri 值/数据类型之间的转换工具。</span></li>
+        <li><span class="zh">官方说明中 RenderMan schemas、concepts 和 plugins 位于 `usdRiPxr`；本模块本身更偏向公用工具和转换函数，而不是完整 RenderMan schema 手册。</span></li>
+        <li><span class="zh">本页强调这些工具不依赖 RenderMan headers，因此即使当前环境没有安装 RenderMan，也可以使用相关 API 来处理 RenderMan 特定的 USD authoring 信息。</span></li>
+        <li><span class="zh">阅读重点包括 `UsdRiStatements` 这类用于表达 RenderMan statements 的类，以及 `usdRi/rmanUtilities.h` 中提供的转换工具函数；头文件名、类名和函数名保持英文原样。</span></li>
+        <li><span class="zh">本地中文导读的目标是说明 `UsdRi`、`usdRiPxr`、RenderMan runtime 三者边界：一个是工具模块，一个是 schema/plugin 集合，一个是外部渲染器生态。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD RenderMan 工具模块：</span><span class="en">UsdRi</span></li>
+        <li><span class="zh">RenderMan schema/plugin 区域：</span><span class="en">usdRiPxr</span></li>
+        <li><span class="zh">RenderMan 专用信息：</span><span class="en">RenderMan-specific information</span></li>
+        <li><span class="zh">RenderMan statements 表达类：</span><span class="en">UsdRiStatements</span></li>
+        <li><span class="zh">RenderMan 转换工具头文件：</span><span class="en">rmanUtilities.h</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

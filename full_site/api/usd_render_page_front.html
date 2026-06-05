@@ -34,6 +34,27 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-usd-schema-quality-pass-060">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 UsdRender: USD Render Schema 补充中文优先的模块用途、schema/API 边界、阅读路径和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first module purpose, schema/API boundaries, reading paths, and terminology for UsdRender: USD Render Schema while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`UsdRender: USD Render Schema` 提供描述 render settings、render products、render variables 和 render passes 的 schema 与行为约定，用于把渲染任务、输出目标和 AOV/变量组织进 USD stage。</span></li>
+        <li><span class="zh">阅读时先看 `Structure and Organization`：`UsdRenderSettings` 描述渲染配置入口，`UsdRenderProduct` 描述输出 artifact，`UsdRenderVar` 描述单个渲染变量，`UsdRenderPass` 表示一次渲染过程或可组合的渲染步骤。</span></li>
+        <li><span class="zh">`renderSettingsPrimPath` stage metadata 和 `UsdRenderSettings::GetStageRenderSettings()` 是默认渲染设置解析的关键入口；这类名称是 API/metadata 名称，需保持英文原样。</span></li>
+        <li><span class="zh">概念章节覆盖 camera、pixels、aspect ratio policy、cropping、tiling、overscan 和 rasterization rule，说明渲染区域、像素解释和输出构成如何被 author 到 USD，而不是规定某个渲染器的内部算法。</span></li>
+        <li><span class="zh">本页也提醒 `render byproducts` 不只限于 beauty image，还可能包括 depth maps、light probes、point clouds 等输出；实际渲染器可通过 extensions 扩展 schema 行为。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">渲染设置 prim：</span><span class="en">UsdRenderSettings</span></li>
+        <li><span class="zh">渲染输出产品：</span><span class="en">UsdRenderProduct</span></li>
+        <li><span class="zh">渲染变量：</span><span class="en">UsdRenderVar</span></li>
+        <li><span class="zh">渲染过程：</span><span class="en">UsdRenderPass</span></li>
+        <li><span class="zh">默认渲染设置元数据：</span><span class="en">renderSettingsPrimPath</span></li>
+        <li><span class="zh">任意输出变量：</span><span class="en">AOV</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

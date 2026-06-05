@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T00:27:36.250Z
+Generated: 2026-06-05T00:39:38.737Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-05T00:27:36.250Z
 
 ## Grade Counts
 
-- draft_template_only: 90
-- draft_needs_translation: 308
+- draft_template_only: 85
+- draft_needs_translation: 313
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -49,8 +49,6 @@ Generated: 2026-06-05T00:27:36.250Z
 | 298 | draft_template_only | 64 | `full_site/release/search.html` | 搜索 / Search - Universal Scene Description 26.05 documentation |
 | 69 | draft_template_only | 66 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | API 页面草稿：hf Directory / hf Directory |
 | 212 | draft_template_only | 66 | `full_site/api/journal_8h.html` | API 页面草稿：journal.h File / journal.h File |
-| 266 | draft_template_only | 66 | `full_site/api/usd_proc_page_front.html` | API 模块草稿：UsdProc: USD Schemas for Procedurals / UsdProc: USD Schemas for Procedurals |
-| 268 | draft_template_only | 66 | `full_site/api/usd_ri_page_front.html` | API 模块草稿：UsdRi: USD RenderMan Utilities / UsdRi: USD RenderMan Utilities |
 | 271 | draft_template_only | 66 | `full_site/api/usd_shaders_page_front.html` | API 模块草稿：UsdShaders: Definitions and Implementations of Usd* Shader Nodes / UsdShaders: Definitions and Implementations of Usd* Shader Nodes |
 | 272 | draft_template_only | 66 | `full_site/api/usd_skel_page_front.html` | API 模块草稿：UsdSkel: USD Skeleton Schema and API / UsdSkel: USD Skeleton Schema and API |
 | 277 | draft_template_only | 66 | `full_site/api/usddraco_page_front.html` | API 模块草稿：UsdDraco: Draco File Format Plugin / UsdDraco: Draco File Format Plugin |
@@ -59,6 +57,8 @@ Generated: 2026-06-05T00:27:36.250Z
 | 305 | draft_template_only | 66 | `full_site/release/tut_end_to_end.html` | 页面草稿：End to End Example / End to End Example |
 | 309 | draft_template_only | 66 | `full_site/release/tut_houdini_example.html` | 页面草稿：Houdini USD Example Workflow / Houdini USD Example Workflow |
 | 321 | draft_template_only | 66 | `full_site/release/user_guides/color_user_guide.html` | 页面草稿：Color User’s Guide / Color User’s Guide |
+| 323 | draft_template_only | 66 | `full_site/release/user_guides/primvars.html` | 页面草稿：Primvars / Primvars |
+| 324 | draft_template_only | 66 | `full_site/release/user_guides/render_user_guide.html` | 页面草稿：Rendering with USD / Rendering with USD |
 
 ## All Pages
 
@@ -328,11 +328,11 @@ Generated: 2026-06-05T00:27:36.250Z
 | 262 | draft_needs_translation | bilingual_draft | 333 | 14/11 | 0 | 0 | `full_site/api/usd_media_page_front.html` |
 | 263 | draft_needs_translation | bilingual_draft | 298 | 16/13 | 0 | 0 | `full_site/api/usd_mtlx_page_front.html` |
 | 264 | good_bilingual | bilingual_complete | 516 | 20/74 | 0 | 0 | `site/usd_page_front.html` |
-| 265 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/usd_physics_page_front.html` |
-| 266 | draft_template_only | bilingual_draft | 66 | 3/5 | 0 | 0 | `full_site/api/usd_proc_page_front.html` |
-| 267 | draft_template_only | bilingual_draft | 114 | 15/17 | 0 | 0 | `full_site/api/usd_render_page_front.html` |
-| 268 | draft_template_only | bilingual_draft | 66 | 3/5 | 0 | 0 | `full_site/api/usd_ri_page_front.html` |
-| 269 | draft_template_only | bilingual_draft | 114 | 15/17 | 0 | 0 | `full_site/api/usd_semantics_overview.html` |
+| 265 | draft_needs_translation | bilingual_draft | 475 | 41/38 | 0 | 0 | `full_site/api/usd_physics_page_front.html` |
+| 266 | draft_needs_translation | bilingual_draft | 400 | 14/11 | 0 | 0 | `full_site/api/usd_proc_page_front.html` |
+| 267 | draft_needs_translation | bilingual_draft | 414 | 27/24 | 0 | 0 | `full_site/api/usd_render_page_front.html` |
+| 268 | draft_needs_translation | bilingual_draft | 367 | 14/11 | 0 | 0 | `full_site/api/usd_ri_page_front.html` |
+| 269 | draft_needs_translation | bilingual_draft | 436 | 27/24 | 0 | 0 | `full_site/api/usd_semantics_overview.html` |
 | 270 | draft_template_only | bilingual_draft | 110 | 14/16 | 0 | 0 | `full_site/api/usd_shade_page_front.html` |
 | 271 | draft_template_only | bilingual_draft | 66 | 3/5 | 0 | 0 | `full_site/api/usd_shaders_page_front.html` |
 | 272 | draft_template_only | bilingual_draft | 66 | 3/5 | 0 | 0 | `full_site/api/usd_skel_page_front.html` |
