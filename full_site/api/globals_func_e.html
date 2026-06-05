@@ -54,6 +54,27 @@
         <li><span class="zh">函数检索：</span><span class="en">function lookup</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-094">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 File Members - Functions - E 增补二次精修说明，重点解释 File Members 根索引、宽索引、函数索引和短函数页的阅读差异，以及模块前缀、头文件来源、函数族归属、宏/运算符语义和跨页跳转顺序。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于与官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for File Members - Functions - E. It explains how to read File Members root indexes, broad letter indexes, function indexes, and short function pages, with emphasis on module prefixes, header provenance, function-family ownership, macro/operator semantics, and cross-page navigation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`globals_func_e.html` 是 File Members 函数索引 E 段，本地摘录中核心条目是 `EfGetFirstValidInputValue()`，来源为 `firstValidInputValue.h`；它是一个非常短的函数索引页，不应被误读为 Ef 模块教程。</span></li>
+        <li><span class="zh">`Ef` 通常位于 execution framework 语境中，和 Vdf/Exec 的计算网络、输入值、输出值和 evaluation cache 有联系；`EfGetFirstValidInputValue()` 从命名看用于在候选输入中选出第一个有效输入值，具体类型仍要进入头文件核对。</span></li>
+        <li><span class="zh">本页的阅读重点是从函数名跳到 header，再从 header 跳到调用方或相关 class；如果要理解执行系统整体，应继续阅读 `md_pxr_exec_ef__r_e_a_d_m_e.html`、`page__execution__system__design.html` 或 Vdf/Ef class 页面。</span></li>
+        <li><span class="zh">它和 `globals_e.html` 的区别在于：本页只列文件级函数，而宽索引页会混合类型、宏、变量、typedef 和 enum；中文导读保留函数名和头文件名，避免把短索引扩写成不存在的官方正文。</span></li>
+        <li><span class="zh">对翻译使用者来说，这页的价值在于快速判断 `EfGetFirstValidInputValue()` 属于 execution input selection 工具，而不是 USD layer loading、asset resolution 或普通容器算法。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Ef 执行框架：</span><span class="en">Ef execution framework</span></li>
+        <li><span class="zh">输入值：</span><span class="en">input value</span></li>
+        <li><span class="zh">有效输入：</span><span class="en">valid input</span></li>
+        <li><span class="zh">纯函数索引：</span><span class="en">function-only index</span></li>
+        <li><span class="zh">跳转到头文件：</span><span class="en">header jump</span></li>
+        <li><span class="zh">求值缓存：</span><span class="en">evaluation cache</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

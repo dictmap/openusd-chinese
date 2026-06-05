@@ -2,6 +2,24 @@
 
 源页面：<https://openusd.org/release/api/index.html>
 
+## 第 225 轮：File Members E/O/L 函数页与根/T 索引二次精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `2c48082`，当前分级为 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8。
+- 本轮严格只处理 5 个未达标页面：`full_site/api/globals_func_e.html`、`full_site/api/globals_func_o.html`、`full_site/api/globals_func_l.html`、`full_site/api/globals.html`、`full_site/api/globals_t.html`；这些页面本轮开始时均已是 `draft_needs_translation`，目标是补强 File Members 根索引、宽索引、短函数页和运算符重载页的中文阅读方法，没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_release_batch_094.mjs`，每页插入 `release-quality-pass-094` 二次精修导读区块，覆盖 Ef 输入值选择、UsdSkel/Gf/Sdf/Usd 运算符重载、UsdPhysics range parse utilities、File Members 根索引、Tf 宏和基础设施入口、头文件来源、函数族归属、宏/运算符语义和跨页跳转顺序；保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录。
+- 本轮中文覆盖：`globals_func_e.html` 的 `EfGetFirstValidInputValue()`、`firstValidInputValue.h`、execution input selection 和 evaluation cache；`globals_func_o.html` 的 `operator+()`、`operator==()`、stream operator、indexed weights、header ownership 和 symbol semantics；`globals_func_l.html` 的 `LoadUsdPhysicsFromRange()`、`parseUtils.h`、UsdPhysics parse utilities、range input 和错误处理；`globals.html` 的 File Members root、`AR_*` resolver registration macros、`ARCH_*` platform abstraction 和按前缀分流；`globals_t.html` 的 `TF_*` macros、static tokens、registry macro、debug code、weak pointer macro 和 Python bridge。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级保持 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8；本轮对象原本已是 `draft_needs_translation`，所以分级计数保持不变是预期结果。目标页中文正文量已提升到 `600-744` 字区间，但仍是 `bilingual_draft`，未误标为完成。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398 个 `bilingual_draft` 页面全部具备本地可检查 HTML 和最终入口链接，`failed_pages` 为 0。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`，报告索引通过，总体验证 `PASSED`，`validation_required_checks` 281 / `validation_failed_checks` 0。
+- GitHub 同步结果：验证通过后使用提交信息 `OpenUSD bilingual round 225: file members e o l root t pass` 同步本轮 HTML、脚本、报告和 `work.md`，并通过 `git log` 与远端 main 校验推送结果。
+
+差距与下一轮：
+
+- 当前 398 个 `bilingual_draft` 仍不是完整段落级翻译；本轮是对已纳入 draft 的 File Members 索引和短函数页做第二层质量补强，分级计数不变是预期结果。
+- 剩余 `draft_template_only` 11 页基本是 `_source.html` 源码页、`search.html` 或目录页；下一轮优先最多处理 `full_site/api/globals_func_c.html`、`full_site/api/globals_e.html`、`full_site/api/globals_func_j.html`、`full_site/api/globals_func_g.html`、`full_site/api/globals_defs.html`，之后可继续按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面，继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+
 ## 第 224 轮：File Members U/W/G/P 与 Authoring Variants 二次精修
 已完成：
 

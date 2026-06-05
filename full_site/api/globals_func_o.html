@@ -54,6 +54,27 @@
         <li><span class="zh">向量运算：</span><span class="en">vector operation</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-094">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 File Members - Functions - O 增补二次精修说明，重点解释 File Members 根索引、宽索引、函数索引和短函数页的阅读差异，以及模块前缀、头文件来源、函数族归属、宏/运算符语义和跨页跳转顺序。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于与官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for File Members - Functions - O. It explains how to read File Members root indexes, broad letter indexes, function indexes, and short function pages, with emphasis on module prefixes, header provenance, function-family ownership, macro/operator semantics, and cross-page navigation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`globals_func_o.html` 是 File Members 函数索引 O 段，当前主要收集 C++ `operator` overload 条目；这些符号本身就是 API 名称，中文层只解释语义，不翻译 `operator+()`、`operator==()`、`operator&gt;&gt;()` 等名字。</span></li>
+        <li><span class="zh">`operator+()` 可能来自 `indexedWeightsOperand.h`，与 UsdSkel indexed weights operand 的组合或加法语义有关；`operator==()` 则可能散落在 `VtDictionary`、`SdfAssetPath`、`SdfLayerOffset`、`UsdPayload`、`UsdReference`、`UsdTimeCode` 等类型上。</span></li>
+        <li><span class="zh">`operator&gt;&gt;()`、`operator&lt;&lt;()` 或类似流运算符通常与文本解析、调试输出、序列化或测试输出有关，必须进入目标 header/class 页面确认输入输出格式，不能只根据符号猜测行为。</span></li>
+        <li><span class="zh">O 段函数索引横跨 Vt、Gf、Sdf、Usd、UsdUtils 和 Work/Tf 辅助类型；阅读时应先看条目的所属 header，再判断它是数学运算、比较、流输出、hash/异或还是容器辅助。</span></li>
+        <li><span class="zh">本页特别适合排查“某个类型为什么能用运算符比较或输出”的问题；如果目标是概念学习，应继续回到具体 class 页面，而不是停留在符号列表。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">运算符重载：</span><span class="en">operator overload</span></li>
+        <li><span class="zh">流运算符：</span><span class="en">stream operator</span></li>
+        <li><span class="zh">相等运算符：</span><span class="en">equality operator</span></li>
+        <li><span class="zh">索引权重：</span><span class="en">indexed weights</span></li>
+        <li><span class="zh">头文件归属：</span><span class="en">header ownership</span></li>
+        <li><span class="zh">符号语义：</span><span class="en">symbol semantics</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
