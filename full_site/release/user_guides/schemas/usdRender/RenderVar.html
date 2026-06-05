@@ -54,6 +54,27 @@
         <li><span class="zh">数据来源信息：</span><span class="en">source information</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-097">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`RenderVar` 描述渲染器产生的一种数据量或 channel，也常称为 AOV。它可以表示 color、alpha、depth、normal、LPE、ID 或 renderer-specific 输出，并通过 `RenderProduct` 和 `RenderSettings` 进入最终渲染输出配置。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for RenderVar while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`RenderVar` prim 的名字会驱动渲染输出里的变量名，例如名为 `alpha` 的 RenderVar 通常表示输出 alpha channel；但 USD 尚未强制统一的 RenderVar 名称和格式，因此 renderer-specific RenderVars 是预期行为。</span></li>
+        <li><span class="zh">`sourceName` 描述数据来源名称，例如 shader 输出 `Ci`、alpha `a`、renderer 输出或 LPE 字符串；`sourceType` 用来说明来源类别，例如 `lpe`；`dataType` 则帮助声明输出数据类型。</span></li>
+        <li><span class="zh">示例中的 `directDiffuse` 使用 `C&lt;RD&gt;[&lt;L.&gt;O]` 这类 light path expression。中文层必须保留 LPE 字符串原样，因为任意空格、大小写或符号变化都可能改变渲染器解释。</span></li>
+        <li><span class="zh">`RenderVar` 本身不是图像文件，也不是 `RenderProduct`。它定义要计算的变量；`RenderProduct` 定义输出产品；`RenderSettings` 聚合相机、分辨率、产品和相关渲染配置。</span></li>
+        <li><span class="zh">复查 usdRender 页面时，建议按 `RenderSettingsBase`、`RenderSettings`、`RenderProduct`、`RenderVar` 的关系阅读: 前者组织渲染作业，`RenderVar` 负责具体输出变量的语义。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">渲染输出变量：</span><span class="en">RenderVar</span></li>
+        <li><span class="zh">任意输出变量：</span><span class="en">AOV</span></li>
+        <li><span class="zh">来源名称：</span><span class="en">sourceName</span></li>
+        <li><span class="zh">来源类型：</span><span class="en">sourceType</span></li>
+        <li><span class="zh">数据类型：</span><span class="en">dataType</span></li>
+        <li><span class="zh">光线路径表达式：</span><span class="en">light path expression</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

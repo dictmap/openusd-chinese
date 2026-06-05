@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T16:41:30.942Z
+Generated: 2026-06-05T16:58:49.338Z
 
 ## Summary
 
@@ -40,11 +40,6 @@ Generated: 2026-06-05T16:41:30.942Z
 | 278 | draft_template_only | 62 | `full_site/api/var_8h_source.html` | 源码页面草稿：var.h / var.h |
 | 298 | draft_template_only | 64 | `full_site/release/search.html` | 搜索 / Search - Universal Scene Description 26.05 documentation |
 | 69 | draft_template_only | 66 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | API 页面草稿：hf Directory / hf Directory |
-| 380 | draft_needs_translation | 235 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html` | 页面草稿：ParticleFieldKernelGaussianSurfletAPI / ParticleFieldKernelGaussianSurfletAPI |
-| 378 | draft_needs_translation | 236 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelConstantSurfletAPI.html` | 页面草稿：ParticleFieldKernelConstantSurfletAPI / ParticleFieldKernelConstantSurfletAPI |
-| 384 | draft_needs_translation | 238 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html` | 页面草稿：ParticleFieldPositionBaseAPI / ParticleFieldPositionBaseAPI |
-| 358 | draft_needs_translation | 239 | `full_site/release/user_guides/schemas/usdRender/RenderVar.html` | 页面草稿：RenderVar / RenderVar |
-| 377 | draft_needs_translation | 241 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelBaseAPI.html` | 页面草稿：ParticleFieldKernelBaseAPI / ParticleFieldKernelBaseAPI |
 | 364 | draft_needs_translation | 244 | `full_site/release/user_guides/schemas/usdUI/ObjectHints.html` | 页面草稿：ObjectHints / ObjectHints |
 | 366 | draft_needs_translation | 246 | `full_site/release/user_guides/schemas/usdUI/PrimHints.html` | 页面草稿：PrimHints / PrimHints |
 | 359 | draft_needs_translation | 248 | `full_site/release/user_guides/schemas/usdRender/usdRender_toc.html` | 页面草稿：Render (usdRender) / Render (usdRender) |
@@ -59,6 +54,11 @@ Generated: 2026-06-05T16:41:30.942Z
 | 310 | draft_needs_translation | 270 | `full_site/release/tut_inspect_and_author_props.html` | 页面草稿：Inspecting and Authoring Properties / Inspecting and Authoring Properties |
 | 363 | draft_needs_translation | 271 | `full_site/release/user_guides/schemas/usdUI/NodeGraphNodeAPI.html` | 页面草稿：NodeGraphNodeAPI / NodeGraphNodeAPI |
 | 148 | draft_needs_translation | 273 | `full_site/api/functions_vars_q.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
+| 233 | draft_needs_translation | 273 | `full_site/api/namespacemembers.html` | 命名空间参考草稿：Namespace Members / Namespace Members |
+| 192 | draft_needs_translation | 274 | `full_site/api/globals_s.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
+| 307 | draft_needs_translation | 274 | `full_site/release/tut_helloworld_redux.html` | 页面草稿：Hello World Redux - Using Generic Prims / Hello World Redux - Using Generic Prims |
+| 185 | draft_needs_translation | 275 | `full_site/api/globals_func.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
+| 154 | draft_needs_translation | 276 | `full_site/api/functions_vars_w.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 
 ## All Pages
 
@@ -421,7 +421,7 @@ Generated: 2026-06-05T16:41:30.942Z
 | 355 | draft_needs_translation | bilingual_draft | 284 | 12/9 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderProduct.html` |
 | 356 | draft_needs_translation | bilingual_draft | 281 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderSettings.html` |
 | 357 | draft_needs_translation | bilingual_draft | 385 | 20/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderSettingsBase.html` |
-| 358 | draft_needs_translation | bilingual_draft | 239 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderVar.html` |
+| 358 | draft_needs_translation | bilingual_draft | 513 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderVar.html` |
 | 359 | draft_needs_translation | bilingual_draft | 248 | 12/9 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/usdRender_toc.html` |
 | 360 | draft_needs_translation | bilingual_draft | 289 | 12/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/AccessibilityAPI.html` |
 | 361 | draft_needs_translation | bilingual_draft | 295 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/AttributeHints.html` |
@@ -440,14 +440,14 @@ Generated: 2026-06-05T16:41:30.942Z
 | 374 | draft_needs_translation | bilingual_draft | 348 | 15/13 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/overview.html` |
 | 375 | draft_needs_translation | bilingual_draft | 409 | 28/26 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleField.html` |
 | 376 | draft_needs_translation | bilingual_draft | 417 | 30/28 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html` |
-| 377 | draft_needs_translation | bilingual_draft | 241 | 12/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelBaseAPI.html` |
-| 378 | draft_needs_translation | bilingual_draft | 236 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelConstantSurfletAPI.html` |
+| 377 | draft_needs_translation | bilingual_draft | 475 | 24/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelBaseAPI.html` |
+| 378 | draft_needs_translation | bilingual_draft | 461 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelConstantSurfletAPI.html` |
 | 379 | draft_needs_translation | bilingual_draft | 555 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianEllipsoidAPI.html` |
-| 380 | draft_needs_translation | bilingual_draft | 235 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html` |
+| 380 | draft_needs_translation | bilingual_draft | 491 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html` |
 | 381 | draft_needs_translation | bilingual_draft | 352 | 17/15 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html` |
 | 382 | draft_needs_translation | bilingual_draft | 359 | 17/15 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html` |
 | 383 | draft_needs_translation | bilingual_draft | 364 | 17/15 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html` |
-| 384 | draft_needs_translation | bilingual_draft | 238 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html` |
+| 384 | draft_needs_translation | bilingual_draft | 477 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html` |
 | 385 | draft_needs_translation | bilingual_draft | 262 | 12/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldRadianceBaseAPI.html` |
 | 386 | draft_needs_translation | bilingual_draft | 340 | 17/15 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html` |
 | 387 | draft_needs_translation | bilingual_draft | 323 | 18/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html` |

@@ -54,6 +54,27 @@
         <li><span class="zh">高斯圆盘核：</span><span class="en">Gaussian disk kernel</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-097">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`ParticleFieldKernelGaussianSurfletAPI` 定义 `ParticleField` 的 Gaussian surflet kernel。它不是三维体积椭球，而是在 XY plane 上给出带 Gaussian falloff 的平面 splat: 离开 XY plane 的 opacity 为 0，未变换状态下 3-sigma point 位于半径 3.0 的圆盘边界附近。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for ParticleFieldKernelGaussianSurfletAPI while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">阅读时先抓住两个限定: `surflet` 表示表面型贡献，`Gaussian` 表示从中心向外平滑衰减。它适合描述软边界的平面 splat，而不是完整体积核。</span></li>
+        <li><span class="zh">官方原文里的 `g(u=0;o=1;x = p.length())` 保留了计算语义: 在 XY plane 上根据点 `p` 到中心的距离计算 falloff，离开平面后直接为 0。</span></li>
+        <li><span class="zh">`orientation` 和 `scale` 会把默认圆盘变成平面椭圆，`position` 移动 peak falloff 的中心，per-splat opacity 再与 Gaussian falloff 相乘；这些属性应和 position、orientation、scale、opacity 系列 API 一起读。</span></li>
+        <li><span class="zh">和 `ParticleFieldKernelGaussianEllipsoidAPI` 对比时，关键差别是平面 surflet 与体积 ellipsoid；和 `ParticleFieldKernelConstantSurfletAPI` 对比时，关键差别是平滑 Gaussian falloff 与硬边界 step-function falloff。</span></li>
+        <li><span class="zh">实现或调试 Gaussian splat 渲染时，本页的术语应保持英文原样: `XY plane`、`Gaussian falloff`、`3-sigma point`、`splat support`、`per-splat opacity`，以免和渲染器或论文中的同名概念错位。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">高斯表面元核：</span><span class="en">Gaussian surflet kernel</span></li>
+        <li><span class="zh">XY 平面：</span><span class="en">XY plane</span></li>
+        <li><span class="zh">离开平面后的不透明度：</span><span class="en">off-plane opacity</span></li>
+        <li><span class="zh">三倍标准差位置：</span><span class="en">3-sigma point</span></li>
+        <li><span class="zh">splat 支撑范围：</span><span class="en">splat support</span></li>
+        <li><span class="zh">平面椭圆：</span><span class="en">planar ellipse</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

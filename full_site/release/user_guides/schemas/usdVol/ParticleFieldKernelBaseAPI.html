@@ -54,6 +54,27 @@
         <li><span class="zh">验证约束：</span><span class="en">validation</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-097">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`ParticleFieldKernelBaseAPI` 是粒子场 kernel data 的 base applied schema。它定义每个粒子的 spatial basis function 是否存在这一层契约，具体形状则由 Gaussian ellipsoid、Gaussian surflet、constant surflet 等派生 kernel API 说明。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for ParticleFieldKernelBaseAPI while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`ParticleFieldKernelBaseAPI` 的重点不是给出某个具体 falloff 公式，而是建立 validation 契约: `ParticleField` 的 characteristics schemas 通常内建一个定义 kernel data 的 applied schema。</span></li>
+        <li><span class="zh">`kernel` 决定粒子对空间的贡献函数，`position` 决定贡献中心，`scale` 和 `orientation` 变换贡献形状，`opacity`、`radiance` 和 spherical harmonics 系列 API 提供渲染相关逐粒子数据。</span></li>
+        <li><span class="zh">当页面链接到具体 kernel 页面时，应按 base-to-specialized 的顺序理解: 先确认 kernel data 必须存在，再进入 `ParticleFieldKernelGaussianEllipsoidAPI`、`ParticleFieldKernelGaussianSurfletAPI` 或 `ParticleFieldKernelConstantSurfletAPI` 比较形状和 falloff。</span></li>
+        <li><span class="zh">如果验证失败提示缺少 kernel schema，本页比具体 kernel 公式更重要；如果视觉结果不对，通常需要再检查具体 kernel 页面、position 数组、scale/orientation 数据和 opacity 数据是否匹配。</span></li>
+        <li><span class="zh">中文层保留 `spatial basis function`、`applied schema`、`characteristics schemas`、`ParticleField kernel` 等英文术语，避免把 kernel 误译成一般图像滤波器或卷积核。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">粒子场核：</span><span class="en">ParticleField kernel</span></li>
+        <li><span class="zh">核数据：</span><span class="en">kernel data</span></li>
+        <li><span class="zh">空间基函数：</span><span class="en">spatial basis function</span></li>
+        <li><span class="zh">基础应用 schema：</span><span class="en">base applied schema</span></li>
+        <li><span class="zh">特征 schema：</span><span class="en">characteristics schemas</span></li>
+        <li><span class="zh">验证契约：</span><span class="en">validation contract</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

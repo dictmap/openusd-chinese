@@ -54,6 +54,27 @@
         <li><span class="zh">平面椭圆：</span><span class="en">planar ellipse</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-097">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`ParticleFieldKernelConstantSurfletAPI` 定义 `ParticleField` 的 constant surflet kernel。未变换时，它在 XY plane 的单位圆盘内给出固定 opacity 1.0，圆盘外为 0.0，是一个硬边界的平面 splat 支撑模型。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for ParticleFieldKernelConstantSurfletAPI while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">本页的 `constant` 不表示所有粒子属性都固定，而是 kernel 的 falloff 采用 step-function: 圆盘内为 1.0，圆盘外为 0.0。</span></li>
+        <li><span class="zh">未变换状态的支撑范围是 XY plane 上半径 1 的 bounded circular disk；`rotation` 和 `scale` 会把该圆盘变成平面椭圆，`position` 则移动 splat center。</span></li>
+        <li><span class="zh">per-splat opacity 仍然是乘法因子，它会和 step-function falloff 相乘；因此 opacity 数据 API 和 kernel API 分工不同，不能把 kernel 误读成所有透明度数据来源。</span></li>
+        <li><span class="zh">和 `GaussianSurfletAPI` 相比，本页更适合理解硬边界或掩码式 surflet；和 `GaussianEllipsoidAPI` 相比，本页仍然是平面贡献，不是三维椭球贡献。</span></li>
+        <li><span class="zh">如果目标是复核视觉差异，优先比较 `radius 1 disk`、`step-function falloff`、`planar ellipse` 与 `Gaussian falloff` 这些词，而不是只看页面标题中的 `ParticleFieldKernel`。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">常量表面元核：</span><span class="en">constant surflet kernel</span></li>
+        <li><span class="zh">阶跃式衰减：</span><span class="en">step-function falloff</span></li>
+        <li><span class="zh">有界圆盘：</span><span class="en">bounded circular disk</span></li>
+        <li><span class="zh">splat 中心：</span><span class="en">splat center</span></li>
+        <li><span class="zh">未变换的默认 position/scale/rotation/opacity：</span><span class="en">identity position, scale, rotation, opacity</span></li>
+        <li><span class="zh">硬支撑边界：</span><span class="en">hard support boundary</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
