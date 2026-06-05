@@ -44,6 +44,27 @@
 <li><span class="zh">本地页保留 CoordSysAPI、coordSys:* relationship、projection painting、procedural texture 稳定空间和 usda 示例，便于核对绑定语义。</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-077">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Coordinate Systems in USD Proposal 补充 proposal 二次精修说明，重点解释设计目标、对象模型、authoring/consumption 边界和常见误读；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for Coordinate Systems in USD Proposal, focusing on design goals, object model, authoring and consumption boundaries, and common interpretation risks while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">本 proposal 解决 shader 如何用稳定短名称访问 frame of reference，而不是直接依赖可能随引用、实例化或资产封装变化的长 prim path。</span></li>
+        <li><span class="zh">`coordSys:*` relationship 把一个名字绑定到某个 prim 的坐标空间；shader 通过字符串名消费该坐标系，绑定关系则按 namespace subtree 作用域继承和覆盖。</span></li>
+        <li><span class="zh">同一个 prim 可以绑定多个 coordinate systems，例如 `modelSpace`、`instanceSpace`、`paintSpace`；这让 procedural texture、projection painting 和稳定 reference frame 可以并存。</span></li>
+        <li><span class="zh">与 primvars 不同，coordSys 不是每点数据，而是命名坐标框架；与 collections 不同，它强调 shader 消费的坐标空间解析，而不是 prim 集合选择。</span></li>
+        <li><span class="zh">阅读 USDA 示例时应关注 `rel coordSys:modelSpace`、`rel coordSys:instanceSpace` 与 shader `inputs:coordsys` 的配合：前者 author 绑定，后者按名称请求。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">坐标系：</span><span class="en">Coordinate Systems</span></li>
+        <li><span class="zh">UsdShade 坐标系 API：</span><span class="en">UsdShadeCoordSysAPI</span></li>
+        <li><span class="zh">坐标系绑定关系：</span><span class="en">coordSys:* relationship</span></li>
+        <li><span class="zh">参考坐标框架：</span><span class="en">frame of reference</span></li>
+        <li><span class="zh">投影绘制：</span><span class="en">projection painting</span></li>
+        <li><span class="zh">程序化纹理：</span><span class="en">procedural texture</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

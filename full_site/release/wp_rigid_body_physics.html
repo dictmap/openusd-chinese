@@ -44,6 +44,27 @@
 <li><span class="zh">本地页保留 PhysicsScene、Rigid Bodies、Collision Shapes、Joints、mass properties、units 和 gravity 等入口与 usda schema 片段。</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-077">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Rigid Body Physics in USD Proposal 补充 proposal 二次精修说明，重点解释设计目标、对象模型、authoring/consumption 边界和常见误读；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for Rigid Body Physics in USD Proposal, focusing on design goals, object model, authoring and consumption boundaries, and common interpretation risks while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">本 proposal 是 USD 刚体物理 schema 的第一阶段设计，范围明确聚焦 rigid body simulation，不覆盖流体、软体、破碎等更广泛仿真问题。</span></li>
+        <li><span class="zh">设计倾向用 API schemas 附加物理行为到现有 prim，例如 rigid body、collision、mass properties、joint 或 material，而不是要求重建一套平行的物理对象树。</span></li>
+        <li><span class="zh">`PhysicsScene` 表达全局仿真设置，例如 gravity、units 和 scene-level 参数；它不是几何对象，而是仿真上下文入口。</span></li>
+        <li><span class="zh">collision shapes、physics materials、pairwise filtering 和 joints 分别解决形状近似、接触材质、碰撞过滤和约束连接；这些概念应和渲染 mesh/display purpose 分开理解。</span></li>
+        <li><span class="zh">阅读时要注意 historical/outdated 提示：当前使用应回到 `UsdPhysics overview`，本页主要解释为什么 USD Physics 采用 API schema、层级交互和最小公共刚体概念。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">刚体物理：</span><span class="en">Rigid Body Physics</span></li>
+        <li><span class="zh">物理场景设置 prim：</span><span class="en">PhysicsScene</span></li>
+        <li><span class="zh">刚体：</span><span class="en">Rigid Bodies</span></li>
+        <li><span class="zh">碰撞形状：</span><span class="en">Collision Shapes</span></li>
+        <li><span class="zh">物理材质：</span><span class="en">Physics Materials</span></li>
+        <li><span class="zh">关节/约束：</span><span class="en">Joints</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

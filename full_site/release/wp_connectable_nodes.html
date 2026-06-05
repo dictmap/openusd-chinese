@@ -44,6 +44,27 @@
 <li><span class="zh">重点设计是让 UsdLux、UsdRi 等 schema 能拥有 node definition 和连接网络能力，同时尽量不破坏现有 UsdShadeShader、NodeGraph、Material 数据和客户端。</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-077">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Generalizing Connectable Nodes Beyond UsdShade 补充 proposal 二次精修说明，重点解释设计目标、对象模型、authoring/consumption 边界和常见误读；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for Generalizing Connectable Nodes Beyond UsdShade, focusing on design goals, object model, authoring and consumption boundaries, and common interpretation risks while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">本 proposal 的核心是把 `connectable node` 从材质网络推广到更广的 shader-like computation 网络，包括灯光、滤镜、相机、几何处理和 RenderMan USD schema。</span></li>
+        <li><span class="zh">`UsdShadeNodeDefAPI` 承担 node definition 能力，`UsdShadeConnectableAPI` 保留连接语义；这种拆分让非材质 schema 能复用节点定义和连接检查，而不必伪装成 Material/Shader。</span></li>
+        <li><span class="zh">plugin-defined connectability callbacks 允许 schema 插件自定义连接规则，避免把所有节点连接规则硬编码进 UsdShade 基类。</span></li>
+        <li><span class="zh">对 `UsdLux` 和 `UsdRi` 的意义在于：灯光、light filters 或 renderer-specific 节点可以拥有 Sdr/Ndr 节点定义与网络连接能力，Hydra/render delegates 也能更数据驱动地消费这些网络。</span></li>
+        <li><span class="zh">阅读时应区分 node definition、connectability metadata、actual relationship connections 三层：定义说明节点是什么，metadata/回调说明能否连接，relationship 才是 authored connection。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">可连接节点：</span><span class="en">connectable node</span></li>
+        <li><span class="zh">节点定义 API schema：</span><span class="en">UsdShadeNodeDefAPI</span></li>
+        <li><span class="zh">可连接 API schema：</span><span class="en">UsdShadeConnectableAPI</span></li>
+        <li><span class="zh">连接性回调：</span><span class="en">connectability callbacks</span></li>
+        <li><span class="zh">着色节点发现与注册体系：</span><span class="en">Sdr / Ndr</span></li>
+        <li><span class="zh">非材质着色网络：</span><span class="en">non-shading networks</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -1,5 +1,15 @@
 # 工作记录
 
+## 第 208 轮：剩余 release proposal 页第二层精修
+- 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、git 状态和远端 main，确认上一轮远端提交为 `ac5a238`，当前分级为 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8。
+- 本轮严格只处理 3 个未达标页面：`full_site/release/wp_connectable_nodes.html`、`full_site/release/wp_coordsys.html`、`full_site/release/wp_rigid_body_physics.html`；这些页面本轮开始时均已是 `draft_needs_translation`，本轮按“最多 5 页”节奏处理剩余高价值 proposal 页，没有为了凑数额外处理低价值源码页、搜索页或目录页。
+- 新增 `scripts/refine_openusd_release_batch_077.mjs`，为 3 页插入 `release-quality-pass-077` 二次精修导读区块，覆盖设计目标、对象模型、authoring/consumption 边界和常见误读；保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录。
+- 本轮中文层覆盖：`Generalizing Connectable Nodes Beyond UsdShade` 的 `UsdShadeNodeDefAPI`、`UsdShadeConnectableAPI`、plugin-defined connectability callbacks、Sdr/Ndr 和 non-shading networks；`Coordinate Systems in USD Proposal` 的 `coordSys:* relationship`、frame of reference、shader 短名称消费、projection painting 和 procedural texture；`Rigid Body Physics in USD Proposal` 的 `PhysicsScene`、Rigid Bodies、Collision Shapes、Physics Materials、Joints、API schemas 与 scene hierarchy 交互边界。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级保持 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8；本轮 3 页中文正文量分别提升到约 571-618 字区间，但仍保持 `bilingual_draft` 状态，未误标为完成。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398 个草稿页全部通过本地预览检查。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`，报告索引通过，总验证 `PASSED`，`validation_required_checks` 281 / `validation_failed_checks` 0。
+- 验证通过后准备以 `OpenUSD bilingual round 208: proposal second pass connect coords physics` 同步 GitHub；下一轮优先最多处理 `full_site/api/functions_vars_l.html`、`full_site/api/functions_p.html`、`full_site/api/functions_vars_m.html`、`full_site/api/functions_vars_c.html`、`full_site/api/functions_vars_f.html`，继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+
 ## 第 207 轮：高价值 release proposal 页第二层精修
 - 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、git 状态和远端 main，确认上一轮远端提交为 `66034c5`，当前分级为 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8。
 - 本轮严格只处理 5 个未达标页面：`full_site/release/wp_asset_previews.html`、`full_site/release/wp_usdlux_for_renderers.html`、`full_site/release/wp_ar2.html`、`full_site/release/wp_schema_versioning.html`、`full_site/release/wp_usdlux_for_geometry_lights.html`；这些页面本轮开始时均已是 `draft_needs_translation`，本轮目标是补强中文解释质量，没有新增或处理第 6 页。

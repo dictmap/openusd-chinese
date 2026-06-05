@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T08:07:51.109Z
+Generated: 2026-06-05T08:20:04.187Z
 
 ## Summary
 
@@ -459,10 +459,10 @@ Generated: 2026-06-05T08:07:51.109Z
 | 393 | draft_needs_translation | bilingual_draft | 419 | 18/12 | 0 | 0 | `full_site/release/user_guides/variable_expressions.html` |
 | 394 | draft_needs_translation | bilingual_draft | 514 | 23/17 | 0 | 0 | `full_site/release/wp_ar2.html` |
 | 395 | draft_needs_translation | bilingual_draft | 480 | 23/17 | 0 | 0 | `full_site/release/wp_asset_previews.html` |
-| 396 | draft_needs_translation | bilingual_draft | 215 | 16/15 | 0 | 0 | `full_site/release/wp_connectable_nodes.html` |
-| 397 | draft_needs_translation | bilingual_draft | 214 | 16/15 | 0 | 0 | `full_site/release/wp_coordsys.html` |
+| 396 | draft_needs_translation | bilingual_draft | 521 | 28/22 | 0 | 0 | `full_site/release/wp_connectable_nodes.html` |
+| 397 | draft_needs_translation | bilingual_draft | 509 | 28/22 | 0 | 0 | `full_site/release/wp_coordsys.html` |
 | 398 | draft_needs_translation | bilingual_draft | 442 | 21/15 | 0 | 0 | `full_site/release/wp_render_settings.html` |
-| 399 | draft_needs_translation | bilingual_draft | 251 | 29/28 | 0 | 0 | `full_site/release/wp_rigid_body_physics.html` |
+| 399 | draft_needs_translation | bilingual_draft | 554 | 41/35 | 0 | 0 | `full_site/release/wp_rigid_body_physics.html` |
 | 400 | draft_needs_translation | bilingual_draft | 457 | 32/26 | 0 | 0 | `full_site/release/wp_schema_versioning.html` |
 | 401 | draft_needs_translation | bilingual_draft | 484 | 18/10 | 0 | 0 | `full_site/release/wp_stage_variables.html` |
 | 402 | draft_needs_translation | bilingual_draft | 471 | 23/17 | 0 | 0 | `full_site/release/wp_usdaudio.html` |
