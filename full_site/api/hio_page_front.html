@@ -54,6 +54,27 @@
         <li><span class="zh">glslfx：</span><span class="en">glslfx</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-086">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Hio: Hydra Resource I/O 增补 API 索引或模块入口页二次精修说明，重点解释 Doxygen 字母桶、File Members 与模块 front page 的阅读方式、跨模块条目的归类边界，以及何时应跳转到目标 class、schema、header、group 或用户指南。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Hio: Hydra Resource I/O API index or module-front page. It explains how to read Doxygen letter buckets, File Members, and module front pages, how to group cross-module entries, and when to jump to target class, schema, header, group, or user-guide documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`hio_page_front.html` 是 `Hio: Hydra Resource I/O` 模块入口，不是普通索引字母页；它帮助读者理解 Hydra 如何读取 shader container、image/texture 和 field texture resource。</span></li>
+        <li><span class="zh">`HioGlslfx` 负责解释 Pixar 的 `glslfx` GPU shader container format，重点是 shader snippets composition 和可用于 code generation 的 metadata；它更接近 shader/resource layer，而不是 UsdShade authoring schema。</span></li>
+        <li><span class="zh">`HioImage` 是 plugin-based image/texture-reading abstraction，`hdStorm` 的 image I/O 会使用它；`HioStb_Image` 和 `HioOIIO_Image` 是不同后端实现路径，涉及 build/deployment 选择。</span></li>
+        <li><span class="zh">`HioFieldTextureData` 面向 volume/field texture data，适合和 UsdVol、field asset、renderer texture upload 流程一起阅读，而不是和普通 2D image I/O 混淆。</span></li>
+        <li><span class="zh">`Working With Image File Formats` 是用户指南入口，可帮助理解图像格式插件、OpenImageIO、stb 支持范围和部署问题；本页中文层把 Hio 定位为 Hydra renderer 的资源读取层，不负责 scene graph、composition 或 render task 调度。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Hydra 资源输入输出：</span><span class="en">Hydra Resource I/O</span></li>
+        <li><span class="zh">shader 容器：</span><span class="en">shader container</span></li>
+        <li><span class="zh">glslfx：</span><span class="en">glslfx</span></li>
+        <li><span class="zh">图像 I/O 后端：</span><span class="en">image I/O backend</span></li>
+        <li><span class="zh">场纹理数据：</span><span class="en">field texture data</span></li>
+        <li><span class="zh">资源加载层：</span><span class="en">resource loading layer</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

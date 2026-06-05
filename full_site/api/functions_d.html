@@ -53,6 +53,27 @@
         <li><span class="zh">数值精度：</span><span class="en">numeric precision</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-086">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - D 增补 API 索引或模块入口页二次精修说明，重点解释 Doxygen 字母桶、File Members 与模块 front page 的阅读方式、跨模块条目的归类边界，以及何时应跳转到目标 class、schema、header、group 或用户指南。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - D API index or module-front page. It explains how to read Doxygen letter buckets, File Members, and module front pages, how to group cross-module entries, and when to jump to target class, schema, header, group, or user-guide documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`functions_d.html` 是 Class Members 的 D 段总索引，当前条目明显分成 Gf math、Tf/Vt runtime containers、Vdf executor data manager、Sdf zip/file info、Usd imaging/render 和 Trace 几组。</span></li>
+        <li><span class="zh">`GfMatrix2/3/4d/f` 与 `GfVec2/3/4d/f/h/i` 是 Gf 数学类型主线；后缀 `d`、`f`、`h`、`i` 表示数值精度或存储类型，英文类型名必须保持原样。</span></li>
+        <li><span class="zh">`TfSmallVector&lt;T, N&gt;`、`TfSpan&lt;T&gt;`、`TfToken`、`TfRefPtr&lt;T&gt;`、`VtArray&lt;ELEM&gt;` 与 `Vdf_BoxedContainer&lt;T&gt;` 属于基础容器、token、引用计数和类型封装线索，适合按 runtime support 阅读。</span></li>
+        <li><span class="zh">`Vdf_ExecutorDataManagerTraits&lt;VdfDataManagerHashTable&gt;`、`Vdf_ExecutorDataVector`、`Vdf_ParallelExecutorDataManagerTraits&lt;VdfParallelDataManagerVector&gt;`、`Vdf_ParallelExecutorDataVector`、`VdfDataManagerVector&lt;DeallocationMode&gt;` 和 `VdfSimpleExecutor` 是 execution data manager 主线。</span></li>
+        <li><span class="zh">`UsdPhysicsJointDrive`、`SdfZipFile::FileInfo`、`UsdImagingDataSourceMapped`、`TraceEvent`、`UsdRenderSpec::RenderVar` 和 `UsdRenderTokensType` 分别提示 physics drive、zip file metadata、imaging data source、trace event 和 render var/token 语境。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">矩阵类型：</span><span class="en">matrix type</span></li>
+        <li><span class="zh">向量类型：</span><span class="en">vector type</span></li>
+        <li><span class="zh">运行时容器：</span><span class="en">runtime container</span></li>
+        <li><span class="zh">执行器数据管理器：</span><span class="en">executor data manager</span></li>
+        <li><span class="zh">关节驱动：</span><span class="en">joint drive</span></li>
+        <li><span class="zh">渲染变量：</span><span class="en">render variable</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

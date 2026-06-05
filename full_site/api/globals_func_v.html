@@ -54,6 +54,27 @@
         <li><span class="zh">VtDictionary：</span><span class="en">VtDictionary</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-086">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 File Members - Functions - V 增补 API 索引或模块入口页二次精修说明，重点解释 Doxygen 字母桶、File Members 与模块 front page 的阅读方式、跨模块条目的归类边界，以及何时应跳转到目标 class、schema、header、group 或用户指南。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the File Members - Functions - V API index or module-front page. It explains how to read Doxygen letter buckets, File Members, and module front pages, how to group cross-module entries, and when to jump to target class, schema, header, group, or user-guide documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`globals_func_v.html` 是 File Members 函数索引的 V 段，和 Class Members 不同，它列出的是头文件级函数或 group 函数入口；阅读时应特别保留函数名和头文件名。</span></li>
+        <li><span class="zh">`Vdf_DataManagerVectorAllocate()` 来自 `dataManagerVector.h`，`Vdf_IsPoolOutput()` 来自 `poolChainIndex.h`，`VdfEstimateSize()` 来自 `estimateSize.h`；这些条目偏 Vdf data manager、pool output 和尺寸估算工具。</span></li>
+        <li><span class="zh">`VdfEmptyNodeCallback()`、`VdfGetAssociatedSourceOutput()`、`VdfIsSpeculating()`、`VdfIsTopologicalSourceNode()` 与 `VdfTraverseTopologicalSourceNodes()` 都来自 `networkUtil.h`，应按 Vdf network traversal/source node/speculation 语境理解。</span></li>
+        <li><span class="zh">`VdfGetMaskedOutputVectorNetwork()` 与 `VdfSortAndUniqueMaskedOutputVector()` 来自 `maskedOutputVector.h`，用于 masked output vector 网络提取、排序和去重；它们常服务于执行网络局部分析。</span></li>
+        <li><span class="zh">`VdfIsParallelEvaluationEnabled()`、`VdfScheduleTaskIsInvalid()`、`VtDictionaryGet()`、`base/vt/types.h` 与 `vt/hash.h` 提示本页还混合 Vdf schedule、parallel evaluation 和 Vt dictionary/hash 工具。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">文件级函数成员：</span><span class="en">file member function</span></li>
+        <li><span class="zh">数据管理器向量：</span><span class="en">data manager vector</span></li>
+        <li><span class="zh">池输出：</span><span class="en">pool output</span></li>
+        <li><span class="zh">源输出：</span><span class="en">source output</span></li>
+        <li><span class="zh">并行求值：</span><span class="en">parallel evaluation</span></li>
+        <li><span class="zh">字典查询：</span><span class="en">dictionary lookup</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
