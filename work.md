@@ -1,5 +1,15 @@
 # 工作记录
 
+## 第 209 轮：API 成员索引页二次精修
+- 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、git 状态和远端 main，确认上一轮远端提交为 `15f0df9`，当前分级为 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8。
+- 本轮严格只处理 5 个未达标页面：`full_site/api/functions_vars_l.html`、`full_site/api/functions_p.html`、`full_site/api/functions_vars_m.html`、`full_site/api/functions_vars_c.html`、`full_site/api/functions_vars_f.html`；这些页面本轮开始时均已是 `draft_needs_translation`，本轮目标是补强 Doxygen API 索引页的中文阅读方法和模块归类，没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_release_batch_078.mjs`，每页插入 `release-quality-pass-078` API 索引页二次精修导读区块，覆盖 Doxygen 字母索引阅读方法、跨模块条目归类、跳转边界和术语对照；保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录。
+- 本轮中文层覆盖：`functions_vars_l.html` 的 Pcp relocation/layer stack、Physics joint desc 和 schema token 索引读法；`functions_p.html` 的 Class Members P 段、Sdf/Pcp、Sdr/UsdShade、UsdVol particle field 和 Pcp composition 入口；`functions_vars_m.html` 的 Pcp composition、Hydra repr/AOV、UsdPhysics shape/joint/collision group；`functions_vars_c.html` 的 Pcp namespace edit diagnostics、TfMallocTag call tree、Hydra/AOV 和 `TokensType`；`functions_vars_f.html` 的 UsdImaging data source mapping、schema registry、Pcp composition edit、physics descriptors 和 Hydra render state。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级保持 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8；本轮 5 页中文正文量已提升到约 470-543 字区间，但仍保持 `bilingual_draft` 状态，未误标为完成。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398 个草稿页全部通过本地预览检查。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`，报告索引通过，总验证 `PASSED`，`validation_required_checks` 281 / `validation_failed_checks` 0。
+- 验证通过后准备以 `OpenUSD bilingual round 209: api index functions vars pass` 同步 GitHub；下一轮优先最多处理 `full_site/api/functions_t.html`、`full_site/api/functions_vars_i.html`、`full_site/api/functions_v.html`、`full_site/api/functions_o.html`、`full_site/api/functions_vars_d.html`，继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+
 ## 第 208 轮：剩余 release proposal 页第二层精修
 - 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、git 状态和远端 main，确认上一轮远端提交为 `ac5a238`，当前分级为 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8。
 - 本轮严格只处理 3 个未达标页面：`full_site/release/wp_connectable_nodes.html`、`full_site/release/wp_coordsys.html`、`full_site/release/wp_rigid_body_physics.html`；这些页面本轮开始时均已是 `draft_needs_translation`，本轮按“最多 5 页”节奏处理剩余高价值 proposal 页，没有为了凑数额外处理低价值源码页、搜索页或目录页。

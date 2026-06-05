@@ -53,6 +53,27 @@
         <li><span class="zh">权重槽：</span><span class="en">weight slot</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-078">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Variables - C 补充 API 索引页二次精修说明，重点解释 Doxygen 字母索引的阅读方法、跨模块条目归类和跳转边界；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - Variables - C API index page, focusing on how to read Doxygen letter buckets, how to group cross-module entries, and when to jump to the target class documentation while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`functions_vars_c.html` 是 C 字母段变量索引，最容易混在一起的是 token constants、composition diagnostics、Hydra/AOV 设置和内存诊断结构。</span></li>
+        <li><span class="zh">`PcpNamespaceEdits::CacheSite`、`LayerStackSite` 与多个 `PcpError*` 条目说明 C 段包含 namespace edits、relocation 和 prim index 输出诊断。</span></li>
+        <li><span class="zh">`TfMallocTag::CallTree` 及其 `PathNode` 属于 Tf 内存标记/调用树诊断，与 UsdGeom 或 UsdRender token 常量不是同一语义层。</span></li>
+        <li><span class="zh">`HdAovDescriptor`、`HdRenderPassAovBinding`、`HdCommandDescriptor`、`HdMeshReprDesc` 和 `HdEmbreeConfig` 应按 Hydra/rendering 配置线索阅读。</span></li>
+        <li><span class="zh">多组 `Usd*TokensType` 只表示各 schema 域的 token 常量聚合；翻译时保留原 token 名，中文只解释域和用途，避免改写 API 字面量。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">缓存位置：</span><span class="en">CacheSite</span></li>
+        <li><span class="zh">Tf 内存标签调用树：</span><span class="en">TfMallocTag::CallTree</span></li>
+        <li><span class="zh">Pcp 组合错误：</span><span class="en">PcpError</span></li>
+        <li><span class="zh">Hydra AOV 描述符：</span><span class="en">HdAovDescriptor</span></li>
+        <li><span class="zh">token 常量集合：</span><span class="en">TokensType</span></li>
+        <li><span class="zh">API 字面量：</span><span class="en">API literal</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
