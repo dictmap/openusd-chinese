@@ -56,6 +56,27 @@
         <li><span class="zh">未创作/未写入：</span><span class="en">unauthored</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-117">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`ParticleFieldPositionAttributeAPI` 为 `ParticleField` 提供逐粒子的 position data。它是粒子体积表示的基础数据之一：位置数组通常决定粒子或 splat 的中心点集合，并与 opacity、radiance、scale、orientation 和 kernel API 一起构成完整的粒子场解释。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for ParticleFieldPositionAttributeAPI while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">本页关注 per-particle position attribute，而不是 prim 级别的 transform；它描述每个粒子或 splat 在数据空间中的中心位置。</span></li>
+        <li><span class="zh">position array 的元素数量通常是其他 per-particle arrays 对齐的基准；opacity、radiance、scale、orientation 等数组应与位置数据保持一致。</span></li>
+        <li><span class="zh">坐标语义需要结合 `ParticleField` prim 所在的场景层级和任何上层变换理解；不要把 per-particle position 误读成最终世界空间坐标的唯一来源。</span></li>
+        <li><span class="zh">如果与 kernel API 一起阅读，position 给出中心，kernel 给出贡献形状或支撑域，scale/orientation 调整支撑域尺寸和朝向。</span></li>
+        <li><span class="zh">排查可视化异常时，先检查 position 数组是否存在、长度是否正确，再检查 opacity/radiance/kernel 是否让这些位置产生可见贡献。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">粒子场位置属性 API：</span><span class="en">ParticleFieldPositionAttributeAPI</span></li>
+        <li><span class="zh">位置数据：</span><span class="en">position data</span></li>
+        <li><span class="zh">逐粒子：</span><span class="en">per-particle</span></li>
+        <li><span class="zh">粒子小片或溅射基元：</span><span class="en">splat</span></li>
+        <li><span class="zh">核或支撑函数：</span><span class="en">kernel</span></li>
+        <li><span class="zh">数组对齐：</span><span class="en">array alignment</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

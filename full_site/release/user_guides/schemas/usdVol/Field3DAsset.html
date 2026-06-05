@@ -75,6 +75,27 @@
         <li><span class="zh">时间样本：</span><span class="en">timeSamples</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-117">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`Field3DAsset` 用于把 `UsdVol` field prim 指向外部 `.f3d` Field3D 体积数据。阅读本页时，应把它理解为文件型体积字段的定位 schema：`filePath` 指向资产文件，`fieldName`、`fieldDataType` 和 `fieldPurpose` 帮助消费端识别具体字段及其用途。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for Field3DAsset while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">本页的核心不是把 voxel 数据内嵌到 USD 中，而是在 USD 场景里声明一个可被 `Volume` 的 `field:*` relationship 引用的 Field3D 数据来源。</span></li>
+        <li><span class="zh">`filePath` 可以带时间采样，因此同一个 field prim 可以随时间切换或更新外部 `.f3d` 文件；中文导读应保留 time-sampled asset path 的含义。</span></li>
+        <li><span class="zh">`fieldName` 用来匹配 Field3D 文件内部的字段名，`fieldDataType` 描述字段数据类型，`fieldPurpose` 描述用途；三者共同影响渲染器或工具如何解释该字段。</span></li>
+        <li><span class="zh">与 `OpenVDBAsset` 相比，本页面面向 Field3D 文件格式；两者都属于外部体积数据引用，但格式、内部字段定位方式和工具链支持不同。</span></li>
+        <li><span class="zh">排查加载问题时，先确认 `filePath` 是否可解析，再确认 `.f3d` 内部字段名、数据类型和用途是否与下游 renderer、shader 或体积绑定一致。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Field3D 体积资产 schema：</span><span class="en">Field3DAsset</span></li>
+        <li><span class="zh">Field3D 体积文件格式：</span><span class="en">Field3D</span></li>
+        <li><span class="zh">外部文件路径属性：</span><span class="en">filePath</span></li>
+        <li><span class="zh">文件内部字段名：</span><span class="en">fieldName</span></li>
+        <li><span class="zh">字段数据类型：</span><span class="en">fieldDataType</span></li>
+        <li><span class="zh">字段用途：</span><span class="en">fieldPurpose</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

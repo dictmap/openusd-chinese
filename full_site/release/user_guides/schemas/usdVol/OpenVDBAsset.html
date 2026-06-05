@@ -75,6 +75,27 @@
         <li><span class="zh">字段名：</span><span class="en">fieldName</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-117">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`OpenVDBAsset` 用于把 `UsdVol` field prim 连接到外部 `.vdb` OpenVDB 稀疏体积网格。它通常通过 `filePath` 定位文件，并通过 `fieldName` 或 `fieldIndex` 选择文件中的具体 grid；`fieldDataType` 则帮助消费端理解 grid 的数据类型。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for OpenVDBAsset while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`OpenVDBAsset` 是文件型体积字段 schema，不是 `Volume` 容器本身；`Volume` 仍需要通过 `field:*` relationship 引用该 field prim。</span></li>
+        <li><span class="zh">`fieldName` 适合按 grid 名称定位，`fieldIndex` 适合按索引定位；如果两者和实际 `.vdb` 内容不匹配，渲染器可能找不到预期体积字段。</span></li>
+        <li><span class="zh">`filePath` 支持资产路径语义，也可能随时间采样；翻译时不要把它简化成静态字符串路径，以免丢失 animated volume sequence 的阅读线索。</span></li>
+        <li><span class="zh">OpenVDB 是稀疏体积表示，适合烟雾、云、雾、液体 signed distance field 等数据；本页只声明连接方式，具体网格语义仍由文件内容和字段属性决定。</span></li>
+        <li><span class="zh">与 `Field3DAsset` 对照阅读时，重点区分外部文件格式和字段选择机制：`.vdb` 常见 grid name/index，`.f3d` 常见 Field3D field name/purpose。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">OpenVDB 体积资产 schema：</span><span class="en">OpenVDBAsset</span></li>
+        <li><span class="zh">OpenVDB 稀疏体积格式：</span><span class="en">OpenVDB</span></li>
+        <li><span class="zh">VDB 网格：</span><span class="en">VDB grid</span></li>
+        <li><span class="zh">字段索引：</span><span class="en">fieldIndex</span></li>
+        <li><span class="zh">字段名：</span><span class="en">fieldName</span></li>
+        <li><span class="zh">稀疏体积：</span><span class="en">sparse volume</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

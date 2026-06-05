@@ -56,6 +56,27 @@
         <li><span class="zh">sigmoid 激活函数：</span><span class="en">sigmoid activation function</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-117">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`ParticleFieldOpacityAttributeAPI` 为 `ParticleField` 提供逐粒子的 opacity data。它描述每个粒子或 splat 对不透明度、密度或可见贡献的控制量，应与 position、kernel、radiance、scale 和 orientation 等粒子属性一起阅读。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for ParticleFieldOpacityAttributeAPI while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">opacity data 是 per-particle 属性，不等同于 prim 的 `visibility`，也不等同于材质网络里的整体 transparency 控制。</span></li>
+        <li><span class="zh">opacity 数组应与 position 数组对齐；如果某个粒子有位置但没有对应 opacity，消费端需要依赖 schema 默认值或工具约定，结果可能不一致。</span></li>
+        <li><span class="zh">与 `ParticleFieldRadianceBaseAPI` 对照时，opacity 更偏向遮蔽、密度或贡献强度，radiance 更偏向发光或颜色能量；中文导读应把两者分开。</span></li>
+        <li><span class="zh">kernel API 决定 opacity 如何在空间中分布或衰减；同一 opacity 值在 ellipsoid kernel 和 surflet kernel 下会产生不同空间贡献。</span></li>
+        <li><span class="zh">调试不可见粒子时，应同时检查 opacity 值、position 数组、kernel 支撑域、scale/orientation 数据以及 renderer 是否支持该粒子场 schema。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">粒子场不透明度属性 API：</span><span class="en">ParticleFieldOpacityAttributeAPI</span></li>
+        <li><span class="zh">不透明度数据：</span><span class="en">opacity data</span></li>
+        <li><span class="zh">prim 可见性属性：</span><span class="en">visibility</span></li>
+        <li><span class="zh">辐射亮度或发光贡献：</span><span class="en">radiance</span></li>
+        <li><span class="zh">密度：</span><span class="en">density</span></li>
+        <li><span class="zh">kernel 支撑域：</span><span class="en">kernel support</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

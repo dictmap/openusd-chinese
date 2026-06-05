@@ -65,6 +65,27 @@
         <li><span class="zh">向量数据角色提示：</span><span class="en">vectorDataRoleHint</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-117">
+      <h2>中文补强导读 / Chinese Refinement Notes</h2>
+      <p class="zh">`VolumeFieldAsset` 是面向外部文件型体积字段的抽象基础 schema。它从 `VolumeFieldBase` 继承体积字段身份，并为 `OpenVDBAsset`、`Field3DAsset` 或自定义文件型 field schema 提供共同的资产路径与字段描述边界。</p>
+      <p class="en">This refinement section adds page-specific Chinese reading notes for VolumeFieldAsset while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">本页应按 base class 读取：它说明 file-backed volume field 的共同接口，而不是指定某一种具体文件格式的完整加载规则。</span></li>
+        <li><span class="zh">只设置 `filePath` 并不等于已经定义完整体积语义；具体 schema 仍需要说明如何在文件中选择 field、grid 或数据通道。</span></li>
+        <li><span class="zh">`VolumeFieldBase` 负责让 prim 成为合法 field provider，`VolumeFieldAsset` 进一步强调该 field 来自外部资产文件。</span></li>
+        <li><span class="zh">典型连接链路是 `Volume` 通过 `field:*` relationship 指向某个 `VolumeFieldAsset` 派生 prim，再由派生 schema 解释具体文件内容。</span></li>
+        <li><span class="zh">阅读自定义扩展时，可以把本页作为判断标准：如果 field 数据来自外部文件，并且需要被 `Volume` 引用，通常应沿用这个 schema 家族的边界。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">文件型体积字段资产基类：</span><span class="en">VolumeFieldAsset</span></li>
+        <li><span class="zh">体积字段抽象基类：</span><span class="en">VolumeFieldBase</span></li>
+        <li><span class="zh">外部文件驱动字段：</span><span class="en">file-backed field</span></li>
+        <li><span class="zh">体积字段提供者：</span><span class="en">field provider</span></li>
+        <li><span class="zh">体积容器 schema：</span><span class="en">Volume</span></li>
+        <li><span class="zh">field 命名空间关系：</span><span class="en">field:* relationship</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
