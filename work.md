@@ -1,5 +1,26 @@
 # 工作记录
 
+## 第 200 轮：usdLux schema 页面精修（二）
+- 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、git 状态和远端 main，确认上一轮远端提交为 `d5723b4`，当前分级为 `draft_template_only` 46 / `draft_needs_translation` 352 / `good_bilingual` 8。
+- 本轮严格只处理 5 个未达标页面：`full_site/release/user_guides/schemas/usdLux/ListAPI.html`、`full_site/release/user_guides/schemas/usdLux/MeshLightAPI.html`、`full_site/release/user_guides/schemas/usdLux/NonboundableLightBase.html`、`full_site/release/user_guides/schemas/usdLux/overview.html`、`full_site/release/user_guides/schemas/usdLux/PluginLight.html`，没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_release_batch_069.mjs`，每页插入 `release-quality-pass-069` 中文精修导读区块，覆盖 schema 用途、属性/关系阅读路径、迁移或扩展边界和术语对照；保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录。
+- 本轮中文层覆盖：`ListAPI` 的 deprecated 状态、`LightListAPI` 迁移、`lightList` 和 `lightList:cacheBehavior`；`MeshLightAPI` 的 Mesh prim 发光语义、`light:materialSyncMode`、`materialGlowTintsLight`、`light:shaderId` 和 applied API 边界；`NonboundableLightBase` 的 non-boundable intrinsic lights、`DistantLight`、`DomeLight`、`Xformable` 与 `Imageable` 继承；`overview.html` 的 UsdLux 概念入口、`LightAPI`、boundable/non-boundable 分类、light filters 和 local navigation；`PluginLight` 的外部 `Sdr shader node`、`render delegate`、插件扩展边界和 renderer-specific 语义。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 46 / `draft_needs_translation` 352 / `good_bilingual` 8 变为 `draft_template_only` 41 / `draft_needs_translation` 357 / `good_bilingual` 8；本轮 5 页均从模板草稿转入 `draft_needs_translation`。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`，报告索引审计通过，总验证 281 checks passed / 0 failed。
+- GitHub 同步：验证通过后使用 `scripts/sync_openusd_to_github.ps1`，提交信息为 `OpenUSD bilingual round 200: usdLux list mesh plugin schema pages`。
+
+差距：
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是完整翻译每一个 usdLux schema 的全部属性、关系、继承字段、示例和渲染器实现细节。
+- 全量仍有 41 个 `draft_template_only` 和 357 个 `draft_needs_translation`，后续需要继续按每轮最多 5 页推进。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理 `full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html`、`full_site/release/user_guides/schemas/usdLux/PortalLight.html`、`full_site/release/user_guides/schemas/usdLux/ShadowAPI.html`、`full_site/release/user_guides/schemas/usdLux/ShapingAPI.html`、`full_site/release/user_guides/schemas/usdLux/VolumeLightAPI.html`。
+2. 对 usdLux filter/portal/shadow/shaping/volume 页面补中文用途说明、属性/关系阅读路径、schema 边界和术语对照；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+3. 保持本地链接策略，验证通过后同步 GitHub，并记录质量分级变化、验证结果和提交结果。
+
 ## 第 199 轮：usdLux schema 页面精修（一）
 - 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、git 状态和远端 main，确认上一轮远端提交为 `3f7087c`，当前分级为 `draft_template_only` 51 / `draft_needs_translation` 347 / `good_bilingual` 8。
 - 本轮严格只处理 5 个未达标页面：`full_site/release/user_guides/schemas/usdLux/BoundableLightBase.html`、`full_site/release/user_guides/schemas/usdLux/DomeLight_1.html`、`full_site/release/user_guides/schemas/usdLux/GeometryLight.html`、`full_site/release/user_guides/schemas/usdLux/LightAPI.html`、`full_site/release/user_guides/schemas/usdLux/LightFilter.html`，没有新增或处理第 6 页。

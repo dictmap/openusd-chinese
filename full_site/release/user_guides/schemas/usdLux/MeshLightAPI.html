@@ -35,6 +35,27 @@
       <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
       <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="release-quality-pass-069">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 MeshLightAPI 补充中文优先的 schema 用途、属性/关系阅读路径、迁移或扩展边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds Chinese-first schema purpose, property and relationship reading paths, migration or extension boundaries, and terminology for MeshLightAPI while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`MeshLightAPI` 用于把 light behavior 应用到 `Mesh` prim；官方说明也强调它比直接把 `LightAPI` 应用到 Mesh 更合适，因为它内置了 mesh light 常用默认行为。</span></li>
+        <li><span class="zh">`light:materialSyncMode` 的默认值会偏向 `materialGlowTintsLight`，用于让 Mesh 的绑定材质参与发光色调；阅读时应把它和 UsdShade material binding 一起理解。</span></li>
+        <li><span class="zh">`light:shaderId` 默认指向 `MeshLight`，这给渲染插件留下挂接额外 mesh light 属性的入口；属性名和 token 值必须保留英文原样，不能翻译成中文标识符。</span></li>
+        <li><span class="zh">本页适合回答“一个发光 Mesh 应该怎么表达”的 schema 入口问题；完整建模示例仍应继续阅读 `Mesh Lights`，尤其是几何、材质、灯光强度和 renderer 支持之间的关系。</span></li>
+        <li><span class="zh">`MeshLightAPI` 是 applied API，不是一个独立几何类型；它改变的是 Mesh prim 的灯光语义和渲染解释，而不是把 Mesh 替换成新的 prim 类型。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Mesh 灯光 API schema：</span><span class="en">MeshLightAPI</span></li>
+        <li><span class="zh">网格 prim：</span><span class="en">Mesh prim</span></li>
+        <li><span class="zh">通用灯光 API：</span><span class="en">LightAPI</span></li>
+        <li><span class="zh">灯光与材质同步模式：</span><span class="en">light:materialSyncMode</span></li>
+        <li><span class="zh">材质 glow 参与灯光着色的 token：</span><span class="en">materialGlowTintsLight</span></li>
+        <li><span class="zh">灯光 shader 标识：</span><span class="en">light:shaderId</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

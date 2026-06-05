@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T04:00:13.439Z
+Generated: 2026-06-05T06:00:46.149Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-05T04:00:13.439Z
 
 ## Grade Counts
 
-- draft_template_only: 46
-- draft_needs_translation: 352
+- draft_template_only: 41
+- draft_needs_translation: 357
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -44,9 +44,6 @@ Generated: 2026-06-05T04:00:13.439Z
 | 298 | draft_template_only | 64 | `full_site/release/search.html` | 搜索 / Search - Universal Scene Description 26.05 documentation |
 | 69 | draft_template_only | 66 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | API 页面草稿：hf Directory / hf Directory |
 | 212 | draft_template_only | 66 | `full_site/api/journal_8h.html` | API 页面草稿：journal.h File / journal.h File |
-| 336 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdLux/ListAPI.html` | 页面草稿：ListAPI / ListAPI |
-| 337 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdLux/MeshLightAPI.html` | 页面草稿：MeshLightAPI / MeshLightAPI |
-| 339 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdLux/overview.html` | 页面草稿：Overview / Overview |
 | 348 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdLux/VolumeLightAPI.html` | 页面草稿：VolumeLightAPI / VolumeLightAPI |
 | 353 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdRender/overview.html` | 页面草稿：Overview / Overview |
 | 381 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html` | 页面草稿：ParticleFieldOpacityAttributeAPI / ParticleFieldOpacityAttributeAPI |
@@ -56,9 +53,12 @@ Generated: 2026-06-05T04:00:13.439Z
 | 387 | draft_template_only | 74 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html` | 页面草稿：ParticleFieldSphericalHarmonicsAttributeAPI / ParticleFieldSphericalHarmonicsAttributeAPI |
 | 344 | draft_template_only | 82 | `full_site/release/user_guides/schemas/usdLux/ShadowAPI.html` | 页面草稿：ShadowAPI / ShadowAPI |
 | 357 | draft_template_only | 82 | `full_site/release/user_guides/schemas/usdRender/RenderSettingsBase.html` | 页面草稿：RenderSettingsBase / RenderSettingsBase |
-| 338 | draft_template_only | 86 | `full_site/release/user_guides/schemas/usdLux/NonboundableLightBase.html` | 页面草稿：NonboundableLightBase / NonboundableLightBase |
-| 340 | draft_template_only | 86 | `full_site/release/user_guides/schemas/usdLux/PluginLight.html` | 页面草稿：PluginLight / PluginLight |
 | 372 | draft_template_only | 86 | `full_site/release/user_guides/schemas/usdVol/FieldBase.html` | 页面草稿：FieldBase / FieldBase |
+| 345 | draft_template_only | 90 | `full_site/release/user_guides/schemas/usdLux/ShapingAPI.html` | 页面草稿：ShapingAPI / ShapingAPI |
+| 341 | draft_template_only | 98 | `full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html` | 页面草稿：PluginLightFilter / PluginLightFilter |
+| 67 | draft_template_only | 106 | `full_site/api/copy_utils_8h.html` | API 页面草稿：copyUtils.h File / copyUtils.h File |
+| 342 | draft_template_only | 106 | `full_site/release/user_guides/schemas/usdLux/PortalLight.html` | 页面草稿：PortalLight / PortalLight |
+| 371 | draft_template_only | 110 | `full_site/release/user_guides/schemas/usdVol/FieldAsset.html` | 页面草稿：FieldAsset / FieldAsset |
 
 ## All Pages
 
@@ -399,11 +399,11 @@ Generated: 2026-06-05T04:00:13.439Z
 | 333 | draft_needs_translation | bilingual_draft | 392 | 28/26 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/LightAPI.html` |
 | 334 | draft_needs_translation | bilingual_draft | 386 | 23/21 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/LightFilter.html` |
 | 335 | draft_needs_translation | bilingual_draft | 284 | 12/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/LightListAPI.html` |
-| 336 | draft_template_only | bilingual_draft | 70 | 5/7 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/ListAPI.html` |
-| 337 | draft_template_only | bilingual_draft | 70 | 5/6 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/MeshLightAPI.html` |
-| 338 | draft_template_only | bilingual_draft | 86 | 9/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/NonboundableLightBase.html` |
-| 339 | draft_template_only | bilingual_draft | 70 | 5/8 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/overview.html` |
-| 340 | draft_template_only | bilingual_draft | 86 | 9/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/PluginLight.html` |
+| 336 | draft_needs_translation | bilingual_draft | 437 | 17/14 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/ListAPI.html` |
+| 337 | draft_needs_translation | bilingual_draft | 410 | 17/13 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/MeshLightAPI.html` |
+| 338 | draft_needs_translation | bilingual_draft | 402 | 21/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/NonboundableLightBase.html` |
+| 339 | draft_needs_translation | bilingual_draft | 367 | 17/15 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/overview.html` |
+| 340 | draft_needs_translation | bilingual_draft | 402 | 21/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/PluginLight.html` |
 | 341 | draft_template_only | bilingual_draft | 98 | 12/15 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html` |
 | 342 | draft_template_only | bilingual_draft | 106 | 14/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/PortalLight.html` |
 | 343 | draft_needs_translation | bilingual_draft | 279 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/RectLight.html` |
