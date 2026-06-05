@@ -1,5 +1,15 @@
 # 工作记录
 
+## 第 221 轮：API V/T、HdStorm、HelloWorld 与 File Members-H 二次精修
+- 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、git 状态和远端 main，确认上一轮远端提交为 `45d5c96`，当前分级为 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8。
+- 本轮严格只处理 5 个未达标页面：`full_site/api/functions_func_v.html`、`full_site/api/functions_vars_t.html`、`full_site/api/hd_storm_page_front.html`、`full_site/release/tut_helloworld.html`、`full_site/api/globals_h.html`；这些页面本轮开始时均已是 `draft_needs_translation`，目标是补强 Doxygen 函数/变量索引、模块入口、教程页和 File Members 索引中文阅读方法，没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_release_batch_090.mjs`，每页插入 `release-quality-pass-090` 二次精修导读区块，覆盖 Doxygen 字母桶、函数/变量成员索引、模块 front page、教程路径、File Members 字母桶、跨模块条目归类、跳转边界和术语对照；保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录。
+- 本轮中文覆盖：`functions_func_v.html` 的 validation context、attribute limits、schema 跳转、attribute query 和 Vdf vector/data manager；`functions_vars_t.html` 的 token tables、Pcp relocation diagnostics、physics descriptor、named texture handle、schema info 和 connection source info；`hd_storm_page_front.html` 的 real-time Hydra renderer plugin、Hydra render delegate、Hgi backend abstraction 和 HdSt/HdStorm 边界；`tut_helloworld.html` 的 `Usd.Stage.CreateNew`、typed prim、prim path 层级和 `HelloWorld.usda`；`globals_h.html` 的 `hash_value()`、`token.h`、`stageLoadRules.h`、Hio OpenVDB helper 和头文件来源。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级保持 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8；本轮对象原本已是 `draft_needs_translation`，所以分级计数保持不变是预期结果。目标页中文正文量提升到 `586-674` 字区间，但仍是 `bilingual_draft`，未误标为完成。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398 个草稿页全部通过本地预览检查。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`，报告索引通过，总验证 `PASSED`，`validation_required_checks` 281 / `validation_failed_checks` 0。
+- GitHub 同步：验证通过后以 `OpenUSD bilingual round 221: api index v t storm hello globals h pass` 同步本轮 HTML、脚本、报告和 `work.md`；下一轮优先最多处理 `full_site/api/functions_func_s.html`、`full_site/api/namespacemembers_type.html`、`full_site/api/functions_b.html`、`full_site/api/functions_func_b.html`、`full_site/api/functions_func.html`，继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+
 ## 第 220 轮：API E/related/namespace/A/I 索引页二次精修
 - 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、git 状态和远端 main，确认上一轮远端提交为 `b4b1df0`，当前分级为 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8。
 - 本轮严格只处理 5 个未达标页面：`full_site/api/functions_e.html`、`full_site/api/functions_rela.html`、`full_site/api/namespacemembers_func.html`、`full_site/api/functions_func_a.html`、`full_site/api/functions_func_i.html`；这些页面本轮开始时均已是 `draft_needs_translation`，目标是补强 Doxygen API 索引、related functions 和 namespace functions 索引中文阅读方法，没有新增或处理第 6 页。

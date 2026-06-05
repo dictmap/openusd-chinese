@@ -53,6 +53,27 @@
         <li><span class="zh">装箱范围：</span><span class="en">boxed range</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-090">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Functions - V 增补 API 索引、模块入口、File Members 或教程页面的二次精修说明，重点解释 Doxygen 字母桶、函数/变量成员索引、模块 front page、教程路径和跨模块条目的归类方式，以及何时应跳转到目标 class、schema、namespace、header、group、教程或用户指南。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - Functions - V API index, module front page, File Members page, or tutorial page. It explains how to read Doxygen letter buckets, function/variable-member indexes, module front pages, tutorial flows, and cross-module entry groupings, and when to jump to target class, schema, namespace, header, group, tutorial, or user-guide documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`functions_func_v.html` 是 V 段函数成员索引，当前重点落在 validate/validation、value/vector、Vdf 数据访问和 USD 高层 schema 跳转；阅读时先区分验证类、USD schema 类和 Vdf execution 类。</span></li>
+        <li><span class="zh">`UsdValidationContext`、`UsdValidationValidator`、`UsdAttributeLimits`、`UsdAttributeLimits::ValidationResult`、CLI `App` 与 `Validator` 组成验证入口线索，可用于追踪 attribute limit、schema validation 和命令行校验逻辑。</span></li>
+        <li><span class="zh">`UsdSkelTopology`、`UsdSkelBindingAPI`、`UsdSkelBlendShape`、`UsdGeomMesh`、`UsdGeomSubset`、`UsdGeomPrimvar`、`UsdCollectionAPI` 和 `UsdRiSplineAPI` 是用户实际建模时更常进入的 schema/object model 页面；索引只定位，不替代成员语义说明。</span></li>
+        <li><span class="zh">`UsdAttribute`、`UsdAttributeQuery`、`UsdResolveInfo` 与 `EsfAttributeQueryInterface` 指向 attribute value query、resolve info 和 execution scene framework 的属性查询；这些条目容易和 validation 混在一起，需要按模块分开读。</span></li>
+        <li><span class="zh">`Vdf_BoxedContainer&lt;T&gt;`、`Vdf_BoxedRanges`、`Vdf_VectorAccessor&lt;T&gt;`、`Vdf_VectorImplCompressed&lt;TYPE&gt;`、`Vdf_VectorImplContiguous&lt;TYPE&gt;`、`Vdf_VectorSubrangeAccessor&lt;T&gt;`、`VdfDataManagerBasedExecutor` 和 parallel data manager 相关条目属于 Vdf vector/data manager/executor 主线。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">验证上下文：</span><span class="en">validation context</span></li>
+        <li><span class="zh">属性限制：</span><span class="en">attribute limits</span></li>
+        <li><span class="zh">解析信息：</span><span class="en">resolve info</span></li>
+        <li><span class="zh">向量访问器：</span><span class="en">vector accessor</span></li>
+        <li><span class="zh">并行数据管理器：</span><span class="en">parallel data manager</span></li>
+        <li><span class="zh">schema 跳转目标：</span><span class="en">schema jump target</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

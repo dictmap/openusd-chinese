@@ -54,6 +54,27 @@
         <li><span class="zh">USD 文本层格式：</span><span class="en">.usda</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-090">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Hello World - Creating Your First USD Stage 增补 API 索引、模块入口、File Members 或教程页面的二次精修说明，重点解释 Doxygen 字母桶、函数/变量成员索引、模块 front page、教程路径和跨模块条目的归类方式，以及何时应跳转到目标 class、schema、namespace、header、group、教程或用户指南。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Hello World - Creating Your First USD Stage API index, module front page, File Members page, or tutorial page. It explains how to read Doxygen letter buckets, function/variable-member indexes, module front pages, tutorial flows, and cross-module entry groupings, and when to jump to target class, schema, namespace, header, group, tutorial, or user-guide documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`tut_helloworld.html` 是 USD 教程链的最小闭环：创建 `Usd.Stage`，在 `/hello` 定义 `UsdGeom.Xform`，在 `/hello/world` 定义 `UsdGeom.Sphere`，最后保存为 `HelloWorld.usda`。</span></li>
+        <li><span class="zh">`Usd.Stage.CreateNew` 是创建新 stage/layer 的入口；`UsdGeom.Xform.Define` 与 `UsdGeom.Sphere.Define` 会在给定 prim path 上创建 typed prim。中文层解释对象关系，但保留 Python API 调用原文。</span></li>
+        <li><span class="zh">`/hello` 与 `/hello/world` 是 prim path 层级示例，展示 USD namespace 如何表达父子关系；教程不是讲复杂 composition，而是让读者先理解 stage、layer、prim path 和 typed schema 的基本关系。</span></li>
+        <li><span class="zh">`HelloWorld.usda` 是 ASCII USD layer 输出，适合初学者直接打开查看；后续 inspecting、referencing、traversing 等教程会复用这个简单场景，因此它也是后续教程的公共起点。</span></li>
+        <li><span class="zh">阅读本页时应先确认环境配置链接 `Configure your Environment`，再运行代码；如果命令或 Python import 失败，优先检查 USD 版本、`PYTHONPATH`/环境变量和当前工作目录，而不是修改教程中的 API 名称。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">stage 创建：</span><span class="en">stage creation</span></li>
+        <li><span class="zh">有类型 prim：</span><span class="en">typed prim</span></li>
+        <li><span class="zh">prim 路径层级：</span><span class="en">prim path hierarchy</span></li>
+        <li><span class="zh">ASCII USD layer：</span><span class="en">ASCII USD layer</span></li>
+        <li><span class="zh">教程起点：</span><span class="en">tutorial starting point</span></li>
+        <li><span class="zh">环境配置：</span><span class="en">environment configuration</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

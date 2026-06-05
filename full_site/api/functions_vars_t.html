@@ -54,6 +54,27 @@
         <li><span class="zh">连接源信息：</span><span class="en">connection source info</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-090">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Variables - T 增补 API 索引、模块入口、File Members 或教程页面的二次精修说明，重点解释 Doxygen 字母桶、函数/变量成员索引、模块 front page、教程路径和跨模块条目的归类方式，以及何时应跳转到目标 class、schema、namespace、header、group、教程或用户指南。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - Variables - T API index, module front page, File Members page, or tutorial page. It explains how to read Doxygen letter buckets, function/variable-member indexes, module front pages, tutorial flows, and cross-module entry groupings, and when to jump to target class, schema, namespace, header, group, tutorial, or user-guide documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`functions_vars_t.html` 是变量成员索引 T 段，当前条目集中在 token tables、Pcp relocation/composition diagnostics、UsdPhysics 描述结构、Hydra subset/texture handle、schema info 和 connection source info。</span></li>
+        <li><span class="zh">`UsdVolTokensType`、`UsdGeomTokensType`、`UsdHydraTokensType`、`UsdMediaTokensType`、`UsdSkelTokensType`、`UsdPhysicsTokensType`、`UsdLuxTokensType` 与 `UsdTokensType` 都是 token table 入口；token 字面量必须保持英文，中文层只解释所属 schema domain。</span></li>
+        <li><span class="zh">`PcpErrorUnresolvedPrimPath`、`PcpErrorInvalidAuthoredRelocation`、`PcpErrorInvalidConflictingRelocation`、`PcpErrorInvalidReferenceOffset`、`PcpErrorInvalidSameTargetRelocations`、`PcpErrorTargetPathBase` 与 `PcpErrorArcToProhibitedChild` 应作为 Pcp composition/relocation 错误族阅读。</span></li>
+        <li><span class="zh">`UsdPhysicsJointDrive`、`UsdPhysicsObjectDesc`、`UsdPhysicsCapsule1ShapeDesc`、`UsdPhysicsCylinder1ShapeDesc` 和 `HdEmbreeConfig` 混在 T 段变量索引中，但它们分别属于 physics descriptor 和 Hydra Embree render delegate 配置，不是同一语义层。</span></li>
+        <li><span class="zh">`TfRefPtrTracker::Trace`、`HdGeomSubset`、`HdStShaderCode::NamedTextureHandle`、`PcpArc`、`PcpNamespaceEdits::LayerStackSite`、`UsdRenderSpec::Product`、`UsdSchemaRegistry::SchemaInfo` 与 `UsdShadeConnectionSourceInfo` 展示本页还覆盖引用追踪、几何子集、Storm texture handle、composition arc、render product、schema registry 和 shading connection。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">token 表：</span><span class="en">token table</span></li>
+        <li><span class="zh">relocation 诊断：</span><span class="en">relocation diagnostic</span></li>
+        <li><span class="zh">物理描述结构：</span><span class="en">physics descriptor</span></li>
+        <li><span class="zh">命名纹理句柄：</span><span class="en">named texture handle</span></li>
+        <li><span class="zh">schema 信息：</span><span class="en">schema info</span></li>
+        <li><span class="zh">连接源信息：</span><span class="en">connection source info</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
