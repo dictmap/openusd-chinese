@@ -53,6 +53,27 @@
         <li><span class="zh">并行任务同步：</span><span class="en">parallel task sync</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-085">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Functions - M 增补 API 索引页二次精修说明，重点解释 Doxygen 字母桶的阅读方式、跨模块条目的归类边界，以及何时应跳转到目标 class、schema、header 或 group 文档。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - Functions - M API index page. It explains how to read Doxygen letter buckets, how to group cross-module entries, and when to jump to target class, schema, header, or group documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`functions_func_m.html` 是 M 段函数成员索引，条目常围绕 make、match、map、merge、move、mark 等语义展开；本页覆盖 formatter、Sdf expression、UsdGeom、composition map、edit target、Hydra render tracking、Trace、Vdf 和 Tf 工具。</span></li>
+        <li><span class="zh">`SdfPathExpression`、`SdfPath`、`SdfBooleanExpression`、`SdfPredicateExpression`、`SdfPredicateFunctionResult`、`SdfVariableExpression`、`SdfPathExpressionEval&lt;DomainType&gt;` 与 `UsdObjectCollectionExpressionEvaluator` 属于 path/predicate/collection expression 求值主线。</span></li>
+        <li><span class="zh">`UsdGeomImageable`、`UsdGeomXformable`、`UsdSchemaRegistry`、`UsdPrimCompositionQueryArc`、`UsdPrim`、`UsdRiStatementsAPI`、`UsdEditTarget` 和 `PlugPlugin` 是 USD authoring、schema、composition arc、RenderMan statements 与插件相关入口。</span></li>
+        <li><span class="zh">`PcpMapExpression`、`PcpMapFunction` 和 `UsdEditTarget` 共同提示路径映射与编辑目标语境；读者应在 composition/path mapping 文档中确认 map 函数的方向和参数含义。</span></li>
+        <li><span class="zh">`HdRenderBuffer`、`HdStRenderParam`、`HdChangeTracker`、`HdEmbreeRenderer`、`HdCollectionExpressionEvaluator`、`VdfParallelTaskSync`、`TraceCollector`、`TraceAggregateNode`、`TfPatternMatcher`、`GfRotation`、`VdfIndexedWeightsOperand` 和 `TfSmallVector&lt;T, N&gt;` 是渲染、执行、trace、模式匹配与容器工具线索。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">路径表达式：</span><span class="en">path expression</span></li>
+        <li><span class="zh">谓词函数结果：</span><span class="en">predicate function result</span></li>
+        <li><span class="zh">组合查询弧：</span><span class="en">composition query arc</span></li>
+        <li><span class="zh">映射函数：</span><span class="en">map function</span></li>
+        <li><span class="zh">变更追踪器：</span><span class="en">change tracker</span></li>
+        <li><span class="zh">并行任务同步：</span><span class="en">parallel task sync</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

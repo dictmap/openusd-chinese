@@ -1,5 +1,15 @@
 # 工作记录
 
+## 第 216 轮：API U/G/M related-S 索引页二次精修
+- 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、git 状态和远端 main，确认上一轮远端提交为 `836972a`，当前分级为 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8。
+- 本轮严格只处理 5 个未达标页面：`full_site/api/functions_func_u.html`、`full_site/api/functions_vars_g.html`、`full_site/api/functions_g.html`、`full_site/api/functions_func_m.html`、`full_site/api/functions_rela_s.html`；这些页面本轮开始时均已是 `draft_needs_translation`，目标是补强 Doxygen API 索引页中文阅读方法和跨模块归类，没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_release_batch_085.mjs`，每页插入 `release-quality-pass-085` API 索引页二次精修导读区块，覆盖 Doxygen 字母桶阅读方式、跨模块条目归类、跳转边界和术语对照；保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录。
+- 本轮中文覆盖：`functions_func_u.html` 的 UsdStage/UsdPrim/material binding、population mask、Hydra/Storm shader/time sample/render buffer、Vt/Gf 值类型、Vdf executor data vector、Trace/Tf 工具；`functions_vars_g.html` 的 token table、HdMeshReprDesc、UsdImagingGLEngine 参数、UsdPhysicsSceneDesc、CLI App 和 `OptionBase<CRTP>`；`functions_g.html` 的 Hydra/Storm buffer registry、Hgi/HgiGL、schema token、ArResolverContext、Exec cache、Gf matrix 和 Hd data source；`functions_func_m.html` 的 Sdf expression、UsdGeom、schema registry、composition map、UsdEditTarget、Hydra render tracking、Trace、Vdf 和 Tf 工具；`functions_rela_s.html` 的 Sdf predicate/path expression、JsValue、Vdf connector/mask/node set 和 Vt value container。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级保持 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8；本轮对象原本已是 `draft_needs_translation`，所以分级计数保持不变是预期结果。目标页中文正文量提升到 `537-604` 字区间，但仍是 `bilingual_draft`，未误标为完成。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398 个草稿页全部通过本地预览检查。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`，报告索引通过，总验证 `PASSED`，`validation_required_checks` 281 / `validation_failed_checks` 0。
+- 验证通过后准备以 `OpenUSD bilingual round 216: api index u g m related s pass` 同步 GitHub；下一轮优先最多处理 `full_site/api/functions_c.html`、`full_site/api/globals_func_v.html`、`full_site/api/functions_vars_j.html`、`full_site/api/functions_d.html`、`full_site/api/hio_page_front.html`，继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+
 ## 第 215 轮：API W/F/K related-H 索引页二次精修
 - 先复核全量清单、翻译质量报告、draft 预览报告、本地链接路由报告、报告索引、总验证报告、最终入口、git 状态和远端 main，确认上一轮远端提交为 `e75e5c8`，当前分级为 `draft_template_only` 11 / `draft_needs_translation` 387 / `good_bilingual` 8。
 - 本轮严格只处理 5 个未达标页面：`full_site/api/functions_func_w.html`、`full_site/api/functions_f.html`、`full_site/api/functions_k.html`、`full_site/api/functions_rela_h.html`、`full_site/api/functions_w.html`；这些页面本轮开始时均已是 `draft_needs_translation`，目标是补强 Doxygen API 索引页中文阅读方法和跨模块归类，没有新增或处理第 6 页。

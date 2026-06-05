@@ -53,6 +53,27 @@
         <li><span class="zh">计数器累加器：</span><span class="en">counter accumulator</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-085">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Class Members - Functions - U 增补 API 索引页二次精修说明，重点解释 Doxygen 字母桶的阅读方式、跨模块条目的归类边界，以及何时应跳转到目标 class、schema、header 或 group 文档。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
+      <p class="en">This section adds a second-pass Chinese refinement for the Class Members - Functions - U API index page. It explains how to read Doxygen letter buckets, how to group cross-module entries, and when to jump to target class, schema, header, or group documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`functions_func_u.html` 是 U 段函数成员索引，函数名通常围绕 update、unload、unregister、use、upload 等动词展开；阅读时应先判断条目属于 USD stage、Hydra/Storm、Vt/Gf 值类型、Vdf 执行还是 Trace/Tf 工具。</span></li>
+        <li><span class="zh">`UsdPrim`、`UsdStage`、`UsdStageLoadRules`、`UsdStagePopulationMask`、`UsdShadeMaterialBindingAPI`、`SdfLayer` 与 `SdfPathTable&lt;MappedType&gt;` 是 scene/stage 侧的主线，可用于追踪 stage 加载规则、population mask、材质绑定、layer 和 path table 相关函数。</span></li>
+        <li><span class="zh">`HdStRenderPassShader`、`HdStShaderCode`、`HdStSimpleLightingShader`、`HdIndexedTimeSampleArray&lt;TYPE, CAPACITY&gt;`、`HdTimeSampleArray&lt;TYPE, CAPACITY&gt;`、`HdRenderBuffer`、`GlfDrawTarget` 和 `GlfUniformBlock` 指向 Hydra/Storm 渲染、time sample 与 OpenGL/GLF 支撑。</span></li>
+        <li><span class="zh">`VtValue`、`VtValueRef`、`VtMutableValueRef`、`GfRange1/2/3d/f` 和 `GfRect2i` 是值容器与几何范围类型；这些条目的函数往往涉及类型擦除、引用写入或范围更新，不应按普通 POD 成员理解。</span></li>
+        <li><span class="zh">`VdfNetwork`、`VdfExecutorInterface`、`Vdf_ExecutorDataVector`、`Vdf_ParallelExecutorDataVector`、`VdfDataManagerVector&lt;DeallocationMode&gt;`、`VdfScheduler`、`TraceCounterAccumulator`、`TfRegistryManager` 和 `TfSafeOutputFile` 是执行、注册、计数和安全写文件线索。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">函数成员索引：</span><span class="en">function member index</span></li>
+        <li><span class="zh">人口遮罩：</span><span class="en">population mask</span></li>
+        <li><span class="zh">时间采样数组：</span><span class="en">time sample array</span></li>
+        <li><span class="zh">值引用：</span><span class="en">value reference</span></li>
+        <li><span class="zh">执行器数据向量：</span><span class="en">executor data vector</span></li>
+        <li><span class="zh">安全输出文件：</span><span class="en">safe output file</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
