@@ -56,6 +56,27 @@
         <li><span class="zh">环境音频：</span><span class="en">ambient audio</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-109">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`usdMedia` overview 说明 USD 如何把 audio、thumbnails 和其他媒体信息关联到资产和场景。它的重点不是几何或材质，而是 `AssetPreviewsAPI` 的缩略图元数据、`SpatialAudio` 的声音播放意图，以及这些媒体资源如何通过 asset path 和 timeCode 与 USD stage 对齐。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for usdMedia overview while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`usdMedia` 应先按领域入口阅读：它补充 asset browser、DCC 工具和播放端需要的媒体语义，不直接修改 mesh、material 或 lighting schema。</span></li>
+        <li><span class="zh">`AssetPreviewsAPI` 通过 `assetInfo.previews.thumbnails` 把 default thumbnail、high resolution thumbnail 等图像挂到资产上；这些路径用于浏览和展示，不等同于渲染输出产品。</span></li>
+        <li><span class="zh">`SpatialAudio` 把 `filePath`、`auralMode`、`startTime`、`endTime`、`playbackMode`、`mediaOffset` 等属性放进 stage 时间线，表达声音何时以及如何播放。</span></li>
+        <li><span class="zh">概览示例同时出现 `AssetPreviewsAPI` 和 `SpatialAudio`，适合展示媒体 schema 如何服务资产浏览和场景播放两个方向；翻译时不要把两者合并成一个“媒体文件属性”。</span></li>
+        <li><span class="zh">`@defaultThumbnail.jpg@`、`@mySpeech.mp3@` 等 asset path 字面量必须保留，路径解析、打包和可用性由资产解析器或播放端处理。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 媒体 schema 领域：</span><span class="en">usdMedia</span></li>
+        <li><span class="zh">资产预览 API schema：</span><span class="en">AssetPreviewsAPI</span></li>
+        <li><span class="zh">空间音频 schema：</span><span class="en">SpatialAudio</span></li>
+        <li><span class="zh">资产预览缩略图元数据字典：</span><span class="en">assetInfo.previews.thumbnails</span></li>
+        <li><span class="zh">媒体资源路径属性：</span><span class="en">filePath</span></li>
+        <li><span class="zh">USD 时间码：</span><span class="en">timeCode</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

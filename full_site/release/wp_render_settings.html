@@ -65,6 +65,27 @@
         <li><span class="zh">历史参考：</span><span class="en">historical reference</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-109">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`wp_render_settings.html` 是 Render Settings in USD 的设计提案页，解释为什么需要在 USD 中表达 `RenderSettings`、`RenderProduct` 和 `RenderVar`。它提出的是渲染配置模型和 schema 设计边界，不是完整的 VFX render farm、合成或最终帧作业系统。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for Render Settings in USD Proposal while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">提案把 `RenderSettings`、`RenderProduct`、`RenderVar` 拆成三类 prim：settings 管作业级配置，product 管输出 artifact，var 管输出变量或 AOV。</span></li>
+        <li><span class="zh">`RenderSettingsBase` 中的 `camera`、`resolution`、`pixelAspectRatio` 等属性说明基础设置可以被 `RenderSettings` 或 `RenderProduct` 共享或继承。</span></li>
+        <li><span class="zh">文档明确 render settings 不等同于完整 VFX final frame 描述；调度、farm、复杂合成和镜头级发布仍可能由外部系统负责。</span></li>
+        <li><span class="zh">代码摘录里的 class schema、relationship 和 uniform attribute 是设计依据，中文说明应保留 `RenderSettingsBase`、`camera`、`UsdGeomCamera`、`resolution` 等字面量。</span></li>
+        <li><span class="zh">本页适合和当前 `usdRender` schema 页面互相对照：提案解释设计动机，schema 页面解释已经落地的属性和使用方式。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 渲染设置提案：</span><span class="en">Render Settings in USD</span></li>
+        <li><span class="zh">渲染设置 prim：</span><span class="en">RenderSettings</span></li>
+        <li><span class="zh">渲染输出产品 prim：</span><span class="en">RenderProduct</span></li>
+        <li><span class="zh">渲染变量 prim：</span><span class="en">RenderVar</span></li>
+        <li><span class="zh">渲染设置基础 schema：</span><span class="en">RenderSettingsBase</span></li>
+        <li><span class="zh">像素宽高比属性：</span><span class="en">pixelAspectRatio</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

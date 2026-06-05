@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T20:04:02.233Z
+Generated: 2026-06-05T20:15:19.950Z
 
 ## Summary
 
@@ -412,17 +412,17 @@ Generated: 2026-06-05T20:04:02.233Z
 | 346 | draft_needs_translation | bilingual_draft | 841 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/SphereLight.html` |
 | 347 | draft_needs_translation | bilingual_draft | 510 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/usdLux_toc.html` |
 | 348 | draft_needs_translation | bilingual_draft | 685 | 29/20 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/VolumeLightAPI.html` |
-| 349 | draft_needs_translation | bilingual_draft | 617 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html` |
-| 350 | draft_needs_translation | bilingual_draft | 398 | 15/13 | 0 | 0 | `full_site/release/user_guides/schemas/usdMedia/overview.html` |
+| 349 | draft_needs_translation | bilingual_draft | 845 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html` |
+| 350 | draft_needs_translation | bilingual_draft | 661 | 27/20 | 0 | 0 | `full_site/release/user_guides/schemas/usdMedia/overview.html` |
 | 351 | draft_needs_translation | bilingual_draft | 855 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdMedia/SpatialAudio.html` |
-| 352 | draft_needs_translation | bilingual_draft | 540 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdMedia/usdMedia_toc.html` |
+| 352 | draft_needs_translation | bilingual_draft | 804 | 36/23 | 0 | 0 | `full_site/release/user_guides/schemas/usdMedia/usdMedia_toc.html` |
 | 353 | draft_needs_translation | bilingual_draft | 349 | 17/15 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/overview.html` |
 | 354 | draft_needs_translation | bilingual_draft | 762 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderPass.html` |
 | 355 | draft_needs_translation | bilingual_draft | 809 | 36/23 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderProduct.html` |
 | 356 | draft_needs_translation | bilingual_draft | 544 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderSettings.html` |
 | 357 | draft_needs_translation | bilingual_draft | 659 | 32/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderSettingsBase.html` |
 | 358 | draft_needs_translation | bilingual_draft | 792 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderVar.html` |
-| 359 | draft_needs_translation | bilingual_draft | 482 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/usdRender_toc.html` |
+| 359 | draft_needs_translation | bilingual_draft | 704 | 36/23 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/usdRender_toc.html` |
 | 360 | draft_needs_translation | bilingual_draft | 289 | 12/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/AccessibilityAPI.html` |
 | 361 | draft_needs_translation | bilingual_draft | 295 | 12/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/AttributeHints.html` |
 | 362 | draft_needs_translation | bilingual_draft | 290 | 12/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/Backdrop.html` |
@@ -461,7 +461,7 @@ Generated: 2026-06-05T20:04:02.233Z
 | 395 | draft_needs_translation | bilingual_draft | 480 | 23/17 | 0 | 0 | `full_site/release/wp_asset_previews.html` |
 | 396 | draft_needs_translation | bilingual_draft | 521 | 28/22 | 0 | 0 | `full_site/release/wp_connectable_nodes.html` |
 | 397 | draft_needs_translation | bilingual_draft | 509 | 28/22 | 0 | 0 | `full_site/release/wp_coordsys.html` |
-| 398 | draft_needs_translation | bilingual_draft | 442 | 21/15 | 0 | 0 | `full_site/release/wp_render_settings.html` |
+| 398 | draft_needs_translation | bilingual_draft | 661 | 33/22 | 0 | 0 | `full_site/release/wp_render_settings.html` |
 | 399 | draft_needs_translation | bilingual_draft | 554 | 41/35 | 0 | 0 | `full_site/release/wp_rigid_body_physics.html` |
 | 400 | draft_needs_translation | bilingual_draft | 457 | 32/26 | 0 | 0 | `full_site/release/wp_schema_versioning.html` |
 | 401 | draft_needs_translation | bilingual_draft | 484 | 18/10 | 0 | 0 | `full_site/release/wp_stage_variables.html` |

@@ -75,6 +75,27 @@
         <li><span class="zh">资产元数据：</span><span class="en">asset metadata</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-109">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`AssetPreviewsAPI` 为 USD 资产提供 thumbnail previews。它通过 `prepend apiSchemas = [&quot;AssetPreviewsAPI&quot;]` 和 `assetInfo.previews.thumbnails` 字典把 `defaultImage` 等 preview render 图像关联到资产，常用于 DCC asset browser 或系统资产浏览器。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for AssetPreviewsAPI while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`AssetPreviewsAPI` 是资产元数据和用户界面之间的桥梁。它描述哪些图片可作为 preview thumbnails，不描述如何生成这些图片。</span></li>
+        <li><span class="zh">示例中的 `default`、`highResolution`、`wireFrame` 是不同预览版本的字典 key，`defaultImage = @defaultThumbnail.jpg@` 等 asset path 是浏览器可读取的图像入口。</span></li>
+        <li><span class="zh">`prepend apiSchemas = [&quot;AssetPreviewsAPI&quot;]` 表示这是 applied API；它附着在资产根 prim 上提供预览元数据，而不是创建一个新的可渲染图元。</span></li>
+        <li><span class="zh">preview render thumbnails 可以来自发布流程、离线渲染或缓存系统；如果图片缺失，USD 资产仍可加载，只是浏览器无法显示对应预览。</span></li>
+        <li><span class="zh">维护本页时要保留 `assetInfo`、`previews`、`thumbnails`、`defaultImage` 和 `@...@` asset path 语法，避免破坏实际资产文件示例。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">资产预览 API schema：</span><span class="en">AssetPreviewsAPI</span></li>
+        <li><span class="zh">缩略图预览：</span><span class="en">thumbnail previews</span></li>
+        <li><span class="zh">资产信息元数据字典：</span><span class="en">assetInfo</span></li>
+        <li><span class="zh">预览缩略图字典：</span><span class="en">previews.thumbnails</span></li>
+        <li><span class="zh">默认预览图路径：</span><span class="en">defaultImage</span></li>
+        <li><span class="zh">应用型 API schema：</span><span class="en">applied API</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

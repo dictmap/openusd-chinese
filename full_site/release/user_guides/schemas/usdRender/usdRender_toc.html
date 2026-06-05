@@ -75,6 +75,27 @@
         <li><span class="zh">任意输出变量：</span><span class="en">AOV</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-109">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`usdRender_toc.html` 是 usdRender schema 领域目录页，用来组织 Overview、Best Practices、`RenderSettings`、`RenderProduct`、`RenderVar`、`RenderPass` 等入口。阅读本页的目标是先建立渲染配置对象的职责分工，再跳到具体 schema 属性页。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for Render (usdRender) while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`RenderSettings` 通常聚合相机、分辨率、输出 products 等作业级配置；`RenderProduct` 表示输出 artifact；`RenderVar` 表示 AOV 或输出变量；`RenderPass` 表示一次 pass 的渲染器和场景选择。</span></li>
+        <li><span class="zh">`Best Practices` 和 `Understand Which Schemas to Use` 是目录中最适合先读的概念页，可帮助决定应该 author settings、products、vars 还是 passes。</span></li>
+        <li><span class="zh">`Group UsdRender Prims`、`Provide a Default RenderSettings`、`Designate a Render Camera` 说明 usdRender 还关心 prim 组织、默认渲染入口和相机选择。</span></li>
+        <li><span class="zh">如果目标是找 AOV、LPE 或 sourceName，应跳 `RenderVar`；如果目标是输出文件或 buffer，应跳 `RenderProduct`；如果目标是多 pass 或可见集合，应跳 `RenderPass`。</span></li>
+        <li><span class="zh">本页是导航页，不应写成属性规范页；中文补强应突出阅读顺序、跨页关系和本地链接入口。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 渲染 schema 领域：</span><span class="en">usdRender</span></li>
+        <li><span class="zh">渲染设置 schema：</span><span class="en">RenderSettings</span></li>
+        <li><span class="zh">渲染输出产品 schema：</span><span class="en">RenderProduct</span></li>
+        <li><span class="zh">渲染变量 schema：</span><span class="en">RenderVar</span></li>
+        <li><span class="zh">渲染 pass schema：</span><span class="en">RenderPass</span></li>
+        <li><span class="zh">最佳实践入口：</span><span class="en">Best Practices</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
