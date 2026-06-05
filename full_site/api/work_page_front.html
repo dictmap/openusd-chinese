@@ -34,6 +34,27 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-mixed-quality-pass-062">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Work: Multi-threaded Dispatch 补充中文优先的模块用途、插件或 schema/API 边界、阅读路径和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first module purpose, plugin or schema/API boundaries, reading paths, and terminology for Work: Multi-threaded Dispatch while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`Work: Multi-threaded Dispatch` 是 OpenUSD 生态中的多线程调度薄抽象层，用来简化常见并行构造，并集中管理对底层 multithreading subsystem 的依赖。</span></li>
+        <li><span class="zh">本库的两个核心目的分别是简化 `Parallel For` 等常见构造，以及避免每个客户端各自选择 TBB、OpenMP 等不同 threading system 后产生资源管理冲突。</span></li>
+        <li><span class="zh">`Initializing and Limiting Multithreading` 与 `Concurrency Limiting API` 涉及线程数和并发限制；`WorkSetConcurrencyLimitArgument` 是命令行或工具侧限制并发的重要入口。</span></li>
+        <li><span class="zh">`Parallel Algorithms API` 包括 `WorkParallelForN` 等并行循环工具；`Dispatching Tasks API` 和 `WorkDispatcher` 面向任务派发与等待。</span></li>
+        <li><span class="zh">如果提供 alternate Work implementation，需要阅读 `Caveats of an Alternate Work Backend`：替换后端不仅是 API 适配问题，还要处理全局资源管理、调度语义和其他库的互操作。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">多线程调度库：</span><span class="en">Work</span></li>
+        <li><span class="zh">并行 for 循环：</span><span class="en">Parallel For</span></li>
+        <li><span class="zh">并行循环 API：</span><span class="en">WorkParallelForN</span></li>
+        <li><span class="zh">任务派发器：</span><span class="en">WorkDispatcher</span></li>
+        <li><span class="zh">并发限制：</span><span class="en">Concurrency Limit</span></li>
+        <li><span class="zh">Threading Building Blocks：</span><span class="en">TBB</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

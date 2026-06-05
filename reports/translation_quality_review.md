@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T00:49:02.950Z
+Generated: 2026-06-05T02:08:23.453Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-05T00:49:02.950Z
 
 ## Grade Counts
 
-- draft_template_only: 80
-- draft_needs_translation: 318
+- draft_template_only: 75
+- draft_needs_translation: 323
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -49,7 +49,6 @@ Generated: 2026-06-05T00:49:02.950Z
 | 298 | draft_template_only | 64 | `full_site/release/search.html` | 搜索 / Search - Universal Scene Description 26.05 documentation |
 | 69 | draft_template_only | 66 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | API 页面草稿：hf Directory / hf Directory |
 | 212 | draft_template_only | 66 | `full_site/api/journal_8h.html` | API 页面草稿：journal.h File / journal.h File |
-| 277 | draft_template_only | 66 | `full_site/api/usddraco_page_front.html` | API 模块草稿：UsdDraco: Draco File Format Plugin / UsdDraco: Draco File Format Plugin |
 | 294 | draft_template_only | 66 | `full_site/release/press_opensource_announce.html` | 开源公告 / Open Source Announcement |
 | 295 | draft_template_only | 66 | `full_site/release/press_opensource_release.html` | 开源发布 / Open Source Release |
 | 305 | draft_template_only | 66 | `full_site/release/tut_end_to_end.html` | 页面草稿：End to End Example / End to End Example |
@@ -59,6 +58,7 @@ Generated: 2026-06-05T00:49:02.950Z
 | 324 | draft_template_only | 66 | `full_site/release/user_guides/render_user_guide.html` | 页面草稿：Rendering with USD / Rendering with USD |
 | 290 | draft_template_only | 70 | `full_site/release/maxperf.html` | 最大化 USD 性能 / Maximizing USD Performance |
 | 306 | draft_template_only | 70 | `full_site/release/tut_generating_new_schema.html` | 页面草稿：Generating New Schema Classes / Generating New Schema Classes |
+| 336 | draft_template_only | 70 | `full_site/release/user_guides/schemas/usdLux/ListAPI.html` | 页面草稿：ListAPI / ListAPI |
 
 ## All Pages
 
@@ -338,12 +338,12 @@ Generated: 2026-06-05T00:49:02.950Z
 | 272 | draft_needs_translation | bilingual_draft | 325 | 15/12 | 0 | 0 | `full_site/api/usd_skel_page_front.html` |
 | 273 | draft_needs_translation | bilingual_draft | 371 | 17/14 | 0 | 0 | `full_site/api/usd_u_i_page_front.html` |
 | 274 | draft_needs_translation | bilingual_draft | 370 | 19/16 | 0 | 0 | `full_site/api/usd_utils_page_front.html` |
-| 275 | draft_template_only | bilingual_draft | 142 | 22/24 | 0 | 0 | `full_site/api/usd_vol_page_front.html` |
-| 276 | draft_template_only | bilingual_draft | 78 | 6/8 | 0 | 0 | `full_site/api/usdabc_page_front.html` |
-| 277 | draft_template_only | bilingual_draft | 66 | 3/4 | 0 | 0 | `full_site/api/usddraco_page_front.html` |
+| 275 | draft_needs_translation | bilingual_draft | 439 | 34/31 | 0 | 0 | `full_site/api/usd_vol_page_front.html` |
+| 276 | draft_needs_translation | bilingual_draft | 362 | 18/15 | 0 | 0 | `full_site/api/usdabc_page_front.html` |
+| 277 | draft_needs_translation | bilingual_draft | 381 | 14/10 | 0 | 0 | `full_site/api/usddraco_page_front.html` |
 | 278 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/var_8h_source.html` |
-| 279 | draft_template_only | bilingual_draft | 74 | 5/7 | 0 | 0 | `full_site/api/vt_page_front.html` |
-| 280 | draft_template_only | bilingual_draft | 94 | 10/12 | 0 | 0 | `full_site/api/work_page_front.html` |
+| 279 | draft_needs_translation | bilingual_draft | 360 | 17/14 | 0 | 0 | `full_site/api/vt_page_front.html` |
+| 280 | draft_needs_translation | bilingual_draft | 385 | 22/19 | 0 | 0 | `full_site/api/work_page_front.html` |
 | 281 | good_bilingual | bilingual_complete | 515 | 10/27 | 0 | 0 | `site/apiDocs.html` |
 | 282 | draft_template_only | bilingual_draft | 98 | 12/15 | 0 | 0 | `full_site/release/contributing_to_usd.html` |
 | 283 | draft_template_only | bilingual_draft | 64 | 2/5 | 0 | 0 | `full_site/release/contributors.html` |

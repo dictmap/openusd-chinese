@@ -34,6 +34,27 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-mixed-quality-pass-062">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Vt: Value Types 补充中文优先的模块用途、插件或 schema/API 边界、阅读路径和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first module purpose, plugin or schema/API boundaries, reading paths, and terminology for Vt: Value Types while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`Vt: Value Types` 定义用于 type abstraction 的 `VtValue` 和增强数组类型 `VtArray`，并提供操纵 value types 的辅助函数；它位于语言数据类型层，而不是 scene schema 层。</span></li>
+        <li><span class="zh">`VtValue` 是 type-erased container，可把 `float`、`int`、`bool`、`GfVec3d` 等对象包进类型无关容器，并提供查询容器中实际内容类型的能力。</span></li>
+        <li><span class="zh">`VtArray` 表示任意长度的 homogeneous container；C++ API 可按指定大小构造数组，Python 侧则表现为 typed array classes，例如 `BoolArray`、`StringArray`、`Vec4dArray`。</span></li>
+        <li><span class="zh">阅读时要注意 C++ 和 Python interface 差异：同一个 value concept 在绑定层可能有不同类型名、构造方式或数组表现形式。</span></li>
+        <li><span class="zh">`Vt` 常出现在 USD attribute value、metadata、array-valued data 和泛型 API 之间，是把强类型 C++ 值、Python 值和 USD 值系统连接起来的基础库。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">值类型库：</span><span class="en">Vt</span></li>
+        <li><span class="zh">类型擦除值容器：</span><span class="en">VtValue</span></li>
+        <li><span class="zh">同质数组容器：</span><span class="en">VtArray</span></li>
+        <li><span class="zh">类型擦除：</span><span class="en">type erasure</span></li>
+        <li><span class="zh">同质容器：</span><span class="en">homogeneous container</span></li>
+        <li><span class="zh">Gf 三维向量类型：</span><span class="en">GfVec3d</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

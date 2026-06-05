@@ -34,6 +34,27 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-mixed-quality-pass-062">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 UsdVol: USD Volume Schema 补充中文优先的模块用途、插件或 schema/API 边界、阅读路径和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first module purpose, plugin or schema/API boundaries, reading paths, and terminology for UsdVol: USD Volume Schema while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`UsdVol: USD Volume Schema` 用于在 USD 中表示 volumetric geometry；它覆盖连续体积、体积场资源和粒子场族，而不是具体体积渲染器或模拟器实现。</span></li>
+        <li><span class="zh">`UsdVolVolume` 可表示 smoke、fire 等 continuous volumes，并可直接引用 OpenVDB 与 Field3D 资产中的 spatial field definitions；如果未来支持更多体积格式，也应通过扩展场资源 schema 表达。</span></li>
+        <li><span class="zh">组成 volume prim 的字段被建模为独立 prim，schema 类型派生自 `UsdVolVolumeFieldBase`，这样可把 volume fields 与 particle fields 明确区分开。</span></li>
+        <li><span class="zh">`UsdVolParticleField` 面向通过 3D particles 定义空间存在的 lightfield 技术族；它最初支持 3D Gaussian splats，但设计上也为 NeRFs 和后续技术演进保留扩展空间。</span></li>
+        <li><span class="zh">阅读 `Usage Notes` 时重点关注 namespace organization、transformation、field relationships 如何建立 consumer field names，以及为什么 `OpenVDBAsset` 不是 FileFormat plugin；这些内容决定资产如何被组织、引用和解释。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 体积 schema：</span><span class="en">UsdVol</span></li>
+        <li><span class="zh">连续体积 prim：</span><span class="en">UsdVolVolume</span></li>
+        <li><span class="zh">体积场：</span><span class="en">Volume Field</span></li>
+        <li><span class="zh">OpenVDB 场资源：</span><span class="en">OpenVDBAsset</span></li>
+        <li><span class="zh">粒子场：</span><span class="en">Particle Field</span></li>
+        <li><span class="zh">三维高斯 splat：</span><span class="en">3D Gaussian Splat</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
