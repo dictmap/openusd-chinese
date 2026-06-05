@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T22:43:41.064Z
+Generated: 2026-06-05T22:56:24.884Z
 
 ## Summary
 
@@ -346,21 +346,21 @@ Generated: 2026-06-05T22:43:41.064Z
 | 280 | draft_needs_translation | bilingual_draft | 385 | 22/19 | 0 | 0 | `full_site/api/work_page_front.html` |
 | 281 | good_bilingual | bilingual_complete | 515 | 10/27 | 0 | 0 | `site/apiDocs.html` |
 | 282 | draft_needs_translation | bilingual_draft | 429 | 24/22 | 0 | 0 | `full_site/release/contributing_to_usd.html` |
-| 283 | draft_needs_translation | bilingual_draft | 379 | 14/12 | 0 | 0 | `full_site/release/contributors.html` |
+| 283 | draft_needs_translation | bilingual_draft | 678 | 26/19 | 0 | 0 | `full_site/release/contributors.html` |
 | 284 | draft_needs_translation | bilingual_draft | 640 | 32/23 | 0 | 0 | `full_site/release/dl_downloads.html` |
 | 285 | draft_needs_translation | bilingual_draft | 400 | 18/14 | 0 | 0 | `full_site/release/genindex.html` |
 | 286 | good_bilingual | bilingual_complete | 862 | 112/509 | 0 | 0 | `site/glossary.html` |
 | 287 | good_bilingual | bilingual_complete | 509 | 10/331 | 0 | 0 | `site/release_index.html` |
-| 288 | draft_needs_translation | bilingual_draft | 395 | 28/26 | 0 | 0 | `full_site/release/intro_to_openexec.html` |
+| 288 | draft_needs_translation | bilingual_draft | 608 | 40/33 | 0 | 0 | `full_site/release/intro_to_openexec.html` |
 | 289 | good_bilingual | bilingual_complete | 2736 | 53/46 | 0 | 0 | `site/intro.html` |
 | 290 | draft_needs_translation | bilingual_draft | 625 | 29/22 | 0 | 0 | `full_site/release/maxperf.html` |
 | 291 | draft_needs_translation | bilingual_draft | 673 | 24/18 | 0 | 0 | `full_site/release/plugins_alembic.html` |
 | 292 | draft_needs_translation | bilingual_draft | 575 | 30/22 | 0 | 0 | `full_site/release/plugins_renderman.html` |
 | 293 | draft_needs_translation | bilingual_draft | 622 | 26/19 | 0 | 0 | `full_site/release/plugins.html` |
 | 294 | draft_needs_translation | bilingual_draft | 585 | 28/21 | 0 | 0 | `full_site/release/press_opensource_announce.html` |
-| 295 | draft_needs_translation | bilingual_draft | 380 | 16/14 | 0 | 0 | `full_site/release/press_opensource_release.html` |
+| 295 | draft_needs_translation | bilingual_draft | 625 | 28/21 | 0 | 0 | `full_site/release/press_opensource_release.html` |
 | 296 | draft_needs_translation | bilingual_draft | 446 | 27/25 | 0 | 0 | `full_site/release/ref_performance_metrics.html` |
-| 297 | draft_needs_translation | bilingual_draft | 383 | 14/12 | 0 | 0 | `full_site/release/release_schedule.html` |
+| 297 | draft_needs_translation | bilingual_draft | 632 | 26/19 | 0 | 0 | `full_site/release/release_schedule.html` |
 | 298 | draft_template_only | bilingual_draft | 64 | 2/3 | 0 | 0 | `full_site/release/search.html` |
 | 299 | draft_needs_translation | bilingual_draft | 454 | 30/28 | 0 | 0 | `full_site/release/spec_usdpreviewsurface.html` |
 | 300 | draft_needs_translation | bilingual_draft | 430 | 30/28 | 0 | 0 | `full_site/release/spec_usdz.html` |
@@ -382,7 +382,7 @@ Generated: 2026-06-05T22:43:41.064Z
 | 316 | draft_needs_translation | bilingual_draft | 576 | 24/18 | 0 | 0 | `full_site/release/tut_variants_example_in_katana.html` |
 | 317 | draft_needs_translation | bilingual_draft | 526 | 26/20 | 0 | 0 | `full_site/release/tut_xforms.html` |
 | 318 | draft_needs_translation | bilingual_draft | 544 | 37/35 | 0 | 0 | `full_site/release/usd_products.html` |
-| 319 | draft_needs_translation | bilingual_draft | 425 | 22/20 | 0 | 0 | `full_site/release/usdfaq.html` |
+| 319 | draft_needs_translation | bilingual_draft | 645 | 34/27 | 0 | 0 | `full_site/release/usdfaq.html` |
 | 320 | draft_needs_translation | bilingual_draft | 549 | 24/18 | 0 | 0 | `full_site/release/user_guides/collections_and_patterns.html` |
 | 321 | draft_needs_translation | bilingual_draft | 657 | 28/21 | 0 | 0 | `full_site/release/user_guides/color_user_guide.html` |
 | 322 | draft_needs_translation | bilingual_draft | 541 | 24/18 | 0 | 0 | `full_site/release/user_guides/namespace_editing.html` |

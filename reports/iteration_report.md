@@ -6456,6 +6456,40 @@
 2. 建议下一组：`full_site/release/tut_end_to_end.html`、`full_site/release/tut_generating_new_schema.html`、`full_site/release/tut_houdini_example.html`、`full_site/release/tut_usd_tutorials.html`、`full_site/release/tut_usdview_plugin.html`。
 3. 之后可继续按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
 
+## 第 253 轮：Contributors、Open Source Release、Release Schedule、OpenExec 与 FAQ 补强
+
+已完成：
+
+- 复核当前 git 状态、远端和审计报告：本地 `main` 基于上一轮同步提交 `0ba67f8`，`origin/main` 一致；起始工作区干净。全量仍为 406 个 HTML 页面，质量计数为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。
+- 新增并执行 `scripts/refine_openusd_release_batch_122.mjs`，本轮标记为 `release-quality-pass-122`。
+- 严格只精修 5 页：
+  - `full_site/release/contributors.html`
+  - `full_site/release/press_opensource_release.html`
+  - `full_site/release/release_schedule.html`
+  - `full_site/release/intro_to_openexec.html`
+  - `full_site/release/usdfaq.html`
+- 每页新增 5 条中文补强导读和 6 条术语对照；重点覆盖历史贡献者名单的 `not current nor complete` 边界、2016-07-26 正式开源发布新闻与 DCC/scalable workflow 语境、dev/full/release candidate 发布线区分、OpenExec 的 Computations / Computation Registration / Invalidation 阅读路径，以及 FAQ 中 file format、scene description、composition arcs、`usdcat` 和 character encoding 的定位。
+- 质量回读：5 页均无 `TODO` / `待翻译` / `机器翻译占位`，`release-quality-pass-122` 均只出现 1 次：
+  - `contributors.html`：中文字符 739，中文/英文块 26/19。
+  - `press_opensource_release.html`：中文字符 684，中文/英文块 28/21。
+  - `release_schedule.html`：中文字符 693，中文/英文块 26/19。
+  - `intro_to_openexec.html`：中文字符 663，中文/英文块 40/33。
+  - `usdfaq.html`：中文字符 711，中文/英文块 34/27。
+- 本轮分级计数保持不变：`draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因：处理对象开始前已属 `draft_needs_translation`，本轮是二次补强精修，不是从模板草稿晋级。
+- 已运行并通过：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1`；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步结果：本轮验证通过后使用 `OpenUSD bilingual round 253: contributors release schedule openexec faq pass` 提交并推送，本轮 HTML、脚本、报告和 `work.md` 随提交同步。
+
+当前差距：
+
+- 全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`；其中 387 页为 `draft_needs_translation`、11 页为 `draft_template_only`，`bilingual_draft` 仍不是完整翻译。
+- 剩余 `draft_template_only` 11 页仍基本是 `_source.html` 源码页、`search.html` 或目录页，继续低优先处理。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理仍较薄且用户可读价值高的规范、性能、贡献和提案页面。
+2. 建议下一组：`full_site/release/wp_usdshade.html`、`full_site/release/contributing_to_usd.html`、`full_site/release/spec_usdz.html`、`full_site/release/ref_performance_metrics.html`、`full_site/release/spec_usdpreviewsurface.html`。
+3. 之后可继续按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+
 ## 第 250 轮：End-to-End、Schema Generation、Houdini、Tutorials 与 usdview Plugin 补强
 
 已完成：

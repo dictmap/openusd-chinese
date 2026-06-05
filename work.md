@@ -3186,3 +3186,14 @@
 - 验证结果：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1` 均通过；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
 - GitHub 同步：验证通过后使用 `OpenUSD bilingual round 252: renderman plugins downloads performance pass` 同步本轮 HTML、脚本、报告和 `work.md`。
 - 下一轮最多 5 页目标：`full_site/release/contributors.html`、`full_site/release/press_opensource_release.html`、`full_site/release/release_schedule.html`、`full_site/release/intro_to_openexec.html`、`full_site/release/usdfaq.html`；之后按 `translation_quality_review` 继续选择用户可读价值高的 API/guide/class/group/release 页面，低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+
+## 第 253 轮：Contributors、Open Source Release、Release Schedule、OpenExec 与 FAQ 补强
+
+- 基线：本地 `main` 基于上一轮同步提交 `0ba67f8`，`origin/main` 一致；起始工作区干净。全量仍为 406 个 HTML 页面，质量计数为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。
+- 新增并执行 `scripts/refine_openusd_release_batch_122.mjs`，标记 `release-quality-pass-122`；严格只精修 5 页：`full_site/release/contributors.html`、`full_site/release/press_opensource_release.html`、`full_site/release/release_schedule.html`、`full_site/release/intro_to_openexec.html`、`full_site/release/usdfaq.html`。
+- 补强内容：每页新增 5 条中文导读和 6 条术语对照，覆盖历史贡献者名单的 `not current nor complete` 边界、2016-07-26 正式开源发布新闻与 DCC/scalable workflow 语境、dev/full/release candidate 发布线区分、OpenExec 的 Computations / Computation Registration / Invalidation 阅读路径，以及 FAQ 中 file format、scene description、composition arcs、`usdcat` 和 character encoding 的定位。
+- 质量回读：5 页均无占位坏词，`release-quality-pass-122` 均只出现 1 次；中文字符分别为 739、684、693、663、711，中文/英文块分别为 26/19、28/21、26/19、40/33、34/27。
+- 分级变化：计数保持不变，仍为 `draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因是本轮对象已是 `draft_needs_translation`，属于二次补强，不是模板草稿晋级。
+- 验证结果：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1` 均通过；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步：验证通过后使用 `OpenUSD bilingual round 253: contributors release schedule openexec faq pass` 同步本轮 HTML、脚本、报告和 `work.md`。
+- 下一轮最多 5 页目标：`full_site/release/wp_usdshade.html`、`full_site/release/contributing_to_usd.html`、`full_site/release/spec_usdz.html`、`full_site/release/ref_performance_metrics.html`、`full_site/release/spec_usdpreviewsurface.html`；之后按 `translation_quality_review` 继续选择用户可读价值高的 API/guide/class/group/release 页面，低优先处理 `search.html`、目录页和 `_source.html` 源码页。
