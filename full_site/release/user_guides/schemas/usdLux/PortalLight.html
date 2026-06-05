@@ -35,6 +35,27 @@
       <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
       <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="release-quality-pass-070">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 PortalLight 补充中文优先的 schema 用途、属性/关系阅读路径、艺术控制或插件扩展边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds Chinese-first schema purpose, property and relationship reading paths, artistic-control or plugin-extension boundaries, and terminology for PortalLight while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`PortalLight` 表示位于本地 XY 平面的矩形 portal，用来引导 `DomeLight` 的采样；它本身不是普通照明面，而是帮助环境光在入口、窗口等区域更有效采样。</span></li>
+        <li><span class="zh">官方摘录说明它向 `-Z` 方向传递光照；因此阅读时要同时关注 prim 的 transform、局部坐标和 `xformOpOrder`，否则 portal 朝向容易被误读。</span></li>
+        <li><span class="zh">`inputs:height` 和 `inputs:width` 分别控制本地 Y/X 方向上的矩形尺寸，默认描述中的 1 unit 只是基础形状，不代表最终放置后的世界空间大小。</span></li>
+        <li><span class="zh">`light:shaderId` 表示该 portal light 的 shader 标识；渲染器是否以及如何利用 portal 进行 dome light 采样，还取决于 render delegate 支持。</span></li>
+        <li><span class="zh">本页应和 `DomeLight` 的 `portals` relationship 一起看：`DomeLight` 指向 portal，portal 提供采样窗口，两者共同表达环境光采样引导关系。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">传送门灯光/采样入口灯：</span><span class="en">PortalLight</span></li>
+        <li><span class="zh">穹顶环境光：</span><span class="en">DomeLight</span></li>
+        <li><span class="zh">本地 XY 平面：</span><span class="en">local XY plane</span></li>
+        <li><span class="zh">本地 -Z 方向：</span><span class="en">-Z direction</span></li>
+        <li><span class="zh">portal 高度输入：</span><span class="en">inputs:height</span></li>
+        <li><span class="zh">portal 宽度输入：</span><span class="en">inputs:width</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

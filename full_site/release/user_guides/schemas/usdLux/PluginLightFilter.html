@@ -35,6 +35,27 @@
       <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
       <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="release-quality-pass-070">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 PluginLightFilter 补充中文优先的 schema 用途、属性/关系阅读路径、艺术控制或插件扩展边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds Chinese-first schema purpose, property and relationship reading paths, artistic-control or plugin-extension boundaries, and terminology for PluginLightFilter while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`PluginLightFilter` 是 light filter 的插件扩展入口，用属性标识外部 `SdrShadingNode` definition，并通过 `UsdShadeNodeDefAPI` 暴露给 render delegates。</span></li>
+        <li><span class="zh">它继承 `LightFilter` 的过滤器语义，因此仍要阅读 `collection:filterLink:includeRoot` 和 `lightFilter:shaderId`；这些属性决定过滤器影响哪些 geometry Prims 以及如何找到 shader 实现。</span></li>
+        <li><span class="zh">`filterLink` collection 控制 include/exclude 目标；fallback 为 true 时，关联灯光照亮的对象默认都会受该 filter 影响，除非集合规则明确排除。</span></li>
+        <li><span class="zh">本页适合理解“自定义 light filter 如何进入渲染系统”：OpenUSD 负责声明 schema 与关系，具体过滤效果通常由 Sdr 节点、插件和 render delegate 实现。</span></li>
+        <li><span class="zh">中文层只说明插件边界和阅读路径，不把 renderer-specific 参数伪装成核心属性；`PluginLightFilter`、`SdrShadingNode`、`UsdShadeNodeDefAPI`、`filterLink` 等英文名保持原样。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">插件灯光过滤器：</span><span class="en">PluginLightFilter</span></li>
+        <li><span class="zh">Sdr 着色节点定义：</span><span class="en">SdrShadingNode</span></li>
+        <li><span class="zh">UsdShade 节点定义 API：</span><span class="en">UsdShadeNodeDefAPI</span></li>
+        <li><span class="zh">Hydra 渲染代理：</span><span class="en">render delegate</span></li>
+        <li><span class="zh">过滤器链接集合：</span><span class="en">filterLink collection</span></li>
+        <li><span class="zh">渲染器特定的：</span><span class="en">renderer-specific</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
