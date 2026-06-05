@@ -54,6 +54,27 @@
         <li><span class="zh">值解析：</span><span class="en">value resolution</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-100">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`Inspecting and Authoring Properties` 是 `Hello World` 之后的入门教程，用来演示如何打开 stage、取得 prim、检查属性并写入新的 authored opinions。阅读重点是从 `Usd.Stage.Open` 到 `GetPrimAtPath`，再到 attribute/relationship 的读取与写入路径。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for Inspecting and Authoring Properties while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">教程起点是 `extras/usd/tutorials/authoringProperties/HelloWorld.usda` 和 `authorProperties.py`；它假设读者已经创建过 `/hello` 与 `/hello/world`，因此本页不重新解释最基础的 stage 结构。</span></li>
+        <li><span class="zh">示例代码 `stage = Usd.Stage.Open('HelloWorld.usda')`、`GetPrimAtPath('/hello')` 和 `GetPrimAtPath('/hello/world')` 展示了典型的 stage -&gt; prim 访问链路；路径字面量必须保持原样。</span></li>
+        <li><span class="zh">本页讨论的 property 包括 attribute 和 relationship。attribute 可以有类型、默认值、time samples 和 authored value；relationship 则表达到其他对象的目标关系，不应把两者都笼统翻成“字段”。</span></li>
+        <li><span class="zh">当教程使用 `GetAttribute`、`Get`、`Set` 或 `Vt` 数组类型处理几何数据时，重点是理解“读取当前合成结果”和“在当前 EditTarget 写入新 opinion”的区别；这也是 USD 调试里最常见的分层误区。</span></li>
+        <li><span class="zh">继续翻译本页时，应保留 `Usd`、`Vt`、`Stage.Open`、`GetPrimAtPath`、`HelloWorld.usda`、`/hello/world` 等 API 与路径字面量，让读者能直接对照 Python 脚本运行。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">检查与创作属性：</span><span class="en">Inspecting and Authoring Properties</span></li>
+        <li><span class="zh">打开 USD stage 的 API：</span><span class="en">Usd.Stage.Open</span></li>
+        <li><span class="zh">按路径取得 prim：</span><span class="en">GetPrimAtPath</span></li>
+        <li><span class="zh">属性：</span><span class="en">attribute</span></li>
+        <li><span class="zh">关系：</span><span class="en">relationship</span></li>
+        <li><span class="zh">已创作意见：</span><span class="en">authored opinion</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -54,6 +54,27 @@
         <li><span class="zh">相对深度顺序：</span><span class="en">z-index</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-100">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`NodeGraphNodeAPI` 是 `usdUI` 中面向 node graph 编辑器的 applied API schema。它记录节点在图编辑界面中的位置、颜色、层叠顺序、文档链接和展开状态等 UI 元数据，不改变 shader 节点本身的计算语义、连接关系或材质输出。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for NodeGraphNodeAPI while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">本页应先按“图编辑器布局元数据”来读：`ui:nodegraph:node:pos` 描述节点在画布中的位置，`ui:nodegraph:node:displayColor` 描述节点显示颜色，`ui:nodegraph:node:stackingOrder` 描述相对深度或层叠强度，这些都服务于工具界面的可读性。</span></li>
+        <li><span class="zh">示例中的 `PreviewSurface` 和 `Color` shader 节点保留了 `info:id`、`outputs:mtlx:surface`、`inputs:diffuseColor` 等 shader 语义；`NodeGraphNodeAPI` 只给这些节点补充 UI 布局提示，不应被理解成新的 shading network 连接规则。</span></li>
+        <li><span class="zh">`ui:nodegraph:node:docURI` 可让工具把节点关联到说明文档或外部帮助资源，`ui:nodegraph:node:expansionState` 则表达节点在界面中是否展开；它们是编辑器体验数据，通常不会影响 renderer 的取样结果。</span></li>
+        <li><span class="zh">排查材质图、节点图或 node editor 显示异常时，可以先检查这些 `ui:nodegraph:node:*` 属性是否在目标 prim 上按预期写入，再检查 shader 输入输出和 `connect` 关系，避免把布局问题误判为 shader 语义错误。</span></li>
+        <li><span class="zh">翻译本页时必须保留 `NodeGraphNodeAPI`、`PreviewSurface`、`Color`、`ui:nodegraph:node:pos`、`ui:nodegraph:node:displayColor`、`ui:nodegraph:node:stackingOrder` 等字面量，因为它们既是 schema 属性名，也是 DCC 工具和脚本检索的关键字。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">节点图 UI 元数据 API：</span><span class="en">NodeGraphNodeAPI</span></li>
+        <li><span class="zh">节点图：</span><span class="en">node graph</span></li>
+        <li><span class="zh">节点图位置属性：</span><span class="en">ui:nodegraph:node:pos</span></li>
+        <li><span class="zh">节点图显示颜色属性：</span><span class="en">ui:nodegraph:node:displayColor</span></li>
+        <li><span class="zh">节点图层叠顺序属性：</span><span class="en">ui:nodegraph:node:stackingOrder</span></li>
+        <li><span class="zh">节点展开状态属性：</span><span class="en">ui:nodegraph:node:expansionState</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -5844,3 +5844,36 @@
 1. 保持每轮最多 5 页的节奏。
 2. 下一轮从 `reports/translation_quality_review.md` 的 draft 队列中选择 5 个用户可读价值高的页面，优先教程、schema 指南、概念页和核心 API 入口。
 3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总验证。
+
+## 第 231 轮：NodeGraph、OpenVDB、属性教程、Q 变量索引与 SceneGraphPrim 二次精修
+
+已完成：
+
+- 先复核仓库、远端和报告状态：本地 `main` 干净，上一轮 GitHub 同步提交为 `088bf34`，远端 `origin/main` 指向 `088bf349df404d5f059348b2df211a2014a24a5d`。
+- 严格按本轮最多 5 页处理，新增脚本 `scripts/refine_openusd_release_batch_100.mjs`，标记为 `release-quality-pass-100`。
+- 本轮精修页面：
+  - `full_site/release/user_guides/schemas/usdUI/NodeGraphNodeAPI.html`
+  - `full_site/release/user_guides/schemas/usdVol/OpenVDBAsset.html`
+  - `full_site/release/tut_inspect_and_author_props.html`
+  - `full_site/api/functions_vars_q.html`
+  - `full_site/release/user_guides/schemas/usdUI/SceneGraphPrimAPI.html`
+- 每页新增 5 条中文二次精修导读和 6 条术语对照，覆盖 node graph UI 元数据、OpenVDB 外部体积 grid、属性检查与创作教程、Doxygen Q 变量索引、SceneGraphPrim UI hints；API 名称、属性名、路径、token 字面量和英文原文均保留。
+- 目标页质量回读：
+  - `NodeGraphNodeAPI.html`：`draft_needs_translation`，中文字符 621，中文/英文块 24/18，坏编码 0，非预期外跳 0。
+  - `OpenVDBAsset.html`：`draft_needs_translation`，中文字符 569，中文/英文块 24/17，坏编码 0，非预期外跳 0。
+  - `tut_inspect_and_author_props.html`：`draft_needs_translation`，中文字符 521，中文/英文块 25/19，坏编码 0，非预期外跳 0。
+  - `functions_vars_q.html`：`draft_needs_translation`，中文字符 627，中文/英文块 24/16，坏编码 0，非预期外跳 0。
+  - `SceneGraphPrimAPI.html`：`draft_needs_translation`，中文字符 559，中文/英文块 24/16，坏编码 0，非预期外跳 0。
+- 分级计数保持不变：`draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8；原因是本轮 5 页开始前已处于 `draft_needs_translation`，本轮属于第二层精修，不会改变当前审计分级。
+- 审计与验证结果：`audit_openusd_translation_quality.mjs` 通过；`route_openusd_internal_links_local.mjs` 通过且 `files_changed=0`；`audit_openusd_full_draft_preview.mjs` 通过，398/398 draft 页面可预览；`audit_openusd_report_index.mjs` 通过；`validate_openusd_api_repro.ps1` 通过。
+
+差距：
+
+- 全量 406 页仍不是完成态：8 页 `good_bilingual`，398 页仍为 `bilingual_draft`；其中 387 页为 `draft_needs_translation`，11 页为 `draft_template_only`。
+- 本轮提升了 5 页的中文阅读层厚度，但仍不是逐段完整翻译，后续仍应按最多 5 页节奏继续二次精修。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理仍较薄且用户可读价值高的页面。
+2. 下一轮建议目标：`full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html`、`full_site/release/user_guides/schemas/usdMedia/usdMedia_toc.html`、`full_site/release/user_guides/schemas/usdLux/RectLight.html`、`full_site/api/functions_rela_t.html`、`full_site/api/globals_func_s.html`。
+3. 继续低优先处理 `_source.html`、`search.html` 和目录页；每轮保持链接路由、翻译质量审计、draft 预览审计、报告索引、总验证与 GitHub 同步。

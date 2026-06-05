@@ -54,6 +54,27 @@
         <li><span class="zh">密度场：</span><span class="en">density field</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-100">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`OpenVDBAsset` 是 `usdVol` 中用于引用外部 OpenVDB volume grid 的 `Field` schema。它通过 `.vdb` 资产路径、grid 名称、field index、field data type 和 time samples 把稀疏体数据接入 USD 场景，而不是把外部体素数据直接嵌入当前 USDA 文本。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for OpenVDBAsset while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">本页的核心句是 `A Field representing an OpenVDB volume grid`：`OpenVDBAsset` 表示一个来自 OpenVDB 文件的 volume grid，适合承载 density、temperature 等外部稀疏体数据入口。</span></li>
+        <li><span class="zh">示例中的 `fieldDataType = &quot;float&quot;` 描述 grid 数据类型，`fieldName = &quot;density&quot;` 选择 `.vdb` 文件中的命名 grid，`fieldIndex` 给出索引入口；这些字面量要和外部 `.vdb` 文件内容对应。</span></li>
+        <li><span class="zh">`filePath` 是 asset 路径，并且示例把它放入 `timeSamples` 中，说明不同时间码可以指向不同 VDB 文件或同一序列中的不同样本；这对体积动画、缓存序列和延迟加载很关键。</span></li>
+        <li><span class="zh">和 `Field3DAsset` 类似，`OpenVDBAsset` 负责把 USD 场景与外部体积文件连接起来；差异在于这里的外部格式是 OpenVDB，页面中的 OpenVDB website 链接是格式/库背景资料，不属于 406 页本地清单。</span></li>
+        <li><span class="zh">调试 `OpenVDBAsset` 时建议先确认 asset path、grid name、grid index、数据类型和时间样本是否能被下游工具解析，再判断 USD schema 层是否有问题；很多失败来自外部资源缺失或 grid 名不匹配。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">OpenVDB 体积场资产：</span><span class="en">OpenVDBAsset</span></li>
+        <li><span class="zh">OpenVDB 体积网格：</span><span class="en">OpenVDB volume grid</span></li>
+        <li><span class="zh">.vdb 文件：</span><span class="en">.vdb file</span></li>
+        <li><span class="zh">字段数据类型：</span><span class="en">fieldDataType</span></li>
+        <li><span class="zh">字段索引：</span><span class="en">fieldIndex</span></li>
+        <li><span class="zh">字段名：</span><span class="en">fieldName</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
