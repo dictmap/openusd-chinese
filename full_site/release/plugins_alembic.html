@@ -52,6 +52,27 @@
         <li><span class="zh">高级构建配置：</span><span class="en">Advanced Build Configuration</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-065">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 Alembic USD Plugin 补充中文优先的页面用途、阅读边界、关键概念和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
+      <p class="en">This section adds Chinese-first page purpose, reading boundaries, key concepts, and terminology for Alembic USD Plugin while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+      <ul>
+        <li><span class="zh">`Alembic USD Plugin` 说明 `usdAbc` 如何把 Alembic 数据接入 USD 文件格式插件体系；它的重点是互操作和文件格式映射，不是 Alembic 或 USD 的完整入门教程。</span></li>
+        <li><span class="zh">官方原文强调该插件默认不构建，必须在 CMake 中指定 `PXR_BUILD_ALEMBIC_PLUGIN`；中文说明保留该选项原样，并提醒用户结合自己的 USD 构建配置确认插件是否存在。</span></li>
+        <li><span class="zh">`Known Limitations` 用来界定 Alembic 与 USD 表达能力之间的差异，例如有些 USD 特性无法无损映射到 Alembic；阅读时要把限制视为数据互换边界，而不是普通错误。</span></li>
+        <li><span class="zh">`Advanced Build Configuration` 与插件构建、依赖路径和版本组合有关；命令、CMake 变量、文件扩展名 `.abc/.usda/.usdc` 和插件名必须保持英文原样。</span></li>
+        <li><span class="zh">本页和 `USD Third-Party Plugins` 的关系是：后者解释第三方插件生态，本页给出一个具体 file format plugin 示例；如果目标是渲染插件，应转到 `hdPrman` 或 Hydra 相关页面。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Alembic USD 插件：</span><span class="en">Alembic USD Plugin</span></li>
+        <li><span class="zh">Alembic 文件格式插件：</span><span class="en">usdAbc</span></li>
+        <li><span class="zh">文件格式插件：</span><span class="en">file format plugin</span></li>
+        <li><span class="zh">Alembic 插件构建开关：</span><span class="en">PXR_BUILD_ALEMBIC_PLUGIN</span></li>
+        <li><span class="zh">已知限制：</span><span class="en">Known Limitations</span></li>
+        <li><span class="zh">高级构建配置：</span><span class="en">Advanced Build Configuration</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -2,6 +2,30 @@
 
 源页面：<https://openusd.org/release/api/index.html>
 
+## 第 196 轮：release 产品/FAQ/发布节奏/性能指标/Alembic 页精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `617025a`，当前分级为 `draft_template_only` 65 / `draft_needs_translation` 333 / `good_bilingual` 8。
+- 本轮发现上一轮自动化目标里有过期或导航名不等于本地文件名的问题：`products.html` 实际对应 `full_site/release/usd_products.html`，`usd_faq.html` 实际对应 `full_site/release/usdfaq.html`；`release_notes.html` 和 `release_toc.html` 不在当前 406 清单内；`toolset.html` 当前是 `site/toolset.html` 且已是 `bilingual_complete`，因此本轮没有新建不存在页面，也没有重复改完成页。
+- 本轮严格只处理 5 个未达标页面：`full_site/release/usd_products.html`、`full_site/release/usdfaq.html`、`full_site/release/release_schedule.html`、`full_site/release/ref_performance_metrics.html`、`full_site/release/plugins_alembic.html`，其中前 4 页是 `draft_template_only`，`plugins_alembic.html` 是仍需补强的 `draft_needs_translation`。
+- 新增 `scripts/refine_openusd_release_batch_065.mjs`，为 5 页插入 `release-quality-pass-065` 中文精修导读区块；每页包含页面用途、阅读边界、关键概念和术语对照，并继续保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录。
+- 本轮中文层覆盖：`Products Using USD` 的社区维护清单、非背书边界、厂商/产品导航和第三方链接保留策略；`USD Frequently Asked Questions` 的 file format、scene description、composition arcs、`usdcat` 和字符编码问答边界；`Release Schedule` 的 dev releases、full releases、release candidates、dev branch 与 release branch；`Performance Metrics` 的被测资产、平台环境、metrics、USD Build 和本地复现；`Alembic USD Plugin` 的 `usdAbc`、file format plugin、`PXR_BUILD_ALEMBIC_PLUGIN`、Known Limitations 和 Advanced Build Configuration。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 65 / `draft_needs_translation` 333 / `good_bilingual` 8 变为 `draft_template_only` 61 / `draft_needs_translation` 337 / `good_bilingual` 8；本轮 4 个模板草稿转出，`plugins_alembic.html` 被补强但仍处于 `draft_needs_translation`。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；本轮 5 页均可通过本地最终入口访问。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`，报告索引审计通过，总验证 281 checks passed / 0 failed。
+- GitHub 同步：本轮验证通过后使用 `scripts/sync_openusd_to_github.ps1`，提交信息为 `OpenUSD bilingual round 196: products FAQ schedule metrics Alembic`。
+
+差距：
+- 本轮 5 页仍只是进入或补强 `draft_needs_translation`，不是完整翻译产品生态清单、FAQ 全部问答、发布流程全文、性能指标表格或 Alembic 插件构建细节。
+- 全量仍有 61 个 `draft_template_only` 和 337 个 `draft_needs_translation`，后续需要继续按每轮最大 5 页推进。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理仍为模板草稿且用户可读价值较高的 `full_site/release/spec_usdpreviewsurface.html`、`full_site/release/spec_usdz.html`、`full_site/release/tut_end_to_end.html`、`full_site/release/tut_generating_new_schema.html`、`full_site/release/tut_houdini_example.html`。
+2. 对规格和教程页补中文用途说明、页面边界、阅读路径和术语对照；跳过低价值搜索页和纯源码页，除非质量队列或用户明确要求。
+3. 保持本地链接策略，继续运行质量审计、链接路由、draft 预览、报告索引和总验证；验证通过后同步 GitHub，并记录质量分级变化、验证结果和提交结果。
+
 ## 第 195 轮：release 性能/插件/开源新闻页精修
 已完成：
 
