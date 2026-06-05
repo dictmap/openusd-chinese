@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T00:20:02.524Z
+Generated: 2026-06-05T00:27:36.250Z
 
 ## Summary
 
@@ -10,8 +10,8 @@ Generated: 2026-06-05T00:20:02.524Z
 
 ## Grade Counts
 
-- draft_template_only: 95
-- draft_needs_translation: 303
+- draft_template_only: 90
+- draft_needs_translation: 308
 - good_bilingual: 8
 
 ## Current Focus Batch
@@ -49,8 +49,6 @@ Generated: 2026-06-05T00:20:02.524Z
 | 298 | draft_template_only | 64 | `full_site/release/search.html` | 搜索 / Search - Universal Scene Description 26.05 documentation |
 | 69 | draft_template_only | 66 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | API 页面草稿：hf Directory / hf Directory |
 | 212 | draft_template_only | 66 | `full_site/api/journal_8h.html` | API 页面草稿：journal.h File / journal.h File |
-| 260 | draft_template_only | 66 | `full_site/api/usd_hydra_page_front.html` | API 模块草稿：UsdHydra: USD Hydra Schemas / UsdHydra: USD Hydra Schemas |
-| 262 | draft_template_only | 66 | `full_site/api/usd_media_page_front.html` | API 模块草稿：UsdMedia: USD Media Schema / UsdMedia: USD Media Schema |
 | 266 | draft_template_only | 66 | `full_site/api/usd_proc_page_front.html` | API 模块草稿：UsdProc: USD Schemas for Procedurals / UsdProc: USD Schemas for Procedurals |
 | 268 | draft_template_only | 66 | `full_site/api/usd_ri_page_front.html` | API 模块草稿：UsdRi: USD RenderMan Utilities / UsdRi: USD RenderMan Utilities |
 | 271 | draft_template_only | 66 | `full_site/api/usd_shaders_page_front.html` | API 模块草稿：UsdShaders: Definitions and Implementations of Usd* Shader Nodes / UsdShaders: Definitions and Implementations of Usd* Shader Nodes |
@@ -59,6 +57,8 @@ Generated: 2026-06-05T00:20:02.524Z
 | 294 | draft_template_only | 66 | `full_site/release/press_opensource_announce.html` | 开源公告 / Open Source Announcement |
 | 295 | draft_template_only | 66 | `full_site/release/press_opensource_release.html` | 开源发布 / Open Source Release |
 | 305 | draft_template_only | 66 | `full_site/release/tut_end_to_end.html` | 页面草稿：End to End Example / End to End Example |
+| 309 | draft_template_only | 66 | `full_site/release/tut_houdini_example.html` | 页面草稿：Houdini USD Example Workflow / Houdini USD Example Workflow |
+| 321 | draft_template_only | 66 | `full_site/release/user_guides/color_user_guide.html` | 页面草稿：Color User’s Guide / Color User’s Guide |
 
 ## All Pages
 
@@ -322,11 +322,11 @@ Generated: 2026-06-05T00:20:02.524Z
 | 256 | draft_needs_translation | bilingual_draft | 320 | 19/16 | 0 | 0 | `full_site/api/trace_page_front.html` |
 | 257 | draft_needs_translation | bilingual_draft | 332 | 22/19 | 0 | 0 | `full_site/api/usd_2usd_2object_8h.html` |
 | 258 | draft_needs_translation | bilingual_draft | 405 | 15/12 | 0 | 0 | `full_site/api/usd_app_utils_page_front.html` |
-| 259 | draft_template_only | bilingual_draft | 134 | 20/22 | 0 | 0 | `full_site/api/usd_geom_page_front.html` |
-| 260 | draft_template_only | bilingual_draft | 66 | 3/5 | 0 | 0 | `full_site/api/usd_hydra_page_front.html` |
-| 261 | draft_template_only | bilingual_draft | 102 | 12/14 | 0 | 0 | `full_site/api/usd_lux_page_front.html` |
-| 262 | draft_template_only | bilingual_draft | 66 | 3/5 | 0 | 0 | `full_site/api/usd_media_page_front.html` |
-| 263 | draft_template_only | bilingual_draft | 74 | 5/7 | 0 | 0 | `full_site/api/usd_mtlx_page_front.html` |
+| 259 | draft_needs_translation | bilingual_draft | 363 | 31/28 | 0 | 0 | `full_site/api/usd_geom_page_front.html` |
+| 260 | draft_needs_translation | bilingual_draft | 311 | 14/11 | 0 | 0 | `full_site/api/usd_hydra_page_front.html` |
+| 261 | draft_needs_translation | bilingual_draft | 331 | 23/20 | 0 | 0 | `full_site/api/usd_lux_page_front.html` |
+| 262 | draft_needs_translation | bilingual_draft | 333 | 14/11 | 0 | 0 | `full_site/api/usd_media_page_front.html` |
+| 263 | draft_needs_translation | bilingual_draft | 298 | 16/13 | 0 | 0 | `full_site/api/usd_mtlx_page_front.html` |
 | 264 | good_bilingual | bilingual_complete | 516 | 20/74 | 0 | 0 | `site/usd_page_front.html` |
 | 265 | draft_template_only | bilingual_draft | 170 | 29/31 | 0 | 0 | `full_site/api/usd_physics_page_front.html` |
 | 266 | draft_template_only | bilingual_draft | 66 | 3/5 | 0 | 0 | `full_site/api/usd_proc_page_front.html` |

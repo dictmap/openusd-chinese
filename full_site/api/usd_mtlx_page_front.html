@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-usd-schema-quality-pass-059">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 UsdMtlx: MaterialX File Format and Shader Plugins 补充中文优先的模块用途、schema/API 边界、阅读路径和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first module purpose, schema/API boundaries, reading paths, and terminology for UsdMtlx: MaterialX File Format and Shader Plugins while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`UsdMtlx: MaterialX File Format and Shader Plugins` 提供 MaterialX file format、shader discovery 与 parsing plugin，并提供读取和交互 MaterialX documents 的工具函数。</span></li>
+        <li><span class="zh">Concept Mappings 小节把 MaterialX 概念映射到 USD / UsdShade / Sdr：`input` 对应 `UsdShadeInput`，`output` 对应 `UsdShadeOutput`，`node` 和 `nodedef` 对应 `UsdShadeShader`，`nodegraph` 对应 `UsdShadeNodeGraph`，`implementation` 对应 `SdrShaderNode`。</span></li>
+        <li><span class="zh">`geom`、`collection` 与 `UsdCollectionAPI` 相关，`material` 与 `UsdShadeMaterial` / `UsdShadeMaterialBindingAPI` 相关；阅读时应把文件格式插件和 shading schema 表达分开理解。</span></li>
+        <li><span class="zh">Unsupported MaterialX Features 小节提醒：file format plugin 使用 MaterialX XML reader，因此能读合法 MaterialX 文件，但未支持的特性会被忽略或不完整处理。</span></li>
+        <li><span class="zh">本页适合从 MaterialX 资产进入 USD shading pipeline；后续细节应对照 `UsdShadeInput`、`UsdShadeOutput`、`UsdShadeShader`、`UsdShadeNodeGraph`、`SdrShaderNode` 和 material binding 相关类页。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD MaterialX 插件：</span><span class="en">UsdMtlx</span></li>
+        <li><span class="zh">MaterialX：</span><span class="en">MaterialX</span></li>
+        <li><span class="zh">UsdShade 输入：</span><span class="en">UsdShadeInput</span></li>
+        <li><span class="zh">Sdr 着色器节点：</span><span class="en">SdrShaderNode</span></li>
+        <li><span class="zh">文件格式插件：</span><span class="en">file format plugin</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

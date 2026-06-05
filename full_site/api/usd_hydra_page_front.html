@@ -34,6 +34,26 @@
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
       <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
+    <section data-cn-refinement="api-usd-schema-quality-pass-059">
+      <h2>中文精修导读 / Chinese Reading Notes</h2>
+      <p class="zh">本区块针对 UsdHydra: USD Hydra Schemas 补充中文优先的模块用途、schema/API 边界、阅读路径和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This section adds Chinese-first module purpose, schema/API boundaries, reading paths, and terminology for UsdHydra: USD Hydra Schemas while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and source excerpts for comparison with the official Doxygen page.</p>
+      <ul>
+        <li><span class="zh">`UsdHydra: USD Hydra Schemas` 当前主要提供 `UsdHydraGenerativeProceduralAPI`，用于扩展 `UsdProcGenerativeProcedural` prim，使其能描述 `HdGpGenerativeProcedural` 插件。</span></li>
+        <li><span class="zh">本页有明显的历史迁移提示：旧的 Hydra shading network schema 与行为已经删除，仅保留过渡所需的 token 列表，帮助迁移到基于 shader registry 的新式 Hydra shader authoring。</span></li>
+        <li><span class="zh">`UsdHydraGenerativeProceduralAPI`、`UsdProcGenerativeProcedural`、`HdGpGenerativeProcedural` 是本页的三条核心链接；它们分别对应 USD schema API、procedural prim 和 Hydra 生成式 procedural 插件层。</span></li>
+        <li><span class="zh">阅读时不要把本页当作完整 Hydra 渲染框架文档；Hydra framework 入口应看 `hd_page_front.html`，shader registry 相关应看 `Sdr` / `UsdShade` 页面。</span></li>
+        <li><span class="zh">本地导读重点是说明该页面的当前职责和 deprecated 边界，避免误用已删除的 shading-related schemas。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD Hydra schema 模块：</span><span class="en">UsdHydra</span></li>
+        <li><span class="zh">生成式 procedural：</span><span class="en">Generative Procedural</span></li>
+        <li><span class="zh">USD procedural prim：</span><span class="en">UsdProcGenerativeProcedural</span></li>
+        <li><span class="zh">Hydra procedural 插件：</span><span class="en">HdGpGenerativeProcedural</span></li>
+        <li><span class="zh">已弃用：</span><span class="en">deprecated</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

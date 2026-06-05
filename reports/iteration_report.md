@@ -2,6 +2,29 @@
 
 源页面：<https://openusd.org/release/api/index.html>
 
+## 第 190 轮：UsdGeom/UsdHydra/UsdLux/UsdMedia/UsdMtlx 模块入口页精修
+已完成：
+
+- 先复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.*`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、最终入口、Git 状态和远端 main，确认上一轮远端提交为 `a2e11b4`，本轮 5 个目标页均存在且均为 `draft_template_only`。
+- 本轮严格只处理 5 页：`full_site/api/usd_geom_page_front.html`、`full_site/api/usd_hydra_page_front.html`、`full_site/api/usd_lux_page_front.html`、`full_site/api/usd_media_page_front.html`、`full_site/api/usd_mtlx_page_front.html`；没有新增或处理第 6 页。
+- 新增 `scripts/refine_openusd_api_usd_schema_batch_059.mjs`，为 5 页插入 `api-usd-schema-quality-pass-059` 中文精修导读区块；每页包含模块用途、schema/API 边界、阅读路径和术语对照，保留英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和原文摘录。
+- 本轮中文层覆盖：`UsdGeom` 的 `UsdGeomImageable`、`UsdGeomXformable`、`UsdGeomGprim`、`UsdGeomPrimvar`、`UsdGeomBBoxCache`、motion blur、up axis 和 linear units；`UsdHydra` 的 `UsdHydraGenerativeProceduralAPI`、`UsdProcGenerativeProcedural`、`HdGpGenerativeProcedural` 和 deprecated shading schema 边界；`UsdLux` 的 core light types、`UsdLuxLightAPI`、light filters、light/shadow linking、Encapsulation Rules、Exposure 和插件扩展；`UsdMedia` 的 `UsdMediaAssetPreviewsAPI` 和 `UsdMediaSpatialAudio`；`UsdMtlx` 的 MaterialX file format、shader discovery、Concept Mappings、`UsdShadeInput`、`UsdShadeOutput`、`UsdShadeShader`、`SdrShaderNode` 和 Unsupported MaterialX Features。
+- 重新运行 `scripts/audit_openusd_translation_quality.mjs`，质量分级从 `draft_template_only` 95 / `draft_needs_translation` 303 / `good_bilingual` 8 变为 `draft_template_only` 90 / `draft_needs_translation` 308 / `good_bilingual` 8；本轮 5 页均从 `draft_template_only` 提升到 `draft_needs_translation`。
+- 重新运行 `scripts/route_openusd_internal_links_local.mjs`，409 个 HTML 文件检查通过，`files_changed` 为 0；本轮未破坏清单内本地链接和清单外 placeholder 路由。
+- 重新运行 `scripts/audit_openusd_full_draft_preview.mjs`，398/398 draft 预览通过；本轮 5 页均可通过本地最终入口访问。
+- 重新运行 `scripts/audit_openusd_report_index.mjs` 和 `scripts/validate_openusd_api_repro.ps1`：报告索引 16/16 通过，总验证 281 checks passed / 0 failed。
+- GitHub 同步：本轮验证通过后运行 `scripts/sync_openusd_to_github.ps1`，提交信息为 `OpenUSD bilingual round 190: Usd schema module front entries`。
+
+差距：
+- 本轮 5 页仍只是从模板草稿推进到带页面专属中文导读的 `draft_needs_translation`，不是完整翻译每个 UsdGeom 小节、Hydra procedural 细节、UsdLux 设计说明、UsdMedia schema 类或 MaterialX 映射表。
+- 全量仍有 90 个 `draft_template_only` 和 308 个 `draft_needs_translation`；UsdPhysics/UsdProc/UsdRender/UsdRi/UsdSemantics 及更多 schema/module/class/source 页面仍未达标。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理当前质量队列中仍为模板草稿的页面：`usd_physics_page_front.html`、`usd_proc_page_front.html`、`usd_render_page_front.html`、`usd_ri_page_front.html`、`usd_semantics_overview.html`。
+2. 对 Physics/Procedurals/Render/RenderMan/Semantics 页面补中文用途说明、模块边界、核心 schema/API、阅读路径和术语对照，保留 API 名称、schema 名称、token 字面量、头文件名和链接原样。
+3. 每轮继续运行链接路由、翻译质量审计、draft 预览审计、报告索引和总体验证；验证通过后同步 GitHub，并记录分级变化与提交结果。
+
 ## 第 189 轮：UsdSkelTokens / Tf / Trace / UsdObject / UsdAppUtils 页面精修
 已完成：
 
