@@ -75,6 +75,27 @@
         <li><span class="zh">平面椭圆：</span><span class="en">planar ellipse</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-101">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`ParticleFieldKernelGaussianSurfletAPI` 定义 `ParticleField` 的 Gaussian surflet kernel。阅读时要把它看作位于局部 XY plane 上的二维高斯 surflet：identity transform 下离开 XY plane 的 opacity 为 0，平面内的 opacity 按 Gaussian falloff 衰减，并可被 per-splat opacity、rotation、scale 和 position 继续变换。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for ParticleFieldKernelGaussianSurfletAPI while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">本页的 `surflet` 不是完整三维体积核，而是局部平面上的 splat kernel；官方说明中 `off the XY-plane defined as 0` 是关键约束，表示未变换核只在 XY plane 上有贡献。</span></li>
+        <li><span class="zh">`g(u=0;o=1;x=p.length())` 描述 identity transform 下的高斯衰减读取方式：`p.length()` 给出平面内到原点的距离，`standard deviation is 1` 使 3-sigma 点落在半径 3.0 的圆盘上。</span></li>
+        <li><span class="zh">`99.7% of the splat support` 说明绝大多数权重位于 XY plane 半径 3 的 disk 内；这是阅读 kernel 支持范围和 renderer 采样裁剪半径时最有用的数字。</span></li>
+        <li><span class="zh">per-splat opacity 会与 Gaussian falloff 相乘，rotation 和 scale 会把圆盘 kernel 变换成平面椭圆，position 会移动峰值位置；这些变换共同决定每个粒子 splat 对最终场的局部贡献。</span></li>
+        <li><span class="zh">翻译本页时应保留 `ParticleFieldKernelGaussianSurfletAPI`、`ParticleField`、`opacity`、`Gaussian falloff`、`rotation`、`scale`、`position`、`3-sigma` 等术语，避免把数学关系改写成不可复现的自然语言描述。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">粒子场 Gaussian surflet 核 API：</span><span class="en">ParticleFieldKernelGaussianSurfletAPI</span></li>
+        <li><span class="zh">Gaussian surflet 核：</span><span class="en">Gaussian surflet kernel</span></li>
+        <li><span class="zh">XY 平面：</span><span class="en">XY plane</span></li>
+        <li><span class="zh">不透明度：</span><span class="en">opacity</span></li>
+        <li><span class="zh">高斯衰减：</span><span class="en">Gaussian falloff</span></li>
+        <li><span class="zh">三倍标准差范围：</span><span class="en">3-sigma</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

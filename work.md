@@ -2807,3 +2807,31 @@
 1. 继续最多 5 页。
 2. 建议处理：`full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html`、`full_site/release/user_guides/schemas/usdMedia/usdMedia_toc.html`、`full_site/release/user_guides/schemas/usdLux/RectLight.html`、`full_site/api/functions_rela_t.html`、`full_site/api/globals_func_s.html`。
 3. 后续可继续 `full_site/release/tut_traversing_stage.html`、`full_site/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html`、`full_site/release/user_guides/schemas/usdRender/RenderProduct.html`，仍低优先处理 `_source.html` 和 `search.html`。
+
+## 第 232 轮：Gaussian Surflet、usdMedia 目录、RectLight、Related T 与 Sdf 函数索引补强
+
+已完成：
+
+- 复核当前 git 状态和远端：上一轮同步提交为 `0447497`，`origin/main` 一致。
+- 新增并执行 `scripts/refine_openusd_release_batch_101.mjs`，本轮标记 `release-quality-pass-101`。
+- 严格只精修 5 页：
+  - `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html`
+  - `full_site/release/user_guides/schemas/usdMedia/usdMedia_toc.html`
+  - `full_site/release/user_guides/schemas/usdLux/RectLight.html`
+  - `full_site/api/functions_rela_t.html`
+  - `full_site/api/globals_func_s.html`
+- 质量回读显示 5 页均为 `draft_needs_translation`，坏编码 0，非预期官方外跳 0；中文字符分别为 741、540、526、557、548。
+- 本轮分级计数保持不变：`draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因：处理对象已经是 `draft_needs_translation`，本轮为补强精修，不是从模板草稿晋级。
+- 已运行并通过：翻译质量审计、链接路由、full draft preview、报告索引和 `validate_openusd_api_repro.ps1`。
+- GitHub 同步结果：本轮通过 `sync_openusd_to_github.ps1` 以 `OpenUSD bilingual round 232: surflet media rect related sdf pass` 提交并推送。
+
+当前差距：
+
+- 全量仍为 8 个 `good_bilingual`、398 个 `bilingual_draft`；`bilingual_draft` 仍不是完整翻译。
+- 剩余未完成质量队列中，11 页仍是 `draft_template_only`，其余 387 页仍需逐轮补强。
+
+下一轮目标：
+
+1. 继续最多 5 页。
+2. 建议处理：`full_site/release/tut_traversing_stage.html`、`full_site/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html`、`full_site/release/user_guides/schemas/usdRender/RenderProduct.html`、`full_site/release/user_guides/schemas/usdMedia/SpatialAudio.html`、`full_site/release/user_guides/schemas/usdLux/SphereLight.html`。
+3. 后续可继续 `full_site/release/user_guides/schemas/usdRender/RenderSettings.html`，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面。

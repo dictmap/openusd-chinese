@@ -54,6 +54,27 @@
         <li><span class="zh">单位转换：</span><span class="en">unit conversion</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-101">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`globals_func_s.html` 是 Doxygen 的 File Members - Functions 字母索引页，本页主要集中在 `Sdf*` 函数和少量其他 S 字母段函数。它用于从函数名快速定位到头文件和定义上下文，尤其适合查找 Sdf layer、spec、asset path、time sample 与 unit 转换相关入口。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for File Members - Functions - S while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`SdfAnchorAssetPaths()`、`SdfComputeAssetPathRelativeToLayer()` 等条目和 asset path 解析、layer 相对路径计算有关；阅读时要同时关注函数名后面的 header，例如 `assetPath.h` 或 `layerUtils.h`。</span></li>
+        <li><span class="zh">`SdfComposeTimeSampleMaps()` 面向 time sample map 的组合，`SdfConvertUnit()` 与 `SdfDefaultUnit()` 面向单位转换和默认单位；这些函数名应保持英文，中文只补充用途说明。</span></li>
+        <li><span class="zh">`SdfCopySpec()`、`SdfCreatePrimInLayer()`、`SdfCreatePrimAttributeInLayer()`、`SdfCreateRelationshipInLayer()`、`SdfCreateVariantInLayer()` 都指向对 layer/spec 内容的创建或复制操作，和 USD 的 authored scene description 直接相关。</span></li>
+        <li><span class="zh">`SdfConvertToValidMetadataDictionary()` 提醒读者 metadata 需要满足 Sdf 可接受的数据结构；如果 metadata 写入失败，通常需要检查 value 类型和 dictionary 结构。</span></li>
+        <li><span class="zh">这类 File Members 索引页的关键是函数名加头文件映射。后续如果补全逐段翻译，应优先保留 `Sdf*` 函数字面量、括号、header 名和链接目标，避免破坏可搜索性。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">文件成员函数索引：</span><span class="en">File Members - Functions</span></li>
+        <li><span class="zh">Sdf 资产路径锚定函数：</span><span class="en">SdfAnchorAssetPaths</span></li>
+        <li><span class="zh">Sdf spec 复制函数：</span><span class="en">SdfCopySpec</span></li>
+        <li><span class="zh">在 layer 中创建 prim 的函数：</span><span class="en">SdfCreatePrimInLayer</span></li>
+        <li><span class="zh">时间样本：</span><span class="en">time sample</span></li>
+        <li><span class="zh">元数据字典：</span><span class="en">metadata dictionary</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

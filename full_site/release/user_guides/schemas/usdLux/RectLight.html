@@ -54,6 +54,27 @@
         <li><span class="zh">光形控制锥角：</span><span class="en">light shaping cone angle</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="release-quality-pass-101">
+      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
+      <p class="zh">`RectLight` 是 `usdLux` 中从矩形一侧发光的 intrinsic light。默认矩形位于 XY plane，中心在原点，并沿 `-Z` 方向发光；它常用于模拟摄影 soft box、线性灯、荧光灯和 light panel。</p>
+      <p class="en">This second-pass section adds page-specific Chinese reading notes for RectLight while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">官方说明中 `centered in the XY plane` 和 `emits light along the -Z axis` 决定了默认方向；如果场景中 RectLight 朝向不对，通常应检查 prim transform，而不是改写 light schema 本身。</span></li>
+        <li><span class="zh">默认矩形在 X 和 Y 轴方向各 1 unit，示例把 width/height 设置为 `5x5`，说明面积大小会影响灯光覆盖范围、柔和阴影和能量分布的直观效果。</span></li>
+        <li><span class="zh">`Use RectLights to illuminate objects` 后列出的 soft boxes、linear lights、fluorescent lights、light panels 是典型艺术与摄影用途；中文说明应保留这些英文场景词，方便和 DCC/renderer UI 对照。</span></li>
+        <li><span class="zh">示例中 colored checkerboard texture 作为 color map 使用，同时配合 light shaping cone angle 和 focus 限制光照扩散；这说明 `RectLight` 可以和贴图、shaping API 一起构成更复杂的光源控制。</span></li>
+        <li><span class="zh">阅读本页时要区分 light geometry、transform、texture/color map 和 shaping 属性：矩形发光面定义光源形状，transform 放置光源，color map 改变颜色分布，shaping 控制扩散范围。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">矩形灯：</span><span class="en">RectLight</span></li>
+        <li><span class="zh">内建光源：</span><span class="en">intrinsic light</span></li>
+        <li><span class="zh">XY 平面：</span><span class="en">XY plane</span></li>
+        <li><span class="zh">-Z 轴：</span><span class="en">-Z axis</span></li>
+        <li><span class="zh">柔光箱：</span><span class="en">soft box</span></li>
+        <li><span class="zh">颜色贴图：</span><span class="en">color map</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
