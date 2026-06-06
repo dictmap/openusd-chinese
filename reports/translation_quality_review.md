@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-06T05:47:16.172Z
+Generated: 2026-06-06T06:06:57.467Z
 
 ## Summary
 
@@ -51,14 +51,14 @@ Generated: 2026-06-06T05:47:16.172Z
 | 257 | draft_needs_translation | 332 | `full_site/api/usd_2usd_2object_8h.html` | API 页面草稿：object.h File / object.h File |
 | 211 | draft_needs_translation | 333 | `full_site/api/inherits.html` | API 页面草稿：Class Hierarchy / Class Hierarchy |
 | 221 | draft_needs_translation | 333 | `full_site/api/md_pxr_exec_exec_usd__r_e_a_d_m_e.html` | API 页面草稿：ExecUsd: Execution system for Usd / ExecUsd: Execution system for Usd |
-| 262 | draft_needs_translation | 333 | `full_site/api/usd_media_page_front.html` | API 模块草稿：UsdMedia: USD Media Schema / UsdMedia: USD Media Schema |
 | 217 | draft_needs_translation | 334 | `full_site/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html` | API 页面草稿：EsfUsd: Execution Scene Foundation for Usd / EsfUsd: Execution Scene Foundation for Usd |
-| 255 | draft_needs_translation | 334 | `full_site/api/tf_page_front.html` | API 模块草稿：Tf: Tools Foundations / Tf: Tools Foundations |
-| 166 | draft_needs_translation | 335 | `full_site/api/glf_page_front.html` | API 模块草稿：Glf: Utility classes for OpenGL / Glf: Utility classes for OpenGL |
 | 212 | draft_needs_translation | 336 | `full_site/api/journal_8h.html` | API 页面草稿：journal.h File / journal.h File |
 | 239 | draft_needs_translation | 336 | `full_site/api/pages.html` | API 页面草稿：Related Pages / Related Pages |
-| 190 | draft_needs_translation | 338 | `full_site/api/globals_o.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
 | 248 | draft_needs_translation | 338 | `full_site/api/sparse_vectorized_input_traverser_8h.html` | API 页面草稿：sparseVectorizedInputTraverser.h File / sparseVectorizedInputTraverser.h File |
+| 229 | draft_needs_translation | 339 | `full_site/api/md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html` | API 页面草稿：Validation / Validation |
+| 218 | draft_needs_translation | 342 | `full_site/api/md_pxr_exec_exec__r_e_a_d_m_e.html` | API 页面草稿：Exec: Execution sytem core / Exec: Execution sytem core |
+| 220 | draft_needs_translation | 344 | `full_site/api/md_pxr_exec_exec_ir__r_e_a_d_m_e.html` | API 页面草稿：ExecIr: OpenExec implementation of invertible rigs / ExecIr: OpenExec implementation of invertible rigs |
+| 215 | draft_needs_translation | 345 | `full_site/api/md_pxr_exec_ef__r_e_a_d_m_e.html` | API 页面草稿：Ef: Execution Foundation / Ef: Execution Foundation |
 
 ## All Pages
 
@@ -141,7 +141,7 @@ Generated: 2026-06-06T05:47:16.172Z
 | 75 | draft_needs_translation | bilingual_draft | 534 | 24/17 | 0 | 0 | `full_site/api/functions_c.html` |
 | 76 | draft_needs_translation | bilingual_draft | 518 | 24/17 | 0 | 0 | `full_site/api/functions_d.html` |
 | 77 | draft_needs_translation | bilingual_draft | 608 | 24/17 | 0 | 0 | `full_site/api/functions_e.html` |
-| 78 | draft_needs_translation | bilingual_draft | 346 | 31/28 | 0 | 0 | `full_site/api/functions_enum.html` |
+| 78 | draft_needs_translation | bilingual_draft | 518 | 43/35 | 0 | 0 | `full_site/api/functions_enum.html` |
 | 79 | draft_needs_translation | bilingual_draft | 465 | 37/29 | 0 | 0 | `full_site/api/functions_eval.html` |
 | 80 | draft_needs_translation | bilingual_draft | 473 | 24/17 | 0 | 0 | `full_site/api/functions_f.html` |
 | 81 | draft_needs_translation | bilingual_draft | 507 | 24/16 | 0 | 0 | `full_site/api/functions_func_~.html` |
@@ -229,7 +229,7 @@ Generated: 2026-06-06T05:47:16.172Z
 | 163 | draft_needs_translation | bilingual_draft | 459 | 25/17 | 0 | 0 | `full_site/api/functions.html` |
 | 164 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/geom_model_a_p_i_adapter_8h_source.html` |
 | 165 | draft_needs_translation | bilingual_draft | 530 | 26/18 | 0 | 0 | `full_site/api/gf_page_front.html` |
-| 166 | draft_needs_translation | bilingual_draft | 335 | 13/9 | 0 | 0 | `full_site/api/glf_page_front.html` |
+| 166 | draft_needs_translation | bilingual_draft | 549 | 25/16 | 0 | 0 | `full_site/api/glf_page_front.html` |
 | 167 | draft_needs_translation | bilingual_draft | 551 | 25/17 | 0 | 0 | `full_site/api/globals_c.html` |
 | 168 | draft_needs_translation | bilingual_draft | 716 | 32/24 | 0 | 0 | `full_site/api/globals_defs.html` |
 | 169 | draft_needs_translation | bilingual_draft | 610 | 25/17 | 0 | 0 | `full_site/api/globals_e.html` |
@@ -253,7 +253,7 @@ Generated: 2026-06-06T05:47:16.172Z
 | 187 | draft_needs_translation | bilingual_draft | 596 | 25/17 | 0 | 0 | `full_site/api/globals_h.html` |
 | 188 | draft_needs_translation | bilingual_draft | 510 | 25/17 | 0 | 0 | `full_site/api/globals_j.html` |
 | 189 | draft_needs_translation | bilingual_draft | 371 | 13/10 | 0 | 0 | `full_site/api/globals_l.html` |
-| 190 | draft_needs_translation | bilingual_draft | 338 | 13/10 | 0 | 0 | `full_site/api/globals_o.html` |
+| 190 | draft_needs_translation | bilingual_draft | 569 | 25/17 | 0 | 0 | `full_site/api/globals_o.html` |
 | 191 | draft_needs_translation | bilingual_draft | 617 | 25/17 | 0 | 0 | `full_site/api/globals_p.html` |
 | 192 | draft_needs_translation | bilingual_draft | 480 | 25/17 | 0 | 0 | `full_site/api/globals_s.html` |
 | 193 | draft_needs_translation | bilingual_draft | 600 | 25/17 | 0 | 0 | `full_site/api/globals_t.html` |
@@ -318,14 +318,14 @@ Generated: 2026-06-06T05:47:16.172Z
 | 252 | draft_needs_translation | bilingual_draft | 411 | 40/37 | 0 | 0 | `full_site/api/struct_usd_physics_tokens_type.html` |
 | 253 | draft_needs_translation | bilingual_draft | 397 | 40/37 | 0 | 0 | `full_site/api/struct_usd_skel_tokens_type.html` |
 | 254 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/system_diagnostics_8h_source.html` |
-| 255 | draft_needs_translation | bilingual_draft | 334 | 13/10 | 0 | 0 | `full_site/api/tf_page_front.html` |
+| 255 | draft_needs_translation | bilingual_draft | 548 | 25/17 | 0 | 0 | `full_site/api/tf_page_front.html` |
 | 256 | draft_needs_translation | bilingual_draft | 526 | 31/23 | 0 | 0 | `full_site/api/trace_page_front.html` |
 | 257 | draft_needs_translation | bilingual_draft | 332 | 22/19 | 0 | 0 | `full_site/api/usd_2usd_2object_8h.html` |
 | 258 | draft_needs_translation | bilingual_draft | 405 | 15/12 | 0 | 0 | `full_site/api/usd_app_utils_page_front.html` |
 | 259 | draft_needs_translation | bilingual_draft | 363 | 31/28 | 0 | 0 | `full_site/api/usd_geom_page_front.html` |
 | 260 | draft_needs_translation | bilingual_draft | 475 | 26/18 | 0 | 0 | `full_site/api/usd_hydra_page_front.html` |
 | 261 | draft_needs_translation | bilingual_draft | 481 | 35/27 | 0 | 0 | `full_site/api/usd_lux_page_front.html` |
-| 262 | draft_needs_translation | bilingual_draft | 333 | 14/11 | 0 | 0 | `full_site/api/usd_media_page_front.html` |
+| 262 | draft_needs_translation | bilingual_draft | 583 | 26/18 | 0 | 0 | `full_site/api/usd_media_page_front.html` |
 | 263 | draft_needs_translation | bilingual_draft | 470 | 28/20 | 0 | 0 | `full_site/api/usd_mtlx_page_front.html` |
 | 264 | good_bilingual | bilingual_complete | 516 | 20/74 | 0 | 0 | `site/usd_page_front.html` |
 | 265 | draft_needs_translation | bilingual_draft | 475 | 41/38 | 0 | 0 | `full_site/api/usd_physics_page_front.html` |

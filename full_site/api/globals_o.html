@@ -54,6 +54,27 @@
         <li><span class="zh">operator^()：</span><span class="en">operator^()</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-156">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`globals_o.html` 是 File Members 的字母 `o` 索引页，主要聚合全局 documented operator 条目。它适合快速定位 `operator+()`、`operator==()`、`operator&gt;&gt;()`、`operator^()` 等声明来源，但具体语义必须结合头文件、参数类型和返回类型判断。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for File Members - o / operators while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`operator+()`、`operator==()`、`operator&gt;&gt;()`、`operator^()` 等符号本身不翻译；中文说明只解释它们在对应类型上的常见阅读方式。</span></li>
+        <li><span class="zh">`indexedWeightsOperand.h` 中的 `operator+()` 更像 indexed weights operand 的组合入口，不能泛化为所有 USD 对象的加法语义。</span></li>
+        <li><span class="zh">`dictionary.h` 中的 `operator==()` 通常表示 dictionary 比较；读者应继续查看 `VtDictionary` 或相关 typedef/class 以确认键值比较规则。</span></li>
+        <li><span class="zh">`timeCodeRange.h` 中的 `operator&gt;&gt;()` 常用于输入流解析；`vec3d.h`、`vec3f.h`、`vec3h.h` 中的 `operator^()` 则应放在 `GfVec3*` 向量运算上下文理解。</span></li>
+        <li><span class="zh">File Members operator 索引只负责按名称定位声明，不替代 class 文档、头文件注释或数学/语义说明；同一符号在不同类型上可有不同含义。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">文件成员索引：</span><span class="en">file members index</span></li>
+        <li><span class="zh">运算符重载：</span><span class="en">operator overload</span></li>
+        <li><span class="zh">输入流解析：</span><span class="en">input stream parsing</span></li>
+        <li><span class="zh">向量运算：</span><span class="en">vector operation</span></li>
+        <li><span class="zh">相等比较：</span><span class="en">equality comparison</span></li>
+        <li><span class="zh">声明来源头文件：</span><span class="en">declaring header</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

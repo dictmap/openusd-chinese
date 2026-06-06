@@ -54,6 +54,27 @@
         <li><span class="zh">可变换 prim 基类：</span><span class="en">UsdGeomXformable</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-156">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`usd_media_page_front.html` 是 `UsdMedia` 模块入口，当前范围集中在 asset previews 与 spatial audio。它说明 USD 如何把预渲染资产预览和音频作为 scene context 中的媒体信息表达出来，而不是提供完整播放器、编解码器或实时音频引擎。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdMedia: USD Media Schema while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdMediaAssetPreviewsAPI` 用于把 thumbnails 等预渲染 asset previews 关联到 scene 中的 prim，适合资产浏览、内容库检索和 DCC/工具侧预览工作流。</span></li>
+        <li><span class="zh">`UsdMediaSpatialAudio` 表达 spatial 与 non-spatial audio，并派生自 `UsdGeomXformable`，因此音频 prim 可以和场景变换、位置及层级关系一起被组织。</span></li>
+        <li><span class="zh">本页的 media 语义依赖 stage 与 prim context：先判断媒体是否描述资产预览、是否绑定到 prim、是否需要空间化，再进入具体 class 页查属性。</span></li>
+        <li><span class="zh">不要把 `UsdMedia` 与 `UsdVol`、`UsdRender` 或 renderer media pipeline 混为一谈；这里关注 schema 数据表达，不定义渲染器或播放器运行时行为。</span></li>
+        <li><span class="zh">英文类名 `UsdMediaAssetPreviewsAPI`、`UsdMediaSpatialAudio` 和页面名保持原样，便于与 Doxygen 链接、schema registry 和源码路径直接对照。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">媒体 schema：</span><span class="en">media schema</span></li>
+        <li><span class="zh">资产预览：</span><span class="en">asset preview</span></li>
+        <li><span class="zh">预渲染缩略图：</span><span class="en">pre-rendered thumbnail</span></li>
+        <li><span class="zh">空间音频：</span><span class="en">spatial audio</span></li>
+        <li><span class="zh">非空间音频：</span><span class="en">non-spatial audio</span></li>
+        <li><span class="zh">场景上下文：</span><span class="en">stage context</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

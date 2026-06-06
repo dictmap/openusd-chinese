@@ -54,6 +54,27 @@
         <li><span class="zh">内存标记系统：</span><span class="en">TfMallocTag</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-156">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`tf_page_front.html` 是 `Tf` 基础工具层入口，覆盖 memory management、runtime typing、path utilities、diagnostics、debug output、string utilities、containers、object creation、math、performance、file 与 system extensions。它是许多 OpenUSD 模块共同依赖的底层 C++ 工具集合。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Tf: Tools Foundations while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">阅读 `Tf` 时应先按功能分组定位：对象生命周期通常走 `TfRefPtr`、`TfWeakPtr`、`TfRefBase`、`TfWeakBase`，内存追踪则进入 `TfMallocTag`。</span></li>
+        <li><span class="zh">`TfType`、`TfEnum` 和 `TfTypeInfoMap` 连接 runtime type system、Plug 插件注册和 schema 类型查询；这些名称不应翻译成普通中文类名。</span></li>
+        <li><span class="zh">`TF_AXIOM()`、`TF_VERIFY()`、`TF_FATAL_ERROR()`、`TF_CODING_ERROR()`、`TF_RUNTIME_ERROR()`、`TF_WARN()` 等诊断宏有不同严重级别和使用语境，中文只解释用途，宏名保留原样。</span></li>
+        <li><span class="zh">`TfNotice`、`TfError`、`TfRegistryManager` 与 `TfMallocTag` 的专题页是入口页之后的主要阅读路径，适合进一步理解通知、错误发布、注册初始化和内存标记。</span></li>
+        <li><span class="zh">`Tf` 是 foundation layer，不等同于 USD scene schema；它提供容器、字符串、文件、调试和系统工具，供 `Sdf`、`Usd`、`Hd` 等上层模块复用。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">基础工具层：</span><span class="en">foundation tools layer</span></li>
+        <li><span class="zh">引用计数指针：</span><span class="en">reference-counted pointer</span></li>
+        <li><span class="zh">弱引用指针：</span><span class="en">weak pointer</span></li>
+        <li><span class="zh">运行时类型：</span><span class="en">runtime typing</span></li>
+        <li><span class="zh">诊断宏：</span><span class="en">diagnostic macro</span></li>
+        <li><span class="zh">注册初始化系统：</span><span class="en">registry initialization system</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

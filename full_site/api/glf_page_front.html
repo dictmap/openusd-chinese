@@ -54,6 +54,27 @@
         <li><span class="zh">渲染辅助工具：</span><span class="en">rendering helper</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-156">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`glf_page_front.html` 是 `Glf` 模块入口，官方摘要很短：Utility classes for OpenGL output。本轮中文层把它定位为 OpenUSD/Imaging 相关 OpenGL 输出辅助类入口，用于进入 draw target、OpenGL helper 与渲染调试相关页面。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Glf: Utility classes for OpenGL while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Glf` 面向 OpenGL output 的 utility classes，通常出现在成像、预览、draw target、framebuffer 或 GPU 资源辅助上下文中。</span></li>
+        <li><span class="zh">本页不是 `UsdGeom` 几何 schema，也不是 `UsdShade` 材质网络说明；它更接近渲染基础设施和 OpenGL 平台辅助层。</span></li>
+        <li><span class="zh">如果要查具体行为，应沿本地链接进入 `GlfDrawTarget` 等 class 页；入口页本身只提供模块定位和跳转，不承诺列出完整 API 细节。</span></li>
+        <li><span class="zh">`Glf` 与 Hydra/Storm 相关渲染路径可能相邻出现，但模块边界不同：Hydra 关注 scene index、render delegate、task 等抽象，`Glf` 关注 OpenGL output helper。</span></li>
+        <li><span class="zh">保留 `Glf`、`OpenGL`、`draw target`、`framebuffer` 等英文术语，有助于和源码 include、Doxygen class 名称及图形调试工具保持一致。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">OpenGL 输出：</span><span class="en">OpenGL output</span></li>
+        <li><span class="zh">绘制目标：</span><span class="en">draw target</span></li>
+        <li><span class="zh">帧缓冲：</span><span class="en">framebuffer</span></li>
+        <li><span class="zh">渲染辅助类：</span><span class="en">rendering utility class</span></li>
+        <li><span class="zh">成像基础设施：</span><span class="en">imaging infrastructure</span></li>
+        <li><span class="zh">模块边界：</span><span class="en">module boundary</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
