@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-06T22:37:39.519Z",
+  "generated_at": "2026-06-06T22:52:26.767Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 388,
-    "bilingual_complete": 18
+    "bilingual_draft": 387,
+    "bilingual_complete": 19
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 377,
-    "good_bilingual": 18
+    "draft_needs_translation": 376,
+    "good_bilingual": 19
   },
   "focus_batch": [
     {
@@ -2165,29 +2165,29 @@
     },
     {
       "index": 45,
-      "title": "类参考草稿：UsdImagingDelegate Class / UsdImagingDelegate Class",
+      "title": "完整双语参考：UsdImagingDelegate Class / UsdImagingDelegate Class",
       "output": "full_site/api/class_usd_imaging_delegate.html",
       "official_url": "https://openusd.org/release/api/class_usd_imaging_delegate.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 64,
+      "grade": "good_bilingual",
+      "zhBlockCount": 49,
       "enBlockCount": 51,
-      "zhChars": 700,
-      "enLetters": 2044,
-      "bodyChineseChars": 775,
+      "zhChars": 1004,
+      "enLetters": 3033,
+      "bodyChineseChars": 1057,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 UsdImagingDelegate Class Reference 补充中文优先的类职责、读取重点、关键属性/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`UsdImagingDelegate` 是 Hydra `Hd` core 与 USD scene graph 之间的主要 translation layer，负责把 USD 场景数据转换成 Hydra 可消费的数据访问接口。"
+        "本页已从草稿晋级为完整双语参考页。中文部分围绕官方 `UsdImagingDelegate Class Reference` 的核心定义展开：它是 Hydra (`Hd`) core 与 USD scene graph 之间的 primary translation layer；本页解释 stage/prim 数据如何进入 Hydra render index、path conversion 如何区分 cache path 与 index path、pending updates 如何刷新 dirty data，以及各类 `Get*()` 查询为何是 scene delegate 数据访问面而不是直接读取原始 `UsdPrim` 字段。英文 API 名称、类名、方法名、类型名、token、链接和必要原文摘录保持原样。",
+        "`UsdImagingDelegate` 的核心职责是把 USD scene graph 中的 `UsdPrim`、属性、关系、visibility、purpose、topology、primvars、materials、instancing 和 time-varying data 翻译为 Hydra `HdSceneDelegate` / `HdRenderIndex` 可以同步和查询的数据。它位于 USD composition 结果与 Hydra rendering abstraction 之间：上游看到的是 stage、prim、schema 和 notice；下游看到的是 render index prim、dirty bits、topology、material resource 和 scene delegate query。",
+        "官方原文说它是 “The primary translation layer between the Hydra (Hd) core and the Usd scene graph.” 这里的 translation layer 不应理解成简单文件格式转换，而是持续运行的成像桥接层。它要维护 population、resync、dirty propagation、adapter 分发、path mapping 和 time sampling；因此调试显示缺失、拓扑不刷新或材质不同步时，经常要同时检查 `UsdPrim`、adapter、delegate、render index 和最终 render delegate。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, reading guidance, key attribute/method groups, and terminology for UsdImagingDelegate Class Reference while retaining English page names, class names, method names, attribute names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page has been promoted to a complete bilingual reference. The Chinese coverage explains the official role of `UsdImagingDelegate` as the primary translation layer between Hydra (`Hd`) core and the USD scene graph, while preserving English API names and excerpts for direct comparison.",
+        "`UsdImagingDelegate` translates composed USD scene-graph data into information that Hydra `HdSceneDelegate` and `HdRenderIndex` can synchronize and query. It sits between USD composition results and Hydra rendering abstractions."
       ]
     },
     {
