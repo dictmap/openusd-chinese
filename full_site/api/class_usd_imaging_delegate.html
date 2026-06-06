@@ -75,6 +75,27 @@
         <li><span class="zh">待同步更新：</span><span class="en">pending updates</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-142">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`UsdImagingDelegate` 是 Hydra core 与 USD scene graph 之间的 primary translation layer。它把 `UsdPrim`、topology、primvars、materials、instancing、visibility、display purpose 和 time-varying data 翻译成 Hydra render index 可同步的数据。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdImagingDelegate while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`ApplyPendingUpdates()` 将 USD 侧检测到的变更推入 Hydra 数据结构，适合与 change processing、dirty bits 和 render index 同步流程一起理解。</span></li>
+        <li><span class="zh">`ConvertCachePathToIndexPath()` 与 `ConvertIndexPathToCachePath()` 说明 delegate 同时维护 USD/cache 路径和 Hydra index 路径之间的映射。</span></li>
+        <li><span class="zh">`GetBasisCurvesTopology()`、`GetMeshTopology()` 类拓扑查询与 `GetIndexedPrimvar()`、primvar descriptors 一起构成几何数据输入路径。</span></li>
+        <li><span class="zh">`GetDisplayGuides()`、`GetDisplayProxy()`、`GetDisplayRender()` 与 `GetPurpose()` 相关接口用于 USD purpose/display filtering，不等同于 renderer backend 的 draw state。</span></li>
+        <li><span class="zh">`GetCurrentTimeSamplingInterval()` 与 `UsdTimeCode` 相关查询体现该 delegate 需要处理 animated values 和 time sampling；调试闪烁或延迟更新时要核对时间上下文。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 成像代理：</span><span class="en">UsdImagingDelegate</span></li>
+        <li><span class="zh">翻译层：</span><span class="en">translation layer</span></li>
+        <li><span class="zh">Hydra 核心：</span><span class="en">Hydra core</span></li>
+        <li><span class="zh">渲染索引：</span><span class="en">HdRenderIndex</span></li>
+        <li><span class="zh">路径映射：</span><span class="en">path conversion</span></li>
+        <li><span class="zh">用途过滤：</span><span class="en">purpose filtering</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

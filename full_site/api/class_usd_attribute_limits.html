@@ -75,6 +75,27 @@
         <li><span class="zh">硬限制：</span><span class="en">hard limits</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-142">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`UsdAttributeLimits` 用于读取和 author `UsdAttribute` 上 `limits` dictionary metadata 的某个 sub-dictionary。它把 minimum、maximum、soft limits、hard limits 等范围信息组织在 `UsdLimitsKeys-&gt;Minimum` 与 `UsdLimitsKeys-&gt;Maximum` 等 key 下。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdAttributeLimits while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`GetMinimum()`、`GetMaximum()`、`GetMinimumOr()` 与 `GetMaximumOr()` 用于读取范围值；带 `Or` 的版本可在没有 authored value 时提供 fallback。</span></li>
+        <li><span class="zh">`HasAuthoredMinimum()`、`HasAuthoredMaximum()` 与 `HasAuthored()` 用于判断是否存在 authored opinion，适合区分默认 fallback 与实际写入的限制。</span></li>
+        <li><span class="zh">`ClearMinimum()`、`ClearMaximum()` 与 `Clear()` 负责清除对应 metadata opinion；使用时应确认清除的是 soft/hard sub-dictionary 中哪一层限制。</span></li>
+        <li><span class="zh">`GetSubDictKey()` 表示当前对象操作的是 `limits` dictionary 里的哪一个 sub-dictionary，例如 soft limits 或 hard limits 的约定键。</span></li>
+        <li><span class="zh">`IsValid()` 与 `GetAttribute()` 帮助调用方确认 wrapper 是否绑定到有效 `UsdAttribute`；不要把 limits metadata 当成运行时数值 clamp 或物理约束求解器。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">属性限制：</span><span class="en">attribute limits</span></li>
+        <li><span class="zh">限制字典元数据：</span><span class="en">limits dictionary metadata</span></li>
+        <li><span class="zh">子字典：</span><span class="en">sub-dictionary</span></li>
+        <li><span class="zh">最小值：</span><span class="en">Minimum</span></li>
+        <li><span class="zh">最大值：</span><span class="en">Maximum</span></li>
+        <li><span class="zh">已写入意见：</span><span class="en">authored opinion</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

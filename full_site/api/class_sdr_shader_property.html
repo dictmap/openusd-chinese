@@ -75,6 +75,27 @@
         <li><span class="zh">属性元数据：</span><span class="en">SdrShaderPropertyMetadata</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-142">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`SdrShaderProperty` 表示 `SdrShaderNode` 中的一个 property，可以是 input 或 output。它必须有 name 和 type，也可以附带 default value、metadata、hints、options、label、help、page、shown-if 规则以及 connection compatibility 信息。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for SdrShaderProperty while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`GetType()` 与 `GetTypeAsSdfType()` 分别提供 shader registry 侧类型和 USD/Sdf 值类型视角；类型转换时要关注 `SdrSdfTypeIndicator`。</span></li>
+        <li><span class="zh">`GetDefaultValue()` 与 `GetDefaultValueAsSdfType()` 用于读取默认值，后者更适合需要与 USD authored value 对齐的工具链。</span></li>
+        <li><span class="zh">`GetMetadata()`、`GetMetadataObject()` 与 `SdrShaderPropertyMetadata` 承载 renderer/shader UI 或实现相关信息；旧的 `SdrTokenMap` metadata 已被标记为 deprecated。</span></li>
+        <li><span class="zh">`CanConnectTo()` 用于判断另一个 `SdrShaderProperty` 是否可连接，通常要同时考虑 input/output 方向、type compatibility 和 shader node 约定。</span></li>
+        <li><span class="zh">`GetHints()`、`GetOptions()`、`GetShownIf()`、`GetPage()` 与 `GetLabel()` 面向 UI/authoring 体验，帮助工具构建 shader 参数面板，而不是直接执行 shading computation。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">着色器属性：</span><span class="en">SdrShaderProperty</span></li>
+        <li><span class="zh">着色器节点：</span><span class="en">SdrShaderNode</span></li>
+        <li><span class="zh">默认值：</span><span class="en">default value</span></li>
+        <li><span class="zh">Sdr 元数据：</span><span class="en">SdrShaderPropertyMetadata</span></li>
+        <li><span class="zh">连接兼容性：</span><span class="en">CanConnectTo()</span></li>
+        <li><span class="zh">显示条件：</span><span class="en">shown-if</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

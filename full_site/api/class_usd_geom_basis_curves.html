@@ -75,6 +75,27 @@
         <li><span class="zh">primvar 插值：</span><span class="en">primvar interpolation</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-142">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`UsdGeomBasisCurves` 是 batched curve representation，类似 RIB 的 Basis/Curves 表达，常用于 hair、grass 等密集曲线集合。它通过 `curveVertexCounts`、basis、type、segment indexing 和 interpolation 规则描述多条曲线的数据布局。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdGeomBasisCurves while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`curveVertexCounts` 的长度隐式决定 prim 中有多少条 curves，每个元素给出对应 curve 的 vertex 数量；这直接影响 segment count 和数据尺寸计算。</span></li>
+        <li><span class="zh">`basis` attribute 对 cubic curves 有意义，配合 matrix 和 vstep 插值顶点；对 linear `BasisCurves` 通常不使用 basis。</span></li>
+        <li><span class="zh">`ComputeSegmentCounts()`、`ComputeUniformDataSize()`、`ComputeVaryingDataSize()` 与 `ComputeVertexDataSize()` 是理解 primvar interpolation 数据大小的关键 helper。</span></li>
+        <li><span class="zh">页面的 `Segment Indexing`、`Cubic Vertex Interpolation`、`Linear Vertex Interpolation` 和 `Primvar Interpolation` 小节应一起阅读，避免把 curve vertex、segment 和 primvar sample 混淆。</span></li>
+        <li><span class="zh">`Tubes and Ribbons` 说明曲线渲染形态；它影响渲染解释和宽度/法线相关数据，而不是改变 USD 中 curve topology 的基本定义。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">基函数曲线：</span><span class="en">BasisCurves</span></li>
+        <li><span class="zh">批量曲线表示：</span><span class="en">batched curve representation</span></li>
+        <li><span class="zh">曲线顶点计数：</span><span class="en">curveVertexCounts</span></li>
+        <li><span class="zh">线段索引：</span><span class="en">segment indexing</span></li>
+        <li><span class="zh">曲线基函数：</span><span class="en">basis</span></li>
+        <li><span class="zh">primvar 插值：</span><span class="en">primvar interpolation</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

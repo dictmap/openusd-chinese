@@ -75,6 +75,27 @@
         <li><span class="zh">关节系统：</span><span class="en">articulation</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-142">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`UsdPhysicsJoint` 表示约束 rigid bodies 运动的物理关节。它可以连接两个 rigid bodies，也可以连接一个 rigid body 与 world；默认 joint primitive 定义 D6 joint，三个 linear 和三个 angular degrees of freedom 初始均为 free。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdPhysicsJoint while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`CreateBody0Rel()` 与 `CreateBody1Rel()` author 两端 rigid body relationship；如果一端为空或指向 world，需要明确物理后端如何解释。</span></li>
+        <li><span class="zh">`CreateLocalPos0Attr()`、`CreateLocalPos1Attr()`、`CreateLocalRot0Attr()` 与 `CreateLocalRot1Attr()` 定义 joint frame 在两端 body 局部空间中的位置和旋转。</span></li>
+        <li><span class="zh">`CreateBreakForceAttr()` 与 `CreateBreakTorqueAttr()` 表示关节可断裂阈值；它们是 authoring metadata/attributes，具体求解行为由物理运行时解释。</span></li>
+        <li><span class="zh">`CreateCollisionEnabledAttr()` 控制 jointed bodies 之间是否允许碰撞；英文摘录提示默认行为是禁用相连物体之间的 collision。</span></li>
+        <li><span class="zh">`CreateExcludeFromArticulationAttr()` 和 `CreateJointEnabledAttr()` 分别影响 articulation 参与和关节启用状态，应与 physics schema、rigid body API 和模拟后端规则一起核对。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">物理关节：</span><span class="en">UsdPhysicsJoint</span></li>
+        <li><span class="zh">刚体：</span><span class="en">rigid body</span></li>
+        <li><span class="zh">D6 关节：</span><span class="en">D6 joint</span></li>
+        <li><span class="zh">局部关节坐标系：</span><span class="en">local joint frame</span></li>
+        <li><span class="zh">断裂力：</span><span class="en">break force</span></li>
+        <li><span class="zh">碰撞启用：</span><span class="en">collision enabled</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

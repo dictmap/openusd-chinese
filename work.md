@@ -3585,3 +3585,36 @@
 1. 继续最多 5 页，优先处理仍较薄且在质量队列内的 Esf、Trace、Tf、Vdf class 页面。
 2. 建议下一组：`full_site/api/class_esf_property_interface.html`、`full_site/api/class_trace_event_data.html`、`full_site/api/class_ef___lofted_output_set.html`、`full_site/api/class_tf_py_lock.html`、`full_site/api/class_vdf_test_utils_1_1_node.html`。
 3. 之后可继续 Vdf、Tf、Sdf、Hd、Usd 的高价值 class 页面，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+## 第 273 轮：UsdAttributeLimits、UsdGeomBasisCurves、UsdImagingDelegate、UsdPhysicsJoint 与 SdrShaderProperty 补强
+
+已完成：
+
+- 复核当前仓库、远端与审计基线：本地 `main` 基于上一轮同步提交 `f1a8e97`，`origin/main` 一致，起始工作区仅有本轮脚本待跟踪；全量仍为 406 个 HTML 页面，质量计数为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。
+- 新增并执行 `scripts/refine_openusd_release_batch_142.mjs`，本轮标记为 `api-class-quality-pass-142`。
+- 严格只精修 5 页：
+  - `full_site/api/class_usd_attribute_limits.html`
+  - `full_site/api/class_usd_geom_basis_curves.html`
+  - `full_site/api/class_usd_imaging_delegate.html`
+  - `full_site/api/class_usd_physics_joint.html`
+  - `full_site/api/class_sdr_shader_property.html`
+- 每页新增 5 条中文补强导读和 6 条术语对照；重点覆盖 `UsdAttributeLimits` 的 `UsdAttribute` limits dictionary metadata、`UsdLimitsKeys->Minimum` / `UsdLimitsKeys->Maximum`、`GetMinimumOr()` / `GetMaximumOr()`、`Clear*()` 与 `HasAuthored*()` 边界，`UsdGeomBasisCurves` 的 batched curve representation、`curveVertexCounts`、basis / wrap / cubic / linear interpolation、primvar data size 与 Tubes/Ribbons 表示，`UsdImagingDelegate` 的 Hydra core 到 USD scene graph 翻译层、path conversion、pending updates、display purpose 过滤、time sampling 和 topology/primvar 查询，`UsdPhysicsJoint` 的 body rel、local pos/rot、break force/torque、collisionEnabled、excludeFromArticulation 与 jointEnabled 语义，以及 `SdrShaderProperty` 的 shader input/output property、type/default/metadata/hints/options/shown-if、`CanConnectTo()` 和 `SdrShaderPropertyMetadata` 迁移说明；API 名称、类名、方法名、属性名、数学符号、template 参数、token 字面量和链接保持原样。
+- 质量回读：5 页均无 `TODO` / `待翻译` / `机器翻译占位`，`api-class-quality-pass-142` 均只出现 1 次：
+  - `class_usd_attribute_limits.html`：中文字符 801，中文/英文块 64/51。
+  - `class_usd_geom_basis_curves.html`：中文字符 808，中文/英文块 64/51。
+  - `class_usd_imaging_delegate.html`：中文字符 775，中文/英文块 64/51。
+  - `class_usd_physics_joint.html`：中文字符 810，中文/英文块 64/51。
+  - `class_sdr_shader_property.html`：中文字符 813，中文/英文块 64/51。
+- 分级变化：计数保持不变，仍为 `draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因是本轮对象开始前已属 `draft_needs_translation`，本轮是二次补强精修，不是从模板草稿晋级。
+- 验证结果：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1` 均已通过；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步记录：本轮复验通过后使用 `OpenUSD bilingual round 273: limits curves imaging physics sdr pass` 同步本轮 HTML、脚本、报告和 `work.md`；如果同步脚本失败，本轮不推送并先修复。
+
+当前差距：
+
+- 全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`；其中 387 页为 `draft_needs_translation`、11 页为 `draft_template_only`，`bilingual_draft` 仍不是完整翻译。
+- 剩余 `draft_template_only` 11 页基本是 `_source.html` 源码页、`search.html` 或目录页，继续低优先处理。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理仍较薄且用户会实际查阅的 UsdImaging / UsdSkel Imaging / HgiGL / Hdx class 页面。
+2. 建议下一组：`full_site/api/class_usd_imaging_adapter_registry.html`、`full_site/api/class_usd_skel_imaging_data_source_skeleton_prim.html`、`full_site/api/class_usd_imaging_nurbs_patch_adapter.html`、`full_site/api/class_hgi_g_l_graphics_cmds.html`、`full_site/api/class_hdx_pick_from_render_buffer_task.html`。
+3. 之后可继续 UsdImaging、UsdSkel Imaging、Hgi、Hdx、Hd、Sdf、Usd 的高价值 class 页面，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
