@@ -75,6 +75,27 @@
         <li><span class="zh">任务上下文数据：</span><span class="en">task context data</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-140">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`HdTask` 表示 Hydra render 期间要执行的一个 unit of work。开发者可以继承它来准备资源、执行 3D/2D render passes、运行 compositing/color correction，或协调应用与其他 renderer 的集成。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdTask while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Sync()` 从 `HdSceneDelegate` / `HdRenderIndex` 同步 task parameters 与 dirty state，是任务进入执行前的状态更新阶段。</span></li>
+        <li><span class="zh">`Prepare()` 用于在执行前准备资源或 task context；一些 task 会在此阶段填充共享数据，而不是直接渲染。</span></li>
+        <li><span class="zh">`Execute()` 是实际工作入口，可以发起 render pass、后处理或应用集成逻辑；具体行为由 subclass 决定。</span></li>
+        <li><span class="zh">`IsConverged()` 表示 task 是否达到稳定结果，progressive render 或依赖异步资源的 task 常用它向外报告完成状态。</span></li>
+        <li><span class="zh">`GetInitialDirtyBitsMask()`、`GetRenderTags()` 与 `_GetTaskContextData()` 说明 task 参与 Hydra dirty tracking、render tag 过滤和 task context 共享数据协议。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Hydra 任务：</span><span class="en">HdTask</span></li>
+        <li><span class="zh">工作单元：</span><span class="en">unit of work</span></li>
+        <li><span class="zh">同步阶段：</span><span class="en">Sync()</span></li>
+        <li><span class="zh">准备阶段：</span><span class="en">Prepare()</span></li>
+        <li><span class="zh">执行阶段：</span><span class="en">Execute()</span></li>
+        <li><span class="zh">收敛状态：</span><span class="en">IsConverged()</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

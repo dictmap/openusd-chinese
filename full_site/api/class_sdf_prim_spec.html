@@ -75,6 +75,27 @@
         <li><span class="zh">已写入 opinion：</span><span class="en">authored opinion</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-140">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`SdfPrimSpec` 表示 `SdfLayer` 中的 prim description；它由 layer namespace 内的 `SdfPath` 标识，并通过 name children、properties、variant selections、payloads、references、inherits、specializes 等字段描述一个 prim 在单层中的 authored opinions。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for SdfPrimSpec while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`SdfPrimSpec` 是 layer-level spec，不是 composed `UsdPrim`；它记录的是某个 layer 中直接 authored 的 prim 信息，composition 后的结果需要到 `UsdPrim` / `UsdStage` 层理解。</span></li>
+        <li><span class="zh">`New()` 与 `SdfCreatePrimInLayer()` 用于创建 root-level 或嵌套 prim specs；阅读创建 API 时应同时关注 containing `SdfLayer`、parent `SdfPrimSpec` 和路径层级。</span></li>
+        <li><span class="zh">`NameChildrenView`、`PropertySpecView`、`AttributeSpecView` 与 `RelationshipSpecView` 把 child prims 和 properties 作为 view 暴露，适合遍历，不等同于直接复制底层存储。</span></li>
+        <li><span class="zh">`ApplyNameChildrenOrder()` 与 `ApplyPropertyOrder()` 处理 authored ordering metadata；这影响列表展示和 namespace 顺序，而不是改变属性或子 prim 的语义内容。</span></li>
+        <li><span class="zh">`ClearActive()`、`ClearInstanceable()`、`ClearPayloadList()`、`ClearReferenceList()`、`BlockVariantSelection()` 等接口操作的是具体 opinion 或 list op，使用时要区分 clear、block 和 authored fallback。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">prim 描述：</span><span class="en">prim description</span></li>
+        <li><span class="zh">层级内路径：</span><span class="en">SdfPath</span></li>
+        <li><span class="zh">单层意见：</span><span class="en">layer opinion</span></li>
+        <li><span class="zh">子 prim 视图：</span><span class="en">NameChildrenView</span></li>
+        <li><span class="zh">属性规格视图：</span><span class="en">PropertySpecView</span></li>
+        <li><span class="zh">顺序元数据：</span><span class="en">ordering metadata</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

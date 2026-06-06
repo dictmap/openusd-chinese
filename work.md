@@ -3493,6 +3493,37 @@
 2. 建议下一组：`full_site/api/class_sdf_prim_spec.html`、`full_site/api/class_hd_st_render_pass_state.html`、`full_site/api/class_usd_shade_output.html`、`full_site/api/class_usd_geom_primvars_a_p_i.html`、`full_site/api/class_hd_task.html`。
 3. 之后可继续 Sdf、Hd、UsdGeom、UsdShade、Usd 的高价值 class 页面，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
 
+## 第 271 轮：SdfPrimSpec、HdStRenderPassState、UsdShadeOutput、UsdGeomPrimvarsAPI 与 HdTask 补强
+
+- 基线：本地 `main` 基于上一轮同步提交 `3c83cd9`，`origin/main` 一致，起始工作区干净；全量仍为 406 个 HTML 页面，质量计数为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。
+- 新增并执行 `scripts/refine_openusd_release_batch_140.mjs`，本轮标记为 `api-class-quality-pass-140`。
+- 严格只精修 5 页：
+  - `full_site/api/class_sdf_prim_spec.html`
+  - `full_site/api/class_hd_st_render_pass_state.html`
+  - `full_site/api/class_usd_shade_output.html`
+  - `full_site/api/class_usd_geom_primvars_a_p_i.html`
+  - `full_site/api/class_hd_task.html`
+- 每页新增 5 条中文补强导读和 6 条术语对照；重点覆盖 `SdfPrimSpec` 的 `SdfLayer` 中 prim description、`SdfPath`、layer opinion、child/property views、order metadata 与 list-op 类清理接口，`HdStRenderPassState` 的 GL states、uniforms、shaders、camera matrices、viewport、graphics pipeline hash 与 MSAA/AOV resolve，`UsdShadeOutput` 的 connectable attribute、`ConnectToSource()`、`CanConnect()`、source 清理、底层 `UsdAttribute` 与 Sdr metadata，`UsdGeomPrimvarsAPI` 的 `UsdGeomPrimvar`、indexed/non-indexed primvars、namespace inheritance、retrieval method 选择与 `primvars:` 命名空间，以及 `HdTask` 的 Hydra unit of work、`Sync()`、`Prepare()`、`Execute()`、`IsConverged()`、dirty bits 与 task context；API 名称、类名、方法名、属性名、数学符号、template 参数、token 字面量和链接保持原样。
+- 质量回读：5 页均无 `TODO` / `待翻译` / `机器翻译占位`，`api-class-quality-pass-140` 均只出现 1 次：
+  - `class_sdf_prim_spec.html`：中文字符 766，中文/英文块 64/51。
+  - `class_hd_st_render_pass_state.html`：中文字符 771，中文/英文块 59/46。
+  - `class_usd_shade_output.html`：中文字符 773，中文/英文块 64/51。
+  - `class_usd_geom_primvars_a_p_i.html`：中文字符 786，中文/英文块 64/51。
+  - `class_hd_task.html`：中文字符 799，中文/英文块 55/42。
+- 分级变化：计数保持不变，仍为 `draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因是本轮对象开始前已属 `draft_needs_translation`，本轮是二次补强精修，不是从模板草稿晋级。
+- 验证结果：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1` 均已通过；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步记录：本轮复验通过后使用 `OpenUSD bilingual round 271: sdf hd usdgeom shade task pass` 同步本轮 HTML、脚本、报告和 `work.md`；如果同步脚本失败，本轮不推送并先修复。
+
+当前差距：
+- 全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`；其中 387 页为 `draft_needs_translation`、11 页为 `draft_template_only`，`bilingual_draft` 仍不是完整翻译。
+- 剩余 `draft_template_only` 11 页基本是 `_source.html` 源码页、`search.html` 或目录页，继续低优先处理。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理仍较薄且用户会实际查阅的 UsdSchema/Pcp/Hd class 页面。
+2. 建议下一组：`full_site/api/class_usd_schema_registry.html`、`full_site/api/class_pcp_arc.html`、`full_site/api/class_hd_st_dispatch_buffer.html`、`full_site/api/class_hd_render_buffer.html`、`full_site/api/class_hd_scene_delegate.html`。
+3. 之后可继续 Usd、Sdf、Pcp、Hd、HdSt 的高价值 class 页面，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+
 ## 第 269 轮：VdfReadWriteAccessor、VdfGrapherOptions、VdfContext、SdfChildrenView 与 TfDenseHashMap 补强
 
 - 基线：本地 `main` 基于上一轮同步提交 `8d35c67`，`origin/main` 一致，起始工作区干净；全量仍为 406 个 HTML 页面，质量计数为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。

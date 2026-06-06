@@ -75,6 +75,27 @@
         <li><span class="zh">图形管线哈希：</span><span class="en">graphics pipeline hash</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-140">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`HdStRenderPassState` 保存 Hydra Storm render passes 之间共享的一组 rendering parameters。这些参数以 GL states、uniforms 或 shaders 表达，并在 `Prepare()`、`Bind()` 与 graphics pipeline hash 计算中影响一次 render pass 的具体执行状态。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdStRenderPassState while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`GetWorldToViewMatrix()`、`GetProjectionMatrix()`、`GetCullMatrix()` 与 `ComputeViewport()` 说明该类承载 camera/framing/viewport 相关状态，渲染调试时应先核对这些矩阵。</span></li>
+        <li><span class="zh">`SetLightingShader()`、`GetLightingShader()`、`SetRenderPassShader()` 与 `GetRenderPassShader()` 管理 shader 绑定，不应与 scene delegate 的材质解析职责混淆。</span></li>
+        <li><span class="zh">`GetClipPlanes()` 与 `SetCameraFramingState()` 影响裁剪和 framing；它们通常与 `HdCamera`、AOV resolve 和最终 viewport 输出一起分析。</span></li>
+        <li><span class="zh">`GetGraphicsPipelineHash()` 服务于 graphics pipeline state caching；任何影响 pipeline 的状态变更都可能导致不同 hash 和 pipeline 重建。</span></li>
+        <li><span class="zh">`SetResolveAovMultiSample()` 表示 MSAA/AOV resolve 控制路径；阅读时应把它与 render pass output、multi-sample attachment 和 Hgi backend capabilities 联系起来。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">渲染通道状态：</span><span class="en">render pass state</span></li>
+        <li><span class="zh">GL 状态：</span><span class="en">GL states</span></li>
+        <li><span class="zh">统一变量：</span><span class="en">uniforms</span></li>
+        <li><span class="zh">视口计算：</span><span class="en">ComputeViewport()</span></li>
+        <li><span class="zh">图形管线哈希：</span><span class="en">graphics pipeline hash</span></li>
+        <li><span class="zh">多重采样解析：</span><span class="en">multi-sample resolve</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -75,6 +75,27 @@
         <li><span class="zh">着色器图：</span><span class="en">shader graph</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-140">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`UsdShadeOutput` 封装 shader 或 node-graph output；它本质上是一个 connectable attribute，用来表示带类型、由外部计算的输出值。该类围绕 source connections、Sdr metadata 与底层 `UsdAttribute` 提供 shading graph 输出端 API。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdShadeOutput while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`ConnectToSource()` 的多个 overload 支持连接到 `UsdShadeInput`、`UsdShadeOutput`、`UsdShadeConnectableAPI` 或 source path；阅读时应核对 source type 与 edit target。</span></li>
+        <li><span class="zh">`CanConnect()` 用于在建立连接前检查 compatibility，尤其要关注 output/input 类型、connectable schema 和 source prim 的可见性。</span></li>
+        <li><span class="zh">`ClearSource()`、`ClearSources()` 与 `DisconnectSource()` 都会影响连接关系，但语义不同：clear 通常清除 authored opinion，disconnect 更偏写入断开连接的编辑。</span></li>
+        <li><span class="zh">`GetAttr()` 暴露底层 `UsdAttribute`，因此 metadata、time samples、value resolution 等通用属性行为仍按 `UsdAttribute` 规则解释。</span></li>
+        <li><span class="zh">`ClearSdrMetadata()` 与 `ClearSdrMetadataByKey()` 处理 shader registry metadata；不要把 Sdr metadata 与 USD authored output value 或 connection source 混为一谈。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">着色输出：</span><span class="en">UsdShadeOutput</span></li>
+        <li><span class="zh">可连接属性：</span><span class="en">connectable attribute</span></li>
+        <li><span class="zh">源连接：</span><span class="en">source connection</span></li>
+        <li><span class="zh">连接兼容性：</span><span class="en">CanConnect()</span></li>
+        <li><span class="zh">底层属性：</span><span class="en">UsdAttribute</span></li>
+        <li><span class="zh">Sdr 元数据：</span><span class="en">Sdr metadata</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

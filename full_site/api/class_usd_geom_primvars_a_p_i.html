@@ -75,6 +75,27 @@
         <li><span class="zh">继承：</span><span class="en">inheritance</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-140">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`UsdGeomPrimvarsAPI` 用于在几何 primitive 上创建、查询和继承 geometric primitive variables。Primvars 以 `UsdGeomPrimvar` 表示，可沿 primitive topology 插值、覆盖 shader inputs，并可沿 namespace 继承。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdGeomPrimvarsAPI while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`CreatePrimvar()`、`CreateIndexedPrimvar()` 与 `CreateNonIndexedPrimvar()` 的差别在于是否创建 indexed primvar，以及是否同时 author indices；创建路径比查询路径更直接。</span></li>
+        <li><span class="zh">页面的 `Which Method to Use to Retrieve Primvars` 是阅读重点：GUI 列表、authoring 查询、继承查询和单个 primvar 查找应使用不同方法。</span></li>
+        <li><span class="zh">`FindPrimvarsWithInheritance()`、`FindPrimvarWithInheritance()` 与 `FindIncrementallyInheritablePrimvars()` 涉及 namespace inheritance；不要只看当前 prim 的 authored properties。</span></li>
+        <li><span class="zh">`GetAuthoredPrimvars()` 与 `GetPrimvars()` 的差异在于 authored-only 与更广义可见 primvars 的范围；工具 UI 和导出器常需要明确选择。</span></li>
+        <li><span class="zh">`CanContainPropertyName()` 用于判断 property name 是否属于 `primvars:` namespace 规则；中文说明应保留 `primvars:` token 字面量，便于对应 USD 文件文本。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">几何 primvars API：</span><span class="en">UsdGeomPrimvarsAPI</span></li>
+        <li><span class="zh">几何原始变量：</span><span class="en">geometric primitive variables</span></li>
+        <li><span class="zh">索引 primvar：</span><span class="en">indexed primvar</span></li>
+        <li><span class="zh">非索引 primvar：</span><span class="en">non-indexed primvar</span></li>
+        <li><span class="zh">命名空间继承：</span><span class="en">namespace inheritance</span></li>
+        <li><span class="zh">primvars 命名空间：</span><span class="en">primvars:</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
