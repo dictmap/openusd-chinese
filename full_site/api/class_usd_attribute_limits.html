@@ -54,6 +54,27 @@
         <li><span class="zh">已编写的 limit：</span><span class="en">authored limit</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-133">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`UsdAttributeLimits` 为 `UsdAttribute` 上的 limits dictionary metadata 提供读写接口，用于表达某个 sub-dictionary 中的 minimum 和 maximum。它适合描述 soft limits、hard limits 或工具约定的数值边界，而不是属性当前值本身。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdAttributeLimits while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`GetMinimum()`、`GetMaximum()`、`SetMinimum()` 和 `SetMaximum()` 读写的是 limits metadata 中的边界值，不会直接 clamp 或修改 attribute value。</span></li>
+        <li><span class="zh">`UsdLimitsKeys-&gt;Minimum` 与 `UsdLimitsKeys-&gt;Maximum` 是底层 key；中文说明要保留这些 token / key 名称，便于和 metadata dictionary 对照。</span></li>
+        <li><span class="zh">`GetMinimumOr()`、`GetMaximumOr()` 和 `GetOr()` 提供默认值路径；这类接口适合消费端在未 authored limit 时提供 fallback。</span></li>
+        <li><span class="zh">`HasAuthoredMinimum()`、`HasAuthoredMaximum()` 与 `HasAuthored()` 用于区分是否真的写过 limit opinion；不要把不存在的 limit 和默认值混淆。</span></li>
+        <li><span class="zh">`ClearMinimum()`、`ClearMaximum()` 与 `Clear()` 清理 authored metadata；它们改变的是边界元数据，不是删除 attribute 或清空 time samples。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 属性限制元数据：</span><span class="en">UsdAttributeLimits</span></li>
+        <li><span class="zh">limits 字典：</span><span class="en">limits dictionary</span></li>
+        <li><span class="zh">最小值：</span><span class="en">minimum</span></li>
+        <li><span class="zh">最大值：</span><span class="en">maximum</span></li>
+        <li><span class="zh">软限制：</span><span class="en">soft limits</span></li>
+        <li><span class="zh">硬限制：</span><span class="en">hard limits</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

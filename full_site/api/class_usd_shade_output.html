@@ -54,6 +54,27 @@
         <li><span class="zh">Sdr metadata：</span><span class="en">Sdr metadata</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-133">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`UsdShadeOutput` 封装 shader 或 node-graph output，是带类型的 connectable attribute，用来表示外部计算出的输出值。它处在 `UsdShadeConnectableAPI` 连接语义和底层 `UsdAttribute` 访问语义之间。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdShadeOutput while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`ConnectToSource()` 的多个 overload 支持连接到 shader、node graph 或具体 output source；阅读时要保留 source path、source name 和 source type 的区别。</span></li>
+        <li><span class="zh">`CanConnect()` 用于判断连接合法性，但合法连接仍需结合 shader definition、Sdr metadata 和渲染端支持来解释。</span></li>
+        <li><span class="zh">`DisconnectSource()`、`ClearSource()` 与 `ClearSources()` 都与连接清理有关；区别在于清理单个 source、指定 source 还是全部 source。</span></li>
+        <li><span class="zh">`GetConnectedSource()`、`GetRawConnectedSourcePaths()` 和 `SourceInfoVector` 帮助从 authored connections 解析来源；不要把它们误认为直接求值 shader graph。</span></li>
+        <li><span class="zh">`GetAttr()` 暴露底层 `UsdAttribute`；这允许读取类型、metadata 和 authored value，但 `UsdShadeOutput` 的核心仍是 output 连接语义。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">UsdShade 输出端口：</span><span class="en">UsdShadeOutput</span></li>
+        <li><span class="zh">可连接属性：</span><span class="en">connectable attribute</span></li>
+        <li><span class="zh">连接到源：</span><span class="en">ConnectToSource</span></li>
+        <li><span class="zh">源类型：</span><span class="en">source type</span></li>
+        <li><span class="zh">Sdr 元数据：</span><span class="en">Sdr metadata</span></li>
+        <li><span class="zh">着色器图：</span><span class="en">shader graph</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

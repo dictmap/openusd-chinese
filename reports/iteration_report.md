@@ -6922,3 +6922,36 @@
 1. 继续最多 5 页，优先处理用户会实际引用的 Usd/UsdGeom/UsdShade/UsdPhysics class 页面。
 2. 建议下一组：`full_site/api/class_usd_stage_cache.html`、`full_site/api/class_usd_attribute_limits.html`、`full_site/api/class_usd_geom_basis_curves.html`、`full_site/api/class_usd_shade_output.html`、`full_site/api/class_usd_physics_joint.html`。
 3. 之后可继续 Usd/UsdGeom/UsdShade/UsdPhysics/Vt/Hd 的高价值 class 页面，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+
+## 第 264 轮：UsdStageCache、UsdAttributeLimits、UsdGeomBasisCurves、UsdShadeOutput 与 UsdPhysicsJoint 补强
+
+已完成：
+
+- 复核当前仓库、远端与审计基线：本地 `main` 基于上一轮同步提交 `3bb1b23`，`origin/main` 一致，起始工作区干净；全量仍为 406 个 HTML 页面，质量计数为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。
+- 新增并执行 `scripts/refine_openusd_release_batch_133.mjs`，本轮标记为 `api-class-quality-pass-133`。
+- 严格只精修 5 页：
+  - `full_site/api/class_usd_stage_cache.html`
+  - `full_site/api/class_usd_attribute_limits.html`
+  - `full_site/api/class_usd_geom_basis_curves.html`
+  - `full_site/api/class_usd_shade_output.html`
+  - `full_site/api/class_usd_physics_joint.html`
+- 每页新增 5 条中文补强导读和 6 条术语对照；重点覆盖 `UsdStageCache` 的 `UsdStageRefPtr`、`UsdStageCacheContext`、缓存查找、并发安全与 stage lifetime，`UsdAttributeLimits` 的 limits dictionary metadata、minimum/maximum、soft limits/hard limits 与 authored limit 判断，`UsdGeomBasisCurves` 的 batched curves、`curveVertexCounts`、basis、segment indexing、vertex/primvar interpolation 与 tubes/ribbons，`UsdShadeOutput` 的 connectable attribute、`ConnectToSource()`、source 清理、`SourceInfoVector` 与底层 `UsdAttribute` 边界，以及 `UsdPhysicsJoint` 的 rigid body 连接、D6 joint、local frames、break force/torque、collision 和 articulation 排除语义；API 名称、类名、方法名、属性名、数学符号、template 参数、token 字面量和链接保持原样。
+- 质量回读：5 页均无 `TODO` / `待翻译` / `机器翻译占位`，`api-class-quality-pass-133` 均只出现 1 次：
+  - `class_usd_stage_cache.html`：中文字符 693，中文/英文块 52/44。
+  - `class_usd_attribute_limits.html`：中文字符 622，中文/英文块 52/44。
+  - `class_usd_geom_basis_curves.html`：中文字符 620，中文/英文块 52/44。
+  - `class_usd_shade_output.html`：中文字符 601，中文/英文块 52/44。
+  - `class_usd_physics_joint.html`：中文字符 612，中文/英文块 52/44。
+- 本轮分级计数保持不变：`draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因：处理对象开始前已属 `draft_needs_translation`，本轮是二次补强精修，不是从模板草稿晋级。
+- 已运行并通过：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1`；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步结果：本轮验证通过后使用 `OpenUSD bilingual round 264: stage limits curves shade physics pass` 提交并推送，本轮 HTML、脚本、报告和 `work.md` 随提交同步。
+
+当前差距：
+- 全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`；其中 387 页为 `draft_needs_translation`、11 页为 `draft_template_only`，`bilingual_draft` 仍不是完整翻译。
+- 剩余 `draft_template_only` 11 页基本是 `_source.html` 源码页、`search.html` 或目录页，继续低优先处理。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理用户会实际引用的 Usd/Imaging/Sdr/Vt/Vdf class 页面。
+2. 建议下一组：`full_site/api/class_usd_validation_error.html`、`full_site/api/class_usd_imaging_delegate.html`、`full_site/api/class_sdr_shader_property.html`、`full_site/api/class_vt_value_ref.html`、`full_site/api/class_vdf_node.html`。
+3. 之后可继续 Usd/Imaging/Sdr/Vt/Vdf/Hd 的高价值 class 页面，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。

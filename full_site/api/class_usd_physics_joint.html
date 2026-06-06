@@ -54,6 +54,27 @@
         <li><span class="zh">关节链 / articulation：</span><span class="en">articulation</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-133">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`UsdPhysicsJoint` 用于约束 rigid bodies 的运动，可连接两个 rigid bodies，也可连接一个 rigid body 与 world。默认 joint primitive 表达 D6 joint，三个 linear 和三个 angular degrees of freedom 默认都是 free。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdPhysicsJoint while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`CreateBody0Rel()` 与 `CreateBody1Rel()` 指定 joint 连接两端；当只指定一个 body 时，另一端通常按 world 参照理解。</span></li>
+        <li><span class="zh">`CreateLocalPos0Attr()`、`CreateLocalRot0Attr()`、`CreateLocalPos1Attr()` 和 `CreateLocalRot1Attr()` 定义 joint frame 在两端 body 局部空间中的位置和旋转。</span></li>
+        <li><span class="zh">`CreateJointEnabledAttr()` 控制 joint 是否启用；`CreateCollisionEnabledAttr()` 控制被连接 bodies 之间是否允许 collision，二者职责不同。</span></li>
+        <li><span class="zh">`CreateBreakForceAttr()` 与 `CreateBreakTorqueAttr()` 用于表达断裂阈值；它们是 physics schema 属性，具体运行时行为仍依赖物理求解器实现。</span></li>
+        <li><span class="zh">`CreateExcludeFromArticulationAttr()` 表达是否从 articulation 中排除；阅读时应把 schema 声明、仿真求解器支持和运行时导入策略分开理解。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 物理关节：</span><span class="en">UsdPhysicsJoint</span></li>
+        <li><span class="zh">刚体：</span><span class="en">rigid body</span></li>
+        <li><span class="zh">六自由度关节：</span><span class="en">D6 joint</span></li>
+        <li><span class="zh">局部坐标系：</span><span class="en">local frame</span></li>
+        <li><span class="zh">断裂力阈值：</span><span class="en">break force</span></li>
+        <li><span class="zh">关节系统：</span><span class="en">articulation</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

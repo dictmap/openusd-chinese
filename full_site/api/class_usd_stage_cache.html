@@ -54,6 +54,27 @@
         <li><span class="zh">stage 复用：</span><span class="en">stage reuse</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-133">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`UsdStageCache` 是强并发安全的 `UsdStageRefPtr` 集合，用于让多个 clients 和 threads 共享已打开的 `UsdStage`。阅读本页时要把它理解为 stage 复用和发布机制，而不是 layer cache 或 asset resolver cache。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdStageCache while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdStageCacheContext` 是典型使用入口：绑定上下文后，`UsdStage::Open()` 可以在缓存中查找匹配 stage，或把新打开的 stage 发布到缓存。</span></li>
+        <li><span class="zh">`Find()`、`FindOneMatching()` 和 `FindAllMatching()` 负责按 root layer、session layer、resolver context 或 predicate 等条件定位缓存项；多个匹配时要明确选择策略。</span></li>
+        <li><span class="zh">`Contains()`、`GetAllStages()` 和 `GetId()` 帮助调试和枚举缓存内容；这些接口反映缓存持有的 stage 引用，不表示 stage 内容一定未变化。</span></li>
+        <li><span class="zh">`Erase()`、`EraseAll()` 与 `Clear()` 会移除缓存记录，但不会自动撤销所有外部 `UsdStageRefPtr`；只要其他引用仍存在，stage 对象仍可能存活。</span></li>
+        <li><span class="zh">并发安全不等于业务逻辑自动同步；多个线程共享同一 stage 时，仍需理解 stage mutation、notice、payload loading 和应用侧读写策略。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD stage 缓存：</span><span class="en">UsdStageCache</span></li>
+        <li><span class="zh">stage 引用指针：</span><span class="en">UsdStageRefPtr</span></li>
+        <li><span class="zh">stage 缓存上下文：</span><span class="en">UsdStageCacheContext</span></li>
+        <li><span class="zh">线程安全：</span><span class="en">thread safe</span></li>
+        <li><span class="zh">缓存查找：</span><span class="en">cache lookup</span></li>
+        <li><span class="zh">stage 生命周期：</span><span class="en">stage lifetime</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
