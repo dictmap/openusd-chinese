@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-06T12:35:07.675Z
+Generated: 2026-06-06T13:15:06.645Z
 
 ## Summary
 
@@ -41,24 +41,24 @@ Generated: 2026-06-06T12:35:07.675Z
 | 298 | draft_template_only | 64 | `full_site/release/search.html` | 搜索 / Search - Universal Scene Description 26.05 documentation |
 | 69 | draft_template_only | 66 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | API 页面草稿：hf Directory / hf Directory |
 | 208 | draft_needs_translation | 314 | `full_site/api/hierarchy.html` | API 页面草稿：Class Hierarchy / Class Hierarchy |
-| 201 | draft_needs_translation | 326 | `full_site/api/group__group__hd__collection_predicates.html` | API 页面草稿：Hydra Collection Predicate API / Hydra Collection Predicate API |
-| 219 | draft_needs_translation | 326 | `full_site/api/md_pxr_exec_exec_geom__r_e_a_d_m_e.html` | API 页面草稿：ExecGeom: Execution for UsdGeom / ExecGeom: Execution for UsdGeom |
-| 237 | draft_needs_translation | 326 | `full_site/api/page_ts_status.html` | API 页面草稿：USD Anim Project Status / USD Anim Project Status |
 | 236 | draft_needs_translation | 327 | `full_site/api/page_ts_regression.html` | API 页面草稿：Regressive Splines in USD / Regressive Splines in USD |
 | 257 | draft_needs_translation | 332 | `full_site/api/usd_2usd_2object_8h.html` | API 页面草稿：object.h File / object.h File |
 | 211 | draft_needs_translation | 333 | `full_site/api/inherits.html` | API 页面草稿：Class Hierarchy / Class Hierarchy |
-| 221 | draft_needs_translation | 333 | `full_site/api/md_pxr_exec_exec_usd__r_e_a_d_m_e.html` | API 页面草稿：ExecUsd: Execution system for Usd / ExecUsd: Execution system for Usd |
 | 217 | draft_needs_translation | 334 | `full_site/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html` | API 页面草稿：EsfUsd: Execution Scene Foundation for Usd / EsfUsd: Execution Scene Foundation for Usd |
 | 212 | draft_needs_translation | 336 | `full_site/api/journal_8h.html` | API 页面草稿：journal.h File / journal.h File |
 | 239 | draft_needs_translation | 336 | `full_site/api/pages.html` | API 页面草稿：Related Pages / Related Pages |
 | 248 | draft_needs_translation | 338 | `full_site/api/sparse_vectorized_input_traverser_8h.html` | API 页面草稿：sparseVectorizedInputTraverser.h File / sparseVectorizedInputTraverser.h File |
-| 218 | draft_needs_translation | 342 | `full_site/api/md_pxr_exec_exec__r_e_a_d_m_e.html` | API 页面草稿：Exec: Execution sytem core / Exec: Execution sytem core |
 | 220 | draft_needs_translation | 344 | `full_site/api/md_pxr_exec_exec_ir__r_e_a_d_m_e.html` | API 页面草稿：ExecIr: OpenExec implementation of invertible rigs / ExecIr: OpenExec implementation of invertible rigs |
 | 215 | draft_needs_translation | 345 | `full_site/api/md_pxr_exec_ef__r_e_a_d_m_e.html` | API 页面草稿：Ef: Execution Foundation / Ef: Execution Foundation |
 | 227 | draft_needs_translation | 345 | `full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html` | API 页面草稿：Usdview Black Box Testing / Usdview Black Box Testing |
 | 216 | draft_needs_translation | 349 | `full_site/api/md_pxr_exec_esf__r_e_a_d_m_e.html` | API 页面草稿：Esf: Execution Scene Foundation / Esf: Execution Scene Foundation |
 | 226 | draft_needs_translation | 351 | `full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html` | API 页面草稿：Development Practices For usdview / Development Practices For usdview |
 | 70 | draft_needs_translation | 352 | `full_site/api/executor_invalidation_data_8h.html` | API 页面草稿：executorInvalidationData.h File / executorInvalidationData.h File |
+| 66 | draft_needs_translation | 353 | `full_site/api/classpxr__tsl_1_1robin__map.html` | API 页面草稿：robin_map< Key, T, Hash, KeyEqual, Allocator, StoreHash, GrowthPolicy > Class Template / robin_map< Key, T, Hash, KeyEqual, Allocator, StoreHash, GrowthPolicy > Class Template |
+| 228 | draft_needs_translation | 361 | `full_site/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html` | API 页面草稿：Boolean Expressions / Boolean Expressions |
+| 65 | draft_needs_translation | 364 | `full_site/api/classpxr___c_l_i_1_1_c_l_i_1_1_app.html` | API 页面草稿：App Class / App Class |
+| 158 | draft_needs_translation | 371 | `full_site/api/functions_vars.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
+| 189 | draft_needs_translation | 371 | `full_site/api/globals_l.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
 
 ## All Pages
 
@@ -264,7 +264,7 @@ Generated: 2026-06-06T12:35:07.675Z
 | 198 | draft_needs_translation | bilingual_draft | 503 | 25/17 | 0 | 0 | `full_site/api/globals_w.html` |
 | 199 | draft_needs_translation | bilingual_draft | 678 | 25/17 | 0 | 0 | `full_site/api/globals.html` |
 | 200 | draft_needs_translation | bilingual_draft | 372 | 20/17 | 0 | 0 | `full_site/api/group__group___exec___attribute___comptuations.html` |
-| 201 | draft_needs_translation | bilingual_draft | 326 | 18/15 | 0 | 0 | `full_site/api/group__group__hd__collection_predicates.html` |
+| 201 | draft_needs_translation | bilingual_draft | 569 | 30/22 | 0 | 0 | `full_site/api/group__group__hd__collection_predicates.html` |
 | 202 | draft_needs_translation | bilingual_draft | 656 | 46/33 | 0 | 0 | `full_site/api/hd_embree_page_front.html` |
 | 203 | draft_needs_translation | bilingual_draft | 629 | 25/17 | 0 | 0 | `full_site/api/hd_page_front.html` |
 | 204 | draft_needs_translation | bilingual_draft | 565 | 26/18 | 0 | 0 | `full_site/api/hd_st_page_front.html` |
@@ -281,10 +281,10 @@ Generated: 2026-06-06T12:35:07.675Z
 | 215 | draft_needs_translation | bilingual_draft | 345 | 13/10 | 0 | 0 | `full_site/api/md_pxr_exec_ef__r_e_a_d_m_e.html` |
 | 216 | draft_needs_translation | bilingual_draft | 349 | 13/9 | 0 | 0 | `full_site/api/md_pxr_exec_esf__r_e_a_d_m_e.html` |
 | 217 | draft_needs_translation | bilingual_draft | 334 | 13/10 | 0 | 0 | `full_site/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html` |
-| 218 | draft_needs_translation | bilingual_draft | 342 | 13/9 | 0 | 0 | `full_site/api/md_pxr_exec_exec__r_e_a_d_m_e.html` |
-| 219 | draft_needs_translation | bilingual_draft | 326 | 13/9 | 0 | 0 | `full_site/api/md_pxr_exec_exec_geom__r_e_a_d_m_e.html` |
+| 218 | draft_needs_translation | bilingual_draft | 569 | 25/16 | 0 | 0 | `full_site/api/md_pxr_exec_exec__r_e_a_d_m_e.html` |
+| 219 | draft_needs_translation | bilingual_draft | 531 | 25/16 | 0 | 0 | `full_site/api/md_pxr_exec_exec_geom__r_e_a_d_m_e.html` |
 | 220 | draft_needs_translation | bilingual_draft | 344 | 13/9 | 0 | 0 | `full_site/api/md_pxr_exec_exec_ir__r_e_a_d_m_e.html` |
-| 221 | draft_needs_translation | bilingual_draft | 333 | 13/10 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd__r_e_a_d_m_e.html` |
+| 221 | draft_needs_translation | bilingual_draft | 524 | 25/17 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd__r_e_a_d_m_e.html` |
 | 222 | draft_needs_translation | bilingual_draft | 547 | 31/23 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd_docs_overview.html` |
 | 223 | draft_needs_translation | bilingual_draft | 594 | 33/25 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html` |
 | 224 | draft_needs_translation | bilingual_draft | 526 | 34/26 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html` |
@@ -300,7 +300,7 @@ Generated: 2026-06-06T12:35:07.675Z
 | 234 | draft_needs_translation | bilingual_draft | 552 | 25/17 | 0 | 0 | `full_site/api/namespaces.html` |
 | 235 | draft_needs_translation | bilingual_draft | 552 | 36/28 | 0 | 0 | `full_site/api/page__execution__system__design.html` |
 | 236 | draft_needs_translation | bilingual_draft | 327 | 25/22 | 0 | 0 | `full_site/api/page_ts_regression.html` |
-| 237 | draft_needs_translation | bilingual_draft | 326 | 29/26 | 0 | 0 | `full_site/api/page_ts_status.html` |
+| 237 | draft_needs_translation | bilingual_draft | 550 | 41/33 | 0 | 0 | `full_site/api/page_ts_status.html` |
 | 238 | draft_needs_translation | bilingual_draft | 531 | 25/17 | 0 | 0 | `full_site/api/page_ts_ts_test.html` |
 | 239 | draft_needs_translation | bilingual_draft | 336 | 13/10 | 0 | 0 | `full_site/api/pages.html` |
 | 240 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/parallel_speculation_executor_engine_8h_source.html` |

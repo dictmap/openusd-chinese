@@ -54,6 +54,27 @@
         <li><span class="zh">计算结果：</span><span class="en">computed result</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-165">
+      <h2>中文二次导读补强 / Chinese Second-Pass Reading Notes</h2>
+      <p class="zh">`md_pxr_exec_exec_geom__r_e_a_d_m_e.html` 是 `ExecGeom` 的入口页，说明 OpenExec 如何面向 `UsdGeom` 几何 schema 组织计算。阅读重点是几何输入、computed geometry values、xform/primvar/bounds 等数据依赖，而不是把它当成普通 `UsdGeom` authoring 教程。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for ExecGeom: Execution for UsdGeom while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`ExecGeom` 位于 execution system 与 `UsdGeom` 之间，关注如何从几何 schema 数据计算派生值；它不改变 `UsdGeomMesh`、`UsdGeomXformable` 或 primvar 的 authoring 规则。</span></li>
+        <li><span class="zh">几何计算常见输入包括 xform ops、points、normals、extent、primvars、purpose 和 visibility；中文层只解释依赖边界，不改写属性名或 token 字面量。</span></li>
+        <li><span class="zh">Bounds、transforms 或 geometry-derived values 出错时，应同时检查 authored `UsdGeom` 数据、time sample、dependency invalidation 与执行图缓存。</span></li>
+        <li><span class="zh">`ExecGeom` 与 `Gf`、`Vt` 也经常相邻出现：`Gf` 承载数学类型，`Vt` 承载数组和值容器，`ExecGeom` 组织对这些数据的计算消费。</span></li>
+        <li><span class="zh">本页适合和 `UsdGeom` 模块入口、OpenExec overview、tutorial1 结合阅读，帮助区分“几何 schema 数据是什么”和“如何基于它计算值”。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">几何执行：</span><span class="en">geometry execution</span></li>
+        <li><span class="zh">几何计算值：</span><span class="en">computed geometry value</span></li>
+        <li><span class="zh">变换依赖：</span><span class="en">transform dependency</span></li>
+        <li><span class="zh">primvar 输入：</span><span class="en">primvar input</span></li>
+        <li><span class="zh">边界计算：</span><span class="en">bounds computation</span></li>
+        <li><span class="zh">几何 schema：</span><span class="en">geometry schema</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

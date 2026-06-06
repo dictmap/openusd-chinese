@@ -54,6 +54,27 @@
         <li><span class="zh">多线程求值：</span><span class="en">multithreaded evaluation</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-165">
+      <h2>中文二次导读补强 / Chinese Second-Pass Reading Notes</h2>
+      <p class="zh">`md_pxr_exec_exec_usd__r_e_a_d_m_e.html` 是 `ExecUsd` 的 README 型入口页，说明 execution system 如何接入 USD stage、prim、attribute、schema 与 scene data。它是 OpenExec 与 USD 数据模型之间的桥接层，不是 USD composition 或 layer authoring 的替代说明。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for ExecUsd: Execution system for Usd while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`ExecUsd` 负责把 USD scene objects 暴露给执行系统，使 computation 可以读取 stage/prim/property/schema 相关输入；它依赖 USD 数据，但不重新定义 USD composition 规则。</span></li>
+        <li><span class="zh">读取本页时要分清 authored scene description 和 computed result：前者来自 layer/spec/opinion，后者由执行系统依据依赖关系求值。</span></li>
+        <li><span class="zh">Schema computation 与 `ExecUsd` 的交互通常涉及 schema discovery、provider binding、value key、input dependency 和 invalidation；这些术语应保留英文以便对照源码。</span></li>
+        <li><span class="zh">当 computed value 与 stage 当前状态不一致时，先检查 scene adapter、property path、time context、dependency tracking 和 cache invalidation，而不是只看最终 API 返回值。</span></li>
+        <li><span class="zh">`ExecUsd` 应和 `Exec` core、`EsfUsd`、OpenExec tutorials 串读；这样可以看清 USD 场景访问、抽象接口和执行核心之间的分工。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 执行桥接：</span><span class="en">USD execution bridge</span></li>
+        <li><span class="zh">场景对象：</span><span class="en">scene object</span></li>
+        <li><span class="zh">属性路径：</span><span class="en">property path</span></li>
+        <li><span class="zh">schema 发现：</span><span class="en">schema discovery</span></li>
+        <li><span class="zh">provider 绑定：</span><span class="en">provider binding</span></li>
+        <li><span class="zh">时间上下文：</span><span class="en">time context</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
