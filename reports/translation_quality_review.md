@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-06T22:52:26.767Z
+Generated: 2026-06-06T23:06:22.173Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 387
-- bilingual_complete: 19
+- bilingual_draft: 386
+- bilingual_complete: 20
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 376
-- good_bilingual: 19
+- draft_needs_translation: 375
+- good_bilingual: 20
 
 ## Current Focus Batch
 
@@ -98,7 +98,7 @@ Generated: 2026-06-06T22:52:26.767Z
 | 32 | good_bilingual | bilingual_complete | 883 | 48/50 | 0 | 0 | `full_site/api/class_sdf_path.html` |
 | 33 | draft_needs_translation | bilingual_draft | 691 | 64/51 | 0 | 0 | `full_site/api/class_sdf_prim_spec.html` |
 | 34 | draft_needs_translation | bilingual_draft | 789 | 58/45 | 0 | 0 | `full_site/api/class_sdf_usdz_file_format.html` |
-| 35 | draft_needs_translation | bilingual_draft | 738 | 64/51 | 0 | 0 | `full_site/api/class_sdr_shader_property.html` |
+| 35 | good_bilingual | bilingual_complete | 1039 | 49/51 | 0 | 0 | `full_site/api/class_sdr_shader_property.html` |
 | 36 | draft_needs_translation | bilingual_draft | 792 | 64/51 | 0 | 0 | `full_site/api/class_tf_dense_hash_map.html` |
 | 37 | draft_needs_translation | bilingual_draft | 589 | 39/31 | 0 | 0 | `full_site/api/class_tf_py_lock.html` |
 | 38 | good_bilingual | bilingual_complete | 980 | 47/49 | 0 | 0 | `full_site/api/class_tf_token.html` |

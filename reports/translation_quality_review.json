@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-06T22:52:26.767Z",
+  "generated_at": "2026-06-06T23:06:22.173Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 387,
-    "bilingual_complete": 19
+    "bilingual_draft": 386,
+    "bilingual_complete": 20
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 376,
-    "good_bilingual": 19
+    "draft_needs_translation": 375,
+    "good_bilingual": 20
   },
   "focus_batch": [
     {
@@ -1895,29 +1895,29 @@
     },
     {
       "index": 35,
-      "title": "类参考草稿：SdrShaderProperty Class / SdrShaderProperty Class",
+      "title": "完整双语参考：SdrShaderProperty Class / SdrShaderProperty Class",
       "output": "full_site/api/class_sdr_shader_property.html",
       "official_url": "https://openusd.org/release/api/class_sdr_shader_property.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 64,
+      "grade": "good_bilingual",
+      "zhBlockCount": 49,
       "enBlockCount": 51,
-      "zhChars": 738,
-      "enLetters": 2205,
-      "bodyChineseChars": 813,
+      "zhChars": 1039,
+      "enLetters": 3249,
+      "bodyChineseChars": 1092,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 SdrShaderProperty Class Reference 补充中文优先的类职责、读取重点、关键属性/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`SdrShaderProperty` 表示 `SdrShaderNode` 上的一个 property，可以是 input 或 output，用来描述 shader 节点接口中的类型、默认值、metadata 和连接能力。"
+        "本页已从草稿晋级为完整双语参考页。中文部分围绕官方 `SdrShaderProperty Class Reference` 的核心定义展开：它表示 `SdrShaderNode` 实例上的 input 或 output property，至少包含 name 与 type，并可携带 default value、metadata、UI hints、options、page、shown-if 规则和连接兼容性信息。英文 API 名称、类名、方法名、类型名、token、链接和必要原文摘录保持原样，便于与官方 Doxygen 页面核对。",
+        "`SdrShaderProperty` 解决的问题是：在 shader discovery registry 中用结构化对象描述一个 shader node 的接口，而不是执行 shading computation。它告诉工具和渲染集成“这个节点有哪些输入/输出、每个端口叫什么、类型是什么、默认值是什么、如何显示、能否与另一个端口连接”。因此它处在 shader definition、USD attribute authoring、节点图 UI 和 renderer plugin 之间的接口层。",
+        "官方原文强调 property 可以是 input 或 output，并且必须有 name 和 type。`GetName()` 给出稳定的 property 标识，通常用于 node graph、connection target 和 UI 查找；`GetLabel()` 则更偏向人类可读显示名称。不要把 label 当成稳定 API id，也不要把 implementation name、info string 或 UI label 混同为同一个概念。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, reading guidance, key attribute/method groups, and terminology for SdrShaderProperty Class Reference while retaining English page names, class names, method names, attribute names, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page has been promoted to a complete bilingual reference. The Chinese coverage explains `SdrShaderProperty` as an input or output property on an `SdrShaderNode`, including name/type, default values, metadata, UI hints, options, shown-if rules, and connection compatibility while preserving English API names and excerpts.",
+        "`SdrShaderProperty` describes a shader-node interface in the shader discovery registry. It does not execute shading; it exposes names, types, defaults, display metadata, and connection compatibility for node-graph and renderer integration."
       ]
     },
     {

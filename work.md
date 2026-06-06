@@ -5089,3 +5089,47 @@
 1. 继续真实晋级，不再刷 count-neutral 导读补强。
 2. 下一批优先核心页面：`full_site/api/class_sdr_shader_property.html` 或其他 406 清单内高价值核心 API 页。
 3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。
+
+## 第 314 轮：将 SdrShaderProperty 提升为完整双语
+已完成：
+
+- 将 `full_site/api/class_sdr_shader_property.html` 从 `bilingual_draft` 晋级为 `bilingual_complete`。
+- 页面标题改为“完整双语参考：SdrShaderProperty Class”，并移除通用 draft 说明和“后续迭代会继续补齐”等草稿标记。
+- 新增 `逐段双语理解 / Paragraph-Level Bilingual Coverage` 区块，覆盖：
+  - `SdrShaderProperty` 作为 `SdrShaderNode` 上 input/output property 的接口描述对象，而不是 shading computation 执行对象。
+  - `GetName()`、`GetLabel()`、`GetImplementationName()` 和 `GetInfoString()` 之间的稳定标识、UI 显示和实现侧诊断边界。
+  - `GetType()`、`GetTypeAsSdfType()`、`SdrSdfTypeIndicator` 与 `SdfValueTypeName` 的类型转换语义。
+  - `GetDefaultValue()` 与 `GetDefaultValueAsSdfType()` 的默认值读取和 USD authored value 边界。
+  - `GetArraySize()`、`GetTupleSize()` 对 scalar/tuple/array UI 和 authoring 形状的补充。
+  - `GetMetadata()` 的 deprecated `SdrTokenMap` 路径，以及 `GetMetadataObject()` / `SdrShaderPropertyMetadata` 的新路径。
+  - `GetHelp()`、`GetHints()`、`GetOptions()`、`GetPage()`、`GetShownIf()` 的 UI/authoring 用途。
+  - `CanConnectTo()` 的 input/output、type compatibility、shape、source type、render context 与 renderer 支持边界。
+- 更新 `reports/bilingual_completion_promotions.json/md`，新增 `round-314-sdr-shader-property`。
+- 更新 `reports/current_problem_audit.md/json`，将真实状态同步为 20 complete / 386 draft。
+- 重建 `openusd_bilingual_final.html`，总入口现在显示 20 complete / 386 incomplete drafts。
+
+分级变化：
+- `good_bilingual`：19 -> 20
+- `bilingual_complete`：19 -> 20
+- `bilingual_draft`：387 -> 386
+- `draft_needs_translation`：376 -> 375
+- `draft_template_only`：11 保持不变
+
+验证结果：
+- `discover_openusd_all_pages.mjs` 通过，范围稳定为 406，`promoted_complete_pages=12`。
+- `audit_openusd_translation_quality.mjs` 通过，确认 `good_bilingual=20`，目标页为 `grade=good_bilingual`。
+- `route_openusd_internal_links_local.mjs` 通过。
+- `audit_openusd_full_draft_preview.mjs` 通过，386/386 draft 页面可预览。
+- `audit_openusd_report_index.mjs` 通过。
+- `validate_openusd_api_repro.ps1` 通过，`required_check_count=288`，`failed_check_count=0`。
+- `reports/validation_report.json` 经 Node 解析确认 `bom=false`。
+
+当前差距：
+- 仍有 386 个 `bilingual_draft` 页面只是可检查草稿，不是完整翻译，其中 375 个仍为 `draft_needs_translation`。
+- 406 清单外的 Doxygen 目标仍会进入本地未覆盖占位页；这是当前 P1 浏览缺口。
+
+下一步目标：
+
+1. 继续真实晋级，不再刷 count-neutral 导读补强。
+2. 下一批优先核心页面：`full_site/api/class_vt_value_ref.html` 或其他 406 清单内高价值核心 API 页。
+3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。

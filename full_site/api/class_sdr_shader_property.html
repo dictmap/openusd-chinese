@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：SdrShaderProperty Class / SdrShaderProperty Class</title>
+  <title>完整双语参考：SdrShaderProperty Class / SdrShaderProperty Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,76 +24,51 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：SdrShaderProperty Class / SdrShaderProperty Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：SdrShaderProperty Class / SdrShaderProperty Class</h1>
     <div class="meta">https://openusd.org/release/api/class_sdr_shader_property.html</div>
   </header>
   <main>
     <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <h2>完成说明 / Completion Note</h2>
+      <p class="zh">本页已从草稿晋级为完整双语参考页。中文部分围绕官方 `SdrShaderProperty Class Reference` 的核心定义展开：它表示 `SdrShaderNode` 实例上的 input 或 output property，至少包含 name 与 type，并可携带 default value、metadata、UI hints、options、page、shown-if 规则和连接兼容性信息。英文 API 名称、类名、方法名、类型名、token、链接和必要原文摘录保持原样，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This page has been promoted to a complete bilingual reference. The Chinese coverage explains `SdrShaderProperty` as an input or output property on an `SdrShaderNode`, including name/type, default values, metadata, UI hints, options, shown-if rules, and connection compatibility while preserving English API names and excerpts.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-042">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 SdrShaderProperty Class Reference 补充中文优先的类职责、读取重点、关键属性/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, key attribute/method groups, and terminology for SdrShaderProperty Class Reference while retaining English page names, class names, method names, attribute names, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`SdrShaderProperty` 表示 `SdrShaderNode` 上的一个 property，可以是 input 或 output，用来描述 shader 节点接口中的类型、默认值、metadata 和连接能力。</span></li>
-        <li><span class="zh">英文摘录强调 property 必须有 name 与 type，也可以携带更多 metadata；`CanConnectTo()` 则用于判断另一个 `SdrShaderProperty` 是否可以连接到当前 property。</span></li>
-        <li><span class="zh">`GetDefaultValue()`、`GetDefaultValueAsSdfType()`、`GetArraySize()` 和 `GetTypeAsSdfType()` 是读取值类型与默认值转换的重点方法，适合与 USD/Sdf 类型系统对照阅读。</span></li>
-        <li><span class="zh">`GetHelp()`、`GetHints()`、`GetLabel()`、`GetMetadata()` 和 `GetInfoString()` 面向 UI、文档和 renderer/plugin 集成；它们不是计算 shader 输出，而是描述接口元数据。</span></li>
-        <li><span class="zh">页面提到 `SdrTokenMap` metadata 已弃用并推荐 `SdrShaderPropertyMetadata`；后续维护材质节点描述时应优先使用新的 metadata 枚举/键。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">SdrShaderProperty：</span><span class="en">SdrShaderProperty</span></li>
-        <li><span class="zh">SdrShaderNode：</span><span class="en">SdrShaderNode</span></li>
-        <li><span class="zh">输入或输出：</span><span class="en">input or output</span></li>
-        <li><span class="zh">元数据：</span><span class="en">metadata</span></li>
-        <li><span class="zh">可连接性：</span><span class="en">connectability</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-134">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`SdrShaderProperty` 表示 `SdrShaderNode` 上的一个输入或输出 property。它至少包含 name 和 type，并可以携带 default value、label、help、options、page、hints、shownIf 与 metadata，供 shader discovery、UI 和连接检查共同使用。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for SdrShaderProperty while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`GetName()`、`GetType()`、`GetDefaultValue()` 和 `GetDefaultValueAsSdfType()` 是读取 shader property 基本语义的入口；Sdf 类型转换对 USD attribute authoring 很关键。</span></li>
-        <li><span class="zh">`GetOptions()`、`GetHints()`、`GetPage()`、`GetShownIf()`、`GetLabel()` 和 `GetHelp()` 面向用户界面和节点编辑器，通常来自 shader definition 或 discovery metadata。</span></li>
-        <li><span class="zh">`CanConnectTo()` 用于判断两个 `SdrShaderProperty` 是否可连接；实际图连接还要结合 node graph、source type、render context 和 renderer 支持能力。</span></li>
-        <li><span class="zh">`GetMetadata()` 返回旧式 `SdrTokenMap`，页面说明该路径已被 `SdrShaderPropertyMetadata` 取代；新代码应优先使用 metadata object 语义。</span></li>
-        <li><span class="zh">`GetImplementationName()` 与 `GetInfoString()` 适合把 UI 名称、实现侧名称和诊断信息分开处理，避免把展示 label 当成稳定 API 标识。</span></li>
-      </ul>
+    <section data-cn-complete="sdr-shader-property-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`SdrShaderProperty` 解决的问题是：在 shader discovery registry 中用结构化对象描述一个 shader node 的接口，而不是执行 shading computation。它告诉工具和渲染集成“这个节点有哪些输入/输出、每个端口叫什么、类型是什么、默认值是什么、如何显示、能否与另一个端口连接”。因此它处在 shader definition、USD attribute authoring、节点图 UI 和 renderer plugin 之间的接口层。</p>
+      <p class="en">`SdrShaderProperty` describes a shader-node interface in the shader discovery registry. It does not execute shading; it exposes names, types, defaults, display metadata, and connection compatibility for node-graph and renderer integration.</p>
+      <p class="zh">官方原文强调 property 可以是 input 或 output，并且必须有 name 和 type。`GetName()` 给出稳定的 property 标识，通常用于 node graph、connection target 和 UI 查找；`GetLabel()` 则更偏向人类可读显示名称。不要把 label 当成稳定 API id，也不要把 implementation name、info string 或 UI label 混同为同一个概念。</p>
+      <p class="en">The official definition says a property is an input or output and must have a name and type. `GetName()` is the stable interface identifier, while `GetLabel()` is display-oriented and should not be treated as the stable API key.</p>
+      <p class="zh">`GetType()` 与 `GetTypeAsSdfType()` 体现 shader registry 类型和 USD/Sdf 值类型之间的边界。registry 侧类型可能来自 shader definition 或 renderer-specific 类型系统，而 `GetTypeAsSdfType()` 把它转换为更适合 USD attribute authoring 的 `SdfValueTypeName` 视角；转换时还要关注 `SdrSdfTypeIndicator`，因为 array、matrix、asset、token 等类型在 UI、USD 和 renderer 之间可能有不同约定。</p>
+      <p class="en">`GetType()` reports the shader-registry type, while `GetTypeAsSdfType()` converts that information into an `SdfValueTypeName`-oriented view for USD authoring. `SdrSdfTypeIndicator` matters when registry and Sdf type semantics differ.</p>
+      <p class="zh">`GetDefaultValue()` 与 `GetDefaultValueAsSdfType()` 是默认值读取的核心方法。前者保留 registry/discovery 侧的默认值表示，后者更适合需要写入 USD 或与 authored value 对齐的工具链。常见误读是把 default value 当作用户已经 authored 的值；实际上默认值描述的是 shader property 的接口默认行为，是否写入 layer、是否覆盖、是否参与 composition 还要看具体 authoring 工具。</p>
+      <p class="en">`GetDefaultValue()` preserves the registry-side default representation, while `GetDefaultValueAsSdfType()` is more useful for USD-authored values. A default value is interface metadata, not proof that the value has been authored into a layer.</p>
+      <p class="zh">`GetArraySize()` 和 `GetTupleSize()` 用来补充类型形状信息。它们帮助工具区分标量、固定长度 tuple、数组属性和 UI 控件布局，但不等同于运行时 shader 参数缓冲区的实际内存布局。构建材质编辑器时，应把 name/type/default/array size/tuple size 组合起来生成控件，而不是只看 type 字符串。</p>
+      <p class="en">`GetArraySize()` and `GetTupleSize()` add shape information used by UI and authoring tools. They should be interpreted together with name, type, and default values rather than as renderer memory layout.</p>
+      <p class="zh">metadata 相关方法需要特别区分新旧路径。`GetMetadata()` 返回旧式 `SdrTokenMap`，官方说明它已 deprecated；新代码应优先使用 `GetMetadataObject()` 与 `SdrShaderPropertyMetadata`。metadata、hints、options、page、shown-if 规则主要服务 shader discovery、UI 分组、条件显示和 renderer/plugin 集成，而不是直接改变 shading 结果。</p>
+      <p class="en">Metadata access has an old and new path. `GetMetadata()` returns deprecated `SdrTokenMap` metadata, while `GetMetadataObject()` and `SdrShaderPropertyMetadata` are the preferred direction for newer code.</p>
+      <p class="zh">`GetHelp()`、`GetHints()`、`GetOptions()`、`GetPage()`、`GetShownIf()` 和 `GetLabel()` 面向 authoring/UI 体验。它们可以告诉节点编辑器如何分组参数、如何给用户展示帮助文本、哪些选项可选、在什么条件下显示某个控件。它们不是 shader evaluation，也不是 USD composition 规则；如果 UI 与 renderer 行为不一致，应分别检查 discovery metadata、USD authored values 和 renderer implementation。</p>
+      <p class="en">`GetHelp()`, `GetHints()`, `GetOptions()`, `GetPage()`, `GetShownIf()`, and `GetLabel()` support authoring and UI behavior. They do not evaluate shaders and do not define USD composition semantics.</p>
+      <p class="zh">`CanConnectTo()` 是本页连接语义的核心：它判断另一个 `SdrShaderProperty` 是否可以连接到当前 property。这个判断通常需要考虑 input/output 方向、type compatibility、array/tuple 形状、renderer 或 source type 约定，以及 node graph 所处的 render context。它只能回答 property 层面的兼容性，不代表完整材质网络一定能在目标 renderer 中成功编译。</p>
+      <p class="en">`CanConnectTo()` checks whether another `SdrShaderProperty` can connect to this property. The decision involves direction, type compatibility, shape, source type, render context, and renderer conventions, but does not guarantee full material-network compilation.</p>
+      <p class="zh">`GetImplementationName()` 与 `GetInfoString()` 适合诊断和实现层映射。implementation name 可与 renderer/plugin 内部参数名关联，info string 可用于调试或显示补充信息；两者都不应替代 `GetName()` 作为稳定接口标识。维护跨渲染器 shader definition 时，必须区分 stable property name、UI label、implementation-side name 和 metadata field。</p>
+      <p class="en">`GetImplementationName()` and `GetInfoString()` are useful for implementation mapping and diagnostics. They should not replace `GetName()` as the stable interface identifier.</p>
+      <p class="zh">`SdrShaderProperty` 与相邻类型的边界是：`SdrShaderNode` 表示整个 shader node，`SdrShaderProperty` 表示 node 上的单个端口或参数，`SdrShaderPropertyMetadata` 表示该 property 的结构化元数据，`SdfValueTypeName` 是 USD/Sdf authoring 侧的值类型视角。把这些层次分清，才能避免把 shader registry 的发现结果、USD layer 中的 authored value 和 renderer 运行时参数混为一谈。</p>
+      <p class="en">The boundary is: `SdrShaderNode` represents the whole node, `SdrShaderProperty` represents one port or parameter, `SdrShaderPropertyMetadata` stores structured metadata, and `SdfValueTypeName` is the USD/Sdf authoring type view.</p>
+      <p class="zh">常见误读包括：把 `GetDefaultValue()` 当成已经写入 USD 的 authored value；继续依赖 deprecated `SdrTokenMap` metadata；用 label 或 help 文本当稳定标识；只凭 type 字符串判断连接合法；或把 property metadata 当作 shader 执行结果。正确理解是：`SdrShaderProperty` 是 shader 节点接口描述对象，服务 discovery、authoring、UI、连接检查和 renderer integration。</p>
+      <p class="en">Common misreads include treating defaults as authored USD values, relying on deprecated `SdrTokenMap` metadata, using labels as stable identifiers, checking only type strings for connections, or confusing property metadata with shader evaluation results.</p>
       <h3>术语对照 / Terms</h3>
       <ul>
         <li><span class="zh">着色器属性：</span><span class="en">SdrShaderProperty</span></li>
         <li><span class="zh">着色器节点：</span><span class="en">SdrShaderNode</span></li>
+        <li><span class="zh">输入 / 输出：</span><span class="en">input / output</span></li>
         <li><span class="zh">默认值：</span><span class="en">default value</span></li>
-        <li><span class="zh">Sdf 类型：</span><span class="en">Sdf type</span></li>
-        <li><span class="zh">连接兼容性：</span><span class="en">connection compatibility</span></li>
+        <li><span class="zh">Sdf 类型视角：</span><span class="en">Sdf value type view</span></li>
         <li><span class="zh">属性元数据：</span><span class="en">SdrShaderPropertyMetadata</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-142">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`SdrShaderProperty` 表示 `SdrShaderNode` 中的一个 property，可以是 input 或 output。它必须有 name 和 type，也可以附带 default value、metadata、hints、options、label、help、page、shown-if 规则以及 connection compatibility 信息。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for SdrShaderProperty while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`GetType()` 与 `GetTypeAsSdfType()` 分别提供 shader registry 侧类型和 USD/Sdf 值类型视角；类型转换时要关注 `SdrSdfTypeIndicator`。</span></li>
-        <li><span class="zh">`GetDefaultValue()` 与 `GetDefaultValueAsSdfType()` 用于读取默认值，后者更适合需要与 USD authored value 对齐的工具链。</span></li>
-        <li><span class="zh">`GetMetadata()`、`GetMetadataObject()` 与 `SdrShaderPropertyMetadata` 承载 renderer/shader UI 或实现相关信息；旧的 `SdrTokenMap` metadata 已被标记为 deprecated。</span></li>
-        <li><span class="zh">`CanConnectTo()` 用于判断另一个 `SdrShaderProperty` 是否可连接，通常要同时考虑 input/output 方向、type compatibility 和 shader node 约定。</span></li>
-        <li><span class="zh">`GetHints()`、`GetOptions()`、`GetShownIf()`、`GetPage()` 与 `GetLabel()` 面向 UI/authoring 体验，帮助工具构建 shader 参数面板，而不是直接执行 shading computation。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">着色器属性：</span><span class="en">SdrShaderProperty</span></li>
-        <li><span class="zh">着色器节点：</span><span class="en">SdrShaderNode</span></li>
-        <li><span class="zh">默认值：</span><span class="en">default value</span></li>
-        <li><span class="zh">Sdr 元数据：</span><span class="en">SdrShaderPropertyMetadata</span></li>
-        <li><span class="zh">连接兼容性：</span><span class="en">CanConnectTo()</span></li>
-        <li><span class="zh">显示条件：</span><span class="en">shown-if</span></li>
+        <li><span class="zh">旧式元数据映射：</span><span class="en">SdrTokenMap metadata</span></li>
+        <li><span class="zh">连接兼容性：</span><span class="en">connection compatibility</span></li>
+        <li><span class="zh">条件显示：</span><span class="en">shown-if rules</span></li>
       </ul>
     </section>
     <section>
