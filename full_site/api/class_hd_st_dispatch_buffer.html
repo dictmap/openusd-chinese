@@ -75,6 +75,27 @@
         <li><span class="zh">命令布局：</span><span class="en">command layout</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-141">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`HdStDispatchBuffer` 是 Storm backend 中用于 indirect dispatch 的 unsigned integer VBO。它把简单 `uint` array 组织成可供 `MultiDrawIndirect` 或 `DispatchComputeIndirect` 消费的 GPU-side command/data buffer，并通过 `BufferResourceView` 提供多种 shader binding view。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdStDispatchBuffer while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`AddBufferResourceView()` 在同一 uint array 上定义额外 resource view；这些 view 会被 `HdBufferArray` 聚合，并由 `HdResourceBinder` 按 binding method 和 interleaved offset 绑定。</span></li>
+        <li><span class="zh">`CopyData()`、`Reallocate()` 与 `GarbageCollect()` 体现该 buffer 的 GPU resource 生命周期管理，调试时要区分数据复制、容量重分配和废弃资源清理。</span></li>
+        <li><span class="zh">`GetCommandNumUints()` 与 `GetCount()` 用于解释 indirect command layout 和当前命令数量；错误的 uint stride 或 count 会直接导致 dispatch/draw 参数错位。</span></li>
+        <li><span class="zh">`GetResource()`、`GetResources()` 与 `GetEntireResource()` 暴露不同粒度的 `HdStBufferResource` 视图，适合排查 shader 读到的数据范围。</span></li>
+        <li><span class="zh">该类服务 Storm 内部渲染后端，不是 USD 场景层 buffer；中文说明应保留 VBO、indirect dispatch、MultiDrawIndirect、DispatchComputeIndirect 等英文术语。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">调度缓冲：</span><span class="en">dispatch buffer</span></li>
+        <li><span class="zh">无符号整数 VBO：</span><span class="en">unsigned integer VBO</span></li>
+        <li><span class="zh">间接调度：</span><span class="en">indirect dispatch</span></li>
+        <li><span class="zh">缓冲资源视图：</span><span class="en">BufferResourceView</span></li>
+        <li><span class="zh">命令整数数量：</span><span class="en">GetCommandNumUints()</span></li>
+        <li><span class="zh">资源绑定器：</span><span class="en">HdResourceBinder</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

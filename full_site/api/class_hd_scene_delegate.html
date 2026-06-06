@@ -75,6 +75,27 @@
         <li><span class="zh">场景索引管线：</span><span class="en">scene index pipeline</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-141">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`HdSceneDelegate` 是 Hydra render index 与 client scene graph 之间的数据交换 adapter。它通过大量 `Get*` 方法按需提供 topology、primvars、instancing、camera、material、display style、categories、coordSys bindings 和 ext computation 信息。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdSceneDelegate while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Get()` 是通用 value 查询入口，返回 `VtValue`；具体语义由 key/token 和 prim path 决定，调用方通常需要知道请求的数据源约定。</span></li>
+        <li><span class="zh">`GetBasisCurvesTopology()`、`GetIndexedPrimvar()`、`GetExtent()` 与相关 topology/primvar 方法把客户端几何数据翻译给 Hydra，用于 render index 同步。</span></li>
+        <li><span class="zh">`GetInstancerId()`、`GetInstancerPrototypes()`、`GetInstanceIndices()` 与 instance category 方法负责 instancing 数据交换，调试实例化时要同时核对 prototype 与 indices。</span></li>
+        <li><span class="zh">`GetCameraParamValue()`、`GetDisplayStyle()`、`GetCullStyle()`、`GetDoubleSided()` 等方法提供渲染状态或可视化属性，不应与 renderer backend 的 GPU state 混淆。</span></li>
+        <li><span class="zh">`GetExtComputation*()` 系列说明 scene delegate 也承担 ext computation 输入、输出、kernel 和 primvar descriptor 的传递职责，是计算数据进入 Hydra 的一条路径。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">场景代理：</span><span class="en">HdSceneDelegate</span></li>
+        <li><span class="zh">客户端场景图：</span><span class="en">client scene graph</span></li>
+        <li><span class="zh">渲染索引：</span><span class="en">HdRenderIndex</span></li>
+        <li><span class="zh">拓扑查询：</span><span class="en">topology query</span></li>
+        <li><span class="zh">实例化数据：</span><span class="en">instancing data</span></li>
+        <li><span class="zh">外部计算：</span><span class="en">ext computation</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

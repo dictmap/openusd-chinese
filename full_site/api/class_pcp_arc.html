@@ -75,6 +75,27 @@
         <li><span class="zh">命名空间深度：</span><span class="en">namespaceDepth</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-141">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`PcpArc` 表示 prim index 中连接两个 nodes 的 composition arc。该 arc 由 source node 拥有，并指向 index 中的 parent/target node，用来描述 reference、inherit、specialize、variant 等 composition relationship 在 prim index graph 中的边。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for PcpArc while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`type` 保存 `PcpArcType`，用于区分 arc 的 composition 语义；调试 prim index 时应先看 arc type，再看 path mapping 和 source/target node。</span></li>
+        <li><span class="zh">`parent` 指向目标 parent node，`origin` 记录 arc 的 origin 信息，二者帮助解释一条边是由哪一个 composition site 产生并连接到哪里。</span></li>
+        <li><span class="zh">`mapToParent` 是 `PcpMapExpression`，描述 source namespace 到 parent namespace 的路径映射；它是理解 payload/reference 路径重定位的关键字段。</span></li>
+        <li><span class="zh">`namespaceDepth` 与 `siblingNumAtOrigin` 支持 namespace 层级和 sibling ordering 分析，常用于稳定遍历或诊断 composition graph。</span></li>
+        <li><span class="zh">该类是低层组合图数据结构，不是 USD layer 中的 authored arc 本身；中文导读应保留 `prim index`、`PcpNodeRef`、`PcpMapExpression` 和 `PcpArcType` 原名。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">组合弧：</span><span class="en">PcpArc</span></li>
+        <li><span class="zh">主对象索引：</span><span class="en">prim index</span></li>
+        <li><span class="zh">源节点：</span><span class="en">source node</span></li>
+        <li><span class="zh">父节点：</span><span class="en">parent node</span></li>
+        <li><span class="zh">路径映射表达式：</span><span class="en">PcpMapExpression</span></li>
+        <li><span class="zh">组合弧类型：</span><span class="en">PcpArcType</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -75,6 +75,27 @@
         <li><span class="zh">任意输出变量：</span><span class="en">AOV</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-141">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`HdRenderBuffer` 是 Hydra 中可被 render pass 写入的数据资源句柄，常用于 draw target 的 2D image、AOV 或 auxiliary rendering output。它既可以作为 indexed prim 通过 scene delegate 获取属性，也可以 out-of-band 创建并直接提供 allocation parameters。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdRenderBuffer while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Allocate()` 根据尺寸、format、multiSampled 等参数分配底层资源；`GetWidth()`、`GetHeight()`、`GetDepth()` 与 `GetFormat()` 用于验证实际 allocation 结果。</span></li>
+        <li><span class="zh">`Map()`、`Unmap()` 与 `IsMapped()` 提供 CPU 读写 buffer data 的访问协议；使用时必须成对管理映射状态，避免读写未同步资源。</span></li>
+        <li><span class="zh">`Resolve()` 与 `IsMultiSampled()` 处理 multi-sample render buffer 的解析路径，常与 MSAA AOV 输出和后处理 task 一起分析。</span></li>
+        <li><span class="zh">`Sync()`、`GetInitialDirtyBitsMask()` 与 `DirtyBits` 说明 render buffer 仍参与 Hydra dirty tracking；作为 indexed bprim 时需要与 `HdSceneDelegate` 通信。</span></li>
+        <li><span class="zh">`IsConverged()` 表示 render buffer 相关结果是否稳定，progressive renderer 或异步写入路径需要用它向 task/render loop 报告完成状态。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">渲染缓冲：</span><span class="en">render buffer</span></li>
+        <li><span class="zh">可渲染资源：</span><span class="en">renderable data resource</span></li>
+        <li><span class="zh">辅助渲染输出：</span><span class="en">auxiliary rendering output</span></li>
+        <li><span class="zh">缓冲映射：</span><span class="en">Map()</span></li>
+        <li><span class="zh">多重采样：</span><span class="en">multi-sampled</span></li>
+        <li><span class="zh">收敛状态：</span><span class="en">IsConverged()</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
