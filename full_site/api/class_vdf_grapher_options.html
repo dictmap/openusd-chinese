@@ -54,6 +54,27 @@
         <li><span class="zh">图输出：</span><span class="en">graph output</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-138">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`VdfGrapherOptions` 是配置 `VdfGrapher` 输出的选项对象，用于控制 Vdf network 图的节点选择、样式、颜色、mask 显示、分页尺寸和噪声过滤。它只影响 graph visualization/debug output，不改变实际 Vdf graph 或 evaluation behavior。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for VdfGrapherOptions while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`AddNodeToGraph()` 与 `GetNodesToGraph()` 控制显式包含哪些 node；`DebugNameFilter()` 则可按 debug name 过滤，适合缩小大型 network 可视化范围。</span></li>
+        <li><span class="zh">`NodeFilterCallback` 与 `NodeStyleCallback` 允许外部代码自定义节点是否显示和如何显示；这类 callback 影响输出图，不参与执行调度。</span></li>
+        <li><span class="zh">`GetDrawMasks()`、`GetDrawAffectsMasks()` 和 `GetDrawColorizedConnectionsOnly()` 用于控制 dependency mask、affects mask 和连接着色信息的可视化密度。</span></li>
+        <li><span class="zh">`GetColor()`、`GetAnnotation()` 和 `GetDisplayStyle()` 负责节点视觉样式和注释文本；这些设置通常服务于调试报告或 graph dump。</span></li>
+        <li><span class="zh">`GetPageWidth()`、`GetPageHeight()`、`GetPrintSingleOutputs()` 与 `GetOmitUnconnectedSpecs()` 面向导出版面和冗余信息控制，适合生成可读的调试图。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">图输出选项：</span><span class="en">VdfGrapherOptions</span></li>
+        <li><span class="zh">节点过滤回调：</span><span class="en">NodeFilterCallback</span></li>
+        <li><span class="zh">节点样式回调：</span><span class="en">NodeStyleCallback</span></li>
+        <li><span class="zh">显示样式：</span><span class="en">DisplayStyle</span></li>
+        <li><span class="zh">mask 可视化：</span><span class="en">mask visualization</span></li>
+        <li><span class="zh">图形转储：</span><span class="en">graph dump</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

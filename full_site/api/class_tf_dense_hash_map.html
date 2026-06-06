@@ -54,6 +54,27 @@
         <li><span class="zh">EqualKey：</span><span class="en">EqualKey</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-138">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`TfDenseHashMap&lt; Key, Data, HashFn, EqualKey, Threshold &gt;` 是面向小规模映射优化的 Tf map 容器：元素数量较小时使用 vector storage 降低 hash table 开销，同时尽量保持类似 `TfHashMap` / STL map 的常见 API。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for TfDenseHashMap&lt;Key, Data, HashFn, EqualKey, Threshold&gt; while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Threshold` 是理解该容器的关键模板参数：它决定何时从小型 vector-oriented representation 过渡到更接近 hash map 的行为边界。</span></li>
+        <li><span class="zh">`HashFn` 与 `EqualKey` 分别控制 key hashing 和 key equality；自定义 key 类型时必须保证二者语义一致，否则查找和插入会出错。</span></li>
+        <li><span class="zh">`key_type`、`mapped_type`、`value_type`、`iterator`、`const_iterator` 和 `insert_result` 让该类能被泛型容器代码消费。</span></li>
+        <li><span class="zh">`find()`、`insert()`、`erase()`、`count()`、`begin()`、`end()`、`size()`、`empty()` 和 `clear()` 构成常见读写路径，适合替换小型 map 热点。</span></li>
+        <li><span class="zh">该类优化空间和小集合性能，不表示所有情况下都比标准 hash map 更快；使用时应结合数据规模、更新频率和迭代需求判断。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">紧凑哈希映射：</span><span class="en">TfDenseHashMap</span></li>
+        <li><span class="zh">小规模映射：</span><span class="en">small map</span></li>
+        <li><span class="zh">向量存储：</span><span class="en">vector storage</span></li>
+        <li><span class="zh">阈值：</span><span class="en">Threshold</span></li>
+        <li><span class="zh">键散列函数：</span><span class="en">HashFn</span></li>
+        <li><span class="zh">键相等比较：</span><span class="en">EqualKey</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

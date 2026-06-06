@@ -54,6 +54,27 @@
         <li><span class="zh">STL 风格遍历：</span><span class="en">STL-style traversal</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-138">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`SdfChildrenView&lt; _ChildPolicy, _Predicate, _Adapter &gt;` 是 Sdf 的 template children view，用统一的 STL-style container interface 暴露 spec children。`_ChildPolicy` 决定底层 children 读取策略，`_Predicate` 负责过滤，`_Adapter` 负责把底层对象适配成调用者看到的 value。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for SdfChildrenView&lt;_ChildPolicy, _Predicate, _Adapter&gt; while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`ChildPolicy`、`KeyPolicy`、`Predicate`、`Adapter` 和 `_Traits` 是理解该模板的关键 typedef；它们把不同 spec children 统一成同一套 view 接口。</span></li>
+        <li><span class="zh">`const_iterator`、`const_reverse_iterator`、`begin()`、`end()`、`rbegin()`、`rend()` 等接口使该 view 可按标准容器方式遍历。</span></li>
+        <li><span class="zh">`key_type`、`value_type`、`size_type` 和 `difference_type` 帮助调用方写出泛型算法；这些类型名称应保留英文，便于和 C++ template 对照。</span></li>
+        <li><span class="zh">`SdfChildrenView` 常出现在 `SdfLayer`、`SdfPrimSpec`、property specs 的 children 访问路径中；它是视图层，不直接 author 或删除 child spec。</span></li>
+        <li><span class="zh">阅读时要区分 view/filter/adapt 三层：view 暴露遍历，predicate 决定可见性，adapter 决定返回值形态。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Sdf 子对象视图：</span><span class="en">SdfChildrenView</span></li>
+        <li><span class="zh">子对象策略：</span><span class="en">ChildPolicy</span></li>
+        <li><span class="zh">过滤谓词：</span><span class="en">Predicate</span></li>
+        <li><span class="zh">返回值适配器：</span><span class="en">Adapter</span></li>
+        <li><span class="zh">常量迭代器：</span><span class="en">const_iterator</span></li>
+        <li><span class="zh">STL 风格容器接口：</span><span class="en">STL-style container interface</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

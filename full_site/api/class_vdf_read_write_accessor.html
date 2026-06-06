@@ -54,6 +54,27 @@
         <li><span class="zh">VdfVector：</span><span class="en">VdfVector</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-138">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`VdfReadWriteAccessor&lt; T &gt;` 是 Vdf output data 的 non-owning random-access accessor，用于在执行/计算上下文中按索引读取或写入输出元素。它围绕 `VdfVector` / output storage 工作，模板参数 `T` 表示元素类型；不要把它当成长期持有数据的 owning container。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for VdfReadWriteAccessor&lt;T&gt; while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`operator[]()` 提供 const 与 non-const 两种访问形式，是最直接的元素读写入口；调用前应使用 `GetSize()` 或 `IsEmpty()` 确认访问范围。</span></li>
+        <li><span class="zh">`GetSize()` 反映当前 accessor 暴露的元素数量，适合和 `VdfMask`、`VdfIterator` 或输出 request 语义一起理解。</span></li>
+        <li><span class="zh">`IsEmpty()` 是快速判空入口；空 accessor 可能表示输出没有数据，也可能表示当前 request 没有覆盖相应元素。</span></li>
+        <li><span class="zh">相关类型 `VdfContext`、`VdfOutput`、`VdfReadWriteIterator` 和 `VdfExecutorInterface` 说明它处在 Vdf 执行数据流中，而不是普通 STL 容器层。</span></li>
+        <li><span class="zh">中文说明应保留 `T`、`operator[]()` 和 `VdfVector` 等名称，方便读者把 Doxygen 成员和模板实例化代码对应起来。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">读写访问器：</span><span class="en">VdfReadWriteAccessor&lt;T&gt;</span></li>
+        <li><span class="zh">随机访问：</span><span class="en">random access</span></li>
+        <li><span class="zh">输出数据：</span><span class="en">output data</span></li>
+        <li><span class="zh">元素数量：</span><span class="en">GetSize()</span></li>
+        <li><span class="zh">空访问器：</span><span class="en">IsEmpty()</span></li>
+        <li><span class="zh">非拥有视图：</span><span class="en">non-owning accessor</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
