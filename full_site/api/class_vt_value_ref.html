@@ -54,6 +54,27 @@
         <li><span class="zh">生命周期：</span><span class="en">lifetime</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-134">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`VtValueRef` 是非拥有的 type-erased value view，用来在不复制、不分配堆内存、不增加引用计数的情况下读取普通 typed value 或 `VtValue`。它最适合作为函数参数或短生命周期局部变量，不应跨越被引用对象的生命周期。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for VtValueRef while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">普通 typed value 和 `VtValue` 可以隐式转换为 `VtValueRef`；这让 API 能接受统一的 value reference，同时避免把所有调用点都包装成 owning `VtValue`。</span></li>
+        <li><span class="zh">`Get&lt;T&gt;()`、`GetTypeid()`、`GetTypeName()`、`GetType()` 和 `GetKnownValueTypeIndex()` 提供运行时类型检查和诊断信息；调用 typed get 之前仍应确认类型匹配。</span></li>
+        <li><span class="zh">`GetArraySize()` 与 `GetElementTypeid()` 帮助处理数组值；它们描述被引用值的形状，不表示 `VtValueRef` 自己拥有数组存储。</span></li>
+        <li><span class="zh">`CanHash()`、`GetHash()`、`CanComposeOver()` 和 `CanTransform()` 表示值是否支持散列、组合或变换等通用操作；这些能力取决于底层类型。</span></li>
+        <li><span class="zh">`_Get()`、`_GetMutable()` 和 `_TypeIs()` 是实现侧支撑接口；阅读时重点放在非拥有生命周期约束，避免把 `VtValueRef` 保存到长期容器或异步任务中。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">非拥有值视图：</span><span class="en">non-owning value view</span></li>
+        <li><span class="zh">类型擦除：</span><span class="en">type-erased</span></li>
+        <li><span class="zh">值引用：</span><span class="en">value reference</span></li>
+        <li><span class="zh">生命周期约束：</span><span class="en">lifetime constraint</span></li>
+        <li><span class="zh">类型标识：</span><span class="en">typeid</span></li>
+        <li><span class="zh">可散列值：</span><span class="en">hashable value</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

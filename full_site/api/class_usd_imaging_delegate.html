@@ -54,6 +54,27 @@
         <li><span class="zh">render index 路径：</span><span class="en">render index path</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-134">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`UsdImagingDelegate` 是 Hydra (`Hd`) core 与 USD scene graph 之间的主要翻译层。它把 `UsdPrim`、time-varying data、purpose display flags、topology、material、camera 和 instancing 信息转成 Hydra render index 可以同步和查询的数据。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdImagingDelegate while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`ApplyPendingUpdates()` 是把 USD 侧变更刷新到 Hydra 侧的重要入口；它通常和 dirty bits、notice、population、resync 与 render index 同步过程一起理解。</span></li>
+        <li><span class="zh">`ConvertCachePathToIndexPath()` 和 `ConvertIndexPathToCachePath()` 说明 delegate 内部维护 cache path 与 Hydra index path 的映射；调试 picking、instancing 或 adapter 路径时尤其重要。</span></li>
+        <li><span class="zh">`GetDisplayGuides()`、`GetDisplayProxy()`、`GetDisplayRender()`、`GetCullStyle()` 和 `GetDisplayStyle()` 体现了 USD purpose、visibility 与渲染显示策略在 imaging 层的落点。</span></li>
+        <li><span class="zh">`GetBasisCurvesTopology()`、`GetCameraParamValue()`、`GetCoordSysBindings()`、`GetCategories()` 等查询函数是 scene delegate 数据访问面，不等同于直接读取原始 `UsdPrim` 字段。</span></li>
+        <li><span class="zh">`RigidXformOverridesMap`、`SubdivTags`、refine level 与 material resource 等概念表示 delegate 会做一定缓存、覆盖和转换；它本身不是最终 renderer，也不是 render delegate。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 到 Hydra 翻译层：</span><span class="en">UsdImagingDelegate</span></li>
+        <li><span class="zh">Hydra 场景代理：</span><span class="en">HdSceneDelegate</span></li>
+        <li><span class="zh">渲染索引：</span><span class="en">HdRenderIndex</span></li>
+        <li><span class="zh">缓存路径：</span><span class="en">cache path</span></li>
+        <li><span class="zh">索引路径：</span><span class="en">index path</span></li>
+        <li><span class="zh">待同步更新：</span><span class="en">pending updates</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -54,6 +54,27 @@
         <li><span class="zh">依赖 mask：</span><span class="en">dependency mask</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-134">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`VdfNode` 是 `VdfNetwork` 中所有节点的抽象基类，负责输入/输出规格、连接依赖、dependency mask、调度相关查询和节点身份管理。它属于 Vdf 数据流求值基础设施，不是 USD stage 上的 prim 或 schema。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for VdfNode while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`_InitializeInputAndOutputSpecs()`、`_AppendInputs()`、`_AppendOutputs()` 和 `_ReplaceInputSpecs()` 说明节点的 input/output specs 是执行图结构的一部分，通常由派生类和网络构建过程维护。</span></li>
+        <li><span class="zh">`_ComputeInputDependencyMask()`、`_ComputeOutputDependencyMask()` 与复数版本负责把 request 和连接关系转成依赖掩码；这是调度、缓存失效和局部求值的核心。</span></li>
+        <li><span class="zh">`_ComputeInputDependencyRequest()` 与 `_DidAddInputConnection()` 体现节点会响应连接变化并更新依赖请求；阅读时要结合 `VdfConnection`、`VdfOutput` 和网络拓扑理解。</span></li>
+        <li><span class="zh">`_SetId()`、`_GetMemoryUsage()` 和 `_IsDerivedEqual()` 面向网络内部标识、内存统计和等价判断；这些不是常规用户层 USD authoring API。</span></li>
+        <li><span class="zh">`_AcquireInputAndOutputSpecsPointer()`、`_ReleaseInputAndOutputSpecsPointer()` 和 `_ClearInputAndOutputSpecsPointer()` 表示规格数据有显式生命周期管理，派生实现需要保持图结构一致性。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Vdf 抽象节点：</span><span class="en">VdfNode</span></li>
+        <li><span class="zh">数据流网络：</span><span class="en">VdfNetwork</span></li>
+        <li><span class="zh">输入输出规格：</span><span class="en">input/output specs</span></li>
+        <li><span class="zh">依赖掩码：</span><span class="en">dependency mask</span></li>
+        <li><span class="zh">依赖请求：</span><span class="en">dependency request</span></li>
+        <li><span class="zh">连接回调：</span><span class="en">connection hook</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

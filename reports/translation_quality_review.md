@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-06T01:02:45.996Z
+Generated: 2026-06-06T01:17:57.907Z
 
 ## Summary
 
@@ -98,7 +98,7 @@ Generated: 2026-06-06T01:02:45.996Z
 | 32 | draft_needs_translation | bilingual_draft | 594 | 52/44 | 0 | 0 | `full_site/api/class_sdf_path.html` |
 | 33 | draft_needs_translation | bilingual_draft | 525 | 52/44 | 0 | 0 | `full_site/api/class_sdf_prim_spec.html` |
 | 34 | draft_needs_translation | bilingual_draft | 382 | 34/31 | 0 | 0 | `full_site/api/class_sdf_usdz_file_format.html` |
-| 35 | draft_needs_translation | bilingual_draft | 404 | 40/37 | 0 | 0 | `full_site/api/class_sdr_shader_property.html` |
+| 35 | draft_needs_translation | bilingual_draft | 580 | 52/44 | 0 | 0 | `full_site/api/class_sdr_shader_property.html` |
 | 36 | draft_needs_translation | bilingual_draft | 395 | 40/37 | 0 | 0 | `full_site/api/class_tf_dense_hash_map.html` |
 | 37 | draft_needs_translation | bilingual_draft | 354 | 27/24 | 0 | 0 | `full_site/api/class_tf_py_lock.html` |
 | 38 | draft_needs_translation | bilingual_draft | 674 | 52/44 | 0 | 0 | `full_site/api/class_tf_token.html` |
@@ -108,7 +108,7 @@ Generated: 2026-06-06T01:02:45.996Z
 | 42 | draft_needs_translation | bilingual_draft | 598 | 52/44 | 0 | 0 | `full_site/api/class_usd_geom_mesh.html` |
 | 43 | draft_needs_translation | bilingual_draft | 539 | 52/44 | 0 | 0 | `full_site/api/class_usd_geom_primvars_a_p_i.html` |
 | 44 | draft_needs_translation | bilingual_draft | 308 | 32/29 | 0 | 0 | `full_site/api/class_usd_imaging_adapter_registry.html` |
-| 45 | draft_needs_translation | bilingual_draft | 392 | 40/37 | 0 | 0 | `full_site/api/class_usd_imaging_delegate.html` |
+| 45 | draft_needs_translation | bilingual_draft | 558 | 52/44 | 0 | 0 | `full_site/api/class_usd_imaging_delegate.html` |
 | 46 | draft_needs_translation | bilingual_draft | 320 | 33/30 | 0 | 0 | `full_site/api/class_usd_imaging_nurbs_patch_adapter.html` |
 | 47 | draft_needs_translation | bilingual_draft | 363 | 34/31 | 0 | 0 | `full_site/api/class_usd_lux_disk_light.html` |
 | 48 | draft_needs_translation | bilingual_draft | 385 | 40/37 | 0 | 0 | `full_site/api/class_usd_lux_shaping_a_p_i.html` |
@@ -119,14 +119,14 @@ Generated: 2026-06-06T01:02:45.996Z
 | 53 | draft_needs_translation | bilingual_draft | 538 | 52/44 | 0 | 0 | `full_site/api/class_usd_shade_output.html` |
 | 54 | draft_needs_translation | bilingual_draft | 278 | 20/17 | 0 | 0 | `full_site/api/class_usd_skel_imaging_data_source_skeleton_prim.html` |
 | 55 | draft_needs_translation | bilingual_draft | 630 | 52/44 | 0 | 0 | `full_site/api/class_usd_stage_cache.html` |
-| 56 | draft_needs_translation | bilingual_draft | 409 | 40/37 | 0 | 0 | `full_site/api/class_usd_validation_error.html` |
+| 56 | draft_needs_translation | bilingual_draft | 678 | 52/44 | 0 | 0 | `full_site/api/class_usd_validation_error.html` |
 | 57 | draft_needs_translation | bilingual_draft | 394 | 40/37 | 0 | 0 | `full_site/api/class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html` |
 | 58 | draft_needs_translation | bilingual_draft | 408 | 38/35 | 0 | 0 | `full_site/api/class_vdf_context.html` |
 | 59 | draft_needs_translation | bilingual_draft | 376 | 40/37 | 0 | 0 | `full_site/api/class_vdf_grapher_options.html` |
-| 60 | draft_needs_translation | bilingual_draft | 382 | 40/37 | 0 | 0 | `full_site/api/class_vdf_node.html` |
+| 60 | draft_needs_translation | bilingual_draft | 617 | 52/44 | 0 | 0 | `full_site/api/class_vdf_node.html` |
 | 61 | draft_needs_translation | bilingual_draft | 323 | 24/21 | 0 | 0 | `full_site/api/class_vdf_read_write_accessor.html` |
 | 62 | draft_needs_translation | bilingual_draft | 317 | 28/25 | 0 | 0 | `full_site/api/class_vdf_test_utils_1_1_node.html` |
-| 63 | draft_needs_translation | bilingual_draft | 408 | 40/37 | 0 | 0 | `full_site/api/class_vt_value_ref.html` |
+| 63 | draft_needs_translation | bilingual_draft | 663 | 52/44 | 0 | 0 | `full_site/api/class_vt_value_ref.html` |
 | 64 | draft_needs_translation | bilingual_draft | 501 | 24/16 | 0 | 0 | `full_site/api/classes.html` |
 | 65 | draft_needs_translation | bilingual_draft | 364 | 40/37 | 0 | 0 | `full_site/api/classpxr___c_l_i_1_1_c_l_i_1_1_app.html` |
 | 66 | draft_needs_translation | bilingual_draft | 353 | 40/37 | 0 | 0 | `full_site/api/classpxr__tsl_1_1robin__map.html` |

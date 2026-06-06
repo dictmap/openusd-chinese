@@ -6955,3 +6955,36 @@
 1. 继续最多 5 页，优先处理用户会实际引用的 Usd/Imaging/Sdr/Vt/Vdf class 页面。
 2. 建议下一组：`full_site/api/class_usd_validation_error.html`、`full_site/api/class_usd_imaging_delegate.html`、`full_site/api/class_sdr_shader_property.html`、`full_site/api/class_vt_value_ref.html`、`full_site/api/class_vdf_node.html`。
 3. 之后可继续 Usd/Imaging/Sdr/Vt/Vdf/Hd 的高价值 class 页面，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+## 第 265 轮：UsdValidationError、UsdImagingDelegate、SdrShaderProperty、VtValueRef 与 VdfNode 补强
+
+已完成：
+
+- 复核当前仓库、远端与审计基线：本地 `main` 基于上一轮同步提交 `de38574`，`origin/main` 一致，起始工作区干净；全量仍为 406 个 HTML 页面，质量计数为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。
+- 新增并执行 `scripts/refine_openusd_release_batch_134.mjs`，本轮标记为 `api-class-quality-pass-134`。
+- 严格只精修 5 页：
+  - `full_site/api/class_usd_validation_error.html`
+  - `full_site/api/class_usd_imaging_delegate.html`
+  - `full_site/api/class_sdr_shader_property.html`
+  - `full_site/api/class_vt_value_ref.html`
+  - `full_site/api/class_vdf_node.html`
+- 每页新增 5 条中文补强导读和 6 条术语对照；重点覆盖 `UsdValidationError` 的 validation error sites、error type、message 与 fixer 查找，`UsdImagingDelegate` 的 USD scene graph 到 Hydra render index 翻译职责，`SdrShaderProperty` 的 shader input/output property、metadata 与连接兼容性，`VtValueRef` 的 non-owning type-erased value view 和生命周期约束，以及 `VdfNode` 的 input/output specs、dependency mask 与 `VdfNetwork` 调度语义；API 名称、类名、方法名、属性名、数学符号、template 参数、token 字面量和链接保持原样。
+- 质量回读：5 页均无 `TODO` / `待翻译` / `机器翻译占位`，`api-class-quality-pass-134` 均只出现 1 次：
+  - `class_usd_validation_error.html`：中文字符 741，中文/英文块 52/44。
+  - `class_usd_imaging_delegate.html`：中文字符 621，中文/英文块 52/44。
+  - `class_sdr_shader_property.html`：中文字符 643，中文/英文块 52/44。
+  - `class_vt_value_ref.html`：中文字符 726，中文/英文块 52/44。
+  - `class_vdf_node.html`：中文字符 680，中文/英文块 52/44。
+- 本轮分级计数保持不变：`draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因：处理对象开始前已属 `draft_needs_translation`，本轮是二次补强精修，不是从模板草稿晋级。
+- 已运行并通过：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1`；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步记录：本轮复验通过后使用 `OpenUSD bilingual round 265: validation imaging sdr vt vdf pass` 同步本轮 HTML、脚本、报告和 `work.md`；如果同步脚本失败，本轮不推送并先修复。
+
+当前差距：
+
+- 全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`；其中 387 页为 `draft_needs_translation`、11 页为 `draft_template_only`，`bilingual_draft` 仍不是完整翻译。
+- 剩余 `draft_template_only` 11 页基本是 `_source.html` 源码页、`search.html` 或目录页，继续低优先处理。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理用户会实际引用的 UsdLux、UsdProc、HgiGL 与 Pcp class 页面。
+2. 建议下一组：`full_site/api/class_usd_lux_disk_light.html`、`full_site/api/class_usd_lux_shaping_a_p_i.html`、`full_site/api/class_usd_proc_generative_procedural.html`、`full_site/api/class_hgi_g_l_graphics_cmds.html`、`full_site/api/class_pcp_property_index.html`。
+3. 之后可继续 UsdLux、UsdProc、Hgi、Pcp、Hd、Vt 的高价值 class 页面，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。

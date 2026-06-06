@@ -54,6 +54,27 @@
         <li><span class="zh">修复器：</span><span class="en">fixer</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-134">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`UsdValidationError` 是 validation task 返回的结构化错误实体，并且总是和产生它的 `UsdValidationValidator` 语境相关。阅读本页时应先区分 identifier、name、type、sites、message 与 fixer 列表，而不是只把它看成一段错误字符串。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdValidationError while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`GetIdentifier()`、`GetName()`、`GetType()`、`GetSites()` 和 `GetMessage()` 覆盖了错误报告的核心维度：稳定标识、短名称、严重级别、发生位置和面向用户的说明。</span></li>
+        <li><span class="zh">`UsdValidationErrorType` 描述错误严重性或状态；`UsdValidationErrorSites` 描述 prim、property、layer 或其它定位信息，两者合起来才足以支持 UI 高亮和批处理过滤。</span></li>
+        <li><span class="zh">`GetFixers()`、`GetFixerByName()`、`GetFixersByErrorName()` 与 `GetFixersByKeywords()` 用于从错误反查可执行修复器；中文说明应保留 fixer 名称和 error name，便于和 registry 对齐。</span></li>
+        <li><span class="zh">`GetErrorAsString()` 适合日志和调试输出，但结构化消费端更应读取 sites、type、identifier 和 data；否则会丢失可排序、可过滤和可定位的信息。</span></li>
+        <li><span class="zh">`HasNoError()` 表示空错误或无错误状态；它不是把所有 severity 降级为 warning，也不代表 validator 没有运行。比较运算符主要服务于错误集合去重和排序。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">验证错误实体：</span><span class="en">UsdValidationError</span></li>
+        <li><span class="zh">验证器：</span><span class="en">UsdValidationValidator</span></li>
+        <li><span class="zh">错误严重性：</span><span class="en">UsdValidationErrorType</span></li>
+        <li><span class="zh">错误定位集合：</span><span class="en">UsdValidationErrorSites</span></li>
+        <li><span class="zh">修复器：</span><span class="en">fixer</span></li>
+        <li><span class="zh">结构化错误报告：</span><span class="en">structured validation error</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
