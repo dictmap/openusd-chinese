@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-06T10:41:54.580Z
+Generated: 2026-06-06T11:04:19.409Z
 
 ## Summary
 
@@ -182,7 +182,7 @@ Generated: 2026-06-06T10:41:54.580Z
 | 116 | draft_needs_translation | bilingual_draft | 447 | 24/17 | 0 | 0 | `full_site/api/functions_n.html` |
 | 117 | draft_needs_translation | bilingual_draft | 532 | 24/17 | 0 | 0 | `full_site/api/functions_o.html` |
 | 118 | draft_needs_translation | bilingual_draft | 460 | 24/17 | 0 | 0 | `full_site/api/functions_p.html` |
-| 119 | draft_needs_translation | bilingual_draft | 635 | 24/17 | 0 | 0 | `full_site/api/functions_q.html` |
+| 119 | draft_needs_translation | bilingual_draft | 905 | 36/24 | 0 | 0 | `full_site/api/functions_q.html` |
 | 120 | draft_needs_translation | bilingual_draft | 476 | 24/17 | 0 | 0 | `full_site/api/functions_r.html` |
 | 121 | draft_needs_translation | bilingual_draft | 488 | 24/16 | 0 | 0 | `full_site/api/functions_rela_g.html` |
 | 122 | draft_needs_translation | bilingual_draft | 545 | 24/16 | 0 | 0 | `full_site/api/functions_rela_h.html` |
@@ -216,7 +216,7 @@ Generated: 2026-06-06T10:41:54.580Z
 | 150 | draft_needs_translation | bilingual_draft | 445 | 25/16 | 0 | 0 | `full_site/api/functions_vars_s.html` |
 | 151 | draft_needs_translation | bilingual_draft | 527 | 25/16 | 0 | 0 | `full_site/api/functions_vars_t.html` |
 | 152 | draft_needs_translation | bilingual_draft | 431 | 25/16 | 0 | 0 | `full_site/api/functions_vars_u.html` |
-| 153 | draft_needs_translation | bilingual_draft | 440 | 25/16 | 0 | 0 | `full_site/api/functions_vars_v.html` |
+| 153 | draft_needs_translation | bilingual_draft | 654 | 37/23 | 0 | 0 | `full_site/api/functions_vars_v.html` |
 | 154 | draft_needs_translation | bilingual_draft | 491 | 25/16 | 0 | 0 | `full_site/api/functions_vars_w.html` |
 | 155 | draft_needs_translation | bilingual_draft | 532 | 25/16 | 0 | 0 | `full_site/api/functions_vars_x.html` |
 | 156 | draft_needs_translation | bilingual_draft | 511 | 25/16 | 0 | 0 | `full_site/api/functions_vars_y.html` |
@@ -330,15 +330,15 @@ Generated: 2026-06-06T10:41:54.580Z
 | 264 | good_bilingual | bilingual_complete | 516 | 20/74 | 0 | 0 | `site/usd_page_front.html` |
 | 265 | draft_needs_translation | bilingual_draft | 661 | 53/45 | 0 | 0 | `full_site/api/usd_physics_page_front.html` |
 | 266 | draft_needs_translation | bilingual_draft | 614 | 26/18 | 0 | 0 | `full_site/api/usd_proc_page_front.html` |
-| 267 | draft_needs_translation | bilingual_draft | 414 | 27/24 | 0 | 0 | `full_site/api/usd_render_page_front.html` |
+| 267 | draft_needs_translation | bilingual_draft | 609 | 39/31 | 0 | 0 | `full_site/api/usd_render_page_front.html` |
 | 268 | draft_needs_translation | bilingual_draft | 367 | 14/11 | 0 | 0 | `full_site/api/usd_ri_page_front.html` |
 | 269 | draft_needs_translation | bilingual_draft | 436 | 27/24 | 0 | 0 | `full_site/api/usd_semantics_overview.html` |
 | 270 | draft_needs_translation | bilingual_draft | 529 | 38/30 | 0 | 0 | `full_site/api/usd_shade_page_front.html` |
-| 271 | draft_needs_translation | bilingual_draft | 362 | 15/12 | 0 | 0 | `full_site/api/usd_shaders_page_front.html` |
+| 271 | draft_needs_translation | bilingual_draft | 549 | 27/19 | 0 | 0 | `full_site/api/usd_shaders_page_front.html` |
 | 272 | draft_needs_translation | bilingual_draft | 514 | 27/19 | 0 | 0 | `full_site/api/usd_skel_page_front.html` |
 | 273 | draft_needs_translation | bilingual_draft | 371 | 17/14 | 0 | 0 | `full_site/api/usd_u_i_page_front.html` |
 | 274 | draft_needs_translation | bilingual_draft | 370 | 19/16 | 0 | 0 | `full_site/api/usd_utils_page_front.html` |
-| 275 | draft_needs_translation | bilingual_draft | 439 | 34/31 | 0 | 0 | `full_site/api/usd_vol_page_front.html` |
+| 275 | draft_needs_translation | bilingual_draft | 633 | 46/38 | 0 | 0 | `full_site/api/usd_vol_page_front.html` |
 | 276 | draft_needs_translation | bilingual_draft | 362 | 18/15 | 0 | 0 | `full_site/api/usdabc_page_front.html` |
 | 277 | draft_needs_translation | bilingual_draft | 381 | 14/10 | 0 | 0 | `full_site/api/usddraco_page_front.html` |
 | 278 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/var_8h_source.html` |

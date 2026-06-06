@@ -55,6 +55,27 @@
         <li><span class="zh">任意输出变量：</span><span class="en">AOV</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-160">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`usd_render_page_front.html` 是 `UsdRender` 渲染配置 schema 入口，围绕 `UsdRenderSettings`、`UsdRenderProduct`、`UsdRenderVar`、`UsdRenderPass` 和 render collection 组织 scene-level render description。它描述可交换的渲染意图，不等同于某个 renderer 的命令行参数全集。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdRender: USD Render Schema while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdRenderSettings` 表达一次渲染配置的顶层入口，通常会引用 camera、products、rendering purpose、resolution 和 renderer settings 等信息。</span></li>
+        <li><span class="zh">`UsdRenderProduct` 描述输出 artifact，例如图像文件、分辨率、产品类型和关联 `UsdRenderVar`；它不是实际写文件的 I/O 实现。</span></li>
+        <li><span class="zh">`UsdRenderVar` 描述 AOV/render variable，包括 source name、source type、data type 和过滤规则；是否可被具体 renderer 支持仍取决于 render delegate 或渲染器插件。</span></li>
+        <li><span class="zh">`UsdRenderPass` 和 render collection 用来表达分层渲染、可见集合或 pass 级配置，应结合 collection、camera 和 product 关系阅读。</span></li>
+        <li><span class="zh">本页适合作为 `wp_render_settings.html`、usdRender schema reference 和 renderer adapter 文档之间的导航页：先读 USD 对象模型，再查具体 renderer 如何消费这些 schema。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">渲染设置：</span><span class="en">render settings</span></li>
+        <li><span class="zh">渲染产品：</span><span class="en">render product</span></li>
+        <li><span class="zh">渲染变量：</span><span class="en">render variable</span></li>
+        <li><span class="zh">AOV 输出：</span><span class="en">AOV output</span></li>
+        <li><span class="zh">渲染通道：</span><span class="en">render pass</span></li>
+        <li><span class="zh">渲染集合：</span><span class="en">render collection</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

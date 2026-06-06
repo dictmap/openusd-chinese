@@ -75,6 +75,27 @@
         <li><span class="zh">schema 注册表信息：</span><span class="en">schema registry info</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-160">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`functions_vars_v.html` 是 Class Members - Variables 的 V 字母段，主要用于定位以 V 开头的 class member variables、token constants 或 generated token table 条目。它不是函数索引，也不应把变量名翻译成中文；变量名和 token literal 必须保持原样。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Class Members - Variables - V while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">V 段变量常见来源包括 `UsdGeomTokensType`、`UsdLuxTokensType`、`UsdPhysicsTokensType`、`UsdVolTokensType`、`UsdRenderTokensType` 等 generated schema token table。</span></li>
+        <li><span class="zh">阅读 token variable 时要区分 C++ 成员名、token 字面量、USD 属性名和 schema fallback value；它们可能相近但不总是同一层概念。</span></li>
+        <li><span class="zh">如果变量来自 Hydra、Vdf、Tf 或 Sdf 类，应先跳转到 owning class 判断它是配置字段、缓存字段、debug flag、token 常量还是测试辅助变量。</span></li>
+        <li><span class="zh">本页和 `functions_func_v.html` 互补：函数页关注可调用 member，变量页关注可引用的 member variable 或 token constant。</span></li>
+        <li><span class="zh">中文补强只说明检索路径和语义边界，避免给 sparse index 添加不存在的变量解释；具体默认值和生命周期仍以目标 class 页面为准。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">变量索引：</span><span class="en">variables index</span></li>
+        <li><span class="zh">V 字母段：</span><span class="en">V-section</span></li>
+        <li><span class="zh">token 常量：</span><span class="en">token constant</span></li>
+        <li><span class="zh">生成式 token 表：</span><span class="en">generated token table</span></li>
+        <li><span class="zh">所属类：</span><span class="en">owning class</span></li>
+        <li><span class="zh">默认值边界：</span><span class="en">fallback value boundary</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

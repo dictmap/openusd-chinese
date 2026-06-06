@@ -74,6 +74,27 @@
         <li><span class="zh">目标类查阅：</span><span class="en">target class lookup</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-160">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`functions_q.html` 是 Class Members 综合索引的 Q 字母段，混合列出函数、变量、枚举值或其他 member 名称。它适合做快速定位，不适合作为 API 语义终点；同名或近名前缀在 `UsdVol`、`UsdRender`、`UsdGeom`、`Tf` 等模块中可能代表完全不同的职责。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Class Members - Q while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">Q 段条目数量通常较少，更容易误把索引页当成完整说明；实际行为仍需要进入对应 class 页面查看 signature、return type、constness、overload 和所属 namespace。</span></li>
+        <li><span class="zh">如果条目来自 token table，例如 `UsdVolTokensType` 或其他 `*TokensType`，应保留 token 字面量原样，并回到 schema 页面理解 token 用于属性名、relationship 名还是 enum 值。</span></li>
+        <li><span class="zh">如果条目来自 query、queue、qualified name 等函数前缀，先按所属模块判断语境，再看是否涉及 composition query、render query、diagnostic query 或容器访问。</span></li>
+        <li><span class="zh">本页和 `functions_func_q.html`、`functions_vars_q.html` 的区别在于当前页是综合成员索引；函数专页和变量专页会按 member kind 拆分。</span></li>
+        <li><span class="zh">在中文复刻中，本页的价值是补充导航方法和误读边界，不逐条改写 API 名称；所有 member 名称、类名和链接保持原样。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">综合成员索引：</span><span class="en">all members index</span></li>
+        <li><span class="zh">Q 字母段：</span><span class="en">Q-section</span></li>
+        <li><span class="zh">所属类语境：</span><span class="en">owning class context</span></li>
+        <li><span class="zh">成员种类：</span><span class="en">member kind</span></li>
+        <li><span class="zh">token 表：</span><span class="en">token table</span></li>
+        <li><span class="zh">重载签名：</span><span class="en">overload signature</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

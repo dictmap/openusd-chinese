@@ -55,6 +55,27 @@
         <li><span class="zh">三维高斯 splat：</span><span class="en">3D Gaussian Splat</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-160">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`usd_vol_page_front.html` 是 `UsdVol` 体积数据 schema 入口，覆盖 `UsdVolVolume`、`UsdVolFieldBase`、`UsdVolField3DAsset`、`UsdVolOpenVDBAsset`、`UsdVolVolumeFieldBase` 以及 particle field 相关 API。阅读时应把它理解为 volume/field 的 authored schema 导航，而不是某个 renderer 的 volume sampling 实现说明。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdVol: USD Volume Schema while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdVolVolume` 表示承载体积字段关系的 prim，核心是把 volume 容器与 field prim 通过 relationship 组织起来，而不是直接在 volume prim 上保存所有 voxel 数据。</span></li>
+        <li><span class="zh">`UsdVolFieldBase`、`UsdVolField3DAsset`、`UsdVolOpenVDBAsset` 和 `UsdVolVolumeFieldBase` 分别用于抽象 field、Field3D 资产、OpenVDB 资产和体积字段基类；具体数据格式仍由外部 asset 和下游 reader 解释。</span></li>
+        <li><span class="zh">Particle field API 如 `UsdVolParticleField3DGaussianSplat`、`UsdVolParticleFieldKernelBaseAPI`、`UsdVolParticleFieldPositionBaseAPI` 更偏向粒子场描述，不能和 regular grid volume 直接混读。</span></li>
+        <li><span class="zh">体积 schema 常与 `UsdGeomBoundable`、`UsdShadeMaterialBindingAPI`、`UsdRender` 和 renderer delegate 相邻出现；本页只定义 USD 层的对象模型和属性/relationship 语义。</span></li>
+        <li><span class="zh">调试 volume 资产时，先确认 field prim 类型、asset path、field name、transform 和 binding 关系，再进入具体 OpenVDB/Field3D reader 或 renderer 文档排查采样问题。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">体积 schema：</span><span class="en">volume schema</span></li>
+        <li><span class="zh">体积 prim：</span><span class="en">volume prim</span></li>
+        <li><span class="zh">字段 prim：</span><span class="en">field prim</span></li>
+        <li><span class="zh">外部体积资产：</span><span class="en">external volume asset</span></li>
+        <li><span class="zh">粒子场：</span><span class="en">particle field</span></li>
+        <li><span class="zh">体积采样边界：</span><span class="en">volume sampling boundary</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

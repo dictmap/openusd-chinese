@@ -55,6 +55,27 @@
         <li><span class="zh">着色器定义：</span><span class="en">shader definition</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-160">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`usd_shaders_page_front.html` 是 `UsdShaders` 模块入口，聚焦 USD 内建 shader node 的定义和实现，例如 preview surface、PBR 输入、纹理节点和 shader definition metadata。它与 `UsdShade` 的 authored material network 关系紧密，但职责更偏 shader definitions，而不是任意材质绑定规则。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdShaders: Definitions and Implementations of Usd* Shader Nodes while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdShade` 描述 material、shader、node graph、input/output 和 connection；`UsdShaders` 更关注一组 USD 约定 shader node 的 definition、参数和实现边界。</span></li>
+        <li><span class="zh">如果阅读目标是 `UsdPreviewSurface` 或纹理节点，应确认 input 名称、类型、默认值、色彩空间和 renderer 支持范围，而不是只看节点名。</span></li>
+        <li><span class="zh">`UsdShaders` 常和 `SdrRegistry`、`SdrShaderNode`、`SdrShaderProperty`、shader discovery/parser plugin 共同出现；Sdr 负责发现和描述 shader definition。</span></li>
+        <li><span class="zh">本页不保证每个 renderer 都以同样方式实现所有 shader node。可交换 schema 和 renderer-specific implementation 需要分开验证。</span></li>
+        <li><span class="zh">调试材质显示时，先检查 authored `UsdShade` network，再检查 `UsdShaders` definition、Sdr metadata、texture asset path 和目标 renderer 的支持矩阵。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">着色器定义：</span><span class="en">shader definition</span></li>
+        <li><span class="zh">内建 shader node：</span><span class="en">built-in shader node</span></li>
+        <li><span class="zh">预览表面：</span><span class="en">preview surface</span></li>
+        <li><span class="zh">节点参数：</span><span class="en">node parameter</span></li>
+        <li><span class="zh">shader discovery：</span><span class="en">shader discovery</span></li>
+        <li><span class="zh">渲染器支持矩阵：</span><span class="en">renderer support matrix</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
