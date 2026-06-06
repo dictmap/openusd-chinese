@@ -6823,3 +6823,36 @@
 1. 继续最多 5 页，优先处理用户会实际引用的 Gf 基础数学/几何 class 页面。
 2. 建议下一组：`full_site/api/class_gf_matrix4f.html`、`full_site/api/class_gf_matrix2f.html`、`full_site/api/class_gf_dual_quatf.html`、`full_site/api/class_gf_range1d.html`、`full_site/api/class_gf_ray.html`。
 3. 之后可继续 Gf/Vt/Sdf/Hd 的高价值 class 页面，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+
+## 第 261 轮：GfMatrix、GfDualQuat、GfRange 与 GfRay 补强
+
+已完成：
+
+- 复核当前仓库、远端与审计基线：本地 `main` 基于上一轮同步提交 `9376519`，`origin/main` 一致，起始工作区干净；全量仍为 406 个 HTML 页面，质量计数为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。
+- 新增并执行 `scripts/refine_openusd_release_batch_130.mjs`，本轮标记为 `api-class-quality-pass-130`。
+- 严格只精修 5 页：
+  - `full_site/api/class_gf_matrix4f.html`
+  - `full_site/api/class_gf_matrix2f.html`
+  - `full_site/api/class_gf_dual_quatf.html`
+  - `full_site/api/class_gf_range1d.html`
+  - `full_site/api/class_gf_ray.html`
+- 每页新增 5 条中文补强导读和 6 条术语对照；重点覆盖 `GfMatrix4f` 的 row-major storage、row-vector convention、3D transform、factorization 与 `Transform()` 语义，`GfMatrix2f` 的 determinant、inverse、2D linear transform 与 float precision 边界，`GfDualQuatf` 的 real part / dual part、rigid transform、skinning 与 interpolation 用法，`GfRange1d` 的 interval math、empty range、union/intersection 与 containment 判断，以及 `GfRay` 的 start point、direction、intersection testing 与 transform 语义；API 名称、类名、方法名、属性名、数学符号、template 参数、token 字面量和链接保持原样。
+- 质量回读：5 页均无 `TODO` / `待翻译` / `机器翻译占位`，`api-class-quality-pass-130` 均只出现 1 次：
+  - `class_gf_matrix4f.html`：中文字符 740，中文/英文块 52/44。
+  - `class_gf_matrix2f.html`：中文字符 699，中文/英文块 52/44。
+  - `class_gf_dual_quatf.html`：中文字符 669，中文/英文块 52/44。
+  - `class_gf_range1d.html`：中文字符 646，中文/英文块 52/44。
+  - `class_gf_ray.html`：中文字符 674，中文/英文块 51/43。
+- 本轮分级计数保持不变：`draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因：处理对象开始前已属 `draft_needs_translation`，本轮是二次补强精修，不是从模板草稿晋级。
+- 已运行并通过：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1`；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步结果：本轮验证通过后使用 `OpenUSD bilingual round 261: gf matrix range ray pass` 提交并推送，本轮 HTML、脚本、报告和 `work.md` 随提交同步。
+
+当前差距：
+- 全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`；其中 387 页为 `draft_needs_translation`、11 页为 `draft_template_only`，`bilingual_draft` 仍不是完整翻译。
+- 剩余 `draft_template_only` 11 页基本是 `_source.html` 源码页、`search.html` 或目录页，继续低优先处理。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理用户会实际引用的 Gf/Glf/Hd class 页面。
+2. 建议下一组：`full_site/api/class_gf_vec2i.html`、`full_site/api/class_glf_draw_target.html`、`full_site/api/class_hd_data_source_locator.html`、`full_site/api/class_hd_instance_registry.html`、`full_site/api/class_hd_st_render_pass_state.html`。
+3. 之后可继续 Gf/Vt/Sdf/Hd 的高价值 class 页面，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。

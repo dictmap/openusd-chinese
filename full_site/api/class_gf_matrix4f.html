@@ -54,6 +54,27 @@
         <li><span class="zh">矩阵分解：</span><span class="en">matrix factorization</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-130">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`GfMatrix4f` 是 float 精度 4x4 矩阵，常用于 3D transform、投影视图变换、点/方向变换和矩阵分解。阅读本页时最重要的是确认 row-major storage、row vector 约定和方法乘法顺序，避免和其他数学库的 column-major/column vector 约定混用。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for GfMatrix4f while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`matrix[i][j]` 表示第 i 行第 j 列；这个索引语义和内存排列、构造函数参数顺序、调试打印结果都有关，中文说明必须保留原英文索引表达。</span></li>
+        <li><span class="zh">`SetRotate()`、`SetScale()`、`SetTranslate()`、`SetLookAt()` 分别设置旋转、缩放、平移和视图相关矩阵；调用时要确认是否覆盖已有矩阵，而不是默认做增量组合。</span></li>
+        <li><span class="zh">`Transform()` 与 `TransformDir()` 的语义不同：前者用于点/齐次坐标变换，后者通常忽略平移分量处理方向向量；渲染和相机代码中这一区别很常见。</span></li>
+        <li><span class="zh">`Factor()`、`ExtractTranslation()`、`ExtractRotation()` 等方法用于从矩阵中分解或提取变换成分；含 shear、非均匀 scale 或奇异矩阵时应核对返回值和容差。</span></li>
+        <li><span class="zh">`GfMatrix4f` 与 `GfMatrix4d`、`GfMatrix3f`、`GfQuatf`、`GfRotation`、`GfVec3f` / `GfVec4f` 频繁互操作；精度转换和旋转表达转换都应显式确认。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Gf 4x4 float 矩阵：</span><span class="en">GfMatrix4f</span></li>
+        <li><span class="zh">行主序存储：</span><span class="en">row-major storage</span></li>
+        <li><span class="zh">行向量约定：</span><span class="en">row vector convention</span></li>
+        <li><span class="zh">齐次坐标：</span><span class="en">homogeneous coordinate</span></li>
+        <li><span class="zh">矩阵分解：</span><span class="en">matrix factorization</span></li>
+        <li><span class="zh">奇异矩阵：</span><span class="en">singular matrix</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-06T00:17:03.909Z
+Generated: 2026-06-06T00:29:04.903Z
 
 ## Summary
 
@@ -74,11 +74,11 @@ Generated: 2026-06-06T00:17:03.909Z
 | 8 | draft_template_only | bilingual_draft | 62 | 2/3 | 0 | 0 | `full_site/api/binding_map_8h_source.html` |
 | 9 | draft_needs_translation | bilingual_draft | 339 | 23/20 | 0 | 0 | `full_site/api/class_ef___lofted_output_set.html` |
 | 10 | draft_needs_translation | bilingual_draft | 327 | 22/19 | 0 | 0 | `full_site/api/class_esf_property_interface.html` |
-| 11 | draft_needs_translation | bilingual_draft | 408 | 40/37 | 0 | 0 | `full_site/api/class_gf_dual_quatf.html` |
-| 12 | draft_needs_translation | bilingual_draft | 392 | 40/37 | 0 | 0 | `full_site/api/class_gf_matrix2f.html` |
-| 13 | draft_needs_translation | bilingual_draft | 397 | 40/37 | 0 | 0 | `full_site/api/class_gf_matrix4f.html` |
-| 14 | draft_needs_translation | bilingual_draft | 383 | 40/37 | 0 | 0 | `full_site/api/class_gf_range1d.html` |
-| 15 | draft_needs_translation | bilingual_draft | 397 | 39/36 | 0 | 0 | `full_site/api/class_gf_ray.html` |
+| 11 | draft_needs_translation | bilingual_draft | 606 | 52/44 | 0 | 0 | `full_site/api/class_gf_dual_quatf.html` |
+| 12 | draft_needs_translation | bilingual_draft | 636 | 52/44 | 0 | 0 | `full_site/api/class_gf_matrix2f.html` |
+| 13 | draft_needs_translation | bilingual_draft | 677 | 52/44 | 0 | 0 | `full_site/api/class_gf_matrix4f.html` |
+| 14 | draft_needs_translation | bilingual_draft | 583 | 52/44 | 0 | 0 | `full_site/api/class_gf_range1d.html` |
+| 15 | draft_needs_translation | bilingual_draft | 611 | 51/43 | 0 | 0 | `full_site/api/class_gf_ray.html` |
 | 16 | draft_needs_translation | bilingual_draft | 403 | 40/37 | 0 | 0 | `full_site/api/class_gf_vec2i.html` |
 | 17 | draft_needs_translation | bilingual_draft | 415 | 40/37 | 0 | 0 | `full_site/api/class_glf_draw_target.html` |
 | 18 | draft_needs_translation | bilingual_draft | 388 | 40/37 | 0 | 0 | `full_site/api/class_hd_data_source_locator.html` |

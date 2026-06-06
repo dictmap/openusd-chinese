@@ -54,6 +54,27 @@
         <li><span class="zh">最小值 / 最大值：</span><span class="en">min / max</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-130">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`GfRange1d` 是 double 精度一维 interval/range，使用 `min` 和 `max` 表示区间。它遵循 interval mathematics；空范围的 `max &lt; min` 约定、默认构造值和 extend/union/intersection 行为是阅读重点。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for GfRange1d while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">默认 empty range 通常便于逐步 `ExtendBy()`；这不是有效几何范围，而是等待被数据扩展的初始状态。</span></li>
+        <li><span class="zh">`GetMin()`、`GetMax()`、`IsEmpty()`、`Contains()`、`UnionWith()`、`IntersectWith()` 等方法应按区间数学理解，而不是按单点数值容器理解。</span></li>
+        <li><span class="zh">`component-wise` 在一维中看似简单，但它和二维/三维 `GfRange2*`、`GfRange3*` 的行为一致；统一理解有助于阅读 bounding box 和 extent 代码。</span></li>
+        <li><span class="zh">`GfRange1f` 是 float 精度对应类型；切换精度时应关注比较容差和序列化/计算误差。</span></li>
+        <li><span class="zh">旧的 `ExtendBy` 等 deprecated 条目若出现，应结合 Deprecated List 和替代 API 判断迁移路径，不要在新代码中继续引入旧接口。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Gf 一维 double 范围：</span><span class="en">GfRange1d</span></li>
+        <li><span class="zh">区间数学：</span><span class="en">interval mathematics</span></li>
+        <li><span class="zh">空范围：</span><span class="en">empty range</span></li>
+        <li><span class="zh">扩展范围：</span><span class="en">ExtendBy</span></li>
+        <li><span class="zh">并集：</span><span class="en">UnionWith</span></li>
+        <li><span class="zh">交集：</span><span class="en">IntersectWith</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

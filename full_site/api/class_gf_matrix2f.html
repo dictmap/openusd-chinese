@@ -54,6 +54,27 @@
         <li><span class="zh">线性代数：</span><span class="en">linear algebra</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-130">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`GfMatrix2f` 是 float 精度 2x2 矩阵，适合表达二维线性变换、局部坐标变化和小型矩阵计算。它同样遵循 row-major order，因此和 `GfMatrix4f` 一样要注意索引、乘法和构造参数顺序。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for GfMatrix2f while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`ScalarType` 表明元素类型为 float；如果需要 double 精度，应转向 `GfMatrix2d`，不要在中文说明中弱化精度差异。</span></li>
+        <li><span class="zh">`GetDeterminant()`、`GetInverse()`、`GetTranspose()`、`SetIdentity()` 等基础操作决定矩阵是否可逆、是否保持坐标基和如何处理数值误差。</span></li>
+        <li><span class="zh">二维矩阵通常不包含平移项；若要表达 2D affine transform，需要额外向量或更高维齐次矩阵，不能直接把 `GfMatrix2f` 当作完整 2D transform container。</span></li>
+        <li><span class="zh">`GfVec2f` 相关运算应与 row vector 约定一起核对；向量在左乘还是右乘会影响组合顺序和结果方向。</span></li>
+        <li><span class="zh">本页作为低层数学值类型，不拥有 USD scene 状态；它可以出现在几何、渲染、材质或工具代码中，但本身不表示 prim 或属性。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Gf 2x2 float 矩阵：</span><span class="en">GfMatrix2f</span></li>
+        <li><span class="zh">标量类型：</span><span class="en">ScalarType</span></li>
+        <li><span class="zh">行列式：</span><span class="en">determinant</span></li>
+        <li><span class="zh">逆矩阵：</span><span class="en">inverse matrix</span></li>
+        <li><span class="zh">转置：</span><span class="en">transpose</span></li>
+        <li><span class="zh">仿射变换：</span><span class="en">affine transform</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -54,6 +54,27 @@
         <li><span class="zh">线性代数：</span><span class="en">linear algebra</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-130">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`GfDualQuatf` 是 float 精度 dual quaternion，用 real quaternion 和 dual quaternion 两部分表示旋转和平移的组合。它常用于刚体变换、骨架/蒙皮插值或保持旋转平移耦合的变换表示。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for GfDualQuatf while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`real part` 通常承载 rotation，`dual part` 编码 translation 相关信息；阅读构造函数和访问器时必须保持 real/dual 两部分的语义区分。</span></li>
+        <li><span class="zh">`Normalize()` 或归一化语义对 dual quaternion 很关键；未归一化的 dual quaternion 可能不能表示有效 rigid transform。</span></li>
+        <li><span class="zh">`GetTranslation()`、`GetReal()`、`GetDual()`、`Transform()` 等方法应和 `GfQuatf`、`GfVec3f`、`GfMatrix4f` 的转换关系一起理解。</span></li>
+        <li><span class="zh">`GfDualQuatd` 与 `GfDualQuath` 是不同精度变体；跨精度转换时要考虑误差、插值稳定性和 `GF_MIN_VECTOR_LENGTH` 这样的容差常量。</span></li>
+        <li><span class="zh">dual quaternion 数学不等同于普通 quaternion；中文层保留 `dual quaternion`、`real part`、`dual part`、`rigid transform` 等英文术语以便读者对照论文和代码。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">对偶四元数：</span><span class="en">dual quaternion</span></li>
+        <li><span class="zh">实部：</span><span class="en">real part</span></li>
+        <li><span class="zh">对偶部：</span><span class="en">dual part</span></li>
+        <li><span class="zh">刚体变换：</span><span class="en">rigid transform</span></li>
+        <li><span class="zh">归一化：</span><span class="en">Normalize</span></li>
+        <li><span class="zh">精度变体：</span><span class="en">precision variant</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

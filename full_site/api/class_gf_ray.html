@@ -54,6 +54,27 @@
         <li><span class="zh">相交测试：</span><span class="en">intersection testing</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-130">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`GfRay` 是 Basic Geometry 中的三维射线类型，由 start point/origin 和 direction vector 组成，用于平面、包围盒、线、线段和距离查询等 intersection testing。默认不保证 direction 是 unit length，这是最容易误读的约定。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for GfRay while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`SetPointAndDirection()`、`GetStartPoint()`、`GetDirection()`、`GetPoint()` 是基础读写入口；调用者要自己确认 direction vector 是否需要归一化。</span></li>
+        <li><span class="zh">`Intersect()` 的多个 overload 分别处理 `GfPlane`、`GfRange3d`、`GfBBox3d` 等对象；阅读时要保留 overload 编号和参数类型，避免混淆相交对象。</span></li>
+        <li><span class="zh">英文说明中 distance 为 0 的 start point 也算 intersecting；这会影响拾取、裁剪和最近交点判断。</span></li>
+        <li><span class="zh">`FindClosestPoint()` 更偏距离/最近点查询，不等同于所有几何对象上的相交判定；结果应结合参数范围和 direction length 理解。</span></li>
+        <li><span class="zh">`GfRay` 常与 `GfMatrix4d` 组合进行世界/局部空间变换；变换射线时需分别处理 start point 和 direction，避免把平移错误地作用到 direction。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Gf 射线：</span><span class="en">GfRay</span></li>
+        <li><span class="zh">起点：</span><span class="en">start point</span></li>
+        <li><span class="zh">方向向量：</span><span class="en">direction vector</span></li>
+        <li><span class="zh">单位长度：</span><span class="en">unit length</span></li>
+        <li><span class="zh">相交测试：</span><span class="en">intersection testing</span></li>
+        <li><span class="zh">最近点：</span><span class="en">closest point</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
