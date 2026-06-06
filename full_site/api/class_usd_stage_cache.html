@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：UsdStageCache Class / UsdStageCache Class</title>
+  <title>完整双语参考：UsdStageCache Class / UsdStageCache Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,76 +24,48 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：UsdStageCache Class / UsdStageCache Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：UsdStageCache Class / UsdStageCache Class</h1>
     <div class="meta">https://openusd.org/release/api/class_usd_stage_cache.html</div>
   </header>
   <main>
     <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <h2>完成说明 / Completion Note</h2>
+      <p class="zh">本页已从全量队列晋级为完整双语参考页：中文层覆盖 `UsdStageCache` 作为 strongly concurrency safe `UsdStageRefPtr` collection 的角色、与 `UsdStageCacheContext` / `UsdStage::Open()` 的典型配合、按 root layer / session layer / `ArResolverContext` 等条件查找 stage 的语义、`Find()` / `FindOneMatching()` / `FindAllMatching()` 的选择边界、`Contains()` / `GetAllStages()` / `GetId()` 的诊断用途、`Erase()` / `EraseAll()` / `Clear()` 与外部引用生命周期的关系，以及 stage cache 与 layer cache / resolver cache 的边界；英文原文摘录、API 名称、类名、方法名、类型名和链接保持原样。</p>
+      <p class="en">This page is promoted from the full-site queue to a complete bilingual reference page. The Chinese layer covers the role of `UsdStageCache` as a strongly concurrency safe `UsdStageRefPtr` collection, typical use with `UsdStageCacheContext` and `UsdStage::Open()`, stage lookup by root layer, session layer, `ArResolverContext`, and other matching criteria, the selection boundaries among `Find()`, `FindOneMatching()`, and `FindAllMatching()`, diagnostic usage of `Contains()`, `GetAllStages()`, and `GetId()`, the relationship between `Erase()`, `EraseAll()`, `Clear()`, and external reference lifetime, and the boundary between a stage cache, a layer cache, and a resolver cache while retaining English excerpts, API names, class names, method names, type names, and links.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-041">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 UsdStageCache Class Reference 补充中文优先的类职责、读取重点、关键属性/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, key attribute/method groups, and terminology for UsdStageCache Class Reference while retaining English page names, class names, method names, attribute names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`UsdStageCache` 是强并发安全的 `UsdStageRefPtr` 集合，用于在多个 clients 和 threads 之间共享 `UsdStage`。</span></li>
-        <li><span class="zh">英文摘录说明除构造和析构外，所有操作都可以并发执行；典型用法是绑定 `UsdStageCacheContext` 后通过 `UsdStage::Open()` 查找或发布 stage。</span></li>
-        <li><span class="zh">`Find()`、`FindOneMatching()`、`FindAllMatching()` 用于按条件查找缓存内 stage；`Contains()`、`GetAllStages()` 用于检查和枚举缓存内容。</span></li>
-        <li><span class="zh">`Erase()`、`EraseAll()`、`Clear()` 控制移除缓存项；这些操作会影响后续客户端是否复用已有 stage，需注意并发和生命周期语义。</span></li>
-        <li><span class="zh">阅读本页时应把 `UsdStageCache` 看作 stage 共享和复用机制，而不是 layer cache；它缓存的是已打开的 stage 对象及其引用指针。</span></li>
-      </ul>
+    <section data-cn-complete="usd-stage-cache-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">官方把 `UsdStageCache` 描述为 a strongly concurrency safe collection of `UsdStageRefPtr`。它缓存的是已经打开或发布的 `UsdStage` 引用指针，而不是 `SdfLayer`、asset resolver 结果或 composition cache。理解这一点可以避免把 stage 复用问题误判为 layer 加载或资产解析问题。</p>
+      <p class="en">The official text describes `UsdStageCache` as a strongly concurrency safe collection of `UsdStageRefPtr`. It caches references to already opened or published `UsdStage` objects, not `SdfLayer` objects, asset resolver results, or composition caches. This distinction prevents confusing stage reuse issues with layer loading or asset-resolution problems.</p>
+      <p class="zh">典型用法是把 `UsdStageCacheContext` 绑定到某个 cache，然后调用 `UsdStage::Open()`。在这个上下文中，Open 操作可以先查找匹配的 stage；如果没有合适结果，也可以把新打开的 stage 发布到 cache。也就是说，cache 不替代 `UsdStage::Open()`，而是改变它与共享 stage 集合交互的方式。</p>
+      <p class="en">The typical pattern is to bind a `UsdStageCacheContext` to a cache and then call `UsdStage::Open()`. In that context, the open operation can first look for a matching stage and, if no suitable result exists, publish a newly opened stage to the cache. The cache does not replace `UsdStage::Open()`; it changes how open operations interact with a shared stage collection.</p>
+      <p class="zh">“strongly concurrency safe” 的含义需要精确阅读：除 construction 和 destruction 外，cache 的操作可以并发执行。但这并不表示应用层业务逻辑自动同步，也不表示共享的 `UsdStage` 内容可以随意并发 mutation。多个线程共享 stage 时，仍要考虑 notice、payload loading、edit target、layer mutation 和调用方读写策略。</p>
+      <p class="en">The phrase strongly concurrency safe needs a precise reading: operations other than construction and destruction may be performed concurrently on the cache. This does not mean application-level logic is automatically synchronized, nor that shared `UsdStage` contents can be mutated freely from any thread. Shared-stage users still need to reason about notices, payload loading, edit targets, layer mutation, and caller-side read/write policy.</p>
+      <p class="zh">`Find()`、`FindOneMatching()` 和 `FindAllMatching()` 的区别在于匹配范围和选择策略。`Find()` 适合已知 cache id 或明确键值的直接查找；`FindOneMatching()` 适合调用方期待唯一匹配的场景；`FindAllMatching()` 则保留所有候选，便于诊断 root layer、session layer、resolver context 或 load state 造成的多重匹配。</p>
+      <p class="en">The difference among `Find()`, `FindOneMatching()`, and `FindAllMatching()` is the lookup scope and selection policy. `Find()` is useful for direct lookup by known cache id or explicit key. `FindOneMatching()` fits callers that expect one matching stage. `FindAllMatching()` preserves every candidate, which is useful when root layer, session layer, resolver context, or load state can produce multiple matches.</p>
+      <p class="zh">`Contains()`、`GetAllStages()` 和 `GetId()` 更偏诊断和管理。`Contains()` 可以确认某个 stage 或 id 是否仍在 cache 中；`GetAllStages()` 能枚举当前缓存持有的 stage；`GetId()` 把 stage 与 cache 内部 identity 关联起来。它们反映 cache 中的引用关系，不保证 stage 的 scene 内容没有变化。</p>
+      <p class="en">`Contains()`, `GetAllStages()`, and `GetId()` are more diagnostic and administrative. `Contains()` verifies whether a stage or id is still present in the cache; `GetAllStages()` enumerates stages currently held by the cache; `GetId()` associates a stage with its cache identity. These calls describe references inside the cache; they do not guarantee that the scene contents of a stage are unchanged.</p>
+      <p class="zh">`Erase()`、`EraseAll()` 和 `Clear()` 只移除 cache 记录，不等于销毁所有 stage 对象。只要其他地方还持有 `UsdStageRefPtr`，对应 `UsdStage` 仍可能继续存活。调试内存或资源释放时，要同时检查 cache 内容和外部强引用，不能只看 cache 是否已经清空。</p>
+      <p class="en">`Erase()`, `EraseAll()`, and `Clear()` remove cache records; they do not destroy every stage object. As long as another `UsdStageRefPtr` exists elsewhere, the corresponding `UsdStage` can remain alive. When debugging memory or resource release, inspect both cache entries and external strong references, not only whether the cache has been cleared.</p>
+      <p class="zh">stage cache 的匹配语义通常和 root layer、session layer、path resolver context、initial load set 等因素有关。两个 stage 即使指向相同文件名，只要 session layer 或 resolver context 不同，就可能不能当作同一个缓存条目复用。生产工具应明确自己的 cache key 期望，而不是假设 URL 或路径字符串相同就足够。</p>
+      <p class="en">Stage-cache matching semantics usually depend on root layer, session layer, path resolver context, initial load set, and related factors. Two stages that refer to the same filename may still not be interchangeable if their session layer or resolver context differs. Production tools should define their expected cache key rather than assuming that identical URL or path strings are sufficient.</p>
+      <p class="zh">`UsdStageCache` 常用于长生命周期应用、工具进程、插件宿主或多视图场景中，避免重复打开同一 stage 并让多个客户端共享结果。但共享 stage 也意味着副作用会被更多调用方观察到：payload load/unload、muted layer、variant edit、metadata mutation 等行为都需要按应用边界设计。</p>
+      <p class="en">`UsdStageCache` is common in long-lived applications, tool processes, plugin hosts, and multi-view workflows, where it avoids repeatedly opening the same stage and lets clients share results. Shared stages also mean side effects can be observed by more callers: payload load/unload, muted layers, variant edits, and metadata mutation need to be designed around application boundaries.</p>
+      <p class="zh">本页和之前晋级的 `UsdPrim`、`SdfLayer`、`SdfPath` 页面直接相关。`SdfLayer` 是底层 layer 数据容器，`SdfPath` 是命名空间定位值，`UsdPrim` 是 composition 后的 prim 句柄，而 `UsdStageCache` 管理的是整个 `UsdStage` 对象的共享与查找。把这些层次分开，是理解 USD 应用缓存策略的关键。</p>
+      <p class="en">This page connects directly to the previously promoted `UsdPrim`, `SdfLayer`, and `SdfPath` pages. `SdfLayer` is the low-level layer data container, `SdfPath` is the namespace location value, `UsdPrim` is the composed prim handle, and `UsdStageCache` manages sharing and lookup of whole `UsdStage` objects. Keeping these layers separate is key to understanding USD application caching strategy.</p>
+      <p class="zh">常见误读包括：把 cache 的线程安全当成 stage mutation 的线程安全；以为 `Clear()` 会销毁所有外部 stage；把 stage cache 当成 asset resolver cache；或者用 `GetAllStages()` 作为热路径查找接口。正确做法是让 cache 负责共享和查找，让应用层显式管理生命周期、匹配条件和并发读写边界。</p>
+      <p class="en">Common misreadings include treating cache thread safety as stage-mutation thread safety, assuming `Clear()` destroys every external stage, confusing the stage cache with an asset resolver cache, or using `GetAllStages()` as a hot-path lookup interface. The right model is to let the cache handle sharing and lookup while the application explicitly manages lifetime, matching criteria, and concurrent read/write boundaries.</p>
       <h3>术语对照 / Terms</h3>
       <ul>
-        <li><span class="zh">stage 缓存：</span><span class="en">stage cache</span></li>
-        <li><span class="zh">UsdStageRefPtr：</span><span class="en">UsdStageRefPtr</span></li>
-        <li><span class="zh">并发安全：</span><span class="en">concurrency safe</span></li>
-        <li><span class="zh">UsdStageCacheContext：</span><span class="en">UsdStageCacheContext</span></li>
-        <li><span class="zh">stage 复用：</span><span class="en">stage reuse</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-133">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`UsdStageCache` 是强并发安全的 `UsdStageRefPtr` 集合，用于让多个 clients 和 threads 共享已打开的 `UsdStage`。阅读本页时要把它理解为 stage 复用和发布机制，而不是 layer cache 或 asset resolver cache。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdStageCache while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`UsdStageCacheContext` 是典型使用入口：绑定上下文后，`UsdStage::Open()` 可以在缓存中查找匹配 stage，或把新打开的 stage 发布到缓存。</span></li>
-        <li><span class="zh">`Find()`、`FindOneMatching()` 和 `FindAllMatching()` 负责按 root layer、session layer、resolver context 或 predicate 等条件定位缓存项；多个匹配时要明确选择策略。</span></li>
-        <li><span class="zh">`Contains()`、`GetAllStages()` 和 `GetId()` 帮助调试和枚举缓存内容；这些接口反映缓存持有的 stage 引用，不表示 stage 内容一定未变化。</span></li>
-        <li><span class="zh">`Erase()`、`EraseAll()` 与 `Clear()` 会移除缓存记录，但不会自动撤销所有外部 `UsdStageRefPtr`；只要其他引用仍存在，stage 对象仍可能存活。</span></li>
-        <li><span class="zh">并发安全不等于业务逻辑自动同步；多个线程共享同一 stage 时，仍需理解 stage mutation、notice、payload loading 和应用侧读写策略。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">USD stage 缓存：</span><span class="en">UsdStageCache</span></li>
-        <li><span class="zh">stage 引用指针：</span><span class="en">UsdStageRefPtr</span></li>
+        <li><span class="zh">stage 缓存：</span><span class="en">UsdStageCache</span></li>
+        <li><span class="zh">stage 强引用指针：</span><span class="en">UsdStageRefPtr</span></li>
         <li><span class="zh">stage 缓存上下文：</span><span class="en">UsdStageCacheContext</span></li>
-        <li><span class="zh">线程安全：</span><span class="en">thread safe</span></li>
-        <li><span class="zh">缓存查找：</span><span class="en">cache lookup</span></li>
-        <li><span class="zh">stage 生命周期：</span><span class="en">stage lifetime</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-144">
-      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
-      <p class="zh">`UsdStageCache` 是强并发安全的 `UsdStageRefPtr` collection，用于在多个 clients 和 threads 之间共享 stage。典型用法是通过 `UsdStageCacheContext` 绑定 cache，再调用 `UsdStage::Open()` 查找或发布 stage。</p>
-      <p class="en">This third-pass refinement adds page-specific Chinese guidance for UsdStageCache while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`UsdStageCache` 的强线程安全只覆盖构造和析构之外的操作；对象生命周期本身仍需要由调用方清晰管理。</span></li>
-        <li><span class="zh">`Find()`、`FindOneMatching()` 与 `FindAllMatching()` 按 cache key / matching criteria 查询 stage；如果有多个匹配项，应明确选择单个还是全部。</span></li>
-        <li><span class="zh">`Contains()`、`Insert()`、`Erase()`、`EraseAll()` 和 `Clear()` 管理 cache 内容，适合配合测试、长生命周期工具或多场景应用的资源回收策略。</span></li>
-        <li><span class="zh">`GetAllStages()` 适合诊断 cache 当前持有的 stages，但不应在性能敏感路径中当作常规查找机制。</span></li>
-        <li><span class="zh">`UsdStageCache` 不改变 stage composition 本身；它只是共享和复用 `UsdStage` 实例，stage 的 root layer、session layer、resolver context 和 load state 仍决定具体内容。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">舞台缓存：</span><span class="en">UsdStageCache</span></li>
-        <li><span class="zh">舞台强引用：</span><span class="en">UsdStageRefPtr</span></li>
-        <li><span class="zh">缓存上下文：</span><span class="en">UsdStageCacheContext</span></li>
-        <li><span class="zh">强线程安全：</span><span class="en">strongly thread safe</span></li>
-        <li><span class="zh">匹配查询：</span><span class="en">FindOneMatching()</span></li>
-        <li><span class="zh">全部舞台：</span><span class="en">GetAllStages()</span></li>
+        <li><span class="zh">强并发安全：</span><span class="en">strongly concurrency safe</span></li>
+        <li><span class="zh">单个匹配查询：</span><span class="en">FindOneMatching()</span></li>
+        <li><span class="zh">全部匹配查询：</span><span class="en">FindAllMatching()</span></li>
+        <li><span class="zh">清空缓存记录：</span><span class="en">Clear()</span></li>
+        <li><span class="zh">枚举所有 stage：</span><span class="en">GetAllStages()</span></li>
       </ul>
     </section>
     <section>

@@ -4825,3 +4825,52 @@
 1. 继续真实晋级，优先考虑 `full_site/api/class_usd_stage_cache.html` 或 `full_site/api/class_usd_attribute_limits.html` 等仍在 406 清单内的核心 API 页。
 2. 每个晋级页面必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 增加。
 3. 如用户实际点击到高价值占位链接，优先修复该浏览缺口。
+
+## 第 308 轮：将 UsdStageCache 提升为完整双语
+
+已完成：
+
+- 将 `full_site/api/class_usd_stage_cache.html` 从 `bilingual_draft` 晋级为 `bilingual_complete`。
+- 页面标题改为“完整双语参考：UsdStageCache Class”，并移除通用 draft 文案和“后续迭代会继续补齐”等草稿标记。
+- 新增 `逐段双语理解 / Paragraph-Level Bilingual Coverage` 区块，覆盖：
+  - `UsdStageCache` 作为 strongly concurrency safe `UsdStageRefPtr` collection 的角色。
+  - 与 `UsdStageCacheContext` 和 `UsdStage::Open()` 的典型配合方式。
+  - stage cache 与 `SdfLayer` cache、asset resolver cache、composition cache 的边界。
+  - construction / destruction 之外操作可并发执行的真实含义，以及 shared stage mutation 仍需应用层管理。
+  - `Find()`、`FindOneMatching()`、`FindAllMatching()` 的查找范围和选择策略。
+  - `Contains()`、`GetAllStages()`、`GetId()` 的诊断和管理用途。
+  - `Erase()`、`EraseAll()`、`Clear()` 与外部 `UsdStageRefPtr` 生命周期的关系。
+  - root layer、session layer、`ArResolverContext`、load state 等匹配语义。
+  - 与此前晋级页 `UsdPrim`、`SdfLayer`、`SdfPath` 的层级关系。
+- 更新 `reports/bilingual_completion_promotions.json/md`，新增 `round-308-usd-stage-cache` 晋级记录。
+- 更新 `reports/current_problem_audit.md/json`，将当前真实状态同步为 14 complete / 392 draft。
+- 重建 `openusd_bilingual_final.html`，总入口现在显示 14 complete / 392 incomplete drafts。
+
+分级变化：
+
+- `good_bilingual`：13 -> 14
+- `bilingual_complete`：13 -> 14
+- `bilingual_draft`：393 -> 392
+- `draft_needs_translation`：382 -> 381
+- `draft_template_only`：11 保持不变
+
+验证结果：
+
+- `discover_openusd_all_pages.mjs` 通过，范围稳定为 406；`promoted_complete_pages=6`。
+- `audit_openusd_translation_quality.mjs` 通过，确认 `good_bilingual=14`，目标页为 `grade=good_bilingual`。
+- `route_openusd_internal_links_local.mjs` 通过。
+- `audit_openusd_full_draft_preview.mjs` 通过，392/392 draft 页面可预览。
+- `audit_openusd_report_index.mjs` 通过。
+- `validate_openusd_api_repro.ps1` 通过，`required_check_count=288`，`failed_check_count=0`。
+- `reports/validation_report.json` 经 Node 解析确认 `bom=false`。
+
+当前差距：
+
+- 仍有 392 个 `bilingual_draft` 页面不是完整翻译，其中 381 个仍为 `draft_needs_translation`。
+- 406 清单外的 Doxygen 目标仍会进入本地未覆盖占位页；这是当前 P1 浏览缺口。
+
+下一步目标：
+
+1. 继续真实晋级，优先考虑 `full_site/api/class_usd_attribute_limits.html` 或其他 406 清单内核心 API 页。
+2. 每个晋级页面必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 增加。
+3. 如用户实际点击到高价值占位链接，优先修复该浏览缺口。
