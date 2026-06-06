@@ -75,6 +75,27 @@
         <li><span class="zh">文件格式参数：</span><span class="en">FileFormatArguments</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-147">
+      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
+      <p class="zh">`SdfUsdzFileFormat` 是用于 `.usdz` package 的 `SdfFileFormat` 实现，负责让 `SdfLayer` 以包形式读取和写出 USD 内容。阅读本页时要把普通文本 layer、package root layer、resolver 能否定位 asset，以及 `.usdz` 写出限制分开看。</p>
+      <p class="en">This third-pass refinement adds page-specific Chinese guidance for SdfUsdzFileFormat while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`CanRead()` 用来判断给定文件是否可由该格式处理；它回答的是格式识别和可读性问题，不等同于已经成功打开了所有包内 asset。</span></li>
+        <li><span class="zh">`Read()` 和 `_ReadDetached()` 面向 layer 数据载入，通常会和 `GetPackageRootLayerPath()`、resolver identifier 以及 package 内根层路径一起排查。</span></li>
+        <li><span class="zh">`WriteToFile()`、`WriteToStream()` 与 `WriteToString()` 都是写出入口，但 `.usdz` package 的归档结构、只读约束和外部依赖限制会影响可写能力。</span></li>
+        <li><span class="zh">`ReadFromString()` 适合测试或内存中的 layer 内容，不代表真实 `.usdz` 包中材质、贴图或子层资源已经按打包规则存在。</span></li>
+        <li><span class="zh">`IsPackage()` 明确该 file format 属于 package；调试时应同时检查 layer identifier、resolved path、package-relative path 和 `SdfLayer` 的 dirty/write 状态。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">包格式：</span><span class="en">package file format</span></li>
+        <li><span class="zh">`.usdz` 包：</span><span class="en">.usdz package</span></li>
+        <li><span class="zh">包根层路径：</span><span class="en">package root layer path</span></li>
+        <li><span class="zh">格式可读性：</span><span class="en">CanRead()</span></li>
+        <li><span class="zh">写出到文件：</span><span class="en">WriteToFile()</span></li>
+        <li><span class="zh">从字符串读取：</span><span class="en">ReadFromString()</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

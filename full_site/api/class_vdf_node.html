@@ -75,6 +75,27 @@
         <li><span class="zh">连接回调：</span><span class="en">connection hook</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-147">
+      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
+      <p class="zh">`VdfNode` 是 `VdfNetwork` 中所有 node 的抽象基类，描述输入、输出、依赖掩码、调度请求和网络归属等拓扑信息。它定义 graph 上的计算节点形状，而不是直接承载每次 evaluation 的数值数据。</p>
+      <p class="en">This third-pass refinement adds page-specific Chinese guidance for VdfNode while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`GetInput()`、`GetOutput()`、输入列表和输出列表用于检查 node 暴露的端口；端口命名通常使用 `TfToken`，应保持原样阅读。</span></li>
+        <li><span class="zh">dependency mask 与 required input/output request 相关函数用于说明某个输出依赖哪些输入，是 schedule 和增量计算分析的关键。</span></li>
+        <li><span class="zh">`VdfContext` 在执行 callback 时提供数值访问，而 `VdfNode` 本身更偏向 network topology、端口规格和连接关系。</span></li>
+        <li><span class="zh">`GetNetwork()`、node id 和 ownership 相关接口帮助定位 node 属于哪个 `VdfNetwork`；跨网络移动或复用 node 时要格外小心。</span></li>
+        <li><span class="zh">抽象类页面中的 `_AppendInputs()`、`_AppendOutputs()`、`_InitializeInputAndOutputSpecs()` 等 protected/private 钩子主要面向派生类实现者，而不是普通调用者。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">抽象节点基类：</span><span class="en">abstract node base class</span></li>
+        <li><span class="zh">Vdf 网络：</span><span class="en">VdfNetwork</span></li>
+        <li><span class="zh">输入端口：</span><span class="en">input port</span></li>
+        <li><span class="zh">输出端口：</span><span class="en">output port</span></li>
+        <li><span class="zh">依赖掩码：</span><span class="en">dependency mask</span></li>
+        <li><span class="zh">调度请求：</span><span class="en">schedule request</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

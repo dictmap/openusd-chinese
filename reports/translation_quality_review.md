@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-06T03:52:22.521Z
+Generated: 2026-06-06T04:06:42.855Z
 
 ## Summary
 
@@ -97,7 +97,7 @@ Generated: 2026-06-06T03:52:22.521Z
 | 31 | draft_needs_translation | bilingual_draft | 824 | 64/51 | 0 | 0 | `full_site/api/class_sdf_layer.html` |
 | 32 | draft_needs_translation | bilingual_draft | 793 | 64/51 | 0 | 0 | `full_site/api/class_sdf_path.html` |
 | 33 | draft_needs_translation | bilingual_draft | 691 | 64/51 | 0 | 0 | `full_site/api/class_sdf_prim_spec.html` |
-| 34 | draft_needs_translation | bilingual_draft | 567 | 46/38 | 0 | 0 | `full_site/api/class_sdf_usdz_file_format.html` |
+| 34 | draft_needs_translation | bilingual_draft | 789 | 58/45 | 0 | 0 | `full_site/api/class_sdf_usdz_file_format.html` |
 | 35 | draft_needs_translation | bilingual_draft | 738 | 64/51 | 0 | 0 | `full_site/api/class_sdr_shader_property.html` |
 | 36 | draft_needs_translation | bilingual_draft | 792 | 64/51 | 0 | 0 | `full_site/api/class_tf_dense_hash_map.html` |
 | 37 | draft_needs_translation | bilingual_draft | 589 | 39/31 | 0 | 0 | `full_site/api/class_tf_py_lock.html` |
@@ -110,8 +110,8 @@ Generated: 2026-06-06T03:52:22.521Z
 | 44 | draft_needs_translation | bilingual_draft | 670 | 56/43 | 0 | 0 | `full_site/api/class_usd_imaging_adapter_registry.html` |
 | 45 | draft_needs_translation | bilingual_draft | 700 | 64/51 | 0 | 0 | `full_site/api/class_usd_imaging_delegate.html` |
 | 46 | draft_needs_translation | bilingual_draft | 665 | 57/44 | 0 | 0 | `full_site/api/class_usd_imaging_nurbs_patch_adapter.html` |
-| 47 | draft_needs_translation | bilingual_draft | 591 | 46/38 | 0 | 0 | `full_site/api/class_usd_lux_disk_light.html` |
-| 48 | draft_needs_translation | bilingual_draft | 590 | 52/44 | 0 | 0 | `full_site/api/class_usd_lux_shaping_a_p_i.html` |
+| 47 | draft_needs_translation | bilingual_draft | 791 | 58/45 | 0 | 0 | `full_site/api/class_usd_lux_disk_light.html` |
+| 48 | draft_needs_translation | bilingual_draft | 753 | 64/51 | 0 | 0 | `full_site/api/class_usd_lux_shaping_a_p_i.html` |
 | 49 | draft_needs_translation | bilingual_draft | 735 | 64/51 | 0 | 0 | `full_site/api/class_usd_physics_joint.html` |
 | 50 | draft_needs_translation | bilingual_draft | 737 | 64/51 | 0 | 0 | `full_site/api/class_usd_prim.html` |
 | 51 | draft_needs_translation | bilingual_draft | 598 | 46/38 | 0 | 0 | `full_site/api/class_usd_proc_generative_procedural.html` |
@@ -121,9 +121,9 @@ Generated: 2026-06-06T03:52:22.521Z
 | 55 | draft_needs_translation | bilingual_draft | 835 | 64/51 | 0 | 0 | `full_site/api/class_usd_stage_cache.html` |
 | 56 | draft_needs_translation | bilingual_draft | 678 | 52/44 | 0 | 0 | `full_site/api/class_usd_validation_error.html` |
 | 57 | draft_needs_translation | bilingual_draft | 563 | 52/44 | 0 | 0 | `full_site/api/class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html` |
-| 58 | draft_needs_translation | bilingual_draft | 613 | 50/42 | 0 | 0 | `full_site/api/class_vdf_context.html` |
+| 58 | draft_needs_translation | bilingual_draft | 856 | 62/49 | 0 | 0 | `full_site/api/class_vdf_context.html` |
 | 59 | draft_needs_translation | bilingual_draft | 579 | 52/44 | 0 | 0 | `full_site/api/class_vdf_grapher_options.html` |
-| 60 | draft_needs_translation | bilingual_draft | 617 | 52/44 | 0 | 0 | `full_site/api/class_vdf_node.html` |
+| 60 | draft_needs_translation | bilingual_draft | 842 | 64/51 | 0 | 0 | `full_site/api/class_vdf_node.html` |
 | 61 | draft_needs_translation | bilingual_draft | 545 | 36/28 | 0 | 0 | `full_site/api/class_vdf_read_write_accessor.html` |
 | 62 | draft_needs_translation | bilingual_draft | 533 | 40/32 | 0 | 0 | `full_site/api/class_vdf_test_utils_1_1_node.html` |
 | 63 | draft_needs_translation | bilingual_draft | 857 | 64/51 | 0 | 0 | `full_site/api/class_vt_value_ref.html` |

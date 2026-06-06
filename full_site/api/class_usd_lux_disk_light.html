@@ -75,6 +75,27 @@
         <li><span class="zh">schema 属性清单：</span><span class="en">GetSchemaAttributeNames()</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-147">
+      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
+      <p class="zh">`UsdLuxDiskLight` 是表示圆盘面积光的 concrete typed schema。默认语义是圆盘位于 XY plane、沿 -Z 方向单侧发光；页面中的 `radius`、boundable light base 和 `UsdLuxLightAPI` 属性共同决定可见几何边界与渲染采样。</p>
+      <p class="en">This third-pass refinement adds page-specific Chinese guidance for UsdLuxDiskLight while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Define()` 用于在 stage 上定义 `UsdLuxDiskLight` prim，`Get()` 用于从已有 prim 取得 schema 视图；二者不要和属性创建混淆。</span></li>
+        <li><span class="zh">`CreateRadiusAttr()` / `GetRadiusAttr()` 管理圆盘半径；半径影响发光面积和 bounds，但最终采样能量还要结合 renderer 对 area light 的实现。</span></li>
+        <li><span class="zh">作为 `UsdLuxBoundableLightBase` 派生类型，它同时继承 boundable、xformable 和 light API 相关行为，调试时应检查 transform、extent 和 light 参数。</span></li>
+        <li><span class="zh">`UsdLuxLightAPI` 侧的 `intensity`、`exposure`、`color`、`normalize` 等属性会影响能量解释；`DiskLight` 页面只列出本 schema 的新增属性。</span></li>
+        <li><span class="zh">如果同时应用 `UsdLuxShapingAPI`，应区分圆盘几何、发光方向、shaping 属性和 renderer 对 shaping 的支持范围。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">圆盘面积光：</span><span class="en">disk area light</span></li>
+        <li><span class="zh">具体 typed schema：</span><span class="en">concrete typed schema</span></li>
+        <li><span class="zh">半径属性：</span><span class="en">radius attribute</span></li>
+        <li><span class="zh">单侧发光：</span><span class="en">one-sided emission</span></li>
+        <li><span class="zh">可绑定光基类：</span><span class="en">UsdLuxBoundableLightBase</span></li>
+        <li><span class="zh">光照 API：</span><span class="en">UsdLuxLightAPI</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

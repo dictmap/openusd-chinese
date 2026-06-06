@@ -75,6 +75,27 @@
         <li><span class="zh">诊断警告：</span><span class="en">Warn()</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-147">
+      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
+      <p class="zh">`VdfContext` 是传给 Vdf computation callback 的执行期参数包。它不是持久化 graph state，而是 callback 在一次 evaluation 中读取输入、判断请求输出、设置输出值以及发出诊断的唯一上下文入口。</p>
+      <p class="en">This third-pass refinement adds page-specific Chinese guidance for VdfContext while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`GetInputValue()` 与 `GetInputValuePtr()` 用来访问当前 computation 的输入值；调用前通常需要理解输入是否已被 schedule 请求和是否真的存在值。</span></li>
+        <li><span class="zh">`HasInputValue()` 区分输入端口存在和输入值可用这两件事，可避免把缺值、空值和未连接输入混为一谈。</span></li>
+        <li><span class="zh">`IsOutputRequested()` 帮助 callback 判断某个 output 是否需要计算；它服务于按需 evaluation，不应被当成永久性的 node 输出状态。</span></li>
+        <li><span class="zh">`SetOutput()`、`SetEmptyOutput()` 和 `SetOutputToReferenceInput()` 是写回计算结果的主要路径，适合分别表达普通输出、空输出和引用输入转发。</span></li>
+        <li><span class="zh">`Warn()`、`CodingError()` 与 `GetNodeDebugName()` 面向诊断；复杂网络调试时应保留 node 名称、输入端口和请求输出信息。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">计算回调上下文：</span><span class="en">computation callback context</span></li>
+        <li><span class="zh">输入值访问：</span><span class="en">input value access</span></li>
+        <li><span class="zh">请求输出：</span><span class="en">requested output</span></li>
+        <li><span class="zh">空输出：</span><span class="en">empty output</span></li>
+        <li><span class="zh">引用输入：</span><span class="en">reference input</span></li>
+        <li><span class="zh">节点调试名：</span><span class="en">node debug name</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

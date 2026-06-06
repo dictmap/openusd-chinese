@@ -75,6 +75,27 @@
         <li><span class="zh">applied API schema：</span><span class="en">applied API schema</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-147">
+      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
+      <p class="zh">`UsdLuxShapingAPI` 是用于控制 light emission shaping 的 applied API schema。它把 cone、focus、IES 文件和归一化等控制写成 USD 属性；实际光照外观仍取决于灯光类型、renderer 支持和 authored values。</p>
+      <p class="en">This third-pass refinement adds page-specific Chinese guidance for UsdLuxShapingAPI while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Apply()` / `CanApply()` 处理 API schema 是否能应用到目标 prim；这一步是 schema authoring，不等同于 renderer 已经实现所有 shaping 效果。</span></li>
+        <li><span class="zh">`CreateShapingConeAngleAttr()` 和 `CreateShapingConeSoftnessAttr()` 描述锥形发光范围与边缘过渡，常用于聚光灯式控制。</span></li>
+        <li><span class="zh">`CreateShapingFocusAttr()` 与 `CreateShapingFocusTintAttr()` 控制发光聚焦和色调变化，适合和 `intensity`、`exposure`、`color` 一起调试。</span></li>
+        <li><span class="zh">`CreateShapingIesFileAttr()`、`CreateShapingIesAngleScaleAttr()` 和 `CreateShapingIesNormalizeAttr()` 关联 IES profile 文件、角度缩放和归一化策略。</span></li>
+        <li><span class="zh">`CreateInput()`、`CreateOutput()` 与 `ConnectableAPI()` 表明该 API 也参与 connectable schema 语义；连接关系和数值属性需要分别检查。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">光形控制 API：</span><span class="en">UsdLuxShapingAPI</span></li>
+        <li><span class="zh">应用式 API schema：</span><span class="en">applied API schema</span></li>
+        <li><span class="zh">锥角：</span><span class="en">shaping cone angle</span></li>
+        <li><span class="zh">锥边缘柔化：</span><span class="en">shaping cone softness</span></li>
+        <li><span class="zh">聚焦：</span><span class="en">shaping focus</span></li>
+        <li><span class="zh">IES 文件：</span><span class="en">IES file</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
