@@ -74,6 +74,27 @@
         <li><span class="zh">Sdf 规格对象：</span><span class="en">SdfSpec</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-158">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`functions_rela_t.html` 是 Class Members - Related Functions 的 T 字母段索引，聚合 `TfRefPtr&lt;T&gt;`、`TfRefBase`、`EfTime`、`PcpInstanceKey`、`SdfSpec`、`TfToken`、`TfPyMethodResult` 等相关函数入口。它用于跳转，不是任一类的完整说明。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Class Members - Related Functions - T while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Related Functions` 往往包含友元函数、非成员辅助函数、比较/输出操作符或和 class 紧密绑定的 helper；具体含义要进入目标 class 或 namespace 页面确认。</span></li>
+        <li><span class="zh">`TfRefPtr&lt;T&gt;` 与 `TfRefBase` 关联引用计数对象生命周期，常见 related functions 可能涉及比较、swap、输出或辅助构造。</span></li>
+        <li><span class="zh">`TfToken` 相关 related functions 通常服务 interned token 字符串比较、输出或转换；不要把它和 schema token table 的变量索引混为一谈。</span></li>
+        <li><span class="zh">`PcpInstanceKey`、`SdfSpec`、`EfTime` 等条目说明本页跨 composition、scene description 和 execution/time 语境，必须按所属模块阅读。</span></li>
+        <li><span class="zh">`TfPyMethodResult` 指向 Python binding 返回值包装相关语境，读者在绑定层排查问题时应把它和普通 C++ value 或 token 类型区分开。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">相关函数：</span><span class="en">related function</span></li>
+        <li><span class="zh">友元函数：</span><span class="en">friend function</span></li>
+        <li><span class="zh">非成员辅助函数：</span><span class="en">non-member helper</span></li>
+        <li><span class="zh">引用计数生命周期：</span><span class="en">reference-counted lifetime</span></li>
+        <li><span class="zh">interned token 字符串：</span><span class="en">interned token string</span></li>
+        <li><span class="zh">Python 返回值包装：</span><span class="en">Python result wrapper</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

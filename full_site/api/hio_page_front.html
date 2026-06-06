@@ -75,6 +75,27 @@
         <li><span class="zh">资源加载层：</span><span class="en">resource loading layer</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-158">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`hio_page_front.html` 是 `Hio` Hydra Resource I/O 入口，关注 shader container、image/texture I/O 和 field texture data 等渲染资源加载能力。它服务于 Hydra/Storm 等成像路径的资源层，而不是 scene graph、composition 或 render task 调度层。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Hio: Hydra Resource I/O while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`HioGlslfx` 负责解释 Pixar `glslfx` GPU shader container format，可用于 shader snippets composition 和 code generation metadata。</span></li>
+        <li><span class="zh">`HioImage` 提供 plugin-based image/texture reading abstraction，`hdStorm` 使用它处理 image I/O；实现路径可能包括 `HioStb_Image` 和 `HioOIIO_Image`。</span></li>
+        <li><span class="zh">`HioFieldTextureData` 面向 volume/field texture 资源，和 `UsdVol` 或 renderer 侧 volume sampling 可能相邻，但 Hio 只处理资源 I/O 层。</span></li>
+        <li><span class="zh">`Working With Image File Formats` 是图像格式插件和部署问题的延伸阅读入口，适合排查 texture format 支持或 image plugin 配置。</span></li>
+        <li><span class="zh">读者应把 `Hio` 与 `Hd`、`Hdx`、`HdSt` 区分：`Hio` 读取资源，Hydra task/render pass/scene index 负责组织和消费这些资源。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Hydra 资源 I/O：</span><span class="en">Hydra Resource I/O</span></li>
+        <li><span class="zh">着色器容器：</span><span class="en">shader container</span></li>
+        <li><span class="zh">图像读取抽象：</span><span class="en">image reading abstraction</span></li>
+        <li><span class="zh">纹理 I/O：</span><span class="en">texture I/O</span></li>
+        <li><span class="zh">field texture 数据：</span><span class="en">field texture data</span></li>
+        <li><span class="zh">资源加载层：</span><span class="en">resource loading layer</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -54,6 +54,27 @@
         <li><span class="zh">运行时插件：</span><span class="en">runtime plugin</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-158">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`usd_proc_page_front.html` 是 `UsdProc` 模块入口，当前核心是 `UsdProcGenerativeProcedural`。它描述 scene description 中 procedural prim 的 authored schema 语义，帮助下游系统发现和解释程序化数据，但不直接实现几何生成、求值调度或 renderer runtime。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdProc: USD Schemas for Procedurals while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdProcGenerativeProcedural` 表示由程序生成或扩展的数据入口；它更像 USD schema 声明，而不是 generator 的 C++/Python 执行代码。</span></li>
+        <li><span class="zh">本页官方范围很窄，初始形式只有单个 schema，因此中文导读应强调边界，避免把它扩写成完整 procedural framework 手册。</span></li>
+        <li><span class="zh">如果 procedural 需要被 Hydra 消费，应继续阅读 `UsdHydraGenerativeProceduralAPI`、`HdGpGenerativeProcedural` 或具体 render delegate 文档。</span></li>
+        <li><span class="zh">`UsdProc` 与 `Plug`、`Sdr`、`UsdHydra` 可能在插件发现、shader/procedural registry、Hydra 执行路径上相邻出现，但职责并不相同。</span></li>
+        <li><span class="zh">阅读本页时先确认 prim 是否需要 authored procedural schema，再判断运行时系统如何发现、实例化或执行对应 procedural provider。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">程序化 schema：</span><span class="en">procedural schema</span></li>
+        <li><span class="zh">生成式程序化对象：</span><span class="en">generative procedural</span></li>
+        <li><span class="zh">程序化 prim：</span><span class="en">procedural prim</span></li>
+        <li><span class="zh">下游系统：</span><span class="en">downstream system</span></li>
+        <li><span class="zh">运行时 provider：</span><span class="en">runtime provider</span></li>
+        <li><span class="zh">渲染代理边界：</span><span class="en">render delegate boundary</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

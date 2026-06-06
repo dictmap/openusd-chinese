@@ -54,6 +54,27 @@
         <li><span class="zh">运行时类型信息：</span><span class="en">TfType</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-158">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`plug_page_front.html` 是 `Plug` 插件框架入口，负责 plugin discovery、registration、metadata 读取、plugin loading 以及和 `TfType` 类型系统的衔接。它是 OpenUSD 可扩展架构的底层机制，不是某一个 schema 或 renderer 插件的具体实现文档。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Plug: Plugin Framework while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`PlugPlugin` 定义插件模块接口，`PlugRegistry` 负责发现、注册和查找插件；客户端可以依赖首次使用时自动注册，也可以手动调用 `PlugRegistry::RegisterPlugins`。</span></li>
+        <li><span class="zh">`PlugNotice::DidRegisterPlugins` 是插件注册事件通知，适合理解系统如何在新插件可用时通知依赖方刷新 registry 或 metadata。</span></li>
+        <li><span class="zh">Metadata 部分说明 Plug 能查找插件中定义的 `TfType`，反查提供某个 type 的 plugin，并读取 plugin 或 type 相关 metadata。</span></li>
+        <li><span class="zh">Plug 和 `TfType` 应一起读：Plug 解决插件发现与加载，`TfType` 解决运行时类型查询和类型注册；两者共同支撑 schema、file format、shader discovery 等扩展点。</span></li>
+        <li><span class="zh">调试插件问题时，本页可作为入口：先确认插件是否被 discovery 找到，再确认 registration、metadata 和 type 是否进入 registry。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">插件发现：</span><span class="en">plugin discovery</span></li>
+        <li><span class="zh">插件注册：</span><span class="en">plugin registration</span></li>
+        <li><span class="zh">插件元数据：</span><span class="en">plugin metadata</span></li>
+        <li><span class="zh">运行时加载：</span><span class="en">runtime loading</span></li>
+        <li><span class="zh">类型提供方：</span><span class="en">type provider</span></li>
+        <li><span class="zh">注册通知：</span><span class="en">registration notice</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
