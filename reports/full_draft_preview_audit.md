@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-06T20:08:06.989Z
+Generated: 2026-06-06T20:38:56.100Z
 
-Transient base URL: `http://127.0.0.1:57212/`
+Transient base URL: `http://127.0.0.1:59727/`
 
 Result:
 
 - Passed: true
-- Draft pages: 397
-- Pages checked: 397
-- Passed pages: 397
+- Draft pages: 396
+- Pages checked: 396
+- Passed pages: 396
 - Failed pages: 0
-- Final HTML links: 397
-- Local assets checked: 397
+- Final HTML links: 396
+- Local assets checked: 396
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -64,7 +64,6 @@ Result:
 | true | full_site/api/class_usd_lux_disk_light.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_usd_lux_shaping_a_p_i.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_usd_physics_joint.html | 200 | true | 0 | 0 |
-| true | full_site/api/class_usd_prim.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_usd_proc_generative_procedural.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_usd_schema_registry.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_usd_shade_output.html | 200 | true | 0 | 0 |

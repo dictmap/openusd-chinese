@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-06T20:05:07.411Z
+Generated: 2026-06-06T20:35:43.036Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 397
-- bilingual_complete: 9
+- bilingual_draft: 396
+- bilingual_complete: 10
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 386
-- good_bilingual: 9
+- draft_needs_translation: 385
+- good_bilingual: 10
 
 ## Current Focus Batch
 
@@ -113,7 +113,7 @@ Generated: 2026-06-06T20:05:07.411Z
 | 47 | draft_needs_translation | bilingual_draft | 791 | 58/45 | 0 | 0 | `full_site/api/class_usd_lux_disk_light.html` |
 | 48 | draft_needs_translation | bilingual_draft | 753 | 64/51 | 0 | 0 | `full_site/api/class_usd_lux_shaping_a_p_i.html` |
 | 49 | draft_needs_translation | bilingual_draft | 735 | 64/51 | 0 | 0 | `full_site/api/class_usd_physics_joint.html` |
-| 50 | draft_needs_translation | bilingual_draft | 737 | 64/51 | 0 | 0 | `full_site/api/class_usd_prim.html` |
+| 50 | good_bilingual | bilingual_complete | 879 | 47/49 | 0 | 0 | `full_site/api/class_usd_prim.html` |
 | 51 | draft_needs_translation | bilingual_draft | 598 | 46/38 | 0 | 0 | `full_site/api/class_usd_proc_generative_procedural.html` |
 | 52 | draft_needs_translation | bilingual_draft | 649 | 64/51 | 0 | 0 | `full_site/api/class_usd_schema_registry.html` |
 | 53 | draft_needs_translation | bilingual_draft | 698 | 64/51 | 0 | 0 | `full_site/api/class_usd_shade_output.html` |

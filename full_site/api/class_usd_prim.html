@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：UsdPrim Class / UsdPrim Class</title>
+  <title>完整双语参考：UsdPrim Class / UsdPrim Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,76 +24,48 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：UsdPrim Class / UsdPrim Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：UsdPrim Class / UsdPrim Class</h1>
     <div class="meta">https://openusd.org/release/api/class_usd_prim.html</div>
   </header>
   <main>
     <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <h2>完成说明 / Completion Note</h2>
+      <p class="zh">本页已从全量队列晋级为完整双语参考页：中文层覆盖 `UsdPrim` 的官方定义、composition 后的 prim 语义、property/metadata/composition arc 访问、lifetime 与遍历、applied API schema、instancing 以及与 `SdfPrimSpec` 和 typed schema class 的关系；英文原文摘录、API 名称、类名、方法名、类型名、token 字面量和链接保持原样。</p>
+      <p class="en">This page is promoted from the full-site queue to a complete bilingual reference page. The Chinese layer covers the official definition of `UsdPrim`, composed prim semantics, property/metadata/composition-arc access, lifetime and traversal, applied API schemas, instancing, and relationships to `SdfPrimSpec` and typed schema classes while retaining English excerpts, API names, class names, method names, type names, token literals, and links.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-041">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 UsdPrim Class Reference 补充中文优先的类职责、读取重点、关键属性/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, key attribute/method groups, and terminology for UsdPrim Class Reference while retaining English page names, class names, method names, attribute names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`UsdPrim` 是 `UsdStage` 上唯一持久的 scenegraph object，也是 USD composition 中 Prim 概念在运行时 API 层的主要载体。</span></li>
-        <li><span class="zh">英文摘录说明 `UsdPrim` 是其他 scene description 类型的 principal container，可访问和创建 `UsdVariantSets`、`UsdReferences`、`UsdInherits`、properties、metadata、payloads 等内容。</span></li>
-        <li><span class="zh">页面结构中的 `Lifetime Management`、`SiblingIterator`、`SubtreeIterator`、`Instancing` 说明它既承担对象生命周期/有效性判断，也承担层级遍历和实例化相关查询。</span></li>
-        <li><span class="zh">`ApplyAPI()`、`AddAppliedSchema()` 代表在 prim 上应用 API schema；`ApplyPropertyOrder()` 则影响 property 顺序，这些方法会改变 authored scene description。</span></li>
-        <li><span class="zh">阅读本页时应把 `UsdPrim` 与上一轮已处理的 `SdfPrimSpec` 区分开：`SdfPrimSpec` 是 layer 中的底层 spec，`UsdPrim` 是 stage composition 后供客户端访问的 prim 视图。</span></li>
-      </ul>
+    <section data-cn-complete="usd-prim-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">官方说明把 `UsdPrim` 称为 `UsdStage` 上唯一持久的 scenegraph object。这里的 persistent 指客户端可以长期保存一个轻量 handle，并通过它访问 stage 中当前组合出的 prim；它不是 layer 文件中的原始 spec，也不是把所有 authored opinions 复制到一个对象里。`UsdPrim` 的意义在于把 USD composition 的结果暴露为稳定、可查询、可编辑的运行时入口。</p>
+      <p class="en">The official description calls `UsdPrim` the sole persistent scenegraph object on a `UsdStage`. In this context, persistent means that client code can hold a lightweight handle for accessing the currently composed prim on a stage. It is neither the raw spec inside a layer nor a copied container of every authored opinion; it is the runtime entry point to the composed result.</p>
+      <p class="zh">官方还说 `UsdPrim` is the principal container of other types of scene description。这个 container 包含 attributes、relationships、variant sets、references、payloads、inherits、specializes、metadata 和 applied API schemas 等接口。中文阅读时应把这些看作 prim 上可见的 composition 结果和可 author 的场景描述入口，而不是一个简单的 C++ 成员字段列表。</p>
+      <p class="en">The official text also says that `UsdPrim` is the principal container of other types of scene description. The contained interfaces include attributes, relationships, variant sets, references, payloads, inherits, specializes, metadata, and applied API schemas. Read these as visible composed interfaces and authoring entry points on a prim, not as a simple list of C++ member fields.</p>
+      <p class="zh">`UsdPrim` 与 `SdfPrimSpec` 的分界很关键：`SdfPrimSpec` 是某个 `SdfLayer` 中的底层 prim spec，保存具体 authored opinions；`UsdPrim` 则是 `UsdStage` 在 layer stack、references、payloads、variants、inherits 和 specializes 等规则作用后呈现给客户端的 composed prim handle。调试“为什么值会这样组成”时，需要从 `UsdPrim` 进入 `GetPrimIndex()`、layer stack 或 `Pcp` 相关信息继续追踪。</p>
+      <p class="en">The boundary between `UsdPrim` and `SdfPrimSpec` is essential. `SdfPrimSpec` is the low-level prim spec inside an `SdfLayer` and stores concrete authored opinions. `UsdPrim` is the composed prim handle exposed by a `UsdStage` after layer stacks, references, payloads, variants, inherits, and specializes have been applied. To debug why a value composes a certain way, use `UsdPrim` as the entry point and inspect `GetPrimIndex()`, the layer stack, or related `Pcp` data.</p>
+      <p class="zh">属性和关系 API 是 `UsdPrim` 最常用的部分。`GetAttribute()` / `CreateAttribute()` 处理 `UsdAttribute`，`GetRelationship()` / `CreateRelationship()` 处理 `UsdRelationship`，`GetProperties()`、property predicate 和 property order 则用于枚举或排序 property。创建操作会 author scene description；查询操作读取的是 stage 上可见的 composed result，二者在读写语义上不能混淆。</p>
+      <p class="en">Property APIs are among the most commonly used parts of `UsdPrim`. `GetAttribute()` / `CreateAttribute()` work with `UsdAttribute`, `GetRelationship()` / `CreateRelationship()` work with `UsdRelationship`, and `GetProperties()`, property predicates, and property order support enumeration and ordering. Creation authors scene description, while queries read the visible composed result on the stage; these read/write semantics should not be conflated.</p>
+      <p class="zh">composition arc 相关 API 让 `UsdPrim` 成为资产组装的核心入口。`GetReferences()`、`GetPayloads()`、`GetInherits()`、`GetSpecializes()` 和 `GetVariantSets()` 分别对应不同的 composition 机制；它们可能在 layer 中 author 新意见，也可能用于检查当前 prim 的组合结构。把这些 arc 当作普通 metadata 会导致错误判断，因为它们直接参与 scene description 的强弱、选择和延迟加载。</p>
+      <p class="en">Composition-arc APIs make `UsdPrim` central to asset assembly. `GetReferences()`, `GetPayloads()`, `GetInherits()`, `GetSpecializes()`, and `GetVariantSets()` correspond to different composition mechanisms. They may author new opinions in layers or inspect the current prim's composed structure. Treating these arcs as ordinary metadata is misleading because they affect strength ordering, selection, and deferred loading of scene description.</p>
+      <p class="zh">lifetime 相关函数决定一个 `UsdPrim` handle 是否仍可使用。`IsValid()`、`operator bool`、`GetStage()`、`GetPath()` 与 `GetPrimIndex()` 帮助确认 handle 是否仍对应 stage 中的有效对象；stage mutation、payload loading、composition 重新计算或 prim 移除都可能改变句柄的有效性。生产代码不应把 `UsdPrim` 当成永久裸指针，而应在关键读写点重新验证。</p>
+      <p class="en">Lifetime-related functions determine whether a `UsdPrim` handle can still be used. `IsValid()`, `operator bool`, `GetStage()`, `GetPath()`, and `GetPrimIndex()` help confirm that the handle still corresponds to a valid object on the stage. Stage mutation, payload loading, recomposition, or prim removal can change validity. Production code should not treat `UsdPrim` like a permanent raw pointer and should revalidate at important read/write points.</p>
+      <p class="zh">遍历 API 体现 `UsdPrim` 的 scenegraph 位置。`GetChildren()`、`GetFilteredChildren()`、`SiblingIterator`、`SiblingRange`、`SubtreeIterator` 和 `SubtreeRange` 可用于兄弟节点或子树遍历；遍历结果会受到 active、loaded、defined、abstract、instance、model kind 和 predicate 等条件影响。做工具或导出器时，需要明确是遍历所有 prim、可加载 prim、活动 prim，还是满足某个 schema/type 的 prim。</p>
+      <p class="en">Traversal APIs express the position of `UsdPrim` in the scenegraph. `GetChildren()`, `GetFilteredChildren()`, `SiblingIterator`, `SiblingRange`, `SubtreeIterator`, and `SubtreeRange` support sibling and subtree traversal. Results are affected by active, loaded, defined, abstract, instance, model kind, and predicate conditions. Tools and exporters should state whether they traverse all prims, loadable prims, active prims, or prims satisfying a schema/type predicate.</p>
+      <p class="zh">applied API schema 让 `UsdPrim` 获得额外行为声明。`ApplyAPI()`、`AddAppliedSchema()`、`RemoveAppliedSchema()`、`HasAPI()` 和 `GetAppliedSchemas()` 操作 `apiSchemas` 相关 authored metadata，并让 `UsdSchemaRegistry` 能识别这个 prim 上附加的 API schema。应用 schema 不等于自动补全所有属性值；仍然需要根据 schema 文档 author 或检查对应 attributes、relationships 和 tokens。</p>
+      <p class="en">Applied API schemas attach additional behavior declarations to a `UsdPrim`. `ApplyAPI()`, `AddAppliedSchema()`, `RemoveAppliedSchema()`, `HasAPI()`, and `GetAppliedSchemas()` operate on authored metadata related to `apiSchemas` and allow `UsdSchemaRegistry` to recognize API schemas attached to the prim. Applying a schema does not automatically author all property values; matching attributes, relationships, and tokens still need to be authored or checked according to the schema documentation.</p>
+      <p class="zh">instancing 是阅读 `UsdPrim` 时最容易误解的部分之一。页面结构中的 Instancing 区域通常涉及 instance、prototype、instance proxy 和相关遍历限制。实例化可以显著减少重复 scene description 的开销，但也限制了某些 authoring 操作；如果工具需要编辑实例内部内容，应先确认当前 prim 是 ordinary prim、instance、prototype 还是 instance proxy。</p>
+      <p class="en">Instancing is one of the easiest parts of `UsdPrim` to misread. The Instancing section usually involves instances, prototypes, instance proxies, and related traversal restrictions. Instancing can reduce repeated scene-description cost, but it also restricts some authoring operations. A tool that edits contents inside an instance should first determine whether the current prim is an ordinary prim, an instance, a prototype, or an instance proxy.</p>
+      <p class="zh">`UsdPrim` 也是 typed schema class 的基础载体。`UsdGeomMesh`、`UsdShadeOutput`、`UsdLuxDiskLight`、`UsdPhysicsJoint` 等类通常包装、验证或创建某个 `UsdPrim`，从而提供领域特定 API；但是 typed schema 不替代 `UsdPrim` 的通用 composition、metadata、property、lifetime 和 traversal 语义。遇到 schema API 看不懂时，回到 `UsdPrim` 的通用接口通常能解释底层行为。</p>
+      <p class="en">`UsdPrim` is also the base carrier for typed schema classes. Classes such as `UsdGeomMesh`, `UsdShadeOutput`, `UsdLuxDiskLight`, and `UsdPhysicsJoint` usually wrap, validate, or create a `UsdPrim` to expose domain-specific APIs. A typed schema does not replace the general `UsdPrim` semantics for composition, metadata, properties, lifetime, and traversal. When a schema API is confusing, returning to the generic `UsdPrim` interface often explains the underlying behavior.</p>
       <h3>术语对照 / Terms</h3>
       <ul>
-        <li><span class="zh">UsdPrim：</span><span class="en">UsdPrim</span></li>
+        <li><span class="zh">组合后的 prim 句柄：</span><span class="en">composed `UsdPrim` handle</span></li>
         <li><span class="zh">场景图对象：</span><span class="en">scenegraph object</span></li>
+        <li><span class="zh">底层 prim spec：</span><span class="en">`SdfPrimSpec`</span></li>
+        <li><span class="zh">组合弧：</span><span class="en">composition arc</span></li>
         <li><span class="zh">变体集合：</span><span class="en">variant sets</span></li>
-        <li><span class="zh">API schema：</span><span class="en">API schema</span></li>
-        <li><span class="zh">实例化：</span><span class="en">instancing</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-132">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`UsdPrim` 是 `UsdStage` 上唯一持久的 scenegraph object，也是运行时访问 prim、properties、metadata、composition arcs 和 applied schemas 的核心入口。阅读本页时要把 `UsdPrim` 理解为 composition 后的场景图句柄，而不是某个单一 layer 中的 `SdfPrimSpec`。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdPrim while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`UsdPrim` 可以访问 `UsdVariantSets`、`UsdReferences`、`UsdInherits`、payloads、properties 和 metadata；这些 API 操作的是 composed prim 的可见接口，具体 authored opinions 仍来自 layer stack。</span></li>
-        <li><span class="zh">`IsValid()`、`operator bool` 和 Lifetime Management 相关说明要优先阅读；prim 句柄可能因 stage mutation、payload loading 或重新组成而失效，不能把它当成永久裸指针。</span></li>
-        <li><span class="zh">`GetChildren()`、`GetFilteredChildren()`、`SiblingIterator` 和 `SubtreeIterator` 体现遍历语义；遍历结果会受到 prim active/load/visibility/predicate 等条件影响。</span></li>
-        <li><span class="zh">`ApplyAPI()`、`AddAppliedSchema()` 和 applied schema 列表决定 prim 上附加的 API schema 行为；中文说明要保留 `apiSchemas`、`ApplyAPI`、`UsdSchemaRegistry` 等名称以便和 schema 文档对照。</span></li>
-        <li><span class="zh">`UsdPrim` 是很多 typed schema class 的基础载体；`UsdGeomMesh`、`UsdLux*`、`UsdShade*` 等对象通常包装或验证一个 `UsdPrim`，但不替代 `UsdPrim` 的通用 composition 语义。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">USD prim 运行时句柄：</span><span class="en">UsdPrim</span></li>
-        <li><span class="zh">场景图对象：</span><span class="en">scenegraph object</span></li>
-        <li><span class="zh">组合弧：</span><span class="en">composition arc</span></li>
-        <li><span class="zh">已创作意见：</span><span class="en">authored opinion</span></li>
-        <li><span class="zh">已应用 schema：</span><span class="en">applied schema</span></li>
-        <li><span class="zh">prim 遍历：</span><span class="en">prim traversal</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-144">
-      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
-      <p class="zh">`UsdPrim` 是 `UsdStage` 上唯一持久的 scenegraph object，也是 USD 场景描述中 prim 的主要 API 入口。它聚合 attributes、relationships、variant sets、references、payloads、inherits、specializes、metadata 和 applied API schemas 等多种 scene description。</p>
-      <p class="en">This third-pass refinement adds page-specific Chinese guidance for UsdPrim while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`UsdPrim` 是轻量 handle：`IsValid()`、`GetStage()`、`GetPath()` 与 `GetPrimIndex()` 帮助确认 handle 是否仍对应 stage 中的有效对象和 composition 结果。</span></li>
-        <li><span class="zh">`GetAttribute()` / `CreateAttribute()` 与 `GetRelationship()` / `CreateRelationship()` 处理 property 级对象；若只需要枚举，可结合 property predicate、property order 和 traversal helper 使用。</span></li>
-        <li><span class="zh">`GetVariantSets()`、`GetReferences()`、`GetPayloads()`、`GetInherits()` 与 `GetSpecializes()` 分别对应不同 composition arcs，调试强弱意见时不要把它们混为普通 metadata。</span></li>
-        <li><span class="zh">`ApplyAPI()`、`AddAppliedSchema()`、`HasAPI()` 与 schema registry 相关；它们影响 prim 上声明的 schema behavior，但不会自动保证所有相关 attributes 都已 author。</span></li>
-        <li><span class="zh">`IsActive()`、`IsLoaded()`、`IsDefined()`、`IsAbstract()`、model kind 和 type name 是不同维度的状态；遍历或过滤 prim 时应按实际任务选择谓词。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">Prim 句柄：</span><span class="en">UsdPrim</span></li>
-        <li><span class="zh">舞台：</span><span class="en">UsdStage</span></li>
-        <li><span class="zh">组合弧：</span><span class="en">composition arc</span></li>
-        <li><span class="zh">变体集：</span><span class="en">variant sets</span></li>
-        <li><span class="zh">引用：</span><span class="en">references</span></li>
-        <li><span class="zh">应用型 API schema：</span><span class="en">applied API schema</span></li>
+        <li><span class="zh">引用与 payload：</span><span class="en">references and payloads</span></li>
+        <li><span class="zh">已应用 API schema：</span><span class="en">applied API schema</span></li>
+        <li><span class="zh">实例代理：</span><span class="en">instance proxy</span></li>
       </ul>
     </section>
     <section>

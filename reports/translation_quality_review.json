@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-06T20:05:07.411Z",
+  "generated_at": "2026-06-06T20:35:43.036Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 397,
-    "bilingual_complete": 9
+    "bilingual_draft": 396,
+    "bilingual_complete": 10
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 386,
-    "good_bilingual": 9
+    "draft_needs_translation": 385,
+    "good_bilingual": 10
   },
   "focus_batch": [
     {
@@ -2300,29 +2300,29 @@
     },
     {
       "index": 50,
-      "title": "类参考草稿：UsdPrim Class / UsdPrim Class",
+      "title": "完整双语参考：UsdPrim Class / UsdPrim Class",
       "output": "full_site/api/class_usd_prim.html",
       "official_url": "https://openusd.org/release/api/class_usd_prim.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 64,
-      "enBlockCount": 51,
-      "zhChars": 737,
-      "enLetters": 2265,
-      "bodyChineseChars": 812,
+      "grade": "good_bilingual",
+      "zhBlockCount": 47,
+      "enBlockCount": 49,
+      "zhChars": 879,
+      "enLetters": 5059,
+      "bodyChineseChars": 932,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 UsdPrim Class Reference 补充中文优先的类职责、读取重点、关键属性/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`UsdPrim` 是 `UsdStage` 上唯一持久的 scenegraph object，也是 USD composition 中 Prim 概念在运行时 API 层的主要载体。"
+        "本页已从全量队列晋级为完整双语参考页：中文层覆盖 `UsdPrim` 的官方定义、composition 后的 prim 语义、property/metadata/composition arc 访问、lifetime 与遍历、applied API schema、instancing 以及与 `SdfPrimSpec` 和 typed schema class 的关系；英文原文摘录、API 名称、类名、方法名、类型名、token 字面量和链接保持原样。",
+        "官方说明把 `UsdPrim` 称为 `UsdStage` 上唯一持久的 scenegraph object。这里的 persistent 指客户端可以长期保存一个轻量 handle，并通过它访问 stage 中当前组合出的 prim；它不是 layer 文件中的原始 spec，也不是把所有 authored opinions 复制到一个对象里。`UsdPrim` 的意义在于把 USD composition 的结果暴露为稳定、可查询、可编辑的运行时入口。",
+        "官方还说 `UsdPrim` is the principal container of other types of scene description。这个 container 包含 attributes、relationships、variant sets、references、payloads、inherits、specializes、metadata 和 applied API schemas 等接口。中文阅读时应把这些看作 prim 上可见的 composition 结果和可 author 的场景描述入口，而不是一个简单的 C++ 成员字段列表。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, reading guidance, key attribute/method groups, and terminology for UsdPrim Class Reference while retaining English page names, class names, method names, attribute names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page is promoted from the full-site queue to a complete bilingual reference page. The Chinese layer covers the official definition of `UsdPrim`, composed prim semantics, property/metadata/composition-arc access, lifetime and traversal, applied API schemas, instancing, and relationships to `SdfPrimSpec` and typed schema classes while retaining English excerpts, API names, class names, method names, type names, token literals, and links.",
+        "The official description calls `UsdPrim` the sole persistent scenegraph object on a `UsdStage`. In this context, persistent means that client code can hold a lightweight handle for accessing the currently composed prim on a stage. It is neither the raw spec inside a layer nor a copied container of every authored opinion; it is the runtime entry point to the composed result."
       ]
     },
     {

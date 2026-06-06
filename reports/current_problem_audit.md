@@ -2,23 +2,23 @@
 
 生成日期：2026-06-07
 
-这份盘点针对用户反馈：“3 天后仍只有 8 页完成、398 页还是草稿，问题很多但自动化还在继续跑轮次。”本文件已在第 303 轮更新：第一条 `full_site` 页面晋级链路已经跑通，`good_bilingual` 从 8 提升到 9，但整体仍远未完成。
+这份盘点针对用户反馈：“3 天后仍只有 8 页完成、398 页还是草稿，问题很多但自动化还在继续跑轮次。”本文件已在第 304 轮更新：`full_site` 页面晋级链路已经连续跑通两次，`good_bilingual` 从 8 提升到 10，但整体仍远未完成。
 
 ## 当前真实状态
 
 - 全量页面：406
-- `bilingual_complete`：9
-- `bilingual_draft`：397
-- `good_bilingual`：9
-- `draft_needs_translation`：386
+- `bilingual_complete`：10
+- `bilingual_draft`：396
+- `good_bilingual`：10
+- `draft_needs_translation`：385
 - `draft_template_only`：11
 
-结论：当前仍不是完成态。397 个 draft 只是可本地打开和检查，不是完整翻译。
+结论：当前仍不是完成态。396 个 draft 只是可本地打开和检查，不是完整翻译。
 
 ## P0 问题
 
-1. 完成数长期停滞，已跑通第一条晋级路径  
-   `audit_openusd_translation_quality.mjs` 只有在 inventory 状态为 `bilingual_complete` 且中文密度达标时才会给 `good_bilingual`。过去大量 refinement 脚本只给 `bilingual_draft` 页面增加中文导读和术语对照，没有把页面晋级为 `bilingual_complete` 的机制，所以主指标长期不涨。第 303 轮新增 `reports/bilingual_completion_promotions.json`，将 `full_site/api/class_sdf_layer.html` 作为第一条 promoted complete 页面，`good_bilingual` 已从 8 提升到 9。
+1. 完成数长期停滞，已跑通可复用晋级路径  
+   `audit_openusd_translation_quality.mjs` 只有在 inventory 状态为 `bilingual_complete` 且中文密度达标时才会给 `good_bilingual`。过去大量 refinement 脚本只给 `bilingual_draft` 页面增加中文导读和术语对照，没有把页面晋级为 `bilingual_complete` 的机制，所以主指标长期不涨。第 303 轮新增 `reports/bilingual_completion_promotions.json`，第 304 轮继续将 `full_site/api/class_usd_prim.html` 晋级为 promoted complete，`good_bilingual` 已从 8 提升到 10。
 
 2. 总入口展示容易误导，已做第一轮修正  
    总入口曾显示 8 complete、398 draft、0 pending。`pending=0` 容易让人以为“全都处理过了”。现在入口改为动态 complete 数，并把剩余页面标成“未完整翻译草稿 / Incomplete drafts”。后续必须保持 `bilingual_draft` 等于未完整翻译，不得再写成接近完成。
