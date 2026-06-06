@@ -53,6 +53,27 @@
         <li><span class="zh">数值后缀：</span><span class="en">numeric suffix</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-members-index-quality-pass-151">
+      <h2>中文二次索引补强 / Chinese Index-Focused Notes</h2>
+      <p class="zh">`functions_func_x.html` 是函数成员索引的 X 段，当前连接 `GfVec2*`、`GfVec3*`、`GfVec4*` 的 x 相关函数以及 `UsdGeomXformable::XformQuery`。它同时覆盖数学向量分量访问和 scene prim 变换查询。</p>
+      <p class="en">This index-focused refinement adds page-specific Chinese guidance for Class Members - Functions - X while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`GfVec2*` 到 `GfVec4*` 的 x 函数通常用于第一个坐标分量访问；数值类型后缀仍需保留英文原样。</span></li>
+        <li><span class="zh">`UsdGeomXformable::XformQuery` 与 xform stack 组合、缓存和读取有关，不是普通 Gf vector 成员。</span></li>
+        <li><span class="zh">同页出现 Gf 与 UsdGeom 条目是字母索引结果；调试时应先确认目标链接属于 math foundation 还是 scene graph transform。</span></li>
+        <li><span class="zh">若要确认 xform op 顺序、resetXformStack 或 time-varying transform 行为，必须进入 `UsdGeomXformable` / `XformQuery` 页面。</span></li>
+        <li><span class="zh">若要确认 x() 返回值和 const/引用行为，应进入具体 `GfVec*` 页面，而不是只依赖短索引摘录。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">X 段函数索引：</span><span class="en">X function index</span></li>
+        <li><span class="zh">X 访问器：</span><span class="en">x accessor</span></li>
+        <li><span class="zh">第一坐标分量：</span><span class="en">first coordinate component</span></li>
+        <li><span class="zh">场景图变换：</span><span class="en">scene graph transform</span></li>
+        <li><span class="zh">xform op 顺序：</span><span class="en">xform op order</span></li>
+        <li><span class="zh">time-varying transform：</span><span class="en">time-varying transform</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

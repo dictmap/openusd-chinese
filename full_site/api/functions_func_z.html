@@ -53,6 +53,27 @@
         <li><span class="zh">坐标访问器：</span><span class="en">coordinate accessor</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-members-index-quality-pass-151">
+      <h2>中文二次索引补强 / Chinese Index-Focused Notes</h2>
+      <p class="zh">`functions_func_z.html` 是函数成员索引的 Z 段，当前集中在 `GfVec3*` 和 `GfVec4*` 的 z 相关访问器或函数。它比 `functions_z.html` 更窄，只关注函数成员，不包含 token tables。</p>
+      <p class="en">This index-focused refinement adds page-specific Chinese guidance for Class Members - Functions - Z while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`GfVec3d`、`GfVec3f`、`GfVec3h`、`GfVec3i` 和 `GfVec4d`、`GfVec4f`、`GfVec4h`、`GfVec4i` 覆盖 double、float、half、int 等数值表示。</span></li>
+        <li><span class="zh">Z 段从 `GfVec3*` 开始是因为二维向量没有 z component；这能帮助读者判断索引缺失是否合理。</span></li>
+        <li><span class="zh">如果需要 x/y/z/w 分量完整行为，应结合 X/Y/Z 函数索引和具体 `GfVec*` class 页面一起阅读。</span></li>
+        <li><span class="zh">z 访问器可能返回值、引用或 const 结果，具体 ABI 和 overload 需要进入目标页面确认。</span></li>
+        <li><span class="zh">本页中文补强说明索引边界，不把它扩展成完整 vector math 教程。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Z 段函数索引：</span><span class="en">Z function index</span></li>
+        <li><span class="zh">Z 访问器：</span><span class="en">z accessor</span></li>
+        <li><span class="zh">二维向量：</span><span class="en">2D vector</span></li>
+        <li><span class="zh">三维向量：</span><span class="en">3D vector</span></li>
+        <li><span class="zh">四维向量：</span><span class="en">4D vector</span></li>
+        <li><span class="zh">重载语义：</span><span class="en">overload semantics</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

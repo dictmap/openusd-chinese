@@ -54,6 +54,27 @@
         <li><span class="zh">本地缺口页：</span><span class="en">local placeholder</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-members-index-quality-pass-151">
+      <h2>中文二次索引补强 / Chinese Index-Focused Notes</h2>
+      <p class="zh">`functions_z.html` 是 Class Members 的 Z 段索引，当前连接 `UsdGeomTokensType`、`UsdLuxTokensType`、`UsdPhysicsTokensType`、`UsdVolTokensType` 和 `GfVec3*` / `GfVec4*`。它用于定位 z 分量、z 轴 token 或 volume/geometry/lighting/physics 中以 z 开头的成员。</p>
+      <p class="en">This index-focused refinement adds page-specific Chinese guidance for Class Members - Z while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`GfVec3*` 与 `GfVec4*` 出现在 Z 段通常意味着 z component 或 z accessor；`GfVec2*` 没有 z 分量，因此不会进入这个短索引。</span></li>
+        <li><span class="zh">`UsdGeomTokensType`、`UsdLuxTokensType`、`UsdPhysicsTokensType`、`UsdVolTokensType` 分别属于 geometry、lighting、physics、volume domain。</span></li>
+        <li><span class="zh">同一字母页混排多种模块是 Doxygen 索引特性，不代表 token、math vector 和 schema domain 共享语义。</span></li>
+        <li><span class="zh">需要确认 z 分量函数、返回值引用语义或 const 行为时，应跳到具体 `GfVec3*` / `GfVec4*` class 页面。</span></li>
+        <li><span class="zh">中文层只补充分组和阅读边界，保留 `z`、`GfVec*` 和 token type 原名，便于本地搜索和官方原文对照。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Z 段类成员索引：</span><span class="en">Z class member index</span></li>
+        <li><span class="zh">Z 分量：</span><span class="en">Z component</span></li>
+        <li><span class="zh">Z 轴 token：</span><span class="en">Z-axis token</span></li>
+        <li><span class="zh">体积领域：</span><span class="en">volume domain</span></li>
+        <li><span class="zh">三维/四维向量：</span><span class="en">3D/4D vector</span></li>
+        <li><span class="zh">字母索引混排：</span><span class="en">alphabetical index mixing</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

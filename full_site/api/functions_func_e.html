@@ -53,6 +53,27 @@
         <li><span class="zh">容器视图：</span><span class="en">container view</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-members-index-quality-pass-151">
+      <h2>中文二次索引补强 / Chinese Index-Focused Notes</h2>
+      <p class="zh">`functions_func_e.html` 是函数成员索引的 E 段，包含 execution framework、cache、time、container/view、range iteration、asset path 和 tracing 相关条目。它是一个跨模块入口，尤其适合反查 `Ef*`、`UsdTimeCode`、`SdfChildrenView`、`VtArray`、`UsdPrimRange` 等成员。</p>
+      <p class="en">This index-focused refinement adds page-specific Chinese guidance for Class Members - Functions - E while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Ef_OutputValueCache`、`EfDependencyCache`、`EfPageCacheExecutor` 等 `Ef*` 条目指向执行/缓存框架，应和普通容器方法分开阅读。</span></li>
+        <li><span class="zh">`UsdTimeCode`、`EfTime`、`EfTimeInterval` 与时间值、时间输入和时间区间有关，常用于 evaluation 或 animation 相关逻辑。</span></li>
+        <li><span class="zh">`SdfChildrenView`、`SdfListProxy`、`TfSpan`、`VtArray`、`robin_map` / `robin_set` 更偏容器、视图或高性能哈希容器入口。</span></li>
+        <li><span class="zh">`UsdPrimRange` 与 `UsdUtilsTimeCodeRange` 是遍历范围或时间范围辅助，进入目标页后应重点检查 iterator 边界和过滤策略。</span></li>
+        <li><span class="zh">E 段只按函数首字母列出命中；不应从这个页面推断 execution order、thread safety 或 cache lifetime。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">E 段函数索引：</span><span class="en">E function index</span></li>
+        <li><span class="zh">执行缓存：</span><span class="en">execution cache</span></li>
+        <li><span class="zh">时间区间：</span><span class="en">time interval</span></li>
+        <li><span class="zh">容器视图：</span><span class="en">container view</span></li>
+        <li><span class="zh">遍历范围：</span><span class="en">iteration range</span></li>
+        <li><span class="zh">缓存生命周期：</span><span class="en">cache lifetime</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

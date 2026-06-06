@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-06T04:41:40.229Z
+Generated: 2026-06-06T04:54:21.716Z
 
 ## Summary
 
@@ -40,11 +40,6 @@ Generated: 2026-06-06T04:41:40.229Z
 | 278 | draft_template_only | 62 | `full_site/api/var_8h_source.html` | 源码页面草稿：var.h / var.h |
 | 298 | draft_template_only | 64 | `full_site/release/search.html` | 搜索 / Search - Universal Scene Description 26.05 documentation |
 | 69 | draft_template_only | 66 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | API 页面草稿：hf Directory / hf Directory |
-| 162 | draft_needs_translation | 295 | `full_site/api/functions_z.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
-| 91 | draft_needs_translation | 296 | `full_site/api/functions_func_j.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
-| 86 | draft_needs_translation | 297 | `full_site/api/functions_func_e.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
-| 107 | draft_needs_translation | 299 | `full_site/api/functions_func_z.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
-| 105 | draft_needs_translation | 301 | `full_site/api/functions_func_x.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
 | 225 | draft_needs_translation | 302 | `full_site/api/md_pxr_exec_vdf__r_e_a_d_m_e.html` | API 页面草稿：Vdf: Vectorized Data Flow / Vdf: Vectorized Data Flow |
 | 129 | draft_needs_translation | 303 | `full_site/api/functions_type.html` | API 页面草稿：Universal Scene Description: Class Members - Typedefs / Universal Scene Description: Class Members - Typedefs |
 | 230 | draft_needs_translation | 303 | `full_site/api/modules.html` | API 页面草稿：Modules / Modules |
@@ -59,6 +54,11 @@ Generated: 2026-06-06T04:41:40.229Z
 | 235 | draft_needs_translation | 315 | `full_site/api/page__execution__system__design.html` | API 页面草稿：OpenExec System Design / OpenExec System Design |
 | 72 | draft_needs_translation | 317 | `full_site/api/functions_~.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
 | 167 | draft_needs_translation | 319 | `full_site/api/globals_c.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
+| 194 | draft_needs_translation | 319 | `full_site/api/globals_type.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
+| 256 | draft_needs_translation | 320 | `full_site/api/trace_page_front.html` | API 模块草稿：Trace: Performance tracking / Trace: Performance tracking |
+| 155 | draft_needs_translation | 321 | `full_site/api/functions_vars_x.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
+| 157 | draft_needs_translation | 322 | `full_site/api/functions_vars_z.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
+| 79 | draft_needs_translation | 323 | `full_site/api/functions_eval.html` | API 页面草稿：Universal Scene Description: Class Members - Enumerator / Universal Scene Description: Class Members - Enumerator |
 
 ## All Pages
 
@@ -149,12 +149,12 @@ Generated: 2026-06-06T04:41:40.229Z
 | 83 | draft_needs_translation | bilingual_draft | 556 | 24/16 | 0 | 0 | `full_site/api/functions_func_b.html` |
 | 84 | draft_needs_translation | bilingual_draft | 507 | 24/16 | 0 | 0 | `full_site/api/functions_func_c.html` |
 | 85 | draft_needs_translation | bilingual_draft | 509 | 24/16 | 0 | 0 | `full_site/api/functions_func_d.html` |
-| 86 | draft_needs_translation | bilingual_draft | 297 | 12/9 | 0 | 0 | `full_site/api/functions_func_e.html` |
+| 86 | draft_needs_translation | bilingual_draft | 473 | 24/16 | 0 | 0 | `full_site/api/functions_func_e.html` |
 | 87 | draft_needs_translation | bilingual_draft | 539 | 24/16 | 0 | 0 | `full_site/api/functions_func_f.html` |
 | 88 | draft_needs_translation | bilingual_draft | 575 | 24/16 | 0 | 0 | `full_site/api/functions_func_g.html` |
 | 89 | draft_needs_translation | bilingual_draft | 467 | 24/16 | 0 | 0 | `full_site/api/functions_func_h.html` |
 | 90 | draft_needs_translation | bilingual_draft | 554 | 24/16 | 0 | 0 | `full_site/api/functions_func_i.html` |
-| 91 | draft_needs_translation | bilingual_draft | 296 | 12/9 | 0 | 0 | `full_site/api/functions_func_j.html` |
+| 91 | draft_needs_translation | bilingual_draft | 491 | 24/16 | 0 | 0 | `full_site/api/functions_func_j.html` |
 | 92 | draft_needs_translation | bilingual_draft | 494 | 24/16 | 0 | 0 | `full_site/api/functions_func_k.html` |
 | 93 | draft_needs_translation | bilingual_draft | 576 | 24/16 | 0 | 0 | `full_site/api/functions_func_l.html` |
 | 94 | draft_needs_translation | bilingual_draft | 499 | 24/16 | 0 | 0 | `full_site/api/functions_func_m.html` |
@@ -168,9 +168,9 @@ Generated: 2026-06-06T04:41:40.229Z
 | 102 | draft_needs_translation | bilingual_draft | 533 | 24/16 | 0 | 0 | `full_site/api/functions_func_u.html` |
 | 103 | draft_needs_translation | bilingual_draft | 564 | 24/16 | 0 | 0 | `full_site/api/functions_func_v.html` |
 | 104 | draft_needs_translation | bilingual_draft | 535 | 24/16 | 0 | 0 | `full_site/api/functions_func_w.html` |
-| 105 | draft_needs_translation | bilingual_draft | 301 | 12/9 | 0 | 0 | `full_site/api/functions_func_x.html` |
+| 105 | draft_needs_translation | bilingual_draft | 481 | 24/16 | 0 | 0 | `full_site/api/functions_func_x.html` |
 | 106 | draft_needs_translation | bilingual_draft | 306 | 12/9 | 0 | 0 | `full_site/api/functions_func_y.html` |
-| 107 | draft_needs_translation | bilingual_draft | 299 | 12/9 | 0 | 0 | `full_site/api/functions_func_z.html` |
+| 107 | draft_needs_translation | bilingual_draft | 472 | 24/16 | 0 | 0 | `full_site/api/functions_func_z.html` |
 | 108 | draft_needs_translation | bilingual_draft | 555 | 24/16 | 0 | 0 | `full_site/api/functions_func.html` |
 | 109 | draft_needs_translation | bilingual_draft | 478 | 24/17 | 0 | 0 | `full_site/api/functions_g.html` |
 | 110 | draft_needs_translation | bilingual_draft | 467 | 24/17 | 0 | 0 | `full_site/api/functions_h.html` |
@@ -225,7 +225,7 @@ Generated: 2026-06-06T04:41:40.229Z
 | 159 | draft_needs_translation | bilingual_draft | 490 | 25/17 | 0 | 0 | `full_site/api/functions_w.html` |
 | 160 | draft_needs_translation | bilingual_draft | 471 | 25/17 | 0 | 0 | `full_site/api/functions_x.html` |
 | 161 | draft_needs_translation | bilingual_draft | 488 | 25/17 | 0 | 0 | `full_site/api/functions_y.html` |
-| 162 | draft_needs_translation | bilingual_draft | 295 | 13/10 | 0 | 0 | `full_site/api/functions_z.html` |
+| 162 | draft_needs_translation | bilingual_draft | 457 | 25/17 | 0 | 0 | `full_site/api/functions_z.html` |
 | 163 | draft_needs_translation | bilingual_draft | 459 | 25/17 | 0 | 0 | `full_site/api/functions.html` |
 | 164 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/geom_model_a_p_i_adapter_8h_source.html` |
 | 165 | draft_needs_translation | bilingual_draft | 530 | 26/18 | 0 | 0 | `full_site/api/gf_page_front.html` |
