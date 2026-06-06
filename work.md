@@ -4476,3 +4476,36 @@
 1. 继续最多 5 页，优先处理质量队列中真实存在、中文量低且用户会实际浏览的 Sdf/Exec 文档、token/descriptor 结构体页。
 2. 建议下一组：`full_site/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html`、`full_site/api/group__group___exec___attribute___comptuations.html`、`full_site/api/struct_usd_lux_tokens_type.html`、`full_site/api/struct_hgi_sampler_desc.html`、`full_site/api/struct_usd_skel_tokens_type.html`。
 3. 之后可继续 `full_site/api/struct_usd_physics_tokens_type.html`、`full_site/api/functions_vars.html`、`full_site/api/globals_l.html`、`full_site/api/functions_vars_f.html`、`full_site/release/user_guides/schemas/usdVol/FieldAsset.html`，继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+## 第 300 轮：修复 Usd core 手册对象模型目录跳未覆盖页
+
+已完成：
+
+- 针对用户在浏览器中指出的 `site/usd_page_front.html` 首屏 Core API Manual 目录问题做专项修复：红框内对象模型目录项原本会跳转到 `site/uncovered_openusd_page.html?official=..._usd__page__object_model.html...`，阅读体验不合格。
+- 复核原因：官方 `_usd__page__object_model.html` 不在当前 406 页本地清单内，因此通用路由策略把它标为未覆盖；但这些链接属于 `usd_page_front.html` 核心入口页的高频目录，不应按普通缺页处理。
+- 新增 `scripts/repair_usd_page_front_object_model_links.mjs`，并接入 `scripts/build_usd_page_front_bilingual.mjs`，防止以后重建 `site/usd_page_front.html` 时回退。
+- 更新 `site/usd_page_front.html`：新增本页对象模型本地导读区 `#Usd_OM_ObjectModel`，并提供以下本地锚点：
+  - `#Usd_OM_SdfLayer`
+  - `#Usd_OM_UsdStage`
+  - `#Usd_OM_UsdPrim`
+  - `#Usd_OM_UsdProperty`
+  - `#Usd_OM_UsdAttribute`
+  - `#Usd_OM_UsdRelationship`
+  - `#Usd_OM_Metadata`
+  - `#Usd_OM_OtherObjects`
+- 将上方 Core API Manual 中 9 个 `_usd__page__object_model.html` 目录链接全部改为本页 `#Usd_OM_*` 锚点，并标记 `data-local-route="mapped"`；保留 `data-official-href`，本地导读区内另保留显式 `Open official page` 官方原页链接。
+- 专项回读：`site/usd_page_front.html` 中对象模型目录链接 9/9 均为本页锚点，相关 `uncovered_openusd_page.html?..._usd__page__object_model...` 命中数为 0。
+- 浏览器验证：打开 `http://127.0.0.1:8068/site/usd_page_front.html#Usd_OM_SdfLayer` 可落到本地 “SdfLayer：共享数据文件 / SdfLayer: Shared Data Files” 导读区，`uncovered=false`。
+- 分级变化：计数保持不变，仍为 `draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因是本轮是入口页链接/锚点体验修复，不是 406 draft 页翻译分级晋级。
+- 验证结果：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1` 已通过；链接路由修复后 `mapped_links` 从 4975 提升到 4988，`uncovered_links` 从 4914 降到 4905。
+- GitHub 同步记录：本轮复验通过后使用 `OpenUSD bilingual round 300: usd page object model links fix` 同步本轮 HTML、脚本、报告和 `work.md`；如同步脚本失败，本轮不推送并先修复。
+
+当前差距：
+
+- 全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`；其中 387 页为 `draft_needs_translation`、11 页为 `draft_template_only`，`bilingual_draft` 仍不是完整翻译。
+- 本轮没有扩展 406 清单范围；`_usd__page__object_model.html` 仍不是独立本地页面，但核心入口页目录已有本地锚点兜底。
+
+下一轮目标：
+
+1. 回到每轮最多 5 页精修节奏，优先处理质量队列中真实存在、中文量低且用户会实际浏览的 Sdf/Exec 文档、token/descriptor 结构体页。
+2. 建议下一组：`full_site/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html`、`full_site/api/group__group___exec___attribute___comptuations.html`、`full_site/api/struct_usd_lux_tokens_type.html`、`full_site/api/struct_hgi_sampler_desc.html`、`full_site/api/struct_usd_skel_tokens_type.html`。
+3. 之后可继续 `full_site/api/struct_usd_physics_tokens_type.html`、`full_site/api/functions_vars.html`、`full_site/api/globals_l.html`、`full_site/api/functions_vars_f.html`、`full_site/release/user_guides/schemas/usdVol/FieldAsset.html`，继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。

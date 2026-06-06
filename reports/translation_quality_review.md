@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-06T16:30:51.379Z
+Generated: 2026-06-06T16:51:36.838Z
 
 ## Summary
 
@@ -327,7 +327,7 @@ Generated: 2026-06-06T16:30:51.379Z
 | 261 | draft_needs_translation | bilingual_draft | 481 | 35/27 | 0 | 0 | `full_site/api/usd_lux_page_front.html` |
 | 262 | draft_needs_translation | bilingual_draft | 583 | 26/18 | 0 | 0 | `full_site/api/usd_media_page_front.html` |
 | 263 | draft_needs_translation | bilingual_draft | 470 | 28/20 | 0 | 0 | `full_site/api/usd_mtlx_page_front.html` |
-| 264 | good_bilingual | bilingual_complete | 516 | 20/74 | 0 | 0 | `site/usd_page_front.html` |
+| 264 | good_bilingual | bilingual_complete | 644 | 38/92 | 0 | 0 | `site/usd_page_front.html` |
 | 265 | draft_needs_translation | bilingual_draft | 661 | 53/45 | 0 | 0 | `full_site/api/usd_physics_page_front.html` |
 | 266 | draft_needs_translation | bilingual_draft | 614 | 26/18 | 0 | 0 | `full_site/api/usd_proc_page_front.html` |
 | 267 | draft_needs_translation | bilingual_draft | 609 | 39/31 | 0 | 0 | `full_site/api/usd_render_page_front.html` |

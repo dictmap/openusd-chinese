@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { repairUsdPageFrontObjectModelLinks } from "./repair_usd_page_front_object_model_links.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(scriptDir, "..");
@@ -211,6 +212,8 @@ html = html.replace(
   '<li class="footer">&copy; Copyright 2026, Pixar Animation Studios. | <a href="https://disneytermsofuse.com/">Terms of Use</a> | Generated on Wed Apr 22 2026 16:02:16 by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>',
   '<li class="footer">&copy; Copyright 2026, Pixar Animation Studios. | <span class="cn-footer-note">中文双语复刻层：Usd API front page，本地学习用途，官方英文正文与链接保留。 / Bilingual Usd API front-page layer for local study; official English body and links are preserved.</span> | <a href="https://disneytermsofuse.com/">Terms of Use</a> | Generated on Wed Apr 22 2026 16:02:16 by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>',
 );
+
+html = repairUsdPageFrontObjectModelLinks(html);
 
 await mkdir(siteDir, { recursive: true });
 await writeFile(outputPath, html, "utf8");
