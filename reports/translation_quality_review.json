@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-06T23:34:35.069Z",
+  "generated_at": "2026-06-06T23:44:30.556Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 384,
-    "bilingual_complete": 22
+    "bilingual_draft": 383,
+    "bilingual_complete": 23
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 373,
-    "good_bilingual": 22
+    "draft_needs_translation": 372,
+    "good_bilingual": 23
   },
   "focus_batch": [
     {
@@ -2516,29 +2516,29 @@
     },
     {
       "index": 58,
-      "title": "类参考草稿：VdfContext Class / VdfContext Class",
+      "title": "完整双语参考：VdfContext Class / VdfContext Class",
       "output": "full_site/api/class_vdf_context.html",
       "official_url": "https://openusd.org/release/api/class_vdf_context.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 74,
-      "enBlockCount": 56,
-      "zhChars": 1101,
-      "enLetters": 2377,
-      "bodyChineseChars": 1188,
+      "grade": "good_bilingual",
+      "zhBlockCount": 78,
+      "enBlockCount": 65,
+      "zhChars": 1573,
+      "enLetters": 3170,
+      "bodyChineseChars": 1656,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "`class_vdf_context.html` 面向 `VdfContext`，也就是 Vdf evaluation 过程中传递求值状态、请求信息和执行相关上下文的对象。阅读时要把 context 当作 runtime evaluation context，而不是 USD stage metadata 或全局配置表。",
-        "`VdfContext` 的核心问题是一次求值如何携带必要状态：哪些输入被请求、哪些输出处于当前 evaluation scope，以及计算函数能读取哪些上下文信息。",
-        "当 computed value 结果依赖时间、请求路径、调度批次或缓存状态时，应优先检查 context 是否按预期传入和使用，而不是把差异归因于 authored USD 数据。"
+        "`VdfContext` 解决的问题是：当 Vdf evaluation 调用一个 computation callback 时，如何把这次调用所需的输入访问、输出写回、请求信息和诊断入口集中交给 callback。官方摘录把它称为传给 computations callbacks 的 parameter bundle，并强调函数访问 inputs 的唯一 API 就是 context；因此它是执行期上下文，不是持久化 graph state，也不是 USD stage metadata。",
+        "`VdfContext` 与 `VdfNode` 的边界是本页最重要的读法。`VdfNode` 描述 data-flow graph 中节点的拓扑、端口和依赖关系；`VdfContext` 则存在于一次 callback 执行期间，告诉 callback 哪些输入值可读、哪些输出被请求、结果应该写到哪里，以及出错时如何携带 node debug name 报告。一个定义图结构，一个承载执行调用现场。",
+        "输入读取相关 API 要分清“端口存在”和“值可用”。`GetInputValue()` 用于以类型化方式读取输入值，`GetInputValuePtr()` 提供指针形式访问，`HasInputValue()` 用来判断当前 computation 中输入值是否可用。缺少输入值时，可能是上游没有产生输出、依赖 mask 没有请求该输入、连接未建立，或者本次 evaluation scope 并不需要它；不要简单理解为 authored USD 数据缺失。"
       ],
       "sampleEn": [
-        "This second-pass refinement adds page-specific Chinese guidance for VdfContext while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.",
-        "evaluation context"
+        "`VdfContext` is the parameter bundle passed to computation callbacks. It is the only API through which a computation function accesses its inputs.",
+        "`VdfNode` defines graph structure, while `VdfContext` is the runtime callback context used for value access, output production, and diagnostics."
       ]
     },
     {

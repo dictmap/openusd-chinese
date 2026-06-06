@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：VdfContext Class / VdfContext Class</title>
+  <title>完整双语参考：VdfContext Class / VdfContext Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,36 +24,42 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：VdfContext Class / VdfContext Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：VdfContext Class / VdfContext Class</h1>
     <div class="meta">https://openusd.org/release/api/class_vdf_context.html</div>
   </header>
   <main>
-    <section data-cn-refinement="api-index-quality-pass-167">
-      <h2>中文二次导读补强 / Chinese Second-Pass Reading Notes</h2>
-      <p class="zh">`class_vdf_context.html` 面向 `VdfContext`，也就是 Vdf evaluation 过程中传递求值状态、请求信息和执行相关上下文的对象。阅读时要把 context 当作 runtime evaluation context，而不是 USD stage metadata 或全局配置表。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for VdfContext while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`VdfContext` 的核心问题是一次求值如何携带必要状态：哪些输入被请求、哪些输出处于当前 evaluation scope，以及计算函数能读取哪些上下文信息。</span></li>
-        <li><span class="zh">当 computed value 结果依赖时间、请求路径、调度批次或缓存状态时，应优先检查 context 是否按预期传入和使用，而不是把差异归因于 authored USD 数据。</span></li>
-        <li><span class="zh">`VdfContext` 与 `VdfReadWriteAccessor&lt; T &gt;` 的关系可理解为：context 管理求值环境和请求边界，accessor 提供对具体输出数据的类型化读写入口。</span></li>
-        <li><span class="zh">排查 context 相关问题时，常见线索包括 request propagation、evaluation stack、available outputs、invalidated dependencies 与 thread-local 或 task-local 状态。</span></li>
-        <li><span class="zh">中文补强保留 `VdfContext`、`evaluation context`、`request propagation`、`available outputs` 等英文名，确保读者能直接对应 API 列表和调用栈。</span></li>
-      </ul>
+    <section data-cn-complete="vdf-context-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`VdfContext` 解决的问题是：当 Vdf evaluation 调用一个 computation callback 时，如何把这次调用所需的输入访问、输出写回、请求信息和诊断入口集中交给 callback。官方摘录把它称为传给 computations callbacks 的 parameter bundle，并强调函数访问 inputs 的唯一 API 就是 context；因此它是执行期上下文，不是持久化 graph state，也不是 USD stage metadata。</p>
+      <p class="en">`VdfContext` is the parameter bundle passed to computation callbacks. It is the only API through which a computation function accesses its inputs.</p>
+      <p class="zh">`VdfContext` 与 `VdfNode` 的边界是本页最重要的读法。`VdfNode` 描述 data-flow graph 中节点的拓扑、端口和依赖关系；`VdfContext` 则存在于一次 callback 执行期间，告诉 callback 哪些输入值可读、哪些输出被请求、结果应该写到哪里，以及出错时如何携带 node debug name 报告。一个定义图结构，一个承载执行调用现场。</p>
+      <p class="en">`VdfNode` defines graph structure, while `VdfContext` is the runtime callback context used for value access, output production, and diagnostics.</p>
+      <p class="zh">输入读取相关 API 要分清“端口存在”和“值可用”。`GetInputValue()` 用于以类型化方式读取输入值，`GetInputValuePtr()` 提供指针形式访问，`HasInputValue()` 用来判断当前 computation 中输入值是否可用。缺少输入值时，可能是上游没有产生输出、依赖 mask 没有请求该输入、连接未建立，或者本次 evaluation scope 并不需要它；不要简单理解为 authored USD 数据缺失。</p>
+      <p class="en">Input access APIs distinguish available runtime values from merely declared ports or authored data. Missing values should be debugged through scheduling, masks, and connections.</p>
+      <p class="zh">输出写回相关 API 体现 Vdf 的按需求值。`IsOutputRequested()` 让 callback 判断某个 output 是否真的被本次 evaluation 请求；多输出或昂贵计算节点应先检查它，避免计算不需要的结果。`SetOutput()` 的多个 overload 写回普通结果，`SetEmptyOutput()` 明确写回空输出，`SetOutputToReferenceInput()` 表示输出引用某个输入以表达 pass-through 或避免复制。</p>
+      <p class="en">Output APIs support demand-driven evaluation. A computation can ask whether an output is requested, set concrete values, set empty outputs, or reference an input as output.</p>
+      <p class="zh">`SetEmptyOutput()` 和“不调用 `SetOutput()`”不是同一件事。前者显式表达本次 computation 产生了一个 empty output，后者可能表示 callback 没有写结果、没有被请求或发生了逻辑错误。调试空结果时，应同时查看 `IsOutputRequested()`、输入值可用性、callback 分支和 warning/coding error。</p>
+      <p class="en">An empty output is an explicit result, not the same as failing to set an output. Debugging should check requested outputs, available inputs, and diagnostics.</p>
+      <p class="zh">`SetOutputToReferenceInput()` 的语义是让输出引用输入，而不是复制成一个全新的 owned value。它适合 pass-through 节点或转发场景，但必须确保引用的输入类型、生命周期和 evaluation ownership 与下游预期一致。若误用，可能把本应独立的输出变成依赖上游存储的引用。</p>
+      <p class="en">`SetOutputToReferenceInput()` expresses reference-style output forwarding. It should be used only when type, lifetime, and ownership expectations are correct.</p>
+      <p class="zh">诊断接口把错误和 warning 绑定到当前 callback 上下文。`Warn()` 用于可恢复但需要提示的问题，`CodingError()` 用于调用或实现层面的错误，`GetNodeDebugName()` 给出当前节点可读名称。复杂 Vdf graph 排错时，保留 node debug name、输入端口名、请求输出名和 callback 分支，通常比只看最终 value 更有效。</p>
+      <p class="en">Diagnostics are tied to the active computation context. Node debug names and port names are important evidence when debugging graph evaluation.</p>
+      <p class="zh">与 `VdfEvaluationState`、`VdfReadWriteAccessor&lt;T&gt;` 的关系也要分层理解。evaluation state 更像调度和缓存状态的底层容器，read/write accessor 提供具体 typed data 读写机制；`VdfContext` 则是 callback 作者面对的稳定入口，把这些底层机制包装成输入读取、输出设置和诊断 API。</p>
+      <p class="en">`VdfEvaluationState` and accessors are lower-level execution/storage mechanisms. `VdfContext` is the callback-facing API that packages them into input, output, and diagnostic operations.</p>
+      <p class="zh">常见误读包括：把 context 当作跨 evaluation 可保存的对象，把 `IsOutputRequested()` 当成节点永久状态，把 `HasInputValue()` 当成端口存在性检查，把 `SetEmptyOutput()` 当成没有设置输出。正确读法是：`VdfContext` 只描述当前 callback 调用现场；它的值访问和输出写回都受当前 request、dependency mask、evaluation state 和 graph 连接关系约束。</p>
+      <p class="en">Common misreads come from treating context as persistent state. `VdfContext` is scoped to the active callback invocation and constrained by the current request and graph state.</p>
       <h3>术语对照 / Terms</h3>
       <ul>
-        <li><span class="zh">求值上下文：</span><span class="en">evaluation context</span></li>
-        <li><span class="zh">请求传播：</span><span class="en">request propagation</span></li>
-        <li><span class="zh">求值范围：</span><span class="en">evaluation scope</span></li>
-        <li><span class="zh">可用输出：</span><span class="en">available outputs</span></li>
-        <li><span class="zh">求值栈：</span><span class="en">evaluation stack</span></li>
-        <li><span class="zh">任务局部状态：</span><span class="en">task-local state</span></li>
+        <li><span class="zh">执行期上下文：</span><span class="en">runtime computation context</span></li>
+        <li><span class="zh">计算回调参数包：</span><span class="en">computation callback parameter bundle</span></li>
+        <li><span class="zh">输入值可用性：</span><span class="en">input value availability</span></li>
+        <li><span class="zh">按需输出：</span><span class="en">demand-driven output</span></li>
+        <li><span class="zh">空输出：</span><span class="en">empty output</span></li>
+        <li><span class="zh">引用输入转发：</span><span class="en">reference-input forwarding</span></li>
+        <li><span class="zh">节点调试名：</span><span class="en">node debug name</span></li>
+        <li><span class="zh">求值状态：</span><span class="en">evaluation state</span></li>
       </ul>
-    </section>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
     <section data-cn-refinement="api-class-quality-pass-042">
       <h2>中文精修导读 / Chinese Reading Notes</h2>
