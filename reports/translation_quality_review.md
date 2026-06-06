@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-06T01:45:42.205Z
+Generated: 2026-06-06T01:57:38.351Z
 
 ## Summary
 
@@ -40,7 +40,6 @@ Generated: 2026-06-06T01:45:42.205Z
 | 278 | draft_template_only | 62 | `full_site/api/var_8h_source.html` | 源码页面草稿：var.h / var.h |
 | 298 | draft_template_only | 64 | `full_site/release/search.html` | 搜索 / Search - Universal Scene Description 26.05 documentation |
 | 69 | draft_template_only | 66 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | API 页面草稿：hf Directory / hf Directory |
-| 54 | draft_needs_translation | 278 | `full_site/api/class_usd_skel_imaging_data_source_skeleton_prim.html` | 类参考草稿：UsdSkelImagingDataSourceSkeletonPrim Class / UsdSkelImagingDataSourceSkeletonPrim Class |
 | 85 | draft_needs_translation | 283 | `full_site/api/functions_func_d.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
 | 92 | draft_needs_translation | 283 | `full_site/api/functions_func_k.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
 | 152 | draft_needs_translation | 283 | `full_site/api/functions_vars_u.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
@@ -59,6 +58,7 @@ Generated: 2026-06-06T01:45:42.205Z
 | 86 | draft_needs_translation | 297 | `full_site/api/functions_func_e.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
 | 198 | draft_needs_translation | 298 | `full_site/api/globals_w.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
 | 263 | draft_needs_translation | 298 | `full_site/api/usd_mtlx_page_front.html` | API 模块草稿：UsdMtlx: MaterialX File Format and Shader Plugins / UsdMtlx: MaterialX File Format and Shader Plugins |
+| 107 | draft_needs_translation | 299 | `full_site/api/functions_func_z.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
 
 ## All Pages
 
@@ -97,7 +97,7 @@ Generated: 2026-06-06T01:45:42.205Z
 | 31 | draft_needs_translation | bilingual_draft | 584 | 52/44 | 0 | 0 | `full_site/api/class_sdf_layer.html` |
 | 32 | draft_needs_translation | bilingual_draft | 594 | 52/44 | 0 | 0 | `full_site/api/class_sdf_path.html` |
 | 33 | draft_needs_translation | bilingual_draft | 525 | 52/44 | 0 | 0 | `full_site/api/class_sdf_prim_spec.html` |
-| 34 | draft_needs_translation | bilingual_draft | 382 | 34/31 | 0 | 0 | `full_site/api/class_sdf_usdz_file_format.html` |
+| 34 | draft_needs_translation | bilingual_draft | 567 | 46/38 | 0 | 0 | `full_site/api/class_sdf_usdz_file_format.html` |
 | 35 | draft_needs_translation | bilingual_draft | 580 | 52/44 | 0 | 0 | `full_site/api/class_sdr_shader_property.html` |
 | 36 | draft_needs_translation | bilingual_draft | 395 | 40/37 | 0 | 0 | `full_site/api/class_tf_dense_hash_map.html` |
 | 37 | draft_needs_translation | bilingual_draft | 354 | 27/24 | 0 | 0 | `full_site/api/class_tf_py_lock.html` |
@@ -107,9 +107,9 @@ Generated: 2026-06-06T01:45:42.205Z
 | 41 | draft_needs_translation | bilingual_draft | 557 | 52/44 | 0 | 0 | `full_site/api/class_usd_geom_basis_curves.html` |
 | 42 | draft_needs_translation | bilingual_draft | 598 | 52/44 | 0 | 0 | `full_site/api/class_usd_geom_mesh.html` |
 | 43 | draft_needs_translation | bilingual_draft | 539 | 52/44 | 0 | 0 | `full_site/api/class_usd_geom_primvars_a_p_i.html` |
-| 44 | draft_needs_translation | bilingual_draft | 308 | 32/29 | 0 | 0 | `full_site/api/class_usd_imaging_adapter_registry.html` |
+| 44 | draft_needs_translation | bilingual_draft | 454 | 44/36 | 0 | 0 | `full_site/api/class_usd_imaging_adapter_registry.html` |
 | 45 | draft_needs_translation | bilingual_draft | 558 | 52/44 | 0 | 0 | `full_site/api/class_usd_imaging_delegate.html` |
-| 46 | draft_needs_translation | bilingual_draft | 320 | 33/30 | 0 | 0 | `full_site/api/class_usd_imaging_nurbs_patch_adapter.html` |
+| 46 | draft_needs_translation | bilingual_draft | 482 | 45/37 | 0 | 0 | `full_site/api/class_usd_imaging_nurbs_patch_adapter.html` |
 | 47 | draft_needs_translation | bilingual_draft | 591 | 46/38 | 0 | 0 | `full_site/api/class_usd_lux_disk_light.html` |
 | 48 | draft_needs_translation | bilingual_draft | 590 | 52/44 | 0 | 0 | `full_site/api/class_usd_lux_shaping_a_p_i.html` |
 | 49 | draft_needs_translation | bilingual_draft | 549 | 52/44 | 0 | 0 | `full_site/api/class_usd_physics_joint.html` |
@@ -117,10 +117,10 @@ Generated: 2026-06-06T01:45:42.205Z
 | 51 | draft_needs_translation | bilingual_draft | 598 | 46/38 | 0 | 0 | `full_site/api/class_usd_proc_generative_procedural.html` |
 | 52 | draft_needs_translation | bilingual_draft | 489 | 52/44 | 0 | 0 | `full_site/api/class_usd_schema_registry.html` |
 | 53 | draft_needs_translation | bilingual_draft | 538 | 52/44 | 0 | 0 | `full_site/api/class_usd_shade_output.html` |
-| 54 | draft_needs_translation | bilingual_draft | 278 | 20/17 | 0 | 0 | `full_site/api/class_usd_skel_imaging_data_source_skeleton_prim.html` |
+| 54 | draft_needs_translation | bilingual_draft | 461 | 32/24 | 0 | 0 | `full_site/api/class_usd_skel_imaging_data_source_skeleton_prim.html` |
 | 55 | draft_needs_translation | bilingual_draft | 630 | 52/44 | 0 | 0 | `full_site/api/class_usd_stage_cache.html` |
 | 56 | draft_needs_translation | bilingual_draft | 678 | 52/44 | 0 | 0 | `full_site/api/class_usd_validation_error.html` |
-| 57 | draft_needs_translation | bilingual_draft | 394 | 40/37 | 0 | 0 | `full_site/api/class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html` |
+| 57 | draft_needs_translation | bilingual_draft | 563 | 52/44 | 0 | 0 | `full_site/api/class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html` |
 | 58 | draft_needs_translation | bilingual_draft | 408 | 38/35 | 0 | 0 | `full_site/api/class_vdf_context.html` |
 | 59 | draft_needs_translation | bilingual_draft | 376 | 40/37 | 0 | 0 | `full_site/api/class_vdf_grapher_options.html` |
 | 60 | draft_needs_translation | bilingual_draft | 617 | 52/44 | 0 | 0 | `full_site/api/class_vdf_node.html` |

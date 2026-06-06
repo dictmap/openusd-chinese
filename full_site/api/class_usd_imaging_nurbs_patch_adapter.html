@@ -54,6 +54,27 @@
         <li><span class="zh">可变性：</span><span class="en">variability</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-137">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`UsdImagingNurbsPatchAdapter` 为 `UsdGeomNurbsPatch` 提供 USD Imaging delegate support，负责把 NURBS patch 的点、拓扑、subprim 数据和可变性信息转给 imaging/Hydra。它是具体 schema 类型的 prim adapter，不是 NURBS 曲面求值库。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdImagingNurbsPatchAdapter while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`GetPoints()` 和 `GetTopology()` 位于 Data access 语境下，是把 NURBS patch 几何数据暴露给成像层的核心入口。</span></li>
+        <li><span class="zh">`GetImagingSubprims()`、`GetImagingSubprimType()` 和 `GetImagingSubprimData()` 描述一个 USD prim 在 imaging 层可拆出的 subprim 列表、类型和数据。</span></li>
+        <li><span class="zh">`Populate()` 负责将 prim 初次注册到 render index / delegate 相关结构；`IsSupported()` 则可用于判断该 adapter 是否能处理给定 prim。</span></li>
+        <li><span class="zh">`TrackVariability()` 与 `ProcessPropertyChange()` 帮助 delegate 判断属性是否随时间变化以及 property change 需要触发什么 dirty state。</span></li>
+        <li><span class="zh">`InvalidateImagingSubprim()` 用于 data source 或 subprim 缓存失效；阅读时应和 `UsdImagingDelegate` 的整体同步流程一起看。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">NURBS patch 适配器：</span><span class="en">UsdImagingNurbsPatchAdapter</span></li>
+        <li><span class="zh">NURBS patch schema：</span><span class="en">UsdGeomNurbsPatch</span></li>
+        <li><span class="zh">imaging 子 prim：</span><span class="en">imaging subprim</span></li>
+        <li><span class="zh">点数据：</span><span class="en">GetPoints()</span></li>
+        <li><span class="zh">拓扑数据：</span><span class="en">GetTopology()</span></li>
+        <li><span class="zh">属性变更处理：</span><span class="en">ProcessPropertyChange()</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -54,6 +54,27 @@
         <li><span class="zh">GetNames：</span><span class="en">GetNames</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-137">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`UsdSkelImagingDataSourceSkeletonPrim` 是 UsdSkel `Skeleton` prim 的 imaging data source，把 skeleton prim 暴露给 Hydra/UsdImaging 的 data source 体系。它关注的是 skeleton prim 如何被成像层查询和同步，不是 `UsdSkelSkeleton` schema authoring 或骨骼动画求解器。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdSkelImagingDataSourceSkeletonPrim while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Get()` 返回指定 name 对应的 `HdDataSourceBaseHandle`，用于从 container data source 中取出某个字段；调用方需要使用 `TfToken` 名称而不是直接访问 USD attribute。</span></li>
+        <li><span class="zh">`GetNames()` 返回该 prim data source 可提供的 token names，适合调试 Hydra scene index 或定位 skeleton data source 中有哪些字段可读。</span></li>
+        <li><span class="zh">继承链中的 `UsdImagingDataSourceGprim`、`UsdImagingDataSourcePrim` 和 `HdContainerDataSource` 说明它在 USD prim 和 Hydra data source 之间做适配。</span></li>
+        <li><span class="zh">`UsdImagingDataSourceStageGlobals`、`SdfPath`、`UsdPrim` 与 `HdDataSourceLocator` 是构造和定位 data source 的上下文依赖，不表示该类负责 stage traversal。</span></li>
+        <li><span class="zh">阅读本页时应把 skeleton topology、joint order 和 animation evaluation 留给 UsdSkel 相关 schema/compute API；本类只说明 imaging 数据暴露边界。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">骨架 prim 数据源：</span><span class="en">Skeleton prim data source</span></li>
+        <li><span class="zh">Hydra 容器数据源：</span><span class="en">HdContainerDataSource</span></li>
+        <li><span class="zh">数据源名称列表：</span><span class="en">GetNames()</span></li>
+        <li><span class="zh">数据源字段读取：</span><span class="en">Get()</span></li>
+        <li><span class="zh">成像层适配：</span><span class="en">imaging data source adaptation</span></li>
+        <li><span class="zh">stage 全局上下文：</span><span class="en">UsdImagingDataSourceStageGlobals</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

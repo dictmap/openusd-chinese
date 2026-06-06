@@ -54,6 +54,27 @@
         <li><span class="zh">按 stage 保存的数据：</span><span class="en">per-stage data</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-137">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`UsdImagingAdapterRegistry` 是 USD Imaging 的 PrimAdapter 和 API schema adapter 工厂注册表。它保存 adapter factories，并按 schema/type 构造 adapter instances，使 `UsdImagingDelegate` 能把不同 USD prim 或 API schema 映射为 Hydra 可消费的数据。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdImagingAdapterRegistry while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`GetInstance()` 体现该 registry 采用 singleton 模式；`TfSingleton&lt; UsdImagingAdapterRegistry &gt;` 是 friend，说明实例生命周期由 Tf singleton 基础设施管理。</span></li>
+        <li><span class="zh">`ConstructAdapter()` 按 prim type 构造 prim adapter；`ConstructAPISchemaAdapter()` 与 `ConstructKeylessAPISchemaAdapters()` 则面向 applied API schema 或无 key API schema。</span></li>
+        <li><span class="zh">`GetAdapterKeys()` 和 `GetAPISchemaAdapterKeys()` 用于列举注册项；`HasAdapter()` 与 `HasAPISchemaAdapter()` 用于在构造前判断某类 adapter 是否可用。</span></li>
+        <li><span class="zh">`AreExternalPluginsEnabled()` 反映外部 adapter plug-ins 是否参与 discovery；排查 schema 没有显示时，要同时检查插件加载和 adapter key。</span></li>
+        <li><span class="zh">本类不直接渲染 prim，也不持有 per-stage adapter state；实际 adapter instances 通常随 stage/delegate 侧数据管理。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">适配器注册表：</span><span class="en">UsdImagingAdapterRegistry</span></li>
+        <li><span class="zh">prim adapter 工厂：</span><span class="en">PrimAdapter factory</span></li>
+        <li><span class="zh">API schema adapter：</span><span class="en">API schema adapter</span></li>
+        <li><span class="zh">adapter key：</span><span class="en">adapter key</span></li>
+        <li><span class="zh">外部插件：</span><span class="en">external plugins</span></li>
+        <li><span class="zh">singleton 注册表：</span><span class="en">TfSingleton</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

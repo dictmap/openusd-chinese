@@ -54,6 +54,27 @@
         <li><span class="zh">half 系数：</span><span class="en">half coefficients</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-137">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`UsdVolParticleFieldSphericalHarmonicsAttributeAPI` 是应用到 `ParticleField` 上的 API schema，用 spherical harmonics coefficients 描述每粒子的 radiance。它规定 SH degree 在整个 `ParticleField` 内保持常量，并提供 float 与 half 系数属性以适配不同精度的消费端。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdVolParticleFieldSphericalHarmonicsAttributeAPI while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Apply()` 与 `CanApply()` 表示这是 applied API schema；使用前应确认目标 prim 是否适合承载 particle field spherical harmonics radiance 属性。</span></li>
+        <li><span class="zh">`CreateRadianceSphericalHarmonicsDegreeAttr()` / `GetRadianceSphericalHarmonicsDegreeAttr()` 管理 SH degree，degree 决定每粒子的 coefficient 数量。</span></li>
+        <li><span class="zh">`CreateRadianceSphericalHarmonicsCoefficientsAttr()` 与 getter 处理 float coefficients；页面说明数据消费者在可用时应优先使用 float 版本。</span></li>
+        <li><span class="zh">`CreateRadianceSphericalHarmonicsCoefficientshAttr()` 与 getter 处理 half coefficients；half 版本可节省存储，但可能影响 radiance 精度。</span></li>
+        <li><span class="zh">数组长度应与 particle count 和每粒子 coefficient 数一致；阅读时要和 position、opacity、orientation 等 particle attribute API 一起核对数据布局。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">粒子场球谐属性 API：</span><span class="en">UsdVolParticleFieldSphericalHarmonicsAttributeAPI</span></li>
+        <li><span class="zh">球谐阶数：</span><span class="en">spherical harmonics degree</span></li>
+        <li><span class="zh">辐射亮度系数：</span><span class="en">radiance coefficients</span></li>
+        <li><span class="zh">float 系数：</span><span class="en">float coefficients</span></li>
+        <li><span class="zh">half 系数：</span><span class="en">half coefficients</span></li>
+        <li><span class="zh">每粒子数据布局：</span><span class="en">per-particle data layout</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

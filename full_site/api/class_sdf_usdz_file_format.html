@@ -54,6 +54,27 @@
         <li><span class="zh">SdfLayer 输入输出：</span><span class="en">SdfLayer I/O</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-137">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`SdfUsdzFileFormat` 是 Sdf 层的 `.usdz` package file format 插件，负责把 USDZ package 作为 layer/file format 读取和写出。它属于 `SdfFileFormat` / `SdfLayer` 的底层 I/O 机制，不是 `UsdStage` API，也不负责解析场景组合语义。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for SdfUsdzFileFormat while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`CanRead()`、`Read()` 与 `_ReadDetached()` 处理读取路径；其中 detached 读取适合理解 package 内容与外部文件系统解耦的情况。</span></li>
+        <li><span class="zh">`ReadFromString()`、`WriteToString()`、`WriteToStream()` 和 `WriteToFile()` 覆盖字符串、流和文件目标，说明该 file format 仍遵循通用 Sdf file format 接口。</span></li>
+        <li><span class="zh">`GetPackageRootLayerPath()` 用于定位 USDZ package 内的 root layer，是区别普通 `.usd` / `.usda` / `.usdc` 文件的重要入口。</span></li>
+        <li><span class="zh">`IsPackage()` 返回 package 语义判断；工具链可据此决定是否需要 package-aware asset resolution 或 root layer 展开逻辑。</span></li>
+        <li><span class="zh">`SDF_FILE_FORMAT_FACTORY_ACCESS` 与 `InitData()` 表明该类经由 Sdf 插件工厂和初始化数据参与注册，用户通常不会手工 new 这个类型。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USDZ 文件格式：</span><span class="en">SdfUsdzFileFormat</span></li>
+        <li><span class="zh">package file format：</span><span class="en">package file format</span></li>
+        <li><span class="zh">包内根 layer：</span><span class="en">package root layer</span></li>
+        <li><span class="zh">Sdf 文件格式插件：</span><span class="en">SdfFileFormat plugin</span></li>
+        <li><span class="zh">离线读取：</span><span class="en">_ReadDetached()</span></li>
+        <li><span class="zh">文件格式参数：</span><span class="en">FileFormatArguments</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
