@@ -53,6 +53,27 @@
         <li><span class="zh">模块边界：</span><span class="en">module boundary</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-157">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`functions_func_q.html` 是 Class Members 函数索引的 Q 段，目前条目很少，主要指向 `SdfAbstractData`、`SdfLayer` 和 `pxr_CLI::CLI::ConfigBase`。本页价值在于快速定位 query 类函数入口，并提醒读者按所属模块继续查签名和语义。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Class Members - Functions - Q while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`SdfAbstractData` 的 Q 段函数通常围绕抽象 scene description data 查询；应进入 class 页确认 query 函数读取的是 spec、field、time sample 还是 metadata。</span></li>
+        <li><span class="zh">`SdfLayer` 的 Q 段函数更接近 layer 内容查询或状态查询；需要结合 layer identifier、real path、dirty state、subLayer 等概念阅读。</span></li>
+        <li><span class="zh">`ConfigBase` 属于 `pxr_CLI::CLI` 命名空间，是命令行配置类型，不属于 Sdf 数据模型；同页出现只是字母索引混排结果。</span></li>
+        <li><span class="zh">Q 段函数名称可能以 `Query` 或语义上具备 query 行为出现，但具体线程安全、错误返回和缓存行为不能从索引页推断。</span></li>
+        <li><span class="zh">本页和 `functions_q.html`、`functions_vars_q.html` 需要区分：当前页是 member functions，其他页面可能是所有 class members 或 variables 的 Q 段入口。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Q 段函数索引：</span><span class="en">Q-section function index</span></li>
+        <li><span class="zh">查询函数：</span><span class="en">query function</span></li>
+        <li><span class="zh">抽象数据接口：</span><span class="en">abstract data interface</span></li>
+        <li><span class="zh">图层状态查询：</span><span class="en">layer state query</span></li>
+        <li><span class="zh">命令行配置基类：</span><span class="en">CLI configuration base</span></li>
+        <li><span class="zh">索引混排：</span><span class="en">alphabetical index mixing</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

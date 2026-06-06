@@ -54,6 +54,27 @@
         <li><span class="zh">Pcp prim 索引：</span><span class="en">PcpPrimIndex</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-157">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`pcp_page_front.html` 是 `Pcp` composition engine 的入口，负责把 layer、reference、payload、variant、inherits、specializes 等 scene description 关系计算成可供上层 `Usd` 使用的 composition 结果。多数用户通过 `UsdStage` 间接消费 Pcp 结果，而不是直接调用 Pcp。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Pcp: PrimCache Population (Composition) while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`PcpCache` 是组合缓存入口，用来保存和复用 prim/property composition 计算结果；它是理解本模块 Usage 小节的核心。</span></li>
+        <li><span class="zh">`PcpPrimIndex` 表示某个 prim 的 composition 索引，记录组成该 prim 的 node、arc、layer stack 和强弱关系；它不是 scenegraph prim 对象本身。</span></li>
+        <li><span class="zh">`PcpErrorBase` 与 `TfError` 共同用于 composition 诊断，帮助定位 unresolved prim path、invalid asset path、conflicting relocation 等问题。</span></li>
+        <li><span class="zh">`PcpChanges`、`PcpLifeboat` 和 Change Processing 小节说明在 layer 或 namespace 变化时如何处理缓存、依赖和对象生命周期。</span></li>
+        <li><span class="zh">`PcpTranslatePathFromNodeToRoot()` 这类 path translation API 体现 Pcp 的底层职责：在 composition graph 的 node 与 root namespace 之间转换路径。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">组合引擎：</span><span class="en">composition engine</span></li>
+        <li><span class="zh">组合缓存：</span><span class="en">composition cache</span></li>
+        <li><span class="zh">prim 组合索引：</span><span class="en">prim composition index</span></li>
+        <li><span class="zh">组合弧：</span><span class="en">composition arc</span></li>
+        <li><span class="zh">命名空间编辑：</span><span class="en">namespace editing</span></li>
+        <li><span class="zh">路径转换：</span><span class="en">path translation</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

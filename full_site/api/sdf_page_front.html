@@ -54,6 +54,27 @@
         <li><span class="zh">文件格式插件：</span><span class="en">file format plugin</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-157">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`sdf_page_front.html` 是 `Sdf` 模块入口，面向 USD scene description 的低层表示：layer、path、prim spec、property spec、file format plugin、metadata、time sample 与基础值类型。它解释 authored scene description 的存储与编辑边界，而不是 composition 后的 stage 视图。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Sdf: Scene Description Foundations while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`SdfLayer` 是文件/层级单位，承载 authored opinions；`SdfPrimSpec`、`SdfPropertySpec`、`SdfAttributeSpec`、`SdfRelationshipSpec` 是 layer 内具体 scene description spec。</span></li>
+        <li><span class="zh">`SdfPath` 是定位 prim、property、variant selection 等对象的核心路径类型；阅读 Sdf 页面时应优先把 path、layer、spec 三者关系理清。</span></li>
+        <li><span class="zh">`Sdf` 和 `Usd` 的边界很重要：`SdfLayer` 与 spec 操作原始 authored data，`UsdStage` 与 `UsdPrim` 提供 composition 后的 scenegraph API。</span></li>
+        <li><span class="zh">File Format Plugins 与 Variable Expressions 是本页的扩展阅读重点，分别对应自定义层文件格式和 layer/asset 中变量表达式的解析机制。</span></li>
+        <li><span class="zh">本页同时链接 `TfToken`、`VtArray`、`VtDictionary` 与大量 `Gf` 数学类型，说明 Sdf 值系统依赖基础库，但不会替代这些库的完整 API 文档。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">场景描述基础层：</span><span class="en">scene description foundation layer</span></li>
+        <li><span class="zh">已写入意见：</span><span class="en">authored opinion</span></li>
+        <li><span class="zh">prim 规格：</span><span class="en">prim spec</span></li>
+        <li><span class="zh">属性规格：</span><span class="en">property spec</span></li>
+        <li><span class="zh">路径对象：</span><span class="en">path object</span></li>
+        <li><span class="zh">文件格式插件：</span><span class="en">file format plugin</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -54,6 +54,27 @@
         <li><span class="zh">着色系统：</span><span class="en">shadingSystem</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-157">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`sdr_page_front.html` 是 `Sdr` 着色器定义注册表入口，用于发现、延迟解析并查询 shader definitions。它抽象不同 shading system 的实现差异，让 pipeline 可以通过 `identifier` 与 `shadingSystem` 找到 shader node、property 和 metadata。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Sdr: Shader Definition Registry while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`SdrRegistry` 是发现与查询入口，负责根据 discovery plugin 和 parser plugin 找到 shader definitions，并按需解析。</span></li>
+        <li><span class="zh">`SdrShaderNode` 表示一个 shader definition，通常包含 identifier、name、source type、family、metadata 和输入/输出集合。</span></li>
+        <li><span class="zh">`SdrShaderProperty` 描述 shader input、output 或 property 的类型、默认值、元数据、连接能力等信息，是材质 UI 和 pipeline 查询的重要对象。</span></li>
+        <li><span class="zh">`Sdr` 与 `UsdShade` 的职责不同：`Sdr` 管 shader definition registry，`UsdShade` 管 USD scene 中 material、shader prim 和连接网络的 authored 表达。</span></li>
+        <li><span class="zh">MaterialX、renderer-specific discovery 或自定义 shading system 可通过 Sdr 的可扩展框架接入；本页不定义具体 renderer 的 shader 执行语义。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">着色器定义注册表：</span><span class="en">shader definition registry</span></li>
+        <li><span class="zh">延迟解析：</span><span class="en">lazy parsing</span></li>
+        <li><span class="zh">发现插件：</span><span class="en">discovery plugin</span></li>
+        <li><span class="zh">解析插件：</span><span class="en">parser plugin</span></li>
+        <li><span class="zh">着色系统：</span><span class="en">shading system</span></li>
+        <li><span class="zh">着色器属性：</span><span class="en">shader property</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

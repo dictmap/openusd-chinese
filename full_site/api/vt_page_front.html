@@ -55,6 +55,27 @@
         <li><span class="zh">Gf 三维向量类型：</span><span class="en">GfVec3d</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-157">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`vt_page_front.html` 是 `Vt` value types 库入口，核心是 `VtValue` 与 `VtArray`。它工作在语言数据类型层，连接 C++ 强类型值、Python typed array、USD attribute value、metadata 和泛型 API，不是 scene schema 或 composition 模块。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Vt: Value Types while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`VtValue` 是 type-erased container，可包装 `float`、`int`、`bool`、`GfVec3d` 等具体类型，并在运行时查询或取回实际值。</span></li>
+        <li><span class="zh">`VtArray` 是 homogeneous container，适合存储同一元素类型的数组；USD array-valued attributes 和 Python typed array classes 经常依赖它。</span></li>
+        <li><span class="zh">C++ 与 Python interface 在构造方式、类型名和数组表现上可能不同；阅读本页时要把 value concept 与语言绑定差异分开。</span></li>
+        <li><span class="zh">`VtDictionary`、`VtArray` 与 `VtValue` 常与 `Sdf` metadata、USD attribute default value、time sample 和 generic API 一起出现。</span></li>
+        <li><span class="zh">`Vt` 和 `Gf` 的关系是值容器与数学类型的关系：`GfVec3d` 等是具体值类型，`VtValue` / `VtArray` 可承载或组织这些值。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">值类型库：</span><span class="en">value types library</span></li>
+        <li><span class="zh">类型擦除容器：</span><span class="en">type-erased container</span></li>
+        <li><span class="zh">同质数组：</span><span class="en">homogeneous array</span></li>
+        <li><span class="zh">强类型值：</span><span class="en">strongly typed value</span></li>
+        <li><span class="zh">泛型值 API：</span><span class="en">generic value API</span></li>
+        <li><span class="zh">语言绑定差异：</span><span class="en">language binding difference</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-06T06:06:57.467Z
+Generated: 2026-06-06T10:19:36.924Z
 
 ## Summary
 
@@ -161,7 +161,7 @@ Generated: 2026-06-06T06:06:57.467Z
 | 95 | draft_needs_translation | bilingual_draft | 483 | 24/16 | 0 | 0 | `full_site/api/functions_func_n.html` |
 | 96 | draft_needs_translation | bilingual_draft | 441 | 24/16 | 0 | 0 | `full_site/api/functions_func_o.html` |
 | 97 | draft_needs_translation | bilingual_draft | 509 | 24/16 | 0 | 0 | `full_site/api/functions_func_p.html` |
-| 98 | draft_needs_translation | bilingual_draft | 357 | 12/9 | 0 | 0 | `full_site/api/functions_func_q.html` |
+| 98 | draft_needs_translation | bilingual_draft | 593 | 24/16 | 0 | 0 | `full_site/api/functions_func_q.html` |
 | 99 | draft_needs_translation | bilingual_draft | 521 | 24/16 | 0 | 0 | `full_site/api/functions_func_r.html` |
 | 100 | draft_needs_translation | bilingual_draft | 518 | 24/16 | 0 | 0 | `full_site/api/functions_func_s.html` |
 | 101 | draft_needs_translation | bilingual_draft | 536 | 24/16 | 0 | 0 | `full_site/api/functions_func_t.html` |
@@ -304,13 +304,13 @@ Generated: 2026-06-06T06:06:57.467Z
 | 238 | draft_needs_translation | bilingual_draft | 531 | 25/17 | 0 | 0 | `full_site/api/page_ts_ts_test.html` |
 | 239 | draft_needs_translation | bilingual_draft | 336 | 13/10 | 0 | 0 | `full_site/api/pages.html` |
 | 240 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/parallel_speculation_executor_engine_8h_source.html` |
-| 241 | draft_needs_translation | bilingual_draft | 350 | 25/22 | 0 | 0 | `full_site/api/pcp_page_front.html` |
+| 241 | draft_needs_translation | bilingual_draft | 528 | 37/29 | 0 | 0 | `full_site/api/pcp_page_front.html` |
 | 242 | draft_needs_translation | bilingual_draft | 389 | 17/14 | 0 | 0 | `full_site/api/plug_page_front.html` |
 | 243 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/pxr_display_filter_adapter_8h_source.html` |
 | 244 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/riley_param_schema_8h_source.html` |
-| 245 | draft_needs_translation | bilingual_draft | 348 | 24/21 | 0 | 0 | `full_site/api/sdf_page_front.html` |
+| 245 | draft_needs_translation | bilingual_draft | 541 | 36/28 | 0 | 0 | `full_site/api/sdf_page_front.html` |
 | 246 | draft_needs_translation | bilingual_draft | 365 | 14/10 | 0 | 0 | `full_site/api/sdr_glslfx_page_front.html` |
-| 247 | draft_needs_translation | bilingual_draft | 355 | 15/12 | 0 | 0 | `full_site/api/sdr_page_front.html` |
+| 247 | draft_needs_translation | bilingual_draft | 534 | 27/19 | 0 | 0 | `full_site/api/sdr_page_front.html` |
 | 248 | draft_needs_translation | bilingual_draft | 338 | 14/11 | 0 | 0 | `full_site/api/sparse_vectorized_input_traverser_8h.html` |
 | 249 | draft_needs_translation | bilingual_draft | 387 | 29/26 | 0 | 0 | `full_site/api/struct_hgi_sampler_desc.html` |
 | 250 | draft_needs_translation | bilingual_draft | 441 | 40/37 | 0 | 0 | `full_site/api/struct_usd_geom_tokens_type.html` |
@@ -342,7 +342,7 @@ Generated: 2026-06-06T06:06:57.467Z
 | 276 | draft_needs_translation | bilingual_draft | 362 | 18/15 | 0 | 0 | `full_site/api/usdabc_page_front.html` |
 | 277 | draft_needs_translation | bilingual_draft | 381 | 14/10 | 0 | 0 | `full_site/api/usddraco_page_front.html` |
 | 278 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/var_8h_source.html` |
-| 279 | draft_needs_translation | bilingual_draft | 360 | 17/14 | 0 | 0 | `full_site/api/vt_page_front.html` |
+| 279 | draft_needs_translation | bilingual_draft | 537 | 29/21 | 0 | 0 | `full_site/api/vt_page_front.html` |
 | 280 | draft_needs_translation | bilingual_draft | 385 | 22/19 | 0 | 0 | `full_site/api/work_page_front.html` |
 | 281 | good_bilingual | bilingual_complete | 515 | 10/27 | 0 | 0 | `site/apiDocs.html` |
 | 282 | draft_needs_translation | bilingual_draft | 681 | 36/29 | 0 | 0 | `full_site/release/contributing_to_usd.html` |
