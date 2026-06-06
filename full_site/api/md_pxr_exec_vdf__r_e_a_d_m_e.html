@@ -29,6 +29,27 @@
     <div class="meta">https://openusd.org/release/api/md_pxr_exec_vdf__r_e_a_d_m_e.html</div>
   </header>
   <main>
+    <section data-cn-refinement="api-index-quality-pass-167">
+      <h2>中文二次导读补强 / Chinese Second-Pass Reading Notes</h2>
+      <p class="zh">`md_pxr_exec_vdf__r_e_a_d_m_e.html` 是 `Vdf` Vectorized Data Flow 的 README 型入口页，适合先理解 OpenExec 如何把依赖关系、数据流、输入输出和 evaluation request 组织成可执行图。阅读时应把 `Vdf` 视为执行图基础设施，而不是 USD scene description 或 Hydra render delegate。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Vdf: Vectorized Data Flow while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Vdf` 的核心边界是 data-flow network：节点、输入、输出、依赖和求值请求共同描述值如何被计算与传播；它不直接定义 USD layer、prim 或 composition arc。</span></li>
+        <li><span class="zh">遇到 graph、node、input、output、dependency、request 等词时，应先判断它们属于执行图结构、运行时求值状态，还是上层 `Exec` / `ExecUsd` 映射进来的场景数据。</span></li>
+        <li><span class="zh">`Vdf` 文档常与 `Ef`、`Esf`、`Exec`、`ExecUsd` 串读：`Ef` 提供 foundation，`Esf` 抽象 scene data，`Exec` 组织 computation，`Vdf` 承担图级执行和数据流表达。</span></li>
+        <li><span class="zh">调试 computed value 时，常见排查路径是 input availability、output ownership、dirty propagation、dependency invalidation、evaluation order 和缓存命中，而不是只看某个计算函数本身。</span></li>
+        <li><span class="zh">中文导读保留 `Vdf`、`VdfNode`、`VdfContext`、`VdfReadWriteAccessor`、`data-flow network` 等英文标识，方便与源码、日志、测试名和 Doxygen 索引直接对应。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">向量化数据流：</span><span class="en">Vectorized Data Flow</span></li>
+        <li><span class="zh">数据流网络：</span><span class="en">data-flow network</span></li>
+        <li><span class="zh">求值请求：</span><span class="en">evaluation request</span></li>
+        <li><span class="zh">脏值传播：</span><span class="en">dirty propagation</span></li>
+        <li><span class="zh">依赖失效：</span><span class="en">dependency invalidation</span></li>
+        <li><span class="zh">求值顺序：</span><span class="en">evaluation order</span></li>
+      </ul>
+    </section>
     <section>
       <h2>范围说明 / Scope Note</h2>
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>

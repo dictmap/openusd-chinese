@@ -29,6 +29,27 @@
     <div class="meta">https://openusd.org/release/api/class_vdf_grapher_options.html</div>
   </header>
   <main>
+    <section data-cn-refinement="api-index-quality-pass-167">
+      <h2>中文二次导读补强 / Chinese Second-Pass Reading Notes</h2>
+      <p class="zh">`class_vdf_grapher_options.html` 说明 `VdfGrapherOptions` 这类 graph visualization / graph dumping 配置对象。它的价值在于控制如何观察和导出 Vdf 图，而不是参与实际 computation 的求值结果。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for VdfGrapherOptions while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`VdfGrapherOptions` 应按调试和可视化配置阅读：它帮助选择显示哪些 node、input、output、dependency 或 annotation，不负责创建或执行图本身。</span></li>
+        <li><span class="zh">如果图导出结果过大、缺少边或难以定位节点，应检查 grapher option、filter condition、naming policy 和 graph traversal 范围，而不是先怀疑 computation 逻辑。</span></li>
+        <li><span class="zh">此页适合和 `VdfNode`、`VdfContext` 以及 Vdf README 串读：README 建立图概念，`VdfNode` 解释节点结构，`VdfGrapherOptions` 解释如何把图呈现出来。</span></li>
+        <li><span class="zh">阅读 generated graph 时，要把 visualization artifact 与 runtime state 分开：导出的节点和边是诊断视图，不能直接替代 evaluation trace 或 profiling 证据。</span></li>
+        <li><span class="zh">中文层保留 `VdfGrapherOptions`、`graph visualization`、`graph dumping`、`node`、`input`、`output` 等英文术语，便于用户回到工具输出和源码选项。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">图可视化：</span><span class="en">graph visualization</span></li>
+        <li><span class="zh">图导出：</span><span class="en">graph dumping</span></li>
+        <li><span class="zh">节点过滤：</span><span class="en">node filtering</span></li>
+        <li><span class="zh">遍历范围：</span><span class="en">traversal scope</span></li>
+        <li><span class="zh">命名策略：</span><span class="en">naming policy</span></li>
+        <li><span class="zh">诊断视图：</span><span class="en">diagnostic view</span></li>
+      </ul>
+    </section>
     <section>
       <h2>范围说明 / Scope Note</h2>
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>

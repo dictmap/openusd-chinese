@@ -4408,3 +4408,37 @@
 1. 继续最多 5 页，优先处理仍较薄且用户可读价值较高的 Vdf README、Vdf examples 与 Vdf overview/implementation/parallel evaluation 页面。
 2. 建议下一组：`full_site/api/md_pxr_exec_vdf__r_e_a_d_m_e.html`、`full_site/api/md_pxr_exec_vdf_examples__r_e_a_d_m_e.html`、`full_site/api/page_vdf_overview.html`、`full_site/api/page_vdf_implementation_notes.html`、`full_site/api/page_vdf_parallel_evaluation.html`。
 3. 之后可继续 `full_site/api/page_vdf_input_and_output.html`、`full_site/api/page_vdf_execution.html`、`full_site/api/page_vdf_debugging.html`、`full_site/api/page_vdf_testing.html`、`full_site/api/page_vdf_faq.html`，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+## 第 298 轮：Vdf README 与核心 Vdf class 页面补强
+
+已完成：
+
+- 复核当前仓库、远端与审计基线：本地 `main` 基于上一轮同步提交 `6d6d8c6`，`origin/main` 一致，起始工作区干净；总入口 `http://127.0.0.1:8068/openusd_bilingual_final.html` 返回 HTTP 200。
+- 复核本轮候选存在性：`full_site/api/md_pxr_exec_vdf__r_e_a_d_m_e.html` 存在；原计划中的 `full_site/api/md_pxr_exec_vdf_examples__r_e_a_d_m_e.html`、`full_site/api/page_vdf_overview.html`、`full_site/api/page_vdf_implementation_notes.html`、`full_site/api/page_vdf_parallel_evaluation.html` 不在当前 406 页面范围内，本轮不新建缺失页面。
+- 新增并执行 `scripts/refine_openusd_release_batch_167.mjs`，本轮标记为 `api-index-quality-pass-167`。
+- 严格只精修 5 个已存在页面：
+  - `full_site/api/md_pxr_exec_vdf__r_e_a_d_m_e.html`
+  - `full_site/api/class_vdf_read_write_accessor.html`
+  - `full_site/api/class_vdf_grapher_options.html`
+  - `full_site/api/class_vdf_context.html`
+  - `full_site/api/class_vdf_node.html`
+- 每页新增 5 条中文二次导读和 6 条术语对照；重点覆盖 `Vdf` data-flow network、evaluation request、dirty propagation、dependency invalidation、`VdfReadWriteAccessor< T >` typed access、`VdfGrapherOptions` graph visualization、`VdfContext` evaluation context、`VdfNode` input/output/dependency graph boundary；API 名称、类名、方法名、template 参数、变量名、token 字面量、数学符号和链接保持原样。
+- 质量回读：5 页均无 `TODO` / `待翻译` / `机器翻译占位`，`api-index-quality-pass-167` 均只出现 1 次：
+  - `md_pxr_exec_vdf__r_e_a_d_m_e.html`：中文字符 846，中文/英文块 38/25。
+  - `class_vdf_read_write_accessor.html`：中文字符 872，中文/英文块 48/35。
+  - `class_vdf_grapher_options.html`：中文字符 853，中文/英文块 64/51。
+  - `class_vdf_context.html`：中文字符 1178，中文/英文块 74/56。
+  - `class_vdf_node.html`：中文字符 1121，中文/英文块 76/58。
+- 分级变化：计数保持不变，仍为 `draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因是本轮对象开始前已属 `draft_needs_translation`，本轮是 Vdf README 与核心 class 页面二次补强精修，不是从模板草稿晋级。
+- 验证结果：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1` 均已通过；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步记录：本轮复验通过后使用 `OpenUSD bilingual round 298: vdf core pages pass` 同步本轮 HTML、脚本、报告和 `work.md`；如同步脚本失败，本轮不推送并先修复。
+
+当前差距：
+
+- 全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`；其中 387 页为 `draft_needs_translation`、11 页为 `draft_template_only`，`bilingual_draft` 仍不是完整翻译。
+- 剩余 `draft_template_only` 11 页基本是 `_source.html` 源码页、`search.html` 或目录页，继续低优先处理。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理质量队列中真实存在、中文量低且用户会实际浏览的类层级/相关页索引和 usdview 文档页。
+2. 建议下一组：`full_site/api/hierarchy.html`、`full_site/api/inherits.html`、`full_site/api/pages.html`、`full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html`、`full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html`。
+3. 之后可继续 `full_site/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html`、`full_site/api/group__group___exec___attribute___comptuations.html`、`full_site/api/struct_usd_lux_tokens_type.html`、`full_site/api/struct_hgi_sampler_desc.html`、`full_site/api/struct_usd_skel_tokens_type.html`，继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。

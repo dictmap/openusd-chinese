@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-06T13:45:31.169Z
+Generated: 2026-06-06T14:17:44.457Z
 
 ## Summary
 
@@ -121,10 +121,10 @@ Generated: 2026-06-06T13:45:31.169Z
 | 55 | draft_needs_translation | bilingual_draft | 835 | 64/51 | 0 | 0 | `full_site/api/class_usd_stage_cache.html` |
 | 56 | draft_needs_translation | bilingual_draft | 678 | 52/44 | 0 | 0 | `full_site/api/class_usd_validation_error.html` |
 | 57 | draft_needs_translation | bilingual_draft | 563 | 52/44 | 0 | 0 | `full_site/api/class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html` |
-| 58 | draft_needs_translation | bilingual_draft | 856 | 62/49 | 0 | 0 | `full_site/api/class_vdf_context.html` |
-| 59 | draft_needs_translation | bilingual_draft | 579 | 52/44 | 0 | 0 | `full_site/api/class_vdf_grapher_options.html` |
-| 60 | draft_needs_translation | bilingual_draft | 842 | 64/51 | 0 | 0 | `full_site/api/class_vdf_node.html` |
-| 61 | draft_needs_translation | bilingual_draft | 545 | 36/28 | 0 | 0 | `full_site/api/class_vdf_read_write_accessor.html` |
+| 58 | draft_needs_translation | bilingual_draft | 1101 | 74/56 | 0 | 0 | `full_site/api/class_vdf_context.html` |
+| 59 | draft_needs_translation | bilingual_draft | 788 | 64/51 | 0 | 0 | `full_site/api/class_vdf_grapher_options.html` |
+| 60 | draft_needs_translation | bilingual_draft | 1044 | 76/58 | 0 | 0 | `full_site/api/class_vdf_node.html` |
+| 61 | draft_needs_translation | bilingual_draft | 807 | 48/35 | 0 | 0 | `full_site/api/class_vdf_read_write_accessor.html` |
 | 62 | draft_needs_translation | bilingual_draft | 533 | 40/32 | 0 | 0 | `full_site/api/class_vdf_test_utils_1_1_node.html` |
 | 63 | draft_needs_translation | bilingual_draft | 857 | 64/51 | 0 | 0 | `full_site/api/class_vt_value_ref.html` |
 | 64 | draft_needs_translation | bilingual_draft | 501 | 24/16 | 0 | 0 | `full_site/api/classes.html` |
@@ -288,7 +288,7 @@ Generated: 2026-06-06T13:45:31.169Z
 | 222 | draft_needs_translation | bilingual_draft | 547 | 31/23 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd_docs_overview.html` |
 | 223 | draft_needs_translation | bilingual_draft | 594 | 33/25 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html` |
 | 224 | draft_needs_translation | bilingual_draft | 526 | 34/26 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html` |
-| 225 | draft_needs_translation | bilingual_draft | 546 | 26/18 | 0 | 0 | `full_site/api/md_pxr_exec_vdf__r_e_a_d_m_e.html` |
+| 225 | draft_needs_translation | bilingual_draft | 781 | 38/25 | 0 | 0 | `full_site/api/md_pxr_exec_vdf__r_e_a_d_m_e.html` |
 | 226 | draft_needs_translation | bilingual_draft | 351 | 15/12 | 0 | 0 | `full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html` |
 | 227 | draft_needs_translation | bilingual_draft | 345 | 18/15 | 0 | 0 | `full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html` |
 | 228 | draft_needs_translation | bilingual_draft | 361 | 21/18 | 0 | 0 | `full_site/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html` |

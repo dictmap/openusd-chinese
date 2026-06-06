@@ -29,6 +29,27 @@
     <div class="meta">https://openusd.org/release/api/class_vdf_read_write_accessor.html</div>
   </header>
   <main>
+    <section data-cn-refinement="api-index-quality-pass-167">
+      <h2>中文二次导读补强 / Chinese Second-Pass Reading Notes</h2>
+      <p class="zh">`class_vdf_read_write_accessor.html` 面向 `VdfReadWriteAccessor&lt; T &gt;` 模板类。它通常用于围绕 Vdf 输出数据进行类型化读写访问；阅读时要区分 accessor 对值存储的访问责任、拥有输出的节点责任，以及上层 computation 对数据语义的解释责任。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for VdfReadWriteAccessor&lt; T &gt; while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`VdfReadWriteAccessor&lt; T &gt;` 的重点是访问路径和类型边界：模板参数 `T` 表示访问值的静态类型线索，但不等价于改变 graph 中输出的业务语义。</span></li>
+        <li><span class="zh">看到 read/write、accessor、buffer、output data 等术语时，应先确认当前讨论的是临时求值数据、缓存数据，还是 authored scene data 映射后的 computed value。</span></li>
+        <li><span class="zh">此类适合和 `VdfContext`、`VdfNode`、具体 output 类一起看：`VdfContext` 提供求值上下文，`VdfNode` 组织图结构，accessor 负责读取或写入某个值视图。</span></li>
+        <li><span class="zh">如果运行时出现类型不匹配或空值，应优先检查 output registration、requested type、evaluation lifetime、dirty state 与 accessor 使用范围，而不是只改调用点。</span></li>
+        <li><span class="zh">中文补强不翻译 `VdfReadWriteAccessor&lt; T &gt;`、`T`、method name、template parameter 和类型名，避免破坏 Doxygen 索引与源码中的精确名称。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">读写访问器：</span><span class="en">read-write accessor</span></li>
+        <li><span class="zh">类型化访问：</span><span class="en">typed access</span></li>
+        <li><span class="zh">输出数据：</span><span class="en">output data</span></li>
+        <li><span class="zh">访问范围：</span><span class="en">access scope</span></li>
+        <li><span class="zh">求值生命周期：</span><span class="en">evaluation lifetime</span></li>
+        <li><span class="zh">类型不匹配：</span><span class="en">type mismatch</span></li>
+      </ul>
+    </section>
     <section>
       <h2>范围说明 / Scope Note</h2>
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
