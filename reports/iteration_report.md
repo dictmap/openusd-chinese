@@ -8394,3 +8394,46 @@ GitHub 同步：
 1. 继续真实晋级，不再刷 count-neutral 导读补强。
 2. 下一批优先核心页面：`full_site/api/class_tf_token.html`。
 3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。
+
+## 第 307 轮：将 TfToken 提升为完整双语
+
+已完成：
+
+- 将 `full_site/api/class_tf_token.html` 晋级为 `bilingual_complete`：
+  - 顶部状态从 `bilingual_draft` 改为 `bilingual_complete`。
+  - 标题从“类参考草稿”改为“完整双语参考”。
+  - 移除通用 draft 文案。
+  - 新增逐段双语理解区，覆盖 `TfToken` 作为 registered string handle 的语义、constant-time comparison / assignment / hashing 边界、bounded fixed symbols 使用前提、token registry 与内存压力、`GetString()`/`GetText()`/`data()` 读取差异、`Find()` 无创建查询、`HashSet`/`Set` 容器用途、empty token 约定以及 OpenUSD schema token / attribute name / metadata key / primvar name 使用语义。
+- 更新 `reports/bilingual_completion_promotions.json/md`，新增 `round-307-tf-token`。
+- 复跑 `discover_openusd_all_pages.mjs`，范围仍固定为本地 406 个 HTML 页面，`promoted_complete_pages=5`。
+- 复跑 `audit_openusd_translation_quality.mjs`，确认本轮晋级被评为 `good_bilingual`。
+- 重建 `openusd_bilingual_final.html`，入口现在显示 13 complete / 393 incomplete drafts。
+- 更新 `reports/current_problem_audit.md/json`，记录晋级链路已连续跑通五次，但整体仍不是完成态。
+
+分级变化：
+
+- `good_bilingual`：12 -> 13
+- `bilingual_complete`：12 -> 13
+- `bilingual_draft`：394 -> 393
+- `draft_needs_translation`：383 -> 382
+- `draft_template_only`：11 保持不变
+
+验证结果：
+
+- `discover_openusd_all_pages.mjs`：通过，`total_pages=406`，`promoted_complete_pages=5`。
+- `audit_openusd_translation_quality.mjs`：通过，`good_bilingual=13`，目标页 `grade=good_bilingual`。
+- `route_openusd_internal_links_local.mjs`：通过。
+- `audit_openusd_full_draft_preview.mjs`：通过，393/393 draft 页面可预览。
+- `audit_openusd_report_index.mjs`：通过。
+- `validate_openusd_api_repro.ps1`：通过，`required_check_count=288`，`failed_check_count=0`。
+- Node 直接解析 `reports/validation_report.json`：`bom=false`。
+
+GitHub 同步：
+
+- 本轮验证通过后将使用 `OpenUSD bilingual round 307: promote TfToken complete` 同步本轮 HTML、报告和 `work.md`。
+
+下一轮目标：
+
+1. 继续真实晋级，不再刷 count-neutral 导读补强。
+2. 下一批优先核心页面：`full_site/api/class_usd_stage_cache.html` 或 `full_site/api/class_usd_attribute_limits.html`。
+3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。

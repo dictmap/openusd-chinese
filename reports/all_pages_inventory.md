@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-06T21:14:39.474Z
+Generated: 2026-06-06T21:34:04.900Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 12
-- Promoted complete pages: 4
-- Bilingual draft pages: 394
+- Bilingual complete pages: 13
+- Promoted complete pages: 5
+- Bilingual draft pages: 393
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -55,7 +55,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_draft | 类参考草稿：SdrShaderProperty Class / SdrShaderProperty Class | full_site/api/class_sdr_shader_property.html | https://openusd.org/release/api/class_sdr_shader_property.html |
 | api | bilingual_draft | 类参考草稿：TfDenseHashMap< Key, Data, HashFn, EqualKey, Threshold > Class Template / TfDenseHashMap< Key, Data, HashFn, EqualKey, Threshold > Class Template | full_site/api/class_tf_dense_hash_map.html | https://openusd.org/release/api/class_tf_dense_hash_map.html |
 | api | bilingual_draft | 类参考草稿：TfPyLock Class / TfPyLock Class | full_site/api/class_tf_py_lock.html | https://openusd.org/release/api/class_tf_py_lock.html |
-| api | bilingual_draft | 类参考草稿：TfToken Class Reference String Utilities / TfToken Class Reference String Utilities | full_site/api/class_tf_token.html | https://openusd.org/release/api/class_tf_token.html |
+| api | bilingual_complete | https://openusd.org/release/api/class_tf_token.html | full_site/api/class_tf_token.html | https://openusd.org/release/api/class_tf_token.html |
 | api | bilingual_draft | 类参考草稿：TraceEventData Class / TraceEventData Class | full_site/api/class_trace_event_data.html | https://openusd.org/release/api/class_trace_event_data.html |
 | api | bilingual_draft | 类参考草稿：UsdAttributeLimits Class / UsdAttributeLimits Class | full_site/api/class_usd_attribute_limits.html | https://openusd.org/release/api/class_usd_attribute_limits.html |
 | api | bilingual_draft | 类参考草稿：UsdGeomBasisCurves Class / UsdGeomBasisCurves Class | full_site/api/class_usd_geom_basis_curves.html | https://openusd.org/release/api/class_usd_geom_basis_curves.html |

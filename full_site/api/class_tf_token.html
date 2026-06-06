@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：TfToken Class Reference String Utilities / TfToken Class Reference String Utilities</title>
+  <title>完整双语参考：TfToken Class Reference String Utilities / TfToken Class Reference String Utilities</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,76 +24,48 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：TfToken Class Reference String Utilities / TfToken Class Reference String Utilities</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：TfToken Class Reference String Utilities / TfToken Class Reference String Utilities</h1>
     <div class="meta">https://openusd.org/release/api/class_tf_token.html</div>
   </header>
   <main>
     <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <h2>完成说明 / Completion Note</h2>
+      <p class="zh">本页已从全量队列晋级为完整双语参考页：中文层覆盖 `TfToken` 的 registered string handle 语义、constant-time comparison / assignment / hashing 的适用边界、bounded fixed symbols 的使用前提、token table 与内存压力、`GetString()` / `GetText()` / `data()` 的读取差异、`Find()` 的无创建查询语义、`HashSet` / `Set` 容器用途、empty token 约定以及它在 OpenUSD schema token、attribute name、metadata key 和 primvar name 中的基础作用；英文原文摘录、API 名称、方法名、类型名、token 字面量和链接保持原样。</p>
+      <p class="en">This page is promoted from the full-site queue to a complete bilingual reference page. The Chinese layer covers `TfToken` as a registered string handle, the boundaries of constant-time comparison, assignment, and hashing, the bounded fixed-symbol assumption, token table and memory pressure, the differences among `GetString()`, `GetText()`, and `data()`, the non-creating lookup semantics of `Find()`, container usage through `HashSet` / `Set`, empty-token conventions, and its foundational role in OpenUSD schema tokens, attribute names, metadata keys, and primvar names while retaining English excerpts, API names, method names, type names, token literals, and links.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-043">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 TfToken Class Reference 补充中文优先的类职责、读取重点、关键类型/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, key type/method groups, and terminology for TfToken Class Reference while retaining English page names, class names, method names, attribute names, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`TfToken` 是已注册字符串的 handle，用于对已知字符串做常数时间比较、赋值和 hashing，是 USD 中大量 tokenized names 的基础类型。</span></li>
-        <li><span class="zh">英文摘录说明 `TfToken` 适合 bounded number of strings 作为固定符号使用；一旦字符串被发现后通常不再修改，避免反复按字符比较和计算 hash。</span></li>
-        <li><span class="zh">`GetString()`、`GetText()`、`data()`、`size()`、`IsEmpty()` 是读取 token 内容的基础入口；`Hash()`、`HashSet` 与 `Find()` 则面向查找和集合使用。</span></li>
-        <li><span class="zh">多个构造函数和 `_ImmortalTag` 暗示 token 生命周期与 interned string 注册表相关；阅读时应区分 token handle、底层 string 和普通 `std::string`。</span></li>
-        <li><span class="zh">在 OpenUSD 文档中，属性名、schema 字段、metadata key、primvar 名等经常以 `TfToken` 暴露；本页是理解 token 性能语义和 API 约定的入口。</span></li>
-      </ul>
+    <section data-cn-complete="tf-token-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">官方说明把 `TfToken` 定义为 a handle for a registered string。这个 handle 不是普通 `std::string` 的薄封装，而是指向已注册字符串条目的轻量对象。它的核心价值在于：一旦字符串进入 token registry，比较、赋值和 hashing 可以按 token identity 进行，避免反复逐字符处理已知符号。</p>
+      <p class="en">The official description defines `TfToken` as a handle for a registered string. This handle is not just a thin wrapper around `std::string`; it is a lightweight object referring to a registered string entry. Its core value is that once a string enters the token registry, comparison, assignment, and hashing can operate on token identity instead of repeatedly processing characters for known symbols.</p>
+      <p class="zh">`TfToken` 适合 bounded number of strings used as fixed symbols。这里的 bounded 很重要：token 用于 schema token、attribute name、metadata key、primvar name、renderer option name 这类固定或可控集合，而不是无限增长的用户输入文本。把任意临时字符串都注册成 token，会让 token table 长期增长并造成内存压力。</p>
+      <p class="en">`TfToken` is intended for a bounded number of strings used as fixed symbols. The word bounded is important: tokens fit schema tokens, attribute names, metadata keys, primvar names, renderer option names, and similar fixed or controlled sets, not unbounded user text. Registering every temporary arbitrary string as a token can grow the token table for the lifetime of the process and create memory pressure.</p>
+      <p class="zh">constant time comparison 并不表示创建 token 永远是常数时间。首次从字符序列构造 token 时，系统仍需要查找或注册该字符串；优势体现在后续比较和 hash key 使用上。性能敏感路径应该复用已有 `TfToken`，避免在循环中频繁从 `std::string` 或 C 字符串创建新 token。</p>
+      <p class="en">Constant-time comparison does not mean token creation is always constant time. When a token is first constructed from character data, the system still needs to find or register that string. The benefit appears in later comparisons and hash-key usage. Performance-sensitive code should reuse existing `TfToken` values instead of repeatedly constructing new tokens from `std::string` or C strings inside loops.</p>
+      <p class="zh">`GetString()`、`GetText()` 和 `data()` 都能读取 token 内容，但使用意图不同。`GetString()` 返回字符串值，方便与需要 `std::string` 的 API 对接；`GetText()` / `data()` 面向底层 C 字符串访问。调用方不应为了比较而反复转回字符串，因为那会绕开 `TfToken` 的 identity 比较优势。</p>
+      <p class="en">`GetString()`, `GetText()`, and `data()` all expose token text, but they serve different call sites. `GetString()` returns a string value for APIs that need `std::string`; `GetText()` / `data()` provide lower-level C-string access. Callers should not convert tokens back to strings merely for comparison, because that bypasses the identity-comparison advantage of `TfToken`.</p>
+      <p class="zh">`Find()` 的阅读重点是“查询已存在 token”而不是“无条件注册新 token”。当代码只想知道一个字符串是否已经在 token registry 中存在时，`Find()` 可以避免无意扩大注册表。这个差别在解析外部数据、过滤可选字段、处理插件扩展名或调试未知 metadata key 时很实用。</p>
+      <p class="en">The important reading point for `Find()` is lookup of an existing token, not unconditional registration of a new one. When code only needs to know whether a string is already present in the token registry, `Find()` can avoid accidentally expanding the registry. This distinction matters when parsing external data, filtering optional fields, handling plugin extension names, or debugging unknown metadata keys.</p>
+      <p class="zh">`Hash()`、`HashSet` 和 `Set` 体现了 token 作为 key 的用途。`TfToken` 常出现在 unordered containers、token sets 和 name dispatch 表中。与 `std::string` key 相比，它降低了重复 hash 字符串和逐字符比较的成本，但前提仍是 key 集合稳定并且 token 复用充分。</p>
+      <p class="en">`Hash()`, `HashSet`, and `Set` show how tokens are used as keys. `TfToken` commonly appears in unordered containers, token sets, and name-dispatch tables. Compared with `std::string` keys, it reduces repeated string hashing and character comparison, but this relies on a stable key set and sufficient token reuse.</p>
+      <p class="zh">`IsEmpty()` 和 empty token 要按 API 约定理解。empty token 通常用于表示没有名称、默认标识、缺省路径片段或无效轻量状态，但它不自动等同于所有业务语义上的“未设置”。调用方必须阅读具体 API 文档，区分 empty token、missing attribute、fallback value 和空字符串 token。</p>
+      <p class="en">`IsEmpty()` and empty-token semantics must be interpreted according to each API contract. An empty token is often used for no name, default identifier, missing path segment, or a lightweight invalid state, but it is not automatically the same as every business-level unset value. Callers must distinguish empty token, missing attribute, fallback value, and an empty-string token in the specific API documentation.</p>
+      <p class="zh">`_ImmortalTag` 和多组构造函数提示 `TfToken` 与字符串生命周期优化有关。一般用户不应把它理解成普通公开业务枚举；它更多服务于底层 token 注册和静态 token 初始化场景。维护代码时，应优先使用官方 token 声明、现成 `TfToken` 常量或明确的构造入口，不要绕过生命周期约定。</p>
+      <p class="en">`_ImmortalTag` and the constructor overloads indicate that `TfToken` participates in string-lifetime optimization. Most users should not treat it as an ordinary public business enum; it mainly supports lower-level token registration and static-token initialization cases. Maintenance code should prefer official token declarations, existing `TfToken` constants, or explicit construction APIs instead of bypassing lifetime conventions.</p>
+      <p class="zh">在 OpenUSD 中，`TfToken` 是很多 schema 和 composition API 的共同语言。属性名、metadata key、applied API schema 名、primvar 名和 renderer setting 名经常以 token 传递。理解 `TfToken` 可以帮助区分“符号名字相同”与“字符串内容相同”的性能语义，也能解释为什么大量 API 不直接使用 `std::string`。</p>
+      <p class="en">In OpenUSD, `TfToken` is shared vocabulary across many schema and composition APIs. Attribute names, metadata keys, applied API schema names, primvar names, and renderer setting names are often passed as tokens. Understanding `TfToken` helps separate the performance semantics of symbol identity from raw string content and explains why many APIs do not use `std::string` directly.</p>
+      <p class="zh">调试 token 相关问题时，常见边界有三类：把不受控输入注册为 token 导致表膨胀；在热路径中反复构造 token 导致隐藏开销；把 empty token、空字符串和缺省值混为一谈导致逻辑分支错误。本页的核心阅读目标就是把这些边界与 `TfToken` 的高效比较能力区分开。</p>
+      <p class="en">When debugging token-related problems, three boundaries appear often: registering uncontrolled input and growing the table, repeatedly constructing tokens on hot paths and creating hidden cost, and conflating empty token, empty string, and fallback value in logic branches. The main reading goal of this page is to separate those boundaries from the efficient-comparison capability of `TfToken`.</p>
       <h3>术语对照 / Terms</h3>
       <ul>
-        <li><span class="zh">TfToken：</span><span class="en">TfToken</span></li>
-        <li><span class="zh">已注册字符串：</span><span class="en">registered string</span></li>
-        <li><span class="zh">常数时间：</span><span class="en">constant time</span></li>
-        <li><span class="zh">HashSet：</span><span class="en">HashSet</span></li>
-        <li><span class="zh">驻留字符串：</span><span class="en">interned string</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-132">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`TfToken` 是已注册字符串的 handle，用于对已知且数量有界的符号字符串进行常数时间比较、赋值和 hashing。它是 USD 中 tokenized names、属性名、schema token、locator 片段和大量标识符的底层基础类型。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for TfToken while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`TfToken` 适合固定符号集合，不适合无限增长的任意用户字符串；因为 token 注册后会进入全局表，滥用会造成长期内存压力。</span></li>
-        <li><span class="zh">`GetString()` 返回 `std::string` 形式，`GetText()` / `data()` 更偏底层字符指针访问；性能敏感路径应避免反复把 token 转回字符串比较。</span></li>
-        <li><span class="zh">`Hash()`、`HashSet` 和 `Set` 说明 token 适合作为 hash key；比较通常基于已注册字符串 identity，而不是逐字符线性比较。</span></li>
-        <li><span class="zh">`Find()` 可在不强制创建新 token 的情况下查找已注册字符串；这对避免无意扩展 token table 很重要。</span></li>
-        <li><span class="zh">`IsEmpty()` 与空 token 语义要和空字符串区别理解；在 API 约定中 empty token 常用于默认值、无命名实例或无效标识的轻量表达。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">Tf 注册字符串 token：</span><span class="en">TfToken</span></li>
+        <li><span class="zh">注册字符串句柄：</span><span class="en">registered string handle</span></li>
+        <li><span class="zh">令牌类型：</span><span class="en">TfToken</span></li>
         <li><span class="zh">已注册字符串：</span><span class="en">registered string</span></li>
         <li><span class="zh">常数时间比较：</span><span class="en">constant time comparison</span></li>
         <li><span class="zh">哈希：</span><span class="en">hashing</span></li>
-        <li><span class="zh">token 全局表：</span><span class="en">token table</span></li>
+        <li><span class="zh">查询而不创建：</span><span class="en">Find()</span></li>
         <li><span class="zh">空 token：</span><span class="en">empty token</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-145">
-      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
-      <p class="zh">`TfToken` 是 registered string handle，用于对已知且固定的字符串进行 constant-time comparison、assignment 和 hashing。它适合 bounded set of fixed symbols，例如 schema token、attribute name、metadata key 或 renderer option name。</p>
-      <p class="en">This third-pass refinement adds page-specific Chinese guidance for TfToken while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`TfToken` 的优势来自字符串 intern/registration；创建 token 后比较和哈希是常数时间，但首次注册仍与输入字符串有关。</span></li>
-        <li><span class="zh">`GetString()` 返回 `std::string` 视图语义的值，`GetText()` / `data()` 提供 C 字符串指针；不要长期持有超出 token 生命周期假设的裸指针。</span></li>
-        <li><span class="zh">`IsEmpty()` 可区分 empty token；空 token 与普通字符串 token 的语义应由调用方 API 明确约定。</span></li>
-        <li><span class="zh">`Hash()`、`HashSet` 与 `Set` 面向 token collection；在高频路径中比反复使用 `std::string` 更适合作为 key。</span></li>
-        <li><span class="zh">`Find()` 可查询已存在 token 而不一定创建新注册项；当只是探测符号是否已注册时，比直接构造 token 更可控。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">令牌：</span><span class="en">TfToken</span></li>
-        <li><span class="zh">已注册字符串：</span><span class="en">registered string</span></li>
-        <li><span class="zh">常数时间比较：</span><span class="en">constant-time comparison</span></li>
-        <li><span class="zh">哈希：</span><span class="en">hashing</span></li>
-        <li><span class="zh">空令牌：</span><span class="en">empty token</span></li>
-        <li><span class="zh">固定符号集合：</span><span class="en">fixed symbols</span></li>
+        <li><span class="zh">固定且有界的符号集合：</span><span class="en">bounded fixed symbols</span></li>
       </ul>
     </section>
     <section>

@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-06T21:16:14.252Z
+Generated: 2026-06-06T21:34:11.518Z
 
-Transient base URL: `http://127.0.0.1:51350/`
+Transient base URL: `http://127.0.0.1:57614/`
 
 Result:
 
 - Passed: true
-- Draft pages: 394
-- Pages checked: 394
-- Passed pages: 394
+- Draft pages: 393
+- Pages checked: 393
+- Passed pages: 393
 - Failed pages: 0
-- Final HTML links: 394
-- Local assets checked: 394
+- Final HTML links: 393
+- Local assets checked: 393
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -51,7 +51,6 @@ Result:
 | true | full_site/api/class_sdr_shader_property.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_tf_dense_hash_map.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_tf_py_lock.html | 200 | true | 0 | 0 |
-| true | full_site/api/class_tf_token.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_trace_event_data.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_usd_attribute_limits.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_usd_geom_basis_curves.html | 200 | true | 0 | 0 |

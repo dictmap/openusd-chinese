@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-06T21:15:03.335Z",
+  "generated_at": "2026-06-06T21:34:05.567Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 394,
-    "bilingual_complete": 12
+    "bilingual_draft": 393,
+    "bilingual_complete": 13
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 383,
-    "good_bilingual": 12
+    "draft_needs_translation": 382,
+    "good_bilingual": 13
   },
   "focus_batch": [
     {
@@ -1976,29 +1976,29 @@
     },
     {
       "index": 38,
-      "title": "类参考草稿：TfToken Class Reference String Utilities / TfToken Class Reference String Utilities",
+      "title": "完整双语参考：TfToken Class Reference String Utilities / TfToken Class Reference String Utilities",
       "output": "full_site/api/class_tf_token.html",
       "official_url": "https://openusd.org/release/api/class_tf_token.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 64,
-      "enBlockCount": 51,
-      "zhChars": 867,
-      "enLetters": 2123,
-      "bodyChineseChars": 942,
+      "grade": "good_bilingual",
+      "zhBlockCount": 47,
+      "enBlockCount": 49,
+      "zhChars": 980,
+      "enLetters": 4668,
+      "bodyChineseChars": 1033,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 TfToken Class Reference 补充中文优先的类职责、读取重点、关键类型/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`TfToken` 是已注册字符串的 handle，用于对已知字符串做常数时间比较、赋值和 hashing，是 USD 中大量 tokenized names 的基础类型。"
+        "本页已从全量队列晋级为完整双语参考页：中文层覆盖 `TfToken` 的 registered string handle 语义、constant-time comparison / assignment / hashing 的适用边界、bounded fixed symbols 的使用前提、token table 与内存压力、`GetString()` / `GetText()` / `data()` 的读取差异、`Find()` 的无创建查询语义、`HashSet` / `Set` 容器用途、empty token 约定以及它在 OpenUSD schema token、attribute name、metadata key 和 primvar name 中的基础作用；英文原文摘录、API 名称、方法名、类型名、token 字面量和链接保持原样。",
+        "官方说明把 `TfToken` 定义为 a handle for a registered string。这个 handle 不是普通 `std::string` 的薄封装，而是指向已注册字符串条目的轻量对象。它的核心价值在于：一旦字符串进入 token registry，比较、赋值和 hashing 可以按 token identity 进行，避免反复逐字符处理已知符号。",
+        "`TfToken` 适合 bounded number of strings used as fixed symbols。这里的 bounded 很重要：token 用于 schema token、attribute name、metadata key、primvar name、renderer option name 这类固定或可控集合，而不是无限增长的用户输入文本。把任意临时字符串都注册成 token，会让 token table 长期增长并造成内存压力。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, reading guidance, key type/method groups, and terminology for TfToken Class Reference while retaining English page names, class names, method names, attribute names, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page is promoted from the full-site queue to a complete bilingual reference page. The Chinese layer covers `TfToken` as a registered string handle, the boundaries of constant-time comparison, assignment, and hashing, the bounded fixed-symbol assumption, token table and memory pressure, the differences among `GetString()`, `GetText()`, and `data()`, the non-creating lookup semantics of `Find()`, container usage through `HashSet` / `Set`, empty-token conventions, and its foundational role in OpenUSD schema tokens, attribute names, metadata keys, and primvar names while retaining English excerpts, API names, method names, type names, token literals, and links.",
+        "The official description defines `TfToken` as a handle for a registered string. This handle is not just a thin wrapper around `std::string`; it is a lightweight object referring to a registered string entry. Its core value is that once a string enters the token registry, comparison, assignment, and hashing can operate on token identity instead of repeatedly processing characters for known symbols."
       ]
     },
     {
