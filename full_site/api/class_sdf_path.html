@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：SdfPath Class / SdfPath Class</title>
+  <title>完整双语参考：SdfPath Class / SdfPath Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,76 +24,49 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：SdfPath Class / SdfPath Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：SdfPath Class / SdfPath Class</h1>
     <div class="meta">https://openusd.org/release/api/class_sdf_path.html</div>
   </header>
   <main>
     <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <h2>完成说明 / Completion Note</h2>
+      <p class="zh">本页已从全量队列晋级为完整双语参考页：中文层覆盖 `SdfPath` 的官方用途、路径值语义、absolute/relative path、prim/property/target/variant 路径语法、路径构造 helper、thread-safety 提示，以及它与 `SdfLayer`、`UsdPrim`、`UsdProperty` 和 `Pcp` 组合调试之间的关系；英文原文摘录、API 名称、类名、方法名、类型名、token 字面量和链接保持原样。</p>
+      <p class="en">This page is promoted from the full-site queue to a complete bilingual reference page. The Chinese layer covers the official uses of `SdfPath`, path-value semantics, absolute and relative paths, prim/property/target/variant path syntax, path construction helpers, thread-safety notes, and its relationship to `SdfLayer`, `UsdPrim`, `UsdProperty`, and `Pcp` composition debugging while retaining English excerpts, API names, class names, method names, type names, token literals, and links.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-038">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 SdfPath Class Reference 补充中文优先的类职责、读取重点、相关 API 关系和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, related API context, and terminology for SdfPath Class Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`SdfPath` 是用于定位 layers 或 scenegraphs 中对象的路径值，也是 Sdf、Pcp 和 Usd API 中最常见的标识类型之一。</span></li>
-        <li><span class="zh">英文摘录列出三种常见用途：作为 `SdfLayer` 内访问值的 storage key、作为 scenegraph object 的 namespace identity，以及通过 relative paths 引用其他 scenegraph objects。</span></li>
-        <li><span class="zh">路径可以是 relative 或 absolute；例如 relationship target 如果是 relative path，它相对于包含该 relationship 的 prim object 解析。</span></li>
-        <li><span class="zh">页面结构中的大量 member functions 通常围绕路径解析、拼接、父子关系、属性路径、variant selection、relational attribute 和 namespace 判断展开。</span></li>
-        <li><span class="zh">本轮中文层保留 `SdfPath`、prim path、property path、absolute path、relative path 等术语；后续完整翻译应逐步补方法级别说明和路径语法示例。</span></li>
-      </ul>
+    <section data-cn-complete="sdf-path-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">官方开头把 `SdfPath` 定义为 used to locate objects in layers or scenegraphs 的 path value。这里的 path value 表示它是一个可复制、可比较、可作为 key 使用的值对象；它本身不拥有 prim、property 或 layer 数据，也不保证目标对象一定存在。`SdfPath` 的职责是用统一语法表达 USD 命名空间中的对象位置。</p>
+      <p class="en">The official introduction defines `SdfPath` as a path value used to locate objects in layers or scenegraphs. Path value means that it is copyable, comparable, and usable as a key; it does not own prim, property, or layer data, and it does not guarantee that the target object exists. Its role is to express object locations in the USD namespace using a uniform syntax.</p>
+      <p class="zh">第一种官方用途是作为 `SdfLayer` 中寻址和访问值的 storage key。底层 layer 保存的是 specs 和 fields，很多读写操作需要先用 `SdfPath` 指定“哪个 prim、property 或 target”。因此同一个 path 在不同 `SdfLayer` 中可能命中不同 authored opinions；路径值相同不代表底层数据来源相同。</p>
+      <p class="en">The first official use is as a storage key for addressing and accessing values held in an `SdfLayer`. A low-level layer stores specs and fields, and many read/write operations need an `SdfPath` to identify which prim, property, or target is being addressed. The same path can resolve to different authored opinions in different layers, so equal path strings do not imply the same data source.</p>
+      <p class="zh">第二种用途是作为 scenegraph objects 的 namespace identity。对 `UsdPrim`、`UsdProperty`、`UsdAttribute` 和 `UsdRelationship` 这类高层对象来说，path 常常是用户最稳定的标识形式。它描述对象在 stage namespace 中的位置，但对象是否 active、loaded、defined、abstract 或 composed 成功，还需要通过 `UsdPrim`、`UsdProperty` 或 composition 查询判断。</p>
+      <p class="en">The second use is as a namespace identity for scenegraph objects. For high-level objects such as `UsdPrim`, `UsdProperty`, `UsdAttribute`, and `UsdRelationship`, a path is often the most stable user-visible identifier. It describes the object's location in the stage namespace, but whether the object is active, loaded, defined, abstract, or successfully composed must be checked through `UsdPrim`, `UsdProperty`, or composition queries.</p>
+      <p class="zh">第三种用途是通过 relative paths 引用其他 scenegraph objects。relative path 的含义取决于包含它的 prim 或 property；例如 relationship target 如果是 relative path，通常相对于持有该 relationship 的 prim object 解释。调试 target path 时，必须先问“这是 authored relative path，还是已经解析后的 absolute path”。</p>
+      <p class="en">The third use is to refer to other scenegraph objects through relative paths. A relative path is interpreted relative to the prim or property that contains it. For example, a relationship target authored as a relative path is usually interpreted relative to the prim object holding that relationship. When debugging target paths, first ask whether the value is an authored relative path or an already resolved absolute path.</p>
+      <p class="zh">absolute path 和 relative path 是本页最基础的区分。absolute prim path 从 `AbsoluteRootPath()` 开始，例如 `/World/Model`；relative path 不从根开始，常用于 relationship target、relocation 或局部引用。不要把 relative path 直接当成 stage 绝对路径使用，也不要仅凭字符串是否包含 `/` 判断语义。</p>
+      <p class="en">The distinction between absolute and relative paths is fundamental. An absolute prim path begins at `AbsoluteRootPath()`, such as `/World/Model`; a relative path does not begin at the root and is often used for relationship targets, relocations, or local references. Do not treat a relative path as an absolute stage path, and do not infer semantics solely from whether the string contains `/`.</p>
+      <p class="zh">prim path、property path、target path 和 relational attribute path 表达不同层级。`/World/Cube` 是 prim path，`/World/Cube.size` 是 property path，relationship target 或 mapper/relational attribute 会在 property path 之后继续附加目标语法。`ContainsPropertyElements()`、`ContainsTargetPath()`、`IsPrimPath()` 等方法用于在工具代码中明确区分这些情况。</p>
+      <p class="en">Prim paths, property paths, target paths, and relational attribute paths describe different levels. `/World/Cube` is a prim path, `/World/Cube.size` is a property path, and relationship target or mapper/relational-attribute syntax can extend beyond a property path. Methods such as `ContainsPropertyElements()`, `ContainsTargetPath()`, and `IsPrimPath()` help tools distinguish these cases explicitly.</p>
+      <p class="zh">variant selection path 是 USD 特有的路径语法之一，表示某个 prim 在某个 variant set 中选择了特定 variant。`AppendVariantSelection()` 和 `ContainsPrimVariantSelection()` 等方法应优先用于构造和检查这类路径。手写字符串很容易破坏 path grammar，尤其是在嵌套 variant、property path 和 target path 混合时。</p>
+      <p class="en">Variant selection paths are a USD-specific part of path syntax and represent the selection of a variant inside a variant set on a prim. Prefer methods such as `AppendVariantSelection()` and `ContainsPrimVariantSelection()` for constructing and checking these paths. Hand-written strings can easily violate path grammar, especially when nested variants, property paths, and target paths are mixed.</p>
+      <p class="zh">路径构造 API 的选择会影响代码稳健性。普通代码应优先使用 `AppendChild()`、`AppendProperty()`、`AppendTarget()`、`AppendVariantSelection()`、`MakeRelativePath()`、`MakeAbsolutePath()` 这类语义明确的 helper；`AppendElementString()` 和 `AppendElementToken()` 更适合底层工具，调用者必须已经理解 path element syntax。</p>
+      <p class="en">The choice of path-construction API affects robustness. General code should prefer semantic helpers such as `AppendChild()`, `AppendProperty()`, `AppendTarget()`, `AppendVariantSelection()`, `MakeRelativePath()`, and `MakeAbsolutePath()`. Lower-level helpers such as `AppendElementString()` and `AppendElementToken()` are appropriate when the caller already understands path element syntax.</p>
+      <p class="zh">thread-safety 提示应和 `SdfPath` 的值对象语义一起理解。路径对象通常适合跨线程共享和比较，因为它们表示不可变路径值；但这不等于所有围绕路径的外部缓存、全局 path table、layer 查询或 stage 查询都自动线程安全。多线程工具应把 `SdfPath` 的共享和被路径索引的对象生命周期分开处理。</p>
+      <p class="en">The thread-safety note should be read together with `SdfPath` value semantics. Path objects are generally suitable for sharing and comparison across threads because they represent immutable path values. This does not mean that every external cache, global path table, layer query, or stage query around those paths is automatically thread-safe. Multi-threaded tools should separate sharing `SdfPath` values from managing the lifetime of objects indexed by those paths.</p>
+      <p class="zh">在 composition 调试中，`SdfPath` 通常是从高层症状回到底层数据的入口。`UsdPrim::GetPath()` 给出 composed prim 的 namespace identity，`SdfLayer` 使用相同或相关路径查找 authored specs，`Pcp` 相关结构则解释这些路径如何跨 layer stack 和 composition arcs 组合。路径是线索，不是完整解释；真正的强弱顺序和来源仍要结合 layer、prim index 和 resolver 结果分析。</p>
+      <p class="en">In composition debugging, `SdfPath` is often the entry point from a high-level symptom back to low-level data. `UsdPrim::GetPath()` provides the namespace identity of a composed prim, `SdfLayer` uses the same or related paths to find authored specs, and `Pcp` structures explain how those paths compose across layer stacks and composition arcs. A path is a clue, not the whole explanation; strength ordering and source attribution still require layer, prim-index, and resolver analysis.</p>
       <h3>术语对照 / Terms</h3>
       <ul>
+        <li><span class="zh">路径值：</span><span class="en">path value</span></li>
         <li><span class="zh">存储键：</span><span class="en">storage key</span></li>
         <li><span class="zh">命名空间身份：</span><span class="en">namespace identity</span></li>
-        <li><span class="zh">绝对路径：</span><span class="en">absolute path</span></li>
-        <li><span class="zh">相对路径：</span><span class="en">relative path</span></li>
-        <li><span class="zh">关系目标：</span><span class="en">relationship target</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-129">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`SdfPath` 是 OpenUSD 中最核心的路径值类型之一，用来标识 layer 或 composed scenegraph 中的 prim、property、relationship target、variant selection 和 relational attribute。它是值对象，不直接代表对象本身。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for SdfPath while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`Path Syntax` 是阅读本页的关键：absolute prim path、relative path、property path、target path、mapper path 和 variant selection 在字符串形式上都有约束。</span></li>
-        <li><span class="zh">`SdfPath` 常作为 `SdfLayer` 内部查找的 storage key，也作为 `UsdPrim`、`UsdProperty`、`PcpNode` 等高层 API 的标识；同一个路径在不同 layer 或 stage context 下语义可能不同。</span></li>
-        <li><span class="zh">`A Note on Thread-Safety` 应保留英文语义核对；路径值通常可安全共享，但不要把路径缓存、path table 或外部对象生命周期混为一谈。</span></li>
-        <li><span class="zh">组合或拼接路径时要谨慎使用 parent/child、AppendProperty、AppendVariantSelection、MakeRelativePath 等方法，避免生成 syntactically valid 但语义错误的路径。</span></li>
-        <li><span class="zh">调试 relationship target 或 reference/payload path 时，应明确路径是 authored relative path、anchored asset path 还是 resolved prim path；这三类问题经常被混用。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">Sdf 路径：</span><span class="en">SdfPath</span></li>
         <li><span class="zh">绝对 prim 路径：</span><span class="en">absolute prim path</span></li>
-        <li><span class="zh">属性路径：</span><span class="en">property path</span></li>
-        <li><span class="zh">变体选择：</span><span class="en">variant selection</span></li>
-        <li><span class="zh">存储键：</span><span class="en">storage key</span></li>
-        <li><span class="zh">路径语法：</span><span class="en">path syntax</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-144">
-      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
-      <p class="zh">`SdfPath` 是定位 layer 或 scenegraph 对象的路径值，可作为 `SdfLayer` 中的存储 key、scenegraph namespace identity，也可用于 relationship target 等引用。它区分 absolute path、relative path、prim path、property path、target path 和 variant selection path。</p>
-      <p class="en">This third-pass refinement adds page-specific Chinese guidance for SdfPath while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`AbsoluteRootPath()` 表示绝对根路径；相对路径通常相对于包含它的 prim 或 property 解释，不能直接当成 stage 绝对路径使用。</span></li>
-        <li><span class="zh">`AppendChild()`、`AppendProperty()`、`AppendTarget()`、`AppendVariantSelection()` 等方法会构造特定语法的 path element，比手写字符串更不容易破坏 USD path grammar。</span></li>
-        <li><span class="zh">`ContainsPropertyElements()`、`ContainsTargetPath()` 与 `ContainsPrimVariantSelection()` 可用于判断路径是否包含 property、relationship target 或 variant selection 语义。</span></li>
-        <li><span class="zh">`AppendElementString()` / `AppendElementToken()` 适合低层工具，但调用者必须理解 path element syntax；普通代码优先使用更具体的 append helper。</span></li>
-        <li><span class="zh">本页的 thread-safety 提示应与 `SdfPath` 的值对象语义一起理解：路径对象适合被广泛共享，但路径构造和全局路径表行为仍应遵循文档约束。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">路径值：</span><span class="en">SdfPath</span></li>
-        <li><span class="zh">绝对路径：</span><span class="en">absolute path</span></li>
         <li><span class="zh">相对路径：</span><span class="en">relative path</span></li>
         <li><span class="zh">属性路径：</span><span class="en">property path</span></li>
         <li><span class="zh">目标路径：</span><span class="en">target path</span></li>
-        <li><span class="zh">变体选择：</span><span class="en">variant selection</span></li>
+        <li><span class="zh">变体选择路径：</span><span class="en">variant selection path</span></li>
+        <li><span class="zh">路径语法：</span><span class="en">path syntax</span></li>
       </ul>
     </section>
     <section>

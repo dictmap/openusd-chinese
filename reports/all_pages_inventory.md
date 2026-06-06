@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-06T20:33:02.434Z
+Generated: 2026-06-06T20:57:19.695Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 10
-- Promoted complete pages: 2
-- Bilingual draft pages: 396
+- Bilingual complete pages: 11
+- Promoted complete pages: 3
+- Bilingual draft pages: 395
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -49,7 +49,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_draft | 类参考草稿：PcpPropertyIndex Class / PcpPropertyIndex Class | full_site/api/class_pcp_property_index.html | https://openusd.org/release/api/class_pcp_property_index.html |
 | api | bilingual_draft | 类参考草稿：SdfChildrenView< _ChildPolicy, _Predicate, _Adapter > Class Template / SdfChildrenView< _ChildPolicy, _Predicate, _Adapter > Class Template | full_site/api/class_sdf_children_view.html | https://openusd.org/release/api/class_sdf_children_view.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_sdf_layer.html | full_site/api/class_sdf_layer.html | https://openusd.org/release/api/class_sdf_layer.html |
-| api | bilingual_draft | 类参考草稿：SdfPath Class / SdfPath Class | full_site/api/class_sdf_path.html | https://openusd.org/release/api/class_sdf_path.html |
+| api | bilingual_complete | https://openusd.org/release/api/class_sdf_path.html | full_site/api/class_sdf_path.html | https://openusd.org/release/api/class_sdf_path.html |
 | api | bilingual_draft | 类参考草稿：SdfPrimSpec Class / SdfPrimSpec Class | full_site/api/class_sdf_prim_spec.html | https://openusd.org/release/api/class_sdf_prim_spec.html |
 | api | bilingual_draft | 类参考草稿：SdfUsdzFileFormat Class / SdfUsdzFileFormat Class | full_site/api/class_sdf_usdz_file_format.html | https://openusd.org/release/api/class_sdf_usdz_file_format.html |
 | api | bilingual_draft | 类参考草稿：SdrShaderProperty Class / SdrShaderProperty Class | full_site/api/class_sdr_shader_property.html | https://openusd.org/release/api/class_sdr_shader_property.html |

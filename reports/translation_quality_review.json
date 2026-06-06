@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-06T20:35:43.036Z",
+  "generated_at": "2026-06-06T20:57:34.622Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 396,
-    "bilingual_complete": 10
+    "bilingual_draft": 395,
+    "bilingual_complete": 11
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 385,
-    "good_bilingual": 10
+    "draft_needs_translation": 384,
+    "good_bilingual": 11
   },
   "focus_batch": [
     {
@@ -1814,29 +1814,29 @@
     },
     {
       "index": 32,
-      "title": "类参考草稿：SdfPath Class / SdfPath Class",
+      "title": "完整双语参考：SdfPath Class / SdfPath Class",
       "output": "full_site/api/class_sdf_path.html",
       "official_url": "https://openusd.org/release/api/class_sdf_path.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 64,
-      "enBlockCount": 51,
-      "zhChars": 793,
-      "enLetters": 2223,
-      "bodyChineseChars": 868,
+      "grade": "good_bilingual",
+      "zhBlockCount": 48,
+      "enBlockCount": 50,
+      "zhChars": 883,
+      "enLetters": 4821,
+      "bodyChineseChars": 936,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 SdfPath Class Reference 补充中文优先的类职责、读取重点、相关 API 关系和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`SdfPath` 是用于定位 layers 或 scenegraphs 中对象的路径值，也是 Sdf、Pcp 和 Usd API 中最常见的标识类型之一。"
+        "本页已从全量队列晋级为完整双语参考页：中文层覆盖 `SdfPath` 的官方用途、路径值语义、absolute/relative path、prim/property/target/variant 路径语法、路径构造 helper、thread-safety 提示，以及它与 `SdfLayer`、`UsdPrim`、`UsdProperty` 和 `Pcp` 组合调试之间的关系；英文原文摘录、API 名称、类名、方法名、类型名、token 字面量和链接保持原样。",
+        "官方开头把 `SdfPath` 定义为 used to locate objects in layers or scenegraphs 的 path value。这里的 path value 表示它是一个可复制、可比较、可作为 key 使用的值对象；它本身不拥有 prim、property 或 layer 数据，也不保证目标对象一定存在。`SdfPath` 的职责是用统一语法表达 USD 命名空间中的对象位置。",
+        "第一种官方用途是作为 `SdfLayer` 中寻址和访问值的 storage key。底层 layer 保存的是 specs 和 fields，很多读写操作需要先用 `SdfPath` 指定“哪个 prim、property 或 target”。因此同一个 path 在不同 `SdfLayer` 中可能命中不同 authored opinions；路径值相同不代表底层数据来源相同。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, reading guidance, related API context, and terminology for SdfPath Class Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page is promoted from the full-site queue to a complete bilingual reference page. The Chinese layer covers the official uses of `SdfPath`, path-value semantics, absolute and relative paths, prim/property/target/variant path syntax, path construction helpers, thread-safety notes, and its relationship to `SdfLayer`, `UsdPrim`, `UsdProperty`, and `Pcp` composition debugging while retaining English excerpts, API names, class names, method names, type names, token literals, and links.",
+        "The official introduction defines `SdfPath` as a path value used to locate objects in layers or scenegraphs. Path value means that it is copyable, comparable, and usable as a key; it does not own prim, property, or layer data, and it does not guarantee that the target object exists. Its role is to express object locations in the USD namespace using a uniform syntax."
       ]
     },
     {

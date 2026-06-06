@@ -4686,3 +4686,44 @@
 1. 继续真实晋级，优先考虑 `full_site/api/class_sdf_path.html`、`full_site/api/class_usd_geom_mesh.html`、`full_site/api/class_tf_token.html`。
 2. 每个晋级页面必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 增加。
 3. 同步修复用户实际点击中暴露出的高价值占位链接，但不得把占位页策略描述为完成体验。
+
+## 第 305 轮：将 SdfPath 提升为完整双语
+
+已完成：
+
+- 将 `full_site/api/class_sdf_path.html` 从 `bilingual_draft` 晋级为 `bilingual_complete`。
+- 页面标题改为“完整双语参考：SdfPath Class”，并移除通用 draft 说明。
+- 新增 `逐段双语理解 / Paragraph-Level Bilingual Coverage` 区块，覆盖 `SdfPath` 的 path value 语义、`SdfLayer` storage key、scenegraph namespace identity、relative relationship target、absolute/relative path、prim/property/target/variant path syntax、路径构造 helper、thread-safety，以及 `UsdPrim`/`SdfLayer`/`Pcp` composition 调试关系。
+- 更新 `reports/bilingual_completion_promotions.json/md`，新增 `round-305-sdf-path` 晋级记录。
+- 更新 `reports/current_problem_audit.md/json`，将当前真实状态更新为 11 complete / 395 draft。
+- 重建 `openusd_bilingual_final.html`，总入口现在动态显示 11 complete / 395 incomplete drafts。
+
+分级变化：
+
+- `good_bilingual`：10 -> 11
+- `bilingual_complete`：10 -> 11
+- `bilingual_draft`：396 -> 395
+- `draft_needs_translation`：385 -> 384
+- `draft_template_only`：11 保持不变
+
+验证结果：
+
+- `discover_openusd_all_pages.mjs` 通过，范围稳定为 406；`promoted_complete_pages=3`。
+- `audit_openusd_translation_quality.mjs` 通过，确认 `good_bilingual=11`。
+- `route_openusd_internal_links_local.mjs` 通过。
+- `audit_openusd_full_draft_preview.mjs` 通过，395/395 draft 页面可预览。
+- `audit_openusd_navigation_coverage.mjs` 通过。
+- `validate_openusd_api_repro.ps1` 通过，`required_check_count=288`，`failed_check_count=0`。
+- `audit_openusd_report_index.mjs` 通过。
+- `reports/validation_report.json` 经 Node 解析确认 `bom=false`。
+
+当前差距：
+
+- 仍有 395 个 `bilingual_draft` 页面不是完整翻译，其中 384 个仍为 `draft_needs_translation`。
+- 406 清单外的 Doxygen 目标仍会进入本地未覆盖占位页；这是当前 P1 浏览缺口。
+
+下一步目标：
+
+1. 继续真实晋级，优先考虑 `full_site/api/class_usd_geom_mesh.html`、`full_site/api/class_tf_token.html`。
+2. 每个晋级页面必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 增加。
+3. 如用户实际点击到高价值占位链接，优先修复该浏览缺口。
