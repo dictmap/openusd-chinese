@@ -54,6 +54,27 @@
         <li><span class="zh">线性代数：</span><span class="en">linear algebra</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-131">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`GfVec2i` 是 Gf Linear Algebra 中的二维 `int` vector 值类型，适合表示离散索引、整数坐标、计数和小型二维整型量。阅读本页时要把它和 `GfVec2f` / `GfVec2d` 区分开：它强调整型分量与轻量值语义，不承担连续几何精度或 scene prim 职责。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for GfVec2i while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`ScalarType` 对应 `int`，因此加减、缩放和比较都应按整型语义理解；如果后续计算需要浮点归一化、插值或高精度距离，应显式转换到 `GfVec2f` 或 `GfVec2d`。</span></li>
+        <li><span class="zh">`data()`、`GetArray()` 和 `operator[]` 暴露底层分量访问方式；中文说明要保留索引表达式和 API 名称，避免把它误译成 USD attribute 数组。</span></li>
+        <li><span class="zh">`GetLengthSq()` 适合避免开方的长度比较；对于整型向量，平方长度通常比直接讨论 normalized vector 更稳妥，因为整数分量不自然表示单位向量。</span></li>
+        <li><span class="zh">`GetProjection()`、`GetComplement()` 和 `GfDot()` 等操作说明该类仍处在向量代数体系中，但计算结果和截断/转换边界需要结合整型精度核对。</span></li>
+        <li><span class="zh">`Axis()`、`XAxis()`、`YAxis()` 或类似静态常量通常用于构造标准基向量；这些值可以作为索引方向、网格方向或工具算法中的轻量常量，而不是场景空间里的 transform 节点。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Gf 二维 int 向量：</span><span class="en">GfVec2i</span></li>
+        <li><span class="zh">分量标量类型：</span><span class="en">ScalarType</span></li>
+        <li><span class="zh">整型分量：</span><span class="en">integer component</span></li>
+        <li><span class="zh">平方长度查询：</span><span class="en">GetLengthSq</span></li>
+        <li><span class="zh">基向量：</span><span class="en">basis vector</span></li>
+        <li><span class="zh">投影：</span><span class="en">projection</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -54,6 +54,27 @@
         <li><span class="zh">深度缓冲：</span><span class="en">depth buffer</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-131">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`GlfDrawTarget` 表示带有多个 image attachments 的 GL render target，可理解为离屏 render pass 的输出容器。它把 framebuffer、attachment texture、depth component、MSAA resolve 和 shader sampler 使用路径连接起来，是 OpenGL 渲染辅助层中的资源管理对象。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for GlfDrawTarget while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`AddAttachment()`、`DeleteAttachment()`、`GetAttachment()` 和 `GetAttachments()` 围绕 named attachments 工作；这些 attachment 通常映射到 `GL_TEXTURE_2D` image，而不是 USD scene graph 中的 prim。</span></li>
+        <li><span class="zh">`Bind()`、`Unbind()`、`IsBound()` 和 `IsValid()` 关注 framebuffer 绑定状态和 GL 资源有效性；阅读时应把它们和 Hydra render pass 的高层调度区分开。</span></li>
+        <li><span class="zh">`GetFramebufferId()` 与 `GetFramebufferMSId()` 暴露 framebuffer object 标识；带 `MS` 的接口通常与 MSAA 目标相关，后续 `Resolve()` 负责把多重采样结果解析到可采样附件。</span></li>
+        <li><span class="zh">`CloneAttachments()` 和 `ClearAttachments()` 说明附件集合可以复制或清理；这类操作影响离屏渲染输出资源，不能简单视为清空 USD 图层或材质绑定。</span></li>
+        <li><span class="zh">本页英文原文提到输出 arbitrary variables 后供 GLSL shaders 作为 texture samplers 使用；中文层应保留 `GLSL shaders`、`texture samplers`、`render pass` 等术语，方便读者对照图形管线概念。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">GL 绘制目标：</span><span class="en">GlfDrawTarget</span></li>
+        <li><span class="zh">图像附件：</span><span class="en">image attachment</span></li>
+        <li><span class="zh">帧缓冲对象：</span><span class="en">framebuffer</span></li>
+        <li><span class="zh">多重采样抗锯齿：</span><span class="en">MSAA</span></li>
+        <li><span class="zh">解析多重采样结果：</span><span class="en">Resolve</span></li>
+        <li><span class="zh">纹理采样器：</span><span class="en">texture sampler</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

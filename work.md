@@ -3290,3 +3290,20 @@
 - 验证结果：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1` 均已通过；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
 - GitHub 同步：本轮复验通过后使用 `OpenUSD bilingual round 261: gf matrix range ray pass` 同步本轮 HTML、脚本、报告和 `work.md`。
 - 下一轮最多 5 页目标：`full_site/api/class_gf_vec2i.html`、`full_site/api/class_glf_draw_target.html`、`full_site/api/class_hd_data_source_locator.html`、`full_site/api/class_hd_instance_registry.html`、`full_site/api/class_hd_st_render_pass_state.html`；之后可继续 Gf/Vt/Sdf/Hd 的高价值 class 页面，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面，继续低优先处理 `search.html`、目录页和 `_source.html`。
+
+## 第 262 轮：GfVec2i、GlfDrawTarget、HdDataSourceLocator、HdInstanceRegistry 与 HdStRenderPassState 补强
+
+- 基线：本地 `main` 基于上一轮同步提交 `2916b84`，`origin/main` 一致，起始工作区干净；全量仍为 406 个 HTML 页面，质量计数为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。
+- 新增并执行 `scripts/refine_openusd_release_batch_131.mjs`，本轮标记为 `api-class-quality-pass-131`。
+- 严格只精修 5 页：
+  - `full_site/api/class_gf_vec2i.html`
+  - `full_site/api/class_glf_draw_target.html`
+  - `full_site/api/class_hd_data_source_locator.html`
+  - `full_site/api/class_hd_instance_registry.html`
+  - `full_site/api/class_hd_st_render_pass_state.html`
+- 每页新增 5 条中文补强导读和 6 条术语对照；重点覆盖 `GfVec2i` 的 `int` component、`ScalarType`、分量访问和平方长度语义，`GlfDrawTarget` 的 GL framebuffer、image attachment、MSAA resolve 和 shader sampler 边界，`HdDataSourceLocator` 的 `TfToken` locator、prefix/intersection 和 dirty propagation 用法，`HdInstanceRegistry< VALUE >` 的实例字典、`GetInstance()` / `FindInstance()`、`GarbageCollect()` 与 `Invalidate()` 生命周期，以及 `HdStRenderPassState` 的 GL states、uniforms、shader、camera matrices、AOV resolve 和 graphics pipeline hash；API 名称、类名、方法名、属性名、数学符号、template 参数、token 字面量和链接保持原样。
+- 质量回读：5 页均无 `TODO` / `待翻译` / `机器翻译占位`，`api-class-quality-pass-131` 均只出现 1 次；中文字符分别为 782、715、668、699、596，中文/英文块分别为 52/44、52/44、52/44、42/34、47/39。
+- 分级变化：计数保持不变，仍为 `draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因是本轮对象开始前已属 `draft_needs_translation`，本轮是二次补强精修，不是从模板草稿晋级。
+- 验证结果：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1` 均已通过；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步：本轮复验通过后使用 `OpenUSD bilingual round 262: gf glf hd class pass` 同步本轮 HTML、脚本、报告和 `work.md`。
+- 下一轮最多 5 页目标：`full_site/api/class_usd_prim.html`、`full_site/api/class_usd_geom_mesh.html`、`full_site/api/class_usd_geom_primvars_a_p_i.html`、`full_site/api/class_usd_schema_registry.html`、`full_site/api/class_tf_token.html`；之后可继续核心 Usd/UsdGeom/Tf/Hd/Vt class 页面，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面，继续低优先处理 `search.html`、目录页和 `_source.html`。

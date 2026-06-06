@@ -54,6 +54,27 @@
         <li><span class="zh">token 路径：</span><span class="en">token path</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-131">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`HdDataSourceLocator` 是 Hydra data source 体系中的定位路径对象，由一组短 `TfToken` 序列标识某个 data source 的位置。它更像 tokenized path 或 locator key，而不是文件系统路径；核心语义集中在 prefix、intersection、append/prepend 和 hashable comparison。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdDataSourceLocator while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Append()` 与 `Prepend()` 用于组合 locator 片段；它们表达的是 Hydra data source namespace 内部的 token 路径拼接，不应翻译成文件路径拼接。</span></li>
+        <li><span class="zh">`GetElement()`、`GetFirstElement()`、`GetLastElement()` 和 `GetElementCount()` 说明 locator 是有序 token 列表；`TfToken` 的保留有助于理解比较和缓存性能。</span></li>
+        <li><span class="zh">`HasPrefix()`、`GetCommonPrefix()` 与 `Intersects()` 是 dirty propagation、data source filtering 和 scene index 更新中常见的范围判断入口。</span></li>
+        <li><span class="zh">`EmptyLocator()` 与 `IsEmpty()` 需要按 locator 语义理解：空 locator 可以表示根级位置或无具体子路径，具体含义要结合调用方的 dirty/invalidated 范围判断。</span></li>
+        <li><span class="zh">`GetString()` 主要用于调试或展示；真实比较和哈希应优先依赖 token 序列本身，而不是把 locator 降级成普通字符串处理。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Hydra 数据源定位器：</span><span class="en">HdDataSourceLocator</span></li>
+        <li><span class="zh">Tf token 标识：</span><span class="en">TfToken</span></li>
+        <li><span class="zh">定位路径：</span><span class="en">locator</span></li>
+        <li><span class="zh">前缀：</span><span class="en">prefix</span></li>
+        <li><span class="zh">范围相交判断：</span><span class="en">Intersects</span></li>
+        <li><span class="zh">脏状态传播：</span><span class="en">dirty propagation</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

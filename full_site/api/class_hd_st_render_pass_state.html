@@ -54,6 +54,27 @@
         <li><span class="zh">相机 framing：</span><span class="en">camera framing</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-131">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`HdStRenderPassState` 是 Storm / HdSt render pass 之间共享的一组 rendering parameters，用 GL states、uniforms 或 shaders 表达渲染状态。它承接 camera matrices、viewport、clip planes、lighting shader、render pass shader 和 AOV resolve 等状态，不是单个 draw item。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdStRenderPassState while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Prepare()` 与 `Bind()` 通常分别对应准备 GPU/GL 状态和绑定执行状态；阅读时要结合 render pass 生命周期，而不是把它们理解为普通数据 setter。</span></li>
+        <li><span class="zh">`GetWorldToViewMatrix()`、`GetProjectionMatrix()` 和 `GetCullMatrix()` 体现 camera 与裁剪相关矩阵；矩阵名和空间变换方向必须保留英文 API 名称以免误读。</span></li>
+        <li><span class="zh">`SetLightingShader()`、`GetLightingShader()`、`SetRenderPassShader()` 和 `GetRenderPassShader()` 说明该状态对象会连接具体 shader 程序和 pass 执行。</span></li>
+        <li><span class="zh">`ComputeViewport()`、`SetCameraFramingState()` 与 clip plane 相关接口决定最终 framebuffer 区域和相机 framing；这些状态会影响渲染结果而不是场景组成。</span></li>
+        <li><span class="zh">`SetResolveAovMultiSample()` 与 `GetGraphicsPipelineHash()` 分别关联 AOV 多重采样解析和 graphics pipeline 缓存；读者应把它们放在 Storm 渲染性能和管线复用语境中理解。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Storm 渲染 pass 状态：</span><span class="en">HdStRenderPassState</span></li>
+        <li><span class="zh">渲染参数：</span><span class="en">rendering parameters</span></li>
+        <li><span class="zh">GL 状态：</span><span class="en">GL states</span></li>
+        <li><span class="zh">uniform 参数：</span><span class="en">uniforms</span></li>
+        <li><span class="zh">AOV 解析：</span><span class="en">AOV resolve</span></li>
+        <li><span class="zh">图形管线哈希：</span><span class="en">graphics pipeline hash</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

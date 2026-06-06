@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-06T00:29:04.903Z
+Generated: 2026-06-06T00:40:52.223Z
 
 ## Summary
 
@@ -79,14 +79,14 @@ Generated: 2026-06-06T00:29:04.903Z
 | 13 | draft_needs_translation | bilingual_draft | 677 | 52/44 | 0 | 0 | `full_site/api/class_gf_matrix4f.html` |
 | 14 | draft_needs_translation | bilingual_draft | 583 | 52/44 | 0 | 0 | `full_site/api/class_gf_range1d.html` |
 | 15 | draft_needs_translation | bilingual_draft | 611 | 51/43 | 0 | 0 | `full_site/api/class_gf_ray.html` |
-| 16 | draft_needs_translation | bilingual_draft | 403 | 40/37 | 0 | 0 | `full_site/api/class_gf_vec2i.html` |
-| 17 | draft_needs_translation | bilingual_draft | 415 | 40/37 | 0 | 0 | `full_site/api/class_glf_draw_target.html` |
-| 18 | draft_needs_translation | bilingual_draft | 388 | 40/37 | 0 | 0 | `full_site/api/class_hd_data_source_locator.html` |
-| 19 | draft_needs_translation | bilingual_draft | 379 | 30/27 | 0 | 0 | `full_site/api/class_hd_instance_registry.html` |
+| 16 | draft_needs_translation | bilingual_draft | 719 | 52/44 | 0 | 0 | `full_site/api/class_gf_vec2i.html` |
+| 17 | draft_needs_translation | bilingual_draft | 652 | 52/44 | 0 | 0 | `full_site/api/class_glf_draw_target.html` |
+| 18 | draft_needs_translation | bilingual_draft | 605 | 52/44 | 0 | 0 | `full_site/api/class_hd_data_source_locator.html` |
+| 19 | draft_needs_translation | bilingual_draft | 636 | 42/34 | 0 | 0 | `full_site/api/class_hd_instance_registry.html` |
 | 20 | draft_needs_translation | bilingual_draft | 571 | 48/40 | 0 | 0 | `full_site/api/class_hd_render_buffer.html` |
 | 21 | draft_needs_translation | bilingual_draft | 574 | 52/44 | 0 | 0 | `full_site/api/class_hd_scene_delegate.html` |
 | 22 | draft_needs_translation | bilingual_draft | 340 | 34/31 | 0 | 0 | `full_site/api/class_hd_st_dispatch_buffer.html` |
-| 23 | draft_needs_translation | bilingual_draft | 327 | 35/32 | 0 | 0 | `full_site/api/class_hd_st_render_pass_state.html` |
+| 23 | draft_needs_translation | bilingual_draft | 533 | 47/39 | 0 | 0 | `full_site/api/class_hd_st_render_pass_state.html` |
 | 24 | draft_needs_translation | bilingual_draft | 321 | 31/28 | 0 | 0 | `full_site/api/class_hd_task.html` |
 | 25 | draft_needs_translation | bilingual_draft | 312 | 25/22 | 0 | 0 | `full_site/api/class_hdx_pick_from_render_buffer_task.html` |
 | 26 | draft_needs_translation | bilingual_draft | 344 | 37/34 | 0 | 0 | `full_site/api/class_hgi_g_l_graphics_cmds.html` |
