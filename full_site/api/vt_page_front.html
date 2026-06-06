@@ -76,6 +76,27 @@
         <li><span class="zh">语言绑定差异：</span><span class="en">language binding difference</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-163">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`vt_page_front.html` 是 `Vt` value types 模块入口，覆盖 `VtValue`、`VtArray`、类型擦除、数组容器、值持有和 C++/Python 绑定中的通用值传递机制。它是值容器基础设施，不是具体 schema 属性列表。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Vt: Value Types while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`VtValue` 是 type-erased value container，适合表达运行时才确定类型的 USD 值；使用时要注意类型查询、转换和生命周期。</span></li>
+        <li><span class="zh">`VtArray&lt;T&gt;` 是 USD 常用同质数组容器，常承载 points、normals、indices、primvars 和 time sampled attribute values。</span></li>
+        <li><span class="zh">`Vt` 与 `Gf`、`Sdf`、`Usd` 经常一起出现：`Gf` 提供数学类型，`Vt` 提供值/数组容器，`Sdf/Usd` 使用它们表达属性值。</span></li>
+        <li><span class="zh">调试 value mismatch 时，先确认 held type、array element type、role name、tuple size 和 Python binding 转换，而不是只看显示字符串。</span></li>
+        <li><span class="zh">中文层保留 `VtValue`、`VtArray`、type erasure、homogeneous array 等英文术语，避免和普通 JavaScript/Python value 概念混淆。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">值类型：</span><span class="en">value types</span></li>
+        <li><span class="zh">类型擦除：</span><span class="en">type erasure</span></li>
+        <li><span class="zh">同质数组：</span><span class="en">homogeneous array</span></li>
+        <li><span class="zh">值容器：</span><span class="en">value container</span></li>
+        <li><span class="zh">元素类型：</span><span class="en">element type</span></li>
+        <li><span class="zh">绑定转换：</span><span class="en">binding conversion</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -75,6 +75,27 @@
         <li><span class="zh">插件扩展：</span><span class="en">plugin extension</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-163">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`kind_page_front.html` 是 `Kind` 可扩展分类模块入口，用于表达 model hierarchy 中的 kind taxonomy，例如 component、group、assembly、subcomponent 等。它提供分类约定和查询工具，不直接定义几何、材质或 composition arc。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Kind: Extensible Categorization while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`KindRegistry` 和 kind tokens 用来注册、查询和验证 kind 层级关系；具体 token 名称和分类关系应保持英文原样，以便和 pipeline 约定对照。</span></li>
+        <li><span class="zh">Kind 常与 `UsdModelAPI`、model hierarchy、asset organization 和 pipeline validation 相邻出现；它描述“对象是什么类别”，不是“对象如何组成”。</span></li>
+        <li><span class="zh">component/group/assembly 等 kind 会影响浏览、资产打包、验证或工具策略，但不会自动创建 prim、reference、payload 或 variant。</span></li>
+        <li><span class="zh">如果某个 model kind 不符合预期，先检查 authored metadata、kind inheritance、registry 是否包含该 kind，再看上层工具如何消费分类。</span></li>
+        <li><span class="zh">中文补强主要帮助读者区分 kind taxonomy 与 schema type、prim type、asset role 和 collection membership 等相邻概念。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">可扩展分类：</span><span class="en">extensible categorization</span></li>
+        <li><span class="zh">kind 层级：</span><span class="en">kind hierarchy</span></li>
+        <li><span class="zh">模型层级：</span><span class="en">model hierarchy</span></li>
+        <li><span class="zh">分类 token：</span><span class="en">kind token</span></li>
+        <li><span class="zh">注册表查询：</span><span class="en">registry query</span></li>
+        <li><span class="zh">资产组织：</span><span class="en">asset organization</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -75,6 +75,27 @@
         <li><span class="zh">调试输出：</span><span class="en">debugging output</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-163">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`gf_page_front.html` 是 `Gf` graphics foundations 模块入口，提供向量、矩阵、四元数、范围、射线、包围盒、变换和基础几何/数学工具。它支撑 `UsdGeom`、Hydra、rendering 和 simulation 等上层模块，但本身不 author scene description。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Gf: Graphics Foundations while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`GfVec*`、`GfMatrix*`、`GfQuat*`、`GfRange*`、`GfRay`、`GfBBox3d` 等类型应按数学对象阅读，重点是坐标系、精度、维度和运算约定。</span></li>
+        <li><span class="zh">`Gf` 类型常被 `VtValue` 或 `VtArray` 承载，并最终作为 USD attribute value 使用；容器和值语义需要结合 `Vt` 与 `Usd` 页面确认。</span></li>
+        <li><span class="zh">矩阵、变换和包围盒相关 API 容易受行列约定、左/右乘、单位、up axis 和 handedness 影响，中文导读只提示风险，不改写数学符号。</span></li>
+        <li><span class="zh">如果问题来自 `UsdGeomXformOp`、camera、bounds 或 ray intersection，应先确定是 `Gf` 数学类型使用问题，还是上层 schema/renderer 解释问题。</span></li>
+        <li><span class="zh">本页适合作为基础类型导航，API 名称、类型名、operator、数学符号和模板参数保持原样，方便用户直接跳到具体 class 页面。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">图形基础：</span><span class="en">graphics foundations</span></li>
+        <li><span class="zh">向量类型：</span><span class="en">vector type</span></li>
+        <li><span class="zh">矩阵类型：</span><span class="en">matrix type</span></li>
+        <li><span class="zh">四元数：</span><span class="en">quaternion</span></li>
+        <li><span class="zh">包围盒：</span><span class="en">bounding box</span></li>
+        <li><span class="zh">坐标系约定：</span><span class="en">coordinate system convention</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

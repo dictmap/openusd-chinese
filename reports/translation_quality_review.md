@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-06T11:48:25.373Z
+Generated: 2026-06-06T12:08:00.441Z
 
 ## Summary
 
@@ -228,7 +228,7 @@ Generated: 2026-06-06T11:48:25.373Z
 | 162 | draft_needs_translation | bilingual_draft | 457 | 25/17 | 0 | 0 | `full_site/api/functions_z.html` |
 | 163 | draft_needs_translation | bilingual_draft | 459 | 25/17 | 0 | 0 | `full_site/api/functions.html` |
 | 164 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/geom_model_a_p_i_adapter_8h_source.html` |
-| 165 | draft_needs_translation | bilingual_draft | 530 | 26/18 | 0 | 0 | `full_site/api/gf_page_front.html` |
+| 165 | draft_needs_translation | bilingual_draft | 764 | 38/25 | 0 | 0 | `full_site/api/gf_page_front.html` |
 | 166 | draft_needs_translation | bilingual_draft | 549 | 25/16 | 0 | 0 | `full_site/api/glf_page_front.html` |
 | 167 | draft_needs_translation | bilingual_draft | 551 | 25/17 | 0 | 0 | `full_site/api/globals_c.html` |
 | 168 | draft_needs_translation | bilingual_draft | 716 | 32/24 | 0 | 0 | `full_site/api/globals_defs.html` |
@@ -277,7 +277,7 @@ Generated: 2026-06-06T11:48:25.373Z
 | 211 | draft_needs_translation | bilingual_draft | 333 | 13/9 | 0 | 0 | `full_site/api/inherits.html` |
 | 212 | draft_needs_translation | bilingual_draft | 336 | 15/12 | 0 | 0 | `full_site/api/journal_8h.html` |
 | 213 | draft_needs_translation | bilingual_draft | 543 | 26/18 | 0 | 0 | `full_site/api/js_page_front.html` |
-| 214 | draft_needs_translation | bilingual_draft | 537 | 27/19 | 0 | 0 | `full_site/api/kind_page_front.html` |
+| 214 | draft_needs_translation | bilingual_draft | 735 | 39/26 | 0 | 0 | `full_site/api/kind_page_front.html` |
 | 215 | draft_needs_translation | bilingual_draft | 345 | 13/10 | 0 | 0 | `full_site/api/md_pxr_exec_ef__r_e_a_d_m_e.html` |
 | 216 | draft_needs_translation | bilingual_draft | 349 | 13/9 | 0 | 0 | `full_site/api/md_pxr_exec_esf__r_e_a_d_m_e.html` |
 | 217 | draft_needs_translation | bilingual_draft | 334 | 13/10 | 0 | 0 | `full_site/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html` |
@@ -304,13 +304,13 @@ Generated: 2026-06-06T11:48:25.373Z
 | 238 | draft_needs_translation | bilingual_draft | 531 | 25/17 | 0 | 0 | `full_site/api/page_ts_ts_test.html` |
 | 239 | draft_needs_translation | bilingual_draft | 336 | 13/10 | 0 | 0 | `full_site/api/pages.html` |
 | 240 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/parallel_speculation_executor_engine_8h_source.html` |
-| 241 | draft_needs_translation | bilingual_draft | 528 | 37/29 | 0 | 0 | `full_site/api/pcp_page_front.html` |
+| 241 | draft_needs_translation | bilingual_draft | 718 | 49/36 | 0 | 0 | `full_site/api/pcp_page_front.html` |
 | 242 | draft_needs_translation | bilingual_draft | 634 | 29/21 | 0 | 0 | `full_site/api/plug_page_front.html` |
 | 243 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/pxr_display_filter_adapter_8h_source.html` |
 | 244 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/riley_param_schema_8h_source.html` |
 | 245 | draft_needs_translation | bilingual_draft | 541 | 36/28 | 0 | 0 | `full_site/api/sdf_page_front.html` |
 | 246 | draft_needs_translation | bilingual_draft | 531 | 26/17 | 0 | 0 | `full_site/api/sdr_glslfx_page_front.html` |
-| 247 | draft_needs_translation | bilingual_draft | 534 | 27/19 | 0 | 0 | `full_site/api/sdr_page_front.html` |
+| 247 | draft_needs_translation | bilingual_draft | 708 | 39/26 | 0 | 0 | `full_site/api/sdr_page_front.html` |
 | 248 | draft_needs_translation | bilingual_draft | 338 | 14/11 | 0 | 0 | `full_site/api/sparse_vectorized_input_traverser_8h.html` |
 | 249 | draft_needs_translation | bilingual_draft | 387 | 29/26 | 0 | 0 | `full_site/api/struct_hgi_sampler_desc.html` |
 | 250 | draft_needs_translation | bilingual_draft | 441 | 40/37 | 0 | 0 | `full_site/api/struct_usd_geom_tokens_type.html` |
@@ -342,7 +342,7 @@ Generated: 2026-06-06T11:48:25.373Z
 | 276 | draft_needs_translation | bilingual_draft | 619 | 30/22 | 0 | 0 | `full_site/api/usdabc_page_front.html` |
 | 277 | draft_needs_translation | bilingual_draft | 614 | 26/17 | 0 | 0 | `full_site/api/usddraco_page_front.html` |
 | 278 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/var_8h_source.html` |
-| 279 | draft_needs_translation | bilingual_draft | 537 | 29/21 | 0 | 0 | `full_site/api/vt_page_front.html` |
+| 279 | draft_needs_translation | bilingual_draft | 718 | 41/28 | 0 | 0 | `full_site/api/vt_page_front.html` |
 | 280 | draft_needs_translation | bilingual_draft | 643 | 34/26 | 0 | 0 | `full_site/api/work_page_front.html` |
 | 281 | good_bilingual | bilingual_complete | 515 | 10/27 | 0 | 0 | `site/apiDocs.html` |
 | 282 | draft_needs_translation | bilingual_draft | 681 | 36/29 | 0 | 0 | `full_site/release/contributing_to_usd.html` |

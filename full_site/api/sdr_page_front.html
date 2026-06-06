@@ -75,6 +75,27 @@
         <li><span class="zh">着色器属性：</span><span class="en">shader property</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-163">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`sdr_page_front.html` 是 `Sdr` shader definition registry 入口，负责发现、解析、缓存和查询 shader definitions。它服务 `UsdShade`、`UsdShaders`、renderer plugins 和 shader discovery 工作流，但不直接 author 材质网络连接。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Sdr: Shader Definition Registry while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`SdrRegistry` 是查询入口，`SdrShaderNode` 描述 shader node，`SdrShaderProperty` 描述 input/output/property；三者应和 discovery/parser plugin 一起阅读。</span></li>
+        <li><span class="zh">`Sdr` 处理 definition metadata 和 node identity，不负责在 stage 上创建 `UsdShadeShader` prim，也不负责 renderer runtime 执行 shader code。</span></li>
+        <li><span class="zh">Shader definitions 可能来自 `glslfx`、MaterialX、renderer-specific discovery plugin 或其他资源；不同来源的 parser 会影响可见属性和实现信息。</span></li>
+        <li><span class="zh">若材质网络显示异常，排查顺序通常是 authored `UsdShade` network、shader identifier、`Sdr` discovery result、asset path、renderer support，而不是只看一个 node 名称。</span></li>
+        <li><span class="zh">中文层强调 registry/discovery 与 authored material network 的分界，避免把 `Sdr` 当成材质绑定、渲染输出或 shader compiler 的完整替代品。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">着色器定义注册表：</span><span class="en">shader definition registry</span></li>
+        <li><span class="zh">发现插件：</span><span class="en">discovery plugin</span></li>
+        <li><span class="zh">解析插件：</span><span class="en">parser plugin</span></li>
+        <li><span class="zh">着色器节点：</span><span class="en">shader node</span></li>
+        <li><span class="zh">着色器属性：</span><span class="en">shader property</span></li>
+        <li><span class="zh">节点标识：</span><span class="en">node identity</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

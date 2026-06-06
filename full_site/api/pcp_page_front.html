@@ -75,6 +75,27 @@
         <li><span class="zh">路径转换：</span><span class="en">path translation</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-163">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`pcp_page_front.html` 是 `Pcp` composition 引擎入口，围绕 prim index、composition arcs、layer stack、payload/reference/variant/inherit/specialize 和 change processing 解释 USD 如何把多层意见组合成可消费结果。它是底层 composition cache 层，不是普通场景编辑教程。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Pcp: PrimCache Population (Composition) while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`PcpPrimIndex` 和 `PcpPropertyIndex` 是理解 composition 结果的关键对象；它们描述哪些 arc 和 layer opinions 参与了某个 prim 或 property 的最终解析。</span></li>
+        <li><span class="zh">`PcpCache` 缓存 composition 计算结果，并与 change processing 关联；性能问题和脏化范围通常需要结合 cache、layer changes 和 dependency 关系阅读。</span></li>
+        <li><span class="zh">Composition arcs 包括 references、payloads、inherits、specializes、variants 和 relocates；同一个页面中的 arc 名称必须按 USD composition 语义保留英文原样。</span></li>
+        <li><span class="zh">`Pcp` 与 `Sdf`、`UsdStage` 的分层要区分：`Sdf` 表示低层 layer/spec，`Pcp` 计算 composition，`UsdStage` 提供面向用户的场景访问 API。</span></li>
+        <li><span class="zh">调试 composition 时，先定位 prim path 和 layer stack，再查看 prim index、arc source、namespace edits 和 errors；不要只从最终 `UsdPrim` 表象判断根因。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">组合引擎：</span><span class="en">composition engine</span></li>
+        <li><span class="zh">prim 索引：</span><span class="en">prim index</span></li>
+        <li><span class="zh">组合弧：</span><span class="en">composition arc</span></li>
+        <li><span class="zh">层栈：</span><span class="en">layer stack</span></li>
+        <li><span class="zh">变更处理：</span><span class="en">change processing</span></li>
+        <li><span class="zh">命名空间编辑：</span><span class="en">namespace edits</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
