@@ -54,6 +54,27 @@
         <li><span class="zh">SdfData 数据模型：</span><span class="en">SdfData data model</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-129">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`SdfLayer` 是 Sdf 层级的 scene description container，承载 authored specs、metadata、subLayer 路径、root prims 和文件 I/O 状态。它比 `UsdStage` 更底层：`UsdStage` 看到的是 composition 后的结果，而 `SdfLayer` 关注某一个 layer 文件或匿名 layer 中实际写下来的数据。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for SdfLayer while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Primary API` 通常覆盖创建、打开、查找、保存和匿名 layer 管理；阅读这些函数时要区分 identifier、realPath、resolved path 和 display name。</span></li>
+        <li><span class="zh">`Traversal` 与 `Prims` 关注 layer 内 specs 的枚举和 root prim 管理；这些 API 常与 `SdfPath`、`SdfPrimSpec`、`SdfPropertySpec` 和 `SdfChildrenView` 一起出现。</span></li>
+        <li><span class="zh">`File I/O` 部分涉及 `Export()`、`Save()`、`Reload()`、`ImportFromString()` 等持久化入口；如果 layer 来自 package 或 custom resolver，还要回到 `ArAsset` / `ArResolver` 语境核对。</span></li>
+        <li><span class="zh">`Metadata` 与 `Muting` 分别对应 layer 级元数据和静音层策略；muted layer 会影响 composition 可见性，但不等于删除 layer 文件或 authored opinions。</span></li>
+        <li><span class="zh">调试 USD 内容时应分别记录 layer identifier、root layer、session layer 和 subLayer stack，避免把某个 `SdfLayer` 中的 authored opinion 误认为 stage 上的最终 resolved value。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Sdf layer 对象：</span><span class="en">SdfLayer</span></li>
+        <li><span class="zh">已写入 spec：</span><span class="en">authored specs</span></li>
+        <li><span class="zh">layer 标识符：</span><span class="en">layer identifier</span></li>
+        <li><span class="zh">子层栈：</span><span class="en">subLayer stack</span></li>
+        <li><span class="zh">静音层：</span><span class="en">muted layer</span></li>
+        <li><span class="zh">解析后的最终值：</span><span class="en">resolved value</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

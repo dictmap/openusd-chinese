@@ -54,6 +54,27 @@
         <li><span class="zh">时间采样：</span><span class="en">time sample</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-129">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`HdSceneDelegate` 是传统 Hydra 架构中连接 client scene graph 与 `HdRenderIndex` 的数据适配器。它让 Hydra 通过统一查询接口获取 topology、transform、extent、primvars、materials、instancing、render buffer 和 time samples 等数据。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdSceneDelegate while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`HdSceneDelegate` 的职责是提供数据，不是执行最终渲染；实际渲染由 render delegate、render pass、task 和底层 graphics / renderer backend 共同完成。</span></li>
+        <li><span class="zh">`GetMeshTopology()`、`GetBasisCurvesTopology()`、`GetTransform()`、`GetPrimvarDescriptors()`、`Get()` 等接口通常由具体 delegate 按 prim path 回答数据查询。</span></li>
+        <li><span class="zh">`HdChangeTracker`、dirty bits 和 sync 语义决定 Hydra 何时重新拉取数据；如果画面没有更新，应检查 dirty 标记是否正确传播。</span></li>
+        <li><span class="zh">`UsdImagingDelegate`、`HdSceneIndexAdapterSceneDelegate`、`HdUnitTestDelegate` 与 `HdxFreeCameraSceneDelegate` 代表不同来源的 scene delegate；不要把 USD imaging、scene index adapter、测试 delegate 和相机 delegate 混为一类。</span></li>
+        <li><span class="zh">新代码若使用 Hydra 2.0 scene index pipeline，需要理解 `HdSceneDelegate` 与 `HdSceneIndex` / data source 路径的关系：前者是传统适配器，后者是新的数据流表达。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Hydra 场景委托：</span><span class="en">HdSceneDelegate</span></li>
+        <li><span class="zh">客户端场景图：</span><span class="en">client scene graph</span></li>
+        <li><span class="zh">Hydra 渲染索引：</span><span class="en">HdRenderIndex</span></li>
+        <li><span class="zh">脏标记位：</span><span class="en">dirty bits</span></li>
+        <li><span class="zh">primvar 描述符：</span><span class="en">primvar descriptors</span></li>
+        <li><span class="zh">场景索引管线：</span><span class="en">scene index pipeline</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

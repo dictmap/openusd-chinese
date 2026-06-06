@@ -54,6 +54,27 @@
         <li><span class="zh">关系目标：</span><span class="en">relationship target</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-129">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`SdfPath` 是 OpenUSD 中最核心的路径值类型之一，用来标识 layer 或 composed scenegraph 中的 prim、property、relationship target、variant selection 和 relational attribute。它是值对象，不直接代表对象本身。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for SdfPath while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Path Syntax` 是阅读本页的关键：absolute prim path、relative path、property path、target path、mapper path 和 variant selection 在字符串形式上都有约束。</span></li>
+        <li><span class="zh">`SdfPath` 常作为 `SdfLayer` 内部查找的 storage key，也作为 `UsdPrim`、`UsdProperty`、`PcpNode` 等高层 API 的标识；同一个路径在不同 layer 或 stage context 下语义可能不同。</span></li>
+        <li><span class="zh">`A Note on Thread-Safety` 应保留英文语义核对；路径值通常可安全共享，但不要把路径缓存、path table 或外部对象生命周期混为一谈。</span></li>
+        <li><span class="zh">组合或拼接路径时要谨慎使用 parent/child、AppendProperty、AppendVariantSelection、MakeRelativePath 等方法，避免生成 syntactically valid 但语义错误的路径。</span></li>
+        <li><span class="zh">调试 relationship target 或 reference/payload path 时，应明确路径是 authored relative path、anchored asset path 还是 resolved prim path；这三类问题经常被混用。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Sdf 路径：</span><span class="en">SdfPath</span></li>
+        <li><span class="zh">绝对 prim 路径：</span><span class="en">absolute prim path</span></li>
+        <li><span class="zh">属性路径：</span><span class="en">property path</span></li>
+        <li><span class="zh">变体选择：</span><span class="en">variant selection</span></li>
+        <li><span class="zh">存储键：</span><span class="en">storage key</span></li>
+        <li><span class="zh">路径语法：</span><span class="en">path syntax</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

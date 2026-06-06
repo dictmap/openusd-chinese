@@ -54,6 +54,27 @@
         <li><span class="zh">映射功能：</span><span class="en">mapping functionality</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-129">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`HdRenderBuffer` 是 Hydra 中抽象的 render buffer bprim，代表渲染器可以写入或映射读取的数据资源，例如 AOV、color buffer、depth buffer 或辅助输出。它连接 scene delegate、render pass、task 和 renderer backend 的缓冲管理。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdRenderBuffer while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">作为 indexed prim 时，`HdRenderBuffer` 的属性通常由 `HdSceneDelegate` 提供；out-of-band 创建时，则可能由调用方直接传入 allocation parameters。</span></li>
+        <li><span class="zh">`Renderbuffer API` 通常围绕 allocation、format、dimensions、multi-sample、converged state、map/unmap 和 resolve 等职责展开；阅读时应区分分配与数据访问。</span></li>
+        <li><span class="zh">`DirtyBits` 表示 render buffer 哪些方面需要重新同步；如果尺寸、格式或多重采样设置变化但渲染结果未更新，应检查 dirty bit 是否正确设置。</span></li>
+        <li><span class="zh">`Map()` / `Unmap()` 语义涉及 CPU 侧访问 buffer data；具体线程安全、同步和生命周期规则由实现类和 renderer backend 决定。</span></li>
+        <li><span class="zh">在渲染调试中，`HdRenderBuffer` 常与 `HdRenderPass`、`HdRenderPassState`、`HdAovDescriptor`、`HdRenderBufferDescriptor` 和 `HdTask` 一起出现，应按数据写入链路阅读。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Hydra 渲染缓冲：</span><span class="en">HdRenderBuffer</span></li>
+        <li><span class="zh">渲染缓冲 bprim：</span><span class="en">render buffer bprim</span></li>
+        <li><span class="zh">分配参数：</span><span class="en">allocation parameters</span></li>
+        <li><span class="zh">脏标记位：</span><span class="en">DirtyBits</span></li>
+        <li><span class="zh">映射/取消映射：</span><span class="en">Map/Unmap</span></li>
+        <li><span class="zh">任意输出变量：</span><span class="en">AOV</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

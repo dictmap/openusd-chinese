@@ -3262,3 +3262,14 @@
 - 验证结果：翻译质量审计、链接路由、full draft preview、报告索引和 `validate_openusd_api_repro.ps1` 均已通过；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
 - GitHub 同步：本轮复验通过后使用 `OpenUSD bilingual round 259: developer skel annotated ar arch pass` 同步本轮 HTML、脚本、报告和 `work.md`。
 - 下一轮最多 5 页目标：`full_site/api/class_sdf_layer.html`、`full_site/api/class_sdf_path.html`、`full_site/api/class_sdf_prim_spec.html`、`full_site/api/class_hd_scene_delegate.html`、`full_site/api/class_hd_render_buffer.html`；之后可继续 `UsdStage`、`UsdPrim`、`SdfSpec`、Hydra 或 Gf/Vt 等高价值 class 页面，继续低优先处理 `search.html`、目录页和 `_source.html`。
+
+## 第 260 轮：SdfLayer、SdfPath、SdfPrimSpec、HdSceneDelegate 与 HdRenderBuffer 补强
+
+- 基线：本地 `main` 基于上一轮同步提交 `9b311a2`，`origin/main` 一致，起始工作区干净；全量仍为 406 个 HTML 页面，质量计数为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。
+- 新增并执行 `scripts/refine_openusd_release_batch_129.mjs`，标记 `api-class-quality-pass-129`；严格只精修 5 页：`full_site/api/class_sdf_layer.html`、`full_site/api/class_sdf_path.html`、`full_site/api/class_sdf_prim_spec.html`、`full_site/api/class_hd_scene_delegate.html`、`full_site/api/class_hd_render_buffer.html`。
+- 补强内容：每页新增 5 条中文导读和 6 条术语对照，覆盖 `SdfLayer` 的 authored specs、subLayer stack、metadata 与 muting，`SdfPath` 的路径语法、absolute/relative/property path 与 variant selection，`SdfPrimSpec` 的 authored prim spec、children views 和 `UsdPrim` 边界，`HdSceneDelegate` 的 Hydra 数据交换、dirty bits 与 scene index 关系，以及 `HdRenderBuffer` 的 allocation、DirtyBits、Map/Unmap 和 AOV 缓冲职责；API 名称、类名、函数名、属性名、宏名、token 字面量、数学符号、template 参数和链接保持原样。
+- 质量回读：5 页均无占位坏词，`api-class-quality-pass-129` 均只出现 1 次；中文字符分别为 647、657、588、637、634，中文/英文块分别为 52/44、52/44、52/44、52/44、48/40。
+- 分级变化：计数保持不变，仍为 `draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因是本轮对象已是 `draft_needs_translation`，属于二次补强，不是模板草稿晋级。
+- 验证结果：翻译质量审计、链接路由、full draft preview、报告索引和 `validate_openusd_api_repro.ps1` 均已通过；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步：本轮复验通过后使用 `OpenUSD bilingual round 260: sdf hydra core class pass` 同步本轮 HTML、脚本、报告和 `work.md`。
+- 下一轮最多 5 页目标：`full_site/api/class_gf_matrix4f.html`、`full_site/api/class_gf_matrix2f.html`、`full_site/api/class_gf_dual_quatf.html`、`full_site/api/class_gf_range1d.html`、`full_site/api/class_gf_ray.html`；之后可继续 Gf/Vt/Sdf/Hd 的高价值 class 页面，继续低优先处理 `search.html`、目录页和 `_source.html`。
