@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-06T16:51:36.838Z
+Generated: 2026-06-06T17:29:22.801Z
 
 ## Summary
 

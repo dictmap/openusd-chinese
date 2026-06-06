@@ -151,7 +151,8 @@ html = `<!-- Generated API front-page bilingual entry from source/openusd_api_us
 html = html.replace("<html xmlns=\"http://www.w3.org/1999/xhtml\">", "<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"zh-CN\">");
 html = html.replace("<title>Universal Scene Description: Usd : Universal Scene Description (Core)</title>", "<title>Universal Scene Description: Usd 核心 / Usd : Universal Scene Description (Core)</title>");
 html = html.replace('<link rel="shortcut icon" href="https://openusd.org/images/USDIcon.ico"/>', '<link rel="shortcut icon" href="images/USDIcon.ico"/>');
-html = html.replace('<link href="usd_style.css" rel="stylesheet" type="text/css"/>', '<link href="usd_style.css" rel="stylesheet" type="text/css"/>\n<link href="openusd_cn.css" rel="stylesheet" type="text/css"/>');
+html = html.replace('<link href="usd_style.css" rel="stylesheet" type="text/css"/>', '<link href="usd_style.css" rel="stylesheet" type="text/css"/>\n<link href="openusd_cn.css?v=301" rel="stylesheet" type="text/css"/>');
+html = html.replace('<script type="text/javascript" src="navtree.js"></script>', '<script type="text/javascript" src="navtree.js"></script>\n<script type="text/javascript" src="openusd_local_navtree.js"></script>');
 html = replaceRequired(
   html,
   '<div class="headertitle"><div class="title">Usd : Universal Scene Description (Core) </div></div>',

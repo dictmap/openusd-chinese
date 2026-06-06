@@ -1,11 +1,11 @@
 # OpenUSD Navigation Coverage Audit
 
-Generated: 2026-06-03T18:54:18.728Z
+Generated: 2026-06-06T17:30:22.120Z
 
 Result:
 
 - Passed: true
-- Checks: 9
+- Checks: 10
 - Failed checks: 0
 - Release adjacent links present: 5
 - API navigation assets present: 6

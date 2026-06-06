@@ -1,6 +1,6 @@
 # OpenUSD Audit Index
 
-Generated: 2026-06-06T16:58:12.694Z
+Generated: 2026-06-06T17:31:20.109Z
 
 Scope:
 
@@ -15,7 +15,7 @@ Result:
 - Audit JSON reports present: 16
 - Audit Markdown reports present: 16
 - Audit reports passed: 16
-- Validation checks: 281
+- Validation checks: 283
 - Validation failures: 0
 - Index checks: 7
 - Failed index checks: 0

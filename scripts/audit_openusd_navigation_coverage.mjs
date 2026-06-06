@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { access, mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -26,6 +26,15 @@ function check(name, passed, details = {}) {
 
 async function readSite(file) {
   return readFile(path.join(siteDir, file), "utf8");
+}
+
+async function existsInSite(file) {
+  try {
+    await access(path.join(siteDir, file));
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 const releaseSource = await readFile(path.join(sourceDir, "openusd_release_index_source.html"), "utf8");
@@ -64,6 +73,11 @@ const apiNavigationAssets = [
   "search/searchdata.js",
 ];
 
+const apiNavigationRuntimeAssets = [
+  "navtreeindex0.js",
+  "openusd_local_navtree.js",
+];
+
 const apiEntryLinks = [
   "_usd__overview_and_purpose.html",
   "usd_page_front.html",
@@ -95,6 +109,12 @@ const apiNavigationAssetResults = apiNavigationAssets.map((asset) => ({
   passed: apiHtml.includes(asset),
 }));
 
+const apiNavigationRuntimeAssetResults = await Promise.all(apiNavigationRuntimeAssets.map(async (asset) => ({
+  asset,
+  present: await existsInSite(asset),
+  passed: await existsInSite(asset),
+})));
+
 const apiEntryLinkResults = apiEntryLinks.map((href) => ({
   href,
   present: apiHtml.includes(href),
@@ -113,6 +133,7 @@ const counts = {
   release_card_links: count(releaseHtml, /sd-card-text/g),
   release_adjacent_links_present: releaseAdjacentLinkResults.filter((entry) => entry.passed).length,
   api_navigation_assets_present: apiNavigationAssetResults.filter((entry) => entry.passed).length,
+  api_navigation_runtime_assets_present: apiNavigationRuntimeAssetResults.filter((entry) => entry.passed).length,
   api_entry_links_present: apiEntryLinkResults.filter((entry) => entry.passed).length,
   api_entry_cards: count(apiHtml, /class="cn-api-entry-card"/g),
   api_route_steps: apiRouteStepBlocks.length,
@@ -133,6 +154,10 @@ const checks = [
   check("navigation:api_source_has_adjacent_links", hasAll(apiSource, ["_usd__overview_and_purpose.html", "usd_page_front.html"])),
   check("navigation:api_doxygen_navigation_shell_present", hasAll(apiHtml, ['id="main-nav"', 'id="side-nav"', "initNavTree('index.html','')", "searchBox"]) && apiNavigationAssetResults.every((entry) => entry.passed), {
     missing_assets: apiNavigationAssetResults.filter((entry) => !entry.passed),
+  }),
+  check("navigation:api_doxygen_runtime_assets_present", apiNavigationRuntimeAssetResults.every((entry) => entry.passed) && apiHtml.includes("openusd_local_navtree.js"), {
+    missing_assets: apiNavigationRuntimeAssetResults.filter((entry) => !entry.passed),
+    local_navtree_script_referenced: apiHtml.includes("openusd_local_navtree.js"),
   }),
   check("navigation:api_entry_links_present", apiEntryLinkResults.every((entry) => entry.passed) && counts.api_entry_cards >= 3, {
     failed_links: apiEntryLinkResults.filter((entry) => !entry.passed),

@@ -8147,3 +8147,34 @@
 1. 回到每轮最多 5 页精修节奏，优先处理质量队列中真实存在、中文量低且用户会实际浏览的 Sdf/Exec 文档、token/descriptor 结构体页。
 2. 建议下一组：`full_site/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html`、`full_site/api/group__group___exec___attribute___comptuations.html`、`full_site/api/struct_usd_lux_tokens_type.html`、`full_site/api/struct_hgi_sampler_desc.html`、`full_site/api/struct_usd_skel_tokens_type.html`。
 3. 之后可继续 `full_site/api/struct_usd_physics_tokens_type.html`、`full_site/api/functions_vars.html`、`full_site/api/globals_l.html`、`full_site/api/functions_vars_f.html`、`full_site/release/user_guides/schemas/usdVol/FieldAsset.html`，继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+## 第 301 轮：修复 API 左侧导航树运行时目录
+
+已完成：
+
+- 针对用户指出的本地 API 页面左侧导航栏目录缺失问题做专项修复。复现时 `site/_usd__overview_and_purpose.html` 虽然包含 `#side-nav`、`#nav-tree` 和 `initNavTree(...)`，但运行时缺少 `site/navtreeindex0.js`，导致导航树不能展开；同时在 Codex 应用内浏览器约 `662px` 宽度下，官方 `doxygen-awesome.css` 的 `max-width: 767px` 响应式规则会把 `#side-nav` 隐藏。
+- 新增并执行 `scripts/repair_openusd_site_navtree_runtime.mjs`：
+  - 生成 `site/navtreeindex0.js`，提供 414 个导航树面包屑索引，恢复 Doxygen `navtree.js` 的展开逻辑。
+  - 生成 `site/openusd_local_navtree.js`，把左侧目录中 406 清单内 API 页面重写为本地目标；例如 `Gf : Graphics Foundations` 从 `gf_page_front.html` 改为 `../full_site/api/gf_page_front.html`。
+  - 重写 `site/navtreedata.js` 中的导航树链接，使已覆盖 API 页面优先走本地 `full_site/api/...`，未覆盖目标仍按本地未覆盖占位策略处理。
+- 更新 `site/index.html`、`site/_usd__overview_and_purpose.html`、`site/usd_page_front.html`，加入 `openusd_local_navtree.js`；同时把 `openusd_cn.css` 引用加 `?v=301`，避免浏览器继续使用旧缓存。
+- 更新 `site/openusd_cn.css`，在 `560px-767px` 宽度范围内保持 `#side-nav` 可见，并给 `#doc-content` 留出左侧目录宽度，覆盖官方主题的小宽度隐藏规则。
+- 更新 `scripts/build_api_overview_bilingual.mjs` 与 `scripts/build_usd_page_front_bilingual.mjs`，确保后续重建两个 API 入口页时仍保留本地导航修复脚本和 CSS 版本参数。
+- 更新 `scripts/validate_openusd_api_repro.ps1` 与 `scripts/audit_openusd_navigation_coverage.mjs`，将 `site/navtreeindex0.js` 和 `site/openusd_local_navtree.js` 纳入必需资源/导航专项审计，防止以后静态壳存在但运行时目录缺失。
+- 浏览器验证：
+  - 打开 `http://127.0.0.1:8068/site/_usd__overview_and_purpose.html?navfix=301`，在 `innerWidth=662` 下 `#side-nav` 为 `display:block`，宽度 `250px`，目录文本长度非 0，`#doc-content` 左偏移为 `250px`。
+  - 左侧目录中的 `Gf : Graphics Foundations` 已显示为本地链接 `../full_site/api/gf_page_front.html`，并标记 `data-local-route="mapped"`。
+  - 实际点击该目录项后进入 `http://127.0.0.1:8068/full_site/api/gf_page_front.html`，不是官方站点，也不是 `uncovered_openusd_page.html`。
+- 分级变化：计数保持不变，仍为 `draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因是本轮是导航运行时和本地链接体验修复，没有新增或精修 406 清单中的翻译正文页。
+- 验证结果：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs`、`audit_openusd_navigation_coverage.mjs` 和 `validate_openusd_api_repro.ps1` 均已通过；导航专项审计显示 `api_navigation_runtime_assets_present=2`，总验证 `PASSED`。
+- GitHub 同步结果：验证通过后使用 `OpenUSD bilingual round 301: site navtree sidebar fix` 同步本轮 HTML、脚本、报告和 `work.md` 到 GitHub。
+
+当前差距：
+
+- 全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`；其中 387 页为 `draft_needs_translation`、11 页为 `draft_template_only`，`bilingual_draft` 仍不是完整翻译。
+- 本轮没有扩展 406 清单范围；左侧导航现在能显示并优先指向本地清单内页面，但部分未纳入清单的 Doxygen 目标仍会按策略进入本地未覆盖占位页。
+
+下一轮目标：
+
+1. 回到每轮最多 5 页精修节奏，优先处理质量队列中真实存在、中文量低且用户会实际浏览的 Sdf/Exec 文档、token/descriptor 结构体页。
+2. 建议下一组：`full_site/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html`、`full_site/api/group__group___exec___attribute___comptuations.html`、`full_site/api/struct_usd_lux_tokens_type.html`、`full_site/api/struct_hgi_sampler_desc.html`、`full_site/api/struct_usd_skel_tokens_type.html`。
+3. 之后可继续 `full_site/api/struct_usd_physics_tokens_type.html`、`full_site/api/functions_vars.html`、`full_site/api/globals_l.html`、`full_site/api/functions_vars_f.html`，继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。

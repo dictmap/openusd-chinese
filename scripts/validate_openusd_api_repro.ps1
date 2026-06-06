@@ -34,6 +34,8 @@ $requiredFiles = @(
   "site\resize.js",
   "site\navtreedata.js",
   "site\navtree.js",
+  "site\navtreeindex0.js",
+  "site\openusd_local_navtree.js",
   "site\search\search.css",
   "site\search\searchdata.js",
   "site\search\search.js",

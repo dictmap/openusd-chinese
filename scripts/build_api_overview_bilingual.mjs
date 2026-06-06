@@ -135,7 +135,8 @@ html = `<!-- Generated API adjacent bilingual entry from source/openusd_api_over
 html = html.replace("<html xmlns=\"http://www.w3.org/1999/xhtml\">", "<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"zh-CN\">");
 html = html.replace("<title>Universal Scene Description: Overview and Purpose</title>", "<title>Universal Scene Description: 概述与目的 / Overview and Purpose</title>");
 html = html.replace('<link rel="shortcut icon" href="https://openusd.org/images/USDIcon.ico"/>', '<link rel="shortcut icon" href="images/USDIcon.ico"/>');
-html = html.replace('<link href="usd_style.css" rel="stylesheet" type="text/css"/>', '<link href="usd_style.css" rel="stylesheet" type="text/css"/>\n<link href="openusd_cn.css" rel="stylesheet" type="text/css"/>');
+html = html.replace('<link href="usd_style.css" rel="stylesheet" type="text/css"/>', '<link href="usd_style.css" rel="stylesheet" type="text/css"/>\n<link href="openusd_cn.css?v=301" rel="stylesheet" type="text/css"/>');
+html = html.replace('<script type="text/javascript" src="navtree.js"></script>', '<script type="text/javascript" src="navtree.js"></script>\n<script type="text/javascript" src="openusd_local_navtree.js"></script>');
 html = html.replace("initMenu('',true,false,'search.php','Search');", "initMenu('',true,false,'search.php','Search');");
 
 for (const [from, to] of headingPairs) {
