@@ -19,3 +19,4 @@
 | round-303-sdf-layer | `https://openusd.org/release/api/class_sdf_layer.html` | `full_site/api/class_sdf_layer.html` | 核心 Sdf class 页面，已增加逐段双语理解区，移除草稿标记，并保留 API/源码术语。 |
 | round-304-usd-prim | `https://openusd.org/release/api/class_usd_prim.html` | `full_site/api/class_usd_prim.html` | 核心 Usd class 页面，已覆盖 composed prim、property/composition API、lifetime、traversal、applied API schema 与 instancing 语义。 |
 | round-305-sdf-path | `https://openusd.org/release/api/class_sdf_path.html` | `full_site/api/class_sdf_path.html` | 核心 Sdf path value 页面，已覆盖 storage key、namespace identity、absolute/relative path、路径语法、构造 helper、thread-safety 与 composition 调试语义。 |
+| round-306-usd-geom-mesh | `https://openusd.org/release/api/class_usd_geom_mesh.html` | `full_site/api/class_usd_geom_mesh.html` | 核心 UsdGeom mesh schema 页面，已覆盖 point-based primitive、拓扑数组、subdivision 属性、creases/corners/holes、interpolation、primvars 与 schema wrapper 语义。 |

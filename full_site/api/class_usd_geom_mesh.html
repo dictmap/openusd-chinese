@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：UsdGeomMesh Class / UsdGeomMesh Class</title>
+  <title>完整双语参考：UsdGeomMesh Class / UsdGeomMesh Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,76 +24,50 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：UsdGeomMesh Class / UsdGeomMesh Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：UsdGeomMesh Class / UsdGeomMesh Class</h1>
     <div class="meta">https://openusd.org/release/api/class_usd_geom_mesh.html</div>
   </header>
   <main>
     <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <h2>完成说明 / Completion Note</h2>
+      <p class="zh">本页已从全量队列晋级为完整双语参考页：中文层覆盖 `UsdGeomMesh` 的官方定义、point-based primitive 语义、points 与 face-vertices 区分、`faceVertexCounts`/`faceVertexIndices` 拓扑编码、subdivision properties、creases/corners/holes、interpolation 控制、schema wrapper 入口以及与 `UsdPrim`、`UsdGeomPointBased`、`UsdGeomPrimvarsAPI` 的关系；英文原文摘录、API 名称、类名、方法名、属性名、token 字面量和链接保持原样。</p>
+      <p class="en">This page is promoted from the full-site queue to a complete bilingual reference page. The Chinese layer covers the official definition of `UsdGeomMesh`, point-based primitive semantics, points versus face-vertices, topology encoded by `faceVertexCounts` and `faceVertexIndices`, subdivision properties, creases/corners/holes, interpolation controls, schema-wrapper entry points, and relationships to `UsdPrim`, `UsdGeomPointBased`, and `UsdGeomPrimvarsAPI` while retaining English excerpts, API names, class names, method names, property names, token literals, and links.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-039">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 UsdGeomMesh Class Reference 补充中文优先的类职责、读取重点、关键属性/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, key attribute/method groups, and terminology for UsdGeomMesh Class Reference while retaining English page names, class names, method names, attribute names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`UsdGeomMesh` 编码带有可选 subdivision properties 和 features 的 mesh；作为 point-based primitive，它通过 points 以及连接成 edges/faces 的拓扑来定义几何。</span></li>
-        <li><span class="zh">英文摘录强调 OpenUSD 为避免歧义，倾向使用 points 与 face-vertices，而不是把 vertex 同时指代点或面顶点。</span></li>
-        <li><span class="zh">`faceVertexCounts` 与 `faceVertexIndices` 编码面连接关系；`cornerIndices`、`cornerSharpnesses`、`creaseIndices`、`creaseLengths`、`creaseSharpnesses` 描述 subdivision 相关的尖角和折痕。</span></li>
-        <li><span class="zh">`subdivisionScheme`、`interpolateBoundary`、`faceVaryingLinearInterpolation`、`triangleSubdivisionRule` 控制 subdivision 与插值行为，是渲染和建模工具读取 mesh 时的重点。</span></li>
-        <li><span class="zh">阅读本页时应把拓扑、点数据和 subdivision 属性分开理解；后续完整翻译应补充属性默认值、合法长度关系和 face-varying 数据绑定规则。</span></li>
-      </ul>
+    <section data-cn-complete="usd-geom-mesh-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">官方说明把 `UsdGeomMesh` 定义为 encodes a mesh with optional subdivision properties and features。这里的 mesh 是一个 typed schema，包装的是 stage 上的 `UsdPrim`；它定义如何读取和创作 mesh 所需的属性，而不是单独持有几何内存。`Define()` 会在 stage 上 author 一个 typed prim，`Get()` 只是为已有 prim 提供 `UsdGeomMesh` 视图。</p>
+      <p class="en">The official description defines `UsdGeomMesh` as encoding a mesh with optional subdivision properties and features. This mesh is a typed schema wrapping a `UsdPrim` on a stage; it defines how mesh-related attributes are read and authored rather than owning geometry memory. `Define()` authors a typed prim on the stage, while `Get()` returns a `UsdGeomMesh` view for an existing prim.</p>
+      <p class="zh">作为 point-based primitive，mesh 的几何基础来自 `points`，该属性通常继承自 `UsdGeomPointBased`。points 是几何点数组，mesh 拓扑通过索引引用这些点。调试几何错误时，先检查 points 数量、索引范围和 time-sampled 数据是否一致，再检查 subdivision 或 primvars，否则容易把拓扑问题误判为渲染问题。</p>
+      <p class="en">As a point-based primitive, the geometric basis of a mesh comes from `points`, usually inherited from `UsdGeomPointBased`. Points form the geometric point array, and topology references those points through indices. When debugging geometry problems, first check point count, index ranges, and consistency of time-sampled data before blaming subdivision or primvars.</p>
+      <p class="zh">官方刻意避免混用 vertex 一词，因为不同资料会把 vertex 当作 point，也会当作 face-vertex。OpenUSD 在本页中用 points 表示几何点，用 face-vertices 表示面中引用 points 的位置。这个区分很重要：一个 point 可以被多个 face-vertices 引用，而 face-varying 数据通常绑定到 face-vertex 级别。</p>
+      <p class="en">The official text intentionally avoids the ambiguous term vertex because some references use it for points while others use it for face-vertices. OpenUSD uses points for geometric points and face-vertices for positions inside faces that reference points. This distinction matters because one point can be referenced by many face-vertices, and face-varying data is usually bound at the face-vertex level.</p>
+      <p class="zh">mesh 的面拓扑由 `faceVertexCounts` 和 `faceVertexIndices` 共同编码。`faceVertexCounts` 给出每个 face 包含多少个 face-vertices；`faceVertexIndices` 按 face 顺序展开所有 face-vertices 并存储 point 索引。`sum(faceVertexCounts)` 必须匹配 `faceVertexIndices` 长度，且每个索引必须落在 points 数组范围内。</p>
+      <p class="en">Mesh face topology is encoded by `faceVertexCounts` and `faceVertexIndices` together. `faceVertexCounts` stores the number of face-vertices in each face; `faceVertexIndices` flattens all face-vertices in face order and stores point indices. `sum(faceVertexCounts)` must match the length of `faceVertexIndices`, and every index must be within the points array.</p>
+      <p class="zh">`subdivisionScheme` 决定消费端把 mesh 解释为 polygonal mesh 还是 subdivision surface。`interpolateBoundary`、`faceVaryingLinearInterpolation` 和 `triangleSubdivisionRule` 进一步控制边界、face-varying 数据和三角面细分规则。这些属性影响解释和渲染语义，不等于直接改写 authored topology。</p>
+      <p class="en">`subdivisionScheme` determines whether consumers interpret the mesh as a polygonal mesh or as a subdivision surface. `interpolateBoundary`, `faceVaryingLinearInterpolation`, and `triangleSubdivisionRule` further control boundary behavior, face-varying data, and triangle subdivision rules. These attributes affect interpretation and rendering semantics; they do not directly rewrite authored topology.</p>
+      <p class="zh">creases、corners 和 holes 是 subdivision features 的核心属性组。`creaseIndices`、`creaseLengths` 和 `creaseSharpnesses` 需要一起理解：indices 给出折痕经过的 point 序列，lengths 划分每条 crease，sharpnesses 给出锐度。`cornerIndices`/`cornerSharpnesses` 控制尖角，`holeIndices` 标记不参与显示或细分的面。</p>
+      <p class="en">Creases, corners, and holes are central subdivision feature groups. `creaseIndices`, `creaseLengths`, and `creaseSharpnesses` must be interpreted together: indices provide point sequences, lengths divide those sequences into individual creases, and sharpness values control crease strength. `cornerIndices`/`cornerSharpnesses` describe sharp corners, and `holeIndices` mark faces excluded from display or subdivision.</p>
+      <p class="zh">interpolation 相关属性经常和 primvars 一起造成误读。`UsdGeomMesh` 的核心 schema 属性定义 topology、subdivision 和 feature behavior；UV、颜色、法线或其他 primvars 通常通过 `UsdGeomPrimvarsAPI` 或相关 API 表达。读取 mesh 时要同时检查 primvar interpolation、element size 和 face-varying 数据长度是否与 topology 匹配。</p>
+      <p class="en">Interpolation properties are often misread together with primvars. Core `UsdGeomMesh` schema attributes define topology, subdivision, and feature behavior; UVs, colors, normals, and other primvars are usually expressed through `UsdGeomPrimvarsAPI` or related APIs. When reading a mesh, check primvar interpolation, element size, and face-varying data length against the topology.</p>
+      <p class="zh">属性创建方法如 `CreateFaceVertexCountsAttr()`、`CreateFaceVertexIndicesAttr()`、`CreateSubdivisionSchemeAttr()` 和 `CreateInterpolateBoundaryAttr()` 会 author 对应属性或返回可写的 `UsdAttribute`。这些方法不会替调用者验证完整 mesh 合法性；工具仍需检查数组长度、索引范围、time sample 对齐和 fallback token 是否符合使用场景。</p>
+      <p class="en">Attribute creation methods such as `CreateFaceVertexCountsAttr()`, `CreateFaceVertexIndicesAttr()`, `CreateSubdivisionSchemeAttr()`, and `CreateInterpolateBoundaryAttr()` author or return writable `UsdAttribute` objects. They do not validate a complete mesh for the caller; tools still need to check array lengths, index ranges, time-sample alignment, and fallback tokens for the intended use case.</p>
+      <p class="zh">`UsdGeomMesh` 与 `UsdPrim` 的关系和前几轮晋级页直接相连。`UsdPrim` 提供 composition 后的 prim 句柄，`UsdGeomMesh` 在其上提供 mesh schema 视图；若 prim 的 type name 或 schema 兼容性不正确，typed schema wrapper 可能存在但语义上不可用。生产工具应先确认 prim 有效，再确认 schema 类型和关键属性存在。</p>
+      <p class="en">The relationship between `UsdGeomMesh` and `UsdPrim` connects directly to the previously promoted pages. `UsdPrim` provides the composed prim handle, and `UsdGeomMesh` provides a mesh schema view over it. If the prim type name or schema compatibility is wrong, a typed schema wrapper may exist but not be semantically useful. Production tools should validate the prim first, then check schema type and required attributes.</p>
+      <p class="zh">在导出、导入和渲染链路中，mesh 质量问题通常来自三类边界：拓扑数组不一致、subdivision/crease/corner/hole 属性组不匹配、primvars 与 face-varying topology 不对齐。本页阅读重点就是把这三类问题分开，避免把 `UsdGeomMesh` 当成只包含 points 和 indices 的简单多边形容器。</p>
+      <p class="en">In export, import, and rendering pipelines, mesh quality problems often fall into three boundary cases: inconsistent topology arrays, mismatched subdivision/crease/corner/hole attribute groups, and primvars that do not align with face-varying topology. The key reading task on this page is to separate those cases and not treat `UsdGeomMesh` as a simple polygon container containing only points and indices.</p>
       <h3>术语对照 / Terms</h3>
       <ul>
+        <li><span class="zh">USD 几何网格 schema：</span><span class="en">UsdGeomMesh</span></li>
         <li><span class="zh">基于点的 primitive：</span><span class="en">point-based primitive</span></li>
-        <li><span class="zh">点：</span><span class="en">points</span></li>
+        <li><span class="zh">几何点数组：</span><span class="en">points</span></li>
         <li><span class="zh">面顶点：</span><span class="en">face-vertices</span></li>
-        <li><span class="zh">细分方案：</span><span class="en">subdivisionScheme</span></li>
-        <li><span class="zh">折痕：</span><span class="en">crease</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-132">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`UsdGeomMesh` 是 `UsdGeom` 中的 mesh typed schema，用 points 和 face-vertices 拓扑描述几何，并可附带 subdivision properties、holes、creases、corners 和 interpolation 控制。阅读时要区分点数据、面顶点索引和细分曲面规则。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdGeomMesh while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`faceVertexCounts` 与 `faceVertexIndices` 共同定义面拓扑；前者给出每个 face 的顶点数量，后者按顺序展开所有 face-vertices 的 point 索引。</span></li>
-        <li><span class="zh">`points` 通常来自 `UsdGeomPointBased` 基类；mesh 几何本身依赖 points 与 topology 的一致性，索引越界或数量不匹配会导致消费端解释失败。</span></li>
-        <li><span class="zh">`subdivisionScheme`、`interpolateBoundary`、`faceVaryingLinearInterpolation` 和 `triangleSubdivisionRule` 描述 subdivision 行为；它们不等同于直接改变 authored topology。</span></li>
-        <li><span class="zh">`creaseIndices`、`creaseLengths`、`creaseSharpnesses`、`cornerIndices` 和 `cornerSharpnesses` 控制细分边界特征；读取时应按属性组理解，不能孤立解释单个数组。</span></li>
-        <li><span class="zh">`UsdGeomMesh` 常与 `UsdGeomPrimvarsAPI` 和 material binding 一起使用；primvars 的 interpolation、normals、UV 等信息会影响渲染，但 mesh schema 的核心仍是拓扑和几何属性。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">USD 几何网格：</span><span class="en">UsdGeomMesh</span></li>
         <li><span class="zh">每面顶点数量：</span><span class="en">faceVertexCounts</span></li>
         <li><span class="zh">面顶点索引：</span><span class="en">faceVertexIndices</span></li>
         <li><span class="zh">细分方案：</span><span class="en">subdivisionScheme</span></li>
-        <li><span class="zh">折痕锐度：</span><span class="en">crease sharpness</span></li>
-        <li><span class="zh">拓扑：</span><span class="en">topology</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-144">
-      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
-      <p class="zh">`UsdGeomMesh` 表示带可选 subdivision properties 和特征的 point-based primitive。它使用 `points`、`faceVertexCounts` 与 `faceVertexIndices` 描述面片连接关系，并通过 subdivision scheme、creases、corners、holes 和 interpolation 相关属性控制细分与显示语义。</p>
-      <p class="en">This third-pass refinement adds page-specific Chinese guidance for UsdGeomMesh while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`faceVertexCounts` 给出每个 face 的 face-vertex 数量，`faceVertexIndices` 则引用 `points` 数组；两者长度和索引范围不一致会直接破坏 mesh topology。</span></li>
-        <li><span class="zh">英文摘录强调避免混用 vertex 与 point：USD mesh 以 points 为几何点数组，face-vertices 是面中引用 points 的索引位置。</span></li>
-        <li><span class="zh">`CreateSubdivisionSchemeAttr()`、`CreateInterpolateBoundaryAttr()`、`CreateFaceVaryingLinearInterpolationAttr()` 与 `CreateTriangleSubdivisionRuleAttr()` 共同影响 subdivision surface 解释。</span></li>
-        <li><span class="zh">`CreateCreaseIndicesAttr()`、`CreateCreaseLengthsAttr()`、`CreateCreaseSharpnessesAttr()` 以及 corner/hole 相关属性用于表达 creases、corners 和 holes 等细分特征。</span></li>
-        <li><span class="zh">`Define()` 和 `Get()` 是 schema wrapper 的常用入口：前者在 stage 上 author typed prim，后者只获取已有 prim 的 typed schema view。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">网格：</span><span class="en">UsdGeomMesh</span></li>
-        <li><span class="zh">点数组：</span><span class="en">points</span></li>
-        <li><span class="zh">面顶点计数：</span><span class="en">faceVertexCounts</span></li>
-        <li><span class="zh">面顶点索引：</span><span class="en">faceVertexIndices</span></li>
-        <li><span class="zh">细分方案：</span><span class="en">subdivisionScheme</span></li>
-        <li><span class="zh">锐边/折痕：</span><span class="en">creases</span></li>
+        <li><span class="zh">边界插值：</span><span class="en">interpolateBoundary</span></li>
+        <li><span class="zh">面变数据线性插值：</span><span class="en">faceVaryingLinearInterpolation</span></li>
+        <li><span class="zh">折痕/尖角/孔洞：</span><span class="en">creases, corners, and holes</span></li>
       </ul>
     </section>
     <section>
