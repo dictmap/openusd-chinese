@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：VtValueRef Class / VtValueRef Class</title>
+  <title>完整双语参考：VtValueRef Class / VtValueRef Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,76 +24,49 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：VtValueRef Class / VtValueRef Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：VtValueRef Class / VtValueRef Class</h1>
     <div class="meta">https://openusd.org/release/api/class_vt_value_ref.html</div>
   </header>
   <main>
     <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <h2>完成说明 / Completion Note</h2>
+      <p class="zh">本页已从草稿晋级为完整双语参考页。中文部分围绕官方 `VtValueRef Class Reference` 的核心定义展开：它是 non-owning、type-erased 的 value view，可与 `VtValue` 互操作，适合在函数参数或短生命周期局部变量中传递任意类型的值视图。英文 API 名称、类名、方法名、类型名、token、链接和必要原文摘录保持原样，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This page has been promoted to a complete bilingual reference. The Chinese coverage explains `VtValueRef` as a non-owning, type-erased value view interoperating with `VtValue`, while preserving English API names and excerpts for direct comparison.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-044">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 VtValueRef Class Reference 补充中文优先的类职责、读取重点、关键类型/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, key type/method groups, and terminology for VtValueRef Class Reference while retaining English page names, class names, method names, attribute names, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`VtValueRef` 是 non-owning、type-erased 的 value view，可与 `VtValue` 互操作，适合作为函数参数或自动变量短期传递任意类型值。</span></li>
-        <li><span class="zh">英文摘录强调它不能超过被引用值的生命周期；由于不 owning，它通常不分配 heap，也不增加引用计数，因而比复制 `VtValue` 更轻量。</span></li>
-        <li><span class="zh">普通 typed values 与 `VtValue` 都可隐式转换为 `VtValueRef`，这让接收任意类型对象的函数可以统一入口，同时保持较低成本。</span></li>
-        <li><span class="zh">`GetType()`、`GetTypeid()`、`GetTypeName()`、`GetElementTypeid()`、`GetKnownValueTypeIndex()` 帮助调用方识别被引用值的类型和数组元素类型。</span></li>
-        <li><span class="zh">`CanHash()`、`GetHash()`、`CanComposeOver()`、`CanTransform()`、`GetArraySize()` 与 value composition/变换/hash 能力相关；阅读时应把生命周期约束放在首位。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">VtValueRef：</span><span class="en">VtValueRef</span></li>
-        <li><span class="zh">非拥有：</span><span class="en">non-owning</span></li>
-        <li><span class="zh">类型擦除：</span><span class="en">type-erased</span></li>
-        <li><span class="zh">VtValue：</span><span class="en">VtValue</span></li>
-        <li><span class="zh">生命周期：</span><span class="en">lifetime</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-134">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`VtValueRef` 是非拥有的 type-erased value view，用来在不复制、不分配堆内存、不增加引用计数的情况下读取普通 typed value 或 `VtValue`。它最适合作为函数参数或短生命周期局部变量，不应跨越被引用对象的生命周期。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for VtValueRef while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">普通 typed value 和 `VtValue` 可以隐式转换为 `VtValueRef`；这让 API 能接受统一的 value reference，同时避免把所有调用点都包装成 owning `VtValue`。</span></li>
-        <li><span class="zh">`Get&lt;T&gt;()`、`GetTypeid()`、`GetTypeName()`、`GetType()` 和 `GetKnownValueTypeIndex()` 提供运行时类型检查和诊断信息；调用 typed get 之前仍应确认类型匹配。</span></li>
-        <li><span class="zh">`GetArraySize()` 与 `GetElementTypeid()` 帮助处理数组值；它们描述被引用值的形状，不表示 `VtValueRef` 自己拥有数组存储。</span></li>
-        <li><span class="zh">`CanHash()`、`GetHash()`、`CanComposeOver()` 和 `CanTransform()` 表示值是否支持散列、组合或变换等通用操作；这些能力取决于底层类型。</span></li>
-        <li><span class="zh">`_Get()`、`_GetMutable()` 和 `_TypeIs()` 是实现侧支撑接口；阅读时重点放在非拥有生命周期约束，避免把 `VtValueRef` 保存到长期容器或异步任务中。</span></li>
-      </ul>
+    <section data-cn-complete="vt-value-ref-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`VtValueRef` 解决的问题是：当 API 需要接受“任意类型的值”时，不必总是构造拥有数据的 `VtValue`，也不必为每个类型写一套重载。它提供一个 type-erased view，把普通 typed value 或已有 `VtValue` 暂时包装成统一的引用入口。这个设计的收益是轻量、少复制、少分配；代价是调用方必须严格尊重被引用对象的生命周期。</p>
+      <p class="en">`VtValueRef` lets APIs accept values of arbitrary type without always constructing an owning `VtValue` or adding many overloads. It is a lightweight type-erased reference view, with lifetime responsibility left to the caller.</p>
+      <p class="zh">官方原文最重要的一句是 non-owning：`VtValueRef` 不拥有被引用的值，不延长对象生命周期，也不保证底层存储仍然有效。它通常应作为函数参数或 automatic variable 使用；把它保存到长期容器、异步任务、缓存对象或跨线程延迟执行回调中，通常都是危险用法。需要跨作用域保存时，应使用 owning `VtValue` 或明确复制底层数据。</p>
+      <p class="en">The most important official constraint is non-ownership. `VtValueRef` must not persist beyond the lifetime of the viewed value; use owning `VtValue` or an explicit copy when data must outlive the call.</p>
+      <p class="zh">`VtValueRef` 与 `VtValue` 的边界是：`VtValue` 是拥有型 type-erased value container，可保存、复制和跨作用域传递；`VtValueRef` 是非拥有型 view，适合只读或短期访问。普通 typed values 和 `VtValue` 都可隐式转换为 `VtValueRef`，这让通用 API 可以统一入口，但也容易掩盖临时对象生命周期问题。</p>
+      <p class="en">`VtValue` is an owning type-erased value container, while `VtValueRef` is a non-owning view. Both typed values and `VtValue` can convert implicitly to `VtValueRef`, which is convenient but makes temporary lifetimes important.</p>
+      <p class="zh">`Get&lt;T&gt;()` 是 typed access 的主要入口。调用它之前应使用 `GetTypeid()`、`GetTypeName()`、`GetType()` 或 `_TypeIs()` 确认实际类型，不能只依赖调用者的静态预期。类型不匹配时的行为应按底层 API 约定理解；对外部工具而言，更稳妥的模式是先诊断类型，再选择相应读取路径。</p>
+      <p class="en">`Get<T>()` is the main typed access path. Callers should verify runtime type information with `GetTypeid()`, `GetTypeName()`, `GetType()`, or `_TypeIs()` before assuming a static type.</p>
+      <p class="zh">`GetType()`、`GetTypeid()`、`GetTypeName()` 和 `GetKnownValueTypeIndex()` 分别服务不同层次的类型诊断：`typeid` 面向 C++ RTTI/类型比较，type name 面向日志和人类可读信息，`TfType` 或 known value type index 面向 OpenUSD 自身类型系统和高性能分发表。调试 `VtValue` / `VtArray` / Python 包装值混用时，这些方法通常比直接猜测模板类型更可靠。</p>
+      <p class="en">The type-query methods serve different diagnostic layers: C++ `typeid`, human-readable type names, `TfType`, and known value type indices used by OpenUSD dispatch paths.</p>
+      <p class="zh">数组相关方法体现了 `VtValueRef` 对 scalar 与 array 的统一处理。`GetArraySize()` 返回被引用值的数组规模，`GetElementTypeid()` 返回数组元素类型；但这些信息描述的是底层值，不表示 `VtValueRef` 自己拥有数组存储。对非数组值调用时，应遵循 API 约定并避免把返回值误读成一个空数组。</p>
+      <p class="en">`GetArraySize()` and `GetElementTypeid()` describe the underlying viewed value, not storage owned by `VtValueRef`. They help handle scalar and array values through a uniform API.</p>
+      <p class="zh">`CanHash()` 与 `GetHash()` 表示底层值是否支持通用 hash 操作。并非每种 type-erased value 都可 hash；调用 `GetHash()` 前应先检查 `CanHash()`，尤其在把值用作 cache key、change detection 或 deduplication 时。hash 能力取决于底层类型及其在 Vt 系统中的注册/实现，而不是取决于 `VtValueRef` 本身。</p>
+      <p class="en">`CanHash()` and `GetHash()` describe whether the underlying type supports generic hashing. Hashability belongs to the viewed value’s type, not to `VtValueRef` itself.</p>
+      <p class="zh">`CanComposeOver()` 和 `CanTransform()` 表示该值是否支持通用 composition 或 transform 操作。它们常用于 USD 值合成、array edit、变换应用或 generic value processing 的前置检查。这里的 “can” 是能力查询，不是执行操作本身；调用方仍需选择正确的 composition/transform API，并处理类型不支持时的退路。</p>
+      <p class="en">`CanComposeOver()` and `CanTransform()` are capability checks for generic composition and transformation workflows. They do not perform the operation themselves.</p>
+      <p class="zh">`_Get()`、`_GetMutable()`、`_TypeIs()`、`_ArrayHelper` 和 `_TypeInfoFor` 属于更底层的实现支撑接口。普通调用者应优先使用公共 typed API 和类型查询方法；阅读这些成员时，重点是理解 `VtValueRef` 如何在 type-erased 外壳下保存指针、类型信息和数组 helper，而不是把它当作拥有型 variant。</p>
+      <p class="en">Protected helpers such as `_Get()`, `_GetMutable()`, `_TypeIs()`, `_ArrayHelper`, and `_TypeInfoFor` support the implementation of the type-erased view. Normal callers should prefer the public typed API.</p>
+      <p class="zh">常见误读包括：把 `VtValueRef` 当成可长期保存的 `VtValue`；把临时对象隐式转换成 `VtValueRef` 后延迟使用；未检查类型就调用 `Get&lt;T&gt;()`；把 `GetArraySize()` 结果当成 ref 自己的数组所有权；或在未检查 `CanHash()` / `CanComposeOver()` / `CanTransform()` 时直接执行 generic operation。正确理解是：它是短生命周期、非拥有、轻量的任意类型值视图。</p>
+      <p class="en">Common mistakes include storing `VtValueRef` long-term, delaying use of references to temporaries, calling `Get<T>()` without type checks, assuming array ownership, or running generic operations without capability checks.</p>
       <h3>术语对照 / Terms</h3>
       <ul>
         <li><span class="zh">非拥有值视图：</span><span class="en">non-owning value view</span></li>
         <li><span class="zh">类型擦除：</span><span class="en">type-erased</span></li>
-        <li><span class="zh">值引用：</span><span class="en">value reference</span></li>
+        <li><span class="zh">拥有型值容器：</span><span class="en">owning `VtValue` container</span></li>
         <li><span class="zh">生命周期约束：</span><span class="en">lifetime constraint</span></li>
-        <li><span class="zh">类型标识：</span><span class="en">typeid</span></li>
-        <li><span class="zh">可散列值：</span><span class="en">hashable value</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-145">
-      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
-      <p class="zh">`VtValueRef` 是 non-owning type-erased view of a value，可与 `VtValue` 互操作。它通常作为函数参数或自动变量使用，不能比被引用的 value 活得更久；普通 typed values 和 `VtValue` 都可隐式转换为 `VtValueRef`。</p>
-      <p class="en">This third-pass refinement adds page-specific Chinese guidance for VtValueRef while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`VtValueRef` 不拥有数据，因此不会像 `VtValue` 那样复制或延长对象生命周期；把它存入长期容器通常是错误用法。</span></li>
-        <li><span class="zh">`Get()`、`GetType()`、`GetTypeid()`、`GetTypeName()` 和 `GetKnownValueTypeIndex()` 用于检查被引用值的运行时类型信息。</span></li>
-        <li><span class="zh">`GetArraySize()` 与 `GetElementTypeid()` 帮助统一处理数组值；对非数组类型调用时要看对应 API 的约定。</span></li>
-        <li><span class="zh">`CanHash()` / `GetHash()`、`CanTransform()`、`CanComposeOver()` 表示该引用值是否支持特定 generic operations。</span></li>
-        <li><span class="zh">`_Get()`、`_GetMutable()` 与 `_TypeIs()` 是更低层的类型访问机制，普通使用者应优先通过公共 typed API 进行安全检查。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">非拥有引用：</span><span class="en">non-owning reference</span></li>
-        <li><span class="zh">类型擦除视图：</span><span class="en">type-erased view</span></li>
-        <li><span class="zh">值容器：</span><span class="en">VtValue</span></li>
-        <li><span class="zh">运行时类型：</span><span class="en">runtime type</span></li>
-        <li><span class="zh">数组大小：</span><span class="en">GetArraySize()</span></li>
+        <li><span class="zh">运行时类型信息：</span><span class="en">runtime type information</span></li>
+        <li><span class="zh">数组元素类型：</span><span class="en">array element type</span></li>
+        <li><span class="zh">可散列性：</span><span class="en">hashability</span></li>
         <li><span class="zh">可组合覆盖：</span><span class="en">CanComposeOver()</span></li>
+        <li><span class="zh">可变换能力：</span><span class="en">CanTransform()</span></li>
       </ul>
     </section>
     <section>

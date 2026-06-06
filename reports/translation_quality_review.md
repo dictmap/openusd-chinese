@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-06T23:06:22.173Z
+Generated: 2026-06-06T23:22:37.647Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 386
-- bilingual_complete: 20
+- bilingual_draft: 385
+- bilingual_complete: 21
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 375
-- good_bilingual: 20
+- draft_needs_translation: 374
+- good_bilingual: 21
 
 ## Current Focus Batch
 
@@ -126,7 +126,7 @@ Generated: 2026-06-06T23:06:22.173Z
 | 60 | draft_needs_translation | bilingual_draft | 1044 | 76/58 | 0 | 0 | `full_site/api/class_vdf_node.html` |
 | 61 | draft_needs_translation | bilingual_draft | 807 | 48/35 | 0 | 0 | `full_site/api/class_vdf_read_write_accessor.html` |
 | 62 | draft_needs_translation | bilingual_draft | 533 | 40/32 | 0 | 0 | `full_site/api/class_vdf_test_utils_1_1_node.html` |
-| 63 | draft_needs_translation | bilingual_draft | 857 | 64/51 | 0 | 0 | `full_site/api/class_vt_value_ref.html` |
+| 63 | good_bilingual | bilingual_complete | 1075 | 48/50 | 0 | 0 | `full_site/api/class_vt_value_ref.html` |
 | 64 | draft_needs_translation | bilingual_draft | 501 | 24/16 | 0 | 0 | `full_site/api/classes.html` |
 | 65 | draft_needs_translation | bilingual_draft | 364 | 40/37 | 0 | 0 | `full_site/api/classpxr___c_l_i_1_1_c_l_i_1_1_app.html` |
 | 66 | draft_needs_translation | bilingual_draft | 353 | 40/37 | 0 | 0 | `full_site/api/classpxr__tsl_1_1robin__map.html` |

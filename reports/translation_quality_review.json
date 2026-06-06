@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-06T23:06:22.173Z",
+  "generated_at": "2026-06-06T23:22:37.647Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 386,
-    "bilingual_complete": 20
+    "bilingual_draft": 385,
+    "bilingual_complete": 21
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 375,
-    "good_bilingual": 20
+    "draft_needs_translation": 374,
+    "good_bilingual": 21
   },
   "focus_batch": [
     {
@@ -2651,29 +2651,29 @@
     },
     {
       "index": 63,
-      "title": "类参考草稿：VtValueRef Class / VtValueRef Class",
+      "title": "完整双语参考：VtValueRef Class / VtValueRef Class",
       "output": "full_site/api/class_vt_value_ref.html",
       "official_url": "https://openusd.org/release/api/class_vt_value_ref.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 64,
-      "enBlockCount": 51,
-      "zhChars": 857,
-      "enLetters": 2171,
-      "bodyChineseChars": 932,
+      "grade": "good_bilingual",
+      "zhBlockCount": 48,
+      "enBlockCount": 50,
+      "zhChars": 1075,
+      "enLetters": 2756,
+      "bodyChineseChars": 1128,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 VtValueRef Class Reference 补充中文优先的类职责、读取重点、关键类型/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`VtValueRef` 是 non-owning、type-erased 的 value view，可与 `VtValue` 互操作，适合作为函数参数或自动变量短期传递任意类型值。"
+        "本页已从草稿晋级为完整双语参考页。中文部分围绕官方 `VtValueRef Class Reference` 的核心定义展开：它是 non-owning、type-erased 的 value view，可与 `VtValue` 互操作，适合在函数参数或短生命周期局部变量中传递任意类型的值视图。英文 API 名称、类名、方法名、类型名、token、链接和必要原文摘录保持原样，便于与官方 Doxygen 页面核对。",
+        "`VtValueRef` 解决的问题是：当 API 需要接受“任意类型的值”时，不必总是构造拥有数据的 `VtValue`，也不必为每个类型写一套重载。它提供一个 type-erased view，把普通 typed value 或已有 `VtValue` 暂时包装成统一的引用入口。这个设计的收益是轻量、少复制、少分配；代价是调用方必须严格尊重被引用对象的生命周期。",
+        "官方原文最重要的一句是 non-owning：`VtValueRef` 不拥有被引用的值，不延长对象生命周期，也不保证底层存储仍然有效。它通常应作为函数参数或 automatic variable 使用；把它保存到长期容器、异步任务、缓存对象或跨线程延迟执行回调中，通常都是危险用法。需要跨作用域保存时，应使用 owning `VtValue` 或明确复制底层数据。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, reading guidance, key type/method groups, and terminology for VtValueRef Class Reference while retaining English page names, class names, method names, attribute names, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page has been promoted to a complete bilingual reference. The Chinese coverage explains `VtValueRef` as a non-owning, type-erased value view interoperating with `VtValue`, while preserving English API names and excerpts for direct comparison.",
+        "`VtValueRef` lets APIs accept values of arbitrary type without always constructing an owning `VtValue` or adding many overloads. It is a lightweight type-erased reference view, with lifetime responsibility left to the caller."
       ]
     },
     {
