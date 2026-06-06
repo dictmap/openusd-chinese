@@ -54,6 +54,27 @@
         <li><span class="zh">Python 绑定：</span><span class="en">Python bindings</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-153">
+      <h2>中文二次入口补强 / Chinese Second-Pass Entry Notes</h2>
+      <p class="zh">`js_page_front.html` 是 `Js` 模块入口，说明 OpenUSD C++ 基础库如何解析和写出 JSON。它不是 JavaScript runtime 文档，也不是 USD scene graph schema；本页的作用是把 `js/json.h`、解析函数、写出函数和 JSON value/container 抽象放到同一阅读路径里。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Js: JSON I/O while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`JsParseStream()` 与 `JsParseString()` 是输入侧入口，分别对应 stream 和 string；调试读取失败时应继续查看 `json.h`、错误返回约定和调用方如何处理 parse diagnostics。</span></li>
+        <li><span class="zh">`JsWriteToStream()`、`JsWriteToString()` 和 `JsWriteValue()` 是输出侧入口，关注 serialization 结果、pretty printing 或 writer 语义时应跳到具体函数声明。</span></li>
+        <li><span class="zh">`JsValue`、container conversion 和 recursive container structures 说明此模块更偏基础数据交换层，常服务于工具、metadata、配置或测试数据，而不直接 author USD prim。</span></li>
+        <li><span class="zh">如果在 Python 里处理 JSON，应使用 Python 标准库 `json`；本模块的页面明确面向 C++，不要把它误认为跨语言 binding 入口。</span></li>
+        <li><span class="zh">本地中文层保留 `Js`、`JsParseStream()`、`JsWriteToString()`、`json.h` 等名称原样，方便和 `globals_j.html` 的文件级函数索引互相跳转。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">C++ JSON I/O：</span><span class="en">C++ JSON I/O</span></li>
+        <li><span class="zh">输入解析：</span><span class="en">input parsing</span></li>
+        <li><span class="zh">输出序列化：</span><span class="en">output serialization</span></li>
+        <li><span class="zh">递归容器结构：</span><span class="en">recursive container structure</span></li>
+        <li><span class="zh">数据交换层：</span><span class="en">data interchange layer</span></li>
+        <li><span class="zh">跨页函数索引：</span><span class="en">cross-page function index</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

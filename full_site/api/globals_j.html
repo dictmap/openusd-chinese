@@ -54,6 +54,27 @@
         <li><span class="zh">容器类型：</span><span class="en">container type</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-153">
+      <h2>中文二次入口补强 / Chinese Second-Pass Entry Notes</h2>
+      <p class="zh">`globals_j.html` 是 File Members 的 `j` 字母索引页，当前集中收录 `Js` JSON I/O 的文件级函数。它适合从函数名快速跳到 `converter.h`、`utils.h` 或 `json.h`，但模块背景仍应回到 `js_page_front.html` 阅读。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for File Members - j while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`JsParseStream()` 和 `JsParseString()` 是解析入口；前者适合 stream source，后者适合已经在内存中的 JSON string。</span></li>
+        <li><span class="zh">`JsWriteToStream()`、`JsWriteToString()`、`JsWriteValue()` 是写出入口；它们的差异应从目标输出形式、返回值和 writer 行为判断。</span></li>
+        <li><span class="zh">`JsFindValue()` 更像在 JSON-like container 中查找指定 value 的工具函数；实际 container 类型和缺失值处理要看 `utils.h`。</span></li>
+        <li><span class="zh">`JsConvertToContainerType()` 涉及 conversion helper，不能只从索引页推断所有类型转换规则，应继续进入 `converter.h` 查看声明和约束。</span></li>
+        <li><span class="zh">本页的 `j` 是字母分组，不是模块页；中文说明保留所有 `Js*` 函数名原样，帮助用户在 File Members 与 Js module 入口之间双向查找。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">j 字母索引：</span><span class="en">j alphabet index</span></li>
+        <li><span class="zh">文件级函数：</span><span class="en">file-level function</span></li>
+        <li><span class="zh">stream source：</span><span class="en">stream source</span></li>
+        <li><span class="zh">JSON string：</span><span class="en">JSON string</span></li>
+        <li><span class="zh">conversion helper：</span><span class="en">conversion helper</span></li>
+        <li><span class="zh">双向查找：</span><span class="en">two-way lookup</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

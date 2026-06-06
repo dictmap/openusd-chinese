@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-06T05:09:58.009Z
+Generated: 2026-06-06T05:23:35.383Z
 
 ## Summary
 
@@ -40,11 +40,6 @@ Generated: 2026-06-06T05:09:58.009Z
 | 278 | draft_template_only | 62 | `full_site/api/var_8h_source.html` | 源码页面草稿：var.h / var.h |
 | 298 | draft_template_only | 64 | `full_site/release/search.html` | 搜索 / Search - Universal Scene Description 26.05 documentation |
 | 69 | draft_template_only | 66 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | API 页面草稿：hf Directory / hf Directory |
-| 213 | draft_needs_translation | 310 | `full_site/api/js_page_front.html` | API 模块草稿：Js: JSON I/O / Js: JSON I/O |
-| 214 | draft_needs_translation | 311 | `full_site/api/kind_page_front.html` | API 模块草稿：Kind: Extensible Categorization / Kind: Extensible Categorization |
-| 260 | draft_needs_translation | 311 | `full_site/api/usd_hydra_page_front.html` | API 模块草稿：UsdHydra: USD Hydra Schemas / UsdHydra: USD Hydra Schemas |
-| 170 | draft_needs_translation | 312 | `full_site/api/globals_enum.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
-| 188 | draft_needs_translation | 312 | `full_site/api/globals_j.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
 | 208 | draft_needs_translation | 314 | `full_site/api/hierarchy.html` | API 页面草稿：Class Hierarchy / Class Hierarchy |
 | 235 | draft_needs_translation | 315 | `full_site/api/page__execution__system__design.html` | API 页面草稿：OpenExec System Design / OpenExec System Design |
 | 72 | draft_needs_translation | 317 | `full_site/api/functions_~.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
@@ -59,6 +54,11 @@ Generated: 2026-06-06T05:09:58.009Z
 | 201 | draft_needs_translation | 326 | `full_site/api/group__group__hd__collection_predicates.html` | API 页面草稿：Hydra Collection Predicate API / Hydra Collection Predicate API |
 | 219 | draft_needs_translation | 326 | `full_site/api/md_pxr_exec_exec_geom__r_e_a_d_m_e.html` | API 页面草稿：ExecGeom: Execution for UsdGeom / ExecGeom: Execution for UsdGeom |
 | 237 | draft_needs_translation | 326 | `full_site/api/page_ts_status.html` | API 页面草稿：USD Anim Project Status / USD Anim Project Status |
+| 222 | draft_needs_translation | 327 | `full_site/api/md_pxr_exec_exec_usd_docs_overview.html` | API 页面草稿：OpenExec Overview / OpenExec Overview |
+| 236 | draft_needs_translation | 327 | `full_site/api/page_ts_regression.html` | API 页面草稿：Regressive Splines in USD / Regressive Splines in USD |
+| 261 | draft_needs_translation | 331 | `full_site/api/usd_lux_page_front.html` | API 模块草稿：UsdLux: USD Lighting Schema / UsdLux: USD Lighting Schema |
+| 156 | draft_needs_translation | 332 | `full_site/api/functions_vars_y.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
+| 257 | draft_needs_translation | 332 | `full_site/api/usd_2usd_2object_8h.html` | API 页面草稿：object.h File / object.h File |
 
 ## All Pages
 
@@ -233,7 +233,7 @@ Generated: 2026-06-06T05:09:58.009Z
 | 167 | draft_needs_translation | bilingual_draft | 319 | 13/10 | 0 | 0 | `full_site/api/globals_c.html` |
 | 168 | draft_needs_translation | bilingual_draft | 716 | 32/24 | 0 | 0 | `full_site/api/globals_defs.html` |
 | 169 | draft_needs_translation | bilingual_draft | 610 | 25/17 | 0 | 0 | `full_site/api/globals_e.html` |
-| 170 | draft_needs_translation | bilingual_draft | 312 | 13/9 | 0 | 0 | `full_site/api/globals_enum.html` |
+| 170 | draft_needs_translation | bilingual_draft | 504 | 25/16 | 0 | 0 | `full_site/api/globals_enum.html` |
 | 171 | draft_needs_translation | bilingual_draft | 529 | 25/16 | 0 | 0 | `full_site/api/globals_eval.html` |
 | 172 | draft_needs_translation | bilingual_draft | 683 | 25/17 | 0 | 0 | `full_site/api/globals_func_c.html` |
 | 173 | draft_needs_translation | bilingual_draft | 744 | 25/16 | 0 | 0 | `full_site/api/globals_func_e.html` |
@@ -251,7 +251,7 @@ Generated: 2026-06-06T05:09:58.009Z
 | 185 | draft_needs_translation | bilingual_draft | 510 | 25/17 | 0 | 0 | `full_site/api/globals_func.html` |
 | 186 | draft_needs_translation | bilingual_draft | 633 | 25/17 | 0 | 0 | `full_site/api/globals_g.html` |
 | 187 | draft_needs_translation | bilingual_draft | 596 | 25/17 | 0 | 0 | `full_site/api/globals_h.html` |
-| 188 | draft_needs_translation | bilingual_draft | 312 | 13/10 | 0 | 0 | `full_site/api/globals_j.html` |
+| 188 | draft_needs_translation | bilingual_draft | 510 | 25/17 | 0 | 0 | `full_site/api/globals_j.html` |
 | 189 | draft_needs_translation | bilingual_draft | 371 | 13/10 | 0 | 0 | `full_site/api/globals_l.html` |
 | 190 | draft_needs_translation | bilingual_draft | 338 | 13/10 | 0 | 0 | `full_site/api/globals_o.html` |
 | 191 | draft_needs_translation | bilingual_draft | 617 | 25/17 | 0 | 0 | `full_site/api/globals_p.html` |
@@ -276,8 +276,8 @@ Generated: 2026-06-06T05:09:58.009Z
 | 210 | good_bilingual | bilingual_complete | 515 | 16/21 | 0 | 0 | `site/index.html` |
 | 211 | draft_needs_translation | bilingual_draft | 333 | 13/9 | 0 | 0 | `full_site/api/inherits.html` |
 | 212 | draft_needs_translation | bilingual_draft | 336 | 15/12 | 0 | 0 | `full_site/api/journal_8h.html` |
-| 213 | draft_needs_translation | bilingual_draft | 310 | 14/11 | 0 | 0 | `full_site/api/js_page_front.html` |
-| 214 | draft_needs_translation | bilingual_draft | 311 | 15/12 | 0 | 0 | `full_site/api/kind_page_front.html` |
+| 213 | draft_needs_translation | bilingual_draft | 543 | 26/18 | 0 | 0 | `full_site/api/js_page_front.html` |
+| 214 | draft_needs_translation | bilingual_draft | 537 | 27/19 | 0 | 0 | `full_site/api/kind_page_front.html` |
 | 215 | draft_needs_translation | bilingual_draft | 345 | 13/10 | 0 | 0 | `full_site/api/md_pxr_exec_ef__r_e_a_d_m_e.html` |
 | 216 | draft_needs_translation | bilingual_draft | 349 | 13/9 | 0 | 0 | `full_site/api/md_pxr_exec_esf__r_e_a_d_m_e.html` |
 | 217 | draft_needs_translation | bilingual_draft | 334 | 13/10 | 0 | 0 | `full_site/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html` |
@@ -323,7 +323,7 @@ Generated: 2026-06-06T05:09:58.009Z
 | 257 | draft_needs_translation | bilingual_draft | 332 | 22/19 | 0 | 0 | `full_site/api/usd_2usd_2object_8h.html` |
 | 258 | draft_needs_translation | bilingual_draft | 405 | 15/12 | 0 | 0 | `full_site/api/usd_app_utils_page_front.html` |
 | 259 | draft_needs_translation | bilingual_draft | 363 | 31/28 | 0 | 0 | `full_site/api/usd_geom_page_front.html` |
-| 260 | draft_needs_translation | bilingual_draft | 311 | 14/11 | 0 | 0 | `full_site/api/usd_hydra_page_front.html` |
+| 260 | draft_needs_translation | bilingual_draft | 475 | 26/18 | 0 | 0 | `full_site/api/usd_hydra_page_front.html` |
 | 261 | draft_needs_translation | bilingual_draft | 331 | 23/20 | 0 | 0 | `full_site/api/usd_lux_page_front.html` |
 | 262 | draft_needs_translation | bilingual_draft | 333 | 14/11 | 0 | 0 | `full_site/api/usd_media_page_front.html` |
 | 263 | draft_needs_translation | bilingual_draft | 470 | 28/20 | 0 | 0 | `full_site/api/usd_mtlx_page_front.html` |

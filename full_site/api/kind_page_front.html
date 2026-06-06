@@ -54,6 +54,27 @@
         <li><span class="zh">模型根节点：</span><span class="en">model root</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-153">
+      <h2>中文二次入口补强 / Chinese Second-Pass Entry Notes</h2>
+      <p class="zh">`kind_page_front.html` 是 `Kind` 模块入口，解释 OpenUSD 如何用可扩展 taxonomy 给 scenegraph object 分类。它的重点不是几何形状、schema 类型或渲染类型，而是通过 `TfToken` 和 `KindRegistry` 管理 `kind` 层级，并支持客户端判断 model root 的语义类别。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Kind: Extensible Categorization while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`kind` 是 `TfToken` 符号，但不是任意字符串标签；它通过 `KindRegistry` 形成可查询的层级，因此可用 `IsA()` 判断是否属于某个 base kind。</span></li>
+        <li><span class="zh">`KindRegistry::GetBaseKind()` 适合查找直接或基础分类；阅读时应区分 registry relationship 和 prim inheritance、schema inheritance、composition arc。</span></li>
+        <li><span class="zh">`model root` 是 Kind 使用的重要场景：asset 或场景层级可通过 kind 表示 component、group、assembly 等建模组织语义。</span></li>
+        <li><span class="zh">`Extending the KindRegistry` 说明可通过插件或注册机制扩展分类体系；扩展 kind 前应考虑命名冲突、层级关系和下游工具兼容性。</span></li>
+        <li><span class="zh">中文导读保留 `kind`、`KindRegistry`、`TfToken`、`PlugRegistry` 原样，避免把 taxonomy 翻译成会破坏搜索的本地化 API 名称。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">可扩展分类体系：</span><span class="en">extensible taxonomy</span></li>
+        <li><span class="zh">语义类别：</span><span class="en">semantic category</span></li>
+        <li><span class="zh">基础 kind：</span><span class="en">base kind</span></li>
+        <li><span class="zh">模型根节点：</span><span class="en">model root</span></li>
+        <li><span class="zh">注册表查询：</span><span class="en">registry query</span></li>
+        <li><span class="zh">插件扩展：</span><span class="en">plugin extension</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

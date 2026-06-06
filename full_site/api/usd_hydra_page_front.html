@@ -54,6 +54,27 @@
         <li><span class="zh">已弃用：</span><span class="en">deprecated</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-153">
+      <h2>中文二次入口补强 / Chinese Second-Pass Entry Notes</h2>
+      <p class="zh">`usd_hydra_page_front.html` 是 `UsdHydra` 模块入口，目前更像一个窄范围 schema/API 说明页。它主要围绕 `UsdHydraGenerativeProceduralAPI` 展开，并解释旧 Hydra shading network schema 已删除后的迁移边界。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdHydra: USD Hydra Schemas while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdHydraGenerativeProceduralAPI` 是 applied API schema，用来扩展 `UsdProcGenerativeProcedural` prim，使其描述 `HdGpGenerativeProcedural` 插件相关信息。</span></li>
+        <li><span class="zh">本页不应被当作完整 Hydra renderer 或 `Hd` framework 指南；需要渲染索引、render pass、scene delegate 或 data source 语义时，应跳到 `hd_page_front.html`、`hdx_page_front.html` 或相关 class 页。</span></li>
+        <li><span class="zh">旧 shading network schema 被移除的提示很关键：shader authoring 的新路径应优先看 shader registry、`Sdr` 和 `UsdShade`，不要依赖过期 UsdHydra shading schema。</span></li>
+        <li><span class="zh">页面提到保留 token 列表用于 transition，这些 token 是迁移辅助线索，不等同于推荐的新 schema authoring surface。</span></li>
+        <li><span class="zh">中文层强调 schema/API 边界：保留 `UsdHydra`、`UsdProcGenerativeProcedural`、`HdGpGenerativeProcedural` 原名，避免把 procedural、schema 和 Hydra plugin 层混为一类。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD Hydra schema：</span><span class="en">USD Hydra schema</span></li>
+        <li><span class="zh">生成式 procedural：</span><span class="en">generative procedural</span></li>
+        <li><span class="zh">applied API schema：</span><span class="en">applied API schema</span></li>
+        <li><span class="zh">过渡 token：</span><span class="en">transition token</span></li>
+        <li><span class="zh">已删除的 shading schema：</span><span class="en">removed shading schema</span></li>
+        <li><span class="zh">shader registry 迁移：</span><span class="en">shader registry migration</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

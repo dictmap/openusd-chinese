@@ -54,6 +54,27 @@
         <li><span class="zh">场景描述：</span><span class="en">scene description</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-153">
+      <h2>中文二次入口补强 / Chinese Second-Pass Entry Notes</h2>
+      <p class="zh">`globals_enum.html` 是 File Members 的 enum 类型索引页，用于查找枚举类型声明，而不是枚举值。它和 `globals_eval.html` 互补：本页定位 `UsdLoadPolicy`、`PcpArcType`、`SdfSpecifier` 等 enum 类型，具体取值则需要进入 enum 定义或 enumerator value 索引。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for File Members - Enumeration Types while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`ArchMemoryProtection` 偏平台/虚拟内存语义，和 `Arch` 系统基础层相关；不要把它和 USD scene authoring 语义混在一起。</span></li>
+        <li><span class="zh">`PcpArcType` 属于 composition graph 语义，用来描述 reference、payload、inherit、variant 等 arc 类别；它应结合 Pcp composition 文档阅读。</span></li>
+        <li><span class="zh">`SdfAuthoringError`、`SdfPermission`、`SdfSpecifier`、`SdfSpecType`、`SdfVariability` 都属于 scene description 层，常与 layer、spec、namespace 和 authored data 相关。</span></li>
+        <li><span class="zh">`TfDiagnosticType` 属于诊断设施，`SdrVersionFilter` 属于 shader registry，`UsdInterpolationType`、`UsdListPosition`、`UsdLoadPolicy`、`UsdResolveInfoSource` 属于 USD 值解析、list editing 和 loading 语义。</span></li>
+        <li><span class="zh">enum 类型索引只说明“有哪些类型”，不说明所有枚举值、默认值或 API 参数上下文；需要继续跳到 header、enum definition 或函数签名核对。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">枚举类型索引：</span><span class="en">enum type index</span></li>
+        <li><span class="zh">枚举值索引：</span><span class="en">enumerator value index</span></li>
+        <li><span class="zh">组合弧类型：</span><span class="en">composition arc type</span></li>
+        <li><span class="zh">场景描述层：</span><span class="en">scene description layer</span></li>
+        <li><span class="zh">诊断类型：</span><span class="en">diagnostic type</span></li>
+        <li><span class="zh">值解析来源：</span><span class="en">value resolution source</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

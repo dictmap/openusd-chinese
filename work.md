@@ -3948,3 +3948,36 @@
 1. 继续最多 5 页，优先处理仍只有一层补强、中文量较低且用户会实际浏览的 API 入口和 File Members 索引页。
 2. 建议下一组：`full_site/api/js_page_front.html`、`full_site/api/kind_page_front.html`、`full_site/api/usd_hydra_page_front.html`、`full_site/api/globals_enum.html`、`full_site/api/globals_j.html`。
 3. 之后可继续相邻 module entry、Class Members、File Members 或高价值 class 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+## 第 284 轮：Js、Kind、UsdHydra 入口与 File Members enum/j 索引页补强
+
+已完成：
+
+- 复核当前仓库、远端与审计基线：本地 `main` 基于上一轮同步提交 `7d7a7e4`，`origin/main` 一致，起始工作区干净；全量仍为 406 个 HTML 页面，质量计数为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。
+- 新增并执行 `scripts/refine_openusd_release_batch_153.mjs`，本轮标记为 `api-index-quality-pass-153`。
+- 严格只精修 5 页：
+  - `full_site/api/js_page_front.html`
+  - `full_site/api/kind_page_front.html`
+  - `full_site/api/usd_hydra_page_front.html`
+  - `full_site/api/globals_enum.html`
+  - `full_site/api/globals_j.html`
+- 每页新增 5 条中文二次入口导读和 6 条术语对照；重点覆盖 `Js` C++ JSON I/O 的 `JsParseStream()`、`JsParseString()`、`JsWriteToStream()`、`JsWriteToString()` 与 `json.h` 对照，`Kind` 模块中 `TfToken`、`KindRegistry`、`IsA()`、`model root` 与 taxonomy 扩展边界，`UsdHydraGenerativeProceduralAPI`、`UsdProcGenerativeProcedural`、`HdGpGenerativeProcedural` 与旧 Hydra shading schema 删除后的迁移边界，File Members enum 类型索引中的 `ArchMemoryProtection`、`PcpArcType`、`SdfSpecifier`、`TfDiagnosticType`、`UsdLoadPolicy` 等 enum type 分组，以及 `globals_j.html` 中 `Js*` 文件级函数和 `js_page_front.html` 的双向查找关系；API 名称、页面名、类名、函数名、变量名、头文件名、template 参数、enum name、enum value、token 字面量和链接保持原样。
+- 质量回读：5 页均无 `TODO` / `待翻译` / `机器翻译占位`，`api-index-quality-pass-153` 均只出现 1 次：
+  - `js_page_front.html`：中文字符 604，中文/英文块 26/18。
+  - `kind_page_front.html`：中文字符 598，中文/英文块 27/19。
+  - `usd_hydra_page_front.html`：中文字符 536，中文/英文块 26/18。
+  - `globals_enum.html`：中文字符 565，中文/英文块 25/16。
+  - `globals_j.html`：中文字符 571，中文/英文块 25/17。
+- 分级变化：计数保持不变，仍为 `draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因是本轮对象开始前已属 `draft_needs_translation`，本轮是 API 入口 / File Members 索引页二次补强精修，不是从模板草稿晋级。
+- 验证结果：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1` 均已通过；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步记录：本轮复验通过后使用 `OpenUSD bilingual round 284: js kind hydra enum j pass` 同步本轮 HTML、脚本、报告和 `work.md`；如果同步脚本失败，本轮不推送并先修复。
+
+当前差距：
+
+- 全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`；其中 387 页为 `draft_needs_translation`、11 页为 `draft_template_only`，`bilingual_draft` 仍不是完整翻译。
+- 剩余 `draft_template_only` 11 页基本是 `_source.html` 源码页、`search.html` 或目录页，继续低优先处理。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理仍只有一层补强、中文量较低且用户会实际浏览的 Class Members / File Members / module entry 索引页。
+2. 建议下一组：`full_site/api/functions_~.html`、`full_site/api/globals_c.html`、`full_site/api/globals_type.html`、`full_site/api/trace_page_front.html`、`full_site/api/functions_vars_x.html`。
+3. 之后可继续 `functions_vars_z.html`、`functions_eval.html`、`usd_skel_page_front.html`、`usd_lux_page_front.html`、`functions_vars_y.html`，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
