@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-05T23:56:28.236Z
+Generated: 2026-06-06T00:06:43.214Z
 
 ## Summary
 
@@ -19,11 +19,11 @@ Generated: 2026-06-05T23:56:28.236Z
 | # | Grade | Status | Chinese chars | zh/en blocks | Output | Note |
 | --- | --- | --- | ---: | ---: | --- | --- |
 | 1 | draft_template_only | bilingual_draft | 62 | 2/3 | `full_site/api/_c_l_i11_8h_source.html` | Mostly a draft shell: Chinese is limited to the shared scope note and structure labels. |
-| 2 | draft_needs_translation | bilingual_draft | 320 | 12/9 | `full_site/api/_developer__guides.html` | Has Chinese guidance, but still relies mainly on English excerpts. |
+| 2 | draft_needs_translation | bilingual_draft | 569 | 24/16 | `full_site/api/_developer__guides.html` | Has Chinese guidance, but still relies mainly on English excerpts. |
 | 3 | good_bilingual | bilingual_complete | 769 | 63/63 | `site/_usd__overview_and_purpose.html` | Chinese and English are paired densely enough for a reference page. |
-| 4 | draft_needs_translation | bilingual_draft | 330 | 19/17 | `full_site/api/_usd_skel__intro.html` | Has Chinese guidance, but still relies mainly on English excerpts. |
-| 5 | draft_needs_translation | bilingual_draft | 330 | 12/10 | `full_site/api/annotated.html` | Has Chinese guidance, but still relies mainly on English excerpts. |
-| 6 | draft_needs_translation | bilingual_draft | 377 | 20/18 | `full_site/api/ar_page_front.html` | Has Chinese guidance, but still relies mainly on English excerpts. |
+| 4 | draft_needs_translation | bilingual_draft | 546 | 31/24 | `full_site/api/_usd_skel__intro.html` | Has Chinese guidance, but still relies mainly on English excerpts. |
+| 5 | draft_needs_translation | bilingual_draft | 557 | 24/17 | `full_site/api/annotated.html` | Has Chinese guidance, but still relies mainly on English excerpts. |
+| 6 | draft_needs_translation | bilingual_draft | 639 | 32/25 | `full_site/api/ar_page_front.html` | Has Chinese guidance, but still relies mainly on English excerpts. |
 
 ## Next Priority Queue
 
@@ -45,7 +45,6 @@ Generated: 2026-06-05T23:56:28.236Z
 | 92 | draft_needs_translation | 283 | `full_site/api/functions_func_k.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
 | 152 | draft_needs_translation | 283 | `full_site/api/functions_vars_u.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 | 153 | draft_needs_translation | 286 | `full_site/api/functions_vars_v.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
-| 7 | draft_needs_translation | 289 | `full_site/api/arch_page_front.html` | Arch：架构相关 / Arch: Architecture Dependent |
 | 96 | draft_needs_translation | 289 | `full_site/api/functions_func_o.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
 | 196 | draft_needs_translation | 290 | `full_site/api/globals_v.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
 | 71 | draft_needs_translation | 291 | `full_site/api/files.html` | API 页面草稿：File List / File List |
@@ -59,18 +58,19 @@ Generated: 2026-06-05T23:56:28.236Z
 | 91 | draft_needs_translation | 296 | `full_site/api/functions_func_j.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
 | 86 | draft_needs_translation | 297 | `full_site/api/functions_func_e.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
 | 198 | draft_needs_translation | 298 | `full_site/api/globals_w.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
+| 263 | draft_needs_translation | 298 | `full_site/api/usd_mtlx_page_front.html` | API 模块草稿：UsdMtlx: MaterialX File Format and Shader Plugins / UsdMtlx: MaterialX File Format and Shader Plugins |
 
 ## All Pages
 
 | # | Grade | Status | Chinese chars | zh/en blocks | Bad encoding | Unexpected official links | Output |
 | --- | --- | --- | ---: | ---: | ---: | ---: | --- |
 | 1 | draft_template_only | bilingual_draft | 62 | 2/3 | 0 | 0 | `full_site/api/_c_l_i11_8h_source.html` |
-| 2 | draft_needs_translation | bilingual_draft | 320 | 12/9 | 0 | 0 | `full_site/api/_developer__guides.html` |
+| 2 | draft_needs_translation | bilingual_draft | 569 | 24/16 | 0 | 0 | `full_site/api/_developer__guides.html` |
 | 3 | good_bilingual | bilingual_complete | 769 | 63/63 | 0 | 0 | `site/_usd__overview_and_purpose.html` |
-| 4 | draft_needs_translation | bilingual_draft | 330 | 19/17 | 0 | 0 | `full_site/api/_usd_skel__intro.html` |
-| 5 | draft_needs_translation | bilingual_draft | 330 | 12/10 | 0 | 0 | `full_site/api/annotated.html` |
-| 6 | draft_needs_translation | bilingual_draft | 377 | 20/18 | 0 | 0 | `full_site/api/ar_page_front.html` |
-| 7 | draft_needs_translation | bilingual_draft | 289 | 13/11 | 0 | 0 | `full_site/api/arch_page_front.html` |
+| 4 | draft_needs_translation | bilingual_draft | 546 | 31/24 | 0 | 0 | `full_site/api/_usd_skel__intro.html` |
+| 5 | draft_needs_translation | bilingual_draft | 557 | 24/17 | 0 | 0 | `full_site/api/annotated.html` |
+| 6 | draft_needs_translation | bilingual_draft | 639 | 32/25 | 0 | 0 | `full_site/api/ar_page_front.html` |
+| 7 | draft_needs_translation | bilingual_draft | 561 | 25/18 | 0 | 0 | `full_site/api/arch_page_front.html` |
 | 8 | draft_template_only | bilingual_draft | 62 | 2/3 | 0 | 0 | `full_site/api/binding_map_8h_source.html` |
 | 9 | draft_needs_translation | bilingual_draft | 339 | 23/20 | 0 | 0 | `full_site/api/class_ef___lofted_output_set.html` |
 | 10 | draft_needs_translation | bilingual_draft | 327 | 22/19 | 0 | 0 | `full_site/api/class_esf_property_interface.html` |

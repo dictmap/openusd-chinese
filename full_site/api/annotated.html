@@ -53,6 +53,27 @@
 <li><span class="zh">Doxygen 文档生成器：</span><span class="en">Doxygen</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-entry-quality-pass-128">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`annotated.html` 是 Doxygen 生成的 Class List，列出类、结构体、union 和 interface 的简短描述。它和 `classes.html` 类索引相近，但更强调 brief description；适合按类型名或模块前缀定位目标文档。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Class List while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">本页混合 OpenUSD 核心类型、测试 helper、CLI11 wrapper、type traits 和第三方工具类型；阅读时应先按 `Ar`、`Sdf`、`Usd`、`Hd`、`Tf`、`Vt`、`Gf` 等前缀筛选。</span></li>
+        <li><span class="zh">摘录中的 `Attribute accessor`、`Computation value specifier`、`Metadata value specifier`、`Prim accessor`、`Relationship accessor` 属于 Exec/computation 语境，应和普通 USD attribute 概念区分。</span></li>
+        <li><span class="zh">`App`、`AppFriend`、`ArgumentMismatch` 一类条目可能来自测试或 CLI 工具层；不要因为它们在 Class List 中出现就把它们误认为 OpenUSD 核心 scene API。</span></li>
+        <li><span class="zh">Class List 的中文层只负责解释导航策略和模块辨识方式，不批量翻译类名；保留英文类型名更利于搜索、编译错误对照和官方文档交叉引用。</span></li>
+        <li><span class="zh">后续精修如果继续处理 class 页面，应优先选择高频核心类，如 `SdfLayer`、`SdfPath`、`UsdStage`、`UsdPrim`、`HdSceneDelegate`，而不是低价值测试 helper。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">类列表：</span><span class="en">Class List</span></li>
+        <li><span class="zh">简短描述：</span><span class="en">brief description</span></li>
+        <li><span class="zh">接口：</span><span class="en">interface</span></li>
+        <li><span class="zh">类型 traits：</span><span class="en">type traits</span></li>
+        <li><span class="zh">模块前缀：</span><span class="en">module prefix</span></li>
+        <li><span class="zh">目标文档页：</span><span class="en">target documentation</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

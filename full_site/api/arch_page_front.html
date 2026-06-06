@@ -53,6 +53,27 @@
 <li><span class="zh">诊断：</span><span class="en">diagnostics</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-entry-quality-pass-128">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`Arch: Architecture Dependent` 是 OpenUSD 的平台差异隔离层，把操作系统、CPU、线程、内存、诊断、系统函数和符号可见性封装到小型基础库中。它的价值是减少核心代码里分散的 `#ifdef`，并让跨平台行为集中可审计。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Arch: Architecture Dependent while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Bits`、`Math` 和 `Strings` 分组偏基础工具，处理位模式、数值转换和字符串/编码问题；阅读时应保留底层函数名和宏名，便于与 C++ 代码对应。</span></li>
+        <li><span class="zh">`Multithreading`、`System Functions` 与 `Memory Management` 涉及线程、进程、文件描述符、虚拟内存和 allocator 行为；这些条目常用于定位跨平台构建或运行时差异。</span></li>
+        <li><span class="zh">`Diagnostics` 覆盖 debugger attach、trap、abort 和错误诊断路径；当 OpenUSD 在不同平台崩溃方式不同，Arch 层通常是第一批检查对象。</span></li>
+        <li><span class="zh">`Symbol Visibility` 说明动态库导出、宏和可见性策略；`ARCH_OS_LINUX`、`ARCH_OS_DARWIN`、`ARCH_OS_WINDOWS`、`ARCH_CPU_INTEL` 等 token 必须保持原样。</span></li>
+        <li><span class="zh">本页不是用户场景描述 API，而是工程基础设施入口；如果问题来自 schema、composition 或 rendering，只有涉及平台差异时才需要回到 Arch 层核对。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">架构相关代码：</span><span class="en">architecture-dependent code</span></li>
+        <li><span class="zh">平台依赖：</span><span class="en">platform dependencies</span></li>
+        <li><span class="zh">多线程：</span><span class="en">multithreading</span></li>
+        <li><span class="zh">内存管理：</span><span class="en">memory management</span></li>
+        <li><span class="zh">诊断：</span><span class="en">diagnostics</span></li>
+        <li><span class="zh">符号可见性：</span><span class="en">symbol visibility</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

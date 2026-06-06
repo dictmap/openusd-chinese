@@ -3251,3 +3251,14 @@
 - 验证结果：翻译质量审计、链接路由、full draft preview、报告索引和 `validate_openusd_api_repro.ps1` 均已通过；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
 - GitHub 同步：本轮复验通过后使用 `OpenUSD bilingual round 258: class deprecated hdembree variables index pass` 同步本轮 HTML、脚本、报告和 `work.md`。
 - 下一轮最多 5 页目标：`full_site/api/_developer__guides.html`、`full_site/api/_usd_skel__intro.html`、`full_site/api/annotated.html`、`full_site/api/ar_page_front.html`、`full_site/api/arch_page_front.html`；之后可继续高价值模块入口或 class 页面，继续低优先处理 `search.html`、目录页和 `_source.html`。
+
+## 第 259 轮：Developer Guides、UsdSkel Intro、Class List、Ar 与 Arch 补强
+
+- 基线：本地 `main` 基于上一轮同步提交 `f551a29`，`origin/main` 一致，起始工作区干净；全量仍为 406 个 HTML 页面，质量计数为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。
+- 新增并执行 `scripts/refine_openusd_release_batch_128.mjs`，标记 `api-entry-quality-pass-128`；严格只精修 5 页：`full_site/api/_developer__guides.html`、`full_site/api/_usd_skel__intro.html`、`full_site/api/annotated.html`、`full_site/api/ar_page_front.html`、`full_site/api/arch_page_front.html`。
+- 补强内容：每页新增 5 条中文导读和 6 条术语对照，覆盖 Developer Guides 的贡献/测试/Hydra/MaterialX 导航，UsdSkel 的 skeleton、joint、SkelRoot、linear blend skinning 与边界说明，Class List 的 Doxygen 类型导航策略，Ar 的 asset path、resolver context、scoped cache、resolved path，以及 Arch 的平台差异、线程、内存、诊断和符号可见性；API 名称、类名、函数名、宏名、token 字面量、数学符号、template 参数、头文件名和链接保持原样。
+- 质量回读：5 页均无占位坏词，`api-entry-quality-pass-128` 均只出现 1 次；中文字符分别为 632、607、616、700、622，中文/英文块分别为 24/16、31/24、24/17、32/25、25/18。
+- 分级变化：计数保持不变，仍为 `draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因是本轮对象已是 `draft_needs_translation`，属于二次补强，不是模板草稿晋级。
+- 验证结果：翻译质量审计、链接路由、full draft preview、报告索引和 `validate_openusd_api_repro.ps1` 均已通过；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步：本轮复验通过后使用 `OpenUSD bilingual round 259: developer skel annotated ar arch pass` 同步本轮 HTML、脚本、报告和 `work.md`。
+- 下一轮最多 5 页目标：`full_site/api/class_sdf_layer.html`、`full_site/api/class_sdf_path.html`、`full_site/api/class_sdf_prim_spec.html`、`full_site/api/class_hd_scene_delegate.html`、`full_site/api/class_hd_render_buffer.html`；之后可继续 `UsdStage`、`UsdPrim`、`SdfSpec`、Hydra 或 Gf/Vt 等高价值 class 页面，继续低优先处理 `search.html`、目录页和 `_source.html`。

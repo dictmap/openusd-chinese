@@ -53,6 +53,27 @@
 <li><span class="zh">线性混合蒙皮：</span><span class="en">linear blend skinning</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-entry-quality-pass-128">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`UsdSkel Introduction` 解释 USD 中骨架、关节、蒙皮、blend shapes 和 skel binding 的基础模型。它不是完整角色动画系统手册，而是说明 OpenUSD 如何表示可交换、可组合、可实例化的骨架动画数据。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdSkel Introduction while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Overview and Purpose` 与 `Motivation &amp; Trade-Offs` 说明 UsdSkel 的目标：在少量高质量角色和大规模 crowd 场景之间取得可扩展折中，而不是保存 DCC 中所有 rig 控制细节。</span></li>
+        <li><span class="zh">`What UsdSkel Is Not` 是边界段落，提醒读者不要把 solver、constraint、muscle system 或完整 control rig 期望直接塞进 USD schema。</span></li>
+        <li><span class="zh">`Terminology`、`What Can Be Skinned?`、`Transforms and Transform Spaces` 是后续 API 的关键前置概念；`Skeleton`、`Joint`、`SkelRoot`、`SkinningQuery` 等 API 名称应保持英文原样。</span></li>
+        <li><span class="zh">`Skinning a Point (Linear Blend Skinning)` 里的公式和权重语义应和 `jointIndices`、`jointWeights`、bind pose、rest transform 一起理解；中文说明只解释关系，不改写数学符号。</span></li>
+        <li><span class="zh">继续深入时可转向 `UsdSkelSkeleton`、`UsdSkelBindingAPI`、`UsdSkelAnimation` 和 `UsdSkelCache` 等 class 页面，分别核对数据模式、绑定关系和查询缓存。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">UsdSkel 骨架模块：</span><span class="en">UsdSkel</span></li>
+        <li><span class="zh">骨架：</span><span class="en">Skeleton</span></li>
+        <li><span class="zh">关节：</span><span class="en">Joint</span></li>
+        <li><span class="zh">骨架根 prim：</span><span class="en">SkelRoot</span></li>
+        <li><span class="zh">线性混合蒙皮：</span><span class="en">linear blend skinning</span></li>
+        <li><span class="zh">绑定姿态：</span><span class="en">bind pose</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

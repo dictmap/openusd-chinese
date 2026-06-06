@@ -53,6 +53,27 @@
 <li><span class="zh">解析上下文：</span><span class="en">resolver context</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-entry-quality-pass-128">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`Ar: Asset Resolution` 是 OpenUSD 资产解析层入口，说明 `ArResolver` 如何把 authored asset path、URI/IRI、resolver context 和 scoped cache 组合成可访问的 resolved asset。它是理解 package、resolver plugin 和资产定位策略的核心页面。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Ar: Asset Resolution while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`ArResolver` 是核心抽象：Primary Resolver 处理默认路径和项目规则，URI/IRI Resolver 处理带 scheme 的资源标识；自定义 resolver 通常通过插件系统注册并由 `ArGetResolver()` 访问。</span></li>
+        <li><span class="zh">`Asset Path Resolution` 区分 authored asset path、resolved path 和资产系统中的实际存储位置；字符串路径本身不是最终结果，必须经过 resolver 和 context 求值。</span></li>
+        <li><span class="zh">`Resolver Contexts` 表示项目、版本、搜索路径或资产数据库状态等解析条件；同一 asset path 在不同 context 下可能解析到不同 resolved path。</span></li>
+        <li><span class="zh">`Resolver Scoped Caches` 用于在作用域内复用解析结果，减少重复查询和 I/O；使用时要理解缓存生命周期，避免把临时上下文结果误当作全局事实。</span></li>
+        <li><span class="zh">`Asset Paths and Resolved Paths` 是调试资产加载问题的关键边界：日志中看到的 authored path、identifier 和 resolved path 应分别记录，不能混用。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">资产解析：</span><span class="en">asset resolution</span></li>
+        <li><span class="zh">ArResolver 资产解析器：</span><span class="en">ArResolver</span></li>
+        <li><span class="zh">作者写入的资产路径：</span><span class="en">authored asset path</span></li>
+        <li><span class="zh">已解析路径：</span><span class="en">resolved path</span></li>
+        <li><span class="zh">解析器上下文：</span><span class="en">resolver context</span></li>
+        <li><span class="zh">作用域缓存：</span><span class="en">scoped cache</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
