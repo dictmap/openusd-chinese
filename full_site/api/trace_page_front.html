@@ -54,6 +54,27 @@
         <li><span class="zh">埋点/插桩：</span><span class="en">instrumentation</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-154">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`trace_page_front.html` 是 Trace 性能跟踪模块入口，用于理解如何在 OpenUSD 代码中插桩、收集 `TraceEvent`，再由 `TraceReporter` 输出报告。它关注 performance tracking，不是一般 logging、diagnostics 或 profiling UI 的完整替代。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Trace: Performance tracking while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`TraceCollector` 负责收集事件，`TraceEvent` 表示事件记录，`TraceReporter` 负责生成报告；这三者是调试性能热点时的核心阅读路径。</span></li>
+        <li><span class="zh">`TRACE` macros 和 `pxr/base/trace/trace.h` 是 C++ instrumentation 入口；使用前需要考虑事件粒度、调用频率和性能开销。</span></li>
+        <li><span class="zh">页面提到 Python tracing，但这不代表所有 C++ trace API 都有同等 Python surface；具体可用性应查看绑定或示例。</span></li>
+        <li><span class="zh">`Recording and Reporting` 与 `Performance Overhead` 小节说明 trace 开启方式和开销边界；生产环境中应避免无边界地扩大 instrumentation 范围。</span></li>
+        <li><span class="zh">Trace 与 `TfDiagnostic`、日志或错误上报不同：Trace 更关注 timing、counting、measuring 和 event recording，用于性能分析链路。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">性能跟踪：</span><span class="en">performance tracking</span></li>
+        <li><span class="zh">插桩宏：</span><span class="en">instrumentation macro</span></li>
+        <li><span class="zh">事件收集器：</span><span class="en">event collector</span></li>
+        <li><span class="zh">跟踪报告：</span><span class="en">trace report</span></li>
+        <li><span class="zh">性能开销：</span><span class="en">performance overhead</span></li>
+        <li><span class="zh">事件粒度：</span><span class="en">event granularity</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

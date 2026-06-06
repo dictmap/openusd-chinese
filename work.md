@@ -3981,3 +3981,36 @@
 1. 继续最多 5 页，优先处理仍只有一层补强、中文量较低且用户会实际浏览的 Class Members / File Members / module entry 索引页。
 2. 建议下一组：`full_site/api/functions_~.html`、`full_site/api/globals_c.html`、`full_site/api/globals_type.html`、`full_site/api/trace_page_front.html`、`full_site/api/functions_vars_x.html`。
 3. 之后可继续 `functions_vars_z.html`、`functions_eval.html`、`usd_skel_page_front.html`、`usd_lux_page_front.html`、`functions_vars_y.html`，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+## 第 285 轮：符号段、File Members C/type、Trace 与变量 X 索引页补强
+
+已完成：
+
+- 复核当前仓库、远端与审计基线：本地 `main` 基于上一轮同步提交 `a3da8a3`，`origin/main` 一致，起始工作区干净；全量仍为 406 个 HTML 页面，质量计数为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。
+- 新增并执行 `scripts/refine_openusd_release_batch_154.mjs`，本轮标记为 `api-index-quality-pass-154`。
+- 严格只精修 5 页：
+  - `full_site/api/functions_~.html`
+  - `full_site/api/globals_c.html`
+  - `full_site/api/globals_type.html`
+  - `full_site/api/trace_page_front.html`
+  - `full_site/api/functions_vars_x.html`
+- 每页新增 5 条中文二次索引导读和 6 条术语对照；重点覆盖 Class Members 符号段中 `_SdrFilesystemDiscoveryPlugin`、`HdStVBOMemoryManager`、`ArResolverScopedCache`、`TfMallocTag::Auto`、`Ef*` cache 等内部/析构/嵌套条目的模块辨识，File Members C 段中的 `CombineError()`、`CombineResult()`、`CombineUnbatched()` 与 `CustomUsdPhysicsTokens` 来源边界，File Members typedef/type alias 页中的 `ArchConstFileMapping`、`ExecCallbackFn`、`PcpArcInfoVector`、`SdfRelocates` 等跨模块类型别名，Trace 模块中的 `TraceCollector`、`TraceEvent`、`TraceReporter`、`TRACE` macros 与 performance overhead，以及变量 X 段中 `UsdGeomTokensType`、`UsdPhysicsTokensType` 的 token 语义边界；API 名称、页面名、类名、函数名、变量名、头文件名、template 参数、operator 符号、token 字面量和链接保持原样。
+- 质量回读：5 页均无 `TODO` / `待翻译` / `机器翻译占位`，`api-index-quality-pass-154` 均只出现 1 次：
+  - `functions_~.html`：中文字符 602，中文/英文块 24/17。
+  - `globals_c.html`：中文字符 612，中文/英文块 25/17。
+  - `globals_type.html`：中文字符 542，中文/英文块 33/25。
+  - `trace_page_front.html`：中文字符 587，中文/英文块 31/23。
+  - `functions_vars_x.html`：中文字符 593，中文/英文块 25/16。
+- 分级变化：计数保持不变，仍为 `draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因是本轮对象开始前已属 `draft_needs_translation`，本轮是 Class Members / File Members / module entry 索引页二次补强精修，不是从模板草稿晋级。
+- 验证结果：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1` 均已通过；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步记录：本轮复验通过后使用 `OpenUSD bilingual round 285: symbols globals trace x pass` 同步本轮 HTML、脚本、报告和 `work.md`；如果同步脚本失败，本轮不推送并先修复。
+
+当前差距：
+
+- 全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`；其中 387 页为 `draft_needs_translation`、11 页为 `draft_template_only`，`bilingual_draft` 仍不是完整翻译。
+- 剩余 `draft_template_only` 11 页基本是 `_source.html` 源码页、`search.html` 或目录页，继续低优先处理。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理仍只有一层补强、中文量较低且用户会实际浏览的 Class Members 变量/枚举索引和模块入口页。
+2. 建议下一组：`full_site/api/functions_vars_z.html`、`full_site/api/functions_eval.html`、`full_site/api/usd_skel_page_front.html`、`full_site/api/usd_lux_page_front.html`、`full_site/api/functions_vars_y.html`。
+3. 之后可继续 `usd_media_page_front.html`、`tf_page_front.html`、`glf_page_front.html`、`globals_o.html`、`functions_enum.html`，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。

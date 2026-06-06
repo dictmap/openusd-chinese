@@ -54,6 +54,27 @@
         <li><span class="zh">命名空间编辑：</span><span class="en">namespace edit</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-154">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`globals_type.html` 是 File Members 的 typedef/type alias 索引页，横跨 `Arch`、`Ef`、`Exec`、`Gf`、`Pcp`、`Sdf`、`Tf`、`Usd`、`Vdf` 等模块。它列出文件级类型别名入口，不解释每个别名的完整 ownership、callback、container 或 template 约束。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for File Members - Typedefs and Type Aliases while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`ArchConstFileMapping`、`ArchCrashHandlerSystemCB`、`ArchStackTraceCallback` 偏平台、文件映射、崩溃处理和 stack trace callback，应与 USD scene API 分开阅读。</span></li>
+        <li><span class="zh">`ExecCallbackFn`、`ExecIrResult`、`EfInputValueBlockVector`、`EfPageCacheCommitRequestVector` 指向 OpenExec/Ef execution data structures 和 callback 语境。</span></li>
+        <li><span class="zh">`PcpArcInfoVector`、`PcpSiteTracker`、`PcpVariantFallbackMap` 属于 composition 数据结构；应和 Pcp arc、site、variant fallback 语义一起看。</span></li>
+        <li><span class="zh">`SdfNamespaceEditVector`、`SdfNamespaceEditDetailVector`、`SdfRelocate`、`SdfRelocates` 属于 namespace editing 和 path relocation；不能只从 typedef 名称推断编辑顺序或冲突处理。</span></li>
+        <li><span class="zh">`Tf*`、`Vt*`、`Vdf*` 类型别名通常服务基础设施、值容器或执行系统；遇到 template alias 时应保留参数原样，继续进入对应 header 查看声明。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">文件级类型别名：</span><span class="en">file-level typedef</span></li>
+        <li><span class="zh">回调类型：</span><span class="en">callback type</span></li>
+        <li><span class="zh">组合数据结构：</span><span class="en">composition data structure</span></li>
+        <li><span class="zh">路径迁移：</span><span class="en">path relocation</span></li>
+        <li><span class="zh">执行数据结构：</span><span class="en">execution data structure</span></li>
+        <li><span class="zh">模板别名：</span><span class="en">template alias</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

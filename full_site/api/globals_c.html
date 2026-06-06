@@ -54,6 +54,27 @@
         <li><span class="zh">解析工具：</span><span class="en">parse utility</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-154">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`globals_c.html` 是 File Members 的 C 段索引，当前集中在 `Combine*` namespace editing helper 和 `CustomUsdPhysicsTokens`。它的价值是按文件级符号首字母定位声明，不应被当作 namespace editing 或 USD physics 的完整教程。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for File Members - C while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`CombineError()`、`CombineResult()` 和 `CombineUnbatched()` 都来自 `namespaceEdit.h`，应放在 `SdfNamespaceEdit`、批量编辑结果和错误聚合语境下阅读。</span></li>
+        <li><span class="zh">`Combine*` 名称相近但可能处理不同阶段：错误合并、结果合并、未批处理编辑组合；具体参数和返回值需要进入 header 或函数页核对。</span></li>
+        <li><span class="zh">`CustomUsdPhysicsTokens` 来自 `parseUtils.h`，属于 UsdPhysics 解析工具或 token 定制线索，和 `namespaceEdit.h` 的 Combine 系列不是同一模块。</span></li>
+        <li><span class="zh">File Members 字母页混合函数、变量、常量、typedef 和宏；因此本页中文层先说明“条目类型”和“来源 header”，再引导到具体目标页。</span></li>
+        <li><span class="zh">本地链接若指向清单外 header 页面，会按策略进入 `site/uncovered_openusd_page.html`；这不是丢失，而是当前 406 页边界的显式提示。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">C 段文件成员：</span><span class="en">C file-member section</span></li>
+        <li><span class="zh">错误聚合：</span><span class="en">error aggregation</span></li>
+        <li><span class="zh">结果合并：</span><span class="en">result combination</span></li>
+        <li><span class="zh">未批处理编辑：</span><span class="en">unbatched edit</span></li>
+        <li><span class="zh">来源 header：</span><span class="en">source header</span></li>
+        <li><span class="zh">清单边界：</span><span class="en">inventory boundary</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

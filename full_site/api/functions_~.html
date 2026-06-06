@@ -53,6 +53,27 @@
         <li><span class="zh">内存管理器：</span><span class="en">memory manager</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-154">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`functions_~.html` 是 Class Members 的符号段索引，收录以下划线、波浪号或实现细节前缀开头的成员。它不是连续阅读的 API 章节，而是用于从特殊符号、析构函数、嵌套类型或内部 helper 反向跳到所属 class。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Class Members - Symbols and Destructor-like Entries while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`_SdrFilesystemDiscoveryPlugin`、`_StripedBufferArray`、`_StripedInterleavedBuffer` 等下划线条目通常表示内部实现或私有辅助结构；阅读时应优先确认所属 class 和 header。</span></li>
+        <li><span class="zh">`ArResolverScopedCache`、`ArResolverContextBinder`、`ArFilesystemAsset`、`ArInMemoryAsset` 等条目属于 asset resolution 语境，和 Hydra buffer 或 Vdf cache 条目不是同一层 API。</span></li>
+        <li><span class="zh">`HdStVBOMemoryManager`、`HdStInterleavedMemoryManager`、`HdBufferArrayRange` 等条目偏 Storm/Hydra GPU buffer 管理；应结合渲染后端和资源生命周期阅读。</span></li>
+        <li><span class="zh">`Ef_OutputValueCache`、`Ef_PageCache`、`EfDependencyCache`、`Vdf*` 相关条目属于 OpenExec/Vdf execution cache 语境；不要从本页推断 scene composition 规则。</span></li>
+        <li><span class="zh">符号段索引保留双冒号、下划线、template 参数和析构符号原样；中文层只说明如何分辨模块边界和下一步应进入哪个 class 页。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">符号段索引：</span><span class="en">symbol-section index</span></li>
+        <li><span class="zh">析构函数条目：</span><span class="en">destructor entry</span></li>
+        <li><span class="zh">内部 helper：</span><span class="en">internal helper</span></li>
+        <li><span class="zh">嵌套类型：</span><span class="en">nested type</span></li>
+        <li><span class="zh">资源生命周期：</span><span class="en">resource lifetime</span></li>
+        <li><span class="zh">反向跳转：</span><span class="en">reverse lookup</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
