@@ -8178,3 +8178,38 @@
 1. 回到每轮最多 5 页精修节奏，优先处理质量队列中真实存在、中文量低且用户会实际浏览的 Sdf/Exec 文档、token/descriptor 结构体页。
 2. 建议下一组：`full_site/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html`、`full_site/api/group__group___exec___attribute___comptuations.html`、`full_site/api/struct_usd_lux_tokens_type.html`、`full_site/api/struct_hgi_sampler_desc.html`、`full_site/api/struct_usd_skel_tokens_type.html`。
 3. 之后可继续 `full_site/api/struct_usd_physics_tokens_type.html`、`full_site/api/functions_vars.html`、`full_site/api/globals_l.html`、`full_site/api/functions_vars_f.html`，继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+## 第 302 轮：问题盘点、自动化纠偏与入口诚实化
+
+已完成：
+
+- 针对用户反馈“3 天后仍只有 8 页完成、398 页还是草稿”做专项问题盘点，新增 `reports/current_problem_audit.md` 与 `reports/current_problem_audit.json`。
+- 复核真实计数：全量 406 页；`bilingual_complete` 8；`bilingual_draft` 398；`good_bilingual` 8；`draft_needs_translation` 387；`draft_template_only` 11。
+- 确认 P0 根因：过去补强脚本主要给 `bilingual_draft` 页面增加中文导读和术语对照，没有页面晋级机制；质量审计又要求状态为 `bilingual_complete` 才可能给 `good_bilingual`，因此主完成数长期不增长。
+- 已把问题清单同步到 `openusd` 自动化，频率保持用户要求的每 5 分钟；新提示要求每次先读取 `reports/current_problem_audit.md/json`，优先纠偏完成度、入口诚实性、报告可解析性和用户实际浏览问题。
+- 更新 `scripts/build_final_html_entry.mjs` 并重建 `openusd_bilingual_final.html`：入口现在明确写出只有 8 页达到完整双语标准；398 页标为“未完整翻译草稿 / Incomplete drafts”；`bilingual_draft` 被解释为可本地打开但仍未完整翻译。
+- 更新 `scripts/validate_openusd_api_repro.ps1`：`validation_report.json` 改为 UTF-8 无 BOM；总入口验证改为检查新的诚实展示标准。
+
+分级变化：
+
+- 本轮分级计数保持不变：`good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。
+- 计数不变不是完成进度，而是本轮只修正流程、入口展示、自动化目标和报告编码；下一步必须实现 `draft_needs_translation -> bilingual_complete -> good_bilingual` 的真实晋级路径。
+
+验证结果：
+
+- `audit_openusd_translation_quality.mjs`：通过，确认当前仍为 8/387/11。
+- `route_openusd_internal_links_local.mjs`：通过。
+- `audit_openusd_full_draft_preview.mjs`：通过，398/398 draft 页面可预览。
+- `audit_openusd_navigation_coverage.mjs`：通过。
+- `validate_openusd_api_repro.ps1`：通过。
+- `audit_openusd_report_index.mjs`：通过。
+- Node 直接解析 `reports/validation_report.json`：`bom=false`，`parse_ok=true`。
+
+GitHub 同步：
+
+- 本轮验证通过后将使用 `OpenUSD bilingual round 302: completion audit and honest entry` 同步本轮报告、脚本、入口页和工作记录。
+
+下一轮目标：
+
+1. 不再继续“5 页导读补强”作为主路线。
+2. 先实现或明确页面晋级规则，并用审计证明哪些页面可以从 `draft_needs_translation` 晋级为 `bilingual_complete`。
+3. 选择少量高价值页面做真正逐段双语覆盖，目标是让 `good_bilingual` 实际增加。

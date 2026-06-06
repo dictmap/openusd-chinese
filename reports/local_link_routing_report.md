@@ -1,11 +1,11 @@
 # OpenUSD Local Link Routing Report
 
-Generated: 2026-06-06T17:29:42.013Z
+Generated: 2026-06-06T19:46:20.669Z
 
 ## Counts
 
 - Files checked: 409
-- Files changed: 0
+- Files changed: 1
 - Links routed to existing local pages: 4988
 - Links routed to local uncovered placeholder: 4905
 - Explicit official/original links preserved: 409

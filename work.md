@@ -4540,3 +4540,53 @@
 1. 回到每轮最多 5 页精修节奏，优先处理质量队列中真实存在、中文量低且用户会实际浏览的 Sdf/Exec 文档、token/descriptor 结构体页。
 2. 建议下一组：`full_site/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html`、`full_site/api/group__group___exec___attribute___comptuations.html`、`full_site/api/struct_usd_lux_tokens_type.html`、`full_site/api/struct_hgi_sampler_desc.html`、`full_site/api/struct_usd_skel_tokens_type.html`。
 3. 之后可继续 `full_site/api/struct_usd_physics_tokens_type.html`、`full_site/api/functions_vars.html`、`full_site/api/globals_l.html`、`full_site/api/functions_vars_f.html`，继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+## 第 302 轮：问题盘点、自动化纠偏与入口诚实化
+
+已完成：
+
+- 针对用户反馈“3 天后仍只有 8 页完成、398 页还是草稿”做专项问题盘点，新增：
+  - `reports/current_problem_audit.md`
+  - `reports/current_problem_audit.json`
+- 当前真实状态复核：
+  - 全量页面：406
+  - `bilingual_complete`：8
+  - `bilingual_draft`：398
+  - `good_bilingual`：8
+  - `draft_needs_translation`：387
+  - `draft_template_only`：11
+- 明确 P0 根因：过去大量 refinement 只给 `bilingual_draft` 页面增加中文导读和术语对照，没有把页面晋级为 `bilingual_complete` 的机制；而 `audit_openusd_translation_quality.mjs` 只有在页面状态为 `bilingual_complete` 且中文密度达标时才会给 `good_bilingual`。
+- 已更新 `openusd` 心跳自动化：每 5 分钟运行，但新目标改为完成度纠偏；自动化必须先读取 `reports/current_problem_audit.md/json`，优先处理 `P0-completion-stalled`、`P0-final-entry-misleading`、`P0-automation-wrong-objective`、`P1-link-placeholders`、`P1-draft-content-thin` 和 `P2-validation-json-bom`，不能再继续旧的 5 页小修刷轮次。
+- 更新 `scripts/build_final_html_entry.mjs` 并重建 `openusd_bilingual_final.html`：
+  - 首页文案明确说明当前只有 8 页达到完整双语标准。
+  - 将 398 页显示为“未完整翻译草稿 / Incomplete drafts”，不再用容易误导的“可检查草稿 / Draft”作为主表达。
+  - 将 pending 说明改成“未生成页面 / Not generated”，并在页面清单说明 `bilingual_draft` 只是可本地打开但仍未完整翻译。
+- 修复 `scripts/validate_openusd_api_repro.ps1`：
+  - `validation_report.json` 现在使用 UTF-8 无 BOM 写出，Node `JSON.parse` 可直接解析。
+  - `final_html_entry:shows_all_pages_inventory` 检查改为验证新的诚实入口标准，包括 `Incomplete drafts` 和 `bilingual_draft`。
+
+分级变化：
+
+- 本轮没有让 `good_bilingual` 增加，计数仍为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。
+- 原因：本轮是流程纠偏、入口展示修正、报告编码修复和自动化目标更新；尚未实现 `draft_needs_translation -> bilingual_complete -> good_bilingual` 的晋级机制。
+
+验证结果：
+
+- `audit_openusd_translation_quality.mjs` 通过，确认当前完成度仍为 8/398/11。
+- `route_openusd_internal_links_local.mjs` 通过。
+- `audit_openusd_full_draft_preview.mjs` 通过，398/398 draft 页面可预览。
+- `audit_openusd_navigation_coverage.mjs` 通过。
+- `validate_openusd_api_repro.ps1` 通过。
+- `audit_openusd_report_index.mjs` 通过。
+- `reports/validation_report.json` 经 Node 检查：`bom=false`，`parse_ok=true`。
+
+当前差距：
+
+- 398 个 `bilingual_draft` 仍不是完整翻译。
+- 多数 draft 页面仍是中文导读和术语对照，不是逐段双语覆盖。
+- 406 清单外的 Doxygen 目标仍会进入本地未覆盖占位页；这是当前路由策略，但对用户体验仍是缺口。
+
+下一步目标：
+
+1. 先实现或明确页面晋级规则：什么条件下一个 `draft_needs_translation` 页面可以变成 `bilingual_complete`，并确保审计能让 `good_bilingual` 增加。
+2. 选择少量高价值页面做真正 paragraph-level bilingual 完整升级，而不是继续只加导读块。
+3. 入口页继续保持诚实显示：`bilingual_draft` 不得被描述成完成翻译。

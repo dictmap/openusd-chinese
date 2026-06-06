@@ -365,7 +365,7 @@ const html = `<!doctype html>
         <span>中文为主 / English retained</span>
       </div>
       <h1>OpenUSD 中英双语复刻最终入口</h1>
-      <p>这是当前交付的 HTML 总入口：范围已改为 release 文档与 release/api API 文档下发现的所有 HTML 页面。已完成页面可直接打开本地双语 HTML，未完成页面进入全量待处理队列；API 名称、页面名和官方链接保持原样。</p>
+      <p>这是当前交付的 HTML 总入口：范围覆盖 release 文档与 release/api API 文档下发现的 406 个 HTML 页面。当前只有 8 页达到完整双语标准，其余本地页面仍是可检查草稿，不是完整翻译；API 名称、页面名和官方链接保持原样。</p>
     </div>
   </header>
 
@@ -381,17 +381,17 @@ const html = `<!doctype html>
       </div>
       <div class="metric">
         <strong>${escapeHtml(draftOfficialPages.length)}</strong>
-        <span>可检查草稿 / Draft</span>
+        <span>未完整翻译草稿 / Incomplete drafts</span>
       </div>
       <div class="metric">
         <strong>${escapeHtml(pendingOfficialPages.length)}</strong>
-        <span>待处理页面 / Pending</span>
+        <span>未生成页面 / Not generated</span>
       </div>
     </section>
 
     <section class="section">
       <h2>页面入口 / Page Entries</h2>
-      <p class="note">这里显示当前已经完成的本地双语 HTML。全量官方页面清单在下一节，未完成页面会标为 <code>pending_full_scope</code>。</p>
+      <p class="note">这里显示主要入口卡片；它们不代表 406 页全部完成。全量官方页面清单在下一节，<code>bilingual_draft</code> 表示可本地打开但仍未完整翻译。</p>
       <div class="page-grid">
 ${pageCards}
       </div>
@@ -419,7 +419,7 @@ ${primaryRows}
 
     <section class="section">
       <h2>所有页面清单 / All Pages Inventory</h2>
-      <p class="note">范围为官方 release toctree 与 API Doxygen navtree/menu 中发现的全部 HTML 页面。本轮不再按“高价值相邻页面”筛选。</p>
+      <p class="note">范围为官方 release toctree 与 API Doxygen navtree/menu 中发现的全部 HTML 页面。本表中的 <code>bilingual_complete</code> 才计入完整双语；<code>bilingual_draft</code> 只是可检查草稿。</p>
       <div class="table-wrap">
         <table>
           <thead>

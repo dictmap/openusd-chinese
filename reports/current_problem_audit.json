@@ -1,0 +1,62 @@
+{
+  "generated_at": "2026-06-07",
+  "purpose": "Current problem audit after user reported that the project still shows only 8 complete pages after multiple days.",
+  "current_counts": {
+    "total_pages": 406,
+    "bilingual_complete": 8,
+    "bilingual_draft": 398,
+    "good_bilingual": 8,
+    "draft_needs_translation": 387,
+    "draft_template_only": 11
+  },
+  "problems": [
+    {
+      "id": "P0-completion-stalled",
+      "severity": "P0",
+      "summary": "The main completion number is structurally stalled at 8.",
+      "evidence": "audit_openusd_translation_quality.mjs only emits good_bilingual when the inventory status is bilingual_complete; prior refinement scripts add Chinese guidance to bilingual_draft pages but do not promote them to bilingual_complete.",
+      "required_action": "Define and implement a promotion path from draft_needs_translation to bilingual_complete/good_bilingual, then verify that good_bilingual increases."
+    },
+    {
+      "id": "P0-final-entry-misleading",
+      "severity": "P0",
+      "summary": "The final entry can mislead users by showing pending=0 while 398 pages are still incomplete drafts.",
+      "evidence": "openusd_bilingual_final.html labels 398 pages as Draft and 0 as Pending; users reasonably read this as almost complete.",
+      "required_action": "Change final entry wording so bilingual_draft means incomplete translation, not completed work."
+    },
+    {
+      "id": "P0-automation-wrong-objective",
+      "severity": "P0",
+      "summary": "The old heartbeat automation optimized for repeated 5-page refinement and GitHub sync rather than real completion progress.",
+      "evidence": "Recent rounds repeatedly recorded that counts remained unchanged and treated that as expected.",
+      "required_action": "Update automation prompt so it refuses to continue round-churn unless it improves completion criteria, user-facing honesty, or a concrete browsing defect."
+    },
+    {
+      "id": "P1-link-placeholders",
+      "severity": "P1",
+      "summary": "Many clicks still route to the local uncovered placeholder because the 406-page inventory does not contain every official Doxygen target.",
+      "evidence": "local_link_routing_report records thousands of uncovered links; this is intentional by policy but still a user-visible browsing gap.",
+      "required_action": "Prioritize high-click navigation and TOC links for local anchors or inventory expansion; do not present placeholder routing as a finished reading experience."
+    },
+    {
+      "id": "P1-draft-content-thin",
+      "severity": "P1",
+      "summary": "Most draft pages contain Chinese guidance and term notes, not paragraph-level bilingual translation.",
+      "evidence": "387 pages remain draft_needs_translation; 11 pages remain draft_template_only.",
+      "required_action": "For selected high-value pages, replace or supplement guide-only blocks with dense paragraph-level bilingual coverage and then promote status only if the page passes the stricter rule."
+    },
+    {
+      "id": "P2-validation-json-bom",
+      "severity": "P2",
+      "summary": "validation_report.json was written with UTF-8 BOM, which breaks standard Node JSON.parse.",
+      "evidence": "A direct JSON.parse of reports/validation_report.json failed on the leading BOM.",
+      "required_action": "Write validation_report.json as UTF-8 without BOM and keep the report parseable by both PowerShell and Node."
+    }
+  ],
+  "next_actions": [
+    "Regenerate the final entry with honest draft wording.",
+    "Fix validation_report.json to be UTF-8 without BOM.",
+    "Sync this problem audit into the openusd automation prompt.",
+    "Before any future translation round, implement or document the draft-to-complete promotion rule."
+  ]
+}

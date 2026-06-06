@@ -599,7 +599,7 @@ $checks.Add([pscustomobject]@{
 
 $checks.Add([pscustomobject]@{
   check = "final_html_entry:shows_all_pages_inventory"
-  passed = ($finalHtml -match 'All Pages Inventory' -and $finalHtml -match 'bilingual_draft' -and $finalHtml -match 'pending_full_scope' -and $finalHtml -match 'reports/all_pages_inventory\.json' -and $finalHtml -match ('data-page-count="' + [regex]::Escape([string]$allPagesInventory.counts.total_pages) + '"'))
+  passed = ($finalHtml -match 'All Pages Inventory' -and $finalHtml -match 'bilingual_draft' -and $finalHtml -match 'Incomplete drafts' -and $finalHtml -match 'reports/all_pages_inventory\.json' -and $finalHtml -match ('data-page-count="' + [regex]::Escape([string]$allPagesInventory.counts.total_pages) + '"'))
 })
 
 $auditIndex = Get-Content -LiteralPath (Join-Path $reportDir "audit_index.json") -Raw -Encoding UTF8 | ConvertFrom-Json
@@ -800,7 +800,9 @@ $report = [pscustomobject]@{
   checks = $checks
 }
 
-$report | ConvertTo-Json -Depth 4 | Out-File -LiteralPath $reportPath -Encoding UTF8
+$reportJson = $report | ConvertTo-Json -Depth 4
+$utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+[System.IO.File]::WriteAllText($reportPath, $reportJson, $utf8NoBom)
 
 if ($failed.Count -gt 0) {
   Write-Output "FAILED"
