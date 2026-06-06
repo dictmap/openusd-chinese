@@ -54,6 +54,27 @@
         <li><span class="zh">渲染缓冲：</span><span class="en">render buffer</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-136">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`HdxPickFromRenderBufferTask` 是 Hdx 中针对已有 ID buffers 执行 picking queries 的任务。它把 `HdxPickTaskContextParams` 提供的 pick frustum 重映射到生成 ID buffer 时的 camera frustum，然后只在被 pick frustum 覆盖的 buffer 子集上查询，适合复用已有 render buffer 做交互拾取。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdxPickFromRenderBufferTask while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`TaskParams` 通常对应 `HdxPickFromRenderBufferTaskParams`，用于描述任务执行所需的 pick 参数、buffer 输入和结果输出约定；不要把它和普通 render task 参数混用。</span></li>
+        <li><span class="zh">`Prepare()`、`_Sync()` 与 `Execute()` 分别落在 Hydra task 生命周期的准备、同步和执行阶段；读取本页时要把它放进 `HdEngine::Execute()` 调度链理解。</span></li>
+        <li><span class="zh">该任务依赖已有 ID buffers，因此核心成本在 frustum remap 和局部 query，而不是重新绘制整场景；这也是它区别于常规 pick render path 的地方。</span></li>
+        <li><span class="zh">`IsConverged()` 反映任务结果是否收敛；在交互 picking 中它通常服务于 UI 决策，而不是表示 scene delegate 中所有 prim 都已完全同步。</span></li>
+        <li><span class="zh">`HdSceneDelegate`、`HdRenderIndex`、`Hgi` 和 `HdDriver` 表明任务横跨 scene data、render index 与 GPU execution context；中文说明应保留这些层次边界。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">从渲染缓冲拾取：</span><span class="en">pick from render buffer</span></li>
+        <li><span class="zh">ID 缓冲：</span><span class="en">ID buffers</span></li>
+        <li><span class="zh">拾取视锥重映射：</span><span class="en">pick frustum remap</span></li>
+        <li><span class="zh">任务参数：</span><span class="en">TaskParams</span></li>
+        <li><span class="zh">Hydra 任务执行：</span><span class="en">HdEngine::Execute()</span></li>
+        <li><span class="zh">拾取查询结果：</span><span class="en">picking query result</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -54,6 +54,27 @@
         <li><span class="zh">映射表达式：</span><span class="en">map expression</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-136">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`PcpArc` 是 prim index 中连接两个 `PcpNodeRef` 的 composition arc。它由 source node 持有，并指向 index 中的 parent node 作为 target；因此它描述 Pcp composition graph 的节点关系，而不是 USD namespace 中的几何层级边。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for PcpArc while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`type` 保存 `PcpArcType`，用于区分 reference、payload、inherit、specialize、variant 等组合来源；理解 arc 语义必须先看 arc type。</span></li>
+        <li><span class="zh">`parent`、`origin` 和 `siblingNumAtOrigin` 帮助定位 arc 在组合图中的目标、起源和兄弟顺序；这些字段服务于 composition ordering 和错误诊断。</span></li>
+        <li><span class="zh">`mapToParent` 是 `PcpMapExpression`，描述 source node namespace 如何映射到 parent node；路径映射错误常会影响 property 和 prim opinion 的最终落点。</span></li>
+        <li><span class="zh">`namespaceDepth` 记录 namespace 映射相关深度信息；它不是 stage 中 prim path 的字符串长度，而是 Pcp 内部组合计算的一部分。</span></li>
+        <li><span class="zh">阅读 `PcpArc` 时应和 `PcpPropertyIndex`、`PcpNodeRef`、`PcpPrimIndex` 一起看：arc 描述边，node 描述站点，index 汇总组合结构。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">组合图边：</span><span class="en">composition arc</span></li>
+        <li><span class="zh">组合边类型：</span><span class="en">PcpArcType</span></li>
+        <li><span class="zh">源节点：</span><span class="en">source node</span></li>
+        <li><span class="zh">父节点 / 目标节点：</span><span class="en">parent node / target</span></li>
+        <li><span class="zh">路径映射表达式：</span><span class="en">PcpMapExpression</span></li>
+        <li><span class="zh">命名空间深度：</span><span class="en">namespaceDepth</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

@@ -54,6 +54,27 @@
         <li><span class="zh">交错偏移：</span><span class="en">interleaved offset</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-136">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`HdStDispatchBuffer` 是 Storm/HdSt 后端中的 GPU dispatch buffer，底层是 unsigned integers 的 VBO，用于承载 `MultiDrawIndirect` 或 `DispatchComputeIndirect` 等 indirect dispatch 所需的命令数据。它服务于 GPU 间接绘制/计算调度，不是普通 primvar buffer。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdStDispatchBuffer while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`AddBufferResourceView()` 会在同一 uint array 上创建不同的 `BufferResourceView`；这些 view 可按 interleaved offset 暴露给 shader 或 resource binder。</span></li>
+        <li><span class="zh">`GetCommandNumUints()` 和 `GetCount()` 分别描述每条命令占用的 uint 数量和命令条目数，是理解 indirect command layout 的关键。</span></li>
+        <li><span class="zh">`Reallocate()` 与 `CopyData()` 管理 buffer 容量和数据上传；它们影响 GPU resource 生命周期，而不是 scene delegate 的 authored data。</span></li>
+        <li><span class="zh">`GetEntireResource()`、`GetResource()`、`GetResources()` 和 `GetBufferArrayRange()` 体现该类同时面向单个 resource view 和整体 buffer array 访问。</span></li>
+        <li><span class="zh">`GarbageCollect()` 与 `DebugDump()` 分别服务于资源回收和诊断；在 Storm 调试中应结合 `HdStResourceRegistry` 和 `HdResourceBinder` 一起看。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Storm 调度缓冲：</span><span class="en">HdStDispatchBuffer</span></li>
+        <li><span class="zh">无符号整数 VBO：</span><span class="en">unsigned integer VBO</span></li>
+        <li><span class="zh">间接绘制命令：</span><span class="en">MultiDrawIndirect</span></li>
+        <li><span class="zh">间接计算调度：</span><span class="en">DispatchComputeIndirect</span></li>
+        <li><span class="zh">缓冲资源视图：</span><span class="en">BufferResourceView</span></li>
+        <li><span class="zh">命令布局：</span><span class="en">command layout</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

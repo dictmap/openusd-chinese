@@ -3401,3 +3401,33 @@
 1. 继续最多 5 页，优先处理仍较薄且用户会实际查阅的 Hydra/Hdx 与 Pcp class 页面。
 2. 建议下一组：`full_site/api/class_hdx_pick_from_render_buffer_task.html`、`full_site/api/class_pcp_arc.html`、`full_site/api/class_hd_task.html`、`full_site/api/class_hd_st_dispatch_buffer.html`、`full_site/api/class_pcp_error_unresolved_prim_path.html`。
 3. 之后可继续 Hdx、Pcp、HdSt、Hd、Vt 的高价值 class 页面，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+## 第 267 轮：Hdx Pick、Pcp Arc、HdTask、HdStDispatchBuffer 与 PcpError 补强
+
+- 基线：本地 `main` 基于上一轮同步提交 `96e0c82`，`origin/main` 一致，起始工作区干净；全量仍为 406 个 HTML 页面，质量计数为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。
+- 新增并执行 `scripts/refine_openusd_release_batch_136.mjs`，本轮标记为 `api-class-quality-pass-136`。
+- 严格只精修 5 页：
+  - `full_site/api/class_hdx_pick_from_render_buffer_task.html`
+  - `full_site/api/class_pcp_arc.html`
+  - `full_site/api/class_hd_task.html`
+  - `full_site/api/class_hd_st_dispatch_buffer.html`
+  - `full_site/api/class_pcp_error_unresolved_prim_path.html`
+- 每页新增 5 条中文补强导读和 6 条术语对照；重点覆盖 `HdxPickFromRenderBufferTask` 的 ID buffer picking、pick frustum remap 与 task 生命周期，`PcpArc` 的 source/target node、`PcpArcType`、`PcpMapExpression` 与 composition graph 边语义，`HdTask` 的 `Sync()` / `Prepare()` / `Execute()` 调度阶段、dirty bits、task context 与 convergence，`HdStDispatchBuffer` 的 unsigned integer VBO、indirect dispatch、`BufferResourceView` 与 command layout，以及 `PcpErrorUnresolvedPrimPath` 的 `site`、`unresolvedPath`、`sourceLayer`、`targetLayer`、`arcType` 和 resolved/loaded 诊断边界；API 名称、类名、方法名、属性名、数学符号、template 参数、token 字面量和链接保持原样。
+- 质量回读：5 页均无 `TODO` / `待翻译` / `机器翻译占位`，`api-class-quality-pass-136` 均只出现 1 次：
+  - `class_hdx_pick_from_render_buffer_task.html`：中文字符 620，中文/英文块 37/29。
+  - `class_pcp_arc.html`：中文字符 573，中文/英文块 36/28。
+  - `class_hd_task.html`：中文字符 606，中文/英文块 43/35。
+  - `class_hd_st_dispatch_buffer.html`：中文字符 578，中文/英文块 46/38。
+  - `class_pcp_error_unresolved_prim_path.html`：中文字符 675，中文/英文块 41/33。
+- 本轮分级计数保持不变：`draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因：处理对象开始前已属 `draft_needs_translation`，本轮是二次补强精修，不是从模板草稿晋级。
+- 已运行并通过：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1`；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步记录：本轮复验通过后使用 `OpenUSD bilingual round 267: hdx pcp hd task buffer pass` 同步本轮 HTML、脚本、报告和 `work.md`；如果同步脚本失败，本轮不推送并先修复。
+
+当前差距：
+- 全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`；其中 387 页为 `draft_needs_translation`、11 页为 `draft_template_only`，`bilingual_draft` 仍不是完整翻译。
+- 剩余 `draft_template_only` 11 页基本是 `_source.html` 源码页、`search.html` 或目录页，继续低优先处理。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理仍较薄且用户会实际查阅的 UsdSkel/UsdImaging/Sdf/usdVol class 页面。
+2. 建议下一组：`full_site/api/class_usd_skel_imaging_data_source_skeleton_prim.html`、`full_site/api/class_usd_imaging_adapter_registry.html`、`full_site/api/class_usd_imaging_nurbs_patch_adapter.html`、`full_site/api/class_sdf_usdz_file_format.html`、`full_site/api/class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html`。
+3. 之后可继续 UsdSkel Imaging、UsdImaging、Sdf、UsdVol、Hd 的高价值 class 页面，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。

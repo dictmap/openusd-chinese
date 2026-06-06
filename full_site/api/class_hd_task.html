@@ -54,6 +54,27 @@
         <li><span class="zh">HdEngine::Execute()：</span><span class="en">HdEngine::Execute()</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-136">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`HdTask` 是 Hydra render 期间执行的 abstract unit of work，可被派生类用于准备资源、运行 3D render passes、执行 compositing/color correction 等 2D passes，或协调应用与 renderer 集成。它是 `HdEngine::Execute()` 调度的任务节点，而不是 scene prim。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdTask while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Sync()`、`Prepare()` 与 `Execute()` 是 task 生命周期的主线：同步 scene delegate 数据、准备执行资源、再运行具体任务逻辑。</span></li>
+        <li><span class="zh">`GetInitialDirtyBitsMask()` 定义 task 初始需要同步的 dirty bits；派生任务若设置过宽会增加同步成本，设置过窄则可能漏掉必要数据。</span></li>
+        <li><span class="zh">`_GetTaskParams()`、`_GetTaskContextData()` 和 `_HasTaskContextData()` 用于访问 task context 中的参数和共享数据；这解释了多个 Hdx task 如何通过 context 协作。</span></li>
+        <li><span class="zh">`GetRenderTags()` 帮助 task 选择或过滤参与渲染的 render tags；它与 USD purpose 或 collection 过滤相关，但不是同一个 API 层。</span></li>
+        <li><span class="zh">`IsConverged()` 提供任务级收敛状态；交互 viewport 可据此判断是否继续调度，而不是把它当作最终图像质量保证。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Hydra 任务：</span><span class="en">HdTask</span></li>
+        <li><span class="zh">工作单元：</span><span class="en">unit of work</span></li>
+        <li><span class="zh">同步阶段：</span><span class="en">Sync()</span></li>
+        <li><span class="zh">准备阶段：</span><span class="en">Prepare()</span></li>
+        <li><span class="zh">执行阶段：</span><span class="en">Execute()</span></li>
+        <li><span class="zh">任务上下文数据：</span><span class="en">task context data</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

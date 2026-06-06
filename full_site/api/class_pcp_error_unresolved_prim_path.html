@@ -54,6 +54,27 @@
         <li><span class="zh">组合错误：</span><span class="en">composition error</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-136">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`PcpErrorUnresolvedPrimPath` 是 Pcp composition / asset resolution 期间的错误对象，用来报告 asset paths 不能同时 resolved 和 loaded 的 unresolved prim path 情况。它继承自 `PcpErrorBase`，应作为组合诊断信息读取，而不是普通异常类型。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for PcpErrorUnresolvedPrimPath while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`New()` 是构造该错误对象的静态入口；`ToString()` 提供面向日志或诊断 UI 的字符串化说明，但结构化排查仍应读取字段。</span></li>
+        <li><span class="zh">`site` 指向发生错误的 `PcpSite`，`unresolvedPath` 保留未解析 prim path；两者合起来给出错误位置和失败目标。</span></li>
+        <li><span class="zh">`sourceLayer` 与 `targetLayer` 帮助判断 asset path 是在哪个 layer 到哪个 layer 的组合关系中失败，适合排查 layer stack 和 resolver context。</span></li>
+        <li><span class="zh">`arcType` 记录触发问题的 `PcpArcType`；reference、payload、inherit 或其它 arc 类型会影响用户应检查的 authored opinion。</span></li>
+        <li><span class="zh">resolved 和 loaded 是两个阶段：路径解析成功不等于资源已可加载；本错误强调两者不能同时满足，通常需要同时检查 asset resolver、文件可达性和 layer 内容。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">未解析 prim 路径错误：</span><span class="en">PcpErrorUnresolvedPrimPath</span></li>
+        <li><span class="zh">错误位置：</span><span class="en">PcpSite</span></li>
+        <li><span class="zh">未解析路径：</span><span class="en">unresolvedPath</span></li>
+        <li><span class="zh">源图层：</span><span class="en">sourceLayer</span></li>
+        <li><span class="zh">目标图层：</span><span class="en">targetLayer</span></li>
+        <li><span class="zh">组合边类型：</span><span class="en">arcType</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
