@@ -53,6 +53,27 @@
         <li><span class="zh">shader 发现：</span><span class="en">shader discovery</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-members-index-quality-pass-150">
+      <h2>中文二次索引补强 / Chinese Index-Focused Notes</h2>
+      <p class="zh">`functions_func_~.html` 是函数成员索引的符号段，包含 `_`、`~` 或实现细节命名的条目，如 discovery plugin、Hydra memory manager helper、asset resolver scope/cache 和若干 helper cache。它常用于定位析构、内部 helper 或 Doxygen 暴露出的嵌套类型入口。</p>
+      <p class="en">This index-focused refinement adds page-specific Chinese guidance for Class Members - Functions - Symbols while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">带 `_` 前缀的 `_SdrFilesystemDiscoveryPlugin`、`_StripedBufferArray` 等名称通常更接近实现细节或嵌套 helper，调用前要确认公开 API 边界。</span></li>
+        <li><span class="zh">`ArResolverContextBinder`、`ArResolverScopedCache`、`ArFilesystemAsset`、`ArInMemoryAsset` 属于 asset resolution 生命周期、上下文绑定和缓存相关线索。</span></li>
+        <li><span class="zh">`TfMallocTag::Auto` 指向临时内存标记辅助对象，和 Hydra buffer helper、Ef cache helper 属于不同系统。</span></li>
+        <li><span class="zh">符号段页面不是析构函数教程；它只是 Doxygen 把非字母开头或特殊符号开头的成员集中到一个入口。</span></li>
+        <li><span class="zh">阅读时要保留 `_`、`~`、`::` 和模板参数原样，否则会影响本地搜索、链接锚点和官方 API 对照。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">符号段函数索引：</span><span class="en">symbol function index</span></li>
+        <li><span class="zh">实现细节入口：</span><span class="en">implementation-detail entry</span></li>
+        <li><span class="zh">嵌套 helper：</span><span class="en">nested helper</span></li>
+        <li><span class="zh">解析器作用域：</span><span class="en">resolver scope</span></li>
+        <li><span class="zh">作用域缓存：</span><span class="en">scoped cache</span></li>
+        <li><span class="zh">内存标记：</span><span class="en">memory tag</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

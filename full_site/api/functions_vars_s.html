@@ -54,6 +54,27 @@
         <li><span class="zh">蒙皮烘焙参数：</span><span class="en">bake skinning parameters</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-members-index-quality-pass-150">
+      <h2>中文二次索引补强 / Chinese Index-Focused Notes</h2>
+      <p class="zh">`functions_vars_s.html` 是变量索引的 S 段，当前密集覆盖 `UsdGeom` schema class、API schema、token tables、Hydra scene index input、physics rigid body descriptor 和 skel bake 参数。它是跨 domain 变量入口，需要先按 schema、scene index、physics、skel 分组。</p>
+      <p class="en">This index-focused refinement adds page-specific Chinese guidance for Class Members - Variables - S while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdGeomBasisCurves`、`UsdGeomMesh`、`UsdGeomPointInstancer`、`UsdGeomSphere` 等属于具体 geometry schema，不应和 API schema 基类混读。</span></li>
+        <li><span class="zh">`UsdAPISchemaBase`、`UsdCollectionAPI`、`UsdGeomPrimvarsAPI` 等是 API schema 或辅助 schema，通常通过 apply / authoring 方式影响 prim。</span></li>
+        <li><span class="zh">`SdfNamespaceEdit` 指向命名空间编辑操作，和 geometry schema 变量同页出现只是因为字母索引，不代表同一模块。</span></li>
+        <li><span class="zh">`HdMergingSceneIndex::InputScene` 属于 Hydra scene index 合并输入，`UsdPhysicsRigidBodyDesc` 和 `UsdSkelBakeSkinningParms` 分别属于 physics 与 skel 工作流。</span></li>
+        <li><span class="zh">如果用户从本页进入具体 schema，应继续检查 schemaKind、attribute list、Create/Get 方法和 token 定义，而不是只看变量索引。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">S 段变量索引：</span><span class="en">S variable index</span></li>
+        <li><span class="zh">几何 schema：</span><span class="en">geometry schema</span></li>
+        <li><span class="zh">辅助 API schema：</span><span class="en">auxiliary API schema</span></li>
+        <li><span class="zh">命名空间编辑：</span><span class="en">namespace edit</span></li>
+        <li><span class="zh">scene index 输入：</span><span class="en">scene index input</span></li>
+        <li><span class="zh">刚体描述：</span><span class="en">rigid body descriptor</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

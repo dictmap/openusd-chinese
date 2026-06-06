@@ -54,6 +54,27 @@
         <li><span class="zh">类成员索引：</span><span class="en">class member index</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-members-index-quality-pass-150">
+      <h2>中文二次索引补强 / Chinese Index-Focused Notes</h2>
+      <p class="zh">`functions_y.html` 是 Class Members 的 Y 段索引，覆盖 geometry、lighting、physics token tables、`GfVec*` 向量族和 `VdfExecutorBufferData`。它把 y 分量、y 轴 token 和执行缓冲数据放在同一字母导航下，需要按模块拆读。</p>
+      <p class="en">This index-focused refinement adds page-specific Chinese guidance for Class Members - Y while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`GfVec2*`、`GfVec3*`、`GfVec4*` 在 Y 段通常指向 y component 或相关成员；具体字段、operator 和存储布局仍以目标类型页面为准。</span></li>
+        <li><span class="zh">`UsdGeomTokensType`、`UsdLuxTokensType`、`UsdPhysicsTokensType` 分别服务 geometry、lighting、physics domain，不能因为都在 Y 段就合并语义。</span></li>
+        <li><span class="zh">`VdfExecutorBufferData` 属于 Vdf 执行系统数据结构，和 Gf 数学类型、USD token 表不是同一层概念。</span></li>
+        <li><span class="zh">排查属性名或 token 拼写时，本页可作为入口；排查数值行为时，应继续查 `GfVec*` 或 Vdf executor 相关页面。</span></li>
+        <li><span class="zh">索引页中的英文 API 名称保留不翻译，中文层只补充分组、检索路径和避免误读的提示。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Y 段类成员索引：</span><span class="en">Y class member index</span></li>
+        <li><span class="zh">Y 分量：</span><span class="en">Y component</span></li>
+        <li><span class="zh">灯光 token：</span><span class="en">lighting token</span></li>
+        <li><span class="zh">物理 token：</span><span class="en">physics token</span></li>
+        <li><span class="zh">执行缓冲数据：</span><span class="en">executor buffer data</span></li>
+        <li><span class="zh">模块拆读：</span><span class="en">module-based reading</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
