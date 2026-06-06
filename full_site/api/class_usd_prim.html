@@ -54,6 +54,27 @@
         <li><span class="zh">实例化：</span><span class="en">instancing</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-132">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`UsdPrim` 是 `UsdStage` 上唯一持久的 scenegraph object，也是运行时访问 prim、properties、metadata、composition arcs 和 applied schemas 的核心入口。阅读本页时要把 `UsdPrim` 理解为 composition 后的场景图句柄，而不是某个单一 layer 中的 `SdfPrimSpec`。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdPrim while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdPrim` 可以访问 `UsdVariantSets`、`UsdReferences`、`UsdInherits`、payloads、properties 和 metadata；这些 API 操作的是 composed prim 的可见接口，具体 authored opinions 仍来自 layer stack。</span></li>
+        <li><span class="zh">`IsValid()`、`operator bool` 和 Lifetime Management 相关说明要优先阅读；prim 句柄可能因 stage mutation、payload loading 或重新组成而失效，不能把它当成永久裸指针。</span></li>
+        <li><span class="zh">`GetChildren()`、`GetFilteredChildren()`、`SiblingIterator` 和 `SubtreeIterator` 体现遍历语义；遍历结果会受到 prim active/load/visibility/predicate 等条件影响。</span></li>
+        <li><span class="zh">`ApplyAPI()`、`AddAppliedSchema()` 和 applied schema 列表决定 prim 上附加的 API schema 行为；中文说明要保留 `apiSchemas`、`ApplyAPI`、`UsdSchemaRegistry` 等名称以便和 schema 文档对照。</span></li>
+        <li><span class="zh">`UsdPrim` 是很多 typed schema class 的基础载体；`UsdGeomMesh`、`UsdLux*`、`UsdShade*` 等对象通常包装或验证一个 `UsdPrim`，但不替代 `UsdPrim` 的通用 composition 语义。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD prim 运行时句柄：</span><span class="en">UsdPrim</span></li>
+        <li><span class="zh">场景图对象：</span><span class="en">scenegraph object</span></li>
+        <li><span class="zh">组合弧：</span><span class="en">composition arc</span></li>
+        <li><span class="zh">已创作意见：</span><span class="en">authored opinion</span></li>
+        <li><span class="zh">已应用 schema：</span><span class="en">applied schema</span></li>
+        <li><span class="zh">prim 遍历：</span><span class="en">prim traversal</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

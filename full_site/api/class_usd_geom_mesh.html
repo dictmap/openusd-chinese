@@ -54,6 +54,27 @@
         <li><span class="zh">折痕：</span><span class="en">crease</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-132">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`UsdGeomMesh` 是 `UsdGeom` 中的 mesh typed schema，用 points 和 face-vertices 拓扑描述几何，并可附带 subdivision properties、holes、creases、corners 和 interpolation 控制。阅读时要区分点数据、面顶点索引和细分曲面规则。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdGeomMesh while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`faceVertexCounts` 与 `faceVertexIndices` 共同定义面拓扑；前者给出每个 face 的顶点数量，后者按顺序展开所有 face-vertices 的 point 索引。</span></li>
+        <li><span class="zh">`points` 通常来自 `UsdGeomPointBased` 基类；mesh 几何本身依赖 points 与 topology 的一致性，索引越界或数量不匹配会导致消费端解释失败。</span></li>
+        <li><span class="zh">`subdivisionScheme`、`interpolateBoundary`、`faceVaryingLinearInterpolation` 和 `triangleSubdivisionRule` 描述 subdivision 行为；它们不等同于直接改变 authored topology。</span></li>
+        <li><span class="zh">`creaseIndices`、`creaseLengths`、`creaseSharpnesses`、`cornerIndices` 和 `cornerSharpnesses` 控制细分边界特征；读取时应按属性组理解，不能孤立解释单个数组。</span></li>
+        <li><span class="zh">`UsdGeomMesh` 常与 `UsdGeomPrimvarsAPI` 和 material binding 一起使用；primvars 的 interpolation、normals、UV 等信息会影响渲染，但 mesh schema 的核心仍是拓扑和几何属性。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 几何网格：</span><span class="en">UsdGeomMesh</span></li>
+        <li><span class="zh">每面顶点数量：</span><span class="en">faceVertexCounts</span></li>
+        <li><span class="zh">面顶点索引：</span><span class="en">faceVertexIndices</span></li>
+        <li><span class="zh">细分方案：</span><span class="en">subdivisionScheme</span></li>
+        <li><span class="zh">折痕锐度：</span><span class="en">crease sharpness</span></li>
+        <li><span class="zh">拓扑：</span><span class="en">topology</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

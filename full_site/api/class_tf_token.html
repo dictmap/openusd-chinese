@@ -54,6 +54,27 @@
         <li><span class="zh">驻留字符串：</span><span class="en">interned string</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-132">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`TfToken` 是已注册字符串的 handle，用于对已知且数量有界的符号字符串进行常数时间比较、赋值和 hashing。它是 USD 中 tokenized names、属性名、schema token、locator 片段和大量标识符的底层基础类型。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for TfToken while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`TfToken` 适合固定符号集合，不适合无限增长的任意用户字符串；因为 token 注册后会进入全局表，滥用会造成长期内存压力。</span></li>
+        <li><span class="zh">`GetString()` 返回 `std::string` 形式，`GetText()` / `data()` 更偏底层字符指针访问；性能敏感路径应避免反复把 token 转回字符串比较。</span></li>
+        <li><span class="zh">`Hash()`、`HashSet` 和 `Set` 说明 token 适合作为 hash key；比较通常基于已注册字符串 identity，而不是逐字符线性比较。</span></li>
+        <li><span class="zh">`Find()` 可在不强制创建新 token 的情况下查找已注册字符串；这对避免无意扩展 token table 很重要。</span></li>
+        <li><span class="zh">`IsEmpty()` 与空 token 语义要和空字符串区别理解；在 API 约定中 empty token 常用于默认值、无命名实例或无效标识的轻量表达。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Tf 注册字符串 token：</span><span class="en">TfToken</span></li>
+        <li><span class="zh">已注册字符串：</span><span class="en">registered string</span></li>
+        <li><span class="zh">常数时间比较：</span><span class="en">constant time comparison</span></li>
+        <li><span class="zh">哈希：</span><span class="en">hashing</span></li>
+        <li><span class="zh">token 全局表：</span><span class="en">token table</span></li>
+        <li><span class="zh">空 token：</span><span class="en">empty token</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

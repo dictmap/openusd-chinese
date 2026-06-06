@@ -54,6 +54,27 @@
         <li><span class="zh">shader 输入：</span><span class="en">shader inputs</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-132">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`UsdGeomPrimvarsAPI` 用于创建、查询和继承 `UsdGeomPrimvar`，也就是沿几何 primitive topology 插值的 primitive variables。它是几何属性、shader inputs、UV、颜色和实例化数据之间的关键桥接 API。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdGeomPrimvarsAPI while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`CreatePrimvar()`、`CreateIndexedPrimvar()` 和 `CreateNonIndexedPrimvar()` 是创建入口；indexed primvar 通过 indices 复用值表，non-indexed primvar 直接按 interpolation 规则存值。</span></li>
+        <li><span class="zh">`GetPrimvars()`、`GetAuthoredPrimvars()` 与 `FindPrimvarsWithInheritance()` 的语义不同：前者偏枚举，后者会考虑 namespace inheritance 和祖先 primvars。</span></li>
+        <li><span class="zh">`interpolation` 决定 primvar 如何映射到 topology，例如 constant、uniform、vertex、varying、faceVarying；中文层应保留这些 token 字面量。</span></li>
+        <li><span class="zh">`BlockPrimvar()` 用于阻断继承或 authored value；这不是删除所有上游数据，而是在 composition 结果中表达 block 意见。</span></li>
+        <li><span class="zh">`CanContainPropertyName()` 和 `primvars:` namespace 规则决定属性名是否合法；不要把普通 attribute 和 primvar 混为一类，primvar 有额外插值和继承语义。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 几何 primvars API：</span><span class="en">UsdGeomPrimvarsAPI</span></li>
+        <li><span class="zh">几何 primitive variable：</span><span class="en">UsdGeomPrimvar</span></li>
+        <li><span class="zh">插值方式：</span><span class="en">interpolation</span></li>
+        <li><span class="zh">索引式 primvar：</span><span class="en">indexed primvar</span></li>
+        <li><span class="zh">primvars 命名空间：</span><span class="en">primvars namespace</span></li>
+        <li><span class="zh">继承：</span><span class="en">inheritance</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

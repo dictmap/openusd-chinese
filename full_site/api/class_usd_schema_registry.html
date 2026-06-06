@@ -54,6 +54,27 @@
         <li><span class="zh">generatedSchema.usda：</span><span class="en">generatedSchema.usda</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-132">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`UsdSchemaRegistry` 是访问 USD `IsA` schema、applied API schema、schema type information 和 prim definitions 的 singleton registry。它把 `schema.usda` / `generatedSchema.usda` 中的声明数据转换为运行时可查询的 schema 信息。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdSchemaRegistry while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`FindConcretePrimDefinition()`、`FindAbstractPrimDefinition()` 和 `FindAppliedAPIPrimDefinition()` 分别面向 concrete typed schema、abstract schema 和 applied API schema 的 prim definition 查询。</span></li>
+        <li><span class="zh">`BuildComposedPrimDefinition()` 用于组合 prim type 和 applied API schemas 后的定义；这解释了为什么实际 prim 可用属性可能来自多个 schema 源。</span></li>
+        <li><span class="zh">`FindSchemaInfo()` 与 `FindSchemaInfosInFamily()` 关注 schema identity、family 和 version；遇到 versioned schema 时要结合 `VersionPolicy` 读。</span></li>
+        <li><span class="zh">`GetAPISchemaTypeName()`、`GetAPISchemaCanOnlyApplyToTypeNames()` 和 auto-apply API schema 相关接口用于判断 API schema 的应用规则和限制。</span></li>
+        <li><span class="zh">`UsdSchemaRegistry` 服务于 schema 发现与定义查询，不直接修改 stage；它回答“某 schema 声明了什么”，而不是“某个 prim 当前 author 了什么值”。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD schema 注册表：</span><span class="en">UsdSchemaRegistry</span></li>
+        <li><span class="zh">单例注册表：</span><span class="en">singleton registry</span></li>
+        <li><span class="zh">IsA 类型 schema：</span><span class="en">IsA schema</span></li>
+        <li><span class="zh">已应用 API schema：</span><span class="en">applied API schema</span></li>
+        <li><span class="zh">prim 定义：</span><span class="en">prim definition</span></li>
+        <li><span class="zh">版本策略：</span><span class="en">VersionPolicy</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
