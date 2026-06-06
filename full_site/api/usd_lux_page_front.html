@@ -54,6 +54,27 @@
         <li><span class="zh">封装规则：</span><span class="en">Encapsulation Rules</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-155">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`usd_lux_page_front.html` 是 `UsdLux` 模块入口，说明 USD 如何表达可交换 lighting setup、light API、内置 light schema、plugin lights、light filters、linking 和 exposure 等语义。它不是 renderer-specific shading 文档，也不替代 `UsdShade` 或 `Sdr` 页面。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdLux: USD Lighting Schema while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdLuxLightAPI` 表示 being a light 的 API 层；`UsdLuxBoundableLightBase` 与 `UsdLuxNonboundableLightBase` 区分有界和非有界光源。</span></li>
+        <li><span class="zh">`UsdLuxCylinderLight`、`UsdLuxDiskLight`、`UsdLuxDistantLight`、`UsdLuxDomeLight`、`UsdLuxRectLight`、`UsdLuxSphereLight` 是内置 light schema；具体属性仍需进入各 class 页。</span></li>
+        <li><span class="zh">`UsdLuxMeshLightAPI` 与 `UsdLuxVolumeLightAPI` 让 mesh 或 volume 参与发光表达，应与 `UsdGeomMesh`、`UsdVolVolume` 语义一起阅读。</span></li>
+        <li><span class="zh">`LightListAPI`、`ShadowAPI`、`ShapingAPI`、`LightFilter`、`PortalLight` 和 plugin light/filter 说明本页覆盖的不只是 light prim 类型，还包括链接、阴影、整形和扩展机制。</span></li>
+        <li><span class="zh">`UsdShade` encapsulation rules、`SdrRegistry` 和 shader discovery 是跨模块阅读点；不要把 lighting schema token 当成完整 shader implementation。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">可交换灯光布置：</span><span class="en">interchangeable lighting setup</span></li>
+        <li><span class="zh">有界光源：</span><span class="en">boundable light</span></li>
+        <li><span class="zh">非有界光源：</span><span class="en">nonboundable light</span></li>
+        <li><span class="zh">灯光链接：</span><span class="en">light linking</span></li>
+        <li><span class="zh">灯光整形：</span><span class="en">light shaping</span></li>
+        <li><span class="zh">插件灯光过滤器：</span><span class="en">plugin light filter</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

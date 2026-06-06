@@ -53,6 +53,27 @@
         <li><span class="zh">变换操作：</span><span class="en">transform op</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-155">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`functions_eval.html` 是 Class Members 的 enumerator 索引页，列出具体枚举值，而不是 enum 类型本身。它横跨 `TfType`、`UsdStageLoadRules`、`UsdGeomPointInstancer`、`PcpNamespaceEdits`、`UsdStage`、`UsdSkelBakeSkinningParms`、`UsdGeomXformOp` 等多个语义域。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Class Members - Enumerator while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`TfType` 和 `TfMallocTag::CallTree` 相关枚举值偏 runtime type system 与 memory tracing；它们不属于 USD scene authoring 语义。</span></li>
+        <li><span class="zh">`UsdStageLoadRules`、`UsdStage`、`UsdGeomPointInstancer` 和 `UsdGeomXformOp` 条目分别关联 stage loading、stage state、point instancing 与 transform operation。</span></li>
+        <li><span class="zh">`SdfPredicateExpression::FnCall`、`PcpNamespaceEdits`、`SdfNamespaceEditDetail` 等条目属于 predicate、composition 或 namespace editing 语境，应按所属 class 阅读。</span></li>
+        <li><span class="zh">`UsdSkelBakeSkinningParms` 枚举值与 skinning bake 参数有关，和 `UsdSkel` schema 页面互补；它不等同于 DCC rig 控制器设置。</span></li>
+        <li><span class="zh">本页与 `functions_enum.html` 互补：`functions_enum.html` 更适合找 enum 类型，本页适合找具体 enumerator value。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">类成员枚举值：</span><span class="en">class member enumerator</span></li>
+        <li><span class="zh">枚举类型页：</span><span class="en">enum type page</span></li>
+        <li><span class="zh">stage 加载规则：</span><span class="en">stage load rules</span></li>
+        <li><span class="zh">命名空间编辑细节：</span><span class="en">namespace edit detail</span></li>
+        <li><span class="zh">蒙皮烘焙参数：</span><span class="en">skinning bake parameter</span></li>
+        <li><span class="zh">变换操作枚举值：</span><span class="en">xform operation enumerator</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

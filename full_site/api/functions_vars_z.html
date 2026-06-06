@@ -54,6 +54,27 @@
         <li><span class="zh">符号检索：</span><span class="en">symbol lookup</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-155">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`functions_vars_z.html` 是 Class Members 变量索引的 Z 段，当前聚合 `UsdGeomTokensType`、`UsdLuxTokensType`、`UsdPhysicsTokensType` 和 `UsdVolTokensType`。它用于定位 Z 字母 token 所属 domain，而不是解释完整坐标、灯光、物理或体积 schema 行为。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Class Members - Variables - Z while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdGeomTokensType` 的 Z 条目通常关联坐标轴、几何属性或 transform token；具体是否表示 Z 轴、属性名或 schema field 仍要进入 token type 页面确认。</span></li>
+        <li><span class="zh">`UsdLuxTokensType` 的 Z 条目属于 lighting domain，可能服务灯光方向、shape、shaping 或参数命名；不能按几何坐标的 Z 轴统一解释。</span></li>
+        <li><span class="zh">`UsdPhysicsTokensType` 的 Z 条目属于 physics schema 命名入口，可能涉及 axis、drive、limit 或 constraint 相关 token；本页不说明 solver 行为。</span></li>
+        <li><span class="zh">`UsdVolTokensType` 的 Z 条目属于 volume schema token，和几何/灯光/物理 domain 同页出现只是字母索引混排结果。</span></li>
+        <li><span class="zh">Z 段变量索引应与上一轮 X 段、Y 段一起阅读：三页共同帮助定位 token，但完整语义仍在对应 token class、schema 或 user guide 页面。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Z 段变量索引：</span><span class="en">Z variable index</span></li>
+        <li><span class="zh">token 所属领域：</span><span class="en">token domain</span></li>
+        <li><span class="zh">体积 schema：</span><span class="en">volume schema</span></li>
+        <li><span class="zh">物理约束 token：</span><span class="en">physics constraint token</span></li>
+        <li><span class="zh">灯光参数 token：</span><span class="en">lighting parameter token</span></li>
+        <li><span class="zh">字母索引混排：</span><span class="en">alphabetical index mixing</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

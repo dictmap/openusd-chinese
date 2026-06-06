@@ -55,6 +55,27 @@
         <li><span class="zh">线性混合蒙皮：</span><span class="en">Linear Blend Skinning</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-155">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`usd_skel_page_front.html` 是 `UsdSkel` 模块入口，面向骨骼蒙皮网格、关节动画、binding 和查询 API 的 USD 数据表达。它强调可交换 schema 和 runtime query，不是完整角色 rig、IK solver 或 DCC 动画控制器系统。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdSkel: USD Skeleton Schema and API while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`SkelRoot` 表示骨骼系统根，通常用于组织参与 skeleton binding 的 prim；它不是普通 `UsdGeomXform` 层级的同义词。</span></li>
+        <li><span class="zh">`Skeleton`、`SkelAnimation`、joint hierarchy、joint paths/names 与 joint transforms 是阅读核心；这些名称应保留英文以便和 schema 属性对照。</span></li>
+        <li><span class="zh">`Linear Blend Skinning`、`joint influences`、`geom bind transform` 和 `skinning weights` 说明 mesh 如何绑定到骨骼；它们和普通 xform stack 是不同层级的概念。</span></li>
+        <li><span class="zh">`API Introduction` 更适合开发者查 skeleton query、animation samples 和 binding resolution；`Schema Intro By Example` 更适合理解 authored scene structure。</span></li>
+        <li><span class="zh">如果要讨论 blend shapes、instancing 或 best practices，应沿页面中的 API Manual 子链接继续阅读，而不是只依赖入口页摘要。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">骨骼系统根：</span><span class="en">SkelRoot</span></li>
+        <li><span class="zh">骨架拓扑：</span><span class="en">skeleton topology</span></li>
+        <li><span class="zh">关节层级：</span><span class="en">joint hierarchy</span></li>
+        <li><span class="zh">蒙皮权重：</span><span class="en">skinning weights</span></li>
+        <li><span class="zh">绑定解析：</span><span class="en">binding resolution</span></li>
+        <li><span class="zh">可交换骨骼数据：</span><span class="en">interchangeable skeleton data</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
