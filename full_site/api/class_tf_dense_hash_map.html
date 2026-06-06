@@ -75,6 +75,27 @@
         <li><span class="zh">键相等比较：</span><span class="en">EqualKey</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-146">
+      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
+      <p class="zh">`TfDenseHashMap&lt; Key, Data, HashFn, EqualKey, Threshold &gt;` 是空间效率较高的 map 容器，模仿 `TfHashMap` API，并在 map 较小时使用 vector storage。`Threshold` 控制小规模存储策略，适合小 map 常见而又需要 map-like API 的场景。</p>
+      <p class="en">This third-pass refinement adds page-specific Chinese guidance for TfDenseHashMap while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Key`、`Data`、`HashFn`、`EqualKey` 与 `Threshold` 决定 key/value 类型、哈希策略、相等比较和 vector/dense hash 切换阈值。</span></li>
+        <li><span class="zh">`insert_result`、`iterator`、`const_iterator`、`key_type`、`mapped_type` 与 `value_type` 基本对齐 STL map/unordered map 使用习惯。</span></li>
+        <li><span class="zh">`find()`、`count()`、`insert()`、`erase()`、`operator[]` 与 `clear()` 提供常见 map 操作；性能特征会随元素数量跨过 `Threshold` 而变化。</span></li>
+        <li><span class="zh">小 map 走 vector storage 可降低内存开销，但大量元素或频繁随机查找时仍需要关注哈希策略和扩容成本。</span></li>
+        <li><span class="zh">该类不是并发容器；如果多个线程共享，需要在外层同步，不能因为 dense/hash 名称就假设线程安全。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">密集哈希映射：</span><span class="en">TfDenseHashMap</span></li>
+        <li><span class="zh">小规模向量存储：</span><span class="en">vector storage</span></li>
+        <li><span class="zh">切换阈值：</span><span class="en">Threshold</span></li>
+        <li><span class="zh">哈希函数：</span><span class="en">HashFn</span></li>
+        <li><span class="zh">相等比较器：</span><span class="en">EqualKey</span></li>
+        <li><span class="zh">插入结果：</span><span class="en">insert_result</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

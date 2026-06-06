@@ -75,6 +75,27 @@
         <li><span class="zh">属性迭代器：</span><span class="en">PcpPropertyIterator</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-146">
+      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
+      <p class="zh">`PcpPropertyIndex` 是某个 property 在 composition semantics 下所有 contributing opinion sites 的索引。它面向属性级 composition 调试：帮助定位哪些 scene description sites 为同一个 property 提供了 specs、local specs 或错误信息。</p>
+      <p class="en">This third-pass refinement adds page-specific Chinese guidance for PcpPropertyIndex while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`GetPropertyRange()` 返回可遍历的 property specs 范围，通常配合 `PcpPropertyIterator` 查看按 composition strength 排列的 opinions。</span></li>
+        <li><span class="zh">`GetNumLocalSpecs()` 只统计 local specs 数量；local 与 weaker/stronger composed opinions 不应混为同一个概念。</span></li>
+        <li><span class="zh">`GetLocalErrors()` 用于读取 property index 计算中局部发现的错误；当属性意见缺失或解析异常时，应和 prim index / layer stack 错误一起排查。</span></li>
+        <li><span class="zh">`IsEmpty()` 表明当前 property index 是否没有贡献 specs；这可能是属性确实不存在，也可能是 composition path 或 arc 选择不正确。</span></li>
+        <li><span class="zh">`Swap()` 是容器式操作，常用于高效交换索引内容；它不重新计算 composition，只交换已构造的 index 状态。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">属性索引：</span><span class="en">PcpPropertyIndex</span></li>
+        <li><span class="zh">属性意见站点：</span><span class="en">property opinion sites</span></li>
+        <li><span class="zh">组合语义：</span><span class="en">composition semantics</span></li>
+        <li><span class="zh">本地 specs：</span><span class="en">local specs</span></li>
+        <li><span class="zh">属性迭代器：</span><span class="en">PcpPropertyIterator</span></li>
+        <li><span class="zh">本地错误：</span><span class="en">local errors</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

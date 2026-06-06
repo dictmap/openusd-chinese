@@ -75,6 +75,27 @@
         <li><span class="zh">组合边类型：</span><span class="en">arcType</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-146">
+      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
+      <p class="zh">`PcpErrorUnresolvedPrimPath` 表示 asset paths could not be both resolved and loaded 的 composition error。它记录 unresolved path、发生错误的 `PcpSite`、source/target layer 以及相关 `PcpArcType`，用于定位路径解析与加载边界。</p>
+      <p class="en">This third-pass refinement adds page-specific Chinese guidance for PcpErrorUnresolvedPrimPath while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`unresolvedPath` 是未能解析或加载的 `SdfPath`，应与 asset resolver 日志、layer identifier 和 referenced/payload target 一起检查。</span></li>
+        <li><span class="zh">`site` 表示错误发生的 composition site，帮助判断问题来自哪个 prim index 位置，而不是只看最终 stage path。</span></li>
+        <li><span class="zh">`sourceLayer` 与 `targetLayer` 有助于区分 arc 源头和目标层；路径存在于源层并不意味着目标层可以成功加载。</span></li>
+        <li><span class="zh">`arcType` 指明错误关联的 composition arc 类型，如 reference、payload、inherit 或 specialize 路径，排查策略会因此不同。</span></li>
+        <li><span class="zh">`New()` 创建具体错误对象，`ToString()` 输出人类可读诊断；自动化审计时应保留这些字段而不只保存字符串。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">未解析 prim 路径错误：</span><span class="en">PcpErrorUnresolvedPrimPath</span></li>
+        <li><span class="zh">未解析路径：</span><span class="en">unresolvedPath</span></li>
+        <li><span class="zh">组合站点：</span><span class="en">PcpSite</span></li>
+        <li><span class="zh">源层：</span><span class="en">sourceLayer</span></li>
+        <li><span class="zh">目标层：</span><span class="en">targetLayer</span></li>
+        <li><span class="zh">组合弧类型：</span><span class="en">PcpArcType</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

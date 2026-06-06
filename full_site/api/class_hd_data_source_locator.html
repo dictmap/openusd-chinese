@@ -75,6 +75,27 @@
         <li><span class="zh">脏状态传播：</span><span class="en">dirty propagation</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-146">
+      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
+      <p class="zh">`HdDataSourceLocator` 用一小段 `TfToken` 列表标识 Hydra data source 中某个数据位置。它常用于 scene index invalidation、data source 查询和变化通知，用 token path 描述 nested container 下的具体字段。</p>
+      <p class="en">This third-pass refinement adds page-specific Chinese guidance for HdDataSourceLocator while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Append()` 与 `Prepend()` 构造更深或更外层的 locator，适合从局部字段扩展到完整 data source path。</span></li>
+        <li><span class="zh">`GetElementCount()`、`GetElement()`、`GetFirstElement()` 与 `GetLastElement()` 提供 token path 级别的访问，避免把 locator 当普通字符串拆分。</span></li>
+        <li><span class="zh">`HasPrefix()`、`GetCommonPrefix()` 与 `Intersects()` 是 invalidation 判断的关键：它们帮助决定某个变化是否影响另一个 locator 范围。</span></li>
+        <li><span class="zh">`EmptyLocator()` 与 `IsEmpty()` 表示空定位器；在通知系统中空 locator 往往代表根或 broad invalidation，不能简单忽略。</span></li>
+        <li><span class="zh">`GetString()` 与 `Hash()` 适合调试输出和哈希容器使用；业务逻辑仍应优先保持 tokenized locator 结构。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">数据源定位器：</span><span class="en">HdDataSourceLocator</span></li>
+        <li><span class="zh">令牌路径：</span><span class="en">token path</span></li>
+        <li><span class="zh">数据源位置：</span><span class="en">data source location</span></li>
+        <li><span class="zh">前缀判断：</span><span class="en">HasPrefix()</span></li>
+        <li><span class="zh">相交判断：</span><span class="en">Intersects()</span></li>
+        <li><span class="zh">空定位器：</span><span class="en">EmptyLocator()</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

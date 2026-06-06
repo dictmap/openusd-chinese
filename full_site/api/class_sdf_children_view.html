@@ -75,6 +75,27 @@
         <li><span class="zh">STL 风格容器接口：</span><span class="en">STL-style container interface</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-146">
+      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
+      <p class="zh">`SdfChildrenView&lt; _ChildPolicy, _Predicate, _Adapter &gt;` 是面向 Sdf 对象 children 的 view template。它通过 child policy、predicate 和 adapter 把底层 child storage 暴露为只读/可遍历视图，常用于 specs、properties 或 name-ordered children 的访问。</p>
+      <p class="en">This third-pass refinement adds page-specific Chinese guidance for SdfChildrenView while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`ChildPolicy` 定义如何从 owner 中取得 children，`Predicate` 负责过滤，`Adapter` 负责把底层值转换为 view 的 `value_type`。</span></li>
+        <li><span class="zh">`begin()` / `end()`、`rbegin()` / `rend()`、`front()` / `back()` 和 `size()` 提供类 STL 访问；调用者不应假设 view 拥有 children。</span></li>
+        <li><span class="zh">`key_type`、`value_type`、`ChildrenType` 与 iterator typedef 说明该 view 同时服务 key/value 访问和顺序遍历。</span></li>
+        <li><span class="zh">`SdfChildrenViewTrivialPredicate` 与 `SdfChildrenViewTrivialAdapter` 是默认策略，适合不需要过滤或转换的普通 child view。</span></li>
+        <li><span class="zh">由于它是 view，底层 Sdf 对象变化可能影响迭代结果；长时间保存 iterator 或引用时要确认 owner 生命周期和修改边界。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">子对象视图：</span><span class="en">SdfChildrenView</span></li>
+        <li><span class="zh">子对象策略：</span><span class="en">ChildPolicy</span></li>
+        <li><span class="zh">谓词过滤：</span><span class="en">Predicate</span></li>
+        <li><span class="zh">适配器：</span><span class="en">Adapter</span></li>
+        <li><span class="zh">只读视图：</span><span class="en">view</span></li>
+        <li><span class="zh">迭代器：</span><span class="en">iterator</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

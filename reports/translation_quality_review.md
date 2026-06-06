@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-06T03:41:24.560Z
+Generated: 2026-06-06T03:52:22.521Z
 
 ## Summary
 
@@ -81,7 +81,7 @@ Generated: 2026-06-06T03:41:24.560Z
 | 15 | draft_needs_translation | bilingual_draft | 814 | 63/50 | 0 | 0 | `full_site/api/class_gf_ray.html` |
 | 16 | draft_needs_translation | bilingual_draft | 719 | 52/44 | 0 | 0 | `full_site/api/class_gf_vec2i.html` |
 | 17 | draft_needs_translation | bilingual_draft | 652 | 52/44 | 0 | 0 | `full_site/api/class_glf_draw_target.html` |
-| 18 | draft_needs_translation | bilingual_draft | 605 | 52/44 | 0 | 0 | `full_site/api/class_hd_data_source_locator.html` |
+| 18 | draft_needs_translation | bilingual_draft | 786 | 64/51 | 0 | 0 | `full_site/api/class_hd_data_source_locator.html` |
 | 19 | draft_needs_translation | bilingual_draft | 636 | 42/34 | 0 | 0 | `full_site/api/class_hd_instance_registry.html` |
 | 20 | draft_needs_translation | bilingual_draft | 754 | 60/47 | 0 | 0 | `full_site/api/class_hd_render_buffer.html` |
 | 21 | draft_needs_translation | bilingual_draft | 749 | 64/51 | 0 | 0 | `full_site/api/class_hd_scene_delegate.html` |
@@ -91,15 +91,15 @@ Generated: 2026-06-06T03:41:24.560Z
 | 25 | draft_needs_translation | bilingual_draft | 774 | 49/36 | 0 | 0 | `full_site/api/class_hdx_pick_from_render_buffer_task.html` |
 | 26 | draft_needs_translation | bilingual_draft | 667 | 61/48 | 0 | 0 | `full_site/api/class_hgi_g_l_graphics_cmds.html` |
 | 27 | draft_needs_translation | bilingual_draft | 680 | 48/35 | 0 | 0 | `full_site/api/class_pcp_arc.html` |
-| 28 | draft_needs_translation | bilingual_draft | 612 | 41/33 | 0 | 0 | `full_site/api/class_pcp_error_unresolved_prim_path.html` |
-| 29 | draft_needs_translation | bilingual_draft | 602 | 39/31 | 0 | 0 | `full_site/api/class_pcp_property_index.html` |
-| 30 | draft_needs_translation | bilingual_draft | 591 | 52/44 | 0 | 0 | `full_site/api/class_sdf_children_view.html` |
+| 28 | draft_needs_translation | bilingual_draft | 802 | 53/40 | 0 | 0 | `full_site/api/class_pcp_error_unresolved_prim_path.html` |
+| 29 | draft_needs_translation | bilingual_draft | 794 | 51/38 | 0 | 0 | `full_site/api/class_pcp_property_index.html` |
+| 30 | draft_needs_translation | bilingual_draft | 755 | 64/51 | 0 | 0 | `full_site/api/class_sdf_children_view.html` |
 | 31 | draft_needs_translation | bilingual_draft | 824 | 64/51 | 0 | 0 | `full_site/api/class_sdf_layer.html` |
 | 32 | draft_needs_translation | bilingual_draft | 793 | 64/51 | 0 | 0 | `full_site/api/class_sdf_path.html` |
 | 33 | draft_needs_translation | bilingual_draft | 691 | 64/51 | 0 | 0 | `full_site/api/class_sdf_prim_spec.html` |
 | 34 | draft_needs_translation | bilingual_draft | 567 | 46/38 | 0 | 0 | `full_site/api/class_sdf_usdz_file_format.html` |
 | 35 | draft_needs_translation | bilingual_draft | 738 | 64/51 | 0 | 0 | `full_site/api/class_sdr_shader_property.html` |
-| 36 | draft_needs_translation | bilingual_draft | 601 | 52/44 | 0 | 0 | `full_site/api/class_tf_dense_hash_map.html` |
+| 36 | draft_needs_translation | bilingual_draft | 792 | 64/51 | 0 | 0 | `full_site/api/class_tf_dense_hash_map.html` |
 | 37 | draft_needs_translation | bilingual_draft | 589 | 39/31 | 0 | 0 | `full_site/api/class_tf_py_lock.html` |
 | 38 | draft_needs_translation | bilingual_draft | 867 | 64/51 | 0 | 0 | `full_site/api/class_tf_token.html` |
 | 39 | draft_needs_translation | bilingual_draft | 553 | 42/34 | 0 | 0 | `full_site/api/class_trace_event_data.html` |
