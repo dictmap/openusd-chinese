@@ -4315,3 +4315,34 @@
 1. 继续最多 5 页，优先处理仍很薄且用户可读价值较高的 OpenExec / Validation / Hydra 指南型 API 文档页。
 2. 建议下一组：`full_site/api/page__execution__system__design.html`、`full_site/api/md_pxr_exec_exec_usd_docs_overview.html`、`full_site/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html`、`full_site/api/md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html`、`full_site/api/md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html`。
 3. 之后可继续 `full_site/api/md_pxr_exec_exec__r_e_a_d_m_e.html`、`full_site/api/md_pxr_exec_exec_geom__r_e_a_d_m_e.html`、`full_site/api/md_pxr_exec_exec_usd__r_e_a_d_m_e.html`、`full_site/api/group__group__hd__collection_predicates.html`、`full_site/api/page_ts_status.html`，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+## 第 295 轮：OpenExec 设计/教程与 USD Validation 文档页补强
+已完成：
+
+- 复核当前仓库、远端与审计基线：本地 `main` 基于上一轮同步提交 `68826a0`，`origin/main` 一致，起始工作区干净；全量仍为 406 个 HTML 页面，质量计数为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。
+- 新增并执行 `scripts/refine_openusd_release_batch_164.mjs`，本轮标记为 `api-index-quality-pass-164`。
+- 严格只精修 5 页：
+  - `full_site/api/page__execution__system__design.html`
+  - `full_site/api/md_pxr_exec_exec_usd_docs_overview.html`
+  - `full_site/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html`
+  - `full_site/api/md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html`
+  - `full_site/api/md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html`
+- 每页新增 5 条中文二次导读和 6 条术语对照；重点覆盖 `Exec`、`ExecUsd`、`Esf`、`Vdf`、`computation graph`、`computed value`、`value request`、`schema computation`、`dependency invalidation`、`UsdValidationContext`、`UsdValidationValidator`、`UsdValidationError` 与 `UsdValidationRegistry` 的阅读边界；API 名称、页面名、类名、函数名、变量名、头文件名、template 参数、enum name、enum value、token 字面量、数学符号和链接保持原样。
+- 质量回读：5 页均无 `TODO` / `待翻译` / `机器翻译占位`，`api-index-quality-pass-164` 均只出现 1 次：
+  - `page__execution__system__design.html`：中文字符 613，中文/英文块 36/28。
+  - `md_pxr_exec_exec_usd_docs_overview.html`：中文字符 608，中文/英文块 31/23。
+  - `md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html`：中文字符 655，中文/英文块 33/25。
+  - `md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html`：中文字符 587，中文/英文块 34/26。
+  - `md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html`：中文字符 616，中文/英文块 47/39。
+- 分级变化：计数保持不变，仍为 `draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因是本轮对象开始前已属 `draft_needs_translation`，本轮是 OpenExec/Validation 指南型 API 文档页二次补强精修，不是从模板草稿晋级。
+- 验证结果：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1` 均已通过；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步记录：本轮复验通过后使用 `OpenUSD bilingual round 295: openexec validation pass` 同步本轮 HTML、脚本、报告和 `work.md`；如同步脚本失败，本轮不推送并先修复。
+
+当前差距：
+- 全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`；其中 387 页为 `draft_needs_translation`、11 页为 `draft_template_only`，`bilingual_draft` 仍不是完整翻译。
+- 剩余 `draft_template_only` 11 页基本是 `_source.html` 源码页、`search.html` 或目录页，继续低优先处理。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理仍很薄且用户可读价值较高的 OpenExec README、Hydra collection predicate 与 test status 页面。
+2. 建议下一组：`full_site/api/md_pxr_exec_exec__r_e_a_d_m_e.html`、`full_site/api/md_pxr_exec_exec_geom__r_e_a_d_m_e.html`、`full_site/api/md_pxr_exec_exec_usd__r_e_a_d_m_e.html`、`full_site/api/group__group__hd__collection_predicates.html`、`full_site/api/page_ts_status.html`。
+3. 之后可继续 `full_site/api/md_pxr_exec_exec_ir__r_e_a_d_m_e.html`、`full_site/api/md_pxr_exec_ef__r_e_a_d_m_e.html`、`full_site/api/md_pxr_exec_esf__r_e_a_d_m_e.html`、`full_site/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html`、`full_site/api/page_ts_regression.html`，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。

@@ -54,6 +54,27 @@
         <li><span class="zh">数据管理器：</span><span class="en">Data Managers</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-164">
+      <h2>中文二次导读补强 / Chinese Second-Pass Reading Notes</h2>
+      <p class="zh">`page__execution__system__design.html` 是 OpenExec execution system 的设计说明页，重点解释 computation graph、value resolution、invalidation、cache 边界以及 schema computation 如何接入 USD 场景数据。它适合用来理解架构分层，不应当当作单个 API 调用清单或 runtime scheduling 手册。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for OpenExec System Design while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">阅读时先区分 `Exec`、`ExecUsd`、`Esf` 与 `Vdf` 的职责：`Exec` 组织执行系统，`ExecUsd` 面向 USD 集成，`Esf` 抽象 scene foundation，`Vdf` 承载数据流图与求值机制。</span></li>
+        <li><span class="zh">Computation graph 描述 computed values 之间的依赖关系；如果结果不符合预期，应追踪输入 scene data、value key、dependency edge 与 invalidation，而不是只查看最终输出值。</span></li>
+        <li><span class="zh">Invalidation 与 cache 是本页的核心语义之一：场景意见、属性值或依赖节点变化后，哪些 computed values 需要重新求值，通常由 dependency tracking 决定。</span></li>
+        <li><span class="zh">Schema computation 的定义边界要和普通 scene authoring 分开；前者描述如何计算派生值，后者在 layer/spec/prim/attribute 中写入持久化意见。</span></li>
+        <li><span class="zh">本页适合和 OpenExec overview、tutorial1、tutorial2 串读：先理解系统设计，再看如何请求 computed value，最后看如何定义 schema computations。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">执行系统：</span><span class="en">execution system</span></li>
+        <li><span class="zh">计算图：</span><span class="en">computation graph</span></li>
+        <li><span class="zh">值解析：</span><span class="en">value resolution</span></li>
+        <li><span class="zh">失效传播：</span><span class="en">invalidation</span></li>
+        <li><span class="zh">执行场景基础：</span><span class="en">execution scene foundation</span></li>
+        <li><span class="zh">schema 计算：</span><span class="en">schema computation</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

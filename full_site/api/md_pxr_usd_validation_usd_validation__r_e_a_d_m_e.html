@@ -54,6 +54,27 @@
         <li><span class="zh">修复器：</span><span class="en">fixer</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-164">
+      <h2>中文二次导读补强 / Chinese Second-Pass Reading Notes</h2>
+      <p class="zh">`md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html` 是 USD Validation 框架说明页，介绍 validators、validator suites、validation context、validation errors 与 registry 如何组合成管线检查能力。它报告问题，不自动修复场景数据，也不等同于 schema 定义。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Validation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdValidationContext` 负责组织一次验证运行，`UsdValidationValidator` 表示具体规则，`UsdValidationError` 承载诊断结果，`UsdValidationRegistry` 负责发现和管理可用 validators。</span></li>
+        <li><span class="zh">Validators 可以用于 pipeline gate、资产发布前检查或调试阶段诊断；它们应描述约束和错误位置，但不应悄悄修改 layer、prim 或 attribute。</span></li>
+        <li><span class="zh">Validation rule 与 schema definition 要分开：schema 描述可 author 的数据模型，validation 描述某个项目、工具或流程希望满足的附加约束。</span></li>
+        <li><span class="zh">运行方式可能来自 API、命令行工具或上层集成；阅读本页时应关注 validator selection、suite grouping、error severity 和 reporting format。</span></li>
+        <li><span class="zh">中文层保留 `UsdValidationContext`、`UsdValidationValidator`、`UsdValidationError`、`UsdValidationRegistry` 等 API 名称，便于读者直接跳转到对应 class 页面。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">验证框架：</span><span class="en">validation framework</span></li>
+        <li><span class="zh">验证器：</span><span class="en">validator</span></li>
+        <li><span class="zh">验证上下文：</span><span class="en">validation context</span></li>
+        <li><span class="zh">验证错误：</span><span class="en">validation error</span></li>
+        <li><span class="zh">验证器注册表：</span><span class="en">validator registry</span></li>
+        <li><span class="zh">管线闸门：</span><span class="en">pipeline gate</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

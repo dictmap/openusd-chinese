@@ -54,6 +54,27 @@
         <li><span class="zh">插件计算：</span><span class="en">plugin computations</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-164">
+      <h2>中文二次导读补强 / Chinese Second-Pass Reading Notes</h2>
+      <p class="zh">`md_pxr_exec_exec_usd_docs_overview.html` 是 OpenExec 文档入口，说明 computed values 为什么需要独立执行模型，以及它如何与 USD stage、schema、scene adapter 和 dependency tracking 协同。它是学习路径的导览页，不是完整 API reference。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for OpenExec Overview while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">OpenExec 的关注点是从 USD 场景输入推导 computed values；它扩展读取与求值流程，但不替代 USD composition、layer authoring 或 schema 定义本身。</span></li>
+        <li><span class="zh">`ExecUsd` 把 USD 场景接入执行系统，`Exec` 提供求值框架，`Esf` 抽象场景访问，`Vdf` 提供图求值基础；这些层次在阅读概览时需要分开记。</span></li>
+        <li><span class="zh">概览页中的 workflow 通常从 stage/prim/attribute 输入开始，经由 computation registration 与 dependency tracking，再由 evaluation request 取得结果。</span></li>
+        <li><span class="zh">如果目标是上手操作，应先读本页，再进入 `tutorial1_computing_values` 和 `tutorial2_defining_computations`；如果目标是调试内部图，再回到 system design 页面。</span></li>
+        <li><span class="zh">中文补强保留 `computed value`、`evaluation`、`dependency tracking`、`scene adapter` 等英文术语，便于和源码、类名及日志关键词直接对应。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">OpenExec 概览：</span><span class="en">OpenExec overview</span></li>
+        <li><span class="zh">计算值：</span><span class="en">computed value</span></li>
+        <li><span class="zh">执行模型：</span><span class="en">execution model</span></li>
+        <li><span class="zh">依赖追踪：</span><span class="en">dependency tracking</span></li>
+        <li><span class="zh">场景适配器：</span><span class="en">scene adapter</span></li>
+        <li><span class="zh">求值工作流：</span><span class="en">evaluation workflow</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

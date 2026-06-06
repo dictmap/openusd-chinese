@@ -54,6 +54,27 @@
         <li><span class="zh">回调函数：</span><span class="en">callback function</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-164">
+      <h2>中文二次导读补强 / Chinese Second-Pass Reading Notes</h2>
+      <p class="zh">`md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html` 说明如何为 schema 定义 computations，使系统能够从 USD 场景输入计算派生结果。它面向 schema/plugin 层的 computation authoring，不是普通 USD layer authoring 教程。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for OpenExec Tutorial 2: Defining Schema Computations while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">本页的核心是 computation definition：定义输入依赖、输出 value、provider/registration 以及 schema integration，而不是在 stage 上直接写入普通 attribute opinions。</span></li>
+        <li><span class="zh">Computation provider 与 scene data 要分清；provider 描述如何计算，USD 场景提供被读取的 prim、attribute、metadata 或关系输入。</span></li>
+        <li><span class="zh">Input dependency 的声明决定 invalidation 能否准确传播；如果依赖漏报，computed value 可能无法在场景变化后及时刷新。</span></li>
+        <li><span class="zh">Registration/discovery 是教程中容易忽略的环节：定义了 computation 以后，还需要让执行系统能够找到并绑定到对应 schema 或 scene object。</span></li>
+        <li><span class="zh">建议先读 tutorial1 理解如何消费 computed values，再读本页理解如何定义它们；两页共同形成 OpenExec 的最小实践路径。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">schema 计算：</span><span class="en">schema computation</span></li>
+        <li><span class="zh">计算定义：</span><span class="en">computation definition</span></li>
+        <li><span class="zh">输入依赖：</span><span class="en">input dependency</span></li>
+        <li><span class="zh">输出值：</span><span class="en">output value</span></li>
+        <li><span class="zh">provider 注册：</span><span class="en">provider registration</span></li>
+        <li><span class="zh">schema 集成：</span><span class="en">schema integration</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
