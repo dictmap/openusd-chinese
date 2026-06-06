@@ -54,6 +54,27 @@
         <li><span class="zh">WriteJson：</span><span class="en">WriteJson</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-139">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`TraceEventData` 是 Trace 子系统用于保存 `TraceEvent` payload 的轻量值容器。它通过多个构造函数接收 bool、int、uint、float、string 等数据，并通过 `TraceEvent::DataType` 描述当前保存的值类型。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for TraceEventData while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">构造函数 `[1/6]` 到 `[6/6]` 对应不同 payload 类型；阅读时应先看构造来源，再按 `GetType()` 选择匹配的 getter。</span></li>
+        <li><span class="zh">`GetBool()`、`GetInt()`、`GetUInt()`、`GetFloat()` 与 `GetString()` 是类型化读取入口；不要在未知 `DataType` 下随意调用不匹配的 getter。</span></li>
+        <li><span class="zh">`GetType()` 是 trace 序列化和展示层的分派依据，调用方通常据此决定如何解释 payload 与如何写入报告。</span></li>
+        <li><span class="zh">`WriteJson()` 把事件数据写入 `JsWriter`，因此它影响 profiling/trace report 中的字段可读性和 JSON 表达方式。</span></li>
+        <li><span class="zh">该类只保存事件附带的数据，不代表事件时间、线程、调用栈或范围本身；这些上下文应到 `TraceEvent` 或 Trace collector 相关页面继续查。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">事件数据：</span><span class="en">TraceEventData</span></li>
+        <li><span class="zh">事件载荷：</span><span class="en">event payload</span></li>
+        <li><span class="zh">事件数据类型：</span><span class="en">TraceEvent::DataType</span></li>
+        <li><span class="zh">类型化读取：</span><span class="en">typed getter</span></li>
+        <li><span class="zh">JSON 写出：</span><span class="en">WriteJson()</span></li>
+        <li><span class="zh">跟踪报告：</span><span class="en">trace report</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

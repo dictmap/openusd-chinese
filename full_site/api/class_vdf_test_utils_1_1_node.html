@@ -54,6 +54,27 @@
         <li><span class="zh">Network：</span><span class="en">Network</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-139">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`VdfTestUtils::Node` 是测试工具中包裹 `VdfNode` 的 helper wrapper，用于在单元测试或调试构造中更方便地声明输入、输出、连接和测试值。它不引入新的生产级 Vdf node 类型，而是围绕底层 `VdfNode` 提供测试 DSL。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for VdfTestUtils::Node while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`GetVdfNode()` 和 `operator VdfNode *()` 让测试代码可以回到底层 `VdfNode` API；这说明 wrapper 与真实 node 生命周期仍然绑定。</span></li>
+        <li><span class="zh">`Output()` 与 `GetOutput()` 用于在测试中声明或取得 named output，通常要结合 `TfToken`、`VdfOutput` 与 `VdfMask` 理解。</span></li>
+        <li><span class="zh">`In()`、`operator&gt;&gt;()` 和 `_NodeOutput` 支撑 VdfTestUtils 的链式连接写法，让测试网络可以用较短代码表达 node/output 关系。</span></li>
+        <li><span class="zh">`SetValue()` 用于给测试节点注入值，重点是方便验证 evaluation 数据流，而不是替代真实 computation callback。</span></li>
+        <li><span class="zh">`Network` friend 表明该 wrapper 与 `VdfTestUtils` 测试网络构造器紧耦合；生产代码阅读时应回到 `VdfNode`、`VdfNetwork` 和执行器页面。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">测试节点包装器：</span><span class="en">VdfTestUtils::Node</span></li>
+        <li><span class="zh">底层节点：</span><span class="en">VdfNode</span></li>
+        <li><span class="zh">链式连接：</span><span class="en">operator&gt;&gt;()</span></li>
+        <li><span class="zh">测试输出：</span><span class="en">_NodeOutput</span></li>
+        <li><span class="zh">测试网络：</span><span class="en">Network</span></li>
+        <li><span class="zh">注入测试值：</span><span class="en">SetValue()</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

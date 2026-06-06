@@ -3462,6 +3462,37 @@
 2. 建议下一组：`full_site/api/class_vdf_read_write_accessor.html`、`full_site/api/class_vdf_grapher_options.html`、`full_site/api/class_vdf_context.html`、`full_site/api/class_sdf_children_view.html`、`full_site/api/class_tf_dense_hash_map.html`。
 3. 之后可继续 Vdf、Tf、Sdf、Hd、Usd 的高价值 class 页面，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
 
+## 第 270 轮：EsfPropertyInterface、TraceEventData、Ef_LoftedOutputSet、TfPyLock 与 VdfTestUtils::Node 补强
+
+- 基线：本地 `main` 基于上一轮同步提交 `23feb19`，`origin/main` 一致，起始工作区干净；全量仍为 406 个 HTML 页面，质量计数为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。
+- 新增并执行 `scripts/refine_openusd_release_batch_139.mjs`，本轮标记为 `api-class-quality-pass-139`。
+- 严格只精修 5 页：
+  - `full_site/api/class_esf_property_interface.html`
+  - `full_site/api/class_trace_event_data.html`
+  - `full_site/api/class_ef___lofted_output_set.html`
+  - `full_site/api/class_tf_py_lock.html`
+  - `full_site/api/class_vdf_test_utils_1_1_node.html`
+- 每页新增 5 条中文补强导读和 6 条术语对照；重点覆盖 `EsfPropertyInterface` 的 scene adapter property abstraction、`UsdProperty` 只读接口相似性、`EsfJournal*` dependency/recompilation 记录、`GetBaseName()` 与 `GetNamespace()` 边界，`TraceEventData` 的 `TraceEvent` payload、`TraceEvent::DataType`、typed getters 与 `WriteJson()`，`Ef_LoftedOutputSet` 的 lofted outputs、page cache sourced values、`EfPageCacheBasedExecutor`、`CollectLoftedDependencies()` 与 node output 清理，`TfPyLock` 的 Python GIL、Python thread state、`Acquire()` / `Release()`、`BeginAllowThreads()` / `EndAllowThreads()` 与状态合法转换，以及 `VdfTestUtils::Node` 的 `VdfNode` wrapper、测试 DSL、`GetVdfNode()`、`operator>>()`、`_NodeOutput` 和 `Network` 关系；API 名称、类名、方法名、属性名、数学符号、template 参数、token 字面量和链接保持原样。
+- 质量回读：5 页均无 `TODO` / `待翻译` / `机器翻译占位`，`api-class-quality-pass-139` 均只出现 1 次：
+  - `class_esf_property_interface.html`：中文字符 608，中文/英文块 34/26。
+  - `class_trace_event_data.html`：中文字符 616，中文/英文块 42/34。
+  - `class_ef___lofted_output_set.html`：中文字符 607，中文/英文块 35/27。
+  - `class_tf_py_lock.html`：中文字符 652，中文/英文块 39/31。
+  - `class_vdf_test_utils_1_1_node.html`：中文字符 596，中文/英文块 40/32。
+- 分级变化：计数保持不变，仍为 `draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因是本轮对象开始前已属 `draft_needs_translation`，本轮是二次补强精修，不是从模板草稿晋级。
+- 验证结果：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1` 均已通过；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步记录：本轮复验通过后使用 `OpenUSD bilingual round 270: esf trace ef tf vdf class pass` 同步本轮 HTML、脚本、报告和 `work.md`；如果同步脚本失败，本轮不推送并先修复。
+
+当前差距：
+- 全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`；其中 387 页为 `draft_needs_translation`、11 页为 `draft_template_only`，`bilingual_draft` 仍不是完整翻译。
+- 剩余 `draft_template_only` 11 页基本是 `_source.html` 源码页、`search.html` 或目录页，继续低优先处理。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理仍较薄且用户会实际查阅的 Sdf/Hd/UsdGeom/UsdShade 核心 class 页面。
+2. 建议下一组：`full_site/api/class_sdf_prim_spec.html`、`full_site/api/class_hd_st_render_pass_state.html`、`full_site/api/class_usd_shade_output.html`、`full_site/api/class_usd_geom_primvars_a_p_i.html`、`full_site/api/class_hd_task.html`。
+3. 之后可继续 Sdf、Hd、UsdGeom、UsdShade、Usd 的高价值 class 页面，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+
 ## 第 269 轮：VdfReadWriteAccessor、VdfGrapherOptions、VdfContext、SdfChildrenView 与 TfDenseHashMap 补强
 
 - 基线：本地 `main` 基于上一轮同步提交 `8d35c67`，`origin/main` 一致，起始工作区干净；全量仍为 406 个 HTML 页面，质量计数为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。

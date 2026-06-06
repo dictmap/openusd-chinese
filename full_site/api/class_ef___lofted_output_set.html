@@ -54,6 +54,27 @@
         <li><span class="zh">输出遮罩：</span><span class="en">output mask</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-139">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`Ef_LoftedOutputSet` 代表 `EfPageCacheBasedExecutor` 跟踪 lofted outputs 的内部集合。这里的 lofted output 指 evaluation 期间其值来自 page cache 的 `VdfOutput`，因此该类主要服务于执行缓存、依赖收集和输出失效管理。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Ef_LoftedOutputSet while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Add()` 与 `Remove()` 维护单个 output 的集合成员关系；调用方需要同时关注 `VdfOutput` 和相关 `VdfMask`，因为 output 的有效范围可能是 mask 化的。</span></li>
+        <li><span class="zh">`CollectLoftedDependencies()` 是依赖分析入口，用于从 lofted outputs 反推 page cache sourced values 对当前 evaluation 的影响。</span></li>
+        <li><span class="zh">`RemoveAllOutputsForNode()` 按 `VdfNode` 清理相关输出，适合节点失效、网络重建或 executor 缓存刷新时使用。</span></li>
+        <li><span class="zh">`Resize()`、`Clear()` 与 `GetSize()` 说明该类维护的是可调整的内部集合，而不是永久稳定的 scene-level 数据结构。</span></li>
+        <li><span class="zh">本页属于 Ef/Vdf execution implementation 细节；中文导读应保留 `lofted output`、`page cache`、`EfPageCacheBasedExecutor`、`VdfOutput` 与 `VdfMask` 原词，避免误译成 USD 层级输出。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">抬升输出：</span><span class="en">lofted output</span></li>
+        <li><span class="zh">页面缓存：</span><span class="en">page cache</span></li>
+        <li><span class="zh">缓存型执行器：</span><span class="en">EfPageCacheBasedExecutor</span></li>
+        <li><span class="zh">输出遮罩：</span><span class="en">VdfMask</span></li>
+        <li><span class="zh">依赖收集：</span><span class="en">dependency collection</span></li>
+        <li><span class="zh">节点输出清理：</span><span class="en">RemoveAllOutputsForNode()</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

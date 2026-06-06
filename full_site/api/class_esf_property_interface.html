@@ -54,6 +54,27 @@
         <li><span class="zh">重新编译条件：</span><span class="en">recompilation condition</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-139">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`EsfPropertyInterface` 是 exec scene adapter 层向 exec network compiler 暴露 property 信息的抽象接口；它接近 `UsdProperty` 的只读视图，但每个 public method 都带有 `EsfJournal*`，用于记录哪些访问条件会影响重新编译。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for EsfPropertyInterface while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">该类是 abstract class，重点不是持有属性数据，而是把 scene adapter implementation 中的 property 查询统一成 compiler 可消费的接口。</span></li>
+        <li><span class="zh">`GetBaseName()` 与 `GetNamespace()` 用于拆分 property 名称语义；中文说明应保留这两个方法名，避免把 namespace 误解成 C++ namespace。</span></li>
+        <li><span class="zh">`EsfJournal` 参数是理解该接口的关键：读取 property 时同时写入依赖或 invalidation 条件，后续 scene 变化才能判断 exec network 是否需要重新编译。</span></li>
+        <li><span class="zh">关联类型 `EsfPrim`、`EsfAttribute`、`EsfRelationship`、`SdfPath`、`TfToken`、`VtValue` 与 `TfType` 表明该接口横跨路径、schema、值和类型系统。</span></li>
+        <li><span class="zh">阅读时应把 `EsfPropertyInterface` 放在 Esf adapter / compiler 边界中理解，不要把它当作普通 USD authoring API 或可写 `UsdProperty` wrapper。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">属性接口：</span><span class="en">property interface</span></li>
+        <li><span class="zh">只读属性视图：</span><span class="en">read-only property view</span></li>
+        <li><span class="zh">执行网络编译器：</span><span class="en">exec network compiler</span></li>
+        <li><span class="zh">重新编译记录：</span><span class="en">recompilation journaling</span></li>
+        <li><span class="zh">场景适配器实现：</span><span class="en">scene adapter implementation</span></li>
+        <li><span class="zh">属性名称空间：</span><span class="en">property namespace</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

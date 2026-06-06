@@ -54,6 +54,27 @@
         <li><span class="zh">RAII：</span><span class="en">RAII</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-139">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`TfPyLock` 是 Tf Python 绑定层用于管理 Python Global Interpreter Lock 和 Python thread state 的便利类。它把 C++ 线程进入 Python API、暂时允许其他 Python 线程运行、再恢复锁状态的步骤集中到一个明确的状态机里。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for TfPyLock while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Acquire()` 与 `Release()` 是最直接的 GIL 获取/释放操作；调用顺序必须符合页面的 `State Valid Transitions`，否则容易破坏 Python thread state。</span></li>
+        <li><span class="zh">`BeginAllowThreads()` 与 `EndAllowThreads()` 对应 Python C API 中释放 GIL 让其他线程运行、随后重新获取 GIL 的模式，适合包裹长时间 C++ 工作。</span></li>
+        <li><span class="zh">构造函数和析构函数承担 RAII 生命周期边界；阅读时要把对象作用域、异常路径和锁状态恢复放在一起检查。</span></li>
+        <li><span class="zh">`TfPyEnsureGILUnlockedObj` 作为 friend/related symbol 提醒该类用于 Python/C++ 边界的锁协议，不是普通业务 mutex。</span></li>
+        <li><span class="zh">该类解决的是 Python API thread-safety 问题；它不保护 USD stage、SdfLayer 或 Hydra 数据结构本身，不能替代这些对象自己的并发约束。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Python 全局解释器锁：</span><span class="en">Python Global Interpreter Lock</span></li>
+        <li><span class="zh">线程状态：</span><span class="en">Python thread state</span></li>
+        <li><span class="zh">获取锁：</span><span class="en">Acquire()</span></li>
+        <li><span class="zh">释放锁：</span><span class="en">Release()</span></li>
+        <li><span class="zh">允许其他线程：</span><span class="en">BeginAllowThreads()</span></li>
+        <li><span class="zh">状态合法转换：</span><span class="en">State Valid Transitions</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
