@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-06T21:43:53.990Z",
+  "generated_at": "2026-06-06T21:59:09.301Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 392,
-    "bilingual_complete": 14
+    "bilingual_draft": 391,
+    "bilingual_complete": 15
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 381,
-    "good_bilingual": 14
+    "draft_needs_translation": 380,
+    "good_bilingual": 15
   },
   "focus_batch": [
     {
@@ -2030,29 +2030,29 @@
     },
     {
       "index": 40,
-      "title": "类参考草稿：UsdAttributeLimits Class / UsdAttributeLimits Class",
+      "title": "完整双语参考：UsdAttributeLimits Class / UsdAttributeLimits Class",
       "output": "full_site/api/class_usd_attribute_limits.html",
       "official_url": "https://openusd.org/release/api/class_usd_attribute_limits.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 64,
-      "enBlockCount": 51,
-      "zhChars": 726,
-      "enLetters": 2241,
-      "bodyChineseChars": 801,
+      "grade": "good_bilingual",
+      "zhBlockCount": 48,
+      "enBlockCount": 50,
+      "zhChars": 1057,
+      "enLetters": 2534,
+      "bodyChineseChars": 1110,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 UsdAttributeLimits Class Reference 补充中文优先的类职责、读取重点、关键属性/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`UsdAttributeLimits` 为 `UsdAttribute` 上的 limits dictionary metadata 提供读写 API，重点是某个 sub-dictionary 内的 minimum 与 maximum 值。"
+        "本页已从草稿晋级为完整双语参考页。中文层逐段覆盖 `UsdAttributeLimits` 的官方语义、limits dictionary metadata 的存储边界、minimum / maximum 的 key 约定、soft limits 与 hard limits 的区别、读取与写入 API、authored opinion 与 fallback 的判断方式，以及清除 metadata 时不会修改属性值本身的边界。",
+        "`UsdAttributeLimits` 解决的问题不是“读写一个 `UsdAttribute` 的当前数值”，而是读写该属性上的 `limits` dictionary metadata。也就是说，它操作的是 composition 后可见的属性元数据意见，用来描述工具、UI、验证器或导出管线可以参考的值域边界；它不会自动改变 default value，也不会修改 time samples。",
+        "官方描述里的 “particular sub-dictionary” 是理解本页的关键。`limits` metadata 可以包含多个语义分组，例如 soft limits 与 hard limits；`UsdAttributeLimits` 实例绑定到其中一个 sub-dictionary，再在该分组内读取或写入 `minimum` 与 `maximum`。因此调用者必须知道自己处理的是哪一类边界，而不是把所有限制都混成一个全局范围。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, reading guidance, key attribute/method groups, and terminology for UsdAttributeLimits Class Reference while retaining English page names, class names, method names, attribute names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page is promoted to a complete bilingual reference. The Chinese coverage explains the official `UsdAttributeLimits` semantics while retaining API names, method names, token literals, type names, links, and selected English source excerpts for direct comparison.",
+        "`UsdAttributeLimits` works on the `limits` dictionary metadata associated with a `UsdAttribute`; it is not an accessor for the attribute's authored value samples."
       ]
     },
     {

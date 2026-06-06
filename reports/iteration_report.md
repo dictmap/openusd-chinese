@@ -8480,3 +8480,47 @@ GitHub 同步：
 1. 继续真实晋级，不再刷 count-neutral 导读补强。
 2. 下一批优先核心页面：`full_site/api/class_usd_attribute_limits.html`。
 3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。
+
+## 第 309 轮：将 UsdAttributeLimits 提升为完整双语
+已完成：
+
+- 将 `full_site/api/class_usd_attribute_limits.html` 从 `bilingual_draft` 晋级为 `bilingual_complete`。
+- 页面标题改为“完整双语参考：UsdAttributeLimits Class”，并移除通用 draft 文案和“后续迭代会继续补齐”等草稿标记。
+- 新增 `逐段双语理解 / Paragraph-Level Bilingual Coverage` 区块，覆盖：
+  - `UsdAttributeLimits` 操作 `UsdAttribute` 上的 `limits` dictionary metadata，而不是 attribute value。
+  - `limits` metadata 的 sub-dictionary 分组、`UsdLimitsKeys->Minimum` / `UsdLimitsKeys->Maximum` 存储 key。
+  - soft limits 与 hard limits 的消费语义，以及它们不会自动 clamp USD 值。
+  - `GetMinimum()`、`GetMaximum()`、`GetMinimumOr()`、`GetMaximumOr()`、`GetOr()` 的读取与 fallback 语义。
+  - `SetMinimum()`、`SetMaximum()` 的 authored metadata 边界。
+  - `HasAuthoredMinimum()`、`HasAuthoredMaximum()`、`HasAuthored()` 对 authored opinion 的判断。
+  - `ClearMinimum()`、`ClearMaximum()`、`Clear()` 只清除 limits metadata，不删除 attribute 或 time samples。
+  - `GetSubDictKey()`、`GetAttribute()`、`IsValid()` 的调试和诊断用途。
+- 更新 `reports/bilingual_completion_promotions.json/md`，新增 `round-309-usd-attribute-limits`。
+- 更新 `reports/current_problem_audit.md/json`，将当前真实状态同步为 15 complete / 391 draft。
+- 重建 `openusd_bilingual_final.html`，总入口现在显示 15 complete / 391 incomplete drafts。
+
+分级变化：
+- `good_bilingual`：14 -> 15
+- `bilingual_complete`：14 -> 15
+- `bilingual_draft`：392 -> 391
+- `draft_needs_translation`：381 -> 380
+- `draft_template_only`：11 保持不变
+
+验证结果：
+- `discover_openusd_all_pages.mjs`：通过，`total_pages=406`，`promoted_complete_pages=7`。
+- `audit_openusd_translation_quality.mjs`：通过，`good_bilingual=15`，目标页 `grade=good_bilingual`。
+- `route_openusd_internal_links_local.mjs`：通过。
+- `audit_openusd_full_draft_preview.mjs`：通过，391/391 draft 页面可预览。
+- `audit_openusd_report_index.mjs`：通过。
+- `validate_openusd_api_repro.ps1`：通过，`required_check_count=288`，`failed_check_count=0`。
+- Node 直接解析 `reports/validation_report.json`：`bom=false`。
+
+GitHub 同步：
+
+- 本轮验证通过后将使用 `OpenUSD bilingual round 309: promote UsdAttributeLimits complete` 同步本轮 HTML、报告和 `work.md`。
+
+下一轮目标：
+
+1. 继续真实晋级，不再刷 count-neutral 导读补强。
+2. 下一批优先核心页面：`full_site/api/class_usd_validation_error.html` 或其他 406 清单内高价值核心 API 页。
+3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。
