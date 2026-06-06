@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-06T22:11:32.881Z
+Generated: 2026-06-06T22:23:43.826Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 16
-- Promoted complete pages: 8
-- Bilingual draft pages: 390
+- Bilingual complete pages: 17
+- Promoted complete pages: 9
+- Bilingual draft pages: 389
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -58,7 +58,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_complete | https://openusd.org/release/api/class_tf_token.html | full_site/api/class_tf_token.html | https://openusd.org/release/api/class_tf_token.html |
 | api | bilingual_draft | 类参考草稿：TraceEventData Class / TraceEventData Class | full_site/api/class_trace_event_data.html | https://openusd.org/release/api/class_trace_event_data.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_usd_attribute_limits.html | full_site/api/class_usd_attribute_limits.html | https://openusd.org/release/api/class_usd_attribute_limits.html |
-| api | bilingual_draft | 类参考草稿：UsdGeomBasisCurves Class / UsdGeomBasisCurves Class | full_site/api/class_usd_geom_basis_curves.html | https://openusd.org/release/api/class_usd_geom_basis_curves.html |
+| api | bilingual_complete | https://openusd.org/release/api/class_usd_geom_basis_curves.html | full_site/api/class_usd_geom_basis_curves.html | https://openusd.org/release/api/class_usd_geom_basis_curves.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_usd_geom_mesh.html | full_site/api/class_usd_geom_mesh.html | https://openusd.org/release/api/class_usd_geom_mesh.html |
 | api | bilingual_draft | 类参考草稿：UsdGeomPrimvarsAPI Class / UsdGeomPrimvarsAPI Class | full_site/api/class_usd_geom_primvars_a_p_i.html | https://openusd.org/release/api/class_usd_geom_primvars_a_p_i.html |
 | api | bilingual_draft | 类参考草稿：UsdImagingAdapterRegistry Class / UsdImagingAdapterRegistry Class | full_site/api/class_usd_imaging_adapter_registry.html | https://openusd.org/release/api/class_usd_imaging_adapter_registry.html |

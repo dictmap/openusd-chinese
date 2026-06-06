@@ -4959,3 +4959,46 @@
 
 1. 继续真实晋级，优先考虑 `full_site/api/class_usd_geom_basis_curves.html` 或其他 406 清单内高价值核心 API 页。
 2. 每次只晋级 1 页，必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 增加。
+
+## 第 311 轮：将 UsdGeomBasisCurves 提升为完整双语
+已完成：
+
+- 将 `full_site/api/class_usd_geom_basis_curves.html` 从 `bilingual_draft` 晋级为 `bilingual_complete`。
+- 页面标题改为“完整双语参考：UsdGeomBasisCurves Class”，并移除通用 draft 说明和“后续迭代会继续补齐”等草稿标记。
+- 新增 `逐段双语理解 / Paragraph-Level Bilingual Coverage` 区块，覆盖：
+  - `UsdGeomBasisCurves` 是 batched curve representation，不是每条曲线一个 prim。
+  - `curveVertexCounts` 描述每条 curve 消耗的点数，以及 points 数组中的连续切片。
+  - `type`、`basis`、`wrap` 的关系：linear/cubic、basis 只影响 cubic、wrap 决定端点连接和段数。
+  - `ComputeSegmentCounts()`、`ComputeUniformDataSize()`、`ComputeVaryingDataSize()`、`ComputeVertexDataSize()` 的数据尺寸推导用途。
+  - segment indexing、vertex interpolation 和 primvar interpolation 是不同索引空间。
+  - `CreateBasisAttr()`、`CreateTypeAttr()`、`CreateWrapAttr()`、`CreateCurveVertexCountsAttr()` 只 author 属性，不替代拓扑一致性检查。
+  - tubes/ribbons 是渲染解释和材质法线问题，不改变曲线拓扑本身。
+- 更新 `reports/bilingual_completion_promotions.json/md`，新增 `round-311-usd-geom-basis-curves`。
+- 更新 `reports/current_problem_audit.md/json`，将真实状态同步为 17 complete / 389 draft。
+- 重建 `openusd_bilingual_final.html`，总入口现在显示 17 complete / 389 incomplete drafts。
+
+分级变化：
+- `good_bilingual`：16 -> 17
+- `bilingual_complete`：16 -> 17
+- `bilingual_draft`：390 -> 389
+- `draft_needs_translation`：379 -> 378
+- `draft_template_only`：11 保持不变
+
+验证结果：
+- `discover_openusd_all_pages.mjs` 通过，范围稳定为 406，`promoted_complete_pages=9`。
+- `audit_openusd_translation_quality.mjs` 通过，确认 `good_bilingual=17`，目标页为 `grade=good_bilingual`。
+- `route_openusd_internal_links_local.mjs` 通过。
+- `audit_openusd_full_draft_preview.mjs` 通过，389/389 draft 页面可预览。
+- `audit_openusd_report_index.mjs` 通过。
+- `validate_openusd_api_repro.ps1` 通过，`required_check_count=288`，`failed_check_count=0`。
+- `reports/validation_report.json` 经 Node 解析确认 `bom=false`。
+
+当前差距：
+- 仍有 389 个 `bilingual_draft` 页面不是完整翻译，其中 378 个仍为 `draft_needs_translation`。
+- 406 清单外的 Doxygen 目标仍会进入本地未覆盖占位页；这是当前 P1 浏览缺口。
+
+下一步目标：
+
+1. 继续真实晋级，不再刷 count-neutral 导读补强。
+2. 下一批优先核心页面：`full_site/api/class_usd_physics_joint.html` 或其他 406 清单内高价值核心 API 页。
+3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：UsdGeomBasisCurves Class / UsdGeomBasisCurves Class</title>
+  <title>完整双语参考：UsdGeomBasisCurves Class / UsdGeomBasisCurves Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,76 +24,52 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：UsdGeomBasisCurves Class / UsdGeomBasisCurves Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：UsdGeomBasisCurves Class / UsdGeomBasisCurves Class</h1>
     <div class="meta">https://openusd.org/release/api/class_usd_geom_basis_curves.html</div>
   </header>
   <main>
     <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <h2>完成说明 / Completion Note</h2>
+      <p class="zh">本页已从草稿晋级为完整双语参考页。中文层逐段覆盖 `UsdGeomBasisCurves` 的官方定义、batched curve representation 的性能动机、`curveVertexCounts` 的数据布局、cubic / linear 曲线的 `basis` 与 `type` 边界、segment indexing、不同 interpolation 数据尺寸、schema 属性 authoring，以及 tubes / ribbons 只影响渲染解释而不改变曲线拓扑的边界。</p>
+      <p class="en">This page is promoted to a complete bilingual reference. The Chinese coverage explains the official `UsdGeomBasisCurves` semantics while retaining API names, method names, token literals, type names, links, and selected English source excerpts for comparison.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-039">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 UsdGeomBasisCurves Class Reference 补充中文优先的类职责、读取重点、关键属性/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, key attribute/method groups, and terminology for UsdGeomBasisCurves Class Reference while retaining English page names, class names, method names, attribute names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`UsdGeomBasisCurves` 是批量曲线表示，适合 hair、grass 等高密度 aggregate geometry，概念上接近 RIB 的 Basis 和 Curves 语句。</span></li>
-        <li><span class="zh">英文摘录说明 cubic BasisCurves 使用 basis 关联的 matrix 与 vstep 插值 vertices；linear BasisCurves 不使用 basis attribute。</span></li>
-        <li><span class="zh">`curveVertexCounts` 的长度隐式决定一个 prim 内有多少条曲线；各条曲线由连续的 point 数据段组成，因此 segment indexing 和 interpolation rules 是阅读本页的重点。</span></li>
-        <li><span class="zh">页面中的 `ComputeSegmentCounts()`、`ComputeUniformDataSize()`、`ComputeVaryingDataSize()`、`ComputeVertexDataSize()` 帮助把曲线拓扑映射到不同 interpolation 的数据尺寸。</span></li>
-        <li><span class="zh">`CreateBasisAttr()`、`CreateTypeAttr()` 等 schema 属性 API 用于 authoring 曲线类型与 basis；后续完整翻译应继续补充 wrap、basis、type、curveVertexCounts 和 interpolation 细节。</span></li>
-      </ul>
+    <section data-cn-complete="usd-geom-basis-curves-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`UsdGeomBasisCurves` 表达的是一个 prim 内的批量曲线集合，而不是把每一根 hair、grass 或 strand 建成独立 prim。这个设计的核心动机是高密度 aggregate geometry：大量曲线共享一个 schema wrapper 和数组数据布局，消费端通过数组解释每条曲线的顶点、线段、插值数据和渲染形态。</p>
+      <p class="en">`UsdGeomBasisCurves` is a batched curve representation, commonly used for dense aggregate geometry such as hair or grass.</p>
+      <p class="zh">官方把 BasisCurves 类比为 RIB 的 `Basis` 和 `Curves` 语句，重点是“基函数”和“曲线数据”一起决定曲线如何从控制点生成。阅读本页时不要只看 `points`；还必须同时看 `curveVertexCounts`、`type`、`basis`、`wrap`、segment indexing 和 interpolation 规则，否则很容易把控制点数量、线段数量和 primvar 样本数量混在一起。</p>
+      <p class="en">The class is analogous to classic RIB `Basis` and `Curves` concepts: curve data and basis-related interpretation must be read together.</p>
+      <p class="zh">`curveVertexCounts` 是本页最重要的数据布局字段。它的数组长度隐式决定这个 prim 中有多少条曲线；每个元素给出对应曲线占用的连续 `points` 数量。因此第 N 条曲线并不是另一个 prim，而是 `points` 数组中的一个连续段。调试拓扑错误时，应先核对所有 `curveVertexCounts` 之和是否等于有效控制点数量。</p>
+      <p class="en">The length of `curveVertexCounts` determines how many curves are stored in the prim; each entry tells how many consecutive points belong to that curve.</p>
+      <p class="zh">`type` 决定曲线是 linear 还是 cubic。linear BasisCurves 不使用 `basis` attribute；cubic BasisCurves 则通过与 basis 关联的 matrix 和 `vstep` 插值 vertices。也就是说，`basis` 不是对所有曲线类型都有效的通用开关，解释 basis 前必须先确认 `type`，否则会把 linear 数据错误地按 cubic 规则消费。</p>
+      <p class="en">The `basis` attribute matters for cubic curves, where a basis matrix and `vstep` are used to interpolate vertices; it is unused for linear BasisCurves.</p>
+      <p class="zh">`wrap` 描述曲线是否周期闭合，并影响 segment count 的计算。对于 open 曲线，线段数量通常少于控制点数量；对于 periodic 或 pinned 等约定，segment indexing 会发生变化。消费端在计算 `ComputeSegmentCounts()` 或生成渲染数据前，必须把 `type`、`basis`、`wrap` 与每条曲线的 vertex count 放在一起解释。</p>
+      <p class="en">`wrap` participates in segment-count interpretation, so segment indexing must be derived from curve type, basis, wrap, and per-curve vertex counts together.</p>
+      <p class="zh">`ComputeSegmentCounts()`、`ComputeUniformDataSize()`、`ComputeVaryingDataSize()`、`ComputeVertexDataSize()` 和相关 helper 是把拓扑解释映射到数据尺寸的入口。它们解决的问题不是 author 新曲线，而是帮助调用方判断 uniform、varying、vertex 或 face-varying 类数据需要多少样本，避免 primvar 数组长度与曲线拓扑不一致。</p>
+      <p class="en">The `Compute*DataSize()` helpers translate curve topology and interpolation rules into expected data sizes for consumers and validation tools.</p>
+      <p class="zh">`UsdGeomBasisCurves` 继承自 `UsdGeomCurves` / `UsdGeomPointBased` 语义，因此 `points`、widths、normals、primvars 等数据仍遵循几何基础类的规则。它和 `UsdGeomMesh` 的边界是：Mesh 用 face topology 表达面片，而 BasisCurves 用 curve topology 表达线状集合；不要用 mesh 的 faceVertexCounts / faceVertexIndices 心智模型解释本页的 `curveVertexCounts`。</p>
+      <p class="en">Basis curves follow point-based geometry conventions, but their topology is curve-based rather than mesh face topology.</p>
+      <p class="zh">`CreateBasisAttr()`、`CreateTypeAttr()`、`CreateWrapAttr()`、`CreateCurveVertexCountsAttr()` 等 schema API 负责 author 对应属性；它们不会自动证明数组长度一致，也不会替调用方推导所有 primvar 样本。写入这些属性后，仍需要验证 `points`、`curveVertexCounts`、interpolation 和渲染相关 primvars 是否相互匹配。</p>
+      <p class="en">The `Create*Attr()` APIs author schema attributes; they do not by themselves validate consistency between points, curve counts, interpolation, and primvars.</p>
+      <p class="zh">`Segment Indexing`、`Cubic Vertex Interpolation`、`Linear Vertex Interpolation` 和 `Primvar Interpolation` 小节需要连在一起读。segment 是由曲线类型和控制点布局推导出的渲染/插值单位；vertex interpolation 关注曲线控制点或插值顶点；primvar interpolation 关注属性样本如何对应到 curve、segment 或 point。三者不是同一个索引空间。</p>
+      <p class="en">Segment indexing, vertex interpolation, and primvar interpolation describe different index spaces and must not be collapsed into one concept.</p>
+      <p class="zh">`Tubes and Ribbons` 说明曲线可以按 tube 或 ribbon 方式渲染。这个选择影响宽度、法线、orientation、屏幕朝向和材质解释，但不改变 USD 中曲线拓扑的基本定义。调试外观问题时应区分“拓扑数据错误”和“渲染解释或 primvar 数据不足”。</p>
+      <p class="en">Tubes and ribbons affect rendering interpretation, but they do not change the underlying curve topology stored by `UsdGeomBasisCurves`.</p>
+      <p class="zh">常见误读有四类：第一，把每条曲线误认为独立 prim；第二，把 `curveVertexCounts` 当成 mesh 的 face vertex counts；第三，在 linear curves 上解释 `basis`；第四，把 `Compute*DataSize()` 当成自动修复拓扑的函数。正确理解是：本页定义批量曲线 schema 的数据布局和解释规则，验证与修复仍需要上层工具根据数组长度、interpolation 和渲染需求执行。</p>
+      <p class="en">Common mistakes include treating each curve as a separate prim, reading `curveVertexCounts` like mesh face counts, applying `basis` to linear curves, or expecting compute helpers to repair topology.</p>
       <h3>术语对照 / Terms</h3>
       <ul>
-        <li><span class="zh">基函数曲线：</span><span class="en">BasisCurves</span></li>
+        <li><span class="zh">基函数曲线：</span><span class="en">UsdGeomBasisCurves</span></li>
         <li><span class="zh">批量曲线表示：</span><span class="en">batched curve representation</span></li>
-        <li><span class="zh">三次曲线：</span><span class="en">cubic</span></li>
-        <li><span class="zh">线性曲线：</span><span class="en">linear</span></li>
-        <li><span class="zh">curveVertexCounts：</span><span class="en">curveVertexCounts</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-133">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`UsdGeomBasisCurves` 是用于 hair、grass 等高密度曲线的 batched curve representation，概念上接近 RIB 的 `Basis` 和 `Curves`。重点在于 curve vertex counts、basis、type、wrap、segment indexing、vertex interpolation 和 primvar interpolation 的配合。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdGeomBasisCurves while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`curveVertexCounts` 的长度决定一个 prim 中曲线数量，每个元素决定对应曲线占用的连续 points 数量；这也是 segment indexing 的基础。</span></li>
-        <li><span class="zh">`basis` 只对 cubic BasisCurves 有意义，linear BasisCurves 不使用 basis attribute；阅读时应先确认 `type` 再解释 basis。</span></li>
-        <li><span class="zh">`ComputeSegmentCounts()`、`ComputeUniformDataSize()`、`ComputeVaryingDataSize()` 和 `ComputeVertexDataSize()` 是理解不同 interpolation 数据规模的实用入口。</span></li>
-        <li><span class="zh">`Tubes and Ribbons` 相关段落说明 curves 可以按 tubes 或 ribbons 渲染；宽度、法线、orientation 和 primvars 会影响最终外观。</span></li>
-        <li><span class="zh">`UsdGeomBasisCurves` 常用于批量表达大量曲线，不适合逐条曲线建成独立 prim；这正是它作为 aggregate geometry 的性能动机。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">USD 基函数曲线：</span><span class="en">UsdGeomBasisCurves</span></li>
         <li><span class="zh">每条曲线顶点数：</span><span class="en">curveVertexCounts</span></li>
-        <li><span class="zh">基函数：</span><span class="en">basis</span></li>
-        <li><span class="zh">三次曲线：</span><span class="en">cubic curves</span></li>
-        <li><span class="zh">线段索引：</span><span class="en">segment indexing</span></li>
-        <li><span class="zh">primvar 插值：</span><span class="en">primvar interpolation</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-142">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`UsdGeomBasisCurves` 是 batched curve representation，类似 RIB 的 Basis/Curves 表达，常用于 hair、grass 等密集曲线集合。它通过 `curveVertexCounts`、basis、type、segment indexing 和 interpolation 规则描述多条曲线的数据布局。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdGeomBasisCurves while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`curveVertexCounts` 的长度隐式决定 prim 中有多少条 curves，每个元素给出对应 curve 的 vertex 数量；这直接影响 segment count 和数据尺寸计算。</span></li>
-        <li><span class="zh">`basis` attribute 对 cubic curves 有意义，配合 matrix 和 vstep 插值顶点；对 linear `BasisCurves` 通常不使用 basis。</span></li>
-        <li><span class="zh">`ComputeSegmentCounts()`、`ComputeUniformDataSize()`、`ComputeVaryingDataSize()` 与 `ComputeVertexDataSize()` 是理解 primvar interpolation 数据大小的关键 helper。</span></li>
-        <li><span class="zh">页面的 `Segment Indexing`、`Cubic Vertex Interpolation`、`Linear Vertex Interpolation` 和 `Primvar Interpolation` 小节应一起阅读，避免把 curve vertex、segment 和 primvar sample 混淆。</span></li>
-        <li><span class="zh">`Tubes and Ribbons` 说明曲线渲染形态；它影响渲染解释和宽度/法线相关数据，而不是改变 USD 中 curve topology 的基本定义。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">基函数曲线：</span><span class="en">BasisCurves</span></li>
-        <li><span class="zh">批量曲线表示：</span><span class="en">batched curve representation</span></li>
-        <li><span class="zh">曲线顶点计数：</span><span class="en">curveVertexCounts</span></li>
-        <li><span class="zh">线段索引：</span><span class="en">segment indexing</span></li>
+        <li><span class="zh">曲线类型：</span><span class="en">type</span></li>
         <li><span class="zh">曲线基函数：</span><span class="en">basis</span></li>
+        <li><span class="zh">闭合方式：</span><span class="en">wrap</span></li>
+        <li><span class="zh">线段索引：</span><span class="en">segment indexing</span></li>
+        <li><span class="zh">顶点插值：</span><span class="en">vertex interpolation</span></li>
         <li><span class="zh">primvar 插值：</span><span class="en">primvar interpolation</span></li>
+        <li><span class="zh">管状与带状渲染：</span><span class="en">Tubes and Ribbons</span></li>
       </ul>
     </section>
     <section>
