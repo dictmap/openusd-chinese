@@ -1,6 +1,6 @@
 # OpenUSD Audit Index
 
-Generated: 2026-06-06T16:23:16.034Z
+Generated: 2026-06-06T16:35:59.181Z
 
 Scope:
 

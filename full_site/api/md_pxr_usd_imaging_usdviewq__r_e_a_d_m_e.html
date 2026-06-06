@@ -29,6 +29,27 @@
     <div class="meta">https://openusd.org/release/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html</div>
   </header>
   <main>
+    <section data-cn-refinement="api-index-quality-pass-168">
+      <h2>中文二次导读补强 / Chinese Second-Pass Reading Notes</h2>
+      <p class="zh">`md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html` 是 usdview / `usdviewq` 开发实践入口页，适合理解 UI 代码、Qt 层、stage inspection、plugin hooks 和测试约定。它偏向 contributor workflow，不是普通用户的 usdview 操作手册。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Development Practices For usdview while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`usdviewq` 是 usdview 的 UI 和工具实现区域，阅读时要区分 end-user command behavior、Qt widget code、viewer state、stage data access 和 imaging delegate interaction。</span></li>
+        <li><span class="zh">开发实践页通常会说明代码组织、测试方式、review 注意事项或运行约定；这些内容应和实际 class/module API 页面一起看，不能替代 API reference。</span></li>
+        <li><span class="zh">修改 usdview 行为时，常见风险包括 UI state 与 stage state 不一致、plugin menu hook 破坏、selection/model update 不同步、以及测试 fixture 没覆盖交互路径。</span></li>
+        <li><span class="zh">如果页面提到 black-box 或 UI testing，应与 `Usdview Black Box Testing` 页合并理解：一个偏开发规范，一个偏外部行为验证。</span></li>
+        <li><span class="zh">中文补强保留 `usdviewq`、`Qt`、`viewer state`、`plugin hook`、`stage inspection`、`selection` 等英文名称，确保可直接回到源码目录和测试输出。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">开发实践：</span><span class="en">development practices</span></li>
+        <li><span class="zh">查看器状态：</span><span class="en">viewer state</span></li>
+        <li><span class="zh">插件钩子：</span><span class="en">plugin hook</span></li>
+        <li><span class="zh">场景检查：</span><span class="en">stage inspection</span></li>
+        <li><span class="zh">选择状态：</span><span class="en">selection state</span></li>
+        <li><span class="zh">贡献者工作流：</span><span class="en">contributor workflow</span></li>
+      </ul>
+    </section>
     <section>
       <h2>范围说明 / Scope Note</h2>
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>

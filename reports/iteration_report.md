@@ -8080,3 +8080,37 @@
 1. 继续最多 5 页，优先处理质量队列中真实存在、中文量低且用户会实际浏览的类层级/相关页索引和 usdview 文档页。
 2. 建议下一组：`full_site/api/hierarchy.html`、`full_site/api/inherits.html`、`full_site/api/pages.html`、`full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html`、`full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html`。
 3. 之后可继续 `full_site/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html`、`full_site/api/group__group___exec___attribute___comptuations.html`、`full_site/api/struct_usd_lux_tokens_type.html`、`full_site/api/struct_hgi_sampler_desc.html`、`full_site/api/struct_usd_skel_tokens_type.html`，继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+## 第 299 轮：Class Hierarchy、Related Pages 与 usdview 文档页补强
+
+已完成：
+
+- 复核当前仓库、远端与审计基线：本地 `main` 基于上一轮同步提交 `a2b709c`，`origin/main` 一致，起始工作区干净；总入口 `http://127.0.0.1:8068/openusd_bilingual_final.html` 返回 HTTP 200。
+- 复核 `reports/all_pages_inventory.json`、`reports/translation_quality_review.json`、`reports/full_draft_preview_audit.json`、`reports/local_link_routing_report.json`、`reports/audit_index.json`、`reports/validation_report.json`、`work.md` 与 `reports/iteration_report.md`：406 页范围完整，质量计数仍为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11，上一轮记录指向本轮 5 个真实存在页面。
+- 新增并执行 `scripts/refine_openusd_release_batch_168.mjs`，本轮标记为 `api-index-quality-pass-168`。
+- 严格只精修 5 个已存在页面：
+  - `full_site/api/hierarchy.html`
+  - `full_site/api/inherits.html`
+  - `full_site/api/pages.html`
+  - `full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html`
+  - `full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html`
+- 每页新增 5 条中文二次导读和 6 条术语对照；重点覆盖 `Class Hierarchy`、`inheritance graph`、`Related Pages`、`usdview` black-box testing、`usdviewq` development practices、Qt/UI state、stage inspection、plugin hooks 和 visual diff/flakiness 等阅读边界；API 名称、类名、方法名、template 参数、变量名、token 字面量、数学符号和链接保持原样。
+- 质量回读：5 页均无 `TODO` / `待翻译` / `机器翻译占位`，`api-index-quality-pass-168` 均只出现 1 次：
+  - `hierarchy.html`：中文字符 633，中文/英文块 25/17。
+  - `inherits.html`：中文字符 618，中文/英文块 25/16。
+  - `pages.html`：中文字符 605，中文/英文块 25/17。
+  - `md_pxr_usd_imaging_usdviewq_black_box_testing.html`：中文字符 629，中文/英文块 30/22。
+  - `md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html`：中文字符 613，中文/英文块 27/19。
+- 分级变化：计数保持不变，仍为 `draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因是本轮对象开始前已属 `draft_needs_translation`，本轮是索引/文档页二次补强精修，不是从模板草稿晋级。
+- 验证结果：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1` 均已通过；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步记录：本轮复验通过后使用 `OpenUSD bilingual round 299: hierarchy usdview docs pass` 同步本轮 HTML、脚本、报告和 `work.md`；如同步脚本失败，本轮不推送并先修复。
+
+当前差距：
+
+- 全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`；其中 387 页为 `draft_needs_translation`、11 页为 `draft_template_only`，`bilingual_draft` 仍不是完整翻译。
+- 剩余 `draft_template_only` 11 页基本是 `_source.html` 源码页、`search.html` 或目录页，继续低优先处理。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理质量队列中真实存在、中文量低且用户会实际浏览的 Sdf/Exec 文档、token/descriptor 结构体页。
+2. 建议下一组：`full_site/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html`、`full_site/api/group__group___exec___attribute___comptuations.html`、`full_site/api/struct_usd_lux_tokens_type.html`、`full_site/api/struct_hgi_sampler_desc.html`、`full_site/api/struct_usd_skel_tokens_type.html`。
+3. 之后可继续 `full_site/api/struct_usd_physics_tokens_type.html`、`full_site/api/functions_vars.html`、`full_site/api/globals_l.html`、`full_site/api/functions_vars_f.html`、`full_site/release/user_guides/schemas/usdVol/FieldAsset.html`，继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。

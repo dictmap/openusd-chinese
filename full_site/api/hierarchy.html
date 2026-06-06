@@ -29,6 +29,27 @@
     <div class="meta">https://openusd.org/release/api/hierarchy.html</div>
   </header>
   <main>
+    <section data-cn-refinement="api-index-quality-pass-168">
+      <h2>中文二次导读补强 / Chinese Second-Pass Reading Notes</h2>
+      <p class="zh">`hierarchy.html` 是 Doxygen 生成的 Class Hierarchy 总览页，适合用来从继承树角度定位 OpenUSD API 类型。阅读时应把它当作导航索引：先找到基类、派生类和模板族，再跳到具体 class reference 页面看构造、成员函数与语义说明。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Class Hierarchy while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">Class Hierarchy 主要回答“某个类型继承自哪里、有哪些派生类型”这类结构问题，不负责解释每个 API 的完整行为；行为细节仍应进入具体 class 页面。</span></li>
+        <li><span class="zh">面对 `UsdPrim`、`SdfSpec`、`HdSceneDelegate`、`GfMatrix4f` 等核心类型时，可先通过 hierarchy 确认它们在命名空间和继承树中的位置，再回到模块入口页理解用途边界。</span></li>
+        <li><span class="zh">模板类、抽象基类和 adapter 类在层级页中很容易混在一起；阅读时应区分 interface inheritance、implementation inheritance、type trait 和 helper utility。</span></li>
+        <li><span class="zh">如果用户从错误的父类进入 API，常会误判生命周期、ownership、virtual method override 或 plugin extension point；层级页适合用来提前校正这种路径。</span></li>
+        <li><span class="zh">中文导读保留 `Class Hierarchy`、`base class`、`derived class`、`abstract class`、`template class` 等英文术语，便于和 Doxygen 侧栏、链接文本和源码注释对应。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">类层级：</span><span class="en">Class Hierarchy</span></li>
+        <li><span class="zh">基类：</span><span class="en">base class</span></li>
+        <li><span class="zh">派生类：</span><span class="en">derived class</span></li>
+        <li><span class="zh">抽象类：</span><span class="en">abstract class</span></li>
+        <li><span class="zh">模板类：</span><span class="en">template class</span></li>
+        <li><span class="zh">接口继承：</span><span class="en">interface inheritance</span></li>
+      </ul>
+    </section>
     <section>
       <h2>范围说明 / Scope Note</h2>
       <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>

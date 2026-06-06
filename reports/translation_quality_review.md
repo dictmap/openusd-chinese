@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-06T14:17:44.457Z
+Generated: 2026-06-06T16:30:51.379Z
 
 ## Summary
 
@@ -40,14 +40,9 @@ Generated: 2026-06-06T14:17:44.457Z
 | 278 | draft_template_only | 62 | `full_site/api/var_8h_source.html` | 源码页面草稿：var.h / var.h |
 | 298 | draft_template_only | 64 | `full_site/release/search.html` | 搜索 / Search - Universal Scene Description 26.05 documentation |
 | 69 | draft_template_only | 66 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | API 页面草稿：hf Directory / hf Directory |
-| 208 | draft_needs_translation | 314 | `full_site/api/hierarchy.html` | API 页面草稿：Class Hierarchy / Class Hierarchy |
 | 257 | draft_needs_translation | 332 | `full_site/api/usd_2usd_2object_8h.html` | API 页面草稿：object.h File / object.h File |
-| 211 | draft_needs_translation | 333 | `full_site/api/inherits.html` | API 页面草稿：Class Hierarchy / Class Hierarchy |
 | 212 | draft_needs_translation | 336 | `full_site/api/journal_8h.html` | API 页面草稿：journal.h File / journal.h File |
-| 239 | draft_needs_translation | 336 | `full_site/api/pages.html` | API 页面草稿：Related Pages / Related Pages |
 | 248 | draft_needs_translation | 338 | `full_site/api/sparse_vectorized_input_traverser_8h.html` | API 页面草稿：sparseVectorizedInputTraverser.h File / sparseVectorizedInputTraverser.h File |
-| 227 | draft_needs_translation | 345 | `full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html` | API 页面草稿：Usdview Black Box Testing / Usdview Black Box Testing |
-| 226 | draft_needs_translation | 351 | `full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html` | API 页面草稿：Development Practices For usdview / Development Practices For usdview |
 | 70 | draft_needs_translation | 352 | `full_site/api/executor_invalidation_data_8h.html` | API 页面草稿：executorInvalidationData.h File / executorInvalidationData.h File |
 | 66 | draft_needs_translation | 353 | `full_site/api/classpxr__tsl_1_1robin__map.html` | API 页面草稿：robin_map< Key, T, Hash, KeyEqual, Allocator, StoreHash, GrowthPolicy > Class Template / robin_map< Key, T, Hash, KeyEqual, Allocator, StoreHash, GrowthPolicy > Class Template |
 | 228 | draft_needs_translation | 361 | `full_site/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html` | API 页面草稿：Boolean Expressions / Boolean Expressions |
@@ -59,6 +54,11 @@ Generated: 2026-06-06T14:17:44.457Z
 | 249 | draft_needs_translation | 387 | `full_site/api/struct_hgi_sampler_desc.html` | 结构体参考草稿：HgiSamplerDesc Struct / HgiSamplerDesc Struct |
 | 67 | draft_needs_translation | 395 | `full_site/api/copy_utils_8h.html` | API 页面草稿：copyUtils.h File / copyUtils.h File |
 | 253 | draft_needs_translation | 397 | `full_site/api/struct_usd_skel_tokens_type.html` | 结构体参考草稿：UsdSkelTokensType Class / UsdSkelTokensType Class |
+| 285 | draft_needs_translation | 400 | `full_site/release/genindex.html` | 索引 / Index |
+| 137 | draft_needs_translation | 411 | `full_site/api/functions_vars_f.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
+| 252 | draft_needs_translation | 411 | `full_site/api/struct_usd_physics_tokens_type.html` | 结构体参考草稿：UsdPhysicsTokensType Class / UsdPhysicsTokensType Class |
+| 144 | draft_needs_translation | 424 | `full_site/api/functions_vars_m.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
+| 371 | draft_needs_translation | 425 | `full_site/release/user_guides/schemas/usdVol/FieldAsset.html` | 页面草稿：FieldAsset / FieldAsset |
 
 ## All Pages
 
@@ -271,10 +271,10 @@ Generated: 2026-06-06T14:17:44.457Z
 | 205 | draft_needs_translation | bilingual_draft | 596 | 25/16 | 0 | 0 | `full_site/api/hd_storm_page_front.html` |
 | 206 | draft_needs_translation | bilingual_draft | 786 | 38/25 | 0 | 0 | `full_site/api/hdx_page_front.html` |
 | 207 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/hgi_2shader_program_8h_source.html` |
-| 208 | draft_needs_translation | bilingual_draft | 314 | 13/10 | 0 | 0 | `full_site/api/hierarchy.html` |
+| 208 | draft_needs_translation | bilingual_draft | 580 | 25/17 | 0 | 0 | `full_site/api/hierarchy.html` |
 | 209 | draft_needs_translation | bilingual_draft | 691 | 37/24 | 0 | 0 | `full_site/api/hio_page_front.html` |
 | 210 | good_bilingual | bilingual_complete | 515 | 16/21 | 0 | 0 | `site/index.html` |
-| 211 | draft_needs_translation | bilingual_draft | 333 | 13/9 | 0 | 0 | `full_site/api/inherits.html` |
+| 211 | draft_needs_translation | bilingual_draft | 565 | 25/16 | 0 | 0 | `full_site/api/inherits.html` |
 | 212 | draft_needs_translation | bilingual_draft | 336 | 15/12 | 0 | 0 | `full_site/api/journal_8h.html` |
 | 213 | draft_needs_translation | bilingual_draft | 543 | 26/18 | 0 | 0 | `full_site/api/js_page_front.html` |
 | 214 | draft_needs_translation | bilingual_draft | 735 | 39/26 | 0 | 0 | `full_site/api/kind_page_front.html` |
@@ -289,8 +289,8 @@ Generated: 2026-06-06T14:17:44.457Z
 | 223 | draft_needs_translation | bilingual_draft | 594 | 33/25 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html` |
 | 224 | draft_needs_translation | bilingual_draft | 526 | 34/26 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html` |
 | 225 | draft_needs_translation | bilingual_draft | 781 | 38/25 | 0 | 0 | `full_site/api/md_pxr_exec_vdf__r_e_a_d_m_e.html` |
-| 226 | draft_needs_translation | bilingual_draft | 351 | 15/12 | 0 | 0 | `full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html` |
-| 227 | draft_needs_translation | bilingual_draft | 345 | 18/15 | 0 | 0 | `full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html` |
+| 226 | draft_needs_translation | bilingual_draft | 560 | 27/19 | 0 | 0 | `full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html` |
+| 227 | draft_needs_translation | bilingual_draft | 576 | 30/22 | 0 | 0 | `full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html` |
 | 228 | draft_needs_translation | bilingual_draft | 361 | 21/18 | 0 | 0 | `full_site/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html` |
 | 229 | draft_needs_translation | bilingual_draft | 555 | 47/39 | 0 | 0 | `full_site/api/md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html` |
 | 230 | draft_needs_translation | bilingual_draft | 550 | 25/17 | 0 | 0 | `full_site/api/modules.html` |
@@ -302,7 +302,7 @@ Generated: 2026-06-06T14:17:44.457Z
 | 236 | draft_needs_translation | bilingual_draft | 500 | 37/29 | 0 | 0 | `full_site/api/page_ts_regression.html` |
 | 237 | draft_needs_translation | bilingual_draft | 550 | 41/33 | 0 | 0 | `full_site/api/page_ts_status.html` |
 | 238 | draft_needs_translation | bilingual_draft | 531 | 25/17 | 0 | 0 | `full_site/api/page_ts_ts_test.html` |
-| 239 | draft_needs_translation | bilingual_draft | 336 | 13/10 | 0 | 0 | `full_site/api/pages.html` |
+| 239 | draft_needs_translation | bilingual_draft | 552 | 25/17 | 0 | 0 | `full_site/api/pages.html` |
 | 240 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/parallel_speculation_executor_engine_8h_source.html` |
 | 241 | draft_needs_translation | bilingual_draft | 718 | 49/36 | 0 | 0 | `full_site/api/pcp_page_front.html` |
 | 242 | draft_needs_translation | bilingual_draft | 634 | 29/21 | 0 | 0 | `full_site/api/plug_page_front.html` |
