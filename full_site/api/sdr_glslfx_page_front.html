@@ -54,6 +54,27 @@
         <li><span class="zh">解析器：</span><span class="en">parser</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-161">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`sdr_glslfx_page_front.html` 是 `SdrGlslfx` 模块入口，描述 Glslfx parser 如何把 Pixar `glslfx` shader container 解析成 `Sdr` 可消费的 shader definition。它位于 shader definition discovery 层，不是材质网络 authoring 页面，也不是 GPU shader runtime 手册。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for SdrGlslfx: Glslfx parser for Sdr while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`SdrGlslfx` 应与 `SdrRegistry`、`SdrShaderNode`、`SdrShaderProperty` 和 parser plugin 机制一起阅读；它的职责是解析 definition metadata，而不是建立 `UsdShade` connection。</span></li>
+        <li><span class="zh">`glslfx` 文件通常包含 shader snippets、properties、metadata 和 generation 信息；SdrGlslfx 关注如何把这些信息暴露给 `Sdr` 查询。</span></li>
+        <li><span class="zh">如果目标是材质网络，应回到 `UsdShade`；如果目标是具体 shader node 定义，应继续看 `UsdShaders` 或目标 renderer 的 shader discovery 文档。</span></li>
+        <li><span class="zh">调试 shader discovery 时，先确认 shader asset path、parser plugin、metadata 字段和 node identifier，再检查下游 renderer 是否支持对应 implementation。</span></li>
+        <li><span class="zh">本页的中文层强调 `SdrGlslfx`、`Sdr`、`UsdShade`、`HioGlslfx` 的职责区分，避免把 parser、resource I/O 和 material authoring 混在一起。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Glslfx 解析器：</span><span class="en">Glslfx parser</span></li>
+        <li><span class="zh">shader definition：</span><span class="en">shader definition</span></li>
+        <li><span class="zh">解析器插件：</span><span class="en">parser plugin</span></li>
+        <li><span class="zh">节点标识符：</span><span class="en">node identifier</span></li>
+        <li><span class="zh">shader metadata：</span><span class="en">shader metadata</span></li>
+        <li><span class="zh">发现层：</span><span class="en">discovery layer</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

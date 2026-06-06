@@ -55,6 +55,27 @@
         <li><span class="zh">Stage 缓存：</span><span class="en">StageCache</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-161">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`usd_utils_page_front.html` 是 `UsdUtils` 工具模块入口，聚合依赖分析、资产路径处理、layer/stage 工具、flatten/resolve/packaging 辅助、pipeline 便利函数和诊断 helper。它不是单一 schema 模块，而是围绕 USD 工作流的实用函数集合。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdUtils: USD Utilities while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdUtils` 常用于命令行工具、asset processing、dependency extraction、package creation 和 pipeline glue code；阅读时应先按任务目标筛选函数族。</span></li>
+        <li><span class="zh">如果函数涉及 asset path、dependency 或 package，应结合 `Ar` 资产解析和 `SdfLayer` layer 语义理解，不要只从文件系统路径角度解释。</span></li>
+        <li><span class="zh">如果函数涉及 flatten、stage population 或 composition 辅助，应回到 `UsdStage`、`Pcp`、`Sdf` 页面确认语义和副作用。</span></li>
+        <li><span class="zh">`UsdUtils` 的便利函数可能封装多个底层模块，因此调试时要把 utility failure 拆成 asset resolver、layer I/O、composition、schema validation 或 file format plugin 问题。</span></li>
+        <li><span class="zh">本页适合作为工具箱导航：中文层提供入口分类和风险边界，具体 signature、参数和返回值仍需要进入目标函数或类页面确认。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">工具模块：</span><span class="en">utility module</span></li>
+        <li><span class="zh">依赖分析：</span><span class="en">dependency analysis</span></li>
+        <li><span class="zh">资产路径处理：</span><span class="en">asset path handling</span></li>
+        <li><span class="zh">打包辅助：</span><span class="en">packaging helper</span></li>
+        <li><span class="zh">管线便利函数：</span><span class="en">pipeline convenience function</span></li>
+        <li><span class="zh">组合副作用：</span><span class="en">composition side effect</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

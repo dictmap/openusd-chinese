@@ -55,6 +55,27 @@
         <li><span class="zh">USD 属性：</span><span class="en">UsdProperty</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-161">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`usd_u_i_page_front.html` 是 `UsdUI` UI schema 入口，覆盖 `UsdUIBackdrop`、`UsdUINodeGraphNodeAPI`、`UsdUISceneGraphPrimAPI`、`UsdUIPrimHints`、`UsdUIPropertyHints` 等面向工具界面的 hints 和展示辅助信息。它描述 UI metadata/schema，不改变 USD scene 的核心几何、材质或物理语义。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdUI: USD UI Schemas while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdUI` 主要帮助 DCC、node editor、scene graph browser 或 review tool 更好地展示 prim、property、node graph 和 backdrop 信息。</span></li>
+        <li><span class="zh">`UsdUIPrimHints`、`UsdUIPropertyHints`、`UsdUISceneGraphPrimAPI` 等 API 是工具提示层，不能被误读为渲染、物理或 composition 的权威语义。</span></li>
+        <li><span class="zh">`UsdUIBackdrop` 和 `UsdUINodeGraphNodeAPI` 常与 node graph 布局、分组和可视化有关，应和 `UsdShadeNodeGraph` 的数据流语义分开阅读。</span></li>
+        <li><span class="zh">UI hints 可被不同工具以不同方式消费；如果某个 viewer 没显示 hint，不一定表示 USD 数据无效，可能只是工具未实现该 hint。</span></li>
+        <li><span class="zh">中文复刻保留 schema/API 名称，并把它定位为 tool-facing annotation 层，帮助用户判断哪些内容影响界面，哪些内容影响 scene description 本体。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">UI schema：</span><span class="en">UI schema</span></li>
+        <li><span class="zh">工具提示层：</span><span class="en">tool-facing hint layer</span></li>
+        <li><span class="zh">属性提示：</span><span class="en">property hints</span></li>
+        <li><span class="zh">prim 提示：</span><span class="en">prim hints</span></li>
+        <li><span class="zh">节点图布局：</span><span class="en">node graph layout</span></li>
+        <li><span class="zh">界面注解：</span><span class="en">UI annotation</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

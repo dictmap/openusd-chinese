@@ -54,6 +54,27 @@
         <li><span class="zh">RenderMan 转换工具头文件：</span><span class="en">rmanUtilities.h</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-161">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`usd_ri_page_front.html` 是 `UsdRi` RenderMan utilities 的模块入口，主要服务 RenderMan 相关的 schema、adapter 或转换辅助场景。阅读时要把它和通用 `UsdRender`、`UsdShade`、`UsdLux` 区分开：本页偏 RenderMan 生态集成，不代表所有 renderer 都会消费同一组约定。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdRi: USD RenderMan Utilities while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdRi` 名称中的 `Ri` 指向 RenderMan/Renderman Interface 语境；它适合放在 renderer-specific utility 层理解，而不是当作核心 USD 渲染 schema。</span></li>
+        <li><span class="zh">若页面条目涉及 light、material、display filter 或 rendering setting，应先判断这是 `UsdRi` 的 RenderMan 扩展语义，还是通用 `UsdRender` / `UsdShade` schema。</span></li>
+        <li><span class="zh">在跨 renderer 管线中，`UsdRi` 数据可能需要 adapter 或转换逻辑；是否被非 RenderMan renderer 消费取决于具体插件和约定。</span></li>
+        <li><span class="zh">调试 RenderMan 输出时，先检查 USD authored data、RenderMan plugin availability、shader identifiers 和 renderer-specific tokens，再进入 RenderMan 文档确认支持。</span></li>
+        <li><span class="zh">中文复刻保留 `UsdRi`、RenderMan、Ri、display filter、integrator、shader id、tokens 等英文标识，避免把专用 renderer 扩展翻译成通用 schema 行为。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">RenderMan 工具：</span><span class="en">RenderMan utilities</span></li>
+        <li><span class="zh">渲染器专用扩展：</span><span class="en">renderer-specific extension</span></li>
+        <li><span class="zh">RenderMan 接口：</span><span class="en">RenderMan Interface</span></li>
+        <li><span class="zh">显示过滤器：</span><span class="en">display filter</span></li>
+        <li><span class="zh">着色器标识符：</span><span class="en">shader identifier</span></li>
+        <li><span class="zh">适配器边界：</span><span class="en">adapter boundary</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

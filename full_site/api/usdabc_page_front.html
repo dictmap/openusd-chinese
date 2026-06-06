@@ -55,6 +55,27 @@
         <li><span class="zh">Tf 环境设置：</span><span class="en">TfEnvSettings</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-161">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`usdabc_page_front.html` 是 `UsdAbc` Alembic file format plugin 的模块入口，重点在 USD 与 Alembic 之间的文件格式桥接、插件发现和数据读取/写入边界。它不是 Alembic 规范全文，也不是把 Alembic 场景结构直接等同为 USD composition 的说明。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdAbc: Alembic File Format Plugin while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdAbc` 应先按 file format plugin 阅读：它让 USD 能把 Alembic 资源作为 layer 或外部资产参与管线，而具体 schema 语义仍需要进入 `UsdGeom`、`Sdf` 和目标 prim 页面确认。</span></li>
+        <li><span class="zh">Alembic 更偏 baked geometry cache，USD 更强调 composition、layering、variants 和 schema authoring；本页价值在于说明二者如何接入，而不是抹平两种数据模型差异。</span></li>
+        <li><span class="zh">调试 Alembic 互操作时，先确认 plugin 是否被 `Plug` 发现、文件扩展名是否触发正确 file format、路径解析是否通过 `Ar`，再看几何数据如何映射到 USD prim。</span></li>
+        <li><span class="zh">如果问题涉及 topology、primvars、transform samples 或 time samples，应跳转到 `UsdGeom` 相关类和 Alembic 源文件检查采样语义。</span></li>
+        <li><span class="zh">中文补强只补充读取顺序和边界；`UsdAbc`、Alembic、file format、layer、primvars、time samples 等 API/术语保持英文原样，便于和官方文档对照。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Alembic 文件格式插件：</span><span class="en">Alembic file format plugin</span></li>
+        <li><span class="zh">文件格式桥接：</span><span class="en">file format bridge</span></li>
+        <li><span class="zh">几何缓存：</span><span class="en">geometry cache</span></li>
+        <li><span class="zh">时间采样：</span><span class="en">time samples</span></li>
+        <li><span class="zh">插件发现：</span><span class="en">plugin discovery</span></li>
+        <li><span class="zh">数据模型边界：</span><span class="en">data model boundary</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
