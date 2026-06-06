@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -23,6 +23,15 @@ async function readText(filePath) {
 
 async function readJson(filePath) {
   return JSON.parse(await readText(filePath));
+}
+
+async function readOptionalJson(filePath, fallback) {
+  try {
+    return await readJson(filePath);
+  } catch (error) {
+    if (error && error.code === "ENOENT") return fallback;
+    throw error;
+  }
 }
 
 function normalizeOfficialUrl(rawHref, baseUrl) {
@@ -77,6 +86,42 @@ async function localExists(relativePath) {
   } catch {
     return false;
   }
+}
+
+async function listHtmlFiles(dir, prefix) {
+  const out = [];
+  async function walk(current) {
+    const entries = await readdir(current, { withFileTypes: true });
+    for (const entry of entries) {
+      const abs = path.join(current, entry.name);
+      if (entry.isDirectory()) {
+        await walk(abs);
+      } else if (entry.isFile() && entry.name.endsWith(".html")) {
+        out.push(path.relative(root, abs).replace(/\\/g, "/"));
+      }
+    }
+  }
+  try {
+    await walk(path.join(root, dir));
+  } catch (error) {
+    if (error && error.code !== "ENOENT") throw error;
+  }
+  return out.filter((file) => file.startsWith(prefix));
+}
+
+function officialUrlFromLocalOutput(localOutput) {
+  if (localOutput.startsWith("full_site/api/")) {
+    return `https://openusd.org/release/api/${localOutput.slice("full_site/api/".length)}`;
+  }
+  if (localOutput.startsWith("full_site/release/")) {
+    return `https://openusd.org/release/${localOutput.slice("full_site/release/".length)}`;
+  }
+  return null;
+}
+
+function extractHtmlTitle(html) {
+  const title = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
+  return title ? cleanText(title[1]) : "";
 }
 
 function addPage(registry, url, source, title = "") {
@@ -151,21 +196,61 @@ for (const page of localPreviewIndex.pages ?? []) {
   addPage(registry, page.official_url, "local_bilingual_complete", page.en_title);
 }
 
+const promotionManifest = await readOptionalJson(path.join(reportDir, "bilingual_completion_promotions.json"), { promotions: [] });
+const promotionByOfficialUrl = new Map();
+for (const promotion of promotionManifest.promotions ?? []) {
+  if (promotion.status !== "bilingual_complete") continue;
+  if (!promotion.official_url || !promotion.local_output) continue;
+  promotionByOfficialUrl.set(promotion.official_url, promotion);
+  addPage(registry, promotion.official_url, "local_bilingual_promoted", promotion.title ?? promotion.official_url);
+}
+
+const localOutputs = new Map();
+for (const page of localPreviewIndex.pages ?? []) {
+  if (page.category === "local_redirect") continue;
+  localOutputs.set(page.local_path, {
+    official_url: page.official_url,
+    local_output: page.local_path,
+    completed_subset: true,
+  });
+}
+
+for (const localOutput of [
+  ...(await listHtmlFiles("full_site/api", "full_site/api/")),
+  ...(await listHtmlFiles("full_site/release", "full_site/release/")),
+]) {
+  const official_url = officialUrlFromLocalOutput(localOutput);
+  if (!official_url) continue;
+  localOutputs.set(localOutput, {
+    official_url,
+    local_output: localOutput,
+    completed_subset: false,
+  });
+}
+
 const pages = [];
-for (const entry of [...registry.values()].sort((a, b) => a.official_url.localeCompare(b.official_url))) {
+for (const entry of [...localOutputs.values()].sort((a, b) => a.official_url.localeCompare(b.official_url))) {
+  const discovered = registry.get(entry.official_url);
   const complete = completeByOfficialUrl.get(entry.official_url);
-  const localOutput = complete?.local_path ?? futureLocalOutput(entry.official_url);
-  const titleHints = [...entry.title_hints].filter(Boolean);
-  const generatedDraftExists = complete ? false : await localExists(localOutput);
+  const promotion = promotionByOfficialUrl.get(entry.official_url);
+  const promotedExists = promotion ? await localExists(promotion.local_output) : false;
+  const localOutput = complete?.local_path ?? (promotedExists ? promotion.local_output : entry.local_output);
+  const html = await readText(path.join(root, localOutput));
+  const titleHints = [...(discovered?.title_hints ?? [])].filter(Boolean);
+  const title = titleHints[0] ?? extractHtmlTitle(html);
+  const sources = new Set(discovered?.sources ?? []);
+  sources.add(entry.completed_subset ? "local_bilingual_complete" : "local_full_site_html");
+  if (promotedExists) sources.add("local_bilingual_promoted");
   pages.push({
     official_url: entry.official_url,
     area: classifyOfficialUrl(entry.official_url),
-    title: titleHints[0] ?? "",
+    title,
     title_hints: titleHints.slice(0, 5),
-    status: complete ? "bilingual_complete" : (generatedDraftExists ? "bilingual_draft" : "pending_full_scope"),
+    status: (complete || promotedExists) ? "bilingual_complete" : "bilingual_draft",
     local_output: localOutput,
-    local_exists: complete ? true : generatedDraftExists,
-    discovery_sources: [...entry.sources].sort(),
+    local_exists: true,
+    promotion_id: promotedExists ? promotion.id : undefined,
+    discovery_sources: [...sources].sort(),
   });
 }
 
@@ -174,6 +259,7 @@ const counts = {
   release_pages: pages.filter((page) => page.area === "release").length,
   api_pages: pages.filter((page) => page.area === "api").length,
   bilingual_complete_pages: pages.filter((page) => page.status === "bilingual_complete").length,
+  promoted_complete_pages: pages.filter((page) => page.promotion_id).length,
   bilingual_draft_pages: pages.filter((page) => page.status === "bilingual_draft").length,
   pending_full_scope_pages: pages.filter((page) => page.status === "pending_full_scope").length,
   discovery_sources: new Set(pages.flatMap((page) => page.discovery_sources)).size,
@@ -199,6 +285,14 @@ const checks = [
     passed: counts.bilingual_complete_pages >= 8,
   },
   {
+    check: "all_pages:promotions_valid",
+    passed: (promotionManifest.promotions ?? []).every((promotion) =>
+      promotion.status === "bilingual_complete" &&
+      promotion.local_output &&
+      pages.some((page) => page.official_url === promotion.official_url && page.local_output === promotion.local_output && page.status === "bilingual_complete" && page.local_exists)
+    ),
+  },
+  {
     check: "all_pages:release_and_api_areas_present",
     passed: counts.release_pages > 20 && counts.api_pages > 20,
   },
@@ -207,12 +301,12 @@ const checks = [
 const failedChecks = checks.filter((entry) => !entry.passed);
 const report = {
   generated_at: new Date().toISOString(),
-  scope_mode: "all_discovered_release_and_api_html_pages",
+  scope_mode: "local_406_release_and_api_html_pages",
   roots,
   policy: {
-    selection: "all discovered pages, not high-value filtering",
-    discovery: "Uses official release toctree links and API Doxygen navtree/menu links as the all-pages inventory source for this iteration.",
-    completion: "Existing bilingual pages are marked bilingual_complete; every other discovered official page is pending_full_scope until generated and validated.",
+    selection: "all 406 local release/API HTML pages, not high-value filtering",
+    discovery: "Uses the local site/ completed subset plus full_site/release and full_site/api HTML files as the stable inventory source; official release toctree and API Doxygen assets are only used as title/source hints.",
+    completion: "Existing curated bilingual pages and manifest-promoted full_site pages are marked bilingual_complete; every other discovered official page is pending_full_scope until generated and validated.",
     local_output_plan: "Draft full-scope release docs go under full_site/release/ and API docs go under full_site/api/ unless already mapped to an existing completed local bilingual page.",
   },
   counts,
@@ -233,12 +327,13 @@ const md = `# OpenUSD All Pages Inventory
 
 Generated: ${report.generated_at}
 
-Scope mode: all discovered release/API HTML pages. This is not a high-value adjacent-page filter.
+Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: ${counts.total_pages}
 - Release pages: ${counts.release_pages}
 - API pages: ${counts.api_pages}
 - Bilingual complete pages: ${counts.bilingual_complete_pages}
+- Promoted complete pages: ${counts.promoted_complete_pages}
 - Bilingual draft pages: ${counts.bilingual_draft_pages}
 - Pending full-scope pages: ${counts.pending_full_scope_pages}
 - Discovery sources: ${counts.discovery_sources}

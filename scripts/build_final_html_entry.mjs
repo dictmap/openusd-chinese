@@ -365,7 +365,7 @@ const html = `<!doctype html>
         <span>中文为主 / English retained</span>
       </div>
       <h1>OpenUSD 中英双语复刻最终入口</h1>
-      <p>这是当前交付的 HTML 总入口：范围覆盖 release 文档与 release/api API 文档下发现的 406 个 HTML 页面。当前只有 8 页达到完整双语标准，其余本地页面仍是可检查草稿，不是完整翻译；API 名称、页面名和官方链接保持原样。</p>
+      <p>这是当前交付的 HTML 总入口：范围覆盖本地 406 个 release/API HTML 页面。当前有 ${escapeHtml(completedOfficialPages.length)} 页达到完整双语标准，其余本地页面仍是可检查草稿，不是完整翻译；API 名称、页面名和官方链接保持原样。</p>
     </div>
   </header>
 

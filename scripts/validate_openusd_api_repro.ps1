@@ -149,6 +149,10 @@ $requiredFiles = @(
   "reports\local_preview_index.md",
   "reports\all_pages_inventory.json",
   "reports\all_pages_inventory.md",
+  "reports\bilingual_completion_promotions.json",
+  "reports\bilingual_completion_promotions.md",
+  "reports\current_problem_audit.json",
+  "reports\current_problem_audit.md",
   "reports\release_full_batch_report.json",
   "reports\release_full_batch_report.md",
   "reports\api_full_batch_report.json",
@@ -512,6 +516,7 @@ $checks.Add([pscustomobject]@{
 })
 
 $allPagesInventory = Get-Content -LiteralPath (Join-Path $reportDir "all_pages_inventory.json") -Raw -Encoding UTF8 | ConvertFrom-Json
+$completionPromotions = Get-Content -LiteralPath (Join-Path $reportDir "bilingual_completion_promotions.json") -Raw -Encoding UTF8 | ConvertFrom-Json
 $coveredOfficialPages = [int]$allPagesInventory.counts.bilingual_complete_pages + [int]$allPagesInventory.counts.bilingual_draft_pages + [int]$allPagesInventory.counts.pending_full_scope_pages
 $checks.Add([pscustomobject]@{
   check = "all_pages_inventory:passed"
@@ -520,12 +525,20 @@ $checks.Add([pscustomobject]@{
 
 $checks.Add([pscustomobject]@{
   check = "all_pages_inventory:all_scope_not_adjacent_filter"
-  passed = ($allPagesInventory.scope_mode -eq "all_discovered_release_and_api_html_pages" -and $allPagesInventory.counts.total_pages -gt 9 -and $allPagesInventory.counts.release_pages -gt 20 -and $allPagesInventory.counts.api_pages -gt 20 -and $coveredOfficialPages -eq $allPagesInventory.counts.total_pages)
+  passed = ($allPagesInventory.scope_mode -eq "local_406_release_and_api_html_pages" -and $allPagesInventory.counts.total_pages -eq 406 -and $allPagesInventory.counts.release_pages -gt 20 -and $allPagesInventory.counts.api_pages -gt 20 -and $coveredOfficialPages -eq $allPagesInventory.counts.total_pages)
 })
 
 $checks.Add([pscustomobject]@{
   check = "all_pages_inventory:draft_queue_counted"
   passed = ($allPagesInventory.counts.bilingual_draft_pages -ge 5 -and $allPagesInventory.counts.pending_full_scope_pages -ge 0 -and $coveredOfficialPages -eq $allPagesInventory.counts.total_pages)
+})
+
+$promotionEntries = @($completionPromotions.promotions)
+$inventoryPromotedPages = @($allPagesInventory.pages | Where-Object { $_.promotion_id })
+$promotionOutputsExist = @($promotionEntries | Where-Object { -not (Test-Path -LiteralPath (Join-Path $Root $_.local_output)) }).Count -eq 0
+$checks.Add([pscustomobject]@{
+  check = "completion_promotions:manifest_valid"
+  passed = ($promotionEntries.Count -ge 1 -and $allPagesInventory.counts.promoted_complete_pages -eq $promotionEntries.Count -and $inventoryPromotedPages.Count -eq $promotionEntries.Count -and $promotionOutputsExist)
 })
 
 $fullSiteDraftFiles = @()
@@ -539,9 +552,11 @@ if (Test-Path -LiteralPath $fullSiteApiDir) {
 }
 $inventoryDraftPages = @($allPagesInventory.pages | Where-Object { $_.status -eq "bilingual_draft" })
 $inventoryDraftOutputsExist = @($inventoryDraftPages | Where-Object { -not (Test-Path -LiteralPath (Join-Path $Root $_.local_output)) }).Count -eq 0
+$inventoryFullSiteTrackedPages = @($allPagesInventory.pages | Where-Object { $_.local_output -match '^full_site[\\/]' -and ($_.status -eq "bilingual_draft" -or $_.status -eq "bilingual_complete") })
+$inventoryFullSiteOutputsExist = @($inventoryFullSiteTrackedPages | Where-Object { -not (Test-Path -LiteralPath (Join-Path $Root $_.local_output)) }).Count -eq 0
 $checks.Add([pscustomobject]@{
   check = "all_pages_inventory:draft_files_match_inventory"
-  passed = ($inventoryDraftPages.Count -eq $allPagesInventory.counts.bilingual_draft_pages -and $fullSiteDraftFiles.Count -eq $allPagesInventory.counts.bilingual_draft_pages -and $inventoryDraftOutputsExist)
+  passed = ($inventoryDraftPages.Count -eq $allPagesInventory.counts.bilingual_draft_pages -and $fullSiteDraftFiles.Count -eq $inventoryFullSiteTrackedPages.Count -and $inventoryDraftOutputsExist -and $inventoryFullSiteOutputsExist)
 })
 
 $releaseFullBatchReport = Get-Content -LiteralPath (Join-Path $reportDir "release_full_batch_report.json") -Raw -Encoding UTF8 | ConvertFrom-Json

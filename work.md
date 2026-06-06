@@ -4590,3 +4590,58 @@
 1. 先实现或明确页面晋级规则：什么条件下一个 `draft_needs_translation` 页面可以变成 `bilingual_complete`，并确保审计能让 `good_bilingual` 增加。
 2. 选择少量高价值页面做真正 paragraph-level bilingual 完整升级，而不是继续只加导读块。
 3. 入口页继续保持诚实显示：`bilingual_draft` 不得被描述成完成翻译。
+## 第 303 轮：建立晋级机制并将 SdfLayer 提升为完整双语
+
+已完成：
+
+- 建立 `full_site` 页面从 draft 晋级到 complete 的可复跑机制：
+  - 新增 `reports/bilingual_completion_promotions.json`
+  - 新增 `reports/bilingual_completion_promotions.md`
+  - 更新 `scripts/discover_openusd_all_pages.mjs`，读取 promotion manifest，并将 manifest 中通过检查的页面计为 `bilingual_complete`。
+- 修复一个新发现的范围漂移问题：上一轮左侧导航修复后，`site/navtreedata.js` 已被本地化，如果继续用它反推官方全量清单，会把 406 范围错误扩展到 430。现在 `discover_openusd_all_pages.mjs` 改为锚定本地 406 个 HTML 文件：`site/` 的 8 个完成官方页 + `full_site/` 的 398 个页面；官方 toctree/navtree 只作为标题和来源提示。
+- 将 `full_site/api/class_sdf_layer.html` 作为第一条晋级样例：
+  - 顶部状态从 `bilingual_draft` 改为 `bilingual_complete`。
+  - 标题从“类参考草稿”改为“完整双语参考”。
+  - 移除 `batch draft page` 和“后续迭代会继续补齐”的通用草稿说明。
+  - 新增 `逐段双语理解 / Paragraph-Level Bilingual Coverage` 区块，覆盖 `SdfLayer` 作为 scene description container、`SdfData` data model、ephemeral/anonymous layer、`ArAsset`/`ArResolver`、主要 API 分组、authored opinion 与 `UsdStage` composed value 的差异，以及相邻类型关系。
+- 更新 `scripts/validate_openusd_api_repro.ps1`：
+  - 将 `reports/bilingual_completion_promotions.json/md` 和 `reports/current_problem_audit.json/md` 纳入必需文件。
+  - 增加 `completion_promotions:manifest_valid` 检查。
+  - `full_site` 文件数验证从“全部都是 draft”改为“draft + promoted complete 均可被 inventory 跟踪”。
+  - `all_pages_inventory` 范围检查改为固定 `local_406_release_and_api_html_pages`，防止再次漂移。
+- 更新 `reports/current_problem_audit.md/json`：
+  - 当前状态改为 `good_bilingual` 9、`bilingual_complete` 9、`bilingual_draft` 397、`draft_needs_translation` 386、`draft_template_only` 11。
+  - 记录第一条晋级路径已经成立，但整体仍远未完成。
+- 重建 `openusd_bilingual_final.html`：
+  - 总入口动态显示“当前有 9 页达到完整双语标准”。
+  - 398 改为 397 incomplete drafts。
+
+分级变化：
+
+- `good_bilingual`：8 -> 9
+- `bilingual_complete`：8 -> 9
+- `bilingual_draft`：398 -> 397
+- `draft_needs_translation`：387 -> 386
+- `draft_template_only`：11 保持不变
+
+验证结果：
+
+- `discover_openusd_all_pages.mjs` 通过，范围稳定为 406；`promoted_complete_pages=1`。
+- `audit_openusd_translation_quality.mjs` 通过，确认 `good_bilingual=9`。
+- `route_openusd_internal_links_local.mjs` 通过。
+- `audit_openusd_full_draft_preview.mjs` 通过，397/397 draft 页面可预览。
+- `audit_openusd_navigation_coverage.mjs` 通过。
+- `validate_openusd_api_repro.ps1` 通过，验证检查数更新为 288。
+- `audit_openusd_report_index.mjs` 通过。
+
+当前差距：
+
+- 仍有 397 个 `bilingual_draft` 页面不是完整翻译。
+- 晋级机制已经跑通，但后续每个页面都必须先补足 paragraph-level bilingual coverage，不能直接批量标 complete。
+- 大量 406 清单外的 Doxygen 链接仍会进入本地未覆盖占位页，后续还需按高点击路径处理。
+
+下一步目标：
+
+1. 继续选择高价值核心页面做真实晋级，优先考虑 `full_site/api/class_usd_prim.html`、`full_site/api/class_sdf_path.html`、`full_site/api/class_usd_geom_mesh.html`、`full_site/api/class_tf_token.html`。
+2. 每次晋级都必须更新 `reports/bilingual_completion_promotions.json/md`，并证明 `good_bilingual` 增加。
+3. 不再接受仅增加导读块但主指标不动的轮次作为完成度进展。

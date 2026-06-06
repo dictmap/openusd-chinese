@@ -8213,3 +8213,52 @@ GitHub 同步：
 1. 不再继续“5 页导读补强”作为主路线。
 2. 先实现或明确页面晋级规则，并用审计证明哪些页面可以从 `draft_needs_translation` 晋级为 `bilingual_complete`。
 3. 选择少量高价值页面做真正逐段双语覆盖，目标是让 `good_bilingual` 实际增加。
+## 第 303 轮：建立晋级机制并将 SdfLayer 提升为完整双语
+
+已完成：
+
+- 新增完整双语晋级清单：
+  - `reports/bilingual_completion_promotions.json`
+  - `reports/bilingual_completion_promotions.md`
+- 更新 `scripts/discover_openusd_all_pages.mjs`，让它读取晋级清单，并把通过清单声明且本地存在的页面计为 `bilingual_complete`。
+- 修复范围漂移问题：上一轮导航修复后 `site/navtreedata.js` 已被本地化，不能再作为官方全量发现来源；否则范围会从 406 错误漂移到 430。本轮将 inventory 锚定为本地 406 个 HTML 文件：`site/` 的 8 个完成官方页 + `full_site/` 的 398 个页面。
+- 将 `full_site/api/class_sdf_layer.html` 晋级：
+  - 状态改为 `bilingual_complete`。
+  - 标题改为“完整双语参考：SdfLayer Class”。
+  - 移除通用 draft 文案。
+  - 新增逐段双语理解区，覆盖官方描述、`SdfData` data model、ephemeral/anonymous layer、`ArAsset`/`ArResolver`、API 分组、authored opinion 与 `UsdStage` composed value 区别、相邻类型关系。
+- 更新 `scripts/validate_openusd_api_repro.ps1`：
+  - 增加 promotion manifest 和 current problem audit 必需文件。
+  - 新增 `completion_promotions:manifest_valid` 检查。
+  - 调整 `full_site` 文件数验证，使 promoted complete 页面不再被旧的“全部 full_site 都是 draft”假设阻塞。
+  - 将 `all_pages_inventory` 范围检查固定到 `local_406_release_and_api_html_pages`。
+- 更新 `reports/current_problem_audit.md/json`，把当前真实计数改为 9 complete / 397 draft，并记录第一条晋级路径已经跑通。
+- 重建 `openusd_bilingual_final.html`，总入口现在动态显示“当前有 9 页达到完整双语标准”，并显示 397 个 incomplete drafts。
+
+分级变化：
+
+- `good_bilingual`：8 -> 9
+- `bilingual_complete`：8 -> 9
+- `bilingual_draft`：398 -> 397
+- `draft_needs_translation`：387 -> 386
+- `draft_template_only`：11 保持不变
+
+验证结果：
+
+- `discover_openusd_all_pages.mjs`：通过，`total_pages=406`，`promoted_complete_pages=1`。
+- `audit_openusd_translation_quality.mjs`：通过，`good_bilingual=9`。
+- `route_openusd_internal_links_local.mjs`：通过。
+- `audit_openusd_full_draft_preview.mjs`：通过，397/397 draft 页面可预览。
+- `audit_openusd_navigation_coverage.mjs`：通过。
+- `validate_openusd_api_repro.ps1`：通过，`required_check_count=288`，`failed_check_count=0`。
+- `audit_openusd_report_index.mjs`：通过。
+
+GitHub 同步：
+
+- 本轮验证通过后将使用 `OpenUSD bilingual round 303: promote SdfLayer complete` 同步本轮 HTML、脚本、报告和 `work.md`。
+
+下一轮目标：
+
+1. 继续真实晋级，不再刷 count-neutral 导读补强。
+2. 下一批优先核心页面：`full_site/api/class_usd_prim.html`、`full_site/api/class_sdf_path.html`、`full_site/api/class_usd_geom_mesh.html`、`full_site/api/class_tf_token.html`。
+3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。

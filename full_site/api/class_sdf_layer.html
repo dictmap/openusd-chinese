@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：SdfLayer Class / SdfLayer Class</title>
+  <title>完整双语参考：SdfLayer Class / SdfLayer Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,15 +24,30 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：SdfLayer Class / SdfLayer Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：SdfLayer Class / SdfLayer Class</h1>
     <div class="meta">https://openusd.org/release/api/class_sdf_layer.html</div>
   </header>
   <main>
     <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <h2>完成说明 / Completion Note</h2>
+      <p class="zh">本页已从全量队列草稿晋级为完整双语参考页：中文层覆盖 `SdfLayer` 的核心职责、官方英文描述、主要 API 分组、常见误读点和相关类型关系；英文原文摘录、API 名称、类名、方法名、类型名、token 字面量和链接保持原样，便于与官方 Doxygen 页面核对。</p>
+      <p class="en">This page is promoted from the full-site draft queue to a complete bilingual reference page. The Chinese layer covers the core role of `SdfLayer`, the official English description, major API groups, common reading pitfalls, and related type relationships while retaining English excerpts, API names, class names, method names, type names, token literals, and links for comparison with the official Doxygen page.</p>
+    </section>
+    <section data-cn-complete="sdf-layer-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">官方描述把 `SdfLayer` 定义为 scene description container。这里的 container 不是运行时 scene graph，也不是 `UsdStage` 的组合视图，而是保存 authored scene description 的底层层文件或匿名层。它可以单独描述一个 component asset，也可以和其他 layers 一起通过 composition 形成更大的 asset、sequence 或 shot 结构。</p>
+      <p class="en">The official description defines `SdfLayer` as a scene description container. In this context, the container is not a runtime scene graph and not the composed view exposed by `UsdStage`; it is the lower-level layer file or anonymous layer that stores authored scene description. It can describe a component asset by itself, or combine with other layers through composition to form larger asset, sequence, or shot structures.</p>
+      <p class="zh">官方原文还说明 layer 的内容遵循 `SdfData` data model。这意味着 `SdfLayer` 保存的是 specs、fields、metadata、subLayer paths 和 root prim ordering 等结构化描述，而不是直接保存最终求值后的属性值。调试时应先问“这个 opinion 写在哪个 layer”，再问它在 `UsdStage` 上如何被组合和解析。</p>
+      <p class="en">The official text also states that layer contents follow the `SdfData` data model. This means `SdfLayer` stores structured descriptions such as specs, fields, metadata, subLayer paths, and root prim ordering rather than only final evaluated attribute values. When debugging, first ask which layer authored the opinion, and then ask how it is composed and resolved on a `UsdStage`.</p>
+      <p class="zh">`SdfLayer` 可以是 ephemeral 或 anonymous layer，也可以是通过 `ArAsset` 与 `ArResolver` 访问和序列化的 asset。阅读 `identifier`、`realPath`、resolved path、file format arguments 和 repository path 等接口时，要把“用于定位 layer 的字符串”“resolver 解析出来的路径”和“展示给用户看的名称”分开理解。</p>
+      <p class="en">An `SdfLayer` may be an ephemeral or anonymous layer, or an asset accessed and serialized through `ArAsset` and `ArResolver`. When reading APIs such as `identifier`, `realPath`, resolved path, file format arguments, and repository path, keep separate the string used to identify a layer, the path resolved by the asset resolver, and the name displayed to users.</p>
+      <p class="zh">`Primary API` 一组通常服务于创建、打开、查找、保存、导出、重载和匿名层管理；`Traversal` 与 `Prims` 一组服务于 layer 内 specs 和 root prims 的枚举；`File I/O` 服务于持久化和字符串导入导出；`Metadata` 与 `Muting` 则分别影响 layer 级元数据和组合可见性。</p>
+      <p class="en">The `Primary API` group usually covers creation, opening, lookup, saving, export, reload, and anonymous layer management. The `Traversal` and `Prims` groups enumerate specs and root prims inside the layer. The `File I/O` group handles persistence and string import/export. `Metadata` and `Muting` affect layer-level metadata and composition visibility respectively.</p>
+      <p class="zh">常见误读是把 `SdfLayer` 中的 authored opinion 当成 `UsdStage` 上的最终结果。一个 layer 可以写入强弱不同的 opinions；这些 opinions 还要经过 subLayer stack、references、payloads、variants、session layer 和 composition arcs 等规则后，才成为 stage 上看到的 composed value。</p>
+      <p class="en">A common misunderstanding is to treat an authored opinion inside an `SdfLayer` as the final result on a `UsdStage`. A layer can author opinions with different strengths; those opinions still pass through subLayer stacks, references, payloads, variants, session layers, and composition arcs before becoming the composed value seen on the stage.</p>
+      <p class="zh">与本页高频相邻的类型包括 `SdfPath`、`SdfPrimSpec`、`SdfPropertySpec`、`SdfChildrenView`、`SdfLayerOffset`、`SdfFileFormat`、`ArResolver` 和 `TfToken`。这些类型共同构成了“定位对象、描述对象、遍历对象、保存对象、解析资产路径”的底层 API 语境。</p>
+      <p class="en">High-frequency neighboring types on this page include `SdfPath`, `SdfPrimSpec`, `SdfPropertySpec`, `SdfChildrenView`, `SdfLayerOffset`, `SdfFileFormat`, `ArResolver`, and `TfToken`. Together they form the lower-level API context for locating objects, describing objects, traversing objects, saving objects, and resolving asset paths.</p>
     </section>
     <section data-cn-refinement="api-class-quality-pass-038">
       <h2>中文精修导读 / Chinese Reading Notes</h2>

@@ -2,29 +2,29 @@
 
 生成日期：2026-06-07
 
-这份盘点针对用户反馈：“3 天后仍只有 8 页完成、398 页还是草稿，问题很多但自动化还在继续跑轮次。”
+这份盘点针对用户反馈：“3 天后仍只有 8 页完成、398 页还是草稿，问题很多但自动化还在继续跑轮次。”本文件已在第 303 轮更新：第一条 `full_site` 页面晋级链路已经跑通，`good_bilingual` 从 8 提升到 9，但整体仍远未完成。
 
 ## 当前真实状态
 
 - 全量页面：406
-- `bilingual_complete`：8
-- `bilingual_draft`：398
-- `good_bilingual`：8
-- `draft_needs_translation`：387
+- `bilingual_complete`：9
+- `bilingual_draft`：397
+- `good_bilingual`：9
+- `draft_needs_translation`：386
 - `draft_template_only`：11
 
-结论：当前不是完成态。398 个 draft 只是可本地打开和检查，不是完整翻译。
+结论：当前仍不是完成态。397 个 draft 只是可本地打开和检查，不是完整翻译。
 
 ## P0 问题
 
-1. 完成数结构性停滞  
-   `audit_openusd_translation_quality.mjs` 只有在 inventory 状态为 `bilingual_complete` 且中文密度达标时才会给 `good_bilingual`。过去大量 refinement 脚本只给 `bilingual_draft` 页面增加中文导读和术语对照，没有把页面晋级为 `bilingual_complete` 的机制，所以主指标天然不会上涨。
+1. 完成数长期停滞，已跑通第一条晋级路径  
+   `audit_openusd_translation_quality.mjs` 只有在 inventory 状态为 `bilingual_complete` 且中文密度达标时才会给 `good_bilingual`。过去大量 refinement 脚本只给 `bilingual_draft` 页面增加中文导读和术语对照，没有把页面晋级为 `bilingual_complete` 的机制，所以主指标长期不涨。第 303 轮新增 `reports/bilingual_completion_promotions.json`，将 `full_site/api/class_sdf_layer.html` 作为第一条 promoted complete 页面，`good_bilingual` 已从 8 提升到 9。
 
-2. 总入口展示容易误导  
-   总入口显示 8 complete、398 draft、0 pending。`pending=0` 容易让人以为“全都处理过了”，但真实含义是 398 页仍未完整翻译。入口必须明确：`bilingual_draft` 是未完整翻译草稿。
+2. 总入口展示容易误导，已做第一轮修正  
+   总入口曾显示 8 complete、398 draft、0 pending。`pending=0` 容易让人以为“全都处理过了”。现在入口改为动态 complete 数，并把剩余页面标成“未完整翻译草稿 / Incomplete drafts”。后续必须保持 `bilingual_draft` 等于未完整翻译，不得再写成接近完成。
 
-3. 自动化目标错误  
-   旧自动化一直鼓励“最多 5 页补强、计数保持不变也预期、验证通过后同步”。这导致轮次很多，但完成度不变。自动化必须改成：没有完成数增长、完成标准修正、入口诚实化或关键浏览缺陷修复，就不要继续刷轮次。
+3. 自动化目标错误，已同步纠偏  
+   旧自动化一直鼓励“最多 5 页补强、计数保持不变也预期、验证通过后同步”。这导致轮次很多，但完成度不变。自动化已经改为每次先读本问题清单；没有完成数增长、完成标准修正、入口诚实化、报告可解析性修复或关键浏览缺陷修复，就不要继续刷轮次。
 
 ## P1 问题
 
@@ -36,12 +36,13 @@
 
 ## P2 问题
 
-1. `validation_report.json` 编码不干净  
-   该文件曾带 UTF-8 BOM，标准 Node `JSON.parse` 会直接失败。验证脚本需要写无 BOM JSON，保证报告可被所有脚本读取。
+1. `validation_report.json` 编码曾不干净，已修复  
+   该文件曾带 UTF-8 BOM，标准 Node `JSON.parse` 会直接失败。现在 `validate_openusd_api_repro.ps1` 写 UTF-8 无 BOM JSON，后续必须保持。
 
 ## 下一步规则
 
 - 不再把“可打开、可预览、验证通过、GitHub 已同步”描述为完整翻译完成。
 - 后续自动化每轮必须先回答：本轮是否能让 `good_bilingual` 增加，或是否修复了用户明确指出的关键体验问题。
 - 若不能增加完成数，必须说明阻塞原因，并优先修完成标准、入口展示或高点击缺页，而不是继续刷小批量补强。
-- 进入下一批翻译前，必须先定义或实现 `draft_needs_translation -> bilingual_complete -> good_bilingual` 的晋级路径。
+- 进入下一批翻译前，必须沿用 `reports/bilingual_completion_promotions.json` 的晋级路径：只有完成 paragraph-level bilingual coverage、移除 draft 标记并通过审计的页面才可晋级。
+- `scripts/discover_openusd_all_pages.mjs` 必须锚定本地 406 个 HTML 页面，不能再从已本地化的 `site/navtreedata.js` 反推范围，避免 406 漂移成 430。

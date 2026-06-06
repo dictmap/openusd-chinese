@@ -1,35 +1,35 @@
 {
   "generated_at": "2026-06-07",
-  "purpose": "Current problem audit after user reported that the project still shows only 8 complete pages after multiple days.",
+  "purpose": "Current problem audit after user reported that the project still showed only 8 complete pages after multiple days; updated after the first promoted full_site page raised good_bilingual to 9.",
   "current_counts": {
     "total_pages": 406,
-    "bilingual_complete": 8,
-    "bilingual_draft": 398,
-    "good_bilingual": 8,
-    "draft_needs_translation": 387,
+    "bilingual_complete": 9,
+    "bilingual_draft": 397,
+    "good_bilingual": 9,
+    "draft_needs_translation": 386,
     "draft_template_only": 11
   },
   "problems": [
     {
       "id": "P0-completion-stalled",
       "severity": "P0",
-      "summary": "The main completion number is structurally stalled at 8.",
-      "evidence": "audit_openusd_translation_quality.mjs only emits good_bilingual when the inventory status is bilingual_complete; prior refinement scripts add Chinese guidance to bilingual_draft pages but do not promote them to bilingual_complete.",
-      "required_action": "Define and implement a promotion path from draft_needs_translation to bilingual_complete/good_bilingual, then verify that good_bilingual increases."
+      "summary": "The main completion number was structurally stalled at 8; the first promotion path now raises it to 9, but the remaining 397 draft pages still need real upgrades.",
+      "evidence": "reports/bilingual_completion_promotions.json promotes full_site/api/class_sdf_layer.html; discover_openusd_all_pages.mjs now counts manifest-promoted pages as bilingual_complete, and audit_openusd_translation_quality.mjs reports good_bilingual=9.",
+      "required_action": "Continue using the promotion manifest only for pages with paragraph-level bilingual coverage and draft-marker removal; do not mark guide-only drafts as complete."
     },
     {
       "id": "P0-final-entry-misleading",
       "severity": "P0",
-      "summary": "The final entry can mislead users by showing pending=0 while 398 pages are still incomplete drafts.",
-      "evidence": "openusd_bilingual_final.html labels 398 pages as Draft and 0 as Pending; users reasonably read this as almost complete.",
-      "required_action": "Change final entry wording so bilingual_draft means incomplete translation, not completed work."
+      "summary": "The final entry previously misled users by showing pending=0 while most pages were incomplete drafts.",
+      "evidence": "openusd_bilingual_final.html now states the dynamic complete count and labels the remaining pages as Incomplete drafts.",
+      "required_action": "Keep final-entry counts dynamic and keep bilingual_draft clearly described as incomplete translation."
     },
     {
       "id": "P0-automation-wrong-objective",
       "severity": "P0",
       "summary": "The old heartbeat automation optimized for repeated 5-page refinement and GitHub sync rather than real completion progress.",
-      "evidence": "Recent rounds repeatedly recorded that counts remained unchanged and treated that as expected.",
-      "required_action": "Update automation prompt so it refuses to continue round-churn unless it improves completion criteria, user-facing honesty, or a concrete browsing defect."
+      "evidence": "The openusd heartbeat has been updated to read this problem audit first and prioritize completion promotion, honest entry wording, report parseability, and concrete browsing defects.",
+      "required_action": "Keep the automation prompt aligned with current counts and the promotion mechanism; do not let it regress to count-neutral round-churn."
     },
     {
       "id": "P1-link-placeholders",
@@ -48,15 +48,15 @@
     {
       "id": "P2-validation-json-bom",
       "severity": "P2",
-      "summary": "validation_report.json was written with UTF-8 BOM, which breaks standard Node JSON.parse.",
-      "evidence": "A direct JSON.parse of reports/validation_report.json failed on the leading BOM.",
-      "required_action": "Write validation_report.json as UTF-8 without BOM and keep the report parseable by both PowerShell and Node."
+      "summary": "validation_report.json previously used UTF-8 BOM, which broke standard Node JSON.parse.",
+      "evidence": "validate_openusd_api_repro.ps1 now writes UTF-8 without BOM; direct Node JSON.parse passes.",
+      "required_action": "Keep validation_report.json BOM-free in every future validation run."
     }
   ],
   "next_actions": [
-    "Regenerate the final entry with honest draft wording.",
-    "Fix validation_report.json to be UTF-8 without BOM.",
-    "Sync this problem audit into the openusd automation prompt.",
-    "Before any future translation round, implement or document the draft-to-complete promotion rule."
+    "Continue promoting high-value draft pages only after paragraph-level bilingual coverage.",
+    "Use reports/bilingual_completion_promotions.json as the auditable promotion source.",
+    "Keep discover_openusd_all_pages.mjs anchored to the stable 406 local HTML files, not rewritten local navtree links.",
+    "Prioritize the next completion candidate from core Sdf/Usd/UsdGeom pages and prove good_bilingual increases again."
   ]
 }
