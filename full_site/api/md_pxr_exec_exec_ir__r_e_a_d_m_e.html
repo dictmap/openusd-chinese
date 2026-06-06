@@ -54,6 +54,27 @@
         <li><span class="zh">执行行为：</span><span class="en">execution behavior</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-166">
+      <h2>中文二次导读补强 / Chinese Second-Pass Reading Notes</h2>
+      <p class="zh">`md_pxr_exec_exec_ir__r_e_a_d_m_e.html` 是 `ExecIr` 的 README 型入口页，说明 OpenExec 如何服务 invertible rigs 相关实现。阅读时应把 rig computation、dependency graph、computed rig value 与普通 USD schema authoring 分开。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for ExecIr: OpenExec implementation of invertible rigs while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`ExecIr` 关注 invertible rigs 的执行实现，核心是如何在执行图中表达可反向或可求解的 rig 计算，而不是定义普通场景层级或几何拓扑。</span></li>
+        <li><span class="zh">如果页面提到 rig input、output 或 solve flow，应先判断这些数据是 authored USD data、computed value，还是执行系统内部的 intermediate state。</span></li>
+        <li><span class="zh">调试 rig 计算时常见入口是 dependency registration、evaluation request、input invalidation 和 value propagation；这些术语应和 `Exec` core 页面一起阅读。</span></li>
+        <li><span class="zh">`ExecIr` 与 `ExecGeom` 可能都接触几何或变换数据，但前者强调 rig/inversion 语义，后者强调 `UsdGeom` 派生值计算。</span></li>
+        <li><span class="zh">中文补强保留 `invertible rig`、`computed rig value`、`solve`、`dependency graph` 等英文术语，方便和源码、日志、测试名称直接对应。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">可逆绑定：</span><span class="en">invertible rig</span></li>
+        <li><span class="zh">绑定计算：</span><span class="en">rig computation</span></li>
+        <li><span class="zh">绑定计算值：</span><span class="en">computed rig value</span></li>
+        <li><span class="zh">求解流程：</span><span class="en">solve flow</span></li>
+        <li><span class="zh">中间状态：</span><span class="en">intermediate state</span></li>
+        <li><span class="zh">值传播：</span><span class="en">value propagation</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

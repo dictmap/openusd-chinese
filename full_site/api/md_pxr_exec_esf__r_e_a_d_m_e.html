@@ -54,6 +54,27 @@
         <li><span class="zh">适配接口契约：</span><span class="en">adapter contract</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-166">
+      <h2>中文二次导读补强 / Chinese Second-Pass Reading Notes</h2>
+      <p class="zh">`md_pxr_exec_esf__r_e_a_d_m_e.html` 是 `Esf` Execution Scene Foundation 的入口页，用于理解执行系统如何通过抽象 scene object、property、relationship 和 value 访问场景数据。它是 scene abstraction 层，不是 USD composition 规则本身。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Esf: Execution Scene Foundation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Esf` 把场景访问抽象成执行系统可消费的接口，使 `Exec` 不必直接依赖某个具体 scene representation。</span></li>
+        <li><span class="zh">阅读本页时要区分 scene foundation 和 USD 实现：`Esf` 描述抽象接口，`EsfUsd` 才说明这些接口如何映射到 USD stage、prim、property。</span></li>
+        <li><span class="zh">如果 computed value 无法读到输入，应检查 scene object identity、property lookup、relationship traversal 和 value availability，而不是只看 computation 代码。</span></li>
+        <li><span class="zh">`Esf` 的价值在于稳定边界：上层 computation 面向抽象场景对象，下层适配器负责把真实数据模型转换成这些抽象对象。</span></li>
+        <li><span class="zh">本页适合与 `Ef`、`Exec`、`EsfUsd` 串读，形成 foundation、execution、scene abstraction 和 USD binding 的层次图。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">执行场景基础：</span><span class="en">execution scene foundation</span></li>
+        <li><span class="zh">场景抽象：</span><span class="en">scene abstraction</span></li>
+        <li><span class="zh">场景对象标识：</span><span class="en">scene object identity</span></li>
+        <li><span class="zh">属性查找：</span><span class="en">property lookup</span></li>
+        <li><span class="zh">关系遍历：</span><span class="en">relationship traversal</span></li>
+        <li><span class="zh">值可用性：</span><span class="en">value availability</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

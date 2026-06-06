@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-06T13:15:06.645Z
+Generated: 2026-06-06T13:45:31.169Z
 
 ## Summary
 
@@ -41,17 +41,12 @@ Generated: 2026-06-06T13:15:06.645Z
 | 298 | draft_template_only | 64 | `full_site/release/search.html` | 搜索 / Search - Universal Scene Description 26.05 documentation |
 | 69 | draft_template_only | 66 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | API 页面草稿：hf Directory / hf Directory |
 | 208 | draft_needs_translation | 314 | `full_site/api/hierarchy.html` | API 页面草稿：Class Hierarchy / Class Hierarchy |
-| 236 | draft_needs_translation | 327 | `full_site/api/page_ts_regression.html` | API 页面草稿：Regressive Splines in USD / Regressive Splines in USD |
 | 257 | draft_needs_translation | 332 | `full_site/api/usd_2usd_2object_8h.html` | API 页面草稿：object.h File / object.h File |
 | 211 | draft_needs_translation | 333 | `full_site/api/inherits.html` | API 页面草稿：Class Hierarchy / Class Hierarchy |
-| 217 | draft_needs_translation | 334 | `full_site/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html` | API 页面草稿：EsfUsd: Execution Scene Foundation for Usd / EsfUsd: Execution Scene Foundation for Usd |
 | 212 | draft_needs_translation | 336 | `full_site/api/journal_8h.html` | API 页面草稿：journal.h File / journal.h File |
 | 239 | draft_needs_translation | 336 | `full_site/api/pages.html` | API 页面草稿：Related Pages / Related Pages |
 | 248 | draft_needs_translation | 338 | `full_site/api/sparse_vectorized_input_traverser_8h.html` | API 页面草稿：sparseVectorizedInputTraverser.h File / sparseVectorizedInputTraverser.h File |
-| 220 | draft_needs_translation | 344 | `full_site/api/md_pxr_exec_exec_ir__r_e_a_d_m_e.html` | API 页面草稿：ExecIr: OpenExec implementation of invertible rigs / ExecIr: OpenExec implementation of invertible rigs |
-| 215 | draft_needs_translation | 345 | `full_site/api/md_pxr_exec_ef__r_e_a_d_m_e.html` | API 页面草稿：Ef: Execution Foundation / Ef: Execution Foundation |
 | 227 | draft_needs_translation | 345 | `full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html` | API 页面草稿：Usdview Black Box Testing / Usdview Black Box Testing |
-| 216 | draft_needs_translation | 349 | `full_site/api/md_pxr_exec_esf__r_e_a_d_m_e.html` | API 页面草稿：Esf: Execution Scene Foundation / Esf: Execution Scene Foundation |
 | 226 | draft_needs_translation | 351 | `full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html` | API 页面草稿：Development Practices For usdview / Development Practices For usdview |
 | 70 | draft_needs_translation | 352 | `full_site/api/executor_invalidation_data_8h.html` | API 页面草稿：executorInvalidationData.h File / executorInvalidationData.h File |
 | 66 | draft_needs_translation | 353 | `full_site/api/classpxr__tsl_1_1robin__map.html` | API 页面草稿：robin_map< Key, T, Hash, KeyEqual, Allocator, StoreHash, GrowthPolicy > Class Template / robin_map< Key, T, Hash, KeyEqual, Allocator, StoreHash, GrowthPolicy > Class Template |
@@ -59,6 +54,11 @@ Generated: 2026-06-06T13:15:06.645Z
 | 65 | draft_needs_translation | 364 | `full_site/api/classpxr___c_l_i_1_1_c_l_i_1_1_app.html` | API 页面草稿：App Class / App Class |
 | 158 | draft_needs_translation | 371 | `full_site/api/functions_vars.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 | 189 | draft_needs_translation | 371 | `full_site/api/globals_l.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
+| 200 | draft_needs_translation | 372 | `full_site/api/group__group___exec___attribute___comptuations.html` | API 页面草稿：Attribute Computations Builtin Exec Computations / Attribute Computations Builtin Exec Computations |
+| 251 | draft_needs_translation | 381 | `full_site/api/struct_usd_lux_tokens_type.html` | 结构体参考草稿：UsdLuxTokensType Class / UsdLuxTokensType Class |
+| 249 | draft_needs_translation | 387 | `full_site/api/struct_hgi_sampler_desc.html` | 结构体参考草稿：HgiSamplerDesc Struct / HgiSamplerDesc Struct |
+| 67 | draft_needs_translation | 395 | `full_site/api/copy_utils_8h.html` | API 页面草稿：copyUtils.h File / copyUtils.h File |
+| 253 | draft_needs_translation | 397 | `full_site/api/struct_usd_skel_tokens_type.html` | 结构体参考草稿：UsdSkelTokensType Class / UsdSkelTokensType Class |
 
 ## All Pages
 
@@ -278,12 +278,12 @@ Generated: 2026-06-06T13:15:06.645Z
 | 212 | draft_needs_translation | bilingual_draft | 336 | 15/12 | 0 | 0 | `full_site/api/journal_8h.html` |
 | 213 | draft_needs_translation | bilingual_draft | 543 | 26/18 | 0 | 0 | `full_site/api/js_page_front.html` |
 | 214 | draft_needs_translation | bilingual_draft | 735 | 39/26 | 0 | 0 | `full_site/api/kind_page_front.html` |
-| 215 | draft_needs_translation | bilingual_draft | 345 | 13/10 | 0 | 0 | `full_site/api/md_pxr_exec_ef__r_e_a_d_m_e.html` |
-| 216 | draft_needs_translation | bilingual_draft | 349 | 13/9 | 0 | 0 | `full_site/api/md_pxr_exec_esf__r_e_a_d_m_e.html` |
-| 217 | draft_needs_translation | bilingual_draft | 334 | 13/10 | 0 | 0 | `full_site/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html` |
+| 215 | draft_needs_translation | bilingual_draft | 555 | 25/17 | 0 | 0 | `full_site/api/md_pxr_exec_ef__r_e_a_d_m_e.html` |
+| 216 | draft_needs_translation | bilingual_draft | 545 | 25/16 | 0 | 0 | `full_site/api/md_pxr_exec_esf__r_e_a_d_m_e.html` |
+| 217 | draft_needs_translation | bilingual_draft | 498 | 25/17 | 0 | 0 | `full_site/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html` |
 | 218 | draft_needs_translation | bilingual_draft | 569 | 25/16 | 0 | 0 | `full_site/api/md_pxr_exec_exec__r_e_a_d_m_e.html` |
 | 219 | draft_needs_translation | bilingual_draft | 531 | 25/16 | 0 | 0 | `full_site/api/md_pxr_exec_exec_geom__r_e_a_d_m_e.html` |
-| 220 | draft_needs_translation | bilingual_draft | 344 | 13/9 | 0 | 0 | `full_site/api/md_pxr_exec_exec_ir__r_e_a_d_m_e.html` |
+| 220 | draft_needs_translation | bilingual_draft | 542 | 25/16 | 0 | 0 | `full_site/api/md_pxr_exec_exec_ir__r_e_a_d_m_e.html` |
 | 221 | draft_needs_translation | bilingual_draft | 524 | 25/17 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd__r_e_a_d_m_e.html` |
 | 222 | draft_needs_translation | bilingual_draft | 547 | 31/23 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd_docs_overview.html` |
 | 223 | draft_needs_translation | bilingual_draft | 594 | 33/25 | 0 | 0 | `full_site/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html` |
@@ -299,7 +299,7 @@ Generated: 2026-06-06T13:15:06.645Z
 | 233 | draft_needs_translation | bilingual_draft | 541 | 25/17 | 0 | 0 | `full_site/api/namespacemembers.html` |
 | 234 | draft_needs_translation | bilingual_draft | 552 | 25/17 | 0 | 0 | `full_site/api/namespaces.html` |
 | 235 | draft_needs_translation | bilingual_draft | 552 | 36/28 | 0 | 0 | `full_site/api/page__execution__system__design.html` |
-| 236 | draft_needs_translation | bilingual_draft | 327 | 25/22 | 0 | 0 | `full_site/api/page_ts_regression.html` |
+| 236 | draft_needs_translation | bilingual_draft | 500 | 37/29 | 0 | 0 | `full_site/api/page_ts_regression.html` |
 | 237 | draft_needs_translation | bilingual_draft | 550 | 41/33 | 0 | 0 | `full_site/api/page_ts_status.html` |
 | 238 | draft_needs_translation | bilingual_draft | 531 | 25/17 | 0 | 0 | `full_site/api/page_ts_ts_test.html` |
 | 239 | draft_needs_translation | bilingual_draft | 336 | 13/10 | 0 | 0 | `full_site/api/pages.html` |

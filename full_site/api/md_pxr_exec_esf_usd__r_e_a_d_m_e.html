@@ -54,6 +54,27 @@
         <li><span class="zh">执行求值：</span><span class="en">execution evaluation</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-166">
+      <h2>中文二次导读补强 / Chinese Second-Pass Reading Notes</h2>
+      <p class="zh">`md_pxr_exec_esf_usd__r_e_a_d_m_e.html` 是 `EsfUsd` 的入口页，说明 `Esf` 抽象如何映射到 USD stage、prim、property、relationship 和 value。它是 scene foundation 的 USD adapter，不是 `UsdStage` 或 `SdfLayer` 的完整参考。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for EsfUsd: Execution Scene Foundation for Usd while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`EsfUsd` 的重点是把 USD 数据模型转换为执行系统可理解的 `Esf` scene objects；这层映射决定 computation 能看到哪些 scene inputs。</span></li>
+        <li><span class="zh">阅读时要同时跟踪 USD path、prim/property identity、time context 和 layer-composed value，避免把 adapter 行为误解成新的 composition 规则。</span></li>
+        <li><span class="zh">当执行结果与 USD 场景不一致时，排查顺序通常是 `SdfPath`、property lookup、time sample、value resolution、adapter cache 和 invalidation。</span></li>
+        <li><span class="zh">`EsfUsd` 与 `ExecUsd` 相邻但不完全相同：前者偏 scene foundation adapter，后者偏 execution system 与 USD 的集成入口。</span></li>
+        <li><span class="zh">中文层保留 `EsfUsd`、`UsdStage`、`UsdPrim`、`SdfPath`、`value resolution` 等名称，确保读者能直接回到 API 页面和源码。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USD 场景适配器：</span><span class="en">USD scene adapter</span></li>
+        <li><span class="zh">USD 路径：</span><span class="en">USD path</span></li>
+        <li><span class="zh">prim 标识：</span><span class="en">prim identity</span></li>
+        <li><span class="zh">属性标识：</span><span class="en">property identity</span></li>
+        <li><span class="zh">合成后的值：</span><span class="en">layer-composed value</span></li>
+        <li><span class="zh">适配器缓存：</span><span class="en">adapter cache</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
