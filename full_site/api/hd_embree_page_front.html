@@ -54,6 +54,27 @@
         <li><span class="zh">光线追踪内核：</span><span class="en">raytracing kernels</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-127">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`HdEmbree` 是基于 Intel Embree 的 Hydra renderer plugin 页面，展示从 render delegate、render pass、mesh/instancer 到 Embree scene ownership 的最小渲染插件结构。阅读重点是 Hydra 插件链路和 Embree 资源生命周期，而不是把它当成通用生产渲染器手册。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdEmbree while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`HdEmbreeRendererPlugin`、`HdEmbreeRenderDelegate`、`HdEmbreeRenderPass` 与 `HdEmbreeRenderer` 分别落在插件发现、Hydra delegate、task 执行和 Embree 渲染实现层；中文导读只描述层次，不更改类名。</span></li>
+        <li><span class="zh">`Sync`、`Commit Resources` 与 `Executing tasks` 对应 Hydra 数据同步、资源提交和 task 执行阶段；应和 `HdSceneDelegate`、`HdRenderIndex`、`HdxRenderTask`、`HdCamera`、`HdRenderBuffer` 一起读。</span></li>
+        <li><span class="zh">`Embree Scene Ownership` 说明 Embree scene、geometry 和 renderer 内部对象的归属边界；如果调试生命周期问题，应关注创建、提交和销毁的时序，而不是只看 Doxygen 类列表。</span></li>
+        <li><span class="zh">`Configuration` 与 `Unit Test` 体现该模块的示例性质：它既是 renderer plugin API 的 living documentation，也用于测试 Embree-based Hydra delegate 的基础路径。</span></li>
+        <li><span class="zh">涉及 `rtc` 前缀或 raytracing core API 时，应保留 Embree 官方术语原样，并把它与 OpenUSD/Hydra 类型层清晰区分。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">HdEmbree 模块：</span><span class="en">HdEmbree</span></li>
+        <li><span class="zh">渲染器插件：</span><span class="en">renderer plugin</span></li>
+        <li><span class="zh">渲染委托：</span><span class="en">render delegate</span></li>
+        <li><span class="zh">Embree 场景所有权：</span><span class="en">Embree scene ownership</span></li>
+        <li><span class="zh">光线追踪内核：</span><span class="en">raytracing kernels</span></li>
+        <li><span class="zh">Hydra 任务执行：</span><span class="en">Hydra task execution</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

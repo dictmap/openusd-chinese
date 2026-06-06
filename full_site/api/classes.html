@@ -53,6 +53,27 @@
         <li><span class="zh">嵌套类型：</span><span class="en">nested type</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-127">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`classes.html` 是 Doxygen 生成的全局 Class Index，用于从类型名快速跳到具体 class、struct 或 nested type 文档。它跨越 `Ar`、`Arch`、`Hd`、`Sdf`、`Tf`、`Usd`、`Vdf`、`Vt` 等模块，阅读时应先按前缀和 namespace 识别领域。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Class Index while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`ArAsset`、`ArAssetInfo`、`ArDefaultResolver`、`ArResolver`、`ArResolverContext` 与 `ArWritableAsset` 属于 asset resolution 体系；它们在类索引中相邻，是命名前缀排序结果。</span></li>
+        <li><span class="zh">`ArchIntervalTimer`、`ArchMallocHook` 与其他 `Arch*` 类型偏平台、内存和计时工具层；不要把它们误读成 USD scene schema。</span></li>
+        <li><span class="zh">`HdSceneIndexObserver::AddedPrimEntry`、`HdSt`、`HdRenderIndex` 相关类型属于 Hydra / imaging 路径；查渲染问题时可从这里跳转到具体类页面。</span></li>
+        <li><span class="zh">`VdfMask::ArbitraryLessThan`、`WorkTaskGraph::BaseTask`、`TfType::Bases` 等嵌套类型在索引中会带作用域前缀；中文说明保留完整限定名，便于搜索和编译报错对照。</span></li>
+        <li><span class="zh">Class Index 适合定位类型，不适合连续阅读；真正的构造函数、成员变量、继承关系和线程约束应在目标 class documentation 中确认。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">类索引：</span><span class="en">Class Index</span></li>
+        <li><span class="zh">嵌套类型：</span><span class="en">nested type</span></li>
+        <li><span class="zh">命名空间前缀：</span><span class="en">namespace prefix</span></li>
+        <li><span class="zh">资产解析：</span><span class="en">asset resolution</span></li>
+        <li><span class="zh">Hydra 成像：</span><span class="en">Hydra imaging</span></li>
+        <li><span class="zh">类文档：</span><span class="en">class documentation</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

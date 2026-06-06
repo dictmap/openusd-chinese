@@ -54,6 +54,27 @@
         <li><span class="zh">码点：</span><span class="en">code point</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-127">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`globals_vars.html` 是 File Members 的变量索引页，聚合全局变量、token 集、predicate 常量、sentinel 和底层工具常量。它的价值是按变量名快速跳转到声明文件或目标文档，而不是解释每个变量的完整运行期语义。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for File Members - Variables while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`PCP_INVALID_INDEX`、`SdfMapperParametersMap` 与 `TfUtf8InvalidCodePoint` 来自不同基础层：composition 索引、Sdf mapper 参数映射和 UTF-8 工具层；同页出现不代表同一模块。</span></li>
+        <li><span class="zh">`UsdGeomTokens`、`UsdHydraTokens`、`UsdLuxTokens`、`UsdMediaTokens`、`UsdMtlxTokens`、`UsdPhysicsTokens` 是 schema/domain token 集入口；变量名和 token 字面量必须保留英文原样。</span></li>
+        <li><span class="zh">`usdPhysicsSentinelLimit` 应结合 physics parser 或 `parseDesc.h` 语境阅读；sentinel 表示边界或特殊值，不能简单翻成普通最大值。</span></li>
+        <li><span class="zh">`UsdPrimAllPrimsPredicate`、`UsdPrimDefaultPredicate`、`UsdPrimHasClassSpecifier`、`UsdPrimIsActive` 等 predicate 常量与 prim flag/filtering 相关，适合用来理解遍历、过滤和 specifier 判定。</span></li>
+        <li><span class="zh">本页和 `globals_type.html`、`globals_func.html`、字母分段页用途不同；中文层只帮助区分变量类别，具体声明、头文件和类型应通过链接进入目标页核对。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">文件成员变量索引：</span><span class="en">File Members - Variables</span></li>
+        <li><span class="zh">token 集：</span><span class="en">token set</span></li>
+        <li><span class="zh">谓词常量：</span><span class="en">predicate constant</span></li>
+        <li><span class="zh">哨兵值：</span><span class="en">sentinel</span></li>
+        <li><span class="zh">prim 标志：</span><span class="en">prim flags</span></li>
+        <li><span class="zh">声明文件：</span><span class="en">declaration file</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

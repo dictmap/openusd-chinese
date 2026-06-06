@@ -53,6 +53,27 @@
         <li><span class="zh">Python 绑定：</span><span class="en">Python binding</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-127">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`functions_func_t.html` 是 Class Members - Functions 的 `T` 字母段索引，适合从成员函数名反查 `Tf`、`Vdf`、`UsdUtils`、`UsdImaging`、`Hd` 等模块中的具体类成员。它不是连续教程页，而是把 `T` 开头的函数、构造函数或 helper 条目聚合成跳转入口。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Class Members - Functions - T while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`VtValue`、`OptionBase&lt;CRTP&gt;`、`UsdUtilsCoalescingDiagnosticDelegate`、`VdfDatalessExecutor` 与 `VdfDataManagerBasedExecutor` 同页出现，是 Doxygen 字母索引结果；阅读时应先按模块前缀区分 value container、CLI option、diagnostic delegate 和 Vdf executor。</span></li>
+        <li><span class="zh">`VdfExecutorDataManager&lt;DerivedClass&gt;`、`VdfParallelExecutorDataManager&lt;DerivedClass&gt;` 与 `VdfSpeculationExecutor&lt;EngineType, DataManagerType&gt;` 需要保留 template 参数原样；中文只说明执行网络和 data manager 边界，不改写类型签名。</span></li>
+        <li><span class="zh">`TfDiagnosticBase`、`TfDiagnosticTransport`、`TfDiagnosticTrap`、`TfErrorMark`、`TfErrorTransport` 与 `TfBaseException` 指向 Tf 诊断基础设施；这些条目常用于追踪错误标记、错误传输和调试 trap 的生命周期。</span></li>
+        <li><span class="zh">`UsdviewqHydraObserver`、`HdChangeTracker`、`UsdImagingGLEngine` 等条目把 usdview、Hydra change tracking 与 imaging engine 串到同一索引页；实际行为仍要回到各自 class/member 页面确认。</span></li>
+        <li><span class="zh">本页适合做“我只记得函数或构造入口以 T 开头”的反查页；若要判断参数约束、线程安全、异常语义或渲染执行顺序，应继续进入目标成员页面。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">类成员函数 T 段：</span><span class="en">Class Members - Functions - T</span></li>
+        <li><span class="zh">诊断委托：</span><span class="en">diagnostic delegate</span></li>
+        <li><span class="zh">执行器数据管理器：</span><span class="en">executor data manager</span></li>
+        <li><span class="zh">模板参数：</span><span class="en">template parameter</span></li>
+        <li><span class="zh">变更跟踪器：</span><span class="en">change tracker</span></li>
+        <li><span class="zh">成员详情页：</span><span class="en">member page</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

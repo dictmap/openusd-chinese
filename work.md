@@ -3240,3 +3240,14 @@
 - 验证结果：翻译质量审计、链接路由、full draft preview、报告索引和 `validate_openusd_api_repro.ps1` 均已通过；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
 - GitHub 同步：本轮复验通过后使用 `OpenUSD bilingual round 257: namespace file class index pass` 同步本轮 HTML、脚本、报告和 `work.md`。
 - 下一轮最多 5 页目标：`full_site/api/functions_func_t.html`、`full_site/api/deprecated.html`、`full_site/api/hd_embree_page_front.html`、`full_site/api/globals_vars.html`、`full_site/api/classes.html`；之后可继续 `full_site/api/functions_func_t.html` 后续相邻 API 索引/入口页，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面，继续低优先处理 `search.html`、目录页和 `_source.html`。
+
+## 第 258 轮：Class Members T、Deprecated、HdEmbree、File Variables 与 Class Index 补强
+
+- 基线：本地 `main` 基于上一轮同步提交 `3309057`，`origin/main` 一致，起始工作区干净；全量仍为 406 个 HTML 页面，质量计数为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。
+- 新增并执行 `scripts/refine_openusd_release_batch_127.mjs`，标记 `api-index-quality-pass-127`；严格只精修 5 页：`full_site/api/functions_func_t.html`、`full_site/api/deprecated.html`、`full_site/api/hd_embree_page_front.html`、`full_site/api/globals_vars.html`、`full_site/api/classes.html`。
+- 补强内容：每页新增 5 条中文导读和 6 条术语对照，覆盖 Class Members Functions T 的 Tf/Vdf/UsdUtils/Hydra 索引读法、Deprecated List 的迁移风险边界、HdEmbree 渲染插件链路、File Members Variables 的 token/predicate/sentinel 区分，以及 Class Index 的跨模块类型导航策略；API 名称、类名、函数名、变量名、template 参数、宏名、token 字面量、头文件名和链接保持原样。
+- 质量回读：5 页均无占位坏词，`api-index-quality-pass-127` 均只出现 1 次；中文字符分别为 597、602、565、568、562，中文/英文块分别为 24/16、24/17、34/26、29/20、24/16。
+- 分级变化：计数保持不变，仍为 `draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因是本轮对象已是 `draft_needs_translation`，属于二次补强，不是模板草稿晋级。
+- 验证结果：翻译质量审计、链接路由、full draft preview、报告索引和 `validate_openusd_api_repro.ps1` 均已通过；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步：本轮复验通过后使用 `OpenUSD bilingual round 258: class deprecated hdembree variables index pass` 同步本轮 HTML、脚本、报告和 `work.md`。
+- 下一轮最多 5 页目标：`full_site/api/_developer__guides.html`、`full_site/api/_usd_skel__intro.html`、`full_site/api/annotated.html`、`full_site/api/ar_page_front.html`、`full_site/api/arch_page_front.html`；之后可继续高价值模块入口或 class 页面，继续低优先处理 `search.html`、目录页和 `_source.html`。
