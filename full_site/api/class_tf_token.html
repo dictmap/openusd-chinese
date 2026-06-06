@@ -75,6 +75,27 @@
         <li><span class="zh">空 token：</span><span class="en">empty token</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-145">
+      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
+      <p class="zh">`TfToken` 是 registered string handle，用于对已知且固定的字符串进行 constant-time comparison、assignment 和 hashing。它适合 bounded set of fixed symbols，例如 schema token、attribute name、metadata key 或 renderer option name。</p>
+      <p class="en">This third-pass refinement adds page-specific Chinese guidance for TfToken while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`TfToken` 的优势来自字符串 intern/registration；创建 token 后比较和哈希是常数时间，但首次注册仍与输入字符串有关。</span></li>
+        <li><span class="zh">`GetString()` 返回 `std::string` 视图语义的值，`GetText()` / `data()` 提供 C 字符串指针；不要长期持有超出 token 生命周期假设的裸指针。</span></li>
+        <li><span class="zh">`IsEmpty()` 可区分 empty token；空 token 与普通字符串 token 的语义应由调用方 API 明确约定。</span></li>
+        <li><span class="zh">`Hash()`、`HashSet` 与 `Set` 面向 token collection；在高频路径中比反复使用 `std::string` 更适合作为 key。</span></li>
+        <li><span class="zh">`Find()` 可查询已存在 token 而不一定创建新注册项；当只是探测符号是否已注册时，比直接构造 token 更可控。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">令牌：</span><span class="en">TfToken</span></li>
+        <li><span class="zh">已注册字符串：</span><span class="en">registered string</span></li>
+        <li><span class="zh">常数时间比较：</span><span class="en">constant-time comparison</span></li>
+        <li><span class="zh">哈希：</span><span class="en">hashing</span></li>
+        <li><span class="zh">空令牌：</span><span class="en">empty token</span></li>
+        <li><span class="zh">固定符号集合：</span><span class="en">fixed symbols</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

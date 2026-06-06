@@ -75,6 +75,27 @@
         <li><span class="zh">可散列值：</span><span class="en">hashable value</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-145">
+      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
+      <p class="zh">`VtValueRef` 是 non-owning type-erased view of a value，可与 `VtValue` 互操作。它通常作为函数参数或自动变量使用，不能比被引用的 value 活得更久；普通 typed values 和 `VtValue` 都可隐式转换为 `VtValueRef`。</p>
+      <p class="en">This third-pass refinement adds page-specific Chinese guidance for VtValueRef while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`VtValueRef` 不拥有数据，因此不会像 `VtValue` 那样复制或延长对象生命周期；把它存入长期容器通常是错误用法。</span></li>
+        <li><span class="zh">`Get()`、`GetType()`、`GetTypeid()`、`GetTypeName()` 和 `GetKnownValueTypeIndex()` 用于检查被引用值的运行时类型信息。</span></li>
+        <li><span class="zh">`GetArraySize()` 与 `GetElementTypeid()` 帮助统一处理数组值；对非数组类型调用时要看对应 API 的约定。</span></li>
+        <li><span class="zh">`CanHash()` / `GetHash()`、`CanTransform()`、`CanComposeOver()` 表示该引用值是否支持特定 generic operations。</span></li>
+        <li><span class="zh">`_Get()`、`_GetMutable()` 与 `_TypeIs()` 是更低层的类型访问机制，普通使用者应优先通过公共 typed API 进行安全检查。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">非拥有引用：</span><span class="en">non-owning reference</span></li>
+        <li><span class="zh">类型擦除视图：</span><span class="en">type-erased view</span></li>
+        <li><span class="zh">值容器：</span><span class="en">VtValue</span></li>
+        <li><span class="zh">运行时类型：</span><span class="en">runtime type</span></li>
+        <li><span class="zh">数组大小：</span><span class="en">GetArraySize()</span></li>
+        <li><span class="zh">可组合覆盖：</span><span class="en">CanComposeOver()</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

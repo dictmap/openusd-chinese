@@ -75,6 +75,27 @@
         <li><span class="zh">交集：</span><span class="en">IntersectWith</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-145">
+      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
+      <p class="zh">`GfRange1d` 是一维 double precision floating point range / interval。它的操作遵循 interval mathematics；空区间定义为 `max &lt; min`，默认空值通常表现为 `[FLT_MAX, -FLT_MAX]` 这类 min/max 反转状态。</p>
+      <p class="en">This third-pass refinement adds page-specific Chinese guidance for GfRange1d while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Contains()` 用于判断点或另一个 range 是否落在当前区间内；使用前应确认区间不是 empty range，否则结果容易和直觉不一致。</span></li>
+        <li><span class="zh">`ExtendBy()` 会扩展 min/max 以包含点或区间，适合逐步累积 bounds；从默认空区间开始累积是常见用法。</span></li>
+        <li><span class="zh">`GetIntersection()` / `Intersection()` 与 `GetUnion()` 分别表达区间交集和并集，调试时要关注空交集与端点相等的闭区间边界。</span></li>
+        <li><span class="zh">`GetDistanceSquared()` 给出点到区间的平方距离；点在区间内部时距离为 0，适合避免不必要的 `sqrt`。</span></li>
+        <li><span class="zh">`GetMin()`、`GetMax()`、`GetMidpoint()` 与 `GetSize()` 是读取端点和尺度的基础接口；对 empty range 调用时应明确调用方期望。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">一维范围：</span><span class="en">GfRange1d</span></li>
+        <li><span class="zh">区间数学：</span><span class="en">interval mathematics</span></li>
+        <li><span class="zh">空范围：</span><span class="en">empty range</span></li>
+        <li><span class="zh">扩展范围：</span><span class="en">ExtendBy()</span></li>
+        <li><span class="zh">交集：</span><span class="en">intersection</span></li>
+        <li><span class="zh">平方距离：</span><span class="en">distance squared</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

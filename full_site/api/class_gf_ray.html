@@ -75,6 +75,27 @@
         <li><span class="zh">最近点：</span><span class="en">closest point</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-145">
+      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
+      <p class="zh">`GfRay` 表示三维空间中用于 intersection testing 的 ray，由 start point / origin 和 direction 组成。文档特别指出默认不会把 direction vector 归一化，并且 ray intersection 计算包含 start point，距离 0 也视为相交。</p>
+      <p class="en">This third-pass refinement adds page-specific Chinese guidance for GfRay while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`SetPointAndDirection()` 直接设置起点和方向，`SetEnds()` 从两端点推导 ray；两者适用场景不同，后者更适合由 segment-like 输入构造射线。</span></li>
+        <li><span class="zh">`GetPoint()` 根据参数距离返回 ray 上的点；由于 direction 不一定单位化，参数含义要和当前 direction length 一起理解。</span></li>
+        <li><span class="zh">`Intersect()` 有多个 overload，覆盖 plane、sphere、box、triangle 等常见几何；调用前要确认输入几何和返回 distance 的约定。</span></li>
+        <li><span class="zh">`FindClosestPoint()` 与相关 `GfFindClosestPoints` friend functions 适合最近点查询，不等同于发生相交。</span></li>
+        <li><span class="zh">`Transform()` 会变换起点和方向；如果 transform 包含非均匀缩放，后续距离参数和 direction length 的解释需要重新核对。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">射线：</span><span class="en">GfRay</span></li>
+        <li><span class="zh">起点：</span><span class="en">start point</span></li>
+        <li><span class="zh">方向向量：</span><span class="en">direction vector</span></li>
+        <li><span class="zh">相交测试：</span><span class="en">intersection testing</span></li>
+        <li><span class="zh">最近点：</span><span class="en">closest point</span></li>
+        <li><span class="zh">变换射线：</span><span class="en">Transform()</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

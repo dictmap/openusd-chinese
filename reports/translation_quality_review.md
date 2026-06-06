@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-06T03:30:07.561Z
+Generated: 2026-06-06T03:41:24.560Z
 
 ## Summary
 
@@ -74,11 +74,11 @@ Generated: 2026-06-06T03:30:07.561Z
 | 8 | draft_template_only | bilingual_draft | 62 | 2/3 | 0 | 0 | `full_site/api/binding_map_8h_source.html` |
 | 9 | draft_needs_translation | bilingual_draft | 544 | 35/27 | 0 | 0 | `full_site/api/class_ef___lofted_output_set.html` |
 | 10 | draft_needs_translation | bilingual_draft | 545 | 34/26 | 0 | 0 | `full_site/api/class_esf_property_interface.html` |
-| 11 | draft_needs_translation | bilingual_draft | 606 | 52/44 | 0 | 0 | `full_site/api/class_gf_dual_quatf.html` |
+| 11 | draft_needs_translation | bilingual_draft | 806 | 64/51 | 0 | 0 | `full_site/api/class_gf_dual_quatf.html` |
 | 12 | draft_needs_translation | bilingual_draft | 636 | 52/44 | 0 | 0 | `full_site/api/class_gf_matrix2f.html` |
 | 13 | draft_needs_translation | bilingual_draft | 677 | 52/44 | 0 | 0 | `full_site/api/class_gf_matrix4f.html` |
-| 14 | draft_needs_translation | bilingual_draft | 583 | 52/44 | 0 | 0 | `full_site/api/class_gf_range1d.html` |
-| 15 | draft_needs_translation | bilingual_draft | 611 | 51/43 | 0 | 0 | `full_site/api/class_gf_ray.html` |
+| 14 | draft_needs_translation | bilingual_draft | 792 | 64/51 | 0 | 0 | `full_site/api/class_gf_range1d.html` |
+| 15 | draft_needs_translation | bilingual_draft | 814 | 63/50 | 0 | 0 | `full_site/api/class_gf_ray.html` |
 | 16 | draft_needs_translation | bilingual_draft | 719 | 52/44 | 0 | 0 | `full_site/api/class_gf_vec2i.html` |
 | 17 | draft_needs_translation | bilingual_draft | 652 | 52/44 | 0 | 0 | `full_site/api/class_glf_draw_target.html` |
 | 18 | draft_needs_translation | bilingual_draft | 605 | 52/44 | 0 | 0 | `full_site/api/class_hd_data_source_locator.html` |
@@ -101,7 +101,7 @@ Generated: 2026-06-06T03:30:07.561Z
 | 35 | draft_needs_translation | bilingual_draft | 738 | 64/51 | 0 | 0 | `full_site/api/class_sdr_shader_property.html` |
 | 36 | draft_needs_translation | bilingual_draft | 601 | 52/44 | 0 | 0 | `full_site/api/class_tf_dense_hash_map.html` |
 | 37 | draft_needs_translation | bilingual_draft | 589 | 39/31 | 0 | 0 | `full_site/api/class_tf_py_lock.html` |
-| 38 | draft_needs_translation | bilingual_draft | 674 | 52/44 | 0 | 0 | `full_site/api/class_tf_token.html` |
+| 38 | draft_needs_translation | bilingual_draft | 867 | 64/51 | 0 | 0 | `full_site/api/class_tf_token.html` |
 | 39 | draft_needs_translation | bilingual_draft | 553 | 42/34 | 0 | 0 | `full_site/api/class_trace_event_data.html` |
 | 40 | draft_needs_translation | bilingual_draft | 726 | 64/51 | 0 | 0 | `full_site/api/class_usd_attribute_limits.html` |
 | 41 | draft_needs_translation | bilingual_draft | 733 | 64/51 | 0 | 0 | `full_site/api/class_usd_geom_basis_curves.html` |
@@ -126,7 +126,7 @@ Generated: 2026-06-06T03:30:07.561Z
 | 60 | draft_needs_translation | bilingual_draft | 617 | 52/44 | 0 | 0 | `full_site/api/class_vdf_node.html` |
 | 61 | draft_needs_translation | bilingual_draft | 545 | 36/28 | 0 | 0 | `full_site/api/class_vdf_read_write_accessor.html` |
 | 62 | draft_needs_translation | bilingual_draft | 533 | 40/32 | 0 | 0 | `full_site/api/class_vdf_test_utils_1_1_node.html` |
-| 63 | draft_needs_translation | bilingual_draft | 663 | 52/44 | 0 | 0 | `full_site/api/class_vt_value_ref.html` |
+| 63 | draft_needs_translation | bilingual_draft | 857 | 64/51 | 0 | 0 | `full_site/api/class_vt_value_ref.html` |
 | 64 | draft_needs_translation | bilingual_draft | 501 | 24/16 | 0 | 0 | `full_site/api/classes.html` |
 | 65 | draft_needs_translation | bilingual_draft | 364 | 40/37 | 0 | 0 | `full_site/api/classpxr___c_l_i_1_1_c_l_i_1_1_app.html` |
 | 66 | draft_needs_translation | bilingual_draft | 353 | 40/37 | 0 | 0 | `full_site/api/classpxr__tsl_1_1robin__map.html` |

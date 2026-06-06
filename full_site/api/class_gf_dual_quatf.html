@@ -75,6 +75,27 @@
         <li><span class="zh">精度变体：</span><span class="en">precision variant</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-145">
+      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
+      <p class="zh">`GfDualQuatf` 表示由 real part quaternion 和 dual part quaternion 组成的 dual quaternion，常用于同时表示 rotation 与 translation。它属于 `float` 精度线性代数基础类型，和 matrix transform 相比更适合某些插值与 skinning 场景。</p>
+      <p class="en">This third-pass refinement adds page-specific Chinese guidance for GfDualQuatf while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`GetReal()` 与 `GetDual()` 分别返回 real quaternion 和 dual quaternion；不要把 dual part 当成普通平移向量直接读取。</span></li>
+        <li><span class="zh">`GetTranslation()` 从 dual quaternion 中提取 translation，通常要求对象满足合理的 rigid transform / normalized 约束。</span></li>
+        <li><span class="zh">`Normalize()` 与 `GetNormalized()` 分别原地归一化和返回归一化副本；进行 blend 或累积后应检查 length，避免非单位 dual quaternion 进入后续变换。</span></li>
+        <li><span class="zh">`GetInverse()`、`GetConjugate()`、`GetIdentity()` 与 `GetZero()` 是常用代数构造；identity 与 zero 的语义不同，前者表示无变换，后者不是有效刚体变换。</span></li>
+        <li><span class="zh">构造函数有多个 overload，可从 rotation、translation 或两个 quaternion 组合；调用时应确认输入约定和 handedness 与项目数学约定一致。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">双四元数：</span><span class="en">dual quaternion</span></li>
+        <li><span class="zh">实部：</span><span class="en">real part</span></li>
+        <li><span class="zh">对偶部：</span><span class="en">dual part</span></li>
+        <li><span class="zh">平移提取：</span><span class="en">GetTranslation()</span></li>
+        <li><span class="zh">归一化：</span><span class="en">Normalize()</span></li>
+        <li><span class="zh">单位变换：</span><span class="en">identity</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
