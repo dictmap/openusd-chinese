@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-06T23:22:36.884Z
+Generated: 2026-06-06T23:34:34.419Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 21
-- Promoted complete pages: 13
-- Bilingual draft pages: 385
+- Bilingual complete pages: 22
+- Promoted complete pages: 14
+- Bilingual draft pages: 384
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -77,7 +77,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_draft | 类参考草稿：UsdVolParticleFieldSphericalHarmonicsAttributeAPI Class / UsdVolParticleFieldSphericalHarmonicsAttributeAPI Class | full_site/api/class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html | https://openusd.org/release/api/class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html |
 | api | bilingual_draft | 类参考草稿：VdfContext Class / VdfContext Class | full_site/api/class_vdf_context.html | https://openusd.org/release/api/class_vdf_context.html |
 | api | bilingual_draft | 类参考草稿：VdfGrapherOptions Class / VdfGrapherOptions Class | full_site/api/class_vdf_grapher_options.html | https://openusd.org/release/api/class_vdf_grapher_options.html |
-| api | bilingual_draft | 类参考草稿：VdfNode Class Reference abstract / VdfNode Class Reference abstract | full_site/api/class_vdf_node.html | https://openusd.org/release/api/class_vdf_node.html |
+| api | bilingual_complete | https://openusd.org/release/api/class_vdf_node.html | full_site/api/class_vdf_node.html | https://openusd.org/release/api/class_vdf_node.html |
 | api | bilingual_draft | 类参考草稿：VdfReadWriteAccessor< T > Class Template / VdfReadWriteAccessor< T > Class Template | full_site/api/class_vdf_read_write_accessor.html | https://openusd.org/release/api/class_vdf_read_write_accessor.html |
 | api | bilingual_draft | 类参考草稿：Node Class / Node Class | full_site/api/class_vdf_test_utils_1_1_node.html | https://openusd.org/release/api/class_vdf_test_utils_1_1_node.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_vt_value_ref.html | full_site/api/class_vt_value_ref.html | https://openusd.org/release/api/class_vt_value_ref.html |

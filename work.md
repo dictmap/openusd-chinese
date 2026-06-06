@@ -5180,3 +5180,51 @@
 1. 继续真实晋级，不再刷 count-neutral 导读补强。
 2. 下一批优先核心页面：`full_site/api/class_vdf_node.html` 或其他 406 清单内高价值核心 API 页。
 3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。
+
+## 第 316 轮：将 VdfNode 提升为完整双语
+
+已完成：
+
+- 将 `full_site/api/class_vdf_node.html` 从 `bilingual_draft` 晋级为 `bilingual_complete`。
+- 页面标题改为“完整双语参考：VdfNode Class Reference abstract / VdfNode Class Reference abstract”，并移除通用 draft 文案和“后续迭代会继续补齐”等草稿标记。
+- 新增 `逐段双语理解 / Paragraph-Level Bilingual Coverage` 区块，覆盖：
+  - `VdfNode` 作为 `VdfNetwork` 中 data-flow graph node 的抽象基类定位。
+  - `VdfNode` 与 `UsdPrim`、Hydra render prim、schema class 的边界。
+  - input/output specs、named ports、network ownership、node identity 和 graph scheduling 的阅读重点。
+  - `VdfNode` 与 `VdfContext` 的边界：节点描述拓扑，context 提供执行期数值访问。
+  - dependency mask、required input request 与调度、缓存失效、局部求值的关系。
+  - `_InitializeInputAndOutputSpecs()`、`_AppendInputs()`、`_AppendOutputs()`、`_ReplaceInputSpecs()` 等 protected graph-maintenance hooks。
+  - `_DidAddInputConnection()`、`VdfConnection`、`VdfInput`、`VdfOutput`、`VdfMask`、`VdfRequiredInputsPredicate` 的连接诊断关系。
+  - OpenExec 与 Vdf 的分层，以及把 graph structure 误读成 runtime value 的常见错误。
+- 更新 `reports/bilingual_completion_promotions.json/md`，新增 `round-316-vdf-node`。
+- 更新 `reports/current_problem_audit.md/json`，将当前真实状态同步为 22 complete / 384 draft。
+- 重建 `openusd_bilingual_final.html`，总入口现在显示 22 complete / 384 incomplete drafts。
+
+分级变化：
+
+- `good_bilingual`：21 -> 22
+- `bilingual_complete`：21 -> 22
+- `bilingual_draft`：385 -> 384
+- `draft_needs_translation`：374 -> 373
+- `draft_template_only`：11 保持不变
+
+验证结果：
+
+- `discover_openusd_all_pages.mjs`：通过，`total_pages=406`，`promoted_complete_pages=14`。
+- `audit_openusd_translation_quality.mjs`：通过，`good_bilingual=22`，目标页 `grade=good_bilingual`。
+- `route_openusd_internal_links_local.mjs`：通过。
+- `audit_openusd_full_draft_preview.mjs`：通过，384/384 draft 页面可预览。
+- `audit_openusd_report_index.mjs`：通过。
+- `validate_openusd_api_repro.ps1`：通过，`required_check_count=288`，`failed_check_count=0`。
+- Node 直接解析 `reports/validation_report.json`：`bom=false`。
+
+当前差距：
+
+- 仍有 384 个 `bilingual_draft` 页面只是可检查草稿，不是完整翻译，其中 373 个仍为 `draft_needs_translation`。
+- 406 清单外的 Doxygen 目标仍会进入本地未覆盖占位页；这是当前 P1 浏览缺口。
+
+下一步目标：
+
+1. 继续真实晋级，不再刷 count-neutral 导读补强。
+2. 下一批优先核心页面：`full_site/api/class_vdf_context.html` 或其他 406 清单内高价值核心 API 页。
+3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。

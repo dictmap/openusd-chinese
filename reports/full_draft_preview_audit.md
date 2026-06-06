@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-06T23:22:43.709Z
+Generated: 2026-06-06T23:34:40.500Z
 
-Transient base URL: `http://127.0.0.1:62502/`
+Transient base URL: `http://127.0.0.1:59554/`
 
 Result:
 
 - Passed: true
-- Draft pages: 385
-- Pages checked: 385
-- Passed pages: 385
+- Draft pages: 384
+- Pages checked: 384
+- Passed pages: 384
 - Failed pages: 0
-- Final HTML links: 385
-- Local assets checked: 385
+- Final HTML links: 384
+- Local assets checked: 384
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -63,7 +63,6 @@ Result:
 | true | full_site/api/class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_vdf_context.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_vdf_grapher_options.html | 200 | true | 0 | 0 |
-| true | full_site/api/class_vdf_node.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_vdf_read_write_accessor.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_vdf_test_utils_1_1_node.html | 200 | true | 0 | 0 |
 | true | full_site/api/classes.html | 200 | true | 0 | 0 |

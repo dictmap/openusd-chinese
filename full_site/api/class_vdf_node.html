@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：VdfNode Class Reference abstract / VdfNode Class Reference abstract</title>
+  <title>完整双语参考：VdfNode Class Reference abstract / VdfNode Class Reference abstract</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,36 +24,44 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：VdfNode Class Reference abstract / VdfNode Class Reference abstract</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：VdfNode Class Reference abstract / VdfNode Class Reference abstract</h1>
     <div class="meta">https://openusd.org/release/api/class_vdf_node.html</div>
   </header>
   <main>
-    <section data-cn-refinement="api-index-quality-pass-167">
-      <h2>中文二次导读补强 / Chinese Second-Pass Reading Notes</h2>
-      <p class="zh">`class_vdf_node.html` 是 `VdfNode` 抽象类参考页，适合从节点责任、输入输出注册、依赖边和图调度角度理解 Vdf 网络。它描述 execution graph 的结构单元，而不是 USD prim、Hydra prim 或 schema class。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for VdfNode while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`VdfNode` 是 data-flow network 的基础结构单元：节点把 input、output、dependency 和 computation boundary 组织在一起，供 Vdf evaluation 按图关系调度。</span></li>
-        <li><span class="zh">阅读类成员时，应把 node identity、input connector、output connector、dependency edge、compute callback 和 debugging hooks 分开看，避免把图结构与业务值语义混在一起。</span></li>
-        <li><span class="zh">如果某个输出没有被计算或图边缺失，应检查 node registration、input/output wiring、dependency declaration、dirty marking 与 evaluation request 是否一致。</span></li>
-        <li><span class="zh">`VdfNode` 与上层 OpenExec 的关系是承载而非替代：`Exec` 可能把 schema computation 映射到 Vdf node，但 node 本身仍是执行图机制的一部分。</span></li>
-        <li><span class="zh">中文导读保留 `VdfNode`、`input connector`、`output connector`、`dependency edge`、`compute callback` 等英文标识，保证与 Doxygen 成员名和源码注释一致。</span></li>
-      </ul>
+    <section data-cn-complete="vdf-node-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`VdfNode` 解决的问题是：在 `VdfNetwork` 这样的 data-flow evaluation graph 中，用一个统一的抽象基类描述“一个可被调度的计算节点”。它不是 USD stage 上的 `UsdPrim`，也不是 Hydra render prim 或 schema class；它是执行图里的结构单元，负责声明输入、输出、依赖关系、网络身份和派生节点维护图结构所需的 protected hooks。</p>
+      <p class="en">`VdfNode` is the abstract base class for nodes in a `VdfNetwork`. It describes graph topology and scheduling-facing node structure rather than a scene description prim, render prim, or schema object.</p>
+      <p class="zh">官方摘录说它是 “the base class for all nodes in a VdfNetwork”。这里的 “node” 应按 Vdf 数据流图理解：节点通过 input specs 和 output specs 暴露端口，通过 dependency mask 说明某个输出需要哪些输入，通过 network/id/ownership 信息被 `VdfNetwork` 管理。不要把这个 node 误读成 USD namespace 中的 prim，也不要把它直接等同于一次 evaluation 产生的 value。</p>
+      <p class="en">The phrase “base class for all nodes in a VdfNetwork” should be read as data-flow graph terminology. Inputs, outputs, dependency masks, network ownership, and node identity are the key concepts on this page.</p>
+      <p class="zh">公共查询接口的阅读重点是 node topology。`GetInput()`、`GetOutput()`、输入列表和输出列表帮助调用方或调试工具检查一个节点暴露了哪些 named ports；这些名称常用 `TfToken` 表示，应保留原样。若图中某个输出没有被计算，首先应核对端口名称、连接对象、required input request 和 dependency mask，而不是从 USD authoring 层寻找原因。</p>
+      <p class="en">Public input and output queries are mainly topology inspection APIs. They expose named ports and should be checked together with connections, required input requests, and dependency masks when debugging evaluation.</p>
+      <p class="zh">`VdfNode` 与 `VdfContext` 的边界很重要：`VdfNode` 描述节点在网络中的形状和依赖关系；`VdfContext` 通常在 compute callback 执行时提供数值访问。也就是说，节点定义“我有哪些输入输出、输出依赖哪些输入”，context 才是执行期间读取实际值的入口。把这两者混在一起，会导致把拓扑问题误判为数据值问题。</p>
+      <p class="en">`VdfNode` describes graph shape, while `VdfContext` is used during computation to access values. Topology and runtime value access are intentionally separate concerns.</p>
+      <p class="zh">依赖相关 protected 方法是本页最核心的实现线索。`_ComputeInputDependencyMask()`、`_ComputeInputDependencyMasks()`、`_ComputeOutputDependencyMask()`、`_ComputeOutputDependencyMasks()` 和 `_ComputeInputDependencyRequest()` 将 request、连接关系和端口规格转换为 masks。Vdf 调度、增量求值、缓存失效和局部重算都依赖这些 mask 的正确性。</p>
+      <p class="en">The dependency-mask helpers convert requests, connections, and port specifications into masks used by scheduling, invalidation, and partial evaluation.</p>
+      <p class="zh">输入输出规格相关方法说明派生类如何声明图接口。`_InitializeInputAndOutputSpecs()` 建立初始规格，`_AppendInputs()` 和 `_AppendOutputs()` 扩展端口，`_ReplaceInputSpecs()` 替换输入规格，`_AcquireInputAndOutputSpecsPointer()`、`_ReleaseInputAndOutputSpecsPointer()`、`_ClearInputAndOutputSpecsPointer()` 管理规格数据指针的生命周期。它们面向网络内部和派生实现者，不是普通 USD 用户层 authoring API。</p>
+      <p class="en">Input/output spec methods are implementation hooks for derived nodes and network construction. They define and maintain the node interface inside the graph.</p>
+      <p class="zh">连接变化钩子 `_DidAddInputConnection()` 表示节点会在新输入连接加入时得到通知；这通常用于更新依赖请求、缓存或派生类内部状态。调试断边、漏边或 evaluation request 不生效时，应同时检查 `VdfConnection`、`VdfInput`、`VdfOutput`、`VdfMask` 和 `VdfRequiredInputsPredicate`，而不是只看当前节点页面。</p>
+      <p class="en">`_DidAddInputConnection()` is a connection-change hook. Connection debugging usually involves `VdfConnection`, `VdfInput`, `VdfOutput`, masks, and required-input predicates together.</p>
+      <p class="zh">identity 和诊断方法属于图维护层。`_SetId()` 处理 network-local id，`_GetMemoryUsage()` 帮助估算节点和派生数据结构占用，`_IsDerivedEqual()` 参与派生节点等价判断。这些接口的意义偏向调试、统计、测试和网络内部一致性，而不是场景数据 authoring。</p>
+      <p class="en">Identity, equality, and memory-usage hooks support network bookkeeping, diagnostics, and tests rather than scene-authoring behavior.</p>
+      <p class="zh">与 OpenExec 的关系应理解为底层承载关系。Exec 或 ExecUsd 可以把上层 schema computation 映射为 Vdf 网络中的 node 和 edge，但 `VdfNode` 本身不理解 USD namespace、composition arcs、schema fallback 或 Hydra draw state。它只关心数据流图如何被声明、连接、请求和调度。</p>
+      <p class="en">OpenExec may map higher-level computations onto Vdf nodes and edges, but `VdfNode` itself remains a data-flow graph primitive.</p>
+      <p class="zh">常见误读包括：把 `VdfNode` 当成保存业务 value 的容器，把 input/output specs 当成当前帧数据，把 dependency mask 当成固定的全量依赖，把 protected hooks 当成普通应用代码应直接调用的 API。正确读法是：它定义 evaluation graph 的节点形状，值访问、具体计算和上层语义分别由 context、派生节点和 Exec/USD 层承担。</p>
+      <p class="en">Common misreads include treating the node as a value container, treating specs as runtime data, or calling protected graph-maintenance hooks from application code.</p>
       <h3>术语对照 / Terms</h3>
       <ul>
-        <li><span class="zh">节点身份：</span><span class="en">node identity</span></li>
-        <li><span class="zh">输入连接器：</span><span class="en">input connector</span></li>
-        <li><span class="zh">输出连接器：</span><span class="en">output connector</span></li>
-        <li><span class="zh">依赖边：</span><span class="en">dependency edge</span></li>
-        <li><span class="zh">计算回调：</span><span class="en">compute callback</span></li>
-        <li><span class="zh">脏标记：</span><span class="en">dirty marking</span></li>
+        <li><span class="zh">Vdf 数据流节点：</span><span class="en">Vdf data-flow node</span></li>
+        <li><span class="zh">网络归属：</span><span class="en">network ownership</span></li>
+        <li><span class="zh">输入/输出规格：</span><span class="en">input/output specs</span></li>
+        <li><span class="zh">命名端口：</span><span class="en">named ports</span></li>
+        <li><span class="zh">依赖掩码：</span><span class="en">dependency mask</span></li>
+        <li><span class="zh">必需输入请求：</span><span class="en">required input request</span></li>
+        <li><span class="zh">连接变化钩子：</span><span class="en">connection-change hook</span></li>
+        <li><span class="zh">图调度：</span><span class="en">graph scheduling</span></li>
       </ul>
-    </section>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
     <section data-cn-refinement="api-class-quality-pass-044">
       <h2>中文精修导读 / Chinese Reading Notes</h2>

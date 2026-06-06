@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-06T23:22:37.647Z",
+  "generated_at": "2026-06-06T23:34:35.069Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 385,
-    "bilingual_complete": 21
+    "bilingual_draft": 384,
+    "bilingual_complete": 22
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 374,
-    "good_bilingual": 21
+    "draft_needs_translation": 373,
+    "good_bilingual": 22
   },
   "focus_batch": [
     {
@@ -2570,29 +2570,29 @@
     },
     {
       "index": 60,
-      "title": "类参考草稿：VdfNode Class Reference abstract / VdfNode Class Reference abstract",
+      "title": "完整双语参考：VdfNode Class Reference abstract / VdfNode Class Reference abstract",
       "output": "full_site/api/class_vdf_node.html",
       "official_url": "https://openusd.org/release/api/class_vdf_node.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 76,
-      "enBlockCount": 58,
-      "zhChars": 1044,
-      "enLetters": 2416,
-      "bodyChineseChars": 1131,
+      "grade": "good_bilingual",
+      "zhBlockCount": 81,
+      "enBlockCount": 68,
+      "zhChars": 1574,
+      "enLetters": 3381,
+      "bodyChineseChars": 1657,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "`class_vdf_node.html` 是 `VdfNode` 抽象类参考页，适合从节点责任、输入输出注册、依赖边和图调度角度理解 Vdf 网络。它描述 execution graph 的结构单元，而不是 USD prim、Hydra prim 或 schema class。",
-        "`VdfNode` 是 data-flow network 的基础结构单元：节点把 input、output、dependency 和 computation boundary 组织在一起，供 Vdf evaluation 按图关系调度。",
-        "阅读类成员时，应把 node identity、input connector、output connector、dependency edge、compute callback 和 debugging hooks 分开看，避免把图结构与业务值语义混在一起。"
+        "`VdfNode` 解决的问题是：在 `VdfNetwork` 这样的 data-flow evaluation graph 中，用一个统一的抽象基类描述“一个可被调度的计算节点”。它不是 USD stage 上的 `UsdPrim`，也不是 Hydra render prim 或 schema class；它是执行图里的结构单元，负责声明输入、输出、依赖关系、网络身份和派生节点维护图结构所需的 protected hooks。",
+        "官方摘录说它是 “the base class for all nodes in a VdfNetwork”。这里的 “node” 应按 Vdf 数据流图理解：节点通过 input specs 和 output specs 暴露端口，通过 dependency mask 说明某个输出需要哪些输入，通过 network/id/ownership 信息被 `VdfNetwork` 管理。不要把这个 node 误读成 USD namespace 中的 prim，也不要把它直接等同于一次 evaluation 产生的 value。",
+        "公共查询接口的阅读重点是 node topology。`GetInput()`、`GetOutput()`、输入列表和输出列表帮助调用方或调试工具检查一个节点暴露了哪些 named ports；这些名称常用 `TfToken` 表示，应保留原样。若图中某个输出没有被计算，首先应核对端口名称、连接对象、required input request 和 dependency mask，而不是从 USD authoring 层寻找原因。"
       ],
       "sampleEn": [
-        "This second-pass refinement adds page-specific Chinese guidance for VdfNode while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.",
-        "node identity"
+        "`VdfNode` is the abstract base class for nodes in a `VdfNetwork`. It describes graph topology and scheduling-facing node structure rather than a scene description prim, render prim, or schema object.",
+        "The phrase “base class for all nodes in a VdfNetwork” should be read as data-flow graph terminology. Inputs, outputs, dependency masks, network ownership, and node identity are the key concepts on this page."
       ]
     },
     {
