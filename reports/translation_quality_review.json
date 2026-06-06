@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-06T22:23:58.141Z",
+  "generated_at": "2026-06-06T22:37:39.519Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 389,
-    "bilingual_complete": 17
+    "bilingual_draft": 388,
+    "bilingual_complete": 18
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 378,
-    "good_bilingual": 17
+    "draft_needs_translation": 377,
+    "good_bilingual": 18
   },
   "focus_batch": [
     {
@@ -2273,29 +2273,29 @@
     },
     {
       "index": 49,
-      "title": "类参考草稿：UsdPhysicsJoint Class / UsdPhysicsJoint Class",
+      "title": "完整双语参考：UsdPhysicsJoint Class / UsdPhysicsJoint Class",
       "output": "full_site/api/class_usd_physics_joint.html",
       "official_url": "https://openusd.org/release/api/class_usd_physics_joint.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 64,
-      "enBlockCount": 51,
-      "zhChars": 735,
-      "enLetters": 2156,
-      "bodyChineseChars": 810,
+      "grade": "good_bilingual",
+      "zhBlockCount": 48,
+      "enBlockCount": 50,
+      "zhChars": 1222,
+      "enLetters": 4144,
+      "bodyChineseChars": 1275,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 UsdPhysicsJoint Class Reference 补充中文优先的类职责、读取重点、关键属性/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`UsdPhysicsJoint` 用于约束 rigid bodies 的运动，可以连接两个 rigid bodies，也可以连接一个 rigid body 与 world。"
+        "本页已从草稿晋级为完整双语参考页。中文部分按官方 `UsdPhysicsJoint Class Reference` 的核心段落和成员分组解释物理关节 schema 的职责、关系目标、局部关节坐标系、启用/碰撞/断裂属性、articulation 参与边界，以及与具体物理求解器之间的责任分层；英文 API 名称、类名、方法名、属性名、token、类型名、链接和必要原文摘录保持原样，便于与官方 Doxygen 页面核对。",
+        "`UsdPhysicsJoint` 解决的问题是：在 USD scene description 中 author 一个用于约束 rigid bodies 运动的 physics schema prim。官方说明中的 “A joint constrains the movement of rigid bodies” 应按 schema 声明来读，它描述的是可交换、可组合的 USD 数据模型；真正的约束求解、稳定性、断裂事件和 articulation 初始化仍由下游 physics runtime 或导入器实现。",
+        "该 joint 可以连接两个 rigid bodies，也可以连接一个 rigid body 与 world。`CreateBody0Rel()` 和 `CreateBody1Rel()` author 的是 relationship targets，而不是把 body 对象复制进 joint。调试时应检查两个 relationship 是否指向带有相应 rigid-body schema/API 的 prim；如果只设置一端，另一端通常按 world 参考解释，但具体如何落到求解器坐标系需要看物理后端。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, reading guidance, key attribute/method groups, and terminology for UsdPhysicsJoint Class Reference while retaining English page names, class names, method names, attribute names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page has been promoted to a complete bilingual reference. The Chinese coverage explains the official UsdPhysicsJoint class reference around joint schema responsibility, relationship targets, local joint frames, enabled/collision/break attributes, articulation participation, and the boundary between USD authoring and physics solver behavior while preserving English API names and excerpts for comparison.",
+        "`UsdPhysicsJoint` authors a physics schema prim that constrains rigid-body motion in USD scene description. The official phrase “A joint constrains the movement of rigid bodies” describes the USD authoring schema, while actual constraint solving, stability, break events, and articulation initialization remain runtime responsibilities."
       ]
     },
     {

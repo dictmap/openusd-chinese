@@ -8610,3 +8610,46 @@ GitHub 同步：
 1. 继续真实晋级，不再刷 count-neutral 导读补强。
 2. 下一批优先核心页面：`full_site/api/class_usd_physics_joint.html` 或其他 406 清单内高价值核心 API 页。
 3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。
+
+## 第 312 轮：将 UsdPhysicsJoint 提升为完整双语
+已完成：
+
+- 将 `full_site/api/class_usd_physics_joint.html` 从 `bilingual_draft` 晋级为 `bilingual_complete`。
+- 页面标题改为“完整双语参考：UsdPhysicsJoint Class”，并移除通用 draft 文案和“后续迭代会继续补齐”等草稿标记。
+- 新增 `逐段双语理解 / Paragraph-Level Bilingual Coverage` 区块，覆盖：
+  - `UsdPhysicsJoint` 用于 author rigid-body joint constraints，但不等同于物理 runtime 求解结果。
+  - `CreateBody0Rel()` / `CreateBody1Rel()` 的 relationship target 语义，以及 one body + world 的后端解释边界。
+  - 默认 D6 joint、linear/angular degrees of freedom 与派生 physics joint schema 的关系。
+  - local joint frame 属性 `localPos0`、`localRot0`、`localPos1`、`localRot1` 与 world transform / `xformOp` 的边界。
+  - `jointEnabled`、`collisionEnabled`、`breakForce`、`breakTorque` 的 authoring 语义与求解器行为差异。
+  - `excludeFromArticulation` 对 articulation 构建的提示作用，以及 rigid body API、joint tree 和 runtime importer 的联动检查。
+  - `Define()`、`Get()`、`Create*Attr()`、`Create*Rel()` 的 OpenUSD schema wrapper 用法。
+- 更新 `reports/bilingual_completion_promotions.json/md`，新增 `round-312-usd-physics-joint`。
+- 更新 `reports/current_problem_audit.md/json`，将当前真实状态同步为 18 complete / 388 draft。
+- 重建 `openusd_bilingual_final.html`，总入口现在显示 18 complete / 388 incomplete drafts。
+
+分级变化：
+- `good_bilingual`：17 -> 18
+- `bilingual_complete`：17 -> 18
+- `bilingual_draft`：389 -> 388
+- `draft_needs_translation`：378 -> 377
+- `draft_template_only`：11 保持不变
+
+验证结果：
+- `discover_openusd_all_pages.mjs`：通过，`total_pages=406`，`promoted_complete_pages=10`。
+- `audit_openusd_translation_quality.mjs`：通过，`good_bilingual=18`，目标页 `grade=good_bilingual`。
+- `route_openusd_internal_links_local.mjs`：通过。
+- `audit_openusd_full_draft_preview.mjs`：通过，388/388 draft 页面可预览。
+- `audit_openusd_report_index.mjs`：通过。
+- `validate_openusd_api_repro.ps1`：通过，`required_check_count=288`，`failed_check_count=0`。
+- Node 直接解析 `reports/validation_report.json`：`bom=false`。
+
+GitHub 同步：
+
+- 本轮验证通过后将使用 `OpenUSD bilingual round 312: promote UsdPhysicsJoint complete` 同步本轮 HTML、报告和 `work.md`。
+
+下一轮目标：
+
+1. 继续真实晋级，不再刷 count-neutral 导读补强。
+2. 下一批优先核心页面：`full_site/api/class_usd_imaging_delegate.html` 或其他 406 清单内高价值核心 API 页。
+3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。

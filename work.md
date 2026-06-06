@@ -5002,3 +5002,46 @@
 1. 继续真实晋级，不再刷 count-neutral 导读补强。
 2. 下一批优先核心页面：`full_site/api/class_usd_physics_joint.html` 或其他 406 清单内高价值核心 API 页。
 3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。
+
+## 第 312 轮：将 UsdPhysicsJoint 提升为完整双语
+已完成：
+
+- 将 `full_site/api/class_usd_physics_joint.html` 从 `bilingual_draft` 晋级为 `bilingual_complete`。
+- 页面标题改为“完整双语参考：UsdPhysicsJoint Class”，并移除通用 draft 说明和“后续迭代会继续补齐”等草稿标记。
+- 新增 `逐段双语理解 / Paragraph-Level Bilingual Coverage` 区块，覆盖：
+  - `UsdPhysicsJoint` 作为 USD physics schema prim，用于描述 rigid-body joint constraints，而不是直接保证 runtime 求解行为。
+  - `CreateBody0Rel()` / `CreateBody1Rel()` author body relationship targets，且 one body + world 的解释依赖物理后端。
+  - 默认 D6 joint 的三轴 linear 和三轴 angular degrees of freedom 语义，以及它与派生 joint schema 的边界。
+  - `CreateLocalPos0Attr()`、`CreateLocalRot0Attr()`、`CreateLocalPos1Attr()`、`CreateLocalRot1Attr()` 表示两端 body 局部空间中的 joint frame，不是 world transform。
+  - `CreateJointEnabledAttr()`、`CreateCollisionEnabledAttr()`、`CreateBreakForceAttr()`、`CreateBreakTorqueAttr()` 的启用、碰撞和断裂阈值边界。
+  - `CreateExcludeFromArticulationAttr()` 对 articulation 构建的语义提示，以及 schema 数据与 runtime importer/solver 的职责分层。
+  - `Define()`、`Get()` 和 `Create*Attr()` / `Create*Rel()` 的 OpenUSD authoring 边界。
+- 更新 `reports/bilingual_completion_promotions.json/md`，新增 `round-312-usd-physics-joint`。
+- 更新 `reports/current_problem_audit.md/json`，将真实状态同步为 18 complete / 388 draft。
+- 重建 `openusd_bilingual_final.html`，总入口现在显示 18 complete / 388 incomplete drafts。
+
+分级变化：
+- `good_bilingual`：17 -> 18
+- `bilingual_complete`：17 -> 18
+- `bilingual_draft`：389 -> 388
+- `draft_needs_translation`：378 -> 377
+- `draft_template_only`：11 保持不变
+
+验证结果：
+- `discover_openusd_all_pages.mjs` 通过，范围稳定为 406，`promoted_complete_pages=10`。
+- `audit_openusd_translation_quality.mjs` 通过，确认 `good_bilingual=18`，目标页为 `grade=good_bilingual`。
+- `route_openusd_internal_links_local.mjs` 通过。
+- `audit_openusd_full_draft_preview.mjs` 通过，388/388 draft 页面可预览。
+- `audit_openusd_report_index.mjs` 通过。
+- `validate_openusd_api_repro.ps1` 通过，`required_check_count=288`，`failed_check_count=0`。
+- `reports/validation_report.json` 经 Node 解析确认 `bom=false`。
+
+当前差距：
+- 仍有 388 个 `bilingual_draft` 页面只是可检查草稿，不是完整翻译，其中 377 个仍为 `draft_needs_translation`。
+- 406 清单外的 Doxygen 目标仍会进入本地未覆盖占位页；这是当前 P1 浏览缺口。
+
+下一步目标：
+
+1. 继续真实晋级，不再刷 count-neutral 导读补强。
+2. 下一批优先核心页面：`full_site/api/class_usd_imaging_delegate.html` 或其他 406 清单内高价值核心 API 页。
+3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。

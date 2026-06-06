@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-06T22:23:43.826Z
+Generated: 2026-06-06T22:37:24.636Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 17
-- Promoted complete pages: 9
-- Bilingual draft pages: 389
+- Bilingual complete pages: 18
+- Promoted complete pages: 10
+- Bilingual draft pages: 388
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -66,7 +66,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_draft | 类参考草稿：UsdImagingNurbsPatchAdapter Class / UsdImagingNurbsPatchAdapter Class | full_site/api/class_usd_imaging_nurbs_patch_adapter.html | https://openusd.org/release/api/class_usd_imaging_nurbs_patch_adapter.html |
 | api | bilingual_draft | 类参考草稿：UsdLuxDiskLight Class / UsdLuxDiskLight Class | full_site/api/class_usd_lux_disk_light.html | https://openusd.org/release/api/class_usd_lux_disk_light.html |
 | api | bilingual_draft | 类参考草稿：UsdLuxShapingAPI Class / UsdLuxShapingAPI Class | full_site/api/class_usd_lux_shaping_a_p_i.html | https://openusd.org/release/api/class_usd_lux_shaping_a_p_i.html |
-| api | bilingual_draft | 类参考草稿：UsdPhysicsJoint Class / UsdPhysicsJoint Class | full_site/api/class_usd_physics_joint.html | https://openusd.org/release/api/class_usd_physics_joint.html |
+| api | bilingual_complete | https://openusd.org/release/api/class_usd_physics_joint.html | full_site/api/class_usd_physics_joint.html | https://openusd.org/release/api/class_usd_physics_joint.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_usd_prim.html | full_site/api/class_usd_prim.html | https://openusd.org/release/api/class_usd_prim.html |
 | api | bilingual_draft | 类参考草稿：UsdProcGenerativeProcedural Class / UsdProcGenerativeProcedural Class | full_site/api/class_usd_proc_generative_procedural.html | https://openusd.org/release/api/class_usd_proc_generative_procedural.html |
 | api | bilingual_draft | 类参考草稿：UsdSchemaRegistry Class / UsdSchemaRegistry Class | full_site/api/class_usd_schema_registry.html | https://openusd.org/release/api/class_usd_schema_registry.html |
