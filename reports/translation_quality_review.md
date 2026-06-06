@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-06T01:17:57.907Z
+Generated: 2026-06-06T01:33:09.600Z
 
 ## Summary
 
@@ -89,10 +89,10 @@ Generated: 2026-06-06T01:17:57.907Z
 | 23 | draft_needs_translation | bilingual_draft | 533 | 47/39 | 0 | 0 | `full_site/api/class_hd_st_render_pass_state.html` |
 | 24 | draft_needs_translation | bilingual_draft | 321 | 31/28 | 0 | 0 | `full_site/api/class_hd_task.html` |
 | 25 | draft_needs_translation | bilingual_draft | 312 | 25/22 | 0 | 0 | `full_site/api/class_hdx_pick_from_render_buffer_task.html` |
-| 26 | draft_needs_translation | bilingual_draft | 344 | 37/34 | 0 | 0 | `full_site/api/class_hgi_g_l_graphics_cmds.html` |
+| 26 | draft_needs_translation | bilingual_draft | 513 | 49/41 | 0 | 0 | `full_site/api/class_hgi_g_l_graphics_cmds.html` |
 | 27 | draft_needs_translation | bilingual_draft | 312 | 24/21 | 0 | 0 | `full_site/api/class_pcp_arc.html` |
 | 28 | draft_needs_translation | bilingual_draft | 375 | 29/26 | 0 | 0 | `full_site/api/class_pcp_error_unresolved_prim_path.html` |
-| 29 | draft_needs_translation | bilingual_draft | 365 | 27/24 | 0 | 0 | `full_site/api/class_pcp_property_index.html` |
+| 29 | draft_needs_translation | bilingual_draft | 602 | 39/31 | 0 | 0 | `full_site/api/class_pcp_property_index.html` |
 | 30 | draft_needs_translation | bilingual_draft | 413 | 40/37 | 0 | 0 | `full_site/api/class_sdf_children_view.html` |
 | 31 | draft_needs_translation | bilingual_draft | 584 | 52/44 | 0 | 0 | `full_site/api/class_sdf_layer.html` |
 | 32 | draft_needs_translation | bilingual_draft | 594 | 52/44 | 0 | 0 | `full_site/api/class_sdf_path.html` |
@@ -110,11 +110,11 @@ Generated: 2026-06-06T01:17:57.907Z
 | 44 | draft_needs_translation | bilingual_draft | 308 | 32/29 | 0 | 0 | `full_site/api/class_usd_imaging_adapter_registry.html` |
 | 45 | draft_needs_translation | bilingual_draft | 558 | 52/44 | 0 | 0 | `full_site/api/class_usd_imaging_delegate.html` |
 | 46 | draft_needs_translation | bilingual_draft | 320 | 33/30 | 0 | 0 | `full_site/api/class_usd_imaging_nurbs_patch_adapter.html` |
-| 47 | draft_needs_translation | bilingual_draft | 363 | 34/31 | 0 | 0 | `full_site/api/class_usd_lux_disk_light.html` |
-| 48 | draft_needs_translation | bilingual_draft | 385 | 40/37 | 0 | 0 | `full_site/api/class_usd_lux_shaping_a_p_i.html` |
+| 47 | draft_needs_translation | bilingual_draft | 591 | 46/38 | 0 | 0 | `full_site/api/class_usd_lux_disk_light.html` |
+| 48 | draft_needs_translation | bilingual_draft | 590 | 52/44 | 0 | 0 | `full_site/api/class_usd_lux_shaping_a_p_i.html` |
 | 49 | draft_needs_translation | bilingual_draft | 549 | 52/44 | 0 | 0 | `full_site/api/class_usd_physics_joint.html` |
 | 50 | draft_needs_translation | bilingual_draft | 584 | 52/44 | 0 | 0 | `full_site/api/class_usd_prim.html` |
-| 51 | draft_needs_translation | bilingual_draft | 371 | 34/31 | 0 | 0 | `full_site/api/class_usd_proc_generative_procedural.html` |
+| 51 | draft_needs_translation | bilingual_draft | 598 | 46/38 | 0 | 0 | `full_site/api/class_usd_proc_generative_procedural.html` |
 | 52 | draft_needs_translation | bilingual_draft | 489 | 52/44 | 0 | 0 | `full_site/api/class_usd_schema_registry.html` |
 | 53 | draft_needs_translation | bilingual_draft | 538 | 52/44 | 0 | 0 | `full_site/api/class_usd_shade_output.html` |
 | 54 | draft_needs_translation | bilingual_draft | 278 | 20/17 | 0 | 0 | `full_site/api/class_usd_skel_imaging_data_source_skeleton_prim.html` |

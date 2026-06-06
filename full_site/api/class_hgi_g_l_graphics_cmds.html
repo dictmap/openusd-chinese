@@ -54,6 +54,27 @@
         <li><span class="zh">后端实现：</span><span class="en">backend implementation</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-135">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`HgiGLGraphicsCmds` 是 `HgiGraphicsCmds` 的 OpenGL backend implementation，用来记录并提交 graphics command encoder 中的 draw、bind、viewport/scissor、constant values、memory barrier 和 debug group 操作。它位于 HgiGL 后端层，不是 Hydra scene delegate 或 USD schema。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HgiGLGraphicsCmds while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`BindPipeline()`、`BindResources()` 与 `BindVertexBuffers()` 负责把 GL pipeline、resource bindings 和 vertex buffer 状态装入当前 command stream；调用顺序会影响后续 `Draw()`。</span></li>
+        <li><span class="zh">`Draw()`、`DrawIndexed()`、`DrawIndirect()` 与 `DrawIndexedIndirect()` 对应不同 draw submission 形态；中文说明应保留 indexed / indirect 术语，便于区分 GPU 驱动路径。</span></li>
+        <li><span class="zh">`SetViewport()` 和 `SetScissor()` 是 rasterization state 的核心入口；它们描述 framebuffer 中的渲染区域，不是 USD camera aperture 或 Hydra task framing。</span></li>
+        <li><span class="zh">`InsertMemoryBarrier()`、`InsertFunctionOp()`、`PushDebugGroup()`、`PopDebugGroup()` 与 `InsertDebugMarker()` 面向 GPU 同步和调试标记，通常服务于 backend diagnostics。</span></li>
+        <li><span class="zh">`_Submit()` 表示命令最终提交到 GL 后端；`HgiGL` 作为 friend 说明生命周期由后端对象协调，而不是由应用层直接随意复用 command 对象。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">OpenGL 图形命令：</span><span class="en">HgiGLGraphicsCmds</span></li>
+        <li><span class="zh">图形管线绑定：</span><span class="en">BindPipeline()</span></li>
+        <li><span class="zh">资源绑定：</span><span class="en">BindResources()</span></li>
+        <li><span class="zh">索引绘制：</span><span class="en">DrawIndexed()</span></li>
+        <li><span class="zh">间接绘制：</span><span class="en">DrawIndirect()</span></li>
+        <li><span class="zh">内存屏障：</span><span class="en">InsertMemoryBarrier()</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

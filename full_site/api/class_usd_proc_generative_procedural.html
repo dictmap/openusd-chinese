@@ -54,6 +54,27 @@
         <li><span class="zh">场景描述契约：</span><span class="en">scene description contract</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-135">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`UsdProcGenerativeProcedural` 是抽象 typed schema，用来在 scene description 中声明一个 generative procedural 的系统归属和输入接口。它定义的是 USD 侧 contract：通过 `proceduralSystem` 和 `primvars:` namespace 传递配置，不负责执行、展开或缓存生成结果。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdProcGenerativeProcedural while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`proceduralSystem` 标识哪个 procedural runtime 或系统应解释该定义；`CreateProceduralSystemAttr()` 和 `GetProceduralSystemAttr()` 是本类最关键的属性访问入口。</span></li>
+        <li><span class="zh">英文摘录说明 procedural inputs 可由 `primvars:` namespace 下的 properties 或 relationships 表达；这让输入既可以是数值参数，也可以是指向 scene data 的关系。</span></li>
+        <li><span class="zh">`Define()` / `Get()` 仍然遵循 typed schema 的常规用法：创建或获取 schema wrapper，但不会加载具体 generator，也不会触发 procedural evaluation。</span></li>
+        <li><span class="zh">本类应和 renderer、Hydra task 或生成插件分开理解；consumer 可以选择识别 `proceduralSystem` 并执行生成，也可以只把它当作普通 scene description 数据。</span></li>
+        <li><span class="zh">`GetSchemaAttributeNames()`、`schemaKind` 与 `UsdSchemaRegistry` 说明 schema 属性来自注册定义；后续翻译应继续保留 `proceduralSystem` token 和 `primvars:` 前缀。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">生成式程序化 schema：</span><span class="en">UsdProcGenerativeProcedural</span></li>
+        <li><span class="zh">程序化系统：</span><span class="en">proceduralSystem</span></li>
+        <li><span class="zh">输入参数命名空间：</span><span class="en">primvars:</span></li>
+        <li><span class="zh">场景描述契约：</span><span class="en">scene description contract</span></li>
+        <li><span class="zh">程序化运行时：</span><span class="en">procedural runtime</span></li>
+        <li><span class="zh">抽象 typed schema：</span><span class="en">abstract typed schema</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

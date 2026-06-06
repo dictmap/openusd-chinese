@@ -54,6 +54,27 @@
         <li><span class="zh">IES 配光文件：</span><span class="en">IES file</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-135">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`UsdLuxShapingAPI` 是应用到 light prim 上的 API schema，用来表达 cone、focus 与 IES profile 等发光塑形控制。它补充灯光分布和边缘行为，不定义灯光几何本身；具体发光形状仍由 `UsdLuxDiskLight`、`UsdLuxSphereLight`、`UsdLuxRectLight` 等 typed schema 决定。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdLuxShapingAPI while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Apply()` 与 `CanApply()` 表示该 schema 通过 applied API 方式挂到 prim 上；阅读时要检查目标 prim 是否支持该 API，而不是只看是否存在同名属性。</span></li>
+        <li><span class="zh">`CreateShapingConeAngleAttr()`、`CreateShapingConeSoftnessAttr()`、`CreateShapingFocusAttr()` 和 `CreateShapingFocusTintAttr()` 对应锥形分布、边缘柔化、聚焦强度和聚焦色调。</span></li>
+        <li><span class="zh">`shaping:ies:file`、`shaping:ies:angleScale` 与 `shaping:ies:normalize` 用于 IES 配光文件工作流；它们影响光分布解释，不等同于替换 light color 或 exposure。</span></li>
+        <li><span class="zh">`ConnectableAPI()`、`CreateInput()` 和 `CreateOutput()` 暗示该 API 继承 connectable 语义；节点图连接需要保留 source name、typeName 与 render context 的区别。</span></li>
+        <li><span class="zh">`GetSchemaAttributeNames()` 可帮助生成工具列出 shaping 相关 token；在双语页面中应原样保留 `shaping:cone:*` 与 `shaping:ies:*`，便于直接对照 USD 文件。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">灯光塑形 API：</span><span class="en">UsdLuxShapingAPI</span></li>
+        <li><span class="zh">锥形角度：</span><span class="en">shaping:cone:angle</span></li>
+        <li><span class="zh">锥形柔化：</span><span class="en">shaping:cone:softness</span></li>
+        <li><span class="zh">聚焦染色：</span><span class="en">shaping:focusTint</span></li>
+        <li><span class="zh">IES 配光文件：</span><span class="en">shaping:ies:file</span></li>
+        <li><span class="zh">applied API schema：</span><span class="en">applied API schema</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

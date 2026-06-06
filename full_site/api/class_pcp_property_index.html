@@ -54,6 +54,27 @@
         <li><span class="zh">局部错误：</span><span class="en">local errors</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-135">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`PcpPropertyIndex` 是某个 property 的 composition index，用来列出所有按 composition semantics 对该 property 贡献 opinions 的 scene description sites。它描述组合来源和局部错误，不等同于最终 resolved value，也不只是单个 `SdfPropertySpec` 的容器。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for PcpPropertyIndex while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`GetPropertyRange()` 是遍历 property opinion 来源的主要入口；通常会配合 `PcpPropertyIterator` 理解强弱顺序、节点来源和组合图路径。</span></li>
+        <li><span class="zh">`GetNumLocalSpecs()` 只统计 local specs 数量，适合判断当前 layer stack 内部贡献；它不代表整个 composition graph 中全部远端 arc 的数量。</span></li>
+        <li><span class="zh">`GetLocalErrors()` 暴露局部组合错误；这些错误应与 prim index、layer stack 和 property path 一起诊断，不能只看最终值是否存在。</span></li>
+        <li><span class="zh">`IsEmpty()` 表示没有可用 property index 内容；空索引可能来自 property 不存在、没有 contributing sites 或组合失败后的过滤结果，需要结合调用上下文判断。</span></li>
+        <li><span class="zh">`Swap()` 支持高效交换索引内容；它是容器级操作，不改变 USD 文件中的 authored opinions，也不会重新计算 composition。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">属性组合索引：</span><span class="en">PcpPropertyIndex</span></li>
+        <li><span class="zh">属性意见来源：</span><span class="en">property opinions</span></li>
+        <li><span class="zh">场景描述站点：</span><span class="en">scene description sites</span></li>
+        <li><span class="zh">局部 specs：</span><span class="en">local specs</span></li>
+        <li><span class="zh">局部组合错误：</span><span class="en">local composition errors</span></li>
+        <li><span class="zh">属性迭代器：</span><span class="en">PcpPropertyIterator</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

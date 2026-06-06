@@ -3371,3 +3371,33 @@
 1. 继续最多 5 页，优先处理用户会实际引用的 UsdLux、UsdProc、HgiGL 与 Pcp class 页面。
 2. 建议下一组：`full_site/api/class_usd_lux_disk_light.html`、`full_site/api/class_usd_lux_shaping_a_p_i.html`、`full_site/api/class_usd_proc_generative_procedural.html`、`full_site/api/class_hgi_g_l_graphics_cmds.html`、`full_site/api/class_pcp_property_index.html`。
 3. 之后可继续 UsdLux、UsdProc、Hgi、Pcp、Hd、Vt 的高价值 class 页面，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+## 第 266 轮：UsdLux、UsdProc、HgiGL 与 Pcp class 页面补强
+
+- 基线：本地 `main` 基于上一轮同步提交 `b0949c0`，`origin/main` 一致，起始工作区干净；全量仍为 406 个 HTML 页面，质量计数为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。
+- 新增并执行 `scripts/refine_openusd_release_batch_135.mjs`，本轮标记为 `api-class-quality-pass-135`。
+- 严格只精修 5 页：
+  - `full_site/api/class_usd_lux_disk_light.html`
+  - `full_site/api/class_usd_lux_shaping_a_p_i.html`
+  - `full_site/api/class_usd_proc_generative_procedural.html`
+  - `full_site/api/class_hgi_g_l_graphics_cmds.html`
+  - `full_site/api/class_pcp_property_index.html`
+- 每页新增 5 条中文补强导读和 6 条术语对照；重点覆盖 `UsdLuxDiskLight` 的 one-sided disk emission、`radius` 与 -Z 发光方向，`UsdLuxShapingAPI` 的 applied API、`shaping:cone:*`、`shaping:ies:*` 与 connectable 语义，`UsdProcGenerativeProcedural` 的 `proceduralSystem`、`primvars:` 输入契约与非执行边界，`HgiGLGraphicsCmds` 的 OpenGL backend command encoder、pipeline/resource binding、draw variants 与 memory barrier，以及 `PcpPropertyIndex` 的 property composition sites、local specs、local errors 与 `PcpPropertyIterator` 访问模式；API 名称、类名、方法名、属性名、数学符号、template 参数、token 字面量和链接保持原样。
+- 质量回读：5 页均无 `TODO` / `待翻译` / `机器翻译占位`，`api-class-quality-pass-135` 均只出现 1 次：
+  - `class_usd_lux_disk_light.html`：中文字符 654，中文/英文块 46/38。
+  - `class_usd_lux_shaping_a_p_i.html`：中文字符 653，中文/英文块 52/44。
+  - `class_usd_proc_generative_procedural.html`：中文字符 661，中文/英文块 46/38。
+  - `class_hgi_g_l_graphics_cmds.html`：中文字符 576，中文/英文块 49/41。
+  - `class_pcp_property_index.html`：中文字符 665，中文/英文块 39/31。
+- 本轮分级计数保持不变：`draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因：处理对象开始前已属 `draft_needs_translation`，本轮是二次补强精修，不是从模板草稿晋级。
+- 已运行并通过：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1`；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步记录：本轮复验通过后使用 `OpenUSD bilingual round 266: usdlux usdproc hgi pcp class pass` 同步本轮 HTML、脚本、报告和 `work.md`；如果同步脚本失败，本轮不推送并先修复。
+
+当前差距：
+- 全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`；其中 387 页为 `draft_needs_translation`、11 页为 `draft_template_only`，`bilingual_draft` 仍不是完整翻译。
+- 剩余 `draft_template_only` 11 页基本是 `_source.html` 源码页、`search.html` 或目录页，继续低优先处理。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理仍较薄且用户会实际查阅的 Hydra/Hdx 与 Pcp class 页面。
+2. 建议下一组：`full_site/api/class_hdx_pick_from_render_buffer_task.html`、`full_site/api/class_pcp_arc.html`、`full_site/api/class_hd_task.html`、`full_site/api/class_hd_st_dispatch_buffer.html`、`full_site/api/class_pcp_error_unresolved_prim_path.html`。
+3. 之后可继续 Hdx、Pcp、HdSt、Hd、Vt 的高价值 class 页面，或按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。

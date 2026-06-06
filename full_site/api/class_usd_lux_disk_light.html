@@ -54,6 +54,27 @@
         <li><span class="zh">typed schema：</span><span class="en">typed schema</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-135">
+      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
+      <p class="zh">`UsdLuxDiskLight` 是描述圆盘单面发光的 typed light schema：圆盘中心位于 XY plane，并沿 -Z axis 发光。阅读本页时应把 `radius` 当作圆盘几何半径，把强度、颜色、曝光、归一化和 shaping 等通用灯光控制留给继承的 `UsdLuxBoundableLightBase`、`UsdLuxLightAPI` 或相关 API schema 对照。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdLuxDiskLight while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`CreateRadiusAttr()` 与 `GetRadiusAttr()` 是本类最直接的 authored attribute 入口；它们描述发光 disk 的半径，不是调节 illumination intensity 的属性。</span></li>
+        <li><span class="zh">`Define()` 会在指定 `UsdStage` / `SdfPath` 上创建或取得可定义的 typed prim；`Get()` 只是把已有 prim/path 包装为 `UsdLuxDiskLight`，不会隐式补齐缺失属性。</span></li>
+        <li><span class="zh">英文摘录强调 one-sided emission，因此 disk 的 local orientation 会影响光照方向；在 DCC 或 renderer 中排查黑面问题时，要同时检查 transform 与 -Z 发光约定。</span></li>
+        <li><span class="zh">`GetSchemaAttributeNames()` 有助于把本 schema 自有属性和继承属性分开；中文说明要保留 `radius` token，避免和 renderer-specific UI label 混淆。</span></li>
+        <li><span class="zh">`schemaKind`、`_GetSchemaKind()` 和 `UsdSchemaRegistry` 说明它是 registry 管理的 typed schema；不要把它理解成运行时 light object 或 renderer 插件。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">圆盘灯光 schema：</span><span class="en">UsdLuxDiskLight</span></li>
+        <li><span class="zh">单面发光：</span><span class="en">one-sided emission</span></li>
+        <li><span class="zh">圆盘半径：</span><span class="en">radius</span></li>
+        <li><span class="zh">局部 -Z 方向：</span><span class="en">-Z axis</span></li>
+        <li><span class="zh">typed prim 定义：</span><span class="en">Define()</span></li>
+        <li><span class="zh">schema 属性清单：</span><span class="en">GetSchemaAttributeNames()</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
