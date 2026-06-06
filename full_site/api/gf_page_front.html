@@ -54,6 +54,27 @@
         <li><span class="zh">调试输出：</span><span class="en">Debugging output</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-148">
+      <h2>中文二次索引补强 / Chinese Index-Focused Notes</h2>
+      <p class="zh">`Gf : Graphics Foundations` 是 OpenUSD 图形数学基础模块入口，适合作为查找 vector、matrix、quaternion、range、ray、bbox、plane、rotation 与数值 helper 的总索引。阅读本页时应先按 Linear Algebra、Basic Mathematical Operations、Basic Geometry 和 Debugging output 四类建立 mental map。</p>
+      <p class="en">This index-focused refinement adds page-specific Chinese guidance for Gf : Graphics Foundations while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">Linear Algebra 相关条目通常服务于 `UsdGeom`、Hydra 和 renderer 代码中的坐标、变换、范围和方向计算；API 名称中的 `Gf*` 类型应保持原样。</span></li>
+        <li><span class="zh">Basic Mathematical Operations 覆盖 clamp、lerp、比较、数值区间和浮点辅助函数，适合在追查几何计算误差或单位转换时作为入口。</span></li>
+        <li><span class="zh">Basic Geometry 包含 ray、plane、frustum、bbox、rotation、dual quaternion 等工具；这些类型经常和 transform stack、extent 以及 intersection testing 共同出现。</span></li>
+        <li><span class="zh">本页不是某个 class 的完整文档，而是模块导航页；若需要构造函数、operator 或精确数学语义，应继续跳到对应 `GfMatrix*`、`GfVec*`、`GfRange*` 等 class 页面。</span></li>
+        <li><span class="zh">调试输出相关条目帮助把数学对象格式化为可读文本；它们适合日志和诊断，不应被误读为序列化或 scene description schema。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">图形数学基础：</span><span class="en">Graphics Foundations</span></li>
+        <li><span class="zh">线性代数：</span><span class="en">Linear Algebra</span></li>
+        <li><span class="zh">基础数学操作：</span><span class="en">Basic Mathematical Operations</span></li>
+        <li><span class="zh">基础几何：</span><span class="en">Basic Geometry</span></li>
+        <li><span class="zh">包围盒：</span><span class="en">bounding box</span></li>
+        <li><span class="zh">调试输出：</span><span class="en">debugging output</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

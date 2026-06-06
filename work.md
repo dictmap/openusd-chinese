@@ -3783,3 +3783,36 @@
 1. 继续最多 5 页，优先处理仍较薄且用户会实际查阅的 API 模块入口、File List 与 File Members 索引页。
 2. 建议下一组：`full_site/api/gf_page_front.html`、`full_site/api/usd_mtlx_page_front.html`、`full_site/api/files.html`、`full_site/api/globals_v.html`、`full_site/api/globals_w.html`。
 3. 之后可继续按 `translation_quality_review` 选择用户可读价值高的 API/guide/class/group/release 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。
+## 第 279 轮：Gf、UsdMtlx、File List 与 File Members V/W 索引页补强
+
+已完成：
+
+- 复核当前仓库、远端与审计基线：本地 `main` 基于上一轮同步提交 `0c5b16a`，`origin/main` 一致，起始工作区干净；全量仍为 406 个 HTML 页面，质量计数为 `good_bilingual` 8、`draft_needs_translation` 387、`draft_template_only` 11。
+- 新增并执行 `scripts/refine_openusd_release_batch_148.mjs`，本轮标记为 `api-index-quality-pass-148`。
+- 严格只精修 5 页：
+  - `full_site/api/gf_page_front.html`
+  - `full_site/api/usd_mtlx_page_front.html`
+  - `full_site/api/files.html`
+  - `full_site/api/globals_v.html`
+  - `full_site/api/globals_w.html`
+- 每页新增 5 条中文索引导读和 6 条术语对照；重点覆盖 `Gf : Graphics Foundations` 的 Linear Algebra、Basic Mathematical Operations、Basic Geometry、debugging output 与 `Gf*` 类型导航，`UsdMtlx` 的 MaterialX file format、shader discovery、shader parsing plugin 和 MaterialX concepts 到 `UsdShade` / `Sdr` 的映射，`File List` 的 documented files、头文件路径、源码浏览页和模块入口导航，`globals_v.html` 的 Vdf vectorized dataflow 全局 symbol、connection/mask、data manager vector 与 utility 函数，`globals_w.html` 的 Work 并发限制、parallel loop、reduce、sort、detached task 和 scoped parallelism；API 名称、类名、函数名、变量名、头文件名、template 参数、token 字面量和链接保持原样。
+- 质量回读：5 页均无 `TODO` / `待翻译` / `机器翻译占位`，`api-index-quality-pass-148` 均只出现 1 次：
+  - `gf_page_front.html`：中文字符 591，中文/英文块 26/18。
+  - `usd_mtlx_page_front.html`：中文字符 531，中文/英文块 28/20。
+  - `files.html`：中文字符 617，中文/英文块 24/17。
+  - `globals_v.html`：中文字符 553，中文/英文块 25/17。
+  - `globals_w.html`：中文字符 564，中文/英文块 25/17。
+- 分级变化：计数保持不变，仍为 `draft_template_only` 11、`draft_needs_translation` 387、`good_bilingual` 8。原因是本轮对象开始前已属 `draft_needs_translation`，本轮是索引页二次补强精修，不是从模板草稿晋级。
+- 验证结果：`audit_openusd_translation_quality.mjs`、`route_openusd_internal_links_local.mjs`、`audit_openusd_full_draft_preview.mjs`、`audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1` 均已通过；链接路由 `files_changed=0`，398/398 draft 页面可预览，总验证 `PASSED`。
+- GitHub 同步记录：本轮复验通过后使用 `OpenUSD bilingual round 279: gf mtlx file index pass` 同步本轮 HTML、脚本、报告和 `work.md`；如果同步脚本失败，本轮不推送并先修复。
+
+当前差距：
+
+- 全量仍为 8 页 `good_bilingual`、398 页 `bilingual_draft`；其中 387 页为 `draft_needs_translation`、11 页为 `draft_template_only`，`bilingual_draft` 仍不是完整翻译。
+- 剩余 `draft_template_only` 11 页基本是 `_source.html` 源码页、`search.html` 或目录页，继续低优先处理。
+
+下一轮目标：
+
+1. 继续最多 5 页，优先处理当前质量队列中用户仍会实际浏览的 Class Members 函数/变量索引页。
+2. 建议下一组：`full_site/api/functions_func_d.html`、`full_site/api/functions_func_k.html`、`full_site/api/functions_vars_u.html`、`full_site/api/functions_vars_v.html`、`full_site/api/functions_func_o.html`。
+3. 之后可继续相邻 Class Members、File Members、module entry 或高价值 class 页面；继续低优先处理 `search.html`、目录页和 `_source.html` 源码页。

@@ -54,6 +54,27 @@
         <li><span class="zh">作用域并行控制：</span><span class="en">scoped parallelism</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-148">
+      <h2>中文二次索引补强 / Chinese Index-Focused Notes</h2>
+      <p class="zh">`globals_w.html` 是 File Members 的字母 `w` 索引页，摘录集中在 `Work` 并行和并发工具函数。它是定位 OpenUSD Work 库并行循环、reduce、sort、detached task 和 concurrency limit API 的入口。</p>
+      <p class="en">This index-focused refinement adds page-specific Chinese guidance for File Members : w while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`WorkGetConcurrencyLimit()`、`WorkGetPhysicalConcurrencyLimit()` 与 `WorkHasConcurrency()` 用于查询并发能力和限制，不负责实际启动任务。</span></li>
+        <li><span class="zh">`WorkParallelForEach()`、`WorkParallelForN()`、`WorkParallelForTBBRange()` 适合定位并行循环 helper；边界、grain size 和捕获变量安全性需要在调用点检查。</span></li>
+        <li><span class="zh">`WorkParallelReduceN()` 与 `WorkParallelSort()` 是 reduce 和 sort 方向的入口，适合与串行实现对照性能和结果稳定性。</span></li>
+        <li><span class="zh">`WorkRunDetachedTask()`、`WorkMoveDestroyAsync()` 和 scoped parallelism 相关头文件提示异步任务生命周期，需要谨慎处理对象所有权和同步。</span></li>
+        <li><span class="zh">本页按字母 `w` 汇总全局函数，不是 Work 库教程；要理解线程模型、TBB 依赖和异常传播，应继续阅读对应头文件或 developer guide。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Work 并行工具库：</span><span class="en">Work parallel utilities</span></li>
+        <li><span class="zh">并发限制：</span><span class="en">concurrency limit</span></li>
+        <li><span class="zh">并行循环：</span><span class="en">parallel loop</span></li>
+        <li><span class="zh">并行归约：</span><span class="en">parallel reduce</span></li>
+        <li><span class="zh">分离任务：</span><span class="en">detached task</span></li>
+        <li><span class="zh">作用域并行控制：</span><span class="en">scoped parallelism</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

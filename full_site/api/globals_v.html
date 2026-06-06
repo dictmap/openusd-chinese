@@ -54,6 +54,27 @@
         <li><span class="zh">masked output vector：</span><span class="en">masked output vector</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-148">
+      <h2>中文二次索引补强 / Chinese Index-Focused Notes</h2>
+      <p class="zh">`globals_v.html` 是 File Members 的字母 `v` 索引页，当前内容主要围绕 `Vdf` vectorized dataflow 的全局函数、类型别名和 utility。它适合从全局 symbol 反查 Vdf 数据流网络相关头文件。</p>
+      <p class="en">This index-focused refinement adds page-specific Chinese guidance for File Members : v while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Vdf_DataManagerVectorAllocate()` 和 `VdfDataManagerDeallocationMode` 与 data manager vector 的内存分配、释放策略相关，应和具体 data manager 页面或头文件一起读。</span></li>
+        <li><span class="zh">`VdfConnectionAndMask`、`VdfConnectionVector`、`VdfConnectionSet` 等类型说明连接集合和 mask 的容器形态，可和 `VdfNode`、`VdfInput`、`VdfOutput` 对照。</span></li>
+        <li><span class="zh">`VdfEmptyNodeCallback()`、`VdfGetAssociatedSourceOutput()`、`VdfGetMaskedOutputVectorNetwork()` 属于 helper / utility，常用于网络分析或默认行为处理。</span></li>
+        <li><span class="zh">`VdfEstimateSize()` 面向内存估算，`VdfByValueOrConstRef` 面向 template 参数传递策略，二者都属于底层实现阅读线索。</span></li>
+        <li><span class="zh">File Members 页只按字母列出 symbol；不要从索引页推断调用顺序、生命周期或线程安全性，具体语义仍需进入相关函数、class 或头文件页面。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">文件成员：</span><span class="en">File Members</span></li>
+        <li><span class="zh">Vdf 向量化数据流：</span><span class="en">Vdf vectorized dataflow</span></li>
+        <li><span class="zh">连接集合：</span><span class="en">connection collection</span></li>
+        <li><span class="zh">掩码：</span><span class="en">mask</span></li>
+        <li><span class="zh">内存估算：</span><span class="en">memory estimation</span></li>
+        <li><span class="zh">工具函数：</span><span class="en">utility function</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

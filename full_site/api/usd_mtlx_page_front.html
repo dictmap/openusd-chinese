@@ -54,6 +54,27 @@
         <li><span class="zh">文件格式插件：</span><span class="en">file format plugin</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-148">
+      <h2>中文二次索引补强 / Chinese Index-Focused Notes</h2>
+      <p class="zh">`UsdMtlx` 模块入口说明 MaterialX file format、shader discovery、shader parsing plugins 以及 MaterialX concepts 到 USD / UsdShade / Sdr 概念的映射。它是定位 MaterialX 文件如何进入 USD shading ecosystem 的阅读起点。</p>
+      <p class="en">This index-focused refinement adds page-specific Chinese guidance for UsdMtlx while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">Concept Mappings 小节应和 `UsdShadeInput`、`UsdShadeOutput`、`UsdShadeShader`、`UsdShadeNodeGraph`、`UsdShadeMaterial` 以及 `SdrShaderNode` 页面交叉阅读。</span></li>
+        <li><span class="zh">`input`、`output`、`node`、`nodedef`、`nodegraph`、`implementation` 等 MaterialX 术语不要翻译成新的 API 名称；中文只解释它们在 USD 侧对应什么对象。</span></li>
+        <li><span class="zh">file format plugin 负责让 MaterialX 文档作为 asset 或 layer 参与读取；shader discovery / parsing plugin 则服务于 Sdr registry 和 shader node 元数据。</span></li>
+        <li><span class="zh">几何绑定相关概念如 `geom`、`collection` 和 `material` 会触及 `UsdCollectionAPI` 与 `UsdShadeMaterialBindingAPI`，需要区分材质网络定义和绑定关系。</span></li>
+        <li><span class="zh">调试 MaterialX 导入问题时，通常要同时检查文件路径解析、node definition、implementation 选择、token 名称和 UsdShade connectable 属性。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">MaterialX 文件格式：</span><span class="en">MaterialX file format</span></li>
+        <li><span class="zh">着色器发现：</span><span class="en">shader discovery</span></li>
+        <li><span class="zh">着色器解析插件：</span><span class="en">shader parsing plugin</span></li>
+        <li><span class="zh">概念映射：</span><span class="en">Concept Mappings</span></li>
+        <li><span class="zh">节点定义：</span><span class="en">nodedef</span></li>
+        <li><span class="zh">材质绑定：</span><span class="en">material binding</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
