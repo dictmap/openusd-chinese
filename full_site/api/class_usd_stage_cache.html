@@ -75,6 +75,27 @@
         <li><span class="zh">stage 生命周期：</span><span class="en">stage lifetime</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-144">
+      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
+      <p class="zh">`UsdStageCache` 是强并发安全的 `UsdStageRefPtr` collection，用于在多个 clients 和 threads 之间共享 stage。典型用法是通过 `UsdStageCacheContext` 绑定 cache，再调用 `UsdStage::Open()` 查找或发布 stage。</p>
+      <p class="en">This third-pass refinement adds page-specific Chinese guidance for UsdStageCache while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdStageCache` 的强线程安全只覆盖构造和析构之外的操作；对象生命周期本身仍需要由调用方清晰管理。</span></li>
+        <li><span class="zh">`Find()`、`FindOneMatching()` 与 `FindAllMatching()` 按 cache key / matching criteria 查询 stage；如果有多个匹配项，应明确选择单个还是全部。</span></li>
+        <li><span class="zh">`Contains()`、`Insert()`、`Erase()`、`EraseAll()` 和 `Clear()` 管理 cache 内容，适合配合测试、长生命周期工具或多场景应用的资源回收策略。</span></li>
+        <li><span class="zh">`GetAllStages()` 适合诊断 cache 当前持有的 stages，但不应在性能敏感路径中当作常规查找机制。</span></li>
+        <li><span class="zh">`UsdStageCache` 不改变 stage composition 本身；它只是共享和复用 `UsdStage` 实例，stage 的 root layer、session layer、resolver context 和 load state 仍决定具体内容。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">舞台缓存：</span><span class="en">UsdStageCache</span></li>
+        <li><span class="zh">舞台强引用：</span><span class="en">UsdStageRefPtr</span></li>
+        <li><span class="zh">缓存上下文：</span><span class="en">UsdStageCacheContext</span></li>
+        <li><span class="zh">强线程安全：</span><span class="en">strongly thread safe</span></li>
+        <li><span class="zh">匹配查询：</span><span class="en">FindOneMatching()</span></li>
+        <li><span class="zh">全部舞台：</span><span class="en">GetAllStages()</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

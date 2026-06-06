@@ -75,6 +75,27 @@
         <li><span class="zh">prim 遍历：</span><span class="en">prim traversal</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-144">
+      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
+      <p class="zh">`UsdPrim` 是 `UsdStage` 上唯一持久的 scenegraph object，也是 USD 场景描述中 prim 的主要 API 入口。它聚合 attributes、relationships、variant sets、references、payloads、inherits、specializes、metadata 和 applied API schemas 等多种 scene description。</p>
+      <p class="en">This third-pass refinement adds page-specific Chinese guidance for UsdPrim while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdPrim` 是轻量 handle：`IsValid()`、`GetStage()`、`GetPath()` 与 `GetPrimIndex()` 帮助确认 handle 是否仍对应 stage 中的有效对象和 composition 结果。</span></li>
+        <li><span class="zh">`GetAttribute()` / `CreateAttribute()` 与 `GetRelationship()` / `CreateRelationship()` 处理 property 级对象；若只需要枚举，可结合 property predicate、property order 和 traversal helper 使用。</span></li>
+        <li><span class="zh">`GetVariantSets()`、`GetReferences()`、`GetPayloads()`、`GetInherits()` 与 `GetSpecializes()` 分别对应不同 composition arcs，调试强弱意见时不要把它们混为普通 metadata。</span></li>
+        <li><span class="zh">`ApplyAPI()`、`AddAppliedSchema()`、`HasAPI()` 与 schema registry 相关；它们影响 prim 上声明的 schema behavior，但不会自动保证所有相关 attributes 都已 author。</span></li>
+        <li><span class="zh">`IsActive()`、`IsLoaded()`、`IsDefined()`、`IsAbstract()`、model kind 和 type name 是不同维度的状态；遍历或过滤 prim 时应按实际任务选择谓词。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Prim 句柄：</span><span class="en">UsdPrim</span></li>
+        <li><span class="zh">舞台：</span><span class="en">UsdStage</span></li>
+        <li><span class="zh">组合弧：</span><span class="en">composition arc</span></li>
+        <li><span class="zh">变体集：</span><span class="en">variant sets</span></li>
+        <li><span class="zh">引用：</span><span class="en">references</span></li>
+        <li><span class="zh">应用型 API schema：</span><span class="en">applied API schema</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

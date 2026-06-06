@@ -75,6 +75,27 @@
         <li><span class="zh">路径语法：</span><span class="en">path syntax</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-144">
+      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
+      <p class="zh">`SdfPath` 是定位 layer 或 scenegraph 对象的路径值，可作为 `SdfLayer` 中的存储 key、scenegraph namespace identity，也可用于 relationship target 等引用。它区分 absolute path、relative path、prim path、property path、target path 和 variant selection path。</p>
+      <p class="en">This third-pass refinement adds page-specific Chinese guidance for SdfPath while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`AbsoluteRootPath()` 表示绝对根路径；相对路径通常相对于包含它的 prim 或 property 解释，不能直接当成 stage 绝对路径使用。</span></li>
+        <li><span class="zh">`AppendChild()`、`AppendProperty()`、`AppendTarget()`、`AppendVariantSelection()` 等方法会构造特定语法的 path element，比手写字符串更不容易破坏 USD path grammar。</span></li>
+        <li><span class="zh">`ContainsPropertyElements()`、`ContainsTargetPath()` 与 `ContainsPrimVariantSelection()` 可用于判断路径是否包含 property、relationship target 或 variant selection 语义。</span></li>
+        <li><span class="zh">`AppendElementString()` / `AppendElementToken()` 适合低层工具，但调用者必须理解 path element syntax；普通代码优先使用更具体的 append helper。</span></li>
+        <li><span class="zh">本页的 thread-safety 提示应与 `SdfPath` 的值对象语义一起理解：路径对象适合被广泛共享，但路径构造和全局路径表行为仍应遵循文档约束。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">路径值：</span><span class="en">SdfPath</span></li>
+        <li><span class="zh">绝对路径：</span><span class="en">absolute path</span></li>
+        <li><span class="zh">相对路径：</span><span class="en">relative path</span></li>
+        <li><span class="zh">属性路径：</span><span class="en">property path</span></li>
+        <li><span class="zh">目标路径：</span><span class="en">target path</span></li>
+        <li><span class="zh">变体选择：</span><span class="en">variant selection</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

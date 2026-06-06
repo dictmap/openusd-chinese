@@ -75,6 +75,27 @@
         <li><span class="zh">解析后的最终值：</span><span class="en">resolved value</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-144">
+      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
+      <p class="zh">`SdfLayer` 是 Sdf 层级的 scene description container，内容遵循 `SdfData` data model，并可通过 `ArAsset` / `ArResolver` 访问、序列化和解析。阅读本页时要把 layer 看成 composition 的基础存储单元，而不是已经完成合成的 `UsdStage` 视图。</p>
+      <p class="en">This third-pass refinement adds page-specific Chinese guidance for SdfLayer while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">一个 layer 可以是 anonymous / ephemeral，也可以是磁盘或资产系统中的持久文件；因此 `identifier`、resolved path、file format arguments 与 asset resolver 语义要分开理解。</span></li>
+        <li><span class="zh">`RootPrimsView` 与 `ApplyRootPrimOrder()` 关注 layer 内 root prim specs 的顺序和视图；它们处理的是当前 layer 的 authored specs，不等同于 stage 组合后的 prim 顺序。</span></li>
+        <li><span class="zh">`Apply()`、`CanApply()` 与 namespace edit / change list 相关，适合用于批量编辑前的合法性检查和应用；失败时通常需要查看 edit detail，而不是只看布尔返回值。</span></li>
+        <li><span class="zh">`Clear()` 会清空 layer 内容，`AddToMutedLayers()` 则影响全局 muted layer 机制；这两类操作都会影响 composition 结果，使用前应明确作用域和后续重载策略。</span></li>
+        <li><span class="zh">`SdfLayer` 的 API 面向低层 scene description 存储、遍历和序列化；如果需要看到 composed opinions、population mask 或 load rules，通常应转到 `UsdStage` 层理解。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">层：</span><span class="en">SdfLayer</span></li>
+        <li><span class="zh">场景描述容器：</span><span class="en">scene description container</span></li>
+        <li><span class="zh">层标识符：</span><span class="en">identifier</span></li>
+        <li><span class="zh">解析路径：</span><span class="en">resolved path</span></li>
+        <li><span class="zh">根 prim 视图：</span><span class="en">RootPrimsView</span></li>
+        <li><span class="zh">命名空间编辑：</span><span class="en">namespace edit</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

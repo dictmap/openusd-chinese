@@ -75,6 +75,27 @@
         <li><span class="zh">拓扑：</span><span class="en">topology</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-144">
+      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
+      <p class="zh">`UsdGeomMesh` 表示带可选 subdivision properties 和特征的 point-based primitive。它使用 `points`、`faceVertexCounts` 与 `faceVertexIndices` 描述面片连接关系，并通过 subdivision scheme、creases、corners、holes 和 interpolation 相关属性控制细分与显示语义。</p>
+      <p class="en">This third-pass refinement adds page-specific Chinese guidance for UsdGeomMesh while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`faceVertexCounts` 给出每个 face 的 face-vertex 数量，`faceVertexIndices` 则引用 `points` 数组；两者长度和索引范围不一致会直接破坏 mesh topology。</span></li>
+        <li><span class="zh">英文摘录强调避免混用 vertex 与 point：USD mesh 以 points 为几何点数组，face-vertices 是面中引用 points 的索引位置。</span></li>
+        <li><span class="zh">`CreateSubdivisionSchemeAttr()`、`CreateInterpolateBoundaryAttr()`、`CreateFaceVaryingLinearInterpolationAttr()` 与 `CreateTriangleSubdivisionRuleAttr()` 共同影响 subdivision surface 解释。</span></li>
+        <li><span class="zh">`CreateCreaseIndicesAttr()`、`CreateCreaseLengthsAttr()`、`CreateCreaseSharpnessesAttr()` 以及 corner/hole 相关属性用于表达 creases、corners 和 holes 等细分特征。</span></li>
+        <li><span class="zh">`Define()` 和 `Get()` 是 schema wrapper 的常用入口：前者在 stage 上 author typed prim，后者只获取已有 prim 的 typed schema view。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">网格：</span><span class="en">UsdGeomMesh</span></li>
+        <li><span class="zh">点数组：</span><span class="en">points</span></li>
+        <li><span class="zh">面顶点计数：</span><span class="en">faceVertexCounts</span></li>
+        <li><span class="zh">面顶点索引：</span><span class="en">faceVertexIndices</span></li>
+        <li><span class="zh">细分方案：</span><span class="en">subdivisionScheme</span></li>
+        <li><span class="zh">锐边/折痕：</span><span class="en">creases</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
