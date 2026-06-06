@@ -74,6 +74,27 @@
         <li><span class="zh">schema 跳转目标：</span><span class="en">schema jump target</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-159">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`functions_func_v.html` 是 Class Members 函数索引的 V 字母段，聚合 validate/validation、value、vector、Vdf 执行数据访问、USD attribute validation 和 CLI validator 等入口。它是导航页，具体函数签名和行为仍要进入目标 class 页面确认。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Class Members - Functions - V while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdValidationContext`、`UsdValidationValidator`、`UsdAttributeLimits`、`UsdAttributeLimits::ValidationResult` 和 CLI `Validator` 形成 validation 相关阅读线索。</span></li>
+        <li><span class="zh">`UsdGeomMesh`、`UsdGeomSubset`、`UsdGeomPrimvar`、`UsdCollectionAPI`、`UsdSkelBindingAPI`、`UsdSkelBlendShape` 等高层 API 条目应按 schema 语境继续跳转。</span></li>
+        <li><span class="zh">`Vdf_VectorAccessor&lt;T&gt;`、`Vdf_VectorImplCompressed&lt;TYPE&gt;`、`Vdf_VectorImplContiguous&lt;TYPE&gt;`、`Vdf_VectorSubrangeAccessor&lt;T&gt;` 等条目偏 Vdf 底层向量存储和执行数据访问。</span></li>
+        <li><span class="zh">`value` 或 `validate` 开头的函数名称不能脱离所属 class 解读；相同前缀在 Usd、Sdf、Vdf、CLI 中可能表示完全不同的职责。</span></li>
+        <li><span class="zh">本页和 `functions_v.html`、`functions_vars_v.html` 需要区分：当前页只列 class member functions，变量或综合成员索引在其他页。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">V 段函数索引：</span><span class="en">V-section function index</span></li>
+        <li><span class="zh">验证入口：</span><span class="en">validation entry</span></li>
+        <li><span class="zh">属性限制：</span><span class="en">attribute limits</span></li>
+        <li><span class="zh">向量访问器：</span><span class="en">vector accessor</span></li>
+        <li><span class="zh">执行数据管理：</span><span class="en">execution data management</span></li>
+        <li><span class="zh">CLI 校验器：</span><span class="en">CLI validator</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

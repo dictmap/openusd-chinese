@@ -54,6 +54,27 @@
         <li><span class="zh">舞台度量：</span><span class="en">Stage Metrics</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-159">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`usd_geom_page_front.html` 是 `UsdGeom` 几何 schema 入口，覆盖 imageable prim、xform stack、gprim、point instancer、camera、model API、primvars、purpose、坐标系、线性代数、速度采样和 stage metrics。它用于交换几何 scene description，而不是某个 DCC 或 renderer 的专用几何实现。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdGeom: USD Geometry Schema while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdGeomImageable` 是可见/可渲染 prim 的基础入口，`purpose`、visibility 和 bounds 等概念通常从这里开始查。</span></li>
+        <li><span class="zh">`UsdGeomXformable` 管 xform ops 与 transform stack，`UsdGeomXformOp` 和 `GfMatrix4d` 是阅读矩阵、顺序和局部/世界变换时的关键链接。</span></li>
+        <li><span class="zh">`UsdGeomGprim` 统摄 `UsdGeomMesh`、`UsdGeomBasisCurves`、`UsdGeomPoints`、`UsdGeomCube`、`UsdGeomSphere` 等几何 primitive；具体 topology 和属性仍要进入对应 class。</span></li>
+        <li><span class="zh">`UsdGeomPrimvar` 与 `UsdGeomPrimvarsAPI` 是 primvars 主线，适合理解 primitive variables 如何随 interpolation、element size 和 typed value 绑定到几何上。</span></li>
+        <li><span class="zh">Stage up axis、linear units、orientation、winding order、normals 和 velocity samples 是跨工具交换几何时最容易出错的边界，中文导读只补充阅读顺序，API 名称保持原样。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">几何 schema：</span><span class="en">geometry schema</span></li>
+        <li><span class="zh">可显示对象：</span><span class="en">imageable prim</span></li>
+        <li><span class="zh">变换栈：</span><span class="en">transform stack</span></li>
+        <li><span class="zh">几何 primitive：</span><span class="en">geometric primitive</span></li>
+        <li><span class="zh">primitive variables：</span><span class="en">primvars</span></li>
+        <li><span class="zh">舞台度量：</span><span class="en">stage metrics</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

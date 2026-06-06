@@ -75,6 +75,27 @@
         <li><span class="zh">视口工作流：</span><span class="en">viewport workflow</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-159">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`hdx_page_front.html` 是 `Hdx` Hydra extensions 入口，位于 `Hd` 核心抽象和具体 renderer implementation 之间。它提供常用 imaging tasks、selection/picking、render setup、shadow、simple light、present/color correction 以及 `HdxTaskController` 等应用层辅助。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Hdx : Hydra extensions while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`HdxRenderTask`、`HdxSelectionTask`、`HdxShadowTask`、`HdxSimpleLightTask` 等 task 适合从 viewport 或 usdview 类工作流理解，而不是当成 schema class 阅读。</span></li>
+        <li><span class="zh">`HdxTaskController` 用于组织 task params 和 task 顺序，减少客户端直接管理多个 Hydra task 的负担。</span></li>
+        <li><span class="zh">如果要理解 scene data 如何进入 Hydra，应先读 `HdSceneDelegate`、`HdSceneIndex`、`HdRenderIndex`；`Hdx` 更偏 task/controller 层。</span></li>
+        <li><span class="zh">`HdxPickTask`、selection 和 colorize 相关类型常用于交互式视口调试，和离线渲染输出或 asset authoring 不是同一层问题。</span></li>
+        <li><span class="zh">`Hdx`、`HdSt`、`HdStorm`、`Hio` 需要分开：`Hdx` 组织扩展 task，`HdSt/HdStorm` 实现渲染后端，`Hio` 负责资源 I/O。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Hydra 扩展：</span><span class="en">Hydra extensions</span></li>
+        <li><span class="zh">成像任务：</span><span class="en">imaging task</span></li>
+        <li><span class="zh">任务控制器：</span><span class="en">task controller</span></li>
+        <li><span class="zh">选择任务：</span><span class="en">selection task</span></li>
+        <li><span class="zh">拾取任务：</span><span class="en">picking task</span></li>
+        <li><span class="zh">视口工作流：</span><span class="en">viewport workflow</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

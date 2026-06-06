@@ -55,6 +55,27 @@
         <li><span class="zh">关节系统根：</span><span class="en">Articulation Root</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-159">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`usd_physics_page_front.html` 是 `UsdPhysics` 物理 schema 入口，描述刚体、碰撞、质量、材质、关节、articulation root、physics scene 和单位参数等可交换物理 scene description。它定义 authoring 语义，不等同于具体 physics solver 实现。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdPhysics: USD Physics Schema while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdPhysicsScene` 管场景级物理设置，单位相关内容需结合 `metersPerUnit`、`timeCodesPerSecond`、`kilogramsPerUnit` 与 `UsdPhysicsGetStageKilogramsPerUnit()` 阅读。</span></li>
+        <li><span class="zh">`UsdPhysicsRigidBodyAPI`、`UsdPhysicsMassAPI`、`UsdPhysicsCollisionAPI`、`UsdPhysicsMeshCollisionAPI`、`UsdPhysicsMaterialAPI` 分别覆盖运动主体、质量、碰撞、网格碰撞近似和物理材质。</span></li>
+        <li><span class="zh">`UsdPhysicsArticulationRootAPI` 与各类 `UsdPhysicsJoint` 共同描述关节系统；joint reference frames、jointed bodies 和 filtering 是 authoring 重点。</span></li>
+        <li><span class="zh">碰撞几何常与 `UsdGeomGprim`、`UsdGeomMesh`、`UsdGeomSubset`、`UsdCollectionAPI` 和 `UsdShadeMaterialBindingAPI` 相邻阅读，因为物理材质和碰撞分组需要跨模块表达。</span></li>
+        <li><span class="zh">本页强调最小公共刚体物理概念；高级 solver 参数、引擎特定约束或动态仿真行为需要查看具体 runtime/plugin 文档。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">物理 schema：</span><span class="en">physics schema</span></li>
+        <li><span class="zh">刚体 API：</span><span class="en">rigid body API</span></li>
+        <li><span class="zh">碰撞 API：</span><span class="en">collision API</span></li>
+        <li><span class="zh">质量属性：</span><span class="en">mass properties</span></li>
+        <li><span class="zh">物理材质：</span><span class="en">physics material</span></li>
+        <li><span class="zh">关节参考系：</span><span class="en">joint reference frame</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

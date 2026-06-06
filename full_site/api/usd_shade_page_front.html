@@ -55,6 +55,27 @@
         <li><span class="zh">材质绑定：</span><span class="en">Material Binding</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-159">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`usd_shade_page_front.html` 是 `UsdShade` 着色 schema 入口，描述 `UsdShadeNodeGraph`、`UsdShadeMaterial`、`UsdShadeShader`、connectability rules、input/output dataflow、shader definition discovery 和 material binding。它负责材质网络表达，不实现 renderer shader 执行。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdShade: USD Shading Schema while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdShadeNodeGraph` 组织可复用 shading network，`UsdShadeMaterial` 提供可绑定到几何的材质接口，`UsdShadeShader` 表示具体 shader prim。</span></li>
+        <li><span class="zh">`UsdShadeConnectableAPI`、`UsdShadeInput`、`UsdShadeOutput` 和 `UsdAttribute` connections 是连接机制核心；input value 与 valid shader connection 的优先级需要按页面规则阅读。</span></li>
+        <li><span class="zh">Encapsulation and Sharing 说明 container 如何暴露参数、内部 shader network 如何封装，以及哪些对象能作为 connectable endpoints。</span></li>
+        <li><span class="zh">`SdrRegistry`、`SdrShaderNode`、`SdrShaderProperty` 与 `UsdShadeShaderDefParserPlugin` 解释 shader definition discovery；这和 authored material network 是两个层次。</span></li>
+        <li><span class="zh">`UsdShadeMaterialBindingAPI` 是几何材质绑定主线，应结合 `UsdGeom` 和 collection binding 阅读，而不是把 binding 当成 shader node 内部连接。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">着色 schema：</span><span class="en">shading schema</span></li>
+        <li><span class="zh">材质网络：</span><span class="en">material network</span></li>
+        <li><span class="zh">节点图：</span><span class="en">node graph</span></li>
+        <li><span class="zh">可连接 API：</span><span class="en">connectable API</span></li>
+        <li><span class="zh">接口连接：</span><span class="en">interface connection</span></li>
+        <li><span class="zh">材质绑定：</span><span class="en">material binding</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
