@@ -75,6 +75,27 @@
         <li><span class="zh">属性变更处理：</span><span class="en">ProcessPropertyChange()</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-143">
+      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
+      <p class="zh">`UsdImagingNurbsPatchAdapter` 为 `UsdGeomNurbsPatch` 提供 USD Imaging delegate support。它负责把 NURBS patch 的 points、topology、subprim data、variability 和 invalidation 传递给 Hydra，而不是把 NURBS 曲面转换成最终渲染网格的唯一实现点。</p>
+      <p class="en">This third-pass refinement adds page-specific Chinese guidance for UsdImagingNurbsPatchAdapter while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`GetPoints()` 与 `GetTopology()` 是几何数据查询的核心入口，分别对应控制点数据和 `UsdGeomNurbsPatch` 拓扑描述。</span></li>
+        <li><span class="zh">`Populate()` 将 USD prim 引入 render index / cache 流程；如果 prim 没有进入成像结果，应同时检查 `IsSupported()`、路径和可见性过滤。</span></li>
+        <li><span class="zh">`TrackVariability()` 记录哪些属性会随时间变化，`ProcessPropertyChange()` 决定属性变更触发的 dirty bits 或重新同步范围。</span></li>
+        <li><span class="zh">`GetImagingSubprims()`、`GetImagingSubprimType()` 与 `GetImagingSubprimData()` 说明该 adapter 支持通过 imaging subprim 机制暴露更细粒度的数据。</span></li>
+        <li><span class="zh">`InvalidateImagingSubprim()` 用于数据源式失效传播；它应与 `HdDataSourceLocatorSet` 一起理解，而不是只看传统 dirty bit 语义。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">NURBS patch 适配器：</span><span class="en">UsdImagingNurbsPatchAdapter</span></li>
+        <li><span class="zh">控制点：</span><span class="en">points</span></li>
+        <li><span class="zh">拓扑：</span><span class="en">topology</span></li>
+        <li><span class="zh">成像子 prim：</span><span class="en">imaging subprim</span></li>
+        <li><span class="zh">可变性跟踪：</span><span class="en">TrackVariability()</span></li>
+        <li><span class="zh">属性变更处理：</span><span class="en">ProcessPropertyChange()</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

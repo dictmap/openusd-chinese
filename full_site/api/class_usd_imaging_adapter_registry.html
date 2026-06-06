@@ -75,6 +75,27 @@
         <li><span class="zh">singleton 注册表：</span><span class="en">TfSingleton</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-143">
+      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
+      <p class="zh">`UsdImagingAdapterRegistry` 是 USD Imaging 侧的 adapter factory registry，用来根据 prim type 或 API schema 构造对应的 imaging adapter。它登记的是 factories 而不是 adapter instances；实际 adapter 通常还需要结合 per-stage data、render index 和 delegate 生命周期管理。</p>
+      <p class="en">This third-pass refinement adds page-specific Chinese guidance for UsdImagingAdapterRegistry while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`GetInstance()` 暗示该 registry 以 singleton 方式使用，调用者通常先查询是否存在 adapter，再通过构造函数族创建具体对象。</span></li>
+        <li><span class="zh">`ConstructAdapter()` 面向 prim adapter，`ConstructAPISchemaAdapter()` 面向 applied API schema adapter；两者都属于工厂入口，不应误解为长期缓存的 adapter 实例。</span></li>
+        <li><span class="zh">`GetAdapterKeys()` 与 `GetAPISchemaAdapterKeys()` 适合用于调试当前注册表覆盖了哪些 prim type 或 API schema type，也可帮助定位 plugin discovery 是否生效。</span></li>
+        <li><span class="zh">`HasAdapter()` 与 `HasAPISchemaAdapter()` 是轻量能力查询；在 fallback 路径中应先查询，再决定是否走默认 adapter 或忽略某类 schema。</span></li>
+        <li><span class="zh">`AreExternalPluginsEnabled()` 与外部插件发现有关；当自定义 imaging adapter 未被使用时，要同时检查 plugin metadata、加载路径和该开关状态。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">成像适配器注册表：</span><span class="en">UsdImagingAdapterRegistry</span></li>
+        <li><span class="zh">Prim 适配器：</span><span class="en">PrimAdapter</span></li>
+        <li><span class="zh">API schema 适配器：</span><span class="en">APISchemaAdapter</span></li>
+        <li><span class="zh">适配器工厂：</span><span class="en">adapter factory</span></li>
+        <li><span class="zh">外部插件发现：</span><span class="en">external plugin discovery</span></li>
+        <li><span class="zh">单例注册表：</span><span class="en">singleton registry</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

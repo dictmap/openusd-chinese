@@ -75,6 +75,27 @@
         <li><span class="zh">内存屏障：</span><span class="en">InsertMemoryBarrier()</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-143">
+      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
+      <p class="zh">`HgiGLGraphicsCmds` 是 `HgiGraphicsCmds` 的 OpenGL backend implementation。它把跨后端 Hgi graphics command abstraction 映射到 OpenGL 的 pipeline binding、resource binding、vertex buffer binding、draw call、debug marker 和 memory barrier 操作。</p>
+      <p class="en">This third-pass refinement adds page-specific Chinese guidance for HgiGLGraphicsCmds while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`BindPipeline()`、`BindResources()` 与 `BindVertexBuffers()` 建立 draw call 前的 GL 状态；排查渲染异常时应先确认 pipeline、descriptor/resource 和 vertex layout 是否匹配。</span></li>
+        <li><span class="zh">`Draw()`、`DrawIndexed()`、`DrawIndirect()` 与 `DrawIndexedIndirect()` 覆盖普通与 indirect draw 路径；indirect 版本还依赖 command buffer / draw buffer 数据布局。</span></li>
+        <li><span class="zh">`SetViewport()` 与 `SetScissor()` 是光栅化区域控制入口，常见问题包括 viewport 与 framebuffer 尺寸不一致、scissor 裁剪掉结果。</span></li>
+        <li><span class="zh">`InsertMemoryBarrier()` 处理 GL memory visibility；当同一帧内先写 buffer/texture 再读时，缺失 barrier 可能导致后续 draw 看到旧数据。</span></li>
+        <li><span class="zh">`PushDebugGroup()`、`PopDebugGroup()` 与 `InsertDebugMarker()` 主要服务 GPU 调试和 frame capture；`_Submit()` 则把记录好的 commands 提交到后端执行。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">OpenGL 图形命令：</span><span class="en">HgiGLGraphicsCmds</span></li>
+        <li><span class="zh">管线绑定：</span><span class="en">BindPipeline()</span></li>
+        <li><span class="zh">资源绑定：</span><span class="en">BindResources()</span></li>
+        <li><span class="zh">顶点缓冲绑定：</span><span class="en">BindVertexBuffers()</span></li>
+        <li><span class="zh">间接绘制：</span><span class="en">indirect draw</span></li>
+        <li><span class="zh">内存屏障：</span><span class="en">memory barrier</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

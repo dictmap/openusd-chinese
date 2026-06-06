@@ -75,6 +75,27 @@
         <li><span class="zh">stage 全局上下文：</span><span class="en">UsdImagingDataSourceStageGlobals</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-class-quality-pass-143">
+      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
+      <p class="zh">`UsdSkelImagingDataSourceSkeletonPrim` 是 UsdSkel `Skeleton` prim 的 Hydra data source wrapper。它把 skeleton prim 暴露为 `HdContainerDataSource` 风格的结构，使 scene index / Hydra 查询路径可以按名称获取骨架相关数据。</p>
+      <p class="en">This third-pass refinement adds page-specific Chinese guidance for UsdSkelImagingDataSourceSkeletonPrim while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`GetNames()` 返回该 container 下可查询的数据名；调试缺失骨架数据时，先看名称集合是否包含预期 locator，再看具体 `Get()` 结果。</span></li>
+        <li><span class="zh">`Get()` 根据 `TfToken` 名称返回对应 `HdDataSourceBase`，它是按需查询入口，不等同于一次性展开所有 skeleton 数据。</span></li>
+        <li><span class="zh">该类属于 data source 层，而不是 skinning solver；它负责把 USD skeleton prim 信息组织给 Hydra，并不直接执行关节矩阵求解或 mesh deformation。</span></li>
+        <li><span class="zh">构造参数中的 `UsdPrim`、`SdfPath` 与 `UsdImagingDataSourceStageGlobals` 共同确定数据来自哪个 stage、哪个 prim 以及当前成像上下文。</span></li>
+        <li><span class="zh">阅读时应把 `UsdImagingDataSourcePrim`、`HdContainerDataSource` 与 `HdDataSourceLocatorSet` 一起理解：前者包装 USD prim，后两者定义 Hydra 数据访问和失效定位语义。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">骨架 prim 数据源：</span><span class="en">skeleton prim data source</span></li>
+        <li><span class="zh">Hydra 容器数据源：</span><span class="en">HdContainerDataSource</span></li>
+        <li><span class="zh">数据源名称集合：</span><span class="en">GetNames()</span></li>
+        <li><span class="zh">按名查询数据源：</span><span class="en">Get()</span></li>
+        <li><span class="zh">场景索引定位器：</span><span class="en">HdDataSourceLocator</span></li>
+        <li><span class="zh">舞台全局上下文：</span><span class="en">UsdImagingDataSourceStageGlobals</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
