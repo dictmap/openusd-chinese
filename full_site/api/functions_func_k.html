@@ -53,6 +53,27 @@
         <li><span class="zh">元数据变化：</span><span class="en">metadata change</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-members-index-quality-pass-149">
+      <h2>中文二次索引补强 / Chinese Index-Focused Notes</h2>
+      <p class="zh">`functions_func_k.html` 是 Class Members 函数索引的 K 段，页面很短，但仍连接到 `SdfChildrenView` 和 `SdfNotice::LayerInfoDidChange`。它的价值在于快速发现 K 开头成员背后的 Sdf children view 与 notice 机制。</p>
+      <p class="en">This index-focused refinement adds page-specific Chinese guidance for Class Members - Functions - K while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`SdfChildrenView` 是 view-style API，常用于遍历 layer / spec 下的 children；阅读时要关注 owner 生命周期、predicate 和 adapter，而不是把它当成拥有数据的容器。</span></li>
+        <li><span class="zh">`SdfNotice::LayerInfoDidChange` 属于 notice / observer 体系，提示 layer info 或 metadata 变化；它更偏事件通知，不是普通属性读取函数。</span></li>
+        <li><span class="zh">K 段条目少并不代表对应 API 不重要；短索引页常用于补齐字母导航，仍应保留本地链接和官方原页入口。</span></li>
+        <li><span class="zh">若从这里进入 notice 页面，应继续检查通知触发条件、监听者注册和回调线程边界。</span></li>
+        <li><span class="zh">若从这里进入 children view 页面，应继续检查 `begin()` / `end()`、`size()`、predicate filtering 和 adapter 转换语义。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">K 段函数索引：</span><span class="en">K function index</span></li>
+        <li><span class="zh">子项视图：</span><span class="en">children view</span></li>
+        <li><span class="zh">通知体系：</span><span class="en">notice system</span></li>
+        <li><span class="zh">观察者：</span><span class="en">observer</span></li>
+        <li><span class="zh">谓词过滤：</span><span class="en">predicate filtering</span></li>
+        <li><span class="zh">适配器转换：</span><span class="en">adapter conversion</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
