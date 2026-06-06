@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：UsdValidationError Class / UsdValidationError Class</title>
+  <title>完整双语参考：UsdValidationError Class / UsdValidationError Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,55 +24,50 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：UsdValidationError Class / UsdValidationError Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：UsdValidationError Class / UsdValidationError Class</h1>
     <div class="meta">https://openusd.org/release/api/class_usd_validation_error.html</div>
   </header>
   <main>
     <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <h2>完成说明 / Completion Note</h2>
+      <p class="zh">本页已从草稿晋级为完整双语参考页。中文层逐段覆盖 `UsdValidationError` 的官方定义、它与 `UsdValidationValidator` 的关系、identifier / name / type / sites / message / data 的结构化边界、fixer 查询入口、无错误状态与比较语义，以及日志字符串和结构化消费之间的差别。</p>
+      <p class="en">This page is promoted to a complete bilingual reference. The Chinese coverage explains `UsdValidationError` as a structured validation result while preserving API names, method names, token literals, type names, links, and selected English source excerpts for comparison.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-042">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 UsdValidationError Class Reference 补充中文优先的类职责、读取重点、关键属性/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, key attribute/method groups, and terminology for UsdValidationError Class Reference while retaining English page names, class names, method names, attribute names, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`UsdValidationError` 是 validation task 返回的错误实体，通常与某个 `UsdValidationValidator` 关联，用于把校验发现结构化返回给调用方。</span></li>
-        <li><span class="zh">英文摘录列出 error name、`UsdValidationErrorType` severity、`UsdValidationErrorSites`、message 等信息；这些字段共同构成错误定位、严重程度和可读说明。</span></li>
-        <li><span class="zh">`GetIdentifier()`、`GetName()`、`GetType()`、`GetSites()`、`GetMessage()` 和 `GetErrorAsString()` 是消费校验结果时最常用的读取入口。</span></li>
-        <li><span class="zh">页面还包含 fixer 查询方法，例如 `GetFixerByName()`、`GetFixersByKeywords()`、`GetFixersByErrorName()`；这说明 error 不只是报告，也可能连接到自动修复策略。</span></li>
-        <li><span class="zh">阅读本页时应把 validation error 看作可传递、可格式化、可查询 fixer 的结果对象，而不是 validator 本身；真正执行校验逻辑的是关联的 validator。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">UsdValidationError：</span><span class="en">UsdValidationError</span></li>
-        <li><span class="zh">校验任务：</span><span class="en">validation task</span></li>
-        <li><span class="zh">严重程度：</span><span class="en">severity</span></li>
-        <li><span class="zh">错误位置：</span><span class="en">error sites</span></li>
-        <li><span class="zh">修复器：</span><span class="en">fixer</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-134">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`UsdValidationError` 是 validation task 返回的结构化错误实体，并且总是和产生它的 `UsdValidationValidator` 语境相关。阅读本页时应先区分 identifier、name、type、sites、message 与 fixer 列表，而不是只把它看成一段错误字符串。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdValidationError while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`GetIdentifier()`、`GetName()`、`GetType()`、`GetSites()` 和 `GetMessage()` 覆盖了错误报告的核心维度：稳定标识、短名称、严重级别、发生位置和面向用户的说明。</span></li>
-        <li><span class="zh">`UsdValidationErrorType` 描述错误严重性或状态；`UsdValidationErrorSites` 描述 prim、property、layer 或其它定位信息，两者合起来才足以支持 UI 高亮和批处理过滤。</span></li>
-        <li><span class="zh">`GetFixers()`、`GetFixerByName()`、`GetFixersByErrorName()` 与 `GetFixersByKeywords()` 用于从错误反查可执行修复器；中文说明应保留 fixer 名称和 error name，便于和 registry 对齐。</span></li>
-        <li><span class="zh">`GetErrorAsString()` 适合日志和调试输出，但结构化消费端更应读取 sites、type、identifier 和 data；否则会丢失可排序、可过滤和可定位的信息。</span></li>
-        <li><span class="zh">`HasNoError()` 表示空错误或无错误状态；它不是把所有 severity 降级为 warning，也不代表 validator 没有运行。比较运算符主要服务于错误集合去重和排序。</span></li>
-      </ul>
+    <section data-cn-complete="usd-validation-error-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`UsdValidationError` 是 validation task 返回给调用方的结构化错误实体。它不是 `UsdValidationValidator` 本身，也不是一段普通字符串；它把验证器发现的问题拆成可定位、可分类、可展示、可筛选、可关联 fixer 的字段，便于 UI、批处理工具和持续集成系统按同一套结构消费验证结果。</p>
+      <p class="en">`UsdValidationError` is a structured entity returned by a validation task. It is associated with a `UsdValidationValidator`, but it is not the validator itself.</p>
+      <p class="zh">官方定义中特别强调 associated with a `UsdValidationValidator`。这意味着错误对象需要保留“由哪个 validator 产生”的上下文，调用方可以通过 `GetValidator()` 追溯规则来源。调试时不要只看 message 文本；validator 上下文通常决定了错误的规则名称、修复策略、严重程度解释和是否允许在管线中自动处理。</p>
+      <p class="en">The validator association explains provenance: the error object carries the result, while the validator defines the rule that produced it.</p>
+      <p class="zh">`GetName()` 返回 validator writer 为该错误提供的名称，`GetIdentifier()` 则把名称转换成更稳定的 identifier。面向用户的界面可以显示 name，但自动化过滤、去重和统计通常应使用 identifier；如果只比较 message 字符串，换行、局部化文本或补充说明变化都会导致不稳定。</p>
+      <p class="en">`GetName()` exposes the error name, while `GetIdentifier()` provides a stable identifier suitable for filtering, grouping, and diagnostics.</p>
+      <p class="zh">`UsdValidationErrorType` 表示错误类型或严重性。它回答的是“这条发现应该如何被对待”，例如是否只是提示、是否应阻断发布、是否代表验证执行状态。中文说明必须保留 `UsdValidationErrorType` 原名，因为它是 API 类型名，不应翻译成模糊的“级别对象”。</p>
+      <p class="en">`UsdValidationErrorType` describes the severity or type of the error and should be consumed as structured data rather than prose.</p>
+      <p class="zh">`UsdValidationErrorSites` 是错误定位集合，通常指向 prim、property、layer 或其他可报告位置。`GetSites()` 的价值在于让工具能够高亮场景中的具体对象、批量过滤受影响范围、或者把错误落到某个 layer / property 上；如果只保留 message，调用方就失去了可导航的定位信息。</p>
+      <p class="en">`UsdValidationErrorSites` identifies where the validation error was reported, enabling UI highlighting, filtering, and navigation.</p>
+      <p class="zh">`GetMessage()` 与 `GetErrorAsString()` 都提供可读输出，但用途不同。`GetMessage()` 是错误关联的说明文本，适合展示给用户；`GetErrorAsString()` 更像日志和调试格式化入口。结构化消费端不应只解析字符串，而应同时读取 identifier、type、sites、data 和 fixer 列表。</p>
+      <p class="en">`GetMessage()` and `GetErrorAsString()` are useful for display and logs, but structured tools should read the individual fields directly.</p>
+      <p class="zh">`GetData()` 暴露附加数据，通常用于携带验证器想返回的上下文，例如原始值、期望范围、修复所需参数或更细的诊断信息。它的边界类似 payload：调用方可以利用它增强报告或 fixer 输入，但不能假设所有 validator 都提供同一种 data schema。</p>
+      <p class="en">`GetData()` provides additional validation-specific payload; consumers should treat it as structured context whose schema depends on the producing validator.</p>
+      <p class="zh">fixer 相关 API 包括 `GetFixers()`、`GetFixerByName()`、`GetFixerByNameAndErrorName()`、`GetFixersByErrorName()` 与 `GetFixersByKeywords()`。这些函数说明 validation error 可以连接到可执行修复策略，但“存在 fixer”不等于应该无条件自动修改 USD；管线仍需要检查权限、目标 layer、变更风险和用户确认。</p>
+      <p class="en">Fixer lookup APIs connect an error to possible remediation actions, but choosing and executing a fixer remains a pipeline or tool policy decision.</p>
+      <p class="zh">`HasNoError()` 表示无错误或空错误状态，常用于占位返回值或快速判断。它不是把错误降级成 warning，也不表示 validator 没有运行；调用方应把它看作“该对象不携带实际错误”的状态，并和空 sites、空 message 或默认构造的对象区别开来。</p>
+      <p class="en">`HasNoError()` represents a no-error state for the error object; it is not a severity downgrade and does not by itself describe whether validation ran.</p>
+      <p class="zh">`operator==()` 与 `operator!=()` 服务于错误集合的比较、去重和测试断言。比较语义应围绕结构化字段理解，而不是只围绕用户可见字符串。对于 CI 报告或批量验证结果，稳定比较能减少重复报警，也能帮助检查同一 validator 是否在不同 stage 或 layer 上产生了相同问题。</p>
+      <p class="en">The comparison operators support deduplication and tests over structured validation errors rather than ad hoc string comparison.</p>
+      <p class="zh">常见误读有四类：第一，把 `UsdValidationError` 当成 validator；第二，只记录 `GetErrorAsString()` 而丢弃 sites 和 type；第三，把 fixer 当成一定会执行的自动修复；第四，把 `HasNoError()` 当成验证未运行。正确理解是：本类是验证结果的数据模型，规则执行在 `UsdValidationValidator`，定位在 `UsdValidationErrorSites`，严重性在 `UsdValidationErrorType`，修复入口由 fixer 查询 API 暴露。</p>
+      <p class="en">The class is the data model for a validation finding: rule provenance comes from `UsdValidationValidator`, location from `UsdValidationErrorSites`, severity from `UsdValidationErrorType`, and remediation from fixer lookup APIs.</p>
       <h3>术语对照 / Terms</h3>
       <ul>
         <li><span class="zh">验证错误实体：</span><span class="en">UsdValidationError</span></li>
         <li><span class="zh">验证器：</span><span class="en">UsdValidationValidator</span></li>
-        <li><span class="zh">错误严重性：</span><span class="en">UsdValidationErrorType</span></li>
+        <li><span class="zh">错误类型 / 严重性：</span><span class="en">UsdValidationErrorType</span></li>
         <li><span class="zh">错误定位集合：</span><span class="en">UsdValidationErrorSites</span></li>
+        <li><span class="zh">稳定错误标识：</span><span class="en">identifier</span></li>
+        <li><span class="zh">可读错误说明：</span><span class="en">message</span></li>
+        <li><span class="zh">附加诊断数据：</span><span class="en">data</span></li>
         <li><span class="zh">修复器：</span><span class="en">fixer</span></li>
-        <li><span class="zh">结构化错误报告：</span><span class="en">structured validation error</span></li>
       </ul>
     </section>
     <section>

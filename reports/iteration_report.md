@@ -8524,3 +8524,46 @@ GitHub 同步：
 1. 继续真实晋级，不再刷 count-neutral 导读补强。
 2. 下一批优先核心页面：`full_site/api/class_usd_validation_error.html` 或其他 406 清单内高价值核心 API 页。
 3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。
+
+## 第 310 轮：将 UsdValidationError 提升为完整双语
+已完成：
+
+- 将 `full_site/api/class_usd_validation_error.html` 从 `bilingual_draft` 晋级为 `bilingual_complete`。
+- 页面标题改为“完整双语参考：UsdValidationError Class”，并移除通用 draft 文案和“后续迭代会继续补齐”等草稿标记。
+- 新增 `逐段双语理解 / Paragraph-Level Bilingual Coverage` 区块，覆盖：
+  - `UsdValidationError` 作为 validation task 返回的 structured validation result，而不是 `UsdValidationValidator` 本身。
+  - validator provenance、`GetValidator()` 与规则来源追溯。
+  - `GetName()`、`GetIdentifier()`、`GetType()`、`GetSites()`、`GetMessage()`、`GetData()` 的结构化字段边界。
+  - `UsdValidationErrorType` 与 `UsdValidationErrorSites` 对严重性、定位、UI 高亮和批处理过滤的作用。
+  - `GetErrorAsString()` 与结构化消费之间的区别。
+  - `GetFixers()`、`GetFixerByName()`、`GetFixerByNameAndErrorName()`、`GetFixersByErrorName()`、`GetFixersByKeywords()` 的 fixer 查询语义。
+  - `HasNoError()` 的无错误状态边界，以及 `operator==()` / `operator!=()` 的比较、去重和测试用途。
+- 更新 `reports/bilingual_completion_promotions.json/md`，新增 `round-310-usd-validation-error`。
+- 更新 `reports/current_problem_audit.md/json`，将当前真实状态同步为 16 complete / 390 draft。
+- 重建 `openusd_bilingual_final.html`，总入口现在显示 16 complete / 390 incomplete drafts。
+
+分级变化：
+- `good_bilingual`：15 -> 16
+- `bilingual_complete`：15 -> 16
+- `bilingual_draft`：391 -> 390
+- `draft_needs_translation`：380 -> 379
+- `draft_template_only`：11 保持不变
+
+验证结果：
+- `discover_openusd_all_pages.mjs`：通过，`total_pages=406`，`promoted_complete_pages=8`。
+- `audit_openusd_translation_quality.mjs`：通过，`good_bilingual=16`，目标页 `grade=good_bilingual`。
+- `route_openusd_internal_links_local.mjs`：通过。
+- `audit_openusd_full_draft_preview.mjs`：通过，390/390 draft 页面可预览。
+- `audit_openusd_report_index.mjs`：通过。
+- `validate_openusd_api_repro.ps1`：通过，`required_check_count=288`，`failed_check_count=0`。
+- Node 直接解析 `reports/validation_report.json`：`bom=false`。
+
+GitHub 同步：
+
+- 本轮验证通过后将使用 `OpenUSD bilingual round 310: promote UsdValidationError complete` 同步本轮 HTML、报告和 `work.md`。
+
+下一轮目标：
+
+1. 继续真实晋级，不再刷 count-neutral 导读补强。
+2. 下一批优先核心页面：`full_site/api/class_usd_geom_basis_curves.html` 或其他 406 清单内高价值核心 API 页。
+3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。
