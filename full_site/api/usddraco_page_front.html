@@ -54,6 +54,27 @@
         <li><span class="zh">资产读写：</span><span class="en">asset I/O</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-162">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`usddraco_page_front.html` 是 `UsdDraco` Draco file format plugin 的模块入口，主要解释 USD 如何通过插件处理 Draco 压缩几何数据。它应被理解为文件格式/压缩资产桥接层，不是 `UsdGeomMesh` 拓扑语义本身，也不是 Draco 编码规范全文。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdDraco: Draco File Format Plugin while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdDraco` 的核心价值在于把 Draco encoded geometry 接入 USD file format / asset pipeline；具体 mesh primitive、primvars、normals 和 topology 仍应回到 `UsdGeom` 页面确认。</span></li>
+        <li><span class="zh">Draco 通常用于压缩传输或存储，USD 侧需要关注解码后数据如何映射到 prim、属性、时间采样和 asset path，而不是只看压缩率。</span></li>
+        <li><span class="zh">调试时先确认 `Plug` 是否发现 file format plugin，再确认 `Ar` 解析路径、文件扩展名、解码库可用性和目标 stage 是否能打开对应 layer。</span></li>
+        <li><span class="zh">如果下游 renderer 或 DCC 显示异常，问题可能来自 Draco decode、USD attribute mapping、primvar interpolation 或 consumer 支持范围，需要分层排查。</span></li>
+        <li><span class="zh">中文补强只说明 `UsdDraco` 在 USD 管线中的位置；`Draco`、`file format plugin`、`UsdGeomMesh`、`primvars`、`topology` 等术语保持原样。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Draco 文件格式插件：</span><span class="en">Draco file format plugin</span></li>
+        <li><span class="zh">压缩几何：</span><span class="en">compressed geometry</span></li>
+        <li><span class="zh">解码边界：</span><span class="en">decode boundary</span></li>
+        <li><span class="zh">属性映射：</span><span class="en">attribute mapping</span></li>
+        <li><span class="zh">几何拓扑：</span><span class="en">geometry topology</span></li>
+        <li><span class="zh">资产管线桥接：</span><span class="en">asset pipeline bridge</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

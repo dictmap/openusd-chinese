@@ -54,6 +54,27 @@
         <li><span class="zh">帧格式字符串：</span><span class="en">Frame Format Strings</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-162">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`usd_app_utils_page_front.html` 是 `UsdAppUtils` 应用层工具模块入口，常服务 usdview、命令行工具、预览渲染、frame range、camera selection 和 renderer 参数组装等应用场景。它比核心 `UsdUtils` 更贴近应用程序入口和用户交互流程。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdAppUtils: USD Application Utilities while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdAppUtils` 应按 application utility 阅读：它帮助应用选择 camera、解析 frame range、准备 render settings 或组织常见 CLI/app 参数。</span></li>
+        <li><span class="zh">如果任务是资产依赖、打包或 layer 处理，通常先看 `UsdUtils`；如果任务是 app 级预览、命令行驱动或 viewer workflow，再看 `UsdAppUtils`。</span></li>
+        <li><span class="zh">本模块常与 `UsdStage`、`UsdGeomCamera`、`UsdRenderSettings`、Hydra renderer plugin 和命令行参数相邻出现，但它本身不是新的 scene schema。</span></li>
+        <li><span class="zh">调试应用工具时，先确认输入 stage、camera path、time code、renderer plugin 和输出参数，再进入对应底层模块排查。</span></li>
+        <li><span class="zh">中文复刻保留 `UsdAppUtils`、camera、frame range、renderer plugin、CLI、usdview 等英文关键词，方便用户直接检索官方 API 和工具源码。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">应用层工具：</span><span class="en">application utilities</span></li>
+        <li><span class="zh">相机选择：</span><span class="en">camera selection</span></li>
+        <li><span class="zh">帧范围：</span><span class="en">frame range</span></li>
+        <li><span class="zh">预览渲染：</span><span class="en">preview rendering</span></li>
+        <li><span class="zh">命令行工作流：</span><span class="en">CLI workflow</span></li>
+        <li><span class="zh">应用入口：</span><span class="en">application entry point</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

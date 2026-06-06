@@ -75,6 +75,27 @@
         <li><span class="zh">Hydra 任务执行：</span><span class="en">Hydra task execution</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-162">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`hd_embree_page_front.html` 是 `HdEmbree` 模块入口，描述基于 Intel Embree 的 Hydra renderer plugin。它适合用来理解 Hydra render delegate / renderer plugin 边界，不应被当作 USD schema、scene index 或通用 ray tracing 教程。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdEmbree: Embree-based Hydra Renderer Plugin while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`HdEmbree` 位于 Hydra 渲染后端层，消费 `Hd` / Hydra 提供的 scene data，并把几何等数据交给 Embree 相关路径处理。</span></li>
+        <li><span class="zh">如果目标是 scene data 如何进入 Hydra，应先读 `HdSceneDelegate`、`HdSceneIndex`、`HdRenderIndex`；如果目标是具体 CPU ray tracing 后端，再进入 `HdEmbree`。</span></li>
+        <li><span class="zh">Embree 侧关注 acceleration structures、ray traversal 和 CPU rendering 支持；USD 侧关注 adapter、render delegate、rprim/sprim/bprim 消费边界。</span></li>
+        <li><span class="zh">调试显示问题时，先确认 USD scene、Hydra data source、render delegate selection、renderer plugin loading 和 Embree runtime 是否分别正常。</span></li>
+        <li><span class="zh">本页中文层强调 `HdEmbree`、`Hd`、`Hdx`、`HdSt/HdStorm` 的分层关系，避免把 renderer plugin 行为误读为 authored scene description。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Hydra 渲染插件：</span><span class="en">Hydra renderer plugin</span></li>
+        <li><span class="zh">Render delegate：</span><span class="en">render delegate</span></li>
+        <li><span class="zh">CPU 光线追踪：</span><span class="en">CPU ray tracing</span></li>
+        <li><span class="zh">Embree 后端：</span><span class="en">Embree backend</span></li>
+        <li><span class="zh">场景数据消费：</span><span class="en">scene data consumption</span></li>
+        <li><span class="zh">渲染后端边界：</span><span class="en">renderer backend boundary</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

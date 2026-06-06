@@ -75,6 +75,27 @@
         <li><span class="zh">事件粒度：</span><span class="en">event granularity</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-162">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`trace_page_front.html` 是 `Trace` 性能跟踪模块入口，提供 event tracing、counter、collector、reporting 和性能诊断相关工具。它用于观察和分析执行过程，不改变 USD stage、layer、schema 或 renderer 的业务语义。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Trace: Performance Tracking while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Trace` 应按 instrumentation / profiling infrastructure 阅读：先理解如何记录事件，再看如何收集、聚合和输出报告。</span></li>
+        <li><span class="zh">如果性能问题来自 composition、asset I/O、Hydra rendering 或插件加载，`Trace` 可以帮助定位时间分布，但不等同于这些模块的修复机制。</span></li>
+        <li><span class="zh">常见读取路径是从 `TraceCollector`、`TraceEvent`、`TraceReporter`、counter 和 scope API 进入，再按报告反查具体调用栈或 subsystem。</span></li>
+        <li><span class="zh">调试时要区分 instrumentation overhead 与真实 workload；启用 tracing 本身可能改变运行时间，需要谨慎解释数字。</span></li>
+        <li><span class="zh">中文补强保留 `Trace`、event、collector、counter、reporter、scope、profiling 等英文关键词，便于和源码宏、日志和报告字段对照。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">性能跟踪：</span><span class="en">performance tracking</span></li>
+        <li><span class="zh">事件追踪：</span><span class="en">event tracing</span></li>
+        <li><span class="zh">采集器：</span><span class="en">collector</span></li>
+        <li><span class="zh">计数器：</span><span class="en">counter</span></li>
+        <li><span class="zh">报告器：</span><span class="en">reporter</span></li>
+        <li><span class="zh">插桩开销：</span><span class="en">instrumentation overhead</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

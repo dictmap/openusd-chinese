@@ -55,6 +55,27 @@
         <li><span class="zh">Threading Building Blocks：</span><span class="en">TBB</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-162">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`work_page_front.html` 是 `Work` 多线程调度模块入口，围绕任务分发、并行循环、线程池、依赖执行和取消/等待语义提供底层工具。它不是 USD scene composition 模块，而是多个上层系统可复用的并行执行基础设施。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Work: Multi-threaded Dispatch while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Work` 适合从 concurrency utility 角度阅读：先理解 dispatch、parallelFor、thread limit、task grouping，再看具体上层模块如何调用它。</span></li>
+        <li><span class="zh">如果问题涉及 `Pcp` composition、Hydra imaging 或 asset processing 的性能，应先确认瓶颈是否真的在 `Work` 调度层，而不是 I/O、锁竞争或算法复杂度。</span></li>
+        <li><span class="zh">多线程工具的 API 名称通常保留英文原样，尤其是 `WorkDispatcher`、`WorkParallelForN`、`WorkWithScopedParallelism` 等入口，避免翻译导致检索困难。</span></li>
+        <li><span class="zh">调试并行问题时需要区分 deterministic API contract 和 runtime scheduling behavior；任务执行顺序、线程数量和异常传播可能受运行环境影响。</span></li>
+        <li><span class="zh">本页中文层补充阅读顺序和风险边界：它说明如何进入并行工具文档，不把所有 USD 性能问题都归因于 `Work`。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">多线程调度：</span><span class="en">multi-threaded dispatch</span></li>
+        <li><span class="zh">并行循环：</span><span class="en">parallel loop</span></li>
+        <li><span class="zh">线程池：</span><span class="en">thread pool</span></li>
+        <li><span class="zh">任务分发器：</span><span class="en">task dispatcher</span></li>
+        <li><span class="zh">调度行为：</span><span class="en">scheduling behavior</span></li>
+        <li><span class="zh">性能瓶颈：</span><span class="en">performance bottleneck</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
