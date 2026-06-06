@@ -54,6 +54,27 @@
         <li><span class="zh">基础工具层：</span><span class="en">Tf</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-152">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`modules.html` 是 Doxygen module/group 总导航页，用于从功能分组进入 OpenUSD API。它不同于 namespace 列表、class 列表或 file list；同一模块下可能混合函数、宏、类、枚举和文档页面，因此适合先做体系定位，再进入具体符号页。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Modules while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Arch` 相关组通常覆盖平台、系统、内存、线程、symbol visibility 和 diagnostic 基础设施；这些组更多服务于底层库可移植性和运行时支持。</span></li>
+        <li><span class="zh">`Gf` 相关组覆盖 Linear Algebra、Basic Geometry、Color、Gamma Mapping 和 debugging output；它们是数学与几何基础，不等同于 `UsdGeom` schema。</span></li>
+        <li><span class="zh">`Tf` 相关组覆盖 notification、error posting、diagnostics、initialization、malloc tag、runtime typing 和 STL utilities；这些是通用基础设施层。</span></li>
+        <li><span class="zh">module/group 名称是阅读路线，不是 C++ 命名空间边界；遇到同名或相近概念时，应继续进入目标页面查看实际 namespace、header 和 declaration。</span></li>
+        <li><span class="zh">本地链接策略仍然适用：406 清单内的 group 或 module 页面跳本地复刻，清单外内部页跳 `site/uncovered_openusd_page.html`，只有明确 official entry 保留外链。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">模块总导航：</span><span class="en">module navigation</span></li>
+        <li><span class="zh">Doxygen 功能组：</span><span class="en">Doxygen group</span></li>
+        <li><span class="zh">命名空间边界：</span><span class="en">namespace boundary</span></li>
+        <li><span class="zh">底层基础设施：</span><span class="en">low-level infrastructure</span></li>
+        <li><span class="zh">数学与几何基础：</span><span class="en">math and geometry foundations</span></li>
+        <li><span class="zh">本地复刻链接：</span><span class="en">local reproduction link</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

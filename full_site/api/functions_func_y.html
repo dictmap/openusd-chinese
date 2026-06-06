@@ -53,6 +53,27 @@
         <li><span class="zh">分量访问器：</span><span class="en">component accessor</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-152">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`functions_func_y.html` 是 class member functions 的 Y 段索引，当前主要用于定位 `GfVec2*`、`GfVec3*`、`GfVec4*` 的 y 分量访问，以及少量 Vdf executor buffer 相关条目。它是极短索引页，价值在于快速跳转，而不是替代 Gf 向量或 Vdf buffer 的完整说明。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Class Members - Functions - Y while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`GfVec2d`、`GfVec2f`、`GfVec2h`、`GfVec2i` 到 `GfVec4*` 的 y 相关函数通常表示第二坐标分量；维度和数值后缀仍需保留英文原样。</span></li>
+        <li><span class="zh">Y 段与上一轮处理的 X/Z 段应合并阅读：`x()`、`y()`、`z()` 的存在取决于向量维度，二维向量没有 z，三维/四维向量才会进入 Z 段。</span></li>
+        <li><span class="zh">`VdfExecutorBufferData` 出现在同页是字母索引混排结果；它属于 execution buffer 语境，不应和 `GfVec*` 的几何坐标分量混为一类。</span></li>
+        <li><span class="zh">若要确认 `y()` 返回值是值、引用还是 const 访问器，应进入具体 `GfVec*` class 页查看 C++ declaration 和 overload。</span></li>
+        <li><span class="zh">本页中文补强强调索引边界：保留 `GfVec*`、`VdfExecutorBufferData`、函数名和链接原样，只提供读者该跳往哪个具体 API 页的判断依据。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">Y 段函数索引：</span><span class="en">Y function index</span></li>
+        <li><span class="zh">第二坐标分量：</span><span class="en">second coordinate component</span></li>
+        <li><span class="zh">向量维度：</span><span class="en">vector dimension</span></li>
+        <li><span class="zh">数值后缀：</span><span class="en">numeric suffix</span></li>
+        <li><span class="zh">执行缓冲数据：</span><span class="en">executor buffer data</span></li>
+        <li><span class="zh">const 访问器：</span><span class="en">const accessor</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

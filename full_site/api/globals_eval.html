@@ -54,6 +54,27 @@
         <li><span class="zh">解析信息来源：</span><span class="en">resolve info source</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-152">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`globals_eval.html` 是 File Members 的 enumerator value 索引页，关注枚举里的具体取值，而不是 enum 类型声明本身。它适合反查 `UsdInterpolationTypeHeld`、`UsdLoadWithDescendants`、`UsdResolveInfoSourceFallback` 这类值来自哪个 header 或语义域。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for File Members - Enumerator Values while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`UsdInterpolationTypeHeld` 与 `UsdInterpolationTypeLinear` 属于时间采样插值语义；它们描述 sampled value 如何在时间之间被解释，而不是动画曲线编辑工具。</span></li>
+        <li><span class="zh">`UsdListPositionBackOfAppendList`、`UsdListPositionFrontOfPrependList` 等值属于 list editing position policy，用来说明条目插入 prepend/append list 的相对位置。</span></li>
+        <li><span class="zh">`UsdLoadWithDescendants` 与 `UsdLoadWithoutDescendants` 属于 payload/load 控制语境，用来判断 load 操作是否递归影响 descendant prim。</span></li>
+        <li><span class="zh">`UsdResolveInfoSourceDefault`、`Fallback`、`Spline`、`TimeSamples` 和 `Value` 等值是属性值解析来源诊断线索，适合排查最终取值来自 authored value、fallback 还是 time samples。</span></li>
+        <li><span class="zh">枚举值索引页按文件成员聚合，不能替代 enum 定义页；如果需要判断默认值、组合规则或 API 参数类型，应继续打开对应 header、enum 或函数页面。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">枚举值索引：</span><span class="en">enumerator value index</span></li>
+        <li><span class="zh">时间采样插值：</span><span class="en">time-sample interpolation</span></li>
+        <li><span class="zh">列表编辑位置：</span><span class="en">list-editing position</span></li>
+        <li><span class="zh">按需加载策略：</span><span class="en">load policy</span></li>
+        <li><span class="zh">属性解析来源：</span><span class="en">resolve info source</span></li>
+        <li><span class="zh">枚举类型声明：</span><span class="en">enum declaration</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

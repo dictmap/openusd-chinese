@@ -53,6 +53,27 @@
         <li><span class="zh">列表操作：</span><span class="en">list op</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-152">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`functions_type.html` 是 class members 的 typedef 字母索引页，用于快速定位类型别名，而不是解释这些类型的完整行为。它把执行器、容器、range、iterator、schema 和 path table 等不同来源的 typedef 混排在一起，读者应先根据目标符号前缀判断所属模块。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Class Members - Typedefs while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`VdfPullBasedExecutorEngine`、`VdfParallelExecutorEngine` 和 `VdfExecutorDataManager` 等条目指向 Vdf execution internals；这些 typedef 通常服务于 executor implementation，而不是普通 USD scene authoring API。</span></li>
+        <li><span class="zh">`SdfPathTable&lt; MappedType &gt;`、`SdfListOp&lt; T &gt;`、`SdfBatchNamespaceEdit` 等条目属于 scene description 和 namespace/list editing 语境，应与 `UsdPrimRange`、`UsdPrimSubtreeRange` 这类遍历范围区分。</span></li>
+        <li><span class="zh">`TfDenseHashMap`、`TfDenseHashSet`、`TfCompressedBits`、`VtArray&lt; ELEM &gt;` 和 `VtArrayEdit&lt; ELEM &gt;` 是基础容器或值类型设施；关注点通常是存储、比较、hash、bitset 或 array edit 语义。</span></li>
+        <li><span class="zh">typedef 索引页只显示别名入口和链接，不保证展示 template 参数约束、ownership、iterator invalidation 或线程安全；这些信息需要进入目标 class 或 header 说明。</span></li>
+        <li><span class="zh">中文层保留 `MappedType`、`DataManagerType`、`DerivedClass`、`ELEM` 等 template 参数原样，避免破坏搜索和与 C++ 声明的对应关系。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">类型别名索引：</span><span class="en">typedef index</span></li>
+        <li><span class="zh">模板参数：</span><span class="en">template parameter</span></li>
+        <li><span class="zh">执行器内部结构：</span><span class="en">executor internals</span></li>
+        <li><span class="zh">路径表：</span><span class="en">path table</span></li>
+        <li><span class="zh">列表编辑：</span><span class="en">list editing</span></li>
+        <li><span class="zh">迭代器失效：</span><span class="en">iterator invalidation</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>

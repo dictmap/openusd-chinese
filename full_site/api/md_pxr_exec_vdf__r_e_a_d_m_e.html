@@ -54,6 +54,27 @@
         <li><span class="zh">从节点输出到节点输入：</span><span class="en">node outputs to node inputs</span></li>
       </ul>
     </section>
+    <section data-cn-refinement="api-index-quality-pass-152">
+      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
+      <p class="zh">`md_pxr_exec_vdf__r_e_a_d_m_e.html` 是 Vdf README 式入口页，不是单个 class 的 API 参考。阅读时应把它当作 OpenExec 底层 dataflow graph 的背景页：先理解 `VdfNetwork`、`VdfNode`、`VdfConnection` 和 value flow，再进入具体 class 页面查看方法、端口和 schedule 细节。</p>
+      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Vdf: Vectorized Data Flow while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+      <ul>
+        <li><span class="zh">`Vdf` 的核心职责是描述和调度 vectorized computation dependencies；它不直接表达 USD composition、layer stack 或 scene graph opinion strength。</span></li>
+        <li><span class="zh">当页面提到 node outputs 到 node inputs 的连接时，中文读法应关注数据依赖方向，而不是把它理解成文件引用、payload 或 namespace 路径关系。</span></li>
+        <li><span class="zh">`Ef`、`Exec`、`ExecUsd` 等上层执行系统会依赖 Vdf 概念；因此本页适合放在 OpenExec 阅读链的前段，用来解释为什么后续会出现 executor、buffer、mask 和 schedule 等术语。</span></li>
+        <li><span class="zh">如果要确认线程安全、缓存生命周期或 evaluation request 的精确规则，不能只靠 README 摘要，应继续跳到 `VdfExecutor*`、`VdfContext`、`VdfNode` 和 `VdfNetwork` 等 class 页。</span></li>
+        <li><span class="zh">本地复刻保留官方英文摘录和拼写；中文补强只说明概念边界，不更改 `Vdf`、`VdfNetwork`、`VdfNode`、`VdfConnection` 等原始 API 名称。</span></li>
+      </ul>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">向量化数据流图：</span><span class="en">vectorized dataflow graph</span></li>
+        <li><span class="zh">计算依赖：</span><span class="en">computation dependency</span></li>
+        <li><span class="zh">节点输出：</span><span class="en">node output</span></li>
+        <li><span class="zh">节点输入：</span><span class="en">node input</span></li>
+        <li><span class="zh">执行调度：</span><span class="en">execution scheduling</span></li>
+        <li><span class="zh">上层执行系统：</span><span class="en">higher-level execution system</span></li>
+      </ul>
+    </section>
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
