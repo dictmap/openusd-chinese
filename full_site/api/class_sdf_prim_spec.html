@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：SdfPrimSpec Class / SdfPrimSpec Class</title>
+  <title>完整双语参考：SdfPrimSpec Class / SdfPrimSpec Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,17 +24,53 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：SdfPrimSpec Class / SdfPrimSpec Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：SdfPrimSpec Class / SdfPrimSpec Class</h1>
     <div class="meta">https://openusd.org/release/api/class_sdf_prim_spec.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语标准覆盖 `SdfPrimSpec` 的核心语义。中文层解释它作为 `SdfLayer` 中 authored prim description 的职责、与 composed `UsdPrim` 的边界、路径和 namespace 关系、child prim/property views、specifier/typeName/metadata、list op 和 variant/payload/reference 等 opinion 容器的调试含义；英文 API 名称、方法名、类型名、token、链接和必要官方摘录保留原样。</p>
+      <p class="en">This page now provides full bilingual coverage for `SdfPrimSpec` as an authored prim description in an `SdfLayer`, while preserving official API names, method names, type names, tokens, links, and necessary English excerpts.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-038">
+    <section data-cn-complete="sdf-prim-spec-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`SdfPrimSpec` 表示某个 `SdfLayer` 内的 prim description。它是 layer-level authored data：记录一个 prim 在单个 layer 中直接写下的 specifier、typeName、metadata、properties、child prims、references、payloads、inherits、specializes 和 variant selections。它不是 `UsdPrim`，也不是 composition 后的最终场景视图。</p>
+      <p class="en">`SdfPrimSpec` represents a prim description in an `SdfLayer`. It stores authored layer-level data and is not the composed `UsdPrim` view seen on a `UsdStage`.</p>
+      <p class="zh">官方描述强调每个 `SdfPrimSpec` 都定义在一个 layer 里，并由该 layer namespace hierarchy 中的 `SdfPath` 标识。这个路径是 spec 在 layer 内的位置，不等于“该 prim 一定会在最终 stage 上出现”。最终 `UsdPrim` 是否存在、类型是什么、哪些 metadata 生效，还要经过 composition、load rules、variant selection 和其他 layer opinions。</p>
+      <p class="en">Each `SdfPrimSpec` is defined in a layer and identified by an `SdfPath` in that layer's namespace hierarchy. Composition determines what appears as a final `UsdPrim`.</p>
+      <p class="zh">`New()` 可以在 containing `SdfLayer` 下创建 root-level prim spec，也可以在 parent `SdfPrimSpec` 下创建 child prim spec。`SdfCreatePrimInLayer()` 是常见 helper，可快速补齐路径上的 primSpecs hierarchy；但 helper 只是写入 spec，不会替调用者决定 schema type、specifier 语义、metadata 合法性或 composition 结果。</p>
+      <p class="en">`New()` creates root-level or nested prim specs, and `SdfCreatePrimInLayer()` can create a hierarchy quickly. These APIs author specs; they do not solve composition or validate intended schema semantics for the caller.</p>
+      <p class="zh">`specifier` 和 `typeName` 是阅读本页的核心字段。`specifier` 描述这个 spec 是 def、over 还是 class 等 authored intent；`typeName` 记录 schema type 名称。两者都只是 layer opinion：它们会参与 composition，但不等于最终 `UsdPrim` 的完整类型判断，也不能替代 `UsdSchemaRegistry` 或 schema wrapper 的运行时解释。</p>
+      <p class="en">`specifier` and `typeName` are authored opinions on a prim spec. They participate in composition but are not the same as final schema interpretation on a composed prim.</p>
+      <p class="zh">`NameChildrenView`、`PropertySpecView`、`AttributeSpecView` 和 `RelationshipSpecView` 暴露的是 authored child specs。它们适合遍历和编辑 layer 中直接存在的 children/properties，但不要把这些 view 当成 stage 上的 composed children。一个 composed child 可能来自别的 layer、reference、payload 或 variant，也可能被更强 opinion 覆盖或隐藏。</p>
+      <p class="en">The child and property views expose authored specs in the layer. They are not equivalent to composed children or properties on a stage.</p>
+      <p class="zh">`SdfPrimSpec` 也是多种 list op 和 metadata opinion 的容器。references、payloads、inherits、specializes、variantSets、variant selections、relocates、permissions、active、instanceable、kind 和 assetInfo 等字段都在这里存放为 authored data。`ClearReferenceList()`、`ClearPayloadList()`、`ClearInheritPathList()`、`BlockVariantSelection()` 之类 API 操作的是具体 opinion 或 list-editing 状态，不是求解后的结果。</p>
+      <p class="en">`SdfPrimSpec` stores list-editing and metadata opinions such as references, payloads, inherits, specializes, variants, active, instanceable, kind, and assetInfo. Clear and block APIs modify authored opinions, not resolved composition results.</p>
+      <p class="zh">ordering 相关 API 如 `ApplyNameChildrenOrder()` 和 `ApplyPropertyOrder()` 处理 authored ordering metadata。它们影响 name children 或 property children 的显示/遍历顺序，但不改变 child prim 或 property 的语义内容。调试顺序问题时，应同时查看 order metadata 和实际 children view，不要只看 UI 展示。</p>
+      <p class="en">Ordering APIs apply authored order metadata. They affect traversal or display order, not the semantic content of the child prims or properties themselves.</p>
+      <p class="zh">与 `SdfLayer`、`SdfPath`、`SdfAttributeSpec`、`SdfRelationshipSpec`、`SdfChildrenView`、`TfToken`、`VtDictionary`、`VtValue` 和 `UsdPrim` 的关系需要分层理解：`SdfLayer` 是持有 spec 的文件/层，`SdfPath` 是 layer namespace 中的地址，attribute/relationship specs 是 property-level children，`UsdPrim` 是 stage composition 后的访问视图。</p>
+      <p class="en">Related types sit at different layers: `SdfLayer` owns specs, `SdfPath` identifies them, attribute and relationship specs are property children, and `UsdPrim` is the composed stage-level view.</p>
+      <p class="zh">排查“为什么最终 prim 不对”时，建议同时打印 `SdfPrimSpec::GetPath()`、所在 `SdfLayer` identifier、specifier、typeName、reference/payload/list op、variant selection，以及最终 `UsdPrim` path 和 composed metadata。这样可以判断问题发生在 authoring、layer strength、composition arc、variant selection、payload loading 还是 stage view 层。</p>
+      <p class="en">When debugging prim mismatches, compare the prim spec path, layer identifier, authored fields, list operations, variant selections, and the final composed `UsdPrim` view.</p>
+      <p class="zh">常见误用包括：把 `SdfPrimSpec` 当作可直接代表最终 scene object；在多个 layer 参与时只看一个 layer 的 spec；清掉 list op 后误以为 composition 结果必然消失；把 `NameChildrenView` 当成 composed traversal；以及忘记 `SdfPrimSpec` 是底层 authoring API，通常需要比 `UsdPrim` / `UsdStage` API 更谨慎地处理 layer mutation。</p>
+      <p class="en">Common mistakes include treating a prim spec as the final scene object, inspecting only one layer, confusing authored child views with composed traversal, and assuming list-op edits directly describe final stage results.</p>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">prim 描述：</span><span class="en">prim description</span></li>
+        <li><span class="zh">层级 spec：</span><span class="en">layer-level spec</span></li>
+        <li><span class="zh">组合输入：</span><span class="en">composition input</span></li>
+        <li><span class="zh">已写入 opinion：</span><span class="en">authored opinion</span></li>
+        <li><span class="zh">命名子 prim：</span><span class="en">name children</span></li>
+        <li><span class="zh">属性子项：</span><span class="en">property children</span></li>
+        <li><span class="zh">列表操作：</span><span class="en">list op</span></li>
+        <li><span class="zh">组合后的 prim 视图：</span><span class="en">composed `UsdPrim` view</span></li>
+        <li><span class="zh">根级 prim：</span><span class="en">root-level prim</span></li>
+        <li><span class="zh">变体选择：</span><span class="en">variant selection</span></li>
+      </ul>
+    </section>
+    <section data-cn-supporting-note="api-class-quality-pass-038">
       <h2>中文精修导读 / Chinese Reading Notes</h2>
       <p class="zh">本区块针对 SdfPrimSpec Class Reference 补充中文优先的类职责、读取重点、相关 API 关系和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
       <p class="en">This section adds Chinese-first class responsibilities, reading guidance, related API context, and terminology for SdfPrimSpec Class Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
@@ -54,7 +90,7 @@
         <li><span class="zh">UsdPrim：</span><span class="en">UsdPrim</span></li>
       </ul>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-129">
+    <section data-cn-supporting-note="api-class-quality-pass-129">
       <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
       <p class="zh">`SdfPrimSpec` 表示某个 `SdfLayer` 中 authored prim 的底层描述，包括 specifier、typeName、metadata、attributes、relationships、nameChildren 和 propertyChildren。它是 composition 输入，不是 `UsdPrim` 的运行时视图。</p>
       <p class="en">This second-pass refinement adds page-specific Chinese guidance for SdfPrimSpec while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
@@ -75,7 +111,7 @@
         <li><span class="zh">已写入 opinion：</span><span class="en">authored opinion</span></li>
       </ul>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-140">
+    <section data-cn-supporting-note="api-class-quality-pass-140">
       <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
       <p class="zh">`SdfPrimSpec` 表示 `SdfLayer` 中的 prim description；它由 layer namespace 内的 `SdfPath` 标识，并通过 name children、properties、variant selections、payloads、references、inherits、specializes 等字段描述一个 prim 在单层中的 authored opinions。</p>
       <p class="en">This second-pass refinement adds page-specific Chinese guidance for SdfPrimSpec while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>

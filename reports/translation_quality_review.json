@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T05:50:02.574Z",
+  "generated_at": "2026-06-07T06:03:34.601Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 362,
-    "bilingual_complete": 44
+    "bilingual_draft": 361,
+    "bilingual_complete": 45
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 351,
-    "good_bilingual": 44
+    "draft_needs_translation": 350,
+    "good_bilingual": 45
   },
   "focus_batch": [
     {
@@ -1841,29 +1841,29 @@
     },
     {
       "index": 33,
-      "title": "类参考草稿：SdfPrimSpec Class / SdfPrimSpec Class",
+      "title": "完整双语参考：SdfPrimSpec Class / SdfPrimSpec Class",
       "output": "full_site/api/class_sdf_prim_spec.html",
       "official_url": "https://openusd.org/release/api/class_sdf_prim_spec.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 64,
-      "enBlockCount": 51,
-      "zhChars": 691,
-      "enLetters": 2250,
-      "bodyChineseChars": 766,
+      "grade": "good_bilingual",
+      "zhBlockCount": 84,
+      "enBlockCount": 71,
+      "zhChars": 1209,
+      "enLetters": 3901,
+      "bodyChineseChars": 1296,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 SdfPrimSpec Class Reference 补充中文优先的类职责、读取重点、相关 API 关系和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`SdfPrimSpec` 表示 `SdfLayer` 中的 prim description；每个 `SdfPrimSpec` 都定义在某个 layer 内，并通过它在该 layer namespace hierarchy 中的 `SdfPath` 标识。"
+        "本页已按完整双语标准覆盖 `SdfPrimSpec` 的核心语义。中文层解释它作为 `SdfLayer` 中 authored prim description 的职责、与 composed `UsdPrim` 的边界、路径和 namespace 关系、child prim/property views、specifier/typeName/metadata、list op 和 variant/payload/reference 等 opinion 容器的调试含义；英文 API 名称、方法名、类型名、token、链接和必要官方摘录保留原样。",
+        "`SdfPrimSpec` 表示某个 `SdfLayer` 内的 prim description。它是 layer-level authored data：记录一个 prim 在单个 layer 中直接写下的 specifier、typeName、metadata、properties、child prims、references、payloads、inherits、specializes 和 variant selections。它不是 `UsdPrim`，也不是 composition 后的最终场景视图。",
+        "官方描述强调每个 `SdfPrimSpec` 都定义在一个 layer 里，并由该 layer namespace hierarchy 中的 `SdfPath` 标识。这个路径是 spec 在 layer 内的位置，不等于“该 prim 一定会在最终 stage 上出现”。最终 `UsdPrim` 是否存在、类型是什么、哪些 metadata 生效，还要经过 composition、load rules、variant selection 和其他 layer opinions。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, reading guidance, related API context, and terminology for SdfPrimSpec Class Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page now provides full bilingual coverage for `SdfPrimSpec` as an authored prim description in an `SdfLayer`, while preserving official API names, method names, type names, tokens, links, and necessary English excerpts.",
+        "`SdfPrimSpec` represents a prim description in an `SdfLayer`. It stores authored layer-level data and is not the composed `UsdPrim` view seen on a `UsdStage`."
       ]
     },
     {

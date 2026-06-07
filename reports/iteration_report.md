@@ -9740,3 +9740,32 @@ GitHub ???
 ??????? 362 ? `bilingual_draft`??? 351 ??? `draft_needs_translation`?406 ?????????? uncovered ????
 
 ?????? PromotionRound????? `full_site/api/class_sdf_prim_spec.html`?
+
+## 第 339 轮：将 SdfPrimSpec 提升为完整双语
+
+本轮类型：PromotionRound。仅处理 1 个高价值页面：`full_site/api/class_sdf_prim_spec.html`。
+
+本轮动作：将页面从 `bilingual_draft` 改为 `bilingual_complete`，移除通用草稿标记和 `data-cn-refinement`，新增 `逐段双语理解 / Paragraph-Level Bilingual Coverage`。中文层覆盖 `SdfPrimSpec` 作为 `SdfLayer` 中 layer-level authored prim description 的职责、与 composed `UsdPrim` / `UsdStage` 视图的边界、`SdfPath` namespace identity、`New()` 与 `SdfCreatePrimInLayer()` authoring 语义、`specifier` / `typeName` metadata opinions、child/property views、reference / payload / inherit / specialize / variant / list-op 与 ordering metadata 行为，以及区分 authoring、layer strength、composition arcs、variant selection、payload loading 和 stage view 问题的调试路径。
+
+晋级证据：`reports/bilingual_completion_promotions.json` 新增 `round-339-sdf-prim-spec`，`audit_openusd_translation_quality.mjs` 将目标页评为 `good_bilingual`。
+
+分级变化：
+
+- `good_bilingual`：44 -> 45
+- `bilingual_complete`：44 -> 45
+- `bilingual_draft`：362 -> 361
+- `draft_needs_translation`：351 -> 350
+- `draft_template_only`：11 保持不变
+
+验证结果：
+
+- `discover_openusd_all_pages.mjs` 通过：`total_pages=406`，`promoted_complete_pages=37`。
+- `audit_openusd_translation_quality.mjs` 通过：`good_bilingual=45`，目标页为 `grade=good_bilingual`。
+- `route_openusd_internal_links_local.mjs` 通过。
+- `audit_openusd_full_draft_preview.mjs` 通过：361/361 draft 可预览。
+- `audit_openusd_report_index.mjs` 通过。
+- `validate_openusd_api_repro.ps1` 通过：288 项检查，失败 0 项，`validation_report.json` 无 BOM。
+
+剩余缺口：还有 361 页 `bilingual_draft`，其中 350 页仍是 `draft_needs_translation`；406 页范围外链接仍会进入 uncovered 占位页。
+
+下一步：继续 PromotionRound，优先目标 `full_site/api/class_usd_geom_primvars_a_p_i.html`。
