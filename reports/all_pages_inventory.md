@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-07T05:15:58.745Z
+Generated: 2026-06-07T05:25:00.166Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 41
-- Promoted complete pages: 33
-- Bilingual draft pages: 365
+- Bilingual complete pages: 42
+- Promoted complete pages: 34
+- Bilingual draft pages: 364
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -33,7 +33,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_draft | 类参考草稿：GfMatrix4f Class Reference Linear Algebra / GfMatrix4f Class Reference Linear Algebra | full_site/api/class_gf_matrix4f.html | https://openusd.org/release/api/class_gf_matrix4f.html |
 | api | bilingual_draft | 类参考草稿：GfRange1d Class Reference Basic Geometry / GfRange1d Class Reference Basic Geometry | full_site/api/class_gf_range1d.html | https://openusd.org/release/api/class_gf_range1d.html |
 | api | bilingual_draft | 类参考草稿：GfRay Class Reference Basic Geometry / GfRay Class Reference Basic Geometry | full_site/api/class_gf_ray.html | https://openusd.org/release/api/class_gf_ray.html |
-| api | bilingual_draft | 类参考草稿：GfVec2i Class Reference Linear Algebra / GfVec2i Class Reference Linear Algebra | full_site/api/class_gf_vec2i.html | https://openusd.org/release/api/class_gf_vec2i.html |
+| api | bilingual_complete | https://openusd.org/release/api/class_gf_vec2i.html | full_site/api/class_gf_vec2i.html | https://openusd.org/release/api/class_gf_vec2i.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_glf_draw_target.html | full_site/api/class_glf_draw_target.html | https://openusd.org/release/api/class_glf_draw_target.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_hd_data_source_locator.html | full_site/api/class_hd_data_source_locator.html | https://openusd.org/release/api/class_hd_data_source_locator.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_hd_instance_registry.html | full_site/api/class_hd_instance_registry.html | https://openusd.org/release/api/class_hd_instance_registry.html |

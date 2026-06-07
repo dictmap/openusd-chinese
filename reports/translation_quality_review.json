@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T05:15:59.319Z",
+  "generated_at": "2026-06-07T05:25:00.699Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 365,
-    "bilingual_complete": 41
+    "bilingual_draft": 364,
+    "bilingual_complete": 42
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 354,
-    "good_bilingual": 41
+    "draft_needs_translation": 353,
+    "good_bilingual": 42
   },
   "focus_batch": [
     {
@@ -1382,29 +1382,29 @@
     },
     {
       "index": 16,
-      "title": "类参考草稿：GfVec2i Class Reference Linear Algebra / GfVec2i Class Reference Linear Algebra",
+      "title": "完整双语参考：GfVec2i Class Reference Linear Algebra / GfVec2i Class Reference Linear Algebra",
       "output": "full_site/api/class_gf_vec2i.html",
       "official_url": "https://openusd.org/release/api/class_gf_vec2i.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 52,
-      "enBlockCount": 44,
-      "zhChars": 719,
-      "enLetters": 1373,
-      "bodyChineseChars": 782,
+      "grade": "good_bilingual",
+      "zhBlockCount": 47,
+      "enBlockCount": 49,
+      "zhChars": 1084,
+      "enLetters": 2036,
+      "bodyChineseChars": 1137,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 GfVec2i Class Reference 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`GfVec2i` 是 Gf Linear Algebra 中的二维 int vector 基础类型，用于存储 2 个 `int` 分量。"
+        "本页已按完整双语参考页处理：中文优先解释 `GfVec2i` 作为 `Gf` Linear Algebra 中二维 `int` vector 的值语义、`ScalarType=int`、分量访问、构造与数组布局、`GetLengthSq()` / `GfDot()` / `GetProjection()` / `GetComplement()` 的整数向量边界、`Axis()` / `XAxis()` / `YAxis()` 基向量用法、arithmetic operators 的整型结果，以及它与 `GfVec2f`、`GfVec2d`、USD scene prim 和 attribute 数组的区别；英文 API 名称、方法名、类型名、链接和官方英文摘录保持原样，便于与 OpenUSD Doxygen 页面核对。",
+        "`GfVec2i` 是 `Gf` Linear Algebra 模块中的二维 `int` 向量值类型。官方描述里的 “Basic type for a vector of 2 int components” 说明它只保存两个 `int` 分量，通常用于整数坐标、像素尺寸、网格索引、二维离散偏移或计数型数据；它不是 USD scene prim、不是 attribute 容器，也不携带 stage / layer / schema 语义。",
+        "“fast and simple” 是理解该类的设计边界。它是轻量数学值类型，成员通常直接围绕分量读写、简单构造、比较、算术运算和线性代数辅助函数展开；读者不应期待它进行复杂单位系统转换、自动归一化、浮点插值或几何拓扑管理。需要连续几何精度时，应选择或转换到 `GfVec2f`、`GfVec2d` 等浮点向量类型。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for GfVec2i Class Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page is treated as a complete bilingual reference. Chinese explanations come first, while English API names, method names, type names, links, and selected official excerpts are retained for comparison with the OpenUSD Doxygen page.",
+        "`GfVec2i` is a basic value type for a vector of two `int` components. It is not a USD scene object or attribute container."
       ]
     },
     {

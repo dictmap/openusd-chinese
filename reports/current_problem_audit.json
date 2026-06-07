@@ -1,27 +1,27 @@
 {
   "generated_at": "2026-06-07",
-  "purpose": "Track current completion blockers after user feedback. Round 335 updates the real baseline to 41 good_bilingual pages after promoting full_site/api/class_glf_draw_target.html.",
+  "purpose": "Track current completion blockers after user feedback. Round 336 updates the real baseline to 42 good_bilingual pages after promoting full_site/api/class_gf_vec2i.html.",
   "current_counts": {
     "total_pages": 406,
-    "bilingual_complete": 41,
-    "bilingual_draft": 365,
-    "good_bilingual": 41,
-    "draft_needs_translation": 354,
+    "bilingual_complete": 42,
+    "bilingual_draft": 364,
+    "good_bilingual": 42,
+    "draft_needs_translation": 353,
     "draft_template_only": 11
   },
   "problems": [
     {
       "id": "P0-completion-stalled",
       "severity": "P0",
-      "summary": "The main completion number was structurally stalled at 8; the promotion path now raises it to 41, but the remaining 365 draft pages still need real upgrades.",
-      "evidence": "reports/bilingual_completion_promotions.json now records 33 promoted pages, through full_site/api/class_glf_draw_target.html; discover_openusd_all_pages.mjs counts manifest-promoted pages as bilingual_complete, and audit_openusd_translation_quality.mjs reports good_bilingual=41.",
+      "summary": "The main completion number was structurally stalled at 8; the promotion path now raises it to 42, but the remaining 364 draft pages still need real upgrades.",
+      "evidence": "reports/bilingual_completion_promotions.json now records 34 promoted pages, through full_site/api/class_gf_vec2i.html; discover_openusd_all_pages.mjs counts manifest-promoted pages as bilingual_complete, and audit_openusd_translation_quality.mjs reports good_bilingual=42.",
       "required_action": "Continue using the promotion manifest only for pages with paragraph-level bilingual coverage and draft-marker removal; do not mark guide-only drafts as complete."
     },
     {
       "id": "P0-final-entry-misleading",
       "severity": "P0",
       "summary": "The final entry previously misled users by showing pending=0 while most pages were incomplete drafts.",
-      "evidence": "openusd_bilingual_final.html now states 41 complete pages and labels the remaining 365 pages as Incomplete drafts.",
+      "evidence": "openusd_bilingual_final.html now states 42 complete pages and labels the remaining 364 pages as Incomplete drafts.",
       "required_action": "Keep final-entry counts dynamic and keep bilingual_draft clearly described as incomplete translation."
     },
     {
@@ -42,7 +42,7 @@
       "id": "P1-draft-content-thin",
       "severity": "P1",
       "summary": "Most draft pages contain Chinese guidance and term notes, not paragraph-level bilingual translation.",
-      "evidence": "354 pages remain draft_needs_translation; 11 pages remain draft_template_only.",
+      "evidence": "353 pages remain draft_needs_translation; 11 pages remain draft_template_only.",
       "required_action": "For selected high-value pages, replace or supplement guide-only blocks with dense paragraph-level bilingual coverage and then promote status only if the page passes the stricter rule."
     },
     {
@@ -57,7 +57,7 @@
     "Continue promoting high-value draft pages only after paragraph-level bilingual coverage.",
     "Use reports/bilingual_completion_promotions.json as the auditable promotion source.",
     "Keep discover_openusd_all_pages.mjs anchored to the stable 406 local HTML files, not rewritten local navtree links.",
-    "Prioritize full_site/api/class_gf_vec2i.html or another high-value core API page and prove good_bilingual increases again."
+    "Prioritize full_site/api/class_gf_matrix4f.html or another high-value core API page and prove good_bilingual increases again."
   ],
-  "next_action": "Continue PromotionRound with exactly one high-value page. Suggested target: full_site/api/class_gf_vec2i.html. Stop if it cannot reach good_bilingual."
+  "next_action": "Continue PromotionRound with exactly one high-value page. Suggested target: full_site/api/class_gf_matrix4f.html. Stop if it cannot reach good_bilingual."
 }
