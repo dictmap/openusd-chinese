@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：SdfUsdzFileFormat Class / SdfUsdzFileFormat Class</title>
+  <title>完整双语参考：SdfUsdzFileFormat Class / SdfUsdzFileFormat Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,15 +24,45 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：SdfUsdzFileFormat Class / SdfUsdzFileFormat Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：SdfUsdzFileFormat Class / SdfUsdzFileFormat Class</h1>
     <div class="meta">https://openusd.org/release/api/class_sdf_usdz_file_format.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已从草稿晋级为完整双语参考页。中文解释覆盖 `SdfUsdzFileFormat` 作为 `.usdz` package file format 的职责、与 `SdfFileFormat` / `SdfLayer` 的关系、root layer 定位、read/write 方法边界、package-aware asset resolution、detached read、字符串/流/文件写出以及常见调试误区；英文 API 名称、方法名、属性名、token、类型名、链接和必要原文摘录保持原样。</p>
+      <p class="en">This page is promoted to a complete bilingual reference. It keeps original API names, method names, property names, tokens, type names, links, and necessary English excerpts while adding paragraph-level Chinese coverage for the official semantics.</p>
+    </section>
+    <section data-cn-complete="sdf-usdz-file-format-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`SdfUsdzFileFormat` 是 Sdf 层用于 package `.usdz` files 的 file format 实现。官方摘录的关键词是 “File format for package .usdz files”，所以它首先属于 `SdfFileFormat` / `SdfLayer` 的底层 I/O 机制，而不是 `UsdStage` 的场景遍历、composition 或渲染 API。它让 USDZ package 能以 layer/file format 的形式被识别、读取和写出。</p>
+      <p class="en">The official page describes this class as the file format for package `.usdz` files.</p>
+      <p class="zh">`CanRead()` 回答的是“给定路径或文件是否能由该 file format 识别和读取”的问题。它不等同于完整打开 stage，也不保证包内所有 referenced assets 都可解析。调试时应把 format recognition、resolved path、package contents 和后续 `SdfLayer` 打开流程分开检查。</p>
+      <p class="en">`CanRead()` is about file-format readability, not a guarantee that every packaged asset or composed stage will load successfully.</p>
+      <p class="zh">`Read()` 与 protected 的 `_ReadDetached()` 面向 layer data 载入。`Read()` 是常规 file-format 读取入口；`_ReadDetached()` 暗示读取逻辑可以与当前 layer/外部文件系统状态解耦，适合理解 package 内数据被拷贝、缓存或独立解析的场景。它们处理的是 Sdf 层数据，不负责解释 `UsdStage` 的 payload loading、variant selection 或 composition arcs。</p>
+      <p class="en">`Read()` and `_ReadDetached()` load Sdf layer data; stage-level composition behavior remains outside this class.</p>
+      <p class="zh">`GetPackageRootLayerPath()` 是 USDZ package 的关键 API：它定位 package 内部的 root layer 路径。普通 `.usd` / `.usda` / `.usdc` 文件通常直接就是 layer 文件；`.usdz` 则是 package，需要先确定包内哪个 layer 是入口。排查 USDZ 打不开时，root layer path、package-relative path 和 resolver identifier 往往比单纯文件扩展名更关键。</p>
+      <p class="en">`GetPackageRootLayerPath()` locates the root layer inside a package, which is central to package-aware layer opening.</p>
+      <p class="zh">`IsPackage()` 明确该 file format 代表 package 语义。工具可以用它判断是否需要 package-aware asset resolution、包内 root layer 展开、以及对 package-relative paths 的特殊处理。它不表示该 layer 一定处于只读或可写状态；实际写出能力还要结合 layer identifier、文件系统权限、包结构约束和 writer 的支持范围。</p>
+      <p class="en">`IsPackage()` identifies package semantics; writeability and asset resolution still depend on environment and package structure.</p>
+      <p class="zh">写出路径包括 `WriteToFile()`、`WriteToStream()` 和 `WriteToString()`。这些方法体现它仍遵循通用 `SdfFileFormat` 写出接口，但 `.usdz` 的归档结构、资源打包规则、外部依赖限制和目标路径权限会影响结果。`WriteToString()` 适合检查 layer 文本表达，不应被误认为已经生成完整可发布的 USDZ package。</p>
+      <p class="en">Write APIs share the general file-format contract, but package layout and external-resource rules affect practical USDZ output.</p>
+      <p class="zh">`ReadFromString()` 可用于从内存字符串读取 layer 内容，常见于测试、转换或中间数据流。对于 USDZ 来说，它不能替代真实 package 的资源存在性检查；材质、贴图、子层和其它包内 asset 是否存在，仍需要通过 package 内容和 resolver 结果验证。</p>
+      <p class="en">`ReadFromString()` is useful for in-memory layer content, not proof that a real package contains all required resources.</p>
+      <p class="zh">`FileFormatArguments`、`InitData()` 和 `SDF_FILE_FORMAT_FACTORY_ACCESS` 说明本类仍是 Sdf 插件工厂体系的一部分。用户通常不会手动 new `SdfUsdzFileFormat`；实际使用中是 `SdfLayer`、resolver 和 file-format registry 根据文件扩展名、identifier 或插件注册信息选择它。</p>
+      <p class="en">Factory and initialization hooks show that this class participates in the Sdf file-format plugin system.</p>
+      <p class="zh">常见误读包括：把 `SdfUsdzFileFormat` 当成 stage API；把 `CanRead()` 当成“所有包内资源都没问题”；把 `WriteToString()` 当成完整 package 写出；只检查 `.usdz` 扩展名而忽略 root layer；或把 package-relative paths 当成普通文件系统路径。正确排查路径是先看 layer identifier，再看 resolved path、root layer path、package contents、Sdf data、write target 和 resolver 日志。</p>
+      <p class="en">Common debugging separates layer identifier, resolved path, package root layer, package contents, Sdf data, write target, and resolver diagnostics.</p>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">USDZ 包文件格式：</span><span class="en">SdfUsdzFileFormat</span></li>
+        <li><span class="zh">包文件格式：</span><span class="en">package file format</span></li>
+        <li><span class="zh">包内根 layer：</span><span class="en">package root layer</span></li>
+        <li><span class="zh">包相对路径：</span><span class="en">package-relative path</span></li>
+        <li><span class="zh">格式可读性：</span><span class="en">CanRead()</span></li>
+        <li><span class="zh">Sdf 文件格式插件：</span><span class="en">SdfFileFormat plugin</span></li>
+      </ul>
     </section>
     <section data-cn-refinement="api-class-quality-pass-042">
       <h2>中文精修导读 / Chinese Reading Notes</h2>

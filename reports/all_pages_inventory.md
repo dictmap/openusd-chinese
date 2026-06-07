@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-07T07:22:50.748Z
+Generated: 2026-06-07T07:35:02.328Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 50
-- Promoted complete pages: 42
-- Bilingual draft pages: 356
+- Bilingual complete pages: 51
+- Promoted complete pages: 43
+- Bilingual draft pages: 355
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -51,7 +51,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_complete | https://openusd.org/release/api/class_sdf_layer.html | full_site/api/class_sdf_layer.html | https://openusd.org/release/api/class_sdf_layer.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_sdf_path.html | full_site/api/class_sdf_path.html | https://openusd.org/release/api/class_sdf_path.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_sdf_prim_spec.html | full_site/api/class_sdf_prim_spec.html | https://openusd.org/release/api/class_sdf_prim_spec.html |
-| api | bilingual_draft | 类参考草稿：SdfUsdzFileFormat Class / SdfUsdzFileFormat Class | full_site/api/class_sdf_usdz_file_format.html | https://openusd.org/release/api/class_sdf_usdz_file_format.html |
+| api | bilingual_complete | https://openusd.org/release/api/class_sdf_usdz_file_format.html | full_site/api/class_sdf_usdz_file_format.html | https://openusd.org/release/api/class_sdf_usdz_file_format.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_sdr_shader_property.html | full_site/api/class_sdr_shader_property.html | https://openusd.org/release/api/class_sdr_shader_property.html |
 | api | bilingual_draft | 类参考草稿：TfDenseHashMap< Key, Data, HashFn, EqualKey, Threshold > Class Template / TfDenseHashMap< Key, Data, HashFn, EqualKey, Threshold > Class Template | full_site/api/class_tf_dense_hash_map.html | https://openusd.org/release/api/class_tf_dense_hash_map.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_tf_py_lock.html | full_site/api/class_tf_py_lock.html | https://openusd.org/release/api/class_tf_py_lock.html |
