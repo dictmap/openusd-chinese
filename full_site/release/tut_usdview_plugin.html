@@ -3,108 +3,320 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：Creating a Usdview Plugin / Creating a Usdview Plugin</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <title>完整双语参考：Creating a Usdview Plugin / Creating a Usdview Plugin</title>
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
-    header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
-    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
-    h1{margin:0;font-size:30px;letter-spacing:0}
-    h2{margin:0 0 12px;font-size:22px}
-    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
-    .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
-    a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
-    li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --ink: #172033;
+      --muted: #5d6d82;
+      --line: #dbe4ef;
+      --blue: #0b63ce;
+      --green: #1b7f5a;
+      --amber: #9a6500;
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 16px/1.72 -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+    }
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 22px 56px;
+    }
+    header, section, nav {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      margin: 0 0 18px;
+    }
+    h1, h2, h3 {
+      margin: 0 0 12px;
+      line-height: 1.28;
+    }
+    h1 {
+      font-size: 2rem;
+    }
+    h2 {
+      font-size: 1.35rem;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+    p {
+      margin: 10px 0;
+    }
+    ul, ol {
+      margin: 8px 0 0 1.4rem;
+      padding: 0;
+    }
+    li {
+      margin: 8px 0;
+    }
+    a {
+      color: var(--blue);
+    }
+    code, pre {
+      font-family: "Cascadia Code", Consolas, monospace;
+      font-size: .95em;
+    }
+    pre {
+      background: #101827;
+      color: #edf4ff;
+      padding: 14px 16px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    .status {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      color: var(--green);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .badge {
+      display: inline-block;
+      border-radius: 999px;
+      background: #e8f5ef;
+      color: var(--green);
+      padding: 3px 10px;
+      font-size: .86rem;
+      font-weight: 700;
+    }
+    .note {
+      border-left: 4px solid var(--amber);
+      padding-left: 14px;
+      background: #fff8e7;
+      color: #3c4658;
+    }
+    .pair {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+      gap: 16px;
+      margin: 16px 0;
+    }
+    .zh, .en {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px 16px;
+      background: #fbfdff;
+    }
+    .zh {
+      border-left: 4px solid var(--green);
+    }
+    .en {
+      color: var(--muted);
+      border-left: 4px solid #9fb3c8;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 12px;
+    }
+    .item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: #fbfdff;
+    }
+    @media (max-width: 760px) {
+      .pair {
+        grid-template-columns: 1fr;
+      }
+      main {
+        padding: 18px 12px 40px;
+      }
+    }
   </style>
 </head>
 <body>
+<main>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：Creating a Usdview Plugin / Creating a Usdview Plugin</h1>
-    <div class="meta">https://openusd.org/release/tut_usdview_plugin.html</div>
+    <div class="status"><span class="badge">bilingual_complete</span><span>完整双语参考 / Complete bilingual reference</span></div>
+    <h1>Creating a Usdview Plugin</h1>
+    <p class="zh">本页把官方 Creating a Usdview Plugin 教程整理为中文主阅读路径，并保留 PluginContainer、registerPlugins、configureView、plugInfo.json、PYTHONPATH、PXR_PLUGINPATH_NAME、usdviewApi、deferredImport、sendMail.py 等原始技术标识。重点是说明 usdview 插件怎样被 libplug 发现，怎样注册命令，怎样接入菜单，怎样使用 usdview API，以及为什么要延迟导入较重的 Python 模块。</p>
+    <p class="en">This page provides a Chinese-first reading path for the official Creating a Usdview Plugin tutorial while retaining the original plugin, API, environment, and file names needed for comparison.</p>
+    <p><a href="https://openusd.org/release/tut_usdview_plugin.html">官方原页 / Open official page</a></p>
   </header>
-  <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section data-cn-refinement="release-quality-pass-067">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Creating a Usdview Plugin 补充中文优先的页面用途、阅读边界、关键概念和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds Chinese-first page purpose, reading boundaries, key concepts, and terminology for Creating a Usdview Plugin while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">`Creating a Usdview Plugin` 教程演示如何为 `usdview` 创建新的 Python plugin，并通过 usdview API 扩展查看器行为。</span></li>
-        <li><span class="zh">`Setting Up a PluginContainer` 是起点：需要创建一个插件目录，并把它放在 USD 构建会搜索插件的位置；目录名、`PluginContainer` 和 `tutorialPlugin` 等标识保持英文原样。</span></li>
-        <li><span class="zh">命令 `mkdir -p &lt;some path&gt;/usdviewPlugins/tutorialPlugin/` 说明的是示例目录结构；中文层只解释占位符和目的，不改写 shell 命令。</span></li>
-        <li><span class="zh">本教程面向想扩展 `usdview` 的开发者，而不是普通查看 USD 文件的用户；如果只是查看 stage，应先使用 `usdview` 基础命令和 `Configure your Environment`。</span></li>
-        <li><span class="zh">阅读时要区分 plugin discovery、Python package layout、usdview API 和 UI action 注册；这些层次分别影响插件能否被发现、导入、调用和显示在界面中。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">Usdview 插件：</span><span class="en">Usdview Plugin</span></li>
-        <li><span class="zh">usdview API：</span><span class="en">usdview API</span></li>
-        <li><span class="zh">插件容器：</span><span class="en">PluginContainer</span></li>
-        <li><span class="zh">教程插件目录：</span><span class="en">tutorialPlugin</span></li>
-        <li><span class="zh">插件发现：</span><span class="en">plugin discovery</span></li>
-        <li><span class="zh">Python 插件：</span><span class="en">Python plugin</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-119">
-      <h2>中文补强导读 / Chinese Refinement Notes</h2>
-      <p class="zh">`Creating a Usdview Plugin` 演示如何为 `usdview` 编写 Python plugin，并通过 usdview API 扩展查看器行为。阅读本页时，应区分 plugin discovery、Python package layout、`PluginContainer`、UI action 注册和运行时 API 调用。</p>
-      <p class="en">This refinement section adds page-specific Chinese reading notes for Creating a Usdview Plugin while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">本教程面向想扩展 `usdview` 的开发者；如果只是查看 USD 文件，应先掌握基础 `usdview` 命令和环境配置。</span></li>
-        <li><span class="zh">`mkdir -p &lt;some path&gt;/usdviewPlugins/tutorialPlugin/` 是目录结构示例，`&lt;some path&gt;` 是占位符，命令文本本身应保持原样。</span></li>
-        <li><span class="zh">`PluginContainer` 负责把插件代码组织成 usdview 可发现、可加载的容器；它不是普通 Python 脚本入口。</span></li>
-        <li><span class="zh">插件能否工作取决于多层条件：目录是否在搜索路径、Python 包是否可导入、usdview API 是否调用正确、UI action 是否注册到界面。</span></li>
-        <li><span class="zh">调试插件时应分层确认 discovery、import、container 初始化、menu/action 注册和回调执行，而不是只看 UI 是否出现按钮。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">usdview 插件：</span><span class="en">usdview plugin</span></li>
-        <li><span class="zh">usdview API：</span><span class="en">usdview API</span></li>
-        <li><span class="zh">插件容器：</span><span class="en">PluginContainer</span></li>
-        <li><span class="zh">教程插件目录：</span><span class="en">tutorialPlugin</span></li>
-        <li><span class="zh">插件发现：</span><span class="en">plugin discovery</span></li>
-        <li><span class="zh">界面动作：</span><span class="en">UI action</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：Creating a Usdview Plugin</span><span class="en">Creating a Usdview Plugin</span></li>
-<li><span class="zh">第 2 级标题：Setting Up a PluginContainer</span><span class="en">Setting Up a PluginContainer</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">In this tutorial, we’ll create a new Python plugin for usdview and learn how to use the usdview API.</p>
-<p class="en">First, we’ll create a new directory to hold our new plugin. We can put this directory anywhere that our USD build will look for plugins, but it’s a good idea to nest it in a directory that can hold other plugins in case we want to install more in the future.</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>mkdir -p &lt;some path&gt;/usdviewPlugins/tutorialPlugin/</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Configure your Environment</a></li>
-<li><a href="https://github.com/PixarAnimationStudios/OpenUSD/tree/v26.05">USD 26.05</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/tut_usdview_plugin.html">打开官方原页 / Open official page</a></p>
-    </section>
-  </main>
+
+  <section data-cn-complete="release-tutorial-usdview-plugin-main-reading-path">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+
+    <div class="pair">
+      <p class="zh">这页要读成“usdview 扩展点教程”，不是一般 Python 脚本教程。usdview 插件运行在 usdview 进程里，能访问当前 stage、选择状态、视图设置和 Qt 主窗口，因此它适合做检查、辅助可视化、截图、批量状态输出或内部工具入口。它不应该被误解为修改 USD 核心格式的机制；插件只是给 usdview 加命令和 UI，并通过 usdviewApi 与当前会话交互。</p>
+      <p class="en">The page is a usdview extension tutorial. A usdview plugin adds commands and UI to the running usdview application and interacts with the current session through usdviewApi.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">第一步是创建插件目录，例如某个 usdviewPlugins 目录下的 tutorialPlugin。这个两层结构有意区分“插件集合目录”和“单个插件模块目录”：PYTHONPATH 应该指向可以 import tutorialPlugin 的上层目录，而 PXR_PLUGINPATH_NAME 应该指向包含 plugInfo.json 的插件目录。很多加载失败都来自这两个路径混淆，或者文件名没有严格写成 __init__.py 与 plugInfo.json。</p>
+      <p class="en">The tutorial creates a tutorialPlugin package inside a plugins directory. PYTHONPATH should expose the Python package, while PXR_PLUGINPATH_NAME should point libplug at the plugin directory containing plugInfo.json.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">PluginContainer 是插件的组织单元。它不是一个命令本身，而是一个负责注册命令、再把命令挂到 usdview UI 上的容器。官方示例里的 TutorialPluginContainer 派生自 pxr.Usdviewq.plugin.PluginContainer，并通过 Tf.Type.Define(TutorialPluginContainer) 注册为 Tf.Type。这个注册步骤很关键，因为 libplug 需要通过类型系统找到容器，而不是靠用户手工 import 后调用。</p>
+      <p class="en">PluginContainer is the organizing object for usdview plugins. It registers command plugins, exposes them in the UI, and is declared as a Tf.Type so libplug can discover it.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">registerPlugins 负责把命令加入 plugin registry。每个 command plugin 都需要一个全局唯一的 identifier、一个显示名和一个 callback。官方示例使用 TutorialPluginContainer.printMessage 作为 identifier，用 Print Message 作为菜单文字，并让 callback 接收 usdviewApi 后打印 Hello, World!。唯一 identifier 最好带容器名前缀，避免多个生产插件之间发生命名冲突。</p>
+      <p class="en">registerPlugins adds command plugins to the registry. Each command has a globally unique identifier, display name, and callback that receives a usdviewApi object.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">configureView 负责把已经注册的命令暴露给用户。官方示例通过 plugUIBuilder.findOrCreateMenu("Tutorial") 创建或找到 Tutorial 菜单，然后把 _printMessage 命令加入菜单。这里要注意 UI 能力边界：教程说明插件当前可以创建简单的菜单，也可以打开新的 Qt 窗口；复杂 UI 仍应尊重 usdview 的主窗口生命周期和交互模型。</p>
+      <p class="en">configureView exposes registered commands in the usdview UI. The tutorial creates a Tutorial menu and adds the Print Message command to it.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">plugInfo.json 是发现链路的核心文件。它声明插件 Type 为 python，Name 为 tutorialPlugin，并在 Info.Types 中把 tutorialPlugin.TutorialPluginContainer 标记为基于 pxr.Usdviewq.plugin.PluginContainer 的类型，还提供 displayName。修改示例时，必须让 Name 匹配 Python 模块名，让 Types key 匹配容器类型路径，让 displayName 表达给用户看的插件名称。</p>
+      <p class="en">plugInfo.json is the discovery resource. It declares a Python plugin, the Python module name, the PluginContainer type, its base class, and a display name.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">环境变量是第二个常见断点。libplug 会直接 import Python 模块，所以 PYTHONPATH 必须包含能导入 tutorialPlugin 的父目录；libplug 还要扫描插件资源，所以 PXR_PLUGINPATH_NAME 必须包含插件目录本身。验证成功的最小信号是：打开 usdview 后出现 Tutorial 菜单，点击 Print Message 后控制台输出 Hello, World!。若菜单不出现，先用绝对路径检查两个环境变量，再检查文件名是否准确。</p>
+      <p class="en">Environment setup is a common failure point. The plugin package must be importable through PYTHONPATH, and libplug must find plugInfo.json through PXR_PLUGINPATH_NAME.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">usdviewApi 是插件与当前 usdview 会话交互的入口。官方列出的 dataModel 包含 stage、currentFrame、viewSettings 和 selection；qMainWindow 可作为 Qt dialog 的父窗口；PrintStatus 可以在 usdview 底部打印状态；GrabViewportShot 和 GrabWindowShot 可以抓取 viewport 或整个窗口截图。插件作者应优先通过这些受支持入口操作 usdview，不要绕过 API 直接操纵内部对象。</p>
+      <p class="en">usdviewApi exposes supported integration points such as dataModel, qMainWindow, PrintStatus, GrabViewportShot, and GrabWindowShot.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">dataModel 的读取边界也要清楚。stage 是当前 Usd.Stage，selection 表示当前 prim 和 property 选择，viewSettings 影响 viewport 表现，例如 complexity、freeCamera、renderMode。插件可以读取或调整这些状态，但应把修改范围限制在用户明确触发的命令中，避免插件加载时就改变视图、选择或 stage 内容。加载阶段越轻，usdview 启动体验越稳定。</p>
+      <p class="en">dataModel gives access to the current stage, frame, viewport settings, and selection state. Plugins should avoid changing user-visible state during load.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">deferredImport 是为了保护 usdview 启动时间。官方建议把实际插件逻辑放到 printer.py 等独立文件里，再在 PluginContainer 中用 self.deferredImport(".printer") 延迟导入。这样 usdview 启动时不会立即 import 重模块；第一次执行命令时才真正加载目标模块。要注意 deferredImport 在真正导入前不知道模块里有什么对象，它假设访问的是函数；如果目标函数不存在，调用时会抛出 ImportError。</p>
+      <p class="en">deferredImport delays importing plugin logic until a command is first invoked. It keeps usdview launch fast, but missing target functions become ImportError at call time.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">sendMail.py 示例说明插件可以做比 Hello, World! 更实用的事：它打开一个 dialog，让用户发送包含 usdview 截图的邮件，并展示 GrabWindowShot、GrabViewportShot、qMainWindow 以及从 usdviewApi 读取上下文数据的用法。阅读这个示例时，重点不是邮件功能本身，而是“如何把 usdview 当前状态、截图和 Qt UI 组合成一个可复用工具”。</p>
+      <p class="en">The sendMail.py example shows a practical plugin that opens a dialog, captures usdview screenshots, and uses usdviewApi context in the email body.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">生产环境组织方式也有明确建议。虽然 PluginContainer 可以发现和执行任意数量的插件模块，但官方说明 Pixar 倾向把插件组织在一个由维护者设置好的模块中。这样普通用户新增命令时不必理解 plugInfo.json，也更容易把所有菜单组织成连贯、有序的结构。换句话说，面向团队的插件平台应把发现和注册细节集中维护，把命令实现留给工具作者。</p>
+      <p class="en">For production organization, the tutorial recommends centralizing plugin setup so users can add commands without editing plugInfo.json and so menus remain coherent.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">插件生命周期也要按阶段理解。发现阶段由 libplug、plugInfo.json、PXR_PLUGINPATH_NAME 和 PYTHONPATH 决定；注册阶段由 registerPlugins 把命令加入 registry；展示阶段由 configureView 决定菜单或窗口入口；执行阶段才真正调用 callback 并传入 usdviewApi。把这四个阶段分清楚，调试时就能快速定位是“没有被发现”“命令没有注册”“菜单没有挂上”还是“命令执行失败”。</p>
+      <p class="en">It is useful to separate discovery, registration, UI exposure, and command execution. Each stage has different failure modes and debugging signals.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">usdview 插件的设计边界是“辅助当前会话”，不是“替代完整应用”。如果命令需要修改 stage，应清楚区分只读检查、UI 状态变化和实际 authoring 操作；如果命令只是截图或状态输出，也应避免意外改变 selection、currentFrame 或 viewSettings。插件越贴近用户当前可见状态，就越应该让副作用显式、可撤销或至少可解释。</p>
+      <p class="en">A usdview plugin is best treated as a helper for the current usdview session. Side effects on stage, selection, frame, or viewport settings should be deliberate and visible.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">registerCommandPlugin 的 callback 签名是另一个关键契约。所有 command plugin callback 都以 usdviewApi 作为唯一参数，因此业务逻辑应该从 usdviewApi.dataModel 读取 stage、selection 或 viewSettings，而不是依赖全局变量保存旧状态。这样插件在不同文件、不同 frame、不同选择状态下被触发时，能基于当前会话做出正确行为。</p>
+      <p class="en">Command callbacks receive usdviewApi as their only argument. They should query the current session through that object rather than relying on stale global state.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">菜单组织也不是小事。一个团队可能有检查、发布、截图、调试、可视化辅助等很多命令。如果每个插件都随意创建顶层菜单，usdview 菜单栏会很快混乱。官方提到集中模块的优势，实质上是在建议把工具入口设计成稳定的信息架构：维护者控制菜单顺序和分组，工具作者只贡献命令实现。</p>
+      <p class="en">Menu organization matters in production. Centralized plugin setup helps keep commands grouped and ordered instead of scattering many independent top-level menus.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">验证一个插件是否合格，不应只看“Hello, World!” 是否打印。完整检查至少包括：usdview 启动时没有明显变慢；插件能被发现；菜单名称和命令名称符合预期；点击命令后 callback 能拿到当前 usdviewApi；命令对 stage、selection、viewSettings 或截图的访问符合预期；关闭和重新打开 usdview 后仍能稳定加载。这些检查能覆盖发现、注册、UI 和执行四个层面。</p>
+      <p class="en">A useful plugin validation path checks launch cost, discovery, menu exposure, callback execution, access to current usdview state, and repeatability across usdview launches.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>执行顺序 / Execution Path</h2>
+    <ol>
+      <li class="zh">创建插件集合目录和 tutorialPlugin 模块目录，确保模块目录中有 __init__.py。</li>
+      <li class="zh">在 __init__.py 中定义 TutorialPluginContainer，派生 PluginContainer，并用 Tf.Type.Define 注册类型。</li>
+      <li class="zh">在 registerPlugins 中注册 command plugin，给它唯一 identifier、显示名和接收 usdviewApi 的 callback。</li>
+      <li class="zh">在 configureView 中用 plugUIBuilder.findOrCreateMenu 创建菜单，并把命令加入菜单。</li>
+      <li class="zh">创建 plugInfo.json，声明 Type、Name、Types、bases 和 displayName。</li>
+      <li class="zh">设置 PYTHONPATH 指向可 import 插件模块的父目录，设置 PXR_PLUGINPATH_NAME 指向包含 plugInfo.json 的插件目录。</li>
+      <li class="zh">启动 usdview，确认 Tutorial 菜单出现，点击 Print Message 后控制台输出 Hello, World!。</li>
+      <li class="zh">将较重逻辑移到独立模块，并用 deferredImport 延迟导入，避免拖慢 usdview 启动。</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>关键片段 / Key Fragments</h2>
+    <p class="zh">以下片段是阅读导向的摘要，保留官方标识以便与源码和文档对照。</p>
+    <pre><code>mkdir -p &lt;some path&gt;/usdviewPlugins/tutorialPlugin/
+
+from pxr import Tf
+from pxr.Usdviewq.plugin import PluginContainer
+
+class TutorialPluginContainer(PluginContainer):
+    def registerPlugins(self, plugRegistry, usdviewApi):
+        self._printMessage = plugRegistry.registerCommandPlugin(
+            "TutorialPluginContainer.printMessage",
+            "Print Message",
+            printMessage)
+
+    def configureView(self, plugRegistry, plugUIBuilder):
+        tutMenu = plugUIBuilder.findOrCreateMenu("Tutorial")
+        tutMenu.addItem(self._printMessage)
+
+Tf.Type.Define(TutorialPluginContainer)</code></pre>
+    <pre><code>{
+    "Plugins": [
+        {
+            "Type": "python",
+            "Name": "tutorialPlugin",
+            "Info": {
+                "Types": {
+                    "tutorialPlugin.TutorialPluginContainer": {
+                        "bases": ["pxr.Usdviewq.plugin.PluginContainer"],
+                        "displayName": "Usdview Tutorial Plugin"
+                    }
+                }
+            }
+        }
+    ]
+}</code></pre>
+  </section>
+
+  <section>
+    <h2>常见误读与调试 / Common Misreadings And Debugging</h2>
+    <ul>
+      <li class="zh">如果 Tutorial 菜单不出现，先检查 PYTHONPATH 是否指向 tutorialPlugin 的父目录，PXR_PLUGINPATH_NAME 是否指向含 plugInfo.json 的目录。</li>
+      <li class="zh">如果模块无法 import，检查目录是否有 __init__.py，模块名是否与 plugInfo.json 的 Name 完全一致。</li>
+      <li class="zh">如果插件被发现但命令不可用，检查 registerCommandPlugin 的 identifier 是否唯一，callback 是否接受 usdviewApi 参数。</li>
+      <li class="zh">如果菜单出现但点击后异常，检查 callback 内部逻辑，以及 deferredImport 指向的函数名是否真实存在。</li>
+      <li class="zh">如果 usdview 启动变慢，把重依赖移动到独立文件，并通过 deferredImport 延迟到用户第一次触发命令时加载。</li>
+      <li class="zh">如果要打开 Qt dialog，用 usdviewApi.qMainWindow 作为父窗口；不要把 qMainWindow 当作任意内部状态的入口。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>术语与保留英文 / Terms Retained</h2>
+    <div class="grid">
+      <div class="item"><strong>PluginContainer</strong><p class="zh">usdview 插件容器，负责注册命令并把命令暴露到 usdview UI。</p></div>
+      <div class="item"><strong>registerPlugins</strong><p class="zh">注册 command plugin 的方法，创建 identifier、display name 和 callback 的绑定。</p></div>
+      <div class="item"><strong>configureView</strong><p class="zh">把已注册命令放入菜单或窗口的 UI 配置方法。</p></div>
+      <div class="item"><strong>plugInfo.json</strong><p class="zh">libplug 发现 Python 插件和 PluginContainer 类型的资源文件。</p></div>
+      <div class="item"><strong>usdviewApi</strong><p class="zh">插件访问当前 stage、selection、viewSettings、qMainWindow 和截图功能的受支持入口。</p></div>
+      <div class="item"><strong>deferredImport</strong><p class="zh">延迟导入插件逻辑的机制，用于避免重模块拖慢 usdview 启动。</p></div>
+    </div>
+  </section>
+
+  <nav>
+    <h2>相关页面 / Related Pages</h2>
+    <ul>
+      <li><a href="tut_generating_new_schema.html">Generating New Schema Classes</a></li>
+      <li><a href="tut_houdini_example.html">Houdini USD Example Workflow</a></li>
+      <li><a href="../../site/toolset.html">Toolset / usdview</a></li>
+      <li><a href="../../openusd_bilingual_final.html">返回总入口 / Back to final entry</a></li>
+    </ul>
+  </nav>
+</main>
 </body>
 </html>

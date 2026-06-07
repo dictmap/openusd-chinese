@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T17:29:09.011Z",
+  "generated_at": "2026-06-07T17:43:02.376Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 318,
-    "bilingual_complete": 88
+    "bilingual_draft": 317,
+    "bilingual_complete": 89
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 307,
-    "good_bilingual": 88
+    "draft_needs_translation": 306,
+    "good_bilingual": 89
   },
   "focus_batch": [
     {
@@ -9446,29 +9446,29 @@
     },
     {
       "index": 315,
-      "title": "页面草稿：Creating a Usdview Plugin / Creating a Usdview Plugin",
+      "title": "Creating a Usdview Plugin",
       "output": "full_site/release/tut_usdview_plugin.html",
       "official_url": "https://openusd.org/release/tut_usdview_plugin.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 27,
-      "enBlockCount": 19,
-      "zhChars": 557,
-      "enLetters": 1243,
-      "bodyChineseChars": 623,
+      "grade": "good_bilingual",
+      "zhBlockCount": 39,
+      "enBlockCount": 18,
+      "zhChars": 2117,
+      "enLetters": 2471,
+      "bodyChineseChars": 2170,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。",
-        "本区块针对 Creating a Usdview Plugin 补充中文优先的页面用途、阅读边界、关键概念和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。",
-        "`Creating a Usdview Plugin` 教程演示如何为 `usdview` 创建新的 Python plugin，并通过 usdview API 扩展查看器行为。"
+        "本页把官方 Creating a Usdview Plugin 教程整理为中文主阅读路径，并保留 PluginContainer、registerPlugins、configureView、plugInfo.json、PYTHONPATH、PXR_PLUGINPATH_NAME、usdviewApi、deferredImport、sendMail.py 等原始技术标识。重点是说明 usdview 插件怎样被 libplug 发现，怎样注册命令，怎样接入菜单，怎样使用 usdview API，以及为什么要延迟导入较重的 Python 模块。",
+        "这页要读成“usdview 扩展点教程”，不是一般 Python 脚本教程。usdview 插件运行在 usdview 进程里，能访问当前 stage、选择状态、视图设置和 Qt 主窗口，因此它适合做检查、辅助可视化、截图、批量状态输出或内部工具入口。它不应该被误解为修改 USD 核心格式的机制；插件只是给 usdview 加命令和 UI，并通过 usdviewApi 与当前会话交互。",
+        "第一步是创建插件目录，例如某个 usdviewPlugins 目录下的 tutorialPlugin。这个两层结构有意区分“插件集合目录”和“单个插件模块目录”：PYTHONPATH 应该指向可以 import tutorialPlugin 的上层目录，而 PXR_PLUGINPATH_NAME 应该指向包含 plugInfo.json 的插件目录。很多加载失败都来自这两个路径混淆，或者文件名没有严格写成 __init__.py 与 plugInfo.json。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.",
-        "This section adds Chinese-first page purpose, reading boundaries, key concepts, and terminology for Creating a Usdview Plugin while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison."
+        "This page provides a Chinese-first reading path for the official Creating a Usdview Plugin tutorial while retaining the original plugin, API, environment, and file names needed for comparison.",
+        "The page is a usdview extension tutorial. A usdview plugin adds commands and UI to the running usdview application and interacts with the current session through usdviewApi."
       ]
     },
     {
