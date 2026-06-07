@@ -3,109 +3,196 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：End to End Example / End to End Example</title>
+  <title>完整双语参考：End to End Example / End to End Example</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    :root{color-scheme:light;--ink:#17202a;--muted:#5d6b7b;--panel:#fff;--line:#d8dee8;--accent:#1463a5;--ok:#177245;--bg:#f5f7fb}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.68}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
-    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 52px}
+    section{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:22px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
+    p{margin:10px 0}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:var(--ok);color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
-    a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    .en{display:block;color:var(--muted);margin-top:4px}
+    a{color:var(--accent);overflow-wrap:anywhere}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
     code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:12px}
+    .tile{border:1px solid var(--line);border-radius:8px;padding:14px;background:#fbfcff}
+    .k{font-weight:700;color:#17324d}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：End to End Example / End to End Example</h1>
-    <div class="meta">https://openusd.org/release/tut_end_to_end.html</div>
+    <span class="status">bilingual_complete</span>
+    <h1>End to End Example</h1>
+    <div class="meta">中文为主 / English retained · release tutorial · https://openusd.org/release/tut_end_to_end.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+      <p class="zh">本页是 OpenUSD release 教程 End to End Example 的完整双语复刻页。中文解释放在主阅读路径前面；英文页面名、目录名、文件名、命令、脚本名、插件名、API 名、token、代码片段和链接保持原样，便于和官方教程逐项核对。</p>
+      <p class="en">This page is a Chinese-first bilingual reproduction of the OpenUSD release tutorial End to End Example. English identifiers, commands, file names, script names, plugin names, code snippets, and links are retained for comparison.</p>
+      <p class="zh">官方教程的目标是用一个极简 pipeline 展示 USD 如何贯穿资产创建、文件检查、脚本化修改、集合搭建、sequence/shot 分层和最终渲染。它不是生产规范模板，也不是要求每个工作室照搬目录结构，而是把前面教程中的 layer、reference、variant、shading 和 composition 概念放进一个能运行的端到端例子里。</p>
+      <p class="en">The official tutorial uses a simplified pipeline to connect asset creation, inspection, scripted editing, set dressing, shot layering, and rendering.</p>
     </section>
-    <section data-cn-refinement="release-quality-pass-066">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 End to End Example 补充中文优先的页面用途、阅读边界、关键概念和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds Chinese-first page purpose, reading boundaries, key concepts, and terminology for End to End Example while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+
+    <section data-cn-complete="release-tutorial-end-to-end-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+
+      <p class="zh">本教程首先定义范围：所有文件位于 USD/extras/usd/tutorials/endToEnd。这个路径本身很重要，因为后续命令默认从教程根目录运行，并依赖 assets、scripts、tutorial_scripts、models、shots 等相对目录。阅读时应把它看作一个小型制作沙盒：assets 提供输入和可复用几何，scripts 提供通用工具，tutorial_scripts 提供本教程专用脚本，models 保存资产输出，shots 保存 sequence 和 shot 级层结构。</p>
+      <p class="en">The tutorial root and its folders form a small production sandbox for assets, tools, tutorial-specific scripts, models, and shots.</p>
+
+      <p class="zh">官方列出的 goals 有三点：从 Maya 生成 USD 文件，检查 USD 文件，以及用代码操作 USD 文件。中文阅读重点不是 Maya 按钮本身，而是三类能力如何串起来：先有资产级 layer，再通过 usdcat、usdview 等工具做 introspection，再用 Python 脚本为资产补 variant、为 set 添加引用、为 shot 添加 layout 和 animation 意见。这个顺序把 USD 的“文件格式”表面推向“场景描述和组合系统”的实用层面。</p>
+      <p class="en">The goals connect authoring, introspection, and scripted manipulation into a single USD workflow.</p>
+
+      <p class="zh">Create Assets 的 Bootstrap 小节用 python scripts/create_asset.py Ball --shadingVariantLayer -o models/Ball 创建 Ball 资产目录，并建议用 ls、usdcat、usdview 检查输出。这里的关键是先建立资产壳和 layer 结构，而不是立刻得到最终几何。usdview 能无错误打开，就说明 asset root、文件路径、默认 prim 或引用路径至少没有立即断裂；几何会在后续 Maya 或预导出资产步骤里加入。</p>
+      <p class="en">The bootstrap step creates an asset shell and validates it before geometry is added.</p>
+
+      <p class="zh">同一节还创建 Table 资产。教程明确提醒，models/Ball、models/Table 这样的目录组织只是方便版本和文件管理的示例，不是 USD 运行所必需的结构。这个边界很重要：USD 不强制工作室采用官方示例目录；它只要求 layer、asset path、reference、payload 和 resolver 能按你的管线规则解析。中文复刻应保留这个提醒，避免读者把示例路径误当成规范。</p>
+      <p class="en">The asset folder layout is convenient for the tutorial but is not a USD requirement.</p>
+
+      <p class="zh">Maya 小节具有历史性质。官方说明，过去随 USD 分发的 Maya 插件已并入 Autodesk maya-usd 仓库；如果不想或不能在本机完成 Maya 导出，可以复制仓库中预导出的 Ball.maya.usd 和 Table.maya.usd 后继续教程。这里要理解的是 interchange 边界：Maya 只是几何和 shading 数据的一种来源，后续 USD composition、variant 和 shot work 并不依赖读者亲自打开 Maya 才能理解。</p>
+      <p class="en">The Maya section is historical and can be skipped by using pre-exported assets from the tutorial repository.</p>
+
+      <p class="zh">Shading Variants 小节通过 tutorial_scripts/add_shadingVariants.py 为 Ball 添加着色变体。这个步骤承接前面的 Simple Shading 和 Authoring Variants 教程：纹理文件复制到 models/Ball/tex，脚本在 Ball 模型上生成 shadingVariant variant set，读者可以在 usdview 的 Meta Data 面板中切换不同颜色。要注意，示例脚本假定前面的资产路径和 Maya 输出存在；如果改过目录或文件名，需要先调整脚本，而不是把 USD variant 机制本身归为失败。</p>
+      <p class="en">The shading-variant step adds a variant set to the Ball asset and assumes the tutorial asset layout is intact.</p>
+
+      <p class="zh">Set dressing 小节用 tutorial_scripts/create_Room_set.py 创建 Room_set，把 Table 和一组 Ball 模型组合到同一个 set model 中。这里展示的是 reference-based assembly：set 并不复制每个资产的全部几何，而是通过引用和 transform 组织多个资产实例。官方还指出脚本硬编码了部分绝对路径，真实管线更应该使用 path resolver plugin 或站点自己的 resolver 策略来定位资产。这个提醒直接对应用户早先遇到的链接和缺页问题：路径解析与资产组织永远要分清。</p>
+      <p class="en">The set-dressing step assembles referenced assets into Room_set and exposes the limitations of hard-coded paths.</p>
+
+      <p class="zh">Shot Work 是本页最重要的 composition 段落。教程用 sequence 和 shot 模拟真实制作组织：sequence 表示一组相关镜头，shot 会通过 sublayering 包含与 sequence 相关的场景描述；同时 sequence 和 shot 都可以继承或引用一个全局 shared shot.usd。USD 本身并没有“shot”或“sequence”的内建业务概念，这只是管线组织方式。真正的 USD 机制是 layer stack、sublayer、reference 和 opinion strength。</p>
+      <p class="en">Shot and sequence are pipeline concepts in this tutorial; USD itself provides the layer and composition mechanisms.</p>
+
+      <p class="zh">教程列出的 layer 顺序从 strongest 到 weakest：s00_01.usd、s00_01_sim.usd、s00_01_anim.usd、s00_01_layout.usd、s00_01_sets.usd，然后是 s00.usd、s00_sim.usd、s00_anim.usd、s00_layout.usd、s00_sets.usd，最后是全局 shot.usd。这个顺序是理解 USD override 的关键。强层可以覆盖弱层意见，所以 shot 级 animation 或 layout 可以覆盖 sequence 级默认摆放，而全局 camera 或共享结构可以放在更弱的位置供多个镜头继承。</p>
+      <p class="en">The strongest-to-weakest layer order demonstrates how shot-level opinions override sequence and global opinions.</p>
+
+      <p class="zh">Sequence/Shot setup 小节使用 scripts/create_shot.py 创建 shots/s00 和 shots/s00_01。第一个命令以 assets/shot.usd 为 base，第二个命令以 shots/s00/s00.usd 为 base。这样生成的层结构让 shot 继承 sequence，而 sequence 继承全局 shot 基础层。初始打开 shots/s00_01/s00_01.usd 时，通常只会看到来自基础层的 camera 或很少内容，这正是预期结果：管线骨架先搭好，后续部门层再逐步写入 set、layout、anim 和 sim 意见。</p>
+      <p class="en">create_shot.py builds the sequence and shot scaffolding before department layers add production opinions.</p>
+
+      <p class="zh">Simple shot work 小节先在 sequence 层添加 Room_set，再让 layout TD 添加 cue ball、删除不需要的 props、摆放 camera，最后运行 animation 脚本。这里体现了 USD 的核心价值：不同部门可以在不同 layer 中写入自己的意见，最终 stage 通过 composition 呈现组合结果。排查时应分别查看 s00、s00_01_sets、s00_01_layout、s00_01_anim 等文件，而不是只看最终 s00_01.usd；否则很难判断某个位置、可见性或动画意见来自哪一层。</p>
+      <p class="en">Department layers author separate opinions, and the composed stage shows the combined result.</p>
+
+      <p class="zh">Render 小节也是历史说明。官方提到 Katana USD 插件在 USD 20.05 后已从 USD 发行版移除，转向 Foundry 支持的插件；本段保留作为历史参考，不是当前必须测试的现代渲染路径。教程使用 katana assets/simple.katana、PxrusdIn、camera merge、gaffer light 和 RenderSettings preview render 说明最终镜头如何进入渲染宿主。中文读者应把它理解成“USD 组合结果交给 DCC/renderer”的例子，而不是把 Katana 环境作为完成本教程的硬依赖。</p>
+      <p class="en">The Katana render step is retained as historical context and illustrates handoff from USD composition to a rendering host.</p>
+
+      <p class="zh">端到端检查时，可以按四条证据链确认流程是否成立。第一，资产链：models/Ball 和 models/Table 是否存在，Ball 是否有 shadingVariant，Room_set 是否能引用它们。第二，组合链：shots/s00 和 shots/s00_01 的 sublayer/reference 关系是否按强弱顺序组成。第三，部门链：sets、layout、anim、sim 层是否各自承载对应意见。第四，显示链：usdview 或渲染宿主是否能解析路径、加载 layer、显示 camera、set、Ball 和 animation。任何一条断裂，都应回到对应文件和脚本排查。</p>
+      <p class="en">A robust review checks asset, composition, department, and display/render chains separately.</p>
+
+      <p class="zh">和前面单点教程相比，本页还强调“中间产物要可检查”。每运行一个脚本，都应该用 usdcat 查看生成的 layer，用 usdview 查看 composed stage，用目录列表确认脚本是否把文件写到预期位置。这样可以把错误限制在刚执行的步骤，而不是等到最终渲染才发现引用、变体、相机或动画层不对。</p>
+      <p class="en">Each intermediate layer should be inspected so errors are localized to the step that produced them.</p>
+
+      <p class="zh">真实生产中可以替换 Maya、Katana、目录命名和 resolver，但不要丢掉教程展示的核心分层思想：资产负责可复用模型，set 负责资产集合，sequence 负责多镜头共享意见，shot 负责具体镜头覆盖，部门层负责把 layout、animation、simulation 等意见分开 author。这个分层结构才是本页最值得迁移的内容。</p>
+      <p class="en">The transferable lesson is the layered separation between reusable assets, sets, sequence opinions, shot overrides, and department work.</p>
+
+      <p class="zh">因此，本页的中文主阅读路径是：进入 endToEnd 根目录，理解 assets/scripts/tutorial_scripts 的角色，bootstrap Ball 和 Table，必要时复制预导出 Maya USD，添加 Ball shading variants，创建 Room_set，建立 sequence 和 shot 层结构，把 set 放进 sequence，再在 shot 级添加 layout 和 animation，最后用 usdview 或历史 Katana 示例检查组合结果。它把前面分散的 USD 概念连接成一次最小 pipeline 演练，并给后续自建管线提供可核对的组织模板。</p>
+      <p class="en">The main reading path walks from tutorial setup through assets, variants, set assembly, shot layering, department edits, and final inspection.</p>
+    </section>
+
+    <section>
+      <h2>执行步骤 / Execution Path</h2>
+      <ol>
+        <li><span class="zh">确认从 USD/extras/usd/tutorials/endToEnd 根目录运行命令，并理解 assets、scripts、tutorial_scripts、models、shots 的职责。</span><span class="en">Run commands from the endToEnd tutorial root and understand the folder roles.</span></li>
+        <li><span class="zh">用 create_asset.py 创建 Ball 和 Table 资产目录，并用 ls、usdcat、usdview 检查输出。</span><span class="en">Bootstrap Ball and Table assets and inspect the generated layers.</span></li>
+        <li><span class="zh">如果不走 Maya 导出路径，复制 assets 中预导出的 Ball.maya.usd 和 Table.maya.usd 后继续。</span><span class="en">Use pre-exported assets when skipping the historical Maya export path.</span></li>
+        <li><span class="zh">复制 Ball 纹理并运行 add_shadingVariants.py，在 usdview 中检查 shadingVariant 下拉选择。</span><span class="en">Add shading variants and inspect the variant set in usdview.</span></li>
+        <li><span class="zh">运行 create_Room_set.py，把 Table 和多个 Ball 组合成 Room_set。</span><span class="en">Create the Room_set model from referenced assets.</span></li>
+        <li><span class="zh">用 create_shot.py 创建 sequence s00 和 shot s00_01，建立 strongest 到 weakest 的 layer stack。</span><span class="en">Create the sequence and shot layer scaffolding.</span></li>
+        <li><span class="zh">运行 add_set_to_s00.py、layout_shot_s00_01.py 和 anim_shot_s00_01.py，逐步写入 set、layout 和 animation 意见。</span><span class="en">Author set, layout, and animation opinions with tutorial scripts.</span></li>
+        <li><span class="zh">用 usdview 或历史 Katana 示例检查最终组合结果；如果出错，按资产链、组合链、部门链和显示链分层排查。</span><span class="en">Inspect the composed result and debug by pipeline layer.</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>关键概念边界 / Concept Boundaries</h2>
+      <div class="grid">
+        <div class="tile"><p class="zh"><span class="k">pipeline</span> 在本页中是教学用制作流程，不是 USD schema 或强制目录规范。</p><p class="en">The pipeline is an example workflow, not a USD-mandated schema.</p></div>
+        <div class="tile"><p class="zh"><span class="k">asset bootstrap</span> 先创建资产壳和 layer 结构，几何与 shading 可随后补入。</p><p class="en">Asset bootstrap creates a layer shell before geometry and shading are added.</p></div>
+        <div class="tile"><p class="zh"><span class="k">shadingVariant</span> 是 Ball 资产上的 variant set，用于切换不同着色意见。</p><p class="en">shadingVariant is a variant set on the Ball asset.</p></div>
+        <div class="tile"><p class="zh"><span class="k">Room_set</span> 演示引用式装配，不应理解为复制所有底层几何。</p><p class="en">Room_set demonstrates reference-based assembly.</p></div>
+        <div class="tile"><p class="zh"><span class="k">sequence/shot</span> 是管线业务概念；USD 实际处理的是 layer stack 和 opinion strength。</p><p class="en">Sequence and shot are pipeline concepts backed by USD composition.</p></div>
+        <div class="tile"><p class="zh"><span class="k">Katana render</span> 是历史渲染宿主示例，不是当前 OpenUSD 完成条件。</p><p class="en">The Katana render section is historical host-rendering context.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>命令摘录 / Command Fragments</h2>
+      <p class="zh">下面保留核心命令用于核对执行路径。命令、目录名和脚本名保持英文原样。</p>
+      <p class="en">The commands are retained to preserve the tutorial execution path.</p>
+      <pre><code>python scripts/create_asset.py Ball --shadingVariantLayer -o models/Ball
+ls models/Ball
+usdcat models/Ball/*.usd
+usdview models/Ball/Ball.usd
+
+python scripts/create_asset.py Table -o models/Table
+cp assets/Ball/Ball.maya.usd models/Ball/Ball.maya.usd
+cp assets/Table/Table.maya.usd models/Table/Table.maya.usd
+
+cp -r assets/Ball/tex models/Ball/
+python tutorial_scripts/add_shadingVariants.py
+usdview models/Ball/Ball.usd</code></pre>
+      <pre><code>python tutorial_scripts/create_Room_set.py
+usdview models/Room_set/Room_set.usd
+
+python scripts/create_shot.py s00 -o shots/s00 -b assets/shot.usd
+python scripts/create_shot.py s00_01 -o shots/s00_01 -b shots/s00/s00.usd
+usdview shots/s00_01/s00_01.usd
+
+python tutorial_scripts/add_set_to_s00.py
+python tutorial_scripts/layout_shot_s00_01.py
+python tutorial_scripts/anim_shot_s00_01.py
+
+katana assets/simple.katana</code></pre>
+    </section>
+
+    <section>
+      <h2>调试路径 / Debugging Path</h2>
       <ul>
-        <li><span class="zh">`End to End Example` 用一个极简 pipeline 展示从资产创建到场景组合的端到端 USD 工作流，适合在完成 Hello World、layer 和 variant 基础教程后阅读。</span></li>
-        <li><span class="zh">教程文件位于 `USD/extras/usd/tutorials/endToEnd`；`assets`、`models`、`scripts` 等目录名应保持原样，因为它们对应示例工程的真实文件结构。</span></li>
-        <li><span class="zh">`Create Assets` 与 `Bootstrap` 展示如何从脚本创建 asset，并逐步组织 geometry、shading variant layer 和输出模型；命令如 `python scripts/create_asset.py Ball --shadingVariantLayer -o models/Ball` 必须原样保留。</span></li>
-        <li><span class="zh">本页重点不是解释每个 Python API 的完整签名，而是展示 USD 在一个简化制作流程中如何串起资产、脚本、layer、variant 和最终 stage。</span></li>
-        <li><span class="zh">阅读时建议同时打开 `Configure your Environment`，确认命令运行目录、Python 环境和 USD 安装路径；否则示例脚本可能因路径或模块加载失败而无法复现。</span></li>
+        <li><span class="zh">如果脚本找不到文件，先确认当前工作目录是否是 endToEnd 根目录，再确认 models 和 shots 是否由前面步骤生成。</span><span class="en">If scripts cannot find files, check the working directory and generated folders first.</span></li>
+        <li><span class="zh">如果 Ball 或 Table 在 usdview 中不可见，检查 Maya 预导出文件是否复制到正确位置，或 Maya 导出是否覆盖了预期路径。</span><span class="en">If assets are missing in usdview, verify the pre-exported or exported asset layers.</span></li>
+        <li><span class="zh">如果 shadingVariant 下拉没有出现，检查 Ball.shadingVariants.usda 是否生成，以及 Ball.usd 是否把该 variant layer 纳入资产结构。</span><span class="en">If the shading variant is missing, inspect the generated variant layer and asset composition.</span></li>
+        <li><span class="zh">如果 Room_set 缺资产，检查引用路径和脚本中硬编码路径；真实管线应优先使用 resolver 策略，而不是散落绝对路径。</span><span class="en">If Room_set misses assets, inspect references and hard-coded paths.</span></li>
+        <li><span class="zh">如果 shot 结果不符合预期，按 strongest 到 weakest 的 layer 顺序定位意见来源，不要只看最终 composed stage。</span><span class="en">If shot results are wrong, inspect opinions in layer-strength order.</span></li>
+        <li><span class="zh">如果 Katana 部分不可运行，不应阻塞 USD 教程理解；该段是历史宿主渲染示例，核心仍是前面的 USD asset 和 composition 链路。</span><span class="en">Katana runtime issues should not block understanding the USD composition workflow.</span></li>
       </ul>
-      <h3>术语对照 / Terms</h3>
+    </section>
+
+    <section>
+      <h2>术语对照 / Terms</h2>
       <ul>
         <li><span class="zh">端到端示例：</span><span class="en">End to End Example</span></li>
-        <li><span class="zh">制作管线：</span><span class="en">pipeline</span></li>
-        <li><span class="zh">资产目录：</span><span class="en">assets</span></li>
-        <li><span class="zh">脚本目录：</span><span class="en">scripts</span></li>
+        <li><span class="zh">简化制作流程：</span><span class="en">simplified pipeline</span></li>
+        <li><span class="zh">资产目录：</span><span class="en">assets, models</span></li>
+        <li><span class="zh">通用脚本：</span><span class="en">scripts</span></li>
+        <li><span class="zh">教程专用脚本：</span><span class="en">tutorial_scripts</span></li>
         <li><span class="zh">着色变体图层：</span><span class="en">shadingVariantLayer</span></li>
-        <li><span class="zh">USD 场景舞台：</span><span class="en">stage</span></li>
+        <li><span class="zh">集合搭建：</span><span class="en">set dressing</span></li>
+        <li><span class="zh">镜头与序列：</span><span class="en">shot and sequence</span></li>
+        <li><span class="zh">层强弱顺序：</span><span class="en">strongest-to-weakest layer order</span></li>
+        <li><span class="zh">组合后的舞台：</span><span class="en">composed stage</span></li>
       </ul>
     </section>
-    <section data-cn-refinement="release-quality-pass-119">
-      <h2>中文补强导读 / Chinese Refinement Notes</h2>
-      <p class="zh">`End to End Example` 用一个极简 USD pipeline 串起资产、模型、脚本和场景组合。阅读本页时，应把它当作学习目录和执行路线：先确认 `USD/extras/usd/tutorials/endToEnd` 的文件结构，再按教程逐步运行脚本、检查生成的 layer 和最终 stage。</p>
-      <p class="en">This refinement section adds page-specific Chinese reading notes for End to End Example while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">本页的价值是展示端到端组织方式，而不是替代前面的 Hello World、layer、reference、variant 或 shading 教程；它更像把前置概念放进一个小型生产流程。</span></li>
-        <li><span class="zh">`assets`、`models`、`scripts` 等目录名应保持原样，因为它们对应示例工程结构；中文层只说明每个目录的角色，不改写路径。</span></li>
-        <li><span class="zh">`scripts` 目录中的工具可以用 `-h` 查看参数，说明教程鼓励读者检查脚本行为，而不是盲目复制命令。</span></li>
-        <li><span class="zh">排查端到端示例时，应按顺序看输入资产、脚本输出、layer 组合和最终 composed stage，避免只盯着最后一个 USD 文件。</span></li>
-        <li><span class="zh">本地复刻保留官方英文摘录是为了让读者能和原教程逐项核对；命令、目录、文件名和示例结构必须保持英文原样。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">端到端示例：</span><span class="en">End to End Example</span></li>
-        <li><span class="zh">流程或制作管线：</span><span class="en">pipeline</span></li>
-        <li><span class="zh">资产目录：</span><span class="en">assets</span></li>
-        <li><span class="zh">模型目录：</span><span class="en">models</span></li>
-        <li><span class="zh">脚本目录：</span><span class="en">scripts</span></li>
-        <li><span class="zh">组合后的场景：</span><span class="en">composed stage</span></li>
-      </ul>
-    </section>
+
     <section>
-      <h2>页面结构 / Page Structure</h2>
+      <h2>相关页面 / Related Pages</h2>
       <ul>
-<li><span class="zh">第 1 级标题：End to End Example</span><span class="en">End to End Example</span></li>
-<li><span class="zh">第 2 级标题：Create Assets</span><span class="en">Create Assets</span></li>
-<li><span class="zh">第 3 级标题：Bootstrap</span><span class="en">Bootstrap</span></li>
+        <li><a href="tut_simple_shading.html">上一教程：Simple Shading in USD</a></li>
+        <li><a href="tut_houdini_example.html">下一教程：Houdini USD Example Workflow</a></li>
+        <li><a href="tut_generating_new_schema.html">Generating New Schema Classes</a></li>
+        <li><a href="tut_usd_tutorials.html">USD Tutorials 总览</a></li>
+        <li><a href="../../site/toolset.html">Toolset：usdcat、usdview、usdchecker 等工具</a></li>
+        <li><a href="../../site/glossary.html">OpenUSD 术语表</a></li>
+        <li><a href="https://openusd.org/release/tut_end_to_end.html">官方原页 / Open official page</a></li>
+        <li><a href="https://github.com/PixarAnimationStudios/OpenUSD/tree/v26.05">USD 26.05 source / Open official source</a></li>
       </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">This tutorial aims to show USD in an extremely simplified pipeline. The files for this tutorial live in USD/extras/usd/tutorials/endToEnd .</p>
-<p class="en">assets: This folder contains some files that are used in the tutorial. It also contains some of the geometry in case you do not want to author them yourself.</p>
-<p class="en">scripts: Some generic scripts we use in the tutorial. We’ve tried to document them. Feel free to poke around, or run them with -h .</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>python scripts/create_asset.py Ball --shadingVariantLayer -o models/Ball</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Configure your Environment</a></li>
-<li><a href="https://github.com/PixarAnimationStudios/OpenUSD/tree/v26.05">USD 26.05</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/tut_end_to_end.html">打开官方原页 / Open official page</a></p>
     </section>
   </main>
 </body>
