@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T08:07:43.429Z",
+  "generated_at": "2026-06-07T08:25:51.876Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 352,
-    "bilingual_complete": 54
+    "bilingual_draft": 351,
+    "bilingual_complete": 55
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 341,
-    "good_bilingual": 54
+    "draft_needs_translation": 340,
+    "good_bilingual": 55
   },
   "focus_batch": [
     {
@@ -2192,29 +2192,29 @@
     },
     {
       "index": 46,
-      "title": "类参考草稿：UsdImagingNurbsPatchAdapter Class / UsdImagingNurbsPatchAdapter Class",
+      "title": "完整双语参考：UsdImagingNurbsPatchAdapter Class / UsdImagingNurbsPatchAdapter Class",
       "output": "full_site/api/class_usd_imaging_nurbs_patch_adapter.html",
       "official_url": "https://openusd.org/release/api/class_usd_imaging_nurbs_patch_adapter.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 57,
-      "enBlockCount": 44,
-      "zhChars": 665,
-      "enLetters": 1906,
-      "bodyChineseChars": 740,
+      "grade": "good_bilingual",
+      "zhBlockCount": 52,
+      "enBlockCount": 54,
+      "zhChars": 1437,
+      "enLetters": 3739,
+      "bodyChineseChars": 1501,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 UsdImagingNurbsPatchAdapter Class Reference 补充中文优先的类职责、读取重点、关键属性/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`UsdImagingNurbsPatchAdapter` 为 `UsdGeomNurbsPatch` 提供 delegate support，是 USD Imaging 体系中面向 NURBS patch schema 的 prim adapter。"
+        "本页已按完整双语参考页整理：中文优先解释 `UsdImagingNurbsPatchAdapter` 在 USD Imaging / Hydra 数据流中的职责、方法分组、NURBS patch 数据边界和调试含义，同时保留英文 API 名称、类型名、方法名、token、代码片段、链接和必要英文原文，便于同官方 Doxygen 页面逐项核对。",
+        "官方简述说 `UsdImagingNurbsPatchAdapter` 是 “Delegate support for `UsdGeomNurbsPatch`”。这句话的重点不是新增一个建模 schema，而是说明本类位于 USD Imaging 的 adapter 层：它把已经由 `UsdGeomNurbsPatch` 描述的 USD prim 转换成 `UsdImagingDelegate`、Hydra render index 或 scene-index 数据源可以消费的数据。作者在 USD 文件中写入 NURBS patch 时仍面对 `UsdGeomNurbsPatch`；渲染、预览或成像同步时，`UsdImagingNurbsPatchAdapter` 才介入。",
+        "继承关系上，本页应和 `UsdImagingPrimAdapter`、`UsdImagingGprimAdapter` 以及 `UsdImagingInstanceablePrimAdapter` 一起读。基类负责通用 prim 生命周期、路径、可见性、实例化和 gprim 共享行为；`UsdImagingNurbsPatchAdapter` 只补足 NURBS patch 特有的数据读取和失效语义。不要把它误读成 NURBS 曲面求值器、tessellation 算法库或最终 renderer 的网格生成实现。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, reading guidance, key attribute/method groups, and terminology for UsdImagingNurbsPatchAdapter Class Reference while retaining English page names, class names, method names, attribute names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page is promoted as complete bilingual reference coverage for UsdImagingNurbsPatchAdapter while retaining original API identifiers, type names, method names, tokens, code fragments, links, and necessary English source excerpts for comparison with the official Doxygen page.",
+        "The official summary says this class provides delegate support for UsdGeomNurbsPatch. In this bilingual edition, that means the class belongs to the USD Imaging adapter layer and translates authored UsdGeomNurbsPatch prim data into data consumable by UsdImagingDelegate, Hydra render-index paths, or scene-index data sources."
       ]
     },
     {

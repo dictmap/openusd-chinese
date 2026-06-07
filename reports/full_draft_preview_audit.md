@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-07T08:07:49.515Z
+Generated: 2026-06-07T08:25:57.063Z
 
-Transient base URL: `http://127.0.0.1:50551/`
+Transient base URL: `http://127.0.0.1:64968/`
 
 Result:
 
 - Passed: true
-- Draft pages: 352
-- Pages checked: 352
-- Passed pages: 352
+- Draft pages: 351
+- Pages checked: 351
+- Passed pages: 351
 - Failed pages: 0
-- Final HTML links: 352
-- Local assets checked: 352
+- Final HTML links: 351
+- Local assets checked: 351
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -29,7 +29,6 @@ Result:
 | true | full_site/api/class_gf_ray.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_sdf_children_view.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_tf_dense_hash_map.html | 200 | true | 0 | 0 |
-| true | full_site/api/class_usd_imaging_nurbs_patch_adapter.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_usd_schema_registry.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_vdf_test_utils_1_1_node.html | 200 | true | 0 | 0 |

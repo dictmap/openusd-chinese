@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：UsdImagingNurbsPatchAdapter Class / UsdImagingNurbsPatchAdapter Class</title>
+  <title>完整双语参考：UsdImagingNurbsPatchAdapter Class / UsdImagingNurbsPatchAdapter Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,76 +24,66 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：UsdImagingNurbsPatchAdapter Class / UsdImagingNurbsPatchAdapter Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：UsdImagingNurbsPatchAdapter Class / UsdImagingNurbsPatchAdapter Class</h1>
     <div class="meta">https://openusd.org/release/api/class_usd_imaging_nurbs_patch_adapter.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页整理：中文优先解释 `UsdImagingNurbsPatchAdapter` 在 USD Imaging / Hydra 数据流中的职责、方法分组、NURBS patch 数据边界和调试含义，同时保留英文 API 名称、类型名、方法名、token、代码片段、链接和必要英文原文，便于同官方 Doxygen 页面逐项核对。</p>
+      <p class="en">This page is promoted as complete bilingual reference coverage for UsdImagingNurbsPatchAdapter while retaining original API identifiers, type names, method names, tokens, code fragments, links, and necessary English source excerpts for comparison with the official Doxygen page.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-040">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 UsdImagingNurbsPatchAdapter Class Reference 补充中文优先的类职责、读取重点、关键属性/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, key attribute/method groups, and terminology for UsdImagingNurbsPatchAdapter Class Reference while retaining English page names, class names, method names, attribute names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+    <section data-cn-complete="usd-imaging-nurbs-patch-adapter-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">官方简述说 `UsdImagingNurbsPatchAdapter` 是 “Delegate support for `UsdGeomNurbsPatch`”。这句话的重点不是新增一个建模 schema，而是说明本类位于 USD Imaging 的 adapter 层：它把已经由 `UsdGeomNurbsPatch` 描述的 USD prim 转换成 `UsdImagingDelegate`、Hydra render index 或 scene-index 数据源可以消费的数据。作者在 USD 文件中写入 NURBS patch 时仍面对 `UsdGeomNurbsPatch`；渲染、预览或成像同步时，`UsdImagingNurbsPatchAdapter` 才介入。</p>
+      <p class="en">The official summary says this class provides delegate support for UsdGeomNurbsPatch. In this bilingual edition, that means the class belongs to the USD Imaging adapter layer and translates authored UsdGeomNurbsPatch prim data into data consumable by UsdImagingDelegate, Hydra render-index paths, or scene-index data sources.</p>
+      <p class="zh">继承关系上，本页应和 `UsdImagingPrimAdapter`、`UsdImagingGprimAdapter` 以及 `UsdImagingInstanceablePrimAdapter` 一起读。基类负责通用 prim 生命周期、路径、可见性、实例化和 gprim 共享行为；`UsdImagingNurbsPatchAdapter` 只补足 NURBS patch 特有的数据读取和失效语义。不要把它误读成 NURBS 曲面求值器、tessellation 算法库或最终 renderer 的网格生成实现。</p>
+      <p class="en">The class should be read together with UsdImagingPrimAdapter, UsdImagingGprimAdapter, and UsdImagingInstanceablePrimAdapter. Those base adapters cover common prim lifecycle and gprim behavior, while this adapter covers the NURBS-patch-specific imaging contract.</p>
+      <p class="zh">`Data access` 分组中的 `GetPoints()` 和 `GetTopology()` 是本页最直接的读取入口。`GetPoints()` 面向控制点或点数据，`GetTopology()` 面向 patch 的拓扑描述；它们的职责是把 `UsdGeomNurbsPatch` 的几何输入整理给成像层，而不是直接返回某个 renderer 最终绘制的三角网格。排查 NURBS patch 不显示时，应同时确认 USD prim 上的 authored 数据是否存在、adapter 是否支持该 prim、Hydra 后端是否消费对应数据，以及 renderer 是否支持后续曲面细分或转换。</p>
+      <p class="en">The Data access group exposes GetPoints() and GetTopology(). These methods provide patch geometry inputs to the imaging layer; they do not by themselves define the final renderer tessellation result.</p>
+      <p class="zh">`GetImagingSubprims()`、`GetImagingSubprimType()` 和 `GetImagingSubprimData()` 属于更现代的数据源式读取路径：一个 USD prim 可以在 imaging 层暴露为一个或多个 subprim，每个 subprim 有类型和数据。对 NURBS patch 来说，这帮助 adapter 把 patch 的几何、拓扑、可能的 primvar 或定位信息拆成 Hydra 可以按需查询的数据单元。阅读这些方法时，应保留 `TfToken`、`SdfPath`、`HdDataSourceLocatorSet` 等标识原样，因为它们是跨 USD 和 Hydra 边界传递语义的键。</p>
+      <p class="en">GetImagingSubprims(), GetImagingSubprimType(), and GetImagingSubprimData() describe the data-source style subprim interface. Keep TfToken, SdfPath, and HdDataSourceLocatorSet identifiers unchanged because they are the semantic keys crossing the USD/Hydra boundary.</p>
+      <p class="zh">`Populate()` 是把某个 `UsdPrim` 引入 imaging 索引或 delegate 管理结构的入口；`IsSupported()` 则是支持性判断。若一个 `UsdGeomNurbsPatch` 在 stage 中存在但没有出现在成像结果里，先不要直接假设是几何数据损坏：应检查 `IsSupported()`、prim path、purpose/visibility 过滤、delegate population 顺序、实例化上下文以及后端 renderer 对 patch 数据的支持状态。</p>
+      <p class="en">Populate() introduces a UsdPrim into the imaging index/delegate flow, while IsSupported() answers whether this adapter can handle a candidate prim. Missing output can come from support checks, path filtering, population order, instancing context, or renderer capabilities.</p>
+      <p class="zh">`TrackVariability()` 和 `ProcessPropertyChange()` 对应时间变化和属性变更传播。前者记录点、拓扑或相关属性是否随 `UsdTimeCode` 变化；后者把 USD 属性变化翻译成 Hydra dirty state、locator invalidation 或重新同步范围。若时间轴播放时 patch 形状没有更新，调试重点通常不是重新读取整个 stage，而是检查 variability 是否被正确标记、property change 是否到达 adapter，以及相应 subprim 或 locator 是否被失效。</p>
+      <p class="en">TrackVariability() and ProcessPropertyChange() connect time-varying USD data to Hydra change propagation. They determine whether changing points/topology-related data causes the correct dirtying or invalidation work.</p>
+      <p class="zh">`InvalidateImagingSubprim()` 面向 subprim/data-source 缓存失效。它和传统 dirty bit 的目的相似，都是避免成像层继续使用过期数据，但表达粒度更贴近数据源 locator。对本页来说，关键是区分三件事：USD authored data 是否变化、adapter 是否把变化映射到正确的数据单元、Hydra 或 renderer 是否重新拉取并使用这些数据。</p>
+      <p class="en">InvalidateImagingSubprim() invalidates cached subprim/data-source information. The practical distinction is between authored USD changes, adapter-side mapping, and Hydra/renderer re-consumption of the changed data.</p>
+      <p class="zh">NURBS patch 的阅读重点还包括它和普通 polygon mesh 的差异：patch 通常依赖控制点、阶数、结点向量、参数范围以及可能的 trim 或 primvar 信息来表达曲面，而不是直接列出三角面索引。`UsdImagingNurbsPatchAdapter` 的价值在于把这些高阶曲面语义稳定地带入 imaging 管线，并尽量保持 `UsdGeomNurbsPatch` 的 authored intent。若下游只看到空对象、错误边界框或静态旧形状，排查顺序应从 authored schema 数据、adapter data access、variability/dirtying、subprim locator 失效、Hydra 后端支持和最终 renderer 曲面处理能力逐层缩小。</p>
+      <p class="en">A NURBS patch differs from a polygon mesh: the authored surface semantics are expressed through higher-order patch data rather than direct triangle lists, and this adapter preserves those semantics as data moves into the imaging pipeline.</p>
+      <p class="zh">在大型场景中，本 adapter 也影响性能判断。NURBS patch 可能比 mesh 更依赖按需取数和缓存失效，盲目把所有变化都当作完整 resync 会放大开销；但若 locator 或 dirty state 太窄，又会导致 Hydra 继续使用旧控制点或旧拓扑。阅读 `TrackVariability()`、`ProcessPropertyChange()` 和 `InvalidateImagingSubprim()` 时，要把“正确性”和“最小化更新范围”同时放在脑中：前者保证画面不陈旧，后者避免每帧重新构建不必要的数据。</p>
+      <p class="en">For large scenes, the adapter also affects performance tradeoffs: change tracking must be broad enough for correctness but narrow enough to avoid unnecessary full resync work.</p>
+      <p class="zh">和相邻类型协作时，`UsdImagingDelegate` 负责把 stage、时间码和索引同步串起来，`UsdImagingNurbsPatchAdapter` 负责回答“这个 NURBS patch prim 该贡献哪些成像数据”。链接中出现的 `HdMeshTopology`、`HdBasisCurvesTopology`、`UsdGeomPrimvar` 等类型可作为对照：它们提示 Hydra 数据模型能承载多种几何拓扑和 primvar 表达，但不能反推出本页就是 mesh 或 basis curves 的 adapter。正确读法是保留 NURBS patch 的 schema 身份，再看它如何被投递到通用成像框架中。</p>
+      <p class="en">Related topology and primvar types are useful comparisons, but they should not change the identity of this page: it remains the imaging adapter for UsdGeomNurbsPatch.</p>
+      <h3>API 分组阅读 / API Group Reading</h3>
       <ul>
-        <li><span class="zh">`UsdImagingNurbsPatchAdapter` 为 `UsdGeomNurbsPatch` 提供 delegate support，是 USD Imaging 体系中面向 NURBS patch schema 的 prim adapter。</span></li>
-        <li><span class="zh">页面结构中的 `Data access` 分组和 `GetPoints()`、`GetTopology()` 表明该 adapter 重点把 NURBS patch 的点数据和拓扑数据暴露给 imaging/Hydra。</span></li>
-        <li><span class="zh">`GetImagingSubprims()`、`GetImagingSubprimType()`、`GetImagingSubprimData()` 用于把一个 USD prim 拆成 imaging 层可理解的 subprim 数据。</span></li>
-        <li><span class="zh">`Populate()`、`TrackVariability()`、`ProcessPropertyChange()`、`InvalidateImagingSubprim()` 分别对应初始填充、可变性追踪、属性变更处理和 subprim 缓存失效。</span></li>
-        <li><span class="zh">本页适合与 `UsdImagingDelegate` 一起读：delegate 负责总的数据交换，adapter 负责具体 schema 类型如何转成 imaging 数据。</span></li>
+        <li><span class="zh">`Public Types` 中的 `BaseAdapter` 说明本类复用上层 gprim/prim adapter 的大部分语义；阅读时先确认基类已经处理了哪些通用逻辑。</span><span class="en">BaseAdapter shows which inherited adapter behavior is reused.</span></li>
+        <li><span class="zh">构造函数 `UsdImagingNurbsPatchAdapter()` 通常不承载 authoring 语义；它只是 adapter 对象的创建入口。</span><span class="en">UsdImagingNurbsPatchAdapter() constructs the adapter object and does not author USD data.</span></li>
+        <li><span class="zh">`GetPoints()`、`GetTopology()` 是 NURBS patch 数据读取重点，应同 `UsdGeomNurbsPatch` 的 schema 属性一起核对。</span><span class="en">GetPoints() and GetTopology() are the NURBS patch data-reading focus.</span></li>
+        <li><span class="zh">`GetImagingSubprims()`、`GetImagingSubprimType()`、`GetImagingSubprimData()` 是 subprim 数据源路径，适合用于定位 Hydra 取数缺口。</span><span class="en">The imaging subprim methods help diagnose Hydra data-source consumption.</span></li>
+        <li><span class="zh">`Populate()`、`TrackVariability()`、`ProcessPropertyChange()`、`InvalidateImagingSubprim()` 构成从初始同步到变更传播的生命周期链。</span><span class="en">Populate(), TrackVariability(), ProcessPropertyChange(), and InvalidateImagingSubprim() form the lifecycle from initial sync to change propagation.</span></li>
       </ul>
-      <h3>术语对照 / Terms</h3>
+      <h3>边界与常见误读 / Boundaries and Common Misreadings</h3>
       <ul>
-        <li><span class="zh">NURBS patch：</span><span class="en">NURBS patch</span></li>
-        <li><span class="zh">prim adapter：</span><span class="en">prim adapter</span></li>
-        <li><span class="zh">imaging 子 prim：</span><span class="en">subprim</span></li>
-        <li><span class="zh">拓扑：</span><span class="en">topology</span></li>
-        <li><span class="zh">可变性：</span><span class="en">variability</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-137">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`UsdImagingNurbsPatchAdapter` 为 `UsdGeomNurbsPatch` 提供 USD Imaging delegate support，负责把 NURBS patch 的点、拓扑、subprim 数据和可变性信息转给 imaging/Hydra。它是具体 schema 类型的 prim adapter，不是 NURBS 曲面求值库。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdImagingNurbsPatchAdapter while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`GetPoints()` 和 `GetTopology()` 位于 Data access 语境下，是把 NURBS patch 几何数据暴露给成像层的核心入口。</span></li>
-        <li><span class="zh">`GetImagingSubprims()`、`GetImagingSubprimType()` 和 `GetImagingSubprimData()` 描述一个 USD prim 在 imaging 层可拆出的 subprim 列表、类型和数据。</span></li>
-        <li><span class="zh">`Populate()` 负责将 prim 初次注册到 render index / delegate 相关结构；`IsSupported()` 则可用于判断该 adapter 是否能处理给定 prim。</span></li>
-        <li><span class="zh">`TrackVariability()` 与 `ProcessPropertyChange()` 帮助 delegate 判断属性是否随时间变化以及 property change 需要触发什么 dirty state。</span></li>
-        <li><span class="zh">`InvalidateImagingSubprim()` 用于 data source 或 subprim 缓存失效；阅读时应和 `UsdImagingDelegate` 的整体同步流程一起看。</span></li>
+        <li><span class="zh">不是 authoring API：创建或编辑 NURBS patch prim 时看 `UsdGeomNurbsPatch`，不是本 adapter。</span><span class="en">This is not the authoring API; use UsdGeomNurbsPatch for authored schema data.</span></li>
+        <li><span class="zh">不是 renderer：本类提供 imaging 数据桥接，最终曲面求值、细分、网格化或显示质量仍取决于 Hydra 后端和 renderer。</span><span class="en">This is not the renderer; final evaluation and display depend on the Hydra backend and renderer.</span></li>
+        <li><span class="zh">不是孤立类：它要和 `UsdImagingDelegate`、`UsdPrim`、`SdfPath`、`TfToken`、`HdDataSourceLocatorSet` 以及相关 `UsdImaging*Adapter` 类型一起理解。</span><span class="en">Read it with UsdImagingDelegate, UsdPrim, SdfPath, TfToken, HdDataSourceLocatorSet, and related UsdImaging adapter classes.</span></li>
+        <li><span class="zh">不是通用 mesh adapter：虽然最终显示可能经过网格化，输入语义仍是 NURBS patch，不应直接套用 `UsdGeomMesh` 的 topology 假设。</span><span class="en">Do not read it as a generic mesh adapter; the authored input semantics remain those of a NURBS patch.</span></li>
+        <li><span class="zh">排障时应先确认 authored patch 数据，再检查 adapter 同步和 Hydra 消费；不要只看最终画面来判断 USD 数据是否错误。</span><span class="en">Debug authored patch data, adapter sync, and Hydra consumption before judging the USD data from the final image alone.</span></li>
+        <li><span class="zh">适合清晰定位曲面成像链路问题。</span><span class="en">Useful for locating surface-imaging pipeline issues.</span></li>
       </ul>
       <h3>术语对照 / Terms</h3>
       <ul>
         <li><span class="zh">NURBS patch 适配器：</span><span class="en">UsdImagingNurbsPatchAdapter</span></li>
         <li><span class="zh">NURBS patch schema：</span><span class="en">UsdGeomNurbsPatch</span></li>
-        <li><span class="zh">imaging 子 prim：</span><span class="en">imaging subprim</span></li>
-        <li><span class="zh">点数据：</span><span class="en">GetPoints()</span></li>
-        <li><span class="zh">拓扑数据：</span><span class="en">GetTopology()</span></li>
-        <li><span class="zh">属性变更处理：</span><span class="en">ProcessPropertyChange()</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-143">
-      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
-      <p class="zh">`UsdImagingNurbsPatchAdapter` 为 `UsdGeomNurbsPatch` 提供 USD Imaging delegate support。它负责把 NURBS patch 的 points、topology、subprim data、variability 和 invalidation 传递给 Hydra，而不是把 NURBS 曲面转换成最终渲染网格的唯一实现点。</p>
-      <p class="en">This third-pass refinement adds page-specific Chinese guidance for UsdImagingNurbsPatchAdapter while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`GetPoints()` 与 `GetTopology()` 是几何数据查询的核心入口，分别对应控制点数据和 `UsdGeomNurbsPatch` 拓扑描述。</span></li>
-        <li><span class="zh">`Populate()` 将 USD prim 引入 render index / cache 流程；如果 prim 没有进入成像结果，应同时检查 `IsSupported()`、路径和可见性过滤。</span></li>
-        <li><span class="zh">`TrackVariability()` 记录哪些属性会随时间变化，`ProcessPropertyChange()` 决定属性变更触发的 dirty bits 或重新同步范围。</span></li>
-        <li><span class="zh">`GetImagingSubprims()`、`GetImagingSubprimType()` 与 `GetImagingSubprimData()` 说明该 adapter 支持通过 imaging subprim 机制暴露更细粒度的数据。</span></li>
-        <li><span class="zh">`InvalidateImagingSubprim()` 用于数据源式失效传播；它应与 `HdDataSourceLocatorSet` 一起理解，而不是只看传统 dirty bit 语义。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">NURBS patch 适配器：</span><span class="en">UsdImagingNurbsPatchAdapter</span></li>
-        <li><span class="zh">控制点：</span><span class="en">points</span></li>
-        <li><span class="zh">拓扑：</span><span class="en">topology</span></li>
+        <li><span class="zh">成像委托：</span><span class="en">UsdImagingDelegate</span></li>
         <li><span class="zh">成像子 prim：</span><span class="en">imaging subprim</span></li>
+        <li><span class="zh">控制点 / 点数据：</span><span class="en">points / GetPoints()</span></li>
+        <li><span class="zh">拓扑数据：</span><span class="en">topology / GetTopology()</span></li>
         <li><span class="zh">可变性跟踪：</span><span class="en">TrackVariability()</span></li>
         <li><span class="zh">属性变更处理：</span><span class="en">ProcessPropertyChange()</span></li>
+        <li><span class="zh">subprim 失效：</span><span class="en">InvalidateImagingSubprim()</span></li>
       </ul>
     </section>
     <section>
