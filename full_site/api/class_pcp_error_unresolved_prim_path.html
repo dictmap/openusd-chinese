@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：PcpErrorUnresolvedPrimPath Class / PcpErrorUnresolvedPrimPath Class</title>
+  <title>完整双语参考：PcpErrorUnresolvedPrimPath Class / PcpErrorUnresolvedPrimPath Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,76 +24,53 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：PcpErrorUnresolvedPrimPath Class / PcpErrorUnresolvedPrimPath Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：PcpErrorUnresolvedPrimPath Class / PcpErrorUnresolvedPrimPath Class</h1>
     <div class="meta">https://openusd.org/release/api/class_pcp_error_unresolved_prim_path.html</div>
   </header>
   <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-037">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 PcpErrorUnresolvedPrimPath Class 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for PcpErrorUnresolvedPrimPath Class while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`PcpErrorUnresolvedPrimPath` 表示 asset paths 无法同时 resolved 和 loaded 的 Pcp 错误类型。</span></li>
-        <li><span class="zh">它来自 `errors.h`，关联基类为 `PcpErrorBase`，说明它属于 composition / asset resolution 期间的错误报告对象。</span></li>
-        <li><span class="zh">关联类型还包括 `PcpSite`、`SdfPath`、`PcpArcType`，提示错误通常需要说明发生位置、相关路径和触发该错误的 composition arc 类型。</span></li>
-        <li><span class="zh">阅读本页时应把 resolved 与 loaded 分开理解：resolved 是资产路径解析成功，loaded 是解析后的资源可实际载入；本错误强调两者不能同时满足。</span></li>
-        <li><span class="zh">本轮中文层不改写类名和错误类型，只补错误语义、上下文类型和排查方向；后续完整翻译应补错误字段、格式化输出和诊断信息。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">未解析的 prim 路径：</span><span class="en">unresolved prim path</span></li>
-        <li><span class="zh">资产路径：</span><span class="en">asset path</span></li>
-        <li><span class="zh">已解析：</span><span class="en">resolved</span></li>
-        <li><span class="zh">已加载：</span><span class="en">loaded</span></li>
-        <li><span class="zh">组合错误：</span><span class="en">composition error</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-136">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`PcpErrorUnresolvedPrimPath` 是 Pcp composition / asset resolution 期间的错误对象，用来报告 asset paths 不能同时 resolved 和 loaded 的 unresolved prim path 情况。它继承自 `PcpErrorBase`，应作为组合诊断信息读取，而不是普通异常类型。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for PcpErrorUnresolvedPrimPath while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`New()` 是构造该错误对象的静态入口；`ToString()` 提供面向日志或诊断 UI 的字符串化说明，但结构化排查仍应读取字段。</span></li>
-        <li><span class="zh">`site` 指向发生错误的 `PcpSite`，`unresolvedPath` 保留未解析 prim path；两者合起来给出错误位置和失败目标。</span></li>
-        <li><span class="zh">`sourceLayer` 与 `targetLayer` 帮助判断 asset path 是在哪个 layer 到哪个 layer 的组合关系中失败，适合排查 layer stack 和 resolver context。</span></li>
-        <li><span class="zh">`arcType` 记录触发问题的 `PcpArcType`；reference、payload、inherit 或其它 arc 类型会影响用户应检查的 authored opinion。</span></li>
-        <li><span class="zh">resolved 和 loaded 是两个阶段：路径解析成功不等于资源已可加载；本错误强调两者不能同时满足，通常需要同时检查 asset resolver、文件可达性和 layer 内容。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
+    <section data-cn-complete="pcp-error-unresolved-prim-path-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">本页已按完整双语参考页整理：中文优先解释 `PcpErrorUnresolvedPrimPath` 作为 Pcp composition / asset resolution 错误对象的职责、resolved 与 loaded 两个阶段的区别、`site`、`unresolvedPath`、`sourceLayer`、`targetLayer`、`arcType` 等字段如何定位失败来源，以及 `New()` 与 `ToString()` 在结构化诊断和日志输出中的边界；英文类名、字段名、方法名、类型名、链接和官方摘录继续保留，便于与 Doxygen 原页逐项核对。</p>
+      <p class="en">This page is promoted to a complete bilingual reference. It keeps official API names, data-member names, method names, type names, links, and excerpts while adding Chinese-first coverage of this Pcp unresolved-prim-path error.</p>
+
+      <p class="zh">官方摘录说，这个错误表示 asset paths could not be both resolved and loaded。这里的 resolved 是路径或资产标识能被 resolver 解释到某个候选资源；loaded 是该资源还能被 Pcp / Sdf 实际打开并用于 composition。两者必须同时满足，任一阶段失败都可能触发这类 unresolved prim path 诊断。</p>
+      <p class="en">Asset paths that could not be both resolved and loaded.</p>
+
+      <p class="zh">`PcpErrorUnresolvedPrimPath` 继承自 `PcpErrorBase`，它不是普通 C++ exception，也不是最终 `UsdStage` 上的属性值。它是 Pcp 在计算 prim index 或沿 composition arc 追踪资产时生成的结构化错误对象，用于告诉调用方某个 prim path 或引用目标无法在当前 resolver context、layer stack 和 composition site 下完成解析与加载。</p>
+      <p class="en">`PcpErrorUnresolvedPrimPath` is a structured Pcp composition error derived from `PcpErrorBase`.</p>
+
+      <p class="zh">`site` 字段指向发生错误的 `PcpSite`。它把错误固定到 composition graph 中的某个站点，而不仅仅是最终 stage path。排查时应从 `site` 反查所在 layer stack、prim path 和相关 node；只看最终 `UsdPrim` 路径，通常无法解释错误是从哪个 reference、payload、inherit 或 specialize 站点传入的。</p>
+      <p class="en">The `site` member identifies the composition site where the unresolved-prim-path error was detected.</p>
+
+      <p class="zh">`unresolvedPath` 是未能解析或加载的 `SdfPath`。这个字段应与 asset resolver 日志、layer identifier、authored reference 或 payload target 一起阅读。它不是文件系统路径字符串；它表示 scene description 中的 prim path 目标，因此路径拼写、namespace remapping 和 `PcpMapExpression` 都可能影响它最终是否可达。</p>
+      <p class="en">The `unresolvedPath` member records the `SdfPath` for the prim path that could not be resolved and loaded.</p>
+
+      <p class="zh">`sourceLayer` 与 `targetLayer` 用来描述错误跨 layer 发生的位置。`sourceLayer` 通常帮助定位 authored opinion 来自哪里，`targetLayer` 则帮助确认目标资源或被加载 layer。源层存在该 opinion，并不保证目标层能被 resolver 找到或能被 Sdf 成功打开；这也是 resolved 和 loaded 必须分开检查的原因。</p>
+      <p class="en">The `sourceLayer` and `targetLayer` members help identify the layer relationship involved in the failed resolution or load.</p>
+
+      <p class="zh">`arcType` 记录触发该错误的 `PcpArcType`。如果 arc 是 reference，通常检查 referenced asset path 和 target prim；如果是 payload，需要同时考虑 payload loading policy；如果是 inherit 或 specialize，则更应检查目标 prim path 与 layer stack 中的 authored relationship。不同 arc type 对应不同排查入口。</p>
+      <p class="en">The `arcType` member identifies the composition arc type associated with the unresolved prim path.</p>
+
+      <p class="zh">`New()` 是创建该错误对象的静态入口，通常由 Pcp 内部在检测到对应错误时使用。调用者消费的是返回的错误对象及其字段，而不是通过 `New()` 去修复路径。`~PcpErrorUnresolvedPrimPath()` 只是析构生命周期的一部分，不表示错误已被处理或目标路径已恢复。</p>
+      <p class="en">`New()` constructs the error object; object construction is separate from repairing the unresolved asset or prim path.</p>
+
+      <p class="zh">`ToString()` 提供人类可读的错误描述，适合日志、报告和 UI 展示；但自动化审计和调试工具不应只保存字符串。保留 `site`、`unresolvedPath`、`sourceLayer`、`targetLayer` 与 `arcType` 这些结构化字段，才能把错误重新关联到 prim index、layer stack、resolver context 和具体 composition arc。</p>
+      <p class="en">`ToString()` provides human-readable diagnostics, while the structured fields remain important for tooling.</p>
+
+      <p class="zh">常见误用包括：把 unresolvedPath 当成文件路径；只检查资产是否存在而不检查 target prim path 是否存在；把 resolved 成功误认为 loaded 必然成功；忽略 `arcType` 导致用 reference 的方式排查 payload；或者只看 `ToString()` 而丢失 `sourceLayer` / `targetLayer`。正确做法是沿 `site` 和 `arcType` 回到 authored opinion，再结合 resolver 日志和 layer 可加载性逐层排查。</p>
+      <p class="en">Common misuse includes treating the unresolved prim path as a filesystem path, ignoring the arc type, or collapsing resolved and loaded into one check.</p>
+
+      <h3>API 分组与术语 / API Groups and Terms</h3>
       <ul>
         <li><span class="zh">未解析 prim 路径错误：</span><span class="en">PcpErrorUnresolvedPrimPath</span></li>
-        <li><span class="zh">错误位置：</span><span class="en">PcpSite</span></li>
-        <li><span class="zh">未解析路径：</span><span class="en">unresolvedPath</span></li>
-        <li><span class="zh">源图层：</span><span class="en">sourceLayer</span></li>
-        <li><span class="zh">目标图层：</span><span class="en">targetLayer</span></li>
-        <li><span class="zh">组合边类型：</span><span class="en">arcType</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-146">
-      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
-      <p class="zh">`PcpErrorUnresolvedPrimPath` 表示 asset paths could not be both resolved and loaded 的 composition error。它记录 unresolved path、发生错误的 `PcpSite`、source/target layer 以及相关 `PcpArcType`，用于定位路径解析与加载边界。</p>
-      <p class="en">This third-pass refinement adds page-specific Chinese guidance for PcpErrorUnresolvedPrimPath while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`unresolvedPath` 是未能解析或加载的 `SdfPath`，应与 asset resolver 日志、layer identifier 和 referenced/payload target 一起检查。</span></li>
-        <li><span class="zh">`site` 表示错误发生的 composition site，帮助判断问题来自哪个 prim index 位置，而不是只看最终 stage path。</span></li>
-        <li><span class="zh">`sourceLayer` 与 `targetLayer` 有助于区分 arc 源头和目标层；路径存在于源层并不意味着目标层可以成功加载。</span></li>
-        <li><span class="zh">`arcType` 指明错误关联的 composition arc 类型，如 reference、payload、inherit 或 specialize 路径，排查策略会因此不同。</span></li>
-        <li><span class="zh">`New()` 创建具体错误对象，`ToString()` 输出人类可读诊断；自动化审计时应保留这些字段而不只保存字符串。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">未解析 prim 路径错误：</span><span class="en">PcpErrorUnresolvedPrimPath</span></li>
-        <li><span class="zh">未解析路径：</span><span class="en">unresolvedPath</span></li>
-        <li><span class="zh">组合站点：</span><span class="en">PcpSite</span></li>
-        <li><span class="zh">源层：</span><span class="en">sourceLayer</span></li>
-        <li><span class="zh">目标层：</span><span class="en">targetLayer</span></li>
-        <li><span class="zh">组合弧类型：</span><span class="en">PcpArcType</span></li>
+        <li><span class="zh">组合错误基类：</span><span class="en">PcpErrorBase</span></li>
+        <li><span class="zh">错误发生站点：</span><span class="en">PcpSite / site</span></li>
+        <li><span class="zh">未解析路径：</span><span class="en">SdfPath / unresolvedPath</span></li>
+        <li><span class="zh">源层与目标层：</span><span class="en">sourceLayer / targetLayer</span></li>
+        <li><span class="zh">组合边类型：</span><span class="en">PcpArcType / arcType</span></li>
+        <li><span class="zh">构造错误对象：</span><span class="en">New()</span></li>
+        <li><span class="zh">字符串化诊断：</span><span class="en">ToString()</span></li>
       </ul>
     </section>
     <section>

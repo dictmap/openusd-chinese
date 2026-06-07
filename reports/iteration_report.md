@@ -9243,3 +9243,46 @@ GitHub 同步：
 1. 继续真实晋级，不再刷 count-neutral 导读补强。
 2. 下一批优先核心页面：`full_site/api/class_pcp_error_unresolved_prim_path.html`。
 3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。
+
+## 第 327 轮：将 PcpErrorUnresolvedPrimPath 提升为完整双语
+已完成：
+
+- 轮次类型：PromotionRound；本轮只晋级 1 个页面：`full_site/api/class_pcp_error_unresolved_prim_path.html`。
+- 将目标页从 `bilingual_draft` 提升为 `bilingual_complete`，页面标题改为完整双语参考页，并移除通用 draft 标记。
+- 新增 `逐段双语理解 / Paragraph-Level Bilingual Coverage`，覆盖 `PcpErrorUnresolvedPrimPath` 作为结构化 Pcp composition / asset-resolution 错误的职责、resolved 与 loaded 阶段差异、`PcpErrorBase` 继承、`PcpSite` 的 `site` 定位、`SdfPath` 的 `unresolvedPath`、`sourceLayer` 与 `targetLayer` 诊断、`PcpArcType` / `arcType` 分类型排查、`New()` 与 `ToString()` 边界，以及把 `unresolvedPath` 误当文件路径或只保存字符串诊断的常见误用。
+- 更新 `reports/bilingual_completion_promotions.json/md`，新增 `round-327-pcp-error-unresolved-prim-path`。
+- 更新 `reports/current_problem_audit.md/json`，当前真实状态同步为 33 complete / 373 draft。
+- 重建 `openusd_bilingual_final.html`，总入口显示 33 complete / 373 incomplete drafts。
+
+分级变化：
+
+- `good_bilingual`：32 -> 33
+- `bilingual_complete`：32 -> 33
+- `bilingual_draft`：374 -> 373
+- `draft_needs_translation`：363 -> 362
+- `draft_template_only`：11 保持不变
+
+验证结果：
+
+- `discover_openusd_all_pages.mjs`：通过，`total_pages=406`，`promoted_complete_pages=25`。
+- `audit_openusd_translation_quality.mjs`：通过，`good_bilingual=33`，目标页 `grade=good_bilingual`。
+- `route_openusd_internal_links_local.mjs`：通过，`files_changed=1`，仅同步本轮目标页的本地链接路由。
+- `audit_openusd_full_draft_preview.mjs`：通过，373/373 draft 页面可预览。
+- `audit_openusd_report_index.mjs`：通过。
+- `validate_openusd_api_repro.ps1`：通过，`required_check_count=288`，`failed_check_count=0`。
+- Node 直接解析 `reports/validation_report.json`：`bom=false`。
+
+GitHub 同步：
+
+- 本轮验证通过后将使用 `OpenUSD bilingual round 327: promote PcpErrorUnresolvedPrimPath complete` 同步本轮 HTML、报告和 `work.md`。
+
+当前差距：
+
+- 仍有 373 个 `bilingual_draft` 页面只是可检查草稿，不是完整翻译，其中 362 个仍为 `draft_needs_translation`。
+- 406 清单外的 Doxygen 目标仍会进入本地未覆盖占位页；这是当前 P1 浏览缺口。
+
+下一轮目标：
+
+1. 继续真实晋级，不再刷 count-neutral 导读补强。
+2. 下一批优先核心页面：`full_site/api/class_hd_scene_delegate.html`。
+3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。
