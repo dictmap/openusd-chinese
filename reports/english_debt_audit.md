@@ -1,6 +1,6 @@
 # OpenUSD English Debt Audit
 
-Generated: 2026-06-07T17:12:16.149Z
+Generated: 2026-06-07T17:29:09.619Z
 
 Purpose:
 
@@ -12,16 +12,16 @@ Purpose:
 ## Counts
 
 - Total pages: 406
-- good_bilingual: 87
-- review_ready_zh: 24
+- good_bilingual: 88
+- review_ready_zh: 25
 - review_needs_zh_debt: 63
 - API complete: 72
 - API review_ready_zh: 12
-- Release complete: 15
-- Release review_ready_zh: 12
+- Release complete: 16
+- Release review_ready_zh: 13
 - Complete pages with high/very high ratio diagnostic: 10
-- bilingual_draft: 319
-- draft_needs_translation: 308
+- bilingual_draft: 318
+- draft_needs_translation: 307
 - draft_template_only: 11
 
 ## Complete Pages Still Carrying English Debt
@@ -94,10 +94,10 @@ Purpose:
 | 307 | `full_site/release/tut_helloworld_redux.html` | release | release_or_tutorial | 566 | 7/4 | 2.72 | medium | draft |
 | 283 | `full_site/release/contributors.html` | release | release_or_tutorial | 678 | 6/4 | 2.69 | medium | draft |
 | 387 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html` | release | release_or_tutorial | 586 | 7/4 | 2.64 | medium | draft |
-| 306 | `full_site/release/tut_generating_new_schema.html` | release | release_or_tutorial | 585 | 6/4 | 2.6 | medium | draft |
 | 384 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html` | release | release_or_tutorial | 704 | 7/4 | 2.6 | medium | draft |
 | 323 | `full_site/release/user_guides/primvars.html` | release | release_or_tutorial | 580 | 7/4 | 2.59 | medium | draft |
 | 374 | `full_site/release/user_guides/schemas/usdVol/overview.html` | release | release_or_tutorial | 592 | 7/4 | 2.58 | medium | draft |
+| 314 | `full_site/release/tut_usd_tutorials.html` | release | release_or_tutorial | 623 | 6/4 | 2.57 | medium | draft |
 
 Policy:
 

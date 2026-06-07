@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T17:12:15.466Z",
+  "generated_at": "2026-06-07T17:29:09.011Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 319,
-    "bilingual_complete": 87
+    "bilingual_draft": 318,
+    "bilingual_complete": 88
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 308,
-    "good_bilingual": 87
+    "draft_needs_translation": 307,
+    "good_bilingual": 88
   },
   "focus_batch": [
     {
@@ -9203,29 +9203,29 @@
     },
     {
       "index": 306,
-      "title": "页面草稿：Generating New Schema Classes / Generating New Schema Classes",
+      "title": "Generating New Schema Classes",
       "output": "full_site/release/tut_generating_new_schema.html",
       "official_url": "https://openusd.org/release/tut_generating_new_schema.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 29,
-      "enBlockCount": 22,
-      "zhChars": 585,
-      "enLetters": 1519,
-      "bodyChineseChars": 651,
+      "grade": "good_bilingual",
+      "zhBlockCount": 38,
+      "enBlockCount": 18,
+      "zhChars": 2057,
+      "enLetters": 2649,
+      "bodyChineseChars": 2116,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。",
-        "本区块针对 Generating New Schema Classes 补充中文优先的页面用途、阅读边界、关键概念和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。",
-        "`Generating New Schema Classes` 讲解如何从 `schema.usda` 生成新的 USD schema C++ 类，是 schema 开发者和插件作者需要重点阅读的教程页。"
+        "本页把官方 Generating New Schema Classes 教程整理为中文主阅读路径，并保留 usdGenSchema、schema.usda、plugInfo.json、generatedSchema.usda、UsdTyped、APISchemaBase、PXR_PLUGINPATH_NAME 等原始技术标识。重点不是逐字翻译生成器输出，而是说明如何从 schema.usda 声明 schema，生成代码与注册文件，编译插件，并在 USD 运行时验证这些 schema 是否可被发现和使用。",
+        "阅读这页时，先把 schema class 理解为“围绕 UsdPrim 的强类型访问层”。USD scenegraph 中真正存在的是 prim、attribute、relationship、metadata 和 composition；schema class 则把这些底层数据包装成稳定的 C++/Python API，让调用者通过 Get、Create、Apply、HasAPI 等接口访问约定好的属性和行为。官方提到的 UsdModelAPI、UsdGeomImageable、UsdGeomMesh 等，都是通过生成器或同类机制得到的 schema class。",
+        "生成前提有两个层面。第一个是工具前提：usdGenSchema 依赖 Python 环境中的 jinja2 和 argparse，并且 USD Python 模块必须能被找到。官方用 USD_INSTALL_ROOT 表示 USD 安装前缀，PYTHONPATH 需要包含 USD_INSTALL_ROOT/lib/python。第二个是输入前提：教程示例文件位于 USD/extras/usd/examples/usdSchemaExamples/，本页的目标是让读者理解不同 schema 类型，并能生成、编译和使用这些示例 schema。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.",
-        "This section adds Chinese-first page purpose, reading boundaries, key concepts, and terminology for Generating New Schema Classes while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison."
+        "This page provides a Chinese-first reading path for the official Generating New Schema Classes tutorial while retaining the original USD identifiers, commands, and file names needed for technical comparison.",
+        "A schema class is an API layer around a UsdPrim. It gives strongly named C++ and Python access to authored properties, relationships, metadata, and schema-defined fallbacks."
       ]
     },
     {

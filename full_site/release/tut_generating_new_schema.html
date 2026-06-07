@@ -3,116 +3,307 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：Generating New Schema Classes / Generating New Schema Classes</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <title>完整双语参考：Generating New Schema Classes / Generating New Schema Classes</title>
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
-    header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
-    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
-    h1{margin:0;font-size:30px;letter-spacing:0}
-    h2{margin:0 0 12px;font-size:22px}
-    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
-    .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
-    a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
-    li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --ink: #172033;
+      --muted: #5d6d82;
+      --line: #dbe4ef;
+      --blue: #0b63ce;
+      --green: #1b7f5a;
+      --amber: #9a6500;
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 16px/1.72 -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+    }
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 22px 56px;
+    }
+    header, section, nav {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      margin: 0 0 18px;
+    }
+    h1, h2, h3 {
+      margin: 0 0 12px;
+      line-height: 1.28;
+    }
+    h1 {
+      font-size: 2rem;
+    }
+    h2 {
+      font-size: 1.35rem;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+    p {
+      margin: 10px 0;
+    }
+    ul, ol {
+      margin: 8px 0 0 1.4rem;
+      padding: 0;
+    }
+    li {
+      margin: 8px 0;
+    }
+    a {
+      color: var(--blue);
+    }
+    code, pre {
+      font-family: "Cascadia Code", Consolas, monospace;
+      font-size: .95em;
+    }
+    pre {
+      background: #101827;
+      color: #edf4ff;
+      padding: 14px 16px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    .status {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      color: var(--green);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .badge {
+      display: inline-block;
+      border-radius: 999px;
+      background: #e8f5ef;
+      color: var(--green);
+      padding: 3px 10px;
+      font-size: .86rem;
+      font-weight: 700;
+    }
+    .note {
+      border-left: 4px solid var(--amber);
+      padding-left: 14px;
+      background: #fff8e7;
+      color: #3c4658;
+    }
+    .pair {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+      gap: 16px;
+      margin: 16px 0;
+    }
+    .zh, .en {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px 16px;
+      background: #fbfdff;
+    }
+    .zh {
+      border-left: 4px solid var(--green);
+    }
+    .en {
+      color: var(--muted);
+      border-left: 4px solid #9fb3c8;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 12px;
+    }
+    .item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: #fbfdff;
+    }
+    @media (max-width: 760px) {
+      .pair {
+        grid-template-columns: 1fr;
+      }
+      main {
+        padding: 18px 12px 40px;
+      }
+    }
   </style>
 </head>
 <body>
+<main>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：Generating New Schema Classes / Generating New Schema Classes</h1>
-    <div class="meta">https://openusd.org/release/tut_generating_new_schema.html</div>
+    <div class="status"><span class="badge">bilingual_complete</span><span>完整双语参考 / Complete bilingual reference</span></div>
+    <h1>Generating New Schema Classes</h1>
+    <p class="zh">本页把官方 Generating New Schema Classes 教程整理为中文主阅读路径，并保留 usdGenSchema、schema.usda、plugInfo.json、generatedSchema.usda、UsdTyped、APISchemaBase、PXR_PLUGINPATH_NAME 等原始技术标识。重点不是逐字翻译生成器输出，而是说明如何从 schema.usda 声明 schema，生成代码与注册文件，编译插件，并在 USD 运行时验证这些 schema 是否可被发现和使用。</p>
+    <p class="en">This page provides a Chinese-first reading path for the official Generating New Schema Classes tutorial while retaining the original USD identifiers, commands, and file names needed for technical comparison.</p>
+    <p><a href="https://openusd.org/release/tut_generating_new_schema.html">官方原页 / Open official page</a></p>
   </header>
-  <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section data-cn-refinement="release-quality-pass-066">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Generating New Schema Classes 补充中文优先的页面用途、阅读边界、关键概念和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds Chinese-first page purpose, reading boundaries, key concepts, and terminology for Generating New Schema Classes while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">`Generating New Schema Classes` 讲解如何从 `schema.usda` 生成新的 USD schema C++ 类，是 schema 开发者和插件作者需要重点阅读的教程页。</span></li>
-        <li><span class="zh">`What is a Schema Class?` 与 `Types of Schema Classes` 先解释 schema class 的角色和类型；阅读时应区分 concrete typed schema、API schema、single-apply 与 multiple-apply 的使用边界。</span></li>
-        <li><span class="zh">`Schema Generation Prerequisites` 说明 `usdGenSchema` 依赖 `jinja2` 和 `argparse`，并依赖正确的 Python syspath；如果构建时依赖缺失，`usdGenSchema` 不会被安装。</span></li>
-        <li><span class="zh">`USD_INSTALL_ROOT`、`-DCMAKE_INSTALL_PREFIX`、`schema.usda`、`libraryName`、`subLayers` 等命令、变量和字段必须保持原样，因为它们直接对应构建和生成流程。</span></li>
-        <li><span class="zh">本页中的 usda 片段是 schema authoring contract，不应只当作普通示例文本；中文层解释结构意图，但代码块、注释、类型名和命名空间保持英文原样以便复制核对。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">Schema 类：</span><span class="en">Schema Class</span></li>
-        <li><span class="zh">schema 代码生成工具：</span><span class="en">usdGenSchema</span></li>
-        <li><span class="zh">schema 定义文件：</span><span class="en">schema.usda</span></li>
-        <li><span class="zh">具名 concrete schema：</span><span class="en">concrete typed schema</span></li>
-        <li><span class="zh">API schema：</span><span class="en">API schema</span></li>
-        <li><span class="zh">USD 安装根目录变量：</span><span class="en">USD_INSTALL_ROOT</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-119">
-      <h2>中文补强导读 / Chinese Refinement Notes</h2>
-      <p class="zh">`Generating New Schema Classes` 面向需要扩展 USD schema 的开发者。它围绕 `schema.usda`、`usdGenSchema`、CMake 安装前缀和生成出的 C++/Python 绑定展开；中文导读应强调这是 schema authoring contract，而不是普通用户编辑场景文件的教程。</p>
-      <p class="en">This refinement section adds page-specific Chinese reading notes for Generating New Schema Classes while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`usdGenSchema` 依赖 `jinja2` 和 `argparse`，如果构建 USD 时依赖不可用，该工具不会安装；环境前提是本页最先要确认的内容。</span></li>
-        <li><span class="zh">`schema.usda` 中的 `GLOBAL`、`libraryName`、`subLayers` 和 schema prim 定义会直接影响生成的类型名、命名空间和插件库结构。</span></li>
-        <li><span class="zh">教程里的 `.usda` 片段必须保持原样，因为它是 schema 生成输入；中文层可以解释字段意图，但不能改动代码、注释、token 或命名空间。</span></li>
-        <li><span class="zh">阅读 `Types of Schema Classes` 时要区分 concrete typed schema、single-apply API schema 和 multiple-apply API schema，否则会误选扩展模型。</span></li>
-        <li><span class="zh">生成 schema 后还要考虑构建、安装、插件发现和 API 文档；本页不是只生成代码文件，更是把 schema 类型纳入 USD 插件系统。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">USD schema 代码生成工具：</span><span class="en">usdGenSchema</span></li>
-        <li><span class="zh">schema 定义文件：</span><span class="en">schema.usda</span></li>
-        <li><span class="zh">schema 库名字段：</span><span class="en">libraryName</span></li>
-        <li><span class="zh">子层声明：</span><span class="en">subLayers</span></li>
-        <li><span class="zh">具名 concrete schema：</span><span class="en">concrete typed schema</span></li>
-        <li><span class="zh">API schema：</span><span class="en">API schema</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：Generating New Schema Classes</span><span class="en">Generating New Schema Classes</span></li>
-<li><span class="zh">第 2 级标题：What is a Schema Class?</span><span class="en">What is a Schema Class?</span></li>
-<li><span class="zh">第 2 级标题：Types of Schema Classes</span><span class="en">Types of Schema Classes</span></li>
-<li><span class="zh">第 2 级标题：Schema Generation Prerequisites</span><span class="en">Schema Generation Prerequisites</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">There are a couple of prerequisites to dealing with schema generation in USD.</p>
-<p class="en">usdGenSchema, our tool for generating C++ classes from a schema.usda file requires the jinja2 template substitution module and argparse modules be installed and available in your python syspath. If these dependencies are not available when USD is built/installed, usdGenSchema will not be installed.</p>
-<p class="en">Ensure that you have setup your python environment properly, so it can find USD python modules. We’ll refer to the install location of your USD build with USD_INSTALL_ROOT , this is determined in the build with the cmake flag, -DCMAKE_INSTALL_PREFIX .</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>#usda 1.0 ( &quot;&quot;&quot; This file describes an example schema for code generation using usdGenSchema. &quot;&quot;&quot; subLayers = [ # To refer to schema types defined in schema.usda files from other # libraries, simply add comma-separated lines of the form # @&lt;library name&gt;/schema.usda@. In this example, we're referring # to schema types from 'usd'. If you were adding sub-classes of # UsdGeom schema types, you would use usdGeom/schema.usda instead. @usd/schema.usda@ ] ) over &quot;GLOBAL&quot; ( customData = { string libraryName = &quot;usdSchema...</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Configure your Environment</a></li>
-<li><a href="https://github.com/PixarAnimationStudios/OpenUSD/tree/v26.05">USD 26.05</a></li>
-<li><a href="https://github.com/mitsuhiko/jinja2">jinja2 template substitution module</a></li>
-<li><a href="https://github.com/PixarAnimationStudios/OpenUSD/blob/release/BUILDING.md">Advanced Build Configuration</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2F_usd__page__generating_schemas.html&amp;title=API+documentation+for+generating+schemas" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/_usd__page__generating_schemas.html">API documentation for generating schemas</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_prim_type_info.html&amp;title=UsdPrimTypeInfo" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_prim_type_info.html">UsdPrimTypeInfo</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_prim_definition.html&amp;title=UsdPrimDefinition" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_prim_definition.html">UsdPrimDefinition</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/tut_generating_new_schema.html">打开官方原页 / Open official page</a></p>
-    </section>
-  </main>
+
+  <section data-cn-complete="release-tutorial-generating-new-schema-main-reading-path">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+
+    <div class="pair">
+      <p class="zh">阅读这页时，先把 schema class 理解为“围绕 UsdPrim 的强类型访问层”。USD scenegraph 中真正存在的是 prim、attribute、relationship、metadata 和 composition；schema class 则把这些底层数据包装成稳定的 C++/Python API，让调用者通过 Get、Create、Apply、HasAPI 等接口访问约定好的属性和行为。官方提到的 UsdModelAPI、UsdGeomImageable、UsdGeomMesh 等，都是通过生成器或同类机制得到的 schema class。</p>
+      <p class="en">A schema class is an API layer around a UsdPrim. It gives strongly named C++ and Python access to authored properties, relationships, metadata, and schema-defined fallbacks.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">生成前提有两个层面。第一个是工具前提：usdGenSchema 依赖 Python 环境中的 jinja2 和 argparse，并且 USD Python 模块必须能被找到。官方用 USD_INSTALL_ROOT 表示 USD 安装前缀，PYTHONPATH 需要包含 USD_INSTALL_ROOT/lib/python。第二个是输入前提：教程示例文件位于 USD/extras/usd/examples/usdSchemaExamples/，本页的目标是让读者理解不同 schema 类型，并能生成、编译和使用这些示例 schema。</p>
+      <p class="en">The prerequisites are both runtime and input oriented: usdGenSchema needs Python dependencies and USD Python modules, and the tutorial examples live under USD/extras/usd/examples/usdSchemaExamples/.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">官方把 schema class 分为 IsA schema 和 API schema。IsA schema 可以给 prim 一个 typeName，并且必须从 UsdTyped 这条 typed schema 基础链路派生。它又分 concrete 和 non-concrete：concrete IsA schema 可以在 stage 上实例化，non-concrete IsA schema 更像抽象基类，用来给相关 concrete schema 共享属性和接口。理解这点很重要，因为 typeName 决定 prim 的内建类型身份，而不是普通属性。</p>
+      <p class="en">IsA schemas can impart a typeName to a prim and derive from UsdTyped. Concrete IsA schemas are instantiable, while non-concrete IsA schemas are base classes for related typed schemas.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">API schema 不给 prim 指定 typeName，而是给已有 prim 增加一组可复用接口或内建属性。非应用 API schema 通常不需要在 prim 上记录“已应用”状态，适合表达核心 metadata 或通用行为；applied API schema 则需要记录和查询是否应用到某个 prim，生成器会提供 Apply 方法，应用后 HasAPI 会返回 true。applied API schema 又有 singleApply 和 multipleApply：前者每个 prim 只能应用一次，后者可以带不同实例名多次应用，例如 collection 类场景。</p>
+      <p class="en">API schemas do not define a typeName. Non-applied APIs provide interfaces without recording application, while applied APIs are recorded on prims and may be single-apply or multiple-apply.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">schema.usda 是 usdGenSchema 的核心输入层。它必须声明 libraryName，layer stack 中必须能看到 usd/schema.usda，schema typename 必须在所有库中唯一，attribute 名和 token 通常要是 camelCase 的合法标识。教程示例还通过 GLOBAL customData 声明 libraryName、libraryPath 和 libraryPrefix。中文读者应把这些 metadata 当作“代码生成和运行时注册契约”，而不是普通文档注释。</p>
+      <p class="en">schema.usda is the main input layer for usdGenSchema. It carries library metadata, imports base schema definitions, and declares schema classes, properties, tokens, and generation hints.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">示例中的 SimplePrim 是 typed 但 non-concrete 的 IsA schema：它继承 /Typed，有 intAttr 和 target relationship，但没有 typeName，所以不能直接在 UsdStage 上作为可实例化 prim type 使用。示例中的 ComplexPrim 则从 SimplePrim 派生，并声明 concrete typeName ComplexPrim，还添加 complexString。这个对比说明：抽象基类负责共享接口，concrete 类型负责成为场景中真正可声明的类型。</p>
+      <p class="en">SimplePrim is a non-concrete typed IsA schema, while ComplexPrim is a concrete IsA schema with a typeName. The contrast shows the difference between a base schema and an instantiable prim type.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">ParamsAPI 示例展示 applied API schema。它从 APISchemaBase 派生，customData 中设置 apiSchemaType 为 singleApply，并声明 params:mass、params:velocity、params:volume 三个 double attribute。属性名带 params namespace，但通过 apiName 可以让生成的接口变成 GetMassAttr、GetVelocityAttr、GetVolumeAttr，而不是暴露完整 namespaced 名称。这说明 schema.usda 不只是定义属性，也控制生成 API 的可读性。</p>
+      <p class="en">ParamsAPI demonstrates a single-apply API schema. It derives from APISchemaBase, declares namespaced attributes, and uses apiName metadata to shape generated accessor names.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">运行 usdGenSchema schema.usda . 后，生成器会处理 SimplePrim、ComplexPrim、ParamsAPI，写入 tokens.h、tokens.cpp、wrapTokens.cpp，生成 simple、complex、paramsAPI 的 C++ 文件和 Python wrapper，并写出 plugInfo.json 与 generatedSchema.usda。读者不要只看“生成了哪些文件”，还要理解文件分工：C++/wrapper 提供编程接口，tokens 固化属性和标识，plugInfo.json 与 generatedSchema.usda 让运行时能发现 schema 定义和 fallback。</p>
+      <p class="en">usdGenSchema produces C++ classes, Python wrappers, schema tokens, plugInfo.json, and generatedSchema.usda. These outputs serve both developer-facing APIs and runtime schema registration.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">生成之后还要编译和注册。官方示例从 USD build 目录运行 cmake --build . --target install --config Release 来重新构建插件。使用时，USD 必须知道插件资源目录在哪里：可以设置 PXR_PLUGINPATH_NAME 指向 resources 目录，也可以把库文件和资源目录复制到安装前缀下的 plugin/usd。Windows 上还可能遇到 Python 3.8+ 的 DLL trusted directory 问题，需要把资源目录加入 os.add_dll_directory。</p>
+      <p class="en">Generated schemas must be built and made discoverable. USD must see the plugin resources through PXR_PLUGINPATH_NAME or installation under the USD plugin location; Windows may also require adding DLL directories for Python.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">验证使用分成三层。第一层是写一个 Test.usda，声明 def ComplexPrim "Complex" 并在另一个 Xform 上 prepend apiSchemas = ["ParamsAPI"]。第二层是用 usdview 打开文件，确认没有 warning 或 error。第三层是在 C++ 或 Python 中打开 stage，构造 UsdSchemaExamplesSimple、UsdSchemaExamplesComplex、UsdSchemaExamplesParamsAPI，读取属性，并用 HasAPI 或 Apply 确认 applied API schema 的行为。只有三层都通过，才说明生成、编译、注册和使用链路闭合。</p>
+      <p class="en">Validation includes authoring Test.usda, opening it in usdview without warnings, and using generated C++ or Python APIs to access the schema classes and applied API schema.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">最后的 codeless schema 是一个重要边界。设置 skipCodeGeneration 为 True 时，可以不生成 C++/Python 代码，只生成 generatedSchema.usda 和 plugInfo.json，用于运行时 schema registration。这样做的价值是动态更新和部署更轻，但代价是没有类型安全的代码接口。它适合只需要内建属性、fallback 和发现能力的场景，不适合需要复杂计算、协调写入或强类型方法封装的 schema。</p>
+      <p class="en">Codeless schemas skip C++ and Python code generation and rely on generatedSchema.usda plus plugInfo.json for runtime registration. They are dynamic, but do not provide generated typed APIs.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">这页最容易被误读成“运行一个代码生成命令即可完成 schema”。实际闭环更长：schema.usda 是设计来源，usdGenSchema 是把设计转换成代码和注册资源的工具，CMake 构建负责把插件产物放进可加载位置，PXR_PLUGINPATH_NAME 或安装目录负责让运行时发现插件，最后 usdview、C++ 和 Python 用例负责验证类型信息、fallback、Apply 和 accessor 是否真的可用。任何一环断开，页面中的示例都可能看似生成成功但在运行时不可见。</p>
+      <p class="en">The workflow is longer than running a generator. Design, generation, build, plugin discovery, and runtime validation all have to succeed.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">IsA schema 与 API schema 的选择应从数据模型出发。若你的 prim 需要一个明确的类型身份，并且场景作者会写 def ComplexPrim 这样的 typed prim，就应考虑 concrete IsA schema。若你的目标是给许多不同类型的 prim 增加一组可选能力，例如物理参数、集合、模型信息或渲染器扩展，则 API schema 更合适。不要因为想要一个类名就滥用 IsA schema；typeName 是场景语义的一部分，会影响 schema registry、prim definition 和工具行为。</p>
+      <p class="en">Choose IsA versus API schema from the data model. A prim type belongs in an IsA schema; optional capabilities shared across prim types usually belong in an API schema.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">singleApply 与 multipleApply 的差别也不是命名细节。singleApply 表示这组内建属性在同一个 prim 上只有一套语义；multipleApply 表示同一个 prim 可以拥有多个命名实例，每个实例有自己的 namespace prefix。设计 multipleApply 时要格外注意属性命名、实例名和 property namespace，否则生成出来的接口虽然可用，却会给资产作者和工具解析带来混乱。</p>
+      <p class="en">Single-apply and multiple-apply are semantic choices. Multiple-apply schemas create per-instance namespaces and need especially careful property design.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">schema 生成后的文件还承担版本化职责。tokens.h、tokens.cpp 和 wrapper 文件是源码层面的 API；generatedSchema.usda 和 plugInfo.json 是运行时发现层面的 API；Test.usda 是使用方对 schema 的最小合约测试。维护 schema 时，应把这三类产物一起纳入评审：源码是否表达了预期接口，注册资源是否暴露了预期定义，测试场景是否证明工具和客户端能按预期使用它。</p>
+      <p class="en">Generated sources, runtime registration resources, and test scenes should be reviewed together because they validate different parts of the schema contract.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">如果后续需要自定义方法，官方提示这些方法可以在重新运行 usdGenSchema 时被保留。中文读者要把自定义方法看作 schema API 的补充层：适合封装需要同时写多个属性的 authoring 操作、计算派生值或提供更符合业务语义的 helper；但底层属性、fallback 和注册信息仍应由 schema.usda 驱动，避免让手写代码和 schema 声明分叉。</p>
+      <p class="en">Custom methods can supplement generated schemas, but the schema declaration should remain the source of truth for properties, fallbacks, and registration.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">调试时也要区分“生成失败”“编译失败”和“运行时不可见”。生成失败通常指向 schema.usda 语法、metadata 或命名规则；编译失败通常指向生成出的 C++ 名称、依赖或构建配置；运行时不可见则更多指向 plugInfo.json、resources 目录、PXR_PLUGINPATH_NAME、DLL 搜索路径或安装位置。把这三类错误拆开，能显著减少盲目修改 schema 声明的风险，并保持定位路径清晰，也便于复查。</p>
+      <p class="en">Debug generation errors, build errors, and runtime discovery errors separately; they usually point to different parts of the schema workflow.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>执行顺序 / Execution Path</h2>
+    <ol>
+      <li class="zh">确认 Python 环境能找到 jinja2、argparse 和 USD Python 模块，并设置好 USD_INSTALL_ROOT 与 PYTHONPATH。</li>
+      <li class="zh">在 schema.usda 中声明 libraryName、libraryPath、libraryPrefix，并确保 layer stack 中包含 usd/schema.usda。</li>
+      <li class="zh">决定每个 schema 是 concrete IsA、non-concrete IsA、non-applied API、singleApply API 还是 multipleApply API。</li>
+      <li class="zh">用 class 声明属性、relationship、doc、customData、apiSchemaType、apiName、className 等 metadata。</li>
+      <li class="zh">运行 usdGenSchema schema.usda .，检查 tokens、C++、wrapper、plugInfo.json、generatedSchema.usda 是否生成或更新。</li>
+      <li class="zh">重新构建插件，并通过 PXR_PLUGINPATH_NAME 或安装目录让 USD 运行时能发现它。</li>
+      <li class="zh">用 Test.usda、usdview、C++ 和 Python 访问链路验证 schema 是否真的可用。</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>关键命令与片段 / Commands And Fragments</h2>
+    <p class="zh">命令、文件名、环境变量和 schema 标识保持英文原样，便于和官方文档、源码目录及构建日志对照。</p>
+    <pre><code>usdGenSchema schema.usda .
+cmake --build . --target install --config Release
+PXR_PLUGINPATH_NAME=/path/to/plugin/resources</code></pre>
+    <p class="zh">schema.usda 的最小读法是：通过 subLayers 接入基础 schema，通过 GLOBAL customData 声明库元数据，通过 class 声明 IsA 或 API schema，并用 customData 控制生成器行为。</p>
+    <pre><code># Conceptual excerpt for reading only.
+subLayers = [
+    @usd/schema.usda@
+]
+
+over "GLOBAL" (
+    customData = {
+        string libraryName = "usdSchemaExamples"
+        string libraryPrefix = "UsdSchemaExamples"
+    }
+) {}
+
+class ComplexPrim "ComplexPrim" (
+    inherits = &lt;/SimplePrim&gt;
+) {
+    string complexString = "somethingComplex"
+}</code></pre>
+  </section>
+
+  <section>
+    <h2>常见误读与调试 / Common Misreadings And Debugging</h2>
+    <ul>
+      <li class="zh">如果 usdGenSchema 不存在，先检查 jinja2、argparse、USD Python 模块和安装时是否启用了相关工具，而不是先改 schema.usda。</li>
+      <li class="zh">如果 generated code 编译失败，先检查 schema typename 唯一性、identifier 命名、libraryPrefix 和 className 是否生成出冲突的 C++ 名称。</li>
+      <li class="zh">如果 usdview 不认识新 schema，先检查 plugInfo.json 和 generatedSchema.usda 是否在插件资源目录中，再检查 PXR_PLUGINPATH_NAME。</li>
+      <li class="zh">如果 HasAPI 返回 false，确认 Test.usda 是否真的写入 prepend apiSchemas = ["ParamsAPI"]，以及 schema 是否是 applied API。</li>
+      <li class="zh">如果只需要运行时发现和 fallback，不需要强类型接口，可以评估 codeless schema；如果需要自定义方法或协调写入，仍应生成代码。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>术语与保留英文 / Terms Retained</h2>
+    <div class="grid">
+      <div class="item"><strong>usdGenSchema</strong><p class="zh">从 schema.usda 生成 C++、Python wrapper、tokens、plugInfo.json 和 generatedSchema.usda 的工具。</p></div>
+      <div class="item"><strong>schema.usda</strong><p class="zh">schema 生成的输入层，包含库元数据、schema class、属性、relationship 和生成器 metadata。</p></div>
+      <div class="item"><strong>IsA schema</strong><p class="zh">可给 prim 指定 typeName 的 typed schema，分 concrete 和 non-concrete。</p></div>
+      <div class="item"><strong>API schema</strong><p class="zh">不给 prim 指定 typeName，而是在已有 prim 上提供接口或内建属性的 schema。</p></div>
+      <div class="item"><strong>plugInfo.json</strong><p class="zh">插件发现和 schema 注册的关键资源文件，运行时找不到它时 schema 通常不可见。</p></div>
+      <div class="item"><strong>generatedSchema.usda</strong><p class="zh">描述生成后 schema 定义、fallback 和注册信息的 USD layer。</p></div>
+    </div>
+  </section>
+
+  <nav>
+    <h2>相关页面 / Related Pages</h2>
+    <ul>
+      <li><a href="tut_houdini_example.html">Houdini USD Example Workflow</a></li>
+      <li><a href="tut_usdview_plugin.html">Creating a Usdview Plugin</a></li>
+      <li><a href="../../site/toolset.html">Toolset / usdGenSchema</a></li>
+      <li><a href="../../site/glossary.html">术语表 / Glossary</a></li>
+      <li><a href="../../openusd_bilingual_final.html">返回总入口 / Back to final entry</a></li>
+    </ul>
+  </nav>
+</main>
 </body>
 </html>
