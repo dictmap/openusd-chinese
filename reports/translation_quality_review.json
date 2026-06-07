@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T22:36:17.888Z",
+  "generated_at": "2026-06-07T22:58:20.010Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 307,
-    "bilingual_complete": 99
+    "bilingual_draft": 306,
+    "bilingual_complete": 100
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 296,
-    "good_bilingual": 99
+    "draft_needs_translation": 295,
+    "good_bilingual": 100
   },
   "focus_batch": [
     {
@@ -10266,7 +10266,7 @@
       "enBlockCount": 52,
       "zhChars": 2859,
       "enLetters": 3530,
-      "bodyChineseChars": 3082,
+      "bodyChineseChars": 3139,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
       "genericDraft": false,
@@ -10283,29 +10283,29 @@
     },
     {
       "index": 346,
-      "title": "页面草稿：SphereLight / SphereLight",
+      "title": "完整双语参考：SphereLight / SphereLight",
       "output": "full_site/release/user_guides/schemas/usdLux/SphereLight.html",
       "official_url": "https://openusd.org/release/user_guides/schemas/usdLux/SphereLight.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 36,
-      "enBlockCount": 25,
-      "zhChars": 841,
-      "enLetters": 1426,
-      "bodyChineseChars": 978,
+      "grade": "good_bilingual",
+      "zhBlockCount": 52,
+      "enBlockCount": 52,
+      "zhChars": 2248,
+      "enLetters": 2866,
+      "bodyChineseChars": 2474,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。",
-        "本区块针对 SphereLight 补充中文优先的用途说明、属性阅读重点和术语对照；英文页面名、链接、代码、命令、属性名和原文摘录继续保留，便于和官方 schema 文档核对。",
-        "SphereLight 从球体表面向外发光，官方说明它是 one-sided，因此球体内部不发光；这点对封闭灯罩或内部采样的理解很重要。"
+        "`SphereLight` 是 usdLux 中的 intrinsic light schema，用来描述从球体表面向外发光的灯。官方说明的关键点有两个：第一，它是 one-sided light，所以不会向球体“内部”发光；第二，如果 `treatAsPoint=true` 且当前 renderer 支持 zero-area lights，这个灯可以被当作 zero-radius point light。中文阅读时应把它理解成“球形或点状光源的具体 light schema”，而不是 `ShapingAPI` 那样的发射方向控制层，也不是 `ShadowAPI` 那样的阴影行为控制层。",
+        "典型用途是模拟灯泡、车灯、头灯、裸露小光源、发光球或需要近似各向发散的局部光。和 `RectLight`、`DiskLight`、`CylinderLight` 这类面积灯相比，`SphereLight` 的直觉是“从球面向外”而不是从平面、圆盘或柱体表面发光；和 `DistantLight` 相比，它不是无限远方向光，而是在场景中有位置、有半径、会随距离和遮挡关系参与照明。官方示例把 `SphereLight \"Light1\"` 放在一个 `Sphere` 和 `Cube` 附近，并设置 `inputs:radius = 0.8`、`inputs:color = (1, 1, 1)`、`inputs:intensity = 20.0`、`xformOp:translate = (4, 0, 1)`，说明它既有 light 属性，也仍然通过 Xformable 变换放置在场景中。",
+        "本页自有的 `Properties` 很短，但语义很集中：`inputs:radius` 决定发光球的半径，fallback 是 `0.5`；`light:shaderId` 的 fallback 是 `SphereLight`，并会让 USD 注册一个 identifier 为 `SphereLight`、source type 为 `USD` 的 `Sdr` shader node，用来对应这个灯的 inputs；`treatAsPoint` 是传给 renderer 的提示，fallback 是 `False`，表示在支持 non-area lighting 的渲染器中可以把它视作 point light，而只支持 area lights 的渲染器会忽略这个属性。这三项分别对应形状尺寸、shader 识别和渲染器优化/兼容边界。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.",
-        "This section adds Chinese-first usage notes, property reading guidance, and terminology for SphereLight while retaining the English page name, links, code, commands, property names, and source excerpts for comparison with the official schema documentation."
+        "`SphereLight` is an intrinsic light that emits outward from a sphere and can optionally be treated as a zero-radius point light.",
+        "Use it for point-like or spherical light sources such as bulbs and headlamps; it remains a positioned scene prim."
       ]
     },
     {

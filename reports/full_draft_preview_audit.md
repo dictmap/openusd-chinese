@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-07T22:39:53.734Z
+Generated: 2026-06-07T23:00:41.793Z
 
-Transient base URL: `http://127.0.0.1:58896/`
+Transient base URL: `http://127.0.0.1:57562/`
 
 Result:
 
 - Passed: true
-- Draft pages: 307
-- Pages checked: 307
-- Passed pages: 307
+- Draft pages: 306
+- Pages checked: 306
+- Passed pages: 306
 - Failed pages: 0
-- Final HTML links: 307
-- Local assets checked: 307
+- Final HTML links: 306
+- Local assets checked: 306
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -263,7 +263,6 @@ Result:
 | true | full_site/release/user_guides/schemas/usdLux/NonboundableLightBase.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/overview.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/PluginLight.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdLux/SphereLight.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/usdLux_toc.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/VolumeLightAPI.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html | 200 | true | 0 | 0 |

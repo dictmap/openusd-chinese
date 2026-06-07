@@ -1,46 +1,46 @@
 {
-  "generated_at": "2026-06-07T22:38:56.926Z",
-  "purpose": "Round 398 PromotionRound promoted exactly one release user-guide page: full_site/release/user_guides/schemas/usdLux/ShapingAPI.html. The page was compared against https://openusd.org/release/user_guides/schemas/usdLux/ShapingAPI.html and the local source snapshot source/full_release/user_guides/schemas/usdLux/ShapingAPI_source.html, then upgraded from bilingual_draft to bilingual_complete with Chinese main-reading-path coverage for light emission shaping, Light Shaping context, all seven official inputs:shaping:* properties, cone/focus/IES formula semantics, ANSI/IES LM-63-19 reference, renderer support and USD composition debugging, adjacent LightAPI/ShadowAPI/concrete light schema boundaries, and local reading-flow preservation. This round increased good_bilingual from 98 to 99 and review_ready_zh from 35 to 36.",
+  "generated_at": "2026-06-07T22:59:47.161Z",
+  "purpose": "Round 399 PromotionRound promoted exactly one release user-guide page: full_site/release/user_guides/schemas/usdLux/SphereLight.html. The page was compared against https://openusd.org/release/user_guides/schemas/usdLux/SphereLight.html and the local source snapshot source/full_release/user_guides/schemas/usdLux/SphereLight_source.html, then upgraded from bilingual_draft to bilingual_complete with Chinese main-reading-path coverage for intrinsic spherical light semantics, one-sided outward emission, zero-radius point-light treatment via treatAsPoint, renderer support boundaries, official USDA example, inputs:radius, light:shaderId and Sdr shader identity, inherited Boundable/Xformable/Imageable properties, debugging flow, adjacent usdLux schema boundaries, and local reading-flow preservation. This round increased good_bilingual from 99 to 100 and review_ready_zh from 36 to 37.",
   "current_counts": {
     "total_pages": 406,
-    "bilingual_complete": 99,
-    "bilingual_draft": 307,
-    "good_bilingual": 99,
-    "draft_needs_translation": 296,
+    "bilingual_complete": 100,
+    "bilingual_draft": 306,
+    "good_bilingual": 100,
+    "draft_needs_translation": 295,
     "draft_template_only": 11,
-    "review_ready_zh": 36,
+    "review_ready_zh": 37,
     "api_complete": 72,
-    "release_complete": 27,
-    "release_review_ready_zh": 24,
+    "release_complete": 28,
+    "release_review_ready_zh": 25,
     "pending_full_scope": 0
   },
   "problems": [
     {
       "id": "P0-completion-stalled",
       "severity": "P0",
-      "summary": "The promotion path now raises completion to 99/406, but the remaining 307 draft pages still need real upgrades.",
-      "evidence": "reports/bilingual_completion_promotions.json records 91 promoted pages; discover_openusd_all_pages.mjs reports bilingual_complete=99, and audit_openusd_translation_quality.mjs reports good_bilingual=99.",
+      "summary": "The promotion path now raises completion to 100/406, but the remaining 306 draft pages still need real upgrades.",
+      "evidence": "reports/bilingual_completion_promotions.json records 92 promoted pages; discover_openusd_all_pages.mjs reports bilingual_complete=100, and audit_openusd_translation_quality.mjs reports good_bilingual=100.",
       "required_action": "Continue using the promotion manifest only for pages with Chinese main-reading-path coverage, paragraph-level structure, and draft-marker removal; do not mark guide-only drafts as complete."
     },
     {
       "id": "P0-final-entry-misleading",
       "severity": "P0",
       "summary": "The final entry must keep completed and draft counts aligned with inventory, quality, English debt, and problem audit.",
-      "evidence": "openusd_bilingual_final.html is rebuilt from inventory and shows 99 complete pages and 307 incomplete drafts; validation_report passed=true with failed_check_count=0.",
+      "evidence": "openusd_bilingual_final.html is rebuilt from inventory and shows 100 complete pages and 306 incomplete drafts; validation_report must remain passed before push.",
       "required_action": "Keep final-entry counts and completed-page tables dynamic; keep bilingual_draft clearly described as incomplete translation."
     },
     {
       "id": "P0-automation-wrong-objective",
       "severity": "P0",
-      "summary": "The old heartbeat automation optimized for repeated 5-page refinement and GitHub sync rather than real completion progress.",
+      "summary": "The automation must not regress to count-neutral refinement rounds.",
       "evidence": "The openusd heartbeat uses PromotionRound/DefectRound/ConsistencyRound and requires good_bilingual growth, review_ready_zh improvement in an EnglishDebtRound, or named P0/P1 fixes before push.",
       "required_action": "Keep the automation prompt aligned with current counts and the promotion mechanism; do not let it regress to count-neutral round churn."
     },
     {
       "id": "P1-left-navigation-reading-flow",
       "severity": "P1",
-      "summary": "Fixed in round 396 and preserved in round 398: completed full_site pages expose a real local reading path with side navigation, breadcrumb, local release/API entrances, related pages, previous/next links, and explicit official-source jumps.",
-      "evidence": "reports/reading_flow_navigation_audit.json reports completed_full_site_pages=91, pages_with_side_nav=91, pages_with_breadcrumb=91, release_pages_with_release_entry=22/22, api_pages_with_api_entry=69/69, sample_paths_passed=8/8, official_leak_count=0.",
+      "summary": "Fixed in round 396 and preserved in round 399: completed full_site pages expose a real local reading path with side navigation, breadcrumb, local release/API entrances, related pages, previous/next links, and explicit official-source jumps.",
+      "evidence": "reports/reading_flow_navigation_audit.json reports completed_full_site_pages=92, pages_with_side_nav=92, pages_with_breadcrumb=92, release_pages_with_release_entry=23/23, api_pages_with_api_entry=69/69, sample_paths_passed=8/8, official_leak_count=0.",
       "required_action": "Keep inject_openusd_reading_flow_navigation.mjs and audit_openusd_reading_flow_navigation.mjs in the validation chain whenever promoted pages or navigation status changes."
     },
     {
@@ -60,30 +60,30 @@
     {
       "id": "P1-draft-content-thin",
       "severity": "P1",
-      "summary": "Most remaining draft pages contain Chinese guidance and term notes, not paragraph-level bilingual translation. 296 pages remain draft_needs_translation and 11 remain draft_template_only.",
-      "evidence": "translation_quality_review.json reports bilingual_draft=307, draft_needs_translation=296, draft_template_only=11.",
+      "summary": "Most remaining draft pages contain Chinese guidance and term notes, not paragraph-level bilingual translation. 295 pages remain draft_needs_translation and 11 remain draft_template_only.",
+      "evidence": "translation_quality_review.json reports bilingual_draft=306, draft_needs_translation=295, draft_template_only=11.",
       "required_action": "For selected high-value pages, replace or supplement guide-only blocks with dense Chinese main-reading-path coverage and then promote status only if the page passes quality and English debt audits."
     },
     {
       "id": "P1-english-residual-debt",
       "severity": "P1",
       "summary": "The good_bilingual count is useful but still too broad to prove human-review-ready Chinese reading quality; English/Chinese ratio remains diagnostic only, not a hard failure.",
-      "evidence": "reports/english_debt_audit.json reports review_ready_zh=36, review_needs_zh_debt=63, release_review_ready_zh=24. ShapingAPI is review_ready_zh=true after round 398.",
+      "evidence": "reports/english_debt_audit.json reports review_ready_zh=37, review_needs_zh_debt=63, release_review_ready_zh=25. SphereLight is review_ready_zh=true after round 399.",
       "required_action": "Report review_ready_zh alongside good_bilingual; schedule EnglishDebtRound for pages missing section coverage or Chinese main reading path, not merely because English remains abundant."
     },
     {
       "id": "P1-release-coverage-lag",
       "severity": "P1",
       "summary": "Completion remains API-skewed while release/tutorial/user-guide pages still lag, although recent S2 rounds moved usdLux and tutorial pages forward.",
-      "evidence": "reports/english_debt_audit.json reports api_complete=72 and release_complete=27; release_review_ready_zh=24.",
+      "evidence": "reports/english_debt_audit.json reports api_complete=72 and release_complete=28; release_review_ready_zh=25.",
       "required_action": "Continue release/tutorial/user-guide PromotionRounds unless a named P0/P1 defect blocks the run."
     }
   ],
   "next_actions": [
-    "Next best PromotionRound target: full_site/release/user_guides/schemas/usdLux/SphereLight.html, if it can become good_bilingual and preferably review_ready_zh.",
+    "Next best PromotionRound target: full_site/release/user_guides/schemas/usdLux/CylinderLight.html, if it can become good_bilingual and preferably review_ready_zh.",
     "Keep Markdown encoding, English debt, local link routing, navigation coverage, reading-flow navigation, full draft preview, report index, and validation in the fixed audit chain.",
     "Do not batch-promote multiple pages in one round."
   ],
-  "next_action": "PromotionRound target full_site/release/user_guides/schemas/usdLux/SphereLight.html, if it can become good_bilingual; otherwise stop and report the concrete blocker.",
-  "next_best_target": "full_site/release/user_guides/schemas/usdLux/SphereLight.html"
+  "next_action": "PromotionRound target full_site/release/user_guides/schemas/usdLux/CylinderLight.html, if it can become good_bilingual; otherwise stop and report the concrete blocker.",
+  "next_best_target": "full_site/release/user_guides/schemas/usdLux/CylinderLight.html"
 }

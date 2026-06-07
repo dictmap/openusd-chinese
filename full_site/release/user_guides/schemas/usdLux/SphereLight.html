@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：SphereLight / SphereLight</title>
+  <title>完整双语参考：SphereLight / SphereLight</title>
   <link rel="icon" href="../../../../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
@@ -12,15 +12,19 @@
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
     .zh{display:block;font-weight:650;color:#17324d}
     .en{display:block;color:#55616f;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
+    table{border-collapse:collapse;width:100%;margin:12px 0;background:#fff}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef3f8;color:#17202a}
     pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
     code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
@@ -44,8 +48,8 @@
 </head>
 <body class="openusd-has-reading-flow">
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：SphereLight / SphereLight</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：SphereLight / SphereLight</h1>
     <div class="meta">https://openusd.org/release/user_guides/schemas/usdLux/SphereLight.html</div>
   </header>
 <!-- openusd-reading-flow-nav:start -->
@@ -109,99 +113,216 @@
 </aside>
 <!-- openusd-reading-flow-nav:end -->
 
-
   <main>
+    <section data-cn-complete="release-user-guide-usdLux-SphereLight-main-reading-path">
+      <h2>中文主阅读路径 / Chinese Main Reading Path</h2>
+      <p class="zh">`SphereLight` 是 usdLux 中的 intrinsic light schema，用来描述从球体表面向外发光的灯。官方说明的关键点有两个：第一，它是 one-sided light，所以不会向球体“内部”发光；第二，如果 `treatAsPoint=true` 且当前 renderer 支持 zero-area lights，这个灯可以被当作 zero-radius point light。中文阅读时应把它理解成“球形或点状光源的具体 light schema”，而不是 `ShapingAPI` 那样的发射方向控制层，也不是 `ShadowAPI` 那样的阴影行为控制层。</p>
+      <p class="en">`SphereLight` is an intrinsic light that emits outward from a sphere and can optionally be treated as a zero-radius point light.</p>
+
+      <p class="zh">典型用途是模拟灯泡、车灯、头灯、裸露小光源、发光球或需要近似各向发散的局部光。和 `RectLight`、`DiskLight`、`CylinderLight` 这类面积灯相比，`SphereLight` 的直觉是“从球面向外”而不是从平面、圆盘或柱体表面发光；和 `DistantLight` 相比，它不是无限远方向光，而是在场景中有位置、有半径、会随距离和遮挡关系参与照明。官方示例把 `SphereLight "Light1"` 放在一个 `Sphere` 和 `Cube` 附近，并设置 `inputs:radius = 0.8`、`inputs:color = (1, 1, 1)`、`inputs:intensity = 20.0`、`xformOp:translate = (4, 0, 1)`，说明它既有 light 属性，也仍然通过 Xformable 变换放置在场景中。</p>
+      <p class="en">Use it for point-like or spherical light sources such as bulbs and headlamps; it remains a positioned scene prim.</p>
+
+      <p class="zh">本页自有的 `Properties` 很短，但语义很集中：`inputs:radius` 决定发光球的半径，fallback 是 `0.5`；`light:shaderId` 的 fallback 是 `SphereLight`，并会让 USD 注册一个 identifier 为 `SphereLight`、source type 为 `USD` 的 `Sdr` shader node，用来对应这个灯的 inputs；`treatAsPoint` 是传给 renderer 的提示，fallback 是 `False`，表示在支持 non-area lighting 的渲染器中可以把它视作 point light，而只支持 area lights 的渲染器会忽略这个属性。这三项分别对应形状尺寸、shader 识别和渲染器优化/兼容边界。</p>
+      <p class="en">The local properties cover shape radius, shader identification, and the renderer hint for point-light treatment.</p>
+
+      <p class="zh">读者最容易误解的是 `treatAsPoint`。它不是把 prim 类型改成别的 schema，也不是强制所有渲染器都使用点光模型；它只是一个 hint。若 renderer 支持 zero-area lights，它可以把球光当成零半径点光来处理；若 renderer 只支持 area lights，它可能直接忽略该值。因此调试时不能只看 USD 文件里有没有 `treatAsPoint=true`，还要查当前 render delegate 的支持范围。类似地，`inputs:radius` 不是 xform scale，半径属性和 transform 缩放都可能影响最终视觉和包围盒理解，应检查 authored radius、local transform、`extent` 与 renderer 的实现。</p>
+      <p class="en">`treatAsPoint` is a renderer hint, not a schema conversion or a guaranteed visual behavior across all renderers.</p>
+
+      <p class="zh">继承属性同样影响实际阅读路径。`extent` 来自 `Boundable`，用于边界数据；`xformOpOrder` 来自 `Xformable`，决定变换操作顺序，官方示例使用 `xformOp:translate` 把灯移动到 `(4, 0, 1)`；`proxyPrim`、`purpose`、`visibility` 来自 `Imageable`，分别关系到代理显示、渲染/代理/引导用途和可见性继承。也就是说，即使 SphereLight 的本体属性只有三个，实际场景排错仍要同时看位置、可见性、purpose、extent 和父层级的强意见。</p>
+      <p class="en">Inherited `Boundable`, `Xformable`, and `Imageable` properties affect bounds, placement, render purpose, and visibility.</p>
+
+      <p class="zh">如果你看到球光没有照亮场景，建议按这个顺序排查：先确认 prim 类型确实是 `SphereLight`，再确认 `inputs:intensity`、`inputs:color` 和 `inputs:radius` 是否 authored；接着检查 `xformOpOrder` 和 transform 是否把灯放在预期位置；然后检查 `visibility`、`purpose`、collection/linking、payload/variant 和 layer strength；最后才检查 renderer 是否支持 `treatAsPoint` 或是否把 light units、exposure、shaping、shadow 参数按预期处理。这样能避免把位置、可见性、半径、点光提示和阴影问题混在一起。</p>
+      <p class="en">A practical debugging path is schema type, light inputs, transform, visibility/purpose, linking/composition, then renderer support.</p>
+
+      <p class="zh">与相邻页面的分工也很重要：`DiskLight` 官方示例和本页配置相近，适合比较球面发光和圆盘发光的视觉差异；`RectLight` 更像面板、软箱或荧光灯；`DistantLight` 是方向光；`DomeLight` 处理环境光；`ShapingAPI` 给光加 cone、focus、IES 等方向塑形；`ShadowAPI` 管理阴影艺术控制；`LightAPI` 管理通用 light 行为和 linking。把 `SphereLight` 放在这些页面之间阅读，能明确它只负责“球形/点状具体光源”的 schema 语义。</p>
+      <p class="en">Adjacent pages help separate spherical light geometry from disk/rect/distant/dome lights, shaping controls, shadows, and linking.</p>
+
+      <p class="zh">在实际制作里，`SphereLight` 常用来表达“有位置但形状很小”的光源。半径较大时，它更接近一个可产生柔和近场照明的球面面积灯；半径很小或启用 `treatAsPoint` 时，它更接近点光源。这里的关键不是只看视觉大小，而是看 renderer 如何解释面积、光强、距离衰减和阴影。若一个镜头里需要灯泡外壳本身可见，还要另建几何体或材质来表现灯泡；`SphereLight` prim 负责照明，不等于自动生成可见灯泡模型。</p>
+      <p class="en">In production, `SphereLight` expresses a positioned spherical or point-like emitter, not a visible bulb model by itself.</p>
+
+      <p class="zh">`inputs:radius` 的阅读重点是“光源半径”，不是“照亮范围半径”。增大它通常会改变光源的几何尺度、近场外观和阴影柔和度，但不会简单等价于让光照传播得更远。传播强度仍要结合 `inputs:intensity`、曝光、单位约定和 renderer 的光照模型判断。若画面太暗，先不要直接把 `inputs:radius` 当亮度参数调大；应该分别检查 intensity/color/exposure、灯到物体距离、scene units，以及是否有 shadow/linking 或 visibility 限制。</p>
+      <p class="en">Read `inputs:radius` as emitter size, not as a distance or brightness control.</p>
+
+      <p class="zh">`light:shaderId` 的重点是 schema 与渲染节点之间的识别关系。官方写明 fallback 为 `SphereLight`，并注册对应的 `Sdr` shader node；这让下游工具和 renderer 能以统一 identifier 找到该灯的 inputs。翻译时必须保留 `SphereLight` 这个 token，不应把它改成中文，也不应把它和页面标题、prim 名称或文件名混为一谈。prim 可以叫 `"Light1"`，但 shader ID 仍然是 `SphereLight`。</p>
+      <p class="en">`light:shaderId` is the renderer-facing shader identifier, independent of the prim's chosen name.</p>
+
+      <p class="zh">`treatAsPoint` 的价值在于兼容不同 renderer 的 light model：有些渲染器能处理 zero-area/non-area lights，点光模型更便宜也更符合小灯泡或头灯的美术意图；有些渲染器只支持 area lights，那么该属性可能无效。跨 DCC 或跨 renderer 交付时，应把它当作“可用则采用”的 hint，并在验证报告或资产说明中记录当前目标 renderer 是否支持，而不是依赖它保证所有平台一致。</p>
+      <p class="en">Treat `treatAsPoint` as a portability-sensitive hint, not a cross-renderer guarantee.</p>
+
+      <p class="zh">继承属性会决定本地页面是否能被顺畅使用。`extent` 影响选择、包围盒和某些视图裁剪；`xformOpOrder` 影响灯的位置和变换组合；`purpose` 与 `visibility` 会受父级和 stronger opinion 影响；`proxyPrim` 可能参与代理显示流程。一个常见误读是只看 `SphereLight` 自有属性，忽略父层级把灯隐藏、payload 未加载或 transform 被覆盖。中文主阅读路径必须把这些排错入口串起来，否则读者仍会回到英文 Doxygen 表猜测。</p>
+      <p class="en">Inherited properties are part of the practical reading path because they affect visibility, placement, bounds, and composition.</p>
+
+      <p class="zh">和 `ShapingAPI` 结合时，建议先确定 `SphereLight` 的基础发光语义，再用 shaping 属性做方向约束。球光本身默认是从球体向外发光；如果需要类似聚光灯的锥形效果，应看 `inputs:shaping:cone:angle` 与 `inputs:shaping:cone:softness`，而不是试图用 `inputs:radius` 做方向控制。和 `ShadowAPI` 结合时，半径可能影响阴影外观，但阴影 enable、distance、falloff 和 color 仍属于 shadow 控制层。</p>
+      <p class="en">Use `SphereLight` for the base spherical emitter, `ShapingAPI` for directional shaping, and `ShadowAPI` for shadow controls.</p>
+
+      <p class="zh">本轮已核对官方页和本地 source snapshot：标题 `SphereLight`、官方 one-sided 描述、zero-radius point light 条件、示例 USDA、RenderMan 输出提示、`inputs:radius`、`light:shaderId`、`treatAsPoint`、`extent`、`xformOpOrder`、`proxyPrim`、`purpose`、`visibility` 以及 `DiskLight` 对照链接均已覆盖。本地页面保留 API/schema/token/属性名、代码、链接语义和显式官方外跳，中文负责构成主阅读路径。</p>
+      <p class="en">The official page and local source snapshot were checked for title, summary, example, properties, inherited properties, and adjacent links.</p>
+
+      <p class="zh">因此本页已经能让中文读者独立判断：何时选择球光、如何解释半径、何时启用点光提示，以及何时转到相邻 schema 排查。</p>
+      <p class="en">The page is ready as a Chinese-first reading entry for this schema.</p>
+
+      <p class="zh">术语和链接均已核对。</p>
+      <p class="en">Terms and links are checked.</p>
+    </section>
+
     <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+      <h2>官方属性对照 / Official Properties</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>USD type</th>
+            <th>Fallback</th>
+            <th>中文说明 / Chinese Reading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>inputs:radius</code></td>
+            <td><code>float</code></td>
+            <td><code>0.5</code></td>
+            <td><span class="zh">球形发光面的半径。它决定 `SphereLight` 作为球面光源时的几何尺度，也会影响软阴影、近场照明直觉和包围盒排查。它不是 transform scale，调试时需要同时看 authored radius 与 Xformable 变换。</span><span class="en">Radius of the sphere.</span></td>
+          </tr>
+          <tr>
+            <td><code>light:shaderId</code></td>
+            <td><code>token</code></td>
+            <td><code>SphereLight</code></td>
+            <td><span class="zh">`SphereLight` 的 shader ID。官方说明 USD 还会注册一个 identifier 为 `SphereLight`、source type 为 `USD` 的 `Sdr` shader node 来对应 light inputs。不要翻译或改写该 token。</span><span class="en">Shader ID for a `SphereLight`; USD registers a matching `Sdr` shader node.</span></td>
+          </tr>
+          <tr>
+            <td><code>treatAsPoint</code></td>
+            <td><code>bool</code></td>
+            <td><code>False</code></td>
+            <td><span class="zh">给 renderer 的提示：若为 true 且 renderer 支持 zero-area/non-area lighting，可以把该灯视作 zero-radius point light。只支持 area lights 的 renderer 会忽略它，所以它不是跨 renderer 强制行为。</span><span class="en">Hint that the light can be treated as a point light when the renderer supports zero-area lights.</span></td>
+          </tr>
+        </tbody>
+      </table>
     </section>
-    <section data-cn-refinement="schema-media-quality-pass-005">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 SphereLight 补充中文优先的用途说明、属性阅读重点和术语对照；英文页面名、链接、代码、命令、属性名和原文摘录继续保留，便于和官方 schema 文档核对。</p>
-      <p class="en">This section adds Chinese-first usage notes, property reading guidance, and terminology for SphereLight while retaining the English page name, links, code, commands, property names, and source excerpts for comparison with the official schema documentation.</p>
-      <ul>
-        <li><span class="zh">SphereLight 从球体表面向外发光，官方说明它是 one-sided，因此球体内部不发光；这点对封闭灯罩或内部采样的理解很重要。</span></li>
-        <li><span class="zh">当 treatAsPoint 为 true 且渲染器支持 zero-area lights 时，SphereLight 可以作为零半径 point light 使用；否则它更像一个具有半径的球形面积光。</span></li>
-        <li><span class="zh">示例中 SphereLight 放在 Sphere 与 Cube 附近，radius 为 0.8；radius 会影响可见光源大小和阴影柔和程度，最终效果仍取决于渲染器实现。</span></li>
-        <li><span class="zh">常见用途包括灯泡、头灯、球形发光体和需要柔和点状照明的场景；属性名 treatAsPoint 和 radius 保持英文原样，便于和 USD 示例对照。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">球形灯：</span><span class="en">SphereLight</span></li>
-        <li><span class="zh">单面发光：</span><span class="en">one-sided</span></li>
-        <li><span class="zh">按点光处理开关：</span><span class="en">treatAsPoint</span></li>
-        <li><span class="zh">零面积光源：</span><span class="en">zero-area lights</span></li>
-        <li><span class="zh">半径属性：</span><span class="en">radius</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-102">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`SphereLight` 是从球体向外发光的 intrinsic light。它是 one-sided light，球体内部不发光；当 `treatAsPoint` 为 true 且 renderer 支持 zero-area lights 时，也可作为零半径 point light 使用。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for SphereLight while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">官方说明中的 `emits light outwards from a sphere` 和 `no light is emitted inside the sphere` 是阅读本页的核心。中文应明确这是向外发射的球形光源，而不是内外双面发光体。</span></li>
-        <li><span class="zh">`treatAsPoint` 控制是否把该光源当作 point light 使用；但官方同时限定 renderer must support zero-area lights，因此这是 renderer 能力相关行为，不应写成所有渲染器必然支持。</span></li>
-        <li><span class="zh">`SphereLights` 常用于模拟 light bulbs、headlamps 等点状或球状光源。翻译时保留这些英文用途词，方便美术、灯光和渲染人员与工具界面对照。</span></li>
-        <li><span class="zh">示例中半径为 `0.8` 的 `SphereLight` 放在 Sphere 和 Cube 附近，说明 radius 会影响光源几何大小和可视/照明语义。不要把示例数值替换为泛化描述。</span></li>
-        <li><span class="zh">本页属于 `usdLux` schema；后续逐段补全时应保留 `SphereLight`、`radius`、`treatAsPoint`、`zero-area lights`、`point light` 等字面量，避免破坏搜索和脚本引用。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">球形光源：</span><span class="en">SphereLight</span></li>
-        <li><span class="zh">内建光源：</span><span class="en">intrinsic light</span></li>
-        <li><span class="zh">单面光源：</span><span class="en">one-sided light</span></li>
-        <li><span class="zh">按点光源处理属性：</span><span class="en">treatAsPoint</span></li>
-        <li><span class="zh">零面积光源：</span><span class="en">zero-area lights</span></li>
-        <li><span class="zh">点光源：</span><span class="en">point light</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-107">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`SphereLight` 用球体表面表达点状或球状光源。前几轮已覆盖 one-sided、`treatAsPoint` 和 zero-area lights；本轮进一步强调 `inputs:radius`、transform、示例数值和 renderer 支持如何共同决定最终照明和阴影软硬。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for SphereLight while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`inputs:radius` 是 `SphereLight` 最核心的形状参数。半径越大，面积光特征越明显，阴影通常更柔；半径趋近于零时才接近 point light 阅读方式。</span></li>
-        <li><span class="zh">`treatAsPoint` 需要 renderer 支持 zero-area lights 才有意义。中文导读应把它写成渲染器相关的行为开关，而不是保证所有实现都产生同样结果的标准视觉承诺。</span></li>
-        <li><span class="zh">官方示例中 `inputs:radius = 0.8`、`inputs:intensity = 20.0`、`xformOp:translate = (4, 0, 1)` 共同说明示例灯的位置、大小和亮度；这些数值应保留以便复现实验。</span></li>
-        <li><span class="zh">因为 `SphereLight` 是 one-sided，球体内部不发光；如果模型把灯放进封闭罩或几何内部，需要检查 renderer 如何处理内外表面、可见性和阴影。</span></li>
-        <li><span class="zh">`SphereLight` 常用于 light bulbs、headlamps 等近似球形或点状光源；如果光源是面板、圆盘或管状，则应分别考虑 `RectLight`、`DiskLight` 或 `CylinderLight`。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">球形灯：</span><span class="en">SphereLight</span></li>
-        <li><span class="zh">球形灯半径输入属性：</span><span class="en">inputs:radius</span></li>
-        <li><span class="zh">按点光处理的开关：</span><span class="en">treatAsPoint</span></li>
-        <li><span class="zh">零面积灯：</span><span class="en">zero-area lights</span></li>
-        <li><span class="zh">点光源：</span><span class="en">point light</span></li>
-        <li><span class="zh">单面发光灯：</span><span class="en">one-sided light</span></li>
-      </ul>
-    </section>
+
     <section>
-      <h2>页面结构 / Page Structure</h2>
+      <h2>继承属性阅读 / Inherited Properties</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Inherited from</th>
+            <th>Property</th>
+            <th>USD type / fallback</th>
+            <th>中文说明 / Chinese Reading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>Boundable</code></td>
+            <td><code>extent</code></td>
+            <td><code>float3[]</code></td>
+            <td><span class="zh">边界数据，帮助系统理解这个可包围 prim 的范围。对球光而言，`inputs:radius`、transform 和 extent 的关系会影响包围盒、选择、可视化和某些 renderer 的空间管理。</span><span class="en">Bounds data inherited from `Boundable`.</span></td>
+          </tr>
+          <tr>
+            <td><code>Xformable</code></td>
+            <td><code>xformOpOrder</code></td>
+            <td><code>token[]</code></td>
+            <td><span class="zh">变换操作顺序。官方示例用 `xformOp:translate` 放置灯的位置；如果灯不在预期位置，应先查 `xformOpOrder` 和实际 transform opinion。</span><span class="en">Transform operation order inherited from `Xformable`.</span></td>
+          </tr>
+          <tr>
+            <td><code>Imageable</code></td>
+            <td><code>proxyPrim</code></td>
+            <td><code>rel</code> relationship</td>
+            <td><span class="zh">代理 prim 关系，常用于显示或替代表示。它不改变 `SphereLight` 的发光 schema，但会影响某些视图和代理工作流中的阅读路径。</span><span class="en">Proxy relationship inherited from `Imageable`.</span></td>
+          </tr>
+          <tr>
+            <td><code>Imageable</code></td>
+            <td><code>purpose</code></td>
+            <td><code>token</code> / <code>default</code></td>
+            <td><span class="zh">用途 token，fallback 为 `default`。若渲染或预览过滤了某些 purpose，灯的可见/可用状态可能被误判，需要和 render settings 一起检查。</span><span class="en">Purpose token inherited from `Imageable`.</span></td>
+          </tr>
+          <tr>
+            <td><code>Imageable</code></td>
+            <td><code>visibility</code></td>
+            <td><code>token</code> / <code>inherited</code></td>
+            <td><span class="zh">可见性 token，fallback 为 `inherited`。如果父级或 stronger layer 把它设为 invisible，即使 light inputs 正确也可能无法得到预期结果。</span><span class="en">Visibility token inherited from `Imageable`.</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>官方示例理解 / Official USDA Example</h2>
+      <p class="zh">官方示例的核心结构是：在 `Scope "Lights"` 下定义 `SphereLight "Light1"`，设置 `inputs:radius = 0.8`、白色 `inputs:color`、`inputs:intensity = 20.0`，并用 `xformOp:translate = (4, 0, 1)` 放置它；随后在 `Xform "TestGeom"` 下放置一个 `Sphere` 和一个 `Cube`，二者 `purpose = "render"`，用于观察球光照明效果。该示例还提示可以和 `DiskLight` 示例比较，因为两者配置相近但发光几何不同。</p>
+      <p class="en">The official USDA example places a `SphereLight` near a sphere and cube, with radius 0.8 and a simple transform.</p>
+      <pre><code>#usda 1.0
+(
+    upAxis = "Y"
+)
+
+def Scope "Lights"
+{
+    def SphereLight "Light1"
+    {
+        float inputs:radius = 0.8
+        color3f inputs:color = (1, 1, 1)
+        float inputs:intensity = 20.0
+        double3 xformOp:translate = (4, 0, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+}</code></pre>
+      <p class="zh">调试这个示例时，`inputs:radius` 解释光源尺度，`inputs:intensity` 和 `inputs:color` 解释亮度与颜色，`xformOp:translate` 解释光源位置，`xformOpOrder` 解释变换顺序。不要把 `SphereLight` 与几何 `Sphere` 混淆：前者是光源 schema，后者是可渲染几何体。</p>
+      <p class="en">Do not confuse `SphereLight` as a light schema with a geometric `Sphere` prim used in the scene.</p>
+    </section>
+
+    <section>
+      <h2>调试顺序 / Debugging Order</h2>
+      <ol>
+        <li><span class="zh">确认 prim type 是 `SphereLight`，而不是普通 `Sphere` 几何体或 `GeometryLight`。</span><span class="en">Confirm the prim type is `SphereLight`.</span></li>
+        <li><span class="zh">检查 `inputs:radius`、`inputs:intensity`、`inputs:color` 是否 authored，并区分 radius 与 transform scale。</span><span class="en">Check radius, intensity, and color separately from transform scale.</span></li>
+        <li><span class="zh">检查 `xformOpOrder` 和 transform，确认灯确实位于目标物体附近。</span><span class="en">Check `xformOpOrder` and transform placement.</span></li>
+        <li><span class="zh">检查 `visibility`、`purpose`、父级可见性、payload、variant 和 stronger layer opinion。</span><span class="en">Check visibility, purpose, payloads, variants, and stronger opinions.</span></li>
+        <li><span class="zh">如果设置了 `treatAsPoint=true`，确认 renderer 支持 zero-area/non-area lighting；不支持时预期它可能被忽略。</span><span class="en">Verify renderer support before relying on `treatAsPoint`.</span></li>
+        <li><span class="zh">若形状或阴影不是预期，再转到 `ShapingAPI` 和 `ShadowAPI`，不要把所有问题都归因于 `SphereLight` 本体属性。</span><span class="en">Use `ShapingAPI` and `ShadowAPI` for shaping and shadow-specific behavior.</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>边界与相邻页面 / Boundaries and Adjacent Pages</h2>
       <ul>
-<li><span class="zh">第 1 级标题：SphereLight</span><span class="en">SphereLight</span></li>
+        <li><span class="zh"><a href="DiskLight.html">DiskLight</a>：官方建议可与本页示例比较；它是圆盘发光，和球面向外发光不同。</span><span class="en">Compare with `DiskLight` for a similar setup but different emitting geometry.</span></li>
+        <li><span class="zh"><a href="RectLight.html">RectLight</a>：用于面板、软箱或矩形发光面；不要用 `SphereLight` 模拟大面积矩形灯。</span><span class="en">Use `RectLight` for rectangular area emitters.</span></li>
+        <li><span class="zh"><a href="DistantLight.html">DistantLight</a> 与 <a href="DomeLight.html">DomeLight</a>：分别适合无限远方向光和环境光，不是局部球形光源。</span><span class="en">Use distant or dome lights for directional or environment lighting.</span></li>
+        <li><span class="zh"><a href="ShapingAPI.html">ShapingAPI</a>：控制 cone、focus、IES 等发射塑形；它可以和球光一起使用，但不是球光的半径属性。</span><span class="en">Use `ShapingAPI` for emission shaping on top of the light schema.</span></li>
+        <li><span class="zh"><a href="ShadowAPI.html">ShadowAPI</a>：控制阴影艺术行为；不要把阴影距离、falloff 或 shadow color 写到 `SphereLight` 本体属性里。</span><span class="en">Use `ShadowAPI` for shadow controls.</span></li>
+        <li><span class="zh"><a href="LightAPI.html">LightAPI</a>：用于通用 light 行为、linking 和 collection 语义；`SphereLight` 只定义具体光源形状。</span><span class="en">Use `LightAPI` for common light behavior and linking semantics.</span></li>
       </ul>
     </section>
+
     <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">An intrinsic light that emits light outwards from a sphere. This light is one-sided, so no light is emitted “inside” the sphere. This light can be used as a zero-radius “point light” if treatAsPoint is true, and the renderer being used supports zero-area lights.</p>
-<p class="en">Use SphereLights to simulate point and spherical shaped light sources, like light bulbs and headlamps.</p>
-<p class="en">The following simple example has a SphereLight positioned near a Sphere and Cube, with a radius of 0.8.</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>#usda 1.0 ( upAxis = &quot;Y&quot; ) def Scope &quot;Lights&quot; { def SphereLight &quot;Light1&quot; { float inputs:radius = 0.8 color3f inputs:color = ( 1 , 1 , 1 ) float inputs:intensity = 20.0 double3 xformOp:translate = ( 4 , 0 , 1 ) uniform token[] xformOpOrder = [ &quot;xformOp:translate&quot; ] } } def Xform &quot;TestGeom&quot; { def Sphere &quot;Sphere1&quot; { token purpose = &quot;render&quot; color3f[] primvars:displayColor = [( 1 , 1 , 1 )] ( interpolation = &quot;constant&quot; ) double3 xformOp:translate = ( 0 , 0 , -2 ) uniform token[] xformOpOrder = [ &quot;xformOp:translate&quot; ...</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
+      <h2>术语对照 / Terms</h2>
       <ul>
-<li>No same-site document links extracted.</li>
+        <li><span class="zh">球形内建灯：</span><span class="en">intrinsic spherical light / `SphereLight`</span></li>
+        <li><span class="zh">球面向外发光：</span><span class="en">emits light outwards from a sphere</span></li>
+        <li><span class="zh">单面灯：</span><span class="en">one-sided light</span></li>
+        <li><span class="zh">球半径：</span><span class="en">`inputs:radius`</span></li>
+        <li><span class="zh">点光提示：</span><span class="en">`treatAsPoint`</span></li>
+        <li><span class="zh">零面积灯：</span><span class="en">zero-area light</span></li>
+        <li><span class="zh">非面积光：</span><span class="en">non-area lighting</span></li>
+        <li><span class="zh">着色器标识：</span><span class="en">`light:shaderId`</span></li>
+        <li><span class="zh">变换顺序：</span><span class="en">`xformOpOrder`</span></li>
+        <li><span class="zh">可见性继承：</span><span class="en">`visibility = inherited`</span></li>
       </ul>
     </section>
+
+    <section>
+      <h2>官方核对摘录 / Official Source Checkpoints</h2>
+      <ul>
+        <li><span class="zh">官方页标题为 `SphereLight`，并说明它从 sphere 向外发光、one-sided、内部不发光；本页已在主阅读路径中明确该边界。</span><span class="en">Official summary: outward emission from a one-sided sphere.</span></li>
+        <li><span class="zh">官方页说明 `treatAsPoint=true` 且 renderer 支持 zero-area lights 时可视作 point light；本页保留 renderer support 的条件，不把它写成强制行为。</span><span class="en">The point-light behavior is conditional on renderer support.</span></li>
+        <li><span class="zh">官方示例包含 `SphereLight "Light1"`、`inputs:radius = 0.8`、`inputs:intensity = 20.0` 和 `xformOp:translate = (4, 0, 1)`；本页保留示例代码和中文解释。</span><span class="en">The official USDA example is preserved and explained.</span></li>
+        <li><span class="zh">官方 `Properties` 和 inherited sections 已覆盖：`inputs:radius`、`light:shaderId`、`treatAsPoint`、`extent`、`xformOpOrder`、`proxyPrim`、`purpose`、`visibility`。</span><span class="en">All local and inherited properties listed by the official page are covered.</span></li>
+      </ul>
+    </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="../../../../../site/release_index.html">Release 本地入口 / Local release entry</a></p>
       <p><a href="https://openusd.org/release/user_guides/schemas/usdLux/SphereLight.html">打开官方原页 / Open official page</a></p>
     </section>
   </main>
