@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-07T10:29:27.792Z
+Generated: 2026-06-07T10:45:07.803Z
 
-Transient base URL: `http://127.0.0.1:55327/`
+Transient base URL: `http://127.0.0.1:61663/`
 
 Result:
 
 - Passed: true
-- Draft pages: 342
-- Pages checked: 342
-- Passed pages: 342
+- Draft pages: 341
+- Pages checked: 341
+- Passed pages: 341
 - Failed pages: 0
-- Final HTML links: 342
-- Local assets checked: 342
+- Final HTML links: 341
+- Local assets checked: 341
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -162,7 +162,6 @@ Result:
 | true | full_site/api/group__group___exec___attribute___comptuations.html | 200 | true | 0 | 0 |
 | true | full_site/api/group__group__hd__collection_predicates.html | 200 | true | 0 | 0 |
 | true | full_site/api/hd_embree_page_front.html | 200 | true | 0 | 0 |
-| true | full_site/api/hd_page_front.html | 200 | true | 0 | 0 |
 | true | full_site/api/hd_st_page_front.html | 200 | true | 0 | 0 |
 | true | full_site/api/hd_storm_page_front.html | 200 | true | 0 | 0 |
 | true | full_site/api/hdx_page_front.html | 200 | true | 0 | 0 |

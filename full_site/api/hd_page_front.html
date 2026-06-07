@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>API 模块草稿：Hd : The Hydra Framework / Hd : The Hydra Framework</title>
+  <title>完整双语参考：Hd : The Hydra Framework / Hd : The Hydra Framework</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -19,20 +19,51 @@
     ul{padding-left:22px}
     li{margin:8px 0}
     code{font-family:"Cascadia Mono","Consolas",monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>API 模块草稿：Hd : The Hydra Framework / Hd : The Hydra Framework</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：Hd : The Hydra Framework / Hd : The Hydra Framework</h1>
     <div class="meta">https://openusd.org/release/api/hd_page_front.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页处理：中文优先解释 `Hd` 作为 Hydra Framework 核心模块的职责、multiple scene graphs 与 multiple renderers 的通信边界、render index、scene delegate、scene index、task、buffer source、data source、render delegate 以及它与 `UsdImaging`、`HdSt`、`Hdx`、`Hgi` 的分层关系；英文 API 名称、类型名、链接和官方摘录保留原样，便于与 Doxygen 页面核对。</p>
+      <p class="en">This page is promoted as a complete bilingual reference. It explains Hd as the core Hydra Framework layer for communication between scene graphs and renderers while retaining official API names and excerpts.</p>
+    </section>
+    <section data-cn-complete="hd-hydra-framework-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`Hd` 是 Hydra Framework 的核心 API 模块。官方一句话定义是：Hd enables the communication between multiple scene graphs and multiple renderers。这里的重点是“通信框架”而不是某一个渲染器实现：Hydra 允许不同数据源把场景表达成可渲染数据，也允许不同 renderer backend 读取这些数据并执行渲染。</p>
+      <p class="en">Hd is a framework that enables communication between multiple scene graphs and multiple renderers.</p>
+      <p class="zh">scene graph 可以来自 USD，也可以来自其他宿主或中间表示；renderer 可以是 Storm、Embree、RenderMan bridge 或其他 Hydra render delegate。`Hd` 定义的是中间协议：哪些 prim 需要同步、数据如何进入 render index、任务如何调度、buffer 如何组织、结果如何写入 render buffer。它不负责 USD authoring，也不等同于某个具体 renderer。</p>
+      <p class="en">Hydra decouples scene data sources from renderer backends through common indexing, synchronization, task, and buffer abstractions.</p>
+      <p class="zh">`HdRenderIndex` 是 Hydra 的核心索引结构，用于管理可渲染对象、状态对象、buffer 和任务可见的场景数据。它不是 `UsdStage`，也不是 composition engine；它是渲染侧的同步目标。排查“USD 数据已经写入但视口不更新”时，要分清数据是否到达 `UsdStage`、是否被 `UsdImaging` adapter 转换、是否进入 `HdRenderIndex`、以及 render delegate 是否消费了对应变化。</p>
+      <p class="en">HdRenderIndex is a rendering-side index, not a UsdStage or a composition engine.</p>
+      <p class="zh">`HdSceneDelegate` 代表旧式 Hydra pull model 中的数据提供者。render index 通过 delegate 查询 prim、topology、transform、primvar、material、visibility 等数据。较新的 scene index 流则更强调可组合、可过滤、可增量通知的数据流。阅读 Hd 时要同时知道这两条路径，因为 OpenUSD 代码库中仍会同时出现 scene delegate 和 scene index 相关概念。</p>
+      <p class="en">HdSceneDelegate supports the older pull model, while scene indexes provide a newer composable and incremental data-flow model.</p>
+      <p class="zh">`HdRprim`、`HdSprim` 和 `HdBprim` 是常见对象分类：Rprim 是可渲染 prim，例如 mesh 或 curve；Sprim 是状态 prim，例如 camera、light、material；Bprim 是 buffer-oriented prim，例如 render buffer。这个分类帮助 renderer 知道对象如何同步和消费。把它们混为普通 USD prim，会导致排查路径错误。</p>
+      <p class="en">Rprim, Sprim, and Bprim divide renderable, state, and buffer-oriented objects for renderer synchronization.</p>
+      <p class="zh">`HdTask` 定义 Hydra 执行单元，例如渲染任务、拾取任务或后处理任务。task 由 render index、scene delegate/scene index、driver 和 render delegate 协作执行。任务不是 scene description；它表达渲染管线中的工作调度。排查 viewport 缺画面时，要确认 task 是否被创建、参数是否同步、依赖资源是否准备好、render delegate 是否执行。</p>
+      <p class="en">HdTask represents render-pipeline work units rather than authored scene description.</p>
+      <p class="zh">buffer source、buffer array、data source 和 locator 是理解现代 Hydra 数据流的关键。`HdBufferSource` 处理送入 GPU 或 backend buffer 的数据；`HdDataSource` 和 `HdDataSourceLocator` 表示可定位的数据项和失效范围。若只看最终 renderer output，很难定位问题；应沿着 locator invalidation、data source query、buffer population 和 render delegate consumption 逐层检查。</p>
+      <p class="en">Buffer sources, data sources, and locators connect invalidation, data queries, buffer population, and renderer consumption.</p>
+      <p class="zh">change processing 是 Hydra 调试中最常见的分界点之一。旧式路径通常围绕 dirty bits：transform、topology、primvars、material、visibility 等变化会标记为需要重新同步；scene index 路径则围绕 locator invalidation 和增量通知。若画面没有更新，要先确认变化信号是否抵达 Hd 层，再确认 renderer 是否执行了对应同步，而不是直接修改 shader 或 GPU 代码。</p>
+      <p class="en">Hydra change processing often appears as dirty bits in older flows and locator invalidation in scene-index flows.</p>
+      <p class="zh">render delegate 是 renderer backend 与 Hd 抽象之间的实现边界。它负责创建具体 Rprim/Sprim/Bprim、解释 buffer、提交 draw/compute work，并返回 convergence 或 render buffer 状态。`Hd` 只定义接口和协议，不保证某个 delegate 支持所有数据、所有 AOV 或所有材质特性。功能缺失时，要区分 Hd 抽象、adapter 数据、delegate capability 和 backend limitation。</p>
+      <p class="en">A render delegate implements the renderer side of Hd abstractions and may have backend-specific capability limits.</p>
+      <p class="zh">AOV、render buffer、selection 和 picking 也是 `Hd` 生态中常见但容易跨层混淆的部分。`HdRenderBuffer` 表示渲染输出或中间 buffer；`Hdx` 常提供 picking、selection、task utility 等扩展；具体像素格式、GPU 资源和命令提交则可能落到 `HdSt`、`Hgi` 或 render delegate。排查拾取结果错误时，要同时看 ID buffer 是否生成、viewport/remap 是否一致、task 是否执行、以及 scene delegate 或 data source 提供的 prim id 是否正确。</p>
+      <p class="en">AOVs, render buffers, selection, and picking often cross Hd, Hdx, HdSt, Hgi, and render-delegate responsibilities.</p>
+      <p class="zh">`Hd` 与相邻模块的边界要保持清楚：`UsdImaging` 把 USD prim 转换成 Hydra 可消费数据；`Hd` 定义核心抽象和同步协议；`HdSt` 是 Storm renderer 的实现层；`Hdx` 提供 Hydra 扩展任务和实用工具；`Hgi` 抽象图形 API 后端。渲染问题发生在哪一层，决定应读哪组 API。</p>
+      <p class="en">UsdImaging adapts USD data, Hd defines core Hydra abstractions, HdSt implements Storm, Hdx adds extensions, and Hgi abstracts graphics backends.</p>
+      <p class="zh">反向边界同样重要：`Hd` 不负责 layer composition、不定义材质网络语义，也不直接暴露底层图形 API 命令。若问题是 reference/payload 合成结果错误，应先查 `Pcp`/`Usd`；若问题是 Storm draw call 或 GPU resource，则进入 `HdSt`/`Hgi`；若问题是 picking 或 task utility，则进入 `Hdx`。本页的作用是帮助读者定位 Hydra 中间层，而不是替代这些相邻模块。</p>
+      <p class="en">Hd defines the middle Hydra protocol layer; composition, renderer implementation, task utilities, and graphics backends live in adjacent modules.</p>
+      <p class="zh">常见调试路径可以固定为：先确认 authored USD 或宿主 scene graph 是否正确；再确认 adapter 或 scene index 是否生成了 Hydra 数据；然后检查 `HdRenderIndex` 是否收到 dirty bits 或 locator invalidation；接着看 task 是否执行、buffer 是否 populated、render delegate 是否消费；最后再定位到 Storm、Hgi 或 GPU backend。这样可以避免把所有视口问题都误归因给 Hydra 核心。</p>
+      <p class="en">A practical debugging path is scene data, adapter or scene index, render index invalidation, task execution, buffer population, render delegate consumption, and backend execution.</p>
+      <p class="zh">本页的 `Developer Guides` 链接应作为扩展阅读入口：先用本页建立 `Hd` 的抽象层次，再进入 delegate、render index、task execution、scene index、data source 和 render delegate 细节。对于用户来说，`Hd` 是理解 Hydra 生态的入口，不是完成所有渲染细节的终点。</p>
+      <p class="en">The Developer Guides are the next reading path after this module overview, especially for delegates, render indexes, tasks, scene indexes, and render delegates.</p>
     </section>
     <section data-cn-refinement="api-mixed-quality-pass-045">
       <h2>中文精修导读 / Chinese Reading Notes</h2>
