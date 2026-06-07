@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T03:41:14.004Z",
+  "generated_at": "2026-06-07T03:57:53.423Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 370,
-    "bilingual_complete": 36
+    "bilingual_draft": 369,
+    "bilingual_complete": 37
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 359,
-    "good_bilingual": 36
+    "draft_needs_translation": 358,
+    "good_bilingual": 37
   },
   "focus_batch": [
     {
@@ -1571,29 +1571,29 @@
     },
     {
       "index": 23,
-      "title": "类参考草稿：HdStRenderPassState Class / HdStRenderPassState Class",
+      "title": "完整双语参考：HdStRenderPassState Class Reference / HdStRenderPassState Class Reference",
       "output": "full_site/api/class_hd_st_render_pass_state.html",
       "official_url": "https://openusd.org/release/api/class_hd_st_render_pass_state.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 59,
-      "enBlockCount": 46,
-      "zhChars": 696,
-      "enLetters": 1921,
-      "bodyChineseChars": 771,
+      "grade": "good_bilingual",
+      "zhBlockCount": 45,
+      "enBlockCount": 47,
+      "zhChars": 963,
+      "enLetters": 3041,
+      "bodyChineseChars": 1016,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 HdStRenderPassState Class 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`HdStRenderPassState` 是 Storm/HdSt render pass 之间共享的 rendering parameters 集合，用来表达 GL states、uniforms 或 shaders。"
+        "本页已按完整双语参考页处理：中文优先解释 `HdStRenderPassState` 作为 Storm / HdSt render pass 共享状态包的职责、与 `HdRenderPassState`、`HdRenderPass`、`HdCamera`、`Hgi`、shader 和 AOV resolve 路径的边界；英文 API 名称、方法名、类型名、链接和官方英文摘录保持原样，便于与 OpenUSD Doxygen 页面核对。",
+        "`HdStRenderPassState` 是 Hydra Storm 后端在多个 render pass 之间共享的 rendering-parameter object。官方说明强调这些参数以 GL states、uniforms 或 shaders 表达；因此它不是场景数据、不是 draw item，也不是 `HdSceneDelegate` 的查询接口，而是 pass 执行前后需要绑定到 GPU / Hgi 命令流的一组渲染状态。",
+        "与基类 `HdRenderPassState` 相比，`HdStRenderPassState` 是 Storm-specific 的实现层：它连接 `HdRenderIndex`、`HdCamera`、`CameraUtilFraming`、`HgiGraphicsCmdsDesc`、`HgiGraphicsPipelineDesc`、`HgiCapabilities` 和 `Hgi`。阅读本页时应把通用 Hydra render-pass abstraction 与 Storm/HdSt backend state 分开，否则容易把可移植接口、OpenGL 状态和 Hgi pipeline descriptor 混为一谈。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for HdStRenderPassState Class while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page is treated as a complete bilingual reference. Chinese explanations come first, while English API names, method names, type names, links, and selected official excerpts are retained for comparison with the OpenUSD Doxygen page.",
+        "`HdStRenderPassState` is the Storm render-pass state object for rendering parameters shared among render passes. It is not scene data or a draw item; it is the state package bound around GPU / Hgi command execution."
       ]
     },
     {

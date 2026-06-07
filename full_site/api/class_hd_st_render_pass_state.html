@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：HdStRenderPassState Class / HdStRenderPassState Class</title>
+  <title>完整双语参考：HdStRenderPassState Class Reference / HdStRenderPassState Class Reference</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,76 +24,55 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：HdStRenderPassState Class / HdStRenderPassState Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：HdStRenderPassState Class Reference / HdStRenderPassState Class Reference</h1>
     <div class="meta">https://openusd.org/release/api/class_hd_st_render_pass_state.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页处理：中文优先解释 `HdStRenderPassState` 作为 Storm / HdSt render pass 共享状态包的职责、与 `HdRenderPassState`、`HdRenderPass`、`HdCamera`、`Hgi`、shader 和 AOV resolve 路径的边界；英文 API 名称、方法名、类型名、链接和官方英文摘录保持原样，便于与 OpenUSD Doxygen 页面核对。</p>
+      <p class="en">This page is treated as a complete bilingual reference. Chinese explanations come first, while English API names, method names, type names, links, and selected official excerpts are retained for comparison with the OpenUSD Doxygen page.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-036">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 HdStRenderPassState Class 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for HdStRenderPassState Class while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`HdStRenderPassState` 是 Storm/HdSt render pass 之间共享的 rendering parameters 集合，用来表达 GL states、uniforms 或 shaders。</span></li>
-        <li><span class="zh">英文摘录说明这些参数 used among render passes；因此它不是单个 draw item，而是 render pass 执行时需要的状态包。</span></li>
-        <li><span class="zh">关联类型包括 `GfVec4f`、`GfVec4d`、`GfVec4i`、`GfMatrix4d`、`HdCamera`、`CameraUtilFraming`、`HgiGraphicsCmdsDesc`、`HgiGraphicsPipelineDesc`、`HgiCapabilities`、`Hgi` 等，说明它连接相机、framing、pipeline desc 和 Hgi 图形命令。</span></li>
-        <li><span class="zh">阅读本页时应把 viewport/framing、camera matrices、render pass GL/Hgi state、shader/uniform 配置分开；具体方法以后续 member list 为准。</span></li>
-        <li><span class="zh">本页中文层保留 `HdStRenderPassState`、GL states、uniforms、shaders、HgiGraphicsPipelineDesc 等术语，避免把状态对象误解为渲染缓冲或 scene delegate。</span></li>
-      </ul>
+    <section data-cn-complete="hd-st-render-pass-state-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`HdStRenderPassState` 是 Hydra Storm 后端在多个 render pass 之间共享的 rendering-parameter object。官方说明强调这些参数以 GL states、uniforms 或 shaders 表达；因此它不是场景数据、不是 draw item，也不是 `HdSceneDelegate` 的查询接口，而是 pass 执行前后需要绑定到 GPU / Hgi 命令流的一组渲染状态。</p>
+      <p class="en">`HdStRenderPassState` is the Storm render-pass state object for rendering parameters shared among render passes. It is not scene data or a draw item; it is the state package bound around GPU / Hgi command execution.</p>
+      <p class="zh">与基类 `HdRenderPassState` 相比，`HdStRenderPassState` 是 Storm-specific 的实现层：它连接 `HdRenderIndex`、`HdCamera`、`CameraUtilFraming`、`HgiGraphicsCmdsDesc`、`HgiGraphicsPipelineDesc`、`HgiCapabilities` 和 `Hgi`。阅读本页时应把通用 Hydra render-pass abstraction 与 Storm/HdSt backend state 分开，否则容易把可移植接口、OpenGL 状态和 Hgi pipeline descriptor 混为一谈。</p>
+      <p class="en">Compared with `HdRenderPassState`, this class is Storm-specific. It connects camera/framing state, render-index inputs, graphics command descriptors, pipeline descriptors, capabilities, and the `Hgi` backend.</p>
+      <p class="zh">`Prepare()` 与 `Bind()` 是理解生命周期的关键。`Prepare()` 通常在 draw 前收集或更新 pass 所需资源，例如 shader、AOV resolve 配置、viewport、framing 和 pipeline hash 相关状态；`Bind()` 则把这些状态实际绑定到当前 graphics commands。把二者当成普通 setter 会误判状态何时进入 GPU 命令序列。</p>
+      <p class="en">`Prepare()` gathers or updates render-pass resources, while `Bind()` binds the prepared state to active graphics commands. They should be read as render-pass lifecycle operations, not ordinary data setters.</p>
+      <p class="zh">相机和裁剪接口覆盖 `GetWorldToViewMatrix()`、`GetProjectionMatrix()`、`GetCullMatrix()`、`GetClipPlanes()`、`ComputeViewport()` 和 `SetCameraFramingState()`。这些方法描述的是 view/projection/cull 空间、clip planes、viewport rectangle 与 camera framing 如何影响最终 framebuffer 区域；它们不会改变 USD composition，也不会 author 场景层。</p>
+      <p class="en">Camera and clipping APIs such as `GetWorldToViewMatrix()`, `GetProjectionMatrix()`, `GetCullMatrix()`, `GetClipPlanes()`, `ComputeViewport()`, and `SetCameraFramingState()` describe view, projection, culling, clipping, viewport, and framing state for the render pass.</p>
+      <p class="zh">shader 相关接口包括 `SetLightingShader()`、`GetLightingShader()`、`SetRenderPassShader()`、`GetRenderPassShader()` 和 `GetShaders()`。这些方法管理的是 Storm pass 执行需要绑定的 shader program / shader state；材质网络解析、primvar 数据提供和 scene delegate 查询仍属于上游职责，不能因为这里出现 shader 字样就把它当成材质系统入口。</p>
+      <p class="en">Shader APIs manage the lighting shader and render-pass shader state consumed by Storm. Material-network resolution and scene-delegate data queries remain upstream responsibilities.</p>
+      <p class="zh">`GetGraphicsPipelineHash()` 和 `HgiGraphicsPipelineDesc` 相关性说明该类也参与 graphics pipeline state caching。任何影响 depth/stencil/blend、shader、attachment、viewport 或 resolve 路径的状态变更，都可能导致不同 pipeline hash 和 pipeline 复用结果；性能排查时应同时检查 hash、Hgi capabilities 和 pass 配置。</p>
+      <p class="en">`GetGraphicsPipelineHash()` relates the state object to graphics-pipeline caching. Pipeline-affecting state changes can produce a different hash and a different reuse path.</p>
+      <p class="zh">AOV / multi-sample 路径由 `SetResolveAovMultiSample()` 等接口体现。它表达的是 render pass output 在 multi-sample attachment、AOV resolve 和最终读回之间的控制关系；这与 `HdRenderBuffer` 的 allocation、mapping、resolve ownership 是相邻但不同的层次。</p>
+      <p class="en">AOV and multi-sample behavior is represented by APIs such as `SetResolveAovMultiSample()`. This controls render-pass output resolve behavior rather than render-buffer allocation or ownership.</p>
+      <p class="zh">`AxisAlignedAffineTransform` typedef 出现在本页的 public types 中，提示 viewport / framing 相关计算可能需要在轴对齐的二维区域之间表达 affine transform。它不表示 USD transform op，也不等同于 `GfMatrix4d` 的世界空间变换；它更接近 framebuffer、window policy、data window 或 render viewport 之间的坐标映射辅助。</p>
+      <p class="en">The `AxisAlignedAffineTransform` typedef should be read in the viewport/framing context, not as a USD transform op or a world-space transform matrix.</p>
+      <p class="zh">本页还有 Additional Inherited Members，因为 `HdStRenderPassState` 继承自 Hydra render-pass state 层。继承成员通常提供通用 render pass 参数或状态访问，而 Storm 子类补上 shader、Hgi pipeline、clip/framing 和 resolve 路径。阅读 member list 时应先判断接口来自基类还是 Storm 子类，再判断它影响通用 Hydra contract 还是只影响 HdSt backend。</p>
+      <p class="en">Inherited members come from the generic Hydra render-pass state layer. The Storm subclass adds backend-specific shader, Hgi pipeline, clipping/framing, and resolve behavior.</p>
+      <p class="zh">`GetWorldToViewMatrix()` 与 `GetProjectionMatrix()` 的命名方向很重要：前者把 world 空间带到 view 空间，后者描述 view 到 clip/projection 的投影关系；`GetCullMatrix()` 则服务于裁剪判断。调试模型位置正确但画面不可见时，应按 world-to-view、projection、cull、clip planes、viewport 的顺序排查，而不是先怀疑 layer composition。</p>
+      <p class="en">Matrix names encode space-conversion direction. For visibility bugs, inspect world-to-view, projection, cull, clip-plane, and viewport state before blaming layer composition.</p>
+      <p class="zh">`HgiGraphicsCmdsDesc` 与 `HgiGraphicsPipelineDesc` 的出现说明该类处在 Storm 与抽象 graphics interface 的交界处。OpenGL 术语仍会出现在历史描述中，但现代路径需要按 Hgi backend 能力理解；同一状态在不同 backend 上可能映射到不同 pipeline object 或 command encoding。</p>
+      <p class="en">The presence of `HgiGraphicsCmdsDesc` and `HgiGraphicsPipelineDesc` places this class at the boundary between Storm state and the abstract graphics interface.</p>
+      <p class="zh">因此，本页更适合作为渲染状态排查入口，而不是场景创作入口。</p>
+      <p class="en">This page is therefore better read as a render-state debugging entry than as a scene-authoring entry.</p>
+      <p class="zh">调试 Storm 渲染问题时，本页常见阅读顺序是：先确认 camera matrices 与 viewport/framing，再确认 lighting/render-pass shader，随后检查 clip planes、AOV resolve、pipeline hash 和 Hgi backend capabilities。若图像裁剪错误、画面黑屏、AOV 没有 resolve 或 pipeline cache 命中异常，`HdStRenderPassState` 往往是比 USD authoring 层更直接的诊断位置。</p>
+      <p class="en">For Storm debugging, inspect camera matrices and viewport/framing first, then shader state, clipping, AOV resolve behavior, graphics-pipeline hash, and backend capabilities.</p>
+      <p class="zh">常见误用包括：把 `HdStRenderPassState` 当成 scene delegate 或 USD schema；在没有理解 `Prepare()` / `Bind()` 调度顺序时直接修改状态；把 `ComputeViewport()` 问题误判为 stage composition 问题；把 `GetGraphicsPipelineHash()` 当成稳定的跨后端语义标识。正确边界是：它描述 Storm render pass 执行状态，英文 API 名称和 Hgi/GL 术语必须原样保留以便与源码和 Doxygen 对齐。</p>
+      <p class="en">Common mistakes include treating this class as scene data, confusing viewport problems with composition problems, or treating `GetGraphicsPipelineHash()` as a stable semantic identifier across backends.</p>
       <h3>术语对照 / Terms</h3>
       <ul>
-        <li><span class="zh">render pass 状态：</span><span class="en">render pass state</span></li>
-        <li><span class="zh">GL 状态：</span><span class="en">GL states</span></li>
-        <li><span class="zh">uniforms：</span><span class="en">uniforms</span></li>
-        <li><span class="zh">图形管线：</span><span class="en">graphics pipeline</span></li>
-        <li><span class="zh">相机 framing：</span><span class="en">camera framing</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-131">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`HdStRenderPassState` 是 Storm / HdSt render pass 之间共享的一组 rendering parameters，用 GL states、uniforms 或 shaders 表达渲染状态。它承接 camera matrices、viewport、clip planes、lighting shader、render pass shader 和 AOV resolve 等状态，不是单个 draw item。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdStRenderPassState while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`Prepare()` 与 `Bind()` 通常分别对应准备 GPU/GL 状态和绑定执行状态；阅读时要结合 render pass 生命周期，而不是把它们理解为普通数据 setter。</span></li>
-        <li><span class="zh">`GetWorldToViewMatrix()`、`GetProjectionMatrix()` 和 `GetCullMatrix()` 体现 camera 与裁剪相关矩阵；矩阵名和空间变换方向必须保留英文 API 名称以免误读。</span></li>
-        <li><span class="zh">`SetLightingShader()`、`GetLightingShader()`、`SetRenderPassShader()` 和 `GetRenderPassShader()` 说明该状态对象会连接具体 shader 程序和 pass 执行。</span></li>
-        <li><span class="zh">`ComputeViewport()`、`SetCameraFramingState()` 与 clip plane 相关接口决定最终 framebuffer 区域和相机 framing；这些状态会影响渲染结果而不是场景组成。</span></li>
-        <li><span class="zh">`SetResolveAovMultiSample()` 与 `GetGraphicsPipelineHash()` 分别关联 AOV 多重采样解析和 graphics pipeline 缓存；读者应把它们放在 Storm 渲染性能和管线复用语境中理解。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">Storm 渲染 pass 状态：</span><span class="en">HdStRenderPassState</span></li>
+        <li><span class="zh">Storm 渲染通道状态：</span><span class="en">Storm render pass state</span></li>
         <li><span class="zh">渲染参数：</span><span class="en">rendering parameters</span></li>
         <li><span class="zh">GL 状态：</span><span class="en">GL states</span></li>
-        <li><span class="zh">uniform 参数：</span><span class="en">uniforms</span></li>
-        <li><span class="zh">AOV 解析：</span><span class="en">AOV resolve</span></li>
-        <li><span class="zh">图形管线哈希：</span><span class="en">graphics pipeline hash</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-140">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`HdStRenderPassState` 保存 Hydra Storm render passes 之间共享的一组 rendering parameters。这些参数以 GL states、uniforms 或 shaders 表达，并在 `Prepare()`、`Bind()` 与 graphics pipeline hash 计算中影响一次 render pass 的具体执行状态。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdStRenderPassState while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`GetWorldToViewMatrix()`、`GetProjectionMatrix()`、`GetCullMatrix()` 与 `ComputeViewport()` 说明该类承载 camera/framing/viewport 相关状态，渲染调试时应先核对这些矩阵。</span></li>
-        <li><span class="zh">`SetLightingShader()`、`GetLightingShader()`、`SetRenderPassShader()` 与 `GetRenderPassShader()` 管理 shader 绑定，不应与 scene delegate 的材质解析职责混淆。</span></li>
-        <li><span class="zh">`GetClipPlanes()` 与 `SetCameraFramingState()` 影响裁剪和 framing；它们通常与 `HdCamera`、AOV resolve 和最终 viewport 输出一起分析。</span></li>
-        <li><span class="zh">`GetGraphicsPipelineHash()` 服务于 graphics pipeline state caching；任何影响 pipeline 的状态变更都可能导致不同 hash 和 pipeline 重建。</span></li>
-        <li><span class="zh">`SetResolveAovMultiSample()` 表示 MSAA/AOV resolve 控制路径；阅读时应把它与 render pass output、multi-sample attachment 和 Hgi backend capabilities 联系起来。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">渲染通道状态：</span><span class="en">render pass state</span></li>
-        <li><span class="zh">GL 状态：</span><span class="en">GL states</span></li>
         <li><span class="zh">统一变量：</span><span class="en">uniforms</span></li>
-        <li><span class="zh">视口计算：</span><span class="en">ComputeViewport()</span></li>
-        <li><span class="zh">图形管线哈希：</span><span class="en">graphics pipeline hash</span></li>
-        <li><span class="zh">多重采样解析：</span><span class="en">multi-sample resolve</span></li>
+        <li><span class="zh">相机 framing：</span><span class="en">camera framing</span></li>
+        <li><span class="zh">图形管线描述：</span><span class="en">graphics pipeline descriptor</span></li>
+        <li><span class="zh">AOV 多重采样解析：</span><span class="en">AOV multi-sample resolve</span></li>
       </ul>
     </section>
     <section>

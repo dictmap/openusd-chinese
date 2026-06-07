@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-07T03:41:14.004Z
+Generated: 2026-06-07T03:57:53.423Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 370
-- bilingual_complete: 36
+- bilingual_draft: 369
+- bilingual_complete: 37
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 359
-- good_bilingual: 36
+- draft_needs_translation: 358
+- good_bilingual: 37
 
 ## Current Focus Batch
 
@@ -86,7 +86,7 @@ Generated: 2026-06-07T03:41:14.004Z
 | 20 | good_bilingual | bilingual_complete | 961 | 44/46 | 0 | 0 | `full_site/api/class_hd_render_buffer.html` |
 | 21 | good_bilingual | bilingual_complete | 954 | 48/50 | 0 | 0 | `full_site/api/class_hd_scene_delegate.html` |
 | 22 | draft_needs_translation | bilingual_draft | 696 | 58/45 | 0 | 0 | `full_site/api/class_hd_st_dispatch_buffer.html` |
-| 23 | draft_needs_translation | bilingual_draft | 696 | 59/46 | 0 | 0 | `full_site/api/class_hd_st_render_pass_state.html` |
+| 23 | good_bilingual | bilingual_complete | 963 | 45/47 | 0 | 0 | `full_site/api/class_hd_st_render_pass_state.html` |
 | 24 | good_bilingual | bilingual_complete | 958 | 40/42 | 0 | 0 | `full_site/api/class_hd_task.html` |
 | 25 | draft_needs_translation | bilingual_draft | 774 | 49/36 | 0 | 0 | `full_site/api/class_hdx_pick_from_render_buffer_task.html` |
 | 26 | draft_needs_translation | bilingual_draft | 667 | 61/48 | 0 | 0 | `full_site/api/class_hgi_g_l_graphics_cmds.html` |

@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-07T03:41:12.996Z
+Generated: 2026-06-07T03:57:52.841Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 36
-- Promoted complete pages: 28
-- Bilingual draft pages: 370
+- Bilingual complete pages: 37
+- Promoted complete pages: 29
+- Bilingual draft pages: 369
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -40,7 +40,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_complete | https://openusd.org/release/api/class_hd_render_buffer.html | full_site/api/class_hd_render_buffer.html | https://openusd.org/release/api/class_hd_render_buffer.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_hd_scene_delegate.html | full_site/api/class_hd_scene_delegate.html | https://openusd.org/release/api/class_hd_scene_delegate.html |
 | api | bilingual_draft | 类参考草稿：HdStDispatchBuffer Class / HdStDispatchBuffer Class | full_site/api/class_hd_st_dispatch_buffer.html | https://openusd.org/release/api/class_hd_st_dispatch_buffer.html |
-| api | bilingual_draft | 类参考草稿：HdStRenderPassState Class / HdStRenderPassState Class | full_site/api/class_hd_st_render_pass_state.html | https://openusd.org/release/api/class_hd_st_render_pass_state.html |
+| api | bilingual_complete | https://openusd.org/release/api/class_hd_st_render_pass_state.html | full_site/api/class_hd_st_render_pass_state.html | https://openusd.org/release/api/class_hd_st_render_pass_state.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_hd_task.html | full_site/api/class_hd_task.html | https://openusd.org/release/api/class_hd_task.html |
 | api | bilingual_draft | 类参考草稿：HdxPickFromRenderBufferTask Class / HdxPickFromRenderBufferTask Class | full_site/api/class_hdx_pick_from_render_buffer_task.html | https://openusd.org/release/api/class_hdx_pick_from_render_buffer_task.html |
 | api | bilingual_draft | 类参考草稿：HgiGLGraphicsCmds Class Reference final / HgiGLGraphicsCmds Class Reference final | full_site/api/class_hgi_g_l_graphics_cmds.html | https://openusd.org/release/api/class_hgi_g_l_graphics_cmds.html |
