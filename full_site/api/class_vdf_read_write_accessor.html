@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：VdfReadWriteAccessor&lt; T &gt; Class Template / VdfReadWriteAccessor&lt; T &gt; Class Template</title>
+  <title>完整双语参考：VdfReadWriteAccessor&lt; T &gt; Class Template / VdfReadWriteAccessor&lt; T &gt; Class Template</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,36 +24,42 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：VdfReadWriteAccessor&lt; T &gt; Class Template / VdfReadWriteAccessor&lt; T &gt; Class Template</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：VdfReadWriteAccessor&lt; T &gt; Class Template / VdfReadWriteAccessor&lt; T &gt; Class Template</h1>
     <div class="meta">https://openusd.org/release/api/class_vdf_read_write_accessor.html</div>
   </header>
   <main>
-    <section data-cn-refinement="api-index-quality-pass-167">
-      <h2>中文二次导读补强 / Chinese Second-Pass Reading Notes</h2>
-      <p class="zh">`class_vdf_read_write_accessor.html` 面向 `VdfReadWriteAccessor&lt; T &gt;` 模板类。它通常用于围绕 Vdf 输出数据进行类型化读写访问；阅读时要区分 accessor 对值存储的访问责任、拥有输出的节点责任，以及上层 computation 对数据语义的解释责任。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for VdfReadWriteAccessor&lt; T &gt; while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`VdfReadWriteAccessor&lt; T &gt;` 的重点是访问路径和类型边界：模板参数 `T` 表示访问值的静态类型线索，但不等价于改变 graph 中输出的业务语义。</span></li>
-        <li><span class="zh">看到 read/write、accessor、buffer、output data 等术语时，应先确认当前讨论的是临时求值数据、缓存数据，还是 authored scene data 映射后的 computed value。</span></li>
-        <li><span class="zh">此类适合和 `VdfContext`、`VdfNode`、具体 output 类一起看：`VdfContext` 提供求值上下文，`VdfNode` 组织图结构，accessor 负责读取或写入某个值视图。</span></li>
-        <li><span class="zh">如果运行时出现类型不匹配或空值，应优先检查 output registration、requested type、evaluation lifetime、dirty state 与 accessor 使用范围，而不是只改调用点。</span></li>
-        <li><span class="zh">中文补强不翻译 `VdfReadWriteAccessor&lt; T &gt;`、`T`、method name、template parameter 和类型名，避免破坏 Doxygen 索引与源码中的精确名称。</span></li>
-      </ul>
+    <section data-cn-complete="vdf-read-write-accessor-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`VdfReadWriteAccessor&lt; T &gt;` 解决的问题是：在 Vdf computation 或 executor 相关代码中，如何以静态类型 `T` 对 output data 做随机读写访问。官方摘录说它 “allows for random access to output data”；这里的 output data 是 Vdf 执行图中的求值数据，不是 USD authored scene data，也不是拥有长期生命周期的普通 STL container。</p>
+      <p class="en">`VdfReadWriteAccessor&lt; T &gt;` allows random access to output data. The output data belongs to Vdf evaluation/storage infrastructure, not to authored scene data.</p>
+      <p class="zh">这个类的核心边界是 non-owning accessor。它围绕 `VdfVector` 或 output storage 暴露元素级访问，但不拥有这些数据，也不定义数据的业务语义。拥有输出、决定何时产生输出、以及判断输出是否被请求的是 `VdfContext`、`VdfOutput`、executor 和 node computation 共同参与的执行路径；accessor 只提供读写入口。</p>
+      <p class="en">The class is an accessor rather than an owning container. Ownership, scheduling, and semantic meaning are handled elsewhere in the Vdf graph.</p>
+      <p class="zh">模板参数 `T` 是访问元素的静态类型约束。它帮助 C++ 代码用 `T` 的形式读写元素，但并不会把图中的 output 改造成另一种业务类型。若 `T` 与实际 output data 的类型不匹配，问题通常来自 output registration、template instantiation、executor wiring 或调用点假设，而不是 accessor 本身改变了数据。</p>
+      <p class="en">Template parameter `T` is the static element type used by the accessor. It must match the output data representation expected by the graph.</p>
+      <p class="zh">`operator[]()` 是最直接的读写入口，并提供 const 与 non-const 形式。它体现 random access 语义：调用方按索引访问当前 accessor 暴露的元素。使用前应先用 `GetSize()` 或 `IsEmpty()` 检查范围，不能假定 output 一定有某个索引，也不能把 output request 的范围和实际 storage size 混为一谈。</p>
+      <p class="en">`operator[]()` provides indexed element access. Callers should check size and emptiness before indexing.</p>
+      <p class="zh">`GetSize()` 描述当前 accessor 可访问的元素数量。这个数量要结合 `VdfMask`、`VdfIterator`、`VdfReadWriteIterator` 和本次 evaluation request 理解：它是当前输出数据视图的大小，不一定等于某个 authored array 的长度，也不一定等于下游最终消费的元素数量。</p>
+      <p class="en">`GetSize()` reports the element count exposed through this accessor. It should be interpreted with masks, iterators, and the active evaluation request.</p>
+      <p class="zh">`IsEmpty()` 是快速判空入口，但空 accessor 的原因可能不同：output 没有数据、本次 request 没覆盖相关元素、上游 computation 没产生值、dirty/invalidation 后尚未重新求值，或 graph wiring 没把数据连到当前输出。排查时应同时看 `VdfContext`、`VdfOutput`、request mask 和 executor 状态。</p>
+      <p class="en">An empty accessor can result from missing data, request masks, invalidation, or graph wiring. It is not automatically a scene-authoring issue.</p>
+      <p class="zh">读写 accessor 与 `VdfContext` 的关系是分层的：`VdfContext` 是 callback 面对的执行期入口，用于判断 requested output 和写回结果；`VdfReadWriteAccessor&lt; T &gt;` 则是更靠近 output data storage 的 typed random-access view。callback 可以通过 context 间接获得或使用这样的访问机制，但语义上不要把 context 和 accessor 混成同一个对象。</p>
+      <p class="en">`VdfContext` is the callback-facing execution context, while `VdfReadWriteAccessor&lt; T &gt;` is a typed random-access view over output data.</p>
+      <p class="zh">与 `VdfReadWriteIterator` 的差别在访问模式。iterator 适合顺序遍历或按 mask 遍历；accessor 更适合已知索引的 random access。选择哪一种取决于 computation 的数据访问模式、mask 稀疏性、缓存局部性和是否需要写回元素。</p>
+      <p class="en">Iterators and accessors serve different access patterns. Iterators are traversal-oriented, while this accessor is random-index oriented.</p>
+      <p class="zh">常见误读包括：把 accessor 保存到 evaluation 之外长期使用，把 `operator[]()` 当成自动边界检查，把 `GetSize()` 当成 authored array size，把空 accessor 当成固定错误，把 `T` 当成可以强制重解释 output 语义的转换器。正确读法是：它是一次 Vdf output data 访问路径上的 typed、non-owning、request-sensitive view。</p>
+      <p class="en">Common misreads include treating the accessor as persistent storage, assuming unchecked indexing is safe, or using `T` as a semantic conversion mechanism.</p>
       <h3>术语对照 / Terms</h3>
       <ul>
         <li><span class="zh">读写访问器：</span><span class="en">read-write accessor</span></li>
-        <li><span class="zh">类型化访问：</span><span class="en">typed access</span></li>
+        <li><span class="zh">非拥有视图：</span><span class="en">non-owning view</span></li>
         <li><span class="zh">输出数据：</span><span class="en">output data</span></li>
-        <li><span class="zh">访问范围：</span><span class="en">access scope</span></li>
-        <li><span class="zh">求值生命周期：</span><span class="en">evaluation lifetime</span></li>
-        <li><span class="zh">类型不匹配：</span><span class="en">type mismatch</span></li>
+        <li><span class="zh">随机访问：</span><span class="en">random access</span></li>
+        <li><span class="zh">静态元素类型：</span><span class="en">static element type</span></li>
+        <li><span class="zh">访问范围：</span><span class="en">access range</span></li>
+        <li><span class="zh">请求掩码：</span><span class="en">request mask</span></li>
+        <li><span class="zh">迭代器访问：</span><span class="en">iterator access</span></li>
       </ul>
-    </section>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
     </section>
     <section data-cn-refinement="api-class-quality-pass-044">
       <h2>中文精修导读 / Chinese Reading Notes</h2>

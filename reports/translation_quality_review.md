@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-06T23:44:30.556Z
+Generated: 2026-06-07T00:10:38.108Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 383
-- bilingual_complete: 23
+- bilingual_draft: 382
+- bilingual_complete: 24
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 372
-- good_bilingual: 23
+- draft_needs_translation: 371
+- good_bilingual: 24
 
 ## Current Focus Batch
 
@@ -124,7 +124,7 @@ Generated: 2026-06-06T23:44:30.556Z
 | 58 | good_bilingual | bilingual_complete | 1573 | 78/65 | 0 | 0 | `full_site/api/class_vdf_context.html` |
 | 59 | draft_needs_translation | bilingual_draft | 788 | 64/51 | 0 | 0 | `full_site/api/class_vdf_grapher_options.html` |
 | 60 | good_bilingual | bilingual_complete | 1574 | 81/68 | 0 | 0 | `full_site/api/class_vdf_node.html` |
-| 61 | draft_needs_translation | bilingual_draft | 807 | 48/35 | 0 | 0 | `full_site/api/class_vdf_read_write_accessor.html` |
+| 61 | good_bilingual | bilingual_complete | 1138 | 52/44 | 0 | 0 | `full_site/api/class_vdf_read_write_accessor.html` |
 | 62 | draft_needs_translation | bilingual_draft | 533 | 40/32 | 0 | 0 | `full_site/api/class_vdf_test_utils_1_1_node.html` |
 | 63 | good_bilingual | bilingual_complete | 1075 | 48/50 | 0 | 0 | `full_site/api/class_vt_value_ref.html` |
 | 64 | draft_needs_translation | bilingual_draft | 501 | 24/16 | 0 | 0 | `full_site/api/classes.html` |

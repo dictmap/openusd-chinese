@@ -1,20 +1,20 @@
 {
   "generated_at": "2026-06-07",
-  "purpose": "Current problem audit after user reported that the project still showed only 8 complete pages after multiple days; updated after fifteen promoted full_site pages raised good_bilingual to 23.",
+  "purpose": "Current problem audit after user reported that the project still showed only 8 complete pages after multiple days; updated after sixteen promoted full_site pages raised good_bilingual to 24.",
   "current_counts": {
     "total_pages": 406,
-    "bilingual_complete": 23,
-    "bilingual_draft": 383,
-    "good_bilingual": 23,
-    "draft_needs_translation": 372,
+    "bilingual_complete": 24,
+    "bilingual_draft": 382,
+    "good_bilingual": 24,
+    "draft_needs_translation": 371,
     "draft_template_only": 11
   },
   "problems": [
     {
       "id": "P0-completion-stalled",
       "severity": "P0",
-      "summary": "The main completion number was structurally stalled at 8; the promotion path now raises it to 23, but the remaining 383 draft pages still need real upgrades.",
-      "evidence": "reports/bilingual_completion_promotions.json promotes full_site/api/class_sdf_layer.html, full_site/api/class_usd_prim.html, full_site/api/class_sdf_path.html, full_site/api/class_usd_geom_mesh.html, full_site/api/class_tf_token.html, full_site/api/class_usd_stage_cache.html, full_site/api/class_usd_attribute_limits.html, full_site/api/class_usd_validation_error.html, full_site/api/class_usd_geom_basis_curves.html, full_site/api/class_usd_physics_joint.html, full_site/api/class_usd_imaging_delegate.html, full_site/api/class_sdr_shader_property.html, full_site/api/class_vt_value_ref.html, full_site/api/class_vdf_node.html, and full_site/api/class_vdf_context.html; discover_openusd_all_pages.mjs now counts manifest-promoted pages as bilingual_complete, and audit_openusd_translation_quality.mjs reports good_bilingual=23.",
+      "summary": "The main completion number was structurally stalled at 8; the promotion path now raises it to 24, but the remaining 382 draft pages still need real upgrades.",
+      "evidence": "reports/bilingual_completion_promotions.json promotes full_site/api/class_sdf_layer.html, full_site/api/class_usd_prim.html, full_site/api/class_sdf_path.html, full_site/api/class_usd_geom_mesh.html, full_site/api/class_tf_token.html, full_site/api/class_usd_stage_cache.html, full_site/api/class_usd_attribute_limits.html, full_site/api/class_usd_validation_error.html, full_site/api/class_usd_geom_basis_curves.html, full_site/api/class_usd_physics_joint.html, full_site/api/class_usd_imaging_delegate.html, full_site/api/class_sdr_shader_property.html, full_site/api/class_vt_value_ref.html, full_site/api/class_vdf_node.html, full_site/api/class_vdf_context.html, and full_site/api/class_vdf_read_write_accessor.html; discover_openusd_all_pages.mjs now counts manifest-promoted pages as bilingual_complete, and audit_openusd_translation_quality.mjs reports good_bilingual=24.",
       "required_action": "Continue using the promotion manifest only for pages with paragraph-level bilingual coverage and draft-marker removal; do not mark guide-only drafts as complete."
     },
     {
@@ -42,7 +42,7 @@
       "id": "P1-draft-content-thin",
       "severity": "P1",
       "summary": "Most draft pages contain Chinese guidance and term notes, not paragraph-level bilingual translation.",
-      "evidence": "372 pages remain draft_needs_translation; 11 pages remain draft_template_only.",
+      "evidence": "371 pages remain draft_needs_translation; 11 pages remain draft_template_only.",
       "required_action": "For selected high-value pages, replace or supplement guide-only blocks with dense paragraph-level bilingual coverage and then promote status only if the page passes the stricter rule."
     },
     {

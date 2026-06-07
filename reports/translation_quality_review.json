@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-06T23:44:30.556Z",
+  "generated_at": "2026-06-07T00:10:38.108Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 383,
-    "bilingual_complete": 23
+    "bilingual_draft": 382,
+    "bilingual_complete": 24
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 372,
-    "good_bilingual": 23
+    "draft_needs_translation": 371,
+    "good_bilingual": 24
   },
   "focus_batch": [
     {
@@ -2597,29 +2597,29 @@
     },
     {
       "index": 61,
-      "title": "类参考草稿：VdfReadWriteAccessor< T > Class Template / VdfReadWriteAccessor< T > Class Template",
+      "title": "完整双语参考：VdfReadWriteAccessor< T > Class Template / VdfReadWriteAccessor< T > Class Template",
       "output": "full_site/api/class_vdf_read_write_accessor.html",
       "official_url": "https://openusd.org/release/api/class_vdf_read_write_accessor.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 48,
-      "enBlockCount": 35,
-      "zhChars": 807,
-      "enLetters": 1690,
-      "bodyChineseChars": 882,
+      "grade": "good_bilingual",
+      "zhBlockCount": 52,
+      "enBlockCount": 44,
+      "zhChars": 1138,
+      "enLetters": 2252,
+      "bodyChineseChars": 1209,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "`class_vdf_read_write_accessor.html` 面向 `VdfReadWriteAccessor< T >` 模板类。它通常用于围绕 Vdf 输出数据进行类型化读写访问；阅读时要区分 accessor 对值存储的访问责任、拥有输出的节点责任，以及上层 computation 对数据语义的解释责任。",
-        "`VdfReadWriteAccessor< T >` 的重点是访问路径和类型边界：模板参数 `T` 表示访问值的静态类型线索，但不等价于改变 graph 中输出的业务语义。",
-        "看到 read/write、accessor、buffer、output data 等术语时，应先确认当前讨论的是临时求值数据、缓存数据，还是 authored scene data 映射后的 computed value。"
+        "`VdfReadWriteAccessor< T >` 解决的问题是：在 Vdf computation 或 executor 相关代码中，如何以静态类型 `T` 对 output data 做随机读写访问。官方摘录说它 “allows for random access to output data”；这里的 output data 是 Vdf 执行图中的求值数据，不是 USD authored scene data，也不是拥有长期生命周期的普通 STL container。",
+        "这个类的核心边界是 non-owning accessor。它围绕 `VdfVector` 或 output storage 暴露元素级访问，但不拥有这些数据，也不定义数据的业务语义。拥有输出、决定何时产生输出、以及判断输出是否被请求的是 `VdfContext`、`VdfOutput`、executor 和 node computation 共同参与的执行路径；accessor 只提供读写入口。",
+        "模板参数 `T` 是访问元素的静态类型约束。它帮助 C++ 代码用 `T` 的形式读写元素，但并不会把图中的 output 改造成另一种业务类型。若 `T` 与实际 output data 的类型不匹配，问题通常来自 output registration、template instantiation、executor wiring 或调用点假设，而不是 accessor 本身改变了数据。"
       ],
       "sampleEn": [
-        "This second-pass refinement adds page-specific Chinese guidance for VdfReadWriteAccessor< T > while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.",
-        "read-write accessor"
+        "`VdfReadWriteAccessor< T >` allows random access to output data. The output data belongs to Vdf evaluation/storage infrastructure, not to authored scene data.",
+        "The class is an accessor rather than an owning container. Ownership, scheduling, and semantic meaning are handled elsewhere in the Vdf graph."
       ]
     },
     {

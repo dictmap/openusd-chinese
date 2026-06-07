@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-06T23:44:29.819Z
+Generated: 2026-06-07T00:10:37.456Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 23
-- Promoted complete pages: 15
-- Bilingual draft pages: 383
+- Bilingual complete pages: 24
+- Promoted complete pages: 16
+- Bilingual draft pages: 382
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -78,7 +78,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_complete | https://openusd.org/release/api/class_vdf_context.html | full_site/api/class_vdf_context.html | https://openusd.org/release/api/class_vdf_context.html |
 | api | bilingual_draft | 类参考草稿：VdfGrapherOptions Class / VdfGrapherOptions Class | full_site/api/class_vdf_grapher_options.html | https://openusd.org/release/api/class_vdf_grapher_options.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_vdf_node.html | full_site/api/class_vdf_node.html | https://openusd.org/release/api/class_vdf_node.html |
-| api | bilingual_draft | 类参考草稿：VdfReadWriteAccessor< T > Class Template / VdfReadWriteAccessor< T > Class Template | full_site/api/class_vdf_read_write_accessor.html | https://openusd.org/release/api/class_vdf_read_write_accessor.html |
+| api | bilingual_complete | https://openusd.org/release/api/class_vdf_read_write_accessor.html | full_site/api/class_vdf_read_write_accessor.html | https://openusd.org/release/api/class_vdf_read_write_accessor.html |
 | api | bilingual_draft | 类参考草稿：Node Class / Node Class | full_site/api/class_vdf_test_utils_1_1_node.html | https://openusd.org/release/api/class_vdf_test_utils_1_1_node.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_vt_value_ref.html | full_site/api/class_vt_value_ref.html | https://openusd.org/release/api/class_vt_value_ref.html |
 | api | bilingual_draft | Class Index | full_site/api/classes.html | https://openusd.org/release/api/classes.html |
