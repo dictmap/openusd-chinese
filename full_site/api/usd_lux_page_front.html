@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>API 模块草稿：UsdLux: USD Lighting Schema / UsdLux: USD Lighting Schema</title>
+  <title>完整双语参考：UsdLux: USD Lighting Schema / UsdLux: USD Lighting Schema</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -19,20 +19,65 @@
     ul{padding-left:22px}
     li{margin:8px 0}
     code{font-family:"Cascadia Mono","Consolas",monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>API 模块草稿：UsdLux: USD Lighting Schema / UsdLux: USD Lighting Schema</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：UsdLux: USD Lighting Schema / UsdLux: USD Lighting Schema</h1>
     <div class="meta">https://openusd.org/release/api/usd_lux_page_front.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">这是 `UsdLux: USD Lighting Schema` 的完整双语参考页。页面以中文逐段说明为主，保留 `UsdLux`、`UsdLuxLightAPI`、`UsdLuxDiskLight`、`UsdLuxDomeLight`、`UsdLuxLightListAPI`、`UsdLuxShadowAPI`、`UsdLuxShapingAPI`、`UsdLuxPluginLight`、`SdrRegistry` 等英文 API 名称和官方链接，方便与 Doxygen 原页核对。</p>
+      <p class="en">This complete bilingual reference keeps the original OpenUSD API identifiers and official links while adding Chinese paragraph-level coverage for the UsdLux module entry.</p>
+    </section>
+    <section data-cn-complete="usd-lux-lighting-schema-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">官方 overview 先定义 `UsdLux` 的目标：为许多图形环境共有的 lights 与相关组件提供可交换表达。它解决的是 lighting setup 从 creation environment 到 renderer 的传递，以及不同环境共享能力范围内的 best-effort portability；它不是某个 renderer 的完整 shading implementation，也不是替代 `UsdShade`、`Sdr` 或渲染器采样内核的文档。</p>
+      <p class="en">The official overview defines UsdLux as an interchange representation for lights and related components common to many graphics environments.</p>
+      <p class="zh">`UsdLux` core 包含常见 light types：`UsdLuxCylinderLight`、`UsdLuxDiskLight`、`UsdLuxDistantLight`、`UsdLuxDomeLight`、`UsdLuxRectLight`、`UsdLuxSphereLight`。这些 typed schemas 给常见灯光形状提供稳定的 USD 表达；具体采样质量、渲染近似和后端支持仍由 renderer 或 render delegate 决定。</p>
+      <p class="en">The core light types cover common shapes and categories, while renderer-specific sampling and support remain downstream responsibilities.</p>
+      <p class="zh">common light attributes 包括 power 相关的 `intensity` / `exposure`，以及 color 相关的 RGB components 和 color temperature。阅读时要把 authored attributes 与最终像素亮度区分开：USD 保存的是可交换的属性和约定，下游 renderer 还会结合相机 exposure、色彩空间、采样和 tone mapping 得出最终画面。</p>
+      <p class="en">Common light attributes express power and color, but final image brightness also depends on renderer, camera exposure, color handling, and sampling.</p>
+      <p class="zh">`UsdLuxLightAPI` 是 “being a light” 的核心：任何应用了 `UsdLuxLightAPI` 的 prim 都具有 light 的质量和公共属性。很多 concrete light 类型会内建这个 applied API；而对于任意 `UsdGeomXformable` 派生 prim，也可以通过 applied API 赋予 light 行为，例如 mesh 通过 `UsdLuxMeshLightAPI`，volume 通过 `UsdLuxVolumeLightAPI`。</p>
+      <p class="en">UsdLuxLightAPI imparts the quality of being a light to a prim and supplies the common light attributes and behavior.</p>
+      <p class="zh">base class 的边界也很重要：`UsdLuxBoundableLightBase` 继承自 `UsdGeomBoundable`，适合有几何边界的 area light；`UsdLuxNonboundableLightBase` 继承自 `UsdGeomXformable`，适合 distant、dome 等没有普通 bounds 的灯。不要把 boundable/nonboundable 误读为是否能被 renderer 使用，它描述的是 schema 继承和几何边界语义。</p>
+      <p class="en">Boundable and nonboundable light bases describe schema inheritance and geometric bounding semantics, not whether a light can render.</p>
+      <p class="zh">`Encapsulation Rules` 说明 lights 与 light filters 是 connectable container prims，并遵循 `UsdShade` 的 generic encapsulation rules。一个应用了 `UsdLuxLightAPI` 的 prim 不应放在无关 connectable parent 下；例外是某些 light concepts 会把 light 嵌套在其他 light 里，例如 `PortalLight` 放在 consumed `DomeLight` 之下以影响 dome light 的采样。</p>
+      <p class="en">UsdLux lights and filters are connectable container prims that follow UsdShade encapsulation rules, with specific exceptions for light concepts such as portals.</p>
+      <p class="zh">`LightFilters` 的 application order 由 `LightAPI` 的 `light:filters` relationship 表达；filter 也可以嵌套在其他 filter 内，表示只影响 filter-chain 中某个 filter 的贡献。它们可以嵌套在 light prim 内，但不能嵌套在无关的 `UsdShadeMaterial` 等 connectable container prim 下。</p>
+      <p class="en">Light filters use relationships and nesting to describe filter order and contribution scope, but they are constrained by connectable-container rules.</p>
+      <p class="zh">geometry 约定也直接影响互换：lights 的 primary axis 按约定沿 `-Z` 发射，area lights 位于 XY plane 且默认直径为 1 unit。`UsdLux` objects 是 `UsdGeomXformable`，会继承 transform operators 和层级变换；官方建议对 lights 尽量只使用 translation 与 rotation，尺寸用显式 light attributes 调整，避免缩放导致采样和积分困难。</p>
+      <p class="en">UsdLux geometry conventions define the primary axis, area-light plane, default size, and recommended use of transforms for stable interchange.</p>
+      <p class="zh">`UsdLux` 主要面向 physically-based cinematic lighting with area lights，因此不包含 zero-area point 或 line lights。`UsdLuxSphereLight` 的 `treatAsPoint` 和 `UsdLuxCylinderLight` 的 `treatAsLine` 是表达近似意图的 hints，避免后端用任意 epsilon 阈值猜测；它们不是把 schema 变成真正无面积光源的开关。</p>
+      <p class="en">Point and line approximations are expressed through hints such as treatAsPoint and treatAsLine, not through separate zero-area light schemas.</p>
+      <p class="zh">`Quantities and Units` 部分强调 RGB renderer 中单位定义很复杂。文档用 emission 表示 emitted spectral radiance 或 emitted integrated radiance/tristimulus weight，具体取决于上下文。默认 light 的 `intensity=1` 和 `color=[1,1,1]` 与 Illuminant D、white point、EV0 exposure 和 1 nit 定义相关；这解释了为什么物理合理亮度如果忽略 camera exposure 会导致 blown out images。</p>
+      <p class="en">Quantities and units explain how UsdLux relates intensity, color, spectral or RGB rendering assumptions, EV0 exposure, and physical brightness expectations.</p>
+      <p class="zh">`Exposure` 章节要求实现 `UsdLux` 的 renderer 尊重 `UsdGeomCamera::GetExposureAttr()`，并按 `pow(2, exposure)` 缩放渲染图像。这里的 exposure 不是 light 本身的任意艺术参数，而是相机传感器曝光语义；调试曝光问题时应同时检查 light intensity/exposure、camera exposure、渲染色彩空间和 renderer 是否实现该约定。</p>
+      <p class="en">Renderers implementing UsdLux are expected to respect camera exposure and scale rendered images by pow(2, exposure).</p>
+      <p class="zh">properties and behavior 中，颜色属性遵循 USD 的 attribute color space authoring conventions，并以 energy-linear terms 解释。`UsdLux` 假设物理照明模型中距离衰减来自可见 solid angle 的减少；不计算 solid angle 的环境可以提供 inverse-square 等近似，更强的艺术控制应通过 light filters 表达。</p>
+      <p class="en">UsdLux color properties are energy-linear, and distance falloff is tied to visible solid angle with light filters modeling extra artistic attenuation.</p>
+      <p class="zh">复杂行为由 API classes 组织：`UsdLuxLightListAPI` 用于 light component enumeration 和 discovery，适合需要提前声明灯光的系统；`UsdCollectionAPI` 表达 light-object linking，可用 inclusion/exclusion 控制照明集合；`UsdLuxShadowAPI` 控制 shadow linking、tinting 和 falloff；`UsdLuxShapingAPI` 控制 focus、cone-angle falloff 和 IES profiles。</p>
+      <p class="en">UsdLuxLightListAPI, UsdCollectionAPI, UsdLuxShadowAPI, and UsdLuxShapingAPI organize discovery, linking, shadows, falloff, focus, cones, and IES profile behavior.</p>
+      <p class="zh">extensibility 部分说明 `UsdLux` core 可以按 renderer 或 pipeline 需要扩展，例如 specialized light types、renderer-specific configuration、AOV images、LPEs、image post-processing、thin shadows、light sample counts、importance multipliers、path-depth limits，甚至 constraint rigging 表达。但这些扩展不应混淆 core schema 与 renderer 私有能力的边界。</p>
+      <p class="en">The UsdLux core can be extended for specialized lights, renderer configuration, AOVs, LPEs, sampling controls, and other renderer or pipeline capabilities.</p>
+      <p class="zh">`usdgenschemafromsdr` 是从 `SdrRegistry` 中的 shader nodes 生成 light schemas 的工具。生成结果可以是新的 typed schemas，也可以是自动应用到既有 light 或 light API 的 applied API schemas。它连接的是 `UsdLux` schema 扩展与 `Sdr` 节点定义，不代表每个 renderer-specific shader node 都应该永久写进用户级 USD 文件。</p>
+      <p class="en">usdgenschemafromsdr helps generate UsdLux schemas from Sdr nodes, either as typed schemas or applied API schema extensions.</p>
+      <p class="zh">`Plugin Lights and Light Filters` 降低了某些 proprietary application/render delegate 的接入门槛。`UsdLuxPluginLight` 和 `UsdLuxPluginLightFilter` 使用类似 `UsdShadeShader` 的 node identification encoding，让应用通过 Sdr 提供 node definitions 即可通信。但官方不鼓励在 pipeline-persistent user-level USD files 中使用这些类型，因为它们对普通用户暴露的信息较少。</p>
+      <p class="en">UsdLuxPluginLight and UsdLuxPluginLightFilter support renderer-specific communication through Sdr node identification, but are not recommended for persistent user-level pipeline USD files.</p>
+      <p class="zh">实用排查路径是：先确认 light prim 是否应用了 `UsdLuxLightAPI` 或具体 typed light schema，再检查 transform convention、size attributes、intensity/exposure/color/color temperature、camera exposure、light list、collection linking、shadow/shaping/filter API，最后检查 renderer 是否支持相应 light/filter/plugin schema。这样能把 USD authoring 问题、schema 扩展问题和 renderer implementation 问题分开。</p>
+      <p class="en">A practical debugging path separates authored light schema, transforms, units, exposure, linking/filtering/shaping APIs, schema extensions, and renderer support.</p>
+      <p class="zh">常见误读之一是把 `UsdLux` 的单位说明当成所有渲染器必须产生完全相同像素值的承诺。官方目标是建立互换约定，让 renderer 能以一致语义解释 light 属性；但不同后端的 spectral uplift、sampling、color management、tone mapping 和 AOV 输出仍可能不同。因此对比渲染结果时，应先确认同一 USD layer 中的 schema 属性是否一致，再比较 renderer 行为。</p>
+      <p class="en">UsdLux defines interchange semantics for light properties, but renderer choices such as spectral uplift, sampling, color management, and tone mapping can still differ.</p>
+      <p class="zh">另一个误读是把 light linking 与 scene traversal 混为一谈。`UsdLuxLightListAPI` 可提前枚举 known lights，适合某些系统在 scene 其他部分之前声明灯光；`UsdCollectionAPI` 表达被某个 light 照亮或排除的对象集合。前者解决发现和发布顺序，后者解决照明关系范围，调试时要分开看。</p>
+      <p class="en">Light lists help enumerate and publish lights, while collection-based light linking describes which objects are illuminated or excluded.</p>
+      <p class="zh">对于资产管线，`UsdLux` 页面适合当成导入/导出一致性清单：灯光类型、应用的 API schema、公共属性、transform、color space authoring、light list、collection relationships、shadow/shaping/filter 配置和插件节点标识应能往返保持语义等价。若仅在某个 renderer 中看起来正确，但 USD 中缺少这些 authored relationships，下游工具仍可能无法复现。</p>
+      <p class="en">For pipeline round-tripping, light types, applied APIs, attributes, transforms, linking relationships, filters, and plugin node identifiers should remain semantically equivalent.</p>
+      <p class="zh">保留英文标识很关键：`UsdLuxLightAPI`、`light:filters`、`UsdLuxShapingAPI`、`UsdLuxShadowAPI`、`UsdLuxPluginLightFilter`、`UsdShadeNodeGraph`、`UsdShadeMaterial`、`UsdGeomCamera::GetExposureAttr()`、`SdrRegistry` 等名称直接对应 schema、relationship、attribute、class 或 Doxygen 索引。中文解释用于理解边界，不应替换这些可解析标识。</p>
+      <p class="en">English identifiers are retained because they map directly to schema names, relationships, attributes, classes, or Doxygen index entries.</p>
     </section>
     <section data-cn-refinement="api-usd-schema-quality-pass-059">
       <h2>中文精修导读 / Chinese Reading Notes</h2>
