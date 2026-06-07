@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：Referencing Layers / Referencing Layers</title>
+  <title>完整双语参考：Referencing Layers / Referencing Layers</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
@@ -12,93 +12,204 @@
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
     .zh{display:block;font-weight:650;color:#17324d}
     .en{display:block;color:#55616f;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
     pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
     code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：Referencing Layers / Referencing Layers</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：Referencing Layers / Referencing Layers</h1>
     <div class="meta">https://openusd.org/release/tut_referencing_layers.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+      <p class="zh">本页是 OpenUSD release 教程中“引用 layer”的完整双语参考页。中文主线解释如何把前面教程生成的 `HelloWorld.usda` 作为 asset 引用进新的 stage，如何设置 `defaultPrim`，如何在引用点上 author override，为什么引用不会复制源文件内容，以及如何用 flattened 结果检查 composition。英文页面名、API 名称、路径、文件名、metadata、token、代码和官方链接保留，用于和官方教程核对。</p>
+      <p class="en">This local bilingual page explains the OpenUSD tutorial for referencing layers in Chinese first while retaining the official title, API names, path literals, file names, metadata names, token literals, code, and links for comparison.</p>
     </section>
-    <section data-cn-refinement="release-tutorial-quality-pass-001">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Referencing Layers 补充中文优先的阅读路径和术语说明；英文页面名、链接、代码和原文摘录继续保留，用于和官方文档一一对应。</p>
-      <p class="en">This section adds Chinese-first reading guidance for Referencing Layers while retaining the English page name, links, code, and source excerpts for one-to-one comparison with the official documentation.</p>
+
+    <section data-cn-complete="release-tutorial-referencing-layers-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">本教程的目标是把之前创建的 `HelloWorld.usda` 引用到一个新的 stage 中。它不再只讨论单个 layer 内的属性读写，而是引入 USD composition 的第一个核心机制：reference composition arc。reference 让一个 prim 可以把另一个 layer 或另一个 prim 的 scene description 组合到当前位置，形成最终 stage 视图。中文阅读时要始终记住：reference 不是文本复制，也不是 import 后静态展开，而是在 composition 阶段把外部意见纳入当前 prim stack。</p>
+      <p class="en">The tutorial introduces references as composition arcs that bring external scene description into a new stage.</p>
+
+      <p class="zh">第一步仍然从 `HelloWorld.usda` 开始。脚本用 `Usd.Stage.Open('HelloWorld.usda')` 打开源 stage，再用 `stage.GetPrimAtPath('/hello')` 取得源资产的根 prim。随后调用 `stage.SetDefaultPrim(hello)`，把 layer 的 `defaultPrim` metadata 设置成 `hello`。这个 metadata 是引用工作流的入口提示：如果引用方只指定 asset path 而不指定 prim path，USD 就可以从 `defaultPrim` 找到应该引用的根 prim。</p>
+      <p class="en">The source layer receives `defaultPrim` metadata so references can target its root prim without spelling a prim path.</p>
+
+      <p class="zh">`defaultPrim` 的边界很重要。它不是创建新的 prim，也不是把 `/hello` 改名为默认对象；它只是 layer metadata，告诉引用方“这个 layer 的默认根入口是哪个 prim”。如果没有 author `defaultPrim`，引用方仍然可以显式指定目标 prim path，但示例为了简化引用代码，先把源 layer 准备成可直接作为 asset 使用的形式。生产资产发布中，给可引用资产设置稳定的 `defaultPrim` 是常见约定。</p>
+      <p class="en">`defaultPrim` is layer metadata, not a new prim or a rename operation.</p>
+
+      <p class="zh">教程还在源 prim 上 author 一个 transform：`UsdGeom.XformCommonAPI(hello).SetTranslate((4, 5, 6))`。这里使用 `UsdGeomXformCommonAPI` 是为了用较简单的一等 API 写常见 xform ops。此时源 `HelloWorld.usda` 中的 `/hello` 带有位移 opinion，后续引用它时，这个 transform 会随源资产一起进入 composed stage。保留 `xformOp:translate` 和 `xformOpOrder` 等名称，是为了让读者能在导出的 `.usda` 中核对实际写入的 xform stack。</p>
+      <p class="en">The source prim receives a translate opinion through `UsdGeomXformCommonAPI` so the referenced asset carries a transform.</p>
+
+      <p class="zh">第二步创建新的目标 stage。官方示例用 `Usd.Stage.CreateNew('RefExample.usda')` 创建一个新 layer，并在其中 `DefinePrim('/refSphere')`。这个 prim 起初只是引用点，不包含完整 sphere 内容。随后通过 `refSphere.GetReferences().AddReference('HelloWorld.usda')` 添加 reference arc。因为源 layer 有 `defaultPrim = "hello"`，引用方只需要 asset path 就能把源 `/hello` 的内容组合到 `/refSphere` 位置。</p>
+      <p class="en">A new stage defines `/refSphere` and adds a reference to `HelloWorld.usda`.</p>
+
+      <p class="zh">`AddReference('HelloWorld.usda')` 中的字符串由 asset resolver 解析。示例使用相对路径，是因为教程把文件放在同一目录；真实项目里可以是 resolver 支持的 asset path、包内路径或工作室自定义标识符。中文页必须保留 `AddReference` 和 `HelloWorld.usda` 原文，因为调试 reference 失败时，第一步往往就是检查 asset path 是否被 resolver 解析到正确文件。</p>
+      <p class="en">The reference asset path is resolved by the asset resolver rather than treated as a translated display string.</p>
+
+      <p class="zh">引用后的导出层看起来很短，这正是 reference 的价值：`RefExample.usda` 只记录 `def "refSphere" ( references = @./HelloWorld.usda@ )` 之类的 arc 信息，而没有复制源文件里的所有 prim 和属性。读者如果只看当前 layer，会觉得内容很少；但打开 composed stage 或 flattened stage 时，`/refSphere` 下会出现源 `/hello/world` 的 sphere 内容。这里必须区分“当前 layer 写了什么”和“stage 组合后看到了什么”。</p>
+      <p class="en">The referencing layer stores the reference arc, while the composed stage shows the referenced contents.</p>
+
+      <p class="zh">第三步演示 override。教程取得 `/refSphere` 上的 `UsdGeomXformCommonAPI`，调用 `SetTranslate((0, 0, 0))`，把引用点的 transform 改成新值。导出的 `RefExample.usda` 会出现本地 `xformOp:translate` opinion；它比 referenced layer 中的源 transform 更强，因此 composed 结果里引用点位置被覆盖。这个例子展示了 reference 的非破坏性：你可以在上层 layer 修改组合结果，而不改动 `HelloWorld.usda` 本身。</p>
+      <p class="en">The tutorial authors an override on the referencing prim that is stronger than the referenced transform.</p>
+
+      <p class="zh">这一段是 USD composition 强度的入门。reference 带来的源意见位于较弱位置，本地 layer 在同一 prim 上 author 的 opinion 更强。`over "refSphere"` 表示对已经由 reference 引入的 prim 追加或覆盖意见，而不是重新定义整个资产。初学者常把 `over` 理解为删除再创建；更准确地说，它是把额外意见放入 prim stack，让 value resolution 选出最终值。</p>
+      <p class="en">`over` contributes stronger local opinions to a prim stack without copying or redefining the referenced asset.</p>
+
+      <p class="zh">第四步引入嵌套 override。源资产中 sphere 位于 `/hello/world`；引用到 `/refSphere` 后，对应路径变成 `/refSphere/world`。教程在新的 layer 中 `OverridePrim('/refSphere/world')`，再使用 `UsdGeom.Sphere(world).CreateDisplayColorAttr()` 或类似 schema API author `primvars:displayColor`。这样做不会修改源 `HelloWorld.usda` 的 sphere，只是在引用实例内部的子 prim 上叠加一个更强颜色 opinion。</p>
+      <p class="en">The nested override targets `/refSphere/world`, the child prim introduced by the reference.</p>
+
+      <p class="zh">路径重映射是本页最容易漏掉的概念。源 layer 里的路径是 `/hello/world`，但引用方把源 `defaultPrim` 挂到 `/refSphere`，所以源子 prim `world` 在组合结果中出现在 `/refSphere/world`。如果你在上层错误地 override `/hello/world`，不会影响引用实例。调试引用内部属性时，必须从引用点位置重新推导 composed path，而不是照抄源 layer 的绝对 prim path。</p>
+      <p class="en">Referenced child paths are mapped under the referencing prim, so overrides must use the composed path.</p>
+
+      <p class="zh">教程还展示 `stage.Flatten()` 或类似 flattened 输出，用来观察 reference arc 解析后的最终 scene description。flattened layer 会把 reference 引入的内容和上层 override 展开成一个单一结果，便于学习和调试；但 flatten 不是原始工作流的替代品。生产中保留 reference arc 可以复用资产、延迟解析、减少重复，并让源资产更新自动影响引用方；flatten 通常用于诊断、导出或向不支持 composition 的消费者交付。</p>
+      <p class="en">Flattening is a diagnostic or export view of the composed result, not the same as preserving live reference arcs.</p>
+
+      <p class="zh">本教程和前两页的关系很清楚：`Hello World` 创建最小 stage，`Inspecting and Authoring Properties` 教你读写 prim 属性，`Referencing Layers` 则把一个已保存 layer 当作可复用资产引入新 stage，并在引用点上 author 更强意见。三者连起来就是 USD authoring 的常见最小闭环：创建资产、检查/修改属性、引用资产、在 shot 或 assembly 层非破坏性覆盖它。</p>
+      <p class="en">The tutorial connects creation, property authoring, references, and non-destructive overrides into a small USD workflow.</p>
+
+      <p class="zh">从 API 分组看，本页涉及三类对象。第一类是 `Usd.Stage` 与 `Sdf.Layer` 相关入口，负责打开、创建、保存和 flatten stage；第二类是 `UsdPrim`、`GetReferences()`、`AddReference()`、`OverridePrim()`，负责创建 composition arcs 和本地意见；第三类是 `UsdGeom.XformCommonAPI` 与 `UsdGeom.Sphere`，负责用 schema API author transform 和 displayColor。把三类职责分开，有助于判断 bug 属于文件解析、composition、路径定位，还是几何 schema authoring。</p>
+      <p class="en">The page uses stage/layer APIs, prim/reference APIs, and geometry schema APIs for different responsibilities.</p>
+
+      <p class="zh">实际调试 reference 失败时，可以按五步检查：确认 asset path 能被 resolver 找到；确认被引用 layer 有正确 `defaultPrim` 或引用方显式指定了 prim path；确认引用点 prim 路径正确；确认 override 写在 composed path 上；最后用 flattened 输出或 `usdview` 检查最终结果。这个顺序能避免把 asset resolver 问题误判成 override 失效，也能避免把路径重映射错误误判成 reference 没生效。</p>
+      <p class="en">A practical debugging order is asset path, default prim, reference site, composed override path, and flattened result.</p>
+
+      <p class="zh">需要保留的关键字面量包括 `HelloWorld.usda`、`RefExample.usda`、`/hello`、`/hello/world`、`/refSphere`、`/refSphere/world`、`defaultPrim`、`references`、`over`、`Usd.Stage.Open`、`Usd.Stage.CreateNew`、`SetDefaultPrim`、`GetReferences`、`AddReference`、`OverridePrim`、`UsdGeom.XformCommonAPI`、`SetTranslate`、`UsdGeom.Sphere`、`CreateDisplayColorAttr`、`stage.GetRootLayer().Save()` 和 `stage.Flatten()`。这些名称是教程可复现和 API 查询的锚点，不应翻译或改写。</p>
+      <p class="en">The file names, prim paths, metadata names, arc names, API calls, and token literals are the reproducibility anchors for this tutorial.</p>
+
+      <p class="zh">从中文主阅读路径判断，本页成功的标准不是读者背下 `AddReference` 这一行代码，而是能解释三件事：为什么源 layer 需要 `defaultPrim`，为什么引用方 layer 只写 arc 却能在 composed stage 看到完整 sphere，为什么上层 `over` 和本地 attribute opinion 可以覆盖引用资产而不破坏源文件。能回答这三点，读者就具备继续学习 payload、sublayer、variant、inherits 和 specializes 的 composition 基础。</p>
+      <p class="en">The main reading path succeeds when the reader understands default prims, composed results, and non-destructive overrides.</p>
+
+      <p class="zh">还要避免把 reference 和 sublayer 混为一谈。sublayer 通常把另一个 layer 的整层意见合入 layer stack，路径空间保持原样；reference 则把某个 asset 或 prim 的内容挂到当前 prim 的 namespace 位置，因此会产生 `/hello/world` 到 `/refSphere/world` 这样的路径重定位。payload 与 reference 更接近，但 payload 通常用于可延迟加载的大型资产。理解这三个 arc 的差别，可以帮助读者判断什么时候该复用资产实例，什么时候该组织层级意见，什么时候该优化加载成本。</p>
+      <p class="en">References, sublayers, and payloads solve different composition problems and should not be treated as interchangeable mechanisms.</p>
+
+      <p class="zh">因此，检查本页是否读懂时，还应确认自己能说明 reference 的 namespace 重定位和本地强意见为何同时成立。</p>
+      <p class="en">A final reading check is whether the reader can explain namespace remapping together with stronger local opinions.</p>
+    </section>
+
+    <section>
+      <h2>教程步骤 / Tutorial Steps</h2>
+      <ol>
+        <li><span class="zh">准备源 layer：打开 `HelloWorld.usda`，取得 `/hello`，并把它设置为 `defaultPrim`。</span><span class="en">Open `HelloWorld.usda`, get `/hello`, and author `defaultPrim`.</span></li>
+        <li><span class="zh">给源 prim 写 transform：用 `UsdGeom.XformCommonAPI(hello).SetTranslate((4, 5, 6))` author 源资产意见。</span><span class="en">Author a source transform through `UsdGeom.XformCommonAPI`.</span></li>
+        <li><span class="zh">创建引用方 stage：用 `Usd.Stage.CreateNew('RefExample.usda')` 建立新 layer。</span><span class="en">Create a new referencing stage named `RefExample.usda`.</span></li>
+        <li><span class="zh">建立引用点：定义 `/refSphere`，并用 `GetReferences().AddReference('HelloWorld.usda')` 添加 reference arc。</span><span class="en">Add a reference from `/refSphere` to `HelloWorld.usda`.</span></li>
+        <li><span class="zh">覆盖引用点 transform：在 `/refSphere` 上写更强的本地 xform opinion。</span><span class="en">Override the transform on the referencing prim.</span></li>
+        <li><span class="zh">覆盖内部子 prim：在 composed path `/refSphere/world` 上写颜色等属性。</span><span class="en">Author nested overrides on `/refSphere/world`.</span></li>
+        <li><span class="zh">保存并检查：保存 `RefExample.usda`，用 flattened 输出或 `usdview` 验证 composition 结果。</span><span class="en">Save and inspect the composed or flattened result.</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>关键 API 边界 / Key API Boundaries</h2>
       <ul>
-        <li><span class="zh">本教程演示把前面教程创建的 Stage 引用到新的 Stage 中。核心概念是 reference composition arc：当前 prim 可以把另一个 layer 或 prim 的内容组合进来。</span></li>
-        <li><span class="zh">引用不是复制文件内容，而是在 composition 阶段把外部场景描述组合成最终结果。这让资产可以复用、分层发布，并允许上层在不修改源资产的情况下覆盖意见。</span></li>
-        <li><span class="zh">HelloWorld.usda 和 referencingLayers 示例代码用于展示最小工作流：打开或创建 layer，建立引用，再检查组合后的 Stage 是否包含目标 prim。</span></li>
-        <li><span class="zh">后续阅读 payload、sublayer、variant 和 inherits 时，都应把 reference 当作 composition arc 家族中的一员来理解。</span></li>
+        <li><span class="zh">`reference` 是 composition arc；它记录外部 asset 的组合关系，不复制源 layer 的完整文本。</span><span class="en">A reference is a composition arc, not a textual copy.</span></li>
+        <li><span class="zh">`defaultPrim` 是 layer metadata；它帮助引用方在未指定 prim path 时定位默认根 prim。</span><span class="en">`defaultPrim` helps a reference target the layer's default root prim.</span></li>
+        <li><span class="zh">`over` 表示在已有 prim stack 上追加更强 opinion，不等同于重新定义完整 prim。</span><span class="en">`over` adds stronger opinions to an existing prim stack.</span></li>
+        <li><span class="zh">`OverridePrim('/refSphere/world')` 必须使用组合后的路径，而不是源 layer 中的 `/hello/world`。</span><span class="en">Nested overrides use the composed path under the reference site.</span></li>
+        <li><span class="zh">`stage.Flatten()` 用于观察最终结果；保留 reference arc 才能保留可复用、非破坏和可更新的 composition 结构。</span><span class="en">Flattening is useful for inspection, but references preserve reusable composition structure.</span></li>
       </ul>
-      <h3>术语对照 / Terms</h3>
+    </section>
+
+    <section>
+      <h2>代码摘录 / Code Excerpts</h2>
+      <pre><code>from pxr import Usd, UsdGeom
+
+stage = Usd.Stage.Open('HelloWorld.usda')
+hello = stage.GetPrimAtPath('/hello')
+stage.SetDefaultPrim(hello)
+UsdGeom.XformCommonAPI(hello).SetTranslate((4, 5, 6))
+stage.GetRootLayer().Save()</code></pre>
+      <pre><code>stage = Usd.Stage.CreateNew('RefExample.usda')
+refSphere = stage.DefinePrim('/refSphere')
+refSphere.GetReferences().AddReference('HelloWorld.usda')
+stage.GetRootLayer().Save()</code></pre>
+      <pre><code>UsdGeom.XformCommonAPI(refSphere).SetTranslate((0, 0, 0))
+world = stage.OverridePrim('/refSphere/world')
+UsdGeom.Sphere(world).CreateDisplayColorAttr([(1, 0, 0)])
+
+print(stage.Flatten())</code></pre>
+    </section>
+
+    <section>
+      <h2>导出结果检查 / Exported Result Check</h2>
+      <p class="zh">引用方 layer 应保留 reference arc，而不是复制源资产；flattened 结果才会显示被引用内容和本地 override 的合成结果。下面只保留关键结构，方便读者核对 `defaultPrim`、`references`、`over` 和 composed path 的关系。</p>
+      <p class="en">The referencing layer preserves the reference arc, while flattened output shows the composed result.</p>
+      <pre><code>#usda 1.0
+(
+    defaultPrim = "hello"
+)
+
+def Xform "hello"
+{
+    double3 xformOp:translate = (4, 5, 6)
+    uniform token[] xformOpOrder = ["xformOp:translate"]
+    def Sphere "world"
+    {
+        double radius = 2
+    }
+}</code></pre>
+      <pre><code>#usda 1.0
+
+def "refSphere" (
+    references = @./HelloWorld.usda@
+)
+{
+    double3 xformOp:translate = (0, 0, 0)
+    over "world"
+    {
+        color3f[] primvars:displayColor = [(1, 0, 0)]
+    }
+}</code></pre>
+    </section>
+
+    <section>
+      <h2>常见误读与调试 / Common Misreadings and Debugging</h2>
+      <ul>
+        <li><span class="zh">如果引用后看不到内容，先检查 `HelloWorld.usda` 是否能被 asset resolver 找到。</span><span class="en">If the reference is empty, first verify that the asset path resolves.</span></li>
+        <li><span class="zh">如果引用方没有显式 prim path，确认源 layer 是否已经 author `defaultPrim = "hello"`。</span><span class="en">If no prim path is specified, check the source layer's `defaultPrim`.</span></li>
+        <li><span class="zh">如果本地 override 不生效，确认写的是 `/refSphere` 或 `/refSphere/world`，而不是源路径 `/hello` 或 `/hello/world`。</span><span class="en">If an override does not apply, check the composed target path.</span></li>
+        <li><span class="zh">如果 `RefExample.usda` 看起来内容很少，这是正常的；reference layer 只需要记录 arc 和本地强意见。</span><span class="en">A sparse referencing layer is normal because it stores arcs and local opinions.</span></li>
+        <li><span class="zh">如果 flattened 输出符合预期但原 layer 很短，不要把它当成数据丢失；这是 USD composition 的预期分层表达。</span><span class="en">A short source layer plus rich flattened output is expected in USD composition.</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>术语对照 / Terms</h2>
       <ul>
         <li><span class="zh">引用：</span><span class="en">reference</span></li>
         <li><span class="zh">组合弧：</span><span class="en">composition arc</span></li>
-        <li><span class="zh">层：</span><span class="en">layer</span></li>
-        <li><span class="zh">舞台：</span><span class="en">Stage</span></li>
-        <li><span class="zh">覆盖意见：</span><span class="en">override</span></li>
+        <li><span class="zh">默认 prim：</span><span class="en">defaultPrim</span></li>
+        <li><span class="zh">引用方 prim：</span><span class="en">referencing prim</span></li>
+        <li><span class="zh">本地覆盖意见：</span><span class="en">local override opinion</span></li>
+        <li><span class="zh">资产解析器：</span><span class="en">asset resolver</span></li>
+        <li><span class="zh">扁平化 stage：</span><span class="en">flattened stage</span></li>
+        <li><span class="zh">组合后路径：</span><span class="en">composed path</span></li>
       </ul>
     </section>
-    <section data-cn-refinement="release-quality-pass-111">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`Referencing Layers` 讲的是把已有 USD layer 或其中的 prim 作为 reference composition arc 组合进新的 stage。它强调资产复用和非破坏性覆盖：上层 stage 可以引用源资产，再添加更强 opinion，而不需要复制或修改源文件内容。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for Referencing Layers while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`stage = Usd.Stage.Open('HelloWorld.usda')` 先打开源 stage，随后通过 `SetDefaultPrim` 给被引用层指定默认入口；默认 prim 是很多引用工作流能否顺利定位资产根 prim 的关键。</span></li>
-        <li><span class="zh">reference 不是文件复制。它在 composition 阶段把目标 layer 或 prim 的意见组合进当前 prim，因此源资产可以独立发布、缓存和更新。</span></li>
-        <li><span class="zh">`UsdGeom.XformCommonAPI(hello).SetTranslate((4, 5, 6))` 演示在源层上 author transform；后续引用它时，上层仍可追加或覆盖自己的 transform opinion。</span></li>
-        <li><span class="zh">阅读本页要区分 reference、sublayer 和 payload：reference 通常把资产 prim 组合到某个命名空间位置，sublayer 合并整层意见，payload 则偏向可延迟加载的重资产内容。</span></li>
-        <li><span class="zh">本教程是理解 variants、payloads、inherits 和 specializes 的基础。中文层应保留 `composition arc`、`defaultPrim`、`reference` 等英文术语，便于和 USD 组合强度规则对照。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">引用组合弧：</span><span class="en">reference</span></li>
-        <li><span class="zh">默认 prim 入口：</span><span class="en">defaultPrim</span></li>
-        <li><span class="zh">组合弧：</span><span class="en">composition arc</span></li>
-        <li><span class="zh">打开已有 stage：</span><span class="en">Usd.Stage.Open</span></li>
-        <li><span class="zh">设置默认 prim：</span><span class="en">SetDefaultPrim</span></li>
-        <li><span class="zh">上层覆盖意见：</span><span class="en">override opinion</span></li>
-      </ul>
-    </section>
+
     <section>
-      <h2>页面结构 / Page Structure</h2>
+      <h2>页面链接 / Page Links</h2>
       <ul>
-<li><span class="zh">第 1 级标题：Referencing Layers</span><span class="en">Referencing Layers</span></li>
+        <li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Configure your Environment</a></li>
+        <li><a href="tut_helloworld.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_helloworld.html">Hello World - Creating Your First USD Stage</a></li>
+        <li><a href="tut_inspect_and_author_props.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_inspect_and_author_props.html">Inspecting and Authoring Properties</a></li>
+        <li><a href="tut_traversing_stage.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_traversing_stage.html">Traversing a Stage</a></li>
+        <li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_xform_common_a_p_i.html&amp;title=UsdGeomXformCommonAPI+schema" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_xform_common_a_p_i.html">UsdGeomXformCommonAPI schema</a></li>
+        <li><a href="https://github.com/PixarAnimationStudios/OpenUSD/tree/v26.05">USD 26.05</a></li>
       </ul>
     </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">This tutorial walks you through referencing the stage that we created in the previous tutorials into a new stage. The HelloWorld.usda that we will use as our starting point and all the code for this exercise is in the extras/usd/tutorials/referencingLayers folder.</p>
-<p class="en">Author the defaultPrim metadata on the layer that you want to reference. This is the name of the root prim that will be referenced. If it is not authored here, then the referencing client must specify the root prim path it wants from the referenced layer. We also want to author a transformation on the default root prim, so that we can override it later; to do this we use the UsdGeomXformCommonAPI schema , which we will discuss further, later.</p>
-<p class="en">Copy extras/usd/tutorials/referencingLayers/HelloWorld.usda to a folder of your choice. In that folder, create and run a new Python script with the following code:</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>from pxr import Usd , UsdGeom stage = Usd . Stage . Open ( 'HelloWorld.usda' ) hello = stage . GetPrimAtPath ( '/hello' ) stage . SetDefaultPrim ( hello ) UsdGeom . XformCommonAPI ( hello ) . SetTranslate (( 4 , 5 , 6 )) print ( stage . GetRootLayer () . ExportToString ()) stage . GetRootLayer () . Save ()</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Configure your Environment</a></li>
-<li><a href="https://github.com/PixarAnimationStudios/OpenUSD/tree/v26.05">USD 26.05</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_xform_common_a_p_i.html&amp;title=UsdGeomXformCommonAPI+schema" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_xform_common_a_p_i.html">UsdGeomXformCommonAPI schema</a></li>
-      </ul>
-    </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>

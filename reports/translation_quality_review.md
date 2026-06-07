@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-07T14:29:54.625Z
+Generated: 2026-06-07T14:44:28.368Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 327
-- bilingual_complete: 79
+- bilingual_draft: 326
+- bilingual_complete: 80
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 316
-- good_bilingual: 79
+- draft_needs_translation: 315
+- good_bilingual: 80
 
 ## Current Focus Batch
 
@@ -374,7 +374,7 @@ Generated: 2026-06-07T14:29:54.625Z
 | 308 | good_bilingual | bilingual_complete | 1839 | 42/42 | 0 | 0 | `full_site/release/tut_helloworld.html` |
 | 309 | draft_needs_translation | bilingual_draft | 579 | 28/21 | 0 | 0 | `full_site/release/tut_houdini_example.html` |
 | 310 | good_bilingual | bilingual_complete | 2116 | 46/46 | 0 | 0 | `full_site/release/tut_inspect_and_author_props.html` |
-| 311 | draft_needs_translation | bilingual_draft | 541 | 24/18 | 0 | 0 | `full_site/release/tut_referencing_layers.html` |
+| 311 | good_bilingual | bilingual_complete | 2088 | 46/46 | 0 | 0 | `full_site/release/tut_referencing_layers.html` |
 | 312 | draft_needs_translation | bilingual_draft | 520 | 25/19 | 0 | 0 | `full_site/release/tut_simple_shading.html` |
 | 313 | draft_needs_translation | bilingual_draft | 795 | 36/25 | 0 | 0 | `full_site/release/tut_traversing_stage.html` |
 | 314 | draft_needs_translation | bilingual_draft | 623 | 27/20 | 0 | 0 | `full_site/release/tut_usd_tutorials.html` |

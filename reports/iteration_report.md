@@ -1,31 +1,31 @@
 # OpenUSD Iteration Report
 
-## 第 376 轮摘要
+## 第 377 轮摘要
 
 - 轮次类型：PromotionRound
-- 本轮目标：`full_site/release/tut_inspect_and_author_props.html`
+- 本轮目标：`full_site/release/tut_referencing_layers.html`
 - 结果：完成 1 个页面晋级，并让 good_bilingual 增加。
 - 核心说明：目标页已移除草稿状态，补齐中文主阅读路径，并进入 promotion manifest。
 
 ## 真实计数
 
 - total_pages：406
-- good_bilingual：79
-- review_ready_zh：16
-- bilingual_complete：79
-- bilingual_draft：327
-- draft_needs_translation：316
+- good_bilingual：80
+- review_ready_zh：17
+- bilingual_complete：80
+- bilingual_draft：326
+- draft_needs_translation：315
 - draft_template_only：11
 - pending_full_scope：0
 - api_complete：72
-- release_complete：7
+- release_complete：8
 
 ## 验证
 
 - validation_report：passed=true，failed_check_count=0，required_check_count=302
-- translation_quality：good_bilingual=79
-- english_debt：review_ready_zh=16，review_needs_zh_debt=63
-- promotion manifest：71 entries
+- translation_quality：good_bilingual=80
+- english_debt：review_ready_zh=17，review_needs_zh_debt=63
+- promotion manifest：72 entries
 
 ## 本轮改动文件
 
@@ -45,4 +45,4 @@
 
 ## 下一步
 
-优先选择 release/tutorial/user guide 页面，以降低 release 覆盖滞后。建议目标：`full_site/release/tut_referencing_layers.html`。
+优先选择 release/tutorial/user guide 页面，以降低 release 覆盖滞后。建议目标：`full_site/release/tut_traversing_stage.html`。
