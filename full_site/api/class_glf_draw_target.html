@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：GlfDrawTarget Class / GlfDrawTarget Class</title>
+  <title>完整双语参考：GlfDrawTarget Class / GlfDrawTarget Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,55 +24,50 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：GlfDrawTarget Class / GlfDrawTarget Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：GlfDrawTarget Class / GlfDrawTarget Class</h1>
     <div class="meta">https://openusd.org/release/api/class_glf_draw_target.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页处理：中文优先解释 `GlfDrawTarget` 作为 OpenGL 辅助层中带有 multiple image attachments 的 GL render target、custom render pass 输出容器、named attachments 到 `GL_TEXTURE_2D` images 的映射、默认 depth component、framebuffer / MSAA framebuffer 生命周期、`Bind()` / `Unbind()` / `Resolve()` / `AddAttachment()` 等方法边界，以及它与 USD scene graph、Hydra render pass 和 GLSL shader sampler 使用路径的关系；英文 API 名称、方法名、类型名、链接和官方英文摘录保持原样，便于与 OpenUSD Doxygen 页面核对。</p>
+      <p class="en">This page is treated as a complete bilingual reference. Chinese explanations come first, while English API names, method names, type names, links, and selected official excerpts are retained for comparison with the OpenUSD Doxygen page.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-035">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 GlfDrawTarget Class 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for GlfDrawTarget Class while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`GlfDrawTarget` 表示带有 multiple image attachments 的 GL render target，可理解为自定义 render pass 的输出目标。</span></li>
-        <li><span class="zh">英文摘录说明 DrawTarget 可以输出多个 arbitrary variables，之后可被 GLSL shaders 作为 texture samplers 使用；这说明它连接离屏渲染、附件纹理和 shader 采样。</span></li>
-        <li><span class="zh">该类维护 named attachments 到 `GL_TEXTURE_2D` images 的映射；默认还会创建 depth component，同时作为 draw pass 的 depth buffer，并可作为普通 `GL_TEXTURE_2D` 数据访问。</span></li>
-        <li><span class="zh">关联类型包括 `AttachmentsContainer`、`AttachmentRefPtr`、`TfRefBase`、`GfMatrix4d`、`GfVec2i`、`TfWeakBase`，说明它同时涉及引用计数、矩阵状态、尺寸和 GL 资源管理。</span></li>
-        <li><span class="zh">本页存在官方摘录里的拼写 `mutliple` / `mages`，中文层按原意解释为 multiple image attachments / images，但不修改英文原文；后续完整翻译应补 attachment 创建、绑定、读取和生命周期方法。</span></li>
-      </ul>
+    <section data-cn-complete="glf-draw-target-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`GlfDrawTarget` 是 `Glf` OpenGL helper 层中的离屏绘制目标对象。官方描述说它是 “a GL render target with multiple image attachments”，意思不是 USD prim 的集合，而是一个封装了 framebuffer、attachment textures、depth component 和相关 GL 状态的渲染资源容器，用来承接某个 custom render pass 的输出。</p>
+      <p class="en">`GlfDrawTarget` represents an OpenGL render target with multiple image attachments. It is a rendering resource container, not a USD scene-graph object.</p>
+      <p class="zh">“custom render pass” 和 “arbitrary variables” 是本页容易误读的词。这里的变量是 shader 可以写入的渲染输出，例如颜色、法线、ID 或其他中间图像数据；这些输出之后可以作为 `GLSL shaders` 的 `texture samplers` 再被读取。它解决的是图形管线中的中间缓冲和采样问题，而不是 USD composition、schema authoring 或 Hydra task 调度问题。</p>
+      <p class="en">The official wording about arbitrary variables refers to shader outputs that can later be sampled as textures, not authored USD data.</p>
+      <p class="zh">附件模型是理解该类的核心。`AttachmentsMap` / `AttachmentsContainer` 管理 named attachments，`AttachmentRefPtr` 表示引用计数持有的 attachment 对象；每个 attachment 通常对应一个 `GL_TEXTURE_2D` image。`AddAttachment()` 创建或登记新的输出附件，`DeleteAttachment()` 删除指定附件，`GetAttachment()` / `GetAttachments()` 用于读取当前集合；这些方法改变的是 OpenGL render target 的 texture resources，不是 stage 上的 property 或 material binding。</p>
+      <p class="en">Named attachments map application-level names to `GL_TEXTURE_2D` images. Attachment operations manage GL resources rather than USD properties.</p>
+      <p class="zh">默认 depth component 也很关键：DrawTarget 会创建可在 draw pass 中作为 depth buffer 使用的深度资源，并且后续也能像普通 `GL_TEXTURE_2D` 数据一样访问。阅读 `GetDepthAttachment()`、depth buffer 相关说明或英文摘录中的 `depth component` 时，应把它理解为 GPU framebuffer 的深度附件，而不是 `UsdGeom` 中的几何属性或场景层级深度。</p>
+      <p class="en">The depth component is a framebuffer depth attachment that can also be accessed as texture data after rendering.</p>
+      <p class="zh">`Bind()` / `Unbind()` / `IsBound()` 描述 framebuffer binding 状态。调用 `Bind()` 后后续 GL draw calls 会写入这个 draw target；`Unbind()` 解除绑定；`IsBound()` 用于检查当前上下文状态。它们依赖有效的 OpenGL context，因此不能脱离 GL 线程、上下文 lifetime 或资源创建顺序来理解，也不能把绑定状态当成 Hydra render pass 是否被调度的同义词。</p>
+      <p class="en">Binding methods control the OpenGL framebuffer binding state for subsequent draw calls and are tied to the active GL context.</p>
+      <p class="zh">`GetFramebufferId()` 与 `GetFramebufferMSId()` 暴露 framebuffer object 标识。带 `MS` 的接口通常对应 multi-sample framebuffer，`HasMSAA()` 表示当前目标是否使用 MSAA；`Resolve()` 则把多重采样结果解析到普通可采样附件中。调试锯齿、空纹理或采样结果过期时，应检查 MSAA framebuffer、resolve 时机、attachment size 和 shader sampling 路径是否一致。</p>
+      <p class="en">The MS framebuffer is resolved into sampleable attachments through `Resolve()`. MSAA state, attachment sizes, and sampling timing must match.</p>
+      <p class="zh">尺寸和矩阵状态也影响使用方式。`GetSize()` 反映 draw target 的 pixel dimensions；相关链接中的 `GfVec2i` 指向整数尺寸表示，`GfMatrix4d` 常用于保存绘制或投影相关矩阵状态。尺寸改变后需要重新考虑 attachment allocation、viewport、framebuffer completeness 和 shader 采样坐标，否则可能出现只渲染局部、采样错位或 framebuffer invalid 的问题。</p>
+      <p class="en">Size, viewport, attachment allocation, and matrix state must stay coherent for valid rendering and sampling.</p>
+      <p class="zh">`CloneAttachments()` 和 `ClearAttachments()` 体现附件集合的生命周期边界。复制附件通常用于构造具有相同输出布局的新目标，清理附件则释放或断开当前集合；这些操作会影响后续 render pass 能否写入指定 attachment，也会影响 shader sampler 是否还能读取旧资源。它们不是“清空 USD layer”，也不是“删除 prim”。</p>
+      <p class="en">Cloning and clearing attachments affect render-target resources and subsequent sampling, not USD layers or prims.</p>
+      <p class="zh">`IsValid()` 应作为 GL resource readiness 的检查来读：framebuffer、attachments、depth resource、MSAA target 和 size 必须共同满足 OpenGL framebuffer completeness。若 `IsValid()` 失败，排查顺序通常是 attachment format/size 是否一致、depth component 是否创建、MSAA 与非 MSAA attachments 是否匹配、是否在正确 GL context 中创建资源。</p>
+      <p class="en">`IsValid()` is about GL framebuffer/resource validity. Mismatched formats, sizes, depth resources, MSAA state, or context lifetime can invalidate the target.</p>
+      <p class="zh">与相邻系统的边界要明确：`GlfDrawTarget` 属于 `Glf` 图形辅助层，提供低层 OpenGL draw-target 管理；Hydra / HdSt 可能在更高层使用类似 render targets，但该类本身不是 `HdTask`、不是 `HdRenderBuffer`，也不负责把 USD prim 转成 draw items。它可以服务于调试视图、离屏渲染、中间 pass、shader preview 或 picking/selection 管线中的图像附件，但不定义场景语义。</p>
+      <p class="en">`GlfDrawTarget` is a low-level OpenGL helper. It is distinct from Hydra task scheduling, `HdRenderBuffer`, and USD scene semantics.</p>
+      <p class="zh">常见误用包括：把 attachment name 当成 USD attribute name；在没有 active GL context 时创建或绑定 draw target；忘记在 MSAA 模式下调用 `Resolve()` 就直接采样；修改 size 后没有重新创建 attachments；把 `GetFramebufferId()` 返回的整数长期保存到跨 context 对象中；或把英文摘录中的官方拼写 `mutliple` / `mages` 当成新术语。中文层按原意解释为 multiple image attachments / images，但保留英文原文便于核对。</p>
+      <p class="en">Common mistakes include confusing attachment names with USD attributes, sampling before resolve, using stale framebuffer ids across contexts, or ignoring attachment reallocation after size changes.</p>
       <h3>术语对照 / Terms</h3>
       <ul>
-        <li><span class="zh">GL 渲染目标：</span><span class="en">GL render target</span></li>
-        <li><span class="zh">图像附件：</span><span class="en">image attachment</span></li>
-        <li><span class="zh">自定义渲染 pass：</span><span class="en">custom render pass</span></li>
-        <li><span class="zh">纹理采样器：</span><span class="en">texture sampler</span></li>
-        <li><span class="zh">深度缓冲：</span><span class="en">depth buffer</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-131">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`GlfDrawTarget` 表示带有多个 image attachments 的 GL render target，可理解为离屏 render pass 的输出容器。它把 framebuffer、attachment texture、depth component、MSAA resolve 和 shader sampler 使用路径连接起来，是 OpenGL 渲染辅助层中的资源管理对象。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for GlfDrawTarget while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`AddAttachment()`、`DeleteAttachment()`、`GetAttachment()` 和 `GetAttachments()` 围绕 named attachments 工作；这些 attachment 通常映射到 `GL_TEXTURE_2D` image，而不是 USD scene graph 中的 prim。</span></li>
-        <li><span class="zh">`Bind()`、`Unbind()`、`IsBound()` 和 `IsValid()` 关注 framebuffer 绑定状态和 GL 资源有效性；阅读时应把它们和 Hydra render pass 的高层调度区分开。</span></li>
-        <li><span class="zh">`GetFramebufferId()` 与 `GetFramebufferMSId()` 暴露 framebuffer object 标识；带 `MS` 的接口通常与 MSAA 目标相关，后续 `Resolve()` 负责把多重采样结果解析到可采样附件。</span></li>
-        <li><span class="zh">`CloneAttachments()` 和 `ClearAttachments()` 说明附件集合可以复制或清理；这类操作影响离屏渲染输出资源，不能简单视为清空 USD 图层或材质绑定。</span></li>
-        <li><span class="zh">本页英文原文提到输出 arbitrary variables 后供 GLSL shaders 作为 texture samplers 使用；中文层应保留 `GLSL shaders`、`texture samplers`、`render pass` 等术语，方便读者对照图形管线概念。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">GL 绘制目标：</span><span class="en">GlfDrawTarget</span></li>
+        <li><span class="zh">GL 绘制目标：</span><span class="en">GlfDrawTarget / GL render target</span></li>
         <li><span class="zh">图像附件：</span><span class="en">image attachment</span></li>
         <li><span class="zh">帧缓冲对象：</span><span class="en">framebuffer</span></li>
         <li><span class="zh">多重采样抗锯齿：</span><span class="en">MSAA</span></li>
         <li><span class="zh">解析多重采样结果：</span><span class="en">Resolve</span></li>
         <li><span class="zh">纹理采样器：</span><span class="en">texture sampler</span></li>
+        <li><span class="zh">命名附件映射：</span><span class="en">AttachmentsMap</span></li>
+        <li><span class="zh">GL 纹理二维图像：</span><span class="en">GL_TEXTURE_2D image</span></li>
       </ul>
     </section>
     <section>
