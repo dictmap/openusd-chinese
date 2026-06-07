@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-07T01:57:03.995Z
+Generated: 2026-06-07T02:14:12.877Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 30
-- Promoted complete pages: 22
-- Bilingual draft pages: 376
+- Bilingual complete pages: 31
+- Promoted complete pages: 23
+- Bilingual draft pages: 375
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -46,7 +46,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_draft | 类参考草稿：HgiGLGraphicsCmds Class Reference final / HgiGLGraphicsCmds Class Reference final | full_site/api/class_hgi_g_l_graphics_cmds.html | https://openusd.org/release/api/class_hgi_g_l_graphics_cmds.html |
 | api | bilingual_draft | 类参考草稿：PcpArc Class / PcpArc Class | full_site/api/class_pcp_arc.html | https://openusd.org/release/api/class_pcp_arc.html |
 | api | bilingual_draft | 类参考草稿：PcpErrorUnresolvedPrimPath Class / PcpErrorUnresolvedPrimPath Class | full_site/api/class_pcp_error_unresolved_prim_path.html | https://openusd.org/release/api/class_pcp_error_unresolved_prim_path.html |
-| api | bilingual_draft | 类参考草稿：PcpPropertyIndex Class / PcpPropertyIndex Class | full_site/api/class_pcp_property_index.html | https://openusd.org/release/api/class_pcp_property_index.html |
+| api | bilingual_complete | https://openusd.org/release/api/class_pcp_property_index.html | full_site/api/class_pcp_property_index.html | https://openusd.org/release/api/class_pcp_property_index.html |
 | api | bilingual_draft | 类参考草稿：SdfChildrenView< _ChildPolicy, _Predicate, _Adapter > Class Template / SdfChildrenView< _ChildPolicy, _Predicate, _Adapter > Class Template | full_site/api/class_sdf_children_view.html | https://openusd.org/release/api/class_sdf_children_view.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_sdf_layer.html | full_site/api/class_sdf_layer.html | https://openusd.org/release/api/class_sdf_layer.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_sdf_path.html | full_site/api/class_sdf_path.html | https://openusd.org/release/api/class_sdf_path.html |

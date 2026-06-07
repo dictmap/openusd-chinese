@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T01:57:04.611Z",
+  "generated_at": "2026-06-07T02:14:13.478Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 376,
-    "bilingual_complete": 30
+    "bilingual_draft": 375,
+    "bilingual_complete": 31
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 365,
-    "good_bilingual": 30
+    "draft_needs_translation": 364,
+    "good_bilingual": 31
   },
   "focus_batch": [
     {
@@ -1733,29 +1733,29 @@
     },
     {
       "index": 29,
-      "title": "类参考草稿：PcpPropertyIndex Class / PcpPropertyIndex Class",
+      "title": "完整双语参考：PcpPropertyIndex Class / PcpPropertyIndex Class",
       "output": "full_site/api/class_pcp_property_index.html",
       "official_url": "https://openusd.org/release/api/class_pcp_property_index.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 51,
-      "enBlockCount": 38,
-      "zhChars": 794,
-      "enLetters": 1920,
-      "bodyChineseChars": 869,
+      "grade": "good_bilingual",
+      "zhBlockCount": 34,
+      "enBlockCount": 36,
+      "zhChars": 904,
+      "enLetters": 1780,
+      "bodyChineseChars": 954,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 PcpPropertyIndex Class Reference 补充中文优先的类职责、读取重点、相关 API 关系和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`PcpPropertyIndex` 是针对某个 property 的 composition index，用来汇总所有会给该 property 贡献 opinions 的 scene description sites。"
+        "本页已按完整双语参考页整理：中文优先解释 `PcpPropertyIndex` 在 Pcp composition 中对单个 property 汇总 opinion sites 的职责、与 `PcpPrimIndex` / `SdfPropertySpec` / resolved value 的边界、属性来源遍历、本地 specs 与局部错误的诊断意义；英文类名、方法名、类型名、链接和官方摘录继续保留，便于与 Doxygen 原页逐项核对。",
+        "官方定义说，`PcpPropertyIndex` 是所有 scene description sites 的索引，这些 sites 会在 composition semantics 下为一个 specific property 贡献 opinions。这里的关键词是 property、sites、opinions 和 composition semantics：它不是最终属性值本身，也不是单个 `SdfPropertySpec` 的包装器，而是 Pcp 在属性级别整理出来的组合来源视图。",
+        "`PcpPrimIndex` 面向 prim 级别的组合图和 arc；`PcpPropertyIndex` 则面向某个属性，把会影响该属性的 specs、局部贡献和错误组织起来。调试属性为何没有按预期 resolve 时，应先确认 prim index 与 layer stack，再用 property index 查看属性 opinion 的具体来源，而不要把它当作 `UsdAttribute::Get()` 的 resolved value 缓存。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, reading guidance, related API context, and terminology for PcpPropertyIndex Class Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page is promoted to a complete bilingual reference. It keeps official API names, method names, type names, links, and excerpts while adding Chinese-first coverage of Pcp property-index semantics.",
+        "`PcpPropertyIndex` is an index of all sites in scene description that contribute opinions to a specific property, under composition semantics."
       ]
     },
     {

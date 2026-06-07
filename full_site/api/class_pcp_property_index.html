@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：PcpPropertyIndex Class / PcpPropertyIndex Class</title>
+  <title>完整双语参考：PcpPropertyIndex Class / PcpPropertyIndex Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,76 +24,56 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：PcpPropertyIndex Class / PcpPropertyIndex Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：PcpPropertyIndex Class / PcpPropertyIndex Class</h1>
     <div class="meta">https://openusd.org/release/api/class_pcp_property_index.html</div>
   </header>
   <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-038">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 PcpPropertyIndex Class Reference 补充中文优先的类职责、读取重点、相关 API 关系和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, related API context, and terminology for PcpPropertyIndex Class Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`PcpPropertyIndex` 是针对某个 property 的 composition index，用来汇总所有会给该 property 贡献 opinions 的 scene description sites。</span></li>
-        <li><span class="zh">英文摘录强调它遵循 composition semantics；因此阅读时应把它放在 Pcp 组合语义下理解，而不是把它当作单个 `SdfPropertySpec` 的简单列表。</span></li>
-        <li><span class="zh">核心成员包括 `GetPropertyRange()`、`GetNumLocalSpecs()`、`GetLocalErrors()`、`IsEmpty()` 和 `Swap()`，分别对应遍历贡献节点、统计本地 specs、查看局部错误、判断空索引和交换索引内容。</span></li>
-        <li><span class="zh">`PcpPropertyIterator` 是 friend，说明 property index 主要通过 iterator/range 访问贡献 opinions；后续完整翻译应继续补充 iterator 的顺序和错误传播语义。</span></li>
-        <li><span class="zh">本页应与上一轮已精修的 `PcpArc` 一起阅读：`PcpArc` 描述组合图中的边，`PcpPropertyIndex` 则面向某个 property 汇总组合后的 opinion 来源。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">property 组合索引：</span><span class="en">property index</span></li>
-        <li><span class="zh">意见 / authored opinion：</span><span class="en">opinion</span></li>
-        <li><span class="zh">场景描述站点：</span><span class="en">scene description site</span></li>
-        <li><span class="zh">组合语义：</span><span class="en">composition semantics</span></li>
-        <li><span class="zh">局部错误：</span><span class="en">local errors</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-135">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`PcpPropertyIndex` 是某个 property 的 composition index，用来列出所有按 composition semantics 对该 property 贡献 opinions 的 scene description sites。它描述组合来源和局部错误，不等同于最终 resolved value，也不只是单个 `SdfPropertySpec` 的容器。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for PcpPropertyIndex while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`GetPropertyRange()` 是遍历 property opinion 来源的主要入口；通常会配合 `PcpPropertyIterator` 理解强弱顺序、节点来源和组合图路径。</span></li>
-        <li><span class="zh">`GetNumLocalSpecs()` 只统计 local specs 数量，适合判断当前 layer stack 内部贡献；它不代表整个 composition graph 中全部远端 arc 的数量。</span></li>
-        <li><span class="zh">`GetLocalErrors()` 暴露局部组合错误；这些错误应与 prim index、layer stack 和 property path 一起诊断，不能只看最终值是否存在。</span></li>
-        <li><span class="zh">`IsEmpty()` 表示没有可用 property index 内容；空索引可能来自 property 不存在、没有 contributing sites 或组合失败后的过滤结果，需要结合调用上下文判断。</span></li>
-        <li><span class="zh">`Swap()` 支持高效交换索引内容；它是容器级操作，不改变 USD 文件中的 authored opinions，也不会重新计算 composition。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
+    <section data-cn-complete="pcp-property-index-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">本页已按完整双语参考页整理：中文优先解释 `PcpPropertyIndex` 在 Pcp composition 中对单个 property 汇总 opinion sites 的职责、与 `PcpPrimIndex` / `SdfPropertySpec` / resolved value 的边界、属性来源遍历、本地 specs 与局部错误的诊断意义；英文类名、方法名、类型名、链接和官方摘录继续保留，便于与 Doxygen 原页逐项核对。</p>
+      <p class="en">This page is promoted to a complete bilingual reference. It keeps official API names, method names, type names, links, and excerpts while adding Chinese-first coverage of Pcp property-index semantics.</p>
+
+      <p class="zh">官方定义说，`PcpPropertyIndex` 是所有 scene description sites 的索引，这些 sites 会在 composition semantics 下为一个 specific property 贡献 opinions。这里的关键词是 property、sites、opinions 和 composition semantics：它不是最终属性值本身，也不是单个 `SdfPropertySpec` 的包装器，而是 Pcp 在属性级别整理出来的组合来源视图。</p>
+      <p class="en">`PcpPropertyIndex` is an index of all sites in scene description that contribute opinions to a specific property, under composition semantics.</p>
+
+      <p class="zh">`PcpPrimIndex` 面向 prim 级别的组合图和 arc；`PcpPropertyIndex` 则面向某个属性，把会影响该属性的 specs、局部贡献和错误组织起来。调试属性为何没有按预期 resolve 时，应先确认 prim index 与 layer stack，再用 property index 查看属性 opinion 的具体来源，而不要把它当作 `UsdAttribute::Get()` 的 resolved value 缓存。</p>
+      <p class="en">The property index should be read as a property-level composition structure, not as a final value cache.</p>
+
+      <p class="zh">构造函数 `PcpPropertyIndex()` 建立空索引，另一个构造形式接受 `PcpPropertyNodeRef`，用于从已经计算出的属性节点引用创建索引视图。这个构造边界很重要：`PcpPropertyIndex` 反映的是 composition 计算后的索引状态；它不会写入 layer，也不会创建新的 authored property opinion。</p>
+      <p class="en">The constructors create an empty property index or initialize one from a `PcpPropertyNodeRef`; they do not author scene description.</p>
+
+      <p class="zh">`GetPropertyRange()` 是读取属性贡献来源的核心入口。返回的范围通常配合 `PcpPropertyIterator` 使用，用来按 Pcp 组合强弱顺序观察 property specs。这里的 range 不是 C++ 容器快照的语义重点，而是“按 composition 规则可遍历的属性 opinion sites”；调试时应关注每个 iterator item 来自哪个 node、layer stack 和属性路径。</p>
+      <p class="en">`GetPropertyRange()` provides the iterable range of property specs, typically consumed through `PcpPropertyIterator`.</p>
+
+      <p class="zh">`GetNumLocalSpecs()` 只统计 local specs 的数量，适合判断当前 local layer stack 对该 property 有多少直接贡献。它不等于整个 composition graph 中所有 opinions 的数量，也不能替代 `GetPropertyRange()`。如果一个属性从 references、inherits 或 variants 等 arc 得到较弱或较强的 opinions，`GetNumLocalSpecs()` 的值仍只说明 local 这部分。</p>
+      <p class="en">`GetNumLocalSpecs()` reports the number of local specs, not the total number of all composed property opinions.</p>
+
+      <p class="zh">`GetLocalErrors()` 暴露属性索引计算过程中局部发现的错误。local errors 应与 prim index 错误、layer stack 错误和具体 property path 一起分析；只看最终属性是否存在，容易漏掉 composition path 中被过滤、屏蔽或解析失败的站点。错误列表是诊断信息，不是 authored data。</p>
+      <p class="en">`GetLocalErrors()` returns local composition errors associated with the property index.</p>
+
+      <p class="zh">`IsEmpty()` 表示当前属性索引没有可用内容。空索引可能意味着属性确实没有 contributing specs，也可能说明调用方使用了错误的 property path、相关 prim index 没有正确建立，或 composition arc 选择导致该属性没有进入当前索引。不要把 empty 直接等同于“属性值为空字符串”或“属性存在但值为默认值”。</p>
+      <p class="en">`IsEmpty()` indicates whether the property index contains no usable indexed property content.</p>
+
+      <p class="zh">`Swap()` 是容器级状态交换，用于高效交换两个 property index 的内部内容。它不会重新计算 composition，不会触发 USD 文件写入，也不会改变任意 `SdfLayer` 中的 authored opinions；如果需要重新得到组合结果，仍应回到 Pcp cache / index 计算流程。</p>
+      <p class="en">`Swap()` exchanges index contents; it is not a composition recomputation or USD authoring operation.</p>
+
+      <p class="zh">`PcpPropertyIterator` 被列为 friend，说明该类的主要消费方式之一是 iterator/range 访问。阅读本页时应把 iterator 顺序、composition strength、property node 和 site 的关系放在一起理解：索引告诉你“哪些地方贡献了 opinion”，不是替你解释每个 opinion 在应用层的业务含义。</p>
+      <p class="en">`PcpPropertyIterator` is a friend and is the natural way to inspect the property sites represented by the index.</p>
+
+      <p class="zh">常见误用包括：把 `PcpPropertyIndex` 当成 `SdfPropertySpec` 列表直接编辑；把 `GetNumLocalSpecs()` 当作全部 opinions 数；把 `IsEmpty()` 当作 resolved value 为空；忽略 `GetLocalErrors()` 而只看 `UsdAttribute` 最终读取结果；以及把 property index 与 prim index 的职责混在一起。正确做法是用它定位 composition 来源，再结合 `PcpPrimIndex`、`PcpNodeRef`、`SdfPath`、`SdfLayer` 和上层 `UsdProperty` 语义继续排查。</p>
+      <p class="en">Common misuse includes treating the property index as editable specs, a resolved value, or a complete substitute for prim-index diagnostics.</p>
+
+      <h3>API 分组与术语 / API Groups and Terms</h3>
       <ul>
         <li><span class="zh">属性组合索引：</span><span class="en">PcpPropertyIndex</span></li>
-        <li><span class="zh">属性意见来源：</span><span class="en">property opinions</span></li>
-        <li><span class="zh">场景描述站点：</span><span class="en">scene description sites</span></li>
-        <li><span class="zh">局部 specs：</span><span class="en">local specs</span></li>
-        <li><span class="zh">局部组合错误：</span><span class="en">local composition errors</span></li>
-        <li><span class="zh">属性迭代器：</span><span class="en">PcpPropertyIterator</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-146">
-      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
-      <p class="zh">`PcpPropertyIndex` 是某个 property 在 composition semantics 下所有 contributing opinion sites 的索引。它面向属性级 composition 调试：帮助定位哪些 scene description sites 为同一个 property 提供了 specs、local specs 或错误信息。</p>
-      <p class="en">This third-pass refinement adds page-specific Chinese guidance for PcpPropertyIndex while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`GetPropertyRange()` 返回可遍历的 property specs 范围，通常配合 `PcpPropertyIterator` 查看按 composition strength 排列的 opinions。</span></li>
-        <li><span class="zh">`GetNumLocalSpecs()` 只统计 local specs 数量；local 与 weaker/stronger composed opinions 不应混为同一个概念。</span></li>
-        <li><span class="zh">`GetLocalErrors()` 用于读取 property index 计算中局部发现的错误；当属性意见缺失或解析异常时，应和 prim index / layer stack 错误一起排查。</span></li>
-        <li><span class="zh">`IsEmpty()` 表明当前 property index 是否没有贡献 specs；这可能是属性确实不存在，也可能是 composition path 或 arc 选择不正确。</span></li>
-        <li><span class="zh">`Swap()` 是容器式操作，常用于高效交换索引内容；它不重新计算 composition，只交换已构造的 index 状态。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">属性索引：</span><span class="en">PcpPropertyIndex</span></li>
         <li><span class="zh">属性意见站点：</span><span class="en">property opinion sites</span></li>
-        <li><span class="zh">组合语义：</span><span class="en">composition semantics</span></li>
-        <li><span class="zh">本地 specs：</span><span class="en">local specs</span></li>
+        <li><span class="zh">属性贡献范围：</span><span class="en">GetPropertyRange()</span></li>
+        <li><span class="zh">本地 specs 数量：</span><span class="en">GetNumLocalSpecs()</span></li>
+        <li><span class="zh">局部组合错误：</span><span class="en">GetLocalErrors()</span></li>
+        <li><span class="zh">空索引判断：</span><span class="en">IsEmpty()</span></li>
+        <li><span class="zh">索引内容交换：</span><span class="en">Swap()</span></li>
         <li><span class="zh">属性迭代器：</span><span class="en">PcpPropertyIterator</span></li>
-        <li><span class="zh">本地错误：</span><span class="en">local errors</span></li>
       </ul>
     </section>
     <section>
