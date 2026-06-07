@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>API 模块草稿：HdSt : Rendering functionality for HdStorm / HdSt : Rendering functionality for HdStorm</title>
+  <title>完整双语参考：HdSt : Rendering functionality for HdStorm / HdSt : Rendering functionality for HdStorm</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -19,20 +19,57 @@
     ul{padding-left:22px}
     li{margin:8px 0}
     code{font-family:"Cascadia Mono","Consolas",monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>API 模块草稿：HdSt : Rendering functionality for HdStorm / HdSt : Rendering functionality for HdStorm</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：HdSt : Rendering functionality for HdStorm / HdSt : Rendering functionality for HdStorm</h1>
     <div class="meta">https://openusd.org/release/api/hd_st_page_front.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页处理：中文优先解释 `HdSt` 作为 `HdStorm` Hydra renderer 的核心 rendering implementation layer，说明它如何从 Hydra `renderIndex` 拉取数据、构建 command buffers、聚合 GPU resources、处理 dynamically changing scenes 与 cached playback，以及它和 `Hd`、`Hdx`、`Hgi`、`Glf`、`UsdImaging` 的边界；英文 API 名称、类型名、链接和官方摘录保留原样，便于与 Doxygen 页面核对。</p>
+      <p class="en">This page is promoted as a complete bilingual reference. It explains HdSt as the core rendering implementation layer for the HdStorm Hydra renderer while preserving official API names and excerpts.</p>
+    </section>
+    <section data-cn-complete="hdst-hdstorm-rendering-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">官方第一句是：`HdSt is responsible for the core rendering functionality of the HdStorm Hydra renderer.` 这里的关键是 responsible for core rendering functionality。`HdSt` 不是 USD authoring API，也不是 Hydra 抽象定义本身；它是 Storm/HdStorm 这个 Hydra renderer 的具体实现层，负责把已经进入 Hydra 的场景数据组织成可执行的渲染资源和命令。</p>
+      <p class="en">HdSt is responsible for the core rendering functionality of the HdStorm Hydra renderer.</p>
+      <p class="zh">`HdSt` builds on `Hd` rather than replacing `Hd`。`Hd` 定义 render index、Rprim/Sprim/Bprim、task、dirty bits、data source 和 render delegate 等抽象；`HdSt` 作为 Storm render delegate 的实现，消费这些抽象并把它们变成 draw item、shader、buffer、texture、resource registry 和 graphics backend 可用的状态。阅读时应先理解 `Hd` 的协议，再看 `HdSt` 如何实现 Storm。</p>
+      <p class="en">Hd defines the Hydra abstractions, while HdSt implements the Storm renderer behavior on top of them.</p>
+      <p class="zh">官方提到 `HdSt can pull data from Hydra's renderIndex`。这意味着 `HdSt` 的输入不是直接 authored USD layer，而是 Hydra renderIndex 中已经同步过的数据。数据可以来自一个或多个 scenegraph inputs，经由 adapter、scene delegate 或 scene index 到达 Hydra。若 USD 数据没进入 renderIndex，应先查 `UsdImaging` 或 `Hd`；若 renderIndex 有数据但 Storm 不画，才进入 `HdSt`。</p>
+      <p class="en">HdSt pulls data from Hydra's renderIndex, which may already combine data from multiple scenegraph inputs.</p>
+      <p class="zh">`command buffers` 是本页的核心词。`HdSt` 可以创建一个或多个 command buffers，用于聚合渲染命令并共享底层 GPU resources。这里的 buffer 不是 USD attribute，也不是普通 C++ container；它更接近渲染后端提交工作的组织单元。排查 draw call 顺序、资源复用或多 pass 渲染时，要把 command buffer 看作 Storm 执行层的关键结构。</p>
+      <p class="en">HdSt creates command buffers that aggregate rendering work and share underlying GPU resources.</p>
+      <p class="zh">`primvar data` 是另一个重要例子。USD 或 Hydra 中的 primvar 最终可能需要进入 GPU buffer，并由 shader 或 draw item 消费。`HdSt` 负责把这些数据组织成 Storm 可用的 GPU resources，同时处理 invalidation、buffer update、resource sharing 和 shader binding。若 primvar 在 USD 中存在但画面中没生效，要分清是 authoring、adapter、renderIndex 同步、还是 `HdSt` resource/update 路径的问题。</p>
+      <p class="en">Primvar data may be converted into GPU resources that Storm shaders and draw items consume.</p>
+      <p class="zh">官方说 `HdSt` optimized for both dynamically changing scenes and cached playback。这是理解性能设计的关键：动态场景需要快速响应 dirty bits、topology、transform、primvar、material 和 visibility 变化；缓存播放则希望复用 command buffers、GPU buffers、texture handles、draw item 和 shader state。`HdSt` 的很多类都围绕“该更新什么、该复用什么”展开。</p>
+      <p class="en">HdSt is optimized for both dynamically changing scenes and cached playback.</p>
+      <p class="zh">`HdSt` 与 `Hdx` 的边界很清楚：`Hdx` 组织 viewport task、selection、picking、present/color correction 等客户端 workflow；`HdSt` 实现 Storm renderer 的渲染细节。若问题是 task params 或 selection/pick pass 顺序，先查 `Hdx`；若问题是 shader、draw item、resource registry、render pass state 或 command buffer，则进入 `HdSt`。</p>
+      <p class="en">Hdx organizes client-side viewport tasks, while HdSt implements Storm renderer internals.</p>
+      <p class="zh">`HdSt` 与 `Hgi`/`Glf` 也要区分。`Hgi` 抽象图形 API 资源、pipeline 和命令提交，目标是跨后端表达；`Glf` 更偏 OpenGL output utilities；`HdSt` 位于 renderer implementation 层，可能使用或相邻于这些底层图形工具，但它的职责是实现 Storm 的渲染逻辑，而不是泛化所有 graphics API 或管理所有窗口系统细节。</p>
+      <p class="en">Hgi abstracts graphics APIs and Glf provides OpenGL-output utilities; HdSt implements Storm rendering logic above or near those layers.</p>
+      <p class="zh">`HdStRenderPassState`、`HdStDispatchBuffer`、`HdStBufferArrayRegistry`、`HdStCommandBuffer`、`HdStTextureHandle`、`HdStShaderCode` 等类型名应原样保留。它们分别指向 render pass 状态、compute/dispatch buffer、buffer array registry、command buffer、texture handle、shader code 等 Storm 内部主题。模块入口页不展开所有 class 细节，但应把这些关键词作为后续检索路线。</p>
+      <p class="en">Class names such as HdStRenderPassState, HdStDispatchBuffer, HdStCommandBuffer, HdStTextureHandle, and HdStShaderCode are stable search anchors.</p>
+      <p class="zh">resource registry 是阅读 `HdSt` 时需要特别关注的概念。Storm 会尽量共享 buffer array、texture、shader specialization 和其他 GPU resource，避免每个 prim 都重复创建昂贵对象。资源共享带来性能收益，也带来生命周期和 invalidation 难题：某个 prim 的变化可能要求局部更新，也可能迫使共享资源重建。调试性能或内存峰值时，应检查 registry 命中率、buffer 聚合策略和资源释放时机。</p>
+      <p class="en">Storm resource registries share GPU resources, but sharing introduces lifetime, invalidation, and rebuild considerations.</p>
+      <p class="zh">material 和 shader 问题也常落到 `HdSt`。`UsdShade` 描述 authored material network，`UsdImaging`/adapter 把它转换为 Hydra 可消费数据，而 `HdSt` 负责把 Storm 能理解的 shader code、binding、uniform/primvar 数据和 texture handle 组织到 draw execution 中。如果材质在 USD 中正确但 Storm 视口显示错误，要沿着 material adapter、Hydra material state、`HdStShaderCode` 和 shader resource binding 逐层定位。</p>
+      <p class="en">UsdShade authors material networks; HdSt consumes adapted material state as Storm shader code, bindings, and resources.</p>
+      <p class="zh">AOV、render pass 和 render pass state 是另一条关键路径。Hydra task 或 `Hdx` 可能决定要渲染哪些 AOV，`HdSt` 则需要把 render pass state、camera/framing、viewport、lighting、collection、draw items 和 output target 组合起来。若 color/depth/id buffer 结果异常，要同时检查 task 配置、`HdStRenderPassState`、目标 buffer 和后端提交，而不是只看一个层级。</p>
+      <p class="en">AOV and render-pass failures often cross task setup, HdStRenderPassState, target buffers, and backend submission.</p>
+      <p class="zh">性能问题同样要分层：CPU 端可能卡在 dirty processing、scene index traversal、draw item rebuild 或 command buffer construction；GPU 端可能卡在 buffer upload、shader compilation、texture residency、pipeline state 切换或实际 draw/dispatch。`HdSt` 页面帮助读者把 Storm 渲染实现层与上游数据同步、下游图形后端分开，避免只用“Hydra 慢”这种过宽的判断。</p>
+      <p class="en">Performance debugging should separate CPU-side synchronization and command construction from GPU-side upload, shader, texture, and draw execution.</p>
+      <p class="zh">cached playback 不等于场景被冻结。它通常表示 Storm 可以在时间采样、相机移动或有限状态变化下复用已有资源和命令结构；一旦 topology、material network、primvar layout 或 collection membership 改变，缓存仍可能失效。判断“为什么这一帧重建很多资源”时，应比较变化类型，而不是只看时间轴是否在播放。</p>
+      <p class="en">Cached playback can reuse Storm resources, but topology, material, primvar layout, or collection changes may still invalidate them.</p>
+      <p class="zh">常见调试路径可以固定为：先确认 authored USD 或宿主数据通过 `UsdImaging`/adapter 进入 Hydra `renderIndex`；再确认 dirty bits 或 scene index invalidation 抵达；然后检查 `HdSt` 是否更新对应 draw item、primvar buffer、texture handle、shader code 和 render pass state；接着看 command buffer 是否提交；最后再进入 `Hgi`、`Glf` 或 GPU driver 层。这样可以避免把 renderer implementation 问题误归因给 USD composition。</p>
+      <p class="en">A practical debugging path is data adaptation, renderIndex synchronization, HdSt resource updates, command-buffer submission, and graphics-backend execution.</p>
+      <p class="zh">反向边界同样重要：如果问题是 layer opinion、variant、reference/payload、schema 属性或 material network authoring，`HdSt` 不是第一入口；应回到 `Sdf`、`Pcp`、`Usd`、`UsdGeom`、`UsdShade` 或 `UsdImaging`。只有当数据已经进入 Hydra 并且问题落在 Storm rendering execution、GPU resources 或 command buffers 时，本页才是正确入口。</p>
+      <p class="en">Composition, schema authoring, and material-network questions belong to adjacent USD modules before reaching HdSt.</p>
+      <p class="zh">换句话说，`HdSt` 是 Storm 执行层的定位入口，不是所有视口、资产或图形后端问题的总入口。</p>
+      <p class="en">HdSt is the Storm execution-layer entry point, not a universal entry point for every viewport or asset issue.</p>
     </section>
     <section data-cn-refinement="api-mixed-quality-pass-045">
       <h2>中文精修导读 / Chinese Reading Notes</h2>

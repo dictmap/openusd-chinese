@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-07T11:10:04.696Z
+Generated: 2026-06-07T11:22:23.696Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 67
-- Promoted complete pages: 59
-- Bilingual draft pages: 339
+- Bilingual complete pages: 68
+- Promoted complete pages: 60
+- Bilingual draft pages: 338
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -221,7 +221,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_draft | API 页面草稿：Hydra Collection Predicate API / Hydra Collection Predicate API | full_site/api/group__group__hd__collection_predicates.html | https://openusd.org/release/api/group__group__hd__collection_predicates.html |
 | api | bilingual_draft | API 模块草稿：HdEmbree : Embree-based hydra renderer plugin. / HdEmbree : Embree-based hydra renderer plugin. | full_site/api/hd_embree_page_front.html | https://openusd.org/release/api/hd_embree_page_front.html |
 | api | bilingual_complete | https://openusd.org/release/api/hd_page_front.html | full_site/api/hd_page_front.html | https://openusd.org/release/api/hd_page_front.html |
-| api | bilingual_draft | API 模块草稿：HdSt : Rendering functionality for HdStorm / HdSt : Rendering functionality for HdStorm | full_site/api/hd_st_page_front.html | https://openusd.org/release/api/hd_st_page_front.html |
+| api | bilingual_complete | https://openusd.org/release/api/hd_st_page_front.html | full_site/api/hd_st_page_front.html | https://openusd.org/release/api/hd_st_page_front.html |
 | api | bilingual_draft | API 模块草稿：HdStorm : Real-time Hydra renderer plugin / HdStorm : Real-time Hydra renderer plugin | full_site/api/hd_storm_page_front.html | https://openusd.org/release/api/hd_storm_page_front.html |
 | api | bilingual_complete | https://openusd.org/release/api/hdx_page_front.html | full_site/api/hdx_page_front.html | https://openusd.org/release/api/hdx_page_front.html |
 | api | bilingual_draft | 源码页面草稿：shaderProgram.h / shaderProgram.h | full_site/api/hgi_2shader_program_8h_source.html | https://openusd.org/release/api/hgi_2shader_program_8h_source.html |

@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T11:10:05.513Z",
+  "generated_at": "2026-06-07T11:22:24.887Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 339,
-    "bilingual_complete": 67
+    "bilingual_draft": 338,
+    "bilingual_complete": 68
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 328,
-    "good_bilingual": 67
+    "draft_needs_translation": 327,
+    "good_bilingual": 68
   },
   "focus_batch": [
     {
@@ -6456,29 +6456,29 @@
     },
     {
       "index": 204,
-      "title": "API 模块草稿：HdSt : Rendering functionality for HdStorm / HdSt : Rendering functionality for HdStorm",
+      "title": "完整双语参考：HdSt : Rendering functionality for HdStorm / HdSt : Rendering functionality for HdStorm",
       "output": "full_site/api/hd_st_page_front.html",
       "official_url": "https://openusd.org/release/api/hd_st_page_front.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 26,
-      "enBlockCount": 18,
-      "zhChars": 565,
-      "enLetters": 1578,
-      "bodyChineseChars": 624,
+      "grade": "good_bilingual",
+      "zhBlockCount": 43,
+      "enBlockCount": 35,
+      "zhChars": 1635,
+      "enLetters": 3219,
+      "bodyChineseChars": 1704,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 HdSt : Rendering functionality for HdStorm 补充中文优先的用途说明、读取重点、关键类型/模块边界和术语对照；英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`HdSt` 负责 `HdStorm` Hydra renderer 的 core rendering functionality，是 Hydra 抽象接口之上的 Storm 渲染实现层。"
+        "本页已按完整双语参考页处理：中文优先解释 `HdSt` 作为 `HdStorm` Hydra renderer 的核心 rendering implementation layer，说明它如何从 Hydra `renderIndex` 拉取数据、构建 command buffers、聚合 GPU resources、处理 dynamically changing scenes 与 cached playback，以及它和 `Hd`、`Hdx`、`Hgi`、`Glf`、`UsdImaging` 的边界；英文 API 名称、类型名、链接和官方摘录保留原样，便于与 Doxygen 页面核对。",
+        "官方第一句是：`HdSt is responsible for the core rendering functionality of the HdStorm Hydra renderer.` 这里的关键是 responsible for core rendering functionality。`HdSt` 不是 USD authoring API，也不是 Hydra 抽象定义本身；它是 Storm/HdStorm 这个 Hydra renderer 的具体实现层，负责把已经进入 Hydra 的场景数据组织成可执行的渲染资源和命令。",
+        "`HdSt` builds on `Hd` rather than replacing `Hd`。`Hd` 定义 render index、Rprim/Sprim/Bprim、task、dirty bits、data source 和 render delegate 等抽象；`HdSt` 作为 Storm render delegate 的实现，消费这些抽象并把它们变成 draw item、shader、buffer、texture、resource registry 和 graphics backend 可用的状态。阅读时应先理解 `Hd` 的协议，再看 `HdSt` 如何实现 Storm。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first purpose notes, reading guidance, key type/module boundaries, and terminology for HdSt : Rendering functionality for HdStorm while retaining English page names, class names, method names, attribute names, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page is promoted as a complete bilingual reference. It explains HdSt as the core rendering implementation layer for the HdStorm Hydra renderer while preserving official API names and excerpts.",
+        "HdSt is responsible for the core rendering functionality of the HdStorm Hydra renderer."
       ]
     },
     {
