@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T20:40:32.705Z",
+  "generated_at": "2026-06-07T20:59:09.256Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 310,
-    "bilingual_complete": 96
+    "bilingual_draft": 309,
+    "bilingual_complete": 97
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 299,
-    "good_bilingual": 96
+    "draft_needs_translation": 298,
+    "good_bilingual": 97
   },
   "focus_batch": [
     {
@@ -10202,29 +10202,29 @@
     },
     {
       "index": 343,
-      "title": "页面草稿：RectLight / RectLight",
+      "title": "完整双语参考：RectLight / RectLight",
       "output": "full_site/release/user_guides/schemas/usdLux/RectLight.html",
       "official_url": "https://openusd.org/release/user_guides/schemas/usdLux/RectLight.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 36,
-      "enBlockCount": 25,
-      "zhChars": 820,
-      "enLetters": 1499,
-      "bodyChineseChars": 900,
+      "grade": "good_bilingual",
+      "zhBlockCount": 16,
+      "enBlockCount": 9,
+      "zhChars": 1733,
+      "enLetters": 952,
+      "bodyChineseChars": 2024,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。",
-        "本区块针对 RectLight 补充中文优先的用途说明、属性阅读重点和术语对照；英文页面名、链接、代码、命令、属性名和原文摘录继续保留，便于和官方 schema 文档核对。",
-        "RectLight 是从矩形一侧发光的 intrinsic light，默认矩形位于 XY 平面中心并沿 -Z 轴发光；它适合表达摄影 soft box、灯板、线性灯和荧光灯等面光源。"
+        "RectLight 是 usdLux 中的矩形面光源 schema，用来描述从矩形一侧发光的 intrinsic light。官方定义里最重要的空间约定有三个：矩形中心位于局部 XY plane，默认尺寸在 X 和 Y 方向各为 1 unit，发光方向沿局部 -Z axis。也就是说，RectLight 的可见几何尺寸由局部 X/Y 方向上的宽高决定，而照射朝向不是由某个额外的方向属性决定，而是由 prim 的 transform 把局部 -Z 旋到场景中的目标方向。阅读或调试这个页面时，先确认局部坐标，再看 `xformOp:rotateXYZ`、`xformOp:translate` 和 `xformOpOrder`，通常比先调 `intensity` 更有效。",
+        "RectLight 的常见用途是模拟摄影中的 soft boxes、linear lights、fluorescent lights 和 light panels。它和点光源或球形灯不同：RectLight 的亮部来自有面积的矩形，所以阴影边缘、反射高光和照明覆盖范围会体现出面光源尺寸。它也不同于 `PortalLight`：`PortalLight` 通常服务于 dome light 采样入口，重点是帮助渲染器在门窗等矩形开口处采样环境光；RectLight 本身就是发光体，用 `inputs:width`、`inputs:height`、`inputs:texture:file`、`inputs:color` 和 `inputs:intensity` 直接描述矩形发光面的尺寸、颜色贴图和强度。",
+        "官方示例把一个 `RectLight` 放在 `Sphere` 和 `Cube` 附近，设置 `inputs:width = 5`、`inputs:height = 5`，并用 `checkerboard.png` 作为 `inputs:texture:file`。这个示例同时展示了三层信息：第一层是发光面积，5x5 的矩形比默认 1x1 更像大面积灯板；第二层是表面颜色，texture color map 会让发光颜色在矩形面上变化；第三层是空间变换，`xformOp:rotateXYZ = (0, 90, 0)` 和 `xformOp:translate = (3.5, 0, -1)` 把局部 -Z 发光方向和场景摆位联系起来。若渲染结果看起来像没有照到目标，优先检查 transform 和 `xformOpOrder`，再检查 renderer 是否支持相应的 texture/light shaping 组合。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.",
-        "This section adds Chinese-first usage notes, property reading guidance, and terminology for RectLight while retaining the English page name, links, code, commands, property names, and source excerpts for comparison with the official schema documentation."
+        "RectLight is an intrinsic light that emits from one side of a rectangle. The rectangle is centered in the XY plane, emits along the -Z axis, and is 1 unit long in X and Y by default.",
+        "Use RectLights to illuminate objects, simulating soft boxes used in photography, linear lights, fluorescent lights, and light panels."
       ]
     },
     {

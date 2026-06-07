@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-07T20:40:32.705Z
+Generated: 2026-06-07T20:59:09.256Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 310
-- bilingual_complete: 96
+- bilingual_draft: 309
+- bilingual_complete: 97
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 299
-- good_bilingual: 96
+- draft_needs_translation: 298
+- good_bilingual: 97
 
 ## Current Focus Batch
 
@@ -406,7 +406,7 @@ Generated: 2026-06-07T20:40:32.705Z
 | 340 | draft_needs_translation | bilingual_draft | 732 | 33/24 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/PluginLight.html` |
 | 341 | good_bilingual | bilingual_complete | 2073 | 50/50 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html` |
 | 342 | good_bilingual | bilingual_complete | 2060 | 51/51 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/PortalLight.html` |
-| 343 | draft_needs_translation | bilingual_draft | 820 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/RectLight.html` |
+| 343 | good_bilingual | bilingual_complete | 1733 | 16/9 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/RectLight.html` |
 | 344 | draft_needs_translation | bilingual_draft | 693 | 32/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/ShadowAPI.html` |
 | 345 | draft_needs_translation | bilingual_draft | 660 | 34/27 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/ShapingAPI.html` |
 | 346 | draft_needs_translation | bilingual_draft | 841 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/SphereLight.html` |

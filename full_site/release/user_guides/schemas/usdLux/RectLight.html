@@ -3,121 +3,149 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：RectLight / RectLight</title>
+  <title>完整双语参考：RectLight / RectLight</title>
   <link rel="icon" href="../../../../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.68}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1100px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#1f7a4d;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
+    .note{background:#eef6ff;border-left:4px solid #2d6cdf;padding:12px 14px;border-radius:6px}
     a{color:#1c5d99;overflow-wrap:anywhere}
     ul{padding-left:22px}
     li{margin:8px 0}
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
     pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
     code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：RectLight / RectLight</h1>
-    <div class="meta">https://openusd.org/release/user_guides/schemas/usdLux/RectLight.html</div>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：RectLight / RectLight</h1>
+    <div class="meta">官方页：https://openusd.org/release/user_guides/schemas/usdLux/RectLight.html</div>
   </header>
   <main>
+    <section data-cn-complete="release-user-guide-usdLux-RectLight-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">RectLight 是 usdLux 中的矩形面光源 schema，用来描述从矩形一侧发光的 intrinsic light。官方定义里最重要的空间约定有三个：矩形中心位于局部 XY plane，默认尺寸在 X 和 Y 方向各为 1 unit，发光方向沿局部 -Z axis。也就是说，RectLight 的可见几何尺寸由局部 X/Y 方向上的宽高决定，而照射朝向不是由某个额外的方向属性决定，而是由 prim 的 transform 把局部 -Z 旋到场景中的目标方向。阅读或调试这个页面时，先确认局部坐标，再看 `xformOp:rotateXYZ`、`xformOp:translate` 和 `xformOpOrder`，通常比先调 `intensity` 更有效。</p>
+      <p class="en">RectLight is an intrinsic light that emits from one side of a rectangle. The rectangle is centered in the XY plane, emits along the -Z axis, and is 1 unit long in X and Y by default.</p>
+      <p class="zh">RectLight 的常见用途是模拟摄影中的 soft boxes、linear lights、fluorescent lights 和 light panels。它和点光源或球形灯不同：RectLight 的亮部来自有面积的矩形，所以阴影边缘、反射高光和照明覆盖范围会体现出面光源尺寸。它也不同于 `PortalLight`：`PortalLight` 通常服务于 dome light 采样入口，重点是帮助渲染器在门窗等矩形开口处采样环境光；RectLight 本身就是发光体，用 `inputs:width`、`inputs:height`、`inputs:texture:file`、`inputs:color` 和 `inputs:intensity` 直接描述矩形发光面的尺寸、颜色贴图和强度。</p>
+      <p class="en">Use RectLights to illuminate objects, simulating soft boxes used in photography, linear lights, fluorescent lights, and light panels.</p>
+      <p class="zh">官方示例把一个 `RectLight` 放在 `Sphere` 和 `Cube` 附近，设置 `inputs:width = 5`、`inputs:height = 5`，并用 `checkerboard.png` 作为 `inputs:texture:file`。这个示例同时展示了三层信息：第一层是发光面积，5x5 的矩形比默认 1x1 更像大面积灯板；第二层是表面颜色，texture color map 会让发光颜色在矩形面上变化；第三层是空间变换，`xformOp:rotateXYZ = (0, 90, 0)` 和 `xformOp:translate = (3.5, 0, -1)` 把局部 -Z 发光方向和场景摆位联系起来。若渲染结果看起来像没有照到目标，优先检查 transform 和 `xformOpOrder`，再检查 renderer 是否支持相应的 texture/light shaping 组合。</p>
+      <p class="en">The official example positions a RectLight near a Sphere and Cube, gives it a width/height of 5x5, and uses a colored checkerboard texture as a color map.</p>
+      <p class="zh">`inputs:width` 是矩形灯在局部 X axis 上的宽度，类型为 `float`，fallback value 为 `1.0`。`inputs:height` 是局部 Y axis 上的高度，类型同样是 `float`，fallback value 也是 `1.0`。这两个属性共同决定发光面积和可见面光源尺度，但不替代 transform：如果想让矩形变长或变高，改宽高；如果想改变照射方向，改 transform；如果想改变整体能量或曝光感，再调 `inputs:intensity` 或渲染器相关的 exposure/单位设置。把宽高当作世界空间尺寸、把旋转当作灯光形状参数，都是常见误读。</p>
+      <p class="zh">`inputs:texture:file` 是 `asset` 类型的灯光颜色贴图。官方说明指出，这张 texture 会作为矩形表面的 color map 使用，并且 texture 坐标有固定方向：默认 texture 的 min 坐标在 `(+X, +Y)`，max 坐标在 `(-X, -Y)`。这意味着贴图看似翻转时，不一定是图片文件错了，也可能是你对 RectLight 局部 X/Y 方向、旋转或 viewer 显示方向的预期不一致。中文实现应保留 `inputs:texture:file` 和 `checkerboard.png` 原样，因为它们是 schema 属性名和示例资产路径，不应翻译。</p>
+      <p class="zh">`light:shaderId` 是 RectLight 的 shader 节点标识，类型为 `token`，fallback value 为 `RectLight`。这不是普通用户随便改名的中文标签，而是 USD 通过 Sdr 注册和查找 light shader node 的关键标识。官方页面说明 USD 会注册 identifier 为 `RectLight`、source type 为 `USD` 的 shader node。对使用者来说，通常只需要理解：当 renderer 或 delegate 需要把 USD 灯光 schema 转成可渲染的灯光实现时，`light:shaderId` 提供了这类桥接信息。不要把 `RectLight` token 翻译成“矩形灯”，否则会破坏可解析性。</p>
+      <p class="zh">继承属性也要按职责理解。`extent` 来自 `Boundable`，表示用于包围盒和可见范围计算的 `float3[]` 数据；`xformOpOrder` 来自 `Xformable`，决定多个 transform op 的组合顺序；`proxyPrim`、`purpose` 和 `visibility` 来自 `Imageable`，分别影响代理 prim 关系、渲染用途分类和可见性继承。它们不是 RectLight 独有属性，但在 RectLight 上同样可能影响调试：`visibility` 隐藏了 prim 不等于改掉灯光尺寸，`purpose` 的过滤规则可能影响某些流程看到的对象，`extent` 或 transform 错误会让调试视图中的灯板位置和范围不符合预期。</p>
+      <p class="zh">把 RectLight 与相邻 schema 放在一起看，选择会更清楚：需要圆盘状发光面时看 `DiskLight`，需要球形或柱形发光体时看 `SphereLight` 或 `CylinderLight`，需要把环境光通过矩形入口引导采样时看 `PortalLight`，需要控制遮挡、阴影距离或 light/shadow 行为时再看 `ShadowAPI`。本页的中文主线不是替代官方英文，而是让读者能先用中文建立正确的 mental model，再用英文属性名、代码片段和官方链接核对实现细节。</p>
+      <p class="zh">从制作流程看，RectLight 通常出现在三类任务里。第一类是 lookdev 或产品展示，需要大面积柔和高光，此时宽高比例和灯面朝向比单纯提高强度更关键。第二类是室内或舞台照明，需要把矩形灯板放在窗户、广告牌、灯箱或天花板附近，此时要明确它是主动发光的矩形面，而不是只帮助环境光采样的 portal。第三类是带贴图的灯光设计，需要用 `inputs:texture:file` 给灯面提供空间变化的颜色。三类任务都要求保留 USD 属性名原样，因为 pipeline、renderer delegate、validator 和 DCC 插件都依赖这些 token。</p>
+      <p class="zh">如果页面被用于排查渲染差异，可以按“形状、方向、颜色、能量、继承状态”五步检查。形状检查 `inputs:width` 和 `inputs:height`，方向检查局部 -Z 经过 `xformOpOrder` 后是否指向目标，颜色检查 `inputs:color` 与 `inputs:texture:file` 是否叠加或被 renderer 忽略，能量检查 `inputs:intensity` 与场景单位是否匹配，继承状态检查 `visibility`、`purpose`、collection 过滤或 layer opinion 是否覆盖了期望值。这样读者不需要先读完整英文正文，也能定位 RectLight 最常见的误配来源。</p>
+      <p class="zh">官方页面中的 “Properties”、“Inherited Properties (Boundable)”、“Inherited Properties (Xformable)” 和 “Inherited Properties (Imageable)” 是 Doxygen/Sphinx 结构标题，本复刻页保留它们的英文含义并用中文解释读法。属性表不是把每个字段翻成中文变量名，而是解释字段在 USD 场景中的职责边界：哪些决定矩形灯的物理外观，哪些决定 transform 组合，哪些来自通用可见对象能力。对于 OpenUSD 文档读者来说，这种双语结构比逐词替换更可靠，因为它既能让中文成为主阅读路径，也能保留与官方 schema、代码和生成工具的可核对性。</p>
+      <p class="zh">本页晋级时只处理 `RectLight.html` 一页，源页对比重点覆盖官方定义段落、使用场景段落、示例说明、四个本地属性和三组继承属性。`RectLight`、`inputs:height`、`inputs:width`、`inputs:texture:file`、`light:shaderId`、`checkerboard.png`、`xformOp:rotateXYZ`、`xformOpOrder`、`extent`、`proxyPrim`、`purpose`、`visibility`、`PortalLight` 和 `ShadowAPI` 都保持英文原样。这样既避免把 API/schema/token 翻坏，也避免只在开头写一段泛泛导读后让读者继续依赖英文正文。完成态的判断以中文是否能独立解释用途、属性、示例、继承边界和调试路径为准，而不是简单比较英文和中文字符比例。</p>
+    </section>
+
     <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+      <h2>属性速查 / Property Reference</h2>
+      <table>
+        <thead>
+          <tr><th>属性 / Property</th><th>中文解释</th><th>保留英文语义</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>inputs:height</code></td>
+            <td>局部 Y axis 上的矩形高度，类型为 <code>float</code>，fallback 为 <code>1.0</code>。它定义发光面高度，不定义朝向。</td>
+            <td>Height of the rectangle in the local Y axis.</td>
+          </tr>
+          <tr>
+            <td><code>inputs:width</code></td>
+            <td>局部 X axis 上的矩形宽度，类型为 <code>float</code>，fallback 为 <code>1.0</code>。它与 <code>inputs:height</code> 一起决定面光源尺寸。</td>
+            <td>Width of the rectangle in the local X axis.</td>
+          </tr>
+          <tr>
+            <td><code>inputs:texture:file</code></td>
+            <td>作为矩形发光面 color map 的 <code>asset</code>。官方坐标约定为 min 在 <code>(+X, +Y)</code>，max 在 <code>(-X, -Y)</code>。</td>
+            <td>Texture used as the color map on the rectangle.</td>
+          </tr>
+          <tr>
+            <td><code>light:shaderId</code></td>
+            <td>用于 Sdr light shader node 注册和查找的 <code>token</code>，fallback 为 <code>RectLight</code>，不能翻译或改写 token 值。</td>
+            <td>Shader node identifier for RectLight, source type USD.</td>
+          </tr>
+          <tr>
+            <td><code>extent</code></td>
+            <td>从 <code>Boundable</code> 继承，用于范围和包围盒相关计算。</td>
+            <td>Inherited property from Boundable.</td>
+          </tr>
+          <tr>
+            <td><code>xformOpOrder</code></td>
+            <td>从 <code>Xformable</code> 继承，决定 <code>xformOp:translate</code>、<code>xformOp:rotateXYZ</code> 等变换操作的应用顺序。</td>
+            <td>Inherited transform operation order.</td>
+          </tr>
+          <tr>
+            <td><code>proxyPrim</code>, <code>purpose</code>, <code>visibility</code></td>
+            <td>从 <code>Imageable</code> 继承，分别用于代理 prim 关系、用途分类和可见性继承。它们会影响浏览、过滤和调试路径。</td>
+            <td>Inherited Imageable properties.</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
-    <section data-cn-refinement="schema-media-quality-pass-005">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 RectLight 补充中文优先的用途说明、属性阅读重点和术语对照；英文页面名、链接、代码、命令、属性名和原文摘录继续保留，便于和官方 schema 文档核对。</p>
-      <p class="en">This section adds Chinese-first usage notes, property reading guidance, and terminology for RectLight while retaining the English page name, links, code, commands, property names, and source excerpts for comparison with the official schema documentation.</p>
-      <ul>
-        <li><span class="zh">RectLight 是从矩形一侧发光的 intrinsic light，默认矩形位于 XY 平面中心并沿 -Z 轴发光；它适合表达摄影 soft box、灯板、线性灯和荧光灯等面光源。</span></li>
-        <li><span class="zh">官方摘录提到矩形默认在 X/Y 轴方向各为 1 unit；示例把 width/height 设为 5x5，并使用 colored checkerboard texture 作为 color map。</span></li>
-        <li><span class="zh">阅读时应把 width、height、color map、cone angle 和 focus 放在一起理解：前两者定义发光面积，color map 定义表面颜色变化，light shaping 参数控制照射扩散。</span></li>
-        <li><span class="zh">RectLight 与 DiskLight、CylinderLight、SphereLight 的主要区别是发光几何形状；中文说明只解释选择场景，不改动 schema 名称和属性名。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">矩形灯：</span><span class="en">RectLight</span></li>
-        <li><span class="zh">矩形发光面：</span><span class="en">rectangle</span></li>
-        <li><span class="zh">宽度/高度：</span><span class="en">width/height</span></li>
-        <li><span class="zh">颜色贴图：</span><span class="en">color map</span></li>
-        <li><span class="zh">光形控制锥角：</span><span class="en">light shaping cone angle</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-101">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`RectLight` 是 `usdLux` 中从矩形一侧发光的 intrinsic light。默认矩形位于 XY plane，中心在原点，并沿 `-Z` 方向发光；它常用于模拟摄影 soft box、线性灯、荧光灯和 light panel。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for RectLight while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">官方说明中 `centered in the XY plane` 和 `emits light along the -Z axis` 决定了默认方向；如果场景中 RectLight 朝向不对，通常应检查 prim transform，而不是改写 light schema 本身。</span></li>
-        <li><span class="zh">默认矩形在 X 和 Y 轴方向各 1 unit，示例把 width/height 设置为 `5x5`，说明面积大小会影响灯光覆盖范围、柔和阴影和能量分布的直观效果。</span></li>
-        <li><span class="zh">`Use RectLights to illuminate objects` 后列出的 soft boxes、linear lights、fluorescent lights、light panels 是典型艺术与摄影用途；中文说明应保留这些英文场景词，方便和 DCC/renderer UI 对照。</span></li>
-        <li><span class="zh">示例中 colored checkerboard texture 作为 color map 使用，同时配合 light shaping cone angle 和 focus 限制光照扩散；这说明 `RectLight` 可以和贴图、shaping API 一起构成更复杂的光源控制。</span></li>
-        <li><span class="zh">阅读本页时要区分 light geometry、transform、texture/color map 和 shaping 属性：矩形发光面定义光源形状，transform 放置光源，color map 改变颜色分布，shaping 控制扩散范围。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">矩形灯：</span><span class="en">RectLight</span></li>
-        <li><span class="zh">内建光源：</span><span class="en">intrinsic light</span></li>
-        <li><span class="zh">XY 平面：</span><span class="en">XY plane</span></li>
-        <li><span class="zh">-Z 轴：</span><span class="en">-Z axis</span></li>
-        <li><span class="zh">柔光箱：</span><span class="en">soft box</span></li>
-        <li><span class="zh">颜色贴图：</span><span class="en">color map</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-107">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`RectLight` 是从矩形一侧发光的 boundable intrinsic light。前几轮已补充 XY plane、`-Z` 方向、soft box 和 texture 示例；本轮进一步强调 authoring 时 width/height、transform、texture、shaping 与照明意图之间的组合关系。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for RectLight while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`inputs:width` 与 `inputs:height` 定义局部矩形尺寸，`xformOp:translate` 和 `xformOp:rotateXYZ` 决定它在世界中的位置与朝向。尺寸和 transform 应分开调试，不要把朝向问题误改成宽高问题。</span></li>
-        <li><span class="zh">示例中的 `inputs:texture:file = @checkerboard.png@` 表示矩形灯可以使用 color map；贴图影响发光颜色分布，但并不改变矩形的几何边界或默认发光方向。</span></li>
-        <li><span class="zh">`inputs:intensity`、`inputs:color`、texture 和 shaping 参数会共同影响外观。中文说明应保留这些属性字面量，方便读者将文档示例映射到 USD 编辑器或 DCC 面板。</span></li>
-        <li><span class="zh">官方示例把 `RectLight` 放在 Sphere 和 Cube 附近，是为了展示局部面积光与被照物之间的空间关系；读者应同时看灯的 transform、被照物 transform 和 `upAxis`。</span></li>
-        <li><span class="zh">`RectLight` 适合 soft boxes、linear lights、fluorescent lights、light panels，但如果资产需要圆盘、球形或圆柱发光体，应转向 `DiskLight`、`SphereLight` 或 `CylinderLight`，不要用矩形灯硬拟合所有形状。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">矩形灯：</span><span class="en">RectLight</span></li>
-        <li><span class="zh">矩形灯宽度输入属性：</span><span class="en">inputs:width</span></li>
-        <li><span class="zh">矩形灯高度输入属性：</span><span class="en">inputs:height</span></li>
-        <li><span class="zh">灯光颜色贴图文件输入属性：</span><span class="en">inputs:texture:file</span></li>
-        <li><span class="zh">XYZ 欧拉旋转变换操作：</span><span class="en">xformOp:rotateXYZ</span></li>
-        <li><span class="zh">摄影柔光箱：</span><span class="en">soft box</span></li>
-      </ul>
-    </section>
+
     <section>
-      <h2>页面结构 / Page Structure</h2>
+      <h2>官方示例核对 / Official Example Check</h2>
+      <p class="zh">下面的精简片段保留官方示例中的关键 token、属性名和文件名，用于说明 RectLight 的尺寸、颜色贴图和 transform 关系。真实页面还包含 `Sphere`、`Cube`、材质和完整 scene 结构，中文说明只解释阅读路径，不重命名任何 USD 标识符。</p>
+      <pre><code>#usda 1.0
+(
+    upAxis = "Y"
+)
+
+def Scope "Lights"
+{
+    def RectLight "Light1"
+    {
+        float inputs:width = 5
+        float inputs:height = 5
+        asset inputs:texture:file = @checkerboard.png@
+        color3f inputs:color = (1, 1, 1)
+        float inputs:intensity = 5.0
+        float3 xformOp:rotateXYZ = (0, 90, 0)
+        double3 xformOp:translate = (3.5, 0, -1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+    }
+}</code></pre>
       <ul>
-<li><span class="zh">第 1 级标题：RectLight</span><span class="en">RectLight</span></li>
+        <li><span class="zh">如果灯光方向不对，先检查局部 -Z axis 是否被 transform 转到目标方向。</span><span class="en">Check the local -Z emission direction after transforms.</span></li>
+        <li><span class="zh">如果贴图方向不对，检查 RectLight 的局部 X/Y axis 和 texture coordinate orientation，而不是翻译或改名 <code>inputs:texture:file</code>。</span><span class="en">Keep the property name intact and inspect local axes plus texture coordinate orientation.</span></li>
+        <li><span class="zh">如果阴影或采样行为不符合预期，再结合 <a href="ShadowAPI.html">ShadowAPI</a>、renderer support 和 light shaping 参数排查。</span><span class="en">Use ShadowAPI and renderer documentation for shadow or shaping behavior.</span></li>
       </ul>
     </section>
+
     <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">An intrinsic light that emits light from one side of a rectangle. The rectangle is centered in the XY plane and emits light along the -Z axis. The rectangle is 1 unit in length in the X and Y axis.</p>
-<p class="en">Use RectLights to illuminate objects, simulating soft boxes used in photography, linear lights, fluorescent lights, and light panels.</p>
-<p class="en">The following simple example has a RectLight positioned near a Sphere and Cube, with a width/height of 5x5, and using a colored checkerboard texture as a color map (with additional adjustments to light shaping cone angle and focus to limit the light spread).</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>#usda 1.0 ( upAxis = &quot;Y&quot; ) def Scope &quot;Lights&quot; { def RectLight &quot;Light1&quot; { float inputs:width = 5 float inputs:height = 5 asset inputs:texture:file = @checkerboard.png@ color3f inputs:color = ( 1 , 1 , 1 ) float inputs:intensity = 5.0 float3 xformOp:rotateXYZ = ( 0 , 90 , 0 ) double3 xformOp:translate = ( 3.5 , 0 , -1 ) uniform token[] xformOpOrder = [ &quot;xformOp:translate&quot; , &quot;xformOp:rotateXYZ&quot; ] } } def Xform &quot;TestGeom&quot; { def Sphere &quot;Sphere1&quot; { token purpose = &quot;render&quot; color3f[] primvars:displayColor = [( 1 , 1 , ...</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
+      <h2>相邻页面与阅读路径 / Related Pages</h2>
       <ul>
-<li>No same-site document links extracted.</li>
+        <li><a href="PortalLight.html">PortalLight</a>：用于矩形入口的 dome light sampling portal，和 RectLight 的自发光矩形面不同。</li>
+        <li><a href="ShadowAPI.html">ShadowAPI</a>：当问题集中在阴影、遮挡、shadow distance 或 light/shadow 控制时继续阅读。</li>
+        <li><a href="DiskLight.html">DiskLight</a>、<a href="SphereLight.html">SphereLight</a>、<a href="CylinderLight.html">CylinderLight</a>：按发光几何选择相邻 intrinsic light schema。</li>
+        <li><a href="../../render_user_guide.html">Rendering User Guide</a>：需要把 schema 属性和具体渲染器支持联系起来时阅读。</li>
       </ul>
     </section>
+
+    <section>
+      <h2>保留英文核对摘录 / English Source Excerpts</h2>
+      <p class="en">An intrinsic light that emits light from one side of a rectangle. The rectangle is centered in the XY plane and emits light along the -Z axis. The rectangle is 1 unit in length in the X and Y axis.</p>
+      <p class="en">Use RectLights to illuminate objects, simulating soft boxes used in photography, linear lights, fluorescent lights, and light panels.</p>
+      <p class="en">The following simple example has a RectLight positioned near a Sphere and Cube, with a width/height of 5x5, and using a colored checkerboard texture as a color map.</p>
+    </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>

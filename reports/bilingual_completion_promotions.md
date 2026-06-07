@@ -1,6 +1,6 @@
 # OpenUSD 完整双语晋级清单
 
-Generated: 2026-06-07T20:43:23.508Z
+Generated: 2026-06-07T21:00:38.136Z
 
 这份清单只记录已经从 `bilingual_draft` 晋级为 `bilingual_complete` 的页面。它是 `scripts/discover_openusd_all_pages.mjs` 识别 promoted complete 页面的审计来源，不等同于把草稿页改个状态。
 
@@ -16,6 +16,7 @@ Generated: 2026-06-07T20:43:23.508Z
 
 | ID | 本地输出 | 官方页面 | 状态 |
 | --- | --- | --- | --- |
+| `round-395-release-usdLux-RectLight` | `full_site/release/user_guides/schemas/usdLux/RectLight.html` | `https://openusd.org/release/user_guides/schemas/usdLux/RectLight.html` | bilingual_complete |
 | `round-394-release-usdLux-PortalLight` | `full_site/release/user_guides/schemas/usdLux/PortalLight.html` | `https://openusd.org/release/user_guides/schemas/usdLux/PortalLight.html` | bilingual_complete |
 | `round-393-release-usdLux-PluginLightFilter` | `full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html` | `https://openusd.org/release/user_guides/schemas/usdLux/PluginLightFilter.html` | bilingual_complete |
 | `round-392-release-usdLux-LightFilter` | `full_site/release/user_guides/schemas/usdLux/LightFilter.html` | `https://openusd.org/release/user_guides/schemas/usdLux/LightFilter.html` | bilingual_complete |
