@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>API 模块草稿：UsdShade: USD Shading Schema / UsdShade: USD Shading Schema</title>
+  <title>完整双语参考：UsdShade: USD Shading Schema / UsdShade: USD Shading Schema</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -19,20 +19,65 @@
     ul{padding-left:22px}
     li{margin:8px 0}
     code{font-family:"Cascadia Mono","Consolas",monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>API 模块草稿：UsdShade: USD Shading Schema / UsdShade: USD Shading Schema</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：UsdShade: USD Shading Schema / UsdShade: USD Shading Schema</h1>
     <div class="meta">https://openusd.org/release/api/usd_shade_page_front.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">这是 `UsdShade: USD Shading Schema` 的完整双语参考页。页面以中文逐段说明为主，保留 `UsdShadeNodeGraph`、`UsdShadeMaterial`、`UsdShadeShader`、`UsdShadeConnectableAPI`、`UsdShadeInput`、`UsdShadeOutput`、`UsdShadeMaterialBindingAPI`、`SdrRegistry` 等英文 API 名称和官方链接，方便与 Doxygen 原页核对。</p>
+      <p class="en">This complete bilingual reference keeps the original OpenUSD API identifiers and official links while adding Chinese paragraph-level coverage for the UsdShade module entry.</p>
+    </section>
+    <section data-cn-complete="usd-shade-shading-schema-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">官方开篇说明 `UsdShade` 提供 schemas 和 behaviors，用于创建和绑定 materials，而 materials 会封装 shading networks。这里的重点是 USD scene description 中的 material network 表达、连接规则和 geometry binding 语义；它不是某个 renderer 的 shader 编译器，也不承诺执行 OSL、MaterialX、GLSL 或任意后端 shading code。</p>
+      <p class="en">UsdShade provides schemas and behaviors for creating and binding materials, which encapsulate shading networks.</p>
+      <p class="zh">`UsdShade Networks` 的基本结构由 `UsdShadeNodeGraph`、`UsdShadeMaterial` 和 `UsdShadeShader` 组成。`UsdShadeNodeGraph` 组织可复用的 shading subnetwork，`UsdShadeMaterial` 是可绑定到 geometry 或 collections 的 material container，`UsdShadeShader` 表示具体 shading node。网络对象通过 `UsdShadeConnectableAPI` 创建 `UsdShadeInput` 和 `UsdShadeOutput`，再用 `UsdAttribute` connections 连接。</p>
+      <p class="en">UsdShade networks are composed of NodeGraphs, Materials, Shaders, Inputs, Outputs, and UsdAttribute connections through UsdShadeConnectableAPI.</p>
+      <p class="zh">官方 Python 例子展示了最小网络：先定义 `UsdShadeMaterial`，再定义 `Downstream` 与 `Upstream` 两个 `UsdShadeShader`，然后让 downstream input 连接到 upstream output。生成的 `.usda` 中，连接写在 consumer attribute 上，target 指向 producer output。这一点很重要：USD 中 dataflow 是从 connection target 流向 anchor，而不是从 authored connection 所在属性向外流。</p>
+      <p class="en">In USD, connections are authored on the consumer and target the source, so data in a UsdShade network flows from a connection target to its anchor.</p>
+      <p class="zh">`Encapsulation and Sharing` 解释为什么 shading nodes 通常不应孤立使用。`UsdShadeNodeGraph` 可以把内部 shader network 封装成可复用 packaged unit，并暴露公共 parameters；`UsdShadeMaterial` 则在网络能被某个 renderer 当作 shader 使用时充当封装 container，同时也是可以绑定到 geometry 或 collections 的对象。NodeGraphs 和 Materials 都可复用、引用或 instanced，但语义边界不同。</p>
+      <p class="en">NodeGraphs package reusable shading networks with public parameters; Materials encapsulate render-consumable networks and can be bound to geometry or collections.</p>
+      <p class="zh">containers 与 primitive shading nodes 的区别来自 connectability。`UsdShadeMaterial` 和 `UsdShadeNodeGraph` 是 designed to have child prims 的 containers，用于封装一部分或整个网络；`UsdShadeShader` 是 non-container primitive shading node。container 类型通过 `UsdShadeConnectableAPI::IsContainer()` 或可扩展的 `UsdShadeConnectableAPIBehavior` 插件接口识别。</p>
+      <p class="en">Containers such as Materials and NodeGraphs encapsulate networks, while Shader prims are primitive shading nodes; connectability behavior defines the distinction.</p>
+      <p class="zh">暴露 container 参数时，UsdShade 使用与 node 连接相同的机制。Material 或 NodeGraph 上的 public input 可以连接到内部 shader input，从而把内部实现细节封装起来，只暴露可编辑 interface。输出也可以通过 container output 转发内部 shader output，例如 material 的 `outputs:surface` 连接到内部 surface shader 的 `outputs:out`。</p>
+      <p class="en">Container parameters and terminal outputs are exposed by connecting container inputs or outputs to internal shader ports using the same connection API.</p>
+      <p class="zh">`Connectability Rules for UsdShade Types` 是调试网络合法性的核心。`UsdShadeShader` 的 inputs 可连接到同一最近 encapsulating NodeGraph 或 container 内的 Shader/NodeGraph input/output，但 Shader outputs 不能连接；`UsdShadeNodeGraph` outputs 可以连接到自身封装的 prim outputs 或自身 input 以实现 pass-through；Material 等 NodeGraph-derived containers 遵循自己的默认规则，通常不允许 pass-through。</p>
+      <p class="en">Connectability rules differ for Shader, NodeGraph, Material, and custom connectable types, especially around encapsulation and pass-through outputs.</p>
+      <p class="zh">自定义 Typed 或 single-apply API schema 可注册 `UsdShadeConnectableAPIBehavior` 来改变 connectivity rules，也可通过 `extraPlugInfo` 中的 `isUsdShadeContainer` 和 `requiresUsdShadeEncapsulation` metadata 调整行为。多个 type 或 apiSchemas 同时提供 behavior 时，解析顺序是 authored API schema 优先，其次 prim type、ancestor types、built-in API schemas，最后才是默认 metadata 注册。</p>
+      <p class="en">Custom schemas can register UsdShadeConnectableAPIBehavior or plug metadata, and behavior resolution follows authored API schemas before prim type and built-in behavior.</p>
+      <p class="zh">`Connections and Dataflow` 说明 UsdShade 用 `UsdAttribute` connections 同时表达 shading node output 到 input 的 dataflow，以及 Material/NodeGraph interface values 到 shader node inputs 的 pre-render propagation。要可靠翻译给 renderer，必须按规则决定何时传 connection、何时传 authored value、何时沿 interface chain 寻找 value provider。</p>
+      <p class="en">UsdShade connections express both shader dataflow and pre-render propagation of interface values from Materials or NodeGraphs to shader inputs.</p>
+      <p class="zh">`Valid Shader Connections Win Over Input Values` 是最容易误读的规则：如果 shader input 同时有 authored value 和指向另一个 shading node output 的有效 connection，则传给 renderer 的是 connection，authored value 无关。只有当 connection target 不存在或无效时，才在该特例中忽略 connection 并把 authored value 传给 renderer。</p>
+      <p class="en">When a valid shader connection and an authored input value coexist, the connection wins; the authored value is used only when the connection is invalid.</p>
+      <p class="zh">`Resolving Interface Connections` 处理 Material 或 NodeGraph 作为 public interface 时的 value propagation。未初始化的 interface attribute 可以让 Material 继续跟随 `SdrRegistry` 中已发布 shader 的默认值；如果嵌套 NodeGraph 的 shader input 通过多跳连接到外层 Material interface，则最外层 authored input default 提供最强的值。这解释了为什么仅看内部 shader default 往往无法判断最终 renderer 输入。</p>
+      <p class="en">Interface connection resolution propagates authored values through nested NodeGraph and Material interfaces, with outer authored interface defaults providing the user-facing value.</p>
+      <p class="zh">NodeGraph outputs 从外部看像 shading node outputs，但内部可以连接到嵌套 shader outputs、嵌套 NodeGraph outputs，或连接到同一个 NodeGraph 的 input 形成 pass-through。这样的“物理连接”在 renderer ingestion 时通常需要转换成逻辑网络，避免 renderer 关心所有 container forwarding 细节。</p>
+      <p class="en">NodeGraph outputs can forward internal outputs or pass through inputs, which often need to be resolved into logical connections for renderer ingestion.</p>
+      <p class="zh">`UsdShadeUtils::GetValueProducingAttributes`、`UsdShadeInput::GetValueProducingAttributes` 和 `UsdShadeOutput::GetValueProducingAttributes` 实现了这些解析规则。它们把 physical connections 转为 logical connections，报告应发送给 renderer 的 default value attributes 或 shader node outputs。该工具也处理 container inputs/outputs、多连接 tracing、invalid target skipping，以及 `shaderOutputsOnly` 这种只关心 valid shader outputs 的模式。</p>
+      <p class="en">GetValueProducingAttributes resolves value-producing attributes and logical connections, flattening container forwarding into renderer-consumable shader networks.</p>
+      <p class="zh">`UsdShade Based Shader Definition` 连接 `UsdShade` 与 `Sdr`。`UsdShadeShaderDefParserPlugin` 允许 shader definitions 作为 USD scene description 编码，discovery plugin 可以打开包含 shader definitions 的 stage，并用 `UsdShadeShaderDefUtils::GetNodeDiscoveryResults()` 填充 registry。root concrete shader prim 代表完整 shader definition，shader prim name、`info:id` 和 identifier 规则要与 `SdrShaderNode` 发现保持一致。</p>
+      <p class="en">UsdShade-based shader definitions let USD scene description encode shader nodes discoverable through Sdr parser plugins and SdrRegistry.</p>
+      <p class="zh">shader identifier 的命名规则包含 function name、可选 type variations 和 shader version，片段之间以下划线分隔。`SdrFsHelpersSplitShaderIdentifier` 可把 identifier 拆成 function name、implementation name 和 version。调试 shader discovery 时，应检查 shader prim name、`info:id`、source asset、implementationName、version、`SdrShaderProperty` 和 parser plugin，而不是只看 material network 是否存在。</p>
+      <p class="en">Shader discovery depends on identifiers, info:id, source assets, implementation names, versions, shader properties, and parser plugins, not just authored material networks.</p>
+      <p class="zh">`Using Shader Networks with Geometry` 指向 `UsdShadeMaterialBindingAPI`。material binding 是把 material 或 collection binding 关联到 geometry 的层，而不是 shader node 内部 connection。调试“材质没生效”时，应先分清三层：shader network 是否有效、Material terminal outputs 是否能解析、geometry 或 collection 是否通过 `UsdShadeMaterialBindingAPI` 正确绑定。</p>
+      <p class="en">Material binding connects shading networks to geometry through UsdShadeMaterialBindingAPI and should be debugged separately from internal shader-node connections.</p>
+      <p class="zh">因此，这个入口页适合作为 UsdShade 的总地图：从 network objects、containers、connectability、dataflow、interface resolution、shader definition discovery 到 material binding 逐层阅读。保留 `UsdShadeNodeGraph`、`UsdShadeMaterial`、`UsdShadeShader`、`UsdShadeInput`、`UsdShadeOutput`、`SdrRegistry` 等英文标识，是为了让中文解释能直接对应 schema、attribute、relationship、class 和 Doxygen 索引。</p>
+      <p class="en">This entry is a roadmap for UsdShade networks, encapsulation, connections, shader definition discovery, and material binding before moving into individual class pages.</p>
+      <p class="zh">常见误读之一是把 authored USD connections 当成 renderer 已经扁平化后的 shader graph。`UsdShade` 允许 container interface、NodeGraph pass-through、Material terminal outputs 和多层嵌套，这些对资产复用很重要；renderer 或导出器通常需要先解析 value-producing attributes，再生成目标 shading system 能理解的简单节点图。不要直接把每条物理 connection 都当成最终渲染边。</p>
+      <p class="en">Authored UsdShade connections may include containers and forwarding; renderers often resolve them into a flatter logical shader graph before consumption.</p>
+      <p class="zh">另一个误读是把 `UsdShadeMaterial` 当作“材质值的字典”。Material 更像一个封装边界：它可以公开 interface inputs，内部包含 shader/node graph，并通过 terminal outputs 暴露 surface、displacement、volume 等 renderer 关注的入口。真正的属性默认值、connections、shader definition 和 geometry binding 分布在不同层，排错时需要逐层确认。</p>
+      <p class="en">UsdShadeMaterial is an encapsulation boundary with interface inputs and terminal outputs, not merely a flat dictionary of material values.</p>
+      <p class="zh">导入/导出验证时，可以把本页当成一致性清单：material path、shader prim names、input/output names、connection targets、interface defaults、Sdr identifiers、source assets、terminal outputs、material binding relationships 和 collection bindings 应能往返保持语义等价。若只保存了 shader 参数而丢失 binding 或 interface forwarding，下游 DCC/renderer 往往无法复现原材质。</p>
+      <p class="en">For round-trip validation, material paths, shader names, ports, connections, interface defaults, Sdr identifiers, terminal outputs, and bindings should remain semantically equivalent.</p>
+      <p class="zh">还要区分 `UsdShade` 与相邻模块：`UsdGeom` 提供可绑定 geometry 和 primvars，`UsdLux` 提供 lights 和 filters，`Sdr` 提供 shader node discovery，`Ar` / `SdfAssetPath` 负责解析 shader asset 路径。`UsdShade` 把这些层联系起来，但不替代它们各自的职责。这个边界是调试材质问题的第一步和基础。</p>
+      <p class="en">UsdShade connects geometry, lights, shader discovery, and asset-path resolution concepts, but it does not replace UsdGeom, UsdLux, Sdr, Ar, or Sdf responsibilities.</p>
     </section>
     <section data-cn-refinement="api-usd-schema-quality-pass-061">
       <h2>中文精修导读 / Chinese Reading Notes</h2>
