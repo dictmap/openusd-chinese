@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：GfMatrix4f Class Reference Linear Algebra / GfMatrix4f Class Reference Linear Algebra</title>
+  <title>完整双语参考：GfMatrix4f Class Reference Linear Algebra / GfMatrix4f Class Reference Linear Algebra</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,55 +24,51 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：GfMatrix4f Class Reference Linear Algebra / GfMatrix4f Class Reference Linear Algebra</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：GfMatrix4f Class Reference Linear Algebra / GfMatrix4f Class Reference Linear Algebra</h1>
     <div class="meta">https://openusd.org/release/api/class_gf_matrix4f.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语标准覆盖 `GfMatrix4f` 的核心语义。中文层解释这个 4x4 `float` matrix 值类型在 Gf Linear Algebra、homogeneous transform、affine transform、point / direction 变换、逆矩阵、行主序和 row vector 约定中的使用边界；英文 API 名称、方法名、类型名、数学符号、链接和必要官方摘录保留原样，便于和官方 Doxygen 页面核对。</p>
+      <p class="en">This page now provides full bilingual coverage for the core semantics of `GfMatrix4f`, while preserving official API names, method names, type names, mathematical symbols, links, and necessary English excerpts for comparison with the Doxygen reference.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-034">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 GfMatrix4f Class Reference 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for GfMatrix4f Class Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`GfMatrix4f` 是 Gf Linear Algebra 中的 4x4 float matrix 基础类型，也是 3D transformation 相关方法的核心入口之一。</span></li>
-        <li><span class="zh">英文摘录说明矩阵按 row-major order 定义，`matrix[i][j]` 表示第 i 行第 j 列；同时约定向量主要按 row vectors 处理，这会影响变换矩阵乘法方向。</span></li>
-        <li><span class="zh">3D 变换相关方法包括 `SetRotate()`、`SetScale()`、`SetTranslate()`、`SetLookAt()`、`Factor()`、`ExtractTranslation()`、`ExtractRotation()`、`Transform()`、`TransformDir()`，这些方法名必须保留原样。</span></li>
-        <li><span class="zh">关联类型包括 `GfVec4f`、`GfRotation`、`GfVec3f`、`GfMatrix3f`、`GfMatrix4d`、`GfQuatf`、`GfVec3d`，说明它连接向量、旋转、四元数和不同精度矩阵。</span></li>
-        <li><span class="zh">本页中文层按矩阵存储约定、3D transform 方法、row vector 约定和关联类型四组说明；后续完整翻译应补构造、乘法、逆矩阵、分解和 transform 方法细节。</span></li>
-      </ul>
+    <section data-cn-complete="gf-matrix4f-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`GfMatrix4f` 是 Gf Linear Algebra 模块中的 4x4 `float` matrix 值类型。它用于表达基础矩阵运算和 3D transformation，但它本身不是 USD 场景中的 authored transform op，也不是 `UsdGeomXformOp` 或 prim schema；它只是可被上层 API、渲染代码、相机代码或数学工具传递的数值对象。</p>
+      <p class="en">`GfMatrix4f` is a 4x4 `float` matrix value type in Gf Linear Algebra. It can represent 3D transformations, but it is not a USD-authored transform operation such as `UsdGeomXformOp`.</p>
+      <p class="zh">官方摘录强调矩阵按 row-major order 定义，`matrix[i][j]` 表示第 `i` 行第 `j` 列。这个约定影响构造函数参数顺序、`operator[]` 的访问方式、调试打印结果和矩阵乘法顺序；把它和 column-major / column vector 数学库混用时，最容易出现转置、乘法顺序反了或平移列/行放错的问题。</p>
+      <p class="en">The official reference states that matrices are row-major and `matrix[i][j]` indexes row `i`, column `j`. That convention affects construction, `operator[]`, debug output, and multiplication order.</p>
+      <p class="zh">`ScalarType` 对本类来说是 `float`，这意味着它比 `GfMatrix4d` 更轻、更贴近 GPU/渲染常见数据格式，但精度和数值稳定性也更低。涉及远离原点的大场景、长链路 transform composition、相机投影、逆矩阵或重复分解时，应主动判断是否需要 `GfMatrix4d`，不要默认把 `GfMatrix4f` 当成 double precision 容器。</p>
+      <p class="en">For this class `ScalarType` is `float`. It is compact and useful for rendering-style data, but it has lower precision than `GfMatrix4d` and should be chosen deliberately.</p>
+      <p class="zh">构造与设置函数覆盖多个入口：默认矩阵、从标量或数组构造、从向量行构造，以及 `SetIdentity()`、`SetZero()`、`SetRotate()`、`SetScale()`、`SetTranslate()`、`SetLookAt()` 等就地设置方法。阅读这些 API 时要区分“把当前矩阵设置成某种矩阵”和“在已有矩阵上追加组合”；如果需要组合，通常应显式使用矩阵乘法并核对顺序。</p>
+      <p class="en">Construction and setup APIs create or assign a matrix state. Calls such as `SetRotate()`, `SetScale()`, `SetTranslate()`, and `SetLookAt()` should not be read as implicit append operations.</p>
+      <p class="zh">3D transform 方法是本页的核心。`Transform()` 通常用于点或齐次坐标，平移分量会参与结果；`TransformDir()` 用于方向向量，通常不应让平移改变方向；`TransformAffine()` 则面向 affine transform 语境。调试光照方向、法线方向、射线方向、相机视线和 point position 时，必须先判断输入是 point 还是 direction，否则矩阵看似正确但结果会偏移。</p>
+      <p class="en">The transform APIs distinguish points, homogeneous coordinates, and directions. `Transform()` and `TransformDir()` have different translation semantics and are not interchangeable.</p>
+      <p class="zh">`GetDeterminant()`、`GetInverse()` 和相关 inverse / determinant 逻辑用于判断矩阵是否可逆以及构造逆变换。对 singular matrix 或 near-singular matrix，`float` 精度下的容差会直接影响结果；在包含非均匀 scale、shear、投影成分或退化轴的矩阵上，不应无条件相信逆矩阵，而应检查 determinant、返回值和调用方的误差容忍度。</p>
+      <p class="en">`GetDeterminant()` and `GetInverse()` are central for invertibility. Singular or near-singular matrices require explicit tolerance and error handling, especially with `float` precision.</p>
+      <p class="zh">`Factor()`、`ExtractTranslation()`、`ExtractRotation()`、`ExtractRotationMatrix()` 和 `DecomposeRotation()` 体现了从 4x4 矩阵中提取 transform 成分的需求。它们适合把已有矩阵解释为平移、旋转、缩放或其他分量，但含 shear、非均匀 scale、负 scale、投影项或数值噪声时，分解结果可能不符合直觉；这类 API 应和调用场景的矩阵来源一起阅读。</p>
+      <p class="en">Factorization and extraction APIs interpret matrix contents as transform components. Shear, non-uniform scale, negative scale, projection terms, and numerical noise can make the decomposition subtle.</p>
+      <p class="zh">矩阵乘法和比较操作应按 OpenUSD/Gf 的 row vector 约定理解。矩阵乘法不是可交换运算，`A * B` 与 `B * A` 的变换顺序不同；当矩阵来自外部引擎、DCC、GPU shader 或其他数学库时，先确认 row/column convention、坐标系 handedness、单位和是否需要 transpose，比事后猜测结果更可靠。</p>
+      <p class="en">Matrix multiplication order matters. When exchanging matrices with other engines, DCC tools, or shaders, confirm vector convention, handedness, units, and transpose requirements.</p>
+      <p class="zh">相关类型说明了本类的边界：`GfMatrix4d` 是 double precision 对应类型，`GfMatrix3f` 常用于 3x3 rotation / linear 部分，`GfVec3f`、`GfVec4f` 承载点、方向或齐次向量，`GfRotation` 与 `GfQuatf` 承载旋转表达。把这些类型互相转换时，应明确是否丢失平移、是否丢失投影项、是否从 double 降到 float、以及旋转表示是否归一化。</p>
+      <p class="en">Related types include `GfMatrix4d`, `GfMatrix3f`, `GfVec3f`, `GfVec4f`, `GfRotation`, and `GfQuatf`. Conversions can drop precision, translation, projection terms, or rotation normalization assumptions.</p>
+      <p class="zh">常见误读包括：把 `GfMatrix4f` 当作 USD 文件里的可编辑 xform op；忘记 `float` 精度边界；用 `TransformDir()` 处理 point；对含 scale/shear 的矩阵直接提取 rotation；未检查 singular matrix 就调用 inverse；以及把其他库的 column-major 矩阵直接塞进 `GfMatrix4f`。本页的中文层正是为了把这些 API 边界提前讲清楚。</p>
+      <p class="en">Common mistakes include treating the type as an authored USD transform op, ignoring `float` precision, mixing point and direction transforms, extracting rotation from scaled or sheared matrices, and using inverse operations without singularity checks.</p>
       <h3>术语对照 / Terms</h3>
       <ul>
-        <li><span class="zh">4x4 矩阵：</span><span class="en">4x4 matrix</span></li>
+        <li><span class="zh">4x4 `float` 矩阵：</span><span class="en">4x4 `float` matrix</span></li>
         <li><span class="zh">行主序：</span><span class="en">row-major order</span></li>
-        <li><span class="zh">行向量：</span><span class="en">row vectors</span></li>
-        <li><span class="zh">3D 变换：</span><span class="en">3D transformation</span></li>
-        <li><span class="zh">矩阵分解：</span><span class="en">matrix factorization</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-130">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`GfMatrix4f` 是 float 精度 4x4 矩阵，常用于 3D transform、投影视图变换、点/方向变换和矩阵分解。阅读本页时最重要的是确认 row-major storage、row vector 约定和方法乘法顺序，避免和其他数学库的 column-major/column vector 约定混用。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for GfMatrix4f while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`matrix[i][j]` 表示第 i 行第 j 列；这个索引语义和内存排列、构造函数参数顺序、调试打印结果都有关，中文说明必须保留原英文索引表达。</span></li>
-        <li><span class="zh">`SetRotate()`、`SetScale()`、`SetTranslate()`、`SetLookAt()` 分别设置旋转、缩放、平移和视图相关矩阵；调用时要确认是否覆盖已有矩阵，而不是默认做增量组合。</span></li>
-        <li><span class="zh">`Transform()` 与 `TransformDir()` 的语义不同：前者用于点/齐次坐标变换，后者通常忽略平移分量处理方向向量；渲染和相机代码中这一区别很常见。</span></li>
-        <li><span class="zh">`Factor()`、`ExtractTranslation()`、`ExtractRotation()` 等方法用于从矩阵中分解或提取变换成分；含 shear、非均匀 scale 或奇异矩阵时应核对返回值和容差。</span></li>
-        <li><span class="zh">`GfMatrix4f` 与 `GfMatrix4d`、`GfMatrix3f`、`GfQuatf`、`GfRotation`、`GfVec3f` / `GfVec4f` 频繁互操作；精度转换和旋转表达转换都应显式确认。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">Gf 4x4 float 矩阵：</span><span class="en">GfMatrix4f</span></li>
-        <li><span class="zh">行主序存储：</span><span class="en">row-major storage</span></li>
         <li><span class="zh">行向量约定：</span><span class="en">row vector convention</span></li>
-        <li><span class="zh">齐次坐标：</span><span class="en">homogeneous coordinate</span></li>
-        <li><span class="zh">矩阵分解：</span><span class="en">matrix factorization</span></li>
+        <li><span class="zh">齐次变换：</span><span class="en">homogeneous transform</span></li>
+        <li><span class="zh">仿射变换：</span><span class="en">affine transform</span></li>
+        <li><span class="zh">点变换：</span><span class="en">point transform</span></li>
+        <li><span class="zh">方向变换：</span><span class="en">direction transform</span></li>
+        <li><span class="zh">行列式：</span><span class="en">determinant</span></li>
+        <li><span class="zh">逆矩阵：</span><span class="en">inverse matrix</span></li>
         <li><span class="zh">奇异矩阵：</span><span class="en">singular matrix</span></li>
+        <li><span class="zh">矩阵分解：</span><span class="en">matrix factorization</span></li>
       </ul>
     </section>
     <section>
