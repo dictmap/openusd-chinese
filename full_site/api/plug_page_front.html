@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>API 模块草稿：Plug: Plugin Framework / Plug: Plugin Framework</title>
+  <title>完整双语参考：Plug: Plugin Framework / Plug: Plugin Framework</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -19,20 +19,47 @@
     ul{padding-left:22px}
     li{margin:8px 0}
     code{font-family:"Cascadia Mono","Consolas",monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>API 模块草稿：Plug: Plugin Framework / Plug: Plugin Framework</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：Plug: Plugin Framework / Plug: Plugin Framework</h1>
     <div class="meta">https://openusd.org/release/api/plug_page_front.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页处理：中文优先解释 `Plug` 作为 OpenUSD plugin framework 的职责，覆盖 `PlugPlugin`、`PlugRegistry`、`PlugRegistry::RegisterPlugins`、`PlugNotice::DidRegisterPlugins`、`TfType`、plugin discovery、registration、metadata、`plugInfo.json`、Python module 与 C++ shared library、运行时加载、依赖关系和它与 `TfType`、schema、file format、renderer 或 UI component 插件的边界；英文 API 名称、类名、函数名、notice 名称、metadata 文件名和官方摘录保留原样，便于与 Doxygen 页面核对。</p>
+      <p class="en">This page is promoted as a complete bilingual reference for Plug, the OpenUSD plugin framework, plugin discovery, registration, metadata, plugInfo.json, TfType integration, and runtime loading.</p>
+    </section>
+    <section data-cn-complete="plug-plugin-framework-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">官方 Overview 的第一层含义是 `Plug` provides a plug-in framework implementation。这里的 plugin framework 不是某一个具体插件，而是 OpenUSD 用来发现、描述、注册和加载插件模块的基础设施。许多上层扩展点，例如 schema、file format、renderer、shader discovery、GUI component 或应用自定义类型，都可能依赖这个框架把外部模块接入运行时。</p>
+      <p class="en">Plug is the framework implementation that lets OpenUSD discover, describe, register, and load plug-in modules.</p>
+      <p class="zh">`PlugPlugin` 表示插件模块的接口和描述对象。官方说明它记录插件是否已经 loaded、插件是 Python module 还是 C++ shared library，并能返回 plugin name、file-system location、base class names、metadata 和 dependencies。也就是说，`PlugPlugin` 更像“插件条目与状态”的对象，不是插件内部业务逻辑本身；业务逻辑仍在对应 Python 模块或共享库中。</p>
+      <p class="en">PlugPlugin describes plug-in modules, their loaded state, implementation kind, location, metadata, base classes, and dependencies.</p>
+      <p class="zh">`PlugRegistry` 是发现和注册插件的中心。它会在首次使用时自动发现插件，也允许客户端在运行时调用 `PlugRegistry::RegisterPlugins` 手动注册。这个设计让 OpenUSD 既能在进程启动或第一次访问插件系统时建立 registry，也能在长时间运行的应用中把后来出现的插件目录纳入系统。</p>
+      <p class="en">PlugRegistry discovers and registers plug-ins automatically on first use and manually through PlugRegistry::RegisterPlugins.</p>
+      <p class="zh">`PlugNotice::DidRegisterPlugins` 是插件注册事件的通知机制。官方强调新插件注册时会发送该 notice，包括第一次使用 Plug 时的注册，以及后续手动 `RegisterPlugins` 调用。依赖插件的代码如果缓存了 type list、factory、schema 信息或 UI 菜单，应监听这个 notice，并在新插件进入 registry 后刷新自己的视图。</p>
+      <p class="en">PlugNotice::DidRegisterPlugins notifies interested code when new plug-ins are registered.</p>
+      <p class="zh">`PlugRegistry` 与 `TfType` 的关系是本页另一个核心。Plug 可以查找插件中定义的 `TfType` objects，反查哪些 plug-ins 提供这些 types，读取与插件及其 contained types 相关的 metadata，并在需要时加载插件。换句话说，Plug 负责“哪里有插件、插件描述了什么”，`TfType` 负责“运行时有哪些类型、这些类型如何被查询和识别”。</p>
+      <p class="en">PlugRegistry connects plug-in metadata and loading with TfType objects defined by those plug-ins.</p>
+      <p class="zh">`plugInfo.json` 是插件被发现和描述的关键 metadata 文件。官方 Metadata 小节说明 plug-ins are found and described using `plugInfo.json` files，并且这些文件可以在不加载插件代码的情况下读取。这一点很重要：OpenUSD 可以先扫描轻量 metadata，建立插件、类型、依赖和扩展点索引，再在真正需要某个插件实现时加载 Python module 或 C++ shared library。</p>
+      <p class="en">plugInfo.json files describe plug-ins and can be read without loading the plug-in implementation.</p>
+      <p class="zh">Usage 小节提醒读者：具体如何把 concrete plug-in types 加到某个应用，要看实现该组件功能的库文档。例如 prim plug-ins、GUI editor plug-ins 或 renderer/file-format 插件都有自己的注册细节。`Plug` 页讲的是通用发现和注册框架，不替代每个插件家族自己的 API 文档。</p>
+      <p class="en">Component-specific plug-in registration is documented by the libraries that implement those plug-in families.</p>
+      <p class="zh">调试插件问题时可以按层拆分：首先确认 `plugInfo.json` 是否在搜索路径内、JSON 是否可解析、metadata 中的 type / library / pythonModule 信息是否正确；然后检查 `PlugRegistry` 是否发现并注册了插件；接着看 `PlugNotice::DidRegisterPlugins` 是否触发依赖方刷新；最后再检查插件加载、共享库依赖、Python import、`TfType` 注册和具体扩展点消费。</p>
+      <p class="en">A practical debugging path is plugInfo discovery, metadata parsing, registry registration, notice delivery, plug-in loading, TfType registration, and extension-point consumption.</p>
+      <p class="zh">部署差异也常落在 Plug 层：同一个插件在开发机可用、在渲染农场或打包应用中不可用时，应先比较插件搜索路径、`plugInfo.json` 所在目录、相对库路径、环境变量、Python path、共享库依赖和版本兼容性。只有当 Plug 能发现并描述插件后，后续 schema、file format 或 renderer 才有机会消费它。</p>
+      <p class="en">Deployment failures often involve search paths, plugInfo locations, relative library paths, Python paths, shared-library dependencies, and version compatibility.</p>
+      <p class="zh">常见误读是把“插件已被发现”和“插件代码已被加载”混为一谈。`plugInfo.json` 可以先被读取，`PlugPlugin` 也可以存在于 registry 中，但插件实现未必已经加载。只有当应用需要实例化类型、查询具体 factory、使用 file format、renderer delegate 或其它扩展点时，加载动作才可能发生；因此排查时要分别看 discovery、registration 和 load state。</p>
+      <p class="en">Discovery and registration are not the same as loading the plug-in implementation.</p>
+      <p class="zh">另一个边界是 Plug 与上层系统的职责划分。Plug 不决定 USD composition 结果，不解析 layer opinions，也不实现 renderer；它只让相关扩展模块能被发现、注册和加载。若问题是 layer stack、variant、reference/payload 或 scene traversal，应查 `Sdf`、`Pcp`、`Usd`；若问题是 renderer 输出，应查 `Hd`、`Hdx`、`HdSt` 或 `Hgi`；只有插件查找、metadata、类型提供方或动态加载异常才优先进入 Plug。</p>
+      <p class="en">Plug handles discovery, metadata, registration, and loading, while higher-level systems consume the registered plug-ins.</p>
+      <p class="zh">本页保留 `PlugPlugin`、`PlugRegistry`、`PlugRegistry::RegisterPlugins`、`PlugNotice::DidRegisterPlugins`、`TfType`、`plugInfo.json`、Python module、C++ shared library 等英文标识，因为这些名字直接对应源码、Doxygen 链接、notice 和 metadata key 的语境。中文层解释语义与边界，但不能改写这些标识。</p>
+      <p class="en">English API names, notice names, and metadata file names are retained so users can map the Chinese explanation back to code and Doxygen references.</p>
     </section>
     <section data-cn-refinement="api-module-front-quality-pass-056">
       <h2>中文精修导读 / Chinese Reading Notes</h2>

@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-07T11:50:57.079Z
+Generated: 2026-06-07T12:00:50.050Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 70
-- Promoted complete pages: 62
-- Bilingual draft pages: 336
+- Bilingual complete pages: 71
+- Promoted complete pages: 63
+- Bilingual draft pages: 335
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -259,7 +259,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_draft | Related Pages | full_site/api/pages.html | https://openusd.org/release/api/pages.html |
 | api | bilingual_draft | 源码页面草稿：parallelSpeculationExecutorEngine.h / parallelSpeculationExecutorEngine.h | full_site/api/parallel_speculation_executor_engine_8h_source.html | https://openusd.org/release/api/parallel_speculation_executor_engine_8h_source.html |
 | api | bilingual_draft | API 模块草稿：Pcp: PrimCache Population (Composition) / Pcp: PrimCache Population (Composition) | full_site/api/pcp_page_front.html | https://openusd.org/release/api/pcp_page_front.html |
-| api | bilingual_draft | API 模块草稿：Plug: Plugin Framework / Plug: Plugin Framework | full_site/api/plug_page_front.html | https://openusd.org/release/api/plug_page_front.html |
+| api | bilingual_complete | https://openusd.org/release/api/plug_page_front.html | full_site/api/plug_page_front.html | https://openusd.org/release/api/plug_page_front.html |
 | api | bilingual_draft | 源码页面草稿：pxrDisplayFilterAdapter.h / pxrDisplayFilterAdapter.h | full_site/api/pxr_display_filter_adapter_8h_source.html | https://openusd.org/release/api/pxr_display_filter_adapter_8h_source.html |
 | api | bilingual_draft | 源码页面草稿：rileyParamSchema.h / rileyParamSchema.h | full_site/api/riley_param_schema_8h_source.html | https://openusd.org/release/api/riley_param_schema_8h_source.html |
 | api | bilingual_draft | API 模块草稿：Sdf: Scene Description Foundations / Sdf: Scene Description Foundations | full_site/api/sdf_page_front.html | https://openusd.org/release/api/sdf_page_front.html |
