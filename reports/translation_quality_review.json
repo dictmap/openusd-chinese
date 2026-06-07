@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T22:58:20.010Z",
+  "generated_at": "2026-06-07T23:18:47.056Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 306,
-    "bilingual_complete": 100
+    "bilingual_draft": 305,
+    "bilingual_complete": 101
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 295,
-    "good_bilingual": 100
+    "draft_needs_translation": 294,
+    "good_bilingual": 101
   },
   "focus_batch": [
     {
@@ -9770,29 +9770,29 @@
     },
     {
       "index": 327,
-      "title": "页面草稿：CylinderLight / CylinderLight",
+      "title": "完整双语参考：CylinderLight / CylinderLight",
       "output": "full_site/release/user_guides/schemas/usdLux/CylinderLight.html",
       "official_url": "https://openusd.org/release/user_guides/schemas/usdLux/CylinderLight.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 24,
-      "enBlockCount": 18,
-      "zhChars": 546,
-      "enLetters": 1309,
-      "bodyChineseChars": 671,
+      "grade": "good_bilingual",
+      "zhBlockCount": 46,
+      "enBlockCount": 46,
+      "zhChars": 2235,
+      "enLetters": 2616,
+      "bodyChineseChars": 2452,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。",
-        "本区块针对 CylinderLight 补充中文优先的用途说明、属性阅读重点和术语对照；英文页面名、链接、代码、命令和原文摘录继续保留，便于和官方 usdLux schema 文档核对。",
-        "CylinderLight 是从圆柱侧面向外发光的 intrinsic light，圆柱默认以原点为中心、主轴沿 X 轴；注意它不从两端 flat end-caps 发光。"
+        "`CylinderLight` 是 usdLux 中的 intrinsic light schema，用来描述从圆柱侧面向外发光的光源。官方定义里最关键的空间约束是：圆柱以原点为中心，major axis 位于局部 X axis，并且不从 flat end-caps 发光。中文阅读时要把它理解成“只有圆柱侧壁发光的管状面积光”，而不是一个封闭圆柱体整体发光，也不是两端圆面也贡献照明的体积光。这个边界会直接影响建模、阴影、采样和调试：如果你期望两端也亮，`CylinderLight` 本身并不表达这个语义，需要改用其他几何、材质或 renderer 特定方案。",
+        "典型用途是模拟 tube-shaped fluorescent lights、类似管状光源、linear lights、light panels，以及建筑室内常见的 commercial lighting。和 `SphereLight` 相比，它更适合表达有明显长度方向的灯管或长条光；和 `RectLight` 相比，它不是平面矩形，而是圆柱侧面；和 `DiskLight` 相比，它不是单个圆盘发光面；和 `DistantLight`、`DomeLight` 相比，它是场景中有位置、有长度、有半径的局部光源。换句话说，选择 `CylinderLight` 时，读者应先确认“管状/线状面积光”是设计意图，再去调整强度、颜色和 shaping 参数。",
+        "官方示例把 `CylinderLight \"Light1\"` 放在一个 `Sphere` 和一个 `Cube` 附近，设置 `inputs:length = 3`、`inputs:radius = 0.25`，并通过 `inputs:shaping:cone:angle = 45`、`xformOp:rotateXYZ = (0, 0, 45)`、`xformOp:translate = (0, 0, 1)` 控制光带方向和位置。这个示例说明了三层信息：第一，`inputs:length` 和 `inputs:radius` 定义发光圆柱的形状；第二，`ShapingAPI` 风格的 `inputs:shaping:cone:angle` 可以限制光扩散，让结果成为较窄光带；第三，transform 决定圆柱在世界中的摆放和朝向。不要把这些职责混在一起：形状由 length/radius 表达，位置方向由 transform 表达，发射约束由 shaping 属性表达。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.",
-        "This section adds Chinese-first usage notes, property reading guidance, and terminology for CylinderLight while retaining the English page name, links, code, commands, and source excerpts for comparison with the official usdLux schema documentation."
+        "`CylinderLight` is an intrinsic light that emits outward from the side of a cylinder whose major axis is the local X axis.",
+        "Use it for tube-shaped, line-like, panel-like, or commercial interior light sources that have cylinder-side emission."
       ]
     },
     {
@@ -10293,7 +10293,7 @@
       "enBlockCount": 52,
       "zhChars": 2248,
       "enLetters": 2866,
-      "bodyChineseChars": 2474,
+      "bodyChineseChars": 2531,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
       "genericDraft": false,

@@ -26,7 +26,7 @@ function inferRound(problemAudit) {
 
 function inferRoundType(problemAudit) {
   const text = String(problemAudit.purpose ?? "");
-  for (const type of ["PromotionRound", "DefectRound", "ConsistencyRound", "EnglishDebtRound"]) {
+  for (const type of ["PromotionRound", "DefectRound", "ConsistencyRound", "EnglishDebtRound", "DomainSprintRound", "BatchDraftRound"]) {
     if (text.includes(type)) return type;
   }
   return "UnknownRound";
@@ -39,15 +39,38 @@ function promotionRows(promotions, limit = 80) {
 }
 
 function problemRows(problems) {
-  return problems.map((problem) => {
+  return (problems || []).map((problem) => {
     return `| \`${mdEscape(problem.id)}\` | ${mdEscape(problem.severity)} | ${mdEscape(problem.summary)} | ${mdEscape(problem.required_action)} |`;
   }).join("\n");
 }
 
 function nextTarget(problemAudit) {
   const action = String(problemAudit.next_action ?? "");
-  const pathMatch = action.match(/full_site\/[^\s。`]+\.html|site\/[^\s。`]+\.html/);
+  const pathMatch = action.match(/full_site\/[^\s，。；、`]+\.html|site\/[^\s，。；、`]+\.html/);
   return pathMatch ? pathMatch[0] : action;
+}
+
+function changedFilesFor(latestPromotion, roundType) {
+  const common = [
+    "`openusd_bilingual_final.html`",
+    "`reports/all_pages_inventory.json/md`",
+    "`reports/translation_quality_review.json/md`",
+    "`reports/english_debt_audit.json/md`",
+    "`reports/current_problem_audit.json/md`",
+    "`reports/bilingual_completion_promotions.json/md`",
+    "`reports/navigation_coverage_audit.json/md`",
+    "`reports/reading_flow_navigation_audit.json/md`",
+    "`reports/local_link_routing_report.json/md`",
+    "`reports/full_draft_preview_audit.json/md`",
+    "`reports/audit_index.json/md`",
+    "`reports/validation_report.json`",
+    "`work.md`",
+    "`reports/iteration_report.md`",
+  ];
+  if (roundType === "PromotionRound" && latestPromotion?.local_output) {
+    return [`\`${latestPromotion.local_output}\``, ...common];
+  }
+  return common;
 }
 
 function buildWorkMd({ inventory, quality, validation, englishDebt, problemAudit, promotions }) {
@@ -55,7 +78,7 @@ function buildWorkMd({ inventory, quality, validation, englishDebt, problemAudit
   const round = inferRound(problemAudit);
   const roundType = inferRoundType(problemAudit);
   const target = nextTarget(problemAudit);
-  const latestPromotion = promotions.promotions[0];
+  const latestPromotion = promotions.promotions?.[0];
   const isPromotion = roundType === "PromotionRound";
   return `# OpenUSD Bilingual Work Log
 
@@ -70,10 +93,10 @@ function buildWorkMd({ inventory, quality, validation, englishDebt, problemAudit
 - draft_needs_translation：${counts.draft_needs_translation}
 - draft_template_only：${counts.draft_template_only}
 - pending_full_scope：${inventory.counts.pending_full_scope_pages}
-- promotion manifest：${promotions.promotions.length} 页
+- promotion manifest：${promotions.promotions.length} 项
 - 总验证：passed=${validation.passed}，failed_check_count=${validation.failed_check_count}，required_check_count=${validation.required_check_count}
 
-说明：剩余 \`bilingual_draft\` 是可检查草稿，不是完整翻译。API 名、类名、函数名、token、代码和链接会保留英文；真正需要治理的是草稿页和完成页里仍主要依赖英文的主阅读路径。
+说明：剩余 \`bilingual_draft\` 是可检查草稿，不是完整翻译。API 名、类名、函数名、token、代码、属性名和链接会保留英文；真正需要治理的是草稿页和完成页里仍主要依赖英文的中文主阅读路径。
 
 ## 第 ${round} 轮：${roundType}
 
@@ -84,7 +107,7 @@ function buildWorkMd({ inventory, quality, validation, englishDebt, problemAudit
 - 完成数状态：good_bilingual=${counts.good_bilingual}；review_ready_zh=${englishDebt.counts.review_ready_zh}。
 - 固定审计：\`translation_quality_review.json\`、\`english_debt_audit.json\`、\`all_pages_inventory.json\`、\`validation_report.json\` 已重建。
 
-## 英文残留审计结果
+## English Debt 审计结果
 
 - good_bilingual：${englishDebt.counts.good_bilingual}
 - review_ready_zh：${englishDebt.counts.review_ready_zh}
@@ -109,8 +132,9 @@ function buildIterationMd({ inventory, quality, validation, englishDebt, problem
   const counts = problemAudit.current_counts;
   const round = inferRound(problemAudit);
   const roundType = inferRoundType(problemAudit);
-  const latestPromotion = promotions.promotions[0];
+  const latestPromotion = promotions.promotions?.[0];
   const isPromotion = roundType === "PromotionRound";
+  const files = changedFilesFor(latestPromotion, roundType).map((item) => `- ${item}`).join("\n");
   return `# OpenUSD Iteration Report
 
 ## 第 ${round} 轮摘要
@@ -143,21 +167,7 @@ function buildIterationMd({ inventory, quality, validation, englishDebt, problem
 
 ## 本轮改动文件
 
-- \`scripts/audit_openusd_english_debt.mjs\`
-- \`scripts/audit_openusd_report_index.mjs\`
-- \`scripts/validate_openusd_api_repro.ps1\`
-- \`scripts/build_final_html_entry.mjs\`
-- \`scripts/regenerate_openusd_progress_markdown.mjs\`
-- \`openusd_bilingual_final.html\`
-- \`reports/english_debt_audit.json\`
-- \`reports/english_debt_audit.md\`
-- \`reports/current_problem_audit.json\`
-- \`reports/current_problem_audit.md\`
-- \`work.md\`
-- \`reports/iteration_report.md\`
-- \`reports/bilingual_completion_promotions.md\`
-- \`C:\\Users\\robot\\.codex\\skills\\openusd-bilingual-automation\\SKILL.md\`
-- \`C:\\Users\\robot\\.codex\\skills\\openusd-bilingual-automation\\agents\\openai.yaml\`
+${files}
 
 ## 下一步
 
@@ -202,7 +212,7 @@ function buildPromotionsMd(promotions) {
 
 Generated: ${new Date().toISOString()}
 
-这份清单只记录已经从 \`bilingual_draft\` 晋级为 \`bilingual_complete\` 的页面。它是 \`scripts/discover_openusd_all_pages.mjs\` 识别 promoted complete 页面的审计来源，不等同于把草稿页改个状态。
+这份清单只记录已经从 \`bilingual_draft\` 晋级为 \`bilingual_complete\` 的页面。它是 \`scripts/discover_openusd_all_pages.mjs\` 识别 promoted complete 页面的审计来源，不等同于把草稿页改一个状态。
 
 ## 晋级规则
 

@@ -1,8 +1,8 @@
 # OpenUSD 完整双语晋级清单
 
-Generated: 2026-06-07T23:00:07.403Z
+Generated: 2026-06-07T23:24:41.296Z
 
-这份清单只记录已经从 `bilingual_draft` 晋级为 `bilingual_complete` 的页面。它是 `scripts/discover_openusd_all_pages.mjs` 识别 promoted complete 页面的审计来源，不等同于把草稿页改个状态。
+这份清单只记录已经从 `bilingual_draft` 晋级为 `bilingual_complete` 的页面。它是 `scripts/discover_openusd_all_pages.mjs` 识别 promoted complete 页面的审计来源，不等同于把草稿页改一个状态。
 
 ## 晋级规则
 
@@ -16,6 +16,7 @@ Generated: 2026-06-07T23:00:07.403Z
 
 | ID | 本地输出 | 官方页面 | 状态 |
 | --- | --- | --- | --- |
+| `round-400-release-usdLux-CylinderLight` | `full_site/release/user_guides/schemas/usdLux/CylinderLight.html` | `https://openusd.org/release/user_guides/schemas/usdLux/CylinderLight.html` | bilingual_complete |
 | `round-399-release-usdLux-SphereLight` | `full_site/release/user_guides/schemas/usdLux/SphereLight.html` | `https://openusd.org/release/user_guides/schemas/usdLux/SphereLight.html` | bilingual_complete |
 | `round-398-release-usdLux-ShapingAPI` | `full_site/release/user_guides/schemas/usdLux/ShapingAPI.html` | `https://openusd.org/release/user_guides/schemas/usdLux/ShapingAPI.html` | bilingual_complete |
 | `round-397-release-usdLux-ShadowAPI` | `full_site/release/user_guides/schemas/usdLux/ShadowAPI.html` | `https://openusd.org/release/user_guides/schemas/usdLux/ShadowAPI.html` | bilingual_complete |

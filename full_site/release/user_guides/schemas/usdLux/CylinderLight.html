@@ -3,24 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：CylinderLight / CylinderLight</title>
+  <title>完整双语参考：CylinderLight / CylinderLight</title>
   <link rel="icon" href="../../../../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1100px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
     pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
     code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
@@ -44,9 +48,9 @@
 </head>
 <body class="openusd-has-reading-flow">
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：CylinderLight / CylinderLight</h1>
-    <div class="meta">https://openusd.org/release/user_guides/schemas/usdLux/CylinderLight.html</div>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：CylinderLight / CylinderLight</h1>
+    <div class="meta">官方页：https://openusd.org/release/user_guides/schemas/usdLux/CylinderLight.html</div>
   </header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
@@ -109,79 +113,210 @@
 </aside>
 <!-- openusd-reading-flow-nav:end -->
 
-
-
   <main>
+    <section data-cn-complete="release-user-guide-usdLux-CylinderLight-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`CylinderLight` 是 usdLux 中的 intrinsic light schema，用来描述从圆柱侧面向外发光的光源。官方定义里最关键的空间约束是：圆柱以原点为中心，major axis 位于局部 X axis，并且不从 flat end-caps 发光。中文阅读时要把它理解成“只有圆柱侧壁发光的管状面积光”，而不是一个封闭圆柱体整体发光，也不是两端圆面也贡献照明的体积光。这个边界会直接影响建模、阴影、采样和调试：如果你期望两端也亮，`CylinderLight` 本身并不表达这个语义，需要改用其他几何、材质或 renderer 特定方案。</p>
+      <p class="en">`CylinderLight` is an intrinsic light that emits outward from the side of a cylinder whose major axis is the local X axis.</p>
+
+      <p class="zh">典型用途是模拟 tube-shaped fluorescent lights、类似管状光源、linear lights、light panels，以及建筑室内常见的 commercial lighting。和 `SphereLight` 相比，它更适合表达有明显长度方向的灯管或长条光；和 `RectLight` 相比，它不是平面矩形，而是圆柱侧面；和 `DiskLight` 相比，它不是单个圆盘发光面；和 `DistantLight`、`DomeLight` 相比，它是场景中有位置、有长度、有半径的局部光源。换句话说，选择 `CylinderLight` 时，读者应先确认“管状/线状面积光”是设计意图，再去调整强度、颜色和 shaping 参数。</p>
+      <p class="en">Use it for tube-shaped, line-like, panel-like, or commercial interior light sources that have cylinder-side emission.</p>
+
+      <p class="zh">官方示例把 `CylinderLight "Light1"` 放在一个 `Sphere` 和一个 `Cube` 附近，设置 `inputs:length = 3`、`inputs:radius = 0.25`，并通过 `inputs:shaping:cone:angle = 45`、`xformOp:rotateXYZ = (0, 0, 45)`、`xformOp:translate = (0, 0, 1)` 控制光带方向和位置。这个示例说明了三层信息：第一，`inputs:length` 和 `inputs:radius` 定义发光圆柱的形状；第二，`ShapingAPI` 风格的 `inputs:shaping:cone:angle` 可以限制光扩散，让结果成为较窄光带；第三，transform 决定圆柱在世界中的摆放和朝向。不要把这些职责混在一起：形状由 length/radius 表达，位置方向由 transform 表达，发射约束由 shaping 属性表达。</p>
+      <p class="en">The official example combines length, radius, shaping angle, rotation, and translation to produce a thin band of light.</p>
+
+      <p class="zh">`inputs:length` 是本页最重要的几何属性之一，USD type 为 `float`，fallback value 为 `1.0`，表示圆柱在 local X axis 上的长度。它不是世界空间长度的唯一来源，因为 prim 的 transform 仍然可能缩放、旋转或移动该圆柱；它也不是亮度参数，增加长度通常改变的是发光形状和面积直觉，而不是简单等价于提高 `inputs:intensity`。调试时应同时查看 authored length、`xformOpOrder`、父层级 transform 和 renderer 如何把 light units/area light 解释为最终照明。</p>
+      <p class="en">`inputs:length` is the cylinder length in the local X axis, with fallback value `1.0`.</p>
+
+      <p class="zh">`inputs:radius` 是圆柱半径，USD type 为 `float`，fallback value 为 `0.5`。它定义管状发光面的粗细，和 `inputs:length` 一起决定 `CylinderLight` 的几何外观和采样意义。半径很小时，视觉上可能接近线光；半径较大时，它更像有明显厚度的管状面积光。不要把 `inputs:radius` 当作照明距离或亮度范围；若画面过暗，应先检查 `inputs:intensity`、`inputs:color`、曝光、单位约定、距离和遮挡，再决定是否调整半径。</p>
+      <p class="en">`inputs:radius` is the radius of the cylinder, with fallback value `0.5`.</p>
+
+      <p class="zh">`light:shaderId` 是 renderer-facing 的 shader 标识，USD type 为 `token`，fallback value 为 `CylinderLight`。官方说明还指出，USD 会注册一个 identifier 为 `CylinderLight`、source type 为 `USD` 的 `Sdr` shader node，用来对应该灯光的 inputs。这个 token 必须原样保留，不能翻译成“圆柱灯”，也不要和 prim name `Light1` 混淆：prim 可以叫任何合法名称，但 shader ID 仍然是用于 schema 与渲染实现对接的稳定标识。</p>
+      <p class="en">`light:shaderId` keeps the `CylinderLight` shader identity and corresponding USD `Sdr` node mapping.</p>
+
+      <p class="zh">`treatAsLine` 是一个 renderer hint，USD type 为 `bool`，fallback value 为 `False`。当它为 true 且 renderer 支持 non-area lighting 时，renderer 可以把这个灯视为 line light，也就是 effectively a zero-radius cylinder；如果 renderer 只支持 area lights，则会忽略该属性。因此它不是跨 renderer 强制行为，也不是把 schema 改成另一种 prim type。跨 DCC 或跨渲染器交付时，应把 `treatAsLine` 写成“可用则采用”的优化/兼容提示，并在验证中记录目标 renderer 是否实际支持。</p>
+      <p class="en">`treatAsLine` is a hint that the light may be treated as a zero-radius line light when the renderer supports non-area lighting.</p>
+
+      <p class="zh">继承属性同样属于中文主阅读路径。`extent` 来自 `Boundable`，用于边界和包围盒相关计算；`xformOpOrder` 来自 `Xformable`，决定 `xformOp:translate`、`xformOp:rotateXYZ` 等变换操作的应用顺序；`proxyPrim`、`purpose` 和 `visibility` 来自 `Imageable`，分别影响代理 prim 关系、渲染用途分类和可见性继承。很多“灯不亮”问题并不是 `CylinderLight` 本体属性错了，而是父层级 visibility、payload、variant、layer strength、purpose 过滤或 transform 覆盖导致结果不符合预期。</p>
+      <p class="en">Inherited `Boundable`, `Xformable`, and `Imageable` properties affect bounds, placement, purpose, and visibility.</p>
+
+      <p class="zh">实际排错可以按固定顺序进行：先确认 prim type 确实是 `CylinderLight`，再确认 `inputs:length` 和 `inputs:radius` 是否表达了目标灯管形状；接着检查 `xformOpOrder`、rotation 和 translation 是否把局部 X 轴圆柱放在正确位置；然后检查 `inputs:intensity`、`inputs:color`、light units、camera exposure 和场景尺度；之后检查 `visibility`、`purpose`、payload、variant、collection/linking 和 stronger layer opinion；最后再检查 renderer 对 `treatAsLine`、area light sampling、shaping cone 和 shadow 控制的支持。这个顺序能避免把形状、朝向、能量、可见性和渲染器能力混为同一个问题。</p>
+      <p class="en">A practical debugging path is schema type, shape inputs, transform, energy/color, visibility/composition, then renderer support.</p>
+
+      <p class="zh">和相邻 usdLux 页面一起阅读时，`CylinderLight` 的职责边界会更清楚。`SphereLight` 适合球形或点状局部光；`RectLight` 适合矩形平面面光；`DiskLight` 适合圆盘面光；`PortalLight` 用于把环境光采样引导到开口区域；`ShapingAPI` 控制 cone、focus、IES 等发射塑形；`ShadowAPI` 控制阴影艺术属性；`LightAPI` 管理通用 light 行为和 linking。`CylinderLight` 只负责“管状/线状具体光源”的 schema 语义，不应承载所有 shaping、shadow、linking 或 renderer policy。</p>
+      <p class="en">Adjacent pages separate cylindrical emission geometry from shaping, shadows, linking, portals, and other light shapes.</p>
+
+      <p class="zh">从制作流程看，`CylinderLight` 常见于三类任务。第一类是室内灯管或霓虹管建模，重点是长度、半径和摆放方向；这时 `inputs:length` 与 `xformOp:rotateXYZ` 的组合比单纯调亮度更重要。第二类是舞台、展台或产品照明，重点是让管状高光沿某个方向拉伸；这时要用 transform 控制圆柱主轴，并用 `inputs:shaping:cone:angle` 或相关 shaping 属性限制扩散。第三类是跨 renderer 交付，重点是明确 `treatAsLine` 只是 hint：支持 line light 的 renderer 可以把它近似为零半径线光，不支持的 renderer 仍可能按面积圆柱处理或忽略该提示。把这三类任务分开写，可以避免读者把形状、采样策略和艺术控制混为一谈。</p>
+      <p class="en">Production use cases separate tube shape, placement direction, shaping behavior, and renderer-specific line-light support.</p>
+
+      <p class="zh">`CylinderLight` 的“端盖不发光”还会影响资产建模决策。如果艺术目标是完整玻璃灯管在镜头中可见，通常需要额外的几何体和材质来表现灯管外观；`CylinderLight` prim 负责照明语义，不自动生成可见灯管模型，也不自动让端盖发光。如果目标是一个两端也发亮的实体灯具，可以把可见几何、emissive material、`GeometryLight`/插件灯或 renderer 特定方案分开评估，而不是强行把这种语义塞进 `CylinderLight`。中文页面必须说清这一点，因为英文属性表本身只列出字段，读者很容易误以为圆柱所有表面都参与发光。</p>
+      <p class="en">Use separate visible geometry or renderer-specific approaches when the lamp body or end caps themselves must be visible or emissive.</p>
+
+      <p class="zh">当 `CylinderLight` 和 `LightAPI`、collection-based light linking 一起使用时，还要区分“灯的形状”与“灯影响哪些对象”。`inputs:length`、`inputs:radius` 和 transform 决定管状光源本体；light linking、shadow linking 或 collection membership 决定哪些 prim 接收照明或阴影影响。如果某个物体没有被照亮，不一定是圆柱长度或半径错误，也可能是 collection、relationship、purpose 过滤或 layer composition 使它不在受影响集合内。可靠的中文主阅读路径应把这些排查入口串起来，而不是只翻译字段名称。</p>
+      <p class="en">Light shape is separate from light linking and collection membership; both affect debugging.</p>
+
+      <p class="zh">本轮已核对官方页和本地 source snapshot：标题 `CylinderLight`、官方定义段、用途段、USDA 示例、`Properties`、`Inherited Properties (Boundable)`、`Inherited Properties (Xformable)`、`Inherited Properties (Imageable)`、previous/next 链接都已进入本地中文解释。页面保留 `CylinderLight`、`inputs:length`、`inputs:radius`、`inputs:shaping:cone:angle`、`light:shaderId`、`treatAsLine`、`extent`、`xformOpOrder`、`proxyPrim`、`purpose`、`visibility` 等 API/schema/token/属性名原样，中文负责建立可独立阅读的主路径，英文只作为核对。</p>
+      <p class="en">The official page and local source snapshot were checked for title, summary, example, properties, inherited properties, and adjacent links.</p>
+
+      <p class="zh">因此，本页现在可以让中文读者独立判断：什么时候选 `CylinderLight`，如何解释长度和半径，为什么端盖不发光，何时使用 `treatAsLine`，以及遇到照明方向、光带宽窄、阴影或可见性问题时应该转到哪个相邻 schema 或调试入口。</p>
+      <p class="en">The page is ready as a Chinese-first reading entry for this schema.</p>
+    </section>
+
     <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+      <h2>官方属性对照 / Official Properties</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>USD type</th>
+            <th>Fallback</th>
+            <th>中文说明 / Chinese Reading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>inputs:length</code></td>
+            <td><code>float</code></td>
+            <td><code>1.0</code></td>
+            <td><span class="zh">圆柱在 local X axis 上的长度。它决定灯管的长短，应和 transform、父层级缩放以及 renderer 的面积光解释一起核对。</span><span class="en">The length of the cylinder in the local X axis.</span></td>
+          </tr>
+          <tr>
+            <td><code>inputs:radius</code></td>
+            <td><code>float</code></td>
+            <td><code>0.5</code></td>
+            <td><span class="zh">圆柱半径。它定义管状发光面的粗细，不是亮度范围；调试时要和 length、transform、intensity、exposure 分开看。</span><span class="en">The radius of the cylinder.</span></td>
+          </tr>
+          <tr>
+            <td><code>light:shaderId</code></td>
+            <td><code>token</code></td>
+            <td><code>CylinderLight</code></td>
+            <td><span class="zh">`CylinderLight` 的 shader ID。USD 会注册 identifier 为 `CylinderLight`、source type 为 `USD` 的 `Sdr` shader node，对应该灯光 inputs；该 token 必须原样保留。</span><span class="en">Shader ID for a `CylinderLight`; USD registers a matching `Sdr` shader node.</span></td>
+          </tr>
+          <tr>
+            <td><code>treatAsLine</code></td>
+            <td><code>bool</code></td>
+            <td><code>False</code></td>
+            <td><span class="zh">给 renderer 的 line-light 提示。若 renderer 支持 non-area lighting，可把灯视为 zero-radius cylinder；只支持 area lights 的 renderer 会忽略它。</span><span class="en">Hint that the light may be treated as a line light, effectively a zero-radius cylinder.</span></td>
+          </tr>
+        </tbody>
+      </table>
     </section>
-    <section data-cn-refinement="usdLux-schema-quality-pass-004">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 CylinderLight 补充中文优先的用途说明、属性阅读重点和术语对照；英文页面名、链接、代码、命令和原文摘录继续保留，便于和官方 usdLux schema 文档核对。</p>
-      <p class="en">This section adds Chinese-first usage notes, property reading guidance, and terminology for CylinderLight while retaining the English page name, links, code, commands, and source excerpts for comparison with the official usdLux schema documentation.</p>
+
+    <section>
+      <h2>继承属性阅读 / Inherited Properties</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Inherited from</th>
+            <th>Property</th>
+            <th>USD type / fallback</th>
+            <th>中文说明 / Chinese Reading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>Boundable</code></td>
+            <td><code>extent</code></td>
+            <td><code>float3[]</code></td>
+            <td><span class="zh">边界数据，帮助工具、视图和某些 renderer 理解这个可包围 prim 的空间范围。对圆柱灯而言，它和 length/radius/transform 的关系影响包围盒和选择调试。</span><span class="en">Bounds data inherited from `Boundable`.</span></td>
+          </tr>
+          <tr>
+            <td><code>Xformable</code></td>
+            <td><code>xformOpOrder</code></td>
+            <td><code>token[]</code></td>
+            <td><span class="zh">变换操作顺序。官方示例使用 `xformOp:translate` 和 `xformOp:rotateXYZ`；如果光带位置或方向不对，应先检查这里和父层级 transform。</span><span class="en">Transform operation order inherited from `Xformable`.</span></td>
+          </tr>
+          <tr>
+            <td><code>Imageable</code></td>
+            <td><code>proxyPrim</code></td>
+            <td><code>rel</code> relationship</td>
+            <td><span class="zh">代理 prim 关系，可能参与显示或代理工作流。它不改变 `CylinderLight` 的发光 schema，但会影响某些视图中的阅读路径。</span><span class="en">Proxy relationship inherited from `Imageable`.</span></td>
+          </tr>
+          <tr>
+            <td><code>Imageable</code></td>
+            <td><code>purpose</code></td>
+            <td><code>token</code> / <code>default</code></td>
+            <td><span class="zh">用途 token，fallback 为 `default`。当流程按 purpose 过滤对象时，需要确认该灯是否仍在目标渲染或预览集合中。</span><span class="en">Purpose token inherited from `Imageable`.</span></td>
+          </tr>
+          <tr>
+            <td><code>Imageable</code></td>
+            <td><code>visibility</code></td>
+            <td><code>token</code> / <code>inherited</code></td>
+            <td><span class="zh">可见性 token，fallback 为 `inherited`。父层级或 stronger layer 的 invisible opinion 可能让灯无法按预期参与场景。</span><span class="en">Visibility token inherited from `Imageable`.</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>官方示例理解 / Official USDA Example</h2>
+      <p class="zh">官方示例的核心是：在 `Scope "Lights"` 下定义 `CylinderLight "Light1"`，设置 `inputs:length = 3`、`inputs:radius = 0.25`、`inputs:shaping:cone:angle = 45`、白色 `inputs:color`、`inputs:intensity = 20.0`，再用 `xformOp:rotateXYZ = (0, 0, 45)` 和 `xformOp:translate = (0, 0, 1)` 放置灯。随后 `Xform "TestGeom"` 下的 `Sphere` 和 `Cube` 用于观察管状光和窄光带效果。这个示例保留了属性名、prim 名和 transform token，中文只解释职责和调试顺序。</p>
+      <p class="en">The official USDA example positions a `CylinderLight` near a sphere and cube, with length 3, radius 0.25, and shaping/transform controls.</p>
+      <pre><code>#usda 1.0
+(
+    upAxis = "Y"
+)
+
+def Scope "Lights"
+{
+    def CylinderLight "Light1"
+    {
+        float inputs:length = 3
+        float inputs:radius = 0.25
+        float inputs:shaping:cone:angle = 45
+        color3f inputs:color = (1, 1, 1)
+        float inputs:intensity = 20.0
+        float3 xformOp:rotateXYZ = (0, 0, 45)
+        double3 xformOp:translate = (0, 0, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+    }
+}</code></pre>
+      <p class="zh">如果渲染结果不是窄光带，先检查 `inputs:shaping:cone:angle` 是否被目标 renderer 支持，再检查 `xformOp:rotateXYZ` 和 `xformOpOrder` 是否让局部 X 轴圆柱处于预期方向。若形状不对，检查 `inputs:length` 和 `inputs:radius`；若亮度不对，检查 `inputs:intensity`、`inputs:color`、曝光和单位；若完全不显示，检查 `visibility`、`purpose`、payload、variant 和 layer composition。</p>
+      <p class="en">Use the example to separate shape inputs, shaping controls, transform placement, energy/color, and composition visibility.</p>
+    </section>
+
+    <section>
+      <h2>边界与相邻页面 / Boundaries and Adjacent Pages</h2>
       <ul>
-        <li><span class="zh">CylinderLight 是从圆柱侧面向外发光的 intrinsic light，圆柱默认以原点为中心、主轴沿 X 轴；注意它不从两端 flat end-caps 发光。</span></li>
-        <li><span class="zh">该 schema 适合表达管状荧光灯、线性灯、灯板以及建筑室内常见的商业照明；阅读时应把 length、radius、旋转和 light cone angle 一起理解为控制光源形状与照射范围的参数组。</span></li>
-        <li><span class="zh">示例中 CylinderLight 靠近 Sphere 与 Cube，长度为 3、半径为 0.25，并通过旋转和收窄 light cone angle 得到较窄的光带；中文层只解释效果，不改动属性名。</span></li>
-        <li><span class="zh">后续段落级翻译应继续补齐继承关系、UsdLux LightAPI 通用属性和渲染器如何解释面积光采样之间的关系。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">圆柱灯：</span><span class="en">CylinderLight</span></li>
-        <li><span class="zh">内建光源 schema：</span><span class="en">intrinsic light</span></li>
-        <li><span class="zh">圆柱端盖：</span><span class="en">flat end-caps</span></li>
-        <li><span class="zh">光锥角：</span><span class="en">light cone angle</span></li>
-        <li><span class="zh">管状荧光灯：</span><span class="en">tube-shaped fluorescent lights</span></li>
+        <li><span class="zh"><a href="SphereLight.html">SphereLight</a>：用于球形或点状局部光；如果目标是灯泡、头灯或点光近似，通常比 `CylinderLight` 更合适。</span><span class="en">Use `SphereLight` for spherical or point-like emitters.</span></li>
+        <li><span class="zh"><a href="RectLight.html">RectLight</a>：用于矩形面光、soft box、灯板或贴图矩形光；它不是圆柱侧面发光。</span><span class="en">Use `RectLight` for rectangular area emitters.</span></li>
+        <li><span class="zh"><a href="DiskLight.html">DiskLight</a>：用于圆盘发光面；不要把圆盘端盖发光误读成 `CylinderLight` 的 end-cap emission。</span><span class="en">Use `DiskLight` for circular disk emission.</span></li>
+        <li><span class="zh"><a href="ShapingAPI.html">ShapingAPI</a>：控制 cone、focus、IES 等发射塑形；`CylinderLight` 示例中的 `inputs:shaping:cone:angle` 属于这类读法。</span><span class="en">Use `ShapingAPI` for emission shaping controls.</span></li>
+        <li><span class="zh"><a href="ShadowAPI.html">ShadowAPI</a>：控制阴影距离、falloff、颜色等艺术属性；不要把 shadow 行为写入 `CylinderLight` 本体属性。</span><span class="en">Use `ShadowAPI` for shadow controls.</span></li>
+        <li><span class="zh"><a href="LightAPI.html">LightAPI</a>：管理通用 light 行为、linking 和 collection 语义；`CylinderLight` 只定义具体管状发光几何。</span><span class="en">Use `LightAPI` for common light behavior and linking semantics.</span></li>
       </ul>
     </section>
-    <section data-cn-refinement="release-quality-pass-104">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`CylinderLight` 是从 cylinder 侧面向外发光的 intrinsic light，默认圆柱中心在原点、major axis 位于 X axis。阅读时要特别注意：它不从 flat end-caps 发光，示例通过 `inputs:length`、`inputs:radius` 和 `inputs:shaping:cone:angle` 控制光带形状。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for CylinderLight while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+
+    <section>
+      <h2>术语对照 / Terms</h2>
       <ul>
-        <li><span class="zh">官方摘要里的 `does not emit light from the flat end-caps` 是核心约束。翻译时应明确只有圆柱侧面发光，不能把它解释成两端也发光的封闭体积光源。</span></li>
-        <li><span class="zh">`inputs:length = 3` 和 `inputs:radius = 0.25` 分别决定圆柱发光体长度和半径；它们与 transform 一起决定灯光在场景中的可见形状和照明范围。</span></li>
-        <li><span class="zh">`inputs:shaping:cone:angle = 45` 与 `xformOp:rotateXYZ` 共同让示例光带变窄。中文说明应保留 shaping 属性名，因为它属于 `usdLux` 灯光 shaping 语义的一部分。</span></li>
-        <li><span class="zh">`CylinderLight` 可模拟 tube-shaped fluorescent lights、linear lights、light panels 和 building interiors 中的 commercial lighting。保留这些英文用途词有助于和 DCC/renderer UI 对齐。</span></li>
-        <li><span class="zh">在与 `DiskLight`、`RectLight` 对比时，本页重点是线性/管状面积光；如果需要表达点光或球形光，应转向 `SphereLight`，不要滥用 `CylinderLight`。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">圆柱光源：</span><span class="en">CylinderLight</span></li>
+        <li><span class="zh">圆柱内建灯：</span><span class="en">intrinsic cylindrical light / `CylinderLight`</span></li>
+        <li><span class="zh">圆柱侧面向外发光：</span><span class="en">emits light outwards from a cylinder</span></li>
         <li><span class="zh">主轴：</span><span class="en">major axis</span></li>
-        <li><span class="zh">圆柱端盖：</span><span class="en">flat end-caps</span></li>
-        <li><span class="zh">长度输入属性：</span><span class="en">inputs:length</span></li>
-        <li><span class="zh">光锥角输入属性：</span><span class="en">inputs:shaping:cone:angle</span></li>
+        <li><span class="zh">局部 X 轴：</span><span class="en">local X axis</span></li>
+        <li><span class="zh">端盖：</span><span class="en">flat end-caps</span></li>
+        <li><span class="zh">长度输入属性：</span><span class="en">`inputs:length`</span></li>
+        <li><span class="zh">半径输入属性：</span><span class="en">`inputs:radius`</span></li>
+        <li><span class="zh">线光提示：</span><span class="en">`treatAsLine`</span></li>
+        <li><span class="zh">零半径圆柱：</span><span class="en">zero-radius cylinder</span></li>
         <li><span class="zh">管状荧光灯：</span><span class="en">tube-shaped fluorescent lights</span></li>
       </ul>
     </section>
+
     <section>
-      <h2>页面结构 / Page Structure</h2>
+      <h2>官方核对摘录 / Official Source Checkpoints</h2>
       <ul>
-<li><span class="zh">第 1 级标题：CylinderLight</span><span class="en">CylinderLight</span></li>
+        <li><span class="zh">官方标题为 `CylinderLight`，定义它从 cylinder 向外发光，centered at the origin，major axis on the X axis，并明确 flat end-caps 不发光。</span><span class="en">Official summary: outward emission from a cylinder whose major axis is the X axis, with no end-cap emission.</span></li>
+        <li><span class="zh">官方用途包括 tube-shaped fluorescent lights、similarly-shaped light sources、linear lights、light panels 和 commercial lighting used in building interiors。</span><span class="en">Official usage examples cover tube, line, panel, and commercial interior lighting.</span></li>
+        <li><span class="zh">官方示例包含 `CylinderLight "Light1"`、`inputs:length = 3`、`inputs:radius = 0.25`、`inputs:shaping:cone:angle = 45`、`xformOp:rotateXYZ` 和 `xformOp:translate`；本页保留这些 token 和代码语义。</span><span class="en">The official USDA example is preserved as technical reference.</span></li>
+        <li><span class="zh">官方 `Properties` 和 inherited sections 已覆盖：`inputs:length`、`inputs:radius`、`light:shaderId`、`treatAsLine`、`extent`、`xformOpOrder`、`proxyPrim`、`purpose`、`visibility`。</span><span class="en">All local and inherited properties listed by the official page are covered.</span></li>
       </ul>
     </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">An intrinsic light that emits light outwards from a cylinder. The cylinder is centered at the origin and has its major axis on the X axis. Note that the cylinder does not emit light from the flat end-caps.</p>
-<p class="en">Use CylinderLights to simulate tube-shaped fluorescent lights or similarly-shaped light sources, linear lights, light panels, and commercial lighting used in building interiors.</p>
-<p class="en">The following simple example has a CylinderLight positioned near a Sphere and Cube, with a length of 3 and a radius of 0.25. The light has been rotated and the light cone angle adjusted to limit the light spread, resulting in a thin band of light.</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>#usda 1.0 ( upAxis = &quot;Y&quot; ) def Scope &quot;Lights&quot; { def CylinderLight &quot;Light1&quot; { float inputs:length = 3 float inputs:radius = 0.25 float inputs:shaping:cone:angle = 45 color3f inputs:color = ( 1 , 1 , 1 ) float inputs:intensity = 20.0 float3 xformOp:rotateXYZ = ( 0 , 0 , 45 ) double3 xformOp:translate = ( 0 , 0 , 1 ) uniform token[] xformOpOrder = [ &quot;xformOp:translate&quot; , &quot;xformOp:rotateXYZ&quot; ] } } def Xform &quot;TestGeom&quot; { def Sphere &quot;Sphere1&quot; { token purpose = &quot;render&quot; color3f[] primvars:displayColor = [( 1 , 1 , 1 )]...</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li>No same-site document links extracted.</li>
-      </ul>
-    </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="../../../../../site/release_index.html">Release 本地入口 / Local release entry</a></p>
       <p><a href="https://openusd.org/release/user_guides/schemas/usdLux/CylinderLight.html">打开官方原页 / Open official page</a></p>
     </section>
   </main>
