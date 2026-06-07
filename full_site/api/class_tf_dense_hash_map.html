@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：TfDenseHashMap&lt; Key, Data, HashFn, EqualKey, Threshold &gt; Class Template / TfDenseHashMap&lt; Key, Data, HashFn, EqualKey, Threshold &gt; Class Template</title>
+  <title>完整双语参考：TfDenseHashMap&lt; Key, Data, HashFn, EqualKey, Threshold &gt; Class Template / TfDenseHashMap&lt; Key, Data, HashFn, EqualKey, Threshold &gt; Class Template</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -19,20 +19,47 @@
     ul{padding-left:22px}
     li{margin:8px 0}
     code{font-family:"Cascadia Mono","Consolas",monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：TfDenseHashMap&lt; Key, Data, HashFn, EqualKey, Threshold &gt; Class Template / TfDenseHashMap&lt; Key, Data, HashFn, EqualKey, Threshold &gt; Class Template</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：TfDenseHashMap&lt; Key, Data, HashFn, EqualKey, Threshold &gt; Class Template / TfDenseHashMap&lt; Key, Data, HashFn, EqualKey, Threshold &gt; Class Template</h1>
     <div class="meta">https://openusd.org/release/api/class_tf_dense_hash_map.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页处理：中文优先解释 `TfDenseHashMap&lt; Key, Data, HashFn, EqualKey, Threshold &gt;` 的容器目标、模板参数、类型别名、迭代器、插入/查找/删除路径、`Threshold` 带来的存储策略边界，以及在 OpenUSD Tf 工具层中的实际使用和调试含义。英文 API 名称、模板参数、方法名、类型名、链接和官方摘录保留原样，便于与 Doxygen 页面核对。</p>
+      <p class="en">This page is promoted as a complete bilingual reference. It explains TfDenseHashMap container goals, template parameters, typedefs, iterators, insertion, lookup, erasure, Threshold-driven storage behavior, and debugging boundaries while preserving official API names and excerpts.</p>
+    </section>
+    <section data-cn-complete="tf-dense-hash-map-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`TfDenseHashMap&lt; Key, Data, HashFn, EqualKey, Threshold &gt;` 是 Tf 工具层里的空间效率优先 map 容器。官方说明说它 mimics the `TfHashMap` API，并在 map 较小时用 vector for storage。这里的重点不是“又一个通用 hash map”，而是面向大量小型映射的内存布局优化：当元素数量低于 `Threshold` 时，vector 形式可以减少 hash table bucket 和节点分配开销；当使用规模变大时，调用方仍按 map-like API 写代码。</p>
+      <p class="en">TfDenseHashMap is a space-efficient map-like container in the Tf layer. It mimics the TfHashMap API and uses vector storage when the map size is small.</p>
+      <p class="zh">模板参数决定了这个容器的行为边界。`Key` 是键类型，`Data` 是映射值类型，`HashFn` 负责 key hashing，`EqualKey` 负责 key equality，`Threshold` 控制小规模存储策略的阈值。自定义 key 类型时，`HashFn` 与 `EqualKey` 必须语义一致：如果两个 key 被 `EqualKey` 判为相等，它们的 hash 也必须满足容器期望，否则 `find()`、`insert()`、`count()` 看到的结果会和业务逻辑不一致。</p>
+      <p class="en">The template parameters define key type, mapped value type, hashing, equality, and the small-map threshold.</p>
+      <p class="zh">`Threshold` 是本页最容易误读的参数。它不是“最大容量”，也不是性能保证，而是实现用来决定何时采用小型 vector-oriented representation 的策略边界。调高或调低 `Threshold` 会影响内存占用、线性扫描成本、hash 结构切换成本和迭代局部性。只有在确认数据规模分布后，才应把它作为性能调优点，而不应把默认值简单替换成更大或更小。</p>
+      <p class="en">Threshold is an implementation and tuning boundary, not a hard capacity or universal performance promise.</p>
+      <p class="zh">类型别名让它能被泛型容器代码消费：`key_type` 对应 `Key`，`mapped_type` 对应 `Data`，`value_type` 表示 key/value entry，`iterator` 与 `const_iterator` 表示可变和只读遍历，`insert_result` 表达插入是否发生以及对应位置。这些名称应保留英文原样，因为它们与 STL-style 容器习惯和调用方模板代码直接对齐。</p>
+      <p class="en">Typedefs such as key_type, mapped_type, value_type, iterator, const_iterator, and insert_result align this class with common STL-style container usage.</p>
+      <p class="zh">构造函数有多组 overload，覆盖默认构造、从迭代器范围构造、拷贝或按 hash/equality 策略构造等容器初始化场景。阅读 `TfDenseHashMap() [1/5]` 到 `[5/5]` 时，应关注输入范围、hash functor、equality functor 和已有数据复制的成本，而不是只看它们都叫 `TfDenseHashMap()`。对于热路径上的临时容器，构造来源和初始大小会直接影响小 map 优化是否真正有利。</p>
+      <p class="en">Constructor overloads cover default, range, copy, and policy-driven initialization patterns. The source data and functors determine real setup cost.</p>
+      <p class="zh">`begin()` / `end()` 及其 const overload 提供遍历入口，但遍历顺序不应被当作稳定业务语义。因为容器目标是 map-like lookup，而不是有序列表；当内部表示从 vector 策略切换到 hash-oriented 策略时，entry 顺序可能不适合写入文件、生成 deterministic UI 或做可复现测试。需要稳定顺序时，调用方应显式排序 key。</p>
+      <p class="en">Iteration APIs provide traversal, but callers should not treat iteration order as a stable semantic contract.</p>
+      <p class="zh">查找与读取路径包括 `find()`、`count()`、`operator[]`、`empty()` 和 `size()`。`find()` 适合不想创建新 entry 的查询；`operator[]` 通常会在缺失 key 时创建默认值，这与只读查询不同；`count()` 对 map 来说通常用于判断是否存在；`empty()` 和 `size()` 用于判断容器状态。调试“查询改变了容器”这类问题时，首先检查是否误用了 `operator[]`。</p>
+      <p class="en">Lookup and state APIs include find(), count(), operator[], empty(), and size(). operator[] has different side effects from read-only lookup.</p>
+      <p class="zh">写入路径包括 `insert()`、`erase()` 和 `clear()`。`insert()` 的返回值需要结合 `insert_result` 理解：它不仅表示位置，也表示是否真的插入了新 key。`erase()` 有按 iterator、按 key 或按范围删除的 overload，错误选择 overload 可能造成迭代器失效或删除范围超出预期。`clear()` 只清空容器内容，不代表释放所有内部容量或重置调优策略。</p>
+      <p class="en">Mutation APIs include insert(), erase(), and clear(). insert_result and erase overloads must be interpreted carefully.</p>
+      <p class="zh">这个类的边界也要说清楚：它属于 Tf 底层 C++ 容器，不是 USD composition 数据结构，不会自动表达 layer opinion、stage metadata 或 schema property。它可以被 OpenUSD 内部代码用来存储小型 lookup table、token 到数据的映射或临时缓存，但持久化语义仍由调用方的数据结构决定。不要把 `TfDenseHashMap` 的 key/value 内容直接理解为 authored scene description。</p>
+      <p class="en">TfDenseHashMap is a C++ utility container, not authored USD composition data or schema metadata by itself.</p>
+      <p class="zh">性能调试时，应同时看元素数量分布、key/hash 成本、插入/删除频率、遍历是否需要稳定顺序、以及容器是否长期停留在 `Threshold` 附近。如果数据频繁跨越阈值，可能出现 representation 切换成本；如果 key hash 很贵，vector 小规模扫描反而可能更合适；如果需要 deterministic order，则应在外层排序，而不是依赖当前内部布局。</p>
+      <p class="en">Performance diagnosis should consider element-count distribution, hash and equality cost, mutation frequency, iteration order requirements, and Threshold boundary behavior.</p>
+      <p class="zh">并发边界也不能忽略。`TfDenseHashMap` 的页面没有把它声明为并发容器；多个线程共享读写时，仍需要外部同步。尤其是在缓存、registry 或 adapter 辅助结构中使用它时，不要因为名字里有 `Dense` 或 `HashMap` 就假设线程安全、锁自由或可在 mutation 期间安全迭代。</p>
+      <p class="en">The class should not be assumed to be thread-safe. Shared mutation and iteration require caller-side synchronization.</p>
+      <p class="zh">常见排查路径是：先确认 key 的 `HashFn` 与 `EqualKey` 是否一致；再检查是否用 `operator[]` 造成意外插入；然后看元素数量是否长期接近 `Threshold`；接着确认 erase 后 iterator 是否继续被使用；最后再判断是否需要稳定排序或外部锁。这样能把大多数 lookup miss、重复 key、内存增长、迭代顺序变化和缓存竞争问题定位到调用约定。</p>
+      <p class="en">A practical debugging path is hash/equality consistency, operator[] side effects, Threshold behavior, iterator invalidation, ordering assumptions, and synchronization.</p>
     </section>
     <section data-cn-refinement="api-class-quality-pass-043">
       <h2>中文精修导读 / Chinese Reading Notes</h2>
