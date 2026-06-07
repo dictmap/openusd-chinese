@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-07T17:43:02.376Z
+Generated: 2026-06-07T17:55:46.281Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 317
-- bilingual_complete: 89
+- bilingual_draft: 316
+- bilingual_complete: 90
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 306
-- good_bilingual: 89
+- draft_needs_translation: 305
+- good_bilingual: 90
 
 ## Current Focus Batch
 
@@ -367,7 +367,7 @@ Generated: 2026-06-07T17:43:02.376Z
 | 301 | draft_needs_translation | bilingual_draft | 567 | 24/16 | 0 | 0 | `full_site/release/spec.html` |
 | 302 | good_bilingual | bilingual_complete | 2519 | 157/199 | 0 | 0 | `site/toolset.html` |
 | 303 | good_bilingual | bilingual_complete | 2106 | 45/45 | 0 | 0 | `full_site/release/tut_authoring_variants.html` |
-| 304 | draft_needs_translation | bilingual_draft | 604 | 26/20 | 0 | 0 | `full_site/release/tut_converting_between_layer_formats.html` |
+| 304 | good_bilingual | bilingual_complete | 2127 | 37/17 | 0 | 0 | `full_site/release/tut_converting_between_layer_formats.html` |
 | 305 | good_bilingual | bilingual_complete | 2174 | 49/49 | 0 | 0 | `full_site/release/tut_end_to_end.html` |
 | 306 | good_bilingual | bilingual_complete | 2057 | 38/18 | 0 | 0 | `full_site/release/tut_generating_new_schema.html` |
 | 307 | draft_needs_translation | bilingual_draft | 566 | 24/18 | 0 | 0 | `full_site/release/tut_helloworld_redux.html` |

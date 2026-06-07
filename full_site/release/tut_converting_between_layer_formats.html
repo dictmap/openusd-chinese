@@ -3,110 +3,294 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：Converting Between Layer Formats / Converting Between Layer Formats</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <title>完整双语参考：Converting Between Layer Formats / Converting Between Layer Formats</title>
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
-    header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
-    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
-    h1{margin:0;font-size:30px;letter-spacing:0}
-    h2{margin:0 0 12px;font-size:22px}
-    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
-    .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
-    a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
-    li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --ink: #172033;
+      --muted: #5d6d82;
+      --line: #dbe4ef;
+      --blue: #0b63ce;
+      --green: #1b7f5a;
+      --amber: #9a6500;
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 16px/1.72 -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+    }
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 22px 56px;
+    }
+    header, section, nav {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      margin: 0 0 18px;
+    }
+    h1, h2, h3 {
+      margin: 0 0 12px;
+      line-height: 1.28;
+    }
+    h1 {
+      font-size: 2rem;
+    }
+    h2 {
+      font-size: 1.35rem;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+    p {
+      margin: 10px 0;
+    }
+    ul, ol {
+      margin: 8px 0 0 1.4rem;
+      padding: 0;
+    }
+    li {
+      margin: 8px 0;
+    }
+    a {
+      color: var(--blue);
+    }
+    code, pre {
+      font-family: "Cascadia Code", Consolas, monospace;
+      font-size: .95em;
+    }
+    pre {
+      background: #101827;
+      color: #edf4ff;
+      padding: 14px 16px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    .status {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      color: var(--green);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .badge {
+      display: inline-block;
+      border-radius: 999px;
+      background: #e8f5ef;
+      color: var(--green);
+      padding: 3px 10px;
+      font-size: .86rem;
+      font-weight: 700;
+    }
+    .note {
+      border-left: 4px solid var(--amber);
+      padding-left: 14px;
+      background: #fff8e7;
+      color: #3c4658;
+    }
+    .pair {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+      gap: 16px;
+      margin: 16px 0;
+    }
+    .zh, .en {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px 16px;
+      background: #fbfdff;
+    }
+    .zh {
+      border-left: 4px solid var(--green);
+    }
+    .en {
+      color: var(--muted);
+      border-left: 4px solid #9fb3c8;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 12px;
+    }
+    .item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: #fbfdff;
+    }
+    @media (max-width: 760px) {
+      .pair {
+        grid-template-columns: 1fr;
+      }
+      main {
+        padding: 18px 12px 40px;
+      }
+    }
   </style>
 </head>
 <body>
+<main>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：Converting Between Layer Formats / Converting Between Layer Formats</h1>
-    <div class="meta">https://openusd.org/release/tut_converting_between_layer_formats.html</div>
+    <div class="status"><span class="badge">bilingual_complete</span><span>完整双语参考 / Complete bilingual reference</span></div>
+    <h1>Converting Between Layer Formats</h1>
+    <p class="zh">本页把官方 Converting Between Layer Formats 教程整理为中文主阅读路径，并保留 `.usd`、`.usda`、`.usdc`、`usdcat`、`usddiff`、`--usdFormat`、`Sphere.usda` 等技术标识。核心不是“随便改扩展名”，而是区分文件扩展名、底层 layer 格式、真实格式转换和语义等价验证。</p>
+    <p class="en">This page provides a Chinese-first reading path for the official Converting Between Layer Formats tutorial while retaining the USD file extensions, tool names, options, and sample filenames needed for comparison.</p>
+    <p><a href="https://openusd.org/release/tut_converting_between_layer_formats.html">官方原页 / Open official page</a></p>
   </header>
-  <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section data-cn-refinement="release-tutorial-quality-pass-002">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Converting Between Layer Formats 补充中文优先的阅读路径和术语说明；英文页面名、链接、代码、命令和原文摘录继续保留，用于和官方文档逐项对照。</p>
-      <p class="en">This section adds Chinese-first reading guidance for Converting Between Layer Formats while retaining the English page name, links, code, commands, and source excerpts for comparison with the official documentation.</p>
-      <ul>
-        <li><span class="zh">本教程说明 USD 原生 layer 文件格式之间如何互转，重点是 .usda、.usdc 与 .usd 三种扩展名的语义差异。</span></li>
-        <li><span class="zh">usdcat 不只是查看 layer 内容的命令，也可以通过 -o 输出参数把同一份 layer 写成目标格式；命令、flag 和文件名必须保持英文原样。</span></li>
-        <li><span class="zh">.usd 扩展名本身可以承载文本或二进制格式，USD 打开文件时会检测底层格式；因此不要简单把 .usd 理解为单一编码方式。</span></li>
-        <li><span class="zh">这页适合和 toolset.html 一起读：前者解释格式转换场景，后者列出 usdcat 及相关命令选项的完整工具入口。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">层文件格式：</span><span class="en">layer format</span></li>
-        <li><span class="zh">USD 文本格式：</span><span class="en">.usda</span></li>
-        <li><span class="zh">USD crate 二进制格式：</span><span class="en">.usdc</span></li>
-        <li><span class="zh">自动检测的 USD 文件扩展名：</span><span class="en">.usd</span></li>
-        <li><span class="zh">usdcat 输出转换参数：</span><span class="en">usdcat -o</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-112">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`Converting Between Layer Formats` 说明如何在 `.usda`、`.usdc` 和 `.usd` 等原生 USD layer 格式之间转换。核心工具是 `usdcat`：它既能查看 layer 内容，也能通过 `-o` 输出参数把同一 layer 写成目标格式。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for Converting Between Layer Formats while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`.usda` 是可读的文本 layer 格式，适合 diff、教学和人工检查；`.usdc` 是 crate 二进制格式，通常更适合大规模资产的读取效率和发布体积。</span></li>
-        <li><span class="zh">`.usd` 是通用扩展名，底层可以是文本或二进制；USD 打开文件时会检测实际格式，因此不要把 `.usd` 简化理解成某一种固定编码。</span></li>
-        <li><span class="zh">`usdcat Sphere.usda` 用于查看 layer 内容；`usdcat input.usda -o output.usdc` 这类命令用于转换输出。命令、flag、扩展名和文件名都应保留英文原样。</span></li>
-        <li><span class="zh">格式转换不应该改变 USD scene 的语义；如果转换后内容表现不同，应优先检查 layer 内容、资产路径、插件可用性或外部依赖，而不是只看扩展名。</span></li>
-        <li><span class="zh">本页适合和 toolset、usdchecker、usddiff 等工具页一起读：一个解释格式转换，一个解释验证和差异检查，共同支撑发布流程。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">USD 文本 layer 格式：</span><span class="en">.usda</span></li>
-        <li><span class="zh">USD crate 二进制 layer 格式：</span><span class="en">.usdc</span></li>
-        <li><span class="zh">可自动检测底层格式的 USD 扩展名：</span><span class="en">.usd</span></li>
-        <li><span class="zh">查看和转换 USD layer 的命令行工具：</span><span class="en">usdcat</span></li>
-        <li><span class="zh">输出目标参数：</span><span class="en">-o</span></li>
-        <li><span class="zh">层文件格式：</span><span class="en">layer format</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：Converting Between Layer Formats</span><span class="en">Converting Between Layer Formats</span></li>
-<li><span class="zh">第 2 级标题：Converting between .usda / .usdc and .usd</span><span class="en">Converting between .usda / .usdc and .usd</span></li>
-<li><span class="zh">第 2 级标题：Converting between .usda and .usdc Files</span><span class="en">Converting between .usda and .usdc Files</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">This tutorial walks through converting layer files between the different native USD file formats .</p>
-<p class="en">The usdcat tool is useful for inspecting these files, but it can also convert files between the different formats by using the -o option and supplying a filename with the extension of the desired output format. Here are some examples of how to do this.</p>
-<p class="en">A .usd file can be either a text or binary format file. When USD opens a .usd file, it detects the underlying format and handles the file appropriately. You can convert any .usda or .usdc file to a .usd file simply by renaming it. For example:</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>$ usdcat Sphere.usda #usda 1.0 def Sphere &quot;sphere&quot; { }</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Configure your Environment</a></li>
-<li><a href="https://github.com/PixarAnimationStudios/OpenUSD/tree/v26.05">USD 26.05</a></li>
-<li><a href="usdfaq.html" data-local-route="mapped" data-official-href="https://openusd.org/release/usdfaq.html">different native USD file formats</a></li>
-<li><a href="../../site/toolset.html" data-local-route="mapped" data-official-href="https://openusd.org/release/toolset.html">usdcat</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/tut_converting_between_layer_formats.html">打开官方原页 / Open official page</a></p>
-    </section>
-  </main>
+
+  <section data-cn-complete="release-tutorial-converting-layer-formats-main-reading-path">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+
+    <div class="pair">
+      <p class="zh">这页要先区分三个概念：文件名扩展、底层编码格式和 USD layer 内容。`.usda` 通常表示文本格式，`.usdc` 表示二进制 crate 格式，`.usd` 是通用扩展名，可以包装文本或二进制底层格式。USD 打开 `.usd` 文件时会检测真实底层格式，而不是只看扩展名。因此，某些场景只需要重命名，某些场景必须用工具重新写出目标格式。</p>
+      <p class="en">The important distinction is between filename extension, underlying file format, and layer content. A `.usd` file may contain either text or binary USD data, and USD detects the actual underlying format when opening it.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">官方说明 `usdcat` 既可以检查 layer 文件，也可以通过 `-o` 写出新文件。输出文件的扩展名决定了常规转换目标：把 `.usda` 写成 `.usdc` 会得到二进制文件，把 `.usdc` 写成 `.usda` 会得到文本文件。这里的转换不是改变 scene 描述语义，而是把同一套 layer 内容重新编码成另一个存储格式。</p>
+      <p class="en">`usdcat` can inspect layer files and can also write converted files with `-o`. The output filename extension usually selects the target storage format.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">第一类情况是 `.usda/.usdc` 与 `.usd` 之间的重命名。给定 `Sphere.usda`，可以直接重命名为 `Sphere.usd`；USD 打开 `Sphere.usd` 时会识别它仍是文本格式。同理，底层是 `.usdc` 的文件也可以重命名为 `.usd`。反过来，如果某个 `.usd` 文件的底层格式是文本，可以重命名为 `.usda`；如果底层格式是二进制，可以重命名为 `.usdc`。这一步不重写内容，只改变文件名。</p>
+      <p class="en">The first case is renaming between `.usda` or `.usdc` and `.usd` without changing the underlying storage. USD detects the actual file format when reading `.usd` files.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">第二类情况是 `.usda` 与 `.usdc` 之间的真实转换。官方示例从 `USD/extras/usd/tutorials/convertingLayerFormats` 中的 `Sphere.usda` 开始，它是文本文件，可以用任意文本编辑器或 `usdcat Sphere.usda` 查看。要生成二进制文件，使用 `usdcat -o NewSphere.usdc Sphere.usda`；要再转回文本，使用 `usdcat -o NewSphere.usda NewSphere.usdc`。这里发生了实际编码转换。</p>
+      <p class="en">The second case is real conversion between `.usda` and `.usdc`. `usdcat -o NewSphere.usdc Sphere.usda` writes binary output, and `usdcat -o NewSphere.usda NewSphere.usdc` writes text output.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">转换后必须验证语义一致性。官方用 `usddiff Sphere.usda NewSphere.usdc` 和 `usddiff NewSphere.usdc NewSphere.usda` 检查两个文件是否描述同一层内容。这里不要用普通文本 diff 去比较二进制和文本，也不要只看文件大小；`usddiff` 理解 USD layer 语义，适合判断转换是否保持 scene 描述一致。</p>
+      <p class="en">After conversion, use `usddiff` to verify that two files describe equivalent USD layer content instead of relying on byte size or a plain text diff.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">第三类情况是 `.usd` 文件之间的底层格式转换。因为 `.usd` 扩展名本身不说明是文本还是二进制，所以如果想让输出仍叫 `.usd`，但底层格式换成指定类型，就要用 `usdcat --usdFormat`。例如从文本底层的 `Sphere.usd` 生成二进制底层的 `NewSphere_binary.usd`，命令是 `usdcat -o NewSphere_binary.usd --usdFormat usdc Sphere.usd`。</p>
+      <p class="en">The third case is converting between `.usd` files with different underlying formats. Use `--usdFormat` when the output extension stays `.usd` but the storage format should change.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">反向操作同理：如果要把二进制底层的 `.usd` 转为文本底层的 `.usd`，使用 `usdcat -o NewSphere_text.usd --usdFormat usda NewSphere_binary.usd`，再用 `usddiff NewSphere_binary.usd NewSphere_text.usd` 验证。这个流程特别适合需要保持 `.usd` 统一扩展名、但在调试或发布阶段切换文本/二进制存储的团队。</p>
+      <p class="en">The reverse uses `--usdFormat usda` to write a text-backed `.usd` file, followed by `usddiff` to confirm semantic equivalence.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">实践中选择格式要看目的。文本 `.usda` 可读性高，适合教学、代码审查、调试和小型示例；二进制 `.usdc` 通常更适合发布、缓存和较大数据；`.usd` 则适合隐藏底层选择并让工具自动检测。转换工具不会替你解决资产路径、相对路径、外部引用或 package 组织问题，所以格式转换前后仍要检查 layer 内容和依赖路径。</p>
+      <p class="en">Format choice depends on purpose: `.usda` is readable, `.usdc` is usually better for binary storage, and `.usd` lets tools detect the underlying format automatically.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">最常见误读是把扩展名当成格式本身。`.usd` 只是一个通用入口，不等于“某种第三格式”。如果你只想把 `Sphere.usda` 交给要求 `.usd` 扩展名的工具，可以重命名；如果你想把文本编码变成二进制编码，需要 `usdcat -o`；如果你想输出仍为 `.usd` 但底层指定为 usda 或 usdc，需要 `--usdFormat`。这三种操作的意图不同，不能混用。</p>
+      <p class="en">A common mistake is treating `.usd` as a distinct storage format. It is a generic extension; renaming, converting, and forcing an underlying format are different operations.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">本页的验证标准也应具体：命令成功退出只说明文件写出成功，不说明转换语义正确。稳妥流程是先用 `usdcat` 查看输入，执行转换，再用 `usddiff` 比较输入与输出，必要时再用 usdview 打开结果做人工检查。对于进入版本库或发布管线的文件，还应记录转换命令和源文件，避免以后无法解释某个 `.usd` 文件底层到底是文本还是二进制。</p>
+      <p class="en">A robust workflow inspects the input, performs the conversion, compares semantic equivalence with `usddiff`, and optionally opens the result in usdview for manual inspection.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">在团队流程中，格式选择通常是约定而不是个人偏好。源资产、教学示例和代码评审样本常用 `.usda`，因为文本内容能直接看出 prim、attribute、relationship 和 metadata；生产缓存、几何较大或频繁读取的 layer 常用 `.usdc`，因为二进制更适合工具处理；`.usd` 常用于对外暴露统一扩展名，让读者不必关心底层格式。转换时要遵守团队约定，不要让同一目录里混入含义不清的同名变体。</p>
+      <p class="en">In production, format choice is usually a pipeline convention. Text is useful for review, binary for storage and performance, and `.usd` for a neutral extension that hides the underlying choice.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">CI 或发布脚本中应把 `usddiff` 当作转换验收门槛，而不是只检查目标文件是否存在。比如从 `.usda` 生成 `.usdc` 后，脚本可以运行 `usddiff source.usda target.usdc`；从 `.usd` 文本底层转成 `.usd` 二进制底层后，也应比较两个 `.usd` 的语义。这样可以防止路径写错、源文件拿错、空文件覆盖或转换脚本误用旧产物。</p>
+      <p class="en">CI or publishing scripts should use `usddiff` as a semantic acceptance check, not just check that an output file was created.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">格式转换通常不会改变 layer 中的 asset path、reference、payload、subLayer 或 metadata 值。也就是说，如果源文件里有相对路径或外部依赖，转换成 `.usdc` 或 `.usd` 并不会自动修复这些路径。发布前仍要确认输出文件放置位置是否改变了相对路径解释，必要时结合 `usdresolve`、`usdchecker` 或人工检查来验证依赖能被解析。</p>
+      <p class="en">Format conversion does not automatically rewrite asset paths, references, payloads, sublayers, or metadata values. Dependency resolution still needs separate validation.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">还有一种常见需求是“给人读”和“给机器读”之间切换。调试时可以把二进制 `.usdc` 或二进制底层 `.usd` 转成文本 `.usda` 或文本底层 `.usd`，便于检查属性和 composition arc；发布时再转回二进制。只要每次转换后 `usddiff` 通过，这种往返转换就是可控的；如果 `usddiff` 不通过，就必须先排查差异，而不是继续把文件交给下游。</p>
+      <p class="en">A common workflow converts binary files to text for review and back to binary for publishing, with `usddiff` guarding each round trip.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">因此，本页的中文阅读顺序是：先认清 `.usd` 是通用扩展名；再判断当前操作是重命名还是重编码；然后用 `usdcat -o` 或 `usdcat --usdFormat` 写出目标；最后用 `usddiff` 验证 layer 语义。只要抓住这条线，就不会把“文件名看起来变了”误认为“底层格式已经变了”，也不会把“二进制不可读”误认为“内容无法检查”。</p>
+      <p class="en">The reading order is: understand `.usd` as a neutral extension, decide whether renaming or re-encoding is needed, run the appropriate `usdcat` command, and verify with `usddiff`.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">也要知道什么时候不要转换。如果只是为了让工具接受 `.usd` 扩展名，且底层格式无需改变，直接重命名更简单，也不会引入重新写文件的风险。如果文件受版本控制且需要保留可读历史，贸然改成 `.usdc` 会让普通 diff 失效；如果文件很大且只用于运行时读取，长期保留 `.usda` 又可能增加存储和加载成本。格式转换应服务于审查、发布或工具兼容目标，而不是成为无意义的批处理步骤。</p>
+      <p class="en">It is also important to know when not to convert. Renaming may be sufficient for extension compatibility, while real re-encoding should serve review, publishing, or tool compatibility goals.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>执行顺序 / Execution Path</h2>
+    <ol>
+      <li class="zh">先判断目标：只是改成 `.usd` 扩展名，还是要在文本和二进制底层格式之间真正转换。</li>
+      <li class="zh">如果只是 `.usda/.usdc` 与 `.usd` 之间换扩展名，且底层格式保持不变，可以直接重命名。</li>
+      <li class="zh">如果要把 `.usda` 转成 `.usdc`，使用 `usdcat -o NewSphere.usdc Sphere.usda`。</li>
+      <li class="zh">如果要把 `.usdc` 转成 `.usda`，使用 `usdcat -o NewSphere.usda NewSphere.usdc`。</li>
+      <li class="zh">如果输出文件仍是 `.usd`，但要指定底层格式，使用 `usdcat -o target.usd --usdFormat usda/usdc source.usd`。</li>
+      <li class="zh">每次转换后用 `usddiff` 验证输入和输出是否语义一致。</li>
+      <li class="zh">进入发布或版本库前，记录转换命令、源文件和目标格式，方便后续排查。</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>关键命令 / Key Commands</h2>
+    <p class="zh">命令保留原样，便于直接和官方教程、终端输出以及脚本化流程对照。</p>
+    <pre><code>usdcat Sphere.usda
+usdcat -o NewSphere.usdc Sphere.usda
+usddiff Sphere.usda NewSphere.usdc
+
+usdcat -o NewSphere.usda NewSphere.usdc
+usddiff NewSphere.usdc NewSphere.usda
+
+usdcat -o NewSphere_binary.usd --usdFormat usdc Sphere.usd
+usddiff Sphere.usd NewSphere_binary.usd
+
+usdcat -o NewSphere_text.usd --usdFormat usda NewSphere_binary.usd
+usddiff NewSphere_binary.usd NewSphere_text.usd</code></pre>
+  </section>
+
+  <section>
+    <h2>常见误读与调试 / Common Misreadings And Debugging</h2>
+    <ul>
+      <li class="zh">如果只是把 `.usda` 改名为 `.usd`，底层仍是文本格式；不要把这一步误认为二进制转换。</li>
+      <li class="zh">如果需要真正生成二进制，输出扩展名用 `.usdc`，或在 `.usd` 输出时加 `--usdFormat usdc`。</li>
+      <li class="zh">如果需要人工审查或教学示例，转成 `.usda` 或 `--usdFormat usda` 更容易阅读。</li>
+      <li class="zh">如果 `usddiff` 报告差异，先检查转换前后是否真的使用了同一个源文件、是否引入了外部依赖路径变化。</li>
+      <li class="zh">如果工具链只接受 `.usd` 扩展名，仍要记录底层格式，避免后续使用者误判文件可读性或存储特性。</li>
+      <li class="zh">如果普通文本 diff 看不懂 `.usdc`，这是预期；应使用 `usddiff` 或 `usdcat` 这类理解 USD layer 的工具。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>术语与保留英文 / Terms Retained</h2>
+    <div class="grid">
+      <div class="item"><strong>.usda</strong><p class="zh">USD 文本 layer 格式，适合阅读、教学、审查和调试。</p></div>
+      <div class="item"><strong>.usdc</strong><p class="zh">USD 二进制 crate layer 格式，适合发布、缓存和较大数据。</p></div>
+      <div class="item"><strong>.usd</strong><p class="zh">通用扩展名，底层可以是文本或二进制，USD 打开时会检测真实格式。</p></div>
+      <div class="item"><strong>usdcat</strong><p class="zh">用于查看和写出 USD layer 的工具，可通过 `-o` 执行格式转换。</p></div>
+      <div class="item"><strong>--usdFormat</strong><p class="zh">在输出仍为 `.usd` 时指定底层格式，例如 `usda` 或 `usdc`。</p></div>
+      <div class="item"><strong>usddiff</strong><p class="zh">按 USD layer 语义比较文件，适合验证转换前后内容是否等价。</p></div>
+    </div>
+  </section>
+
+  <nav>
+    <h2>相关页面 / Related Pages</h2>
+    <ul>
+      <li><a href="tut_referencing_layers.html">Referencing Layers</a></li>
+      <li><a href="tut_traversing_stage.html">Traversing a Stage</a></li>
+      <li><a href="tut_usdview_plugin.html">Creating a Usdview Plugin</a></li>
+      <li><a href="../../site/toolset.html">Toolset / usdcat and usddiff</a></li>
+      <li><a href="../../openusd_bilingual_final.html">返回总入口 / Back to final entry</a></li>
+    </ul>
+  </nav>
+</main>
 </body>
 </html>
