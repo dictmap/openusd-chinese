@@ -107,6 +107,7 @@ $requiredFiles = @(
   "scripts\build_release_full_batch.mjs",
   "scripts\build_api_full_batch.mjs",
   "scripts\audit_openusd_markdown_encoding.mjs",
+  "scripts\audit_openusd_english_debt.mjs",
   "scripts\regenerate_openusd_progress_markdown.mjs",
   "openusd_bilingual_final.html",
   "reports\link_audit.json",
@@ -163,6 +164,8 @@ $requiredFiles = @(
   "reports\scope_manifest.md",
   "reports\markdown_encoding_audit.json",
   "reports\markdown_encoding_audit.md",
+  "reports\english_debt_audit.json",
+  "reports\english_debt_audit.md",
   "site\_static\pygments.css",
   "site\_static\sphinx-design.min.css",
   "site\_static\css\theme.css",
@@ -648,6 +651,27 @@ $checks.Add([pscustomobject]@{
 $checks.Add([pscustomobject]@{
   check = "markdown_encoding_audit:no_bom_files"
   passed = ([int]$markdownEncodingAudit.bom_files -eq 0)
+})
+
+$checks.Add([pscustomobject]@{
+  check = "markdown_encoding_audit:no_mojibake_markers"
+  passed = ($null -ne $markdownEncodingAudit.mojibake_markers -and [int]$markdownEncodingAudit.mojibake_markers -eq 0)
+})
+
+$englishDebtAudit = Get-Content -LiteralPath (Join-Path $reportDir "english_debt_audit.json") -Raw -Encoding UTF8 | ConvertFrom-Json
+$checks.Add([pscustomobject]@{
+  check = "english_debt_audit:passed"
+  passed = ($englishDebtAudit.passed -eq $true)
+})
+
+$checks.Add([pscustomobject]@{
+  check = "english_debt_audit:review_ready_count_present"
+  passed = ($null -ne $englishDebtAudit.counts.review_ready_zh -and $null -ne $englishDebtAudit.counts.good_bilingual)
+})
+
+$checks.Add([pscustomobject]@{
+  check = "english_debt_audit:release_api_split_present"
+  passed = ($null -ne $englishDebtAudit.counts.release_complete -and $null -ne $englishDebtAudit.counts.api_complete)
 })
 
 $primaryEntryCoverage = Get-Content -LiteralPath (Join-Path $reportDir "primary_entry_coverage.json") -Raw -Encoding UTF8 | ConvertFrom-Json

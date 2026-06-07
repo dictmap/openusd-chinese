@@ -1,65 +1,36 @@
-# OpenUSD 当前问题审计
+# Current OpenUSD Problem Audit
 
-## 当前真实计数
+Generated: 2026-06-07
+
+本报告是当前自动化的真实问题清单。它区分“可检查草稿”和“完整双语”，并额外记录 `review_ready_zh`，防止完成页仍主要依赖英文。
+
+## 当前计数
 
 - 全量页面：406
-- 完整双语 / good_bilingual：77
 - bilingual_complete：77
-- 未完整翻译草稿 / bilingual_draft：329
+- good_bilingual：77
+- review_ready_zh：12
+- bilingual_draft：329
 - draft_needs_translation：318
 - draft_template_only：11
-- promotion manifest：69 页
+- promotion manifest：69
+- api_complete：72
+- release_complete：5
 
-## P0-completion-stalled
+## 问题清单
 
-完成数曾长期停在 8 页。当前 promotion path 已经把真实完成数提升到 77 页，但剩余 329 页仍是草稿，不能描述成完整翻译。
+| ID | Severity | Summary | Required Action |
+| --- | --- | --- | --- |
+| `P0-completion-stalled` | P0 | The main completion number was structurally stalled at 8; the promotion path now raises it to 77, but the remaining 329 draft pages still need real upgrades. | Continue using the promotion manifest only for pages with paragraph-level bilingual coverage and draft-marker removal; do not mark guide-only drafts as complete. |
+| `P0-final-entry-misleading` | P0 | The final entry previously misled users by showing pending=0 while most pages were incomplete drafts. | Keep final-entry counts dynamic and keep bilingual_draft clearly described as incomplete translation. |
+| `P0-automation-wrong-objective` | P0 | The old heartbeat automation optimized for repeated 5-page refinement and GitHub sync rather than real completion progress. | Keep the automation prompt aligned with current counts and the promotion mechanism; do not let it regress to count-neutral round-churn. |
+| `P1-markdown-record-encoding` | P1 | Human-facing progress Markdown had been damaged by Windows encoding handoffs and contained many repeated question marks. | Keep audit_openusd_markdown_encoding.mjs in the validation chain; if it fails, stop promotion and regenerate the Markdown before continuing. |
+| `P1-link-placeholders` | P1 | Many clicks still route to the local uncovered placeholder because the 406-page inventory does not contain every official Doxygen target. | Prioritize high-click navigation and TOC links for local anchors or inventory expansion; do not present placeholder routing as a finished reading experience. |
+| `P1-draft-content-thin` | P1 | Most draft pages contain Chinese guidance and term notes, not paragraph-level bilingual translation. | For selected high-value pages, replace or supplement guide-only blocks with dense paragraph-level bilingual coverage and then promote status only if the page passes the stricter rule. |
+| `P1-english-residual-debt` | P1 | The good_bilingual count is useful but still too broad to prove human-review-ready Chinese reading quality. | Report review_ready_zh alongside good_bilingual and schedule EnglishDebtRound work for complete pages with high English-to-Chinese pressure. |
+| `P1-release-coverage-lag` | P1 | Completion remains heavily API-skewed while release/tutorial/user-guide pages lag. | After several API PromotionRounds, choose a release/tutorial/user-guide page unless a named P0/P1 defect blocks the run. |
+| `P2-validation-json-bom` | P2 | validation_report.json previously used UTF-8 BOM, which broke standard Node JSON.parse. | Keep validation_report.json BOM-free in every future validation run. |
 
-证据：`reports/bilingual_completion_promotions.json` 记录 69 个晋级页面；`reports/translation_quality_review.json` 报告 `good_bilingual=77`。
+## 下一步
 
-要求：后续只允许把完成逐段双语覆盖、移除草稿标记并通过质量审计的页面加入 promotion manifest。
-
-## P0-final-entry-misleading
-
-总入口曾用 `pending=0` 掩盖大部分页面仍未完整翻译。现在入口必须继续诚实显示 complete 与 incomplete drafts。
-
-证据：`openusd_bilingual_final.html` 当前显示 77 complete / 329 incomplete drafts。
-
-## P0-automation-wrong-objective
-
-旧自动化倾向于每轮补 5 页导读并推送，不能代表完成度。当前自动化已改为 PromotionRound / DefectRound / ConsistencyRound，并要求 `good_bilingual` 增长或命名 P0/P1 修复。
-
-证据：本轮为单页 PromotionRound，只晋级 `full_site/api/usd_shade_page_front.html`，完成数 76 -> 77。
-
-## P1-markdown-record-encoding
-
-人类可读 Markdown 曾出现问号化编码损坏。当前轮继续保留 Markdown 编码审计。
-
-证据：`reports/markdown_encoding_audit.json` 必须 passed，且 question_runs=0、bom_files=0。
-
-## P1-link-placeholders
-
-很多点击仍会路由到本地 uncovered placeholder，因为 406 页 inventory 没有覆盖全部官方 Doxygen 子目标。
-
-证据：`reports/local_link_routing_report.json` 继续记录 uncovered links；这是当前范围策略下的可见缺口。
-
-要求：后续优先处理高点击导航、目录和核心 API 子页，不把 placeholder 路由描述成完成体验。
-
-## P1-draft-content-thin
-
-大多数草稿页仍是中文导读和术语说明，不是逐段完整双语翻译。
-
-证据：318 页仍是 `draft_needs_translation`，11 页仍是 `draft_template_only`。
-
-## P2-validation-json-bom
-
-`validation_report.json` 必须保持无 BOM，并可被 Node `JSON.parse` 解析。
-
-证据：最新总验证 passed=true，failed_check_count=0。
-
-## 第 372 轮处理结果
-
-- 轮次类型：PromotionRound
-- 晋级页面：`full_site/api/usd_shade_page_front.html`
-- 完成数变化：good_bilingual 76 -> 77
-- 剩余草稿：329 页仍是可检查草稿，不是完整翻译
-- 下一轮建议目标：`full_site/api/sdf_page_front.html`
+Prefer a release/tutorial/user-guide PromotionRound to reduce release coverage lag. Suggested target: full_site/release/tut_helloworld.html. If not suitable, use full_site/api/sdf_page_front.html. Always report review_ready_zh from reports/english_debt_audit.json.

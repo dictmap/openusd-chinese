@@ -149,7 +149,7 @@ const auditChain = [
     json: "reports/markdown_encoding_audit.json",
     md: "reports/markdown_encoding_audit.md",
     purpose: "Checks human-facing progress Markdown for UTF-8 without BOM and repeated question-mark encoding damage.",
-    required_count_keys: ["files_checked", "question_runs", "replacement_chars", "bom_files"],
+    required_count_keys: ["files_checked", "question_runs", "replacement_chars", "mojibake_markers", "bom_files"],
   },
   {
     key: "translation_quality",
@@ -159,6 +159,15 @@ const auditChain = [
     md: "reports/translation_quality_review.md",
     purpose: "Classifies every local page by bilingual translation depth, template-only draft risk, bad-encoding risk, and unexpected official links.",
     required_count_keys: ["total_pages"],
+  },
+  {
+    key: "english_debt",
+    command: "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_english_debt.mjs",
+    script: "scripts/audit_openusd_english_debt.mjs",
+    json: "reports/english_debt_audit.json",
+    md: "reports/english_debt_audit.md",
+    purpose: "Reports retained-English pressure, stricter review_ready_zh counts, release/API coverage split, and English-dominant queues without replacing the good_bilingual gate.",
+    required_count_keys: ["total_pages", "good_bilingual", "review_ready_zh", "api_complete", "release_complete"],
   },
 ];
 
@@ -257,7 +266,7 @@ const checks = [
   check("report_index:validation_report_ready", validation?.script.exists && validation?.json_report.exists && validation?.parsed === true, {
     validation: validation?.selected_counts,
   }),
-  check("report_index:fixed_chain_size_ready", auditEntries.length >= 16 && entries.length >= 17),
+  check("report_index:fixed_chain_size_ready", auditEntries.length >= 17 && entries.length >= 18),
   check("report_index:scope_counts_still_bounded", entries.some((entry) => entry.key === "scope_boundary" && entry.selected_counts.html_pages === 10 && entry.selected_counts.source_snapshots === 8), {
     scope_boundary: entries.find((entry) => entry.key === "scope_boundary")?.selected_counts,
   }),

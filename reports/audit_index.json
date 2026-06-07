@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-07T13:23:13.770Z",
+  "generated_at": "2026-06-07T13:45:06.814Z",
   "root": "C:\\Users\\robot\\Documents\\成长学习库\\openusd_api_cn_repro",
   "scope_note": "Report index for the bounded OpenUSD bilingual reproduction. It indexes the fixed audit chain and validation artifacts without adding pages, mirroring more official content, or storing official body text.",
   "official_scope_urls": [
@@ -469,20 +469,20 @@
       "script": {
         "exists": true,
         "relative_path": "scripts/audit_openusd_markdown_encoding.mjs",
-        "size_bytes": 3442,
-        "modified_at": "2026-06-07T06:19:08.020Z"
+        "size_bytes": 4111,
+        "modified_at": "2026-06-07T13:42:47.631Z"
       },
       "json_report": {
         "exists": true,
         "relative_path": "reports/markdown_encoding_audit.json",
-        "size_bytes": 1127,
-        "modified_at": "2026-06-07T13:23:06.023Z"
+        "size_bytes": 1268,
+        "modified_at": "2026-06-07T13:44:59.216Z"
       },
       "md_report": {
         "exists": true,
         "relative_path": "reports/markdown_encoding_audit.md",
-        "size_bytes": 842,
-        "modified_at": "2026-06-07T13:23:06.025Z"
+        "size_bytes": 1041,
+        "modified_at": "2026-06-07T13:44:59.217Z"
       },
       "parsed": true,
       "passed": true,
@@ -490,6 +490,7 @@
         "files_checked": 4,
         "question_runs": 0,
         "replacement_chars": 0,
+        "mojibake_markers": 0,
         "bom_files": 0
       }
     },
@@ -522,20 +523,52 @@
       }
     },
     {
+      "key": "english_debt",
+      "purpose": "Reports retained-English pressure, stricter review_ready_zh counts, release/API coverage split, and English-dominant queues without replacing the good_bilingual gate.",
+      "command": "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_english_debt.mjs",
+      "script": {
+        "exists": true,
+        "relative_path": "scripts/audit_openusd_english_debt.mjs",
+        "size_bytes": 10852,
+        "modified_at": "2026-06-07T13:33:11.878Z"
+      },
+      "json_report": {
+        "exists": true,
+        "relative_path": "reports/english_debt_audit.json",
+        "size_bytes": 312372,
+        "modified_at": "2026-06-07T13:44:59.107Z"
+      },
+      "md_report": {
+        "exists": true,
+        "relative_path": "reports/english_debt_audit.md",
+        "size_bytes": 7936,
+        "modified_at": "2026-06-07T13:44:59.107Z"
+      },
+      "parsed": true,
+      "passed": true,
+      "selected_counts": {
+        "total_pages": 406,
+        "good_bilingual": 77,
+        "review_ready_zh": 12,
+        "api_complete": 72,
+        "release_complete": 5
+      }
+    },
+    {
       "key": "validation",
       "purpose": "Final local structure, content, report, and fixed-chain validation.",
       "command": "powershell -ExecutionPolicy Bypass -File .\\openusd_api_cn_repro\\scripts\\validate_openusd_api_repro.ps1",
       "script": {
         "exists": true,
         "relative_path": "scripts/validate_openusd_api_repro.ps1",
-        "size_bytes": 48168,
-        "modified_at": "2026-06-07T06:19:08.027Z"
+        "size_bytes": 49170,
+        "modified_at": "2026-06-07T13:43:05.189Z"
       },
       "json_report": {
         "exists": true,
         "relative_path": "reports/validation_report.json",
-        "size_bytes": 50613,
-        "modified_at": "2026-06-07T13:23:13.608Z"
+        "size_bytes": 51774,
+        "modified_at": "2026-06-07T13:45:06.617Z"
       },
       "md_report": {
         "exists": true,
@@ -544,19 +577,19 @@
       "parsed": true,
       "passed": true,
       "selected_counts": {
-        "required_check_count": 295,
+        "required_check_count": 302,
         "failed_check_count": 0
       }
     }
   ],
   "counts": {
-    "audit_entries": 17,
-    "total_entries": 18,
-    "audit_scripts_present": 17,
-    "audit_json_reports_present": 17,
-    "audit_markdown_reports_present": 17,
-    "audit_reports_passed": 17,
-    "validation_required_checks": 295,
+    "audit_entries": 18,
+    "total_entries": 19,
+    "audit_scripts_present": 18,
+    "audit_json_reports_present": 18,
+    "audit_markdown_reports_present": 18,
+    "audit_reports_passed": 18,
+    "validation_required_checks": 302,
     "validation_failed_checks": 0,
     "checks": 7,
     "failed_checks": 0
@@ -595,7 +628,7 @@
       "passed": true,
       "details": {
         "validation": {
-          "required_check_count": 295,
+          "required_check_count": 302,
           "failed_check_count": 0
         }
       }

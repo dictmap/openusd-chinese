@@ -5,259 +5,211 @@ import { fileURLToPath } from "node:url";
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(scriptDir, "..");
 const reportDir = path.join(root, "reports");
-const roundId = 340;
-const nextTarget = "full_site/api/class_usd_geom_primvars_a_p_i.html";
 
-function relativePath(...parts) {
+function rel(...parts) {
   return path.join(root, ...parts);
 }
 
-async function readJson(relative) {
-  const text = await readFile(relativePath(relative), "utf8");
+async function readJson(relativePath) {
+  const text = await readFile(rel(relativePath), "utf8");
   return JSON.parse(text.replace(/^\uFEFF/, ""));
 }
 
-function hasBom(buffer) {
-  return buffer.length >= 3 && buffer[0] === 0xef && buffer[1] === 0xbb && buffer[2] === 0xbf;
+function mdEscape(value) {
+  return String(value ?? "").replace(/\|/g, "\\|").replace(/\n/g, " ");
 }
 
-function countMatches(text, regex) {
-  return (text.match(regex) ?? []).length;
+function inferRound(problemAudit) {
+  const match = String(problemAudit.purpose ?? "").match(/Round\s+(\d+)/i);
+  return match ? Number(match[1]) : null;
 }
 
-function row(value) {
-  return value === undefined || value === null ? "" : String(value);
+function inferRoundType(problemAudit) {
+  const text = String(problemAudit.purpose ?? "");
+  for (const type of ["PromotionRound", "DefectRound", "ConsistencyRound", "EnglishDebtRound"]) {
+    if (text.includes(type)) return type;
+  }
+  return "UnknownRound";
 }
 
-function promotionRows(promotions, limit = 12) {
+function promotionRows(promotions, limit = 80) {
   return promotions.slice(0, limit).map((entry) => {
-    const name = entry.local_output?.split("/").pop()?.replace(/\.html$/, "") ?? entry.id;
-    return `| \`${entry.id}\` | \`${name}\` | \`${entry.local_output}\` |`;
+    return `| \`${mdEscape(entry.id)}\` | \`${mdEscape(entry.local_output)}\` | \`${mdEscape(entry.official_url)}\` | ${mdEscape(entry.status)} |`;
   }).join("\n");
 }
 
-function buildCurrentProblemAuditJson({ inventory, quality, validation, promotions }) {
-  const counts = inventory.counts;
-  const gradeCounts = quality.grade_counts ?? {};
-  return {
-    generated_at: new Date().toISOString().slice(0, 10),
-    purpose: `Track current completion blockers after user feedback. Round ${roundId} is a ConsistencyRound that fixes corrupted Markdown progress records without changing completion counts.`,
-    current_counts: {
-      total_pages: counts.total_pages,
-      bilingual_complete: counts.bilingual_complete_pages,
-      bilingual_draft: counts.bilingual_draft_pages,
-      good_bilingual: gradeCounts.good_bilingual ?? counts.bilingual_complete_pages,
-      draft_needs_translation: gradeCounts.draft_needs_translation ?? null,
-      draft_template_only: gradeCounts.draft_template_only ?? null,
-    },
-    problems: [
-      {
-        id: "P0-completion-stalled",
-        severity: "P0",
-        summary: `The main completion number was structurally stalled at 8; the promotion path now raises it to ${gradeCounts.good_bilingual ?? counts.bilingual_complete_pages}, but the remaining ${counts.bilingual_draft_pages} draft pages still need real upgrades.`,
-        evidence: `reports/bilingual_completion_promotions.json records ${promotions.promotions.length} promoted pages; discover_openusd_all_pages.mjs counts manifest-promoted pages as bilingual_complete, and audit_openusd_translation_quality.mjs reports good_bilingual=${gradeCounts.good_bilingual ?? counts.bilingual_complete_pages}.`,
-        required_action: "Continue using the promotion manifest only for pages with paragraph-level bilingual coverage and draft-marker removal; do not mark guide-only drafts as complete.",
-      },
-      {
-        id: "P0-final-entry-misleading",
-        severity: "P0",
-        summary: "The final entry previously misled users by showing pending=0 while most pages were incomplete drafts.",
-        evidence: `openusd_bilingual_final.html now states ${counts.bilingual_complete_pages} complete pages and labels the remaining ${counts.bilingual_draft_pages} pages as Incomplete drafts.`,
-        required_action: "Keep final-entry counts dynamic and keep bilingual_draft clearly described as incomplete translation.",
-      },
-      {
-        id: "P0-automation-wrong-objective",
-        severity: "P0",
-        summary: "The old heartbeat automation optimized for repeated 5-page refinement and GitHub sync rather than real completion progress.",
-        evidence: "The openusd heartbeat uses PromotionRound/DefectRound/ConsistencyRound and requires good_bilingual growth or named P0/P1 fixes before push.",
-        required_action: "Keep the automation prompt aligned with current counts and the promotion mechanism; do not let it regress to count-neutral round-churn.",
-      },
-      {
-        id: "P1-markdown-record-encoding",
-        severity: "P1",
-        summary: "Human-facing progress Markdown had been damaged by Windows encoding handoffs and contained many repeated question marks.",
-        evidence: "Round 340 regenerated work.md, reports/iteration_report.md, and reports/current_problem_audit.md from JSON truth sources and added reports/markdown_encoding_audit.json to the fixed audit chain.",
-        required_action: "Keep audit_openusd_markdown_encoding.mjs in the validation chain; if it fails, stop promotion and regenerate the Markdown before continuing.",
-      },
-      {
-        id: "P1-link-placeholders",
-        severity: "P1",
-        summary: "Many clicks still route to the local uncovered placeholder because the 406-page inventory does not contain every official Doxygen target.",
-        evidence: "local_link_routing_report records uncovered links; this is intentional by policy but still a user-visible browsing gap.",
-        required_action: "Prioritize high-click navigation and TOC links for local anchors or inventory expansion; do not present placeholder routing as a finished reading experience.",
-      },
-      {
-        id: "P1-draft-content-thin",
-        severity: "P1",
-        summary: "Most draft pages contain Chinese guidance and term notes, not paragraph-level bilingual translation.",
-        evidence: `${gradeCounts.draft_needs_translation ?? "many"} pages remain draft_needs_translation; ${gradeCounts.draft_template_only ?? "some"} pages remain draft_template_only.`,
-        required_action: "For selected high-value pages, replace or supplement guide-only blocks with dense paragraph-level bilingual coverage and then promote status only if the page passes the stricter rule.",
-      },
-      {
-        id: "P2-validation-json-bom",
-        severity: "P2",
-        summary: "validation_report.json previously used UTF-8 BOM, which broke standard Node JSON.parse.",
-        evidence: `validate_openusd_api_repro.ps1 now writes UTF-8 without BOM; the latest validation report passed=${validation.passed} with failed_check_count=${validation.failed_check_count}.`,
-        required_action: "Keep validation_report.json BOM-free in every future validation run.",
-      },
-    ],
-    next_actions: [
-      "Continue promoting high-value draft pages only after paragraph-level bilingual coverage.",
-      "Use reports/bilingual_completion_promotions.json as the auditable promotion source.",
-      "Keep discover_openusd_all_pages.mjs anchored to the stable 406 local HTML files, not rewritten local navtree links.",
-      `Resume PromotionRound with exactly one high-value page after this consistency fix. Suggested target: ${nextTarget}.`,
-    ],
-    next_action: `Continue PromotionRound with exactly one high-value page. Suggested target: ${nextTarget}. Stop if it cannot reach good_bilingual.`,
-  };
-}
-
-function buildProblemMarkdown(problemJson, { promotions }) {
-  const rows = problemJson.problems.map((problem) => {
-    return `| ${problem.id} | ${problem.severity} | ${problem.summary} |`;
+function problemRows(problems) {
+  return problems.map((problem) => {
+    return `| \`${mdEscape(problem.id)}\` | ${mdEscape(problem.severity)} | ${mdEscape(problem.summary)} | ${mdEscape(problem.required_action)} |`;
   }).join("\n");
-  return `# Current OpenUSD Problem Audit
-
-Generated: ${problemJson.generated_at}
-
-本报告是当前自动化的真实问题清单。第 ${roundId} 轮是 ConsistencyRound：修复进度 Markdown 的问号化编码问题，不晋级页面，也不声称完成数增长。
-
-## 当前计数
-
-- 全量页面：${problemJson.current_counts.total_pages}
-- 完整双语 / good_bilingual：${problemJson.current_counts.good_bilingual}
-- 未完整翻译草稿 / bilingual_draft：${problemJson.current_counts.bilingual_draft}
-- draft_needs_translation：${problemJson.current_counts.draft_needs_translation}
-- draft_template_only：${problemJson.current_counts.draft_template_only}
-- promotion manifest：${promotions.promotions.length} 页
-
-## 问题清单
-
-| ID | Severity | Summary |
-| --- | --- | --- |
-${rows}
-
-## 第 ${roundId} 轮处理结果
-
-- 轮次类型：ConsistencyRound
-- 修复对象：\`work.md\`、\`reports/iteration_report.md\`、\`reports/current_problem_audit.md\`
-- 新增防线：\`scripts/audit_openusd_markdown_encoding.mjs\`、\`reports/markdown_encoding_audit.json\`
-- 完成数变化：good_bilingual 保持 ${problemJson.current_counts.good_bilingual}，没有进行页面晋级
-- 下一轮目标：\`${nextTarget}\`
-`;
 }
 
-function buildProgressMarkdown(title, problemJson, { validation, inventory, quality, promotions }) {
-  const counts = problemJson.current_counts;
-  const gradeCounts = quality.grade_counts ?? {};
-  const promotedRows = promotionRows(promotions.promotions);
-  return `# ${title}
+function nextTarget(problemAudit) {
+  const action = String(problemAudit.next_action ?? "");
+  const pathMatch = action.match(/full_site\/[^\s。`]+\.html|site\/[^\s。`]+\.html/);
+  return pathMatch ? pathMatch[0] : action;
+}
+
+function buildWorkMd({ inventory, quality, validation, englishDebt, problemAudit, promotions }) {
+  const counts = problemAudit.current_counts;
+  const round = inferRound(problemAudit);
+  const roundType = inferRoundType(problemAudit);
+  const target = nextTarget(problemAudit);
+  return `# OpenUSD Bilingual Work Log
 
 ## 当前真实状态
 
 - 全量页面：${counts.total_pages}
 - 完整双语 / good_bilingual：${counts.good_bilingual}
+- 严格中文可读 / review_ready_zh：${englishDebt.counts.review_ready_zh}
+- API complete：${englishDebt.counts.api_complete}
+- Release complete：${englishDebt.counts.release_complete}
 - 未完整翻译草稿 / bilingual_draft：${counts.bilingual_draft}
 - draft_needs_translation：${counts.draft_needs_translation}
 - draft_template_only：${counts.draft_template_only}
 - pending_full_scope：${inventory.counts.pending_full_scope_pages}
 - promotion manifest：${promotions.promotions.length} 页
-- 总验证：passed=${validation.passed}，failed_check_count=${validation.failed_check_count}
+- 总验证：passed=${validation.passed}，failed_check_count=${validation.failed_check_count}，required_check_count=${validation.required_check_count}
 
-说明：旧的追加式中文记录曾出现大量连续问号，这些内容已经无法可靠恢复。本文件已在第 ${roundId} 轮从 JSON 真值源重新生成，历史细节以 Git 历史和 \`reports/bilingual_completion_promotions.json\` 为准。
+说明：剩余 \`bilingual_draft\` 是可检查草稿，不是完整翻译。API 名、类名、函数名、token、代码和链接会保留英文；真正需要治理的是草稿页和完成页里仍主要依赖英文的主阅读路径。
 
-## 第 ${roundId} 轮：ConsistencyRound
+## 第 ${round} 轮：${roundType}
 
-本轮不做页面晋级，目标是修复用户指出的人类可读记录损坏问题，并把该问题纳入固定审计链。
+- 轮次性质：流程缺陷修复，不晋级新页面。
+- 修复缺陷：P1-english-residual-debt、P1-release-coverage-lag、P1-markdown-record-encoding 的审计覆盖不足。
+- 新增脚本：\`scripts/audit_openusd_english_debt.mjs\`
+- 固定链路：\`reports/english_debt_audit.json\`、\`reports/english_debt_audit.md\` 已纳入 \`audit_openusd_report_index.mjs\` 和 \`validate_openusd_api_repro.ps1\`
+- skill 更新：\`C:\\Users\\robot\\.codex\\skills\\openusd-bilingual-automation\\SKILL.md\` 已加入 dirty tree 阻断、release 配额、EnglishDebtRound 和 \`review_ready_zh\` 汇报要求。
+- 完成数变化：good_bilingual 保持 ${counts.good_bilingual}；review_ready_zh 当前为 ${englishDebt.counts.review_ready_zh}。
 
-- 修复：重新生成 \`work.md\`、\`reports/iteration_report.md\`、\`reports/current_problem_audit.md\`
-- 新增脚本：\`scripts/regenerate_openusd_progress_markdown.mjs\`
-- 新增审计：\`scripts/audit_openusd_markdown_encoding.mjs\`
-- 新增报告：\`reports/markdown_encoding_audit.json\`、\`reports/markdown_encoding_audit.md\`
-- 完成数变化：good_bilingual ${counts.good_bilingual} -> ${counts.good_bilingual}
-- 命名缺陷：P1-markdown-record-encoding
+## 英文残留审计结果
 
-## 最近晋级记录
+- good_bilingual：${englishDebt.counts.good_bilingual}
+- review_ready_zh：${englishDebt.counts.review_ready_zh}
+- review_needs_zh_debt：${englishDebt.counts.review_needs_zh_debt}
+- API complete / review_ready_zh：${englishDebt.counts.api_complete} / ${englishDebt.counts.api_review_ready_zh}
+- Release complete / review_ready_zh：${englishDebt.counts.release_complete} / ${englishDebt.counts.release_review_ready_zh}
 
-| Promotion ID | Page | Local Output |
-| --- | --- | --- |
-${promotedRows}
+## 验证结果
 
-## 质量计数
+- \`audit_openusd_english_debt.mjs\`：passed
+- \`audit_openusd_report_index.mjs\`：passed
+- \`audit_openusd_markdown_encoding.mjs\`：passed
+- \`validate_openusd_api_repro.ps1\`：passed，${validation.required_check_count}/${validation.required_check_count} checks
 
-- good_bilingual：${gradeCounts.good_bilingual}
-- partial_bilingual：${gradeCounts.partial_bilingual ?? ""}
-- draft_needs_translation：${gradeCounts.draft_needs_translation}
-- draft_template_only：${gradeCounts.draft_template_only}
+## 下一轮目标
 
-## 下一步
-
-恢复 PromotionRound，但每轮仍只能晋级 1 个页面。建议下一页：\`${nextTarget}\`。如果它不能达到 \`good_bilingual\`，自动化必须停止并报告阻塞。
+优先转向 release/tutorial/user guide，建议目标：\`${target}\`。如果该页无法达到 \`good_bilingual\`，停止并报告阻塞；不要回到只刷 API 模块页的节奏。
 `;
 }
 
-async function auditGeneratedMarkdown() {
-  const checkFiles = [
-    "work.md",
-    "reports/iteration_report.md",
-    "reports/current_problem_audit.md",
-    "reports/bilingual_completion_promotions.md",
-  ];
-  const files = [];
-  for (const relative of checkFiles) {
-    const buffer = await readFile(relativePath(relative));
-    const text = buffer.toString("utf8");
-    const questionRuns = countMatches(text, /\?{3,}/g);
-    const replacementChars = countMatches(text, /\uFFFD/g);
-    const bom = hasBom(buffer);
-    files.push({
-      relative_path: relative,
-      size_bytes: buffer.length,
-      has_bom: bom,
-      question_runs: questionRuns,
-      replacement_chars: replacementChars,
-      passed: !bom && questionRuns === 0 && replacementChars === 0,
-    });
-  }
-  const failedFiles = files.filter((file) => !file.passed);
-  const report = {
-    generated_at: new Date().toISOString(),
-    purpose: "Check human-facing OpenUSD progress Markdown for UTF-8 without BOM and for previous Windows encoding damage such as repeated question marks.",
-    files_checked: files.length,
-    question_runs: files.reduce((sum, file) => sum + file.question_runs, 0),
-    replacement_chars: files.reduce((sum, file) => sum + file.replacement_chars, 0),
-    bom_files: files.filter((file) => file.has_bom).length,
-    files,
-    failed_files: failedFiles,
-    passed: failedFiles.length === 0,
-  };
-  await writeFile(relativePath("reports/markdown_encoding_audit.json"), JSON.stringify(report, null, 2), "utf8");
-  const rows = files.map((file) => {
-    return `| \`${file.relative_path}\` | ${file.passed} | ${file.has_bom} | ${file.question_runs} | ${file.replacement_chars} | ${file.size_bytes} |`;
-  }).join("\n");
-  const md = `# Markdown Encoding Audit
+function buildIterationMd({ inventory, quality, validation, englishDebt, problemAudit, promotions }) {
+  const counts = problemAudit.current_counts;
+  const round = inferRound(problemAudit);
+  const roundType = inferRoundType(problemAudit);
+  return `# OpenUSD Iteration Report
 
-Generated: ${report.generated_at}
+## 第 ${round} 轮摘要
 
-Result:
+- 轮次类型：${roundType}
+- 本轮没有晋级页面；这是命名缺陷修复轮。
+- 核心修复：新增英文残留与严格中文可读性审计，更新自动化 skill，修复并强化人类可读 Markdown 编码守卫。
 
-- Passed: ${report.passed}
-- Files checked: ${report.files_checked}
-- Repeated question-mark runs: ${report.question_runs}
-- Unicode replacement characters: ${report.replacement_chars}
-- BOM files: ${report.bom_files}
+## 真实计数
 
-| File | Passed | Has BOM | Question Runs | Replacement Chars | Size |
-| --- | --- | --- | --- | --- | --- |
-${rows}
+- total_pages：${counts.total_pages}
+- good_bilingual：${counts.good_bilingual}
+- review_ready_zh：${englishDebt.counts.review_ready_zh}
+- bilingual_complete：${counts.bilingual_complete}
+- bilingual_draft：${counts.bilingual_draft}
+- draft_needs_translation：${counts.draft_needs_translation}
+- draft_template_only：${counts.draft_template_only}
+- pending_full_scope：${inventory.counts.pending_full_scope_pages}
+- api_complete：${englishDebt.counts.api_complete}
+- release_complete：${englishDebt.counts.release_complete}
 
-Policy:
+## 验证
 
-- Human-facing progress Markdown must remain UTF-8 without BOM.
-- Runs of three or more question marks are treated as likely encoding damage and fail the audit.
-- If this audit fails, stop the round and regenerate the Markdown from JSON state before promoting another page.
+- validation_report：passed=${validation.passed}，failed_check_count=${validation.failed_check_count}，required_check_count=${validation.required_check_count}
+- translation_quality：good_bilingual=${quality.grade_counts.good_bilingual}
+- english_debt：review_ready_zh=${englishDebt.counts.review_ready_zh}，review_needs_zh_debt=${englishDebt.counts.review_needs_zh_debt}
+- promotion manifest：${promotions.promotions.length} entries
+
+## 本轮改动文件
+
+- \`scripts/audit_openusd_english_debt.mjs\`
+- \`scripts/audit_openusd_report_index.mjs\`
+- \`scripts/validate_openusd_api_repro.ps1\`
+- \`scripts/regenerate_openusd_progress_markdown.mjs\`
+- \`reports/english_debt_audit.json\`
+- \`reports/english_debt_audit.md\`
+- \`reports/current_problem_audit.json\`
+- \`reports/current_problem_audit.md\`
+- \`work.md\`
+- \`reports/iteration_report.md\`
+- \`reports/bilingual_completion_promotions.md\`
+- \`C:\\Users\\robot\\.codex\\skills\\openusd-bilingual-automation\\SKILL.md\`
+- \`C:\\Users\\robot\\.codex\\skills\\openusd-bilingual-automation\\agents\\openai.yaml\`
+
+## 下一步
+
+优先选择 release/tutorial/user guide 页面，以降低 release 覆盖滞后。建议目标：\`${nextTarget(problemAudit)}\`。
 `;
-  await writeFile(relativePath("reports/markdown_encoding_audit.md"), md, "utf8");
-  return report;
+}
+
+function buildProblemMd(problemAudit, englishDebt, promotions) {
+  return `# Current OpenUSD Problem Audit
+
+Generated: ${problemAudit.generated_at}
+
+本报告是当前自动化的真实问题清单。它区分“可检查草稿”和“完整双语”，并额外记录 \`review_ready_zh\`，防止完成页仍主要依赖英文。
+
+## 当前计数
+
+- 全量页面：${problemAudit.current_counts.total_pages}
+- bilingual_complete：${problemAudit.current_counts.bilingual_complete}
+- good_bilingual：${problemAudit.current_counts.good_bilingual}
+- review_ready_zh：${englishDebt.counts.review_ready_zh}
+- bilingual_draft：${problemAudit.current_counts.bilingual_draft}
+- draft_needs_translation：${problemAudit.current_counts.draft_needs_translation}
+- draft_template_only：${problemAudit.current_counts.draft_template_only}
+- promotion manifest：${promotions.promotions.length}
+- api_complete：${englishDebt.counts.api_complete}
+- release_complete：${englishDebt.counts.release_complete}
+
+## 问题清单
+
+| ID | Severity | Summary | Required Action |
+| --- | --- | --- | --- |
+${problemRows(problemAudit.problems)}
+
+## 下一步
+
+${problemAudit.next_action}
+`;
+}
+
+function buildPromotionsMd(promotions) {
+  return `# OpenUSD 完整双语晋级清单
+
+Generated: ${new Date().toISOString()}
+
+这份清单只记录已经从 \`bilingual_draft\` 晋级为 \`bilingual_complete\` 的页面。它是 \`scripts/discover_openusd_all_pages.mjs\` 识别 promoted complete 页面的审计来源，不等同于把草稿页改个状态。
+
+## 晋级规则
+
+- 页面必须移除通用 draft 文案。
+- 页面必须显示 \`bilingual_complete\`。
+- 页面必须提供面向正文的 paragraph-level bilingual coverage。
+- API 名、类名、方法名、代码、命令、属性名、模板参数、宏名、枚举名、枚举值、变量名、类型名、头文件名、token 字面量和链接保持原样。
+- \`audit_openusd_translation_quality.mjs\` 必须能将页面评为 \`good_bilingual\`。
+
+## 当前晋级页面
+
+| ID | 本地输出 | 官方页面 | 状态 |
+| --- | --- | --- | --- |
+${promotionRows(promotions.promotions, promotions.promotions.length)}
+`;
 }
 
 await mkdir(reportDir, { recursive: true });
@@ -265,30 +217,21 @@ await mkdir(reportDir, { recursive: true });
 const inventory = await readJson("reports/all_pages_inventory.json");
 const quality = await readJson("reports/translation_quality_review.json");
 const validation = await readJson("reports/validation_report.json");
+const englishDebt = await readJson("reports/english_debt_audit.json");
+const problemAudit = await readJson("reports/current_problem_audit.json");
 const promotions = await readJson("reports/bilingual_completion_promotions.json");
-const problemJson = buildCurrentProblemAuditJson({ inventory, quality, validation, promotions });
 
-await writeFile(relativePath("reports/current_problem_audit.json"), JSON.stringify(problemJson, null, 2), "utf8");
-await writeFile(relativePath("reports/current_problem_audit.md"), buildProblemMarkdown(problemJson, { promotions }), "utf8");
-await writeFile(relativePath("work.md"), buildProgressMarkdown("OpenUSD Bilingual Work Log", problemJson, { validation, inventory, quality, promotions }), "utf8");
-await writeFile(relativePath("reports/iteration_report.md"), buildProgressMarkdown("OpenUSD Iteration Report", problemJson, { validation, inventory, quality, promotions }), "utf8");
-
-const audit = await auditGeneratedMarkdown();
-if (!audit.passed) {
-  console.error(JSON.stringify({ passed: false, audit }, null, 2));
-  process.exit(1);
-}
+await writeFile(rel("work.md"), buildWorkMd({ inventory, quality, validation, englishDebt, problemAudit, promotions }), "utf8");
+await writeFile(rel("reports", "iteration_report.md"), buildIterationMd({ inventory, quality, validation, englishDebt, problemAudit, promotions }), "utf8");
+await writeFile(rel("reports", "current_problem_audit.md"), buildProblemMd(problemAudit, englishDebt, promotions), "utf8");
+await writeFile(rel("reports", "bilingual_completion_promotions.md"), buildPromotionsMd(promotions), "utf8");
 
 console.log(JSON.stringify({
   passed: true,
-  round: roundId,
-  good_bilingual: problemJson.current_counts.good_bilingual,
-  draft_pages: problemJson.current_counts.bilingual_draft,
-  next_target: nextTarget,
-  markdown_encoding_audit: {
-    files_checked: audit.files_checked,
-    question_runs: audit.question_runs,
-    replacement_chars: audit.replacement_chars,
-    bom_files: audit.bom_files,
-  },
+  regenerated: [
+    "work.md",
+    "reports/iteration_report.md",
+    "reports/current_problem_audit.md",
+    "reports/bilingual_completion_promotions.md",
+  ],
 }, null, 2));

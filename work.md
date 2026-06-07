@@ -4,52 +4,42 @@
 
 - 全量页面：406
 - 完整双语 / good_bilingual：77
+- 严格中文可读 / review_ready_zh：12
+- API complete：72
+- Release complete：5
 - 未完整翻译草稿 / bilingual_draft：329
 - draft_needs_translation：318
 - draft_template_only：11
 - pending_full_scope：0
 - promotion manifest：69 页
-- 总验证：passed=true，failed_check_count=0
+- 总验证：passed=true，failed_check_count=0，required_check_count=301
 
-说明：剩余 `bilingual_draft` 是可检查草稿，不是完整翻译。第 372 轮继续按单页 PromotionRound 推进，并让 `good_bilingual` 真实增加。
+说明：剩余 `bilingual_draft` 是可检查草稿，不是完整翻译。API 名、类名、函数名、token、代码和链接会保留英文；真正需要治理的是草稿页和完成页里仍主要依赖英文的主阅读路径。
 
-## 第 372 轮：PromotionRound
+## 第 373 轮：DefectRound
 
-- 目标页面：`full_site/api/usd_shade_page_front.html`
-- 官方页面：`https://openusd.org/release/api/usd_shade_page_front.html`
-- 本轮动作：将 `UsdShade: USD Shading Schema` 从 `bilingual_draft` 晋级为 `bilingual_complete`，补入逐段双语理解。
-- 完成数变化：good_bilingual 76 -> 77
-- 草稿数变化：bilingual_draft 330 -> 329
+- 轮次性质：流程缺陷修复，不晋级新页面。
+- 修复缺陷：P1-english-residual-debt、P1-release-coverage-lag、P1-markdown-record-encoding 的审计覆盖不足。
+- 新增脚本：`scripts/audit_openusd_english_debt.mjs`
+- 固定链路：`reports/english_debt_audit.json`、`reports/english_debt_audit.md` 已纳入 `audit_openusd_report_index.mjs` 和 `validate_openusd_api_repro.ps1`
+- skill 更新：`C:\Users\robot\.codex\skills\openusd-bilingual-automation\SKILL.md` 已加入 dirty tree 阻断、release 配额、EnglishDebtRound 和 `review_ready_zh` 汇报要求。
+- 完成数变化：good_bilingual 保持 77；review_ready_zh 当前为 12。
 
-## 本轮覆盖重点
+## 英文残留审计结果
 
-- `UsdShade` 用于创建和绑定 materials，并用 materials 封装 shading networks。
-- `UsdShadeNodeGraph` 可复用子网络、`UsdShadeMaterial` material container、`UsdShadeShader` primitive shading node。
-- `UsdShadeConnectableAPI`、`UsdShadeInput`、`UsdShadeOutput` 和 `UsdAttribute` connections。
-- consumer-side authored connections 与 dataflow：connection target 产生数据，anchor 消费数据。
-- Encapsulation and Sharing：containers vs primitive shading nodes，container public parameters 和 terminal outputs。
-- Shader / NodeGraph / Material / custom connectable schema 的 connectability rules。
-- `UsdShadeConnectableAPIBehavior`、plug metadata、behavior resolution 顺序。
-- valid shader connection 优先于 authored input values。
-- nested Material / NodeGraph interface resolution、NodeGraph output forwarding 和 pass-through。
-- `UsdShadeUtils::GetValueProducingAttributes` 等 connection resolution utilities。
-- UsdShade-based shader definitions、`UsdShadeShaderDefParserPlugin`、`SdrRegistry`、shader identifier discovery。
-- `UsdShadeMaterialBindingAPI` 将 material network 绑定到 geometry，与内部 shader-node connection 分层调试。
+- good_bilingual：77
+- review_ready_zh：12
+- review_needs_zh_debt：65
+- API complete / review_ready_zh：72 / 11
+- Release complete / review_ready_zh：5 / 1
 
 ## 验证结果
 
-- `discover_openusd_all_pages.mjs`：complete=77，draft=329，pending=0
-- `audit_openusd_translation_quality.mjs`：good_bilingual=77，draft_needs_translation=318，draft_template_only=11
-- `openusd_bilingual_final.html`：显示 77 complete / 329 incomplete drafts
-- `audit_openusd_full_draft_preview.mjs`：329/329 draft pages passed
+- `audit_openusd_english_debt.mjs`：passed
 - `audit_openusd_report_index.mjs`：passed
-- `audit_openusd_markdown_encoding.mjs`：待本轮最终复跑，必须 passed
-- `validate_openusd_api_repro.ps1`：passed，295 checks，0 failed
-
-## GitHub 同步
-
-本轮验证通过后同步到 GitHub。提交信息：`OpenUSD bilingual round 372: promote UsdShade complete`。
+- `audit_openusd_markdown_encoding.mjs`：passed
+- `validate_openusd_api_repro.ps1`：passed，301/301 checks
 
 ## 下一轮目标
 
-建议继续 PromotionRound，目标：`full_site/api/sdf_page_front.html`。该页仍是用户会实际查阅的高价值 Sdf scene description foundation 入口。
+优先转向 release/tutorial/user guide，建议目标：`full_site/release/tut_helloworld.html`。如果该页无法达到 `good_bilingual`，停止并报告阻塞；不要回到只刷 API 模块页的节奏。
