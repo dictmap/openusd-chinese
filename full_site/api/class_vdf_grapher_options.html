@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：VdfGrapherOptions Class / VdfGrapherOptions Class</title>
+  <title>完整双语参考：VdfGrapherOptions Class / VdfGrapherOptions Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,76 +24,45 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：VdfGrapherOptions Class / VdfGrapherOptions Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：VdfGrapherOptions Class / VdfGrapherOptions Class</h1>
     <div class="meta">https://openusd.org/release/api/class_vdf_grapher_options.html</div>
   </header>
   <main>
-    <section data-cn-refinement="api-index-quality-pass-167">
-      <h2>中文二次导读补强 / Chinese Second-Pass Reading Notes</h2>
-      <p class="zh">`class_vdf_grapher_options.html` 说明 `VdfGrapherOptions` 这类 graph visualization / graph dumping 配置对象。它的价值在于控制如何观察和导出 Vdf 图，而不是参与实际 computation 的求值结果。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for VdfGrapherOptions while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+    <section data-cn-complete="vdf-grapher-options-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`VdfGrapherOptions` 是 `VdfGrapher` 的输出配置对象。官方说明说它 “can be used to configure aspects of VdfGrapher's output”，这里的 output 指 graph visualization / graph dump 的呈现结果，而不是 Vdf computation 的数值结果。阅读本页时应先把三层职责分开：`VdfNode` 描述图中的计算节点，`VdfContext` 在 callback 执行时提供输入输出访问，`VdfGrapherOptions` 只决定这些图结构被怎样筛选、着色、标注和排版。</p>
+      <p class="en">`VdfGrapherOptions` configures the presentation emitted by `VdfGrapher`; it is not an evaluator and does not change graph execution or computed values.</p>
+      <p class="zh">页面中的 `NodeFilterCallback`、`NodeStyleCallback` 和 `NodeLimitVector` 是读懂该类的核心类型。`NodeFilterCallback` 负责决定某个 `VdfNode` 是否出现在输出图里；`NodeStyleCallback` 负责为节点提供颜色、注释或 display style；`NodeLimitVector` / `NodeLimit` 用来约束图展开范围。它们共同服务于“把大型 Vdf network 缩小成可读诊断图”的目标，而不是修改 network 的拓扑或依赖关系。</p>
+      <p class="en">The callback and node-limit types are filtering and styling hooks for generated graph output; they do not mutate the underlying `VdfNetwork` topology.</p>
+      <p class="zh">`DisplayStyle` 是输出图的视觉策略。它与 `GetColor()`、`GetAnnotation()`、`GetDisplayStyle()` 这组查询一起决定节点以什么颜色、说明文字和样式出现在 graph dump 中。调试时如果图中节点样式不符合预期，首先检查这些 option 或 callback，而不是把它解释成 Vdf evaluation state 改变。</p>
+      <p class="en">`DisplayStyle`, color, and annotation settings describe how graph elements are rendered in the dump, not how values are evaluated.</p>
+      <p class="zh">`AddNodeToGraph()` 与 `GetNodesToGraph()` 控制显式纳入图输出的节点集合。`DebugNameFilter()` 允许按 debug name 收窄结果，适合在大型网络中只观察某个计算链、某类 node 或某个命名片段。它们的语义是 visualization scope selection；如果图里没有出现某个节点，可能是 filter/limit/name 规则排除了它，不应立刻推断该节点不存在或没有参与计算。</p>
+      <p class="en">Node selection APIs define the visualization scope. Missing nodes in a dump can be a filtering artifact rather than proof that the node is absent from execution.</p>
+      <p class="zh">`GetDrawMasks()` 与 `GetDrawAffectsMasks()` 控制是否绘制 dependency mask / affects mask 信息；`GetDrawColorizedConnectionsOnly()` 进一步压缩输出，让图只突出带颜色语义的连接。mask 是 Vdf 局部求值、请求传播和依赖裁剪的重要诊断线索，但在这里它们只是被可视化；真实的 mask 计算和 evaluation scheduling 仍属于 Vdf 执行系统。</p>
+      <p class="en">Mask drawing options expose dependency information in the graph output, while the actual mask computation remains part of Vdf evaluation.</p>
+      <p class="zh">`GetPageWidth()`、`GetPageHeight()`、`GetPrintSingleOutputs()` 和 `GetOmitUnconnectedSpecs()` 面向导出版面和噪声控制。页面尺寸决定生成图的排版边界；single output 打印策略决定是否把只有一个 output 的节点展开得更详细；省略 unconnected specs 可以减少孤立输入输出造成的视觉噪声。这些选项通常用于让调试报告更可读，而不是追求完整列出所有内部对象。</p>
+      <p class="en">Page-size and noise-control options trade completeness for readability in exported diagnostic graphs.</p>
+      <p class="zh">本页和 `VdfGrapher`、`VdfNode`、`VdfConnectionVector`、`VdfObjectPtr`、`TfToken` 的关系也需要明确：`VdfGrapher` 执行图导出，`VdfGrapherOptions` 只承载导出参数；`VdfNode` 是被观察对象；`VdfConnectionVector` 等类型描述连接集合；`TfToken` 常出现在命名、debug name 或 tokenized option 中。不要把 options 对象当作 graph owner，也不要把生成的图片当作 profiling trace。</p>
+      <p class="en">The options object is adjacent to grapher, node, connection, and token types, but it owns neither the graph nor the runtime profiling evidence.</p>
+      <p class="zh">常见误读包括：把 graph dump 中隐藏的节点当成运行时未执行；把 color / annotation 当成求值结果；把 mask 绘制开关当成 mask 计算开关；把 `NodeFilterCallback` 当成调度谓词；把 page width / height 当成图结构限制。正确用法是：先用 filter 和 limit 缩小范围，再用 style/mask/annotation 增强可读性，最后把导出的图与 evaluation log、profiling 或节点 debug name 交叉核对。</p>
+      <p class="en">Common mistakes come from treating visualization options as execution controls. Use them to inspect and explain graph structure, then corroborate with evaluation logs or profiling data.</p>
+      <h3>关键 API 分组 / Key API Groups</h3>
       <ul>
-        <li><span class="zh">`VdfGrapherOptions` 应按调试和可视化配置阅读：它帮助选择显示哪些 node、input、output、dependency 或 annotation，不负责创建或执行图本身。</span></li>
-        <li><span class="zh">如果图导出结果过大、缺少边或难以定位节点，应检查 grapher option、filter condition、naming policy 和 graph traversal 范围，而不是先怀疑 computation 逻辑。</span></li>
-        <li><span class="zh">此页适合和 `VdfNode`、`VdfContext` 以及 Vdf README 串读：README 建立图概念，`VdfNode` 解释节点结构，`VdfGrapherOptions` 解释如何把图呈现出来。</span></li>
-        <li><span class="zh">阅读 generated graph 时，要把 visualization artifact 与 runtime state 分开：导出的节点和边是诊断视图，不能直接替代 evaluation trace 或 profiling 证据。</span></li>
-        <li><span class="zh">中文层保留 `VdfGrapherOptions`、`graph visualization`、`graph dumping`、`node`、`input`、`output` 等英文术语，便于用户回到工具输出和源码选项。</span></li>
+        <li><span class="zh">节点选择：</span><span class="en">`AddNodeToGraph()`, `GetNodesToGraph()`, `DebugNameFilter()`, `NodeFilterCallback`, `NodeLimitVector`</span></li>
+        <li><span class="zh">样式与标注：</span><span class="en">`GetColor()`, `GetAnnotation()`, `GetDisplayStyle()`, `NodeStyleCallback`, `DisplayStyle`</span></li>
+        <li><span class="zh">依赖信息可视化：</span><span class="en">`GetDrawMasks()`, `GetDrawAffectsMasks()`, `GetDrawColorizedConnectionsOnly()`</span></li>
+        <li><span class="zh">版面与降噪：</span><span class="en">`GetPageWidth()`, `GetPageHeight()`, `GetPrintSingleOutputs()`, `GetOmitUnconnectedSpecs()`</span></li>
       </ul>
       <h3>术语对照 / Terms</h3>
       <ul>
-        <li><span class="zh">图可视化：</span><span class="en">graph visualization</span></li>
-        <li><span class="zh">图导出：</span><span class="en">graph dumping</span></li>
-        <li><span class="zh">节点过滤：</span><span class="en">node filtering</span></li>
-        <li><span class="zh">遍历范围：</span><span class="en">traversal scope</span></li>
-        <li><span class="zh">命名策略：</span><span class="en">naming policy</span></li>
-        <li><span class="zh">诊断视图：</span><span class="en">diagnostic view</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-044">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 VdfGrapherOptions Class Reference 补充中文优先的类职责、读取重点、关键类型/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, key type/method groups, and terminology for VdfGrapherOptions Class Reference while retaining English page names, class names, method names, attribute names, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`VdfGrapherOptions` 用来配置 `VdfGrapher` 的输出方式，是 Vdf network 可视化/调试时控制图形内容、样式和过滤规则的选项对象。</span></li>
-        <li><span class="zh">英文摘录说明它 configures aspects of `VdfGrapher` output；页面结构中的 `DisplayStyle`、`NodeFilterCallback`、`NodeStyleCallback` 与 `NodeLimitVector` 是读懂本页的关键。</span></li>
-        <li><span class="zh">`AddNodeToGraph()`、`GetNodesToGraph()` 和 `DebugNameFilter()` 控制哪些 node 会被绘制；这些方法面向图裁剪，不改变 Vdf graph 本身。</span></li>
-        <li><span class="zh">`GetColor()`、`GetAnnotation()`、`GetDisplayStyle()`、`GetDrawMasks()`、`GetDrawAffectsMasks()` 和 `GetDrawColorizedConnectionsOnly()` 控制输出图的可读性和调试信息密度。</span></li>
-        <li><span class="zh">`GetPageWidth()`、`GetPageHeight()`、`GetPrintSingleOutputs()`、`GetOmitUnconnectedSpecs()` 等设置偏向导出布局和噪声控制；阅读时应把它看作 graph rendering options。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">VdfGrapher：</span><span class="en">VdfGrapher</span></li>
-        <li><span class="zh">DisplayStyle：</span><span class="en">DisplayStyle</span></li>
-        <li><span class="zh">节点过滤回调：</span><span class="en">NodeFilterCallback</span></li>
-        <li><span class="zh">节点样式回调：</span><span class="en">NodeStyleCallback</span></li>
-        <li><span class="zh">图输出：</span><span class="en">graph output</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-138">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`VdfGrapherOptions` 是配置 `VdfGrapher` 输出的选项对象，用于控制 Vdf network 图的节点选择、样式、颜色、mask 显示、分页尺寸和噪声过滤。它只影响 graph visualization/debug output，不改变实际 Vdf graph 或 evaluation behavior。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for VdfGrapherOptions while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`AddNodeToGraph()` 与 `GetNodesToGraph()` 控制显式包含哪些 node；`DebugNameFilter()` 则可按 debug name 过滤，适合缩小大型 network 可视化范围。</span></li>
-        <li><span class="zh">`NodeFilterCallback` 与 `NodeStyleCallback` 允许外部代码自定义节点是否显示和如何显示；这类 callback 影响输出图，不参与执行调度。</span></li>
-        <li><span class="zh">`GetDrawMasks()`、`GetDrawAffectsMasks()` 和 `GetDrawColorizedConnectionsOnly()` 用于控制 dependency mask、affects mask 和连接着色信息的可视化密度。</span></li>
-        <li><span class="zh">`GetColor()`、`GetAnnotation()` 和 `GetDisplayStyle()` 负责节点视觉样式和注释文本；这些设置通常服务于调试报告或 graph dump。</span></li>
-        <li><span class="zh">`GetPageWidth()`、`GetPageHeight()`、`GetPrintSingleOutputs()` 与 `GetOmitUnconnectedSpecs()` 面向导出版面和冗余信息控制，适合生成可读的调试图。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">图输出选项：</span><span class="en">VdfGrapherOptions</span></li>
+        <li><span class="zh">图输出配置：</span><span class="en">graph output options</span></li>
+        <li><span class="zh">图形转储：</span><span class="en">graph dump</span></li>
         <li><span class="zh">节点过滤回调：</span><span class="en">NodeFilterCallback</span></li>
         <li><span class="zh">节点样式回调：</span><span class="en">NodeStyleCallback</span></li>
         <li><span class="zh">显示样式：</span><span class="en">DisplayStyle</span></li>
         <li><span class="zh">mask 可视化：</span><span class="en">mask visualization</span></li>
-        <li><span class="zh">图形转储：</span><span class="en">graph dump</span></li>
+        <li><span class="zh">诊断视图：</span><span class="en">diagnostic view</span></li>
       </ul>
     </section>
     <section>

@@ -5325,3 +5325,53 @@
 1. 继续真实晋级，不再刷 count-neutral 导读补强。
 2. 下一批优先核心页面：`full_site/api/class_vdf_grapher_options.html` 或其他 406 清单内高价值核心 API 页。
 3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。
+
+## 第 319 轮：将 VdfGrapherOptions 提升为完整双语
+
+轮次类型：PromotionRound。目标页固定为 1 个：`full_site/api/class_vdf_grapher_options.html`。
+
+已完成：
+
+- 将 `full_site/api/class_vdf_grapher_options.html` 从 `bilingual_draft` 晋级为 `bilingual_complete`。
+- 页面标题改为“完整双语参考：VdfGrapherOptions Class / VdfGrapherOptions Class”，并移除通用 draft 文案和“后续迭代会继续补齐”等草稿标记。
+- 新增 `逐段双语理解 / Paragraph-Level Bilingual Coverage` 区块，覆盖：
+  - `VdfGrapherOptions` 作为 `VdfGrapher` output configuration 对象，而不是 Vdf evaluation 或 graph owner。
+  - graph visualization / graph dump 与 runtime computation、evaluation state、profiling evidence 的边界。
+  - `NodeFilterCallback`、`NodeStyleCallback`、`NodeLimitVector` 对 node filtering、styling 和 graph scope 的作用。
+  - `DisplayStyle`、`GetColor()`、`GetAnnotation()`、`GetDisplayStyle()` 对节点呈现和注释的意义。
+  - `AddNodeToGraph()`、`GetNodesToGraph()`、`DebugNameFilter()` 对 visualization scope selection 的解释。
+  - `GetDrawMasks()`、`GetDrawAffectsMasks()`、`GetDrawColorizedConnectionsOnly()` 对 dependency mask / affects mask 可视化的解释。
+  - `GetPageWidth()`、`GetPageHeight()`、`GetPrintSingleOutputs()`、`GetOmitUnconnectedSpecs()` 对版面与降噪的作用。
+  - `VdfGrapher`、`VdfNode`、`VdfConnectionVector`、`VdfObjectPtr`、`TfToken` 等相邻类型边界，以及把 graph dump 误当执行证据的常见误用。
+- 更新 `reports/bilingual_completion_promotions.json/md`，新增 `round-319-vdf-grapher-options`。
+- 更新 `reports/current_problem_audit.md/json`，将当前真实状态同步为 25 complete / 381 draft。
+- 重建 `openusd_bilingual_final.html`，总入口显示 25 complete / 381 incomplete drafts。
+
+分级变化：
+
+- `good_bilingual`：24 -> 25
+- `bilingual_complete`：24 -> 25
+- `bilingual_draft`：382 -> 381
+- `draft_needs_translation`：371 -> 370
+- `draft_template_only`：11 保持不变
+
+验证结果：
+
+- `discover_openusd_all_pages.mjs`：通过，`total_pages=406`，`promoted_complete_pages=17`。
+- `audit_openusd_translation_quality.mjs`：通过，`good_bilingual=25`，目标页 `grade=good_bilingual`。
+- `route_openusd_internal_links_local.mjs`：通过。
+- `audit_openusd_full_draft_preview.mjs`：通过，381/381 draft 页面可预览。
+- `audit_openusd_report_index.mjs`：通过。
+- `validate_openusd_api_repro.ps1`：通过，`required_check_count=288`，`failed_check_count=0`。
+- Node 直接解析 `reports/validation_report.json`：`bom=false`。
+
+当前差距：
+
+- 仍有 381 个 `bilingual_draft` 页面只是可检查草稿，不是完整翻译，其中 370 个仍为 `draft_needs_translation`。
+- 406 清单外的 Doxygen 目标仍会进入本地未覆盖占位页；这是当前 P1 浏览缺口。
+
+下一步目标：
+
+1. 继续真实晋级，不再刷 count-neutral 导读补强。
+2. 下一批优先核心页面：`full_site/api/class_esf_property_interface.html` 或其他 406 清单内高价值核心 API 页。
+3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。

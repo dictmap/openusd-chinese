@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T00:10:38.108Z",
+  "generated_at": "2026-06-07T00:22:45.809Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 382,
-    "bilingual_complete": 24
+    "bilingual_draft": 381,
+    "bilingual_complete": 25
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 371,
-    "good_bilingual": 24
+    "draft_needs_translation": 370,
+    "good_bilingual": 25
   },
   "focus_batch": [
     {
@@ -2543,29 +2543,29 @@
     },
     {
       "index": 59,
-      "title": "类参考草稿：VdfGrapherOptions Class / VdfGrapherOptions Class",
+      "title": "完整双语参考：VdfGrapherOptions Class / VdfGrapherOptions Class",
       "output": "full_site/api/class_vdf_grapher_options.html",
       "official_url": "https://openusd.org/release/api/class_vdf_grapher_options.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 64,
-      "enBlockCount": 51,
-      "zhChars": 788,
-      "enLetters": 2023,
-      "bodyChineseChars": 863,
+      "grade": "good_bilingual",
+      "zhBlockCount": 47,
+      "enBlockCount": 49,
+      "zhChars": 824,
+      "enLetters": 2006,
+      "bodyChineseChars": 877,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "`class_vdf_grapher_options.html` 说明 `VdfGrapherOptions` 这类 graph visualization / graph dumping 配置对象。它的价值在于控制如何观察和导出 Vdf 图，而不是参与实际 computation 的求值结果。",
-        "`VdfGrapherOptions` 应按调试和可视化配置阅读：它帮助选择显示哪些 node、input、output、dependency 或 annotation，不负责创建或执行图本身。",
-        "如果图导出结果过大、缺少边或难以定位节点，应检查 grapher option、filter condition、naming policy 和 graph traversal 范围，而不是先怀疑 computation 逻辑。"
+        "`VdfGrapherOptions` 是 `VdfGrapher` 的输出配置对象。官方说明说它 “can be used to configure aspects of VdfGrapher's output”，这里的 output 指 graph visualization / graph dump 的呈现结果，而不是 Vdf computation 的数值结果。阅读本页时应先把三层职责分开：`VdfNode` 描述图中的计算节点，`VdfContext` 在 callback 执行时提供输入输出访问，`VdfGrapherOptions` 只决定这些图结构被怎样筛选、着色、标注和排版。",
+        "页面中的 `NodeFilterCallback`、`NodeStyleCallback` 和 `NodeLimitVector` 是读懂该类的核心类型。`NodeFilterCallback` 负责决定某个 `VdfNode` 是否出现在输出图里；`NodeStyleCallback` 负责为节点提供颜色、注释或 display style；`NodeLimitVector` / `NodeLimit` 用来约束图展开范围。它们共同服务于“把大型 Vdf network 缩小成可读诊断图”的目标，而不是修改 network 的拓扑或依赖关系。",
+        "`DisplayStyle` 是输出图的视觉策略。它与 `GetColor()`、`GetAnnotation()`、`GetDisplayStyle()` 这组查询一起决定节点以什么颜色、说明文字和样式出现在 graph dump 中。调试时如果图中节点样式不符合预期，首先检查这些 option 或 callback，而不是把它解释成 Vdf evaluation state 改变。"
       ],
       "sampleEn": [
-        "This second-pass refinement adds page-specific Chinese guidance for VdfGrapherOptions while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.",
-        "graph visualization"
+        "`VdfGrapherOptions` configures the presentation emitted by `VdfGrapher`; it is not an evaluator and does not change graph execution or computed values.",
+        "The callback and node-limit types are filtering and styling hooks for generated graph output; they do not mutate the underlying `VdfNetwork` topology."
       ]
     },
     {
