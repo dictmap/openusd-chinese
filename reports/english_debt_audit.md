@@ -1,6 +1,6 @@
 # OpenUSD English Debt Audit
 
-Generated: 2026-06-07T23:18:47.712Z
+Generated: 2026-06-07T23:39:48.926Z
 
 Purpose:
 
@@ -12,16 +12,16 @@ Purpose:
 ## Counts
 
 - Total pages: 406
-- good_bilingual: 101
-- review_ready_zh: 38
+- good_bilingual: 102
+- review_ready_zh: 39
 - review_needs_zh_debt: 63
 - API complete: 72
 - API review_ready_zh: 12
-- Release complete: 29
-- Release review_ready_zh: 26
+- Release complete: 30
+- Release review_ready_zh: 27
 - Complete pages with high/very high ratio diagnostic: 10
-- bilingual_draft: 305
-- draft_needs_translation: 294
+- bilingual_draft: 304
+- draft_needs_translation: 293
 - draft_template_only: 11
 
 ## Complete Pages Still Carrying English Debt

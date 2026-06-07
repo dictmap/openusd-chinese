@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T23:18:47.056Z",
+  "generated_at": "2026-06-07T23:39:48.251Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 305,
-    "bilingual_complete": 101
+    "bilingual_draft": 304,
+    "bilingual_complete": 102
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 294,
-    "good_bilingual": 101
+    "draft_needs_translation": 293,
+    "good_bilingual": 102
   },
   "focus_batch": [
     {
@@ -9780,7 +9780,7 @@
       "enBlockCount": 46,
       "zhChars": 2235,
       "enLetters": 2616,
-      "bodyChineseChars": 2452,
+      "bodyChineseChars": 2509,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
       "genericDraft": false,
@@ -9797,29 +9797,29 @@
     },
     {
       "index": 328,
-      "title": "页面草稿：DiskLight / DiskLight",
+      "title": "完整双语参考：DiskLight / DiskLight",
       "output": "full_site/release/user_guides/schemas/usdLux/DiskLight.html",
       "official_url": "https://openusd.org/release/user_guides/schemas/usdLux/DiskLight.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
+      "grade": "good_bilingual",
       "zhBlockCount": 24,
-      "enBlockCount": 18,
-      "zhChars": 531,
-      "enLetters": 1042,
-      "bodyChineseChars": 656,
+      "enBlockCount": 23,
+      "zhChars": 1909,
+      "enLetters": 1497,
+      "bodyChineseChars": 2069,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。",
-        "本区块针对 DiskLight 补充中文优先的用途说明、属性阅读重点和术语对照；英文页面名、链接、代码、命令和原文摘录继续保留，便于和官方 usdLux schema 文档核对。",
-        "DiskLight 从位于 XY 平面的圆盘一侧发光，默认发光方向沿 -Z 轴；它适合表达摄影 soft box、圆形灯板或较柔和的面光源。"
+        "`DiskLight` 是 usdLux 中的 intrinsic light schema，用来表达一个位于局部 `XY plane` 的圆形发光盘。它不是球形光，也不是矩形面光，而是从圆盘的一侧沿局部 `-Z axis` 发光的面积光。中文阅读时最先要抓住两点：第一，圆盘几何由 `inputs:radius` 决定；第二，默认发光方向和 prim 的 transform 共同决定最终照向哪里。如果画面里光照方向不符合预期，通常应先检查 `xformOpOrder`、父层级 transform 和局部轴向，而不是把 `DiskLight` 当成无方向的点光源。",
+        "官方使用场景把 `DiskLight` 放在摄影 soft boxes、圆形 light panels、fluorescent lights 和类似线性或面状照明的语境里。这里的重点不是把所有真实灯具都简化成圆，而是让创作者在 USD 中获得一个稳定的“圆盘面积光”表达：它有位置、有半径、有一面发光的朝向，并能和 `LightAPI` 的通用光照属性、`ShapingAPI` 的光束塑形属性、`ShadowAPI` 的阴影控制属性一起使用。和 `RectLight` 相比，它没有矩形的 width/height；和 `SphereLight` 相比，它不是全方向发光；和 `CylinderLight` 相比，它没有沿 X 轴延伸的管状侧面。",
+        "示例层中有一个 `def DiskLight \"Light1\"`，设置 `float inputs:radius = 0.8`、`color3f inputs:color = (1, 1, 1)`、`float inputs:intensity = 20.0`，再通过 `double3 xformOp:translate = (4, 0, 1)` 把灯放到 `Sphere` 和 `Cube` 附近。这段示例说明了职责边界：`inputs:radius` 负责圆盘大小，`inputs:intensity` 和 `inputs:color` 负责能量和颜色，`xformOp:translate` 负责位置，`xformOpOrder` 负责变换顺序。中文页解释这些字段时必须保留 API/token/属性名原样，不能把可复制的 USD 语法翻译成中文标识符。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.",
-        "This section adds Chinese-first usage notes, property reading guidance, and terminology for DiskLight while retaining the English page name, links, code, commands, and source excerpts for comparison with the official usdLux schema documentation."
+        "`DiskLight` is an intrinsic light that emits from one side of a circular disk in the local XY plane.",
+        "Typical uses include soft-box-like, panel-like, and circular area-light setups."
       ]
     },
     {

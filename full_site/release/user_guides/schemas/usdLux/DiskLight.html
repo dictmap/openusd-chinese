@@ -3,24 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：DiskLight / DiskLight</title>
+  <title>完整双语参考：DiskLight / DiskLight</title>
   <link rel="icon" href="../../../../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1100px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
     pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
     code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
@@ -44,9 +48,9 @@
 </head>
 <body class="openusd-has-reading-flow">
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：DiskLight / DiskLight</h1>
-    <div class="meta">https://openusd.org/release/user_guides/schemas/usdLux/DiskLight.html</div>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：DiskLight / DiskLight</h1>
+    <div class="meta">官方页：https://openusd.org/release/user_guides/schemas/usdLux/DiskLight.html</div>
   </header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
@@ -109,80 +113,166 @@
 </aside>
 <!-- openusd-reading-flow-nav:end -->
 
-
-
-
   <main>
+    <section data-cn-complete="release-user-guide-usdLux-DiskLight-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`DiskLight` 是 usdLux 中的 intrinsic light schema，用来表达一个位于局部 `XY plane` 的圆形发光盘。它不是球形光，也不是矩形面光，而是从圆盘的一侧沿局部 `-Z axis` 发光的面积光。中文阅读时最先要抓住两点：第一，圆盘几何由 `inputs:radius` 决定；第二，默认发光方向和 prim 的 transform 共同决定最终照向哪里。如果画面里光照方向不符合预期，通常应先检查 `xformOpOrder`、父层级 transform 和局部轴向，而不是把 `DiskLight` 当成无方向的点光源。</p>
+      <p class="en">`DiskLight` is an intrinsic light that emits from one side of a circular disk in the local XY plane.</p>
+
+      <p class="zh">官方使用场景把 `DiskLight` 放在摄影 soft boxes、圆形 light panels、fluorescent lights 和类似线性或面状照明的语境里。这里的重点不是把所有真实灯具都简化成圆，而是让创作者在 USD 中获得一个稳定的“圆盘面积光”表达：它有位置、有半径、有一面发光的朝向，并能和 `LightAPI` 的通用光照属性、`ShapingAPI` 的光束塑形属性、`ShadowAPI` 的阴影控制属性一起使用。和 `RectLight` 相比，它没有矩形的 width/height；和 `SphereLight` 相比，它不是全方向发光；和 `CylinderLight` 相比，它没有沿 X 轴延伸的管状侧面。</p>
+      <p class="en">Typical uses include soft-box-like, panel-like, and circular area-light setups.</p>
+
+      <p class="zh">示例层中有一个 `def DiskLight "Light1"`，设置 `float inputs:radius = 0.8`、`color3f inputs:color = (1, 1, 1)`、`float inputs:intensity = 20.0`，再通过 `double3 xformOp:translate = (4, 0, 1)` 把灯放到 `Sphere` 和 `Cube` 附近。这段示例说明了职责边界：`inputs:radius` 负责圆盘大小，`inputs:intensity` 和 `inputs:color` 负责能量和颜色，`xformOp:translate` 负责位置，`xformOpOrder` 负责变换顺序。中文页解释这些字段时必须保留 API/token/属性名原样，不能把可复制的 USD 语法翻译成中文标识符。</p>
+      <p class="en">The official example places a `DiskLight` near a sphere and cube with authored radius, color, intensity, and transform opinions.</p>
+
+      <p class="zh">`inputs:radius` 是本页最关键的专有属性，USD type 为 `float`，fallback value 为 `0.5`。它表示圆盘半径，半径越大，视觉上越接近宽面积光，阴影边缘通常也会更柔和；但它不是单独的亮度旋钮，也不是照明距离。官方说明提到更大的半径会增加光的 overall reach，这在中文里应理解为圆盘发光面更大、影响范围和采样表现可能更宽，而不是保证所有 renderer 都以同一种物理单位或同一种曝光模型输出相同亮度。排查“太暗”或“太亮”时，应同时看 `inputs:intensity`、`inputs:color`、场景尺度、曝光、单位约定、遮挡和 renderer 的面积光采样。</p>
+      <p class="en">`inputs:radius` is the disk radius, with fallback value `0.5`.</p>
+
+      <p class="zh">`light:shaderId` 是 renderer-facing 的 shader 标识，USD type 为 `token`，fallback value 为 `DiskLight`。官方页说明 USD 会注册一个 identifier 为 `DiskLight`、source type 为 `USD` 的 `Sdr` shader node，用来对应该灯光的 inputs。这个字段不应翻译，也不应和 prim 名 `Light1` 混淆：prim 名可以由资产作者决定，`light:shaderId` 则是 schema 和渲染实现之间的稳定连接点。跨 renderer 或跨 DCC 交付时，如果灯光没有按预期识别，除了检查 prim type，还要确认 `light:shaderId` 没有被错误覆盖。</p>
+      <p class="en">`light:shaderId` keeps the `DiskLight` shader identity and the corresponding USD `Sdr` node mapping.</p>
+
+      <p class="zh">继承属性同样属于主阅读路径。`extent` 来自 `Boundable`，用于边界和包围盒相关计算；如果可见性、选择、裁剪或某些 Hydra delegate 的包围行为异常，需要检查 authored extent、自动计算和父级 transform。`xformOpOrder` 来自 `Xformable`，决定 `xformOp:translate`、旋转、缩放等操作的应用顺序；对于单面发光的 `DiskLight`，顺序错误会直接改变圆盘在世界中的位置和朝向。`proxyPrim`、`purpose`、`visibility` 来自 `Imageable`，分别影响代理 prim、渲染用途分类和可见性继承；很多“灯不生效”问题其实来自 visibility、purpose 过滤、payload/variant 或更强 layer opinion，而不是 `inputs:radius` 写错。</p>
+      <p class="en">Inherited `Boundable`, `Xformable`, and `Imageable` properties affect bounds, placement, purpose, proxying, and visibility.</p>
+
+      <p class="zh">调试顺序建议固定下来：先确认 prim type 是 `DiskLight`，再确认 `inputs:radius` 是否表达目标圆盘大小；接着检查局部 `XY plane` 和局部 `-Z axis` 是否经 transform 后朝向目标；然后检查 `inputs:intensity`、`inputs:color`、曝光、场景尺度和遮挡；之后检查 `visibility`、`purpose`、collection/linking、payload、variant 和 layer strength；最后再看目标 renderer 对面积光、阴影软化、采样噪声和 light units 的支持。这个顺序能避免把几何、能量、朝向、可见性和 renderer 能力混为同一个问题。</p>
+      <p class="en">A useful debugging path is schema type, radius, transform direction, energy/color, visibility/composition, then renderer support.</p>
+
+      <p class="zh">和相邻 usdLux 页面一起读时，`DiskLight` 的边界会更清楚。`CylinderLight` 表示局部 X 轴方向的管状侧面发光，`RectLight` 表示矩形面光，`SphereLight` 更适合球形或近似点状的局部光源，`DistantLight` 表示远处方向光，`DomeLight` 表示环境或贴图驱动的穹顶光，`PortalLight` 用于引导环境光采样穿过开口区域。`DiskLight` 只负责“圆盘、单面、面积光”的具体语义，不应承担所有 shaping、shadow、linking 或 renderer policy；这些行为应转到 `ShapingAPI`、`ShadowAPI`、`LightAPI` 或 renderer 文档中判断。</p>
+      <p class="en">Adjacent usdLux pages separate circular disk emission from cylindrical, rectangular, spherical, distant, dome, portal, shaping, shadow, and linking concepts.</p>
+
+      <p class="zh">制作流程中常见三类使用方式。第一类是摄影棚软箱或圆形灯盘，需要一个有明确半径和方向的柔和面积光；这时应优先调 `inputs:radius`、transform 和 `inputs:intensity` 的组合。第二类是产品、角色或室内场景中的圆形补光，需要在镜头中稳定控制高光形状；这时要注意圆盘一侧发光的方向，而不要期待它像 `SphereLight` 一样全方向贡献。第三类是跨工具交换，需要让 DCC、Hydra delegate 或离线 renderer 都能识别同一个 schema；这时 `light:shaderId`、`purpose`、`visibility` 和本地/官方链接核对比单纯翻译说明更重要。</p>
+      <p class="en">Production use cases distinguish circular soft-box lighting, controllable round highlights, and cross-renderer schema exchange.</p>
+
+      <p class="zh">本轮已对比官方页和本地 source snapshot：标题 `DiskLight`、定义段、用途段、USDA 示例、`Properties`、`Inherited Properties (Boundable)`、`Inherited Properties (Xformable)`、`Inherited Properties (Imageable)`、previous/next 链接均纳入中文解释。页面保留 `DiskLight`、`inputs:radius`、`inputs:color`、`inputs:intensity`、`light:shaderId`、`extent`、`xformOpOrder`、`proxyPrim`、`purpose`、`visibility`、`CylinderLight`、`DistantLight` 等 API/schema/token/属性名原样；中文负责建立独立可读的主路径，英文只作为核对。</p>
+      <p class="en">The official page and local source snapshot were checked for the title, prose, example, properties, inherited properties, and adjacent links.</p>
+
+      <p class="zh">还需要明确一个容易误读的点：`DiskLight` 的圆盘几何本身并不等同于可见灯具模型。它描述的是光照 schema，而不是自动生成一块在镜头中可见的圆形灯板。如果资产需要让灯具外壳、灯罩、支架或发光面在画面中可见，通常还要另建 `Mesh`、`GeomSubset`、材质或 renderer 特定的 emissive 表达；`DiskLight` prim 负责照明贡献，几何资产负责可见外观。把这两层分开，能避免美术资产看起来没有灯具、或者灯具可见但实际不照明这两类混乱。</p>
+      <p class="en">Visible lamp geometry is separate from the `DiskLight` schema that contributes illumination.</p>
+
+      <p class="zh">在组合、引用和变体场景中，`DiskLight` 的 authored opinion 也要按 USD composition 规则读取。弱层里写了 `inputs:radius` 不代表最终 stage 一定采用该值；更强 layer、variant selection、payload、reference 或 session layer 都可能覆盖它。若调试时本地 HTML 与 usdview/renderer 结果不一致，先用属性面板或 `usdcat`/`usdtree` 查看最终 composed value，再判断是不是翻译、文档或 renderer 的问题。中文主阅读路径必须提醒读者：schema 字段说明回答“这个属性是什么意思”，composition 检查回答“当前 stage 实际用了哪个值”。</p>
+      <p class="en">Authored values must still be interpreted through USD composition to find the composed value used by the stage.</p>
+
+      <p class="zh">因此，中文读者现在可以独立判断：什么情况下选择 `DiskLight`，如何解释圆盘半径和单面发光方向，如何把 radius、intensity、color 与 transform 分开调试，继承属性为什么会影响可见性和阅读路径，以及何时应该跳转到 `RectLight`、`SphereLight`、`CylinderLight`、`ShapingAPI` 或 `ShadowAPI` 查看相邻概念。这个判断路径也是后续检查渲染结果和资产交付问题的基础。</p>
+      <p class="en">The page is ready as a Chinese-first reading entry for this schema.</p>
+    </section>
+
     <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+      <h2>官方属性对照 / Official Properties</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>USD type</th>
+            <th>Fallback</th>
+            <th>中文说明 / Chinese Reading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>inputs:radius</code></td>
+            <td><code>float</code></td>
+            <td><code>0.5</code></td>
+            <td><span class="zh">圆盘半径。它控制 `DiskLight` 的发光几何大小，并影响面积光的柔和程度、采样范围和视觉覆盖；它不是亮度、距离或曝光参数。</span><span class="en">Radius of the disk.</span></td>
+          </tr>
+          <tr>
+            <td><code>light:shaderId</code></td>
+            <td><code>token</code></td>
+            <td><code>DiskLight</code></td>
+            <td><span class="zh">`DiskLight` 的 shader ID。USD 会为它注册 source type 为 `USD` 的 `Sdr` shader node；该 token 必须保留英文原样。</span><span class="en">Shader ID for a `DiskLight`; USD registers a matching `Sdr` shader node.</span></td>
+          </tr>
+        </tbody>
+      </table>
     </section>
-    <section data-cn-refinement="usdLux-schema-quality-pass-004">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 DiskLight 补充中文优先的用途说明、属性阅读重点和术语对照；英文页面名、链接、代码、命令和原文摘录继续保留，便于和官方 usdLux schema 文档核对。</p>
-      <p class="en">This section adds Chinese-first usage notes, property reading guidance, and terminology for DiskLight while retaining the English page name, links, code, commands, and source excerpts for comparison with the official usdLux schema documentation.</p>
-      <ul>
-        <li><span class="zh">DiskLight 从位于 XY 平面的圆盘一侧发光，默认发光方向沿 -Z 轴；它适合表达摄影 soft box、圆形灯板或较柔和的面光源。</span></li>
-        <li><span class="zh">阅读本页时重点看 radius 与 intensity 如何一起决定可见光源尺寸和照明强度；圆盘面积越大，阴影通常越柔和，但最终效果仍取决于渲染器采样与单位约定。</span></li>
-        <li><span class="zh">官方示例把 DiskLight 放在 Sphere 与 Cube 附近，并设置 radius 0.8、intensity 20；这些数值和属性名保持英文原样，便于和 USD scene 示例对应。</span></li>
-        <li><span class="zh">DiskLight 与 RectLight、SphereLight、CylinderLight 都属于常用 intrinsic light，后续精修可以把它们并排比较，帮助读者选择合适的面积光类型。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">圆盘灯：</span><span class="en">DiskLight</span></li>
-        <li><span class="zh">圆形发光盘：</span><span class="en">circular disk</span></li>
-        <li><span class="zh">-Z 轴方向：</span><span class="en">-Z axis</span></li>
-        <li><span class="zh">柔光箱：</span><span class="en">soft box</span></li>
-        <li><span class="zh">光强属性：</span><span class="en">intensity</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-103">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`DiskLight` 是位于 XY plane、沿 `-Z axis` 单侧发光的 circular disk intrinsic light。它适合表达摄影 soft box、圆形灯板、荧光灯或其他较柔和的面光源，示例中使用 `radius = 0.8` 和 `intensity = 20.0`。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for DiskLight while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">官方说明中的 `centered in the XY plane` 与 `along the -Z axis` 决定了默认局部方向。若灯光朝向不对，通常应检查 prim transform，而不是改写 schema 语义。</span></li>
-        <li><span class="zh">`radius` 控制圆盘大小，`inputs:intensity` 控制光强。更大的圆盘通常更接近柔和面积光，但最终阴影质量仍取决于 renderer sampling、单位约定和光照模型。</span></li>
-        <li><span class="zh">官方用途列表提到 soft boxes、linear lights、fluorescent lights 和 light panels。虽然 `DiskLight` 是圆盘，文档仍把它放在面光源模拟语境中，应保留这些英文应用词。</span></li>
-        <li><span class="zh">示例中的 `def DiskLight &quot;Light1&quot;`、`inputs:radius`、`inputs:color`、`inputs:intensity`、`xformOp:translate` 都是可复制的 usda 语法，中文层只能解释，不能替换这些字面量。</span></li>
-        <li><span class="zh">`DiskLight`、`RectLight`、`SphereLight` 和 `CylinderLight` 都是常用 `usdLux` intrinsic lights；本页重点是圆盘几何、单侧发光方向和半径属性。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">圆盘光源：</span><span class="en">DiskLight</span></li>
-        <li><span class="zh">圆形发光盘：</span><span class="en">circular disk</span></li>
-        <li><span class="zh">XY 平面：</span><span class="en">XY plane</span></li>
-        <li><span class="zh">-Z 轴：</span><span class="en">-Z axis</span></li>
-        <li><span class="zh">半径输入属性：</span><span class="en">inputs:radius</span></li>
-        <li><span class="zh">光强输入属性：</span><span class="en">inputs:intensity</span></li>
-      </ul>
-    </section>
+
     <section>
-      <h2>页面结构 / Page Structure</h2>
+      <h2>继承属性阅读 / Inherited Properties</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Inherited from</th>
+            <th>Property</th>
+            <th>USD type / fallback</th>
+            <th>中文说明 / Chinese Reading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>Boundable</code></td>
+            <td><code>extent</code></td>
+            <td><code>float3[]</code></td>
+            <td><span class="zh">边界数据会影响包围盒、裁剪、选择和某些 delegate 的空间判断。调试时要和 transform、radius 一起看。</span><span class="en">Bounds-related inherited property.</span></td>
+          </tr>
+          <tr>
+            <td><code>Xformable</code></td>
+            <td><code>xformOpOrder</code></td>
+            <td><code>token[]</code></td>
+            <td><span class="zh">决定 transform op 应用顺序。由于 `DiskLight` 沿局部 `-Z axis` 单面发光，旋转和位移顺序会改变最终照明方向。</span><span class="en">Transform operation order.</span></td>
+          </tr>
+          <tr>
+            <td><code>Imageable</code></td>
+            <td><code>proxyPrim</code></td>
+            <td><code>rel</code></td>
+            <td><span class="zh">代理 prim 关系。它不改变 `DiskLight` 的圆盘半径，但会影响替代表达和工具显示路径。</span><span class="en">Proxy prim relationship.</span></td>
+          </tr>
+          <tr>
+            <td><code>Imageable</code></td>
+            <td><code>purpose</code></td>
+            <td><code>token / default</code></td>
+            <td><span class="zh">渲染用途分类。若 renderer、viewport 或 pipeline 过滤了某些 purpose，灯光或相关可视对象可能不会进入期望路径。</span><span class="en">Render-purpose classification.</span></td>
+          </tr>
+          <tr>
+            <td><code>Imageable</code></td>
+            <td><code>visibility</code></td>
+            <td><code>token / inherited</code></td>
+            <td><span class="zh">可见性继承。父层级、variant 或强 layer opinion 可能覆盖可见性，导致看似灯光属性正确但结果不可见。</span><span class="en">Inherited visibility state.</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>USDA 示例阅读 / USDA Example Reading</h2>
+      <p class="zh">下面保留官方示例中的关键结构，便于和本地 source snapshot 对照。代码标识符保持英文原样；中文说明只解释职责，不替换语法。</p>
+      <pre><code>#usda 1.0
+(
+    upAxis = "Y"
+)
+
+def Scope "Lights"
+{
+    def DiskLight "Light1"
+    {
+        float inputs:radius = 0.8
+        color3f inputs:color = (1, 1, 1)
+        float inputs:intensity = 20.0
+        double3 xformOp:translate = (4, 0, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+}</code></pre>
       <ul>
-<li><span class="zh">第 1 级标题：DiskLight</span><span class="en">DiskLight</span></li>
+        <li><span class="zh">`def DiskLight "Light1"` 表示 prim type 是 `DiskLight`，`Light1` 只是 prim name。</span><span class="en">The prim type is `DiskLight`; `Light1` is the prim name.</span></li>
+        <li><span class="zh">`inputs:radius = 0.8` 扩大圆盘发光面；它和 `inputs:intensity = 20.0` 是两个不同维度。</span><span class="en">Radius and intensity are separate authored opinions.</span></li>
+        <li><span class="zh">`xformOp:translate = (4, 0, 1)` 只给出位置；如果要改变朝向，需要额外 transform op 并维护 `xformOpOrder`。</span><span class="en">Translation places the light; orientation requires transform opinions.</span></li>
       </ul>
     </section>
+
     <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">An intrinsic light that emits light from a circular disk centered in the XY plane. The light is emitted from one side of the disk along the -Z axis.</p>
-<p class="en">Use DiskLights to illuminate objects, simulating soft boxes used in photography, linear lights, fluorescent lights, and light panels.</p>
-<p class="en">The following simple example has a DiskLight positioned near a Sphere and Cube, with a radius of 0.8 and an intensity of 20.</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>#usda 1.0 ( upAxis = &quot;Y&quot; ) def Scope &quot;Lights&quot; { def DiskLight &quot;Light1&quot; { float inputs:radius = 0.8 color3f inputs:color = ( 1 , 1 , 1 ) float inputs:intensity = 20.0 double3 xformOp:translate = ( 4 , 0 , 1 ) uniform token[] xformOpOrder = [ &quot;xformOp:translate&quot; ] } } def Xform &quot;TestGeom&quot; { def Sphere &quot;Sphere1&quot; { token purpose = &quot;render&quot; color3f[] primvars:displayColor = [( 1 , 1 , 1 )] ( interpolation = &quot;constant&quot; ) double3 xformOp:translate = ( 0 , 0 , -2 ) uniform token[] xformOpOrder = [ &quot;xformOp:translate&quot; ] ...</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
+      <h2>相邻页面 / Adjacent Reading</h2>
       <ul>
-<li>No same-site document links extracted.</li>
+        <li><a href="CylinderLight.html">CylinderLight</a>：管状侧面发光，适合灯管和长条形局部光。</li>
+        <li><a href="DistantLight.html">DistantLight</a>：远处方向光，常用于太阳光一类的平行光模型。</li>
+        <li><a href="RectLight.html">RectLight</a>：矩形面积光，适合窗口、矩形柔光箱或大面积平面灯。</li>
+        <li><a href="SphereLight.html">SphereLight</a>：球形或近似点状局部光源。</li>
+        <li><a href="ShapingAPI.html">ShapingAPI</a>：补充 cone、focus、IES 等塑形控制。</li>
+        <li><a href="ShadowAPI.html">ShadowAPI</a>：补充阴影相关控制。</li>
+        <li><a href="LightAPI.html">LightAPI</a>：通用 light 行为和 linking 入口。</li>
       </ul>
     </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="../../../../../site/release_index.html">返回 Release 本地入口 / Back to local release entry</a></p>
       <p><a href="https://openusd.org/release/user_guides/schemas/usdLux/DiskLight.html">打开官方原页 / Open official page</a></p>
     </section>
   </main>
