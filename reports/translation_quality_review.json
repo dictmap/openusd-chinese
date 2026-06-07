@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T12:12:35.174Z",
+  "generated_at": "2026-06-07T12:22:36.370Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 334,
-    "bilingual_complete": 72
+    "bilingual_draft": 333,
+    "bilingual_complete": 73
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 323,
-    "good_bilingual": 72
+    "draft_needs_translation": 322,
+    "good_bilingual": 73
   },
   "focus_batch": [
     {
@@ -8341,29 +8341,29 @@
     },
     {
       "index": 274,
-      "title": "API 模块草稿：UsdUtils: USD Utilities / UsdUtils: USD Utilities",
+      "title": "完整双语参考：UsdUtils: USD Utilities / UsdUtils: USD Utilities",
       "output": "full_site/api/usd_utils_page_front.html",
       "official_url": "https://openusd.org/release/api/usd_utils_page_front.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 31,
-      "enBlockCount": 23,
-      "zhChars": 604,
-      "enLetters": 1776,
-      "bodyChineseChars": 665,
+      "grade": "good_bilingual",
+      "zhBlockCount": 47,
+      "enBlockCount": 39,
+      "zhChars": 1692,
+      "enLetters": 3274,
+      "bodyChineseChars": 1763,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 UsdUtils: USD Utilities 补充中文优先的模块用途、schema/API 边界、阅读路径和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`UsdUtils: USD Utilities` 汇集用于 managing、inspecting、editing 和 creating USD assets 的工具类与函数；它是资产处理和管线辅助工具箱，而不是单一 schema 模块。"
+        "本页已按完整双语参考页处理：中文优先解释 `UsdUtils` 作为 USD utility module 的职责，覆盖 managing / inspecting / editing / creating USD assets、Authoring、Coalescing diagnostic delegate、Conditionally abort diagnostic delegate、Stitching、value clips、dependency analysis and asset packaging、Introspection、Pipeline、StageCache、`UsdUtilsStageCache`、complianceChecker.py，以及 User Processing Functions 中的 asset path 修改、dependency 追加、asset path 移除和 packaged layer 限制；英文 API 名称、函数名、类名、文件名、token 和链接保留原样，便于与 Doxygen 页面核对。",
+        "官方 Overview 的第一句说明 `UsdUtils` contains utility classes and functions for managing, inspecting, editing and creating USD assets。这里的关键词是 utility、assets 和 workflow。`UsdUtils` 不是单一 scene schema，也不是 composition 引擎；它是围绕 USD 资产处理、工具链、命令行批处理和管线胶水代码的实用函数集合，常把 `Sdf`、`Usd`、`Ar`、`Tf`、file format 和 packaging 能力组合起来。",
+        "Authoring 分组提供 copying metadata between layers 的能力。它适合处理 layer 之间的 metadata 迁移、工具生成 layer 或批量修正 layer metadata 的场景。它不是任意强度的 composition override，也不会替用户决定最终 composed value；它只是在 authoring 工具层辅助拷贝或整理元数据。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first module purpose, schema/API boundaries, reading paths, and terminology for UsdUtils: USD Utilities while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and source excerpts for comparison with the official Doxygen page."
+        "This page is promoted as a complete bilingual reference for UsdUtils, USD asset utilities, dependency analysis, asset packaging, diagnostic delegates, stitching, introspection, stage cache, and user processing functions.",
+        "UsdUtils provides utility classes and functions for managing, inspecting, editing, and creating USD assets."
       ]
     },
     {

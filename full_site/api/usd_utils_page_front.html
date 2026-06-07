@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>API 模块草稿：UsdUtils: USD Utilities / UsdUtils: USD Utilities</title>
+  <title>完整双语参考：UsdUtils: USD Utilities / UsdUtils: USD Utilities</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -19,20 +19,55 @@
     ul{padding-left:22px}
     li{margin:8px 0}
     code{font-family:"Cascadia Mono","Consolas",monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>API 模块草稿：UsdUtils: USD Utilities / UsdUtils: USD Utilities</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：UsdUtils: USD Utilities / UsdUtils: USD Utilities</h1>
     <div class="meta">https://openusd.org/release/api/usd_utils_page_front.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页处理：中文优先解释 `UsdUtils` 作为 USD utility module 的职责，覆盖 managing / inspecting / editing / creating USD assets、Authoring、Coalescing diagnostic delegate、Conditionally abort diagnostic delegate、Stitching、value clips、dependency analysis and asset packaging、Introspection、Pipeline、StageCache、`UsdUtilsStageCache`、complianceChecker.py，以及 User Processing Functions 中的 asset path 修改、dependency 追加、asset path 移除和 packaged layer 限制；英文 API 名称、函数名、类名、文件名、token 和链接保留原样，便于与 Doxygen 页面核对。</p>
+      <p class="en">This page is promoted as a complete bilingual reference for UsdUtils, USD asset utilities, dependency analysis, asset packaging, diagnostic delegates, stitching, introspection, stage cache, and user processing functions.</p>
+    </section>
+    <section data-cn-complete="usd-utils-utilities-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">官方 Overview 的第一句说明 `UsdUtils` contains utility classes and functions for managing, inspecting, editing and creating USD assets。这里的关键词是 utility、assets 和 workflow。`UsdUtils` 不是单一 scene schema，也不是 composition 引擎；它是围绕 USD 资产处理、工具链、命令行批处理和管线胶水代码的实用函数集合，常把 `Sdf`、`Usd`、`Ar`、`Tf`、file format 和 packaging 能力组合起来。</p>
+      <p class="en">UsdUtils provides utility classes and functions for managing, inspecting, editing, and creating USD assets.</p>
+      <p class="zh">Authoring 分组提供 copying metadata between layers 的能力。它适合处理 layer 之间的 metadata 迁移、工具生成 layer 或批量修正 layer metadata 的场景。它不是任意强度的 composition override，也不会替用户决定最终 composed value；它只是在 authoring 工具层辅助拷贝或整理元数据。</p>
+      <p class="en">Authoring provides functionality for copying metadata between layers.</p>
+      <p class="zh">Diagnostic delegate 相关工具有两类：Coalescing diagnostic delegate 聚合来自 `Tf` diagnostic management system 的 warnings 和 statuses；Conditionally abort diagnostic delegate 可以根据 inclusion / exclusion rules，在 non fatal USD error 或 warning 发生时中止操作。批处理资产、转换 USDZ、发布管线或持续集成校验时，这些 delegate 可作为质量门禁，而不只是把消息打印到终端。</p>
+      <p class="en">Diagnostic delegates aggregate warnings/statuses or abort operations based on non-fatal USD errors or warnings.</p>
+      <p class="zh">Stitching 分组提供 merging layers together 的能力，也可以从一组 layers 生成 `value clips`，相关入口包括 `stitchClips`。它常用于把多段时间采样、缓存片段或分批输出合并成可消费的 USD 表达。阅读时应把 stitching 与 composition 区分：stitching 是工具生成或合并 layer 内容，composition 是运行时按照 arcs 解析 opinions。</p>
+      <p class="en">Stitching merges layers and can generate value clips from sets of layers.</p>
+      <p class="zh">Dependency analysis and asset packaging 分组用于提取给定 layer 的 external dependencies，例如 `references`、`payloads` 和 `sublayers`，并支持 `UsdUtilsExtractExternalReferences`、`UsdUtilsCreateNewUsdzPackage` 等流程。这里的 asset dependency 不只是文件系统路径字符串，还要结合 `Ar` resolver、`SdfLayer`、package-relative path、asset path authored value 和 layer stack 语义理解。</p>
+      <p class="en">Dependency analysis and asset packaging extract external dependencies such as references, payloads, and sublayers.</p>
+      <p class="zh">Introspection 分组用于理解 `UsdStage` 的各种特征，包括 memory usage、prim counts、prototype counts 等。它适合工具报告、性能诊断、资产规模评估和回归监控。它读取并总结 stage 特征，但不负责修改 asset，也不替代 `UsdStage`、`Pcp` 或 schema 页面对 composition 和 scene semantics 的解释。</p>
+      <p class="en">Introspection helps understand characteristics of a UsdStage such as memory usage, prim counts, and prototype counts.</p>
+      <p class="zh">Pipeline 分组提供 establishing pipeline conventions 的 utilities。它是把项目约定、资产命名、路径策略或发布流程固化进工具的入口，而不是 USD 核心规范的一部分。因此同一个 `UsdUtils` API 在不同 studio 或 pipeline 中可能被不同层包装；阅读时要区分 OpenUSD 提供的工具能力和本地管线约定。</p>
+      <p class="en">Pipeline utilities help establish pipeline conventions around USD workflows.</p>
+      <p class="zh">StageCache 分组提供 `UsdUtilsStageCache`，用于管理一个可被多个 clients 共享的 singleton `UsdStageCache` instance。它和 `UsdStageCache` 的核心页面相邻，但 `UsdUtilsStageCache` 更偏应用或工具层便利封装。若问题是 stage 是否被复用、缓存生命周期、client 间共享，先看 cache 使用方式；若问题是 stage composition 本身，再回到 `UsdStage` / `Pcp` / `Sdf`。</p>
+      <p class="en">StageCache provides UsdUtilsStageCache for managing a shared singleton UsdStageCache among clients.</p>
+      <p class="zh">`complianceChecker.py` 提供 Python classes and methods，用于检查给定 USD asset 或 USDZ package 的 compliance。它适合发布前验证、自动化质量门禁和包结构检查。compliance failure 不一定表示文件无法被 `UsdStage` 打开，也可能是发布规范、包内容、依赖组织或工具约定不满足。</p>
+      <p class="en">complianceChecker.py checks compliance of USD assets or USDZ packages.</p>
+      <p class="zh">User Processing Functions 是本页最容易误读的部分。Localization routines 可以接受自定义 processing function；该函数会在 dependency traversal 发现 asset paths 时被调用。它允许修改 asset path、添加额外 dependencies，或从输出中移除 asset path / dependencies。它的目的不是重写任意 layer 内容，而是在本地化或打包依赖遍历中定制输出。</p>
+      <p class="en">User processing functions customize localization routines as asset paths are discovered during dependency traversal.</p>
+      <p class="zh">定义 processing function 时，官方强调函数针对每个 recursive traversal 发现的 asset path 调用，参数包括 containing `SdfLayerHandle` 和 `UsdUtilsDependencyInfo`。返回值传回需要对 asset path 做的修改：返回新的 `UsdUtilsDependencyInfo` 表示替换或添加依赖，返回空 asset path 可以移除引用。C++ 返回 `UsdUtilsDependencyInfo` struct，Python 返回 `UsdUtils.DependencyInfo` object。</p>
+      <p class="en">A processing function receives the layer and UsdUtilsDependencyInfo for each discovered asset path and returns dependency changes.</p>
+      <p class="zh">Modifying AssetPaths and Dependencies 的示例说明了常见用法：把 `.jpg` 转成 `.png`，或为 `.obj` transient dependency 自动加入对应 `.mtl`。这类函数适合资产格式转换、发布包整理和临时依赖补全，但必须保持 dependency traversal 语义清晰，否则可能生成无法加载或路径不一致的包。</p>
+      <p class="en">Processing functions can transform asset paths or add related transient dependencies such as sidecar files.</p>
+      <p class="zh">官方特别警告：processing function 的意图是修改当前 asset path；在 processing 期间修改包含该 path 的 layer 可能导致 assets behave unexpectedly or fail to load。也就是说，函数应返回修改后的依赖信息，而不是直接在回调里改 layer 内容。对已有 package 中的 asset path 进行修改也可能触发 coding error，需要用 `SdfFileFormat::IsPackage` 和 `ArIsPackageRelativePath` 判断当前 layer/reference 是否处于 package 场景。</p>
+      <p class="en">Processing functions should modify the current asset path through returned dependency information, not mutate the containing layer during traversal.</p>
+      <p class="zh">Removing Asset paths 小节说明，如果希望从 localization 输出中排除某些 assets，可以让返回的 `UsdUtilsDependencyInfo` object 的 `assetPath` 为空字符串。例如 `.txt` extension 可以被排除。这一机制适合去掉临时文件、无关 sidecar 或不应打包的资源，但也要确认下游 asset 是否仍能打开，否则会把依赖裁剪成运行时缺失。</p>
+      <p class="en">Returning an empty assetPath removes that asset path from the localization output.</p>
+      <p class="zh">调试 `UsdUtils` 时应把 utility failure 拆成底层模块：路径解析看 `Ar`，layer I/O 和 package 判断看 `SdfLayer` / `SdfFileFormat`，composition 和 stage 行为看 `UsdStage` / `Pcp`，诊断通道看 `Tf`，打包输出看 USDZ/package 工具。`UsdUtils` 常把这些能力组合起来，因此错误表面在 utility 层，根因可能在 resolver、layer、composition、file format plugin 或用户 processing function。</p>
+      <p class="en">UsdUtils failures should be decomposed into asset resolver, layer I/O, composition, diagnostics, packaging, and user-processing-function layers.</p>
+      <p class="zh">本页保留 `UsdUtilsDependencyInfo`、`UsdUtilsCreateNewUsdzPackage`、`UsdUtilsStageCache`、`UsdStageCache`、`SdfFileFormat::IsPackage`、`ArIsPackageRelativePath`、`references`、`payloads`、`sublayers` 等英文标识，因为它们直接对应 API、class、function、asset arc 或文件格式判断语义。中文层解释如何阅读和排查，不能把这些 token 改写成中文 API。</p>
+      <p class="en">English API names, class names, function names, and dependency terms are retained so readers can map the Chinese explanation to code and Doxygen references.</p>
     </section>
     <section data-cn-refinement="api-usd-schema-quality-pass-061">
       <h2>中文精修导读 / Chinese Reading Notes</h2>
