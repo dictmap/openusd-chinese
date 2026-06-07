@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T18:37:34.411Z",
+  "generated_at": "2026-06-07T19:13:46.125Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 314,
-    "bilingual_complete": 92
+    "bilingual_draft": 313,
+    "bilingual_complete": 93
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 303,
-    "good_bilingual": 92
+    "draft_needs_translation": 302,
+    "good_bilingual": 93
   },
   "focus_batch": [
     {
@@ -9932,29 +9932,29 @@
     },
     {
       "index": 333,
-      "title": "页面草稿：LightAPI / LightAPI",
+      "title": "完整双语参考：LightAPI / LightAPI",
       "output": "full_site/release/user_guides/schemas/usdLux/LightAPI.html",
       "official_url": "https://openusd.org/release/user_guides/schemas/usdLux/LightAPI.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 40,
-      "enBlockCount": 33,
-      "zhChars": 567,
-      "enLetters": 2203,
-      "bodyChineseChars": 628,
+      "grade": "good_bilingual",
+      "zhBlockCount": 39,
+      "enBlockCount": 39,
+      "zhChars": 1832,
+      "enLetters": 2731,
+      "bodyChineseChars": 1894,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。",
-        "本区块针对 LightAPI 补充中文优先的 schema 用途、属性/关系阅读路径、继承或连接边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。",
-        "`LightAPI` 是给 prim 赋予灯光能力的 API schema；应用后 prim 会获得 `inputs:color`、`inputs:intensity`、`inputs:exposure`、`inputs:diffuse`、`inputs:specular` 等灯光属性。"
+        "本页是 OpenUSD release 用户指南中 usdLux `LightAPI` 的完整双语参考页。中文优先解释 schema 作用、connectable 约束、light-linking/shadow-linking、核心光照输入、`normalize` 语义、filter/material/shader 属性和调试边界，同时保留所有 API 名、属性名、token、数学公式、类型名和链接原样。",
+        "`LightAPI` 是给 prim 增加“灯光能力”的 API schema。应用后，该 prim 不只是多了几个普通属性，而是被视为能够参与 usdLux 光照语义的对象：它可以有 `inputs:color`、`inputs:intensity`、`inputs:exposure`、`inputs:diffuse`、`inputs:specular` 等输入，也可以通过 `collection:lightLink`、`collection:shadowLink`、`light:filters` 等关系与场景几何、阴影和 filter 网络发生联系。",
+        "官方页的第一层意思是：`LightAPI` 抽取了多种灯光 schema 的共同能力。无论具体灯光是 `DiskLight`、`RectLight`、`SphereLight`、`DistantLight`、`DomeLight`，还是 geometry light 相关的 API，它们都需要某些通用输入来描述颜色、亮度、曝光和可见影响范围。理解 `LightAPI` 后，再读具体灯光页面时就不会把每个属性当成孤立字段，而能看出它们在统一光照模型中的角色。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.",
-        "This section adds Chinese-first schema purpose, property and relationship reading paths, inheritance or connection boundaries, and terminology for LightAPI while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison."
+        "This local bilingual page explains the usdLux `LightAPI` guide in Chinese first while retaining official identifiers, property names, tokens, formulas, and links for comparison.",
+        "When `LightAPI` is applied to a prim, that prim gains light capabilities such as color, intensity, specular and diffuse multipliers, light-linking, and light filters."
       ]
     },
     {

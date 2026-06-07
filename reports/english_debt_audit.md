@@ -1,6 +1,6 @@
 # OpenUSD English Debt Audit
 
-Generated: 2026-06-07T18:38:01.253Z
+Generated: 2026-06-07T19:14:11.657Z
 
 Purpose:
 
@@ -12,16 +12,16 @@ Purpose:
 ## Counts
 
 - Total pages: 406
-- good_bilingual: 92
-- review_ready_zh: 29
+- good_bilingual: 93
+- review_ready_zh: 30
 - review_needs_zh_debt: 63
 - API complete: 72
 - API review_ready_zh: 12
-- Release complete: 20
-- Release review_ready_zh: 17
+- Release complete: 21
+- Release review_ready_zh: 18
 - Complete pages with high/very high ratio diagnostic: 10
-- bilingual_draft: 314
-- draft_needs_translation: 303
+- bilingual_draft: 313
+- draft_needs_translation: 302
 - draft_template_only: 11
 
 ## Complete Pages Still Carrying English Debt
@@ -68,11 +68,11 @@ Purpose:
 | 253 | `full_site/api/struct_usd_skel_tokens_type.html` | api | class_or_struct | 397 | 6/3 | 4.37 | high | draft |
 | 298 | `full_site/release/search.html` | release | release_or_tutorial | 64 | 1/4 | 4.3 | high | draft |
 | 69 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | api | general | 66 | 1/3 | 4.12 | high | draft |
-| 333 | `full_site/release/user_guides/schemas/usdLux/LightAPI.html` | release | release_or_tutorial | 567 | 6/4 | 3.89 | medium | draft |
 | 257 | `full_site/api/usd_2usd_2object_8h.html` | api | general | 332 | 6/3 | 3.82 | medium | draft |
 | 263 | `full_site/api/usd_mtlx_page_front.html` | api | module_front | 470 | 6/4 | 3.74 | medium | draft |
 | 66 | `full_site/api/classpxr__tsl_1_1robin__map.html` | api | general | 353 | 4/3 | 3.71 | medium | draft |
 | 260 | `full_site/api/usd_hydra_page_front.html` | api | module_front | 475 | 6/4 | 3.67 | medium | draft |
+| 229 | `full_site/api/md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html` | api | general | 555 | 5/3 | 3.63 | medium | draft |
 
 ## Release Pages To Pull Forward
 
@@ -80,7 +80,6 @@ Purpose:
 | --- | --- | --- | --- | ---: | ---: | ---: | --- | --- |
 | 298 | `full_site/release/search.html` | release | release_or_tutorial | 64 | 1/4 | 4.3 | high | draft |
 | 294 | `full_site/release/press_opensource_announce.html` | release | release_or_tutorial | 585 | 7/4 | 4.55 | high | draft |
-| 333 | `full_site/release/user_guides/schemas/usdLux/LightAPI.html` | release | release_or_tutorial | 567 | 6/4 | 3.89 | medium | draft |
 | 334 | `full_site/release/user_guides/schemas/usdLux/LightFilter.html` | release | release_or_tutorial | 589 | 6/4 | 3.6 | medium | draft |
 | 353 | `full_site/release/user_guides/schemas/usdRender/overview.html` | release | release_or_tutorial | 577 | 7/4 | 3.48 | medium | draft |
 | 288 | `full_site/release/intro_to_openexec.html` | release | release_or_tutorial | 608 | 7/4 | 3.36 | medium | draft |
@@ -98,6 +97,7 @@ Purpose:
 | 314 | `full_site/release/tut_usd_tutorials.html` | release | release_or_tutorial | 623 | 6/4 | 2.57 | medium | draft |
 | 376 | `full_site/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html` | release | release_or_tutorial | 631 | 7/4 | 2.57 | medium | draft |
 | 341 | `full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html` | release | release_or_tutorial | 697 | 6/4 | 2.56 | medium | draft |
+| 382 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html` | release | release_or_tutorial | 582 | 7/4 | 2.55 | medium | draft |
 
 Policy:
 

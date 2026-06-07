@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：LightAPI / LightAPI</title>
+  <title>完整双语参考：LightAPI / LightAPI</title>
   <link rel="icon" href="../../../../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
@@ -12,106 +12,160 @@
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
     .zh{display:block;font-weight:650;color:#17324d}
     .en{display:block;color:#55616f;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
     pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
     code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：LightAPI / LightAPI</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：LightAPI / LightAPI</h1>
     <div class="meta">https://openusd.org/release/user_guides/schemas/usdLux/LightAPI.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+      <p class="zh">本页是 OpenUSD release 用户指南中 usdLux `LightAPI` 的完整双语参考页。中文优先解释 schema 作用、connectable 约束、light-linking/shadow-linking、核心光照输入、`normalize` 语义、filter/material/shader 属性和调试边界，同时保留所有 API 名、属性名、token、数学公式、类型名和链接原样。</p>
+      <p class="en">This local bilingual page explains the usdLux `LightAPI` guide in Chinese first while retaining official identifiers, property names, tokens, formulas, and links for comparison.</p>
     </section>
-    <section data-cn-refinement="release-quality-pass-068">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 LightAPI 补充中文优先的 schema 用途、属性/关系阅读路径、继承或连接边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds Chinese-first schema purpose, property and relationship reading paths, inheritance or connection boundaries, and terminology for LightAPI while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">`LightAPI` 是给 prim 赋予灯光能力的 API schema；应用后 prim 会获得 `inputs:color`、`inputs:intensity`、`inputs:exposure`、`inputs:diffuse`、`inputs:specular` 等灯光属性。</span></li>
-        <li><span class="zh">`collection:lightLink:includeRoot` 与 `collection:shadowLink:includeRoot` 支持 light-linking 和 shadow-linking，用 collection 控制哪些 geometry 被照亮或投影影响。</span></li>
-        <li><span class="zh">`light:filters` 用于关联 `LightFilter`；`light:materialSyncMode` 和 `light:shaderId` 则和材质同步、shader 标识及渲染器解释有关，属性名必须保持英文原样。</span></li>
-        <li><span class="zh">官方摘录强调带 `LightAPI` 的 prim 是 UsdShade networks 中的 connectable prim，并必须遵守 UsdShade node encapsulation；它不能位于普通 connectable container 内，除非是灯光之间的特殊父子关系，例如 PortalLight under DomeLight。</span></li>
-        <li><span class="zh">阅读本页时应先掌握通用灯光输入，再读 collection/linking、filters 和 connectable containment 规则；这比只看某一个具体灯光 schema 更基础。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
+
+    <section data-cn-complete="release-user-guide-usdLux-LightAPI-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`LightAPI` 是给 prim 增加“灯光能力”的 API schema。应用后，该 prim 不只是多了几个普通属性，而是被视为能够参与 usdLux 光照语义的对象：它可以有 `inputs:color`、`inputs:intensity`、`inputs:exposure`、`inputs:diffuse`、`inputs:specular` 等输入，也可以通过 `collection:lightLink`、`collection:shadowLink`、`light:filters` 等关系与场景几何、阴影和 filter 网络发生联系。</p>
+      <p class="en">When `LightAPI` is applied to a prim, that prim gains light capabilities such as color, intensity, specular and diffuse multipliers, light-linking, and light filters.</p>
+
+      <p class="zh">官方页的第一层意思是：`LightAPI` 抽取了多种灯光 schema 的共同能力。无论具体灯光是 `DiskLight`、`RectLight`、`SphereLight`、`DistantLight`、`DomeLight`，还是 geometry light 相关的 API，它们都需要某些通用输入来描述颜色、亮度、曝光和可见影响范围。理解 `LightAPI` 后，再读具体灯光页面时就不会把每个属性当成孤立字段，而能看出它们在统一光照模型中的角色。</p>
+      <p class="en">The API provides common light attributes shared by concrete light schemas.</p>
+
+      <p class="zh">第二层意思是 connectable 约束。带有 `LightAPI` 的 prim 被视为 UsdShade networks 中的 connectable prim，因此应遵循 UsdShade node encapsulation 规则。它不能随意放在 `UsdShade NodeGraph`、`UsdShade Material`、`UsdLux LightFilter` 或其他普通 connectable container 下面。例外是父 prim 自身也应用了 `LightAPI`，因为某些灯光概念确实需要灯光嵌套，例如 `PortalLight` 位于 `DomeLight` 下。</p>
+      <p class="en">A prim with `LightAPI` is considered connectable for UsdShade networks and must respect node encapsulation rules.</p>
+
+      <p class="zh">`collection:lightLink:includeRoot` 和 `collection:shadowLink:includeRoot` 是两个容易影响渲染结果的 collection 开关。它们的 USD type 都是 `bool`，fallback value 都是 `True`。`lightLink` 决定哪些 geometry 与这盏灯关联，也就是哪些 prim 会被照亮；`shadowLink` 决定哪些 geometry 与该灯的阴影行为关联，也就是哪些 prim 会为这盏灯投射阴影。因为 fallback 是 `True`，默认含义是照亮所有对象、让所有对象投影。</p>
+      <p class="en">`collection:lightLink:includeRoot` and `collection:shadowLink:includeRoot` control light-linking and shadow-linking, and their fallback value is `True`.</p>
+
+      <p class="zh">调试 light-linking 时要先看 collection 语义，而不是只看灯光本体。`includeRoot=True` 会把 pseudo-root `/` 当作 included target path，因此没有额外收窄规则时会覆盖全场景。如果某盏灯“照到了不该照的对象”，先检查 `collection:lightLink:*`；如果“阴影来自不该投影的对象”，先检查 `collection:shadowLink:*`。这与上一轮已完成的 `Collections and Patterns` 页面直接相连。</p>
+      <p class="en">Debugging linking issues requires inspecting the relevant collection, especially when the root path is included by fallback.</p>
+
+      <p class="zh">颜色输入分两层。`inputs:color` 的 USD type 是 `color3f`，fallback 是 `(1, 1, 1)`，它在渲染色彩空间中指定灯光颜色，并与标量 emission 相乘：`L_Color = L_Scalar * color`。`inputs:colorTemperature` 的 USD type 是 `float`，fallback 是 `6500.0`，表示 Kelvin 色温；它只有在 `inputs:enableColorTemperature` 为 true 时生效。`6500` 对应 D65 常用标准白点。</p>
+      <p class="en">`inputs:color` multiplies the scalar emission, while `inputs:colorTemperature` is enabled by `inputs:enableColorTemperature` and uses a D65-normalized fallback of `6500.0`.</p>
+
+      <p class="zh">亮度控制也分线性与指数两种。`inputs:intensity` 的 USD type 是 `float`，fallback 是 `1.0`，按物理 falloff 线性缩放亮度，并被解释为未乘其他控制前的 base luminance。`inputs:exposure` 的 USD type 是 `float`，fallback 是 `0.0`，以 `2^exposure` 方式指数缩放，类似摄影中的 F-stop。二者同时存在时，`intensity` 给出基础量级，`exposure` 用来快速做倍数调整。</p>
+      <p class="en">`inputs:intensity` scales brightness linearly, while `inputs:exposure` scales brightness by a power of two.</p>
+
+      <p class="zh">官方对亮度单位给了规范性说明：当 `intensity=1`、`exposure=0`，直接可见的灯光以法线方向照到 sensor plane 时，在 RGB renderer 中通常产生 `[1, 1, 1]` 像素值，并对应 1 nit 的 luminance。`intensity=1`、`exposure=2` 则对应 4 nits；`intensity=2`、`exposure=0` 对应 2 nits。保留这些英文和数学字面量，是为了让读者能和 renderer 行为核对。</p>
+      <p class="en">The page gives normative examples connecting `intensity`, `exposure`, pixel value, and luminance in nits.</p>
+
+      <p class="zh">`inputs:diffuse` 和 `inputs:specular` 都是 `float`，fallback 都是 `1.0`，分别控制 diffuse contribution 和 specular contribution。官方明确说这是 non-physical control。也就是说，它们更像艺术调节旋钮，不应被误读成严格物理单位。生产中如果出现“镜面太强”或“漫反射被过度照亮”，这些属性是快速定位目标之一，但要注意它们可能破坏物理一致性。</p>
+      <p class="en">`inputs:diffuse` and `inputs:specular` are non-physical multipliers for diffuse and specular contributions.</p>
+
+      <p class="zh">`inputs:normalize` 的 USD type 是 `bool`，fallback 是 `False`。启用后，灯光会按形状或角度的 sizeFactor 调整 luminance，使改变灯光尺寸时总功率或接收照度保持更稳定。对于 area lights，sizeFactor 来自世界空间表面积；对于 `DistantLight`，官方定义了基于 `distantLightAngle`、`sin(theta_max)^2` 和 `pi` 的公式。`DomeLight` 与 `PortalLight` 忽略该属性，sizeFactor 始终视为 1。</p>
+      <p class="en">`inputs:normalize` adjusts luminance by a size factor; area lights use world-space surface area, distant lights use an angular formula, and DomeLight/PortalLight ignore the attribute.</p>
+
+      <p class="zh">`normalize` 的调试含义很重要。关闭时，增大 area light 通常会改变总照明；开启时，目标是让尺寸变化不直接改变总能量或接收照度。第三方或自定义 light schemas 必须自己说明 `normalize` 的预期行为。若渲染器之间亮度不一致，要核对具体灯光家族、sizeFactor 规则、transform scale、`intensity`、`exposure` 和 renderer 对该 schema 的实现。</p>
+      <p class="en">When renderer results differ, inspect the light family, size factor, transform scale, intensity, exposure, and schema-specific normalize behavior.</p>
+
+      <p class="zh">`light:filters` 是 relationship，用于把 `LightFilter` prim 关联到灯光，进而调制该灯的效果。它不是颜色或强度值，而是连接到 filter 网络的关系。`light:shaderId` 是 token，用于在没有 render-context-specific shader ID 时定义灯光 shader ID；对于 intrinsic lights，默认通常是灯光类型名，并对应一个 Sdr shader node。读者应把它们看作渲染器解释层的入口，而不是普通艺术参数。</p>
+      <p class="en">`light:filters` connects light filters, and `light:shaderId` identifies the shader for the light when no render-context-specific shader ID is available.</p>
+
+      <p class="zh">`light:materialSyncMode` 用于 LightAPI 应用到带有 bound Material 且材质全部或部分 emissive 的 geometry 时，描述材质响应与灯光响应的关系。有效 token 包括 `materialGlowTintsLight`、`independent` 和 `noMaterialResponse`。fallback 是 `noMaterialResponse`，表示几何体表现得像没有绑定 Material，光线 base color 完全由 `inputs:color` 控制。</p>
+      <p class="en">`light:materialSyncMode` controls how emissive material response relates to lighting response when `LightAPI` is applied to geometry.</p>
+
+      <p class="zh">这三个 `materialSyncMode` token 的差别会直接影响 mesh light 或 emissive geometry 的外观。`materialGlowTintsLight` 允许灯光颜色 tint 几何体 glow，同时保留 `intensity` 等 LightAPI 控制；`independent` 让 primary/secondary rays 看到材质的 emissive/glow，但 light rays 的 base color 只由 `inputs:color` 决定；`noMaterialResponse` 则让材质响应不参与 diffuse、specular 或 transmissive 行为。部分 emissive geometry 如果没有把合适 pattern 连接到 `inputs:color`，可能会均匀发光。</p>
+      <p class="en">The three material-sync modes determine how emissive material response and light-ray base color interact.</p>
+
+      <p class="zh">把 `LightAPI` 应用到 geometry 时，还要区分“几何可见外观”和“灯光发射行为”。材质可能决定摄像机看到的 glow 或表面响应，`LightAPI` 则决定 light rays 如何从该对象发射、如何被 `inputs:color`、`inputs:intensity`、`inputs:exposure` 和 filters 调制。`light:materialSyncMode` 正是这两个通道之间的同步策略，不应被简单理解成材质绑定开关。</p>
+      <p class="en">When applied to geometry, `LightAPI` separates camera-visible material response from light-emission behavior.</p>
+
+      <p class="zh">connectable 规则也要和材质节点图分开理解。灯光可以连接到 shading networks，但带 `LightAPI` 的 prim 本身不能被随意塞进普通 `UsdShade Material` 或 `NodeGraph` 里当作内部节点。若场景层级中出现这种嵌套，消费端可能无法按 UsdShade node encapsulation 正确解释网络边界。例外的灯光嵌套应来自明确的灯光概念，而不是任意组织层级。</p>
+      <p class="en">Connectability does not mean a light prim can be arbitrarily nested inside a material or node graph.</p>
+
+      <p class="zh">从作者ing 角度看，`LightAPI` 页不是某一种灯光形状的说明书，而是一张公共属性地图。具体灯光页面会继续定义几何形状、尺寸或角度，例如 `DiskLight` 的半径、`RectLight` 的宽高、`DistantLight` 的角度；本页说明这些具体灯光如何共享颜色、亮度、曝光、归一化、linking、filter 和 shader 标识。维护中文页时应保留这种分层，不要把具体灯光形状的知识提前混入 `LightAPI`。</p>
+      <p class="en">`LightAPI` is the common property map; concrete light schemas add shape-specific details.</p>
+
+      <p class="zh">因此验收本页时，应确认中文解释已经覆盖“如何成为灯”“如何连接网络”“如何限制受光对象”“如何调亮或调色”“如何与材质和 filter 协作”这五个问题。</p>
+      <p class="en">A useful review checklist covers light identity, network connectivity, linked geometry, brightness/color controls, and material/filter interaction.</p>
+
+      <p class="zh">本页的属性清单很长，但可以归纳成五组阅读：linking collection、颜色与色温、亮度与曝光、尺寸归一化、filter/material/shader。实际排查问题时也应按这五组走：先确认是不是 linking 导致对象受光范围错误，再看 color/intensity/exposure，之后看 normalize 是否因为尺寸或角度造成亮度变化，最后检查 filters、materialSyncMode 和 shaderId 是否被渲染器解释为预期结果。</p>
+      <p class="en">The properties can be read in groups: linking, color, intensity/exposure, normalization, and filter/material/shader integration.</p>
+
+      <p class="zh">完整读懂 `LightAPI` 后，读者应能回答：这个 API schema 如何让 prim 成为灯；为什么带 `LightAPI` 的 prim 是 connectable prim；light-linking 与 shadow-linking 的默认 root 行为是什么；`intensity` 与 `exposure` 如何共同控制亮度；`normalize` 为什么依赖灯光家族；以及材质、filter、shader 属性如何把灯光接入更大的 UsdShade 与渲染器生态。</p>
+      <p class="en">A complete reading explains light capabilities, connectability, linking defaults, brightness controls, normalization, and material/filter/shader integration.</p>
+    </section>
+
+    <section>
+      <h2>属性阅读路径 / Property Reading Path</h2>
+      <ol>
+        <li><span class="zh">先看 `collection:lightLink:includeRoot` 与 `collection:shadowLink:includeRoot`，判断全场景默认照明和默认投影是否符合预期。</span><span class="en">Start with light-link and shadow-link collection roots.</span></li>
+        <li><span class="zh">再看 `inputs:color`、`inputs:colorTemperature`、`inputs:enableColorTemperature`，确认颜色来源和色温开关。</span><span class="en">Inspect color and color-temperature controls.</span></li>
+        <li><span class="zh">然后看 `inputs:intensity` 与 `inputs:exposure`，区分线性基础亮度和指数曝光调整。</span><span class="en">Separate linear intensity from exponential exposure.</span></li>
+        <li><span class="zh">再检查 `inputs:normalize`，确认尺寸、角度或自定义 schema 是否改变能量解释。</span><span class="en">Check normalize and size-factor behavior.</span></li>
+        <li><span class="zh">最后检查 `light:filters`、`light:materialSyncMode`、`light:shaderId`，定位 filter、emissive material 和 shader ID 解释问题。</span><span class="en">Finish with filters, material sync, and shader identity.</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>代码与配置摘录 / Code and Configuration Excerpts</h2>
+      <pre><code>def Xform "LightPrim" (
+    prepend apiSchemas = ["LightAPI"]
+)
+{
+    color3f inputs:color = (1, 0.95, 0.8)
+    float inputs:intensity = 2
+    float inputs:exposure = 1
+    bool inputs:normalize = true
+    bool collection:lightLink:includeRoot = true
+    bool collection:shadowLink:includeRoot = true
+}</code></pre>
+      <pre><code># Brightness intuition retained from the official page:
+L_Color = L_Scalar * color
+L_Scalar = intensity
+L_Scalar = L_Scalar * 2^exposure
+L_Scalar = L_Scalar / sizeFactor</code></pre>
+    </section>
+
+    <section>
+      <h2>术语对照 / Terms</h2>
       <ul>
         <li><span class="zh">灯光 API schema：</span><span class="en">LightAPI</span></li>
+        <li><span class="zh">可连接 prim：</span><span class="en">connectable prim</span></li>
+        <li><span class="zh">UsdShade 节点封装：</span><span class="en">UsdShade node encapsulation</span></li>
         <li><span class="zh">灯光链接：</span><span class="en">light-linking</span></li>
         <li><span class="zh">阴影链接：</span><span class="en">shadow-linking</span></li>
-        <li><span class="zh">灯光过滤器关系：</span><span class="en">light:filters</span></li>
-        <li><span class="zh">可连接 prim：</span><span class="en">connectable prim</span></li>
-        <li><span class="zh">UsdShade 节点封装规则：</span><span class="en">UsdShade node encapsulation</span></li>
+        <li><span class="zh">灯光过滤器：</span><span class="en">LightFilter / light:filters</span></li>
+        <li><span class="zh">材质同步模式：</span><span class="en">light:materialSyncMode</span></li>
+        <li><span class="zh">灯光 shader 标识：</span><span class="en">light:shaderId</span></li>
+        <li><span class="zh">亮度归一化：</span><span class="en">inputs:normalize</span></li>
+        <li><span class="zh">基础亮度与曝光：</span><span class="en">inputs:intensity / inputs:exposure</span></li>
       </ul>
     </section>
-    <section data-cn-refinement="release-quality-pass-104">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`LightAPI` 是让一个 prim 获得 light capabilities 的 API schema。它定义通用灯光输入、light-linking/shadow-linking collection、`light:filters`、`light:shaderId` 以及 UsdShade connectable prim 规则，是理解具体 `usdLux` 灯光 schema 的基础页。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for LightAPI while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`inputs:color`、`inputs:intensity`、`inputs:exposure`、`inputs:diffuse`、`inputs:specular` 等属性是多个灯光 schema 共享的核心输入。中文说明应保留属性名并解释其作用层级。</span></li>
-        <li><span class="zh">`collection:lightLink:includeRoot` 与 `collection:shadowLink:includeRoot` 支持 light-linking 和 shadow-linking，用 collection 决定哪些 geometry 受光照或阴影影响。</span></li>
-        <li><span class="zh">`light:filters` relationship 连接 `LightFilter` prim；`light:materialSyncMode` 和 `light:shaderId` 则与材质同步、shader 标识和渲染器解释有关。</span></li>
-        <li><span class="zh">官方说明指出带 `LightAPI` 的 prim 是 UsdShade networks 中的 connectable prim，并应遵守 UsdShade node encapsulation。普通 connectable container 下不能随意嵌套灯光。</span></li>
-        <li><span class="zh">`LightAPI` 是读 `DiskLight`、`CylinderLight`、`DomeLight_1`、`LightFilter` 等页面的公共背景。后续逐段翻译应优先补齐 collection/linking/filter/connectability 四条线索。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">灯光 API schema：</span><span class="en">LightAPI</span></li>
-        <li><span class="zh">灯光能力：</span><span class="en">light capabilities</span></li>
-        <li><span class="zh">灯光链接：</span><span class="en">light-linking</span></li>
-        <li><span class="zh">阴影链接：</span><span class="en">shadow-linking</span></li>
-        <li><span class="zh">灯光过滤器关系：</span><span class="en">light:filters</span></li>
-        <li><span class="zh">可连接 prim：</span><span class="en">connectable prim</span></li>
-      </ul>
-    </section>
+
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
-<li><span class="zh">第 1 级标题：LightAPI</span><span class="en">LightAPI</span></li>
-<li><span class="zh">第 2 级标题：Properties</span><span class="en">Properties</span></li>
-<li><span class="zh">第 3 级标题：collection:lightLink:includeRoot</span><span class="en">collection:lightLink:includeRoot</span></li>
-<li><span class="zh">第 3 级标题：collection:shadowLink:includeRoot</span><span class="en">collection:shadowLink:includeRoot</span></li>
-<li><span class="zh">第 3 级标题：inputs:color</span><span class="en">inputs:color</span></li>
-<li><span class="zh">第 3 级标题：inputs:colorTemperature</span><span class="en">inputs:colorTemperature</span></li>
-<li><span class="zh">第 3 级标题：inputs:diffuse</span><span class="en">inputs:diffuse</span></li>
-<li><span class="zh">第 3 级标题：inputs:enableColorTemperature</span><span class="en">inputs:enableColorTemperature</span></li>
-<li><span class="zh">第 3 级标题：inputs:exposure</span><span class="en">inputs:exposure</span></li>
-<li><span class="zh">第 3 级标题：inputs:intensity</span><span class="en">inputs:intensity</span></li>
-<li><span class="zh">第 3 级标题：inputs:normalize</span><span class="en">inputs:normalize</span></li>
-<li><span class="zh">第 3 级标题：inputs:specular</span><span class="en">inputs:specular</span></li>
-<li><span class="zh">第 3 级标题：light:filters</span><span class="en">light:filters</span></li>
-<li><span class="zh">第 3 级标题：light:materialSyncMode</span><span class="en">light:materialSyncMode</span></li>
-<li><span class="zh">第 3 级标题：light:shaderId</span><span class="en">light:shaderId</span></li>
+        <li><span class="zh">第 1 级标题：LightAPI</span><span class="en">LightAPI</span></li>
+        <li><span class="zh">第 2 级标题：Properties</span><span class="en">Properties</span></li>
+        <li><span class="zh">核心属性：`collection:lightLink:includeRoot`、`collection:shadowLink:includeRoot`、`inputs:color`、`inputs:colorTemperature`、`inputs:diffuse`、`inputs:enableColorTemperature`、`inputs:exposure`、`inputs:intensity`、`inputs:normalize`、`inputs:specular`、`light:filters`、`light:materialSyncMode`、`light:shaderId`。</span><span class="en">The page lists shared LightAPI properties and relationships.</span></li>
       </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">When this schema is applied to a prim, that prim gains the capabilities of being a light. These capabilities include light attributes such as light color, intensity, specular and diffuse multipliers, etc. This schema also provides more advanced configuration such as specifying how geometry is associated with the light through light-linking or how light filters are applied.</p>
-<p class="en">Note that a prim with LightAPI applied is considered a connectable prim for UsdShade networks, and should follow the rules for UsdShade node encapsulation . Additionally, a prim with LightAPI applied must not have a connectable parent. Lights cannot reside inside a UsdShade NodeGraph, UsdShade Material, UsdLux LightFilter, or any other connectable container, with the exception of prims which themselves have LightAPI applied (i.e. are lights), as some light concepts require to be parented under other lights (PortalLight under DomeLight as an example).</p>
-<p class="en">Use the lightLink collection to specify which geometry is associated with this light. This collection is used to control light behavior associated with the geometry collection, such as which geometry prims are illuminated by this light, via a feature called light-linking .</p>
     </section>
 
     <section>
       <h2>本页链接 / Page Links</h2>
       <ul>
-<li><a href="overview.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/overview.html">light-linking</a></li>
-<li><a href="../../../../api/usd_shade_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_shade_page_front.html">UsdShade node encapsulation</a></li>
-<li><a href="../../collections_and_patterns.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/collections_and_patterns.html">Collections and Patterns</a></li>
+        <li><a href="overview.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/overview.html">usdLux Overview</a></li>
+        <li><a href="LightFilter.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/LightFilter.html">LightFilter</a></li>
+        <li><a href="../../collections_and_patterns.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/collections_and_patterns.html">Collections and Patterns</a></li>
+        <li><a href="../../../../api/usd_shade_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_shade_page_front.html">UsdShade</a></li>
       </ul>
     </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>

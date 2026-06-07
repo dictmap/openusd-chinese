@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-07T18:37:34.411Z
+Generated: 2026-06-07T19:13:46.125Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 314
-- bilingual_complete: 92
+- bilingual_draft: 313
+- bilingual_complete: 93
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 303
-- good_bilingual: 92
+- draft_needs_translation: 302
+- good_bilingual: 93
 
 ## Current Focus Batch
 
@@ -396,7 +396,7 @@ Generated: 2026-06-07T18:37:34.411Z
 | 330 | draft_needs_translation | bilingual_draft | 657 | 39/32 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/DomeLight_1.html` |
 | 331 | draft_needs_translation | bilingual_draft | 580 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/DomeLight.html` |
 | 332 | draft_needs_translation | bilingual_draft | 616 | 35/28 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/GeometryLight.html` |
-| 333 | draft_needs_translation | bilingual_draft | 567 | 40/33 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/LightAPI.html` |
+| 333 | good_bilingual | bilingual_complete | 1832 | 39/39 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/LightAPI.html` |
 | 334 | draft_needs_translation | bilingual_draft | 589 | 35/28 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/LightFilter.html` |
 | 335 | draft_needs_translation | bilingual_draft | 547 | 24/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/LightListAPI.html` |
 | 336 | draft_needs_translation | bilingual_draft | 755 | 29/21 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/ListAPI.html` |
