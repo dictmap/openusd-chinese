@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-07T12:22:36.370Z
+Generated: 2026-06-07T12:41:41.351Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 333
-- bilingual_complete: 73
+- bilingual_draft: 332
+- bilingual_complete: 74
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 322
-- good_bilingual: 73
+- draft_needs_translation: 321
+- good_bilingual: 74
 
 ## Current Focus Batch
 
@@ -335,7 +335,7 @@ Generated: 2026-06-07T12:22:36.370Z
 | 269 | draft_needs_translation | bilingual_draft | 436 | 27/24 | 0 | 0 | `full_site/api/usd_semantics_overview.html` |
 | 270 | draft_needs_translation | bilingual_draft | 529 | 38/30 | 0 | 0 | `full_site/api/usd_shade_page_front.html` |
 | 271 | draft_needs_translation | bilingual_draft | 549 | 27/19 | 0 | 0 | `full_site/api/usd_shaders_page_front.html` |
-| 272 | draft_needs_translation | bilingual_draft | 514 | 27/19 | 0 | 0 | `full_site/api/usd_skel_page_front.html` |
+| 272 | good_bilingual | bilingual_complete | 1630 | 45/37 | 0 | 0 | `full_site/api/usd_skel_page_front.html` |
 | 273 | draft_needs_translation | bilingual_draft | 566 | 29/21 | 0 | 0 | `full_site/api/usd_u_i_page_front.html` |
 | 274 | good_bilingual | bilingual_complete | 1692 | 47/39 | 0 | 0 | `full_site/api/usd_utils_page_front.html` |
 | 275 | draft_needs_translation | bilingual_draft | 633 | 46/38 | 0 | 0 | `full_site/api/usd_vol_page_front.html` |

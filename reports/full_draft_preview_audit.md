@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-07T12:22:41.518Z
+Generated: 2026-06-07T12:41:47.159Z
 
-Transient base URL: `http://127.0.0.1:55664/`
+Transient base URL: `http://127.0.0.1:60279/`
 
 Result:
 
 - Passed: true
-- Draft pages: 333
-- Pages checked: 333
-- Passed pages: 333
+- Draft pages: 332
+- Pages checked: 332
+- Passed pages: 332
 - Failed pages: 0
-- Final HTML links: 333
-- Local assets checked: 333
+- Final HTML links: 332
+- Local assets checked: 332
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -221,7 +221,6 @@ Result:
 | true | full_site/api/usd_semantics_overview.html | 200 | true | 0 | 0 |
 | true | full_site/api/usd_shade_page_front.html | 200 | true | 0 | 0 |
 | true | full_site/api/usd_shaders_page_front.html | 200 | true | 0 | 0 |
-| true | full_site/api/usd_skel_page_front.html | 200 | true | 0 | 0 |
 | true | full_site/api/usd_u_i_page_front.html | 200 | true | 0 | 0 |
 | true | full_site/api/usd_vol_page_front.html | 200 | true | 0 | 0 |
 | true | full_site/api/usdabc_page_front.html | 200 | true | 0 | 0 |

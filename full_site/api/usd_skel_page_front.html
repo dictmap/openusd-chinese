@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>API 模块草稿：UsdSkel: USD Skeleton Schema and API / UsdSkel: USD Skeleton Schema and API</title>
+  <title>完整双语参考：UsdSkel: USD Skeleton Schema and API / UsdSkel: USD Skeleton Schema and API</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -19,20 +19,59 @@
     ul{padding-left:22px}
     li{margin:8px 0}
     code{font-family:"Cascadia Mono","Consolas",monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>API 模块草稿：UsdSkel: USD Skeleton Schema and API / UsdSkel: USD Skeleton Schema and API</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：UsdSkel: USD Skeleton Schema and API / UsdSkel: USD Skeleton Schema and API</h1>
     <div class="meta">https://openusd.org/release/api/usd_skel_page_front.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">这是 `UsdSkel: USD Skeleton Schema and API` 的完整双语参考页。页面以中文逐段说明为主，保留 `UsdSkel`、`SkelRoot`、`Skeleton`、`SkelAnimation`、`Linear Blend Skinning`、`joint influences`、`geom bind transform`、`joint paths`、`skeleton bindings` 等英文 API 名称和官方链接，方便与 Doxygen 原页核对。</p>
+      <p class="en">This complete bilingual reference keeps the original OpenUSD API identifiers and official links while adding Chinese paragraph-level coverage for the UsdSkel module entry.</p>
+    </section>
+    <section data-cn-complete="usd-skel-skeleton-schema-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">官方入口页首先说明 `UsdSkel` 的职责：它定义一组 schema 和 API，用来在图形制作流水线里的 DCC 工具之间交换 skeletally skinned meshes 与 joint animations。这里的重点是“可交换的数据表达”和“查询/解析这些数据的 API”，不是某个 DCC 内部的完整角色 rig、控制器界面、IK 解算器或最终运行时的皮肤求值器。</p>
+      <p class="en">The official entry defines UsdSkel as schemas and API for interchanging skeletally skinned meshes and joint animations between DCC tools in a graphics pipeline.</p>
+      <p class="zh">`API Manual` 是这页最重要的阅读路线。先读 `UsdSkel Introduction`，理解 overview、motivation、trade-offs、terminology、what can be skinned、transform spaces 和 `Linear Blend Skinning`；再读 `Schema Intro By Example`，用 `Skinning an Arm` 看 `SkelRoot`、`Skeleton`、`SkelAnimation`、binding、joint influences 和 geom bind transform 如何组合；最后进入 `API Introduction`、`Schemas In-Depth`、instancing、object model 与 best practices。</p>
+      <p class="en">The API Manual is a roadmap from conceptual introduction, through schema examples, into query APIs, schema details, instancing, object model, and best practices.</p>
+      <p class="zh">`SkelRoot` 是组织 skeleton-related prims 与 binding scope 的根；它不是任意 `UsdGeomXform` 的同义词。工具排查绑定问题时，应先确认 skinned prim 是否位于正确的 `SkelRoot` 范围内，再检查 skeleton relationship、animation relationship、joint influence primvars 和 geom bind transform 是否在同一语义范围内。</p>
+      <p class="en">SkelRoot provides the organizational root and binding scope for skeleton-related prims; it should not be treated as a generic transform container.</p>
+      <p class="zh">`Skeleton` 描述 joint 拓扑、joint order、joint paths/names、rest transforms 和 bind transforms。`SkelAnimation` 描述随时间变化的 joint transforms 和相关动画数据。二者的 joint 顺序必须能对应起来；如果 animation samples 的顺序、命名或拓扑与 skeleton 不一致，工具端看到的通常是错位变形、缺失动画或静态 bind pose。</p>
+      <p class="en">Skeleton carries joint topology, order, names, rest and bind transforms; SkelAnimation carries time-sampled joint animation data that must map to the skeleton's joint order.</p>
+      <p class="zh">`Linear Blend Skinning` 章节解释点如何被多个 joint transform、weight 和 influence 共同驱动。`joint influences` 与 `skinning weights` 决定每个点受哪些 joint 影响以及权重大小；`geom bind transform` 则把几何在绑定时的空间关系固定下来。调试皮肤错位时，不能只看 mesh points，还要同时核对 transform space、weights、joint order 和 bind/rest transforms。</p>
+      <p class="en">Linear Blend Skinning depends on joint transforms, weights, influences, and the geometric bind transform; all of these must agree for correct deformation.</p>
+      <p class="zh">`Transforms and Transform Spaces` 是常见错误来源。需要区分 geometry local space、skeleton space、joint local/rest/bind space 与 world space。`UsdSkel` 的 schema 负责保存可交换的空间关系；Hydra、DCC 插件或游戏运行时如何把这些关系送入 GPU skinning 或 CPU evaluation，是下游消费者的实现细节。</p>
+      <p class="en">Transform-space distinctions are central: authored UsdSkel data records interchange semantics, while imaging or runtime systems decide how to evaluate the skinning.</p>
+      <p class="zh">`Schema Intro By Example` 中的 `Skinning an Arm` 可以按 authored scene structure 来读：先有 `SkelRoot`，再定义 `Skeleton`，再定义 `SkelAnimation`，然后把 skeleton 绑定到 prims，最后写入 joint influences 与 geom bind transform。这个顺序也适合作为导入器/导出器的检查清单。</p>
+      <p class="en">The Skinning an Arm example is a practical authoring checklist: SkelRoot, Skeleton, SkelAnimation, skeleton binding, joint influences, and geom bind transform.</p>
+      <p class="zh">`API Introduction` 面向工具和运行时适配层。`Querying Skeleton Structure And Animation`、`Joint Paths and Names`、`Querying the Joint Hierarchy`、`Skeleton Bindings`、`UsdSkelSkinningQuery`、`UsdSkelSkeletonQuery`、`UsdSkelAnimQuery` 等内容帮助调用方把 authored schema 解析成可消费的结构，而不是让调用方手写所有层级和 binding 规则。</p>
+      <p class="en">The API introduction covers query objects and binding discovery so tools can resolve authored skeleton and animation data consistently.</p>
+      <p class="zh">`Schemas In-Depth` 把 `Skeleton Root Schema`、`Skeleton Schema`、`Skel Animation Schema`、`Blend Shape Schema` 与 `Binding API Schema` 分开说明。`BindingAPI` 中的 binding skeletons、joint influences、rigid deformations、storing influences、`GeomBindTransform` 和 binding blend shapes，是把几何、骨架、权重和 blend shape 数据联系起来的关键层。</p>
+      <p class="en">Schemas In-Depth separates skeleton roots, skeletons, animations, blend shapes, and BindingAPI responsibilities so the authored data model stays explicit.</p>
+      <p class="zh">`Instancing in UsdSkel`、`Object Model` 与 best practices 是进一步阅读路径。object model 中的 `UsdSkelCache`、`UsdSkelSkeletonQuery`、`UsdSkelAnimQuery`、`UsdSkelSkinningQuery` 和 `UsdSkelAnimMapper` 说明缓存、解析、joint influence 提取和不同 joint order 之间的 remapping。它们尤其适合导入器、检查器、预览器和运行时桥接代码使用。</p>
+      <p class="en">The object model documents caches, skeleton queries, animation queries, skinning queries, and animation mappers for robust tool implementations.</p>
+      <p class="zh">边界上要把 `UsdSkel` 与 `UsdGeom` 变换栈区分开：`UsdGeom` 描述普通几何、xform 和 primvars，`UsdSkel` 在此基础上描述骨架、动画和皮肤绑定。也要把 `UsdSkel` 与 DCC rig controls、IK、constraints、retargeting UI 和 renderer-specific skinning kernels 区分开；这些可以使用 `UsdSkel` 数据，但不由入口页承诺。</p>
+      <p class="en">UsdSkel sits beside UsdGeom authoring data but is not a DCC rig-control system, IK solver, constraint system, or renderer-specific skinning implementation.</p>
+      <p class="zh">实用排查路径是：先确认 `SkelRoot` 范围，再查 skeleton binding，再查 joint order/path names，再查 rest/bind transforms，再查 geom bind transform，再查 joint influences/weights，再查 animation samples，最后通过 `UsdSkel` query API 或 imaging/runtime consumer 确认解析结果。这样可以把 authored USD 问题、导入导出问题和下游渲染/运行时问题分开。</p>
+      <p class="en">A practical debugging path is SkelRoot scope, skeleton binding, joint names/order, rest and bind transforms, geom bind transform, influences and weights, animation samples, then query/runtime consumption.</p>
+      <p class="zh">常见误读之一是把 `joint paths` 当成普通文件路径或 stage namespace path。它们表达的是 skeleton 内部的 joint 命名和层级关系，需要与 `Skeleton` 的 joint order、`SkelAnimation` 的 transform arrays、`UsdSkelAnimMapper` 的 remapping 逻辑一起看。导出器如果只保存显示名而丢失完整 joint path，后续绑定解析会变得不稳定。</p>
+      <p class="en">Joint paths are skeleton joint identifiers and hierarchy data, not filesystem paths; they must stay aligned with skeleton order and animation arrays.</p>
+      <p class="zh">另一个常见误读是把 blend shapes、rigid deformations 和 joint skinning 混成一个概念。`Blend Shape Schema` 处理形变目标及其动画绑定，`BindingAPI` 处理 skeleton binding、joint influences、rigid deformation 和 `GeomBindTransform`；它们可以同时作用在角色上，但 authored 数据、查询 API 和下游求值路径并不相同。</p>
+      <p class="en">Blend shapes, rigid deformations, and joint skinning can coexist, but their schemas, authored data, and query responsibilities are distinct.</p>
+      <p class="zh">对管线工具而言，`UsdSkel` 的价值在于把 DCC 之间容易丢失或重新解释的数据显式化：joint 层级、绑定姿态、动画采样、权重数组、几何绑定空间和 blend shape 绑定都可以被 USD layer 组合、引用、打包和检查。它不保证所有 DCC 的 rig 语义无损迁移，但为可交换的骨骼蒙皮信息提供共同语言。</p>
+      <p class="en">For pipeline tools, UsdSkel makes interchange-critical skeleton, binding, animation, influence, and blend-shape data explicit in USD-authored form.</p>
+      <p class="zh">当本地 406 页清单没有覆盖某些 `UsdSkel` 子文档时，页面中的 `uncovered_openusd_page.html` 占位链接表示当前本地复刻范围缺口，而不是 `UsdSkel` API 缺失。需要深入阅读 `Schemas In-Depth`、instancing、object model 或 best practices 时，应优先沿官方链接核对，再决定是否把这些子页纳入后续本地 inventory 扩展。</p>
+      <p class="en">Uncovered placeholder links mark gaps in the current local inventory, not missing UsdSkel functionality; use the official links for deeper subtopics when needed.</p>
+      <p class="zh">因此，这个入口页适合作为 `UsdSkel` 的导航和概念边界页：先理解“骨架、动画、绑定、权重、空间、查询 API”六条主线，再进入具体类页或子指南。保留 `UsdSkel`、`SkelRoot`、`Skeleton`、`SkelAnimation`、`UsdSkelCache`、`UsdSkelSkeletonQuery`、`UsdSkelSkinningQuery` 等英文标识，是为了避免翻译后的术语与实际 schema token、类名和 Doxygen 索引脱节。</p>
+      <p class="en">This entry is best used as a conceptual and navigational map before moving into individual classes or deeper UsdSkel guide pages.</p>
+      <p class="zh">导入/导出验证时，可以把该页当成最小一致性清单：同一个角色资产在不同工具之间往返后，`SkelRoot` 范围、`Skeleton` joint order、`SkelAnimation` 时间采样、mesh primvars、joint influences、geom bind transform 和 blend shape 绑定应能被同一组 query API 解析出等价结果；否则问题通常出在 authored data 的映射，而不是单纯显示层。这个检查也适合写入资产回归测试和持续集成流程。</p>
+      <p class="en">For import/export validation, the same query APIs should recover equivalent skeleton, animation, binding, influence, and blend-shape data after round-tripping an asset.</p>
     </section>
     <section data-cn-refinement="api-usd-schema-quality-pass-061">
       <h2>中文精修导读 / Chinese Reading Notes</h2>
