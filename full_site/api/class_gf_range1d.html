@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：GfRange1d Class Reference Basic Geometry / GfRange1d Class Reference Basic Geometry</title>
+  <title>完整双语参考：GfRange1d Class Reference Basic Geometry / GfRange1d Class Reference Basic Geometry</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -19,81 +19,71 @@
     ul{padding-left:22px}
     li{margin:8px 0}
     code{font-family:"Cascadia Mono","Consolas",monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：GfRange1d Class Reference Basic Geometry / GfRange1d Class Reference Basic Geometry</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：GfRange1d Class Reference Basic Geometry / GfRange1d Class Reference Basic Geometry</h1>
     <div class="meta">https://openusd.org/release/api/class_gf_range1d.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页整理：中文先解释 `GfRange1d` 作为一维 double 精度 interval/range 的值类型语义、空区间约定、端点读取、包含测试、扩展、交集/并集和距离计算边界；英文 API 名称、方法名、类型名、数学术语和链接保持原样。</p>
+      <p class="en">This page is promoted to a complete bilingual reference: the Chinese text explains `GfRange1d` as a one-dimensional double precision interval/range value type, including empty-range conventions, endpoint access, containment tests, extension, intersection/union, and distance semantics while preserving original English API names, method names, type names, mathematical terms, and links.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-035">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 GfRange1d Class Reference 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for GfRange1d Class Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`GfRange1d` 是 Gf Basic Geometry 中的一维 double 精度 floating point range，也可理解为 interval。</span></li>
-        <li><span class="zh">英文摘录说明该类所有操作都是 component-wise，并符合 interval mathematics；空范围的条件是 `max &lt; min`。</span></li>
-        <li><span class="zh">默认 empty range 为 `[FLT_MAX,-FLT_MAX]`，这个约定便于从默认构造开始逐步通过 union / extend 类操作形成有效区间。</span></li>
-        <li><span class="zh">关联类型包括 `GfRange1f`，说明存在 float 精度对应类型；阅读时应保留 `min`、`max`、empty range、interval 等术语。</span></li>
-        <li><span class="zh">本页应重点核对构造、取 min/max、包含测试、并集/交集、扩展范围和 deprecated 成员；本轮只补类职责、数学语义和阅读边界。</span></li>
-      </ul>
+    <section data-cn-complete="gf-range1d-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">官方定义把 `GfRange1d` 称为 “Basic type: 1-dimensional floating point range”。这里的 range 也可理解为 interval：它用一对端点 `min` 与 `max` 描述一维 double 精度闭区间。它属于 `Gf` Basic Geometry 的基础数学值类型，不是 USD prim，也不会自己表示 layer、attribute 或 authored extent。</p>
+      <p class="en">The official definition describes `GfRange1d` as a one-dimensional floating point range, or interval, represented by minimum and maximum endpoints.</p>
+      <p class="zh">本页最容易误读的是 empty range。官方明确说 “An empty range is one where max &lt; min”，默认空值是 `[FLT_MAX,-FLT_MAX]`。这个状态看起来像反转的非法端点，但在 API 语义里它是有意设计的空区间，适合从默认构造开始逐步 `ExtendBy()` 数据点或子区间，最终形成有效 range。</p>
+      <p class="en">An empty range is defined by `max &lt; min`, and the default empty range uses the reversed endpoint convention `[FLT_MAX,-FLT_MAX]`.</p>
+      <p class="zh">`MinMaxType` 与 `ScalarType` 说明本类的端点存储和标量精度。`ScalarType` 对应 double 精度；相关链接 `GfRange1f` 是 float 精度版本。切换精度时要注意端点比较、序列化误差和 bounds 累积误差，尤其是在从大量采样值、time samples 或几何 extent 中构造一维范围时。</p>
+      <p class="en">`ScalarType` identifies the scalar precision for the range; `GfRange1f` is the related float precision range type.</p>
+      <p class="zh">3 个 `GfRange1d()` 构造函数覆盖默认空区间、由端点构造区间，以及从相关类型转换或复制的场景。构造时调用方要明确端点顺序：如果传入 `min &gt; max`，它不一定是“自动排序失败”，而可能按照 empty range 规则被视为空区间。需要自动整理端点的上层代码应在调用前自己处理。</p>
+      <p class="en">The constructor overloads cover the default empty state, explicit endpoint construction, and related range construction or copying; endpoint order has semantic meaning.</p>
+      <p class="zh">`GetMin()` 与 `GetMax()` 只是读取当前端点，不会验证区间是否为空，也不会自动交换端点。`GetMidpoint()` 与 `GetSize()` 对普通闭区间很直接，但对 empty range 调用时应先检查调用方语义：空区间的 midpoint 或 size 不是几何中心，而是当前端点状态推导出的数学结果。</p>
+      <p class="en">`GetMin()` and `GetMax()` return endpoints as stored; callers should check empty-range state before interpreting midpoint or size values.</p>
+      <p class="zh">`Contains()` 有两个重载，分别用于判断一个点或另一个 range 是否包含在当前区间内。因为本类遵循 interval mathematics，端点相等通常表示闭区间边界上的包含，而不是“外部点”。如果当前对象是 empty range，包含测试的结果可能和直觉不一致，所以在使用 `Contains()` 前最好先明确 `IsEmpty()` 或等价状态。</p>
+      <p class="en">`Contains()` tests containment of a value or another range according to interval mathematics, including endpoint boundary semantics.</p>
+      <p class="zh">`ExtendBy()` 是累积 bounds 的核心方法。它会扩展当前 `min` / `max` 以包含一个点或另一个 range；从默认 empty range 开始连续调用 `ExtendBy()` 是常见模式。调试 bounds 过大或过小时，应检查是否漏掉了某个输入点、是否把 empty range 当作有效初值、以及是否在错误坐标空间中扩展了区间。</p>
+      <p class="en">`ExtendBy()` grows the range to include a point or another range, making the default empty range useful as an accumulation starting state.</p>
+      <p class="zh">`GetUnion()` 返回两个区间的并集视图；`GetIntersection()` 和 `Intersection()` 处理交集。交集可能为空，这时会回到 `max &lt; min` 的 empty range 规则。端点刚好相等时，交集不是空，而是长度为 0 的单点闭区间，这一点在碰撞、裁剪、时间范围和参数范围计算中很重要。</p>
+      <p class="en">Union and intersection methods follow interval mathematics; equal endpoints can represent a valid zero-size closed range, while `max &lt; min` represents empty.</p>
+      <p class="zh">`GetDistanceSquared()` 给出点到区间的平方距离。点在区间内部或端点上时距离为 0；点在区间外时返回到最近端点的平方距离。使用 squared distance 可以避免不必要的 `sqrt`，适合排序、阈值比较或粗略剔除，但如果需要实际距离，调用方必须自己开方。</p>
+      <p class="en">`GetDistanceSquared()` returns squared distance from a value to the interval, avoiding a square root when only comparisons are needed.</p>
+      <p class="zh">“All operations are component-wise” 在一维类型里看似多余，但它让 `GfRange1d` 与 `GfRange2*`、`GfRange3*` 的 mental model 保持一致：多维 range 的每个维度都按端点区间独立处理。理解这一点有助于把一维参数范围、时间范围、UV 范围和三维 bounding box 的 extent 代码统一起来。</p>
+      <p class="en">The component-wise note aligns the one-dimensional type with higher-dimensional Gf range types used for bounds and extents.</p>
+      <p class="zh">本页链接到 `Deprecated:`，说明部分旧接口或旧命名可能仍出现在 Doxygen 中。维护新代码时应优先使用当前非 deprecated 的 `GetUnion()`、`GetIntersection()`、`ExtendBy()` 等接口，并在迁移旧代码时确认旧接口的 empty-range 行为、端点闭合规则和返回值是否与新写法完全一致。</p>
+      <p class="en">Deprecated entries should be treated as migration guidance; new code should prefer current range APIs and verify empty-range behavior when porting old calls.</p>
+      <p class="zh">实际调试路径可以固定为：先检查区间是否 empty，再检查 `min` / `max` 是否来自同一坐标或参数空间；然后确认 `ExtendBy()` 是否覆盖所有输入样本；接着区分空交集和零长度交集；最后检查 double/float 转换是否改变了边界。这样能避免把 range 计算错误误判成 USD composition、renderer culling 或几何拓扑问题。</p>
+      <p class="en">A practical debugging path is: check empty state, endpoint coordinate space, accumulated samples, empty versus zero-size intersections, and precision conversion before blaming composition or rendering behavior.</p>
+      <p class="zh">常见用例包括时间区间、参数域、标量 bounds、动画采样范围和一维投影范围。`GfRange1d` 只关心数值端点，不知道这些端点代表 timeCode、distance、UV 参数还是权重；因此上层代码必须保证单位一致、坐标空间一致、端点含义一致。混用 frame number 与 seconds、局部坐标与世界坐标，都会让 interval API 看起来正确但业务结果错误。</p>
+      <p class="en">Common uses include time intervals, parameter domains, scalar bounds, animation sample ranges, and one-dimensional projected extents; the range stores numbers but not their semantic units.</p>
+      <p class="zh">如果从数据流中累积范围，推荐先创建默认 empty range，再对每个有效样本调用 `ExtendBy()`。不要用 `[0,0]` 作为通用初始值，除非 0 确实属于业务数据；否则所有正值或所有负值样本都会被人为拉向 0。这个初始化错误在 bounds、time samples 和 normalized parameter 处理中很隐蔽。</p>
+      <p class="en">For accumulation, the default empty range is safer than `[0,0]` unless zero is a real sample in the domain.</p>
+      <p class="zh">诊断结论：先查 empty，再查端点单位。</p>
+      <p class="en">Diagnostic summary: check empty state, then endpoint units.</p>
+      <p class="zh">闭区间。</p>
+      <p class="en">Closed interval.</p>
+      <p class="zh">因此，读 `GfRange1d Class Reference` 的主线是：先把它看作 double 精度一维 interval 值类型，再掌握 empty range 的 `max &lt; min` 规则，接着按构造、端点读取、包含、扩展、交并集、距离和 deprecated 迁移逐组理解 API。所有方法名和术语如 `GetMin()`、`GetMax()`、`Contains()`、`ExtendBy()`、`GetUnion()`、`GetIntersection()`、`interval mathematics` 都应保留英文原样。</p>
+      <p class="en">The reading path is: double precision interval value type, empty range convention, constructors, endpoint access, containment, extension, union/intersection, distance, and deprecated API migration.</p>
       <h3>术语对照 / Terms</h3>
       <ul>
-        <li><span class="zh">一维范围：</span><span class="en">1-dimensional range</span></li>
+        <li><span class="zh">一维 double 范围：</span><span class="en">GfRange1d</span></li>
         <li><span class="zh">区间数学：</span><span class="en">interval mathematics</span></li>
         <li><span class="zh">空范围：</span><span class="en">empty range</span></li>
-        <li><span class="zh">分量级：</span><span class="en">component-wise</span></li>
-        <li><span class="zh">最小值 / 最大值：</span><span class="en">min / max</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-130">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`GfRange1d` 是 double 精度一维 interval/range，使用 `min` 和 `max` 表示区间。它遵循 interval mathematics；空范围的 `max &lt; min` 约定、默认构造值和 extend/union/intersection 行为是阅读重点。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for GfRange1d while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">默认 empty range 通常便于逐步 `ExtendBy()`；这不是有效几何范围，而是等待被数据扩展的初始状态。</span></li>
-        <li><span class="zh">`GetMin()`、`GetMax()`、`IsEmpty()`、`Contains()`、`UnionWith()`、`IntersectWith()` 等方法应按区间数学理解，而不是按单点数值容器理解。</span></li>
-        <li><span class="zh">`component-wise` 在一维中看似简单，但它和二维/三维 `GfRange2*`、`GfRange3*` 的行为一致；统一理解有助于阅读 bounding box 和 extent 代码。</span></li>
-        <li><span class="zh">`GfRange1f` 是 float 精度对应类型；切换精度时应关注比较容差和序列化/计算误差。</span></li>
-        <li><span class="zh">旧的 `ExtendBy` 等 deprecated 条目若出现，应结合 Deprecated List 和替代 API 判断迁移路径，不要在新代码中继续引入旧接口。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">Gf 一维 double 范围：</span><span class="en">GfRange1d</span></li>
-        <li><span class="zh">区间数学：</span><span class="en">interval mathematics</span></li>
-        <li><span class="zh">空范围：</span><span class="en">empty range</span></li>
-        <li><span class="zh">扩展范围：</span><span class="en">ExtendBy</span></li>
-        <li><span class="zh">并集：</span><span class="en">UnionWith</span></li>
-        <li><span class="zh">交集：</span><span class="en">IntersectWith</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-145">
-      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
-      <p class="zh">`GfRange1d` 是一维 double precision floating point range / interval。它的操作遵循 interval mathematics；空区间定义为 `max &lt; min`，默认空值通常表现为 `[FLT_MAX, -FLT_MAX]` 这类 min/max 反转状态。</p>
-      <p class="en">This third-pass refinement adds page-specific Chinese guidance for GfRange1d while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`Contains()` 用于判断点或另一个 range 是否落在当前区间内；使用前应确认区间不是 empty range，否则结果容易和直觉不一致。</span></li>
-        <li><span class="zh">`ExtendBy()` 会扩展 min/max 以包含点或区间，适合逐步累积 bounds；从默认空区间开始累积是常见用法。</span></li>
-        <li><span class="zh">`GetIntersection()` / `Intersection()` 与 `GetUnion()` 分别表达区间交集和并集，调试时要关注空交集与端点相等的闭区间边界。</span></li>
-        <li><span class="zh">`GetDistanceSquared()` 给出点到区间的平方距离；点在区间内部时距离为 0，适合避免不必要的 `sqrt`。</span></li>
-        <li><span class="zh">`GetMin()`、`GetMax()`、`GetMidpoint()` 与 `GetSize()` 是读取端点和尺度的基础接口；对 empty range 调用时应明确调用方期望。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">一维范围：</span><span class="en">GfRange1d</span></li>
-        <li><span class="zh">区间数学：</span><span class="en">interval mathematics</span></li>
-        <li><span class="zh">空范围：</span><span class="en">empty range</span></li>
+        <li><span class="zh">最小端点：</span><span class="en">GetMin()</span></li>
+        <li><span class="zh">最大端点：</span><span class="en">GetMax()</span></li>
+        <li><span class="zh">中点：</span><span class="en">GetMidpoint()</span></li>
+        <li><span class="zh">区间长度：</span><span class="en">GetSize()</span></li>
+        <li><span class="zh">包含测试：</span><span class="en">Contains()</span></li>
         <li><span class="zh">扩展范围：</span><span class="en">ExtendBy()</span></li>
-        <li><span class="zh">交集：</span><span class="en">intersection</span></li>
-        <li><span class="zh">平方距离：</span><span class="en">distance squared</span></li>
+        <li><span class="zh">并集：</span><span class="en">GetUnion()</span></li>
+        <li><span class="zh">交集：</span><span class="en">GetIntersection() / Intersection()</span></li>
+        <li><span class="zh">平方距离：</span><span class="en">GetDistanceSquared()</span></li>
       </ul>
     </section>
     <section>

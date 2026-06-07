@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-07T09:28:23.660Z
+Generated: 2026-06-07T09:40:59.917Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 59
-- Promoted complete pages: 51
-- Bilingual draft pages: 347
+- Bilingual complete pages: 60
+- Promoted complete pages: 52
+- Bilingual draft pages: 346
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -31,7 +31,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_complete | https://openusd.org/release/api/class_gf_dual_quatf.html | full_site/api/class_gf_dual_quatf.html | https://openusd.org/release/api/class_gf_dual_quatf.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_gf_matrix2f.html | full_site/api/class_gf_matrix2f.html | https://openusd.org/release/api/class_gf_matrix2f.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_gf_matrix4f.html | full_site/api/class_gf_matrix4f.html | https://openusd.org/release/api/class_gf_matrix4f.html |
-| api | bilingual_draft | 类参考草稿：GfRange1d Class Reference Basic Geometry / GfRange1d Class Reference Basic Geometry | full_site/api/class_gf_range1d.html | https://openusd.org/release/api/class_gf_range1d.html |
+| api | bilingual_complete | https://openusd.org/release/api/class_gf_range1d.html | full_site/api/class_gf_range1d.html | https://openusd.org/release/api/class_gf_range1d.html |
 | api | bilingual_draft | 类参考草稿：GfRay Class Reference Basic Geometry / GfRay Class Reference Basic Geometry | full_site/api/class_gf_ray.html | https://openusd.org/release/api/class_gf_ray.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_gf_vec2i.html | full_site/api/class_gf_vec2i.html | https://openusd.org/release/api/class_gf_vec2i.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_glf_draw_target.html | full_site/api/class_glf_draw_target.html | https://openusd.org/release/api/class_glf_draw_target.html |

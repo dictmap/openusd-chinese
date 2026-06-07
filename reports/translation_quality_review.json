@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T09:28:24.432Z",
+  "generated_at": "2026-06-07T09:41:00.627Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 347,
-    "bilingual_complete": 59
+    "bilingual_draft": 346,
+    "bilingual_complete": 60
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 336,
-    "good_bilingual": 59
+    "draft_needs_translation": 335,
+    "good_bilingual": 60
   },
   "focus_batch": [
     {
@@ -1328,29 +1328,29 @@
     },
     {
       "index": 14,
-      "title": "类参考草稿：GfRange1d Class Reference Basic Geometry / GfRange1d Class Reference Basic Geometry",
+      "title": "完整双语参考：GfRange1d Class Reference Basic Geometry / GfRange1d Class Reference Basic Geometry",
       "output": "full_site/api/class_gf_range1d.html",
       "official_url": "https://openusd.org/release/api/class_gf_range1d.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 64,
-      "enBlockCount": 51,
-      "zhChars": 792,
-      "enLetters": 1930,
-      "bodyChineseChars": 867,
+      "grade": "good_bilingual",
+      "zhBlockCount": 58,
+      "enBlockCount": 60,
+      "zhChars": 1448,
+      "enLetters": 3028,
+      "bodyChineseChars": 1501,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 GfRange1d Class Reference 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`GfRange1d` 是 Gf Basic Geometry 中的一维 double 精度 floating point range，也可理解为 interval。"
+        "本页已按完整双语参考页整理：中文先解释 `GfRange1d` 作为一维 double 精度 interval/range 的值类型语义、空区间约定、端点读取、包含测试、扩展、交集/并集和距离计算边界；英文 API 名称、方法名、类型名、数学术语和链接保持原样。",
+        "官方定义把 `GfRange1d` 称为 “Basic type: 1-dimensional floating point range”。这里的 range 也可理解为 interval：它用一对端点 `min` 与 `max` 描述一维 double 精度闭区间。它属于 `Gf` Basic Geometry 的基础数学值类型，不是 USD prim，也不会自己表示 layer、attribute 或 authored extent。",
+        "本页最容易误读的是 empty range。官方明确说 “An empty range is one where max < min”，默认空值是 `[FLT_MAX,-FLT_MAX]`。这个状态看起来像反转的非法端点，但在 API 语义里它是有意设计的空区间，适合从默认构造开始逐步 `ExtendBy()` 数据点或子区间，最终形成有效 range。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for GfRange1d Class Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page is promoted to a complete bilingual reference: the Chinese text explains `GfRange1d` as a one-dimensional double precision interval/range value type, including empty-range conventions, endpoint access, containment tests, extension, intersection/union, and distance semantics while preserving original English API names, method names, type names, mathematical terms, and links.",
+        "The official definition describes `GfRange1d` as a one-dimensional floating point range, or interval, represented by minimum and maximum endpoints."
       ]
     },
     {
