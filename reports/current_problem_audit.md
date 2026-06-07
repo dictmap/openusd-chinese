@@ -2,23 +2,23 @@
 
 生成日期：2026-06-07
 
-这份盘点针对用户反馈：“3 天后仍只有 8 页完成、398 页还是草稿，问题很多但自动化还在继续跑轮次。”本文件已在第 319 轮更新：`full_site` 页面晋级链路已经连续跑通十七次，`good_bilingual` 从 8 提升到 25，但整体仍远未完成。
+这份盘点针对用户反馈：“3 天后仍只有 8 页完成、398 页还是草稿，问题很多但自动化还在继续跑轮次。”本文件已在第 320 轮更新：`full_site` 页面晋级链路已经连续跑通十八次，`good_bilingual` 从 8 提升到 26，但整体仍远未完成。
 
 ## 当前真实状态
 
 - 全量页面：406
-- `bilingual_complete`：25
-- `bilingual_draft`：381
-- `good_bilingual`：25
-- `draft_needs_translation`：370
+- `bilingual_complete`：26
+- `bilingual_draft`：380
+- `good_bilingual`：26
+- `draft_needs_translation`：369
 - `draft_template_only`：11
 
-结论：当前仍不是完成态。381 个 draft 只是可本地打开和检查，不是完整翻译。
+结论：当前仍不是完成态。380 个 draft 只是可本地打开和检查，不是完整翻译。
 
 ## P0 问题
 
 1. 完成数长期停滞，已跑通可复用晋级路径  
-   `audit_openusd_translation_quality.mjs` 只有在 inventory 状态为 `bilingual_complete` 且中文密度达标时才会给 `good_bilingual`。过去大量 refinement 脚本只给 `bilingual_draft` 页面增加中文导读和术语对照，没有把页面晋级为 `bilingual_complete` 的机制，所以主指标长期不涨。第 303 轮新增 `reports/bilingual_completion_promotions.json`，第 304 轮晋级 `full_site/api/class_usd_prim.html`，第 305 轮晋级 `full_site/api/class_sdf_path.html`，第 306 轮晋级 `full_site/api/class_usd_geom_mesh.html`，第 307 轮晋级 `full_site/api/class_tf_token.html`，第 308 轮晋级 `full_site/api/class_usd_stage_cache.html`，第 309 轮晋级 `full_site/api/class_usd_attribute_limits.html`，第 310 轮晋级 `full_site/api/class_usd_validation_error.html`，第 311 轮晋级 `full_site/api/class_usd_geom_basis_curves.html`，第 312 轮晋级 `full_site/api/class_usd_physics_joint.html`，第 313 轮晋级 `full_site/api/class_usd_imaging_delegate.html`，第 314 轮晋级 `full_site/api/class_sdr_shader_property.html`，第 315 轮晋级 `full_site/api/class_vt_value_ref.html`，第 316 轮晋级 `full_site/api/class_vdf_node.html`，第 317 轮晋级 `full_site/api/class_vdf_context.html`，第 318 轮晋级 `full_site/api/class_vdf_read_write_accessor.html`，第 319 轮晋级 `full_site/api/class_vdf_grapher_options.html`，`good_bilingual` 已从 8 提升到 25。
+   `audit_openusd_translation_quality.mjs` 只有在 inventory 状态为 `bilingual_complete` 且中文密度达标时才会给 `good_bilingual`。过去大量 refinement 脚本只给 `bilingual_draft` 页面增加中文导读和术语对照，没有把页面晋级为 `bilingual_complete` 的机制，所以主指标长期不涨。第 303 轮新增 `reports/bilingual_completion_promotions.json`，第 304 轮晋级 `full_site/api/class_usd_prim.html`，第 305 轮晋级 `full_site/api/class_sdf_path.html`，第 306 轮晋级 `full_site/api/class_usd_geom_mesh.html`，第 307 轮晋级 `full_site/api/class_tf_token.html`，第 308 轮晋级 `full_site/api/class_usd_stage_cache.html`，第 309 轮晋级 `full_site/api/class_usd_attribute_limits.html`，第 310 轮晋级 `full_site/api/class_usd_validation_error.html`，第 311 轮晋级 `full_site/api/class_usd_geom_basis_curves.html`，第 312 轮晋级 `full_site/api/class_usd_physics_joint.html`，第 313 轮晋级 `full_site/api/class_usd_imaging_delegate.html`，第 314 轮晋级 `full_site/api/class_sdr_shader_property.html`，第 315 轮晋级 `full_site/api/class_vt_value_ref.html`，第 316 轮晋级 `full_site/api/class_vdf_node.html`，第 317 轮晋级 `full_site/api/class_vdf_context.html`，第 318 轮晋级 `full_site/api/class_vdf_read_write_accessor.html`，第 319 轮晋级 `full_site/api/class_vdf_grapher_options.html`，第 320 轮晋级 `full_site/api/class_esf_property_interface.html`，`good_bilingual` 已从 8 提升到 26。
 
 2. 总入口展示容易误导，已做第一轮修正  
    总入口曾显示 8 complete、398 draft、0 pending。`pending=0` 容易让人以为“全都处理过了”。现在入口改为动态 complete 数，并把剩余页面标成“未完整翻译草稿 / Incomplete drafts”。后续必须保持 `bilingual_draft` 等于未完整翻译，不得再写成接近完成。

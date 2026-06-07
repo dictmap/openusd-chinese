@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-07T00:22:45.164Z
+Generated: 2026-06-07T00:45:09.090Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 25
-- Promoted complete pages: 17
-- Bilingual draft pages: 381
+- Bilingual complete pages: 26
+- Promoted complete pages: 18
+- Bilingual draft pages: 380
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -27,7 +27,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_draft | Arch：架构相关 / Arch: Architecture Dependent | full_site/api/arch_page_front.html | https://openusd.org/release/api/arch_page_front.html |
 | api | bilingual_draft | 源码页面草稿：bindingMap.h / bindingMap.h | full_site/api/binding_map_8h_source.html | https://openusd.org/release/api/binding_map_8h_source.html |
 | api | bilingual_draft | 类参考草稿：Ef_LoftedOutputSet Class / Ef_LoftedOutputSet Class | full_site/api/class_ef___lofted_output_set.html | https://openusd.org/release/api/class_ef___lofted_output_set.html |
-| api | bilingual_draft | 类参考草稿：EsfPropertyInterface Class Reference abstract / EsfPropertyInterface Class Reference abstract | full_site/api/class_esf_property_interface.html | https://openusd.org/release/api/class_esf_property_interface.html |
+| api | bilingual_complete | https://openusd.org/release/api/class_esf_property_interface.html | full_site/api/class_esf_property_interface.html | https://openusd.org/release/api/class_esf_property_interface.html |
 | api | bilingual_draft | 类参考草稿：GfDualQuatf Class Reference final Linear Algebra / GfDualQuatf Class Reference final Linear Algebra | full_site/api/class_gf_dual_quatf.html | https://openusd.org/release/api/class_gf_dual_quatf.html |
 | api | bilingual_draft | 类参考草稿：GfMatrix2f Class Reference Linear Algebra / GfMatrix2f Class Reference Linear Algebra | full_site/api/class_gf_matrix2f.html | https://openusd.org/release/api/class_gf_matrix2f.html |
 | api | bilingual_draft | 类参考草稿：GfMatrix4f Class Reference Linear Algebra / GfMatrix4f Class Reference Linear Algebra | full_site/api/class_gf_matrix4f.html | https://openusd.org/release/api/class_gf_matrix4f.html |

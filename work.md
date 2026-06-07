@@ -5375,3 +5375,53 @@
 1. 继续真实晋级，不再刷 count-neutral 导读补强。
 2. 下一批优先核心页面：`full_site/api/class_esf_property_interface.html` 或其他 406 清单内高价值核心 API 页。
 3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。
+
+## 第 320 轮：将 EsfPropertyInterface 提升为完整双语
+
+轮次类型：PromotionRound。目标页固定为 1 个：`full_site/api/class_esf_property_interface.html`。
+
+已完成：
+
+- 将 `full_site/api/class_esf_property_interface.html` 从 `bilingual_draft` 晋级为 `bilingual_complete`。
+- 页面标题改为“完整双语参考：EsfPropertyInterface Class Reference abstract / EsfPropertyInterface Class Reference abstract”，并移除通用 draft 文案和“后续迭代会继续补齐”等草稿标记。
+- 新增 `逐段双语理解 / Paragraph-Level Bilingual Coverage` 区块，覆盖：
+  - `EsfPropertyInterface` 作为 scene adapter implementation 的 property abstraction，而不是可写 `UsdProperty` wrapper。
+  - read-only `UsdProperty`-like interface 与 USD authoring API 的边界。
+  - exec network compiler 通过 public methods 读取 property 信息的调用语义。
+  - `EsfJournal*` 作为 recompilation condition / dependency tracking 记录器，而不是普通调试日志。
+  - `GetBaseName()` 与 `GetNamespace()` 对 USD property name 的拆分语义，以及 property namespace 与 C++ namespace / prim path namespace 的区别。
+  - abstract adapter query contract 如何让 compiler 与具体 scene representation 解耦。
+  - `EsfObjectInterface`、`EsfPrim`、`EsfAttribute`、`EsfRelationship`、`SdfPath`、`TfToken`、`VtValue`、`TfType`、`UsdProperty` 等相邻类型分层。
+  - 把接口误当可写属性包装器、忽略 journaling 或长期保存接口对象的常见误用。
+- 更新 `reports/bilingual_completion_promotions.json/md`，新增 `round-320-esf-property-interface`。
+- 更新 `reports/current_problem_audit.md/json`，将当前真实状态同步为 26 complete / 380 draft。
+- 重建 `openusd_bilingual_final.html`，总入口显示 26 complete / 380 incomplete drafts。
+
+分级变化：
+
+- `good_bilingual`：25 -> 26
+- `bilingual_complete`：25 -> 26
+- `bilingual_draft`：381 -> 380
+- `draft_needs_translation`：370 -> 369
+- `draft_template_only`：11 保持不变
+
+验证结果：
+
+- `discover_openusd_all_pages.mjs`：通过，`total_pages=406`，`promoted_complete_pages=18`。
+- `audit_openusd_translation_quality.mjs`：通过，`good_bilingual=26`，目标页 `grade=good_bilingual`。
+- `route_openusd_internal_links_local.mjs`：通过。
+- `audit_openusd_full_draft_preview.mjs`：通过，380/380 draft 页面可预览。
+- `audit_openusd_report_index.mjs`：通过。
+- `validate_openusd_api_repro.ps1`：通过，`required_check_count=288`，`failed_check_count=0`。
+- Node 直接解析 `reports/validation_report.json`：`bom=false`。
+
+当前差距：
+
+- 仍有 380 个 `bilingual_draft` 页面只是可检查草稿，不是完整翻译，其中 369 个仍为 `draft_needs_translation`。
+- 406 清单外的 Doxygen 目标仍会进入本地未覆盖占位页；这是当前 P1 浏览缺口。
+
+下一步目标：
+
+1. 继续真实晋级，不再刷 count-neutral 导读补强。
+2. 下一批优先核心页面：`full_site/api/class_trace_event_data.html` 或其他 406 清单内高价值核心 API 页。
+3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。

@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T00:22:45.809Z",
+  "generated_at": "2026-06-07T00:45:09.743Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 381,
-    "bilingual_complete": 25
+    "bilingual_draft": 380,
+    "bilingual_complete": 26
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 370,
-    "good_bilingual": 25
+    "draft_needs_translation": 369,
+    "good_bilingual": 26
   },
   "focus_batch": [
     {
@@ -1220,29 +1220,29 @@
     },
     {
       "index": 10,
-      "title": "类参考草稿：EsfPropertyInterface Class Reference abstract / EsfPropertyInterface Class Reference abstract",
+      "title": "完整双语参考：EsfPropertyInterface Class Reference abstract / EsfPropertyInterface Class Reference abstract",
       "output": "full_site/api/class_esf_property_interface.html",
       "official_url": "https://openusd.org/release/api/class_esf_property_interface.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 34,
-      "enBlockCount": 26,
-      "zhChars": 545,
-      "enLetters": 1548,
-      "bodyChineseChars": 608,
+      "grade": "good_bilingual",
+      "zhBlockCount": 28,
+      "enBlockCount": 30,
+      "zhChars": 627,
+      "enLetters": 1666,
+      "bodyChineseChars": 680,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 EsfPropertyInterface Class Reference 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`EsfPropertyInterface` 是 scene adapter implementation 使用的 property abstraction，并且是 abstract class；它的接口接近 `UsdProperty` 的只读接口。"
+        "`EsfPropertyInterface` 是 Exec Scene Framework 中面向 scene adapter implementation 的 property abstraction。官方说它 “closely resembles the read-only interface of `UsdProperty`”，这句话的边界很重要：它借用了 `UsdProperty` 的只读查询形态，但并不是 authoring API，也不负责写入 USD layer。它的职责是在 Esf adapter 与 exec network compiler 之间提供一个稳定、可 journal 的 property 读取接口。",
+        "官方还说明该类的 public methods 会被 exec network compiler 调用。因此它不是普通应用代码随意使用的 property helper，而是编译 OpenExec / ExecUsd 网络时读取场景属性信息的抽象边界。compiler 通过这个接口读取 property name、namespace、所属对象和类型相关信息，同时不需要知道底层来自真实 `UsdProperty`、adapter cache，还是其他 scene representation。",
+        "每个 public method 都带有 `EsfJournal*` 参数，这是本页最容易被忽略的设计点。`EsfJournal` 捕获 “conditions for recompilation”：也就是某次属性查询依赖了哪些 scene 状态、命名、类型或关系。后续 stage、prim 或 property 发生变化时，系统可以依据 journal 判断 exec network 是否需要重新编译。这里的 journal 是依赖记录机制，不是用户日志，也不是调试文本输出。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for EsfPropertyInterface Class Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page."
+        "`EsfPropertyInterface` is a property abstraction for scene adapter implementations. It resembles the read-only `UsdProperty` interface, but it is not a USD authoring wrapper.",
+        "The public methods are called by the exec network compiler, making this class an adapter boundary rather than a general-purpose property utility."
       ]
     },
     {
