@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-07T19:16:24.285Z",
-  "purpose": "Round 390 PromotionRound promoted full_site/release/user_guides/schemas/usdLux/LightAPI.html and reconciled counts after quality, English debt, final entry, link routing, preview, report-index and validation audits.",
+  "generated_at": "2026-06-07T19:35:55.510Z",
+  "purpose": "Round 391 DefectRound fixed the final entry completed-page table that still showed only the 9 local preview entries even though the real bilingual_complete count was 93. Counts stay unchanged; this is a named P1 browser-visible final-entry consistency fix.",
   "current_counts": {
     "total_pages": 406,
     "bilingual_complete": 93,
@@ -24,9 +24,9 @@
     {
       "id": "P0-final-entry-misleading",
       "severity": "P0",
-      "summary": "The final entry previously misled users by showing pending=0 while most pages were incomplete drafts.",
-      "evidence": "openusd_bilingual_final.html now states 93 complete pages and labels the remaining 313 pages as Incomplete drafts.",
-      "required_action": "Keep final-entry counts dynamic and keep bilingual_draft clearly described as incomplete translation."
+      "summary": "The final entry previously misled users by showing pending=0 while most pages were incomplete drafts, and its completed local entries table still listed only the 9 preview-entry pages.",
+      "evidence": "openusd_bilingual_final.html now states 93 complete pages, labels the remaining 313 pages as Incomplete drafts, and its Completed Bilingual Local Pages section is generated from all bilingual_complete inventory rows instead of reports/local_preview_index.json.",
+      "required_action": "Keep final-entry counts and completed-page tables dynamic; keep bilingual_draft clearly described as incomplete translation."
     },
     {
       "id": "P0-automation-wrong-objective",

@@ -1,11 +1,12 @@
 # OpenUSD Iteration Report
 
-## 第 390 轮摘要
+## 第 391 轮摘要
 
-- 轮次类型：PromotionRound
-- 本轮目标：`full_site/release/user_guides/schemas/usdLux/LightAPI.html`
-- 结果：完成 1 个页面晋级，并让 good_bilingual 增加。
-- 核心说明：目标页已移除草稿状态，补齐中文主阅读路径，并进入 promotion manifest。
+- 轮次类型：DefectRound
+- 轮次目的：Round 391 DefectRound fixed the final entry completed-page table that still showed only the 9 local preview entries even though the real bilingual_complete count was 93. Counts stay unchanged; this is a named P1 browser-visible final-entry consistency fix.
+- 本轮目标：命名缺陷或一致性修复
+- 结果：未晋级页面，修复命名缺陷或一致性问题。
+- 核心说明：保持审计链和人类可读记录一致。
 
 ## 真实计数
 
@@ -32,7 +33,9 @@
 - `scripts/audit_openusd_english_debt.mjs`
 - `scripts/audit_openusd_report_index.mjs`
 - `scripts/validate_openusd_api_repro.ps1`
+- `scripts/build_final_html_entry.mjs`
 - `scripts/regenerate_openusd_progress_markdown.mjs`
+- `openusd_bilingual_final.html`
 - `reports/english_debt_audit.json`
 - `reports/english_debt_audit.md`
 - `reports/current_problem_audit.json`

@@ -16,11 +16,12 @@
 
 说明：剩余 `bilingual_draft` 是可检查草稿，不是完整翻译。API 名、类名、函数名、token、代码和链接会保留英文；真正需要治理的是草稿页和完成页里仍主要依赖英文的主阅读路径。
 
-## 第 390 轮：PromotionRound
+## 第 391 轮：DefectRound
 
-- 轮次性质：页面晋级，exactly 1 个目标页。
-- 本轮目标：`full_site/release/user_guides/schemas/usdLux/LightAPI.html`
-- 官方页面：`https://openusd.org/release/user_guides/schemas/usdLux/LightAPI.html`
+- 轮次性质：流程或一致性修复，不晋级新页面。
+- 轮次目的：Round 391 DefectRound fixed the final entry completed-page table that still showed only the 9 local preview entries even though the real bilingual_complete count was 93. Counts stay unchanged; this is a named P1 browser-visible final-entry consistency fix.
+- 本轮目标：Prefer full_site/release/user_guides/schemas/usdLux/LightFilter.html for the next release/user-guide PromotionRound; otherwise stop and report the blocker.
+- 官方页面：不适用
 - 完成数状态：good_bilingual=93；review_ready_zh=30。
 - 固定审计：`translation_quality_review.json`、`english_debt_audit.json`、`all_pages_inventory.json`、`validation_report.json` 已重建。
 

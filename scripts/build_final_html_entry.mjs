@@ -63,13 +63,28 @@ const pageCards = pages.map((page) => `
           </div>
         </article>`).join("\n");
 
-const primaryRows = pages.map((page) => `
+function completedTypeLabel(page) {
+  if (page.area === "release") return "Release 完整页 / Release complete";
+  if (page.area === "api") return "API 完整页 / API complete";
+  return "完整页 / Complete";
+}
+
+const completedRows = completedOfficialPages.map((page) => {
+  const title = page.title || page.official_url;
+  const localCell = page.local_exists
+    ? `<a href="${escapeHtml(page.local_output)}">${escapeHtml(page.local_output)}</a>`
+    : `<span>${escapeHtml(page.local_output)}</span>`;
+  const promotion = page.promotion_id
+    ? `<span>${escapeHtml(page.promotion_id)}</span>`
+    : "";
+  return `
           <tr>
-            <td>${escapeHtml(categoryLabel(page.category))}</td>
-            <td>${escapeHtml(page.zh_title)}<span>${escapeHtml(page.en_title)}</span></td>
-            <td><a href="${escapeHtml(page.local_path)}">${escapeHtml(page.local_path)}</a></td>
+            <td>${escapeHtml(completedTypeLabel(page))}</td>
+            <td>${escapeHtml(title)}${promotion}</td>
+            <td>${localCell}</td>
             <td><a href="${escapeHtml(page.official_url)}">${escapeHtml(page.official_url)}</a></td>
-          </tr>`).join("\n");
+          </tr>`;
+}).join("\n");
 
 const allPageRows = officialPages.map((page) => {
   const localCell = page.local_exists
@@ -398,8 +413,8 @@ ${pageCards}
     </section>
 
     <section class="section">
-      <h2>已完成本地入口 / Completed Local Entries</h2>
-      <p class="note">这些页面已经有本地 HTML；<code>api/index.html</code> 是本地跳转页，不计入官方页面完成数。</p>
+      <h2>已完成双语本地页面 / Completed Bilingual Local Pages</h2>
+      <p class="note">这里动态列出全部 <code>bilingual_complete</code> 官方页面，当前应与顶部完成数一致：${escapeHtml(completedOfficialPages.length)} 页。上方 9 个卡片只是主要入口和本地预览入口，不代表完成页总数。</p>
       <div class="table-wrap">
         <table>
           <thead>
@@ -411,7 +426,7 @@ ${pageCards}
             </tr>
           </thead>
           <tbody>
-${primaryRows}
+${completedRows}
           </tbody>
         </table>
       </div>
@@ -452,7 +467,8 @@ await writeFile(outputPath, html, "utf8");
 console.log(JSON.stringify({
   passed: true,
   output: outputPath,
-  completedLocalEntries: pages.length,
+  primaryPreviewEntries: pages.length,
+  completedBilingualPages: completedOfficialPages.length,
   allOfficialPages: officialPages.length,
   draftOfficialPages: draftOfficialPages.length,
   pendingOfficialPages: pendingOfficialPages.length,

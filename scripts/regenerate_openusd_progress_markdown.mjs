@@ -78,6 +78,7 @@ function buildWorkMd({ inventory, quality, validation, englishDebt, problemAudit
 ## 第 ${round} 轮：${roundType}
 
 - 轮次性质：${isPromotion ? "页面晋级，exactly 1 个目标页。" : "流程或一致性修复，不晋级新页面。"}
+- 轮次目的：${problemAudit.purpose}
 - 本轮目标：${isPromotion ? `\`${latestPromotion?.local_output ?? target}\`` : problemAudit.next_action}
 - 官方页面：${isPromotion ? `\`${latestPromotion?.official_url ?? ""}\`` : "不适用"}
 - 完成数状态：good_bilingual=${counts.good_bilingual}；review_ready_zh=${englishDebt.counts.review_ready_zh}。
@@ -115,6 +116,7 @@ function buildIterationMd({ inventory, quality, validation, englishDebt, problem
 ## 第 ${round} 轮摘要
 
 - 轮次类型：${roundType}
+- 轮次目的：${problemAudit.purpose}
 - 本轮目标：${isPromotion ? `\`${latestPromotion?.local_output ?? ""}\`` : "命名缺陷或一致性修复"}
 - 结果：${isPromotion ? "完成 1 个页面晋级，并让 good_bilingual 增加。" : "未晋级页面，修复命名缺陷或一致性问题。"}
 - 核心说明：${isPromotion ? "目标页已移除草稿状态，补齐中文主阅读路径，并进入 promotion manifest。" : "保持审计链和人类可读记录一致。"}
@@ -144,7 +146,9 @@ function buildIterationMd({ inventory, quality, validation, englishDebt, problem
 - \`scripts/audit_openusd_english_debt.mjs\`
 - \`scripts/audit_openusd_report_index.mjs\`
 - \`scripts/validate_openusd_api_repro.ps1\`
+- \`scripts/build_final_html_entry.mjs\`
 - \`scripts/regenerate_openusd_progress_markdown.mjs\`
+- \`openusd_bilingual_final.html\`
 - \`reports/english_debt_audit.json\`
 - \`reports/english_debt_audit.md\`
 - \`reports/current_problem_audit.json\`
