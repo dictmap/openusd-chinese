@@ -16,6 +16,7 @@
 
 | ID | 页面 | 本地输出 | 原因 |
 | --- | --- | --- | --- |
+| round-328-hd-scene-delegate | `https://openusd.org/release/api/class_hd_scene_delegate.html` | `full_site/api/class_hd_scene_delegate.html` | 核心 Hydra scene-delegate 页面，已覆盖 `HdSceneDelegate` 作为 Hydra 抽象 scene-data query interface 的职责、与 `UsdImagingDelegate`、`HdRenderIndex`、render primitives、instancers、materials、tasks、scene-index/data-source architecture 的边界、`SdfPath` identity 语义、transform/extent/visibility/purpose/material/instancer/primvar/topology 查询职责、dirty/sync 边界、time-sampling/value-lifetime 注意点，以及把 delegate 误当 USD authoring 层、绕过 dirty bits 或把 delegate paths 一对一当成 USD prim paths 的常见误用。 |
 | round-303-sdf-layer | `https://openusd.org/release/api/class_sdf_layer.html` | `full_site/api/class_sdf_layer.html` | 核心 Sdf class 页面，已增加逐段双语理解区，移除草稿标记，并保留 API/源码术语。 |
 | round-304-usd-prim | `https://openusd.org/release/api/class_usd_prim.html` | `full_site/api/class_usd_prim.html` | 核心 Usd class 页面，已覆盖 composed prim、property/composition API、lifetime、traversal、applied API schema 与 instancing 语义。 |
 | round-305-sdf-path | `https://openusd.org/release/api/class_sdf_path.html` | `full_site/api/class_sdf_path.html` | 核心 Sdf path value 页面，已覆盖 storage key、namespace identity、absolute/relative path、路径语法、构造 helper、thread-safety 与 composition 调试语义。 |

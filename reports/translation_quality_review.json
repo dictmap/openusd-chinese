@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T02:49:15.820Z",
+  "generated_at": "2026-06-07T03:09:04.473Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 373,
-    "bilingual_complete": 33
+    "bilingual_draft": 372,
+    "bilingual_complete": 34
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 362,
-    "good_bilingual": 33
+    "draft_needs_translation": 361,
+    "good_bilingual": 34
   },
   "focus_batch": [
     {
@@ -1517,29 +1517,29 @@
     },
     {
       "index": 21,
-      "title": "类参考草稿：HdSceneDelegate Class / HdSceneDelegate Class",
+      "title": "完整双语参考：HdSceneDelegate Class / HdSceneDelegate Class",
       "output": "full_site/api/class_hd_scene_delegate.html",
       "official_url": "https://openusd.org/release/api/class_hd_scene_delegate.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 64,
-      "enBlockCount": 51,
-      "zhChars": 749,
-      "enLetters": 2027,
-      "bodyChineseChars": 824,
+      "grade": "good_bilingual",
+      "zhBlockCount": 48,
+      "enBlockCount": 50,
+      "zhChars": 954,
+      "enLetters": 2794,
+      "bodyChineseChars": 1007,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 HdSceneDelegate Class 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`HdSceneDelegate` 是 Hydra render index 与 client scene graph 之间的数据交换适配器，是传统 Hydra delegate API 的核心入口之一。"
+        "本页已按完整双语参考页处理：中文优先解释 `HdSceneDelegate` 的职责、调用边界、常用查询族和调试含义，并保留英文 API 名称、类名、方法名、类型名、token 字面量、链接和官方英文摘录，便于与 OpenUSD Doxygen 页面逐项核对。",
+        "`HdSceneDelegate` 是传统 Hydra 架构里的抽象场景数据查询接口。官方摘要说它是 “Adapter class providing data exchange with the client scene graph”，重点在 “data exchange”：它不负责创作 USD、不负责最终渲染，也不是 renderer backend；它把宿主场景图中的数据按 Hydra 约定交给 `HdRenderIndex`、`HdRprim`、`HdSprim`、`HdBprim`、`HdTask` 和相关同步逻辑读取。",
+        "阅读本页时要先分清边界：`UsdImagingDelegate` 是常见的 USD-to-Hydra 适配实现，负责把 composed USD scene 翻译成 Hydra 可查询数据；`HdRenderIndex` 是 Hydra 保存 render primitives 和调度同步的索引；render delegate 才是面向具体 renderer/GPU 后端的实现；`HdSceneIndex` 和 data source pipeline 是 Hydra 2.0 更偏数据流的新架构。`HdSceneDelegate` 位于这些概念之间，提供查询入口，但不拥有所有渲染状态。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for HdSceneDelegate Class while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page is treated as a complete bilingual reference: Chinese explanations come first, while English API names, class names, method names, type names, token literals, links, and selected official English excerpts are retained for comparison with the OpenUSD Doxygen page.",
+        "`HdSceneDelegate` is the classic Hydra scene-data query adapter. It provides data exchange with the client scene graph; it is not a USD authoring layer, not the final renderer, and not the renderer backend."
       ]
     },
     {

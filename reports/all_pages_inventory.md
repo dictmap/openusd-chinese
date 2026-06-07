@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-07T02:49:13.570Z
+Generated: 2026-06-07T03:09:03.846Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 33
-- Promoted complete pages: 25
-- Bilingual draft pages: 373
+- Bilingual complete pages: 34
+- Promoted complete pages: 26
+- Bilingual draft pages: 372
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -38,7 +38,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_complete | https://openusd.org/release/api/class_hd_data_source_locator.html | full_site/api/class_hd_data_source_locator.html | https://openusd.org/release/api/class_hd_data_source_locator.html |
 | api | bilingual_draft | 类参考草稿：HdInstanceRegistry< VALUE > Class Template / HdInstanceRegistry< VALUE > Class Template | full_site/api/class_hd_instance_registry.html | https://openusd.org/release/api/class_hd_instance_registry.html |
 | api | bilingual_draft | 类参考草稿：HdRenderBuffer Class Reference abstract / HdRenderBuffer Class Reference abstract | full_site/api/class_hd_render_buffer.html | https://openusd.org/release/api/class_hd_render_buffer.html |
-| api | bilingual_draft | 类参考草稿：HdSceneDelegate Class / HdSceneDelegate Class | full_site/api/class_hd_scene_delegate.html | https://openusd.org/release/api/class_hd_scene_delegate.html |
+| api | bilingual_complete | https://openusd.org/release/api/class_hd_scene_delegate.html | full_site/api/class_hd_scene_delegate.html | https://openusd.org/release/api/class_hd_scene_delegate.html |
 | api | bilingual_draft | 类参考草稿：HdStDispatchBuffer Class / HdStDispatchBuffer Class | full_site/api/class_hd_st_dispatch_buffer.html | https://openusd.org/release/api/class_hd_st_dispatch_buffer.html |
 | api | bilingual_draft | 类参考草稿：HdStRenderPassState Class / HdStRenderPassState Class | full_site/api/class_hd_st_render_pass_state.html | https://openusd.org/release/api/class_hd_st_render_pass_state.html |
 | api | bilingual_draft | 类参考草稿：HdTask Class Reference abstract / HdTask Class Reference abstract | full_site/api/class_hd_task.html | https://openusd.org/release/api/class_hd_task.html |

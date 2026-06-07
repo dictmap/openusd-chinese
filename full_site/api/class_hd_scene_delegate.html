@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：HdSceneDelegate Class / HdSceneDelegate Class</title>
+  <title>完整双语参考：HdSceneDelegate Class / HdSceneDelegate Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,76 +24,49 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：HdSceneDelegate Class / HdSceneDelegate Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：HdSceneDelegate Class / HdSceneDelegate Class</h1>
     <div class="meta">https://openusd.org/release/api/class_hd_scene_delegate.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页处理：中文优先解释 `HdSceneDelegate` 的职责、调用边界、常用查询族和调试含义，并保留英文 API 名称、类名、方法名、类型名、token 字面量、链接和官方英文摘录，便于与 OpenUSD Doxygen 页面逐项核对。</p>
+      <p class="en">This page is treated as a complete bilingual reference: Chinese explanations come first, while English API names, class names, method names, type names, token literals, links, and selected official English excerpts are retained for comparison with the OpenUSD Doxygen page.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-036">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 HdSceneDelegate Class 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for HdSceneDelegate Class while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`HdSceneDelegate` 是 Hydra render index 与 client scene graph 之间的数据交换适配器，是传统 Hydra delegate API 的核心入口之一。</span></li>
-        <li><span class="zh">英文摘录称它是 adapter class providing data exchange with the client scene graph；因此它负责让 Hydra 从宿主场景中查询 topology、transform、primvar、material、buffer 和时间采样等数据。</span></li>
-        <li><span class="zh">关联类型非常多，包括 `HdRenderIndex`、`SdfPath`、`HdMeshTopology`、`HdBasisCurvesTopology`、`GfMatrix4d`、`VtValue`、`HdTimeSampleArray`、`HdRenderBufferDescriptor`、`HdPrimvarDescriptor` 等，说明它跨越几何、显示样式、primvar、buffer 和采样。</span></li>
-        <li><span class="zh">本页还列出 `UsdImagingDelegate`、`HdSceneIndexAdapterSceneDelegate`、`HdUnitTestDelegate`、`HdxFreeCameraSceneDelegate` 等派生或相关 delegate，读者可用它们区分 USD imaging、scene index adapter、测试和相机 delegate 语境。</span></li>
-        <li><span class="zh">后续完整翻译应逐项补 Get/Sync/dirty bits/primvar/topology/time sample 等接口；本轮只补类定位、数据交换边界和关键关联类型。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">场景委托：</span><span class="en">scene delegate</span></li>
-        <li><span class="zh">客户端场景图：</span><span class="en">client scene graph</span></li>
-        <li><span class="zh">渲染索引：</span><span class="en">render index</span></li>
-        <li><span class="zh">primvar 描述符：</span><span class="en">primvar descriptor</span></li>
-        <li><span class="zh">时间采样：</span><span class="en">time sample</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-129">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`HdSceneDelegate` 是传统 Hydra 架构中连接 client scene graph 与 `HdRenderIndex` 的数据适配器。它让 Hydra 通过统一查询接口获取 topology、transform、extent、primvars、materials、instancing、render buffer 和 time samples 等数据。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdSceneDelegate while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`HdSceneDelegate` 的职责是提供数据，不是执行最终渲染；实际渲染由 render delegate、render pass、task 和底层 graphics / renderer backend 共同完成。</span></li>
-        <li><span class="zh">`GetMeshTopology()`、`GetBasisCurvesTopology()`、`GetTransform()`、`GetPrimvarDescriptors()`、`Get()` 等接口通常由具体 delegate 按 prim path 回答数据查询。</span></li>
-        <li><span class="zh">`HdChangeTracker`、dirty bits 和 sync 语义决定 Hydra 何时重新拉取数据；如果画面没有更新，应检查 dirty 标记是否正确传播。</span></li>
-        <li><span class="zh">`UsdImagingDelegate`、`HdSceneIndexAdapterSceneDelegate`、`HdUnitTestDelegate` 与 `HdxFreeCameraSceneDelegate` 代表不同来源的 scene delegate；不要把 USD imaging、scene index adapter、测试 delegate 和相机 delegate 混为一类。</span></li>
-        <li><span class="zh">新代码若使用 Hydra 2.0 scene index pipeline，需要理解 `HdSceneDelegate` 与 `HdSceneIndex` / data source 路径的关系：前者是传统适配器，后者是新的数据流表达。</span></li>
-      </ul>
+    <section data-cn-complete="hd-scene-delegate-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`HdSceneDelegate` 是传统 Hydra 架构里的抽象场景数据查询接口。官方摘要说它是 “Adapter class providing data exchange with the client scene graph”，重点在 “data exchange”：它不负责创作 USD、不负责最终渲染，也不是 renderer backend；它把宿主场景图中的数据按 Hydra 约定交给 `HdRenderIndex`、`HdRprim`、`HdSprim`、`HdBprim`、`HdTask` 和相关同步逻辑读取。</p>
+      <p class="en">`HdSceneDelegate` is the classic Hydra scene-data query adapter. It provides data exchange with the client scene graph; it is not a USD authoring layer, not the final renderer, and not the renderer backend.</p>
+      <p class="zh">阅读本页时要先分清边界：`UsdImagingDelegate` 是常见的 USD-to-Hydra 适配实现，负责把 composed USD scene 翻译成 Hydra 可查询数据；`HdRenderIndex` 是 Hydra 保存 render primitives 和调度同步的索引；render delegate 才是面向具体 renderer/GPU 后端的实现；`HdSceneIndex` 和 data source pipeline 是 Hydra 2.0 更偏数据流的新架构。`HdSceneDelegate` 位于这些概念之间，提供查询入口，但不拥有所有渲染状态。</p>
+      <p class="en">Keep the boundary clear: `UsdImagingDelegate` adapts composed USD data into Hydra queries, `HdRenderIndex` owns the indexed render primitives, render delegates implement renderer-facing behavior, and the scene-index/data-source pipeline is the newer Hydra 2.0 data-flow model.</p>
+      <p class="zh">本页大量接口以 `SdfPath` 作为 id 参数。这里的 path 是 Hydra render primitive、instancer、camera、material、computation 或其他对象的 identity key，并不总是与 authored USD prim path 一对一相同。调试 delegate 时，如果一个 `SdfPath` 找不到、实例路径错位或 material binding 不生效，应先确认该 path 在 `HdRenderIndex` 中登记的对象类型，而不是直接假设它就是某个 USD stage 上的 prim。</p>
+      <p class="en">Many methods use `SdfPath` as an identity key for Hydra objects. That key often relates to USD namespace paths, but it is not always a one-to-one authored USD prim path.</p>
+      <p class="zh">几何查询族包括 `GetMeshTopology()`、`GetBasisCurvesTopology()`、`GetExtent()`、`GetTransform()`、`GetVisible()`、`GetPurpose()`、`GetCullStyle()`、`GetDoubleSided()` 和类似方法。它们共同回答“这个 render primitive 是什么形状、在何处、是否可见、按什么 purpose 分类、边界盒如何、双面或剔除策略如何”等问题。Hydra sync 阶段会在 dirty bits 表示数据变化时重新调用这些查询，因此 delegate 返回值要稳定、可复现，并且与变更通知保持一致。</p>
+      <p class="en">Geometry-oriented queries such as `GetMeshTopology()`, `GetBasisCurvesTopology()`, `GetExtent()`, `GetTransform()`, `GetVisible()`, and `GetPurpose()` answer the shape, placement, visibility, purpose, bounds, and display state that Hydra needs during synchronization.</p>
+      <p class="zh">primvar 和通用值查询是另一组核心接口。`GetPrimvarDescriptors()` 声明某个 primitive 在指定 interpolation 下有哪些 primvar；`GetPrimvar()` 或 `GetIndexedPrimvar()` 返回实际数据；`Get()` 返回以 `VtValue` 包装的通用值。这里要保留 `TfToken`、interpolation token、role 和 element size 的官方语义，因为 renderer 或 imaging adapter 会依赖这些名字解释数组长度、插值方式和 shader 输入。</p>
+      <p class="en">Primvar queries describe and return per-primitive data. `GetPrimvarDescriptors()`, `GetPrimvar()`, `GetIndexedPrimvar()`, and generic `Get()` values must preserve the token and interpolation semantics expected by Hydra and renderer code.</p>
+      <p class="zh">instancing 相关接口包括 `GetInstancerId()`、`GetInstancerPrototypes()`、`GetInstanceIndices()` 和 instance category 查询。delegate 需要同时解释 prototype、instance id、indices 和类别过滤，否则画面上常见的问题是实例数量正确但 transform 或 material 错、某些实例被 pick/selection 逻辑漏掉，或者 nested instancing 路径无法追踪。</p>
+      <p class="en">Instancing queries connect prototypes, instance ids, indices, and categories. Correct answers are required for drawing, selection, picking, and nested instancing behavior.</p>
+      <p class="zh">material、light、camera、task 和 resource 类查询体现了 `HdSceneDelegate` 的横向覆盖面。`GetMaterialId()` 把几何对象接到 material primitive；`GetCameraParamValue()` 提供 camera 参数；`GetRenderBufferDescriptor()` 等 buffer/resource 查询描述渲染缓冲；task aspects 则让 task 从 delegate 读取执行所需数据。它们说明 delegate 是场景数据的供给层，而不是单纯的 mesh topology helper。</p>
+      <p class="en">Material, light, camera, render-buffer, resource, and task-related queries show that a scene delegate supplies broad scene data, not just mesh topology.</p>
+      <p class="zh">dirty/sync 边界是调试 `HdSceneDelegate` 时最容易误读的部分。delegate 回答数据查询；`HdChangeTracker` 和 dirty bits 告诉 Hydra 哪些数据需要重新拉取；`HdRprim::Sync()`、`HdSprim::Sync()` 或具体 primitive 的 sync 逻辑才会把这些值消化进 render index / renderer-facing state。不要在 delegate 的 getter 中偷偷修改 render index，也不要认为 getter 被调用就代表 renderer 最终状态已经更新。</p>
+      <p class="en">Dirty bits and sync are separate from the getter itself. The delegate answers queries, while change tracking and primitive sync decide when those answers are consumed.</p>
+      <p class="zh">时间采样接口和 value lifetime 需要特别谨慎。`HdTimeSampleArray`、sample count、sample times 与返回的 `VtValue`/数组数据应有清晰生命周期，不应依赖临时对象地址或调用后马上失效的缓存。运动模糊、animated transform、deforming primvars 或 render buffer 更新异常时，常要同时检查 sample time、dirty bits、缓存 invalidation 和 delegate 返回数据的所有权。</p>
+      <p class="en">Time-sampled values and returned arrays need stable lifetime and clear invalidation behavior. Motion blur and animated data bugs often come from inconsistent sample times, dirty tracking, or transient storage.</p>
+      <p class="zh">常见误用包括：把 `HdSceneDelegate` 当成 USD authoring API；绕过 dirty bits 直接期待 renderer 自动重读数据；把所有 delegate `SdfPath` 都当成 stage 上的 authored prim path；在 getter 里返回不稳定的临时数据；混淆 `UsdImagingDelegate`、scene-index adapter、unit-test delegate 和 renderer backend；以及在新代码里忽略 scene-index/data-source 架构与传统 delegate API 的差异。</p>
+      <p class="en">Common mistakes include treating `HdSceneDelegate` as a USD authoring API, bypassing dirty bits, assuming every delegate path is an authored USD prim path, returning unstable transient data, and confusing the delegate with imaging adapters, scene-index adapters, or renderer backends.</p>
       <h3>术语对照 / Terms</h3>
       <ul>
         <li><span class="zh">Hydra 场景委托：</span><span class="en">HdSceneDelegate</span></li>
         <li><span class="zh">客户端场景图：</span><span class="en">client scene graph</span></li>
-        <li><span class="zh">Hydra 渲染索引：</span><span class="en">HdRenderIndex</span></li>
-        <li><span class="zh">脏标记位：</span><span class="en">dirty bits</span></li>
-        <li><span class="zh">primvar 描述符：</span><span class="en">primvar descriptors</span></li>
-        <li><span class="zh">场景索引管线：</span><span class="en">scene index pipeline</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-141">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`HdSceneDelegate` 是 Hydra render index 与 client scene graph 之间的数据交换 adapter。它通过大量 `Get*` 方法按需提供 topology、primvars、instancing、camera、material、display style、categories、coordSys bindings 和 ext computation 信息。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdSceneDelegate while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`Get()` 是通用 value 查询入口，返回 `VtValue`；具体语义由 key/token 和 prim path 决定，调用方通常需要知道请求的数据源约定。</span></li>
-        <li><span class="zh">`GetBasisCurvesTopology()`、`GetIndexedPrimvar()`、`GetExtent()` 与相关 topology/primvar 方法把客户端几何数据翻译给 Hydra，用于 render index 同步。</span></li>
-        <li><span class="zh">`GetInstancerId()`、`GetInstancerPrototypes()`、`GetInstanceIndices()` 与 instance category 方法负责 instancing 数据交换，调试实例化时要同时核对 prototype 与 indices。</span></li>
-        <li><span class="zh">`GetCameraParamValue()`、`GetDisplayStyle()`、`GetCullStyle()`、`GetDoubleSided()` 等方法提供渲染状态或可视化属性，不应与 renderer backend 的 GPU state 混淆。</span></li>
-        <li><span class="zh">`GetExtComputation*()` 系列说明 scene delegate 也承担 ext computation 输入、输出、kernel 和 primvar descriptor 的传递职责，是计算数据进入 Hydra 的一条路径。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">场景代理：</span><span class="en">HdSceneDelegate</span></li>
-        <li><span class="zh">客户端场景图：</span><span class="en">client scene graph</span></li>
         <li><span class="zh">渲染索引：</span><span class="en">HdRenderIndex</span></li>
-        <li><span class="zh">拓扑查询：</span><span class="en">topology query</span></li>
-        <li><span class="zh">实例化数据：</span><span class="en">instancing data</span></li>
-        <li><span class="zh">外部计算：</span><span class="en">ext computation</span></li>
+        <li><span class="zh">render primitive：</span><span class="en">HdRprim</span></li>
+        <li><span class="zh">state primitive：</span><span class="en">HdSprim</span></li>
+        <li><span class="zh">buffer primitive：</span><span class="en">HdBprim</span></li>
+        <li><span class="zh">脏标记位：</span><span class="en">dirty bits</span></li>
+        <li><span class="zh">场景索引与数据源：</span><span class="en">scene index and data source</span></li>
+        <li><span class="zh">时间采样数组：</span><span class="en">HdTimeSampleArray</span></li>
       </ul>
     </section>
     <section>
