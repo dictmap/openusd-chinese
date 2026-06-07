@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-07T08:25:51.876Z
+Generated: 2026-06-07T08:39:53.617Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 351
-- bilingual_complete: 55
+- bilingual_draft: 350
+- bilingual_complete: 56
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 340
-- good_bilingual: 55
+- draft_needs_translation: 339
+- good_bilingual: 56
 
 ## Current Focus Batch
 
@@ -93,7 +93,7 @@ Generated: 2026-06-07T08:25:51.876Z
 | 27 | good_bilingual | bilingual_complete | 790 | 31/33 | 0 | 0 | `full_site/api/class_pcp_arc.html` |
 | 28 | good_bilingual | bilingual_complete | 825 | 35/37 | 0 | 0 | `full_site/api/class_pcp_error_unresolved_prim_path.html` |
 | 29 | good_bilingual | bilingual_complete | 904 | 34/36 | 0 | 0 | `full_site/api/class_pcp_property_index.html` |
-| 30 | draft_needs_translation | bilingual_draft | 755 | 64/51 | 0 | 0 | `full_site/api/class_sdf_children_view.html` |
+| 30 | good_bilingual | bilingual_complete | 1462 | 58/60 | 0 | 0 | `full_site/api/class_sdf_children_view.html` |
 | 31 | good_bilingual | bilingual_complete | 1202 | 70/57 | 0 | 0 | `full_site/api/class_sdf_layer.html` |
 | 32 | good_bilingual | bilingual_complete | 883 | 48/50 | 0 | 0 | `full_site/api/class_sdf_path.html` |
 | 33 | good_bilingual | bilingual_complete | 1209 | 84/71 | 0 | 0 | `full_site/api/class_sdf_prim_spec.html` |

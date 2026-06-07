@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T08:25:51.876Z",
+  "generated_at": "2026-06-07T08:39:53.617Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 351,
-    "bilingual_complete": 55
+    "bilingual_draft": 350,
+    "bilingual_complete": 56
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 340,
-    "good_bilingual": 55
+    "draft_needs_translation": 339,
+    "good_bilingual": 56
   },
   "focus_batch": [
     {
@@ -1760,29 +1760,29 @@
     },
     {
       "index": 30,
-      "title": "类参考草稿：SdfChildrenView< _ChildPolicy, _Predicate, _Adapter > Class Template / SdfChildrenView< _ChildPolicy, _Predicate, _Adapter > Class Template",
+      "title": "完整双语参考：SdfChildrenView< _ChildPolicy, _Predicate, _Adapter > Class Template / SdfChildrenView< _ChildPolicy, _Predicate, _Adapter > Class Template",
       "output": "full_site/api/class_sdf_children_view.html",
       "official_url": "https://openusd.org/release/api/class_sdf_children_view.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 64,
-      "enBlockCount": 51,
-      "zhChars": 755,
-      "enLetters": 2027,
-      "bodyChineseChars": 830,
+      "grade": "good_bilingual",
+      "zhBlockCount": 58,
+      "enBlockCount": 60,
+      "zhChars": 1462,
+      "enLetters": 3244,
+      "bodyChineseChars": 1526,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 SdfChildrenView< _ChildPolicy, _Predicate, _Adapter > Class Template Reference 补充中文优先的类职责、读取重点、相关 API 关系和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`SdfChildrenView` 是一个 template view，用于以统一的容器视图形式访问某个对象的 children。"
+        "本页已按完整双语参考页整理：中文优先解释 `SdfChildrenView< _ChildPolicy, _Predicate, _Adapter >` 在 Sdf 层提供的 children 视图抽象、模板参数边界、STL-style 访问接口、生命周期注意事项和常见误读，同时保留英文 API 名称、模板参数、typedef、方法名、代码片段、链接和必要英文原文，便于同官方 Doxygen 页面核对。",
+        "官方定义说 `SdfChildrenView< _ChildPolicy, _Predicate, _Adapter >` “Provides a view onto an object's children”。这里的关键词是 view：它让调用方以统一的 STL-style container interface 观察 Sdf 对象的 children，但不表示这个对象拥有 children，也不表示它负责 author、删除或组合这些 child specs。实际 authoring 仍发生在 `SdfLayer`、`SdfPrimSpec`、`SdfPropertySpec` 等底层对象上；`SdfChildrenView` 只是为读取和遍历提供稳定的 C++ 视图。",
+        "三个模板参数构成了本类的核心边界。`_ChildPolicy` 决定从 owner 中怎样取得 children、底层 child storage 是什么，以及 `ValueType`、key、iterator 等类型如何定义；`_Predicate` 决定哪些 child 在这个 view 中可见；`_Adapter` 决定底层 child 值如何转换为调用者看到的 `value_type`。保留 `_ChildPolicy`、`_Predicate`、`_Adapter` 原名很重要，因为它们不是普通中文名词，而是 C++ template contract 的一部分。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, reading guidance, related API context, and terminology for SdfChildrenView< _ChildPolicy, _Predicate, _Adapter > Class Template Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page is promoted as complete bilingual reference coverage for SdfChildrenView< _ChildPolicy, _Predicate, _Adapter > while retaining original API identifiers, template parameters, typedef names, method names, code fragments, links, and necessary English source excerpts for comparison with the official Doxygen page.",
+        "The official definition says SdfChildrenView provides a view onto an object's children. In this bilingual edition, view means a C++ container-like observation layer over Sdf children, not an owning authoring container."
       ]
     },
     {

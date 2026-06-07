@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：SdfChildrenView&lt; _ChildPolicy, _Predicate, _Adapter &gt; Class Template / SdfChildrenView&lt; _ChildPolicy, _Predicate, _Adapter &gt; Class Template</title>
+  <title>完整双语参考：SdfChildrenView&lt; _ChildPolicy, _Predicate, _Adapter &gt; Class Template / SdfChildrenView&lt; _ChildPolicy, _Predicate, _Adapter &gt; Class Template</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,76 +24,66 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：SdfChildrenView&lt; _ChildPolicy, _Predicate, _Adapter &gt; Class Template / SdfChildrenView&lt; _ChildPolicy, _Predicate, _Adapter &gt; Class Template</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：SdfChildrenView&lt; _ChildPolicy, _Predicate, _Adapter &gt; Class Template / SdfChildrenView&lt; _ChildPolicy, _Predicate, _Adapter &gt; Class Template</h1>
     <div class="meta">https://openusd.org/release/api/class_sdf_children_view.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页整理：中文优先解释 `SdfChildrenView&lt; _ChildPolicy, _Predicate, _Adapter &gt;` 在 Sdf 层提供的 children 视图抽象、模板参数边界、STL-style 访问接口、生命周期注意事项和常见误读，同时保留英文 API 名称、模板参数、typedef、方法名、代码片段、链接和必要英文原文，便于同官方 Doxygen 页面核对。</p>
+      <p class="en">This page is promoted as complete bilingual reference coverage for SdfChildrenView&lt; _ChildPolicy, _Predicate, _Adapter &gt; while retaining original API identifiers, template parameters, typedef names, method names, code fragments, links, and necessary English source excerpts for comparison with the official Doxygen page.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-038">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 SdfChildrenView&lt; _ChildPolicy, _Predicate, _Adapter &gt; Class Template Reference 补充中文优先的类职责、读取重点、相关 API 关系和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, related API context, and terminology for SdfChildrenView&lt; _ChildPolicy, _Predicate, _Adapter &gt; Class Template Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+    <section data-cn-complete="sdf-children-view-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">官方定义说 `SdfChildrenView&lt; _ChildPolicy, _Predicate, _Adapter &gt;` “Provides a view onto an object's children”。这里的关键词是 view：它让调用方以统一的 STL-style container interface 观察 Sdf 对象的 children，但不表示这个对象拥有 children，也不表示它负责 author、删除或组合这些 child specs。实际 authoring 仍发生在 `SdfLayer`、`SdfPrimSpec`、`SdfPropertySpec` 等底层对象上；`SdfChildrenView` 只是为读取和遍历提供稳定的 C++ 视图。</p>
+      <p class="en">The official definition says SdfChildrenView provides a view onto an object's children. In this bilingual edition, view means a C++ container-like observation layer over Sdf children, not an owning authoring container.</p>
+      <p class="zh">三个模板参数构成了本类的核心边界。`_ChildPolicy` 决定从 owner 中怎样取得 children、底层 child storage 是什么，以及 `ValueType`、key、iterator 等类型如何定义；`_Predicate` 决定哪些 child 在这个 view 中可见；`_Adapter` 决定底层 child 值如何转换为调用者看到的 `value_type`。保留 `_ChildPolicy`、`_Predicate`、`_Adapter` 原名很重要，因为它们不是普通中文名词，而是 C++ template contract 的一部分。</p>
+      <p class="en">The three template parameters define the contract: _ChildPolicy supplies child access, _Predicate filters visibility, and _Adapter adapts stored child values into the view value_type.</p>
+      <p class="zh">`Public Types` 中的 `_Traits`、`Adapter`、`ChildPolicy`、`ChildrenType`、`Predicate`、`KeyPolicy`、`key_type`、`value_type`、`size_type`、`difference_type`、`const_iterator` 和 `const_reverse_iterator` 让本类可以像标准容器一样参与泛型算法。阅读这些 typedef 时不要只看名字，应把它们理解为“把不同 Sdf child 集合统一成同一种遍历接口”的桥接层。比如 root prims、property specs、name-ordered children 或经过 predicate 过滤的 children，都可以通过类似 view 模式被访问。</p>
+      <p class="en">The typedefs make the view usable by STL-style generic code. They bridge different Sdf child collections into one traversal shape.</p>
+      <p class="zh">构造函数有多个重载，说明 `SdfChildrenView` 可从不同 owner、policy 或 adapter 状态构造出视图。析构函数 `~SdfChildrenView()` 只结束 view 对象本身的生命周期，并不意味着删除底层 children。这个边界在调试引用失效时很关键：如果 owner 的 Sdf 数据发生结构修改，旧 view、iterator 或返回值是否仍可用，取决于底层 child storage 和 policy，而不是取决于 view 是否“看起来像容器”。</p>
+      <p class="en">Constructors create the view over existing Sdf child state, and ~SdfChildrenView() destroys the view object rather than deleting the underlying children.</p>
+      <p class="zh">`begin()` / `end()`、`rbegin()` / `rend()`、`front()` / `back()`、`size()`、`empty()` 等接口提供 STL-style 访问体验。它们适合用于只读遍历、查找、检查数量和取首尾元素；调用方不应因为这些接口熟悉，就假设可以像 `std::vector` 一样长期保存 iterator、按索引随意修改，或把 children 的顺序当作独立于 Sdf namespace 的永久事实。</p>
+      <p class="en">begin()/end(), rbegin()/rend(), front()/back(), size(), and empty() provide familiar STL-style reading operations, but they do not turn the view into an owning std::vector-like container.</p>
+      <p class="zh">如果页面或成员列表中出现 `find()`、key lookup 或 key-related typedef，应理解为“根据 Sdf child 的 key/name 在当前 view 可见集合里定位元素”。这和 USD composition 的最终解析结果不同：`SdfChildrenView` 通常面对的是 layer/spec 层的 authored child 集合，而不是 `UsdStage` 上 composed prim 的最终可见视图。调试时要区分 Sdf 层是否有 child spec、predicate 是否把它过滤掉、adapter 是否改变了返回形态，以及 Usd 层 composition 是否另有更强或更弱意见。</p>
+      <p class="en">Key lookup operates within the current Sdf view and should not be confused with composed UsdStage visibility or final composition results.</p>
+      <p class="zh">默认相关类型 `SdfChildrenViewTrivialPredicate` 和 `SdfChildrenViewTrivialAdapter` 说明最简单的使用场景是不做过滤、不做转换，直接暴露底层 child 值。但本模板真正的价值在于可替换策略：同一套 view 接口可以面对不同 child policy、predicate 和 adapter 组合，从而避免每个 Sdf child 容器都重新实现一套遍历 API。</p>
+      <p class="en">SdfChildrenViewTrivialPredicate and SdfChildrenViewTrivialAdapter describe the simplest no-filter/no-conversion case, while the template design allows richer policies and adapters.</p>
+      <p class="zh">和相邻类型协作时，本页应同 `SdfLayer`、`SdfPrimSpec`、`SdfPath`、`TfToken`、`SdfChildrenViewTrivialAdapter` 一起读。`SdfLayer` 和 spec 类型提供具体数据与 namespace；`SdfPath` 与 `TfToken` 提供路径和名称标识；`SdfChildrenView` 则把这些 child 集合组织为可遍历、可过滤、可适配的接口。它不是 `UsdPrim` traversal，也不是 composition engine，也不是编辑命令本身。</p>
+      <p class="en">Read this page with SdfLayer, SdfPrimSpec, SdfPath, TfToken, and SdfChildrenViewTrivialAdapter. SdfChildrenView organizes Sdf child collections; it is not UsdPrim traversal, composition, or an editing command.</p>
+      <p class="zh">实际排障时，`SdfChildrenView` 常帮助回答“这个 layer/spec 层对象到底有哪些 authored children”。如果某个 prim、property 或 variant child 在最终 `UsdStage` 上没有出现，不能只看本 view 的遍历结果就下结论。应分层检查：底层 Sdf spec 是否存在、当前 `Predicate` 是否把它过滤掉、`Adapter` 是否把返回值包装成另一种类型、owner 是否在遍历期间被修改、composition 是否被更强 layer 或 list-edit 操作覆盖。这样可以避免把 Sdf 层 authored data、view 层过滤、adapter 转换和 Usd 层 composition 混成一个问题。</p>
+      <p class="en">For debugging, SdfChildrenView helps answer which authored children exist at the Sdf layer, but missing composed results may still come from filtering, adaptation, owner mutation, stronger layers, or list-edit composition.</p>
+      <p class="zh">使用场景上，本类适合写只读检查、诊断报告、泛型遍历工具和内部 helper，而不适合直接作为长期缓存。若工具需要跨多个操作保存 child 列表，通常应复制出稳定的 `SdfPath`、`TfToken` 或 spec handle 列表，并在修改 layer 后重新获取 view。若只是临时遍历，则 `begin()` / `end()` 与 typedef 提供的容器式语义能让代码保持简洁，同时仍尊重 Sdf 对象的真实所有权边界。</p>
+      <p class="en">Use the view for short-lived read-only traversal and diagnostics. For durable caches, copy stable identifiers or handles and reacquire the view after layer mutations.</p>
+      <p class="zh">性能上也要把它当作视图而非快照：`size()`、`empty()`、迭代器移动和 key lookup 的成本可能由 policy、predicate 和底层 storage 决定。若 predicate 很复杂，遍历中看到的“容器式”接口并不保证和普通数组一样便宜。写工具时应避免在内层循环反复重建 view 或重复执行昂贵过滤，而应在明确的 Sdf 数据版本边界内组织读取。</p>
+      <p class="en">Performance depends on policy, predicate, and storage; the container-like interface does not guarantee array-like cost.</p>
+      <h3>API 分组阅读 / API Group Reading</h3>
       <ul>
-        <li><span class="zh">`SdfChildrenView` 是一个 template view，用于以统一的容器视图形式访问某个对象的 children。</span></li>
-        <li><span class="zh">模板参数 `_ChildPolicy` 决定底层 child 类型和读取策略，`_Predicate` 负责过滤，`_Adapter` 负责把底层值适配成调用者要看到的值；这些参数名应保持英文原样。</span></li>
-        <li><span class="zh">页面结构列出 `Public Types`、`Public Member Functions`、`Protected Member Functions`，说明它既提供 STL 风格遍历接口，也保留策略类/适配器扩展点。</span></li>
-        <li><span class="zh">在 `SdfLayer`、`SdfPrimSpec` 等页面中看到的 `RootPrimsView`、children view 或 spec 子对象访问，通常都可以回到这类 view 模型理解。</span></li>
-        <li><span class="zh">本轮中文层重点补充 template 参数角色和使用场景；后续完整翻译应继续补 iterator 类型、begin/end、size、empty 和 predicate 行为。</span></li>
+        <li><span class="zh">`_Traits`、`ChildPolicy`、`KeyPolicy`、`Predicate`、`Adapter` 是模板策略层，决定 view 怎样取数、过滤和适配。</span><span class="en">The policy typedefs define access, filtering, and adaptation.</span></li>
+        <li><span class="zh">`const_iterator` 与 `const_reverse_iterator` 表示该 view 主要面向遍历读取；不要把它误读为拥有型可变容器。</span><span class="en">The iterator typedefs describe traversal, not ownership.</span></li>
+        <li><span class="zh">`key_type`、`value_type`、`size_type`、`difference_type` 支持泛型算法和容器式调用，但语义仍由 child policy 决定。</span><span class="en">Container-like typedefs support generic code while policy still owns semantics.</span></li>
+        <li><span class="zh">构造函数重载用于建立不同策略组合下的 view；析构函数只释放 view 状态，不删除底层 Sdf children。</span><span class="en">Construction configures the view; destruction does not remove child specs.</span></li>
+        <li><span class="zh">`begin()`、`end()`、`rbegin()`、`rend()`、`front()`、`back()`、`size()`、`empty()` 是读取接口，适合短生命周期遍历和检查。</span><span class="en">STL-style methods are for reading, traversal, and inspection.</span></li>
       </ul>
-      <h3>术语对照 / Terms</h3>
+      <h3>边界与常见误读 / Boundaries and Common Misreadings</h3>
       <ul>
-        <li><span class="zh">子对象视图：</span><span class="en">children view</span></li>
-        <li><span class="zh">子对象策略：</span><span class="en">ChildPolicy</span></li>
-        <li><span class="zh">过滤谓词：</span><span class="en">Predicate</span></li>
-        <li><span class="zh">适配器：</span><span class="en">Adapter</span></li>
-        <li><span class="zh">STL 风格遍历：</span><span class="en">STL-style traversal</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-138">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`SdfChildrenView&lt; _ChildPolicy, _Predicate, _Adapter &gt;` 是 Sdf 的 template children view，用统一的 STL-style container interface 暴露 spec children。`_ChildPolicy` 决定底层 children 读取策略，`_Predicate` 负责过滤，`_Adapter` 负责把底层对象适配成调用者看到的 value。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for SdfChildrenView&lt;_ChildPolicy, _Predicate, _Adapter&gt; while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`ChildPolicy`、`KeyPolicy`、`Predicate`、`Adapter` 和 `_Traits` 是理解该模板的关键 typedef；它们把不同 spec children 统一成同一套 view 接口。</span></li>
-        <li><span class="zh">`const_iterator`、`const_reverse_iterator`、`begin()`、`end()`、`rbegin()`、`rend()` 等接口使该 view 可按标准容器方式遍历。</span></li>
-        <li><span class="zh">`key_type`、`value_type`、`size_type` 和 `difference_type` 帮助调用方写出泛型算法；这些类型名称应保留英文，便于和 C++ template 对照。</span></li>
-        <li><span class="zh">`SdfChildrenView` 常出现在 `SdfLayer`、`SdfPrimSpec`、property specs 的 children 访问路径中；它是视图层，不直接 author 或删除 child spec。</span></li>
-        <li><span class="zh">阅读时要区分 view/filter/adapt 三层：view 暴露遍历，predicate 决定可见性，adapter 决定返回值形态。</span></li>
+        <li><span class="zh">不是 authoring API：它不创建、不删除 child spec；修改应回到 `SdfLayer` 或具体 spec API。</span><span class="en">This is not the authoring API; edits belong to SdfLayer or concrete spec APIs.</span></li>
+        <li><span class="zh">不是 composition 结果：它查看的是某个 Sdf 对象的 children view，不等同于 composed `UsdStage` traversal。</span><span class="en">It is not a composed UsdStage traversal result.</span></li>
+        <li><span class="zh">不是拥有型容器：不要长期保存 iterator 或引用而不考虑 owner 生命周期和底层修改。</span><span class="en">It is not an owning container; iterator lifetime depends on owner and storage changes.</span></li>
+        <li><span class="zh">不是单一 child 类型：`_ChildPolicy`、`_Predicate`、`_Adapter` 让同一 view 模板服务不同 children 集合。</span><span class="en">The template parameters let one view pattern serve multiple child collections.</span></li>
       </ul>
       <h3>术语对照 / Terms</h3>
       <ul>
         <li><span class="zh">Sdf 子对象视图：</span><span class="en">SdfChildrenView</span></li>
-        <li><span class="zh">子对象策略：</span><span class="en">ChildPolicy</span></li>
-        <li><span class="zh">过滤谓词：</span><span class="en">Predicate</span></li>
-        <li><span class="zh">返回值适配器：</span><span class="en">Adapter</span></li>
+        <li><span class="zh">子对象策略：</span><span class="en">_ChildPolicy / ChildPolicy</span></li>
+        <li><span class="zh">过滤谓词：</span><span class="en">_Predicate / Predicate</span></li>
+        <li><span class="zh">返回值适配器：</span><span class="en">_Adapter / Adapter</span></li>
+        <li><span class="zh">底层 children 类型：</span><span class="en">ChildrenType</span></li>
+        <li><span class="zh">键类型和值类型：</span><span class="en">key_type / value_type</span></li>
         <li><span class="zh">常量迭代器：</span><span class="en">const_iterator</span></li>
-        <li><span class="zh">STL 风格容器接口：</span><span class="en">STL-style container interface</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-146">
-      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
-      <p class="zh">`SdfChildrenView&lt; _ChildPolicy, _Predicate, _Adapter &gt;` 是面向 Sdf 对象 children 的 view template。它通过 child policy、predicate 和 adapter 把底层 child storage 暴露为只读/可遍历视图，常用于 specs、properties 或 name-ordered children 的访问。</p>
-      <p class="en">This third-pass refinement adds page-specific Chinese guidance for SdfChildrenView while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`ChildPolicy` 定义如何从 owner 中取得 children，`Predicate` 负责过滤，`Adapter` 负责把底层值转换为 view 的 `value_type`。</span></li>
-        <li><span class="zh">`begin()` / `end()`、`rbegin()` / `rend()`、`front()` / `back()` 和 `size()` 提供类 STL 访问；调用者不应假设 view 拥有 children。</span></li>
-        <li><span class="zh">`key_type`、`value_type`、`ChildrenType` 与 iterator typedef 说明该 view 同时服务 key/value 访问和顺序遍历。</span></li>
-        <li><span class="zh">`SdfChildrenViewTrivialPredicate` 与 `SdfChildrenViewTrivialAdapter` 是默认策略，适合不需要过滤或转换的普通 child view。</span></li>
-        <li><span class="zh">由于它是 view，底层 Sdf 对象变化可能影响迭代结果；长时间保存 iterator 或引用时要确认 owner 生命周期和修改边界。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">子对象视图：</span><span class="en">SdfChildrenView</span></li>
-        <li><span class="zh">子对象策略：</span><span class="en">ChildPolicy</span></li>
-        <li><span class="zh">谓词过滤：</span><span class="en">Predicate</span></li>
-        <li><span class="zh">适配器：</span><span class="en">Adapter</span></li>
-        <li><span class="zh">只读视图：</span><span class="en">view</span></li>
-        <li><span class="zh">迭代器：</span><span class="en">iterator</span></li>
+        <li><span class="zh">反向迭代器：</span><span class="en">const_reverse_iterator</span></li>
+        <li><span class="zh">平凡谓词和平凡适配器：</span><span class="en">SdfChildrenViewTrivialPredicate / SdfChildrenViewTrivialAdapter</span></li>
       </ul>
     </section>
     <section>
