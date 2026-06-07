@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-07T00:45:09.743Z
+Generated: 2026-06-07T00:58:06.012Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 380
-- bilingual_complete: 26
+- bilingual_draft: 379
+- bilingual_complete: 27
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 369
-- good_bilingual: 26
+- draft_needs_translation: 368
+- good_bilingual: 27
 
 ## Current Focus Batch
 
@@ -102,7 +102,7 @@ Generated: 2026-06-07T00:45:09.743Z
 | 36 | draft_needs_translation | bilingual_draft | 792 | 64/51 | 0 | 0 | `full_site/api/class_tf_dense_hash_map.html` |
 | 37 | draft_needs_translation | bilingual_draft | 589 | 39/31 | 0 | 0 | `full_site/api/class_tf_py_lock.html` |
 | 38 | good_bilingual | bilingual_complete | 980 | 47/49 | 0 | 0 | `full_site/api/class_tf_token.html` |
-| 39 | draft_needs_translation | bilingual_draft | 553 | 42/34 | 0 | 0 | `full_site/api/class_trace_event_data.html` |
+| 39 | good_bilingual | bilingual_complete | 531 | 34/36 | 0 | 0 | `full_site/api/class_trace_event_data.html` |
 | 40 | good_bilingual | bilingual_complete | 1057 | 48/50 | 0 | 0 | `full_site/api/class_usd_attribute_limits.html` |
 | 41 | good_bilingual | bilingual_complete | 1029 | 50/52 | 0 | 0 | `full_site/api/class_usd_geom_basis_curves.html` |
 | 42 | good_bilingual | bilingual_complete | 848 | 49/51 | 0 | 0 | `full_site/api/class_usd_geom_mesh.html` |

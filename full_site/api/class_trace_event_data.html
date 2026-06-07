@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：TraceEventData Class / TraceEventData Class</title>
+  <title>完整双语参考：TraceEventData Class / TraceEventData Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,53 +24,38 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：TraceEventData Class / TraceEventData Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：TraceEventData Class / TraceEventData Class</h1>
     <div class="meta">https://openusd.org/release/api/class_trace_event_data.html</div>
   </header>
   <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-043">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 TraceEventData Class Reference 补充中文优先的类职责、读取重点、关键类型/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, key type/method groups, and terminology for TraceEventData Class Reference while retaining English page names, class names, method names, attribute names, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+    <section data-cn-complete="trace-event-data-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`TraceEventData` 是 Trace 子系统中随 `TraceEvent` 保存的 payload 值容器。官方说明说它 “holds data that can be stored in TraceEvents”，这里的 data 不是事件本身，也不是 profiler 的时间戳、线程 id、调用栈或事件范围；它只是附加到某个 trace event 上、用于报告和分析的一个值。</p>
+      <p class="en">`TraceEventData` holds payload values that can be attached to `TraceEvent` records. It does not represent the event timing, thread, stack, or scope itself.</p>
+      <p class="zh">页面列出 6 个 `TraceEventData()` 构造函数重载，反映这个容器可以从 bool、int、uint、float、string 等不同类型构造。构造时选择的类型会决定后续 `TraceEvent::DataType`，也决定调用方应该使用哪个 getter。把它理解成“typed tagged value” 比把它理解成无类型字符串更准确。</p>
+      <p class="en">The constructor overloads create typed payload values. The selected type determines both `TraceEvent::DataType` and the correct accessor.</p>
+      <p class="zh">`GetType()` 是读取该对象前最重要的分派入口。调用方应先查看 `TraceEvent::DataType`，再选择 `GetBool()`、`GetInt()`、`GetUInt()`、`GetFloat()` 或 `GetString()`。这些 typed getters 不是自动转换接口；在未知或不匹配的类型上读取会造成错误解释，尤其是在把 trace 数据转换成 JSON、UI 表格或统计项时。</p>
+      <p class="en">Use `GetType()` to dispatch to the matching typed getter. The getters should not be treated as implicit conversion helpers.</p>
+      <p class="zh">`WriteJson()` 把当前 payload 写入 `JsWriter`，因此它位于 trace collection 与 trace report 之间的序列化边界。它不决定事件是否被采集，也不决定 event duration；它只影响该 payload 在 JSON 输出中的类型和值表达。调试 profiling report 字段缺失或类型不对时，应同时检查 payload 构造来源、`GetType()` 分派和 `WriteJson()` 输出。</p>
+      <p class="en">`WriteJson()` serializes the stored payload through `JsWriter`; it affects report representation, not trace collection or event duration.</p>
+      <p class="zh">`TraceEventData` 与 `TraceEvent::DataType` 的关系类似“值”和“标签”。前者保存具体值，后者描述该值的类型类别。保留 `TraceEventData`、`TraceEvent::DataType`、`GetBool()`、`GetInt()`、`GetUInt()`、`GetFloat()`、`GetString()`、`WriteJson()`、`JsWriter` 等英文标识，可以直接对应源码和官方 Doxygen 页面。</p>
+      <p class="en">`TraceEventData` stores the value, while `TraceEvent::DataType` labels the value category used for typed access and serialization.</p>
+      <p class="zh">常见误读包括：把 `TraceEventData` 当作完整 `TraceEvent`；把 string 构造当成所有 payload 的统一存储格式；不看 `GetType()` 就调用 getter；把 `WriteJson()` 当成开始或结束 trace 的 API；或者认为它保存线程、时间、scope nesting 等上下文。正确做法是把它放在 Trace event 的 payload 层阅读，再到 `TraceEvent` 或 Trace collector 相关页面查看事件上下文。</p>
+      <p class="en">Common mistakes come from treating this payload container as the whole event or using accessors without checking the data type first.</p>
+      <h3>关键 API 分组 / Key API Groups</h3>
       <ul>
-        <li><span class="zh">`TraceEventData` 保存可写入 `TraceEvent` 的数据，是 Trace 子系统记录事件 payload 时使用的轻量值容器。</span></li>
-        <li><span class="zh">英文摘录说明该类 holds data that can be stored in TraceEvents；构造函数重载较多，表示它可接收 bool、int、uint、float、string 等多种数据类型。</span></li>
-        <li><span class="zh">`GetBool()`、`GetInt()`、`GetUInt()`、`GetFloat()`、`GetString()` 和 `GetType()` 是读取 payload 值和类型的主要接口。</span></li>
-        <li><span class="zh">`WriteJson()` 用于把事件数据序列化到 `JsWriter`，因此它直接关系到 trace report 或 profiling 输出中的可读字段。</span></li>
-        <li><span class="zh">阅读本页时应把 `TraceEventData` 与 `TraceEvent::DataType` 一起看：前者保存值，后者描述值类型，调用方需要按类型读取对应 getter。</span></li>
+        <li><span class="zh">构造来源：</span><span class="en">`TraceEventData()` overloads for bool, int, unsigned int, float, and string-like payloads</span></li>
+        <li><span class="zh">类型分派：</span><span class="en">`GetType()`, `TraceEvent::DataType`</span></li>
+        <li><span class="zh">类型化读取：</span><span class="en">`GetBool()`, `GetInt()`, `GetUInt()`, `GetFloat()`, `GetString()`</span></li>
+        <li><span class="zh">报告序列化：</span><span class="en">`WriteJson()`, `JsWriter`</span></li>
       </ul>
       <h3>术语对照 / Terms</h3>
       <ul>
-        <li><span class="zh">TraceEventData：</span><span class="en">TraceEventData</span></li>
-        <li><span class="zh">TraceEvent：</span><span class="en">TraceEvent</span></li>
-        <li><span class="zh">载荷：</span><span class="en">payload</span></li>
-        <li><span class="zh">DataType：</span><span class="en">DataType</span></li>
-        <li><span class="zh">WriteJson：</span><span class="en">WriteJson</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-139">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`TraceEventData` 是 Trace 子系统用于保存 `TraceEvent` payload 的轻量值容器。它通过多个构造函数接收 bool、int、uint、float、string 等数据，并通过 `TraceEvent::DataType` 描述当前保存的值类型。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for TraceEventData while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">构造函数 `[1/6]` 到 `[6/6]` 对应不同 payload 类型；阅读时应先看构造来源，再按 `GetType()` 选择匹配的 getter。</span></li>
-        <li><span class="zh">`GetBool()`、`GetInt()`、`GetUInt()`、`GetFloat()` 与 `GetString()` 是类型化读取入口；不要在未知 `DataType` 下随意调用不匹配的 getter。</span></li>
-        <li><span class="zh">`GetType()` 是 trace 序列化和展示层的分派依据，调用方通常据此决定如何解释 payload 与如何写入报告。</span></li>
-        <li><span class="zh">`WriteJson()` 把事件数据写入 `JsWriter`，因此它影响 profiling/trace report 中的字段可读性和 JSON 表达方式。</span></li>
-        <li><span class="zh">该类只保存事件附带的数据，不代表事件时间、线程、调用栈或范围本身；这些上下文应到 `TraceEvent` 或 Trace collector 相关页面继续查。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">事件数据：</span><span class="en">TraceEventData</span></li>
         <li><span class="zh">事件载荷：</span><span class="en">event payload</span></li>
+        <li><span class="zh">带类型的值：</span><span class="en">typed tagged value</span></li>
         <li><span class="zh">事件数据类型：</span><span class="en">TraceEvent::DataType</span></li>
-        <li><span class="zh">类型化读取：</span><span class="en">typed getter</span></li>
+        <li><span class="zh">类型化读取器：</span><span class="en">typed getter</span></li>
         <li><span class="zh">JSON 写出：</span><span class="en">WriteJson()</span></li>
         <li><span class="zh">跟踪报告：</span><span class="en">trace report</span></li>
       </ul>
