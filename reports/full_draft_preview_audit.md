@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-07T03:57:58.886Z
+Generated: 2026-06-07T04:22:11.193Z
 
-Transient base URL: `http://127.0.0.1:54179/`
+Transient base URL: `http://127.0.0.1:61247/`
 
 Result:
 
 - Passed: true
-- Draft pages: 369
-- Pages checked: 369
-- Passed pages: 369
+- Draft pages: 368
+- Pages checked: 368
+- Passed pages: 368
 - Failed pages: 0
-- Final HTML links: 369
-- Local assets checked: 369
+- Final HTML links: 368
+- Local assets checked: 368
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -32,7 +32,6 @@ Result:
 | true | full_site/api/class_gf_vec2i.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_glf_draw_target.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_hd_instance_registry.html | 200 | true | 0 | 0 |
-| true | full_site/api/class_hd_st_dispatch_buffer.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_hdx_pick_from_render_buffer_task.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_hgi_g_l_graphics_cmds.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_sdf_children_view.html | 200 | true | 0 | 0 |

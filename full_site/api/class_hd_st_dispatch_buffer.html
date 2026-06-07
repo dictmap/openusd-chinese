@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：HdStDispatchBuffer Class / HdStDispatchBuffer Class</title>
+  <title>完整双语参考：HdStDispatchBuffer Class Reference / HdStDispatchBuffer Class Reference</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,75 +24,53 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：HdStDispatchBuffer Class / HdStDispatchBuffer Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：HdStDispatchBuffer Class Reference / HdStDispatchBuffer Class Reference</h1>
     <div class="meta">https://openusd.org/release/api/class_hd_st_dispatch_buffer.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页处理：中文优先解释 `HdStDispatchBuffer` 作为 Storm / HdSt backend 中 indirect dispatch buffer 的职责、VBO / unsigned integer array 的布局、`BufferResourceView`、`HdBufferArray`、`HdResourceBinder`、`HdStResourceRegistry` 与 GPU resource lifecycle 的边界；英文 API 名称、方法名、类型名、链接和官方英文摘录保持原样，便于与 OpenUSD Doxygen 页面核对。</p>
+      <p class="en">This page is treated as a complete bilingual reference. Chinese explanations come first, while English API names, method names, type names, links, and selected official excerpts are retained for comparison with the OpenUSD Doxygen page.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-036">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 HdStDispatchBuffer Class 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for HdStDispatchBuffer Class while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`HdStDispatchBuffer` 是 Storm/HdSt 中的 GPU dispatch buffer，英文摘录称其为 simple array of unsigned integers 的 VBO。</span></li>
-        <li><span class="zh">该 buffer 用于在 GPU 上准备 indirect dispatch 数据，可被 `MultiDrawIndirect` 或 `DispatchComputeIndirect` 消费；这说明它服务于 draw/compute 的间接调度路径。</span></li>
-        <li><span class="zh">同一 uint array 的 interleaved subsets 会以不同方式绑定，为 shaders 提供额外数据接口；每个绑定会在 uint array 之上定义 `BufferResourceView`。</span></li>
-        <li><span class="zh">`HdBufferArray` 聚合这些 views，`HdResourceBinder` 按指定 binding method 和 interleaved offset 绑定资源；关联类型包括 `HdStResourceRegistry`、`TfToken`、`HdTupleType`、`HdStBufferResource` 和 `HdBufferArray`。</span></li>
-        <li><span class="zh">本页中文层保留 VBO、indirect dispatch、MultiDrawIndirect、DispatchComputeIndirect、BufferResourceView 等 GPU/API 术语；后续完整翻译应补资源创建、绑定和同步方法。</span></li>
-      </ul>
+    <section data-cn-complete="hd-st-dispatch-buffer-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`HdStDispatchBuffer` 是 Storm / HdSt 后端用于 indirect dispatch 的 GPU-side command/data buffer。官方描述说它是 “a VBO of a simple array of unsigned integers”，这句话的重点不是“普通数组”，而是：该数组被组织成 GPU 能直接消费的 unsigned integer command layout，用于 `MultiDrawIndirect` 或 `DispatchComputeIndirect` 这类间接绘制 / 间接计算调度。</p>
+      <p class="en">`HdStDispatchBuffer` is an unsigned-integer VBO used by Storm for indirect dispatch data consumed by `MultiDrawIndirect` or `DispatchComputeIndirect`.</p>
+      <p class="zh">这个类不表示 USD primvar、scene delegate 数据，也不是 `HdRenderBuffer` 那种 AOV / framebuffer 存储。它的职责更靠近 Storm backend 的 draw/compute scheduling：把命令数量、命令 stride、interleaved data 和 resource views 放到 GPU 资源中，让 shader 或 graphics API 可以按预期读取。</p>
+      <p class="en">It is not a USD primvar buffer or an AOV render buffer. Its role is backend scheduling data for draw/compute dispatch.</p>
+      <p class="zh">`AddBufferResourceView()` 是理解本页的核心接口之一。官方说明提到同一 uint array 的 interleaved subsets 会以不同方式绑定；每个绑定都在 uint array 上定义一个 `BufferResourceView`。也就是说，底层存储可以是一段连续 VBO，但 shader 看到的是多个有名称、类型、offset 和 binding method 的资源视图。</p>
+      <p class="en">`AddBufferResourceView()` defines resource views on top of the same unsigned-integer array, so different interleaved subsets can be bound in different ways.</p>
+      <p class="zh">`HdBufferArray` 与 `HdResourceBinder` 描述资源如何被聚合和绑定：`HdBufferArray` 聚合这些 views，`HdResourceBinder` 按指定 binding method 与 interleaved offset 把它们绑定给 shader。相关类型 `TfToken`、`HdTupleType`、`HdStBufferResource` 和 `HdStResourceRegistry` 分别承担命名、数据布局、具体 GPU resource 和资源注册 / 复用职责。</p>
+      <p class="en">`HdBufferArray` aggregates views and `HdResourceBinder` binds them using binding methods and interleaved offsets. Names, tuple layout, concrete resources, and registry ownership are represented by adjacent types.</p>
+      <p class="zh">这也意味着资源名、tuple type 与 binding method 必须同时一致；只检查 buffer 是否存在，不能证明 shader 实际按正确语义读取。</p>
+      <p class="en">Resource names, tuple types, and binding methods must agree; buffer existence alone does not prove correct shader-side interpretation.</p>
+      <p class="zh">这个边界在后端排错时尤其关键。</p>
+      <p class="en">This boundary is especially important during backend debugging.</p>
+      <p class="zh">`GetCommandNumUints()` 与 `GetCount()` 共同解释 indirect command layout。前者说明每条 dispatch/draw command 占用多少个 `uint`，后者说明当前有多少条命令。若 command uint stride 或 count 错误，GPU 可能从错误 offset 读取参数，表现为 draw 数量异常、compute group 数错误、shader 读到错位数据或间歇性后端错误。</p>
+      <p class="en">`GetCommandNumUints()` describes the unsigned-integer stride per command, while `GetCount()` reports the command count.</p>
+      <p class="zh">因为 indirect command 通常由 GPU 后端按固定 binary layout 解释，`HdStDispatchBuffer` 的中文阅读不能只停在“数组”层面。要同时核对每条命令的字段顺序、每字段的 `uint` 数量、各 view 的 offset、shader 端期望的 tuple type，以及 buffer array range 是否覆盖了完整命令区域。任何一个环节不一致，表面症状都可能只是渲染少了对象或 compute 没有发出。</p>
+      <p class="en">Indirect command data is interpreted through a fixed backend layout, so the command fields, uint stride, view offsets, shader-side tuple type, and buffer-array range must agree.</p>
+      <p class="zh">`Reallocate()`、`CopyData()` 和 `GarbageCollect()` 体现 GPU resource lifecycle。`Reallocate()` 处理容量变化，`CopyData()` 把 CPU-side command data 上传或复制到 buffer，`GarbageCollect()` 清理过期资源。它们影响的是 Storm GPU 资源状态，不是 USD authored data；调试时应区分“场景数据是否正确”和“后端 command buffer 是否已经按新数据重建”。</p>
+      <p class="en">`Reallocate()`, `CopyData()`, and `GarbageCollect()` manage GPU-resource lifetime: allocation, data upload/copy, and stale-resource cleanup.</p>
+      <p class="zh">`GetEntireResource()`、`GetResource()`、`GetResources()` 和 `GetBufferArrayRange()` 暴露不同粒度的访问路径。`GetEntireResource()` 面向整段 buffer，`GetResource()` / `GetResources()` 面向某个或多个 resource view，`GetBufferArrayRange()` 则让调用方定位 buffer-array range。它们适合用于排查 shader 读取范围、resource view 是否创建、以及 binder 是否拿到了预期资源。</p>
+      <p class="en">The resource accessors expose the whole buffer, individual resource views, resource lists, and the buffer-array range used by Storm binding code.</p>
+      <p class="zh">受保护的 `_AddResource()` 表明 view/resource 注册有内部维护步骤，外部代码通常不应绕过 public API 直接拼接资源。构造函数与析构函数也应放在 `HdStResourceRegistry` 的所有权语境中理解：dispatch buffer 可以引用或创建 backend resources，但长期管理、共享、回收和失效检测仍要与 registry 及 buffer array range 配合。</p>
+      <p class="en">The protected `_AddResource()` hints that resource registration is internally maintained. Ownership and reuse should be read together with `HdStResourceRegistry` and buffer-array ranges.</p>
+      <p class="zh">`DebugDump()` 是本页很有价值的诊断入口。Storm draw/compute 出现 dispatch 数量不对、indirect command 参数错位、shader 读取 view 为空、或 GPU 后端看起来没有执行命令时，应优先核对 `GetCommandNumUints()`、`GetCount()`、resource view 列表、interleaved offset 与 `DebugDump()` 输出，而不是直接怀疑 USD layer composition。</p>
+      <p class="en">`DebugDump()` is useful when indirect command layout, resource views, interleaved offsets, or command counts need to be inspected.</p>
+      <p class="zh">常见误用包括：把 `HdStDispatchBuffer` 当作普通 vertex attribute / primvar buffer；把 `BufferResourceView` 当成会复制数据的新 buffer；忽略 `uint` command stride 与 count 的一致性；在未重新分配或未复制数据时期待 GPU 看到新命令；把 backend indirect-dispatch 问题误判为 USD authoring 问题。正确边界是：它是 Storm 内部 GPU dispatch resource，VBO、indirect dispatch、`MultiDrawIndirect`、`DispatchComputeIndirect`、`BufferResourceView` 等英文术语必须原样保留。</p>
+      <p class="en">Common mistakes include treating this as an ordinary primvar buffer, assuming resource views copy data, ignoring command stride/count consistency, or confusing backend dispatch issues with USD authoring problems.</p>
       <h3>术语对照 / Terms</h3>
       <ul>
-        <li><span class="zh">VBO：</span><span class="en">VBO</span></li>
-        <li><span class="zh">间接调度：</span><span class="en">indirect dispatch</span></li>
-        <li><span class="zh">无符号整数数组：</span><span class="en">unsigned integer array</span></li>
-        <li><span class="zh">BufferResourceView：</span><span class="en">BufferResourceView</span></li>
-        <li><span class="zh">交错偏移：</span><span class="en">interleaved offset</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-136">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`HdStDispatchBuffer` 是 Storm/HdSt 后端中的 GPU dispatch buffer，底层是 unsigned integers 的 VBO，用于承载 `MultiDrawIndirect` 或 `DispatchComputeIndirect` 等 indirect dispatch 所需的命令数据。它服务于 GPU 间接绘制/计算调度，不是普通 primvar buffer。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdStDispatchBuffer while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`AddBufferResourceView()` 会在同一 uint array 上创建不同的 `BufferResourceView`；这些 view 可按 interleaved offset 暴露给 shader 或 resource binder。</span></li>
-        <li><span class="zh">`GetCommandNumUints()` 和 `GetCount()` 分别描述每条命令占用的 uint 数量和命令条目数，是理解 indirect command layout 的关键。</span></li>
-        <li><span class="zh">`Reallocate()` 与 `CopyData()` 管理 buffer 容量和数据上传；它们影响 GPU resource 生命周期，而不是 scene delegate 的 authored data。</span></li>
-        <li><span class="zh">`GetEntireResource()`、`GetResource()`、`GetResources()` 和 `GetBufferArrayRange()` 体现该类同时面向单个 resource view 和整体 buffer array 访问。</span></li>
-        <li><span class="zh">`GarbageCollect()` 与 `DebugDump()` 分别服务于资源回收和诊断；在 Storm 调试中应结合 `HdStResourceRegistry` 和 `HdResourceBinder` 一起看。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">Storm 调度缓冲：</span><span class="en">HdStDispatchBuffer</span></li>
+        <li><span class="zh">Storm 调度缓冲：</span><span class="en">Storm dispatch buffer</span></li>
         <li><span class="zh">无符号整数 VBO：</span><span class="en">unsigned integer VBO</span></li>
-        <li><span class="zh">间接绘制命令：</span><span class="en">MultiDrawIndirect</span></li>
+        <li><span class="zh">间接绘制：</span><span class="en">MultiDrawIndirect</span></li>
         <li><span class="zh">间接计算调度：</span><span class="en">DispatchComputeIndirect</span></li>
         <li><span class="zh">缓冲资源视图：</span><span class="en">BufferResourceView</span></li>
+        <li><span class="zh">交错偏移：</span><span class="en">interleaved offset</span></li>
         <li><span class="zh">命令布局：</span><span class="en">command layout</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-141">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`HdStDispatchBuffer` 是 Storm backend 中用于 indirect dispatch 的 unsigned integer VBO。它把简单 `uint` array 组织成可供 `MultiDrawIndirect` 或 `DispatchComputeIndirect` 消费的 GPU-side command/data buffer，并通过 `BufferResourceView` 提供多种 shader binding view。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdStDispatchBuffer while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`AddBufferResourceView()` 在同一 uint array 上定义额外 resource view；这些 view 会被 `HdBufferArray` 聚合，并由 `HdResourceBinder` 按 binding method 和 interleaved offset 绑定。</span></li>
-        <li><span class="zh">`CopyData()`、`Reallocate()` 与 `GarbageCollect()` 体现该 buffer 的 GPU resource 生命周期管理，调试时要区分数据复制、容量重分配和废弃资源清理。</span></li>
-        <li><span class="zh">`GetCommandNumUints()` 与 `GetCount()` 用于解释 indirect command layout 和当前命令数量；错误的 uint stride 或 count 会直接导致 dispatch/draw 参数错位。</span></li>
-        <li><span class="zh">`GetResource()`、`GetResources()` 与 `GetEntireResource()` 暴露不同粒度的 `HdStBufferResource` 视图，适合排查 shader 读到的数据范围。</span></li>
-        <li><span class="zh">该类服务 Storm 内部渲染后端，不是 USD 场景层 buffer；中文说明应保留 VBO、indirect dispatch、MultiDrawIndirect、DispatchComputeIndirect 等英文术语。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">调度缓冲：</span><span class="en">dispatch buffer</span></li>
-        <li><span class="zh">无符号整数 VBO：</span><span class="en">unsigned integer VBO</span></li>
-        <li><span class="zh">间接调度：</span><span class="en">indirect dispatch</span></li>
-        <li><span class="zh">缓冲资源视图：</span><span class="en">BufferResourceView</span></li>
-        <li><span class="zh">命令整数数量：</span><span class="en">GetCommandNumUints()</span></li>
         <li><span class="zh">资源绑定器：</span><span class="en">HdResourceBinder</span></li>
       </ul>
     </section>
