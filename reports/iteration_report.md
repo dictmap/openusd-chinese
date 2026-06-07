@@ -9200,3 +9200,46 @@ GitHub 同步：
 1. 继续真实晋级，不再刷 count-neutral 导读补强。
 2. 下一批优先核心页面：`full_site/api/class_pcp_arc.html`。
 3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。
+
+## 第 326 轮：将 PcpArc 提升为完整双语
+已完成：
+
+- 轮次类型：PromotionRound；本轮只晋级 1 个页面：`full_site/api/class_pcp_arc.html`。
+- 将目标页从 `bilingual_draft` 提升为 `bilingual_complete`，页面标题改为完整双语参考页，并移除通用 draft 标记。
+- 新增 `逐段双语理解 / Paragraph-Level Bilingual Coverage`，覆盖 `PcpArc` 作为 prim-index graph edge 的职责、source node 与 target parent-node 方向、`PcpArcType` 语义、`parent` / `origin` / `siblingNumAtOrigin` 诊断、`mapToParent` 的 `PcpMapExpression` namespace mapping、`namespaceDepth` bookkeeping、构造语义、与 authored USD references/payloads/inherits 和 `UsdPrim` namespace parenting 的边界，以及把 arc 误当可编辑 authored data 或普通字符串路径的常见误用。
+- 更新 `reports/bilingual_completion_promotions.json/md`，新增 `round-326-pcp-arc`。
+- 更新 `reports/current_problem_audit.md/json`，当前真实状态同步为 32 complete / 374 draft。
+- 重建 `openusd_bilingual_final.html`，总入口显示 32 complete / 374 incomplete drafts。
+
+分级变化：
+
+- `good_bilingual`：31 -> 32
+- `bilingual_complete`：31 -> 32
+- `bilingual_draft`：375 -> 374
+- `draft_needs_translation`：364 -> 363
+- `draft_template_only`：11 保持不变
+
+验证结果：
+
+- `discover_openusd_all_pages.mjs`：通过，`total_pages=406`，`promoted_complete_pages=24`。
+- `audit_openusd_translation_quality.mjs`：通过，`good_bilingual=32`，目标页 `grade=good_bilingual`。
+- `route_openusd_internal_links_local.mjs`：通过，`files_changed=1`，仅同步本轮目标页的本地链接路由。
+- `audit_openusd_full_draft_preview.mjs`：通过，374/374 draft 页面可预览。
+- `audit_openusd_report_index.mjs`：通过。
+- `validate_openusd_api_repro.ps1`：通过，`required_check_count=288`，`failed_check_count=0`。
+- Node 直接解析 `reports/validation_report.json`：`bom=false`。
+
+GitHub 同步：
+
+- 本轮验证通过后将使用 `OpenUSD bilingual round 326: promote PcpArc complete` 同步本轮 HTML、报告和 `work.md`。
+
+当前差距：
+
+- 仍有 374 个 `bilingual_draft` 页面只是可检查草稿，不是完整翻译，其中 363 个仍为 `draft_needs_translation`。
+- 406 清单外的 Doxygen 目标仍会进入本地未覆盖占位页；这是当前 P1 浏览缺口。
+
+下一轮目标：
+
+1. 继续真实晋级，不再刷 count-neutral 导读补强。
+2. 下一批优先核心页面：`full_site/api/class_pcp_error_unresolved_prim_path.html`。
+3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。

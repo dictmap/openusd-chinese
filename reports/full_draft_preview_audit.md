@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-07T02:14:18.938Z
+Generated: 2026-06-07T02:34:22.306Z
 
-Transient base URL: `http://127.0.0.1:57453/`
+Transient base URL: `http://127.0.0.1:56040/`
 
 Result:
 
 - Passed: true
-- Draft pages: 375
-- Pages checked: 375
-- Passed pages: 375
+- Draft pages: 374
+- Pages checked: 374
+- Passed pages: 374
 - Failed pages: 0
-- Final HTML links: 375
-- Local assets checked: 375
+- Final HTML links: 374
+- Local assets checked: 374
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -39,7 +39,6 @@ Result:
 | true | full_site/api/class_hd_task.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_hdx_pick_from_render_buffer_task.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_hgi_g_l_graphics_cmds.html | 200 | true | 0 | 0 |
-| true | full_site/api/class_pcp_arc.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_pcp_error_unresolved_prim_path.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_sdf_children_view.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_sdf_prim_spec.html | 200 | true | 0 | 0 |

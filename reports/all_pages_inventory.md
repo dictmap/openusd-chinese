@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-07T02:14:12.877Z
+Generated: 2026-06-07T02:34:15.554Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 31
-- Promoted complete pages: 23
-- Bilingual draft pages: 375
+- Bilingual complete pages: 32
+- Promoted complete pages: 24
+- Bilingual draft pages: 374
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -44,7 +44,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_draft | 类参考草稿：HdTask Class Reference abstract / HdTask Class Reference abstract | full_site/api/class_hd_task.html | https://openusd.org/release/api/class_hd_task.html |
 | api | bilingual_draft | 类参考草稿：HdxPickFromRenderBufferTask Class / HdxPickFromRenderBufferTask Class | full_site/api/class_hdx_pick_from_render_buffer_task.html | https://openusd.org/release/api/class_hdx_pick_from_render_buffer_task.html |
 | api | bilingual_draft | 类参考草稿：HgiGLGraphicsCmds Class Reference final / HgiGLGraphicsCmds Class Reference final | full_site/api/class_hgi_g_l_graphics_cmds.html | https://openusd.org/release/api/class_hgi_g_l_graphics_cmds.html |
-| api | bilingual_draft | 类参考草稿：PcpArc Class / PcpArc Class | full_site/api/class_pcp_arc.html | https://openusd.org/release/api/class_pcp_arc.html |
+| api | bilingual_complete | https://openusd.org/release/api/class_pcp_arc.html | full_site/api/class_pcp_arc.html | https://openusd.org/release/api/class_pcp_arc.html |
 | api | bilingual_draft | 类参考草稿：PcpErrorUnresolvedPrimPath Class / PcpErrorUnresolvedPrimPath Class | full_site/api/class_pcp_error_unresolved_prim_path.html | https://openusd.org/release/api/class_pcp_error_unresolved_prim_path.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_pcp_property_index.html | full_site/api/class_pcp_property_index.html | https://openusd.org/release/api/class_pcp_property_index.html |
 | api | bilingual_draft | 类参考草稿：SdfChildrenView< _ChildPolicy, _Predicate, _Adapter > Class Template / SdfChildrenView< _ChildPolicy, _Predicate, _Adapter > Class Template | full_site/api/class_sdf_children_view.html | https://openusd.org/release/api/class_sdf_children_view.html |

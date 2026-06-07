@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：PcpArc Class / PcpArc Class</title>
+  <title>完整双语参考：PcpArc Class / PcpArc Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,76 +24,56 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：PcpArc Class / PcpArc Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：PcpArc Class / PcpArc Class</h1>
     <div class="meta">https://openusd.org/release/api/class_pcp_arc.html</div>
   </header>
   <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-037">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 PcpArc Class 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for PcpArc Class while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+    <section data-cn-complete="pcp-arc-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">本页已按完整双语参考页整理：中文优先解释 `PcpArc` 在 Pcp prim index graph 中表示 composition arc 的职责、source node 与 target parent node 的方向、`PcpArcType`、`PcpNodeRef`、`PcpMapExpression` 等字段的边界，以及它与 authored reference/payload/inherit/specialize/variant opinion、USD namespace 层级和运行期 `UsdPrim` 访问之间的区别；英文类名、字段名、类型名、链接和官方摘录继续保留，便于与 Doxygen 原页逐项核对。</p>
+      <p class="en">This page is promoted to a complete bilingual reference. It keeps official API names, data-member names, type names, links, and excerpts while adding Chinese-first coverage of Pcp composition-arc semantics.</p>
+
+      <p class="zh">官方定义说，`PcpArc` 表示 prim index 中连接两个 nodes 的 arc。该 arc 由一个 node 拥有，这个拥有者是 source，并指向 index 中它的 parent node，作为 target。这里的 source/target 方向是 Pcp composition graph 内部的边方向，不是 USD stage 中 prim 父子关系的几何边，也不是 layer 文件中单独 authored 的 reference 或 payload 语句。</p>
+      <p class="en">`PcpArc` represents an arc connecting two nodes in the prim index. The arc is owned by a node, the source, and points to its parent node, the target, in the index.</p>
+
+      <p class="zh">`type` 保存 `PcpArcType`，用于描述这条 composition arc 的来源类别，例如 reference、payload、inherit、specialize 或 variant 等组合关系。调试 prim index 时应先看 `type`，再看 source node、parent node 和路径映射；只知道某个 prim 有 opinion，不足以判断它在组合强弱顺序中的位置。</p>
+      <p class="en">The `type` data member stores the `PcpArcType` that identifies the kind of composition relationship represented by the arc.</p>
+
+      <p class="zh">`parent` 是目标 parent node 的 `PcpNodeRef`。它告诉你 source node 通过这条 arc 连接到 index 中的哪一个父节点。这个 parent 是 composition graph 的父节点，不应直接等同于 `SdfPath` 的 textual parent，也不应等同于 `UsdPrim::GetParent()` 返回的运行期 namespace 父 prim。</p>
+      <p class="en">The `parent` member identifies the parent node, or target, in the prim index graph.</p>
+
+      <p class="zh">`origin` 记录这条 arc 的 origin 信息，用于解释当前边由哪个组合站点或更早的 arc 链路产生。分析复杂 inherits、references 或 variants 时，`origin` 能帮助追踪“这条边为什么出现”；它不是 scene description 中的 authored object，也不是用于编辑 USD 文件的 handle。</p>
+      <p class="en">The `origin` member records origin information that helps trace how this composition arc was introduced.</p>
+
+      <p class="zh">`mapToParent` 是 `PcpMapExpression`，描述 source node namespace 如何映射到 parent node namespace。它是理解 reference、payload 或 variant 进入当前 prim index 后路径如何重定位的关键字段。路径映射错误会影响 prim 和 property opinions 的落点，因此应与 `PcpPropertyIndex`、`SdfPath` 和 layer stack 一起诊断。</p>
+      <p class="en">The `mapToParent` member is a `PcpMapExpression` describing how namespace paths map from the source node to the parent node.</p>
+
+      <p class="zh">`namespaceDepth` 与命名空间映射相关，但它不是 prim path 字符串长度，也不是 scene graph 的可视层级深度。它服务于 Pcp 内部组合计算，用来保持 namespace 映射和遍历判断的上下文；调试时应把它看作 composition bookkeeping，而不是用户可直接编辑的 USD 数据。</p>
+      <p class="en">The `namespaceDepth` member belongs to Pcp's internal composition bookkeeping for namespace mapping.</p>
+
+      <p class="zh">`siblingNumAtOrigin` 表示在 origin 处与同源 sibling arcs 相关的顺序信息。组合图中多条 arc 可能来自同一个 origin 或相邻的 composition site；这个字段帮助保持稳定顺序和诊断 sibling 关系。它不是 child index，也不是 USD namespace 中第几个 child prim 的通用编号。</p>
+      <p class="en">The `siblingNumAtOrigin` member records sibling-ordering information at the arc origin.</p>
+
+      <p class="zh">`PcpArc()` 构造的是一个低层组合图数据结构实例。创建或交换 `PcpArc` 不会向 layer 写入 reference、payload 或 inherits；真正的 authored opinions 仍存在于 `SdfLayer` / `SdfPrimSpec` / `SdfPropertySpec` 等 scene description 数据中。`PcpArc` 只是 Pcp cache 计算 prim index 后用来表达组合边的结果结构。</p>
+      <p class="en">Constructing a `PcpArc` creates a composition-graph data structure, not authored scene description.</p>
+
+      <p class="zh">阅读本页时应和 `PcpPrimIndex`、`PcpNodeRef`、`PcpPropertyIndex` 一起看：prim index 汇总图，node 表示具体 composition site，arc 描述 node 之间的组合边，property index 则在属性级别列出 opinion sites。把这些层次分开，才能解释某个 property 或 prim opinion 为什么来自某个 layer、为什么被 stronger opinion 覆盖，或为什么路径映射后落到另一个 namespace。</p>
+      <p class="en">Read `PcpArc` together with `PcpPrimIndex`, `PcpNodeRef`, and `PcpPropertyIndex` to understand the full composition structure.</p>
+
+      <p class="zh">常见误用包括：把 `PcpArc` 当成 USD layer 里的 authored arc；把 `parent` 当成 `UsdPrim` 的直接父对象；把 `mapToParent` 当成字符串拼接规则；把 `namespaceDepth` 当成路径长度；或忽略 `type` 只看 source/target。正确做法是先确认 `type`，再结合 `parent`、`origin`、`mapToParent` 和 sibling ordering 分析 prim index 的组合路径。</p>
+      <p class="en">Common misuse includes treating `PcpArc` as authored USD data, as a namespace edge, or as a plain string-mapping record.</p>
+
+      <h3>API 分组与术语 / API Groups and Terms</h3>
       <ul>
-        <li><span class="zh">`PcpArc` 表示 prim index 中连接两个 nodes 的 arc，是 Pcp composition graph 的基础结构之一。</span></li>
-        <li><span class="zh">英文摘录说明 arc 由 source node 拥有，并指向 index 中的 parent node 作为 target；因此它表达的是 composition index 中节点间的关系，而不是 USD stage 中的几何边。</span></li>
-        <li><span class="zh">关联类型包括 `PcpArcType`、`PcpNodeRef`、`PcpMapExpression`，说明 arc 需要描述 arc 类型、节点引用和路径/namespace 映射表达式。</span></li>
-        <li><span class="zh">阅读本类时应结合 inherits、references、payloads、specializes、variants 等 composition arc 类型理解；具体 arc type 以后续枚举和成员说明为准。</span></li>
-        <li><span class="zh">本轮中文层保留 prim index、source、target、parent node、PcpMapExpression 等术语，帮助区分 Pcp 组合图和场景层级图。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">prim index：</span><span class="en">prim index</span></li>
-        <li><span class="zh">组合 arc：</span><span class="en">composition arc</span></li>
-        <li><span class="zh">源节点：</span><span class="en">source node</span></li>
-        <li><span class="zh">目标节点：</span><span class="en">target node</span></li>
-        <li><span class="zh">映射表达式：</span><span class="en">map expression</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-136">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`PcpArc` 是 prim index 中连接两个 `PcpNodeRef` 的 composition arc。它由 source node 持有，并指向 index 中的 parent node 作为 target；因此它描述 Pcp composition graph 的节点关系，而不是 USD namespace 中的几何层级边。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for PcpArc while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`type` 保存 `PcpArcType`，用于区分 reference、payload、inherit、specialize、variant 等组合来源；理解 arc 语义必须先看 arc type。</span></li>
-        <li><span class="zh">`parent`、`origin` 和 `siblingNumAtOrigin` 帮助定位 arc 在组合图中的目标、起源和兄弟顺序；这些字段服务于 composition ordering 和错误诊断。</span></li>
-        <li><span class="zh">`mapToParent` 是 `PcpMapExpression`，描述 source node namespace 如何映射到 parent node；路径映射错误常会影响 property 和 prim opinion 的最终落点。</span></li>
-        <li><span class="zh">`namespaceDepth` 记录 namespace 映射相关深度信息；它不是 stage 中 prim path 的字符串长度，而是 Pcp 内部组合计算的一部分。</span></li>
-        <li><span class="zh">阅读 `PcpArc` 时应和 `PcpPropertyIndex`、`PcpNodeRef`、`PcpPrimIndex` 一起看：arc 描述边，node 描述站点，index 汇总组合结构。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">组合图边：</span><span class="en">composition arc</span></li>
+        <li><span class="zh">组合图边：</span><span class="en">PcpArc</span></li>
         <li><span class="zh">组合边类型：</span><span class="en">PcpArcType</span></li>
         <li><span class="zh">源节点：</span><span class="en">source node</span></li>
-        <li><span class="zh">父节点 / 目标节点：</span><span class="en">parent node / target</span></li>
-        <li><span class="zh">路径映射表达式：</span><span class="en">PcpMapExpression</span></li>
+        <li><span class="zh">目标父节点：</span><span class="en">parent node / target</span></li>
+        <li><span class="zh">起源信息：</span><span class="en">origin</span></li>
+        <li><span class="zh">路径映射表达式：</span><span class="en">PcpMapExpression / mapToParent</span></li>
         <li><span class="zh">命名空间深度：</span><span class="en">namespaceDepth</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-141">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`PcpArc` 表示 prim index 中连接两个 nodes 的 composition arc。该 arc 由 source node 拥有，并指向 index 中的 parent/target node，用来描述 reference、inherit、specialize、variant 等 composition relationship 在 prim index graph 中的边。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for PcpArc while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`type` 保存 `PcpArcType`，用于区分 arc 的 composition 语义；调试 prim index 时应先看 arc type，再看 path mapping 和 source/target node。</span></li>
-        <li><span class="zh">`parent` 指向目标 parent node，`origin` 记录 arc 的 origin 信息，二者帮助解释一条边是由哪一个 composition site 产生并连接到哪里。</span></li>
-        <li><span class="zh">`mapToParent` 是 `PcpMapExpression`，描述 source namespace 到 parent namespace 的路径映射；它是理解 payload/reference 路径重定位的关键字段。</span></li>
-        <li><span class="zh">`namespaceDepth` 与 `siblingNumAtOrigin` 支持 namespace 层级和 sibling ordering 分析，常用于稳定遍历或诊断 composition graph。</span></li>
-        <li><span class="zh">该类是低层组合图数据结构，不是 USD layer 中的 authored arc 本身；中文导读应保留 `prim index`、`PcpNodeRef`、`PcpMapExpression` 和 `PcpArcType` 原名。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">组合弧：</span><span class="en">PcpArc</span></li>
-        <li><span class="zh">主对象索引：</span><span class="en">prim index</span></li>
-        <li><span class="zh">源节点：</span><span class="en">source node</span></li>
-        <li><span class="zh">父节点：</span><span class="en">parent node</span></li>
-        <li><span class="zh">路径映射表达式：</span><span class="en">PcpMapExpression</span></li>
-        <li><span class="zh">组合弧类型：</span><span class="en">PcpArcType</span></li>
+        <li><span class="zh">同源兄弟顺序：</span><span class="en">siblingNumAtOrigin</span></li>
       </ul>
     </section>
     <section>

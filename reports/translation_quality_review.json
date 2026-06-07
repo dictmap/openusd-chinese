@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T02:14:13.478Z",
+  "generated_at": "2026-06-07T02:34:16.291Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 375,
-    "bilingual_complete": 31
+    "bilingual_draft": 374,
+    "bilingual_complete": 32
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 364,
-    "good_bilingual": 31
+    "draft_needs_translation": 363,
+    "good_bilingual": 32
   },
   "focus_batch": [
     {
@@ -1679,29 +1679,29 @@
     },
     {
       "index": 27,
-      "title": "类参考草稿：PcpArc Class / PcpArc Class",
+      "title": "完整双语参考：PcpArc Class / PcpArc Class",
       "output": "full_site/api/class_pcp_arc.html",
       "official_url": "https://openusd.org/release/api/class_pcp_arc.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 48,
-      "enBlockCount": 35,
-      "zhChars": 680,
-      "enLetters": 1605,
-      "bodyChineseChars": 755,
+      "grade": "good_bilingual",
+      "zhBlockCount": 31,
+      "enBlockCount": 33,
+      "zhChars": 790,
+      "enLetters": 1562,
+      "bodyChineseChars": 840,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 PcpArc Class 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`PcpArc` 表示 prim index 中连接两个 nodes 的 arc，是 Pcp composition graph 的基础结构之一。"
+        "本页已按完整双语参考页整理：中文优先解释 `PcpArc` 在 Pcp prim index graph 中表示 composition arc 的职责、source node 与 target parent node 的方向、`PcpArcType`、`PcpNodeRef`、`PcpMapExpression` 等字段的边界，以及它与 authored reference/payload/inherit/specialize/variant opinion、USD namespace 层级和运行期 `UsdPrim` 访问之间的区别；英文类名、字段名、类型名、链接和官方摘录继续保留，便于与 Doxygen 原页逐项核对。",
+        "官方定义说，`PcpArc` 表示 prim index 中连接两个 nodes 的 arc。该 arc 由一个 node 拥有，这个拥有者是 source，并指向 index 中它的 parent node，作为 target。这里的 source/target 方向是 Pcp composition graph 内部的边方向，不是 USD stage 中 prim 父子关系的几何边，也不是 layer 文件中单独 authored 的 reference 或 payload 语句。",
+        "`type` 保存 `PcpArcType`，用于描述这条 composition arc 的来源类别，例如 reference、payload、inherit、specialize 或 variant 等组合关系。调试 prim index 时应先看 `type`，再看 source node、parent node 和路径映射；只知道某个 prim 有 opinion，不足以判断它在组合强弱顺序中的位置。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for PcpArc Class while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page is promoted to a complete bilingual reference. It keeps official API names, data-member names, type names, links, and excerpts while adding Chinese-first coverage of Pcp composition-arc semantics.",
+        "`PcpArc` represents an arc connecting two nodes in the prim index. The arc is owned by a node, the source, and points to its parent node, the target, in the index."
       ]
     },
     {
