@@ -1,31 +1,31 @@
 # OpenUSD Iteration Report
 
-## 第 379 轮摘要
+## 第 380 轮摘要
 
 - 轮次类型：PromotionRound
-- 本轮目标：`full_site/release/tut_authoring_variants.html`
+- 本轮目标：`full_site/release/tut_variants_example_in_katana.html`
 - 结果：完成 1 个页面晋级，并让 good_bilingual 增加。
 - 核心说明：目标页已移除草稿状态，补齐中文主阅读路径，并进入 promotion manifest。
 
 ## 真实计数
 
 - total_pages：406
-- good_bilingual：82
-- review_ready_zh：19
-- bilingual_complete：82
-- bilingual_draft：324
-- draft_needs_translation：313
+- good_bilingual：83
+- review_ready_zh：20
+- bilingual_complete：83
+- bilingual_draft：323
+- draft_needs_translation：312
 - draft_template_only：11
 - pending_full_scope：0
 - api_complete：72
-- release_complete：10
+- release_complete：11
 
 ## 验证
 
 - validation_report：passed=true，failed_check_count=0，required_check_count=302
-- translation_quality：good_bilingual=82
-- english_debt：review_ready_zh=19，review_needs_zh_debt=63
-- promotion manifest：74 entries
+- translation_quality：good_bilingual=83
+- english_debt：review_ready_zh=20，review_needs_zh_debt=63
+- promotion manifest：75 entries
 
 ## 本轮改动文件
 
@@ -45,4 +45,4 @@
 
 ## 下一步
 
-优先选择 release/tutorial/user guide 页面，以降低 release 覆盖滞后。建议目标：`full_site/release/tut_variants_example_in_katana.html`。
+优先选择 release/tutorial/user guide 页面，以降低 release 覆盖滞后。建议目标：`full_site/release/tut_xforms.html`。

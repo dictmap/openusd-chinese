@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：Variants Example in Katana / Variants Example in Katana</title>
+  <title>完整双语参考：Variants Example in Katana / Variants Example in Katana</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
@@ -12,88 +12,162 @@
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
     .zh{display:block;font-weight:650;color:#17324d}
     .en{display:block;color:#55616f;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
     pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
     code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .note{border-left:4px solid #b7791f;background:#fff8e6;padding:12px 14px;border-radius:6px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：Variants Example in Katana / Variants Example in Katana</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：Variants Example in Katana / Variants Example in Katana</h1>
     <div class="meta">https://openusd.org/release/tut_variants_example_in_katana.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+      <p class="zh">本页是 OpenUSD release 教程中 “Variants Example in Katana” 的完整双语参考页。它不是当前持续测试的现代 Katana 教程，而是一个历史 proof-of-concept，用来说明 DCC 工具如何把 USD asset 内的 variant set 暴露为 UI 中可切换的选项。中文主线会保留 `Katana`、`PxrUsdInVariantSelect`、`modelingVariant`、`/ExampleModelingVariants`、`ExampleModelingVariants.usd` 等原始标识符，解释它们在 variant switching 工作流中的位置。</p>
+      <p class="en">This local bilingual page explains the historical OpenUSD Katana variants example in Chinese first while retaining the official identifiers, file names, node names, prim paths, and links for comparison.</p>
     </section>
-    <section data-cn-refinement="release-guide-quality-pass-003">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Variants Example in Katana 补充中文优先的阅读路径、关键概念说明和术语对照；英文页面名、链接、代码、命令和原文摘录继续保留，便于和官方文档逐项核对。</p>
-      <p class="en">This section adds Chinese-first reading guidance for Variants Example in Katana while retaining the English page name, links, code, commands, and source excerpts for comparison with the official documentation.</p>
-      <ul>
-        <li><span class="zh">这是一篇历史教程，阅读时应把它作为 USD variant 切换在 Katana 管线中暴露给用户的设计样例，而不是当前版本的安装说明。</span></li>
-        <li><span class="zh">官方页明确说明 Katana USD plugin 已在 USD 20.05 之后从发行包移除，后续应参考 Foundry-supported plugin；本地复刻保留该背景，避免误导用户按旧插件路径部署。</span></li>
-        <li><span class="zh">页面价值在于展示 modeling variants 如何成为 DCC 应用中的可选项：USD 侧保留变体集，Katana 侧通过插件 UI 或节点逻辑选择目标 variant。</span></li>
-        <li><span class="zh">后续若继续精修，应重点补齐 variant set、variant selection、Katana node graph 和资产发布流程之间的对应关系，而不是扩写已经过时的插件安装细节。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">变体切换：</span><span class="en">variant switching</span></li>
-        <li><span class="zh">Katana USD 插件：</span><span class="en">Katana USD plugin</span></li>
-        <li><span class="zh">Foundry 维护插件：</span><span class="en">Foundry-supported plugin</span></li>
-        <li><span class="zh">建模变体：</span><span class="en">modeling variants</span></li>
-        <li><span class="zh">历史教程：</span><span class="en">historical tutorial</span></li>
-      </ul>
+
+    <section class="note">
+      <h2>历史状态提醒 / Historical Status</h2>
+      <p class="zh">官方页明确提醒：Katana USD plugin 已在 USD 20.05 中从 USD distribution 移除，改由 Foundry 支持的 GitHub 插件维护；本页保留是历史参考。阅读时应把它当成“怎样把 USD variant selection 映射到 DCC 节点参数”的设计示例，而不是当成当前 OpenUSD 自带插件的安装或运行说明。</p>
+      <p class="en">The official page marks this as historical documentation: the Katana USD plugin was removed from the USD distribution in version 20.05 and the page remains for reference.</p>
     </section>
-    <section data-cn-refinement="release-quality-pass-112">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`Variants Example in Katana` 是历史教程，展示如何把 USD variant switching 暴露到 Katana 管线中。阅读时应把它看作 DCC 集成设计样例，而不是当前 Katana USD 插件安装指南；官方已说明旧插件在 USD 20.05 之后从发行包移除。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for Variants Example in Katana while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">本页的价值在于说明 variant set 和 variant selection 如何进入艺术家工具界面：USD 负责表达可切换变体，Katana 节点或 UI 负责选择目标 variant。</span></li>
-        <li><span class="zh">官方说明 `Katana USD plugin` 已从 USD distribution 移除，并转向 Foundry-supported plugin；中文层必须保留这个历史背景，避免误导读者按旧路径部署。</span></li>
-        <li><span class="zh">variant switching 常用于模型、材质、LOD 或资产配置选择。它应与 `Authoring Variants` 教程一起读：一个讲 USD 侧创作，一个讲 DCC 集成暴露方式。</span></li>
-        <li><span class="zh">如果读者关心当前生产环境，应查 Foundry 维护的插件和对应版本文档；本地复刻仅保留历史参考和概念路径。</span></li>
-        <li><span class="zh">维护本页时不要把 Katana 节点名、plugin 名称、variant set 名称翻译成中文，因为这些名称通常要和 DCC UI 或脚本参数一一对应。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">变体切换：</span><span class="en">variant switching</span></li>
-        <li><span class="zh">Katana USD 插件：</span><span class="en">Katana USD plugin</span></li>
-        <li><span class="zh">Foundry 维护插件：</span><span class="en">Foundry-supported plugin</span></li>
-        <li><span class="zh">变体集：</span><span class="en">variant set</span></li>
-        <li><span class="zh">变体选择：</span><span class="en">variant selection</span></li>
-        <li><span class="zh">历史教程：</span><span class="en">historical tutorial</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：Variants Example in Katana</span><span class="en">Variants Example in Katana</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">This historical tutorial is not regularly tested.</p>
-<p class="en">The Katana USD plugin was removed from the USD distribution in version 20.05 in favor of the Foundry-supported plugin hosted on GitHub . This documentation remains for historical reference.</p>
-<p class="en">This is a proof-of-concept example of how one might expose USD variant switching in Katana . The scene shown here is located at USD/extras/usd/tutorials/exampleModelingVariantsKatana , which contains the katana file ( exampleModelingVariants.katana ) and a USD asset with modeling variants ( ExampleModelingVariants.usd and associated usd files).</p>
+
+    <section data-cn-complete="release-tutorial-variants-example-in-katana-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">本页接在 `Authoring Variants` 之后阅读最合适。前一页讲的是如何在 USD layer 内 author `variantSet`、`variantSelection` 和 variant edit context；本页换到 DCC 集成视角，展示一个 host application 如何读取资产里已经存在的 variant set，并把它们暴露成用户可以点击或选择的参数。换句话说，本页不是再教你用 Python 写 variant，而是说明 Katana 这类应用如何把 USD composition 维度接到 UI 和节点图里。</p>
+      <p class="en">This page follows the variant-authoring tutorial and shifts the focus from authoring variants to exposing variant selection inside a DCC host.</p>
+
+      <p class="zh">示例资产位于 `USD/extras/usd/tutorials/exampleModelingVariantsKatana`。目录中包含 Katana 场景文件 `exampleModelingVariants.katana`，以及带有 modeling variants 的 USD asset：`ExampleModelingVariants.usd` 和相关 `.usd` 文件。这里的核心 prim 是 `/ExampleModelingVariants`，它携带可切换的 shape variants。文件名、目录名和 prim path 都是复现锚点，不能翻译；中文说明只解释这些锚点各自承担的角色。</p>
+      <p class="en">The example scene lives under `USD/extras/usd/tutorials/exampleModelingVariantsKatana` and includes a Katana file plus USD assets with modeling variants.</p>
+
+      <p class="zh">官方流程先用 `usdview` 打开 USD asset。选择 `/ExampleModelingVariants` prim 后，右下角的 `Meta Data` pane 会显示该 prim 上 author 的 variant set。用户可以在这个区域切换 variant selection，例如把当前 shape 选为 `Torus`。这一步的意义是确认 USD asset 本身已经正确声明了 variant set，并且 OpenUSD 的标准工具能够通过 metadata 看到和切换它。若 `usdview` 中看不到选择器，问题通常不在 Katana，而在 asset 是否把 variant set author 到了预期 prim 上。</p>
+      <p class="en">In `usdview`, selecting `/ExampleModelingVariants` exposes the authored variant set in the metadata pane so the user can choose variants such as `Torus`.</p>
+
+      <p class="zh">接下来打开 `exampleModelingVariants.katana`。这个 Katana 场景通过 `PxrUsdInVariantSelect` node 暴露同一个模型的 variant switching。节点需要 target model scenegraph location，也就是要指向哪个 USD 模型位置；当目标位置设置正确后，节点会自动填充该位置上已 author 的 variant set names。示例中选择 `variantSetName` 参数为 `modelingVariant`，随后 `variantSelection` 列表会显示可用的 shape variants。这个流程把 USD 的 prim metadata、variant set 名称、variant selection 值和 Katana 节点参数连接起来。</p>
+      <p class="en">In Katana, the `PxrUsdInVariantSelect` node targets the model scenegraph location, auto-populates variant set names, and lets the user choose `modelingVariant` and its shape variants.</p>
+
+      <p class="zh">从 composition 角度看，`PxrUsdInVariantSelect` 并不是“修改几何”的特殊节点；它的关键职责是 author 或传递一个 variant selection opinion，使 Katana 看到的 USD scenegraph 按所选分支组合。实际 mesh、sphere、torus 或其他 shape 的差异仍然来自 USD asset 内部的 variant 内容。节点只是把选择接口放到 Katana node graph 中，让 layout、lighting 或 lookdev 用户不需要手写 USD layer 就能切换模型形态。</p>
+      <p class="en">Conceptually, the Katana node provides a host-application interface for authoring or passing a variant selection opinion; the variant contents remain in the USD asset.</p>
+
+      <p class="zh">本页需要和现代工作流区分开。由于官方插件已从 USD distribution 移除，今天的 Katana 集成应参考 Foundry-supported `KatanaUsdPlugins` 或项目自身使用的插件版本。本地中文页不能把历史截图和旧节点当成当前安装指南。它的长期价值在于说明 DCC 集成设计模式：读取目标 scenegraph location，枚举该 prim 上的 variant sets，把 `variantSetName` 和 `variantSelection` 暴露为 UI 参数，再把选择结果作为 USD composition opinion 参与下游求值。</p>
+      <p class="en">The page is historical, but it remains useful as an integration pattern for exposing USD variant sets through DCC UI parameters.</p>
+
+      <p class="zh">调试这类工作流时可以按四层排查。第一，在 `usdview` 中确认 `/ExampleModelingVariants` 是否存在，以及 metadata pane 是否显示 `modelingVariant`。第二，确认 Katana 节点 target 的 scenegraph location 是否正好指向携带 variant set 的模型 prim，而不是指向子 mesh 或错误父级。第三，确认 `variantSetName` 是否与 USD 中 author 的名称完全一致；`modelingVariant` 这样的 token 名称大小写和拼写都应保持原样。第四，如果 `variantSelection` 列表为空，先检查插件能否加载 USD asset 和 metadata，再检查 asset 是否被 flatten 成已经应用 selection 的结果而丢失 variant set 结构。</p>
+      <p class="en">Debugging starts by checking the USD prim and its metadata in `usdview`, then verifying Katana node targeting, exact variant-set names, plugin loading, and whether the asset was flattened.</p>
+
+      <p class="zh">本页还展示了一个和 `Authoring Variants` 相反的读法：作者页强调如何创建 `shadingVariant` 并写入 `red`、`blue`、`green` 内容；Katana 示例强调应用如何发现一个已存在的 `modelingVariant` 并把选择暴露给用户。两个页面合起来说明 variant 的完整生命周期：asset author 负责定义分支，DCC 集成负责发现和选择分支，composition 系统负责根据当前 selection 生成最终 scenegraph。</p>
+      <p class="en">Together with the authoring tutorial, this page shows both ends of the variant lifecycle: asset authors define variants, and DCC integrations expose variant selection.</p>
+
+      <p class="zh">如果要把这个模式迁移到其他 host，例如 Houdini、Maya、Omniverse Kit 或内部工具，核心不是复制 `PxrUsdInVariantSelect` 的界面，而是保留同样的数据流：定位 prim，读取 `GetVariantSets()` 可见的 set，列出每个 set 的 allowed selections，将用户选择写入合适的 edit target 或 session layer，并明确该 opinion 的强度。只要这条数据流清楚，UI 可以是节点、属性面板、右键菜单或脚本参数。</p>
+      <p class="en">The transferable pattern is to locate the prim, inspect variant sets, list selections, and author the chosen selection into an appropriate edit target.</p>
+
+      <p class="zh">本页也提醒读者区分“示例文件可打开”和“生产插件可用”这两件事。`exampleModelingVariants.katana` 展示的是当时的节点图和参数命名，现代 Katana 插件、USD 版本和 studio pipeline 可能有不同安装路径、节点名称或 UI 布局；但是 `/ExampleModelingVariants` 上的 variant metadata、`variantSetName` 到 `variantSelection` 的两级选择关系，以及 selection opinion 参与 composition 的语义不会因此改变。翻译时保留这个边界，可以避免把历史教程误读成过期安装手册，也能保留它作为 DCC 集成设计案例的价值。</p>
+      <p class="en">The historical files and UI may differ from modern deployments, but the USD variant-selection semantics are the durable part.</p>
+
+      <p class="zh">在实际 pipeline 中，variant selection 的 authoring 位置需要明确约定。交互式 DCC 会话通常把临时选择写入 session layer 或 host 自己的 scene state；资产发布层则可能把默认 selection 写回 asset layer；shot 或 layout layer 可能在引用资产之后提供更强的 selection override。本页虽然只展示 Katana 节点选择 shape，但读者应理解同一个 `modelingVariant` 可以在不同 layer 上被选择，最终哪一个生效由 USD 的 layer stack 强度决定。若 Katana 里看到的形态和 `usdview` 打开 asset 时不同，先比较两边的 edit target、session layer 和引用链，而不是直接认定 variant 内容损坏。</p>
+      <p class="en">A production pipeline must define where variant selections are authored, because asset defaults, shot overrides, and session-layer choices can all participate in composition.</p>
+
+      <p class="zh">另一个容易忽略的边界是“枚举 variant sets”与“消费 variant 内容”不是同一件事。`PxrUsdInVariantSelect` 这类节点只需要读取目标 prim 的 variant set 名称和可选 selection 值，就能构建 UI；真正加载哪套几何、材质或子树，仍由 USD composition 在选定分支后完成。因此性能和缓存问题通常发生在 selection 改变后重新求值 scenegraph 的阶段，而不是单纯生成下拉列表的阶段。把这两层分开，有助于排查 UI 已显示选项但 viewport 结果没有更新、或结果更新但列表没有自动填充的不同问题。</p>
+      <p class="en">Discovering variant names for UI and consuming the selected variant contents are separate phases with different debugging implications.</p>
+
+      <p class="zh">在跨 DCC 迁移时，还要把 variant selection 当作可审计的 scene description opinion，而不是只存在于某个应用 UI 里的临时状态。一个稳健的工具应能说明 selection 写到了哪个 layer、是否会随场景保存、是否会污染资产默认值、以及 downstream 引用该资产时能否覆盖它。Katana 示例的价值就在于把这些问题压缩成一个可观察的节点参数：目标位置决定枚举范围，`variantSetName` 决定维度，`variantSelection` 决定当前组合分支。</p>
+      <p class="en">A robust DCC integration should make clear where the variant-selection opinion is authored and whether downstream layers can override it.</p>
+
+      <p class="zh">因此，本页的中文阅读目标不是复刻旧 Katana UI，而是让读者能用同一套概念检查任意 host：目标 prim 是否正确、variant set 是否可枚举、selection opinion 是否写在预期强度位置、以及最终 composed scenegraph 是否反映当前选择。这些检查项比旧截图更重要，也更适合自动化审计，并能解释跨工具结果差异，方便复核。</p>
+      <p class="en">The reading goal is to apply the same variant-selection checks to any host application.</p>
+
+      <p class="zh">维护本页时必须保留这些复现锚点：`USD/extras/usd/tutorials/exampleModelingVariantsKatana`、`exampleModelingVariants.katana`、`ExampleModelingVariants.usd`、`/ExampleModelingVariants`、`Meta Data`、`Torus`、`PxrUsdInVariantSelect`、`variantSetName`、`modelingVariant`、`variantSelection`、`KatanaUsdPlugins`。这些名称用于定位官方示例、插件节点、scenegraph location 和 UI 参数，不应翻译。中文内容应解释每个标识符的职责，而不是把它们替换成中文名称。</p>
+      <p class="en">The file names, prim path, Katana node name, parameter names, and variant-selection identifiers are reproducibility anchors and should remain unchanged.</p>
     </section>
 
     <section>
-      <h2>本页链接 / Page Links</h2>
+      <h2>工作流步骤 / Workflow Steps</h2>
+      <ol>
+        <li><span class="zh">打开 `ExampleModelingVariants.usd` 或相关 USD asset，先在 `usdview` 中确认 `/ExampleModelingVariants` prim 存在。</span><span class="en">Open the USD asset and confirm `/ExampleModelingVariants` in `usdview`.</span></li>
+        <li><span class="zh">在 `Meta Data` pane 中查看可用 variant set，并尝试选择 `Torus` 等 shape variant，验证 USD asset 自身可切换。</span><span class="en">Use the metadata pane to inspect and switch authored shape variants such as `Torus`.</span></li>
+        <li><span class="zh">打开 `exampleModelingVariants.katana`，找到用于 variant selection 的 `PxrUsdInVariantSelect` node。</span><span class="en">Open the Katana scene and locate the `PxrUsdInVariantSelect` node.</span></li>
+        <li><span class="zh">把节点 target 指向模型 scenegraph location，使节点能读取该位置上的 variant set names。</span><span class="en">Target the model scenegraph location so the node can discover variant set names.</span></li>
+        <li><span class="zh">在 `variantSetName` 中选择 `modelingVariant`，再从 `variantSelection` 列表中选择需要的 shape。</span><span class="en">Choose `modelingVariant` and then select the desired shape variant.</span></li>
+        <li><span class="zh">把结果当作 composition selection 检查，而不是把它误解成 Katana 直接改写了 USD mesh。</span><span class="en">Interpret the result as USD composition selection, not direct mesh rewriting by Katana.</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>关键边界 / Key Boundaries</h2>
       <ul>
-<li><a href="https://github.com/TheFoundryVisionmongers/KatanaUsdPlugins">hosted on GitHub</a></li>
+        <li><span class="zh">本页是历史 reference；不要把旧 Katana USD plugin 当作当前 OpenUSD distribution 的组成部分。</span><span class="en">This is historical reference documentation, not a current bundled OpenUSD plugin guide.</span></li>
+        <li><span class="zh">`usdview` metadata pane 用于验证 asset 内是否真的有 variant set；Katana 节点用于在 host workflow 中暴露同一选择。</span><span class="en">`usdview` validates the asset metadata; the Katana node exposes the same selection in a host workflow.</span></li>
+        <li><span class="zh">`PxrUsdInVariantSelect` 的核心输入是模型 scenegraph location；目标路径不对时，variant set names 不会正确自动填充。</span><span class="en">`PxrUsdInVariantSelect` depends on the correct model scenegraph location.</span></li>
+        <li><span class="zh">`variantSetName` 与 `variantSelection` 是两个层级：先选 set，再选该 set 内的具体分支。</span><span class="en">`variantSetName` chooses the set; `variantSelection` chooses a branch inside that set.</span></li>
+        <li><span class="zh">如果资产已经被 flatten 成当前选择后的结果，host 可能无法再枚举原始 variant set 结构。</span><span class="en">A flattened asset may no longer expose the authored variant set structure to the host.</span></li>
       </ul>
     </section>
+
+    <section>
+      <h2>伪代码式数据流 / Pseudocode Data Flow</h2>
+      <pre><code>asset = "ExampleModelingVariants.usd"
+primPath = "/ExampleModelingVariants"
+variantSetName = "modelingVariant"
+variantSelection = "Torus"
+
+# Host integration idea:
+# 1. target primPath
+# 2. discover variant sets on that prim
+# 3. expose variantSetName and variantSelection in UI
+# 4. author or pass the selected variant opinion</code></pre>
+      <p class="zh">这段伪代码不是官方 Katana API，只是把本页的集成数据流压缩成可迁移模型。具体 host 可以用节点、属性面板、Python 脚本或 session layer authoring 实现同样的 selection 传递。</p>
+      <p class="en">This pseudocode is not an official Katana API; it summarizes the transferable host-integration data flow.</p>
+    </section>
+
+    <section>
+      <h2>常见误读与调试 / Common Misreadings and Debugging</h2>
+      <ul>
+        <li><span class="zh">如果 `usdview` 中看不到 `modelingVariant`，先检查 USD asset 是否保留了 variant set，而不是直接怀疑 Katana。</span><span class="en">If `modelingVariant` is missing in `usdview`, inspect the USD asset before debugging Katana.</span></li>
+        <li><span class="zh">如果 Katana 节点列表为空，检查 target scenegraph location 是否指向 `/ExampleModelingVariants`。</span><span class="en">If the Katana list is empty, verify that the node targets `/ExampleModelingVariants`.</span></li>
+        <li><span class="zh">如果选择后形态不变，确认 selection opinion 的 edit target 或强度是否被更强 layer 覆盖。</span><span class="en">If selection has no effect, check whether a stronger layer overrides the selection opinion.</span></li>
+        <li><span class="zh">如果迁移到现代 Foundry 插件，不能假设旧 `PxrUsdInVariantSelect` UI 完全相同；应保留 USD variant semantics，而不是保留旧截图布局。</span><span class="en">When migrating to modern Foundry-supported plugins, preserve USD variant semantics rather than assuming the old UI is identical.</span></li>
+        <li><span class="zh">如果导出的 USD 不再显示 variants，检查是否在 upstream 阶段执行了 flattening，导致 host 只能看到已应用的 composed result。</span><span class="en">If variants disappear, check whether an upstream flattening step removed the authored variant structure.</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>术语对照 / Terms</h2>
+      <ul>
+        <li><span class="zh">Katana 中的变体示例：</span><span class="en">Variants Example in Katana</span></li>
+        <li><span class="zh">历史教程：</span><span class="en">historical tutorial</span></li>
+        <li><span class="zh">概念验证：</span><span class="en">proof-of-concept</span></li>
+        <li><span class="zh">模型场景图位置：</span><span class="en">model scenegraph location</span></li>
+        <li><span class="zh">变体集名称：</span><span class="en">variant set name / `variantSetName`</span></li>
+        <li><span class="zh">变体选择列表：</span><span class="en">variant selection list / `variantSelection`</span></li>
+        <li><span class="zh">建模变体：</span><span class="en">modeling variant / `modelingVariant`</span></li>
+        <li><span class="zh">会话选择 opinion：</span><span class="en">variant-selection opinion</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>页面链接 / Page Links</h2>
+      <ul>
+        <li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Tutorials</a></li>
+        <li><a href="tut_authoring_variants.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_authoring_variants.html">Authoring Variants</a></li>
+        <li><a href="tut_xforms.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_xforms.html">Transformations, Animation, and Layer Offsets</a></li>
+        <li><a href="../../site/glossary.html" data-local-route="mapped" data-official-href="https://openusd.org/release/glossary.html">Terms and Concepts</a></li>
+        <li><a href="https://github.com/TheFoundryVisionmongers/KatanaUsdPlugins">Foundry-supported KatanaUsdPlugins</a></li>
+        <li><a href="https://github.com/PixarAnimationStudios/OpenUSD/tree/v26.05">USD 26.05</a></li>
+      </ul>
+    </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>

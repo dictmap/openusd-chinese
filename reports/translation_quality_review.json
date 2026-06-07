@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T15:16:52.977Z",
+  "generated_at": "2026-06-07T15:40:38.553Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 324,
-    "bilingual_complete": 82
+    "bilingual_draft": 323,
+    "bilingual_complete": 83
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 313,
-    "good_bilingual": 82
+    "draft_needs_translation": 312,
+    "good_bilingual": 83
   },
   "focus_batch": [
     {
@@ -9473,29 +9473,29 @@
     },
     {
       "index": 316,
-      "title": "页面草稿：Variants Example in Katana / Variants Example in Katana",
+      "title": "完整双语参考：Variants Example in Katana / Variants Example in Katana",
       "output": "full_site/release/tut_variants_example_in_katana.html",
       "official_url": "https://openusd.org/release/tut_variants_example_in_katana.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 24,
-      "enBlockCount": 18,
-      "zhChars": 576,
-      "enLetters": 1280,
-      "bodyChineseChars": 637,
+      "grade": "good_bilingual",
+      "zhBlockCount": 42,
+      "enBlockCount": 42,
+      "zhChars": 2150,
+      "enLetters": 3613,
+      "bodyChineseChars": 2224,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。",
-        "本区块针对 Variants Example in Katana 补充中文优先的阅读路径、关键概念说明和术语对照；英文页面名、链接、代码、命令和原文摘录继续保留，便于和官方文档逐项核对。",
-        "这是一篇历史教程，阅读时应把它作为 USD variant 切换在 Katana 管线中暴露给用户的设计样例，而不是当前版本的安装说明。"
+        "本页是 OpenUSD release 教程中 “Variants Example in Katana” 的完整双语参考页。它不是当前持续测试的现代 Katana 教程，而是一个历史 proof-of-concept，用来说明 DCC 工具如何把 USD asset 内的 variant set 暴露为 UI 中可切换的选项。中文主线会保留 `Katana`、`PxrUsdInVariantSelect`、`modelingVariant`、`/ExampleModelingVariants`、`ExampleModelingVariants.usd` 等原始标识符，解释它们在 variant switching 工作流中的位置。",
+        "官方页明确提醒：Katana USD plugin 已在 USD 20.05 中从 USD distribution 移除，改由 Foundry 支持的 GitHub 插件维护；本页保留是历史参考。阅读时应把它当成“怎样把 USD variant selection 映射到 DCC 节点参数”的设计示例，而不是当成当前 OpenUSD 自带插件的安装或运行说明。",
+        "本页接在 `Authoring Variants` 之后阅读最合适。前一页讲的是如何在 USD layer 内 author `variantSet`、`variantSelection` 和 variant edit context；本页换到 DCC 集成视角，展示一个 host application 如何读取资产里已经存在的 variant set，并把它们暴露成用户可以点击或选择的参数。换句话说，本页不是再教你用 Python 写 variant，而是说明 Katana 这类应用如何把 USD composition 维度接到 UI 和节点图里。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.",
-        "This section adds Chinese-first reading guidance for Variants Example in Katana while retaining the English page name, links, code, commands, and source excerpts for comparison with the official documentation."
+        "This local bilingual page explains the historical OpenUSD Katana variants example in Chinese first while retaining the official identifiers, file names, node names, prim paths, and links for comparison.",
+        "The official page marks this as historical documentation: the Katana USD plugin was removed from the USD distribution in version 20.05 and the page remains for reference."
       ]
     },
     {
