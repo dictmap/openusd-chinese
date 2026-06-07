@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：Hello World - Creating Your First USD Stage / Hello World - Creating Your First USD Stage</title>
+  <title>完整双语参考：Hello World - Creating Your First USD Stage / Hello World - Creating Your First USD Stage</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
@@ -12,6 +12,7 @@
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
     .zh{display:block;font-weight:650;color:#17324d}
     .en{display:block;color:#55616f;margin-top:4px}
@@ -20,73 +21,126 @@
     li{margin:8px 0}
     pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
     code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：Hello World - Creating Your First USD Stage / Hello World - Creating Your First USD Stage</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：Hello World - Creating Your First USD Stage / Hello World - Creating Your First USD Stage</h1>
     <div class="meta">https://openusd.org/release/tut_helloworld.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+      <p class="zh">本页是 OpenUSD release 教程中的完整双语参考页，中文优先解释教程步骤、对象关系和调试边界，同时保留官方英文标题、API 名称、代码、路径字面量、文件名和链接，便于和官方页面逐项核对。</p>
+      <p class="en">This local bilingual page explains the OpenUSD Hello World tutorial in Chinese first while retaining the official English title, API names, code, path literals, file names, and links for comparison.</p>
     </section>
-    <section data-cn-refinement="release-tutorial-quality-pass-002">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Hello World - Creating Your First USD Stage 补充中文优先的阅读路径和术语说明；英文页面名、链接、代码、命令和原文摘录继续保留，用于和官方文档逐项对照。</p>
-      <p class="en">This section adds Chinese-first reading guidance for Hello World - Creating Your First USD Stage while retaining the English page name, links, code, commands, and source excerpts for comparison with the official documentation.</p>
+
+    <section data-cn-complete="release-tutorial-hello-world-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">本教程解决的不是复杂 composition，也不是完整建模流程，而是 USD Python 入门的最小闭环：创建一个新的 `Usd.Stage`，在 stage 中写入两个 typed prim，然后把 root layer 保存为 `HelloWorld.usda`。读者只要能理解这三个动作，就已经掌握了后续教程反复使用的 stage、layer、prim path 和 schema authoring 基础。</p>
+      <p class="en">The tutorial walks through creating a simple USD stage containing a transform and a sphere.</p>
+
+      <p class="zh">第一步是环境与脚本位置。官方建议先打开 `USD/extras/usd/tutorials/helloWorld/helloWorld.py`，并确认 `Configure your Environment` 中的 Python 环境已经能导入 `pxr`。如果 `from pxr import Usd, UsdGeom` 失败，优先检查 OpenUSD 安装、`PYTHONPATH`、shell 环境和当前工作目录；不要改写教程里的 API 名称。</p>
+      <p class="en">Open `USD/extras/usd/tutorials/helloWorld/helloWorld.py` to see the Python script that creates and exports the stage.</p>
+
+      <p class="zh">`from pxr import Usd, UsdGeom` 引入两个核心模块：`Usd` 提供 stage、layer 和 scene description 的基础入口，`UsdGeom` 提供几何 schema，例如 `UsdGeom.Xform` 和 `UsdGeom.Sphere`。这里的模块名必须原样保留，因为后续代码会直接调用这些 Python API。</p>
+      <p class="en">The script imports `Usd` and `UsdGeom` from `pxr`.</p>
+
+      <p class="zh">`Usd.Stage.CreateNew('HelloWorld.usda')` 创建一个新的可编辑 stage，并把它的 root layer 绑定到 `HelloWorld.usda`。stage 是应用程序操作场景描述的编辑入口；layer 是最终落盘的持久化载体。初学者常把 stage 误解为文件本身，但更准确地说，stage 是组合和编辑视图，root layer 才是这一步创建出的 `.usda` 输出目标。</p>
+      <p class="en">`Usd.Stage.CreateNew('HelloWorld.usda')` creates a new stage with a root layer that can be saved as an ASCII USD file.</p>
+
+      <p class="zh">`UsdGeom.Xform.Define(stage, '/hello')` 在 prim path `/hello` 上定义一个 `Xform` typed prim。`Xform` 是用来承载变换和组织层级的 prim，教程中它作为父节点，为后面的 sphere 提供 namespace 层级。这里的 `/hello` 不是文件路径，而是 USD scene namespace 中的 prim path。</p>
+      <p class="en">`UsdGeom.Xform.Define(stage, '/hello')` defines a transform prim at the `/hello` prim path.</p>
+
+      <p class="zh">`UsdGeom.Sphere.Define(stage, '/hello/world')` 在 `/hello/world` 上定义一个 `Sphere` typed prim。这个路径表示 `world` 是 `/hello` 的子 prim；也就是说，教程用两行 `Define` 同时展示了 typed schema authoring 和父子路径关系。`Define` 的职责是创建或确保 typed prim 存在，而不是只查询已经存在的 prim；查询路径通常会用 `GetPrimAtPath` 之类 API。</p>
+      <p class="en">`UsdGeom.Sphere.Define(stage, '/hello/world')` defines a sphere prim under `/hello`.</p>
+
+      <p class="zh">最后一步 `stage.GetRootLayer().Save()` 把内存中的 root layer 写入磁盘。如果省略这一步，代码虽然创建了 stage 和 prim，但不会产生可检查的 `HelloWorld.usda` 文件。教程的闭环判断很直接：运行脚本后，当前目录应该出现 ASCII USD 文本层，打开后能看到 `/hello` 和 `/hello/world` 的定义。</p>
+      <p class="en">`stage.GetRootLayer().Save()` saves the root layer so the authored scene description is written to `HelloWorld.usda`.</p>
+
+      <p class="zh">本页的主要 section 是 `Python for USD`。它不是要求读者学习全部 Python API，而是让读者看到 USD authoring 的最小顺序：import 模块、创建 stage、定义父 prim、定义子 prim、保存 layer。这个顺序不要调整，因为后续引用、遍历、属性创作和变体教程都会以类似 stage 为基础继续扩展。</p>
+      <p class="en">The `Python for USD` section establishes the minimal order for authoring with Python: import modules, create a stage, define prims, and save the layer.</p>
+
+      <p class="zh">调试时应分层定位：如果 import 失败，是环境配置问题；如果 `HelloWorld.usda` 没生成，检查工作目录和 `Save()`；如果文件存在但看不到 sphere，检查 prim path 字面量是否保持 `/hello/world`；如果在 `usdview` 中显示异常，再检查 OpenUSD 版本、schema 插件和可视化工具，而不是先怀疑教程的 scene description 语义。</p>
+      <p class="en">Debugging should separate environment, save location, path literals, and visualization issues.</p>
+
+      <p class="zh">与相邻教程的关系也很重要：`Inspecting and Authoring Properties` 会继续说明如何查看和写属性；`Referencing Layers` 会把已有 layer 用作引用；`Traversing a Stage` 会遍历 stage 中的 prim。`Hello World` 的作用就是给这些后续主题提供一个足够小、可重复生成、容易打开检查的 USD 文件。</p>
+      <p class="en">Later tutorials build on this simple stage to inspect properties, reference layers, and traverse scene contents.</p>
+
+      <p class="zh">从官方结构看，本页虽然只有一个主要 section，但它实际覆盖了四个教程步骤：准备 Python 环境、查看示例脚本、运行 stage authoring 代码、检查保存后的 `HelloWorld.usda`。因此中文主阅读路径不能只解释“这是 Hello World”，还要能让读者知道每一行代码为何出现、产物在哪里、失败时先检查哪一层。</p>
+      <p class="en">Even though the page is short, the reading path covers environment setup, script inspection, stage authoring, and saved-layer verification.</p>
+
+      <p class="zh">运行完成后的验证方式也很具体：`HelloWorld.usda` 应该是 ASCII USD layer，可以用文本编辑器打开；其中应能看到一个 `/hello` prim 和一个 `/hello/world` prim。这个输出不需要复杂资产、材质或引用；它的价值在于让读者第一次看到 Python API 调用如何变成可持久化的 USD scene description。</p>
+      <p class="en">The expected result is a small ASCII USD layer that can be opened and inspected directly.</p>
+
+      <p class="zh">常见误读之一是把 `/hello/world` 当成普通目录路径。USD prim path 是 scene namespace 中的路径，它描述 prim 之间的层级关系，不要求磁盘上存在 `hello/world` 目录。另一个误读是把 `xformPrim` 和 `spherePrim` 当成必须继续操作的变量；在本教程中，它们主要证明 `Define` 返回了对应 schema 对象，后续教程才会在这些对象上继续写属性或做查询。</p>
+      <p class="en">A common misunderstanding is to treat `/hello/world` as a filesystem path rather than a USD scene namespace path.</p>
+
+      <p class="zh">本页还隐含了 OpenUSD 的分层边界：`Usd` 模块负责 stage/layer 级的 scene description 入口，`UsdGeom` 模块负责几何 schema；`Sdf`、`Pcp`、composition arcs、variant sets 和 asset resolver 都不是本教程要讲的重点。保持这个边界有助于初学者先把 authoring API 跑通，再逐步理解更复杂的 composition 机制。</p>
+      <p class="en">The page keeps the boundary between `Usd` stage/layer authoring and `UsdGeom` typed geometry schemas intentionally small.</p>
+
+      <p class="zh">如果要用本页作为教学检查点，可以按三问判断是否读懂：第一，`Stage.CreateNew` 创建的是哪个持久化目标；第二，`Xform.Define` 和 `Sphere.Define` 写入了哪些 prim path；第三，为什么最后必须调用 `GetRootLayer().Save()`。这三个问题都能用中文回答时，读者就可以进入属性创作、引用 layer 和遍历 stage 的后续教程。</p>
+      <p class="en">A useful checkpoint is whether the reader can explain the created layer, the authored prim paths, and the save step.</p>
+
+      <p class="zh">维护本页时应特别保护几个字面量：`HelloWorld.usda`、`/hello`、`/hello/world`、`Usd.Stage.CreateNew`、`UsdGeom.Xform.Define`、`UsdGeom.Sphere.Define` 和 `stage.GetRootLayer().Save()`。这些是教程的可复现合同，翻译或改写其中任何一个都会让读者无法和官方脚本、命令输出或后续教程对齐。</p>
+      <p class="en">The file name, prim paths, and API calls are the reproducibility contract for this tutorial and must remain unchanged.</p>
+
+      <p class="zh">从“中文能否独立走完教程”的角度，本页的最小成功标准是：读者知道先配置环境，再运行 Python 脚本，随后在当前工作目录找到 `HelloWorld.usda`，最后能解释文件里为什么有一个 transform prim 和一个 sphere prim。英文代码保留是为了核对 API，而不是让读者只能依赖英文正文理解步骤。</p>
+      <p class="en">The minimal success criterion is that the reader can run the script, find `HelloWorld.usda`, and explain the authored prims.</p>
+
+      <p class="zh">如果脚本运行后没有生成文件，首先确认 `stage.GetRootLayer().Save()` 是否执行，以及进程的当前目录是否是你期望的目录。如果文件生成但内容为空，检查 `Define` 调用是否在 `Save()` 之前执行。如果路径或类型不符合预期，逐字核对 `/hello`、`/hello/world`、`Xform` 和 `Sphere`，因为这些字面量共同定义了教程输出的结构。</p>
+      <p class="en">If the output is missing or unexpected, check the save call, working directory, authoring order, path literals, and typed schema names.</p>
+
+      <p class="zh">本教程也说明了 OpenUSD 入门学习的顺序：先掌握如何 author 一个最小 scene description，再学习如何 inspect、edit、reference、traverse 和 compose。不要在第一步就引入 asset resolver、variant set、payload 或复杂 layer stack；那些概念以后会解释，而这里的目标是建立一个可信的、可重复生成的 USD stage。</p>
+      <p class="en">The tutorial deliberately starts with a minimal authoring example before moving on to inspection, editing, references, traversal, and composition.</p>
+
+      <p class="zh">因此，本页的中文覆盖重点是主阅读路径和边界说明，而不是翻译每个英文标识符。`Usd`、`UsdGeom`、`Stage`、`Xform`、`Sphere`、`root layer` 和 `prim path` 都保留英文，是为了让读者在脚本、生成文件、API 文档和后续教程之间保持同一套可搜索的技术词汇。</p>
+      <p class="en">Preserved English identifiers keep the tutorial searchable and aligned with scripts, generated files, API references, and later tutorials.</p>
+
+      <p class="zh">完成本页后，读者应能用自己的中文复述：一个 USD stage 如何被创建，typed prim 如何按 namespace 写入，root layer 如何保存，以及为什么这个最小示例足以作为后续 OpenUSD 教程的公共起点。</p>
+      <p class="en">After this page, the reader should be able to explain the stage, typed prim authoring, root layer saving, and why this small example is the starting point for later OpenUSD tutorials.</p>
+
+      <p class="zh">这也是后续学习组合、引用、属性和遍历之前必须先确认的基础检查点。</p>
+      <p class="en">This is the baseline checkpoint before composition, references, properties, and traversal.</p>
+    </section>
+
+    <section>
+      <h2>教程步骤主阅读路径 / Tutorial Step Reading Path</h2>
+      <ol>
+        <li><span class="zh">确认环境：先阅读 `Configure your Environment`，保证 Python 能导入 `pxr`。</span><span class="en">Confirm the environment before running the tutorial script.</span></li>
+        <li><span class="zh">打开脚本：查看 `USD/extras/usd/tutorials/helloWorld/helloWorld.py`，不要翻译或改写其中的 API 名称。</span><span class="en">Open the provided `helloWorld.py` script and keep API names intact.</span></li>
+        <li><span class="zh">创建 stage：用 `Usd.Stage.CreateNew('HelloWorld.usda')` 建立新的 root layer 输出目标。</span><span class="en">Create the stage with `Usd.Stage.CreateNew('HelloWorld.usda')`.</span></li>
+        <li><span class="zh">定义父 prim：用 `UsdGeom.Xform.Define(stage, '/hello')` 建立 transform 节点。</span><span class="en">Define the parent transform prim at `/hello`.</span></li>
+        <li><span class="zh">定义子 prim：用 `UsdGeom.Sphere.Define(stage, '/hello/world')` 建立 sphere 节点。</span><span class="en">Define the sphere prim at `/hello/world`.</span></li>
+        <li><span class="zh">保存 layer：用 `stage.GetRootLayer().Save()` 写出 `HelloWorld.usda`。</span><span class="en">Save the root layer to write `HelloWorld.usda`.</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>关键概念边界 / Concept Boundaries</h2>
       <ul>
-        <li><span class="zh">本教程是 USD 入门的最小闭环：创建一个新的 Usd.Stage，在 /hello 下定义 Xform，再在 /hello/world 下定义 Sphere，最后保存为 HelloWorld.usda。</span></li>
-        <li><span class="zh">阅读时重点看 Usd.Stage.CreateNew 与 UsdGeom.Xform.Define / UsdGeom.Sphere.Define 的关系：Stage 是承载 layer 的编辑入口，Define 会在指定路径创建 typed prim。</span></li>
-        <li><span class="zh">该页的英文代码和命令保持原样；中文层只解释对象关系、路径层级和 .usda 输出含义，避免改写 API 调用。</span></li>
-        <li><span class="zh">后续 Inspecting、Referencing、Traversing 等教程都会复用这个简单场景，所以它相当于后续教程的公共起点。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">USD 舞台对象：</span><span class="en">Usd.Stage</span></li>
-        <li><span class="zh">变换 prim：</span><span class="en">Xform</span></li>
-        <li><span class="zh">球体 prim：</span><span class="en">Sphere</span></li>
-        <li><span class="zh">prim 路径：</span><span class="en">prim path</span></li>
-        <li><span class="zh">USD 文本层格式：</span><span class="en">.usda</span></li>
+        <li><span class="zh">`stage` 不是单纯文件名；它是 OpenUSD 读写 scene description 的编辑入口。</span><span class="en">A stage is the editing interface for scene description, not merely a file name.</span></li>
+        <li><span class="zh">`root layer` 才是 `HelloWorld.usda` 这种持久化文件的承载层。</span><span class="en">The root layer is the persistent layer saved to `HelloWorld.usda`.</span></li>
+        <li><span class="zh">`/hello/world` 是 USD prim path，不是操作系统路径。</span><span class="en">`/hello/world` is a USD prim path, not an operating-system path.</span></li>
+        <li><span class="zh">`Define` 是 authoring API，会创建或确保 typed prim；不要和只读查询 API 混淆。</span><span class="en">`Define` is an authoring API, not just a query.</span></li>
+        <li><span class="zh">`Xform` 和 `Sphere` 是 typed schema 的示例；后续教程会扩展到属性、引用、遍历和变体。</span><span class="en">`Xform` and `Sphere` are typed schema examples used as a basis for later tutorials.</span></li>
       </ul>
     </section>
-    <section data-cn-refinement="release-quality-pass-090">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Hello World - Creating Your First USD Stage 增补 API 索引、模块入口、File Members 或教程页面的二次精修说明，重点解释 Doxygen 字母桶、函数/变量成员索引、模块 front page、教程路径和跨模块条目的归类方式，以及何时应跳转到目标 class、schema、namespace、header、group、教程或用户指南。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方页面逐项核对。</p>
-      <p class="en">This section adds a second-pass Chinese refinement for the Hello World - Creating Your First USD Stage API index, module front page, File Members page, or tutorial page. It explains how to read Doxygen letter buckets, function/variable-member indexes, module front pages, tutorial flows, and cross-module entry groupings, and when to jump to target class, schema, namespace, header, group, tutorial, or user-guide documentation while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">`tut_helloworld.html` 是 USD 教程链的最小闭环：创建 `Usd.Stage`，在 `/hello` 定义 `UsdGeom.Xform`，在 `/hello/world` 定义 `UsdGeom.Sphere`，最后保存为 `HelloWorld.usda`。</span></li>
-        <li><span class="zh">`Usd.Stage.CreateNew` 是创建新 stage/layer 的入口；`UsdGeom.Xform.Define` 与 `UsdGeom.Sphere.Define` 会在给定 prim path 上创建 typed prim。中文层解释对象关系，但保留 Python API 调用原文。</span></li>
-        <li><span class="zh">`/hello` 与 `/hello/world` 是 prim path 层级示例，展示 USD namespace 如何表达父子关系；教程不是讲复杂 composition，而是让读者先理解 stage、layer、prim path 和 typed schema 的基本关系。</span></li>
-        <li><span class="zh">`HelloWorld.usda` 是 ASCII USD layer 输出，适合初学者直接打开查看；后续 inspecting、referencing、traversing 等教程会复用这个简单场景，因此它也是后续教程的公共起点。</span></li>
-        <li><span class="zh">阅读本页时应先确认环境配置链接 `Configure your Environment`，再运行代码；如果命令或 Python import 失败，优先检查 USD 版本、`PYTHONPATH`/环境变量和当前工作目录，而不是修改教程中的 API 名称。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">stage 创建：</span><span class="en">stage creation</span></li>
-        <li><span class="zh">有类型 prim：</span><span class="en">typed prim</span></li>
-        <li><span class="zh">prim 路径层级：</span><span class="en">prim path hierarchy</span></li>
-        <li><span class="zh">ASCII USD layer：</span><span class="en">ASCII USD layer</span></li>
-        <li><span class="zh">教程起点：</span><span class="en">tutorial starting point</span></li>
-        <li><span class="zh">环境配置：</span><span class="en">environment configuration</span></li>
-      </ul>
+
+    <section>
+      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
+      <pre><code>from pxr import Usd, UsdGeom
+
+stage = Usd.Stage.CreateNew('HelloWorld.usda')
+xformPrim = UsdGeom.Xform.Define(stage, '/hello')
+spherePrim = UsdGeom.Sphere.Define(stage, '/hello/world')
+stage.GetRootLayer().Save()</code></pre>
     </section>
-    <section data-cn-refinement="release-quality-pass-110">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`Hello World` 教程是 USD Python 入门的最小可运行闭环：创建 `Usd.Stage`，在 `/hello` 和 `/hello/world` 路径上定义 typed prim，最后把 root layer 保存为 `HelloWorld.usda`。本页价值在于建立 stage、layer、prim path 和 typed schema 的基础关系。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for Hello World - Creating Your First USD Stage while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`Usd.Stage.CreateNew('HelloWorld.usda')` 创建可编辑 stage，并把新的 root layer 绑定到目标 `.usda` 文件。中文解释应把 stage 和文件层区分开：stage 是编辑入口，layer 是持久化载体。</span></li>
-        <li><span class="zh">`UsdGeom.Xform.Define(stage, '/hello')` 会在 `/hello` 定义一个 transform prim；`UsdGeom.Sphere.Define(stage, '/hello/world')` 会在其子路径定义球体 prim。路径层级体现 USD namespace。</span></li>
-        <li><span class="zh">`Define` 在目标路径上创建或确保 typed prim 存在，和只查找 prim 的 `GetPrimAtPath` 不同。入门读者需要先理解 authoring API 与 query API 的区别。</span></li>
-        <li><span class="zh">`stage.GetRootLayer().Save()` 是闭环的最后一步；如果没有保存，内存中的 stage 修改不会写入 `HelloWorld.usda`。保留这行代码对复现实验很重要。</span></li>
-        <li><span class="zh">后续引用、属性创作、遍历和变体教程都会复用这个 stage 思路。维护本页时应优先保证代码顺序、路径字面量和 `.usda` 文件名不被翻译或改写。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
+
+    <section>
+      <h2>术语对照 / Terms</h2>
       <ul>
         <li><span class="zh">创建新 USD stage：</span><span class="en">Usd.Stage.CreateNew</span></li>
         <li><span class="zh">定义 Xform typed prim：</span><span class="en">UsdGeom.Xform.Define</span></li>
@@ -96,29 +150,23 @@
         <li><span class="zh">教程输出的 USD 文本文件：</span><span class="en">HelloWorld.usda</span></li>
       </ul>
     </section>
+
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
-<li><span class="zh">第 1 级标题：Hello World - Creating Your First USD Stage</span><span class="en">Hello World - Creating Your First USD Stage</span></li>
-<li><span class="zh">第 2 级标题：Python for USD</span><span class="en">Python for USD</span></li>
+        <li><span class="zh">第 1 级标题：Hello World - Creating Your First USD Stage</span><span class="en">Hello World - Creating Your First USD Stage</span></li>
+        <li><span class="zh">第 2 级标题：Python for USD</span><span class="en">Python for USD</span></li>
       </ul>
     </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">This tutorial walks through creating a simple USD stage containing a transform and a sphere.</p>
-<p class="en">Open USD/extras/usd/tutorials/helloWorld/helloWorld.py to see the Python script that creates and exports the stage. It should look like the following.</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>from pxr import Usd , UsdGeom stage = Usd . Stage . CreateNew ( 'HelloWorld.usda' ) xformPrim = UsdGeom . Xform . Define ( stage , '/hello' ) spherePrim = UsdGeom . Sphere . Define ( stage , '/hello/world' ) stage . GetRootLayer () . Save ()</code></pre>
-    </section>
+
     <section>
       <h2>本页链接 / Page Links</h2>
       <ul>
-<li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Configure your Environment</a></li>
-<li><a href="https://github.com/PixarAnimationStudios/OpenUSD/tree/v26.05">USD 26.05</a></li>
+        <li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Configure your Environment</a></li>
+        <li><a href="https://github.com/PixarAnimationStudios/OpenUSD/tree/v26.05">USD 26.05</a></li>
       </ul>
     </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>

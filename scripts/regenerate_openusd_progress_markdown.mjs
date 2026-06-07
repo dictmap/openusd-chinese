@@ -55,6 +55,8 @@ function buildWorkMd({ inventory, quality, validation, englishDebt, problemAudit
   const round = inferRound(problemAudit);
   const roundType = inferRoundType(problemAudit);
   const target = nextTarget(problemAudit);
+  const latestPromotion = promotions.promotions[0];
+  const isPromotion = roundType === "PromotionRound";
   return `# OpenUSD Bilingual Work Log
 
 ## 当前真实状态
@@ -75,12 +77,11 @@ function buildWorkMd({ inventory, quality, validation, englishDebt, problemAudit
 
 ## 第 ${round} 轮：${roundType}
 
-- 轮次性质：流程缺陷修复，不晋级新页面。
-- 修复缺陷：P1-english-residual-debt、P1-release-coverage-lag、P1-markdown-record-encoding 的审计覆盖不足。
-- 维护脚本：\`scripts/audit_openusd_english_debt.mjs\`
-- 固定链路：\`reports/english_debt_audit.json\`、\`reports/english_debt_audit.md\` 纳入 \`audit_openusd_report_index.mjs\` 和 \`validate_openusd_api_repro.ps1\`
-- skill 更新：\`C:\\Users\\robot\\.codex\\skills\\openusd-bilingual-automation\\SKILL.md\` 已加入 dirty tree 阻断、release 配额、EnglishDebtRound 和 \`review_ready_zh\` 汇报要求。
-- 完成数变化：good_bilingual 保持 ${counts.good_bilingual}；review_ready_zh 当前为 ${englishDebt.counts.review_ready_zh}。
+- 轮次性质：${isPromotion ? "页面晋级，exactly 1 个目标页。" : "流程或一致性修复，不晋级新页面。"}
+- 本轮目标：${isPromotion ? `\`${latestPromotion?.local_output ?? target}\`` : problemAudit.next_action}
+- 官方页面：${isPromotion ? `\`${latestPromotion?.official_url ?? ""}\`` : "不适用"}
+- 完成数状态：good_bilingual=${counts.good_bilingual}；review_ready_zh=${englishDebt.counts.review_ready_zh}。
+- 固定审计：\`translation_quality_review.json\`、\`english_debt_audit.json\`、\`all_pages_inventory.json\`、\`validation_report.json\` 已重建。
 
 ## 英文残留审计结果
 
@@ -99,7 +100,7 @@ function buildWorkMd({ inventory, quality, validation, englishDebt, problemAudit
 
 ## 下一轮目标
 
-优先转向 release/tutorial/user guide，建议目标：\`${target}\`。如果该页无法达到 \`good_bilingual\`，停止并报告阻塞；不要回到只刷 API 模块页的节奏。
+建议目标：\`${target}\`。如果该页无法达到 \`good_bilingual\`，停止并报告阻塞；不要回到只刷 API 模块页的节奏。
 `;
 }
 
@@ -107,13 +108,16 @@ function buildIterationMd({ inventory, quality, validation, englishDebt, problem
   const counts = problemAudit.current_counts;
   const round = inferRound(problemAudit);
   const roundType = inferRoundType(problemAudit);
+  const latestPromotion = promotions.promotions[0];
+  const isPromotion = roundType === "PromotionRound";
   return `# OpenUSD Iteration Report
 
 ## 第 ${round} 轮摘要
 
 - 轮次类型：${roundType}
-- 本轮没有晋级页面；这是命名缺陷修复轮。
-- 核心修复：校正英文残留审计策略，更新自动化 skill，保持人类可读 Markdown 编码守卫。
+- 本轮目标：${isPromotion ? `\`${latestPromotion?.local_output ?? ""}\`` : "命名缺陷或一致性修复"}
+- 结果：${isPromotion ? "完成 1 个页面晋级，并让 good_bilingual 增加。" : "未晋级页面，修复命名缺陷或一致性问题。"}
+- 核心说明：${isPromotion ? "目标页已移除草稿状态，补齐中文主阅读路径，并进入 promotion manifest。" : "保持审计链和人类可读记录一致。"}
 
 ## 真实计数
 

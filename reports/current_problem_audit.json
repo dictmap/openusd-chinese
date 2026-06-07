@@ -1,27 +1,27 @@
 {
   "generated_at": "2026-06-07",
-  "purpose": "Track current completion blockers after user feedback. Round 374 is a DefectRound that corrects English-debt policy: English/Chinese ratio is diagnostic only, while review_ready_zh depends on Chinese main reading path and section coverage.",
+  "purpose": "Track current completion blockers after user feedback. Round 375 is a PromotionRound that promotes full_site/release/tut_helloworld.html and moves release/tutorial coverage forward.",
   "current_counts": {
     "total_pages": 406,
-    "bilingual_complete": 77,
-    "bilingual_draft": 329,
-    "good_bilingual": 77,
-    "draft_needs_translation": 318,
+    "bilingual_complete": 78,
+    "bilingual_draft": 328,
+    "good_bilingual": 78,
+    "draft_needs_translation": 317,
     "draft_template_only": 11
   },
   "problems": [
     {
       "id": "P0-completion-stalled",
       "severity": "P0",
-      "summary": "The main completion number was structurally stalled at 8; the promotion path now raises it to 77, but the remaining 329 draft pages still need real upgrades.",
-      "evidence": "reports/bilingual_completion_promotions.json records 69 promoted pages; discover_openusd_all_pages.mjs counts manifest-promoted pages as bilingual_complete, and audit_openusd_translation_quality.mjs reports good_bilingual=77.",
+      "summary": "The main completion number was structurally stalled at 8; the promotion path now raises it to 78, but the remaining 328 draft pages still need real upgrades.",
+      "evidence": "reports/bilingual_completion_promotions.json records 70 promoted pages; discover_openusd_all_pages.mjs counts manifest-promoted pages as bilingual_complete, and audit_openusd_translation_quality.mjs reports good_bilingual=78.",
       "required_action": "Continue using the promotion manifest only for pages with paragraph-level bilingual coverage and draft-marker removal; do not mark guide-only drafts as complete."
     },
     {
       "id": "P0-final-entry-misleading",
       "severity": "P0",
       "summary": "The final entry previously misled users by showing pending=0 while most pages were incomplete drafts.",
-      "evidence": "openusd_bilingual_final.html now states 77 complete pages and labels the remaining 329 pages as Incomplete drafts.",
+      "evidence": "openusd_bilingual_final.html now states 78 complete pages and labels the remaining 328 pages as Incomplete drafts.",
       "required_action": "Keep final-entry counts dynamic and keep bilingual_draft clearly described as incomplete translation."
     },
     {
@@ -49,21 +49,21 @@
       "id": "P1-draft-content-thin",
       "severity": "P1",
       "summary": "Most draft pages contain Chinese guidance and term notes, not paragraph-level bilingual translation.",
-      "evidence": "318 pages remain draft_needs_translation; 11 pages remain draft_template_only.",
+      "evidence": "317 pages remain draft_needs_translation; 11 pages remain draft_template_only.",
       "required_action": "For selected high-value pages, replace or supplement guide-only blocks with dense paragraph-level bilingual coverage and then promote status only if the page passes the stricter rule."
     },
     {
       "id": "P1-english-residual-debt",
       "severity": "P1",
       "summary": "The good_bilingual count is useful but still too broad to prove human-review-ready Chinese reading quality; English/Chinese ratio alone must not be treated as failure.",
-      "evidence": "reports/english_debt_audit.json now treats English/Chinese ratio as a diagnostic sorter only and computes review_ready_zh=14 from Chinese main-reading-path coverage signals; 10 complete pages are marked with high or very high ratio diagnostic for priority review but not automatic failure.",
+      "evidence": "reports/english_debt_audit.json treats English/Chinese ratio as a diagnostic sorter only and computes review_ready_zh=15 from Chinese main-reading-path coverage signals; 10 complete pages are marked with high or very high ratio diagnostic for priority review but not automatic failure.",
       "required_action": "Report review_ready_zh alongside good_bilingual; schedule EnglishDebtRound for pages missing section coverage or Chinese main reading path, not merely because English remains abundant."
     },
     {
       "id": "P1-release-coverage-lag",
       "severity": "P1",
-      "summary": "Completion remains heavily API-skewed while release/tutorial/user-guide pages lag.",
-      "evidence": "reports/english_debt_audit.json reports api_complete=72 but release_complete=5; release_review_ready_zh is only 1.",
+      "summary": "Completion remains heavily API-skewed while release/tutorial/user-guide pages lag, although round 375 moved one release tutorial forward.",
+      "evidence": "reports/english_debt_audit.json reports api_complete=72 and release_complete=6; release_review_ready_zh is 3 after promoting tut_helloworld.html.",
       "required_action": "After several API PromotionRounds, choose a release/tutorial/user-guide page unless a named P0/P1 defect blocks the run."
     },
     {
@@ -79,8 +79,8 @@
     "Use reports/bilingual_completion_promotions.json as the auditable promotion source.",
     "Keep discover_openusd_all_pages.mjs anchored to the stable 406 local HTML files, not rewritten local navtree links.",
     "Use reports/english_debt_audit.json to report review_ready_zh, release/API completion split, section coverage signals, and English ratio diagnostic.",
-    "Prefer a release/tutorial/user-guide PromotionRound soon; otherwise use EnglishDebtRound on the highest English-debt complete page.",
-    "Continue only after checking the working tree is clean. Suggested release-oriented target: full_site/release/tut_helloworld.html; if not suitable, use full_site/api/sdf_page_front.html."
+    "Prefer another release/tutorial/user-guide PromotionRound to reduce release coverage lag; otherwise use EnglishDebtRound on the highest English-debt complete page.",
+    "Continue only after checking the working tree is clean. Suggested release-oriented target: full_site/release/tut_inspect_and_author_props.html; if not suitable, use another release/tutorial page present in the 406 inventory."
   ],
-  "next_action": "Prefer a release/tutorial/user-guide PromotionRound to reduce release coverage lag. Suggested target: full_site/release/tut_helloworld.html. If not suitable, use full_site/api/sdf_page_front.html. Always report review_ready_zh from reports/english_debt_audit.json."
+  "next_action": "Prefer another release/tutorial/user-guide PromotionRound to reduce release coverage lag. Suggested target: full_site/release/tut_inspect_and_author_props.html. If not suitable, use another release/tutorial page present in the 406 inventory. Always report review_ready_zh from reports/english_debt_audit.json."
 }

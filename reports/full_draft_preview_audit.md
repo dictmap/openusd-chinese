@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-07T13:20:17.239Z
+Generated: 2026-06-07T14:11:35.298Z
 
-Transient base URL: `http://127.0.0.1:65435/`
+Transient base URL: `http://127.0.0.1:64561/`
 
 Result:
 
 - Passed: true
-- Draft pages: 329
-- Pages checked: 329
-- Passed pages: 329
+- Draft pages: 328
+- Pages checked: 328
+- Passed pages: 328
 - Failed pages: 0
-- Final HTML links: 329
-- Local assets checked: 329
+- Final HTML links: 328
+- Local assets checked: 328
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -247,7 +247,6 @@ Result:
 | true | full_site/release/tut_end_to_end.html | 200 | true | 0 | 0 |
 | true | full_site/release/tut_generating_new_schema.html | 200 | true | 0 | 0 |
 | true | full_site/release/tut_helloworld_redux.html | 200 | true | 0 | 0 |
-| true | full_site/release/tut_helloworld.html | 200 | true | 0 | 0 |
 | true | full_site/release/tut_houdini_example.html | 200 | true | 0 | 0 |
 | true | full_site/release/tut_inspect_and_author_props.html | 200 | true | 0 | 0 |
 | true | full_site/release/tut_referencing_layers.html | 200 | true | 0 | 0 |
