@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>API 模块草稿：Hio: Hydra Resource I/O / Hio: Hydra Resource I/O</title>
+  <title>完整双语参考：Hio: Hydra Resource I/O / Hio: Hydra Resource I/O</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -19,20 +19,49 @@
     ul{padding-left:22px}
     li{margin:8px 0}
     code{font-family:"Cascadia Mono","Consolas",monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>API 模块草稿：Hio: Hydra Resource I/O / Hio: Hydra Resource I/O</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：Hio: Hydra Resource I/O / Hio: Hydra Resource I/O</h1>
     <div class="meta">https://openusd.org/release/api/hio_page_front.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页处理：中文优先解释 `Hio` 作为 Hydra Resource I/O 模块的职责，覆盖 shader container、`glslfx`、image/texture-reading abstraction、`HioStb_Image`、`HioOIIO_Image`、`HioFieldTextureData`、图像格式插件部署和它与 `HdSt`、`Hgi`、`UsdShade`、`UsdVol` 的边界；英文 API 名称、类型名、链接和官方摘录保留原样，便于与 Doxygen 页面核对。</p>
+      <p class="en">This page is promoted as a complete bilingual reference. It explains Hio as the Hydra Resource I/O layer for shader containers, image and texture reading, and field texture data.</p>
+    </section>
+    <section data-cn-complete="hio-hydra-resource-io-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">官方第一句说：`This library contains utility classes for loading resources used by Hydra.` 这里的核心词是 loading resources。`Hio` 不是 scene graph、composition 或 render task 调度模块，而是为 Hydra/Storm 等成像路径读取外部资源的工具层。它把 shader、image、texture、field texture 等输入转成渲染侧可继续处理的数据。</p>
+      <p class="en">Hio contains utility classes for loading resources used by Hydra.</p>
+      <p class="zh">`HioGlslfx` 负责解释 Pixar 的 `glslfx` GPU shader container format。它支持 shader snippets composition，也支持 specification of metadata that can be used for code generation purposes。也就是说，它关注 shader 代码片段、组合规则和代码生成元数据，不等同于 `UsdShade` 的 authored material network，也不负责最终 shader 在 GPU 后端如何编译和执行。</p>
+      <p class="en">HioGlslfx interprets the glslfx GPU shader container format, including shader snippet composition and code-generation metadata.</p>
+      <p class="zh">`HioImage` 是 plugin-based image/texture-reading abstraction。官方明确说它 is used by `hdStorm` for all image I/O，因此它是 Storm 读取 texture/image 的资源入口之一。渲染失败时，如果症状是 image format unsupported、texture file cannot open、color space 或 mip/metadata 读取问题，应优先检查 `HioImage` 插件、文件路径和 image I/O backend。</p>
+      <p class="en">HioImage provides a plugin-based image and texture reading abstraction used by hdStorm for image I/O.</p>
+      <p class="zh">Hydra 提供两类 image 实现路径：`HioStb_Image` 和 `HioOIIO_Image`。`stb` 通常轻量、默认编译，适合基础图像读取；`OpenImageIO` 路径通常能力更强，但涉及构建选项、依赖部署和格式支持差异。排查某个 texture 格式在一台机器能读、另一台机器不能读时，要把 backend availability 和插件配置列为第一批检查项。</p>
+      <p class="en">HioStb_Image and HioOIIO_Image are different image I/O backends with different build and deployment implications.</p>
+      <p class="zh">`HioFieldTextureData` 面向 volume/field texture data。它和普通 2D image I/O 相邻但不相同：field texture 可能服务于体积、场数据、volume sampling 或 renderer-side texture upload。若问题来自 `UsdVol` 数据、field asset、体积采样或 renderer 对 field texture 的消费，需要分清是资源读取失败、数据布局不匹配，还是渲染器不支持对应体积效果。</p>
+      <p class="en">HioFieldTextureData handles field texture data used by volume or field-texture workflows.</p>
+      <p class="zh">`Hio` 与 `HdSt` 的边界是“读取资源”和“消费资源”的边界。`Hio` 负责把 shader container 或 image/texture 数据读进来；`HdSt` 负责把这些资源绑定到 shader、texture handle、draw item、render pass 或 GPU resource 上。若文件读取失败或格式不支持，先查 `Hio`；若资源读入后显示错误、绑定错误或 shader 执行异常，再查 `HdSt` / `Hgi`。</p>
+      <p class="en">Hio loads resources, while HdSt consumes them as Storm rendering resources.</p>
+      <p class="zh">`Hio` 与 `Hgi`/`Glf` 也要分清。`Hgi` 抽象 graphics API resource 和 command submission，`Glf` 偏 OpenGL output helper；`Hio` 负责从外部文件或资源容器读取内容。读取 texture 文件、解析 `glslfx`、选择 image plugin 属于 `Hio`；创建 GPU texture、提交 draw/dispatch 或处理 OpenGL framebuffer 则属于相邻图形层。</p>
+      <p class="en">Hio reads external resource data; Hgi and Glf handle graphics-resource abstraction and OpenGL output concerns.</p>
+      <p class="zh">`Hio` 与 `UsdShade` 的关系常被混淆。`UsdShade` 描述材质网络和 authored shader inputs，`HioGlslfx` 处理 GPU shader container 文件格式和 shader snippet 组合。材质网络连线错误、schema 属性写错，应查 `UsdShade`；shader container 找不到、metadata 解析失败或代码生成输入缺失，才是 `HioGlslfx` 方向。</p>
+      <p class="en">UsdShade authors material networks; HioGlslfx interprets shader container resources used by rendering code.</p>
+      <p class="zh">`Working With Image File Formats` 是本页最重要的用户指南跳转。它用于理解图像格式插件、OpenImageIO、stb、部署路径、支持格式和运行时查找问题。本地清单内该链接已映射到 release 用户指南；而 `HioGlslfx`、`HioImage`、`HioFieldTextureData` class 页面当前按策略指向 uncovered placeholder，表示它们还不在 406 页本地清单内。</p>
+      <p class="en">Working With Image File Formats is the user-guide path for image plugin, format support, and deployment questions.</p>
+      <p class="zh">常见调试路径可以固定为：先确认 asset path 或 shader/image 文件路径是否能被 resolver 找到；再确认 `Hio` backend 是否启用并支持该格式；然后检查 `HioImage` 或 `HioGlslfx` 是否成功读取 metadata/data；接着看 `HdSt` 是否把资源绑定到 texture/shader；最后再进入 `Hgi`、`Glf` 或 GPU backend。这样可以避免把资源读取失败误归因给 Hydra task 或 USD composition。</p>
+      <p class="en">A practical debugging path is path resolution, Hio backend support, resource data read, HdSt binding, and graphics-backend consumption.</p>
+      <p class="zh">部署层面的判断同样属于本页范围：`HioImage` 的格式能力取决于已编译和已发现的 image plugin，`HioOIIO_Image` 是否可用会影响 OpenImageIO 支持的格式，`HioStb_Image` 则代表较轻量的默认路径。发布工具、渲染农场或插件化应用如果只在某些机器上丢失 texture，应同时核对 plugin search path、依赖库、文件扩展名、resolver 结果和 backend 选择，而不是只检查 USD 文件本身。</p>
+      <p class="en">Deployment failures often depend on available image plugins, backend selection, dependency libraries, file extensions, and resolver results.</p>
+      <p class="zh">判断是否进入 `Hio` 的一个实用标准是“错误是否发生在资源字节被读取和解释之前”。如果 USD composition 已经生成正确 prim，材质网络也能定位 texture asset，但渲染器无法打开文件、无法识别格式或无法提取 shader metadata，问题才真正落到 Hio 资源 I/O 层；这能让排查顺序更稳定，也便于复现实验，并减少误判，更清晰。</p>
+      <p class="en">Hio is the right layer when failures occur while resource bytes are being opened or interpreted.</p>
+      <p class="zh">反向边界也很重要：如果问题是 layer opinion、variant、reference/payload、prim traversal 或 render task 顺序，`Hio` 不是入口；应转向 `Sdf`、`Pcp`、`Usd`、`Hd` 或 `Hdx`。只有当症状落在 shader container、image/texture file、field texture data、format plugin 或资源读取 backend 时，本页才是正确起点。</p>
+      <p class="en">Composition, traversal, and task-order issues belong to adjacent USD or Hydra modules rather than Hio.</p>
     </section>
     <section data-cn-refinement="api-mixed-quality-pass-046">
       <h2>中文精修导读 / Chinese Reading Notes</h2>

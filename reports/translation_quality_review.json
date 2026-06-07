@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T11:22:24.887Z",
+  "generated_at": "2026-06-07T11:39:34.299Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 338,
-    "bilingual_complete": 68
+    "bilingual_draft": 337,
+    "bilingual_complete": 69
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 327,
-    "good_bilingual": 68
+    "draft_needs_translation": 326,
+    "good_bilingual": 69
   },
   "focus_batch": [
     {
@@ -6590,29 +6590,29 @@
     },
     {
       "index": 209,
-      "title": "API 模块草稿：Hio: Hydra Resource I/O / Hio: Hydra Resource I/O",
+      "title": "完整双语参考：Hio: Hydra Resource I/O / Hio: Hydra Resource I/O",
       "output": "full_site/api/hio_page_front.html",
       "official_url": "https://openusd.org/release/api/hio_page_front.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 37,
-      "enBlockCount": 24,
-      "zhChars": 691,
-      "enLetters": 2000,
-      "bodyChineseChars": 762,
+      "grade": "good_bilingual",
+      "zhBlockCount": 50,
+      "enBlockCount": 37,
+      "zhChars": 1619,
+      "enLetters": 3146,
+      "bodyChineseChars": 1700,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 Hio: Hydra Resource I/O 补充中文优先的用途说明、模块边界、关键入口和术语对照；英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`Hio` 是 Hydra Resource I/O 模块，提供 Hydra 使用的资源加载工具类，尤其面向 shader container、image/texture I/O 和 field texture data。"
+        "本页已按完整双语参考页处理：中文优先解释 `Hio` 作为 Hydra Resource I/O 模块的职责，覆盖 shader container、`glslfx`、image/texture-reading abstraction、`HioStb_Image`、`HioOIIO_Image`、`HioFieldTextureData`、图像格式插件部署和它与 `HdSt`、`Hgi`、`UsdShade`、`UsdVol` 的边界；英文 API 名称、类型名、链接和官方摘录保留原样，便于与 Doxygen 页面核对。",
+        "官方第一句说：`This library contains utility classes for loading resources used by Hydra.` 这里的核心词是 loading resources。`Hio` 不是 scene graph、composition 或 render task 调度模块，而是为 Hydra/Storm 等成像路径读取外部资源的工具层。它把 shader、image、texture、field texture 等输入转成渲染侧可继续处理的数据。",
+        "`HioGlslfx` 负责解释 Pixar 的 `glslfx` GPU shader container format。它支持 shader snippets composition，也支持 specification of metadata that can be used for code generation purposes。也就是说，它关注 shader 代码片段、组合规则和代码生成元数据，不等同于 `UsdShade` 的 authored material network，也不负责最终 shader 在 GPU 后端如何编译和执行。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first purpose notes, module boundaries, key entry points, and terminology for Hio: Hydra Resource I/O while retaining English page names, class names, method names, attribute names, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page is promoted as a complete bilingual reference. It explains Hio as the Hydra Resource I/O layer for shader containers, image and texture reading, and field texture data.",
+        "Hio contains utility classes for loading resources used by Hydra."
       ]
     },
     {

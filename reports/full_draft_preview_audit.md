@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-07T11:22:30.835Z
+Generated: 2026-06-07T11:39:39.791Z
 
-Transient base URL: `http://127.0.0.1:57540/`
+Transient base URL: `http://127.0.0.1:50422/`
 
 Result:
 
 - Passed: true
-- Draft pages: 338
-- Pages checked: 338
-- Passed pages: 338
+- Draft pages: 337
+- Pages checked: 337
+- Passed pages: 337
 - Failed pages: 0
-- Final HTML links: 338
-- Local assets checked: 338
+- Final HTML links: 337
+- Local assets checked: 337
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -164,7 +164,6 @@ Result:
 | true | full_site/api/hd_storm_page_front.html | 200 | true | 0 | 0 |
 | true | full_site/api/hgi_2shader_program_8h_source.html | 200 | true | 0 | 0 |
 | true | full_site/api/hierarchy.html | 200 | true | 0 | 0 |
-| true | full_site/api/hio_page_front.html | 200 | true | 0 | 0 |
 | true | full_site/api/inherits.html | 200 | true | 0 | 0 |
 | true | full_site/api/journal_8h.html | 200 | true | 0 | 0 |
 | true | full_site/api/js_page_front.html | 200 | true | 0 | 0 |

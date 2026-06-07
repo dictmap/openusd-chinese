@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-07T11:22:23.696Z
+Generated: 2026-06-07T11:39:33.612Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 68
-- Promoted complete pages: 60
-- Bilingual draft pages: 338
+- Bilingual complete pages: 69
+- Promoted complete pages: 61
+- Bilingual draft pages: 337
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -226,7 +226,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_complete | https://openusd.org/release/api/hdx_page_front.html | full_site/api/hdx_page_front.html | https://openusd.org/release/api/hdx_page_front.html |
 | api | bilingual_draft | 源码页面草稿：shaderProgram.h / shaderProgram.h | full_site/api/hgi_2shader_program_8h_source.html | https://openusd.org/release/api/hgi_2shader_program_8h_source.html |
 | api | bilingual_draft | API 页面草稿：Class Hierarchy / Class Hierarchy | full_site/api/hierarchy.html | https://openusd.org/release/api/hierarchy.html |
-| api | bilingual_draft | API 模块草稿：Hio: Hydra Resource I/O / Hio: Hydra Resource I/O | full_site/api/hio_page_front.html | https://openusd.org/release/api/hio_page_front.html |
+| api | bilingual_complete | https://openusd.org/release/api/hio_page_front.html | full_site/api/hio_page_front.html | https://openusd.org/release/api/hio_page_front.html |
 | api | bilingual_complete | https://openusd.org/release/api/index.html | site/index.html | https://openusd.org/release/api/index.html |
 | api | bilingual_draft | Class Hierarchy | full_site/api/inherits.html | https://openusd.org/release/api/inherits.html |
 | api | bilingual_draft | API 页面草稿：journal.h File / journal.h File | full_site/api/journal_8h.html | https://openusd.org/release/api/journal_8h.html |
