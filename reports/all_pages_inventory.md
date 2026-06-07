@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-07T06:48:08.609Z
+Generated: 2026-06-07T06:59:13.234Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 47
-- Promoted complete pages: 39
-- Bilingual draft pages: 359
+- Bilingual complete pages: 48
+- Promoted complete pages: 40
+- Bilingual draft pages: 358
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -64,7 +64,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_draft | 类参考草稿：UsdImagingAdapterRegistry Class / UsdImagingAdapterRegistry Class | full_site/api/class_usd_imaging_adapter_registry.html | https://openusd.org/release/api/class_usd_imaging_adapter_registry.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_usd_imaging_delegate.html | full_site/api/class_usd_imaging_delegate.html | https://openusd.org/release/api/class_usd_imaging_delegate.html |
 | api | bilingual_draft | 类参考草稿：UsdImagingNurbsPatchAdapter Class / UsdImagingNurbsPatchAdapter Class | full_site/api/class_usd_imaging_nurbs_patch_adapter.html | https://openusd.org/release/api/class_usd_imaging_nurbs_patch_adapter.html |
-| api | bilingual_draft | 类参考草稿：UsdLuxDiskLight Class / UsdLuxDiskLight Class | full_site/api/class_usd_lux_disk_light.html | https://openusd.org/release/api/class_usd_lux_disk_light.html |
+| api | bilingual_complete | https://openusd.org/release/api/class_usd_lux_disk_light.html | full_site/api/class_usd_lux_disk_light.html | https://openusd.org/release/api/class_usd_lux_disk_light.html |
 | api | bilingual_draft | 类参考草稿：UsdLuxShapingAPI Class / UsdLuxShapingAPI Class | full_site/api/class_usd_lux_shaping_a_p_i.html | https://openusd.org/release/api/class_usd_lux_shaping_a_p_i.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_usd_physics_joint.html | full_site/api/class_usd_physics_joint.html | https://openusd.org/release/api/class_usd_physics_joint.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_usd_prim.html | full_site/api/class_usd_prim.html | https://openusd.org/release/api/class_usd_prim.html |

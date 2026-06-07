@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T06:48:09.397Z",
+  "generated_at": "2026-06-07T06:59:13.899Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 359,
-    "bilingual_complete": 47
+    "bilingual_draft": 358,
+    "bilingual_complete": 48
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 348,
-    "good_bilingual": 47
+    "draft_needs_translation": 347,
+    "good_bilingual": 48
   },
   "focus_batch": [
     {
@@ -2219,29 +2219,29 @@
     },
     {
       "index": 47,
-      "title": "类参考草稿：UsdLuxDiskLight Class / UsdLuxDiskLight Class",
+      "title": "完整双语参考：UsdLuxDiskLight Class / UsdLuxDiskLight Class",
       "output": "full_site/api/class_usd_lux_disk_light.html",
       "official_url": "https://openusd.org/release/api/class_usd_lux_disk_light.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 58,
-      "enBlockCount": 45,
-      "zhChars": 791,
-      "enLetters": 1899,
-      "bodyChineseChars": 866,
+      "grade": "good_bilingual",
+      "zhBlockCount": 73,
+      "enBlockCount": 60,
+      "zhChars": 1541,
+      "enLetters": 3050,
+      "bodyChineseChars": 1628,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 UsdLuxDiskLight Class Reference 补充中文优先的类职责、读取重点、关键属性/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`UsdLuxDiskLight` 表示从圆盘一侧发光的 light schema；英文摘录说明 disk 位于 XY plane 中心，并沿 -Z axis 发光。"
+        "本页已从草稿晋级为完整双语参考页。中文解释覆盖 `UsdLuxDiskLight` 的 typed schema 职责、圆盘面积光语义、半径属性、继承的光照 API、调试边界和常见误读；英文 API 名称、方法名、属性名、token、类型名、链接和必要原文摘录保持原样，便于与官方 Doxygen 页面逐项核对。",
+        "`UsdLuxDiskLight` 是 UsdLux 中表示圆盘面积光的 concrete typed schema。官方说明的核心是：这个 light 从 circular disk 的一侧发光，disk 以局部坐标的 XY plane 为中心，并沿 -Z axis 发射光线。因此阅读本页时，首先要把它理解为“有方向的单面圆盘光”，而不是一个无方向的发光球体、mesh light，或只记录渲染器参数的普通 prim。",
+        "本类最直接的自有属性是 `radius`。`CreateRadiusAttr()` 用来在目标 edit target 中创建或写入半径属性，`GetRadiusAttr()` 用来取得该属性的 `UsdAttribute` 句柄。这里的 `radius` 描述发光圆盘的几何半径，会影响面积、bounds 和渲染器采样语义；它不是 `intensity`、`exposure` 或 `color` 的替代参数，也不表示光照衰减半径。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, reading guidance, key attribute/method groups, and terminology for UsdLuxDiskLight Class Reference while retaining English page names, class names, method names, attribute names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page is promoted to a complete bilingual reference. It keeps original API names, method names, property names, tokens, type names, links, and necessary English excerpts while adding paragraph-level Chinese coverage for the official semantics.",
+        "The official page describes a concrete typed schema for light emitted from one side of a circular disk. The disk is centered in the XY plane and emits along the -Z axis."
       ]
     },
     {

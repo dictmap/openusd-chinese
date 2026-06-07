@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：UsdLuxDiskLight Class / UsdLuxDiskLight Class</title>
+  <title>完整双语参考：UsdLuxDiskLight Class / UsdLuxDiskLight Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,15 +24,45 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：UsdLuxDiskLight Class / UsdLuxDiskLight Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：UsdLuxDiskLight Class / UsdLuxDiskLight Class</h1>
     <div class="meta">https://openusd.org/release/api/class_usd_lux_disk_light.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已从草稿晋级为完整双语参考页。中文解释覆盖 `UsdLuxDiskLight` 的 typed schema 职责、圆盘面积光语义、半径属性、继承的光照 API、调试边界和常见误读；英文 API 名称、方法名、属性名、token、类型名、链接和必要原文摘录保持原样，便于与官方 Doxygen 页面逐项核对。</p>
+      <p class="en">This page is promoted to a complete bilingual reference. It keeps original API names, method names, property names, tokens, type names, links, and necessary English excerpts while adding paragraph-level Chinese coverage for the official semantics.</p>
+    </section>
+    <section data-cn-complete="usd-lux-disk-light-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`UsdLuxDiskLight` 是 UsdLux 中表示圆盘面积光的 concrete typed schema。官方说明的核心是：这个 light 从 circular disk 的一侧发光，disk 以局部坐标的 XY plane 为中心，并沿 -Z axis 发射光线。因此阅读本页时，首先要把它理解为“有方向的单面圆盘光”，而不是一个无方向的发光球体、mesh light，或只记录渲染器参数的普通 prim。</p>
+      <p class="en">The official page describes a concrete typed schema for light emitted from one side of a circular disk. The disk is centered in the XY plane and emits along the -Z axis.</p>
+      <p class="zh">本类最直接的自有属性是 `radius`。`CreateRadiusAttr()` 用来在目标 edit target 中创建或写入半径属性，`GetRadiusAttr()` 用来取得该属性的 `UsdAttribute` 句柄。这里的 `radius` 描述发光圆盘的几何半径，会影响面积、bounds 和渲染器采样语义；它不是 `intensity`、`exposure` 或 `color` 的替代参数，也不表示光照衰减半径。</p>
+      <p class="en">`CreateRadiusAttr()` authors the radius attribute, while `GetRadiusAttr()` retrieves the corresponding `UsdAttribute` handle.</p>
+      <p class="zh">`Define()` 与 `Get()` 体现 typed schema 的常见入口差异。`Define(stage, path)` 会在 `UsdStage` 的指定 `SdfPath` 上确保存在可定义的 `UsdLuxDiskLight` prim；`Get(stage, path)` 只是从已有 path 取得 schema wrapper。`Get()` 不会自动补齐缺失 prim 或写入 `radius`，所以调试“为什么没有灯光”时要分开检查 prim 是否存在、schema 类型是否正确，以及属性是否被 authored。</p>
+      <p class="en">`Define()` creates or obtains a definable typed prim at a stage path; `Get()` wraps an existing prim/path as `UsdLuxDiskLight` when possible.</p>
+      <p class="zh">`UsdLuxDiskLight` 继承自 `UsdLuxBoundableLightBase`，因此它同时具备 boundable、xformable 和 light 相关行为。圆盘位于局部 XY plane、沿 -Z 发光这一约定会被 prim 的 transform 变换到世界空间；若渲染结果方向不对，应检查 `xformOp`、parent transform、up-axis 约定以及是否把 one-sided emission 误解为双面发光。</p>
+      <p class="en">As a `UsdLuxBoundableLightBase` derived schema, the disk-light geometry and emission direction are interpreted through the prim's transform.</p>
+      <p class="zh">继承的 `UsdLuxLightAPI` 属性负责通用光照能量和颜色控制，例如 `intensity`、`exposure`、`color` 和 `normalize`。这些属性通常不在 `DiskLight` 页面作为“新增属性”重复展开，但实际渲染时会与 `radius` 共同决定亮度观感：改变半径是在改变发光面积，改变 `intensity` 或 `exposure` 才是在调整能量标度。</p>
+      <p class="en">Inherited light API attributes such as `intensity`, `exposure`, `color`, and `normalize` remain part of the usable light interface.</p>
+      <p class="zh">若同一个 prim 应用了 `UsdLuxShapingAPI`，要把 shaping 与圆盘几何分开理解。`UsdLuxDiskLight` 定义“发光面是什么、朝向哪里、半径多大”；`UsdLuxShapingAPI` 定义聚光、角度或 shaping 相关控制；renderer 再决定具体采样和能量解释。排查跨 DCC 或 renderer 差异时，应分别核对 schema 属性、API schema 属性和渲染器支持范围。</p>
+      <p class="en">Shaping controls, when applied, should be read as additional light behavior rather than as replacements for disk geometry.</p>
+      <p class="zh">`GetSchemaAttributeNames()` 可用于列出该 schema 声明的属性名，并可选择是否包含 inherited 属性。它适合调试工具、导出器或 schema 检查器确认 `radius` token 是否属于本类，而不是用于读取某个具体 prim 的 authored value。具体取值仍应通过 `UsdAttribute`、time sample、layer composition 和 fallback 规则来判断。</p>
+      <p class="en">`GetSchemaAttributeNames()` reports declared schema attributes; actual authored values are still resolved through USD attribute and composition rules.</p>
+      <p class="zh">`schemaKind`、`_GetSchemaKind()` 和 `UsdSchemaRegistry` 相关条目说明本类受 schema registry 管理，是 USD 类型系统中的 typed schema。它不等同于运行时渲染器对象，也不保证某个 renderer 一定以同样方式采样圆盘光；它描述的是 stage 上 prim 的类型、属性接口和可由工具链识别的 schema 契约。</p>
+      <p class="en">`schemaKind` and `UsdSchemaRegistry` describe type-system registration, not a renderer-owned runtime light object.</p>
+      <p class="zh">常见误读包括：把 `radius` 当成光照影响范围；忘记 disk 只沿 -Z axis 单侧发光；只调用 `Get()` 却没有定义 prim；把 inherited `UsdLuxLightAPI` 属性误认为不适用于 `UsdLuxDiskLight`；或把 `extent` / bounds 问题误判为能量参数问题。实际调试时建议按 path、schema type、radius、transform、light API 属性、shaping API 和 renderer 支持的顺序逐项排查。</p>
+      <p class="en">Common debugging separates path validity, schema type, radius, transform, inherited light attributes, shaping API, and renderer support.</p>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">圆盘面积光：</span><span class="en">disk area light</span></li>
+        <li><span class="zh">单面发光：</span><span class="en">one-sided emission</span></li>
+        <li><span class="zh">局部 XY 平面：</span><span class="en">local XY plane</span></li>
+        <li><span class="zh">局部 -Z 发光方向：</span><span class="en">local -Z emission direction</span></li>
+        <li><span class="zh">半径属性：</span><span class="en">radius attribute</span></li>
+        <li><span class="zh">可绑定光基类：</span><span class="en">UsdLuxBoundableLightBase</span></li>
+      </ul>
     </section>
     <section data-cn-refinement="api-class-quality-pass-040">
       <h2>中文精修导读 / Chinese Reading Notes</h2>
