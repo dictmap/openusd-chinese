@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：HdInstanceRegistry&lt; VALUE &gt; Class Template / HdInstanceRegistry&lt; VALUE &gt; Class Template</title>
+  <title>完整双语参考：HdInstanceRegistry&lt; VALUE &gt; Class Template Reference / HdInstanceRegistry&lt; VALUE &gt; Class Template Reference</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,55 +24,51 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：HdInstanceRegistry&lt; VALUE &gt; Class Template / HdInstanceRegistry&lt; VALUE &gt; Class Template</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：HdInstanceRegistry&lt; VALUE &gt; Class Template Reference / HdInstanceRegistry&lt; VALUE &gt; Class Template Reference</h1>
     <div class="meta">https://openusd.org/release/api/class_hd_instance_registry.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页处理：中文优先解释 `HdInstanceRegistry&lt; VALUE &gt;` 作为 Hydra `HdInstance` dictionary container 的职责、`VALUE` 模板参数、`GetInstance()` / `FindInstance()`、`Invalidate()`、`GarbageCollect()`、iterator 容器接口和实例缓存生命周期；英文 API 名称、模板参数、方法名、类型名、链接和官方英文摘录保持原样，便于与 OpenUSD Doxygen 页面核对。</p>
+      <p class="en">This page is treated as a complete bilingual reference. Chinese explanations come first, while English API names, template parameters, method names, type names, links, and selected official excerpts are retained for comparison with the OpenUSD Doxygen page.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-036">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 HdInstanceRegistry&lt; VALUE &gt; Class Template 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for HdInstanceRegistry&lt; VALUE &gt; Class Template while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`HdInstanceRegistry&lt; VALUE &gt;` 是 Hydra 中用于管理 `HdInstance` 的 dictionary container，模板参数 `VALUE` 表示实例记录或缓存值的具体类型。</span></li>
-        <li><span class="zh">英文摘录只给出核心定位：它是 `HdInstance` 的字典容器；因此本页应按 registry / lookup / value lifetime 的容器语义阅读，而不是渲染任务本身。</span></li>
-        <li><span class="zh">关联文件为 `instanceRegistry.h`，关联类型为 `HdInstance`；这说明该类处在 instancing 管理层，通常服务于共享实例、资源复用或按 key 查找实例状态。</span></li>
-        <li><span class="zh">阅读本类时应重点保留 template、dictionary container、registry、VALUE 和 HdInstance 等术语，避免把实例注册表误解为 USD prim 列表。</span></li>
-        <li><span class="zh">后续完整翻译应补成员函数如何插入、查找、复用和释放实例；本轮只补类职责、模板边界和阅读路径。</span></li>
-      </ul>
+    <section data-cn-complete="hd-instance-registry-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`HdInstanceRegistry&lt; VALUE &gt;` 是 Hydra 内部围绕 `HdInstance` 的 dictionary container。官方描述非常短，但关键词是 dictionary container：它用于按 key 管理实例记录或缓存值，而不是直接执行 instancing draw，也不是 USD prim 列表。读取本页时应把它放在 Hydra instance-cache / lookup / lifetime 管理语境中理解。</p>
+      <p class="en">`HdInstanceRegistry&lt; VALUE &gt;` is a dictionary container of `HdInstance`. It should be read as an internal Hydra registry/cache structure, not as a draw command or a USD prim list.</p>
+      <p class="zh">模板参数 `VALUE` 表示 registry 存储的具体值类型，因此不能翻译成某个固定类型。不同使用场景可以把 `VALUE` 设为实例记录、资源句柄、状态对象或与 `HdInstance` 关联的缓存值。`InstanceType` typedef 则把模板值类型与 registry 中实际暴露的 instance entry 语义连接起来。</p>
+      <p class="en">The template parameter `VALUE` is supplied by the caller and defines the stored value type. `InstanceType` expresses the instance-entry type exposed by the registry.</p>
+      <p class="zh">`GetInstance()` 与 `FindInstance()` 的边界很重要。`FindInstance()` 通常表示只查找已有条目，找不到时不应隐式创建；`GetInstance()` 则可能服务于“按 key 获取，如果需要则创建或取得可用条目”的缓存模式。阅读调用点时要确认它是否会产生新 instance entry，否则容易把 lookup 误判为纯只读操作。</p>
+      <p class="en">`FindInstance()` should be read as lookup of existing entries, while `GetInstance()` can participate in get-or-create style cache access depending on the calling pattern.</p>
+      <p class="zh">`Invalidate()` 影响的是 Hydra 内部实例缓存有效性，而不是删除 USD prim、移除 scene delegate 路径或修改 layer。它适合在实例依赖的数据变化、同步结果过期或共享缓存需要重新计算时使用。把 `Invalidate()` 当成 authoring 操作会导致对渲染状态和场景数据边界的误读。</p>
+      <p class="en">`Invalidate()` invalidates registry/cache state. It is not a USD authoring operation and does not delete USD prims or edit layers.</p>
+      <p class="zh">`GarbageCollect()` 表明 registry 也负责生命周期收敛。未再被引用、已经失效、或与当前 render index / sync 状态不再匹配的 instance entries 可以被清理。该行为通常与 Hydra 同步阶段、resource lifetime 和 instancing cache 管理相关，而不是由 USD composition 直接触发。</p>
+      <p class="en">`GarbageCollect()` cleans up stale or unused registry entries and should be understood as cache/lifetime maintenance inside Hydra.</p>
+      <p class="zh">`begin()`、`end()`、`size()` 和 `const_iterator` 说明该类也提供标准容器式观察接口。遍历 registry 可用于调试当前缓存中有哪些 instance entries、数量是否符合预期、以及哪些 entries 在 garbage collection 后仍存在；但遍历结果不等同于场景中的 prim 总数或实例化原型数量。</p>
+      <p class="en">Container-style APIs such as `begin()`, `end()`, `size()`, and `const_iterator` expose registry contents for inspection, not scene population counts.</p>
+      <p class="zh">`HdInstance` 是相邻核心类型。`HdInstanceRegistry&lt; VALUE &gt;` 负责组织、查找和维护 `HdInstance` 相关条目；`HdInstance` 自身才承载具体实例记录语义。二者的关系类似 registry 与 entry：registry 管理 key、lookup 和 lifetime，entry / value 表达某个实例相关状态。</p>
+      <p class="en">`HdInstance` is the adjacent entry type. The registry manages keys, lookup, and lifetime; instance entries carry the instance-specific state.</p>
+      <p class="zh">dictionary container 的 key 语义通常来自调用方，而不是由 USD 路径天然决定。一个 registry 可能按 prototype、instance source、resource identity 或其他 Hydra 内部 key 组织条目；因此不要把 key 简单等同为 `SdfPath` 或 prim path。排查实例复用错误时，应追踪调用方构造 key 的方式，而不是只看场景层级。</p>
+      <p class="en">Dictionary keys are defined by the calling code and should not automatically be assumed to be USD prim paths or `SdfPath` values.</p>
+      <p class="zh">生命周期边界也要与线程和同步阶段一起看。Registry 容器提供查找、遍历、失效和回收接口，但不等于自动解决所有并发访问、render-index 同步或资源引用问题。调用方仍需要在正确的 Hydra sync / update 阶段使用它，并确保 `VALUE` 中保存的对象没有越过自己的有效期。</p>
+      <p class="en">Lifetime must be coordinated with Hydra synchronization and the lifetime of objects stored in `VALUE`; the registry does not by itself solve every concurrency or resource-ownership issue.</p>
+      <p class="zh">调试 Hydra instancing 时，本页有三个常见检查点：首先确认调用方是否用了 `FindInstance()` 还是 `GetInstance()`；其次检查 `Invalidate()` 是否在依赖数据变化后被触发；最后检查 `GarbageCollect()` 后 registry `size()` 是否符合预期。若实例缓存没有更新、实例条目持续增长或失效数据仍被复用，这个 registry 往往比 USD authoring 层更接近问题现场。</p>
+      <p class="en">For Hydra instancing debugging, inspect lookup behavior, invalidation behavior, and registry size after garbage collection.</p>
+      <p class="zh">常见误用包括：把 `VALUE` 当成固定 OpenUSD 类型；把 registry 遍历结果当成 USD prim traversal；把 `Invalidate()` 当成删除场景对象；或认为 `GarbageCollect()` 会解决所有资源生命周期问题。正确边界是：它是 Hydra 的 C++ template registry，class template、dictionary container、`VALUE`、`InstanceType`、`const_iterator` 和 `HdInstance` 等英文标识必须保持原样。</p>
+      <p class="en">Common mistakes include treating `VALUE` as a fixed OpenUSD type, reading registry iteration as USD traversal, or confusing invalidation with scene deletion.</p>
       <h3>术语对照 / Terms</h3>
       <ul>
         <li><span class="zh">类模板：</span><span class="en">class template</span></li>
         <li><span class="zh">字典容器：</span><span class="en">dictionary container</span></li>
         <li><span class="zh">实例注册表：</span><span class="en">instance registry</span></li>
-        <li><span class="zh">VALUE：</span><span class="en">VALUE</span></li>
-        <li><span class="zh">HdInstance：</span><span class="en">HdInstance</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-131">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`HdInstanceRegistry&lt; VALUE &gt;` 是 Hydra 中围绕 `HdInstance` 的 dictionary container，模板参数 `VALUE` 表示具体缓存值或实例记录。它的重点不是几何 instancing 的最终绘制，而是按 key 查找、复用、失效和回收实例相关数据。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdInstanceRegistry&lt; VALUE &gt; while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`GetInstance()` 与 `FindInstance()` 的差别在于是否创建或只查找既有实例；阅读时应结合调用方缓存策略判断是否会产生新条目。</span></li>
-        <li><span class="zh">`GarbageCollect()` 表明 registry 负责清理不再需要的实例记录；这通常与 render index、resource registry 或同步阶段的生命周期管理相关。</span></li>
-        <li><span class="zh">`Invalidate()` 用于标记或清除已有实例状态；它不是删除 USD prim，而是影响 Hydra 内部实例缓存的有效性。</span></li>
-        <li><span class="zh">`begin()`、`end()`、`size()` 和 `const_iterator` 说明该类可按容器方式遍历；中文说明要保留 iterator 和 template 术语，方便读者核对 C++ 用法。</span></li>
-        <li><span class="zh">`InstanceType` 与 `VALUE` 的模板关系决定 registry 存储的具体数据形态；不要把 `VALUE` 翻译成固定类型，它是由使用场景提供的模板参数。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">Hydra 实例注册表：</span><span class="en">HdInstanceRegistry</span></li>
         <li><span class="zh">模板值类型：</span><span class="en">VALUE</span></li>
-        <li><span class="zh">Hydra 实例对象：</span><span class="en">HdInstance</span></li>
-        <li><span class="zh">字典式容器：</span><span class="en">dictionary container</span></li>
-        <li><span class="zh">垃圾回收：</span><span class="en">GarbageCollect</span></li>
-        <li><span class="zh">失效标记：</span><span class="en">Invalidate</span></li>
+        <li><span class="zh">实例条目类型：</span><span class="en">InstanceType</span></li>
+        <li><span class="zh">常量迭代器：</span><span class="en">const_iterator</span></li>
+        <li><span class="zh">实例查找：</span><span class="en">FindInstance()</span></li>
+        <li><span class="zh">实例失效：</span><span class="en">Invalidate()</span></li>
+        <li><span class="zh">缓存清理：</span><span class="en">GarbageCollect()</span></li>
       </ul>
     </section>
     <section>

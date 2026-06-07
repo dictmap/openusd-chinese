@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T04:22:04.015Z",
+  "generated_at": "2026-06-07T04:41:33.106Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 368,
-    "bilingual_complete": 38
+    "bilingual_draft": 367,
+    "bilingual_complete": 39
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 357,
-    "good_bilingual": 38
+    "draft_needs_translation": 356,
+    "good_bilingual": 39
   },
   "focus_batch": [
     {
@@ -1463,29 +1463,29 @@
     },
     {
       "index": 19,
-      "title": "类参考草稿：HdInstanceRegistry< VALUE > Class Template / HdInstanceRegistry< VALUE > Class Template",
+      "title": "完整双语参考：HdInstanceRegistry< VALUE > Class Template Reference / HdInstanceRegistry< VALUE > Class Template Reference",
       "output": "full_site/api/class_hd_instance_registry.html",
       "official_url": "https://openusd.org/release/api/class_hd_instance_registry.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 42,
-      "enBlockCount": 34,
-      "zhChars": 636,
-      "enLetters": 1302,
-      "bodyChineseChars": 699,
+      "grade": "good_bilingual",
+      "zhBlockCount": 39,
+      "enBlockCount": 41,
+      "zhChars": 1000,
+      "enLetters": 2078,
+      "bodyChineseChars": 1053,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 HdInstanceRegistry< VALUE > Class Template 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`HdInstanceRegistry< VALUE >` 是 Hydra 中用于管理 `HdInstance` 的 dictionary container，模板参数 `VALUE` 表示实例记录或缓存值的具体类型。"
+        "本页已按完整双语参考页处理：中文优先解释 `HdInstanceRegistry< VALUE >` 作为 Hydra `HdInstance` dictionary container 的职责、`VALUE` 模板参数、`GetInstance()` / `FindInstance()`、`Invalidate()`、`GarbageCollect()`、iterator 容器接口和实例缓存生命周期；英文 API 名称、模板参数、方法名、类型名、链接和官方英文摘录保持原样，便于与 OpenUSD Doxygen 页面核对。",
+        "`HdInstanceRegistry< VALUE >` 是 Hydra 内部围绕 `HdInstance` 的 dictionary container。官方描述非常短，但关键词是 dictionary container：它用于按 key 管理实例记录或缓存值，而不是直接执行 instancing draw，也不是 USD prim 列表。读取本页时应把它放在 Hydra instance-cache / lookup / lifetime 管理语境中理解。",
+        "模板参数 `VALUE` 表示 registry 存储的具体值类型，因此不能翻译成某个固定类型。不同使用场景可以把 `VALUE` 设为实例记录、资源句柄、状态对象或与 `HdInstance` 关联的缓存值。`InstanceType` typedef 则把模板值类型与 registry 中实际暴露的 instance entry 语义连接起来。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for HdInstanceRegistry< VALUE > Class Template while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page is treated as a complete bilingual reference. Chinese explanations come first, while English API names, template parameters, method names, type names, links, and selected official excerpts are retained for comparison with the OpenUSD Doxygen page.",
+        "`HdInstanceRegistry< VALUE >` is a dictionary container of `HdInstance`. It should be read as an internal Hydra registry/cache structure, not as a draw command or a USD prim list."
       ]
     },
     {
