@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-07T06:03:34.601Z
+Generated: 2026-06-07T06:31:24.958Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 361
-- bilingual_complete: 45
+- bilingual_draft: 360
+- bilingual_complete: 46
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 350
-- good_bilingual: 45
+- draft_needs_translation: 349
+- good_bilingual: 46
 
 ## Current Focus Batch
 
@@ -106,7 +106,7 @@ Generated: 2026-06-07T06:03:34.601Z
 | 40 | good_bilingual | bilingual_complete | 1057 | 48/50 | 0 | 0 | `full_site/api/class_usd_attribute_limits.html` |
 | 41 | good_bilingual | bilingual_complete | 1029 | 50/52 | 0 | 0 | `full_site/api/class_usd_geom_basis_curves.html` |
 | 42 | good_bilingual | bilingual_complete | 848 | 49/51 | 0 | 0 | `full_site/api/class_usd_geom_mesh.html` |
-| 43 | draft_needs_translation | bilingual_draft | 711 | 64/51 | 0 | 0 | `full_site/api/class_usd_geom_primvars_a_p_i.html` |
+| 43 | good_bilingual | bilingual_complete | 1634 | 86/73 | 0 | 0 | `full_site/api/class_usd_geom_primvars_a_p_i.html` |
 | 44 | draft_needs_translation | bilingual_draft | 670 | 56/43 | 0 | 0 | `full_site/api/class_usd_imaging_adapter_registry.html` |
 | 45 | good_bilingual | bilingual_complete | 1004 | 49/51 | 0 | 0 | `full_site/api/class_usd_imaging_delegate.html` |
 | 46 | draft_needs_translation | bilingual_draft | 665 | 57/44 | 0 | 0 | `full_site/api/class_usd_imaging_nurbs_patch_adapter.html` |

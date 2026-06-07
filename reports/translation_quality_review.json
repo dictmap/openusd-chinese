@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T06:03:34.601Z",
+  "generated_at": "2026-06-07T06:31:24.958Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 361,
-    "bilingual_complete": 45
+    "bilingual_draft": 360,
+    "bilingual_complete": 46
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 350,
-    "good_bilingual": 45
+    "draft_needs_translation": 349,
+    "good_bilingual": 46
   },
   "focus_batch": [
     {
@@ -2111,29 +2111,29 @@
     },
     {
       "index": 43,
-      "title": "类参考草稿：UsdGeomPrimvarsAPI Class / UsdGeomPrimvarsAPI Class",
+      "title": "完整双语参考：UsdGeomPrimvarsAPI Class / UsdGeomPrimvarsAPI Class",
       "output": "full_site/api/class_usd_geom_primvars_a_p_i.html",
       "official_url": "https://openusd.org/release/api/class_usd_geom_primvars_a_p_i.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 64,
-      "enBlockCount": 51,
-      "zhChars": 711,
-      "enLetters": 2576,
-      "bodyChineseChars": 786,
+      "grade": "good_bilingual",
+      "zhBlockCount": 86,
+      "enBlockCount": 73,
+      "zhChars": 1634,
+      "enLetters": 4740,
+      "bodyChineseChars": 1721,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 UsdGeomPrimvarsAPI Class Reference 补充中文优先的类职责、读取重点、关键属性/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`UsdGeomPrimvarsAPI` 用于编码几何 primitive variables，也就是 `UsdGeomPrimvar`；这些 primvars 可沿 primitive topology 插值、覆盖 shader inputs，并沿 namespace 继承。"
+        "本页已按完整双语标准覆盖 `UsdGeomPrimvarsAPI` 的核心语义。中文层解释它作为 USD 几何 primvars API 的职责、与 `UsdGeomPrimvar` 值对象和 `UsdPrim` authoring 视图的边界、创建与读取方法族、namespace inheritance、indexed/non-indexed primvars、`interpolation` token、`BlockPrimvar()` 阻断语义，以及在 mesh、curves、shader inputs、UV、color 和实例化数据中的调试含义；英文 API 名称、方法名、token、类型名、链接和必要官方摘录保留原样。",
+        "`UsdGeomPrimvarsAPI` 编码 geometric primitive variables，也就是 `UsdGeomPrimvar`。Primvar 不是普通属性的同义词：它是放在 `primvars:` namespace 下的 USD attribute，并额外携带 `interpolation`、`elementSize`、indices 和可继承语义。渲染器、材质网络、UV/color 数据和实例化流程依赖这些额外约定，才能知道一个值是常量、逐面、逐点、逐角还是通过索引表复用。",
+        "本类是 applied API schema 风格的 wrapper：它包装一个 `UsdPrim`，在该 prim 上创建或查找 `UsdGeomPrimvar`。因此它不代表 mesh topology 本身，也不直接表示 shader input；它负责把几何 primitive 上的 authored primvar 属性组织成统一 API。实际数据仍写在 `UsdAttribute`/`UsdGeomPrimvar` 上，最终解释还要结合 schema、composition、time samples、topology 和 renderer 约定。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, reading guidance, key attribute/method groups, and terminology for UsdGeomPrimvarsAPI Class Reference while retaining English page names, class names, method names, attribute names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page now provides full bilingual coverage for `UsdGeomPrimvarsAPI` as the USD geometry API for creating, querying, and inheriting primvars, while preserving official API names, method names, tokens, type names, links, and necessary English excerpts.",
+        "`UsdGeomPrimvarsAPI` encodes geometric primitive variables as `UsdGeomPrimvar`. A primvar is a USD attribute with additional primvar semantics such as namespace, interpolation, element size, indices, and inheritance."
       ]
     },
     {

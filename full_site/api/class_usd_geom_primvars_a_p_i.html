@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：UsdGeomPrimvarsAPI Class / UsdGeomPrimvarsAPI Class</title>
+  <title>完整双语参考：UsdGeomPrimvarsAPI Class / UsdGeomPrimvarsAPI Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,15 +24,55 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：UsdGeomPrimvarsAPI Class / UsdGeomPrimvarsAPI Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：UsdGeomPrimvarsAPI Class / UsdGeomPrimvarsAPI Class</h1>
     <div class="meta">https://openusd.org/release/api/class_usd_geom_primvars_a_p_i.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语标准覆盖 `UsdGeomPrimvarsAPI` 的核心语义。中文层解释它作为 USD 几何 primvars API 的职责、与 `UsdGeomPrimvar` 值对象和 `UsdPrim` authoring 视图的边界、创建与读取方法族、namespace inheritance、indexed/non-indexed primvars、`interpolation` token、`BlockPrimvar()` 阻断语义，以及在 mesh、curves、shader inputs、UV、color 和实例化数据中的调试含义；英文 API 名称、方法名、token、类型名、链接和必要官方摘录保留原样。</p>
+      <p class="en">This page now provides full bilingual coverage for `UsdGeomPrimvarsAPI` as the USD geometry API for creating, querying, and inheriting primvars, while preserving official API names, method names, tokens, type names, links, and necessary English excerpts.</p>
+    </section>
+    <section data-cn-complete="usd-geom-primvars-api-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`UsdGeomPrimvarsAPI` 编码 geometric primitive variables，也就是 `UsdGeomPrimvar`。Primvar 不是普通属性的同义词：它是放在 `primvars:` namespace 下的 USD attribute，并额外携带 `interpolation`、`elementSize`、indices 和可继承语义。渲染器、材质网络、UV/color 数据和实例化流程依赖这些额外约定，才能知道一个值是常量、逐面、逐点、逐角还是通过索引表复用。</p>
+      <p class="en">`UsdGeomPrimvarsAPI` encodes geometric primitive variables as `UsdGeomPrimvar`. A primvar is a USD attribute with additional primvar semantics such as namespace, interpolation, element size, indices, and inheritance.</p>
+      <p class="zh">本类是 applied API schema 风格的 wrapper：它包装一个 `UsdPrim`，在该 prim 上创建或查找 `UsdGeomPrimvar`。因此它不代表 mesh topology 本身，也不直接表示 shader input；它负责把几何 primitive 上的 authored primvar 属性组织成统一 API。实际数据仍写在 `UsdAttribute`/`UsdGeomPrimvar` 上，最终解释还要结合 schema、composition、time samples、topology 和 renderer 约定。</p>
+      <p class="en">This class is an API schema wrapper around a `UsdPrim`. It does not own topology or shader inputs directly; it provides the authoring and query surface for primvar attributes on that prim.</p>
+      <p class="zh">创建路径相对明确。`CreatePrimvar()` 创建一个具名 primvar 并设置 value type 与 `interpolation`；`CreateIndexedPrimvar()` 同时 author 值表和 indices，适合 UV、颜色或重复值较多的 face-varying 数据；`CreateNonIndexedPrimvar()` 则直接 author 非索引值。创建 API 的核心风险不是函数名选择，而是 value type、`interpolation`、indices 长度与目标 primitive topology 是否匹配。</p>
+      <p class="en">Creation is relatively direct: `CreatePrimvar()`, `CreateIndexedPrimvar()`, and `CreateNonIndexedPrimvar()` author primvars with different value and index behavior. Correct type, interpolation, indices, and topology agreement remain the caller's responsibility.</p>
+      <p class="zh">读取路径更容易误用，所以官方专门列出 “Which Method to Use to Retrieve Primvars”。`GetPrimvars()` 面向当前 prim 上可枚举的 primvars；`GetAuthoredPrimvars()` 只关注已 author 的 primvars；`FindPrimvarsWithInheritance()` 会考虑 namespace inheritance 并返回继承结果；`FindPrimvarWithInheritance()` 用于按名称查找一个可能继承而来的 primvar。GUI、导出器、调试脚本和渲染适配器应根据场景选择，而不是一律遍历当前 authored properties。</p>
+      <p class="en">Retrieval has multiple methods because authored-only, locally visible, inherited, and name-specific primvars are different use cases. The official retrieval guide is central to using this API correctly.</p>
+      <p class="zh">`FindInheritablePrimvars()` 与 `FindIncrementallyInheritablePrimvars()` 处理的是可沿 namespace 继承的 primvars。这里的 inheritance 是 prim namespace 层面的数据查找规则，不是 C++ class inheritance，也不是 schema type inheritance。调试“为什么某个子 prim 看到一个 primvar”时，需要检查父路径上的 `primvars:` 属性、可能的 block opinion、composition strength 和查询方法是否包含 inheritance。</p>
+      <p class="en">The inheritable primvar APIs operate on namespace inheritance of primvar data, not on C++ inheritance or schema type inheritance.</p>
+      <p class="zh">`interpolation` token 是 primvar 解释的关键边界。`constant` 通常表示整个 primitive 一个值，`uniform` 常按 face 或 curve segment 变化，`vertex` 和 `varying` 与点/曲线采样相关，`faceVarying` 常用于每个 face-vertex 的 UV 或颜色。中文说明必须保留这些 token 字面量，因为它们直接出现在 USD 文件、schema fallback、renderer 输入和 Hydra 数据源中。</p>
+      <p class="en">The `interpolation` token controls how a primvar maps values onto topology. Tokens such as `constant`, `uniform`, `vertex`, `varying`, and `faceVarying` must be preserved exactly.</p>
+      <p class="zh">indexed primvar 的核心是“值表 + indices”分离：值数组可复用，indices 决定拓扑元素如何引用值。`CreateIndexedPrimvar()` 与 `UsdGeomPrimvar` 的 indices API 需要一起理解。常见错误包括 indices 数量与 `interpolation` 期望不一致、值表元素类型不匹配、把 indices 当成 topology faceVertexIndices，或者在导出后忘记同步更新 indices 与值数组。</p>
+      <p class="en">An indexed primvar separates a value array from an indices array. The indices select values for topology elements; they are not the same thing as mesh topology indices.</p>
+      <p class="zh">`BlockPrimvar()` 的语义是 author 一个 block opinion，用来阻断某个 primvar 的继承或已有贡献。它不是简单删除当前属性，也不会修改祖先 prim 上的 authored data。若调试继承链，应同时查看当前 prim 的 block、父 prim 的 primvar、layer strength、variant selection 和最终 composition 结果。</p>
+      <p class="en">`BlockPrimvar()` authors a blocking opinion for a primvar. It does not delete upstream authored data; it affects the composed value seen through the inheritance and composition rules.</p>
+      <p class="zh">`CanContainPropertyName()` 体现 `primvars:` namespace 规则：只有符合 primvar 命名约定的 property name 才应由此 API 管理。不要把任意 `UsdAttribute` 都当成 primvar，也不要把 shader input 名称直接改写成 primvar 名称。`primvars:displayColor`、`primvars:st` 这类 token/属性名需要原样保留，以便和 USD 文本、Hydra primvar 数据以及材质绑定逻辑对应。</p>
+      <p class="en">`CanContainPropertyName()` checks whether a property name belongs to the primvar namespace rules. Primvar names and `primvars:` tokens should be preserved exactly.</p>
+      <p class="zh">相关类型需要分层理解：`UsdPrim` 是被包装的场景 prim；`UsdGeomPrimvar` 是实际承载 value、indices、interpolation 的属性封装；`SdfValueTypeName` 描述 value type；`TfToken` 保存 primvar 名称和 interpolation token；`UsdGeomMesh`、`UsdGeomBasisCurves` 等 schema 决定拓扑语义；shader inputs 和材质网络只是消费 primvar 的一类下游，不等同于 primvar 的存储位置。</p>
+      <p class="en">Related types sit at different layers: `UsdPrim` is the wrapped scene prim, `UsdGeomPrimvar` wraps the authored attribute, `SdfValueTypeName` names the value type, and topology schemas determine how interpolation is interpreted.</p>
+      <p class="zh">排查 primvar 问题时，建议按四层分离：第一层检查 property name 是否在 `primvars:` namespace；第二层检查 typeName、`interpolation`、`elementSize`、值数组和 indices；第三层检查 inheritance 与 block opinions；第四层检查 consumer 是否按预期读取，例如 Hydra、renderer、shader input reader 或导出器。这样可以区分 authoring 错误、composition/inheritance 错误、topology 映射错误和下游消费错误。</p>
+      <p class="en">Debugging is easier when authoring, value/index layout, inheritance and blocking, topology mapping, and downstream consumers are separated into distinct checks.</p>
+      <p class="zh">常见误用包括：把 `GetAuthoredPrimvars()` 当成继承后完整结果；把 `faceVarying` indices 与 mesh faceVertexIndices 混淆；只删除本地属性却没有处理继承 primvar；创建 primvar 时忘记设置正确 `interpolation`；把普通 `UsdAttribute` 当成 primvar；以及在 schema wrapper 无效或 prim 不支持预期 geometry 语义时继续 author 数据而没有检查目标 prim。</p>
+      <p class="en">Common mistakes include using authored-only queries as inherited results, confusing primvar indices with mesh topology indices, deleting local attributes while inherited primvars remain visible, and authoring primvars without the intended interpolation.</p>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">几何 primitive variable：</span><span class="en">geometric primitive variable</span></li>
+        <li><span class="zh">primvar 属性命名空间：</span><span class="en">primvars:</span></li>
+        <li><span class="zh">插值 token：</span><span class="en">interpolation token</span></li>
+        <li><span class="zh">索引式 primvar：</span><span class="en">indexed primvar</span></li>
+        <li><span class="zh">非索引式 primvar：</span><span class="en">non-indexed primvar</span></li>
+        <li><span class="zh">命名空间继承：</span><span class="en">namespace inheritance</span></li>
+        <li><span class="zh">阻断意见：</span><span class="en">block opinion</span></li>
+        <li><span class="zh">拓扑插值：</span><span class="en">topology interpolation</span></li>
+        <li><span class="zh">值类型名：</span><span class="en">SdfValueTypeName</span></li>
+        <li><span class="zh">下游消费方：</span><span class="en">renderer, Hydra, shader input reader, exporter</span></li>
+      </ul>
     </section>
     <section data-cn-refinement="api-class-quality-pass-039">
       <h2>中文精修导读 / Chinese Reading Notes</h2>

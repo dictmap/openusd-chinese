@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-07T06:03:33.882Z
+Generated: 2026-06-07T06:31:24.000Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 45
-- Promoted complete pages: 37
-- Bilingual draft pages: 361
+- Bilingual complete pages: 46
+- Promoted complete pages: 38
+- Bilingual draft pages: 360
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -60,7 +60,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_complete | https://openusd.org/release/api/class_usd_attribute_limits.html | full_site/api/class_usd_attribute_limits.html | https://openusd.org/release/api/class_usd_attribute_limits.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_usd_geom_basis_curves.html | full_site/api/class_usd_geom_basis_curves.html | https://openusd.org/release/api/class_usd_geom_basis_curves.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_usd_geom_mesh.html | full_site/api/class_usd_geom_mesh.html | https://openusd.org/release/api/class_usd_geom_mesh.html |
-| api | bilingual_draft | 类参考草稿：UsdGeomPrimvarsAPI Class / UsdGeomPrimvarsAPI Class | full_site/api/class_usd_geom_primvars_a_p_i.html | https://openusd.org/release/api/class_usd_geom_primvars_a_p_i.html |
+| api | bilingual_complete | https://openusd.org/release/api/class_usd_geom_primvars_a_p_i.html | full_site/api/class_usd_geom_primvars_a_p_i.html | https://openusd.org/release/api/class_usd_geom_primvars_a_p_i.html |
 | api | bilingual_draft | 类参考草稿：UsdImagingAdapterRegistry Class / UsdImagingAdapterRegistry Class | full_site/api/class_usd_imaging_adapter_registry.html | https://openusd.org/release/api/class_usd_imaging_adapter_registry.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_usd_imaging_delegate.html | full_site/api/class_usd_imaging_delegate.html | https://openusd.org/release/api/class_usd_imaging_delegate.html |
 | api | bilingual_draft | 类参考草稿：UsdImagingNurbsPatchAdapter Class / UsdImagingNurbsPatchAdapter Class | full_site/api/class_usd_imaging_nurbs_patch_adapter.html | https://openusd.org/release/api/class_usd_imaging_nurbs_patch_adapter.html |
