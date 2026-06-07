@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-07T21:38:07.344Z
+Generated: 2026-06-07T22:06:43.691Z
 
-Transient base URL: `http://127.0.0.1:50912/`
+Transient base URL: `http://127.0.0.1:64256/`
 
 Result:
 
 - Passed: true
-- Draft pages: 309
-- Pages checked: 309
-- Passed pages: 309
+- Draft pages: 308
+- Pages checked: 308
+- Passed pages: 308
 - Failed pages: 0
-- Final HTML links: 309
-- Local assets checked: 309
+- Final HTML links: 308
+- Local assets checked: 308
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -263,7 +263,6 @@ Result:
 | true | full_site/release/user_guides/schemas/usdLux/NonboundableLightBase.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/overview.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/PluginLight.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdLux/ShadowAPI.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/ShapingAPI.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/SphereLight.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/usdLux_toc.html | 200 | true | 0 | 0 |

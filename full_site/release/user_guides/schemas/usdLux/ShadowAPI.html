@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：ShadowAPI / ShadowAPI</title>
+  <title>完整双语参考：ShadowAPI / ShadowAPI</title>
   <link rel="icon" href="../../../../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
@@ -12,15 +12,19 @@
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
     .zh{display:block;font-weight:650;color:#17324d}
     .en{display:block;color:#55616f;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
+    table{border-collapse:collapse;width:100%;margin:12px 0;background:#fff}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef3f8;color:#17202a}
     pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
     code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
@@ -44,8 +48,8 @@
 </head>
 <body class="openusd-has-reading-flow">
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：ShadowAPI / ShadowAPI</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：ShadowAPI / ShadowAPI</h1>
     <div class="meta">https://openusd.org/release/user_guides/schemas/usdLux/ShadowAPI.html</div>
   </header>
 <!-- openusd-reading-flow-nav:start -->
@@ -111,79 +115,172 @@
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+      <p class="zh">本页是 OpenUSD release 用户指南中 usdLux `ShadowAPI` 的完整双语参考页。本轮只晋级 `ShadowAPI.html` 这一页，并以官方页和本地 `source/full_release/user_guides/schemas/usdLux/ShadowAPI_source.html` 为源页对照；中文解释覆盖官方概述、`Properties` section、5 个 `inputs:shadow:*` 属性、与 `LightAPI` shadow-linking 的边界、renderer 支持差异和调试路径。`ShadowAPI`、`inputs:shadow:color`、`inputs:shadow:distance`、`inputs:shadow:enable`、`inputs:shadow:falloff`、`inputs:shadow:falloffGamma`、`color3f`、`float`、`bool`、`Shadows`、`LightAPI`、`ShapingAPI`、`RectLight` 等英文 schema/API/token/属性名保持原样。</p>
+      <p class="en">This local bilingual page explains the usdLux `ShadowAPI` user-guide page in Chinese first while retaining the official identifiers, property names, USD types, tokens, section labels, and links for comparison.</p>
     </section>
-    <section data-cn-refinement="release-quality-pass-070">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 ShadowAPI 补充中文优先的 schema 用途、属性/关系阅读路径、艺术控制或插件扩展边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds Chinese-first schema purpose, property and relationship reading paths, artistic-control or plugin-extension boundaries, and terminology for ShadowAPI while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">`ShadowAPI` 用于控制 shadow color、distance、falloff 等阴影外观；官方说明明确这些是 non-physical controls，目标是艺术控制而不是物理精确模拟。</span></li>
-        <li><span class="zh">`inputs:shadow:color` 设置灯光投射阴影的颜色，适合做美术调色或风格化表现；它不应被理解为真实光传输中的能量守恒参数。</span></li>
-        <li><span class="zh">`inputs:shadow:distance`、`inputs:shadow:falloff` 和 `inputs:shadow:falloffGamma` 一起影响阴影随距离变化的衰减效果，常用于限制阴影范围或调整过渡。</span></li>
-        <li><span class="zh">`inputs:shadow:enable` 是开关语义入口，便于在不删除灯光和链接关系的情况下控制阴影参与渲染；实际支持程度取决于 renderer。</span></li>
-        <li><span class="zh">阅读本页时应把它和 `LightAPI` 的 shadow-linking 区分开：shadow-linking 选择谁参与阴影关系，`ShadowAPI` 调整阴影如何被渲染。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">阴影控制 API：</span><span class="en">ShadowAPI</span></li>
-        <li><span class="zh">非物理艺术控制：</span><span class="en">non-physical controls</span></li>
-        <li><span class="zh">阴影颜色输入：</span><span class="en">inputs:shadow:color</span></li>
-        <li><span class="zh">阴影距离输入：</span><span class="en">inputs:shadow:distance</span></li>
-        <li><span class="zh">阴影衰减输入：</span><span class="en">inputs:shadow:falloff</span></li>
-        <li><span class="zh">阴影链接：</span><span class="en">shadow-linking</span></li>
-      </ul>
+
+    <section data-cn-complete="release-user-guide-usdLux-ShadowAPI-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`ShadowAPI` 的核心职责是给灯光增加阴影外观控制。官方页把它描述为用来控制 shadow behavior 的 API，例如 shadow color、distance 和 falloff，并明确提醒这些控制是 `non-physical controls`。这句话是阅读本页的边界：`ShadowAPI` 不是新的真实光传输模型，不承诺能量守恒，也不替代渲染器的物理阴影算法；它提供的是给内容作者和 lighting artist 调整阴影显示方式的 schema 入口。</p>
+      <p class="en">`ShadowAPI` controls shadow behavior such as color, distance, and falloff, and the official page frames these controls as non-physical artistic controls.</p>
+
+      <p class="zh">所谓 `non-physical controls`，意思是这些属性可以有意绕过严格物理规律，以满足镜头、美术风格、可读性或合成需求。比如阴影在真实世界里通常不会被任意染成指定颜色，但 `inputs:shadow:color` 允许作者调节灯光投射阴影的颜色；真实世界里遮挡物和接收面之间的距离不会用一个简单阈值决定阴影是否存在，但 `inputs:shadow:distance`、`inputs:shadow:falloff` 和 `inputs:shadow:falloffGamma` 可以给渲染结果增加距离限制和渐隐曲线。</p>
+      <p class="en">The controls are intentionally artistic: they may tint shadows or fade them by distance in ways that should not be overinterpreted as physically exact lighting.</p>
+
+      <p class="zh">本页与 `LightAPI` 的 shadow-linking 必须分开理解。`LightAPI` 中的 light-linking / shadow-linking 更关注“哪些几何体被这盏灯照亮或参与这盏灯的阴影关系”；`ShadowAPI` 更关注“已经参与该灯阴影计算的结果如何显示、是否启用、在距离上如何淡出”。换句话说，linking 决定集合成员和关系，`ShadowAPI` 决定该灯自身阴影输出的美术控制参数。把二者合并成一个笼统的“阴影设置”，会让排查路径变混乱。</p>
+      <p class="en">Separate membership-oriented shadow-linking from `ShadowAPI`'s per-light shadow appearance controls.</p>
+
+      <p class="zh">官方页的阅读结构很短，但属性含义需要逐个建立。页面先给出 `ShadowAPI` 总述，然后指向 `Shadows` 示例页，接着在 `Properties` section 中列出 `inputs:shadow:color`、`inputs:shadow:distance`、`inputs:shadow:enable`、`inputs:shadow:falloff` 和 `inputs:shadow:falloffGamma`。本地中文页保留这个结构，并补充每个属性的使用语义、默认值含义、相邻概念边界和调试顺序，使读者不用依赖英文正文也能知道该从哪一个属性开始排查。</p>
+      <p class="en">The local page follows the official structure: summary, `Shadows` reference, and the five `inputs:shadow:*` properties.</p>
+
+      <p class="zh">`inputs:shadow:color` 的 USD type 是 `color3f`，fallback value 是 `(0, 0, 0)`。官方语义是设置该灯投射阴影的颜色。中文阅读时应把它理解为阴影 tint 或 stylization 参数：当需要让阴影偏冷、偏暖、偏品牌色或与合成背景匹配时，它提供了一个直接入口。它不改变物体材质的 `UsdShade` 网络，不等价于接收面的 base color，也不表示遮挡物吸收了某种真实光谱能量。</p>
+      <p class="en">`inputs:shadow:color` is a `color3f` with fallback `(0, 0, 0)` and sets the color of shadows cast by the light.</p>
+
+      <p class="zh">`inputs:shadow:distance` 的 USD type 是 `float`，fallback value 是 `-1.0`。官方语义是设置 occluder 与 shadow-receiving surface 之间仍会投射阴影的最大距离；fallback `-1.0` 表示没有距离限制。调试时，如果远处遮挡仍然投影，先检查这个值是否仍为 `-1.0`；如果阴影突然消失或范围过短，检查 scene units、灯光空间尺度和遮挡物到接收面的实际距离。它控制的是距离上限，不是阴影软硬、透明度或灯光亮度。</p>
+      <p class="en">`inputs:shadow:distance` is a `float` with fallback `-1.0`; `-1.0` means no maximum distance limit.</p>
+
+      <p class="zh">`inputs:shadow:enable` 的 USD type 是 `bool`，fallback value 是 `True`。它控制应用了该 schema 的 prim 是否在 lighting calculations 中投射阴影。这个属性适合做灯光级别的阴影开关：需要保留灯光照明但临时关闭该灯造成的阴影时，可以设置它；需要更细粒度地控制“哪些几何体对这盏灯有阴影”，则应回到 light-linking / shadow-linking，而不是滥用一个总开关。它不删除灯光、不改变集合关系，也不保证所有 renderer 以完全相同方式呈现禁用结果。</p>
+      <p class="en">`inputs:shadow:enable` is a `bool` with fallback `True`; use linking controls for finer control of which geometry participates.</p>
+
+      <p class="zh">`inputs:shadow:falloff` 的 USD type 是 `float`，fallback value 是 `-1.0`。它设置 shadow falloff 的大小，用来隐藏或调整到达最大 `shadow:distance` 附近时的硬截断。可以把它看成从 full shadow 逐渐过渡到 no shadow 的 fade zone 宽度：falloff zone 的起点仍有完整阴影，走到最大 shadow distance 时淡到没有阴影。官方还强调 falloff zone 不能超过最大 shadow distance；当取值小于或等于 `0.0` 时，表示没有 falloff zone。</p>
+      <p class="en">`inputs:shadow:falloff` is a `float` with fallback `-1.0`; it defines the fade zone near the maximum shadow distance.</p>
+
+      <p class="zh">`inputs:shadow:falloffGamma` 的 USD type 是 `float`，fallback value 是 `1.0`。它控制 falloff zone 内阴影强度随线性距离变化的速率，并被当作 gamma/exponential 控制使用。正确使用 `falloffGamma` 依赖 `shadow:distance` 和 `shadow:falloff` 已经合理设置：如果没有最大距离或没有有效 falloff zone，gamma 曲线没有明确的发挥空间；如果 falloff 太宽或太窄，gamma 会放大这种错误的视觉观感。调试顺序应是先设距离，再设 falloff zone，最后微调 `falloffGamma`。</p>
+      <p class="en">`inputs:shadow:falloffGamma` is a `float` with fallback `1.0`; it shapes the exponential falloff rate inside the falloff zone.</p>
+
+      <p class="zh">`Shadows` 链接在官方页中承担示例入口作用，而不是替代本页的属性定义。本地站点把该入口路由到同域本地页面，读者可以先在本页理解 `ShadowAPI` 的属性表，再跳到 `Shadows` 示例理解实际 authoring 场景。只有“打开官方原页 / Open official page”是明确外跳；普通阅读路径应继续留在本地中文站，避免在未提示的情况下跳回官方英文站。</p>
+      <p class="en">The `Shadows` reference is an example path; local reading links should remain local except for the explicit official-page jump.</p>
+
+      <p class="zh">与 `ShapingAPI` 对照时，`ShadowAPI` 管阴影；`ShapingAPI` 管 light shaping，例如 cone、focus、IES profile 等发光分布或聚光控制。与 `RectLight`、`DiskLight`、`SphereLight`、`DistantLight` 等具体 light schema 对照时，后者描述灯光类型、形状或方向，`ShadowAPI` 作为 API schema 可以附加或参与这些灯光的阴影行为解释。与 `PortalLight` 对照时，`PortalLight` 引导 dome-light sampling；`ShadowAPI` 不描述 portal 采样入口，而描述阴影显示控制。</p>
+      <p class="en">Use adjacent usdLux pages to distinguish shadow appearance controls from light shape, light type, and dome-light portal sampling.</p>
+
+      <p class="zh">生产排查可以按四层进行。第一层检查 schema 和属性名：确认目标灯光确实带有 `ShadowAPI` 相关属性，且 `inputs:shadow:*` 命名空间没有拼写错误。第二层检查 renderer 支持：这些是非物理艺术控制，具体实现和支持程度可能依赖 render delegate。第三层检查数值关系：`inputs:shadow:distance`、`inputs:shadow:falloff`、`inputs:shadow:falloffGamma` 必须形成合理组合，falloff zone 不能超过最大距离。第四层再检查 linking、visibility、material opacity、几何遮挡和 scene scale，避免把其他系统问题误判成 `ShadowAPI` 失效。</p>
+      <p class="en">Debug schema data, renderer support, distance/falloff value relationships, and adjacent visibility/linking/material issues separately.</p>
+
+      <p class="zh">完成阅读后，读者应能独立回答这些问题：`ShadowAPI` 为什么是艺术控制而不是物理阴影模型；`inputs:shadow:color` 改的是阴影颜色而不是材质颜色；`inputs:shadow:distance=-1.0` 为什么表示无限制；`inputs:shadow:enable=True` 为什么只是灯光级阴影开关；`inputs:shadow:falloff` 和 `inputs:shadow:falloffGamma` 为什么必须配合距离使用；以及什么时候应该转到 `LightAPI` 的 shadow-linking、`ShapingAPI` 的 light shaping 或具体 light schema 页面继续排查。</p>
+      <p class="en">A complete reading should make the role, properties, boundaries, and debugging path clear without relying on English prose as the main path.</p>
+
+      <p class="zh">在实际资产交付中，还要把 `ShadowAPI` 看成一种可分层覆盖的 USD opinion。某个上游 layer 可能只提供默认灯光，shot 或 lookdev layer 再覆盖 `inputs:shadow:color`、`inputs:shadow:distance` 或 `inputs:shadow:enable`；variant、reference、payload、sublayer 强度都会影响最终取值。因此排查“为什么阴影设置没生效”时，不要只看 HTML 属性表，还要在 USD composition 中确认当前 prim 上最强 opinion 来自哪里，属性是否被更强 layer 清空、覆盖或 block。</p>
+      <p class="en">Treat `ShadowAPI` values as USD opinions that can be overridden by stronger layers, variants, references, payloads, or blocks.</p>
+
+      <p class="zh">另一个常见误区是把阴影显示异常全部归因给 `ShadowAPI`。如果物体本身通过 `visibility`、`purpose`、material opacity、render visibility、holdout、collection membership 或 renderer-specific setting 改变了可见性，阴影结果也可能变化。`ShadowAPI` 只描述这盏灯的阴影控制输入；它不替代几何可见性、材质透明度、实例代理、渲染设置或 delegate 专属选项。中文主阅读路径必须先把这些边界讲清楚，再让读者按属性表逐项核对。</p>
+      <p class="en">Do not use `ShadowAPI` as a catch-all explanation for visibility, material, collection, or renderer-specific shadow behavior.</p>
     </section>
-    <section data-cn-refinement="release-quality-pass-105">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`ShadowAPI` 提供 shadow color、shadow distance、shadow falloff 等阴影外观控制。官方明确这些是 non-physical controls，适合艺术控制，而不是物理精确照明模拟；阅读时应把它和 `LightAPI` 的 shadow-linking 区分开。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for ShadowAPI while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`inputs:shadow:color` 调整灯光投射阴影的颜色，适合风格化或美术调色；它不是能量守恒或真实光传输参数。</span></li>
-        <li><span class="zh">`inputs:shadow:distance`、`inputs:shadow:falloff` 和 `inputs:shadow:falloffGamma` 共同影响阴影随距离变化的衰减曲线，常用于限制阴影影响范围或调整过渡软硬。</span></li>
-        <li><span class="zh">`inputs:shadow:enable` 是是否让该灯参与阴影渲染的开关；它不删除灯光、不移除 link collection，只影响阴影行为是否启用。</span></li>
-        <li><span class="zh">`LightAPI` 的 shadow-linking 选择哪些对象进入阴影关系，`ShadowAPI` 则控制阴影如何显示。两个概念应分开翻译，不能合并成一个“阴影设置”。</span></li>
-        <li><span class="zh">这些属性的实际视觉效果依赖 renderer 支持。中文层应记录 schema 意图和属性边界，同时保留 `non-physical controls` 这个英文术语提醒读者不要做物理含义过度推断。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">阴影控制 API schema：</span><span class="en">ShadowAPI</span></li>
-        <li><span class="zh">非物理艺术控制：</span><span class="en">non-physical controls</span></li>
-        <li><span class="zh">阴影颜色输入属性：</span><span class="en">inputs:shadow:color</span></li>
-        <li><span class="zh">阴影距离输入属性：</span><span class="en">inputs:shadow:distance</span></li>
-        <li><span class="zh">阴影衰减 gamma 输入属性：</span><span class="en">inputs:shadow:falloffGamma</span></li>
-        <li><span class="zh">阴影链接：</span><span class="en">shadow-linking</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：ShadowAPI</span><span class="en">ShadowAPI</span></li>
-<li><span class="zh">第 2 级标题：Properties</span><span class="en">Properties</span></li>
-<li><span class="zh">第 3 级标题：inputs:shadow:color</span><span class="en">inputs:shadow:color</span></li>
-<li><span class="zh">第 3 级标题：inputs:shadow:distance</span><span class="en">inputs:shadow:distance</span></li>
-<li><span class="zh">第 3 级标题：inputs:shadow:enable</span><span class="en">inputs:shadow:enable</span></li>
-<li><span class="zh">第 3 级标题：inputs:shadow:falloff</span><span class="en">inputs:shadow:falloff</span></li>
-<li><span class="zh">第 3 级标题：inputs:shadow:falloffGamma</span><span class="en">inputs:shadow:falloffGamma</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">Use ShadowAPI to control shadow behavior, such as shadow color, distance, and falloff. These are non-physical controls that ignore certain laws of physics used for lighting calculations. Use these controls for scenarios where you need artistic control over how shadows are rendered.</p>
-<p class="en">See Shadows for more examples of using ShadowAPI.</p>
-<p class="en">Sets the color of the shadows cast by the light.</p>
+
+    <section id="properties">
+      <h2>属性阅读路径 / Property Reading Path</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>属性 / Property</th>
+            <th>USD type</th>
+            <th>Fallback</th>
+            <th>中文主阅读路径</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>inputs:shadow:color</code></td>
+            <td><code>color3f</code></td>
+            <td><code>(0, 0, 0)</code></td>
+            <td><span class="zh">设置该灯投射阴影的颜色，用于 tint、风格化和美术控制；不要把它翻译成材质颜色或真实光谱参数。</span><span class="en">Sets the color of shadows cast by the light.</span></td>
+          </tr>
+          <tr>
+            <td><code>inputs:shadow:distance</code></td>
+            <td><code>float</code></td>
+            <td><code>-1.0</code></td>
+            <td><span class="zh">设置遮挡物与阴影接收面之间仍会投射阴影的最大距离；`-1.0` 表示没有距离限制。</span><span class="en">Sets the maximum shadow-casting distance; `-1.0` indicates no limit.</span></td>
+          </tr>
+          <tr>
+            <td><code>inputs:shadow:enable</code></td>
+            <td><code>bool</code></td>
+            <td><code>True</code></td>
+            <td><span class="zh">控制应用该 schema 的 prim 是否在 lighting calculations 中投射阴影；细粒度对象参与关系应看 light-linking / shadow-linking。</span><span class="en">Controls whether the prim casts shadows during lighting calculations.</span></td>
+          </tr>
+          <tr>
+            <td><code>inputs:shadow:falloff</code></td>
+            <td><code>float</code></td>
+            <td><code>-1.0</code></td>
+            <td><span class="zh">设置最大 shadow distance 附近的渐隐区域大小，用于避免硬截断；falloff zone 不能超过最大 shadow distance。</span><span class="en">Sets the shadow fade zone near the maximum shadow distance.</span></td>
+          </tr>
+          <tr>
+            <td><code>inputs:shadow:falloffGamma</code></td>
+            <td><code>float</code></td>
+            <td><code>1.0</code></td>
+            <td><span class="zh">用 gamma/exponential 曲线控制 falloff zone 内阴影强度的变化速率；需要先正确设置 `shadow:distance` 和 `shadow:falloff`。</span><span class="en">Controls the exponential falloff rate inside the falloff zone.</span></td>
+          </tr>
+        </tbody>
+      </table>
     </section>
 
     <section>
-      <h2>本页链接 / Page Links</h2>
+      <h2>使用与调试顺序 / Usage and Debugging Order</h2>
+      <ol>
+        <li><span class="zh">先确认目标灯光或相关 prim 上的 `ShadowAPI` 属性存在，且属性名完整保留为 `inputs:shadow:*`。</span><span class="en">Confirm that the expected `inputs:shadow:*` properties are authored on the relevant light or prim.</span></li>
+        <li><span class="zh">用 `inputs:shadow:enable` 判断该灯是否整体参与阴影计算；如果只想排除某些对象，转到 `LightAPI` shadow-linking。</span><span class="en">Use `inputs:shadow:enable` for a light-level switch, and use linking for per-object participation.</span></li>
+        <li><span class="zh">用 `inputs:shadow:distance` 决定阴影是否有最大距离限制，并核对 scene units 与遮挡物到接收面的距离。</span><span class="en">Use `inputs:shadow:distance` to reason about maximum occluder-to-receiver distance.</span></li>
+        <li><span class="zh">用 `inputs:shadow:falloff` 设计最大距离附近的淡出区域；该值不应超过最大距离，且小于等于 `0.0` 时没有有效淡出区。</span><span class="en">Use `inputs:shadow:falloff` to avoid a hard cutoff near the maximum distance.</span></li>
+        <li><span class="zh">最后用 `inputs:shadow:falloffGamma` 调整曲线速度；如果前两个距离参数不合理，gamma 调整只会掩盖问题。</span><span class="en">Tune `inputs:shadow:falloffGamma` only after distance and falloff have sensible values.</span></li>
+        <li><span class="zh">如果视觉结果没有变化，检查 render delegate 是否支持这些 non-physical shadow controls，再检查 layer strength、variant、payload 和 stronger opinion 是否覆盖了属性值。</span><span class="en">If nothing changes, check renderer support and USD composition strength before changing unrelated settings.</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>边界与相邻页面 / Boundaries and Adjacent Pages</h2>
       <ul>
-<li><a href="overview.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/overview.html">Shadows</a></li>
+        <li><span class="zh"><a href="LightAPI.html">LightAPI</a>：用于理解 light-linking / shadow-linking 的集合与关系语义；不要用 `ShadowAPI` 的开关替代细粒度链接关系。</span><span class="en">Use `LightAPI` for linking semantics.</span></li>
+        <li><span class="zh"><a href="ShapingAPI.html">ShapingAPI</a>：用于理解 cone、focus、IES profile 等 light shaping；不要把 shaping 参数误认为阴影距离或阴影颜色。</span><span class="en">Use `ShapingAPI` for light-shape controls.</span></li>
+        <li><span class="zh"><a href="RectLight.html">RectLight</a>、<a href="DistantLight.html">DistantLight</a>、<a href="DomeLight.html">DomeLight</a>：这些页面描述具体 light schema；`ShadowAPI` 解释附加的阴影行为控制。</span><span class="en">Concrete light schemas define light type and shape.</span></li>
+        <li><span class="zh"><a href="PortalLight.html">PortalLight</a>：用于 dome-light sampling portal；它解决采样入口问题，不是阴影颜色、距离或 falloff 的控制入口。</span><span class="en">`PortalLight` is about dome-light sampling, not shadow falloff.</span></li>
+        <li><span class="zh"><a href="overview.html">Shadows</a>：官方页推荐的示例入口，本地链接保留为站内路径，适合在读完属性语义后继续看示例。</span><span class="en">The local `Shadows` link keeps the reading path inside the local site.</span></li>
       </ul>
     </section>
+
+    <section>
+      <h2>代码与配置片段 / Code and Configuration Excerpts</h2>
+      <pre><code>def RectLight "KeyLight"
+{
+    color3f inputs:shadow:color = (0.02, 0.03, 0.05)
+    bool inputs:shadow:enable = true
+    float inputs:shadow:distance = 8.0
+    float inputs:shadow:falloff = 2.0
+    float inputs:shadow:falloffGamma = 1.4
+}</code></pre>
+      <p class="zh">这个片段只演示属性命名和数值关系：`inputs:shadow:distance` 给最大距离，`inputs:shadow:falloff` 给淡出区宽度，`inputs:shadow:falloffGamma` 调整曲线速率，`inputs:shadow:color` 调整阴影颜色，`inputs:shadow:enable` 控制该灯阴影是否启用。实际 visual result 取决于 renderer 支持、场景单位、灯光类型、遮挡物与接收面距离，以及 USD composition 中哪个 layer 提供最强 opinion。</p>
+      <p class="en">The snippet illustrates naming and value relationships; renderer support and composition strength determine the final result.</p>
+    </section>
+
+    <section>
+      <h2>术语对照 / Terms</h2>
+      <ul>
+        <li><span class="zh">阴影控制 API schema：</span><span class="en">ShadowAPI</span></li>
+        <li><span class="zh">非物理艺术控制：</span><span class="en">non-physical controls</span></li>
+        <li><span class="zh">阴影颜色：</span><span class="en">shadow color / inputs:shadow:color</span></li>
+        <li><span class="zh">阴影最大距离：</span><span class="en">shadow distance / inputs:shadow:distance</span></li>
+        <li><span class="zh">阴影启用开关：</span><span class="en">inputs:shadow:enable</span></li>
+        <li><span class="zh">阴影淡出区：</span><span class="en">shadow falloff / inputs:shadow:falloff</span></li>
+        <li><span class="zh">阴影淡出 gamma：</span><span class="en">falloffGamma / inputs:shadow:falloffGamma</span></li>
+        <li><span class="zh">阴影链接：</span><span class="en">shadow-linking</span></li>
+        <li><span class="zh">灯光链接：</span><span class="en">light-linking</span></li>
+        <li><span class="zh">遮挡物：</span><span class="en">occluder</span></li>
+        <li><span class="zh">阴影接收面：</span><span class="en">shadow-receiving surface</span></li>
+        <li><span class="zh">渲染代理：</span><span class="en">render delegate</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>官方核对摘录 / Official Source Checkpoints</h2>
+      <ul>
+        <li><span class="zh">官方页标题为 `ShadowAPI`，并在 `Properties` section 下列出 5 个 `inputs:shadow:*` 属性；本页已逐项覆盖。</span><span class="en">Official structure: `ShadowAPI`, `Properties`, and the five shadow inputs.</span></li>
+        <li><span class="zh">官方概述强调这组控制用于 shadow behavior，且是 non-physical artistic controls；本页把这个边界作为中文主阅读路径的第一段。</span><span class="en">The official summary frames these controls as artistic rather than physically exact.</span></li>
+        <li><span class="zh">官方页把 `inputs:shadow:enable` 与 light-linking 关联说明；本页保留这一区分，明确总开关和细粒度对象参与关系不是同一层。</span><span class="en">The local text preserves the distinction between enablement and linking.</span></li>
+      </ul>
+    </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="../../../../../site/release_index.html">Release 本地入口 / Local release entry</a></p>
       <p><a href="https://openusd.org/release/user_guides/schemas/usdLux/ShadowAPI.html">打开官方原页 / Open official page</a></p>
     </section>
   </main>

@@ -3,35 +3,35 @@
 ## 当前真实状态
 
 - 全量页面：406
-- 完整双语 / good_bilingual：97
-- 严格中文可读 / review_ready_zh：34
+- 完整双语 / good_bilingual：98
+- 严格中文可读 / review_ready_zh：35
 - API complete：72
-- Release complete：25
-- 未完整翻译草稿 / bilingual_draft：309
-- draft_needs_translation：298
+- Release complete：26
+- 未完整翻译草稿 / bilingual_draft：308
+- draft_needs_translation：297
 - draft_template_only：11
 - pending_full_scope：0
-- promotion manifest：89 页
+- promotion manifest：90 页
 - 总验证：passed=true，failed_check_count=0，required_check_count=311
 
 说明：剩余 `bilingual_draft` 是可检查草稿，不是完整翻译。API 名、类名、函数名、token、代码和链接会保留英文；真正需要治理的是草稿页和完成页里仍主要依赖英文的主阅读路径。
 
-## 第 396 轮：DefectRound
+## 第 397 轮：PromotionRound
 
-- 轮次性质：流程或一致性修复，不晋级新页面。
-- 轮次目的：Round 396 DefectRound fixed P1-left-navigation-reading-flow. The defect was user-visible: completed full_site pages lacked a left-side reading path, breadcrumb, release/API local entrances, and adjacent local-page navigation even though the old navigation_coverage_audit passed. This round added reusable reading-flow navigation to 398 full_site release/API pages, added scripts/inject_openusd_reading_flow_navigation.mjs and scripts/audit_openusd_reading_flow_navigation.mjs, and verified 89 completed full_site pages plus the required LightAPI -> LightFilter/PortalLight/RectLight and API sample paths. No page translation was promoted and counts intentionally stayed unchanged.
-- 本轮目标：After the P1 reading-flow fix is verified and pushed, resume a single PromotionRound only if requested, with full_site/release/user_guides/schemas/usdLux/ShadowAPI.html as the next likely target; do not batch-translate from this defect round.
-- 官方页面：不适用
-- 完成数状态：good_bilingual=97；review_ready_zh=34。
+- 轮次性质：页面晋级，exactly 1 个目标页。
+- 轮次目的：Round 397 PromotionRound promoted exactly one release user-guide page: full_site/release/user_guides/schemas/usdLux/ShadowAPI.html. The page was compared against https://openusd.org/release/user_guides/schemas/usdLux/ShadowAPI.html and the local source snapshot source/full_release/user_guides/schemas/usdLux/ShadowAPI_source.html, then upgraded from bilingual_draft to bilingual_complete with Chinese main-reading-path coverage for all five official inputs:shadow:* properties, non-physical shadow-control boundaries, LightAPI shadow-linking distinction, renderer support caveats, and debugging flow. This round increased good_bilingual from 97 to 98 and review_ready_zh from 34 to 35.
+- 本轮目标：`full_site/release/user_guides/schemas/usdLux/ShadowAPI.html`
+- 官方页面：`https://openusd.org/release/user_guides/schemas/usdLux/ShadowAPI.html`
+- 完成数状态：good_bilingual=98；review_ready_zh=35。
 - 固定审计：`translation_quality_review.json`、`english_debt_audit.json`、`all_pages_inventory.json`、`validation_report.json` 已重建。
 
 ## 英文残留审计结果
 
-- good_bilingual：97
-- review_ready_zh：34
+- good_bilingual：98
+- review_ready_zh：35
 - review_needs_zh_debt：63
 - API complete / review_ready_zh：72 / 12
-- Release complete / review_ready_zh：25 / 22
+- Release complete / review_ready_zh：26 / 23
 
 ## 验证结果
 
@@ -42,4 +42,4 @@
 
 ## 下一轮目标
 
-建议目标：`full_site/release/user_guides/schemas/usdLux/ShadowAPI.html`。如果该页无法达到 `good_bilingual`，停止并报告阻塞；不要回到只刷 API 模块页的节奏。
+建议目标：`full_site/release/user_guides/schemas/usdLux/ShapingAPI.html`。如果该页无法达到 `good_bilingual`，停止并报告阻塞；不要回到只刷 API 模块页的节奏。

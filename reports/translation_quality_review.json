@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T21:35:45.193Z",
+  "generated_at": "2026-06-07T22:00:58.008Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 309,
-    "bilingual_complete": 97
+    "bilingual_draft": 308,
+    "bilingual_complete": 98
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 298,
-    "good_bilingual": 97
+    "draft_needs_translation": 297,
+    "good_bilingual": 98
   },
   "focus_batch": [
     {
@@ -10229,29 +10229,29 @@
     },
     {
       "index": 344,
-      "title": "页面草稿：ShadowAPI / ShadowAPI",
+      "title": "完整双语参考：ShadowAPI / ShadowAPI",
       "output": "full_site/release/user_guides/schemas/usdLux/ShadowAPI.html",
       "official_url": "https://openusd.org/release/user_guides/schemas/usdLux/ShadowAPI.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 32,
-      "enBlockCount": 25,
-      "zhChars": 693,
-      "enLetters": 1428,
-      "bodyChineseChars": 811,
+      "grade": "good_bilingual",
+      "zhBlockCount": 48,
+      "enBlockCount": 48,
+      "zhChars": 2260,
+      "enLetters": 3146,
+      "bodyChineseChars": 2476,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。",
-        "本区块针对 ShadowAPI 补充中文优先的 schema 用途、属性/关系阅读路径、艺术控制或插件扩展边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。",
-        "`ShadowAPI` 用于控制 shadow color、distance、falloff 等阴影外观；官方说明明确这些是 non-physical controls，目标是艺术控制而不是物理精确模拟。"
+        "本页是 OpenUSD release 用户指南中 usdLux `ShadowAPI` 的完整双语参考页。本轮只晋级 `ShadowAPI.html` 这一页，并以官方页和本地 `source/full_release/user_guides/schemas/usdLux/ShadowAPI_source.html` 为源页对照；中文解释覆盖官方概述、`Properties` section、5 个 `inputs:shadow:*` 属性、与 `LightAPI` shadow-linking 的边界、renderer 支持差异和调试路径。`ShadowAPI`、`inputs:shadow:color`、`inputs:shadow:distance`、`inputs:shadow:enable`、`inputs:shadow:falloff`、`inputs:shadow:falloffGamma`、`color3f`、`float`、`bool`、`Shadows`、`LightAPI`、`ShapingAPI`、`RectLight` 等英文 schema/API/token/属性名保持原样。",
+        "`ShadowAPI` 的核心职责是给灯光增加阴影外观控制。官方页把它描述为用来控制 shadow behavior 的 API，例如 shadow color、distance 和 falloff，并明确提醒这些控制是 `non-physical controls`。这句话是阅读本页的边界：`ShadowAPI` 不是新的真实光传输模型，不承诺能量守恒，也不替代渲染器的物理阴影算法；它提供的是给内容作者和 lighting artist 调整阴影显示方式的 schema 入口。",
+        "所谓 `non-physical controls`，意思是这些属性可以有意绕过严格物理规律，以满足镜头、美术风格、可读性或合成需求。比如阴影在真实世界里通常不会被任意染成指定颜色，但 `inputs:shadow:color` 允许作者调节灯光投射阴影的颜色；真实世界里遮挡物和接收面之间的距离不会用一个简单阈值决定阴影是否存在，但 `inputs:shadow:distance`、`inputs:shadow:falloff` 和 `inputs:shadow:falloffGamma` 可以给渲染结果增加距离限制和渐隐曲线。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.",
-        "This section adds Chinese-first schema purpose, property and relationship reading paths, artistic-control or plugin-extension boundaries, and terminology for ShadowAPI while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison."
+        "This local bilingual page explains the usdLux `ShadowAPI` user-guide page in Chinese first while retaining the official identifiers, property names, USD types, tokens, section labels, and links for comparison.",
+        "`ShadowAPI` controls shadow behavior such as color, distance, and falloff, and the official page frames these controls as non-physical artistic controls."
       ]
     },
     {
