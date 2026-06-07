@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：UsdLuxShapingAPI Class / UsdLuxShapingAPI Class</title>
+  <title>完整双语参考：UsdLuxShapingAPI Class / UsdLuxShapingAPI Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,15 +24,47 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：UsdLuxShapingAPI Class / UsdLuxShapingAPI Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：UsdLuxShapingAPI Class / UsdLuxShapingAPI Class</h1>
     <div class="meta">https://openusd.org/release/api/class_usd_lux_shaping_a_p_i.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已从草稿晋级为完整双语参考页。中文解释覆盖 `UsdLuxShapingAPI` 的 applied API schema 职责、light emission shaping 的官方含义、`Apply()` / `CanApply()`、cone / focus / IES 属性、connectable API 边界、与具体 light schema 的关系以及常见调试误区；英文 API 名称、属性名、token、类型名、链接和必要原文摘录保持原样。</p>
+      <p class="en">This page is promoted to a complete bilingual reference. It keeps original API names, property names, tokens, type names, links, and necessary English excerpts while adding paragraph-level Chinese coverage for the official semantics.</p>
+    </section>
+    <section data-cn-complete="usd-lux-shaping-api-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`UsdLuxShapingAPI` 是应用到 light prim 上的 applied API schema，用来表达“如何塑造光的发射分布”。官方摘录中的 “Controls for shaping a light's emission” 不是说它定义一种新的灯光几何，而是说它为已有灯光补充 cone、focus、IES profile 等分布控制。具体发光形状仍由 `UsdLuxDiskLight`、`UsdLuxSphereLight`、`UsdLuxRectLight` 等 typed schema 决定。</p>
+      <p class="en">The official description says this API provides controls for shaping a light's emission, not a replacement for concrete light geometry.</p>
+      <p class="zh">`Apply(prim)` 与 `CanApply(prim)` 是理解本页的第一层边界。`Apply()` 会把 `UsdLuxShapingAPI` 作为 API schema 应用到目标 `UsdPrim`，`CanApply()` 用来检查目标 prim 是否允许应用该 API。它们处理的是 USD schema authoring 与类型契约，不保证某个 renderer 已经支持全部 shaping 效果。</p>
+      <p class="en">`Apply()` authors the applied API schema on a prim, while `CanApply()` checks whether that schema can be applied.</p>
+      <p class="zh">cone 相关属性包括 `shaping:cone:angle` 和 `shaping:cone:softness`。`CreateShapingConeAngleAttr()` 写入锥形发光角度，决定光分布的大致开口；`CreateShapingConeSoftnessAttr()` 写入边缘柔化程度，影响锥形边界从亮到暗的过渡。它们常用于聚光灯式控制，但不要把它们误认为 transform 或灯光朝向属性。</p>
+      <p class="en">Cone attributes such as `shaping:cone:angle` and `shaping:cone:softness` shape angular spread and edge falloff.</p>
+      <p class="zh">focus 相关属性包括 `shaping:focus` 和 `shaping:focusTint`。`CreateShapingFocusAttr()` 控制发光分布向中心聚焦的强度；`CreateShapingFocusTintAttr()` 控制聚焦区域的色调变化。它们会与 `UsdLuxLightAPI` 侧的 `intensity`、`exposure`、`color`、`normalize` 一起影响最终视觉结果，但语义上仍属于发光形状控制，而不是基础光能量属性。</p>
+      <p class="en">Focus attributes affect concentration and tint of the shaped emission, while inherited light API attributes still control energy and color.</p>
+      <p class="zh">IES 相关属性包括 `shaping:ies:file`、`shaping:ies:angleScale` 和 `shaping:ies:normalize`。`CreateShapingIesFileAttr()` 指向 IES 配光文件，`CreateShapingIesAngleScaleAttr()` 调整角度解释，`CreateShapingIesNormalizeAttr()` 控制是否归一化 IES 分布。调试时要区分 asset path 是否可解析、IES 文件内容是否被 renderer 支持，以及 USD 属性是否已正确 authored。</p>
+      <p class="en">IES attributes specify a profile file, angle scale, and normalization behavior; renderer support remains a separate concern.</p>
+      <p class="zh">`ConnectableAPI()`、`CreateInput()` 和 `CreateOutput()` 显示该 API 还继承或暴露了 connectable schema 语义。这里的连接语义应与 `UsdShadeConnectableAPI`、`UsdShadeInput`、`UsdShadeOutput` 一起理解：连接关系、source name、typeName、render context 和数值属性需要分别检查，不能只看某个 `shaping:*` token 是否存在。</p>
+      <p class="en">Connectable behavior should be debugged separately from authored shaping values and from renderer interpretation.</p>
+      <p class="zh">`Get()` 与构造函数只是取得 `UsdLuxShapingAPI` wrapper，不会自动保证 API 已应用或属性已 authored。若工具读到 wrapper 但 shaping 没有效果，应按顺序检查：目标 prim 是否有效、`Apply()` 是否写入、`CanApply()` 是否允许、`shaping:cone:*` / `shaping:focus*` / `shaping:ies:*` 是否在目标 layer 中存在、composition 后是否被更强 layer 覆盖，以及 renderer 是否实现相应行为。</p>
+      <p class="en">Getting a wrapper is not the same as authoring the API or resolving effective shaped-light behavior.</p>
+      <p class="zh">`GetSchemaAttributeNames()` 与 `schemaKind` / `_GetSchemaKind()` 属于 schema 注册和属性声明层。它们适合生成 UI、校验 schema token 或调试属性清单，但不会告诉你某个具体 stage 上最终解析出的值。具体值仍要通过 `UsdAttribute`、time sample、layer strength、fallback 和 renderer 支持来判断。</p>
+      <p class="en">Schema attribute names describe declared schema properties; composed authored values must still be resolved through normal USD composition rules.</p>
+      <p class="zh">常见误读包括：把 `UsdLuxShapingAPI` 当成新的 light type；把 `Apply()` 当成 renderer 支持证明；把 IES file 路径问题误判成 `intensity` 问题；把 cone angle 当成 transform；或把 connectable input/output 与普通 authored shaping attribute 混为一谈。正确排查路径是先确认 prim 与 API schema，再确认 shaping 属性、asset resolution、composition、light energy 属性和 renderer 支持。</p>
+      <p class="en">Common debugging separates API application, authored shaping attributes, asset resolution, composition, inherited light energy controls, and renderer support.</p>
+      <p class="zh">在资产制作流程中，本页最适合用来核对“灯光分布控制是否以 USD schema 形式表达”。如果目标是改变灯的位置或朝向，应检查 `UsdGeomXformable` / transform；如果目标是改变基础能量，应检查 `UsdLuxLightAPI`；如果目标是让发光分布具有锥角、聚焦或 IES 配光特征，才应回到 `UsdLuxShapingAPI` 的 `shaping:*` 属性。这个边界能避免把几何、能量、分布和 renderer 实现混成一个问题。</p>
+      <p class="en">In authoring workflows, this API is best read as USD-schema representation of distribution shaping, separate from transforms, base energy controls, and renderer implementation.</p>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">光发射塑形：</span><span class="en">light emission shaping</span></li>
+        <li><span class="zh">应用式 API schema：</span><span class="en">applied API schema</span></li>
+        <li><span class="zh">锥形角度：</span><span class="en">shaping:cone:angle</span></li>
+        <li><span class="zh">锥形边缘柔化：</span><span class="en">shaping:cone:softness</span></li>
+        <li><span class="zh">聚焦强度：</span><span class="en">shaping:focus</span></li>
+        <li><span class="zh">IES 配光文件：</span><span class="en">shaping:ies:file</span></li>
+      </ul>
     </section>
     <section data-cn-refinement="api-class-quality-pass-040">
       <h2>中文精修导读 / Chinese Reading Notes</h2>
