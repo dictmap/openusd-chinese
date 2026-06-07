@@ -1,32 +1,32 @@
 # OpenUSD Iteration Report
 
-## 第 393 轮摘要
+## 第 394 轮摘要
 
 - 轮次类型：PromotionRound
-- 轮次目的：Round 393 PromotionRound promoted full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html after live official-page and local source-snapshot parity checks. The page now has Chinese main-reading-path coverage for external SdrShadingNode discovery through UsdShadeNodeDefAPI, render delegate consumption, inherited LightFilter filterLink and shaderId semantics, inherited Xformable/Imageable properties and renderer/plugin debugging boundaries.
-- 本轮目标：`full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html`
+- 轮次目的：Round 394 PromotionRound promoted full_site/release/user_guides/schemas/usdLux/PortalLight.html after live official-page and local source-snapshot parity checks. The page now has Chinese main-reading-path coverage for PortalLight as a rectangular local-XY dome-light sampling portal, local -Z direction, inputs:height, inputs:width, light:shaderId, inherited extent/xformOpOrder/proxyPrim/purpose/visibility and renderer-support debugging boundaries.
+- 本轮目标：`full_site/release/user_guides/schemas/usdLux/PortalLight.html`
 - 结果：完成 1 个页面晋级，并让 good_bilingual 增加。
 - 核心说明：目标页已移除草稿状态，补齐中文主阅读路径，并进入 promotion manifest。
 
 ## 真实计数
 
 - total_pages：406
-- good_bilingual：95
-- review_ready_zh：32
-- bilingual_complete：95
-- bilingual_draft：311
-- draft_needs_translation：300
+- good_bilingual：96
+- review_ready_zh：33
+- bilingual_complete：96
+- bilingual_draft：310
+- draft_needs_translation：299
 - draft_template_only：11
 - pending_full_scope：0
 - api_complete：72
-- release_complete：23
+- release_complete：24
 
 ## 验证
 
 - validation_report：passed=true，failed_check_count=0，required_check_count=302
-- translation_quality：good_bilingual=95
-- english_debt：review_ready_zh=32，review_needs_zh_debt=63
-- promotion manifest：87 entries
+- translation_quality：good_bilingual=96
+- english_debt：review_ready_zh=33，review_needs_zh_debt=63
+- promotion manifest：88 entries
 
 ## 本轮改动文件
 
@@ -48,4 +48,4 @@
 
 ## 下一步
 
-优先选择 release/tutorial/user guide 页面，以降低 release 覆盖滞后。建议目标：`full_site/release/user_guides/schemas/usdLux/PortalLight.html`。
+优先选择 release/tutorial/user guide 页面，以降低 release 覆盖滞后。建议目标：`full_site/release/user_guides/schemas/usdLux/RectLight.html`。

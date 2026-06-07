@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：PortalLight / PortalLight</title>
+  <title>完整双语参考：PortalLight / PortalLight</title>
   <link rel="icon" href="../../../../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
@@ -12,102 +12,176 @@
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
     .zh{display:block;font-weight:650;color:#17324d}
     .en{display:block;color:#55616f;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
     pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
     code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：PortalLight / PortalLight</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：PortalLight / PortalLight</h1>
     <div class="meta">https://openusd.org/release/user_guides/schemas/usdLux/PortalLight.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+      <p class="zh">本页是 OpenUSD release 用户指南中 usdLux `PortalLight` 的完整双语参考页。中文优先解释 `PortalLight` 作为 local XY plane 中矩形 portal 的用途、它如何引导 `DomeLight` 采样、为何向 local `-Z` direction 传光，以及 `inputs:height`、`inputs:width`、`light:shaderId` 和继承属性的阅读边界；同时保留官方标题、section、API/schema/token/属性名、代码和链接原样。</p>
+      <p class="en">This local bilingual page explains the usdLux `PortalLight` guide in Chinese first while retaining official identifiers, section names, property names, tokens, and links for comparison.</p>
     </section>
-    <section data-cn-refinement="release-quality-pass-070">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 PortalLight 补充中文优先的 schema 用途、属性/关系阅读路径、艺术控制或插件扩展边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds Chinese-first schema purpose, property and relationship reading paths, artistic-control or plugin-extension boundaries, and terminology for PortalLight while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+
+    <section data-cn-complete="release-user-guide-usdLux-PortalLight-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`PortalLight` 的核心职责是给 `DomeLight` 提供采样引导。官方页把它定义为位于 local XY plane 的矩形 portal，用来 guide sampling of a dome light，并说明它向 local `-Z` direction 传递光。这里的“传递”不应理解成普通面积灯直接发光，而是告诉渲染器：环境光通过这个门、窗、开口或采样窗口进入场景时，应更集中地从该矩形区域采样。</p>
+      <p class="en">A `PortalLight` is a rectangular portal in the local XY plane that guides sampling of a dome light and transmits light in the local `-Z` direction.</p>
+
+      <p class="zh">因此，`PortalLight` 必须和 `DomeLight` 一起理解。`DomeLight` 描述环境光源，`PortalLight` 描述环境光采样进入场景的空间窗口；两者组合后，渲染器可以在室内窗户、门洞或开口附近更高效地采样环境光。单独放置一个 `PortalLight` 并不等价于创建一个新的普通发光面；它需要被消费端按 dome-light portal 语义解释。</p>
+      <p class="en">The portal works in the context of dome-light sampling rather than as an ordinary standalone area light.</p>
+
+      <p class="zh">`local XY plane` 和 `-Z direction` 是本页最重要的空间约定。portal 的矩形形状先在 prim 的本地 XY 平面中定义；光的传递方向沿该 prim 的本地负 Z 方向。把 portal 放到世界空间里的位置、朝向和尺度，需要通过 prim transform 与 `xformOpOrder` 解释。若门洞方向不对，通常不是 `inputs:height` 或 `inputs:width` 的问题，而是 transform 或本地坐标朝向没有被正确理解。</p>
+      <p class="en">The rectangle is defined in local coordinates, and world-space orientation comes from the prim's transform stack.</p>
+
+      <p class="zh">官方还说明默认矩形长度为 1 unit。这个 1 unit 是 schema 的局部基础尺寸，而不是最终世界空间大小。实际 authored 尺寸由 `inputs:height`、`inputs:width` 以及 transform 共同决定。生产里经常需要把 portal 对齐到窗框或门框，所以应把本地宽高和世界变换分开看：宽高描述矩形本体，transform 描述它放在哪里、朝向哪里、是否被整体缩放。</p>
+      <p class="en">The default rectangle is one unit in length, but authored dimensions and transforms determine the final placement.</p>
+
+      <p class="zh">`inputs:height` 是 direct property，USD type 是 `float`，fallback value 是 `1.0`。它控制 portal rectangle 在 local Y axis 上的高度。读者应把它理解成本地几何尺寸输入，而不是照明强度、采样权重或像素尺寸。若窗户变高，应调整 `inputs:height` 或 transform；若环境光变亮，应回到 `DomeLight` 或渲染设置检查，而不是把高度当作亮度参数。</p>
+      <p class="en">`inputs:height` is a `float` with fallback `1.0`; it controls the portal rectangle's height along the local Y axis.</p>
+
+      <p class="zh">`inputs:width` 也是 direct property，USD type 是 `float`，fallback value 是 `1.0`。它控制 local X axis 上的宽度。`inputs:height` 和 `inputs:width` 共同定义 local XY plane 中的矩形 portal。调试时如果 portal 覆盖的开口宽度不对，先检查宽高输入和 transform scale 的组合；不要把 `extent` 或 `visibility` 当作修改 portal 宽度的主入口。</p>
+      <p class="en">`inputs:width` is a `float` with fallback `1.0`; it controls the portal rectangle's width along the local X axis.</p>
+
+      <p class="zh">`light:shaderId` 是 direct property，USD type 是 `token`，fallback value 是 `PortalLight`。官方页说明 USD 还会注册一个 identifier 为 `PortalLight`、source type 为 `USD` 的 Sdr shader node，以对应这个 light 的 inputs。也就是说，`light:shaderId` 提供的是 portal light 的 shader 身份和 Sdr 对接线索；具体 render delegate 是否以及如何利用该 shader node 进行 portal sampling，仍取决于渲染器支持。</p>
+      <p class="en">`light:shaderId` is a `token` with fallback `PortalLight`; USD also registers an Sdr shader node with identifier `PortalLight` and source type `USD` for the light inputs.</p>
+
+      <p class="zh">`PortalLight` 与 `RectLight` 的边界也要分清。二者都在矩形概念附近，但 `RectLight` 是矩形面积灯，核心是直接发光；`PortalLight` 是 dome-light sampling portal，核心是引导环境光采样。把 `PortalLight` 当成 `RectLight` 使用，会导致对亮度、方向和采样效果的预期错误。官方页的 previous/next 链接也暗示它位于 usdLux 具体 light schema 列表中，需要和邻近 light schema 对照阅读。</p>
+      <p class="en">Do not confuse `PortalLight` with `RectLight`; the former guides dome-light sampling, while the latter is an area light schema.</p>
+
+      <p class="zh">继承自 `Boundable` 的 `extent` 是 USD type `float3[]`。它用于表达可包围范围，对工具显示、裁剪、选择或加速结构可能有用，但不是 portal 宽高的源数据。portal 的核心二维尺寸仍来自 `inputs:height` 与 `inputs:width`。如果 bounding box 看起来不对，可以检查 `extent`；如果 portal 门洞尺寸不对，应优先检查 width、height 和 transform。</p>
+      <p class="en">Inherited `extent` is a `float3[]` boundable property; it is not the primary portal-size authoring interface.</p>
+
+      <p class="zh">继承自 `Xformable` 的 `xformOpOrder` 是 USD type `token[]`，决定 transform ops 的组合顺序。对于 `PortalLight`，这个继承属性非常关键，因为 portal 的 local XY plane 和 local `-Z` direction 都要通过 transform 映射到世界空间。若 portal 朝向了窗户外侧而不是室内，或沿错误方向采样，通常需要检查 `xformOpOrder` 与各个 transform op 的顺序和数值。</p>
+      <p class="en">Inherited `xformOpOrder` controls transform ordering, which determines where the local portal plane and `-Z` direction land in world space.</p>
+
+      <p class="zh">继承自 `Imageable` 的 `proxyPrim` 是 relationship。它可能用于工具中的代理显示或可视化辅助，但不替代 portal 与 `DomeLight` 的采样关系，也不改变 `inputs:height`、`inputs:width` 或 `light:shaderId`。若 viewport 中需要显示一个辅助面，可以检查代理或工具显示；若渲染采样没有改善，应检查 dome light 连接、portal 朝向和 renderer 支持。</p>
+      <p class="en">Inherited `proxyPrim` is a representation relationship and does not replace portal sampling semantics.</p>
+
+      <p class="zh">继承自 `Imageable` 的 `purpose` 是 `token`，fallback value 是 `default`。它属于通用 imageable 用途分类，不是决定 portal 是否生效的主控制。`visibility` 也是继承 token，fallback value 是 `inherited`。它控制 scene graph 层面的可见性继承，但不同 renderer 对 portal 采样与可见性之间的关系可能有实现差异；阅读本页时应把“工具里看不看得到 portal”和“portal 是否被 dome light 采样使用”分开判断。</p>
+      <p class="en">Inherited `purpose` and `visibility` are general imageable properties; separate display concerns from sampling behavior.</p>
+
+      <p class="zh">从 authoring 路径看，一个可用的 `PortalLight` 通常需要四步：创建 `PortalLight` prim；设置 `inputs:height` 和 `inputs:width` 匹配开口；通过 transform 把 local XY rectangle 放到正确位置并让 local `-Z` 指向希望采样进入的方向；最后确认对应 `DomeLight` 或消费端会使用该 portal。若只 author portal prim 而没有让 dome-light workflow 使用它，页面结构是完整的，但渲染效果可能没有变化。</p>
+      <p class="en">Practical authoring includes creating the prim, sizing the rectangle, orienting the local `-Z` direction, and connecting it to the dome-light workflow.</p>
+
+      <p class="zh">调试顺序也应分层：第一层检查 schema 和属性，确认 prim type 是 `PortalLight`，`inputs:height`、`inputs:width`、`light:shaderId` 均符合预期；第二层检查空间，确认 local XY plane 和 `-Z` direction 通过 transform 后对准开口；第三层检查 dome-light 关系或 renderer 约定，确认 render delegate 支持 portal sampling；第四层再检查通用继承属性，如 `extent`、`proxyPrim`、`purpose`、`visibility` 是否影响显示或遍历。</p>
+      <p class="en">Debugging should separate schema properties, spatial orientation, dome-light/render-delegate support, and inherited display properties.</p>
+
+      <p class="zh">完整读懂本页后，读者应能独立回答：`PortalLight` 为什么不是普通矩形灯；local XY plane 与 local `-Z` direction 如何决定采样窗口的朝向；`inputs:height` 与 `inputs:width` 如何定义矩形尺寸；`light:shaderId=PortalLight` 与 Sdr node 注册有什么关系；以及继承的 `extent`、`xformOpOrder`、`proxyPrim`、`purpose`、`visibility` 分别属于几何范围、变换、代理显示、用途分类和可见性，而不是直接替代 portal sampling 语义。</p>
+      <p class="en">A complete reading distinguishes portal purpose, local orientation, width and height, shader identity, and inherited scene-graph properties.</p>
+
+      <p class="zh">和 `DomeLight` 的关系还决定了 `PortalLight` 的放置策略。室内场景中，portal 通常贴近窗户或开口，矩形面覆盖主要入光区域，local `-Z` 指向希望环境光进入的方向。若 portal 离开开口、朝向反了，或宽高没有覆盖有效窗口，即使 schema 属性都合法，采样引导也可能没有预期收益。这里的重点是“采样路径提示”，不是在空间中额外添加一块照明几何。</p>
+      <p class="en">Placement matters: the portal should cover the relevant opening and point its local `-Z` direction toward the intended sampling path.</p>
+
+      <p class="zh">和 `RectLight`、`DiskLight`、`SphereLight` 这类直接 light schema 对照时，`PortalLight` 的参数集合更少，这是刻意的。它不需要 `intensity`、`exposure`、`color` 一类发光属性来表达亮度，因为亮度来源仍由 `DomeLight` 或环境贴图承担。portal 的工作是帮助 renderer 更好地找到从环境到室内的有效路径。因此，调亮画面应检查 dome light 和渲染设置，调窗口覆盖范围才检查 portal width/height。</p>
+      <p class="en">Unlike direct light schemas, `PortalLight` does not own the dome-light brightness; it guides sampling.</p>
+
+      <p class="zh">`light:shaderId=PortalLight` 也不应被过度解读为用户要手写一个 shader 网络。官方说明 USD 会注册一个对应 inputs 的 Sdr shader node，意味着这个 schema 有标准的 shader identity 入口，供渲染端识别 portal light 的输入。作者通常需要保持这个默认身份，除非明确知道目标 renderer 的扩展机制；随意改 token 可能让 render delegate 无法把该 prim 当作标准 portal 处理。</p>
+      <p class="en">The default `light:shaderId` identifies the standard portal-light shader entry and should not be changed casually.</p>
+
+      <p class="zh">资产交换时也要保持谨慎：USD 可以稳定表达 `PortalLight` prim、尺寸、transform、shader ID 和继承属性，但不同 renderer 对 portal sampling 的实现细节、性能收益和可见性处理可能不同。因此本页的中文主阅读路径强调结构语义和调试顺序，而不承诺所有渲染器中的视觉结果完全一致。</p>
+      <p class="en">USD preserves the structural description, while renderer-specific portal-sampling behavior may vary.</p>
+    </section>
+
+    <section>
+      <h2>属性阅读路径 / Property Reading Path</h2>
+      <ol>
+        <li><span class="zh">先读页面首段，确认 `PortalLight` 是 dome-light sampling portal，而不是 `RectLight`。</span><span class="en">Start with the page summary: `PortalLight` guides dome-light sampling.</span></li>
+        <li><span class="zh">再读 `inputs:height` 和 `inputs:width`，分别把 local Y / local X 上的矩形尺寸设清楚。</span><span class="en">Use `inputs:height` and `inputs:width` for local rectangle dimensions.</span></li>
+        <li><span class="zh">然后读 `light:shaderId`，确认 fallback `PortalLight` 和 USD 注册的 Sdr shader node 语义。</span><span class="en">Check `light:shaderId` and the registered Sdr shader-node identity.</span></li>
+        <li><span class="zh">接着检查 `xformOpOrder` 与 transform，使 local XY plane 和 local `-Z` direction 对准实际开口。</span><span class="en">Use `xformOpOrder` and transforms to orient the local plane and `-Z` direction.</span></li>
+        <li><span class="zh">最后再看 `extent`、`proxyPrim`、`purpose`、`visibility`，把 boundable/imageable 继承属性和采样语义分开。</span><span class="en">Treat inherited boundable and imageable properties separately from sampling semantics.</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>代码与配置摘录 / Code and Configuration Excerpts</h2>
+      <pre><code>def PortalLight "WindowPortal"
+{
+    float inputs:height = 2.4
+    float inputs:width = 1.2
+    token light:shaderId = "PortalLight"
+}</code></pre>
+      <pre><code># The portal rectangle lives in local XY.
+# Its useful sampling direction is local -Z after transforms are applied.</code></pre>
+      <p class="zh">上面的片段只表达结构：`inputs:height` 和 `inputs:width` 定义本地矩形尺寸，`light:shaderId` 使用 `PortalLight` 的 shader 身份，实际位置和方向由 transform stack 决定。具体如何把它关联到 `DomeLight` 采样流程，取决于对应 OpenUSD authoring 约定和 render delegate 支持。</p>
+      <p class="en">The snippets illustrate structure only; placement, dome-light association, and renderer behavior depend on authoring and delegate support.</p>
+    </section>
+
+    <section>
+      <h2>常见误读与调试边界 / Common Misreadings and Debugging Boundaries</h2>
       <ul>
-        <li><span class="zh">`PortalLight` 表示位于本地 XY 平面的矩形 portal，用来引导 `DomeLight` 的采样；它本身不是普通照明面，而是帮助环境光在入口、窗口等区域更有效采样。</span></li>
-        <li><span class="zh">官方摘录说明它向 `-Z` 方向传递光照；因此阅读时要同时关注 prim 的 transform、局部坐标和 `xformOpOrder`，否则 portal 朝向容易被误读。</span></li>
-        <li><span class="zh">`inputs:height` 和 `inputs:width` 分别控制本地 Y/X 方向上的矩形尺寸，默认描述中的 1 unit 只是基础形状，不代表最终放置后的世界空间大小。</span></li>
-        <li><span class="zh">`light:shaderId` 表示该 portal light 的 shader 标识；渲染器是否以及如何利用 portal 进行 dome light 采样，还取决于 render delegate 支持。</span></li>
-        <li><span class="zh">本页应和 `DomeLight` 的 `portals` relationship 一起看：`DomeLight` 指向 portal，portal 提供采样窗口，两者共同表达环境光采样引导关系。</span></li>
+        <li><span class="zh">不要把 `PortalLight` 当成普通发光面；它主要引导 `DomeLight` 采样。</span><span class="en">Do not treat `PortalLight` as an ordinary emitting area light.</span></li>
+        <li><span class="zh">不要把 `inputs:height` 或 `inputs:width` 当成亮度参数；它们是 local rectangle 尺寸。</span><span class="en">`inputs:height` and `inputs:width` are dimensions, not intensity controls.</span></li>
+        <li><span class="zh">不要忽略 local `-Z` direction；portal 朝向错误会让采样窗口指向错误方向。</span><span class="en">Do not ignore the local `-Z` direction.</span></li>
+        <li><span class="zh">不要把 `extent` 当作主尺寸接口；portal 尺寸从 width/height 和 transform 读。</span><span class="en">`extent` is not the primary size authoring interface.</span></li>
+        <li><span class="zh">如果渲染效果没有变化，按 schema 属性、transform 朝向、`DomeLight`/portal 使用关系、render delegate 支持的顺序排查。</span><span class="en">Debug schema data, transforms, dome-light usage, and render-delegate support in order.</span></li>
       </ul>
-      <h3>术语对照 / Terms</h3>
+    </section>
+
+    <section>
+      <h2>术语对照 / Terms</h2>
       <ul>
         <li><span class="zh">传送门灯光/采样入口灯：</span><span class="en">PortalLight</span></li>
         <li><span class="zh">穹顶环境光：</span><span class="en">DomeLight</span></li>
-        <li><span class="zh">本地 XY 平面：</span><span class="en">local XY plane</span></li>
-        <li><span class="zh">本地 -Z 方向：</span><span class="en">-Z direction</span></li>
-        <li><span class="zh">portal 高度输入：</span><span class="en">inputs:height</span></li>
-        <li><span class="zh">portal 宽度输入：</span><span class="en">inputs:width</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-105">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`PortalLight` 是位于 local XY plane 的 rectangular portal，用来引导 `DomeLight` 采样。它的重点不是直接照亮场景的面积灯语义，而是通过 `inputs:height`、`inputs:width`、`-Z direction` 和 dome 的 portals relationship 表达环境光采样窗口。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for PortalLight while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">官方摘录中的 `guides sampling of a dome light` 是核心语义：`PortalLight` 帮助环境光在窗口、门洞、开口等区域更有效采样，不等同于 `RectLight` 这类直接发光面积灯。</span></li>
-        <li><span class="zh">`PortalLight` 在 local XY plane 中定义矩形，并向 local `-Z` direction 传递采样方向；实际场景中的朝向取决于 prim transform 和 `xformOpOrder`。</span></li>
-        <li><span class="zh">`inputs:height` 控制 local Y axis 尺寸，`inputs:width` 控制 local X axis 尺寸。默认 rectangle 为 1 unit 只是局部基础尺寸，不代表最终世界空间大小。</span></li>
-        <li><span class="zh">本页应和 `DomeLight` 一起读：`DomeLight` 的 `portals` relationship 指向 portal，portal 提供采样引导窗口，两者共同构成环境光采样加速/定向表达。</span></li>
-        <li><span class="zh">`light:shaderId` 保留 portal light shader 标识入口；不同 render delegate 对 portal sampling 的支持可能不同，中文层应解释结构语义，不承诺所有渲染器效果一致。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">传送门灯光/采样入口灯：</span><span class="en">PortalLight</span></li>
         <li><span class="zh">矩形采样入口：</span><span class="en">rectangular portal</span></li>
         <li><span class="zh">本地 XY 平面：</span><span class="en">local XY plane</span></li>
-        <li><span class="zh">本地 -Z 方向：</span><span class="en">-Z direction</span></li>
-        <li><span class="zh">portal 高度输入属性：</span><span class="en">inputs:height</span></li>
-        <li><span class="zh">DomeLight 的 portal 关系：</span><span class="en">portals relationship</span></li>
+        <li><span class="zh">本地负 Z 方向：</span><span class="en">local `-Z` direction</span></li>
+        <li><span class="zh">portal 高度输入：</span><span class="en">inputs:height</span></li>
+        <li><span class="zh">portal 宽度输入：</span><span class="en">inputs:width</span></li>
+        <li><span class="zh">light shader 标识：</span><span class="en">light:shaderId</span></li>
+        <li><span class="zh">包围范围：</span><span class="en">extent</span></li>
+        <li><span class="zh">变换顺序：</span><span class="en">xformOpOrder</span></li>
+        <li><span class="zh">代理 prim：</span><span class="en">proxyPrim</span></li>
+        <li><span class="zh">用途分类：</span><span class="en">purpose</span></li>
+        <li><span class="zh">可见性：</span><span class="en">visibility</span></li>
       </ul>
     </section>
+
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
-<li><span class="zh">第 1 级标题：PortalLight</span><span class="en">PortalLight</span></li>
-<li><span class="zh">第 2 级标题：Properties</span><span class="en">Properties</span></li>
-<li><span class="zh">第 3 级标题：inputs:height</span><span class="en">inputs:height</span></li>
-<li><span class="zh">第 3 级标题：inputs:width</span><span class="en">inputs:width</span></li>
-<li><span class="zh">第 3 级标题：light:shaderId</span><span class="en">light:shaderId</span></li>
-<li><span class="zh">第 2 级标题：Inherited Properties ( Boundable )</span><span class="en">Inherited Properties ( Boundable )</span></li>
-<li><span class="zh">第 3 级标题：extent</span><span class="en">extent</span></li>
-<li><span class="zh">第 2 级标题：Inherited Properties ( Xformable )</span><span class="en">Inherited Properties ( Xformable )</span></li>
-<li><span class="zh">第 3 级标题：xformOpOrder</span><span class="en">xformOpOrder</span></li>
-<li><span class="zh">第 2 级标题：Inherited Properties ( Imageable )</span><span class="en">Inherited Properties ( Imageable )</span></li>
-<li><span class="zh">第 3 级标题：proxyPrim</span><span class="en">proxyPrim</span></li>
-<li><span class="zh">第 3 级标题：purpose</span><span class="en">purpose</span></li>
-<li><span class="zh">第 3 级标题：visibility</span><span class="en">visibility</span></li>
+        <li><span class="zh">第 1 级标题：PortalLight</span><span class="en">PortalLight</span></li>
+        <li><span class="zh">第 2 级标题：Properties，包含 `inputs:height`、`inputs:width`、`light:shaderId`。</span><span class="en">`Properties` includes `inputs:height`, `inputs:width`, and `light:shaderId`.</span></li>
+        <li><span class="zh">第 2 级标题：Inherited Properties ( Boundable )，包含 `extent`。</span><span class="en">Inherited Properties ( Boundable ) includes `extent`.</span></li>
+        <li><span class="zh">第 2 级标题：Inherited Properties ( Xformable )，包含 `xformOpOrder`。</span><span class="en">Inherited Properties ( Xformable ) includes `xformOpOrder`.</span></li>
+        <li><span class="zh">第 2 级标题：Inherited Properties ( Imageable )，包含 `proxyPrim`、`purpose`、`visibility`。</span><span class="en">Inherited Properties ( Imageable ) includes `proxyPrim`, `purpose`, and `visibility`.</span></li>
       </ul>
     </section>
+
     <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">A rectangular portal in the local XY plane that guides sampling of a dome light. Transmits light in the -Z direction. The rectangle is 1 unit in length.</p>
-<p class="en">Height of the portal rectangle in the local Y axis.</p>
-<p class="en">Width of the portal rectangle in the local X axis.</p>
+      <h2>官方源页对比 / Source Parity Notes</h2>
+      <ul>
+        <li><span class="zh">官方 live URL 返回 200，且包含 `PortalLight`、`inputs:height`、`inputs:width`、`light:shaderId`、`DomeLight`、`local XY plane`、`-Z direction`、`extent`、`xformOpOrder`、`proxyPrim`、`purpose`、`visibility`、`RectLight` 等关键标记。</span><span class="en">The live official URL was checked for the key headings and identifiers.</span></li>
+        <li><span class="zh">本地 source snapshot `source/full_release/user_guides/schemas/usdLux/PortalLight_source.html` 与上述说明、section、属性和前后页链接一致。</span><span class="en">The local source snapshot contains the same summary, sections, properties, and previous/next links.</span></li>
+      </ul>
     </section>
 
     <section>
       <h2>本页链接 / Page Links</h2>
       <ul>
-<li>No same-site document links extracted.</li>
+        <li><a href="DomeLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight.html">DomeLight</a></li>
+        <li><a href="PluginLightFilter.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/PluginLightFilter.html">PluginLightFilter</a></li>
+        <li><a href="RectLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/RectLight.html">RectLight</a></li>
+        <li><a href="overview.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/overview.html">UsdLux Overview</a></li>
+        <li><a href="../../render_user_guide.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html">Rendering with USD</a></li>
       </ul>
     </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>

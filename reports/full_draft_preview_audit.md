@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-07T20:27:10.989Z
+Generated: 2026-06-07T20:43:04.908Z
 
-Transient base URL: `http://127.0.0.1:53335/`
+Transient base URL: `http://127.0.0.1:65048/`
 
 Result:
 
 - Passed: true
-- Draft pages: 311
-- Pages checked: 311
-- Passed pages: 311
+- Draft pages: 310
+- Pages checked: 310
+- Passed pages: 310
 - Failed pages: 0
-- Final HTML links: 311
-- Local assets checked: 311
+- Final HTML links: 310
+- Local assets checked: 310
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -263,7 +263,6 @@ Result:
 | true | full_site/release/user_guides/schemas/usdLux/NonboundableLightBase.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/overview.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/PluginLight.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdLux/PortalLight.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/RectLight.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/ShadowAPI.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/ShapingAPI.html | 200 | true | 0 | 0 |
