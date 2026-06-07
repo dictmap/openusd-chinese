@@ -5773,3 +5773,47 @@ GitHub 同步：
 1. 继续真实晋级，不再刷 count-neutral 导读补强。
 2. 下一批优先核心页面：`full_site/api/class_hd_render_buffer.html`。
 3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。
+
+## 第 329 轮：将 HdRenderBuffer 提升为完整双语
+
+已完成：
+
+- 轮次类型：PromotionRound；本轮只晋级 1 个页面：`full_site/api/class_hd_render_buffer.html`。
+- 将目标页从 `bilingual_draft` 提升为 `bilingual_complete`，标题改为完整双语参考页，并移除通用 draft 标记。
+- 新增 `逐段双语理解 / Paragraph-Level Bilingual Coverage`，覆盖 `HdRenderBuffer` 作为 Hydra render buffer bprim / data-resource handle 的职责、indexed 与 out-of-band 创建路径、与 `HdSceneDelegate` / `SdfPath` 的同步边界、`Allocate()` 参数、dimensions、`HdFormat`、AOV/render-target 使用、`Map()` / `Unmap()` CPU 访问协议、`Resolve()` 与 multi-sample 行为、dirty bits 与 `Sync()`、`IsConverged()` 报告、`GetResource()` backend-specific ownership、与 `HdRenderPass` / `HdTask` / `HdRenderBufferDescriptor` / `HdAovDescriptor` 的关系，以及空 AOV、readback 过期、convergence 和资源生命周期问题的调试路径。
+- 更新 `reports/bilingual_completion_promotions.json/md`，新增 `round-329-hd-render-buffer`。
+- 更新 `reports/current_problem_audit.md/json`，当前真实状态同步为 35 complete / 371 draft。
+- 重建 `openusd_bilingual_final.html`，总入口显示 35 complete / 371 incomplete drafts。
+
+分级变化：
+
+- `good_bilingual`：34 -> 35
+- `bilingual_complete`：34 -> 35
+- `bilingual_draft`：372 -> 371
+- `draft_needs_translation`：361 -> 360
+- `draft_template_only`：11 保持不变
+
+验证结果：
+
+- `discover_openusd_all_pages.mjs`：通过，`total_pages=406`，`promoted_complete_pages=27`。
+- `audit_openusd_translation_quality.mjs`：通过，`good_bilingual=35`，目标页 `grade=good_bilingual`，中文正文量 1014。
+- `route_openusd_internal_links_local.mjs`：通过，`files_changed=1`，同步本轮目标页的本地链接路由。
+- `audit_openusd_full_draft_preview.mjs`：通过，371/371 draft 页面可预览。
+- `audit_openusd_report_index.mjs`：通过。
+- `validate_openusd_api_repro.ps1`：通过，`required_check_count=288`，`failed_check_count=0`。
+- Node 直接解析 `reports/validation_report.json`：`bom=false`。
+
+GitHub 同步：
+
+- 本轮验证通过后将使用 `OpenUSD bilingual round 329: promote HdRenderBuffer complete` 同步本轮 HTML、报告和 `work.md`。
+
+当前差距：
+
+- 仍有 371 个 `bilingual_draft` 页面只是可检查草稿，不是完整翻译，其中 360 个仍为 `draft_needs_translation`。
+- 406 清单外的 Doxygen 目标仍会进入本地未覆盖占位页；这是当前 P1 浏览缺口。
+
+下一轮目标：
+
+1. 继续真实晋级，不再刷 count-neutral 导读补强。
+2. 下一批优先核心页面：`full_site/api/class_hd_task.html`。
+3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。

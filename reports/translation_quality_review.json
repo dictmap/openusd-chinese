@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T03:09:04.473Z",
+  "generated_at": "2026-06-07T03:25:33.282Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 372,
-    "bilingual_complete": 34
+    "bilingual_draft": 371,
+    "bilingual_complete": 35
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 361,
-    "good_bilingual": 34
+    "draft_needs_translation": 360,
+    "good_bilingual": 35
   },
   "focus_batch": [
     {
@@ -1490,29 +1490,29 @@
     },
     {
       "index": 20,
-      "title": "类参考草稿：HdRenderBuffer Class Reference abstract / HdRenderBuffer Class Reference abstract",
+      "title": "完整双语参考：HdRenderBuffer Class Reference abstract / HdRenderBuffer Class Reference abstract",
       "output": "full_site/api/class_hd_render_buffer.html",
       "official_url": "https://openusd.org/release/api/class_hd_render_buffer.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 60,
-      "enBlockCount": 47,
-      "zhChars": 754,
-      "enLetters": 2150,
-      "bodyChineseChars": 829,
+      "grade": "good_bilingual",
+      "zhBlockCount": 44,
+      "enBlockCount": 46,
+      "zhChars": 961,
+      "enLetters": 2590,
+      "bodyChineseChars": 1014,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 HdRenderBuffer Class Reference 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`HdRenderBuffer` 是 abstract render buffer，表示可以被渲染写入的数据资源句柄，例如 draw target 的 2D image 或 auxiliary rendering output。"
+        "本页已按完整双语参考页处理：中文优先解释 `HdRenderBuffer` 在 Hydra 中作为 render buffer bprim / data resource handle 的职责、分配与映射边界、AOV/render target 使用路径、dirty/sync 语义以及与 renderer backend 的关系，并保留英文 API 名称、方法名、类型名、token、链接和官方英文摘录。",
+        "`HdRenderBuffer` 表示 Hydra 中可以被渲染写入的数据资源句柄。官方定义强调它可以是 draw target 的 2D image，也可以是 auxiliary rendering output；在实际使用里，它常对应 color AOV、depth AOV、id/picking buffer、normal/primvar 输出或 renderer 自己暴露的中间结果。它是 `HdBprim` 类型的 buffer primitive，不是 USD attribute，也不是直接的 GPU texture API。",
+        "本页最重要的边界是 indexed prim 与 out-of-band 两种创建方式。作为 indexed prim 时，`HdRenderBuffer` 通过 `HdSceneDelegate` 和 `SdfPath` 参与 `HdRenderIndex` 的同步，buffer properties 可以由场景委托查询得到；out-of-band 创建时，调用方可以直接提供 allocation parameters。这两种路径都会通向具体 backend 资源，但 ownership、dirty tracking 和生命周期入口不同。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for HdRenderBuffer Class Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page is treated as a complete bilingual reference. Chinese explanations come first, while English API names, method names, type names, token literals, links, and selected official excerpts are retained for comparison with the OpenUSD Doxygen page.",
+        "`HdRenderBuffer` is a Hydra data-resource handle that render passes can render into. It is commonly used for AOVs, draw targets, depth/color/id buffers, or auxiliary renderer outputs."
       ]
     },
     {

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：HdRenderBuffer Class Reference abstract / HdRenderBuffer Class Reference abstract</title>
+  <title>完整双语参考：HdRenderBuffer Class Reference abstract / HdRenderBuffer Class Reference abstract</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,75 +24,48 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：HdRenderBuffer Class Reference abstract / HdRenderBuffer Class Reference abstract</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：HdRenderBuffer Class Reference abstract / HdRenderBuffer Class Reference abstract</h1>
     <div class="meta">https://openusd.org/release/api/class_hd_render_buffer.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页处理：中文优先解释 `HdRenderBuffer` 在 Hydra 中作为 render buffer bprim / data resource handle 的职责、分配与映射边界、AOV/render target 使用路径、dirty/sync 语义以及与 renderer backend 的关系，并保留英文 API 名称、方法名、类型名、token、链接和官方英文摘录。</p>
+      <p class="en">This page is treated as a complete bilingual reference. Chinese explanations come first, while English API names, method names, type names, token literals, links, and selected official excerpts are retained for comparison with the OpenUSD Doxygen page.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-036">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 HdRenderBuffer Class Reference 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for HdRenderBuffer Class Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`HdRenderBuffer` 是 abstract render buffer，表示可以被渲染写入的数据资源句柄，例如 draw target 的 2D image 或 auxiliary rendering output。</span></li>
-        <li><span class="zh">英文摘录说明 render buffer 可以作为 indexed prim 使用，通过 `HdSceneDelegate` 获取 buffer properties；也可以 out of band 创建并直接提供 allocation parameters。</span></li>
-        <li><span class="zh">Render buffer 可以被 render passes 作为目标，并提供 mapping functionality 用于读取和写入 buffer data；阅读时应把 allocation、render target、map/unmap 三类职责分开。</span></li>
-        <li><span class="zh">关联类型包括 `SdfPath`、`HdSceneDelegate`、`HdRenderParam`、`HdBprim`、`GfVec3i`、`VtValue`、`HdTask`，说明它连接 scene delegate、buffer prim 和任务/渲染参数。</span></li>
-        <li><span class="zh">本页中文层保留 `HdRenderBuffer`、indexed prim、out of band、render pass、mapping 等术语；后续完整翻译应补分配、格式、维度、映射和脏状态方法。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">渲染缓冲：</span><span class="en">render buffer</span></li>
-        <li><span class="zh">数据资源：</span><span class="en">data resource</span></li>
-        <li><span class="zh">索引 prim：</span><span class="en">indexed prim</span></li>
-        <li><span class="zh">分配参数：</span><span class="en">allocation parameters</span></li>
-        <li><span class="zh">映射功能：</span><span class="en">mapping functionality</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-129">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`HdRenderBuffer` 是 Hydra 中抽象的 render buffer bprim，代表渲染器可以写入或映射读取的数据资源，例如 AOV、color buffer、depth buffer 或辅助输出。它连接 scene delegate、render pass、task 和 renderer backend 的缓冲管理。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdRenderBuffer while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">作为 indexed prim 时，`HdRenderBuffer` 的属性通常由 `HdSceneDelegate` 提供；out-of-band 创建时，则可能由调用方直接传入 allocation parameters。</span></li>
-        <li><span class="zh">`Renderbuffer API` 通常围绕 allocation、format、dimensions、multi-sample、converged state、map/unmap 和 resolve 等职责展开；阅读时应区分分配与数据访问。</span></li>
-        <li><span class="zh">`DirtyBits` 表示 render buffer 哪些方面需要重新同步；如果尺寸、格式或多重采样设置变化但渲染结果未更新，应检查 dirty bit 是否正确设置。</span></li>
-        <li><span class="zh">`Map()` / `Unmap()` 语义涉及 CPU 侧访问 buffer data；具体线程安全、同步和生命周期规则由实现类和 renderer backend 决定。</span></li>
-        <li><span class="zh">在渲染调试中，`HdRenderBuffer` 常与 `HdRenderPass`、`HdRenderPassState`、`HdAovDescriptor`、`HdRenderBufferDescriptor` 和 `HdTask` 一起出现，应按数据写入链路阅读。</span></li>
-      </ul>
+    <section data-cn-complete="hd-render-buffer-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`HdRenderBuffer` 表示 Hydra 中可以被渲染写入的数据资源句柄。官方定义强调它可以是 draw target 的 2D image，也可以是 auxiliary rendering output；在实际使用里，它常对应 color AOV、depth AOV、id/picking buffer、normal/primvar 输出或 renderer 自己暴露的中间结果。它是 `HdBprim` 类型的 buffer primitive，不是 USD attribute，也不是直接的 GPU texture API。</p>
+      <p class="en">`HdRenderBuffer` is a Hydra data-resource handle that render passes can render into. It is commonly used for AOVs, draw targets, depth/color/id buffers, or auxiliary renderer outputs.</p>
+      <p class="zh">本页最重要的边界是 indexed prim 与 out-of-band 两种创建方式。作为 indexed prim 时，`HdRenderBuffer` 通过 `HdSceneDelegate` 和 `SdfPath` 参与 `HdRenderIndex` 的同步，buffer properties 可以由场景委托查询得到；out-of-band 创建时，调用方可以直接提供 allocation parameters。这两种路径都会通向具体 backend 资源，但 ownership、dirty tracking 和生命周期入口不同。</p>
+      <p class="en">A render buffer can be an indexed prim that talks to `HdSceneDelegate`, or it can be created out of band with direct allocation parameters. These paths differ in ownership, dirty tracking, and lifetime control.</p>
+      <p class="zh">`Allocate()` 是资源建立的核心接口。调用者或同步逻辑传入宽度、高度、深度、`HdFormat`、multi-sample 需求等参数，具体实现负责创建底层 CPU/GPU/renderer storage。随后 `GetWidth()`、`GetHeight()`、`GetDepth()`、`GetFormat()` 与 `IsMultiSampled()` 用来核对真实分配结果。调试黑屏或 AOV 尺寸错位时，先检查 allocation 参数是否与 render pass、viewport、AOV descriptor 和 sample count 一致。</p>
+      <p class="en">`Allocate()` creates the underlying storage. `GetWidth()`, `GetHeight()`, `GetDepth()`, `GetFormat()`, and `IsMultiSampled()` expose the resulting allocation for validation and debugging.</p>
+      <p class="zh">`DirtyBits`、`GetInitialDirtyBitsMask()` 和 `Sync()` 说明 `HdRenderBuffer` 仍然是 Hydra 同步系统的一部分。尺寸、format、多重采样、converged state 或 scene-delegate-provided properties 变化时，需要通过 dirty bits 触发重新同步或重新分配。不要把 render buffer 当成一次性裸资源：如果它作为 indexed bprim 存在，变化通知和 `HdSceneDelegate` 查询仍然决定它何时被更新。</p>
+      <p class="en">Dirty bits and `Sync()` connect render buffers to Hydra's synchronization model. Allocation changes and delegate-provided properties must be synchronized rather than silently mutated.</p>
+      <p class="zh">`Map()`、`Unmap()` 与 `IsMapped()` 提供 CPU 侧访问 buffer data 的协议。`Map()` 通常返回可读写或可读的内存指针，具体是否阻塞 GPU、是否需要 resolve、是否只允许读取、以及数据生命周期，都由实现类和 renderer backend 决定。调用方必须成对管理 `Map()` / `Unmap()`，不能缓存映射后的临时指针，也不能在未同步或未 resolve 的资源上假设数据已经可用。</p>
+      <p class="en">`Map()`, `Unmap()`, and `IsMapped()` define the CPU-access protocol for buffer contents. Pointer lifetime, synchronization, and read/write semantics are implementation-dependent.</p>
+      <p class="zh">`Resolve()` 和 multi-sample 相关语义用于处理 MSAA 或 progressive accumulation 的输出。`IsMultiSampled()` 告诉调用方底层资源是否多重采样；`Resolve()` 可能把多采样或累积状态转换成可读取/可展示结果。常见误用是直接 `Map()` 多重采样资源并期待得到最终像素，或者把 resolve 当作永远无成本的拷贝操作。</p>
+      <p class="en">`Resolve()` is the boundary where multi-sampled or accumulated render-buffer data can be converted into data suitable for reading or presentation.</p>
+      <p class="zh">`IsConverged()` 表示与该 render buffer 相关的渲染结果是否稳定。progressive renderer、路径追踪器、异步 AOV 写入或后台 GPU work 常需要用它向 `HdTask`、render loop 或 UI 汇报当前输出是否仍在变化。它不是图像是否“正确”的语义，也不是所有 renderer 都以同样方式解释的质量指标。</p>
+      <p class="en">`IsConverged()` reports whether the buffer's output is considered stable for the current renderer/task workflow; it is not a universal image-quality proof.</p>
+      <p class="zh">`GetResource()` 暴露 backend-specific resource handle，方便 render pass、task 或后处理管线接入具体 renderer 资源。这里要特别注意边界：`HdRenderBuffer` 提供 Hydra 层抽象，`GetResource()` 返回的对象含义由实现决定；上层代码不应假设它一定是某种特定 GPU texture、OpenGL object、Vulkan image 或 CPU array。</p>
+      <p class="en">`GetResource()` exposes an implementation-specific resource handle. Higher-level Hydra code should not assume a fixed GPU or CPU representation.</p>
+      <p class="zh">与相邻类型的关系也要分清：`HdRenderPass` 或 renderer backend 往 buffer 写入；`HdTask` 可能调度 AOV 生成、resolve、readback 或展示；`HdSceneDelegate` 为 indexed buffer 提供 properties；`HdRenderBufferDescriptor` / `HdAovDescriptor` 描述期望的 format、clear value、多重采样和绑定含义；`HdRenderPassState` 管理渲染状态。`HdRenderBuffer` 位于这些对象之间，承担“资源句柄 + 同步 + 映射访问”的职责。</p>
+      <p class="en">Adjacent objects such as `HdRenderPass`, `HdTask`, `HdSceneDelegate`, `HdRenderBufferDescriptor`, `HdAovDescriptor`, and `HdRenderPassState` define how the buffer is allocated, written, resolved, read, and presented.</p>
+      <p class="zh">常见调试入口包括：AOV 为空时查 `Allocate()` 参数、dirty bits 和 render pass target；尺寸错位时查 viewport、descriptor 与 `GetWidth()`/`GetHeight()`；读取数据全零时查 `Resolve()`、`Map()` 时机和 GPU/CPU 同步；progressive 输出不刷新时查 `IsConverged()`、task scheduling 和 backend 写入完成信号；内存泄漏或崩溃时查 `_Deallocate()`、`Finalize()`、映射指针生命周期和资源所有权。</p>
+      <p class="en">Debugging usually follows allocation parameters, dirty bits, render-pass targets, resolve timing, mapping lifetime, convergence state, and backend resource ownership.</p>
       <h3>术语对照 / Terms</h3>
       <ul>
         <li><span class="zh">Hydra 渲染缓冲：</span><span class="en">HdRenderBuffer</span></li>
-        <li><span class="zh">渲染缓冲 bprim：</span><span class="en">render buffer bprim</span></li>
-        <li><span class="zh">分配参数：</span><span class="en">allocation parameters</span></li>
-        <li><span class="zh">脏标记位：</span><span class="en">DirtyBits</span></li>
-        <li><span class="zh">映射/取消映射：</span><span class="en">Map/Unmap</span></li>
+        <li><span class="zh">buffer primitive：</span><span class="en">HdBprim</span></li>
         <li><span class="zh">任意输出变量：</span><span class="en">AOV</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-141">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`HdRenderBuffer` 是 Hydra 中可被 render pass 写入的数据资源句柄，常用于 draw target 的 2D image、AOV 或 auxiliary rendering output。它既可以作为 indexed prim 通过 scene delegate 获取属性，也可以 out-of-band 创建并直接提供 allocation parameters。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdRenderBuffer while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`Allocate()` 根据尺寸、format、multiSampled 等参数分配底层资源；`GetWidth()`、`GetHeight()`、`GetDepth()` 与 `GetFormat()` 用于验证实际 allocation 结果。</span></li>
-        <li><span class="zh">`Map()`、`Unmap()` 与 `IsMapped()` 提供 CPU 读写 buffer data 的访问协议；使用时必须成对管理映射状态，避免读写未同步资源。</span></li>
-        <li><span class="zh">`Resolve()` 与 `IsMultiSampled()` 处理 multi-sample render buffer 的解析路径，常与 MSAA AOV 输出和后处理 task 一起分析。</span></li>
-        <li><span class="zh">`Sync()`、`GetInitialDirtyBitsMask()` 与 `DirtyBits` 说明 render buffer 仍参与 Hydra dirty tracking；作为 indexed bprim 时需要与 `HdSceneDelegate` 通信。</span></li>
-        <li><span class="zh">`IsConverged()` 表示 render buffer 相关结果是否稳定，progressive renderer 或异步写入路径需要用它向 task/render loop 报告完成状态。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">渲染缓冲：</span><span class="en">render buffer</span></li>
-        <li><span class="zh">可渲染资源：</span><span class="en">renderable data resource</span></li>
-        <li><span class="zh">辅助渲染输出：</span><span class="en">auxiliary rendering output</span></li>
-        <li><span class="zh">缓冲映射：</span><span class="en">Map()</span></li>
-        <li><span class="zh">多重采样：</span><span class="en">multi-sampled</span></li>
+        <li><span class="zh">分配参数：</span><span class="en">allocation parameters</span></li>
+        <li><span class="zh">渲染缓冲描述符：</span><span class="en">HdRenderBufferDescriptor</span></li>
+        <li><span class="zh">AOV 描述符：</span><span class="en">HdAovDescriptor</span></li>
+        <li><span class="zh">映射/取消映射：</span><span class="en">Map() / Unmap()</span></li>
+        <li><span class="zh">解析多重采样或累积结果：</span><span class="en">Resolve()</span></li>
         <li><span class="zh">收敛状态：</span><span class="en">IsConverged()</span></li>
       </ul>
     </section>
