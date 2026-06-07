@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：HdDataSourceLocator Class / HdDataSourceLocator Class</title>
+  <title>完整双语参考：HdDataSourceLocator Class / HdDataSourceLocator Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,76 +24,55 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：HdDataSourceLocator Class / HdDataSourceLocator Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：HdDataSourceLocator Class / HdDataSourceLocator Class</h1>
     <div class="meta">https://openusd.org/release/api/class_hd_data_source_locator.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页整理：中文优先解释 `HdDataSourceLocator` 在 Hydra data source 体系中用短 `TfToken` 序列定位数据位置的职责、locator 构造与组合、前缀/相交判断、dirty/invalidation 传播和常见误读；英文类名、方法名、类型名、链接和官方摘录继续保留，便于与 Doxygen 原页逐项核对。</p>
+      <p class="en">This page is promoted to a complete bilingual reference. It keeps official API names, method names, type names, links, and excerpts while adding Chinese-first coverage of Hydra data-source locator semantics.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-035">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 HdDataSourceLocator Class 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for HdDataSourceLocator Class while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+    <section data-cn-complete="hd-data-source-locator-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`HdDataSourceLocator` 表示一个能够识别 Hydra data source 位置的对象。官方定义说 Data Source Locators 是 short lists of tokens；这些 `TfToken` 片段合在一起，表示某个给定 data source 的位置。这里的 locator 更接近 Hydra scene index / data source namespace 中的 tokenized path，不是文件系统路径，也不是 `SdfPath` 或 USD prim path。</p>
+      <p class="en">`HdDataSourceLocator` represents an object that can identify the location of a data source. Data Source Locators are short lists of tokens that together represent a data source location.</p>
+      <p class="zh">保留 `TfToken` 原名很重要：locator 的每个 path element 都是 token，适合快速比较、hash 和复用。把 locator 降级成普通字符串会丢失它在 Hydra data source 缓存、dirty propagation 和 scene index invalidation 中的性能与语义优势。`GetString()` 适合调试输出，而不是业务逻辑里的主表示。</p>
+      <p class="en">The token list representation matters for comparison, hashing, and efficient dirty-range checks; `GetString()` is primarily for diagnostics.</p>
+      <p class="zh">多个 `HdDataSourceLocator()` 构造函数提供从不同 token 输入构造 locator 的入口。阅读这些构造函数时，重点不是“字符串格式是什么”，而是调用方要在 Hydra data source 命名空间中构造一个稳定、可比较的路径，例如定位 primvars、xform、material、render settings 或嵌套 container data source 下的字段。</p>
+      <p class="en">The constructor overloads build stable token-path locators that identify positions inside nested Hydra data sources.</p>
+      <p class="zh">`Append()` 和 `Prepend()` 用于组合 locator 片段。`Append()` 通常把当前 locator 扩展到更深的子数据位置，`Prepend()` 则把局部字段挂到更外层的 namespace 下。它们表达的是 Hydra data source namespace 内的 token path composition，不应误译成文件路径拼接或 USD namespace edit。</p>
+      <p class="en">`Append()` and `Prepend()` compose locator fragments within the Hydra data-source namespace, not filesystem paths or USD namespace edits.</p>
+      <p class="zh">`GetElementCount()`、`GetElement()`、`GetFirstElement()` 和 `GetLastElement()` 说明 locator 是有序 token 列表。调试 locator 不匹配时，应逐个检查 token element，而不是只比较最终字符串；很多 dirty propagation 问题本质上是某一段 token 命名或嵌套层级不一致。</p>
+      <p class="en">Element accessors expose the ordered token path so mismatched locator components can be diagnosed precisely.</p>
+      <p class="zh">`HasPrefix()` 和 `GetCommonPrefix()` 是范围判断的核心。Hydra 的变化通知经常需要判断“这个被 dirty 的位置是否覆盖另一个 data source 子树”；prefix 关系可以表达根到子节点的包含关系。例如一个 broader locator 可能表示整个 prim data source 失效，而一个更深 locator 只表示某个 nested field 改变。</p>
+      <p class="en">`HasPrefix()` and `GetCommonPrefix()` support containment checks between broad invalidation ranges and specific nested data-source fields.</p>
+      <p class="zh">`Intersects()` 用于判断两个 locator 范围是否可能相互影响。它常出现在 scene index 更新、filtering、dirty bit 或 data source invalidation 逻辑中：如果两个 locator 不相交，调用方可以跳过昂贵的更新；如果相交，则需要进一步拉取或重建相关 data source。</p>
+      <p class="en">`Intersects()` answers whether two locator ranges overlap enough that a data-source update may need to propagate.</p>
+      <p class="zh">`EmptyLocator()` 和 `IsEmpty()` 要结合调用场景理解。空 locator 可能表示没有具体子路径，也可能在变化通知中代表 root-level 或 broad invalidation；它不等于“无事发生”。处理空 locator 时应检查调用方协议，尤其是 scene index observer、data source filtering 或 invalidation fan-out 代码。</p>
+      <p class="en">`EmptyLocator()` and `IsEmpty()` can represent root-level or broad invalidation depending on the caller protocol.</p>
+      <p class="zh">`operator==()`、`operator!=()`、`operator<()` 和 `Hash()` 让 locator 可以进入 ordered 或 hashed 容器，用于缓存、去重和更新集合。比较语义应基于 token 序列本身；如果先转成字符串再比较，既可能浪费性能，也可能让调试代码和真实运行路径出现差异。</p>
+      <p class="en">Comparison operators and `Hash()` make locators usable as keys while preserving token-path semantics.</p>
+      <p class="zh">常见误读包括：把 `HdDataSourceLocator` 当成 `SdfPath`；把 `Append()` / `Prepend()` 当成 USD namespace operation；把空 locator 当成可以忽略的空值；只用 `GetString()` 做核心比较；以及忽略 prefix/intersection 语义导致 dirty propagation 过宽或过窄。正确理解是：这是 Hydra data source 和 scene index 更新系统里的轻量 token-path key。</p>
+      <p class="en">Common misreadings include treating the locator as an `SdfPath`, a filesystem path, or a string-only key. It is a lightweight token-path key for Hydra data-source locations.</p>
+      <h3>API 分组 / API Groups</h3>
       <ul>
-        <li><span class="zh">`HdDataSourceLocator` 表示一个可以识别 data source 位置的对象，是 Hydra 数据源定位语义的一部分。</span></li>
-        <li><span class="zh">英文摘录说明 Data Source Locators 是 short lists of tokens；这些 tokens 组合起来表示某个给定 data source 的位置。</span></li>
-        <li><span class="zh">关联类型主要是 `TfToken`，说明 locator 的路径片段不是普通字符串列表，而是 tokenized、可比较和可复用的标识序列。</span></li>
-        <li><span class="zh">阅读本页时应重点关注 locator 构造、token path 组合、前缀/后缀匹配、比较、hash 和与 data source container 的协作方式；具体方法以后续 member list 为准。</span></li>
-        <li><span class="zh">本页中文层保留 `HdDataSourceLocator`、`data source`、`TfToken` 等核心 API 术语，避免把 Hydra data source 与 USD layer/path 概念混同。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">数据源定位器：</span><span class="en">data source locator</span></li>
-        <li><span class="zh">短 token 列表：</span><span class="en">short list of tokens</span></li>
-        <li><span class="zh">TfToken：</span><span class="en">TfToken</span></li>
-        <li><span class="zh">Hydra 数据源：</span><span class="en">Hydra data source</span></li>
-        <li><span class="zh">token 路径：</span><span class="en">token path</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-131">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`HdDataSourceLocator` 是 Hydra data source 体系中的定位路径对象，由一组短 `TfToken` 序列标识某个 data source 的位置。它更像 tokenized path 或 locator key，而不是文件系统路径；核心语义集中在 prefix、intersection、append/prepend 和 hashable comparison。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdDataSourceLocator while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`Append()` 与 `Prepend()` 用于组合 locator 片段；它们表达的是 Hydra data source namespace 内部的 token 路径拼接，不应翻译成文件路径拼接。</span></li>
-        <li><span class="zh">`GetElement()`、`GetFirstElement()`、`GetLastElement()` 和 `GetElementCount()` 说明 locator 是有序 token 列表；`TfToken` 的保留有助于理解比较和缓存性能。</span></li>
-        <li><span class="zh">`HasPrefix()`、`GetCommonPrefix()` 与 `Intersects()` 是 dirty propagation、data source filtering 和 scene index 更新中常见的范围判断入口。</span></li>
-        <li><span class="zh">`EmptyLocator()` 与 `IsEmpty()` 需要按 locator 语义理解：空 locator 可以表示根级位置或无具体子路径，具体含义要结合调用方的 dirty/invalidated 范围判断。</span></li>
-        <li><span class="zh">`GetString()` 主要用于调试或展示；真实比较和哈希应优先依赖 token 序列本身，而不是把 locator 降级成普通字符串处理。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">Hydra 数据源定位器：</span><span class="en">HdDataSourceLocator</span></li>
-        <li><span class="zh">Tf token 标识：</span><span class="en">TfToken</span></li>
-        <li><span class="zh">定位路径：</span><span class="en">locator</span></li>
-        <li><span class="zh">前缀：</span><span class="en">prefix</span></li>
-        <li><span class="zh">范围相交判断：</span><span class="en">Intersects</span></li>
-        <li><span class="zh">脏状态传播：</span><span class="en">dirty propagation</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-146">
-      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
-      <p class="zh">`HdDataSourceLocator` 用一小段 `TfToken` 列表标识 Hydra data source 中某个数据位置。它常用于 scene index invalidation、data source 查询和变化通知，用 token path 描述 nested container 下的具体字段。</p>
-      <p class="en">This third-pass refinement adds page-specific Chinese guidance for HdDataSourceLocator while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`Append()` 与 `Prepend()` 构造更深或更外层的 locator，适合从局部字段扩展到完整 data source path。</span></li>
-        <li><span class="zh">`GetElementCount()`、`GetElement()`、`GetFirstElement()` 与 `GetLastElement()` 提供 token path 级别的访问，避免把 locator 当普通字符串拆分。</span></li>
-        <li><span class="zh">`HasPrefix()`、`GetCommonPrefix()` 与 `Intersects()` 是 invalidation 判断的关键：它们帮助决定某个变化是否影响另一个 locator 范围。</span></li>
-        <li><span class="zh">`EmptyLocator()` 与 `IsEmpty()` 表示空定位器；在通知系统中空 locator 往往代表根或 broad invalidation，不能简单忽略。</span></li>
-        <li><span class="zh">`GetString()` 与 `Hash()` 适合调试输出和哈希容器使用；业务逻辑仍应优先保持 tokenized locator 结构。</span></li>
+        <li><span class="zh">构造与组合：</span><span class="en">`HdDataSourceLocator()`, `Append()`, `Prepend()`</span></li>
+        <li><span class="zh">token path 访问：</span><span class="en">`GetElementCount()`, `GetElement()`, `GetFirstElement()`, `GetLastElement()`</span></li>
+        <li><span class="zh">范围判断：</span><span class="en">`HasPrefix()`, `GetCommonPrefix()`, `Intersects()`</span></li>
+        <li><span class="zh">空 locator：</span><span class="en">`EmptyLocator()`, `IsEmpty()`</span></li>
+        <li><span class="zh">比较与键值：</span><span class="en">`operator==()`, `operator!=()`, `operator<()`, `Hash()`</span></li>
       </ul>
       <h3>术语对照 / Terms</h3>
       <ul>
         <li><span class="zh">数据源定位器：</span><span class="en">HdDataSourceLocator</span></li>
+        <li><span class="zh">短 token 列表：</span><span class="en">short list of tokens</span></li>
         <li><span class="zh">令牌路径：</span><span class="en">token path</span></li>
-        <li><span class="zh">数据源位置：</span><span class="en">data source location</span></li>
+        <li><span class="zh">Hydra 数据源：</span><span class="en">Hydra data source</span></li>
         <li><span class="zh">前缀判断：</span><span class="en">HasPrefix()</span></li>
         <li><span class="zh">相交判断：</span><span class="en">Intersects()</span></li>
-        <li><span class="zh">空定位器：</span><span class="en">EmptyLocator()</span></li>
+        <li><span class="zh">脏状态传播：</span><span class="en">dirty propagation</span></li>
       </ul>
     </section>
     <section>

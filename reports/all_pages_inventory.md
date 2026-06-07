@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-07T01:43:24.801Z
+Generated: 2026-06-07T01:57:03.995Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 29
-- Promoted complete pages: 21
-- Bilingual draft pages: 377
+- Bilingual complete pages: 30
+- Promoted complete pages: 22
+- Bilingual draft pages: 376
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -35,7 +35,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_draft | 类参考草稿：GfRay Class Reference Basic Geometry / GfRay Class Reference Basic Geometry | full_site/api/class_gf_ray.html | https://openusd.org/release/api/class_gf_ray.html |
 | api | bilingual_draft | 类参考草稿：GfVec2i Class Reference Linear Algebra / GfVec2i Class Reference Linear Algebra | full_site/api/class_gf_vec2i.html | https://openusd.org/release/api/class_gf_vec2i.html |
 | api | bilingual_draft | 类参考草稿：GlfDrawTarget Class / GlfDrawTarget Class | full_site/api/class_glf_draw_target.html | https://openusd.org/release/api/class_glf_draw_target.html |
-| api | bilingual_draft | 类参考草稿：HdDataSourceLocator Class / HdDataSourceLocator Class | full_site/api/class_hd_data_source_locator.html | https://openusd.org/release/api/class_hd_data_source_locator.html |
+| api | bilingual_complete | https://openusd.org/release/api/class_hd_data_source_locator.html | full_site/api/class_hd_data_source_locator.html | https://openusd.org/release/api/class_hd_data_source_locator.html |
 | api | bilingual_draft | 类参考草稿：HdInstanceRegistry< VALUE > Class Template / HdInstanceRegistry< VALUE > Class Template | full_site/api/class_hd_instance_registry.html | https://openusd.org/release/api/class_hd_instance_registry.html |
 | api | bilingual_draft | 类参考草稿：HdRenderBuffer Class Reference abstract / HdRenderBuffer Class Reference abstract | full_site/api/class_hd_render_buffer.html | https://openusd.org/release/api/class_hd_render_buffer.html |
 | api | bilingual_draft | 类参考草稿：HdSceneDelegate Class / HdSceneDelegate Class | full_site/api/class_hd_scene_delegate.html | https://openusd.org/release/api/class_hd_scene_delegate.html |

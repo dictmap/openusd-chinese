@@ -2,23 +2,23 @@
 
 生成日期：2026-06-07
 
-这份盘点针对用户反馈：“3 天后仍只有 8 页完成、398 页还是草稿，问题很多但自动化还在继续跑轮次。”本文件已在第 323 轮更新：`full_site` 页面晋级链路已经连续跑通二十一次，`good_bilingual` 从 8 提升到 29，但整体仍远未完成。
+这份盘点针对用户反馈：“3 天后仍只有 8 页完成、398 页还是草稿，问题很多但自动化还在继续跑轮次。”本文件已在第 324 轮更新：`full_site` 页面晋级链路已经连续跑通二十二次，`good_bilingual` 从 8 提升到 30，但整体仍远未完成。
 
 ## 当前真实状态
 
 - 全量页面：406
-- `bilingual_complete`：29
-- `bilingual_draft`：377
-- `good_bilingual`：29
-- `draft_needs_translation`：366
+- `bilingual_complete`：30
+- `bilingual_draft`：376
+- `good_bilingual`：30
+- `draft_needs_translation`：365
 - `draft_template_only`：11
 
-结论：当前仍不是完成态。377 个 draft 只是可本地打开和检查，不是完整翻译。
+结论：当前仍不是完成态。376 个 draft 只是可本地打开和检查，不是完整翻译。
 
 ## P0 问题
 
 1. 完成数长期停滞，已跑通可复用晋级路径  
-   `audit_openusd_translation_quality.mjs` 只有在 inventory 状态为 `bilingual_complete` 且中文密度达标时才会给 `good_bilingual`。过去大量 refinement 脚本只给 `bilingual_draft` 页面增加中文导读和术语对照，没有把页面晋级为 `bilingual_complete` 的机制，所以主指标长期不涨。第 303 轮新增 `reports/bilingual_completion_promotions.json`，第 304 轮晋级 `full_site/api/class_usd_prim.html`，第 305 轮晋级 `full_site/api/class_sdf_path.html`，第 306 轮晋级 `full_site/api/class_usd_geom_mesh.html`，第 307 轮晋级 `full_site/api/class_tf_token.html`，第 308 轮晋级 `full_site/api/class_usd_stage_cache.html`，第 309 轮晋级 `full_site/api/class_usd_attribute_limits.html`，第 310 轮晋级 `full_site/api/class_usd_validation_error.html`，第 311 轮晋级 `full_site/api/class_usd_geom_basis_curves.html`，第 312 轮晋级 `full_site/api/class_usd_physics_joint.html`，第 313 轮晋级 `full_site/api/class_usd_imaging_delegate.html`，第 314 轮晋级 `full_site/api/class_sdr_shader_property.html`，第 315 轮晋级 `full_site/api/class_vt_value_ref.html`，第 316 轮晋级 `full_site/api/class_vdf_node.html`，第 317 轮晋级 `full_site/api/class_vdf_context.html`，第 318 轮晋级 `full_site/api/class_vdf_read_write_accessor.html`，第 319 轮晋级 `full_site/api/class_vdf_grapher_options.html`，第 320 轮晋级 `full_site/api/class_esf_property_interface.html`，第 321 轮晋级 `full_site/api/class_trace_event_data.html`，第 322 轮晋级 `full_site/api/class_ef___lofted_output_set.html`，第 323 轮晋级 `full_site/api/class_tf_py_lock.html`，`good_bilingual` 已从 8 提升到 29。
+   `audit_openusd_translation_quality.mjs` 只有在 inventory 状态为 `bilingual_complete` 且中文密度达标时才会给 `good_bilingual`。过去大量 refinement 脚本只给 `bilingual_draft` 页面增加中文导读和术语对照，没有把页面晋级为 `bilingual_complete` 的机制，所以主指标长期不涨。第 303 轮新增 `reports/bilingual_completion_promotions.json`，第 304 轮晋级 `full_site/api/class_usd_prim.html`，第 305 轮晋级 `full_site/api/class_sdf_path.html`，第 306 轮晋级 `full_site/api/class_usd_geom_mesh.html`，第 307 轮晋级 `full_site/api/class_tf_token.html`，第 308 轮晋级 `full_site/api/class_usd_stage_cache.html`，第 309 轮晋级 `full_site/api/class_usd_attribute_limits.html`，第 310 轮晋级 `full_site/api/class_usd_validation_error.html`，第 311 轮晋级 `full_site/api/class_usd_geom_basis_curves.html`，第 312 轮晋级 `full_site/api/class_usd_physics_joint.html`，第 313 轮晋级 `full_site/api/class_usd_imaging_delegate.html`，第 314 轮晋级 `full_site/api/class_sdr_shader_property.html`，第 315 轮晋级 `full_site/api/class_vt_value_ref.html`，第 316 轮晋级 `full_site/api/class_vdf_node.html`，第 317 轮晋级 `full_site/api/class_vdf_context.html`，第 318 轮晋级 `full_site/api/class_vdf_read_write_accessor.html`，第 319 轮晋级 `full_site/api/class_vdf_grapher_options.html`，第 320 轮晋级 `full_site/api/class_esf_property_interface.html`，第 321 轮晋级 `full_site/api/class_trace_event_data.html`，第 322 轮晋级 `full_site/api/class_ef___lofted_output_set.html`，第 323 轮晋级 `full_site/api/class_tf_py_lock.html`，第 324 轮晋级 `full_site/api/class_hd_data_source_locator.html`，`good_bilingual` 已从 8 提升到 30。
 
 2. 总入口展示容易误导，已做第一轮修正  
    总入口曾显示 8 complete、398 draft、0 pending。`pending=0` 容易让人以为“全都处理过了”。现在入口改为动态 complete 数，并把剩余页面标成“未完整翻译草稿 / Incomplete drafts”。后续必须保持 `bilingual_draft` 等于未完整翻译，不得再写成接近完成。
@@ -32,7 +32,7 @@
    当前策略会把 406 清单外的官方 Doxygen 目标路由到 `site/uncovered_openusd_page.html`。这比外跳官方站更可控，但用户体验上仍然是“点了没有本地内容”。后续要优先处理高点击目录和 TOC 链接。
 
 2. 大部分 draft 内容仍偏薄  
-   过去补强主要是中文导读和术语对照，不是逐段翻译。当前仍有 366 页为 `draft_needs_translation`、11 页为 `draft_template_only`；要让页面真正晋级，需要按页面正文做密集双语覆盖，而不是继续只加摘要。
+   过去补强主要是中文导读和术语对照，不是逐段翻译。当前仍有 365 页为 `draft_needs_translation`、11 页为 `draft_template_only`；要让页面真正晋级，需要按页面正文做密集双语覆盖，而不是继续只加摘要。
 
 ## P2 问题
 
@@ -45,4 +45,5 @@
 - 后续自动化每轮必须先回答：本轮是否能让 `good_bilingual` 增加，或是否修复了用户明确指出的关键体验问题。
 - 若不能增加完成数，必须说明阻塞原因，并优先修完成标准、入口展示或高点击缺页，而不是继续刷小批量补强。
 - 进入下一批翻译前，必须沿用 `reports/bilingual_completion_promotions.json` 的晋级路径：只有完成 paragraph-level bilingual coverage、移除 draft 标记并通过审计的页面才可晋级。
+- 下一轮最优晋级目标：`full_site/api/class_pcp_property_index.html`，仍必须先证明它能达到 `good_bilingual`。
 - `scripts/discover_openusd_all_pages.mjs` 必须锚定本地 406 个 HTML 页面，不能再从已本地化的 `site/navtreedata.js` 反推范围，避免 406 漂移成 430。

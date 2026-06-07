@@ -9114,3 +9114,46 @@ GitHub 同步：
 1. 继续真实晋级，不再刷 count-neutral 导读补强。
 2. 下一批优先核心页面：`full_site/api/class_hd_data_source_locator.html`。
 3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。
+
+## 第 324 轮：将 HdDataSourceLocator 提升为完整双语
+已完成：
+
+- 轮次类型：PromotionRound；本轮只晋级 1 个页面：`full_site/api/class_hd_data_source_locator.html`。
+- 将目标页从 `bilingual_draft` 提升为 `bilingual_complete`，页面标题改为完整双语参考页，并移除通用 draft 标记。
+- 新增 `逐段双语理解 / Paragraph-Level Bilingual Coverage`，覆盖 `HdDataSourceLocator` 作为 Hydra data source locator 的职责、短 `TfToken` token-list 表示、scene index / data source namespace 与 filesystem path、`SdfPath`、USD prim path 的边界、构造函数重载、`Append()` / `Prepend()` token-path 组合、`GetElementCount()` / `GetElement()` / `GetFirstElement()` / `GetLastElement()` 元素访问、`HasPrefix()` / `GetCommonPrefix()` / `Intersects()` 在 dirty propagation 和 invalidation 范围判断中的含义、`EmptyLocator()` / `IsEmpty()` 的广义 invalidation 语义、比较与 hash 行为，以及把 locator 误当 `SdfPath`、文件路径或纯字符串 key 的常见误用。
+- 更新 `reports/bilingual_completion_promotions.json/md`，新增 `round-324-hd-data-source-locator`。
+- 更新 `reports/current_problem_audit.md/json`，当前真实状态同步为 30 complete / 376 draft。
+- 重建 `openusd_bilingual_final.html`，总入口显示 30 complete / 376 incomplete drafts。
+
+分级变化：
+
+- `good_bilingual`：29 -> 30
+- `bilingual_complete`：29 -> 30
+- `bilingual_draft`：377 -> 376
+- `draft_needs_translation`：366 -> 365
+- `draft_template_only`：11 保持不变
+
+验证结果：
+
+- `discover_openusd_all_pages.mjs`：通过，`total_pages=406`，`promoted_complete_pages=22`。
+- `audit_openusd_translation_quality.mjs`：通过，`good_bilingual=30`，目标页 `grade=good_bilingual`，中文正文量 856。
+- `route_openusd_internal_links_local.mjs`：通过，`files_changed=1`，仅同步本轮目标页的本地链接路由。
+- `audit_openusd_full_draft_preview.mjs`：通过，376/376 draft 页面可预览。
+- `audit_openusd_report_index.mjs`：通过。
+- `validate_openusd_api_repro.ps1`：通过，`required_check_count=288`，`failed_check_count=0`。
+- Node 直接解析 `reports/validation_report.json`：`bom=false`。
+
+GitHub 同步：
+
+- 本轮验证通过后将使用 `OpenUSD bilingual round 324: promote HdDataSourceLocator complete` 同步本轮 HTML、报告和 `work.md`。
+
+当前差距：
+
+- 仍有 376 个 `bilingual_draft` 页面只是可检查草稿，不是完整翻译，其中 365 个仍为 `draft_needs_translation`。
+- 406 清单外的 Doxygen 目标仍会进入本地未覆盖占位页；这是当前 P1 浏览缺口。
+
+下一轮目标：
+
+1. 继续真实晋级，不再刷 count-neutral 导读补强。
+2. 下一批优先核心页面：`full_site/api/class_pcp_property_index.html`。
+3. 每个晋级页面都必须新增 paragraph-level bilingual coverage，移除 draft 标记，更新 promotion manifest，并证明 `good_bilingual` 再次增加。
