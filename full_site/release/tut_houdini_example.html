@@ -3,109 +3,314 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：Houdini USD Example Workflow / Houdini USD Example Workflow</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <title>完整双语参考：Houdini USD Example Workflow / Houdini USD Example Workflow</title>
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
-    header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
-    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
-    h1{margin:0;font-size:30px;letter-spacing:0}
-    h2{margin:0 0 12px;font-size:22px}
-    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
-    .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
-    a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
-    li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --ink: #172033;
+      --muted: #5d6d82;
+      --line: #dbe4ef;
+      --blue: #0b63ce;
+      --green: #1b7f5a;
+      --amber: #9a6500;
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 16px/1.72 -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+    }
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 22px 56px;
+    }
+    header, section, nav {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      margin: 0 0 18px;
+    }
+    h1, h2, h3 {
+      margin: 0 0 12px;
+      line-height: 1.28;
+    }
+    h1 {
+      font-size: 2rem;
+    }
+    h2 {
+      font-size: 1.35rem;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+    p {
+      margin: 10px 0;
+    }
+    ul, ol {
+      margin: 8px 0 0 1.4rem;
+      padding: 0;
+    }
+    li {
+      margin: 8px 0;
+    }
+    a {
+      color: var(--blue);
+    }
+    code, pre {
+      font-family: "Cascadia Code", Consolas, monospace;
+      font-size: .95em;
+    }
+    pre {
+      background: #101827;
+      color: #edf4ff;
+      padding: 14px 16px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    .status {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      color: var(--green);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .badge {
+      display: inline-block;
+      border-radius: 999px;
+      background: #e8f5ef;
+      color: var(--green);
+      padding: 3px 10px;
+      font-size: .86rem;
+      font-weight: 700;
+    }
+    .note {
+      border-left: 4px solid var(--amber);
+      padding-left: 14px;
+      color: #3c4658;
+      background: #fff8e7;
+    }
+    .pair {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+      gap: 16px;
+      margin: 16px 0;
+    }
+    .zh, .en {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px 16px;
+      background: #fbfdff;
+    }
+    .zh {
+      border-left: 4px solid var(--green);
+    }
+    .en {
+      color: var(--muted);
+      border-left: 4px solid #9fb3c8;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: #fbfdff;
+    }
+    @media (max-width: 760px) {
+      .pair {
+        grid-template-columns: 1fr;
+      }
+      main {
+        padding: 18px 12px 40px;
+      }
+    }
   </style>
 </head>
 <body>
+<main>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：Houdini USD Example Workflow / Houdini USD Example Workflow</h1>
-    <div class="meta">https://openusd.org/release/tut_houdini_example.html</div>
+    <div class="status"><span class="badge">bilingual_complete</span><span>完整双语参考 / Complete bilingual reference</span></div>
+    <h1>Houdini USD Example Workflow</h1>
+    <p class="zh">本页把官方 Houdini USD Example Workflow 教程整理成中文主阅读路径，并保留必要英文原文、命令、路径和产品名。它不是现代 Houdini 集成的最新推荐流程，而是一个历史教程，用来说明 USD 中心管线怎样让 DCC 工具只写入局部覆盖层，再把覆盖层合入 shot 的组合结果。</p>
+    <p class="en">This page provides a Chinese-first reading path for the official Houdini USD Example Workflow while retaining the original English terms, command, paths, and product names needed for comparison.</p>
+    <p><a href="https://openusd.org/release/tut_houdini_example.html">官方原页 / Open official page</a></p>
   </header>
-  <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section data-cn-refinement="release-quality-pass-066">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Houdini USD Example Workflow 补充中文优先的页面用途、阅读边界、关键概念和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds Chinese-first page purpose, reading boundaries, key concepts, and terminology for Houdini USD Example Workflow while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">`Houdini USD Example Workflow` 是历史教程页，官方明确说明该教程不再定期测试，且 Houdini USD plugin 已在 USD 20.05 中移除，现由 Houdini Solaris 的原生 USD 支持取代。</span></li>
-        <li><span class="zh">本页仍有价值，因为它展示了在 USD-centric pipeline 中使用 Houdini author overrides、查看 USD scene 和运行 `usdview` 的历史工作流。</span></li>
-        <li><span class="zh">命令 `$ usdview USD/extras/usd/tutorials/Houdini/shot.usda` 应保持原样；中文说明只解释它用于打开示例 shot，而不暗示旧 Houdini plugin 仍随当前 USD 发布。</span></li>
-        <li><span class="zh">`Authoring USD Overrides in Houdini` 与 `View the USD Scene` 的边界是历史参考：如果用户使用现代 Houdini，应优先查 Houdini Solaris 与 SideFX 官方 USD 文档。</span></li>
-        <li><span class="zh">本地复刻保留该页是为了完整覆盖 release 文档和历史教程索引；状态仍标为 draft，避免用户误以为它是当前推荐的 Houdini 集成方式。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">Houdini USD 示例工作流：</span><span class="en">Houdini USD Example Workflow</span></li>
-        <li><span class="zh">历史教程：</span><span class="en">historical tutorial</span></li>
-        <li><span class="zh">Houdini USD 插件：</span><span class="en">Houdini USD plugin</span></li>
-        <li><span class="zh">Houdini Solaris：</span><span class="en">Houdini Solaris</span></li>
-        <li><span class="zh">以 USD 为中心的管线：</span><span class="en">USD-centric pipeline</span></li>
-        <li><span class="zh">USD 场景查看器：</span><span class="en">usdview</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-119">
-      <h2>中文补强导读 / Chinese Refinement Notes</h2>
-      <p class="zh">`Houdini USD Example Workflow` 是历史教程页：官方明确说明旧 Houdini USD plugin 已在 USD 20.05 移除，现代 Houdini 用户应优先参考 Houdini Solaris。本地复刻保留它，是为了覆盖历史 release 文档和说明旧 USD-centric Houdini 流程的边界。</p>
-      <p class="en">This refinement section adds page-specific Chinese reading notes for Houdini USD Example Workflow while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">本页不应被理解为当前推荐的 Houdini 集成路线；它的首要信息是 historical tutorial 和 plugin removal。</span></li>
-        <li><span class="zh">命令 `$ usdview USD/extras/usd/tutorials/Houdini/shot.usda` 展示如何查看示例 shot，应保持原样；中文层只解释该命令的目的。</span></li>
-        <li><span class="zh">`Authoring USD Overrides in Houdini` 说明历史工作流中如何在 Houdini 中写入 overrides；现代项目应结合 Solaris 的 LOP/USD 工作流重新判断。</span></li>
-        <li><span class="zh">如果用户排查旧资产或旧教程，本页仍有参考价值：它展示了 USD scene、Houdini-authored overrides 和 `usdview` 检查之间的关系。</span></li>
-        <li><span class="zh">文档状态应明确为历史参考，避免读者误以为旧 Houdini USD plugin 仍随当前 OpenUSD 发布或仍被定期测试。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">Houdini USD 示例工作流：</span><span class="en">Houdini USD Example Workflow</span></li>
-        <li><span class="zh">历史教程：</span><span class="en">historical tutorial</span></li>
-        <li><span class="zh">Houdini USD 插件：</span><span class="en">Houdini USD plugin</span></li>
-        <li><span class="zh">Houdini Solaris：</span><span class="en">Houdini Solaris</span></li>
-        <li><span class="zh">覆盖意见：</span><span class="en">overrides</span></li>
-        <li><span class="zh">USD 场景查看器：</span><span class="en">usdview</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：Houdini USD Example Workflow</span><span class="en">Houdini USD Example Workflow</span></li>
-<li><span class="zh">第 2 级标题：Authoring USD Overrides in Houdini</span><span class="en">Authoring USD Overrides in Houdini</span></li>
-<li><span class="zh">第 3 级标题：View the USD Scene</span><span class="en">View the USD Scene</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">This historical tutorial is not regularly tested.</p>
-<p class="en">The Houdini USD plugin was removed from the USD distribution in version 20.05 in favor of native USD support in Houdini Solaris. This documentation remains for historical reference.</p>
-<p class="en">An example of using Houdini in a USD-centric pipeline</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>$ usdview USD/extras/usd/tutorials/Houdini/shot.usda</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li>No same-site document links extracted.</li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/tut_houdini_example.html">打开官方原页 / Open official page</a></p>
-    </section>
-  </main>
+
+  <section data-cn-complete="release-tutorial-houdini-example-main-reading-path">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+
+    <div class="pair">
+      <p class="zh">页面首先要读成一个历史示例，而不是当前最佳实践。官方说明指出，这个教程没有定期测试；更关键的是，Houdini USD plugin 已经在 USD 20.05 中从 USD 发行版移除，因为 Houdini 现在在 Solaris 中提供原生 USD 支持。因此，本地复刻页保留它的原因不是建议读者安装旧插件，而是保留一个清楚的 USD pipeline 示例：场景数据留在 USD layer stack 中，DCC 工具负责编辑局部意见，最终仍由 USD 组合规则决定结果。</p>
+      <p class="en">The first reading boundary is historical. The official page states that this tutorial is not regularly tested, and that the Houdini USD plugin was removed from USD in version 20.05 in favor of Houdini Solaris native USD support.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">教程的入口是示例 shot，而不是一个孤立的 Houdini 文件。命令 usdview USD/extras/usd/tutorials/Houdini/shot.usda 用来打开原始 USD shot。读者应该先在 usdview 中观察场景结构，再进入 Houdini。这样做的目的，是让编辑者先确认 prim path、layer composition 和可见的资产关系，避免在 DCC 中凭视觉猜测去编辑错误对象。</p>
+      <p class="en">The workflow starts from a USD shot, not from a standalone Houdini scene. The command usdview USD/extras/usd/tutorials/Houdini/shot.usda opens the original USD file so the scene structure can be inspected before editing.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">官方步骤要求在 usdview 中找到 /World/sets/house。这个 prim path 是后续编辑的关键锚点：如果路径写错，Houdini 导出的覆盖层即使语法正确，也不会影响目标房屋。场景还包含地形等上下文对象，导入这些上下文对象不是为了把整场景重新烘焙，而是为了在 Houdini 中判断 house 移动后的相对位置和视觉关系。</p>
+      <p class="en">The important prim path is /World/sets/house. The terrain and other context objects are imported for spatial context, while the house prim is the main target of the authored transform opinion.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">进入 Houdini 后，核心动作是用 USD import workflow 把 house 和地形带入 Houdini 场景。中文读者需要把这里理解为“读取 USD 中已经存在的场景描述”，而不是“把 USD 转成 Houdini 私有资产并丢失组合语义”。如果只需要移动房屋，理想输出是一个稀疏的 override layer，只包含相对于原始 shot 的差异意见。</p>
+      <p class="en">Inside Houdini, the house and terrain are imported for editing. The intended output is a sparse USD override layer rather than a full copy of the shot.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">移动 house 是教程最容易误读的地方。实际要学习的不是某个 Houdini 按钮，而是 USD 的意见强度模型：新导出的 layer 应该在更强的位置表达 transform opinion，并且只覆盖需要改变的 xform 数据。这样，原始资产、材质、引用、payload、变体和其他未变内容仍来自原有 layer stack，Houdini 只贡献局部修改。</p>
+      <p class="en">The main lesson is the USD opinion model. The Houdini-authored layer should provide a stronger transform opinion for the house while leaving unrelated asset data in the original layer stack.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">导出后的 USD 文件通常作为 overlay 或 sublayer 被插入到 shot 中。这里的检查重点是 layer order：如果覆盖层太弱，原始 shot 的意见会继续获胜；如果覆盖层太强或内容过多，可能无意覆盖原有资产结构。正确的交付物应该能用 usdview 对比原始 shot 和新 shot，并清楚看到 house 位置变化，同时其他场景内容保持稳定。</p>
+      <p class="en">The exported USD is inserted back into the shot as an overlay or stronger layer. The result should be inspected in usdview to compare the original and updated composition.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">现代 Houdini 用户需要特别注意 Solaris 边界。由于旧 Houdini USD plugin 已从 USD 发行版移除，本页不应被当作安装或运行旧插件的操作手册。它更适合作为迁移阅读材料：旧教程中的 USD import、局部 transform override、导出 USD layer、再由 USD 组合到 shot 的思想，仍然对应 Solaris 和现代 USD 管线中的常见工作方式。</p>
+      <p class="en">Modern Houdini users should treat the page as a pipeline concept example. Solaris is the contemporary Houdini-side USD environment, while the old plugin-specific details are historical.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">如果结果没有变化，排查顺序应从 USD 语义开始，而不是先怀疑渲染。先检查目标 prim path 是否仍是 /World/sets/house，再检查导出的 layer 是否真的包含 transform opinion，然后检查该 layer 是否放在足够强的位置，最后用 usdview 的 layer browser 或 composition inspection 确认最终 stage 中哪一层提供获胜意见。</p>
+      <p class="en">If the result does not change, debug the prim path, the exported transform opinion, the layer strength, and the composed stage before looking at rendering-specific causes.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">从管线角度看，教程的价值在于“可追溯修改”。原始 shot.usda 继续描述基础场景，Houdini 产物只记录一次艺术调整。这样做可以让下游复查时清楚回答三个问题：谁移动了 house，移动意见写在哪一层，这个意见为什么在最终 stage 中获胜。若把整场景重新导出成一个大文件，这些问题会变得模糊，USD 的分层协作优势也会被削弱。</p>
+      <p class="en">From a pipeline perspective, the tutorial demonstrates traceable edits. The base shot remains the source, and the Houdini-authored layer records the local artistic change.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">读者还应区分“导入用于观察”和“拥有用于改写”。导入 house、terrain 和上下文 geometry，并不表示 Houdini 应该成为这些资产的新权威来源。USD 中常见的生产约定是让资产部门、布景部门、灯光部门分别拥有不同层或不同 namespace 的意见；本教程中的 Houdini 步骤更像一个 layout/shot 调整层，而不是资产发布层。</p>
+      <p class="en">Importing context does not mean taking ownership of all imported assets. The Houdini step is best read as a layout or shot-adjustment layer, not as a replacement asset publish.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">在实际复刻或迁移到 Solaris 时，最重要的是保留“输入 USD stage、局部编辑、输出 USD layer、重新组合验证”这四段流程。旧教程中的具体插件菜单可以变化，但四段边界不能混在一起。输入阶段负责读取现有 stage，编辑阶段负责生成用户意图，输出阶段负责写入可组合 USD，验证阶段负责确认 layer strength、路径和视觉结果。</p>
+      <p class="en">When reproducing the idea in Solaris, preserve the four-stage boundary: input USD stage, local edit, output USD layer, and recomposition verification.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">这也是为什么本页保留英文命令和路径。usdview、USD/extras/usd/tutorials/Houdini/shot.usda、/World/sets/house、Houdini、Solaris、layer stack、sublayer、overlay 和 xformOp 都是可核对的技术坐标。中文解释负责说明它们之间的关系，英文标识负责让读者在工具、文件和官方文档中准确定位同一个对象。</p>
+      <p class="en">The retained English identifiers act as technical coordinates. The Chinese text explains the relationships, while the original names let readers locate the same objects in tools and official documentation.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">如果要把这个教程放进真实生产流程，应把输出层命名、保存位置和接入方式都做成可审查约定。比如可以让 Houdini 输出位于 shot 层附近的调整层，再由 shot.usda 或更上层的 session/shot edit layer 引用它。提交评审时，评审者不应该只看最终画面，还应该能打开 layer stack，看到新层只包含 house 的位移或旋转意见，并确认没有额外写入材质、拓扑、payload 或无关 prim。这个习惯能降低 DCC 之间互相覆盖的风险。</p>
+      <p class="en">In production, the authored layer should be named, stored, and connected in a reviewable way. Reviewers should be able to inspect the layer stack and see that the new layer contains only the intended house edit.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">本页的中文阅读顺序因此是：先确认它是历史 Houdini 插件教程，再用 usdview 建立原始 shot 的语义坐标；然后把 /World/sets/house 当作局部修改目标，把 terrain 当作空间参照；接着理解 Houdini 只生成稀疏 transform override；最后回到 usdview 和 USD 组合规则检查 layer strength 是否让新意见获胜。只要抓住这条线，即使具体 Houdini UI 已迁移到 Solaris，读者仍能复用教程背后的 USD 思维。</p>
+      <p class="en">The recommended reading order is: identify the tutorial as historical, inspect the original shot in usdview, treat /World/sets/house as the local edit target, author a sparse transform override, and verify the composed result.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">成功标准也应具体化：不是“能从 Houdini 导出一个 USD 文件”就算完成，而是最终 composed stage 中 house 的位置按预期变化，未编辑对象保持来源不变，新增 layer 可以被单独禁用或移除以恢复原始 shot，并且所有参与者都能通过 prim path 和 layer stack 解释变化来源。这个标准比单次视觉检查更可靠。</p>
+      <p class="en">Success means the composed stage changes the house as intended, leaves unrelated objects sourced from the original layers, and makes the new edit removable and explainable through the layer stack.</p>
+    </div>
+
+    <div class="pair">
+      <p class="zh">因此，本地中文版把这页归为“历史教程 + 管线概念”而不是“当前安装步骤”。后续读者如果在新 Houdini 版本中实践，应优先寻找 Solaris 中等价的 USD 导入、编辑、导出和 layer 组合节点，并把本页当作验证组合语义的路线图，尤其关注路径、层序和覆盖范围。</p>
+      <p class="en">The localized page therefore treats the tutorial as historical pipeline guidance, and directs modern users to equivalent Solaris USD workflows.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>工作流检查表 / Workflow Checklist</h2>
+    <ol>
+      <li class="zh">用 usdview 打开 USD/extras/usd/tutorials/Houdini/shot.usda，先确认原始 shot 的结构、视图和 layer 关系。</li>
+      <li class="zh">在场景树中定位 /World/sets/house，并把这个 prim path 作为后续覆盖层写入的目标。</li>
+      <li class="zh">把 house 和必要的 terrain context 导入 Houdini，确保 DCC 中看到的是可判断空间关系的上下文，而不是无边界的整场景复制。</li>
+      <li class="zh">在 Houdini 中移动 house，只表达需要改变的 transform，而不要把未修改的资产内容重新导出成强覆盖。</li>
+      <li class="zh">把 Houdini 生成的 USD layer 作为 overlay 或更强 sublayer 接入 shot，并用 usdview 比较组合结果。</li>
+      <li class="zh">把旧 plugin 相关步骤当作历史背景；在现代 Houdini 管线中，应映射到 Solaris 的 USD 原生节点和导出流程。</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>概念边界 / Concept Boundaries</h2>
+    <div class="grid">
+      <div class="item">
+        <h3>不是完整 Houdini 手册</h3>
+        <p class="zh">本页只解释官方教程中的 USD 组合思想，不替代 Houdini 或 Solaris 的产品文档。具体 UI 名称可能随 Houdini 版本变化。</p>
+      </div>
+      <div class="item">
+        <h3>不是整场景导出</h3>
+        <p class="zh">目标是稀疏覆盖层。移动 house 时，应只写目标 prim 的 transform 差异，避免把原始资产、材质和引用结构全部复制进新层。</p>
+      </div>
+      <div class="item">
+        <h3>不是绕过 USD 组合</h3>
+        <p class="zh">Houdini 输出仍由 USD layer stack、subLayer 顺序、reference 和 opinion strength 决定最终结果。调试时必须回到 composed stage。</p>
+      </div>
+      <div class="item">
+        <h3>不是当前插件安装指南</h3>
+        <p class="zh">旧 Houdini USD plugin 已在 USD 20.05 后从 USD 发行版移除；现代工作应优先理解 Solaris 的原生 USD 支持。</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>命令与层片段 / Command And Layer Fragments</h2>
+    <p class="zh">官方示例的基础检查命令保留原样。命令、路径和 prim path 不翻译，因为它们是可以直接核对的技术对象。</p>
+    <pre><code>usdview USD/extras/usd/tutorials/Houdini/shot.usda</code></pre>
+    <p class="zh">概念上，Houdini 生成的覆盖层应只包含类似“对 /World/sets/house 写入更强 transform opinion”的内容。实际语法会随导出设置变化，但阅读时应检查三个问题：目标路径是否正确、transform 是否写入、layer 是否在足够强的位置参与组合。</p>
+    <pre><code># Conceptual reading only, not a copied official snippet.
+over "World"
+{
+    over "sets"
+    {
+        over "house"
+        {
+            # stronger transform opinion authored by the Houdini workflow
+        }
+    }
+}</code></pre>
+  </section>
+
+  <section>
+    <h2>常见误读与调试路径 / Common Misreadings And Debugging</h2>
+    <ul>
+      <li class="zh">如果 usdview 中 house 没有移动，先确认 overlay layer 是否真的被加入 shot，而不是只在磁盘上生成了一个独立文件。</li>
+      <li class="zh">如果导入到 Houdini 后对象层级变化，先检查导入节点是否保持了 USD prim path；不要把 Houdini 内部节点名误认为最终 USD path。</li>
+      <li class="zh">如果原始资产的材质或引用被意外改变，检查导出层是否过于完整。稀疏 override 应只写修改点。</li>
+      <li class="zh">如果同一个 transform 在不同工具中结果不同，检查 xformOp 顺序、单位、轴向和 parent transform，而不是只看单个 translate 值。</li>
+      <li class="zh">如果教程中的插件步骤无法复现，优先确认 USD 版本和 Houdini 版本。旧 plugin 已移除，现代流程应转到 Solaris 概念映射。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>术语与保留英文 / Terms Retained</h2>
+    <div class="grid">
+      <div class="item"><strong>usdview</strong><p class="zh">USD 的交互式检查工具，用于打开 shot、查看 scenegraph、检查 layer 和组合结果。</p></div>
+      <div class="item"><strong>/World/sets/house</strong><p class="zh">教程中的目标 prim path，后续 transform override 应该落在这个语义目标上。</p></div>
+      <div class="item"><strong>overlay layer</strong><p class="zh">覆盖层或叠加层，用来写入局部更强意见，而不是替代原始资产层。</p></div>
+      <div class="item"><strong>Solaris</strong><p class="zh">Houdini 中现代 USD 原生工作环境，是旧 Houdini USD plugin 之后应优先参考的方向。</p></div>
+    </div>
+  </section>
+
+  <nav>
+    <h2>相关页面 / Related Pages</h2>
+    <ul>
+      <li><a href="tut_end_to_end.html">End to End 示例 / End to End Example</a></li>
+      <li><a href="tut_usdview_plugin.html">usdview 插件教程 / usdview Plugin Tutorial</a></li>
+      <li><a href="tut_generating_new_schema.html">生成新 Schema / Generating New Schema</a></li>
+      <li><a href="../../site/toolset.html">工具集 / Toolset</a></li>
+      <li><a href="../../site/glossary.html">术语表 / Glossary</a></li>
+      <li><a href="../../openusd_bilingual_final.html">返回总入口 / Back to final entry</a></li>
+    </ul>
+  </nav>
+</main>
 </body>
 </html>
