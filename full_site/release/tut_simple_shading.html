@@ -3,108 +3,207 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：Simple Shading in USD / Simple Shading in USD</title>
+  <title>完整双语参考：Simple Shading in USD / Simple Shading in USD</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    :root{color-scheme:light;--ink:#17202a;--muted:#5d6b7b;--panel:#fff;--line:#d8dee8;--accent:#1463a5;--ok:#177245;--bg:#f5f7fb}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.68}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
-    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 52px}
+    section{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:22px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
+    p{margin:10px 0}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:var(--ok);color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
-    a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    .en{display:block;color:var(--muted);margin-top:4px}
+    .note{background:#eef6ff;border-left:4px solid var(--accent);padding:12px 14px;border-radius:6px}
+    a{color:var(--accent);overflow-wrap:anywhere}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
     code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+    .tile{border:1px solid var(--line);border-radius:8px;padding:14px;background:#fbfcff}
+    .k{font-weight:700;color:#17324d}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：Simple Shading in USD / Simple Shading in USD</h1>
-    <div class="meta">https://openusd.org/release/tut_simple_shading.html</div>
+    <span class="status">bilingual_complete</span>
+    <h1>Simple Shading in USD</h1>
+    <div class="meta">中文为主 / English retained · release tutorial · https://openusd.org/release/tut_simple_shading.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+      <p class="zh">本页是 OpenUSD release 教程 Simple Shading in USD 的完整双语复刻页。中文放在主阅读路径前面，用来解释官方教程的目标、步骤、API 边界和常见误读；英文页面名、API 名、类名、shader id、token、代码片段、命令和链接保持原样，便于和官方文档核对。</p>
+      <p class="en">This page is a Chinese-first bilingual reproduction of the OpenUSD release tutorial Simple Shading in USD. English identifiers, API names, shader ids, tokens, commands, code snippets, and links are retained for technical comparison.</p>
+      <p class="zh">官方教程演示如何用 Python USD API 创建一个简单资产：先建立 Model 根节点和一张带 st 纹理坐标的 quadrilateral billboard，再创建 UsdShade.Material、UsdPreviewSurface、UsdUVTexture 与 UsdPrimvarReader_float2 组成的 shading network，最后通过 UsdShade.MaterialBindingAPI 把几何体绑定到材质。</p>
+      <p class="en">The official tutorial creates a model asset, authors a textured billboard mesh, builds a UsdShade material network, and binds the material to geometry.</p>
     </section>
-    <section data-cn-refinement="release-tutorial-quality-pass-002">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Simple Shading in USD 补充中文优先的阅读路径和术语说明；英文页面名、链接、代码、命令和原文摘录继续保留，用于和官方文档逐项对照。</p>
-      <p class="en">This section adds Chinese-first reading guidance for Simple Shading in USD while retaining the English page name, links, code, commands, and source excerpts for comparison with the official documentation.</p>
+
+    <section data-cn-complete="release-tutorial-simple-shading-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+
+      <p class="zh">这篇教程的核心不是“给一个 mesh 贴图”这么简单，而是说明 USD 如何把资产组织、几何数据、材质容器、shader 网络、纹理坐标和材质绑定分成不同层次。读者应先抓住这条主线：Usd.Stage 保存场景，UsdGeom.Xform 作为模型根，UsdGeom.Mesh 负责几何拓扑和 primvars，UsdShade.Material 负责容纳 shading network，UsdShade.Shader 节点通过 input/output 连接表达数据流，MaterialBindingAPI 只负责说明哪个几何体使用哪个材质。</p>
+      <p class="en">The key idea is the separation between scene organization, geometry, material containers, shader networks, texture coordinates, and material binding.</p>
+
+      <p class="zh">开头的 Making a Model 段落用 Usd.Stage.CreateNew("simpleShading.usda") 创建文本层，并用 UsdGeom.SetStageUpAxis(stage, UsdGeom.Tokens.y) 写入 stage 级坐标约定。随后 UsdGeom.Xform.Define(stage, "/TexModel") 建立模型根，Usd.ModelAPI(modelRoot).SetKind(Kind.Tokens.component) 把它标记为 component。这个根节点的意义在于把几何和材质一起包装成一个可引用的资产单元，而不是把 Mesh 和 Material 随便散落在 root scope 下。</p>
+      <p class="en">The model root collects geometry and shading prims under one referencable asset root rather than leaving them as unrelated root-scope prims.</p>
+
+      <p class="zh">接下来的 Adding a Mesh "Billboard" 段落创建 /TexModel/card 这个四边形 UsdGeom.Mesh。示例写入 points、faceVertexCounts、faceVertexIndices 和 extent，使 billboard 有明确的拓扑和包围范围。它没有显式创建 normals，因为默认 mesh 采用 Catmull-Clark subdivision，渲染器可以解析出法线；如果真实资产需要多边形显示而非细分表面，应另外考虑 CreateSubdivisionSchemeAttr() 等设置。</p>
+      <p class="en">The billboard mesh authors topology and extent. Normals are omitted because the default subdivision scheme can provide analytic normals to renderers.</p>
+
+      <p class="zh">同一段里的 UsdGeom.PrimvarsAPI(billboard).CreatePrimvar("st", Sdf.ValueTypeNames.TexCoord2fArray, UsdGeom.Tokens.varying) 是理解贴图的关键。st 是几何体上的纹理坐标 primvar，值把四个角映射到 unit square 的 UV 空间。这里的 st 名称不是中文术语，而是 shading network 后续会读取的 token；如果材质网络里的 primvar reader 读的名字和几何上的 primvar 名字不一致，纹理通常会显示错误或使用 fallback。</p>
+      <p class="en">The st primvar stores texture coordinates on the geometry. The shader network must read the same primvar name to map the texture correctly.</p>
+
+      <p class="zh">Make a Material 段落用 UsdShade.Material.Define(stage, "/TexModel/boardMat") 创建材质 prim。Material 在 USD 中不是直接的颜色属性，也不是贴图文件路径；它是一个容器，可以包含 surface、displacement、renderer-specific 等不同用途的 shader network。复杂资产会有多个 Gprim 绑定到不同 Material，而这个教程只有一张 billboard，所以只需要一个 boardMat。</p>
+      <p class="en">A Material is a container for shading networks, not just a color or a texture path.</p>
+
+      <p class="zh">Add a UsdPreviewSurface 段落创建 /TexModel/boardMat/PBRShader，并把 shader id 设为 UsdPreviewSurface。这个 id 要保持英文原样，因为它是被 Hydra、DCC 和 renderer delegate 识别的 shader 标识。示例设置 roughness 和 metallic input，然后用 material.CreateSurfaceOutput().ConnectToSource(pbrShader.ConnectableAPI(), "surface") 把材质的 surface output 连接到 shader 的 surface output。这个连接决定材质表面的最终 shading source。</p>
+      <p class="en">UsdPreviewSurface is the preview surface shader id. The material surface output is connected to the shader surface output to identify the final surface shading source.</p>
+
+      <p class="zh">Add Texturing 段落添加两个 shader 节点：UsdUVTexture 负责读取并采样图像文件，UsdPrimvarReader_float2 负责从被绑定的几何体上读取 float2 类型的纹理坐标。两者的关系是：primvar reader 输出 result，连接到 texture shader 的 st input；texture shader 输出 rgb，连接到 UsdPreviewSurface 的 diffuseColor input。这样图像颜色才会成为 surface diffuse color 的来源。</p>
+      <p class="en">UsdPrimvarReader_float2 provides texture coordinates to UsdUVTexture, and the texture rgb output feeds the preview surface diffuseColor input.</p>
+
+      <p class="zh">diffuseTextureSampler.CreateInput("file", Sdf.ValueTypeNames.Asset).Set("USDLogoLrg.png") 说明纹理路径是 asset-valued input，会经过 USD 的 asset resolution 机制解释。它不是普通 Python 字符串路径的最终语义。打包资产或跨机器运行时，要确保 USDLogoLrg.png 与 layer 的相对路径、resolver context 或 usdz 包内布局一致，否则材质网络虽然存在，图像仍可能找不到。</p>
+      <p class="en">The texture file input is an asset-valued path. It must resolve correctly for the texture to appear.</p>
+
+      <p class="zh">教程没有把 varname 直接写死在 stReader 上，而是创建 material.CreateInput("frame:stPrimvarName", Sdf.ValueTypeNames.Token) 并把它设为 st，再让 stReader.CreateInput("varname", ...).ConnectToSource(stInput) 连接到这个 material input。这样做的教学意义很重要：材质可以把内部网络深处的参数暴露成公共接口，资产使用方不用进入 shader 子树，也能看到或覆盖材质的关键控制项。</p>
+      <p class="en">The material input exposes a deep shader-network parameter as a public interface, making the primvar name easier to inspect and override.</p>
+
+      <p class="zh">最后的 MaterialBindingAPI 步骤表达“这个几何体使用这个材质”。示例先在 billboard prim 上应用 UsdShade.MaterialBindingAPI，再执行 UsdShade.MaterialBindingAPI(billboard).Bind(material)。绑定不是把材质数据复制到 mesh 上，也不是修改 face topology；它在 scene description 中写入关系，让材质解析过程能从 gprim 找到对应的 Material prim。后续更复杂的场景还会涉及 collection binding、binding strength 和 material purpose，本教程只展示最直接的 per-prim binding。</p>
+      <p class="en">Material binding authors a relationship from the geometry to the material. It does not copy shader data onto the mesh.</p>
+
+      <p class="zh">运行路径上，教程把脚本和数据放在 USD 发行包的 USD/extras/usd/tutorials/simpleShading 中，聚合脚本为 generate_simpleShading.py，最终产物是 simpleShading.usda。阅读时不要只看 Python 片段，也要看保存后的 usda 文本：那里能看到 def Material、def Shader、inputs:、outputs:、连接关系、rel material:binding 以及 primvars:st 如何落到场景描述里。</p>
+      <p class="en">The Python examples author a simpleShading.usda layer. Inspecting the resulting text layer shows the material, shaders, inputs, outputs, connections, binding relationship, and primvars.</p>
+
+      <p class="zh">常见误读有四个。第一，UsdPreviewSurface 是可移植的预览材质模型，不等于某个生产渲染器的完整 shader 语言。第二，st 是几何 primvar 与 shader reader 之间的约定名，不是自动出现的 UV。第三，Material 是网络容器，真正的 shader 参数在其子节点上或暴露为 material input。第四，Bind(material) 只是绑定关系，显示结果还取决于 renderer 是否支持这些 preview shader 节点、纹理路径是否能解析、以及几何是否提供了匹配的 texture coordinates。</p>
+      <p class="en">Common pitfalls include confusing preview shading with renderer-specific shaders, assuming st appears automatically, treating Material as a flat property bag, or forgetting that binding only identifies the material.</p>
+
+      <p class="zh">从 section 覆盖角度看，本教程把 USD 着色分成三条可检查的证据链。第一条是 scene description 证据：simpleShading.usda 中应该能看到 TexModel、card、boardMat、PBRShader、diffuseTexture 和 stReader 这些 prim。第二条是 connection 证据：outputs:surface、inputs:diffuseColor、inputs:st、outputs:rgb 和 outputs:result 之间应形成方向明确的数据流。第三条是 binding 证据：card 或其合适祖先上应有 material:binding 关系指向 boardMat。三条证据同时存在，才说明材质网络既被写入，又被几何实际使用。</p>
+      <p class="en">A reliable inspection path checks authored prims, shader connections, and the material binding relationship together.</p>
+
+      <p class="zh">阅读保存后的 usda 时，可以把它看成对 Python authoring 代码的结构化回放。def Material 说明材质容器存在；def Shader 说明网络节点存在；uniform token info:id 说明节点类型可被渲染系统识别；inputs 和 outputs 说明可连接端口；connect 关系说明数据从一个 shader 输出流向另一个 shader 输入；rel material:binding 则说明几何选择了哪个 material。只看 viewport 中“有没有图”是不够的，因为图像可能因为 fallback、缓存或 renderer 默认材质而误导判断。</p>
+      <p class="en">The saved usda layer is the audit trail for authoring decisions and should be inspected alongside viewport results.</p>
+
+      <p class="zh">本页还保留一个重要边界：UsdShade 描述的是跨工具可交换的 shading graph 结构，而不是保证每个 renderer 都给出完全相同的最终像素。UsdPreviewSurface 的价值是提供稳定的预览语义，让 usdview、Hydra delegate 和 DCC 插件可以用共同的最低语义理解材质。生产渲染中可以继续扩展 renderer-specific 节点，但在教程层面应先确认 preview network、texture asset、primvar reader 和 material binding 这四个基础环节可靠。</p>
+      <p class="en">UsdShade describes portable shading structure; renderer-specific fidelity is a separate layer above the preview network.</p>
+
+      <p class="zh">把这个教程迁移到真实资产时，建议保持类似组织方式：资产根下放几何和 Looks 或材质 scope；几何只声明拓扑、extent 和 primvars；材质下放 shader 节点；需要调参的内部 shader input 暴露到 material input；最后用 binding 明确指向 material。这样做的好处是下游工具能替换纹理、重定向 primvar、覆盖材质参数或重新绑定材质，而不必破坏 mesh 拓扑。</p>
+      <p class="en">The pattern scales to real assets by separating geometry, material interface, shader internals, and binding.</p>
+
+      <p class="zh">因此，本教程的中文主阅读路径可以按“建资产根、建 billboard、写 st、建 Material、接 preview surface、接 texture sampler、接 primvar reader、暴露 varname、绑定材质、保存并检查 usda”这十步执行。每一步都有可见的 USD spec 或 API 调用与之对应；如果某一步缺失，问题通常会落在路径解析、token 名称、连接方向、材质绑定位置或 renderer 支持范围上。</p>
+      <p class="en">The practical reading path is a ten-step checklist from asset root creation through saved-layer inspection.</p>
+
+      <p class="zh">最后做人工复核时，应同时打开脚本、生成的 usda 文本和 usdview 结果：脚本验证 authoring 意图，usda 验证已写入的 scene description，usdview 验证常见预览渲染路径。三者一致，才算这个简单着色示例真正可复现，并能作为后续复杂材质网络的最小检查基线。</p>
+      <p class="en">Manual review should compare the script, the saved layer, and the usdview result.</p>
+    </section>
+
+    <section>
+      <h2>教程步骤 / Tutorial Steps</h2>
+      <ol>
+        <li><span class="zh">创建 stage 和模型根：用 Usd.Stage.CreateNew、UsdGeom.SetStageUpAxis、UsdGeom.Xform.Define 和 Usd.ModelAPI.SetKind 建立一个可引用的 component 资产根。</span><span class="en">Create the stage and model root as a component asset.</span></li>
+        <li><span class="zh">创建 billboard mesh：写入四个点、一个四边形 face、extent，以及名为 st 的 TexCoord2fArray primvar。</span><span class="en">Create the billboard mesh and its st texture-coordinate primvar.</span></li>
+        <li><span class="zh">创建 UsdShade.Material：把材质放在 /TexModel/boardMat 下，使 shading network 与资产根保持同一组织边界。</span><span class="en">Create a material container under the model.</span></li>
+        <li><span class="zh">添加 UsdPreviewSurface：创建 PBRShader，设置 roughness 和 metallic，并连接 material 的 surface output。</span><span class="en">Add the preview surface shader and connect it as the material surface.</span></li>
+        <li><span class="zh">添加 texture 和 primvar reader：让 UsdPrimvarReader_float2 提供 st 坐标，让 UsdUVTexture 采样 USDLogoLrg.png，再把 rgb 连到 diffuseColor。</span><span class="en">Wire the primvar reader, texture sampler, and diffuse color input.</span></li>
+        <li><span class="zh">公开 primvar 名称并绑定材质：通过 material input 暴露 frame:stPrimvarName，再用 MaterialBindingAPI 把 billboard 与 boardMat 关联起来并保存 layer。</span><span class="en">Expose the primvar name on the material interface, bind the material, and save the layer.</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>关键 API 与语义边界 / API Boundaries</h2>
+      <div class="grid">
+        <div class="tile"><p class="zh"><span class="k">UsdGeom.Mesh</span> 负责几何形状、拓扑、extent 和 primvars；它不保存材质网络。</p><p class="en">UsdGeom.Mesh owns geometry and primvars, not the shader graph.</p></div>
+        <div class="tile"><p class="zh"><span class="k">UsdShade.Material</span> 是 shader network 的容器和公共接口边界；它可以暴露内部 shader input。</p><p class="en">UsdShade.Material is the container and public interface for shading networks.</p></div>
+        <div class="tile"><p class="zh"><span class="k">UsdPreviewSurface</span> 是预览 surface shader id；保留英文 token 是互操作要求。</p><p class="en">UsdPreviewSurface is the portable preview surface shader id.</p></div>
+        <div class="tile"><p class="zh"><span class="k">UsdUVTexture</span> 读取 asset-valued texture file，并根据 st input 输出 rgb 等结果。</p><p class="en">UsdUVTexture samples the texture file using st coordinates.</p></div>
+        <div class="tile"><p class="zh"><span class="k">UsdPrimvarReader_float2</span> 从绑定几何上读取 float2 primvar；本例读取 st。</p><p class="en">UsdPrimvarReader_float2 reads a float2 primvar such as st.</p></div>
+        <div class="tile"><p class="zh"><span class="k">MaterialBindingAPI</span> 写入材质绑定关系；它不是渲染，也不是贴图采样。</p><p class="en">MaterialBindingAPI authors the binding relationship.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>核心代码摘录 / Core Code Fragments</h2>
+      <p class="zh">下面保留精简代码片段，用于核对官方步骤。它们不是逐行重印官方教程，而是标出本页中文解释中的关键 API 连接点。</p>
+      <p class="en">These fragments highlight the API connection points discussed above.</p>
+      <pre>from pxr import Gf, Kind, Sdf, Usd, UsdGeom, UsdShade
+
+stage = Usd.Stage.CreateNew("simpleShading.usda")
+UsdGeom.SetStageUpAxis(stage, UsdGeom.Tokens.y)
+modelRoot = UsdGeom.Xform.Define(stage, "/TexModel")
+Usd.ModelAPI(modelRoot).SetKind(Kind.Tokens.component)
+
+billboard = UsdGeom.Mesh.Define(stage, "/TexModel/card")
+texCoords = UsdGeom.PrimvarsAPI(billboard).CreatePrimvar(
+    "st", Sdf.ValueTypeNames.TexCoord2fArray, UsdGeom.Tokens.varying)
+
+material = UsdShade.Material.Define(stage, "/TexModel/boardMat")
+pbrShader = UsdShade.Shader.Define(stage, "/TexModel/boardMat/PBRShader")
+pbrShader.CreateIdAttr("UsdPreviewSurface")
+material.CreateSurfaceOutput().ConnectToSource(pbrShader.ConnectableAPI(), "surface")</pre>
+      <pre>stReader = UsdShade.Shader.Define(stage, "/TexModel/boardMat/stReader")
+stReader.CreateIdAttr("UsdPrimvarReader_float2")
+
+diffuseTextureSampler = UsdShade.Shader.Define(stage, "/TexModel/boardMat/diffuseTexture")
+diffuseTextureSampler.CreateIdAttr("UsdUVTexture")
+diffuseTextureSampler.CreateInput("file", Sdf.ValueTypeNames.Asset).Set("USDLogoLrg.png")
+diffuseTextureSampler.CreateInput("st", Sdf.ValueTypeNames.Float2).ConnectToSource(
+    stReader.ConnectableAPI(), "result")
+pbrShader.CreateInput("diffuseColor", Sdf.ValueTypeNames.Color3f).ConnectToSource(
+    diffuseTextureSampler.ConnectableAPI(), "rgb")
+
+stInput = material.CreateInput("frame:stPrimvarName", Sdf.ValueTypeNames.Token)
+stInput.Set("st")
+stReader.CreateInput("varname", Sdf.ValueTypeNames.Token).ConnectToSource(stInput)
+
+billboard.GetPrim().ApplyAPI(UsdShade.MaterialBindingAPI)
+UsdShade.MaterialBindingAPI(billboard).Bind(material)
+stage.Save()</pre>
+    </section>
+
+    <section>
+      <h2>调试与常见误读 / Debugging Notes</h2>
       <ul>
-        <li><span class="zh">本教程演示在 USD 中创建一个带纹理的材质网络，并把 Material 绑定到几何体。阅读重点是 UsdShade 如何表达 shader、input、output 与 material binding。</span></li>
-        <li><span class="zh">示例先建立模型根节点和几何，再定义 Material 与 shading network，最后把几何体绑定到该 Material；这条顺序对应实际资产打包时的常见组织方式。</span></li>
-        <li><span class="zh">UsdPreviewSurface、UsdUVTexture、UsdPrimvarReader_float2 等名称应保持英文原样，因为它们既是 schema / shader 标识，也是跨 DCC 与渲染器互操作的关键 token。</span></li>
-        <li><span class="zh">中文层解释模型、材质、纹理坐标和绑定关系；英文原文与 Python / usda 摘录保留在下方用于核对官方示例。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">USD 着色框架：</span><span class="en">UsdShade</span></li>
-        <li><span class="zh">材质：</span><span class="en">Material</span></li>
-        <li><span class="zh">着色网络：</span><span class="en">shading network</span></li>
-        <li><span class="zh">USD 预览表面 shader：</span><span class="en">UsdPreviewSurface</span></li>
-        <li><span class="zh">材质绑定：</span><span class="en">material binding</span></li>
+        <li><span class="zh">如果 mesh 可见但没有纹理，先检查 USDLogoLrg.png 是否能通过当前 layer 的 asset path 解析到，再检查 renderer 是否支持 UsdPreviewSurface 和 UsdUVTexture。</span><span class="en">If the mesh appears without the texture, check asset resolution and preview shader support first.</span></li>
+        <li><span class="zh">如果纹理坐标异常，检查几何上是否真的有 primvars:st，以及 UsdPrimvarReader_float2.inputs:varname 是否通过 material interface 指向同一个 st token。</span><span class="en">Texture-coordinate issues usually point to a missing or mismatched st primvar.</span></li>
+        <li><span class="zh">如果材质完全没有作用，检查 rel material:binding 是否写在实际 gprim 或它的合适祖先上，并确认绑定目标路径指向 def Material 而不是 shader 子节点。</span><span class="en">A missing effect may mean the material binding relationship is absent or points to the wrong prim.</span></li>
+        <li><span class="zh">不要把保存后的 simpleShading.usda flatten 成唯一诊断来源。flatten 能展示最终组成结果，但调试 authoring 时仍要看 root layer 中的原始 material、shader、connection 和 binding specs。</span><span class="en">Flattened output is useful, but authoring diagnostics still need the original layer specs.</span></li>
+        <li><span class="zh">不要翻译 UsdPreviewSurface、UsdUVTexture、UsdPrimvarReader_float2、diffuseColor、surface、rgb、st 等标识符；它们是技术互操作点，不是普通正文。</span><span class="en">Do not translate identifiers and token literals that define the shader graph semantics.</span></li>
       </ul>
     </section>
-    <section data-cn-refinement="release-quality-pass-111">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`Simple Shading in USD` 演示如何用 `UsdShade` 建立材质网络并绑定到几何体。阅读重点是区分 `Material`、shader prim、input/output 连接、纹理坐标读取和 material binding，而不是把它当作单纯的贴图路径示例。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for Simple Shading in USD while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+
+    <section>
+      <h2>术语对照 / Terms</h2>
       <ul>
-        <li><span class="zh">`UsdPreviewSurface` 是跨工具预览材质的核心 shader 标识；`UsdUVTexture` 和 `UsdPrimvarReader_float2` 则分别承担纹理采样和 UV primvar 读取角色。</span></li>
-        <li><span class="zh">示例通常先创建 model root 和 geometry，再创建 `Material` 与 shading network，最后把材质绑定到几何体。这个顺序对应资产发布时常见的组织结构。</span></li>
-        <li><span class="zh">`inputs` 与 `outputs` 是理解 UsdShade graph 的关键：纹理节点输出连接到 surface shader 输入，material 的 surface output 再连接到最终 shader 输出。</span></li>
-        <li><span class="zh">`UsdShade.MaterialBindingAPI` 表达材质绑定关系；绑定本身不修改 mesh 拓扑，也不等同于把材质数据复制到每个 face 上。</span></li>
-        <li><span class="zh">保留 `UsdPreviewSurface`、`UsdUVTexture`、`UsdPrimvarReader_float2`、`st` 等 token 字面量非常重要，因为 DCC、Hydra 和渲染器会按这些名字解释网络语义。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">USD 着色和材质网络框架：</span><span class="en">UsdShade</span></li>
-        <li><span class="zh">USD 预览表面 shader：</span><span class="en">UsdPreviewSurface</span></li>
-        <li><span class="zh">USD UV 纹理 shader：</span><span class="en">UsdUVTexture</span></li>
+        <li><span class="zh">模型资产根：</span><span class="en">Model root / component model prim</span></li>
+        <li><span class="zh">四边形展示板：</span><span class="en">quadrilateral billboard</span></li>
+        <li><span class="zh">纹理坐标 primvar：</span><span class="en">texture-coordinate primvar, usually st</span></li>
+        <li><span class="zh">材质容器：</span><span class="en">UsdShade.Material</span></li>
+        <li><span class="zh">预览表面 shader：</span><span class="en">UsdPreviewSurface</span></li>
+        <li><span class="zh">UV 纹理采样 shader：</span><span class="en">UsdUVTexture</span></li>
         <li><span class="zh">float2 primvar 读取 shader：</span><span class="en">UsdPrimvarReader_float2</span></li>
-        <li><span class="zh">材质绑定 API：</span><span class="en">MaterialBindingAPI</span></li>
-        <li><span class="zh">常用纹理坐标 primvar 名：</span><span class="en">st</span></li>
+        <li><span class="zh">材质绑定关系：</span><span class="en">UsdShade.MaterialBindingAPI</span></li>
       </ul>
     </section>
+
     <section>
-      <h2>页面结构 / Page Structure</h2>
+      <h2>相关页面 / Related Pages</h2>
       <ul>
-<li><span class="zh">第 1 级标题：Simple Shading in USD</span><span class="en">Simple Shading in USD</span></li>
-<li><span class="zh">第 2 级标题：Making a Model</span><span class="en">Making a Model</span></li>
+        <li><a href="tut_xforms.html">上一教程：Transformations, Animation, and Layer Offsets</a></li>
+        <li><a href="tut_end_to_end.html">下一教程：End to End Example</a></li>
+        <li><a href="tut_houdini_example.html">Houdini USD Example Workflow</a></li>
+        <li><a href="../api/usd_shade_page_front.html">UsdShade API 模块入口</a></li>
+        <li><a href="../api/usd_geom_page_front.html">UsdGeom API 模块入口</a></li>
+        <li><a href="../../site/toolset.html">Toolset：usdview、usdcat、usdchecker 等工具</a></li>
+        <li><a href="../../site/glossary.html">OpenUSD 术语表</a></li>
+        <li><a href="https://openusd.org/release/tut_simple_shading.html">官方原页 / Open official page</a></li>
       </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">This tutorial demonstrates how to create a simple textured material and bind it to geometry in USD. In it we:</p>
-<p class="en">We create the scene as a simple Model , add geometry and a Material with a simple shading network into the model, then bind the geometry to the Material.</p>
-<p class="en">To fully illustrate these concepts, we walk through a Python script that performs the steps using the USD Python API, as well as showing the resulting text .usda outputs.</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>from pxr import Gf , Kind , Sdf , Usd , UsdGeom , UsdShade stage = Usd . Stage . CreateNew ( &quot;simpleShading.usda&quot; ) UsdGeom . SetStageUpAxis ( stage , UsdGeom . Tokens . y ) modelRoot = UsdGeom . Xform . Define ( stage , &quot;/TexModel&quot; ) Usd . ModelAPI ( modelRoot ) . SetKind ( Kind . Tokens . component )</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Configure your Environment</a></li>
-<li><a href="https://github.com/PixarAnimationStudios/OpenUSD/tree/v26.05">USD 26.05</a></li>
-<li><a href="../../site/glossary.html" data-local-route="mapped" data-official-href="https://openusd.org/release/glossary.html">Model</a></li>
-<li><a href="https://github.com/PixarAnimationStudios/OpenUSD/tree/release/extras/usd/tutorials/simpleShading/simpleShading.usda">simpleShading.usda</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/tut_simple_shading.html">打开官方原页 / Open official page</a></p>
     </section>
   </main>
 </body>

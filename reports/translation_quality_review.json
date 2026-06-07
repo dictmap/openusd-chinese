@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T15:55:27.624Z",
+  "generated_at": "2026-06-07T16:18:57.720Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 322,
-    "bilingual_complete": 84
+    "bilingual_draft": 321,
+    "bilingual_complete": 85
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 311,
-    "good_bilingual": 84
+    "draft_needs_translation": 310,
+    "good_bilingual": 85
   },
   "focus_batch": [
     {
@@ -9365,29 +9365,29 @@
     },
     {
       "index": 312,
-      "title": "页面草稿：Simple Shading in USD / Simple Shading in USD",
+      "title": "Simple Shading in USD",
       "output": "full_site/release/tut_simple_shading.html",
       "official_url": "https://openusd.org/release/tut_simple_shading.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 25,
-      "enBlockCount": 19,
-      "zhChars": 520,
-      "enLetters": 1100,
-      "bodyChineseChars": 588,
+      "grade": "good_bilingual",
+      "zhBlockCount": 46,
+      "enBlockCount": 46,
+      "zhChars": 2076,
+      "enLetters": 3548,
+      "bodyChineseChars": 2244,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。",
-        "本区块针对 Simple Shading in USD 补充中文优先的阅读路径和术语说明；英文页面名、链接、代码、命令和原文摘录继续保留，用于和官方文档逐项对照。",
-        "本教程演示在 USD 中创建一个带纹理的材质网络，并把 Material 绑定到几何体。阅读重点是 UsdShade 如何表达 shader、input、output 与 material binding。"
+        "本页是 OpenUSD release 教程 Simple Shading in USD 的完整双语复刻页。中文放在主阅读路径前面，用来解释官方教程的目标、步骤、API 边界和常见误读；英文页面名、API 名、类名、shader id、token、代码片段、命令和链接保持原样，便于和官方文档核对。",
+        "官方教程演示如何用 Python USD API 创建一个简单资产：先建立 Model 根节点和一张带 st 纹理坐标的 quadrilateral billboard，再创建 UsdShade.Material、UsdPreviewSurface、UsdUVTexture 与 UsdPrimvarReader_float2 组成的 shading network，最后通过 UsdShade.MaterialBindingAPI 把几何体绑定到材质。",
+        "这篇教程的核心不是“给一个 mesh 贴图”这么简单，而是说明 USD 如何把资产组织、几何数据、材质容器、shader 网络、纹理坐标和材质绑定分成不同层次。读者应先抓住这条主线：Usd.Stage 保存场景，UsdGeom.Xform 作为模型根，UsdGeom.Mesh 负责几何拓扑和 primvars，UsdShade.Material 负责容纳 shading network，UsdShade.Shader 节点通过 input/output 连接表达数据流，MaterialBindingAPI 只负责说明哪个几何体使用哪个材质。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.",
-        "This section adds Chinese-first reading guidance for Simple Shading in USD while retaining the English page name, links, code, commands, and source excerpts for comparison with the official documentation."
+        "This page is a Chinese-first bilingual reproduction of the OpenUSD release tutorial Simple Shading in USD. English identifiers, API names, shader ids, tokens, commands, code snippets, and links are retained for technical comparison.",
+        "The official tutorial creates a model asset, authors a textured billboard mesh, builds a UsdShade material network, and binds the material to geometry."
       ]
     },
     {

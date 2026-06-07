@@ -1,31 +1,31 @@
 # OpenUSD Iteration Report
 
-## 第 381 轮摘要
+## 第 382 轮摘要
 
 - 轮次类型：PromotionRound
-- 本轮目标：`full_site/release/tut_xforms.html`
+- 本轮目标：`full_site/release/tut_simple_shading.html`
 - 结果：完成 1 个页面晋级，并让 good_bilingual 增加。
 - 核心说明：目标页已移除草稿状态，补齐中文主阅读路径，并进入 promotion manifest。
 
 ## 真实计数
 
 - total_pages：406
-- good_bilingual：84
-- review_ready_zh：21
-- bilingual_complete：84
-- bilingual_draft：322
-- draft_needs_translation：311
+- good_bilingual：85
+- review_ready_zh：22
+- bilingual_complete：85
+- bilingual_draft：321
+- draft_needs_translation：310
 - draft_template_only：11
 - pending_full_scope：0
 - api_complete：72
-- release_complete：12
+- release_complete：13
 
 ## 验证
 
 - validation_report：passed=true，failed_check_count=0，required_check_count=302
-- translation_quality：good_bilingual=84
-- english_debt：review_ready_zh=21，review_needs_zh_debt=63
-- promotion manifest：76 entries
+- translation_quality：good_bilingual=85
+- english_debt：review_ready_zh=22，review_needs_zh_debt=63
+- promotion manifest：77 entries
 
 ## 本轮改动文件
 
@@ -45,4 +45,4 @@
 
 ## 下一步
 
-优先选择 release/tutorial/user guide 页面，以降低 release 覆盖滞后。建议目标：`full_site/release/tut_simple_shading.html`。
+优先选择 release/tutorial/user guide 页面，以降低 release 覆盖滞后。建议目标：`full_site/release/tut_end_to_end.html`。
