@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T14:11:29.589Z",
+  "generated_at": "2026-06-07T14:29:54.625Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 328,
-    "bilingual_complete": 78
+    "bilingual_draft": 327,
+    "bilingual_complete": 79
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 317,
-    "good_bilingual": 78
+    "draft_needs_translation": 316,
+    "good_bilingual": 79
   },
   "focus_batch": [
     {
@@ -9311,29 +9311,29 @@
     },
     {
       "index": 310,
-      "title": "页面草稿：Inspecting and Authoring Properties / Inspecting and Authoring Properties",
+      "title": "完整双语参考：Inspecting and Authoring Properties / Inspecting and Authoring Properties",
       "output": "full_site/release/tut_inspect_and_author_props.html",
       "official_url": "https://openusd.org/release/tut_inspect_and_author_props.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 37,
-      "enBlockCount": 26,
-      "zhChars": 764,
-      "enLetters": 1441,
-      "bodyChineseChars": 844,
+      "grade": "good_bilingual",
+      "zhBlockCount": 46,
+      "enBlockCount": 46,
+      "zhChars": 2116,
+      "enLetters": 3006,
+      "bodyChineseChars": 2186,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。",
-        "本区块针对 Inspecting and Authoring Properties 补充中文优先的阅读路径和术语说明；英文页面名、链接、代码、命令和原文摘录继续保留，用于和官方文档逐项对照。",
-        "本教程接在 Hello World 之后，目标是读取已有 prim，并检查或写入它们的 properties。这里的 property 同时覆盖 attribute 与 relationship 两类可编辑信息。"
+        "本页是 OpenUSD release 教程中“检查与创作属性”的完整双语参考页。中文主线覆盖官方教程的每个操作步骤：打开上一页生成的 `HelloWorld.usda`，取得 `/hello` 与 `/hello/world`，列出 property 名称，读取 `extent`，写入 `radius` 与新的 `extent`，通过 `UsdGeom.Sphere` 写入 `displayColor`，最后保存 root layer。英文标题、API 名称、路径字面量、文件名、token、代码和官方链接保留，用于和官方页面逐项核对。",
+        "本教程接在 `Hello World - Creating Your First USD Stage` 之后。上一页只证明了如何用 Python 创建一个很小的 stage；本页开始把这个 stage 当作已存在的 USD 数据来检查和修改。起点文件是 `extras/usd/tutorials/authoringProperties/HelloWorld.usda`，配套脚本是 `extras/usd/tutorials/authoringProperties/authorProperties.py`。阅读时要把它看作“从已保存 layer 重新打开、读取、创作、再保存”的闭环，而不是重新创建 stage 的教程。",
+        "第一步是 `from pxr import Usd, Vt`，随后用 `Usd.Stage.Open('HelloWorld.usda')` 打开已有 stage。`CreateNew` 与 `Open` 的区别很关键：前者创建新的 root layer，后者读取已经存在的 scene description。脚本接着用 `stage.GetPrimAtPath('/hello')` 和 `stage.GetPrimAtPath('/hello/world')` 取得两个 prim。这里的 prim path 必须原样保留；`/hello/world` 仍然是 USD scene namespace 路径，不是操作系统目录。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.",
-        "This section adds Chinese-first reading guidance for Inspecting and Authoring Properties while retaining the English page name, links, code, commands, and source excerpts for comparison with the official documentation."
+        "This local bilingual page explains the OpenUSD tutorial for inspecting and authoring properties in Chinese first while retaining the official English title, identifiers, code, path literals, file names, token names, and links for comparison.",
+        "The tutorial builds on the saved `HelloWorld.usda` layer and demonstrates inspection and authoring with Python."
       ]
     },
     {

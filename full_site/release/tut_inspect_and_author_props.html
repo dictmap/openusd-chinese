@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：Inspecting and Authoring Properties / Inspecting and Authoring Properties</title>
+  <title>完整双语参考：Inspecting and Authoring Properties / Inspecting and Authoring Properties</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
@@ -12,115 +12,187 @@
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
     .zh{display:block;font-weight:650;color:#17324d}
     .en{display:block;color:#55616f;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
     pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
     code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：Inspecting and Authoring Properties / Inspecting and Authoring Properties</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：Inspecting and Authoring Properties / Inspecting and Authoring Properties</h1>
     <div class="meta">https://openusd.org/release/tut_inspect_and_author_props.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+      <p class="zh">本页是 OpenUSD release 教程中“检查与创作属性”的完整双语参考页。中文主线覆盖官方教程的每个操作步骤：打开上一页生成的 `HelloWorld.usda`，取得 `/hello` 与 `/hello/world`，列出 property 名称，读取 `extent`，写入 `radius` 与新的 `extent`，通过 `UsdGeom.Sphere` 写入 `displayColor`，最后保存 root layer。英文标题、API 名称、路径字面量、文件名、token、代码和官方链接保留，用于和官方页面逐项核对。</p>
+      <p class="en">This local bilingual page explains the OpenUSD tutorial for inspecting and authoring properties in Chinese first while retaining the official English title, identifiers, code, path literals, file names, token names, and links for comparison.</p>
     </section>
-    <section data-cn-refinement="release-tutorial-quality-pass-002">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Inspecting and Authoring Properties 补充中文优先的阅读路径和术语说明；英文页面名、链接、代码、命令和原文摘录继续保留，用于和官方文档逐项对照。</p>
-      <p class="en">This section adds Chinese-first reading guidance for Inspecting and Authoring Properties while retaining the English page name, links, code, commands, and source excerpts for comparison with the official documentation.</p>
+
+    <section data-cn-complete="release-tutorial-inspect-author-properties-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">本教程接在 `Hello World - Creating Your First USD Stage` 之后。上一页只证明了如何用 Python 创建一个很小的 stage；本页开始把这个 stage 当作已存在的 USD 数据来检查和修改。起点文件是 `extras/usd/tutorials/authoringProperties/HelloWorld.usda`，配套脚本是 `extras/usd/tutorials/authoringProperties/authorProperties.py`。阅读时要把它看作“从已保存 layer 重新打开、读取、创作、再保存”的闭环，而不是重新创建 stage 的教程。</p>
+      <p class="en">The tutorial builds on the saved `HelloWorld.usda` layer and demonstrates inspection and authoring with Python.</p>
+
+      <p class="zh">第一步是 `from pxr import Usd, Vt`，随后用 `Usd.Stage.Open('HelloWorld.usda')` 打开已有 stage。`CreateNew` 与 `Open` 的区别很关键：前者创建新的 root layer，后者读取已经存在的 scene description。脚本接着用 `stage.GetPrimAtPath('/hello')` 和 `stage.GetPrimAtPath('/hello/world')` 取得两个 prim。这里的 prim path 必须原样保留；`/hello/world` 仍然是 USD scene namespace 路径，不是操作系统目录。</p>
+      <p class="en">The script opens the saved stage and retrieves the `Xform` and `Sphere` prims by path.</p>
+
+      <p class="zh">第二步列出两个 prim 的 property 名称。`xform.GetPropertyNames()` 返回的是 `/hello` 上可见的 property 名称，例如 `proxyPrim`、`purpose`、`visibility`、`xformOpOrder`；`sphere.GetPropertyNames()` 会看到更多几何相关 property，例如 `extent`、`orientation`、`primvars:displayColor`、`primvars:displayOpacity`、`radius` 等。这里的 property 是总称，下面还要区分 `UsdAttribute` 与 `UsdRelationship`。</p>
+      <p class="en">Listing property names shows the authored and schema-provided properties visible on each prim.</p>
+
+      <p class="zh">第三步读取 sphere 上的 `extent` attribute。`extentAttr = sphere.GetAttribute('extent')` 先按名称取得 `UsdAttribute` 对象，`extentAttr.Get()` 再读取它在 `Default time` 的值。这个值表现为两个三维点，代表球体在对象空间中的 axis-aligned extent。官方教程强调：如果 scene description 中没有写入关于该 attribute 的 opinion，`Get()` 仍可能返回 schema 提供的 fallback value。对默认半径为 `1.0` 的 sphere 来说，fallback extent 落在 `(-1,-1,-1)` 到 `(1,1,1)` 是合理的。</p>
+      <p class="en">Reading `extent` demonstrates attribute lookup, fallback values, and default-time value retrieval.</p>
+
+      <p class="zh">这一段也是理解 USD 分层取值的入口。`Usd.Attribute.Get()` 不带时间参数时读取的是 default time 的值；attribute 也可以拥有 time-sampled values。教程没有展开动画，只借此提醒：读取 attribute 时必须想清楚你要的是 default 值、某个 timeCode 的样本，还是最终 composition 后的解析结果。后续学习 mesh points、motion samples 或 layer offsets 时，这个区别会变得很重要。</p>
+      <p class="en">The tutorial distinguishes default-time reads from time-sampled attribute values.</p>
+
+      <p class="zh">官方页面的 API 提示把 `GetPropertyNames()` 和更实用的对象级 API 区分开来：如果只是看名称，`GetPropertyNames()` 足够；如果要遍历并直接操作 property，通常使用 `UsdPrim::GetProperties`、`UsdPrim::GetAttributes` 或 `UsdPrim::GetRelationships`。三者分别返回 `UsdProperty`、`UsdAttribute` 和 `UsdRelationship` 对象。中文阅读时不要把这些都泛化成“字段”，否则会丢掉 attribute 可存 typed data、relationship 指向目标对象这一层语义。</p>
+      <p class="en">The API tip points readers from property-name lists to object APIs such as `GetProperties`, `GetAttributes`, and `GetRelationships`.</p>
+
+      <p class="zh">第四步把 sphere 的 `radius` 改成 `2`。脚本先执行 `radiusAttr = sphere.GetAttribute('radius')`，再执行 `radiusAttr.Set(2)`。`Set()` 带值但不带时间参数时，会在 default time author 一个新的 value opinion。这里的“author”不是简单修改 Python 对象，而是把新的 scene description opinion 写到当前 edit target 中；因此后面导出 root layer 时可以看到 `double radius = 2`。</p>
+      <p class="en">Setting `radius` authors a new default-time value opinion in the current edit target.</p>
+
+      <p class="zh">改变半径后，教程立即更新 `extent`，这是本页最容易被忽略的工程细节。OpenUSD 不会因为你设置了 `radius=2` 就自动重新计算几何 extent；如果你希望 scene description 中显式的 `extent` 与半径一致，就必须同时写入新的 `extent`。示例用 `extentAttr.Set(extentAttr.Get() * 2)` 把原来的 fallback extent 放大一倍。实际项目中，extent 不一致会影响包围盒、选择、视图 framing、剔除和某些渲染/导入流程的预期。</p>
+      <p class="en">The extent must be updated explicitly because geometric extents are not automatically recomputed when radius changes.</p>
+
+      <p class="zh">第五步写入 `displayColor`。教程没有直接创建原始名称 `primvars:displayColor` 的 attribute，而是先用 `sphereSchema = UsdGeom.Sphere(sphere)` 把已有 prim 包装成 `UsdGeom.Sphere` schema 对象，再调用 `sphereSchema.GetDisplayColorAttr()` 取得一等 schema API 暴露的 attribute。这样做的好处是客户端代码不需要硬编码 `primvars:displayColor` 这个底层属性名，也能得到符合 schema 约定的 property。</p>
+      <p class="en">The tutorial uses the `UsdGeom.Sphere` schema API to author display color without manually spelling the raw primvar name.</p>
+
+      <p class="zh">`color.Set([(0,0,1)])` 中的值是一个 triple 向量列表，不是单个标量。`primvars:displayColor` 可以表达整个 prim 的统一颜色，也可以按元素表达颜色，例如按 mesh face 或其他几何元素变化。因此即使当前 sphere 只需要一个蓝色，数据形状仍写成 `color3f[]`。保留 `[(0,0,1)]` 与 `primvars:displayColor` 的英文 token 对调试很重要，读者可以直接在导出的 `.usda` 中核对。</p>
+      <p class="en">`primvars:displayColor` is represented as an array of color triples, even for a single uniform color.</p>
+
+      <p class="zh">第六步是 `stage.GetRootLayer().Save()`。这一步和 Hello World 教程中的保存动作相同，但语义不同：上一页保存的是新创建的 layer；本页保存的是在已打开 layer 上新增或覆盖的 authored opinions。没有 `Save()`，交互式 Python 会话中 `Set()` 返回 `True` 也不代表磁盘文件已经更新。调试时如果 `ExportToString()` 能看到变化但文件没有变化，优先检查是否执行了 `Save()` 以及当前 root layer 的路径是否就是你正在查看的 `HelloWorld.usda`。</p>
+      <p class="en">Saving the root layer persists the authored changes back to the USD file.</p>
+
+      <p class="zh">最后的 `usdview` 截图说明结果可以被可视化检查：相机会自动框住几何体，球体比上一教程更大，并且可在 Attribute browser 中查看相关属性。中文主线不需要依赖截图才能理解教程；截图只是验证结果的用户界面层。真正的可核对证据仍然是 root layer 中出现 `radius = 2`、更新后的 `extent`，以及 `color3f[] primvars:displayColor = [(0, 0, 1)]`。</p>
+      <p class="en">The visible result can be checked in `usdview`, while the saved layer text remains the precise authoring evidence.</p>
+
+      <p class="zh">本页的概念边界可以概括为四组对比：第一，`Open` 是读取已有 stage，`CreateNew` 是创建新 stage；第二，property 是总称，attribute 存储 typed data，relationship 指向目标对象或 property；第三，`Get()` 读取解析值，`Set()` author 新 opinion；第四，低层 API 可按原始属性名操作，一等 schema API 则隐藏命名细节并保证符合 schema 约定。掌握这四组区别后，读者就能把本页技术迁移到其他 prim 和 schema 上。</p>
+      <p class="en">The page separates opening versus creating, property versus attribute versus relationship, reading versus authoring, and raw-name access versus schema APIs.</p>
+
+      <p class="zh">从后续学习路径看，本教程为 `Referencing Layers`、`Traversing a Stage`、`Authoring Variants` 和 `Simple Shading in USD` 打基础。后面的页面会继续使用打开 stage、按 path 取得 prim、检查属性、写入 opinion、保存 layer 这套动作。这里如果只记住几个命令而不理解 authored opinion、fallback value、default time 和 schema API，后续遇到 composition 或 layer stack 时很容易把“当前读到的值”和“某个 layer 中写下的值”混为一谈。</p>
+      <p class="en">Later tutorials reuse the same inspection and authoring pattern in broader composition and shading contexts.</p>
+
+      <p class="zh">维护本页时应保留所有可复现实验字面量：`HelloWorld.usda`、`authorProperties.py`、`/hello`、`/hello/world`、`extent`、`radius`、`primvars:displayColor`、`Usd.Stage.Open`、`GetPrimAtPath`、`GetPropertyNames`、`GetAttribute`、`Get`、`Set`、`UsdGeom.Sphere`、`GetDisplayColorAttr` 与 `stage.GetRootLayer().Save()`。这些名称不是翻译对象，而是读者执行脚本、检查导出 layer 和查阅 API 文档时的对照锚点。</p>
+      <p class="en">The file names, path literals, property names, API names, and token literals are the reproducibility anchors for this tutorial.</p>
+
+      <p class="zh">如果读者要把本页当作实际操作清单，可以按三层证据检查：第一层是 Python 对象层，`stage`、`xform`、`sphere` 都应为有效对象，且 `sphere.GetPropertyNames()` 能列出 `radius`、`extent` 和 `primvars:displayColor` 相关名称；第二层是 scene description 层，`Set()` 之后用 `stage.GetRootLayer().ExportToString()` 应能看到新写入的 `radius`、`extent` 和 `primvars:displayColor`；第三层是持久化层，执行 `Save()` 后重新打开 `HelloWorld.usda` 仍应看到这些 authored opinions。把这三层分开，可以避免把交互式内存状态误认为已经保存到磁盘。</p>
+      <p class="en">The practical checklist separates live Python objects, exported scene description, and saved layer persistence.</p>
+
+      <p class="zh">本教程也给出了调试 USD 属性问题的通用顺序：先确认 prim path 是否正确，再确认 property 名称是否存在，再确认读取的是 fallback、default value 还是 authored value，最后才检查 schema API 是否使用正确。比如 `extent` 可以来自 fallback，而 `radius` 和 `primvars:displayColor` 在本练习中会成为显式 authored opinions；如果把这两类来源混在一起，就会误判“文件里没有写值但 API 还能读到值”的情况。对 USD 来说，这不是异常，而是 schema fallback 与 value resolution 正常工作的结果。</p>
+      <p class="en">The tutorial gives a reusable debugging order for prim paths, property names, fallback values, authored values, and schema APIs.</p>
+
+      <p class="zh">从中文版阅读体验看，本页不能只翻译成“读取属性、设置属性”这么简单。更重要的是让读者知道什么时候应该使用低层 `GetAttribute('name')`，什么时候应该使用 `UsdGeom.Sphere` 这样的 schema wrapper；前者适合按已知名称直接访问，后者适合让 schema 帮你处理标准属性名、类型约定和 API 语义。`displayColor` 示例就是这个边界的最小演示：底层名字是 `primvars:displayColor`，但教程鼓励通过 schema API 取得它，从而减少手写 token 出错的概率。</p>
+      <p class="en">The Chinese reading path distinguishes raw-name access from schema-wrapper access through the display-color example.</p>
+    </section>
+
+    <section>
+      <h2>教程步骤 / Tutorial Steps</h2>
+      <ol>
+        <li><span class="zh">打开已有 stage：使用 `Usd.Stage.Open('HelloWorld.usda')`，而不是重新创建 layer。</span><span class="en">Open the existing stage with `Usd.Stage.Open('HelloWorld.usda')`.</span></li>
+        <li><span class="zh">取得 prim：用 `stage.GetPrimAtPath('/hello')` 和 `stage.GetPrimAtPath('/hello/world')` 找到上一教程写入的对象。</span><span class="en">Retrieve the `Xform` and `Sphere` prims by their prim paths.</span></li>
+        <li><span class="zh">列出 property：用 `GetPropertyNames()` 观察 schema property、authored property 和 primvar 名称。</span><span class="en">List visible property names with `GetPropertyNames()`.</span></li>
+        <li><span class="zh">读取 attribute：用 `GetAttribute('extent')` 取得 `UsdAttribute`，再用 `Get()` 读取 default-time 值。</span><span class="en">Read the `extent` attribute at default time.</span></li>
+        <li><span class="zh">写入新 opinion：用 `radiusAttr.Set(2)` 修改半径，并显式更新 `extent`。</span><span class="en">Author a new `radius` value and update `extent` explicitly.</span></li>
+        <li><span class="zh">使用 schema API：用 `UsdGeom.Sphere(sphere)` 和 `GetDisplayColorAttr()` 写 `displayColor`。</span><span class="en">Use the `UsdGeom.Sphere` schema API to author `displayColor`.</span></li>
+        <li><span class="zh">保存 layer：用 `stage.GetRootLayer().Save()` 把修改写回 `HelloWorld.usda`。</span><span class="en">Save the root layer after authoring the changes.</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>关键 API 边界 / Key API Boundaries</h2>
       <ul>
-        <li><span class="zh">本教程接在 Hello World 之后，目标是读取已有 prim，并检查或写入它们的 properties。这里的 property 同时覆盖 attribute 与 relationship 两类可编辑信息。</span></li>
-        <li><span class="zh">重点 API 是 stage.GetPrimAtPath、prim.GetAttribute、attribute.Get 和 attribute.Set：它们展示了从 Stage 到 Prim，再到属性值的访问路径。</span></li>
-        <li><span class="zh">示例中的几何属性不是独立文件片段，而是写入当前 layer 的 authored opinions。理解这一点有助于后面学习 composition、override 和 value resolution。</span></li>
-        <li><span class="zh">中文导读保留 Vt、Usd、UsdGeom 等 API 名称，避免把代码里的 token、路径、属性名翻译掉；这些名称必须与官方英文保持一一对应。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">属性总称：</span><span class="en">property</span></li>
-        <li><span class="zh">数据属性：</span><span class="en">attribute</span></li>
-        <li><span class="zh">关系属性：</span><span class="en">relationship</span></li>
-        <li><span class="zh">已创作意见：</span><span class="en">authored opinion</span></li>
-        <li><span class="zh">值解析：</span><span class="en">value resolution</span></li>
+        <li><span class="zh">`UsdPrim::GetPropertyNames` 适合快速观察名称；`UsdPrim::GetProperties` 返回可直接操作的 `UsdProperty` 对象。</span><span class="en">`UsdPrim::GetPropertyNames` lists names; `UsdPrim::GetProperties` returns objects.</span></li>
+        <li><span class="zh">`UsdPrim::GetAttributes` 返回 `UsdAttribute`，用于 typed data、default value、time samples 与 metadata。</span><span class="en">`UsdAttribute` represents typed attribute data and time-sampled values.</span></li>
+        <li><span class="zh">`UsdPrim::GetRelationships` 返回 `UsdRelationship`，用于 target prim、target property 或关系链，不等价于普通数值字段。</span><span class="en">`UsdRelationship` targets other prims and properties rather than storing numeric data.</span></li>
+        <li><span class="zh">`Usd.Attribute.Get()` 是读取，`Usd.Attribute.Set()` 是在当前 edit target author opinion；不要把二者都理解成普通 Python getter/setter。</span><span class="en">`Get()` reads values; `Set()` authors value opinions.</span></li>
+        <li><span class="zh">`UsdGeom.Sphere` 这样的 schema API 能隐藏 `primvars:displayColor` 这类原始属性名，同时保持 USD schema 约定。</span><span class="en">Schema APIs hide raw property-name details while preserving schema conventions.</span></li>
       </ul>
     </section>
-    <section data-cn-refinement="release-quality-pass-100">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`Inspecting and Authoring Properties` 是 `Hello World` 之后的入门教程，用来演示如何打开 stage、取得 prim、检查属性并写入新的 authored opinions。阅读重点是从 `Usd.Stage.Open` 到 `GetPrimAtPath`，再到 attribute/relationship 的读取与写入路径。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for Inspecting and Authoring Properties while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+
+    <section>
+      <h2>代码摘录 / Code Excerpts</h2>
+      <pre><code>from pxr import Usd, Vt
+
+stage = Usd.Stage.Open('HelloWorld.usda')
+xform = stage.GetPrimAtPath('/hello')
+sphere = stage.GetPrimAtPath('/hello/world')</code></pre>
+      <pre><code>extentAttr = sphere.GetAttribute('extent')
+extentAttr.Get()
+
+radiusAttr = sphere.GetAttribute('radius')
+radiusAttr.Set(2)
+extentAttr.Set(extentAttr.Get() * 2)</code></pre>
+      <pre><code>from pxr import UsdGeom
+
+sphereSchema = UsdGeom.Sphere(sphere)
+color = sphereSchema.GetDisplayColorAttr()
+color.Set([(0,0,1)])
+
+stage.GetRootLayer().Save()</code></pre>
+    </section>
+
+    <section>
+      <h2>导出结果检查 / Exported Result Check</h2>
+      <p class="zh">执行设置半径与颜色后，导出的 layer 应能看到半径、更新后的 extent 和 displayColor。这里保留关键片段，而不是把整页英文说明当作主阅读路径。</p>
+      <p class="en">After the edits, the exported layer contains the authored radius, extent, and display color.</p>
+      <pre><code>#usda 1.0
+def Xform "hello"
+{
+    def Sphere "world"
+    {
+        float3[] extent = [(-2, -2, -2), (2, 2, 2)]
+        color3f[] primvars:displayColor = [(0, 0, 1)]
+        double radius = 2
+    }
+}</code></pre>
+    </section>
+
+    <section>
+      <h2>常见误读与调试 / Common Misreadings and Debugging</h2>
       <ul>
-        <li><span class="zh">教程起点是 `extras/usd/tutorials/authoringProperties/HelloWorld.usda` 和 `authorProperties.py`；它假设读者已经创建过 `/hello` 与 `/hello/world`，因此本页不重新解释最基础的 stage 结构。</span></li>
-        <li><span class="zh">示例代码 `stage = Usd.Stage.Open('HelloWorld.usda')`、`GetPrimAtPath('/hello')` 和 `GetPrimAtPath('/hello/world')` 展示了典型的 stage -&gt; prim 访问链路；路径字面量必须保持原样。</span></li>
-        <li><span class="zh">本页讨论的 property 包括 attribute 和 relationship。attribute 可以有类型、默认值、time samples 和 authored value；relationship 则表达到其他对象的目标关系，不应把两者都笼统翻成“字段”。</span></li>
-        <li><span class="zh">当教程使用 `GetAttribute`、`Get`、`Set` 或 `Vt` 数组类型处理几何数据时，重点是理解“读取当前合成结果”和“在当前 EditTarget 写入新 opinion”的区别；这也是 USD 调试里最常见的分层误区。</span></li>
-        <li><span class="zh">继续翻译本页时，应保留 `Usd`、`Vt`、`Stage.Open`、`GetPrimAtPath`、`HelloWorld.usda`、`/hello/world` 等 API 与路径字面量，让读者能直接对照 Python 脚本运行。</span></li>
+        <li><span class="zh">如果 `Stage.Open` 返回无效或后续 prim 不存在，先确认当前工作目录中确实有上一教程生成的 `HelloWorld.usda`。</span><span class="en">If the stage or prims are missing, first verify the location of `HelloWorld.usda`.</span></li>
+        <li><span class="zh">如果 `GetAttribute('extent')` 取得对象但 `Get()` 看起来不是 authored 值，考虑它可能来自 schema fallback，而不是 layer 中显式写入。</span><span class="en">A value returned by `Get()` may be a fallback value rather than an authored opinion.</span></li>
+        <li><span class="zh">如果球体变大但包围盒或选择表现异常，检查是否在修改 `radius` 后同步更新了 `extent`。</span><span class="en">After changing `radius`, check whether `extent` was updated consistently.</span></li>
+        <li><span class="zh">如果导出文本中没有 `primvars:displayColor`，检查是否通过 `UsdGeom.Sphere(sphere)` 取得了正确的 schema 对象。</span><span class="en">If `primvars:displayColor` is missing, verify the `UsdGeom.Sphere` schema wrapper and attribute call.</span></li>
+        <li><span class="zh">如果交互式会话能看到修改但文件没变，检查是否执行了 `stage.GetRootLayer().Save()`。</span><span class="en">If the interactive session has changes but the file does not, check the save step.</span></li>
       </ul>
-      <h3>术语对照 / Terms</h3>
+    </section>
+
+    <section>
+      <h2>术语对照 / Terms</h2>
       <ul>
         <li><span class="zh">检查与创作属性：</span><span class="en">Inspecting and Authoring Properties</span></li>
-        <li><span class="zh">打开 USD stage 的 API：</span><span class="en">Usd.Stage.Open</span></li>
-        <li><span class="zh">按路径取得 prim：</span><span class="en">GetPrimAtPath</span></li>
-        <li><span class="zh">属性：</span><span class="en">attribute</span></li>
-        <li><span class="zh">关系：</span><span class="en">relationship</span></li>
+        <li><span class="zh">属性总称：</span><span class="en">property</span></li>
+        <li><span class="zh">带类型数据的属性：</span><span class="en">attribute</span></li>
+        <li><span class="zh">目标关系属性：</span><span class="en">relationship</span></li>
         <li><span class="zh">已创作意见：</span><span class="en">authored opinion</span></li>
+        <li><span class="zh">回退值：</span><span class="en">fallback value</span></li>
+        <li><span class="zh">默认时间：</span><span class="en">Default time</span></li>
+        <li><span class="zh">对象空间轴对齐范围：</span><span class="en">axis-aligned object-space extent</span></li>
+        <li><span class="zh">显示颜色 primvar：</span><span class="en">primvars:displayColor</span></li>
       </ul>
     </section>
-    <section data-cn-refinement="release-quality-pass-108">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`Inspecting and Authoring Properties` 是 `Hello World` 之后的属性读写教程。它从 `Usd.Stage.Open('HelloWorld.usda')` 打开 stage，使用 `GetPrimAtPath('/hello')` 和 `GetPrimAtPath('/hello/world')` 取得 prim，再演示如何检查和 author properties。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for Inspecting and Authoring Properties while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`Stage.Open -&gt; GetPrimAtPath -&gt; GetAttribute/Get/Set` 是本页最重要的 API 线索。中文说明应把它写成从 stage 到 prim 再到 property value 的访问链，而不是零散函数列表。</span></li>
-        <li><span class="zh">`HelloWorld.usda`、`/hello`、`/hello/world` 是教程可复现实验的路径字面量，不能翻译或改写；读者需要用这些路径直接对照 Python 脚本。</span></li>
-        <li><span class="zh">教程讨论的是 prim 上包含 geometric data 的 properties。读取 `attribute.Get()` 得到的是当前 composition 后的值，写入 `attribute.Set()` 则是在当前 edit target 中 author 新 opinion。</span></li>
-        <li><span class="zh">`from pxr import Usd, Vt` 提醒读者 `Vt` 数组类型会出现在几何属性数据中；翻译时保留 `Vt`，并把它解释为 USD/Python 数据容器相关模块。</span></li>
-        <li><span class="zh">本页的实用价值在于调试和小脚本 authoring：先确认 prim 是否存在，再检查 attribute 是否有效，最后区分读取当前值与写入新 opinion 的层级影响。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">打开 USD stage 的 API：</span><span class="en">Usd.Stage.Open</span></li>
-        <li><span class="zh">按路径取得 prim：</span><span class="en">GetPrimAtPath</span></li>
-        <li><span class="zh">取得属性对象：</span><span class="en">GetAttribute</span></li>
-        <li><span class="zh">读取属性当前值：</span><span class="en">attribute.Get</span></li>
-        <li><span class="zh">写入 authored opinion：</span><span class="en">attribute.Set</span></li>
-        <li><span class="zh">USD 值类型容器模块：</span><span class="en">Vt</span></li>
-      </ul>
-    </section>
+
     <section>
-      <h2>页面结构 / Page Structure</h2>
+      <h2>页面链接 / Page Links</h2>
       <ul>
-<li><span class="zh">第 1 级标题：Inspecting and Authoring Properties</span><span class="en">Inspecting and Authoring Properties</span></li>
-<li><span class="zh">第 2 级标题：Tutorial</span><span class="en">Tutorial</span></li>
+        <li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Configure your Environment</a></li>
+        <li><a href="tut_helloworld.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_helloworld.html">Hello World - Creating Your First USD Stage</a></li>
+        <li><a href="tut_referencing_layers.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_referencing_layers.html">Referencing Layers</a></li>
+        <li><a href="tut_traversing_stage.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_traversing_stage.html">Traversing a Stage</a></li>
+        <li><a href="https://github.com/PixarAnimationStudios/OpenUSD/tree/v26.05">USD 26.05</a></li>
       </ul>
     </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">In this tutorial we look at properties containing geometric data on the prims we created in the Hello World tutorial. The starting layer for this exercise is extras/usd/tutorials/authoringProperties/HelloWorld.usda .</p>
-<p class="en">This tutorial is available in extras/usd/tutorials/authoringProperties/authorProperties.py . You can follow along with this script in Python.</p>
-<p class="en">Open the stage and get the prims defined on the stage.</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>from pxr import Usd , Vt stage = Usd . Stage . Open ( 'HelloWorld.usda' ) xform = stage . GetPrimAtPath ( '/hello' ) sphere = stage . GetPrimAtPath ( '/hello/world' )</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Configure your Environment</a></li>
-<li><a href="https://github.com/PixarAnimationStudios/OpenUSD/tree/v26.05">USD 26.05</a></li>
-<li><a href="tut_helloworld.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_helloworld.html">Hello World</a></li>
-      </ul>
-    </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
