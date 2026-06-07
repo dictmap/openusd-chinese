@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：HdTask Class Reference abstract / HdTask Class Reference abstract</title>
+  <title>完整双语参考：HdTask Class Reference abstract / HdTask Class Reference abstract</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,75 +24,50 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：HdTask Class Reference abstract / HdTask Class Reference abstract</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：HdTask Class Reference abstract / HdTask Class Reference abstract</h1>
     <div class="meta">https://openusd.org/release/api/class_hd_task.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页处理：中文优先解释 `HdTask` 作为 Hydra render 期间 unit of work 的职责、`Sync()` / `Prepare()` / `Execute()` 生命周期、task context、dirty bits、render tags、driver 访问、收敛状态和常见派生任务边界；英文 API 名称、方法名、类型名、token、链接和官方英文摘录保持原样，便于与 Doxygen 页面核对。</p>
+      <p class="en">This page is treated as a complete bilingual reference. Chinese explanations come first, while English API names, method names, type names, token literals, links, and selected official excerpts are retained for comparison with the OpenUSD Doxygen page.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-037">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 HdTask Class Reference 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for HdTask Class Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`HdTask` 是 Hydra render 期间执行的一项 work unit，属于 abstract task 基类。</span></li>
-        <li><span class="zh">开发者可继承 `HdTask` 来准备 resources、运行 3D render passes、运行 compositing 或 color correction 等 2D render passes，或协调应用程序和其他 renderer 的集成。</span></li>
-        <li><span class="zh">关联类型包括 `SdfPath`、`HdSceneDelegate`、`HdRenderIndex`、`TfTokenVector`、`HdDriver` 等，说明 task 会在 render index、scene delegate 和驱动上下文之间同步数据。</span></li>
-        <li><span class="zh">派生任务包括 `HdxRenderTask`、`HdxPickTask`、`HdxSelectionTask`、`HdxShadowTask`、`HdxPresentTask`、`HdxVisualizeAovTask` 等；阅读时应把 task 看作 `HdEngine::Execute()` 调度的工作节点。</span></li>
-        <li><span class="zh">后续完整翻译应补 `Sync`、prepare、execute、dirty bits 和 task 参数语义；本轮只补任务定位、常见派生类和 Hydra 调度语境。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">工作单元：</span><span class="en">unit of work</span></li>
-        <li><span class="zh">Hydra 渲染：</span><span class="en">Hydra render</span></li>
-        <li><span class="zh">render pass：</span><span class="en">render pass</span></li>
-        <li><span class="zh">场景委托：</span><span class="en">scene delegate</span></li>
-        <li><span class="zh">HdEngine::Execute()：</span><span class="en">HdEngine::Execute()</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-136">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`HdTask` 是 Hydra render 期间执行的 abstract unit of work，可被派生类用于准备资源、运行 3D render passes、执行 compositing/color correction 等 2D passes，或协调应用与 renderer 集成。它是 `HdEngine::Execute()` 调度的任务节点，而不是 scene prim。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdTask while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`Sync()`、`Prepare()` 与 `Execute()` 是 task 生命周期的主线：同步 scene delegate 数据、准备执行资源、再运行具体任务逻辑。</span></li>
-        <li><span class="zh">`GetInitialDirtyBitsMask()` 定义 task 初始需要同步的 dirty bits；派生任务若设置过宽会增加同步成本，设置过窄则可能漏掉必要数据。</span></li>
-        <li><span class="zh">`_GetTaskParams()`、`_GetTaskContextData()` 和 `_HasTaskContextData()` 用于访问 task context 中的参数和共享数据；这解释了多个 Hdx task 如何通过 context 协作。</span></li>
-        <li><span class="zh">`GetRenderTags()` 帮助 task 选择或过滤参与渲染的 render tags；它与 USD purpose 或 collection 过滤相关，但不是同一个 API 层。</span></li>
-        <li><span class="zh">`IsConverged()` 提供任务级收敛状态；交互 viewport 可据此判断是否继续调度，而不是把它当作最终图像质量保证。</span></li>
-      </ul>
+    <section data-cn-complete="hd-task-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`HdTask` 是 Hydra 在一次 render 执行中调度的抽象工作单元。官方描述说它可以用于准备 resources、运行 3D render passes、运行 compositing / color correction 这类 2D render passes，或协调应用程序与其他 renderers 的集成。重点是：task 是 `HdEngine::Execute()` 调度的执行节点，不是 USD prim、不是 schema，也不是 `HdSceneDelegate` 中的数据对象。</p>
+      <p class="en">`HdTask` represents a unit of work during a Hydra render. It is scheduled by `HdEngine::Execute()` and is distinct from USD prims, scene-delegate data objects, and schema wrappers.</p>
+      <p class="zh">`HdTask` 的生命周期通常围绕 `Sync()`、`Prepare()` 和 `Execute()` 理解。`Sync()` 根据 dirty bits、`HdSceneDelegate`、`HdRenderIndex` 和 task id 同步任务参数；`Prepare()` 在真正执行前准备资源、填充 task context 或整理依赖；`Execute()` 执行派生任务的实际逻辑，例如发起 render pass、做后处理、读取 AOV、绘制辅助可视化或把结果交给应用层。</p>
+      <p class="en">The main lifecycle is `Sync()`, `Prepare()`, and `Execute()`: synchronize task state, prepare resources or context, then perform the concrete work implemented by the subclass.</p>
+      <p class="zh">`Sync()` 不等同于执行渲染。它的任务是把场景委托中的 task parameters、dirty state 和相关依赖更新到 task 对象中。`GetInitialDirtyBitsMask()` 决定初始同步需要关注哪些 dirty bits；如果 mask 过宽，会造成无意义同步成本；如果过窄，task 可能错过参数变化，表现为 viewport 不刷新、pick 结果过期或 render pass 使用旧状态。</p>
+      <p class="en">`Sync()` updates task state rather than rendering by itself. `GetInitialDirtyBitsMask()` controls which dirty bits are considered on initial synchronization.</p>
+      <p class="zh">`Prepare()` 是执行前的资源和上下文整理阶段。许多 Hdx task 会在这里读取或写入 task context data，建立 render pass 需要的输入，或把一个 task 生成的数据交给后续 task。它常常不直接绘制，但如果漏掉必要准备，`Execute()` 阶段可能拿不到 AOV、selection buffer、camera state、lighting state 或 renderer-specific driver resource。</p>
+      <p class="en">`Prepare()` is the pre-execution setup phase. It is where tasks can arrange resources, populate task context data, and prepare inputs for later execution.</p>
+      <p class="zh">`Execute()` 是实际工作入口。派生类可以在这里调用 `HdRenderPass`，执行 color correction、compositing、selection、picking、shadow、present 或 debug visualization 等任务。不要把 `HdTask` 理解为固定的 draw call 包装器：它也可以是资源准备、数据转换、渲染后处理或应用集成步骤，具体含义由 subclass 决定。</p>
+      <p class="en">`Execute()` performs the concrete task behavior, which may be rendering, post-processing, picking, selection, presentation, debugging, or integration work depending on the subclass.</p>
+      <p class="zh">task context 是 `HdTask` 协作的关键机制。`_GetTaskContextData()`、`_HasTaskContextData()` 和 `_GetTaskParams()` 帮助派生任务读取共享数据或自身参数。多个 task 在同一 `HdEngine` 执行序列中可以通过 context 传递中间结果；因此调试 task 链时要同时看执行顺序、context key、value 类型、缺省值和数据所有权，而不是只看单个 task 的 `Execute()`。</p>
+      <p class="en">Task context data allows tasks in an engine execution sequence to share parameters and intermediate results. Debugging task chains requires checking context keys, value types, execution order, and ownership.</p>
+      <p class="zh">`GetRenderTags()` 用于表达 task 关心的 render tags。它可以影响哪些对象进入某个 task 的处理范围，但不应与 USD purpose、collection、render visibility 或 Hydra collection predicate 混为一谈。它是 task/render pipeline 层的过滤信息，常与 render pass、collection、selection 或 debug visualization 组合使用。</p>
+      <p class="en">`GetRenderTags()` describes render-tag filtering at the task/render pipeline level. It is related to filtering, but it is not the same API layer as USD purpose, collections, or visibility metadata.</p>
+      <p class="zh">`IsConverged()` 表示任务级结果是否稳定。progressive rendering、path tracing、异步 AOV 生成、selection/picking readback 或后台 GPU work 都可能导致 task 在多帧之间继续变化。`IsConverged()` 可以帮助 viewport 或 render loop 决定是否继续调度，但它不是最终图像质量证明，也不保证所有子系统都已经没有 pending work。</p>
+      <p class="en">`IsConverged()` reports task-level stability for scheduling decisions. It is not a universal proof of image quality or of global renderer idleness.</p>
+      <p class="zh">`_GetDriver()` 暴露 task 访问 driver / renderer integration 数据的入口。driver 通常来自应用或渲染后端集成层，可能携带 GPU context、render delegate resource、interop handle 或应用私有状态。派生 task 应把它当成集成边界使用，不要把 driver 与 scene delegate、render index 或 USD stage 混为同一层。</p>
+      <p class="en">`_GetDriver()` is an integration boundary for renderer or application driver data. It should not be confused with the scene delegate, render index, or USD stage.</p>
+      <p class="zh">派生类列表说明 `HdTask` 是一个广义执行框架：`HdxRenderTask` 负责常规渲染，`HdxPickTask` 与 `HdxPickFromRenderBufferTask` 处理 picking，`HdxSelectionTask` / `HdxColorizeSelectionTask` 处理选择可视化，`HdxColorCorrectionTask`、`HdxPresentTask`、`HdxVisualizeAovTask` 处理后处理和显示，`HdxShadowTask`、`HdxOitRenderTask` 等处理特定渲染技术。阅读本页时应把 `HdTask` 看成这些任务的共同协议。</p>
+      <p class="en">Derived task classes show that `HdTask` is a broad execution protocol for rendering, picking, selection visualization, post-processing, presentation, shadows, OIT, and other Hydra workflows.</p>
+      <p class="zh">常见误用包括：在 `Sync()` 中执行昂贵渲染工作；忽略 dirty bits 导致 task 参数不更新；在 `Prepare()` 和 `Execute()` 之间错误假设 context data 已存在；把 `IsConverged()` 当成最终质量标准；把 render tags 当成 USD purpose；把 task 当成 scene prim 或 renderer backend 对象；以及在派生 task 中绕过 `HdEngine` 调度顺序直接访问未准备好的资源。</p>
+      <p class="en">Common mistakes include rendering during `Sync()`, ignoring dirty bits, assuming context data exists before `Prepare()`, treating `IsConverged()` as final quality, confusing render tags with USD purpose, and bypassing `HdEngine` scheduling assumptions.</p>
       <h3>术语对照 / Terms</h3>
       <ul>
         <li><span class="zh">Hydra 任务：</span><span class="en">HdTask</span></li>
         <li><span class="zh">工作单元：</span><span class="en">unit of work</span></li>
+        <li><span class="zh">执行调度器：</span><span class="en">HdEngine::Execute()</span></li>
         <li><span class="zh">同步阶段：</span><span class="en">Sync()</span></li>
         <li><span class="zh">准备阶段：</span><span class="en">Prepare()</span></li>
         <li><span class="zh">执行阶段：</span><span class="en">Execute()</span></li>
         <li><span class="zh">任务上下文数据：</span><span class="en">task context data</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-140">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`HdTask` 表示 Hydra render 期间要执行的一个 unit of work。开发者可以继承它来准备资源、执行 3D/2D render passes、运行 compositing/color correction，或协调应用与其他 renderer 的集成。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdTask while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`Sync()` 从 `HdSceneDelegate` / `HdRenderIndex` 同步 task parameters 与 dirty state，是任务进入执行前的状态更新阶段。</span></li>
-        <li><span class="zh">`Prepare()` 用于在执行前准备资源或 task context；一些 task 会在此阶段填充共享数据，而不是直接渲染。</span></li>
-        <li><span class="zh">`Execute()` 是实际工作入口，可以发起 render pass、后处理或应用集成逻辑；具体行为由 subclass 决定。</span></li>
-        <li><span class="zh">`IsConverged()` 表示 task 是否达到稳定结果，progressive render 或依赖异步资源的 task 常用它向外报告完成状态。</span></li>
-        <li><span class="zh">`GetInitialDirtyBitsMask()`、`GetRenderTags()` 与 `_GetTaskContextData()` 说明 task 参与 Hydra dirty tracking、render tag 过滤和 task context 共享数据协议。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">Hydra 任务：</span><span class="en">HdTask</span></li>
-        <li><span class="zh">工作单元：</span><span class="en">unit of work</span></li>
-        <li><span class="zh">同步阶段：</span><span class="en">Sync()</span></li>
-        <li><span class="zh">准备阶段：</span><span class="en">Prepare()</span></li>
-        <li><span class="zh">执行阶段：</span><span class="en">Execute()</span></li>
+        <li><span class="zh">渲染标签：</span><span class="en">render tags</span></li>
         <li><span class="zh">收敛状态：</span><span class="en">IsConverged()</span></li>
       </ul>
     </section>
