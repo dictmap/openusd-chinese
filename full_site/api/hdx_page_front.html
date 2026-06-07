@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>API 模块草稿：Hdx : Hydra extensions / Hdx : Hydra extensions</title>
+  <title>完整双语参考：Hdx : Hydra extensions / Hdx : Hydra extensions</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -19,20 +19,47 @@
     ul{padding-left:22px}
     li{margin:8px 0}
     code{font-family:"Cascadia Mono","Consolas",monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>API 模块草稿：Hdx : Hydra extensions / Hdx : Hydra extensions</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：Hdx : Hydra extensions / Hdx : Hydra extensions</h1>
     <div class="meta">https://openusd.org/release/api/hdx_page_front.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页处理：中文优先解释 `Hdx` 作为 Hydra extensions 的职责、它如何建立在 `Hd` 抽象之上、常用 imaging task 与 `HdxTaskController` 的分层关系，以及它和 `Hd`、`HdSt`、`Hgi`、`UsdImaging` 的边界；英文 API 名称、类型名、链接和官方摘录保留原样，便于与 Doxygen 页面核对。</p>
+      <p class="en">This page is promoted as a complete bilingual reference. It explains Hdx as the Hydra extensions layer built on Hd, with task and controller guidance for Hydra imaging clients.</p>
+    </section>
+    <section data-cn-complete="hdx-hydra-extensions-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">官方把 `Hdx` 定义为“Collection of useful extensions for clients interested in using Hydra”。这里的关键词是 clients 和 extensions：`Hdx` 不是 Hydra 的最低层核心协议，也不是某个 renderer backend；它面向 usdview、工具视口、调试窗口和其他 Hydra imaging 客户端，提供常用的 task、controller 和 viewport workflow 辅助。</p>
+      <p class="en">Hdx is a collection of useful extensions for clients interested in using Hydra.</p>
+      <p class="zh">`Hdx` builds on the abstractions established by `Hd`。上一层含义是：`Hd` 定义 render index、scene delegate、scene index、task、buffer、data source、locator 和 render delegate 等核心抽象；`Hdx` 使用这些抽象来组织实际成像流程，例如 render setup、render task、selection、shadow、simple light、colorize、fullscreen shader 和 present/color correction。阅读顺序通常是先懂 `Hd`，再看 `Hdx` 如何把这些抽象装配成客户端可用的工作流。</p>
+      <p class="en">Hdx builds on Hd abstractions and provides imaging-oriented extensions and workflow helpers.</p>
+      <p class="zh">官方列出的 common tasks 很关键：`HdxColorizeTask` 负责把数据或选择结果转成可视化颜色；`HdxFullscreenShader` 面向全屏 shader pass；`HdxRenderSetupTask` 准备渲染状态；`HdxRenderTask` 驱动主要 draw；`HdxSelectionTask` 处理选择高亮；`HdxShadowTask` 与阴影相关；`HdxSimpleLightTask` 组织简单光照。它们都是 task 层入口，不是 USD schema，也不是 asset authoring API。</p>
+      <p class="en">Common Hdx tasks include colorize, fullscreen shader, render setup, render, selection, shadow, and simple-light tasks.</p>
+      <p class="zh">`HdxTaskController` 是本页最重要的使用入口之一。它 wraps the above tasks 并提供 task params 的 setters，目的是让客户端不用手工管理多个 Hydra task 的创建顺序、参数对象、AOV 目标、camera/framing、lighting、selection 或 shadow 参数。对于应用开发者来说，controller 是把 Hydra task graph 变成可配置视口管线的胶水层。</p>
+      <p class="en">HdxTaskController wraps common tasks and provides setters for task parameters.</p>
+      <p class="zh">但 controller 也不会替客户端完成所有生命周期管理。应用仍需要决定何时重建 task、何时切换 camera 或 collection、何时更新 selection state，以及何时把最终 framebuffer 呈现到窗口。`Hdx` 提供约定好的组织方式，不能替代应用自己的 UI 状态、事件循环和资源所有权策略。</p>
+      <p class="en">The controller helps organize tasks, but applications still own UI state, event flow, resource lifetime, and presentation policy.</p>
+      <p class="zh">`Hdx` 与 `Hd` 的边界可以这样记：`Hd` 解决“场景数据和 renderer 之间如何同步与消费”；`Hdx` 解决“一个客户端如何把这些能力组织成可运行的成像任务序列”。如果问题是 primvar 没同步、dirty bits 没传播或 scene index 数据错误，先查 `Hd`/adapter；如果问题是 selection highlight、pick pass、shadow task、fullscreen shader 或 task params，才进入 `Hdx`。</p>
+      <p class="en">Hd defines core synchronization abstractions, while Hdx organizes higher-level imaging tasks for clients.</p>
+      <p class="zh">`Hdx` 与 `HdSt`、`Hgi` 的边界也要分清。`HdSt` 是 Storm render delegate 的实现层，负责具体 draw item、shader、buffer resource 和 Storm 后端行为；`Hgi` 抽象图形 API 命令和资源；`Hdx` 只在这些能力之上组织 task 和 viewport workflow。看到 GPU resource、shader compile 或 draw call 问题时，不应把它们直接归因给 `Hdx`。</p>
+      <p class="en">HdSt implements Storm rendering details and Hgi abstracts graphics APIs; Hdx coordinates tasks above those layers.</p>
+      <p class="zh">`Hdx` 与 `UsdImaging` 的边界是另一个常见误读点。`UsdImaging` 把 USD prim、xform、material、visibility、primvar 等转换为 Hydra 可消费数据；`Hdx` 假设数据已经在 Hydra 侧可用，并负责如何渲染、选择、拾取或显示。若 USD authoring 没被正确转换，应查 `UsdImaging`；若已进入 Hydra 但视口任务没有表现出来，再查 `Hdx`。</p>
+      <p class="en">UsdImaging adapts USD into Hydra data, while Hdx uses Hydra data for viewport and imaging workflows.</p>
+      <p class="zh">selection 与 picking 是 `Hdx` 页面中特别实用的阅读线索。交互式视口通常需要 ID buffer、selection state、highlight color、pick task 和最终显示任务互相配合。错误现象可能是选不中、选中但不高亮、pick result 与 viewport 坐标不一致，或 AOV/present 顺序错误。调试时要沿 task params、render buffer、selection data 和 viewport transform 逐层检查。</p>
+      <p class="en">Selection and picking workflows combine task parameters, render buffers, selection data, and viewport transforms.</p>
+      <p class="zh">`Hdx` 也不是离线渲染质量开关。它可以组织 shadow、simple light、color correction、fullscreen shader 和 present task，但具体材质求值、光线追踪能力、GPU backend 支持和 renderer feature limits 仍由 render delegate 或后端决定。若某个 AOV、阴影或 shader 效果缺失，要区分 task 是否配置、render delegate 是否支持、backend 是否可用。</p>
+      <p class="en">Hdx organizes imaging tasks, but renderer features and backend capabilities are still owned by render delegates and graphics layers.</p>
+      <p class="zh">实用调试路径可以固定为：先确认 USD 或宿主 scene graph 数据已经通过 adapter 进入 `HdRenderIndex`；再确认 `HdxTaskController` 或客户端 task list 是否创建了期望 task；然后检查 task params、camera/framing、AOV/render buffer、selection/picking state；接着看 render delegate 是否消费；最后再落到 `HdSt`、`Hgi` 或 GPU backend。这样能避免把所有视口问题混在同一个层面。</p>
+      <p class="en">A practical debugging path is data adaptation, task creation, task parameters, AOV and selection state, render-delegate consumption, and backend execution.</p>
+      <p class="zh">本页链接中的 `HdxFullscreenShader`、`HdxRenderSetupTask`、`HdxRenderTask`、`HdxSelectionTask`、`HdxShadowTask` 当前按本地策略指向 uncovered placeholder，表示它们不在 406 页本地清单内。中文读者仍应把这些英文类型名原样保留，因为它们是源码检索、Doxygen 跳转和未来补全本地页面时的稳定锚点。</p>
+      <p class="en">Linked Hdx task class names should remain unchanged because they are stable API and source-search anchors.</p>
     </section>
     <section data-cn-refinement="api-mixed-quality-pass-046">
       <h2>中文精修导读 / Chinese Reading Notes</h2>
