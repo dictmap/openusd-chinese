@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：Hello World Redux - Using Generic Prims / Hello World Redux - Using Generic Prims</title>
+  <title>完整双语参考：Hello World Redux - Using Generic Prims / Hello World Redux - Using Generic Prims</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
@@ -12,97 +12,164 @@
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
     .zh{display:block;font-weight:650;color:#17324d}
     .en{display:block;color:#55616f;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
     pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
     code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：Hello World Redux - Using Generic Prims / Hello World Redux - Using Generic Prims</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：Hello World Redux - Using Generic Prims / Hello World Redux - Using Generic Prims</h1>
     <div class="meta">https://openusd.org/release/tut_helloworld_redux.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+      <p class="zh">本页是 OpenUSD release 教程的完整双语参考页，中文优先解释教程意图、代码路径、输出结构和调试边界，同时保留官方英文标题、API 名称、类型名、文件名、prim path、代码片段和链接，便于和官方页面逐项核对。</p>
+      <p class="en">This local bilingual page explains the OpenUSD Hello World Redux tutorial in Chinese first while retaining official English identifiers, code, file names, paths, and links for comparison.</p>
     </section>
-    <section data-cn-refinement="release-tutorial-quality-pass-001">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Hello World Redux - Using Generic Prims 补充中文优先的阅读路径和术语说明；英文页面名、链接、代码和原文摘录继续保留，用于和官方文档一一对应。</p>
-      <p class="en">This section adds Chinese-first reading guidance for Hello World Redux - Using Generic Prims while retaining the English page name, links, code, and source excerpts for one-to-one comparison with the official documentation.</p>
+
+    <section data-cn-complete="release-tutorial-hello-world-redux-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">本教程是前一页 Hello World 的变体。它不改变最终生成的 scene description，而是把创作方式从 `UsdGeom.Xform.Define` / `UsdGeom.Sphere.Define` 这类 schema-specific wrapper，换成 `stage.DefinePrim(path, typeName)` 这种 generic `UsdPrim` 创作入口。读者应把它理解为一次 API 层面的对照实验：同样的 `/hello` 和 `/hello/world` 层级，可以由强类型 schema API 创建，也可以通过类型名字符串 `Xform` 和 `Sphere` 创建。</p>
+      <p class="en">The tutorial revisits Hello World and uses hard-coded type names, `Xform` and `Sphere`, that match the type names following `def` in the `usda` representation.</p>
+
+      <p class="zh">官方开头强调 hard-coded typenames，是为了让读者看清 USD 文件文本和 Python authoring API 之间的直接对应关系。`def Xform "hello"` 中的 `Xform` 与 `stage.DefinePrim('/hello', 'Xform')` 的第二个参数对应；`def Sphere "world"` 中的 `Sphere` 与 `stage.DefinePrim('/hello/world', 'Sphere')` 的第二个参数对应。这里的 `Xform`、`Sphere`、`/hello`、`/hello/world` 都是可复现的技术字面量，不应翻译或改写。</p>
+      <p class="en">The hard-coded type names correspond to the type names that appear after `def` in the `usda` scene description.</p>
+
+      <p class="zh">上一教程使用 `UsdGeom` API，是因为 `UsdGeom` 是 USD 内建几何 schema 的一部分。`UsdGeom.Xform` 和 `UsdGeom.Sphere` 这类 schema object 提供领域化接口：它们能帮助代码创建、操作、检查并 author 该类型上的属性。换句话说，typed schema API 不只是换了一个函数名，它还把“这是几何变换 prim”或“这是球体 prim”这种领域知识封装进了类型对象。</p>
+      <p class="en">`UsdGeom` is part of USD's built-in geometry schema, and its prim types have C++ and Python APIs with domain-specific interfaces.</p>
+
+      <p class="zh">本页的关键边界是 `UsdGeomXform::Define` 和 `UsdStage::DefinePrim` 的返回值不同。前者返回 schema object，读者可以继续调用完整的 schema-specific API；后者返回 generic `UsdPrim`，它代表 scenegraph 中持久存在的 prim 本体。所有 schema classes 都可以通过 `GetPrim()` 取回底层 `UsdPrim`，这说明 schema object 是类型化访问层，而 `UsdPrim` 是通用存在层。</p>
+      <p class="en">`UsdGeomXform::Define` returns a schema object, while `UsdStage::DefinePrim` returns a generic `UsdPrim`.</p>
+
+      <p class="zh">如果用工具链视角理解，`UsdPrim` 是更底层、更通用的句柄：它可以保存 path、typeName、metadata、attributes、relationships 和 scenegraph 位置。schema object 则像是给某个 schema 域加上的高层接口，能提供更明确的函数和类型检查。转换器、检查器、批处理脚本或插件兼容层经常需要 generic `UsdPrim`，因为它们不一定预先知道所有 schema wrapper；面向某类数据的业务代码通常更喜欢 schema object，因为可读性和安全性更好。</p>
+      <p class="en">Think of `UsdPrim` as the generic persistent presence in the scenegraph, and the schema object as the first-class way to access domain-specific data and functionality.</p>
+
+      <p class="zh">代码第一行只导入 `Usd`，而不是同时导入 `UsdGeom`。这不是遗漏，而是本教程的核心：它故意只使用 stage 和 generic prim 的 API。`Usd.Stage.CreateNew('HelloWorldRedux.usda')` 创建新的 stage，并把 root layer 的保存目标设为 `HelloWorldRedux.usda`。这个文件名用于和前一教程的 `HelloWorld.usda` 对照，说明生成的场景结构相同，但脚本使用的 authoring API 不同。</p>
+      <p class="en">The script imports `Usd`, creates `HelloWorldRedux.usda`, defines an `Xform` prim and a `Sphere` prim, then saves the root layer.</p>
+
+      <p class="zh">`xform = stage.DefinePrim('/hello', 'Xform')` 在 `/hello` 定义一个类型名为 `Xform` 的 prim，并返回 generic `UsdPrim`。这里返回变量名写作 `xform`，但它不是 `UsdGeom.Xform` schema object；如果后续代码想使用 `UsdGeom.Xform` 的强类型接口，需要再通过 schema wrapper 包装或调用对应 schema API。这个差异是本教程最容易被忽略的点。</p>
+      <p class="en">`stage.DefinePrim('/hello', 'Xform')` creates the parent prim and returns a generic prim handle.</p>
+
+      <p class="zh">`sphere = stage.DefinePrim('/hello/world', 'Sphere')` 在 `/hello` 下定义子 prim `world`，类型名为 `Sphere`。它展示了 `DefinePrim` 会按给定 path 和 typeName 写入 scene namespace，而不是要求代码直接调用 `UsdGeom.Sphere.Define`。如果 path 写错，层级就会不同；如果 typeName 写错，生成的 `def` 类型也会不同；如果忘记 `Save()`，内存里的修改不会落到 `HelloWorldRedux.usda`。</p>
+      <p class="en">`stage.DefinePrim('/hello/world', 'Sphere')` creates the child sphere prim under `/hello`.</p>
+
+      <p class="zh">官方还说明，这段代码生成的 scene description 与前一教程相同，可以通过 `usdcat` 查看。预期输出是一个很小的 ASCII USD layer：顶层 `def Xform "hello"`，其内部有 `def Sphere "world"`。因此，本教程的验收不是看画面是否复杂，而是看 API 调用是否能精确映射到相同的 `.usda` 文本结构。</p>
+      <p class="en">The code produces identical scene description to the previous tutorial, and the output can be inspected with `usdcat`.</p>
+
+      <p class="zh">调试时应按层次定位：如果 `from pxr import Usd` 失败，先检查 OpenUSD Python 环境；如果 `HelloWorldRedux.usda` 没生成，检查 `stage.GetRootLayer().Save()` 和当前工作目录；如果文件存在但类型不是 `Xform` 或 `Sphere`，逐字核对 `DefinePrim` 的第二个参数；如果层级不是 `/hello/world`，核对 prim path 字面量；如果后续想设置 radius、extent 或其他几何属性，应转到下一教程或使用 schema-specific API，而不是误以为本页已经讲完了属性 authoring。</p>
+      <p class="en">Debugging should separate Python environment issues, save location issues, type-name typos, prim-path typos, and schema-specific property authoring.</p>
+
+      <p class="zh">与下一教程的关系也很明确：本页只证明“可以用 generic prim 创建相同结构”，下一页才会继续看 `UsdGeom` API 如何作用在 prim properties 上。因此不要把 `DefinePrim` 理解成替代所有 schema API 的推荐写法；它是通用工具和兼容场景的重要能力，而 typed schema API 仍然是处理具体几何、材质、光照和其他领域数据时更直接的高层入口。</p>
+      <p class="en">The next tutorial looks at the `UsdGeom` API in action on prim properties.</p>
+
+      <p class="zh">从学习顺序看，本页夹在 Hello World 和属性教程之间，作用是补上“类型名”和“对象包装”这层概念。前一页让你知道如何用 `UsdGeom` 快速生成一个最小 stage；本页让你看到同一个 stage 也可以只靠 `Usd` 层的通用接口生成；下一页再解释当你已经有 prim 后，如何检查和编写属性。这个顺序能避免把 `UsdPrim`、schema object、attribute authoring 混成一个概念。</p>
+      <p class="en">This page separates type-name authoring and object wrapping before the following property tutorial.</p>
+
+      <p class="zh">这里还要区分“文件中有什么”和“Python 变量是什么”。`HelloWorldRedux.usda` 中最终有的只是 scene description：`def Xform "hello"` 和子级 `def Sphere "world"`。Python 变量 `xform`、`sphere` 是脚本运行时拿到的 generic prim handles，不会作为变量名写入 USD 文件。读者检查输出时应看 prim type 和 prim name，而不是寻找变量名 `xform` 或 `sphere`。</p>
+      <p class="en">The saved file contains USD scene description, not the Python variable names.</p>
+
+      <p class="zh">generic `DefinePrim` 对插件化和跨版本工具尤其重要。一个资产检查器可能只需要确认某个 prim 的 path、typeName 和属性是否存在，并不需要链接每个 schema 的 Python wrapper；一个转换器可能需要保留未知扩展 schema 的 typeName，避免因为本地没有对应 wrapper 就丢失结构。此时 `UsdPrim` 的通用性比 schema object 的便利性更关键。</p>
+      <p class="en">Generic prim access is useful for tools that must preserve or inspect types without relying on every schema wrapper.</p>
+
+      <p class="zh">但 generic API 也有代价。用 `DefinePrim('/hello/world', 'Sphere')` 只是写入类型名，并不会在代码层给你 `UsdGeom.Sphere` 的专用方法提示；要设置球体半径、读取 schema fallback、调用几何相关 convenience API，仍应使用 `UsdGeom.Sphere` 或把 `UsdPrim` 包装回对应 schema object。因此，本页的结论不是“typed schema API 不需要”，而是“USD 的同一个 prim 同时支持通用视图和类型化视图”。</p>
+      <p class="en">Generic authoring does not remove the value of typed schema APIs; both views exist for the same prim.</p>
+
+      <p class="zh">如果在真实项目中选择 API 风格，可以用一个简单规则：当你明确知道要创建的是 `UsdGeom.Sphere`、`UsdLux.DiskLight` 或某个具体 schema，并且马上要读写该 schema 的属性时，优先用 typed schema API；当你写的是遍历器、验证器、迁移脚本、格式转换器或需要处理未知 typeName 的工具时，优先从 `UsdPrim` 和 `DefinePrim` 这类通用接口开始。</p>
+      <p class="en">Use typed schema APIs for known domain objects, and generic APIs for broad traversal, validation, migration, and conversion tools.</p>
+
+      <p class="zh">本页的最小验收检查点是：运行脚本后能找到 `HelloWorldRedux.usda`；文件中出现 `def Xform "hello"` 与嵌套的 `def Sphere "world"`；读者能解释这两个 `def` 的 typeName 来自 `DefinePrim` 的第二个参数；读者也能说明为什么返回值是 generic `UsdPrim`，而不是 `UsdGeom.Xform` 或 `UsdGeom.Sphere` 的 schema object。四项都成立时，中文主阅读路径才真正闭环。</p>
+      <p class="en">A complete reading of this page can explain the generated layer, the `def` type names, and the generic return type.</p>
+
+      <p class="zh">还要注意，generic prim 不是“无类型 prim”。它依然可以拥有 `Xform` 或 `Sphere` 这样的 typeName，只是当前 Python 变量没有采用对应 schema wrapper。这个区别能帮助读者避免把“通用访问方式”误解成“场景数据缺少 schema 类型”。</p>
+      <p class="en">A generic prim can still have a schema type name; only the access path is generic.</p>
+
+      <p class="zh">完成本页后，读者应能用中文独立回答四个问题：为什么只导入 `Usd`；`DefinePrim` 的第二个参数如何变成 `usda` 中的 `def` 类型；generic `UsdPrim` 与 schema object 的差别是什么；为什么相同输出可以由不同 API 风格创作。能回答这四点，才算真正读懂 Hello World Redux，而不是只复制了脚本。</p>
+      <p class="en">After this page, the reader should understand the `Usd`-only script, type-name authoring, generic prim handles, and why two authoring styles can produce the same layer.</p>
+    </section>
+
+    <section>
+      <h2>教程步骤主阅读路径 / Tutorial Step Reading Path</h2>
+      <ol>
+        <li><span class="zh">确认上下文：先完成 `Hello World - Creating Your First USD Stage`，理解 `UsdGeom.Xform.Define` 和 `UsdGeom.Sphere.Define` 生成的基本层级。</span><span class="en">Start from the previous Hello World tutorial.</span></li>
+        <li><span class="zh">创建 stage：调用 `Usd.Stage.CreateNew('HelloWorldRedux.usda')`，新建 root layer 输出目标。</span><span class="en">Create a stage with `Usd.Stage.CreateNew('HelloWorldRedux.usda')`.</span></li>
+        <li><span class="zh">定义父 prim：调用 `stage.DefinePrim('/hello', 'Xform')`，通过 typeName 字符串写入 `Xform`。</span><span class="en">Define the parent `Xform` prim with `stage.DefinePrim('/hello', 'Xform')`.</span></li>
+        <li><span class="zh">定义子 prim：调用 `stage.DefinePrim('/hello/world', 'Sphere')`，通过 typeName 字符串写入 `Sphere`。</span><span class="en">Define the child `Sphere` prim with `stage.DefinePrim('/hello/world', 'Sphere')`.</span></li>
+        <li><span class="zh">保存 layer：调用 `stage.GetRootLayer().Save()`，让内存中的 scene description 写入磁盘。</span><span class="en">Save the root layer.</span></li>
+        <li><span class="zh">检查输出：使用 `usdcat` 或文本编辑器确认 `def Xform "hello"` 内包含 `def Sphere "world"`。</span><span class="en">Inspect the output with `usdcat` or a text editor.</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>关键概念边界 / Concept Boundaries</h2>
       <ul>
-        <li><span class="zh">本教程回到 Hello World 示例，但重点转向 Generic Prims。它说明可以通过类型名字符串创作 prim，而不是只依赖某个具体 schema 的强类型包装。</span></li>
-        <li><span class="zh">Xform 和 Sphere 在 usda 中表现为 def 后面的类型名；教程通过硬编码 typename 展示 USD scene description 与 API 创作之间的对应关系。</span></li>
-        <li><span class="zh">Generic Prim 的价值在于让工具可以处理未知或扩展 schema：即使客户端没有专门的高级封装，也能创建、遍历或保留对应 prim。</span></li>
-        <li><span class="zh">阅读时要区分 typed schema API 与 generic authoring API：前者更方便、更安全，后者更通用，常用于工具、转换器和兼容性处理。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">通用 Prim：</span><span class="en">Generic Prims</span></li>
-        <li><span class="zh">类型名：</span><span class="en">typename</span></li>
-        <li><span class="zh">变换 Prim 类型：</span><span class="en">Xform</span></li>
-        <li><span class="zh">球体 Prim 类型：</span><span class="en">Sphere</span></li>
-        <li><span class="zh">带类型 schema：</span><span class="en">typed schema</span></li>
+        <li><span class="zh">`UsdPrim` 是 scenegraph 中 prim 的通用持久表示；schema object 是在其上提供领域化访问的类型化包装。</span><span class="en">`UsdPrim` is the generic persistent prim representation; a schema object is a typed domain-specific wrapper.</span></li>
+        <li><span class="zh">`DefinePrim` 的 typeName 参数必须保留为 `Xform`、`Sphere` 这类 USD 类型名，不要翻译成中文。</span><span class="en">The `DefinePrim` type-name argument must remain the USD type name.</span></li>
+        <li><span class="zh">`/hello/world` 是 USD prim path，不是文件系统目录；它表达的是 scene namespace 层级。</span><span class="en">`/hello/world` is a USD prim path, not a filesystem path.</span></li>
+        <li><span class="zh">generic API 更适合通用工具、未知 schema、批处理和兼容层；typed schema API 更适合明确处理某个领域对象。</span><span class="en">Generic APIs suit broad tooling; typed schema APIs suit domain-specific authoring.</span></li>
+        <li><span class="zh">本页不讲属性值 authoring；`radius`、`extent` 等 Sphere 属性会在后续属性教程中更自然地出现。</span><span class="en">This page does not focus on property authoring; later tutorials cover prim properties.</span></li>
       </ul>
     </section>
-    <section data-cn-refinement="release-quality-pass-111">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`Hello World Redux` 回到入门示例，但把重点从 `UsdGeom.Xform.Define` / `UsdGeom.Sphere.Define` 转向 `stage.DefinePrim(path, typeName)`。这页适合用来理解 USD 文件中的类型名字符串如何映射到 typed prim，以及工具在缺少高级 schema 封装时如何保持通用 authoring 能力。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for Hello World Redux - Using Generic Prims while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
+
+    <section>
+      <h2>代码与输出摘录 / Code and Output Excerpts</h2>
+      <pre><code>from pxr import Usd
+
+stage = Usd.Stage.CreateNew('HelloWorldRedux.usda')
+xform = stage.DefinePrim('/hello', 'Xform')
+sphere = stage.DefinePrim('/hello/world', 'Sphere')
+stage.GetRootLayer().Save()</code></pre>
+      <pre><code>#usda 1.0
+
+def Xform "hello"
+{
+    def Sphere "world"
+    {
+    }
+}</code></pre>
+    </section>
+
+    <section>
+      <h2>术语对照 / Terms</h2>
       <ul>
-        <li><span class="zh">`stage.DefinePrim('/hello', 'Xform')` 和 `stage.DefinePrim('/hello/world', 'Sphere')` 直接使用 typeName 字符串；中文说明应保留 `Xform`、`Sphere` 和路径字面量，避免把它们翻译成普通描述词。</span></li>
-        <li><span class="zh">Generic Prims 的价值在工具链中尤其明显：导入器、转换器或检查器可能不知道某个扩展 schema 的专用 Python wrapper，但仍可通过 typeName 创建或保留对应 prim。</span></li>
-        <li><span class="zh">与 `Hello World` 教程相比，本页不是改变 scene 结果，而是改变 authoring API 路径。两个教程生成的层级相近，差别在于强类型 schema API 与通用 `DefinePrim` 的取舍。</span></li>
-        <li><span class="zh">`HelloWorldRedux.usda` 是教程输出文件名，不能翻译或改写；它用于和前一页 `HelloWorld.usda` 对比，展示同一基本结构可由不同 API 风格创作。</span></li>
-        <li><span class="zh">读者应把本页看作兼容性教程：typed schema API 更易读、更安全，generic API 更适合未知类型、批处理和跨插件 schema 的工具场景。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">按路径和 typeName 定义 prim：</span><span class="en">stage.DefinePrim</span></li>
-        <li><span class="zh">通用 prim 创作方式：</span><span class="en">Generic Prims</span></li>
-        <li><span class="zh">USD prim 类型名字串：</span><span class="en">typeName</span></li>
-        <li><span class="zh">变换 prim 类型名：</span><span class="en">Xform</span></li>
-        <li><span class="zh">球体 prim 类型名：</span><span class="en">Sphere</span></li>
-        <li><span class="zh">本教程输出层文件：</span><span class="en">HelloWorldRedux.usda</span></li>
+        <li><span class="zh">通用 prim 句柄：</span><span class="en">UsdPrim</span></li>
+        <li><span class="zh">按 path 与 typeName 定义 prim：</span><span class="en">UsdStage::DefinePrim / stage.DefinePrim</span></li>
+        <li><span class="zh">强类型 schema 定义入口：</span><span class="en">UsdGeomXform::Define / UsdGeom.Xform.Define</span></li>
+        <li><span class="zh">底层 prim 访问：</span><span class="en">GetPrim()</span></li>
+        <li><span class="zh">教程输出文件：</span><span class="en">HelloWorldRedux.usda</span></li>
+        <li><span class="zh">输出检查工具：</span><span class="en">usdcat</span></li>
       </ul>
     </section>
+
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
-<li><span class="zh">第 1 级标题：Hello World Redux - Using Generic Prims</span><span class="en">Hello World Redux - Using Generic Prims</span></li>
+        <li><span class="zh">第 1 级标题：Hello World Redux - Using Generic Prims</span><span class="en">Hello World Redux - Using Generic Prims</span></li>
+        <li><span class="zh">主要段落：对照 `UsdGeom` schema API 与 generic `DefinePrim`。</span><span class="en">Main paragraphs compare `UsdGeom` schema APIs with generic `DefinePrim` authoring.</span></li>
+        <li><span class="zh">代码块：生成 `HelloWorldRedux.usda`，并展示与前一教程相同的 `usda` 层级。</span><span class="en">Code blocks generate `HelloWorldRedux.usda` and show the equivalent `usda` hierarchy.</span></li>
       </ul>
     </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">In this tutorial, we revisit the Hello World! example, but this example passes in hard-coded typenames Xform and Sphere , which correspond to the typenames appearing after the def specifiers in the usda scene description representation.</p>
-<p class="en">The UsdGeom API used in the previous tutorial , is part of USD’s built-in geometry schema. These prim types and associated C++ and Python API have first-class support in USD and provide domain-specific interfaces to create, manipulate, introspect and author properties upon them.</p>
-<p class="en">Note that UsdGeomXform::Define returns a schema object on which the full schema-specific API is available, as opposed to UsdStage::DefinePrim which returns a generic UsdPrim . In USD, all schema classes have a GetPrim() member function that returns its underlying UsdPrim . Think of a UsdPrim as the object’s generic, persistent presence in the scenegraph, and the schema object as the first-class way to access its domain-specific data and functionality.</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>from pxr import Usd stage = Usd . Stage . CreateNew ( 'HelloWorldRedux.usda' ) xform = stage . DefinePrim ( '/hello' , 'Xform' ) sphere = stage . DefinePrim ( '/hello/world' , 'Sphere' ) stage . GetRootLayer () . Save ()</code></pre>
-    </section>
+
     <section>
       <h2>本页链接 / Page Links</h2>
       <ul>
-<li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Configure your Environment</a></li>
-<li><a href="https://github.com/PixarAnimationStudios/OpenUSD/tree/v26.05">USD 26.05</a></li>
-<li><a href="tut_helloworld.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_helloworld.html">Hello World!</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_xform.html&amp;title=UsdGeomXform%3A%3ADefine" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_xform.html">UsdGeomXform::Define</a></li>
-<li><a href="../api/usd_geom_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_geom_page_front.html">full schema-specific API</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_stage.html&amp;title=UsdStage%3A%3ADefinePrim" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_stage.html">UsdStage::DefinePrim</a></li>
-<li><a href="../api/class_usd_prim.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_usd_prim.html">UsdPrim</a></li>
+        <li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Configure your Environment</a></li>
+        <li><a href="tut_helloworld.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_helloworld.html">Hello World!</a></li>
+        <li><a href="tut_inspect_and_author_props.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_inspect_and_author_props.html">Inspecting and Authoring Properties</a></li>
+        <li><a href="../api/class_usd_prim.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_usd_prim.html">UsdPrim</a></li>
+        <li><a href="../api/usd_geom_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_geom_page_front.html">UsdGeom</a></li>
       </ul>
     </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>

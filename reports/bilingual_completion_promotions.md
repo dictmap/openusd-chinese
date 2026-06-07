@@ -1,6 +1,6 @@
 # OpenUSD 完整双语晋级清单
 
-Generated: 2026-06-07T17:57:04.868Z
+Generated: 2026-06-07T18:19:43.116Z
 
 这份清单只记录已经从 `bilingual_draft` 晋级为 `bilingual_complete` 的页面。它是 `scripts/discover_openusd_all_pages.mjs` 识别 promoted complete 页面的审计来源，不等同于把草稿页改个状态。
 
@@ -16,6 +16,7 @@ Generated: 2026-06-07T17:57:04.868Z
 
 | ID | 本地输出 | 官方页面 | 状态 |
 | --- | --- | --- | --- |
+| `round-388-release-hello-world-redux` | `full_site/release/tut_helloworld_redux.html` | `https://openusd.org/release/tut_helloworld_redux.html` | bilingual_complete |
 | `round-387-release-layer-format-conversion` | `full_site/release/tut_converting_between_layer_formats.html` | `https://openusd.org/release/tut_converting_between_layer_formats.html` | bilingual_complete |
 | `round-386-release-usdview-plugin` | `full_site/release/tut_usdview_plugin.html` | `https://openusd.org/release/tut_usdview_plugin.html` | bilingual_complete |
 | `round-385-release-generating-new-schema` | `full_site/release/tut_generating_new_schema.html` | `https://openusd.org/release/tut_generating_new_schema.html` | bilingual_complete |
