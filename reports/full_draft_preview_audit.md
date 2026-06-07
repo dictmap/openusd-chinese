@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-07T14:44:34.633Z
+Generated: 2026-06-07T14:56:44.215Z
 
-Transient base URL: `http://127.0.0.1:57204/`
+Transient base URL: `http://127.0.0.1:51630/`
 
 Result:
 
 - Passed: true
-- Draft pages: 326
-- Pages checked: 326
-- Passed pages: 326
+- Draft pages: 325
+- Pages checked: 325
+- Passed pages: 325
 - Failed pages: 0
-- Final HTML links: 326
-- Local assets checked: 326
+- Final HTML links: 325
+- Local assets checked: 325
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -249,7 +249,6 @@ Result:
 | true | full_site/release/tut_helloworld_redux.html | 200 | true | 0 | 0 |
 | true | full_site/release/tut_houdini_example.html | 200 | true | 0 | 0 |
 | true | full_site/release/tut_simple_shading.html | 200 | true | 0 | 0 |
-| true | full_site/release/tut_traversing_stage.html | 200 | true | 0 | 0 |
 | true | full_site/release/tut_usd_tutorials.html | 200 | true | 0 | 0 |
 | true | full_site/release/tut_usdview_plugin.html | 200 | true | 0 | 0 |
 | true | full_site/release/tut_variants_example_in_katana.html | 200 | true | 0 | 0 |
