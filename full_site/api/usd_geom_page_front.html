@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>API 模块草稿：UsdGeom: USD Geometry Schema / UsdGeom: USD Geometry Schema</title>
+  <title>完整双语参考：UsdGeom: USD Geometry Schema / UsdGeom: USD Geometry Schema</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -19,20 +19,61 @@
     ul{padding-left:22px}
     li{margin:8px 0}
     code{font-family:"Cascadia Mono","Consolas",monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>API 模块草稿：UsdGeom: USD Geometry Schema / UsdGeom: USD Geometry Schema</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：UsdGeom: USD Geometry Schema / UsdGeom: USD Geometry Schema</h1>
     <div class="meta">https://openusd.org/release/api/usd_geom_page_front.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">这是 `UsdGeom: USD Geometry Schema` 的完整双语参考页。页面以中文逐段说明为主，保留 `UsdGeomImageable`、`UsdGeomXformable`、`UsdGeomGprim`、`UsdGeomPrimvar`、`UsdGeomPrimvarsAPI`、`UsdGeomMotionAPI`、`UsdGeomBBoxCache`、`GfMatrix4d` 等英文 API 名称和官方链接，方便与 Doxygen 原页核对。</p>
+      <p class="en">This complete bilingual reference keeps the original OpenUSD API identifiers and official links while adding Chinese paragraph-level coverage for the UsdGeom module entry.</p>
+    </section>
+    <section data-cn-complete="usd-geom-geometry-schema-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">官方开篇把 `UsdGeom` 定义为一组与 3D graphics 相关的 prim schemas 和 property schemas，它们共同构成 DCC 工具之间交换 geometry 的基础。这里的“geometry”不是某个建模软件的内部 mesh 对象，也不是某个 renderer 的后端数据结构，而是可组合、可分层、可被多种工具消费的 USD scene description。</p>
+      <p class="en">UsdGeom defines the 3D graphics-related prim and property schemas that form a basis for interchanging geometry between DCC tools in a graphics pipeline.</p>
+      <p class="zh">`UsdGeomImageable` 是大多数 `UsdGeom` 类的共同起点，意图是捕获可能被 rendered 或 visualized 的 prim 类型。这样做既能让不可渲染类型在遍历和验证中被优化，也把 visibility、purpose 和 primvars 等公共属性放在统一入口下。官方也说明，并非所有继承类都真正需要 imageable；这种分组主要是为了避免多重继承带来的 schema 复杂度。</p>
+      <p class="en">UsdGeomImageable captures prim types that may be rendered or visualized, and groups common visibility, purpose, and primvar-related properties.</p>
+      <p class="zh">`UsdGeomXformable` 负责 transformable prim 的 schema。它把 transform 拆成有序的 `UsdGeomXformOp` 序列，每个 op 是独立的 `UsdAttribute`，因此强 layer 可以单独 override 某个 op，而不必替换整组 transform 数据。这比打包成静态/变化数组更适合 composed scene description，但读取时需要理解 op 顺序和属性组合成本。</p>
+      <p class="en">UsdGeomXformable decomposes transforms into ordered xform ops, each represented as an independent attribute suitable for layer composition and overrides.</p>
+      <p class="zh">`UsdGeomXform` 则是简单表示 transformable container prim 的 schema，用于承载 child prims。调试 xform 时，不要只看最终矩阵；应检查 xform op order、局部/世界空间、op 的 time samples、layer strength、resetXformStack 语义，以及是否有负缩放改变了后续 orientation 和 normal 解释。</p>
+      <p class="en">UsdGeomXform provides a transformable scope, while debugging transforms requires checking op order, authored samples, composition strength, and stack-reset semantics.</p>
+      <p class="zh">`UsdGeomGprim` 是 geometric primitives 的基类，封装每个 primitive 相关的 graphics properties。其派生类型包括 `UsdGeomMesh`、`UsdGeomNurbsPatch`、`UsdGeomBasisCurves`、`UsdGeomNurbsCurves`、`UsdGeomPoints`，以及 `UsdGeomCapsule`、`UsdGeomCone`、`UsdGeomCube`、`UsdGeomCylinder`、`UsdGeomSphere` 等 intrinsic Gprims。后几类不一定被所有 DCC 原生支持，但对 lighting volumes、procedural modifiers、colliders 和 rigid-body simulator 数据交换很有用。</p>
+      <p class="en">UsdGeomGprim is the base for geometric primitives, including meshes, curves, points, and intrinsic shapes used for pass-through, volumes, modifiers, and simulation exchange.</p>
+      <p class="zh">`UsdGeomPointInstancer` 提供可扩展的实例散布编码，用于在一个 stage 内 scatter 多个 prototype objects 的大量 instances，并支持 instance animation、prototype animation、integer ID 的 prune/mask。它不是普通 namespace instancing 的简单别名；调试时要区分 prototypes、positions、orientations、scales、ids、inactive/mask 和 renderer 对 point instancer 的展开方式。</p>
+      <p class="en">UsdGeomPointInstancer encodes scalable scattered instances with prototypes, instance animation, prototype animation, and ID-based pruning or masking.</p>
+      <p class="zh">`UsdGeomCamera` 编码 transformable camera，属于几何模块的一部分，但相机的渲染解释还会连接 `UsdRenderCamera`、shutter、exposure 和 renderer 采样策略。`UsdGeomModelAPI` 则扩展 `UsdModelAPI`，处理包含 3D geometry 的 model 特有概念，例如 model-level cached extent hints 和从 model root 收集 constraint targets。</p>
+      <p class="en">UsdGeomCamera encodes transformable cameras, while UsdGeomModelAPI extends model semantics with geometry-specific cached extent hints and constraint-target collection.</p>
+      <p class="zh">`Primvars` 是 `UsdGeom` 的核心概念之一。它们是带有额外语义的 attributes，用于把 user data 绑定到 geometric primitives，使 shader 渲染时可访问；也用于把 values 关联到 vertices、faces 或 surface interpolation；还支持沿 namespace inheritance 稀疏 authoring 可共享数据，并与 native scenegraph instancing 兼容。texture coordinates，即常说的 UVs，就是典型 primvars。</p>
+      <p class="en">Primvars bind user data to geometric primitives, support interpolation over surfaces, and can inherit sparsely down namespace for instancing-compatible shared data.</p>
+      <p class="zh">`UsdGeomPrimvar` 表示单个 primvar，`UsdGeomPrimvarsAPI` 提供在 prim 上创建、查询 primvars 和计算 primvar inheritance 的接口。阅读 primvars 时要同时看 interpolation、element size、typed value、indices、inheritance 和 shader consumption；不要把 primvar 简化成普通 attribute，也不要忽略 face-varying、vertex、uniform、constant 等插值模式。</p>
+      <p class="en">UsdGeomPrimvar wraps one primvar, while UsdGeomPrimvarsAPI provides creation, query, and inheritance computations for primvars on a prim.</p>
+      <p class="zh">`Imageable Purpose` 用 `default`、`render`、`proxy`、`guide` 等 purpose token 对 geometry 进行分类，允许渲染、bounds 计算或交互显示遍历分别包含或排除不同集合。purpose 继承规则只从最近具有 authored purpose 的 Imageable ancestor 取得有效值；非 Imageable prim 上 authored purpose 会被忽略。这个机制常用于 interactive proxy 与 final render 表示的动态复杂度管理。</p>
+      <p class="en">Imageable purpose classifies geometry for traversal inclusion and exclusion, with authored values inherited from the closest Imageable ancestor when needed.</p>
+      <p class="zh">`Linear Algebra in UsdGeom` 固定了可靠互换所需的数学假设：matrices 使用 row-major layout，`GfVec` 是 row vectors 并 premultiply matrices，平移位于 `GfMatrix4d` 的第四行，旋转角度以 degrees 表示，cross products 和 rotations 遵循 right hand rule。因此表达 `S`、`R`、`T` 的顺序时，应该按 `v × S × R × T` 的约定理解，而不是套用列向量教材的习惯。</p>
+      <p class="en">UsdGeom linear algebra assumes row-major matrices, row vectors that pre-multiply matrices, degree-based rotations, and the right hand rule.</p>
+      <p class="zh">坐标系统、winding order、orientation 和 surface normals 是跨工具最容易出错的边界。`UsdGeom` 使用 right-handed coordinate system，camera 右手坐标中 up 为 `+Y`、right 为 `+X`、forward 为 `-Z`。默认情况下，非 implicit surface 和 solid 类型通过 right-hand winding rule 推导 intrinsic surface normal；`UsdGeomGprim` 的 `orientation` attribute 可以选择 left-handed winding rule。</p>
+      <p class="en">UsdGeom uses a right-handed coordinate system and defines default normal computation through right-hand winding, with Gprim orientation allowing left-handed winding.</p>
+      <p class="zh">需要特别注意，local-to-world transform 中奇数个 negative scales 会翻转 effective orientation。可以通过 local-to-world transform 的 determinant 是否小于 0 来检测；此时应采用相反的 handedness rule 或翻转 computed normals，用于 hidden surface detection 和 lighting calculations。很多“法线反了”的问题其实来自 composed transform，而不是 mesh topology 本身。</p>
+      <p class="en">Odd negative scales in the local-to-world transform can flip effective orientation, detectable through the transform determinant and relevant to normals and lighting.</p>
+      <p class="zh">`Applying Timesampled Velocities to Geometry` 规定了 `UsdGeomPointBased` 和 `UsdGeomPointInstancer` 如何用 `velocities` 与 `accelerations` 描述 off-sample motion。对于 topology 随时间变化的 primitives，velocity 是唯一可靠的运动编码方式，因为相邻 samples 的 indices 可能无关，元素数量也可能不同。若 velocity samples 与 points samples 不对齐，规则会回退到标准 position computation，这在调试 motion blur 时是常见 silent error。</p>
+      <p class="en">Timesampled velocities and accelerations encode off-sample motion for point-based geometry and point instancers, especially when topology varies over time.</p>
+      <p class="zh">单个请求位置的计算使用 lower bracketing points sample、velocity、acceleration 和 `stage->GetTimeCodesPerSecond()` 的 time scale。渲染 motion blur 的一段时间范围时，则要求在同一 motion range 内 topology 不改变，并从同一组 sampled points、velocities、accelerations 计算多个 sample positions。实例的 angularVelocities 可能需要比简单线性运动更高的采样频率。</p>
+      <p class="en">Single-position and motion-range computations use bracketing samples, velocities, accelerations, stage time scale, and topology-stability requirements.</p>
+      <p class="zh">`UsdGeomMotionAPI` 是 applied schema，用于调整 scene sampling 以实现 artist-specified motion blur 变化，例如 `motion:blurScale`。这些 properties 应沿 namespace 继承，因此可在 model root 上一次性调整整个模型的 blur。它主要影响 points、normals、transforms 和 instance transforms 等 geometric motion core，renderer 可以扩展到其他可 blur attributes。</p>
+      <p class="en">UsdGeomMotionAPI modulates scene sampling for perceived motion and motion blur, with inheritable properties such as motion:blurScale.</p>
+      <p class="zh">`motion:blurScale` 更推荐通过调整 sampling window 和 shutter-domain sample ordinates 来实现，而不是直接改写 sample values。缩小 blur 时，在当前 frame time 附近收缩采样窗口，再把样本时间映射回 shutter window；增大 blur 时则扩大采样窗口，可能包含更多 scene samples。这个语义帮助 render-prep 与 renderer 在不破坏原始动画的情况下调整感知模糊。</p>
+      <p class="en">motion:blurScale can be implemented by scaling the sampling window and remapping sample ordinates into the shutter interval rather than mutating source samples.</p>
+      <p class="zh">`Stage Metrics` 说明有些几何量描述整个 scene，而不是单个 primitive 或 property，因此编码为 stage metadata。典型例子是 stage up axis 和 linear units。导入/导出工具如果忽略 `Encoding Stage UpAxis` 或 `Encoding Stage Linear Units`，往往会出现模型朝向、尺度、重力方向、相机 framing 或物理交互不一致的问题。</p>
+      <p class="en">Stage metrics such as up axis and linear units are encoded as stage metadata because they describe scene-wide geometric conventions.</p>
+      <p class="zh">因此，这个入口页适合作为几何数据互换的总地图：先确认 schema 层级和 transform/primvar/purpose/motion/stage-metric 语义，再进入具体类页如 `UsdGeomMesh`、`UsdGeomBasisCurves`、`UsdGeomPrimvarsAPI` 或 `UsdGeomMotionAPI`。保留英文标识是为了让中文解释能精确对应 schema tokens、class names、attribute names 和 Doxygen 索引。</p>
+      <p class="en">This entry is a roadmap for geometry interchange before moving into individual classes such as Mesh, BasisCurves, PrimvarsAPI, MotionAPI, and related Gf math types.</p>
     </section>
     <section data-cn-refinement="api-usd-schema-quality-pass-059">
       <h2>中文精修导读 / Chinese Reading Notes</h2>

@@ -3,18 +3,18 @@
 ## 当前真实计数
 
 - 全量页面：406
-- 完整双语 / good_bilingual：75
-- bilingual_complete：75
-- 未完整翻译草稿 / bilingual_draft：331
-- draft_needs_translation：320
+- 完整双语 / good_bilingual：76
+- bilingual_complete：76
+- 未完整翻译草稿 / bilingual_draft：330
+- draft_needs_translation：319
 - draft_template_only：11
-- promotion manifest：67 页
+- promotion manifest：68 页
 
 ## P0-completion-stalled
 
-完成数曾长期停在 8 页。当前 promotion path 已经把真实完成数提升到 75 页，但剩余 331 页仍是草稿，不能描述成完整翻译。
+完成数曾长期停在 8 页。当前 promotion path 已经把真实完成数提升到 76 页，但剩余 330 页仍是草稿，不能描述成完整翻译。
 
-证据：`reports/bilingual_completion_promotions.json` 记录 67 个晋级页面；`reports/translation_quality_review.json` 报告 `good_bilingual=75`。
+证据：`reports/bilingual_completion_promotions.json` 记录 68 个晋级页面；`reports/translation_quality_review.json` 报告 `good_bilingual=76`。
 
 要求：后续只允许把完成逐段双语覆盖、移除草稿标记并通过质量审计的页面加入 promotion manifest。
 
@@ -22,13 +22,13 @@
 
 总入口曾用 `pending=0` 掩盖大部分页面仍未完整翻译。现在入口必须继续诚实显示 complete 与 incomplete drafts。
 
-证据：`openusd_bilingual_final.html` 当前显示 75 complete / 331 incomplete drafts。
+证据：`openusd_bilingual_final.html` 当前显示 76 complete / 330 incomplete drafts。
 
 ## P0-automation-wrong-objective
 
 旧自动化倾向于每轮补 5 页导读并推送，不能代表完成度。当前自动化已改为 PromotionRound / DefectRound / ConsistencyRound，并要求 `good_bilingual` 增长或命名 P0/P1 修复。
 
-证据：本轮为单页 PromotionRound，只晋级 `full_site/api/usd_lux_page_front.html`，完成数 74 -> 75。
+证据：本轮为单页 PromotionRound，只晋级 `full_site/api/usd_geom_page_front.html`，完成数 75 -> 76。
 
 ## P1-markdown-record-encoding
 
@@ -48,7 +48,7 @@
 
 大多数草稿页仍是中文导读和术语说明，不是逐段完整双语翻译。
 
-证据：320 页仍是 `draft_needs_translation`，11 页仍是 `draft_template_only`。
+证据：319 页仍是 `draft_needs_translation`，11 页仍是 `draft_template_only`。
 
 ## P2-validation-json-bom
 
@@ -56,10 +56,10 @@
 
 证据：最新总验证 passed=true，failed_check_count=0。
 
-## 第 370 轮处理结果
+## 第 371 轮处理结果
 
 - 轮次类型：PromotionRound
-- 晋级页面：`full_site/api/usd_lux_page_front.html`
-- 完成数变化：good_bilingual 74 -> 75
-- 剩余草稿：331 页仍是可检查草稿，不是完整翻译
-- 下一轮建议目标：`full_site/api/usd_geom_page_front.html`
+- 晋级页面：`full_site/api/usd_geom_page_front.html`
+- 完成数变化：good_bilingual 75 -> 76
+- 剩余草稿：330 页仍是可检查草稿，不是完整翻译
+- 下一轮建议目标：`full_site/api/usd_shade_page_front.html`
