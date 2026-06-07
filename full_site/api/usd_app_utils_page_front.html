@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>API 模块草稿：UsdAppUtils: USD Application Utilities / UsdAppUtils: USD Application Utilities</title>
+  <title>完整双语参考：UsdAppUtils: USD Application Utilities / UsdAppUtils: USD Application Utilities</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -19,20 +19,49 @@
     ul{padding-left:22px}
     li{margin:8px 0}
     code{font-family:"Cascadia Mono","Consolas",monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>API 模块草稿：UsdAppUtils: USD Application Utilities / UsdAppUtils: USD Application Utilities</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：UsdAppUtils: USD Application Utilities / UsdAppUtils: USD Application Utilities</h1>
     <div class="meta">https://openusd.org/release/api/usd_app_utils_page_front.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页处理：中文优先解释 `UsdAppUtils` 作为 USD application utilities 模块的职责，覆盖查看或录制 USD stage 图像的应用场景、通用命令行参数 helper、`cameraArgs`、`colorArgs`、`complexityArgs`、`framesArgs`、`rendererArgs`、frame format string 规则、frame placeholder、zero padding、precision、Hydra renderer plugin 选择，以及它与 `UsdUtils`、`UsdStage`、`UsdGeomCamera`、Hydra 和渲染输出流程的边界；英文 API 名称、参数模块名、示例格式和官方摘录保留原样，便于与 Doxygen 页面核对。</p>
+      <p class="en">This page is promoted as a complete bilingual reference for UsdAppUtils, USD application utilities, command-line argument helpers, frame format strings, and application-level image recording workflows.</p>
+    </section>
+    <section data-cn-complete="usd-app-utils-application-utilities-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">官方 Overview 的第一句说明 `UsdAppUtils` contains utilities and common functionality for applications that view and/or record images of USD stages。这里的关键词是 applications、view、record images 和 USD stages。`UsdAppUtils` 不是新的 scene description schema，也不是 composition 引擎，而是服务应用程序入口的 helper 层：它让 usdview、截图工具、离线预览器或测试录制工具以一致方式读取 stage、选择 camera、决定 frame range、配置 Hydra 渲染参数并输出图像。</p>
+      <p class="en">UsdAppUtils provides utilities and common functionality for applications that view or record images of USD stages.</p>
+      <p class="zh">官方列出的 command-line argument helpers 是本页核心。`cameraArgs` 让工具添加用于指定 camera 的参数；这通常关系到 `UsdGeomCamera`、camera prim path、默认相机选择和应用中“从哪个视角渲染”的语义。若图像内容是空的、视角不对或相机路径解析失败，应先检查 `cameraArgs` 解析结果、stage 中是否存在对应 camera prim，以及工具是否允许 fallback camera。</p>
+      <p class="en">cameraArgs adds arguments for specifying the camera to operate on.</p>
+      <p class="zh">`colorArgs` 用于设置 Hydra 生成图像时应用的 color correction 类型。它位于应用参数层，不直接改写 USD asset，也不等同于 renderer 内部色彩管理实现。排查截图或录制结果偏亮、偏暗、gamma 不一致时，要区分 authored material / texture、Hydra renderer output、display transform 和应用命令行 color correction 选项，`colorArgs` 负责的是最后这类可由工具统一暴露的参数。</p>
+      <p class="en">colorArgs adds arguments for setting the type of color correction applied when generating images using Hydra.</p>
+      <p class="zh">`complexityArgs` 控制显示 geometry 时使用的 level of refinement。它常影响细分曲面、曲线或可细化几何在预览图中的精细程度。这个 helper 不改变 stage 中的 authored topology，也不保证所有 renderer 都以完全相同方式解释复杂度；它只是让应用以一致命令行接口把复杂度意图传给渲染或成像流程。</p>
+      <p class="en">complexityArgs adds arguments for specifying the level of refinement for displayed geometry.</p>
+      <p class="zh">`framesArgs` 负责指定应用应操作哪些 frames，并且连接到本页的 `Frame Format Strings`。这对录制 image sequence、批量截图和测试基准尤其重要：frame range 决定要采样哪些 timeCode，frame format string 决定每一帧如何命名输出文件。若输出帧数量不对、文件被覆盖或时间采样不匹配，应把 frame range、time code、output pattern 和 stage animation 一起检查。</p>
+      <p class="en">framesArgs adds arguments for specifying which frames the application should operate on and supports frame format strings.</p>
+      <p class="zh">`rendererArgs` 用于指定使用哪个 renderer plugin 通过 Hydra 生成图像。它处在 application utility 与 Hydra plugin selection 的交界处：应用把用户选择解析成 renderer plugin 意图，Hydra 和实际 render delegate 再负责实现渲染。若机器上插件不存在、renderer 名称不匹配或输出差异来自不同 render delegate，应从 `rendererArgs` 解析、plugin discovery 和 Hydra delegate 能力三层拆开排查。</p>
+      <p class="en">rendererArgs adds arguments for specifying which renderer plugin to use when generating images using Hydra.</p>
+      <p class="zh">`Frame Format Strings` 小节定义了随时间变化的输出字符串。frame format string 包含 frame placeholder，运行时会把 placeholder 替换成实际帧号，生成完整文件名。它解决的是“多帧输出如何稳定命名”的问题，不是 animation sampling 本身；采样来自 stage timeCode 和应用 frame range，命名来自本节格式规则。</p>
+      <p class="en">A frame format string contains a frame placeholder that is replaced with actual frame numbers.</p>
+      <p class="zh">frame placeholder 必须由一组或两组 hash 符号 `#` 组成；如果有两组，中间必须用 dot `.` 分隔。dot 后面的 hash 数量表示插入 frame number 时使用的 floating point precision；只有一组 hash 时 precision 为 0，插入的是 integer values。因此 `image.#.exr` 更适合整数帧，`image.###.#.exr` 则表达最小宽度和一位小数精度。</p>
+      <p class="en">Frame placeholders use one or two groups of hashes, and hashes after a dot indicate floating-point precision.</p>
+      <p class="zh">placeholder 的 overall width 指定插入帧号时的 minimum width。格式化后的帧号如果短于这个宽度，会在左侧 zero-padded。官方示例中 `image.#.exr` over 101 to 103 生成 `image.101.exr`、`image.102.exr`、`image.103.exr`；`image.###.#.exr` over 1 to 3 则生成 `image.001.0.exr`、`image.002.0.exr`、`image.003.0.exr`。这类规则对渲染农场、文件排序和后续合成工具非常关键。</p>
+      <p class="en">The placeholder width controls zero padding, and the precision controls the fractional frame part.</p>
+      <p class="zh">阅读本页时要把 `UsdAppUtils` 与 `UsdUtils` 区分。`UsdUtils` 更常处理资产、依赖、layer、package、compliance 或 pipeline utility；`UsdAppUtils` 更贴近用户启动的应用、CLI 参数、camera/frame/renderer/color 选择和图像输出命名。前者偏数据和管线处理，后者偏应用入口和可重复图像生成流程。</p>
+      <p class="en">UsdAppUtils is application-facing, while UsdUtils is usually broader asset and pipeline utility code.</p>
+      <p class="zh">实际调试顺序可以固定为：先确认输入 USD stage 能打开；再确认 camera path、frame range、timeCode 和 frame format string；接着确认 color correction、complexity 和 renderer plugin 参数；然后检查 Hydra render delegate 是否可用；最后才进入 renderer 输出、texture/shader、AOV 或文件写入问题。这样可以避免把应用参数错误误判为 `UsdStage` composition、Hydra 同步或 renderer backend 错误。</p>
+      <p class="en">A practical debugging order is stage input, camera and frames, output naming, color and complexity options, renderer plugin selection, and Hydra/render-delegate execution.</p>
+      <p class="zh">对于自动化测试，`UsdAppUtils` 的价值还在于让不同命令行工具共享同一套参数语义，从而让截图、序列帧和回归基准更容易复现。</p>
+      <p class="en">Shared application arguments help screenshots, frame sequences, and regression baselines stay reproducible.</p>
+      <p class="zh">本页保留 `cameraArgs`、`colorArgs`、`complexityArgs`、`framesArgs`、`rendererArgs`、`Frame Format Strings`、`#`、`.`、`image.#.exr` 和 `image.###.#.exr` 等英文标识，因为这些是命令行工具、源码模块和官方文档中直接可检索的名字。翻译层解释它们的语义，不能把这些 token 改写成中文名称，否则会破坏与实际 API 和示例的对应关系。</p>
+      <p class="en">English module names, tokens, placeholders, and filename examples are retained so users can map the Chinese notes back to code and official API documentation.</p>
     </section>
     <section data-cn-refinement="api-mixed-quality-pass-058">
       <h2>中文精修导读 / Chinese Reading Notes</h2>

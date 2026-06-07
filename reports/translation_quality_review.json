@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T11:39:34.299Z",
+  "generated_at": "2026-06-07T11:50:58.012Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 337,
-    "bilingual_complete": 69
+    "bilingual_draft": 336,
+    "bilingual_complete": 70
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 326,
-    "good_bilingual": 69
+    "draft_needs_translation": 325,
+    "good_bilingual": 70
   },
   "focus_batch": [
     {
@@ -7909,29 +7909,29 @@
     },
     {
       "index": 258,
-      "title": "API 模块草稿：UsdAppUtils: USD Application Utilities / UsdAppUtils: USD Application Utilities",
+      "title": "完整双语参考：UsdAppUtils: USD Application Utilities / UsdAppUtils: USD Application Utilities",
       "output": "full_site/api/usd_app_utils_page_front.html",
       "official_url": "https://openusd.org/release/api/usd_app_utils_page_front.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 27,
-      "enBlockCount": 19,
-      "zhChars": 617,
-      "enLetters": 1717,
-      "bodyChineseChars": 678,
+      "grade": "good_bilingual",
+      "zhBlockCount": 40,
+      "enBlockCount": 32,
+      "zhChars": 1633,
+      "enLetters": 2956,
+      "bodyChineseChars": 1704,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 UsdAppUtils: USD Application Utilities 补充中文优先的页面定位、阅读路径、概念边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`UsdAppUtils: USD Application Utilities` 提供面向 USD 应用程序的通用工具，尤其是查看或录制 USD stage 图像的应用。"
+        "本页已按完整双语参考页处理：中文优先解释 `UsdAppUtils` 作为 USD application utilities 模块的职责，覆盖查看或录制 USD stage 图像的应用场景、通用命令行参数 helper、`cameraArgs`、`colorArgs`、`complexityArgs`、`framesArgs`、`rendererArgs`、frame format string 规则、frame placeholder、zero padding、precision、Hydra renderer plugin 选择，以及它与 `UsdUtils`、`UsdStage`、`UsdGeomCamera`、Hydra 和渲染输出流程的边界；英文 API 名称、参数模块名、示例格式和官方摘录保留原样，便于与 Doxygen 页面核对。",
+        "官方 Overview 的第一句说明 `UsdAppUtils` contains utilities and common functionality for applications that view and/or record images of USD stages。这里的关键词是 applications、view、record images 和 USD stages。`UsdAppUtils` 不是新的 scene description schema，也不是 composition 引擎，而是服务应用程序入口的 helper 层：它让 usdview、截图工具、离线预览器或测试录制工具以一致方式读取 stage、选择 camera、决定 frame range、配置 Hydra 渲染参数并输出图像。",
+        "官方列出的 command-line argument helpers 是本页核心。`cameraArgs` 让工具添加用于指定 camera 的参数；这通常关系到 `UsdGeomCamera`、camera prim path、默认相机选择和应用中“从哪个视角渲染”的语义。若图像内容是空的、视角不对或相机路径解析失败，应先检查 `cameraArgs` 解析结果、stage 中是否存在对应 camera prim，以及工具是否允许 fallback camera。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first page positioning, reading paths, concept boundaries, and terminology for UsdAppUtils: USD Application Utilities while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and source excerpts for comparison with the official Doxygen page."
+        "This page is promoted as a complete bilingual reference for UsdAppUtils, USD application utilities, command-line argument helpers, frame format strings, and application-level image recording workflows.",
+        "UsdAppUtils provides utilities and common functionality for applications that view or record images of USD stages."
       ]
     },
     {

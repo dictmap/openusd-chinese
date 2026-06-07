@@ -1,27 +1,27 @@
 {
   "generated_at": "2026-06-07",
-  "purpose": "Track current completion blockers after user feedback. Round 364 promotes full_site/api/hio_page_front.html and raises the real baseline to 69 good_bilingual pages.",
+  "purpose": "Track current completion blockers after user feedback. Round 365 promotes full_site/api/usd_app_utils_page_front.html and raises the real baseline to 70 good_bilingual pages.",
   "current_counts": {
     "total_pages": 406,
-    "bilingual_complete": 69,
-    "bilingual_draft": 337,
-    "good_bilingual": 69,
-    "draft_needs_translation": 326,
+    "bilingual_complete": 70,
+    "bilingual_draft": 336,
+    "good_bilingual": 70,
+    "draft_needs_translation": 325,
     "draft_template_only": 11
   },
   "problems": [
     {
       "id": "P0-completion-stalled",
       "severity": "P0",
-      "summary": "The main completion number was structurally stalled at 8; the promotion path now raises it to 69, but the remaining 337 draft pages still need real upgrades.",
-      "evidence": "reports/bilingual_completion_promotions.json records 61 promoted pages; discover_openusd_all_pages.mjs counts manifest-promoted pages as bilingual_complete, and audit_openusd_translation_quality.mjs reports good_bilingual=69.",
+      "summary": "The main completion number was structurally stalled at 8; the promotion path now raises it to 70, but the remaining 336 draft pages still need real upgrades.",
+      "evidence": "reports/bilingual_completion_promotions.json records 62 promoted pages; discover_openusd_all_pages.mjs counts manifest-promoted pages as bilingual_complete, and audit_openusd_translation_quality.mjs reports good_bilingual=70.",
       "required_action": "Continue using the promotion manifest only for pages with paragraph-level bilingual coverage and draft-marker removal; do not mark guide-only drafts as complete."
     },
     {
       "id": "P0-final-entry-misleading",
       "severity": "P0",
       "summary": "The final entry previously misled users by showing pending=0 while most pages were incomplete drafts.",
-      "evidence": "openusd_bilingual_final.html now states 69 complete pages and labels the remaining 337 pages as Incomplete drafts.",
+      "evidence": "openusd_bilingual_final.html now states 70 complete pages and labels the remaining 336 pages as Incomplete drafts.",
       "required_action": "Keep final-entry counts dynamic and keep bilingual_draft clearly described as incomplete translation."
     },
     {
@@ -49,7 +49,7 @@
       "id": "P1-draft-content-thin",
       "severity": "P1",
       "summary": "Most draft pages contain Chinese guidance and term notes, not paragraph-level bilingual translation.",
-      "evidence": "326 pages remain draft_needs_translation; 11 pages remain draft_template_only.",
+      "evidence": "325 pages remain draft_needs_translation; 11 pages remain draft_template_only.",
       "required_action": "For selected high-value pages, replace or supplement guide-only blocks with dense paragraph-level bilingual coverage and then promote status only if the page passes the stricter rule."
     },
     {
@@ -64,7 +64,7 @@
     "Continue promoting high-value draft pages only after paragraph-level bilingual coverage.",
     "Use reports/bilingual_completion_promotions.json as the auditable promotion source.",
     "Keep discover_openusd_all_pages.mjs anchored to the stable 406 local HTML files, not rewritten local navtree links.",
-    "Resume PromotionRound with exactly one high-value page. Suggested target: full_site/api/usd_app_utils_page_front.html."
+    "Resume PromotionRound with exactly one high-value page. Suggested target: full_site/api/plug_page_front.html."
   ],
-  "next_action": "Continue PromotionRound with exactly one high-value page. Suggested target: full_site/api/usd_app_utils_page_front.html. Stop if it cannot reach good_bilingual."
+  "next_action": "Continue PromotionRound with exactly one high-value page. Suggested target: full_site/api/plug_page_front.html. Stop if it cannot reach good_bilingual."
 }

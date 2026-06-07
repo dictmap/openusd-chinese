@@ -3,18 +3,18 @@
 ## 当前真实计数
 
 - 全量页面：406
-- 完整双语 / good_bilingual：69
-- bilingual_complete：69
-- 未完整翻译草稿 / bilingual_draft：337
-- draft_needs_translation：326
+- 完整双语 / good_bilingual：70
+- bilingual_complete：70
+- 未完整翻译草稿 / bilingual_draft：336
+- draft_needs_translation：325
 - draft_template_only：11
-- promotion manifest：61 页
+- promotion manifest：62 页
 
 ## P0-completion-stalled
 
-完成数曾长期停在 8 页。当前 promotion path 已经把真实完成数提升到 69 页，但剩余 337 页仍是草稿，不能描述成完整翻译。
+完成数曾长期停在 8 页。当前 promotion path 已经把真实完成数提升到 70 页，但剩余 336 页仍是草稿，不能描述成完整翻译。
 
-证据：`reports/bilingual_completion_promotions.json` 记录 61 个晋级页面；`reports/translation_quality_review.json` 报告 `good_bilingual=69`。
+证据：`reports/bilingual_completion_promotions.json` 记录 62 个晋级页面；`reports/translation_quality_review.json` 报告 `good_bilingual=70`。
 
 要求：后续只允许把完成逐段双语覆盖、移除草稿标记并通过质量审计的页面加入 promotion manifest。
 
@@ -22,7 +22,7 @@
 
 总入口曾用 `pending=0` 掩盖大部分页面仍未完整翻译。现在入口必须继续诚实显示 complete 与 incomplete drafts。
 
-证据：`openusd_bilingual_final.html` 当前显示 69 complete / 337 incomplete drafts。
+证据：`openusd_bilingual_final.html` 当前显示 70 complete / 336 incomplete drafts。
 
 ## P0-automation-wrong-objective
 
@@ -44,7 +44,7 @@ Markdown 进度记录曾出现重复问号编码损坏。第 340 轮加入 `audi
 
 多数 draft 页仍只是中文导读、术语说明和英文摘录，不是逐段完整双语改写。
 
-证据：326 页仍是 `draft_needs_translation`，11 页仍是 `draft_template_only`。
+证据：325 页仍是 `draft_needs_translation`，11 页仍是 `draft_template_only`。
 
 要求：每轮只选 1 个高价值页面做真实 paragraph-level bilingual coverage，并用审计证明 `good_bilingual` 增长。
 
@@ -54,4 +54,4 @@ Markdown 进度记录曾出现重复问号编码损坏。第 340 轮加入 `audi
 
 ## 下一步
 
-继续 PromotionRound，建议目标：`full_site/api/usd_app_utils_page_front.html`。如果它不能达到 `good_bilingual`，自动化必须停止并报告阻塞。
+继续 PromotionRound，建议目标：`full_site/api/plug_page_front.html`。如果它不能达到 `good_bilingual`，自动化必须停止并报告阻塞。
