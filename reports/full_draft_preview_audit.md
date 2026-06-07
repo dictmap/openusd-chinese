@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-07T08:53:01.995Z
+Generated: 2026-06-07T09:14:57.346Z
 
-Transient base URL: `http://127.0.0.1:57895/`
+Transient base URL: `http://127.0.0.1:49833/`
 
 Result:
 
 - Passed: true
-- Draft pages: 349
-- Pages checked: 349
-- Passed pages: 349
+- Draft pages: 348
+- Pages checked: 348
+- Passed pages: 348
 - Failed pages: 0
-- Final HTML links: 349
-- Local assets checked: 349
+- Final HTML links: 348
+- Local assets checked: 348
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -28,7 +28,6 @@ Result:
 | true | full_site/api/class_gf_range1d.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_gf_ray.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_tf_dense_hash_map.html | 200 | true | 0 | 0 |
-| true | full_site/api/class_usd_schema_registry.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_vdf_test_utils_1_1_node.html | 200 | true | 0 | 0 |
 | true | full_site/api/classes.html | 200 | true | 0 | 0 |
 | true | full_site/api/classpxr___c_l_i_1_1_c_l_i_1_1_app.html | 200 | true | 0 | 0 |

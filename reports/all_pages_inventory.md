@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-07T08:52:55.531Z
+Generated: 2026-06-07T09:14:51.172Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 57
-- Promoted complete pages: 49
-- Bilingual draft pages: 349
+- Bilingual complete pages: 58
+- Promoted complete pages: 50
+- Bilingual draft pages: 348
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -69,7 +69,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_complete | https://openusd.org/release/api/class_usd_physics_joint.html | full_site/api/class_usd_physics_joint.html | https://openusd.org/release/api/class_usd_physics_joint.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_usd_prim.html | full_site/api/class_usd_prim.html | https://openusd.org/release/api/class_usd_prim.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_usd_proc_generative_procedural.html | full_site/api/class_usd_proc_generative_procedural.html | https://openusd.org/release/api/class_usd_proc_generative_procedural.html |
-| api | bilingual_draft | 类参考草稿：UsdSchemaRegistry Class / UsdSchemaRegistry Class | full_site/api/class_usd_schema_registry.html | https://openusd.org/release/api/class_usd_schema_registry.html |
+| api | bilingual_complete | https://openusd.org/release/api/class_usd_schema_registry.html | full_site/api/class_usd_schema_registry.html | https://openusd.org/release/api/class_usd_schema_registry.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_usd_shade_output.html | full_site/api/class_usd_shade_output.html | https://openusd.org/release/api/class_usd_shade_output.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_usd_skel_imaging_data_source_skeleton_prim.html | full_site/api/class_usd_skel_imaging_data_source_skeleton_prim.html | https://openusd.org/release/api/class_usd_skel_imaging_data_source_skeleton_prim.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_usd_stage_cache.html | full_site/api/class_usd_stage_cache.html | https://openusd.org/release/api/class_usd_stage_cache.html |

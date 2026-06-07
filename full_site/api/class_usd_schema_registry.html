@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：UsdSchemaRegistry Class / UsdSchemaRegistry Class</title>
+  <title>完整双语参考：UsdSchemaRegistry Class / UsdSchemaRegistry Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -19,81 +19,69 @@
     ul{padding-left:22px}
     li{margin:8px 0}
     code{font-family:"Cascadia Mono","Consolas",monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：UsdSchemaRegistry Class / UsdSchemaRegistry Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：UsdSchemaRegistry Class / UsdSchemaRegistry Class</h1>
     <div class="meta">https://openusd.org/release/api/class_usd_schema_registry.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页整理：中文先解释 `UsdSchemaRegistry` 的职责边界、schema metadata 来源、prim definition 查询、API schema 应用规则和调试含义；英文 API 名称、方法名、类型名、token、链接和必要英文摘录保持原样，便于与官方 Doxygen 页面逐项核对。</p>
+      <p class="en">This page is promoted to a complete bilingual reference: the Chinese text explains the role boundaries of `UsdSchemaRegistry`, schema metadata sources, prim-definition lookup, API-schema application rules, and debugging implications while preserving original English API names, method names, type names, tokens, links, and required source excerpts for comparison with the official Doxygen page.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-041">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 UsdSchemaRegistry Class Reference 补充中文优先的类职责、读取重点、关键属性/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, key attribute/method groups, and terminology for UsdSchemaRegistry Class Reference while retaining English page names, class names, method names, attribute names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`UsdSchemaRegistry` 是 singleton registry，用于访问已注册 USD `IsA` schema 和 applied API schema 的 schema type information 与 prim definitions。</span></li>
-        <li><span class="zh">英文摘录说明 registry 还保存 generated schemas 中的数据，这些数据来自每个 schema-defining module 处理 `schema.usda` 后生成的 `generatedSchema.usda`。</span></li>
-        <li><span class="zh">`SchemaInfo` 描述一个已注册 schema 的信息；`VersionPolicy`、`FindSchemaInfo()`、`FindSchemaInfosInFamily()` 用于处理 schema 家族、版本和查询。</span></li>
-        <li><span class="zh">`FindConcretePrimDefinition()`、`FindAbstractPrimDefinition()`、`FindAppliedAPIPrimDefinition()` 和 `BuildComposedPrimDefinition()` 是从 schema 定义构建 prim definition 的主要入口。</span></li>
-        <li><span class="zh">`GetAPISchemaCanOnlyApplyToTypeNames()` 与 auto-apply API schema 相关；阅读本页时应把它看作 USD schema 系统的元数据和定义查询中心。</span></li>
-      </ul>
+    <section data-cn-complete="usd-schema-registry-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">官方定义的第一层含义是“singleton registry”：`UsdSchemaRegistry` 是 USD schema 系统的集中查询入口，不是一个会在 stage 上写入意见的 authoring API。它回答的是“某个已注册 schema 声明了哪些类型信息、属性、metadata、fallback 和 prim definition”，而不是“某个 `UsdPrim` 当前在 composition 后持有什么 authored value”。调试时如果看到 prim 上没有预期属性，应先区分是 schema definition 没注册、API schema 没应用、还是 layer 中没有 authored opinion。</p>
+      <p class="en">The official description starts with the idea of a singleton registry: `UsdSchemaRegistry` is the central lookup point for USD schema metadata, not an authoring API that writes opinions to a stage.</p>
+      <p class="zh">本页中的 `IsA` schema 指 concrete typed schema，例如一个 prim 的 primary type 所对应的 schema；applied API schema 则是通过 `apiSchemas` 或 `UsdPrim::AddAppliedSchema(const TfToken&amp;) const` 这样的路径附加到 prim 上的行为或属性集合。`UsdSchemaRegistry` 同时覆盖这两类 schema，因为最终可见的 prim definition 往往来自 primary schema 与多个 applied API schema 的组合。</p>
+      <p class="en">The page covers both registered Usd `IsA` schema types and applied API schema types because a composed prim definition can combine a primary schema with applied API schemas.</p>
+      <p class="zh">官方摘录提到的数据来源是每个 schema-defining module 里的 `schema.usda` 经 `usdGenSchema` 处理后生成的 `generatedSchema.usda`。这句话很关键：registry 不是临时扫描 scenegraph 得到属性，而是消费生成式 schema 数据。遇到新插件或自定义 schema 不生效时，应检查插件是否注册、schema 类型是否暴露、`generatedSchema.usda` 是否包含期望声明，而不是只检查当前 stage 文件。</p>
+      <p class="en">The registry contains data generated from `schema.usda` into `generatedSchema.usda`; that generated schema data is what prim definitions use for properties and fallback values.</p>
+      <p class="zh">`UsdSchemaRegistry::SchemaInfo` 保存单个 schema 的注册信息。它把 `TfType`、schema type name、family、version、`UsdSchemaKind` 等元数据连接起来。`FindSchemaInfo()` 的多个重载用于从不同标识查找同一个 schema identity；`FindSchemaInfosInFamily()` 则面向 schema family 和 version 查询。读取这些接口时要保留 exact type name、family name、versioned schema 之间的区别，避免把版本化 schema 当作一个普通 token 字符串处理。</p>
+      <p class="en">`SchemaInfo` records the metadata for a registered schema. `FindSchemaInfo()` and `FindSchemaInfosInFamily()` are lookup paths for schema identity, family, and version information.</p>
+      <p class="zh">`VersionPolicy` 是处理 schema family 时的版本选择策略。它不是 composition strength，也不是 layer stack 规则；它只约束 registry 在面对一个 schema family 的多个版本时如何选择或匹配 schema 信息。把它和 value resolution 或 layer strength 混在一起，是读本页最常见的误区之一。</p>
+      <p class="en">`VersionPolicy` is about schema-family version lookup, not layer strength or value resolution.</p>
+      <p class="zh">`FindConcretePrimDefinition()`、`FindAbstractPrimDefinition()` 和 `FindAppliedAPIPrimDefinition()` 是 prim definition 查询的三条主要路径。concrete prim definition 面向可实例化的 typed prim；abstract prim definition 描述不可直接实例化但可作为 schema 继承基础的定义；applied API prim definition 描述 API schema 带来的属性、metadata 和 fallback。三者返回的对象都帮助解释“schema 声明了什么”，但用途和合法输入并不相同。</p>
+      <p class="en">The `FindConcretePrimDefinition()`, `FindAbstractPrimDefinition()`, and `FindAppliedAPIPrimDefinition()` methods distinguish concrete typed schemas, abstract schemas, and applied API schemas.</p>
+      <p class="zh">`BuildComposedPrimDefinition()` 用于把 primary schema 与 applied API schemas 组合成一个综合的 prim definition。这个接口解释了为什么某个 prim 的“可用属性集合”可能不只来自 primary type：例如 typed schema 提供基础属性，多个 API schema 再叠加额外属性、metadata 或 fallback。它仍然是在构建定义视图，不是在当前 layer 上 author 属性值。</p>
+      <p class="en">`BuildComposedPrimDefinition()` builds a composed prim definition from a prim type and applied API schemas, explaining how multiple schema sources can contribute properties and fallback metadata.</p>
+      <p class="zh">`GetAPISchemaTypeName()`、`GetAPISchemaCanOnlyApplyToTypeNames()` 和 `CollectAddtionalAutoApplyAPISchemasFromPlugins()` 这一组接口围绕 API schema 的名字映射、可应用范围和 auto-apply 规则展开。注意官方页面里 `CollectAddtionalAutoApplyAPISchemasFromPlugins()` 的拼写保留为原 API 名称；阅读或搜索时不要自行改成另一个拼法。</p>
+      <p class="en">The API-schema helpers cover API schema type-name mapping, allowed target type names, and additional auto-apply API schemas contributed by plugins.</p>
+      <p class="zh">`TokenToTokenVectorMap`、`TfToken` 和 `TfHash` 说明这个 registry 大量使用 token 化名称和 token-vector 映射来保存 schema 规则。应用层代码应保留 `TfToken` 的精确 spelling，尤其是 schema type name、API schema instance name、property name 和 fallback prim type 名称；大小写或命名空间差异都可能导致查找失败。</p>
+      <p class="en">The `TokenToTokenVectorMap` typedef and related links to `TfToken` indicate that schema names and rule maps are token based; exact token spelling matters.</p>
+      <p class="zh">本页与 `UsdPrimDefinition` 的边界是：`UsdSchemaRegistry` 负责找到或构建 definition，`UsdPrimDefinition` 才承载属性声明、metadata、fallback 等具体定义内容。与 `UsdSchemaBase`、`UsdTyped`、`UsdAPISchemaBase` 的边界是：这些类是用户拿来访问 prim 或 schema 行为的 C++ facade；registry 则是这些 facade 背后的 schema metadata 查询层。</p>
+      <p class="en">`UsdSchemaRegistry` locates or builds prim definitions, while `UsdPrimDefinition` stores the concrete declared properties, metadata, and fallback information.</p>
+      <p class="zh">本页与 `UsdStage::WriteFallbackPrimTypes` 和 “Fallback Prim Types” 的链接表明 registry 也参与 fallback prim type 的解释链路。fallback 不是 authored prim type，也不是某个 layer 中显式写入的默认值；它是 schema 系统在缺少 authored type 或需要解释 schema 默认行为时可查询的定义信息。排查 fallback 行为时，应该同时检查 schema registry、stage 写出的 fallback prim types 和实际 layer opinions。</p>
+      <p class="en">The links to `UsdStage::WriteFallbackPrimTypes` and fallback prim types connect registry metadata to fallback-type behavior without making fallback values authored opinions.</p>
+      <p class="zh">实际使用中，`UsdSchemaRegistry` 常用于工具、插件和 schema 调试：确认一个 schema type name 是否注册，判断某个 API schema 是否只能应用到特定 prim type，解释一个 composed prim definition 为什么包含某个属性，或者定位自定义 schema 生成文件与运行时 registry 不一致的问题。它的输出应与 `UsdPrim` 的实际 authored state 分开分析：前者是声明和 fallback，后者是场景数据和 composition 结果。</p>
+      <p class="en">In practice, the registry is useful for tools and diagnostics: checking registered schema type names, API schema applicability, composed prim definitions, and mismatches between generated schema data and runtime behavior.</p>
+      <p class="zh">如果 `FindSchemaInfo()` 返回空、`FindAppliedAPIPrimDefinition()` 找不到定义，或 `BuildComposedPrimDefinition()` 没有包含预期属性，排查顺序通常是：先确认插件和 schema-defining module 是否被加载，再确认 `schema.usda` 到 `generatedSchema.usda` 的生成结果是否包含该 schema，接着检查 exact `TfToken` 名称、schema family/version 选择和 API schema instance name，最后再看 `UsdPrim` 上是否真的应用了对应 API schema。这个顺序能避免把注册失败误判成 composition 或 layer authoring 问题。</p>
+      <p class="en">A practical debugging order is plugin/schema-module registration, generated schema contents, exact token names, schema family/version lookup, API schema instance names, and finally whether the prim actually has the relevant applied API schema.</p>
+      <p class="zh">对于工具作者，本页也说明了 registry 层适合做“能力发现”和“定义解释”：可以用它生成 UI 中的属性列表、验证 API schema 是否允许应用到某类 prim、解释 fallback value 从哪里来，或在导出器中把 schema 声明与实际 authored data 分开报告。不要用 registry 的 prim definition 代替对 stage 的读取；真正的运行时值仍要通过 `UsdPrim`、`UsdAttribute`、composition 和 time samples 查询。</p>
+      <p class="en">For tool authors, the registry supports capability discovery and schema-definition explanation, but authored runtime values still come from stage and prim queries.</p>
+      <p class="zh">还要注意，registry 依赖插件和生成文件提供 schema metadata，但它本身不是插件发现流程的全部。插件未加载、类型未声明、`TfType` 未注册、生成文件内容不匹配，都会表现为 registry 查不到信息；而 schema facade 类可以编译通过，也不代表运行时注册表中一定存在完整 prim definition。</p>
+      <p class="en">The registry depends on plugin-provided generated schema metadata, but a compiled schema facade alone does not guarantee a complete runtime prim definition.</p>
+      <p class="zh">结论：先查定义，再查场景。</p>
+      <p class="en">Diagnostic summary: check definitions before scene data.</p>
+      <p class="zh">因此，读 `UsdSchemaRegistry Class Reference` 时的主线是：先理解 singleton registry 的角色，再看 `SchemaInfo` 和 `VersionPolicy` 如何描述 schema identity，接着区分 concrete/abstract/applied API 三类 prim definition 查询，最后用 `BuildComposedPrimDefinition()` 和 API schema 辅助接口解释最终 schema 定义如何组合。所有 class name、method name、token literal、header name 和 link 都应按英文原样保留。</p>
+      <p class="en">The reading path is: singleton registry, schema identity via `SchemaInfo` and `VersionPolicy`, prim-definition lookup by schema kind, composed definitions, and API-schema application rules.</p>
       <h3>术语对照 / Terms</h3>
       <ul>
-        <li><span class="zh">schema 注册表：</span><span class="en">schema registry</span></li>
-        <li><span class="zh">IsA schema：</span><span class="en">IsA schema</span></li>
+        <li><span class="zh">USD schema 注册表：</span><span class="en">UsdSchemaRegistry / schema registry</span></li>
+        <li><span class="zh">schema 注册信息：</span><span class="en">UsdSchemaRegistry::SchemaInfo</span></li>
+        <li><span class="zh">版本选择策略：</span><span class="en">VersionPolicy</span></li>
+        <li><span class="zh">具体类型 schema：</span><span class="en">concrete `IsA` schema</span></li>
+        <li><span class="zh">抽象 schema：</span><span class="en">abstract schema</span></li>
         <li><span class="zh">已应用 API schema：</span><span class="en">applied API schema</span></li>
-        <li><span class="zh">prim 定义：</span><span class="en">prim definition</span></li>
-        <li><span class="zh">generatedSchema.usda：</span><span class="en">generatedSchema.usda</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-132">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`UsdSchemaRegistry` 是访问 USD `IsA` schema、applied API schema、schema type information 和 prim definitions 的 singleton registry。它把 `schema.usda` / `generatedSchema.usda` 中的声明数据转换为运行时可查询的 schema 信息。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdSchemaRegistry while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`FindConcretePrimDefinition()`、`FindAbstractPrimDefinition()` 和 `FindAppliedAPIPrimDefinition()` 分别面向 concrete typed schema、abstract schema 和 applied API schema 的 prim definition 查询。</span></li>
-        <li><span class="zh">`BuildComposedPrimDefinition()` 用于组合 prim type 和 applied API schemas 后的定义；这解释了为什么实际 prim 可用属性可能来自多个 schema 源。</span></li>
-        <li><span class="zh">`FindSchemaInfo()` 与 `FindSchemaInfosInFamily()` 关注 schema identity、family 和 version；遇到 versioned schema 时要结合 `VersionPolicy` 读。</span></li>
-        <li><span class="zh">`GetAPISchemaTypeName()`、`GetAPISchemaCanOnlyApplyToTypeNames()` 和 auto-apply API schema 相关接口用于判断 API schema 的应用规则和限制。</span></li>
-        <li><span class="zh">`UsdSchemaRegistry` 服务于 schema 发现与定义查询，不直接修改 stage；它回答“某 schema 声明了什么”，而不是“某个 prim 当前 author 了什么值”。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">USD schema 注册表：</span><span class="en">UsdSchemaRegistry</span></li>
-        <li><span class="zh">单例注册表：</span><span class="en">singleton registry</span></li>
-        <li><span class="zh">IsA 类型 schema：</span><span class="en">IsA schema</span></li>
-        <li><span class="zh">已应用 API schema：</span><span class="en">applied API schema</span></li>
-        <li><span class="zh">prim 定义：</span><span class="en">prim definition</span></li>
-        <li><span class="zh">版本策略：</span><span class="en">VersionPolicy</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-141">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`UsdSchemaRegistry` 是 USD schema type information 和 prim definitions 的 singleton registry；它为注册的 Usd `IsA` schema 与 applied API schema 提供类型信息、schema family/version 查询、prim definition 构建以及 generated schema fallback 数据访问。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdSchemaRegistry while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">该 registry 的数据来自每个 schema-defining module 中由 `schema.usda` 经 `usdGenSchema` 处理生成的 `generatedSchema.usda`；阅读时应把 C++ 类型、schema.usda 定义和生成的 prim definition 联系起来。</span></li>
-        <li><span class="zh">`FindConcretePrimDefinition()`、`FindAbstractPrimDefinition()` 与 `FindAppliedAPIPrimDefinition()` 分别服务 concrete typed schema、abstract schema 和 applied API schema，不要混用三者的语义。</span></li>
-        <li><span class="zh">`BuildComposedPrimDefinition()` 负责把 primary schema 与 applied API schemas 组合成一个 prim definition，可用于理解最终属性、metadata 和 fallback 如何汇总。</span></li>
-        <li><span class="zh">`VersionPolicy`、`FindSchemaInfo()` 和 `FindSchemaInfosInFamily()` 用于 schema family/version 解析；读取版本化 schema 时应保留 exact type name 与 family name 的区别。</span></li>
-        <li><span class="zh">`GetAPISchemaCanOnlyApplyToTypeNames()`、`GetAPISchemaTypeName()` 和 `CollectAddtionalAutoApplyAPISchemasFromPlugins()` 与 API schema 的可应用范围、type name 映射和插件 auto-apply 规则相关。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">模式注册表：</span><span class="en">schema registry</span></li>
-        <li><span class="zh">主对象定义：</span><span class="en">prim definition</span></li>
-        <li><span class="zh">生成模式文件：</span><span class="en">generatedSchema.usda</span></li>
-        <li><span class="zh">具体模式：</span><span class="en">concrete schema</span></li>
-        <li><span class="zh">应用型 API 模式：</span><span class="en">applied API schema</span></li>
-        <li><span class="zh">版本策略：</span><span class="en">VersionPolicy</span></li>
+        <li><span class="zh">prim 定义：</span><span class="en">prim definition / UsdPrimDefinition</span></li>
+        <li><span class="zh">生成式 schema 数据：</span><span class="en">generatedSchema.usda</span></li>
+        <li><span class="zh">可应用类型限制：</span><span class="en">GetAPISchemaCanOnlyApplyToTypeNames()</span></li>
+        <li><span class="zh">组合后的 prim 定义：</span><span class="en">BuildComposedPrimDefinition()</span></li>
       </ul>
     </section>
     <section>

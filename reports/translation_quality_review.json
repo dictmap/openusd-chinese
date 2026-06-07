@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T08:52:56.199Z",
+  "generated_at": "2026-06-07T09:14:51.900Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 349,
-    "bilingual_complete": 57
+    "bilingual_draft": 348,
+    "bilingual_complete": 58
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 338,
-    "good_bilingual": 57
+    "draft_needs_translation": 337,
+    "good_bilingual": 58
   },
   "focus_batch": [
     {
@@ -2354,29 +2354,29 @@
     },
     {
       "index": 52,
-      "title": "类参考草稿：UsdSchemaRegistry Class / UsdSchemaRegistry Class",
+      "title": "完整双语参考：UsdSchemaRegistry Class / UsdSchemaRegistry Class",
       "output": "full_site/api/class_usd_schema_registry.html",
       "official_url": "https://openusd.org/release/api/class_usd_schema_registry.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 64,
-      "enBlockCount": 51,
-      "zhChars": 649,
-      "enLetters": 2527,
-      "bodyChineseChars": 724,
+      "grade": "good_bilingual",
+      "zhBlockCount": 56,
+      "enBlockCount": 58,
+      "zhChars": 1448,
+      "enLetters": 4117,
+      "bodyChineseChars": 1501,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 UsdSchemaRegistry Class Reference 补充中文优先的类职责、读取重点、关键属性/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`UsdSchemaRegistry` 是 singleton registry，用于访问已注册 USD `IsA` schema 和 applied API schema 的 schema type information 与 prim definitions。"
+        "本页已按完整双语参考页整理：中文先解释 `UsdSchemaRegistry` 的职责边界、schema metadata 来源、prim definition 查询、API schema 应用规则和调试含义；英文 API 名称、方法名、类型名、token、链接和必要英文摘录保持原样，便于与官方 Doxygen 页面逐项核对。",
+        "官方定义的第一层含义是“singleton registry”：`UsdSchemaRegistry` 是 USD schema 系统的集中查询入口，不是一个会在 stage 上写入意见的 authoring API。它回答的是“某个已注册 schema 声明了哪些类型信息、属性、metadata、fallback 和 prim definition”，而不是“某个 `UsdPrim` 当前在 composition 后持有什么 authored value”。调试时如果看到 prim 上没有预期属性，应先区分是 schema definition 没注册、API schema 没应用、还是 layer 中没有 authored opinion。",
+        "本页中的 `IsA` schema 指 concrete typed schema，例如一个 prim 的 primary type 所对应的 schema；applied API schema 则是通过 `apiSchemas` 或 `UsdPrim::AddAppliedSchema(const TfToken&) const` 这样的路径附加到 prim 上的行为或属性集合。`UsdSchemaRegistry` 同时覆盖这两类 schema，因为最终可见的 prim definition 往往来自 primary schema 与多个 applied API schema 的组合。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, reading guidance, key attribute/method groups, and terminology for UsdSchemaRegistry Class Reference while retaining English page names, class names, method names, attribute names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page is promoted to a complete bilingual reference: the Chinese text explains the role boundaries of `UsdSchemaRegistry`, schema metadata sources, prim-definition lookup, API-schema application rules, and debugging implications while preserving original English API names, method names, type names, tokens, links, and required source excerpts for comparison with the official Doxygen page.",
+        "The official description starts with the idea of a singleton registry: `UsdSchemaRegistry` is the central lookup point for USD schema metadata, not an authoring API that writes opinions to a stage."
       ]
     },
     {
