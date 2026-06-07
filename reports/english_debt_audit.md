@@ -1,6 +1,6 @@
 # OpenUSD English Debt Audit
 
-Generated: 2026-06-07T18:20:29.731Z
+Generated: 2026-06-07T18:38:01.253Z
 
 Purpose:
 
@@ -12,16 +12,16 @@ Purpose:
 ## Counts
 
 - Total pages: 406
-- good_bilingual: 91
-- review_ready_zh: 28
+- good_bilingual: 92
+- review_ready_zh: 29
 - review_needs_zh_debt: 63
 - API complete: 72
 - API review_ready_zh: 12
-- Release complete: 19
-- Release review_ready_zh: 16
+- Release complete: 20
+- Release review_ready_zh: 17
 - Complete pages with high/very high ratio diagnostic: 10
-- bilingual_draft: 315
-- draft_needs_translation: 304
+- bilingual_draft: 314
+- draft_needs_translation: 303
 - draft_template_only: 11
 
 ## Complete Pages Still Carrying English Debt
@@ -81,7 +81,6 @@ Purpose:
 | 298 | `full_site/release/search.html` | release | release_or_tutorial | 64 | 1/4 | 4.3 | high | draft |
 | 294 | `full_site/release/press_opensource_announce.html` | release | release_or_tutorial | 585 | 7/4 | 4.55 | high | draft |
 | 333 | `full_site/release/user_guides/schemas/usdLux/LightAPI.html` | release | release_or_tutorial | 567 | 6/4 | 3.89 | medium | draft |
-| 320 | `full_site/release/user_guides/collections_and_patterns.html` | release | release_or_tutorial | 549 | 7/4 | 3.62 | medium | draft |
 | 334 | `full_site/release/user_guides/schemas/usdLux/LightFilter.html` | release | release_or_tutorial | 589 | 6/4 | 3.6 | medium | draft |
 | 353 | `full_site/release/user_guides/schemas/usdRender/overview.html` | release | release_or_tutorial | 577 | 7/4 | 3.48 | medium | draft |
 | 288 | `full_site/release/intro_to_openexec.html` | release | release_or_tutorial | 608 | 7/4 | 3.36 | medium | draft |
@@ -98,6 +97,7 @@ Purpose:
 | 374 | `full_site/release/user_guides/schemas/usdVol/overview.html` | release | release_or_tutorial | 592 | 7/4 | 2.58 | medium | draft |
 | 314 | `full_site/release/tut_usd_tutorials.html` | release | release_or_tutorial | 623 | 6/4 | 2.57 | medium | draft |
 | 376 | `full_site/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html` | release | release_or_tutorial | 631 | 7/4 | 2.57 | medium | draft |
+| 341 | `full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html` | release | release_or_tutorial | 697 | 6/4 | 2.56 | medium | draft |
 
 Policy:
 

@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T18:20:09.807Z",
+  "generated_at": "2026-06-07T18:37:34.411Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 315,
-    "bilingual_complete": 91
+    "bilingual_draft": 314,
+    "bilingual_complete": 92
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 304,
-    "good_bilingual": 91
+    "draft_needs_translation": 303,
+    "good_bilingual": 92
   },
   "focus_batch": [
     {
@@ -9581,29 +9581,29 @@
     },
     {
       "index": 320,
-      "title": "页面草稿：Collections and Patterns / Collections and Patterns",
+      "title": "完整双语参考：Collections and Patterns / Collections and Patterns",
       "output": "full_site/release/user_guides/collections_and_patterns.html",
       "official_url": "https://openusd.org/release/user_guides/collections_and_patterns.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 24,
-      "enBlockCount": 18,
-      "zhChars": 549,
-      "enLetters": 1987,
-      "bodyChineseChars": 617,
+      "grade": "good_bilingual",
+      "zhBlockCount": 42,
+      "enBlockCount": 42,
+      "zhChars": 1831,
+      "enLetters": 3132,
+      "bodyChineseChars": 1891,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。",
-        "本区块针对 Collections and Patterns 补充中文优先的阅读路径、关键概念说明和术语对照；英文页面名、链接、代码、命令和原文摘录继续保留，便于和官方文档逐项核对。",
-        "Collections 用来描述场景中一组异质对象，可以直接包含 prim、property，也可以包含其他 collection；它是后续 light-linking、material binding 等批量关系表达的基础。"
+        "本页是 OpenUSD release 用户指南的完整双语参考页，中文优先解释 `CollectionAPI` 的建模意图、两种 membership mode、查询路径、path expression 语法和常见误读，同时保留官方英文标题、API 名称、属性名、token、path 字面量、代码片段和链接，便于和官方页面逐项核对。",
+        "`Collections and Patterns` 解决的是“如何在 USD 场景里表达一组对象”的问题。这里的一组对象可以是 prim，也可以是 property，还可以通过包含其他 collection 来组合更大的逻辑集合。它不是单纯的目录分组功能，而是一种面向下游工作流的集合表达机制，常见用途包括 light-linking、material binding、渲染选择、批量检查和工具侧的逻辑过滤。",
+        "官方页首先强调 collection 的灵活性：一个模型的“逻辑部件”不一定沿 scene hierarchy 连续分布，某个灯光影响的几何体也可能来自多个 layer 或多个命名空间分支。如果只靠父子层级，很难表达这些跨层级、跨类型、跨资产的集合。因此 `CollectionAPI` 提供了一个独立于物理层级的 membership 描述层，让工具可以用同一套规则询问“哪些对象属于这个集合”。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.",
-        "This section adds Chinese-first reading guidance for Collections and Patterns while retaining the English page name, links, code, commands, and source excerpts for comparison with the official documentation."
+        "This local bilingual page explains the OpenUSD Collections and Patterns guide in Chinese first while retaining English API names, property names, tokens, path literals, code snippets, and links for comparison.",
+        "Collections describe heterogeneous groups of scene objects, including prims, properties, and other collections."
       ]
     },
     {

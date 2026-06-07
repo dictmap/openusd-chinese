@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：Collections and Patterns / Collections and Patterns</title>
+  <title>完整双语参考：Collections and Patterns / Collections and Patterns</title>
   <link rel="icon" href="../../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
@@ -12,91 +12,170 @@
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
     .zh{display:block;font-weight:650;color:#17324d}
     .en{display:block;color:#55616f;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
     pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
     code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：Collections and Patterns / Collections and Patterns</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：Collections and Patterns / Collections and Patterns</h1>
     <div class="meta">https://openusd.org/release/user_guides/collections_and_patterns.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+      <p class="zh">本页是 OpenUSD release 用户指南的完整双语参考页，中文优先解释 `CollectionAPI` 的建模意图、两种 membership mode、查询路径、path expression 语法和常见误读，同时保留官方英文标题、API 名称、属性名、token、path 字面量、代码片段和链接，便于和官方页面逐项核对。</p>
+      <p class="en">This local bilingual page explains the OpenUSD Collections and Patterns guide in Chinese first while retaining English API names, property names, tokens, path literals, code snippets, and links for comparison.</p>
     </section>
-    <section data-cn-refinement="release-guide-quality-pass-003">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Collections and Patterns 补充中文优先的阅读路径、关键概念说明和术语对照；英文页面名、链接、代码、命令和原文摘录继续保留，便于和官方文档逐项核对。</p>
-      <p class="en">This section adds Chinese-first reading guidance for Collections and Patterns while retaining the English page name, links, code, commands, and source excerpts for comparison with the official documentation.</p>
-      <ul>
-        <li><span class="zh">Collections 用来描述场景中一组异质对象，可以直接包含 prim、property，也可以包含其他 collection；它是后续 light-linking、material binding 等批量关系表达的基础。</span></li>
-        <li><span class="zh">本页最重要的区分是 relationship-mode 与 expression-mode：前者用显式关系目标维护包含和排除集合，后者用 pattern expression 按路径或模式计算成员。</span></li>
-        <li><span class="zh">一个 collection 不应同时混用两种模式，collection 的 expansion rule、include/exclude 关系和 membershipExpression 需要按当前模式理解，否则容易得到和预期不一致的成员结果。</span></li>
-        <li><span class="zh">阅读代码片段时保留 CollectionAPI、relCollection、expCollection 等名称不翻译；中文层只说明它们在集合声明、成员计算和下游消费中的角色。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
+
+    <section data-cn-complete="release-user-guide-collections-and-patterns-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`Collections and Patterns` 解决的是“如何在 USD 场景里表达一组对象”的问题。这里的一组对象可以是 prim，也可以是 property，还可以通过包含其他 collection 来组合更大的逻辑集合。它不是单纯的目录分组功能，而是一种面向下游工作流的集合表达机制，常见用途包括 light-linking、material binding、渲染选择、批量检查和工具侧的逻辑过滤。</p>
+      <p class="en">Collections describe heterogeneous groups of scene objects, including prims, properties, and other collections.</p>
+
+      <p class="zh">官方页首先强调 collection 的灵活性：一个模型的“逻辑部件”不一定沿 scene hierarchy 连续分布，某个灯光影响的几何体也可能来自多个 layer 或多个命名空间分支。如果只靠父子层级，很难表达这些跨层级、跨类型、跨资产的集合。因此 `CollectionAPI` 提供了一个独立于物理层级的 membership 描述层，让工具可以用同一套规则询问“哪些对象属于这个集合”。</p>
+      <p class="en">Collections support workflows that need flexible sets of objects beyond simple scene hierarchy.</p>
+
+      <p class="zh">成员关系有两条路线。第一条是 relationship-mode，它用 target-based rules 表示包含和排除，核心属性是 `rel collection:instanceName:includes`、`rel collection:instanceName:excludes`、`bool collection:instanceName:includeRoot` 和 `uniform token collection:instanceName:mode`。第二条是 expression-mode，也叫 pattern-based collections，它用 `pathExpression collection:instanceName:membershipExpression` 来匹配对象，并把 `mode` 设置为 `expression`。</p>
+      <p class="en">Membership can be authored with relationship-mode include/exclude rules or expression-mode path expressions.</p>
+
+      <p class="zh">同一个 collection instance 不能同时按两种模式工作。即使文件里同时写了 relationship-mode 相关属性和 `membershipExpression`，实际消费时也只能根据 `mode` 或 automatic fallback 选择一种解释方式。这个规则很关键：如果你以为 `includes` 和 `membershipExpression` 会叠加，就会误判最终 membership。审查 collection 时，第一步应先确认 `collection:instanceName:mode` 或 fallback 推导出的模式。</p>
+      <p class="en">A collection works in one membership mode at a time; authored properties for the inactive mode are ignored.</p>
+
+      <p class="zh">`CollectionAPI` 是 multiple-apply schema，因此同一个 prim 可以应用多次，例如 `CollectionAPI:relCollection` 和 `CollectionAPI:expCollection`。`instanceName` 就是冒号后的实例名，它会进入属性命名空间，形成 `collection:relCollection:includes` 或 `collection:expCollection:membershipExpression` 这样的属性。阅读时不要把 `relCollection` 或 `expCollection` 翻译成普通说明词，它们是 schema instance name，会直接影响属性名。</p>
+      <p class="en">`CollectionAPI` is a multiple-apply schema; the instance name becomes part of the collection property namespace.</p>
+
+      <p class="zh">Basic Usage 的创建流程可以拆成两步。第一步是在承载 collection 的 prim 上应用 `CollectionAPI`，可以在 USD 数据里通过 `prepend apiSchemas = ["CollectionAPI:myCollection"]` 写入，也可以在 Python 里用 `Usd.CollectionAPI.Apply(collectionPrim, "myCollection")`。第二步是根据选择的模式配置 membership：relationship-mode 写 `includes` / `excludes`，expression-mode 写 `membershipExpression`，同时用 `mode` 明确当前 collection 的解释方式。</p>
+      <p class="en">Basic usage applies `CollectionAPI` to a prim, then configures membership according to the chosen mode.</p>
+
+      <p class="zh">查询流程也分层。先调用 `ComputeMembershipQuery()` 得到 `CollectionMembershipQuery`，它捕获当前 collection 配置解析后的查询规则；再用 `Usd.CollectionAPI.ComputeIncludedObjects(query, stage)` 或 `ComputeIncludedPaths(query, stage)` 在具体 stage 上计算对象或路径。若 collection 配置发生变化，应重新计算 query。若已经在遍历场景，也可以用 `query.IsPathIncluded(path)` 判断某个 path 是否属于集合。</p>
+      <p class="en">Querying first computes a `CollectionMembershipQuery`, then uses it to compute included objects, paths, or path membership.</p>
+
+      <p class="zh">默认查询只匹配 `Usd.PrimDefaultPredicate` 下的对象。如果需要匹配 abstract class prims，必须传入包含 abstract prims 的 traversal predicate，例如 `Usd.PrimAllPrimsPredicate`。这个细节常见于资产库、class-based 复用或模板层检查：collection 规则看起来正确，但查询结果缺少 class prim，原因可能不是 membership 写错，而是 traversal predicate 过滤掉了目标。</p>
+      <p class="en">`ComputeIncludedObjects()` and `ComputeIncludedPaths()` accept a traversal predicate; matching abstract prims requires an appropriate predicate.</p>
+
+      <p class="zh">relationship-mode 的 mental model 是“先包含，再按规则排除，并按 `expansionRule` 展开”。`includes` 可以直接 target prim 或 property，也可以通过 target 另一个 collection property 来合并其他 collection 的规则。合并并不保证对方集合的所有内容都保留，因为本集合的 `excludes` 仍可能排除其中一部分。若多个 include target 对同一路径产生冲突，后加入的 target 通常更强。</p>
+      <p class="en">Relationship-mode uses include and exclude targets, and included collection rules may be merged rather than copied wholesale.</p>
+
+      <p class="zh">`excludes` 用来排除已包含路径下的对象，可以 target prim 或 property，但不能 target 另一个 collection。官方这样限制是为了让 membership 推理保持简单、高效、可解释。孤立的 excluded path 不会让额外对象进入集合，但可能拖慢 membership 查询；如果想表达“包含全部但排除少数路径”，relationship-mode 允许通过非 descendant 的 exclude 触发 pseudo-root `/` 的包含语义，并可用 `includeRoot` 表示 root 是否作为 included target 参与计算。</p>
+      <p class="en">`excludes` removes paths under included targets; special handling supports collections that mean everything except some paths.</p>
+
+      <p class="zh">`expansionRule` 决定 target 如何展开。`expandPrims` 表示包含 include target 下的 descendant prims，并保留被直接 include 的 property path；`expandPrimsAndProperties` 还会把 included prims 上的所有 properties 纳入集合；`explicitOnly` 只保留明确 include 且未被 exclude 的路径。调试 membership 时，必须同时看 `includes`、`excludes`、`includeRoot`、`mode` 和 `expansionRule`，只看其中一个属性很容易误判。</p>
+      <p class="en">`expansionRule` controls whether prim descendants, properties, or only explicit targets belong to the collection.</p>
+
+      <p class="zh">pattern-based collections 适合层级复杂、规则随命名和 schema 特征变化的场景。它不用列出 include/exclude target，而是 author 一个 `membershipExpression`，让 `CollectionAPI` 用 path expression 在 stage 中匹配对象。light-linking 是典型例子：灯光和几何体可能分布在许多 layer 与 hierarchy 中，手写 include/exclude 容易漏掉未来新增对象；用路径通配、predicate 和逻辑操作可让规则更具适应性。</p>
+      <p class="en">Pattern-based collections use `membershipExpression` path expressions and are useful when hierarchy and composition are complex.</p>
+
+      <p class="zh">path expression 由 patterns、operators 和 expression references 组成。pattern 遵循 `Sdf.Path` 语法并可带 glob-style wildcards：`*` 匹配单个 path segment 内的零个或多个字符，`?` 匹配一个字符，`//` 匹配任意长度的层级序列。它们是 USD path 匹配语义，不是文件系统 glob；例如 `/primA//leafB` 可以跨多级匹配 descendant path。</p>
+      <p class="en">Path expressions combine `Sdf.Path`-like patterns, glob-style wildcards, operators, and expression references.</p>
+
+      <p class="zh">predicate functions 给 pattern 加上额外条件。`{hasAPI:MaterialBindingAPI}` 可要求匹配对象应用了指定 API schema；`{abstract}` 可匹配 abstract prim；`{specifier:class,over}` 可限制 specifier；`{variant(myVariantSet=blue)}` 可按 variant selection 过滤。predicate 还可以用 `not`、`and`、`or` 和 parentheses 组合，例如用 `hasAPI` 同时排除 `isa:Sphere` 或 `isa:Cube` 的对象。</p>
+      <p class="en">Predicate functions such as `hasAPI`, `abstract`, `specifier`, `isa`, and `variant` refine path matches.</p>
+
+      <p class="zh">expression operators 提供集合代数：`+` 是 union，空白也可表示 implied union；`&` 是 intersection；`-` 是 difference；`~` 是 complement；parentheses 用来控制组合顺序。把这些符号看成集合运算比看成字符串拼接更准确。表达式过于复杂时，建议先用简单 pattern 验证，再逐步加 predicate 和 operator，避免一次性写出难以诊断的 membershipExpression。</p>
+      <p class="en">Operators provide set algebra: union, intersection, difference, complement, and grouping.</p>
+
+      <p class="zh">expression references 用 `%/primPath:name` 或 `%:name` 引用其他 expression，适合复用基础集合。例如先定义 allFruit，再在 allFood 中引用它并加上 cheese、meat 等 pattern。注意，expression-mode 不能直接引用 relationship-mode collection；如果需要互通，应先把 relationship-mode membership query 转成等价 path expression，再把该表达式写入 `membershipExpression`。</p>
+      <p class="en">Expression references reuse named expressions, but expression-mode cannot directly reference relationship-mode collections.</p>
+
+      <p class="zh">`%_` 是 weaker expression reference，用来从较弱 composition arc 中取同名 expression opinion 并合成当前规则。它适合 layer 覆盖场景：强层写入新 membershipExpression，同时希望保留 referenced layer 中的较弱表达式结果。若 OpenUSD 无法解析该 weaker expression，`%_` 会被替换为空表达式，因此调试时要检查 composition 后的完整 stage，而不是只看当前 layer 文本。</p>
+      <p class="en">The `%_` syntax references weaker expression opinions from composition and resolves to empty if unavailable.</p>
+
+      <p class="zh">OpenUSD 会在可能时简化表达式，例如把某些 difference 形式归约为 complement 形式；如果需要查看简化后的文本，可以使用 `Sdf.PathExpression.GetText()`。同时，`Sdf.PathExpression.Nothing()` 表示匹配 nothing，`Sdf.PathExpression.Everything()` 等价于 `//`。这些 API 对调试 expression-mode collection 很有用，因为它们能把最终用于匹配的表达式显式化。</p>
+      <p class="en">`Sdf.PathExpression` can expose simplified expressions and provides convenience values for nothing and everything.</p>
+
+      <p class="zh">配置 pattern-based collection 时，关键属性是 `uniform pathExpression collection:instanceName:membershipExpression` 与 `uniform token collection:instanceName:mode = "expression"`。`expansionRule` 在这里也存在，但语义略有不同：`expandPrims` 表示 `ComputeIncludedObjects()` 和 `ComputeIncludedPaths()` 只把 matching prims 视作成员；`expandPrimsAndProperties` 会连同所有 properties 纳入；`explicitOnly` 对 expression-mode 等价于 `expandPrims`。</p>
+      <p class="en">Pattern-based configuration uses `membershipExpression`, `mode = "expression"`, and an expansion rule for prim/property matching.</p>
+
+      <p class="zh">如果已经有 relationship-mode collection，但想在 expression-mode 里引用等价规则，可以先调用 `ComputeMembershipQuery()`，再用 `Usd.ComputePathExpressionFromCollectionMembershipQueryRuleMap(collectionQuery.GetAsPathExpansionRuleMap())` 计算等价 expression。这样可以把 include/exclude 规则迁移到 `membershipExpression`，但这是一种显式转换，不是自动混用两种模式。</p>
+      <p class="en">Relationship-mode collections can be converted to an equivalent expression with `ComputePathExpressionFromCollectionMembershipQueryRuleMap()`.</p>
+
+      <p class="zh">本页最容易误读的地方有三个。第一，把 collection 当成 scene hierarchy 的替代品；实际上它是逻辑 membership 层。第二，把 `mode` 留空后忘记 automatic fallback 会根据 includes/excludes 或 includeRoot 推断 relationship-mode。第三，认为 pattern expression 可以引用任何 collection；实际上 expression references 只能直接引用其他 expression，relationship-mode 需要先转换成等价 expression。</p>
+      <p class="en">Common mistakes include treating collections as hierarchy, ignoring automatic mode fallback, and mixing relationship-mode with expression references.</p>
+
+      <p class="zh">完整读懂本页后，读者应能判断：什么时候用 explicit include/exclude，什么时候用 pattern；如何应用 `CollectionAPI` 并命名 instance；如何重新计算 `CollectionMembershipQuery`；如何用 `ComputeIncludedObjects`、`ComputeIncludedPaths` 或 `IsPathIncluded` 消费结果；以及当匹配结果异常时，应检查 `mode`、`expansionRule`、predicate、traversal predicate 和 composition 后的 resolved expression。</p>
+      <p class="en">A complete reading covers mode choice, API application, query computation, result consumption, and debugging of membership results.</p>
+    </section>
+
+    <section>
+      <h2>操作路径 / Workflow Checklist</h2>
+      <ol>
+        <li><span class="zh">选择承载 prim：决定哪个 prim 持有 `CollectionAPI:instanceName`，并保持 instanceName 可读、稳定。</span><span class="en">Choose the prim that carries `CollectionAPI:instanceName`.</span></li>
+        <li><span class="zh">选择 membership mode：稳定、可审计的明确列表用 `relationship`；层级复杂或规则化匹配用 `expression`。</span><span class="en">Choose `relationship` for explicit rules or `expression` for pattern matching.</span></li>
+        <li><span class="zh">配置属性：relationship-mode 写 `includes`、`excludes`、`includeRoot`、`expansionRule`；expression-mode 写 `membershipExpression`、`mode`、`expansionRule`。</span><span class="en">Author the properties required by the selected mode.</span></li>
+        <li><span class="zh">计算 query：调用 `ComputeMembershipQuery()`，配置变化后重新计算。</span><span class="en">Call `ComputeMembershipQuery()` and recompute after configuration changes.</span></li>
+        <li><span class="zh">消费结果：用 `ComputeIncludedObjects()`、`ComputeIncludedPaths()` 或 `IsPathIncluded()` 查询具体 stage 上的 membership。</span><span class="en">Use the query to compute objects, paths, or path membership.</span></li>
+        <li><span class="zh">调试异常：同时检查 `mode` fallback、`expansionRule`、predicate、abstract prim traversal 和 expression references。</span><span class="en">Debug mode fallback, expansion, predicates, traversal predicates, and references together.</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>代码与配置摘录 / Code and Configuration Excerpts</h2>
+      <pre><code>def "CollectionPrim" (
+    prepend apiSchemas = ["CollectionAPI:relCollection", "CollectionAPI:expCollection"]
+)
+{
+    rel collection:relCollection:includes = [
+        &lt;/World/Clothing/Shirts&gt;,
+        &lt;/World/Clothing/Pants&gt;,
+    ]
+    uniform token collection:relCollection:mode = "relationship"
+
+    pathExpression collection:expCollection:membershipExpression = "/World/Clothing/Shirts/Red*//"
+    uniform token collection:expCollection:mode = "expression"
+}</code></pre>
+      <pre><code>collectionPrim = stage.DefinePrim("/CollectionPrim")
+myCollection = Usd.CollectionAPI.Apply(collectionPrim, "myCollection")
+query = myCollection.ComputeMembershipQuery()
+matchedObjects = Usd.CollectionAPI.ComputeIncludedObjects(query, stage)
+matchedPaths = Usd.CollectionAPI.ComputeIncludedPaths(query, stage)</code></pre>
+      <pre><code>pathExpression collection:myCollection:membershipExpression = "/World/Light*{hasAPI:LightAPI}"
+uniform token collection:myCollection:mode = "expression"</code></pre>
+    </section>
+
+    <section>
+      <h2>术语对照 / Terms</h2>
       <ul>
         <li><span class="zh">集合 API schema：</span><span class="en">CollectionAPI</span></li>
+        <li><span class="zh">多次应用 schema：</span><span class="en">multiple-apply schema</span></li>
         <li><span class="zh">关系模式：</span><span class="en">relationship-mode</span></li>
         <li><span class="zh">表达式模式：</span><span class="en">expression-mode</span></li>
-        <li><span class="zh">成员表达式：</span><span class="en">membershipExpression</span></li>
-        <li><span class="zh">灯光链接：</span><span class="en">light-linking</span></li>
+        <li><span class="zh">包含关系：</span><span class="en">collection:instanceName:includes</span></li>
+        <li><span class="zh">排除关系：</span><span class="en">collection:instanceName:excludes</span></li>
+        <li><span class="zh">成员表达式：</span><span class="en">collection:instanceName:membershipExpression</span></li>
+        <li><span class="zh">展开规则：</span><span class="en">collection:instanceName:expansionRule</span></li>
+        <li><span class="zh">成员查询对象：</span><span class="en">CollectionMembershipQuery</span></li>
+        <li><span class="zh">路径表达式：</span><span class="en">Sdf.PathExpression</span></li>
       </ul>
     </section>
-    <section data-cn-refinement="release-quality-pass-111">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`Collections and Patterns` 说明如何用 `CollectionAPI` 描述场景中的成员集合。核心是区分 relationship-mode 与 expression-mode：前者通过显式 include/exclude 关系维护成员，后者通过 `membershipExpression` 和路径模式动态计算成员。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for Collections and Patterns while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">collection 可以包含 prim、property，也可以包含其他 collection；它常被 light-linking、material binding、visibility 控制和批量工具用于表达一组异质对象。</span></li>
-        <li><span class="zh">relationship-mode 使用 `collection:name:includes` 和 `collection:name:excludes` 关系来维护成员。它清晰、可审计，适合成员较稳定或需要明确列举的集合。</span></li>
-        <li><span class="zh">expression-mode 使用 `pathExpression collection:name:membershipExpression` 按路径模式计算成员。它适合大规模命名空间匹配，但读者必须理解 pattern 语法和 expansion rule。</span></li>
-        <li><span class="zh">同一个 collection 不应混用两种模式。`collection:name:mode` 的值决定消费端应按关系目标还是表达式计算成员，混淆会导致成员结果不可预测。</span></li>
-        <li><span class="zh">示例里的 `CollectionAPI:relCollection`、`CollectionAPI:expCollection`、`/World/Clothing/Shirts/Red*//` 都应原样保留；中文解释只补充成员计算和下游消费语义。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">集合 API schema：</span><span class="en">CollectionAPI</span></li>
-        <li><span class="zh">关系目标模式：</span><span class="en">relationship-mode</span></li>
-        <li><span class="zh">表达式模式：</span><span class="en">expression-mode</span></li>
-        <li><span class="zh">成员表达式：</span><span class="en">membershipExpression</span></li>
-        <li><span class="zh">包含关系目标：</span><span class="en">includes</span></li>
-        <li><span class="zh">排除关系目标：</span><span class="en">excludes</span></li>
-      </ul>
-    </section>
+
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
-<li><span class="zh">第 1 级标题：Collections and Patterns</span><span class="en">Collections and Patterns</span></li>
+        <li><span class="zh">第 1 级标题：Collections and Patterns</span><span class="en">Collections and Patterns</span></li>
+        <li><span class="zh">主要 section：Basic Usage、Relationship-Mode Collections、Pattern-Based Collections、Path Expressions、Configuring Pattern-Based Collections。</span><span class="en">Main sections include Basic Usage, relationship-mode, pattern-based collections, and path expressions.</span></li>
+        <li><span class="zh">关键调试边界：`mode`、`expansionRule`、traversal predicate、expression references 和 composition 后的 resolved expression。</span><span class="en">Important debugging boundaries include mode, expansion, predicates, references, and composition.</span></li>
       </ul>
     </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">Use collections to describe a group of heterogeneous objects within the scene. Collections can directly identify prims and properties belonging to prims, and can also identify other collections, whose entire contents will then be included in the collection as well.</p>
-<p class="en">Collections are used to facilitate workflows that need a flexible representation of sets of objects in a scene. Example use-cases for collections in OpenUSD include features such as light-linking, where you specify a collection of objects that a given light illuminates, and binding materials to collections, where you can bind a material to a complex collection of logical “parts” of a model. You can even aggregate collections in your workflow by including collections in other collections.</p>
-<p class="en">A collection’s membership is specified in one of two ways. The first way uses target-based rules to specify which objects are included (and excluded) from the collection. Collections configured this way are considered to be in relationship-mode . A second way of specifying membership uses an expression-based syntax to match objects to be included in the collection. Collections configured this way are pattern-based collections and the collection is considered to be in expression-mode . Note that you cannot mix collection configurations. Collections can be configured to work in relationship-mode or expression-mode, but not a mix of the two. You can specify which mode a collection should use via the mode attribute.</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>def &quot;CollectionPrim&quot; ( prepend apiSchemas = [ &quot;CollectionAPI:relCollection&quot; , &quot;CollectionAPI:expCollection&quot; ] ) { # Specify collection membership using &quot;includes&quot; rel collection:relCollection:includes = [ &lt;/World/Clothing/Shirts&gt; , &lt;/World/Clothing/Pants&gt; , ] uniform token collection:relCollection:mode = &quot;relationship&quot; # Specify collection membership using a path expression pathExpression collection:expCollection:membershipExpression = &quot;/World/Clothing/Shirts/Red*//&quot; uniform token collection:expCollection:mode =...</code></pre>
-    </section>
+
     <section>
       <h2>本页链接 / Page Links</h2>
       <ul>
-<li>No same-site document links extracted.</li>
+        <li><a href="schemas/usdLux/LightAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/LightAPI.html">LightAPI</a></li>
+        <li><a href="primvars.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/primvars.html">Primvars</a></li>
+        <li><a href="../wp_usdshade.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdshade.html">UsdShade Material Assignment</a></li>
       </ul>
     </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
