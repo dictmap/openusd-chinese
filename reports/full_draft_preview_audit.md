@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-07T12:00:56.606Z
+Generated: 2026-06-07T12:12:41.120Z
 
-Transient base URL: `http://127.0.0.1:53602/`
+Transient base URL: `http://127.0.0.1:53960/`
 
 Result:
 
 - Passed: true
-- Draft pages: 335
-- Pages checked: 335
-- Passed pages: 335
+- Draft pages: 334
+- Pages checked: 334
+- Passed pages: 334
 - Failed pages: 0
-- Final HTML links: 335
-- Local assets checked: 335
+- Final HTML links: 334
+- Local assets checked: 334
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -207,7 +207,6 @@ Result:
 | true | full_site/api/struct_usd_physics_tokens_type.html | 200 | true | 0 | 0 |
 | true | full_site/api/struct_usd_skel_tokens_type.html | 200 | true | 0 | 0 |
 | true | full_site/api/system_diagnostics_8h_source.html | 200 | true | 0 | 0 |
-| true | full_site/api/tf_page_front.html | 200 | true | 0 | 0 |
 | true | full_site/api/trace_page_front.html | 200 | true | 0 | 0 |
 | true | full_site/api/usd_2usd_2object_8h.html | 200 | true | 0 | 0 |
 | true | full_site/api/usd_geom_page_front.html | 200 | true | 0 | 0 |

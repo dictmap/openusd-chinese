@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T12:00:50.849Z",
+  "generated_at": "2026-06-07T12:12:35.174Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 335,
-    "bilingual_complete": 71
+    "bilingual_draft": 334,
+    "bilingual_complete": 72
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 324,
-    "good_bilingual": 71
+    "draft_needs_translation": 323,
+    "good_bilingual": 72
   },
   "focus_batch": [
     {
@@ -7828,29 +7828,29 @@
     },
     {
       "index": 255,
-      "title": "API 模块草稿：Tf: Tools Foundations / Tf: Tools Foundations",
+      "title": "完整双语参考：Tf: Tools Foundations / Tf: Tools Foundations",
       "output": "full_site/api/tf_page_front.html",
       "official_url": "https://openusd.org/release/api/tf_page_front.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 25,
-      "enBlockCount": 17,
-      "zhChars": 548,
-      "enLetters": 1545,
-      "bodyChineseChars": 609,
+      "grade": "good_bilingual",
+      "zhBlockCount": 40,
+      "enBlockCount": 32,
+      "zhChars": 1668,
+      "enLetters": 2987,
+      "bodyChineseChars": 1739,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 Tf: Tools Foundations 补充中文优先的页面定位、阅读路径、概念边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`Tf: Tools Foundations` 是 OpenUSD C/C++ 基础工具层入口，覆盖内存管理、运行时类型、路径、诊断、调试输出、字符串、容器、对象创建、数学、性能、文件和系统扩展等通用能力。"
+        "本页已按完整双语参考页处理：中文优先解释 `Tf` 作为 OpenUSD Tools Foundations 的职责，覆盖 C/C++ foundation classes and functions、Memory Management、Runtime Typing、Path Utilities、Diagnostic Utilities、Output For Debugging、String Utilities、Containers、STL Utilities、Object Creation、Mathematical Operations、Performance Measurements、File Utilities、Systems Extensions and Enhancements，以及 `TfNotice`、`TfError`、`TfRegistryManager`、`TfMallocTag` 等专题阅读路径；英文 API 名称、宏名、函数名、类型名和链接保留原样，便于与 Doxygen 页面核对。",
+        "官方第一句说明 `Tf` contains foundation classes and functions for all C/C++ software development。这里的 foundation 不是 USD scene graph 概念，而是 OpenUSD C++ 代码共同依赖的基础工具层。`Sdf`、`Pcp`、`Usd`、`Hd`、`Plug` 等模块都会借用 `Tf` 的类型、诊断、容器、字符串、路径和系统工具，因此本页适合作为排查底层行为的入口。",
+        "Memory Management 分组覆盖 `TfRefPtr`、`TfWeakPtr`、`TfRefBase`、`TfWeakBase` 和 `TfMallocTag`。前四者与引用计数、弱引用和对象生命周期相关，`TfMallocTag` 则用于内存标记和内存使用归因。若问题表现为对象提前释放、循环引用、弱指针失效或内存增长，应先判断是所有权语义、引用关系还是内存标签统计问题。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first page positioning, reading paths, concept boundaries, and terminology for Tf: Tools Foundations while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and source excerpts for comparison with the official Doxygen page."
+        "This page is promoted as a complete bilingual reference for Tf, OpenUSD Tools Foundations, C/C++ foundation utilities, diagnostics, runtime typing, memory management, containers, strings, file/system helpers, and related C++ topic pages.",
+        "Tf provides foundation classes and functions used across OpenUSD C and C++ software development."
       ]
     },
     {

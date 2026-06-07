@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>API 模块草稿：Tf: Tools Foundations / Tf: Tools Foundations</title>
+  <title>完整双语参考：Tf: Tools Foundations / Tf: Tools Foundations</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -19,20 +19,53 @@
     ul{padding-left:22px}
     li{margin:8px 0}
     code{font-family:"Cascadia Mono","Consolas",monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>API 模块草稿：Tf: Tools Foundations / Tf: Tools Foundations</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：Tf: Tools Foundations / Tf: Tools Foundations</h1>
     <div class="meta">https://openusd.org/release/api/tf_page_front.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页处理：中文优先解释 `Tf` 作为 OpenUSD Tools Foundations 的职责，覆盖 C/C++ foundation classes and functions、Memory Management、Runtime Typing、Path Utilities、Diagnostic Utilities、Output For Debugging、String Utilities、Containers、STL Utilities、Object Creation、Mathematical Operations、Performance Measurements、File Utilities、Systems Extensions and Enhancements，以及 `TfNotice`、`TfError`、`TfRegistryManager`、`TfMallocTag` 等专题阅读路径；英文 API 名称、宏名、函数名、类型名和链接保留原样，便于与 Doxygen 页面核对。</p>
+      <p class="en">This page is promoted as a complete bilingual reference for Tf, OpenUSD Tools Foundations, C/C++ foundation utilities, diagnostics, runtime typing, memory management, containers, strings, file/system helpers, and related C++ topic pages.</p>
+    </section>
+    <section data-cn-complete="tf-tools-foundations-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">官方第一句说明 `Tf` contains foundation classes and functions for all C/C++ software development。这里的 foundation 不是 USD scene graph 概念，而是 OpenUSD C++ 代码共同依赖的基础工具层。`Sdf`、`Pcp`、`Usd`、`Hd`、`Plug` 等模块都会借用 `Tf` 的类型、诊断、容器、字符串、路径和系统工具，因此本页适合作为排查底层行为的入口。</p>
+      <p class="en">Tf provides foundation classes and functions used across OpenUSD C and C++ software development.</p>
+      <p class="zh">Memory Management 分组覆盖 `TfRefPtr`、`TfWeakPtr`、`TfRefBase`、`TfWeakBase` 和 `TfMallocTag`。前四者与引用计数、弱引用和对象生命周期相关，`TfMallocTag` 则用于内存标记和内存使用归因。若问题表现为对象提前释放、循环引用、弱指针失效或内存增长，应先判断是所有权语义、引用关系还是内存标签统计问题。</p>
+      <p class="en">Memory Management groups TfRefPtr, TfWeakPtr, TfRefBase, TfWeakBase, and TfMallocTag.</p>
+      <p class="zh">Runtime Typing 分组包含 `TfType`、`TfEnum` 和 `TfTypeInfoMap`。这些工具支撑运行时类型查询、枚举注册和类型信息映射，也与 `Plug` 插件框架、schema 类型注册和 factory 查找密切相关。`TfType` 不等同于 C++ `typeid` 的简单包装，它是 OpenUSD 自己用于跨插件、跨 schema 和运行时扩展的类型系统入口。</p>
+      <p class="en">Runtime Typing includes TfType, TfEnum, and TfTypeInfoMap for OpenUSD runtime type queries and registration.</p>
+      <p class="zh">Path Utilities 覆盖 `TfRealPath`、`TfNormPath`、`TfAbsPath`、`TfReadLink` 和 `TfGlob`。这些函数处理文件系统路径规范化、绝对路径、符号链接和 glob 匹配；它们不同于 `SdfPath`。`SdfPath` 描述 scene namespace 路径，`Tf` path utilities 处理操作系统文件路径。把两者混淆会导致资产路径、prim path 和 resolver 问题难以定位。</p>
+      <p class="en">Tf path utilities operate on filesystem paths, not on SdfPath scene namespace paths.</p>
+      <p class="zh">Diagnostic Utilities 是调试 OpenUSD C++ 代码时最常碰到的分组，包括 `TF_AXIOM()`、`TF_VERIFY()`、`TF_FATAL_ERROR()`、`PXR_TF_THROW()`、`TF_CODING_ERROR()`、`TF_RUNTIME_ERROR()`、`TF_WARN()` 和 `TF_STATUS()`。这些宏代表不同严重级别和使用语境：有的表达不可恢复断言，有的发布 coding error 或 runtime error，有的只是 warning/status。中文说明应解释用途，但宏名必须原样保留。</p>
+      <p class="en">Diagnostic Utilities provide assertion, verification, fatal error, exception, coding error, runtime error, warning, and status reporting macros.</p>
+      <p class="zh">Output For Debugging 分组包含 `TfDebug`、`TF_DEBUG()` 和 `TF_FUNC_NAME()`。它解决的是开发者如何按 debug symbol 或代码位置输出诊断信息。若某个问题只在启用特定 debug flag 后出现更详细日志，通常应查 `TfDebug` 配置和相关环境变量，而不是直接假设上层 USD composition 或 Hydra 渲染逻辑错误。</p>
+      <p class="en">Output For Debugging covers TfDebug, TF_DEBUG(), and TF_FUNC_NAME() for controlled diagnostic output.</p>
+      <p class="zh">String Utilities、Containers 和 STL Utilities 分别提供字符串格式化、hash、UTF-8 code point view、字节数据、数组、iterator、deleter、map lookup 和 ordered pair 等常用工具。它们的价值不是定义 USD 语义，而是让核心代码有统一、可复用、跨平台的 C++ 基础设施。阅读 class 页面时，遇到 `TfHash`、`TfIterator`、`TfDeleter` 等类型，应把它们理解为辅助构件。</p>
+      <p class="en">String, container, and STL helpers provide reusable C++ utilities rather than USD scene semantics.</p>
+      <p class="zh">Object Creation 分组包含 `TfSingleton` 和 `TfType`。`TfSingleton` 用于统一 singleton 生命周期，`TfType` 则连接运行时类型系统。它们常出现在 registry、factory、plugin 和全局服务初始化路径中。若 bug 涉及初始化顺序、重复注册或单例过早访问，应同时查看 `TfSingleton`、`TfRegistryManager` 和对应模块的注册代码。</p>
+      <p class="en">Object Creation includes TfSingleton and TfType, which often appear in registry, factory, and initialization paths.</p>
+      <p class="zh">Mathematical Operations、Performance Measurements、File Utilities 和 Systems Extensions and Enhancements 覆盖 `TfAbs()`、`TfMin()`、`TfMax()`、`TfStopwatch`、`TfSearchPath`、`TfDlopen()`、`TfDlclose()` 和 `TfGetenv()` 等工具。这些 API 常用于底层数学、性能计时、搜索路径、动态库加载和环境变量访问；它们通常支撑上层模块行为，但本身不解释 stage composition 或 schema authoring。</p>
+      <p class="en">Math, performance, file, and system helpers support timing, search paths, dynamic loading, and environment access.</p>
+      <p class="zh">`Tf` 与 `Arch`、`Plug` 的边界也要分清。`Arch` 更偏平台和架构差异封装，`Plug` 负责插件发现、metadata 和加载，而 `Tf` 提供这些系统会复用的类型、注册、诊断、字符串、路径和系统辅助函数。遇到跨平台行为不一致时，应先判断问题是 OS abstraction、plugin metadata/loading，还是通用工具调用语义。</p>
+      <p class="en">Tf supplies shared foundation utilities, while Arch isolates platform differences and Plug manages plug-in discovery and loading.</p>
+      <p class="zh">`Tf` 与 `Sdf`、`Pcp`、`Usd` 的关系是基础设施与数据模型的关系。`Tf` 可以报告错误、管理引用、提供类型信息或处理路径字符串，但不会决定 layer opinion 强弱、composition arc 解析、prim traversal 或 schema 属性语义。调试时先看症状属于工具层还是场景描述层，可以显著减少误判。</p>
+      <p class="en">Tf supports higher-level data-model modules but does not define composition, prim traversal, or schema semantics.</p>
+      <p class="zh">官方 Related Pages 给出进一步阅读路径：`The TfNotice Notification System` 解释通知发布与订阅；`The TfError Error Posting System` 解释错误发布机制；`Guide To Diagnostic Facilities` 解释诊断宏和错误通道；`The TfRegistryManager Registry Initialization System` 解释注册初始化；`The TfMallocTag Memory Tagging System` 解释内存标记。这些专题页比模块入口更适合深入理解具体机制。</p>
+      <p class="en">Related pages cover TfNotice, TfError, diagnostic facilities, TfRegistryManager, and TfMallocTag in more detail.</p>
+      <p class="zh">本地 406 页清单没有覆盖所有 `Tf` class、group 和专题页，因此部分链接会进入 uncovered placeholder。入口页的完整双语说明仍保留这些官方链接名，目的是让读者知道下一步应查哪个具体机制，而不是把缺页误认为该功能不存在。</p>
+      <p class="en">Some detailed Tf links are outside the local 406-page inventory and are intentionally routed through uncovered placeholders.</p>
+      <p class="zh">常见排查顺序可以按症状分流：对象生命周期问题看 `TfRefPtr` / `TfWeakPtr`；插件或 schema 类型查不到看 `TfType` 和 `Plug`；文件路径或符号链接问题看 path utilities；错误信息和日志问题看 diagnostic utilities 与 `TfDebug`；性能计时看 `TfStopwatch`；动态库或环境变量问题看 systems extensions。这样能避免把所有底层工具问题误归因给 `UsdStage` 或 renderer。</p>
+      <p class="en">A practical debugging path routes symptoms to memory, runtime typing, path, diagnostic, debug, performance, or system utility groups.</p>
+      <p class="zh">本页保留 `TfRefPtr`、`TfWeakPtr`、`TfType`、`TF_VERIFY()`、`TF_RUNTIME_ERROR()`、`TfDebug`、`TfHash`、`TfSingleton`、`TfStopwatch`、`TfDlopen()` 等英文标识，因为这些名称直接对应头文件、Doxygen 链接、宏调用和源码检索结果。中文层负责解释边界和使用语境，不能把这些 token 改写成中文 API。</p>
+      <p class="en">English type, macro, and function names are retained so readers can map the Chinese explanation back to source code and Doxygen references.</p>
     </section>
     <section data-cn-refinement="api-mixed-quality-pass-058">
       <h2>中文精修导读 / Chinese Reading Notes</h2>
