@@ -1,6 +1,6 @@
 # OpenUSD English Debt Audit
 
-Generated: 2026-06-07T20:04:25.329Z
+Generated: 2026-06-07T20:25:08.023Z
 
 Purpose:
 
@@ -12,16 +12,16 @@ Purpose:
 ## Counts
 
 - Total pages: 406
-- good_bilingual: 94
-- review_ready_zh: 31
+- good_bilingual: 95
+- review_ready_zh: 32
 - review_needs_zh_debt: 63
 - API complete: 72
 - API review_ready_zh: 12
-- Release complete: 22
-- Release review_ready_zh: 19
+- Release complete: 23
+- Release review_ready_zh: 20
 - Complete pages with high/very high ratio diagnostic: 10
-- bilingual_draft: 312
-- draft_needs_translation: 301
+- bilingual_draft: 311
+- draft_needs_translation: 300
 - draft_template_only: 11
 
 ## Complete Pages Still Carrying English Debt
@@ -95,9 +95,9 @@ Purpose:
 | 374 | `full_site/release/user_guides/schemas/usdVol/overview.html` | release | release_or_tutorial | 592 | 7/4 | 2.58 | medium | draft |
 | 314 | `full_site/release/tut_usd_tutorials.html` | release | release_or_tutorial | 623 | 6/4 | 2.57 | medium | draft |
 | 376 | `full_site/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html` | release | release_or_tutorial | 631 | 7/4 | 2.57 | medium | draft |
-| 341 | `full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html` | release | release_or_tutorial | 697 | 6/4 | 2.56 | medium | draft |
 | 382 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html` | release | release_or_tutorial | 582 | 7/4 | 2.55 | medium | draft |
 | 321 | `full_site/release/user_guides/color_user_guide.html` | release | release_or_tutorial | 657 | 7/4 | 2.52 | medium | draft |
+| 290 | `full_site/release/maxperf.html` | release | release_or_tutorial | 625 | 7/4 | 2.49 | medium | draft |
 
 Policy:
 

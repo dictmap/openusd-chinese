@@ -1,6 +1,6 @@
 # OpenUSD 完整双语晋级清单
 
-Generated: 2026-06-07T20:05:26.487Z
+Generated: 2026-06-07T20:27:36.528Z
 
 这份清单只记录已经从 `bilingual_draft` 晋级为 `bilingual_complete` 的页面。它是 `scripts/discover_openusd_all_pages.mjs` 识别 promoted complete 页面的审计来源，不等同于把草稿页改个状态。
 
@@ -16,6 +16,7 @@ Generated: 2026-06-07T20:05:26.487Z
 
 | ID | 本地输出 | 官方页面 | 状态 |
 | --- | --- | --- | --- |
+| `round-393-release-usdLux-PluginLightFilter` | `full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html` | `https://openusd.org/release/user_guides/schemas/usdLux/PluginLightFilter.html` | bilingual_complete |
 | `round-392-release-usdLux-LightFilter` | `full_site/release/user_guides/schemas/usdLux/LightFilter.html` | `https://openusd.org/release/user_guides/schemas/usdLux/LightFilter.html` | bilingual_complete |
 | `round-390-release-usdLux-LightAPI` | `full_site/release/user_guides/schemas/usdLux/LightAPI.html` | `https://openusd.org/release/user_guides/schemas/usdLux/LightAPI.html` | bilingual_complete |
 | `round-389-release-collections-and-patterns` | `full_site/release/user_guides/collections_and_patterns.html` | `https://openusd.org/release/user_guides/collections_and_patterns.html` | bilingual_complete |

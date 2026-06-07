@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T20:04:03.028Z",
+  "generated_at": "2026-06-07T20:25:06.769Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 312,
-    "bilingual_complete": 94
+    "bilingual_draft": 311,
+    "bilingual_complete": 95
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 301,
-    "good_bilingual": 94
+    "draft_needs_translation": 300,
+    "good_bilingual": 95
   },
   "focus_batch": [
     {
@@ -10148,29 +10148,29 @@
     },
     {
       "index": 341,
-      "title": "页面草稿：PluginLightFilter / PluginLightFilter",
+      "title": "完整双语参考：PluginLightFilter / PluginLightFilter",
       "output": "full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html",
       "official_url": "https://openusd.org/release/user_guides/schemas/usdLux/PluginLightFilter.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 36,
-      "enBlockCount": 29,
-      "zhChars": 697,
-      "enLetters": 1785,
-      "bodyChineseChars": 758,
+      "grade": "good_bilingual",
+      "zhBlockCount": 50,
+      "enBlockCount": 50,
+      "zhChars": 2073,
+      "enLetters": 3452,
+      "bodyChineseChars": 2150,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。",
-        "本区块针对 PluginLightFilter 补充中文优先的 schema 用途、属性/关系阅读路径、艺术控制或插件扩展边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。",
-        "`PluginLightFilter` 是 light filter 的插件扩展入口，用属性标识外部 `SdrShadingNode` definition，并通过 `UsdShadeNodeDefAPI` 暴露给 render delegates。"
+        "本页是 OpenUSD release 用户指南中 usdLux `PluginLightFilter` 的完整双语参考页。中文优先解释它如何把 `LightFilter` 的通用过滤语义连接到外部 `SdrShadingNode` definition，并通过 `UsdShadeNodeDefAPI` 让 render delegates 识别插件实现；同时保留官方标题、section、API/schema/token/属性名、代码和链接原样。",
+        "`PluginLightFilter` 的核心职责不是重新定义一种固定的灯光过滤算法，而是给插件型 light filter 提供一个可发现、可声明、可交给渲染端解释的 schema 入口。官方第一段说它提供一些属性，使 prim 能够通过 `UsdShadeNodeDefAPI` 标识一个外部 `SdrShadingNode` definition，并把这个 definition 提供给 render delegates。换句话说，OpenUSD 在这里表达的是“这个 filter 的实现由外部 Sdr 节点定义”，而不是把每一种 renderer-specific filter 都固化成独立 schema。",
+        "阅读本页时应先把 `PluginLightFilter` 和上一页 `LightFilter` 分层理解：`LightFilter` 负责通用过滤器语义，包括 `filterLink` collection、`lightFilter:shaderId`、与灯光的 `light:filters` 关系以及从 `Xformable` / `Imageable` 继承的通用 scene graph 属性；`PluginLightFilter` 则进一步说明“具体实现如何通过外部节点定义暴露给 renderer”。因此它是扩展层，不是基础过滤语义的替代品。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.",
-        "This section adds Chinese-first schema purpose, property and relationship reading paths, artistic-control or plugin-extension boundaries, and terminology for PluginLightFilter while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison."
+        "This local bilingual page explains the usdLux `PluginLightFilter` guide in Chinese first while retaining official identifiers, section names, property names, tokens, and links for comparison.",
+        "`PluginLightFilter` identifies an external `SdrShadingNode` definition through `UsdShadeNodeDefAPI` so render delegates can consume a light-filter implementation without a dedicated schema for every filter type."
       ]
     },
     {

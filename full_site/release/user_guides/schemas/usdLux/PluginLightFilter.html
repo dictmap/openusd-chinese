@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：PluginLightFilter / PluginLightFilter</title>
+  <title>完整双语参考：PluginLightFilter / PluginLightFilter</title>
   <link rel="icon" href="../../../../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
@@ -12,101 +12,179 @@
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
     .zh{display:block;font-weight:650;color:#17324d}
     .en{display:block;color:#55616f;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
     pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
     code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：PluginLightFilter / PluginLightFilter</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：PluginLightFilter / PluginLightFilter</h1>
     <div class="meta">https://openusd.org/release/user_guides/schemas/usdLux/PluginLightFilter.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+      <p class="zh">本页是 OpenUSD release 用户指南中 usdLux `PluginLightFilter` 的完整双语参考页。中文优先解释它如何把 `LightFilter` 的通用过滤语义连接到外部 `SdrShadingNode` definition，并通过 `UsdShadeNodeDefAPI` 让 render delegates 识别插件实现；同时保留官方标题、section、API/schema/token/属性名、代码和链接原样。</p>
+      <p class="en">This local bilingual page explains the usdLux `PluginLightFilter` guide in Chinese first while retaining official identifiers, section names, property names, tokens, and links for comparison.</p>
     </section>
-    <section data-cn-refinement="release-quality-pass-070">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 PluginLightFilter 补充中文优先的 schema 用途、属性/关系阅读路径、艺术控制或插件扩展边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds Chinese-first schema purpose, property and relationship reading paths, artistic-control or plugin-extension boundaries, and terminology for PluginLightFilter while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+
+    <section data-cn-complete="release-user-guide-usdLux-PluginLightFilter-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`PluginLightFilter` 的核心职责不是重新定义一种固定的灯光过滤算法，而是给插件型 light filter 提供一个可发现、可声明、可交给渲染端解释的 schema 入口。官方第一段说它提供一些属性，使 prim 能够通过 `UsdShadeNodeDefAPI` 标识一个外部 `SdrShadingNode` definition，并把这个 definition 提供给 render delegates。换句话说，OpenUSD 在这里表达的是“这个 filter 的实现由外部 Sdr 节点定义”，而不是把每一种 renderer-specific filter 都固化成独立 schema。</p>
+      <p class="en">`PluginLightFilter` identifies an external `SdrShadingNode` definition through `UsdShadeNodeDefAPI` so render delegates can consume a light-filter implementation without a dedicated schema for every filter type.</p>
+
+      <p class="zh">阅读本页时应先把 `PluginLightFilter` 和上一页 `LightFilter` 分层理解：`LightFilter` 负责通用过滤器语义，包括 `filterLink` collection、`lightFilter:shaderId`、与灯光的 `light:filters` 关系以及从 `Xformable` / `Imageable` 继承的通用 scene graph 属性；`PluginLightFilter` 则进一步说明“具体实现如何通过外部节点定义暴露给 renderer”。因此它是扩展层，不是基础过滤语义的替代品。</p>
+      <p class="en">Read `PluginLightFilter` as an extension layer on top of `LightFilter`, not as a replacement for the base filtering semantics.</p>
+
+      <p class="zh">`SdrShadingNode` 是这里的关键技术边界。Sdr 节点定义通常描述 renderer 或 shading system 可识别的节点类型、输入输出和实现标识。`PluginLightFilter` 通过引用或携带这类 definition，使 render delegate 能在运行时找到对应的 filter 实现。这样做的价值是让 USD 文件可以声明插件 filter 的身份和连接方式，同时把具体参数、算法和视觉行为留给 Sdr 定义与 renderer/plugin 实现。</p>
+      <p class="en">The external `SdrShadingNode` definition carries implementation-facing information that the render delegate can interpret.</p>
+
+      <p class="zh">`UsdShadeNodeDefAPI` 应被理解为“把 prim 与 node definition 关联起来”的桥，而不是普通 UI metadata。它让 `PluginLightFilter` 可以参与 UsdShade 式的节点定义发现流程。排查这类页面时，不要只看 prim type 是否是 `PluginLightFilter`；还要检查该 prim 是否具备正确的 `UsdShadeNodeDefAPI` 相关 authored data，以及当前 renderer delegate 是否支持被引用的 `SdrShadingNode`。</p>
+      <p class="en">`UsdShadeNodeDefAPI` provides the bridge from the prim to a node definition; renderer support is still required.</p>
+
+      <p class="zh">官方页的 `Properties` section 对 `PluginLightFilter` 自身没有列出新增 direct property。这一点很重要：它提示读者本页的独特性主要来自 `UsdShadeNodeDefAPI` 和外部 node definition，而不是一组新的内建 USD 属性。具体 renderer 的 gobo、barn door、projection、decay 或其他 light filter 参数，通常应来自对应 Sdr 节点的 inputs，而不是被误认为本页必须列出的通用 USD 属性。</p>
+      <p class="en">The direct `Properties` section does not list additional built-in properties for this schema.</p>
+
+      <p class="zh">继承自 `LightFilter` 的 `collection:filterLink:includeRoot` 仍然是作用范围控制的核心属性。它的 USD type 是 `bool`，fallback value 是 `True`。当 `includeRoot=True` 时，pseudo-root path `/` 会被视为 included target path，因此该 light filter 默认会影响与它关联的灯所照亮的所有对象，除非 `filterLink` collection 通过 include/exclude 规则缩小范围。插件 filter 的存在不会绕过这套 collection 语义。</p>
+      <p class="en">Inherited `collection:filterLink:includeRoot` remains a `bool` with fallback `True`, controlling the filterLink collection's default root inclusion.</p>
+
+      <p class="zh">`filterLink` collection 和 `PluginLightFilter` 的关系容易被误读：`PluginLightFilter` 说明 filter 的实现来源，`filterLink` 说明 filter 影响哪些 geometry prims。前者解决“这个 filter 是什么实现”，后者解决“这个 filter 作用到哪里”。如果渲染结果看起来 filter 影响范围过大，优先检查 `collection:filterLink:includeRoot` 和 collection membership；如果 filter 完全没有效果，再检查 `lightFilter:shaderId`、`UsdShadeNodeDefAPI`、Sdr definition 与 renderer delegate 支持。</p>
+      <p class="en">Implementation identity and affected-geometry membership are separate concerns.</p>
+
+      <p class="zh">继承的 `lightFilter:shaderId` 是 `token`，fallback value 为空，也就是 no shader ID。对 `PluginLightFilter` 而言，它通常是连接到 renderer/plugin 可识别实现的入口之一，但它本身不保证实现存在。一个场景可以正确 author `lightFilter:shaderId`，却仍因为插件没有加载、Sdr registry 没有找到节点、或 render delegate 不支持该节点而没有预期效果。</p>
+      <p class="en">Inherited `lightFilter:shaderId` is a `token` whose fallback is no shader ID; the renderer/plugin must still resolve it.</p>
+
+      <p class="zh">从 authoring 角度，`PluginLightFilter` 应先被灯光通过 `LightAPI` 的 `light:filters` relationship 引用，之后再通过 inherited `LightFilter` 属性限定作用范围并指定 shader 身份，最后通过 `UsdShadeNodeDefAPI` / `SdrShadingNode` 把具体实现暴露给 renderer。这个顺序有助于定位问题：关系未连上属于 scene graph authoring 问题，collection 不对属于作用范围问题，shader ID 或 Sdr definition 不对属于实现解析问题。</p>
+      <p class="en">Practical authoring separates light association, collection membership, shader identity, and Sdr implementation lookup.</p>
+
+      <p class="zh">`xformOpOrder` 继承自 `Xformable`，USD type 是 `token[]`。对插件 light filter 来说，transform 是否有意义取决于具体 filter 实现：某些投影、遮挡或空间化过滤器可能使用 prim transform；某些全局调制 filter 可能不关心位置和方向。本页保留 `xformOpOrder` 是因为它是继承属性，而不是因为所有 `PluginLightFilter` 都必然依赖 transform。</p>
+      <p class="en">Inherited `xformOpOrder` controls transform op ordering; whether it affects a plugin filter depends on the implementation.</p>
+
+      <p class="zh">`proxyPrim` 继承自 `Imageable`，USD type 是 relationship。它通常用于显示或代理表现，不替代 `light:filters`、`filterLink` 或 Sdr definition。若工具中看不到 filter 的可视化 representation，可以检查 `proxyPrim`；若渲染贡献不对，应优先检查灯光关系、collection、shader ID 和 renderer 支持。</p>
+      <p class="en">Inherited `proxyPrim` is a relationship for representation concerns and does not replace filtering relationships.</p>
+
+      <p class="zh">`purpose` 继承自 `Imageable`，USD type 是 `token`，fallback value 是 `default`。它属于通用 imageable 用途分类，不是决定插件 filter 是否生效的主开关。不要把 `purpose` 与 `filterLink` collection 混为一谈：`purpose` 影响的是场景对象用途分类和消费策略，`filterLink` 影响的是这个 filter 的目标 geometry 范围。</p>
+      <p class="en">Inherited `purpose` is a general imageable-purpose token with fallback `default`.</p>
+
+      <p class="zh">`visibility` 同样继承自 `Imageable`，USD type 是 `token`，fallback value 是 `inherited`。它控制 scene graph 层面的可见性继承，但官方页并没有把它定义为 light filter 贡献的核心控制项。排查时应把“这个 prim 是否在工具中可见”和“这个 filter 是否被 renderer 用于调制灯光”分开看。</p>
+      <p class="en">Inherited `visibility` has fallback `inherited`; do not confuse view or scene-graph visibility with filter application.</p>
+
+      <p class="zh">完整读懂本页后，读者应能回答四个问题：为什么 `PluginLightFilter` 不需要为每种 filter type 提供单独 schema；`SdrShadingNode` 和 `UsdShadeNodeDefAPI` 分别承担什么角色；`collection:filterLink:includeRoot` 与 `lightFilter:shaderId` 作为继承属性如何继续参与插件 filter；以及 `xformOpOrder`、`proxyPrim`、`purpose`、`visibility` 哪些只是通用继承属性，哪些可能因 renderer 实现而影响实际表现。</p>
+      <p class="en">A complete reading should distinguish schema extensibility, Sdr discovery, inherited LightFilter properties, and generic inherited scene-graph properties.</p>
+
+      <p class="zh">生产环境中的常见误判是把所有问题都归咎于插件本身。更稳的调试顺序是：先确认 light 的 `light:filters` target 是否指向该 `PluginLightFilter`；再确认 `filterLink` collection 是否覆盖目标 geometry；接着确认 `lightFilter:shaderId`、`UsdShadeNodeDefAPI` 与 `SdrShadingNode` 是否匹配；最后检查 renderer delegate/plugin 是否加载并支持对应实现。这样可以避免把 collection 范围错误误判成 shader 错误，也避免把插件加载失败误判成 USD schema 书写错误。</p>
+      <p class="en">Debugging should move from USD relationships and collections to shader identity, Sdr definition, and renderer/plugin support.</p>
+
+      <p class="zh">和 `PluginLight` 对照时，`PluginLightFilter` 的模式也更容易理解：两者都让插件或 renderer-specific 实现进入标准 USD 场景描述，但作用对象不同。`PluginLight` 面向发光体本身，`PluginLightFilter` 面向调制光贡献的过滤器。作者不应把插件 light 的参数迁移到 filter 上，也不应把 filter 的 linking 规则当作 light 的发光属性；两者通过 `light:filters` relationship 组合，而不是互相替代。</p>
+      <p class="en">Compared with `PluginLight`, `PluginLightFilter` extends filtering behavior rather than the light-emitting prim itself.</p>
+
+      <p class="zh">和 `PortalLight` 等具体 schema 对照时，本页的“空 Properties”也有明确含义。具体 schema 会把稳定、跨实现的属性列在页面中；插件 schema 则更像开放扩展点，把 renderer/plugin 的差异留在外部 node definition 里。这样可以减少 USD core schema 的膨胀，同时允许不同 renderer 暴露自己的 filter 类型。中文阅读时要保留这种边界，不把外部插件参数翻译成 OpenUSD 标准属性。</p>
+      <p class="en">Unlike concrete schemas, the plugin schema leaves renderer-specific parameters in the external node definition.</p>
+
+      <p class="zh">对资产交换来说，`PluginLightFilter` 的可移植性也需要谨慎理解。USD 层能够保留 prim、relationship、collection 和 shader/node definition 引用，但另一个软件是否能复现同样视觉效果，取决于它是否理解相同的 Sdr 节点和 renderer delegate 语义。也就是说，本页保证的是结构化表达路径，不保证所有消费端都有相同渲染结果。</p>
+      <p class="en">USD can carry the structured reference, but visual portability depends on consumer support for the same plugin definition.</p>
+
+      <p class="zh">因此，一个可读的 `PluginLightFilter` 页面必须同时覆盖三层信息：第一层是继承自 `LightFilter` 的基础过滤连接和作用范围；第二层是 `UsdShadeNodeDefAPI` 与 `SdrShadingNode` 提供的插件发现路径；第三层是 renderer delegate 对外部定义的消费边界。只翻译标题和属性名无法让读者独立理解这些层次，所以本页把它们作为中文主阅读路径，而英文保留为核对依据。</p>
+      <p class="en">The Chinese reading path therefore covers base filtering, plugin discovery, and renderer-consumption boundaries.</p>
+    </section>
+
+    <section>
+      <h2>属性阅读路径 / Property Reading Path</h2>
+      <ol>
+        <li><span class="zh">先看 `Properties`：本页没有新增 direct property，因此不要期待这里列出 renderer-specific filter 参数。</span><span class="en">The direct `Properties` section does not introduce renderer-specific parameters.</span></li>
+        <li><span class="zh">再看继承自 `LightFilter` 的 `collection:filterLink:includeRoot`：它决定 `filterLink` collection 是否默认包含 pseudo-root `/`。</span><span class="en">Read inherited `collection:filterLink:includeRoot` for collection root-inclusion semantics.</span></li>
+        <li><span class="zh">继续看继承自 `LightFilter` 的 `lightFilter:shaderId`：它提供 filter shader 身份，但实际解析依赖 renderer/plugin。</span><span class="en">Read inherited `lightFilter:shaderId` for shader identity.</span></li>
+        <li><span class="zh">然后看 `UsdShadeNodeDefAPI` 和外部 `SdrShadingNode` definition：它们说明插件 filter 的具体实现如何被发现。</span><span class="en">Use `UsdShadeNodeDefAPI` and `SdrShadingNode` to understand implementation discovery.</span></li>
+        <li><span class="zh">最后看 `xformOpOrder`、`proxyPrim`、`purpose`、`visibility`：这些是通用继承属性，不能替代 filter-linking 或 Sdr definition。</span><span class="en">Inherited transform, proxy, purpose, and visibility properties do not replace filter-linking or Sdr semantics.</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>代码与配置摘录 / Code and Configuration Excerpts</h2>
+      <pre><code>def PluginLightFilter "RendererSpecificFilter"
+{
+    token lightFilter:shaderId = "SomeRendererPluginLightFilter"
+    bool collection:filterLink:includeRoot = true
+}</code></pre>
+      <pre><code>def SphereLight "KeyLight" (
+    prepend apiSchemas = ["LightAPI"]
+)
+{
+    rel light:filters = &lt;/Looks/RendererSpecificFilter&gt;
+}</code></pre>
+      <p class="zh">上面的片段只表达结构：light 通过 `light:filters` 指向 `PluginLightFilter`，继承的 `filterLink` 属性控制作用范围，`lightFilter:shaderId` 和 `UsdShadeNodeDefAPI` / `SdrShadingNode` 相关 authored data 帮助 renderer 找到具体实现。实际 token 值、Sdr inputs 和渲染行为由对应 renderer/plugin 定义。</p>
+      <p class="en">The snippets illustrate structure only; concrete shader identifiers, Sdr inputs, and visual behavior are renderer- or plugin-defined.</p>
+    </section>
+
+    <section>
+      <h2>常见误读与调试边界 / Common Misreadings and Debugging Boundaries</h2>
       <ul>
-        <li><span class="zh">`PluginLightFilter` 是 light filter 的插件扩展入口，用属性标识外部 `SdrShadingNode` definition，并通过 `UsdShadeNodeDefAPI` 暴露给 render delegates。</span></li>
-        <li><span class="zh">它继承 `LightFilter` 的过滤器语义，因此仍要阅读 `collection:filterLink:includeRoot` 和 `lightFilter:shaderId`；这些属性决定过滤器影响哪些 geometry Prims 以及如何找到 shader 实现。</span></li>
-        <li><span class="zh">`filterLink` collection 控制 include/exclude 目标；fallback 为 true 时，关联灯光照亮的对象默认都会受该 filter 影响，除非集合规则明确排除。</span></li>
-        <li><span class="zh">本页适合理解“自定义 light filter 如何进入渲染系统”：OpenUSD 负责声明 schema 与关系，具体过滤效果通常由 Sdr 节点、插件和 render delegate 实现。</span></li>
-        <li><span class="zh">中文层只说明插件边界和阅读路径，不把 renderer-specific 参数伪装成核心属性；`PluginLightFilter`、`SdrShadingNode`、`UsdShadeNodeDefAPI`、`filterLink` 等英文名保持原样。</span></li>
+        <li><span class="zh">不要把 `PluginLightFilter` 当成固定视觉算法。它是插件实现的 schema 入口，具体算法来自外部 `SdrShadingNode` 和 renderer/plugin。</span><span class="en">`PluginLightFilter` is not a fixed visual algorithm.</span></li>
+        <li><span class="zh">不要把 `Properties` 为空理解成页面无意义。这里的重点是外部 node definition 和继承属性，而不是新增 direct properties。</span><span class="en">An empty direct `Properties` section does not mean the schema has no role.</span></li>
+        <li><span class="zh">不要把 `lightFilter:shaderId` 当成保证生效的开关。它只是身份线索，仍需要 Sdr registry、plugin 和 render delegate 支持。</span><span class="en">`lightFilter:shaderId` is not a guarantee of renderer support.</span></li>
+        <li><span class="zh">不要把 `filterLink` 与材质绑定、visibility 或 purpose 混淆。`filterLink` 控制被 filter 影响的 geometry 范围。</span><span class="en">`filterLink` controls affected geometry membership, not material binding or visibility.</span></li>
+        <li><span class="zh">如果 filter 没有效果，按 `light:filters` relationship、`filterLink` collection、`lightFilter:shaderId`、`UsdShadeNodeDefAPI`、`SdrShadingNode`、renderer/plugin 加载顺序排查。</span><span class="en">Debug relationships, collections, shader identity, node definition, and renderer/plugin loading in order.</span></li>
       </ul>
-      <h3>术语对照 / Terms</h3>
+    </section>
+
+    <section>
+      <h2>术语对照 / Terms</h2>
       <ul>
         <li><span class="zh">插件灯光过滤器：</span><span class="en">PluginLightFilter</span></li>
-        <li><span class="zh">Sdr 着色节点定义：</span><span class="en">SdrShadingNode</span></li>
-        <li><span class="zh">UsdShade 节点定义 API：</span><span class="en">UsdShadeNodeDefAPI</span></li>
-        <li><span class="zh">Hydra 渲染代理：</span><span class="en">render delegate</span></li>
-        <li><span class="zh">过滤器链接集合：</span><span class="en">filterLink collection</span></li>
-        <li><span class="zh">渲染器特定的：</span><span class="en">renderer-specific</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-107">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`PluginLightFilter` 是 light filter 的插件扩展入口，用来通过外部 `SdrShadingNode` definition 和 `UsdShadeNodeDefAPI` 暴露 renderer-specific filter。它的核心价值在于连接 usdLux 的过滤器框架和渲染器插件，而不是把所有过滤器参数固化为 OpenUSD 核心 schema。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for PluginLightFilter while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`PluginLightFilter` 与 `LightFilter` 的关系类似 `PluginLight` 与具体内建灯型的关系：schema 提供可发现、可连接的入口，具体过滤算法和参数由 Sdr 节点及 render delegate 解释。</span></li>
-        <li><span class="zh">`UsdShadeNodeDefAPI` 表示该 prim 可以携带或引用 node definition 信息。阅读时应把它看作 shader/filter 描述桥梁，而不是普通的用户可见 UI metadata。</span></li>
-        <li><span class="zh">如果某个 renderer 提供自定义 barn door、gobo、projection 或衰减过滤器，`PluginLightFilter` 可作为承载入口；但具体属性是否可移植取决于对应 Sdr 节点和 renderer 支持。</span></li>
-        <li><span class="zh">`filterLink` 或相关 linking 机制决定过滤器作用于哪些灯光或集合，插件 filter 的存在不自动意味着它会影响所有 lights；连接关系仍需逐项检查。</span></li>
-        <li><span class="zh">中文层只解释插件边界、Sdr 发现路径和 renderer 依赖，不应把 renderer-specific 参数翻译成看似通用的标准属性。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">插件灯光过滤器 schema：</span><span class="en">PluginLightFilter</span></li>
         <li><span class="zh">灯光过滤器基类：</span><span class="en">LightFilter</span></li>
-        <li><span class="zh">Sdr 着色节点：</span><span class="en">SdrShadingNode</span></li>
+        <li><span class="zh">外部 Sdr 着色节点定义：</span><span class="en">external SdrShadingNode definition</span></li>
         <li><span class="zh">UsdShade 节点定义 API：</span><span class="en">UsdShadeNodeDefAPI</span></li>
         <li><span class="zh">渲染代理：</span><span class="en">render delegate</span></li>
-        <li><span class="zh">过滤器链接关系：</span><span class="en">filterLink</span></li>
+        <li><span class="zh">过滤器链接集合：</span><span class="en">filterLink collection</span></li>
+        <li><span class="zh">根包含属性：</span><span class="en">collection:filterLink:includeRoot</span></li>
+        <li><span class="zh">过滤器 shader 标识：</span><span class="en">lightFilter:shaderId</span></li>
+        <li><span class="zh">继承变换顺序：</span><span class="en">xformOpOrder</span></li>
+        <li><span class="zh">代理 prim：</span><span class="en">proxyPrim</span></li>
+        <li><span class="zh">用途分类：</span><span class="en">purpose</span></li>
+        <li><span class="zh">可见性：</span><span class="en">visibility</span></li>
       </ul>
     </section>
+
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
-<li><span class="zh">第 1 级标题：PluginLightFilter</span><span class="en">PluginLightFilter</span></li>
-<li><span class="zh">第 2 级标题：Properties</span><span class="en">Properties</span></li>
-<li><span class="zh">第 2 级标题：Inherited Properties ( LightFilter )</span><span class="en">Inherited Properties ( LightFilter )</span></li>
-<li><span class="zh">第 3 级标题：collection:filterLink:includeRoot</span><span class="en">collection:filterLink:includeRoot</span></li>
-<li><span class="zh">第 3 级标题：lightFilter:shaderId</span><span class="en">lightFilter:shaderId</span></li>
-<li><span class="zh">第 2 级标题：Inherited Properties ( Xformable )</span><span class="en">Inherited Properties ( Xformable )</span></li>
-<li><span class="zh">第 3 级标题：xformOpOrder</span><span class="en">xformOpOrder</span></li>
-<li><span class="zh">第 2 级标题：Inherited Properties ( Imageable )</span><span class="en">Inherited Properties ( Imageable )</span></li>
-<li><span class="zh">第 3 级标题：proxyPrim</span><span class="en">proxyPrim</span></li>
-<li><span class="zh">第 3 级标题：purpose</span><span class="en">purpose</span></li>
-<li><span class="zh">第 3 级标题：visibility</span><span class="en">visibility</span></li>
+        <li><span class="zh">第 1 级标题：PluginLightFilter</span><span class="en">PluginLightFilter</span></li>
+        <li><span class="zh">第 2 级标题：Properties</span><span class="en">Properties</span></li>
+        <li><span class="zh">第 2 级标题：Inherited Properties ( LightFilter )，包含 `collection:filterLink:includeRoot` 与 `lightFilter:shaderId`。</span><span class="en">Inherited Properties ( LightFilter ) includes filterLink root inclusion and shader ID.</span></li>
+        <li><span class="zh">第 2 级标题：Inherited Properties ( Xformable )，包含 `xformOpOrder`。</span><span class="en">Inherited Properties ( Xformable ) includes `xformOpOrder`.</span></li>
+        <li><span class="zh">第 2 级标题：Inherited Properties ( Imageable )，包含 `proxyPrim`、`purpose`、`visibility`。</span><span class="en">Inherited Properties ( Imageable ) includes `proxyPrim`, `purpose`, and `visibility`.</span></li>
       </ul>
     </section>
+
     <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">Light filter that provides properties that allow it to identify an external SdrShadingNode definition, through UsdShadeNodeDefAPI, that can be provided to render delegates without the need to provide a schema definition for the light filter’s type.</p>
-<p class="en">Use the filterLink collection to specify which geometry Prims to be included or excluded from this light filter. Prims excluded or not included will not be affected by this light filter.</p>
-<p class="en">The includeRoot attribute indicates whether the pseudo-root path / should be counted as one of the included target paths. Note that the fallback value is true, which means that light filters will affect all objects illuminated by the light(s) the filter is associated with.</p>
+      <h2>官方源页对比 / Source Parity Notes</h2>
+      <ul>
+        <li><span class="zh">官方 live URL 返回 200，且包含 `PluginLightFilter`、`SdrShadingNode`、`UsdShadeNodeDefAPI`、`render delegates`、`Properties`、`Inherited Properties`、`collection:filterLink:includeRoot`、`lightFilter:shaderId`、`xformOpOrder`、`proxyPrim`、`purpose`、`visibility`、`PluginLight`、`PortalLight` 等关键标记。</span><span class="en">The live official URL was checked for the key headings and identifiers.</span></li>
+        <li><span class="zh">本地 source snapshot `source/full_release/user_guides/schemas/usdLux/PluginLightFilter_source.html` 与上述 section、属性和前后页链接一致。</span><span class="en">The local source snapshot contains the same relevant sections, properties, and previous/next page links.</span></li>
+      </ul>
     </section>
 
     <section>
       <h2>本页链接 / Page Links</h2>
       <ul>
-<li><a href="LightFilter.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/LightFilter.html">LightFilter</a></li>
-<li><a href="../../collections_and_patterns.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/collections_and_patterns.html">Collections and Patterns</a></li>
+        <li><a href="LightFilter.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/LightFilter.html">LightFilter</a></li>
+        <li><a href="PluginLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/PluginLight.html">PluginLight</a></li>
+        <li><a href="PortalLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/PortalLight.html">PortalLight</a></li>
+        <li><a href="../../collections_and_patterns.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/collections_and_patterns.html">Collections and Patterns</a></li>
+        <li><a href="../../render_user_guide.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html">Rendering with USD</a></li>
+        <li><a href="../../../../api/usd_shade_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_shade_page_front.html">UsdShade</a></li>
       </ul>
     </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
