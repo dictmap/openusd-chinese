@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-07T01:24:04.497Z
+Generated: 2026-06-07T01:43:32.043Z
 
-Transient base URL: `http://127.0.0.1:51020/`
+Transient base URL: `http://127.0.0.1:64621/`
 
 Result:
 
 - Passed: true
-- Draft pages: 378
-- Pages checked: 378
-- Passed pages: 378
+- Draft pages: 377
+- Pages checked: 377
+- Passed pages: 377
 - Failed pages: 0
-- Final HTML links: 378
-- Local assets checked: 378
+- Final HTML links: 377
+- Local assets checked: 377
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -47,7 +47,6 @@ Result:
 | true | full_site/api/class_sdf_prim_spec.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_sdf_usdz_file_format.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_tf_dense_hash_map.html | 200 | true | 0 | 0 |
-| true | full_site/api/class_tf_py_lock.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_usd_geom_primvars_a_p_i.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_usd_imaging_adapter_registry.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_usd_imaging_nurbs_patch_adapter.html | 200 | true | 0 | 0 |

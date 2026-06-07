@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：TfPyLock Class / TfPyLock Class</title>
+  <title>完整双语参考：TfPyLock Class / TfPyLock Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,46 +24,40 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：TfPyLock Class / TfPyLock Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：TfPyLock Class / TfPyLock Class</h1>
     <div class="meta">https://openusd.org/release/api/class_tf_py_lock.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页整理：中文优先解释 `TfPyLock` 在 Tf Python/C++ 边界管理 Python Global Interpreter Lock、Python thread state 和状态转换的职责；英文类名、方法名、链接和官方摘录继续保留，便于与 Doxygen 原页逐项核对。</p>
+      <p class="en">This page is promoted to a complete bilingual reference. It keeps official API names, method names, links, and excerpts while adding Chinese-first coverage of Python GIL and thread-state management.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-043">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 TfPyLock Class Reference 补充中文优先的类职责、读取重点、关键类型/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, key type/method groups, and terminology for TfPyLock Class Reference while retaining English page names, class names, method names, attribute names, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+    <section data-cn-complete="tf-py-lock-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`TfPyLock` 是 Tf 模块提供给 Python 绑定层和 C++ 扩展代码的便利类，用来集中管理 Python Global Interpreter Lock，也就是通常说的 GIL。官方说明强调 Python API 本身不是 thread-safe；如果 C++ 线程不是在 Python execution context 中运行，却要访问 Python API，就必须显式处理 GIL 和 Python thread state，否则同一进程内的多个线程可能破坏解释器状态。</p>
+      <p class="en">`TfPyLock` is a convenience class for accessing the Python Global Interpreter Lock. Python API access from outside Python execution needs extra care when multiple threads may be present.</p>
+      <p class="zh">本页解决的问题不是 USD scene graph 的并发写入，也不是 `UsdStage`、`SdfLayer` 或 Hydra 数据结构的互斥保护；它只处理“当前 C++ 代码是否安全持有或释放 Python GIL”这一层。把 `TfPyLock` 当成通用 mutex 会误导调试方向：它保护的是 Python interpreter interaction，而不是 OpenUSD 数据模型本身。</p>
+      <p class="en">The class is about Python interpreter locking and thread state, not about locking USD scene data structures.</p>
+      <p class="zh">`Acquire()` 和 `Release()` 是最直接的锁状态操作。`Acquire()` 表示当前线程进入需要访问 Python API 的区域，需要拿到 GIL 并建立/恢复合适的 Python thread state；`Release()` 表示离开这段 Python API 访问区域，释放 GIL。调用顺序必须符合页面中的 `State Valid Transitions`，否则可能出现重复释放、未持锁访问 Python API 或 thread state 不匹配。</p>
+      <p class="en">`Acquire()` and `Release()` manage direct acquisition and release of the GIL, and their order must obey the documented state transitions.</p>
+      <p class="zh">`BeginAllowThreads()` 和 `EndAllowThreads()` 对应 Python C API 中“暂时释放 GIL 让其他 Python 线程运行，然后重新获取 GIL”的模式。典型场景是：C++ 代码已经从 Python 进入并持有 GIL，但接下来要执行较长的纯 C++ 工作；这时可以用 `BeginAllowThreads()` 放开 GIL，避免阻塞其他 Python 线程，随后用 `EndAllowThreads()` 恢复原来的 Python thread state。</p>
+      <p class="en">`BeginAllowThreads()` and `EndAllowThreads()` bracket the pattern of releasing the GIL around long-running C++ work and then restoring the Python thread state.</p>
+      <p class="zh">构造函数 `TfPyLock()` 和析构函数 `~TfPyLock()` 是 RAII 生命周期边界。阅读本页时要把对象作用域、异常路径和锁状态恢复放在一起考虑：如果对象在函数退出、异常抛出或早返回时析构，析构函数必须把锁状态恢复到合法状态。也正因为如此，本类比散落调用 Python C API 更适合放在 OpenUSD 的 Python/C++ 桥接代码中。</p>
+      <p class="en">`TfPyLock()` and `~TfPyLock()` provide RAII boundaries so lock state can be restored when the object leaves scope.</p>
+      <p class="zh">`State Valid Transitions` 是本页的核心阅读区。它不是装饰性说明，而是告诉读者哪些状态机路径是合法的：例如先 acquire 再 release，或在已持锁上下文中 begin-allow-threads 再 end-allow-threads。调试 deadlock、崩溃或 Python finalization 相关问题时，应该优先对照这个状态转换表，而不是只看单个方法名。</p>
+      <p class="en">The `State Valid Transitions` section describes the legal state-machine paths and is essential for debugging lock misuse.</p>
+      <p class="zh">`TfPyEnsureGILUnlockedObj` 出现在 friends/related function 区块，说明 `TfPyLock` 还与其他 RAII 辅助对象协同，形成一套 Python/C++ 边界锁协议。这里的 friend 关系不是业务层访问授权，而是为了让相关锁管理对象能共享内部状态，安全地表达“确保 GIL 已解锁”或“确保 GIL 已恢复”的场景。</p>
+      <p class="en">`TfPyEnsureGILUnlockedObj` is related to the same RAII lock-management protocol at the Python/C++ boundary.</p>
+      <p class="zh">常见误读包括：把 GIL 当成 OpenUSD 对象锁；在没有检查当前 thread state 的情况下调用 Python API；把 `BeginAllowThreads()` 当成普通 unlock 而忘记配对 `EndAllowThreads()`；在异常路径上绕过 RAII 对象；以及以为 `TfPyLock` 能解决所有跨线程 USD 访问问题。正确用法是：在需要进入 Python API、离开 Python API、或临时让出 GIL 的边界上，用它表达清晰、可恢复的状态转换。</p>
+      <p class="en">Common misuses include treating the GIL as a USD object lock, forgetting to pair `BeginAllowThreads()` with `EndAllowThreads()`, or bypassing RAII restoration paths.</p>
+      <h3>API 分组 / API Groups</h3>
       <ul>
-        <li><span class="zh">`TfPyLock` 是访问 Python Global Interpreter Lock 的便利类，用于在 C++ 线程和 Python API 交互时集中管理 GIL 与 Python thread state。</span></li>
-        <li><span class="zh">英文摘录强调 Python API 本身不是 thread-safe；当代码从 Python execution context 外访问 Python API 时，需要显式处理多线程与 GIL 状态。</span></li>
-        <li><span class="zh">`Acquire()` 与 `Release()` 是获取/释放 GIL 的核心操作；`BeginAllowThreads()` 与 `EndAllowThreads()` 对应允许其他 Python 线程运行的状态切换。</span></li>
-        <li><span class="zh">`State Valid Transitions` 区块是本页的关键：它说明哪些锁状态转换是合法的，阅读时应把构造函数、析构函数和方法调用顺序一起核对。</span></li>
-        <li><span class="zh">`TfPyEnsureGILUnlockedObj` 作为 friends/related function 提示该类还服务于 RAII 风格的 Python 锁管理；不要把它当作普通业务锁或 USD scene graph 锁。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">Python 全局解释器锁：</span><span class="en">Python GIL</span></li>
-        <li><span class="zh">线程状态：</span><span class="en">thread state</span></li>
-        <li><span class="zh">Acquire：</span><span class="en">Acquire</span></li>
-        <li><span class="zh">Release：</span><span class="en">Release</span></li>
-        <li><span class="zh">RAII：</span><span class="en">RAII</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-139">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`TfPyLock` 是 Tf Python 绑定层用于管理 Python Global Interpreter Lock 和 Python thread state 的便利类。它把 C++ 线程进入 Python API、暂时允许其他 Python 线程运行、再恢复锁状态的步骤集中到一个明确的状态机里。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for TfPyLock while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`Acquire()` 与 `Release()` 是最直接的 GIL 获取/释放操作；调用顺序必须符合页面的 `State Valid Transitions`，否则容易破坏 Python thread state。</span></li>
-        <li><span class="zh">`BeginAllowThreads()` 与 `EndAllowThreads()` 对应 Python C API 中释放 GIL 让其他线程运行、随后重新获取 GIL 的模式，适合包裹长时间 C++ 工作。</span></li>
-        <li><span class="zh">构造函数和析构函数承担 RAII 生命周期边界；阅读时要把对象作用域、异常路径和锁状态恢复放在一起检查。</span></li>
-        <li><span class="zh">`TfPyEnsureGILUnlockedObj` 作为 friend/related symbol 提醒该类用于 Python/C++ 边界的锁协议，不是普通业务 mutex。</span></li>
-        <li><span class="zh">该类解决的是 Python API thread-safety 问题；它不保护 USD stage、SdfLayer 或 Hydra 数据结构本身，不能替代这些对象自己的并发约束。</span></li>
+        <li><span class="zh">生命周期：</span><span class="en">`TfPyLock()`, `~TfPyLock()`</span></li>
+        <li><span class="zh">直接 GIL 管理：</span><span class="en">`Acquire()`, `Release()`</span></li>
+        <li><span class="zh">允许其他 Python 线程：</span><span class="en">`BeginAllowThreads()`, `EndAllowThreads()`</span></li>
+        <li><span class="zh">相关 RAII 协议：</span><span class="en">`TfPyEnsureGILUnlockedObj`, `State Valid Transitions`</span></li>
       </ul>
       <h3>术语对照 / Terms</h3>
       <ul>
@@ -72,6 +66,7 @@
         <li><span class="zh">获取锁：</span><span class="en">Acquire()</span></li>
         <li><span class="zh">释放锁：</span><span class="en">Release()</span></li>
         <li><span class="zh">允许其他线程：</span><span class="en">BeginAllowThreads()</span></li>
+        <li><span class="zh">恢复线程状态：</span><span class="en">EndAllowThreads()</span></li>
         <li><span class="zh">状态合法转换：</span><span class="en">State Valid Transitions</span></li>
       </ul>
     </section>

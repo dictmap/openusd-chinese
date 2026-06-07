@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T01:23:58.783Z",
+  "generated_at": "2026-06-07T01:43:25.480Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 378,
-    "bilingual_complete": 28
+    "bilingual_draft": 377,
+    "bilingual_complete": 29
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 367,
-    "good_bilingual": 28
+    "draft_needs_translation": 366,
+    "good_bilingual": 29
   },
   "focus_batch": [
     {
@@ -1949,29 +1949,29 @@
     },
     {
       "index": 37,
-      "title": "类参考草稿：TfPyLock Class / TfPyLock Class",
+      "title": "完整双语参考：TfPyLock Class / TfPyLock Class",
       "output": "full_site/api/class_tf_py_lock.html",
       "official_url": "https://openusd.org/release/api/class_tf_py_lock.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 39,
-      "enBlockCount": 31,
-      "zhChars": 589,
-      "enLetters": 1664,
-      "bodyChineseChars": 652,
+      "grade": "good_bilingual",
+      "zhBlockCount": 35,
+      "enBlockCount": 37,
+      "zhChars": 844,
+      "enLetters": 2036,
+      "bodyChineseChars": 899,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 TfPyLock Class Reference 补充中文优先的类职责、读取重点、关键类型/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`TfPyLock` 是访问 Python Global Interpreter Lock 的便利类，用于在 C++ 线程和 Python API 交互时集中管理 GIL 与 Python thread state。"
+        "本页已按完整双语参考页整理：中文优先解释 `TfPyLock` 在 Tf Python/C++ 边界管理 Python Global Interpreter Lock、Python thread state 和状态转换的职责；英文类名、方法名、链接和官方摘录继续保留，便于与 Doxygen 原页逐项核对。",
+        "`TfPyLock` 是 Tf 模块提供给 Python 绑定层和 C++ 扩展代码的便利类，用来集中管理 Python Global Interpreter Lock，也就是通常说的 GIL。官方说明强调 Python API 本身不是 thread-safe；如果 C++ 线程不是在 Python execution context 中运行，却要访问 Python API，就必须显式处理 GIL 和 Python thread state，否则同一进程内的多个线程可能破坏解释器状态。",
+        "本页解决的问题不是 USD scene graph 的并发写入，也不是 `UsdStage`、`SdfLayer` 或 Hydra 数据结构的互斥保护；它只处理“当前 C++ 代码是否安全持有或释放 Python GIL”这一层。把 `TfPyLock` 当成通用 mutex 会误导调试方向：它保护的是 Python interpreter interaction，而不是 OpenUSD 数据模型本身。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, reading guidance, key type/method groups, and terminology for TfPyLock Class Reference while retaining English page names, class names, method names, attribute names, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page is promoted to a complete bilingual reference. It keeps official API names, method names, links, and excerpts while adding Chinese-first coverage of Python GIL and thread-state management.",
+        "`TfPyLock` is a convenience class for accessing the Python Global Interpreter Lock. Python API access from outside Python execution needs extra care when multiple threads may be present."
       ]
     },
     {
