@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-07T06:31:24.958Z
+Generated: 2026-06-07T06:48:09.397Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 360
-- bilingual_complete: 46
+- bilingual_draft: 359
+- bilingual_complete: 47
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 349
-- good_bilingual: 46
+- draft_needs_translation: 348
+- good_bilingual: 47
 
 ## Current Focus Batch
 
@@ -116,7 +116,7 @@ Generated: 2026-06-07T06:31:24.958Z
 | 50 | good_bilingual | bilingual_complete | 879 | 47/49 | 0 | 0 | `full_site/api/class_usd_prim.html` |
 | 51 | draft_needs_translation | bilingual_draft | 598 | 46/38 | 0 | 0 | `full_site/api/class_usd_proc_generative_procedural.html` |
 | 52 | draft_needs_translation | bilingual_draft | 649 | 64/51 | 0 | 0 | `full_site/api/class_usd_schema_registry.html` |
-| 53 | draft_needs_translation | bilingual_draft | 698 | 64/51 | 0 | 0 | `full_site/api/class_usd_shade_output.html` |
+| 53 | good_bilingual | bilingual_complete | 1469 | 86/73 | 0 | 0 | `full_site/api/class_usd_shade_output.html` |
 | 54 | draft_needs_translation | bilingual_draft | 684 | 44/31 | 0 | 0 | `full_site/api/class_usd_skel_imaging_data_source_skeleton_prim.html` |
 | 55 | good_bilingual | bilingual_complete | 928 | 47/49 | 0 | 0 | `full_site/api/class_usd_stage_cache.html` |
 | 56 | good_bilingual | bilingual_complete | 1091 | 48/50 | 0 | 0 | `full_site/api/class_usd_validation_error.html` |

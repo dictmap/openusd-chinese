@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：UsdShadeOutput Class / UsdShadeOutput Class</title>
+  <title>完整双语参考：UsdShadeOutput Class / UsdShadeOutput Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,15 +24,55 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：UsdShadeOutput Class / UsdShadeOutput Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：UsdShadeOutput Class / UsdShadeOutput Class</h1>
     <div class="meta">https://openusd.org/release/api/class_usd_shade_output.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语标准覆盖 `UsdShadeOutput` 的核心语义。中文层解释它作为 shader 或 node-graph output 的 connectable attribute wrapper 的职责、与 `UsdShadeInput` / `UsdShadeConnectableAPI` / `UsdAttribute` 的边界、source connection 的创建和清理、`CanConnect()` 合法性检查、Sdr metadata 与 authored value 的区别，以及在 shading graph 调试中的使用路径；英文 API 名称、方法名、类型名、token、链接和必要官方摘录保留原样。</p>
+      <p class="en">This page now provides full bilingual coverage for `UsdShadeOutput` as a connectable shader or node-graph output wrapper, while preserving official API names, method names, type names, tokens, links, and necessary English excerpts.</p>
+    </section>
+    <section data-cn-complete="usd-shade-output-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`UsdShadeOutput` 封装 shader 或 node-graph output。官方定义中的 “typed, externally computed value” 容易被误读：output 本身不是一个立即求值的计算结果，而是 USD 场景描述中一个带类型的可连接属性，用来声明某个 shader、material node 或 node graph 对外提供的输出端口。实际求值由渲染器、shader registry 或消费方完成。</p>
+      <p class="en">`UsdShadeOutput` encapsulates a shader or node-graph output, which is a connectable attribute representing a typed, externally computed value.</p>
+      <p class="zh">本类位于 `UsdShadeConnectableAPI` 连接语义和底层 `UsdAttribute` authoring 语义之间。它提供 output 级别的连接 API，例如 `ConnectToSource()`、`DisconnectSource()`、`ClearSource()`、`ClearSources()` 和 `GetConnectedSource()`；同时通过 `GetAttr()` 暴露底层 `UsdAttribute`，让调用方仍可检查 typeName、metadata、time samples、custom flag 或 authored value。</p>
+      <p class="en">The class combines connection-oriented shading APIs with access to the underlying `UsdAttribute` through `GetAttr()`.</p>
+      <p class="zh">`UsdShadeOutput` 与 `UsdShadeInput` 的边界在方向上：input 是节点消费的输入端口，output 是节点提供的输出端口。二者都可以表现为 connectable attribute，但连接规则、source/consumer 方向和 UI 展示不同。不要把 output 当作 shader 参数值本身；它更像材质网络图里的 typed socket，描述可以连接到哪里以及由谁产生值。</p>
+      <p class="en">Outputs and inputs are both connectable attributes, but the direction of value production and consumption is different.</p>
+      <p class="zh">`ConnectToSource()` 有多个 overload，可连接到 `UsdShadeInput`、`UsdShadeOutput`、`UsdShadeConnectableAPI` 上的具名 source，或以 source path/name/type 信息 author 连接。选择 overload 时要保留 source prim、source name、source type 与 edit target 的差异；这些信息最终会变成 USD relationship/metadata 形式的 authored connection，而不是 C++ 对象引用。</p>
+      <p class="en">`ConnectToSource()` has overloads for connecting to connectable sources, named source outputs, or authored source information. These author USD connection data rather than storing C++ object references.</p>
+      <p class="zh">`CanConnect()` 是建立连接前的 compatibility check。它可以帮助判断 output/input、connectable schema 和 source 类型是否可连接，但它不是完整的渲染器验证。一个连接在 USD authoring 层面合法，不代表所有 renderer、Sdr shader definition、material backend 或应用工具都会以相同方式解释。</p>
+      <p class="en">`CanConnect()` checks compatibility for authoring a connection, but renderer support and shader-definition interpretation remain separate concerns.</p>
+      <p class="zh">`DisconnectSource()`、`ClearSource()` 与 `ClearSources()` 都影响连接，但语义不同。`DisconnectSource()` 用于断开特定 source；`ClearSource()` 面向一个指定 source 或默认 source 清理；`ClearSources()` 清除所有 source opinions。调试时需要区分“没有 authored connection”、“存在 block/clear opinion”以及“连接存在但 source prim 不可解析”。</p>
+      <p class="en">Disconnecting, clearing one source, and clearing all sources are separate authoring operations with different effects on the composed connection state.</p>
+      <p class="zh">`GetConnectedSource()`、`GetRawConnectedSourcePaths()` 与 `SourceInfoVector` 是读取 authored connections 的入口。它们返回的是 connection source 信息，而不是执行 shader graph 后得到的数值。若材质显示异常，应同时检查 authored source paths、source names、source types、target edit layer、composition strength 和最终被渲染器识别的 shader definition。</p>
+      <p class="en">Connection query APIs report authored source information. They do not evaluate a shader graph or compute a final shading value.</p>
+      <p class="zh">Sdr metadata 是另一个容易混淆的层次。`ClearSdrMetadata()` 和 `ClearSdrMetadataByKey()` 处理的是供 shader registry / Sdr 解释的 metadata；它不是 output 的 authored value，也不是 source connection。Sdr metadata 可影响 UI、类型解释、shader discovery 或 renderer 适配，但不等同于 USD attribute value resolution。</p>
+      <p class="en">Sdr metadata is metadata used by shader registry and shader-definition interpretation. It is separate from authored values and from output source connections.</p>
+      <p class="zh">`GetAttr()` 暴露的底层 `UsdAttribute` 使 `UsdShadeOutput` 仍遵守普通 USD 属性规则：typeName、metadata、time samples、value blocking、edit target 和 composition 都按 `UsdAttribute` 语义工作。区别是 `UsdShadeOutput` 在这些通用属性能力之上增加了 shading output 的连接约束、source 信息和 Sdr metadata 约定。</p>
+      <p class="en">The underlying `UsdAttribute` follows normal USD attribute rules, while `UsdShadeOutput` adds shading-output connection and metadata conventions.</p>
+      <p class="zh">与相邻类型的关系应分层理解：`UsdShadeConnectableAPI` 定义节点是否可连接；`UsdShadeInput` 与 `UsdShadeOutput` 表示端口方向；`UsdShadeConnectionSourceInfo` 描述 source；`SdfPath` 定位 source/target；`TfToken` 保存 output name、base name 和 metadata key；`SdfValueTypeName` 表示端口类型；`UsdEditTarget` 决定连接 opinion 写入哪个 layer。</p>
+      <p class="en">Related types describe different layers of the contract: connectability, port direction, source information, paths, tokens, value type names, and edit targets.</p>
+      <p class="zh">排查 shading graph 连接问题时，建议按五步分离：先确认 output 的 `UsdPrim` 是否有效且应用了正确 connectable schema；再确认 output name、base name 和 typeName；然后检查 `CanConnect()` 与 authored source info；接着检查 layer/edit target/composition 是否让连接 opinion 生效；最后检查 renderer 或 Sdr 是否支持相应 shader definition。这样可避免把 renderer 不识别 shader 的问题误判为 USD 连接未写入。</p>
+      <p class="en">Debugging is easier when prim validity, port naming, type information, authored source connections, layer composition, and renderer/Sdr support are checked separately.</p>
+      <p class="zh">常见误用包括：把 output 当成可直接求值的 shader 结果；用 `GetAttr()` 只看属性存在就认为连接有效；把 `ClearSources()` 当成只断开一个 source；忽略 edit target 导致连接写入了非预期 layer；把 Sdr metadata、attribute metadata 和 connection source 混为一谈；以及在跨 node graph 连接时没有核对 source type 与 source path。</p>
+      <p class="en">Common mistakes include treating an output as an evaluated shader result, assuming an attribute exists implies a valid connection, confusing Sdr metadata with authored values, and ignoring edit-target or source-type details.</p>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">着色输出端口：</span><span class="en">UsdShadeOutput</span></li>
+        <li><span class="zh">可连接属性：</span><span class="en">connectable attribute</span></li>
+        <li><span class="zh">外部计算值：</span><span class="en">externally computed value</span></li>
+        <li><span class="zh">连接源信息：</span><span class="en">UsdShadeConnectionSourceInfo</span></li>
+        <li><span class="zh">连接修改方式：</span><span class="en">ConnectionModification</span></li>
+        <li><span class="zh">源类型：</span><span class="en">source type</span></li>
+        <li><span class="zh">底层属性：</span><span class="en">UsdAttribute</span></li>
+        <li><span class="zh">shader registry metadata：</span><span class="en">Sdr metadata</span></li>
+        <li><span class="zh">编辑目标：</span><span class="en">UsdEditTarget</span></li>
+        <li><span class="zh">材质网络图：</span><span class="en">shading graph / node graph</span></li>
+      </ul>
     </section>
     <section data-cn-refinement="api-class-quality-pass-041">
       <h2>中文精修导读 / Chinese Reading Notes</h2>
