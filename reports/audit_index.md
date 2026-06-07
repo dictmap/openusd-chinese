@@ -1,6 +1,6 @@
 # OpenUSD Audit Index
 
-Generated: 2026-06-07T06:06:59.909Z
+Generated: 2026-06-07T06:20:20.338Z
 
 Scope:
 
@@ -10,12 +10,12 @@ Scope:
 Result:
 
 - Passed: true
-- Audit entries: 16
-- Audit scripts present: 16
-- Audit JSON reports present: 16
-- Audit Markdown reports present: 16
-- Audit reports passed: 16
-- Validation checks: 288
+- Audit entries: 17
+- Audit scripts present: 17
+- Audit JSON reports present: 17
+- Audit Markdown reports present: 17
+- Audit reports passed: 17
+- Validation checks: 295
 - Validation failures: 0
 - Index checks: 7
 - Failed index checks: 0
@@ -37,6 +37,7 @@ Result:
 | link_audit | true | `reports/link_audit.json` | `reports/link_audit.md` |
 | http_preview | true | `reports/http_preview_audit.json` | `reports/http_preview_audit.md` |
 | full_draft_preview | true | `reports/full_draft_preview_audit.json` | `reports/full_draft_preview_audit.md` |
+| markdown_encoding | true | `reports/markdown_encoding_audit.json` | `reports/markdown_encoding_audit.md` |
 | translation_quality | true | `reports/translation_quality_review.json` | `reports/translation_quality_review.md` |
 | validation | true | `reports/validation_report.json` |  |
 

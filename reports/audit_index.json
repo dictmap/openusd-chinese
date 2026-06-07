@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-07T06:06:59.909Z",
+  "generated_at": "2026-06-07T06:20:20.338Z",
   "root": "C:\\Users\\robot\\Documents\\成长学习库\\openusd_api_cn_repro",
   "scope_note": "Report index for the bounded OpenUSD bilingual reproduction. It indexes the fixed audit chain and validation artifacts without adding pages, mirroring more official content, or storing official body text.",
   "official_scope_urls": [
@@ -463,6 +463,37 @@
       }
     },
     {
+      "key": "markdown_encoding",
+      "purpose": "Checks human-facing progress Markdown for UTF-8 without BOM and repeated question-mark encoding damage.",
+      "command": "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_markdown_encoding.mjs",
+      "script": {
+        "exists": true,
+        "relative_path": "scripts/audit_openusd_markdown_encoding.mjs",
+        "size_bytes": 3442,
+        "modified_at": "2026-06-07T06:19:08.020Z"
+      },
+      "json_report": {
+        "exists": true,
+        "relative_path": "reports/markdown_encoding_audit.json",
+        "size_bytes": 1127,
+        "modified_at": "2026-06-07T06:20:13.842Z"
+      },
+      "md_report": {
+        "exists": true,
+        "relative_path": "reports/markdown_encoding_audit.md",
+        "size_bytes": 842,
+        "modified_at": "2026-06-07T06:20:13.844Z"
+      },
+      "parsed": true,
+      "passed": true,
+      "selected_counts": {
+        "files_checked": 4,
+        "question_runs": 0,
+        "replacement_chars": 0,
+        "bom_files": 0
+      }
+    },
+    {
       "key": "translation_quality",
       "purpose": "Classifies every local page by bilingual translation depth, template-only draft risk, bad-encoding risk, and unexpected official links.",
       "command": "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_translation_quality.mjs",
@@ -497,14 +528,14 @@
       "script": {
         "exists": true,
         "relative_path": "scripts/validate_openusd_api_repro.ps1",
-        "size_bytes": 47414,
-        "modified_at": "2026-06-06T20:05:25.197Z"
+        "size_bytes": 48168,
+        "modified_at": "2026-06-07T06:19:08.027Z"
       },
       "json_report": {
         "exists": true,
         "relative_path": "reports/validation_report.json",
-        "size_bytes": 49420,
-        "modified_at": "2026-06-07T06:06:59.677Z"
+        "size_bytes": 50613,
+        "modified_at": "2026-06-07T06:20:20.154Z"
       },
       "md_report": {
         "exists": true,
@@ -513,19 +544,19 @@
       "parsed": true,
       "passed": true,
       "selected_counts": {
-        "required_check_count": 288,
+        "required_check_count": 295,
         "failed_check_count": 0
       }
     }
   ],
   "counts": {
-    "audit_entries": 16,
-    "total_entries": 17,
-    "audit_scripts_present": 16,
-    "audit_json_reports_present": 16,
-    "audit_markdown_reports_present": 16,
-    "audit_reports_passed": 16,
-    "validation_required_checks": 288,
+    "audit_entries": 17,
+    "total_entries": 18,
+    "audit_scripts_present": 17,
+    "audit_json_reports_present": 17,
+    "audit_markdown_reports_present": 17,
+    "audit_reports_passed": 17,
+    "validation_required_checks": 295,
     "validation_failed_checks": 0,
     "checks": 7,
     "failed_checks": 0
@@ -564,7 +595,7 @@
       "passed": true,
       "details": {
         "validation": {
-          "required_check_count": 288,
+          "required_check_count": 295,
           "failed_check_count": 0
         }
       }

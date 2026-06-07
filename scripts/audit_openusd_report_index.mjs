@@ -143,6 +143,15 @@ const auditChain = [
     required_count_keys: ["draft_pages", "pages_checked", "final_entry_links", "failed_pages"],
   },
   {
+    key: "markdown_encoding",
+    command: "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_markdown_encoding.mjs",
+    script: "scripts/audit_openusd_markdown_encoding.mjs",
+    json: "reports/markdown_encoding_audit.json",
+    md: "reports/markdown_encoding_audit.md",
+    purpose: "Checks human-facing progress Markdown for UTF-8 without BOM and repeated question-mark encoding damage.",
+    required_count_keys: ["files_checked", "question_runs", "replacement_chars", "bom_files"],
+  },
+  {
     key: "translation_quality",
     command: "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_translation_quality.mjs",
     script: "scripts/audit_openusd_translation_quality.mjs",

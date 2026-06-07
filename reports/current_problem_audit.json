@@ -1,6 +1,6 @@
 {
   "generated_at": "2026-06-07",
-  "purpose": "Track current completion blockers after user feedback. Round 339 updates the real baseline to 45 good_bilingual pages after promoting full_site/api/class_sdf_prim_spec.html.",
+  "purpose": "Track current completion blockers after user feedback. Round 340 is a ConsistencyRound that fixes corrupted Markdown progress records without changing completion counts.",
   "current_counts": {
     "total_pages": 406,
     "bilingual_complete": 45,
@@ -14,7 +14,7 @@
       "id": "P0-completion-stalled",
       "severity": "P0",
       "summary": "The main completion number was structurally stalled at 8; the promotion path now raises it to 45, but the remaining 361 draft pages still need real upgrades.",
-      "evidence": "reports/bilingual_completion_promotions.json now records 37 promoted pages, through full_site/api/class_sdf_prim_spec.html; discover_openusd_all_pages.mjs counts manifest-promoted pages as bilingual_complete, and audit_openusd_translation_quality.mjs reports good_bilingual=45.",
+      "evidence": "reports/bilingual_completion_promotions.json records 37 promoted pages; discover_openusd_all_pages.mjs counts manifest-promoted pages as bilingual_complete, and audit_openusd_translation_quality.mjs reports good_bilingual=45.",
       "required_action": "Continue using the promotion manifest only for pages with paragraph-level bilingual coverage and draft-marker removal; do not mark guide-only drafts as complete."
     },
     {
@@ -32,10 +32,17 @@
       "required_action": "Keep the automation prompt aligned with current counts and the promotion mechanism; do not let it regress to count-neutral round-churn."
     },
     {
+      "id": "P1-markdown-record-encoding",
+      "severity": "P1",
+      "summary": "Human-facing progress Markdown had been damaged by Windows encoding handoffs and contained many repeated question marks.",
+      "evidence": "Round 340 regenerated work.md, reports/iteration_report.md, and reports/current_problem_audit.md from JSON truth sources and added reports/markdown_encoding_audit.json to the fixed audit chain.",
+      "required_action": "Keep audit_openusd_markdown_encoding.mjs in the validation chain; if it fails, stop promotion and regenerate the Markdown before continuing."
+    },
+    {
       "id": "P1-link-placeholders",
       "severity": "P1",
       "summary": "Many clicks still route to the local uncovered placeholder because the 406-page inventory does not contain every official Doxygen target.",
-      "evidence": "local_link_routing_report records thousands of uncovered links; this is intentional by policy but still a user-visible browsing gap.",
+      "evidence": "local_link_routing_report records uncovered links; this is intentional by policy but still a user-visible browsing gap.",
       "required_action": "Prioritize high-click navigation and TOC links for local anchors or inventory expansion; do not present placeholder routing as a finished reading experience."
     },
     {
@@ -49,7 +56,7 @@
       "id": "P2-validation-json-bom",
       "severity": "P2",
       "summary": "validation_report.json previously used UTF-8 BOM, which broke standard Node JSON.parse.",
-      "evidence": "validate_openusd_api_repro.ps1 now writes UTF-8 without BOM; direct Node JSON.parse passes.",
+      "evidence": "validate_openusd_api_repro.ps1 now writes UTF-8 without BOM; the latest validation report passed=true with failed_check_count=0.",
       "required_action": "Keep validation_report.json BOM-free in every future validation run."
     }
   ],
@@ -57,7 +64,7 @@
     "Continue promoting high-value draft pages only after paragraph-level bilingual coverage.",
     "Use reports/bilingual_completion_promotions.json as the auditable promotion source.",
     "Keep discover_openusd_all_pages.mjs anchored to the stable 406 local HTML files, not rewritten local navtree links.",
-    "Prioritize full_site/api/class_usd_geom_primvars_a_p_i.html or another high-value core API page and prove good_bilingual increases again."
+    "Resume PromotionRound with exactly one high-value page after this consistency fix. Suggested target: full_site/api/class_usd_geom_primvars_a_p_i.html."
   ],
   "next_action": "Continue PromotionRound with exactly one high-value page. Suggested target: full_site/api/class_usd_geom_primvars_a_p_i.html. Stop if it cannot reach good_bilingual."
 }

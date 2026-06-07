@@ -1,52 +1,34 @@
-# OpenUSD 当前问题审计
+# Current OpenUSD Problem Audit
 
-生成日期：2026-06-07
+Generated: 2026-06-07
 
-本审计用于约束自动化不要回到“可打开草稿 + 反复提交”的旧节奏。第 339 轮继续采用 PromotionRound，只晋级 `full_site/api/class_sdf_prim_spec.html`，把真实 `good_bilingual` 从 44 提升到 45。
+本报告是当前自动化的真实问题清单。第 340 轮是 ConsistencyRound：修复进度 Markdown 的问号化编码问题，不晋级页面，也不声称完成数增长。
 
 ## 当前计数
 
-- 总页面：406
-- `bilingual_complete`：45
-- `bilingual_draft`：361
-- `good_bilingual`：45
-- `draft_needs_translation`：350
-- `draft_template_only`：11
+- 全量页面：406
+- 完整双语 / good_bilingual：45
+- 未完整翻译草稿 / bilingual_draft：361
+- draft_needs_translation：350
+- draft_template_only：11
+- promotion manifest：37 页
 
-说明：361 个 `bilingual_draft` 仍是可检查草稿，不是完整翻译。
+## 问题清单
 
-## P0 问题
+| ID | Severity | Summary |
+| --- | --- | --- |
+| P0-completion-stalled | P0 | The main completion number was structurally stalled at 8; the promotion path now raises it to 45, but the remaining 361 draft pages still need real upgrades. |
+| P0-final-entry-misleading | P0 | The final entry previously misled users by showing pending=0 while most pages were incomplete drafts. |
+| P0-automation-wrong-objective | P0 | The old heartbeat automation optimized for repeated 5-page refinement and GitHub sync rather than real completion progress. |
+| P1-markdown-record-encoding | P1 | Human-facing progress Markdown had been damaged by Windows encoding handoffs and contained many repeated question marks. |
+| P1-link-placeholders | P1 | Many clicks still route to the local uncovered placeholder because the 406-page inventory does not contain every official Doxygen target. |
+| P1-draft-content-thin | P1 | Most draft pages contain Chinese guidance and term notes, not paragraph-level bilingual translation. |
+| P2-validation-json-bom | P2 | validation_report.json previously used UTF-8 BOM, which broke standard Node JSON.parse. |
 
-1. 完成度停滞问题仍未根治。
-   过去长期只有 8 页 `good_bilingual`。第 303 到 339 轮已用 promotion manifest 建立并连续执行真实晋级链路，当前 `good_bilingual` 已到 45；但仍有 361 页处于 draft，其中 350 页仍为 `draft_needs_translation`。
+## 第 340 轮处理结果
 
-2. 总入口误导问题已纠偏但必须保持。
-   `openusd_bilingual_final.html` 现在明确显示 45 complete 和 361 incomplete drafts，不能把 `pending=0` 解读成全部完成。
-
-3. 自动化目标已纠偏但必须持续执行。
-   当前只允许 PromotionRound / DefectRound / ConsistencyRound。没有 `good_bilingual` 增长或明确 P0/P1 修复时，不应提交和推送。
-
-## P1 问题
-
-1. 链接占位仍存在。
-   406 页范围外的 Doxygen 目标仍会进入 `site/uncovered_openusd_page.html`，这是当前策略下的显式缺口，不是完成态体验。
-
-2. 大多数 draft 内容仍较薄。
-   350 页仍需 paragraph-level bilingual coverage，11 页仍是 template-only。后续每轮应只选择 1 个高价值页面完成晋级。
-
-## P2 问题
-
-1. `validation_report.json` 必须保持无 BOM。
-   当前验证脚本输出可被 Node `JSON.parse` 直接读取，后续不能回退。
-
-## 本轮证据
-
-- 目标页：`full_site/api/class_sdf_prim_spec.html`
-- 晋级记录：`round-339-sdf-prim-spec`
-- 质量结果：目标页为 `good_bilingual`，正文中文字符数 1296
-- 当前 manifest promoted pages：37
-- 验证状态：`validate_openusd_api_repro.ps1` 通过，288 项检查失败 0 项
-
-## 下一步
-
-继续 PromotionRound，建议目标：`full_site/api/class_usd_geom_primvars_a_p_i.html`。如果该页无法达到 `good_bilingual`，必须停止并报告阻塞。
+- 轮次类型：ConsistencyRound
+- 修复对象：`work.md`、`reports/iteration_report.md`、`reports/current_problem_audit.md`
+- 新增防线：`scripts/audit_openusd_markdown_encoding.mjs`、`reports/markdown_encoding_audit.json`
+- 完成数变化：good_bilingual 保持 45，没有进行页面晋级
+- 下一轮目标：`full_site/api/class_usd_geom_primvars_a_p_i.html`

@@ -106,6 +106,8 @@ $requiredFiles = @(
   "scripts\discover_openusd_all_pages.mjs",
   "scripts\build_release_full_batch.mjs",
   "scripts\build_api_full_batch.mjs",
+  "scripts\audit_openusd_markdown_encoding.mjs",
+  "scripts\regenerate_openusd_progress_markdown.mjs",
   "openusd_bilingual_final.html",
   "reports\link_audit.json",
   "reports\link_audit.md",
@@ -159,6 +161,8 @@ $requiredFiles = @(
   "reports\api_full_batch_report.md",
   "reports\scope_manifest.json",
   "reports\scope_manifest.md",
+  "reports\markdown_encoding_audit.json",
+  "reports\markdown_encoding_audit.md",
   "site\_static\pygments.css",
   "site\_static\sphinx-design.min.css",
   "site\_static\css\theme.css",
@@ -628,6 +632,22 @@ $checks.Add([pscustomobject]@{
 $checks.Add([pscustomobject]@{
   check = "audit_index:fixed_chain_ready"
   passed = ($auditIndex.counts.audit_entries -ge 14 -and $auditIndex.counts.total_entries -ge 15 -and $auditIndex.counts.audit_scripts_present -ge 14 -and $auditIndex.counts.audit_json_reports_present -ge 14 -and $auditIndex.counts.audit_markdown_reports_present -ge 14 -and $auditIndex.counts.audit_reports_passed -ge 14 -and (($auditIndex.counts.validation_failed_checks -eq 0 -and $auditIndex.counts.failed_checks -eq 0) -or $auditIndexOnlyStaleValidationFailure))
+})
+
+$markdownEncodingAudit = Get-Content -LiteralPath (Join-Path $reportDir "markdown_encoding_audit.json") -Raw -Encoding UTF8 | ConvertFrom-Json
+$checks.Add([pscustomobject]@{
+  check = "markdown_encoding_audit:passed"
+  passed = ($markdownEncodingAudit.passed -eq $true)
+})
+
+$checks.Add([pscustomobject]@{
+  check = "markdown_encoding_audit:no_question_mark_runs"
+  passed = ([int]$markdownEncodingAudit.question_runs -eq 0)
+})
+
+$checks.Add([pscustomobject]@{
+  check = "markdown_encoding_audit:no_bom_files"
+  passed = ([int]$markdownEncodingAudit.bom_files -eq 0)
 })
 
 $primaryEntryCoverage = Get-Content -LiteralPath (Join-Path $reportDir "primary_entry_coverage.json") -Raw -Encoding UTF8 | ConvertFrom-Json
