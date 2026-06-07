@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-07T07:10:54.811Z
+Generated: 2026-06-07T07:22:50.748Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 49
-- Promoted complete pages: 41
-- Bilingual draft pages: 357
+- Bilingual complete pages: 50
+- Promoted complete pages: 42
+- Bilingual draft pages: 356
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -68,7 +68,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_complete | https://openusd.org/release/api/class_usd_lux_shaping_a_p_i.html | full_site/api/class_usd_lux_shaping_a_p_i.html | https://openusd.org/release/api/class_usd_lux_shaping_a_p_i.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_usd_physics_joint.html | full_site/api/class_usd_physics_joint.html | https://openusd.org/release/api/class_usd_physics_joint.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_usd_prim.html | full_site/api/class_usd_prim.html | https://openusd.org/release/api/class_usd_prim.html |
-| api | bilingual_draft | 类参考草稿：UsdProcGenerativeProcedural Class / UsdProcGenerativeProcedural Class | full_site/api/class_usd_proc_generative_procedural.html | https://openusd.org/release/api/class_usd_proc_generative_procedural.html |
+| api | bilingual_complete | https://openusd.org/release/api/class_usd_proc_generative_procedural.html | full_site/api/class_usd_proc_generative_procedural.html | https://openusd.org/release/api/class_usd_proc_generative_procedural.html |
 | api | bilingual_draft | 类参考草稿：UsdSchemaRegistry Class / UsdSchemaRegistry Class | full_site/api/class_usd_schema_registry.html | https://openusd.org/release/api/class_usd_schema_registry.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_usd_shade_output.html | full_site/api/class_usd_shade_output.html | https://openusd.org/release/api/class_usd_shade_output.html |
 | api | bilingual_draft | 类参考草稿：UsdSkelImagingDataSourceSkeletonPrim Class / UsdSkelImagingDataSourceSkeletonPrim Class | full_site/api/class_usd_skel_imaging_data_source_skeleton_prim.html | https://openusd.org/release/api/class_usd_skel_imaging_data_source_skeleton_prim.html |

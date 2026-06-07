@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：UsdProcGenerativeProcedural Class / UsdProcGenerativeProcedural Class</title>
+  <title>完整双语参考：UsdProcGenerativeProcedural Class / UsdProcGenerativeProcedural Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,15 +24,51 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：UsdProcGenerativeProcedural Class / UsdProcGenerativeProcedural Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：UsdProcGenerativeProcedural Class / UsdProcGenerativeProcedural Class</h1>
     <div class="meta">https://openusd.org/release/api/class_usd_proc_generative_procedural.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已从草稿晋级为完整双语参考页。中文解释覆盖 `UsdProcGenerativeProcedural` 的 abstract typed schema 职责、generative procedural prim 的官方定义、`primvars:` 输入约定、`proceduralSystem` 属性、`Define()` / `Get()` / `CreateProceduralSystemAttr()` / `GetProceduralSystemAttr()` 的使用边界，以及 scene description 与 runtime execution 的区别；英文 API 名称、属性名、token、类型名、链接和必要原文摘录保持原样。</p>
+      <p class="en">This page is promoted to a complete bilingual reference. It keeps original API names, property names, tokens, type names, links, and necessary English excerpts while adding paragraph-level Chinese coverage for the official semantics.</p>
+    </section>
+    <section data-cn-complete="usd-proc-generative-procedural-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`UsdProcGenerativeProcedural` 表示一个 abstract generative procedural prim。官方描述的重点不是“这个 prim 会自己生成几何”，而是“它在 USD scene description 中交付 procedural 的定义和输入参数”。因此它首先是一个 schema contract：把程序化生成所需的系统标识、输入属性和关系放到 stage 上，让后续 consumer、插件或 runtime 决定是否识别并执行。</p>
+      <p class="en">The official page describes an abstract generative procedural prim that delivers a procedural definition and input parameters through scene description.</p>
+      <p class="zh">官方摘录强调输入参数通过 `primvars:` namespace 下的 properties，包括 attributes 和 relationships 来传递。这意味着 procedural 输入既可以是数值、token、asset path 等属性，也可以是指向其他 scene data 的 relationship。翻译和工具实现都必须保留 `primvars:` 前缀，因为它是输入参数命名空间的一部分，不是普通中文标签。</p>
+      <p class="en">Inputs are delivered via properties, including relationships, within the `primvars:` namespace.</p>
+      <p class="zh">`proceduralSystem` 是本类最关键的自有属性。`CreateProceduralSystemAttr()` 用来 author 该属性，`GetProceduralSystemAttr()` 用来取得对应 `UsdAttribute`。它的值说明这个 procedural definition 对哪个系统有意义；该值可以来自 authored opinion，也可以来自 API schema fallback。它不是执行入口，也不是插件路径本身，而是让 consumer 判断应由哪个 procedural system 解释这段定义。</p>
+      <p class="en">`proceduralSystem` identifies the procedural system for which the procedural definition is meaningful; it may be authored or provided by schema fallback.</p>
+      <p class="zh">`Define(stage, path)` 和 `Get(stage, path)` 仍遵循 typed schema 的常见语义。`Define()` 在指定 `UsdStage` / `SdfPath` 上创建或确保存在该类型 prim；`Get()` 只是把已有 prim/path 包装为 `UsdProcGenerativeProcedural` wrapper。两者都不会加载 generator、展开 geometry、启动 Hydra task，或缓存生成结果。</p>
+      <p class="en">`Define()` and `Get()` create or retrieve typed-schema views; they do not execute the procedural.</p>
+      <p class="zh">官方说明明确说该 prim 本身不 awareness 或 participation in procedural execution。中文阅读时应把它与 renderer、Hydra task、asset resolver、DCC 插件和具体 generator runtime 分开：这些系统可以读取 `proceduralSystem` 和 `primvars:` 输入并做自己的处理，但 `UsdProcGenerativeProcedural` 只负责描述 USD 层的数据契约。</p>
+      <p class="en">The prim itself does not participate in procedural execution; it serves as a delivery mechanism for definitions and inputs.</p>
+      <p class="zh">`GetSchemaAttributeNames()`、`schemaKind`、`_GetSchemaKind()` 和 `UsdSchemaRegistry` 条目说明该类由 schema registry 管理。它们适合做 schema introspection、UI 生成和属性清单校验；具体 stage 上的有效值仍需要通过 USD composition、layer strength、time samples、fallback 和 authored relationships 来解析。</p>
+      <p class="en">Schema registry and schema-kind APIs describe declared schema structure; effective authored values still come from normal USD composition.</p>
+      <p class="zh">与 `UsdPrim`、`SdfPath`、`UsdAttribute`、`UsdRelationship`、`SdfValueTypeName` 和 `UsdProcTokens` 的关系也要分清。`UsdPrim` 是 stage 上的对象视图，`SdfPath` 定位 prim，`UsdAttribute` / `UsdRelationship` 承载 `primvars:` 输入，`UsdProcTokens` 提供 token 常量；本类把这些 USD 基础机制组织成“可被 procedural system 消费”的 schema 约定。</p>
+      <p class="en">Related USD types provide path identity, prim views, attributes, relationships, type names, and tokens used by the procedural schema contract.</p>
+      <p class="zh">常见误读包括：把该 prim 当成会立即生成内容的 node；把 `proceduralSystem` 当成插件文件路径；把 `primvars:` 输入和 `UsdGeomPrimvar` 的渲染插值语义混为一谈；只调用 `Get()` 就以为 prim 已存在；或忽略 fallback 与 authored value 的差异。调试时建议按 path、schema type、`proceduralSystem`、`primvars:` properties / relationships、composition、consumer 支持和 runtime 日志的顺序排查。</p>
+      <p class="en">Common debugging separates path validity, schema type, procedural system token, authored inputs, composition, consumer support, and runtime diagnostics.</p>
+      <p class="zh">在内容管线中，本类通常用于把“生成规则的声明”放进 USD 文件，而不是把生成后的 mesh、points 或 volumes 直接写入该 prim。若某个系统支持该 `proceduralSystem`，它可以读取 `primvars:` 输入并在加载、渲染或离线烘焙阶段生成实际结果；若系统不支持，它仍应能把该 prim 作为普通 USD 数据保存、传递或检查。</p>
+      <p class="en">In pipelines, the schema stores a declaration and inputs for generation; compatible systems may consume it, while unsupported systems can still preserve it as USD data.</p>
+      <p class="zh">`primvars:` 在这里强调“作为 procedural input 的命名空间”，不必等同于 `UsdGeomPrimvarsAPI` 中面向几何插值的 primvar 工作流。某些输入可能只是普通属性值，某些输入可能是 relationship 指向的场景对象。排查输入缺失时应检查 property name、namespace、value type、relationship target、layer strength 和 consumer 期望的 schema，而不是只搜索 UI 中的参数名。</p>
+      <p class="en">The `primvars:` namespace is used for procedural inputs here; the authored properties may be values or relationships and must be checked through normal USD property and composition rules.</p>
+      <p class="zh">对翻译和复刻页面来说，`proceduralSystem`、`primvars:`、`Define()`、`Get()`、`CreateProceduralSystemAttr()` 和 `GetProceduralSystemAttr()` 必须保留英文原形，因为它们分别对应 USD 文件中的 token、命名空间和 C++ / Python API。中文说明负责解释边界，不能把这些标识改写成无法和官方 API 对照的本地化名称。</p>
+      <p class="en">API and token spellings remain unchanged so the bilingual page can be checked directly against authored USD files and the official API.</p>
+      <p class="zh">因此，本页的完整翻译目标是帮助读者判断“描述是否正确”，而不是承诺任何具体系统一定会执行生成。</p>
+      <p class="en">The page helps readers judge the authored description, not guarantee execution by a specific system.</p>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">生成式程序化 prim：</span><span class="en">generative procedural prim</span></li>
+        <li><span class="zh">抽象 typed schema：</span><span class="en">abstract typed schema</span></li>
+        <li><span class="zh">输入参数命名空间：</span><span class="en">primvars:</span></li>
+        <li><span class="zh">程序化系统：</span><span class="en">proceduralSystem</span></li>
+        <li><span class="zh">场景描述契约：</span><span class="en">scene description contract</span></li>
+        <li><span class="zh">运行时执行：</span><span class="en">runtime execution</span></li>
+      </ul>
     </section>
     <section data-cn-refinement="api-class-quality-pass-041">
       <h2>中文精修导读 / Chinese Reading Notes</h2>
