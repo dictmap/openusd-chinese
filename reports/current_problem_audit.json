@@ -1,31 +1,31 @@
 {
-  "generated_at": "2026-06-07T19:35:55.510Z",
-  "purpose": "Round 391 DefectRound fixed the final entry completed-page table that still showed only the 9 local preview entries even though the real bilingual_complete count was 93. Counts stay unchanged; this is a named P1 browser-visible final-entry consistency fix.",
+  "generated_at": "2026-06-07T20:18:53.813Z",
+  "purpose": "Round 392 PromotionRound promoted full_site/release/user_guides/schemas/usdLux/LightFilter.html after live official-page and local source-snapshot parity checks. The page now has Chinese main-reading-path coverage for LightFilter, filterLink collection, lightFilter:shaderId, UsdShade connectability, inherited properties and debugging boundaries.",
   "current_counts": {
     "total_pages": 406,
-    "bilingual_complete": 93,
-    "bilingual_draft": 313,
-    "good_bilingual": 93,
-    "draft_needs_translation": 302,
+    "bilingual_complete": 94,
+    "bilingual_draft": 312,
+    "good_bilingual": 94,
+    "draft_needs_translation": 301,
     "draft_template_only": 11,
-    "review_ready_zh": 30,
+    "review_ready_zh": 31,
     "api_complete": 72,
-    "release_complete": 21,
+    "release_complete": 22,
     "pending_full_scope": 0
   },
   "problems": [
     {
       "id": "P0-completion-stalled",
       "severity": "P0",
-      "summary": "The main completion number was structurally stalled at 8; the promotion path now raises it to 93, but the remaining 313 draft pages still need real upgrades.",
-      "evidence": "reports/bilingual_completion_promotions.json records 85 promoted pages; discover_openusd_all_pages.mjs counts manifest-promoted pages as bilingual_complete, and audit_openusd_translation_quality.mjs reports good_bilingual=93.",
+      "summary": "The main completion number was structurally stalled at 8; the promotion path now raises it to 94, but the remaining 312 draft pages still need real upgrades.",
+      "evidence": "reports/bilingual_completion_promotions.json records 86 promoted pages; discover_openusd_all_pages.mjs counts manifest-promoted pages as bilingual_complete, and audit_openusd_translation_quality.mjs reports good_bilingual=94.",
       "required_action": "Continue using the promotion manifest only for pages with paragraph-level bilingual coverage and draft-marker removal; do not mark guide-only drafts as complete."
     },
     {
       "id": "P0-final-entry-misleading",
       "severity": "P0",
       "summary": "The final entry previously misled users by showing pending=0 while most pages were incomplete drafts, and its completed local entries table still listed only the 9 preview-entry pages.",
-      "evidence": "openusd_bilingual_final.html now states 93 complete pages, labels the remaining 313 pages as Incomplete drafts, and its Completed Bilingual Local Pages section is generated from all bilingual_complete inventory rows instead of reports/local_preview_index.json.",
+      "evidence": "openusd_bilingual_final.html now states 94 complete pages, labels the remaining 312 pages as Incomplete drafts, and its Completed Bilingual Local Pages section is generated from all bilingual_complete inventory rows instead of reports/local_preview_index.json.",
       "required_action": "Keep final-entry counts and completed-page tables dynamic; keep bilingual_draft clearly described as incomplete translation."
     },
     {
@@ -53,21 +53,21 @@
       "id": "P1-draft-content-thin",
       "severity": "P1",
       "summary": "Most draft pages contain Chinese guidance and term notes, not paragraph-level bilingual translation.",
-      "evidence": "302 pages remain draft_needs_translation; 11 pages remain draft_template_only.",
+      "evidence": "301 pages remain draft_needs_translation; 11 pages remain draft_template_only.",
       "required_action": "For selected high-value pages, replace or supplement guide-only blocks with dense paragraph-level bilingual coverage and then promote status only if the page passes the stricter rule."
     },
     {
       "id": "P1-english-residual-debt",
       "severity": "P1",
       "summary": "The good_bilingual count is useful but still too broad to prove human-review-ready Chinese reading quality; English/Chinese ratio alone must not be treated as failure.",
-      "evidence": "reports/english_debt_audit.json treats English/Chinese ratio as a diagnostic sorter only and computes review_ready_zh=30 from Chinese main-reading-path coverage signals; 10 complete pages are marked with high or very high ratio diagnostic for priority review but not automatic failure.",
+      "evidence": "reports/english_debt_audit.json treats English/Chinese ratio as a diagnostic sorter only and computes review_ready_zh=31 from Chinese main-reading-path coverage signals; 10 complete pages are marked with high or very high ratio diagnostic for priority review but not automatic failure.",
       "required_action": "Report review_ready_zh alongside good_bilingual; schedule EnglishDebtRound for pages missing section coverage or Chinese main reading path, not merely because English remains abundant."
     },
     {
       "id": "P1-release-coverage-lag",
       "severity": "P1",
-      "summary": "Completion remains API-skewed while release/tutorial/user-guide pages lag, although rounds 375 through 390 moved sixteen release/tutorial/user-guide pages forward.",
-      "evidence": "reports/english_debt_audit.json reports api_complete=72 and release_complete=21; release_review_ready_zh is 18 after promoting LightAPI.html.",
+      "summary": "Completion remains API-skewed while release/tutorial/user-guide pages lag, although rounds 375 through 392 moved seventeen release/tutorial/user-guide pages forward.",
+      "evidence": "reports/english_debt_audit.json reports api_complete=72 and release_complete=22; release_review_ready_zh is 19 after promoting LightFilter.html.",
       "required_action": "After several API PromotionRounds, choose a release/tutorial/user-guide page unless a named P0/P1 defect blocks the run."
     },
     {
@@ -80,8 +80,8 @@
   ],
   "next_actions": [
     "Continue release/user-guide coverage because API complete remains much higher than release complete.",
-    "Prefer full_site/release/user_guides/schemas/usdLux/LightFilter.html for the next PromotionRound if it can become good_bilingual and preferably review_ready_zh.",
+    "Prefer full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html for the next PromotionRound if it can become good_bilingual and preferably review_ready_zh.",
     "Keep markdown encoding and English debt audits in the validation chain."
   ],
-  "next_action": "Prefer full_site/release/user_guides/schemas/usdLux/LightFilter.html for the next release/user-guide PromotionRound; otherwise stop and report the blocker."
+  "next_action": "Prefer full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html for the next release/user-guide PromotionRound; otherwise stop and report the blocker."
 }

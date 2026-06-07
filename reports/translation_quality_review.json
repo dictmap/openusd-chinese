@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T19:37:41.559Z",
+  "generated_at": "2026-06-07T20:04:03.028Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 313,
-    "bilingual_complete": 93
+    "bilingual_draft": 312,
+    "bilingual_complete": 94
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 302,
-    "good_bilingual": 93
+    "draft_needs_translation": 301,
+    "good_bilingual": 94
   },
   "focus_batch": [
     {
@@ -9959,29 +9959,29 @@
     },
     {
       "index": 334,
-      "title": "页面草稿：LightFilter / LightFilter",
+      "title": "完整双语参考：LightFilter / LightFilter",
       "output": "full_site/release/user_guides/schemas/usdLux/LightFilter.html",
       "official_url": "https://openusd.org/release/user_guides/schemas/usdLux/LightFilter.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 35,
-      "enBlockCount": 28,
-      "zhChars": 589,
-      "enLetters": 2121,
-      "bodyChineseChars": 650,
+      "grade": "good_bilingual",
+      "zhBlockCount": 51,
+      "enBlockCount": 51,
+      "zhChars": 2053,
+      "enLetters": 3025,
+      "bodyChineseChars": 2130,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。",
-        "本区块针对 LightFilter 补充中文优先的 schema 用途、属性/关系阅读路径、继承或连接边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。",
-        "`LightFilter` 用于调制灯光效果，通常通过 `LightAPI` 的 `light:filters` relationship 与灯光关联。"
+        "本页是 OpenUSD release 用户指南中 usdLux `LightFilter` 的完整双语参考页。中文优先解释 light filter 的作用、与 `LightAPI` 的 `light:filters` 关系、`UsdShade` connectable prim/container 规则、filter-chain 嵌套语义、`filterLink` collection、`lightFilter:shaderId` 和继承自 `Xformable` / `Imageable` 的属性边界，同时保留官方标题、section、API/schema/token/属性名、代码和链接原样。",
+        "`LightFilter` 的核心职责是调制一盏或多盏灯的效果。它不是一盏灯本身，也不是材质；它是被灯光通过 `LightAPI` 的 `light:filters` relationship 引用的过滤器 prim。阅读本页时要先把它放在 usdLux 的灯光链路里理解：灯光负责发光，`light:filters` 负责把 filter 接到灯上，`LightFilter` 则描述这个 filter 如何影响光的贡献。",
+        "官方页第一段还指向 `Representing Filters on Lights`。这说明本页不是单独讲一个普通属性 schema，而是 usdLux 灯光过滤机制的一部分。实际 authoring 时，一盏灯可以通过 `light:filters` 指向一个或多个 `LightFilter` prim；消费端或 renderer delegate 再根据这些关系解释 filter-chain 中每个 filter 的贡献。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.",
-        "This section adds Chinese-first schema purpose, property and relationship reading paths, inheritance or connection boundaries, and terminology for LightFilter while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison."
+        "This local bilingual page explains the usdLux `LightFilter` guide in Chinese first while retaining official identifiers, section names, property names, tokens, and links for comparison.",
+        "A `LightFilter` modulates the effects of a light and is associated with lights through the `LightAPI` `light:filters` relationship."
       ]
     },
     {

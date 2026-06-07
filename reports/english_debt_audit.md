@@ -1,6 +1,6 @@
 # OpenUSD English Debt Audit
 
-Generated: 2026-06-07T19:37:41.884Z
+Generated: 2026-06-07T20:04:25.329Z
 
 Purpose:
 
@@ -12,16 +12,16 @@ Purpose:
 ## Counts
 
 - Total pages: 406
-- good_bilingual: 93
-- review_ready_zh: 30
+- good_bilingual: 94
+- review_ready_zh: 31
 - review_needs_zh_debt: 63
 - API complete: 72
 - API review_ready_zh: 12
-- Release complete: 21
-- Release review_ready_zh: 18
+- Release complete: 22
+- Release review_ready_zh: 19
 - Complete pages with high/very high ratio diagnostic: 10
-- bilingual_draft: 313
-- draft_needs_translation: 302
+- bilingual_draft: 312
+- draft_needs_translation: 301
 - draft_template_only: 11
 
 ## Complete Pages Still Carrying English Debt
@@ -80,7 +80,6 @@ Purpose:
 | --- | --- | --- | --- | ---: | ---: | ---: | --- | --- |
 | 298 | `full_site/release/search.html` | release | release_or_tutorial | 64 | 1/4 | 4.3 | high | draft |
 | 294 | `full_site/release/press_opensource_announce.html` | release | release_or_tutorial | 585 | 7/4 | 4.55 | high | draft |
-| 334 | `full_site/release/user_guides/schemas/usdLux/LightFilter.html` | release | release_or_tutorial | 589 | 6/4 | 3.6 | medium | draft |
 | 353 | `full_site/release/user_guides/schemas/usdRender/overview.html` | release | release_or_tutorial | 577 | 7/4 | 3.48 | medium | draft |
 | 288 | `full_site/release/intro_to_openexec.html` | release | release_or_tutorial | 608 | 7/4 | 3.36 | medium | draft |
 | 299 | `full_site/release/spec_usdpreviewsurface.html` | release | release_or_tutorial | 693 | 7/4 | 3.23 | medium | draft |
@@ -98,6 +97,7 @@ Purpose:
 | 376 | `full_site/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html` | release | release_or_tutorial | 631 | 7/4 | 2.57 | medium | draft |
 | 341 | `full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html` | release | release_or_tutorial | 697 | 6/4 | 2.56 | medium | draft |
 | 382 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html` | release | release_or_tutorial | 582 | 7/4 | 2.55 | medium | draft |
+| 321 | `full_site/release/user_guides/color_user_guide.html` | release | release_or_tutorial | 657 | 7/4 | 2.52 | medium | draft |
 
 Policy:
 
