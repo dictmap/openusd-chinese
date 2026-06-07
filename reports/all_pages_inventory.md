@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-07T09:14:51.172Z
+Generated: 2026-06-07T09:28:23.660Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 58
-- Promoted complete pages: 50
-- Bilingual draft pages: 348
+- Bilingual complete pages: 59
+- Promoted complete pages: 51
+- Bilingual draft pages: 347
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -28,7 +28,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_draft | 源码页面草稿：bindingMap.h / bindingMap.h | full_site/api/binding_map_8h_source.html | https://openusd.org/release/api/binding_map_8h_source.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_ef___lofted_output_set.html | full_site/api/class_ef___lofted_output_set.html | https://openusd.org/release/api/class_ef___lofted_output_set.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_esf_property_interface.html | full_site/api/class_esf_property_interface.html | https://openusd.org/release/api/class_esf_property_interface.html |
-| api | bilingual_draft | 类参考草稿：GfDualQuatf Class Reference final Linear Algebra / GfDualQuatf Class Reference final Linear Algebra | full_site/api/class_gf_dual_quatf.html | https://openusd.org/release/api/class_gf_dual_quatf.html |
+| api | bilingual_complete | https://openusd.org/release/api/class_gf_dual_quatf.html | full_site/api/class_gf_dual_quatf.html | https://openusd.org/release/api/class_gf_dual_quatf.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_gf_matrix2f.html | full_site/api/class_gf_matrix2f.html | https://openusd.org/release/api/class_gf_matrix2f.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_gf_matrix4f.html | full_site/api/class_gf_matrix4f.html | https://openusd.org/release/api/class_gf_matrix4f.html |
 | api | bilingual_draft | 类参考草稿：GfRange1d Class Reference Basic Geometry / GfRange1d Class Reference Basic Geometry | full_site/api/class_gf_range1d.html | https://openusd.org/release/api/class_gf_range1d.html |

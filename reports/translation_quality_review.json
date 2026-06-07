@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T09:14:51.900Z",
+  "generated_at": "2026-06-07T09:28:24.432Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 348,
-    "bilingual_complete": 58
+    "bilingual_draft": 347,
+    "bilingual_complete": 59
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 337,
-    "good_bilingual": 58
+    "draft_needs_translation": 336,
+    "good_bilingual": 59
   },
   "focus_batch": [
     {
@@ -1247,29 +1247,29 @@
     },
     {
       "index": 11,
-      "title": "类参考草稿：GfDualQuatf Class Reference final Linear Algebra / GfDualQuatf Class Reference final Linear Algebra",
+      "title": "完整双语参考：GfDualQuatf Class Reference final Linear Algebra / GfDualQuatf Class Reference final Linear Algebra",
       "output": "full_site/api/class_gf_dual_quatf.html",
       "official_url": "https://openusd.org/release/api/class_gf_dual_quatf.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 64,
-      "enBlockCount": 51,
-      "zhChars": 806,
-      "enLetters": 2076,
-      "bodyChineseChars": 881,
+      "grade": "good_bilingual",
+      "zhBlockCount": 58,
+      "enBlockCount": 60,
+      "zhChars": 1450,
+      "enLetters": 3435,
+      "bodyChineseChars": 1503,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 GfDualQuatf Class Reference 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`GfDualQuatf` 是 Gf Linear Algebra 中的 float 精度 dual quaternion 类型，包含 real part quaternion 和 dual part quaternion。"
+        "本页已按完整双语参考页整理：中文先解释 `GfDualQuatf` 在 Gf Linear Algebra 中的数学角色、构造与访问语义、归一化和逆/共轭操作、与 `GfQuatf` / `GfVec3f` / matrix transform 的边界，以及 dual quaternion 调试中容易混淆的 real/dual part 与 translation 关系；英文 API 名称、方法名、类型名、数学术语和链接保持原样。",
+        "官方定义把 `GfDualQuatf` 称为“Basic type: a real part quaternion and a dual part quaternion”。这里的重点不是它比 `GfQuatf` 多一个字段，而是它把一个 real quaternion 与一个 dual quaternion 组合成 dual quaternion，用来表达 rotation 与 translation 的耦合。它属于 `Gf` 的线性代数值类型，不是 USD scene prim、不是 `UsdAttribute`，也不会自己 author xform op。",
+        "`ScalarType` 对本类固定为 `float`。这意味着它与 `GfDualQuatd`、`GfDualQuath` 是同一数学结构的不同精度变体：`GfDualQuatd` 更适合需要 double 精度的计算，`GfDualQuath` 更偏向紧凑表示，而 `GfDualQuatf` 是常用的 float 精度中间形态。跨精度转换时要注意插值误差、归一化误差和 `GF_MIN_VECTOR_LENGTH` 这类容差常量。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for GfDualQuatf Class Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page is promoted to a complete bilingual reference: the Chinese text explains `GfDualQuatf` as a Gf Linear Algebra value type, its construction and accessor semantics, normalization and inverse/conjugate behavior, boundaries with `GfQuatf`, `GfVec3f`, and matrix transforms, and common dual-quaternion debugging pitfalls while preserving original English API names, method names, type names, mathematical terms, and links.",
+        "The official definition describes `GfDualQuatf` as a basic type with a real part quaternion and a dual part quaternion, used to represent a combination of rotation and translation."
       ]
     },
     {

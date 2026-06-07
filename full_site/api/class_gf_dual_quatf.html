@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：GfDualQuatf Class Reference final Linear Algebra / GfDualQuatf Class Reference final Linear Algebra</title>
+  <title>完整双语参考：GfDualQuatf Class Reference final Linear Algebra / GfDualQuatf Class Reference final Linear Algebra</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -19,81 +19,71 @@
     ul{padding-left:22px}
     li{margin:8px 0}
     code{font-family:"Cascadia Mono","Consolas",monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：GfDualQuatf Class Reference final Linear Algebra / GfDualQuatf Class Reference final Linear Algebra</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：GfDualQuatf Class Reference final Linear Algebra / GfDualQuatf Class Reference final Linear Algebra</h1>
     <div class="meta">https://openusd.org/release/api/class_gf_dual_quatf.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页整理：中文先解释 `GfDualQuatf` 在 Gf Linear Algebra 中的数学角色、构造与访问语义、归一化和逆/共轭操作、与 `GfQuatf` / `GfVec3f` / matrix transform 的边界，以及 dual quaternion 调试中容易混淆的 real/dual part 与 translation 关系；英文 API 名称、方法名、类型名、数学术语和链接保持原样。</p>
+      <p class="en">This page is promoted to a complete bilingual reference: the Chinese text explains `GfDualQuatf` as a Gf Linear Algebra value type, its construction and accessor semantics, normalization and inverse/conjugate behavior, boundaries with `GfQuatf`, `GfVec3f`, and matrix transforms, and common dual-quaternion debugging pitfalls while preserving original English API names, method names, type names, mathematical terms, and links.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-034">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 GfDualQuatf Class Reference 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for GfDualQuatf Class Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`GfDualQuatf` 是 Gf Linear Algebra 中的 float 精度 dual quaternion 类型，包含 real part quaternion 和 dual part quaternion。</span></li>
-        <li><span class="zh">dual quaternion 用于表示 rotation 与 translation 的组合，常见于刚体变换、蒙皮或插值语境；本页引用的论文链接用于进一步理解 dual quaternion 数学背景。</span></li>
-        <li><span class="zh">关联类型包括 `GfQuatf`、`GfVec3f`、`GfDualQuatd`、`GfDualQuath` 和 `GF_MIN_VECTOR_LENGTH`，说明本类与 float/double/half 精度变体及向量长度容差相关。</span></li>
-        <li><span class="zh">阅读本类时应区分 quaternion 的 real part 与 dual part，并保留 dual、real、rotation、translation、normalize 等数学术语原样或中英对照。</span></li>
-        <li><span class="zh">本轮不展开每个构造函数和运算符签名，只补类定位、数学用途、相关类型和术语；后续完整翻译应覆盖构造、归一化、变换提取和运算符。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">对偶四元数：</span><span class="en">dual quaternion</span></li>
-        <li><span class="zh">实部：</span><span class="en">real part</span></li>
-        <li><span class="zh">对偶部：</span><span class="en">dual part</span></li>
-        <li><span class="zh">旋转和平移：</span><span class="en">rotation and translation</span></li>
-        <li><span class="zh">线性代数：</span><span class="en">linear algebra</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-130">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`GfDualQuatf` 是 float 精度 dual quaternion，用 real quaternion 和 dual quaternion 两部分表示旋转和平移的组合。它常用于刚体变换、骨架/蒙皮插值或保持旋转平移耦合的变换表示。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for GfDualQuatf while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`real part` 通常承载 rotation，`dual part` 编码 translation 相关信息；阅读构造函数和访问器时必须保持 real/dual 两部分的语义区分。</span></li>
-        <li><span class="zh">`Normalize()` 或归一化语义对 dual quaternion 很关键；未归一化的 dual quaternion 可能不能表示有效 rigid transform。</span></li>
-        <li><span class="zh">`GetTranslation()`、`GetReal()`、`GetDual()`、`Transform()` 等方法应和 `GfQuatf`、`GfVec3f`、`GfMatrix4f` 的转换关系一起理解。</span></li>
-        <li><span class="zh">`GfDualQuatd` 与 `GfDualQuath` 是不同精度变体；跨精度转换时要考虑误差、插值稳定性和 `GF_MIN_VECTOR_LENGTH` 这样的容差常量。</span></li>
-        <li><span class="zh">dual quaternion 数学不等同于普通 quaternion；中文层保留 `dual quaternion`、`real part`、`dual part`、`rigid transform` 等英文术语以便读者对照论文和代码。</span></li>
-      </ul>
+    <section data-cn-complete="gf-dual-quatf-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">官方定义把 `GfDualQuatf` 称为“Basic type: a real part quaternion and a dual part quaternion”。这里的重点不是它比 `GfQuatf` 多一个字段，而是它把一个 real quaternion 与一个 dual quaternion 组合成 dual quaternion，用来表达 rotation 与 translation 的耦合。它属于 `Gf` 的线性代数值类型，不是 USD scene prim、不是 `UsdAttribute`，也不会自己 author xform op。</p>
+      <p class="en">The official definition describes `GfDualQuatf` as a basic type with a real part quaternion and a dual part quaternion, used to represent a combination of rotation and translation.</p>
+      <p class="zh">`ScalarType` 对本类固定为 `float`。这意味着它与 `GfDualQuatd`、`GfDualQuath` 是同一数学结构的不同精度变体：`GfDualQuatd` 更适合需要 double 精度的计算，`GfDualQuath` 更偏向紧凑表示，而 `GfDualQuatf` 是常用的 float 精度中间形态。跨精度转换时要注意插值误差、归一化误差和 `GF_MIN_VECTOR_LENGTH` 这类容差常量。</p>
+      <p class="en">`ScalarType` is the scalar precision for this class. The related `GfDualQuatd` and `GfDualQuath` pages represent double and half precision variants.</p>
+      <p class="zh">本页列出的 7 个 `GfDualQuatf()` 构造函数说明调用者可以从不同输入形式创建 dual quaternion：默认构造、从 real/dual 两个 quaternion 构造、从 rotation 与 translation 相关值构造，或从其他精度变体转换。读构造函数时要先确认输入的数学约定：rotation 是否已经是单位 quaternion，translation 的单位和坐标系是否与项目一致，以及 real/dual 的组合是否代表期望的 rigid transform。</p>
+      <p class="en">The constructor overloads allow construction from quaternion parts, rotation/translation-style inputs, and related precision variants; callers must preserve the mathematical convention of the input data.</p>
+      <p class="zh">`GetReal()` 与 `GetDual()` 是理解这个类的核心访问器。`GetReal()` 返回 real part quaternion，通常承载旋转；`GetDual()` 返回 dual part quaternion，它编码与平移相关的信息，但不能被当作普通 `GfVec3f` translation 直接使用。把 dual part 误读成平移向量，是调试 dual quaternion 结果错位时最常见的问题。</p>
+      <p class="en">`GetReal()` returns the real quaternion and `GetDual()` returns the dual quaternion; the dual part is not a raw translation vector.</p>
+      <p class="zh">`GetTranslation()` 是从 dual quaternion 中提取 translation 的便利接口。它通常假定对象表示合理的 rigid transform，并且 real part 已满足旋转 quaternion 的有效性要求。如果先进行了 blend、加权累积或手工修改 real/dual part，应该先检查 `GetLength()`、`Normalize()` 或 `GetNormalized()`，否则提取出的 translation 可能只是非单位 dual quaternion 的数学副产物。</p>
+      <p class="en">`GetTranslation()` extracts the translation represented by the dual quaternion; correctness depends on the dual quaternion representing a valid normalized rigid transform.</p>
+      <p class="zh">`GetLength()`、`Normalize()` 和 `GetNormalized()` 是本页的稳定性关键。`Normalize()` 修改当前对象，`GetNormalized()` 返回归一化副本；它们不是美化步骤，而是保证 dual quaternion 可解释为有效变换的重要前置条件。插值、累积或数值转换后，未归一化的对象可能会让 rotation 和 translation 同时漂移。</p>
+      <p class="en">`Normalize()` mutates the object and `GetNormalized()` returns a normalized copy; normalization is essential after blending or accumulation.</p>
+      <p class="zh">`GetInverse()` 与 `GetConjugate()` 都是代数操作，但语义不同。`GetInverse()` 面向变换的逆操作，常用于撤销一个 rigid transform；`GetConjugate()` 是 dual quaternion 的共轭形式，常用于推导、求逆或实现内部计算。不要把 conjugate 简单等同于 inverse，尤其是在对象未归一化或不代表有效刚体变换时。</p>
+      <p class="en">`GetInverse()` and `GetConjugate()` are related algebraic operations but are not interchangeable in all numerical states.</p>
+      <p class="zh">`GetIdentity()` 与 `GetZero()` 的边界也很重要。identity 表示无旋转、无平移的单位变换；zero 是零值代数构造，通常不应被当作有效 rigid transform。若代码把 zero 当作初始化后的“无变换”状态，后续 `Normalize()`、`GetTranslation()` 或插值结果都可能出错。</p>
+      <p class="en">`GetIdentity()` represents the identity transform, while `GetZero()` is a zero-valued algebraic object and not a valid rigid transform.</p>
+      <p class="zh">与 matrix transform 相比，dual quaternion 的优势通常出现在刚体变换插值、骨架/蒙皮、避免简单矩阵线性插值带来的剪切或体积问题等场景。它不是 `GfMatrix4f` 的完整替代：matrix 可以表达更一般的 affine transform，例如 non-uniform scale 或 shear；dual quaternion 主要表达 rotation + translation 的刚体语义。</p>
+      <p class="en">Compared with matrices, dual quaternions are especially useful for rigid transform interpolation and skinning, but they do not represent every affine transform that a matrix can represent.</p>
+      <p class="zh">本页引用的 dual quaternion 论文链接说明该类型有明确数学背景。中文层保留 `dual quaternion`、`real part`、`dual part`、`Normalize()`、`GetTranslation()`、`rigid transform` 等英文术语，是为了让读者能在源码、Doxygen 和论文之间精确对照，而不是把 API 名称翻译成不可搜索的中文名。</p>
+      <p class="en">The linked papers provide the mathematical background. English API names and mathematical terms are preserved so the page remains searchable against source code and Doxygen.</p>
+      <p class="zh">实际调试时可以按以下顺序检查：输入 rotation 是否单位化，translation 是否用正确坐标系写入，构造函数 overload 是否与数据含义匹配，blend 后是否调用 `Normalize()`，`GetLength()` 是否接近预期，`GetReal()` / `GetDual()` 是否被错误解释，最后再比较由 dual quaternion 转出的 translation 或 matrix 是否与 DCC/renderer 中看到的姿态一致。</p>
+      <p class="en">A practical debugging path is to check normalized rotation input, coordinate-system conventions, constructor overload choice, post-blend normalization, length, real/dual part interpretation, and final extracted transform.</p>
+      <p class="zh">运算符小节也应按值类型来读：`operator==()`、`operator!=()` 比较的是 dual quaternion 两部分的数值状态，不代表两个场景对象、关节或 xform op 语义相同；`operator*` 这类组合运算体现变换组合顺序，顺序错误会导致旋转中心和平移方向都变化。使用它做 skinning 或动画 blend 时，应显式记录乘法顺序和归一化策略。</p>
+      <p class="en">Operator documentation should be read as value-type algebra: equality compares stored components, while multiplication order affects the represented transform.</p>
+      <p class="zh">`GF_MIN_VECTOR_LENGTH` 链接提醒读者，Gf 数学类型常在接近零长度或退化输入时使用容差思路。对 dual quaternion 来说，接近零长度、real part 非单位、dual part 与 real part 不一致，都会让 `GetInverse()`、`GetTranslation()` 或归一化流程暴露数值问题。工程代码中不要只检查是否为零对象，还应检查是否满足有效 rigid transform 的前置条件。</p>
+      <p class="en">The `GF_MIN_VECTOR_LENGTH` reference is a reminder that degeneracy and near-zero lengths need tolerance-aware handling in Gf math code.</p>
+      <p class="zh">本类和 USD transform stack 的关系也要分清：`GfDualQuatf` 可以作为计算中的中间表示，但 USD authored transform 通常仍通过 `UsdGeomXformOp`、matrix 或 translate/rotate/scale op 表达。把 dual quaternion 的内部 real/dual part 直接写成 USD 属性，通常不会被标准 USD 消费者理解为 xform stack。</p>
+      <p class="en">`GfDualQuatf` can be an intermediate math representation, but authored USD transforms are generally represented through standard xform ops or matrices.</p>
+      <p class="zh">所以 Doxygen 中的 “Basic type” 应理解为基础数学值类型，而不是低重要性页面。它经常出现在变换插值、姿态混合、仿真到渲染的数据桥接和动画工具链中；一旦 real/dual 两部分解释错误，最终表现会是姿态漂移、平移翻转或 skinning 体积异常。</p>
+      <p class="en">Here, “Basic type” means a foundational math value type, not an unimportant API surface.</p>
+      <p class="zh">调试结论：先查归一化。</p>
+      <p class="en">Diagnostic summary: check normalization first.</p>
+      <p class="zh">因此，读 `GfDualQuatf Class Reference` 的主线是：先把它看作 float 精度 dual quaternion value type，再分清 real part 与 dual part，然后理解构造、归一化、translation extraction、inverse/conjugate、identity/zero 的语义边界，最后再把它放回 `GfQuatf`、`GfVec3f`、`GfMatrix4f`、`GfDualQuatd`、`GfDualQuath` 等相邻类型的坐标系和精度上下文中。</p>
+      <p class="en">The reading path is: value type, real/dual parts, construction, normalization, translation extraction, inverse/conjugate, identity/zero, and relationships to neighboring Gf math types.</p>
       <h3>术语对照 / Terms</h3>
       <ul>
         <li><span class="zh">对偶四元数：</span><span class="en">dual quaternion</span></li>
         <li><span class="zh">实部：</span><span class="en">real part</span></li>
         <li><span class="zh">对偶部：</span><span class="en">dual part</span></li>
         <li><span class="zh">刚体变换：</span><span class="en">rigid transform</span></li>
-        <li><span class="zh">归一化：</span><span class="en">Normalize</span></li>
-        <li><span class="zh">精度变体：</span><span class="en">precision variant</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-145">
-      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
-      <p class="zh">`GfDualQuatf` 表示由 real part quaternion 和 dual part quaternion 组成的 dual quaternion，常用于同时表示 rotation 与 translation。它属于 `float` 精度线性代数基础类型，和 matrix transform 相比更适合某些插值与 skinning 场景。</p>
-      <p class="en">This third-pass refinement adds page-specific Chinese guidance for GfDualQuatf while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`GetReal()` 与 `GetDual()` 分别返回 real quaternion 和 dual quaternion；不要把 dual part 当成普通平移向量直接读取。</span></li>
-        <li><span class="zh">`GetTranslation()` 从 dual quaternion 中提取 translation，通常要求对象满足合理的 rigid transform / normalized 约束。</span></li>
-        <li><span class="zh">`Normalize()` 与 `GetNormalized()` 分别原地归一化和返回归一化副本；进行 blend 或累积后应检查 length，避免非单位 dual quaternion 进入后续变换。</span></li>
-        <li><span class="zh">`GetInverse()`、`GetConjugate()`、`GetIdentity()` 与 `GetZero()` 是常用代数构造；identity 与 zero 的语义不同，前者表示无变换，后者不是有效刚体变换。</span></li>
-        <li><span class="zh">构造函数有多个 overload，可从 rotation、translation 或两个 quaternion 组合；调用时应确认输入约定和 handedness 与项目数学约定一致。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">双四元数：</span><span class="en">dual quaternion</span></li>
-        <li><span class="zh">实部：</span><span class="en">real part</span></li>
-        <li><span class="zh">对偶部：</span><span class="en">dual part</span></li>
         <li><span class="zh">平移提取：</span><span class="en">GetTranslation()</span></li>
-        <li><span class="zh">归一化：</span><span class="en">Normalize()</span></li>
-        <li><span class="zh">单位变换：</span><span class="en">identity</span></li>
+        <li><span class="zh">原地归一化：</span><span class="en">Normalize()</span></li>
+        <li><span class="zh">归一化副本：</span><span class="en">GetNormalized()</span></li>
+        <li><span class="zh">实部访问：</span><span class="en">GetReal()</span></li>
+        <li><span class="zh">对偶部访问：</span><span class="en">GetDual()</span></li>
+        <li><span class="zh">单位变换：</span><span class="en">GetIdentity()</span></li>
+        <li><span class="zh">零值对象：</span><span class="en">GetZero()</span></li>
+        <li><span class="zh">float 精度：</span><span class="en">ScalarType = float</span></li>
       </ul>
     </section>
     <section>
