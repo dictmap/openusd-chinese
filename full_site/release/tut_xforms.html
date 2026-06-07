@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：Transformations, Animation, and Layer Offsets / Transformations, Animation, and Layer Offsets</title>
+  <title>完整双语参考：Transformations, Animation, and Layer Offsets / Transformations, Animation, and Layer Offsets</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
@@ -12,97 +12,175 @@
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
     .zh{display:block;font-weight:650;color:#17324d}
     .en{display:block;color:#55616f;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
     pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
     code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：Transformations, Animation, and Layer Offsets / Transformations, Animation, and Layer Offsets</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：Transformations, Animation, and Layer Offsets / Transformations, Animation, and Layer Offsets</h1>
     <div class="meta">https://openusd.org/release/tut_xforms.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+      <p class="zh">本页是 OpenUSD release 教程中 “Transformations, Animation, and Layer Offsets” 的完整双语参考页。中文主线解释 spinning top 示例如何从静态几何 `top.geom.usd` 出发，通过 `UsdGeom.Xform`、`xformOp`、`Ts.Spline`、`xformOpOrder`、`Sdf.LayerOffset` 和 spline extrapolation 构建动画、重定时动画并修正循环播放。英文 API 名称、文件名、属性名、数学公式、代码片段和官方链接保留，用于和官方教程核对。</p>
+      <p class="en">This local bilingual page explains the OpenUSD tutorial for transformations, animation, and layer offsets in Chinese first while retaining official API names, file names, property names, formulas, code, and links for comparison.</p>
     </section>
-    <section data-cn-refinement="release-tutorial-quality-pass-002">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Transformations, Animation, and Layer Offsets 补充中文优先的阅读路径和术语说明；英文页面名、链接、代码、命令和原文摘录继续保留，用于和官方文档逐项对照。</p>
-      <p class="en">This section adds Chinese-first reading guidance for Transformations, Animation, and Layer Offsets while retaining the English page name, links, code, commands, and source excerpts for comparison with the official documentation.</p>
+
+    <section data-cn-complete="release-tutorial-transformations-animation-layer-offsets-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">本教程用一个 spinning top toy 串起三个主题：静态几何如何作为 USD asset 被引用，局部变换如何通过 `xformOp` 和 `xformOpOrder` 组合，动画时间如何通过 `timeSamples` 或 `Ts.Spline` 表达，以及引用带动画的 layer 时如何用 `Sdf.LayerOffset` 做简单重定时。它不是单纯的旋转 API 教程，而是在一个可运行脚本 `generate_examples.py` 中展示“资产引用 + 变换动画 + 时间重映射”的完整小型 pipeline。</p>
+      <p class="en">The tutorial uses a spinning top toy to connect static geometry, transform operations, animated values, references, and layer offsets.</p>
+
+      <p class="zh">官方示例文件位于 `USD/extras/usd/tutorials/animatedTop`。运行 `generate_examples.py` 会生成每个步骤对应的 `.usda` 输出，例如 `Step1.usda` 到 `Step7.usda`。脚本导入 `Usd`、`UsdGeom`、`Gf`、`Sdf`、`Ts`，其中 `UsdGeom` 提供 `Xform` 和 up-axis API，`Sdf` 提供 `LayerOffset`，`Ts` 提供 spline animation。维护本页时这些模块名和文件名都必须保留，因为它们是复现实验和查 API 的锚点。</p>
+      <p class="en">The files live in `USD/extras/usd/tutorials/animatedTop`, and `generate_examples.py` produces the `.usda` outputs for the tutorial steps.</p>
+
+      <p class="zh">静态几何部分从 Houdini 建模并导出的 `top.geom.usd` 开始。这个文件包含 spinning top 的 mesh 和 per-face color 信息；教程先用 `usdview` 检查几何外观，再在新的 stage 里引用它。`MakeInitialStage()` 会创建新 stage，设置 `UsdGeom.SetStageUpAxis(stage, UsdGeom.Tokens.z)`，并设置 `startTimeCode=1`、`endTimeCode=192`。这些 stage metadata 决定时间范围和坐标解释，但不等于已经有动画；动画要在后续属性上 author time-varying values 或 spline。</p>
+      <p class="en">The static geometry comes from `top.geom.usd`; new stages set Z-up and a 1-to-192 time range before animation is authored.</p>
+
+      <p class="zh">Step1 的核心是 `AddReferenceToGeometry(stage, '/Top')`：创建 `UsdGeom.Xform` prim `/Top`，并在它上面 `AddReference('./top.geom.usd')`。这展示了一个常见结构：几何 asset 保持静态，外层 `Xform` prim 提供变换和动画意见。把动画写在引用外层，而不是直接改写几何 asset，可以让多个 shot 或多个层复用同一个静态模型，并在不同 layer 中叠加不同动作。</p>
+      <p class="en">Step1 references `top.geom.usd` under `/Top`, keeping geometry static while transform animation is authored on an outer `Xform` prim.</p>
+
+      <p class="zh">Step2 开始给 spinning top 加旋转。`top.AddRotateZOp(opSuffix='spin')` 会创建一个名为 `xformOp:rotateZ:spin` 的属性，并把它加入 `xformOpOrder`。教程使用 `Ts.Spline` 给这个属性设置两个 knots：time 0 value 0，以及 time 48 value 360。这样可以在 48 个 timeCodes 内旋转一圈。这里要区分两层概念：`xformOp:rotateZ:spin` 是变换操作属性，`Ts.Spline` 是该属性随时间变化的曲线表达；它不是普通常量属性。</p>
+      <p class="en">Step2 adds `xformOp:rotateZ:spin` and uses a `Ts.Spline` with knots at time 0 and 48 to animate one rotation.</p>
+
+      <p class="zh">Step3 加入 `AddTilt()`，使用 `top.AddRotateXOp(opSuffix='tilt').Set(12)` 给 spinning top 一个固定倾斜角。此时 `xformOpOrder` 的顺序非常重要。USD 的 `xformOpOrder` 不是简单属性列表，而是规定局部坐标系中变换操作按什么顺序应用。若先 `rotateX:tilt` 再 `rotateZ:spin`，top 会围绕倾斜后的轴旋转；若顺序反过来，得到的是先在原坐标系自转再倾斜，视觉运动完全不同。</p>
+      <p class="en">Step3 adds `xformOp:rotateX:tilt`, and `xformOpOrder` determines whether the top spins on the tilted axis or is tilted after spinning.</p>
+
+      <p class="zh">官方用 Step4A 专门演示交换 `xformOpOrder` 的结果。`["xformOp:rotateX:tilt", "xformOp:rotateZ:spin"]` 可以理解为先倾斜 top，再沿倾斜后的局部轴旋转；`["xformOp:rotateZ:spin", "xformOp:rotateX:tilt"]` 则是先旋转，再在那个坐标框架里倾斜。读者调试变换时，如果数值看起来正确但运动轴不对，应优先检查 `xformOpOrder` 是否被覆盖、缺失或和 underlying asset 不同步。</p>
+      <p class="en">The tutorial swaps `xformOpOrder` to show that identical ops with a different order produce a different motion.</p>
+
+      <p class="zh">Step5 在恢复原始 order 后增加 precession 和 offset。`AddPrecession()` 创建 `xformOp:rotateZ:precess.spline`，从 time 0 到 192 旋转 360 度，模拟重力力矩造成的主轴进动；`AddOffset()` 创建 `xformOp:translate:offset = (0, 0.1, 0)`，模拟接触点摩擦导致的位置偏移。最终 `xformOpOrder` 同时包含 `precess`、`offset`、`tilt`、`spin`，表达的是一组有物理含义的分层局部变换，而不是任意堆叠数值。</p>
+      <p class="en">Step5 adds precession and offset ops, combining animated and static transform operations into a richer spinning-top motion.</p>
+
+      <p class="zh">Step6 转向 layer offsets。前面步骤是在引用静态几何后给它加动画；Step6 则引用已经包含动画的 `Step5.usda` 三次：`/Left/Top` 没有 offset，`/Middle/Top` 使用 `Sdf.LayerOffset(offset=96)`，`/Right/Top` 使用 `Sdf.LayerOffset(scale=0.25)`。layer offset 作用于被引用 layer 的时间样本进入当前 stage 时的时间映射，而不是空间位移。核心公式是 `stageTime = layerTime * scale + offset`。</p>
+      <p class="en">Step6 references the animated `Step5.usda` three times and uses `Sdf.LayerOffset` to offset or scale the referenced animation timeline.</p>
+
+      <p class="zh">这个 GIF 不会干净循环，原因正是 layer offset 和 spline 边界共同作用。`offset=96` 的中间 top 会晚 96 帧才开始旋转，因为没有指定 spline extrapolation，曲线范围外会保持最近 sample 值；`scale=0.25` 的右侧 top 会以 4 倍速播放，48 帧后已经走完 192 帧动画范围，然后继续保持最后一个 knot 的值。这里的重点是：layer offset 能做简单重定时，但不会自动生成无限循环，也不会替你定义曲线范围外的行为。</p>
+      <p class="en">Without spline extrapolation, offset or scaled references hold the nearest values outside the spline knot range, so the animations do not loop cleanly.</p>
+
+      <p class="zh">Step6 还展示了一个重要的工程边界：为了把三个 top 排成一行，教程在每个引用外面增加父级 `Xform`，并把平移写在父 prim 上，而不是直接给被引用的 `Top` 添加 translate 到同一个 `xformOpOrder` 中。这样可以避免替换或破坏 underlying `xformOpOrder`，从而丢失动画。真实资产 pipeline 中常见做法也是用外层 pivot、group 或 wrapper prim 承载 layout 变换，让 asset 内部动画和 shot 级摆放保持解耦。</p>
+      <p class="en">Parent `Xform` prims are used for layout translations so the referenced top's own `xformOpOrder` and animation are not overwritten.</p>
+
+      <p class="zh">Step7 用 `Ts.ExtrapLoopRepeat` 修正循环问题。`AddSpinSplineWithExtrapolation()` 和 `AddPrecessionWithExtrapolation()` 都在 spline 上调用 `SetPostExtrapolation(Ts.Extrapolation(Ts.ExtrapLoopRepeat))`。这个 extrapolation mode 会在最后一个 knot 之后重复整条 spline，并根据首尾 knot 的差异自动计算循环间的 offset。这样即使 `Sdf.LayerOffset(scale=0.25)` 把右侧 top 的时间压缩到 48 帧，曲线也能在后续时间继续重复，而不是停在最后一个值。</p>
+      <p class="en">Step7 sets `Ts.ExtrapLoopRepeat` on the splines so the animation continues after the final knot instead of holding the last value.</p>
+
+      <p class="zh">本页和 `Time and Animated Values` 用户指南的关系很密切，但重点不同。时间指南解释 `TimeCode`、timeSamples、stage start/end 和 timeCodesPerSecond 的一般概念；本教程把这些概念放进 reference composition 中，展示时间样本如何穿过 layer boundary 被 `Sdf.LayerOffset` 重映射。调试时要问三个问题：动画值写在哪个属性上，引用 arc 是否带 layer offset，以及曲线在被映射后的 stage time 范围外如何 extrapolate。</p>
+      <p class="en">The tutorial combines animated values with reference composition, showing how layer offsets remap time samples across layer boundaries.</p>
+
+      <p class="zh">常见误读有四类。第一，把 `Sdf.LayerOffset` 当作空间平移；它实际是时间映射。第二，把 `xformOpOrder` 当作可随便排序的属性列表；它实际决定局部坐标系变换语义。第三，把 stage 的 `startTimeCode` 和 `endTimeCode` 当作动画曲线本身；它们只是 stage 播放范围，曲线值仍在属性上。第四，认为 layer offset 可以处理所有复杂重定时；官方总结中也指出，layer offsets 适合简单 retiming，更复杂场景应考虑 `Value Clips`。</p>
+      <p class="en">Common mistakes include confusing layer offsets with spatial offsets, ignoring `xformOpOrder`, confusing stage range with authored samples, and using layer offsets for overly complex retiming.</p>
+
+      <p class="zh">在生产调试中，还要把“局部变换问题”和“时间组合问题”分开看。若 spinning top 的旋转轴错误，通常先检查 `xformOpOrder`、op suffix 和是否覆盖了引用资产中的 order；若多个引用副本的播放相位或速度错误，先检查 reference arc 上的 `Sdf.LayerOffset`、被引用 layer 的 time sample 范围和 spline extrapolation。把这两类问题混在一起会导致排查方向错误：一个是空间变换栈，一个是时间样本进入当前 stage 的映射。</p>
+      <p class="en">Production debugging should separate local transform-stack issues from temporal composition issues.</p>
+
+      <p class="zh">本教程用 parent `Xform` 承载 layout translate，也是一条可复用规则：shot 或 layout 层最好在资产外层放置和重定时，避免直接改写 asset 内部动画 prim 的 `xformOpOrder`。如果必须在更强 layer 中覆盖已有 xform ops，应同时检查底层 op 名称、op 顺序、属性类型和 time-varying 状态，否则很容易只保留了静态平移，却意外丢失 `spin` 或 `precess` 曲线。</p>
+      <p class="en">Using parent `Xform` prims for layout avoids overwriting animated xform ops inside the referenced asset.</p>
+
+      <p class="zh">`Value Clips` 的出现也给出边界：如果只是把同一段动画整体延后、提前或按固定比例加速，`Sdf.LayerOffset` 足够直接；如果需要分段拼接、大量片段调度、跨文件时间序列或复杂镜头级缓存，就应转向 clips 体系。这样区分后，读者能判断何时继续使用本教程的简单 retiming，何时需要更强但更复杂的机制。</p>
+      <p class="en">`Value Clips` are the next tool when simple scale-and-offset retiming is not enough.</p>
+
+      <p class="zh">维护本页时必须保留这些复现锚点：`USD/extras/usd/tutorials/animatedTop`、`generate_examples.py`、`top.geom.usd`、`Step1.usda`、`Step5.usda`、`Step6.usda`、`Step7.usda`、`UsdGeom.Xform`、`UsdGeom.SetStageUpAxis`、`UsdGeom.Tokens.z`、`stage.SetStartTimeCode(1)`、`stage.SetEndTimeCode(192)`、`AddReferenceToGeometry`、`AddRotateZOp(opSuffix='spin')`、`xformOp:rotateZ:spin`、`xformOp:rotateX:tilt`、`xformOp:rotateZ:precess`、`xformOp:translate:offset`、`xformOpOrder`、`Ts.Spline`、`Ts.Knot`、`Ts.InterpLinear`、`Ts.InterpCurve`、`Ts.ExtrapLoopRepeat`、`Sdf.LayerOffset(offset=96)`、`Sdf.LayerOffset(scale=0.25)`、`stageTime = layerTime * scale + offset`、`Value Clips`。这些名称是复现、搜索和排查的技术锚点，不应翻译。</p>
+      <p class="en">The file names, API calls, property names, tokens, and formula are reproducibility anchors and should remain unchanged.</p>
+    </section>
+
+    <section>
+      <h2>教程步骤 / Tutorial Steps</h2>
+      <ol>
+        <li><span class="zh">准备 `USD/extras/usd/tutorials/animatedTop`，运行 `generate_examples.py` 生成每步 `.usda`。</span><span class="en">Run `generate_examples.py` in the `animatedTop` tutorial folder.</span></li>
+        <li><span class="zh">用 `top.geom.usd` 作为静态几何 asset，并在 `/Top` 的外层 `UsdGeom.Xform` 上引用它。</span><span class="en">Reference the static `top.geom.usd` geometry under an outer `/Top` `Xform` prim.</span></li>
+        <li><span class="zh">用 `xformOp:rotateZ:spin` 和 `Ts.Spline` 创建旋转动画。</span><span class="en">Create spin animation with `xformOp:rotateZ:spin` and `Ts.Spline`.</span></li>
+        <li><span class="zh">加入 `xformOp:rotateX:tilt`，比较不同 `xformOpOrder` 的运动差异。</span><span class="en">Add `xformOp:rotateX:tilt` and compare different `xformOpOrder` values.</span></li>
+        <li><span class="zh">加入 `precess` 和 `offset`，把 spinning top 的进动和接触偏移表达为额外 xform ops。</span><span class="en">Add precession and offset xform ops for richer motion.</span></li>
+        <li><span class="zh">引用 `Step5.usda` 三次，使用 `Sdf.LayerOffset(offset=96)` 和 `Sdf.LayerOffset(scale=0.25)` 比较时间重映射。</span><span class="en">Reference `Step5.usda` three times and compare `Sdf.LayerOffset` offset and scale.</span></li>
+        <li><span class="zh">用 `Ts.ExtrapLoopRepeat` 给 spline 增加循环外推，使重定时后的动画持续播放。</span><span class="en">Use `Ts.ExtrapLoopRepeat` so the splines continue after their final knots.</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>关键 API 边界 / Key API Boundaries</h2>
       <ul>
-        <li><span class="zh">本教程把变换、动画和 layer offset 放在同一个 spinning top 示例中讲解，适合用来理解 USD 如何在多层文件之间重定时动画。</span></li>
-        <li><span class="zh">第一阶段建立静态几何，第二阶段通过 xformOp 和 time samples 添加动画，第三阶段通过 reference 与 layer offset 复用并调整动画时间。</span></li>
-        <li><span class="zh">阅读代码时应保留 UsdGeom.Xform、xformOp、Sdf.LayerOffset、TimeCode 等英文 API 名称；中文解释只补充这些概念在时间域和层组合中的作用。</span></li>
-        <li><span class="zh">这页与 Time and Animated Values、Referencing Layers 有强关联：一个解释时间采样，一个解释组合弧，本页把二者合在可运行示例里。</span></li>
+        <li><span class="zh">`UsdGeom.Xform` 承载可排序的变换操作；几何 asset 可以保持静态并被外层 prim 引用。</span><span class="en">`UsdGeom.Xform` carries ordered transform ops while referenced geometry can remain static.</span></li>
+        <li><span class="zh">`xformOpOrder` 决定局部坐标框架中的应用顺序；覆盖它可能破坏底层动画。</span><span class="en">`xformOpOrder` defines local transform application order and must not be overwritten casually.</span></li>
+        <li><span class="zh">`Ts.Spline` 和 `Ts.Knot` 表达属性随 `TimeCode` 的曲线变化，不是 stage 播放范围本身。</span><span class="en">`Ts.Spline` and `Ts.Knot` represent animated attribute values over time.</span></li>
+        <li><span class="zh">`Sdf.LayerOffset` 是 reference 或 sublayer 组合时的时间映射，公式是 `stageTime = layerTime * scale + offset`。</span><span class="en">`Sdf.LayerOffset` remaps layer time into stage time using scale and offset.</span></li>
+        <li><span class="zh">`Ts.ExtrapLoopRepeat` 解决曲线范围外保持最后值的问题，使旋转能够持续循环。</span><span class="en">`Ts.ExtrapLoopRepeat` makes a spline repeat instead of holding its final value.</span></li>
       </ul>
-      <h3>术语对照 / Terms</h3>
+    </section>
+
+    <section>
+      <h2>代码摘录 / Code Excerpts</h2>
+      <pre><code>from pxr import Usd, UsdGeom, Gf, Sdf, Ts
+
+def MakeInitialStage(path):
+    stage = Usd.Stage.CreateNew(path)
+    UsdGeom.SetStageUpAxis(stage, UsdGeom.Tokens.z)
+    stage.SetStartTimeCode(1)
+    stage.SetEndTimeCode(192)
+    return stage</code></pre>
+      <pre><code>def AddSpinSpline(top):
+    spin = top.AddRotateZOp(opSuffix='spin')
+    spinAttr = spin.GetAttr()
+    typeName = str(spinAttr.GetTypeName())
+    spline = Ts.Spline(typeName)
+    spline.SetKnot(Ts.Knot(typeName=typeName, time=0, value=0,
+                           nextInterp=Ts.InterpLinear))
+    spline.SetKnot(Ts.Knot(typeName=typeName, time=48, value=360,
+                           nextInterp=Ts.InterpCurve))
+    spinAttr.SetSpline(spline)</code></pre>
+      <pre><code>middle_top.GetPrim().GetReferences().AddReference(
+    assetPath='./Step5.usda',
+    primPath='/Top',
+    layerOffset=Sdf.LayerOffset(offset=96))
+
+right_top.GetPrim().GetReferences().AddReference(
+    assetPath='./Step5.usda',
+    primPath='/Top',
+    layerOffset=Sdf.LayerOffset(scale=0.25))</code></pre>
+    </section>
+
+    <section>
+      <h2>Layer Offset 调试要点 / Layer Offset Debugging</h2>
+      <p class="zh">排查 layer offset 时，先确认 reference 的 `assetPath` 和 `primPath` 是否正确，再确认 offset/scale 的时间含义。`offset=96` 表示被引用动画映射到 stage 后整体后移，`scale=0.25` 表示被引用 layer 的 192 帧范围压缩到 stage 上 48 帧内。若没有 extrapolation，超出 spline knot 范围时会保持最近值；若设置 `Ts.ExtrapLoopRepeat`，曲线会循环重复。这个差异解释了 Step6 和 Step7 在 `usdview` 中的播放结果为什么不同。</p>
+      <p class="en">Debug layer offsets by checking reference paths, temporal offset/scale mapping, and spline extrapolation behavior.</p>
+    </section>
+
+    <section>
+      <h2>术语对照 / Terms</h2>
       <ul>
+        <li><span class="zh">变换、动画与层偏移：</span><span class="en">Transformations, Animation, and Layer Offsets</span></li>
         <li><span class="zh">变换操作：</span><span class="en">xformOp</span></li>
-        <li><span class="zh">时间采样：</span><span class="en">time samples</span></li>
-        <li><span class="zh">层时间偏移：</span><span class="en">LayerOffset</span></li>
-        <li><span class="zh">引用组合弧：</span><span class="en">reference</span></li>
-        <li><span class="zh">时间码：</span><span class="en">TimeCode</span></li>
+        <li><span class="zh">变换操作顺序：</span><span class="en">xformOpOrder</span></li>
+        <li><span class="zh">时间样本：</span><span class="en">time samples</span></li>
+        <li><span class="zh">样条动画：</span><span class="en">spline animation / `Ts.Spline`</span></li>
+        <li><span class="zh">层时间偏移：</span><span class="en">layer offset / `Sdf.LayerOffset`</span></li>
+        <li><span class="zh">循环外推：</span><span class="en">loop extrapolation / `Ts.ExtrapLoopRepeat`</span></li>
+        <li><span class="zh">值剪辑：</span><span class="en">Value Clips</span></li>
       </ul>
     </section>
-    <section data-cn-refinement="release-quality-pass-111">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`Transformations, Animation, and Layer Offsets` 把静态几何、`xformOp` 动画、time samples、reference 和 `Sdf.LayerOffset` 放在同一个 spinning top 示例中。它展示 USD 如何在层组合中复用动画，并通过 offset 和 scale 重定时。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for Transformations, Animation, and Layer Offsets while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`UsdGeom.Xform` 与 `xformOp` 描述局部变换栈；阅读动画段落时要关注 op 顺序，因为 translate、rotate、scale 的组合顺序会影响最终变换矩阵。</span></li>
-        <li><span class="zh">`stage.SetStartTimeCode(1)` 和 `stage.SetEndTimeCode(192)` 建立 stage 的时间范围；time samples 则给属性在不同 `TimeCode` 上 author 值。</span></li>
-        <li><span class="zh">`Sdf.LayerOffset` 用于在引用或子层组合时改变时间映射。offset 平移时间，scale 缩放时间，二者可以让同一动画资产在不同 stage 中以不同节奏播放。</span></li>
-        <li><span class="zh">本页不只是变换 API 教程，也是在解释 composition 与时间域的交互。reference 引入动画层后，layer offset 会影响被组合进来的时间采样如何落到当前 stage 时间线上。</span></li>
-        <li><span class="zh">维护中文层时应保留 `UsdGeom.Xform`、`xformOp`、`Sdf.LayerOffset`、`TimeCode`、`time samples` 等术语原样，避免把 layer offset 误解为几何空间偏移。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">变换操作：</span><span class="en">xformOp</span></li>
-        <li><span class="zh">时间采样：</span><span class="en">time samples</span></li>
-        <li><span class="zh">USD 时间码：</span><span class="en">TimeCode</span></li>
-        <li><span class="zh">层时间偏移：</span><span class="en">Sdf.LayerOffset</span></li>
-        <li><span class="zh">时间平移量：</span><span class="en">offset</span></li>
-        <li><span class="zh">时间缩放倍率：</span><span class="en">scale</span></li>
-      </ul>
-    </section>
+
     <section>
-      <h2>页面结构 / Page Structure</h2>
+      <h2>页面链接 / Page Links</h2>
       <ul>
-<li><span class="zh">第 1 级标题：Transformations, Animation, and Layer Offsets</span><span class="en">Transformations, Animation, and Layer Offsets</span></li>
-<li><span class="zh">第 2 级标题：Static Geometry</span><span class="en">Static Geometry</span></li>
-<li><span class="zh">第 2 级标题：Moving Objects with Animated Transformations: Spinning the Top</span><span class="en">Moving Objects with Animated Transformations: Spinning the Top</span></li>
+        <li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Tutorials</a></li>
+        <li><a href="tut_variants_example_in_katana.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_variants_example_in_katana.html">Variants Example in Katana</a></li>
+        <li><a href="tut_simple_shading.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_simple_shading.html">Simple Shading in USD</a></li>
+        <li><a href="../../site/toolset.html" data-local-route="mapped" data-official-href="https://openusd.org/release/toolset.html">usdview</a></li>
+        <li><a href="../../site/glossary.html" data-local-route="mapped" data-official-href="https://openusd.org/release/glossary.html">Terms and Concepts</a></li>
+        <li><a href="https://github.com/PixarAnimationStudios/OpenUSD/tree/v26.05">USD 26.05</a></li>
       </ul>
     </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">This tutorial builds an example scene of a spinning top toy that illustrates the following topics:</p>
-<p class="en">We create the scene by starting with a USD file with static geometry, referencing it into another USD file, overlaying animation, and then using a third USD file to reference and re-time that animation.</p>
-<p class="en">To fully illustrate these concepts, we walk through a Python script that performs these steps using the Python USD API, as well as showing the resulting text .usda outputs.</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code># This is an example script from the USD tutorial, # &quot;Transformations, Animation, and Layer Offsets&quot;. # # When run, it will generate a series of usda files in the current # directory that illustrate each of the steps in the tutorial. # from pxr import Usd , UsdGeom , Gf , Sdf , Ts def MakeInitialStage ( path ): stage = Usd . Stage . CreateNew ( path ) UsdGeom . SetStageUpAxis ( stage , UsdGeom . Tokens . z ) stage . SetStartTimeCode ( 1 ) stage . SetEndTimeCode ( 192 ) return stage def Step1 (): stage = MakeInit...</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Configure your Environment</a></li>
-<li><a href="https://github.com/PixarAnimationStudios/OpenUSD/tree/v26.05">USD 26.05</a></li>
-<li><a href="../../site/toolset.html" data-local-route="mapped" data-official-href="https://openusd.org/release/toolset.html">usdview</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fgroup___usd_geom_up_axis__group.html&amp;title=Encoding+Stage+UpAxis" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/group___usd_geom_up_axis__group.html">Encoding Stage UpAxis</a></li>
-<li><a href="../../site/glossary.html" data-local-route="mapped" data-official-href="https://openusd.org/release/glossary.html">timeCodes</a></li>
-      </ul>
-    </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>

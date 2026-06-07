@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-07T15:40:44.414Z
+Generated: 2026-06-07T15:55:33.172Z
 
-Transient base URL: `http://127.0.0.1:55856/`
+Transient base URL: `http://127.0.0.1:61044/`
 
 Result:
 
 - Passed: true
-- Draft pages: 323
-- Pages checked: 323
-- Passed pages: 323
+- Draft pages: 322
+- Pages checked: 322
+- Passed pages: 322
 - Failed pages: 0
-- Final HTML links: 323
-- Local assets checked: 323
+- Final HTML links: 322
+- Local assets checked: 322
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -250,7 +250,6 @@ Result:
 | true | full_site/release/tut_simple_shading.html | 200 | true | 0 | 0 |
 | true | full_site/release/tut_usd_tutorials.html | 200 | true | 0 | 0 |
 | true | full_site/release/tut_usdview_plugin.html | 200 | true | 0 | 0 |
-| true | full_site/release/tut_xforms.html | 200 | true | 0 | 0 |
 | true | full_site/release/usd_products.html | 200 | true | 0 | 0 |
 | true | full_site/release/usdfaq.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/collections_and_patterns.html | 200 | true | 0 | 0 |

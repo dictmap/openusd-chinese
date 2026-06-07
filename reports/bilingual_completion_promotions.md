@@ -1,6 +1,6 @@
 # OpenUSD 完整双语晋级清单
 
-Generated: 2026-06-07T15:40:44.550Z
+Generated: 2026-06-07T15:55:33.274Z
 
 这份清单只记录已经从 `bilingual_draft` 晋级为 `bilingual_complete` 的页面。它是 `scripts/discover_openusd_all_pages.mjs` 识别 promoted complete 页面的审计来源，不等同于把草稿页改个状态。
 
@@ -16,6 +16,7 @@ Generated: 2026-06-07T15:40:44.550Z
 
 | ID | 本地输出 | 官方页面 | 状态 |
 | --- | --- | --- | --- |
+| `round-381-release-xforms-animation-layer-offsets` | `full_site/release/tut_xforms.html` | `https://openusd.org/release/tut_xforms.html` | bilingual_complete |
 | `round-380-release-variants-example-katana` | `full_site/release/tut_variants_example_in_katana.html` | `https://openusd.org/release/tut_variants_example_in_katana.html` | bilingual_complete |
 | `round-379-release-authoring-variants` | `full_site/release/tut_authoring_variants.html` | `https://openusd.org/release/tut_authoring_variants.html` | bilingual_complete |
 | `round-378-release-traversing-stage` | `full_site/release/tut_traversing_stage.html` | `https://openusd.org/release/tut_traversing_stage.html` | bilingual_complete |

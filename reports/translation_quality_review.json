@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T15:40:38.553Z",
+  "generated_at": "2026-06-07T15:55:27.624Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 323,
-    "bilingual_complete": 83
+    "bilingual_draft": 322,
+    "bilingual_complete": 84
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 312,
-    "good_bilingual": 83
+    "draft_needs_translation": 311,
+    "good_bilingual": 84
   },
   "focus_batch": [
     {
@@ -9500,29 +9500,29 @@
     },
     {
       "index": 317,
-      "title": "页面草稿：Transformations, Animation, and Layer Offsets / Transformations, Animation, and Layer Offsets",
+      "title": "完整双语参考：Transformations, Animation, and Layer Offsets / Transformations, Animation, and Layer Offsets",
       "output": "full_site/release/tut_xforms.html",
       "official_url": "https://openusd.org/release/tut_xforms.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 26,
-      "enBlockCount": 20,
-      "zhChars": 526,
-      "enLetters": 1214,
-      "bodyChineseChars": 594,
+      "grade": "good_bilingual",
+      "zhBlockCount": 40,
+      "enBlockCount": 40,
+      "zhChars": 2044,
+      "enLetters": 3040,
+      "bodyChineseChars": 2105,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。",
-        "本区块针对 Transformations, Animation, and Layer Offsets 补充中文优先的阅读路径和术语说明；英文页面名、链接、代码、命令和原文摘录继续保留，用于和官方文档逐项对照。",
-        "本教程把变换、动画和 layer offset 放在同一个 spinning top 示例中讲解，适合用来理解 USD 如何在多层文件之间重定时动画。"
+        "本页是 OpenUSD release 教程中 “Transformations, Animation, and Layer Offsets” 的完整双语参考页。中文主线解释 spinning top 示例如何从静态几何 `top.geom.usd` 出发，通过 `UsdGeom.Xform`、`xformOp`、`Ts.Spline`、`xformOpOrder`、`Sdf.LayerOffset` 和 spline extrapolation 构建动画、重定时动画并修正循环播放。英文 API 名称、文件名、属性名、数学公式、代码片段和官方链接保留，用于和官方教程核对。",
+        "本教程用一个 spinning top toy 串起三个主题：静态几何如何作为 USD asset 被引用，局部变换如何通过 `xformOp` 和 `xformOpOrder` 组合，动画时间如何通过 `timeSamples` 或 `Ts.Spline` 表达，以及引用带动画的 layer 时如何用 `Sdf.LayerOffset` 做简单重定时。它不是单纯的旋转 API 教程，而是在一个可运行脚本 `generate_examples.py` 中展示“资产引用 + 变换动画 + 时间重映射”的完整小型 pipeline。",
+        "官方示例文件位于 `USD/extras/usd/tutorials/animatedTop`。运行 `generate_examples.py` 会生成每个步骤对应的 `.usda` 输出，例如 `Step1.usda` 到 `Step7.usda`。脚本导入 `Usd`、`UsdGeom`、`Gf`、`Sdf`、`Ts`，其中 `UsdGeom` 提供 `Xform` 和 up-axis API，`Sdf` 提供 `LayerOffset`，`Ts` 提供 spline animation。维护本页时这些模块名和文件名都必须保留，因为它们是复现实验和查 API 的锚点。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.",
-        "This section adds Chinese-first reading guidance for Transformations, Animation, and Layer Offsets while retaining the English page name, links, code, commands, and source excerpts for comparison with the official documentation."
+        "This local bilingual page explains the OpenUSD tutorial for transformations, animation, and layer offsets in Chinese first while retaining official API names, file names, property names, formulas, code, and links for comparison.",
+        "The tutorial uses a spinning top toy to connect static geometry, transform operations, animated values, references, and layer offsets."
       ]
     },
     {
