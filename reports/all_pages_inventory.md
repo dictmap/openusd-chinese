@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-07T10:18:20.587Z
+Generated: 2026-06-07T10:29:21.811Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 63
-- Promoted complete pages: 55
-- Bilingual draft pages: 343
+- Bilingual complete pages: 64
+- Promoted complete pages: 56
+- Bilingual draft pages: 342
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -24,7 +24,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_draft | _c_l_i11_8h_source.html | full_site/api/_usd_skel__intro.html | https://openusd.org/release/api/_usd_skel__intro.html |
 | api | bilingual_draft | Classes | full_site/api/annotated.html | https://openusd.org/release/api/annotated.html |
 | api | bilingual_complete | https://openusd.org/release/api/ar_page_front.html | full_site/api/ar_page_front.html | https://openusd.org/release/api/ar_page_front.html |
-| api | bilingual_draft | Arch：架构相关 / Arch: Architecture Dependent | full_site/api/arch_page_front.html | https://openusd.org/release/api/arch_page_front.html |
+| api | bilingual_complete | https://openusd.org/release/api/arch_page_front.html | full_site/api/arch_page_front.html | https://openusd.org/release/api/arch_page_front.html |
 | api | bilingual_draft | 源码页面草稿：bindingMap.h / bindingMap.h | full_site/api/binding_map_8h_source.html | https://openusd.org/release/api/binding_map_8h_source.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_ef___lofted_output_set.html | full_site/api/class_ef___lofted_output_set.html | https://openusd.org/release/api/class_ef___lofted_output_set.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_esf_property_interface.html | full_site/api/class_esf_property_interface.html | https://openusd.org/release/api/class_esf_property_interface.html |

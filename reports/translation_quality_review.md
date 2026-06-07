@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-07T10:18:21.307Z
+Generated: 2026-06-07T10:29:22.506Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 343
-- bilingual_complete: 63
+- bilingual_draft: 342
+- bilingual_complete: 64
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 332
-- good_bilingual: 63
+- draft_needs_translation: 331
+- good_bilingual: 64
 
 ## Current Focus Batch
 
@@ -23,7 +23,7 @@ Generated: 2026-06-07T10:18:21.307Z
 | 3 | good_bilingual | bilingual_complete | 769 | 63/63 | `site/_usd__overview_and_purpose.html` | Chinese and English are paired densely enough for a reference page. |
 | 4 | draft_needs_translation | bilingual_draft | 546 | 31/24 | `full_site/api/_usd_skel__intro.html` | Has Chinese guidance, but still relies mainly on English excerpts. |
 | 5 | draft_needs_translation | bilingual_draft | 557 | 24/17 | `full_site/api/annotated.html` | Has Chinese guidance, but still relies mainly on English excerpts. |
-| 7 | draft_needs_translation | bilingual_draft | 561 | 25/18 | `full_site/api/arch_page_front.html` | Has Chinese guidance, but still relies mainly on English excerpts. |
+| 8 | draft_template_only | bilingual_draft | 62 | 2/3 | `full_site/api/binding_map_8h_source.html` | Mostly a draft shell: Chinese is limited to the shared scope note and structure labels. |
 
 ## Next Priority Queue
 
@@ -70,7 +70,7 @@ Generated: 2026-06-07T10:18:21.307Z
 | 4 | draft_needs_translation | bilingual_draft | 546 | 31/24 | 0 | 0 | `full_site/api/_usd_skel__intro.html` |
 | 5 | draft_needs_translation | bilingual_draft | 557 | 24/17 | 0 | 0 | `full_site/api/annotated.html` |
 | 6 | good_bilingual | bilingual_complete | 1674 | 43/36 | 0 | 0 | `full_site/api/ar_page_front.html` |
-| 7 | draft_needs_translation | bilingual_draft | 561 | 25/18 | 0 | 0 | `full_site/api/arch_page_front.html` |
+| 7 | good_bilingual | bilingual_complete | 1623 | 37/30 | 0 | 0 | `full_site/api/arch_page_front.html` |
 | 8 | draft_template_only | bilingual_draft | 62 | 2/3 | 0 | 0 | `full_site/api/binding_map_8h_source.html` |
 | 9 | good_bilingual | bilingual_complete | 789 | 30/32 | 0 | 0 | `full_site/api/class_ef___lofted_output_set.html` |
 | 10 | good_bilingual | bilingual_complete | 627 | 28/30 | 0 | 0 | `full_site/api/class_esf_property_interface.html` |

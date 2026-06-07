@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Arch：架构相关 / Arch: Architecture Dependent</title>
+  <title>完整双语参考：Arch：架构相关 / Arch: Architecture Dependent</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -19,20 +19,47 @@
     ul{padding-left:22px}
     li{margin:8px 0}
     code{font-family:"Cascadia Mono","Consolas",monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>Arch：架构相关 / Arch: Architecture Dependent</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：Arch：架构相关 / Arch: Architecture Dependent</h1>
     <div class="meta">https://openusd.org/release/api/arch_page_front.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页处理：中文优先解释 Arch Architecture Dependent 模块的跨平台隔离职责、`#ifdef` 收敛、Bits / Multithreading / Math / Strings / System Functions / Memory Management / Diagnostics / Symbol Visibility 分组，以及 OS/CPU token 在构建和调试中的边界；英文 API 名称、宏名、token、链接和官方摘录保留原样，便于与 Doxygen 页面核对。</p>
+      <p class="en">This page is promoted as a complete bilingual reference. It explains Arch architecture-dependent code, platform dependency isolation, #ifdef concentration, grouped low-level utilities, diagnostics, symbol visibility, and OS/CPU tokens while retaining official API names and excerpts.</p>
+    </section>
+    <section data-cn-complete="arch-architecture-dependent-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`Arch` 是 OpenUSD 的 architecture-dependent code 集中层。官方概览说它是 all architecture-dependent code 的 repository，用来 isolate all platform dependencies and confusing `#ifdefs` into one small library。它的目标不是给用户提供 scene authoring API，而是把操作系统、CPU、编译器、动态库、线程、内存和诊断差异收敛到一处，使上层 `Tf`、`Sdf`、`Usd`、Hydra 等模块尽量少直接依赖平台条件编译。</p>
+      <p class="en">The ARCH library is a repository for architecture-dependent code. It isolates platform dependencies and confusing #ifdefs into one small library.</p>
+      <p class="zh">这个页面的价值在工程维护层面：跨平台 bug 往往不是 schema 或 composition 语义错，而是 Linux、Darwin、Windows、Intel/ARM、动态库导出、线程 API、内存页大小或调试器行为不同。把这些差异封装到 Arch 后，核心代码可以调用统一接口；新增平台或修复平台差异时，也有更清晰的入口和审计范围。</p>
+      <p class="en">Arch provides a common area for multi-platform issues so higher layers can avoid scattered platform-specific conditionals.</p>
+      <p class="zh">`Bits` 分组处理位级工具和低层整数/位模式操作。阅读这类 API 时，不要把它们看成业务逻辑；它们通常服务于哈希、压缩、序列化、对齐、atomic-friendly 表示或平台差异下的基础操作。调试跨平台数值结果不一致时，`Bits` 是检查字节序、位宽和 intrinsic 差异的入口。</p>
+      <p class="en">Bits groups low-level bit operations and representation helpers that support portable behavior across architectures.</p>
+      <p class="zh">`Multithreading` 分组封装线程、锁、atomic 或线程局部状态相关差异。Windows 与 POSIX 线程模型、调度、线程 id、一次性初始化和同步原语可能不同；Arch 层的作用是让上层代码不直接写多套平台分支。排查死锁、线程 id 不一致、一次性初始化失败或 thread-local 行为异常时，应确认是否经过了 Arch 抽象。</p>
+      <p class="en">Multithreading groups platform-dependent threading and synchronization helpers.</p>
+      <p class="zh">`Math` 与 `Strings` 分组覆盖基础数学和字符串行为差异，例如浮点分类、数值转换、大小写、编码、路径/环境字符串处理等。它们看起来很小，但会影响文件路径、token 生成、诊断输出和跨平台测试一致性。保留函数名和宏名原样很重要，因为这些入口通常直接出现在 C++ 代码和构建日志中。</p>
+      <p class="en">Math and Strings contain low-level helpers for numeric and string behavior that can vary by platform and compiler.</p>
+      <p class="zh">`System Functions` 和 `Memory Management` 处理系统调用、文件描述符、进程/环境、虚拟内存、页大小、对齐、allocation 行为等底层差异。OpenUSD 的资产加载、插件加载、缓存和大数据结构都会间接受这些差异影响。若问题只在某个平台出现，先拆分为 filesystem/system-call、allocator/memory layout、或 higher-level USD logic 三类，再决定是否回到 Arch 层。</p>
+      <p class="en">System Functions and Memory Management wrap OS-level process, file, virtual-memory, and allocation differences.</p>
+      <p class="zh">`Diagnostics` 分组服务于调试器探测、断点、abort、栈信息、错误报告和崩溃诊断。不同平台的 debugger attach、signal/exception 机制和栈回溯能力不一样，因此同一个错误在 Linux、macOS 和 Windows 上可能有不同表现。排查平台特有崩溃时，Arch Diagnostics 能帮助判断是否是诊断路径差异，而不是业务代码路径差异。</p>
+      <p class="en">Diagnostics groups platform-specific debugging, trapping, abort, and error-reporting support.</p>
+      <p class="zh">`Symbol Visibility` 分组与动态库导出、导入、符号可见性宏和链接边界有关。插件、共享库和 Windows DLL 尤其依赖这些定义。若出现 unresolved symbol、插件能编译但加载失败、或某平台符号未导出，不能只看 C++ 类定义，还要检查 Arch visibility 宏和构建系统对这些宏的使用。</p>
+      <p class="en">Symbol Visibility covers dynamic-library export, import, and visibility macros that affect plugin and shared-library boundaries.</p>
+      <p class="zh">页面列出的 `ARCH_OS_LINUX`、`ARCH_OS_DARWIN`、`ARCH_OS_WINDOWS`、`ARCH_CPU_INTEL` 等 token 必须保留原样。这些不是普通英文描述，而是代码、预处理宏、构建日志和条件编译分支中的字面量。翻译时只解释含义，不改变拼写，否则会破坏读者与源码之间的对应关系。</p>
+      <p class="en">Tokens such as ARCH_OS_LINUX, ARCH_OS_DARWIN, ARCH_OS_WINDOWS, and ARCH_CPU_INTEL are code-facing symbols and must remain unchanged.</p>
+      <p class="zh">Arch 与 `Tf`、插件系统和构建系统之间也有明确分工：Arch 提供最低层的平台抽象；`Tf` 在其上提供 token、diagnostic、type、registry 等更高层基础能力；`Plug` 和各类插件依赖符号可见性、动态库加载和平台宏才能正确工作。若插件在某个平台加载失败，排查顺序通常是构建宏和 symbol visibility、动态库路径、Arch system functions，然后才是插件 metadata 或 USD schema 逻辑。</p>
+      <p class="en">Arch provides low-level platform abstraction below Tf, Plug, and other higher-level systems. Plugin loading failures often involve visibility, dynamic-library paths, and platform functions before schema logic.</p>
+      <p class="zh">反过来，也要知道何时不该回到 Arch 层：如果问题在所有平台一致复现，且表现为 layer composition、prim path、attribute value、renderer output 或 schema fallback 错误，通常应先检查 `Sdf`、`Pcp`、`Usd`、Hydra 或具体 schema。Arch 只负责平台差异和底层运行环境，不负责解释 USD authored data 的语义。</p>
+      <p class="en">If a problem reproduces the same way on all platforms and concerns authored USD data or composition semantics, higher-level USD modules should be checked before Arch.</p>
+      <p class="zh">常见调试路径可以固定为：先判断问题是否只在特定 OS/CPU/compiler 上出现；再看是否涉及线程、内存、系统调用、符号导出或诊断；然后定位到 Arch 的对应分组；最后再回到上层模块验证业务语义。这样可以避免把平台差异误判为 `UsdStage`、composition、renderer 或 schema 的问题。</p>
+      <p class="en">A practical debugging path is OS/CPU/compiler specificity, affected low-level category, corresponding Arch group, and then the higher-level USD module.</p>
     </section>
     <section data-cn-refinement="translation-quality-pass-001">
       <h2>中文精修导读 / Chinese Reading Notes</h2>

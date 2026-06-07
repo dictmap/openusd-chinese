@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T10:18:21.307Z",
+  "generated_at": "2026-06-07T10:29:22.506Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 343,
-    "bilingual_complete": 63
+    "bilingual_draft": 342,
+    "bilingual_complete": 64
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 332,
-    "good_bilingual": 63
+    "draft_needs_translation": 331,
+    "good_bilingual": 64
   },
   "focus_batch": [
     {
@@ -147,30 +147,29 @@
       ]
     },
     {
-      "index": 7,
-      "title": "Arch：架构相关 / Arch: Architecture Dependent",
-      "output": "full_site/api/arch_page_front.html",
-      "official_url": "https://openusd.org/release/api/arch_page_front.html",
+      "index": 8,
+      "title": "源码页面草稿：bindingMap.h / bindingMap.h",
+      "output": "full_site/api/binding_map_8h_source.html",
+      "official_url": "https://openusd.org/release/api/binding_map_8h_source.html",
       "status": "bilingual_draft",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 25,
-      "enBlockCount": 18,
-      "zhChars": 561,
-      "enLetters": 1460,
-      "bodyChineseChars": 622,
+      "grade": "draft_template_only",
+      "zhBlockCount": 2,
+      "enBlockCount": 3,
+      "zhChars": 62,
+      "enLetters": 432,
+      "bodyChineseChars": 105,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
       "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "note": "Mostly a draft shell: Chinese is limited to the shared scope note and structure labels.",
       "sampleZh": [
         "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块是针对 Arch: Architecture Dependent 的人工质检补强层，用来补足草稿页中过薄的中文阅读信息；英文 API 名称和原文摘录仍保留在下方，便于与官方文档对照。",
-        "Arch 是 OpenUSD 的平台差异隔离层，用一个小型基础库集中处理操作系统、CPU 架构、线程、内存、诊断和符号可见性等差异。"
+        "第 1 级结构：bindingMap.h"
       ],
       "sampleEn": [
         "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds a Chinese-first reading layer for this draft page while retaining the original English API names and excerpts below."
+        "bindingMap.h"
       ]
     }
   ],
@@ -1140,29 +1139,29 @@
     },
     {
       "index": 7,
-      "title": "Arch：架构相关 / Arch: Architecture Dependent",
+      "title": "完整双语参考：Arch：架构相关 / Arch: Architecture Dependent",
       "output": "full_site/api/arch_page_front.html",
       "official_url": "https://openusd.org/release/api/arch_page_front.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 25,
-      "enBlockCount": 18,
-      "zhChars": 561,
-      "enLetters": 1460,
-      "bodyChineseChars": 622,
+      "grade": "good_bilingual",
+      "zhBlockCount": 37,
+      "enBlockCount": 30,
+      "zhChars": 1623,
+      "enLetters": 2855,
+      "bodyChineseChars": 1702,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块是针对 Arch: Architecture Dependent 的人工质检补强层，用来补足草稿页中过薄的中文阅读信息；英文 API 名称和原文摘录仍保留在下方，便于与官方文档对照。",
-        "Arch 是 OpenUSD 的平台差异隔离层，用一个小型基础库集中处理操作系统、CPU 架构、线程、内存、诊断和符号可见性等差异。"
+        "本页已按完整双语参考页处理：中文优先解释 Arch Architecture Dependent 模块的跨平台隔离职责、`#ifdef` 收敛、Bits / Multithreading / Math / Strings / System Functions / Memory Management / Diagnostics / Symbol Visibility 分组，以及 OS/CPU token 在构建和调试中的边界；英文 API 名称、宏名、token、链接和官方摘录保留原样，便于与 Doxygen 页面核对。",
+        "`Arch` 是 OpenUSD 的 architecture-dependent code 集中层。官方概览说它是 all architecture-dependent code 的 repository，用来 isolate all platform dependencies and confusing `#ifdefs` into one small library。它的目标不是给用户提供 scene authoring API，而是把操作系统、CPU、编译器、动态库、线程、内存和诊断差异收敛到一处，使上层 `Tf`、`Sdf`、`Usd`、Hydra 等模块尽量少直接依赖平台条件编译。",
+        "这个页面的价值在工程维护层面：跨平台 bug 往往不是 schema 或 composition 语义错，而是 Linux、Darwin、Windows、Intel/ARM、动态库导出、线程 API、内存页大小或调试器行为不同。把这些差异封装到 Arch 后，核心代码可以调用统一接口；新增平台或修复平台差异时，也有更清晰的入口和审计范围。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds a Chinese-first reading layer for this draft page while retaining the original English API names and excerpts below."
+        "This page is promoted as a complete bilingual reference. It explains Arch architecture-dependent code, platform dependency isolation, #ifdef concentration, grouped low-level utilities, diagnostics, symbol visibility, and OS/CPU tokens while retaining official API names and excerpts.",
+        "The ARCH library is a repository for architecture-dependent code. It isolates platform dependencies and confusing #ifdefs into one small library."
       ]
     },
     {
