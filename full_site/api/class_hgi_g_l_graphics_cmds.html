@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：HgiGLGraphicsCmds Class Reference final / HgiGLGraphicsCmds Class Reference final</title>
+  <title>完整双语参考：HgiGLGraphicsCmds Class Reference final / HgiGLGraphicsCmds Class Reference final</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,15 +24,15 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：HgiGLGraphicsCmds Class Reference final / HgiGLGraphicsCmds Class Reference final</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：HgiGLGraphicsCmds Class Reference final / HgiGLGraphicsCmds Class Reference final</h1>
     <div class="meta">https://openusd.org/release/api/class_hgi_g_l_graphics_cmds.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已晋级为完整双语参考页：中文优先解释 `HgiGLGraphicsCmds` 在 HgiGL 后端中的职责、与跨后端 `HgiGraphicsCmds` 抽象的关系、OpenGL 图形命令的绑定与提交语义，以及调试时最容易混淆的 Hydra / Hgi / GL 分层边界。</p>
+      <p class="en">This page is promoted as complete bilingual reference coverage for HgiGLGraphicsCmds while retaining original API names, method names, type names, links, and English excerpts for comparison with the official Doxygen page.</p>
     </section>
     <section data-cn-refinement="api-class-quality-pass-037">
       <h2>中文精修导读 / Chinese Reading Notes</h2>
@@ -94,6 +94,44 @@
         <li><span class="zh">顶点缓冲绑定：</span><span class="en">BindVertexBuffers()</span></li>
         <li><span class="zh">间接绘制：</span><span class="en">indirect draw</span></li>
         <li><span class="zh">内存屏障：</span><span class="en">memory barrier</span></li>
+      </ul>
+    </section>
+    <section data-cn-complete="hgi-gl-graphics-cmds-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`HgiGLGraphicsCmds` 是 `HgiGraphicsCmds` 的 OpenGL backend implementation。官方一句 “OpenGL implementation of HgiGraphicsCmds” 的重点不是说明它是一种 USD scene object，而是说明它把 Hgi 的跨后端图形命令抽象落到具体 OpenGL 状态和 draw submission 上。它属于 HgiGL backend 层，位于 Hydra task 和 GPU driver 之间；它不 author USD layer，不创建 prim，也不解释 scene composition。</p>
+      <p class="en">OpenGL implementation of HgiGraphicsCmds.</p>
+      <p class="zh">阅读这个类时，最重要的边界是 `HgiGraphicsCmds` 与 `HgiGLGraphicsCmds` 的关系：前者定义跨后端 graphics command encoder 的接口，后者负责把这些命令翻译为 GL pipeline binding、resource binding、vertex buffer binding、viewport / scissor state、draw call、memory barrier 和 debug marker。调用方通常通过 Hgi 抽象层取得 command object，而不是把它当成通用业务对象长期保存。</p>
+      <p class="en">The class is the OpenGL-specific command encoder behind the Hgi graphics command abstraction.</p>
+      <p class="zh">`BindPipeline()` 是 draw 前最关键的状态入口之一。它绑定 `HgiGraphicsPipelineHandle` 指向的图形管线，使后续 `Draw()` / `DrawIndexed()` / indirect draw 使用正确的 shader program、raster state、blend/depth state 和 vertex layout。排查黑屏或状态串扰时，应先检查 pipeline handle 是否有效、是否属于同一个 HgiGL device，以及它的 vertex input layout 是否与后续 `BindVertexBuffers()` 匹配。</p>
+      <p class="en">BindPipeline() establishes the graphics pipeline state used by later draw commands.</p>
+      <p class="zh">`BindResources()` 与 `BindVertexBuffers()` 分别处理 shader resource bindings 和 vertex buffer bindings。前者对应 textures、buffers、samplers、uniform/descriptor-like resource sets 在 GL 后端中的绑定；后者对应顶点输入流。它们描述的是 GPU 后端状态，不是 USD 属性连接，也不是 Hydra scene index 中的 data source locator。若材质、纹理或顶点数据异常，调试路径应从 resource set、buffer offset、stride、binding index 和 GL object lifetime 入手。</p>
+      <p class="en">BindResources() and BindVertexBuffers() install resource bindings and vertex input buffers for subsequent draws.</p>
+      <p class="zh">`SetViewport()` 和 `SetScissor()` 控制 framebuffer 空间里的 rasterization region。它们与 USD camera aperture、`UsdGeomCamera`、Hydra framing 或 viewport UI 不是同一层概念：camera 决定投影和视图矩阵，HgiGL graphics commands 决定当前 GL draw 在 render target 中写入哪个矩形区域。常见错误是 framebuffer 尺寸变化后没有同步 viewport，或者 scissor 仍裁剪在旧区域。</p>
+      <p class="en">SetViewport() and SetScissor() define the rasterization region in framebuffer coordinates.</p>
+      <p class="zh">`Draw()`、`DrawIndexed()`、`DrawIndirect()` 与 `DrawIndexedIndirect()` 是本页的执行核心。普通 draw 直接由参数指定 vertex/index count；indexed draw 依赖 index buffer；indirect draw 则依赖 GPU buffer 中的 command layout。indirect 版本出错时，不能只看 draw call 本身，还要检查 indirect command buffer 的数据布局、offset、buffer visibility 和前置 compute / copy pass 是否已经完成。</p>
+      <p class="en">Draw(), DrawIndexed(), DrawIndirect(), and DrawIndexedIndirect() submit different forms of graphics draw work.</p>
+      <p class="zh">`SetConstantValues()` 处理短小的 per-draw constant data。它通常用于向当前 pipeline 传递小块常量，而不是替代完整 resource binding 或 USD attribute authoring。若常量不生效，要同时检查 pipeline layout、shader 中的 expected binding、offset/size、以及提交前是否已绑定正确的 pipeline。</p>
+      <p class="en">SetConstantValues() provides small constant data for the active pipeline state.</p>
+      <p class="zh">`InsertMemoryBarrier()` 是 HgiGL 后端暴露 GPU memory visibility 语义的入口。它并不是 CPU mutex，也不是 USD 层面的 thread-safety 机制；它用于同一帧或相邻 GPU pass 中先写后读、image/buffer 状态转换、或 compute / graphics 之间可见性同步。看到上一 pass 的旧 buffer 或旧 texture 内容时，应检查是否缺少合适的 barrier。</p>
+      <p class="en">InsertMemoryBarrier() inserts OpenGL memory-visibility synchronization for GPU resources.</p>
+      <p class="zh">`PushDebugGroup()`、`PopDebugGroup()` 和 `InsertDebugMarker()` 面向 frame capture、GPU debugger 和 backend diagnostics。它们不会改变 USD scene，也不会修复 draw state；它们提供的是可读的调试分组和标记。良好的调试记录通常会把 pipeline binding、resource binding、draw call、barrier 和 resolve/submit 边界清楚分组。</p>
+      <p class="en">Debug groups and markers annotate command streams for graphics debuggers and frame captures.</p>
+      <p class="zh">`_Submit()` 是 protected member，表示 HgiGL 后端把记录好的 commands 提交给 OpenGL 执行的边界。`HgiGL` 被声明为 friend，说明生命周期和提交时机由 HgiGL 后端协调，而不是由上层应用随意调用。调试 command object 复用问题时，要区分 command recording、backend submission、GL object lifetime 和 Hydra task scheduling。</p>
+      <p class="en">_Submit() is the OpenGL backend submission boundary, coordinated by HgiGL.</p>
+      <p class="zh">与相邻类型的关系也要分清：`HgiGraphicsCmds` 是跨后端接口，`HgiGLGraphicsCmds` 是 GL 实现；`HgiCmds` 是更基础的 command base；`HgiGLDevice` 管理 GL device/context 相关资源；`HgiGraphicsCmdsDesc` 描述创建命令对象时的 render target / descriptor 需求；`GfVec4f` 与 `GfVec4i` 常用于 viewport、clear color 或 scissor rectangle 等数值状态。它们都是渲染后端概念，不是 USD composition arcs。</p>
+      <p class="en">Related types describe the command abstraction, GL device resources, command descriptors, and numeric state values.</p>
+      <p class="zh">常见误读包括：把 `HgiGLGraphicsCmds` 当作 Hydra render task；把 `Draw()` 失败归因于 USD prim authoring；把 viewport/scissor 当成 camera 设置；把 memory barrier 当成 CPU lock；把 debug marker 当成执行控制。正确的排查顺序通常是：确认 HgiGL context 与 device 有效，确认 pipeline/resource/vertex binding 匹配，确认 viewport/scissor 覆盖目标 framebuffer，确认 draw/indirect 参数和 buffer layout 正确，确认必要的 memory barrier 与 submit 顺序存在。</p>
+      <p class="en">Common debugging separates backend command state from USD authoring, scene indexing, camera setup, and Hydra scheduling.</p>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">OpenGL 后端图形命令：</span><span class="en">HgiGLGraphicsCmds</span></li>
+        <li><span class="zh">跨后端图形命令抽象：</span><span class="en">HgiGraphicsCmds</span></li>
+        <li><span class="zh">图形管线句柄：</span><span class="en">HgiGraphicsPipelineHandle</span></li>
+        <li><span class="zh">资源绑定：</span><span class="en">BindResources()</span></li>
+        <li><span class="zh">顶点缓冲绑定：</span><span class="en">BindVertexBuffers()</span></li>
+        <li><span class="zh">间接绘制：</span><span class="en">DrawIndirect() / DrawIndexedIndirect()</span></li>
+        <li><span class="zh">GPU 内存可见性：</span><span class="en">memory visibility</span></li>
+        <li><span class="zh">后端提交边界：</span><span class="en">_Submit()</span></li>
       </ul>
     </section>
     <section>
