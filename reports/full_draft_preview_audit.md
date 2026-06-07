@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-07T10:07:52.427Z
+Generated: 2026-06-07T10:18:26.834Z
 
-Transient base URL: `http://127.0.0.1:61783/`
+Transient base URL: `http://127.0.0.1:51222/`
 
 Result:
 
 - Passed: true
-- Draft pages: 344
-- Pages checked: 344
-- Passed pages: 344
+- Draft pages: 343
+- Pages checked: 343
+- Passed pages: 343
 - Failed pages: 0
-- Final HTML links: 344
-- Local assets checked: 344
+- Final HTML links: 343
+- Local assets checked: 343
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -21,7 +21,6 @@ Result:
 | true | full_site/api/_developer__guides.html | 200 | true | 0 | 0 |
 | true | full_site/api/_usd_skel__intro.html | 200 | true | 0 | 0 |
 | true | full_site/api/annotated.html | 200 | true | 0 | 0 |
-| true | full_site/api/ar_page_front.html | 200 | true | 0 | 0 |
 | true | full_site/api/arch_page_front.html | 200 | true | 0 | 0 |
 | true | full_site/api/binding_map_8h_source.html | 200 | true | 0 | 0 |
 | true | full_site/api/class_vdf_test_utils_1_1_node.html | 200 | true | 0 | 0 |
