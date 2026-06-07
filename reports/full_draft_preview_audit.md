@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-07T14:56:44.215Z
+Generated: 2026-06-07T15:16:59.025Z
 
-Transient base URL: `http://127.0.0.1:51630/`
+Transient base URL: `http://127.0.0.1:64707/`
 
 Result:
 
 - Passed: true
-- Draft pages: 325
-- Pages checked: 325
-- Passed pages: 325
+- Draft pages: 324
+- Pages checked: 324
+- Passed pages: 324
 - Failed pages: 0
-- Final HTML links: 325
-- Local assets checked: 325
+- Final HTML links: 324
+- Local assets checked: 324
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -242,7 +242,6 @@ Result:
 | true | full_site/release/spec_usdpreviewsurface.html | 200 | true | 0 | 0 |
 | true | full_site/release/spec_usdz.html | 200 | true | 0 | 0 |
 | true | full_site/release/spec.html | 200 | true | 0 | 0 |
-| true | full_site/release/tut_authoring_variants.html | 200 | true | 0 | 0 |
 | true | full_site/release/tut_converting_between_layer_formats.html | 200 | true | 0 | 0 |
 | true | full_site/release/tut_end_to_end.html | 200 | true | 0 | 0 |
 | true | full_site/release/tut_generating_new_schema.html | 200 | true | 0 | 0 |

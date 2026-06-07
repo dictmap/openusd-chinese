@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：Authoring Variants / Authoring Variants</title>
+  <title>完整双语参考：Authoring Variants / Authoring Variants</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
@@ -12,109 +12,191 @@
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
     .zh{display:block;font-weight:650;color:#17324d}
     .en{display:block;color:#55616f;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
+    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：Authoring Variants / Authoring Variants</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：Authoring Variants / Authoring Variants</h1>
     <div class="meta">https://openusd.org/release/tut_authoring_variants.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+      <p class="zh">本页是 OpenUSD release 教程中 “Authoring Variants” 的完整双语参考页。中文主线解释如何在 `HelloWorld.usda` 上创建 `shadingVariant`，如何把颜色 opinion 写入不同 variant，为什么要先清除本地 `primvars:displayColor` opinion，以及 `stage.ExportToString()`、`GetRootLayer().Export()`、`usdview` metadata 面板和 session layer 中 variant selection 的差异。英文 API 名称、文件名、prim path、token、代码和官方链接保留，用于和官方教程核对。</p>
+      <p class="en">This local bilingual page explains the OpenUSD tutorial for authoring variants in Chinese first while retaining official API names, file names, prim paths, tokens, code, and links for comparison.</p>
     </section>
-    <section data-cn-refinement="release-tutorial-quality-pass-001">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Authoring Variants 补充中文优先的阅读路径和术语说明；英文页面名、链接、代码和原文摘录继续保留，用于和官方文档一一对应。</p>
-      <p class="en">This section adds Chinese-first reading guidance for Authoring Variants while retaining the English page name, links, code, and source excerpts for one-to-one comparison with the official documentation.</p>
+
+    <section data-cn-complete="release-tutorial-authoring-variants-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">本教程接在 `Inspecting and Authoring Properties` 之后，继续使用 `USD/extras/usd/tutorials/authoringVariants/HelloWorld.usda` 和同目录下的 `authorVariants.py`。前一页已经让读者理解怎样读取和 author 属性；本页进一步说明怎样把同一个 prim 的可选表达放进 variant set。这里的目标不是复制多个资产文件，也不是用时间采样表示颜色变化，而是在同一个 `hello` prim 下建立可切换的组合分支，让 downstream layer 或 `usdview` 可以选择 `red`、`blue`、`green` 等不同结果。</p>
+      <p class="en">The tutorial continues from the property-authoring tutorial and uses the `HelloWorld.usda` layer plus `authorVariants.py` to author a variant set.</p>
+
+      <p class="zh">第一步是打开 stage 并清除 sphere 上已经 author 的 `primvars:displayColor`。教程保留这个动作是为了展示 USD composition 的强度边界：local opinion 比 variant opinion 更强。如果不调用 `Clear()`，后面即使正确创建了 `shadingVariant` 并在 `red`、`blue`、`green` variant 内写入颜色，最终 composed result 仍可能显示原来的本地蓝色，因为更强的 local opinion 会压过 variant 内部的 opinion。这个细节把本页和 `LIVERPS` strength ordering 直接连接起来。</p>
+      <p class="en">The local `primvars:displayColor` opinion is cleared first because local opinions are stronger than variant opinions.</p>
+
+      <p class="zh">示例代码用 `Usd.Stage.Open('HelloWorld.usda')` 打开 layer，再通过 `UsdGeom.Gprim.Get(stage, '/hello/world').GetDisplayColorAttr()` 找到 sphere 的 display color 属性。`/hello/world` 是一个 `Sphere`，也是 `Gprim` 的 schema subclass，因此可以用 `UsdGeom.Gprim` API 访问 `displayColor`。清除属性值后，scene description 中仍然可以保留 `color3f[] primvars:displayColor` 的属性声明；清除的是具体 authored value，不等于把 schema property 从 prim 上删除。</p>
+      <p class="en">The sphere at `/hello/world` is accessed through `UsdGeom.Gprim`, and `Clear()` removes the authored value while the property declaration may remain.</p>
+
+      <p class="zh">创建 variant set 的核心对象是 root prim `/hello`。代码先取得 `rootPrim = stage.GetPrimAtPath('/hello')`，然后调用 `rootPrim.GetVariantSets().AddVariantSet('shadingVariant')`。`GetVariantSets()` 返回的是 prim 上所有 variant sets 的容器；`AddVariantSet('shadingVariant')` 会在 prim metadata 中声明一个名为 `shadingVariant` 的 set，并把它加入 `prepend variantSets`。此时还没有任何具体颜色被写入，只是告诉 composition 系统：这个 prim 将拥有一个可选择的变体维度。</p>
+      <p class="en">`GetVariantSets().AddVariantSet('shadingVariant')` declares a variant set on the `/hello` prim.</p>
+
+      <p class="zh">接着用 `vset.AddVariant('red')`、`vset.AddVariant('blue')`、`vset.AddVariant('green')` 声明三个 variant。这里的 variant 名称是选择键，不是 shader 名称，也不是 `token` 属性值；它们定义了 `variantSet "shadingVariant"` 下面的三个分支。刚声明完时这些分支可以是空的，真正的颜色 opinion 要在后面的 variant edit context 中写入。把“声明候选”和“写入候选内容”分开理解，是读懂本页代码顺序的关键。</p>
+      <p class="en">`AddVariant()` creates named alternatives inside the `shadingVariant` set before any opinions are authored into them.</p>
+
+      <p class="zh">向某个 variant 写入内容时，必须先调用 `vset.SetVariantSelection('red')`，再进入 `with vset.GetVariantEditContext():`。`SetVariantSelection()` 决定当前选择哪个分支；`GetVariantEditContext()` 则把随后 author 的属性值重定向到被选择的 variant 内。若省略 edit context，`colorAttr.Set([(1,0,0)])` 会写成普通 local opinion，正好又回到本教程开头特意清除的那类强 opinion。换句话说，variant selection 只说明“当前看哪个分支”，variant edit context 才说明“当前写到哪个分支”。</p>
+      <p class="en">`SetVariantSelection()` chooses the branch, and `GetVariantEditContext()` redirects authoring into that branch.</p>
+
+      <p class="zh">在 `red` variant 中，示例把 `/hello/world` 的 `primvars:displayColor` 设为 `[(1,0,0)]`；在 `blue` variant 中设为 `[(0,0,1)]`；在 `green` variant 中设为 `[(0,1,0)]`。写完后，root layer 中会同时包含 `variants = { string shadingVariant = "green" }` 这样的当前选择，以及 `variantSet "shadingVariant"` 下每个分支的具体 `over "world"` opinion。当前选择显示最后一次 `SetVariantSelection()` 的结果，而三个分支的 authoring 内容都保留在 layer 内。</p>
+      <p class="en">The red, blue, and green variants each author a different `primvars:displayColor` opinion for `/hello/world`.</p>
+
+      <p class="zh">`stage.ExportToString(addSourceFileComment=False)` 展示的是 composed stage。composition 已经把 variant selection 解析掉，因此输出里通常只看到当前选中的颜色，而不是完整的 `variantSet` 结构。教程用这个步骤说明 flattening：导出 `UsdStage` 会写出组合后结果，像 variants 这样的 composition operators 已经被求值。读者不要把“composed result 里没有 variantSet”误解成 variant 没有写成功；它只是已经被当前 selection 应用了。</p>
+      <p class="en">Exporting the `UsdStage` shows the composed result, where the selected variant has already been evaluated.</p>
+
+      <p class="zh">如果要保留 layer 中的 variant 结构，应该导出 root layer，例如 `stage.GetRootLayer().Export('HelloWorldWithVariants.usda')`。导出单个 layer 与导出 composed stage 不同：layer export 按原样写出该 layer 内的 scene description，不做 flattening；stage export 则写出组合后的可消费视图。这是本教程最容易被混淆的边界之一，尤其在调试“我的 variant 去哪里了”时，先确认自己看的到底是 layer 内容还是 stage flatten 结果。</p>
+      <p class="en">Exporting the root layer preserves the authored variant structure, while exporting the stage writes the composed view.</p>
+
+      <p class="zh">把 `HelloWorldWithVariants.usda` 放进 `usdview` 后，选择左侧树里的 `hello` prim，再查看 metadata，可以看到 `shadingVariant` 对应的选择控件。这个控件改变的是 variant selection，而不是重写所有 variant 内容。用户在 `usdview` 中切换 `red`、`blue`、`green` 时，session layer 会记录一个稀疏的 override，例如在 `over "hello"` 上写入 `variants = { string shadingVariant = "red" }`。这和在另一个 referencing layer 里选择 variant 是同一种 composition 思路。</p>
+      <p class="en">In `usdview`, changing the metadata combo box authors a sparse variant-selection opinion in the session layer.</p>
+
+      <p class="zh">从资产工作流角度看，variant set 适合表达同一资产的离散可选状态：材质方案、LOD、造型、开关配置、平台特定资源、渲染质量级别等。它不适合替代 `timeSamples`，因为 variant selection 代表组合分支选择，而不是随时间连续变化的值；它也不应被当作普通属性 override，因为 variant 内可以包含多个 prim 和属性 opinion，甚至可以在更复杂的资产中改变子树结构。variant 是 composition 维度，不只是属性枚举。</p>
+      <p class="en">Variants represent discrete composition alternatives, not time samples or a simple enum-valued property.</p>
+
+      <p class="zh">本页的调试路径可以概括为四个检查点。第一，若颜色没有随 selection 改变，检查是否还有更强 local opinion，尤其是未清除的 `primvars:displayColor`。第二，若 layer 中没有 variant 内容，检查是否忘记 `GetVariantEditContext()`。第三，若 `usdview` 中没有可选项，检查 `AddVariantSet()` 与 `AddVariant()` 是否作用在 `/hello` root prim 上，而不是错误地作用在 `/hello/world` 或临时 prim 上。第四，若保存后丢失 variant 结构，检查是否错误使用 stage flatten export 而不是 root layer export。</p>
+      <p class="en">Common debugging checks include local opinion strength, missing edit context, wrong prim path, and confusing stage export with layer export.</p>
+
+      <p class="zh">和前几篇教程放在一起读时，职责边界会更清楚：`Inspecting and Authoring Properties` 教会读者对单个属性 author opinion；`Referencing Layers` 教会读者把一个 layer 作为资产引用进另一个 layer；`Traversing a Stage` 教会读者观察 composed stage；`Authoring Variants` 则说明如何在同一个 prim 上组织可切换的 opinion 分支。它们共同构成 USD 非破坏性资产编辑的最小路径：先 author 数据，再组合 layer，再遍历 composed result，最后用 variant selection 切换资产状态。</p>
+      <p class="en">This tutorial connects property authoring, references, traversal, and variant selection into one non-destructive asset-authoring path.</p>
+
+      <p class="zh">还要注意 variant 的“所在 prim”决定了它能影响的 namespace 范围。本教程把 `shadingVariant` 放在 `/hello` 上，因此 variant 内可以用 `over "world"` 修改子 prim `/hello/world` 的颜色。如果把 variant set 放在 `/hello/world` 上，selection 的表达位置、metadata 面板显示位置和 downstream override 路径都会不同。资产设计时通常把会一起切换的子树放在同一个较高层 prim 下，再把 variant set 放在那个聚合 prim 上；这样材质、LOD、几何替换和附加属性能作为一个选择整体被切换。</p>
+      <p class="en">The prim that owns a variant set determines where the selection is expressed and what namespace subtree the variant can naturally organize.</p>
+
+      <p class="zh">本教程虽然只 author 颜色，但同一模式可以扩展到更复杂内容：variant 内可以定义新的 child prim，可以对已有 prim 写 `over`，也可以组合材质绑定、可见性、purpose、payload 或 reference 等 opinion。工程上要避免把互相独立的选择全部塞进同一个 set；材质颜色可放在 `shadingVariant`，几何精度可放在 `lodVariant`，平台资源可放在另一个 set。多个 variant sets 可以同时存在，composition 会按每个 set 的当前 selection 组合出最终结果。这样拆分后，下游 layer 可以只改一个维度，而不必重新 author 整个资产状态。</p>
+      <p class="en">The same pattern can organize more than color; multiple variant sets can represent independent dimensions such as shading, LOD, or platform-specific resources.</p>
+
+      <p class="zh">读者复现时还应区分“authoring layer 中的 default selection”和“更强 layer 或 session layer 中的选择”。`SetVariantSelection('green')` 会在当前 edit target 中写入 selection；`usdview` metadata combo box 也会写入 selection，但通常落在 session layer。两个 selection 都是 composition opinion，谁生效取决于 layer stack 的强度。若在工具里看到选择值和文件里默认值不同，不一定是文件损坏，很可能是 session layer 或上游引用层提供了更强的 sparse selection。调试时先看当前 edit target。</p>
+      <p class="en">Variant selections are composition opinions, so a stronger layer or the session layer can override the default selection authored in the asset layer.</p>
+
+      <p class="zh">维护本页时必须保留这些复现锚点：`USD/extras/usd/tutorials/authoringVariants/HelloWorld.usda`、`authorVariants.py`、`Usd.Stage.Open('HelloWorld.usda')`、`/hello`、`/hello/world`、`UsdGeom.Gprim.Get(stage, '/hello/world')`、`GetDisplayColorAttr()`、`Clear()`、`GetVariantSets()`、`AddVariantSet('shadingVariant')`、`AddVariant('red')`、`AddVariant('blue')`、`AddVariant('green')`、`SetVariantSelection()`、`GetVariantEditContext()`、`primvars:displayColor`、`stage.ExportToString(addSourceFileComment=False)`、`stage.GetRootLayer().Export('HelloWorldWithVariants.usda')`、`usdviewApi.stage.GetSessionLayer().ExportToString()`。这些名称是读者复现代码、搜索 API 和排查 composition 行为的锚点，不应翻译。</p>
+      <p class="en">The file names, prim paths, API calls, and token literals are reproducibility anchors and should remain unchanged.</p>
+    </section>
+
+    <section>
+      <h2>教程步骤 / Tutorial Steps</h2>
+      <ol>
+        <li><span class="zh">复制 `USD/extras/usd/tutorials/authoringVariants/HelloWorld.usda` 和 `authorVariants.py` 到可写工作目录。</span><span class="en">Copy the tutorial files to a writable working directory.</span></li>
+        <li><span class="zh">用 `Usd.Stage.Open('HelloWorld.usda')` 打开 stage，并清除 `/hello/world` 上已有的 `primvars:displayColor` authored value。</span><span class="en">Open the stage and clear the authored display-color value.</span></li>
+        <li><span class="zh">在 `/hello` 上调用 `GetVariantSets().AddVariantSet('shadingVariant')`，声明变体维度。</span><span class="en">Declare the `shadingVariant` variant set on `/hello`.</span></li>
+        <li><span class="zh">用 `AddVariant('red')`、`AddVariant('blue')`、`AddVariant('green')` 创建三个候选分支。</span><span class="en">Create the red, blue, and green variants.</span></li>
+        <li><span class="zh">对每个候选分支先 `SetVariantSelection()`，再进入 `GetVariantEditContext()` 写入颜色 opinion。</span><span class="en">Select each variant and author opinions inside its edit context.</span></li>
+        <li><span class="zh">用 `stage.ExportToString()` 检查 composed result，用 `GetRootLayer().Export()` 保存保留 variants 的 layer。</span><span class="en">Compare composed-stage export with root-layer export.</span></li>
+        <li><span class="zh">在 `usdview` 中打开 `HelloWorldWithVariants.usda`，通过 metadata 面板切换 variant，并检查 session layer 中的 sparse selection opinion。</span><span class="en">Use `usdview` to toggle the selection and inspect the session-layer opinion.</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>关键 API 边界 / Key API Boundaries</h2>
       <ul>
-        <li><span class="zh">本教程讲的是如何在已有 HelloWorld layer 上创作 variant set。重点不是创建一个新 Stage，而是给同一个 prim 提供可切换的变体表达。</span></li>
-        <li><span class="zh">VariantSet 可以把模型、材质、LOD、造型或配置差异组织在同一个资产内部，下游通过 variant selection 选择需要的版本，而不用复制整份资产。</span></li>
-        <li><span class="zh">阅读 Python 示例时，保留 VariantSets、VariantSet、variant selection 等英文 API 名称；中文层只解释它们在资产组合和非破坏性编辑中的作用。</span></li>
-        <li><span class="zh">这个教程适合和 Referencing Layers、Inspecting and Authoring Properties 一起读：先理解属性创作，再理解引用和变体如何参与 composition。</span></li>
+        <li><span class="zh">`GetVariantSets()` 返回 prim 上的 variant-set 容器；`AddVariantSet()` 声明一个 set，不等于已经写入某个具体分支。</span><span class="en">`GetVariantSets()` returns the variant-set container; `AddVariantSet()` declares a set.</span></li>
+        <li><span class="zh">`AddVariant()` 只创建命名候选；候选内容需要在 edit context 内 author。</span><span class="en">`AddVariant()` creates a named alternative; its contents are authored later.</span></li>
+        <li><span class="zh">`SetVariantSelection()` 是 composition selection；`GetVariantEditContext()` 是 authoring target。</span><span class="en">`SetVariantSelection()` chooses the branch; `GetVariantEditContext()` chooses where authoring goes.</span></li>
+        <li><span class="zh">`Clear()` 清的是已有 authored value，主要用于避免更强 local opinion 压过 variant opinion。</span><span class="en">`Clear()` removes the stronger local authored value so variant opinions can compose visibly.</span></li>
+        <li><span class="zh">导出 `UsdStage` 会得到 flatten 后的组合结果；导出 root layer 才保留 variant set 结构。</span><span class="en">Stage export writes a composed result; root-layer export preserves authored variants.</span></li>
       </ul>
-      <h3>术语对照 / Terms</h3>
+    </section>
+
+    <section>
+      <h2>代码摘录 / Code Excerpts</h2>
+      <pre><code>from pxr import Usd, UsdGeom
+
+stage = Usd.Stage.Open('HelloWorld.usda')
+colorAttr = UsdGeom.Gprim.Get(stage, '/hello/world').GetDisplayColorAttr()
+colorAttr.Clear()</code></pre>
+      <pre><code>rootPrim = stage.GetPrimAtPath('/hello')
+vset = rootPrim.GetVariantSets().AddVariantSet('shadingVariant')
+
+vset.AddVariant('red')
+vset.AddVariant('blue')
+vset.AddVariant('green')</code></pre>
+      <pre><code>vset.SetVariantSelection('red')
+with vset.GetVariantEditContext():
+    colorAttr.Set([(1, 0, 0)])
+
+vset.SetVariantSelection('blue')
+with vset.GetVariantEditContext():
+    colorAttr.Set([(0, 0, 1)])
+
+vset.SetVariantSelection('green')
+with vset.GetVariantEditContext():
+    colorAttr.Set([(0, 1, 0)])</code></pre>
+      <pre><code>print(stage.ExportToString(addSourceFileComment=False))
+stage.GetRootLayer().Export('HelloWorldWithVariants.usda')</code></pre>
+    </section>
+
+    <section>
+      <h2>Composition 与导出差异 / Composition and Export Differences</h2>
+      <p class="zh">如果目标是把当前选择后的结果交给只消费普通 scene description 的下游工具，flatten 后的 `UsdStage` export 可能足够；如果目标是保留可切换资产，必须保存 root layer 或 authoring layer。前者会把当前 `shadingVariant` selection 的结果应用到输出中，后者会保留 `variantSet "shadingVariant"` 的三个分支和当前 selection metadata。</p>
+      <p class="en">A composed-stage export applies the selected variant, while a layer export preserves the authored variant structure.</p>
+      <pre><code>over "hello" (
+    variants = {
+        string shadingVariant = "red"
+    }
+)
+{
+}</code></pre>
+      <p class="zh">上面的 session-layer 片段表达的是“当前会话选择 red”，不是把 red 分支的所有属性复制到 session layer。它是 sparse opinion，只改变 selection。这个行为与在更强 layer 中重新选择 variant 的方式一致，也是 USD 变体适合资产发布和下游覆盖的原因。</p>
+      <p class="en">The session layer can author a sparse variant-selection opinion without copying all variant contents.</p>
+    </section>
+
+    <section>
+      <h2>常见误读与调试 / Common Misreadings and Debugging</h2>
       <ul>
+        <li><span class="zh">如果切换 variant 后颜色不变，先检查是否仍有更强的 local `primvars:displayColor` opinion。</span><span class="en">If color does not change, check for a stronger local display-color opinion.</span></li>
+        <li><span class="zh">如果 variant 分支为空，检查是否只调用了 `SetVariantSelection()`，但忘记进入 `GetVariantEditContext()`。</span><span class="en">If the branches are empty, verify that authoring occurred inside `GetVariantEditContext()`.</span></li>
+        <li><span class="zh">如果 `usdview` 看不到 combo box，确认 `shadingVariant` 是声明在 `/hello` 上，而不是错误 prim 上。</span><span class="en">If the combo box is missing, confirm the variant set is on `/hello`.</span></li>
+        <li><span class="zh">如果保存文件后 variants 消失，检查是否用了 `stage.ExportToString()` 或 stage export 的 flatten 视图。</span><span class="en">If variants disappear after export, check whether a flattened stage export was used.</span></li>
+        <li><span class="zh">不要把 variant 当作动画帧；需要连续变化时使用 `timeSamples`，需要离散组合分支时使用 variant selection。</span><span class="en">Do not confuse variants with animation frames or `timeSamples`.</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>术语对照 / Terms</h2>
+      <ul>
+        <li><span class="zh">创作变体：</span><span class="en">Authoring Variants</span></li>
         <li><span class="zh">变体集：</span><span class="en">variant set</span></li>
         <li><span class="zh">变体选择：</span><span class="en">variant selection</span></li>
-        <li><span class="zh">HelloWorld 层：</span><span class="en">HelloWorld layer</span></li>
-        <li><span class="zh">组合：</span><span class="en">composition</span></li>
-        <li><span class="zh">非破坏性编辑：</span><span class="en">non-destructive editing</span></li>
+        <li><span class="zh">变体编辑上下文：</span><span class="en">variant edit context / `GetVariantEditContext()`</span></li>
+        <li><span class="zh">局部 opinion：</span><span class="en">local opinion</span></li>
+        <li><span class="zh">组合强度顺序：</span><span class="en">LIVERPS strength ordering</span></li>
+        <li><span class="zh">展平组合：</span><span class="en">flattening composition</span></li>
+        <li><span class="zh">会话 layer：</span><span class="en">session layer</span></li>
       </ul>
     </section>
-    <section data-cn-refinement="release-quality-pass-093">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Authoring Variants 增补二次精修说明，重点解释 File Members 宽索引与函数索引的区别、模块归属、头文件来源、教程步骤、跨页跳转顺序和术语对照。英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于与官方页面逐项核对。</p>
-      <p class="en">This section adds a second-pass Chinese refinement for Authoring Variants. It explains the difference between broad File Members indexes and function indexes, module ownership, header provenance, tutorial steps, cross-page navigation, and terminology while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">`tut_authoring_variants.html` 是 release 教程页，重点是如何在已有 prim 上创作 `variant set` 和 `variant selection`；它比 API 索引更接近实际资产作者工作流，应按步骤理解 Python 代码和 USDA 结果。</span></li>
-        <li><span class="zh">变体适合表达同一资产的模型、材质、LOD、配置或造型差异；关键不是复制整份资产，而是在 composition 中把可切换意见组织到同一个 prim 的 variant set 下。</span></li>
-        <li><span class="zh">阅读示例时要关注 `GetVariantSets()`、`AddVariantSet()`、`AddVariant()`、`SetVariantSelection()` 和 `with variantSet.GetVariantEditContext()` 这类 API 的顺序：先声明变体集，再声明候选变体，再进入变体编辑上下文写入意见。</span></li>
-        <li><span class="zh">Variant opinion 仍然参与 LIVERPS strength ordering；如果下游 layer 重新选择 variant 或提供更强 opinion，最终 stage 结果会随 composition 强度变化，这一点是理解非破坏性资产变体的核心。</span></li>
-        <li><span class="zh">建议把本教程和 `tut_referencing_layers.html`、`tut_inspect_and_author_props.html`、`wp_stage_variables.html` 一起读：前者解释引用和属性创作，后者帮助区分 stage variables 与 variant selection 的职责边界。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">变体集：</span><span class="en">variant set</span></li>
-        <li><span class="zh">变体选择：</span><span class="en">variant selection</span></li>
-        <li><span class="zh">变体编辑上下文：</span><span class="en">variant edit context</span></li>
-        <li><span class="zh">组合意见：</span><span class="en">composition opinion</span></li>
-        <li><span class="zh">LIVERPS 强度顺序：</span><span class="en">LIVERPS strength ordering</span></li>
-        <li><span class="zh">非破坏性变体表达：</span><span class="en">non-destructive variation</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-110">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`Authoring Variants` 教程说明如何在同一个 prim 上创作 variant set，并通过 variant selection 切换模型、材质、LOD 或配置差异。它不是复制资产，而是在 USD composition 中把可选意见组织到同一资产结构下。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for Authoring Variants while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`GetVariantSets()`、`AddVariantSet()`、`AddVariant()`、`SetVariantSelection()` 的顺序很重要：先取得变体集合容器，再声明变体集，再添加候选变体，最后选择当前编辑或查看的变体。</span></li>
-        <li><span class="zh">`with variantSet.GetVariantEditContext()` 是把后续 authoring opinions 写入当前 variant 的关键上下文。没有进入该上下文，属性或 prim 编辑可能写到普通 layer opinion 中。</span></li>
-        <li><span class="zh">variant selection 是 composition 输入之一；下游 layer 可以重新选择变体，也可以用更强 opinion 覆盖部分结果。中文说明应把 variant 与普通属性 override 的关系讲清楚。</span></li>
-        <li><span class="zh">变体适合表达同一资产的可选形态，例如模型版本、材质方案、LOD、造型或配置。它不适合表达时间动画帧，也不应和 `timeSamples` 混为一谈。</span></li>
-        <li><span class="zh">本教程应和引用、属性创作、stage variables 等页面一起读：引用决定资产如何组合进来，属性创作决定具体意见，variant set 提供同一 prim 下的可切换分支。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">变体集：</span><span class="en">variant set</span></li>
-        <li><span class="zh">变体选择：</span><span class="en">variant selection</span></li>
-        <li><span class="zh">变体编辑上下文：</span><span class="en">GetVariantEditContext</span></li>
-        <li><span class="zh">组合意见：</span><span class="en">composition opinion</span></li>
-        <li><span class="zh">覆盖意见：</span><span class="en">override</span></li>
-        <li><span class="zh">时间采样数据：</span><span class="en">timeSamples</span></li>
-      </ul>
-    </section>
+
     <section>
-      <h2>页面结构 / Page Structure</h2>
+      <h2>页面链接 / Page Links</h2>
       <ul>
-<li><span class="zh">第 1 级标题：Authoring Variants</span><span class="en">Authoring Variants</span></li>
+        <li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Tutorials</a></li>
+        <li><a href="tut_inspect_and_author_props.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_inspect_and_author_props.html">Inspecting and Authoring Properties</a></li>
+        <li><a href="tut_referencing_layers.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_referencing_layers.html">Referencing Layers</a></li>
+        <li><a href="tut_traversing_stage.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_traversing_stage.html">Traversing a Stage</a></li>
+        <li><a href="tut_variants_example_in_katana.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_variants_example_in_katana.html">Variants Example in Katana</a></li>
+        <li><a href="tut_xforms.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_xforms.html">Transformations, Animation, and Layer Offsets</a></li>
+        <li><a href="../../site/glossary.html" data-local-route="mapped" data-official-href="https://openusd.org/release/glossary.html">LIVERPS Strength Ordering</a></li>
+        <li><a href="https://github.com/PixarAnimationStudios/OpenUSD/tree/v26.05">USD 26.05</a></li>
       </ul>
     </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">This tutorial walks through authoring a variant set on the HelloWorld layer from Inspecting and Authoring Properties . We begin with the layer USD/extras/usd/tutorials/authoringVariants/HelloWorld.usda and the Python code authorVariants.py in the same directory. Please copy these files to a working directory and make them writable.</p>
-<p class="en">Open the stage and clear the Sphere ’s authored displayColor opinion. In USD local opinions are stronger than variant opinions. So if we do not clear this opinion it will win over those we author within variants below.</p>
-<p class="en">To see this in action, comment out the Clear() and run the tutorial. The steps below still author the same variant opinions, but the composed result shows the locally-authored blue color. That stronger local opinion overrides the opinions from variants.</p>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Configure your Environment</a></li>
-<li><a href="https://github.com/PixarAnimationStudios/OpenUSD/tree/v26.05">USD 26.05</a></li>
-<li><a href="tut_inspect_and_author_props.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_inspect_and_author_props.html">Inspecting and Authoring Properties</a></li>
-<li><a href="../../site/glossary.html" data-local-route="mapped" data-official-href="https://openusd.org/release/glossary.html">LIVERPS Strength Ordering</a></li>
-      </ul>
-    </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
