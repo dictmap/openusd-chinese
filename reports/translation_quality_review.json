@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T04:41:33.106Z",
+  "generated_at": "2026-06-07T04:59:46.715Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 367,
-    "bilingual_complete": 39
+    "bilingual_draft": 366,
+    "bilingual_complete": 40
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 356,
-    "good_bilingual": 39
+    "draft_needs_translation": 355,
+    "good_bilingual": 40
   },
   "focus_batch": [
     {
@@ -1625,29 +1625,29 @@
     },
     {
       "index": 25,
-      "title": "类参考草稿：HdxPickFromRenderBufferTask Class / HdxPickFromRenderBufferTask Class",
+      "title": "完整双语参考：HdxPickFromRenderBufferTask Class Reference / HdxPickFromRenderBufferTask Class Reference",
       "output": "full_site/api/class_hdx_pick_from_render_buffer_task.html",
       "official_url": "https://openusd.org/release/api/class_hdx_pick_from_render_buffer_task.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 49,
+      "grade": "good_bilingual",
+      "zhBlockCount": 34,
       "enBlockCount": 36,
-      "zhChars": 774,
-      "enLetters": 1895,
-      "bodyChineseChars": 849,
+      "zhChars": 970,
+      "enLetters": 2333,
+      "bodyChineseChars": 1023,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 HdxPickFromRenderBufferTask Class 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`HdxPickFromRenderBufferTask` 是 Hdx 中用于对已有 ID buffers 执行 picking queries 的任务类。"
+        "本页已按完整双语参考页处理：中文优先解释 `HdxPickFromRenderBufferTask` 作为 Hdx 中从已有 ID buffers 执行 picking query 的任务、`HdxPickTaskContextParams` 的 pick frustum、camera frustum remap、局部 buffer query、`Prepare()` / `_Sync()` / `Execute()` / `IsConverged()` 生命周期，以及与 `HdSceneDelegate`、`HdRenderIndex`、`HdxTask`、`Hgi`、`HdDriver` 的边界；英文 API 名称、方法名、类型名、链接和官方英文摘录保持原样，便于与 OpenUSD Doxygen 页面核对。",
+        "`HdxPickFromRenderBufferTask` 是 Hdx 中专门针对 pre-existing ID buffers 运行 picking queries 的 task。官方描述里的重点是“pre-existing”：它不重新绘制整场景，也不重新生成 selection pass，而是复用已经由上游相机和渲染路径生成的 ID buffers，再在其中查询 pick frustum 覆盖的子区域。",
+        "pick frustum 与 camera frustum 的重映射是本页核心。`HdxPickTaskContextParams` 提供交互拾取所需的 pick frustum，但 ID buffers 是用生成它们时的 camera frustum 得到的；任务必须把 pick frustum 映射到该 camera frustum 的坐标关系中，才能正确定位应该读取的 buffer 子区域。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for HdxPickFromRenderBufferTask Class while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page is treated as a complete bilingual reference. Chinese explanations come first, while English API names, method names, type names, links, and selected official excerpts are retained for comparison with the OpenUSD Doxygen page.",
+        "`HdxPickFromRenderBufferTask` runs picking queries against pre-existing ID buffers. It reuses existing render-buffer data rather than redrawing the whole scene."
       ]
     },
     {

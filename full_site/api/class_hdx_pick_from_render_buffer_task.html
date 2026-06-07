@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：HdxPickFromRenderBufferTask Class / HdxPickFromRenderBufferTask Class</title>
+  <title>完整双语参考：HdxPickFromRenderBufferTask Class Reference / HdxPickFromRenderBufferTask Class Reference</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,75 +24,51 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：HdxPickFromRenderBufferTask Class / HdxPickFromRenderBufferTask Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：HdxPickFromRenderBufferTask Class Reference / HdxPickFromRenderBufferTask Class Reference</h1>
     <div class="meta">https://openusd.org/release/api/class_hdx_pick_from_render_buffer_task.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页处理：中文优先解释 `HdxPickFromRenderBufferTask` 作为 Hdx 中从已有 ID buffers 执行 picking query 的任务、`HdxPickTaskContextParams` 的 pick frustum、camera frustum remap、局部 buffer query、`Prepare()` / `_Sync()` / `Execute()` / `IsConverged()` 生命周期，以及与 `HdSceneDelegate`、`HdRenderIndex`、`HdxTask`、`Hgi`、`HdDriver` 的边界；英文 API 名称、方法名、类型名、链接和官方英文摘录保持原样，便于与 OpenUSD Doxygen 页面核对。</p>
+      <p class="en">This page is treated as a complete bilingual reference. Chinese explanations come first, while English API names, method names, type names, links, and selected official excerpts are retained for comparison with the OpenUSD Doxygen page.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-037">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 HdxPickFromRenderBufferTask Class 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for HdxPickFromRenderBufferTask Class while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`HdxPickFromRenderBufferTask` 是 Hdx 中用于对已有 ID buffers 执行 picking queries 的任务类。</span></li>
-        <li><span class="zh">英文摘录说明该任务会把 `HdxPickTaskContextParams` 提供的 pick frustum 重映射到生成 ID buffers 时使用的 camera frustum。</span></li>
-        <li><span class="zh">随后它只针对 pick frustum 覆盖到的 ID buffer 子集运行 pick query；这使它适合从已有 render buffer 中做对象/元素拾取，而不是重新渲染完整场景。</span></li>
-        <li><span class="zh">关联类型包括 `HdxPickFromRenderBufferTaskParams`、`HdSceneDelegate`、`HdRenderIndex`、`HdxTask`、`Hgi`、`HdDriver` 等，说明它横跨 Hdx task、GPU 接口和 scene delegate。</span></li>
-        <li><span class="zh">本页中文层保留 pick frustum、camera frustum、ID buffer、pick query 等术语；后续完整翻译应补参数结构、Sync、执行流程和结果读取。</span></li>
-      </ul>
+    <section data-cn-complete="hdx-pick-from-render-buffer-task-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`HdxPickFromRenderBufferTask` 是 Hdx 中专门针对 pre-existing ID buffers 运行 picking queries 的 task。官方描述里的重点是“pre-existing”：它不重新绘制整场景，也不重新生成 selection pass，而是复用已经由上游相机和渲染路径生成的 ID buffers，再在其中查询 pick frustum 覆盖的子区域。</p>
+      <p class="en">`HdxPickFromRenderBufferTask` runs picking queries against pre-existing ID buffers. It reuses existing render-buffer data rather than redrawing the whole scene.</p>
+      <p class="zh">pick frustum 与 camera frustum 的重映射是本页核心。`HdxPickTaskContextParams` 提供交互拾取所需的 pick frustum，但 ID buffers 是用生成它们时的 camera frustum 得到的；任务必须把 pick frustum 映射到该 camera frustum 的坐标关系中，才能正确定位应该读取的 buffer 子区域。</p>
+      <p class="en">The task remaps the pick frustum from `HdxPickTaskContextParams` into the camera frustum that was used to generate the ID buffers.</p>
+      <p class="zh">`TaskParams` typedef 通常对应 `HdxPickFromRenderBufferTaskParams`。这些参数描述输入 render buffer / ID buffer、frustum、resolution、可能的输出结果和执行选项。它不能与普通 render task 参数混用，因为这里的核心输入不是 scene primitives，而是已经编码过 pick IDs 的 buffer 内容。</p>
+      <p class="en">`TaskParams` refers to parameters specific to picking from render buffers, not generic render-task parameters.</p>
+      <p class="zh">`Prepare()`、`_Sync()` 和 `Execute()` 要放在 Hydra task 生命周期中理解。`_Sync()` 从 `HdSceneDelegate`、`HdRenderIndex` 或 task params 同步变化；`Prepare()` 准备 query 所需的 GPU / task context 资源；`Execute()` 真正对 ID buffer 子区域运行查询。它们是 `HdEngine::Execute()` 调度链中的阶段，不是普通数据 setter。</p>
+      <p class="en">`_Sync()`, `Prepare()`, and `Execute()` correspond to synchronization, preparation, and execution inside the Hydra task lifecycle.</p>
+      <p class="zh">该 task 的边界是“从 render buffer 读取 pick 结果”。如果 ID buffer 没有生成、内容不是 pick IDs、生成它的 camera/viewport 与当前 pick context 不一致，或 buffer resolution 与 frustum remap 不匹配，`Execute()` 即使运行也无法产生可信结果。调试时应先验证上游 ID buffer，再验证 remap 和 query。</p>
+      <p class="en">A valid result depends on valid ID buffers, matching camera/viewport context, correct resolution, and correct frustum remapping.</p>
+      <p class="zh">`IsConverged()` 表示 picking task 自身是否收敛，而不是整个 scene delegate 或所有 upstream render tasks 都已完全同步。在交互式 UI 中，调用方常用它判断是否可以读取稳定 pick result，或是否还要等待上游 render buffer / GPU query 完成。</p>
+      <p class="en">`IsConverged()` reports convergence of this picking task, not global scene convergence.</p>
+      <p class="zh">`HdSceneDelegate`、`HdRenderIndex`、`HdxTask`、`Hgi` 和 `HdDriver` 的出现说明该类横跨多层边界：scene data 与 task params 提供上下文，render index 提供调度/资源关系，Hgi 和 driver 参与 GPU execution。不要把它只看作 CPU-side hit test，也不要把它当成 USD authoring API。</p>
+      <p class="en">The class sits across scene-delegate data, render-index/task scheduling, and GPU execution through `Hgi` / `HdDriver`.</p>
+      <p class="zh">调用方的职责是把正确的上下文交给 task：pick request 的区域、对应相机、ID buffer 来源、buffer dimensions 和结果接收位置必须彼此一致。`HdxPickFromRenderBufferTask` 不负责决定场景中哪些 prim 可被选择，也不负责 authoring selection state；这些策略通常在 UI、viewer、selection controller 或更高层的 picking pipeline 中处理。它只把“给定 pick frustum 下，已有 ID buffers 中编码了哪些命中对象”这一底层查询执行出来。</p>
+      <p class="en">Callers are responsible for providing coherent pick context, camera state, ID-buffer inputs, dimensions, and result storage. The task performs the low-level query; selection policy lives above it.</p>
+      <p class="zh">阅读成员函数时也要区分 public task API 与 protected sync API：`Prepare()` 和 `Execute()` 是执行路径上会被调度的动作，`_Sync()` 则体现 Hydra 对 dirty state、task params 和资源依赖的同步模型。若结果漂移或为空，最常见原因不是类本身“没有拾取能力”，而是前置 ID buffer 与当前 pick frustum 所处的相机空间不同步，或调用方在 buffer 更新前过早读取了 query result。</p>
+      <p class="en">When reading the member functions, distinguish public execution methods from protected synchronization. Empty or unstable results usually point to stale buffers, mismatched frusta, or premature result reads.</p>
+      <p class="zh">因此，本页的完整双语阅读重点不是罗列所有继承成员，而是说明这个 task 在 Hydra picking pipeline 中的位置：上游负责生成可查询的 ID buffer，中游负责把交互区域映射到正确 frustum，下游再把命中 ID 解释成 viewer 需要的选择结果。</p>
+      <p class="en">The key reading focus is the task's position in the Hydra picking pipeline: upstream ID-buffer generation, frustum mapping, and downstream interpretation of hit IDs.</p>
+      <p class="zh">常见调试路径是：确认 ID buffers 是否存在且包含 pick IDs；确认生成 ID buffers 的 camera frustum 与当前 pick frustum 是否可正确映射；确认 `_Sync()` 是否拿到了新的 task params；确认 `Prepare()` 是否准备了必要资源；最后检查 `Execute()` 的 query 区域和结果解析。这个顺序可以把 ID buffer 生成问题、frustum remap 问题和 pick-result parsing 问题分开。</p>
+      <p class="en">Debugging should separate ID-buffer generation, frustum remapping, task-parameter synchronization, query execution, and result parsing.</p>
+      <p class="zh">常见误用包括：把 `HdxPickFromRenderBufferTask` 当成完整 selection renderer；认为 pick frustum 可以直接在 screen coordinates 上读取 buffer；忽略 ID buffer 生成时的 camera frustum；把 `IsConverged()` 当成全场景收敛；或在没有有效 ID buffer 时期待 task 返回对象命中。正确边界是：它复用已有 ID buffers 做局部 picking query，pick frustum、camera frustum、ID buffer、`HdxPickTaskContextParams` 等英文术语必须原样保留。</p>
+      <p class="en">Common mistakes include treating the task as a full selection renderer, ignoring the camera frustum used to generate the ID buffers, or expecting meaningful results without valid ID-buffer input.</p>
       <h3>术语对照 / Terms</h3>
       <ul>
+        <li><span class="zh">从渲染缓冲拾取：</span><span class="en">pick from render buffer</span></li>
+        <li><span class="zh">ID 缓冲：</span><span class="en">ID buffers</span></li>
         <li><span class="zh">拾取查询：</span><span class="en">picking query</span></li>
-        <li><span class="zh">ID buffer：</span><span class="en">ID buffer</span></li>
         <li><span class="zh">拾取视锥：</span><span class="en">pick frustum</span></li>
         <li><span class="zh">相机视锥：</span><span class="en">camera frustum</span></li>
-        <li><span class="zh">渲染缓冲：</span><span class="en">render buffer</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-136">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`HdxPickFromRenderBufferTask` 是 Hdx 中针对已有 ID buffers 执行 picking queries 的任务。它把 `HdxPickTaskContextParams` 提供的 pick frustum 重映射到生成 ID buffer 时的 camera frustum，然后只在被 pick frustum 覆盖的 buffer 子集上查询，适合复用已有 render buffer 做交互拾取。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for HdxPickFromRenderBufferTask while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`TaskParams` 通常对应 `HdxPickFromRenderBufferTaskParams`，用于描述任务执行所需的 pick 参数、buffer 输入和结果输出约定；不要把它和普通 render task 参数混用。</span></li>
-        <li><span class="zh">`Prepare()`、`_Sync()` 与 `Execute()` 分别落在 Hydra task 生命周期的准备、同步和执行阶段；读取本页时要把它放进 `HdEngine::Execute()` 调度链理解。</span></li>
-        <li><span class="zh">该任务依赖已有 ID buffers，因此核心成本在 frustum remap 和局部 query，而不是重新绘制整场景；这也是它区别于常规 pick render path 的地方。</span></li>
-        <li><span class="zh">`IsConverged()` 反映任务结果是否收敛；在交互 picking 中它通常服务于 UI 决策，而不是表示 scene delegate 中所有 prim 都已完全同步。</span></li>
-        <li><span class="zh">`HdSceneDelegate`、`HdRenderIndex`、`Hgi` 和 `HdDriver` 表明任务横跨 scene data、render index 与 GPU execution context；中文说明应保留这些层次边界。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">从渲染缓冲拾取：</span><span class="en">pick from render buffer</span></li>
-        <li><span class="zh">ID 缓冲：</span><span class="en">ID buffers</span></li>
-        <li><span class="zh">拾取视锥重映射：</span><span class="en">pick frustum remap</span></li>
+        <li><span class="zh">视锥重映射：</span><span class="en">frustum remapping</span></li>
         <li><span class="zh">任务参数：</span><span class="en">TaskParams</span></li>
-        <li><span class="zh">Hydra 任务执行：</span><span class="en">HdEngine::Execute()</span></li>
-        <li><span class="zh">拾取查询结果：</span><span class="en">picking query result</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-143">
-      <h2>中文三次补强导读 / Chinese Third-Pass Notes</h2>
-      <p class="zh">`HdxPickFromRenderBufferTask` 用于对已有 ID buffers 执行 picking query。它会把 `HdxPickTaskContextParams` 提供的 pick frustum 重映射到生成 ID buffers 时使用的 camera frustum，再只查询 pick frustum 覆盖的 buffer 子区域。</p>
-      <p class="en">This third-pass refinement adds page-specific Chinese guidance for HdxPickFromRenderBufferTask while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">该 task 依赖预先生成的 ID buffers；如果没有有效 render buffer 或 buffer 内容不是 pick IDs，`Execute()` 无法产出有意义的 picking 结果。</span></li>
-        <li><span class="zh">`_Sync()` 读取 scene delegate / task params 中的变化并更新内部状态，`Prepare()` 处理执行前资源准备，`Execute()` 真正运行查询。</span></li>
-        <li><span class="zh">`TaskParams` 通常包含 pick 需要的 render buffer、frustum、resolution 或相关上下文信息；需要与生成 ID buffer 的相机和 viewport 保持一致。</span></li>
-        <li><span class="zh">`IsConverged()` 对交互式 picking 很重要：它告诉上层任务图该 picking task 是否还需要继续迭代或等待上游渲染完成。</span></li>
-        <li><span class="zh">该类的关键边界是重用已有 ID buffers，而不是重新绘制 selection pass；因此调试时要分清 ID buffer 生成问题、frustum remap 问题和 query 结果解析问题。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">从渲染缓冲拾取：</span><span class="en">pick from render buffer</span></li>
-        <li><span class="zh">ID 缓冲：</span><span class="en">ID buffers</span></li>
-        <li><span class="zh">拾取视锥：</span><span class="en">pick frustum</span></li>
-        <li><span class="zh">任务参数：</span><span class="en">TaskParams</span></li>
-        <li><span class="zh">执行阶段：</span><span class="en">Execute()</span></li>
         <li><span class="zh">收敛状态：</span><span class="en">IsConverged()</span></li>
       </ul>
     </section>
