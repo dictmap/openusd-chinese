@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：UsdImagingAdapterRegistry Class / UsdImagingAdapterRegistry Class</title>
+  <title>完整双语参考：UsdImagingAdapterRegistry Class / UsdImagingAdapterRegistry Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,15 +24,15 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：UsdImagingAdapterRegistry Class / UsdImagingAdapterRegistry Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：UsdImagingAdapterRegistry Class / UsdImagingAdapterRegistry Class</h1>
     <div class="meta">https://openusd.org/release/api/class_usd_imaging_adapter_registry.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已晋级为完整双语参考页：中文优先解释 `UsdImagingAdapterRegistry` 作为 USD Imaging adapter factory registry 的职责、factory 与 instance 的边界、prim adapter 与 API schema adapter 的构造路径、外部插件发现语义，以及它与 `UsdImagingDelegate`、Hydra 和 per-stage data 的关系。</p>
+      <p class="en">This page is promoted as complete bilingual reference coverage for UsdImagingAdapterRegistry while retaining original API names, method names, type names, links, and English excerpts for comparison with the official Doxygen page.</p>
     </section>
     <section data-cn-refinement="api-class-quality-pass-039">
       <h2>中文精修导读 / Chinese Reading Notes</h2>
@@ -94,6 +94,42 @@
         <li><span class="zh">适配器工厂：</span><span class="en">adapter factory</span></li>
         <li><span class="zh">外部插件发现：</span><span class="en">external plugin discovery</span></li>
         <li><span class="zh">单例注册表：</span><span class="en">singleton registry</span></li>
+      </ul>
+    </section>
+    <section data-cn-complete="usd-imaging-adapter-registry-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`UsdImagingAdapterRegistry` 是 USD Imaging 层的 adapter factory registry。官方说明 “Registry of PrimAdapter plug-ins” 容易被误读成它保存已经可直接使用的 adapter objects；实际重点是它保存 factories 和注册信息，用于在需要时构造 `UsdImagingPrimAdapter` 或 `UsdImagingAPISchemaAdapter`。它是 USD schema/type 到 imaging adapter 的映射入口，不是渲染器、不是 Hydra render task，也不是 USD stage 的组成部分。</p>
+      <p class="en">Registry of PrimAdapter plug-ins.</p>
+      <p class="zh">官方备注 “this is a registry of adapter factories, and not adapter instances” 是本页最关键的边界。factory 是根据 prim type 或 API schema key 创建 adapter 的机制；adapter instance 通常通过 `ConstructAdapter()`、`ConstructAPISchemaAdapter()` 或 `ConstructKeylessAPISchemaAdapters()` 创建，并由 per-stage data、`UsdImagingDelegate` 或相关 imaging 数据结构管理生命周期。把 registry 当成 adapter cache，会导致错误的生命周期假设。</p>
+      <p class="en">This is a registry of adapter factories, and not adapter instances.</p>
+      <p class="zh">`GetInstance()` 表示该 registry 以 singleton 方式使用。`TfSingleton&lt; UsdImagingAdapterRegistry &gt;` 作为 friend 说明对象实例由 Tf singleton 基础设施管理，而不是由调用者 new/delete。调用方通常先取得全局 registry，然后查询 adapter key 或构造 adapter；这类全局注册表描述的是插件和类型能力，不描述某个 stage 当前已经实例化了哪些 adapter。</p>
+      <p class="en">GetInstance() returns the singleton registry used by USD Imaging.</p>
+      <p class="zh">`ConstructAdapter()` 面向 prim adapter。它根据 USD prim 的 schema/type 选择对应 `UsdImagingPrimAdapter` 工厂，用来把 prim 的属性、拓扑、材质绑定、transform、visibility 等信息转成 Hydra 可消费的数据。它不会直接绘制 prim，也不会直接修改 `HdRenderIndex`；真正的同步和数据提交仍由 `UsdImagingDelegate`、adapter instance 和 Hydra 流程协作完成。</p>
+      <p class="en">ConstructAdapter() creates prim adapters from registered factories.</p>
+      <p class="zh">`ConstructAPISchemaAdapter()` 与 `ConstructKeylessAPISchemaAdapters()` 面向 API schema adapter。前者处理有 key 或可按 schema key 定位的 API schema adapter，后者处理不依赖特定 key 的 API schema adapters。它们的作用是把 applied API schema 对 imaging 行为的影响接入适配层，例如某些 schema 需要额外 dirty tracking、visibility/purpose/material 语义或数据源扩展。</p>
+      <p class="en">API schema adapter construction handles registered API-schema-specific imaging behavior.</p>
+      <p class="zh">`ApiSchemaAdapters` typedef 表示 API schema adapter 集合。阅读 member list 时要区分 prim adapter 与 API schema adapter：prim adapter 主要围绕 prim type；API schema adapter 主要围绕 applied API schema 的附加行为。一个 prim 可以同时受 typed schema 和多个 API schema 影响，因此 registry 查询和构造路径需要同时覆盖这两类 adapter。</p>
+      <p class="en">ApiSchemaAdapters groups API schema adapters associated with registered schemas.</p>
+      <p class="zh">`GetAdapterKeys()` 与 `GetAPISchemaAdapterKeys()` 是调试 registry 覆盖范围的入口。前者列出 prim adapter keys，后者列出 API schema adapter keys。它们不是 stage traversal，也不保证某个具体 prim 一定会实例化 adapter；它们反映的是当前进程中注册表通过内置注册和插件发现得到的 adapter 能力集合。</p>
+      <p class="en">GetAdapterKeys() and GetAPISchemaAdapterKeys() expose the registered adapter key sets.</p>
+      <p class="zh">`HasAdapter()` 与 `HasAPISchemaAdapter()` 是轻量能力查询。它们适合在 fallback 路径中判断某个 key 是否有注册项，再决定构造专用 adapter、使用默认 adapter，或忽略某个 schema 的 imaging 扩展。它们不是对插件加载失败的完整诊断；如果返回 false，还应检查 plugin metadata、搜索路径、外部插件开关和 build 配置。</p>
+      <p class="en">HasAdapter() and HasAPISchemaAdapter() query whether matching registered factories exist.</p>
+      <p class="zh">`AreExternalPluginsEnabled()` 说明 registry 与 plugin discovery 有关。外部插件是否参与发现会影响自定义 `UsdImagingPrimAdapter` 或 `UsdImagingAPISchemaAdapter` 是否出现在 registry 中。排查自定义 schema 没有可见效果时，不能只看 prim 是否存在；还要确认插件是否加载、adapter key 是否匹配 schema/type、registry 是否启用了外部插件，以及对应 adapter 是否实际被 delegate 构造。</p>
+      <p class="en">AreExternalPluginsEnabled() reports whether external adapter plug-ins participate in discovery.</p>
+      <p class="zh">与相邻类型的关系需要分层理解：`UsdImagingAdapterRegistry` 负责 factory registration 和 lookup；`UsdImagingPrimAdapter` / `UsdImagingAPISchemaAdapter` 负责具体适配逻辑；`UsdImagingDelegate` 负责把 stage/view 的变化同步给 Hydra；`TfToken` 和 `TfTokenVector` 表示 adapter keys；`TfSingleton` 管理 registry 生命周期；Hydra 的 `HdRenderIndex` 和 scene-index/data-source 层消费适配后的数据。registry 本身不保存 USD composition opinions，也不替代 adapter 的 per-stage 状态。</p>
+      <p class="en">Related types separate registry lookup, adapter behavior, delegate synchronization, token keys, singleton lifetime, and Hydra consumption.</p>
+      <p class="zh">常见误读包括：把 registry 当成 adapter instance cache；把 `ConstructAdapter()` 当作 render submission；把 API schema adapter 当成 USD schema authoring；把 `GetAdapterKeys()` 当成 stage 中所有 prim 类型列表；把 `AreExternalPluginsEnabled()` 当成某个具体插件已成功加载的证明。正确排查顺序通常是：确认 schema/type key，确认 registry 是否有对应 key，确认外部插件发现是否启用，确认 adapter factory 能构造实例，确认 delegate 是否在正确 stage/context 中使用该 adapter。</p>
+      <p class="en">Common debugging separates registered factory availability from stage contents, adapter instances, delegate use, and Hydra rendering.</p>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">成像适配器注册表：</span><span class="en">UsdImagingAdapterRegistry</span></li>
+        <li><span class="zh">Prim 适配器工厂：</span><span class="en">PrimAdapter factory</span></li>
+        <li><span class="zh">适配器实例：</span><span class="en">adapter instance</span></li>
+        <li><span class="zh">API schema 适配器：</span><span class="en">UsdImagingAPISchemaAdapter</span></li>
+        <li><span class="zh">适配器 key 集合：</span><span class="en">adapter keys</span></li>
+        <li><span class="zh">外部插件发现：</span><span class="en">external plugin discovery</span></li>
+        <li><span class="zh">按 stage 管理的数据：</span><span class="en">per-stage data</span></li>
+        <li><span class="zh">单例生命周期：</span><span class="en">TfSingleton</span></li>
       </ul>
     </section>
     <section>
