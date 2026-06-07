@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-07T21:00:09.858Z",
-  "purpose": "Round 395 PromotionRound promoted full_site/release/user_guides/schemas/usdLux/RectLight.html after official live-page and local source-snapshot parity checks. The page now has Chinese main-reading-path coverage for RectLight one-sided rectangular emission, local XY plane and -Z direction, width/height sizing, texture color-map coordinates, light:shaderId, inherited extent/xformOpOrder/proxyPrim/purpose/visibility, related PortalLight/ShadowAPI distinctions, and renderer debugging boundaries.",
+  "generated_at": "2026-06-07T21:37:19.689Z",
+  "purpose": "Round 396 DefectRound fixed P1-left-navigation-reading-flow. The defect was user-visible: completed full_site pages lacked a left-side reading path, breadcrumb, release/API local entrances, and adjacent local-page navigation even though the old navigation_coverage_audit passed. This round added reusable reading-flow navigation to 398 full_site release/API pages, added scripts/inject_openusd_reading_flow_navigation.mjs and scripts/audit_openusd_reading_flow_navigation.mjs, and verified 89 completed full_site pages plus the required LightAPI -> LightFilter/PortalLight/RectLight and API sample paths. No page translation was promoted and counts intentionally stayed unchanged.",
   "current_counts": {
     "total_pages": 406,
     "bilingual_complete": 97,
@@ -26,7 +26,7 @@
       "id": "P0-final-entry-misleading",
       "severity": "P0",
       "summary": "The final entry previously misled users by showing pending=0 while most pages were incomplete drafts, and its completed local entries table had listed only preview-entry pages.",
-      "evidence": "openusd_bilingual_final.html is rebuilt from inventory and should show 97 complete pages and 309 incomplete drafts after round 395, with completed local pages generated from all bilingual_complete inventory rows.",
+      "evidence": "openusd_bilingual_final.html is rebuilt from inventory and shows 97 complete pages and 309 incomplete drafts; the final entry links to site/release_index.html and site/index.html before completed/draft tables.",
       "required_action": "Keep final-entry counts and completed-page tables dynamic; keep bilingual_draft clearly described as incomplete translation."
     },
     {
@@ -35,6 +35,13 @@
       "summary": "The old heartbeat automation optimized for repeated 5-page refinement and GitHub sync rather than real completion progress.",
       "evidence": "The openusd heartbeat uses PromotionRound/DefectRound/ConsistencyRound and requires good_bilingual growth or named P0/P1 fixes before push.",
       "required_action": "Keep the automation prompt aligned with current counts and the promotion mechanism; do not let it regress to count-neutral round-churn."
+    },
+    {
+      "id": "P1-left-navigation-reading-flow",
+      "severity": "P1",
+      "summary": "Fixed in round 396: completed full_site pages now expose a real local reading path instead of only body links plus a final-entry return.",
+      "evidence": "reports/reading_flow_navigation_audit.json reports completed_full_site_pages=89, pages_with_side_nav=89, pages_with_breadcrumb=89, release_pages_with_release_entry=20/20, api_pages_with_api_entry=69/69, sample_paths_passed=8/8, official_leak_count=0. scripts/inject_openusd_reading_flow_navigation.mjs injected reusable navigation into 398 full_site pages. reports/reading_flow_user_path_http_audit.json additionally fetched 7 live local HTTP pages from http://127.0.0.1:8068 and passed 8/8 user-path assertions for final entry, release index, LightAPI, LightFilter, PortalLight, RectLight, and class_gf_ray.",
+      "required_action": "Keep inject_openusd_reading_flow_navigation.mjs and audit_openusd_reading_flow_navigation.mjs in the defect/validation chain whenever pages are rebuilt; do not treat the older navigation_coverage_audit alone as proof of continuous reading flow."
     },
     {
       "id": "P1-markdown-record-encoding",
@@ -47,7 +54,7 @@
       "id": "P1-link-placeholders",
       "severity": "P1",
       "summary": "Many clicks still route to the local uncovered placeholder because the 406-page inventory does not contain every official Doxygen target.",
-      "evidence": "local_link_routing_report records uncovered links; this is intentional by policy but still a user-visible browsing gap.",
+      "evidence": "local_link_routing_report records uncovered links, while reading_flow_navigation_audit confirms completed-page primary reading paths now stay local and only explicit official-source links leave the site.",
       "required_action": "Prioritize high-click navigation and TOC links for local anchors or inventory expansion; do not present placeholder routing as a finished reading experience."
     },
     {
@@ -68,7 +75,7 @@
       "id": "P1-release-coverage-lag",
       "severity": "P1",
       "summary": "Completion remains API-skewed while release/tutorial/user-guide pages lag, although rounds 375 through 395 moved twenty release/tutorial/user-guide pages forward.",
-      "evidence": "reports/english_debt_audit.json reports api_complete=72 and release_complete=25; release_review_ready_zh is 22 after promoting RectLight.html.",
+      "evidence": "reports/english_debt_audit.json reports api_complete=72 and release_complete=25; release_review_ready_zh is 22. Round 396 did not promote translation counts because it was a P1 reading-flow DefectRound.",
       "required_action": "After several API PromotionRounds, choose a release/tutorial/user-guide page unless a named P0/P1 defect blocks the run."
     },
     {
@@ -84,6 +91,6 @@
     "Prefer full_site/release/user_guides/schemas/usdLux/RectLight.html for the next PromotionRound if it can become good_bilingual and preferably review_ready_zh.",
     "Keep markdown encoding and English debt audits in the validation chain."
   ],
-  "next_action": "Continue with a single PromotionRound on full_site/release/user_guides/schemas/usdLux/ShadowAPI.html only if it can become good_bilingual and preferably review_ready_zh; otherwise stop and report the exact blocker.",
+  "next_action": "After the P1 reading-flow fix is verified and pushed, resume a single PromotionRound only if requested, with full_site/release/user_guides/schemas/usdLux/ShadowAPI.html as the next likely target; do not batch-translate from this defect round.",
   "next_best_target": "full_site/release/user_guides/schemas/usdLux/ShadowAPI.html"
 }

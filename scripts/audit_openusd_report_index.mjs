@@ -89,6 +89,15 @@ const auditChain = [
     required_count_keys: ["release_adjacent_links_present", "api_navigation_assets_present", "api_entry_links_present"],
   },
   {
+    key: "reading_flow_navigation",
+    command: "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_reading_flow_navigation.mjs",
+    script: "scripts/audit_openusd_reading_flow_navigation.mjs",
+    json: "reports/reading_flow_navigation_audit.json",
+    md: "reports/reading_flow_navigation_audit.md",
+    purpose: "Checks real completed-page reading flow: side navigation, breadcrumb, local release/API entrances, related local pages, previous/next links, and explicit-only official jumps.",
+    required_count_keys: ["completed_full_site_pages", "pages_with_side_nav", "pages_with_breadcrumb", "sample_paths_passed", "official_leak_count"],
+  },
+  {
     key: "source_provenance",
     command: "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_source_provenance.mjs",
     script: "scripts/audit_openusd_source_provenance.mjs",

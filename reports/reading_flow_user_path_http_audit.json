@@ -1,0 +1,209 @@
+{
+  "generated_at": "2026-06-07T21:42:41.800Z",
+  "base": "http://127.0.0.1:8068/",
+  "pages": [
+    {
+      "rel": "openusd_bilingual_final.html",
+      "url": "http://127.0.0.1:8068/openusd_bilingual_final.html",
+      "status": 200,
+      "length": 287431
+    },
+    {
+      "rel": "site/release_index.html",
+      "url": "http://127.0.0.1:8068/site/release_index.html",
+      "status": 200,
+      "length": 224026
+    },
+    {
+      "rel": "full_site/release/user_guides/schemas/usdLux/LightAPI.html",
+      "url": "http://127.0.0.1:8068/full_site/release/user_guides/schemas/usdLux/LightAPI.html",
+      "status": 200,
+      "length": 20589
+    },
+    {
+      "rel": "full_site/release/user_guides/schemas/usdLux/LightFilter.html",
+      "url": "http://127.0.0.1:8068/full_site/release/user_guides/schemas/usdLux/LightFilter.html",
+      "status": 200,
+      "length": 22818
+    },
+    {
+      "rel": "full_site/release/user_guides/schemas/usdLux/PortalLight.html",
+      "url": "http://127.0.0.1:8068/full_site/release/user_guides/schemas/usdLux/PortalLight.html",
+      "status": 200,
+      "length": 22798
+    },
+    {
+      "rel": "full_site/release/user_guides/schemas/usdLux/RectLight.html",
+      "url": "http://127.0.0.1:8068/full_site/release/user_guides/schemas/usdLux/RectLight.html",
+      "status": 200,
+      "length": 17054
+    },
+    {
+      "rel": "full_site/api/class_gf_ray.html",
+      "url": "http://127.0.0.1:8068/full_site/api/class_gf_ray.html",
+      "status": 200,
+      "length": 24702
+    }
+  ],
+  "fullSitePages": [
+    {
+      "page": "full_site/release/user_guides/schemas/usdLux/LightAPI.html",
+      "status": 200,
+      "sideNav": true,
+      "breadcrumb": true,
+      "flows": {
+        "final": 2,
+        "release": 2,
+        "api": 1,
+        "related": 10,
+        "official": 1
+      }
+    },
+    {
+      "page": "full_site/release/user_guides/schemas/usdLux/LightFilter.html",
+      "status": 200,
+      "sideNav": true,
+      "breadcrumb": true,
+      "flows": {
+        "final": 2,
+        "release": 2,
+        "api": 1,
+        "related": 10,
+        "official": 1
+      }
+    },
+    {
+      "page": "full_site/release/user_guides/schemas/usdLux/PortalLight.html",
+      "status": 200,
+      "sideNav": true,
+      "breadcrumb": true,
+      "flows": {
+        "final": 2,
+        "release": 2,
+        "api": 1,
+        "related": 10,
+        "official": 1
+      }
+    },
+    {
+      "page": "full_site/release/user_guides/schemas/usdLux/RectLight.html",
+      "status": 200,
+      "sideNav": true,
+      "breadcrumb": true,
+      "flows": {
+        "final": 2,
+        "release": 2,
+        "api": 1,
+        "related": 10,
+        "official": 1
+      }
+    },
+    {
+      "page": "full_site/api/class_gf_ray.html",
+      "status": 200,
+      "sideNav": true,
+      "breadcrumb": true,
+      "flows": {
+        "final": 2,
+        "release": 1,
+        "api": 2,
+        "related": 10,
+        "official": 1
+      }
+    }
+  ],
+  "assertions": [
+    {
+      "id": "final_to_release_index",
+      "page": "openusd_bilingual_final.html",
+      "status": 200,
+      "contains": {
+        "site/release_index.html": true
+      },
+      "passed": true
+    },
+    {
+      "id": "final_to_lightapi",
+      "page": "openusd_bilingual_final.html",
+      "status": 200,
+      "contains": {
+        "full_site/release/user_guides/schemas/usdLux/LightAPI.html": true
+      },
+      "passed": true
+    },
+    {
+      "id": "release_index_to_lightapi",
+      "page": "site/release_index.html",
+      "status": 200,
+      "contains": {
+        "LightAPI.html": true
+      },
+      "passed": true
+    },
+    {
+      "id": "lightapi_to_neighbors",
+      "page": "full_site/release/user_guides/schemas/usdLux/LightAPI.html",
+      "status": 200,
+      "contains": {
+        "LightFilter.html": true,
+        "PortalLight.html": true,
+        "RectLight.html": true,
+        "openusd-reading-flow-nav": true,
+        "openusd-reading-flow-breadcrumb": true,
+        "data-reading-flow=\"release-entry\"": true,
+        "data-reading-flow=\"api-entry\"": true
+      },
+      "passed": true
+    },
+    {
+      "id": "lightfilter_return_and_neighbors",
+      "page": "full_site/release/user_guides/schemas/usdLux/LightFilter.html",
+      "status": 200,
+      "contains": {
+        "LightAPI.html": true,
+        "PortalLight.html": true,
+        "data-reading-flow=\"final\"": true,
+        "openusd-reading-flow-nav": true
+      },
+      "passed": true
+    },
+    {
+      "id": "portallight_return_and_neighbors",
+      "page": "full_site/release/user_guides/schemas/usdLux/PortalLight.html",
+      "status": 200,
+      "contains": {
+        "LightAPI.html": true,
+        "RectLight.html": true,
+        "data-reading-flow=\"release-entry\"": true,
+        "openusd-reading-flow-nav": true
+      },
+      "passed": true
+    },
+    {
+      "id": "rectlight_return_and_official",
+      "page": "full_site/release/user_guides/schemas/usdLux/RectLight.html",
+      "status": 200,
+      "contains": {
+        "LightAPI.html": true,
+        "PortalLight.html": true,
+        "data-reading-flow=\"official\"": true,
+        "openusd-reading-flow-nav": true
+      },
+      "passed": true
+    },
+    {
+      "id": "api_complete_page_flow",
+      "page": "full_site/api/class_gf_ray.html",
+      "status": 200,
+      "contains": {
+        "data-reading-flow=\"api-entry\"": true,
+        "data-reading-flow=\"release-entry\"": true,
+        "data-reading-flow=\"final\"": true,
+        "openusd-reading-flow-nav": true,
+        "openusd-reading-flow-breadcrumb": true
+      },
+      "passed": true
+    }
+  ],
+  "passed": true
+}

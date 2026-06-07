@@ -1,0 +1,168 @@
+{
+  "generated_at": "2026-06-07T21:45:40.768Z",
+  "root": "C:\\Users\\robot\\Documents\\成长学习库\\openusd_api_cn_repro",
+  "purpose": "Audit real local reading flow for completed full_site OpenUSD pages. This catches pages that have entry assets but lack left-side reading navigation, breadcrumb, local release/API entrances, related local pages, or explicit-only official links.",
+  "counts": {
+    "completed_full_site_pages": 89,
+    "pages_with_side_nav": 89,
+    "pages_with_breadcrumb": 89,
+    "pages_with_final_entry": 89,
+    "release_pages_checked": 20,
+    "release_pages_with_release_entry": 20,
+    "api_pages_checked": 69,
+    "api_pages_with_api_entry": 69,
+    "pages_with_related_links": 89,
+    "pages_with_prev_or_next": 89,
+    "pages_with_official_link": 89,
+    "official_leak_count": 0,
+    "sample_paths": 8,
+    "sample_paths_passed": 8,
+    "failed_pages": 0,
+    "failed_samples": 0,
+    "checks": 9,
+    "failed_checks": 0
+  },
+  "checks": [
+    {
+      "check": "reading_flow:completed_pages_have_side_nav",
+      "passed": true
+    },
+    {
+      "check": "reading_flow:completed_pages_have_breadcrumb",
+      "passed": true
+    },
+    {
+      "check": "reading_flow:completed_pages_link_final_entry",
+      "passed": true
+    },
+    {
+      "check": "reading_flow:release_pages_link_release_entry",
+      "passed": true
+    },
+    {
+      "check": "reading_flow:api_pages_link_api_entries",
+      "passed": true
+    },
+    {
+      "check": "reading_flow:completed_pages_have_related_links",
+      "passed": true
+    },
+    {
+      "check": "reading_flow:completed_pages_have_prev_or_next",
+      "passed": true
+    },
+    {
+      "check": "reading_flow:official_links_are_explicit_only",
+      "passed": true
+    },
+    {
+      "check": "reading_flow:required_user_path_samples_pass",
+      "passed": true
+    }
+  ],
+  "failed_checks": [],
+  "failed_pages": [],
+  "sample_paths": [
+    {
+      "id": "final_to_release_index",
+      "passed": true
+    },
+    {
+      "id": "release_index_to_light_api",
+      "passed": true
+    },
+    {
+      "id": "light_api_to_usdLux_neighbors",
+      "passed": true
+    },
+    {
+      "id": "sample_page:full_site/release/user_guides/schemas/usdLux/RectLight.html",
+      "passed": true,
+      "details": {
+        "local_output": "full_site/release/user_guides/schemas/usdLux/RectLight.html",
+        "area": "release",
+        "title": "RectLight",
+        "side_nav": true,
+        "breadcrumb": true,
+        "final_entry": true,
+        "release_entry": true,
+        "api_entry": true,
+        "api_redirect": true,
+        "related_links": 10,
+        "has_prev_or_next": true,
+        "official_link": true,
+        "official_leak_count": 0,
+        "leaked_hrefs": [],
+        "passed": true
+      }
+    },
+    {
+      "id": "sample_page:full_site/release/user_guides/schemas/usdLux/PortalLight.html",
+      "passed": true,
+      "details": {
+        "local_output": "full_site/release/user_guides/schemas/usdLux/PortalLight.html",
+        "area": "release",
+        "title": "PortalLight",
+        "side_nav": true,
+        "breadcrumb": true,
+        "final_entry": true,
+        "release_entry": true,
+        "api_entry": true,
+        "api_redirect": true,
+        "related_links": 10,
+        "has_prev_or_next": true,
+        "official_link": true,
+        "official_leak_count": 0,
+        "leaked_hrefs": [],
+        "passed": true
+      }
+    },
+    {
+      "id": "sample_page:full_site/release/user_guides/schemas/usdLux/LightAPI.html",
+      "passed": true,
+      "details": {
+        "local_output": "full_site/release/user_guides/schemas/usdLux/LightAPI.html",
+        "area": "release",
+        "title": "LightAPI",
+        "side_nav": true,
+        "breadcrumb": true,
+        "final_entry": true,
+        "release_entry": true,
+        "api_entry": true,
+        "api_redirect": true,
+        "related_links": 10,
+        "has_prev_or_next": true,
+        "official_link": true,
+        "official_leak_count": 0,
+        "leaked_hrefs": [],
+        "passed": true
+      }
+    },
+    {
+      "id": "sample_page:full_site/api/class_gf_ray.html",
+      "passed": true,
+      "details": {
+        "local_output": "full_site/api/class_gf_ray.html",
+        "area": "api",
+        "title": "https://openusd.org/release/api/class_gf_ray.html",
+        "side_nav": true,
+        "breadcrumb": true,
+        "final_entry": true,
+        "release_entry": true,
+        "api_entry": true,
+        "api_redirect": true,
+        "related_links": 10,
+        "has_prev_or_next": true,
+        "official_link": true,
+        "official_leak_count": 0,
+        "leaked_hrefs": [],
+        "passed": true
+      }
+    },
+    {
+      "id": "local_targets_exist",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

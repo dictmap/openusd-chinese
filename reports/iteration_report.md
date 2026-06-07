@@ -1,12 +1,12 @@
 # OpenUSD Iteration Report
 
-## 第 395 轮摘要
+## 第 396 轮摘要
 
-- 轮次类型：PromotionRound
-- 轮次目的：Round 395 PromotionRound promoted full_site/release/user_guides/schemas/usdLux/RectLight.html after official live-page and local source-snapshot parity checks. The page now has Chinese main-reading-path coverage for RectLight one-sided rectangular emission, local XY plane and -Z direction, width/height sizing, texture color-map coordinates, light:shaderId, inherited extent/xformOpOrder/proxyPrim/purpose/visibility, related PortalLight/ShadowAPI distinctions, and renderer debugging boundaries.
-- 本轮目标：`full_site/release/user_guides/schemas/usdLux/RectLight.html`
-- 结果：完成 1 个页面晋级，并让 good_bilingual 增加。
-- 核心说明：目标页已移除草稿状态，补齐中文主阅读路径，并进入 promotion manifest。
+- 轮次类型：DefectRound
+- 轮次目的：Round 396 DefectRound fixed P1-left-navigation-reading-flow. The defect was user-visible: completed full_site pages lacked a left-side reading path, breadcrumb, release/API local entrances, and adjacent local-page navigation even though the old navigation_coverage_audit passed. This round added reusable reading-flow navigation to 398 full_site release/API pages, added scripts/inject_openusd_reading_flow_navigation.mjs and scripts/audit_openusd_reading_flow_navigation.mjs, and verified 89 completed full_site pages plus the required LightAPI -> LightFilter/PortalLight/RectLight and API sample paths. No page translation was promoted and counts intentionally stayed unchanged.
+- 本轮目标：命名缺陷或一致性修复
+- 结果：未晋级页面，修复命名缺陷或一致性问题。
+- 核心说明：保持审计链和人类可读记录一致。
 
 ## 真实计数
 
@@ -23,7 +23,7 @@
 
 ## 验证
 
-- validation_report：passed=true，failed_check_count=0，required_check_count=302
+- validation_report：passed=true，failed_check_count=0，required_check_count=311
 - translation_quality：good_bilingual=97
 - english_debt：review_ready_zh=34，review_needs_zh_debt=63
 - promotion manifest：89 entries

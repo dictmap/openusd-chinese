@@ -84,6 +84,8 @@ $requiredFiles = @(
   "scripts\audit_openusd_entry_structure_parity.mjs",
   "scripts\audit_openusd_full_draft_preview.mjs",
   "scripts\audit_openusd_navigation_coverage.mjs",
+  "scripts\inject_openusd_reading_flow_navigation.mjs",
+  "scripts\audit_openusd_reading_flow_navigation.mjs",
   "scripts\audit_openusd_official_entry_freshness.mjs",
   "scripts\audit_openusd_page_metadata_contract.mjs",
   "scripts\audit_openusd_repro_links.mjs",
@@ -126,6 +128,10 @@ $requiredFiles = @(
   "reports\full_draft_preview_audit.md",
   "reports\navigation_coverage_audit.json",
   "reports\navigation_coverage_audit.md",
+  "reports\reading_flow_navigation_injection.json",
+  "reports\reading_flow_navigation_injection.md",
+  "reports\reading_flow_navigation_audit.json",
+  "reports\reading_flow_navigation_audit.md",
   "reports\official_entry_freshness_audit.json",
   "reports\official_entry_freshness_audit.md",
   "reports\page_metadata_contract_audit.json",
@@ -787,6 +793,34 @@ $checks.Add([pscustomobject]@{
 $checks.Add([pscustomobject]@{
   check = "navigation_coverage_audit:api_route_guide_links_ready"
   passed = ($navigationCoverageAudit.counts.api_route_steps -ge 3 -and $navigationCoverageAudit.counts.api_route_step_links_present -ge 3)
+})
+
+$readingFlowNavigationAudit = Get-Content -LiteralPath (Join-Path $reportDir "reading_flow_navigation_audit.json") -Raw -Encoding UTF8 | ConvertFrom-Json
+$checks.Add([pscustomobject]@{
+  check = "reading_flow_navigation_audit:passed"
+  passed = ($readingFlowNavigationAudit.passed -eq $true)
+})
+
+$checks.Add([pscustomobject]@{
+  check = "reading_flow_navigation_audit:completed_pages_have_local_reading_flow"
+  passed = (
+    $readingFlowNavigationAudit.counts.completed_full_site_pages -ge 89 -and
+    $readingFlowNavigationAudit.counts.pages_with_side_nav -eq $readingFlowNavigationAudit.counts.completed_full_site_pages -and
+    $readingFlowNavigationAudit.counts.pages_with_breadcrumb -eq $readingFlowNavigationAudit.counts.completed_full_site_pages -and
+    $readingFlowNavigationAudit.counts.pages_with_final_entry -eq $readingFlowNavigationAudit.counts.completed_full_site_pages -and
+    $readingFlowNavigationAudit.counts.release_pages_with_release_entry -eq $readingFlowNavigationAudit.counts.release_pages_checked -and
+    $readingFlowNavigationAudit.counts.api_pages_with_api_entry -eq $readingFlowNavigationAudit.counts.api_pages_checked -and
+    $readingFlowNavigationAudit.counts.pages_with_related_links -eq $readingFlowNavigationAudit.counts.completed_full_site_pages -and
+    $readingFlowNavigationAudit.counts.pages_with_prev_or_next -eq $readingFlowNavigationAudit.counts.completed_full_site_pages -and
+    $readingFlowNavigationAudit.counts.official_leak_count -eq 0 -and
+    $readingFlowNavigationAudit.counts.failed_checks -eq 0 -and
+    $readingFlowNavigationAudit.counts.failed_pages -eq 0
+  )
+})
+
+$checks.Add([pscustomobject]@{
+  check = "reading_flow_navigation_audit:user_path_samples_ready"
+  passed = ($readingFlowNavigationAudit.counts.sample_paths -ge 8 -and $readingFlowNavigationAudit.counts.sample_paths_passed -eq $readingFlowNavigationAudit.counts.sample_paths)
 })
 
 $sourceProvenanceAudit = Get-Content -LiteralPath (Join-Path $reportDir "source_provenance_audit.json") -Raw -Encoding UTF8 | ConvertFrom-Json
