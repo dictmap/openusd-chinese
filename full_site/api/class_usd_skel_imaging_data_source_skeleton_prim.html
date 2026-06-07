@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：UsdSkelImagingDataSourceSkeletonPrim Class / UsdSkelImagingDataSourceSkeletonPrim Class</title>
+  <title>完整双语参考：UsdSkelImagingDataSourceSkeletonPrim Class / UsdSkelImagingDataSourceSkeletonPrim Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,15 +24,15 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：UsdSkelImagingDataSourceSkeletonPrim Class / UsdSkelImagingDataSourceSkeletonPrim Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：UsdSkelImagingDataSourceSkeletonPrim Class / UsdSkelImagingDataSourceSkeletonPrim Class</h1>
     <div class="meta">https://openusd.org/release/api/class_usd_skel_imaging_data_source_skeleton_prim.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已晋级为完整双语参考页：中文优先解释 `UsdSkelImagingDataSourceSkeletonPrim` 作为 UsdSkel `Skeleton` prim 的 Hydra data source wrapper 的职责、`Get()` / `GetNames()` 查询语义、与 `UsdImagingDataSourcePrim` / `HdContainerDataSource` 的分层关系，以及它与骨骼动画求解和 skinning 运行时的边界。</p>
+      <p class="en">This page is promoted as complete bilingual reference coverage for UsdSkelImagingDataSourceSkeletonPrim while retaining original API names, method names, type names, links, and English excerpts for comparison with the official Doxygen page.</p>
     </section>
     <section data-cn-refinement="api-class-quality-pass-043">
       <h2>中文精修导读 / Chinese Reading Notes</h2>
@@ -94,6 +94,40 @@
         <li><span class="zh">按名查询数据源：</span><span class="en">Get()</span></li>
         <li><span class="zh">场景索引定位器：</span><span class="en">HdDataSourceLocator</span></li>
         <li><span class="zh">舞台全局上下文：</span><span class="en">UsdImagingDataSourceStageGlobals</span></li>
+      </ul>
+    </section>
+    <section data-cn-complete="usd-skel-imaging-data-source-skeleton-prim-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`UsdSkelImagingDataSourceSkeletonPrim` 是 UsdSkel `Skeleton` prim 的 imaging data source。官方说明 “A prim data source for UsdSkel's Skeleton” 的重点是 data-source 表达层，而不是 schema authoring 或动画求解层：它把一个 skeleton prim 包装成 Hydra 可以按名称查询的 `HdContainerDataSource` 风格对象，使 scene index / Hydra 查询路径能读取骨架 prim 的成像数据。</p>
+      <p class="en">A prim data source for UsdSkel's Skeleton.</p>
+      <p class="zh">这个类位于 USD prim 和 Hydra data source 之间。`UsdPrim` 和 `SdfPath` 标识数据来自哪个 stage、哪个 prim；`UsdImagingDataSourceStageGlobals` 提供成像层共享上下文；`UsdImagingDataSourcePrim` / `UsdImagingDataSourceGprim` 提供通用 prim / gprim data-source 行为；`HdContainerDataSource` 定义按 token 名称暴露子数据源的容器协议。它不是直接遍历 stage 的工具，也不是替代 `UsdSkelSkeleton` 的 schema wrapper。</p>
+      <p class="en">The class adapts a USD skeleton prim into the Hydra data source model.</p>
+      <p class="zh">`GetNames()` 返回该 container data source 当前可查询的 `TfTokenVector`。调试 skeleton 数据缺失时，应先看 `GetNames()` 是否包含预期字段，再用对应 `TfToken` 调 `Get()`；如果 name 不存在，通常说明 data source 层没有发布该字段，或者 locator / adapter 路径没有把相关数据接入，而不是 mesh deformation 计算失败。</p>
+      <p class="en">GetNames() returns the names of child data sources exposed by the container.</p>
+      <p class="zh">`Get()` 根据 `TfToken` 名称返回对应的 `HdDataSourceBaseHandle`。它是按需查询入口，不意味着一次性展开所有 skeleton 数据，也不保证返回值一定非空。调用方需要按 Hydra data-source 约定解释返回 handle 的具体类型，并把空返回、类型不匹配和 locator 失效分别排查。</p>
+      <p class="en">Get() retrieves a named child data source from the container.</p>
+      <p class="zh">因此，调用 `Get()` 的代码应把 token name 视为 data-source contract，而不是把它直接等同于 USD attribute name；这也是定位数据缺口的第一步。</p>
+      <p class="en">The token name used by Get() is a data-source contract, not automatically a USD attribute name.</p>
+      <p class="zh">与 skinning 和 animation 的边界必须明确：`UsdSkelImagingDataSourceSkeletonPrim` 负责把 skeleton prim 的相关信息放到 imaging data-source 层；joint order、bind transforms、animation sampling、skinning matrices 和 mesh deformation 属于 UsdSkel schema、animation evaluation 或下游渲染/计算路径。看到角色姿态不对时，不应直接把问题归因于这个 data source；应先区分数据是否暴露、数据是否被 scene index 消费、以及变形计算是否正确。</p>
+      <p class="en">This data source exposes skeleton prim data; it is not the skinning or animation solver.</p>
+      <p class="zh">与 Hydra scene index 的关系也要分清。`HdDataSourceLocator` 和 `HdDataSourceLocatorSet` 描述数据源路径和失效范围；当 skeleton prim 上的 USD 属性变化时，成像层需要把变化映射到对应 locator，使 Hydra 知道哪些数据需要重新读取。该类本身提供查询表面，失效传播和 dirty tracking 还依赖 adapter、scene index、stage globals 和 delegate 流程。</p>
+      <p class="en">Data source locators describe where values live and what ranges are invalidated.</p>
+      <p class="zh">在实际排查中，`GetNames()` 与 locator 失效报告要一起看：前者说明当前 data source 公开了哪些字段，后者说明哪些字段因为 USD 变化而应被重新拉取。两者不一致时，常见原因是 adapter 没有把 skeleton-specific 字段加入 container，或者 dirty locator 没有精确映射到 skeleton data source 子路径。</p>
+      <p class="en">GetNames() and data source locators should be checked together when diagnosing missing or stale skeleton data.</p>
+      <p class="zh">继承链中的 `UsdImagingDataSourceGprim` 提示 skeleton prim 在 imaging 侧仍享有部分 gprim / prim 通用数据源能力，例如 path、visibility、purpose、transform 或其他继承字段的处理方式。阅读时应把骨架专用字段与通用 prim 字段分开：骨架字段解释 UsdSkel skeleton 的成像信息，通用字段解释 prim 在 Hydra data source 树中的基础元数据。</p>
+      <p class="en">Inherited data-source classes separate generic prim data from skeleton-specific data.</p>
+      <p class="zh">常见误读包括：把 `GetNames()` 当成 USD 属性列表；把 `Get()` 当成直接读取 `UsdAttribute`；把 `UsdSkelImagingDataSourceSkeletonPrim` 当成 `UsdSkelSkeleton` 的 authoring API；把 data source 层错误当成动画求解错误；或者忽略 `UsdImagingDataSourceStageGlobals` 中的成像上下文。正确排查顺序通常是：确认 prim 是有效 Skeleton，确认 `SdfPath` 和 stage globals 正确，检查 `GetNames()` 暴露的 token，按 token 调 `Get()`，再沿 locator / adapter / scene index 追踪数据是否被 Hydra 消费。</p>
+      <p class="en">Common debugging separates USD attribute authoring, data-source exposure, locator invalidation, and downstream animation or rendering behavior.</p>
+      <h3>术语对照 / Terms</h3>
+      <ul>
+        <li><span class="zh">骨架 prim 数据源：</span><span class="en">UsdSkelImagingDataSourceSkeletonPrim</span></li>
+        <li><span class="zh">UsdSkel 骨架：</span><span class="en">UsdSkel Skeleton</span></li>
+        <li><span class="zh">Hydra 容器数据源：</span><span class="en">HdContainerDataSource</span></li>
+        <li><span class="zh">按名称查询：</span><span class="en">Get()</span></li>
+        <li><span class="zh">名称集合：</span><span class="en">GetNames()</span></li>
+        <li><span class="zh">数据源定位器：</span><span class="en">HdDataSourceLocator</span></li>
+        <li><span class="zh">失效定位器集合：</span><span class="en">HdDataSourceLocatorSet</span></li>
+        <li><span class="zh">成像层全局上下文：</span><span class="en">UsdImagingDataSourceStageGlobals</span></li>
       </ul>
     </section>
     <section>

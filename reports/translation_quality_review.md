@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-07T07:56:05.800Z
+Generated: 2026-06-07T08:07:43.429Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 353
-- bilingual_complete: 53
+- bilingual_draft: 352
+- bilingual_complete: 54
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 342
-- good_bilingual: 53
+- draft_needs_translation: 341
+- good_bilingual: 54
 
 ## Current Focus Batch
 
@@ -117,7 +117,7 @@ Generated: 2026-06-07T07:56:05.800Z
 | 51 | good_bilingual | bilingual_complete | 1440 | 64/56 | 0 | 0 | `full_site/api/class_usd_proc_generative_procedural.html` |
 | 52 | draft_needs_translation | bilingual_draft | 649 | 64/51 | 0 | 0 | `full_site/api/class_usd_schema_registry.html` |
 | 53 | good_bilingual | bilingual_complete | 1469 | 86/73 | 0 | 0 | `full_site/api/class_usd_shade_output.html` |
-| 54 | draft_needs_translation | bilingual_draft | 684 | 44/31 | 0 | 0 | `full_site/api/class_usd_skel_imaging_data_source_skeleton_prim.html` |
+| 54 | good_bilingual | bilingual_complete | 1417 | 62/49 | 0 | 0 | `full_site/api/class_usd_skel_imaging_data_source_skeleton_prim.html` |
 | 55 | good_bilingual | bilingual_complete | 928 | 47/49 | 0 | 0 | `full_site/api/class_usd_stage_cache.html` |
 | 56 | good_bilingual | bilingual_complete | 1091 | 48/50 | 0 | 0 | `full_site/api/class_usd_validation_error.html` |
 | 57 | draft_needs_translation | bilingual_draft | 563 | 52/44 | 0 | 0 | `full_site/api/class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html` |
