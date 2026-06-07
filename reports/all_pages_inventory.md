@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-07T10:59:11.259Z
+Generated: 2026-06-07T11:10:04.696Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 66
-- Promoted complete pages: 58
-- Bilingual draft pages: 340
+- Bilingual complete pages: 67
+- Promoted complete pages: 59
+- Bilingual draft pages: 339
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -183,7 +183,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_draft | Class Members | full_site/api/functions.html | https://openusd.org/release/api/functions.html |
 | api | bilingual_draft | 源码页面草稿：geomModelAPIAdapter.h / geomModelAPIAdapter.h | full_site/api/geom_model_a_p_i_adapter_8h_source.html | https://openusd.org/release/api/geom_model_a_p_i_adapter_8h_source.html |
 | api | bilingual_draft | API 模块草稿：Gf : Graphics Foundations / Gf : Graphics Foundations | full_site/api/gf_page_front.html | https://openusd.org/release/api/gf_page_front.html |
-| api | bilingual_draft | API 模块草稿：Glf: Utility classes for OpenGL / Glf: Utility classes for OpenGL | full_site/api/glf_page_front.html | https://openusd.org/release/api/glf_page_front.html |
+| api | bilingual_complete | https://openusd.org/release/api/glf_page_front.html | full_site/api/glf_page_front.html | https://openusd.org/release/api/glf_page_front.html |
 | api | bilingual_draft | c | full_site/api/globals_c.html | https://openusd.org/release/api/globals_c.html |
 | api | bilingual_draft | Macros | full_site/api/globals_defs.html | https://openusd.org/release/api/globals_defs.html |
 | api | bilingual_draft | e | full_site/api/globals_e.html | https://openusd.org/release/api/globals_e.html |

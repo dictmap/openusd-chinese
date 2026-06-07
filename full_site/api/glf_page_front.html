@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>API 模块草稿：Glf: Utility classes for OpenGL / Glf: Utility classes for OpenGL</title>
+  <title>完整双语参考：Glf: Utility classes for OpenGL / Glf: Utility classes for OpenGL</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -19,20 +19,53 @@
     ul{padding-left:22px}
     li{margin:8px 0}
     code{font-family:"Cascadia Mono","Consolas",monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>API 模块草稿：Glf: Utility classes for OpenGL / Glf: Utility classes for OpenGL</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：Glf: Utility classes for OpenGL / Glf: Utility classes for OpenGL</h1>
     <div class="meta">https://openusd.org/release/api/glf_page_front.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页处理：中文优先解释 `Glf` 作为 OpenUSD imaging 体系中面向 OpenGL output 的 utility classes 集合，说明它与 draw target、framebuffer、OpenGL resource helper、渲染调试和相邻 Hydra/Hgi/HdSt 模块之间的边界；英文 API 名称、类型名、链接和官方摘录保留原样，便于与 Doxygen 页面核对。</p>
+      <p class="en">This page is promoted as a complete bilingual reference. It explains Glf as utility classes for OpenGL output while preserving official API names and excerpts.</p>
+    </section>
+    <section data-cn-complete="glf-opengl-utility-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">官方摘要只有一句：`Utility classes for OpenGL output.` 这句话的重点不是 scene description，也不是 USD composition，而是 OpenGL output。`Glf` 在 OpenUSD API 中更接近 imaging/rendering infrastructure：它为需要直接处理 OpenGL 输出、draw target、framebuffer 或调试可视化的代码提供基础工具。</p>
+      <p class="en">Glf provides utility classes for OpenGL output.</p>
+      <p class="zh">`Glf` 名称中的 `GL` 暗示它与 OpenGL 直接相关，但这不意味着所有渲染都应该通过 `Glf`。现代 Hydra 路径中，`Hd` 定义渲染抽象，`Hdx` 组织 task/controller，`HdSt` 实现 Storm renderer，`Hgi` 抽象图形 API 后端；`Glf` 则是历史和实际代码中围绕 OpenGL 输出的 helper 层。阅读时要把它放在图形输出工具箱的位置，而不是放在 USD 数据模型层。</p>
+      <p class="en">Glf is an OpenGL-oriented helper layer, not the USD data model or Hydra core abstraction layer.</p>
+      <p class="zh">draw target 是理解 `Glf` 的常见入口。类似 `GlfDrawTarget` 的类型通常围绕 framebuffer、attachment、render target、viewport-sized output 和调试读取展开。它们帮助工具或 renderer 把图形结果写到某个 OpenGL 目标中，而不是创建 `UsdPrim`、修改 layer，也不是解释 material network。</p>
+      <p class="en">Draw-target utilities organize OpenGL rendering outputs such as framebuffer attachments and target resources.</p>
+      <p class="zh">framebuffer 和 texture 相关问题经常被误判为 Hydra 或 USD 问题。若症状是画面黑屏、attachment 格式不匹配、depth buffer 缺失、OpenGL context 不正确或读取像素失败，排查层级应从 `Glf`/OpenGL utility、`HdSt` backend、`Hgi` resource abstraction 和窗口系统上下文开始，而不是先改 USD composition 或 schema authoring。</p>
+      <p class="en">Framebuffer, texture, context, and attachment failures usually belong to graphics-output debugging, not USD composition.</p>
+      <p class="zh">`Glf` 与 `Hgi` 的边界需要特别说明。`Hgi` 是更抽象的 graphics interface，目标是屏蔽不同图形 API 的资源和命令差异；`Glf` 则保留明显的 OpenGL 语义。若代码路径已经通过 `Hgi` 表达 buffer、texture、pipeline 或 command buffer，问题可能不在 `Glf`；若代码直接操作 OpenGL output helper，`Glf` 页面才更相关。</p>
+      <p class="en">Hgi abstracts multiple graphics APIs, while Glf is specifically tied to OpenGL-oriented utilities.</p>
+      <p class="zh">`Glf` 与 `HdSt` 的关系也不是上下级替代。`HdSt` 是 Storm render delegate 的实现层，处理 draw items、shader、resource registry 和 renderer-specific execution；`Glf` 提供部分 OpenGL 输出辅助能力。Storm 路径中可能调用或相邻出现 `Glf` 类型，但渲染算法、Hydra 同步和具体 draw scheduling 仍应在 `HdSt` / `Hd` 中定位。</p>
+      <p class="en">HdSt implements Storm rendering behavior; Glf contributes OpenGL-output helpers used near rendering infrastructure.</p>
+      <p class="zh">`Glf` 与 `Hdx` 的边界可以从 workflow 角度区分：`Hdx` 负责组织 viewport task、selection、picking、present/color correction 等客户端流程；`Glf` 更关注 OpenGL 输出目标和相关资源工具。若问题是 task 参数、selection state 或 pick pass 顺序，先查 `Hdx`；若问题是 draw target、framebuffer attachment 或 OpenGL context，则进入 `Glf`。</p>
+      <p class="en">Hdx organizes viewport tasks, while Glf focuses on OpenGL output resources and helper classes.</p>
+      <p class="zh">`Glf` 还常出现在窗口系统和上下文管理的边缘。OpenGL 对当前 context、线程绑定、framebuffer completeness、extension availability 和 driver behavior 都很敏感。OpenUSD 的上层 scene graph 即使完全正确，只要当前 GL context 不匹配或目标 framebuffer 不完整，最终图像仍会失败。因此调试 `Glf` 相关问题时，需要同时记录平台、driver、context 生命周期和资源创建时机。</p>
+      <p class="en">OpenGL output depends on context lifetime, framebuffer completeness, extensions, drivers, and platform behavior.</p>
+      <p class="zh">交互式预览和离线渲染也要分开。`Glf` 更常服务于工具视口、调试显示、OpenGL target 或中间输出；离线 renderer 的质量、采样、光照积分和 renderer-specific AOV 语义并不由 `Glf` 决定。若同一 USD 在离线渲染器中正确、但 OpenGL 预览失败，排查方向通常是 viewport pipeline、GL resource 或 Hydra task，而不是 asset authoring 本身。</p>
+      <p class="en">Glf is closer to interactive OpenGL preview and output helpers than to offline renderer quality controls.</p>
+      <p class="zh">资源所有权也是常见边界：谁创建 texture，谁绑定 framebuffer，谁负责释放 GL object，谁在窗口 resize 时重建 attachment，这些都属于 OpenGL 输出工具链的生命周期问题。`Glf` 可以帮助组织这些资源，但不能替调用方决定应用级缓存、线程策略或 UI 生命周期。把这些职责混进 USD layer 或 schema 设计，会让问题定位变得非常困难。</p>
+      <p class="en">Texture, framebuffer, resize, ownership, and release policies remain application and graphics-resource lifecycle concerns.</p>
+      <p class="zh">本页是模块 front page，不是某个 class 的完整 API 细节。由于官方摘录很短，中文层的价值在于建立检索路线：先确认当前问题确实属于 OpenGL output helper，再进入具体 `Glf` class 或源码 include；如果问题属于 USD data adaptation、Hydra render index、renderer backend 或 graphics abstraction，应分别转向 `UsdImaging`、`Hd`、`HdSt` 或 `Hgi`。</p>
+      <p class="en">This module front page establishes the reading path for OpenGL-output helper classes rather than listing every detailed API.</p>
+      <p class="zh">本地页面当前没有提取到同站 class 链接，这并不表示 `Glf` 没有相关实现类，而是说明该 module front page 的 Doxygen 摘录很薄。实际查阅时应把 `Glf` 作为命名空间和模块前缀，在源码、class index 或 File Members 中继续检索 `GlfDrawTarget`、texture、context、diagnostic output 等相关符号。入口页的职责是确认检索方向，而不是替代 class-level 文档。</p>
+      <p class="en">When the module front page has few links, use Glf as the module prefix for class index and source searches.</p>
+      <p class="zh">常见调试路径可以固定为：先确认 OpenGL context 是否存在且与当前线程绑定；再检查 framebuffer/draw target 是否创建成功、attachment 格式和尺寸是否匹配；然后确认 renderer 或工具是否写入目标；接着检查 readback、present 或调试显示；最后再回到 Hydra task、render delegate 或 USD 数据层。这样可以避免把 OpenGL 输出失败误归因给 scene graph 或 composition。</p>
+      <p class="en">A practical debugging path is OpenGL context, framebuffer or draw target setup, attachment compatibility, renderer writes, readback or presentation, and only then higher Hydra or USD layers.</p>
+      <p class="zh">所有英文标识必须原样保留：`Glf`、`OpenGL`、`draw target`、`framebuffer`、`Hgi`、`HdSt`、`Hdx`、`UsdImaging` 都是源码搜索、Doxygen 跳转和图形调试沟通中的稳定词。中文解释负责说明边界和使用场景，不替换这些 API 名称。</p>
+      <p class="en">API identifiers such as Glf, OpenGL, draw target, framebuffer, Hgi, HdSt, Hdx, and UsdImaging should remain unchanged.</p>
+      <p class="zh">反向判断也很有用：若问题是 layer opinion 强弱、variant 选择、reference/payload 合成、schema 属性写入或材质网络语义，`Glf` 不是入口；应回到 `Sdf`、`Pcp`、`Usd`、`UsdGeom` 或 `UsdShade`。只有当症状落在 OpenGL 输出和图形资源层时，本页才是合适起点。</p>
+      <p class="en">Composition, schema authoring, and material-network questions belong to adjacent USD modules rather than Glf.</p>
     </section>
     <section data-cn-refinement="api-file-members-quality-pass-030">
       <h2>中文精修导读 / Chinese Reading Notes</h2>

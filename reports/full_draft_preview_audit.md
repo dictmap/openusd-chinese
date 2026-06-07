@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-07T10:59:17.833Z
+Generated: 2026-06-07T11:10:11.189Z
 
-Transient base URL: `http://127.0.0.1:52950/`
+Transient base URL: `http://127.0.0.1:54858/`
 
 Result:
 
 - Passed: true
-- Draft pages: 340
-- Pages checked: 340
-- Passed pages: 340
+- Draft pages: 339
+- Pages checked: 339
+- Passed pages: 339
 - Failed pages: 0
-- Final HTML links: 340
-- Local assets checked: 340
+- Final HTML links: 339
+- Local assets checked: 339
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -125,7 +125,6 @@ Result:
 | true | full_site/api/functions.html | 200 | true | 0 | 0 |
 | true | full_site/api/geom_model_a_p_i_adapter_8h_source.html | 200 | true | 0 | 0 |
 | true | full_site/api/gf_page_front.html | 200 | true | 0 | 0 |
-| true | full_site/api/glf_page_front.html | 200 | true | 0 | 0 |
 | true | full_site/api/globals_c.html | 200 | true | 0 | 0 |
 | true | full_site/api/globals_defs.html | 200 | true | 0 | 0 |
 | true | full_site/api/globals_e.html | 200 | true | 0 | 0 |
