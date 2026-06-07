@@ -1,16 +1,16 @@
 # OpenUSD Iteration Report
 
-## 第 373 轮摘要
+## 第 374 轮摘要
 
 - 轮次类型：DefectRound
 - 本轮没有晋级页面；这是命名缺陷修复轮。
-- 核心修复：新增英文残留与严格中文可读性审计，更新自动化 skill，修复并强化人类可读 Markdown 编码守卫。
+- 核心修复：校正英文残留审计策略，更新自动化 skill，保持人类可读 Markdown 编码守卫。
 
 ## 真实计数
 
 - total_pages：406
 - good_bilingual：77
-- review_ready_zh：12
+- review_ready_zh：14
 - bilingual_complete：77
 - bilingual_draft：329
 - draft_needs_translation：318
@@ -21,9 +21,9 @@
 
 ## 验证
 
-- validation_report：passed=true，failed_check_count=0，required_check_count=301
+- validation_report：passed=true，failed_check_count=0，required_check_count=302
 - translation_quality：good_bilingual=77
-- english_debt：review_ready_zh=12，review_needs_zh_debt=65
+- english_debt：review_ready_zh=14，review_needs_zh_debt=63
 - promotion manifest：69 entries
 
 ## 本轮改动文件

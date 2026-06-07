@@ -1,6 +1,6 @@
 {
   "generated_at": "2026-06-07",
-  "purpose": "Track current completion blockers after user feedback. Round 373 is a DefectRound that adds English-debt and review_ready_zh auditing without changing the 77 good_bilingual baseline.",
+  "purpose": "Track current completion blockers after user feedback. Round 374 is a DefectRound that corrects English-debt policy: English/Chinese ratio is diagnostic only, while review_ready_zh depends on Chinese main reading path and section coverage.",
   "current_counts": {
     "total_pages": 406,
     "bilingual_complete": 77,
@@ -55,9 +55,9 @@
     {
       "id": "P1-english-residual-debt",
       "severity": "P1",
-      "summary": "The good_bilingual count is useful but still too broad to prove human-review-ready Chinese reading quality.",
-      "evidence": "reports/english_debt_audit.json reports good_bilingual=77 but review_ready_zh=12; 65 complete pages still need stronger Chinese reading layers by the stricter threshold.",
-      "required_action": "Report review_ready_zh alongside good_bilingual and schedule EnglishDebtRound work for complete pages with high English-to-Chinese pressure."
+      "summary": "The good_bilingual count is useful but still too broad to prove human-review-ready Chinese reading quality; English/Chinese ratio alone must not be treated as failure.",
+      "evidence": "reports/english_debt_audit.json now treats English/Chinese ratio as a diagnostic sorter only and computes review_ready_zh=14 from Chinese main-reading-path coverage signals; 10 complete pages are marked with high or very high ratio diagnostic for priority review but not automatic failure.",
+      "required_action": "Report review_ready_zh alongside good_bilingual; schedule EnglishDebtRound for pages missing section coverage or Chinese main reading path, not merely because English remains abundant."
     },
     {
       "id": "P1-release-coverage-lag",
@@ -78,7 +78,7 @@
     "Continue promoting high-value draft pages only after paragraph-level bilingual coverage.",
     "Use reports/bilingual_completion_promotions.json as the auditable promotion source.",
     "Keep discover_openusd_all_pages.mjs anchored to the stable 406 local HTML files, not rewritten local navtree links.",
-    "Use reports/english_debt_audit.json to report review_ready_zh and release/API completion split.",
+    "Use reports/english_debt_audit.json to report review_ready_zh, release/API completion split, section coverage signals, and English ratio diagnostic.",
     "Prefer a release/tutorial/user-guide PromotionRound soon; otherwise use EnglishDebtRound on the highest English-debt complete page.",
     "Continue only after checking the working tree is clean. Suggested release-oriented target: full_site/release/tut_helloworld.html; if not suitable, use full_site/api/sdf_page_front.html."
   ],

@@ -77,8 +77,8 @@ function buildWorkMd({ inventory, quality, validation, englishDebt, problemAudit
 
 - 轮次性质：流程缺陷修复，不晋级新页面。
 - 修复缺陷：P1-english-residual-debt、P1-release-coverage-lag、P1-markdown-record-encoding 的审计覆盖不足。
-- 新增脚本：\`scripts/audit_openusd_english_debt.mjs\`
-- 固定链路：\`reports/english_debt_audit.json\`、\`reports/english_debt_audit.md\` 已纳入 \`audit_openusd_report_index.mjs\` 和 \`validate_openusd_api_repro.ps1\`
+- 维护脚本：\`scripts/audit_openusd_english_debt.mjs\`
+- 固定链路：\`reports/english_debt_audit.json\`、\`reports/english_debt_audit.md\` 纳入 \`audit_openusd_report_index.mjs\` 和 \`validate_openusd_api_repro.ps1\`
 - skill 更新：\`C:\\Users\\robot\\.codex\\skills\\openusd-bilingual-automation\\SKILL.md\` 已加入 dirty tree 阻断、release 配额、EnglishDebtRound 和 \`review_ready_zh\` 汇报要求。
 - 完成数变化：good_bilingual 保持 ${counts.good_bilingual}；review_ready_zh 当前为 ${englishDebt.counts.review_ready_zh}。
 
@@ -113,7 +113,7 @@ function buildIterationMd({ inventory, quality, validation, englishDebt, problem
 
 - 轮次类型：${roundType}
 - 本轮没有晋级页面；这是命名缺陷修复轮。
-- 核心修复：新增英文残留与严格中文可读性审计，更新自动化 skill，修复并强化人类可读 Markdown 编码守卫。
+- 核心修复：校正英文残留审计策略，更新自动化 skill，保持人类可读 Markdown 编码守卫。
 
 ## 真实计数
 

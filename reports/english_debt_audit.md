@@ -1,104 +1,107 @@
 # OpenUSD English Debt Audit
 
-Generated: 2026-06-07T13:44:59.101Z
+Generated: 2026-06-07T13:54:35.720Z
 
 Purpose:
 
-- Report retained-English pressure and a stricter `review_ready_zh` count.
-- This audit does not replace `good_bilingual`; it exposes pages that are complete by the current gate but still need a stronger Chinese reading layer.
+- Report retained-English pressure as a diagnostic signal and a stricter `review_ready_zh` count.
+- This audit does not replace `good_bilingual`; it exposes pages that are complete by the current gate but still need a stronger Chinese main reading path.
+- English/Chinese ratio is not a failure gate. It only helps rank suspicious pages because API names, Doxygen lists, code, links, tokens, and official titles intentionally remain English.
 - API names, class names, method names, tokens, code, links, and official English titles are intentionally preserved.
 
 ## Counts
 
 - Total pages: 406
 - good_bilingual: 77
-- review_ready_zh: 12
-- review_needs_zh_debt: 65
+- review_ready_zh: 14
+- review_needs_zh_debt: 63
 - API complete: 72
-- API review_ready_zh: 11
+- API review_ready_zh: 12
 - Release complete: 5
-- Release review_ready_zh: 1
+- Release review_ready_zh: 2
+- Complete pages with high/very high ratio diagnostic: 10
 - bilingual_draft: 329
 - draft_needs_translation: 318
 - draft_template_only: 11
 
 ## Complete Pages Still Carrying English Debt
 
-| # | Page | Scope | Type | Complete Zh Chars | En/Zh Ratio | Debt |
-| --- | --- | --- | --- | ---: | ---: | --- |
-| 287 | `site/release_index.html` | release | release_or_tutorial | 509 | 17.12 | zh_below_threshold |
-| 286 | `site/glossary.html` | release | release_or_tutorial | 862 | 7.28 | zh_below_threshold |
-| 264 | `site/usd_page_front.html` | api | module_front | 644 | 7 | zh_below_threshold |
-| 42 | `full_site/api/class_usd_geom_mesh.html` | api | class_or_struct | 673 | 5.86 | zh_below_threshold |
-| 50 | `full_site/api/class_usd_prim.html` | api | class_or_struct | 707 | 5.76 | zh_below_threshold |
-| 32 | `full_site/api/class_sdf_path.html` | api | class_or_struct | 698 | 5.46 | zh_below_threshold |
-| 55 | `full_site/api/class_usd_stage_cache.html` | api | class_or_struct | 732 | 5.16 | zh_below_threshold |
-| 38 | `full_site/api/class_tf_token.html` | api | class_or_struct | 783 | 4.76 | zh_below_threshold |
-| 3 | `site/_usd__overview_and_purpose.html` | api | general | 769 | 4.46 | zh_below_threshold |
-| 302 | `site/toolset.html` | release | release_or_tutorial | 2519 | 4.11 | english_dominant |
-| 210 | `site/index.html` | api | general | 515 | 3.86 | zh_below_threshold |
-| 281 | `site/apiDocs.html` | release | release_or_tutorial | 515 | 3.83 | zh_below_threshold |
-| 31 | `full_site/api/class_sdf_layer.html` | api | class_or_struct | 355 | 3.5 | zh_below_threshold |
-| 33 | `full_site/api/class_sdf_prim_spec.html` | api | class_or_struct | 516 | 3.23 | zh_below_threshold |
-| 23 | `full_site/api/class_hd_st_render_pass_state.html` | api | class_or_struct | 815 | 3.16 | zh_below_threshold |
-| 35 | `full_site/api/class_sdr_shader_property.html` | api | class_or_struct | 845 | 3.13 | zh_below_threshold |
-| 45 | `full_site/api/class_usd_imaging_delegate.html` | api | class_or_struct | 796 | 3.02 | zh_below_threshold |
-| 270 | `full_site/api/usd_shade_page_front.html` | api | module_front | 1124 | 2.98 | zh_below_threshold |
-| 21 | `full_site/api/class_hd_scene_delegate.html` | api | class_or_struct | 780 | 2.93 | zh_below_threshold |
-| 22 | `full_site/api/class_hd_st_dispatch_buffer.html` | api | class_or_struct | 812 | 2.93 | zh_below_threshold |
+| # | Page | Scope | Type | Complete Zh Chars | Coverage Signals | En/Zh Ratio | Ratio Diagnostic | Debt |
+| --- | --- | --- | --- | ---: | ---: | ---: | --- | --- |
+| 18 | `full_site/api/class_hd_data_source_locator.html` | api | class_or_struct | 617 | 5/3 | 2.52 | medium | zh_main_path_too_thin |
+| 3 | `site/_usd__overview_and_purpose.html` | api | general | 769 | 5/3 | 4.46 | high | zh_main_path_too_thin |
+| 286 | `site/glossary.html` | release | release_or_tutorial | 862 | 5/4 | 7.28 | very_high | zh_main_path_too_thin |
+| 31 | `full_site/api/class_sdf_layer.html` | api | class_or_struct | 355 | 6/3 | 3.5 | medium | zh_main_path_too_thin |
+| 39 | `full_site/api/class_trace_event_data.html` | api | class_or_struct | 473 | 6/3 | 2.43 | medium | zh_main_path_too_thin |
+| 287 | `site/release_index.html` | release | release_or_tutorial | 509 | 6/4 | 17.12 | very_high | zh_main_path_too_thin |
+| 210 | `site/index.html` | api | general | 515 | 6/3 | 3.86 | medium | zh_main_path_too_thin |
+| 33 | `full_site/api/class_sdf_prim_spec.html` | api | class_or_struct | 516 | 6/3 | 3.23 | medium | zh_main_path_too_thin |
+| 10 | `full_site/api/class_esf_property_interface.html` | api | class_or_struct | 601 | 6/3 | 2.66 | medium | zh_main_path_too_thin |
+| 34 | `full_site/api/class_sdf_usdz_file_format.html` | api | class_or_struct | 618 | 6/3 | 2.02 | medium | zh_main_path_too_thin |
+| 264 | `site/usd_page_front.html` | api | module_front | 644 | 6/4 | 7 | very_high | zh_main_path_too_thin |
+| 61 | `full_site/api/class_vdf_read_write_accessor.html` | api | class_or_struct | 661 | 6/3 | 1.98 | normal | zh_main_path_too_thin |
+| 42 | `full_site/api/class_usd_geom_mesh.html` | api | class_or_struct | 673 | 6/3 | 5.86 | high | zh_main_path_too_thin |
+| 9 | `full_site/api/class_ef___lofted_output_set.html` | api | class_or_struct | 681 | 6/3 | 2.24 | medium | zh_main_path_too_thin |
+| 32 | `full_site/api/class_sdf_path.html` | api | class_or_struct | 698 | 6/3 | 5.46 | high | zh_main_path_too_thin |
+| 50 | `full_site/api/class_usd_prim.html` | api | class_or_struct | 707 | 6/3 | 5.76 | high | zh_main_path_too_thin |
+| 48 | `full_site/api/class_usd_lux_shaping_a_p_i.html` | api | class_or_struct | 721 | 6/3 | 2.18 | medium | zh_main_path_too_thin |
+| 59 | `full_site/api/class_vdf_grapher_options.html` | api | class_or_struct | 726 | 6/3 | 2.43 | medium | zh_main_path_too_thin |
+| 47 | `full_site/api/class_usd_lux_disk_light.html` | api | class_or_struct | 731 | 6/3 | 1.98 | normal | zh_main_path_too_thin |
+| 55 | `full_site/api/class_usd_stage_cache.html` | api | class_or_struct | 732 | 6/3 | 5.16 | high | zh_main_path_too_thin |
 
 ## Draft Pages Most Dominated By English
 
-| # | Page | Scope | Type | Complete Zh Chars | En/Zh Ratio | Debt |
-| --- | --- | --- | --- | ---: | ---: | --- |
-| 240 | `full_site/api/parallel_speculation_executor_engine_8h_source.html` | api | general | 62 | 15.03 | draft |
-| 243 | `full_site/api/pxr_display_filter_adapter_8h_source.html` | api | general | 62 | 14.63 | draft |
-| 164 | `full_site/api/geom_model_a_p_i_adapter_8h_source.html` | api | general | 62 | 13.18 | draft |
-| 207 | `full_site/api/hgi_2shader_program_8h_source.html` | api | general | 62 | 12.06 | draft |
-| 244 | `full_site/api/riley_param_schema_8h_source.html` | api | general | 62 | 10.47 | draft |
-| 254 | `full_site/api/system_diagnostics_8h_source.html` | api | general | 62 | 9.87 | draft |
-| 278 | `full_site/api/var_8h_source.html` | api | general | 62 | 9.74 | draft |
-| 1 | `full_site/api/_c_l_i11_8h_source.html` | api | general | 62 | 9.63 | draft |
-| 8 | `full_site/api/binding_map_8h_source.html` | api | general | 62 | 6.97 | draft |
-| 251 | `full_site/api/struct_usd_lux_tokens_type.html` | api | class_or_struct | 381 | 4.84 | draft |
-| 252 | `full_site/api/struct_usd_physics_tokens_type.html` | api | class_or_struct | 411 | 4.68 | draft |
-| 294 | `full_site/release/press_opensource_announce.html` | release | release_or_tutorial | 585 | 4.55 | draft |
-| 253 | `full_site/api/struct_usd_skel_tokens_type.html` | api | class_or_struct | 397 | 4.37 | draft |
-| 298 | `full_site/release/search.html` | release | release_or_tutorial | 64 | 4.3 | draft |
-| 69 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | api | general | 66 | 4.12 | draft |
-| 333 | `full_site/release/user_guides/schemas/usdLux/LightAPI.html` | release | release_or_tutorial | 567 | 3.89 | draft |
-| 257 | `full_site/api/usd_2usd_2object_8h.html` | api | general | 332 | 3.82 | draft |
-| 263 | `full_site/api/usd_mtlx_page_front.html` | api | module_front | 470 | 3.74 | draft |
-| 66 | `full_site/api/classpxr__tsl_1_1robin__map.html` | api | general | 353 | 3.71 | draft |
-| 260 | `full_site/api/usd_hydra_page_front.html` | api | module_front | 475 | 3.67 | draft |
+| # | Page | Scope | Type | Complete Zh Chars | Coverage Signals | En/Zh Ratio | Ratio Diagnostic | Debt |
+| --- | --- | --- | --- | ---: | ---: | ---: | --- | --- |
+| 240 | `full_site/api/parallel_speculation_executor_engine_8h_source.html` | api | general | 62 | 1/3 | 15.03 | very_high | draft |
+| 243 | `full_site/api/pxr_display_filter_adapter_8h_source.html` | api | general | 62 | 1/3 | 14.63 | very_high | draft |
+| 164 | `full_site/api/geom_model_a_p_i_adapter_8h_source.html` | api | general | 62 | 1/3 | 13.18 | very_high | draft |
+| 207 | `full_site/api/hgi_2shader_program_8h_source.html` | api | general | 62 | 1/3 | 12.06 | very_high | draft |
+| 244 | `full_site/api/riley_param_schema_8h_source.html` | api | general | 62 | 1/3 | 10.47 | very_high | draft |
+| 254 | `full_site/api/system_diagnostics_8h_source.html` | api | general | 62 | 2/3 | 9.87 | very_high | draft |
+| 278 | `full_site/api/var_8h_source.html` | api | general | 62 | 1/3 | 9.74 | very_high | draft |
+| 1 | `full_site/api/_c_l_i11_8h_source.html` | api | general | 62 | 1/3 | 9.63 | very_high | draft |
+| 8 | `full_site/api/binding_map_8h_source.html` | api | general | 62 | 1/3 | 6.97 | very_high | draft |
+| 251 | `full_site/api/struct_usd_lux_tokens_type.html` | api | class_or_struct | 381 | 5/3 | 4.84 | high | draft |
+| 252 | `full_site/api/struct_usd_physics_tokens_type.html` | api | class_or_struct | 411 | 5/3 | 4.68 | high | draft |
+| 294 | `full_site/release/press_opensource_announce.html` | release | release_or_tutorial | 585 | 7/4 | 4.55 | high | draft |
+| 253 | `full_site/api/struct_usd_skel_tokens_type.html` | api | class_or_struct | 397 | 6/3 | 4.37 | high | draft |
+| 298 | `full_site/release/search.html` | release | release_or_tutorial | 64 | 1/4 | 4.3 | high | draft |
+| 69 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | api | general | 66 | 1/3 | 4.12 | high | draft |
+| 333 | `full_site/release/user_guides/schemas/usdLux/LightAPI.html` | release | release_or_tutorial | 567 | 6/4 | 3.89 | medium | draft |
+| 257 | `full_site/api/usd_2usd_2object_8h.html` | api | general | 332 | 6/3 | 3.82 | medium | draft |
+| 263 | `full_site/api/usd_mtlx_page_front.html` | api | module_front | 470 | 6/4 | 3.74 | medium | draft |
+| 66 | `full_site/api/classpxr__tsl_1_1robin__map.html` | api | general | 353 | 4/3 | 3.71 | medium | draft |
+| 260 | `full_site/api/usd_hydra_page_front.html` | api | module_front | 475 | 6/4 | 3.67 | medium | draft |
 
 ## Release Pages To Pull Forward
 
-| # | Page | Scope | Type | Complete Zh Chars | En/Zh Ratio | Debt |
-| --- | --- | --- | --- | ---: | ---: | --- |
-| 298 | `full_site/release/search.html` | release | release_or_tutorial | 64 | 4.3 | draft |
-| 294 | `full_site/release/press_opensource_announce.html` | release | release_or_tutorial | 585 | 4.55 | draft |
-| 333 | `full_site/release/user_guides/schemas/usdLux/LightAPI.html` | release | release_or_tutorial | 567 | 3.89 | draft |
-| 320 | `full_site/release/user_guides/collections_and_patterns.html` | release | release_or_tutorial | 549 | 3.62 | draft |
-| 334 | `full_site/release/user_guides/schemas/usdLux/LightFilter.html` | release | release_or_tutorial | 589 | 3.6 | draft |
-| 353 | `full_site/release/user_guides/schemas/usdRender/overview.html` | release | release_or_tutorial | 577 | 3.48 | draft |
-| 288 | `full_site/release/intro_to_openexec.html` | release | release_or_tutorial | 608 | 3.36 | draft |
-| 299 | `full_site/release/spec_usdpreviewsurface.html` | release | release_or_tutorial | 693 | 3.23 | draft |
-| 322 | `full_site/release/user_guides/namespace_editing.html` | release | release_or_tutorial | 541 | 3.21 | draft |
-| 295 | `full_site/release/press_opensource_release.html` | release | release_or_tutorial | 625 | 3.07 | draft |
-| 399 | `full_site/release/wp_rigid_body_physics.html` | release | release_or_tutorial | 783 | 3.06 | draft |
-| 402 | `full_site/release/wp_usdaudio.html` | release | release_or_tutorial | 722 | 2.95 | draft |
-| 365 | `full_site/release/user_guides/schemas/usdUI/overview.html` | release | release_or_tutorial | 591 | 2.83 | draft |
-| 307 | `full_site/release/tut_helloworld_redux.html` | release | release_or_tutorial | 566 | 2.72 | draft |
-| 283 | `full_site/release/contributors.html` | release | release_or_tutorial | 678 | 2.69 | draft |
-| 387 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html` | release | release_or_tutorial | 586 | 2.64 | draft |
-| 311 | `full_site/release/tut_referencing_layers.html` | release | release_or_tutorial | 541 | 2.63 | draft |
-| 306 | `full_site/release/tut_generating_new_schema.html` | release | release_or_tutorial | 585 | 2.6 | draft |
-| 384 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html` | release | release_or_tutorial | 704 | 2.6 | draft |
-| 323 | `full_site/release/user_guides/primvars.html` | release | release_or_tutorial | 580 | 2.59 | draft |
+| # | Page | Scope | Type | Complete Zh Chars | Coverage Signals | En/Zh Ratio | Ratio Diagnostic | Debt |
+| --- | --- | --- | --- | ---: | ---: | ---: | --- | --- |
+| 298 | `full_site/release/search.html` | release | release_or_tutorial | 64 | 1/4 | 4.3 | high | draft |
+| 294 | `full_site/release/press_opensource_announce.html` | release | release_or_tutorial | 585 | 7/4 | 4.55 | high | draft |
+| 333 | `full_site/release/user_guides/schemas/usdLux/LightAPI.html` | release | release_or_tutorial | 567 | 6/4 | 3.89 | medium | draft |
+| 320 | `full_site/release/user_guides/collections_and_patterns.html` | release | release_or_tutorial | 549 | 7/4 | 3.62 | medium | draft |
+| 334 | `full_site/release/user_guides/schemas/usdLux/LightFilter.html` | release | release_or_tutorial | 589 | 6/4 | 3.6 | medium | draft |
+| 353 | `full_site/release/user_guides/schemas/usdRender/overview.html` | release | release_or_tutorial | 577 | 7/4 | 3.48 | medium | draft |
+| 288 | `full_site/release/intro_to_openexec.html` | release | release_or_tutorial | 608 | 7/4 | 3.36 | medium | draft |
+| 299 | `full_site/release/spec_usdpreviewsurface.html` | release | release_or_tutorial | 693 | 7/4 | 3.23 | medium | draft |
+| 322 | `full_site/release/user_guides/namespace_editing.html` | release | release_or_tutorial | 541 | 7/4 | 3.21 | medium | draft |
+| 295 | `full_site/release/press_opensource_release.html` | release | release_or_tutorial | 625 | 7/4 | 3.07 | medium | draft |
+| 399 | `full_site/release/wp_rigid_body_physics.html` | release | release_or_tutorial | 783 | 7/4 | 3.06 | medium | draft |
+| 402 | `full_site/release/wp_usdaudio.html` | release | release_or_tutorial | 722 | 7/4 | 2.95 | medium | draft |
+| 365 | `full_site/release/user_guides/schemas/usdUI/overview.html` | release | release_or_tutorial | 591 | 7/4 | 2.83 | medium | draft |
+| 307 | `full_site/release/tut_helloworld_redux.html` | release | release_or_tutorial | 566 | 7/4 | 2.72 | medium | draft |
+| 283 | `full_site/release/contributors.html` | release | release_or_tutorial | 678 | 6/4 | 2.69 | medium | draft |
+| 387 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html` | release | release_or_tutorial | 586 | 7/4 | 2.64 | medium | draft |
+| 311 | `full_site/release/tut_referencing_layers.html` | release | release_or_tutorial | 541 | 7/4 | 2.63 | medium | draft |
+| 306 | `full_site/release/tut_generating_new_schema.html` | release | release_or_tutorial | 585 | 6/4 | 2.6 | medium | draft |
+| 384 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html` | release | release_or_tutorial | 704 | 7/4 | 2.6 | medium | draft |
+| 323 | `full_site/release/user_guides/primvars.html` | release | release_or_tutorial | 580 | 7/4 | 2.59 | medium | draft |
 
 Policy:
 
 - Future status reports should include both `good_bilingual` and `review_ready_zh`.
+- English/Chinese ratio is a diagnostic sorter only, not a completion failure gate.
 - A module front page should not be considered review-ready just because it passes the current 500-character quality floor.
 - After several API-focused PromotionRounds, the automation should select a release/tutorial/user guide page unless a named P0/P1 defect blocks the run.

@@ -166,8 +166,8 @@ const auditChain = [
     script: "scripts/audit_openusd_english_debt.mjs",
     json: "reports/english_debt_audit.json",
     md: "reports/english_debt_audit.md",
-    purpose: "Reports retained-English pressure, stricter review_ready_zh counts, release/API coverage split, and English-dominant queues without replacing the good_bilingual gate.",
-    required_count_keys: ["total_pages", "good_bilingual", "review_ready_zh", "api_complete", "release_complete"],
+    purpose: "Reports retained-English pressure as a diagnostic sorter, stricter review_ready_zh counts, release/API coverage split, and Chinese-main-reading-path queues without replacing the good_bilingual gate.",
+    required_count_keys: ["total_pages", "good_bilingual", "review_ready_zh", "api_complete", "release_complete", "ratio_diagnostic_high_or_very_high"],
   },
 ];
 
