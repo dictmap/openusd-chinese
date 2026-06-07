@@ -3,51 +3,51 @@
 ## 当前真实状态
 
 - 全量页面：406
-- 完整双语 / good_bilingual：56
-- 未完整翻译草稿 / bilingual_draft：350
-- draft_needs_translation：339
+- 完整双语 / good_bilingual：57
+- 未完整翻译草稿 / bilingual_draft：349
+- draft_needs_translation：338
 - draft_template_only：11
 - pending_full_scope：0
-- promotion manifest：48 页
+- promotion manifest：49 页
 - 总验证：passed=true，failed_check_count=0
 
-说明：剩余 `bilingual_draft` 是可检查草稿，不是完整翻译。第 351 轮继续按单页 PromotionRound 推进，并且让 `good_bilingual` 真实增加。
+说明：剩余 `bilingual_draft` 是可检查草稿，不是完整翻译。第 352 轮继续按单页 PromotionRound 推进，并且让 `good_bilingual` 真实增加。
 
-## 第 351 轮：PromotionRound
+## 第 352 轮：PromotionRound
 
-- 目标页面：`full_site/api/class_sdf_children_view.html`
-- 官方页面：`https://openusd.org/release/api/class_sdf_children_view.html`
-- 本轮动作：将 `SdfChildrenView< _ChildPolicy, _Predicate, _Adapter >` 从 `bilingual_draft` 晋级为 `bilingual_complete`，补入逐段双语理解。
-- 完成数变化：good_bilingual 55 -> 56
-- 草稿数变化：bilingual_draft 351 -> 350
+- 目标页面：`full_site/api/class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html`
+- 官方页面：`https://openusd.org/release/api/class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html`
+- 本轮动作：将 `UsdVolParticleFieldSphericalHarmonicsAttributeAPI` 从 `bilingual_draft` 晋级为 `bilingual_complete`，补入逐段双语理解。
+- 完成数变化：good_bilingual 56 -> 57
+- 草稿数变化：bilingual_draft 350 -> 349
 
 ## 本轮覆盖重点
 
-- `SdfChildrenView< _ChildPolicy, _Predicate, _Adapter >` 作为 Sdf 对象 children 的非拥有型 STL-style view。
-- 与 `SdfLayer`、`SdfPrimSpec`、`SdfPropertySpec`、`SdfPath`、`TfToken` 和 composed `UsdStage` traversal 的边界。
-- `_ChildPolicy`、`_Predicate`、`_Adapter` 的模板职责。
-- `_Traits`、`ChildPolicy`、`KeyPolicy`、`Predicate`、`Adapter`、`ChildrenType`、`key_type`、`value_type`、`size_type`、`difference_type`、`const_iterator`、`const_reverse_iterator` 的 typedef 语义。
-- 构造/析构的 view 生命周期与底层 Sdf children 所有权边界。
-- `begin()`、`end()`、`rbegin()`、`rend()`、`front()`、`back()`、`size()`、`empty()` 的读取行为和 iterator 生命周期注意事项。
-- 区分 authored Sdf child specs、view filtering、adapter conversion、owner mutation、list-edit composition 和 composed stage traversal 的调试路径。
+- `UsdVolParticleFieldSphericalHarmonicsAttributeAPI` 作为描述 per-particle radiance 的 applied API schema。
+- 与 `ParticleField` 数据、`UsdVolParticleFieldRadianceBaseAPI`、`UsdAPISchemaBase`、`UsdPrim`、`UsdAttribute`、`UsdSchemaRegistry` 和 renderer support 的边界。
+- `Apply()`、`CanApply()`、`Get()`、`GetSchemaAttributeNames()` 的 applied schema 访问语义。
+- `CreateRadianceSphericalHarmonicsDegreeAttr()` / `GetRadianceSphericalHarmonicsDegreeAttr()` 管理 field-wide SH degree。
+- `CreateRadianceSphericalHarmonicsCoefficientsAttr()` 与 `CreateRadianceSphericalHarmonicsCoefficientshAttr()` 的 float/half 系数版本、优先级和 footprint 取舍。
+- 按 particle count 与 SH degree 推导 coefficient array length 的布局约束。
+- 区分 API application、schema attribute names、authored values、array layout、precision choice、composed values 和下游 particle-field / renderer consumption 的调试路径。
 
 ## 验证结果
 
-- `discover_openusd_all_pages.mjs`：complete=56，draft=350，pending=0
-- `audit_openusd_translation_quality.mjs`：good_bilingual=56，draft_needs_translation=339，draft_template_only=11
-- `build_final_html_entry.mjs`：最终入口已更新为 56 complete / 350 incomplete drafts
+- `discover_openusd_all_pages.mjs`：complete=57，draft=349，pending=0
+- `audit_openusd_translation_quality.mjs`：good_bilingual=57，draft_needs_translation=338，draft_template_only=11
+- `build_final_html_entry.mjs`：最终入口已更新为 57 complete / 349 incomplete drafts
 - `route_openusd_internal_links_local.mjs`：passed
-- `audit_openusd_full_draft_preview.mjs`：350/350 draft pages 可预览
+- `audit_openusd_full_draft_preview.mjs`：349/349 draft pages 可预览
 - `audit_openusd_markdown_encoding.mjs`：passed，连续问号 0，BOM 0
 - `validate_openusd_api_repro.ps1`：295 checks，0 failed
 
 ## 剩余缺口
 
-- 350 页仍是 `bilingual_draft`，可检查但不是完整翻译。
-- 339 页仍是 `draft_needs_translation`。
+- 349 页仍是 `bilingual_draft`，可检查但不是完整翻译。
+- 338 页仍是 `draft_needs_translation`。
 - 11 页仍是 `draft_template_only`，主要是源码、搜索或目录类页面。
 - P1 link placeholders 仍存在，属于 406 页清单外官方目标的本地占位出口。
 
 ## 下一步
 
-继续 PromotionRound，每轮只晋级 1 个页面。建议下一页：`full_site/api/class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html`。
+继续 PromotionRound，每轮只晋级 1 个页面。建议下一页：`full_site/api/class_usd_schema_registry.html`。

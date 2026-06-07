@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-07T08:39:53.617Z
+Generated: 2026-06-07T08:52:56.199Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 350
-- bilingual_complete: 56
+- bilingual_draft: 349
+- bilingual_complete: 57
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 339
-- good_bilingual: 56
+- draft_needs_translation: 338
+- good_bilingual: 57
 
 ## Current Focus Batch
 
@@ -120,7 +120,7 @@ Generated: 2026-06-07T08:39:53.617Z
 | 54 | good_bilingual | bilingual_complete | 1417 | 62/49 | 0 | 0 | `full_site/api/class_usd_skel_imaging_data_source_skeleton_prim.html` |
 | 55 | good_bilingual | bilingual_complete | 928 | 47/49 | 0 | 0 | `full_site/api/class_usd_stage_cache.html` |
 | 56 | good_bilingual | bilingual_complete | 1091 | 48/50 | 0 | 0 | `full_site/api/class_usd_validation_error.html` |
-| 57 | draft_needs_translation | bilingual_draft | 563 | 52/44 | 0 | 0 | `full_site/api/class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html` |
+| 57 | good_bilingual | bilingual_complete | 1436 | 62/64 | 0 | 0 | `full_site/api/class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html` |
 | 58 | good_bilingual | bilingual_complete | 1573 | 78/65 | 0 | 0 | `full_site/api/class_vdf_context.html` |
 | 59 | good_bilingual | bilingual_complete | 824 | 47/49 | 0 | 0 | `full_site/api/class_vdf_grapher_options.html` |
 | 60 | good_bilingual | bilingual_complete | 1574 | 81/68 | 0 | 0 | `full_site/api/class_vdf_node.html` |

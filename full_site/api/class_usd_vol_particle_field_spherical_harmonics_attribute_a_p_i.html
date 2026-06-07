@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：UsdVolParticleFieldSphericalHarmonicsAttributeAPI Class / UsdVolParticleFieldSphericalHarmonicsAttributeAPI Class</title>
+  <title>完整双语参考：UsdVolParticleFieldSphericalHarmonicsAttributeAPI Class / UsdVolParticleFieldSphericalHarmonicsAttributeAPI Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,55 +24,70 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：UsdVolParticleFieldSphericalHarmonicsAttributeAPI Class / UsdVolParticleFieldSphericalHarmonicsAttributeAPI Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：UsdVolParticleFieldSphericalHarmonicsAttributeAPI Class / UsdVolParticleFieldSphericalHarmonicsAttributeAPI Class</h1>
     <div class="meta">https://openusd.org/release/api/class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页整理：中文优先解释 `UsdVolParticleFieldSphericalHarmonicsAttributeAPI` 在 UsdVol 粒子场辐射数据中的职责、applied API schema 边界、spherical harmonics degree 与 coefficients 的数据布局、float/half 精度选择和常见排障含义，同时保留英文 API 名称、属性名、数学符号、方法名、类型名、链接和必要英文原文，便于同官方 Doxygen 页面核对。</p>
+      <p class="en">This page is promoted as complete bilingual reference coverage for UsdVolParticleFieldSphericalHarmonicsAttributeAPI while retaining original API identifiers, attribute names, mathematical terms, method names, type names, links, and necessary English source excerpts for comparison with the official Doxygen page.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-042">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 UsdVolParticleFieldSphericalHarmonicsAttributeAPI Class Reference 补充中文优先的类职责、读取重点、关键属性/方法分组和术语对照；英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, reading guidance, key attribute/method groups, and terminology for UsdVolParticleFieldSphericalHarmonicsAttributeAPI Class Reference while retaining English page names, class names, method names, attribute names, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+    <section data-cn-complete="usd-vol-particle-field-spherical-harmonics-attribute-api-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">官方说明把 `UsdVolParticleFieldSphericalHarmonicsAttributeAPI` 定义为 “A ParticleField related applied schema that provides spherical harmonics attributes to define the radiance of the particles”。重点是 applied schema：它不是新的 prim 类型，也不是体渲染器，而是可应用到合适 `UsdPrim` 上的一组属性约定，用 spherical harmonics coefficients 描述粒子场中每个粒子的 radiance。`ParticleField` 的位置、数量和其他粒子属性仍来自相邻的粒子场数据；本 API 只补充 radiance 的球谐表达。</p>
+      <p class="en">The official text defines UsdVolParticleFieldSphericalHarmonicsAttributeAPI as a ParticleField-related applied schema for spherical-harmonics radiance attributes. In this bilingual edition, that means a schema attribute contract, not a renderer or a new prim type.</p>
+      <p class="zh">`Apply()` 与 `CanApply()` 体现 applied API schema 的使用边界。`CanApply()` 用于判断目标 prim 是否适合承载这些 particle field radiance 属性；`Apply()` 则在 prim 上写入 API schema 应用意见。调试时不要只检查属性是否存在，还要确认 API schema 是否已经应用、目标 prim 是否是预期的 particle field 语义对象、layer composition 是否覆盖了应用意见，以及 `UsdSchemaRegistry` 是否能识别这些 schema attribute names。</p>
+      <p class="en">Apply() and CanApply() define the applied-schema boundary. Attribute presence, API application, target prim semantics, composition strength, and schema registry visibility all matter.</p>
+      <p class="zh">`radianceSphericalHarmonicsDegree` 是全场常量：官方摘录明确说 spherical harmonics degree is constant across all the particles in the `ParticleField`。这意味着 degree 不是每粒子各自变化的数组，而是解释 coefficients 数组的共同参数。degree 会决定每个粒子需要多少 spherical harmonics coefficient 元素；如果 degree 和 coefficients 数组长度不匹配，消费者无法可靠地把一维数组切分回每个粒子的 radiance 表达。</p>
+      <p class="en">radianceSphericalHarmonicsDegree is constant across the ParticleField. It is a shared interpretation parameter for the coefficients array, not a per-particle varying array.</p>
+      <p class="zh">`CreateRadianceSphericalHarmonicsDegreeAttr()` 与 `GetRadianceSphericalHarmonicsDegreeAttr()` 分别负责 authoring 和 query 这个 degree 属性。按照 USD 的常见 Create-vs-Get 约定，Create 方法可创建或返回属性并可设置 default value，Get 方法只返回已有或 schema 声明的 `UsdAttribute` wrapper；它们都不直接验证所有粒子数据长度，也不替代渲染端对球谐阶数的解释。</p>
+      <p class="en">CreateRadianceSphericalHarmonicsDegreeAttr() and GetRadianceSphericalHarmonicsDegreeAttr() follow the usual USD Create-vs-Get property idiom and do not themselves validate all downstream particle data.</p>
+      <p class="zh">系数属性有 float 与 half 两套入口：`CreateRadianceSphericalHarmonicsCoefficientsAttr()` / `GetRadianceSphericalHarmonicsCoefficientsAttr()` 面向 float coefficients，`CreateRadianceSphericalHarmonicsCoefficientshAttr()` / `GetRadianceSphericalHarmonicsCoefficientshAttr()` 面向 half coefficients。官方说明建议 data consumers should prefer float version if available，因此 half 更像 footprint affordance：它可节省存储或带宽，但可能损失 radiance 精度。生产数据中若两套属性同时存在，读取端应有明确优先级，而不是把两套数组混合解释。</p>
+      <p class="en">Float and half coefficient attributes both exist. Consumers should prefer the float version if available; the half version is a data-footprint affordance.</p>
+      <p class="zh">数组长度约束是本页最容易出错的地方。官方说明要求 coefficient attribute 的长度匹配 position data length 乘以 per-particle element size derived from the SH degree。换句话说，若粒子数为 N，degree 决定每粒子系数个数为 M，则 coefficients 数组应按 N * M 的布局组织。排查黑粒子、颜色错位或 radiance 泄漏时，应同时检查 position 数组长度、degree、float/half coefficients 长度、每粒子切片顺序和消费者采用的 SH basis 约定。</p>
+      <p class="en">The coefficient attribute length must match the position data length times the per-particle element size derived from the SH degree. This is a layout contract between authored data and consumers.</p>
+      <p class="zh">本 API 继承并关联 `UsdVolParticleFieldRadianceBaseAPI`、`UsdAPISchemaBase`、`UsdSchemaBase`、`UsdPrim`、`UsdAttribute`、`SdfValueTypeName`、`TfToken`、`VtArray` 等类型。阅读时要区分 schema wrapper、实际 authored attribute、数组值容器和消费端解释：`UsdAttribute` 只是属性句柄，`VtArray` 只是值容器，`SdfValueTypeName` 描述类型名，真正的 radiance 语义来自本 applied schema 对属性名、degree 和 coefficients layout 的约定。</p>
+      <p class="en">Related types such as UsdAttribute, VtArray, SdfValueTypeName, TfToken, and UsdVolParticleFieldRadianceBaseAPI separate handles, value storage, type names, tokens, and schema semantics.</p>
+      <p class="zh">调试工作流应分层进行：先确认目标 prim 是否存在并被 `Apply()` 了本 API；再检查 `GetSchemaAttributeNames()` 是否列出预期属性；然后核对 degree、float coefficients、half coefficients、position data 和粒子数量；最后再看渲染器或体积/粒子消费端是否支持 spherical harmonics radiance。这样可以避免把 schema authoring 问题、数组布局问题、精度选择问题和 renderer support 问题混成同一个失败。</p>
+      <p class="en">Debug in layers: API application, schema attribute names, degree and coefficient lengths, particle count, float-vs-half precedence, and finally renderer or particle-field consumer support.</p>
+      <p class="zh">球谐数据还有一个常见边界：本页不规定某个 renderer 对 SH basis 的具体求值细节，也不规定最终光照采样策略。它只把 radiance 以 schema 属性形式交付给下游。若两个工具对同一组 coefficients 显示不同结果，除了检查数组长度，也要检查它们是否采用相同的 SH normalization、coefficient ordering、坐标约定和 float/half 选择策略。OpenUSD 页面中的属性名和类型约定是数据交换契约，视觉一致性还依赖消费端实现。</p>
+      <p class="en">The page defines the data-exchange contract, not every renderer's SH evaluation, normalization, coefficient ordering, or sampling strategy.</p>
+      <p class="zh">写入数据时建议把 degree、position data 和 coefficient arrays 当作一个整体事务处理。先确定粒子数，再确定 degree 和每粒子元素数，最后写入 float 或 half coefficients。若后续动画或缓存更新只改了 position 数组，却没有同步更新 coefficient 数组长度，`UsdAttribute` 本身可能仍然有效，但语义上已经不匹配。此时错误通常会在消费者端表现为错位、越界读取防护、忽略 radiance 属性或退回默认显示。</p>
+      <p class="en">Author degree, position data, and coefficient arrays as one coherent layout decision; valid attributes can still be semantically mismatched if lengths drift apart.</p>
+      <p class="zh">在 composition 场景中，还要注意 stronger layer 可能只覆盖 degree 或只覆盖 coefficients。由于 degree 会改变每粒子的元素数，单独覆盖其中一侧很容易造成跨 layer 的布局不一致。排查时应查看最终 composed value，也要回看每个 contributing layer 的 authored opinion，尤其是 float 与 half 两套属性分布在不同 layer 时，消费者优先级可能让问题看起来像“某一层没有生效”。</p>
+      <p class="en">Composition can override degree and coefficient attributes independently, so inspect composed values and contributing layer opinions when layouts do not match.</p>
+      <h3>API 分组阅读 / API Group Reading</h3>
       <ul>
-        <li><span class="zh">`UsdVolParticleFieldSphericalHarmonicsAttributeAPI` 是与 `ParticleField` 相关的 applied schema，用球谐系数属性描述粒子的 radiance。</span></li>
-        <li><span class="zh">英文摘录说明 spherical harmonics degree 在整个 `ParticleField` 中保持常量；系数属性同时提供 float 与 half 版本，数据消费者应在可用时优先使用 float 版本。</span></li>
-        <li><span class="zh">`CreateRadianceSphericalHarmonicsDegreeAttr()` 与 `GetRadianceSphericalHarmonicsDegreeAttr()` 管理 SH degree；degree 会决定每个粒子的系数元素数。</span></li>
-        <li><span class="zh">`CreateRadianceSphericalHarmonicsCoefficientsAttr()`、`CreateRadianceSphericalHarmonicsCoefficientshAttr()` 及对应 getter 管理 float/half 系数数组，长度应与 position 数据长度乘以每粒子元素数匹配。</span></li>
-        <li><span class="zh">`Apply()`、`CanApply()` 和 `schemaType` 说明这是可应用到 prim 上的 API schema；阅读时应把属性名、数学符号和数组长度约束与 volume/particle 数据布局一起核对。</span></li>
+        <li><span class="zh">`Apply()` / `CanApply()`：确认 applied API schema 是否可应用到目标 `UsdPrim`，以及是否已经写入应用意见。</span><span class="en">Apply() and CanApply() define API-schema application on a target UsdPrim.</span></li>
+        <li><span class="zh">`Get()`：按 `UsdStage` / `SdfPath` 取得 schema wrapper，用于从已有 prim 上读取本 API 视图。</span><span class="en">Get() retrieves the schema wrapper for an existing prim path.</span></li>
+        <li><span class="zh">`CreateRadianceSphericalHarmonicsDegreeAttr()` / `GetRadianceSphericalHarmonicsDegreeAttr()`：管理全场常量 SH degree。</span><span class="en">These methods manage the field-wide SH degree attribute.</span></li>
+        <li><span class="zh">`CreateRadianceSphericalHarmonicsCoefficientsAttr()` / `GetRadianceSphericalHarmonicsCoefficientsAttr()`：管理 float radiance coefficients，通常为优先读取版本。</span><span class="en">These methods manage float radiance coefficients, generally the preferred version.</span></li>
+        <li><span class="zh">`CreateRadianceSphericalHarmonicsCoefficientshAttr()` / `GetRadianceSphericalHarmonicsCoefficientshAttr()`：管理 half radiance coefficients，用于 footprint 取舍。</span><span class="en">These methods manage half radiance coefficients for footprint tradeoffs.</span></li>
+        <li><span class="zh">`GetSchemaAttributeNames()` 与 `UsdSchemaRegistry`：用于确认本 applied schema 声明了哪些属性名。</span><span class="en">GetSchemaAttributeNames() and UsdSchemaRegistry expose the declared schema attribute names.</span></li>
       </ul>
-      <h3>术语对照 / Terms</h3>
+      <h3>边界与常见误读 / Boundaries and Common Misreadings</h3>
       <ul>
-        <li><span class="zh">可应用 schema：</span><span class="en">applied schema</span></li>
-        <li><span class="zh">ParticleField：</span><span class="en">ParticleField</span></li>
-        <li><span class="zh">球谐：</span><span class="en">spherical harmonics</span></li>
-        <li><span class="zh">辐射亮度：</span><span class="en">radiance</span></li>
-        <li><span class="zh">half 系数：</span><span class="en">half coefficients</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-137">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`UsdVolParticleFieldSphericalHarmonicsAttributeAPI` 是应用到 `ParticleField` 上的 API schema，用 spherical harmonics coefficients 描述每粒子的 radiance。它规定 SH degree 在整个 `ParticleField` 内保持常量，并提供 float 与 half 系数属性以适配不同精度的消费端。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for UsdVolParticleFieldSphericalHarmonicsAttributeAPI while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`Apply()` 与 `CanApply()` 表示这是 applied API schema；使用前应确认目标 prim 是否适合承载 particle field spherical harmonics radiance 属性。</span></li>
-        <li><span class="zh">`CreateRadianceSphericalHarmonicsDegreeAttr()` / `GetRadianceSphericalHarmonicsDegreeAttr()` 管理 SH degree，degree 决定每粒子的 coefficient 数量。</span></li>
-        <li><span class="zh">`CreateRadianceSphericalHarmonicsCoefficientsAttr()` 与 getter 处理 float coefficients；页面说明数据消费者在可用时应优先使用 float 版本。</span></li>
-        <li><span class="zh">`CreateRadianceSphericalHarmonicsCoefficientshAttr()` 与 getter 处理 half coefficients；half 版本可节省存储，但可能影响 radiance 精度。</span></li>
-        <li><span class="zh">数组长度应与 particle count 和每粒子 coefficient 数一致；阅读时要和 position、opacity、orientation 等 particle attribute API 一起核对数据布局。</span></li>
+        <li><span class="zh">不是 renderer：本 API 只描述 radiance 数据布局，不负责最终体积或粒子着色实现。</span><span class="en">This is not the renderer; it describes radiance data layout.</span></li>
+        <li><span class="zh">不是新的 typed prim：它是 applied API schema，应和目标 particle field prim 的类型语义一起使用。</span><span class="en">This is an applied API schema, not a new typed prim.</span></li>
+        <li><span class="zh">degree 不是 per-particle array：它在整个 `ParticleField` 中保持常量，用来解释 coefficients。</span><span class="en">The degree is field-wide, not a per-particle array.</span></li>
+        <li><span class="zh">float 与 half 不应混读：若 float 存在，消费者通常应优先使用 float 版本。</span><span class="en">Do not mix float and half interpretations; prefer float when available.</span></li>
+        <li><span class="zh">数组长度错误通常是 layout 问题，不一定是 schema registry 或 renderer bug。</span><span class="en">Coefficient-length mismatches are usually layout issues, not necessarily registry or renderer bugs.</span></li>
+        <li><span class="zh">发布前应同时检查粒子数、degree、float/half 优先级和最终 composed value；不要单独改 degree。</span><span class="en">Before publishing, check particle count, degree, float/half precedence, and composed values together.</span></li>
       </ul>
       <h3>术语对照 / Terms</h3>
       <ul>
         <li><span class="zh">粒子场球谐属性 API：</span><span class="en">UsdVolParticleFieldSphericalHarmonicsAttributeAPI</span></li>
+        <li><span class="zh">可应用 API schema：</span><span class="en">applied API schema</span></li>
+        <li><span class="zh">粒子场：</span><span class="en">ParticleField</span></li>
         <li><span class="zh">球谐阶数：</span><span class="en">spherical harmonics degree</span></li>
+        <li><span class="zh">辐射亮度：</span><span class="en">radiance</span></li>
         <li><span class="zh">辐射亮度系数：</span><span class="en">radiance coefficients</span></li>
         <li><span class="zh">float 系数：</span><span class="en">float coefficients</span></li>
         <li><span class="zh">half 系数：</span><span class="en">half coefficients</span></li>
-        <li><span class="zh">每粒子数据布局：</span><span class="en">per-particle data layout</span></li>
+        <li><span class="zh">每粒子元素数：</span><span class="en">per-particle element size</span></li>
+        <li><span class="zh">属性名清单：</span><span class="en">GetSchemaAttributeNames()</span></li>
       </ul>
     </section>
     <section>

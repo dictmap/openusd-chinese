@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-07T08:39:52.868Z
+Generated: 2026-06-07T08:52:55.531Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 56
-- Promoted complete pages: 48
-- Bilingual draft pages: 350
+- Bilingual complete pages: 57
+- Promoted complete pages: 49
+- Bilingual draft pages: 349
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -74,7 +74,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_complete | https://openusd.org/release/api/class_usd_skel_imaging_data_source_skeleton_prim.html | full_site/api/class_usd_skel_imaging_data_source_skeleton_prim.html | https://openusd.org/release/api/class_usd_skel_imaging_data_source_skeleton_prim.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_usd_stage_cache.html | full_site/api/class_usd_stage_cache.html | https://openusd.org/release/api/class_usd_stage_cache.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_usd_validation_error.html | full_site/api/class_usd_validation_error.html | https://openusd.org/release/api/class_usd_validation_error.html |
-| api | bilingual_draft | 类参考草稿：UsdVolParticleFieldSphericalHarmonicsAttributeAPI Class / UsdVolParticleFieldSphericalHarmonicsAttributeAPI Class | full_site/api/class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html | https://openusd.org/release/api/class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html |
+| api | bilingual_complete | https://openusd.org/release/api/class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html | full_site/api/class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html | https://openusd.org/release/api/class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_vdf_context.html | full_site/api/class_vdf_context.html | https://openusd.org/release/api/class_vdf_context.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_vdf_grapher_options.html | full_site/api/class_vdf_grapher_options.html | https://openusd.org/release/api/class_vdf_grapher_options.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_vdf_node.html | full_site/api/class_vdf_node.html | https://openusd.org/release/api/class_vdf_node.html |
