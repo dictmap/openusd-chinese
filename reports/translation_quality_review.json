@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T05:36:05.727Z",
+  "generated_at": "2026-06-07T05:50:02.574Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 363,
-    "bilingual_complete": 43
+    "bilingual_draft": 362,
+    "bilingual_complete": 44
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 352,
-    "good_bilingual": 43
+    "draft_needs_translation": 351,
+    "good_bilingual": 44
   },
   "focus_batch": [
     {
@@ -1274,29 +1274,29 @@
     },
     {
       "index": 12,
-      "title": "类参考草稿：GfMatrix2f Class Reference Linear Algebra / GfMatrix2f Class Reference Linear Algebra",
+      "title": "完整双语参考：GfMatrix2f Class Reference Linear Algebra / GfMatrix2f Class Reference Linear Algebra",
       "output": "full_site/api/class_gf_matrix2f.html",
       "official_url": "https://openusd.org/release/api/class_gf_matrix2f.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 52,
-      "enBlockCount": 44,
-      "zhChars": 636,
-      "enLetters": 1408,
-      "bodyChineseChars": 699,
+      "grade": "good_bilingual",
+      "zhBlockCount": 50,
+      "enBlockCount": 52,
+      "zhChars": 970,
+      "enLetters": 2320,
+      "bodyChineseChars": 1023,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 GfMatrix2f Class Reference 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`GfMatrix2f` 是 Gf Linear Algebra 中的 2x2 float matrix 基础类型，用于存储 2x2 浮点矩阵。"
+        "本页已按完整双语标准覆盖 `GfMatrix2f` 的核心语义。中文层解释这个 2x2 `float` matrix 值类型在 Gf Linear Algebra、二维线性变换、行主序索引、determinant / inverse / transpose 操作和相邻 Gf 类型中的使用边界；英文 API 名称、方法名、类型名、数学符号、链接和必要官方摘录保留原样，便于和官方 Doxygen 页面核对。",
+        "`GfMatrix2f` 是 Gf Linear Algebra 模块中的 2x2 `float` matrix 值类型。它适合表达二维线性变换、二维坐标基变化、小型矩阵运算和局部数值工具逻辑；它不是 USD scene graph 对象，也不是 `UsdGeomXformOp`、prim、attribute 或 authored metadata。",
+        "官方摘录说本类存储 2x2 `float` 元素，并按 row-major order 定义，因此 `matrix[i][j]` 表示第 `i` 行第 `j` 列。这个细节不是实现噪声，而是阅读构造函数、`operator[]`、`GetRow()`、`GetColumn()`、调试打印和外部库互操作时的基础约定。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for GfMatrix2f Class Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page."
+        "This page now provides full bilingual coverage for the core semantics of `GfMatrix2f`, while preserving official API names, method names, type names, mathematical symbols, links, and necessary English excerpts for comparison with the Doxygen reference.",
+        "`GfMatrix2f` is a 2x2 `float` matrix value type in Gf Linear Algebra. It is a low-level numeric type, not an authored USD scene object or transform op."
       ]
     },
     {

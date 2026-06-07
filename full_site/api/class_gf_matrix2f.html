@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：GfMatrix2f Class Reference Linear Algebra / GfMatrix2f Class Reference Linear Algebra</title>
+  <title>完整双语参考：GfMatrix2f Class Reference Linear Algebra / GfMatrix2f Class Reference Linear Algebra</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,55 +24,52 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：GfMatrix2f Class Reference Linear Algebra / GfMatrix2f Class Reference Linear Algebra</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：GfMatrix2f Class Reference Linear Algebra / GfMatrix2f Class Reference Linear Algebra</h1>
     <div class="meta">https://openusd.org/release/api/class_gf_matrix2f.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语标准覆盖 `GfMatrix2f` 的核心语义。中文层解释这个 2x2 `float` matrix 值类型在 Gf Linear Algebra、二维线性变换、行主序索引、determinant / inverse / transpose 操作和相邻 Gf 类型中的使用边界；英文 API 名称、方法名、类型名、数学符号、链接和必要官方摘录保留原样，便于和官方 Doxygen 页面核对。</p>
+      <p class="en">This page now provides full bilingual coverage for the core semantics of `GfMatrix2f`, while preserving official API names, method names, type names, mathematical symbols, links, and necessary English excerpts for comparison with the Doxygen reference.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-034">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 GfMatrix2f Class Reference 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for GfMatrix2f Class Reference while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`GfMatrix2f` 是 Gf Linear Algebra 中的 2x2 float matrix 基础类型，用于存储 2x2 浮点矩阵。</span></li>
-        <li><span class="zh">英文摘录明确矩阵按 row-major order 定义，因此 `matrix[i][j]` 表示第 i 行第 j 列的元素；这个索引约定必须在中文中清楚保留。</span></li>
-        <li><span class="zh">关联类型包括 `GfVec2f` 和 `GfMatrix2d`，说明它与二维向量和 double 精度 2x2 矩阵有对应关系。</span></li>
-        <li><span class="zh">阅读本类时应重点关注构造、identity/zero、transpose、inverse、determinant、row/column 访问、乘法和比较等矩阵基础操作；具体方法名以后续 member list 为准。</span></li>
-        <li><span class="zh">本页不是几何场景对象，而是低层数学值类型；中文导读保留 `GfMatrix2f`、`GfVec2f`、row-major、matrix[i][j] 等 API 和数学符号。</span></li>
-      </ul>
+    <section data-cn-complete="gf-matrix2f-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`GfMatrix2f` 是 Gf Linear Algebra 模块中的 2x2 `float` matrix 值类型。它适合表达二维线性变换、二维坐标基变化、小型矩阵运算和局部数值工具逻辑；它不是 USD scene graph 对象，也不是 `UsdGeomXformOp`、prim、attribute 或 authored metadata。</p>
+      <p class="en">`GfMatrix2f` is a 2x2 `float` matrix value type in Gf Linear Algebra. It is a low-level numeric type, not an authored USD scene object or transform op.</p>
+      <p class="zh">官方摘录说本类存储 2x2 `float` 元素，并按 row-major order 定义，因此 `matrix[i][j]` 表示第 `i` 行第 `j` 列。这个细节不是实现噪声，而是阅读构造函数、`operator[]`、`GetRow()`、`GetColumn()`、调试打印和外部库互操作时的基础约定。</p>
+      <p class="en">The reference defines the matrix as row-major, with `matrix[i][j]` indexing row `i`, column `j`. This affects construction, indexing, row/column access, debugging, and interop.</p>
+      <p class="zh">`ScalarType` 对本类是 `float`。这让 `GfMatrix2f` 适合轻量二维数学和渲染/工具侧数据流，但它的精度低于 `GfMatrix2d`。如果矩阵来自 double precision 计算、需要稳定求逆、或会经过长链路反复相乘，应明确判断是否该使用 `GfMatrix2d`，不要把 `GfMatrix2f` 默认当成高精度容器。</p>
+      <p class="en">For this class `ScalarType` is `float`. Use `GfMatrix2d` when double precision or more stable numerical behavior is required.</p>
+      <p class="zh">二维 2x2 矩阵表达的是线性部分：旋转、缩放、剪切、坐标基变化或一般 linear map。它通常不携带平移项；如果要表达完整 2D affine transform，需要额外的 translation vector 或更高维齐次矩阵。把 `GfMatrix2f` 当作完整 transform container 是常见误读。</p>
+      <p class="en">A 2x2 matrix represents the linear part of a 2D transform. It does not by itself store translation; a full 2D affine transform needs additional data or a homogeneous matrix.</p>
+      <p class="zh">构造和设置 API 用来建立矩阵状态，例如默认构造、从标量或数组构造、从行/列数据构造，以及 `SetIdentity()`、`SetZero()` 等基础赋值。阅读这些方法时要区分“设置当前矩阵”为某个状态和“在已有矩阵上继续组合”；如果要组合，应显式使用矩阵乘法并核对行向量/列向量约定。</p>
+      <p class="en">Construction and setup APIs create or assign a matrix state. They should not be read as implicit append or composition operations.</p>
+      <p class="zh">`GetDeterminant()` 是判断二维矩阵可逆性、面积缩放和退化情况的关键。determinant 接近 0 时，矩阵可能是 singular 或 near-singular；此时 `GetInverse()` 的结果会对 `float` 误差非常敏感。实际调试中，应把 determinant、容差和业务允许误差一起看，而不是只看逆矩阵函数是否返回了一个对象。</p>
+      <p class="en">`GetDeterminant()` is central for invertibility and degeneracy checks. `GetInverse()` on singular or near-singular matrices is sensitive to `float` precision and tolerance choices.</p>
+      <p class="zh">`GetTranspose()`、`GetRow()`、`GetColumn()`、`data()`、`Get()` 和 `operator[]` 都围绕矩阵元素访问展开。它们看似只是便利函数，但在排查“结果像是被转置”“行列顺序反了”“外部库读写不一致”这类问题时非常重要；中文层必须保留这些 API 名称和 `matrix[i][j]` 符号。</p>
+      <p class="en">Element-access APIs such as `GetTranspose()`, `GetRow()`, `GetColumn()`, `data()`, `Get()`, and `operator[]` are essential when diagnosing transpose or row/column-order mistakes.</p>
+      <p class="zh">矩阵乘法不是可交换运算，二维矩阵组合也一样。与 `GfVec2f` 搭配时，要确认代码采用 row vector 还是 column vector 思路；外部数学库、DCC 工具、shader 或 UI 坐标系统可能有不同约定。最安全的做法是明确输入向量在左侧还是右侧、矩阵是否需要 transpose、坐标系单位和 handedness 是否一致。</p>
+      <p class="en">Matrix multiplication is not commutative. When combining `GfMatrix2f` with `GfVec2f` or external math libraries, confirm vector convention, transpose needs, units, and coordinate-system assumptions.</p>
+      <p class="zh">相关类型说明了本类边界：`GfMatrix2d` 是 double precision 对应类型，`GfVec2f` 是二维 float vector，`GfMatrix4f` 则面向更常见的 3D homogeneous transform。把 2x2 矩阵扩展到 3D 或 affine 语义时，应明确哪些信息会丢失，例如 translation、projective 分量、z 轴信息或 double precision。</p>
+      <p class="en">Related types include `GfMatrix2d`, `GfVec2f`, and larger matrix types such as `GfMatrix4f`. Moving between them can drop translation, projective terms, z-axis data, or precision.</p>
+      <p class="zh">常见误用包括：把 `GfMatrix2f` 当作 USD 可编辑属性或 prim；忘记它只存 2x2 线性部分；在需要平移时仍使用 2x2 矩阵；不检查 determinant 就求 inverse；把 column-major 数据直接按 row-major 读取；以及忽略 `float` 精度导致 near-singular 情况下调试结论不稳定。</p>
+      <p class="en">Common mistakes include treating the type as authored USD data, assuming it stores translation, inverting without determinant checks, mixing row-major and column-major layouts, and ignoring `float` precision.</p>
+      <p class="zh">调试时可先打印四个元素、determinant、transpose 和 inverse，再和预期二维基向量逐项核对。</p>
+      <p class="en">For debugging, compare the four elements, determinant, transpose, inverse, and expected 2D basis vectors directly.</p>
       <h3>术语对照 / Terms</h3>
       <ul>
-        <li><span class="zh">2x2 矩阵：</span><span class="en">2x2 matrix</span></li>
-        <li><span class="zh">float 元素：</span><span class="en">float elements</span></li>
+        <li><span class="zh">2x2 `float` 矩阵：</span><span class="en">2x2 `float` matrix</span></li>
         <li><span class="zh">行主序：</span><span class="en">row-major order</span></li>
-        <li><span class="zh">矩阵索引：</span><span class="en">matrix index</span></li>
-        <li><span class="zh">线性代数：</span><span class="en">linear algebra</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-130">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`GfMatrix2f` 是 float 精度 2x2 矩阵，适合表达二维线性变换、局部坐标变化和小型矩阵计算。它同样遵循 row-major order，因此和 `GfMatrix4f` 一样要注意索引、乘法和构造参数顺序。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for GfMatrix2f while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`ScalarType` 表明元素类型为 float；如果需要 double 精度，应转向 `GfMatrix2d`，不要在中文说明中弱化精度差异。</span></li>
-        <li><span class="zh">`GetDeterminant()`、`GetInverse()`、`GetTranspose()`、`SetIdentity()` 等基础操作决定矩阵是否可逆、是否保持坐标基和如何处理数值误差。</span></li>
-        <li><span class="zh">二维矩阵通常不包含平移项；若要表达 2D affine transform，需要额外向量或更高维齐次矩阵，不能直接把 `GfMatrix2f` 当作完整 2D transform container。</span></li>
-        <li><span class="zh">`GfVec2f` 相关运算应与 row vector 约定一起核对；向量在左乘还是右乘会影响组合顺序和结果方向。</span></li>
-        <li><span class="zh">本页作为低层数学值类型，不拥有 USD scene 状态；它可以出现在几何、渲染、材质或工具代码中，但本身不表示 prim 或属性。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">Gf 2x2 float 矩阵：</span><span class="en">GfMatrix2f</span></li>
+        <li><span class="zh">矩阵索引：</span><span class="en">matrix indexing</span></li>
         <li><span class="zh">标量类型：</span><span class="en">ScalarType</span></li>
+        <li><span class="zh">二维线性变换：</span><span class="en">2D linear transform</span></li>
+        <li><span class="zh">仿射变换：</span><span class="en">affine transform</span></li>
         <li><span class="zh">行列式：</span><span class="en">determinant</span></li>
         <li><span class="zh">逆矩阵：</span><span class="en">inverse matrix</span></li>
         <li><span class="zh">转置：</span><span class="en">transpose</span></li>
-        <li><span class="zh">仿射变换：</span><span class="en">affine transform</span></li>
+        <li><span class="zh">奇异矩阵：</span><span class="en">singular matrix</span></li>
       </ul>
     </section>
     <section>
