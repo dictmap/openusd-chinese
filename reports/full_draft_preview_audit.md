@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-07T22:06:43.691Z
+Generated: 2026-06-07T22:39:53.734Z
 
-Transient base URL: `http://127.0.0.1:64256/`
+Transient base URL: `http://127.0.0.1:58896/`
 
 Result:
 
 - Passed: true
-- Draft pages: 308
-- Pages checked: 308
-- Passed pages: 308
+- Draft pages: 307
+- Pages checked: 307
+- Passed pages: 307
 - Failed pages: 0
-- Final HTML links: 308
-- Local assets checked: 308
+- Final HTML links: 307
+- Local assets checked: 307
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -263,7 +263,6 @@ Result:
 | true | full_site/release/user_guides/schemas/usdLux/NonboundableLightBase.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/overview.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/PluginLight.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdLux/ShapingAPI.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/SphereLight.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/usdLux_toc.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/VolumeLightAPI.html | 200 | true | 0 | 0 |

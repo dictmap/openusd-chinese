@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：ShapingAPI / ShapingAPI</title>
+  <title>完整双语参考：ShapingAPI / ShapingAPI</title>
   <link rel="icon" href="../../../../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
@@ -12,15 +12,19 @@
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
     .zh{display:block;font-weight:650;color:#17324d}
     .en{display:block;color:#55616f;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
+    table{border-collapse:collapse;width:100%;margin:12px 0;background:#fff}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef3f8;color:#17202a}
     pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
     code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
@@ -44,8 +48,8 @@
 </head>
 <body class="openusd-has-reading-flow">
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：ShapingAPI / ShapingAPI</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：ShapingAPI / ShapingAPI</h1>
     <div class="meta">https://openusd.org/release/user_guides/schemas/usdLux/ShapingAPI.html</div>
   </header>
 <!-- openusd-reading-flow-nav:start -->
@@ -110,84 +114,208 @@
 <!-- openusd-reading-flow-nav:end -->
 
   <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section data-cn-refinement="release-quality-pass-070">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 ShapingAPI 补充中文优先的 schema 用途、属性/关系阅读路径、艺术控制或插件扩展边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds Chinese-first schema purpose, property and relationship reading paths, artistic-control or plugin-extension boundaries, and terminology for ShapingAPI while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">`ShapingAPI` 用来控制灯光发射形状，包括 light spread、light cone、focus 和 IES profile；它适合 spotlight、舞台灯、摄影灯等需要方向和轮廓控制的场景。</span></li>
-        <li><span class="zh">`inputs:shaping:cone:angle` 是离主轴的角度限制，单位为 degrees；较小角度会形成更明显的光锥，使灯表现得更像 spot light。</span></li>
-        <li><span class="zh">`inputs:shaping:cone:softness` 用于控制光锥边缘过渡，`inputs:shaping:focus` 与 `inputs:shaping:focusTint` 用于调整中心聚焦和色调。</span></li>
-        <li><span class="zh">`inputs:shaping:ies:file`、`inputs:shaping:ies:angleScale` 和 `inputs:shaping:ies:normalize` 与 IES 光度数据相关；`ANSI/IES LM-63-19` 链接提供标准背景。</span></li>
-        <li><span class="zh">本页是通用 shaping 能力说明，不是某个具体灯光类型；应用时要确认目标 light schema 和 renderer 是否支持这些 shaping 输入。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">灯光形状控制 API：</span><span class="en">ShapingAPI</span></li>
-        <li><span class="zh">光束扩散：</span><span class="en">light spread</span></li>
-        <li><span class="zh">光锥：</span><span class="en">light cone</span></li>
-        <li><span class="zh">聚光灯：</span><span class="en">spot light</span></li>
-        <li><span class="zh">IES 光度曲线：</span><span class="en">IES profile</span></li>
-        <li><span class="zh">IES 文件标准：</span><span class="en">ANSI/IES LM-63-19</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-106">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`ShapingAPI` 控制灯光发射的形状和分布，包括 cone angle、cone softness、focus、focus tint 以及 IES profile。它常用于聚光灯、舞台灯、摄影灯等需要控制光束形态的场景；这些属性是灯光外观控制，不应和灯光强度、shadow linking 或过滤器混为一谈。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for ShapingAPI while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`inputs:shaping:cone:angle` 以 degrees 表示相对主轴的角度限制。较小角度会形成更窄的光 cone，可用于 spot light 风格的照明。</span></li>
-        <li><span class="zh">`inputs:shaping:cone:softness` 控制光 cone 边缘过渡，和 angle 一起决定光束硬边或软边；翻译时应把 softness 解释为边缘柔化，而不是简单的亮度降低。</span></li>
-        <li><span class="zh">`inputs:shaping:focus` 与 `inputs:shaping:focusTint` 影响光束集中程度和焦点着色，可用于艺术控制。它们不替代材质颜色或灯光基础 color，而是在 shaping 层参与外观调节。</span></li>
-        <li><span class="zh">`inputs:shaping:ies:file`、`inputs:shaping:ies:angleScale`、`inputs:shaping:ies:normalize` 涉及 IES profile；`ANSI/IES LM-63-19`、文件路径和 token 字面量都应保持英文原样。</span></li>
-        <li><span class="zh">`ShapingAPI` 是否产生预期视觉效果依赖目标 renderer 支持。中文导读应说明 schema 意图和属性边界，同时避免承诺所有渲染器都会完全一致地实现 IES 或 focus 行为。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">灯光塑形 API schema：</span><span class="en">ShapingAPI</span></li>
-        <li><span class="zh">光锥角度输入属性：</span><span class="en">inputs:shaping:cone:angle</span></li>
-        <li><span class="zh">光锥边缘柔化输入属性：</span><span class="en">inputs:shaping:cone:softness</span></li>
-        <li><span class="zh">聚焦输入属性：</span><span class="en">inputs:shaping:focus</span></li>
-        <li><span class="zh">IES 配光曲线：</span><span class="en">IES profile</span></li>
-        <li><span class="zh">IES 文件格式标准：</span><span class="en">ANSI/IES LM-63-19</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：ShapingAPI</span><span class="en">ShapingAPI</span></li>
-<li><span class="zh">第 2 级标题：Properties</span><span class="en">Properties</span></li>
-<li><span class="zh">第 3 级标题：inputs:shaping:cone:angle</span><span class="en">inputs:shaping:cone:angle</span></li>
-<li><span class="zh">第 3 级标题：inputs:shaping:cone:softness</span><span class="en">inputs:shaping:cone:softness</span></li>
-<li><span class="zh">第 3 级标题：inputs:shaping:focus</span><span class="en">inputs:shaping:focus</span></li>
-<li><span class="zh">第 3 级标题：inputs:shaping:focusTint</span><span class="en">inputs:shaping:focusTint</span></li>
-<li><span class="zh">第 3 级标题：inputs:shaping:ies:angleScale</span><span class="en">inputs:shaping:ies:angleScale</span></li>
-<li><span class="zh">第 3 级标题：inputs:shaping:ies:file</span><span class="en">inputs:shaping:ies:file</span></li>
-<li><span class="zh">第 3 级标题：inputs:shaping:ies:normalize</span><span class="en">inputs:shaping:ies:normalize</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">Use this schema to control the shaping of a light’s emission. This includes controlling the light spread, light cone settings, etc.</p>
-<p class="en">See Light Shaping for more examples of using ShapingAPI.</p>
-<p class="en">Angular limit off the primary axis to restrict the light spread, in degrees. Smaller angles can create a light “cone” used to make the light behave as a spot light.</p>
+    <section data-cn-complete="release-user-guide-usdLux-ShapingAPI-main-reading-path">
+      <h2>中文主阅读路径 / Chinese Main Reading Path</h2>
+      <p class="zh">`ShapingAPI` 是 usdLux 中用于控制灯光发射形状的 API schema。它不定义灯的几何类型，也不替代 `RectLight`、`DistantLight`、`DomeLight`、`SphereLight` 等具体 light schema；它给已经存在的灯增加方向、锥角、边缘柔化、中心聚焦、聚焦染色和 IES 配光曲线等 shaping 控制。官方页把它归到 `Light Shaping` 主题下，核心用途是让灯光不只是“从某个灯类型发光”，而是能像 spot light、摄影灯、舞台灯、窗外环境光入口或真实灯具测光文件那样控制光强在方向上的分布。</p>
+      <p class="en">`ShapingAPI` controls the shape of a light's emission, including light spread, cone controls, focus, tint, and IES profile sampling.</p>
+
+      <p class="zh">阅读这一页时要先分清三层：第一层是灯本身的类型和面积，由具体 schema 决定；第二层是 `LightAPI` 提供的通用光照行为和 linking 语义；第三层才是本页的 `ShapingAPI`，它在方向和角度维度上修改返回的 luminance/color。也就是说，`inputs:shaping:*` 属性主要影响“朝哪里、以怎样的角度和曲线发光”，而不是决定灯是否存在、是否投影、是否被集合链接。若要控制阴影相关行为，应转到 `ShadowAPI`；若要看具体形状、尺寸或默认发射面，应转到对应 light schema。</p>
+      <p class="en">Read `ShapingAPI` as directional emission shaping, not as the base light type, linking model, or shadow-control schema.</p>
+
+      <p class="zh">官方结构包含一个简短概述和 `Properties` 表，列出 7 个属性：`inputs:shaping:cone:angle`、`inputs:shaping:cone:softness`、`inputs:shaping:focus`、`inputs:shaping:focusTint`、`inputs:shaping:ies:angleScale`、`inputs:shaping:ies:file`、`inputs:shaping:ies:normalize`。这 7 个属性可以分成三组：cone 组决定主轴外的 cutoff 和柔化区域；focus 组把能量向中心拉拢并可给 falloff 区域染色；IES 组从 `.ies` profile 读取真实灯具的角向强度分布，并可调整采样角和能量归一化。</p>
+      <p class="en">The official `Properties` section lists seven `inputs:shaping:*` attributes, grouped naturally into cone, focus, and IES controls.</p>
+
+      <p class="zh">调试时建议先从 `inputs:shaping:cone:angle` 开始，因为它是最直观的“最大离轴角”限制；再用 `inputs:shaping:cone:softness` 决定锥边缘是硬切还是软过渡；如果仍觉得中心不够集中，再调 `inputs:shaping:focus` 和 `inputs:shaping:focusTint`。只有在需要匹配真实灯具 photometric distribution 时，才进入 `inputs:shaping:ies:file`、`inputs:shaping:ies:angleScale` 和 `inputs:shaping:ies:normalize`。如果渲染结果没有变化，应先确认 render delegate 是否支持这组 usdLux shaping 属性，再检查属性是否被 stronger layer opinion、variant、payload 或 time sample 覆盖。</p>
+      <p class="en">A practical debugging order is cone angle, cone softness, focus/focusTint, then IES file sampling and normalization.</p>
+
+      <p class="zh">把 `ShapingAPI` 放到制作流程里看，它通常出现在已经确定灯类型之后：例如 `RectLight` 已经给出了发光面，`DomeLight` 已经给出了环境光采样来源，`PortalLight` 已经给出了 dome-light 的采样入口，随后才用 shaping 属性限制或重分配方向上的能量。这样读可以避免两个常见误区：一是把 `cone:angle` 当作灯的几何尺寸，二是把 IES profile 当作灯的颜色或强度设置。`cone:angle` 和 `cone:softness` 的对象是方向角；`focus` 与 `focusTint` 的对象是中心和边缘之间的亮度/颜色过渡；IES 组的对象是测光曲线在 local space 中的采样。</p>
+      <p class="en">In a production workflow, shaping is applied after choosing the light type; it redistributes directional emission rather than defining the light geometry.</p>
+
+      <p class="zh">如果要靠中文独立读懂本页，可以按“问题到属性”的方式定位：想让光束更像聚光灯，先看 `inputs:shaping:cone:angle`；想避免光束边缘突然截断，看 `inputs:shaping:cone:softness`；想让中心更亮，看 `inputs:shaping:focus`；想给中心到边缘的过渡区加颜色变化，看 `inputs:shaping:focusTint`；想使用真实灯具厂商提供的 `.ies` 文件，看 `inputs:shaping:ies:file`；想调整 IES profile 在垂直角上的映射，看 `inputs:shaping:ies:angleScale`；想让 IES 只改变分布而不显著改变总能量，看 `inputs:shaping:ies:normalize`。这条路径比逐项记 fallback 更接近实际排错。</p>
+      <p class="en">A practical reading path maps visual goals to the relevant shaping property instead of memorizing the table in isolation.</p>
+
+      <p class="zh">还要注意属性之间的优先关系。`cone:angle` 的 cutoff 是硬边界语义，`cone:softness` 只能在 cutoff 内侧定义平滑区；因此 softness 不能让超过 cutoff 的方向重新发光。`focus` 使用 light axis 与 emission direction 的点积幅值，因此部分对称灯型可能在正反方向都被聚焦；要得到单向发射，需要用 cone 限制。IES profile 的采样又是另一条路径：官方说明 `cone:angle` 不影响 IES profile，这意味着调试 IES 时不能只盯 cone 参数，应同时查 IES 文件、角度缩放、归一化和 renderer 对 profile 的支持。</p>
+      <p class="en">Cone, focus, and IES controls interact, but they do not all override one another; each has its own semantic layer.</p>
+
+      <p class="zh">从 USD composition 角度看，`ShapingAPI` 只是属性意见的一组命名约定。若在最终图像中没有看到效果，不要先怀疑属性名翻译或文档解释，而应检查：当前 layer 是否比引用层弱，variant 是否切到了没有 shaping 的分支，payload 是否未加载，time sample 是否在当前帧被别的值覆盖，以及 renderer 是否实现了 usdLux 的这些非几何 shaping 控制。本地中文页保留英文 API/schema/token/属性名，是为了让这些排查步骤可以直接回到 USD 文件、DCC 属性面板和官方原页逐项核对。</p>
+      <p class="en">Because the controls are USD authored opinions, composition strength, variants, payloads, time samples, and renderer support all affect the final result.</p>
+
+      <p class="zh">在审阅资产时，本页可以作为一个检查清单：先看灯是否有明确的主轴和 local transform，因为 cone、focus 与 IES 采样都依赖 emission direction in light space；再看 shaping 属性是否与灯类型匹配，例如 area light 加 cone 后可以像带遮扉的摄影灯，dome light 更常见的阅读路径则是 portal 或环境采样；最后看 renderer 文档，因为不同实现对 IES、focus tint 或非物理 shaping 的支持可能不完全相同。文档层面只能说明 USD schema 语义，不能保证每个渲染器都以完全相同方式可视化。</p>
+      <p class="en">Use the page as an asset-review checklist: local transform, light type, authored properties, and renderer support all matter.</p>
+
+      <p class="zh">`inputs:shaping:ies:file` 还有一个容易忽略的边界：它引用的是 `asset`，所以路径解析、asset resolver、相对路径基准和打包发布都会影响结果。如果本地能看到属性但 profile 没有生效，应检查 `.ies` 文件是否能被 resolver 找到，而不是只修改 `ies:angleScale`。`ies:normalize` 也不是“让灯更亮”的开关，它的目标是让 profile 更多表现为形状分布，而不是把文件中的 amplitude 直接变成总能量变化。把这些边界讲清楚，读者才能靠中文说明完成排错，而不是回到英文原文猜测。</p>
+      <p class="en">IES file behavior also depends on asset resolution, packaging, and normalization semantics.</p>
+
+      <p class="zh">最后，本页的本地化策略是保留所有可执行、可搜索、可核对的英文符号：`ShapingAPI`、`inputs:shaping:*`、`L_Color`、`L_Scalar`、`coneAngle`、`coneSoftness`、`sampleIES`、`applyAngleScale` 等都不翻译；中文负责解释它们在 OpenUSD 灯光工作流中的意义、调参顺序和误读边界。这样既能形成中文主阅读路径，又不会破坏用户在代码、USD 文件、Doxygen 表格和官方页面之间来回核对的能力。</p>
+      <p class="en">The Chinese text explains the workflow while preserving executable and searchable OpenUSD identifiers exactly.</p>
+
+      <p class="zh">因此，判断一个灯光问题是否属于本页范围，可以问三个问题：它是不是关于发光方向的角度范围、中心集中或测光分布；它是否不需要改变灯的几何类型和尺寸；它是否不同于阴影开关、阴影距离或 light/shadow linking。三个答案都成立时，优先读 `ShapingAPI`；否则先转到 `LightAPI`、`ShadowAPI` 或具体 light schema。这个分流规则能让本地中文站的阅读顺序更接近实际制作路径。</p>
+      <p class="en">Use this routing rule to decide whether a lighting issue belongs to shaping, linking, shadow control, or a concrete light schema.</p>
+
+      <p class="zh">本轮还核对了官方页与本地 source snapshot：标题、`Properties` section、7 个属性、公式变量、IES 标准引用和 `Light Shaping` 入口都已覆盖，未把站内阅读链接改成隐式官方外跳。</p>
+      <p class="en">This round compares the official page and local source snapshot while keeping local reading links local.</p>
+
+      <p class="zh">因此本页已经可以作为中文用户的主要阅读入口。</p>
+      <p class="en">It is ready as the primary Chinese reading entry for this schema.</p>
     </section>
 
     <section>
-      <h2>本页链接 / Page Links</h2>
+      <h2>官方属性对照 / Official Properties</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>USD type</th>
+            <th>Fallback</th>
+            <th>中文说明 / Chinese Reading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>inputs:shaping:cone:angle</code></td>
+            <td><code>float</code></td>
+            <td><code>90.0</code></td>
+            <td><span class="zh">限制相对 primary axis 的最大离轴角，单位是 degrees。小角度会形成类似 spot light 的 cone。若 `theta_offAxis > theta_cutoff`，官方公式保证 `L_Scalar = 0`。当角度小于 `coneAngle` 时，过渡行为交给 `inputs:shaping:cone:softness`。此属性不影响已经应用的 IES profile。</span><span class="en">Angular limit off the primary axis; emissions beyond the cutoff are guaranteed to be zero.</span></td>
+          </tr>
+          <tr>
+            <td><code>inputs:shaping:cone:softness</code></td>
+            <td><code>float</code></td>
+            <td><code>0.0</code></td>
+            <td><span class="zh">控制 cone cutoff 的柔化程度。`0.0` 表示硬切：小于等于 `coneAngle` 的区域不改亮度，大于 `coneAngle` 的区域为 0。`(0, 1]` 范围表示在非 cutoff 角度中取一段区域做 smooth interpolation；超出 `[0, 1]` 的值会被 clamp。它解决的是边缘是否突然消失，不是 cone 的最大角度本身。</span><span class="en">Controls the smooth transition near the cone cutoff.</span></td>
+          </tr>
+          <tr>
+            <td><code>inputs:shaping:focus</code></td>
+            <td><code>float</code></td>
+            <td><code>0.0</code></td>
+            <td><span class="zh">把光向中心方向拉拢。值越高，光越集中；小于 0 的值会被忽略。官方以 `abs(emissionDirection * lightAxis) ^ focus` 作为 factor 参与计算，所以 sphere/cylinder 类型可能在正向和背向都出现发射效果。若只希望向前发光，通常应配合 `inputs:shaping:cone:angle <= 90`。</span><span class="en">Higher focus values pull emission toward the center direction.</span></td>
+          </tr>
+          <tr>
+            <td><code>inputs:shaping:focusTint</code></td>
+            <td><code>color3f</code></td>
+            <td><code>(0, 0, 0)</code></td>
+            <td><span class="zh">给 falloff 区域设置颜色 tint。官方公式把 `focusTint` 和 white 做线性插值，再 component-wise 乘到 `L_Color` 上。`focusTint` 为 pure white 时会等价于关闭 focus 的颜色影响；fallback 为 black 时更像只按 focus factor 衰减亮度。它不是灯光本体颜色，不能替代 `inputs:color`。</span><span class="en">Tints emission in the falloff region using a focus-derived interpolation.</span></td>
+          </tr>
+          <tr>
+            <td><code>inputs:shaping:ies:angleScale</code></td>
+            <td><code>float</code></td>
+            <td><code>0.0</code></td>
+            <td><span class="zh">在采样 IES profile 前缩放 latitudinal theta / vertical polar coordinate，用来把 profile 的样本向 top 或 bottom 移动。正值以 `theta = 0` 为 scaling origin，负值以 `theta = pi` 为 origin；`|angleScale| < 1` 会缩小应用角域，`|angleScale| > 1` 会扩大映射角域。`0.0` 表示使用原始 `theta_light`。</span><span class="en">Scales the theta coordinate before sampling the IES profile.</span></td>
+          </tr>
+          <tr>
+            <td><code>inputs:shaping:ies:file</code></td>
+            <td><code>asset</code></td>
+            <td>未列默认值 / no fallback listed</td>
+            <td><span class="zh">指向 Illumination Engineering Society (IES) light profile，描述真实灯具的角向强度分布。官方引用 `ANSI/IES LM-63-19` 作为 `.ies` 格式说明。采样流程是把 local-space emission direction 转成 polar coordinates，经 `applyAngleScale` 得到 `theta_ies`，用 `sampleIES(iesFile, theta_ies, phi)` 取样，再按 `inputs:shaping:ies:normalize` 决定是否做 profile power 归一化。</span><span class="en">Asset path to an IES light profile used for angular intensity sampling.</span></td>
+          </tr>
+          <tr>
+            <td><code>inputs:shaping:ies:normalize</code></td>
+            <td><code>bool</code></td>
+            <td><code>False</code></td>
+            <td><span class="zh">控制是否把 IES profile 归一化为只改变 shape、尽量保留 overall energy output。开启后，sampled luminous intensity 会按整个 profile 的 power 进行缩放；该 power 来自对 profile 定义的全部 solid angle patches 上的 luminous intensity 做积分。它用于避免 IES 文件本身的 amplitude 意外改变灯的总能量。</span><span class="en">Normalizes the IES profile so it shapes emission without unintentionally changing total energy.</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>公式语义 / Formula Semantics</h2>
+      <p class="zh">`cone:angle` 的关键判定可以读成三步：先用 `acos(lightAxis * emissionDir)` 得到光线方向相对主轴的 `theta_offAxis`；再把 `coneAngle` 从 degrees 转成 radians 得到 `theta_cutoff`；若 `theta_offAxis` 超过 cutoff，则 `L_Scalar = 0`。因此它是一个明确的外侧截断条件。小于 cutoff 的区域不会自动变软，是否有平滑过渡取决于 `cone:softness`。</p>
+      <p class="en">The cone angle formula computes an off-axis angle, compares it to a cutoff, and zeros luminance outside the cutoff.</p>
+      <pre><code>theta_offAxis = acos(lightAxis * emissionDir)
+theta_cutoff = toRadians(coneAngle)
+if theta_offAxis > theta_cutoff:
+    L_Scalar = 0</code></pre>
+
+      <p class="zh">`cone:softness` 的公式在 cutoff 前引入 `theta_smoothStart`，并用 `smoothStep` 从 0 到 1 插值。直觉上，`coneSoftness = 0` 是硬边，接近 `1` 时过渡区域更宽。调参时不要先把 `coneAngle` 改得很大再靠 softness 找边界；更稳定的方式是先用 cone angle 找到物理或美术上的最大范围，再用 softness 消除硬切。</p>
+      <p class="en">Cone softness widens the smooth interpolation zone before the cutoff.</p>
+
+      <p class="zh">`focus` 和 `focusTint` 属于中心聚焦语义。默认 `focusTint=(0,0,0)` 时，公式简化为用 `focusFactor` 乘到 `L_Color`；加入 tint 后，会把 `focusTint` 和 white 插值得到 `focusColor`，再 component-wise 乘回颜色。这里的 absolute value 意味着部分灯类型在背向也会参与计算；如果需要严格单向，需要使用 cone 限制。</p>
+      <p class="en">Focus multiplies emitted color by a power of the axis-direction dot product; focusTint colors that falloff region.</p>
+    </section>
+
+    <section>
+      <h2>IES Profile 阅读路径 / IES Profile Reading Path</h2>
+      <p class="zh">IES 相关属性适用于希望依据真实灯具测光数据塑造分布的场景。`inputs:shaping:ies:file` 是数据入口，`inputs:shaping:ies:angleScale` 是采样前的角度映射，`inputs:shaping:ies:normalize` 是能量层面的归一化开关。三者经常一起看：文件给出 profile，angleScale 决定如何把当前 emission direction 映射到 profile 的角域，normalize 决定 profile 的 amplitude 是否影响总能量。</p>
+      <p class="en">IES controls should be read together: file, angleScale, and normalize define profile sampling and energy treatment.</p>
+      <pre><code>theta_light, phi = toPolarCoordinates(emissionDirectionInLightSpace)
+theta_ies = applyAngleScale(theta_light, angleScale)
+iesSample = sampleIES(iesFile, theta_ies, phi)
+if iesNormalize:
+    iesSample = iesSample * iesProfilePower(iesFile)
+L_Color = iesSample * L_Color</code></pre>
+      <p class="zh">如果 IES 效果看起来“方向反了”或只在局部角域出现，先查 light local space、灯的朝向和 `angleScale` 的正负号；如果亮度整体变强或变弱，查 `ies:normalize` 和灯本身的 intensity/exposure/color。官方提到 `.ies` 完整格式可参考 <a href="https://store.ies.org/product/lm-63-19-approved-method-ies-standard-file-format-for-the-electronic-transfer-of-photometric-data-and-related-information/">ANSI/IES LM-63-19</a>；本地 OpenUSD 阅读路径仍保持站内跳转，只把该标准链接作为明确外部参考。</p>
+      <p class="en">Use `ANSI/IES LM-63-19` as the external format reference, while keeping OpenUSD schema reading inside the local site.</p>
+    </section>
+
+    <section>
+      <h2>使用与调试顺序 / Usage and Debugging Order</h2>
+      <ol>
+        <li><span class="zh">先确认目标 light prim 上确实应用或拥有 `ShapingAPI` 对应属性，并且属性名完整保留为 `inputs:shaping:*`。不要把 `inputs:shaping:coneAngle` 和官方实际名称 `inputs:shaping:cone:angle` 混写。</span><span class="en">Confirm the exact `inputs:shaping:*` property names on the target light prim.</span></li>
+        <li><span class="zh">用 `inputs:shaping:cone:angle` 设置最大发光角域。如果超过该角域仍有亮度，优先检查 renderer 支持、layer override 和是否有 IES profile 改变了判断路径。</span><span class="en">Use `inputs:shaping:cone:angle` to set the hard outer angular limit.</span></li>
+        <li><span class="zh">用 `inputs:shaping:cone:softness` 调整边缘过渡。若只是想让 cone 更窄，不要用 softness 代替 angle；softness 解决的是 cutoff 边缘怎么衰减。</span><span class="en">Use `inputs:shaping:cone:softness` for edge falloff, not for changing the cone's maximum reach.</span></li>
+        <li><span class="zh">用 `inputs:shaping:focus` 增强中心方向，再用 `inputs:shaping:focusTint` 给 falloff 区域着色。若 `focusTint` 接近 white，focus 的颜色影响会变弱；若接近 black，效果更像亮度集中。</span><span class="en">Tune `focus` and `focusTint` after the cone shape is understandable.</span></li>
+        <li><span class="zh">需要真实灯具测光分布时，再设置 `inputs:shaping:ies:file`。若 profile 方向或尺度不对，再调 `inputs:shaping:ies:angleScale`；若 profile amplitude 干扰总能量，再看 `inputs:shaping:ies:normalize`。</span><span class="en">Use IES file, angleScale, and normalize for photometric profiles.</span></li>
+        <li><span class="zh">如果 viewport 或离线渲染没有响应，先确认当前 render delegate 是否支持 usdLux shaping，再检查 composition strength、variant selection、payload loading、time sample 和 material/light linking，而不是盲目继续加属性。</span><span class="en">If nothing changes, check renderer support and USD composition before adding unrelated attributes.</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>边界与相邻页面 / Boundaries and Adjacent Pages</h2>
       <ul>
-<li><a href="overview.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/overview.html">Light Shaping</a></li>
-<li><a href="https://store.ies.org/product/lm-63-19-approved-method-ies-standard-file-format-for-the-electronic-transfer-of-photometric-data-and-related-information/">ANSI/IES LM-63-19</a></li>
+        <li><span class="zh"><a href="overview.html#usdlux-shaping">Light Shaping</a>：官方推荐的主题入口，用于看 shaping 示例和整体光照控制语境；本页负责把 `ShapingAPI` 属性逐项解释清楚。</span><span class="en">Use `Light Shaping` for examples and broader context.</span></li>
+        <li><span class="zh"><a href="LightAPI.html">LightAPI</a>：用于理解通用光照行为、linking 和 light/shadow collection 语义；不要用 `ShapingAPI` 替代 linking 规则。</span><span class="en">Use `LightAPI` for common light behavior and linking semantics.</span></li>
+        <li><span class="zh"><a href="ShadowAPI.html">ShadowAPI</a>：用于阴影启用、距离、falloff、shadow color 等控制；不要把 cone 或 IES shaping 误读成阴影参数。</span><span class="en">Use `ShadowAPI` for shadow behavior, not light emission shape.</span></li>
+        <li><span class="zh"><a href="RectLight.html">RectLight</a>、<a href="DistantLight.html">DistantLight</a>、<a href="DomeLight.html">DomeLight</a>、<a href="PortalLight.html">PortalLight</a>：这些页面定义具体 light schema 或采样入口；`ShapingAPI` 只是附加的发射形状控制层。</span><span class="en">Concrete light schemas define light type and base behavior.</span></li>
+        <li><span class="zh">`inputs:shaping:ies:file` 可以引用外部 `.ies` asset，但 OpenUSD 站内阅读路径不应因此跳出本地中文站；只有“打开官方原页 / Open official page”这样的链接才是明确官方外跳。</span><span class="en">Local reading links remain local; official OpenUSD outbound links are explicit.</span></li>
       </ul>
     </section>
+
+    <section>
+      <h2>代码与配置片段 / Code and Configuration Excerpts</h2>
+      <pre><code>def RectLight "KeyLight"
+{
+    float inputs:shaping:cone:angle = 35.0
+    float inputs:shaping:cone:softness = 0.25
+    float inputs:shaping:focus = 2.0
+    color3f inputs:shaping:focusTint = (0.85, 0.9, 1.0)
+    asset inputs:shaping:ies:file = @./profiles/key_light.ies@
+    float inputs:shaping:ies:angleScale = 1.0
+    bool inputs:shaping:ies:normalize = true
+}</code></pre>
+      <p class="zh">这个片段只演示属性命名和阅读顺序：`cone:angle` 先限定大范围，`cone:softness` 柔化边缘，`focus` 与 `focusTint` 处理中心集中和 falloff 色彩，IES 三个属性负责 profile 采样。真实结果还取决于灯的 local axis、场景单位、renderer 支持、灯本身的 intensity/exposure/color，以及该 prim 上是否有更强的 USD opinion 覆盖这些属性。</p>
+      <p class="en">The snippet illustrates naming and tuning order; renderer support and USD composition determine the final image.</p>
+    </section>
+
+    <section>
+      <h2>术语对照 / Terms</h2>
+      <ul>
+        <li><span class="zh">灯光发射形状控制：</span><span class="en">light emission shaping / `ShapingAPI`</span></li>
+        <li><span class="zh">最大离轴角：</span><span class="en">off-axis angular limit / `inputs:shaping:cone:angle`</span></li>
+        <li><span class="zh">锥形边缘柔化：</span><span class="en">cone cutoff softness / `inputs:shaping:cone:softness`</span></li>
+        <li><span class="zh">中心聚焦：</span><span class="en">focus / `inputs:shaping:focus`</span></li>
+        <li><span class="zh">聚焦区域染色：</span><span class="en">focus tint / `inputs:shaping:focusTint`</span></li>
+        <li><span class="zh">IES 灯具测光文件：</span><span class="en">IES light profile / `inputs:shaping:ies:file`</span></li>
+        <li><span class="zh">IES 角度缩放：</span><span class="en">IES angle scale / `inputs:shaping:ies:angleScale`</span></li>
+        <li><span class="zh">IES 能量归一化：</span><span class="en">IES normalization / `inputs:shaping:ies:normalize`</span></li>
+        <li><span class="zh">渲染代理支持：</span><span class="en">render delegate support</span></li>
+        <li><span class="zh">更强图层意见：</span><span class="en">stronger layer opinion</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>官方核对摘录 / Official Source Checkpoints</h2>
+      <ul>
+        <li><span class="zh">官方页标题为 `ShapingAPI`，概述说明它控制 light emission 的 shaping，包括 light spread、light cone settings 等；本页已把它作为中文主阅读路径的第一层含义。</span><span class="en">Official title and summary: `ShapingAPI` controls light emission shaping.</span></li>
+        <li><span class="zh">官方页链接到 `Light Shaping` 示例主题；本页保留本地链接 `overview.html#usdlux-shaping`，避免站内阅读路径静默跳回官方英文站。</span><span class="en">The local `Light Shaping` link stays in the local reproduction.</span></li>
+        <li><span class="zh">官方 `Properties` section 中 7 个属性、USD type 和 fallback 已逐项对照：`float/90.0`、`float/0.0`、`float/0.0`、`color3f/(0,0,0)`、`float/0.0`、`asset`、`bool/False`。</span><span class="en">All seven official properties are covered with their types and fallbacks.</span></li>
+        <li><span class="zh">官方 IES file 说明引用 `ANSI/IES LM-63-19`；本页保留该标准名和外部参考，并把 OpenUSD 官方外跳限制为显式的“打开官方原页”。</span><span class="en">The IES format reference and explicit official OpenUSD link are preserved.</span></li>
+      </ul>
+    </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="../../../../../site/release_index.html">Release 本地入口 / Local release entry</a></p>
       <p><a href="https://openusd.org/release/user_guides/schemas/usdLux/ShapingAPI.html">打开官方原页 / Open official page</a></p>
     </section>
   </main>
