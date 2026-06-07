@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>类参考草稿：Ef_LoftedOutputSet Class / Ef_LoftedOutputSet Class</title>
+  <title>完整双语参考：Ef_LoftedOutputSet Class / Ef_LoftedOutputSet Class</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
@@ -24,50 +24,44 @@
 </head>
 <body>
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>类参考草稿：Ef_LoftedOutputSet Class / Ef_LoftedOutputSet Class</h1>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：Ef_LoftedOutputSet Class / Ef_LoftedOutputSet Class</h1>
     <div class="meta">https://openusd.org/release/api/class_ef___lofted_output_set.html</div>
   </header>
   <main>
     <section>
       <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+      <p class="zh">本页已按完整双语参考页整理：中文优先解释 `Ef_LoftedOutputSet` 的执行器职责、page cache 边界、依赖收集路径、成员维护方法和常见误读；英文 API 名称、类名、函数名、类型名、链接和官方摘录继续保留，便于与 Doxygen 原页逐项核对。</p>
+      <p class="en">This page is promoted to a complete bilingual reference. It keeps official API names, method names, type names, links, and excerpts while adding Chinese-first coverage of executor semantics and page-cache based evaluation.</p>
     </section>
-    <section data-cn-refinement="api-class-quality-pass-034">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Ef_LoftedOutputSet Class 补充中文优先的类职责、相关类型、关键语义和术语对照；英文页面名、类名、方法名、template 参数、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first class responsibilities, related types, key semantics, and terminology for Ef_LoftedOutputSet Class while retaining English page names, class names, method names, template parameters, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+    <section data-cn-complete="ef-lofted-output-set-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`Ef_LoftedOutputSet` 是 Ef 执行系统中的内部集合类型，用来代表 `EfPageCacheBasedExecutor` 跟踪一组 lofted outputs。官方描述里的 lofted output 指 evaluation 期间其值来自 page cache 的 output；这里的 output 是 `VdfOutput` 语义，不是 USD layer 中的 authored property，也不是 Hydra render output。阅读本页时应把它放在 Ef/Vdf 执行缓存、依赖传播和失效清理的上下文中，而不是放在场景描述 authoring API 中。</p>
+      <p class="en">`Ef_LoftedOutputSet` tracks the set of lofted outputs, meaning outputs whose values were sourced from the page cache during evaluation, on behalf of `EfPageCacheBasedExecutor`.</p>
+      <p class="zh">“sourced from the page cache” 是本页最关键的边界：当前 evaluation 使用了缓存页中已有的 `VdfOutput` 值，因此执行器需要记住这些输出，以便后续依赖收集、缓存刷新或节点失效时知道哪些结果来自缓存。这个集合描述的是 executor runtime state；它不会改变 `UsdStage`、`SdfLayer`、schema 属性或任何 authored scene description。</p>
+      <p class="en">The page-cache wording makes the class part of executor runtime bookkeeping, not authored USD scene data.</p>
+      <p class="zh">`Add()` 与 `Remove()` 维护单个 output 的成员关系。调用方不仅要关心 `VdfOutput` 本身，还要关心对应的 `VdfMask`，因为同一个输出在 Vdf evaluation 中可能只对某个 mask 范围有效。把 output 当成无 mask 的全量值，会误读该集合在依赖传播中的精度。</p>
+      <p class="en">`Add()` and `Remove()` maintain membership for outputs, with mask information carried by `VdfMask`.</p>
+      <p class="zh">`CollectLoftedDependencies()` 是本页最值得关注的方法：它把已经从 page cache 取得的 lofted outputs 转换为当前 evaluation 需要考虑的依赖信息。换句话说，即使值来自缓存，执行系统仍然需要知道这些缓存值依赖哪些输入、节点和网络状态；否则重新求值、增量更新或失效判断会丢失必要的因果关系。</p>
+      <p class="en">`CollectLoftedDependencies()` gathers dependency information for the lofted outputs so cached values still participate in dependency analysis.</p>
+      <p class="zh">`RemoveAllOutputsForNode()` 按 `VdfNode` 清理集合中的相关输出，适用于节点失效、网络重建、executor cache refresh 或删除节点输出时的维护场景。它说明 `Ef_LoftedOutputSet` 与 `VdfNode` / `VdfId` / `VdfNetwork` 的关系是运行时索引关系，而不是持久的资源所有权关系。</p>
+      <p class="en">`RemoveAllOutputsForNode()` removes outputs associated with a node, supporting invalidation and executor maintenance.</p>
+      <p class="zh">`Resize()`、`Clear()` 和 `GetSize()` 展示了这个类的集合生命周期。`Resize()` 允许集合容量或索引空间随网络/执行状态调整，`Clear()` 清空本轮记录，`GetSize()` 暴露当前集合规模；这些方法都指向一个可重建、可清理的 executor 辅助结构，而不是稳定存档格式。</p>
+      <p class="en">`Resize()`, `Clear()`, and `GetSize()` describe collection lifecycle, capacity, reset, and size queries for runtime bookkeeping.</p>
+      <p class="zh">本页关联的 `VdfNetwork`、`VdfOutput`、`VdfMask`、`VdfId` 和 `VdfNode` 应保留英文原名。`VdfNetwork` 提供被执行的计算网络，`VdfNode` 是网络节点，`VdfOutput` 是节点上的输出端，`VdfMask` 限定输出值范围，`VdfId` 支持内部标识和索引。`Ef_LoftedOutputSet` 的职责是在这些类型之间记录“哪些输出被从缓存抬升进当前求值”的集合关系。</p>
+      <p class="en">Related identifiers such as `VdfNetwork`, `VdfOutput`, `VdfMask`, `VdfId`, and `VdfNode` should remain unchanged because they name the exact API types.</p>
+      <p class="zh">常见误读包括：把 lofted output 翻译成 USD 文件中的“输出属性”；把 page cache sourced value 理解成新生成的 authored value；忽略 `VdfMask` 导致依赖范围过宽；把 `RemoveAllOutputsForNode()` 当成删除场景节点；以及把本页当成普通用户 authoring API。正确理解是：这是 Ef executor 内部用于 page-cache based evaluation 的 dependency/provenance bookkeeping。</p>
+      <p class="en">Common misreadings are to treat lofted outputs as scene-layer outputs, authored data, or rendering outputs. The class is instead Ef executor bookkeeping for page-cache based evaluation.</p>
+      <h3>API 分组 / API Groups</h3>
       <ul>
-        <li><span class="zh">`Ef_LoftedOutputSet` 是 Ef 执行系统内部的辅助类，用于代表 `EfPageCacheBasedExecutor` 跟踪 lofted outputs。</span></li>
-        <li><span class="zh">页面英文摘录说明 lofted outputs 是求值期间从 page cache 取得值的 outputs；因此阅读本类时应把它放在 page cache based execution、output provenance 和重新求值缓存语境里。</span></li>
-        <li><span class="zh">关联类型包括 `VdfNetwork`、`VdfOutput`、`VdfMask`、`VdfId`、`VdfNode`，说明该类需要在 Vdf 网络、输出遮罩和节点标识之间建立集合关系。</span></li>
-        <li><span class="zh">本页不是用户层 USD authoring API，更偏执行器实现细节；中文导读保留 `lofted output`、`page cache`、`EfPageCacheBasedExecutor` 等英文术语，避免误译成场景层级概念。</span></li>
-        <li><span class="zh">后续完整翻译应继续补齐 member list 中的构造、插入、查询、mask/node 相关方法；本轮只补类职责、模块边界和阅读路径。</span></li>
+        <li><span class="zh">成员维护：</span><span class="en">`Add()`, `Remove()`, `RemoveAllOutputsForNode()`</span></li>
+        <li><span class="zh">依赖收集：</span><span class="en">`CollectLoftedDependencies()`</span></li>
+        <li><span class="zh">集合生命周期：</span><span class="en">`Resize()`, `Clear()`, `GetSize()`</span></li>
+        <li><span class="zh">核心上下文：</span><span class="en">`EfPageCacheBasedExecutor`, page cache, lofted output, `VdfOutput`, `VdfMask`</span></li>
       </ul>
       <h3>术语对照 / Terms</h3>
       <ul>
         <li><span class="zh">lofted output：</span><span class="en">lofted output</span></li>
-        <li><span class="zh">page cache：</span><span class="en">page cache</span></li>
-        <li><span class="zh">执行器：</span><span class="en">executor</span></li>
-        <li><span class="zh">Vdf 网络：</span><span class="en">Vdf network</span></li>
-        <li><span class="zh">输出遮罩：</span><span class="en">output mask</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-class-quality-pass-139">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`Ef_LoftedOutputSet` 代表 `EfPageCacheBasedExecutor` 跟踪 lofted outputs 的内部集合。这里的 lofted output 指 evaluation 期间其值来自 page cache 的 `VdfOutput`，因此该类主要服务于执行缓存、依赖收集和输出失效管理。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Ef_LoftedOutputSet while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`Add()` 与 `Remove()` 维护单个 output 的集合成员关系；调用方需要同时关注 `VdfOutput` 和相关 `VdfMask`，因为 output 的有效范围可能是 mask 化的。</span></li>
-        <li><span class="zh">`CollectLoftedDependencies()` 是依赖分析入口，用于从 lofted outputs 反推 page cache sourced values 对当前 evaluation 的影响。</span></li>
-        <li><span class="zh">`RemoveAllOutputsForNode()` 按 `VdfNode` 清理相关输出，适合节点失效、网络重建或 executor 缓存刷新时使用。</span></li>
-        <li><span class="zh">`Resize()`、`Clear()` 与 `GetSize()` 说明该类维护的是可调整的内部集合，而不是永久稳定的 scene-level 数据结构。</span></li>
-        <li><span class="zh">本页属于 Ef/Vdf execution implementation 细节；中文导读应保留 `lofted output`、`page cache`、`EfPageCacheBasedExecutor`、`VdfOutput` 与 `VdfMask` 原词，避免误译成 USD 层级输出。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">抬升输出：</span><span class="en">lofted output</span></li>
         <li><span class="zh">页面缓存：</span><span class="en">page cache</span></li>
         <li><span class="zh">缓存型执行器：</span><span class="en">EfPageCacheBasedExecutor</span></li>
         <li><span class="zh">输出遮罩：</span><span class="en">VdfMask</span></li>

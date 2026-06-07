@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-07T00:58:06.012Z
+Generated: 2026-06-07T01:23:58.783Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 379
-- bilingual_complete: 27
+- bilingual_draft: 378
+- bilingual_complete: 28
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 368
-- good_bilingual: 27
+- draft_needs_translation: 367
+- good_bilingual: 28
 
 ## Current Focus Batch
 
@@ -72,7 +72,7 @@ Generated: 2026-06-07T00:58:06.012Z
 | 6 | draft_needs_translation | bilingual_draft | 639 | 32/25 | 0 | 0 | `full_site/api/ar_page_front.html` |
 | 7 | draft_needs_translation | bilingual_draft | 561 | 25/18 | 0 | 0 | `full_site/api/arch_page_front.html` |
 | 8 | draft_template_only | bilingual_draft | 62 | 2/3 | 0 | 0 | `full_site/api/binding_map_8h_source.html` |
-| 9 | draft_needs_translation | bilingual_draft | 544 | 35/27 | 0 | 0 | `full_site/api/class_ef___lofted_output_set.html` |
+| 9 | good_bilingual | bilingual_complete | 789 | 30/32 | 0 | 0 | `full_site/api/class_ef___lofted_output_set.html` |
 | 10 | good_bilingual | bilingual_complete | 627 | 28/30 | 0 | 0 | `full_site/api/class_esf_property_interface.html` |
 | 11 | draft_needs_translation | bilingual_draft | 806 | 64/51 | 0 | 0 | `full_site/api/class_gf_dual_quatf.html` |
 | 12 | draft_needs_translation | bilingual_draft | 636 | 52/44 | 0 | 0 | `full_site/api/class_gf_matrix2f.html` |
