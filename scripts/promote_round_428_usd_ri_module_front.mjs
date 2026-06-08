@@ -1,11 +1,83 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UsdRi: USD RenderMan Utilities - OpenUSD API 双语导读</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
-  <style>
+import fs from "node:fs";
+import path from "node:path";
+
+const ROOT = process.cwd();
+const ROUND = 428;
+const ROUND_TYPE = "PromotionRound";
+const TARGET = "full_site/api/usd_ri_page_front.html";
+const SOURCE = "source/full_api/usd_ri_page_front_source.html";
+const OFFICIAL_URL = "https://openusd.org/release/api/usd_ri_page_front.html";
+const SOURCE_PARITY_REPORT = "reports/round_428_usd_ri_module_front_source_parity.json";
+const PROMOTION_ID = "round-428-api-usd-ri-module-front";
+
+function rel(...parts) {
+  return path.join(ROOT, ...parts);
+}
+
+function esc(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function htmlDecode(value) {
+  return String(value ?? "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#([0-9]+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)));
+}
+
+function stripTags(value) {
+  return htmlDecode(
+    String(value ?? "")
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+  );
+}
+
+function zhChars(value) {
+  return (String(value ?? "").match(/[\u4e00-\u9fff]/g) || []).length;
+}
+
+function readJson(file) {
+  return JSON.parse(fs.readFileSync(rel(file), "utf8").replace(/^\uFEFF/, ""));
+}
+
+function writeJson(file, value) {
+  fs.writeFileSync(rel(file), `${JSON.stringify(value, null, 2)}\n`, "utf8");
+}
+
+function sourceHtml() {
+  return fs.readFileSync(rel(SOURCE), "utf8");
+}
+
+function sourceText() {
+  return stripTags(sourceHtml());
+}
+
+function sourceHeadings() {
+  return [...sourceHtml().matchAll(/<h([1-4])[^>]*>([\s\S]*?)<\/h\1>/gi)].map((match) => ({
+    level: Number(match[1]),
+    text: stripTags(match[2]),
+  }));
+}
+
+function sourceExcerpt() {
+  return sourceText().slice(0, 1300);
+}
+
+function css() {
+  return `
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.66}
     body.openusd-has-reading-flow{padding-left:292px}
     header{background:#142538;color:#fff;padding:28px 32px}
@@ -40,27 +112,40 @@
       .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
       .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
     }
-  </style>
-</head>
-<body data-cn-status="bilingual_complete" data-cn-round="428" class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_complete</span>
-    <h1>UsdRi: USD RenderMan Utilities</h1>
-    <div class="meta">Round 428 PromotionRound | Source snapshot: source/full_api/usd_ri_page_front_source.html | Official: https://openusd.org/release/api/usd_ri_page_front.html</div>
-    <p class="navlinks">
-      <a href="../../openusd_bilingual_final.html">总入口</a>
-      <a href="../../site/index.html">API 本地入口</a>
-      <a href="../../site/release_index.html">Release 本地入口</a>
-      <a href="../../source/full_api/usd_ri_page_front_source.html">Local source snapshot</a>
-      <a href="https://openusd.org/release/api/usd_ri_page_front.html">Open official page</a>
-    </p>
-  </header>
+  `;
+}
 
+const links = {
+  final: "../../openusd_bilingual_final.html",
+  api: "../../site/index.html",
+  apiRedirect: "../../site/api/index.html",
+  release: "../../site/release_index.html",
+  source: "../../source/full_api/usd_ri_page_front_source.html",
+  official: OFFICIAL_URL,
+  prev: "usd_vol_page_front.html",
+  next: "usd_media_page_front.html",
+  usdRender: "usd_render_page_front.html",
+  usdShade: "usd_shade_page_front.html",
+  usdLux: "usd_lux_page_front.html",
+  usdMtlx: "usd_mtlx_page_front.html",
+  hd: "hd_page_front.html",
+  hdx: "hdx_page_front.html",
+};
+
+function headingList() {
+  return sourceHeadings()
+    .filter((heading) => heading.text !== "Table of Contents")
+    .map((heading) => `<li><span class="zh">官方 section：<code>${esc(heading.text)}</code>。中文页把它展开为 RenderMan 工具职责、<code>usdRiPxr</code> 边界、USD/Ri 数据类型转换、<code>UsdRiStatements</code>、<code>usdRi/rmanUtilities.h</code>、相邻渲染模块和调试路径。</span><span class="en">Source heading level ${heading.level}: ${esc(heading.text)}</span></li>`)
+    .join("\n");
+}
+
+function readingFlowNav() {
+  return `
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
-  <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
+  <a data-reading-flow="final" href="${links.final}">总入口</a>
   <span> / </span>
-  <a data-reading-flow="api-entry" href="../../site/index.html">API 本地入口</a>
+  <a data-reading-flow="api-entry" href="${links.api}">API 本地入口</a>
   <span> / api / usd_ri_page_front.html</span>
 </nav>
 <aside class="openusd-reading-flow-nav" aria-label="本地阅读导航 / Local reading navigation">
@@ -69,10 +154,10 @@
     <section>
       <h3>入口 / Entrances</h3>
       <ul>
-        <li><a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口 / Final entry</a></li>
-        <li><a data-reading-flow="release-entry" href="../../site/release_index.html">Release 本地入口</a></li>
-        <li><a data-reading-flow="api-entry" href="../../site/index.html">API Doxygen 本地入口</a></li>
-        <li><a data-reading-flow="api-redirect" href="../../site/api/index.html">API redirect / site/api/index.html</a></li>
+        <li><a data-reading-flow="final" href="${links.final}">总入口 / Final entry</a></li>
+        <li><a data-reading-flow="release-entry" href="${links.release}">Release 本地入口</a></li>
+        <li><a data-reading-flow="api-entry" href="${links.api}">API Doxygen 本地入口</a></li>
+        <li><a data-reading-flow="api-redirect" href="${links.apiRedirect}">API redirect / site/api/index.html</a></li>
       </ul>
     </section>
     <section>
@@ -85,30 +170,56 @@
     <section>
       <h3>相关 API / Related API</h3>
       <ul>
-        <li><a data-reading-flow="related" href="usd_render_page_front.html">UsdRender 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="usd_shade_page_front.html">UsdShade 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="usd_lux_page_front.html">UsdLux 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="usd_mtlx_page_front.html">UsdMtlx 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="hd_page_front.html">Hd 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="hdx_page_front.html">Hdx 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.usdRender}">UsdRender 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.usdShade}">UsdShade 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.usdLux}">UsdLux 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.usdMtlx}">UsdMtlx 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.hd}">Hd 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.hdx}">Hdx 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
       <h3>上一页/下一页 / Previous/Next</h3>
       <ul>
-        <li><a data-reading-flow="prev" href="usd_vol_page_front.html">上一页 / Previous: UsdVol</a></li>
-        <li><a data-reading-flow="next" href="usd_media_page_front.html">下一页 / Next: UsdMedia</a></li>
+        <li><a data-reading-flow="prev" href="${links.prev}">上一页 / Previous: UsdVol</a></li>
+        <li><a data-reading-flow="next" href="${links.next}">下一页 / Next: UsdMedia</a></li>
       </ul>
     </section>
     <section>
       <h3>官方外跳 / Official</h3>
       <ul>
-        <li><a class="official-link" data-reading-flow="official" href="https://openusd.org/release/api/usd_ri_page_front.html">打开官方原页 / Open official page</a></li>
+        <li><a class="official-link" data-reading-flow="official" href="${links.official}">打开官方原页 / Open official page</a></li>
       </ul>
     </section>
   </div>
 </aside>
-<!-- openusd-reading-flow-nav:end -->
+<!-- openusd-reading-flow-nav:end -->`;
+}
+
+function buildHtml() {
+  return `<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UsdRi: USD RenderMan Utilities - OpenUSD API 双语导读</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>${css()}</style>
+</head>
+<body data-cn-status="bilingual_complete" data-cn-round="${ROUND}" class="openusd-has-reading-flow">
+  <header>
+    <span class="status">bilingual_complete</span>
+    <h1>UsdRi: USD RenderMan Utilities</h1>
+    <div class="meta">Round ${ROUND} ${ROUND_TYPE} | Source snapshot: ${esc(SOURCE)} | Official: ${esc(OFFICIAL_URL)}</div>
+    <p class="navlinks">
+      <a href="${links.final}">总入口</a>
+      <a href="${links.api}">API 本地入口</a>
+      <a href="${links.release}">Release 本地入口</a>
+      <a href="${links.source}">Local source snapshot</a>
+      <a href="${links.official}">Open official page</a>
+    </p>
+  </header>
+${readingFlowNav()}
   <main>
     <section data-cn-complete="round-428-usd-ri-main-reading-path">
       <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
@@ -176,17 +287,17 @@
 
     <section data-cn-complete="round-428-usd-ri-adjacent-reading">
       <h2>相邻阅读路径 / Adjacent Reading Path</h2>
-      <p><span class="zh">建议阅读路径是：先用本页确认 <code>UsdRi</code> 的 utility scope；如果问题涉及通用输出配置，转到 <a href="usd_render_page_front.html"><code>UsdRender</code></a>；如果涉及材质网络、shader node 或连接关系，转到 <a href="usd_shade_page_front.html"><code>UsdShade</code></a>；如果涉及 MaterialX 文件格式或 Sdr shader discovery，转到 <a href="usd_mtlx_page_front.html"><code>UsdMtlx</code></a> 与相关 Sdr 页面；如果涉及光源和 light filters，转到 <a href="usd_lux_page_front.html"><code>UsdLux</code></a>；如果问题已经进入渲染后端或可视化调试，则结合 <a href="hd_page_front.html"><code>Hd</code></a> 与 <a href="hdx_page_front.html"><code>Hdx</code></a> 日志判断。</span><span class="en">Use UsdRi with UsdRender, UsdShade, UsdMtlx, UsdLux, Hd, and Hdx depending on the RenderMan workflow layer.</span></p>
-      <p><span class="zh">上一页 <a href="usd_vol_page_front.html"><code>UsdVol</code></a> 说明了体积和粒子场 schema 如何把数据交给渲染消费者；下一页 <a href="usd_media_page_front.html"><code>UsdMedia</code></a> 仍是 API 草稿，后续会处理媒体 schema。把这些页面连起来看，可以避免把“schema 表达”“utility conversion”“renderer-specific extension”“Hydra 消费路径”混成单一渲染问题。</span><span class="en">The previous and next local API pages keep the reading path local and distinguish schema, conversion, and renderer-specific behavior.</span></p>
+      <p><span class="zh">建议阅读路径是：先用本页确认 <code>UsdRi</code> 的 utility scope；如果问题涉及通用输出配置，转到 <a href="${links.usdRender}"><code>UsdRender</code></a>；如果涉及材质网络、shader node 或连接关系，转到 <a href="${links.usdShade}"><code>UsdShade</code></a>；如果涉及 MaterialX 文件格式或 Sdr shader discovery，转到 <a href="${links.usdMtlx}"><code>UsdMtlx</code></a> 与相关 Sdr 页面；如果涉及光源和 light filters，转到 <a href="${links.usdLux}"><code>UsdLux</code></a>；如果问题已经进入渲染后端或可视化调试，则结合 <a href="${links.hd}"><code>Hd</code></a> 与 <a href="${links.hdx}"><code>Hdx</code></a> 日志判断。</span><span class="en">Use UsdRi with UsdRender, UsdShade, UsdMtlx, UsdLux, Hd, and Hdx depending on the RenderMan workflow layer.</span></p>
+      <p><span class="zh">上一页 <a href="${links.prev}"><code>UsdVol</code></a> 说明了体积和粒子场 schema 如何把数据交给渲染消费者；下一页 <a href="${links.next}"><code>UsdMedia</code></a> 仍是 API 草稿，后续会处理媒体 schema。把这些页面连起来看，可以避免把“schema 表达”“utility conversion”“renderer-specific extension”“Hydra 消费路径”混成单一渲染问题。</span><span class="en">The previous and next local API pages keep the reading path local and distinguish schema, conversion, and renderer-specific behavior.</span></p>
       <p class="note"><span class="zh">本页保留 <code>UsdRi</code>、<code>usdRiPxr</code>、<code>UsdRiStatements</code>、<code>RenderMan-specific information</code>、<code>USD and Ri values and datatypes</code>、<code>RenderMan headers</code>、<code>Ri Attributes</code>、<code>scoped coordinate systems</code>、<code>usdRi/rmanUtilities.h</code> 等英文标识，便于和官方 Doxygen、源码、USD authoring 工具、构建日志和 renderer adapter 日志核对。</span><span class="en">Identifiers are preserved for source parity and debugging against Doxygen, source, authoring tools, build logs, and renderer adapters.</span></p>
     </section>
 
     <section data-cn-complete="round-428-usd-ri-source-parity">
       <h2>官方 section 对比 / Source Parity</h2>
       <ul>
-<li><span class="zh">官方 section：<code>Overview</code>。中文页把它展开为 RenderMan 工具职责、<code>usdRiPxr</code> 边界、USD/Ri 数据类型转换、<code>UsdRiStatements</code>、<code>usdRi/rmanUtilities.h</code>、相邻渲染模块和调试路径。</span><span class="en">Source heading level 1: Overview</span></li>
+${headingList()}
         <li><span class="zh">已核对 source snapshot 中的核心关键词：<code>UsdRi</code>、<code>RenderMan</code>、<code>usdRiPxr</code>、<code>RenderMan-specific information</code>、<code>USD and Ri values and datatypes</code>、<code>RenderMan headers</code>、<code>UsdRiStatements</code>、<code>Ri Attributes</code>、<code>coordinate systems</code>、<code>usdRi/rmanUtilities.h</code> 和 <code>usd/ri conversion utilities</code>。</span><span class="en">The local page preserves the official UsdRi Overview and keyword structure.</span></li>
-        <li><span class="zh">官方原文摘录仅用于核对，不作为中文主阅读路径；中文主体已经覆盖模块职责、官方 section、API/utility 分组、边界、误读点、调试路径和相邻 API 关系。</span><span class="en">Universal Scene Description: UsdRi: USD RenderMan Utilities Loading... Searching... No Matches UsdRi: USD RenderMan Utilities Overview For USD schemas corresponding to RenderMan concepts and plugins, see the usdRiPxr library. This module provides certain utilities for authoring USD that encodes RenderMan-specific information, and for converting between USD and Ri values and datatypes. There is no inclusion of RenderMan headers, so this module is compilable and useful regardless of whether you have or use RenderMan. The primary classes are: UsdRiStatements, which provides API for encoding most RenderMan specific concepts, like Ri Attributes, and (scoped) coordinate systems. usdRi/rmanUtilities.h prvides usd/ri conversion utilities &amp;copy; Copyright 2026, Pixar Animation Studios. | Terms of Use | Generated on Wed Apr 22 2026 16:02:16 by 1.9.6</span></li>
+        <li><span class="zh">官方原文摘录仅用于核对，不作为中文主阅读路径；中文主体已经覆盖模块职责、官方 section、API/utility 分组、边界、误读点、调试路径和相邻 API 关系。</span><span class="en">${esc(sourceExcerpt())}</span></li>
       </ul>
     </section>
 
@@ -197,8 +308,209 @@
         <li><span class="zh">中文主阅读路径覆盖 <code>UsdRi</code> 模块职责、<code>usdRiPxr</code> 边界、<code>UsdRiStatements</code>、<code>usdRi/rmanUtilities.h</code>、RenderMan headers 独立性、USD/Ri 转换、调试路径和相邻 API。</span><span class="en">Chinese coverage explains scope, boundaries, primary APIs, conversion utilities, debug paths, and adjacent APIs.</span></li>
         <li><span class="zh">页面保留本地 reading-flow 侧栏、breadcrumb、总入口、API/Release 本地入口、相邻本地页和显式官方外跳。</span><span class="en">The page keeps local reading-flow navigation and explicit official access.</span></li>
       </ul>
-      <p><a data-reading-flow="official" href="https://openusd.org/release/api/usd_ri_page_front.html">打开官方原页 / Open official page</a></p>
+      <p><a data-reading-flow="official" href="${links.official}">打开官方原页 / Open official page</a></p>
     </section>
   </main>
 </body>
 </html>
+`;
+}
+
+function sourceParity() {
+  const src = sourceText();
+  const out = fs.existsSync(rel(TARGET)) ? fs.readFileSync(rel(TARGET), "utf8") : "";
+  const sourceKeywords = [
+    "UsdRi",
+    "RenderMan",
+    "usdRiPxr",
+    "RenderMan-specific information",
+    "USD and Ri values and datatypes",
+    "RenderMan headers",
+    "UsdRiStatements",
+    "Ri Attributes",
+    "coordinate systems",
+    "usdRi/rmanUtilities.h",
+    "usd/ri conversion utilities",
+  ];
+  const outputKeywords = [
+    ...sourceKeywords,
+    "UsdRender",
+    "UsdShade",
+    "UsdLux",
+    "UsdMtlx",
+    "Hydra",
+    "Hd",
+    "Hdx",
+    "RenderMan runtime",
+    "Open official page",
+  ];
+  return {
+    generated_at: new Date().toISOString(),
+    round: ROUND,
+    round_type: ROUND_TYPE,
+    target: TARGET,
+    source_snapshot: SOURCE,
+    official_url: OFFICIAL_URL,
+    source_headings: sourceHeadings(),
+    source_keywords_checked: sourceKeywords,
+    output_keywords_checked: outputKeywords,
+    missing_source_keywords: sourceKeywords.filter((keyword) => !src.includes(keyword)),
+    missing_output_keywords: outputKeywords.filter((keyword) => !out.includes(keyword)),
+    output_checks: {
+      has_complete_status: out.includes('data-cn-status="bilingual_complete"') && out.includes(`data-cn-round="${ROUND}"`),
+      has_paragraph_coverage: out.includes("Paragraph-Level Bilingual Coverage") && out.includes("逐段双语理解"),
+      has_final_entry: out.includes("openusd_bilingual_final.html"),
+      has_api_entry: out.includes("site/index.html"),
+      has_api_redirect: out.includes("site/api/index.html"),
+      has_release_entry: out.includes("site/release_index.html"),
+      has_reading_flow_nav: out.includes("openusd-reading-flow-nav") && out.includes("openusd-reading-flow-breadcrumb"),
+      has_explicit_official_link: out.includes("Open official page") && out.includes(OFFICIAL_URL),
+      no_draft_marker: !/bilingual_draft|batch draft page|后续迭代会继续补齐|later iterations add denser bilingual coverage/.test(out),
+      zh_chars: zhChars(out),
+      zh_blocks: (out.match(/class=["'][^"']*\bzh\b[^"']*["']/g) || []).length,
+    },
+  };
+}
+
+function writePage() {
+  fs.writeFileSync(rel(TARGET), buildHtml(), "utf8");
+  writeJson(SOURCE_PARITY_REPORT, sourceParity());
+}
+
+function precheck() {
+  const report = sourceParity();
+  const failed = [];
+  if (report.missing_source_keywords.length) failed.push(`missing source keywords: ${report.missing_source_keywords.join(", ")}`);
+  if (report.missing_output_keywords.length) failed.push(`missing output keywords: ${report.missing_output_keywords.join(", ")}`);
+  for (const [key, value] of Object.entries(report.output_checks)) {
+    if (typeof value === "boolean" && !value) failed.push(`output check failed: ${key}`);
+  }
+  if (report.output_checks.zh_chars < 3200) failed.push(`zh chars too low: ${report.output_checks.zh_chars}`);
+  if (report.output_checks.zh_blocks < 18) failed.push(`zh blocks too low: ${report.output_checks.zh_blocks}`);
+  if (failed.length) {
+    console.error(JSON.stringify({ passed: false, failed, report }, null, 2));
+    process.exit(1);
+  }
+  writeJson(SOURCE_PARITY_REPORT, report);
+  console.log(JSON.stringify({ passed: true, report }, null, 2));
+}
+
+function updateManifest() {
+  const raw = readJson("reports/bilingual_completion_promotions.json");
+  const doc = {
+    ...raw,
+    generated_at: raw.generated_at || new Date().toISOString(),
+    promotions: Array.isArray(raw.promotions) ? raw.promotions : [],
+    updated_at: new Date().toISOString(),
+  };
+  doc.promotions = doc.promotions.filter((entry) => entry.id !== PROMOTION_ID && entry.local_output !== TARGET);
+  doc.promotions.push({
+    id: PROMOTION_ID,
+    title: "UsdRi: USD RenderMan Utilities",
+    official_url: OFFICIAL_URL,
+    local_output: TARGET,
+    status: "bilingual_complete",
+    reason: `Round ${ROUND} ${ROUND_TYPE}: promote the UsdRi module front page by adding Chinese main-reading-path coverage for RenderMan utility scope, usdRiPxr boundaries, UsdRiStatements, Ri Attributes, scoped coordinate systems, usdRi/rmanUtilities.h, USD/Ri datatype conversion, RenderMan-header independence, adjacent UsdRender/UsdShade/UsdLux/UsdMtlx/Hd/Hdx relationships, source parity, reading-flow navigation, and explicit official-page verification.`,
+    evidence: {
+      page_contains_status: "bilingual_complete",
+      generic_draft_marker_removed: true,
+      minimum_chinese_chars: 3200,
+      minimum_complete_section_chinese_chars: 2400,
+      minimum_chinese_blocks: 18,
+      official_source_compared: true,
+      local_source_snapshot_compared: SOURCE,
+      source_parity_report: SOURCE_PARITY_REPORT,
+      round_type: ROUND_TYPE,
+    },
+  });
+  writeJson("reports/bilingual_completion_promotions.json", doc);
+}
+
+function updateProblemAudit() {
+  const quality = readJson("reports/translation_quality_review.json");
+  const debt = readJson("reports/english_debt_audit.json");
+  const inventory = readJson("reports/all_pages_inventory.json");
+  const counts = {
+    total_pages: inventory.counts.total_pages,
+    bilingual_complete: quality.status_counts.bilingual_complete,
+    bilingual_draft: quality.status_counts.bilingual_draft,
+    good_bilingual: quality.grade_counts.good_bilingual,
+    draft_needs_translation: quality.grade_counts.draft_needs_translation,
+    draft_template_only: quality.grade_counts.draft_template_only,
+    review_ready_zh: debt.counts.review_ready_zh,
+    api_complete: debt.counts.api_complete,
+    api_review_ready_zh: debt.counts.api_review_ready_zh,
+    release_complete: debt.counts.release_complete,
+    release_review_ready_zh: debt.counts.release_review_ready_zh,
+    pending_full_scope: inventory.counts.pending_full_scope_pages,
+  };
+  writeJson("reports/current_problem_audit.json", {
+    generated_at: new Date().toISOString(),
+    purpose: `第 ${ROUND} 轮 ${ROUND_TYPE} 记录：确认 ${TARGET} 已晋级，并跟踪当前 OpenUSD 双语完成缺口。`,
+    last_completed_round: {
+      round: ROUND,
+      round_type: ROUND_TYPE,
+      target: TARGET,
+      commit_sha: null,
+      previous_good_bilingual: 206,
+    },
+    current_counts: counts,
+    problems: [
+      {
+        id: "P0-api-draft-backlog",
+        severity: "P0",
+        summary: `当前 good_bilingual=${counts.good_bilingual}/406，API complete=${counts.api_complete}，仍有 ${counts.bilingual_draft} 个可检查草稿，不是完整翻译。`,
+        evidence: `第 ${ROUND} 轮 ${ROUND_TYPE} 将 ${TARGET} 从 API 草稿晋级为 good_bilingual；release 范围保持 ${counts.release_complete}/126 complete。`,
+        required_action: "继续按 PromotionRound 或 DomainSprintRound 推进 API 草稿，只把达标页面写入 promotion manifest。",
+      },
+      {
+        id: "P1-left-navigation-reading-flow",
+        severity: "P1",
+        summary: "完成页必须保留本地 reading-flow 导航、breadcrumb、API/Release/总入口和显式官方外跳。",
+        evidence: "本轮完成后重新运行 route_openusd_internal_links_local 和 audit_openusd_reading_flow_navigation；新增页面有本地侧栏、breadcrumb 和官方外跳。",
+        required_action: "若 reading-flow 审计失败，停止并修复导航，不得推送。",
+      },
+      {
+        id: "P1-markdown-record-encoding",
+        severity: "P1",
+        summary: "Markdown 编码守卫继续作为硬门槛。",
+        evidence: "work.md、reports/iteration_report.md、reports/current_problem_audit.md、reports/bilingual_completion_promotions.md 必须无重复问号损坏、replacement character 和 UTF-8 BOM。",
+        required_action: "若 audit_openusd_markdown_encoding.mjs 失败，先做 ConsistencyRound。",
+      },
+    ],
+    promoted_pages: [
+      {
+        round: ROUND,
+        round_type: ROUND_TYPE,
+        output: TARGET,
+        official_url: OFFICIAL_URL,
+        source_snapshot: SOURCE,
+        source_parity_report: SOURCE_PARITY_REPORT,
+      },
+    ],
+    not_promoted_pages: [],
+    source_parity_report: SOURCE_PARITY_REPORT,
+    next_actions: [
+      "继续推进 API 草稿；release 范围已经 126/126 complete，不要重复处理 release 已完成页。",
+      "优先选择核心 API 或同域短页批量，但每轮必须保证 good_bilingual 按实际达标页增长。",
+    ],
+    next_action: "下一轮建议 PromotionRound：full_site/api/usd_media_page_front.html；开始前必须确认 git/report/validation/markdown/reading-flow 状态干净一致。",
+  });
+}
+
+function stampCommit(sha) {
+  const problem = readJson("reports/current_problem_audit.json");
+  if (problem.last_completed_round) problem.last_completed_round.commit_sha = sha;
+  writeJson("reports/current_problem_audit.json", problem);
+}
+
+const commands = new Set(process.argv.slice(2));
+if (commands.has("--write-page")) writePage();
+if (commands.has("--precheck")) precheck();
+if (commands.has("--manifest")) updateManifest();
+if (commands.has("--problem")) updateProblemAudit();
+const stampArg = process.argv.find((arg) => arg.startsWith("--stamp-commit="));
+if (stampArg) stampCommit(stampArg.slice("--stamp-commit=".length));
+if (commands.size === 0 && !stampArg) {
+  console.log("Usage: node scripts/promote_round_428_usd_ri_module_front.mjs --write-page --precheck --manifest --problem --stamp-commit=<sha>");
+}
