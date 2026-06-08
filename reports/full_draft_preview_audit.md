@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-08T13:25:32.175Z
+Generated: 2026-06-08T13:41:06.264Z
 
-Transient base URL: `http://127.0.0.1:59400/`
+Transient base URL: `http://127.0.0.1:50712/`
 
 Result:
 
 - Passed: true
-- Draft pages: 194
-- Pages checked: 194
-- Passed pages: 194
+- Draft pages: 193
+- Pages checked: 193
+- Passed pages: 193
 - Failed pages: 0
-- Final HTML links: 194
-- Local assets checked: 194
+- Final HTML links: 193
+- Local assets checked: 193
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -210,7 +210,6 @@ Result:
 | true | full_site/api/usdabc_page_front.html | 200 | true | 0 | 0 |
 | true | full_site/api/usddraco_page_front.html | 200 | true | 0 | 0 |
 | true | full_site/api/var_8h_source.html | 200 | true | 0 | 0 |
-| true | full_site/api/work_page_front.html | 200 | true | 0 | 0 |
 
 Policy:
 

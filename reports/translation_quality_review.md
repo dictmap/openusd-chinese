@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-08T13:25:27.124Z
+Generated: 2026-06-08T13:41:01.323Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 194
-- bilingual_complete: 212
+- bilingual_draft: 193
+- bilingual_complete: 213
 
 ## Grade Counts
 
 - draft_template_only: 10
-- draft_needs_translation: 184
-- good_bilingual: 212
+- draft_needs_translation: 183
+- good_bilingual: 213
 
 ## Current Focus Batch
 
@@ -343,7 +343,7 @@ Generated: 2026-06-08T13:25:27.124Z
 | 277 | draft_needs_translation | bilingual_draft | 614 | 26/17 | 0 | 0 | `full_site/api/usddraco_page_front.html` |
 | 278 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/var_8h_source.html` |
 | 279 | good_bilingual | bilingual_complete | 855 | 36/36 | 0 | 0 | `full_site/api/vt_page_front.html` |
-| 280 | draft_needs_translation | bilingual_draft | 643 | 34/26 | 0 | 0 | `full_site/api/work_page_front.html` |
+| 280 | good_bilingual | bilingual_complete | 1350 | 47/47 | 0 | 0 | `full_site/api/work_page_front.html` |
 | 281 | good_bilingual | bilingual_complete | 515 | 10/27 | 0 | 0 | `site/apiDocs.html` |
 | 282 | good_bilingual | bilingual_complete | 1589 | 32/32 | 0 | 0 | `full_site/release/contributing_to_usd.html` |
 | 283 | good_bilingual | bilingual_complete | 1448 | 33/33 | 0 | 0 | `full_site/release/contributors.html` |
