@@ -24,7 +24,7 @@
 - 本轮目标：`full_site/api/md_pxr_exec_exec_usd_docs_overview.html`
 - 官方页面：`https://openusd.org/release/api/md_pxr_exec_exec_usd_docs_overview.html`
 - source parity：`reports/round_457_openexec_overview_source_parity.json`
-- commit SHA：`final-receipt-sha-after-push`
+- commit SHA：`d890446eccffe62809e581b36ab9682f56fe63bd`
 - 完成数状态：good_bilingual=232；review_ready_zh=169。
 - 固定审计：`translation_quality_review.json`、`english_debt_audit.json`、`all_pages_inventory.json`、`validation_report.json` 已重建并一致。
 

@@ -446,7 +446,7 @@ function updateProblemAudit() {
       round: ROUND,
       round_type: ROUND_TYPE,
       target: TARGET,
-      commit_sha: "final-receipt-sha-after-push",
+      commit_sha: "d890446eccffe62809e581b36ab9682f56fe63bd",
       previous_good_bilingual: PREVIOUS_GOOD_BILINGUAL,
     },
     current_counts: counts,
