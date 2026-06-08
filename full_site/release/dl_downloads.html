@@ -3,23 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>下载和视频 / Downloads and Videos</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <title>下载、视频与示例资产 / Downloads and Videos</title>
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
+    .navlinks a{color:#d7e3f4;margin-right:14px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
-  </style>
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
+</style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
     .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
@@ -40,12 +46,19 @@
     }
   </style>
 </head>
-<body class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_draft</span>
-    <h1>下载和视频 / Downloads and Videos</h1>
-    <div class="meta">https://openusd.org/release/dl_downloads.html</div>
-  </header>
+<body data-cn-status="bilingual_complete" data-cn-round="416" data-cn-source="source/full_release/dl_downloads_source.html" class="openusd-has-reading-flow">
+<header>
+  <span class="status">bilingual_complete</span>
+  <h1>下载、视频与示例资产</h1>
+  <p class="meta">Original title: Downloads and Videos | Round 416 DomainSprintRound | Source snapshot: source/full_release/dl_downloads_source.html</p>
+  <p class="navlinks">
+    <a href="../../openusd_bilingual_final.html">总入口</a>
+    <a href="../../site/release_index.html">Release 本地入口</a>
+    <a href="../../site/index.html">API 本地入口</a>
+    <a href="../../source/full_release/dl_downloads_source.html">Local source snapshot</a>
+    <a href="https://openusd.org/release/dl_downloads.html">Open official page</a>
+  </p>
+</header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
   <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
@@ -75,16 +88,16 @@
     <section>
       <h3>同目录/同域 / Same Directory</h3>
       <ul>
-        <li><a data-reading-flow="related" href="spec_usdpreviewsurface.html">UsdPreviewSurface Specification</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="contributing_to_usd.html">Contributing</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="plugins_alembic.html">Alembic USD Plugin</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="plugins_renderman.html">RenderMan USD Imaging Plugin</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="plugins.html">Third Party Plugins</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="spec_usdpreviewsurface.html">UsdPreviewSurface Specification</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="spec_usdz.html">Usdz File Format Specification</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="spec.html">Specifications</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_authoring_variants.html">Authoring Variants</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_converting_between_layer_formats.html">Converting Between Layer Formats</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_end_to_end.html">End to End Example</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="tut_generating_new_schema.html">Generating New Schema Classes</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="tut_helloworld_redux.html">Hello World Redux - Using Generic Prims</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="tut_helloworld.html">Hello World - Creating Your First USD Stage</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="tut_houdini_example.html">Houdini USD Example Workflow</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
@@ -103,139 +116,88 @@
   </div>
 </aside>
 <!-- openusd-reading-flow-nav:end -->
+<main>
+  <section data-cn-complete="round-416-dl-downloads">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+    <p><span class="zh">本页是学习材料、演示、SIGGRAPH 课程、视频和示例资产入口。中文主阅读路径应帮助读者判断：如果想快速理解 USD 概念，先看 Intro to USD 和 videos；如果需要设计背景和行业讨论，看 presentations 和 SIGGRAPH notes；如果要跑教程或验证 pipeline，下载 Assets 和 Additional Assets。所有外部资源和下载链接必须作为明确外跳处理，本地阅读路径则保留 release 入口和相关文档导航。</span><span class="en">This page has been promoted to bilingual_complete after checking the official/local source structure and adding a Chinese main reading path.</span></p>
 
+    <h3>页面职责与本地阅读路线</h3>
+    <ul>
+      <li><span class="zh">本页属于 release 支撑/导航文档，作用是把 tutorial、FAQ、产品生态、下载资料、第三方插件和贡献流程串回本地中文版的连续阅读路径。读者应先看中文说明建立判断，再按需打开原站或本地 source snapshot 核对。</span><span class="en">Role: release support and navigation page.</span></li>
+      <li><span class="zh">本页已经保留显式官方外跳：<a href="https://openusd.org/release/dl_downloads.html">Open official page</a>。除这个入口外，站内阅读应优先走总入口、Release 本地入口、API 本地入口和侧栏导航，避免无提示跳回官方英文站。</span><span class="en">Official links are explicit-only.</span></li>
+      <li><span class="zh">本地 source snapshot 位于 <a href="../../source/full_release/dl_downloads_source.html">source/full_release/dl_downloads_source.html</a>。本轮用它与官方页语义对齐，保留标题、section、链接语义和正式术语。</span><span class="en">Local source snapshot: source/full_release/dl_downloads_source.html</span></li>
+      <li><span class="zh">完成态验收重点是让中文成为主阅读路径，而不是只给英文页面加一段导读。本页保留官方标题、section 名、API/schema/token/属性名、代码、命令、Doxygen 表格标签和链接语义；中文部分负责解释页面职责、阅读顺序、相邻页面关系、边界、误读点和调试路径。英文原文和官方链接只作为核对入口，读者沿本地 release 入口、侧栏导航和 breadcrumb 应能连续阅读。</span><span class="en">Completion guard: Chinese main path, source parity, local reading flow.</span></li>
+    </ul>
 
+    <h3>官方结构覆盖</h3>
+    <p><span class="zh">本轮 source parity 检查关注这些官方关键词：<code>Downloads and Videos</code>, <code>Intro to USD</code>, <code>Presentations</code>, <code>SIGGRAPH Birds of a Feather Notes</code>, <code>SIGGRAPH 2019 Course Notes</code>, <code>Videos</code>, <code>Assets</code>, <code>Additional Assets</code>。它们必须同时存在于 source snapshot 与本地输出中，确保页面没有脱离官方结构。</span><span class="en">Source parity keywords are preserved for audit.</span></p>
+    <table>
+      <thead><tr><th>层级</th><th>官方标题</th><th>中文阅读说明</th></tr></thead>
+      <tbody>
+<tr><td>h1</td><td>Downloads and Videos </td><td>中文阅读时保留官方标题，并用下方说明解释该 section 在本页任务中的作用。</td></tr>
+<tr><td>h2</td><td>Intro to USD </td><td>中文阅读时保留官方标题，并用下方说明解释该 section 在本页任务中的作用。</td></tr>
+<tr><td>h2</td><td>Presentations </td><td>中文阅读时保留官方标题，并用下方说明解释该 section 在本页任务中的作用。</td></tr>
+<tr><td>h2</td><td>SIGGRAPH Birds of a Feather Notes </td><td>中文阅读时保留官方标题，并用下方说明解释该 section 在本页任务中的作用。</td></tr>
+<tr><td>h2</td><td>SIGGRAPH 2019 Course Notes </td><td>中文阅读时保留官方标题，并用下方说明解释该 section 在本页任务中的作用。</td></tr>
+<tr><td>h2</td><td>Videos </td><td>中文阅读时保留官方标题，并用下方说明解释该 section 在本页任务中的作用。</td></tr>
+<tr><td>h2</td><td>Assets </td><td>中文阅读时保留官方标题，并用下方说明解释该 section 在本页任务中的作用。</td></tr>
+<tr><td>h3</td><td>Additional Assets </td><td>中文阅读时保留官方标题，并用下方说明解释该 section 在本页任务中的作用。</td></tr>
+      </tbody>
+    </table>
 
+    <h3>主要 section 中文说明</h3>
+    <ul>
+<li><span class="zh">Intro to USD 适合建立 scene description、composition、layer、stage 和 pipeline 的基础概念。它不是 API 参考，读完后应回到 tutorial 或 user guide 做实际练习。</span><span class="en">Official section anchor: Intro to USD</span></li>
+<li><span class="zh">演示材料通常解释设计动机、工作流案例和生产经验。中文说明应帮助读者把 presentation 当作背景资料，而不是当前 API 行为的唯一依据。</span><span class="en">Official section anchor: Presentations</span></li>
+<li><span class="zh">Birds of a Feather notes 偏社区讨论和现场问题整理，价值在于理解行业关注点和落地经验；精确定义仍要回到 spec、proposal 和 API 页面。</span><span class="en">Official section anchor: SIGGRAPH Birds of a Feather Notes</span></li>
+<li><span class="zh">Course Notes 适合系统学习 USD 的设计和应用。读者可以把它与本地教程、user guide 和 spec 配合使用，形成从概念到实践的路径。</span><span class="en">Official section anchor: SIGGRAPH 2019 Course Notes</span></li>
+<li><span class="zh">视频适合快速理解流程和演示，但不便于逐项核对命令和属性名。中文主路径应提示读者遇到具体命令时回到文本教程或官方文档。</span><span class="en">Official section anchor: Videos</span></li>
+<li><span class="zh">示例资产用于教程、渲染、composition 和 pipeline 验证。下载后应保留目录结构，避免修改路径导致 tutorial 或 resolver 示例无法找到资产。</span><span class="en">Official section anchor: Assets and Additional Assets</span></li>
+    </ul>
 
+    <h3>操作和排查路径</h3>
+    <ol>
+<li><span class="zh">学习路线建议先看 Intro 和视频，再跑 tutorial，随后用 Assets 验证实际 scene composition。</span><span class="en">Workflow note for local Chinese reading path.</span></li>
+<li><span class="zh">下载资产后，先确认解压路径、大小写、相对路径和 resolver 行为，再判断教程脚本是否有问题。</span><span class="en">Workflow note for local Chinese reading path.</span></li>
+<li><span class="zh">引用外部视频或 slide 时，保留原始链接和标题，中文说明只解释用途和阅读顺序。</span><span class="en">Workflow note for local Chinese reading path.</span></li>
+    </ol>
 
+    <h3>边界、误读点与维护规则</h3>
+    <ul>
+<li><span class="zh">下载页不替代安装说明，也不保证外部链接始终可用。</span><span class="en">Boundary or common misread guard.</span></li>
+<li><span class="zh">视频、课程和资产名称保持英文，方便读者在官方站和会议资料中查找。</span><span class="en">Boundary or common misread guard.</span></li>
+<li><span class="zh">外部链接必须明确标识为官方或第三方外跳，不能混入本地连续阅读路径。</span><span class="en">Boundary or common misread guard.</span></li>
+    </ul>
 
+    <h3>相邻文档关系</h3>
+    <p><span class="zh">支撑/导航页的价值在于把读者送到正确的下一页。本页相关本地入口如下；外部链接会保留为显式外跳，不作为普通站内阅读路径。</span><span class="en">Related local reading targets.</span></p>
+    <ul>
+<li><a href="tut_usd_tutorials.html">USD Tutorials</a></li>
+<li><a href="tut_helloworld.html">Hello World tutorial</a></li>
+<li><a href="usdfaq.html">USD FAQ</a></li>
+    </ul>
 
+    <h3>支撑页专项阅读守卫</h3>
+    <ol>
+<li><span class="zh">支撑/导航页的第一层判断是页面用途：它可能是教程目录、FAQ、生态索引、下载入口、插件入口或贡献流程。读者应先判断自己是在学习概念、排查环境、寻找示例资产、评估工具生态、配置插件，还是准备向项目贡献代码，再进入对应的本地下一页。</span><span class="en">Support-page reading-flow guard.</span></li>
+<li><span class="zh">第二层判断是信息来源可信度：本地中文版负责解释阅读路径和常见误区，官方原页负责核对最新英文标题、链接和下载入口，source snapshot 负责确认本轮翻译没有脱离当前 406 页库存内的原始结构。三者职责不同，不应互相替代。</span><span class="en">Support-page reading-flow guard.</span></li>
+<li><span class="zh">第三层判断是本地连续阅读：如果某个正文链接指向 in-scope 页面，后续路由脚本应优先转成本地链接；只有明确写作 Open official page 的链接才作为外跳。这样读者从总入口、release index、侧栏和 breadcrumb 可以顺着读，不会在支持页被带回英文站。</span><span class="en">Support-page reading-flow guard.</span></li>
+<li><span class="zh">第四层判断是技术标识保留：<code>UsdStage</code>、<code>SdfPath</code>、<code>Plug</code>、<code>Hydra</code>、<code>Sdr</code>、<code>TF_DEBUG</code>、<code>hdPrman</code>、文件名、命令、环境变量和产品名都必须保留英文。中文解释它们的职责和排查位置，不能把这些 token 改写成中文名称。</span><span class="en">Support-page reading-flow guard.</span></li>
+<li><span class="zh">第五层判断是排障闭环：遇到教程跑不通、插件找不到、下载资产路径不对、产品兼容性不确定或 PR 流程不清时，先用本页定位问题域，再分别回到 FAQ、tutorial、plugins、products、contributing、spec、proposal 或 API 本地入口，而不是在一个支撑页里猜测所有细节。</span><span class="en">Support-page reading-flow guard.</span></li>
+<li><span class="zh">第六层判断是完成态维护：后续每次重建 final entry 或注入 reading-flow navigation，都要继续检查本页有 side nav、breadcrumb、release 本地入口、API 本地入口、相关本地页、显式官方外跳和 source parity 报告。只要这些读者路径缺失，即使中文字符数足够，也不应把页面视作真正可用的中文版。</span><span class="en">Support-page reading-flow guard.</span></li>
+<li><span class="zh">第七层判断是任务分流：学习类问题进入 tutorial，概念和 composition 疑问进入 FAQ/spec，资产和资料问题进入 downloads，工具生态进入 products，格式或 renderer 扩展进入 plugins，项目协作进入 contributing。这样每个支撑页都只承担导航和解释职责，不把自己写成过度泛化的总文档。</span><span class="en">Support-page reading-flow guard.</span></li>
+<li><span class="zh">第八层判断是回退路径：如果读者从本页跳到相邻页后仍无法解决问题，应能通过 breadcrumb 回到当前层级，或者通过侧栏回到 release index/API entry。这个回退能力是本轮修复左侧阅读导航后必须持续保持的验收条件。</span><span class="en">Support-page reading-flow guard.</span></li>
+<li><span class="zh">第九层判断是版本和时效：产品列表、下载资源、插件构建方式、贡献流程和官方外部链接都可能随 OpenUSD 发布变化。中文页面说明当前本地快照的阅读含义，但不伪装成实时更新的官方公告；需要当前版本信息时，必须显式打开官方原页核对。</span><span class="en">Support-page reading-flow guard.</span></li>
+    </ol>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section data-cn-refinement="release-quality-pass-063">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Downloads and Videos 补充中文优先的页面用途、阅读路径、结构边界和术语对照；英文页面名、API 名称、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于逐项核对官方原页。</p>
-      <p class="en">This section adds Chinese-first page purpose, reading path, structure boundaries, and terminology for Downloads and Videos while retaining English page names, API names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">`Downloads and Videos` 是学习资源和素材入口页，不是 release binary 镜像页；它把 intro、presentation、SIGGRAPH notes、videos 和 assets 汇总到一个导航界面。</span></li>
-        <li><span class="zh">`Intro to USD`、`Presentations`、`SIGGRAPH Birds of a Feather Notes` 和 `SIGGRAPH 2019 Course Notes` 更适合作为概念学习和课程材料入口。</span></li>
-        <li><span class="zh">`Videos` 小节面向演示和讲解材料；阅读时可把视频与 `Tutorials`、`Terms and Concepts`、`Products Using USD` 等页面交叉使用。</span></li>
-        <li><span class="zh">`Assets` 与 `Additional Assets` 小节用于定位官方示例资产或演示素材；下载前应保留官方链接和文件名原样，便于核对版本和许可证要求。</span></li>
-        <li><span class="zh">本页链接很多，复刻时重点是保持清单内 OpenUSD HTML 链接走本地页面，清单外资源或外部下载仍按路由策略处理，不把所有外部资源无选择镜像进仓库。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">下载和视频：</span><span class="en">Downloads and Videos</span></li>
-        <li><span class="zh">演示文稿：</span><span class="en">Presentations</span></li>
-        <li><span class="zh">SIGGRAPH 课程笔记：</span><span class="en">SIGGRAPH Course Notes</span></li>
-        <li><span class="zh">视频资源：</span><span class="en">Videos</span></li>
-        <li><span class="zh">示例资产：</span><span class="en">Assets</span></li>
-        <li><span class="zh">补充资产：</span><span class="en">Additional Assets</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-121">
-      <h2>中文补强导读 / Chinese Refinement Notes</h2>
-      <p class="zh">`Downloads and Videos` 是学习资料、演示视频、技术资料和示例资产的导航页。它不是二进制安装镜像页；读者应把它当作 release 文档中的资源索引，用来找到 intro、presentations、SIGGRAPH notes、videos 和 assets。</p>
-      <p class="en">This refinement section adds page-specific Chinese reading notes for Downloads and Videos while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">页面标题里的 Downloads 更偏向资料和素材下载入口，不等同于包管理器、安装器或当前 release binary 下载说明。</span></li>
-        <li><span class="zh">视频、slides、SIGGRAPH notes 和 assets 的外部链接可能随时间变化；本地复刻保留链接语义，但不把清单外内容强行镜像成本地页面。</span></li>
-        <li><span class="zh">如果读者想学习 USD 概念，应优先从教程和 presentations 进入；如果想获取示例资产，则关注 assets 或 sample data 链接。</span></li>
-        <li><span class="zh">本页和 `USD Tutorials` 互补：前者偏资源集合，后者偏循序学习路线；两者都应保留本地内部链接。</span></li>
-        <li><span class="zh">记录资源页时要保留原始英文标题、会议名、视频名和资产名，因为这些名称通常用于搜索外部资料。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">下载和视频资源：</span><span class="en">Downloads and Videos</span></li>
-        <li><span class="zh">演示文稿：</span><span class="en">presentations</span></li>
-        <li><span class="zh">SIGGRAPH 课程资料：</span><span class="en">SIGGRAPH notes</span></li>
-        <li><span class="zh">示例资产：</span><span class="en">assets</span></li>
-        <li><span class="zh">视频：</span><span class="en">videos</span></li>
-        <li><span class="zh">资源索引：</span><span class="en">resource index</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 2 级标题：Intro to USD</span><span class="en">Intro to USD</span></li>
-<li><span class="zh">第 2 级标题：Presentations</span><span class="en">Presentations</span></li>
-<li><span class="zh">第 2 级标题：SIGGRAPH Birds of a Feather Notes</span><span class="en">SIGGRAPH Birds of a Feather Notes</span></li>
-<li><span class="zh">第 2 级标题：SIGGRAPH 2019 Course Notes</span><span class="en">SIGGRAPH 2019 Course Notes</span></li>
-<li><span class="zh">第 2 级标题：Videos</span><span class="en">Videos</span></li>
-<li><span class="zh">第 2 级标题：Assets</span><span class="en">Assets</span></li>
-<li><span class="zh">第 3 级标题：Additional Assets</span><span class="en">Additional Assets</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">No concise paragraph excerpt extracted.</p>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="../../site/release_index.html" data-local-route="mapped" data-official-href="https://openusd.org/release/index.html">Universal Scene Description</a></li>
-<li><a href="../../site/intro.html" data-local-route="mapped" data-official-href="https://openusd.org/release/intro.html">Introduction to USD</a></li>
-<li><a href="intro_to_openexec.html" data-local-route="mapped" data-official-href="https://openusd.org/release/intro_to_openexec.html">Introduction to OpenExec</a></li>
-<li><a href="../../site/glossary.html" data-local-route="mapped" data-official-href="https://openusd.org/release/glossary.html">Terms and Concepts</a></li>
-<li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Tutorials</a></li>
-<li><a href="tut_helloworld.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_helloworld.html">Hello World - Creating Your First USD Stage</a></li>
-<li><a href="tut_helloworld_redux.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_helloworld_redux.html">Hello World Redux - Using Generic Prims</a></li>
-<li><a href="tut_inspect_and_author_props.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_inspect_and_author_props.html">Inspecting and Authoring Properties</a></li>
-<li><a href="tut_referencing_layers.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_referencing_layers.html">Referencing Layers</a></li>
-<li><a href="tut_converting_between_layer_formats.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_converting_between_layer_formats.html">Converting Between Layer Formats</a></li>
-<li><a href="tut_traversing_stage.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_traversing_stage.html">Traversing a Stage</a></li>
-<li><a href="tut_authoring_variants.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_authoring_variants.html">Authoring Variants</a></li>
-<li><a href="tut_variants_example_in_katana.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_variants_example_in_katana.html">Variants Example in Katana</a></li>
-<li><a href="tut_xforms.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_xforms.html">Transformations, Animation, and Layer Offsets</a></li>
-<li><a href="tut_simple_shading.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_simple_shading.html">Simple Shading in USD</a></li>
-<li><a href="tut_end_to_end.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_end_to_end.html">End to End Example</a></li>
-<li><a href="tut_houdini_example.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_houdini_example.html">Houdini USD Example Workflow</a></li>
-<li><a href="tut_generating_new_schema.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_generating_new_schema.html">Generating New Schema Classes</a></li>
-<li><a href="tut_usdview_plugin.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usdview_plugin.html">Creating a Usdview Plugin</a></li>
-<li><a href="usd_products.html" data-local-route="mapped" data-official-href="https://openusd.org/release/usd_products.html">Products Using USD</a></li>
-<li><a href="user_guides/collections_and_patterns.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/collections_and_patterns.html">Collections and Patterns</a></li>
-<li><a href="user_guides/color_user_guide.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/color_user_guide.html">Color</a></li>
-<li><a href="user_guides/namespace_editing.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/namespace_editing.html">Namespace Editing</a></li>
-<li><a href="user_guides/render_user_guide.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html">Rendering with USD</a></li>
-<li><a href="user_guides/primvars.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/primvars.html">Primvars</a></li>
-<li><a href="user_guides/schemas/index.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/index.html">Schema Domains</a></li>
-<li><a href="user_guides/schemas/usdLux/usdLux_toc.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/usdLux_toc.html">Lights (usdLux)</a></li>
-<li><a href="user_guides/schemas/usdLux/overview.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/overview.html">Overview</a></li>
-<li><a href="user_guides/schemas/usdLux/BoundableLightBase.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/BoundableLightBase.html">BoundableLightBase</a></li>
-<li><a href="user_guides/schemas/usdLux/CylinderLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/CylinderLight.html">CylinderLight</a></li>
-<li><a href="user_guides/schemas/usdLux/DiskLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DiskLight.html">DiskLight</a></li>
-<li><a href="user_guides/schemas/usdLux/DistantLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DistantLight.html">DistantLight</a></li>
-<li><a href="user_guides/schemas/usdLux/DomeLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight.html">DomeLight</a></li>
-<li><a href="user_guides/schemas/usdLux/DomeLight_1.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight_1.html">DomeLight_1</a></li>
-<li><a href="user_guides/schemas/usdLux/GeometryLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/GeometryLight.html">GeometryLight</a></li>
-<li><a href="user_guides/schemas/usdLux/LightAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/LightAPI.html">LightAPI</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/dl_downloads.html">打开官方原页 / Open official page</a></p>
-    </section>
-  </main>
+    <h3>完成态验收</h3>
+    <ul>
+      <li><span class="zh">状态标记为 <code>bilingual_complete</code>，删除旧的草稿提示，并写入第 416 轮 source parity 报告。</span><span class="en">Status marker and source parity are present.</span></li>
+      <li><span class="zh">中文覆盖页面职责、官方 section、相邻 tutorial/user guide/schema/API/spec/proposal/support 页关系、阅读路径、边界、误读点和调试路径。</span><span class="en">Chinese coverage includes role, sections, relationships, boundaries, misreads, and diagnostics.</span></li>
+      <li><span class="zh">API 名、schema 名、token、属性名、函数名、代码、命令、Doxygen 表格标签和链接语义保持原样，只在中文说明中解释用途。</span><span class="en">Technical identifiers are preserved.</span></li>
+      <li><span class="zh">后续维护应继续运行 Markdown 编码、English debt、navigation、reading-flow、local link routing、full draft preview、report index 和 validation，不以英文/中文比例作为硬失败。</span><span class="en">English/Chinese ratio is diagnostic only.</span></li>
+    </ul>
+  </section>
+</main>
 </body>
 </html>

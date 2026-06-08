@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-08T05:23:57.305Z
+Generated: 2026-06-08T05:43:10.784Z
 
-Transient base URL: `http://127.0.0.1:50134/`
+Transient base URL: `http://127.0.0.1:64297/`
 
 Result:
 
 - Passed: true
-- Draft pages: 225
-- Pages checked: 225
-- Passed pages: 225
+- Draft pages: 217
+- Pages checked: 217
+- Passed pages: 217
 - Failed pages: 0
-- Final HTML links: 225
-- Local assets checked: 225
+- Final HTML links: 217
+- Local assets checked: 217
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -225,23 +225,15 @@ Result:
 | true | full_site/api/var_8h_source.html | 200 | true | 0 | 0 |
 | true | full_site/api/vt_page_front.html | 200 | true | 0 | 0 |
 | true | full_site/api/work_page_front.html | 200 | true | 0 | 0 |
-| true | full_site/release/contributing_to_usd.html | 200 | true | 0 | 0 |
 | true | full_site/release/contributors.html | 200 | true | 0 | 0 |
-| true | full_site/release/dl_downloads.html | 200 | true | 0 | 0 |
 | true | full_site/release/genindex.html | 200 | true | 0 | 0 |
 | true | full_site/release/intro_to_openexec.html | 200 | true | 0 | 0 |
 | true | full_site/release/maxperf.html | 200 | true | 0 | 0 |
-| true | full_site/release/plugins_alembic.html | 200 | true | 0 | 0 |
-| true | full_site/release/plugins_renderman.html | 200 | true | 0 | 0 |
-| true | full_site/release/plugins.html | 200 | true | 0 | 0 |
 | true | full_site/release/press_opensource_announce.html | 200 | true | 0 | 0 |
 | true | full_site/release/press_opensource_release.html | 200 | true | 0 | 0 |
 | true | full_site/release/ref_performance_metrics.html | 200 | true | 0 | 0 |
 | true | full_site/release/release_schedule.html | 200 | true | 0 | 0 |
 | true | full_site/release/search.html | 200 | true | 0 | 0 |
-| true | full_site/release/tut_usd_tutorials.html | 200 | true | 0 | 0 |
-| true | full_site/release/usd_products.html | 200 | true | 0 | 0 |
-| true | full_site/release/usdfaq.html | 200 | true | 0 | 0 |
 
 Policy:
 

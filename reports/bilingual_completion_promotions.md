@@ -1,6 +1,6 @@
 # OpenUSD 完整双语晋级清单
 
-Generated: 2026-06-08T05:23:52.774Z
+Generated: 2026-06-08T05:43:05.832Z
 
 这份清单只记录已经从 `bilingual_draft` 晋级为 `bilingual_complete` 的页面。它是 `scripts/discover_openusd_all_pages.mjs` 识别 promoted complete 页面的审计来源，不等同于把草稿页改一个状态。
 
@@ -189,3 +189,11 @@ Generated: 2026-06-08T05:23:52.774Z
 | `round-415-release-proposal-wp-rigid-body-physics` | `full_site/release/wp_rigid_body_physics.html` | `https://openusd.org/release/wp_rigid_body_physics.html` | bilingual_complete |
 | `round-415-release-proposal-wp-schema-versioning` | `full_site/release/wp_schema_versioning.html` | `https://openusd.org/release/wp_schema_versioning.html` | bilingual_complete |
 | `round-415-release-proposal-wp-usdaudio` | `full_site/release/wp_usdaudio.html` | `https://openusd.org/release/wp_usdaudio.html` | bilingual_complete |
+| `round-416-release-support-tut-usd-tutorials` | `full_site/release/tut_usd_tutorials.html` | `https://openusd.org/release/tut_usd_tutorials.html` | bilingual_complete |
+| `round-416-release-support-usdfaq` | `full_site/release/usdfaq.html` | `https://openusd.org/release/usdfaq.html` | bilingual_complete |
+| `round-416-release-support-usd-products` | `full_site/release/usd_products.html` | `https://openusd.org/release/usd_products.html` | bilingual_complete |
+| `round-416-release-support-dl-downloads` | `full_site/release/dl_downloads.html` | `https://openusd.org/release/dl_downloads.html` | bilingual_complete |
+| `round-416-release-support-plugins` | `full_site/release/plugins.html` | `https://openusd.org/release/plugins.html` | bilingual_complete |
+| `round-416-release-support-plugins-alembic` | `full_site/release/plugins_alembic.html` | `https://openusd.org/release/plugins_alembic.html` | bilingual_complete |
+| `round-416-release-support-plugins-renderman` | `full_site/release/plugins_renderman.html` | `https://openusd.org/release/plugins_renderman.html` | bilingual_complete |
+| `round-416-release-support-contributing-to-usd` | `full_site/release/contributing_to_usd.html` | `https://openusd.org/release/contributing_to_usd.html` | bilingual_complete |

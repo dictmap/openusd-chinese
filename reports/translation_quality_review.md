@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-08T05:23:27.730Z
+Generated: 2026-06-08T05:43:04.452Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 225
-- bilingual_complete: 181
+- bilingual_draft: 217
+- bilingual_complete: 189
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 214
-- good_bilingual: 181
+- draft_needs_translation: 206
+- good_bilingual: 189
 
 ## Current Focus Batch
 
@@ -345,18 +345,18 @@ Generated: 2026-06-08T05:23:27.730Z
 | 279 | draft_needs_translation | bilingual_draft | 718 | 41/28 | 0 | 0 | `full_site/api/vt_page_front.html` |
 | 280 | draft_needs_translation | bilingual_draft | 643 | 34/26 | 0 | 0 | `full_site/api/work_page_front.html` |
 | 281 | good_bilingual | bilingual_complete | 515 | 10/27 | 0 | 0 | `site/apiDocs.html` |
-| 282 | draft_needs_translation | bilingual_draft | 681 | 36/29 | 0 | 0 | `full_site/release/contributing_to_usd.html` |
+| 282 | good_bilingual | bilingual_complete | 1589 | 32/32 | 0 | 0 | `full_site/release/contributing_to_usd.html` |
 | 283 | draft_needs_translation | bilingual_draft | 678 | 26/19 | 0 | 0 | `full_site/release/contributors.html` |
-| 284 | draft_needs_translation | bilingual_draft | 640 | 32/23 | 0 | 0 | `full_site/release/dl_downloads.html` |
+| 284 | good_bilingual | bilingual_complete | 1600 | 32/32 | 0 | 0 | `full_site/release/dl_downloads.html` |
 | 285 | draft_needs_translation | bilingual_draft | 400 | 18/14 | 0 | 0 | `full_site/release/genindex.html` |
 | 286 | good_bilingual | bilingual_complete | 862 | 112/509 | 0 | 0 | `site/glossary.html` |
 | 287 | good_bilingual | bilingual_complete | 509 | 10/331 | 0 | 0 | `site/release_index.html` |
 | 288 | draft_needs_translation | bilingual_draft | 608 | 40/33 | 0 | 0 | `full_site/release/intro_to_openexec.html` |
 | 289 | good_bilingual | bilingual_complete | 2736 | 53/46 | 0 | 0 | `site/intro.html` |
 | 290 | draft_needs_translation | bilingual_draft | 625 | 29/22 | 0 | 0 | `full_site/release/maxperf.html` |
-| 291 | draft_needs_translation | bilingual_draft | 673 | 24/18 | 0 | 0 | `full_site/release/plugins_alembic.html` |
-| 292 | draft_needs_translation | bilingual_draft | 575 | 30/22 | 0 | 0 | `full_site/release/plugins_renderman.html` |
-| 293 | draft_needs_translation | bilingual_draft | 622 | 26/19 | 0 | 0 | `full_site/release/plugins.html` |
+| 291 | good_bilingual | bilingual_complete | 1456 | 30/30 | 0 | 0 | `full_site/release/plugins_alembic.html` |
+| 292 | good_bilingual | bilingual_complete | 1282 | 31/31 | 0 | 0 | `full_site/release/plugins_renderman.html` |
+| 293 | good_bilingual | bilingual_complete | 1467 | 30/30 | 0 | 0 | `full_site/release/plugins.html` |
 | 294 | draft_needs_translation | bilingual_draft | 585 | 28/21 | 0 | 0 | `full_site/release/press_opensource_announce.html` |
 | 295 | draft_needs_translation | bilingual_draft | 625 | 28/21 | 0 | 0 | `full_site/release/press_opensource_release.html` |
 | 296 | draft_needs_translation | bilingual_draft | 705 | 39/32 | 0 | 0 | `full_site/release/ref_performance_metrics.html` |
@@ -377,12 +377,12 @@ Generated: 2026-06-08T05:23:27.730Z
 | 311 | good_bilingual | bilingual_complete | 2088 | 46/46 | 0 | 0 | `full_site/release/tut_referencing_layers.html` |
 | 312 | good_bilingual | bilingual_complete | 2076 | 46/46 | 0 | 0 | `full_site/release/tut_simple_shading.html` |
 | 313 | good_bilingual | bilingual_complete | 1891 | 46/46 | 0 | 0 | `full_site/release/tut_traversing_stage.html` |
-| 314 | draft_needs_translation | bilingual_draft | 623 | 27/20 | 0 | 0 | `full_site/release/tut_usd_tutorials.html` |
+| 314 | good_bilingual | bilingual_complete | 1520 | 30/30 | 0 | 0 | `full_site/release/tut_usd_tutorials.html` |
 | 315 | good_bilingual | bilingual_complete | 2117 | 39/18 | 0 | 0 | `full_site/release/tut_usdview_plugin.html` |
 | 316 | good_bilingual | bilingual_complete | 2150 | 42/42 | 0 | 0 | `full_site/release/tut_variants_example_in_katana.html` |
 | 317 | good_bilingual | bilingual_complete | 2044 | 40/40 | 0 | 0 | `full_site/release/tut_xforms.html` |
-| 318 | draft_needs_translation | bilingual_draft | 544 | 37/35 | 0 | 0 | `full_site/release/usd_products.html` |
-| 319 | draft_needs_translation | bilingual_draft | 645 | 34/27 | 0 | 0 | `full_site/release/usdfaq.html` |
+| 318 | good_bilingual | bilingual_complete | 1539 | 31/31 | 0 | 0 | `full_site/release/usd_products.html` |
+| 319 | good_bilingual | bilingual_complete | 1410 | 32/32 | 0 | 0 | `full_site/release/usdfaq.html` |
 | 320 | good_bilingual | bilingual_complete | 1831 | 42/42 | 0 | 0 | `full_site/release/user_guides/collections_and_patterns.html` |
 | 321 | good_bilingual | bilingual_complete | 1739 | 39/36 | 0 | 0 | `full_site/release/user_guides/color_user_guide.html` |
 | 322 | good_bilingual | bilingual_complete | 1540 | 38/35 | 0 | 0 | `full_site/release/user_guides/namespace_editing.html` |

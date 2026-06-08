@@ -1,6 +1,6 @@
 # OpenUSD English Debt Audit
 
-Generated: 2026-06-08T05:23:28.800Z
+Generated: 2026-06-08T05:43:05.470Z
 
 Purpose:
 
@@ -12,16 +12,16 @@ Purpose:
 ## Counts
 
 - Total pages: 406
-- good_bilingual: 181
-- review_ready_zh: 118
+- good_bilingual: 189
+- review_ready_zh: 126
 - review_needs_zh_debt: 63
 - API complete: 72
 - API review_ready_zh: 12
-- Release complete: 109
-- Release review_ready_zh: 106
+- Release complete: 117
+- Release review_ready_zh: 114
 - Complete pages with high/very high ratio diagnostic: 10
-- bilingual_draft: 225
-- draft_needs_translation: 214
+- bilingual_draft: 217
+- draft_needs_translation: 206
 - draft_template_only: 11
 
 ## Complete Pages Still Carrying English Debt
@@ -83,17 +83,9 @@ Purpose:
 | 288 | `full_site/release/intro_to_openexec.html` | release | release_or_tutorial | 608 | 7/4 | 3.36 | medium | draft |
 | 295 | `full_site/release/press_opensource_release.html` | release | release_or_tutorial | 625 | 7/4 | 3.07 | medium | draft |
 | 283 | `full_site/release/contributors.html` | release | release_or_tutorial | 678 | 6/4 | 2.69 | medium | draft |
-| 314 | `full_site/release/tut_usd_tutorials.html` | release | release_or_tutorial | 623 | 6/4 | 2.57 | medium | draft |
 | 290 | `full_site/release/maxperf.html` | release | release_or_tutorial | 625 | 7/4 | 2.49 | medium | draft |
-| 318 | `full_site/release/usd_products.html` | release | release_or_tutorial | 544 | 6/4 | 2.44 | medium | draft |
 | 297 | `full_site/release/release_schedule.html` | release | release_or_tutorial | 632 | 6/4 | 2.35 | medium | draft |
-| 293 | `full_site/release/plugins.html` | release | release_or_tutorial | 622 | 7/4 | 2.34 | medium | draft |
-| 291 | `full_site/release/plugins_alembic.html` | release | release_or_tutorial | 673 | 7/4 | 2.28 | medium | draft |
 | 296 | `full_site/release/ref_performance_metrics.html` | release | release_or_tutorial | 705 | 7/4 | 2.17 | medium | draft |
-| 292 | `full_site/release/plugins_renderman.html` | release | release_or_tutorial | 575 | 7/4 | 2.14 | medium | draft |
-| 282 | `full_site/release/contributing_to_usd.html` | release | release_or_tutorial | 681 | 7/4 | 2.1 | medium | draft |
-| 319 | `full_site/release/usdfaq.html` | release | release_or_tutorial | 645 | 7/4 | 2.06 | medium | draft |
-| 284 | `full_site/release/dl_downloads.html` | release | release_or_tutorial | 640 | 7/4 | 1.57 | normal | draft |
 | 285 | `full_site/release/genindex.html` | release | release_or_tutorial | 400 | 7/4 | 1.46 | normal | draft |
 
 Policy:
