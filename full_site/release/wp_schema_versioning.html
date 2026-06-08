@@ -3,25 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>USD Schema 版本化 / Schema Versioning in USD</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <title>USD Schema 版本化提案 / Schema Versioning in USD</title>
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
+    .navlinks a{color:#d7e3f4;margin-right:14px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
-  </style>
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
+</style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
     .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
@@ -42,12 +46,19 @@
     }
   </style>
 </head>
-<body class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_draft</span>
-    <h1>USD Schema 版本化 / Schema Versioning in USD</h1>
-    <div class="meta">https://openusd.org/release/wp_schema_versioning.html</div>
-  </header>
+<body data-cn-status="bilingual_complete" data-cn-round="415" data-cn-source="source/full_release/wp_schema_versioning_source.html" class="openusd-has-reading-flow">
+<header>
+  <span class="status">bilingual_complete</span>
+  <h1>USD Schema 版本化提案</h1>
+  <p class="meta">Original title: Schema Versioning in USD | Round 415 DomainSprintRound | Source snapshot: source/full_release/wp_schema_versioning_source.html</p>
+  <p class="navlinks">
+    <a href="../../openusd_bilingual_final.html">总入口</a>
+    <a href="../../site/release_index.html">Release 本地入口</a>
+    <a href="../../site/index.html">API 本地入口</a>
+    <a href="../../source/full_release/wp_schema_versioning_source.html">Local source snapshot</a>
+    <a href="https://openusd.org/release/wp_schema_versioning.html">Open official page</a>
+  </p>
+</header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
   <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
@@ -105,133 +116,68 @@
   </div>
 </aside>
 <!-- openusd-reading-flow-nav:end -->
+<main>
+  <section data-cn-complete="round-415-wp-schema-versioning">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+    <p><span class="zh">本页解释 USD schema 版本化为什么困难，以及如何用 per-schema versioning、versioned schema names、Schema Registry 和 <code>UsdPrim</code> schema-related API 处理演进。中文阅读重点是区分 prim 的组成结果、API schema 应用、schema class、registry 查询和自动应用规则。它不是简单的版本号说明，而是对 composition、authoring API 和兼容性风险的系统讨论。</span><span class="en">Chinese is the main reading path; English identifiers, API names, schema names, tokens, property names, code, commands, and links are retained for verification.</span></p>
+    <table>
+      <thead><tr><th>Official section</th><th>中文主阅读说明 / Chinese-first coverage</th></tr></thead>
+      <tbody>
+      <tr>
+        <th>Introduction</th>
+        <td><span class="zh">Introduction 说明 schema 会随产品和工具演进，但 USD scene description 需要长期可读、可组合、可迁移。版本化机制要让旧资产可解释，同时允许新 schema 增加能力。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Challenges to Schema Versioning in USD</th>
+        <td><span class="zh">挑战包括 composition 让 prim 版本难以直接查询、多层 authoring API 可能写出复杂版本场景、一个 prim 可拥有多个 API schemas，以及版本化对速度和可扩展性的影响。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Composition Makes Prim Version a Difficult Query</th>
+        <td><span class="zh">composition 可能从多个 layer 汇总 prim 定义，因此 prim 版本不是简单读取一个字段。调试时应看 composed result 和各层 opinions，而不是假设单层写入就是最终版本。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Proposal for Per-Schema Versioning</th>
+        <td><span class="zh">per-schema versioning 让版本跟 schema 绑定，而不是给整个 prim 一个单一版本。这样多个 API schema 可以独立演进，减少互相阻塞。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Version Representation in Schemas</th>
+        <td><span class="zh">versioned schema names、C++ schema classes、schema inheritance 和 explicit built-in API schemas 都是表示方式。正式 schema 名和 C++ class 名必须保留英文。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Schema Registry</th>
+        <td><span class="zh"><code>Schema Registry</code> 负责记录 schema 类型、版本和可用性。工具需要通过 registry 查询，而不是硬编码所有版本规则。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>UsdPrim Schema-related API</th>
+        <td><span class="zh"><code>UsdPrim</code> schema-related API 让调用者检查、应用和解释 schema。中文解释应覆盖查询路径、API schema 冲突和 multiple-apply API schema 的边界。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Risks, Questions, Limitations</th>
+        <td><span class="zh">风险包括版本冲突、性能、自动应用规则、旧资产迁移和工具链兼容。提案并不消除所有迁移成本，而是给出更可审计的表达方式。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Guidelines for Schema Versioning</th>
+        <td><span class="zh">指南部分帮助 schema 作者决定何时需要新版本、何时只改文档或默认值、以及如何避免破坏既有资产。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr></tbody>
+    </table>
 
+    <h3>中文主阅读路线 / Chinese Main Reading Path</h3>
+    <ol><li><span class="zh">遇到 schema 行为差异时，先确认 prim 应用了哪些 concrete schema 和 API schema，再通过 registry 或 <code>UsdPrim</code> API 查看版本相关信息。</span><span class="en">Operational reading and debugging path.</span></li><li><span class="zh">设计新 schema 版本时，评估是否破坏既有资产、是否需要 versioned schema name、是否影响 C++ class 和自动应用规则。</span><span class="en">Operational reading and debugging path.</span></li><li><span class="zh">迁移资产时，保留旧层的 composition 证据，逐步更新 schema 应用和属性，而不是一次性假设所有 prim 都能采用新版本。</span><span class="en">Operational reading and debugging path.</span></li></ol>
 
+    <h3>边界、误读点与调试路径 / Boundaries, Misreads, Debugging</h3>
+    <ul><li><span class="zh">schema 版本不是 prim 的单一全局版本；一个 prim 可以同时涉及多个 schema 和 API schema。</span><span class="en">Boundary or common misread to avoid.</span></li><li><span class="zh">版本化不能替代清晰迁移策略，旧资产、工具和 plugin 仍需要兼容处理。</span><span class="en">Boundary or common misread to avoid.</span></li><li><span class="zh"><code>Schema Registry</code>、<code>UsdPrim</code>、<code>multiple-apply API schema</code> 等术语必须原样保留，中文只解释语义。</span><span class="en">Boundary or common misread to avoid.</span></li></ul>
 
+    <h3>完成态验收与维护 / Completion Gate and Maintenance</h3>
+    <ul><li><span class="zh">阅读 USD Schema 版本化提案 时，应先把它放在 release proposal 与当前 schema/API reference 之间理解：proposal 解释设计动机和取舍，schema/user guide 给出当前可用的 authoring 入口，API 页面用于核对具体类型、函数、属性和 token。中文层的目的不是替代英文标识，而是让读者先靠中文判断问题属于规范、提案、用户指南还是实现细节。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本页保留 Schema Versioning in USD 的官方标题和主要 section，是为了方便读者与官方文档逐段核对。正式 API 名、schema 名、属性名、C++ 类型、命令、代码片段、Sdr/Hydra/UsdPrim 等标识必须保持英文；中文只解释职责、边界、调试路径和与相邻页面的关系。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">如果读者在实际项目中遇到不一致，应按中文主路径先定位层级：scene description 是否 author 正确，schema 或 API 是否属于当前 OpenUSD 版本，renderer、resolver、simulator 或播放器是否实现对应语义，最后再查看官方原页和 source snapshot 的细节。这样能避免把提案讨论误当成运行时保证。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本地连续阅读路径要求页面可从总入口进入 release index，再进入本页和相邻本地页面；只有标明 Open official page 的链接才是外跳。维护时如果新增相关页，优先更新相邻文档和 reading-flow 导航，而不是让用户在正文里跳到官方英文站后失去中文上下文。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本页的验收重点包括：中文是否覆盖官方核心 section，是否说明页面职责和读者决策路径，是否列出常见误读和调试检查点，是否保留 source parity，是否没有重复问号、replacement character、UTF-8 BOM 或草率的模板化描述。通过这些检查后，页面才适合写入 promotion manifest。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">后续维护中，如果 OpenUSD 官方内容变更，应先比较本地 source snapshot 与官方页面，再决定是补充中文解释、更新相邻链接，还是把页面降回需要复核的队列。不要因为英文比例高就直接判失败，也不要因为有中文总述就认为已经具备完整主阅读路径。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">对团队协作而言，本页应作为问题分流入口：实现者用它找到 schema/API 核对点，技术美术用它理解 authoring 和工具链影响，验证人员用它设计 source parity、链接路由、导航和 validation 检查。三类读者都能靠中文先建立判断，再回到英文标识核对。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">在使用 USD Schema 版本化提案 做工程决策时，建议先写下当前问题的输入、输出和失败现象：例如资产解析失败、灯光不被 delegate 识别、坐标系统名称不匹配、刚体行为不稳定、schema 版本冲突或音频时间不同步。随后把问题映射到本页对应 section，再进入相邻本地文档验证具体 schema 和 API。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">如果页面属于 proposal 或 whitepaper，中文说明必须提醒读者它提供设计背景、权衡和迁移思路；真正可执行的 authoring 细节仍要回到当前 release 的 user guide、schema 页面和 API reference。这样既能保留提案的历史价值，也能避免把未冻结讨论当成当前工具链的强制行为。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本地中文版维护时还要关注链接语义：站内阅读路径应指向本地 HTML，外部官方链接必须有明确文字；如果 route 或 reading-flow 审计发现普通正文链接跳到 openusd.org，应先修路由或导航，再考虑继续晋级新页面。这个规则对长篇 proposal 尤其重要，因为读者经常需要在多个背景页之间往返。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">对于审计而言，本页应同时满足四类证据：HTML 中有 <code>bilingual_complete</code> 和 <code>data-cn-complete</code>，translation_quality_review 评为 <code>good_bilingual</code>，english_debt_audit 认可中文主阅读路径和 section 覆盖，source parity 报告没有缺失关键词。缺少任一证据时，都不应把页面当作已经完成。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">最终复核时，还要从用户视角打开页面：标题能否说明主题，第一段能否解释页面职责，表格能否覆盖官方主要 section，调试清单能否指导下一步，相关链接能否回到本地中文站。只有这些条件同时成立，完成数增长才代表真实阅读体验改善，而不是单纯增加计数。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">若主题涉及版本、迁移或兼容性，还应核对当前 OpenUSD release 的实际行为，避免把旧提案中的历史语境直接套用到新工具链。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li></ul>
 
+    <h3>相邻文档关系 / Adjacent Documents</h3>
+    <p><span class="zh">这些本地链接把本页放回 OpenUSD 中文站的连续阅读路径：先从总入口到 release index，再进入 proposal、spec、user guide 或 API 页面。页面只把 <code>Open official page</code> 作为明确外跳。</span><span class="en">Adjacent local pages keep the reading flow inside the local bilingual site.</span></p>
+    <ul><li><a href="../api/class_usd_schema_registry.html">UsdSchemaRegistry API</a></li><li><a href="../api/class_usd_prim.html">UsdPrim API</a></li><li><a href="user_guides/schemas/index.html">Schema guide index</a></li></ul>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section>
-      <h2>中文导读 / Chinese Reading Notes</h2>
-      <ul>
-<li><span class="zh">该 proposal 讨论 USD schema 版本化的挑战，尤其是 composition、API schema 叠加和性能可扩展性对版本查询的影响。</span></li>
-<li><span class="zh">文档提出 per-schema versioning，使用版本化 schema 名称与 C++ schema class/codegen 策略来表达不同版本家族。</span></li>
-<li><span class="zh">重点问题包括 built-in API schemas、auto-apply API schemas、multiple-apply API schemas 和 API schema version conflicts。</span></li>
-<li><span class="zh">本地页保留 apiSchemas 中带版本后缀的示例，以及 schema inheritance、UsdPrim schema API 和代码生成选择的阅读入口。</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-076">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Schema Versioning in USD 追加第二层中文精修说明，重点补足 proposal 的历史状态、对象模型、当前 API 入口和常见误读风险；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds a second Chinese-first refinement layer for Schema Versioning in USD, focusing on proposal history, object model, current API entry points, and common interpretation risks while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">本 proposal 处理 USD schema 演化问题：同一 stage 中可能组合来自不同版本 schema 的数据，且 prim 可叠加多个 API schemas。</span></li>
-        <li><span class="zh">composition 让“prim 的版本”很难成为单一查询结果，因此 proposal 更偏向 per-schema versioning，而不是给整个 prim 贴一个全局版本。</span></li>
-        <li><span class="zh">版本信息可体现在 versioned schema names、C++ schema class/codegen 策略和 `apiSchemas` 列表中，例如 `CollectionAPI_1:foo` 与 `CollectionAPI:bar`。</span></li>
-        <li><span class="zh">built-in API schemas、auto-apply API schemas、multiple-apply API schemas 都会影响 version conflict 判断和 schema inheritance 解释。</span></li>
-        <li><span class="zh">阅读时要把 scene description 中的 authored schema tokens、运行时 `UsdPrim` type info、以及生成的 C++ API 类分开理解，避免把它们当成同一层数据。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">Schema 版本化：</span><span class="en">Schema Versioning</span></li>
-        <li><span class="zh">按 schema 版本化：</span><span class="en">per-schema versioning</span></li>
-        <li><span class="zh">API schema 列表 metadata：</span><span class="en">apiSchemas</span></li>
-        <li><span class="zh">多实例应用 API schema：</span><span class="en">multiple-apply API schema</span></li>
-        <li><span class="zh">自动应用 API schema：</span><span class="en">auto-apply API schema</span></li>
-        <li><span class="zh">版本冲突：</span><span class="en">version conflict</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-124">
-      <h2>中文补强导读 / Chinese Refinement Notes</h2>
-      <p class="zh">`Schema Versioning in USD` 讨论 schema 演化、per-schema versioning、API schema stacking、auto-apply API schemas、multiple-apply API schemas 和 version conflicts。它的核心不是单个版本号格式，而是 composition 与 schema 注册如何共同处理版本化类型。</p>
-      <p class="en">This refinement section adds page-specific Chinese reading notes for Schema Versioning in USD while preserving English page names, API names, schema names, property names, commands, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`per-schema versioning` 让同一 schema family 中的不同版本显式表达，而不是依赖全局 USD 版本号推断所有类型行为。</span></li>
-        <li><span class="zh">版本化 schema 名称、C++ schema class、codegen 策略和 `UsdSchemaRegistry` 之间需要保持一致，否则会影响类型发现、API 访问和文档对应关系。</span></li>
-        <li><span class="zh">`built-in API schemas`、`auto-apply API schemas` 与 `multiple-apply API schemas` 在版本解析时风险不同，尤其要关注组合后 `apiSchemas` 列表中的冲突。</span></li>
-        <li><span class="zh">本页的示例强调 schema inheritance 和 composition 对最终 prim 类型的影响；阅读时不能只看局部 layer 中写入的一个 schema token。</span></li>
-        <li><span class="zh">当前实现或 API 入口可能已随版本演进调整，proposal 用于理解历史设计动机；具体行为仍应查当前 `UsdPrim`、`UsdSchemaRegistry` 和相关 schema 文档。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">按 schema 单独版本化：</span><span class="en">per-schema versioning</span></li>
-        <li><span class="zh">schema 家族：</span><span class="en">schema family</span></li>
-        <li><span class="zh">USD schema 注册表：</span><span class="en">UsdSchemaRegistry</span></li>
-        <li><span class="zh">API schema 列表：</span><span class="en">apiSchemas</span></li>
-        <li><span class="zh">自动应用 API schemas：</span><span class="en">auto-apply API schemas</span></li>
-        <li><span class="zh">版本冲突：</span><span class="en">version conflicts</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：Schema Versioning in USD</span><span class="en">Schema Versioning in USD</span></li>
-<li><span class="zh">第 2 级标题：Introduction</span><span class="en">Introduction</span></li>
-<li><span class="zh">第 3 级标题：Challenges to Schema Versioning in USD</span><span class="en">Challenges to Schema Versioning in USD</span></li>
-<li><span class="zh">第 4 级标题：Composition Makes Prim Version a Difficult Query</span><span class="en">Composition Makes Prim Version a Difficult Query</span></li>
-<li><span class="zh">第 4 级标题：Multi-level Authoring API’s May Complicate Versioned Scene Description</span><span class="en">Multi-level Authoring API’s May Complicate Versioned Scene Description</span></li>
-<li><span class="zh">第 4 级标题：Prims Can Possess Numerous API Schemas</span><span class="en">Prims Can Possess Numerous API Schemas</span></li>
-<li><span class="zh">第 4 级标题：Impact of Versioning on USD Speed and Scalability</span><span class="en">Impact of Versioning on USD Speed and Scalability</span></li>
-<li><span class="zh">第 2 级标题：Proposal for Per-Schema Versioning</span><span class="en">Proposal for Per-Schema Versioning</span></li>
-<li><span class="zh">第 3 级标题：Version Representation in Schemas</span><span class="en">Version Representation in Schemas</span></li>
-<li><span class="zh">第 4 级标题：Schema Types with Versioned Schema Names</span><span class="en">Schema Types with Versioned Schema Names</span></li>
-<li><span class="zh">第 4 级标题：C++ Schema Classes</span><span class="en">C++ Schema Classes</span></li>
-<li><span class="zh">第 4 级标题：Schema Inheritance</span><span class="en">Schema Inheritance</span></li>
-<li><span class="zh">第 4 级标题：Explicit Built-in API Schemas (not auto-apply)</span><span class="en">Explicit Built-in API Schemas (not auto-apply)</span></li>
-<li><span class="zh">第 4 级标题：API Schema Version Conflicts</span><span class="en">API Schema Version Conflicts</span></li>
-<li><span class="zh">第 4 级标题：Multiple-Apply API Schemas</span><span class="en">Multiple-Apply API Schemas</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">Composition Makes Prim Version a Difficult Query</p>
-<p class="en">Multi-level Authoring API’s May Complicate Versioned Scene Description</p>
-<p class="en">Impact of Versioning on USD Speed and Scalability</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>apiSchemas = [ “ CollectionAPI_1:foo ” , “ CollectionAPI:bar ” ]</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_stage.html&amp;title=UsdStage%3A%3ADefinePrim" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_stage.html">UsdStage::DefinePrim</a></li>
-<li><a href="../api/class_sdf_prim_spec.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_sdf_prim_spec.html">SdfPrimSpec::New</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_prim_type_info.html&amp;title=UsdPrimTypeInfo" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_prim_type_info.html">UsdPrimTypeInfo</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_prim_definition.html&amp;title=UsdPrimDefinition" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_prim_definition.html">UsdPrimDefinition</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_tf_type.html&amp;title=TfType" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_tf_type.html">TfType</a></li>
-<li><a href="https://github.com/PixarAnimationStudios/OpenUSD/blob/release/pxr/usd/usdLux/schema.usda">LightAPI is a built-in of MeshLightAPI</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2F_usd__page__object_model.html&amp;title=fallback+prim+types" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/_usd__page__object_model.html">fallback prim types</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_collection_a_p_i.html&amp;title=UsdCollectionAPI" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_collection_a_p_i.html">UsdCollectionAPI</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/wp_schema_versioning.html">打开官方原页 / Open official page</a></p>
-    </section>
-  </main>
+    <h3>源页对比 / Source Parity</h3>
+    <p><span class="zh">已对比本地 source snapshot：<code>source/full_release/wp_schema_versioning_source.html</code>。本轮检查官方标题和主要 section 关键词，保留链接语义和显式官方原页入口；source parity 结果写入 <code>reports/round_415_remaining_proposals_source_parity.json</code>。</span><span class="en">Official source page: <a href="https://openusd.org/release/wp_schema_versioning.html">Open official page - Schema Versioning in USD</a>.</span></p>
+    <ul><li><code>h1</code> Schema Versioning in USD </li><li><code>h2</code> Introduction </li><li><code>h3</code> Challenges to Schema Versioning in USD </li><li><code>h4</code> Composition Makes Prim Version a Difficult Query </li><li><code>h4</code> Multi-level Authoring API’s May Complicate Versioned Scene Description </li><li><code>h4</code> Prims Can Possess Numerous API Schemas </li><li><code>h4</code> Impact of Versioning on USD Speed and Scalability </li><li><code>h2</code> Proposal for Per-Schema Versioning </li><li><code>h3</code> Version Representation in Schemas </li><li><code>h4</code> Schema Types with Versioned Schema Names </li><li><code>h4</code> C++ Schema Classes </li><li><code>h4</code> Schema Inheritance </li></ul>
+  </section>
+</main>
 </body>
 </html>

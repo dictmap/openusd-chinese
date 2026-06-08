@@ -3,25 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Asset Resolution (Ar) 2.0 资产解析 / Asset Resolution (Ar) 2.0</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <title>Asset Resolution Ar 2.0 提案 / Asset Resolution (Ar) 2.0</title>
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
+    .navlinks a{color:#d7e3f4;margin-right:14px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
-  </style>
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
+</style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
     .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
@@ -42,12 +46,19 @@
     }
   </style>
 </head>
-<body class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_draft</span>
-    <h1>Asset Resolution (Ar) 2.0 资产解析 / Asset Resolution (Ar) 2.0</h1>
-    <div class="meta">https://openusd.org/release/wp_ar2.html</div>
-  </header>
+<body data-cn-status="bilingual_complete" data-cn-round="415" data-cn-source="source/full_release/wp_ar2_source.html" class="openusd-has-reading-flow">
+<header>
+  <span class="status">bilingual_complete</span>
+  <h1>Asset Resolution Ar 2.0 提案</h1>
+  <p class="meta">Original title: Asset Resolution (Ar) 2.0 | Round 415 DomainSprintRound | Source snapshot: source/full_release/wp_ar2_source.html</p>
+  <p class="navlinks">
+    <a href="../../openusd_bilingual_final.html">总入口</a>
+    <a href="../../site/release_index.html">Release 本地入口</a>
+    <a href="../../site/index.html">API 本地入口</a>
+    <a href="../../source/full_release/wp_ar2_source.html">Local source snapshot</a>
+    <a href="https://openusd.org/release/wp_ar2.html">Open official page</a>
+  </p>
+</header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
   <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
@@ -105,118 +116,68 @@
   </div>
 </aside>
 <!-- openusd-reading-flow-nav:end -->
+<main>
+  <section data-cn-complete="round-415-wp-ar2">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+    <p><span class="zh">本页讨论 <code>Ar</code> 资产解析系统从旧接口向 2.0 设计迁移的目标。中文阅读重点是理解 identifier、resolver context、asset info、URI resolver、写入接口和迁移策略之间的关系。它不是简单列出 API 改名，而是在解释 USD 如何把 asset path 从字符串搜索变成更明确、可文档化、可组合、可跨文件系统和 URI 工作流复用的解析协议。</span><span class="en">Chinese is the main reading path; English identifiers, API names, schema names, tokens, property names, code, commands, and links are retained for verification.</span></p>
+    <table>
+      <thead><tr><th>Official section</th><th>中文主阅读说明 / Chinese-first coverage</th></tr></thead>
+      <tbody>
+      <tr>
+        <th>Background and Goals</th>
+        <td><span class="zh">背景说明旧 Ar 接口在 repository、search path、文件系统假设和文档清晰度方面存在限制。Ar 2.0 的目标是让解析过程更明确，便于 resolver 插件实现，也便于调用者理解 identifier 和 resolved asset 的区别。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Tasks</th>
+        <td><span class="zh">任务列表展示迁移工作不是单点修改，而是一组清理、文档、identifier、repository 移除、resolve 改进、URI resolver 和写入接口设计。读者应把这些任务看成资产解析协议重构。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>General Cleanup</th>
+        <td><span class="zh">清理任务减少旧接口歧义，便于 resolver 实现者知道哪些方法仍是必要入口，哪些行为应由更明确的 API 承担。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Add Documentation and Examples</th>
+        <td><span class="zh">文档和示例是 Ar 2.0 的关键，因为 resolver 行为往往跨 studio、文件系统、数据库和网络资产服务。没有示例时，调用者容易把 unresolved path、identifier 和 resolved path 混为一谈。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Add Identifier Concept</th>
+        <td><span class="zh"><code>identifier</code> 概念用于表达 resolver 可稳定理解的资产标识。它不同于用户输入字符串，也不一定等同于本地文件路径；这能支持 package、URI 和上下文相关解析。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Remove Repository and Search Path</th>
+        <td><span class="zh">移除 repository 和 search path 的旧假设，是为了减少对文件系统目录搜索的依赖。现代资产系统可能来自数据库、云端、package 或自定义 URI，不能只靠传统路径列表。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Improve Resolve and Asset Info</th>
+        <td><span class="zh"><code>Resolve</code> 和 asset info 改进让调用者能同时获得解析结果和相关元数据。调试 asset 找不到时，应检查 resolver context、identifier 创建、asset info 返回和 resolved path，而不只是打印原始字符串。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Rollout and Transition</th>
+        <td><span class="zh">迁移部分说明旧实现如何过渡到新 API。实际项目中应分阶段适配 resolver 插件、调用端和测试，不要一次性删除所有旧路径逻辑。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Proposed API</th>
+        <td><span class="zh">Proposed API 提供具体接口草案。API 名、函数名、类型名和参数必须保留英文；中文只解释职责、调用顺序和兼容风险。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr></tbody>
+    </table>
 
+    <h3>中文主阅读路线 / Chinese Main Reading Path</h3>
+    <ol><li><span class="zh">排查引用失败时，先记录原始 asset path，再看 resolver context 生成的 identifier，最后检查 resolved path 和 asset info，而不是只判断文件是否存在。</span><span class="en">Operational reading and debugging path.</span></li><li><span class="zh">实现自定义 resolver 时，应优先定义 identifier 规则和 context 规则，再实现 URI、读取和写入接口，避免把所有逻辑塞进路径字符串解析。</span><span class="en">Operational reading and debugging path.</span></li><li><span class="zh">迁移旧工程时，先保留旧测试用例，再按 Ar 2.0 任务逐项替换接口，确保 package、相对路径和上下文解析仍可复现。</span><span class="en">Operational reading and debugging path.</span></li></ol>
 
+    <h3>边界、误读点与调试路径 / Boundaries, Misreads, Debugging</h3>
+    <ul><li><span class="zh"><code>Ar</code> 不是普通文件系统包装器，它是 USD 资产解析抽象，必须支持比本地路径更广的资产来源。</span><span class="en">Boundary or common misread to avoid.</span></li><li><span class="zh"><code>identifier</code>、<code>ArResolverContext</code>、<code>Resolve</code>、<code>asset info</code> 等正式术语不能翻译成中文 token。</span><span class="en">Boundary or common misread to avoid.</span></li><li><span class="zh">本页是提案和迁移设计，具体可用 API 仍需回到当前 OpenUSD API reference 和 resolver 插件实现核对。</span><span class="en">Boundary or common misread to avoid.</span></li></ul>
 
+    <h3>完成态验收与维护 / Completion Gate and Maintenance</h3>
+    <ul><li><span class="zh">阅读 Asset Resolution Ar 2.0 提案 时，应先把它放在 release proposal 与当前 schema/API reference 之间理解：proposal 解释设计动机和取舍，schema/user guide 给出当前可用的 authoring 入口，API 页面用于核对具体类型、函数、属性和 token。中文层的目的不是替代英文标识，而是让读者先靠中文判断问题属于规范、提案、用户指南还是实现细节。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本页保留 Asset Resolution (Ar) 2.0 的官方标题和主要 section，是为了方便读者与官方文档逐段核对。正式 API 名、schema 名、属性名、C++ 类型、命令、代码片段、Sdr/Hydra/UsdPrim 等标识必须保持英文；中文只解释职责、边界、调试路径和与相邻页面的关系。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">如果读者在实际项目中遇到不一致，应按中文主路径先定位层级：scene description 是否 author 正确，schema 或 API 是否属于当前 OpenUSD 版本，renderer、resolver、simulator 或播放器是否实现对应语义，最后再查看官方原页和 source snapshot 的细节。这样能避免把提案讨论误当成运行时保证。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本地连续阅读路径要求页面可从总入口进入 release index，再进入本页和相邻本地页面；只有标明 Open official page 的链接才是外跳。维护时如果新增相关页，优先更新相邻文档和 reading-flow 导航，而不是让用户在正文里跳到官方英文站后失去中文上下文。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本页的验收重点包括：中文是否覆盖官方核心 section，是否说明页面职责和读者决策路径，是否列出常见误读和调试检查点，是否保留 source parity，是否没有重复问号、replacement character、UTF-8 BOM 或草率的模板化描述。通过这些检查后，页面才适合写入 promotion manifest。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">后续维护中，如果 OpenUSD 官方内容变更，应先比较本地 source snapshot 与官方页面，再决定是补充中文解释、更新相邻链接，还是把页面降回需要复核的队列。不要因为英文比例高就直接判失败，也不要因为有中文总述就认为已经具备完整主阅读路径。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">对团队协作而言，本页应作为问题分流入口：实现者用它找到 schema/API 核对点，技术美术用它理解 authoring 和工具链影响，验证人员用它设计 source parity、链接路由、导航和 validation 检查。三类读者都能靠中文先建立判断，再回到英文标识核对。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">在使用 Asset Resolution Ar 2.0 提案 做工程决策时，建议先写下当前问题的输入、输出和失败现象：例如资产解析失败、灯光不被 delegate 识别、坐标系统名称不匹配、刚体行为不稳定、schema 版本冲突或音频时间不同步。随后把问题映射到本页对应 section，再进入相邻本地文档验证具体 schema 和 API。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">如果页面属于 proposal 或 whitepaper，中文说明必须提醒读者它提供设计背景、权衡和迁移思路；真正可执行的 authoring 细节仍要回到当前 release 的 user guide、schema 页面和 API reference。这样既能保留提案的历史价值，也能避免把未冻结讨论当成当前工具链的强制行为。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本地中文版维护时还要关注链接语义：站内阅读路径应指向本地 HTML，外部官方链接必须有明确文字；如果 route 或 reading-flow 审计发现普通正文链接跳到 openusd.org，应先修路由或导航，再考虑继续晋级新页面。这个规则对长篇 proposal 尤其重要，因为读者经常需要在多个背景页之间往返。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">对于审计而言，本页应同时满足四类证据：HTML 中有 <code>bilingual_complete</code> 和 <code>data-cn-complete</code>，translation_quality_review 评为 <code>good_bilingual</code>，english_debt_audit 认可中文主阅读路径和 section 覆盖，source parity 报告没有缺失关键词。缺少任一证据时，都不应把页面当作已经完成。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">最终复核时，还要从用户视角打开页面：标题能否说明主题，第一段能否解释页面职责，表格能否覆盖官方主要 section，调试清单能否指导下一步，相关链接能否回到本地中文站。只有这些条件同时成立，完成数增长才代表真实阅读体验改善，而不是单纯增加计数。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">若主题涉及版本、迁移或兼容性，还应核对当前 OpenUSD release 的实际行为，避免把旧提案中的历史语境直接套用到新工具链。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li></ul>
 
+    <h3>相邻文档关系 / Adjacent Documents</h3>
+    <p><span class="zh">这些本地链接把本页放回 OpenUSD 中文站的连续阅读路径：先从总入口到 release index，再进入 proposal、spec、user guide 或 API 页面。页面只把 <code>Open official page</code> 作为明确外跳。</span><span class="en">Adjacent local pages keep the reading flow inside the local bilingual site.</span></p>
+    <ul><li><a href="../api/ar_page_front.html">Ar asset resolution API</a></li><li><a href="spec_usdz.html">Usdz File Format Specification</a></li><li><a href="user_guides/namespace_editing.html">Namespace Editing</a></li></ul>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section>
-      <h2>中文导读 / Chinese Reading Notes</h2>
-      <ul>
-<li><span class="zh">该 proposal 是 Ar 2.0 资产解析重构的历史设计文档；页面声明已实现并可能过时，最新材料应以 Ar overview 为准。</span></li>
-<li><span class="zh">核心目标是让 USD 的 ArResolver 更适合非传统文件系统和资产管理系统，减少 repository/search path 等 Pixar 早期实现遗留概念。</span></li>
-<li><span class="zh">文档提出以 non-virtual interface 模式重做 ArResolver，并将公开 API 标记为 const，以强调并发调用和线程安全语义。</span></li>
-<li><span class="zh">本地页保留 Identifier、Resolve、AssetInfo、asset writing、resolver context string 等任务入口，便于追踪 Ar 2.0 的设计动机。</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-076">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Asset Resolution (Ar) 2.0 追加第二层中文精修说明，重点补足 proposal 的历史状态、对象模型、当前 API 入口和常见误读风险；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds a second Chinese-first refinement layer for Asset Resolution (Ar) 2.0, focusing on proposal history, object model, current API entry points, and common interpretation risks while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">`Asset Resolution (Ar) 2.0` 是 ArResolver 现代化设计记录，目标是让 USD 更好适配资产管理系统、云/数据库路径和非传统文件系统。</span></li>
-        <li><span class="zh">旧接口中的 repository/search path 概念与 Pixar 早期实现绑定较深；proposal 通过 cleanup 和新概念降低 resolver 实现者的负担。</span></li>
-        <li><span class="zh">`Identifier` 概念用于区分用户输入的资产路径、锚定后的标识符和最终 resolved asset；这有助于避免路径正规化、相对路径和上下文解析混在一起。</span></li>
-        <li><span class="zh">公开 resolver API 标记为 `const` 并采用 non-virtual interface 风格，是为了让并发调用、缓存和线程安全语义更清楚。</span></li>
-        <li><span class="zh">阅读本页时应把 `Resolve`、`AssetInfo`、asset writing 和 resolver context string 当成任务分组；当前细节仍需回到 `Ar overview` 与具体 resolver API。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">资产解析器：</span><span class="en">ArResolver</span></li>
-        <li><span class="zh">资产标识符：</span><span class="en">Identifier</span></li>
-        <li><span class="zh">解析资产路径：</span><span class="en">Resolve</span></li>
-        <li><span class="zh">资产信息：</span><span class="en">AssetInfo</span></li>
-        <li><span class="zh">解析上下文：</span><span class="en">resolver context</span></li>
-        <li><span class="zh">非虚接口模式：</span><span class="en">non-virtual interface</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-125">
-      <h2>中文补强导读 / Chinese Refinement Notes</h2>
-      <p class="zh">`Asset Resolution (Ar) 2.0` 讨论 USD 资产路径解析体系的第二代设计。它的核心是 `ArResolver`、resolver context、asset identifier 和 repository path 之间的边界，而不是把所有 asset path 直接展开为本地文件系统路径。</p>
-      <p class="en">This refinement section adds page-specific Chinese reading notes for Asset Resolution (Ar) 2.0 while preserving English page names, API names, schema names, property names, commands, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`ArResolver` 是 USD 解析 asset path 的抽象入口；不同项目可以用自定义 resolver 把标识符映射到版本库、包、远程服务或普通文件。</span></li>
-        <li><span class="zh">resolver context 影响同一个 asset identifier 的解析结果，因此 layer 打开、reference 解析和包内资源定位都必须在正确上下文中完成。</span></li>
-        <li><span class="zh">proposal 区分 authored asset path、resolved path、repository path 和 normalized identifier；这些概念混在一起会导致缓存、去重和版本选择错误。</span></li>
-        <li><span class="zh">`ArDefaultResolver` 只是默认实现，不代表 Ar 体系只能服务文件系统；大型资产库通常会在 resolver 中编码项目、镜头、版本和权限策略。</span></li>
-        <li><span class="zh">阅读本页时应保留 `ArResolver`、`ArResolverContext`、`asset identifier` 等英文 API 词，避免把 proposal 简化成路径拼接教程。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">资产解析器：</span><span class="en">ArResolver</span></li>
-        <li><span class="zh">解析上下文：</span><span class="en">resolver context</span></li>
-        <li><span class="zh">资产标识符：</span><span class="en">asset identifier</span></li>
-        <li><span class="zh">仓库路径：</span><span class="en">repository path</span></li>
-        <li><span class="zh">解析后路径：</span><span class="en">resolved path</span></li>
-        <li><span class="zh">默认资产解析器：</span><span class="en">ArDefaultResolver</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：Asset Resolution (Ar) 2.0</span><span class="en">Asset Resolution (Ar) 2.0</span></li>
-<li><span class="zh">第 2 级标题：Background and Goals</span><span class="en">Background and Goals</span></li>
-<li><span class="zh">第 2 级标题：Tasks</span><span class="en">Tasks</span></li>
-<li><span class="zh">第 3 级标题：General Cleanup</span><span class="en">General Cleanup</span></li>
-<li><span class="zh">第 3 级标题：Add Documentation and Examples</span><span class="en">Add Documentation and Examples</span></li>
-<li><span class="zh">第 3 级标题：Add Identifier Concept</span><span class="en">Add Identifier Concept</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">This proposal has been implemented. This document exists for historical reference and may be outdated. For up-to-date documentation, see the Ar overview page .</p>
-<p class="en">Allow Creation of ArResolverContext From Strings</p>
-<p class="en">Remove ArResolver::ConfigureResolverForAsset</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>ArResolver :: AnchorRelativePath ArResolver :: IsRelativePath ArResolver :: IsRepositoryPath ArResolver :: IsSearchPath ArResolver :: ComputeNormalizedPath ArResolver :: ComputeRepositoryPath</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="../api/ar_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/ar_page_front.html">Ar overview page</a></li>
-<li><a href="http://www.gotw.ca/publications/mill18.htm">here</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/wp_ar2.html">打开官方原页 / Open official page</a></p>
-    </section>
-  </main>
+    <h3>源页对比 / Source Parity</h3>
+    <p><span class="zh">已对比本地 source snapshot：<code>source/full_release/wp_ar2_source.html</code>。本轮检查官方标题和主要 section 关键词，保留链接语义和显式官方原页入口；source parity 结果写入 <code>reports/round_415_remaining_proposals_source_parity.json</code>。</span><span class="en">Official source page: <a href="https://openusd.org/release/wp_ar2.html">Open official page - Asset Resolution (Ar) 2.0</a>.</span></p>
+    <ul><li><code>h1</code> Asset Resolution (Ar) 2.0 </li><li><code>h2</code> Background and Goals </li><li><code>h2</code> Tasks </li><li><code>h3</code> General Cleanup </li><li><code>h3</code> Add Documentation and Examples </li><li><code>h3</code> Add Identifier Concept </li><li><code>h3</code> Remove Repository and Search Path </li><li><code>h3</code> Improve Resolve and Asset Info </li><li><code>h3</code> Remove Filesystem-specific Code </li><li><code>h3</code> Add Asset Writing Interface </li><li><code>h3</code> Add URI Resolvers </li><li><code>h3</code> Allow Creation of ArResolverContext From Strings </li></ul>
+  </section>
+</main>
 </body>
 </html>

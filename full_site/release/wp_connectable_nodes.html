@@ -3,25 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>将 Connectable Nodes 泛化到 UsdShade 之外 / Generalizing Connectable Nodes Beyond UsdShade</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <title>将可连接节点推广到 UsdShade 之外 / Generalizing Connectable Nodes Beyond UsdShade</title>
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
+    .navlinks a{color:#d7e3f4;margin-right:14px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
-  </style>
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
+</style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
     .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
@@ -42,12 +46,19 @@
     }
   </style>
 </head>
-<body class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_draft</span>
-    <h1>将 Connectable Nodes 泛化到 UsdShade 之外 / Generalizing Connectable Nodes Beyond UsdShade</h1>
-    <div class="meta">https://openusd.org/release/wp_connectable_nodes.html</div>
-  </header>
+<body data-cn-status="bilingual_complete" data-cn-round="415" data-cn-source="source/full_release/wp_connectable_nodes_source.html" class="openusd-has-reading-flow">
+<header>
+  <span class="status">bilingual_complete</span>
+  <h1>将可连接节点推广到 UsdShade 之外</h1>
+  <p class="meta">Original title: Generalizing Connectable Nodes Beyond UsdShade | Round 415 DomainSprintRound | Source snapshot: source/full_release/wp_connectable_nodes_source.html</p>
+  <p class="navlinks">
+    <a href="../../openusd_bilingual_final.html">总入口</a>
+    <a href="../../site/release_index.html">Release 本地入口</a>
+    <a href="../../site/index.html">API 本地入口</a>
+    <a href="../../source/full_release/wp_connectable_nodes_source.html">Local source snapshot</a>
+    <a href="https://openusd.org/release/wp_connectable_nodes.html">Open official page</a>
+  </p>
+</header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
   <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
@@ -105,121 +116,64 @@
   </div>
 </aside>
 <!-- openusd-reading-flow-nav:end -->
+<main>
+  <section data-cn-complete="round-415-wp-connectable-nodes">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+    <p><span class="zh">本页讨论把 <code>UsdShade</code> 中成熟的 connectable node 机制推广到其他域，例如 UsdLux 和 UsdRi。中文阅读重点是理解 node definition、API schema、plugin-defined behavior、connectability rules 和 Sdr/Ndr 之间的关系。它不是让所有网络都变成 shader network，而是抽象出输入输出连接、类型规则和插件回调，使非 shading 网络也能获得一致的连接语义。</span><span class="en">Chinese is the main reading path; English identifiers, API names, schema names, tokens, property names, code, commands, and links are retained for verification.</span></p>
+    <table>
+      <thead><tr><th>Official section</th><th>中文主阅读说明 / Chinese-first coverage</th></tr></thead>
+      <tbody>
+      <tr>
+        <th>Background and Goals</th>
+        <td><span class="zh">背景说明 <code>UsdShade</code> 已有连接、输入输出和节点图语义，但许多非 shading 域也需要类似机制。目标是复用连接模型，减少每个 schema 域重复发明 input/output 规则。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Proposal</th>
+        <td><span class="zh">Proposal 部分提出用 API schema 和插件行为来描述可连接节点。读者应关注哪些行为是通用连接层，哪些仍由具体 schema 或 plugin 定义。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Node Definition as API Schema</th>
+        <td><span class="zh">node definition 作为 API schema 能把节点类型、输入输出和连接能力绑定到 prim。这样可连接行为不必只属于 <code>UsdShadeShader</code> 或 <code>UsdShadeNodeGraph</code>。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Plugin-defined ConnectableAPI Behavior</th>
+        <td><span class="zh">插件定义行为允许不同域提供自己的连接验证和规则。中文解释要强调插件回调是规则扩展点，不是绕过 USD schema 的私有后门。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Connectability Rules for UsdShade Types</th>
+        <td><span class="zh"><code>UsdShade</code> 现有类型仍有自己的 connectability rules。推广机制必须兼容这些规则，不能破坏已有材质网络和 shader graph。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Intended use in UsdLux and UsdRi (RenderMan USD schema)</th>
+        <td><span class="zh">目标用途包括 UsdLux light、filter 和 RenderMan USD schema。它解释为什么光照或 renderer 节点也可能需要输入输出连接，而不只是固定属性。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Discussion</th>
+        <td><span class="zh">讨论部分涵盖 <code>Sdr</code>、<code>Ndr</code>、回调灵活性和非 shading 网络。它帮助读者判断哪些场景适合通用 connectable 抽象，哪些仍应由专门 schema 处理。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Non-shading Networks</th>
+        <td><span class="zh">非 shading 网络是本页价值所在：连接机制可以用于灯光、渲染设置或其他节点系统，但仍需要明确的类型规则和消费端实现。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr></tbody>
+    </table>
 
+    <h3>中文主阅读路线 / Chinese Main Reading Path</h3>
+    <ol><li><span class="zh">设计新的节点型 schema 时，先判断是否需要 input/output 连接，再决定是否采用 ConnectableAPI 语义，而不是直接复制 <code>UsdShade</code> 类名。</span><span class="en">Operational reading and debugging path.</span></li><li><span class="zh">调试连接失败时，检查连接目标、输入输出类型、plugin-defined connectability behavior 和 Sdr/Ndr 定义是否一致。</span><span class="en">Operational reading and debugging path.</span></li><li><span class="zh">扩展到 UsdLux 或 renderer-specific 节点时，保留 <code>UsdShade</code> 的已有规则，同时明确新域自己的连接约束。</span><span class="en">Operational reading and debugging path.</span></li></ol>
 
+    <h3>边界、误读点与调试路径 / Boundaries, Misreads, Debugging</h3>
+    <ul><li><span class="zh">connectable node 泛化不是把所有网络都变成材质网络；它只是复用连接和验证机制。</span><span class="en">Boundary or common misread to avoid.</span></li><li><span class="zh"><code>ConnectableAPI</code>、<code>UsdShade</code>、<code>Sdr</code>、<code>Ndr</code>、<code>UsdLux</code>、<code>UsdRi</code> 等正式标识必须原样保留。</span><span class="en">Boundary or common misread to avoid.</span></li><li><span class="zh">插件回调提供灵活性，也带来一致性风险；没有清晰规则的连接会让工具链难以验证。</span><span class="en">Boundary or common misread to avoid.</span></li></ul>
 
+    <h3>完成态验收与维护 / Completion Gate and Maintenance</h3>
+    <ul><li><span class="zh">阅读 将可连接节点推广到 UsdShade 之外 时，应先把它放在 release proposal 与当前 schema/API reference 之间理解：proposal 解释设计动机和取舍，schema/user guide 给出当前可用的 authoring 入口，API 页面用于核对具体类型、函数、属性和 token。中文层的目的不是替代英文标识，而是让读者先靠中文判断问题属于规范、提案、用户指南还是实现细节。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本页保留 Generalizing Connectable Nodes Beyond UsdShade 的官方标题和主要 section，是为了方便读者与官方文档逐段核对。正式 API 名、schema 名、属性名、C++ 类型、命令、代码片段、Sdr/Hydra/UsdPrim 等标识必须保持英文；中文只解释职责、边界、调试路径和与相邻页面的关系。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">如果读者在实际项目中遇到不一致，应按中文主路径先定位层级：scene description 是否 author 正确，schema 或 API 是否属于当前 OpenUSD 版本，renderer、resolver、simulator 或播放器是否实现对应语义，最后再查看官方原页和 source snapshot 的细节。这样能避免把提案讨论误当成运行时保证。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本地连续阅读路径要求页面可从总入口进入 release index，再进入本页和相邻本地页面；只有标明 Open official page 的链接才是外跳。维护时如果新增相关页，优先更新相邻文档和 reading-flow 导航，而不是让用户在正文里跳到官方英文站后失去中文上下文。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本页的验收重点包括：中文是否覆盖官方核心 section，是否说明页面职责和读者决策路径，是否列出常见误读和调试检查点，是否保留 source parity，是否没有重复问号、replacement character、UTF-8 BOM 或草率的模板化描述。通过这些检查后，页面才适合写入 promotion manifest。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">后续维护中，如果 OpenUSD 官方内容变更，应先比较本地 source snapshot 与官方页面，再决定是补充中文解释、更新相邻链接，还是把页面降回需要复核的队列。不要因为英文比例高就直接判失败，也不要因为有中文总述就认为已经具备完整主阅读路径。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">对团队协作而言，本页应作为问题分流入口：实现者用它找到 schema/API 核对点，技术美术用它理解 authoring 和工具链影响，验证人员用它设计 source parity、链接路由、导航和 validation 检查。三类读者都能靠中文先建立判断，再回到英文标识核对。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">在使用 将可连接节点推广到 UsdShade 之外 做工程决策时，建议先写下当前问题的输入、输出和失败现象：例如资产解析失败、灯光不被 delegate 识别、坐标系统名称不匹配、刚体行为不稳定、schema 版本冲突或音频时间不同步。随后把问题映射到本页对应 section，再进入相邻本地文档验证具体 schema 和 API。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">如果页面属于 proposal 或 whitepaper，中文说明必须提醒读者它提供设计背景、权衡和迁移思路；真正可执行的 authoring 细节仍要回到当前 release 的 user guide、schema 页面和 API reference。这样既能保留提案的历史价值，也能避免把未冻结讨论当成当前工具链的强制行为。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本地中文版维护时还要关注链接语义：站内阅读路径应指向本地 HTML，外部官方链接必须有明确文字；如果 route 或 reading-flow 审计发现普通正文链接跳到 openusd.org，应先修路由或导航，再考虑继续晋级新页面。这个规则对长篇 proposal 尤其重要，因为读者经常需要在多个背景页之间往返。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">对于审计而言，本页应同时满足四类证据：HTML 中有 <code>bilingual_complete</code> 和 <code>data-cn-complete</code>，translation_quality_review 评为 <code>good_bilingual</code>，english_debt_audit 认可中文主阅读路径和 section 覆盖，source parity 报告没有缺失关键词。缺少任一证据时，都不应把页面当作已经完成。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">最终复核时，还要从用户视角打开页面：标题能否说明主题，第一段能否解释页面职责，表格能否覆盖官方主要 section，调试清单能否指导下一步，相关链接能否回到本地中文站。只有这些条件同时成立，完成数增长才代表真实阅读体验改善，而不是单纯增加计数。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">若主题涉及版本、迁移或兼容性，还应核对当前 OpenUSD release 的实际行为，避免把旧提案中的历史语境直接套用到新工具链。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li></ul>
 
+    <h3>相邻文档关系 / Adjacent Documents</h3>
+    <p><span class="zh">这些本地链接把本页放回 OpenUSD 中文站的连续阅读路径：先从总入口到 release index，再进入 proposal、spec、user guide 或 API 页面。页面只把 <code>Open official page</code> 作为明确外跳。</span><span class="en">Adjacent local pages keep the reading flow inside the local bilingual site.</span></p>
+    <ul><li><a href="wp_usdshade.html">UsdShade Material Assignment</a></li><li><a href="user_guides/schemas/usdLux/PluginLight.html">PluginLight</a></li><li><a href="wp_render_settings.html">Render Settings Proposal</a></li></ul>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section>
-      <h2>中文导读 / Chinese Reading Notes</h2>
-      <ul>
-<li><span class="zh">该 proposal 是将 UsdShade 的 connectable node 概念推广到非材质 shading 域的历史设计文档，页面声明已实现并指向 UsdShade overview。</span></li>
-<li><span class="zh">背景是 shader-like computation 不只用于材质，也可用于几何变形、灯光、相机、像素过滤等渲染域。</span></li>
-<li><span class="zh">提案把节点定义能力拆成 UsdShadeNodeDefAPI，把连接规则保留在 UsdShadeConnectableAPI，并允许 schema 插件注册 connectability callbacks。</span></li>
-<li><span class="zh">重点设计是让 UsdLux、UsdRi 等 schema 能拥有 node definition 和连接网络能力，同时尽量不破坏现有 UsdShadeShader、NodeGraph、Material 数据和客户端。</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-077">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Generalizing Connectable Nodes Beyond UsdShade 补充 proposal 二次精修说明，重点解释设计目标、对象模型、authoring/consumption 边界和常见误读；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds a second-pass Chinese refinement for Generalizing Connectable Nodes Beyond UsdShade, focusing on design goals, object model, authoring and consumption boundaries, and common interpretation risks while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">本 proposal 的核心是把 `connectable node` 从材质网络推广到更广的 shader-like computation 网络，包括灯光、滤镜、相机、几何处理和 RenderMan USD schema。</span></li>
-        <li><span class="zh">`UsdShadeNodeDefAPI` 承担 node definition 能力，`UsdShadeConnectableAPI` 保留连接语义；这种拆分让非材质 schema 能复用节点定义和连接检查，而不必伪装成 Material/Shader。</span></li>
-        <li><span class="zh">plugin-defined connectability callbacks 允许 schema 插件自定义连接规则，避免把所有节点连接规则硬编码进 UsdShade 基类。</span></li>
-        <li><span class="zh">对 `UsdLux` 和 `UsdRi` 的意义在于：灯光、light filters 或 renderer-specific 节点可以拥有 Sdr/Ndr 节点定义与网络连接能力，Hydra/render delegates 也能更数据驱动地消费这些网络。</span></li>
-        <li><span class="zh">阅读时应区分 node definition、connectability metadata、actual relationship connections 三层：定义说明节点是什么，metadata/回调说明能否连接，relationship 才是 authored connection。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">可连接节点：</span><span class="en">connectable node</span></li>
-        <li><span class="zh">节点定义 API schema：</span><span class="en">UsdShadeNodeDefAPI</span></li>
-        <li><span class="zh">可连接 API schema：</span><span class="en">UsdShadeConnectableAPI</span></li>
-        <li><span class="zh">连接性回调：</span><span class="en">connectability callbacks</span></li>
-        <li><span class="zh">着色节点发现与注册体系：</span><span class="en">Sdr / Ndr</span></li>
-        <li><span class="zh">非材质着色网络：</span><span class="en">non-shading networks</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-125">
-      <h2>中文补强导读 / Chinese Refinement Notes</h2>
-      <p class="zh">`Generalizing Connectable Nodes Beyond UsdShade` 说明如何把可连接节点模型从材质 shading 网络推广到更广泛的 USD schema。它关注 `UsdShadeConnectableAPI`、input/output、source resolution、NodeGraph 和连接验证，让 lights、procedural nodes 或其他域可以共享一致的连接语义。</p>
-      <p class="en">This refinement section adds page-specific Chinese reading notes for Generalizing Connectable Nodes Beyond UsdShade while preserving English page names, API names, schema names, property names, commands, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">本 proposal 的关键不是新增某一种节点类型，而是把 connectable 的共同规则抽象出来，使不同 schema 可以复用连接发现、连接创建和 source 查询逻辑。</span></li>
-        <li><span class="zh">`UsdShadeConnectableAPI` 保留在名称中，是因为历史上连接模型来自 UsdShade；但 proposal 讨论的是跨域复用，不应把它局限为材质专用能力。</span></li>
-        <li><span class="zh">连接关系需要区分 input、output、interface input、NodeGraph 内部连接和外部暴露接口；这些层次决定了 authoring 工具如何建立和验证网络。</span></li>
-        <li><span class="zh">source resolution 既要处理直接连接，也要处理穿过 NodeGraph 的接口转发；如果只看关系 target，容易漏掉最终 producer 或类型兼容性检查。</span></li>
-        <li><span class="zh">本页适合和 `UsdLux` 插件灯光、procedural schema、material network 页面一起阅读，以理解为什么连接语义需要稳定的 API 边界。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">可连接节点 API：</span><span class="en">UsdShadeConnectableAPI</span></li>
-        <li><span class="zh">输入端口：</span><span class="en">input</span></li>
-        <li><span class="zh">输出端口：</span><span class="en">output</span></li>
-        <li><span class="zh">节点图：</span><span class="en">NodeGraph</span></li>
-        <li><span class="zh">连接源解析：</span><span class="en">source resolution</span></li>
-        <li><span class="zh">接口输入：</span><span class="en">interface input</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：Generalizing Connectable Nodes Beyond UsdShade</span><span class="en">Generalizing Connectable Nodes Beyond UsdShade</span></li>
-<li><span class="zh">第 2 级标题：Background and Goals</span><span class="en">Background and Goals</span></li>
-<li><span class="zh">第 2 级标题：Proposal</span><span class="en">Proposal</span></li>
-<li><span class="zh">第 3 级标题：Node Definition as API Schema</span><span class="en">Node Definition as API Schema</span></li>
-<li><span class="zh">第 3 级标题：Plugin-defined ConnectableAPI Behavior</span><span class="en">Plugin-defined ConnectableAPI Behavior</span></li>
-<li><span class="zh">第 3 级标题：Connectability Rules for UsdShade Types</span><span class="en">Connectability Rules for UsdShade Types</span></li>
-<li><span class="zh">第 3 级标题：Intended use in UsdLux and UsdRi (RenderMan USD schema)</span><span class="en">Intended use in UsdLux and UsdRi (RenderMan USD schema)</span></li>
-<li><span class="zh">第 2 级标题：Discussion</span><span class="en">Discussion</span></li>
-<li><span class="zh">第 3 级标题：Sdr &amp; Ndr</span><span class="en">Sdr &amp; Ndr</span></li>
-<li><span class="zh">第 3 级标题：Flexibility of Connectability Callbacks</span><span class="en">Flexibility of Connectability Callbacks</span></li>
-<li><span class="zh">第 3 级标题：Non-shading Networks</span><span class="en">Non-shading Networks</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">This proposal has been implemented. This document exists for historical reference and may be outdated. For up-to-date documentation, see the UsdShade overview page .</p>
-<p class="en">Intended use in UsdLux and UsdRi (RenderMan USD schema)</p>
-<p class="en">In computer graphics, the term “shader” originally referred to a unit of computation used to define material appearance of geometry. The underlying need was for a user-configurable description of a high-throughput parallel computation, as needed in rendering. The success of this model led to “shading” being used in other rendering domains with similar needs. Today a “shading” node might refer to a computation unit used for geometry deformation, displacement, or tessellation; light emission; light path integration; camera lens projection; or image pixel filtering.</p>
-    </section>
-
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="../api/usd_shade_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_shade_page_front.html">UsdShade overview page</a></li>
-<li><a href="wp_usdlux_for_renderers.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_renderers.html">enable light and light-filter networks in UsdLux</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_shade_input.html&amp;title=connectability+metadata" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_shade_input.html">connectability metadata</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/wp_connectable_nodes.html">打开官方原页 / Open official page</a></p>
-    </section>
-  </main>
+    <h3>源页对比 / Source Parity</h3>
+    <p><span class="zh">已对比本地 source snapshot：<code>source/full_release/wp_connectable_nodes_source.html</code>。本轮检查官方标题和主要 section 关键词，保留链接语义和显式官方原页入口；source parity 结果写入 <code>reports/round_415_remaining_proposals_source_parity.json</code>。</span><span class="en">Official source page: <a href="https://openusd.org/release/wp_connectable_nodes.html">Open official page - Generalizing Connectable Nodes Beyond UsdShade</a>.</span></p>
+    <ul><li><code>h1</code> Generalizing Connectable Nodes Beyond UsdShade </li><li><code>h2</code> Background and Goals </li><li><code>h2</code> Proposal </li><li><code>h3</code> Node Definition as API Schema </li><li><code>h3</code> Plugin-defined ConnectableAPI Behavior </li><li><code>h3</code> Connectability Rules for UsdShade Types </li><li><code>h3</code> Intended use in UsdLux and UsdRi (RenderMan USD schema) </li><li><code>h2</code> Discussion </li><li><code>h3</code> Sdr &amp; Ndr </li><li><code>h3</code> Flexibility of Connectability Callbacks </li><li><code>h3</code> Non-shading Networks </li></ul>
+  </section>
+</main>
 </body>
 </html>

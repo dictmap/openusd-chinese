@@ -3,25 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>USD 坐标系提案 / Coordinate Systems in USD Proposal</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <title>USD 坐标系统提案 / Coordinate Systems in USD Proposal</title>
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
+    .navlinks a{color:#d7e3f4;margin-right:14px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
-  </style>
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
+</style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
     .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
@@ -42,12 +46,19 @@
     }
   </style>
 </head>
-<body class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_draft</span>
-    <h1>USD 坐标系提案 / Coordinate Systems in USD Proposal</h1>
-    <div class="meta">https://openusd.org/release/wp_coordsys.html</div>
-  </header>
+<body data-cn-status="bilingual_complete" data-cn-round="415" data-cn-source="source/full_release/wp_coordsys_source.html" class="openusd-has-reading-flow">
+<header>
+  <span class="status">bilingual_complete</span>
+  <h1>USD 坐标系统提案</h1>
+  <p class="meta">Original title: Coordinate Systems in USD Proposal | Round 415 DomainSprintRound | Source snapshot: source/full_release/wp_coordsys_source.html</p>
+  <p class="navlinks">
+    <a href="../../openusd_bilingual_final.html">总入口</a>
+    <a href="../../site/release_index.html">Release 本地入口</a>
+    <a href="../../site/index.html">API 本地入口</a>
+    <a href="../../source/full_release/wp_coordsys_source.html">Local source snapshot</a>
+    <a href="https://openusd.org/release/wp_coordsys.html">Open official page</a>
+  </p>
+</header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
   <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
@@ -105,130 +116,68 @@
   </div>
 </aside>
 <!-- openusd-reading-flow-nav:end -->
+<main>
+  <section data-cn-complete="round-415-wp-coordsys">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+    <p><span class="zh">本页讨论如何在 USD 中记录和绑定命名坐标系统，让 shader、projection、camera 和材质网络能引用稳定的 frame of reference。中文主阅读路径应覆盖命名、scope、多坐标系统、API schema、frame 记录、binding 和消费端分析。读者需要把 <code>CoordSysAPI</code> 理解为场景描述中的参考系声明和绑定机制，而不是把它当作直接修改 prim transform 的工具。</span><span class="en">Chinese is the main reading path; English identifiers, API names, schema names, tokens, property names, code, commands, and links are retained for verification.</span></p>
+    <table>
+      <thead><tr><th>Official section</th><th>中文主阅读说明 / Chinese-first coverage</th></tr></thead>
+      <tbody>
+      <tr>
+        <th>Purpose</th>
+        <td><span class="zh">Purpose 说明需求来自 shading 和 projection：shader 需要知道某个名称对应的坐标系在哪里、如何绑定、如何在层级中解析。没有显式机制时，不同工具会用私有约定解释 reference frame。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Requirements</th>
+        <td><span class="zh">要求包括按名称识别、必须有作用域、一个 prim 可以拥有多个坐标系统，以及 shader 能通过名称引用。中文解释要强调名称不是随意文本，而是 authoring 和消费端都必须遵守的协议。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Coordinate Systems are Identified by Name in Shaders</th>
+        <td><span class="zh">shader 通过名称引用坐标系统，因此名称、scope 和绑定路径必须一致。调试 shader 投影错误时，先检查名称是否匹配，再检查绑定目标和 transform。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Coordinate Systems Must be Scoped</th>
+        <td><span class="zh">scope 约束避免全局名称冲突。局部作用域能让不同资产或子树使用相同名称而不互相污染，这对于引用、payload 和资产复用尤其重要。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Proposed API Schema</th>
+        <td><span class="zh">Proposed API Schema 讨论如何用 API schema 记录坐标系。<code>CoordSysAPI</code> 名称、属性和关系必须保留英文；中文应解释它们如何在 prim 上 author 和解析。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Recording a Frame of Reference</th>
+        <td><span class="zh">记录 frame of reference 的重点是把某个 prim 或变换作为坐标系定义来源。它描述参考系，而不是替代 <code>xformOp</code> 或更改几何本身。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Binding Frames of Reference</th>
+        <td><span class="zh">binding 把 shader 或消费端需要的坐标系统名称连接到具体 frame。绑定错误通常表现为投影偏移、纹理空间错位或 renderer 无法找到坐标系统。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>CoordSysAPI</th>
+        <td><span class="zh"><code>CoordSysAPI</code> 是核心 API schema，负责声明和绑定坐标系统。它与 <code>UsdGeomXformable</code>、shader 输入和材质网络相邻，但职责不同。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>USD Sample and Analysis</th>
+        <td><span class="zh">示例和分析展示坐标系统如何被 author、绑定和消费。阅读时应保留代码、属性名和 schema 名，用中文解释每一步的引用关系。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr></tbody>
+    </table>
 
+    <h3>中文主阅读路线 / Chinese Main Reading Path</h3>
+    <ol><li><span class="zh">调试投影或 procedural texture 错位时，先确认 shader 期望的 coordinate system 名称，再检查 <code>CoordSysAPI</code> 是否在正确 scope 中声明和绑定。</span><span class="en">Operational reading and debugging path.</span></li><li><span class="zh">资产被 reference 或 payload 到更大 stage 后，如果坐标系统失效，应检查 scope 是否仍可解析，避免全局名称假设被打破。</span><span class="en">Operational reading and debugging path.</span></li><li><span class="zh">需要 camera projection 或局部 reference frame 时，把本页作为设计说明，再回到当前 schema/API 页核对具体 authoring 方法。</span><span class="en">Operational reading and debugging path.</span></li></ol>
 
+    <h3>边界、误读点与调试路径 / Boundaries, Misreads, Debugging</h3>
+    <ul><li><span class="zh"><code>CoordSysAPI</code> 不直接移动模型，它记录和绑定 reference frame；实际几何变换仍由 xform stack 表达。</span><span class="en">Boundary or common misread to avoid.</span></li><li><span class="zh">坐标系统名称不能随意翻译或改写，因为 shader 和消费端按名称解析。</span><span class="en">Boundary or common misread to avoid.</span></li><li><span class="zh">本页讨论提案语义，具体实现状态和 API 细节仍需与当前 OpenUSD 版本核对。</span><span class="en">Boundary or common misread to avoid.</span></li></ul>
 
+    <h3>完成态验收与维护 / Completion Gate and Maintenance</h3>
+    <ul><li><span class="zh">阅读 USD 坐标系统提案 时，应先把它放在 release proposal 与当前 schema/API reference 之间理解：proposal 解释设计动机和取舍，schema/user guide 给出当前可用的 authoring 入口，API 页面用于核对具体类型、函数、属性和 token。中文层的目的不是替代英文标识，而是让读者先靠中文判断问题属于规范、提案、用户指南还是实现细节。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本页保留 Coordinate Systems in USD Proposal 的官方标题和主要 section，是为了方便读者与官方文档逐段核对。正式 API 名、schema 名、属性名、C++ 类型、命令、代码片段、Sdr/Hydra/UsdPrim 等标识必须保持英文；中文只解释职责、边界、调试路径和与相邻页面的关系。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">如果读者在实际项目中遇到不一致，应按中文主路径先定位层级：scene description 是否 author 正确，schema 或 API 是否属于当前 OpenUSD 版本，renderer、resolver、simulator 或播放器是否实现对应语义，最后再查看官方原页和 source snapshot 的细节。这样能避免把提案讨论误当成运行时保证。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本地连续阅读路径要求页面可从总入口进入 release index，再进入本页和相邻本地页面；只有标明 Open official page 的链接才是外跳。维护时如果新增相关页，优先更新相邻文档和 reading-flow 导航，而不是让用户在正文里跳到官方英文站后失去中文上下文。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本页的验收重点包括：中文是否覆盖官方核心 section，是否说明页面职责和读者决策路径，是否列出常见误读和调试检查点，是否保留 source parity，是否没有重复问号、replacement character、UTF-8 BOM 或草率的模板化描述。通过这些检查后，页面才适合写入 promotion manifest。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">后续维护中，如果 OpenUSD 官方内容变更，应先比较本地 source snapshot 与官方页面，再决定是补充中文解释、更新相邻链接，还是把页面降回需要复核的队列。不要因为英文比例高就直接判失败，也不要因为有中文总述就认为已经具备完整主阅读路径。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">对团队协作而言，本页应作为问题分流入口：实现者用它找到 schema/API 核对点，技术美术用它理解 authoring 和工具链影响，验证人员用它设计 source parity、链接路由、导航和 validation 检查。三类读者都能靠中文先建立判断，再回到英文标识核对。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">在使用 USD 坐标系统提案 做工程决策时，建议先写下当前问题的输入、输出和失败现象：例如资产解析失败、灯光不被 delegate 识别、坐标系统名称不匹配、刚体行为不稳定、schema 版本冲突或音频时间不同步。随后把问题映射到本页对应 section，再进入相邻本地文档验证具体 schema 和 API。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">如果页面属于 proposal 或 whitepaper，中文说明必须提醒读者它提供设计背景、权衡和迁移思路；真正可执行的 authoring 细节仍要回到当前 release 的 user guide、schema 页面和 API reference。这样既能保留提案的历史价值，也能避免把未冻结讨论当成当前工具链的强制行为。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本地中文版维护时还要关注链接语义：站内阅读路径应指向本地 HTML，外部官方链接必须有明确文字；如果 route 或 reading-flow 审计发现普通正文链接跳到 openusd.org，应先修路由或导航，再考虑继续晋级新页面。这个规则对长篇 proposal 尤其重要，因为读者经常需要在多个背景页之间往返。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">对于审计而言，本页应同时满足四类证据：HTML 中有 <code>bilingual_complete</code> 和 <code>data-cn-complete</code>，translation_quality_review 评为 <code>good_bilingual</code>，english_debt_audit 认可中文主阅读路径和 section 覆盖，source parity 报告没有缺失关键词。缺少任一证据时，都不应把页面当作已经完成。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">最终复核时，还要从用户视角打开页面：标题能否说明主题，第一段能否解释页面职责，表格能否覆盖官方主要 section，调试清单能否指导下一步，相关链接能否回到本地中文站。只有这些条件同时成立，完成数增长才代表真实阅读体验改善，而不是单纯增加计数。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">若主题涉及版本、迁移或兼容性，还应核对当前 OpenUSD release 的实际行为，避免把旧提案中的历史语境直接套用到新工具链。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li></ul>
 
+    <h3>相邻文档关系 / Adjacent Documents</h3>
+    <p><span class="zh">这些本地链接把本页放回 OpenUSD 中文站的连续阅读路径：先从总入口到 release index，再进入 proposal、spec、user guide 或 API 页面。页面只把 <code>Open official page</code> 作为明确外跳。</span><span class="en">Adjacent local pages keep the reading flow inside the local bilingual site.</span></p>
+    <ul><li><a href="../api/usd_geom_page_front.html">UsdGeom overview</a></li><li><a href="wp_usdshade.html">UsdShade Material Assignment</a></li><li><a href="user_guides/primvars.html">Primvars</a></li></ul>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section>
-      <h2>中文导读 / Chinese Reading Notes</h2>
-      <ul>
-<li><span class="zh">该 proposal 讨论 USD 中渲染/着色坐标系的通用编码方式，页面声明已实现并指向 UsdShadeCoordSysAPI。</span></li>
-<li><span class="zh">核心需求是 shader 通过短名称访问坐标系，而不是通过跨层级 relationship 直接指向几何 prim。</span></li>
-<li><span class="zh">文档主张坐标系按 namespace subtree 作用域继承和覆盖，避免全局唯一长路径名称，同时适合资产引用和实例化。</span></li>
-<li><span class="zh">本地页保留 CoordSysAPI、coordSys:* relationship、projection painting、procedural texture 稳定空间和 usda 示例，便于核对绑定语义。</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-077">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Coordinate Systems in USD Proposal 补充 proposal 二次精修说明，重点解释设计目标、对象模型、authoring/consumption 边界和常见误读；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds a second-pass Chinese refinement for Coordinate Systems in USD Proposal, focusing on design goals, object model, authoring and consumption boundaries, and common interpretation risks while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">本 proposal 解决 shader 如何用稳定短名称访问 frame of reference，而不是直接依赖可能随引用、实例化或资产封装变化的长 prim path。</span></li>
-        <li><span class="zh">`coordSys:*` relationship 把一个名字绑定到某个 prim 的坐标空间；shader 通过字符串名消费该坐标系，绑定关系则按 namespace subtree 作用域继承和覆盖。</span></li>
-        <li><span class="zh">同一个 prim 可以绑定多个 coordinate systems，例如 `modelSpace`、`instanceSpace`、`paintSpace`；这让 procedural texture、projection painting 和稳定 reference frame 可以并存。</span></li>
-        <li><span class="zh">与 primvars 不同，coordSys 不是每点数据，而是命名坐标框架；与 collections 不同，它强调 shader 消费的坐标空间解析，而不是 prim 集合选择。</span></li>
-        <li><span class="zh">阅读 USDA 示例时应关注 `rel coordSys:modelSpace`、`rel coordSys:instanceSpace` 与 shader `inputs:coordsys` 的配合：前者 author 绑定，后者按名称请求。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">坐标系：</span><span class="en">Coordinate Systems</span></li>
-        <li><span class="zh">UsdShade 坐标系 API：</span><span class="en">UsdShadeCoordSysAPI</span></li>
-        <li><span class="zh">坐标系绑定关系：</span><span class="en">coordSys:* relationship</span></li>
-        <li><span class="zh">参考坐标框架：</span><span class="en">frame of reference</span></li>
-        <li><span class="zh">投影绘制：</span><span class="en">projection painting</span></li>
-        <li><span class="zh">程序化纹理：</span><span class="en">procedural texture</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-125">
-      <h2>中文补强导读 / Chinese Refinement Notes</h2>
-      <p class="zh">`Coordinate Systems in USD Proposal` 解释 USD 如何在场景中声明、绑定和消费命名坐标系。它的重点不是简单的矩阵换算，而是通过 `CoordSysAPI`、`coordSys` 关系和 binding 语义，让 shading、lookdev、procedural 节点或 renderer 能够引用模型、组件或局部空间。</p>
-      <p class="en">This refinement section adds page-specific Chinese reading notes for Coordinate Systems in USD Proposal while preserving English page names, API names, schema names, property names, commands, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`CoordSysAPI` 用于在 prim 上声明可命名的 coordinate system；这些命名空间可以被下游节点引用，从而避免把空间含义硬编码到 shader 参数或工具约定中。</span></li>
-        <li><span class="zh">坐标系 binding 的强弱、继承和覆盖要结合 USD composition 读取；同名 binding 在不同层或不同 prim 层级上出现时，最终结果取决于组合后的 scenegraph。</span></li>
-        <li><span class="zh">proposal 中的坐标系主要服务于 shading 和资产互换场景，不能误读为替代 `xformOp`、`UsdGeomXformable` 或物理模拟坐标系的通用机制。</span></li>
-        <li><span class="zh">命名坐标系常出现在模型根、材质网络或 procedural 生成流程中；阅读链接和示例时应同时关注 prim path、relationship target 和 consumer 端的解析规则。</span></li>
-        <li><span class="zh">本地复刻保留 `coordSys`、`binding rels`、`UsdShade` 等英文术语，便于和 API 文档、USDA 示例及 renderer 实现逐项对照。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">坐标系 API schema：</span><span class="en">CoordSysAPI</span></li>
-        <li><span class="zh">坐标系命名空间：</span><span class="en">coordSys</span></li>
-        <li><span class="zh">绑定关系：</span><span class="en">binding rels</span></li>
-        <li><span class="zh">消费端节点或系统：</span><span class="en">consumer</span></li>
-        <li><span class="zh">模型根 prim：</span><span class="en">model root</span></li>
-        <li><span class="zh">可变换几何 schema：</span><span class="en">UsdGeomXformable</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：Coordinate Systems in USD Proposal</span><span class="en">Coordinate Systems in USD Proposal</span></li>
-<li><span class="zh">第 2 级标题：Purpose</span><span class="en">Purpose</span></li>
-<li><span class="zh">第 2 级标题：Requirements</span><span class="en">Requirements</span></li>
-<li><span class="zh">第 3 级标题：Coordinate Systems are Identified by Name in Shaders</span><span class="en">Coordinate Systems are Identified by Name in Shaders</span></li>
-<li><span class="zh">第 4 级标题：Coordinate Systems Must be Scoped</span><span class="en">Coordinate Systems Must be Scoped</span></li>
-<li><span class="zh">第 4 级标题：Multiple Coordinate Systems per Prim</span><span class="en">Multiple Coordinate Systems per Prim</span></li>
-<li><span class="zh">第 2 级标题：Proposed API Schema</span><span class="en">Proposed API Schema</span></li>
-<li><span class="zh">第 3 级标题：Recording a Frame of Reference</span><span class="en">Recording a Frame of Reference</span></li>
-<li><span class="zh">第 3 级标题：Binding Frames of Reference</span><span class="en">Binding Frames of Reference</span></li>
-<li><span class="zh">第 3 级标题：CoordSysAPI</span><span class="en">CoordSysAPI</span></li>
-<li><span class="zh">第 2 级标题：USD Sample and Analysis</span><span class="en">USD Sample and Analysis</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">This proposal has been implemented. This document exists for historical reference and may be outdated. For up-to-date documentation, see the UsdShadeCoordSysAPI page .</p>
-<p class="en">Coordinate Systems are Identified by Name in Shaders</p>
-<p class="en">Analysis: Coordinate System Binding and Consumption</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>#usda 1.0 ( upAxis = &quot;Y&quot; ) def Xform &quot;World&quot; { double3 xformOp:translate = ( 5 , 0 , 0 ) token[] xformOpOrder = [ &quot;xformOp:translate&quot; ] def Material &quot;SetLevelMaterial&quot; { # This is NOT a complete Material definition! def Shader &quot;PrimvarReader_1&quot; { uniform token info:id = &quot;PxrPrimvar&quot; string inputs:varname = &quot;pref&quot; string inputs:coordsys = &quot;instanceSpace&quot; string inputs:type = &quot;point&quot; } } def Xform &quot;Model&quot; { rel coordSys:modelSpace = &lt;/World/Model/Geom&gt; rel coordSys:instanceSpace = &lt;/World/Model&gt; rel coordSys:paint...</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_shade_coord_sys_a_p_i.html&amp;title=UsdShadeCoordSysAPI+page" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_shade_coord_sys_a_p_i.html">UsdShadeCoordSysAPI page</a></li>
-<li><a href="https://www.youtube.com/watch">projection painting</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_ri_statements_a_p_i.html&amp;title=Scoped+Coordinate+Systems" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_ri_statements_a_p_i.html">Scoped Coordinate Systems</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_stage.html&amp;title=masked+Stage" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_stage.html">masked Stage</a></li>
-<li><a href="https://github.com/imageworks/OpenShadingLanguage/blob/release/src/doc/osl-languagespec.pdf">OSL</a></li>
-<li><a href="../../site/glossary.html" data-local-route="mapped" data-official-href="https://openusd.org/release/glossary.html">API Schema</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2F_usd__page__generating_schemas.html&amp;title=non-applied+API+schema" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/_usd__page__generating_schemas.html">non-applied API schema</a></li>
-<li><a href="../api/class_usd_geom_primvars_a_p_i.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_usd_geom_primvars_a_p_i.html">UsdGeomPrimvarsAPI</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_collection_a_p_i.html&amp;title=UsdCollectionAPI" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_collection_a_p_i.html">UsdCollectionAPI</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/wp_coordsys.html">打开官方原页 / Open official page</a></p>
-    </section>
-  </main>
+    <h3>源页对比 / Source Parity</h3>
+    <p><span class="zh">已对比本地 source snapshot：<code>source/full_release/wp_coordsys_source.html</code>。本轮检查官方标题和主要 section 关键词，保留链接语义和显式官方原页入口；source parity 结果写入 <code>reports/round_415_remaining_proposals_source_parity.json</code>。</span><span class="en">Official source page: <a href="https://openusd.org/release/wp_coordsys.html">Open official page - Coordinate Systems in USD Proposal</a>.</span></p>
+    <ul><li><code>h1</code> Coordinate Systems in USD Proposal </li><li><code>h2</code> Purpose </li><li><code>h2</code> Requirements </li><li><code>h3</code> Coordinate Systems are Identified by Name in Shaders </li><li><code>h4</code> Coordinate Systems Must be Scoped </li><li><code>h4</code> Multiple Coordinate Systems per Prim </li><li><code>h2</code> Proposed API Schema </li><li><code>h3</code> Recording a Frame of Reference </li><li><code>h3</code> Binding Frames of Reference </li><li><code>h3</code> CoordSysAPI </li><li><code>h2</code> USD Sample and Analysis </li><li><code>h3</code> Analysis: Coordinate Systems Evaluated </li></ul>
+  </section>
+</main>
 </body>
 </html>

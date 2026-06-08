@@ -1,0 +1,1547 @@
+{
+  "generated_at": "2026-06-08T05:22:26.684Z",
+  "round": 415,
+  "round_type": "DomainSprintRound",
+  "target": "release whitepaper/proposal 剩余核心页小批量冲刺",
+  "source_parity": [
+    {
+      "page": "wp-usdlux-geometry-lights",
+      "title": "Adapting UsdLux to Accommodate Geometry Lights",
+      "output": "full_site/release/wp_usdlux_for_geometry_lights.html",
+      "source_snapshot": "source/full_release/wp_usdlux_for_geometry_lights_source.html",
+      "official_url": "https://openusd.org/release/wp_usdlux_for_geometry_lights.html",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Adapting UsdLux to Accommodate Geometry Lights "
+        },
+        {
+          "level": 2,
+          "text": "Introduction and Background "
+        },
+        {
+          "level": 3,
+          "text": "Mesh Light Support in the Industry "
+        },
+        {
+          "level": 3,
+          "text": "Goals "
+        },
+        {
+          "level": 3,
+          "text": "Workflow Considerations "
+        },
+        {
+          "level": 4,
+          "text": "Emission and Glow: In Sync Except When Not "
+        },
+        {
+          "level": 4,
+          "text": "Lighting Post-Modeling "
+        },
+        {
+          "level": 2,
+          "text": "Design Space and Issues "
+        },
+        {
+          "level": 3,
+          "text": "Dual-Prim Geometry Light Problems "
+        },
+        {
+          "level": 3,
+          "text": "Single-Prim Geometry Light "
+        },
+        {
+          "level": 2,
+          "text": "UsdLux LightAPI OM "
+        },
+        {
+          "level": 3,
+          "text": "Light -> LightAPI "
+        },
+        {
+          "level": 3,
+          "text": "Introduce Convenience Base Classes "
+        },
+        {
+          "level": 3,
+          "text": "Preserve Existing UsdLux Concrete Schemas "
+        },
+        {
+          "level": 3,
+          "text": "Deprecate GeometryLight "
+        },
+        {
+          "level": 3,
+          "text": "How do we Identify the Appropriate SdrShaderNode for a Light? "
+        },
+        {
+          "level": 3,
+          "text": "Lights with Materials? "
+        },
+        {
+          "level": 2,
+          "text": "Proposal and Behaviors "
+        },
+        {
+          "level": 3,
+          "text": "Shading and Emission "
+        },
+        {
+          "level": 4,
+          "text": "No-Material Behavior "
+        },
+        {
+          "level": 4,
+          "text": "Synchronizing Light with Material "
+        },
+        {
+          "level": 3,
+          "text": "Volumes "
+        },
+        {
+          "level": 3,
+          "text": "Primvars in Light Networks "
+        }
+      ],
+      "source_keywords_checked": [
+        "Adapting UsdLux to Accommodate Geometry Lights",
+        "Introduction and Background",
+        "Mesh Light Support in the Industry",
+        "Goals",
+        "Workflow Considerations",
+        "Design Space and Issues",
+        "UsdLux LightAPI OM",
+        "Proposal and Behaviors"
+      ],
+      "missing_source_keywords": [],
+      "missing_output_keywords": [],
+      "official_sections_preserved": [
+        "Introduction and Background",
+        "Mesh Light Support in the Industry",
+        "Goals",
+        "Workflow Considerations",
+        "Design Space and Issues",
+        "UsdLux LightAPI OM",
+        "Proposal and Behaviors",
+        "相邻类型关系"
+      ],
+      "preserved_code_terms_sample": [
+        "UsdLux",
+        "Adapting",
+        "Accommodate",
+        "Geometry",
+        "Lights",
+        "bilingual_complete",
+        "Original",
+        "title",
+        "Round",
+        "DomainSprintRound",
+        "Source",
+        "snapshot",
+        "source",
+        "full_release",
+        "wp_usdlux_for_geometry_lights_source.html",
+        "Release",
+        "API",
+        "Local",
+        "Open",
+        "official",
+        "page",
+        "Paragraph-Level",
+        "Bilingual",
+        "Coverage",
+        "light",
+        "prim",
+        "geometry",
+        "mesh",
+        "LightAPI",
+        "GeometryLight",
+        "schema",
+        "Chinese",
+        "the",
+        "main",
+        "reading",
+        "path",
+        "English",
+        "identifiers",
+        "names",
+        "tokens",
+        "property",
+        "code",
+        "commands",
+        "and",
+        "links",
+        "are",
+        "retained",
+        "for",
+        "verification",
+        "Official",
+        "section",
+        "Chinese-first",
+        "coverage",
+        "Introduction",
+        "Background",
+        "DCC",
+        "USD",
+        "renderer",
+        "Hydra",
+        "delegate",
+        "This",
+        "row",
+        "keeps",
+        "heading",
+        "provides",
+        "guidance",
+        "parity",
+        "Mesh",
+        "Light",
+        "Support",
+        "Industry",
+        "emission",
+        "Goals",
+        "authoring",
+        "Workflow",
+        "Considerations",
+        "glow",
+        "Design",
+        "Space",
+        "Issues"
+      ]
+    },
+    {
+      "page": "wp-usdlux-renderers",
+      "title": "Adapting UsdLux to the Needs of Renderers",
+      "output": "full_site/release/wp_usdlux_for_renderers.html",
+      "source_snapshot": "source/full_release/wp_usdlux_for_renderers_source.html",
+      "official_url": "https://openusd.org/release/wp_usdlux_for_renderers.html",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Adapting UsdLux to the Needs of Renderers "
+        },
+        {
+          "level": 2,
+          "text": "Background and Goals "
+        },
+        {
+          "level": 2,
+          "text": "Foundational Technologies in USD "
+        },
+        {
+          "level": 3,
+          "text": "Sdr "
+        },
+        {
+          "level": 3,
+          "text": "USD Schemas "
+        },
+        {
+          "level": 3,
+          "text": "UsdImaging and Hydra "
+        },
+        {
+          "level": 2,
+          "text": "Proposals "
+        },
+        {
+          "level": 3,
+          "text": "Changes to UsdLux "
+        },
+        {
+          "level": 4,
+          "text": "Making Lights Connectable "
+        },
+        {
+          "level": 4,
+          "text": "Associating Lights with Sdr Definitions "
+        },
+        {
+          "level": 4,
+          "text": "UsdLuxPluginLight, UsdLuxPluginLightFilter "
+        },
+        {
+          "level": 4,
+          "text": "UsdLuxPortalLight "
+        },
+        {
+          "level": 3,
+          "text": "Changes to UsdImaging "
+        },
+        {
+          "level": 3,
+          "text": "Changes to Hd "
+        },
+        {
+          "level": 3,
+          "text": "Changes to HdPrman and Other Render Delegates "
+        }
+      ],
+      "source_keywords_checked": [
+        "Adapting UsdLux to the Needs of Renderers",
+        "Background and Goals",
+        "Foundational Technologies in USD",
+        "Sdr",
+        "USD Schemas",
+        "UsdImaging and Hydra",
+        "Proposals",
+        "Changes to UsdLux"
+      ],
+      "missing_source_keywords": [],
+      "missing_output_keywords": [],
+      "official_sections_preserved": [
+        "Background and Goals",
+        "Foundational Technologies in USD",
+        "Sdr",
+        "USD Schemas",
+        "UsdImaging and Hydra",
+        "Proposals",
+        "Changes to UsdLux",
+        "Changes to Hd"
+      ],
+      "preserved_code_terms_sample": [
+        "UsdLux",
+        "Adapting",
+        "the",
+        "Needs",
+        "Renderers",
+        "bilingual_complete",
+        "Original",
+        "title",
+        "Round",
+        "DomainSprintRound",
+        "Source",
+        "snapshot",
+        "source",
+        "full_release",
+        "wp_usdlux_for_renderers_source.html",
+        "Release",
+        "API",
+        "Local",
+        "Open",
+        "official",
+        "page",
+        "Paragraph-Level",
+        "Bilingual",
+        "Coverage",
+        "renderer",
+        "Sdr",
+        "plugin",
+        "light",
+        "USD",
+        "schemas",
+        "UsdImaging",
+        "Hydra",
+        "render",
+        "delegate",
+        "UsdLuxPluginLight",
+        "schema",
+        "scene",
+        "description",
+        "shader",
+        "Chinese",
+        "main",
+        "reading",
+        "path",
+        "English",
+        "identifiers",
+        "names",
+        "tokens",
+        "property",
+        "code",
+        "commands",
+        "and",
+        "links",
+        "are",
+        "retained",
+        "for",
+        "verification",
+        "Official",
+        "section",
+        "Chinese-first",
+        "coverage",
+        "Background",
+        "Goals",
+        "concrete",
+        "filter",
+        "This",
+        "row",
+        "keeps",
+        "heading",
+        "provides",
+        "guidance",
+        "parity",
+        "Foundational",
+        "Technologies",
+        "Schemas",
+        "prim",
+        "stage",
+        "Shader",
+        "Definition",
+        "Registry",
+        "registry"
+      ]
+    },
+    {
+      "page": "wp-ar2",
+      "title": "Asset Resolution (Ar) 2.0",
+      "output": "full_site/release/wp_ar2.html",
+      "source_snapshot": "source/full_release/wp_ar2_source.html",
+      "official_url": "https://openusd.org/release/wp_ar2.html",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Asset Resolution (Ar) 2.0 "
+        },
+        {
+          "level": 2,
+          "text": "Background and Goals "
+        },
+        {
+          "level": 2,
+          "text": "Tasks "
+        },
+        {
+          "level": 3,
+          "text": "General Cleanup "
+        },
+        {
+          "level": 3,
+          "text": "Add Documentation and Examples "
+        },
+        {
+          "level": 3,
+          "text": "Add Identifier Concept "
+        },
+        {
+          "level": 3,
+          "text": "Remove Repository and Search Path "
+        },
+        {
+          "level": 3,
+          "text": "Improve Resolve and Asset Info "
+        },
+        {
+          "level": 3,
+          "text": "Remove Filesystem-specific Code "
+        },
+        {
+          "level": 3,
+          "text": "Add Asset Writing Interface "
+        },
+        {
+          "level": 3,
+          "text": "Add URI Resolvers "
+        },
+        {
+          "level": 3,
+          "text": "Allow Creation of ArResolverContext From Strings "
+        },
+        {
+          "level": 3,
+          "text": "Remove ArResolver::ConfigureResolverForAsset "
+        },
+        {
+          "level": 2,
+          "text": "Rollout and Transition "
+        },
+        {
+          "level": 2,
+          "text": "Proposed API "
+        }
+      ],
+      "source_keywords_checked": [
+        "Asset Resolution (Ar) 2.0",
+        "Background and Goals",
+        "Tasks",
+        "General Cleanup",
+        "Add Documentation and Examples",
+        "Add Identifier Concept",
+        "Remove Repository and Search Path",
+        "Improve Resolve and Asset Info",
+        "Rollout and Transition",
+        "Proposed API"
+      ],
+      "missing_source_keywords": [],
+      "missing_output_keywords": [],
+      "official_sections_preserved": [
+        "Background and Goals",
+        "Tasks",
+        "General Cleanup",
+        "Add Documentation and Examples",
+        "Add Identifier Concept",
+        "Remove Repository and Search Path",
+        "Improve Resolve and Asset Info",
+        "Rollout and Transition",
+        "Proposed API"
+      ],
+      "preserved_code_terms_sample": [
+        "Asset",
+        "Resolution",
+        "bilingual_complete",
+        "Original",
+        "title",
+        "Round",
+        "DomainSprintRound",
+        "Source",
+        "snapshot",
+        "source",
+        "full_release",
+        "wp_ar2_source.html",
+        "Release",
+        "API",
+        "Local",
+        "Open",
+        "official",
+        "page",
+        "Paragraph-Level",
+        "Bilingual",
+        "Coverage",
+        "identifier",
+        "resolver",
+        "context",
+        "asset",
+        "info",
+        "URI",
+        "USD",
+        "path",
+        "Chinese",
+        "the",
+        "main",
+        "reading",
+        "English",
+        "identifiers",
+        "names",
+        "schema",
+        "tokens",
+        "property",
+        "code",
+        "commands",
+        "and",
+        "links",
+        "are",
+        "retained",
+        "for",
+        "verification",
+        "Official",
+        "section",
+        "Chinese-first",
+        "coverage",
+        "Background",
+        "Goals",
+        "repository",
+        "search",
+        "resolved",
+        "This",
+        "row",
+        "keeps",
+        "heading",
+        "provides",
+        "guidance",
+        "parity",
+        "Tasks",
+        "resolve",
+        "General",
+        "Cleanup",
+        "Add",
+        "Documentation",
+        "Examples",
+        "studio",
+        "unresolved",
+        "Identifier",
+        "Concept",
+        "package",
+        "Remove",
+        "Repository",
+        "Search",
+        "Path",
+        "Improve"
+      ]
+    },
+    {
+      "page": "wp-coordsys",
+      "title": "Coordinate Systems in USD Proposal",
+      "output": "full_site/release/wp_coordsys.html",
+      "source_snapshot": "source/full_release/wp_coordsys_source.html",
+      "official_url": "https://openusd.org/release/wp_coordsys.html",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Coordinate Systems in USD Proposal "
+        },
+        {
+          "level": 2,
+          "text": "Purpose "
+        },
+        {
+          "level": 2,
+          "text": "Requirements "
+        },
+        {
+          "level": 3,
+          "text": "Coordinate Systems are Identified by Name in Shaders "
+        },
+        {
+          "level": 4,
+          "text": "Coordinate Systems Must be Scoped "
+        },
+        {
+          "level": 4,
+          "text": "Multiple Coordinate Systems per Prim "
+        },
+        {
+          "level": 2,
+          "text": "Proposed API Schema "
+        },
+        {
+          "level": 3,
+          "text": "Recording a Frame of Reference "
+        },
+        {
+          "level": 3,
+          "text": "Binding Frames of Reference "
+        },
+        {
+          "level": 3,
+          "text": "CoordSysAPI "
+        },
+        {
+          "level": 2,
+          "text": "USD Sample and Analysis "
+        },
+        {
+          "level": 3,
+          "text": "Analysis: Coordinate Systems Evaluated "
+        },
+        {
+          "level": 3,
+          "text": "Analysis: Coordinate System Binding and Consumption "
+        },
+        {
+          "level": 2,
+          "text": "Projections, Cameras, and CoordSysAPI "
+        }
+      ],
+      "source_keywords_checked": [
+        "Coordinate Systems in USD Proposal",
+        "Purpose",
+        "Requirements",
+        "Coordinate Systems are Identified by Name in Shaders",
+        "Coordinate Systems Must be Scoped",
+        "Proposed API Schema",
+        "Recording a Frame of Reference",
+        "Binding Frames of Reference",
+        "CoordSysAPI",
+        "USD Sample and Analysis"
+      ],
+      "missing_source_keywords": [],
+      "missing_output_keywords": [],
+      "official_sections_preserved": [
+        "Purpose",
+        "Requirements",
+        "Coordinate Systems are Identified by Name in Shaders",
+        "Coordinate Systems Must be Scoped",
+        "Proposed API Schema",
+        "Recording a Frame of Reference",
+        "Binding Frames of Reference",
+        "CoordSysAPI",
+        "USD Sample and Analysis"
+      ],
+      "preserved_code_terms_sample": [
+        "USD",
+        "Coordinate",
+        "Systems",
+        "Proposal",
+        "bilingual_complete",
+        "Original",
+        "title",
+        "Round",
+        "DomainSprintRound",
+        "Source",
+        "snapshot",
+        "source",
+        "full_release",
+        "wp_coordsys_source.html",
+        "Release",
+        "API",
+        "Local",
+        "Open",
+        "official",
+        "page",
+        "Paragraph-Level",
+        "Bilingual",
+        "Coverage",
+        "shader",
+        "projection",
+        "camera",
+        "frame",
+        "reference",
+        "scope",
+        "schema",
+        "binding",
+        "CoordSysAPI",
+        "prim",
+        "transform",
+        "Chinese",
+        "the",
+        "main",
+        "reading",
+        "path",
+        "English",
+        "identifiers",
+        "names",
+        "tokens",
+        "property",
+        "code",
+        "commands",
+        "and",
+        "links",
+        "are",
+        "retained",
+        "for",
+        "verification",
+        "Official",
+        "section",
+        "Chinese-first",
+        "coverage",
+        "Purpose",
+        "shading",
+        "This",
+        "row",
+        "keeps",
+        "heading",
+        "provides",
+        "guidance",
+        "parity",
+        "Requirements",
+        "authoring",
+        "Identified",
+        "Name",
+        "Shaders",
+        "Must",
+        "Scoped",
+        "payload",
+        "Proposed",
+        "Schema",
+        "author",
+        "Recording",
+        "Frame",
+        "Reference",
+        "xformOp"
+      ]
+    },
+    {
+      "page": "wp-connectable-nodes",
+      "title": "Generalizing Connectable Nodes Beyond UsdShade",
+      "output": "full_site/release/wp_connectable_nodes.html",
+      "source_snapshot": "source/full_release/wp_connectable_nodes_source.html",
+      "official_url": "https://openusd.org/release/wp_connectable_nodes.html",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Generalizing Connectable Nodes Beyond UsdShade "
+        },
+        {
+          "level": 2,
+          "text": "Background and Goals "
+        },
+        {
+          "level": 2,
+          "text": "Proposal "
+        },
+        {
+          "level": 3,
+          "text": "Node Definition as API Schema "
+        },
+        {
+          "level": 3,
+          "text": "Plugin-defined ConnectableAPI Behavior "
+        },
+        {
+          "level": 3,
+          "text": "Connectability Rules for UsdShade Types "
+        },
+        {
+          "level": 3,
+          "text": "Intended use in UsdLux and UsdRi (RenderMan USD schema) "
+        },
+        {
+          "level": 2,
+          "text": "Discussion "
+        },
+        {
+          "level": 3,
+          "text": "Sdr & Ndr "
+        },
+        {
+          "level": 3,
+          "text": "Flexibility of Connectability Callbacks "
+        },
+        {
+          "level": 3,
+          "text": "Non-shading Networks "
+        }
+      ],
+      "source_keywords_checked": [
+        "Generalizing Connectable Nodes Beyond UsdShade",
+        "Background and Goals",
+        "Proposal",
+        "Node Definition as API Schema",
+        "Plugin-defined ConnectableAPI Behavior",
+        "Connectability Rules for UsdShade Types",
+        "Discussion",
+        "Non-shading Networks"
+      ],
+      "missing_source_keywords": [],
+      "missing_output_keywords": [],
+      "official_sections_preserved": [
+        "Background and Goals",
+        "Proposal",
+        "Node Definition as API Schema",
+        "Plugin-defined ConnectableAPI Behavior",
+        "Connectability Rules for UsdShade Types",
+        "Intended use in UsdLux and UsdRi (RenderMan USD schema)",
+        "Discussion",
+        "Non-shading Networks"
+      ],
+      "preserved_code_terms_sample": [
+        "UsdShade",
+        "Generalizing",
+        "Connectable",
+        "Nodes",
+        "Beyond",
+        "bilingual_complete",
+        "Original",
+        "title",
+        "Round",
+        "DomainSprintRound",
+        "Source",
+        "snapshot",
+        "source",
+        "full_release",
+        "wp_connectable_nodes_source.html",
+        "Release",
+        "API",
+        "Local",
+        "Open",
+        "official",
+        "page",
+        "Paragraph-Level",
+        "Bilingual",
+        "Coverage",
+        "connectable",
+        "node",
+        "UsdLux",
+        "UsdRi",
+        "definition",
+        "schema",
+        "plugin-defined",
+        "behavior",
+        "connectability",
+        "rules",
+        "Sdr",
+        "Ndr",
+        "shader",
+        "network",
+        "shading",
+        "Chinese",
+        "the",
+        "main",
+        "reading",
+        "path",
+        "English",
+        "identifiers",
+        "names",
+        "tokens",
+        "property",
+        "code",
+        "commands",
+        "and",
+        "links",
+        "are",
+        "retained",
+        "for",
+        "verification",
+        "Official",
+        "section",
+        "Chinese-first",
+        "coverage",
+        "Background",
+        "Goals",
+        "input",
+        "output",
+        "This",
+        "row",
+        "keeps",
+        "heading",
+        "provides",
+        "guidance",
+        "parity",
+        "Proposal",
+        "plugin",
+        "Node",
+        "Definition",
+        "Schema",
+        "prim",
+        "UsdShadeShader",
+        "UsdShadeNodeGraph"
+      ]
+    },
+    {
+      "page": "wp-rigid-body-physics",
+      "title": "Rigid Body Physics in USD Proposal",
+      "output": "full_site/release/wp_rigid_body_physics.html",
+      "source_snapshot": "source/full_release/wp_rigid_body_physics_source.html",
+      "official_url": "https://openusd.org/release/wp_rigid_body_physics.html",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Rigid Body Physics in USD Proposal "
+        },
+        {
+          "level": 2,
+          "text": "Purpose and Scope "
+        },
+        {
+          "level": 2,
+          "text": "Overall Design Concerns "
+        },
+        {
+          "level": 3,
+          "text": "Rigid Body Simulation Primer "
+        },
+        {
+          "level": 3,
+          "text": "USD Implementation "
+        },
+        {
+          "level": 4,
+          "text": "Disambiguation "
+        },
+        {
+          "level": 4,
+          "text": "Fundamental Editing Capabilities "
+        },
+        {
+          "level": 4,
+          "text": "Physics Scenes "
+        },
+        {
+          "level": 4,
+          "text": "Types "
+        },
+        {
+          "level": 4,
+          "text": "Units "
+        },
+        {
+          "level": 4,
+          "text": "Default Values "
+        },
+        {
+          "level": 4,
+          "text": "Rigid Bodies "
+        },
+        {
+          "level": 4,
+          "text": "Interaction with the USD hierarchy "
+        },
+        {
+          "level": 4,
+          "text": "Sleep "
+        },
+        {
+          "level": 4,
+          "text": "Kinematic Bodies "
+        },
+        {
+          "level": 4,
+          "text": "Animation of Attributes "
+        },
+        {
+          "level": 4,
+          "text": "Body Mass Properties "
+        },
+        {
+          "level": 4,
+          "text": "Collision Shapes "
+        },
+        {
+          "level": 4,
+          "text": "Turning Meshes into Shapes "
+        },
+        {
+          "level": 4,
+          "text": "Physics Materials "
+        },
+        {
+          "level": 4,
+          "text": "Plane Shapes "
+        },
+        {
+          "level": 4,
+          "text": "Collision Filtering "
+        },
+        {
+          "level": 4,
+          "text": "Pairwise Filtering "
+        },
+        {
+          "level": 4,
+          "text": "Joints "
+        },
+        {
+          "level": 4,
+          "text": "Articulations "
+        },
+        {
+          "level": 2,
+          "text": "Concrete Schemas "
+        },
+        {
+          "level": 2,
+          "text": "Examples "
+        },
+        {
+          "level": 3,
+          "text": "Box on Box "
+        },
+        {
+          "level": 3,
+          "text": "Box on Quad "
+        },
+        {
+          "level": 3,
+          "text": "Spheres with Materials "
+        },
+        {
+          "level": 3,
+          "text": "Group Filtering "
+        },
+        {
+          "level": 3,
+          "text": "Pair Filtering "
+        },
+        {
+          "level": 3,
+          "text": "Joint "
+        },
+        {
+          "level": 3,
+          "text": "Distance Joint "
+        }
+      ],
+      "source_keywords_checked": [
+        "Rigid Body Physics in USD Proposal",
+        "Purpose and Scope",
+        "Overall Design Concerns",
+        "Rigid Body Simulation Primer",
+        "USD Implementation",
+        "Physics Scenes",
+        "Rigid Bodies",
+        "Collision Shapes",
+        "Physics Materials",
+        "Units"
+      ],
+      "missing_source_keywords": [],
+      "missing_output_keywords": [],
+      "official_sections_preserved": [
+        "Purpose and Scope",
+        "Overall Design Concerns",
+        "Rigid Body Simulation Primer",
+        "USD Implementation",
+        "Physics Scenes",
+        "Units",
+        "Rigid Bodies",
+        "Collision Shapes",
+        "Physics Materials"
+      ],
+      "preserved_code_terms_sample": [
+        "USD",
+        "Rigid",
+        "Body",
+        "Physics",
+        "Proposal",
+        "bilingual_complete",
+        "Original",
+        "title",
+        "Round",
+        "DomainSprintRound",
+        "Source",
+        "snapshot",
+        "source",
+        "full_release",
+        "wp_rigid_body_physics_source.html",
+        "Release",
+        "API",
+        "Local",
+        "Open",
+        "official",
+        "page",
+        "Paragraph-Level",
+        "Bilingual",
+        "Coverage",
+        "schema",
+        "authoring",
+        "physics",
+        "scene",
+        "rigid",
+        "body",
+        "collider",
+        "material",
+        "Chinese",
+        "the",
+        "main",
+        "reading",
+        "path",
+        "English",
+        "identifiers",
+        "names",
+        "tokens",
+        "property",
+        "code",
+        "commands",
+        "and",
+        "links",
+        "are",
+        "retained",
+        "for",
+        "verification",
+        "Official",
+        "section",
+        "Chinese-first",
+        "coverage",
+        "Purpose",
+        "Scope",
+        "scene-level",
+        "This",
+        "row",
+        "keeps",
+        "heading",
+        "provides",
+        "guidance",
+        "parity",
+        "Overall",
+        "Design",
+        "Concerns",
+        "solver",
+        "Simulation",
+        "Primer",
+        "mass",
+        "inertia",
+        "collision",
+        "shape",
+        "kinematic",
+        "sleep",
+        "Implementation",
+        "attributes",
+        "relationships",
+        "composition"
+      ]
+    },
+    {
+      "page": "wp-schema-versioning",
+      "title": "Schema Versioning in USD",
+      "output": "full_site/release/wp_schema_versioning.html",
+      "source_snapshot": "source/full_release/wp_schema_versioning_source.html",
+      "official_url": "https://openusd.org/release/wp_schema_versioning.html",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Schema Versioning in USD "
+        },
+        {
+          "level": 2,
+          "text": "Introduction "
+        },
+        {
+          "level": 3,
+          "text": "Challenges to Schema Versioning in USD "
+        },
+        {
+          "level": 4,
+          "text": "Composition Makes Prim Version a Difficult Query "
+        },
+        {
+          "level": 4,
+          "text": "Multi-level Authoring API’s May Complicate Versioned Scene Description "
+        },
+        {
+          "level": 4,
+          "text": "Prims Can Possess Numerous API Schemas "
+        },
+        {
+          "level": 4,
+          "text": "Impact of Versioning on USD Speed and Scalability "
+        },
+        {
+          "level": 2,
+          "text": "Proposal for Per-Schema Versioning "
+        },
+        {
+          "level": 3,
+          "text": "Version Representation in Schemas "
+        },
+        {
+          "level": 4,
+          "text": "Schema Types with Versioned Schema Names "
+        },
+        {
+          "level": 4,
+          "text": "C++ Schema Classes "
+        },
+        {
+          "level": 4,
+          "text": "Schema Inheritance "
+        },
+        {
+          "level": 4,
+          "text": "Explicit Built-in API Schemas (not auto-apply) "
+        },
+        {
+          "level": 4,
+          "text": "API Schema Version Conflicts "
+        },
+        {
+          "level": 4,
+          "text": "Multiple-Apply API Schemas "
+        },
+        {
+          "level": 3,
+          "text": "Schema Registry "
+        },
+        {
+          "level": 3,
+          "text": "UsdPrim Schema-related API "
+        },
+        {
+          "level": 3,
+          "text": "Considerations for Auto-apply API Schemas "
+        },
+        {
+          "level": 2,
+          "text": "Risks, Questions, Limitations "
+        },
+        {
+          "level": 2,
+          "text": "Guidelines for Schema Versioning "
+        },
+        {
+          "level": 3,
+          "text": "Criteria for Versioning "
+        },
+        {
+          "level": 3,
+          "text": "Do not Version a Schema When… "
+        },
+        {
+          "level": 3,
+          "text": "Do Version a Schema When… "
+        },
+        {
+          "level": 2,
+          "text": "Pixar Examples, Past and Future "
+        },
+        {
+          "level": 3,
+          "text": "UsdLux Connectability "
+        },
+        {
+          "level": 3,
+          "text": "Light → LightAPI "
+        },
+        {
+          "level": 3,
+          "text": "Visibility to VisibilityAPI "
+        },
+        {
+          "level": 2,
+          "text": "Possible Code Generation Changes to Support Versioning "
+        },
+        {
+          "level": 3,
+          "text": "Base Schema Class is Always the Latest Version of the Family "
+        },
+        {
+          "level": 3,
+          "text": "Class Per Version with Typedef Mapping to “Current” or “Latest” Version-Class "
+        },
+        {
+          "level": 3,
+          "text": "Single C++ Class That Provides API for ALL Versions of the Schema Family "
+        },
+        {
+          "level": 3,
+          "text": "“Compatible Cluster” Classes with Disambiguating Method Names "
+        }
+      ],
+      "source_keywords_checked": [
+        "Schema Versioning in USD",
+        "Introduction",
+        "Challenges to Schema Versioning in USD",
+        "Composition Makes Prim Version a Difficult Query",
+        "Proposal for Per-Schema Versioning",
+        "Version Representation in Schemas",
+        "Schema Registry",
+        "UsdPrim Schema-related API",
+        "Risks, Questions, Limitations",
+        "Guidelines for Schema Versioning"
+      ],
+      "missing_source_keywords": [],
+      "missing_output_keywords": [],
+      "official_sections_preserved": [
+        "Introduction",
+        "Challenges to Schema Versioning in USD",
+        "Composition Makes Prim Version a Difficult Query",
+        "Proposal for Per-Schema Versioning",
+        "Version Representation in Schemas",
+        "Schema Registry",
+        "UsdPrim Schema-related API",
+        "Risks, Questions, Limitations",
+        "Guidelines for Schema Versioning"
+      ],
+      "preserved_code_terms_sample": [
+        "USD",
+        "Schema",
+        "Versioning",
+        "bilingual_complete",
+        "Original",
+        "title",
+        "Round",
+        "DomainSprintRound",
+        "Source",
+        "snapshot",
+        "source",
+        "full_release",
+        "wp_schema_versioning_source.html",
+        "Release",
+        "API",
+        "Local",
+        "Open",
+        "official",
+        "page",
+        "Paragraph-Level",
+        "Bilingual",
+        "Coverage",
+        "schema",
+        "per-schema",
+        "versioning",
+        "versioned",
+        "names",
+        "Registry",
+        "UsdPrim",
+        "schema-related",
+        "prim",
+        "class",
+        "registry",
+        "composition",
+        "authoring",
+        "Chinese",
+        "the",
+        "main",
+        "reading",
+        "path",
+        "English",
+        "identifiers",
+        "tokens",
+        "property",
+        "code",
+        "commands",
+        "and",
+        "links",
+        "are",
+        "retained",
+        "for",
+        "verification",
+        "Official",
+        "section",
+        "Chinese-first",
+        "coverage",
+        "Introduction",
+        "scene",
+        "description",
+        "This",
+        "row",
+        "keeps",
+        "heading",
+        "provides",
+        "guidance",
+        "parity",
+        "Challenges",
+        "schemas",
+        "Composition",
+        "Makes",
+        "Prim",
+        "Version",
+        "Difficult",
+        "Query",
+        "layer",
+        "composed",
+        "result",
+        "opinions",
+        "Proposal",
+        "Per-Schema"
+      ]
+    },
+    {
+      "page": "wp-usdaudio",
+      "title": "UsdAudio Proposal",
+      "output": "full_site/release/wp_usdaudio.html",
+      "source_snapshot": "source/full_release/wp_usdaudio_source.html",
+      "official_url": "https://openusd.org/release/wp_usdaudio.html",
+      "headings": [
+        {
+          "level": 1,
+          "text": "UsdAudio Proposal "
+        },
+        {
+          "level": 2,
+          "text": "Goal "
+        },
+        {
+          "level": 2,
+          "text": "Initial Requirements "
+        },
+        {
+          "level": 2,
+          "text": "Proposed Prim Schema "
+        },
+        {
+          "level": 3,
+          "text": "SpatialAudio "
+        },
+        {
+          "level": 2,
+          "text": "USD Sample "
+        },
+        {
+          "level": 2,
+          "text": "Other Notes/Questions "
+        },
+        {
+          "level": 3,
+          "text": "SdfTimeCode and Time Scaling "
+        },
+        {
+          "level": 4,
+          "text": "Extent/Falloff for Ambient Sounds "
+        },
+        {
+          "level": 4,
+          "text": "Usdz Considerations "
+        },
+        {
+          "level": 4,
+          "text": "Reference Implementation "
+        }
+      ],
+      "source_keywords_checked": [
+        "UsdAudio Proposal",
+        "Goal",
+        "Initial Requirements",
+        "Proposed Prim Schema",
+        "SpatialAudio",
+        "USD Sample",
+        "Other Notes/Questions",
+        "SdfTimeCode and Time Scaling",
+        "Usdz Considerations",
+        "Reference Implementation"
+      ],
+      "missing_source_keywords": [],
+      "missing_output_keywords": [],
+      "official_sections_preserved": [
+        "Goal",
+        "Initial Requirements",
+        "Proposed Prim Schema",
+        "SpatialAudio",
+        "USD Sample",
+        "Other Notes/Questions",
+        "SdfTimeCode and Time Scaling",
+        "Usdz Considerations",
+        "Reference Implementation"
+      ],
+      "preserved_code_terms_sample": [
+        "UsdAudio",
+        "Proposal",
+        "bilingual_complete",
+        "Original",
+        "title",
+        "Round",
+        "DomainSprintRound",
+        "Source",
+        "snapshot",
+        "source",
+        "full_release",
+        "wp_usdaudio_source.html",
+        "Release",
+        "API",
+        "Local",
+        "Open",
+        "official",
+        "page",
+        "Paragraph-Level",
+        "Bilingual",
+        "Coverage",
+        "USD",
+        "prim",
+        "SpatialAudio",
+        "schema",
+        "sample",
+        "usdz",
+        "scene",
+        "description",
+        "Chinese",
+        "the",
+        "main",
+        "reading",
+        "path",
+        "English",
+        "identifiers",
+        "names",
+        "tokens",
+        "property",
+        "code",
+        "commands",
+        "and",
+        "links",
+        "are",
+        "retained",
+        "for",
+        "verification",
+        "Official",
+        "section",
+        "Chinese-first",
+        "coverage",
+        "Goal",
+        "author",
+        "This",
+        "row",
+        "keeps",
+        "heading",
+        "provides",
+        "guidance",
+        "parity",
+        "Initial",
+        "Requirements",
+        "falloff",
+        "Proposed",
+        "Prim",
+        "Schema",
+        "token",
+        "usdMedia",
+        "SpatialAudio.html",
+        "user",
+        "guide",
+        "Sample",
+        "usda",
+        "Other",
+        "Notes",
+        "Questions",
+        "questions",
+        "SdfTimeCode",
+        "Time",
+        "Scaling"
+      ]
+    }
+  ]
+}

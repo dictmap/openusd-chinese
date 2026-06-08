@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-08T04:58:46.202Z
+Generated: 2026-06-08T05:23:57.305Z
 
-Transient base URL: `http://127.0.0.1:54751/`
+Transient base URL: `http://127.0.0.1:50134/`
 
 Result:
 
 - Passed: true
-- Draft pages: 233
-- Pages checked: 233
-- Passed pages: 233
+- Draft pages: 225
+- Pages checked: 225
+- Passed pages: 225
 - Failed pages: 0
-- Final HTML links: 233
-- Local assets checked: 233
+- Final HTML links: 225
+- Local assets checked: 225
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -242,14 +242,6 @@ Result:
 | true | full_site/release/tut_usd_tutorials.html | 200 | true | 0 | 0 |
 | true | full_site/release/usd_products.html | 200 | true | 0 | 0 |
 | true | full_site/release/usdfaq.html | 200 | true | 0 | 0 |
-| true | full_site/release/wp_ar2.html | 200 | true | 0 | 0 |
-| true | full_site/release/wp_connectable_nodes.html | 200 | true | 0 | 0 |
-| true | full_site/release/wp_coordsys.html | 200 | true | 0 | 0 |
-| true | full_site/release/wp_rigid_body_physics.html | 200 | true | 0 | 0 |
-| true | full_site/release/wp_schema_versioning.html | 200 | true | 0 | 0 |
-| true | full_site/release/wp_usdaudio.html | 200 | true | 0 | 0 |
-| true | full_site/release/wp_usdlux_for_geometry_lights.html | 200 | true | 0 | 0 |
-| true | full_site/release/wp_usdlux_for_renderers.html | 200 | true | 0 | 0 |
 
 Policy:
 

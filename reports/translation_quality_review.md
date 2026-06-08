@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-08T04:58:41.508Z
+Generated: 2026-06-08T05:23:27.730Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 233
-- bilingual_complete: 173
+- bilingual_draft: 225
+- bilingual_complete: 181
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 222
-- good_bilingual: 173
+- draft_needs_translation: 214
+- good_bilingual: 181
 
 ## Current Focus Batch
 
@@ -457,17 +457,17 @@ Generated: 2026-06-08T04:58:41.508Z
 | 391 | good_bilingual | bilingual_complete | 1095 | 47/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/VolumeFieldBase.html` |
 | 392 | good_bilingual | bilingual_complete | 1374 | 37/34 | 0 | 0 | `full_site/release/user_guides/time_and_animated_values.html` |
 | 393 | good_bilingual | bilingual_complete | 1362 | 56/53 | 0 | 0 | `full_site/release/user_guides/variable_expressions.html` |
-| 394 | draft_needs_translation | bilingual_draft | 755 | 35/24 | 0 | 0 | `full_site/release/wp_ar2.html` |
+| 394 | good_bilingual | bilingual_complete | 1574 | 31/31 | 0 | 0 | `full_site/release/wp_ar2.html` |
 | 395 | good_bilingual | bilingual_complete | 1502 | 31/46 | 0 | 0 | `full_site/release/wp_asset_previews.html` |
-| 396 | draft_needs_translation | bilingual_draft | 789 | 40/29 | 0 | 0 | `full_site/release/wp_connectable_nodes.html` |
-| 397 | draft_needs_translation | bilingual_draft | 790 | 40/29 | 0 | 0 | `full_site/release/wp_coordsys.html` |
+| 396 | good_bilingual | bilingual_complete | 1463 | 30/30 | 0 | 0 | `full_site/release/wp_connectable_nodes.html` |
+| 397 | good_bilingual | bilingual_complete | 1645 | 31/31 | 0 | 0 | `full_site/release/wp_coordsys.html` |
 | 398 | good_bilingual | bilingual_complete | 1463 | 33/66 | 0 | 0 | `full_site/release/wp_render_settings.html` |
-| 399 | draft_needs_translation | bilingual_draft | 783 | 53/42 | 0 | 0 | `full_site/release/wp_rigid_body_physics.html` |
-| 400 | draft_needs_translation | bilingual_draft | 674 | 44/33 | 0 | 0 | `full_site/release/wp_schema_versioning.html` |
+| 399 | good_bilingual | bilingual_complete | 1646 | 31/31 | 0 | 0 | `full_site/release/wp_rigid_body_physics.html` |
+| 400 | good_bilingual | bilingual_complete | 1535 | 31/31 | 0 | 0 | `full_site/release/wp_schema_versioning.html` |
 | 401 | good_bilingual | bilingual_complete | 1446 | 29/36 | 0 | 0 | `full_site/release/wp_stage_variables.html` |
-| 402 | draft_needs_translation | bilingual_draft | 722 | 35/24 | 0 | 0 | `full_site/release/wp_usdaudio.html` |
-| 403 | draft_needs_translation | bilingual_draft | 773 | 45/34 | 0 | 0 | `full_site/release/wp_usdlux_for_geometry_lights.html` |
-| 404 | draft_needs_translation | bilingual_draft | 685 | 44/33 | 0 | 0 | `full_site/release/wp_usdlux_for_renderers.html` |
+| 402 | good_bilingual | bilingual_complete | 1469 | 31/31 | 0 | 0 | `full_site/release/wp_usdaudio.html` |
+| 403 | good_bilingual | bilingual_complete | 1747 | 30/30 | 0 | 0 | `full_site/release/wp_usdlux_for_geometry_lights.html` |
+| 404 | good_bilingual | bilingual_complete | 1460 | 30/30 | 0 | 0 | `full_site/release/wp_usdlux_for_renderers.html` |
 | 405 | good_bilingual | bilingual_complete | 1421 | 33/60 | 0 | 0 | `full_site/release/wp_usdshade.html` |
 | 406 | good_bilingual | bilingual_complete | 1470 | 30/38 | 0 | 0 | `full_site/release/wp.html` |
 

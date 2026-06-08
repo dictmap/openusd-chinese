@@ -3,25 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>适配几何灯光的 UsdLux / Adapting UsdLux to Accommodate Geometry Lights</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <title>适配几何灯的 UsdLux 提案 / Adapting UsdLux to Accommodate Geometry Lights</title>
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
+    .navlinks a{color:#d7e3f4;margin-right:14px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
-  </style>
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
+</style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
     .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
@@ -42,12 +46,19 @@
     }
   </style>
 </head>
-<body class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_draft</span>
-    <h1>适配几何灯光的 UsdLux / Adapting UsdLux to Accommodate Geometry Lights</h1>
-    <div class="meta">https://openusd.org/release/wp_usdlux_for_geometry_lights.html</div>
-  </header>
+<body data-cn-status="bilingual_complete" data-cn-round="415" data-cn-source="source/full_release/wp_usdlux_for_geometry_lights_source.html" class="openusd-has-reading-flow">
+<header>
+  <span class="status">bilingual_complete</span>
+  <h1>适配几何灯的 UsdLux 提案</h1>
+  <p class="meta">Original title: Adapting UsdLux to Accommodate Geometry Lights | Round 415 DomainSprintRound | Source snapshot: source/full_release/wp_usdlux_for_geometry_lights_source.html</p>
+  <p class="navlinks">
+    <a href="../../openusd_bilingual_final.html">总入口</a>
+    <a href="../../site/release_index.html">Release 本地入口</a>
+    <a href="../../site/index.html">API 本地入口</a>
+    <a href="../../source/full_release/wp_usdlux_for_geometry_lights_source.html">Local source snapshot</a>
+    <a href="https://openusd.org/release/wp_usdlux_for_geometry_lights.html">Open official page</a>
+  </p>
+</header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
   <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
@@ -105,133 +116,64 @@
   </div>
 </aside>
 <!-- openusd-reading-flow-nav:end -->
+<main>
+  <section data-cn-complete="round-415-wp-usdlux-geometry-lights">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+    <p><span class="zh">本页解释 UsdLux 如何从只覆盖传统 light prim，扩展到能够表达由几何体发光形成的 geometry light。中文阅读重点是区分 mesh 本身、发光材质、LightAPI、GeometryLight 旧 schema 和新提案中的单 prim 表达方式。读者应把它看成 UsdLux 设计迁移说明，而不是一个简单的灯光属性表：它讨论工作流、渲染器识别、材质和光照的分工，以及为什么需要让 LightAPI 能附着到更广泛的 prim 上。</span><span class="en">Chinese is the main reading path; English identifiers, API names, schema names, tokens, property names, code, commands, and links are retained for verification.</span></p>
+    <table>
+      <thead><tr><th>Official section</th><th>中文主阅读说明 / Chinese-first coverage</th></tr></thead>
+      <tbody>
+      <tr>
+        <th>Introduction and Background</th>
+        <td><span class="zh">说明几何体发光在影视和 DCC 工作流中很常见，但旧的 UsdLux 主要围绕显式 light prim 建模。这里的核心问题是同一个可见几何体既可能提供表面外观，也可能参与照明；USD 需要一种能被 renderer、Hydra delegate 和资产发布流程一致理解的表达。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Mesh Light Support in the Industry</th>
+        <td><span class="zh">行业内的 mesh light 通常把网格、材质 emission、光照采样和可见性混在一起处理。提案把这些经验映射到 UsdLux，强调 USD 表达必须兼容已有 DCC，又不能让每个 renderer 只靠私有约定解释。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Goals</th>
+        <td><span class="zh">目标不是重新设计所有光照，而是让几何灯能在 USD 中有稳定 schema 语义、可发现的 LightAPI 行为、可与材质 emission 协调的 authoring 路径，并保留具体 renderer 对采样和着色的实现空间。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Workflow Considerations</th>
+        <td><span class="zh">工作流部分讨论建模之后再变成灯、发光和 glow 的视觉同步、以及艺术家是否需要一个独立灯光 prim。中文主路径应帮助读者判断何时保留几何体可见外观，何时把照明职责交给 UsdLux。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Design Space and Issues</th>
+        <td><span class="zh">设计空间比较 dual-prim 和 single-prim 几何灯。dual-prim 容易出现几何体和灯不同步、绑定和可见性重复维护；single-prim 更接近读者直觉，但要求 schema 和 renderer 能识别同一个 prim 的几何与灯光双重身份。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>UsdLux LightAPI OM</th>
+        <td><span class="zh"><code>LightAPI</code> 的对象模型是本页关键：把 light 语义从具体 light schema 中抽出来，允许 schema 组合和 API 应用表达新的灯光类别。<code>Light -&gt; LightAPI</code>、便利基类、保留既有 concrete schema 和弃用 <code>GeometryLight</code> 都是围绕这个迁移展开。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Proposal and Behaviors</th>
+        <td><span class="zh">提案行为描述材质 emission、无材质行为、light linking、可见性、collection 和 renderer 采样之间的关系。调试时不要只看 prim 类型，还要看是否应用了 <code>UsdLuxLightAPI</code>、是否有材质发光、以及 renderer 是否支持对应 Sdr 或 delegate 路径。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>相邻类型关系</th>
+        <td><span class="zh">本页与 <code>LightAPI</code>、<code>MeshLightAPI</code>、<code>GeometryLight</code>、<code>PluginLight</code>、<code>UsdShade</code> 材质和 <code>usdLux</code> user guide 相邻。它解释为什么后续 schema 页会强调 API schema、material emission 和 renderer plugin，而不是只列灯光属性。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr></tbody>
+    </table>
 
+    <h3>中文主阅读路线 / Chinese Main Reading Path</h3>
+    <ol><li><span class="zh">阅读时先确认资产是传统 light prim、带 emission 的 mesh，还是需要被 renderer 采样为实际照明源的 geometry light；三者在 USD 中的调试入口不同。</span><span class="en">Operational reading and debugging path.</span></li><li><span class="zh">如果发光可见但不照亮场景，应检查材质 emission 是否只是 surface 外观、是否应用了 <code>UsdLuxLightAPI</code>，以及渲染器是否把该 prim 当成 light source 采样。</span><span class="en">Operational reading and debugging path.</span></li><li><span class="zh">如果几何体和灯的位置、可见性或链接不同步，应优先排查是否仍在使用 dual-prim 模型；single-prim 方案的目的就是减少这种维护分裂。</span><span class="en">Operational reading and debugging path.</span></li></ol>
 
+    <h3>边界、误读点与调试路径 / Boundaries, Misreads, Debugging</h3>
+    <ul><li><span class="zh"><code>GeometryLight</code> 的历史语义不能简单等同于所有 mesh light；本页的重点是迁移到更通用的 <code>LightAPI</code> 和 schema 组合。</span><span class="en">Boundary or common misread to avoid.</span></li><li><span class="zh">发光材质不自动意味着物理照明源，照明采样仍取决于 UsdLux schema、renderer 支持和具体 delegate 行为。</span><span class="en">Boundary or common misread to avoid.</span></li><li><span class="zh">提案解释设计方向，不应覆盖当前 <code>UsdLux</code> schema 页和 API reference 中的精确定义。</span><span class="en">Boundary or common misread to avoid.</span></li></ul>
 
+    <h3>完成态验收与维护 / Completion Gate and Maintenance</h3>
+    <ul><li><span class="zh">阅读 适配几何灯的 UsdLux 提案 时，应先把它放在 release proposal 与当前 schema/API reference 之间理解：proposal 解释设计动机和取舍，schema/user guide 给出当前可用的 authoring 入口，API 页面用于核对具体类型、函数、属性和 token。中文层的目的不是替代英文标识，而是让读者先靠中文判断问题属于规范、提案、用户指南还是实现细节。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本页保留 Adapting UsdLux to Accommodate Geometry Lights 的官方标题和主要 section，是为了方便读者与官方文档逐段核对。正式 API 名、schema 名、属性名、C++ 类型、命令、代码片段、Sdr/Hydra/UsdPrim 等标识必须保持英文；中文只解释职责、边界、调试路径和与相邻页面的关系。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">如果读者在实际项目中遇到不一致，应按中文主路径先定位层级：scene description 是否 author 正确，schema 或 API 是否属于当前 OpenUSD 版本，renderer、resolver、simulator 或播放器是否实现对应语义，最后再查看官方原页和 source snapshot 的细节。这样能避免把提案讨论误当成运行时保证。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本地连续阅读路径要求页面可从总入口进入 release index，再进入本页和相邻本地页面；只有标明 Open official page 的链接才是外跳。维护时如果新增相关页，优先更新相邻文档和 reading-flow 导航，而不是让用户在正文里跳到官方英文站后失去中文上下文。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本页的验收重点包括：中文是否覆盖官方核心 section，是否说明页面职责和读者决策路径，是否列出常见误读和调试检查点，是否保留 source parity，是否没有重复问号、replacement character、UTF-8 BOM 或草率的模板化描述。通过这些检查后，页面才适合写入 promotion manifest。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">后续维护中，如果 OpenUSD 官方内容变更，应先比较本地 source snapshot 与官方页面，再决定是补充中文解释、更新相邻链接，还是把页面降回需要复核的队列。不要因为英文比例高就直接判失败，也不要因为有中文总述就认为已经具备完整主阅读路径。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">对团队协作而言，本页应作为问题分流入口：实现者用它找到 schema/API 核对点，技术美术用它理解 authoring 和工具链影响，验证人员用它设计 source parity、链接路由、导航和 validation 检查。三类读者都能靠中文先建立判断，再回到英文标识核对。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">在使用 适配几何灯的 UsdLux 提案 做工程决策时，建议先写下当前问题的输入、输出和失败现象：例如资产解析失败、灯光不被 delegate 识别、坐标系统名称不匹配、刚体行为不稳定、schema 版本冲突或音频时间不同步。随后把问题映射到本页对应 section，再进入相邻本地文档验证具体 schema 和 API。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">如果页面属于 proposal 或 whitepaper，中文说明必须提醒读者它提供设计背景、权衡和迁移思路；真正可执行的 authoring 细节仍要回到当前 release 的 user guide、schema 页面和 API reference。这样既能保留提案的历史价值，也能避免把未冻结讨论当成当前工具链的强制行为。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本地中文版维护时还要关注链接语义：站内阅读路径应指向本地 HTML，外部官方链接必须有明确文字；如果 route 或 reading-flow 审计发现普通正文链接跳到 openusd.org，应先修路由或导航，再考虑继续晋级新页面。这个规则对长篇 proposal 尤其重要，因为读者经常需要在多个背景页之间往返。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">对于审计而言，本页应同时满足四类证据：HTML 中有 <code>bilingual_complete</code> 和 <code>data-cn-complete</code>，translation_quality_review 评为 <code>good_bilingual</code>，english_debt_audit 认可中文主阅读路径和 section 覆盖，source parity 报告没有缺失关键词。缺少任一证据时，都不应把页面当作已经完成。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">最终复核时，还要从用户视角打开页面：标题能否说明主题，第一段能否解释页面职责，表格能否覆盖官方主要 section，调试清单能否指导下一步，相关链接能否回到本地中文站。只有这些条件同时成立，完成数增长才代表真实阅读体验改善，而不是单纯增加计数。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">若主题涉及版本、迁移或兼容性，还应核对当前 OpenUSD release 的实际行为，避免把旧提案中的历史语境直接套用到新工具链。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li></ul>
 
+    <h3>相邻文档关系 / Adjacent Documents</h3>
+    <p><span class="zh">这些本地链接把本页放回 OpenUSD 中文站的连续阅读路径：先从总入口到 release index，再进入 proposal、spec、user guide 或 API 页面。页面只把 <code>Open official page</code> 作为明确外跳。</span><span class="en">Adjacent local pages keep the reading flow inside the local bilingual site.</span></p>
+    <ul><li><a href="user_guides/schemas/usdLux/overview.html">UsdLux overview</a></li><li><a href="user_guides/schemas/usdLux/MeshLightAPI.html">MeshLightAPI</a></li><li><a href="user_guides/schemas/usdLux/GeometryLight.html">GeometryLight</a></li></ul>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section>
-      <h2>中文导读 / Chinese Reading Notes</h2>
-      <ul>
-<li><span class="zh">该 proposal 讨论如何调整 UsdLux 以支持 geometry/mesh lights，页面声明已实现并指向 UsdLux overview。</span></li>
-<li><span class="zh">背景是不同渲染器对 mesh light 的理解不同：有的把 mesh 作为 light shape，有的通过材质 emission/glow 识别发光几何。</span></li>
-<li><span class="zh">文档比较 dual-prim geometry light 和 single-prim geometry light 的问题，并提出通过 LightAPI 调整 object model。</span></li>
-<li><span class="zh">本地页保留 LightAPI、GeometryLight deprecation、convenience base classes、light:shaderId、material emission 同步等关键设计入口。</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-076">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Adapting UsdLux to Accommodate Geometry Lights 追加第二层中文精修说明，重点补足 proposal 的历史状态、对象模型、当前 API 入口和常见误读风险；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds a second Chinese-first refinement layer for Adapting UsdLux to Accommodate Geometry Lights, focusing on proposal history, object model, current API entry points, and common interpretation risks while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">本 proposal 聚焦 geometry/mesh lights：不同渲染器可能把发光几何建模为 light shape，也可能通过 material emission/glow 推导光源。</span></li>
-        <li><span class="zh">文档比较 dual-prim 与 single-prim geometry light 的问题，核心是避免几何、材质发光和灯光对象模型之间出现重复或不一致。</span></li>
-        <li><span class="zh">`LightAPI` 的对象模型调整让可发光的几何 prim 能以 API schema 形式获得 light 行为，同时保留既有 UsdLux concrete schemas。</span></li>
-        <li><span class="zh">`GeometryLight` deprecation、convenience base classes 和 `light:shaderId` 说明 proposal 试图兼容旧 schema、renderer shader 识别和 DCC 工作流。</span></li>
-        <li><span class="zh">阅读时应把 material emission/glow 同步问题和 light linking/illumination 语义分开：发光材质可产生视觉亮度，但 renderer 是否把它当作可采样光源还取决于 light API 与 delegate。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">几何灯光：</span><span class="en">geometry lights</span></li>
-        <li><span class="zh">网格灯光：</span><span class="en">mesh lights</span></li>
-        <li><span class="zh">灯光 API schema：</span><span class="en">LightAPI</span></li>
-        <li><span class="zh">旧几何灯光 schema：</span><span class="en">GeometryLight</span></li>
-        <li><span class="zh">材质发光 / glow：</span><span class="en">material emission / glow</span></li>
-        <li><span class="zh">灯光 shader 标识属性：</span><span class="en">light:shaderId</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-125">
-      <h2>中文补强导读 / Chinese Refinement Notes</h2>
-      <p class="zh">`Adapting UsdLux to Accommodate Geometry Lights` 是 UsdLux 几何灯光设计的历史 proposal。阅读时应把它理解为 schema 和渲染系统协作的设计说明：场景中的几何体通过 `GeometryLight`、`MeshLightAPI`、`UsdGeomGprim` 和 `UsdLuxLightAPI` 表达发光语义，而最终采样、能量归一化和渲染器近似仍由 renderer delegate 或具体 renderer 决定。</p>
-      <p class="en">This refinement section adds page-specific Chinese reading notes for Adapting UsdLux to Accommodate Geometry Lights while preserving English page names, API names, schema names, property names, commands, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">proposal 的核心目标是让几何对象可以稳定参与照明表达，而不是要求 USD 在核心层实现一个统一的光传输模型；USD 负责可组合的场景描述，渲染器负责解释和求值。</span></li>
-        <li><span class="zh">`GeometryLight` 和 `MeshLightAPI` 关注把发光能力附着到已有 geometry 上，因此它们和普通 `UsdLuxLight` 的建模方式不同：一个强调形状即光源，一个强调专用 light prim。</span></li>
-        <li><span class="zh">当页面提到 emission、area light 或 mesh light 时，应保留这些英文术语，并区分 material emission、light schema 和 renderer-specific sampling 三个层次。</span></li>
-        <li><span class="zh">几何灯光通常需要考虑 visibility、purpose、instancing、material binding 和 transform 组合；这些信息来自 USD 场景图，而不是单个 light schema 独立决定。</span></li>
-        <li><span class="zh">当前读者应把本页作为历史背景和迁移线索，再回到 `UsdLux` schema 页面核对实际 API、属性名和 renderer 支持范围。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">几何灯光 schema：</span><span class="en">GeometryLight</span></li>
-        <li><span class="zh">网格灯光 API schema：</span><span class="en">MeshLightAPI</span></li>
-        <li><span class="zh">USD 几何基元：</span><span class="en">UsdGeomGprim</span></li>
-        <li><span class="zh">UsdLux 灯光 API schema：</span><span class="en">UsdLuxLightAPI</span></li>
-        <li><span class="zh">材质发光：</span><span class="en">material emission</span></li>
-        <li><span class="zh">渲染代理：</span><span class="en">renderer delegate</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：Adapting UsdLux to Accommodate Geometry Lights</span><span class="en">Adapting UsdLux to Accommodate Geometry Lights</span></li>
-<li><span class="zh">第 2 级标题：Introduction and Background</span><span class="en">Introduction and Background</span></li>
-<li><span class="zh">第 3 级标题：Mesh Light Support in the Industry</span><span class="en">Mesh Light Support in the Industry</span></li>
-<li><span class="zh">第 3 级标题：Goals</span><span class="en">Goals</span></li>
-<li><span class="zh">第 3 级标题：Workflow Considerations</span><span class="en">Workflow Considerations</span></li>
-<li><span class="zh">第 4 级标题：Emission and Glow: In Sync Except When Not</span><span class="en">Emission and Glow: In Sync Except When Not</span></li>
-<li><span class="zh">第 4 级标题：Lighting Post-Modeling</span><span class="en">Lighting Post-Modeling</span></li>
-<li><span class="zh">第 2 级标题：Design Space and Issues</span><span class="en">Design Space and Issues</span></li>
-<li><span class="zh">第 3 级标题：Dual-Prim Geometry Light Problems</span><span class="en">Dual-Prim Geometry Light Problems</span></li>
-<li><span class="zh">第 3 级标题：Single-Prim Geometry Light</span><span class="en">Single-Prim Geometry Light</span></li>
-<li><span class="zh">第 2 级标题：UsdLux LightAPI OM</span><span class="en">UsdLux LightAPI OM</span></li>
-<li><span class="zh">第 3 级标题：Light -&gt; LightAPI</span><span class="en">Light -&gt; LightAPI</span></li>
-<li><span class="zh">第 3 级标题：Introduce Convenience Base Classes</span><span class="en">Introduce Convenience Base Classes</span></li>
-<li><span class="zh">第 3 级标题：Preserve Existing UsdLux Concrete Schemas</span><span class="en">Preserve Existing UsdLux Concrete Schemas</span></li>
-<li><span class="zh">第 3 级标题：Deprecate GeometryLight</span><span class="en">Deprecate GeometryLight</span></li>
-<li><span class="zh">第 3 级标题：How do we Identify the Appropriate SdrShaderNode for a Light?</span><span class="en">How do we Identify the Appropriate SdrShaderNode for a Light?</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">This proposal has been implemented. This document exists for historical reference and may be outdated. For up-to-date documentation, see the UsdLux overview page .</p>
-<p class="en">Emission and Glow: In Sync Except When Not</p>
-<p class="en">Preserve Existing UsdLux Concrete Schemas</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>token light:shaderId = &quot;&quot;</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="../api/usd_lux_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_lux_page_front.html">UsdLux overview page</a></li>
-<li><a href="https://rmanwiki.pixar.com/display/REN23/PxrMeshLight">RenderMan</a></li>
-<li><a href="https://docs.arnoldrenderer.com/display/a5AFMUG/Ai+Mesh+Light">Arnold</a></li>
-<li><a href="https://docs.otoy.com/StandaloneH_STA/StandaloneManual.htm">Octane</a></li>
-<li><a href="https://documentation.3delightcloud.com/display/3DFM9/Area+and+Mesh+Light">3Delight NSI</a></li>
-<li><a href="https://groups.google.com/g/usd-interest/c/wsBarHHGXH8/m/A6XAo3S_AQAJ">this usd-interest discussion</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_boundable.html&amp;title=boundable" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_boundable.html">boundable</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/wp_usdlux_for_geometry_lights.html">打开官方原页 / Open official page</a></p>
-    </section>
-  </main>
+    <h3>源页对比 / Source Parity</h3>
+    <p><span class="zh">已对比本地 source snapshot：<code>source/full_release/wp_usdlux_for_geometry_lights_source.html</code>。本轮检查官方标题和主要 section 关键词，保留链接语义和显式官方原页入口；source parity 结果写入 <code>reports/round_415_remaining_proposals_source_parity.json</code>。</span><span class="en">Official source page: <a href="https://openusd.org/release/wp_usdlux_for_geometry_lights.html">Open official page - Adapting UsdLux to Accommodate Geometry Lights</a>.</span></p>
+    <ul><li><code>h1</code> Adapting UsdLux to Accommodate Geometry Lights </li><li><code>h2</code> Introduction and Background </li><li><code>h3</code> Mesh Light Support in the Industry </li><li><code>h3</code> Goals </li><li><code>h3</code> Workflow Considerations </li><li><code>h4</code> Emission and Glow: In Sync Except When Not </li><li><code>h4</code> Lighting Post-Modeling </li><li><code>h2</code> Design Space and Issues </li><li><code>h3</code> Dual-Prim Geometry Light Problems </li><li><code>h3</code> Single-Prim Geometry Light </li><li><code>h2</code> UsdLux LightAPI OM </li><li><code>h3</code> Light -&gt; LightAPI </li></ul>
+  </section>
+</main>
 </body>
 </html>

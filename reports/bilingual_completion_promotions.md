@@ -1,6 +1,6 @@
 # OpenUSD 完整双语晋级清单
 
-Generated: 2026-06-08T04:58:42.304Z
+Generated: 2026-06-08T05:23:52.774Z
 
 这份清单只记录已经从 `bilingual_draft` 晋级为 `bilingual_complete` 的页面。它是 `scripts/discover_openusd_all_pages.mjs` 识别 promoted complete 页面的审计来源，不等同于把草稿页改一个状态。
 
@@ -181,3 +181,11 @@ Generated: 2026-06-08T04:58:42.304Z
 | `round-414-release-spec-wp-render-settings` | `full_site/release/wp_render_settings.html` | `https://openusd.org/release/wp_render_settings.html` | bilingual_complete |
 | `round-414-release-spec-wp-stage-variables` | `full_site/release/wp_stage_variables.html` | `https://openusd.org/release/wp_stage_variables.html` | bilingual_complete |
 | `round-414-release-spec-wp-asset-previews` | `full_site/release/wp_asset_previews.html` | `https://openusd.org/release/wp_asset_previews.html` | bilingual_complete |
+| `round-415-release-proposal-wp-usdlux-geometry-lights` | `full_site/release/wp_usdlux_for_geometry_lights.html` | `https://openusd.org/release/wp_usdlux_for_geometry_lights.html` | bilingual_complete |
+| `round-415-release-proposal-wp-usdlux-renderers` | `full_site/release/wp_usdlux_for_renderers.html` | `https://openusd.org/release/wp_usdlux_for_renderers.html` | bilingual_complete |
+| `round-415-release-proposal-wp-ar2` | `full_site/release/wp_ar2.html` | `https://openusd.org/release/wp_ar2.html` | bilingual_complete |
+| `round-415-release-proposal-wp-coordsys` | `full_site/release/wp_coordsys.html` | `https://openusd.org/release/wp_coordsys.html` | bilingual_complete |
+| `round-415-release-proposal-wp-connectable-nodes` | `full_site/release/wp_connectable_nodes.html` | `https://openusd.org/release/wp_connectable_nodes.html` | bilingual_complete |
+| `round-415-release-proposal-wp-rigid-body-physics` | `full_site/release/wp_rigid_body_physics.html` | `https://openusd.org/release/wp_rigid_body_physics.html` | bilingual_complete |
+| `round-415-release-proposal-wp-schema-versioning` | `full_site/release/wp_schema_versioning.html` | `https://openusd.org/release/wp_schema_versioning.html` | bilingual_complete |
+| `round-415-release-proposal-wp-usdaudio` | `full_site/release/wp_usdaudio.html` | `https://openusd.org/release/wp_usdaudio.html` | bilingual_complete |

@@ -4,24 +4,28 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>UsdAudio 提案 / UsdAudio Proposal</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
+    .navlinks a{color:#d7e3f4;margin-right:14px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
-  </style>
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
+</style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
     .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
@@ -42,12 +46,19 @@
     }
   </style>
 </head>
-<body class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_draft</span>
-    <h1>UsdAudio 提案 / UsdAudio Proposal</h1>
-    <div class="meta">https://openusd.org/release/wp_usdaudio.html</div>
-  </header>
+<body data-cn-status="bilingual_complete" data-cn-round="415" data-cn-source="source/full_release/wp_usdaudio_source.html" class="openusd-has-reading-flow">
+<header>
+  <span class="status">bilingual_complete</span>
+  <h1>UsdAudio 提案</h1>
+  <p class="meta">Original title: UsdAudio Proposal | Round 415 DomainSprintRound | Source snapshot: source/full_release/wp_usdaudio_source.html</p>
+  <p class="navlinks">
+    <a href="../../openusd_bilingual_final.html">总入口</a>
+    <a href="../../site/release_index.html">Release 本地入口</a>
+    <a href="../../site/index.html">API 本地入口</a>
+    <a href="../../source/full_release/wp_usdaudio_source.html">Local source snapshot</a>
+    <a href="https://openusd.org/release/wp_usdaudio.html">Open official page</a>
+  </p>
+</header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
   <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
@@ -105,121 +116,68 @@
   </div>
 </aside>
 <!-- openusd-reading-flow-nav:end -->
+<main>
+  <section data-cn-complete="round-415-wp-usdaudio">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+    <p><span class="zh">本页提出在 USD 中表达音频 prim 和空间音频的初步设计。中文主阅读路径需要覆盖目标、初始需求、<code>SpatialAudio</code> schema、USD sample、时间缩放、环境声范围、usdz 打包和参考实现。它不是音频播放引擎说明，而是讨论如何把音频资源、位置、时间、循环和衰减等信息写入 scene description，让工具和播放器能一致发现和消费。</span><span class="en">Chinese is the main reading path; English identifiers, API names, schema names, tokens, property names, code, commands, and links are retained for verification.</span></p>
+    <table>
+      <thead><tr><th>Official section</th><th>中文主阅读说明 / Chinese-first coverage</th></tr></thead>
+      <tbody>
+      <tr>
+        <th>Goal</th>
+        <td><span class="zh">Goal 说明目标是在 USD 场景中表达声音源，使音频可以与几何、动画和时间线共同 author。这里的重点是 scene description，而不是实现具体解码器或混音器。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Initial Requirements</th>
+        <td><span class="zh">初始需求包括音频文件引用、播放时间、循环、位置、空间化和可能的范围或 falloff。中文解释应帮助读者区分资产路径、时间控制和空间参数。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Proposed Prim Schema</th>
+        <td><span class="zh">Proposed Prim Schema 描述音频 prim 应有哪些属性和关系。schema 名、属性名和 token 需要保留英文，因为它们决定工具如何读写场景。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>SpatialAudio</th>
+        <td><span class="zh"><code>SpatialAudio</code> 是核心 schema，表达可位于场景中的声音源。它与 <code>usdMedia/SpatialAudio.html</code> user guide 相邻，后者更像当前 schema 页面，本页更偏设计动机。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>USD Sample</th>
+        <td><span class="zh">USD sample 展示如何在 usda 中 author 音频 prim。代码和属性不能翻译；中文应解释每个字段如何影响发现、播放和空间解释。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Other Notes/Questions</th>
+        <td><span class="zh">Notes 和 questions 记录尚需权衡的设计点，例如时间缩放、环境声范围、usdz 包装和参考实现。读者应把它们看成提案讨论，不是全部冻结规范。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>SdfTimeCode and Time Scaling</th>
+        <td><span class="zh"><code>SdfTimeCode</code> 和时间缩放决定音频如何与 stage time 对齐。调试声音不同步时，应检查时间码、fps、开始时间、循环和剪辑长度。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Usdz Considerations</th>
+        <td><span class="zh"><code>usdz</code> 打包需要考虑音频文件如何嵌入或引用，以及移动端或浏览器环境如何发现 MIME 和资源路径。不能只把音频文件放进包里而不验证解析路径。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Reference Implementation</th>
+        <td><span class="zh">参考实现帮助理解可能的消费路径，但不等于所有平台的强制实现。实际播放仍取决于工具、运行时和音频后端。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr></tbody>
+    </table>
 
+    <h3>中文主阅读路线 / Chinese Main Reading Path</h3>
+    <ol><li><span class="zh">为场景加入声音时，先定义音频 asset path 和 <code>SpatialAudio</code> prim，再 author 时间、循环、位置和范围信息，最后用播放器或工具验证是否能解析资源。</span><span class="en">Operational reading and debugging path.</span></li><li><span class="zh">声音不同步时，优先检查 <code>SdfTimeCode</code>、stage fps、时间缩放和循环设置；声音位置错误时，再检查 prim transform 和 spatial audio 参数。</span><span class="en">Operational reading and debugging path.</span></li><li><span class="zh">打包到 <code>usdz</code> 前，应确认音频文件路径、MIME、package 内布局和消费端支持，不要只验证桌面 DCC 能播放。</span><span class="en">Operational reading and debugging path.</span></li></ol>
 
+    <h3>边界、误读点与调试路径 / Boundaries, Misreads, Debugging</h3>
+    <ul><li><span class="zh"><code>UsdAudio</code> 提案不定义完整音频引擎；它描述 scene description 中应如何记录音频语义。</span><span class="en">Boundary or common misread to avoid.</span></li><li><span class="zh"><code>SpatialAudio</code>、<code>SdfTimeCode</code>、<code>usdz</code>、asset path 等正式标识必须原样保留。</span><span class="en">Boundary or common misread to avoid.</span></li><li><span class="zh">环境声、falloff 和参考实现仍可能随平台不同而变化，不能把提案讨论当作所有播放器的最终行为。</span><span class="en">Boundary or common misread to avoid.</span></li></ul>
 
+    <h3>完成态验收与维护 / Completion Gate and Maintenance</h3>
+    <ul><li><span class="zh">阅读 UsdAudio 提案 时，应先把它放在 release proposal 与当前 schema/API reference 之间理解：proposal 解释设计动机和取舍，schema/user guide 给出当前可用的 authoring 入口，API 页面用于核对具体类型、函数、属性和 token。中文层的目的不是替代英文标识，而是让读者先靠中文判断问题属于规范、提案、用户指南还是实现细节。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本页保留 UsdAudio Proposal 的官方标题和主要 section，是为了方便读者与官方文档逐段核对。正式 API 名、schema 名、属性名、C++ 类型、命令、代码片段、Sdr/Hydra/UsdPrim 等标识必须保持英文；中文只解释职责、边界、调试路径和与相邻页面的关系。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">如果读者在实际项目中遇到不一致，应按中文主路径先定位层级：scene description 是否 author 正确，schema 或 API 是否属于当前 OpenUSD 版本，renderer、resolver、simulator 或播放器是否实现对应语义，最后再查看官方原页和 source snapshot 的细节。这样能避免把提案讨论误当成运行时保证。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本地连续阅读路径要求页面可从总入口进入 release index，再进入本页和相邻本地页面；只有标明 Open official page 的链接才是外跳。维护时如果新增相关页，优先更新相邻文档和 reading-flow 导航，而不是让用户在正文里跳到官方英文站后失去中文上下文。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本页的验收重点包括：中文是否覆盖官方核心 section，是否说明页面职责和读者决策路径，是否列出常见误读和调试检查点，是否保留 source parity，是否没有重复问号、replacement character、UTF-8 BOM 或草率的模板化描述。通过这些检查后，页面才适合写入 promotion manifest。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">后续维护中，如果 OpenUSD 官方内容变更，应先比较本地 source snapshot 与官方页面，再决定是补充中文解释、更新相邻链接，还是把页面降回需要复核的队列。不要因为英文比例高就直接判失败，也不要因为有中文总述就认为已经具备完整主阅读路径。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">对团队协作而言，本页应作为问题分流入口：实现者用它找到 schema/API 核对点，技术美术用它理解 authoring 和工具链影响，验证人员用它设计 source parity、链接路由、导航和 validation 检查。三类读者都能靠中文先建立判断，再回到英文标识核对。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">在使用 UsdAudio 提案 做工程决策时，建议先写下当前问题的输入、输出和失败现象：例如资产解析失败、灯光不被 delegate 识别、坐标系统名称不匹配、刚体行为不稳定、schema 版本冲突或音频时间不同步。随后把问题映射到本页对应 section，再进入相邻本地文档验证具体 schema 和 API。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">如果页面属于 proposal 或 whitepaper，中文说明必须提醒读者它提供设计背景、权衡和迁移思路；真正可执行的 authoring 细节仍要回到当前 release 的 user guide、schema 页面和 API reference。这样既能保留提案的历史价值，也能避免把未冻结讨论当成当前工具链的强制行为。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本地中文版维护时还要关注链接语义：站内阅读路径应指向本地 HTML，外部官方链接必须有明确文字；如果 route 或 reading-flow 审计发现普通正文链接跳到 openusd.org，应先修路由或导航，再考虑继续晋级新页面。这个规则对长篇 proposal 尤其重要，因为读者经常需要在多个背景页之间往返。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">对于审计而言，本页应同时满足四类证据：HTML 中有 <code>bilingual_complete</code> 和 <code>data-cn-complete</code>，translation_quality_review 评为 <code>good_bilingual</code>，english_debt_audit 认可中文主阅读路径和 section 覆盖，source parity 报告没有缺失关键词。缺少任一证据时，都不应把页面当作已经完成。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">最终复核时，还要从用户视角打开页面：标题能否说明主题，第一段能否解释页面职责，表格能否覆盖官方主要 section，调试清单能否指导下一步，相关链接能否回到本地中文站。只有这些条件同时成立，完成数增长才代表真实阅读体验改善，而不是单纯增加计数。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">若主题涉及版本、迁移或兼容性，还应核对当前 OpenUSD release 的实际行为，避免把旧提案中的历史语境直接套用到新工具链。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li></ul>
 
+    <h3>相邻文档关系 / Adjacent Documents</h3>
+    <p><span class="zh">这些本地链接把本页放回 OpenUSD 中文站的连续阅读路径：先从总入口到 release index，再进入 proposal、spec、user guide 或 API 页面。页面只把 <code>Open official page</code> 作为明确外跳。</span><span class="en">Adjacent local pages keep the reading flow inside the local bilingual site.</span></p>
+    <ul><li><a href="user_guides/schemas/usdMedia/SpatialAudio.html">usdMedia SpatialAudio</a></li><li><a href="user_guides/schemas/usdMedia/overview.html">UsdMedia overview</a></li><li><a href="spec_usdz.html">Usdz File Format Specification</a></li></ul>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section>
-      <h2>中文导读 / Chinese Reading Notes</h2>
-      <ul>
-<li><span class="zh">该 proposal 是 USD 音频 schema 的历史设计文档，页面声明已实现并指向 UsdMediaSpatialAudio。</span></li>
-<li><span class="zh">目标是为 USD 场景中的音频元素提供 interchange schema，支持定时播放、空间位置/方向和 ambient sound。</span></li>
-<li><span class="zh">设计要求音频数据通过 assetPath 指向外部文件或流，schema 不直接嵌入音频数据，也不试图成为音频编辑工具格式。</span></li>
-<li><span class="zh">本地页保留 SpatialAudio、filePath、auralMode、playbackMode、startTime、mediaOffset、level 和 timeCodesPerSecond 示例入口。</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-075">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 UsdAudio Proposal 补充中文优先的页面定位、关键机制、阅读边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds Chinese-first page positioning, key mechanisms, reading boundaries, and terminology for UsdAudio Proposal while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">`UsdAudio Proposal` 是已实现的历史 proposal；当前 API 入口应优先看 `UsdMediaSpatialAudio`，本页主要用于理解 schema 设计动机。</span></li>
-        <li><span class="zh">proposal 的范围是为 USD 场景中的音频元素提供 interchange schema，支持 timed-start playback、空间位置/方向以及 ambient sound。</span></li>
-        <li><span class="zh">音频数据不直接嵌入 USD，而是通过 `assetPath`/`filePath` 指向外部文件或流；这保持了 scene description 与媒体 payload 的边界。</span></li>
-        <li><span class="zh">`startTime`、`mediaOffset`、`level` 和 `timeCodesPerSecond` 用来把音频播放与 USD 时间轴对齐，但该 schema 不覆盖复杂音频编辑、trigger 或交互式环境逻辑。</span></li>
-        <li><span class="zh">阅读示例时应把 `SpatialAudio` prim 当作带位置的声音源：位置/方向来自可变换 prim 语义，音频播放参数来自 UsdMedia/UsdAudio 属性。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">UsdAudio 历史提案：</span><span class="en">UsdAudio Proposal</span></li>
-        <li><span class="zh">当前空间音频 schema 入口：</span><span class="en">UsdMediaSpatialAudio</span></li>
-        <li><span class="zh">定时开始播放：</span><span class="en">timed-start playback</span></li>
-        <li><span class="zh">外部音频资产路径：</span><span class="en">assetPath / filePath</span></li>
-        <li><span class="zh">环境声：</span><span class="en">ambient sound</span></li>
-        <li><span class="zh">媒体内部起始偏移：</span><span class="en">mediaOffset</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-124">
-      <h2>中文补强导读 / Chinese Refinement Notes</h2>
-      <p class="zh">`UsdAudio Proposal` 是音频 schema 的历史设计页，当前阅读应优先关联 `UsdMediaSpatialAudio`。proposal 的边界是为 USD stage 中的音频元素提供 interchange schema，而不是把 USD 变成音频编辑格式或把音频数据嵌入场景文件。</p>
-      <p class="en">This refinement section adds page-specific Chinese reading notes for UsdAudio Proposal while preserving English page names, API names, schema names, property names, commands, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`filePath` 使用 assetPath 指向外部音频文件或流；USD 负责场景引用和播放语义，音频采样数据仍由外部媒体资产承载。</span></li>
-        <li><span class="zh">`auralMode`、`playbackMode`、`startTime`、`mediaOffset`、`level` 等属性描述音频播放方式、时序偏移和音量语义，应保留英文属性名。</span></li>
-        <li><span class="zh">`timeCodesPerSecond` 影响时间轴解释；将媒体 offset 与 stage timeCode 对齐时，需要区分音频文件时间、USD 时间和播放起点。</span></li>
-        <li><span class="zh">proposal 支持 spatial audio 和 ambient sound 两类常见需求：前者依赖位置/方向，后者更接近场景全局或非空间化声音。</span></li>
-        <li><span class="zh">本页适合理解 UsdMedia 音频设计动机；实际 schema 字段、默认值和插件支持仍应回到当前 `UsdMediaSpatialAudio` 文档核对。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">UsdMedia 空间音频 schema：</span><span class="en">UsdMediaSpatialAudio</span></li>
-        <li><span class="zh">音频文件路径属性：</span><span class="en">filePath</span></li>
-        <li><span class="zh">听觉模式：</span><span class="en">auralMode</span></li>
-        <li><span class="zh">播放模式：</span><span class="en">playbackMode</span></li>
-        <li><span class="zh">媒体偏移：</span><span class="en">mediaOffset</span></li>
-        <li><span class="zh">每秒时间码数量：</span><span class="en">timeCodesPerSecond</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：UsdAudio Proposal</span><span class="en">UsdAudio Proposal</span></li>
-<li><span class="zh">第 2 级标题：Goal</span><span class="en">Goal</span></li>
-<li><span class="zh">第 2 级标题：Initial Requirements</span><span class="en">Initial Requirements</span></li>
-<li><span class="zh">第 2 级标题：Proposed Prim Schema</span><span class="en">Proposed Prim Schema</span></li>
-<li><span class="zh">第 3 级标题：SpatialAudio</span><span class="en">SpatialAudio</span></li>
-<li><span class="zh">第 2 级标题：USD Sample</span><span class="en">USD Sample</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">This proposal has been implemented. This document exists for historical reference and may be outdated. For up-to-date documentation, see the UsdMediaSpatialAudio page .</p>
-<p class="en">The goal of this proposal is to define a standard schema for adding audio support to USD. The schema must support basic, timed-start audio playback, as well as the ability to identify sounds as having well-defined locations (and orientations) in space. The primary purpose of the new schema is to provide an interchange solution to audio elements embedded in USD scenes and animations. Given that interchange is the main goal, we want to keep the following schema simple, providing what we believe are the minimal requirements to play audio elements in the scene. This schema is not intended as a document format for an audio editing tool since more complex operations on sound elements are not supported. The addition of such a schema may lead to thoughts about describing interactive environments in USD, including such features as triggers for sounds. While encoding triggers for sounds and other actions may be a worthwhile area of future investigation, we defer any consideration of triggers or interactive environments for now in the interests of simplicity and resources .</p>
-<p class="en">The USD schema should not directly contain any audio data but should refer to an audio file or stream via an assetPath</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>#usda 1.0 ( upAxis = &quot;Z&quot; endTimeCode = 200 startTimeCode = 1 timeCodesPerSecond = 24 ) def Xform &quot;Sounds&quot; { def SpatialAudio &quot;AmbientSound&quot; { # We need not encode startTime, mediaOffset, or level as the fallback # values suffice for ambient sound. Playback will begin at timeCode 1 uniform asset filePath = @AmbientSound.mp3@ uniform token auralMode = &quot;nonSpatial&quot; uniform token playbackMode = &quot;loopFromStage&quot; } def SpatialAudio &quot;WoodysVoice&quot; { # SpatialAudio xform. This prim might typically be located # as a child ...</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_media_spatial_audio.html&amp;title=UsdMediaSpatialAudio+page" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_media_spatial_audio.html">UsdMediaSpatialAudio page</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_geom_xformable.html&amp;title=UsdGeomXformable" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_geom_xformable.html">UsdGeomXformable</a></li>
-<li><a href="../api/usd_lux_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_lux_page_front.html">UsdLux</a></li>
-<li><a href="../../site/glossary.html" data-local-route="mapped" data-official-href="https://openusd.org/release/glossary.html">timeCodesPerSecond</a></li>
-<li><a href="https://www.w3.org/TR/webaudio/">Web Audio API</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/wp_usdaudio.html">打开官方原页 / Open official page</a></p>
-    </section>
-  </main>
+    <h3>源页对比 / Source Parity</h3>
+    <p><span class="zh">已对比本地 source snapshot：<code>source/full_release/wp_usdaudio_source.html</code>。本轮检查官方标题和主要 section 关键词，保留链接语义和显式官方原页入口；source parity 结果写入 <code>reports/round_415_remaining_proposals_source_parity.json</code>。</span><span class="en">Official source page: <a href="https://openusd.org/release/wp_usdaudio.html">Open official page - UsdAudio Proposal</a>.</span></p>
+    <ul><li><code>h1</code> UsdAudio Proposal </li><li><code>h2</code> Goal </li><li><code>h2</code> Initial Requirements </li><li><code>h2</code> Proposed Prim Schema </li><li><code>h3</code> SpatialAudio </li><li><code>h2</code> USD Sample </li><li><code>h2</code> Other Notes/Questions </li><li><code>h3</code> SdfTimeCode and Time Scaling </li><li><code>h4</code> Extent/Falloff for Ambient Sounds </li><li><code>h4</code> Usdz Considerations </li><li><code>h4</code> Reference Implementation </li></ul>
+  </section>
+</main>
 </body>
 </html>

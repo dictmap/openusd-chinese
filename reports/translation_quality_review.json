@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-08T04:58:41.508Z",
+  "generated_at": "2026-06-08T05:23:27.730Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 233,
-    "bilingual_complete": 173
+    "bilingual_draft": 225,
+    "bilingual_complete": 181
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 222,
-    "good_bilingual": 173
+    "draft_needs_translation": 214,
+    "good_bilingual": 181
   },
   "focus_batch": [
     {
@@ -11579,29 +11579,29 @@
     },
     {
       "index": 394,
-      "title": "Asset Resolution (Ar) 2.0 资产解析 / Asset Resolution (Ar) 2.0",
+      "title": "Asset Resolution Ar 2.0 提案",
       "output": "full_site/release/wp_ar2.html",
       "official_url": "https://openusd.org/release/wp_ar2.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 35,
-      "enBlockCount": 24,
-      "zhChars": 755,
-      "enLetters": 1270,
-      "bodyChineseChars": 882,
+      "grade": "good_bilingual",
+      "zhBlockCount": 31,
+      "enBlockCount": 31,
+      "zhChars": 1574,
+      "enLetters": 1973,
+      "bodyChineseChars": 2015,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。",
-        "该 proposal 是 Ar 2.0 资产解析重构的历史设计文档；页面声明已实现并可能过时，最新材料应以 Ar overview 为准。",
-        "核心目标是让 USD 的 ArResolver 更适合非传统文件系统和资产管理系统，减少 repository/search path 等 Pixar 早期实现遗留概念。"
+        "本页讨论 Ar",
+        "背景说明旧 Ar 接口在 repository、search path、文件系统假设和文档清晰度方面存在限制。Ar 2.0 的目标是让解析过程更明确，便于 resolver 插件实现，也便于调用者理解 identifier 和 resolved asset 的区别。",
+        "任务列表展示迁移工作不是单点修改，而是一组清理、文档、identifier、repository 移除、resolve 改进、URI resolver 和写入接口设计。读者应把这些任务看成资产解析协议重构。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.",
-        "This section adds a second Chinese-first refinement layer for Asset Resolution (Ar) 2.0, focusing on proposal history, object model, current API entry points, and common interpretation risks while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison."
+        "Chinese is the main reading path; English identifiers, API names, schema names, tokens, property names, code, commands, and links are retained for verification.",
+        "This row keeps the official section heading and provides Chinese-first reading guidance for source parity."
       ]
     },
     {
@@ -11633,56 +11633,56 @@
     },
     {
       "index": 396,
-      "title": "将 Connectable Nodes 泛化到 UsdShade 之外 / Generalizing Connectable Nodes Beyond UsdShade",
+      "title": "将可连接节点推广到 UsdShade 之外",
       "output": "full_site/release/wp_connectable_nodes.html",
       "official_url": "https://openusd.org/release/wp_connectable_nodes.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 40,
-      "enBlockCount": 29,
-      "zhChars": 789,
-      "enLetters": 1954,
-      "bodyChineseChars": 913,
+      "grade": "good_bilingual",
+      "zhBlockCount": 30,
+      "enBlockCount": 30,
+      "zhChars": 1463,
+      "enLetters": 1908,
+      "bodyChineseChars": 1904,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。",
-        "该 proposal 是将 UsdShade 的 connectable node 概念推广到非材质 shading 域的历史设计文档，页面声明已实现并指向 UsdShade overview。",
-        "背景是 shader-like computation 不只用于材质，也可用于几何变形、灯光、相机、像素过滤等渲染域。"
+        "本页讨论把 UsdShade",
+        "背景说明 UsdShade",
+        "Proposal 部分提出用 API schema 和插件行为来描述可连接节点。读者应关注哪些行为是通用连接层，哪些仍由具体 schema 或 plugin 定义。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.",
-        "This section adds a second-pass Chinese refinement for Generalizing Connectable Nodes Beyond UsdShade, focusing on design goals, object model, authoring and consumption boundaries, and common interpretation risks while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison."
+        "Chinese is the main reading path; English identifiers, API names, schema names, tokens, property names, code, commands, and links are retained for verification.",
+        "This row keeps the official section heading and provides Chinese-first reading guidance for source parity."
       ]
     },
     {
       "index": 397,
-      "title": "USD 坐标系提案 / Coordinate Systems in USD Proposal",
+      "title": "USD 坐标系统提案",
       "output": "full_site/release/wp_coordsys.html",
       "official_url": "https://openusd.org/release/wp_coordsys.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 40,
-      "enBlockCount": 29,
-      "zhChars": 790,
-      "enLetters": 1482,
-      "bodyChineseChars": 919,
+      "grade": "good_bilingual",
+      "zhBlockCount": 31,
+      "enBlockCount": 31,
+      "zhChars": 1645,
+      "enLetters": 1986,
+      "bodyChineseChars": 1986,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。",
-        "该 proposal 讨论 USD 中渲染/着色坐标系的通用编码方式，页面声明已实现并指向 UsdShadeCoordSysAPI。",
-        "核心需求是 shader 通过短名称访问坐标系，而不是通过跨层级 relationship 直接指向几何 prim。"
+        "本页讨论如何在 USD 中记录和绑定命名坐标系统，让 shader、projection、camera 和材质网络能引用稳定的 frame of reference。中文主阅读路径应覆盖命名、scope、多坐标系统、API schema、frame 记录、binding 和消费端分析。读者需要把 CoordSysAPI",
+        "Purpose 说明需求来自 shading 和 projection：shader 需要知道某个名称对应的坐标系在哪里、如何绑定、如何在层级中解析。没有显式机制时，不同工具会用私有约定解释 reference frame。",
+        "要求包括按名称识别、必须有作用域、一个 prim 可以拥有多个坐标系统，以及 shader 能通过名称引用。中文解释要强调名称不是随意文本，而是 authoring 和消费端都必须遵守的协议。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.",
-        "This section adds a second-pass Chinese refinement for Coordinate Systems in USD Proposal, focusing on design goals, object model, authoring and consumption boundaries, and common interpretation risks while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison."
+        "Chinese is the main reading path; English identifiers, API names, schema names, tokens, property names, code, commands, and links are retained for verification.",
+        "This row keeps the official section heading and provides Chinese-first reading guidance for source parity."
       ]
     },
     {
@@ -11714,56 +11714,56 @@
     },
     {
       "index": 399,
-      "title": "USD 刚体物理提案 / Rigid Body Physics in USD Proposal",
+      "title": "USD 刚体物理提案",
       "output": "full_site/release/wp_rigid_body_physics.html",
       "official_url": "https://openusd.org/release/wp_rigid_body_physics.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 53,
-      "enBlockCount": 42,
-      "zhChars": 783,
-      "enLetters": 2394,
-      "bodyChineseChars": 914,
+      "grade": "good_bilingual",
+      "zhBlockCount": 31,
+      "enBlockCount": 31,
+      "zhChars": 1646,
+      "enLetters": 1985,
+      "bodyChineseChars": 1940,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。",
-        "该 proposal 是 USD 刚体物理 schema 的历史设计文档，页面声明已实现并指向 UsdPhysics overview。",
-        "核心范围是 rigid body simulation：用刚体、约束、碰撞表示、物理材质和全局仿真参数描述实时或离线物理行为。"
+        "本页讨论如何在 USD 中表达刚体物理场景、刚体、碰撞形状、质量属性、物理材质、关节和仿真相关约束。中文主阅读路径应把它看成 schema 设计和场景描述提案，而不是某个物理引擎的运行时手册。读者需要区分 USD authoring、physics scene、rigid body、collider、material、单位和仿真求解器之间的边界。",
+        "Purpose and Scope 限定本提案关注 rigid body physics 的 USD 表达范围。它不试图覆盖所有软体、流体或控制系统，而是先建立刚体、碰撞和 scene-level 配置的可交换描述。",
+        "总体设计关注编辑能力、层级交互、单位、默认值、仿真场景和 schema 类型。中文解释应把这些看成 authoring 约束，而不是直接的 solver 参数列表。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.",
-        "This section adds a second-pass Chinese refinement for Rigid Body Physics in USD Proposal, focusing on design goals, object model, authoring and consumption boundaries, and common interpretation risks while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison."
+        "Chinese is the main reading path; English identifiers, API names, schema names, tokens, property names, code, commands, and links are retained for verification.",
+        "This row keeps the official section heading and provides Chinese-first reading guidance for source parity."
       ]
     },
     {
       "index": 400,
-      "title": "USD Schema 版本化 / Schema Versioning in USD",
+      "title": "USD Schema 版本化提案",
       "output": "full_site/release/wp_schema_versioning.html",
       "official_url": "https://openusd.org/release/wp_schema_versioning.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 44,
-      "enBlockCount": 33,
-      "zhChars": 674,
-      "enLetters": 1603,
-      "bodyChineseChars": 799,
+      "grade": "good_bilingual",
+      "zhBlockCount": 31,
+      "enBlockCount": 31,
+      "zhChars": 1535,
+      "enLetters": 1977,
+      "bodyChineseChars": 1881,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。",
-        "该 proposal 讨论 USD schema 版本化的挑战，尤其是 composition、API schema 叠加和性能可扩展性对版本查询的影响。",
-        "文档提出 per-schema versioning，使用版本化 schema 名称与 C++ schema class/codegen 策略来表达不同版本家族。"
+        "本页解释 USD schema 版本化为什么困难，以及如何用 per-schema versioning、versioned schema names、Schema Registry 和 UsdPrim",
+        "Introduction 说明 schema 会随产品和工具演进，但 USD scene description 需要长期可读、可组合、可迁移。版本化机制要让旧资产可解释，同时允许新 schema 增加能力。",
+        "挑战包括 composition 让 prim 版本难以直接查询、多层 authoring API 可能写出复杂版本场景、一个 prim 可拥有多个 API schemas，以及版本化对速度和可扩展性的影响。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.",
-        "This section adds a second Chinese-first refinement layer for Schema Versioning in USD, focusing on proposal history, object model, current API entry points, and common interpretation risks while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison."
+        "Chinese is the main reading path; English identifiers, API names, schema names, tokens, property names, code, commands, and links are retained for verification.",
+        "This row keeps the official section heading and provides Chinese-first reading guidance for source parity."
       ]
     },
     {
@@ -11795,83 +11795,83 @@
     },
     {
       "index": 402,
-      "title": "UsdAudio 提案 / UsdAudio Proposal",
+      "title": "UsdAudio 提案",
       "output": "full_site/release/wp_usdaudio.html",
       "official_url": "https://openusd.org/release/wp_usdaudio.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 35,
-      "enBlockCount": 24,
-      "zhChars": 722,
-      "enLetters": 2127,
-      "bodyChineseChars": 845,
+      "grade": "good_bilingual",
+      "zhBlockCount": 31,
+      "enBlockCount": 31,
+      "zhChars": 1469,
+      "enLetters": 1972,
+      "bodyChineseChars": 1985,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。",
-        "该 proposal 是 USD 音频 schema 的历史设计文档，页面声明已实现并指向 UsdMediaSpatialAudio。",
-        "目标是为 USD 场景中的音频元素提供 interchange schema，支持定时播放、空间位置/方向和 ambient sound。"
+        "本页提出在 USD 中表达音频 prim 和空间音频的初步设计。中文主阅读路径需要覆盖目标、初始需求、 SpatialAudio",
+        "Goal 说明目标是在 USD 场景中表达声音源，使音频可以与几何、动画和时间线共同 author。这里的重点是 scene description，而不是实现具体解码器或混音器。",
+        "初始需求包括音频文件引用、播放时间、循环、位置、空间化和可能的范围或 falloff。中文解释应帮助读者区分资产路径、时间控制和空间参数。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.",
-        "This section adds Chinese-first page positioning, key mechanisms, reading boundaries, and terminology for UsdAudio Proposal while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison."
+        "Chinese is the main reading path; English identifiers, API names, schema names, tokens, property names, code, commands, and links are retained for verification.",
+        "This row keeps the official section heading and provides Chinese-first reading guidance for source parity."
       ]
     },
     {
       "index": 403,
-      "title": "适配几何灯光的 UsdLux / Adapting UsdLux to Accommodate Geometry Lights",
+      "title": "适配几何灯的 UsdLux 提案",
       "output": "full_site/release/wp_usdlux_for_geometry_lights.html",
       "official_url": "https://openusd.org/release/wp_usdlux_for_geometry_lights.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 45,
-      "enBlockCount": 34,
-      "zhChars": 773,
-      "enLetters": 1634,
-      "bodyChineseChars": 906,
+      "grade": "good_bilingual",
+      "zhBlockCount": 30,
+      "enBlockCount": 30,
+      "zhChars": 1747,
+      "enLetters": 1907,
+      "bodyChineseChars": 2119,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。",
-        "该 proposal 讨论如何调整 UsdLux 以支持 geometry/mesh lights，页面声明已实现并指向 UsdLux overview。",
-        "背景是不同渲染器对 mesh light 的理解不同：有的把 mesh 作为 light shape，有的通过材质 emission/glow 识别发光几何。"
+        "本页解释 UsdLux 如何从只覆盖传统 light prim，扩展到能够表达由几何体发光形成的 geometry light。中文阅读重点是区分 mesh 本身、发光材质、LightAPI、GeometryLight 旧 schema 和新提案中的单 prim 表达方式。读者应把它看成 UsdLux 设计迁移说明，而不是一个简单的灯光属性表：它讨论工作流、渲染器识别、材质和光照的分工，以及为什么需要让 LightAPI 能附着到更广泛的 prim 上。",
+        "说明几何体发光在影视和 DCC 工作流中很常见，但旧的 UsdLux 主要围绕显式 light prim 建模。这里的核心问题是同一个可见几何体既可能提供表面外观，也可能参与照明；USD 需要一种能被 renderer、Hydra delegate 和资产发布流程一致理解的表达。",
+        "行业内的 mesh light 通常把网格、材质 emission、光照采样和可见性混在一起处理。提案把这些经验映射到 UsdLux，强调 USD 表达必须兼容已有 DCC，又不能让每个 renderer 只靠私有约定解释。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.",
-        "This section adds a second Chinese-first refinement layer for Adapting UsdLux to Accommodate Geometry Lights, focusing on proposal history, object model, current API entry points, and common interpretation risks while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison."
+        "Chinese is the main reading path; English identifiers, API names, schema names, tokens, property names, code, commands, and links are retained for verification.",
+        "This row keeps the official section heading and provides Chinese-first reading guidance for source parity."
       ]
     },
     {
       "index": 404,
-      "title": "面向渲染器需求的 UsdLux / Adapting UsdLux to the Needs of Renderers",
+      "title": "面向渲染器需求适配 UsdLux",
       "output": "full_site/release/wp_usdlux_for_renderers.html",
       "official_url": "https://openusd.org/release/wp_usdlux_for_renderers.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 44,
-      "enBlockCount": 33,
-      "zhChars": 685,
-      "enLetters": 1555,
-      "bodyChineseChars": 813,
+      "grade": "good_bilingual",
+      "zhBlockCount": 30,
+      "enBlockCount": 30,
+      "zhChars": 1460,
+      "enLetters": 1901,
+      "bodyChineseChars": 1913,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。",
-        "该 proposal 讨论如何让 UsdLux 更好适配高质量渲染器，页面声明已实现并指向 UsdLux overview。",
-        "核心问题是许多渲染器把 lights、light filters、integrators 等表达为 shader-like networks，而纯 schema light 需要大量硬编码转换。"
+        "本页从 renderer 集成角度解释 UsdLux 为什么需要更强的可连接性、Sdr 关联和 plugin light 扩展。中文主阅读路径要把 Sdr",
+        "背景说明传统 UsdLux concrete schemas 难以覆盖所有 renderer 私有灯型。目标是提供一种 schema 和 Sdr 结合的扩展机制，让 renderer 能暴露自己的灯光和 light filter，同时仍保留 USD 层面的可组合和可发现语义。",
+        "基础技术包括 Sdr"
       ],
       "sampleEn": [
-        "This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.",
-        "This section adds a second Chinese-first refinement layer for Adapting UsdLux to the Needs of Renderers, focusing on proposal history, object model, current API entry points, and common interpretation risks while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison."
+        "Chinese is the main reading path; English identifiers, API names, schema names, tokens, property names, code, commands, and links are retained for verification.",
+        "This row keeps the official section heading and provides Chinese-first reading guidance for source parity."
       ]
     },
     {

@@ -1,64 +1,64 @@
 {
-  "generated_at": "2026-06-08T04:58:42.208Z",
-  "purpose": "Round 414 DomainSprintRound：release spec/whitepaper 核心页小批量冲刺。实际晋级 8 页：full_site/release/spec.html、full_site/release/spec_usdpreviewsurface.html、full_site/release/spec_usdz.html、full_site/release/wp.html、full_site/release/wp_usdshade.html、full_site/release/wp_render_settings.html、full_site/release/wp_stage_variables.html、full_site/release/wp_asset_previews.html。本轮从 165 个 good_bilingual 增至 173；中文主阅读路径覆盖官方 section、页面职责、API/schema/property 分组、相邻 user guide/schema/API/spec/proposal 关系、阅读路径建议、边界、误读点和调试路径，并保留 API 名、schema 名、token、属性名、函数名、代码、命令、Doxygen 表格标签、链接语义和显式官方外跳。",
+  "generated_at": "2026-06-08T05:23:52.621Z",
+  "purpose": "Round 415 DomainSprintRound：release whitepaper/proposal 剩余核心页小批量冲刺。实际晋级 8 页：full_site/release/wp_usdlux_for_geometry_lights.html、full_site/release/wp_usdlux_for_renderers.html、full_site/release/wp_ar2.html、full_site/release/wp_coordsys.html、full_site/release/wp_connectable_nodes.html、full_site/release/wp_rigid_body_physics.html、full_site/release/wp_schema_versioning.html、full_site/release/wp_usdaudio.html。本轮从 173 个 good_bilingual 推进至 181；每页补足中文主阅读路径、官方 section 覆盖、相邻 user guide/schema/API/spec/proposal 关系、边界、误读点、调试路径和 source parity。",
   "current_counts": {
     "total_pages": 406,
-    "bilingual_complete": 173,
-    "bilingual_draft": 233,
-    "good_bilingual": 173,
-    "draft_needs_translation": 222,
+    "bilingual_complete": 181,
+    "bilingual_draft": 225,
+    "good_bilingual": 181,
+    "draft_needs_translation": 214,
     "draft_template_only": 11,
-    "review_ready_zh": 110,
+    "review_ready_zh": 118,
     "api_complete": 72,
-    "release_complete": 101,
-    "release_review_ready_zh": 98,
+    "release_complete": 109,
+    "release_review_ready_zh": 106,
     "pending_full_scope": 0
   },
   "problems": [
     {
       "id": "P0-completion-stalled",
       "severity": "P0",
-      "summary": "完成度已推进到 173/406，但仍有 233 个可检查草稿不是完整翻译。",
-      "evidence": "本轮 DomainSprintRound 实际晋级 8 个 release spec/whitepaper 核心页；translation_quality_review 报告 good_bilingual=173。",
+      "summary": "完成度已推进到 181/406，但仍有 225 个可检查草稿，不是完整翻译。",
+      "evidence": "本轮 DomainSprintRound 实际晋级 8 个 release whitepaper/proposal 页面；translation_quality_review 报告 good_bilingual=181。",
       "required_action": "继续只把具备中文主阅读路径、官方 section 覆盖和无草稿标记的页面写入 promotion manifest；未达标页保留 bilingual_draft 并列明原因。"
     },
     {
       "id": "P1-left-navigation-reading-flow",
       "severity": "P1",
-      "summary": "第 396 轮修复的本地连续阅读路径必须覆盖本轮新晋级页。",
+      "summary": "本地连续阅读路径必须覆盖本轮新晋级页面。",
       "evidence": "本轮重建 final entry、重新注入 reading-flow navigation，并运行 navigation coverage、reading-flow navigation 和 local link routing 审计。",
-      "required_action": "凡是晋级页面或导航状态变化，继续运行 inject_openusd_reading_flow_navigation.mjs、route_openusd_internal_links_local.mjs 和 audit_openusd_reading_flow_navigation.mjs。"
+      "required_action": "每次页面晋级后继续运行 inject_openusd_reading_flow_navigation.mjs、route_openusd_internal_links_local.mjs 和 audit_openusd_reading_flow_navigation.mjs。"
     },
     {
       "id": "P1-markdown-record-encoding",
       "severity": "P1",
-      "summary": "Markdown 编码守卫仍是硬门槛，避免中文进度记录再次退化成问号或乱码。",
-      "evidence": "reports/markdown_encoding_audit.json 必须无 repeated question-mark damage、replacement characters、mojibake markers 和 UTF-8 BOM。",
-      "required_action": "如果 audit_openusd_markdown_encoding.mjs 失败，立即停止晋级并以 JSON 真实源重建 Markdown。"
+      "summary": "Markdown 编码守卫仍是硬门槛，避免中文进度记录退化为问号、replacement character 或 BOM。",
+      "evidence": "reports/markdown_encoding_audit.json 必须通过，且 work.md、reports/iteration_report.md、reports/current_problem_audit.md、reports/bilingual_completion_promotions.md 均无重复问号损坏。",
+      "required_action": "如果 audit_openusd_markdown_encoding.mjs 失败，立即停止晋级并从 JSON 真实源重建 Markdown。"
     },
     {
       "id": "P1-release-coverage-lag",
       "severity": "P1",
-      "summary": "release/spec/proposal 覆盖仍需继续推进；本轮补齐 spec/whitepaper 核心页。",
-      "evidence": "reports/english_debt_audit.json 报告 api_complete=72、release_complete=101、release_review_ready_zh=98。",
-      "required_action": "继续优先 release/spec/proposal 中的高价值短页或针对 review_ready_zh 债务做 EnglishDebtRound；批量晋级时逐页确认 source parity 和 good_bilingual。"
+      "summary": "release/spec/proposal 覆盖仍需继续推进，本轮补齐一组剩余 proposal 核心页。",
+      "evidence": "english_debt_audit 报告 api_complete=72、release_complete=109、release_review_ready_zh=106。",
+      "required_action": "继续优先处理 release 中仍为 draft_needs_translation 的核心页，或针对已完成但未 review_ready_zh 的页面执行 EnglishDebtRound。"
     }
   ],
   "promoted_pages": [
-    "full_site/release/spec.html",
-    "full_site/release/spec_usdpreviewsurface.html",
-    "full_site/release/spec_usdz.html",
-    "full_site/release/wp.html",
-    "full_site/release/wp_usdshade.html",
-    "full_site/release/wp_render_settings.html",
-    "full_site/release/wp_stage_variables.html",
-    "full_site/release/wp_asset_previews.html"
+    "full_site/release/wp_usdlux_for_geometry_lights.html",
+    "full_site/release/wp_usdlux_for_renderers.html",
+    "full_site/release/wp_ar2.html",
+    "full_site/release/wp_coordsys.html",
+    "full_site/release/wp_connectable_nodes.html",
+    "full_site/release/wp_rigid_body_physics.html",
+    "full_site/release/wp_schema_versioning.html",
+    "full_site/release/wp_usdaudio.html"
   ],
   "not_promoted_pages": [],
-  "source_parity_report": "reports/round_414_specs_source_parity.json",
+  "source_parity_report": "reports/round_415_remaining_proposals_source_parity.json",
   "next_actions": [
-    "下一轮应重新读取 inventory，从剩余 release 草稿中选择同域短页，或针对已经完成但未 review_ready_zh 的页面做 EnglishDebtRound。",
+    "下一轮重新读取 inventory，从剩余 release 草稿或高价值 API 草稿中选择同域短页；不得重复处理本轮已晋级页面。",
     "继续固定运行 Markdown 编码、English debt、本地链接路由、navigation coverage、reading-flow navigation、full draft preview、report index 和 validation。"
   ],
-  "next_action": "Continue release/spec/proposal promotion only if the target pages can become good_bilingual; otherwise stop and report the blocker."
+  "next_action": "Continue promotion only if the target pages can become good_bilingual; otherwise stop and report the blocker."
 }

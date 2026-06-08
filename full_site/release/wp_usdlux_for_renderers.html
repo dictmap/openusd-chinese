@@ -3,25 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>面向渲染器需求的 UsdLux / Adapting UsdLux to the Needs of Renderers</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <title>面向渲染器需求适配 UsdLux / Adapting UsdLux to the Needs of Renderers</title>
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
+    .navlinks a{color:#d7e3f4;margin-right:14px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
-  </style>
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
+</style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
     .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
@@ -42,12 +46,19 @@
     }
   </style>
 </head>
-<body class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_draft</span>
-    <h1>面向渲染器需求的 UsdLux / Adapting UsdLux to the Needs of Renderers</h1>
-    <div class="meta">https://openusd.org/release/wp_usdlux_for_renderers.html</div>
-  </header>
+<body data-cn-status="bilingual_complete" data-cn-round="415" data-cn-source="source/full_release/wp_usdlux_for_renderers_source.html" class="openusd-has-reading-flow">
+<header>
+  <span class="status">bilingual_complete</span>
+  <h1>面向渲染器需求适配 UsdLux</h1>
+  <p class="meta">Original title: Adapting UsdLux to the Needs of Renderers | Round 415 DomainSprintRound | Source snapshot: source/full_release/wp_usdlux_for_renderers_source.html</p>
+  <p class="navlinks">
+    <a href="../../openusd_bilingual_final.html">总入口</a>
+    <a href="../../site/release_index.html">Release 本地入口</a>
+    <a href="../../site/index.html">API 本地入口</a>
+    <a href="../../source/full_release/wp_usdlux_for_renderers_source.html">Local source snapshot</a>
+    <a href="https://openusd.org/release/wp_usdlux_for_renderers.html">Open official page</a>
+  </p>
+</header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
   <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
@@ -105,131 +116,64 @@
   </div>
 </aside>
 <!-- openusd-reading-flow-nav:end -->
+<main>
+  <section data-cn-complete="round-415-wp-usdlux-renderers">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+    <p><span class="zh">本页从 renderer 集成角度解释 UsdLux 为什么需要更强的可连接性、Sdr 关联和 plugin light 扩展。中文主阅读路径要把 <code>Sdr</code>、USD schemas、<code>UsdImaging</code>、Hydra、render delegate 和 <code>UsdLuxPluginLight</code> 串成一条链：schema 负责 scene description，Sdr 负责 shader 或 light 定义发现，Hydra 负责把场景数据送到 delegate，具体 renderer 再决定如何实现采样和参数解释。</span><span class="en">Chinese is the main reading path; English identifiers, API names, schema names, tokens, property names, code, commands, and links are retained for verification.</span></p>
+    <table>
+      <thead><tr><th>Official section</th><th>中文主阅读说明 / Chinese-first coverage</th></tr></thead>
+      <tbody>
+      <tr>
+        <th>Background and Goals</th>
+        <td><span class="zh">背景说明传统 UsdLux concrete schemas 难以覆盖所有 renderer 私有灯型。目标是提供一种 schema 和 Sdr 结合的扩展机制，让 renderer 能暴露自己的灯光和 light filter，同时仍保留 USD 层面的可组合和可发现语义。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Foundational Technologies in USD</th>
+        <td><span class="zh">基础技术包括 <code>Sdr</code>、USD Schemas、<code>UsdImaging</code> 和 Hydra。理解顺序应是：schema 把 prim 和属性写进 stage；Sdr 提供节点定义和参数元数据；Hydra 把场景表达送给 render delegate；delegate 再映射到 renderer 内部对象。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Sdr</th>
+        <td><span class="zh"><code>Sdr</code> 是 Shader Definition Registry，用于发现和描述 shader 或 renderer 节点定义。这里不要把 Sdr 当成渲染器本身，它更像描述节点参数、类型和实现来源的 registry。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>USD Schemas</th>
+        <td><span class="zh">schema 部分讨论如何让 UsdLux schema 表达灯光节点、连接和插件扩展。schema 名、属性名和 token 必须保留英文，因为工具链靠这些标识解析 scene description。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>UsdImaging and Hydra</th>
+        <td><span class="zh"><code>UsdImaging</code> 和 Hydra 负责从 USD stage 读取 light prim、属性和连接，再提交给 render delegate。调试时如果 USD 文件看起来正确但渲染器不识别，应检查 imaging adapter 和 delegate 是否实现了对应路径。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Proposals</th>
+        <td><span class="zh">提案集中在修改 UsdLux、UsdImaging、Hd 和具体 delegate。中文解释应帮助读者区分 schema 变更、数据源变更和 renderer 实现变更，避免把所有问题都归因于某一个层。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Changes to UsdLux</th>
+        <td><span class="zh">UsdLux 变化包括 making lights connectable、关联 Sdr definitions、<code>UsdLuxPluginLight</code>、<code>UsdLuxPluginLightFilter</code> 和 <code>UsdLuxPortalLight</code>。这些设计让 renderer-specific light 可以进入 USD，而不需要每个私有灯型都成为核心 schema。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr>
+      <tr>
+        <th>Changes to Hd</th>
+        <td><span class="zh">Hd 层变化关注 renderer 如何接收灯光参数、连接和标识。它是 USD scene description 与 renderer delegate 之间的桥，不应被翻译成具体 renderer 的专有 API。</span><span class="en">This row keeps the official section heading and provides Chinese-first reading guidance for source parity.</span></td>
+      </tr></tbody>
+    </table>
 
+    <h3>中文主阅读路线 / Chinese Main Reading Path</h3>
+    <ol><li><span class="zh">引入 renderer-specific light 时，先确认是否能通过 <code>UsdLuxPluginLight</code> 或 <code>UsdLuxPluginLightFilter</code> 表达，再核对 Sdr 节点定义和参数元数据是否可被发现。</span><span class="en">Operational reading and debugging path.</span></li><li><span class="zh">如果灯光在 USD 中存在但 delegate 不生效，应沿 schema、UsdImaging adapter、Hd 数据结构、render delegate 实现逐层排查。</span><span class="en">Operational reading and debugging path.</span></li><li><span class="zh">如果需要 portal light 或 light filter，先读本页理解为什么 UsdLux 允许 plugin 化，再回到对应 schema 页核对具体属性。</span><span class="en">Operational reading and debugging path.</span></li></ol>
 
+    <h3>边界、误读点与调试路径 / Boundaries, Misreads, Debugging</h3>
+    <ul><li><span class="zh">本页不是 renderer 编程手册；它讨论 USD 设计如何给 renderer 留扩展口，而不是规定每个 renderer 的内部采样算法。</span><span class="en">Boundary or common misread to avoid.</span></li><li><span class="zh"><code>Sdr</code>、<code>Hd</code>、<code>UsdImaging</code>、<code>UsdLuxPluginLight</code> 这些正式名不能翻译或替换，否则会破坏跨页核对。</span><span class="en">Boundary or common misread to avoid.</span></li><li><span class="zh">plugin light 能扩展类型，但仍需要清楚的 USD schema 和 Sdr 定义，不能只依赖 renderer 私有字符串。</span><span class="en">Boundary or common misread to avoid.</span></li></ul>
 
+    <h3>完成态验收与维护 / Completion Gate and Maintenance</h3>
+    <ul><li><span class="zh">阅读 面向渲染器需求适配 UsdLux 时，应先把它放在 release proposal 与当前 schema/API reference 之间理解：proposal 解释设计动机和取舍，schema/user guide 给出当前可用的 authoring 入口，API 页面用于核对具体类型、函数、属性和 token。中文层的目的不是替代英文标识，而是让读者先靠中文判断问题属于规范、提案、用户指南还是实现细节。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本页保留 Adapting UsdLux to the Needs of Renderers 的官方标题和主要 section，是为了方便读者与官方文档逐段核对。正式 API 名、schema 名、属性名、C++ 类型、命令、代码片段、Sdr/Hydra/UsdPrim 等标识必须保持英文；中文只解释职责、边界、调试路径和与相邻页面的关系。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">如果读者在实际项目中遇到不一致，应按中文主路径先定位层级：scene description 是否 author 正确，schema 或 API 是否属于当前 OpenUSD 版本，renderer、resolver、simulator 或播放器是否实现对应语义，最后再查看官方原页和 source snapshot 的细节。这样能避免把提案讨论误当成运行时保证。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本地连续阅读路径要求页面可从总入口进入 release index，再进入本页和相邻本地页面；只有标明 Open official page 的链接才是外跳。维护时如果新增相关页，优先更新相邻文档和 reading-flow 导航，而不是让用户在正文里跳到官方英文站后失去中文上下文。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本页的验收重点包括：中文是否覆盖官方核心 section，是否说明页面职责和读者决策路径，是否列出常见误读和调试检查点，是否保留 source parity，是否没有重复问号、replacement character、UTF-8 BOM 或草率的模板化描述。通过这些检查后，页面才适合写入 promotion manifest。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">后续维护中，如果 OpenUSD 官方内容变更，应先比较本地 source snapshot 与官方页面，再决定是补充中文解释、更新相邻链接，还是把页面降回需要复核的队列。不要因为英文比例高就直接判失败，也不要因为有中文总述就认为已经具备完整主阅读路径。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">对团队协作而言，本页应作为问题分流入口：实现者用它找到 schema/API 核对点，技术美术用它理解 authoring 和工具链影响，验证人员用它设计 source parity、链接路由、导航和 validation 检查。三类读者都能靠中文先建立判断，再回到英文标识核对。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">在使用 面向渲染器需求适配 UsdLux 做工程决策时，建议先写下当前问题的输入、输出和失败现象：例如资产解析失败、灯光不被 delegate 识别、坐标系统名称不匹配、刚体行为不稳定、schema 版本冲突或音频时间不同步。随后把问题映射到本页对应 section，再进入相邻本地文档验证具体 schema 和 API。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">如果页面属于 proposal 或 whitepaper，中文说明必须提醒读者它提供设计背景、权衡和迁移思路；真正可执行的 authoring 细节仍要回到当前 release 的 user guide、schema 页面和 API reference。这样既能保留提案的历史价值，也能避免把未冻结讨论当成当前工具链的强制行为。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">本地中文版维护时还要关注链接语义：站内阅读路径应指向本地 HTML，外部官方链接必须有明确文字；如果 route 或 reading-flow 审计发现普通正文链接跳到 openusd.org，应先修路由或导航，再考虑继续晋级新页面。这个规则对长篇 proposal 尤其重要，因为读者经常需要在多个背景页之间往返。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">对于审计而言，本页应同时满足四类证据：HTML 中有 <code>bilingual_complete</code> 和 <code>data-cn-complete</code>，translation_quality_review 评为 <code>good_bilingual</code>，english_debt_audit 认可中文主阅读路径和 section 覆盖，source parity 报告没有缺失关键词。缺少任一证据时，都不应把页面当作已经完成。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">最终复核时，还要从用户视角打开页面：标题能否说明主题，第一段能否解释页面职责，表格能否覆盖官方主要 section，调试清单能否指导下一步，相关链接能否回到本地中文站。只有这些条件同时成立，完成数增长才代表真实阅读体验改善，而不是单纯增加计数。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li><li><span class="zh">若主题涉及版本、迁移或兼容性，还应核对当前 OpenUSD release 的实际行为，避免把旧提案中的历史语境直接套用到新工具链。</span><span class="en">Completion and maintenance guidance for the local bilingual page.</span></li></ul>
 
+    <h3>相邻文档关系 / Adjacent Documents</h3>
+    <p><span class="zh">这些本地链接把本页放回 OpenUSD 中文站的连续阅读路径：先从总入口到 release index，再进入 proposal、spec、user guide 或 API 页面。页面只把 <code>Open official page</code> 作为明确外跳。</span><span class="en">Adjacent local pages keep the reading flow inside the local bilingual site.</span></p>
+    <ul><li><a href="user_guides/schemas/usdLux/PluginLight.html">PluginLight</a></li><li><a href="user_guides/schemas/usdLux/PluginLightFilter.html">PluginLightFilter</a></li><li><a href="user_guides/schemas/usdLux/PortalLight.html">PortalLight</a></li></ul>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section>
-      <h2>中文导读 / Chinese Reading Notes</h2>
-      <ul>
-<li><span class="zh">该 proposal 讨论如何让 UsdLux 更好适配高质量渲染器，页面声明已实现并指向 UsdLux overview。</span></li>
-<li><span class="zh">核心问题是许多渲染器把 lights、light filters、integrators 等表达为 shader-like networks，而纯 schema light 需要大量硬编码转换。</span></li>
-<li><span class="zh">文档提出让 UsdLux lights/light filters 具备 Connectable 能力，并用 Sdr definitions 让 Hydra/render delegates 数据驱动地解释 light networks。</span></li>
-<li><span class="zh">本地页保留 Sdr、UsdSchemaRegistry、UsdLuxPluginLight、UsdLuxPluginLightFilter、PortalLight 和 HdPrman/render delegate 变更入口。</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-076">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Adapting UsdLux to the Needs of Renderers 追加第二层中文精修说明，重点补足 proposal 的历史状态、对象模型、当前 API 入口和常见误读风险；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds a second Chinese-first refinement layer for Adapting UsdLux to the Needs of Renderers, focusing on proposal history, object model, current API entry points, and common interpretation risks while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">本 proposal 面向渲染器集成：许多 renderer 把 light、light filter、integrator 视作 shader-like node，单纯 hard-coded schema 转换不够可扩展。</span></li>
-        <li><span class="zh">核心方案是让 UsdLux lights/light filters 具备 connectable 能力，并通过 `Sdr` definitions 数据驱动地描述 renderer-facing light parameters。</span></li>
-        <li><span class="zh">`UsdLuxPluginLight` 与 `UsdLuxPluginLightFilter` 为插件式 light 类型提供 schema 入口，减少每个 renderer delegate 手写专用桥接逻辑。</span></li>
-        <li><span class="zh">`UsdImaging`、`Hydra`、`HdPrman` 和其他 render delegates 的变更说明了该 proposal 不只是 schema 变化，也影响成像管线如何发现和传递 light network。</span></li>
-        <li><span class="zh">阅读时要区分 current `UsdLux overview` 的使用说明和本历史 proposal 的设计解释；本页主要回答为什么 UsdLux 需要更接近 shading/network 的模型。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">USD 灯光 schema 域：</span><span class="en">UsdLux</span></li>
-        <li><span class="zh">Sdr 着色节点定义：</span><span class="en">Sdr definitions</span></li>
-        <li><span class="zh">可连接节点能力：</span><span class="en">Connectable</span></li>
-        <li><span class="zh">插件式灯光 schema：</span><span class="en">UsdLuxPluginLight</span></li>
-        <li><span class="zh">插件式灯光滤镜 schema：</span><span class="en">UsdLuxPluginLightFilter</span></li>
-        <li><span class="zh">渲染代理：</span><span class="en">render delegates</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-124">
-      <h2>中文补强导读 / Chinese Refinement Notes</h2>
-      <p class="zh">`Adapting UsdLux to the Needs of Renderers` 解释为什么 UsdLux 需要更好适配高质量渲染器：许多 renderer 把 lights、light filters 和 integrators 表达为 shader-like networks，因此 proposal 引入 Sdr definitions、connectable lights 和 plugin light 类型来减少硬编码转换。</p>
-      <p class="en">This refinement section adds page-specific Chinese reading notes for Adapting UsdLux to the Needs of Renderers while preserving English page names, API names, schema names, property names, commands, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">proposal 的核心是让 lights / light filters 具备 Connectable 能力，使 renderer delegate 可以通过连接网络和 Sdr metadata 数据驱动地解释灯光参数。</span></li>
-        <li><span class="zh">`UsdLuxPluginLight` 与 `UsdLuxPluginLightFilter` 用于扩展 renderer-specific light/filter，而不要求核心 UsdLux 为每个渲染器硬编码一个 schema。</span></li>
-        <li><span class="zh">`Sdr`、`UsdSchemaRegistry` 和 Hydra/render delegate 的关系是阅读重点：schema 描述场景数据，Sdr 描述节点定义，render delegate 决定如何消费。</span></li>
-        <li><span class="zh">`PortalLight`、light filters 和 integrator-like controls 的语义可能随 renderer 实现不同而变化，中文说明不应把它们改写成统一物理模型。</span></li>
-        <li><span class="zh">当前 API 入口应结合 `UsdLux overview`、schema 页面和具体 renderer 文档核对；本页主要保留历史设计背景和问题拆解。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">Sdr 节点定义：</span><span class="en">Sdr definitions</span></li>
-        <li><span class="zh">可连接灯光：</span><span class="en">connectable lights</span></li>
-        <li><span class="zh">UsdLux 插件灯光：</span><span class="en">UsdLuxPluginLight</span></li>
-        <li><span class="zh">UsdLux 插件灯光过滤器：</span><span class="en">UsdLuxPluginLightFilter</span></li>
-        <li><span class="zh">渲染代理：</span><span class="en">render delegate</span></li>
-        <li><span class="zh">灯光过滤器：</span><span class="en">light filters</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：Adapting UsdLux to the Needs of Renderers</span><span class="en">Adapting UsdLux to the Needs of Renderers</span></li>
-<li><span class="zh">第 2 级标题：Background and Goals</span><span class="en">Background and Goals</span></li>
-<li><span class="zh">第 2 级标题：Foundational Technologies in USD</span><span class="en">Foundational Technologies in USD</span></li>
-<li><span class="zh">第 3 级标题：Sdr</span><span class="en">Sdr</span></li>
-<li><span class="zh">第 3 级标题：USD Schemas</span><span class="en">USD Schemas</span></li>
-<li><span class="zh">第 3 级标题：UsdImaging and Hydra</span><span class="en">UsdImaging and Hydra</span></li>
-<li><span class="zh">第 2 级标题：Proposals</span><span class="en">Proposals</span></li>
-<li><span class="zh">第 3 级标题：Changes to UsdLux</span><span class="en">Changes to UsdLux</span></li>
-<li><span class="zh">第 4 级标题：Making Lights Connectable</span><span class="en">Making Lights Connectable</span></li>
-<li><span class="zh">第 4 级标题：Associating Lights with Sdr Definitions</span><span class="en">Associating Lights with Sdr Definitions</span></li>
-<li><span class="zh">第 4 级标题：UsdLuxPluginLight, UsdLuxPluginLightFilter</span><span class="en">UsdLuxPluginLight, UsdLuxPluginLightFilter</span></li>
-<li><span class="zh">第 4 级标题：UsdLuxPortalLight</span><span class="en">UsdLuxPortalLight</span></li>
-<li><span class="zh">第 3 级标题：Changes to UsdImaging</span><span class="en">Changes to UsdImaging</span></li>
-<li><span class="zh">第 3 级标题：Changes to Hd</span><span class="en">Changes to Hd</span></li>
-<li><span class="zh">第 3 级标题：Changes to HdPrman and Other Render Delegates</span><span class="en">Changes to HdPrman and Other Render Delegates</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">This proposal has been implemented. This document exists for historical reference and may be outdated. For up-to-date documentation, see the UsdLux overview page .</p>
-<p class="en">UsdLuxPluginLight, UsdLuxPluginLightFilter</p>
-<p class="en">Changes to HdPrman and Other Render Delegates</p>
-    </section>
-
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="../api/usd_lux_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_lux_page_front.html">UsdLux overview page</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdr_registry.html&amp;title=SdrRegistry" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdr_registry.html">SdrRegistry</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_shade_connectable_a_p_i.html&amp;title=UsdShadeConnectableAPI" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_shade_connectable_a_p_i.html">UsdShadeConnectableAPI</a></li>
-<li><a href="https://rmanwiki.pixar.com/display/REN23/PxrRectLight">PxrRectLight</a></li>
-<li><a href="../api/class_sdr_shader_property.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_sdr_shader_property.html">SdrShaderProperty</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_lux_rect_light.html&amp;title=UsdLuxRectLight" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_lux_rect_light.html">UsdLuxRectLight</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_object.html&amp;title=hidden" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_object.html">hidden</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_sdr_shader_node.html&amp;title=SdrShaderNode" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_sdr_shader_node.html">SdrShaderNode</a></li>
-<li><a href="https://github.com/PixarAnimationStudios/OpenUSD/blob/release/pxr/imaging/hd/renderDelegate.h">material network selector</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/wp_usdlux_for_renderers.html">打开官方原页 / Open official page</a></p>
-    </section>
-  </main>
+    <h3>源页对比 / Source Parity</h3>
+    <p><span class="zh">已对比本地 source snapshot：<code>source/full_release/wp_usdlux_for_renderers_source.html</code>。本轮检查官方标题和主要 section 关键词，保留链接语义和显式官方原页入口；source parity 结果写入 <code>reports/round_415_remaining_proposals_source_parity.json</code>。</span><span class="en">Official source page: <a href="https://openusd.org/release/wp_usdlux_for_renderers.html">Open official page - Adapting UsdLux to the Needs of Renderers</a>.</span></p>
+    <ul><li><code>h1</code> Adapting UsdLux to the Needs of Renderers </li><li><code>h2</code> Background and Goals </li><li><code>h2</code> Foundational Technologies in USD </li><li><code>h3</code> Sdr </li><li><code>h3</code> USD Schemas </li><li><code>h3</code> UsdImaging and Hydra </li><li><code>h2</code> Proposals </li><li><code>h3</code> Changes to UsdLux </li><li><code>h4</code> Making Lights Connectable </li><li><code>h4</code> Associating Lights with Sdr Definitions </li><li><code>h4</code> UsdLuxPluginLight, UsdLuxPluginLightFilter </li><li><code>h4</code> UsdLuxPortalLight </li></ul>
+  </section>
+</main>
 </body>
 </html>
