@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-08T07:20:42.678Z
+Generated: 2026-06-08T07:49:01.647Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 198
-- Promoted complete pages: 190
-- Bilingual draft pages: 208
+- Bilingual complete pages: 199
+- Promoted complete pages: 191
+- Bilingual draft pages: 207
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -262,7 +262,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_complete | https://openusd.org/release/api/plug_page_front.html | full_site/api/plug_page_front.html | https://openusd.org/release/api/plug_page_front.html |
 | api | bilingual_draft | 源码页面草稿：pxrDisplayFilterAdapter.h / pxrDisplayFilterAdapter.h | full_site/api/pxr_display_filter_adapter_8h_source.html | https://openusd.org/release/api/pxr_display_filter_adapter_8h_source.html |
 | api | bilingual_draft | 源码页面草稿：rileyParamSchema.h / rileyParamSchema.h | full_site/api/riley_param_schema_8h_source.html | https://openusd.org/release/api/riley_param_schema_8h_source.html |
-| api | bilingual_draft | API 模块草稿：Sdf: Scene Description Foundations / Sdf: Scene Description Foundations | full_site/api/sdf_page_front.html | https://openusd.org/release/api/sdf_page_front.html |
+| api | bilingual_complete | Sdf: Scene Description Foundations | full_site/api/sdf_page_front.html | https://openusd.org/release/api/sdf_page_front.html |
 | api | bilingual_draft | API 模块草稿：SdrGlslfx: Glslfx parser for Sdr / SdrGlslfx: Glslfx parser for Sdr | full_site/api/sdr_glslfx_page_front.html | https://openusd.org/release/api/sdr_glslfx_page_front.html |
 | api | bilingual_draft | API 模块草稿：Sdr: Shader Definition Registry / Sdr: Shader Definition Registry | full_site/api/sdr_page_front.html | https://openusd.org/release/api/sdr_page_front.html |
 | api | bilingual_draft | API 页面草稿：sparseVectorizedInputTraverser.h File / sparseVectorizedInputTraverser.h File | full_site/api/sparse_vectorized_input_traverser_8h.html | https://openusd.org/release/api/sparse_vectorized_input_traverser_8h.html |

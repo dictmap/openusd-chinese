@@ -1,31 +1,30 @@
 # Current OpenUSD Problem Audit
 
-Generated: 2026-06-08T07:20:56.625Z
+Generated: 2026-06-08T07:49:39.758Z
 
 本报告是当前自动化的真实问题清单。它区分“可检查草稿”和“完整双语”，并额外记录 `review_ready_zh`，防止完成页仍主要依赖英文。
 
 ## 当前计数
 
 - 全量页面：406
-- bilingual_complete：198
-- good_bilingual：198
-- review_ready_zh：135
-- bilingual_draft：208
-- draft_needs_translation：198
+- bilingual_complete：199
+- good_bilingual：199
+- review_ready_zh：136
+- bilingual_draft：207
+- draft_needs_translation：197
 - draft_template_only：10
-- promotion manifest：190
-- api_complete：72
+- promotion manifest：191
+- api_complete：73
 - release_complete：126
 
 ## 问题清单
 
 | ID | Severity | Summary | Required Action |
 | --- | --- | --- | --- |
-| `P0-completion-stalled` | P0 | 完成度已推进到 198/406，但仍有 208 个可检查草稿，不是完整翻译。 | 继续只把具备中文主阅读路径、官方 section 覆盖和无草稿标记的页面写入 promotion manifest；未达标页保留 draft 并列明原因。 |
-| `P1-release-search-template-only` | resolved | release search.html 的 template-only 功能页缺陷已在第 418 轮修复。 | 后续不要再把 search.html 当普通翻译 sprint 页面重复处理；如搜索功能策略变化，另开命名 DefectRound。 |
-| `P1-left-navigation-reading-flow` | P1 | 本地连续阅读路径必须覆盖本轮新晋级页面。 | 每次页面晋级后继续运行 inject_openusd_reading_flow_navigation.mjs、route_openusd_internal_links_local.mjs 和 audit_openusd_reading_flow_navigation.mjs。 |
-| `P1-markdown-record-encoding` | P1 | Markdown 编码守卫仍是硬门槛，避免中文进度记录退化为问号、replacement character 或 BOM。 | 如果 audit_openusd_markdown_encoding.mjs 失败，立即停止晋级并从 JSON 真实源重建 Markdown。 |
+| `P0-api-draft-backlog` | P0 | 当前 good_bilingual=199/406，API complete=73，仍有 207 个可检查草稿，不是完整翻译。 | 继续按 PromotionRound 或 DomainSprintRound 推进 API 草稿，只把达标页面写入 promotion manifest。 |
+| `P1-left-navigation-reading-flow` | P1 | 完成页必须保留本地 reading-flow 导航、breadcrumb、API/Release/总入口和显式官方外跳。 | 若 reading-flow 审计失败，停止并修复导航，不得推送。 |
+| `P1-markdown-record-encoding` | P1 | Markdown 编码守卫继续作为硬门槛。 | 若 audit_openusd_markdown_encoding.mjs 失败，先做 ConsistencyRound。 |
 
 ## 下一步
 
-Continue only if the next target can satisfy its named round gate; otherwise stop and report the blocker.
+Select the next API target only after git/report/validation state is clean and consistent.

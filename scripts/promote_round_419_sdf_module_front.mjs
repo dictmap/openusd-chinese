@@ -1,11 +1,79 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sdf: Scene Description Foundations - OpenUSD API 双语导读</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
-  <style>
+import fs from "node:fs";
+import path from "node:path";
+
+const ROOT = process.cwd();
+const ROUND = 419;
+const ROUND_TYPE = "PromotionRound";
+const TARGET = "full_site/api/sdf_page_front.html";
+const SOURCE = "source/full_api/sdf_page_front_source.html";
+const OFFICIAL_URL = "https://openusd.org/release/api/sdf_page_front.html";
+const SOURCE_PARITY_REPORT = "reports/round_419_sdf_module_front_source_parity.json";
+const PROMOTION_ID = "round-419-api-sdf-module-front";
+
+function rel(...parts) {
+  return path.join(ROOT, ...parts);
+}
+
+function esc(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function htmlDecode(value) {
+  return String(value ?? "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#([0-9]+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)));
+}
+
+function stripTags(value) {
+  return htmlDecode(
+    String(value ?? "")
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+  );
+}
+
+function zhChars(value) {
+  return (String(value ?? "").match(/[\u4e00-\u9fff]/g) || []).length;
+}
+
+function readJson(file) {
+  return JSON.parse(fs.readFileSync(rel(file), "utf8").replace(/^\uFEFF/, ""));
+}
+
+function writeJson(file, value) {
+  fs.writeFileSync(rel(file), `${JSON.stringify(value, null, 2)}\n`, "utf8");
+}
+
+function sourceHtml() {
+  return fs.readFileSync(rel(SOURCE), "utf8");
+}
+
+function sourceHeadings() {
+  return [...sourceHtml().matchAll(/<h([1-4])[^>]*>([\s\S]*?)<\/h\1>/gi)].map((match) => ({
+    level: Number(match[1]),
+    text: stripTags(match[2]),
+  }));
+}
+
+function sourceExcerpt() {
+  return stripTags(sourceHtml()).slice(0, 1600);
+}
+
+function css() {
+  return `
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.66}
     header{background:#142538;color:#fff;padding:28px 32px}
     main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
@@ -23,97 +91,53 @@
     li{margin:8px 0}
     code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
     .note{background:#edf6ff;border-left:4px solid #1c5d99;padding:12px 14px}
-  </style>
-<style id="openusd-reading-flow-nav-style">
-    body.openusd-has-reading-flow{padding-left:292px}
-    .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
-    .openusd-reading-flow-nav h2{font-size:17px;margin:0 0 10px;color:#17202a}
-    .openusd-reading-flow-nav h3{font-size:13px;margin:16px 0 8px;color:#516071;text-transform:none;letter-spacing:0}
-    .openusd-reading-flow-nav ul,.openusd-reading-flow-nav ol{list-style:none;margin:0;padding:0}
-    .openusd-reading-flow-nav li{margin:7px 0;line-height:1.35}
-    .openusd-reading-flow-nav a{color:#1c5d99;text-decoration:none;overflow-wrap:anywhere}
-    .openusd-reading-flow-nav a:hover{text-decoration:underline}
-    .openusd-reading-flow-status{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:999px;background:#edf2f7;color:#516071;font-size:11px}
-    .openusd-reading-flow-nav .official-link{color:#8a4b11}
-    .openusd-reading-flow-breadcrumb{max-width:1100px;margin:14px auto 0;padding:0 20px;color:#d7e3f4;font-size:14px;overflow-wrap:anywhere}
-    .openusd-reading-flow-breadcrumb a{color:#ffffff}
-    @media (max-width: 920px){
-      body.openusd-has-reading-flow{padding-left:0}
-      .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
-      .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
-    }
-  </style>
+  `;
+}
+
+const links = {
+  final: "../../openusd_bilingual_final.html",
+  api: "../../site/index.html",
+  release: "../../site/release_index.html",
+  source: "../../source/full_api/sdf_page_front_source.html",
+  official: OFFICIAL_URL,
+  sdfLayer: "class_sdf_layer.html",
+  sdfPath: "class_sdf_path.html",
+  sdfPrimSpec: "class_sdf_prim_spec.html",
+  usdPrim: "class_usd_prim.html",
+  tfToken: "class_tf_token.html",
+  gfDualQuat: "class_gf_dual_quatf.html",
+};
+
+function headingList() {
+  return sourceHeadings()
+    .filter((heading) => heading.text)
+    .map((heading) => `<li><span class="zh">官方 section：<code>${esc(heading.text)}</code>。中文阅读时把它视为 Sdf 模块的一个职责面：从 layer/spec/path 的基础概念，到 plugin metadata、file format plugin 和 variable expressions 的扩展机制。</span><span class="en">Source heading level ${heading.level}: ${esc(heading.text)}</span></li>`)
+    .join("\n");
+}
+
+function buildHtml() {
+  return `<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sdf: Scene Description Foundations - OpenUSD API 双语导读</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>${css()}</style>
 </head>
-<body data-cn-status="bilingual_complete" data-cn-round="419" class="openusd-has-reading-flow">
+<body data-cn-status="bilingual_complete" data-cn-round="${ROUND}">
   <header>
     <span class="status">bilingual_complete</span>
     <h1>Sdf: Scene Description Foundations</h1>
-    <div class="meta">Round 419 PromotionRound · Source snapshot: source/full_api/sdf_page_front_source.html · Official: https://openusd.org/release/api/sdf_page_front.html</div>
+    <div class="meta">Round ${ROUND} ${ROUND_TYPE} · Source snapshot: ${esc(SOURCE)} · Official: ${esc(OFFICIAL_URL)}</div>
     <p class="navlinks">
-      <a href="../../openusd_bilingual_final.html">总入口</a>
-      <a href="../../site/index.html">API 本地入口</a>
-      <a href="../../site/release_index.html">Release 本地入口</a>
-      <a href="../../source/full_api/sdf_page_front_source.html">Local source snapshot</a>
-      <a href="https://openusd.org/release/api/sdf_page_front.html">Open official page</a>
+      <a href="${links.final}">总入口</a>
+      <a href="${links.api}">API 本地入口</a>
+      <a href="${links.release}">Release 本地入口</a>
+      <a href="${links.source}">Local source snapshot</a>
+      <a href="${links.official}">Open official page</a>
     </p>
   </header>
-<!-- openusd-reading-flow-nav:start -->
-<nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
-  <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
-  <span> / </span>
-  <a data-reading-flow="api-entry" href="../../site/index.html">API 本地入口</a>
-  <span> / api / sdf_page_front.html</span>
-</nav>
-<aside class="openusd-reading-flow-nav" aria-label="本地阅读导航 / Local reading navigation">
-  <h2>本地阅读导航</h2>
-  <div class="openusd-reading-flow-columns">
-    <section>
-      <h3>入口 / Entrances</h3>
-      <ul>
-        <li><a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口 / Final entry</a></li>
-        <li><a data-reading-flow="release-entry" href="../../site/release_index.html">Release 本地入口</a></li>
-        <li><a data-reading-flow="api-entry" href="../../site/index.html">API Doxygen 本地入口</a></li>
-        <li><a data-reading-flow="api-redirect" href="../../site/api/index.html">API redirect / site/api/index.html</a></li>
-      </ul>
-    </section>
-    <section>
-      <h3>当前位置 / Current Layer</h3>
-      <ol>
-        <li>api</li>
-        <li>sdf_page_front.html</li>
-      </ol>
-    </section>
-    <section>
-      <h3>当前 API 上下文 / API Context</h3>
-      <ul>
-        <li><a data-reading-flow="related" href="_c_l_i11_8h_source.html">源码页面草稿：CLI11.h / CLI11.h</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="_developer__guides.html">开发者指南 / Developer Guides</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="_usd_skel__intro.html">_c_l_i11_8h_source.html</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="annotated.html">Classes</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="ar_page_front.html">https://openusd.org/release/api/ar_page_front.html</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="arch_page_front.html">https://openusd.org/release/api/arch_page_front.html</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="binding_map_8h_source.html">源码页面草稿：bindingMap.h / bindingMap.h</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="class_ef___lofted_output_set.html">https://openusd.org/release/api/class_ef___lofted_output_set.html</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="class_esf_property_interface.html">https://openusd.org/release/api/class_esf_property_interface.html</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="class_gf_dual_quatf.html">https://openusd.org/release/api/class_gf_dual_quatf.html</a><span class="openusd-reading-flow-status">complete</span></li>
-      </ul>
-    </section>
-    <section>
-      <h3>上一页/下一页 / Previous/Next</h3>
-      <ul>
-        <li><a data-reading-flow="prev" href="riley_param_schema_8h_source.html">上一页 / Previous: 源码页面草稿：rileyParamSchema.h / rileyParamSchema.h</a></li>
-<li><a data-reading-flow="next" href="sdr_glslfx_page_front.html">下一页 / Next: API 模块草稿：SdrGlslfx: Glslfx parser for Sdr / SdrGlslfx: Glslfx parser for Sdr</a></li>
-      </ul>
-    </section>
-    <section>
-      <h3>官方外跳 / Official</h3>
-      <ul>
-        <li><a class="official-link" data-reading-flow="official" href="https://openusd.org/release/api/sdf_page_front.html">打开官方原页 / Open official page</a></li>
-      </ul>
-    </section>
-  </div>
-</aside>
-<!-- openusd-reading-flow-nav:end -->
   <main>
     <section data-cn-complete="round-419-sdf-main-reading-path">
       <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
@@ -134,9 +158,9 @@
     <section data-cn-complete="round-419-sdf-api-groups">
       <h2>核心 API 分组 / Core API Groups</h2>
       <ul>
-        <li><span class="zh"><a href="class_sdf_layer.html"><code>SdfLayer</code></a>：layer 文件/内存容器，负责打开、导出、保存、持有局部 scene description。调试“这个 USD 文件实际写了什么”时，这是首要入口。</span><span class="en">SdfLayer is the layer container for authored scene description.</span></li>
-        <li><span class="zh"><a href="class_sdf_path.html"><code>SdfPath</code></a>：定位对象的路径类型，用于 prim、property、variant selection 等 namespace 位置。调试 path 不匹配、variant 内路径或 relationship target 时，优先检查路径是否按 Sdf 规则构造。</span><span class="en">SdfPath locates objects inside layers and scene graphs.</span></li>
-        <li><span class="zh"><a href="class_sdf_prim_spec.html"><code>SdfPrimSpec</code></a>：layer 内的 prim 局部描述，表示 authored prim opinion，而不是 composition 后的完整 <code>UsdPrim</code>。</span><span class="en">SdfPrimSpec stores a partial authored prim description.</span></li>
+        <li><span class="zh"><a href="${links.sdfLayer}"><code>SdfLayer</code></a>：layer 文件/内存容器，负责打开、导出、保存、持有局部 scene description。调试“这个 USD 文件实际写了什么”时，这是首要入口。</span><span class="en">SdfLayer is the layer container for authored scene description.</span></li>
+        <li><span class="zh"><a href="${links.sdfPath}"><code>SdfPath</code></a>：定位对象的路径类型，用于 prim、property、variant selection 等 namespace 位置。调试 path 不匹配、variant 内路径或 relationship target 时，优先检查路径是否按 Sdf 规则构造。</span><span class="en">SdfPath locates objects inside layers and scene graphs.</span></li>
+        <li><span class="zh"><a href="${links.sdfPrimSpec}"><code>SdfPrimSpec</code></a>：layer 内的 prim 局部描述，表示 authored prim opinion，而不是 composition 后的完整 <code>UsdPrim</code>。</span><span class="en">SdfPrimSpec stores a partial authored prim description.</span></li>
         <li><span class="zh"><code>SdfPropertySpec</code>、<code>SdfAttributeSpec</code>、<code>SdfRelationshipSpec</code>：描述属性和值/关系的底层 spec。它们解释 authored data 的存储结构，最终读写用户属性时仍常通过 <code>UsdAttribute</code> 和 <code>UsdRelationship</code>。</span><span class="en">Property specs are the Sdf-level representation of authored properties.</span></li>
         <li><span class="zh"><code>SdfAssetPath</code>、<code>SdfTimeCode</code>、<code>TfToken</code>、<code>VtValue</code>、<code>Gf*</code> 值类型：这些不是 Sdf 模块独有的全部内容，但 Sdf metadata、attribute defaults、time samples 和 file format plugin 会频繁引用它们。</span><span class="en">Sdf value storage relies on common Tf, Vt, and Gf value types.</span></li>
       </ul>
@@ -157,7 +181,7 @@
 
     <section data-cn-complete="round-419-sdf-adjacent-path">
       <h2>相邻阅读路径 / Adjacent Reading Path</h2>
-      <p><span class="zh">推荐阅读顺序是：先读本页建立 Sdf 的 layer/spec/path 边界，再读 <a href="class_sdf_layer.html"><code>SdfLayer</code></a>、<a href="class_sdf_path.html"><code>SdfPath</code></a>、<a href="class_sdf_prim_spec.html"><code>SdfPrimSpec</code></a> 三个核心类页；如果问题发生在 composition 后的对象，再回到 <a href="class_usd_prim.html"><code>UsdPrim</code></a> 和 <code>UsdStage</code> 相关页面。若涉及 token 或基础值类型，可以继续查 <a href="class_tf_token.html"><code>TfToken</code></a>、<code>VtValue</code> 与 <code>Gf</code> 类型。</span><span class="en">Read this module page before the key Sdf classes, then move to Usd APIs for composed scenegraph behavior.</span></p>
+      <p><span class="zh">推荐阅读顺序是：先读本页建立 Sdf 的 layer/spec/path 边界，再读 <a href="${links.sdfLayer}"><code>SdfLayer</code></a>、<a href="${links.sdfPath}"><code>SdfPath</code></a>、<a href="${links.sdfPrimSpec}"><code>SdfPrimSpec</code></a> 三个核心类页；如果问题发生在 composition 后的对象，再回到 <a href="${links.usdPrim}"><code>UsdPrim</code></a> 和 <code>UsdStage</code> 相关页面。若涉及 token 或基础值类型，可以继续查 <a href="${links.tfToken}"><code>TfToken</code></a>、<code>VtValue</code> 与 <code>Gf</code> 类型。</span><span class="en">Read this module page before the key Sdf classes, then move to Usd APIs for composed scenegraph behavior.</span></p>
       <p class="note"><span class="zh">本页保留 Doxygen/API 名、schema 名、token、属性名、函数名、头文件名、代码片段和官方 section 英文标题。中文说明负责建立主阅读路径，英文名称负责技术核对。</span><span class="en">English API identifiers are preserved for technical parity.</span></p>
       <p><span class="zh">因此，所有 API 名和字段名均按官方拼写保留，不做意译；本地链接用于继续阅读和核对来源。</span><span class="en">Identifiers stay unchanged.</span></p>
     </section>
@@ -165,19 +189,9 @@
     <section data-cn-complete="round-419-sdf-source-parity">
       <h2>官方 section 对比 / Source Parity</h2>
       <ul>
-<li><span class="zh">官方 section：<code>Overview</code>。中文阅读时把它视为 Sdf 模块的一个职责面：从 layer/spec/path 的基础概念，到 plugin metadata、file format plugin 和 variable expressions 的扩展机制。</span><span class="en">Source heading level 1: Overview</span></li>
-<li><span class="zh">官方 section：<code>Layering and Referencing</code>。中文阅读时把它视为 Sdf 模块的一个职责面：从 layer/spec/path 的基础概念，到 plugin metadata、file format plugin 和 variable expressions 的扩展机制。</span><span class="en">Source heading level 1: Layering and Referencing</span></li>
-<li><span class="zh">官方 section：<code>Layers and Opinions</code>。中文阅读时把它视为 Sdf 模块的一个职责面：从 layer/spec/path 的基础概念，到 plugin metadata、file format plugin 和 variable expressions 的扩展机制。</span><span class="en">Source heading level 1: Layers and Opinions</span></li>
-<li><span class="zh">官方 section：<code>Prim Spec</code>。中文阅读时把它视为 Sdf 模块的一个职责面：从 layer/spec/path 的基础概念，到 plugin metadata、file format plugin 和 variable expressions 的扩展机制。</span><span class="en">Source heading level 1: Prim Spec</span></li>
-<li><span class="zh">官方 section：<code>Plugin Metadata</code>。中文阅读时把它视为 Sdf 模块的一个职责面：从 layer/spec/path 的基础概念，到 plugin metadata、file format plugin 和 variable expressions 的扩展机制。</span><span class="en">Source heading level 1: Plugin Metadata</span></li>
-<li><span class="zh">官方 section：<code>Types</code>。中文阅读时把它视为 Sdf 模块的一个职责面：从 layer/spec/path 的基础概念，到 plugin metadata、file format plugin 和 variable expressions 的扩展机制。</span><span class="en">Source heading level 2: Types</span></li>
-<li><span class="zh">官方 section：<code>Default Values</code>。中文阅读时把它视为 Sdf 模块的一个职责面：从 layer/spec/path 的基础概念，到 plugin metadata、file format plugin 和 variable expressions 的扩展机制。</span><span class="en">Source heading level 2: Default Values</span></li>
-<li><span class="zh">官方 section：<code>Limiting to Specific Spec Types</code>。中文阅读时把它视为 Sdf 模块的一个职责面：从 layer/spec/path 的基础概念，到 plugin metadata、file format plugin 和 variable expressions 的扩展机制。</span><span class="en">Source heading level 2: Limiting to Specific Spec Types</span></li>
-<li><span class="zh">官方 section：<code>Display Groups</code>。中文阅读时把它视为 Sdf 模块的一个职责面：从 layer/spec/path 的基础概念，到 plugin metadata、file format plugin 和 variable expressions 的扩展机制。</span><span class="en">Source heading level 2: Display Groups</span></li>
-<li><span class="zh">官方 section：<code>File Format Plugins</code>。中文阅读时把它视为 Sdf 模块的一个职责面：从 layer/spec/path 的基础概念，到 plugin metadata、file format plugin 和 variable expressions 的扩展机制。</span><span class="en">Source heading level 1: File Format Plugins</span></li>
-<li><span class="zh">官方 section：<code>Variable Expressions</code>。中文阅读时把它视为 Sdf 模块的一个职责面：从 layer/spec/path 的基础概念，到 plugin metadata、file format plugin 和 variable expressions 的扩展机制。</span><span class="en">Source heading level 1: Variable Expressions</span></li>
+${headingList()}
         <li><span class="zh">已核对 source snapshot 中的核心关键词：<code>Sdf provides the foundations</code>、<code>Overview</code>、<code>Layering and Referencing</code>、<code>Layers and Opinions</code>、<code>Prim Spec</code>、<code>Plugin Metadata</code>、<code>File Format Plugins</code>、<code>Variable Expressions</code>、<code>SdfLayer</code>、<code>SdfPath</code>、<code>SdfPrimSpec</code>、<code>plugInfo.json</code>、<code>SdfMetadata</code>。</span><span class="en">The local page preserves the official structure and identifiers.</span></li>
-        <li><span class="zh">官方原文摘要用于核对，不作为中文主阅读路径：<span class="en">Universal Scene Description: Sdf : Scene Description Foundations Loading... Searching... No Matches Sdf : Scene Description Foundations Sdf provides the foundations for serializing scene description to a reference text format, or a multitude of plugin-defined formats. It also provides the primitive abstractions for interacting with scene description, such as SdfPath , SdfLayer , SdfPrimSpec . Overview Implements scene description layers in USD. In USD, a complete scene description is composed from partial scene description stored in SdfLayer objects. The primary unit of scene description within a layer is a prim spec , represented by the SdfPrimSpec class. A complete UsdPrim on a stage is a composition of the prim's built-in fallback values and all of the prim spec objects specified in Sdf layers. (For an overview of prims and stages, see the Usd library overview .) Use methods on an SdfLayer object to export and save a layer to a file, or to load a file from disk. Scene description files are stored in .usd format (one layer per file, text or binary). Other features abstracted at the layer level include undo/redo functionality and logging, which can be customized by subclassing SdfLayerStateDelegateBase . You should primarily work with scene description using the classes in the Usd library. The UsdStage object not only represents a complete scene; it also knows how each of the partial scene descriptions were combined to form the complete scene. For example, the UsdStage object has the context to know how the path of a UsdPrim object on the stage relates to the paths of each</span></span></li>
+        <li><span class="zh">官方原文摘要用于核对，不作为中文主阅读路径：<span class="en">${esc(sourceExcerpt())}</span></span></li>
       </ul>
     </section>
 
@@ -188,8 +202,186 @@
         <li><span class="zh">中文主阅读路径覆盖模块职责、官方 section、核心 API 分组、Sdf/Usd 边界、误读点、调试路径和相邻类型关系。</span><span class="en">Chinese coverage now explains role, sections, API groups, boundaries, debugging, and adjacent types.</span></li>
         <li><span class="zh">后续审计必须确认本页进入 <code>good_bilingual</code>，并尽量达到 <code>review_ready_zh</code>；如果报告不一致，应停止而不是继续下一页。</span><span class="en">Quality and English-debt audits must close the promotion.</span></li>
       </ul>
-      <p><a href="https://openusd.org/release/api/sdf_page_front.html">打开官方原页 / Open official page</a></p>
+      <p><a href="${links.official}">打开官方原页 / Open official page</a></p>
     </section>
   </main>
 </body>
 </html>
+`;
+}
+
+function sourceParity() {
+  const src = sourceHtml();
+  const out = fs.existsSync(rel(TARGET)) ? fs.readFileSync(rel(TARGET), "utf8") : "";
+  const keywords = [
+    "Sdf provides the foundations",
+    "Overview",
+    "Layering and Referencing",
+    "Layers and Opinions",
+    "Prim Spec",
+    "Plugin Metadata",
+    "File Format Plugins",
+    "Variable Expressions",
+    "SdfLayer",
+    "SdfPath",
+    "SdfPrimSpec",
+    "SdfPropertySpec",
+    "SdfAttributeSpec",
+    "SdfRelationshipSpec",
+    "plugInfo.json",
+    "SdfMetadata",
+  ];
+  return {
+    generated_at: new Date().toISOString(),
+    round: ROUND,
+    round_type: ROUND_TYPE,
+    target: TARGET,
+    source_snapshot: SOURCE,
+    official_url: OFFICIAL_URL,
+    source_headings: sourceHeadings(),
+    source_keywords_checked: keywords,
+    missing_source_keywords: keywords.filter((keyword) => !src.includes(keyword)),
+    missing_output_keywords: keywords.filter((keyword) => !out.includes(keyword)),
+    output_checks: {
+      has_complete_status: out.includes("bilingual_complete"),
+      has_paragraph_coverage: out.includes("Paragraph-Level Bilingual Coverage") && out.includes("逐段双语理解"),
+      has_final_entry: out.includes("openusd_bilingual_final.html"),
+      has_api_entry: out.includes("site/index.html"),
+      has_release_entry: out.includes("site/release_index.html"),
+      has_explicit_official_link: out.includes("Open official page") && out.includes(OFFICIAL_URL),
+      no_draft_marker: !/bilingual_draft|batch draft page|后续迭代会继续补齐|later iterations add denser bilingual coverage/.test(out),
+      zh_chars: zhChars(out),
+      zh_blocks: (out.match(/class=["'][^"']*\bzh\b[^"']*["']/g) || []).length,
+    },
+  };
+}
+
+function writePage() {
+  fs.writeFileSync(rel(TARGET), buildHtml(), "utf8");
+  writeJson(SOURCE_PARITY_REPORT, sourceParity());
+}
+
+function precheck() {
+  const report = sourceParity();
+  const failed = [];
+  if (report.missing_source_keywords.length) failed.push(`missing source keywords: ${report.missing_source_keywords.join(", ")}`);
+  if (report.missing_output_keywords.length) failed.push(`missing output keywords: ${report.missing_output_keywords.join(", ")}`);
+  for (const [key, value] of Object.entries(report.output_checks)) {
+    if (typeof value === "boolean" && !value) failed.push(`output check failed: ${key}`);
+  }
+  if (report.output_checks.zh_chars < 2200) failed.push(`zh chars too low: ${report.output_checks.zh_chars}`);
+  if (report.output_checks.zh_blocks < 12) failed.push(`zh blocks too low: ${report.output_checks.zh_blocks}`);
+  if (failed.length) {
+    console.error(JSON.stringify({ passed: false, failed, report }, null, 2));
+    process.exit(1);
+  }
+  writeJson(SOURCE_PARITY_REPORT, report);
+  console.log(JSON.stringify({ passed: true, report }, null, 2));
+}
+
+function manifestDocument(raw) {
+  return {
+    ...raw,
+    generated_at: raw.generated_at || new Date().toISOString(),
+    promotions: Array.isArray(raw.promotions) ? raw.promotions : [],
+    updated_at: new Date().toISOString(),
+  };
+}
+
+function updateManifest() {
+  const doc = manifestDocument(readJson("reports/bilingual_completion_promotions.json"));
+  doc.promotions = doc.promotions.filter((entry) => entry.id !== PROMOTION_ID && entry.local_output !== TARGET);
+  doc.promotions.push({
+    id: PROMOTION_ID,
+    title: "Sdf: Scene Description Foundations",
+    official_url: OFFICIAL_URL,
+    local_output: TARGET,
+    status: "bilingual_complete",
+    reason: `Round ${ROUND} ${ROUND_TYPE}: promote the Sdf module front page by adding Chinese main-reading-path coverage for module role, official sections, API groups, Sdf/Usd boundaries, common misreads, debugging paths, adjacent API relationships, source parity, reading-flow preservation, and explicit official-page verification.`,
+    evidence: {
+      page_contains_status: "bilingual_complete",
+      generic_draft_marker_removed: true,
+      minimum_chinese_chars: 2200,
+      minimum_complete_section_chinese_chars: 1600,
+      minimum_chinese_blocks: 12,
+      official_source_compared: true,
+      local_source_snapshot_compared: SOURCE,
+      source_parity_report: SOURCE_PARITY_REPORT,
+      round_type: ROUND_TYPE,
+    },
+  });
+  writeJson("reports/bilingual_completion_promotions.json", doc);
+}
+
+function updateProblemAudit() {
+  const quality = readJson("reports/translation_quality_review.json");
+  const debt = readJson("reports/english_debt_audit.json");
+  const inventory = readJson("reports/all_pages_inventory.json");
+  const counts = {
+    total_pages: inventory.counts.total_pages,
+    bilingual_complete: quality.status_counts.bilingual_complete,
+    bilingual_draft: quality.status_counts.bilingual_draft,
+    good_bilingual: quality.grade_counts.good_bilingual,
+    draft_needs_translation: quality.grade_counts.draft_needs_translation,
+    draft_template_only: quality.grade_counts.draft_template_only,
+    review_ready_zh: debt.counts.review_ready_zh,
+    api_complete: debt.counts.api_complete,
+    release_complete: debt.counts.release_complete,
+    release_review_ready_zh: debt.counts.release_review_ready_zh,
+    pending_full_scope: inventory.counts.pending_full_scope_pages,
+  };
+  writeJson("reports/current_problem_audit.json", {
+    generated_at: new Date().toISOString(),
+    purpose: "Track current OpenUSD bilingual completion blockers and named P0/P1 defects.",
+    current_counts: counts,
+    problems: [
+      {
+        id: "P0-api-draft-backlog",
+        severity: "P0",
+        summary: `当前 good_bilingual=${counts.good_bilingual}/406，API complete=${counts.api_complete}，仍有 ${counts.bilingual_draft} 个可检查草稿，不是完整翻译。`,
+        evidence: `第 ${ROUND} 轮 PromotionRound 将 ${TARGET} 从 API 草稿晋级为 good_bilingual；release 范围保持 ${counts.release_complete}/126 complete。`,
+        required_action: "继续按 PromotionRound 或 DomainSprintRound 推进 API 草稿，只把达标页面写入 promotion manifest。",
+      },
+      {
+        id: "P1-left-navigation-reading-flow",
+        severity: "P1",
+        summary: "完成页必须保留本地 reading-flow 导航、breadcrumb、API/Release/总入口和显式官方外跳。",
+        evidence: "本轮完成后需重新运行 route_openusd_internal_links_local、inject_openusd_reading_flow_navigation 和 audit_openusd_reading_flow_navigation。",
+        required_action: "若 reading-flow 审计失败，停止并修复导航，不得推送。",
+      },
+      {
+        id: "P1-markdown-record-encoding",
+        severity: "P1",
+        summary: "Markdown 编码守卫继续作为硬门槛。",
+        evidence: "work.md、reports/iteration_report.md、reports/current_problem_audit.md、reports/bilingual_completion_promotions.md 必须无重复问号损坏、replacement character 和 UTF-8 BOM。",
+        required_action: "若 audit_openusd_markdown_encoding.mjs 失败，先做 ConsistencyRound。",
+      },
+    ],
+    promoted_pages: [
+      {
+        round: ROUND,
+        round_type: ROUND_TYPE,
+        output: TARGET,
+        official_url: OFFICIAL_URL,
+        source_snapshot: SOURCE,
+        source_parity_report: SOURCE_PARITY_REPORT,
+      },
+    ],
+    not_promoted_pages: [],
+    source_parity_report: SOURCE_PARITY_REPORT,
+    next_actions: [
+      "继续推进 API 草稿；release 范围已经 126/126 complete，不要重复处理 release/search.html。",
+      "优先选择核心 API 或同域短页批量，但每轮必须保证 good_bilingual 按实际达标页增长。",
+    ],
+    next_action: "Select the next API target only after git/report/validation state is clean and consistent.",
+  });
+}
+
+const commands = new Set(process.argv.slice(2));
+if (commands.has("--write-page")) writePage();
+if (commands.has("--precheck")) precheck();
+if (commands.has("--manifest")) updateManifest();
+if (commands.has("--problem")) updateProblemAudit();
+if (commands.size === 0) {
+  console.log("Usage: node scripts/promote_round_419_sdf_module_front.mjs --write-page --precheck --manifest --problem");
+}

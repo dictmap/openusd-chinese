@@ -11,22 +11,22 @@
 ## 真实计数
 
 - total_pages：406
-- good_bilingual：198
-- review_ready_zh：135
-- bilingual_complete：198
-- bilingual_draft：208
-- draft_needs_translation：198
+- good_bilingual：199
+- review_ready_zh：136
+- bilingual_complete：199
+- bilingual_draft：207
+- draft_needs_translation：197
 - draft_template_only：10
 - pending_full_scope：0
-- api_complete：72
+- api_complete：73
 - release_complete：126
 
 ## 验证
 
 - validation_report：passed=true，failed_check_count=0，required_check_count=311
-- translation_quality：good_bilingual=198
-- english_debt：review_ready_zh=135，review_needs_zh_debt=63
-- promotion manifest：190 entries
+- translation_quality：good_bilingual=199
+- english_debt：review_ready_zh=136，review_needs_zh_debt=63
+- promotion manifest：191 entries
 
 ## 本轮改动文件
 
@@ -47,4 +47,4 @@
 
 ## 下一步
 
-优先选择 release/tutorial/user guide 页面，以降低 release 覆盖滞后。建议目标：`Continue only if the next target can satisfy its named round gate; otherwise stop and report the blocker.`。
+优先选择 release/tutorial/user guide 页面，以降低 release 覆盖滞后。建议目标：`Select the next API target only after git/report/validation state is clean and consistent.`。
