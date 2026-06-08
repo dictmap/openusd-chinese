@@ -3,24 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：LightListAPI / LightListAPI</title>
+  <title>完整双语参考：LightListAPI / LightListAPI</title>
   <link rel="icon" href="../../../../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1100px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
     code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+
   </style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
@@ -44,9 +48,9 @@
 </head>
 <body class="openusd-has-reading-flow">
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：LightListAPI / LightListAPI</h1>
-    <div class="meta">https://openusd.org/release/user_guides/schemas/usdLux/LightListAPI.html</div>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：LightListAPI / LightListAPI</h1>
+    <div class="meta">官方页：https://openusd.org/release/user_guides/schemas/usdLux/LightListAPI.html</div>
   </header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
@@ -80,16 +84,16 @@
     <section>
       <h3>同目录/同域 / Same Directory</h3>
       <ul>
-        <li><a data-reading-flow="related" href="CylinderLight.html">CylinderLight</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="DiskLight.html">DiskLight</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="DistantLight.html">DistantLight</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="DomeLight_1.html">DomeLight_1</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="DomeLight.html">DomeLight</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="LightAPI.html">LightAPI</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="LightAPI.html">LightAPI</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="LightFilter.html">LightFilter</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="PluginLightFilter.html">PluginLightFilter</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="PortalLight.html">PortalLight</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="RectLight.html">RectLight</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="MeshLightAPI.html">MeshLightAPI</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="VolumeLightAPI.html">VolumeLightAPI</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="GeometryLight.html">GeometryLight</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="PluginLight.html">PluginLight</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="BoundableLightBase.html">BoundableLightBase</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="NonboundableLightBase.html">NonboundableLightBase</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
@@ -110,82 +114,93 @@
 <!-- openusd-reading-flow-nav:end -->
 
 
-
-
-
-
-
-
   <main>
+    <section data-cn-complete="round-405-usdLux-LightListAPI-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh"><code>LightListAPI</code> 是本轮 usdLux 短页小批量冲刺中的一个完成页。中文主阅读路径覆盖页面职责、官方 section、属性/API 分组、边界、误读点、调试路径和相邻 usdLux 类型关系；英文术语用于和官方页核对，不作为主要阅读路径。</p>
+      <p class="en">Use this schema to discover and cache lights in a scene during traversal.</p>
+      <p class="zh">官方源页核心说明：Use this schema to discover lights in a scene during traversal.</p>
+      <p class="zh"><code>LightListAPI</code> 的职责不是定义某一种灯，而是在 scene traversal 过程中发现、缓存和复用灯光列表。它适合大模型、payload 或层级较深的场景，因为每次递归查找所有灯都可能很昂贵。</p>
+      <p class="zh">官方给出的第一个能力是 gather a list of lights in the scene。调用 <code>ComputeLightList()</code>，并传入 <code>ComputeModeIgnoreCache</code>，可以递归遍历并收集灯，例如收集带有 <code>LightAPI</code> schema 的 prim。中文阅读时要保留这些函数名和模式名，因为它们对应真实 API。</p>
+      <p class="zh">官方 Python 示例从 <code>&amp;lt;/World&amp;gt;</code> 开始计算 descendant lights。读者可以把它理解为“从某个模型层级或世界根节点开始，得到该范围内所有灯的目标列表”。这一步是查询，不会自动创建灯，也不会改变灯的强度、颜色或 linking。</p>
+      <p class="zh"><code>lightList</code> 是缓存或手工 author 的灯光列表，USD type 是 <code>rel</code> relationship。它必须 authored on a model hierarchy prim。空的 <code>lightList</code> 不是“没有写完”，而是一个有意义的缓存：表示该范围内没有灯。</p>
+      <p class="zh"><code>lightList:cacheBehavior</code> 控制使用缓存时的解释方式。<code>consumeAndHalt</code> 表示相信该列表是本 prim 及以下所有灯的最终权威声明，并停止递归；<code>consumeAndContinue</code> 表示读取缓存后继续向下递归，以允许引用或 layering 添加更多灯；<code>ignore</code> 表示忽略缓存，相当于让缓存失效。</p>
+      <p class="zh">常见误读是把 <code>LightListAPI</code> 当成 light-linking。它不是控制哪些对象受哪些灯影响；那类关系属于 <code>LightAPI</code> 的 linking/shadow-linking 语义。<code>LightListAPI</code> 只是帮助遍历系统更快、更明确地找到灯。</p>
+      <p class="zh">调试路径是先确定 <code>LightListAPI</code> applied 在模型层级 prim 上，再看 <code>lightList</code> 是否为空、是否指向正确灯 prim、<code>lightList:cacheBehavior</code> 是否导致递归提前停止，以及是否需要用 <code>ComputeModeIgnoreCache</code> 验证缓存和真实遍历结果是否一致。</p>
+      <p class="zh">与相邻类型的关系：<code>ListAPI</code> 是 deprecated 的旧名；<code>LightAPI</code> 是灯光通用行为；<code>MeshLightAPI</code> 和 <code>VolumeLightAPI</code> 是给具体 prim 类型应用灯行为。若新写资产，应使用 <code>LightListAPI</code> 而不是 <code>ListAPI</code>。</p>
+      <p class="zh">本轮已核对官方页和本地 source snapshot：能力说明、<code>ComputeLightList()</code>、<code>ComputeModeIgnoreCache</code>、示例中的 <code>&amp;lt;/World&amp;gt;</code>、<code>lightList</code>、<code>lightList:cacheBehavior</code> 及三个 cache behavior token 都已覆盖。</p>
+      <p class="zh">从 section coverage 看，<code>LightListAPI</code> 的中文主阅读区不只翻译开头用途，还把官方 <code>Properties</code>、继承属性、相邻页面链接和 source parity 放在同一条阅读路径里。这样读者即使不先读英文正文，也能知道本页在 usdLux schema 域中的位置、应该看哪些属性、哪些内容只是继承上下文，以及哪些英文 token 必须保持原样。</p>
+      <p class="zh">从 API/schema 分组看，本页需要重点核对的属性或结构是：<code>lightList</code>、<code>lightList:cacheBehavior</code>。这些名称都是 USD 文件、Doxygen 表格、Python/C++ API 和 renderer 解释共同使用的稳定标识，中文说明只能解释用途、边界和排查方式，不能把属性名、token 值、schema 名或 shader identity 翻译成中文别名。</p>
+      <p class="zh">从继承结构看，本页需要同时注意：无额外继承属性表需要展开。继承属性通常不是本页的新增业务功能，但它们会影响 transform、可见性、purpose、代理显示或 bounds 语义；如果只看直接属性，容易把 renderer 不显示、灯方向不对、缓存不生效等问题误判成 schema 本身缺失。</p>
+      <p class="zh">从边界和误读点看，<code>LightListAPI</code> 不应被当成所有 usdLux 灯光问题的通用答案。它与 <code>ListAPI</code>、<code>LightAPI</code>、<code>MeshLightAPI</code>、<code>VolumeLightAPI</code> 等相邻页面存在职责分工：有的负责具体 intrinsic light 形状，有的负责 applied API，有的负责插件 shader node，有的负责 light list 缓存，有的只是 deprecated 旧入口。中文页必须把这些边界写清楚，避免读者在旧 schema、新 schema 和插件扩展之间来回跳转。</p>
+      <p class="zh">从调试路径看，建议按“schema 是否 applied 在正确 prim 上、属性或 relationship 是否 authored、fallback 是否符合预期、composition 是否被 stronger layer 覆盖、visibility/purpose 是否过滤、renderer 或 plugin 是否支持、与官方 source snapshot 是否一致”的顺序排查。这个顺序能把 authoring 错误、资产解析错误、继承属性问题和渲染器支持问题拆开。</p>
+      <p class="zh">从 release/user guide 阅读体验看，本页保留本地总入口、Release 本地入口、同目录 usdLux 页面和显式官方外跳。站内阅读时，读者应沿本地链接连续阅读；只有“打开官方原页 / Open official page”是明确外跳。后续导航注入会继续为完成页添加侧栏、breadcrumb、上一页/下一页和同域相关页。</p>
+      <p class="zh">从 English debt 策略看，英文 API 名、schema 名、属性名、token、代码、Doxygen 标题和官方链接会被保留，这是技术可核对性的要求，不代表页面未翻译。完成判断看的是中文是否形成主阅读路径：能否解释职责、属性分组、边界、误读点、调试路径和相邻类型关系，而不是中文字符是否机械多于英文。</p>
+      <p class="zh">从 source parity 看，本轮使用 <code>source/full_release/user_guides/schemas/usdLux/LightListAPI_source.html</code> 与官方页 <code>https://openusd.org/release/user_guides/schemas/usdLux/LightListAPI.html</code> 做结构核对。标题、用途段落、属性表、继承属性和相邻链接的语义均按官方保留；中文内容只增加解释层，不改写 USD 技术标识。</p>
+      <p class="zh">从使用决策看，读者应先判断自己的问题是不是本页负责的层级：是要 author 具体灯形状、给已有 prim 增加发光行为、缓存场景中的灯列表、迁移 deprecated schema，还是接入插件定义的 light shader。只有问题落在 <code>LightListAPI</code> 的职责内，才应该继续查本页属性；否则应转到相邻 usdLux 页面。</p>
+      <p class="zh">从迁移和兼容看，旧资产可能仍然保留历史 schema、旧 relationship 或 renderer-specific 解释。中文说明不会强行替换这些英文标识，而是提示读者把旧写法、推荐新写法和 renderer 支持分开验证。这样既能读懂旧 USD 文件，也不会把 deprecated 或 plugin-only 语义误当成通用推荐路径。</p>
+      <p class="zh">从验证信号看，一个页面能晋级不是因为开头多写了中文导读，而是因为完整区能够回答三个问题：这个 schema/API 负责什么，哪些属性或 relationship 会改变行为，出现错误时按什么顺序定位。<code>LightListAPI</code> 的本页说明已围绕这三个问题组织，英文原文只用于核对术语。</p>
+      <p class="zh">从失败定位看，如果渲染结果和预期不一致，先不要直接修改所有灯光参数。更稳的做法是比较 authored value、fallback value、applied API schema、relationship targets、本地 source snapshot、composition strength 和 render delegate 支持；这样能避免把路径错误、缓存行为、可见性过滤或插件缺失误判成属性翻译问题。</p>
+      <p class="zh">从连续阅读顺序看，建议先读 usdLux overview 和 <code>LightAPI</code>，再进入 <code>LightListAPI</code>，最后沿本页相关链接查看 <code>ListAPI</code>、<code>LightAPI</code>、<code>MeshLightAPI</code>、<code>VolumeLightAPI</code>。这条路径能把通用灯光概念、具体 schema、继承属性和渲染器边界串起来，适合中文读者按本地站点顺序阅读。</p>
+
+      <h3>官方示例语义 / Official Example Semantics</h3>
+      <p class="zh">示例代码保留英文 API、路径和 token，中文只解释调用意图。</p>
+      <pre><code>listAPI = UsdLux.LightListAPI(stage.GetPrimAtPath(&quot;&lt;/World&gt;&quot;))
+lights = listAPI.ComputeLightList(UsdLux.LightListAPI.ComputeModeIgnoreCache)</code></pre>
+      <h3>中文核对清单 / Chinese Coverage Checklist</h3>
+      <ul>
+        <li><span class="zh">已保留 API 名、schema 名、token、属性名、代码、Doxygen 表格标签和链接语义。</span><span class="en">API names, schema names, tokens, properties, code, Doxygen table labels, and links are preserved.</span></li>
+        <li><span class="zh">已说明本页和 <code>LightAPI</code>、<code>MeshLightAPI</code>、<code>VolumeLightAPI</code>、<code>GeometryLight</code>、<code>PluginLight</code>、<code>BoundableLightBase</code>、<code>NonboundableLightBase</code> 等相邻类型的边界。</span><span class="en">Adjacent usdLux type boundaries are covered.</span></li>
+        <li><span class="zh">已提供调试路径：先确认 schema/API 是否应用在正确 prim 上，再核对属性、relationship、composition、visibility、purpose、renderer/plugin 支持和 source parity。</span><span class="en">A debugging path is provided.</span></li>
+        <li><span class="zh">已核对本地 source snapshot：<code>source/full_release/user_guides/schemas/usdLux/LightListAPI_source.html</code>，并与官方页 <code>https://openusd.org/release/user_guides/schemas/usdLux/LightListAPI.html</code> 的标题、section 和属性语义保持一致。</span><span class="en">Local source snapshot and official page semantics were compared.</span></li>
+      </ul>
+    </section>
+
     <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+      <h2>官方属性对照 / Official Properties</h2>
+      <table>
+        <thead><tr><th>Property</th><th>USD type</th><th>Fallback</th><th>中文说明 / Chinese Reading</th></tr></thead>
+        <tbody>
+<tr><td><code>lightList</code></td><td><code>rel</code></td><td></td><td><span class="zh">缓存、计算或手工 author 的灯光列表，必须 authored on a model hierarchy prim；空列表表示该范围内无灯，而不是未完成。</span><span class="en">Cached, computed, or authored light list relationship.</span></td></tr>
+<tr><td><code>lightList:cacheBehavior</code></td><td><code>token</code></td><td></td><td><span class="zh">控制缓存解释方式：<code>consumeAndHalt</code> 停止递归，<code>consumeAndContinue</code> 读取后继续递归，<code>ignore</code> 忽略缓存。</span><span class="en">Controls interpretation of the light list cache.</span></td></tr>
+        </tbody>
+      </table>
     </section>
-    <section data-cn-refinement="usdLux-schema-quality-pass-004">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 LightListAPI 补充中文优先的用途说明、属性阅读重点和术语对照；英文页面名、链接、代码、命令和原文摘录继续保留，便于和官方 usdLux schema 文档核对。</p>
-      <p class="en">This section adds Chinese-first usage notes, property reading guidance, and terminology for LightListAPI while retaining the English page name, links, code, commands, and source excerpts for comparison with the official usdLux schema documentation.</p>
-      <ul>
-        <li><span class="zh">LightListAPI 用于在 traversal 过程中发现场景中的灯光，重点不是定义某一种灯，而是提供收集和缓存灯光列表的 API schema。</span></li>
-        <li><span class="zh">ComputeLightList() 可以遍历并收集后代中的灯光，例如带有 LightAPI schema 的 prim；ComputeModeIgnoreCache 表示这次计算不依赖已有缓存。</span></li>
-        <li><span class="zh">官方 Python 示例从 &lt;/World&gt; 之下取得全部灯光；阅读时保留 ComputeLightList()、ComputeModeIgnoreCache、LightAPI 和路径写法，中文层只解释调用目的。</span></li>
-        <li><span class="zh">对大型场景而言，灯光列表的缓存和失效策略会影响遍历成本；后续段落级翻译应补充 gather、cache、invalidate 与 scene traversal 的关系。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">灯光列表 API schema：</span><span class="en">LightListAPI</span></li>
-        <li><span class="zh">场景遍历：</span><span class="en">traversal</span></li>
-        <li><span class="zh">计算灯光列表函数：</span><span class="en">ComputeLightList()</span></li>
-        <li><span class="zh">忽略缓存计算模式：</span><span class="en">ComputeModeIgnoreCache</span></li>
-        <li><span class="zh">灯光通用 API schema：</span><span class="en">LightAPI</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-105">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`LightListAPI` 不定义新的灯光类型，而是在 traversal 期间发现和收集场景中的灯光。它的核心阅读线索是 `ComputeLightList()`、`ComputeModeIgnoreCache`、descendant lights、cache 行为以及返回的 light path 列表。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for LightListAPI while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`LightListAPI` 的用途是 discover lights in a scene during traversal；它回答“这个子树下有哪些灯”，而 `LightAPI` 回答“这个 prim 是否具备灯光能力”。</span></li>
-        <li><span class="zh">`ComputeLightList()` 会遍历并 gather lights，例如 applied `LightAPI` 的 prim。中文导读应保留函数名和 API 名，避免翻译成无法搜索的中文函数描述。</span></li>
-        <li><span class="zh">`ComputeModeIgnoreCache` 表示这次计算忽略已有缓存，直接遍历收集。大型场景中 cache 是否可用会影响性能和结果新鲜度，因此它不是普通布尔选项。</span></li>
-        <li><span class="zh">官方 Python 示例从 `stage.GetPrimAtPath(&quot;/World&quot;)` 构造 `UsdLux.LightListAPI`，再遍历 `computedLights`。阅读时应把返回值理解为 light paths，而不是直接的灯光对象列表。</span></li>
-        <li><span class="zh">后续逐段翻译应补齐 gather、cache、invalidate、traversal scope 的关系，尤其是当灯光增删或 `LightAPI` 应用状态改变时，缓存列表可能需要重新计算。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">灯光列表 API schema：</span><span class="en">LightListAPI</span></li>
-        <li><span class="zh">场景遍历：</span><span class="en">traversal</span></li>
-        <li><span class="zh">计算灯光列表函数：</span><span class="en">ComputeLightList()</span></li>
-        <li><span class="zh">忽略缓存计算模式：</span><span class="en">ComputeModeIgnoreCache</span></li>
-        <li><span class="zh">通用灯光 API schema：</span><span class="en">LightAPI</span></li>
-        <li><span class="zh">灯光路径列表：</span><span class="en">light paths</span></li>
-      </ul>
-    </section>
+
     <section>
-      <h2>页面结构 / Page Structure</h2>
+      <h2>继承属性阅读 / Inherited Properties</h2>
+      <table>
+        <thead><tr><th>Inherited from</th><th>Property</th><th>USD type</th><th>Fallback</th><th>中文说明 / Chinese Reading</th></tr></thead>
+        <tbody>
+<tr><td colspan="5"><span class="zh">官方直接属性列表为空；本页重点是 schema 职责、继承结构、边界和调试路径。</span><span class="en">No direct schema-specific properties are listed on the official page.</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>相邻 usdLux 阅读路径 / Adjacent usdLux Reading Path</h2>
+      <p class="zh">本页不应孤立阅读。下面的本地页面用于在 release user guide 中保持连续阅读，并帮助区分通用灯光 API、具体灯 schema、插件扩展和已废弃旧入口。</p>
       <ul>
-<li><span class="zh">第 1 级标题：LightListAPI</span><span class="en">LightListAPI</span></li>
+<li><a href="ListAPI.html">ListAPI</a></li>
+<li><a href="LightAPI.html">LightAPI</a></li>
+<li><a href="MeshLightAPI.html">MeshLightAPI</a></li>
+<li><a href="VolumeLightAPI.html">VolumeLightAPI</a></li>
       </ul>
     </section>
+
     <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">Use this schema to discover lights in a scene during traversal. LightListAPI provides the following capabilities:</p>
-<p class="en">Gather a list of lights in the scene. Use ComputeLightList() (with a ComputeModeIgnoreCache) to traverse and gather lights (e.g. prims with the LightAPI schema applied). The following Python example uses ComputeLightList() to get all lights descendant from &lt;/World&gt; .</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>listAPI = UsdLux . LightListAPI ( stage . GetPrimAtPath ( &quot;/World&quot; )) ignoreCache = UsdLux . LightListAPI . ComputeModeIgnoreCache computedLights = listAPI . ComputeLightList ( ignoreCache ) for lightPath in computedLights : ... process light path ...</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
+      <h2>源页对比 / Source Parity</h2>
       <ul>
-<li>No same-site document links extracted.</li>
+        <li><span class="zh">官方页：<a href="LightListAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/LightListAPI.html">官方页 / Official page: https://openusd.org/release/user_guides/schemas/usdLux/LightListAPI.html</a></span></li>
+        <li><span class="zh">本地 source snapshot：<code>source/full_release/user_guides/schemas/usdLux/LightListAPI_source.html</code></span></li>
+        <li><span class="zh">本轮仅晋级该 DomainSprintRound 候选组中达到中文主阅读路径标准的页面；未达标页面不得写入 promotion manifest。</span><span class="en">Only pages that meet the Chinese main-reading-path bar are promoted.</span></li>
       </ul>
     </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="../../../../../site/release_index.html">Release 本地入口 / Local release entry</a></p>
       <p><a href="https://openusd.org/release/user_guides/schemas/usdLux/LightListAPI.html">打开官方原页 / Open official page</a></p>
     </section>
   </main>

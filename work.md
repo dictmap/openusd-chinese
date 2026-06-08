@@ -3,35 +3,35 @@
 ## 当前真实状态
 
 - 全量页面：406
-- 完整双语 / good_bilingual：105
-- 严格中文可读 / review_ready_zh：42
+- 完整双语 / good_bilingual：113
+- 严格中文可读 / review_ready_zh：50
 - API complete：72
-- Release complete：33
-- 未完整翻译草稿 / bilingual_draft：301
-- draft_needs_translation：290
+- Release complete：41
+- 未完整翻译草稿 / bilingual_draft：293
+- draft_needs_translation：282
 - draft_template_only：11
 - pending_full_scope：0
-- promotion manifest：97 项
+- promotion manifest：105 项
 - 总验证：passed=true，failed_check_count=0，required_check_count=311
 
 说明：剩余 `bilingual_draft` 是可检查草稿，不是完整翻译。API 名、类名、函数名、token、代码、属性名和链接会保留英文；真正需要治理的是草稿页和完成页里仍主要依赖英文的中文主阅读路径。
 
-## 第 404 轮：PromotionRound
+## 第 405 轮：DomainSprintRound
 
-- 轮次性质：页面晋级，exactly 1 个目标页。
-- 轮次目的：Round 404 PromotionRound：只晋级一个 release user guide 页面 full_site/release/user_guides/schemas/usdLux/DomeLight_1.html。已对比官方页 https://openusd.org/release/user_guides/schemas/usdLux/DomeLight_1.html 与本地 source snapshot source/full_release/user_guides/schemas/usdLux/DomeLight_1_source.html，将该页从 bilingual_draft 升级为 bilingual_complete；中文主阅读路径覆盖环境照明语义、HDR 与 Image Based Lighting、poleAxis 朝向控制、fallback scene 对齐 stage up axis、Y/Z pole-axis token、renderer 只对 dome 本身应用对齐旋转且不继承到 namespace children、OpenEXR latitude-longitude map、guideRadius、inputs:texture:file、inputs:texture:format、light:shaderId、portals、继承 Xformable/Imageable 属性、texture/orientation/composition/renderer 调试路径和相邻 usdLux schema 边界。本轮让 good_bilingual 从 104 增至 105，并让 review_ready_zh 从 41 增至 42。
-- 本轮目标：`full_site/release/user_guides/schemas/usdLux/DomeLight_1.html`
-- 官方页面：`https://openusd.org/release/user_guides/schemas/usdLux/DomeLight_1.html`
-- 完成数状态：good_bilingual=105；review_ready_zh=42。
+- 轮次性质：流程或一致性修复，不晋级新页面。
+- 轮次目的：Round 405 DomainSprintRound：usdLux 短页小批量冲刺。实际晋级 8 页：full_site/release/user_guides/schemas/usdLux/MeshLightAPI.html、full_site/release/user_guides/schemas/usdLux/LightListAPI.html、full_site/release/user_guides/schemas/usdLux/ListAPI.html、full_site/release/user_guides/schemas/usdLux/BoundableLightBase.html、full_site/release/user_guides/schemas/usdLux/NonboundableLightBase.html、full_site/release/user_guides/schemas/usdLux/GeometryLight.html、full_site/release/user_guides/schemas/usdLux/PluginLight.html、full_site/release/user_guides/schemas/usdLux/VolumeLightAPI.html。本轮从 105 个 good_bilingual 增至 113；中文主阅读路径覆盖页面职责、官方 section、API/schema/property 分组、边界、误读点、调试路径、相邻 usdLux 类型关系，并保留 API 名、schema 名、token、属性名、代码、Doxygen 表格标签、链接语义和显式官方外跳。
+- 本轮目标：Continue release/user-guide promotion only if the target pages can become good_bilingual; otherwise stop and report the blocker.
+- 官方页面：不适用
+- 完成数状态：good_bilingual=113；review_ready_zh=50。
 - 固定审计：`translation_quality_review.json`、`english_debt_audit.json`、`all_pages_inventory.json`、`validation_report.json` 已重建。
 
 ## English Debt 审计结果
 
-- good_bilingual：105
-- review_ready_zh：42
+- good_bilingual：113
+- review_ready_zh：50
 - review_needs_zh_debt：63
 - API complete / review_ready_zh：72 / 12
-- Release complete / review_ready_zh：33 / 30
+- Release complete / review_ready_zh：41 / 38
 
 ## 验证结果
 
@@ -42,4 +42,4 @@
 
 ## 下一轮目标
 
-建议目标：`full_site/release/user_guides/schemas/usdLux/GeometryLight.html`。如果该页无法达到 `good_bilingual`，停止并报告阻塞；不要回到只刷 API 模块页的节奏。
+建议目标：`Continue release/user-guide promotion only if the target pages can become good_bilingual; otherwise stop and report the blocker.`。如果该页无法达到 `good_bilingual`，停止并报告阻塞；不要回到只刷 API 模块页的节奏。

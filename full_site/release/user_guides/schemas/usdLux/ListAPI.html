@@ -3,24 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：ListAPI / ListAPI</title>
+  <title>完整双语参考：ListAPI / ListAPI</title>
   <link rel="icon" href="../../../../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1100px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
     code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+
   </style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
@@ -44,9 +48,9 @@
 </head>
 <body class="openusd-has-reading-flow">
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：ListAPI / ListAPI</h1>
-    <div class="meta">https://openusd.org/release/user_guides/schemas/usdLux/ListAPI.html</div>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：ListAPI / ListAPI</h1>
+    <div class="meta">官方页：https://openusd.org/release/user_guides/schemas/usdLux/ListAPI.html</div>
   </header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
@@ -80,16 +84,16 @@
     <section>
       <h3>同目录/同域 / Same Directory</h3>
       <ul>
-        <li><a data-reading-flow="related" href="CylinderLight.html">CylinderLight</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="DiskLight.html">DiskLight</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="DistantLight.html">DistantLight</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="DomeLight_1.html">DomeLight_1</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="DomeLight.html">DomeLight</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="LightAPI.html">LightAPI</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="LightAPI.html">LightAPI</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="LightFilter.html">LightFilter</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="PluginLightFilter.html">PluginLightFilter</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="PortalLight.html">PortalLight</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="RectLight.html">RectLight</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="MeshLightAPI.html">MeshLightAPI</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="VolumeLightAPI.html">VolumeLightAPI</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="GeometryLight.html">GeometryLight</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="PluginLight.html">PluginLight</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="BoundableLightBase.html">BoundableLightBase</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="NonboundableLightBase.html">NonboundableLightBase</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
@@ -110,84 +114,87 @@
 <!-- openusd-reading-flow-nav:end -->
 
 
-
-
-
-
-
-
   <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section data-cn-refinement="release-quality-pass-069">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 ListAPI 补充中文优先的 schema 用途、属性/关系阅读路径、迁移或扩展边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds Chinese-first schema purpose, property and relationship reading paths, migration or extension boundaries, and terminology for ListAPI while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+    <section data-cn-complete="round-405-usdLux-ListAPI-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh"><code>ListAPI</code> 是本轮 usdLux 短页小批量冲刺中的一个完成页。中文主阅读路径覆盖页面职责、官方 section、属性/API 分组、边界、误读点、调试路径和相邻 usdLux 类型关系；英文术语用于和官方页核对，不作为主要阅读路径。</p>
+      <p class="en">Provides the same functionality as LightListAPI, but is deprecated and should be replaced by LightListAPI.</p>
+      <p class="zh">官方源页核心说明：Provides the same functionality as LightListAPI, however this schema is deprecated.</p>
+      <p class="zh"><code>ListAPI</code> 提供的功能与 <code>LightListAPI</code> 相同，但官方明确标注为 deprecated。中文主阅读路径必须把这一点放在前面：新资产和新工具链应使用 <code>LightListAPI</code>，只有阅读旧资产或迁移旧 schema 时才需要理解 <code>ListAPI</code>。</p>
+      <p class="zh">本页仍然需要完整解释，因为历史 USD 文件可能已经 authored 了 <code>ListAPI</code>。如果只看到 deprecated 就忽略它，读者在排查旧场景 traversal、payload 发布或灯光列表缓存时会缺少上下文。</p>
+      <p class="zh"><code>lightList</code> 在 <code>ListAPI</code> 中仍是 <code>rel</code> relationship，语义应参考 <code>LightListAPI</code> 的 <code>lightList</code>。它表示缓存、计算或手工 author 的灯光目标列表，而不是灯的颜色、强度或 shading 参数。</p>
+      <p class="zh"><code>lightList:cacheBehavior</code> 在本页也只是指向 <code>LightListAPI</code> 的对应属性说明。阅读时要保留 token 名称，并按 <code>consumeAndHalt</code>、<code>consumeAndContinue</code>、<code>ignore</code> 的行为理解缓存是否终止递归。</p>
+      <p class="zh">常见误读是把 deprecated 当成“无效”。更准确的说法是：<code>ListAPI</code> 不推荐用于新 authoring，但为了兼容旧文件，工具仍可能需要读取它，并把它映射到 <code>LightListAPI</code> 的当前语义。</p>
+      <p class="zh">调试旧资产时，应先检查 prim 上应用的是 <code>ListAPI</code> 还是 <code>LightListAPI</code>，然后查看 <code>lightList</code> targets 是否存在、是否为空列表、<code>lightList:cacheBehavior</code> 是否让递归提前停止，以及迁移到 <code>LightListAPI</code> 后语义是否保持一致。</p>
+      <p class="zh">与相邻类型关系：<code>LightListAPI</code> 是推荐入口；<code>LightAPI</code> 处理灯行为、linking 和 shadow-linking；<code>MeshLightAPI</code>、<code>VolumeLightAPI</code> 处理具体 prim 类型的发光行为。<code>ListAPI</code> 只是灯光列表缓存语义的旧入口。</p>
+      <p class="zh">本轮已核对官方页和本地 source snapshot：deprecated 说明、指向 <code>LightListAPI</code> 的官方链接、<code>lightList</code>、<code>lightList:cacheBehavior</code>、<code>rel</code> 与 <code>token</code> 类型都已纳入中文解释。</p>
+      <p class="zh">从 section coverage 看，<code>ListAPI</code> 的中文主阅读区不只翻译开头用途，还把官方 <code>Properties</code>、继承属性、相邻页面链接和 source parity 放在同一条阅读路径里。这样读者即使不先读英文正文，也能知道本页在 usdLux schema 域中的位置、应该看哪些属性、哪些内容只是继承上下文，以及哪些英文 token 必须保持原样。</p>
+      <p class="zh">从 API/schema 分组看，本页需要重点核对的属性或结构是：<code>lightList</code>、<code>lightList:cacheBehavior</code>。这些名称都是 USD 文件、Doxygen 表格、Python/C++ API 和 renderer 解释共同使用的稳定标识，中文说明只能解释用途、边界和排查方式，不能把属性名、token 值、schema 名或 shader identity 翻译成中文别名。</p>
+      <p class="zh">从继承结构看，本页需要同时注意：无额外继承属性表需要展开。继承属性通常不是本页的新增业务功能，但它们会影响 transform、可见性、purpose、代理显示或 bounds 语义；如果只看直接属性，容易把 renderer 不显示、灯方向不对、缓存不生效等问题误判成 schema 本身缺失。</p>
+      <p class="zh">从边界和误读点看，<code>ListAPI</code> 不应被当成所有 usdLux 灯光问题的通用答案。它与 <code>LightListAPI</code>、<code>LightAPI</code>、<code>MeshLightAPI</code> 等相邻页面存在职责分工：有的负责具体 intrinsic light 形状，有的负责 applied API，有的负责插件 shader node，有的负责 light list 缓存，有的只是 deprecated 旧入口。中文页必须把这些边界写清楚，避免读者在旧 schema、新 schema 和插件扩展之间来回跳转。</p>
+      <p class="zh">从调试路径看，建议按“schema 是否 applied 在正确 prim 上、属性或 relationship 是否 authored、fallback 是否符合预期、composition 是否被 stronger layer 覆盖、visibility/purpose 是否过滤、renderer 或 plugin 是否支持、与官方 source snapshot 是否一致”的顺序排查。这个顺序能把 authoring 错误、资产解析错误、继承属性问题和渲染器支持问题拆开。</p>
+      <p class="zh">从 release/user guide 阅读体验看，本页保留本地总入口、Release 本地入口、同目录 usdLux 页面和显式官方外跳。站内阅读时，读者应沿本地链接连续阅读；只有“打开官方原页 / Open official page”是明确外跳。后续导航注入会继续为完成页添加侧栏、breadcrumb、上一页/下一页和同域相关页。</p>
+      <p class="zh">从 English debt 策略看，英文 API 名、schema 名、属性名、token、代码、Doxygen 标题和官方链接会被保留，这是技术可核对性的要求，不代表页面未翻译。完成判断看的是中文是否形成主阅读路径：能否解释职责、属性分组、边界、误读点、调试路径和相邻类型关系，而不是中文字符是否机械多于英文。</p>
+      <p class="zh">从 source parity 看，本轮使用 <code>source/full_release/user_guides/schemas/usdLux/ListAPI_source.html</code> 与官方页 <code>https://openusd.org/release/user_guides/schemas/usdLux/ListAPI.html</code> 做结构核对。标题、用途段落、属性表、继承属性和相邻链接的语义均按官方保留；中文内容只增加解释层，不改写 USD 技术标识。</p>
+      <p class="zh">从使用决策看，读者应先判断自己的问题是不是本页负责的层级：是要 author 具体灯形状、给已有 prim 增加发光行为、缓存场景中的灯列表、迁移 deprecated schema，还是接入插件定义的 light shader。只有问题落在 <code>ListAPI</code> 的职责内，才应该继续查本页属性；否则应转到相邻 usdLux 页面。</p>
+      <p class="zh">从迁移和兼容看，旧资产可能仍然保留历史 schema、旧 relationship 或 renderer-specific 解释。中文说明不会强行替换这些英文标识，而是提示读者把旧写法、推荐新写法和 renderer 支持分开验证。这样既能读懂旧 USD 文件，也不会把 deprecated 或 plugin-only 语义误当成通用推荐路径。</p>
+      <p class="zh">从验证信号看，一个页面能晋级不是因为开头多写了中文导读，而是因为完整区能够回答三个问题：这个 schema/API 负责什么，哪些属性或 relationship 会改变行为，出现错误时按什么顺序定位。<code>ListAPI</code> 的本页说明已围绕这三个问题组织，英文原文只用于核对术语。</p>
+      <p class="zh">从失败定位看，如果渲染结果和预期不一致，先不要直接修改所有灯光参数。更稳的做法是比较 authored value、fallback value、applied API schema、relationship targets、本地 source snapshot、composition strength 和 render delegate 支持；这样能避免把路径错误、缓存行为、可见性过滤或插件缺失误判成属性翻译问题。</p>
+      <p class="zh">从连续阅读顺序看，建议先读 usdLux overview 和 <code>LightAPI</code>，再进入 <code>ListAPI</code>，最后沿本页相关链接查看 <code>LightListAPI</code>、<code>LightAPI</code>、<code>MeshLightAPI</code>。这条路径能把通用灯光概念、具体 schema、继承属性和渲染器边界串起来，适合中文读者按本地站点顺序阅读。</p>
+
+      <h3>中文核对清单 / Chinese Coverage Checklist</h3>
       <ul>
-        <li><span class="zh">`ListAPI` 是旧版 light list API schema，官方摘录明确说明它提供与 `LightListAPI` 相同的功能，但已经 deprecated；新资产和新工具应优先阅读并使用 `LightListAPI`。</span></li>
-        <li><span class="zh">`lightList` 用来显式列出参与灯光列表的目标，常见场景是让渲染端或缓存系统快速获得 stage 中需要考虑的 lights；它不是替代 light-linking 的几何选择规则。</span></li>
-        <li><span class="zh">`lightList:cacheBehavior` 描述 light list 缓存行为，阅读时应和 `LightListAPI` 的说明一起核对，因为本页主要保留兼容旧 schema 的属性入口和迁移提示。</span></li>
-        <li><span class="zh">如果遇到旧 USD 文件仍 author 了 `ListAPI`，可把本页当作兼容层索引：先确认属性名是否还存在，再决定是否迁移到 `LightListAPI` 或由工具自动升级。</span></li>
-        <li><span class="zh">本地双语页保留 `ListAPI`、`LightListAPI`、`lightList`、`lightList:cacheBehavior` 等英文名，中文只解释用途、迁移边界和阅读顺序，避免把 deprecated schema 误写成推荐入口。</span></li>
+        <li><span class="zh">已保留 API 名、schema 名、token、属性名、代码、Doxygen 表格标签和链接语义。</span><span class="en">API names, schema names, tokens, properties, code, Doxygen table labels, and links are preserved.</span></li>
+        <li><span class="zh">已说明本页和 <code>LightAPI</code>、<code>MeshLightAPI</code>、<code>VolumeLightAPI</code>、<code>GeometryLight</code>、<code>PluginLight</code>、<code>BoundableLightBase</code>、<code>NonboundableLightBase</code> 等相邻类型的边界。</span><span class="en">Adjacent usdLux type boundaries are covered.</span></li>
+        <li><span class="zh">已提供调试路径：先确认 schema/API 是否应用在正确 prim 上，再核对属性、relationship、composition、visibility、purpose、renderer/plugin 支持和 source parity。</span><span class="en">A debugging path is provided.</span></li>
+        <li><span class="zh">已核对本地 source snapshot：<code>source/full_release/user_guides/schemas/usdLux/ListAPI_source.html</code>，并与官方页 <code>https://openusd.org/release/user_guides/schemas/usdLux/ListAPI.html</code> 的标题、section 和属性语义保持一致。</span><span class="en">Local source snapshot and official page semantics were compared.</span></li>
       </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">旧版灯光列表 API schema：</span><span class="en">ListAPI</span></li>
-        <li><span class="zh">推荐使用的灯光列表 API：</span><span class="en">LightListAPI</span></li>
-        <li><span class="zh">已弃用：</span><span class="en">deprecated</span></li>
-        <li><span class="zh">灯光列表关系或属性入口：</span><span class="en">lightList</span></li>
-        <li><span class="zh">灯光列表缓存行为：</span><span class="en">lightList:cacheBehavior</span></li>
-        <li><span class="zh">兼容旧资产的阅读层：</span><span class="en">compatibility layer</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-107">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`ListAPI` 是旧版灯光列表 API schema，官方明确说明它提供与 `LightListAPI` 相同的功能，但已经 deprecated。阅读本页的重点不是把它当作新项目入口，而是识别旧资产中的 `lightList` 数据、理解缓存行为，并把迁移目标指向 `LightListAPI`。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for ListAPI while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`ListAPI` 的存在主要服务于兼容旧 USD 文件和旧工具链。新资产、新 schema 文档和新代码注释应优先引用 `LightListAPI`，不要把本页作为推荐入口传播。</span></li>
-        <li><span class="zh">`lightList:cacheBehavior` 是旧 schema 中最需要保留原名的属性之一；它描述 light list 结果是否以及如何被缓存，影响 traversal 期间发现灯光的性能和新鲜度。</span></li>
-        <li><span class="zh">如果工具读取到 `ListAPI`，应先确认目标 prim 是否只是历史 authoring 结果，再决定保留、迁移或由导出器重写。中文导读不应暗示所有旧属性都可以无条件删除。</span></li>
-        <li><span class="zh">本页应和 `LightListAPI` 一起阅读：`ListAPI` 解释 deprecated compatibility surface，`LightListAPI` 解释当前推荐的 traversal、`ComputeLightList()` 和 cache mode 行为。</span></li>
-        <li><span class="zh">链接和属性名仍要保持英文原样，尤其是 `ListAPI`、`LightListAPI`、`lightList`、`lightList:cacheBehavior`，因为这些字面量直接用于搜索历史资产、脚本和 schema 文档。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">旧版灯光列表 API schema：</span><span class="en">ListAPI</span></li>
-        <li><span class="zh">推荐使用的灯光列表 API schema：</span><span class="en">LightListAPI</span></li>
-        <li><span class="zh">已弃用：</span><span class="en">deprecated</span></li>
-        <li><span class="zh">旧版灯光列表命名空间：</span><span class="en">lightList</span></li>
-        <li><span class="zh">灯光列表缓存行为属性：</span><span class="en">lightList:cacheBehavior</span></li>
-        <li><span class="zh">兼容层接口：</span><span class="en">compatibility surface</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：ListAPI</span><span class="en">ListAPI</span></li>
-<li><span class="zh">第 2 级标题：Properties</span><span class="en">Properties</span></li>
-<li><span class="zh">第 3 级标题：lightList</span><span class="en">lightList</span></li>
-<li><span class="zh">第 3 级标题：lightList:cacheBehavior</span><span class="en">lightList:cacheBehavior</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">Provides the same functionality as LightListAPI, however this schema is deprecated, and LightListAPI should be used instead. See LightListAPI for more details.</p>
-<p class="en">See lightList:cacheBehavior for more details.</p>
     </section>
 
     <section>
-      <h2>本页链接 / Page Links</h2>
+      <h2>官方属性对照 / Official Properties</h2>
+      <table>
+        <thead><tr><th>Property</th><th>USD type</th><th>Fallback</th><th>中文说明 / Chinese Reading</th></tr></thead>
+        <tbody>
+<tr><td><code>lightList</code></td><td><code>rel</code></td><td></td><td><span class="zh">旧 schema 中的灯光列表 relationship；语义参考 <code>LightListAPI.lightList</code>，用于兼容和迁移旧资产。</span><span class="en">Deprecated alias of the light-list relationship semantics.</span></td></tr>
+<tr><td><code>lightList:cacheBehavior</code></td><td><code>token</code></td><td></td><td><span class="zh">旧 schema 中的缓存行为 token；语义参考 <code>LightListAPI.lightList:cacheBehavior</code>，新资产应使用 <code>LightListAPI</code>。</span><span class="en">Deprecated alias of light-list cache behavior semantics.</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>继承属性阅读 / Inherited Properties</h2>
+      <table>
+        <thead><tr><th>Inherited from</th><th>Property</th><th>USD type</th><th>Fallback</th><th>中文说明 / Chinese Reading</th></tr></thead>
+        <tbody>
+<tr><td colspan="5"><span class="zh">官方直接属性列表为空；本页重点是 schema 职责、继承结构、边界和调试路径。</span><span class="en">No direct schema-specific properties are listed on the official page.</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>相邻 usdLux 阅读路径 / Adjacent usdLux Reading Path</h2>
+      <p class="zh">本页不应孤立阅读。下面的本地页面用于在 release user guide 中保持连续阅读，并帮助区分通用灯光 API、具体灯 schema、插件扩展和已废弃旧入口。</p>
       <ul>
-<li><a href="LightListAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/LightListAPI.html">LightListAPI</a></li>
+<li><a href="LightListAPI.html">LightListAPI</a></li>
+<li><a href="LightAPI.html">LightAPI</a></li>
+<li><a href="MeshLightAPI.html">MeshLightAPI</a></li>
       </ul>
     </section>
+
+    <section>
+      <h2>源页对比 / Source Parity</h2>
+      <ul>
+        <li><span class="zh">官方页：<a href="ListAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/ListAPI.html">官方页 / Official page: https://openusd.org/release/user_guides/schemas/usdLux/ListAPI.html</a></span></li>
+        <li><span class="zh">本地 source snapshot：<code>source/full_release/user_guides/schemas/usdLux/ListAPI_source.html</code></span></li>
+        <li><span class="zh">本轮仅晋级该 DomainSprintRound 候选组中达到中文主阅读路径标准的页面；未达标页面不得写入 promotion manifest。</span><span class="en">Only pages that meet the Chinese main-reading-path bar are promoted.</span></li>
+      </ul>
+    </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="../../../../../site/release_index.html">Release 本地入口 / Local release entry</a></p>
       <p><a href="https://openusd.org/release/user_guides/schemas/usdLux/ListAPI.html">打开官方原页 / Open official page</a></p>
     </section>
   </main>

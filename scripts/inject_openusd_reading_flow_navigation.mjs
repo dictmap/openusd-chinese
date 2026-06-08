@@ -96,7 +96,25 @@ function buildRelatedPages(current, pages, areaPages) {
   if (current.area === "release") {
     const currentDir = path.posix.dirname(current.local_output);
     const sameDir = pages.filter((page) => page.area === "release" && path.posix.dirname(page.local_output) === currentDir);
+    const usdLuxPriorityNames = [
+      "LightAPI.html",
+      "LightFilter.html",
+      "PortalLight.html",
+      "RectLight.html",
+      "MeshLightAPI.html",
+      "VolumeLightAPI.html",
+      "GeometryLight.html",
+      "PluginLight.html",
+      "BoundableLightBase.html",
+      "NonboundableLightBase.html",
+    ];
+    const priority = currentDir.endsWith("/usdLux")
+      ? usdLuxPriorityNames
+        .map((name) => sameDir.find((page) => path.posix.basename(page.local_output) === name))
+        .filter(Boolean)
+      : [];
     const preferred = [
+      ...priority,
       ...sameDir.filter((page) => page.status === "bilingual_complete"),
       ...sameDir.filter((page) => page.status !== "bilingual_complete"),
       ...areaPages,

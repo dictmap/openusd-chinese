@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-08T00:39:55.470Z
+Generated: 2026-06-08T01:10:09.771Z
 
-Transient base URL: `http://127.0.0.1:61452/`
+Transient base URL: `http://127.0.0.1:62674/`
 
 Result:
 
 - Passed: true
-- Draft pages: 301
-- Pages checked: 301
-- Passed pages: 301
+- Draft pages: 293
+- Pages checked: 293
+- Passed pages: 293
 - Failed pages: 0
-- Final HTML links: 301
-- Local assets checked: 301
+- Final HTML links: 293
+- Local assets checked: 293
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -250,16 +250,8 @@ Result:
 | true | full_site/release/user_guides/primvars.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/render_user_guide.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/index.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdLux/BoundableLightBase.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdLux/GeometryLight.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdLux/LightListAPI.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdLux/ListAPI.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdLux/MeshLightAPI.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdLux/NonboundableLightBase.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/overview.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdLux/PluginLight.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/usdLux_toc.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdLux/VolumeLightAPI.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdMedia/overview.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdMedia/SpatialAudio.html | 200 | true | 0 | 0 |
