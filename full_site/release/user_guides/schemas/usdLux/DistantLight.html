@@ -3,24 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：DistantLight / DistantLight</title>
+  <title>完整双语参考：DistantLight / DistantLight</title>
   <link rel="icon" href="../../../../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1100px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
     pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
     code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
@@ -44,9 +48,9 @@
 </head>
 <body class="openusd-has-reading-flow">
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：DistantLight / DistantLight</h1>
-    <div class="meta">https://openusd.org/release/user_guides/schemas/usdLux/DistantLight.html</div>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：DistantLight / DistantLight</h1>
+    <div class="meta">官方页：https://openusd.org/release/user_guides/schemas/usdLux/DistantLight.html</div>
   </header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
@@ -109,80 +113,169 @@
 </aside>
 <!-- openusd-reading-flow-nav:end -->
 
-
-
-
-
   <main>
+    <section data-cn-complete="release-user-guide-usdLux-DistantLight-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh">`DistantLight` 是 usdLux 中表示远处方向光的 intrinsic light schema。官方定义强调它从 distant source 提供光照，默认沿局部 `-Z axis` 方向照射，也常被称为 `directional light`。中文阅读时不要把它当成场景里有明确近场位置和衰减半径的灯泡；它更像太阳光一类很远、很宽、光线近似平行并影响整个场景的光源。实际朝向通常由 prim 的 transform 决定，因此调试方向时要看局部 `-Z axis` 经 transform 后指向哪里，而不是只看 prim 放在世界空间的哪个位置。</p>
+      <p class="en">`DistantLight` provides light from a distant source along the local `-Z axis`, and is also known as a directional light.</p>
+
+      <p class="zh">官方用途段把 `DistantLight` 放在 sunlight 和 distant, broad sources of light 的语境里：光线影响整个 scene，并且大致 parallel，平行程度取决于 `inputs:angle`。这里的关键边界是“远处方向光”与“局部面积光”的区别。`RectLight`、`DiskLight`、`SphereLight` 和 `CylinderLight` 都有具体局部几何；`DistantLight` 的阅读重点则是方向、角直径、强度和阴影软化。它适合做太阳、月光或其他极远光源的主方向照明，不适合表达一个靠近物体、随距离明显衰减的灯具。</p>
+      <p class="en">It is typically used for broad distant sources such as sunlight, where rays affect the entire scene and are roughly parallel.</p>
+
+      <p class="zh">官方示例写了 `def DistantLight "Light1"`，把 `float inputs:angle = 1.0`，再把 `float inputs:intensity = 10000`。说明文字指出：示例把 `inputs:angle` 提高到 `1.0`，这会明显拓宽 light spread 并软化 shadow；同时它把强度从默认 `50000` 降到 `10000`。这不是随意调参，而是在展示 `inputs:angle` 和 `inputs:intensity` 的联动：角度变大时光线不再那么平行，阴影更软，场景光量也可能增加，因此需要降低 intensity 或 exposure 来补偿。</p>
+      <p class="en">The official example increases `inputs:angle` to `1.0` and reduces `inputs:intensity` from the default `50000` to `10000`.</p>
+
+      <p class="zh">`inputs:angle` 是本页最重要的专有属性之一，USD type 为 `float`，fallback value 为 `0.5299999713897705`。官方说明说它设置 `DistantLight` 的 angular diameter，单位是 degrees；fallback 近似从地球看太阳的 `0.53` 度角大小。角度越高，shadow edges 越柔和，因为 light rays 变得 less parallel；角度越低，阴影越锐利。中文主阅读路径必须把它解释成“远处光源角直径/光线扩散角”，而不是局部灯具的半径、锥角或 spotlight 范围。</p>
+      <p class="en">`inputs:angle` sets the angular diameter in degrees, with a fallback close to the Sun's angular size as seen from Earth.</p>
+
+      <p class="zh">官方还给出 `inputs:angle` 的有效范围和性能边界：该值假定在 `0 <= angle < 360`，超出时会被 clipped 到这个范围；如果 `angle > 180`，语义上意味着从超过半球的发光区域贡献远处光。虽然这是有效的，但官方提醒大角度情况下 `DomeLight` 可能提供更好的 performance。也就是说，`DistantLight` 可以表达非常宽的方向光，但如果目标实际上是环境光或 IBL，中文读者应考虑切换到 `DomeLight`，而不是把 `inputs:angle` 一路推高。</p>
+      <p class="en">The angle is clipped to `0 <= angle < 360`; very large angles may be valid, but `DomeLight` can be a better-performing choice.</p>
+
+      <p class="zh">官方最后提醒：增加 `inputs:angle` 也会增加 scene 中的 light amount，可能需要降低 light intensity 或 exposure。这个细节很重要，因为很多读者会以为 angle 只改变阴影软硬，不改变总体亮度。排查时应把问题拆开看：如果阴影太硬，检查 `inputs:angle`；如果画面过曝，检查 `inputs:intensity`、`inputs:exposure`、相机 exposure 和色彩管理；如果光照方向不对，检查 transform 和局部 `-Z axis`。不要用一个参数同时承担方向、能量和阴影软化三种职责。</p>
+      <p class="en">Increasing `inputs:angle` can increase scene light amount, so intensity or exposure may need compensation.</p>
+
+      <p class="zh">`inputs:intensity` 是线性缩放亮度的属性，USD type 为 `float`，fallback value 为 `50000.0`。官方说明默认 `50000` 提供很高的 intensity，用来近似 sunlight。规范段落把它描述为光发出的 base、unmultiplied luminance，记为 `L`，单位是 nits，也就是 `cd/m²`；公式可写为 `L_Scalar = intensity`。在 RGB renderer 的归一化说明中，`intensity` 为 `1` 且 `exposure` 为 `0` 的可直接可见光通常会在 sensor plane 上生成 `[1, 1, 1]` 像素值，并具有 `1 nit` 亮度；`intensity` 为 `2`、`exposure` 为 `0` 时则对应 `2 nits`。这些英文单位、公式和数值必须保留原样，中文只解释含义。</p>
+      <p class="en">`inputs:intensity` linearly scales brightness, with fallback `50000.0`, and is described as base luminance in nits.</p>
+
+      <p class="zh">`light:shaderId` 是 renderer-facing 的 shader 标识，USD type 为 `token`，fallback value 为 `DistantLight`。官方页说明 USD 会注册一个 identifier 为 `DistantLight`、source type 为 `USD` 的 `Sdr` shader node 来对应该灯光的 inputs。这个 token 不应翻译成“远距光”，也不应和 prim name `Light1` 混淆。跨 DCC 或 renderer 交付时，如果灯光没有按 `DistantLight` 被识别，应检查 prim type、`light:shaderId` 是否被覆盖，以及目标 renderer 是否正确解析 usdLux `Sdr` 节点。</p>
+      <p class="en">`light:shaderId` preserves the `DistantLight` shader identity and corresponding USD `Sdr` node mapping.</p>
+
+      <p class="zh">继承属性同样会影响阅读和调试。`xformOpOrder` 来自 `Xformable`，决定 transform op 的应用顺序；对于 `DistantLight`，它主要影响局部 `-Z axis` 最终朝向，而不是近场灯位衰减。`proxyPrim`、`purpose` 和 `visibility` 来自 `Imageable`，分别影响代理 prim、渲染用途分类和可见性继承。如果画面没有出现预期光照，不应只看 `inputs:intensity`，还要检查 `visibility` 是否被父层级或 variant 覆盖，`purpose` 是否被渲染管线过滤，layer strength 是否让更强 opinion 覆写了当前属性。</p>
+      <p class="en">Inherited `Xformable` and `Imageable` properties affect direction, purpose, proxying, and visibility.</p>
+
+      <p class="zh">还要把“位置”和“方向”的语义分开。很多 DCC 会允许用户移动一个 `DistantLight` prim，但对远处方向光而言，transform 中真正影响照明的是朝向，而不是灯离物体多近。把它移动到场景另一端，通常不应像局部点光或面积光那样改变距离衰减；如果目标是从某个窗口、灯板或发光物体附近照亮角色，`DistantLight` 往往不是合适 schema。中文页必须明确这一点，否则读者容易把太阳光模型误当成可摆放的现场灯具。</p>
+      <p class="en">For a distant directional light, orientation matters more than local placement or near-field distance.</p>
+
+      <p class="zh">在 composition 场景中，`inputs:angle` 和 `inputs:intensity` 也要看最终 composed value。弱层写入的 `1.0` 或 `10000` 可能被 stronger layer、variant selection、payload、reference 或 session layer 覆盖；renderer 看到的是组合后的属性，而不是某个源文件中最早出现的 authored value。若本地文档、usdview 和最终渲染结果不一致，应先用属性面板、`usdcat` 或 `usdtree` 确认最终 stage 上的取值，再判断是文档理解、资产层级还是 renderer 行为导致差异。</p>
+      <p class="en">Authored values must be interpreted through USD composition to find the stage's composed values.</p>
+
+      <p class="zh">建议调试顺序是：先确认 prim type 是 `DistantLight`，再确认 transform 后的局部 `-Z axis` 是否指向目标照明方向；接着检查 `inputs:angle` 是否表达期望的太阳角/阴影软化，`inputs:intensity` 与 exposure 是否匹配；然后检查 `visibility`、`purpose`、payload、variant、composition 和 stronger layer opinion；最后再看 renderer 对 distant light、spectral radiance、shadow sampling 和 color management 的实现。这样可以避免把方向错误、阴影太硬、曝光过强、层级覆盖和 renderer 行为混成一个问题。</p>
+      <p class="en">A practical debugging path is schema type, transform direction, angle, intensity/exposure, visibility/composition, then renderer support.</p>
+
+      <p class="zh">和相邻 usdLux 页面一起读时，`DistantLight` 的职责边界很清楚：`DiskLight` 是圆盘面积光，`RectLight` 是矩形面积光，`SphereLight` 是球形或近似点状局部光，`CylinderLight` 是管状侧面发光，`DomeLight` 更适合环境或图像照明，`PortalLight` 帮助把环境采样引导到开口区域，`ShapingAPI` 和 `ShadowAPI` 则补充塑形和阴影控制。`DistantLight` 只负责远处方向光，不应拿来表达局部灯具外观、环境贴图或 portal 采样策略。</p>
+      <p class="en">Adjacent usdLux pages separate distant directional illumination from disk, rectangular, spherical, cylindrical, dome, portal, shaping, and shadow concepts.</p>
+
+      <p class="zh">本轮已核对官方页和本地 source snapshot：标题 `DistantLight`、定义段、示例段、`Properties`、`Inherited Properties (Xformable)`、`Inherited Properties (Imageable)`、previous/next 链接均纳入中文解释。页面保留 `DistantLight`、`inputs:angle`、`inputs:intensity`、`light:shaderId`、`xformOpOrder`、`proxyPrim`、`purpose`、`visibility`、`DomeLight`、`DiskLight` 等 API/schema/token/属性名原样；中文负责建立独立可读的主路径，英文只作为核对。</p>
+      <p class="en">The official page and local source snapshot were checked for title, prose, example, properties, inherited properties, and adjacent links.</p>
+
+      <p class="zh">因此，中文读者现在可以独立判断：何时选择 `DistantLight`，如何解释 `inputs:angle` 与太阳角直径、阴影软化和光量补偿的关系，为什么 `inputs:intensity` 默认值很高，如何区分它与 `DomeLight` 和局部面积光，以及遇到方向、曝光、可见性或 renderer 支持问题时应该从哪一层开始排查。这个路径也能帮助读者把太阳光、环境光和局部灯具分开建模。</p>
+      <p class="en">The page is ready as a Chinese-first reading entry for this schema.</p>
+    </section>
+
     <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+      <h2>官方属性对照 / Official Properties</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>USD type</th>
+            <th>Fallback</th>
+            <th>中文说明 / Chinese Reading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>inputs:angle</code></td>
+            <td><code>float</code></td>
+            <td><code>0.5299999713897705</code></td>
+            <td><span class="zh">远处光源的 angular diameter，单位 degrees。默认近似地球上看到的太阳角大小 `0.53` 度；角度越大，光线越不平行，阴影越软，同时可能增加场景光量。</span><span class="en">Angular diameter of the `DistantLight` in degrees.</span></td>
+          </tr>
+          <tr>
+            <td><code>inputs:intensity</code></td>
+            <td><code>float</code></td>
+            <td><code>50000.0</code></td>
+            <td><span class="zh">线性缩放亮度。默认高强度用于近似 sunlight；规范上可理解为 base luminance，`L_Scalar = intensity`，单位 nits。</span><span class="en">Linearly scales brightness; fallback approximates sunlight intensity.</span></td>
+          </tr>
+          <tr>
+            <td><code>light:shaderId</code></td>
+            <td><code>token</code></td>
+            <td><code>DistantLight</code></td>
+            <td><span class="zh">`DistantLight` 的 shader ID。USD 会注册 source type 为 `USD` 的 `Sdr` shader node；该 token 必须保持英文原样。</span><span class="en">Shader ID for a `DistantLight`; USD registers a matching `Sdr` shader node.</span></td>
+          </tr>
+        </tbody>
+      </table>
     </section>
-    <section data-cn-refinement="usdLux-schema-quality-pass-004">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 DistantLight 补充中文优先的用途说明、属性阅读重点和术语对照；英文页面名、链接、代码、命令和原文摘录继续保留，便于和官方 usdLux schema 文档核对。</p>
-      <p class="en">This section adds Chinese-first usage notes, property reading guidance, and terminology for DistantLight while retaining the English page name, links, code, commands, and source excerpts for comparison with the official usdLux schema documentation.</p>
-      <ul>
-        <li><span class="zh">DistantLight 表达来自远处、方向近似一致的光源，默认沿 -Z 轴照射；它也常被称为 directional light。</span></li>
-        <li><span class="zh">典型用途是太阳光等距离很远、覆盖全场景且光线近似平行的 broad source；因此它通常不依赖场景中的灯位置，而更依赖方向、angle 和 intensity。</span></li>
-        <li><span class="zh">官方示例把 inputs:angle 增大到 1.0，使光线 spread 更宽并让阴影更软，同时把 intensity 从默认 50000 降到 10000；中文说明保留 inputs:angle 等属性名。</span></li>
-        <li><span class="zh">后续段落级翻译应重点解释 DistantLight 与 DomeLight 的区别：前者是方向光，后者是环境光/IBL，两者常在同一场景中承担不同照明角色。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">远距光：</span><span class="en">DistantLight</span></li>
-        <li><span class="zh">方向光：</span><span class="en">directional light</span></li>
-        <li><span class="zh">大范围远距光源：</span><span class="en">broad sources of light</span></li>
-        <li><span class="zh">角度输入属性：</span><span class="en">inputs:angle</span></li>
-        <li><span class="zh">近似平行光线：</span><span class="en">parallel rays</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-103">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`DistantLight` 表达来自远处、近似平行的 directional light，默认沿 `-Z axis` 照射。它常用于 sunlight 这类 broad source；`inputs:angle` 控制光线 spread 和阴影柔和度，`inputs:intensity` 控制强度。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for DistantLight while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">与 point 或 area lights 不同，`DistantLight` 主要由方向、angle 和 intensity 决定效果；它模拟非常远的光源，因此位置通常没有局部近场光源那样直观的衰减含义。</span></li>
-        <li><span class="zh">官方示例把 `inputs:angle` 设为 `1.0`，使光照 spread 更宽并软化阴影，同时把 `inputs:intensity` 从默认 `50000` 降到 `10000`。这些数值是理解示例效果的关键。</span></li>
-        <li><span class="zh">`directional light`、`sunlight`、`parallel rays` 和 `broad sources of light` 都应保留英文对照，因为灯光艺术、渲染器 UI 和 DCC 文档中常直接使用这些词。</span></li>
-        <li><span class="zh">`DistantLight` 不等同于 `DomeLight`：前者提供方向性远光，后者更常表达环境光或 IBL。两者可以在同一场景中配合，但阅读本页时不要混淆。</span></li>
-        <li><span class="zh">后续补全逐段翻译时，应保留 `inputs:angle`、`inputs:intensity`、`-Z axis`、`DistantLight` 等字面量，并把 shadow softness 与 angle 的关系说明清楚。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">远距光源：</span><span class="en">DistantLight</span></li>
-        <li><span class="zh">方向光：</span><span class="en">directional light</span></li>
-        <li><span class="zh">太阳光：</span><span class="en">sunlight</span></li>
-        <li><span class="zh">近似平行光线：</span><span class="en">parallel rays</span></li>
-        <li><span class="zh">角度输入属性：</span><span class="en">inputs:angle</span></li>
-        <li><span class="zh">阴影柔和度：</span><span class="en">shadow softness</span></li>
-      </ul>
-    </section>
+
     <section>
-      <h2>页面结构 / Page Structure</h2>
+      <h2>继承属性阅读 / Inherited Properties</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Inherited from</th>
+            <th>Property</th>
+            <th>USD type / fallback</th>
+            <th>中文说明 / Chinese Reading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>Xformable</code></td>
+            <td><code>xformOpOrder</code></td>
+            <td><code>token[]</code></td>
+            <td><span class="zh">决定 transform op 应用顺序。对 `DistantLight` 来说，它主要决定局部 `-Z axis` 最终变成哪一个世界方向。</span><span class="en">Transform operation order.</span></td>
+          </tr>
+          <tr>
+            <td><code>Imageable</code></td>
+            <td><code>proxyPrim</code></td>
+            <td><code>rel</code></td>
+            <td><span class="zh">代理 prim 关系。它不改变 distant light 的方向光语义，但可能影响工具显示或替代表达。</span><span class="en">Proxy prim relationship.</span></td>
+          </tr>
+          <tr>
+            <td><code>Imageable</code></td>
+            <td><code>purpose</code></td>
+            <td><code>token / default</code></td>
+            <td><span class="zh">渲染用途分类。如果 pipeline 过滤某些 purpose，相关对象或灯光路径可能不会进入预期渲染结果。</span><span class="en">Render-purpose classification.</span></td>
+          </tr>
+          <tr>
+            <td><code>Imageable</code></td>
+            <td><code>visibility</code></td>
+            <td><code>token / inherited</code></td>
+            <td><span class="zh">可见性继承。父层级、variant 或更强 layer opinion 可能覆盖可见性，导致属性看似正确但灯光不生效。</span><span class="en">Inherited visibility state.</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>USDA 示例阅读 / USDA Example Reading</h2>
+      <p class="zh">下面保留官方示例中的关键灯光结构。代码标识符保持英文原样；中文只解释职责和调参关系。</p>
+      <pre><code>#usda 1.0
+(
+    upAxis = "Y"
+)
+
+def Scope "Lights"
+{
+    def DistantLight "Light1"
+    {
+        float inputs:angle = 1.0
+        float inputs:intensity = 10000
+    }
+}</code></pre>
       <ul>
-<li><span class="zh">第 1 级标题：DistantLight</span><span class="en">DistantLight</span></li>
+        <li><span class="zh">`def DistantLight "Light1"` 表示 prim type 是 `DistantLight`，`Light1` 只是 prim name。</span><span class="en">The prim type is `DistantLight`; `Light1` is the prim name.</span></li>
+        <li><span class="zh">`inputs:angle = 1.0` 会拓宽 light spread，并软化 shadow edges。</span><span class="en">A larger angle broadens the spread and softens shadow edges.</span></li>
+        <li><span class="zh">`inputs:intensity = 10000` 是示例中的补偿选择，低于默认 `50000.0`。</span><span class="en">The example reduces intensity from the default `50000.0`.</span></li>
       </ul>
     </section>
+
     <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">An intrinsic light that provides light from a distant source, along the -Z axis. Also known as a “directional light”. Typically used for distant, broad sources of light, like sunlight, where light rays affect the entire scene and are roughly parallel (depending on inputs:angle ).</p>
-<p class="en">The following example uses a DistantLight with a increased inputs:angle of 1.0 (noticeably broadening the light spread, but softening the shadow), and reduces the intensity from the default 50000 to 10000.</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>#usda 1.0 ( upAxis = &quot;Y&quot; ) def Scope &quot;Lights&quot; { def DistantLight &quot;Light1&quot; { float inputs:angle = 1.0 float inputs:intensity = 10000 } } def Xform &quot;TestGeom&quot; { def Sphere &quot;Sphere1&quot; { color3f[] primvars:displayColor = [( 1 , 1 , 1 )] ( interpolation = &quot;constant&quot; ) double3 xformOp:translate = ( 0 , 0 , -2 ) uniform token[] xformOpOrder = [ &quot;xformOp:translate&quot; ] } def Cube &quot;Cube&quot; { color3f[] primvars:displayColor = [( 1 , 1 , 1 )] ( interpolation = &quot;constant&quot; ) double size = 8 double3 xformOp:translate = ( 0 , 0 , -...</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
+      <h2>相邻页面 / Adjacent Reading</h2>
       <ul>
-<li>No same-site document links extracted.</li>
+        <li><a href="DiskLight.html">DiskLight</a>：圆盘面积光，和远处方向光不同。</li>
+        <li><a href="DomeLight.html">DomeLight</a>：环境或图像照明，大角度远光需求可能应考虑它。</li>
+        <li><a href="RectLight.html">RectLight</a>：矩形面积光，适合局部平面光源。</li>
+        <li><a href="SphereLight.html">SphereLight</a>：球形或近似点状局部光源。</li>
+        <li><a href="ShapingAPI.html">ShapingAPI</a>：补充 cone、focus、IES 等塑形控制。</li>
+        <li><a href="ShadowAPI.html">ShadowAPI</a>：补充阴影相关控制。</li>
+        <li><a href="LightAPI.html">LightAPI</a>：通用 light 行为和 linking 入口。</li>
       </ul>
     </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="../../../../../site/release_index.html">返回 Release 本地入口 / Back to local release entry</a></p>
       <p><a href="https://openusd.org/release/user_guides/schemas/usdLux/DistantLight.html">打开官方原页 / Open official page</a></p>
     </section>
   </main>

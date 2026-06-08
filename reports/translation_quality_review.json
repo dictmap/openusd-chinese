@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-07T23:39:48.251Z",
+  "generated_at": "2026-06-07T23:56:22.989Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 304,
-    "bilingual_complete": 102
+    "bilingual_draft": 303,
+    "bilingual_complete": 103
   },
   "grade_counts": {
     "draft_template_only": 11,
-    "draft_needs_translation": 293,
-    "good_bilingual": 102
+    "draft_needs_translation": 292,
+    "good_bilingual": 103
   },
   "focus_batch": [
     {
@@ -9807,7 +9807,7 @@
       "enBlockCount": 23,
       "zhChars": 1909,
       "enLetters": 1497,
-      "bodyChineseChars": 2069,
+      "bodyChineseChars": 2126,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
       "genericDraft": false,
@@ -9824,29 +9824,29 @@
     },
     {
       "index": 329,
-      "title": "页面草稿：DistantLight / DistantLight",
+      "title": "完整双语参考：DistantLight / DistantLight",
       "output": "full_site/release/user_guides/schemas/usdLux/DistantLight.html",
       "official_url": "https://openusd.org/release/user_guides/schemas/usdLux/DistantLight.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 24,
-      "enBlockCount": 17,
-      "zhChars": 545,
-      "enLetters": 1148,
-      "bodyChineseChars": 670,
+      "grade": "good_bilingual",
+      "zhBlockCount": 26,
+      "enBlockCount": 25,
+      "zhChars": 1886,
+      "enLetters": 1770,
+      "bodyChineseChars": 2035,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。",
-        "本区块针对 DistantLight 补充中文优先的用途说明、属性阅读重点和术语对照；英文页面名、链接、代码、命令和原文摘录继续保留，便于和官方 usdLux schema 文档核对。",
-        "DistantLight 表达来自远处、方向近似一致的光源，默认沿 -Z 轴照射；它也常被称为 directional light。"
+        "`DistantLight` 是 usdLux 中表示远处方向光的 intrinsic light schema。官方定义强调它从 distant source 提供光照，默认沿局部 `-Z axis` 方向照射，也常被称为 `directional light`。中文阅读时不要把它当成场景里有明确近场位置和衰减半径的灯泡；它更像太阳光一类很远、很宽、光线近似平行并影响整个场景的光源。实际朝向通常由 prim 的 transform 决定，因此调试方向时要看局部 `-Z axis` 经 transform 后指向哪里，而不是只看 prim 放在世界空间的哪个位置。",
+        "官方用途段把 `DistantLight` 放在 sunlight 和 distant, broad sources of light 的语境里：光线影响整个 scene，并且大致 parallel，平行程度取决于 `inputs:angle`。这里的关键边界是“远处方向光”与“局部面积光”的区别。`RectLight`、`DiskLight`、`SphereLight` 和 `CylinderLight` 都有具体局部几何；`DistantLight` 的阅读重点则是方向、角直径、强度和阴影软化。它适合做太阳、月光或其他极远光源的主方向照明，不适合表达一个靠近物体、随距离明显衰减的灯具。",
+        "官方示例写了 `def DistantLight \"Light1\"`，把 `float inputs:angle = 1.0`，再把 `float inputs:intensity = 10000`。说明文字指出：示例把 `inputs:angle` 提高到 `1.0`，这会明显拓宽 light spread 并软化 shadow；同时它把强度从默认 `50000` 降到 `10000`。这不是随意调参，而是在展示 `inputs:angle` 和 `inputs:intensity` 的联动：角度变大时光线不再那么平行，阴影更软，场景光量也可能增加，因此需要降低 intensity 或 exposure 来补偿。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.",
-        "This section adds Chinese-first usage notes, property reading guidance, and terminology for DistantLight while retaining the English page name, links, code, commands, and source excerpts for comparison with the official usdLux schema documentation."
+        "`DistantLight` provides light from a distant source along the local `-Z axis`, and is also known as a directional light.",
+        "It is typically used for broad distant sources such as sunlight, where rays affect the entire scene and are roughly parallel."
       ]
     },
     {
