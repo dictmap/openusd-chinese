@@ -1,24 +1,41 @@
-# Current Problem Audit
+# Current OpenUSD Problem Audit
 
-当前状态：good_bilingual=230/406，review_ready_zh=167，api_complete=104，release_complete=126，bilingual_draft=176，draft_needs_translation=166，draft_template_only=10。
+Generated: 2026-06-08T22:18:51.008Z
 
-## 第 453 轮 DefectRound
+本报告是当前自动化的真实问题清单。它区分“可检查草稿”和“完整双语”，并额外记录 `review_ready_zh`，防止完成页仍主要依赖英文。
 
-- 缺陷 id：`P1-click-order-reading-flow-consistency`
-- 阶段：S3 格式与链接 / 点击路径
-- 修复范围：完成页 reading-flow 导航注入器、click-path 语义审计、完成页与草稿预览页的本地侧栏导航。
-- 修复前证据：新增审计曾发现 139 个完成页失败、574 处官方 URL 作为 reading-path 文本、311 处 release related 跨错文档域。
-- 修复后证据：`reports/click_path_order_audit.json` passed，222/222 completed full_site pages passed，样本 7/7 passed。
-- 计数约束：good_bilingual、release_complete、api_complete 保持不变。
+## 当前计数
+
+- 全量页面：406
+- bilingual_complete：231
+- good_bilingual：231
+- review_ready_zh：168
+- bilingual_draft：175
+- draft_needs_translation：165
+- draft_template_only：10
+- promotion manifest：223
+- api_complete：105
+- api_review_ready_zh：45
+- release_complete：126
+- release_review_ready_zh：123
+
+## 最近晋级记录
+
+- round：455
+- round_type：PromotionRound
+- target：`full_site/api/struct_usd_skel_tokens_type.html`
+- commit SHA：`pending-current-commit`
+- source parity：`reports/round_455_usd_skel_tokens_type_source_parity.json`
+
+## 问题清单
+
+| ID | Severity | Summary | Required Action |
+| --- | --- | --- | --- |
+| `P0-api-draft-backlog` | P0 | 当前 good_bilingual=231/406，API complete=105，仍有 175 个可检查草稿，不是完整翻译。 | 继续推进 API 草稿；只把真实达到中文主阅读路径和 source parity 的页面写入 promotion manifest。 |
+| `P1-token-struct-source-parity` | P1 | token 结构体参考页必须保留 Doxygen 分组、token 名、属性名、allowedTokens 语义和链接语义，不能把 token 字面量翻译成中文。 | 后续 token/struct 页面继续按 source snapshot 抽取官方字段，中文说明用途和边界，API/schema/token 名保持原样。 |
+| `P1-click-order-reading-flow-consistency` | P1 | 完成页必须保留本地 reading-flow 导航、breadcrumb、API/Release/总入口、related links、prev/next 和显式官方外跳。 | 若 reading-flow 或 click-path 审计失败，先修导航和点击顺序，不得推送。 |
+| `P1-markdown-record-encoding` | P1 | Markdown 编码守卫继续作为硬门槛。 | 若 audit_openusd_markdown_encoding.mjs 失败，先做 ConsistencyRound。 |
 
 ## 下一步
 
-click-path 审计已绿；下一轮恢复 PromotionRound 前仍必须先核对 git/report/validation/markdown/reading-flow 状态。
-
-## 第 454 轮 ConsistencyRound
-
-- 缺陷 id：`P1-round-453-commit-sha-record-consistency`
-- 阶段：S3 报告一致性
-- 修复范围：只修复第 453 轮问题审计记录，把 `reports/current_problem_audit.json` 中 `last_completed_round.commit_sha` 从空记录补为真实已推送 SHA `bd8a4625c9401c48d46f987fd37167b59878735e`。
-- 计数约束：不翻译新页，不处理 `full_site/api/struct_usd_skel_tokens_type.html`，不修改 promotion manifest，不改变 good_bilingual、review_ready_zh、api_complete、release_complete 或 bilingual_draft。
-- 验收要求：validation、markdown_encoding、reading-flow、click_path_order 继续保持 passed；第 453 轮记录不得再出现 `commit_sha:null`。
+下一轮建议目标：`下一轮建议 PromotionRound：重新读取 inventory 后选择一个仍为 bilingual_draft 且有 source snapshot 的高价值 API 页面。`。开始前继续核对 git、报告、validation、Markdown 编码和 reading-flow；如果该页源页或验证阻塞，停止并报告具体原因。

@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-08T21:39:56.428Z
+Generated: 2026-06-08T22:18:11.865Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 176
-- bilingual_complete: 230
+- bilingual_draft: 175
+- bilingual_complete: 231
 
 ## Grade Counts
 
 - draft_template_only: 10
-- draft_needs_translation: 166
-- good_bilingual: 230
+- draft_needs_translation: 165
+- good_bilingual: 231
 
 ## Current Focus Batch
 
@@ -48,7 +48,6 @@ Generated: 2026-06-08T21:39:56.428Z
 | 189 | draft_needs_translation | 371 | `full_site/api/globals_l.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
 | 200 | draft_needs_translation | 372 | `full_site/api/group__group___exec___attribute___comptuations.html` | API 页面草稿：Attribute Computations Builtin Exec Computations / Attribute Computations Builtin Exec Computations |
 | 67 | draft_needs_translation | 395 | `full_site/api/copy_utils_8h.html` | API 页面草稿：copyUtils.h File / copyUtils.h File |
-| 253 | draft_needs_translation | 397 | `full_site/api/struct_usd_skel_tokens_type.html` | 结构体参考草稿：UsdSkelTokensType Class / UsdSkelTokensType Class |
 | 137 | draft_needs_translation | 411 | `full_site/api/functions_vars_f.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 | 144 | draft_needs_translation | 424 | `full_site/api/functions_vars_m.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 | 111 | draft_needs_translation | 431 | `full_site/api/functions_i.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
@@ -59,6 +58,7 @@ Generated: 2026-06-08T21:39:56.428Z
 | 96 | draft_needs_translation | 441 | `full_site/api/functions_func_o.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
 | 133 | draft_needs_translation | 445 | `full_site/api/functions_vars_b.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 | 150 | draft_needs_translation | 445 | `full_site/api/functions_vars_s.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
+| 116 | draft_needs_translation | 447 | `full_site/api/functions_n.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
 
 ## All Pages
 
@@ -316,7 +316,7 @@ Generated: 2026-06-08T21:39:56.428Z
 | 250 | good_bilingual | bilingual_complete | 2164 | 44/44 | 0 | 0 | `full_site/api/struct_usd_geom_tokens_type.html` |
 | 251 | good_bilingual | bilingual_complete | 2078 | 47/47 | 0 | 0 | `full_site/api/struct_usd_lux_tokens_type.html` |
 | 252 | good_bilingual | bilingual_complete | 2211 | 50/50 | 0 | 0 | `full_site/api/struct_usd_physics_tokens_type.html` |
-| 253 | draft_needs_translation | bilingual_draft | 397 | 40/37 | 0 | 0 | `full_site/api/struct_usd_skel_tokens_type.html` |
+| 253 | good_bilingual | bilingual_complete | 2443 | 54/54 | 0 | 0 | `full_site/api/struct_usd_skel_tokens_type.html` |
 | 254 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/system_diagnostics_8h_source.html` |
 | 255 | good_bilingual | bilingual_complete | 1668 | 40/32 | 0 | 0 | `full_site/api/tf_page_front.html` |
 | 256 | good_bilingual | bilingual_complete | 1369 | 47/47 | 0 | 0 | `full_site/api/trace_page_front.html` |

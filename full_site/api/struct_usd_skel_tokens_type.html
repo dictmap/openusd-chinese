@@ -3,23 +3,46 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>结构体参考草稿：UsdSkelTokensType Class / UsdSkelTokensType Class</title>
+  <title>UsdSkelTokensType Class Reference / UsdSkel token 结构体参考</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
-    header{background:#142538;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
-    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
-    h1{margin:0;font-size:30px;letter-spacing:0}
-    h2{margin:0 0 12px;font-size:22px}
-    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
-    .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
-    a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
-    li{margin:8px 0}
-    code{font-family:"Cascadia Mono","Consolas",monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    :root{color-scheme:light;--bg:#f6f8fb;--ink:#17202a;--muted:#526173;--line:#d7dde8;--accent:#245a8d;--panel:#fff}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;line-height:1.72}
+    header{background:#182536;color:#fff;padding:30px 20px 34px;border-bottom:4px solid #2d6e9f}
+    header .wrap,main{max-width:1120px;margin:0 auto}
+    h1{font-size:32px;line-height:1.2;margin:0 0 12px}
+    h2{font-size:24px;margin:28px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+    h3{font-size:18px;margin:18px 0 8px}
+    p{margin:10px 0}
+    main{padding:24px 20px 58px}
+    section{background:var(--panel);border:1px solid var(--line);border-radius:8px;margin:18px 0;padding:18px 20px}
+    .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .pill{border:1px solid rgba(255,255,255,.32);background:rgba(255,255,255,.12);padding:3px 9px;border-radius:999px;font-size:13px}
+    .zh{display:block;color:#1f2937}
+    .en{display:block;color:#526173;font-size:14px;margin-top:3px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:10px}
+    .mini{border:1px solid var(--line);background:#fbfcff;border-radius:7px;padding:12px}
+    .mini h3{margin-top:0;color:#1b4f7a}
+    .token-list{columns:3 220px;margin:10px 0 0;padding-left:18px}
+    .token-list li{break-inside:avoid;margin:3px 0}
+    .note{border-left:4px solid var(--accent);background:#eef5fb;padding:10px 12px;margin:12px 0;color:#243447}
+    code{font-family:Consolas,"SFMono-Regular",monospace}
+    a{color:var(--accent)}
+    .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
+    .openusd-reading-flow-nav h2{font-size:17px;margin:0 0 10px;color:#17202a}
+    .openusd-reading-flow-nav h3{font-size:13px;margin:16px 0 8px;color:#516071;text-transform:none;letter-spacing:0}
+    .openusd-reading-flow-nav ul,.openusd-reading-flow-nav ol{list-style:none;margin:0;padding:0}
+    .openusd-reading-flow-nav li{margin:7px 0;line-height:1.35}
+    .openusd-reading-flow-nav a{color:#1c5d99;text-decoration:none;overflow-wrap:anywhere}
+    .openusd-reading-flow-nav a:hover{text-decoration:underline}
+    .openusd-reading-flow-nav .official-link{color:#8a4b11}
+    .openusd-reading-flow-breadcrumb{max-width:1120px;margin:14px auto 0;padding:0 20px;color:#d7e3f4;font-size:14px;overflow-wrap:anywhere}
+    .openusd-reading-flow-breadcrumb a{color:#ffffff}
+    @media (max-width: 920px){
+      .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
+      .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
+    }
   </style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
@@ -41,12 +64,19 @@
     }
   </style>
 </head>
-<body class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_draft</span>
-    <h1>结构体参考草稿：UsdSkelTokensType Class / UsdSkelTokensType Class</h1>
-    <div class="meta">https://openusd.org/release/api/struct_usd_skel_tokens_type.html</div>
-  </header>
+<body class="openusd-has-reading-flow" data-cn-status="bilingual_complete" data-cn-round="455" data-cn-source-parity="reports/round_455_usd_skel_tokens_type_source_parity.json">
+<header>
+  <div class="wrap">
+    <h1>UsdSkelTokensType Class Reference</h1>
+    <p><span class="zh">本页是 `UsdSkelTokens` 自动生成 token 集合的结构体参考中文页。它按官方 Doxygen 的 `Public Attributes`、`Detailed Description` 和 `Member Data Documentation` 顺序解释 token 的职责，同时保留所有 API 名、schema 名、token 字面量、属性名、代码标识和链接语义。</span><span class="en">This bilingual page follows the official Doxygen order for the generated UsdSkel token collection while preserving API names, schema names, token literals, property names, code identifiers, and link semantics.</span></p>
+    <div class="meta">
+      <span class="pill">bilingual_complete</span>
+      <span class="pill">round 455</span>
+      <span class="pill">API struct/class reference</span>
+      <span class="pill">source parity checked</span>
+    </div>
+  </div>
+</header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
   <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
@@ -105,120 +135,164 @@
 </aside>
 <!-- openusd-reading-flow-nav:end -->
 
+<main>
+  <section data-cn-complete="purpose">
+    <h2>中文主阅读路径 / Chinese Main Reading Path</h2>
+    <p><span class="zh">`UsdSkelTokensType` 的职责不是执行蒙皮、计算骨骼姿态或解析动画，而是提供一组 static、efficient `TfToken` 常量，用于稳定地引用 UsdSkel schema 中的属性名、关系名、schema token 和 `allowedTokens` 值。读者应把它看成 authoring、query 和调试时的命名索引：当代码需要访问 `joints`、`bindTransforms`、`primvarsSkelJointWeights` 或 `skelAnimationSource` 时，应优先使用这里的 token，避免手写字符串造成拼写错误或跨语言不一致。</span><span class="en">UsdSkelTokensType is a static TfToken catalog for names and allowed values used by UsdSkel schema authoring and queries; it is not a skinning evaluator.</span></p>
+    <p><span class="zh">官方页的主要点击顺序是成员属性列表、详细说明、逐个成员数据文档。本地中文页也按这个顺序展开：先说明 token 集合的定位，再把官方成员分成骨骼拓扑、动画、绑定/蒙皮、BlendShape 和调试路径几组。这样读者从 `UsdSkel Introduction` 进入本页后，可以顺着 token 名理解哪些值属于 schema 类型、哪些值属于属性名、哪些值只是 `primvars:skel:*` 的约定名称。</span><span class="en">The reading path mirrors the official Doxygen structure: attributes, detailed description, and member data documentation, then groups the generated tokens by usage.</span></p>
+  </section>
 
+  <section data-cn-complete="doxygen-section-coverage">
+    <h2>官方 section 覆盖 / Official Section Coverage</h2>
+    <div class="grid">
+      <div class="mini">
+        <h3>Public Attributes</h3>
+        <p><span class="zh">这一节列出结构体公开成员，每个成员都是一个 `TfToken` 或 token 列表。中文阅读时不要把 `bindTransforms`、`classicLinear`、`dualQuaternion` 等翻译成中文属性名；真正写入 USD layer 的仍是这些英文 token 字面量。</span><span class="en">Public Attributes lists generated TfToken members and should be read as the authoritative spelling table.</span></p>
+      </div>
+      <div class="mini">
+        <h3>Detailed Description</h3>
+        <p><span class="zh">详细说明强调 `UsdSkelTokens` 是从模块 schema 自动生成的静态高效 token，覆盖 property names、schema identifiers 和 token-valued builtin attributes 的 `allowedTokens values`。这解释了为什么页面看起来像一张长表：它服务于代码作者和调试者，而不是面向最终用户的概念教程。</span><span class="en">The detailed description explains that the tokens are generated from module schema definitions and include property names and allowed token values.</span></p>
+      </div>
+      <div class="mini">
+        <h3>Member Data Documentation</h3>
+        <p><span class="zh">成员数据文档逐项说明 token，例如 `allTokens`、`Skeleton`、`SkelAnimation`、`skelSkeleton`、`primvarsSkelSkinningMethod`。中文页在每组后补充用途边界，帮助判断该 token 用于 prim type、relationship、attribute、primvar 还是 allowed value。</span><span class="en">Member Data Documentation is mapped to grouped Chinese usage notes so each token remains readable without changing its spelling.</span></p>
+      </div>
+    </div>
+  </section>
 
+  <section data-cn-complete="token-groups">
+    <h2>Token 分组与职责 / Token Groups and Purpose</h2>
+    <h3>骨骼与层级 / Skeleton and Topology</h3>
+    <p><span class="zh">`Skeleton`、`SkelRoot`、`joints`、`jointNames`、`bindTransforms`、`restTransforms`、`skelSkeleton` 和 `skelJoints` 描述骨骼 prim、绑定关系和 joint 拓扑。`joints`/`jointNames` 关注 joint 的顺序与命名，`bindTransforms`/`restTransforms` 关注绑定时和 rest pose 的变换数组；这些数组的顺序不匹配时，常见症状是蒙皮点位、法线或动画姿态整体错乱。</span><span class="en">Skeleton topology tokens identify skeleton prims, joint order, bind transforms, rest transforms, and relationships from skinned prims to skeleton data.</span></p>
+    <ul class="token-list"><li><code>Skeleton</code></li>
+<li><code>SkelRoot</code></li>
+<li><code>joints</code></li>
+<li><code>jointNames</code></li>
+<li><code>bindTransforms</code></li>
+<li><code>restTransforms</code></li>
+<li><code>skelSkeleton</code></li>
+<li><code>skelJoints</code></li></ul>
 
+    <h3>动画数据 / Animation</h3>
+    <p><span class="zh">`SkelAnimation`、`skelAnimationSource`、`rotations`、`scales`、`translations`、`blendShapes` 和 `blendShapeWeights` 用于把时间采样动画数据连接到骨骼或几何。调试时要同时检查 animation source relationship、数组长度、joint 顺序和时间采样；token 只保证名称一致，不保证值域、插值或动画曲线本身正确。</span><span class="en">Animation tokens name the schema and attributes that carry joint rotations, scales, translations, blend shape lists, and blend shape weights.</span></p>
+    <ul class="token-list"><li><code>SkelAnimation</code></li>
+<li><code>skelAnimationSource</code></li>
+<li><code>rotations</code></li>
+<li><code>scales</code></li>
+<li><code>translations</code></li>
+<li><code>blendShapes</code></li>
+<li><code>blendShapeWeights</code></li></ul>
 
+    <h3>绑定、蒙皮与 primvars / Binding, Skinning, and Primvars</h3>
+    <p><span class="zh">`SkelBindingAPI` 和 `primvarsSkelJointIndices`、`primvarsSkelJointWeights`、`primvarsSkelGeomBindTransform`、`primvarsSkelSkinningMethod` 对应几何绑定和蒙皮输入。`classicLinear` 与 `dualQuaternion` 是 `primvars:skel:skinningMethod` 的 allowed token 值，不是函数名，也不是可以随意本地化的显示标签。若几何没有正确的 joint indices 或 weights，即使 `Skeleton` 与 `SkelAnimation` 都存在，最终 deform 仍会失败或看似静止。</span><span class="en">Binding and skinning tokens cover SkelBindingAPI, joint influence primvars, geom bind transforms, and the classicLinear or dualQuaternion skinning method values.</span></p>
+    <ul class="token-list"><li><code>SkelBindingAPI</code></li>
+<li><code>primvarsSkelJointIndices</code></li>
+<li><code>primvarsSkelJointWeights</code></li>
+<li><code>primvarsSkelGeomBindTransform</code></li>
+<li><code>primvarsSkelSkinningMethod</code></li>
+<li><code>classicLinear</code></li>
+<li><code>dualQuaternion</code></li></ul>
 
+    <h3>BlendShape 与点级偏移 / BlendShape and Point Offsets</h3>
+    <p><span class="zh">`BlendShape`、`skelBlendShapes`、`skelBlendShapeTargets`、`normalOffsets`、`offsets`、`pointIndices` 和 `weight` 负责 shape target、点位偏移、法线偏移与权重命名。它们与骨骼 joint animation 是相邻但不同的表达：joint token 主要控制关节姿态，BlendShape token 控制几何形变目标。常见误读是把 `blendShapeWeights` 当作 joint weight；它实际上对应 BlendShape target 的动画权重。</span><span class="en">BlendShape tokens name shape targets, offsets, point indices, normal offsets, and weights; they are adjacent to but different from joint skinning weights.</span></p>
+    <ul class="token-list"><li><code>BlendShape</code></li>
+<li><code>skelBlendShapes</code></li>
+<li><code>skelBlendShapeTargets</code></li>
+<li><code>normalOffsets</code></li>
+<li><code>offsets</code></li>
+<li><code>pointIndices</code></li>
+<li><code>weight</code></li></ul>
+  </section>
 
+  <section data-cn-complete="member-data-map">
+    <h2>成员数据逐项语义 / Member Data Semantics</h2>
+    <p><span class="zh">这一层按官方 `Member Data Documentation` 的点击顺序补中文用途说明。目的不是把 Doxygen 表格另起一套中文名称，而是说明每个 token 在 authoring、query、validation 或调试中的位置。</span><span class="en">This section follows the official member data sequence and explains how each token is used without renaming it.</span></p>
+    <ul>
+      <li><span class="zh">`allTokens`：面向工具和诊断的全集入口，可用于枚举 `UsdSkelTokens`，但不表示某个 prim 必须 authored 所有字段。</span><span class="en">allTokens enumerates the generated token set for tooling and diagnostics.</span></li>
+      <li><span class="zh">`bindTransforms`：绑定时 joint 到 skeleton/geom 语境的矩阵数组，常与 `joints` 顺序一起排查；顺序错比数值错更隐蔽。</span><span class="en">bindTransforms should be debugged with joint ordering.</span></li>
+      <li><span class="zh">`restTransforms`：rest pose 的 joint 变换数组，用于与动画采样比较；它不是当前帧姿态，也不是几何点位置。</span><span class="en">restTransforms represents rest pose transforms, not current frame point positions.</span></li>
+      <li><span class="zh">`joints` 与 `jointNames`：前者常用于 skeleton 拓扑列表，后者用于名字表达；工具链若混用两者，应先确认消费端期待的是 path-like joint order 还是 display-friendly name。</span><span class="en">joints and jointNames should be interpreted according to the consuming schema or tool expectation.</span></li>
+      <li><span class="zh">`rotations`、`scales`、`translations`：这些是 `SkelAnimation` 上的动画数组 token。它们的 time sample、数组长度和 joint 顺序必须一起验证，不能只看 token 是否存在。</span><span class="en">rotations, scales, and translations are animation array tokens and require length and time-sample checks.</span></li>
+      <li><span class="zh">`primvarsSkelJointIndices`：描述每个点或 element 受哪些 joint 影响；它和 `primvarsSkelJointWeights` 成对出现时才有完整意义。</span><span class="en">primvarsSkelJointIndices identifies the joint influence indices.</span></li>
+      <li><span class="zh">`primvarsSkelJointWeights`：描述对应 influence 的权重。调试时要看 normalization、elementSize 和 interpolation，不能把它与 `blendShapeWeights` 混为同一类权重。</span><span class="en">primvarsSkelJointWeights stores influence weights and is separate from blend shape weights.</span></li>
+      <li><span class="zh">`primvarsSkelGeomBindTransform`：记录几何绑定空间，常用于把局部几何点转到 skeleton/skin 计算需要的空间；它和 `GfMatrix`、`UsdGeomXformable` 调试关系很近。</span><span class="en">primvarsSkelGeomBindTransform records geometry bind space information.</span></li>
+      <li><span class="zh">`primvarsSkelSkinningMethod`：选择 skinning method 的 token-valued primvar；`classicLinear` 与 `dualQuaternion` 是它的 allowedTokens 值。</span><span class="en">primvarsSkelSkinningMethod carries the allowed skinning method token values.</span></li>
+      <li><span class="zh">`skelAnimationSource`：把可蒙皮对象或 skeleton 连接到 `SkelAnimation` 的关键入口；relationship 没解析时，动画数组存在也不会自动驱动目标。</span><span class="en">skelAnimationSource connects targets to SkelAnimation data.</span></li>
+      <li><span class="zh">`skelSkeleton`：指向 skeleton 资源的关系 token，常用于确认绑定目标是否被 layer composition、payload 或 reference 改写。</span><span class="en">skelSkeleton names the relationship to the skeleton resource.</span></li>
+      <li><span class="zh">`skelBlendShapes` 与 `skelBlendShapeTargets`：前者描述可用 shape 名称集合，后者连接具体 target；二者错位会让权重曲线找不到实际形变。</span><span class="en">skelBlendShapes and skelBlendShapeTargets must agree with the available target set.</span></li>
+      <li><span class="zh">`offsets`、`normalOffsets`、`pointIndices`：用于 BlendShape target 的点级数据；排查形变穿帮时，应同时核对索引范围和点数。</span><span class="en">offsets, normalOffsets, and pointIndices describe blend shape point-level data.</span></li>
+      <li><span class="zh">`weight`：用于单个 BlendShape 或 inbetween 的权重语义；它不是 joint influence weight，也不是材质或物理权重。</span><span class="en">weight is a blend shape weighting concept, not a joint influence or physics weight.</span></li>
+    </ul>
+  </section>
 
+  <section data-cn-complete="authoring-boundaries">
+    <h2>Authoring 边界与常见误读 / Boundaries and Misreads</h2>
+    <p><span class="zh">这些 token 是稳定命名工具，不是运行时算法。`UsdSkelTokens->joints` 帮助你访问属性名，真正的数据仍在 USD layer 的 attribute、relationship、time sample 或 primvar 中。不要把 token 表当成 `UsdSkelSkeleton`、`UsdSkelAnimation` 或 `UsdSkelBindingAPI` 的完整 API 文档；具体创建、校验和计算仍需要跳转到相邻 schema/class 页。</span><span class="en">Tokens are stable names, not the data itself and not the full API for evaluating a skeleton or applying skinning.</span></p>
+    <p><span class="zh">区分 property names、schema identifiers 与 `allowedTokens` 很重要。`Skeleton`、`SkelRoot`、`SkelAnimation`、`SkelBindingAPI` 更接近 schema 或 type/API 标识；`joints`、`restTransforms`、`rotations` 等是属性名；`classicLinear`、`dualQuaternion` 是 token-valued attribute 的允许值。调试时先确认自己要查的是 prim type、属性、关系还是 allowed token，再到本页查精确拼写。</span><span class="en">The page helps distinguish schema identifiers, property names, relationships, primvar names, and allowed token values.</span></p>
+    <p><span class="zh">在 Python 或 C++ 中，token 拼写错误通常不会表现为编译错误，而是表现为 attribute 查不到、relationship 未解析、array 长度不匹配或 skinning method 回退。本页的价值在于把字符串拼写集中到 `UsdSkelTokens`，再由 schema API 或 `UsdPrim::GetAttribute()` 使用。</span><span class="en">Using generated tokens reduces string spelling errors when querying with schema APIs or UsdPrim::GetAttribute().</span></p>
+  </section>
 
+  <section data-cn-complete="validation-matrix">
+    <h2>验证矩阵 / Validation Matrix</h2>
+    <p><span class="zh">把本页用于实际排查时，可以按“标识是否存在、关系是否解析、数组是否对齐、消费端是否支持”四层验证。第一层只检查 `Skeleton`、`SkelRoot`、`SkelAnimation`、`SkelBindingAPI`、`BlendShape` 这些 schema/token 标识是否出现在正确 prim 或 API 语境里；第二层检查 `skelSkeleton`、`skelAnimationSource`、`skelBlendShapeTargets` 等关系是否解析到本地 stage 中真实存在的目标；第三层检查 `joints`、`bindTransforms`、`restTransforms`、`rotations`、`scales`、`translations`、`primvarsSkelJointIndices`、`primvarsSkelJointWeights` 的数组长度和顺序；第四层才判断 renderer、usdview、Hydra delegate 或下游 DCC 是否支持 `classicLinear`、`dualQuaternion`、BlendShape 权重和 joint influence 上限。</span><span class="en">A practical validation sequence is token presence, relationship resolution, array alignment, and consumer support.</span></p>
+    <p><span class="zh">source parity 的重点是保持官方结构和命名，而不是把所有成员翻译成自然语言字段名。比如 `primvarsSkelGeomBindTransform` 仍然必须按原样出现，因为它是 USD property path/token 语义的一部分；中文说明只补充它代表几何绑定空间、常与 `GfMatrix` 和 `UsdGeomXformable` 调试关联。`skelBlendShapeTargets` 也不能写成“蒙皮目标”来替代原名，否则读者回到 Doxygen 或 layer 文本时会找不到对应字段。</span><span class="en">Source parity requires preserving the exact token spelling while adding Chinese explanation around use and boundaries.</span></p>
+    <p><span class="zh">点击路径上，本页位于 UsdSkel Introduction 与 UsdSkel module front 之后，适合作为“查拼写、查分组、查误读”的参考页；如果读者还不理解 skeleton space、joint-local space、geom bind transform 或 linear blend skinning，应先回到 `_usd_skel__intro.html`。如果读者已经在代码里拿到 `VtArray`、`GfMatrix` 或 `SdfPath`，则应继续跳转到 `Vt`、`Gf`、`Sdf` 或 `UsdGeom` 的本地 API 页面。</span><span class="en">The click path places this page after conceptual UsdSkel reading and before adjacent value, math, path, and geometry API pages.</span></p>
+  </section>
 
+  <section data-cn-complete="failure-attribution">
+    <h2>错误归因边界 / Failure Attribution</h2>
+    <p><span class="zh">遇到 UsdSkel 资产显示异常时，不要把所有问题都归因到 token 表。`UsdSkelTokensType` 只能证明“应该使用哪个名字”；它不能证明 layer 中已经 authored 了正确值，也不能证明 composition 后的值没有被覆盖。正确的归因顺序是：先用本页核对 token 拼写，再用 `Sdf`/`Usd` 查询 composed attribute 或 relationship，再用 `Vt`/`Gf` 检查数组与矩阵数值，最后用 `UsdGeom`、Hydra 或下游工具确认消费端行为。</span><span class="en">UsdSkelTokensType identifies names; authored values, composed values, numeric validity, and consumer behavior must be debugged in adjacent layers.</span></p>
+    <p><span class="zh">例如 `primvarsSkelSkinningMethod` 拼写正确但资产仍没有 dual quaternion 效果，可能是目标 renderer 不支持 `dualQuaternion`，也可能是 primvar authored 在错误层、interpolation 不符合预期，或几何没有有效 joint influences。再例如 `skelSkeleton` relationship 存在但解析失败，问题通常在 target path、reference/payload、namespace edit 或 layer stack，而不是 token 本身。</span><span class="en">A correctly spelled token can still point to unsupported consumer behavior, wrong layer authoring, or unresolved relationships.</span></p>
+    <p><span class="zh">因此本页的中文主阅读路径重点放在“查名、分组、边界、排查入口”四件事上：查名用 `allTokens` 与成员数据文档；分组按 skeleton、animation、binding、BlendShape；边界区分 token、attribute、relationship、primvar 与 allowed value；排查入口则引导到 `UsdSkel Introduction`、`UsdSkel` 模块页和相邻 `UsdGeom`/`Vt`/`Gf`/`Sdf` 页面。</span><span class="en">The page is a naming, grouping, boundary, and debugging-entry reference for UsdSkel token usage.</span></p>
+    <p><span class="zh">当需要了解某个 schema 的构造函数、`Get`/`Create` 方法、fallback 值或 authored value 行为时，应继续点击对应 class/API 页；当只需要在 layer、日志、调试器或代码审查中确认字段名是否准确时，才回到本 token 页。这个边界能避免把 `UsdSkelTokensType` 误当成教程、算法说明或完整 schema reference。</span><span class="en">Use schema and class pages for behavior, fallback values, and authoring APIs; use this token page for exact names.</span></p>
+    <p><span class="zh">本地 reading-flow 也按这个边界组织：上一页连接已完成的 physics token 参考，下一页回到 UsdSkel 模块入口，相关链接只放 UsdSkel、UsdGeom、Vt、Gf、Sdf、Tf 等实际排查会点击的页面，不把读者带到无关 release 支撑页。</span><span class="en">Local reading-flow links are ordered for the actual debugging path rather than random adjacent files.</span></p>
+    <p><span class="zh">特别注意，`allTokens` 是枚举工具，不是完整性判据；资产是否完整仍要逐项检查 authored 字段、关系目标、数组长度和消费端解释结果。这个判断也适用于批量转换和导入管线，尤其是资产检查。</span><span class="en">allTokens is an enumeration helper, not an authored-completeness test.</span></p>
+  </section>
 
+  <section data-cn-complete="debugging">
+    <h2>调试路径 / Debugging Path</h2>
+    <ol>
+      <li><span class="zh">先检查 prim 是否位于 `SkelRoot` 范围内，并确认 `Skeleton` prim、`skelSkeleton` relationship 与 `skelJoints` token 对应的 joint 列表都存在。</span><span class="en">Start by checking SkelRoot scope, Skeleton prims, skeleton relationships, and joint lists.</span></li>
+      <li><span class="zh">再检查 `joints`、`jointNames`、`bindTransforms`、`restTransforms` 的数组顺序和长度。任何顺序不一致都会让后续 `rotations`、`scales`、`translations` 映射到错误 joint。</span><span class="en">Validate array order and length across joints, jointNames, bindTransforms, and restTransforms.</span></li>
+      <li><span class="zh">对几何变形问题，检查 `primvarsSkelJointIndices`、`primvarsSkelJointWeights` 和 `primvarsSkelGeomBindTransform` 是否存在，interpolation 是否符合消费端预期，以及 joint influence 数量是否被 renderer 或工具链支持。</span><span class="en">For deformation issues, inspect joint indices, joint weights, geom bind transforms, interpolation, and consumer support.</span></li>
+      <li><span class="zh">对动画不动或姿态错误，检查 `skelAnimationSource` 指向的 `SkelAnimation`，并核对 `rotations`、`scales`、`translations` 的 time samples 与 joint 顺序。</span><span class="en">For animation issues, verify the SkelAnimation source relationship and sampled animation arrays.</span></li>
+      <li><span class="zh">对 BlendShape 问题，检查 `skelBlendShapes`、`skelBlendShapeTargets`、`blendShapes`、`blendShapeWeights`、`offsets`、`normalOffsets` 和 `pointIndices` 是否指向同一组 shape target 语义。</span><span class="en">For blend shape issues, validate target relationships, weights, point offsets, normal offsets, and point indices together.</span></li>
+    </ol>
+  </section>
 
+  <section data-cn-complete="adjacent-reading">
+    <h2>相邻阅读路径 / Adjacent Reading Path</h2>
+    <p><span class="zh">建议点击顺序是：先读 `UsdSkel Introduction` 理解 skeleton、skinning、blend shape 和 transform spaces；再读 `UsdSkel` module front 获取模块总览；随后回到本页核对 token 拼写。涉及几何 prim、点数组、矩阵和数组承载时，再跳到 `UsdGeom`、`Gf`、`Vt`、`Sdf` 与 `Tf`。</span><span class="en">A practical sequence is UsdSkel Introduction, UsdSkel module front, this token reference, then UsdGeom, Gf, Vt, Sdf, and Tf as needed.</span></p>
+    <ul>
+      <li><a href="_usd_skel__intro.html">UsdSkel Introduction</a></li>
+      <li><a href="usd_skel_page_front.html">UsdSkel module front</a></li>
+      <li><a href="usd_geom_page_front.html">UsdGeom module front</a></li>
+      <li><a href="gf_page_front.html">Gf Graphics Foundations</a></li>
+      <li><a href="vt_page_front.html">Vt Value Types</a></li>
+      <li><a href="sdf_page_front.html">Sdf module front</a></li>
+      <li><a href="tf_page_front.html">Tf module front</a></li>
+    </ul>
+  </section>
 
+  <section data-cn-complete="paragraph-coverage">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+    <p><span class="zh">Public Attributes：本页公开成员应被当作精确拼写表，中文说明负责解释用途，不替换 token。</span><span class="en">Public Attributes: the table is the exact spelling source for generated token members.</span></p>
+    <p><span class="zh">Detailed Description：`UsdSkelTokens` 自动生成自 schema，覆盖 property names、schema identifiers 与 token-valued builtin attributes 的 `allowedTokens values`。</span><span class="en">Detailed Description: generated tokens cover property names, schema identifiers, and allowed token values from schema definitions.</span></p>
+    <p><span class="zh">Member Data Documentation：逐个成员的中文注释按用途分组，帮助读者区分 skeleton topology、animation、binding/skinning、BlendShape 和 debug 语境。</span><span class="en">Member Data Documentation: Chinese notes group each token by skeleton topology, animation, binding, blend shape, and debugging context.</span></p>
+    <p><span class="zh">allTokens：用于枚举整个 `UsdSkelTokens` 集合，适合调试、校验和工具层显示，不应用来推断某个 prim 是否实际 authored 了全部属性。</span><span class="en">allTokens enumerates the token collection for tools and diagnostics, not authored data on every prim.</span></p>
+    <p><span class="zh">bindTransforms/restTransforms：用于绑定与 rest pose 的变换数组；需要与 joint 顺序一起检查。</span><span class="en">bindTransforms and restTransforms should be checked against joint order.</span></p>
+    <p><span class="zh">classicLinear/dualQuaternion：这是 skinning method 的 allowed token 值，消费端是否支持对应算法还要看 renderer 或工具实现。</span><span class="en">classicLinear and dualQuaternion are allowed skinning method values; consumer support is separate.</span></p>
+    <p><span class="zh">primvarsSkelJointIndices/primvarsSkelJointWeights：这是几何点到 joint influence 的关键 primvar 名称，和 `blendShapeWeights` 不是同一类权重。</span><span class="en">joint indices and joint weights primvars describe joint influences and should not be confused with blendShapeWeights.</span></p>
+    <p><span class="zh">skelAnimationSource：这是连接 animation source 的关系/属性语义入口；动画数据本身仍在 `SkelAnimation` 上。</span><span class="en">skelAnimationSource connects to animation data, while the sampled values live on SkelAnimation.</span></p>
+    <p><span class="zh">skelBlendShapes/skelBlendShapeTargets：用于连接或定位 BlendShape target；点级偏移还需要 `offsets`、`normalOffsets` 和 `pointIndices` 一起解释。</span><span class="en">blend shape target tokens should be read with offsets, normalOffsets, and pointIndices.</span></p>
+  </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
-    </section>
-    <section data-cn-refinement="api-mixed-quality-pass-058">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 UsdSkelTokensType Class 补充中文优先的页面定位、阅读路径、概念边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first page positioning, reading paths, concept boundaries, and terminology for UsdSkelTokensType Class while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`UsdSkelTokensType Class` 是 `UsdSkelTokens` 的 token 集合页，集中列出 USD Skeleton schema 自动生成的 static `TfToken`。</span></li>
-        <li><span class="zh">这些 token 既包括属性名，也包括 token 类型 schema builtin attributes 的 allowedTokens values；典型用途是通过 `UsdPrim::GetAttribute()` 或 schema API 以编译期可检查的名称访问属性。</span></li>
-        <li><span class="zh">阅读时可按角色分组：骨架拓扑相关如 `joints`、`jointNames`、`bindTransforms`、`restTransforms`；动画数据相关如 `rotations`、`scales`、`translations`；blend shape 相关如 `BlendShape`、`blendShapes`、`blendShapeWeights`、`skelBlendShapeTargets`。</span></li>
-        <li><span class="zh">`classicLinear` 和 `dualQuaternion` 是 skinning method 的 allowed token 值；`primvarsSkelJointIndices`、`primvarsSkelJointWeights`、`primvarsSkelGeomBindTransform` 等 token 对应几何绑定 primvars。</span></li>
-        <li><span class="zh">相关跳转包括 `UsdSkelSkeleton`、`UsdSkelBlendShape`、`UsdSkelAnimation`、`UsdSkelBindingAPI`、`UsdSkelRoot` 和 `UsdSkelInbetweenShape`；token 字面量必须保留英文原样。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">UsdSkel token 集合：</span><span class="en">UsdSkelTokens</span></li>
-        <li><span class="zh">绑定变换 token：</span><span class="en">bindTransforms</span></li>
-        <li><span class="zh">静止姿态变换 token：</span><span class="en">restTransforms</span></li>
-        <li><span class="zh">双四元数蒙皮 token：</span><span class="en">dualQuaternion</span></li>
-        <li><span class="zh">骨骼权重 primvar token：</span><span class="en">primvarsSkelJointWeights</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级结构：UsdSkelTokensType Class Reference</span><span class="en">UsdSkelTokensType Class Reference</span></li>
-<li><span class="zh">第 2 级结构：Public Attributes</span><span class="en">Public Attributes</span></li>
-<li><span class="zh">第 2 级结构：Detailed Description</span><span class="en">Detailed Description</span></li>
-<li><span class="zh">第 2 级结构：Member Data Documentation</span><span class="en">Member Data Documentation</span></li>
-<li><span class="zh">第 2 级结构：◆ allTokens</span><span class="en">◆ allTokens</span></li>
-<li><span class="zh">第 2 级结构：◆ bindTransforms</span><span class="en">◆ bindTransforms</span></li>
-<li><span class="zh">第 2 级结构：◆ BlendShape</span><span class="en">◆ BlendShape</span></li>
-<li><span class="zh">第 2 级结构：◆ blendShapes</span><span class="en">◆ blendShapes</span></li>
-<li><span class="zh">第 2 级结构：◆ blendShapeWeights</span><span class="en">◆ blendShapeWeights</span></li>
-<li><span class="zh">第 2 级结构：◆ classicLinear</span><span class="en">◆ classicLinear</span></li>
-<li><span class="zh">第 2 级结构：◆ dualQuaternion</span><span class="en">◆ dualQuaternion</span></li>
-<li><span class="zh">第 2 级结构：◆ jointNames</span><span class="en">◆ jointNames</span></li>
-<li><span class="zh">第 2 级结构：◆ joints</span><span class="en">◆ joints</span></li>
-<li><span class="zh">第 2 级结构：◆ normalOffsets</span><span class="en">◆ normalOffsets</span></li>
-<li><span class="zh">第 2 级结构：◆ offsets</span><span class="en">◆ offsets</span></li>
-<li><span class="zh">第 2 级结构：◆ pointIndices</span><span class="en">◆ pointIndices</span></li>
-<li><span class="zh">第 2 级结构：◆ primvarsSkelGeomBindTransform</span><span class="en">◆ primvarsSkelGeomBindTransform</span></li>
-<li><span class="zh">第 2 级结构：◆ primvarsSkelJointIndices</span><span class="en">◆ primvarsSkelJointIndices</span></li>
-<li><span class="zh">第 2 级结构：◆ primvarsSkelJointWeights</span><span class="en">◆ primvarsSkelJointWeights</span></li>
-<li><span class="zh">第 2 级结构：◆ primvarsSkelSkinningMethod</span><span class="en">◆ primvarsSkelSkinningMethod</span></li>
-<li><span class="zh">第 2 级结构：◆ restTransforms</span><span class="en">◆ restTransforms</span></li>
-<li><span class="zh">第 2 级结构：◆ rotations</span><span class="en">◆ rotations</span></li>
-<li><span class="zh">第 2 级结构：◆ scales</span><span class="en">◆ scales</span></li>
-<li><span class="zh">第 2 级结构：◆ SkelAnimation</span><span class="en">◆ SkelAnimation</span></li>
-<li><span class="zh">第 2 级结构：◆ skelAnimationSource</span><span class="en">◆ skelAnimationSource</span></li>
-<li><span class="zh">第 2 级结构：◆ SkelBindingAPI</span><span class="en">◆ SkelBindingAPI</span></li>
-<li><span class="zh">第 2 级结构：◆ skelBlendShapes</span><span class="en">◆ skelBlendShapes</span></li>
-<li><span class="zh">第 2 级结构：◆ skelBlendShapeTargets</span><span class="en">◆ skelBlendShapeTargets</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">UsdSkelTokens provides static, efficient TfTokens for use in all public USD API. These tokens are auto-generated from the module's schema, representing property names, for when you need to fetch an attribute or relationship directly by name, e.g. UsdPrim::GetAttribute(), in the most efficient manner, and allow the compiler to verify that you spelled the name correctly. UsdSkelTokens also contains all of the allowedTokens values declared for schema builtin attributes of 'token' scene description type. Use UsdSkel...</p>
-<p class="en">Member entries include: bindTransforms: &quot;bindTransforms&quot;; blendShapes: &quot;blendShapes&quot;; blendShapeWeights: &quot;blendShapeWeights&quot;; classicLinear: &quot;classicLinear&quot;; dualQuaternion: &quot;dualQuaternion&quot;; jointNames: &quot;jointNames&quot;; joints: &quot;joints&quot;; normalOffsets: &quot;normalOffsets&quot;; offsets: &quot;offsets&quot;; pointIndices: &quot;pointIndices&quot;.</p>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fstruct_usd_skel_tokens_type-members.html&amp;title=List+of+all+members" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/struct_usd_skel_tokens_type-members.html">List of all members</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fusd_2usd_skel_2tokens_8h.html&amp;title=UsdSkelTokens" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/usd_2usd_skel_2tokens_8h.html">UsdSkelTokens</a></li>
-<li><a href="class_tf_token.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_tf_token.html">TfTokens</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fusd_2usd_skel_2tokens_8h_source.html&amp;title=tokens.h" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/usd_2usd_skel_2tokens_8h_source.html">tokens.h</a></li>
-<li><a href="struct_usd_skel_tokens_type.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/struct_usd_skel_tokens_type.html">bindTransforms</a></li>
-<li><a href="class_usd_prim.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_usd_prim.html">UsdPrim::GetAttribute()</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_skel_skeleton.html&amp;title=UsdSkelSkeleton" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_skel_skeleton.html">UsdSkelSkeleton</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_skel_blend_shape.html&amp;title=UsdSkelBlendShape" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_skel_blend_shape.html">UsdSkelBlendShape</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_skel_animation.html&amp;title=UsdSkelAnimation" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_skel_animation.html">UsdSkelAnimation</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_skel_binding_a_p_i.html&amp;title=UsdSkelBindingAPI%3A%3AGetSkinningMethodAttr%28%29" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_skel_binding_a_p_i.html">UsdSkelBindingAPI::GetSkinningMethodAttr()</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_skel_root.html&amp;title=UsdSkelRoot" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_skel_root.html">UsdSkelRoot</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_skel_inbetween_shape.html&amp;title=UsdSkelInbetweenShape" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_skel_inbetween_shape.html">UsdSkelInbetweenShape</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/api/struct_usd_skel_tokens_type.html">打开官方原页 / Open official page</a></p>
-    </section>
-  </main>
+  <section data-cn-complete="official-excerpt">
+    <h2>官方原文核对摘录 / Short English Checkpoints</h2>
+    <p><span class="zh">以下只保留少量英文核对点，便于与 Doxygen 对照；中文主阅读路径已经覆盖页面职责和调试边界。</span><span class="en">Generated static TfToken values for UsdSkel schema property names and allowed token values.</span></p>
+    <p><span class="zh">示例用法应理解为 token 查询示例，而不是要求读者逐行翻译 C++。</span><span class="en">Example pattern: schema or UsdPrim queries use UsdSkelTokens to avoid raw string spelling.</span></p>
+    <p><a href="https://openusd.org/release/api/struct_usd_skel_tokens_type.html">打开官方原页 / Open official page</a></p>
+  </section>
+</main>
 </body>
 </html>

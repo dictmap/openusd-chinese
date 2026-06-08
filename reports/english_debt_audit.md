@@ -1,6 +1,6 @@
 # OpenUSD English Debt Audit
 
-Generated: 2026-06-08T21:39:56.441Z
+Generated: 2026-06-08T22:18:32.376Z
 
 Purpose:
 
@@ -12,16 +12,16 @@ Purpose:
 ## Counts
 
 - Total pages: 406
-- good_bilingual: 230
-- review_ready_zh: 167
+- good_bilingual: 231
+- review_ready_zh: 168
 - review_needs_zh_debt: 63
-- API complete: 104
-- API review_ready_zh: 44
+- API complete: 105
+- API review_ready_zh: 45
 - Release complete: 126
 - Release review_ready_zh: 123
 - Complete pages with high/very high ratio diagnostic: 20
-- bilingual_draft: 176
-- draft_needs_translation: 166
+- bilingual_draft: 175
+- draft_needs_translation: 165
 - draft_template_only: 10
 
 ## Complete Pages Still Carrying English Debt
@@ -62,7 +62,6 @@ Purpose:
 | 278 | `full_site/api/var_8h_source.html` | api | general | 62 | 1/3 | 9.74 | very_high | draft |
 | 1 | `full_site/api/_c_l_i11_8h_source.html` | api | general | 62 | 1/3 | 9.63 | very_high | draft |
 | 8 | `full_site/api/binding_map_8h_source.html` | api | general | 62 | 1/3 | 6.97 | very_high | draft |
-| 253 | `full_site/api/struct_usd_skel_tokens_type.html` | api | class_or_struct | 397 | 6/3 | 4.37 | high | draft |
 | 69 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | api | general | 66 | 1/3 | 4.12 | high | draft |
 | 257 | `full_site/api/usd_2usd_2object_8h.html` | api | general | 332 | 6/3 | 3.82 | medium | draft |
 | 229 | `full_site/api/md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html` | api | general | 555 | 5/3 | 3.63 | medium | draft |
@@ -73,6 +72,7 @@ Purpose:
 | 163 | `full_site/api/functions.html` | api | index | 459 | 4/2 | 3.31 | medium | draft |
 | 236 | `full_site/api/page_ts_regression.html` | api | general | 500 | 5/3 | 3.28 | medium | draft |
 | 114 | `full_site/api/functions_l.html` | api | index | 449 | 4/2 | 3.26 | medium | draft |
+| 194 | `full_site/api/globals_type.html` | api | index | 481 | 4/2 | 3.25 | medium | draft |
 
 ## Release Pages To Pull Forward
 

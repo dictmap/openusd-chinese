@@ -1,58 +1,52 @@
 # OpenUSD Iteration Report
 
-## 第 453 轮摘要
-
-- round 类型：DefectRound
-- 阶段：S3
-- 缺陷 id：`P1-click-order-reading-flow-consistency`
-- 目标：按用户真实点击顺序修复 completed full_site 页面的 nav/related/prev-next 混乱。
-- 结果：新增 click-path 语义审计并修复共享 reading-flow 注入器；修复后 222/222 completed full_site pages 和 7/7 样本路径通过。
+## 第 455 轮摘要
+- 轮次类型：PromotionRound
+- 轮次目的：将 `full_site/api/struct_usd_skel_tokens_type.html` 从 API 可检查草稿晋级为完整双语页面，并保持报告、入口、manifest 与验证链一致。
+- 本轮目标：`full_site/api/struct_usd_skel_tokens_type.html`
+- 结果：完成 1 个页面晋级，good_bilingual 从 230 增至 231。
+- 核心说明：目标页已进入 promotion manifest；当前记录补齐本轮目标、round 类型、commit SHA 和真实计数，避免继续出现旧的占位轮次文本。
 
 ## 真实计数
 
 - total_pages：406
-- good_bilingual：230
-- review_ready_zh：167
-- bilingual_complete：230
-- bilingual_draft：176
-- draft_needs_translation：166
+- good_bilingual：231
+- review_ready_zh：168
+- bilingual_complete：231
+- bilingual_draft：175
+- draft_needs_translation：165
 - draft_template_only：10
-- api_complete：104
+- pending_full_scope：0
+- api_complete：105
+- api_review_ready_zh：45
 - release_complete：126
+- release_review_ready_zh：123
 
-## 修复证据
+## 验证
 
-- click-path order：`reports/click_path_order_audit.json`
-- reading-flow navigation：`reports/reading_flow_navigation_audit.json`
-- injection report：`reports/reading_flow_navigation_injection.json`
-- report index 已纳入 `click_path_order` 审计。
+- validation_report：passed=true，failed_check_count=0，required_check_count=311
+- translation_quality：good_bilingual=231
+- english_debt：review_ready_zh=168，review_needs_zh_debt=63
+- promotion manifest：223 entries
+
+## 本轮改动文件
+
+- `full_site/api/struct_usd_skel_tokens_type.html`
+- `openusd_bilingual_final.html`
+- `reports/all_pages_inventory.json/md`
+- `reports/translation_quality_review.json/md`
+- `reports/english_debt_audit.json/md`
+- `reports/current_problem_audit.json/md`
+- `reports/bilingual_completion_promotions.json/md`
+- `reports/navigation_coverage_audit.json/md`
+- `reports/reading_flow_navigation_audit.json/md`
+- `reports/local_link_routing_report.json/md`
+- `reports/full_draft_preview_audit.json/md`
+- `reports/audit_index.json/md`
+- `reports/validation_report.json`
+- `work.md`
+- `reports/iteration_report.md`
 
 ## 下一步
 
-click-path 审计已绿；恢复 PromotionRound 前仍必须重新确认 git/report/validation/markdown/reading-flow/local-link 状态干净一致。
-
-## 第 454 轮摘要
-
-- round 类型：ConsistencyRound
-- 阶段：S3
-- 缺陷 id：`P1-round-453-commit-sha-record-consistency`
-- 目标：修复第 453 轮已推送提交 SHA 在 `reports/current_problem_audit.json` 中仍为空记录的问题。
-- 结果：停止新页 PromotionRound；未处理 `full_site/api/struct_usd_skel_tokens_type.html`；未修改 promotion manifest；第 453 轮 `last_completed_round.commit_sha` 已补为 `bd8a4625c9401c48d46f987fd37167b59878735e`。
-
-## 第 454 轮真实计数
-
-- total_pages：406
-- good_bilingual：230
-- review_ready_zh：167
-- bilingual_complete：230
-- bilingual_draft：176
-- draft_needs_translation：166
-- draft_template_only：10
-- api_complete：104
-- release_complete：126
-
-## 第 454 轮复验重点
-
-- validation、markdown_encoding、reading-flow、click_path_order 必须继续 passed。
-- `work.md`、`reports/iteration_report.md`、`reports/current_problem_audit.md/json` 不得出现未知轮次、空提交记录或问号编码损伤。
-- 本轮只闭环报告一致性，不新增完成页。
+下一轮建议恢复 PromotionRound，目标：`下一轮建议 PromotionRound：重新读取 inventory 后选择一个仍为 bilingual_draft 且有 source snapshot 的高价值 API 页面。`。开始前仍必须核对工作区干净、HEAD 等于 origin/main、报告计数一致、Markdown 编码和 reading-flow 审计通过。

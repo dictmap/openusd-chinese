@@ -1,33 +1,48 @@
 # OpenUSD Bilingual Work Log
 
-当前状态：good_bilingual=230/406，review_ready_zh=167，api_complete=104，release_complete=126，bilingual_draft=176，draft_needs_translation=166，draft_template_only=10，pending_full_scope=0。
+## 当前真实状态
+- 全量页面：406
+- 完整双语 / good_bilingual：231
+- 严格中文可读 / review_ready_zh：168
+- API complete：105
+- API review_ready_zh：45
+- Release complete：126
+- Release review_ready_zh：123
+- 未完整翻译草稿 / bilingual_draft：175
+- draft_needs_translation：165
+- draft_template_only：10
+- pending_full_scope：0
+- promotion manifest：223 项
+- 总验证：passed=true，failed_check_count=0，required_check_count=311
 
-## 第 453 轮：DefectRound
+说明：剩余 `bilingual_draft` 是可检查草稿，不是完整翻译。API 名、类名、函数名、token、代码、属性名和链接会保留英文；真正需要治理的是草稿页和完成页里仍主要依赖英文的中文主阅读路径。
 
-- 缺陷 id：`P1-click-order-reading-flow-consistency`
-- 阶段：S3 格式与链接 / 点击路径一致性
-- 本轮性质：P1 用户可见阅读路径缺陷修复，不翻译新页，不处理新的 API 晋级页。
-- 修复重点：旧 `reading_flow_navigation_audit` 只检查侧栏、breadcrumb、入口和资产存在；新增 `click_path_order` 语义审计，验证 `prev` / `next` / `related` 是否为本地链接、是否泄漏官方 URL 文本、release related 是否属于正确文档域。
-- 生成器修复：`scripts/inject_openusd_reading_flow_navigation.mjs` 改为按 release 文档族和 API 模块上下文选择 related，修正 title fallback，避免官方 URL 作为导航文字。
-- 审计新增：`scripts/audit_openusd_click_path_order.mjs`，输出 `reports/click_path_order_audit.json/md`。
-- 修复结果：`click_path_order_audit` passed，222/222 completed full_site pages passed，样本 7/7 passed。
-- 计数约束：good_bilingual、review_ready_zh、api_complete、release_complete 均保持第 452 轮基线，不新增完成页。
+## 第 455 轮：PromotionRound
 
-## 点击路径样本
+- 轮次性质：页面晋级，exactly 1 个目标页。
+- 轮次目的：记录本轮真实晋级结果，并保持报告、入口、manifest 与验证链一致。
+- 本轮目标：`full_site/api/struct_usd_skel_tokens_type.html`
+- 官方页面：`https://openusd.org/release/api/struct_usd_skel_tokens_type.html`
+- source parity：`reports/round_455_usd_skel_tokens_type_source_parity.json`
+- commit SHA：`pending-current-commit`
+- 完成数状态：good_bilingual=231；review_ready_zh=168。
+- 固定审计：`translation_quality_review.json`、`english_debt_audit.json`、`all_pages_inventory.json`、`validation_report.json` 已重建并一致。
 
-- OpenExec：总入口 -> Release 本地入口 -> Introduction to OpenExec -> `#background` -> OpenExec API/教程 -> 显式官方外跳。
-- release whitepaper：spec/wp 族内顺读，不再混入 contributors、plugins、press 等无关 support 列表。
-- API front/class：related/prev/next 均为本地路径，导航文字不再显示 `https://openusd.org/...`。
+## English Debt 审计结果
 
-## 下一步
+- good_bilingual：231
+- review_ready_zh：168
+- review_needs_zh_debt：63
+- API complete / review_ready_zh：105 / 45
+- Release complete / review_ready_zh：126 / 123
 
-click-path 审计已通过；下一轮可在重新核对所有报告和 validation 后恢复 PromotionRound，或按监督员指定继续 DefectRound。
+## 验证结果
 
-## 第 454 轮：ConsistencyRound
+- `audit_openusd_english_debt.mjs`：passed
+- `audit_openusd_report_index.mjs`：passed
+- `audit_openusd_markdown_encoding.mjs`：passed
+- `validate_openusd_api_repro.ps1`：passed，311/311 checks
 
-- 缺陷 id：`P1-round-453-commit-sha-record-consistency`
-- 阶段：S3 报告一致性
-- 本轮性质：监督紧急改派的一致性修复，不翻译新页，不提交 `full_site/api/struct_usd_skel_tokens_type.html`，不修改 promotion manifest。
-- 修复内容：第 453 轮已推送到 `bd8a4625c9401c48d46f987fd37167b59878735e`，但 `reports/current_problem_audit.json` 仍记录 `last_completed_round.commit_sha` 为空；本轮只把第 453 轮记录补齐为真实 SHA，并在问题审计中记录该 P1 一致性修复。
-- 计数约束：good_bilingual=230，review_ready_zh=167，api_complete=104，release_complete=126，bilingual_draft=176，draft_needs_translation=166，draft_template_only=10，全部保持第 453 轮基线。
-- 验收要求：validation、markdown_encoding、reading-flow、click_path_order、local_link 和 full_draft_preview 均继续 passed；工作区提交推送后必须重新回到干净状态。
+## 下一轮目标
+
+建议目标：`下一轮建议 PromotionRound：重新读取 inventory 后选择一个仍为 bilingual_draft 且有 source snapshot 的高价值 API 页面。`。如果该页无法达到 `good_bilingual`，停止并报告阻塞；不要重复处理 `full_site/api/struct_usd_skel_tokens_type.html` 或 release 已完成页。
