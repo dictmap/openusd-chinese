@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-08T14:23:46.632Z
+Generated: 2026-06-08T14:52:15.122Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 215
-- Promoted complete pages: 207
-- Bilingual draft pages: 191
+- Bilingual complete pages: 216
+- Promoted complete pages: 208
+- Bilingual draft pages: 190
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -219,7 +219,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_draft | File Members | full_site/api/globals.html | https://openusd.org/release/api/globals.html |
 | api | bilingual_draft | API 页面草稿：Attribute Computations Builtin Exec Computations / Attribute Computations Builtin Exec Computations | full_site/api/group__group___exec___attribute___comptuations.html | https://openusd.org/release/api/group__group___exec___attribute___comptuations.html |
 | api | bilingual_draft | API 页面草稿：Hydra Collection Predicate API / Hydra Collection Predicate API | full_site/api/group__group__hd__collection_predicates.html | https://openusd.org/release/api/group__group__hd__collection_predicates.html |
-| api | bilingual_draft | API 模块草稿：HdEmbree : Embree-based hydra renderer plugin. / HdEmbree : Embree-based hydra renderer plugin. | full_site/api/hd_embree_page_front.html | https://openusd.org/release/api/hd_embree_page_front.html |
+| api | bilingual_complete | HdEmbree : Embree-based hydra renderer plugin. | full_site/api/hd_embree_page_front.html | https://openusd.org/release/api/hd_embree_page_front.html |
 | api | bilingual_complete | https://openusd.org/release/api/hd_page_front.html | full_site/api/hd_page_front.html | https://openusd.org/release/api/hd_page_front.html |
 | api | bilingual_complete | https://openusd.org/release/api/hd_st_page_front.html | full_site/api/hd_st_page_front.html | https://openusd.org/release/api/hd_st_page_front.html |
 | api | bilingual_complete | HdStorm : Real-time Hydra renderer plugin | full_site/api/hd_storm_page_front.html | https://openusd.org/release/api/hd_storm_page_front.html |

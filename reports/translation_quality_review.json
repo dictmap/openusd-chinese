@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-08T14:24:14.742Z",
+  "generated_at": "2026-06-08T14:52:45.551Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 191,
-    "bilingual_complete": 215
+    "bilingual_draft": 190,
+    "bilingual_complete": 216
   },
   "grade_counts": {
     "draft_template_only": 10,
-    "draft_needs_translation": 181,
-    "good_bilingual": 215
+    "draft_needs_translation": 180,
+    "good_bilingual": 216
   },
   "focus_batch": [
     {
@@ -6403,29 +6403,29 @@
     },
     {
       "index": 202,
-      "title": "API 模块草稿：HdEmbree : Embree-based hydra renderer plugin. / HdEmbree : Embree-based hydra renderer plugin.",
+      "title": "HdEmbree : Embree-based hydra renderer plugin.",
       "output": "full_site/api/hd_embree_page_front.html",
       "official_url": "https://openusd.org/release/api/hd_embree_page_front.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 46,
-      "enBlockCount": 33,
-      "zhChars": 656,
-      "enLetters": 2140,
-      "bodyChineseChars": 807,
+      "grade": "good_bilingual",
+      "zhBlockCount": 59,
+      "enBlockCount": 59,
+      "zhChars": 1347,
+      "enLetters": 4554,
+      "bodyChineseChars": 3194,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 HdEmbree : Embree-based Hydra renderer plugin 补充中文优先的用途说明、模块边界、关键入口和术语对照；英文页面名、类名、方法名、属性名、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`HdEmbree` 是基于 Intel Embree raytracing kernels 的 Hydra renderer plugin，主要定位是最小化示例和 renderer plugin API 的 living documentation。"
+        "HdEmbree",
+        "官方 Overview 明确说 HdEmbree is provided as a minimal example of how to write a renderer plugin for hydra，并且 aims to be living documentation of that API。因此读这页时不能只把它当成“另一个渲染器”，而要把它当成 renderer plugin 编写路径的示例文档：它展示类如何分组、render delegate 如何创建 prim 表示、render pass 如何输出图像，以及插件类如何把 delegate 暴露给 Hydra runtime。",
+        "Embree API 的前缀是 rtc"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first purpose notes, module boundaries, key entry points, and terminology for HdEmbree : Embree-based Hydra renderer plugin while retaining English page names, class names, method names, attribute names, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page."
+        "HdEmbree implements a Hydra renderer plugin based on Intel's Embree raytracing kernels.",
+        "HdEmbree is a minimal example and living documentation for writing a Hydra renderer plugin."
       ]
     },
     {

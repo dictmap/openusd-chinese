@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-08T14:24:14.742Z
+Generated: 2026-06-08T14:52:45.551Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 191
-- bilingual_complete: 215
+- bilingual_draft: 190
+- bilingual_complete: 216
 
 ## Grade Counts
 
 - draft_template_only: 10
-- draft_needs_translation: 181
-- good_bilingual: 215
+- draft_needs_translation: 180
+- good_bilingual: 216
 
 ## Current Focus Batch
 
@@ -265,7 +265,7 @@ Generated: 2026-06-08T14:24:14.742Z
 | 199 | draft_needs_translation | bilingual_draft | 678 | 25/17 | 0 | 0 | `full_site/api/globals.html` |
 | 200 | draft_needs_translation | bilingual_draft | 372 | 20/17 | 0 | 0 | `full_site/api/group__group___exec___attribute___comptuations.html` |
 | 201 | draft_needs_translation | bilingual_draft | 569 | 30/22 | 0 | 0 | `full_site/api/group__group__hd__collection_predicates.html` |
-| 202 | draft_needs_translation | bilingual_draft | 656 | 46/33 | 0 | 0 | `full_site/api/hd_embree_page_front.html` |
+| 202 | good_bilingual | bilingual_complete | 1347 | 59/59 | 0 | 0 | `full_site/api/hd_embree_page_front.html` |
 | 203 | good_bilingual | bilingual_complete | 1670 | 39/31 | 0 | 0 | `full_site/api/hd_page_front.html` |
 | 204 | good_bilingual | bilingual_complete | 1635 | 43/35 | 0 | 0 | `full_site/api/hd_st_page_front.html` |
 | 205 | good_bilingual | bilingual_complete | 1180 | 43/43 | 0 | 0 | `full_site/api/hd_storm_page_front.html` |
