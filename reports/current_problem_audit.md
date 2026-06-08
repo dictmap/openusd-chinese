@@ -24,7 +24,7 @@ Generated: 2026-06-08T22:18:51.008Z
 - round：455
 - round_type：PromotionRound
 - target：`full_site/api/struct_usd_skel_tokens_type.html`
-- commit SHA：`pending-current-commit`
+- commit SHA：`c0299dd1d2fce7543c40974811e470dfd56aa6b2`
 - source parity：`reports/round_455_usd_skel_tokens_type_source_parity.json`
 
 ## 问题清单

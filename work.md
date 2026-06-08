@@ -24,7 +24,7 @@
 - 本轮目标：`full_site/api/struct_usd_skel_tokens_type.html`
 - 官方页面：`https://openusd.org/release/api/struct_usd_skel_tokens_type.html`
 - source parity：`reports/round_455_usd_skel_tokens_type_source_parity.json`
-- commit SHA：`pending-current-commit`
+- commit SHA：`c0299dd1d2fce7543c40974811e470dfd56aa6b2`
 - 完成数状态：good_bilingual=231；review_ready_zh=168。
 - 固定审计：`translation_quality_review.json`、`english_debt_audit.json`、`all_pages_inventory.json`、`validation_report.json` 已重建并一致。
 

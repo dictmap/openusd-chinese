@@ -4,6 +4,7 @@
 - 轮次类型：PromotionRound
 - 轮次目的：将 `full_site/api/struct_usd_skel_tokens_type.html` 从 API 可检查草稿晋级为完整双语页面，并保持报告、入口、manifest 与验证链一致。
 - 本轮目标：`full_site/api/struct_usd_skel_tokens_type.html`
+- commit SHA：`c0299dd1d2fce7543c40974811e470dfd56aa6b2`
 - 结果：完成 1 个页面晋级，good_bilingual 从 230 增至 231。
 - 核心说明：目标页已进入 promotion manifest；当前记录补齐本轮目标、round 类型、commit SHA 和真实计数，避免继续出现旧的占位轮次文本。
 
