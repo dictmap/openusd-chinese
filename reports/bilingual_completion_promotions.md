@@ -1,6 +1,6 @@
 # OpenUSD 完整双语晋级清单
 
-Generated: 2026-06-08T16:41:06.430Z
+Generated: 2026-06-08T17:01:57.185Z
 
 这份清单只记录已经从 `bilingual_draft` 晋级为 `bilingual_complete` 的页面。它是 `scripts/discover_openusd_all_pages.mjs` 识别 promoted complete 页面的审计来源，不等同于把草稿页改一个状态。
 
@@ -229,3 +229,4 @@ Generated: 2026-06-08T16:41:06.430Z
 | `round-440-api-sdr-glslfx-module-front` | `full_site/api/sdr_glslfx_page_front.html` | `https://openusd.org/release/api/sdr_glslfx_page_front.html` | bilingual_complete |
 | `round-441-api-usd-hydra-module-front` | `full_site/api/usd_hydra_page_front.html` | `https://openusd.org/release/api/usd_hydra_page_front.html` | bilingual_complete |
 | `round-442-api-usdabc-module-front` | `full_site/api/usdabc_page_front.html` | `https://openusd.org/release/api/usdabc_page_front.html` | bilingual_complete |
+| `round-443-api-usddraco-module-front` | `full_site/api/usddraco_page_front.html` | `https://openusd.org/release/api/usddraco_page_front.html` | bilingual_complete |

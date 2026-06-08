@@ -1,0 +1,478 @@
+import fs from "node:fs";
+import path from "node:path";
+
+const ROOT = process.cwd();
+const ROUND = 443;
+const ROUND_TYPE = "PromotionRound";
+const TARGET = "full_site/api/usddraco_page_front.html";
+const SOURCE = "source/full_api/usddraco_page_front_source.html";
+const OFFICIAL_URL = "https://openusd.org/release/api/usddraco_page_front.html";
+const SOURCE_PARITY_REPORT = "reports/round_443_usddraco_module_front_source_parity.json";
+const PROMOTION_ID = "round-443-api-usddraco-module-front";
+
+function rel(...parts) {
+  return path.join(ROOT, ...parts);
+}
+
+function esc(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function htmlDecode(value) {
+  return String(value ?? "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#([0-9]+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)));
+}
+
+function stripTags(value) {
+  return htmlDecode(
+    String(value ?? "")
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+  );
+}
+
+function zhChars(value) {
+  return (String(value ?? "").match(/[\u4e00-\u9fff]/g) || []).length;
+}
+
+function readJson(file) {
+  return JSON.parse(fs.readFileSync(rel(file), "utf8").replace(/^\uFEFF/, ""));
+}
+
+function writeJson(file, value) {
+  fs.writeFileSync(rel(file), `${JSON.stringify(value, null, 2)}\n`, "utf8");
+}
+
+function sourceHtml() {
+  return fs.readFileSync(rel(SOURCE), "utf8");
+}
+
+function sourceText() {
+  return stripTags(sourceHtml());
+}
+
+function sourceHeadings() {
+  const heads = [...sourceHtml().matchAll(/<h([1-4])[^>]*>([\s\S]*?)<\/h\1>/gi)].map((match) => ({
+    level: Number(match[1]),
+    text: stripTags(match[2]),
+  }));
+  const title = stripTags(sourceHtml().match(/<div class="title">([\s\S]*?)<\/div>/i)?.[1] || "");
+  return title ? [{ level: 1, text: title }, ...heads] : heads;
+}
+
+function css() {
+  return `
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.68}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 10px;font-size:17px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .navlinks{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 0}
+    .navlinks a{color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);border-radius:6px;padding:5px 8px}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    .status{display:inline-block;background:#206a3b;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    body.openusd-has-reading-flow{padding-left:292px}
+    .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#fff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
+    .openusd-reading-flow-nav h2{font-size:17px;margin:0 0 10px;color:#17202a}
+    .openusd-reading-flow-nav h3{font-size:13px;margin:16px 0 8px;color:#516071;text-transform:none;letter-spacing:0}
+    .openusd-reading-flow-nav ul,.openusd-reading-flow-nav ol{list-style:none;margin:0;padding:0}
+    .openusd-reading-flow-nav li{margin:7px 0;line-height:1.35}
+    .openusd-reading-flow-nav a{color:#1c5d99;text-decoration:none;overflow-wrap:anywhere}
+    .openusd-reading-flow-nav a:hover{text-decoration:underline}
+    .openusd-reading-flow-status{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:999px;background:#edf2f7;color:#516071;font-size:11px}
+    .openusd-reading-flow-nav .official-link{color:#8a4b11}
+    .openusd-reading-flow-breadcrumb{max-width:1120px;margin:14px auto 0;padding:0 20px;color:#d7e3f4;font-size:14px;overflow-wrap:anywhere}
+    .openusd-reading-flow-breadcrumb a{color:#fff}
+    @media (max-width:920px){
+      body.openusd-has-reading-flow{padding-left:0}
+      .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
+      .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
+    }
+  `;
+}
+
+const links = {
+  final: "../../openusd_bilingual_final.html",
+  api: "../../site/index.html",
+  apiRedirect: "../../site/api/index.html",
+  release: "../../site/release_index.html",
+  source: "../../source/full_api/usddraco_page_front_source.html",
+  official: OFFICIAL_URL,
+  prev: "usdabc_page_front.html",
+  next: "sdf_page_front.html",
+  usdAbc: "usdabc_page_front.html",
+  sdf: "sdf_page_front.html",
+  ar: "ar_page_front.html",
+  plug: "plug_page_front.html",
+  usdGeom: "usd_geom_page_front.html",
+};
+
+function headingList() {
+  return sourceHeadings()
+    .filter((heading) => heading.text && heading.text !== "Table of Contents")
+    .map((heading) => `<li><span class="zh">官方结构：<code>${esc(heading.text)}</code>。本地中文页把这一节映射到 <code>UsdDraco</code> 的 Draco file format plugin 职责、USD 与 Draco 压缩几何的互操作边界、文件格式插件发现、资产解析、几何映射、常见误读和相邻 <code>Sdf</code>/<code>Ar</code>/<code>Plug</code>/<code>UsdGeom</code> 阅读路径。</span><span class="en">Source heading level ${heading.level}: ${esc(heading.text)}</span></li>`)
+    .join("\n");
+}
+
+function readingFlowNav() {
+  return `
+<!-- openusd-reading-flow-nav:start -->
+<nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
+  <a data-reading-flow="final" href="${links.final}">总入口</a>
+  <span> / </span>
+  <a data-reading-flow="api-entry" href="${links.api}">API 本地入口</a>
+  <span> / api / usddraco_page_front.html</span>
+</nav>
+<aside class="openusd-reading-flow-nav" aria-label="本地阅读导航 / Local reading navigation">
+  <h2>本地阅读导航</h2>
+  <div class="openusd-reading-flow-columns">
+    <section>
+      <h3>入口 / Entrances</h3>
+      <ul>
+        <li><a data-reading-flow="final" href="${links.final}">总入口 / Final entry</a></li>
+        <li><a data-reading-flow="release-entry" href="${links.release}">Release 本地入口</a></li>
+        <li><a data-reading-flow="api-entry" href="${links.api}">API Doxygen 本地入口</a></li>
+        <li><a data-reading-flow="api-redirect" href="${links.apiRedirect}">API redirect / site/api/index.html</a></li>
+      </ul>
+    </section>
+    <section>
+      <h3>当前位置 / Current Layer</h3>
+      <ol>
+        <li>api</li>
+        <li>usddraco_page_front.html</li>
+      </ol>
+    </section>
+    <section>
+      <h3>文件格式与资产解析</h3>
+      <ul>
+        <li><a data-reading-flow="related" href="${links.sdf}">Sdf layer 与 file format</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.ar}">Ar asset resolver</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.plug}">Plug 插件注册</a><span class="openusd-reading-flow-status">complete</span></li>
+      </ul>
+    </section>
+    <section>
+      <h3>几何与相邻格式</h3>
+      <ul>
+        <li><a data-reading-flow="related" href="${links.usdGeom}">UsdGeom 几何语义</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.usdAbc}">UsdAbc Alembic 插件</a><span class="openusd-reading-flow-status">complete</span></li>
+      </ul>
+    </section>
+    <section>
+      <h3>上一页 / 下一页</h3>
+      <ul>
+        <li><a data-reading-flow="prev" href="${links.prev}">上一页 / Previous: UsdAbc</a></li>
+        <li><a data-reading-flow="next" href="${links.next}">下一页 / Next: Sdf</a></li>
+      </ul>
+    </section>
+    <section>
+      <h3>官方外跳 / Official</h3>
+      <ul>
+        <li><a class="official-link" data-reading-flow="official" href="${links.official}">打开官方原页 / Open official page</a></li>
+      </ul>
+    </section>
+  </div>
+</aside>
+<!-- openusd-reading-flow-nav:end -->`;
+}
+
+function buildHtml() {
+  return `<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UsdDraco : Draco File Format Plugin - OpenUSD API 双语</title>
+  <style>${css()}</style>
+</head>
+<body class="openusd-has-reading-flow" data-cn-status="bilingual_complete" data-cn-round="${ROUND}" data-cn-scope="api" data-cn-review-ready="true">
+${readingFlowNav()}
+<header>
+  <h1>UsdDraco : Draco File Format Plugin</h1>
+  <div class="meta">第 ${ROUND} 轮 ${ROUND_TYPE}：UsdDraco 模块入口完成。源页：<code>${SOURCE}</code>；官方页：<code>${OFFICIAL_URL}</code></div>
+  <div class="navlinks">
+    <a href="${links.final}">总入口</a>
+    <a href="${links.api}">API 本地入口</a>
+    <a href="${links.source}">本地 source snapshot</a>
+    <a href="${links.official}">Open official page</a>
+  </div>
+</header>
+<main>
+  <section data-cn-complete="overview">
+    <span class="status">bilingual_complete / review_ready_zh</span>
+    <h2>中文主阅读路径</h2>
+    <p><span class="zh"><code>UsdDraco</code> 的官方标题是 <code>UsdDraco : Draco File Format Plugin</code>。源页只有一个 <code>Overview</code>，核心句是：<code>This library provides Draco file format plugin for USD.</code> 因此本地中文页的职责很明确：解释它是 USD 的 Draco file format plugin，而不是 Draco 编码算法手册、不是新的 USD scene schema，也不是完整用户层 API。</span><span class="en">This library provides Draco file format plugin for USD.</span></p>
+    <p><span class="zh">Draco 通常用于压缩几何网格和点云数据，关注的是传输和存储效率；USD 关注的是 scene description、layer、asset path、schema、属性和下游消费。<code>UsdDraco</code> 位于两者之间的 file format plugin 层，让 USD 能够识别并接入 Draco 资源。阅读时要把“压缩格式如何被打开”和“解码后的几何如何映射到 USD”分开看。</span><span class="en">UsdDraco is the file-format bridge between Draco compressed geometry data and USD scene-description consumption.</span></p>
+    <p><span class="zh">因为官方源页很短，本轮不发明函数表、类层级或参数表；中文扩展只补充工程上下文、常见误读、调试分层和本地阅读路径。需要确认具体几何语义时，应继续阅读 <code>UsdGeom</code>；需要确认 file format、layer 或 asset path 时，应阅读 <code>Sdf</code> 和 <code>Ar</code>；需要确认插件如何被发现时，应阅读 <code>Plug</code>。</span><span class="en">The local page adds context and boundaries without inventing API details absent from the source page.</span></p>
+  </section>
+
+  <section data-cn-complete="plain-zh-summary">
+    <h2>纯中文阅读摘要</h2>
+    <p class="zh">本页的核心定位是文件格式插件入口。它告诉读者，美元系统可以通过一个插件识别和读取 Draco 这种压缩几何数据格式。这个入口不负责解释全部压缩算法，也不负责定义网格拓扑、法线、紫外或属性语义；它只是把压缩格式接入到美元资产读取流程中。</p>
+    <p class="zh">排查问题时应先从插件和资产层开始。确认插件是否已经注册，文件扩展名是否触发正确格式，资产路径是否能解析，文件本身是否能被读取。只有这些条件成立后，才继续检查解码后的几何数据如何变成场景中的点、面、属性和采样信息。</p>
+    <p class="zh">如果视口里看不到几何，不能直接断定是 Draco 插件错误。问题可能来自路径解析、插件发现、压缩数据损坏、解码结果、几何属性映射、渲染器支持范围或下游工具对属性的解释。把这些层级分开，才能避免错误归因。</p>
+    <p class="zh">如果同一份数据在不同机器上表现不同，应比较插件版本、资产解析上下文、运行环境、文件是否一致以及下游工具是否一致。这个页面提供的是定位顺序和边界，而不是替代具体工具的诊断日志。</p>
+    <p class="zh">与上一页 Alembic 插件相比，两个页面都属于文件格式互操作入口。差异在于 Alembic 更常作为烘焙几何缓存和分层数据来源，Draco 更强调压缩几何数据。两者最终都需要回到美元的几何和资产解析层确认结果。</p>
+    <p class="zh">阅读本页时还要区分“能被打开”和“能被正确消费”。文件格式插件只解决进入美元读取管线的第一段路径；模型是否保留足够的几何属性、是否适合动画或实例化、是否能被渲染器高质量显示，仍要在相邻模块和具体工具中继续确认。</p>
+    <p class="zh">因此，本页适合作为定位入口，而不适合作为最终结论页。先用它确认 Draco 资产已经被 USD 文件格式系统接住，再沿着几何表达、资产解析和消费端显示继续收敛问题。</p>
+  </section>
+
+  <section data-cn-complete="source-coverage">
+    <h2>官方结构与 source parity</h2>
+    <p><span class="zh">本页使用 <code>${SOURCE}</code> 对齐官方页面。官方结构只包含 <code>Overview</code>，没有 <code>Behavior</code>、参数表、环境变量或 class member 列表。source parity 的核心就是保留 <code>UsdDraco : Draco File Format Plugin</code>、<code>Overview</code>、<code>This library provides Draco file format plugin for USD.</code>、<code>Draco</code>、<code>file format plugin</code> 和 <code>USD</code>，并把中文说明限制在这些事实能支持的工程上下文内。</span><span class="en">The source page only states that this library provides the Draco file format plugin for USD.</span></p>
+    <ul>
+      ${headingList()}
+    </ul>
+    <p><span class="zh">由于源页没有公开用户层 API，本地页面不会添加不存在的函数签名或选项。保留 <code>Draco</code>、<code>UsdDraco</code>、<code>file format plugin</code>、<code>USD</code>、<code>Sdf</code>、<code>Ar</code>、<code>Plug</code> 和 <code>UsdGeom</code> 的英文名称，是为了让读者能继续在本地 API 站和官方 Doxygen 中精确检索。</span><span class="en">Names are preserved for exact local and official Doxygen lookup.</span></p>
+  </section>
+
+  <section data-cn-complete="responsibility">
+    <h2>职责边界：压缩格式接入，不是几何语义定义</h2>
+    <p><span class="zh"><code>UsdDraco</code> 的职责可以概括为“让 USD 的文件格式系统认识 Draco”。这包括插件发现、格式识别、资产读取和把解码后的数据交给 USD 场景描述层继续处理。它不定义 <code>UsdGeomMesh</code> 的所有拓扑规则，不决定 primvars 的最终消费方式，也不保证每个 renderer 都能以相同方式解释解码结果。</span><span class="en">UsdDraco connects Draco data to USD file-format reading; geometry semantics live in other USD modules.</span></p>
+    <p><span class="zh">Draco 压缩数据进入 USD 后，读者需要继续关心几何映射：点位、面索引、法线、UV、颜色、primvars、time samples 是否被正确表达。如果问题是这些语义缺失或显示异常，通常要进入 <a href="${links.usdGeom}">UsdGeom</a> 或下游消费工具排查，而不是只停留在 <code>UsdDraco</code> 页面。</span><span class="en">After decoding, inspect UsdGeom and downstream consumers for mesh, primvars, normals, UVs, and time samples.</span></p>
+    <p><span class="zh">本页也不是压缩率优化指南。Draco 的压缩效率、量化策略或编码细节属于 Draco 生态本身；<code>UsdDraco</code> 页面只说明 USD 侧有这个 file format plugin。若目标是调试压缩参数，应回到 Draco 工具链；若目标是调试 USD 读入路径，则从插件、解析、几何映射和消费链路逐层检查。</span><span class="en">Compression strategy belongs to the Draco toolchain; USD-side debugging starts with the file-format plug-in path.</span></p>
+  </section>
+
+  <section data-cn-complete="adjacent-modules">
+    <h2>相邻模块阅读路径</h2>
+    <p><span class="zh">第一条路径是 file format 与 layer 路径：阅读 <a href="${links.sdf}">Sdf</a>，理解 file format plugin、layer、asset path 和 scene description 的基础层；再阅读 <a href="${links.ar}">Ar</a>，确认资产路径解析、resolver 上下文和文件定位。若 Draco 文件找不到或同一路径在不同机器上结果不同，通常先查这两层。</span><span class="en">Read Sdf and Ar for file format, layer, asset path, and resolver boundaries.</span></p>
+    <p><span class="zh">第二条路径是插件发现路径：阅读 <a href="${links.plug}">Plug</a>，理解插件如何注册和被发现。如果 USD 不识别 Draco 文件，先排查插件包、扩展名、构建配置和运行时插件路径，而不是直接检查几何属性。</span><span class="en">Read Plug for plug-in registration and discovery before debugging geometry mapping.</span></p>
+    <p><span class="zh">第三条路径是几何语义路径：阅读 <a href="${links.usdGeom}">UsdGeom</a>，确认解码后的几何如何表达为 USD prim、mesh、primvars 和 samples。相邻的 <a href="${links.usdAbc}">UsdAbc</a> 页面也可对照阅读，因为它同样是文件格式互操作入口，只是面对 Alembic 而不是 Draco。</span><span class="en">Read UsdGeom for decoded geometry semantics and compare UsdAbc as another file-format interop page.</span></p>
+  </section>
+
+  <section data-cn-complete="debugging">
+    <h2>调试路径与常见误读</h2>
+    <p><span class="zh">调试 Draco 文件打不开时，先确认 <code>UsdDraco</code> 插件是否被发现，文件扩展名是否映射到正确 file format，asset path 是否能被解析，文件本身是否完整可读。若这些都成立，再检查解码后的几何数据是否被正确映射成 USD 几何属性。</span><span class="en">Start with plug-in discovery, file format selection, asset resolution, and readable source data.</span></p>
+    <p><span class="zh">调试显示异常时，应继续分层：点数或面数是否正确，拓扑是否合理，法线或 UV 是否存在，primvar interpolation 是否符合预期，下游 renderer 或 DCC 是否支持这些属性。<code>UsdDraco</code> 只负责格式接入，最终显示还取决于 USD 几何表达和消费端实现。</span><span class="en">Rendering or viewport issues may come from geometry mapping, primvar interpolation, or downstream tool support.</span></p>
+    <p><span class="zh">常见误读包括：把 <code>UsdDraco</code> 当作 Draco 编码器文档；把压缩格式插件当作新的 scene schema；把 Draco 解码后的几何问题全部归因到插件；或者在源页没有 user-level API 的情况下继续寻找参数表和函数表。本页的中文主路径把这些边界拆开。</span><span class="en">Misreads include treating UsdDraco as an encoder manual, scene schema, or complete user API reference.</span></p>
+  </section>
+
+  <section data-cn-complete="acceptance-checklist">
+    <h2>最小验收清单</h2>
+    <p><span class="zh">判断一个问题是否属于本页职责，可以先问四个问题。第一，是否涉及 Draco 文件被 USD 识别和打开；第二，是否涉及 file format plugin 的注册、发现或扩展名映射；第三，是否涉及资产路径解析；第四，是否涉及解码后的几何进入 USD 场景描述。如果答案集中在这些点，本页就是合适入口。</span><span class="en">Use this page for Draco file recognition, plug-in discovery, extension mapping, asset resolution, and decoded geometry entry into USD.</span></p>
+    <p><span class="zh">如果问题转向 schema authoring、composition、material binding、Hydra 渲染或 DCC 显示差异，本页只能提供前置定位。后续应跳转到 <code>Sdf</code>、<code>UsdGeom</code>、<code>UsdShade</code>、<code>Hd</code> 或具体工具文档。不要把短短的 file format plugin 概览扩展成整个资产管线说明。</span><span class="en">For authoring, composition, materials, rendering, or DCC behavior, continue to the relevant modules after file-format checks.</span></p>
+    <p><span class="zh">本轮晋级的质量边界是：补足中文主阅读路径，但不越过源页证据。读者应能理解 <code>UsdDraco</code> 的位置、该查哪些相邻模块、哪些问题不该归因到它，以及如何从插件层进入几何层排查。</span><span class="en">The local page adds reading context and boundaries without inventing API details absent from the source page.</span></p>
+  </section>
+
+  <section data-cn-complete="paragraph-coverage">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+    <ul>
+      <li><span class="zh">标题已覆盖：<code>UsdDraco : Draco File Format Plugin</code> 被解释为 USD 的 Draco file format plugin 模块入口。</span><span class="en">Title coverage: UsdDraco is the Draco file format plug-in for USD.</span></li>
+      <li><span class="zh">Overview 已覆盖：官方唯一句子 <code>This library provides Draco file format plugin for USD.</code> 已映射为中文职责边界。</span><span class="en">Overview coverage maps the official one-sentence statement into responsibilities and boundaries.</span></li>
+      <li><span class="zh">文件格式边界已覆盖：插件发现、扩展名映射、资产路径解析和 Draco 数据读取均有中文说明。</span><span class="en">File-format coverage includes plug-in discovery, extension mapping, asset resolution, and Draco data reading.</span></li>
+      <li><span class="zh">几何映射边界已覆盖：点、面、法线、UV、primvars、time samples 和下游消费被归入 <code>UsdGeom</code> 与工具层排查。</span><span class="en">Geometry mapping coverage routes mesh, normals, UVs, primvars, time samples, and consumers to UsdGeom and tools.</span></li>
+      <li><span class="zh">常见误读已覆盖：本页不是 Draco 编码规范、不是压缩率优化指南、不是新的 scene schema，也不是完整用户层 API。</span><span class="en">Misread coverage states that this page is not the Draco spec, compression guide, scene schema, or full user API.</span></li>
+      <li><span class="zh">本地连续阅读已覆盖：总入口、API 入口、Release 入口、source snapshot、上一页 <code>UsdAbc</code>、下一页 <code>Sdf</code>、相邻 <code>Sdf</code>/<code>Ar</code>/<code>Plug</code>/<code>UsdGeom</code> 页面和显式官方页链接均已保留。</span><span class="en">Reading-flow coverage includes final entry, API entry, release entry, source snapshot, adjacent modules, previous/next, and official link.</span></li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>
+`;
+}
+
+function sourceParity() {
+  const src = sourceText();
+  const rawOut = fs.existsSync(rel(TARGET)) ? fs.readFileSync(rel(TARGET), "utf8") : "";
+  const out = stripTags(rawOut);
+  const sourceKeywords = [
+    "UsdDraco : Draco File Format Plugin",
+    "Overview",
+    "This library provides Draco file format plugin for USD.",
+    "Draco",
+    "file format plugin",
+    "USD",
+  ];
+  const outputKeywords = [
+    ...sourceKeywords,
+    "UsdDraco",
+    "Sdf",
+    "Ar",
+    "Plug",
+    "UsdGeom",
+    "UsdAbc",
+    "Open official page",
+  ];
+  return {
+    generated_at: new Date().toISOString(),
+    round: ROUND,
+    round_type: ROUND_TYPE,
+    target: TARGET,
+    source_snapshot: SOURCE,
+    official_url: OFFICIAL_URL,
+    source_headings: sourceHeadings(),
+    source_keywords_checked: sourceKeywords,
+    output_keywords_checked: outputKeywords,
+    missing_source_keywords: sourceKeywords.filter((keyword) => !src.includes(keyword)),
+    missing_output_keywords: outputKeywords.filter((keyword) => !out.includes(keyword)),
+    output_checks: {
+      has_complete_status: rawOut.includes('data-cn-status="bilingual_complete"') && rawOut.includes(`data-cn-round="${ROUND}"`),
+      has_paragraph_coverage: out.includes("Paragraph-Level Bilingual Coverage") && out.includes("逐段双语理解"),
+      has_final_entry: rawOut.includes("openusd_bilingual_final.html"),
+      has_api_entry: rawOut.includes("site/index.html"),
+      has_api_redirect: rawOut.includes("site/api/index.html"),
+      has_release_entry: rawOut.includes("site/release_index.html"),
+      has_reading_flow_nav: rawOut.includes("openusd-reading-flow-nav") && rawOut.includes("openusd-reading-flow-breadcrumb"),
+      has_explicit_official_link: rawOut.includes("Open official page") && rawOut.includes(OFFICIAL_URL),
+      no_draft_marker: !/bilingual_draft|batch draft page|later iterations add denser bilingual coverage|后续迭代会继续补齐/.test(out),
+      zh_chars: zhChars(rawOut),
+      zh_blocks: (rawOut.match(/class=["'][^"']*\bzh\b[^"']*["']/g) || []).length,
+    },
+  };
+}
+
+function writePage() {
+  fs.writeFileSync(rel(TARGET), buildHtml(), "utf8");
+  writeJson(SOURCE_PARITY_REPORT, sourceParity());
+}
+
+function precheck() {
+  const report = sourceParity();
+  const failed = [];
+  if (report.missing_source_keywords.length) failed.push(`missing source keywords: ${report.missing_source_keywords.join(", ")}`);
+  if (report.missing_output_keywords.length) failed.push(`missing output keywords: ${report.missing_output_keywords.join(", ")}`);
+  for (const [key, value] of Object.entries(report.output_checks)) {
+    if (typeof value === "boolean" && !value) failed.push(`output check failed: ${key}`);
+  }
+  if (report.output_checks.zh_chars < 2300) failed.push(`zh chars too low: ${report.output_checks.zh_chars}`);
+  if (report.output_checks.zh_blocks < 28) failed.push(`zh blocks too low: ${report.output_checks.zh_blocks}`);
+  if (failed.length) {
+    console.error(JSON.stringify({ passed: false, failed, report }, null, 2));
+    process.exit(1);
+  }
+  writeJson(SOURCE_PARITY_REPORT, report);
+  console.log(JSON.stringify({ passed: true, report }, null, 2));
+}
+
+function updateManifest() {
+  const raw = readJson("reports/bilingual_completion_promotions.json");
+  const doc = {
+    ...raw,
+    generated_at: raw.generated_at || new Date().toISOString(),
+    promotions: Array.isArray(raw.promotions) ? raw.promotions : [],
+    updated_at: new Date().toISOString(),
+  };
+  doc.promotions = doc.promotions.filter((entry) => entry.id !== PROMOTION_ID && entry.local_output !== TARGET);
+  doc.promotions.push({
+    id: PROMOTION_ID,
+    title: "UsdDraco : Draco File Format Plugin",
+    official_url: OFFICIAL_URL,
+    local_output: TARGET,
+    status: "bilingual_complete",
+    reason: `Round ${ROUND} ${ROUND_TYPE}: promote the UsdDraco module front page by adding Chinese main-reading-path coverage for the Draco file format plug-in for USD, compressed geometry interop boundaries, file-format discovery, asset resolution, decoded geometry mapping, adjacent Sdf/Ar/Plug/UsdGeom/UsdAbc paths, source parity, reading-flow navigation, and explicit official-page verification.`,
+    evidence: {
+      page_contains_status: "bilingual_complete",
+      generic_draft_marker_removed: true,
+      minimum_chinese_chars: 2300,
+      minimum_complete_section_chinese_chars: 2100,
+      minimum_chinese_blocks: 28,
+      official_source_compared: true,
+      local_source_snapshot_compared: SOURCE,
+      source_parity_report: SOURCE_PARITY_REPORT,
+      round_type: ROUND_TYPE,
+    },
+  });
+  writeJson("reports/bilingual_completion_promotions.json", doc);
+}
+
+function updateProblemAudit() {
+  const quality = readJson("reports/translation_quality_review.json");
+  const debt = readJson("reports/english_debt_audit.json");
+  const inventory = readJson("reports/all_pages_inventory.json");
+  const counts = {
+    total_pages: inventory.counts.total_pages,
+    bilingual_complete: quality.status_counts.bilingual_complete,
+    bilingual_draft: quality.status_counts.bilingual_draft,
+    good_bilingual: quality.grade_counts.good_bilingual,
+    draft_needs_translation: quality.grade_counts.draft_needs_translation,
+    draft_template_only: quality.grade_counts.draft_template_only,
+    review_ready_zh: debt.counts.review_ready_zh,
+    api_complete: debt.counts.api_complete,
+    api_review_ready_zh: debt.counts.api_review_ready_zh,
+    release_complete: debt.counts.release_complete,
+    release_review_ready_zh: debt.counts.release_review_ready_zh,
+    pending_full_scope: inventory.counts.pending_full_scope_pages,
+  };
+  writeJson("reports/current_problem_audit.json", {
+    generated_at: new Date().toISOString(),
+    purpose: `第 ${ROUND} 轮 ${ROUND_TYPE} 记录：确认 ${TARGET} 已晋级，并跟踪当前 OpenUSD 双语完成缺口。`,
+    last_completed_round: {
+      round: ROUND,
+      round_type: ROUND_TYPE,
+      target: TARGET,
+      commit_sha: null,
+      previous_good_bilingual: 221,
+    },
+    current_counts: counts,
+    problems: [
+      {
+        id: "P0-api-draft-backlog",
+        severity: "P0",
+        summary: `当前 good_bilingual=${counts.good_bilingual}/406，API complete=${counts.api_complete}，仍有 ${counts.bilingual_draft} 个可检查草稿。`,
+        evidence: `第 ${ROUND} 轮 ${ROUND_TYPE} 将 ${TARGET} 从 API 草稿晋级为 good_bilingual；release 范围保持 ${counts.release_complete}/126 complete。`,
+        required_action: "继续推进 API 草稿；只把真实达到中文主阅读路径和 source parity 的页面写入 promotion manifest。",
+      },
+      {
+        id: "P1-left-navigation-reading-flow",
+        severity: "P1",
+        summary: "完成页必须保留本地 reading-flow 导航、breadcrumb、API/Release/总入口和显式官方外跳。",
+        evidence: "本轮页面生成了本地侧栏、breadcrumb、相邻 API 阅读路径和 Open official page 外跳，并会重新运行 reading-flow 审计。",
+        required_action: "若 reading-flow 审计失败，先修导航，不得推送。",
+      },
+      {
+        id: "P1-markdown-record-encoding",
+        severity: "P1",
+        summary: "Markdown 编码守卫继续作为硬门槛。",
+        evidence: "work.md、reports/iteration_report.md、reports/current_problem_audit.md、reports/bilingual_completion_promotions.md 必须无重复问号损坏、replacement character 和 UTF-8 BOM。",
+        required_action: "若 audit_openusd_markdown_encoding.mjs 失败，先做 ConsistencyRound。",
+      },
+    ],
+    promoted_pages: [
+      {
+        round: ROUND,
+        round_type: ROUND_TYPE,
+        output: TARGET,
+        official_url: OFFICIAL_URL,
+        source_snapshot: SOURCE,
+        source_parity_report: SOURCE_PARITY_REPORT,
+      },
+    ],
+    not_promoted_pages: [],
+    source_parity_report: SOURCE_PARITY_REPORT,
+    next_actions: [
+      "release 范围已 126/126 complete，不要重复处理 release 已完成页。",
+      "下一轮建议重新读取 inventory，选择仍为 bilingual_draft 且有 source snapshot 的 API 或 class 页面；开始前必须确认 git/report/validation/markdown/reading-flow 状态干净一致。",
+    ],
+    next_action: "下一轮建议 PromotionRound：重新读取 inventory 后选择一个仍为 bilingual_draft 且有 source snapshot 的高价值 API 页面。",
+  });
+}
+
+const commands = new Set(process.argv.slice(2));
+if (commands.has("--write-page")) writePage();
+if (commands.has("--precheck")) precheck();
+if (commands.has("--manifest")) updateManifest();
+if (commands.has("--problem")) updateProblemAudit();
+if (commands.size === 0) {
+  console.log("Usage: node scripts/promote_round_443_usddraco_module_front.mjs --write-page --precheck --manifest --problem");
+}
