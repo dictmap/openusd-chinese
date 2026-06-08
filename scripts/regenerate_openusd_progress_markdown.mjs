@@ -23,6 +23,10 @@ function latestPromotedPage(problemAudit) {
   return Array.isArray(problemAudit.promoted_pages) ? problemAudit.promoted_pages[0] : null;
 }
 
+function lastCompletedRound(problemAudit) {
+  return problemAudit.last_completed_round ?? latestPromotedPage(problemAudit) ?? {};
+}
+
 function latestPromotion(promotions, promotedPage) {
   const entries = Array.isArray(promotions.promotions) ? promotions.promotions : [];
   if (promotedPage?.output) {
@@ -33,6 +37,8 @@ function latestPromotion(promotions, promotedPage) {
 }
 
 function inferRound(problemAudit, promotion) {
+  const last = lastCompletedRound(problemAudit);
+  if (Number.isFinite(last?.round)) return last.round;
   const promoted = latestPromotedPage(problemAudit);
   if (Number.isFinite(promoted?.round)) return promoted.round;
   const match = String(problemAudit.purpose ?? "").match(/Round\s+(\d+)/i);
@@ -42,6 +48,8 @@ function inferRound(problemAudit, promotion) {
 }
 
 function inferRoundType(problemAudit, promotion) {
+  const last = lastCompletedRound(problemAudit);
+  if (last?.round_type) return last.round_type;
   const promoted = latestPromotedPage(problemAudit);
   if (promoted?.round_type) return promoted.round_type;
   const evidenceType = promotion?.evidence?.round_type;
@@ -57,6 +65,11 @@ function nextTarget(problemAudit) {
   const action = String(problemAudit.next_action ?? problemAudit.next_actions?.[0] ?? "");
   const pathMatch = action.match(/full_site\/[^\s，。；、]+\.html|site\/[^\s，。；、]+\.html/);
   return pathMatch ? pathMatch[0] : action;
+}
+
+function nextTargetDisplay(problemAudit) {
+  const target = nextTarget(problemAudit);
+  return target || "待监督员指定下一页";
 }
 
 function validationCounts(validation) {
@@ -109,9 +122,12 @@ function buildWorkMd({ inventory, validation, englishDebt, problemAudit, promoti
   const promotion = latestPromotion(promotions, promoted);
   const round = inferRound(problemAudit, promotion);
   const roundType = inferRoundType(problemAudit, promotion);
-  const target = promotion?.local_output ?? promoted?.output ?? nextTarget(problemAudit);
+  const last = lastCompletedRound(problemAudit);
+  const target = promotion?.local_output ?? last?.target ?? promoted?.output ?? nextTarget(problemAudit);
   const official = promotion?.official_url ?? promoted?.official_url ?? "";
   const sourceParity = promoted?.source_parity_report ?? promotion?.evidence?.source_parity_report ?? problemAudit.source_parity_report ?? "";
+  const commitSha = last?.commit_sha ?? "本轮提交后以最终回执为准";
+  const next = nextTargetDisplay(problemAudit);
   const validationSummary = validationCounts(validation);
 
   return `# OpenUSD Bilingual Work Log
@@ -136,11 +152,11 @@ function buildWorkMd({ inventory, validation, englishDebt, problemAudit, promoti
 ## 第 ${round} 轮：${roundType}
 
 - 轮次性质：页面晋级，exactly 1 个目标页。
-- 轮次目的：修复第 422 轮记录一致性后，确认该轮真实结果为 UsdMtlx 模块入口页晋级。
+- 轮次目的：记录本轮真实晋级结果，并保持报告、入口、manifest 与验证链一致。
 - 本轮目标：\`${target}\`
 - 官方页面：\`${official}\`
 - source parity：\`${sourceParity}\`
-- commit SHA：\`bff8ada6c935fd360c2f27be641af2de2a308d07\`
+- commit SHA：\`${commitSha}\`
 - 完成数状态：good_bilingual=${counts.good_bilingual}；review_ready_zh=${englishDebt.counts.review_ready_zh}。
 - 固定审计：\`translation_quality_review.json\`、\`english_debt_audit.json\`、\`all_pages_inventory.json\`、\`validation_report.json\` 已重建并一致。
 
@@ -161,7 +177,7 @@ function buildWorkMd({ inventory, validation, englishDebt, problemAudit, promoti
 
 ## 下一轮目标
 
-建议目标：\`full_site/api/usd_physics_page_front.html\`。如果该页无法达到 \`good_bilingual\`，停止并报告阻塞；不要重复处理 \`${target}\` 或 release 已完成页。
+建议目标：\`${next}\`。如果该页无法达到 \`good_bilingual\`，停止并报告阻塞；不要重复处理 \`${target}\` 或 release 已完成页。
 `;
 }
 
@@ -171,7 +187,10 @@ function buildIterationMd({ inventory, quality, validation, englishDebt, problem
   const promotion = latestPromotion(promotions, promoted);
   const round = inferRound(problemAudit, promotion);
   const roundType = inferRoundType(problemAudit, promotion);
-  const target = promotion?.local_output ?? promoted?.output ?? "";
+  const last = lastCompletedRound(problemAudit);
+  const target = promotion?.local_output ?? last?.target ?? promoted?.output ?? "";
+  const previousGood = last?.previous_good_bilingual ?? (roundType === "PromotionRound" ? counts.good_bilingual - 1 : counts.good_bilingual);
+  const next = nextTargetDisplay(problemAudit);
   const validationSummary = validationCounts(validation);
   const files = changedFilesFor(promotion, promoted, roundType).map((item) => `- ${item}`).join("\n");
 
@@ -181,8 +200,8 @@ function buildIterationMd({ inventory, quality, validation, englishDebt, problem
 - 轮次类型：${roundType}
 - 轮次目的：将 \`${target}\` 从 API 可检查草稿晋级为完整双语页面，并保持报告、入口、manifest 与验证链一致。
 - 本轮目标：\`${target}\`
-- 结果：完成 1 个页面晋级，good_bilingual 从 201 增至 ${counts.good_bilingual}；本次 ConsistencyRound 只修复记录层，不改变完成计数。
-- 核心说明：目标页已进入 promotion manifest；当前记录补齐第 422 轮目标、round 类型、commit SHA 和真实计数，避免继续出现旧的占位轮次文本。
+- 结果：${roundType === "PromotionRound" ? `完成 1 个页面晋级，good_bilingual 从 ${previousGood} 增至 ${counts.good_bilingual}。` : "本轮不晋级页面，只修复命名一致性问题。"}
+- 核心说明：目标页已进入 promotion manifest；当前记录补齐本轮目标、round 类型、commit SHA 和真实计数，避免继续出现旧的占位轮次文本。
 
 ## 真实计数
 
@@ -212,11 +231,19 @@ ${files}
 
 ## 下一步
 
-下一轮建议恢复 PromotionRound，目标：\`full_site/api/usd_physics_page_front.html\`。开始前仍必须核对工作区干净、HEAD 等于 origin/main、报告计数一致、Markdown 编码和 reading-flow 审计通过。
+下一轮建议恢复 PromotionRound，目标：\`${next}\`。开始前仍必须核对工作区干净、HEAD 等于 origin/main、报告计数一致、Markdown 编码和 reading-flow 审计通过。
 `;
 }
 
 function buildProblemMd(problemAudit, englishDebt, promotions) {
+  const last = lastCompletedRound(problemAudit);
+  const promoted = latestPromotedPage(problemAudit);
+  const round = last?.round ?? promoted?.round ?? "";
+  const roundType = last?.round_type ?? promoted?.round_type ?? "";
+  const target = last?.target ?? promoted?.output ?? "";
+  const commitSha = last?.commit_sha ?? "本轮提交后以最终回执为准";
+  const sourceParity = promoted?.source_parity_report ?? problemAudit.source_parity_report ?? "";
+  const next = nextTargetDisplay(problemAudit);
   return `# Current OpenUSD Problem Audit
 
 Generated: ${problemAudit.generated_at}
@@ -240,11 +267,11 @@ Generated: ${problemAudit.generated_at}
 
 ## 最近晋级记录
 
-- round：422
-- round_type：PromotionRound
-- target：\`full_site/api/usd_mtlx_page_front.html\`
-- commit SHA：\`bff8ada6c935fd360c2f27be641af2de2a308d07\`
-- source parity：\`reports/round_422_usd_mtlx_module_front_source_parity.json\`
+- round：${round}
+- round_type：${roundType}
+- target：\`${target}\`
+- commit SHA：\`${commitSha}\`
+- source parity：\`${sourceParity}\`
 
 ## 问题清单
 
@@ -254,7 +281,7 @@ ${problemRows(problemAudit.problems)}
 
 ## 下一步
 
-下一轮建议目标：\`full_site/api/usd_physics_page_front.html\`。开始前继续核对 git、报告、validation、Markdown 编码和 reading-flow；如果该页源页或验证阻塞，停止并报告具体原因。
+下一轮建议目标：\`${next}\`。开始前继续核对 git、报告、validation、Markdown 编码和 reading-flow；如果该页源页或验证阻塞，停止并报告具体原因。
 `;
 }
 

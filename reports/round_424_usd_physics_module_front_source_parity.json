@@ -1,0 +1,386 @@
+{
+  "generated_at": "2026-06-08T09:47:01.877Z",
+  "round": 424,
+  "round_type": "PromotionRound",
+  "target": "full_site/api/usd_physics_page_front.html",
+  "source_snapshot": "source/full_api/usd_physics_page_front_source.html",
+  "official_url": "https://openusd.org/release/api/usd_physics_page_front.html",
+  "source_headings": [
+    {
+      "level": 3,
+      "text": "Table of Contents"
+    },
+    {
+      "level": 1,
+      "text": "Purpose and Scope"
+    },
+    {
+      "level": 1,
+      "text": "Overall Design Concerns"
+    },
+    {
+      "level": 2,
+      "text": "Rigid Body Simulation Primer"
+    },
+    {
+      "level": 2,
+      "text": "USD Implementation"
+    },
+    {
+      "level": 3,
+      "text": "Disambiguation"
+    },
+    {
+      "level": 3,
+      "text": "Fundamental Editing Capabilities"
+    },
+    {
+      "level": 3,
+      "text": "Physics Scenes"
+    },
+    {
+      "level": 3,
+      "text": "Types"
+    },
+    {
+      "level": 3,
+      "text": "Units"
+    },
+    {
+      "level": 3,
+      "text": "Default Values"
+    },
+    {
+      "level": 3,
+      "text": "Rigid Bodies"
+    },
+    {
+      "level": 3,
+      "text": "Interaction with the USD hierarchy"
+    },
+    {
+      "level": 3,
+      "text": "Sleep"
+    },
+    {
+      "level": 3,
+      "text": "Kinematic Bodies"
+    },
+    {
+      "level": 3,
+      "text": "Animation of Attributes"
+    },
+    {
+      "level": 3,
+      "text": "Body Mass Properties"
+    },
+    {
+      "level": 3,
+      "text": "Collision Shapes"
+    },
+    {
+      "level": 3,
+      "text": "Turning Meshes into Shapes"
+    },
+    {
+      "level": 3,
+      "text": "Physics Materials"
+    },
+    {
+      "level": 3,
+      "text": "Plane Shapes"
+    },
+    {
+      "level": 3,
+      "text": "Collision Filtering"
+    },
+    {
+      "level": 3,
+      "text": "Pairwise Filtering"
+    },
+    {
+      "level": 3,
+      "text": "Joints"
+    },
+    {
+      "level": 3,
+      "text": "Joint Reference Frames"
+    },
+    {
+      "level": 3,
+      "text": "Jointed Bodies"
+    },
+    {
+      "level": 3,
+      "text": "Joint Collision Filtering"
+    },
+    {
+      "level": 3,
+      "text": "Breaking and Disabling Joints"
+    },
+    {
+      "level": 3,
+      "text": "Joint Subtypes"
+    },
+    {
+      "level": 3,
+      "text": "Joint Limits and Drives"
+    },
+    {
+      "level": 3,
+      "text": "Articulations"
+    },
+    {
+      "level": 2,
+      "text": "Examples"
+    },
+    {
+      "level": 3,
+      "text": "Box on Box"
+    },
+    {
+      "level": 3,
+      "text": "Box on Quad"
+    },
+    {
+      "level": 3,
+      "text": "Spheres with Materials"
+    },
+    {
+      "level": 3,
+      "text": "Group Filtering"
+    },
+    {
+      "level": 3,
+      "text": "Pair Filtering"
+    },
+    {
+      "level": 3,
+      "text": "Joint"
+    },
+    {
+      "level": 3,
+      "text": "Distance Joint"
+    },
+    {
+      "level": 3,
+      "text": "Nested Articulation"
+    },
+    {
+      "level": 1,
+      "text": "Physics Parsing Utils Overview."
+    },
+    {
+      "level": 2,
+      "text": "Purpose and Scope"
+    },
+    {
+      "level": 2,
+      "text": "Specification"
+    },
+    {
+      "level": 2,
+      "text": "Physics Parsing Parameters"
+    },
+    {
+      "level": 2,
+      "text": "Physics Parsing Determinism"
+    },
+    {
+      "level": 2,
+      "text": "Physics Object Descriptor"
+    },
+    {
+      "level": 2,
+      "text": "Physics Scene Descriptor"
+    },
+    {
+      "level": 3,
+      "text": "Physics Scene Simulation Owner Behavior"
+    },
+    {
+      "level": 2,
+      "text": "Physics RigidBody Material Descriptor"
+    },
+    {
+      "level": 3,
+      "text": "Physics RigidBody Material Simulation Owner Behavior"
+    },
+    {
+      "level": 2,
+      "text": "Physics Collision Group Descriptor"
+    },
+    {
+      "level": 3,
+      "text": "Physics Collision Group Simulation Owner Behavior"
+    },
+    {
+      "level": 2,
+      "text": "Physics RigidBody Descriptor"
+    },
+    {
+      "level": 3,
+      "text": "Physics RigidBody Simulation Owner Behavior"
+    },
+    {
+      "level": 2,
+      "text": "Physics Shape Descriptor"
+    },
+    {
+      "level": 2,
+      "text": "Physics Sphere Shape Descriptor"
+    },
+    {
+      "level": 2,
+      "text": "Physics Capsule Shape Descriptor"
+    },
+    {
+      "level": 2,
+      "text": "Physics Cylinder Shape Descriptor"
+    },
+    {
+      "level": 2,
+      "text": "Physics Cone Shape Descriptor"
+    },
+    {
+      "level": 2,
+      "text": "Physics Cube Shape Descriptor"
+    },
+    {
+      "level": 2,
+      "text": "Physics Plane Shape Descriptor"
+    },
+    {
+      "level": 2,
+      "text": "Physics Mesh Shape Descriptor"
+    },
+    {
+      "level": 2,
+      "text": "Physics Sphere Points Shape Descriptor"
+    },
+    {
+      "level": 2,
+      "text": "Physics Custom Shape Descriptor"
+    },
+    {
+      "level": 3,
+      "text": "Physics Collision Simulation Owner Behavior"
+    },
+    {
+      "level": 2,
+      "text": "Physics Joint Descriptor"
+    },
+    {
+      "level": 2,
+      "text": "Physics Fixed Joint Descriptor"
+    },
+    {
+      "level": 2,
+      "text": "Physics Revolute Joint Descriptor"
+    },
+    {
+      "level": 2,
+      "text": "Physics Prismatic Joint Descriptor"
+    },
+    {
+      "level": 2,
+      "text": "Physics Spherical Joint Descriptor"
+    },
+    {
+      "level": 2,
+      "text": "Physics Distance Joint Descriptor"
+    },
+    {
+      "level": 2,
+      "text": "Physics D6 Joint Descriptor"
+    },
+    {
+      "level": 2,
+      "text": "Physics Custom Joint Descriptor"
+    },
+    {
+      "level": 3,
+      "text": "Physics Joint Simulation Owner Behavior"
+    },
+    {
+      "level": 2,
+      "text": "Physics Articulation Descriptor"
+    },
+    {
+      "level": 3,
+      "text": "Physics Articulation Simulation Owner Behavior"
+    }
+  ],
+  "source_keywords_checked": [
+    "UsdPhysics",
+    "physics-related prim and property schemas",
+    "Rigid Body Physics in USD",
+    "Purpose and Scope",
+    "Overall Design Concerns",
+    "Rigid Body Simulation Primer",
+    "USD Implementation",
+    "Physics Scenes",
+    "Rigid Bodies",
+    "Collision Shapes",
+    "Physics Materials",
+    "Collision Filtering",
+    "Pairwise Filtering",
+    "Joints",
+    "Joint Limits and Drives",
+    "Articulations",
+    "Physics Parsing Utils Overview",
+    "Physics Parsing Parameters",
+    "Physics Parsing Determinism",
+    "Physics Object Descriptor",
+    "Physics Scene Descriptor",
+    "Simulation Owner Behavior"
+  ],
+  "output_keywords_checked": [
+    "UsdPhysics",
+    "physics-related prim and property schemas",
+    "Rigid Body Physics in USD",
+    "Purpose and Scope",
+    "Overall Design Concerns",
+    "Rigid Body Simulation Primer",
+    "USD Implementation",
+    "Physics Scenes",
+    "Rigid Bodies",
+    "Collision Shapes",
+    "Physics Materials",
+    "Collision Filtering",
+    "Pairwise Filtering",
+    "Joints",
+    "Joint Limits and Drives",
+    "Articulations",
+    "Physics Parsing Utils Overview",
+    "Physics Parsing Parameters",
+    "Physics Parsing Determinism",
+    "Physics Object Descriptor",
+    "Physics Scene Descriptor",
+    "Simulation Owner Behavior",
+    "Kinematic Bodies",
+    "Body Mass Properties",
+    "Joint Reference Frames",
+    "Physics Joint Descriptor",
+    "Physics Articulation Descriptor",
+    "UsdGeom",
+    "UsdPhysicsJoint",
+    "UsdPhysicsTokensType",
+    "Open official page"
+  ],
+  "missing_source_keywords": [],
+  "missing_output_keywords": [],
+  "output_checks": {
+    "has_complete_status": true,
+    "has_paragraph_coverage": true,
+    "has_final_entry": true,
+    "has_api_entry": true,
+    "has_api_redirect": true,
+    "has_release_entry": true,
+    "has_reading_flow_nav": true,
+    "has_explicit_official_link": true,
+    "no_draft_marker": true,
+    "zh_chars": 2427,
+    "zh_blocks": 54
+  }
+}

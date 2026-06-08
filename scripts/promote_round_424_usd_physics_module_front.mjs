@@ -1,11 +1,83 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UsdPhysics: USD Physics Schema - OpenUSD API 双语导读</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
-  <style>
+import fs from "node:fs";
+import path from "node:path";
+
+const ROOT = process.cwd();
+const ROUND = 424;
+const ROUND_TYPE = "PromotionRound";
+const TARGET = "full_site/api/usd_physics_page_front.html";
+const SOURCE = "source/full_api/usd_physics_page_front_source.html";
+const OFFICIAL_URL = "https://openusd.org/release/api/usd_physics_page_front.html";
+const SOURCE_PARITY_REPORT = "reports/round_424_usd_physics_module_front_source_parity.json";
+const PROMOTION_ID = "round-424-api-usd-physics-module-front";
+
+function rel(...parts) {
+  return path.join(ROOT, ...parts);
+}
+
+function esc(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function htmlDecode(value) {
+  return String(value ?? "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#([0-9]+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)));
+}
+
+function stripTags(value) {
+  return htmlDecode(
+    String(value ?? "")
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+  );
+}
+
+function zhChars(value) {
+  return (String(value ?? "").match(/[\u4e00-\u9fff]/g) || []).length;
+}
+
+function readJson(file) {
+  return JSON.parse(fs.readFileSync(rel(file), "utf8").replace(/^\uFEFF/, ""));
+}
+
+function writeJson(file, value) {
+  fs.writeFileSync(rel(file), `${JSON.stringify(value, null, 2)}\n`, "utf8");
+}
+
+function sourceHtml() {
+  return fs.readFileSync(rel(SOURCE), "utf8");
+}
+
+function sourceText() {
+  return stripTags(sourceHtml());
+}
+
+function sourceHeadings() {
+  return [...sourceHtml().matchAll(/<h([1-4])[^>]*>([\s\S]*?)<\/h\1>/gi)].map((match) => ({
+    level: Number(match[1]),
+    text: stripTags(match[2]),
+  }));
+}
+
+function sourceExcerpt() {
+  return sourceText().slice(0, 1500);
+}
+
+function css() {
+  return `
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.66}
     body.openusd-has-reading-flow{padding-left:292px}
     header{background:#142538;color:#fff;padding:28px 32px}
@@ -40,27 +112,60 @@
       .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
       .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
     }
-  </style>
-</head>
-<body data-cn-status="bilingual_complete" data-cn-round="424" class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_complete</span>
-    <h1>UsdPhysics: USD Physics Schema</h1>
-    <div class="meta">Round 424 PromotionRound | Source snapshot: source/full_api/usd_physics_page_front_source.html | Official: https://openusd.org/release/api/usd_physics_page_front.html</div>
-    <p class="navlinks">
-      <a href="../../openusd_bilingual_final.html">总入口</a>
-      <a href="../../site/index.html">API 本地入口</a>
-      <a href="../../site/release_index.html">Release 本地入口</a>
-      <a href="../../source/full_api/usd_physics_page_front_source.html">Local source snapshot</a>
-      <a href="https://openusd.org/release/api/usd_physics_page_front.html">Open official page</a>
-    </p>
-  </header>
+  `;
+}
 
+const links = {
+  final: "../../openusd_bilingual_final.html",
+  api: "../../site/index.html",
+  apiRedirect: "../../site/api/index.html",
+  release: "../../site/release_index.html",
+  source: "../../source/full_api/usd_physics_page_front_source.html",
+  official: OFFICIAL_URL,
+  prev: "usd_mtlx_page_front.html",
+  next: "usd_proc_page_front.html",
+  usdGeom: "usd_geom_page_front.html",
+  usdMtlx: "usd_mtlx_page_front.html",
+  usdProc: "usd_proc_page_front.html",
+  joint: "class_usd_physics_joint.html",
+  tokens: "struct_usd_physics_tokens_type.html",
+};
+
+function headingList() {
+  const important = new Set([
+    "Purpose and Scope",
+    "Overall Design Concerns",
+    "Rigid Body Simulation Primer",
+    "USD Implementation",
+    "Physics Scenes",
+    "Rigid Bodies",
+    "Collision Shapes",
+    "Physics Materials",
+    "Collision Filtering",
+    "Joints",
+    "Joint Limits and Drives",
+    "Articulations",
+    "Physics Parsing Utils Overview.",
+    "Physics Parsing Parameters",
+    "Physics Parsing Determinism",
+    "Physics Object Descriptor",
+    "Physics Scene Descriptor",
+    "Physics Joint Descriptor",
+    "Physics Articulation Descriptor",
+  ]);
+  return sourceHeadings()
+    .filter((heading) => important.has(heading.text))
+    .map((heading) => `<li><span class="zh">官方 section：<code>${esc(heading.text)}</code>。中文页将它纳入 UsdPhysics 的阅读主线：schema 职责、刚体物理表达、USD 层级关系、解析 descriptor 与 simulation owner 边界。</span><span class="en">Source heading level ${heading.level}: ${esc(heading.text)}</span></li>`)
+    .join("\n");
+}
+
+function readingFlowNav() {
+  return `
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
-  <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
+  <a data-reading-flow="final" href="${links.final}">总入口</a>
   <span> / </span>
-  <a data-reading-flow="api-entry" href="../../site/index.html">API 本地入口</a>
+  <a data-reading-flow="api-entry" href="${links.api}">API 本地入口</a>
   <span> / api / usd_physics_page_front.html</span>
 </nav>
 <aside class="openusd-reading-flow-nav" aria-label="本地阅读导航 / Local reading navigation">
@@ -69,10 +174,10 @@
     <section>
       <h3>入口 / Entrances</h3>
       <ul>
-        <li><a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口 / Final entry</a></li>
-        <li><a data-reading-flow="release-entry" href="../../site/release_index.html">Release 本地入口</a></li>
-        <li><a data-reading-flow="api-entry" href="../../site/index.html">API Doxygen 本地入口</a></li>
-        <li><a data-reading-flow="api-redirect" href="../../site/api/index.html">API redirect / site/api/index.html</a></li>
+        <li><a data-reading-flow="final" href="${links.final}">总入口 / Final entry</a></li>
+        <li><a data-reading-flow="release-entry" href="${links.release}">Release 本地入口</a></li>
+        <li><a data-reading-flow="api-entry" href="${links.api}">API Doxygen 本地入口</a></li>
+        <li><a data-reading-flow="api-redirect" href="${links.apiRedirect}">API redirect / site/api/index.html</a></li>
       </ul>
     </section>
     <section>
@@ -85,28 +190,54 @@
     <section>
       <h3>相关 API / Related API</h3>
       <ul>
-        <li><a data-reading-flow="related" href="usd_geom_page_front.html">UsdGeom 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="usd_mtlx_page_front.html">UsdMtlx 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="class_usd_physics_joint.html">UsdPhysicsJoint</a><span class="openusd-reading-flow-status">draft</span></li>
-        <li><a data-reading-flow="related" href="struct_usd_physics_tokens_type.html">UsdPhysicsTokensType</a><span class="openusd-reading-flow-status">draft</span></li>
+        <li><a data-reading-flow="related" href="${links.usdGeom}">UsdGeom 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.usdMtlx}">UsdMtlx 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.joint}">UsdPhysicsJoint</a><span class="openusd-reading-flow-status">draft</span></li>
+        <li><a data-reading-flow="related" href="${links.tokens}">UsdPhysicsTokensType</a><span class="openusd-reading-flow-status">draft</span></li>
       </ul>
     </section>
     <section>
       <h3>上一页/下一页 / Previous/Next</h3>
       <ul>
-        <li><a data-reading-flow="prev" href="usd_mtlx_page_front.html">上一页 / Previous: UsdMtlx</a></li>
-        <li><a data-reading-flow="next" href="usd_proc_page_front.html">下一页 / Next: UsdProc</a></li>
+        <li><a data-reading-flow="prev" href="${links.prev}">上一页 / Previous: UsdMtlx</a></li>
+        <li><a data-reading-flow="next" href="${links.next}">下一页 / Next: UsdProc</a></li>
       </ul>
     </section>
     <section>
       <h3>官方外跳 / Official</h3>
       <ul>
-        <li><a class="official-link" data-reading-flow="official" href="https://openusd.org/release/api/usd_physics_page_front.html">打开官方原页 / Open official page</a></li>
+        <li><a class="official-link" data-reading-flow="official" href="${links.official}">打开官方原页 / Open official page</a></li>
       </ul>
     </section>
   </div>
 </aside>
-<!-- openusd-reading-flow-nav:end -->
+<!-- openusd-reading-flow-nav:end -->`;
+}
+
+function buildHtml() {
+  return `<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UsdPhysics: USD Physics Schema - OpenUSD API 双语导读</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>${css()}</style>
+</head>
+<body data-cn-status="bilingual_complete" data-cn-round="${ROUND}" class="openusd-has-reading-flow">
+  <header>
+    <span class="status">bilingual_complete</span>
+    <h1>UsdPhysics: USD Physics Schema</h1>
+    <div class="meta">Round ${ROUND} ${ROUND_TYPE} | Source snapshot: ${esc(SOURCE)} | Official: ${esc(OFFICIAL_URL)}</div>
+    <p class="navlinks">
+      <a href="${links.final}">总入口</a>
+      <a href="${links.api}">API 本地入口</a>
+      <a href="${links.release}">Release 本地入口</a>
+      <a href="${links.source}">Local source snapshot</a>
+      <a href="${links.official}">Open official page</a>
+    </p>
+  </header>
+${readingFlowNav()}
   <main>
     <section data-cn-complete="round-424-usd-physics-main-reading-path">
       <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
@@ -153,35 +284,16 @@
 
     <section data-cn-complete="round-424-usd-physics-adjacent-path">
       <h2>相邻阅读路径 / Adjacent Reading Path</h2>
-      <p><span class="zh">推荐阅读顺序是：先读本页建立 UsdPhysics 的 schema 边界；再读 <a href="usd_geom_page_front.html"><code>UsdGeom</code></a> 理解空间、transform、units 和层级；遇到物理材质与外观材质混用时回看 <a href="usd_mtlx_page_front.html"><code>UsdMtlx</code></a> 或 <code>UsdShade</code> 相关页面；需要 procedural 或生成式资产时再读 <a href="usd_proc_page_front.html"><code>UsdProc</code></a>。如果问题集中在关节，可以继续查看 <a href="class_usd_physics_joint.html"><code>UsdPhysicsJoint</code></a> 和 <a href="struct_usd_physics_tokens_type.html"><code>UsdPhysicsTokensType</code></a>。</span><span class="en">Read UsdPhysics with UsdGeom, UsdShade/UsdMtlx, UsdProc, joint, and token pages depending on the debugging path.</span></p>
+      <p><span class="zh">推荐阅读顺序是：先读本页建立 UsdPhysics 的 schema 边界；再读 <a href="${links.usdGeom}"><code>UsdGeom</code></a> 理解空间、transform、units 和层级；遇到物理材质与外观材质混用时回看 <a href="${links.usdMtlx}"><code>UsdMtlx</code></a> 或 <code>UsdShade</code> 相关页面；需要 procedural 或生成式资产时再读 <a href="${links.usdProc}"><code>UsdProc</code></a>。如果问题集中在关节，可以继续查看 <a href="${links.joint}"><code>UsdPhysicsJoint</code></a> 和 <a href="${links.tokens}"><code>UsdPhysicsTokensType</code></a>。</span><span class="en">Read UsdPhysics with UsdGeom, UsdShade/UsdMtlx, UsdProc, joint, and token pages depending on the debugging path.</span></p>
       <p class="note"><span class="zh">本页保留 <code>UsdPhysics</code>、<code>Rigid Body</code>、<code>Collision</code>、<code>Joint</code>、<code>Articulation</code>、<code>Physics Parsing</code> 等英文技术标识，便于和官方 Doxygen、源码、schema token 以及后端日志对照。中文只解释语义和边界，不重命名 API。</span><span class="en">English identifiers are preserved for source parity, searchability, and runtime log comparison.</span></p>
     </section>
 
     <section data-cn-complete="round-424-usd-physics-source-parity">
       <h2>官方 section 对比 / Source Parity</h2>
       <ul>
-<li><span class="zh">官方 section：<code>Purpose and Scope</code>。中文页将它纳入 UsdPhysics 的阅读主线：schema 职责、刚体物理表达、USD 层级关系、解析 descriptor 与 simulation owner 边界。</span><span class="en">Source heading level 1: Purpose and Scope</span></li>
-<li><span class="zh">官方 section：<code>Overall Design Concerns</code>。中文页将它纳入 UsdPhysics 的阅读主线：schema 职责、刚体物理表达、USD 层级关系、解析 descriptor 与 simulation owner 边界。</span><span class="en">Source heading level 1: Overall Design Concerns</span></li>
-<li><span class="zh">官方 section：<code>Rigid Body Simulation Primer</code>。中文页将它纳入 UsdPhysics 的阅读主线：schema 职责、刚体物理表达、USD 层级关系、解析 descriptor 与 simulation owner 边界。</span><span class="en">Source heading level 2: Rigid Body Simulation Primer</span></li>
-<li><span class="zh">官方 section：<code>USD Implementation</code>。中文页将它纳入 UsdPhysics 的阅读主线：schema 职责、刚体物理表达、USD 层级关系、解析 descriptor 与 simulation owner 边界。</span><span class="en">Source heading level 2: USD Implementation</span></li>
-<li><span class="zh">官方 section：<code>Physics Scenes</code>。中文页将它纳入 UsdPhysics 的阅读主线：schema 职责、刚体物理表达、USD 层级关系、解析 descriptor 与 simulation owner 边界。</span><span class="en">Source heading level 3: Physics Scenes</span></li>
-<li><span class="zh">官方 section：<code>Rigid Bodies</code>。中文页将它纳入 UsdPhysics 的阅读主线：schema 职责、刚体物理表达、USD 层级关系、解析 descriptor 与 simulation owner 边界。</span><span class="en">Source heading level 3: Rigid Bodies</span></li>
-<li><span class="zh">官方 section：<code>Collision Shapes</code>。中文页将它纳入 UsdPhysics 的阅读主线：schema 职责、刚体物理表达、USD 层级关系、解析 descriptor 与 simulation owner 边界。</span><span class="en">Source heading level 3: Collision Shapes</span></li>
-<li><span class="zh">官方 section：<code>Physics Materials</code>。中文页将它纳入 UsdPhysics 的阅读主线：schema 职责、刚体物理表达、USD 层级关系、解析 descriptor 与 simulation owner 边界。</span><span class="en">Source heading level 3: Physics Materials</span></li>
-<li><span class="zh">官方 section：<code>Collision Filtering</code>。中文页将它纳入 UsdPhysics 的阅读主线：schema 职责、刚体物理表达、USD 层级关系、解析 descriptor 与 simulation owner 边界。</span><span class="en">Source heading level 3: Collision Filtering</span></li>
-<li><span class="zh">官方 section：<code>Joints</code>。中文页将它纳入 UsdPhysics 的阅读主线：schema 职责、刚体物理表达、USD 层级关系、解析 descriptor 与 simulation owner 边界。</span><span class="en">Source heading level 3: Joints</span></li>
-<li><span class="zh">官方 section：<code>Joint Limits and Drives</code>。中文页将它纳入 UsdPhysics 的阅读主线：schema 职责、刚体物理表达、USD 层级关系、解析 descriptor 与 simulation owner 边界。</span><span class="en">Source heading level 3: Joint Limits and Drives</span></li>
-<li><span class="zh">官方 section：<code>Articulations</code>。中文页将它纳入 UsdPhysics 的阅读主线：schema 职责、刚体物理表达、USD 层级关系、解析 descriptor 与 simulation owner 边界。</span><span class="en">Source heading level 3: Articulations</span></li>
-<li><span class="zh">官方 section：<code>Physics Parsing Utils Overview.</code>。中文页将它纳入 UsdPhysics 的阅读主线：schema 职责、刚体物理表达、USD 层级关系、解析 descriptor 与 simulation owner 边界。</span><span class="en">Source heading level 1: Physics Parsing Utils Overview.</span></li>
-<li><span class="zh">官方 section：<code>Purpose and Scope</code>。中文页将它纳入 UsdPhysics 的阅读主线：schema 职责、刚体物理表达、USD 层级关系、解析 descriptor 与 simulation owner 边界。</span><span class="en">Source heading level 2: Purpose and Scope</span></li>
-<li><span class="zh">官方 section：<code>Physics Parsing Parameters</code>。中文页将它纳入 UsdPhysics 的阅读主线：schema 职责、刚体物理表达、USD 层级关系、解析 descriptor 与 simulation owner 边界。</span><span class="en">Source heading level 2: Physics Parsing Parameters</span></li>
-<li><span class="zh">官方 section：<code>Physics Parsing Determinism</code>。中文页将它纳入 UsdPhysics 的阅读主线：schema 职责、刚体物理表达、USD 层级关系、解析 descriptor 与 simulation owner 边界。</span><span class="en">Source heading level 2: Physics Parsing Determinism</span></li>
-<li><span class="zh">官方 section：<code>Physics Object Descriptor</code>。中文页将它纳入 UsdPhysics 的阅读主线：schema 职责、刚体物理表达、USD 层级关系、解析 descriptor 与 simulation owner 边界。</span><span class="en">Source heading level 2: Physics Object Descriptor</span></li>
-<li><span class="zh">官方 section：<code>Physics Scene Descriptor</code>。中文页将它纳入 UsdPhysics 的阅读主线：schema 职责、刚体物理表达、USD 层级关系、解析 descriptor 与 simulation owner 边界。</span><span class="en">Source heading level 2: Physics Scene Descriptor</span></li>
-<li><span class="zh">官方 section：<code>Physics Joint Descriptor</code>。中文页将它纳入 UsdPhysics 的阅读主线：schema 职责、刚体物理表达、USD 层级关系、解析 descriptor 与 simulation owner 边界。</span><span class="en">Source heading level 2: Physics Joint Descriptor</span></li>
-<li><span class="zh">官方 section：<code>Physics Articulation Descriptor</code>。中文页将它纳入 UsdPhysics 的阅读主线：schema 职责、刚体物理表达、USD 层级关系、解析 descriptor 与 simulation owner 边界。</span><span class="en">Source heading level 2: Physics Articulation Descriptor</span></li>
+${headingList()}
         <li><span class="zh">已核对 source snapshot 中的核心关键词：<code>UsdPhysics</code>、<code>physics-related prim and property schemas</code>、<code>Rigid Body Physics in USD</code>、<code>Physics Scenes</code>、<code>Rigid Bodies</code>、<code>Collision Shapes</code>、<code>Physics Materials</code>、<code>Collision Filtering</code>、<code>Joints</code>、<code>Joint Limits and Drives</code>、<code>Articulations</code>、<code>Physics Parsing Utils Overview</code>、<code>Physics Parsing Parameters</code>、<code>Physics Parsing Determinism</code> 和 <code>Simulation Owner Behavior</code>。</span><span class="en">The local page preserves the official UsdPhysics section and keyword structure.</span></li>
-        <li><span class="zh">官方原文摘录只用于核对，不作为中文主阅读路径：</span><span class="en">Universal Scene Description: UsdPhysics : USD Physics Schema Loading... Searching... No Matches UsdPhysics : USD Physics Schema Table of Contents Purpose and Scope Overall Design Concerns Rigid Body Simulation Primer USD Implementation Disambiguation Fundamental Editing Capabilities Physics Scenes Types Units Default Values Rigid Bodies Interaction with the USD hierarchy Sleep Kinematic Bodies Animation of Attributes Body Mass Properties Collision Shapes Turning Meshes into Shapes Physics Materials Plane Shapes Collision Filtering Pairwise Filtering Joints Joint Reference Frames Jointed Bodies Joint Collision Filtering Breaking and Disabling Joints Joint Subtypes Joint Limits and Drives Articulations Examples Box on Box Box on Quad Spheres with Materials Group Filtering Pair Filtering Joint Distance Joint Nested Articulation Physics Parsing Utils Overview. Purpose and Scope Specification Physics Parsing Parameters Physics Parsing Determinism Physics Object Descriptor Physics Scene Descriptor Physics Scene Simulation Owner Behavior Physics RigidBody Material Descriptor Physics RigidBody Material Simulation Owner Behavior Physics Collision Group Descriptor Physics Collision Group Simulation Owner Behavior Physics RigidBody Descriptor Physics RigidBody Simulation Owner Behavior Physics Shape Descriptor Physics Sphere Shape Descriptor Physics Capsule Shape Descriptor Physics Cylinder Shape Descriptor Physics Cone Shape Descriptor Physics Cube Shape Descriptor Physics Plane Shape </span></li>
+        <li><span class="zh">官方原文摘录只用于核对，不作为中文主阅读路径：</span><span class="en">${esc(sourceExcerpt())}</span></li>
       </ul>
     </section>
 
@@ -192,8 +304,220 @@
         <li><span class="zh">中文主阅读路径覆盖模块职责、官方 section、schema/API 分组、USD composition 边界、刚体/碰撞/材质/关节/articulation、parsing descriptor、调试路径和相邻 API。</span><span class="en">Chinese coverage explains role, sections, schemas, boundaries, debugging, and adjacent APIs.</span></li>
         <li><span class="zh">页面保留本地 reading-flow 侧栏、breadcrumb、总入口、API/Release 本地入口、相邻本地页和显式官方外跳。</span><span class="en">The page keeps local reading-flow navigation and explicit official access.</span></li>
       </ul>
-      <p><a data-reading-flow="official" href="https://openusd.org/release/api/usd_physics_page_front.html">打开官方原页 / Open official page</a></p>
+      <p><a data-reading-flow="official" href="${links.official}">打开官方原页 / Open official page</a></p>
     </section>
   </main>
 </body>
 </html>
+`;
+}
+
+function sourceParity() {
+  const src = sourceText();
+  const out = fs.existsSync(rel(TARGET)) ? fs.readFileSync(rel(TARGET), "utf8") : "";
+  const sourceKeywords = [
+    "UsdPhysics",
+    "physics-related prim and property schemas",
+    "Rigid Body Physics in USD",
+    "Purpose and Scope",
+    "Overall Design Concerns",
+    "Rigid Body Simulation Primer",
+    "USD Implementation",
+    "Physics Scenes",
+    "Rigid Bodies",
+    "Collision Shapes",
+    "Physics Materials",
+    "Collision Filtering",
+    "Pairwise Filtering",
+    "Joints",
+    "Joint Limits and Drives",
+    "Articulations",
+    "Physics Parsing Utils Overview",
+    "Physics Parsing Parameters",
+    "Physics Parsing Determinism",
+    "Physics Object Descriptor",
+    "Physics Scene Descriptor",
+    "Simulation Owner Behavior",
+  ];
+  const outputKeywords = [
+    ...sourceKeywords,
+    "Kinematic Bodies",
+    "Body Mass Properties",
+    "Joint Reference Frames",
+    "Physics Joint Descriptor",
+    "Physics Articulation Descriptor",
+    "UsdGeom",
+    "UsdPhysicsJoint",
+    "UsdPhysicsTokensType",
+    "Open official page",
+  ];
+  return {
+    generated_at: new Date().toISOString(),
+    round: ROUND,
+    round_type: ROUND_TYPE,
+    target: TARGET,
+    source_snapshot: SOURCE,
+    official_url: OFFICIAL_URL,
+    source_headings: sourceHeadings(),
+    source_keywords_checked: sourceKeywords,
+    output_keywords_checked: outputKeywords,
+    missing_source_keywords: sourceKeywords.filter((keyword) => !src.includes(keyword)),
+    missing_output_keywords: outputKeywords.filter((keyword) => !out.includes(keyword)),
+    output_checks: {
+      has_complete_status: out.includes('data-cn-status="bilingual_complete"') && out.includes(`data-cn-round="${ROUND}"`),
+      has_paragraph_coverage: out.includes("Paragraph-Level Bilingual Coverage") && out.includes("逐段双语理解"),
+      has_final_entry: out.includes("openusd_bilingual_final.html"),
+      has_api_entry: out.includes("site/index.html"),
+      has_api_redirect: out.includes("site/api/index.html"),
+      has_release_entry: out.includes("site/release_index.html"),
+      has_reading_flow_nav: out.includes("openusd-reading-flow-nav") && out.includes("openusd-reading-flow-breadcrumb"),
+      has_explicit_official_link: out.includes("Open official page") && out.includes(OFFICIAL_URL),
+      no_draft_marker: !/bilingual_draft|batch draft page|后续迭代会继续补齐|later iterations add denser bilingual coverage/.test(out),
+      zh_chars: zhChars(out),
+      zh_blocks: (out.match(/class=["'][^"']*\bzh\b[^"']*["']/g) || []).length,
+    },
+  };
+}
+
+function writePage() {
+  fs.writeFileSync(rel(TARGET), buildHtml(), "utf8");
+  writeJson(SOURCE_PARITY_REPORT, sourceParity());
+}
+
+function precheck() {
+  const report = sourceParity();
+  const failed = [];
+  if (report.missing_source_keywords.length) failed.push(`missing source keywords: ${report.missing_source_keywords.join(", ")}`);
+  if (report.missing_output_keywords.length) failed.push(`missing output keywords: ${report.missing_output_keywords.join(", ")}`);
+  for (const [key, value] of Object.entries(report.output_checks)) {
+    if (typeof value === "boolean" && !value) failed.push(`output check failed: ${key}`);
+  }
+  if (report.output_checks.zh_chars < 2400) failed.push(`zh chars too low: ${report.output_checks.zh_chars}`);
+  if (report.output_checks.zh_blocks < 14) failed.push(`zh blocks too low: ${report.output_checks.zh_blocks}`);
+  if (failed.length) {
+    console.error(JSON.stringify({ passed: false, failed, report }, null, 2));
+    process.exit(1);
+  }
+  writeJson(SOURCE_PARITY_REPORT, report);
+  console.log(JSON.stringify({ passed: true, report }, null, 2));
+}
+
+function updateManifest() {
+  const raw = readJson("reports/bilingual_completion_promotions.json");
+  const doc = {
+    ...raw,
+    generated_at: raw.generated_at || new Date().toISOString(),
+    promotions: Array.isArray(raw.promotions) ? raw.promotions : [],
+    updated_at: new Date().toISOString(),
+  };
+  doc.promotions = doc.promotions.filter((entry) => entry.id !== PROMOTION_ID && entry.local_output !== TARGET);
+  doc.promotions.push({
+    id: PROMOTION_ID,
+    title: "UsdPhysics: USD Physics Schema",
+    official_url: OFFICIAL_URL,
+    local_output: TARGET,
+    status: "bilingual_complete",
+    reason: `Round ${ROUND} ${ROUND_TYPE}: promote the UsdPhysics module front page by adding Chinese main-reading-path coverage for rigid body physics, USD implementation, physics scenes, rigid bodies, collision shapes, physics materials, collision filtering, joints, articulations, physics parsing utilities, descriptor boundaries, source parity, reading-flow navigation, and explicit official-page verification.`,
+    evidence: {
+      page_contains_status: "bilingual_complete",
+      generic_draft_marker_removed: true,
+      minimum_chinese_chars: 2400,
+      minimum_complete_section_chinese_chars: 1900,
+      minimum_chinese_blocks: 14,
+      official_source_compared: true,
+      local_source_snapshot_compared: SOURCE,
+      source_parity_report: SOURCE_PARITY_REPORT,
+      round_type: ROUND_TYPE,
+    },
+  });
+  writeJson("reports/bilingual_completion_promotions.json", doc);
+}
+
+function updateProblemAudit() {
+  const quality = readJson("reports/translation_quality_review.json");
+  const debt = readJson("reports/english_debt_audit.json");
+  const inventory = readJson("reports/all_pages_inventory.json");
+  const counts = {
+    total_pages: inventory.counts.total_pages,
+    bilingual_complete: quality.status_counts.bilingual_complete,
+    bilingual_draft: quality.status_counts.bilingual_draft,
+    good_bilingual: quality.grade_counts.good_bilingual,
+    draft_needs_translation: quality.grade_counts.draft_needs_translation,
+    draft_template_only: quality.grade_counts.draft_template_only,
+    review_ready_zh: debt.counts.review_ready_zh,
+    api_complete: debt.counts.api_complete,
+    api_review_ready_zh: debt.counts.api_review_ready_zh,
+    release_complete: debt.counts.release_complete,
+    release_review_ready_zh: debt.counts.release_review_ready_zh,
+    pending_full_scope: inventory.counts.pending_full_scope_pages,
+  };
+  writeJson("reports/current_problem_audit.json", {
+    generated_at: new Date().toISOString(),
+    purpose: `第 ${ROUND} 轮 ${ROUND_TYPE} 记录：确认 ${TARGET} 已晋级，并跟踪当前 OpenUSD 双语完成缺口。`,
+    last_completed_round: {
+      round: ROUND,
+      round_type: ROUND_TYPE,
+      target: TARGET,
+      commit_sha: null,
+      previous_good_bilingual: 202,
+    },
+    current_counts: counts,
+    problems: [
+      {
+        id: "P0-api-draft-backlog",
+        severity: "P0",
+        summary: `当前 good_bilingual=${counts.good_bilingual}/406，API complete=${counts.api_complete}，仍有 ${counts.bilingual_draft} 个可检查草稿，不是完整翻译。`,
+        evidence: `第 ${ROUND} 轮 ${ROUND_TYPE} 将 ${TARGET} 从 API 草稿晋级为 good_bilingual；release 范围保持 ${counts.release_complete}/126 complete。`,
+        required_action: "继续按 PromotionRound 或 DomainSprintRound 推进 API 草稿，只把达标页面写入 promotion manifest。",
+      },
+      {
+        id: "P1-left-navigation-reading-flow",
+        severity: "P1",
+        summary: "完成页必须保留本地 reading-flow 导航、breadcrumb、API/Release/总入口和显式官方外跳。",
+        evidence: "本轮完成后重新运行 route_openusd_internal_links_local 和 audit_openusd_reading_flow_navigation；新增页面有本地侧栏、breadcrumb 和官方外跳。",
+        required_action: "若 reading-flow 审计失败，停止并修复导航，不得推送。",
+      },
+      {
+        id: "P1-markdown-record-encoding",
+        severity: "P1",
+        summary: "Markdown 编码守卫继续作为硬门槛。",
+        evidence: "work.md、reports/iteration_report.md、reports/current_problem_audit.md、reports/bilingual_completion_promotions.md 必须无重复问号损坏、replacement character 和 UTF-8 BOM。",
+        required_action: "若 audit_openusd_markdown_encoding.mjs 失败，先做 ConsistencyRound。",
+      },
+    ],
+    promoted_pages: [
+      {
+        round: ROUND,
+        round_type: ROUND_TYPE,
+        output: TARGET,
+        official_url: OFFICIAL_URL,
+        source_snapshot: SOURCE,
+        source_parity_report: SOURCE_PARITY_REPORT,
+      },
+    ],
+    not_promoted_pages: [],
+    source_parity_report: SOURCE_PARITY_REPORT,
+    next_actions: [
+      "继续推进 API 草稿；release 范围已经 126/126 complete，不要重复处理 release 已完成页。",
+      "优先选择核心 API 或同域短页批量，但每轮必须保证 good_bilingual 按实际达标页增长。",
+    ],
+    next_action: "下一轮建议 PromotionRound：full_site/api/usd_proc_page_front.html；开始前必须确认 git/report/validation/markdown/reading-flow 状态干净一致。",
+  });
+}
+
+function stampCommit(sha) {
+  const problem = readJson("reports/current_problem_audit.json");
+  if (problem.last_completed_round) problem.last_completed_round.commit_sha = sha;
+  writeJson("reports/current_problem_audit.json", problem);
+}
+
+const commands = new Set(process.argv.slice(2));
+if (commands.has("--write-page")) writePage();
+if (commands.has("--precheck")) precheck();
+if (commands.has("--manifest")) updateManifest();
+if (commands.has("--problem")) updateProblemAudit();
+const stampArg = process.argv.find((arg) => arg.startsWith("--stamp-commit="));
+if (stampArg) stampCommit(stampArg.slice("--stamp-commit=".length));
+if (commands.size === 0 && !stampArg) {
+  console.log("Usage: node scripts/promote_round_424_usd_physics_module_front.mjs --write-page --precheck --manifest --problem --stamp-commit=<sha>");
+}
