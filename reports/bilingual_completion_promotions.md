@@ -1,6 +1,6 @@
 # OpenUSD 完整双语晋级清单
 
-Generated: 2026-06-08T03:58:23.784Z
+Generated: 2026-06-08T04:32:34.958Z
 
 这份清单只记录已经从 `bilingual_draft` 晋级为 `bilingual_complete` 的页面。它是 `scripts/discover_openusd_all_pages.mjs` 识别 promoted complete 页面的审计来源，不等同于把草稿页改一个状态。
 
@@ -16,6 +16,12 @@ Generated: 2026-06-08T03:58:23.784Z
 
 | ID | 本地输出 | 官方页面 | 状态 |
 | --- | --- | --- | --- |
+| `round-413-release-user-guide-color-user-guide` | `full_site/release/user_guides/color_user_guide.html` | `https://openusd.org/release/user_guides/color_user_guide.html` | bilingual_complete |
+| `round-413-release-user-guide-namespace-editing` | `full_site/release/user_guides/namespace_editing.html` | `https://openusd.org/release/user_guides/namespace_editing.html` | bilingual_complete |
+| `round-413-release-user-guide-primvars` | `full_site/release/user_guides/primvars.html` | `https://openusd.org/release/user_guides/primvars.html` | bilingual_complete |
+| `round-413-release-user-guide-render-user-guide` | `full_site/release/user_guides/render_user_guide.html` | `https://openusd.org/release/user_guides/render_user_guide.html` | bilingual_complete |
+| `round-413-release-user-guide-time-and-animated-values` | `full_site/release/user_guides/time_and_animated_values.html` | `https://openusd.org/release/user_guides/time_and_animated_values.html` | bilingual_complete |
+| `round-413-release-user-guide-variable-expressions` | `full_site/release/user_guides/variable_expressions.html` | `https://openusd.org/release/user_guides/variable_expressions.html` | bilingual_complete |
 | `round-412-release-schema-guides-schemas-index` | `full_site/release/user_guides/schemas/index.html` | `https://openusd.org/release/user_guides/schemas/index.html` | bilingual_complete |
 | `round-412-release-schema-guides-usdLux-overview` | `full_site/release/user_guides/schemas/usdLux/overview.html` | `https://openusd.org/release/user_guides/schemas/usdLux/overview.html` | bilingual_complete |
 | `round-412-release-schema-guides-usdLux-toc` | `full_site/release/user_guides/schemas/usdLux/usdLux_toc.html` | `https://openusd.org/release/user_guides/schemas/usdLux/usdLux_toc.html` | bilingual_complete |

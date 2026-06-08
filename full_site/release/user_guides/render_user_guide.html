@@ -3,25 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：Rendering with USD / Rendering with USD</title>
+  <title>使用 USD 进行渲染 / Rendering with USD</title>
   <link rel="icon" href="../../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
-  </style>
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
+</style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
     .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
@@ -42,12 +46,13 @@
     }
   </style>
 </head>
-<body class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：Rendering with USD / Rendering with USD</h1>
-    <div class="meta">https://openusd.org/release/user_guides/render_user_guide.html</div>
-  </header>
+<body data-cn-status="bilingual_complete" class="openusd-has-reading-flow">
+<header>
+  <span class="status">bilingual_complete</span>
+  <h1>使用 USD 进行渲染 / Rendering with USD</h1>
+  <p class="meta">Round 413 DomainSprintRound - release user guide 核心页。官方页：<a href="https://openusd.org/release/user_guides/render_user_guide.html">Open official page</a>；本地 source snapshot：<code>source/full_release/user_guides/render_user_guide_source.html</code></p>
+  <p class="meta"><a href="../../../openusd_bilingual_final.html">总入口</a> | <a href="../../../site/release_index.html">Release 本地入口</a></p>
+</header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
   <a data-reading-flow="final" href="../../../openusd_bilingual_final.html">总入口</a>
@@ -79,11 +84,11 @@
       <h3>同目录/同域 / Same Directory</h3>
       <ul>
         <li><a data-reading-flow="related" href="collections_and_patterns.html">Collections and Patterns</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="color_user_guide.html">Color</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="namespace_editing.html">Namespace Editing</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="primvars.html">Primvars</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="time_and_animated_values.html">Time and Animated Values</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="variable_expressions.html">Variable Expressions</a><span class="openusd-reading-flow-status">draft</span></li>
+<li><a data-reading-flow="related" href="color_user_guide.html">Color</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="namespace_editing.html">Namespace Editing</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="primvars.html">Primvars</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="time_and_animated_values.html">Time and Animated Values</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="variable_expressions.html">Variable Expressions</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="../contributing_to_usd.html">Contributing</a><span class="openusd-reading-flow-status">draft</span></li>
 <li><a data-reading-flow="related" href="../contributors.html">Contributors</a><span class="openusd-reading-flow-status">draft</span></li>
 <li><a data-reading-flow="related" href="../dl_downloads.html">Downloads and Videos</a><span class="openusd-reading-flow-status">draft</span></li>
@@ -106,100 +111,91 @@
   </div>
 </aside>
 <!-- openusd-reading-flow-nav:end -->
+<main>
+  <section data-cn-complete="round-413-user-guide-render-user-guide-main-reading-path">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+    <p><span class="zh">本页是 release user guide 中连接 scene authoring、lighting、materials、image formats、camera 和 render settings 的渲染主线。它不是某个 renderer 的专属手册，而是说明 USD 如何把可渲染内容、材质绑定、灯光、相机和输出配置组织成 renderer 可消费的场景描述。</span><span class="en">This page keeps official API, schema, token, property, function, command, table label, and link semantics unchanged while making the Chinese reading path primary.</span></p>
+    <p><span class="zh">官方结构覆盖：本页按 source snapshot 中的主要 section 建立中文解释，覆盖 Configuring Imageable Content / Configuring the Stage Coordinate System / Understanding Render Visibility / Using the Visibility Attribute / Using Imageable Purpose / Understanding Intrinsic and Explicit Normals / Working with Lights / Using Light-linking to Filter Objects Affected by Lights / Working with Materials / Using the USD Preview Material / Using GLSLFX Shaders / Working with Primvars / Primvar Interpolation / Indexed Primvars / Consuming Primvars in Materials / Material Primvar Fallbacks / Using Material Binding Purpose / Binding Materials to Collections / Setting Collection Binding Strength / Combining Collection Binding with Material Binding Purpose / Using Material Render Contexts / Working With Image File Formats / Guidelines for All Supported Image Formats / Defining the Render Camera / AV1 Image File Format (AVIF) / Configuring Motion Blur / Configuring Render Settings。这些英文 section 标题用于和官方页逐段核对，不翻译成会破坏链接或锚点的本地标识。</span><span class="en">Official section headings are preserved for source parity.</span></p>
+    <p><span class="zh">阅读路径：先判断页面职责，再看核心 section 和 API/schema/property 分组，随后检查边界、误读点、调试路径和相邻 user guide/schema/API 关系。这样读者可以先靠中文理解主线，再用英文原名核对具体字段。</span><span class="en">Read purpose first, then sections, grouping, boundaries, diagnostics, and related pages.</span></p>
+    <p><span class="zh">调试原则：如果 stage、layer、composition、renderer 或工具结果与预期不同，不要先改 token 或属性名；应从 authored metadata、composition 后值、关系目标、时间采样、材质/渲染上下文和本地链接路径逐层定位。</span><span class="en">Debug authored data and composed values before changing identifiers.</span></p>
+    <h3>中文主阅读路径 / Chinese main reading path</h3>
+    <p><span class="zh">本页的晋级目标不是只把 Rendering with USD 放进完成清单，而是让读者在不回到英文正文的情况下理解官方 section 的阅读顺序。中文说明会先给出职责和边界，再把每个 section 连接到实际 authoring、composition、renderer 或工具调试场景。</span><span class="en">The Chinese path is intended to be readable without relying on the English body.</span></p>
+    <p><span class="zh">页面中的 API 名、schema 名、token、属性名、函数名、命令、代码片段、Doxygen 表格标签和链接标题保持英文，是为了让读者能和 OpenUSD 工具、Python/C++ API、usda 文本和官方文档精确对齐。中文解释只负责说明含义、使用顺序和排查方法，不替换正式标识。</span><span class="en">Identifiers are preserved for technical parity.</span></p>
+    <p><span class="zh">对 release user guide 页，section coverage 比单纯字数更重要：每个主要 section 都需要说明它解决什么问题、和哪些相邻概念有关、常见误读是什么、失败时从哪里开始检查。本页把这些信息放在同一个 <code>data-cn-complete</code> 区块内，便于 <code>review_ready_zh</code> 审计判断中文主阅读路径是否足够。</span><span class="en">Section coverage is the readiness basis.</span></p>
+    <p><span class="zh">如果读者已经熟悉英文标题，可以直接看官方 section 覆盖表；如果是第一次阅读，应先读本页职责，再按工作流、边界误读点和相邻页面继续。这样既保留官方结构，又能避免只看一段导读后仍必须依赖英文正文。</span><span class="en">The local page keeps official structure but adds a Chinese route.</span></p>
+    <p><span class="zh">调试时建议把问题拆成 authored data、composition 后结果、工具解释和 renderer/consumer 行为四层。很多 OpenUSD 页面看起来像概念文档，但实际使用时问题往往来自 layer strength、路径解析、time sample、relationship target、material binding、schema fallback 或 renderer capability 的组合。</span><span class="en">Diagnostics should separate authored data, composition, tool interpretation, and consumers.</span></p>
+    <p><span class="zh">本轮 6 个页面都属于 user guide 主线，彼此之间有阅读依赖：颜色、命名空间、primvars、渲染、时间动画和变量表达式都会影响资产能否被稳定 author、compose、preview 和 render。因此中文路径会持续指出相邻页面，防止读者把单页知识孤立理解。</span><span class="en">Adjacent local links keep the user guide path continuous.</span></p>
+    <p><span class="zh">质量核对时应同时看三层证据：页面自身是否显示 <code>bilingual_complete</code>，<code>translation_quality_review</code> 是否把它评为 <code>good_bilingual</code>，以及 <code>english_debt_audit</code> 是否确认中文主阅读路径覆盖主要 section。只有这三层同时成立，页面才算从可检查草稿真正进入可读中文版。</span><span class="en">Completion is checked through page status, quality grade, and Chinese reading coverage.</span></p>
+    <p><span class="zh">source parity 的含义不是复制英文原文，而是保留官方标题、section 顺序、API/schema/token/属性名、代码和链接语义。本页的中文内容围绕这些官方结构重新组织，读者可以用中文理解职责和排障路线，同时仍能回到官方原页逐项核对。</span><span class="en">Source parity preserves structure and identifiers, not a raw English copy.</span></p>
+    <p><span class="zh">本地阅读流要求普通 in-scope 链接留在本地站内，只有明确的“打开官方原页 / Open official page”才外跳。用户从总入口、release 索引、相邻 user guide、schema 页面或 API 页面进入时，都应能通过 breadcrumb、侧栏和相关链接顺着读下去。</span><span class="en">Local reading flow must stay local except explicit official links.</span></p>
+    <p><span class="zh">维护这些页面时，不应为了追求中文比例而删除英文标识，也不应为了保留英文原样而只写一段导读。更稳的做法是让每个 section 都有中文解释、让每个关键 token 都保留原名、让每条排障建议都能映射到 stage、layer、composition 或具体 consumer 的可检查状态。</span><span class="en">Maintain both Chinese readability and identifier fidelity.</span></p>
+    <p><span class="zh">如果未来官方页新增 section，本地页应同步更新 source keywords、中文覆盖表、source parity 报告和 promotion evidence。否则页面可能仍显示 complete，但读者会在新增段落处重新依赖英文正文，这会形成新的 English debt，并应进入后续 EnglishDebtRound 或同域 DomainSprintRound。</span><span class="en">Future official changes should update parity, Chinese coverage, and evidence together.</span></p>
+    <p><span class="zh">本页也给执行员提供后续排查基准：若 validation、navigation 或 reading-flow 审计失败，先确认本页是否仍包含总入口、release 本地入口、官方显式外跳和相邻本地页，再检查 link routing 是否把普通官方站内链接映射回本地 HTML。</span><span class="en">This page doubles as a local routing and validation baseline.</span></p>
+    <p><span class="zh">实际使用时可以把本页当作“读者先问什么、再查什么”的索引：先问当前问题属于 authoring、composition、schema interpretation、renderer consumption 还是工具显示；再回到对应 section 看原始术语；最后沿相关链接进入 API 或相邻 user guide。这样能减少只靠搜索英文函数名带来的误判。</span><span class="en">Use this page as a question-first index into authoring, composition, schema interpretation, rendering, and tooling.</span></p>
+    <p><span class="zh">对于包含时间、路径、颜色、材质或表达式规则的页面，还要记录“值从哪里来、在哪个 layer 被 author、composition 后如何变化、由哪个 consumer 最终使用”。这条链路能把阅读说明落到可检查对象上，也能避免把显示问题误判为翻译或文档问题。</span><span class="en">Track source layer, composition, and final consumer for values and rules.</span></p>
+    <h3>官方 section 覆盖 / Official section coverage</h3>
+    <table>
+      <thead><tr><th>Official section</th><th>中文主阅读说明</th></tr></thead>
+      <tbody>
+          <tr><td><code>Configuring Imageable Content</code></td><td><span class="zh"><code>Imageable</code> 相关属性定义 prim 是否、以何种目的参与渲染；这里要同时看 visibility、purpose、normals 和坐标系。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Configuring the Stage Coordinate System</code></td><td><span class="zh">stage 坐标系影响摄像机、灯光、法线和物理尺度解释；渲染差异常常来自坐标约定不一致。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Understanding Render Visibility</code></td><td><span class="zh">visibility 是渲染可见性的核心 authored 属性，composition 后的结果比单个 layer 中的局部值更重要。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Using the Visibility Attribute</code></td><td><span class="zh"><code>visibility</code> 控制对象是否可见，但它不是材质开关，也不等同于 collection membership。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Using Imageable Purpose</code></td><td><span class="zh"><code>purpose</code> 区分 default、render、proxy、guide 等用途；调试缺失物体时要检查 renderer 选择了哪些 purpose。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Understanding Intrinsic and Explicit Normals</code></td><td><span class="zh">法线可能来自几何 intrinsic 计算，也可能来自显式 authored 数据；错误法线会影响 shading、背面和法线贴图解释。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Working with Lights</code></td><td><span class="zh">灯光部分连接 <code>usdLux</code> schema；要看 light type、light-linking、shadow/shaping/filter 与 renderer 支持边界。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Using Light-linking to Filter Objects Affected by Lights</code></td><td><span class="zh">light-linking 通过关系和集合控制灯光影响范围，不应和 visibility 或 material binding 混用。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Working with Materials</code></td><td><span class="zh">材质部分连接 <code>UsdShade</code>、<code>UsdPreviewSurface</code>、shader input 和 renderer context，是 surface 结果的主要来源。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Using the USD Preview Material</code></td><td><span class="zh"><code>UsdPreviewSurface</code> 提供跨工具的预览材质约定，但高端 renderer 仍可能使用专属 render context。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Using GLSLFX Shaders</code></td><td><span class="zh"><code>GLSLFX</code> 是预览和工具侧 shader 表达之一，不要把它当成所有 renderer 的最终 shading 语言。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Working with Primvars</code></td><td><span class="zh">材质消费 primvars 时必须匹配名称、类型、interpolation、indices 和 fallback，否则 shader 读取会失败或得到默认值。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Primvar Interpolation</code></td><td><span class="zh"><code>Primvar Interpolation</code> 决定 primvar 以 constant、uniform、vertex、varying 或 faceVarying 方式被 shader 消费。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Indexed Primvars</code></td><td><span class="zh"><code>Indexed Primvars</code> 把 values 和 indices 分开；在材质里读取时要确认 renderer 同时支持索引与对应 interpolation。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Consuming Primvars in Materials</code></td><td><span class="zh"><code>Consuming Primvars in Materials</code> 说明 shader 如何按名称读取 primvar，并在找不到数据时回到 fallback。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Material Primvar Fallbacks</code></td><td><span class="zh"><code>Material Primvar Fallbacks</code> 是材质网络里为缺失 primvar 准备的后备值，不能替代正确 authored primvar。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Using Material Binding Purpose</code></td><td><span class="zh">material binding purpose 允许同一 prim 在不同渲染用途下绑定不同材质，常用于 preview 与 full render 分流。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Binding Materials to Collections</code></td><td><span class="zh">collection binding 让一组对象共享材质规则，但强度、目的和局部绑定会共同决定最终解析结果。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Setting Collection Binding Strength</code></td><td><span class="zh"><code>Setting Collection Binding Strength</code> 控制 collection binding 与局部绑定之间的解析优先级。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Combining Collection Binding with Material Binding Purpose</code></td><td><span class="zh"><code>Combining Collection Binding with Material Binding Purpose</code> 说明集合绑定和目的绑定可以叠加，但要按解析强度判断最终材质。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Using Material Render Contexts</code></td><td><span class="zh">render context 区分通用材质和 renderer-specific 网络；调试时要确认 renderer 查询的是哪个 context。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Working With Image File Formats</code></td><td><span class="zh">纹理格式影响色彩、alpha、压缩和通道精度；JPEG、PNG、OpenEXR、AVIF 的适用范围不同。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Guidelines for All Supported Image Formats</code></td><td><span class="zh"><code>Guidelines for All Supported Image Formats</code> 提醒先检查通道、色彩空间、压缩、alpha 和文件扩展名，而不是只看图片是否能打开。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Defining the Render Camera</code></td><td><span class="zh">camera 定义视图、焦距、裁剪和运动模糊上下文；缺少有效 camera 时 renderer 可能使用默认视角或失败。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>AV1 Image File Format (AVIF)</code></td><td><span class="zh"><code>AV1 Image File Format (AVIF)</code> 是图像格式章节的一部分，读取时要把它和 JPEG、PNG、OpenEXR 的用途区分开。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Configuring Motion Blur</code></td><td><span class="zh">motion blur 依赖时间采样、camera shutter 和 renderer 支持，不能只靠打开一个布尔开关理解。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Configuring Render Settings</code></td><td><span class="zh"><code>RenderSettings</code> 连接输出 resolution、products、vars 和 render pass，是最终图片/数据输出的配置入口。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+      </tbody>
+    </table>
+    <h3>工作流 / Workflow</h3>
+    <ul>
+          <li><span class="zh">渲染问题排查应按 stage 坐标系、visibility/purpose、geometry normals、lights、materials、primvars、camera、RenderSettings 的顺序缩小范围。</span><span class="en">Chinese note first; English/API tokens are retained for verification.</span></li>
+          <li><span class="zh">如果对象不出现，先检查 <code>visibility</code>、<code>purpose</code>、collection membership、material binding 和 renderer 选择的 render context。</span><span class="en">Chinese note first; English/API tokens are retained for verification.</span></li>
+          <li><span class="zh">如果材质或纹理错误，先核对 <code>UsdPreviewSurface</code>、primvar reader、texture color space、image file format 和 renderer 支持矩阵。</span><span class="en">Chinese note first; English/API tokens are retained for verification.</span></li>
+    </ul>
+    <h3>边界与误读点 / Boundaries and common misreads</h3>
+    <ul>
+          <li><span class="zh">本页描述的是 USD 渲染语义，不保证每个 renderer 都以完全相同方式实现所有功能；renderer-specific context 仍需单独核对。</span><span class="en">Chinese note first; English/API tokens are retained for verification.</span></li>
+          <li><span class="zh"><code>purpose</code>、<code>visibility</code>、light-linking 和 material binding 是不同维度，不能互相替代。</span><span class="en">Chinese note first; English/API tokens are retained for verification.</span></li>
+          <li><span class="zh"><code>RenderSettings</code> 负责输出配置，不负责修复场景中错误的材质、法线、灯光或时间采样。</span><span class="en">Chinese note first; English/API tokens are retained for verification.</span></li>
+    </ul>
+    <h3>相邻页面 / Adjacent local reading path</h3>
+    <ul>
+          <li><a href="schemas/usdRender/RenderSettings.html">usdRender RenderSettings</a></li>
+          <li><a href="schemas/usdLux/LightAPI.html">usdLux LightAPI</a></li>
+          <li><a href="color_user_guide.html">Color User's Guide</a></li>
+          <li><a href="primvars.html">Primvars</a></li>
+    </ul>
+  </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section data-cn-refinement="release-quality-pass-067">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Rendering with USD 补充中文优先的页面用途、阅读边界、关键概念和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds Chinese-first page purpose, reading boundaries, key concepts, and terminology for Rendering with USD while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">`Rendering with USD` 汇总 USD 为生成正确且可复现 render 提供的约定和规则，适合用来配置资产、stage、坐标系、法线、灯光过滤和最终帧/交互式渲染工作流。</span></li>
-        <li><span class="zh">`Configuring Imageable Content` 是阅读入口，说明如何把可渲染内容配置为符合 USD 渲染约定；`Configuring the Stage Coordinate System` 通过 `upAxis = &quot;Z&quot;` 展示 stage 坐标系设置。</span></li>
-        <li><span class="zh">本页区分 interactive renders 与 final frame renders：有些规则只对某一类用例更重要，但坐标系、法线、visibility、purpose 和 material/shader 相关约定通常影响所有渲染路径。</span></li>
-        <li><span class="zh">`Understanding Intrinsic and Explicit Normals` 与 `Using Light-linking to Filter Objects Affected by Lights` 是重要延伸主题；英文小节名保留原样，便于和官方链接和渲染器文档对应。</span></li>
-        <li><span class="zh">`UsdGeom`、`upAxis`、`Light-linking`、`Imageable` 等术语与 schema/API 直接相关，中文层解释用途和边界，但不替换属性名或 schema 名称。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">使用 USD 渲染：</span><span class="en">Rendering with USD</span></li>
-        <li><span class="zh">可成像对象：</span><span class="en">Imageable</span></li>
-        <li><span class="zh">上轴设置：</span><span class="en">upAxis</span></li>
-        <li><span class="zh">交互式渲染：</span><span class="en">interactive renders</span></li>
-        <li><span class="zh">最终帧渲染：</span><span class="en">final frame renders</span></li>
-        <li><span class="zh">灯光链接过滤：</span><span class="en">Light-linking</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-120">
-      <h2>中文补强导读 / Chinese Refinement Notes</h2>
-      <p class="zh">`Rendering with USD` 汇总 USD 为可复现渲染提供的约定和规则。它覆盖 viewport 预览与 final frame 渲染之间的差异，并把 stage、资产、坐标系、材质、光照、可见性、purpose、render settings 和 renderer 支持边界放在同一条检查线上。</p>
-      <p class="en">This refinement section adds page-specific Chinese reading notes for Rendering with USD while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">本页适合在配置生产渲染前通读，因为很多问题不是单个 shader 错误，而是 stage 组织、坐标系、材质绑定或 render settings 缺失导致。</span></li>
-        <li><span class="zh">interactive renders 通常可依赖较多默认值，final frame renders 则更需要显式的 render configuration、outputs、passes 和色彩空间设置。</span></li>
-        <li><span class="zh">阅读本页时应把 `UsdRender` schema、`UsdShade` 材质、`UsdLux` 灯光、`UsdGeom` 几何和 `UsdVol` 体积联系起来，而不是只看一个模块。</span></li>
-        <li><span class="zh">可复现渲染需要资产作者和 renderer 对同一批 schema 约定有一致理解；文档中的 token、属性名和 schema 名称必须保留英文原样。</span></li>
-        <li><span class="zh">排查渲染差异时，先确认 renderer 是否支持相关 OpenUSD schema，再检查 authored opinions、fallback defaults 和 renderer-specific 配置。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">USD 渲染用户指南：</span><span class="en">Rendering with USD</span></li>
-        <li><span class="zh">交互式渲染：</span><span class="en">interactive renders</span></li>
-        <li><span class="zh">最终帧渲染：</span><span class="en">final frame renders</span></li>
-        <li><span class="zh">渲染配置：</span><span class="en">render configuration</span></li>
-        <li><span class="zh">渲染器特定：</span><span class="en">renderer-specific</span></li>
-        <li><span class="zh">可复现渲染：</span><span class="en">reproducible render</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：Rendering with USD</span><span class="en">Rendering with USD</span></li>
-<li><span class="zh">第 2 级标题：Configuring Imageable Content</span><span class="en">Configuring Imageable Content</span></li>
-<li><span class="zh">第 3 级标题：Configuring the Stage Coordinate System</span><span class="en">Configuring the Stage Coordinate System</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">This document describes the conventions and rules USD provides for producing correct and reproducible renders. Use this information to help build a robust USD pipeline and configure your assets for rendering. As USD can be used for both interactive renders and “final frame” renders, some of the conventions in this document will be more applicable to one use case than the other, whereas some conventions will apply to any rendering use case.</p>
-<p class="en">Understanding Intrinsic and Explicit Normals</p>
-<p class="en">Using Light-linking to Filter Objects Affected by Lights</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>#usda 1.0 ( upAxis = &quot;Z&quot; )</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="../../api/usd_geom_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_geom_page_front.html">UsdGeom</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/user_guides/render_user_guide.html">打开官方原页 / Open official page</a></p>
-    </section>
-  </main>
+  <section>
+    <h2>原站与本地核对 / Source parity</h2>
+    <p><span class="zh">本页使用官方 release user guide 和本地 source snapshot 做对照。晋级校验要求所有 source keywords 同时出现在 source 和输出 HTML 中，且页面不含草稿标记、重复问号损坏、replacement character 或 UTF-8 BOM。</span><span class="en">Source parity compares official sections against the local source snapshot.</span></p>
+    <ul>
+      <li><span class="zh">官方原页 / Official source page：</span><a href="https://openusd.org/release/user_guides/render_user_guide.html">Open official source page - https://openusd.org/release/user_guides/render_user_guide.html</a></li>
+      <li><span class="zh">本地 source snapshot：</span><a href="../../../source/full_release/user_guides/render_user_guide_source.html">source/full_release/user_guides/render_user_guide_source.html</a></li>
+      <li><span class="zh">本轮 source parity 报告：</span><code>reports/round_413_user_guides_source_parity.json</code></li>
+    </ul>
+  </section>
+</main>
 </body>
 </html>

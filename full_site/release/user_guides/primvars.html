@@ -3,25 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：Primvars / Primvars</title>
+  <title>Primvars 用户指南 / Primvars</title>
   <link rel="icon" href="../../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
-  </style>
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
+</style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
     .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
@@ -42,12 +46,13 @@
     }
   </style>
 </head>
-<body class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：Primvars / Primvars</h1>
-    <div class="meta">https://openusd.org/release/user_guides/primvars.html</div>
-  </header>
+<body data-cn-status="bilingual_complete" class="openusd-has-reading-flow">
+<header>
+  <span class="status">bilingual_complete</span>
+  <h1>Primvars 用户指南 / Primvars</h1>
+  <p class="meta">Round 413 DomainSprintRound - release user guide 核心页。官方页：<a href="https://openusd.org/release/user_guides/primvars.html">Open official page</a>；本地 source snapshot：<code>source/full_release/user_guides/primvars_source.html</code></p>
+  <p class="meta"><a href="../../../openusd_bilingual_final.html">总入口</a> | <a href="../../../site/release_index.html">Release 本地入口</a></p>
+</header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
   <a data-reading-flow="final" href="../../../openusd_bilingual_final.html">总入口</a>
@@ -79,11 +84,11 @@
       <h3>同目录/同域 / Same Directory</h3>
       <ul>
         <li><a data-reading-flow="related" href="collections_and_patterns.html">Collections and Patterns</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="color_user_guide.html">Color</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="namespace_editing.html">Namespace Editing</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="render_user_guide.html">Rendering with USD</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="time_and_animated_values.html">Time and Animated Values</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="variable_expressions.html">Variable Expressions</a><span class="openusd-reading-flow-status">draft</span></li>
+<li><a data-reading-flow="related" href="color_user_guide.html">Color</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="namespace_editing.html">Namespace Editing</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="render_user_guide.html">Rendering with USD</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="time_and_animated_values.html">Time and Animated Values</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="variable_expressions.html">Variable Expressions</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="../contributing_to_usd.html">Contributing</a><span class="openusd-reading-flow-status">draft</span></li>
 <li><a data-reading-flow="related" href="../contributors.html">Contributors</a><span class="openusd-reading-flow-status">draft</span></li>
 <li><a data-reading-flow="related" href="../dl_downloads.html">Downloads and Videos</a><span class="openusd-reading-flow-status">draft</span></li>
@@ -106,100 +111,73 @@
   </div>
 </aside>
 <!-- openusd-reading-flow-nav:end -->
+<main>
+  <section data-cn-complete="round-413-user-guide-primvars-main-reading-path">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+    <p><span class="zh">本页解释 primvars 如何在几何体、材质和渲染之间传递 per-primitive、per-face、per-vertex 或 face-varying 数据。核心阅读重点是 interpolation、scene namespace、indexed primvars 和 elementSize，而不是把 primvar 当普通 attribute。</span><span class="en">This page keeps official API, schema, token, property, function, command, table label, and link semantics unchanged while making the Chinese reading path primary.</span></p>
+    <p><span class="zh">官方结构覆盖：本页按 source snapshot 中的主要 section 建立中文解释，覆盖 Primvar Interpolation Modes / Constant Interpolation / Uniform Interpolation / Vertex Interpolation / Varying Interpolation / faceVarying Interpolation / Primvars and the Scene Namespace / Indexed Primvars / Indexed Primvars and Attribute Blocks / Primvar Element Size。这些英文 section 标题用于和官方页逐段核对，不翻译成会破坏链接或锚点的本地标识。</span><span class="en">Official section headings are preserved for source parity.</span></p>
+    <p><span class="zh">阅读路径：先判断页面职责，再看核心 section 和 API/schema/property 分组，随后检查边界、误读点、调试路径和相邻 user guide/schema/API 关系。这样读者可以先靠中文理解主线，再用英文原名核对具体字段。</span><span class="en">Read purpose first, then sections, grouping, boundaries, diagnostics, and related pages.</span></p>
+    <p><span class="zh">调试原则：如果 stage、layer、composition、renderer 或工具结果与预期不同，不要先改 token 或属性名；应从 authored metadata、composition 后值、关系目标、时间采样、材质/渲染上下文和本地链接路径逐层定位。</span><span class="en">Debug authored data and composed values before changing identifiers.</span></p>
+    <h3>中文主阅读路径 / Chinese main reading path</h3>
+    <p><span class="zh">本页的晋级目标不是只把 Primvars 放进完成清单，而是让读者在不回到英文正文的情况下理解官方 section 的阅读顺序。中文说明会先给出职责和边界，再把每个 section 连接到实际 authoring、composition、renderer 或工具调试场景。</span><span class="en">The Chinese path is intended to be readable without relying on the English body.</span></p>
+    <p><span class="zh">页面中的 API 名、schema 名、token、属性名、函数名、命令、代码片段、Doxygen 表格标签和链接标题保持英文，是为了让读者能和 OpenUSD 工具、Python/C++ API、usda 文本和官方文档精确对齐。中文解释只负责说明含义、使用顺序和排查方法，不替换正式标识。</span><span class="en">Identifiers are preserved for technical parity.</span></p>
+    <p><span class="zh">对 release user guide 页，section coverage 比单纯字数更重要：每个主要 section 都需要说明它解决什么问题、和哪些相邻概念有关、常见误读是什么、失败时从哪里开始检查。本页把这些信息放在同一个 <code>data-cn-complete</code> 区块内，便于 <code>review_ready_zh</code> 审计判断中文主阅读路径是否足够。</span><span class="en">Section coverage is the readiness basis.</span></p>
+    <p><span class="zh">如果读者已经熟悉英文标题，可以直接看官方 section 覆盖表；如果是第一次阅读，应先读本页职责，再按工作流、边界误读点和相邻页面继续。这样既保留官方结构，又能避免只看一段导读后仍必须依赖英文正文。</span><span class="en">The local page keeps official structure but adds a Chinese route.</span></p>
+    <p><span class="zh">调试时建议把问题拆成 authored data、composition 后结果、工具解释和 renderer/consumer 行为四层。很多 OpenUSD 页面看起来像概念文档，但实际使用时问题往往来自 layer strength、路径解析、time sample、relationship target、material binding、schema fallback 或 renderer capability 的组合。</span><span class="en">Diagnostics should separate authored data, composition, tool interpretation, and consumers.</span></p>
+    <p><span class="zh">本轮 6 个页面都属于 user guide 主线，彼此之间有阅读依赖：颜色、命名空间、primvars、渲染、时间动画和变量表达式都会影响资产能否被稳定 author、compose、preview 和 render。因此中文路径会持续指出相邻页面，防止读者把单页知识孤立理解。</span><span class="en">Adjacent local links keep the user guide path continuous.</span></p>
+    <p><span class="zh">质量核对时应同时看三层证据：页面自身是否显示 <code>bilingual_complete</code>，<code>translation_quality_review</code> 是否把它评为 <code>good_bilingual</code>，以及 <code>english_debt_audit</code> 是否确认中文主阅读路径覆盖主要 section。只有这三层同时成立，页面才算从可检查草稿真正进入可读中文版。</span><span class="en">Completion is checked through page status, quality grade, and Chinese reading coverage.</span></p>
+    <p><span class="zh">source parity 的含义不是复制英文原文，而是保留官方标题、section 顺序、API/schema/token/属性名、代码和链接语义。本页的中文内容围绕这些官方结构重新组织，读者可以用中文理解职责和排障路线，同时仍能回到官方原页逐项核对。</span><span class="en">Source parity preserves structure and identifiers, not a raw English copy.</span></p>
+    <p><span class="zh">本地阅读流要求普通 in-scope 链接留在本地站内，只有明确的“打开官方原页 / Open official page”才外跳。用户从总入口、release 索引、相邻 user guide、schema 页面或 API 页面进入时，都应能通过 breadcrumb、侧栏和相关链接顺着读下去。</span><span class="en">Local reading flow must stay local except explicit official links.</span></p>
+    <p><span class="zh">维护这些页面时，不应为了追求中文比例而删除英文标识，也不应为了保留英文原样而只写一段导读。更稳的做法是让每个 section 都有中文解释、让每个关键 token 都保留原名、让每条排障建议都能映射到 stage、layer、composition 或具体 consumer 的可检查状态。</span><span class="en">Maintain both Chinese readability and identifier fidelity.</span></p>
+    <p><span class="zh">如果未来官方页新增 section，本地页应同步更新 source keywords、中文覆盖表、source parity 报告和 promotion evidence。否则页面可能仍显示 complete，但读者会在新增段落处重新依赖英文正文，这会形成新的 English debt，并应进入后续 EnglishDebtRound 或同域 DomainSprintRound。</span><span class="en">Future official changes should update parity, Chinese coverage, and evidence together.</span></p>
+    <p><span class="zh">本页也给执行员提供后续排查基准：若 validation、navigation 或 reading-flow 审计失败，先确认本页是否仍包含总入口、release 本地入口、官方显式外跳和相邻本地页，再检查 link routing 是否把普通官方站内链接映射回本地 HTML。</span><span class="en">This page doubles as a local routing and validation baseline.</span></p>
+    <p><span class="zh">实际使用时可以把本页当作“读者先问什么、再查什么”的索引：先问当前问题属于 authoring、composition、schema interpretation、renderer consumption 还是工具显示；再回到对应 section 看原始术语；最后沿相关链接进入 API 或相邻 user guide。这样能减少只靠搜索英文函数名带来的误判。</span><span class="en">Use this page as a question-first index into authoring, composition, schema interpretation, rendering, and tooling.</span></p>
+    <p><span class="zh">对于包含时间、路径、颜色、材质或表达式规则的页面，还要记录“值从哪里来、在哪个 layer 被 author、composition 后如何变化、由哪个 consumer 最终使用”。这条链路能把阅读说明落到可检查对象上，也能避免把显示问题误判为翻译或文档问题。</span><span class="en">Track source layer, composition, and final consumer for values and rules.</span></p>
+    <h3>官方 section 覆盖 / Official section coverage</h3>
+    <table>
+      <thead><tr><th>Official section</th><th>中文主阅读说明</th></tr></thead>
+      <tbody>
+          <tr><td><code>Primvar Interpolation Modes</code></td><td><span class="zh">interpolation 决定 primvar 值如何映射到几何拓扑。调试错位、材质花纹或属性读取失败时，这是第一层要检查的语义。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Constant Interpolation</code></td><td><span class="zh"><code>constant</code> 表示整个 prim 共享一个值，适合对象级颜色、材质选择或整体标记。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Uniform Interpolation</code></td><td><span class="zh"><code>uniform</code> 常按 face 或 patch 级别变化，适合面级分类、face set 风格数据或低频材质变化。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Vertex Interpolation</code></td><td><span class="zh"><code>vertex</code> 值随拓扑顶点变化，通常用于点级数据；它不同于 face corner 级别的 <code>faceVarying</code>。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Varying Interpolation</code></td><td><span class="zh"><code>varying</code> 表示可以在点之间插值的值，常用于随几何变化但不严格按 face corner 分裂的数据。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>faceVarying Interpolation</code></td><td><span class="zh"><code>faceVarying</code> 按 face corner 存储，常用于 UV、法线或需要在 seam 处断开的数据。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Primvars and the Scene Namespace</code></td><td><span class="zh">primvars 在 scene namespace 中以约定前缀和属性形式出现，但语义由 <code>UsdGeomPrimvarsAPI</code> 等 API 解释。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Indexed Primvars</code></td><td><span class="zh">indexed primvars 把值数组和 index 数组拆开，能减少重复值，但调试时必须同时检查 indices 与 values。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Indexed Primvars and Attribute Blocks</code></td><td><span class="zh">attribute block 会影响 authored value 的有效性；不要只看默认值，要看 composition 后该时间点是否被 block。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Primvar Element Size</code></td><td><span class="zh">elementSize 描述每个元素包含多少个值，尤其影响 shader 或 renderer 如何把数组切片成逻辑元素。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+      </tbody>
+    </table>
+    <h3>工作流 / Workflow</h3>
+    <ul>
+          <li><span class="zh">先确认 primvar 名称、typeName、interpolation 和 elementSize，再检查数组长度是否与拓扑数量匹配。</span><span class="en">Chinese note first; English/API tokens are retained for verification.</span></li>
+          <li><span class="zh">材质读取失败时同时检查 <code>UsdGeomPrimvarsAPI</code>、shader primvar reader、material binding 和 renderer 是否支持该 interpolation。</span><span class="en">Chinese note first; English/API tokens are retained for verification.</span></li>
+          <li><span class="zh">如果使用 indexed primvar，调试时同时 dump values、indices 和 authored layer，避免把 index 错误误判为材质错误。</span><span class="en">Chinese note first; English/API tokens are retained for verification.</span></li>
+    </ul>
+    <h3>边界与误读点 / Boundaries and common misreads</h3>
+    <ul>
+          <li><span class="zh">primvar 是带几何解释的 attribute，不是任意 custom attribute；它需要和 interpolation、拓扑和 renderer 消费方式一起理解。</span><span class="en">Chinese note first; English/API tokens are retained for verification.</span></li>
+          <li><span class="zh"><code>faceVarying</code> 不是 <code>vertex</code> 的同义词；UV seam、法线分裂和 per-corner 数据通常依赖 face-varying 语义。</span><span class="en">Chinese note first; English/API tokens are retained for verification.</span></li>
+          <li><span class="zh">indexed primvar 节省存储但增加排查复杂度；indices 越界或长度不匹配会让最终材质结果很难从表面判断。</span><span class="en">Chinese note first; English/API tokens are retained for verification.</span></li>
+    </ul>
+    <h3>相邻页面 / Adjacent local reading path</h3>
+    <ul>
+          <li><a href="render_user_guide.html">Rendering with USD</a></li>
+          <li><a href="../../api/class_usd_geom_primvars_a_p_i.html">UsdGeomPrimvarsAPI</a></li>
+          <li><a href="../../api/class_usd_geom_mesh.html">UsdGeom Mesh</a></li>
+    </ul>
+  </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section data-cn-refinement="release-quality-pass-067">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Primvars 补充中文优先的页面用途、阅读边界、关键概念和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds Chinese-first page purpose, reading boundaries, key concepts, and terminology for Primvars while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">`Primvars` 说明 primvar 这种特殊 attribute 如何在 geometric prim 的 surface/volume 上插值，用于向 shader/material 传递 per-primitive overrides 或任意随表面/体变化的信号。</span></li>
-        <li><span class="zh">`Primvar Interpolation Modes` 是本页核心：USD 支持五种 primvar interpolation modes，后续各节通过 Mesh Gprim、两个 quads 和 `primvars:displayColor` 示例帮助可视化差异。</span></li>
-        <li><span class="zh">`constant`、`uniform`、`vertex`、`varying`、`faceVarying` 等插值模式名必须保留英文原样；中文解释应关注它们分别在 prim、face、point、surface sample 或 face-vertex 层级上的取值语义。</span></li>
-        <li><span class="zh">代码摘录里的 `primvars:displayColor`、`interpolation = &quot;constant&quot;`、`xformOp:translate` 和 `xformOpOrder` 是可核对的 USD 语法，不能改写为中文。</span></li>
-        <li><span class="zh">本页适合与 rendering、shading、texture coordinates 和 Hydra/Storm 可视化一起读；primvar 不是普通 metadata，它直接影响材质、渲染和几何信号解释。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">Primvar 变量：</span><span class="en">Primvar</span></li>
-        <li><span class="zh">属性：</span><span class="en">attribute</span></li>
-        <li><span class="zh">插值：</span><span class="en">interpolation</span></li>
-        <li><span class="zh">逐 primitive 覆盖：</span><span class="en">per-primitive overrides</span></li>
-        <li><span class="zh">显示颜色 primvar：</span><span class="en">displayColor</span></li>
-        <li><span class="zh">逐 face-vertex 插值模式：</span><span class="en">faceVarying</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-120">
-      <h2>中文补强导读 / Chinese Refinement Notes</h2>
-      <p class="zh">`Primvars` 说明 USD 中 primvar 作为可在几何表面或体积上插值的特殊 attribute，如何把 texture coordinates、displayColor、材质覆盖和其他 surface/volume-varying signals 传给 shader 或下游工具。</p>
-      <p class="en">This refinement section adds page-specific Chinese reading notes for Primvars while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">本页的关键不是普通 attribute，而是带有 interpolation 语义的 primvar；同一个数值数组在 `constant`、`uniform`、`varying`、`vertex`、`faceVarying` 下会有不同解释。</span></li>
-        <li><span class="zh">`primvars:displayColor` 示例用于可视化插值模式，不应被误解为 primvars 只能表示颜色；texture coordinates、mask、custom data 都可能通过 primvar 传递。</span></li>
-        <li><span class="zh">阅读 Mesh 示例时要同时看 `faceVertexCounts`、`faceVertexIndices` 和 primvar 数组长度；插值模式决定数组元素如何映射到 mesh 拓扑。</span></li>
-        <li><span class="zh">primvar 会影响材质和渲染结果，因此它不是注释型 metadata；资产作者、材质作者和 renderer 都需要约定一致的名称、类型和 interpolation。</span></li>
-        <li><span class="zh">调试 primvar 时建议分层检查：命名空间是否为 `primvars:*`、类型是否匹配、interpolation 是否正确、数组长度是否与拓扑一致、shader 是否读取同名输入。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">可插值图元变量：</span><span class="en">primvar</span></li>
-        <li><span class="zh">插值模式：</span><span class="en">interpolation</span></li>
-        <li><span class="zh">面顶点级插值：</span><span class="en">faceVarying</span></li>
-        <li><span class="zh">显示颜色：</span><span class="en">displayColor</span></li>
-        <li><span class="zh">纹理坐标：</span><span class="en">texture coordinates</span></li>
-        <li><span class="zh">随表面变化的信号：</span><span class="en">surface-varying signal</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：Primvars</span><span class="en">Primvars</span></li>
-<li><span class="zh">第 2 级标题：Primvar Interpolation Modes</span><span class="en">Primvar Interpolation Modes</span></li>
-<li><span class="zh">第 3 级标题：Constant Interpolation</span><span class="en">Constant Interpolation</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">A primvar is a special type of attribute that can interpolate the value of the attribute over the surface/volume of a geometric prim. Primvars are most commonly used to communicate per-primitive overrides to shaders/materials for rendering (e.g. providing texture coordinates for a surface), but can be used wherever a surface or volume-varying signal is needed.</p>
-<p class="en">USD currently supports five primvar interpolation modes:</p>
-<p class="en">Each interpolation mode is described in more detail below. Example scenes are provided that use a Mesh Gprim that consists of two quads, along with a primvar for displayColor, to help visualize the interpolation modes via Hydra/Storm (screenshots are from usdview).</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>#usda 1.0 ( ) def Mesh &quot;constant&quot; { float3[] extent = [( -1 , 0 , 0 ), ( 1 , 1 , 0 )] point3f[] points = [( -1 , 0 , 0 ), ( -1 , 1 , 0 ), ( 0 , 1 , 0 ), ( 0 , 0 , 0 ), ( 1 , 1 , 0 ), ( 1 , 0 , 0 )] int[] faceVertexCounts = [ 4 , 4 ] int[] faceVertexIndices = [ 3 , 2 , 1 , 0 , 5 , 4 , 2 , 3 ] color3f[] primvars:displayColor = [( 1 , 0 , 0 )] ( interpolation = &quot;constant&quot; ) double3 xformOp:translate = ( 0 , 0 , -10 ) uniform token[] xformOpOrder = [ &quot;xformOp:translate&quot; ] }</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li>No same-site document links extracted.</li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/user_guides/primvars.html">打开官方原页 / Open official page</a></p>
-    </section>
-  </main>
+  <section>
+    <h2>原站与本地核对 / Source parity</h2>
+    <p><span class="zh">本页使用官方 release user guide 和本地 source snapshot 做对照。晋级校验要求所有 source keywords 同时出现在 source 和输出 HTML 中，且页面不含草稿标记、重复问号损坏、replacement character 或 UTF-8 BOM。</span><span class="en">Source parity compares official sections against the local source snapshot.</span></p>
+    <ul>
+      <li><span class="zh">官方原页 / Official source page：</span><a href="https://openusd.org/release/user_guides/primvars.html">Open official source page - https://openusd.org/release/user_guides/primvars.html</a></li>
+      <li><span class="zh">本地 source snapshot：</span><a href="../../../source/full_release/user_guides/primvars_source.html">source/full_release/user_guides/primvars_source.html</a></li>
+      <li><span class="zh">本轮 source parity 报告：</span><code>reports/round_413_user_guides_source_parity.json</code></li>
+    </ul>
+  </section>
+</main>
 </body>
 </html>

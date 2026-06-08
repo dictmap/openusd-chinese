@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-08T03:58:27.967Z
+Generated: 2026-06-08T04:32:38.857Z
 
-Transient base URL: `http://127.0.0.1:57852/`
+Transient base URL: `http://127.0.0.1:64537/`
 
 Result:
 
 - Passed: true
-- Draft pages: 247
-- Pages checked: 247
-- Passed pages: 247
+- Draft pages: 241
+- Pages checked: 241
+- Passed pages: 241
 - Failed pages: 0
-- Final HTML links: 247
-- Local assets checked: 247
+- Final HTML links: 241
+- Local assets checked: 241
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -245,12 +245,6 @@ Result:
 | true | full_site/release/tut_usd_tutorials.html | 200 | true | 0 | 0 |
 | true | full_site/release/usd_products.html | 200 | true | 0 | 0 |
 | true | full_site/release/usdfaq.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/color_user_guide.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/namespace_editing.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/primvars.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/render_user_guide.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/time_and_animated_values.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/variable_expressions.html | 200 | true | 0 | 0 |
 | true | full_site/release/wp_ar2.html | 200 | true | 0 | 0 |
 | true | full_site/release/wp_asset_previews.html | 200 | true | 0 | 0 |
 | true | full_site/release/wp_connectable_nodes.html | 200 | true | 0 | 0 |

@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-08T03:58:18.060Z
+Generated: 2026-06-08T04:32:02.959Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 247
-- bilingual_complete: 159
+- bilingual_draft: 241
+- bilingual_complete: 165
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 236
-- good_bilingual: 159
+- draft_needs_translation: 230
+- good_bilingual: 165
 
 ## Current Focus Batch
 
@@ -384,10 +384,10 @@ Generated: 2026-06-08T03:58:18.060Z
 | 318 | draft_needs_translation | bilingual_draft | 544 | 37/35 | 0 | 0 | `full_site/release/usd_products.html` |
 | 319 | draft_needs_translation | bilingual_draft | 645 | 34/27 | 0 | 0 | `full_site/release/usdfaq.html` |
 | 320 | good_bilingual | bilingual_complete | 1831 | 42/42 | 0 | 0 | `full_site/release/user_guides/collections_and_patterns.html` |
-| 321 | draft_needs_translation | bilingual_draft | 657 | 28/21 | 0 | 0 | `full_site/release/user_guides/color_user_guide.html` |
-| 322 | draft_needs_translation | bilingual_draft | 541 | 24/18 | 0 | 0 | `full_site/release/user_guides/namespace_editing.html` |
-| 323 | draft_needs_translation | bilingual_draft | 580 | 28/21 | 0 | 0 | `full_site/release/user_guides/primvars.html` |
-| 324 | draft_needs_translation | bilingual_draft | 625 | 28/21 | 0 | 0 | `full_site/release/user_guides/render_user_guide.html` |
+| 321 | good_bilingual | bilingual_complete | 1739 | 39/36 | 0 | 0 | `full_site/release/user_guides/color_user_guide.html` |
+| 322 | good_bilingual | bilingual_complete | 1540 | 38/35 | 0 | 0 | `full_site/release/user_guides/namespace_editing.html` |
+| 323 | good_bilingual | bilingual_complete | 1497 | 38/35 | 0 | 0 | `full_site/release/user_guides/primvars.html` |
+| 324 | good_bilingual | bilingual_complete | 1650 | 55/52 | 0 | 0 | `full_site/release/user_guides/render_user_guide.html` |
 | 325 | good_bilingual | bilingual_complete | 1792 | 52/2 | 0 | 0 | `full_site/release/user_guides/schemas/index.html` |
 | 326 | good_bilingual | bilingual_complete | 1179 | 38/12 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/BoundableLightBase.html` |
 | 327 | good_bilingual | bilingual_complete | 2235 | 46/46 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/CylinderLight.html` |
@@ -455,8 +455,8 @@ Generated: 2026-06-08T03:58:18.060Z
 | 389 | good_bilingual | bilingual_complete | 1109 | 52/15 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/Volume.html` |
 | 390 | good_bilingual | bilingual_complete | 1058 | 51/14 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/VolumeFieldAsset.html` |
 | 391 | good_bilingual | bilingual_complete | 1095 | 47/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/VolumeFieldBase.html` |
-| 392 | draft_needs_translation | bilingual_draft | 653 | 31/20 | 0 | 0 | `full_site/release/user_guides/time_and_animated_values.html` |
-| 393 | draft_needs_translation | bilingual_draft | 687 | 30/19 | 0 | 0 | `full_site/release/user_guides/variable_expressions.html` |
+| 392 | good_bilingual | bilingual_complete | 1374 | 37/34 | 0 | 0 | `full_site/release/user_guides/time_and_animated_values.html` |
+| 393 | good_bilingual | bilingual_complete | 1362 | 56/53 | 0 | 0 | `full_site/release/user_guides/variable_expressions.html` |
 | 394 | draft_needs_translation | bilingual_draft | 755 | 35/24 | 0 | 0 | `full_site/release/wp_ar2.html` |
 | 395 | draft_needs_translation | bilingual_draft | 707 | 35/24 | 0 | 0 | `full_site/release/wp_asset_previews.html` |
 | 396 | draft_needs_translation | bilingual_draft | 789 | 40/29 | 0 | 0 | `full_site/release/wp_connectable_nodes.html` |

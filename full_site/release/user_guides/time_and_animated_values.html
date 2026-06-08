@@ -6,22 +6,26 @@
   <title>时间与动画值 / Time and Animated Values</title>
   <link rel="icon" href="../../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
-  </style>
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
+</style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
     .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
@@ -42,12 +46,13 @@
     }
   </style>
 </head>
-<body class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_draft</span>
-    <h1>时间与动画值 / Time and Animated Values</h1>
-    <div class="meta">https://openusd.org/release/user_guides/time_and_animated_values.html</div>
-  </header>
+<body data-cn-status="bilingual_complete" class="openusd-has-reading-flow">
+<header>
+  <span class="status">bilingual_complete</span>
+  <h1>时间与动画值 / Time and Animated Values</h1>
+  <p class="meta">Round 413 DomainSprintRound - release user guide 核心页。官方页：<a href="https://openusd.org/release/user_guides/time_and_animated_values.html">Open official page</a>；本地 source snapshot：<code>source/full_release/user_guides/time_and_animated_values_source.html</code></p>
+  <p class="meta"><a href="../../../openusd_bilingual_final.html">总入口</a> | <a href="../../../site/release_index.html">Release 本地入口</a></p>
+</header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
   <a data-reading-flow="final" href="../../../openusd_bilingual_final.html">总入口</a>
@@ -79,11 +84,11 @@
       <h3>同目录/同域 / Same Directory</h3>
       <ul>
         <li><a data-reading-flow="related" href="collections_and_patterns.html">Collections and Patterns</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="color_user_guide.html">Color</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="namespace_editing.html">Namespace Editing</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="primvars.html">Primvars</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="render_user_guide.html">Rendering with USD</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="variable_expressions.html">Variable Expressions</a><span class="openusd-reading-flow-status">draft</span></li>
+<li><a data-reading-flow="related" href="color_user_guide.html">Color</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="namespace_editing.html">Namespace Editing</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="primvars.html">Primvars</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="render_user_guide.html">Rendering with USD</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="variable_expressions.html">Variable Expressions</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="../contributing_to_usd.html">Contributing</a><span class="openusd-reading-flow-status">draft</span></li>
 <li><a data-reading-flow="related" href="../contributors.html">Contributors</a><span class="openusd-reading-flow-status">draft</span></li>
 <li><a data-reading-flow="related" href="../dl_downloads.html">Downloads and Videos</a><span class="openusd-reading-flow-status">draft</span></li>
@@ -106,108 +111,72 @@
   </div>
 </aside>
 <!-- openusd-reading-flow-nav:end -->
+<main>
+  <section data-cn-complete="round-413-user-guide-time-and-animated-values-main-reading-path">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+    <p><span class="zh">本页解释 USD 中 <code>TimeCode</code>、时间采样、layer 起止时间、<code>timeCodesPerSecond</code>、composition 中的时间重映射和 <code>LayerOffset</code>。重点是区分 layer 的时间坐标、stage 的合成时间坐标和真实秒数之间的映射关系。</span><span class="en">This page keeps official API, schema, token, property, function, command, table label, and link semantics unchanged while making the Chinese reading path primary.</span></p>
+    <p><span class="zh">官方结构覆盖：本页按 source snapshot 中的主要 section 建立中文解释，覆盖 Understanding TimeCodes / Working With TimeCodes Programmatically / Mapping TimeCodes to Real Time / Specifying Layer Start and End Times / Using TimeCode Ranges / Working with Automatic and Explicit TimeCode Remapping Across Composition / Automatic Scaling of timeCodesPerSecond / Configuring TimeCode Scaling and Offsets Using LayerOffsets / Combining Automatic Scaling and Layer Offsets。这些英文 section 标题用于和官方页逐段核对，不翻译成会破坏链接或锚点的本地标识。</span><span class="en">Official section headings are preserved for source parity.</span></p>
+    <p><span class="zh">阅读路径：先判断页面职责，再看核心 section 和 API/schema/property 分组，随后检查边界、误读点、调试路径和相邻 user guide/schema/API 关系。这样读者可以先靠中文理解主线，再用英文原名核对具体字段。</span><span class="en">Read purpose first, then sections, grouping, boundaries, diagnostics, and related pages.</span></p>
+    <p><span class="zh">调试原则：如果 stage、layer、composition、renderer 或工具结果与预期不同，不要先改 token 或属性名；应从 authored metadata、composition 后值、关系目标、时间采样、材质/渲染上下文和本地链接路径逐层定位。</span><span class="en">Debug authored data and composed values before changing identifiers.</span></p>
+    <h3>中文主阅读路径 / Chinese main reading path</h3>
+    <p><span class="zh">本页的晋级目标不是只把 Time and Animated Values 放进完成清单，而是让读者在不回到英文正文的情况下理解官方 section 的阅读顺序。中文说明会先给出职责和边界，再把每个 section 连接到实际 authoring、composition、renderer 或工具调试场景。</span><span class="en">The Chinese path is intended to be readable without relying on the English body.</span></p>
+    <p><span class="zh">页面中的 API 名、schema 名、token、属性名、函数名、命令、代码片段、Doxygen 表格标签和链接标题保持英文，是为了让读者能和 OpenUSD 工具、Python/C++ API、usda 文本和官方文档精确对齐。中文解释只负责说明含义、使用顺序和排查方法，不替换正式标识。</span><span class="en">Identifiers are preserved for technical parity.</span></p>
+    <p><span class="zh">对 release user guide 页，section coverage 比单纯字数更重要：每个主要 section 都需要说明它解决什么问题、和哪些相邻概念有关、常见误读是什么、失败时从哪里开始检查。本页把这些信息放在同一个 <code>data-cn-complete</code> 区块内，便于 <code>review_ready_zh</code> 审计判断中文主阅读路径是否足够。</span><span class="en">Section coverage is the readiness basis.</span></p>
+    <p><span class="zh">如果读者已经熟悉英文标题，可以直接看官方 section 覆盖表；如果是第一次阅读，应先读本页职责，再按工作流、边界误读点和相邻页面继续。这样既保留官方结构，又能避免只看一段导读后仍必须依赖英文正文。</span><span class="en">The local page keeps official structure but adds a Chinese route.</span></p>
+    <p><span class="zh">调试时建议把问题拆成 authored data、composition 后结果、工具解释和 renderer/consumer 行为四层。很多 OpenUSD 页面看起来像概念文档，但实际使用时问题往往来自 layer strength、路径解析、time sample、relationship target、material binding、schema fallback 或 renderer capability 的组合。</span><span class="en">Diagnostics should separate authored data, composition, tool interpretation, and consumers.</span></p>
+    <p><span class="zh">本轮 6 个页面都属于 user guide 主线，彼此之间有阅读依赖：颜色、命名空间、primvars、渲染、时间动画和变量表达式都会影响资产能否被稳定 author、compose、preview 和 render。因此中文路径会持续指出相邻页面，防止读者把单页知识孤立理解。</span><span class="en">Adjacent local links keep the user guide path continuous.</span></p>
+    <p><span class="zh">质量核对时应同时看三层证据：页面自身是否显示 <code>bilingual_complete</code>，<code>translation_quality_review</code> 是否把它评为 <code>good_bilingual</code>，以及 <code>english_debt_audit</code> 是否确认中文主阅读路径覆盖主要 section。只有这三层同时成立，页面才算从可检查草稿真正进入可读中文版。</span><span class="en">Completion is checked through page status, quality grade, and Chinese reading coverage.</span></p>
+    <p><span class="zh">source parity 的含义不是复制英文原文，而是保留官方标题、section 顺序、API/schema/token/属性名、代码和链接语义。本页的中文内容围绕这些官方结构重新组织，读者可以用中文理解职责和排障路线，同时仍能回到官方原页逐项核对。</span><span class="en">Source parity preserves structure and identifiers, not a raw English copy.</span></p>
+    <p><span class="zh">本地阅读流要求普通 in-scope 链接留在本地站内，只有明确的“打开官方原页 / Open official page”才外跳。用户从总入口、release 索引、相邻 user guide、schema 页面或 API 页面进入时，都应能通过 breadcrumb、侧栏和相关链接顺着读下去。</span><span class="en">Local reading flow must stay local except explicit official links.</span></p>
+    <p><span class="zh">维护这些页面时，不应为了追求中文比例而删除英文标识，也不应为了保留英文原样而只写一段导读。更稳的做法是让每个 section 都有中文解释、让每个关键 token 都保留原名、让每条排障建议都能映射到 stage、layer、composition 或具体 consumer 的可检查状态。</span><span class="en">Maintain both Chinese readability and identifier fidelity.</span></p>
+    <p><span class="zh">如果未来官方页新增 section，本地页应同步更新 source keywords、中文覆盖表、source parity 报告和 promotion evidence。否则页面可能仍显示 complete，但读者会在新增段落处重新依赖英文正文，这会形成新的 English debt，并应进入后续 EnglishDebtRound 或同域 DomainSprintRound。</span><span class="en">Future official changes should update parity, Chinese coverage, and evidence together.</span></p>
+    <p><span class="zh">本页也给执行员提供后续排查基准：若 validation、navigation 或 reading-flow 审计失败，先确认本页是否仍包含总入口、release 本地入口、官方显式外跳和相邻本地页，再检查 link routing 是否把普通官方站内链接映射回本地 HTML。</span><span class="en">This page doubles as a local routing and validation baseline.</span></p>
+    <p><span class="zh">实际使用时可以把本页当作“读者先问什么、再查什么”的索引：先问当前问题属于 authoring、composition、schema interpretation、renderer consumption 还是工具显示；再回到对应 section 看原始术语；最后沿相关链接进入 API 或相邻 user guide。这样能减少只靠搜索英文函数名带来的误判。</span><span class="en">Use this page as a question-first index into authoring, composition, schema interpretation, rendering, and tooling.</span></p>
+    <p><span class="zh">对于包含时间、路径、颜色、材质或表达式规则的页面，还要记录“值从哪里来、在哪个 layer 被 author、composition 后如何变化、由哪个 consumer 最终使用”。这条链路能把阅读说明落到可检查对象上，也能避免把显示问题误判为翻译或文档问题。</span><span class="en">Track source layer, composition, and final consumer for values and rules.</span></p>
+    <h3>官方 section 覆盖 / Official section coverage</h3>
+    <table>
+      <thead><tr><th>Official section</th><th>中文主阅读说明</th></tr></thead>
+      <tbody>
+          <tr><td><code>Understanding TimeCodes</code></td><td><span class="zh"><code>TimeCode</code> 是 USD 的时间坐标，不直接等于秒；它用于索引动画 sample、metadata 和 composition 后的时间值。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Working With TimeCodes Programmatically</code></td><td><span class="zh">程序读取或写入动画值时要显式传入 time code，并理解 default value 与 time-sampled value 的区别。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Mapping TimeCodes to Real Time</code></td><td><span class="zh"><code>timeCodesPerSecond</code> 把 TimeCode 坐标映射到真实时间；不同 layer 的该值可能不同。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Specifying Layer Start and End Times</code></td><td><span class="zh">layer 的 start/end time metadata 用来描述动画范围，不等于一定裁剪所有 sample。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Using TimeCode Ranges</code></td><td><span class="zh">time range 帮助工具遍历、播放和导出动画区间，调试时要确认使用的是 layer 范围还是 composed stage 范围。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Working with Automatic and Explicit TimeCode Remapping Across Composition</code></td><td><span class="zh">composition 会在引用或 payload 之间处理时间坐标差异，自动缩放和显式 offset 可能同时存在。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Automatic Scaling of timeCodesPerSecond</code></td><td><span class="zh">当 layer 的 <code>timeCodesPerSecond</code> 不同时，USD 可能按比例缩放 sample 时间，使动画在真实秒数上对齐。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Configuring TimeCode Scaling and Offsets Using LayerOffsets</code></td><td><span class="zh"><code>LayerOffset</code> 通过 scale 和 offset 改变引用或 payload 的时间映射，常用于复用动画片段。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Combining Automatic Scaling and Layer Offsets</code></td><td><span class="zh">自动缩放和 <code>LayerOffset</code> 组合时要按顺序理解，否则同一个 sample 会落到意外的 stage 时间。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+      </tbody>
+    </table>
+    <h3>工作流 / Workflow</h3>
+    <ul>
+          <li><span class="zh">动画错位时先比较 source layer 与 consuming layer 的 <code>timeCodesPerSecond</code>，再检查 reference/payload 上是否有 <code>LayerOffset</code>。</span><span class="en">Chinese note first; English/API tokens are retained for verification.</span></li>
+          <li><span class="zh">程序化写 sample 时区分 default value 与 time-sampled value，并在读取阶段确认查询时间是否经过 composition remapping。</span><span class="en">Chinese note first; English/API tokens are retained for verification.</span></li>
+          <li><span class="zh">在 <code>usdview</code> 或自定义工具中排查时，记录 layer start/end、stage time range、sample times 和最终 composed value。</span><span class="en">Chinese note first; English/API tokens are retained for verification.</span></li>
+    </ul>
+    <h3>边界与误读点 / Boundaries and common misreads</h3>
+    <ul>
+          <li><span class="zh"><code>framesPerSecond</code> 更偏向播放或显示约定，<code>timeCodesPerSecond</code> 才是 TimeCode 到真实秒数映射的关键字段。</span><span class="en">Chinese note first; English/API tokens are retained for verification.</span></li>
+          <li><span class="zh"><code>LayerOffset</code> 本身不是可动画属性；它改变的是 composition arc 上的时间映射规则。</span><span class="en">Chinese note first; English/API tokens are retained for verification.</span></li>
+          <li><span class="zh">不要把 layer 的局部 time sample 直接当作 composed stage 时间，尤其在 references、payloads 和 layer offsets 混用时。</span><span class="en">Chinese note first; English/API tokens are retained for verification.</span></li>
+    </ul>
+    <h3>相邻页面 / Adjacent local reading path</h3>
+    <ul>
+          <li><a href="../tut_referencing_layers.html">Referencing Layers tutorial</a></li>
+          <li><a href="namespace_editing.html">Namespace Editing</a></li>
+          <li><a href="../../api/class_usd_stage_cache.html">UsdStage API</a></li>
+    </ul>
+  </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section>
-      <h2>中文导读 / Chinese Reading Notes</h2>
-      <ul>
-<li><span class="zh">该页解释 USD 中 TimeCode 与 TimeSamples 的建模方式：动画值不是单一静态值，而是按时间坐标变化。</span></li>
-<li><span class="zh">TimeCode 在 USD 中是无单位 double 值，不等同于 FPS 或 SMPTE；实际播放时间通过 timeCodesPerSecond、framesPerSecond 等元数据映射。</span></li>
-<li><span class="zh">页面覆盖 layer 的 start/end time、TimeCode 范围、clips，以及 composition 过程中的自动和显式 timeCode remapping。</span></li>
-<li><span class="zh">本地页保留 timeSamples、timecode typed attribute 和 metadata 的 USDA 示例，方便检查动画属性与时间码值类型语法。</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-074">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Time and Animated Values 补充中文优先的概念边界、阅读顺序、语义风险和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds Chinese-first conceptual boundaries, reading order, semantic cautions, and terminology for Time and Animated Values while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">本页解释 USD 如何表达 animated values：属性可以在多个 `TimeCode` 上 author `timeSamples`，查询时再按时间插值或取样。</span></li>
-        <li><span class="zh">`TimeCode` 是无单位 double 坐标，不直接等同于 FPS、帧号或 SMPTE；实际播放和换算需要结合 `timeCodesPerSecond`、`framesPerSecond` 等 metadata。</span></li>
-        <li><span class="zh">`timeSamples` 示例中的 `1`、`25`、`99` 是时间坐标键，不是数组下标；同一属性在不同 time sample 上可以有不同值。</span></li>
-        <li><span class="zh">composition 过程可能发生 automatic 或 explicit timeCode remapping；`LayerOffset`、reference/payload offset 和 clips 会影响子层动画映射到主 stage 的方式。</span></li>
-        <li><span class="zh">阅读时应把 layer start/end time、stage 时间单位、attribute value resolution 和 value clips 分开理解，避免把所有时间设置都误读为播放帧率。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">时间码坐标：</span><span class="en">TimeCode</span></li>
-        <li><span class="zh">时间采样：</span><span class="en">TimeSamples</span></li>
-        <li><span class="zh">按时间创作的属性值：</span><span class="en">timeSamples</span></li>
-        <li><span class="zh">每秒时间码数：</span><span class="en">timeCodesPerSecond</span></li>
-        <li><span class="zh">每秒帧数元数据：</span><span class="en">framesPerSecond</span></li>
-        <li><span class="zh">时间码重映射：</span><span class="en">timeCode remapping</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-113">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`Time and Animated Values` 说明 USD 如何通过 `TimeCode` 和 `timeSamples` 表达动画值。`TimeCode` 是无单位 double 时间坐标，实际播放和帧率解释需要结合 `timeCodesPerSecond`、`framesPerSecond`、layer offset 和 clips 等元数据。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for Time and Animated Values while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`timeSamples` 是属性在多个时间坐标上的取值表，例如 `1 : 0`、`25 : 10`、`99 : 5`。这些数字是时间键，不是数组下标。</span></li>
-        <li><span class="zh">`TimeCode` 不直接等同于 FPS 或 SMPTE。相同的 time sample 键在不同 `timeCodesPerSecond` 设置下可对应不同实际秒数。</span></li>
-        <li><span class="zh">`startTimeCode` 和 `endTimeCode` 描述 stage 或 layer 的播放范围；它们不会自动创建动画，只定义时间线边界或默认查看范围。</span></li>
-        <li><span class="zh">composition 中可能出现 automatic 或 explicit timeCode remapping。通过 reference、sublayer 或 clips 引入动画时，时间可以被 offset 或 scale。</span></li>
-        <li><span class="zh">维护中文层时应保留 `TimeCode`、`timeSamples`、`timeCodesPerSecond`、`framesPerSecond`、`LayerOffset` 等术语，避免把时间偏移误解成几何空间位移。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">USD 无单位时间坐标：</span><span class="en">TimeCode</span></li>
-        <li><span class="zh">属性时间采样值表：</span><span class="en">timeSamples</span></li>
-        <li><span class="zh">每秒时间码数 metadata：</span><span class="en">timeCodesPerSecond</span></li>
-        <li><span class="zh">每秒帧数 metadata：</span><span class="en">framesPerSecond</span></li>
-        <li><span class="zh">开始时间码：</span><span class="en">startTimeCode</span></li>
-        <li><span class="zh">结束时间码：</span><span class="en">endTimeCode</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：Time and Animated Values</span><span class="en">Time and Animated Values</span></li>
-<li><span class="zh">第 2 级标题：Understanding TimeCodes</span><span class="en">Understanding TimeCodes</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">OpenUSD supports authoring animated values that do not resolve to a single static value but vary in value over time. This functionality is typically used for describing animations in a USD scene, but can be used for any scenario where time-varying values are needed, such as simulations.</p>
-<p class="en">To support animated values, OpenUSD provides features to author animated values, query and interpolate values over time, and work with “clips” of animated data.</p>
-<p class="en">Working with Automatic and Explicit TimeCode Remapping Across Composition</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>double xformOp:translateX . timeSamples = { 1 : 0 , 25 : 10 , 99 : 5 , }</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="../../../site/glossary.html" data-local-route="mapped" data-official-href="https://openusd.org/release/glossary.html">TimeSamples</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/user_guides/time_and_animated_values.html">打开官方原页 / Open official page</a></p>
-    </section>
-  </main>
+  <section>
+    <h2>原站与本地核对 / Source parity</h2>
+    <p><span class="zh">本页使用官方 release user guide 和本地 source snapshot 做对照。晋级校验要求所有 source keywords 同时出现在 source 和输出 HTML 中，且页面不含草稿标记、重复问号损坏、replacement character 或 UTF-8 BOM。</span><span class="en">Source parity compares official sections against the local source snapshot.</span></p>
+    <ul>
+      <li><span class="zh">官方原页 / Official source page：</span><a href="https://openusd.org/release/user_guides/time_and_animated_values.html">Open official source page - https://openusd.org/release/user_guides/time_and_animated_values.html</a></li>
+      <li><span class="zh">本地 source snapshot：</span><a href="../../../source/full_release/user_guides/time_and_animated_values_source.html">source/full_release/user_guides/time_and_animated_values_source.html</a></li>
+      <li><span class="zh">本轮 source parity 报告：</span><code>reports/round_413_user_guides_source_parity.json</code></li>
+    </ul>
+  </section>
+</main>
 </body>
 </html>

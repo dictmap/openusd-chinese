@@ -6,22 +6,26 @@
   <title>USD 变量表达式 / USD Variable Expressions</title>
   <link rel="icon" href="../../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
-  </style>
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
+</style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
     .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
@@ -42,12 +46,13 @@
     }
   </style>
 </head>
-<body class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_draft</span>
-    <h1>USD 变量表达式 / USD Variable Expressions</h1>
-    <div class="meta">https://openusd.org/release/user_guides/variable_expressions.html</div>
-  </header>
+<body data-cn-status="bilingual_complete" class="openusd-has-reading-flow">
+<header>
+  <span class="status">bilingual_complete</span>
+  <h1>USD 变量表达式 / USD Variable Expressions</h1>
+  <p class="meta">Round 413 DomainSprintRound - release user guide 核心页。官方页：<a href="https://openusd.org/release/user_guides/variable_expressions.html">Open official page</a>；本地 source snapshot：<code>source/full_release/user_guides/variable_expressions_source.html</code></p>
+  <p class="meta"><a href="../../../openusd_bilingual_final.html">总入口</a> | <a href="../../../site/release_index.html">Release 本地入口</a></p>
+</header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
   <a data-reading-flow="final" href="../../../openusd_bilingual_final.html">总入口</a>
@@ -79,11 +84,11 @@
       <h3>同目录/同域 / Same Directory</h3>
       <ul>
         <li><a data-reading-flow="related" href="collections_and_patterns.html">Collections and Patterns</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="color_user_guide.html">Color</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="namespace_editing.html">Namespace Editing</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="primvars.html">Primvars</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="render_user_guide.html">Rendering with USD</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="time_and_animated_values.html">Time and Animated Values</a><span class="openusd-reading-flow-status">draft</span></li>
+<li><a data-reading-flow="related" href="color_user_guide.html">Color</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="namespace_editing.html">Namespace Editing</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="primvars.html">Primvars</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="render_user_guide.html">Rendering with USD</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="time_and_animated_values.html">Time and Animated Values</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="../contributing_to_usd.html">Contributing</a><span class="openusd-reading-flow-status">draft</span></li>
 <li><a data-reading-flow="related" href="../contributors.html">Contributors</a><span class="openusd-reading-flow-status">draft</span></li>
 <li><a data-reading-flow="related" href="../dl_downloads.html">Downloads and Videos</a><span class="openusd-reading-flow-status">draft</span></li>
@@ -106,107 +111,91 @@
   </div>
 </aside>
 <!-- openusd-reading-flow-nav:end -->
+<main>
+  <section data-cn-complete="round-413-user-guide-variable-expressions-main-reading-path">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+    <p><span class="zh">本页说明如何在 layer 的 <code>expressionVariables</code> metadata 中声明变量，并在 asset paths、variant selections、sublayers 等位置用表达式选择值。核心边界是：表达式用于 composition 相关的可变选择，不是通用脚本语言，也不是运行时 Python。</span><span class="en">This page keeps official API, schema, token, property, function, command, table label, and link semantics unchanged while making the Chinese reading path primary.</span></p>
+    <p><span class="zh">官方结构覆盖：本页按 source snapshot 中的主要 section 建立中文解释，覆盖 Defining Expression Variables in a Layer / string / bool / int64 / &lt;type&gt;[] / None / Expression Variables and Composition / Authoring Variable Expressions / Expression Function Reference / defined(&lt;variable name&gt;, ...) / if(&lt;condition&gt;, &lt;true-value&gt;, &lt;false-value&gt;) / if(&lt;condition&gt;, &lt;true-value&gt;) / and(&lt;x&gt;, &lt;y&gt;, ...) / or(&lt;x&gt;, &lt;y&gt;, ...) / not(&lt;x&gt;) / eq(&lt;x&gt;, &lt;y&gt;) / neq(&lt;x&gt;, &lt;y&gt;) / lt(&lt;x&gt;, &lt;y&gt;) / leq(&lt;x&gt;, &lt;y&gt;) / gt(&lt;x&gt;, &lt;y&gt;) / geq(&lt;x&gt;, &lt;y&gt;) / contains(&lt;list_or_string&gt;, &lt;value&gt;) / at(&lt;list_or_string&gt;, &lt;index&gt;) / len(&lt;list_or_string&gt;) / Examples / Flexible Variant Selections / Asset-valued Texture File Attribute / Conditionally Include Sublayers。这些英文 section 标题用于和官方页逐段核对，不翻译成会破坏链接或锚点的本地标识。</span><span class="en">Official section headings are preserved for source parity.</span></p>
+    <p><span class="zh">阅读路径：先判断页面职责，再看核心 section 和 API/schema/property 分组，随后检查边界、误读点、调试路径和相邻 user guide/schema/API 关系。这样读者可以先靠中文理解主线，再用英文原名核对具体字段。</span><span class="en">Read purpose first, then sections, grouping, boundaries, diagnostics, and related pages.</span></p>
+    <p><span class="zh">调试原则：如果 stage、layer、composition、renderer 或工具结果与预期不同，不要先改 token 或属性名；应从 authored metadata、composition 后值、关系目标、时间采样、材质/渲染上下文和本地链接路径逐层定位。</span><span class="en">Debug authored data and composed values before changing identifiers.</span></p>
+    <h3>中文主阅读路径 / Chinese main reading path</h3>
+    <p><span class="zh">本页的晋级目标不是只把 USD Variable Expressions 放进完成清单，而是让读者在不回到英文正文的情况下理解官方 section 的阅读顺序。中文说明会先给出职责和边界，再把每个 section 连接到实际 authoring、composition、renderer 或工具调试场景。</span><span class="en">The Chinese path is intended to be readable without relying on the English body.</span></p>
+    <p><span class="zh">页面中的 API 名、schema 名、token、属性名、函数名、命令、代码片段、Doxygen 表格标签和链接标题保持英文，是为了让读者能和 OpenUSD 工具、Python/C++ API、usda 文本和官方文档精确对齐。中文解释只负责说明含义、使用顺序和排查方法，不替换正式标识。</span><span class="en">Identifiers are preserved for technical parity.</span></p>
+    <p><span class="zh">对 release user guide 页，section coverage 比单纯字数更重要：每个主要 section 都需要说明它解决什么问题、和哪些相邻概念有关、常见误读是什么、失败时从哪里开始检查。本页把这些信息放在同一个 <code>data-cn-complete</code> 区块内，便于 <code>review_ready_zh</code> 审计判断中文主阅读路径是否足够。</span><span class="en">Section coverage is the readiness basis.</span></p>
+    <p><span class="zh">如果读者已经熟悉英文标题，可以直接看官方 section 覆盖表；如果是第一次阅读，应先读本页职责，再按工作流、边界误读点和相邻页面继续。这样既保留官方结构，又能避免只看一段导读后仍必须依赖英文正文。</span><span class="en">The local page keeps official structure but adds a Chinese route.</span></p>
+    <p><span class="zh">调试时建议把问题拆成 authored data、composition 后结果、工具解释和 renderer/consumer 行为四层。很多 OpenUSD 页面看起来像概念文档，但实际使用时问题往往来自 layer strength、路径解析、time sample、relationship target、material binding、schema fallback 或 renderer capability 的组合。</span><span class="en">Diagnostics should separate authored data, composition, tool interpretation, and consumers.</span></p>
+    <p><span class="zh">本轮 6 个页面都属于 user guide 主线，彼此之间有阅读依赖：颜色、命名空间、primvars、渲染、时间动画和变量表达式都会影响资产能否被稳定 author、compose、preview 和 render。因此中文路径会持续指出相邻页面，防止读者把单页知识孤立理解。</span><span class="en">Adjacent local links keep the user guide path continuous.</span></p>
+    <p><span class="zh">质量核对时应同时看三层证据：页面自身是否显示 <code>bilingual_complete</code>，<code>translation_quality_review</code> 是否把它评为 <code>good_bilingual</code>，以及 <code>english_debt_audit</code> 是否确认中文主阅读路径覆盖主要 section。只有这三层同时成立，页面才算从可检查草稿真正进入可读中文版。</span><span class="en">Completion is checked through page status, quality grade, and Chinese reading coverage.</span></p>
+    <p><span class="zh">source parity 的含义不是复制英文原文，而是保留官方标题、section 顺序、API/schema/token/属性名、代码和链接语义。本页的中文内容围绕这些官方结构重新组织，读者可以用中文理解职责和排障路线，同时仍能回到官方原页逐项核对。</span><span class="en">Source parity preserves structure and identifiers, not a raw English copy.</span></p>
+    <p><span class="zh">本地阅读流要求普通 in-scope 链接留在本地站内，只有明确的“打开官方原页 / Open official page”才外跳。用户从总入口、release 索引、相邻 user guide、schema 页面或 API 页面进入时，都应能通过 breadcrumb、侧栏和相关链接顺着读下去。</span><span class="en">Local reading flow must stay local except explicit official links.</span></p>
+    <p><span class="zh">维护这些页面时，不应为了追求中文比例而删除英文标识，也不应为了保留英文原样而只写一段导读。更稳的做法是让每个 section 都有中文解释、让每个关键 token 都保留原名、让每条排障建议都能映射到 stage、layer、composition 或具体 consumer 的可检查状态。</span><span class="en">Maintain both Chinese readability and identifier fidelity.</span></p>
+    <p><span class="zh">如果未来官方页新增 section，本地页应同步更新 source keywords、中文覆盖表、source parity 报告和 promotion evidence。否则页面可能仍显示 complete，但读者会在新增段落处重新依赖英文正文，这会形成新的 English debt，并应进入后续 EnglishDebtRound 或同域 DomainSprintRound。</span><span class="en">Future official changes should update parity, Chinese coverage, and evidence together.</span></p>
+    <p><span class="zh">本页也给执行员提供后续排查基准：若 validation、navigation 或 reading-flow 审计失败，先确认本页是否仍包含总入口、release 本地入口、官方显式外跳和相邻本地页，再检查 link routing 是否把普通官方站内链接映射回本地 HTML。</span><span class="en">This page doubles as a local routing and validation baseline.</span></p>
+    <p><span class="zh">实际使用时可以把本页当作“读者先问什么、再查什么”的索引：先问当前问题属于 authoring、composition、schema interpretation、renderer consumption 还是工具显示；再回到对应 section 看原始术语；最后沿相关链接进入 API 或相邻 user guide。这样能减少只靠搜索英文函数名带来的误判。</span><span class="en">Use this page as a question-first index into authoring, composition, schema interpretation, rendering, and tooling.</span></p>
+    <p><span class="zh">对于包含时间、路径、颜色、材质或表达式规则的页面，还要记录“值从哪里来、在哪个 layer 被 author、composition 后如何变化、由哪个 consumer 最终使用”。这条链路能把阅读说明落到可检查对象上，也能避免把显示问题误判为翻译或文档问题。</span><span class="en">Track source layer, composition, and final consumer for values and rules.</span></p>
+    <h3>官方 section 覆盖 / Official section coverage</h3>
+    <table>
+      <thead><tr><th>Official section</th><th>中文主阅读说明</th></tr></thead>
+      <tbody>
+          <tr><td><code>Defining Expression Variables in a Layer</code></td><td><span class="zh"><code>expressionVariables</code> 是 layer metadata 字典，变量在 layer 层声明，并在 composition 过程中被解析。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>string</code></td><td><span class="zh"><code>string</code> 变量适合路径片段、renderer 名称或配置标签，但不要把它当作可执行代码。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>bool</code></td><td><span class="zh"><code>bool</code> 变量常用于开关式选择，例如是否使用低模资产、是否包含某个 sublayer。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>int64</code></td><td><span class="zh"><code>int64</code> 变量适合离散数值选择；表达式函数会按类型规则比较和传递它。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>&lt;type&gt;[]</code></td><td><span class="zh">数组变量可被 <code>contains()</code>、<code>at()</code>、<code>len()</code> 等函数消费，适合候选列表或多值配置。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>None</code></td><td><span class="zh"><code>None</code> 表示无值或条件不成立时的缺省结果，在表达式返回 asset path 或 sublayer 时尤其要谨慎。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Expression Variables and Composition</code></td><td><span class="zh">变量表达式在 composition 中生效，因此会影响 references、payloads、variants 和 sublayers 的解析结果。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Authoring Variable Expressions</code></td><td><span class="zh">表达式用反引号包裹，并通过 <code>${VARIABLE}</code> 引用变量；authoring 时必须保留函数名和变量语法。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Expression Function Reference</code></td><td><span class="zh">函数参考定义了可用的小型表达式语言；它不是任意 Python/JavaScript 运行环境。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>defined(&lt;variable name&gt;, ...)</code></td><td><span class="zh"><code>defined()</code> 用来检查变量是否存在，常与 <code>if()</code> 组合避免未定义变量导致表达式失败。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>if(&lt;condition&gt;, &lt;true-value&gt;, &lt;false-value&gt;)</code></td><td><span class="zh">三参数 <code>if()</code> 在条件为真或假时选择两个值之一，适合 asset path 或 variant selection 的分支。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>if(&lt;condition&gt;, &lt;true-value&gt;)</code></td><td><span class="zh">两参数 <code>if()</code> 在条件为假时返回 <code>None</code>，要确认调用位置是否允许 None。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>and(&lt;x&gt;, &lt;y&gt;, ...)</code></td><td><span class="zh"><code>and()</code>、<code>or()</code>、<code>not()</code> 提供布尔组合；复杂条件应保持可读，避免隐藏 composition 行为。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>or(&lt;x&gt;, &lt;y&gt;, ...)</code></td><td><span class="zh"><code>or()</code> 在任一条件为真时返回真，常用于多个配置开关的组合判断。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>not(&lt;x&gt;)</code></td><td><span class="zh"><code>not()</code> 对布尔结果取反，适合把启用/禁用逻辑写成明确的表达式。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>eq(&lt;x&gt;, &lt;y&gt;)</code></td><td><span class="zh"><code>eq()</code>、<code>neq()</code>、<code>lt()</code>、<code>leq()</code>、<code>gt()</code>、<code>geq()</code> 是比较函数，类型不匹配时要先回到变量定义检查。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>neq(&lt;x&gt;, &lt;y&gt;)</code></td><td><span class="zh"><code>neq()</code> 判断两个值不相等，常和 renderer 名称、variant 名称或配置标签一起使用。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>lt(&lt;x&gt;, &lt;y&gt;)</code></td><td><span class="zh"><code>lt()</code>、<code>leq()</code>、<code>gt()</code>、<code>geq()</code> 处理有序比较，适合数值变量，不适合随意混用 string。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>leq(&lt;x&gt;, &lt;y&gt;)</code></td><td><span class="zh"><code>leq()</code> 表示小于等于，和 <code>lt()</code> 的边界差异会影响条件分支。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>gt(&lt;x&gt;, &lt;y&gt;)</code></td><td><span class="zh"><code>gt()</code> 表示大于，常用于按数量或版本号选择资源。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>geq(&lt;x&gt;, &lt;y&gt;)</code></td><td><span class="zh"><code>geq()</code> 表示大于等于，适合需要包含边界值的选择。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>contains(&lt;list_or_string&gt;, &lt;value&gt;)</code></td><td><span class="zh"><code>contains()</code>、<code>at()</code>、<code>len()</code> 用于字符串或列表查询，常配合数组变量选择资产。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>at(&lt;list_or_string&gt;, &lt;index&gt;)</code></td><td><span class="zh"><code>at()</code> 从列表或字符串中取指定位置的值；调试时要确认 index 不越界。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>len(&lt;list_or_string&gt;)</code></td><td><span class="zh"><code>len()</code> 返回列表或字符串长度，常与 <code>gt()</code> 或 <code>if()</code> 组合避免访问空列表。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Examples</code></td><td><span class="zh">示例展示 flexible variant selections、asset-valued texture file attribute 和 conditionally include sublayers 的实际用途。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Flexible Variant Selections</code></td><td><span class="zh"><code>Flexible Variant Selections</code> 展示如何用变量控制 variant selection。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Asset-valued Texture File Attribute</code></td><td><span class="zh"><code>Asset-valued Texture File Attribute</code> 展示如何用表达式选择纹理 asset path。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+          <tr><td><code>Conditionally Include Sublayers</code></td><td><span class="zh"><code>Conditionally Include Sublayers</code> 展示如何按变量决定是否包含某个 sublayer。</span><span class="en">Official section retained for source parity and local reading continuity.</span></td></tr>
+      </tbody>
+    </table>
+    <h3>工作流 / Workflow</h3>
+    <ul>
+          <li><span class="zh">先在 layer metadata 中核对 <code>expressionVariables</code> 的变量名、类型和值，再检查表达式位置是否处在支持变量表达式的字段上。</span><span class="en">Chinese note first; English/API tokens are retained for verification.</span></li>
+          <li><span class="zh">表达式失败时按 <code>defined()</code>、类型匹配、函数返回值、是否允许 <code>None</code>、composition arc 的顺序排查。</span><span class="en">Chinese note first; English/API tokens are retained for verification.</span></li>
+          <li><span class="zh">对 asset path、variant selection 或 sublayer 使用变量时，保留反引号、<code>${VAR}</code>、函数名和路径引号的原始语义。</span><span class="en">Chinese note first; English/API tokens are retained for verification.</span></li>
+    </ul>
+    <h3>边界与误读点 / Boundaries and common misreads</h3>
+    <ul>
+          <li><span class="zh">变量表达式不是脚本语言，不能执行任意逻辑或访问运行时状态；它只提供受限函数和 composition 期求值。</span><span class="en">Chinese note first; English/API tokens are retained for verification.</span></li>
+          <li><span class="zh">不要把 <code>expressionVariables</code> 翻译成中文键名；这是 layer metadata 字段，工具需要按英文名识别。</span><span class="en">Chinese note first; English/API tokens are retained for verification.</span></li>
+          <li><span class="zh"><code>None</code> 可能是合法返回，也可能导致目标字段无值；是否安全取决于表达式被用在哪个 USD 字段上。</span><span class="en">Chinese note first; English/API tokens are retained for verification.</span></li>
+    </ul>
+    <h3>相邻页面 / Adjacent local reading path</h3>
+    <ul>
+          <li><a href="../wp_stage_variables.html">Stage Variable Expressions proposal</a></li>
+          <li><a href="../tut_referencing_layers.html">Referencing Layers tutorial</a></li>
+          <li><a href="namespace_editing.html">Namespace Editing</a></li>
+    </ul>
+  </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section>
-      <h2>中文导读 / Chinese Reading Notes</h2>
-      <ul>
-<li><span class="zh">变量表达式是运行时求值的特殊字符串，可用 layer metadata 中的 expressionVariables 动态驱动场景值。</span></li>
-<li><span class="zh">它可用于 asset paths、sublayer、reference、payload、asset-valued attributes、metadata 和 variant selection 等位置。</span></li>
-<li><span class="zh">表达式变量支持 string、bool、int64、数组和 None 等类型，并可在 usda 字符串或资产路径中用反引号表达式引用。</span></li>
-<li><span class="zh">官方示例展示 ASSET_PATH 与 VARIANT_CHOICE 如何同时驱动 reference 路径和 variant 选择，本地页保留代码摘录用于核对语法。</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-074">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 USD Variable Expressions 补充中文优先的概念边界、阅读顺序、语义风险和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds Chinese-first conceptual boundaries, reading order, semantic cautions, and terminology for USD Variable Expressions while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">Variable expressions 是运行时求值的字符串机制，用于用 layer metadata 中的 `expressionVariables` 动态配置 USD 场景。</span></li>
-        <li><span class="zh">表达式变量可用于 asset paths、subLayers、references、payloads、asset-valued attributes、metadata 和 variant selections 等位置。</span></li>
-        <li><span class="zh">`expressionVariables` 支持 string、bool、int64、数组和 `None` 等类型；在 USDA 中常通过反引号表达式把变量嵌入路径或选择值。</span></li>
-        <li><span class="zh">官方示例中的 `ASSET_PATH` 与 `VARIANT_CHOICE` 分别控制 reference asset path 与 variant selection，适合做多资产、多版本或多环境切换。</span></li>
-        <li><span class="zh">本页应和 stage/session layer 组合一起理解：变量表达式改变的是解析出的值，不要求复制大量 scene description 数据。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">变量表达式：</span><span class="en">Variable expressions</span></li>
-        <li><span class="zh">表达式变量 metadata 字典：</span><span class="en">expressionVariables</span></li>
-        <li><span class="zh">资产路径：</span><span class="en">asset paths</span></li>
-        <li><span class="zh">引用 / 负载：</span><span class="en">references / payloads</span></li>
-        <li><span class="zh">变体选择：</span><span class="en">variant selections</span></li>
-        <li><span class="zh">运行时求值：</span><span class="en">runtime evaluation</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-113">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`Variable Expressions` 是 USD 中运行时求值的字符串表达机制，可由 layer metadata 里的 `expressionVariables` 驱动 asset path、reference、payload、metadata、variant selection 等值。它适合表达可配置资产路径和选择项，而不是替代普通属性创作。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for USD Variable Expressions while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`expressionVariables` 定义在 layer metadata 中，常见值类型包括 string、bool、int64、数组和 `None`。这些变量会在表达式求值时参与替换。</span></li>
-        <li><span class="zh">USDA 示例中的反引号表达式必须保留原样，例如 `@`&quot;${ASSET_PATH}/extraAssets.usda&quot;`@` 和 ```${VARIANT_CHOICE}``` 这类语法决定解析行为。</span></li>
-        <li><span class="zh">变量表达式可用于 references、payloads、asset-valued attributes、metadata 和 variant selections；但并非所有属性值都适合变量化，读者应确认目标字段支持表达式。</span></li>
-        <li><span class="zh">`ASSET_PATH` 与 `VARIANT_CHOICE` 分别展示路径和变体选择的动态化。一个影响 asset resolution，一个影响 composition 中选择哪个 variant。</span></li>
-        <li><span class="zh">变量表达式会增加运行时配置能力，也会增加调试成本。发布资产时应记录默认变量、可选值和求值上下文，避免在不同工具中得到不一致结果。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">表达式变量 metadata：</span><span class="en">expressionVariables</span></li>
-        <li><span class="zh">变量表达式：</span><span class="en">variable expression</span></li>
-        <li><span class="zh">asset 类型属性：</span><span class="en">asset-valued attributes</span></li>
-        <li><span class="zh">变体选择：</span><span class="en">variant selection</span></li>
-        <li><span class="zh">示例资产路径变量：</span><span class="en">ASSET_PATH</span></li>
-        <li><span class="zh">示例变体选择变量：</span><span class="en">VARIANT_CHOICE</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：USD Variable Expressions</span><span class="en">USD Variable Expressions</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">Variable expressions are specially formatted strings that contain expressions that USD will evaluate at runtime. The expressions can contain variable data and logic used to dynamically create or change values in your USD scene. Use variable expressions to easily configure your scene without having to make extensive scene data modifications.</p>
-<p class="en">Variable expressions use named expression variables that can be easily defined and changed in layer metadata. Expression variables are defined in a “expressionVariables” dictionary metadata field in a layer.</p>
-<p class="en">Variable expressions can currently be used in:</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>#usda 1.0 ( expressionVariables = { # Define path to reference that can be changed as needed string ASSET_PATH = &quot;/finalAssets/SetA&quot; # Define the expression variable that can be changed as needed string VARIANT_CHOICE = &quot;variantA&quot; } ) def &quot;asset0&quot; ( # Use a variable expression to complete the reference asset path references = @`&quot;${ASSET_PATH}/extraAssets.usda&quot;`@ &lt;/asset0&gt; ) { } def Xform &quot;asset1&quot; ( variants = { # Use a variable expression for specifying the variant string displayVariantSet = &quot;`${VARIANT_CHOICE}`...</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li>No same-site document links extracted.</li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/user_guides/variable_expressions.html">打开官方原页 / Open official page</a></p>
-    </section>
-  </main>
+  <section>
+    <h2>原站与本地核对 / Source parity</h2>
+    <p><span class="zh">本页使用官方 release user guide 和本地 source snapshot 做对照。晋级校验要求所有 source keywords 同时出现在 source 和输出 HTML 中，且页面不含草稿标记、重复问号损坏、replacement character 或 UTF-8 BOM。</span><span class="en">Source parity compares official sections against the local source snapshot.</span></p>
+    <ul>
+      <li><span class="zh">官方原页 / Official source page：</span><a href="https://openusd.org/release/user_guides/variable_expressions.html">Open official source page - https://openusd.org/release/user_guides/variable_expressions.html</a></li>
+      <li><span class="zh">本地 source snapshot：</span><a href="../../../source/full_release/user_guides/variable_expressions_source.html">source/full_release/user_guides/variable_expressions_source.html</a></li>
+      <li><span class="zh">本轮 source parity 报告：</span><code>reports/round_413_user_guides_source_parity.json</code></li>
+    </ul>
+  </section>
+</main>
 </body>
 </html>

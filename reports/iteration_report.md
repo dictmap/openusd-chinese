@@ -1,9 +1,9 @@
 # OpenUSD Iteration Report
 
-## 第 412 轮摘要
+## 第 413 轮摘要
 
 - 轮次类型：DomainSprintRound
-- 轮次目的：Round 412 DomainSprintRound：schema 导读/目录页收尾小批量冲刺。实际晋级 5 页：full_site/release/user_guides/schemas/index.html、full_site/release/user_guides/schemas/usdLux/overview.html、full_site/release/user_guides/schemas/usdLux/usdLux_toc.html、full_site/release/user_guides/schemas/usdUI/overview.html、full_site/release/user_guides/schemas/usdUI/usdUI_toc.html。本轮从 154 个 good_bilingual 增至 159；中文主阅读路径覆盖官方导读/目录结构、相邻 schema 域关系、阅读路径建议、边界、误读点、调试路径，并保留 API 名、schema 名、token、属性名、代码、Doxygen 表格标签、链接语义和显式官方外跳。
+- 轮次目的：Round 413 DomainSprintRound：release user guide 核心页小批量冲刺。实际晋级 6 页：full_site/release/user_guides/color_user_guide.html、full_site/release/user_guides/namespace_editing.html、full_site/release/user_guides/primvars.html、full_site/release/user_guides/render_user_guide.html、full_site/release/user_guides/time_and_animated_values.html、full_site/release/user_guides/variable_expressions.html。本轮从 159 个 good_bilingual 增至 165；中文主阅读路径覆盖官方 section、页面职责、API/schema/property 分组、相邻 user guide/schema/API 关系、阅读路径建议、边界、误读点和调试路径，并保留 API 名、schema 名、token、属性名、函数名、代码、命令、Doxygen 表格标签、链接语义和显式官方外跳。
 - 本轮目标：命名缺陷或一致性修复
 - 结果：未晋级页面，修复命名缺陷或一致性问题。
 - 核心说明：保持审计链和人类可读记录一致。
@@ -11,22 +11,22 @@
 ## 真实计数
 
 - total_pages：406
-- good_bilingual：159
-- review_ready_zh：96
-- bilingual_complete：159
-- bilingual_draft：247
-- draft_needs_translation：236
+- good_bilingual：165
+- review_ready_zh：102
+- bilingual_complete：165
+- bilingual_draft：241
+- draft_needs_translation：230
 - draft_template_only：11
 - pending_full_scope：0
 - api_complete：72
-- release_complete：87
+- release_complete：93
 
 ## 验证
 
 - validation_report：passed=true，failed_check_count=0，required_check_count=311
-- translation_quality：good_bilingual=159
-- english_debt：review_ready_zh=96，review_needs_zh_debt=63
-- promotion manifest：151 entries
+- translation_quality：good_bilingual=165
+- english_debt：review_ready_zh=102，review_needs_zh_debt=63
+- promotion manifest：157 entries
 
 ## 本轮改动文件
 

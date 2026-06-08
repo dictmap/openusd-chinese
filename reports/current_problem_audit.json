@@ -1,26 +1,26 @@
 {
-  "generated_at": "2026-06-08T03:58:23.658Z",
-  "purpose": "Round 412 DomainSprintRound：schema 导读/目录页收尾小批量冲刺。实际晋级 5 页：full_site/release/user_guides/schemas/index.html、full_site/release/user_guides/schemas/usdLux/overview.html、full_site/release/user_guides/schemas/usdLux/usdLux_toc.html、full_site/release/user_guides/schemas/usdUI/overview.html、full_site/release/user_guides/schemas/usdUI/usdUI_toc.html。本轮从 154 个 good_bilingual 增至 159；中文主阅读路径覆盖官方导读/目录结构、相邻 schema 域关系、阅读路径建议、边界、误读点、调试路径，并保留 API 名、schema 名、token、属性名、代码、Doxygen 表格标签、链接语义和显式官方外跳。",
+  "generated_at": "2026-06-08T04:32:34.866Z",
+  "purpose": "Round 413 DomainSprintRound：release user guide 核心页小批量冲刺。实际晋级 6 页：full_site/release/user_guides/color_user_guide.html、full_site/release/user_guides/namespace_editing.html、full_site/release/user_guides/primvars.html、full_site/release/user_guides/render_user_guide.html、full_site/release/user_guides/time_and_animated_values.html、full_site/release/user_guides/variable_expressions.html。本轮从 159 个 good_bilingual 增至 165；中文主阅读路径覆盖官方 section、页面职责、API/schema/property 分组、相邻 user guide/schema/API 关系、阅读路径建议、边界、误读点和调试路径，并保留 API 名、schema 名、token、属性名、函数名、代码、命令、Doxygen 表格标签、链接语义和显式官方外跳。",
   "current_counts": {
     "total_pages": 406,
-    "bilingual_complete": 159,
-    "bilingual_draft": 247,
-    "good_bilingual": 159,
-    "draft_needs_translation": 236,
+    "bilingual_complete": 165,
+    "bilingual_draft": 241,
+    "good_bilingual": 165,
+    "draft_needs_translation": 230,
     "draft_template_only": 11,
-    "review_ready_zh": 96,
+    "review_ready_zh": 102,
     "api_complete": 72,
-    "release_complete": 87,
-    "release_review_ready_zh": 84,
+    "release_complete": 93,
+    "release_review_ready_zh": 90,
     "pending_full_scope": 0
   },
   "problems": [
     {
       "id": "P0-completion-stalled",
       "severity": "P0",
-      "summary": "完成度已推进到 159/406，但仍有 247 个可检查草稿不是完整翻译。",
-      "evidence": "本轮 DomainSprintRound 实际晋级 5 个 schema 导读/目录页；translation_quality_review 报告 good_bilingual=159。",
-      "required_action": "继续只把具备中文主阅读路径、官方结构覆盖和无草稿标记的页面写入 promotion manifest；未达标页保留 bilingual_draft 并列明原因。"
+      "summary": "完成度已推进到 165/406，但仍有 241 个可检查草稿不是完整翻译。",
+      "evidence": "本轮 DomainSprintRound 实际晋级 6 个 release user guide 核心页；translation_quality_review 报告 good_bilingual=165。",
+      "required_action": "继续只把具备中文主阅读路径、官方 section 覆盖和无草稿标记的页面写入 promotion manifest；未达标页保留 bilingual_draft 并列明原因。"
     },
     {
       "id": "P1-left-navigation-reading-flow",
@@ -39,22 +39,23 @@
     {
       "id": "P1-release-coverage-lag",
       "severity": "P1",
-      "summary": "release/tutorial/user-guide 覆盖仍需继续推进；本轮收尾 schema 导读和目录页。",
-      "evidence": "reports/english_debt_audit.json 报告 api_complete=72、release_complete=87、release_review_ready_zh=84。",
-      "required_action": "继续优先 release/user-guide 中的高价值短页、教程页或 EnglishDebtRound；批量晋级时逐页确认 source parity 和 good_bilingual。"
+      "summary": "release/tutorial/user-guide 覆盖仍需继续推进；本轮补齐 6 个核心 user guide 页面。",
+      "evidence": "reports/english_debt_audit.json 报告 api_complete=72、release_complete=93、release_review_ready_zh=90。",
+      "required_action": "继续优先 release/user-guide 中的高价值短页、spec/proposal 或 EnglishDebtRound；批量晋级时逐页确认 source parity 和 good_bilingual。"
     }
   ],
   "promoted_pages": [
-    "full_site/release/user_guides/schemas/index.html",
-    "full_site/release/user_guides/schemas/usdLux/overview.html",
-    "full_site/release/user_guides/schemas/usdLux/usdLux_toc.html",
-    "full_site/release/user_guides/schemas/usdUI/overview.html",
-    "full_site/release/user_guides/schemas/usdUI/usdUI_toc.html"
+    "full_site/release/user_guides/color_user_guide.html",
+    "full_site/release/user_guides/namespace_editing.html",
+    "full_site/release/user_guides/primvars.html",
+    "full_site/release/user_guides/render_user_guide.html",
+    "full_site/release/user_guides/time_and_animated_values.html",
+    "full_site/release/user_guides/variable_expressions.html"
   ],
   "not_promoted_pages": [],
-  "source_parity_report": "reports/round_412_schema_guides_source_parity.json",
+  "source_parity_report": "reports/round_413_user_guides_source_parity.json",
   "next_actions": [
-    "schema 导读/目录页已完成一组收尾；下一轮应重新读取 inventory，从 release/tutorial/user-guide 剩余草稿中选择一个同域小批量，或针对 review_ready_zh 债务做 EnglishDebtRound。",
+    "下一轮应重新读取 inventory，从剩余 release 草稿中选择同域短页或针对 review_ready_zh 债务做 EnglishDebtRound。",
     "继续固定运行 Markdown 编码、English debt、本地链接路由、navigation coverage、reading-flow navigation、full draft preview、report index 和 validation。"
   ],
   "next_action": "Continue release/user-guide promotion only if the target pages can become good_bilingual; otherwise stop and report the blocker."
