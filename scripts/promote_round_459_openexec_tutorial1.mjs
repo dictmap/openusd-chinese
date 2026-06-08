@@ -10,7 +10,7 @@ const OFFICIAL_URL = "https://openusd.org/release/api/md_pxr_exec_exec_usd_docs_
 const SOURCE_PARITY_REPORT = "reports/round_459_openexec_tutorial1_source_parity.json";
 const PROMOTION_ID = "round-459-api-openexec-tutorial1-computing-values";
 const PREVIOUS_GOOD_BILINGUAL = 232;
-const PROMOTION_COMMIT_PLACEHOLDER = "round-459-promotion-sha-to-be-stamped-after-push";
+const PROMOTION_COMMIT_PLACEHOLDER = "3f909fe6c8c6537d391fd94aa7d0a1a82181c34f";
 
 const expectedKeywords = [
   "OpenExec Tutorial 1: Computing Values",
