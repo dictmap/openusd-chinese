@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-08T07:49:01.647Z
+Generated: 2026-06-08T08:01:06.971Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 199
-- Promoted complete pages: 191
-- Bilingual draft pages: 207
+- Bilingual complete pages: 200
+- Promoted complete pages: 192
+- Bilingual draft pages: 206
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -258,7 +258,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_draft | API 页面草稿：The TsTest Framework / The TsTest Framework | full_site/api/page_ts_ts_test.html | https://openusd.org/release/api/page_ts_ts_test.html |
 | api | bilingual_draft | Related Pages | full_site/api/pages.html | https://openusd.org/release/api/pages.html |
 | api | bilingual_draft | 源码页面草稿：parallelSpeculationExecutorEngine.h / parallelSpeculationExecutorEngine.h | full_site/api/parallel_speculation_executor_engine_8h_source.html | https://openusd.org/release/api/parallel_speculation_executor_engine_8h_source.html |
-| api | bilingual_draft | API 模块草稿：Pcp: PrimCache Population (Composition) / Pcp: PrimCache Population (Composition) | full_site/api/pcp_page_front.html | https://openusd.org/release/api/pcp_page_front.html |
+| api | bilingual_complete | Pcp: PrimCache Population (Composition) | full_site/api/pcp_page_front.html | https://openusd.org/release/api/pcp_page_front.html |
 | api | bilingual_complete | https://openusd.org/release/api/plug_page_front.html | full_site/api/plug_page_front.html | https://openusd.org/release/api/plug_page_front.html |
 | api | bilingual_draft | 源码页面草稿：pxrDisplayFilterAdapter.h / pxrDisplayFilterAdapter.h | full_site/api/pxr_display_filter_adapter_8h_source.html | https://openusd.org/release/api/pxr_display_filter_adapter_8h_source.html |
 | api | bilingual_draft | 源码页面草稿：rileyParamSchema.h / rileyParamSchema.h | full_site/api/riley_param_schema_8h_source.html | https://openusd.org/release/api/riley_param_schema_8h_source.html |

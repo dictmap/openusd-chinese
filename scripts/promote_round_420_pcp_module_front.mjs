@@ -1,11 +1,79 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pcp: PrimCache Population (Composition) - OpenUSD API 双语导读</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
-  <style>
+import fs from "node:fs";
+import path from "node:path";
+
+const ROOT = process.cwd();
+const ROUND = 420;
+const ROUND_TYPE = "PromotionRound";
+const TARGET = "full_site/api/pcp_page_front.html";
+const SOURCE = "source/full_api/pcp_page_front_source.html";
+const OFFICIAL_URL = "https://openusd.org/release/api/pcp_page_front.html";
+const SOURCE_PARITY_REPORT = "reports/round_420_pcp_module_front_source_parity.json";
+const PROMOTION_ID = "round-420-api-pcp-module-front";
+
+function rel(...parts) {
+  return path.join(ROOT, ...parts);
+}
+
+function esc(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function htmlDecode(value) {
+  return String(value ?? "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#([0-9]+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)));
+}
+
+function stripTags(value) {
+  return htmlDecode(
+    String(value ?? "")
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+  );
+}
+
+function zhChars(value) {
+  return (String(value ?? "").match(/[\u4e00-\u9fff]/g) || []).length;
+}
+
+function readJson(file) {
+  return JSON.parse(fs.readFileSync(rel(file), "utf8").replace(/^\uFEFF/, ""));
+}
+
+function writeJson(file, value) {
+  fs.writeFileSync(rel(file), `${JSON.stringify(value, null, 2)}\n`, "utf8");
+}
+
+function sourceHtml() {
+  return fs.readFileSync(rel(SOURCE), "utf8");
+}
+
+function sourceHeadings() {
+  return [...sourceHtml().matchAll(/<h([1-4])[^>]*>([\s\S]*?)<\/h\1>/gi)].map((match) => ({
+    level: Number(match[1]),
+    text: stripTags(match[2]),
+  }));
+}
+
+function sourceExcerpt() {
+  return stripTags(sourceHtml()).slice(0, 1700);
+}
+
+function css() {
+  return `
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.66}
     header{background:#142538;color:#fff;padding:28px 32px}
     main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
@@ -23,97 +91,52 @@
     li{margin:8px 0}
     code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
     .note{background:#edf6ff;border-left:4px solid #1c5d99;padding:12px 14px}
-  </style>
-<style id="openusd-reading-flow-nav-style">
-    body.openusd-has-reading-flow{padding-left:292px}
-    .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
-    .openusd-reading-flow-nav h2{font-size:17px;margin:0 0 10px;color:#17202a}
-    .openusd-reading-flow-nav h3{font-size:13px;margin:16px 0 8px;color:#516071;text-transform:none;letter-spacing:0}
-    .openusd-reading-flow-nav ul,.openusd-reading-flow-nav ol{list-style:none;margin:0;padding:0}
-    .openusd-reading-flow-nav li{margin:7px 0;line-height:1.35}
-    .openusd-reading-flow-nav a{color:#1c5d99;text-decoration:none;overflow-wrap:anywhere}
-    .openusd-reading-flow-nav a:hover{text-decoration:underline}
-    .openusd-reading-flow-status{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:999px;background:#edf2f7;color:#516071;font-size:11px}
-    .openusd-reading-flow-nav .official-link{color:#8a4b11}
-    .openusd-reading-flow-breadcrumb{max-width:1100px;margin:14px auto 0;padding:0 20px;color:#d7e3f4;font-size:14px;overflow-wrap:anywhere}
-    .openusd-reading-flow-breadcrumb a{color:#ffffff}
-    @media (max-width: 920px){
-      body.openusd-has-reading-flow{padding-left:0}
-      .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
-      .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
-    }
-  </style>
+  `;
+}
+
+const links = {
+  final: "../../openusd_bilingual_final.html",
+  api: "../../site/index.html",
+  release: "../../site/release_index.html",
+  source: "../../source/full_api/pcp_page_front_source.html",
+  official: OFFICIAL_URL,
+  sdf: "sdf_page_front.html",
+  usdPrim: "class_usd_prim.html",
+  pcpArc: "class_pcp_arc.html",
+  pcpUnresolved: "class_pcp_error_unresolved_prim_path.html",
+  pcpPropertyIndex: "class_pcp_property_index.html",
+};
+
+function headingList() {
+  return sourceHeadings()
+    .filter((heading) => heading.text)
+    .map((heading) => `<li><span class="zh">官方 section：<code>${esc(heading.text)}</code>。中文阅读时把它映射到 Pcp 的 composition 工作流：为什么需要组合、能处理哪些 arc、如何发起查询、如何处理错误/依赖/变更/路径转换，以及如何诊断结果。</span><span class="en">Source heading level ${heading.level}: ${esc(heading.text)}</span></li>`)
+    .join("\n");
+}
+
+function buildHtml() {
+  return `<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pcp: PrimCache Population (Composition) - OpenUSD API 双语导读</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>${css()}</style>
 </head>
-<body data-cn-status="bilingual_complete" data-cn-round="420" class="openusd-has-reading-flow">
+<body data-cn-status="bilingual_complete" data-cn-round="${ROUND}">
   <header>
     <span class="status">bilingual_complete</span>
     <h1>Pcp: PrimCache Population (Composition)</h1>
-    <div class="meta">Round 420 PromotionRound · Source snapshot: source/full_api/pcp_page_front_source.html · Official: https://openusd.org/release/api/pcp_page_front.html</div>
+    <div class="meta">Round ${ROUND} ${ROUND_TYPE} · Source snapshot: ${esc(SOURCE)} · Official: ${esc(OFFICIAL_URL)}</div>
     <p class="navlinks">
-      <a href="../../openusd_bilingual_final.html">总入口</a>
-      <a href="../../site/index.html">API 本地入口</a>
-      <a href="../../site/release_index.html">Release 本地入口</a>
-      <a href="../../source/full_api/pcp_page_front_source.html">Local source snapshot</a>
-      <a href="https://openusd.org/release/api/pcp_page_front.html">Open official page</a>
+      <a href="${links.final}">总入口</a>
+      <a href="${links.api}">API 本地入口</a>
+      <a href="${links.release}">Release 本地入口</a>
+      <a href="${links.source}">Local source snapshot</a>
+      <a href="${links.official}">Open official page</a>
     </p>
   </header>
-<!-- openusd-reading-flow-nav:start -->
-<nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
-  <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
-  <span> / </span>
-  <a data-reading-flow="api-entry" href="../../site/index.html">API 本地入口</a>
-  <span> / api / pcp_page_front.html</span>
-</nav>
-<aside class="openusd-reading-flow-nav" aria-label="本地阅读导航 / Local reading navigation">
-  <h2>本地阅读导航</h2>
-  <div class="openusd-reading-flow-columns">
-    <section>
-      <h3>入口 / Entrances</h3>
-      <ul>
-        <li><a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口 / Final entry</a></li>
-        <li><a data-reading-flow="release-entry" href="../../site/release_index.html">Release 本地入口</a></li>
-        <li><a data-reading-flow="api-entry" href="../../site/index.html">API Doxygen 本地入口</a></li>
-        <li><a data-reading-flow="api-redirect" href="../../site/api/index.html">API redirect / site/api/index.html</a></li>
-      </ul>
-    </section>
-    <section>
-      <h3>当前位置 / Current Layer</h3>
-      <ol>
-        <li>api</li>
-        <li>pcp_page_front.html</li>
-      </ol>
-    </section>
-    <section>
-      <h3>当前 API 上下文 / API Context</h3>
-      <ul>
-        <li><a data-reading-flow="related" href="_c_l_i11_8h_source.html">源码页面草稿：CLI11.h / CLI11.h</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="_developer__guides.html">开发者指南 / Developer Guides</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="_usd_skel__intro.html">_c_l_i11_8h_source.html</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="annotated.html">Classes</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="ar_page_front.html">https://openusd.org/release/api/ar_page_front.html</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="arch_page_front.html">https://openusd.org/release/api/arch_page_front.html</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="binding_map_8h_source.html">源码页面草稿：bindingMap.h / bindingMap.h</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="class_ef___lofted_output_set.html">https://openusd.org/release/api/class_ef___lofted_output_set.html</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="class_esf_property_interface.html">https://openusd.org/release/api/class_esf_property_interface.html</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="class_gf_dual_quatf.html">https://openusd.org/release/api/class_gf_dual_quatf.html</a><span class="openusd-reading-flow-status">complete</span></li>
-      </ul>
-    </section>
-    <section>
-      <h3>上一页/下一页 / Previous/Next</h3>
-      <ul>
-        <li><a data-reading-flow="prev" href="parallel_speculation_executor_engine_8h_source.html">上一页 / Previous: 源码页面草稿：parallelSpeculationExecutorEngine.h / parallelSpeculationExecutorEngine.h</a></li>
-<li><a data-reading-flow="next" href="plug_page_front.html">下一页 / Next: https://openusd.org/release/api/plug_page_front.html</a></li>
-      </ul>
-    </section>
-    <section>
-      <h3>官方外跳 / Official</h3>
-      <ul>
-        <li><a class="official-link" data-reading-flow="official" href="https://openusd.org/release/api/pcp_page_front.html">打开官方原页 / Open official page</a></li>
-      </ul>
-    </section>
-  </div>
-</aside>
-<!-- openusd-reading-flow-nav:end -->
   <main>
     <section data-cn-complete="round-420-pcp-main-reading-path">
       <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
@@ -137,10 +160,10 @@
       <ul>
         <li><span class="zh"><code>PcpCache</code>：composition query 的上下文和缓存，管理 root/session layer、resolver context、payload inclusion set，并服务 <code>ComputeLayerStack()</code> 与 <code>ComputePrimIndex()</code>。</span><span class="en">PcpCache is the central context for composition requests.</span></li>
         <li><span class="zh"><code>PcpPrimIndex</code>：描述某个 prim 的所有 contributing sites 和 composition graph 结构；它是理解“这个 prim 为什么长这样”的核心诊断对象。</span><span class="en">PcpPrimIndex captures the structure of all contributing sites for a prim.</span></li>
-        <li><span class="zh"><a href="class_pcp_arc.html"><code>PcpArc</code></a>：表示 composition graph 中的 arc 关系，例如 reference、payload、inherits、variant 等路径如何把意见带入目标对象。</span><span class="en">PcpArc represents an edge in the composition graph.</span></li>
-        <li><span class="zh"><code>PcpErrorBase</code> 及其派生错误：表达 unresolved asset/path、cycle、relocates 冲突等 authored scene description 问题。相关页面如 <a href="class_pcp_error_unresolved_prim_path.html"><code>PcpErrorUnresolvedPrimPath</code></a> 可用于继续核对具体错误类型。</span><span class="en">Pcp errors describe authored composition problems.</span></li>
+        <li><span class="zh"><a href="${links.pcpArc}"><code>PcpArc</code></a>：表示 composition graph 中的 arc 关系，例如 reference、payload、inherits、variant 等路径如何把意见带入目标对象。</span><span class="en">PcpArc represents an edge in the composition graph.</span></li>
+        <li><span class="zh"><code>PcpErrorBase</code> 及其派生错误：表达 unresolved asset/path、cycle、relocates 冲突等 authored scene description 问题。相关页面如 <a href="${links.pcpUnresolved}"><code>PcpErrorUnresolvedPrimPath</code></a> 可用于继续核对具体错误类型。</span><span class="en">Pcp errors describe authored composition problems.</span></li>
         <li><span class="zh"><code>PcpChanges</code>、<code>PcpLifeboat</code> 和 dependency query：服务 change processing、cache invalidation 和 namespace editing，帮助上层 scenegraph 库在 layer 变化后重新拉取受影响的 composition 结果。</span><span class="en">Change and dependency APIs support incremental recomposition.</span></li>
-        <li><span class="zh"><a href="class_pcp_property_index.html"><code>PcpPropertyIndex</code></a>：面向 property composition 的相关结果入口；阅读它时应继续保留 Pcp 的定位：计算贡献结构，而不是解释最终值。</span><span class="en">PcpPropertyIndex applies composition indexing to properties.</span></li>
+        <li><span class="zh"><a href="${links.pcpPropertyIndex}"><code>PcpPropertyIndex</code></a>：面向 property composition 的相关结果入口；阅读它时应继续保留 Pcp 的定位：计算贡献结构，而不是解释最终值。</span><span class="en">PcpPropertyIndex applies composition indexing to properties.</span></li>
       </ul>
     </section>
 
@@ -159,27 +182,16 @@
 
     <section data-cn-complete="round-420-pcp-adjacent-path">
       <h2>相邻阅读路径 / Adjacent Reading Path</h2>
-      <p><span class="zh">推荐阅读顺序是：先读 <a href="sdf_page_front.html"><code>Sdf</code> 模块入口</a>，理解 layer/spec/path 是 authored scene description；再读本页理解这些 authored pieces 如何通过 Pcp composition arcs 聚合；最后回到 <a href="class_usd_prim.html"><code>UsdPrim</code></a>、<code>UsdStage</code> 等高层 API 查看 composition 后的 scenegraph 视图。这个顺序能把“文件里写了什么”“组合结构是什么”“最终对象呈现什么”三个层次分开。</span><span class="en">Read Sdf for authored storage, Pcp for composition structure, and Usd for composed scenegraph objects.</span></p>
+      <p><span class="zh">推荐阅读顺序是：先读 <a href="${links.sdf}"><code>Sdf</code> 模块入口</a>，理解 layer/spec/path 是 authored scene description；再读本页理解这些 authored pieces 如何通过 Pcp composition arcs 聚合；最后回到 <a href="${links.usdPrim}"><code>UsdPrim</code></a>、<code>UsdStage</code> 等高层 API 查看 composition 后的 scenegraph 视图。这个顺序能把“文件里写了什么”“组合结构是什么”“最终对象呈现什么”三个层次分开。</span><span class="en">Read Sdf for authored storage, Pcp for composition structure, and Usd for composed scenegraph objects.</span></p>
       <p class="note"><span class="zh">本页所有 API 名、函数名、枚举名、debug flag、代码标识和 Doxygen section 标题均按官方拼写保留。中文说明负责建立主阅读路径，英文原名负责技术核对。</span><span class="en">English API identifiers remain unchanged for source parity.</span></p>
     </section>
 
     <section data-cn-complete="round-420-pcp-source-parity">
       <h2>官方 section 对比 / Source Parity</h2>
       <ul>
-<li><span class="zh">官方 section：<code>Introduction</code>。中文阅读时把它映射到 Pcp 的 composition 工作流：为什么需要组合、能处理哪些 arc、如何发起查询、如何处理错误/依赖/变更/路径转换，以及如何诊断结果。</span><span class="en">Source heading level 1: Introduction</span></li>
-<li><span class="zh">官方 section：<code>Motivation</code>。中文阅读时把它映射到 Pcp 的 composition 工作流：为什么需要组合、能处理哪些 arc、如何发起查询、如何处理错误/依赖/变更/路径转换，以及如何诊断结果。</span><span class="en">Source heading level 1: Motivation</span></li>
-<li><span class="zh">官方 section：<code>Capabilities</code>。中文阅读时把它映射到 Pcp 的 composition 工作流：为什么需要组合、能处理哪些 arc、如何发起查询、如何处理错误/依赖/变更/路径转换，以及如何诊断结果。</span><span class="en">Source heading level 1: Capabilities</span></li>
-<li><span class="zh">官方 section：<code>Usage</code>。中文阅读时把它映射到 Pcp 的 composition 工作流：为什么需要组合、能处理哪些 arc、如何发起查询、如何处理错误/依赖/变更/路径转换，以及如何诊断结果。</span><span class="en">Source heading level 1: Usage</span></li>
-<li><span class="zh">官方 section：<code>The PcpCache</code>。中文阅读时把它映射到 Pcp 的 composition 工作流：为什么需要组合、能处理哪些 arc、如何发起查询、如何处理错误/依赖/变更/路径转换，以及如何诊断结果。</span><span class="en">Source heading level 2: The PcpCache</span></li>
-<li><span class="zh">官方 section：<code>Computation Queries</code>。中文阅读时把它映射到 Pcp 的 composition 工作流：为什么需要组合、能处理哪些 arc、如何发起查询、如何处理错误/依赖/变更/路径转换，以及如何诊断结果。</span><span class="en">Source heading level 2: Computation Queries</span></li>
-<li><span class="zh">官方 section：<code>Errors</code>。中文阅读时把它映射到 Pcp 的 composition 工作流：为什么需要组合、能处理哪些 arc、如何发起查询、如何处理错误/依赖/变更/路径转换，以及如何诊断结果。</span><span class="en">Source heading level 2: Errors</span></li>
-<li><span class="zh">官方 section：<code>Dependencies</code>。中文阅读时把它映射到 Pcp 的 composition 工作流：为什么需要组合、能处理哪些 arc、如何发起查询、如何处理错误/依赖/变更/路径转换，以及如何诊断结果。</span><span class="en">Source heading level 2: Dependencies</span></li>
-<li><span class="zh">官方 section：<code>Namespace Editing</code>。中文阅读时把它映射到 Pcp 的 composition 工作流：为什么需要组合、能处理哪些 arc、如何发起查询、如何处理错误/依赖/变更/路径转换，以及如何诊断结果。</span><span class="en">Source heading level 2: Namespace Editing</span></li>
-<li><span class="zh">官方 section：<code>Change Processing</code>。中文阅读时把它映射到 Pcp 的 composition 工作流：为什么需要组合、能处理哪些 arc、如何发起查询、如何处理错误/依赖/变更/路径转换，以及如何诊断结果。</span><span class="en">Source heading level 2: Change Processing</span></li>
-<li><span class="zh">官方 section：<code>Path Translation</code>。中文阅读时把它映射到 Pcp 的 composition 工作流：为什么需要组合、能处理哪些 arc、如何发起查询、如何处理错误/依赖/变更/路径转换，以及如何诊断结果。</span><span class="en">Source heading level 2: Path Translation</span></li>
-<li><span class="zh">官方 section：<code>Diagnostics</code>。中文阅读时把它映射到 Pcp 的 composition 工作流：为什么需要组合、能处理哪些 arc、如何发起查询、如何处理错误/依赖/变更/路径转换，以及如何诊断结果。</span><span class="en">Source heading level 2: Diagnostics</span></li>
+${headingList()}
         <li><span class="zh">已核对 source snapshot 中的核心关键词：<code>Layering &amp; Referencing</code>、<code>PcpCache</code>、<code>ComputeLayerStack</code>、<code>ComputePrimIndex</code>、<code>PcpErrorBase</code>、<code>PcpChanges</code>、<code>PcpLifeboat</code>、<code>PcpTranslatePathFromNodeToRoot</code>、<code>PcpTranslatePathFromRootToNode</code>、<code>TF_DEBUG</code>、<code>PCP_DIAGNOSTIC_VALIDATION</code>。</span><span class="en">The local page preserves the official composition and diagnostics identifiers.</span></li>
-        <li><span class="zh">官方原文摘要用于核对，不作为中文主阅读路径：<span class="en">Universal Scene Description: Pcp : PrimCache Population (Composition) Loading... Searching... No Matches Pcp : PrimCache Population (Composition) Introduction Pcp implements the core scenegraph composition semantics &amp;mdash; the behavior informally referred to as Layering &amp; Referencing . Pcp specializes in providing low-level composition services on behalf of higher-level scenegraph libraries (Usd, Csd, Mf) that instantiate scenegraph objects based on the results. Most clients will typically use one of those libraries, rather than consulting Pcp directly. The name &quot;Pcp&quot; stands for Prim Cache Population , a historical term for this area of the system. Motivation Objects in the scenegraph are backed by scene description &amp;ndash; authored data describing those objects. A single file of scene description is sufficient to describe a hierarchy of objects. However, it is also useful to organize that data across multiple files. For one thing, this provides a way for multiple people (such as in different departments) to collaborate while keeping their contributions distinct. For another, this provides a means of re-use: an asset like a rig or model can be built once, then used many times as needed. This instancing is expressed as a &quot;reference arc&quot; that points at the external file. The Pcp runtime detects and interprets these arcs to bring together the disparate files into a single combined set of opinions. By using a reference arc, the underlying external asset can be continually worked on, with improvements automatically being picked up in downstream assets. There are other kinds of arcs that provide variations of this behavior. Pcp provides the service of identifying and interpret</span></span></li>
+        <li><span class="zh">官方原文摘要用于核对，不作为中文主阅读路径：<span class="en">${esc(sourceExcerpt())}</span></span></li>
       </ul>
     </section>
 
@@ -190,8 +202,181 @@
         <li><span class="zh">中文主阅读路径覆盖模块职责、官方 section、核心 API 分组、Pcp/Sdf/Usd 边界、常见误读、调试路径、path translation 和相邻阅读关系。</span><span class="en">Chinese coverage explains role, sections, API groups, boundaries, debugging, path translation, and adjacent modules.</span></li>
         <li><span class="zh">后续审计必须确认本页进入 <code>good_bilingual</code>，并尽量达到 <code>review_ready_zh</code>；若 final entry、inventory、quality、English debt 或 validation 不一致，应停止并修复。</span><span class="en">Quality, English-debt, final entry, and validation reports must close the promotion.</span></li>
       </ul>
-      <p><a href="https://openusd.org/release/api/pcp_page_front.html">打开官方原页 / Open official page</a></p>
+      <p><a href="${links.official}">打开官方原页 / Open official page</a></p>
     </section>
   </main>
 </body>
 </html>
+`;
+}
+
+function sourceParity() {
+  const src = sourceHtml();
+  const out = fs.existsSync(rel(TARGET)) ? fs.readFileSync(rel(TARGET), "utf8") : "";
+  const keywords = [
+    "Introduction",
+    "Motivation",
+    "Capabilities",
+    "Usage",
+    "PcpCache",
+    "ComputeLayerStack",
+    "ComputePrimIndex",
+    "PcpErrorBase",
+    "PcpChanges",
+    "PcpLifeboat",
+    "PcpTranslatePathFromNodeToRoot",
+    "PcpTranslatePathFromRootToNode",
+    "TF_DEBUG",
+    "PCP_DIAGNOSTIC_VALIDATION",
+  ];
+  return {
+    generated_at: new Date().toISOString(),
+    round: ROUND,
+    round_type: ROUND_TYPE,
+    target: TARGET,
+    source_snapshot: SOURCE,
+    official_url: OFFICIAL_URL,
+    source_headings: sourceHeadings(),
+    source_keywords_checked: keywords,
+    missing_source_keywords: keywords.filter((keyword) => !src.includes(keyword)),
+    missing_output_keywords: keywords.filter((keyword) => !out.includes(keyword)),
+    output_checks: {
+      has_complete_status: out.includes("bilingual_complete"),
+      has_paragraph_coverage: out.includes("Paragraph-Level Bilingual Coverage") && out.includes("逐段双语理解"),
+      has_final_entry: out.includes("openusd_bilingual_final.html"),
+      has_api_entry: out.includes("site/index.html"),
+      has_release_entry: out.includes("site/release_index.html"),
+      has_explicit_official_link: out.includes("Open official page") && out.includes(OFFICIAL_URL),
+      no_draft_marker: !/bilingual_draft|batch draft page|后续迭代会继续补齐|later iterations add denser bilingual coverage/.test(out),
+      zh_chars: zhChars(out),
+      zh_blocks: (out.match(/class=["'][^"']*\bzh\b[^"']*["']/g) || []).length,
+    },
+  };
+}
+
+function writePage() {
+  fs.writeFileSync(rel(TARGET), buildHtml(), "utf8");
+  writeJson(SOURCE_PARITY_REPORT, sourceParity());
+}
+
+function precheck() {
+  const report = sourceParity();
+  const failed = [];
+  if (report.missing_source_keywords.length) failed.push(`missing source keywords: ${report.missing_source_keywords.join(", ")}`);
+  if (report.missing_output_keywords.length) failed.push(`missing output keywords: ${report.missing_output_keywords.join(", ")}`);
+  for (const [key, value] of Object.entries(report.output_checks)) {
+    if (typeof value === "boolean" && !value) failed.push(`output check failed: ${key}`);
+  }
+  if (report.output_checks.zh_chars < 2300) failed.push(`zh chars too low: ${report.output_checks.zh_chars}`);
+  if (report.output_checks.zh_blocks < 12) failed.push(`zh blocks too low: ${report.output_checks.zh_blocks}`);
+  if (failed.length) {
+    console.error(JSON.stringify({ passed: false, failed, report }, null, 2));
+    process.exit(1);
+  }
+  writeJson(SOURCE_PARITY_REPORT, report);
+  console.log(JSON.stringify({ passed: true, report }, null, 2));
+}
+
+function updateManifest() {
+  const raw = readJson("reports/bilingual_completion_promotions.json");
+  const doc = {
+    ...raw,
+    generated_at: raw.generated_at || new Date().toISOString(),
+    promotions: Array.isArray(raw.promotions) ? raw.promotions : [],
+    updated_at: new Date().toISOString(),
+  };
+  doc.promotions = doc.promotions.filter((entry) => entry.id !== PROMOTION_ID && entry.local_output !== TARGET);
+  doc.promotions.push({
+    id: PROMOTION_ID,
+    title: "Pcp: PrimCache Population (Composition)",
+    official_url: OFFICIAL_URL,
+    local_output: TARGET,
+    status: "bilingual_complete",
+    reason: `Round ${ROUND} ${ROUND_TYPE}: promote the Pcp module front page by adding Chinese main-reading-path coverage for composition semantics, PcpCache, computation queries, errors, dependencies, namespace editing, change processing, path translation, diagnostics, Sdf/Usd boundaries, source parity, reading-flow preservation, and explicit official-page verification.`,
+    evidence: {
+      page_contains_status: "bilingual_complete",
+      generic_draft_marker_removed: true,
+      minimum_chinese_chars: 2300,
+      minimum_complete_section_chinese_chars: 1600,
+      minimum_chinese_blocks: 12,
+      official_source_compared: true,
+      local_source_snapshot_compared: SOURCE,
+      source_parity_report: SOURCE_PARITY_REPORT,
+      round_type: ROUND_TYPE,
+    },
+  });
+  writeJson("reports/bilingual_completion_promotions.json", doc);
+}
+
+function updateProblemAudit() {
+  const quality = readJson("reports/translation_quality_review.json");
+  const debt = readJson("reports/english_debt_audit.json");
+  const inventory = readJson("reports/all_pages_inventory.json");
+  const counts = {
+    total_pages: inventory.counts.total_pages,
+    bilingual_complete: quality.status_counts.bilingual_complete,
+    bilingual_draft: quality.status_counts.bilingual_draft,
+    good_bilingual: quality.grade_counts.good_bilingual,
+    draft_needs_translation: quality.grade_counts.draft_needs_translation,
+    draft_template_only: quality.grade_counts.draft_template_only,
+    review_ready_zh: debt.counts.review_ready_zh,
+    api_complete: debt.counts.api_complete,
+    release_complete: debt.counts.release_complete,
+    release_review_ready_zh: debt.counts.release_review_ready_zh,
+    pending_full_scope: inventory.counts.pending_full_scope_pages,
+  };
+  writeJson("reports/current_problem_audit.json", {
+    generated_at: new Date().toISOString(),
+    purpose: "Track current OpenUSD bilingual completion blockers and named P0/P1 defects.",
+    current_counts: counts,
+    problems: [
+      {
+        id: "P0-api-draft-backlog",
+        severity: "P0",
+        summary: `当前 good_bilingual=${counts.good_bilingual}/406，API complete=${counts.api_complete}，仍有 ${counts.bilingual_draft} 个可检查草稿，不是完整翻译。`,
+        evidence: `第 ${ROUND} 轮 PromotionRound 将 ${TARGET} 从 API 草稿晋级为 good_bilingual；release 范围保持 ${counts.release_complete}/126 complete。`,
+        required_action: "继续按 PromotionRound 或 DomainSprintRound 推进 API 草稿，只把达标页面写入 promotion manifest。",
+      },
+      {
+        id: "P1-left-navigation-reading-flow",
+        severity: "P1",
+        summary: "完成页必须保留本地 reading-flow 导航、breadcrumb、API/Release/总入口和显式官方外跳。",
+        evidence: "本轮完成后需重新运行 route_openusd_internal_links_local、inject_openusd_reading_flow_navigation 和 audit_openusd_reading_flow_navigation。",
+        required_action: "若 reading-flow 审计失败，停止并修复导航，不得推送。",
+      },
+      {
+        id: "P1-markdown-record-encoding",
+        severity: "P1",
+        summary: "Markdown 编码守卫继续作为硬门槛。",
+        evidence: "work.md、reports/iteration_report.md、reports/current_problem_audit.md、reports/bilingual_completion_promotions.md 必须无重复问号损坏、replacement character 和 UTF-8 BOM。",
+        required_action: "若 audit_openusd_markdown_encoding.mjs 失败，先做 ConsistencyRound。",
+      },
+    ],
+    promoted_pages: [
+      {
+        round: ROUND,
+        round_type: ROUND_TYPE,
+        output: TARGET,
+        official_url: OFFICIAL_URL,
+        source_snapshot: SOURCE,
+        source_parity_report: SOURCE_PARITY_REPORT,
+      },
+    ],
+    not_promoted_pages: [],
+    source_parity_report: SOURCE_PARITY_REPORT,
+    next_actions: [
+      "继续推进 API 草稿；release 范围已经 126/126 complete，不要重复处理 release 已完成页。",
+      "优先选择核心 API 或同域短页批量，但每轮必须保证 good_bilingual 按实际达标页增长。",
+    ],
+    next_action: "Select the next API target only after git/report/validation state is clean and consistent.",
+  });
+}
+
+const commands = new Set(process.argv.slice(2));
+if (commands.has("--write-page")) writePage();
+if (commands.has("--precheck")) precheck();
+if (commands.has("--manifest")) updateManifest();
+if (commands.has("--problem")) updateProblemAudit();
+if (commands.size === 0) {
+  console.log("Usage: node scripts/promote_round_420_pcp_module_front.mjs --write-page --precheck --manifest --problem");
+}
