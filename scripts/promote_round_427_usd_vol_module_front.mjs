@@ -1,11 +1,83 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UsdVol: USD Volume Schema - OpenUSD API 双语导读</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
-  <style>
+import fs from "node:fs";
+import path from "node:path";
+
+const ROOT = process.cwd();
+const ROUND = 427;
+const ROUND_TYPE = "PromotionRound";
+const TARGET = "full_site/api/usd_vol_page_front.html";
+const SOURCE = "source/full_api/usd_vol_page_front_source.html";
+const OFFICIAL_URL = "https://openusd.org/release/api/usd_vol_page_front.html";
+const SOURCE_PARITY_REPORT = "reports/round_427_usd_vol_module_front_source_parity.json";
+const PROMOTION_ID = "round-427-api-usd-vol-module-front";
+
+function rel(...parts) {
+  return path.join(ROOT, ...parts);
+}
+
+function esc(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function htmlDecode(value) {
+  return String(value ?? "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#([0-9]+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)));
+}
+
+function stripTags(value) {
+  return htmlDecode(
+    String(value ?? "")
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+  );
+}
+
+function zhChars(value) {
+  return (String(value ?? "").match(/[\u4e00-\u9fff]/g) || []).length;
+}
+
+function readJson(file) {
+  return JSON.parse(fs.readFileSync(rel(file), "utf8").replace(/^\uFEFF/, ""));
+}
+
+function writeJson(file, value) {
+  fs.writeFileSync(rel(file), `${JSON.stringify(value, null, 2)}\n`, "utf8");
+}
+
+function sourceHtml() {
+  return fs.readFileSync(rel(SOURCE), "utf8");
+}
+
+function sourceText() {
+  return stripTags(sourceHtml());
+}
+
+function sourceHeadings() {
+  return [...sourceHtml().matchAll(/<h([1-4])[^>]*>([\s\S]*?)<\/h\1>/gi)].map((match) => ({
+    level: Number(match[1]),
+    text: stripTags(match[2]),
+  }));
+}
+
+function sourceExcerpt() {
+  return sourceText().slice(0, 1500);
+}
+
+function css() {
+  return `
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.66}
     body.openusd-has-reading-flow{padding-left:292px}
     header{background:#142538;color:#fff;padding:28px 32px}
@@ -40,27 +112,39 @@
       .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
       .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
     }
-  </style>
-</head>
-<body data-cn-status="bilingual_complete" data-cn-round="427" class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_complete</span>
-    <h1>UsdVol: USD Volume Schema</h1>
-    <div class="meta">Round 427 PromotionRound | Source snapshot: source/full_api/usd_vol_page_front_source.html | Official: https://openusd.org/release/api/usd_vol_page_front.html</div>
-    <p class="navlinks">
-      <a href="../../openusd_bilingual_final.html">总入口</a>
-      <a href="../../site/index.html">API 本地入口</a>
-      <a href="../../site/release_index.html">Release 本地入口</a>
-      <a href="../../source/full_api/usd_vol_page_front_source.html">Local source snapshot</a>
-      <a href="https://openusd.org/release/api/usd_vol_page_front.html">Open official page</a>
-    </p>
-  </header>
+  `;
+}
 
+const links = {
+  final: "../../openusd_bilingual_final.html",
+  api: "../../site/index.html",
+  apiRedirect: "../../site/api/index.html",
+  release: "../../site/release_index.html",
+  source: "../../source/full_api/usd_vol_page_front_source.html",
+  official: OFFICIAL_URL,
+  prev: "usd_render_page_front.html",
+  next: "usd_ri_page_front.html",
+  usdGeom: "usd_geom_page_front.html",
+  usdRender: "usd_render_page_front.html",
+  hd: "hd_page_front.html",
+  hdx: "hdx_page_front.html",
+  particleSH: "class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html",
+};
+
+function headingList() {
+  return sourceHeadings()
+    .filter((heading) => heading.text !== "Table of Contents")
+    .map((heading) => `<li><span class="zh">官方 section：<code>${esc(heading.text)}</code>。中文页将它纳入体积 schema、外部 field asset、OpenVDB/Field3D、field relationship、particle field 组合和渲染/消费边界。</span><span class="en">Source heading level ${heading.level}: ${esc(heading.text)}</span></li>`)
+    .join("\n");
+}
+
+function readingFlowNav() {
+  return `
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
-  <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
+  <a data-reading-flow="final" href="${links.final}">总入口</a>
   <span> / </span>
-  <a data-reading-flow="api-entry" href="../../site/index.html">API 本地入口</a>
+  <a data-reading-flow="api-entry" href="${links.api}">API 本地入口</a>
   <span> / api / usd_vol_page_front.html</span>
 </nav>
 <aside class="openusd-reading-flow-nav" aria-label="本地阅读导航 / Local reading navigation">
@@ -69,10 +153,10 @@
     <section>
       <h3>入口 / Entrances</h3>
       <ul>
-        <li><a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口 / Final entry</a></li>
-        <li><a data-reading-flow="release-entry" href="../../site/release_index.html">Release 本地入口</a></li>
-        <li><a data-reading-flow="api-entry" href="../../site/index.html">API Doxygen 本地入口</a></li>
-        <li><a data-reading-flow="api-redirect" href="../../site/api/index.html">API redirect / site/api/index.html</a></li>
+        <li><a data-reading-flow="final" href="${links.final}">总入口 / Final entry</a></li>
+        <li><a data-reading-flow="release-entry" href="${links.release}">Release 本地入口</a></li>
+        <li><a data-reading-flow="api-entry" href="${links.api}">API Doxygen 本地入口</a></li>
+        <li><a data-reading-flow="api-redirect" href="${links.apiRedirect}">API redirect / site/api/index.html</a></li>
       </ul>
     </section>
     <section>
@@ -85,28 +169,54 @@
     <section>
       <h3>相关 API / Related API</h3>
       <ul>
-        <li><a data-reading-flow="related" href="usd_geom_page_front.html">UsdGeom 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="usd_render_page_front.html">UsdRender 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="hd_page_front.html">Hd 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html">ParticleFieldSphericalHarmonicsAttributeAPI</a></li>
+        <li><a data-reading-flow="related" href="${links.usdGeom}">UsdGeom 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.usdRender}">UsdRender 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.hd}">Hd 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.particleSH}">ParticleFieldSphericalHarmonicsAttributeAPI</a></li>
       </ul>
     </section>
     <section>
       <h3>上一页/下一页 / Previous/Next</h3>
       <ul>
-        <li><a data-reading-flow="prev" href="usd_render_page_front.html">上一页 / Previous: UsdRender</a></li>
-        <li><a data-reading-flow="next" href="usd_ri_page_front.html">下一页 / Next: UsdRi</a></li>
+        <li><a data-reading-flow="prev" href="${links.prev}">上一页 / Previous: UsdRender</a></li>
+        <li><a data-reading-flow="next" href="${links.next}">下一页 / Next: UsdRi</a></li>
       </ul>
     </section>
     <section>
       <h3>官方外跳 / Official</h3>
       <ul>
-        <li><a class="official-link" data-reading-flow="official" href="https://openusd.org/release/api/usd_vol_page_front.html">打开官方原页 / Open official page</a></li>
+        <li><a class="official-link" data-reading-flow="official" href="${links.official}">打开官方原页 / Open official page</a></li>
       </ul>
     </section>
   </div>
 </aside>
-<!-- openusd-reading-flow-nav:end -->
+<!-- openusd-reading-flow-nav:end -->`;
+}
+
+function buildHtml() {
+  return `<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UsdVol: USD Volume Schema - OpenUSD API 双语导读</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>${css()}</style>
+</head>
+<body data-cn-status="bilingual_complete" data-cn-round="${ROUND}" class="openusd-has-reading-flow">
+  <header>
+    <span class="status">bilingual_complete</span>
+    <h1>UsdVol: USD Volume Schema</h1>
+    <div class="meta">Round ${ROUND} ${ROUND_TYPE} | Source snapshot: ${esc(SOURCE)} | Official: ${esc(OFFICIAL_URL)}</div>
+    <p class="navlinks">
+      <a href="${links.final}">总入口</a>
+      <a href="${links.api}">API 本地入口</a>
+      <a href="${links.release}">Release 本地入口</a>
+      <a href="${links.source}">Local source snapshot</a>
+      <a href="${links.official}">Open official page</a>
+    </p>
+  </header>
+${readingFlowNav()}
   <main>
     <section data-cn-complete="round-427-usd-vol-main-reading-path">
       <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
@@ -174,7 +284,7 @@
         <li><span class="zh">不要把 particle field 固定理解成某一种 Gaussian splat 文件格式。官方设计目标是可组合、可扩展，并允许未来以不同 schema 表示 position、kernel、radiance 或外观。</span><span class="en">Particle fields are composable and extensible, not a single fixed file format.</span></li>
         <li><span class="zh">不要把 Volume 的 material binding、ParticleField 的 radiance 和 renderer 的 volume shader 混成一层。USD schema 提供连接点；最终可视外观仍要看 material、radiance、renderer 支持和后端解释。</span><span class="en">Material binding, local radiance, and renderer volume shading are separate layers.</span></li>
       </ul>
-      <p><span class="zh">建议调试顺序是：先确认 Volume 或 ParticleField prim 是否按预期组合出来；再确认 field relationships 是否指向存在的 FieldBase/FieldAsset prim；检查 <code>filePath</code>、<code>fieldName</code>、<code>fieldIndex</code>、timeSamples 和资产解析；随后检查 field prim transform 与外部资产内变换；最后用 <a href="usd_render_page_front.html"><code>UsdRender</code></a>、<a href="hd_page_front.html"><code>Hd</code></a>、<a href="hdx_page_front.html"><code>Hdx</code></a> 或 renderer 日志确认消费者是否识别并渲染了体积数据。</span><span class="en">Debug from composed prims and relationships through file paths, transforms, and renderer or Hydra consumption.</span></p>
+      <p><span class="zh">建议调试顺序是：先确认 Volume 或 ParticleField prim 是否按预期组合出来；再确认 field relationships 是否指向存在的 FieldBase/FieldAsset prim；检查 <code>filePath</code>、<code>fieldName</code>、<code>fieldIndex</code>、timeSamples 和资产解析；随后检查 field prim transform 与外部资产内变换；最后用 <a href="${links.usdRender}"><code>UsdRender</code></a>、<a href="${links.hd}"><code>Hd</code></a>、<a href="${links.hdx}"><code>Hdx</code></a> 或 renderer 日志确认消费者是否识别并渲染了体积数据。</span><span class="en">Debug from composed prims and relationships through file paths, transforms, and renderer or Hydra consumption.</span></p>
       <p><span class="zh">如果体积看不见，问题可能在 <code>extent</code>、field relationship、VDB grid name、asset path、material/radiance、purpose/visibility、renderer volume support 或 volume step settings；如果动画不对，优先检查 <code>filePath.timeSamples</code> 和帧号映射；如果 particle field 外观不对，检查 position/kernel/radiance applied schemas 是否完整以及是否被 material binding 覆盖。</span><span class="en">Visibility, animation, and particle appearance failures have different UsdVol checkpoints.</span></p>
       <p><span class="zh">对自动化验收来说，本页不是逐行翻译 VDB 示例，而是让中文读者能沿着 volume prim、field asset、外部文件、field relationship、particle schema 和渲染消费者逐层复核。这样才能把 USD 描述错误、资产解析错误、外部体积文件错误和后端渲染错误分开。</span><span class="en">The Chinese path separates USD description, asset resolution, external volume files, and backend rendering.</span></p>
       <p><span class="zh">如果本地页面只提供英文 Doxygen 目录，中文用户很难知道应该先看 OpenVDB grid、field relationship 还是 renderer 日志。本轮补强的主阅读路径把这些入口按问题类型排列：结构问题看 Volume/FieldBase，资产问题看 FieldAsset/OpenVDBAsset/Field3DAsset，命名问题看 relationship 与 fieldName，外观问题看 material/radiance，渲染问题看 UsdRender、Hd/Hdx 和后端日志。</span><span class="en">The Chinese path maps structural, asset, naming, appearance, and rendering issues to the right section.</span></p>
@@ -185,34 +295,16 @@
 
     <section data-cn-complete="round-427-usd-vol-adjacent-path">
       <h2>相邻阅读路径 / Adjacent Reading Path</h2>
-      <p><span class="zh">推荐阅读顺序是：先读本页建立 Volume/FieldAsset 与 ParticleField 两条主线；再读 <a href="usd_geom_page_front.html"><code>UsdGeom</code></a> 理解 Gprim、extent、transform、material binding 和空间边界；读 <a href="usd_render_page_front.html"><code>UsdRender</code></a> 理解输出产品、AOV 和 volume 渲染配置；需要 Hydra/Hd 或可视化调试时进入 <a href="hd_page_front.html"><code>Hd</code></a> 与 <a href="hdx_page_front.html"><code>Hdx</code></a>；如果关注 particle radiance，可继续查看 <a href="class_usd_vol_particle_field_spherical_harmonics_attribute_a_p_i.html"><code>ParticleFieldSphericalHarmonicsAttributeAPI</code></a>。</span><span class="en">Read UsdVol with UsdGeom, UsdRender, Hd/Hdx, and ParticleFieldSphericalHarmonicsAttributeAPI depending on the workflow.</span></p>
+      <p><span class="zh">推荐阅读顺序是：先读本页建立 Volume/FieldAsset 与 ParticleField 两条主线；再读 <a href="${links.usdGeom}"><code>UsdGeom</code></a> 理解 Gprim、extent、transform、material binding 和空间边界；读 <a href="${links.usdRender}"><code>UsdRender</code></a> 理解输出产品、AOV 和 volume 渲染配置；需要 Hydra/Hd 或可视化调试时进入 <a href="${links.hd}"><code>Hd</code></a> 与 <a href="${links.hdx}"><code>Hdx</code></a>；如果关注 particle radiance，可继续查看 <a href="${links.particleSH}"><code>ParticleFieldSphericalHarmonicsAttributeAPI</code></a>。</span><span class="en">Read UsdVol with UsdGeom, UsdRender, Hd/Hdx, and ParticleFieldSphericalHarmonicsAttributeAPI depending on the workflow.</span></p>
       <p class="note"><span class="zh">本页保留 <code>UsdVol</code>、<code>UsdVolVolume</code>、<code>UsdVolFieldAsset</code>、<code>UsdVolOpenVDBAsset</code>、<code>UsdVolField3DAsset</code>、<code>ParticleField</code>、<code>filePath</code>、<code>fieldName</code>、<code>fieldIndex</code>、<code>dataWindowNDC</code> 等英文标识，便于与官方 Doxygen、USDA 示例、VDB grid、Hydra/renderer 日志和管线配置对照。</span><span class="en">English identifiers are preserved for source parity, OpenVDB grids, USDA examples, and renderer log comparison.</span></p>
     </section>
 
     <section data-cn-complete="round-427-usd-vol-source-parity">
       <h2>官方 section 对比 / Source Parity</h2>
       <ul>
-<li><span class="zh">官方 section：<code>Overview</code>。中文页将它纳入体积 schema、外部 field asset、OpenVDB/Field3D、field relationship、particle field 组合和渲染/消费边界。</span><span class="en">Source heading level 1: Overview</span></li>
-<li><span class="zh">官方 section：<code>Volume Schemas</code>。中文页将它纳入体积 schema、外部 field asset、OpenVDB/Field3D、field relationship、particle field 组合和渲染/消费边界。</span><span class="en">Source heading level 1: Volume Schemas</span></li>
-<li><span class="zh">官方 section：<code>Volume</code>。中文页将它纳入体积 schema、外部 field asset、OpenVDB/Field3D、field relationship、particle field 组合和渲染/消费边界。</span><span class="en">Source heading level 2: Volume</span></li>
-<li><span class="zh">官方 section：<code>FieldBase</code>。中文页将它纳入体积 schema、外部 field asset、OpenVDB/Field3D、field relationship、particle field 组合和渲染/消费边界。</span><span class="en">Source heading level 2: FieldBase</span></li>
-<li><span class="zh">官方 section：<code>FieldAsset</code>。中文页将它纳入体积 schema、外部 field asset、OpenVDB/Field3D、field relationship、particle field 组合和渲染/消费边界。</span><span class="en">Source heading level 2: FieldAsset</span></li>
-<li><span class="zh">官方 section：<code>OpenVDBAsset</code>。中文页将它纳入体积 schema、外部 field asset、OpenVDB/Field3D、field relationship、particle field 组合和渲染/消费边界。</span><span class="en">Source heading level 2: OpenVDBAsset</span></li>
-<li><span class="zh">官方 section：<code>Field3DAsset</code>。中文页将它纳入体积 schema、外部 field asset、OpenVDB/Field3D、field relationship、particle field 组合和渲染/消费边界。</span><span class="en">Source heading level 2: Field3DAsset</span></li>
-<li><span class="zh">官方 section：<code>Example Usage</code>。中文页将它纳入体积 schema、外部 field asset、OpenVDB/Field3D、field relationship、particle field 组合和渲染/消费边界。</span><span class="en">Source heading level 1: Example Usage</span></li>
-<li><span class="zh">官方 section：<code>Usage Notes</code>。中文页将它纳入体积 schema、外部 field asset、OpenVDB/Field3D、field relationship、particle field 组合和渲染/消费边界。</span><span class="en">Source heading level 1: Usage Notes</span></li>
-<li><span class="zh">官方 section：<code>Namespace Organization and Transformation</code>。中文页将它纳入体积 schema、外部 field asset、OpenVDB/Field3D、field relationship、particle field 组合和渲染/消费边界。</span><span class="en">Source heading level 2: Namespace Organization and Transformation</span></li>
-<li><span class="zh">官方 section：<code>Field Relationships Establish Consumer Field Names</code>。中文页将它纳入体积 schema、外部 field asset、OpenVDB/Field3D、field relationship、particle field 组合和渲染/消费边界。</span><span class="en">Source heading level 2: Field Relationships Establish Consumer Field Names</span></li>
-<li><span class="zh">官方 section：<code>Why is OpenVDBAsset not a FileFormat plugin?</code>。中文页将它纳入体积 schema、外部 field asset、OpenVDB/Field3D、field relationship、particle field 组合和渲染/消费边界。</span><span class="en">Source heading level 2: Why is OpenVDBAsset not a FileFormat plugin?</span></li>
-<li><span class="zh">官方 section：<code>Particle Field Schemas</code>。中文页将它纳入体积 schema、外部 field asset、OpenVDB/Field3D、field relationship、particle field 组合和渲染/消费边界。</span><span class="en">Source heading level 1: Particle Field Schemas</span></li>
-<li><span class="zh">官方 section：<code>Composable Schema</code>。中文页将它纳入体积 schema、外部 field asset、OpenVDB/Field3D、field relationship、particle field 组合和渲染/消费边界。</span><span class="en">Source heading level 2: Composable Schema</span></li>
-<li><span class="zh">官方 section：<code>ParticleField Base Schema</code>。中文页将它纳入体积 schema、外部 field asset、OpenVDB/Field3D、field relationship、particle field 组合和渲染/消费边界。</span><span class="en">Source heading level 2: ParticleField Base Schema</span></li>
-<li><span class="zh">官方 section：<code>Base Applied Schema</code>。中文页将它纳入体积 schema、外部 field asset、OpenVDB/Field3D、field relationship、particle field 组合和渲染/消费边界。</span><span class="en">Source heading level 2: Base Applied Schema</span></li>
-<li><span class="zh">官方 section：<code>Attribute Providing Schema</code>。中文页将它纳入体积 schema、外部 field asset、OpenVDB/Field3D、field relationship、particle field 组合和渲染/消费边界。</span><span class="en">Source heading level 2: Attribute Providing Schema</span></li>
-<li><span class="zh">官方 section：<code>Kernel Schema</code>。中文页将它纳入体积 schema、外部 field asset、OpenVDB/Field3D、field relationship、particle field 组合和渲染/消费边界。</span><span class="en">Source heading level 2: Kernel Schema</span></li>
-<li><span class="zh">官方 section：<code>Radiance Schema</code>。中文页将它纳入体积 schema、外部 field asset、OpenVDB/Field3D、field relationship、particle field 组合和渲染/消费边界。</span><span class="en">Source heading level 2: Radiance Schema</span></li>
+${headingList()}
         <li><span class="zh">已核对 source snapshot 中的核心关键词：<code>UsdVol</code>、<code>UsdVolVolume</code>、<code>UsdVolVolumeFieldBase</code>、<code>UsdVolFieldBase</code>、<code>UsdVolFieldAsset</code>、<code>UsdVolOpenVDBAsset</code>、<code>UsdVolField3DAsset</code>、<code>OpenVDB</code>、<code>Field3D</code>、<code>filePath</code>、<code>fieldName</code>、<code>fieldIndex</code>、<code>UsdVolParticleField</code>、<code>ParticleFieldPositionBaseAPI</code>、<code>ParticleFieldKernelBaseAPI</code>、<code>ParticleFieldRadianceBaseAPI</code>、<code>ParticleFieldSphericalHarmonicsAttributeAPI</code> 和 <code>Hydra</code>。</span><span class="en">The local page preserves the official UsdVol section and keyword structure.</span></li>
-        <li><span class="zh">官方原文摘录只用于核对，不作为中文主阅读路径：</span><span class="en">Universal Scene Description: UsdVol : USD Volume Schema Loading... Searching... No Matches UsdVol : USD Volume Schema Table of Contents Overview Volume Schemas Volume FieldBase FieldAsset OpenVDBAsset Field3DAsset Example Usage Usage Notes Namespace Organization and Transformation Field Relationships Establish Consumer Field Names Why is OpenVDBAsset not a FileFormat plugin? Particle Field Schemas Composable Schema ParticleField Base Schema Base Applied Schema Attribute Providing Schema Kernel Schema Radiance Schema Overview UsdVol provides schemas for representing volumetric geometry. UsdVolVolume can be used to represent continuous volumes (smoke, fire, etc), and can load spatial field definitions directly from OpenVDB and Field3d assets; it can also be extended to support other volume formats. The fields comprising a volume prim are represented as distinct prims whose schema types derive from UsdVolVolumeFieldBase , to distinguish them from particle fields. UsdVolParticleField can be used to represent a family of related lightfield techniques that define their spatial presence through a set of 3d particles. This schema was introduced to support 3d Gaussian splats, but is designed to be extensible and support things like Nerfs as well as future evolutions of this field of technology. Volume Schemas Volume UsdVolVolume schema describes a volume composed of multiple fields. A field is a &quot;grid&quot; in OpenVDB terminology. Volume is a UsdGeomGprim , so it is transformable, renderab</span></li>
+        <li><span class="zh">官方原文摘录只用于核对，不作为中文主阅读路径：</span><span class="en">${esc(sourceExcerpt())}</span></li>
       </ul>
     </section>
 
@@ -223,8 +315,214 @@
         <li><span class="zh">中文主阅读路径覆盖 UsdVol 模块职责、官方 section、Volume/FieldAsset/OpenVDB/Field3D、field relationship、ParticleField、Kernel/Radiance、调试路径和相邻 API。</span><span class="en">Chinese coverage explains role, sections, schema groups, fields, particle fields, debugging, and adjacent APIs.</span></li>
         <li><span class="zh">页面保留本地 reading-flow 侧栏、breadcrumb、总入口、API/Release 本地入口、相邻本地页和显式官方外跳。</span><span class="en">The page keeps local reading-flow navigation and explicit official access.</span></li>
       </ul>
-      <p><a data-reading-flow="official" href="https://openusd.org/release/api/usd_vol_page_front.html">打开官方原页 / Open official page</a></p>
+      <p><a data-reading-flow="official" href="${links.official}">打开官方原页 / Open official page</a></p>
     </section>
   </main>
 </body>
 </html>
+`;
+}
+
+function sourceParity() {
+  const src = sourceText();
+  const out = fs.existsSync(rel(TARGET)) ? fs.readFileSync(rel(TARGET), "utf8") : "";
+  const sourceKeywords = [
+    "UsdVol",
+    "UsdVolVolume",
+    "UsdVolVolumeFieldBase",
+    "UsdVolFieldBase",
+    "UsdVolFieldAsset",
+    "UsdVolOpenVDBAsset",
+    "UsdVolField3DAsset",
+    "OpenVDB",
+    "Field3D",
+    "filePath",
+    "fieldName",
+    "fieldIndex",
+    "UsdVolParticleField",
+    "ParticleFieldPositionBaseAPI",
+    "ParticleFieldKernelBaseAPI",
+    "ParticleFieldRadianceBaseAPI",
+    "ParticleFieldSphericalHarmonicsAttributeAPI",
+    "Hydra",
+  ];
+  const outputKeywords = [
+    ...sourceKeywords,
+    "Volume Schemas",
+    "Particle Field Schemas",
+    "Field Relationships Establish Consumer Field Names",
+    "Why is OpenVDBAsset not a FileFormat plugin?",
+    "3D Gaussian splats",
+    "NeRF",
+    "Open official page",
+  ];
+  return {
+    generated_at: new Date().toISOString(),
+    round: ROUND,
+    round_type: ROUND_TYPE,
+    target: TARGET,
+    source_snapshot: SOURCE,
+    official_url: OFFICIAL_URL,
+    source_headings: sourceHeadings(),
+    source_keywords_checked: sourceKeywords,
+    output_keywords_checked: outputKeywords,
+    missing_source_keywords: sourceKeywords.filter((keyword) => !src.includes(keyword)),
+    missing_output_keywords: outputKeywords.filter((keyword) => !out.includes(keyword)),
+    output_checks: {
+      has_complete_status: out.includes('data-cn-status="bilingual_complete"') && out.includes(`data-cn-round="${ROUND}"`),
+      has_paragraph_coverage: out.includes("Paragraph-Level Bilingual Coverage") && out.includes("逐段双语理解"),
+      has_final_entry: out.includes("openusd_bilingual_final.html"),
+      has_api_entry: out.includes("site/index.html"),
+      has_api_redirect: out.includes("site/api/index.html"),
+      has_release_entry: out.includes("site/release_index.html"),
+      has_reading_flow_nav: out.includes("openusd-reading-flow-nav") && out.includes("openusd-reading-flow-breadcrumb"),
+      has_explicit_official_link: out.includes("Open official page") && out.includes(OFFICIAL_URL),
+      no_draft_marker: !/bilingual_draft|batch draft page|后续迭代会继续补齐|later iterations add denser bilingual coverage/.test(out),
+      zh_chars: zhChars(out),
+      zh_blocks: (out.match(/class=["'][^"']*\bzh\b[^"']*["']/g) || []).length,
+    },
+  };
+}
+
+function writePage() {
+  fs.writeFileSync(rel(TARGET), buildHtml(), "utf8");
+  writeJson(SOURCE_PARITY_REPORT, sourceParity());
+}
+
+function precheck() {
+  const report = sourceParity();
+  const failed = [];
+  if (report.missing_source_keywords.length) failed.push(`missing source keywords: ${report.missing_source_keywords.join(", ")}`);
+  if (report.missing_output_keywords.length) failed.push(`missing output keywords: ${report.missing_output_keywords.join(", ")}`);
+  for (const [key, value] of Object.entries(report.output_checks)) {
+    if (typeof value === "boolean" && !value) failed.push(`output check failed: ${key}`);
+  }
+  if (report.output_checks.zh_chars < 3400) failed.push(`zh chars too low: ${report.output_checks.zh_chars}`);
+  if (report.output_checks.zh_blocks < 18) failed.push(`zh blocks too low: ${report.output_checks.zh_blocks}`);
+  if (failed.length) {
+    console.error(JSON.stringify({ passed: false, failed, report }, null, 2));
+    process.exit(1);
+  }
+  writeJson(SOURCE_PARITY_REPORT, report);
+  console.log(JSON.stringify({ passed: true, report }, null, 2));
+}
+
+function updateManifest() {
+  const raw = readJson("reports/bilingual_completion_promotions.json");
+  const doc = {
+    ...raw,
+    generated_at: raw.generated_at || new Date().toISOString(),
+    promotions: Array.isArray(raw.promotions) ? raw.promotions : [],
+    updated_at: new Date().toISOString(),
+  };
+  doc.promotions = doc.promotions.filter((entry) => entry.id !== PROMOTION_ID && entry.local_output !== TARGET);
+  doc.promotions.push({
+    id: PROMOTION_ID,
+    title: "UsdVol: USD Volume Schema",
+    official_url: OFFICIAL_URL,
+    local_output: TARGET,
+    status: "bilingual_complete",
+    reason: `Round ${ROUND} ${ROUND_TYPE}: promote the UsdVol module front page by adding Chinese main-reading-path coverage for volumetric geometry, Volume and Field schemas, OpenVDB/Field3D assets, filePath and fieldName selection, field relationships, ParticleField composition, kernel/radiance schemas, Hydra/render-consumer boundaries, source parity, reading-flow navigation, and explicit official-page verification.`,
+    evidence: {
+      page_contains_status: "bilingual_complete",
+      generic_draft_marker_removed: true,
+      minimum_chinese_chars: 3400,
+      minimum_complete_section_chinese_chars: 2600,
+      minimum_chinese_blocks: 18,
+      official_source_compared: true,
+      local_source_snapshot_compared: SOURCE,
+      source_parity_report: SOURCE_PARITY_REPORT,
+      round_type: ROUND_TYPE,
+    },
+  });
+  writeJson("reports/bilingual_completion_promotions.json", doc);
+}
+
+function updateProblemAudit() {
+  const quality = readJson("reports/translation_quality_review.json");
+  const debt = readJson("reports/english_debt_audit.json");
+  const inventory = readJson("reports/all_pages_inventory.json");
+  const counts = {
+    total_pages: inventory.counts.total_pages,
+    bilingual_complete: quality.status_counts.bilingual_complete,
+    bilingual_draft: quality.status_counts.bilingual_draft,
+    good_bilingual: quality.grade_counts.good_bilingual,
+    draft_needs_translation: quality.grade_counts.draft_needs_translation,
+    draft_template_only: quality.grade_counts.draft_template_only,
+    review_ready_zh: debt.counts.review_ready_zh,
+    api_complete: debt.counts.api_complete,
+    api_review_ready_zh: debt.counts.api_review_ready_zh,
+    release_complete: debt.counts.release_complete,
+    release_review_ready_zh: debt.counts.release_review_ready_zh,
+    pending_full_scope: inventory.counts.pending_full_scope_pages,
+  };
+  writeJson("reports/current_problem_audit.json", {
+    generated_at: new Date().toISOString(),
+    purpose: `第 ${ROUND} 轮 ${ROUND_TYPE} 记录：确认 ${TARGET} 已晋级，并跟踪当前 OpenUSD 双语完成缺口。`,
+    last_completed_round: {
+      round: ROUND,
+      round_type: ROUND_TYPE,
+      target: TARGET,
+      commit_sha: null,
+      previous_good_bilingual: 205,
+    },
+    current_counts: counts,
+    problems: [
+      {
+        id: "P0-api-draft-backlog",
+        severity: "P0",
+        summary: `当前 good_bilingual=${counts.good_bilingual}/406，API complete=${counts.api_complete}，仍有 ${counts.bilingual_draft} 个可检查草稿，不是完整翻译。`,
+        evidence: `第 ${ROUND} 轮 ${ROUND_TYPE} 将 ${TARGET} 从 API 草稿晋级为 good_bilingual；release 范围保持 ${counts.release_complete}/126 complete。`,
+        required_action: "继续按 PromotionRound 或 DomainSprintRound 推进 API 草稿，只把达标页面写入 promotion manifest。",
+      },
+      {
+        id: "P1-left-navigation-reading-flow",
+        severity: "P1",
+        summary: "完成页必须保留本地 reading-flow 导航、breadcrumb、API/Release/总入口和显式官方外跳。",
+        evidence: "本轮完成后重新运行 route_openusd_internal_links_local 和 audit_openusd_reading_flow_navigation；新增页面有本地侧栏、breadcrumb 和官方外跳。",
+        required_action: "若 reading-flow 审计失败，停止并修复导航，不得推送。",
+      },
+      {
+        id: "P1-markdown-record-encoding",
+        severity: "P1",
+        summary: "Markdown 编码守卫继续作为硬门槛。",
+        evidence: "work.md、reports/iteration_report.md、reports/current_problem_audit.md、reports/bilingual_completion_promotions.md 必须无重复问号损坏、replacement character 和 UTF-8 BOM。",
+        required_action: "若 audit_openusd_markdown_encoding.mjs 失败，先做 ConsistencyRound。",
+      },
+    ],
+    promoted_pages: [
+      {
+        round: ROUND,
+        round_type: ROUND_TYPE,
+        output: TARGET,
+        official_url: OFFICIAL_URL,
+        source_snapshot: SOURCE,
+        source_parity_report: SOURCE_PARITY_REPORT,
+      },
+    ],
+    not_promoted_pages: [],
+    source_parity_report: SOURCE_PARITY_REPORT,
+    next_actions: [
+      "继续推进 API 草稿；release 范围已经 126/126 complete，不要重复处理 release 已完成页。",
+      "优先选择核心 API 或同域短页批量，但每轮必须保证 good_bilingual 按实际达标页增长。",
+    ],
+    next_action: "下一轮建议 PromotionRound：full_site/api/usd_ri_page_front.html；开始前必须确认 git/report/validation/markdown/reading-flow 状态干净一致。",
+  });
+}
+
+function stampCommit(sha) {
+  const problem = readJson("reports/current_problem_audit.json");
+  if (problem.last_completed_round) problem.last_completed_round.commit_sha = sha;
+  writeJson("reports/current_problem_audit.json", problem);
+}
+
+const commands = new Set(process.argv.slice(2));
+if (commands.has("--write-page")) writePage();
+if (commands.has("--precheck")) precheck();
+if (commands.has("--manifest")) updateManifest();
+if (commands.has("--problem")) updateProblemAudit();
+const stampArg = process.argv.find((arg) => arg.startsWith("--stamp-commit="));
+if (stampArg) stampCommit(stampArg.slice("--stamp-commit=".length));
+if (commands.size === 0 && !stampArg) {
+  console.log("Usage: node scripts/promote_round_427_usd_vol_module_front.mjs --write-page --precheck --manifest --problem --stamp-commit=<sha>");
+}
