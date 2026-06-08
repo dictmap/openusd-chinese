@@ -1,10 +1,81 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kind : Extensible Categorization - OpenUSD API 双语</title>
-  <style>
+import fs from "node:fs";
+import path from "node:path";
+
+const ROOT = process.cwd();
+const ROUND = 438;
+const ROUND_TYPE = "PromotionRound";
+const TARGET = "full_site/api/kind_page_front.html";
+const SOURCE = "source/full_api/kind_page_front_source.html";
+const OFFICIAL_URL = "https://openusd.org/release/api/kind_page_front.html";
+const SOURCE_PARITY_REPORT = "reports/round_438_kind_module_front_source_parity.json";
+const PROMOTION_ID = "round-438-api-kind-module-front";
+
+function rel(...parts) {
+  return path.join(ROOT, ...parts);
+}
+
+function esc(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function htmlDecode(value) {
+  return String(value ?? "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#([0-9]+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)));
+}
+
+function stripTags(value) {
+  return htmlDecode(
+    String(value ?? "")
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+  );
+}
+
+function zhChars(value) {
+  return (String(value ?? "").match(/[\u4e00-\u9fff]/g) || []).length;
+}
+
+function readJson(file) {
+  return JSON.parse(fs.readFileSync(rel(file), "utf8").replace(/^\uFEFF/, ""));
+}
+
+function writeJson(file, value) {
+  fs.writeFileSync(rel(file), `${JSON.stringify(value, null, 2)}\n`, "utf8");
+}
+
+function sourceHtml() {
+  return fs.readFileSync(rel(SOURCE), "utf8");
+}
+
+function sourceText() {
+  return stripTags(sourceHtml());
+}
+
+function sourceHeadings() {
+  const heads = [...sourceHtml().matchAll(/<h([1-4])[^>]*>([\s\S]*?)<\/h\1>/gi)].map((match) => ({
+    level: Number(match[1]),
+    text: stripTags(match[2]),
+  }));
+  const title = stripTags(sourceHtml().match(/<div class="title">([\s\S]*?)<\/div>/i)?.[1] || "");
+  return title ? [{ level: 1, text: title }, ...heads] : heads;
+}
+
+function css() {
+  return `
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.68}
     header{background:#142538;color:#fff;padding:28px 32px}
     main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
@@ -39,15 +110,40 @@
       .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
       .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
     }
-  </style>
-</head>
-<body class="openusd-has-reading-flow" data-cn-status="bilingual_complete" data-cn-round="438" data-cn-scope="api" data-cn-review-ready="true">
+  `;
+}
 
+const links = {
+  final: "../../openusd_bilingual_final.html",
+  api: "../../site/index.html",
+  apiRedirect: "../../site/api/index.html",
+  release: "../../site/release_index.html",
+  source: "../../source/full_api/kind_page_front_source.html",
+  official: OFFICIAL_URL,
+  prev: "sdf_page_front.html",
+  next: "js_page_front.html",
+  sdf: "sdf_page_front.html",
+  pcp: "pcp_page_front.html",
+  usdGeom: "usd_geom_page_front.html",
+  ar: "ar_page_front.html",
+  plug: "plug_page_front.html",
+  tf: "tf_page_front.html",
+};
+
+function headingList() {
+  return sourceHeadings()
+    .filter((heading) => heading.text && heading.text !== "Table of Contents")
+    .map((heading) => `<li><span class="zh">官方结构：<code>${esc(heading.text)}</code>。中文页把这一节映射到 Kind taxonomy、builtin model hierarchy、PlugRegistry/plugInfo.json 扩展方式、不能覆盖 core kinds 的限制，以及与 Sdf/Usd 资产组织的边界。</span><span class="en">Source heading level ${heading.level}: ${esc(heading.text)}</span></li>`)
+    .join("\n");
+}
+
+function readingFlowNav() {
+  return `
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
-  <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
+  <a data-reading-flow="final" href="${links.final}">总入口</a>
   <span> / </span>
-  <a data-reading-flow="api-entry" href="../../site/index.html">API 本地入口</a>
+  <a data-reading-flow="api-entry" href="${links.api}">API 本地入口</a>
   <span> / api / kind_page_front.html</span>
 </nav>
 <aside class="openusd-reading-flow-nav" aria-label="本地阅读导航 / Local reading navigation">
@@ -56,10 +152,10 @@
     <section>
       <h3>入口 / Entrances</h3>
       <ul>
-        <li><a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口 / Final entry</a></li>
-        <li><a data-reading-flow="release-entry" href="../../site/release_index.html">Release 本地入口</a></li>
-        <li><a data-reading-flow="api-entry" href="../../site/index.html">API Doxygen 本地入口</a></li>
-        <li><a data-reading-flow="api-redirect" href="../../site/api/index.html">API redirect / site/api/index.html</a></li>
+        <li><a data-reading-flow="final" href="${links.final}">总入口 / Final entry</a></li>
+        <li><a data-reading-flow="release-entry" href="${links.release}">Release 本地入口</a></li>
+        <li><a data-reading-flow="api-entry" href="${links.api}">API Doxygen 本地入口</a></li>
+        <li><a data-reading-flow="api-redirect" href="${links.apiRedirect}">API redirect / site/api/index.html</a></li>
       </ul>
     </section>
     <section>
@@ -72,43 +168,56 @@
     <section>
       <h3>资产分类上下文</h3>
       <ul>
-        <li><a data-reading-flow="related" href="sdf_page_front.html">Sdf 场景描述基础</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="pcp_page_front.html">Pcp composition 与 PrimIndex</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="usd_geom_page_front.html">UsdGeom 几何和模型阅读路径</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="ar_page_front.html">Ar 资产解析</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.sdf}">Sdf 场景描述基础</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.pcp}">Pcp composition 与 PrimIndex</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.usdGeom}">UsdGeom 几何和模型阅读路径</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.ar}">Ar 资产解析</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
       <h3>注册和调试</h3>
       <ul>
-        <li><a data-reading-flow="related" href="plug_page_front.html">Plug 插件注册</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="tf_page_front.html">TfToken 与基础工具</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.plug}">Plug 插件注册</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.tf}">TfToken 与基础工具</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
       <h3>上一页 / 下一页</h3>
       <ul>
-        <li><a data-reading-flow="prev" href="sdf_page_front.html">上一页 / Previous: Sdf</a></li>
-        <li><a data-reading-flow="next" href="js_page_front.html">下一页 / Next: JS 草稿候选</a></li>
+        <li><a data-reading-flow="prev" href="${links.prev}">上一页 / Previous: Sdf</a></li>
+        <li><a data-reading-flow="next" href="${links.next}">下一页 / Next: JS 草稿候选</a></li>
       </ul>
     </section>
     <section>
       <h3>官方外跳 / Official</h3>
       <ul>
-        <li><a class="official-link" data-reading-flow="official" href="https://openusd.org/release/api/kind_page_front.html">打开官方原页 / Open official page</a></li>
+        <li><a class="official-link" data-reading-flow="official" href="${links.official}">打开官方原页 / Open official page</a></li>
       </ul>
     </section>
   </div>
 </aside>
-<!-- openusd-reading-flow-nav:end -->
+<!-- openusd-reading-flow-nav:end -->`;
+}
+
+function buildHtml() {
+  return `<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kind : Extensible Categorization - OpenUSD API 双语</title>
+  <style>${css()}</style>
+</head>
+<body class="openusd-has-reading-flow" data-cn-status="bilingual_complete" data-cn-round="${ROUND}" data-cn-scope="api" data-cn-review-ready="true">
+${readingFlowNav()}
 <header>
   <h1>Kind : Extensible Categorization</h1>
-  <div class="meta">第 438 轮 PromotionRound：Kind 模块入口完成。源页：<code>source/full_api/kind_page_front_source.html</code>；官方页：<code>https://openusd.org/release/api/kind_page_front.html</code></div>
+  <div class="meta">第 ${ROUND} 轮 ${ROUND_TYPE}：Kind 模块入口完成。源页：<code>${SOURCE}</code>；官方页：<code>${OFFICIAL_URL}</code></div>
   <div class="navlinks">
-    <a href="../../openusd_bilingual_final.html">总入口</a>
-    <a href="../../site/index.html">API 本地入口</a>
-    <a href="../../source/full_api/kind_page_front_source.html">本地 source snapshot</a>
-    <a href="https://openusd.org/release/api/kind_page_front.html">Open official page</a>
+    <a href="${links.final}">总入口</a>
+    <a href="${links.api}">API 本地入口</a>
+    <a href="${links.source}">本地 source snapshot</a>
+    <a href="${links.official}">Open official page</a>
   </div>
 </header>
 <main>
@@ -122,11 +231,9 @@
 
   <section data-cn-complete="source-coverage">
     <h2>官方结构与 source parity</h2>
-    <p><span class="zh">本页使用 <code>source/full_api/kind_page_front_source.html</code> 对齐官方 <code>Kind : Extensible Categorization</code> 页面。官方结构很短，但语义密度高：开头定义 Kind 和 <code>KindRegistry</code>，随后说明 <code>The Core Kind Hierarchy</code>，最后说明 <code>Extending the KindRegistry</code>。中文页没有扩写成泛泛的资产管理文章，而是围绕这三个官方段落建立主阅读路径，并补足误读边界、调试路径和本地相邻 API 导航。</span><span class="en">The local page follows the official Kind module title, core hierarchy section, and KindRegistry extension section.</span></p>
+    <p><span class="zh">本页使用 <code>${SOURCE}</code> 对齐官方 <code>Kind : Extensible Categorization</code> 页面。官方结构很短，但语义密度高：开头定义 Kind 和 <code>KindRegistry</code>，随后说明 <code>The Core Kind Hierarchy</code>，最后说明 <code>Extending the KindRegistry</code>。中文页没有扩写成泛泛的资产管理文章，而是围绕这三个官方段落建立主阅读路径，并补足误读边界、调试路径和本地相邻 API 导航。</span><span class="en">The local page follows the official Kind module title, core hierarchy section, and KindRegistry extension section.</span></p>
     <ul>
-      <li><span class="zh">官方结构：<code>Kind : Extensible Categorization</code>。中文页把这一节映射到 Kind taxonomy、builtin model hierarchy、PlugRegistry/plugInfo.json 扩展方式、不能覆盖 core kinds 的限制，以及与 Sdf/Usd 资产组织的边界。</span><span class="en">Source heading level 1: Kind : Extensible Categorization</span></li>
-<li><span class="zh">官方结构：<code>The Core Kind Hierarchy</code>。中文页把这一节映射到 Kind taxonomy、builtin model hierarchy、PlugRegistry/plugInfo.json 扩展方式、不能覆盖 core kinds 的限制，以及与 Sdf/Usd 资产组织的边界。</span><span class="en">Source heading level 1: The Core Kind Hierarchy</span></li>
-<li><span class="zh">官方结构：<code>Extending the KindRegistry</code>。中文页把这一节映射到 Kind taxonomy、builtin model hierarchy、PlugRegistry/plugInfo.json 扩展方式、不能覆盖 core kinds 的限制，以及与 Sdf/Usd 资产组织的边界。</span><span class="en">Source heading level 1: Extending the KindRegistry</span></li>
+      ${headingList()}
     </ul>
     <p><span class="zh">source parity 的检查重点包括：官方 title <code>Kind : Extensible Categorization</code>；<code>TfToken</code> symbols；<code>KindRegistry::GetBaseKind()</code>；<code>KindRegistry::IsA()</code>；内置 hierarchy 中的 <code>model</code>、<code>component</code>、<code>group</code>、<code>assembly</code>、<code>subcomponent</code>；通过 <code>PlugRegistry</code> 和 <code>plugInfo.json</code> 的 <code>Kinds</code> 字典扩展；以及不能用扩展文件覆盖 core kinds 或修改 core hierarchy 的 Note。页面晋级依据是这些官方关键词和 section 都有中文解释，而不是只在标题附近加一段导读。</span><span class="en">Source parity covers the taxonomy definition, builtin model kinds, PlugRegistry/plugInfo.json extension, and the note about core kinds.</span></p>
   </section>
@@ -153,7 +260,7 @@
 
   <section data-cn-complete="boundaries">
     <h2>边界、误读点和相邻模块关系</h2>
-    <p><span class="zh">Kind 不是 <code>Sdf</code> 层的路径、layer 或 composition 语法；<code>Sdf</code> 负责场景描述基础结构，<code>Pcp</code> 负责 composition 和 PrimIndex，Kind 则给场景图对象附加分类语义。实际阅读时可以先在 <a href="sdf_page_front.html">Sdf</a> 理解 layer/path/spec，再在 <a href="pcp_page_front.html">Pcp</a> 理解 composition，然后回到 Kind 判断某个 prim 在资产组织里应被视为 model、component、group 还是 assembly。</span><span class="en">Kind is taxonomy metadata, not Sdf path syntax or Pcp composition logic.</span></p>
+    <p><span class="zh">Kind 不是 <code>Sdf</code> 层的路径、layer 或 composition 语法；<code>Sdf</code> 负责场景描述基础结构，<code>Pcp</code> 负责 composition 和 PrimIndex，Kind 则给场景图对象附加分类语义。实际阅读时可以先在 <a href="${links.sdf}">Sdf</a> 理解 layer/path/spec，再在 <a href="${links.pcp}">Pcp</a> 理解 composition，然后回到 Kind 判断某个 prim 在资产组织里应被视为 model、component、group 还是 assembly。</span><span class="en">Kind is taxonomy metadata, not Sdf path syntax or Pcp composition logic.</span></p>
     <p><span class="zh">Kind 也不是 <code>UsdGeom</code> 的几何 schema。一个 prim 的 typeName 可以是几何、灯光、材质或其他 schema，Kind 关注的是这个 prim 在模型组织体系中的分类角色。几何页面帮助解释形状、xform、bound 和图元表示；Kind 页面帮助解释模型根、终端模型、容器模型、重要组和组件内部停止点。两者可以同时存在，但职责不同。</span><span class="en">Kind metadata is separate from UsdGeom schema type information.</span></p>
     <p><span class="zh">Kind 与插件系统的关系来自 <code>PlugRegistry</code>，不是来自运行时随意注册字符串。扩展 <code>KindRegistry</code> 时要检查对应插件是否被发现、<code>plugInfo.json</code> 是否在可见搜索路径内、<code>Kinds</code> 字典是否拼写正确、<code>baseKind</code> 是否指向已存在且允许作为父 kind 的 token。调试时如果 <code>KindRegistry::IsA()</code> 返回不符合预期，应先检查 registry 是否真的加载了自定义 kind，而不是怀疑 USD composition 本身。</span><span class="en">KindRegistry extension depends on plugin discovery and plugInfo.json data.</span></p>
     <p><span class="zh">Kind 与 <code>TfToken</code> 的关系也需要分清。官方说 kinds are just <code>TfToken</code> symbols，意思是 kind 的标识符是 token；但分类语义来自 <code>KindRegistry</code> 中的层级和 base kind，而不是 token 字符串天然拥有类型关系。一个字符串只有被 registry 认识并放进 taxonomy，<code>GetBaseKind()</code> 和 <code>IsA()</code> 才能用于可靠推理。</span><span class="en">Kind names are TfToken symbols, while hierarchy reasoning comes from KindRegistry.</span></p>
@@ -164,7 +271,7 @@
     <p><span class="zh">排查 Kind 问题时，第一步是确认目标 prim 是否位于预期的模型边界上。不要只看 prim 名称或文件路径；需要查看作者是否给模型根写入了正确 kind metadata，以及工具查询时是否拿到了同一个 composed prim。若模型浏览器没有把资产显示成预期层级，先检查 kind 是否写在根 prim 上、是否误把 component 内部子树写成 child model、是否把 group 和 assembly 的资产意义混在一起。</span><span class="en">Debugging starts by verifying where kind metadata is authored and whether it is on the intended model root.</span></p>
     <p><span class="zh">第二步是检查 registry。自定义 kind 不生效时，先看插件是否被 <code>PlugRegistry</code> 发现，再看 <code>plugInfo.json</code> 中 <code>Kinds</code> 字典的结构。<code>baseKind</code> 拼错、父 kind 未注册、试图覆盖 core kind、或者插件不在搜索路径内，都会导致查询层级时失败或降级。官方 Note 中的 registration error 是硬边界，不能通过本地中文页把它解释成允许覆盖。</span><span class="en">For custom kind failures, inspect PlugRegistry discovery, plugInfo.json structure, baseKind spelling, and core-kind override errors.</span></p>
     <p><span class="zh">第三步是把 Kind 查询和 composition 查询分开。<code>KindRegistry::GetBaseKind()</code> 和 <code>KindRegistry::IsA()</code> 回答的是 taxonomy 层级；composition 是否引入某个 prim、payload 是否加载、reference 是否成功、layer stack 是否符合预期，则属于 <code>Pcp</code>/<code>Sdf</code>/<code>Usd</code> 的问题。把这些层级混在一起会让调试方向变得很散。</span><span class="en">Separate taxonomy queries from composition, payload, reference, and layer stack debugging.</span></p>
-    <p><span class="zh">建议阅读顺序是：先读本页 overview 建立 Kind 的 taxonomy 心智模型；再读核心层级，尤其区分 <code>component</code>、<code>group</code> 和 <code>assembly</code>；随后读扩展 registry，理解 <code>PlugRegistry</code> 和 <code>plugInfo.json</code>；最后跳到 <a href="sdf_page_front.html">Sdf</a>、<a href="pcp_page_front.html">Pcp</a>、<a href="usd_geom_page_front.html">UsdGeom</a>、<a href="plug_page_front.html">Plug</a> 和 <a href="tf_page_front.html">Tf</a> 页面，把分类语义放回资产路径、composition、几何表示、插件发现和 token 基础设施中。</span><span class="en">Recommended reading connects Kind to Sdf, Pcp, UsdGeom, Plug, and Tf pages.</span></p>
+    <p><span class="zh">建议阅读顺序是：先读本页 overview 建立 Kind 的 taxonomy 心智模型；再读核心层级，尤其区分 <code>component</code>、<code>group</code> 和 <code>assembly</code>；随后读扩展 registry，理解 <code>PlugRegistry</code> 和 <code>plugInfo.json</code>；最后跳到 <a href="${links.sdf}">Sdf</a>、<a href="${links.pcp}">Pcp</a>、<a href="${links.usdGeom}">UsdGeom</a>、<a href="${links.plug}">Plug</a> 和 <a href="${links.tf}">Tf</a> 页面，把分类语义放回资产路径、composition、几何表示、插件发现和 token 基础设施中。</span><span class="en">Recommended reading connects Kind to Sdf, Pcp, UsdGeom, Plug, and Tf pages.</span></p>
   </section>
 
   <section data-cn-complete="pipeline-usage">
@@ -191,3 +298,209 @@
 </main>
 </body>
 </html>
+`;
+}
+
+function sourceParity() {
+  const src = sourceText();
+  const rawOut = fs.existsSync(rel(TARGET)) ? fs.readFileSync(rel(TARGET), "utf8") : "";
+  const out = stripTags(rawOut);
+  const sourceKeywords = [
+    "Kind : Extensible Categorization",
+    "runtime-extensible taxonomy",
+    "TfToken symbols",
+    "KindRegistry",
+    "KindRegistry::GetBaseKind()",
+    "KindRegistry::IsA()",
+    "scenegraph objects",
+    "roots of models",
+    "model hierarchy",
+    "The Core Kind Hierarchy",
+    "model",
+    "component",
+    "group",
+    "assembly",
+    "subcomponent",
+    "Extending the KindRegistry",
+    "PlugRegistry",
+    "plugInfo.json",
+    "Kinds",
+    "baseKind",
+    "description",
+    "chargroup",
+    "charprop",
+    "newRootKind",
+    "registration error",
+  ];
+  const outputKeywords = [
+    ...sourceKeywords,
+    "Sdf",
+    "Pcp",
+    "UsdGeom",
+    "Plug",
+    "TfToken",
+    "Kind 不是",
+    "Open official page",
+  ];
+  return {
+    generated_at: new Date().toISOString(),
+    round: ROUND,
+    round_type: ROUND_TYPE,
+    target: TARGET,
+    source_snapshot: SOURCE,
+    official_url: OFFICIAL_URL,
+    source_headings: sourceHeadings(),
+    source_keywords_checked: sourceKeywords,
+    output_keywords_checked: outputKeywords,
+    missing_source_keywords: sourceKeywords.filter((keyword) => !src.includes(keyword)),
+    missing_output_keywords: outputKeywords.filter((keyword) => !out.includes(keyword)),
+    output_checks: {
+      has_complete_status: rawOut.includes('data-cn-status="bilingual_complete"') && rawOut.includes(`data-cn-round="${ROUND}"`),
+      has_paragraph_coverage: out.includes("Paragraph-Level Bilingual Coverage") && out.includes("逐段双语理解"),
+      has_final_entry: rawOut.includes("openusd_bilingual_final.html"),
+      has_api_entry: rawOut.includes("site/index.html"),
+      has_api_redirect: rawOut.includes("site/api/index.html"),
+      has_release_entry: rawOut.includes("site/release_index.html"),
+      has_reading_flow_nav: rawOut.includes("openusd-reading-flow-nav") && rawOut.includes("openusd-reading-flow-breadcrumb"),
+      has_explicit_official_link: rawOut.includes("Open official page") && rawOut.includes(OFFICIAL_URL),
+      no_draft_marker: !/bilingual_draft|batch draft page|later iterations add denser bilingual coverage|后续迭代会继续补齐/.test(out),
+      zh_chars: zhChars(rawOut),
+      zh_blocks: (rawOut.match(/class=["'][^"']*\bzh\b[^"']*["']/g) || []).length,
+    },
+  };
+}
+
+function writePage() {
+  fs.writeFileSync(rel(TARGET), buildHtml(), "utf8");
+  writeJson(SOURCE_PARITY_REPORT, sourceParity());
+}
+
+function precheck() {
+  const report = sourceParity();
+  const failed = [];
+  if (report.missing_source_keywords.length) failed.push(`missing source keywords: ${report.missing_source_keywords.join(", ")}`);
+  if (report.missing_output_keywords.length) failed.push(`missing output keywords: ${report.missing_output_keywords.join(", ")}`);
+  for (const [key, value] of Object.entries(report.output_checks)) {
+    if (typeof value === "boolean" && !value) failed.push(`output check failed: ${key}`);
+  }
+  if (report.output_checks.zh_chars < 3200) failed.push(`zh chars too low: ${report.output_checks.zh_chars}`);
+  if (report.output_checks.zh_blocks < 32) failed.push(`zh blocks too low: ${report.output_checks.zh_blocks}`);
+  if (failed.length) {
+    console.error(JSON.stringify({ passed: false, failed, report }, null, 2));
+    process.exit(1);
+  }
+  writeJson(SOURCE_PARITY_REPORT, report);
+  console.log(JSON.stringify({ passed: true, report }, null, 2));
+}
+
+function updateManifest() {
+  const raw = readJson("reports/bilingual_completion_promotions.json");
+  const doc = {
+    ...raw,
+    generated_at: raw.generated_at || new Date().toISOString(),
+    promotions: Array.isArray(raw.promotions) ? raw.promotions : [],
+    updated_at: new Date().toISOString(),
+  };
+  doc.promotions = doc.promotions.filter((entry) => entry.id !== PROMOTION_ID && entry.local_output !== TARGET);
+  doc.promotions.push({
+    id: PROMOTION_ID,
+    title: "Kind : Extensible Categorization",
+    official_url: OFFICIAL_URL,
+    local_output: TARGET,
+    status: "bilingual_complete",
+    reason: `Round ${ROUND} ${ROUND_TYPE}: promote the Kind module front page by adding Chinese main-reading-path coverage for runtime-extensible taxonomy, KindRegistry, builtin model hierarchy, PlugRegistry/plugInfo.json extensions, core-kind override limits, Sdf/Pcp/UsdGeom/Plug/Tf boundaries, source parity, reading-flow navigation, and explicit official-page verification.`,
+    evidence: {
+      page_contains_status: "bilingual_complete",
+      generic_draft_marker_removed: true,
+      minimum_chinese_chars: 3200,
+      minimum_complete_section_chinese_chars: 3000,
+      minimum_chinese_blocks: 32,
+      official_source_compared: true,
+      local_source_snapshot_compared: SOURCE,
+      source_parity_report: SOURCE_PARITY_REPORT,
+      round_type: ROUND_TYPE,
+    },
+  });
+  writeJson("reports/bilingual_completion_promotions.json", doc);
+}
+
+function updateProblemAudit() {
+  const quality = readJson("reports/translation_quality_review.json");
+  const debt = readJson("reports/english_debt_audit.json");
+  const inventory = readJson("reports/all_pages_inventory.json");
+  const counts = {
+    total_pages: inventory.counts.total_pages,
+    bilingual_complete: quality.status_counts.bilingual_complete,
+    bilingual_draft: quality.status_counts.bilingual_draft,
+    good_bilingual: quality.grade_counts.good_bilingual,
+    draft_needs_translation: quality.grade_counts.draft_needs_translation,
+    draft_template_only: quality.grade_counts.draft_template_only,
+    review_ready_zh: debt.counts.review_ready_zh,
+    api_complete: debt.counts.api_complete,
+    api_review_ready_zh: debt.counts.api_review_ready_zh,
+    release_complete: debt.counts.release_complete,
+    release_review_ready_zh: debt.counts.release_review_ready_zh,
+    pending_full_scope: inventory.counts.pending_full_scope_pages,
+  };
+  writeJson("reports/current_problem_audit.json", {
+    generated_at: new Date().toISOString(),
+    purpose: `第 ${ROUND} 轮 ${ROUND_TYPE} 记录：确认 ${TARGET} 已晋级，并跟踪当前 OpenUSD 双语完成缺口。`,
+    last_completed_round: {
+      round: ROUND,
+      round_type: ROUND_TYPE,
+      target: TARGET,
+      commit_sha: null,
+      previous_good_bilingual: 216,
+    },
+    current_counts: counts,
+    problems: [
+      {
+        id: "P0-api-draft-backlog",
+        severity: "P0",
+        summary: `当前 good_bilingual=${counts.good_bilingual}/406，API complete=${counts.api_complete}，仍有 ${counts.bilingual_draft} 个可检查草稿。`,
+        evidence: `第 ${ROUND} 轮 ${ROUND_TYPE} 将 ${TARGET} 从 API 草稿晋级为 good_bilingual；release 范围保持 ${counts.release_complete}/126 complete。`,
+        required_action: "继续推进 API 草稿；只把真实达到中文主阅读路径和 source parity 的页面写入 promotion manifest。",
+      },
+      {
+        id: "P1-left-navigation-reading-flow",
+        severity: "P1",
+        summary: "完成页必须保留本地 reading-flow 导航、breadcrumb、API/Release/总入口和显式官方外跳。",
+        evidence: "本轮页面生成了本地侧栏、breadcrumb、相邻 API 调试路径和 Open official page 外跳，并会重新运行 reading-flow 审计。",
+        required_action: "若 reading-flow 审计失败，先修导航，不得推送。",
+      },
+      {
+        id: "P1-markdown-record-encoding",
+        severity: "P1",
+        summary: "Markdown 编码守卫继续作为硬门槛。",
+        evidence: "work.md、reports/iteration_report.md、reports/current_problem_audit.md、reports/bilingual_completion_promotions.md 必须无重复问号损坏、replacement character 和 UTF-8 BOM。",
+        required_action: "若 audit_openusd_markdown_encoding.mjs 失败，先做 ConsistencyRound。",
+      },
+    ],
+    promoted_pages: [
+      {
+        round: ROUND,
+        round_type: ROUND_TYPE,
+        output: TARGET,
+        official_url: OFFICIAL_URL,
+        source_snapshot: SOURCE,
+        source_parity_report: SOURCE_PARITY_REPORT,
+      },
+    ],
+    not_promoted_pages: [],
+    source_parity_report: SOURCE_PARITY_REPORT,
+    next_actions: [
+      "release 范围已 126/126 complete，不要重复处理 release 已完成页。",
+      "下一轮建议先核验 full_site/api/js_page_front.html 或其他仍为 bilingual_draft 的 API front page；开始前必须确认 git/report/validation/markdown/reading-flow 状态干净一致。",
+    ],
+    next_action: "下一轮建议 PromotionRound：full_site/api/js_page_front.html（需先确认 source snapshot 和可达标状态）。",
+  });
+}
+
+const commands = new Set(process.argv.slice(2));
+if (commands.has("--write-page")) writePage();
+if (commands.has("--precheck")) precheck();
+if (commands.has("--manifest")) updateManifest();
+if (commands.has("--problem")) updateProblemAudit();
+if (commands.size === 0) {
+  console.log("Usage: node scripts/promote_round_438_kind_module_front.mjs --write-page --precheck --manifest --problem");
+}

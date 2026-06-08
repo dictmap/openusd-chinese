@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-08T14:52:45.551Z
+Generated: 2026-06-08T15:15:44.952Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 190
-- bilingual_complete: 216
+- bilingual_draft: 189
+- bilingual_complete: 217
 
 ## Grade Counts
 
 - draft_template_only: 10
-- draft_needs_translation: 180
-- good_bilingual: 216
+- draft_needs_translation: 179
+- good_bilingual: 217
 
 ## Current Focus Batch
 
@@ -277,7 +277,7 @@ Generated: 2026-06-08T14:52:45.551Z
 | 211 | draft_needs_translation | bilingual_draft | 565 | 25/16 | 0 | 0 | `full_site/api/inherits.html` |
 | 212 | draft_needs_translation | bilingual_draft | 336 | 15/12 | 0 | 0 | `full_site/api/journal_8h.html` |
 | 213 | draft_needs_translation | bilingual_draft | 543 | 26/18 | 0 | 0 | `full_site/api/js_page_front.html` |
-| 214 | draft_needs_translation | bilingual_draft | 735 | 39/26 | 0 | 0 | `full_site/api/kind_page_front.html` |
+| 214 | good_bilingual | bilingual_complete | 1054 | 40/40 | 0 | 0 | `full_site/api/kind_page_front.html` |
 | 215 | draft_needs_translation | bilingual_draft | 555 | 25/17 | 0 | 0 | `full_site/api/md_pxr_exec_ef__r_e_a_d_m_e.html` |
 | 216 | draft_needs_translation | bilingual_draft | 545 | 25/16 | 0 | 0 | `full_site/api/md_pxr_exec_esf__r_e_a_d_m_e.html` |
 | 217 | draft_needs_translation | bilingual_draft | 498 | 25/17 | 0 | 0 | `full_site/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html` |
