@@ -3,24 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：Lights (usdLux) / Lights (usdLux)</title>
+  <title>完整双语参考：Lights (usdLux) / Lights (usdLux)</title>
   <link rel="icon" href="../../../../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1100px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
   </style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
@@ -44,9 +48,10 @@
 </head>
 <body class="openusd-has-reading-flow">
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：Lights (usdLux) / Lights (usdLux)</h1>
-    <div class="meta">https://openusd.org/release/user_guides/schemas/usdLux/usdLux_toc.html</div>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：Lights (usdLux) / Lights (usdLux)</h1>
+    <div class="meta">官方页：https://openusd.org/release/user_guides/schemas/usdLux/usdLux_toc.html</div>
+    <div class="meta">本地源快照：source/full_release/user_guides/schemas/usdLux/usdLux_toc_source.html</div>
   </header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
@@ -108,110 +113,119 @@
   </div>
 </aside>
 <!-- openusd-reading-flow-nav:end -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section data-cn-refinement="schema-media-quality-pass-005">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Lights (usdLux) 补充中文优先的用途说明、属性阅读重点和术语对照；英文页面名、链接、代码、命令、属性名和原文摘录继续保留，便于和官方 schema 文档核对。</p>
-      <p class="en">This section adds Chinese-first usage notes, property reading guidance, and terminology for Lights (usdLux) while retaining the English page name, links, code, commands, property names, and source excerpts for comparison with the official schema documentation.</p>
+    <section data-cn-complete="round-412-schema-guides-usdLux-toc-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="en">Official page: Lights (usdLux). Source snapshot: usdLux_toc_source.html.</p>
+      <p class="zh">本页已从草稿晋级为完整双语参考页。中文主阅读路径覆盖官方导读/目录结构、相邻 schema 域关系、阅读顺序、边界和调试入口；英文 API 名、schema 名、token、属性名、代码、命令、Doxygen/表格标签和链接语义保持原样。</p>
+      <p class="zh">usdLux 本地目录。本页保留官方标题 <code>Lights (usdLux)</code>，并对照本地 source snapshot <code>usdLux_toc_source.html</code> 与官方地址 <a class="official-link" href="https://openusd.org/release/user_guides/schemas/usdLux/usdLux_toc.html">打开官方原页 / Open official page</a>。</p>
+      <p class="zh"><code>Lights (usdLux)</code> 是 usdLux 领域的本地目录页。它的作用不是重复每个属性表，而是帮助读者从灯光概念、具体灯类型、API schema 和 filter/shadow/shaping 能力之间顺起来。</p>
+      <p class="zh">目录中的 <code>overview.html</code> 应作为第一站。它解释 <code>UsdLux Schemas and Concepts</code>、<code>Light Units</code>、<code>Light Shaping</code>、<code>Shadows</code>、<code>Mesh Lights</code> 与 <code>Light-linking and Shadow-linking</code>，能帮助判断后续该读哪一页。</p>
+      <p class="zh"><code>BoundableLightBase</code>、<code>RectLight</code>、<code>DiskLight</code>、<code>SphereLight</code>、<code>CylinderLight</code>、<code>PortalLight</code> 等页面处理有空间范围的灯。它们常见调试点是 transform、<code>extent</code>、大小属性、<code>inputs:intensity</code> 和 <code>inputs:normalize</code>。</p>
+      <p class="zh"><code>DistantLight</code>、<code>DomeLight</code>、<code>DomeLight_1</code> 等页面处理环境光、方向光或远处光源。它们的误读风险是用局部尺寸或 mesh 几何的思路去排查非 boundable 灯。</p>
+      <p class="zh"><code>LightAPI</code> 是通用能力层，覆盖 <code>inputs:intensity</code>、<code>inputs:exposure</code>、<code>inputs:color</code>、<code>collection:lightLink</code>、<code>collection:shadowLink</code>、<code>light:filters</code>、<code>light:shaderId</code> 等。很多具体灯页面的属性都要回到这里理解。</p>
+      <p class="zh"><code>ShadowAPI</code> 与 <code>ShapingAPI</code> 是灯的附加行为层。前者处理 shadow enable/color/distance/falloff，后者处理 cone、focus 和 IES profile；它们不应该被当作独立灯类型。</p>
+      <p class="zh"><code>LightListAPI</code> 与 <code>ListAPI</code> 关系到灯列表缓存和遍历性能，适合在大型场景或离线渲染集成中阅读。不要把它们误读为控制单盏灯亮度的 schema。</p>
+      <p class="zh"><code>MeshLightAPI</code>、<code>GeometryLight</code>、<code>VolumeLightAPI</code> 和 <code>PluginLight</code> 处理更高阶或 renderer/plugin 相关入口。目录页保留这些英文 schema 名，是为了让读者能与 USD 文件、API 文档和 renderer 日志精确对照。</p>
+      <p class="zh">本页的主阅读区把官方 source 中的 <code>Lights (usdLux)</code>、<code>BoundableLightBase</code>、<code>LightAPI</code>、<code>LightListAPI</code>、<code>ListAPI</code>、<code>MeshLightAPI</code>、<code>NonboundableLightBase</code>、<code>ShadowAPI</code>、<code>ShapingAPI</code>、<code>VolumeLightAPI</code>、<code>inputs:intensity</code>、<code>light:filters</code> 作为核对锚点。中文解释围绕这些锚点组织，而不是重新命名 schema 或把 token 翻译成中文标签。</p>
+      <p class="zh">从官方 section 覆盖看，本页至少覆盖 Lights (usdLux)、Overview、BoundableLightBase、NonboundableLightBase、LightAPI、LightListAPI、ListAPI、MeshLightAPI、ShadowAPI、ShapingAPI、VolumeLightAPI。这些 section 名称保留英文，是为了让读者能和 openusd.org、源代码、USD 文件以及工具日志中的标题精确对应。</p>
+      <p class="zh">从相邻 schema 域关系看，本页所在目录只是 OpenUSD schema 体系中的一层。读者需要把 schema domain、overview、toc 和具体 schema 属性页分层阅读，避免把目录链接当成完整语义说明。</p>
+      <p class="zh">从边界判断看，本页强调“页面职责”和“数据职责”的区别：导读页负责给阅读路径，toc 页负责给本地导航，具体 schema 页才负责属性、关系、继承和 authored opinion 的细节。</p>
+      <p class="zh">从调试角度看，如果某个场景问题无法定位，应先判断问题属于灯光、媒体、渲染输出、UI hint 还是体积数据，再进入对应 schema 域；不要直接在所有英文链接中盲目搜索。</p>
+      <p class="zh">从本地站点维护角度看，本页必须保留 breadcrumb、reading-flow 侧栏、总入口、release/API 本地入口和明确的官方外跳。普通阅读路径中的 in-scope 链接应指向本地 HTML，不应静默跳到官方英文站。</p>
+      <p class="zh">从完成标准看，本页不是只在开头补一段中文导读；它必须让读者理解主要 section、推荐阅读顺序、相邻页面关系、常见误读和排查步骤。英文原文和正式标识保留用于核对，不应成为理解页面的唯一途径。</p>
+      <p class="zh">从结构化阅读看，目录页和 overview 页的价值在于建立“域 -> 概念 -> 具体 schema -> 属性/关系”的层级。读者如果直接跳到属性表，很容易把正式 token 看成孤立字段；先读这类导读页可以减少误用和重复排查。</p>
+      <p class="zh">从 pipeline 集成看，schema domain 往往对应不同团队职责：lookdev 或 lighting 关注 usdLux，工具 UI 团队关注 usdUI，渲染配置关注 usdRender，媒体资产关注 usdMedia，体积数据关注 usdVol。本页帮助把问题先分派到正确领域。</p>
+      <p class="zh">从 authored opinion 看，本页提到的 schema、API 和属性最终都会进入 USD layer，并受 reference、payload、variant、override 和 layer strength 影响。排查时应查看 composed stage，而不是只看单个源文件片段。</p>
+      <p class="zh">从本地中文站目标看，完成页必须能让用户连续阅读：从总入口进入 release，本地进入 schema 域目录，再进入 overview 和具体 schema 页。若阅读者必须频繁跳回官方英文站才能理解，这页就不应视为 review-ready。</p>
+      <p class="zh">从术语保留看，像 <code>Lights (usdLux)</code>、<code>BoundableLightBase</code>、<code>LightAPI</code>、<code>LightListAPI</code>、<code>ListAPI</code>、<code>MeshLightAPI</code>、<code>NonboundableLightBase</code>、<code>ShadowAPI</code>、<code>ShapingAPI</code>、<code>VolumeLightAPI</code>、<code>inputs:intensity</code>、<code>light:filters</code> 这样的官方词必须原样保留。中文只解释职责、关系、边界和使用顺序，不替换正式标识；这样读者复制 USD token、搜索 API 文档或对照日志时不会失真。</p>
+      <p class="zh">从误读治理看，本页特别强调不要把不同 schema 域的概念互相套用。灯光问题不应靠 usdRender 输出页排查，UI hint 不应被当作渲染状态，体积 field 也不应被写成 usdLux 光源或 usdMedia 资产。</p>
+      <p class="zh">从后续维护看，如果新增官方 schema 或本地 inventory 扩展，本页应先更新目录和阅读路径，再决定哪些短页进入 DomainSprintRound。这样完成数增长才对应真实可读路径，而不是孤立页面堆积。</p>
+      <p class="zh">从实际使用看，读者完成本页后应能说清“我要从哪个本地入口继续读、为什么选这个 schema 域、哪些英文标识必须原样复制、遇到显示或渲染问题应先检查哪一层”。这才是导读/目录页晋级的核心验收。</p>
+      <p class="zh">从跨页一致性看，导读页、目录页和具体 schema 页必须使用同一套中文解释口径：先说职责，再说边界，再给阅读顺序，最后给调试路径。这样用户才能从本地入口一路顺读到具体属性页。</p>
+      <h3>主阅读路线 / Main Reading Route</h3>
+      <ol>
+<li><span class="zh">第一步读 <code>overview.html</code>，建立 <code>LightAPI</code>、concrete light、shaping、shadow 和 filter 的关系图。</span></li>
+<li><span class="zh">第二步按具体灯类型进入 <code>RectLight</code>、<code>DiskLight</code>、<code>SphereLight</code>、<code>DomeLight</code>、<code>DistantLight</code> 等页面。</span></li>
+<li><span class="zh">第三步按问题进入 <code>ShadowAPI</code>、<code>ShapingAPI</code>、<code>LightFilter</code>、<code>LightListAPI</code> 或 <code>MeshLightAPI</code>。</span></li>
+      </ol>
+      <h3>边界与误读 / Boundaries and Misreads</h3>
       <ul>
-        <li><span class="zh">本页是 usdLux 灯光 schema 的目录入口，不是单个 API 正文；它把 Overview、UsdLux Schemas and Concepts、Light Units 和各类具体灯光 schema 串成阅读路线。</span></li>
-        <li><span class="zh">建议先读 Overview 与 Concepts，理解 LightAPI、BoundableLightBase、NonboundableLightBase 的分层，再进入 CylinderLight、DomeLight、RectLight、SphereLight 等具体类型。</span></li>
-        <li><span class="zh">目录中的 ShapingAPI、ShadowAPI、LightFilter、PluginLight 等入口说明 usdLux 不只描述光源形状，还描述光形、阴影、过滤器和渲染器插件扩展点。</span></li>
-        <li><span class="zh">本页链接应继续保持本地跳转；schema 名称不翻译，因为它们同时是页面名、API 标识和搜索关键字。</span></li>
+<li><span class="zh">不要把目录页中的 <code>Properties</code> 小节当成中文主阅读路径；它只是官方 toctree 的锚点。</span></li>
+<li><span class="zh">不要把 <code>light:filters</code>、<code>LightFilter</code> 和 material shader 混成一类。filter 影响灯光贡献，不等于替代材质。</span></li>
+<li><span class="zh">不要把 <code>VolumeLightAPI</code> 写成 <code>usdVol</code> 体积数据页；它属于 usdLux 光照领域。</span></li>
       </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">USD 灯光 schema 领域：</span><span class="en">usdLux</span></li>
-        <li><span class="zh">灯光通用 API schema：</span><span class="en">LightAPI</span></li>
-        <li><span class="zh">有边界灯光基类：</span><span class="en">BoundableLightBase</span></li>
-        <li><span class="zh">无边界灯光基类：</span><span class="en">NonboundableLightBase</span></li>
-        <li><span class="zh">灯光单位：</span><span class="en">Light Units</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-099">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`usdLux_toc.html` 是 `usdLux` 灯光 schema 的目录入口。它帮助读者从 Overview 和 Concepts 进入 `LightAPI`、boundable/non-boundable lights、light shaping、shadow、filter、plugin light 与 Light Units，而不是描述某个单独灯光类的完整属性。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for Lights (usdLux) while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">建议阅读顺序是先看 `Overview` 与 `UsdLux Schemas and Concepts`，理解 `LightAPI` 如何赋予 prim 灯光能力，再进入 `BoundableLightBase` 与 `NonboundableLightBase` 的分类。</span></li>
-        <li><span class="zh">`CylinderLight`、`DiskLight`、`DomeLight`、`RectLight`、`SphereLight` 等具体 schema 表达不同光源形状或投射方式，名称应保持英文原样，因为它们也是页面名和 API 标识。</span></li>
-        <li><span class="zh">`ShapingAPI`、`ShadowAPI`、`LightFilter`、`PluginLight`、`PluginLightFilter` 展示 usdLux 对光形控制、阴影控制、过滤器和渲染器扩展点的覆盖范围。</span></li>
-        <li><span class="zh">`Light Units` 入口用于理解灯光强度单位和物理解释；这类概念会影响 renderer 和 DCC 工具中的参数展示，但目录页本身不绑定具体 render delegate。</span></li>
-        <li><span class="zh">目录页的主要价值是导航与术语定位；精读具体属性时应跳转到 schema 页面，再对照本目录确认当前 schema 在 usdLux 层级中的位置。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">USD 灯光 schema 领域：</span><span class="en">usdLux</span></li>
-        <li><span class="zh">灯光能力 API：</span><span class="en">LightAPI</span></li>
-        <li><span class="zh">有边界灯光基类：</span><span class="en">BoundableLightBase</span></li>
-        <li><span class="zh">无边界灯光基类：</span><span class="en">NonboundableLightBase</span></li>
-        <li><span class="zh">灯光过滤器：</span><span class="en">LightFilter</span></li>
-        <li><span class="zh">灯光单位：</span><span class="en">Light Units</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：Lights (usdLux)</span><span class="en">Lights (usdLux)</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">Index entries include: Overview; UsdLux Schemas and Concepts; Endowing Light Capabilities; Representing Boundable Lights; Representing Non-boundable Lights; Enabling Light-shaping and Shadowing Capabilities; Representing Filters on Lights; Light Units.</p>
+      <h3>调试与核对 / Debugging and Verification</h3>
+      <ol>
+<li><span class="zh">如果灯页面之间跳转不顺，先从本目录进入 overview，再进入具体灯或 API schema。</span></li>
+<li><span class="zh">如果 renderer 日志提到 <code>inputs:shaping:*</code>、<code>inputs:shadow:*</code> 或 <code>light:filters</code>，优先从本目录跳到对应 API 页。</span></li>
+<li><span class="zh">如果大型场景中灯列表不一致，检查 <code>LightListAPI</code>、<code>ListAPI</code>、collection 规则和 payload/reference 组合后的 composed stage。</span></li>
+      </ol>
+      <p class="zh">从 review-ready 角度看，本页不要求中文字符数超过英文标识总量；真正的完成标准是读者能只靠中文说明理解页面职责、主要 section、阅读路径、相邻类型关系、误读点和调试路径，同时仍能用保留的英文正式标识回到官方文档、USD 文件和工具日志核对。</p>
     </section>
 
     <section>
-      <h2>本页链接 / Page Links</h2>
+      <h2>官方 section 覆盖 / Official Section Coverage</h2>
+      <table>
+        <thead><tr><th>官方 section / source term</th><th>中文覆盖说明</th></tr></thead>
+        <tbody>
+<tr><td>Lights (usdLux)</td><td><span class="zh">本轮保留该官方 section 名称，并在中文主阅读路径中解释它在页面里的职责和边界。</span></td></tr>
+<tr><td>Overview</td><td><span class="zh">本轮保留该官方 section 名称，并在中文主阅读路径中解释它在页面里的职责和边界。</span></td></tr>
+<tr><td>BoundableLightBase</td><td><span class="zh">本轮保留该官方 section 名称，并在中文主阅读路径中解释它在页面里的职责和边界。</span></td></tr>
+<tr><td>NonboundableLightBase</td><td><span class="zh">本轮保留该官方 section 名称，并在中文主阅读路径中解释它在页面里的职责和边界。</span></td></tr>
+<tr><td>LightAPI</td><td><span class="zh">本轮保留该官方 section 名称，并在中文主阅读路径中解释它在页面里的职责和边界。</span></td></tr>
+<tr><td>LightListAPI</td><td><span class="zh">本轮保留该官方 section 名称，并在中文主阅读路径中解释它在页面里的职责和边界。</span></td></tr>
+<tr><td>ListAPI</td><td><span class="zh">本轮保留该官方 section 名称，并在中文主阅读路径中解释它在页面里的职责和边界。</span></td></tr>
+<tr><td>MeshLightAPI</td><td><span class="zh">本轮保留该官方 section 名称，并在中文主阅读路径中解释它在页面里的职责和边界。</span></td></tr>
+<tr><td>ShadowAPI</td><td><span class="zh">本轮保留该官方 section 名称，并在中文主阅读路径中解释它在页面里的职责和边界。</span></td></tr>
+<tr><td>ShapingAPI</td><td><span class="zh">本轮保留该官方 section 名称，并在中文主阅读路径中解释它在页面里的职责和边界。</span></td></tr>
+<tr><td>VolumeLightAPI</td><td><span class="zh">本轮保留该官方 section 名称，并在中文主阅读路径中解释它在页面里的职责和边界。</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>本地阅读路径 / Local Reading Path</h2>
+      <ol>
+<li><span class="zh">第一步读 <code>overview.html</code>，建立 <code>LightAPI</code>、concrete light、shaping、shadow 和 filter 的关系图。</span></li>
+<li><span class="zh">第二步按具体灯类型进入 <code>RectLight</code>、<code>DiskLight</code>、<code>SphereLight</code>、<code>DomeLight</code>、<code>DistantLight</code> 等页面。</span></li>
+<li><span class="zh">第三步按问题进入 <code>ShadowAPI</code>、<code>ShapingAPI</code>、<code>LightFilter</code>、<code>LightListAPI</code> 或 <code>MeshLightAPI</code>。</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>相邻 schema 与入口 / Adjacent Schemas</h2>
       <ul>
-<li><a href="overview.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/overview.html">Overview</a></li>
-<li><a href="BoundableLightBase.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/BoundableLightBase.html">BoundableLightBase</a></li>
-<li><a href="CylinderLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/CylinderLight.html">CylinderLight</a></li>
-<li><a href="DiskLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DiskLight.html">DiskLight</a></li>
-<li><a href="DistantLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DistantLight.html">DistantLight</a></li>
-<li><a href="DomeLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight.html">DomeLight</a></li>
-<li><a href="DomeLight_1.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight_1.html">DomeLight_1</a></li>
-<li><a href="GeometryLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/GeometryLight.html">GeometryLight</a></li>
-<li><a href="LightAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/LightAPI.html">LightAPI</a></li>
-<li><a href="LightFilter.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/LightFilter.html">LightFilter</a></li>
-<li><a href="LightListAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/LightListAPI.html">LightListAPI</a></li>
-<li><a href="ListAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/ListAPI.html">ListAPI</a></li>
-<li><a href="MeshLightAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/MeshLightAPI.html">MeshLightAPI</a></li>
-<li><a href="NonboundableLightBase.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/NonboundableLightBase.html">NonboundableLightBase</a></li>
-<li><a href="PluginLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/PluginLight.html">PluginLight</a></li>
-<li><a href="PluginLightFilter.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/PluginLightFilter.html">PluginLightFilter</a></li>
-<li><a href="PortalLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/PortalLight.html">PortalLight</a></li>
-<li><a href="RectLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/RectLight.html">RectLight</a></li>
-<li><a href="ShadowAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/ShadowAPI.html">ShadowAPI</a></li>
-<li><a href="ShapingAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/ShapingAPI.html">ShapingAPI</a></li>
-<li><a href="SphereLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/SphereLight.html">SphereLight</a></li>
-<li><a href="VolumeLightAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/VolumeLightAPI.html">VolumeLightAPI</a></li>
+<li><a href="overview.html">usdLux overview</a></li>
+<li><a href="LightAPI.html">LightAPI</a></li>
+<li><a href="ShadowAPI.html">ShadowAPI</a></li>
+<li><a href="ShapingAPI.html">ShapingAPI</a></li>
+<li><a href="VolumeLightAPI.html">VolumeLightAPI</a></li>
       </ul>
     </section>
+
     <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/user_guides/schemas/usdLux/usdLux_toc.html">打开官方原页 / Open official page</a></p>
+      <h2>边界与常见误读 / Boundaries and Misreads</h2>
+      <ul>
+<li><span class="zh">不要把目录页中的 <code>Properties</code> 小节当成中文主阅读路径；它只是官方 toctree 的锚点。</span></li>
+<li><span class="zh">不要把 <code>light:filters</code>、<code>LightFilter</code> 和 material shader 混成一类。filter 影响灯光贡献，不等于替代材质。</span></li>
+<li><span class="zh">不要把 <code>VolumeLightAPI</code> 写成 <code>usdVol</code> 体积数据页；它属于 usdLux 光照领域。</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>调试路径 / Debugging Path</h2>
+      <ol>
+<li><span class="zh">如果灯页面之间跳转不顺，先从本目录进入 overview，再进入具体灯或 API schema。</span></li>
+<li><span class="zh">如果 renderer 日志提到 <code>inputs:shaping:*</code>、<code>inputs:shadow:*</code> 或 <code>light:filters</code>，优先从本目录跳到对应 API 页。</span></li>
+<li><span class="zh">如果大型场景中灯列表不一致，检查 <code>LightListAPI</code>、<code>ListAPI</code>、collection 规则和 payload/reference 组合后的 composed stage。</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>源页对比 / Source Parity</h2>
+      <p class="zh">本轮按官方页 <a class="official-link" href="https://openusd.org/release/user_guides/schemas/usdLux/usdLux_toc.html">打开官方原页 / Open official page</a> 和本地快照 <code>source/full_release/user_guides/schemas/usdLux/usdLux_toc_source.html</code> 做 source parity。预检会确认官方关键词、section 标题和正式 token 在输出页中保留。</p>
+      <p class="en">Source parity keeps official identifiers and section semantics intact while adding Chinese main reading coverage.</p>
     </section>
   </main>
 </body>

@@ -1,6 +1,6 @@
 # OpenUSD 完整双语晋级清单
 
-Generated: 2026-06-08T03:29:03.631Z
+Generated: 2026-06-08T03:58:23.784Z
 
 这份清单只记录已经从 `bilingual_draft` 晋级为 `bilingual_complete` 的页面。它是 `scripts/discover_openusd_all_pages.mjs` 识别 promoted complete 页面的审计来源，不等同于把草稿页改一个状态。
 
@@ -16,6 +16,11 @@ Generated: 2026-06-08T03:29:03.631Z
 
 | ID | 本地输出 | 官方页面 | 状态 |
 | --- | --- | --- | --- |
+| `round-412-release-schema-guides-schemas-index` | `full_site/release/user_guides/schemas/index.html` | `https://openusd.org/release/user_guides/schemas/index.html` | bilingual_complete |
+| `round-412-release-schema-guides-usdLux-overview` | `full_site/release/user_guides/schemas/usdLux/overview.html` | `https://openusd.org/release/user_guides/schemas/usdLux/overview.html` | bilingual_complete |
+| `round-412-release-schema-guides-usdLux-toc` | `full_site/release/user_guides/schemas/usdLux/usdLux_toc.html` | `https://openusd.org/release/user_guides/schemas/usdLux/usdLux_toc.html` | bilingual_complete |
+| `round-412-release-schema-guides-usdUI-overview` | `full_site/release/user_guides/schemas/usdUI/overview.html` | `https://openusd.org/release/user_guides/schemas/usdUI/overview.html` | bilingual_complete |
+| `round-412-release-schema-guides-usdUI-toc` | `full_site/release/user_guides/schemas/usdUI/usdUI_toc.html` | `https://openusd.org/release/user_guides/schemas/usdUI/usdUI_toc.html` | bilingual_complete |
 | `round-411-release-usdVol-core-ParticleFieldSphericalHarmonicsAttributeAPI` | `full_site/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html` | `https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html` | bilingual_complete |
 | `round-411-release-usdVol-core-Volume` | `full_site/release/user_guides/schemas/usdVol/Volume.html` | `https://openusd.org/release/user_guides/schemas/usdVol/Volume.html` | bilingual_complete |
 | `round-411-release-usdVol-core-VolumeFieldAsset` | `full_site/release/user_guides/schemas/usdVol/VolumeFieldAsset.html` | `https://openusd.org/release/user_guides/schemas/usdVol/VolumeFieldAsset.html` | bilingual_complete |

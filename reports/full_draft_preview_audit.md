@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-08T03:29:08.074Z
+Generated: 2026-06-08T03:58:27.967Z
 
-Transient base URL: `http://127.0.0.1:60245/`
+Transient base URL: `http://127.0.0.1:57852/`
 
 Result:
 
 - Passed: true
-- Draft pages: 252
-- Pages checked: 252
-- Passed pages: 252
+- Draft pages: 247
+- Pages checked: 247
+- Passed pages: 247
 - Failed pages: 0
-- Final HTML links: 252
-- Local assets checked: 252
+- Final HTML links: 247
+- Local assets checked: 247
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -249,11 +249,6 @@ Result:
 | true | full_site/release/user_guides/namespace_editing.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/primvars.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/render_user_guide.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/index.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdLux/overview.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdLux/usdLux_toc.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdUI/overview.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdUI/usdUI_toc.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/time_and_animated_values.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/variable_expressions.html | 200 | true | 0 | 0 |
 | true | full_site/release/wp_ar2.html | 200 | true | 0 | 0 |

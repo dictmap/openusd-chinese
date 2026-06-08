@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-08T03:28:58.615Z
+Generated: 2026-06-08T03:58:18.060Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 252
-- bilingual_complete: 154
+- bilingual_draft: 247
+- bilingual_complete: 159
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 241
-- good_bilingual: 154
+- draft_needs_translation: 236
+- good_bilingual: 159
 
 ## Current Focus Batch
 
@@ -388,7 +388,7 @@ Generated: 2026-06-08T03:28:58.615Z
 | 322 | draft_needs_translation | bilingual_draft | 541 | 24/18 | 0 | 0 | `full_site/release/user_guides/namespace_editing.html` |
 | 323 | draft_needs_translation | bilingual_draft | 580 | 28/21 | 0 | 0 | `full_site/release/user_guides/primvars.html` |
 | 324 | draft_needs_translation | bilingual_draft | 625 | 28/21 | 0 | 0 | `full_site/release/user_guides/render_user_guide.html` |
-| 325 | draft_needs_translation | bilingual_draft | 582 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/index.html` |
+| 325 | good_bilingual | bilingual_complete | 1792 | 52/2 | 0 | 0 | `full_site/release/user_guides/schemas/index.html` |
 | 326 | good_bilingual | bilingual_complete | 1179 | 38/12 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/BoundableLightBase.html` |
 | 327 | good_bilingual | bilingual_complete | 2235 | 46/46 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/CylinderLight.html` |
 | 328 | good_bilingual | bilingual_complete | 1909 | 24/23 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/DiskLight.html` |
@@ -402,7 +402,7 @@ Generated: 2026-06-08T03:28:58.615Z
 | 336 | good_bilingual | bilingual_complete | 993 | 34/9 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/ListAPI.html` |
 | 337 | good_bilingual | bilingual_complete | 1030 | 34/9 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/MeshLightAPI.html` |
 | 338 | good_bilingual | bilingual_complete | 1146 | 37/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/NonboundableLightBase.html` |
-| 339 | draft_needs_translation | bilingual_draft | 653 | 29/22 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/overview.html` |
+| 339 | good_bilingual | bilingual_complete | 1624 | 58/2 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/overview.html` |
 | 340 | good_bilingual | bilingual_complete | 1118 | 36/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/PluginLight.html` |
 | 341 | good_bilingual | bilingual_complete | 2073 | 50/50 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/PluginLightFilter.html` |
 | 342 | good_bilingual | bilingual_complete | 2060 | 51/51 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/PortalLight.html` |
@@ -410,7 +410,7 @@ Generated: 2026-06-08T03:28:58.615Z
 | 344 | good_bilingual | bilingual_complete | 2260 | 48/48 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/ShadowAPI.html` |
 | 345 | good_bilingual | bilingual_complete | 2859 | 52/52 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/ShapingAPI.html` |
 | 346 | good_bilingual | bilingual_complete | 2248 | 52/52 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/SphereLight.html` |
-| 347 | draft_needs_translation | bilingual_draft | 510 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/usdLux_toc.html` |
+| 347 | good_bilingual | bilingual_complete | 1596 | 57/2 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/usdLux_toc.html` |
 | 348 | good_bilingual | bilingual_complete | 981 | 34/9 | 0 | 0 | `full_site/release/user_guides/schemas/usdLux/VolumeLightAPI.html` |
 | 349 | good_bilingual | bilingual_complete | 1604 | 38/9 | 0 | 0 | `full_site/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html` |
 | 350 | good_bilingual | bilingual_complete | 1468 | 39/9 | 0 | 0 | `full_site/release/user_guides/schemas/usdMedia/overview.html` |
@@ -428,11 +428,11 @@ Generated: 2026-06-08T03:28:58.615Z
 | 362 | good_bilingual | bilingual_complete | 768 | 34/8 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/Backdrop.html` |
 | 363 | good_bilingual | bilingual_complete | 723 | 39/12 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/NodeGraphNodeAPI.html` |
 | 364 | good_bilingual | bilingual_complete | 666 | 34/8 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/ObjectHints.html` |
-| 365 | draft_needs_translation | bilingual_draft | 591 | 27/20 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/overview.html` |
+| 365 | good_bilingual | bilingual_complete | 1481 | 51/2 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/overview.html` |
 | 366 | good_bilingual | bilingual_complete | 655 | 34/7 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/PrimHints.html` |
 | 367 | good_bilingual | bilingual_complete | 664 | 35/7 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/PropertyHints.html` |
 | 368 | good_bilingual | bilingual_complete | 674 | 33/7 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/SceneGraphPrimAPI.html` |
-| 369 | draft_needs_translation | bilingual_draft | 538 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/usdUI_toc.html` |
+| 369 | good_bilingual | bilingual_complete | 1546 | 55/2 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/usdUI_toc.html` |
 | 370 | good_bilingual | bilingual_complete | 855 | 44/15 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/Field3DAsset.html` |
 | 371 | good_bilingual | bilingual_complete | 851 | 43/14 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/FieldAsset.html` |
 | 372 | good_bilingual | bilingual_complete | 794 | 39/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/FieldBase.html` |

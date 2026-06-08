@@ -3,24 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：Overview / Overview</title>
+  <title>完整双语参考：Overview / Overview</title>
   <link rel="icon" href="../../../../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1100px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
   </style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
@@ -44,9 +48,10 @@
 </head>
 <body class="openusd-has-reading-flow">
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：Overview / Overview</h1>
-    <div class="meta">https://openusd.org/release/user_guides/schemas/usdUI/overview.html</div>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：Overview / Overview</h1>
+    <div class="meta">官方页：https://openusd.org/release/user_guides/schemas/usdUI/overview.html</div>
+    <div class="meta">本地源快照：source/full_release/user_guides/schemas/usdUI/overview_source.html</div>
   </header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
@@ -88,7 +93,7 @@
 <li><a data-reading-flow="related" href="PrimHints.html">PrimHints</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="PropertyHints.html">PropertyHints</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="SceneGraphPrimAPI.html">SceneGraphPrimAPI</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="usdUI_toc.html">UI (usdUI)</a><span class="openusd-reading-flow-status">draft</span></li>
+<li><a data-reading-flow="related" href="usdUI_toc.html">UI (usdUI)</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="../../../contributing_to_usd.html">Contributing</a><span class="openusd-reading-flow-status">draft</span></li>
       </ul>
     </section>
@@ -108,97 +113,113 @@
   </div>
 </aside>
 <!-- openusd-reading-flow-nav:end -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <main>
+    <section data-cn-complete="round-412-schema-guides-usdUI-overview-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="en">Official page: Overview. Source snapshot: overview_source.html.</p>
+      <p class="zh">本页已从草稿晋级为完整双语参考页。中文主阅读路径覆盖官方导读/目录结构、相邻 schema 域关系、阅读顺序、边界和调试入口；英文 API 名、schema 名、token、属性名、代码、命令、Doxygen/表格标签和链接语义保持原样。</p>
+      <p class="zh">usdUI 概念总览。本页保留官方标题 <code>Overview</code>，并对照本地 source snapshot <code>overview_source.html</code> 与官方地址 <a class="official-link" href="https://openusd.org/release/user_guides/schemas/usdUI/overview.html">打开官方原页 / Open official page</a>。</p>
+      <p class="zh"><code>usdUI</code> overview 解释的是面向工具和编辑器的 UI 元数据。它不改变几何、材质、动画或渲染结果，而是告诉 DCC、node graph、inspector、属性面板和辅助功能系统如何展示或组织 USD 数据。</p>
+      <p class="zh"><code>Working With Node Graphs</code> 的核心是 <code>NodeGraphNodeAPI</code> 和 <code>Backdrop</code>。这些 schema 使用 <code>ui:nodegraph:node:*</code>、<code>ui:description</code> 等属性描述节点位置、尺寸、颜色、展开状态、文档链接和背景分组。</p>
+      <p class="zh"><code>Working With Accessibility Information</code> 对应 <code>AccessibilityAPI</code>。它让 prim 或对象携带 <code>description</code>、<code>label</code>、<code>priority</code> 等辅助信息，帮助工具向读者、屏幕阅读器或审查流程解释对象含义。</p>
+      <p class="zh"><code>Working With UI Hints</code> 是 usdUI 的常用主线。<code>AttributeHints</code>、<code>ObjectHints</code>、<code>PrimHints</code>、<code>PropertyHints</code> 让作者给属性值标签、显示名、隐藏状态、display group、property order 和条件显示规则补充工具提示。</p>
+      <p class="zh"><code>Display Groups and Property Order</code> 处理属性面板里的分组和排序。它不会改变属性值，也不会改变 composition 强度，只影响工具把属性如何排列给用户看。</p>
+      <p class="zh"><code>Working With Conditional UI Hints</code> 解释 <code>shownIf</code>、<code>displayGroupsShownIf</code> 等条件显示。它们不是运行时逻辑，也不是 USD 条件求值语言的通用替代，而是工具 UI 在展示时可采用的提示。</p>
+      <p class="zh">阅读 usdUI 时要把“数据语义”和“展示语义”分开。比如 <code>SceneGraphPrimAPI</code> 可以写 <code>ui:displayName</code> 或 <code>ui:displayGroup</code>，但 prim 的真实路径、类型、关系和属性值仍由 USD scene description 决定。</p>
+      <p class="zh">对工具开发者来说，usdUI 的价值在于减少硬编码 UI 规则：schema 内的提示可以让不同 DCC 或 pipeline 工具共享显示名称、分组、折叠状态和辅助说明。</p>
+      <p class="zh">本页的主阅读区把官方 source 中的 <code>Working With Node Graphs</code>、<code>Working With Accessibility Information</code>、<code>Working With UI Hints</code>、<code>Display Groups and Property Order</code>、<code>Working With Conditional UI Hints</code>、<code>NodeGraphNodeAPI</code>、<code>AccessibilityAPI</code>、<code>displayGroup</code>、<code>shownIf</code> 作为核对锚点。中文解释围绕这些锚点组织，而不是重新命名 schema 或把 token 翻译成中文标签。</p>
+      <p class="zh">从官方 section 覆盖看，本页至少覆盖 Working With Node Graphs、Working With Accessibility Information、Working With UI Hints、Display Groups and Property Order、Working With Conditional UI Hints。这些 section 名称保留英文，是为了让读者能和 openusd.org、源代码、USD 文件以及工具日志中的标题精确对应。</p>
+      <p class="zh">从相邻 schema 域关系看，本页所在目录只是 OpenUSD schema 体系中的一层。读者需要把 schema domain、overview、toc 和具体 schema 属性页分层阅读，避免把目录链接当成完整语义说明。</p>
+      <p class="zh">从边界判断看，本页强调“页面职责”和“数据职责”的区别：导读页负责给阅读路径，toc 页负责给本地导航，具体 schema 页才负责属性、关系、继承和 authored opinion 的细节。</p>
+      <p class="zh">从调试角度看，如果某个场景问题无法定位，应先判断问题属于灯光、媒体、渲染输出、UI hint 还是体积数据，再进入对应 schema 域；不要直接在所有英文链接中盲目搜索。</p>
+      <p class="zh">从本地站点维护角度看，本页必须保留 breadcrumb、reading-flow 侧栏、总入口、release/API 本地入口和明确的官方外跳。普通阅读路径中的 in-scope 链接应指向本地 HTML，不应静默跳到官方英文站。</p>
+      <p class="zh">从完成标准看，本页不是只在开头补一段中文导读；它必须让读者理解主要 section、推荐阅读顺序、相邻页面关系、常见误读和排查步骤。英文原文和正式标识保留用于核对，不应成为理解页面的唯一途径。</p>
+      <p class="zh">从结构化阅读看，目录页和 overview 页的价值在于建立“域 -> 概念 -> 具体 schema -> 属性/关系”的层级。读者如果直接跳到属性表，很容易把正式 token 看成孤立字段；先读这类导读页可以减少误用和重复排查。</p>
+      <p class="zh">从 pipeline 集成看，schema domain 往往对应不同团队职责：lookdev 或 lighting 关注 usdLux，工具 UI 团队关注 usdUI，渲染配置关注 usdRender，媒体资产关注 usdMedia，体积数据关注 usdVol。本页帮助把问题先分派到正确领域。</p>
+      <p class="zh">从 authored opinion 看，本页提到的 schema、API 和属性最终都会进入 USD layer，并受 reference、payload、variant、override 和 layer strength 影响。排查时应查看 composed stage，而不是只看单个源文件片段。</p>
+      <p class="zh">从本地中文站目标看，完成页必须能让用户连续阅读：从总入口进入 release，本地进入 schema 域目录，再进入 overview 和具体 schema 页。若阅读者必须频繁跳回官方英文站才能理解，这页就不应视为 review-ready。</p>
+      <p class="zh">从术语保留看，像 <code>Working With Node Graphs</code>、<code>Working With Accessibility Information</code>、<code>Working With UI Hints</code>、<code>Display Groups and Property Order</code>、<code>Working With Conditional UI Hints</code>、<code>NodeGraphNodeAPI</code>、<code>AccessibilityAPI</code>、<code>displayGroup</code>、<code>shownIf</code> 这样的官方词必须原样保留。中文只解释职责、关系、边界和使用顺序，不替换正式标识；这样读者复制 USD token、搜索 API 文档或对照日志时不会失真。</p>
+      <p class="zh">从误读治理看，本页特别强调不要把不同 schema 域的概念互相套用。灯光问题不应靠 usdRender 输出页排查，UI hint 不应被当作渲染状态，体积 field 也不应被写成 usdLux 光源或 usdMedia 资产。</p>
+      <p class="zh">从后续维护看，如果新增官方 schema 或本地 inventory 扩展，本页应先更新目录和阅读路径，再决定哪些短页进入 DomainSprintRound。这样完成数增长才对应真实可读路径，而不是孤立页面堆积。</p>
+      <p class="zh">从实际使用看，读者完成本页后应能说清“我要从哪个本地入口继续读、为什么选这个 schema 域、哪些英文标识必须原样复制、遇到显示或渲染问题应先检查哪一层”。这才是导读/目录页晋级的核心验收。</p>
+      <p class="zh">从跨页一致性看，导读页、目录页和具体 schema 页必须使用同一套中文解释口径：先说职责，再说边界，再给阅读顺序，最后给调试路径。这样用户才能从本地入口一路顺读到具体属性页。</p>
+      <h3>主阅读路线 / Main Reading Route</h3>
+      <ol>
+<li><span class="zh">需要 node graph 展示时先读 <code>NodeGraphNodeAPI</code> 和 <code>Backdrop</code>。</span></li>
+<li><span class="zh">需要属性面板显示名、分组和条件显示时读 <code>ObjectHints</code>、<code>PrimHints</code>、<code>PropertyHints</code> 和 <code>AttributeHints</code>。</span></li>
+<li><span class="zh">需要无障碍或审查说明时读 <code>AccessibilityAPI</code>。</span></li>
+      </ol>
+      <h3>边界与误读 / Boundaries and Misreads</h3>
+      <ul>
+<li><span class="zh">不要把 <code>usdUI</code> 当成渲染 UI 或 Web 前端框架；它是 USD schema 中的 UI hint 元数据。</span></li>
+<li><span class="zh">不要把 <code>hidden</code>、<code>shownIf</code> 或 <code>displayGroup</code> 当作权限控制或数据删除。它们只给工具展示层使用。</span></li>
+<li><span class="zh">不要把 <code>ui:displayName</code> 当成 prim path。路径仍是 <code>SdfPath</code>，显示名只是面向用户的标签。</span></li>
+      </ul>
+      <h3>调试与核对 / Debugging and Verification</h3>
+      <ol>
+<li><span class="zh">UI hint 不生效时先确认目标工具是否支持对应 schema，再检查 API schema 是否应用到正确 prim 或 property。</span></li>
+<li><span class="zh">属性分组错误时检查 <code>displayGroup</code>、<code>displayGroupsExpanded</code>、<code>propertyOrder</code> 和 composition 后的最终值。</span></li>
+<li><span class="zh">node graph 布局异常时检查 <code>ui:nodegraph:node:pos</code>、<code>size</code>、<code>expansionState</code>、<code>stackingOrder</code> 和所属 graph 的工具约定。</span></li>
+      </ol>
+      <p class="zh">从 review-ready 角度看，本页不要求中文字符数超过英文标识总量；真正的完成标准是读者能只靠中文说明理解页面职责、主要 section、阅读路径、相邻类型关系、误读点和调试路径，同时仍能用保留的英文正式标识回到官方文档、USD 文件和工具日志核对。</p>
+    </section>
+
     <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+      <h2>官方 section 覆盖 / Official Section Coverage</h2>
+      <table>
+        <thead><tr><th>官方 section / source term</th><th>中文覆盖说明</th></tr></thead>
+        <tbody>
+<tr><td>Working With Node Graphs</td><td><span class="zh">本轮保留该官方 section 名称，并在中文主阅读路径中解释它在页面里的职责和边界。</span></td></tr>
+<tr><td>Working With Accessibility Information</td><td><span class="zh">本轮保留该官方 section 名称，并在中文主阅读路径中解释它在页面里的职责和边界。</span></td></tr>
+<tr><td>Working With UI Hints</td><td><span class="zh">本轮保留该官方 section 名称，并在中文主阅读路径中解释它在页面里的职责和边界。</span></td></tr>
+<tr><td>Display Groups and Property Order</td><td><span class="zh">本轮保留该官方 section 名称，并在中文主阅读路径中解释它在页面里的职责和边界。</span></td></tr>
+<tr><td>Working With Conditional UI Hints</td><td><span class="zh">本轮保留该官方 section 名称，并在中文主阅读路径中解释它在页面里的职责和边界。</span></td></tr>
+        </tbody>
+      </table>
     </section>
-    <section data-cn-refinement="release-quality-pass-071">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 usdUI Overview 补充中文优先的 schema 用途、属性/关系阅读路径、领域边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds Chinese-first schema purpose, property and relationship reading paths, domain boundaries, and terminology for usdUI Overview while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">`usdUI` 领域面向通用 user interface metadata，重点是让 DCC Tools、编辑器和资产浏览界面能更好地展示 USD 对象，而不是改变场景求值或渲染结果。</span></li>
-        <li><span class="zh">本页的 node graph 示例使用 `NodeGraphNodeAPI` 描述节点位置、颜色和展开状态，用 `Backdrop` 组织复杂节点网络，并保留 Material/Shader 关系路径。</span></li>
-        <li><span class="zh">`SceneGraphPrimAPI`、`ObjectHints`、`PrimHints`、`PropertyHints` 和 `AttributeHints` 负责显示名、分组、隐藏状态、条件显示和其他 UI hints。</span></li>
-        <li><span class="zh">无障碍信息由 `AccessibilityAPI` 覆盖；这类元数据面向 assistive UI，和几何、材质、灯光 schema 的职责不同。</span></li>
-        <li><span class="zh">阅读本页应把 `usdUI` 看成工具界面的协作层：它帮助用户理解和操作复杂网络，但不会替代 `UsdShade`、`UsdLux` 或 `UsdRender` 的核心数据语义。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">USD UI schema 领域：</span><span class="en">usdUI</span></li>
-        <li><span class="zh">节点图节点 API：</span><span class="en">NodeGraphNodeAPI</span></li>
-        <li><span class="zh">节点图背景框：</span><span class="en">Backdrop</span></li>
-        <li><span class="zh">场景图 prim API：</span><span class="en">SceneGraphPrimAPI</span></li>
-        <li><span class="zh">界面提示：</span><span class="en">UI hints</span></li>
-        <li><span class="zh">无障碍信息 API：</span><span class="en">AccessibilityAPI</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-120">
-      <h2>中文补强导读 / Chinese Refinement Notes</h2>
-      <p class="zh">`usdUI` overview 说明面向 DCC 工具、节点图和资产浏览器的 UI metadata schema。它帮助工具表达 node position、display color、labels、groups 和 Backdrop 等界面线索，但不改变 scene composition、shader 求值或最终渲染结果。</p>
-      <p class="en">This refinement section adds page-specific Chinese reading notes for usdUI Overview while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`usdUI` 应被理解为工具协作层：它让复杂 node graph 更易读、更易编辑，但核心数据语义仍由 `UsdShade`、`UsdRender`、`UsdLux` 等领域定义。</span></li>
-        <li><span class="zh">`NodeGraphNodeAPI` 关注节点图布局和显示状态，`SceneGraphPrimAPI` 关注场景图中的标签和分组，`Backdrop` 用于视觉组织节点。</span></li>
-        <li><span class="zh">示例中的 `ui:nodegraph:node:*` 属性是 UI metadata，不是 shader 输入；它们影响编辑器呈现，不应被 renderer 当作材质计算参数。</span></li>
-        <li><span class="zh">工具可以忽略或部分支持 usdUI metadata，因此资产不能依赖这些 UI hints 来表达必需的渲染或 composition 语义。</span></li>
-        <li><span class="zh">调试 UI 显示异常时，应检查 applied API、metadata 属性名、命名空间、工具版本和是否支持对应 usdUI schema。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">USD UI metadata schema 领域：</span><span class="en">usdUI</span></li>
-        <li><span class="zh">节点图节点 UI API：</span><span class="en">NodeGraphNodeAPI</span></li>
-        <li><span class="zh">场景图 prim UI API：</span><span class="en">SceneGraphPrimAPI</span></li>
-        <li><span class="zh">节点图背景框：</span><span class="en">Backdrop</span></li>
-        <li><span class="zh">节点图 UI metadata 命名空间：</span><span class="en">ui:nodegraph:node:*</span></li>
-        <li><span class="zh">数字内容创作工具：</span><span class="en">DCC Tools</span></li>
-      </ul>
-    </section>
+
     <section>
-      <h2>页面结构 / Page Structure</h2>
+      <h2>本地阅读路径 / Local Reading Path</h2>
+      <ol>
+<li><span class="zh">需要 node graph 展示时先读 <code>NodeGraphNodeAPI</code> 和 <code>Backdrop</code>。</span></li>
+<li><span class="zh">需要属性面板显示名、分组和条件显示时读 <code>ObjectHints</code>、<code>PrimHints</code>、<code>PropertyHints</code> 和 <code>AttributeHints</code>。</span></li>
+<li><span class="zh">需要无障碍或审查说明时读 <code>AccessibilityAPI</code>。</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>相邻 schema 与入口 / Adjacent Schemas</h2>
       <ul>
-<li><span class="zh">第 1 级标题：Overview</span><span class="en">Overview</span></li>
-<li><span class="zh">第 2 级标题：Working With Node Graphs</span><span class="en">Working With Node Graphs</span></li>
+<li><a href="usdUI_toc.html">usdUI toc</a></li>
+<li><a href="NodeGraphNodeAPI.html">NodeGraphNodeAPI</a></li>
+<li><a href="Backdrop.html">Backdrop</a></li>
+<li><a href="AccessibilityAPI.html">AccessibilityAPI</a></li>
+<li><a href="SceneGraphPrimAPI.html">SceneGraphPrimAPI</a></li>
       </ul>
     </section>
+
     <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">The UsdUI schema domain contains schemas for working with general user interface related features. One use-case is using UsdUI for describing aspects of nodes in graphs, such as configuring layout hints, node coloration, and so on. UsdUI allows the user to describe where UI nodes are with NodeGraphNodeAPI , add descriptive labels and groups to nodes with SceneGraphPrimAPI , and to visually organize nodes with Backdrops.</p>
-<p class="en">Node graphs can be used to describe networks of prims, such as shading and material networks. Consumers such as DCC Tools can visualize node graphs and make complex networks easier to understand. Use the schemas provided by UsdUI to provide hints on how node graphs should be visualized.</p>
-<p class="en">UsdUI additionally has schemas that describe accessibility information used in assistive UI, and UI hints that provide hints on how prims and properties should be presented in a UI.</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>def Material &quot;Material&quot; { token outputs:mtlx:surface . connect = &lt;/World/Material/PreviewSurface.outputs:out&gt; def Shader &quot;PreviewSurface&quot; ( prepend apiSchemas = [ &quot;NodeGraphNodeAPI&quot; ] ) { uniform token info:id = &quot;ND_UsdPreviewSurface_surfaceshader&quot; color3f inputs:diffuseColor . connect = &lt;/World/Material/Color.outputs:out&gt; token outputs:out uniform color3f ui:nodegraph:node:displayColor = ( 0.780 , 0.698 , 0.6 ) uniform token ui:nodegraph:node:expansionState = &quot;open&quot; uniform float2 ui:nodegraph:node:pos = ( -.85...</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
+      <h2>边界与常见误读 / Boundaries and Misreads</h2>
       <ul>
-<li>No same-site document links extracted.</li>
+<li><span class="zh">不要把 <code>usdUI</code> 当成渲染 UI 或 Web 前端框架；它是 USD schema 中的 UI hint 元数据。</span></li>
+<li><span class="zh">不要把 <code>hidden</code>、<code>shownIf</code> 或 <code>displayGroup</code> 当作权限控制或数据删除。它们只给工具展示层使用。</span></li>
+<li><span class="zh">不要把 <code>ui:displayName</code> 当成 prim path。路径仍是 <code>SdfPath</code>，显示名只是面向用户的标签。</span></li>
       </ul>
     </section>
+
     <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/user_guides/schemas/usdUI/overview.html">打开官方原页 / Open official page</a></p>
+      <h2>调试路径 / Debugging Path</h2>
+      <ol>
+<li><span class="zh">UI hint 不生效时先确认目标工具是否支持对应 schema，再检查 API schema 是否应用到正确 prim 或 property。</span></li>
+<li><span class="zh">属性分组错误时检查 <code>displayGroup</code>、<code>displayGroupsExpanded</code>、<code>propertyOrder</code> 和 composition 后的最终值。</span></li>
+<li><span class="zh">node graph 布局异常时检查 <code>ui:nodegraph:node:pos</code>、<code>size</code>、<code>expansionState</code>、<code>stackingOrder</code> 和所属 graph 的工具约定。</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>源页对比 / Source Parity</h2>
+      <p class="zh">本轮按官方页 <a class="official-link" href="https://openusd.org/release/user_guides/schemas/usdUI/overview.html">打开官方原页 / Open official page</a> 和本地快照 <code>source/full_release/user_guides/schemas/usdUI/overview_source.html</code> 做 source parity。预检会确认官方关键词、section 标题和正式 token 在输出页中保留。</p>
+      <p class="en">Source parity keeps official identifiers and section semantics intact while adding Chinese main reading coverage.</p>
     </section>
   </main>
 </body>

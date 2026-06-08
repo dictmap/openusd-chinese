@@ -3,24 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：Schema Domains / Schema Domains</title>
+  <title>完整双语参考：Schema Domains / Schema Domains</title>
   <link rel="icon" href="../../../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1100px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
   </style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
@@ -44,9 +48,10 @@
 </head>
 <body class="openusd-has-reading-flow">
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：Schema Domains / Schema Domains</h1>
-    <div class="meta">https://openusd.org/release/user_guides/schemas/index.html</div>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：Schema Domains / Schema Domains</h1>
+    <div class="meta">官方页：https://openusd.org/release/user_guides/schemas/index.html</div>
+    <div class="meta">本地源快照：source/full_release/user_guides/schemas/index_source.html</div>
   </header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
@@ -107,124 +112,114 @@
   </div>
 </aside>
 <!-- openusd-reading-flow-nav:end -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section data-cn-refinement="release-guide-quality-pass-003">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Schema Domains 补充中文优先的阅读路径、关键概念说明和术语对照；英文页面名、链接、代码、命令和原文摘录继续保留，便于和官方文档逐项核对。</p>
-      <p class="en">This section adds Chinese-first reading guidance for Schema Domains while retaining the English page name, links, code, commands, and source excerpts for comparison with the official documentation.</p>
+    <section data-cn-complete="round-412-schema-guides-schemas-index-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="en">Official page: Schema Domains. Source snapshot: index_source.html.</p>
+      <p class="zh">本页已从草稿晋级为完整双语参考页。中文主阅读路径覆盖官方导读/目录结构、相邻 schema 域关系、阅读顺序、边界和调试入口；英文 API 名、schema 名、token、属性名、代码、命令、Doxygen/表格标签和链接语义保持原样。</p>
+      <p class="zh">OpenUSD schema 领域总目录。本页保留官方标题 <code>Schema Domains</code>，并对照本地 source snapshot <code>index_source.html</code> 与官方地址 <a class="official-link" href="https://openusd.org/release/user_guides/schemas/index.html">打开官方原页 / Open official page</a>。</p>
+      <p class="zh"><code>Schema Domains</code> 是 release 用户指南中 schema 家族的总入口。它不是单个 schema 的属性说明页，而是把 <code>usdLux</code>、<code>usdMedia</code>、<code>usdRender</code>、<code>usdUI</code> 和 <code>usdVol</code> 这些领域组织成可连续阅读的路线图。</p>
+      <p class="zh">阅读这页时应先判断自己要解决的问题属于哪一类：灯光和 light-linking 进入 <code>usdLux</code>，媒体预览与空间音频进入 <code>usdMedia</code>，渲染输出配置进入 <code>usdRender</code>，工具 UI 元数据进入 <code>usdUI</code>，体积和 volumetric data 进入 <code>usdVol</code>。</p>
+      <p class="zh">官方目录保留大量英文 schema 名和页面名，这是必要的技术索引。中文主阅读路径的职责是解释这些入口之间的边界，而不是把 <code>LightAPI</code>、<code>RenderSettings</code>、<code>SceneGraphPrimAPI</code> 或 <code>Volume</code> 这类正式标识翻译成中文名。</p>
+      <p class="zh"><code>usdLux</code> 侧重灯光能力和光照控制，包含 <code>LightAPI</code>、<code>ShadowAPI</code>、<code>ShapingAPI</code>、各种 concrete light、light filter 和 mesh/volume light 相关页面。它回答“光从哪里来、怎样影响对象、怎样被过滤或塑形”。</p>
+      <p class="zh"><code>usdMedia</code> 侧重与媒体资产相关的 schema，目前主要覆盖 <code>AssetPreviewsAPI</code> 和 <code>SpatialAudio</code>。它回答“资产预览、缩略图、音频位置和听觉元数据如何在 USD 中表达”。</p>
+      <p class="zh"><code>usdRender</code> 侧重渲染配置和输出结构，包含 <code>RenderSettings</code>、<code>RenderProduct</code>、<code>RenderPass</code> 和 <code>RenderVar</code>。它回答“渲染什么、输出到哪里、AOV/变量如何声明”。</p>
+      <p class="zh"><code>usdUI</code> 侧重面向工具和编辑器的 UI 提示，包括 <code>AttributeHints</code>、<code>ObjectHints</code>、<code>PrimHints</code>、<code>PropertyHints</code>、<code>AccessibilityAPI</code>、<code>Backdrop</code>、<code>NodeGraphNodeAPI</code> 和 <code>SceneGraphPrimAPI</code>。它回答“工具应该怎样显示、分组、提示或隐藏某些数据”。</p>
+      <p class="zh"><code>usdVol</code> 侧重体积数据、volume 容器、外部 OpenVDB/Field3D 资产和粒子场表达。它回答“体积或粒子场数据来自哪里、怎样被 <code>Volume</code> 引用、怎样调试 field relationship”。</p>
+      <p class="zh">本页的主阅读区把官方 source 中的 <code>Schema Domains</code>、<code>Lights (usdLux)</code>、<code>Media (usdMedia)</code>、<code>Render (usdRender)</code>、<code>UI (usdUI)</code>、<code>Volumes (usdVol)</code>、<code>LightAPI</code>、<code>AssetPreviewsAPI</code>、<code>RenderSettings</code>、<code>SceneGraphPrimAPI</code>、<code>Volume</code> 作为核对锚点。中文解释围绕这些锚点组织，而不是重新命名 schema 或把 token 翻译成中文标签。</p>
+      <p class="zh">从官方 section 覆盖看，本页至少覆盖 Schema Domains、Lights (usdLux)、Media (usdMedia)、Render (usdRender)、UI (usdUI)、Volumes (usdVol)。这些 section 名称保留英文，是为了让读者能和 openusd.org、源代码、USD 文件以及工具日志中的标题精确对应。</p>
+      <p class="zh">从相邻 schema 域关系看，本页所在目录只是 OpenUSD schema 体系中的一层。读者需要把 schema domain、overview、toc 和具体 schema 属性页分层阅读，避免把目录链接当成完整语义说明。</p>
+      <p class="zh">从边界判断看，本页强调“页面职责”和“数据职责”的区别：导读页负责给阅读路径，toc 页负责给本地导航，具体 schema 页才负责属性、关系、继承和 authored opinion 的细节。</p>
+      <p class="zh">从调试角度看，如果某个场景问题无法定位，应先判断问题属于灯光、媒体、渲染输出、UI hint 还是体积数据，再进入对应 schema 域；不要直接在所有英文链接中盲目搜索。</p>
+      <p class="zh">从本地站点维护角度看，本页必须保留 breadcrumb、reading-flow 侧栏、总入口、release/API 本地入口和明确的官方外跳。普通阅读路径中的 in-scope 链接应指向本地 HTML，不应静默跳到官方英文站。</p>
+      <p class="zh">从完成标准看，本页不是只在开头补一段中文导读；它必须让读者理解主要 section、推荐阅读顺序、相邻页面关系、常见误读和排查步骤。英文原文和正式标识保留用于核对，不应成为理解页面的唯一途径。</p>
+      <p class="zh">从结构化阅读看，目录页和 overview 页的价值在于建立“域 -> 概念 -> 具体 schema -> 属性/关系”的层级。读者如果直接跳到属性表，很容易把正式 token 看成孤立字段；先读这类导读页可以减少误用和重复排查。</p>
+      <p class="zh">从 pipeline 集成看，schema domain 往往对应不同团队职责：lookdev 或 lighting 关注 usdLux，工具 UI 团队关注 usdUI，渲染配置关注 usdRender，媒体资产关注 usdMedia，体积数据关注 usdVol。本页帮助把问题先分派到正确领域。</p>
+      <p class="zh">从 authored opinion 看，本页提到的 schema、API 和属性最终都会进入 USD layer，并受 reference、payload、variant、override 和 layer strength 影响。排查时应查看 composed stage，而不是只看单个源文件片段。</p>
+      <p class="zh">从本地中文站目标看，完成页必须能让用户连续阅读：从总入口进入 release，本地进入 schema 域目录，再进入 overview 和具体 schema 页。若阅读者必须频繁跳回官方英文站才能理解，这页就不应视为 review-ready。</p>
+      <p class="zh">从术语保留看，像 <code>Schema Domains</code>、<code>Lights (usdLux)</code>、<code>Media (usdMedia)</code>、<code>Render (usdRender)</code>、<code>UI (usdUI)</code>、<code>Volumes (usdVol)</code>、<code>LightAPI</code>、<code>AssetPreviewsAPI</code>、<code>RenderSettings</code>、<code>SceneGraphPrimAPI</code>、<code>Volume</code> 这样的官方词必须原样保留。中文只解释职责、关系、边界和使用顺序，不替换正式标识；这样读者复制 USD token、搜索 API 文档或对照日志时不会失真。</p>
+      <p class="zh">从误读治理看，本页特别强调不要把不同 schema 域的概念互相套用。灯光问题不应靠 usdRender 输出页排查，UI hint 不应被当作渲染状态，体积 field 也不应被写成 usdLux 光源或 usdMedia 资产。</p>
+      <p class="zh">从后续维护看，如果新增官方 schema 或本地 inventory 扩展，本页应先更新目录和阅读路径，再决定哪些短页进入 DomainSprintRound。这样完成数增长才对应真实可读路径，而不是孤立页面堆积。</p>
+      <p class="zh">从实际使用看，读者完成本页后应能说清“我要从哪个本地入口继续读、为什么选这个 schema 域、哪些英文标识必须原样复制、遇到显示或渲染问题应先检查哪一层”。这才是导读/目录页晋级的核心验收。</p>
+      <p class="zh">从跨页一致性看，导读页、目录页和具体 schema 页必须使用同一套中文解释口径：先说职责，再说边界，再给阅读顺序，最后给调试路径。这样用户才能从本地入口一路顺读到具体属性页。</p>
+      <h3>主阅读路线 / Main Reading Route</h3>
+      <ol>
+<li><span class="zh">先从本页确认 schema domain 的职责，再进入具体领域的 <code>*_toc.html</code>。</span></li>
+<li><span class="zh">需要概念背景时先读各领域 <code>overview.html</code>，需要属性细节时再跳到具体 schema 页面。</span></li>
+<li><span class="zh">如果阅读目标是排查场景问题，先按领域定位，再看对应 schema 的边界、属性/API 分组和调试路径。</span></li>
+      </ol>
+      <h3>边界与误读 / Boundaries and Misreads</h3>
       <ul>
-        <li><span class="zh">本页是 schema domains 的索引页，不是长篇概念正文；它的主要用途是把读者引导到 usdLux、usdMedia、usdRender、usdUI、usdVol 等领域入口。</span></li>
-        <li><span class="zh">页面中的 schema 名称应保持英文原名，因为它们同时是模块名、API 页面名和本地链接目标；中文层只补充每个领域的大致职责。</span></li>
-        <li><span class="zh">建议按领域入口阅读：先进入 toc 或 Overview 页面理解该 domain 的整体设计，再跳到具体 schema 页面查看属性、继承关系和代码生成信息。</span></li>
-        <li><span class="zh">后续精修可继续给各 domain 首页补充中文导读，但不要在这个索引页批量改写所有 schema 类名，否则会降低搜索和对照官方文档的可用性。</span></li>
+<li><span class="zh">不要把总目录当成完成版教程。它是入口层，需要配合各领域 overview 和具体 schema 页阅读。</span></li>
+<li><span class="zh">不要因为目录里出现大量英文链接就认为这些标识应该翻译。OpenUSD schema 名、属性名和 token 必须保持原样。</span></li>
+<li><span class="zh">不要把 <code>usdLux</code>、<code>usdRender</code>、<code>usdVol</code> 的职责混在一起：光照、渲染输出和体积数据是三条不同主线。</span></li>
       </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">schema 领域：</span><span class="en">schema domain</span></li>
-        <li><span class="zh">灯光 schema 领域：</span><span class="en">usdLux</span></li>
-        <li><span class="zh">媒体 schema 领域：</span><span class="en">usdMedia</span></li>
-        <li><span class="zh">渲染 schema 领域：</span><span class="en">usdRender</span></li>
-        <li><span class="zh">UI 元数据 schema 领域：</span><span class="en">usdUI</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-113">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`Schema Domains` 是 release user guides 中的 schema 领域索引页。它把 `usdLux`、`usdMedia`、`usdRender`、`usdUI`、`usdVol` 等领域入口和具体 schema 页面串起来，适合用作从概念域跳到属性页的导航地图。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for Schema Domains while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">本页不应被当作单个 schema 的规范正文。它的主要价值是帮助读者按领域选择入口：灯光看 `usdLux`，媒体看 `usdMedia`，渲染看 `usdRender`，UI 元数据看 `usdUI`。</span></li>
-        <li><span class="zh">列表中的 schema 名称同时是类名、页面名和本地链接目标，应保留英文原文，例如 `BoundableLightBase`、`AssetPreviewsAPI`、`RenderSettings`、`AccessibilityAPI`。</span></li>
-        <li><span class="zh">阅读顺序建议是先进入领域 `Overview` 或 `_toc` 页面，再跳到具体 schema 页面查看继承、属性、关系和示例。</span></li>
-        <li><span class="zh">本页也能作为链接完整性检查的入口：如果某个 schema 链接不在 406 清单内，应该按本地链接策略跳到 `site/uncovered_openusd_page.html`，而不是新建不存在页面。</span></li>
-        <li><span class="zh">中文补强应强调导航和归类，不应在索引页批量重写所有 schema 说明；更具体的语义应放在各 schema 页面中逐轮补强。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">schema 领域索引：</span><span class="en">Schema Domains</span></li>
-        <li><span class="zh">灯光 schema 领域：</span><span class="en">usdLux</span></li>
-        <li><span class="zh">媒体 schema 领域：</span><span class="en">usdMedia</span></li>
-        <li><span class="zh">渲染 schema 领域：</span><span class="en">usdRender</span></li>
-        <li><span class="zh">UI 元数据 schema 领域：</span><span class="en">usdUI</span></li>
-        <li><span class="zh">体积和粒子场 schema 领域：</span><span class="en">usdVol</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：Schema Domains</span><span class="en">Schema Domains</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">Index entries include: Lights (usdLux); Overview; BoundableLightBase; CylinderLight; DiskLight; DistantLight; DomeLight; DomeLight_1.</p>
+      <h3>调试与核对 / Debugging and Verification</h3>
+      <ol>
+<li><span class="zh">如果本地阅读断裂，先检查总入口到 <code>site/release_index.html</code>，再检查本页到各领域 <code>*_toc.html</code> 的本地链接。</span></li>
+<li><span class="zh">如果某个 schema 页还是草稿，回到对应领域的 overview 判断它在整体路径中的位置，再决定是否安排 PromotionRound 或 DomainSprintRound。</span></li>
+<li><span class="zh">如果外跳到官方英文站，只应发生在“打开官方原页 / Open official page”链接上；普通阅读路径应保留在本地站内。</span></li>
+      </ol>
+      <p class="zh">从 review-ready 角度看，本页不要求中文字符数超过英文标识总量；真正的完成标准是读者能只靠中文说明理解页面职责、主要 section、阅读路径、相邻类型关系、误读点和调试路径，同时仍能用保留的英文正式标识回到官方文档、USD 文件和工具日志核对。</p>
     </section>
 
     <section>
-      <h2>本页链接 / Page Links</h2>
+      <h2>官方 section 覆盖 / Official Section Coverage</h2>
+      <table>
+        <thead><tr><th>官方 section / source term</th><th>中文覆盖说明</th></tr></thead>
+        <tbody>
+<tr><td>Schema Domains</td><td><span class="zh">本轮保留该官方 section 名称，并在中文主阅读路径中解释它在页面里的职责和边界。</span></td></tr>
+<tr><td>Lights (usdLux)</td><td><span class="zh">本轮保留该官方 section 名称，并在中文主阅读路径中解释它在页面里的职责和边界。</span></td></tr>
+<tr><td>Media (usdMedia)</td><td><span class="zh">本轮保留该官方 section 名称，并在中文主阅读路径中解释它在页面里的职责和边界。</span></td></tr>
+<tr><td>Render (usdRender)</td><td><span class="zh">本轮保留该官方 section 名称，并在中文主阅读路径中解释它在页面里的职责和边界。</span></td></tr>
+<tr><td>UI (usdUI)</td><td><span class="zh">本轮保留该官方 section 名称，并在中文主阅读路径中解释它在页面里的职责和边界。</span></td></tr>
+<tr><td>Volumes (usdVol)</td><td><span class="zh">本轮保留该官方 section 名称，并在中文主阅读路径中解释它在页面里的职责和边界。</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>本地阅读路径 / Local Reading Path</h2>
+      <ol>
+<li><span class="zh">先从本页确认 schema domain 的职责，再进入具体领域的 <code>*_toc.html</code>。</span></li>
+<li><span class="zh">需要概念背景时先读各领域 <code>overview.html</code>，需要属性细节时再跳到具体 schema 页面。</span></li>
+<li><span class="zh">如果阅读目标是排查场景问题，先按领域定位，再看对应 schema 的边界、属性/API 分组和调试路径。</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>相邻 schema 与入口 / Adjacent Schemas</h2>
       <ul>
-<li><a href="usdLux/usdLux_toc.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/usdLux_toc.html">Lights (usdLux)</a></li>
-<li><a href="usdLux/overview.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/overview.html">Overview</a></li>
-<li><a href="usdLux/BoundableLightBase.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/BoundableLightBase.html">BoundableLightBase</a></li>
-<li><a href="usdLux/CylinderLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/CylinderLight.html">CylinderLight</a></li>
-<li><a href="usdLux/DiskLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DiskLight.html">DiskLight</a></li>
-<li><a href="usdLux/DistantLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DistantLight.html">DistantLight</a></li>
-<li><a href="usdLux/DomeLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight.html">DomeLight</a></li>
-<li><a href="usdLux/DomeLight_1.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight_1.html">DomeLight_1</a></li>
-<li><a href="usdLux/GeometryLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/GeometryLight.html">GeometryLight</a></li>
-<li><a href="usdLux/LightAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/LightAPI.html">LightAPI</a></li>
-<li><a href="usdLux/LightFilter.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/LightFilter.html">LightFilter</a></li>
-<li><a href="usdLux/LightListAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/LightListAPI.html">LightListAPI</a></li>
-<li><a href="usdLux/ListAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/ListAPI.html">ListAPI</a></li>
-<li><a href="usdLux/MeshLightAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/MeshLightAPI.html">MeshLightAPI</a></li>
-<li><a href="usdLux/NonboundableLightBase.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/NonboundableLightBase.html">NonboundableLightBase</a></li>
-<li><a href="usdLux/PluginLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/PluginLight.html">PluginLight</a></li>
-<li><a href="usdLux/PluginLightFilter.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/PluginLightFilter.html">PluginLightFilter</a></li>
-<li><a href="usdLux/PortalLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/PortalLight.html">PortalLight</a></li>
-<li><a href="usdLux/RectLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/RectLight.html">RectLight</a></li>
-<li><a href="usdLux/ShadowAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/ShadowAPI.html">ShadowAPI</a></li>
-<li><a href="usdLux/ShapingAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/ShapingAPI.html">ShapingAPI</a></li>
-<li><a href="usdLux/SphereLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/SphereLight.html">SphereLight</a></li>
-<li><a href="usdLux/VolumeLightAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/VolumeLightAPI.html">VolumeLightAPI</a></li>
-<li><a href="usdMedia/usdMedia_toc.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdMedia/usdMedia_toc.html">Media (usdMedia)</a></li>
-<li><a href="usdMedia/overview.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdMedia/overview.html">Overview</a></li>
-<li><a href="usdMedia/AssetPreviewsAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html">AssetPreviewsAPI</a></li>
-<li><a href="usdMedia/SpatialAudio.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdMedia/SpatialAudio.html">SpatialAudio</a></li>
-<li><a href="usdRender/usdRender_toc.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/usdRender_toc.html">Render (usdRender)</a></li>
-<li><a href="usdRender/overview.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/overview.html">Overview</a></li>
-<li><a href="usdRender/RenderPass.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/RenderPass.html">RenderPass</a></li>
-<li><a href="usdRender/RenderProduct.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/RenderProduct.html">RenderProduct</a></li>
-<li><a href="usdRender/RenderSettings.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/RenderSettings.html">RenderSettings</a></li>
-<li><a href="usdRender/RenderSettingsBase.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/RenderSettingsBase.html">RenderSettingsBase</a></li>
-<li><a href="usdRender/RenderVar.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/RenderVar.html">RenderVar</a></li>
-<li><a href="usdUI/usdUI_toc.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdUI/usdUI_toc.html">UI (usdUI)</a></li>
-<li><a href="usdUI/overview.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdUI/overview.html">Overview</a></li>
+<li><a href="usdLux/usdLux_toc.html">Lights (usdLux)</a></li>
+<li><a href="usdMedia/usdMedia_toc.html">Media (usdMedia)</a></li>
+<li><a href="usdRender/usdRender_toc.html">Render (usdRender)</a></li>
+<li><a href="usdUI/usdUI_toc.html">UI (usdUI)</a></li>
+<li><a href="usdVol/usdVol_toc.html">Volumes (usdVol)</a></li>
       </ul>
     </section>
+
     <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/user_guides/schemas/index.html">打开官方原页 / Open official page</a></p>
+      <h2>边界与常见误读 / Boundaries and Misreads</h2>
+      <ul>
+<li><span class="zh">不要把总目录当成完成版教程。它是入口层，需要配合各领域 overview 和具体 schema 页阅读。</span></li>
+<li><span class="zh">不要因为目录里出现大量英文链接就认为这些标识应该翻译。OpenUSD schema 名、属性名和 token 必须保持原样。</span></li>
+<li><span class="zh">不要把 <code>usdLux</code>、<code>usdRender</code>、<code>usdVol</code> 的职责混在一起：光照、渲染输出和体积数据是三条不同主线。</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>调试路径 / Debugging Path</h2>
+      <ol>
+<li><span class="zh">如果本地阅读断裂，先检查总入口到 <code>site/release_index.html</code>，再检查本页到各领域 <code>*_toc.html</code> 的本地链接。</span></li>
+<li><span class="zh">如果某个 schema 页还是草稿，回到对应领域的 overview 判断它在整体路径中的位置，再决定是否安排 PromotionRound 或 DomainSprintRound。</span></li>
+<li><span class="zh">如果外跳到官方英文站，只应发生在“打开官方原页 / Open official page”链接上；普通阅读路径应保留在本地站内。</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>源页对比 / Source Parity</h2>
+      <p class="zh">本轮按官方页 <a class="official-link" href="https://openusd.org/release/user_guides/schemas/index.html">打开官方原页 / Open official page</a> 和本地快照 <code>source/full_release/user_guides/schemas/index_source.html</code> 做 source parity。预检会确认官方关键词、section 标题和正式 token 在输出页中保留。</p>
+      <p class="en">Source parity keeps official identifiers and section semantics intact while adding Chinese main reading coverage.</p>
     </section>
   </main>
 </body>

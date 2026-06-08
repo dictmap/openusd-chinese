@@ -1,6 +1,6 @@
 # OpenUSD English Debt Audit
 
-Generated: 2026-06-08T03:28:59.401Z
+Generated: 2026-06-08T03:58:18.707Z
 
 Purpose:
 
@@ -12,16 +12,16 @@ Purpose:
 ## Counts
 
 - Total pages: 406
-- good_bilingual: 154
-- review_ready_zh: 91
+- good_bilingual: 159
+- review_ready_zh: 96
 - review_needs_zh_debt: 63
 - API complete: 72
 - API review_ready_zh: 12
-- Release complete: 82
-- Release review_ready_zh: 79
+- Release complete: 87
+- Release review_ready_zh: 84
 - Complete pages with high/very high ratio diagnostic: 10
-- bilingual_draft: 252
-- draft_needs_translation: 241
+- bilingual_draft: 247
+- draft_needs_translation: 236
 - draft_template_only: 11
 
 ## Complete Pages Still Carrying English Debt
@@ -86,7 +86,6 @@ Purpose:
 | 295 | `full_site/release/press_opensource_release.html` | release | release_or_tutorial | 625 | 7/4 | 3.07 | medium | draft |
 | 399 | `full_site/release/wp_rigid_body_physics.html` | release | release_or_tutorial | 783 | 7/4 | 3.06 | medium | draft |
 | 402 | `full_site/release/wp_usdaudio.html` | release | release_or_tutorial | 722 | 7/4 | 2.95 | medium | draft |
-| 365 | `full_site/release/user_guides/schemas/usdUI/overview.html` | release | release_or_tutorial | 591 | 7/4 | 2.83 | medium | draft |
 | 283 | `full_site/release/contributors.html` | release | release_or_tutorial | 678 | 6/4 | 2.69 | medium | draft |
 | 323 | `full_site/release/user_guides/primvars.html` | release | release_or_tutorial | 580 | 7/4 | 2.59 | medium | draft |
 | 314 | `full_site/release/tut_usd_tutorials.html` | release | release_or_tutorial | 623 | 6/4 | 2.57 | medium | draft |
@@ -98,6 +97,7 @@ Purpose:
 | 297 | `full_site/release/release_schedule.html` | release | release_or_tutorial | 632 | 6/4 | 2.35 | medium | draft |
 | 293 | `full_site/release/plugins.html` | release | release_or_tutorial | 622 | 7/4 | 2.34 | medium | draft |
 | 324 | `full_site/release/user_guides/render_user_guide.html` | release | release_or_tutorial | 625 | 7/4 | 2.34 | medium | draft |
+| 395 | `full_site/release/wp_asset_previews.html` | release | release_or_tutorial | 707 | 7/4 | 2.33 | medium | draft |
 
 Policy:
 
