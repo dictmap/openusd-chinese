@@ -1,6 +1,6 @@
 # OpenUSD 完整双语晋级清单
 
-Generated: 2026-06-07T23:59:35.917Z
+Generated: 2026-06-08T00:21:26.957Z
 
 这份清单只记录已经从 `bilingual_draft` 晋级为 `bilingual_complete` 的页面。它是 `scripts/discover_openusd_all_pages.mjs` 识别 promoted complete 页面的审计来源，不等同于把草稿页改一个状态。
 
@@ -16,6 +16,7 @@ Generated: 2026-06-07T23:59:35.917Z
 
 | ID | 本地输出 | 官方页面 | 状态 |
 | --- | --- | --- | --- |
+| `round-403-release-usdLux-DomeLight` | `full_site/release/user_guides/schemas/usdLux/DomeLight.html` | `https://openusd.org/release/user_guides/schemas/usdLux/DomeLight.html` | bilingual_complete |
 | `round-402-release-usdLux-DistantLight` | `full_site/release/user_guides/schemas/usdLux/DistantLight.html` | `https://openusd.org/release/user_guides/schemas/usdLux/DistantLight.html` | bilingual_complete |
 | `round-401-release-usdLux-DiskLight` | `full_site/release/user_guides/schemas/usdLux/DiskLight.html` | `https://openusd.org/release/user_guides/schemas/usdLux/DiskLight.html` | bilingual_complete |
 | `round-400-release-usdLux-CylinderLight` | `full_site/release/user_guides/schemas/usdLux/CylinderLight.html` | `https://openusd.org/release/user_guides/schemas/usdLux/CylinderLight.html` | bilingual_complete |

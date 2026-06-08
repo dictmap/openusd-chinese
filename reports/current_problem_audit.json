@@ -1,46 +1,46 @@
 {
-  "generated_at": "2026-06-07T23:48:47.623Z",
-  "purpose": "Round 402 PromotionRound：只晋级一个 release user guide 页面 full_site/release/user_guides/schemas/usdLux/DistantLight.html。已对比官方页 https://openusd.org/release/user_guides/schemas/usdLux/DistantLight.html 与本地 source snapshot source/full_release/user_guides/schemas/usdLux/DistantLight_source.html，将该页从 bilingual_draft 升级为 bilingual_complete；中文主阅读路径覆盖远处方向光、local -Z axis、sunlight/broad source 用途、近似平行光线、官方 USDA 示例、inputs:angle、inputs:intensity、light:shaderId、inputs:angle 的太阳角直径 fallback、角度裁剪和 DomeLight 性能边界、intensity 的 nits/luminance 规范、继承 Xformable/Imageable 属性、transform/composition/visibility/renderer support 调试顺序和相邻 usdLux schema 边界。本轮让 good_bilingual 从 102 增至 103，并让 review_ready_zh 从 39 增至 40。",
+  "generated_at": "2026-06-08T00:08:03.881Z",
+  "purpose": "Round 403 PromotionRound：只晋级一个 release user guide 页面 full_site/release/user_guides/schemas/usdLux/DomeLight.html。已对比官方页 https://openusd.org/release/user_guides/schemas/usdLux/DomeLight.html 与本地 source snapshot source/full_release/user_guides/schemas/usdLux/DomeLight_source.html，将该页从 bilingual_draft 升级为 bilingual_complete；中文主阅读路径覆盖环境照明语义、HDR 与 Image Based Lighting、OpenEXR latitude-longitude map、world +Y pole 默认朝向、DomeLight_1 与 poleAxis 的相邻关系、官方 USDA 示例、guideRadius、inputs:texture:file、inputs:texture:format、light:shaderId、portals、继承 Xformable/Imageable 属性、texture/orientation/composition/renderer 调试路径和相邻 usdLux schema 边界。本轮让 good_bilingual 从 103 增至 104，并让 review_ready_zh 从 40 增至 41。",
   "current_counts": {
     "total_pages": 406,
-    "bilingual_complete": 103,
-    "bilingual_draft": 303,
-    "good_bilingual": 103,
-    "draft_needs_translation": 292,
+    "bilingual_complete": 104,
+    "bilingual_draft": 302,
+    "good_bilingual": 104,
+    "draft_needs_translation": 291,
     "draft_template_only": 11,
-    "review_ready_zh": 40,
+    "review_ready_zh": 41,
     "api_complete": 72,
-    "release_complete": 31,
-    "release_review_ready_zh": 28,
+    "release_complete": 32,
+    "release_review_ready_zh": 29,
     "pending_full_scope": 0
   },
   "problems": [
     {
       "id": "P0-completion-stalled",
       "severity": "P0",
-      "summary": "完成度已推进到 103/406，但仍有 303 个可检查草稿不是完整翻译。",
-      "evidence": "reports/bilingual_completion_promotions.json 记录 95 个 promoted 页面；discover_openusd_all_pages.mjs 报告 bilingual_complete=103；audit_openusd_translation_quality.mjs 报告 good_bilingual=103。",
+      "summary": "完成度已推进到 104/406，但仍有 302 个可检查草稿不是完整翻译。",
+      "evidence": "reports/bilingual_completion_promotions.json 记录 96 个 promoted 页面；all_pages_inventory 报告 bilingual_complete=104；translation_quality_review 报告 good_bilingual=104。",
       "required_action": "继续只把具备中文主阅读路径、段落级结构和无草稿标记的页面写入 promotion manifest；不得把导读型草稿描述为完整翻译。"
     },
     {
       "id": "P0-final-entry-misleading",
       "severity": "P0",
       "summary": "总入口必须与 inventory、quality、English debt 和 problem audit 的完成数保持一致。",
-      "evidence": "openusd_bilingual_final.html 已重建，显示 103 个 complete 页面和 303 个 incomplete drafts；validation_report 必须在 push 前保持 passed。",
+      "evidence": "openusd_bilingual_final.html 已重建，显示 104 个 complete 页面和 302 个 incomplete drafts；validation_report 必须在 push 前保持 passed。",
       "required_action": "保持总入口完成数和 completed-page 表格由真实报告生成；继续明确 bilingual_draft 是可检查草稿，不是完整翻译。"
     },
     {
       "id": "P0-automation-wrong-objective",
       "severity": "P0",
       "summary": "自动化不得退回计数不变的 refinement 轮次。",
-      "evidence": "本轮为 PromotionRound，目标页 exactly 1 个，good_bilingual 实际从 102 增至 103。",
+      "evidence": "本轮为 PromotionRound，目标页 exactly 1 个，good_bilingual 实际从 103 增至 104。",
       "required_action": "下一轮继续要求 good_bilingual 增长、EnglishDebtRound 的 review_ready_zh 改善，或命名 P0/P1 缺陷修复；否则停止。"
     },
     {
       "id": "P1-left-navigation-reading-flow",
       "severity": "P1",
-      "summary": "第 396 轮修复的本地连续阅读路径在本轮继续保留，并覆盖新晋级的 DistantLight 页面。",
-      "evidence": "reports/reading_flow_navigation_audit.json 报告 completed_full_site_pages=95、pages_with_side_nav=95、pages_with_breadcrumb=95、release_pages_with_release_entry=26/26、api_pages_with_api_entry=69/69、sample_paths_passed=8/8、official_leak_count=0。",
+      "summary": "第 396 轮修复的本地连续阅读路径在本轮继续保留，并覆盖新晋级的 DomeLight 页面。",
+      "evidence": "reports/reading_flow_navigation_audit.json 报告 completed_full_site_pages=96、pages_with_side_nav=96、pages_with_breadcrumb=96、release_pages_with_release_entry=27/27、api_pages_with_api_entry=69/69、sample_paths_passed=8/8、official_leak_count=0。",
       "required_action": "凡是晋级页面或导航状态变化，继续运行 inject_openusd_reading_flow_navigation.mjs 和 audit_openusd_reading_flow_navigation.mjs。"
     },
     {
@@ -48,7 +48,7 @@
       "severity": "P1",
       "summary": "Markdown 编码守卫仍是硬门槛，避免中文进度记录再次退化成问号或乱码。",
       "evidence": "reports/markdown_encoding_audit.json 必须无 repeated question-mark damage、replacement characters、mojibake markers 和 UTF-8 BOM。",
-      "required_action": "如果 audit_openusd_markdown_encoding.mjs 失败，立即停止晋级并从 JSON 真实源重建 Markdown。"
+      "required_action": "如果 audit_openusd_markdown_encoding.mjs 失败，立即停止晋级并用 JSON 真实源重建 Markdown。"
     },
     {
       "id": "P1-link-placeholders",
@@ -61,29 +61,29 @@
       "id": "P1-draft-content-thin",
       "severity": "P1",
       "summary": "剩余多数 draft 仍只是可检查草稿，不具备段落级中文主阅读路径。",
-      "evidence": "translation_quality_review.json 报告 bilingual_draft=303、draft_needs_translation=292、draft_template_only=11。",
+      "evidence": "translation_quality_review.json 报告 bilingual_draft=302、draft_needs_translation=291、draft_template_only=11。",
       "required_action": "继续选择高价值 release/user guide/API 页面，将导读型草稿重写为中文主阅读路径；只有质量和 English debt 审计通过后才晋级。"
     },
     {
       "id": "P1-english-residual-debt",
       "severity": "P1",
       "summary": "good_bilingual 只能证明自动化门槛通过，review_ready_zh 仍需同步报告以避免英文主导阅读路径。",
-      "evidence": "reports/english_debt_audit.json 报告 review_ready_zh=40、review_needs_zh_debt=63、release_review_ready_zh=28；DistantLight 在本轮达到 review_ready_zh=true。",
+      "evidence": "reports/english_debt_audit.json 报告 review_ready_zh=41、review_needs_zh_debt=63、release_review_ready_zh=29；DomeLight 在本轮达到 review_ready_zh=true。",
       "required_action": "继续把英文/中文比例作为诊断项而非硬失败；对缺少 section coverage 或中文主阅读路径的完成页安排 EnglishDebtRound。"
     },
     {
       "id": "P1-release-coverage-lag",
       "severity": "P1",
       "summary": "release/tutorial/user-guide 覆盖仍落后于 API，但 usdLux S2 页面正在持续补齐。",
-      "evidence": "reports/english_debt_audit.json 报告 api_complete=72、release_complete=31、release_review_ready_zh=28。",
-      "required_action": "除非出现命名 P0/P1 缺陷，下一轮继续优先 release/user-guide 页面，建议目标 full_site/release/user_guides/schemas/usdLux/DomeLight.html。"
+      "evidence": "reports/english_debt_audit.json 报告 api_complete=72、release_complete=32、release_review_ready_zh=29。",
+      "required_action": "除非出现命名 P0/P1 缺陷，下一轮继续优先 release/user-guide 页面，建议目标 full_site/release/user_guides/schemas/usdLux/DomeLight_1.html。"
     }
   ],
   "next_actions": [
-    "下一轮最优 PromotionRound 目标：full_site/release/user_guides/schemas/usdLux/DomeLight.html，如果该页能成为 good_bilingual 且最好进入 review_ready_zh。",
+    "下一轮最优 PromotionRound 目标：full_site/release/user_guides/schemas/usdLux/DomeLight_1.html，如果该页能成为 good_bilingual 且最好进入 review_ready_zh。",
     "继续固定运行 Markdown 编码、English debt、本地链接路由、navigation coverage、reading-flow navigation、full draft preview、report index 和 validation。",
     "不要批量晋级，不要顺手打开第二页。"
   ],
-  "next_action": "PromotionRound target full_site/release/user_guides/schemas/usdLux/DomeLight.html, if it can become good_bilingual; otherwise stop and report the concrete blocker.",
-  "next_best_target": "full_site/release/user_guides/schemas/usdLux/DomeLight.html"
+  "next_action": "PromotionRound target full_site/release/user_guides/schemas/usdLux/DomeLight_1.html, if it can become good_bilingual; otherwise stop and report the concrete blocker.",
+  "next_best_target": "full_site/release/user_guides/schemas/usdLux/DomeLight_1.html"
 }
