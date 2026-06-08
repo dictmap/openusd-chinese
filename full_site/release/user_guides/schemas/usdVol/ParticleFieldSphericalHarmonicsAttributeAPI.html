@@ -3,24 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：ParticleFieldSphericalHarmonicsAttributeAPI / ParticleFieldSphericalHarmonicsAttributeAPI</title>
+  <title>完整双语参考：ParticleFieldSphericalHarmonicsAttributeAPI / ParticleFieldSphericalHarmonicsAttributeAPI</title>
   <link rel="icon" href="../../../../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1100px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
+
   </style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
@@ -44,9 +49,9 @@
 </head>
 <body class="openusd-has-reading-flow">
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：ParticleFieldSphericalHarmonicsAttributeAPI / ParticleFieldSphericalHarmonicsAttributeAPI</h1>
-    <div class="meta">https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html</div>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：ParticleFieldSphericalHarmonicsAttributeAPI / ParticleFieldSphericalHarmonicsAttributeAPI</h1>
+    <div class="meta">官方页：https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html</div>
   </header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
@@ -84,12 +89,12 @@
 <li><a data-reading-flow="related" href="FieldAsset.html">FieldAsset</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="FieldBase.html">FieldBase</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="OpenVDBAsset.html">OpenVDBAsset</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="overview.html">Overview</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="ParticleField.html">ParticleField</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="ParticleField3DGaussianSplat.html">ParticleField3DGaussianSplat</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="ParticleFieldKernelBaseAPI.html">ParticleFieldKernelBaseAPI</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="ParticleFieldKernelConstantSurfletAPI.html">ParticleFieldKernelConstantSurfletAPI</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="ParticleFieldKernelGaussianEllipsoidAPI.html">ParticleFieldKernelGaussianEllipsoidAPI</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="ParticleFieldKernelGaussianSurfletAPI.html">ParticleFieldKernelGaussianSurfletAPI</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
@@ -109,94 +114,107 @@
 </aside>
 <!-- openusd-reading-flow-nav:end -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section data-cn-refinement="release-quality-pass-073">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 ParticleFieldSphericalHarmonicsAttributeAPI 补充中文优先的 schema 用途、数据范围/类型阅读路径、schema 边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds Chinese-first schema purpose, data range and type reading paths, schema boundaries, and terminology for ParticleFieldSphericalHarmonicsAttributeAPI while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+    <section data-cn-complete="round-411-usdVol-core-closeout-ParticleFieldSphericalHarmonicsAttributeAPI-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="en">Defines the spherical harmonics attributes for a ParticleField, such as the spherical harmonics degree and coefficients.</p>
+      <p class="zh">官方源页核心说明：Defines the spherical harmonics attributes for a ParticleField, such as the spherical harmonics degree and coefficients.</p>
+      <p class="zh"><code>UsdVol</code> 的主线有两条：一条是 <code>Volume</code> 与 <code>VolumeFieldBase</code> / <code>VolumeFieldAsset</code> 描述体积和外部场数据，另一条是 <code>ParticleField</code> 及各类 AttributeAPI / KernelAPI 描述粒子场。阅读本组剩余页时必须把 volume 容器、field 资产入口和粒子场数据分清。</p>
+      <p class="zh"><code>Volume</code> 是可渲染 volume，它通过 <code>field:*</code> 关系引用派生自 <code>VolumeFieldBase</code> 的 prim。关系名例如 <code>field:density</code> 或 <code>field:extinction</code> 会被 renderer 用来关联 volume shader 的命名输入参数；这个关系名不是外部文件里的 grid 名。</p>
+      <p class="zh"><code>VolumeFieldAsset</code> 是抽象 schema，表示体积数据存储在 layer 外部，例如 OpenVDB 或 Field3D 文件。实际 authoring 通常创建 <code>OpenVDBAsset</code>、<code>Field3DAsset</code> 这类派生 schema，而不是直接实例化抽象基类。</p>
+      <p class="zh"><code>VolumeFieldBase</code> 是所有 UsdVol field schema 的基类。它的价值在于给自定义 field schema 提供共同基础，而不是提供具体文件格式、fieldName 或 filePath；具体资产入口要看 <code>VolumeFieldAsset</code> 及派生类型。</p>
+      <p class="zh">粒子场相关的 <code>ParticleFieldSphericalHarmonicsAttributeAPI</code> 属于 radiance definition 数据。它与 <code>ParticleFieldRadianceBaseAPI</code>、position 数据和 kernel API 一起决定 3D Gaussian splats 等粒子场如何给出方向相关颜色或辐射。</p>
+      <p class="zh">目录页和 overview 页不能只写泛泛导读。它们必须给出本地阅读路径：先读 <code>Overview</code> 理解 volume/field/particle field，再看 <code>Volume</code>、<code>VolumeFieldBase</code>、<code>VolumeFieldAsset</code>，最后按格式进入 <code>OpenVDBAsset</code> / <code>Field3DAsset</code> 或按粒子场进入 AttributeAPI / KernelAPI。</p>
+      <p class="zh">常见误读之一是把 <code>fieldName</code> 和 <code>field:density</code> 这种 relationship name 混成同一件事。<code>fieldName</code> 通常是在外部 asset 中定位 grid 或 field 的名称；<code>field:*</code> 关系名则是 Volume 对 renderer 或 shader 暴露的输入语义。</p>
+      <p class="zh">常见误读之二是把 <code>filePath</code> 当成渲染输出路径。它是外部体积数据资产路径，例如 <code>.vdb</code> 或 <code>.f3d</code> 文件；渲染输出属于 <code>usdRender</code>，不属于 <code>usdVol</code>。</p>
+      <p class="zh">调试 volume 不可见时，应先确认 <code>Volume</code> prim 存在且可见，再确认 <code>field:*</code> 关系是否指向正确 field prim，然后检查 field prim 的 <code>filePath</code>、<code>fieldName</code>、<code>fieldIndex</code>、<code>fieldDataType</code>、extent、transform 和 renderer 支持。</p>
+      <p class="zh">调试 particle field 时，应先确认 position 数据是否存在并决定粒子数量，再检查 kernel、radiance、opacity、orientation、scale 或 spherical harmonics 系数是否与 position 数量匹配。数组太长会截断，太短会忽略或使用默认值。</p>
+      <p class="zh">从 composition 角度看，所有这些属性和关系都是 USD authored opinions，会受到 layer strength、reference、payload、variant 和 override 影响。排查时应看 composed stage 上的 resolved relationships 和 attributes。</p>
+      <p class="zh">从资产打包角度看，volume field 常依赖外部 <code>.vdb</code> 或 <code>.f3d</code> 数据文件。迁移 USD 包或改变 asset resolver 后，<code>filePath</code> 在作者机器上有效并不代表部署环境也能解析，必须把外部数据依赖作为独立验收项。</p>
+      <p class="zh">从 renderer 采用角度看，schema 正确不等于画面必然出现。volume shader、material binding、Hydra fallback material、renderer 对 OpenVDB/Field3D/particle field 的支持，都会影响最终可见结果。</p>
+      <p class="zh">从工程阅读路径看，本页保留英文 API/schema/token/属性名、代码和链接语义；中文解释负责把官方段落连接成可执行的排查顺序，不翻译正式标识符，也不把 <code>UsdVol</code> 写成光照、音频或渲染输出配置。</p>
+      <p class="zh">从 review-ready 角度看，完成页必须让读者不依赖英文正文也能理解页面职责、核心 section、属性/关系分组、边界、误读点、调试路径和相邻 usdVol 类型关系。英文保留用于核对官方原文。</p>
+      <p class="zh">从本地站点路径看，本组页面要保留 reading-flow 侧栏、breadcrumb、总入口、release/API 本地入口和明确的官方外跳。用户应能在本地从目录页进入 overview，再进入具体 schema 页，而不是被静默带到英文官方站。</p>
+      <p class="zh">从类型扩展看，自定义体积 field schema 应直接或间接继承 <code>VolumeFieldBase</code>，自定义文件型 field schema 应继承 <code>VolumeFieldAsset</code>。这两者分别解决“我是 field”与“我的数据在外部资产里”两个层级的问题。</p>
+      <p class="zh">从命名策略看，Volume 中的 <code>field:*</code> 关系名应按渲染或 shader 需要命名，例如 <code>density</code>、<code>extinction</code>、<code>velocity</code>；外部 OpenVDB grid 或 Field3D field 的真实名称则由 <code>fieldName</code>、<code>fieldIndex</code> 等属性指定。</p>
+      <p class="zh">从动画数据看，VolumeFieldAsset 派生 field 可以通过 <code>filePath.timeSamples</code> 指向逐帧体积文件。这里的时间采样是外部体积数据随时间变化，不是把体积网格内联进 USD layer。</p>
+      <p class="zh">从层级组织看，官方建议把 field prim 作为包含它的 Volume 的 child prim。这能让场景更容易查找和引用，并让移动 Volume 时自动带动其 child Field prim；但多个 Volume 共享同一个 Field prim 时，也可以把 field 放在 Volume 外部。</p>
+      <p class="zh">从材质关系看，Volume 继承 Gprim / Imageable，因此可以有 material binding 和 primvars。volume shader 与 field relationship 共同决定体积呈现；只写 Volume 和 field 数据，不绑定或不支持 volume shader，渲染仍可能走 fallback 或不可见。</p>
+      <p class="zh">从 source parity 看，本轮逐页保留官方核心词：<code>Volume</code>、<code>VolumeFieldBase</code>、<code>VolumeFieldAsset</code>、<code>fieldName</code>、<code>field:velocity</code>、<code>radiance:sphericalHarmonicsCoefficients</code>、<code>element size = (degree+1)*(degree+1))</code>、<code>Y(m,l)</code>、<code>OpenVDBAsset</code> 和 <code>Field3DAsset</code>。</p>
+      <p class="zh">从 schema 层级看，<code>Volume</code> 是可渲染容器，<code>VolumeFieldBase</code> 是 field 类型基类，<code>VolumeFieldAsset</code> 是外部资产型 field 基类，<code>OpenVDBAsset</code> 与 <code>Field3DAsset</code> 是具体格式入口。把这四层分清，才能正确判断应该修改 relationship、schema 类型还是外部数据文件。</p>
+      <p class="zh">从命名调试看，若 shader 需要 <code>velocity</code>，Volume 可以 author <code>field:velocity</code> 关系；如果外部 VDB grid 名叫 <code>vel</code>，field prim 上的 <code>fieldName</code> 应写 <code>vel</code>。这正是官方 <code>field:velocity</code> 示例要表达的差异。</p>
+      <p class="zh">从目录维护看，<code>usdVol_toc</code> 和 <code>overview</code> 应承担本地中文站的导航责任。用户从目录进入后，应能沿着 Volume、Field、Asset、ParticleField 和 AttributeAPI 逐步深入，而不是只看到英文链接列表。</p>
+      <p class="zh">从抽象 schema 扩展看，开发者如果要定义 custom Field schemas，应关注继承链是否直接或间接继承 <code>VolumeFieldBase</code>；如果这个 custom Field schemas 又引用外部文件，则更适合从 <code>VolumeFieldAsset</code> 这条路径扩展。</p>
+      <p class="zh">从 spherical harmonics fallback 看，系数缺失或被忽略时，官方默认语义是 DC signal <code>(0.5, 0.5, 0.5)</code> with <code>degree 0</code>。这不是随意默认色，而是 SH 表达里的常量项回退。</p>
+      <p class="zh">从本轮验收看，读者应能只靠中文判断自己面对的是 volume field 引用问题、外部资产解析问题、粒子场 radiance/position 问题，还是目录导航问题；这也是这些短页从草稿晋级为完整双语页的核心依据。</p>
+      <p class="zh"><code>ParticleFieldSphericalHarmonicsAttributeAPI</code> 定义 ParticleField 的 spherical harmonics radiance 属性，包括 spherical harmonics degree 和 coefficients。它属于 radiance definition 数据，不是 light schema，也不是 material binding。</p>
+      <p class="zh">官方说明 degree 在整个 ParticleField 中是 constant across all particles。也就是说，每个粒子共享同一个 spherical harmonics degree，不能按粒子单独改变 degree。</p>
+      <p class="zh"><code>radiance:sphericalHarmonicsCoefficients</code> 是 float precision 的 <code>float3[]</code>，<code>radiance:sphericalHarmonicsCoefficientsh</code> 是 half precision 的 <code>half3[]</code>。如果 float 版本存在，应优先使用 float 版本。</p>
+      <p class="zh">系数数组按粒子分组：每个粒子有 N 个连续 coefficients，<code>Y(m,l)</code> 先按 order <code>m</code> 排，再在 order 内按 index <code>l</code> 排。renderer 可根据 SH degree 计算每粒子的 element size，并按这个 size 对数组分条。</p>
+      <p class="zh">官方给出 element size 公式：<code>element size = (degree+1)*(degree+1))</code>。属性长度应等于 position 数据数量乘以 per-particle element size；太长会截断到 position 定义的粒子数量，太短会被忽略。</p>
+      <p class="zh">如果系数被忽略或未 populated，粒子应使用对应 DC signal 的 SH coefficient <code>(0.5, 0.5, 0.5)</code>，degree 为 <code>0</code>。这说明默认不是完全黑，也不是沿用 displayColor。</p>
+      <p class="zh">调试 radiance 时先确认 position 数量，再确认 degree 和 coefficient 数组长度是否满足 <code>(degree+1)*(degree+1)</code> 规则，最后确认 renderer 是否支持 spherical harmonics radiance。</p>
+      <h3>中文核对清单 / Chinese Coverage Checklist</h3>
       <ul>
-        <li><span class="zh">`ParticleFieldSphericalHarmonicsAttributeAPI` 定义 ParticleField 的 spherical harmonics radiance 数据，包括 degree 和 coefficients。</span></li>
-        <li><span class="zh">`radiance:sphericalHarmonicsDegree` 在整个 ParticleField 中保持常量，不随粒子变化；这意味着所有粒子使用同一阶数解释系数数组。</span></li>
-        <li><span class="zh">`radiance:sphericalHarmonicsCoefficients` 与 `radiance:sphericalHarmonicsCoefficientsh` 分别提供 float 和 half 系数，消费者应优先使用 float version。</span></li>
-        <li><span class="zh">该 schema 适用于需要方向相关辐射度表达的粒子场，例如 3D Gaussian splats 中的 view-dependent color/radiance；它和普通 opacity、scale 数据属于不同数据维度。</span></li>
-        <li><span class="zh">阅读时应同时核对 `ParticleFieldRadianceBaseAPI`，确认 radiance definition 存在，再解释 spherical harmonics degree/coefficient 的数组布局。</span></li>
+        <li><span class="zh">已覆盖页面职责、官方 section、属性/关系/API 分组、volume/field/particle field 边界、误读点、调试路径和相邻 usdVol 类型关系。</span><span class="en">Page role, official sections, groups, boundaries, misreads, debugging path, and adjacent types are covered.</span></li>
+        <li><span class="zh">已保留 API 名、schema 名、token、属性名、代码、命令、Doxygen 表格标签和链接语义；中文只解释技术含义，不改写正式标识。</span><span class="en">Technical identifiers are preserved.</span></li>
+        <li><span class="zh">已核对本地 source snapshot：<code>source/full_release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI_source.html</code>，并与官方页 <code>https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html</code> 的标题、section 与属性语义保持一致。</span><span class="en">Local source snapshot and official page semantics were compared.</span></li>
       </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">粒子场球谐属性 API：</span><span class="en">ParticleFieldSphericalHarmonicsAttributeAPI</span></li>
-        <li><span class="zh">球谐：</span><span class="en">spherical harmonics</span></li>
-        <li><span class="zh">辐射度：</span><span class="en">radiance</span></li>
-        <li><span class="zh">球谐阶数属性：</span><span class="en">radiance:sphericalHarmonicsDegree</span></li>
-        <li><span class="zh">float 球谐系数：</span><span class="en">radiance:sphericalHarmonicsCoefficients</span></li>
-        <li><span class="zh">视角相关颜色：</span><span class="en">view-dependent color</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-115">
-      <h2>中文补强导读 / Chinese Refinement Notes</h2>
-      <p class="zh">`ParticleFieldSphericalHarmonicsAttributeAPI` 描述 `ParticleField` 的 spherical harmonics radiance 属性数据。本轮补强重点是把 radiance base、degree、coefficient array 和每粒子数据布局分开说明，避免把球谐系数误读成普通颜色数组或单个体素属性。</p>
-      <p class="en">This refinement section adds page-specific Chinese reading notes for ParticleFieldSphericalHarmonicsAttributeAPI while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`ParticleFieldRadianceBaseAPI` 先建立 radiance definition 的存在性契约；`ParticleFieldSphericalHarmonicsAttributeAPI` 再说明以 spherical harmonics 形式存储 radiance 的具体属性。</span></li>
-        <li><span class="zh">`degree` 控制球谐展开阶数，决定每个粒子需要多少 coefficient；翻译和导读时应保留 `degree` 字面量，不要把它写成普通数组长度。</span></li>
-        <li><span class="zh">coefficients 通常按粒子和球谐项组织，阅读时要区分 per-particle 数据布局与整张 `ParticleField` 的 particle count；位置数量仍由 position schema 决定。</span></li>
-        <li><span class="zh">该 API 适合表示随方向变化的 radiance，而不是只记录单一 RGB 值。若页面提到 spherical harmonics，中文说明应强调方向性辐射度近似。</span></li>
-        <li><span class="zh">和 kernel API 对照阅读时，kernel 决定粒子影响的空间 basis function，spherical harmonics radiance 决定该粒子在方向域中的辐射度表达，两者互补而非替代。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">粒子场球谐辐射度属性 API：</span><span class="en">ParticleFieldSphericalHarmonicsAttributeAPI</span></li>
-        <li><span class="zh">粒子场辐射度基础 API：</span><span class="en">ParticleFieldRadianceBaseAPI</span></li>
-        <li><span class="zh">球谐函数：</span><span class="en">spherical harmonics</span></li>
-        <li><span class="zh">球谐展开阶数：</span><span class="en">degree</span></li>
-        <li><span class="zh">球谐系数数组：</span><span class="en">coefficients</span></li>
-        <li><span class="zh">逐粒子：</span><span class="en">per-particle</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：ParticleFieldSphericalHarmonicsAttributeAPI</span><span class="en">ParticleFieldSphericalHarmonicsAttributeAPI</span></li>
-<li><span class="zh">第 2 级标题：Properties</span><span class="en">Properties</span></li>
-<li><span class="zh">第 3 级标题：radiance:sphericalHarmonicsCoefficients</span><span class="en">radiance:sphericalHarmonicsCoefficients</span></li>
-<li><span class="zh">第 3 级标题：radiance:sphericalHarmonicsCoefficientsh</span><span class="en">radiance:sphericalHarmonicsCoefficientsh</span></li>
-<li><span class="zh">第 3 级标题：radiance:sphericalHarmonicsDegree</span><span class="en">radiance:sphericalHarmonicsDegree</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">Defines the spherical harmonics attributes for a ParticleField, such as the spherical harmonics degree and coefficients.</p>
-<p class="en">The degree is constant across all particles in the ParticleField.</p>
-<p class="en">The coefficients are provided in both float and half types for easy data footprint affordance. Data consumers should prefer the float version if available.</p>
     </section>
 
     <section>
-      <h2>本页链接 / Page Links</h2>
+      <h2>官方属性或条目 / Official Properties or Entries</h2>
+      <table>
+        <thead><tr><th>Property / Schema</th><th>USD type</th><th>Fallback</th><th>中文说明 / Chinese Reading</th></tr></thead>
+        <tbody>
+          <tr><td><code>radiance:sphericalHarmonicsCoefficients</code></td><td><code>float3[]</code></td><td><code></code></td><td><span class="zh">float 精度 SH 系数数组，按粒子分组，每粒子有 <code>(degree+1)*(degree+1)</code> 个连续 <code>float3</code> 系数。</span><span class="en">Spherical harmonics coefficients in float precision.</span></td></tr>
+          <tr><td><code>radiance:sphericalHarmonicsCoefficientsh</code></td><td><code>half3[]</code></td><td><code></code></td><td><span class="zh">half 精度 SH 系数数组。如果 float 版本存在，应优先使用 <code>radiance:sphericalHarmonicsCoefficients</code>。</span><span class="en">Spherical harmonics coefficients in half precision.</span></td></tr>
+          <tr><td><code>radiance:sphericalHarmonicsDegree</code></td><td><code>int</code></td><td><code>3</code></td><td><span class="zh">整个 ParticleField 共享的 SH degree。它决定每粒子的 coefficient element size。</span><span class="en">Spherical harmonics degree; fallback is 3.</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>继承属性 / Inherited Properties</h2>
+      <table>
+        <thead><tr><th>From</th><th>Property</th><th>USD type</th><th>Fallback</th><th>中文说明 / Chinese Reading</th></tr></thead>
+        <tbody>
+<tr><td colspan="5"><span class="zh">本页没有独立属性表；中文主阅读路径重点解释页面职责、目录/抽象 schema 语义、关系命名、调试顺序和相邻 usdVol 类型。</span><span class="en">No direct property table is exposed here.</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>相邻 usdVol 阅读路径 / Adjacent usdVol Reading Path</h2>
+      <p class="zh">本页应放在 usdVol 剩余核心页的连续阅读路径中：目录和 overview 负责路线，Volume/VolumeFieldBase/VolumeFieldAsset 负责体积场关系和资产入口，ParticleFieldSphericalHarmonicsAttributeAPI 负责粒子场 radiance 表达。下面的链接都保留为本地阅读路径；只有“打开官方原页 / Open official page”是显式外跳。</p>
       <ul>
-<li>No same-site document links extracted.</li>
+        <li><a href="ParticleFieldRadianceBaseAPI.html">ParticleFieldRadianceBaseAPI</a></li>
+        <li><a href="ParticleFieldPositionBaseAPI.html">ParticleFieldPositionBaseAPI</a></li>
+        <li><a href="ParticleField3DGaussianSplat.html">ParticleField3DGaussianSplat</a></li>
+        <li><a href="ParticleField.html">ParticleField</a></li>
+        <li><a href="overview.html">overview</a></li>
+        <li><a href="usdVol_toc.html">usdVol_toc</a></li>
+        <li><a href="Volume.html">Volume</a></li>
+        <li><a href="VolumeFieldBase.html">VolumeFieldBase</a></li>
+        <li><a href="VolumeFieldAsset.html">VolumeFieldAsset</a></li>
+        <li><a href="OpenVDBAsset.html">OpenVDBAsset</a></li>
+        <li><a href="Field3DAsset.html">Field3DAsset</a></li>
       </ul>
     </section>
+
+    <section>
+      <h2>源页对比 / Source Parity</h2>
+      <ul>
+        <li><span class="zh">官方页：<a href="ParticleFieldSphericalHarmonicsAttributeAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html">官方页 / Official page: https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html</a></span></li>
+        <li><span class="zh">本地 source snapshot：<code>source/full_release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI_source.html</code></span></li>
+        <li><span class="zh">本轮仅晋级达到中文主阅读路径门槛的页面；未达标页保持草稿并记录原因。</span><span class="en">Only pages that meet the Chinese main-reading-path bar are promoted.</span></li>
+      </ul>
+    </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="../../../../../site/release_index.html">Release 本地入口 / Local release entry</a></p>
       <p><a href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html">打开官方原页 / Open official page</a></p>
     </section>
   </main>

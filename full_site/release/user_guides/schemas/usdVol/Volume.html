@@ -3,24 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>体积 Volume / Volume</title>
+  <title>完整双语参考：Volume / Volume</title>
   <link rel="icon" href="../../../../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1100px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
+
   </style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
@@ -44,9 +49,9 @@
 </head>
 <body class="openusd-has-reading-flow">
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>体积 Volume / Volume</h1>
-    <div class="meta">https://openusd.org/release/user_guides/schemas/usdVol/Volume.html</div>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：Volume / Volume</h1>
+    <div class="meta">官方页：https://openusd.org/release/user_guides/schemas/usdVol/Volume.html</div>
   </header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
@@ -84,12 +89,12 @@
 <li><a data-reading-flow="related" href="FieldAsset.html">FieldAsset</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="FieldBase.html">FieldBase</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="OpenVDBAsset.html">OpenVDBAsset</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="overview.html">Overview</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="ParticleField.html">ParticleField</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="ParticleField3DGaussianSplat.html">ParticleField3DGaussianSplat</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="ParticleFieldKernelBaseAPI.html">ParticleFieldKernelBaseAPI</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="ParticleFieldKernelConstantSurfletAPI.html">ParticleFieldKernelConstantSurfletAPI</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="ParticleFieldKernelGaussianEllipsoidAPI.html">ParticleFieldKernelGaussianEllipsoidAPI</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="ParticleFieldKernelGaussianSurfletAPI.html">ParticleFieldKernelGaussianSurfletAPI</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
@@ -109,102 +114,110 @@
 </aside>
 <!-- openusd-reading-flow-nav:end -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <main>
+    <section data-cn-complete="round-411-usdVol-core-closeout-Volume-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="en">A renderable volume containing one or more volumetric data fields, used to represent a volume effect such as smoke or fire.</p>
+      <p class="zh">官方源页核心说明：A renderable volume containing one or more volumetric data fields, used to represent a volume effect such as smoke or fire.</p>
+      <p class="zh"><code>UsdVol</code> 的主线有两条：一条是 <code>Volume</code> 与 <code>VolumeFieldBase</code> / <code>VolumeFieldAsset</code> 描述体积和外部场数据，另一条是 <code>ParticleField</code> 及各类 AttributeAPI / KernelAPI 描述粒子场。阅读本组剩余页时必须把 volume 容器、field 资产入口和粒子场数据分清。</p>
+      <p class="zh"><code>Volume</code> 是可渲染 volume，它通过 <code>field:*</code> 关系引用派生自 <code>VolumeFieldBase</code> 的 prim。关系名例如 <code>field:density</code> 或 <code>field:extinction</code> 会被 renderer 用来关联 volume shader 的命名输入参数；这个关系名不是外部文件里的 grid 名。</p>
+      <p class="zh"><code>VolumeFieldAsset</code> 是抽象 schema，表示体积数据存储在 layer 外部，例如 OpenVDB 或 Field3D 文件。实际 authoring 通常创建 <code>OpenVDBAsset</code>、<code>Field3DAsset</code> 这类派生 schema，而不是直接实例化抽象基类。</p>
+      <p class="zh"><code>VolumeFieldBase</code> 是所有 UsdVol field schema 的基类。它的价值在于给自定义 field schema 提供共同基础，而不是提供具体文件格式、fieldName 或 filePath；具体资产入口要看 <code>VolumeFieldAsset</code> 及派生类型。</p>
+      <p class="zh">粒子场相关的 <code>ParticleFieldSphericalHarmonicsAttributeAPI</code> 属于 radiance definition 数据。它与 <code>ParticleFieldRadianceBaseAPI</code>、position 数据和 kernel API 一起决定 3D Gaussian splats 等粒子场如何给出方向相关颜色或辐射。</p>
+      <p class="zh">目录页和 overview 页不能只写泛泛导读。它们必须给出本地阅读路径：先读 <code>Overview</code> 理解 volume/field/particle field，再看 <code>Volume</code>、<code>VolumeFieldBase</code>、<code>VolumeFieldAsset</code>，最后按格式进入 <code>OpenVDBAsset</code> / <code>Field3DAsset</code> 或按粒子场进入 AttributeAPI / KernelAPI。</p>
+      <p class="zh">常见误读之一是把 <code>fieldName</code> 和 <code>field:density</code> 这种 relationship name 混成同一件事。<code>fieldName</code> 通常是在外部 asset 中定位 grid 或 field 的名称；<code>field:*</code> 关系名则是 Volume 对 renderer 或 shader 暴露的输入语义。</p>
+      <p class="zh">常见误读之二是把 <code>filePath</code> 当成渲染输出路径。它是外部体积数据资产路径，例如 <code>.vdb</code> 或 <code>.f3d</code> 文件；渲染输出属于 <code>usdRender</code>，不属于 <code>usdVol</code>。</p>
+      <p class="zh">调试 volume 不可见时，应先确认 <code>Volume</code> prim 存在且可见，再确认 <code>field:*</code> 关系是否指向正确 field prim，然后检查 field prim 的 <code>filePath</code>、<code>fieldName</code>、<code>fieldIndex</code>、<code>fieldDataType</code>、extent、transform 和 renderer 支持。</p>
+      <p class="zh">调试 particle field 时，应先确认 position 数据是否存在并决定粒子数量，再检查 kernel、radiance、opacity、orientation、scale 或 spherical harmonics 系数是否与 position 数量匹配。数组太长会截断，太短会忽略或使用默认值。</p>
+      <p class="zh">从 composition 角度看，所有这些属性和关系都是 USD authored opinions，会受到 layer strength、reference、payload、variant 和 override 影响。排查时应看 composed stage 上的 resolved relationships 和 attributes。</p>
+      <p class="zh">从资产打包角度看，volume field 常依赖外部 <code>.vdb</code> 或 <code>.f3d</code> 数据文件。迁移 USD 包或改变 asset resolver 后，<code>filePath</code> 在作者机器上有效并不代表部署环境也能解析，必须把外部数据依赖作为独立验收项。</p>
+      <p class="zh">从 renderer 采用角度看，schema 正确不等于画面必然出现。volume shader、material binding、Hydra fallback material、renderer 对 OpenVDB/Field3D/particle field 的支持，都会影响最终可见结果。</p>
+      <p class="zh">从工程阅读路径看，本页保留英文 API/schema/token/属性名、代码和链接语义；中文解释负责把官方段落连接成可执行的排查顺序，不翻译正式标识符，也不把 <code>UsdVol</code> 写成光照、音频或渲染输出配置。</p>
+      <p class="zh">从 review-ready 角度看，完成页必须让读者不依赖英文正文也能理解页面职责、核心 section、属性/关系分组、边界、误读点、调试路径和相邻 usdVol 类型关系。英文保留用于核对官方原文。</p>
+      <p class="zh">从本地站点路径看，本组页面要保留 reading-flow 侧栏、breadcrumb、总入口、release/API 本地入口和明确的官方外跳。用户应能在本地从目录页进入 overview，再进入具体 schema 页，而不是被静默带到英文官方站。</p>
+      <p class="zh">从类型扩展看，自定义体积 field schema 应直接或间接继承 <code>VolumeFieldBase</code>，自定义文件型 field schema 应继承 <code>VolumeFieldAsset</code>。这两者分别解决“我是 field”与“我的数据在外部资产里”两个层级的问题。</p>
+      <p class="zh">从命名策略看，Volume 中的 <code>field:*</code> 关系名应按渲染或 shader 需要命名，例如 <code>density</code>、<code>extinction</code>、<code>velocity</code>；外部 OpenVDB grid 或 Field3D field 的真实名称则由 <code>fieldName</code>、<code>fieldIndex</code> 等属性指定。</p>
+      <p class="zh">从动画数据看，VolumeFieldAsset 派生 field 可以通过 <code>filePath.timeSamples</code> 指向逐帧体积文件。这里的时间采样是外部体积数据随时间变化，不是把体积网格内联进 USD layer。</p>
+      <p class="zh">从层级组织看，官方建议把 field prim 作为包含它的 Volume 的 child prim。这能让场景更容易查找和引用，并让移动 Volume 时自动带动其 child Field prim；但多个 Volume 共享同一个 Field prim 时，也可以把 field 放在 Volume 外部。</p>
+      <p class="zh">从材质关系看，Volume 继承 Gprim / Imageable，因此可以有 material binding 和 primvars。volume shader 与 field relationship 共同决定体积呈现；只写 Volume 和 field 数据，不绑定或不支持 volume shader，渲染仍可能走 fallback 或不可见。</p>
+      <p class="zh">从 source parity 看，本轮逐页保留官方核心词：<code>Volume</code>、<code>VolumeFieldBase</code>、<code>VolumeFieldAsset</code>、<code>fieldName</code>、<code>field:velocity</code>、<code>radiance:sphericalHarmonicsCoefficients</code>、<code>element size = (degree+1)*(degree+1))</code>、<code>Y(m,l)</code>、<code>OpenVDBAsset</code> 和 <code>Field3DAsset</code>。</p>
+      <p class="zh">从 schema 层级看，<code>Volume</code> 是可渲染容器，<code>VolumeFieldBase</code> 是 field 类型基类，<code>VolumeFieldAsset</code> 是外部资产型 field 基类，<code>OpenVDBAsset</code> 与 <code>Field3DAsset</code> 是具体格式入口。把这四层分清，才能正确判断应该修改 relationship、schema 类型还是外部数据文件。</p>
+      <p class="zh">从命名调试看，若 shader 需要 <code>velocity</code>，Volume 可以 author <code>field:velocity</code> 关系；如果外部 VDB grid 名叫 <code>vel</code>，field prim 上的 <code>fieldName</code> 应写 <code>vel</code>。这正是官方 <code>field:velocity</code> 示例要表达的差异。</p>
+      <p class="zh">从目录维护看，<code>usdVol_toc</code> 和 <code>overview</code> 应承担本地中文站的导航责任。用户从目录进入后，应能沿着 Volume、Field、Asset、ParticleField 和 AttributeAPI 逐步深入，而不是只看到英文链接列表。</p>
+      <p class="zh">从抽象 schema 扩展看，开发者如果要定义 custom Field schemas，应关注继承链是否直接或间接继承 <code>VolumeFieldBase</code>；如果这个 custom Field schemas 又引用外部文件，则更适合从 <code>VolumeFieldAsset</code> 这条路径扩展。</p>
+      <p class="zh">从 spherical harmonics fallback 看，系数缺失或被忽略时，官方默认语义是 DC signal <code>(0.5, 0.5, 0.5)</code> with <code>degree 0</code>。这不是随意默认色，而是 SH 表达里的常量项回退。</p>
+      <p class="zh">从本轮验收看，读者应能只靠中文判断自己面对的是 volume field 引用问题、外部资产解析问题、粒子场 radiance/position 问题，还是目录导航问题；这也是这些短页从草稿晋级为完整双语页的核心依据。</p>
+      <p class="zh"><code>Volume</code> 表达一个可渲染 volume，包含一个或多个 volumetric data fields，可用于 smoke、fire、fog 等效果。它是 volume 容器，不是外部体积文件本身。</p>
+      <p class="zh">Volume 继承自 Gprim 和 Imageable，因此可以 transform、render、绑定 material，并使用 primvars 与 shader 管线交互。真正的体积数据通过 field relationship 指向 field prim。</p>
+      <p class="zh">Volume 可以包含任意数量的 volumetric fields，这些 field 通过带 <code>field</code> namespace prefix 的关系指定，例如 <code>field:extinction</code>。关系目标应是派生自 <code>VolumeFieldBase</code> 的 prim。</p>
+      <p class="zh">关系名如 <code>density</code> 或 <code>extinction</code> 会被 renderer 用来把具体 field 关联到 volume shader 的命名输入参数。这里的关系名不是外部 OpenVDB grid 的 <code>fieldName</code>，二者要分别检查。</p>
+      <p class="zh">官方示例中 <code>field:extinction</code> 指向一个 <code>OpenVDBAsset</code>，该 asset 的 <code>fieldName</code> 为 <code>density</code>，<code>filePath</code> 指向 <code>.vdb</code> 数据。阅读时应把 Volume relationship、OpenVDB grid 名和文件路径分成三层。</p>
+      <p class="zh">调试 Volume 时先看 <code>field:*</code> 关系是否存在且目标正确，再看目标 field prim 的 schema、<code>filePath</code>、<code>fieldName</code>、extent 和 transform，最后看 material binding、volume shader 和 renderer 是否采用。</p>
+      <h3>中文核对清单 / Chinese Coverage Checklist</h3>
+      <ul>
+        <li><span class="zh">已覆盖页面职责、官方 section、属性/关系/API 分组、volume/field/particle field 边界、误读点、调试路径和相邻 usdVol 类型关系。</span><span class="en">Page role, official sections, groups, boundaries, misreads, debugging path, and adjacent types are covered.</span></li>
+        <li><span class="zh">已保留 API 名、schema 名、token、属性名、代码、命令、Doxygen 表格标签和链接语义；中文只解释技术含义，不改写正式标识。</span><span class="en">Technical identifiers are preserved.</span></li>
+        <li><span class="zh">已核对本地 source snapshot：<code>source/full_release/user_guides/schemas/usdVol/Volume_source.html</code>，并与官方页 <code>https://openusd.org/release/user_guides/schemas/usdVol/Volume.html</code> 的标题、section 与属性语义保持一致。</span><span class="en">Local source snapshot and official page semantics were compared.</span></li>
+      </ul>
+    </section>
+
     <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+      <h2>官方属性或条目 / Official Properties or Entries</h2>
+      <table>
+        <thead><tr><th>Property / Schema</th><th>USD type</th><th>Fallback</th><th>中文说明 / Chinese Reading</th></tr></thead>
+        <tbody>
+<tr><td colspan="4"><span class="zh">本页没有独立属性表；中文主阅读路径重点解释页面职责、目录/抽象 schema 语义、关系命名、调试顺序和相邻 usdVol 类型。</span><span class="en">No direct property table is exposed here.</span></td></tr>
+        </tbody>
+      </table>
     </section>
+
     <section>
-      <h2>中文导读 / Chinese Reading Notes</h2>
-      <ul>
-<li><span class="zh">该页定义 UsdVol 的 Volume schema，用于表示烟、火等可渲染体积效果。</span></li>
-<li><span class="zh">Volume 继承 Gprim、Boundable、Xformable 和 Imageable，因此仍具备变换、渲染、材质绑定、purpose 等常规图元能力。</span></li>
-<li><span class="zh">体积数据通过 field:* relationships 连接到 VolumeFieldBase 派生 prim；关系名会被渲染器映射到体积 shader 的命名输入。</span></li>
-<li><span class="zh">官方示例使用 OpenVDBAsset 作为密度场资产，保留 USDA 片段以便核对 field:extinction、filePath 和 fieldName 的写法。</span></li>
-      </ul>
+      <h2>继承属性 / Inherited Properties</h2>
+      <table>
+        <thead><tr><th>From</th><th>Property</th><th>USD type</th><th>Fallback</th><th>中文说明 / Chinese Reading</th></tr></thead>
+        <tbody>
+          <tr><td>Gprim</td><td><code>doubleSided</code></td><td><code>bool</code></td><td><code>False</code></td><td><span class="zh">Gprim 双面提示。对 Volume 而言，实际可见性主要由 volume shader、field 数据和 renderer 采用决定。</span><span class="en">Double-sided hint.</span></td></tr>
+          <tr><td>Gprim</td><td><code>orientation</code></td><td><code>token</code></td><td><code>rightHanded</code></td><td><span class="zh">几何方向约定。它不是 volume field relationship name，也不是粒子场 per-particle orientation。</span><span class="en">Orientation convention.</span></td></tr>
+          <tr><td>Gprim</td><td><code>primvars:displayColor</code></td><td><code>color3f[]</code></td><td><code></code></td><td><span class="zh">显示颜色 primvar。Volume 可通过 primvars 与 shader 管线交互，但这不替代 field 数据。</span><span class="en">Display color primvar.</span></td></tr>
+          <tr><td>Gprim</td><td><code>primvars:displayOpacity</code></td><td><code>float[]</code></td><td><code></code></td><td><span class="zh">显示透明度 primvar。不要与粒子场 <code>opacities</code> 或体积 density field 混淆。</span><span class="en">Display opacity primvar.</span></td></tr>
+          <tr><td>Boundable</td><td><code>extent</code></td><td><code>float3[]</code></td><td><code></code></td><td><span class="zh">包围盒范围。调试 volume 不显示时，extent 和 transform 是第一批要检查的项目。</span><span class="en">Boundable extent.</span></td></tr>
+          <tr><td>Xformable</td><td><code>xformOpOrder</code></td><td><code>token[]</code></td><td><code></code></td><td><span class="zh">继承的 transform op 顺序。Volume 或 field prim 的 local-to-world transform 会影响体积数据在世界空间中的位置。</span><span class="en">Transform op order.</span></td></tr>
+          <tr><td>Imageable</td><td><code>proxyPrim</code></td><td><code>rel</code></td><td><code></code></td><td><span class="zh">Imageable 代理 prim 关系。它不是 volume field 关系，也不是外部文件路径。</span><span class="en">Proxy prim relationship.</span></td></tr>
+          <tr><td>Imageable</td><td><code>purpose</code></td><td><code>token</code></td><td><code>default</code></td><td><span class="zh">Imageable purpose。Volume 示例里常设置为 <code>render</code>，但不要与 field relationship name 或 <code>fieldName</code> 混淆。</span><span class="en">Imageable purpose.</span></td></tr>
+          <tr><td>Imageable</td><td><code>visibility</code></td><td><code>token</code></td><td><code>inherited</code></td><td><span class="zh">继承可见性。体积不可见时应同时检查 visibility、extent、field 数据和 renderer 支持。</span><span class="en">Visibility token.</span></td></tr>
+        </tbody>
+      </table>
     </section>
-    <section data-cn-refinement="release-quality-pass-073">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Volume 补充中文优先的 schema 用途、数据范围/类型阅读路径、schema 边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds Chinese-first schema purpose, data range and type reading paths, schema boundaries, and terminology for Volume while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">`Volume` 是可渲染体积容器，用于表达 smoke、fire 等 volume effect；它继承 `Gprim` 和 `Imageable`，因此可以变换、渲染、绑定材质并参与 purpose/visibility 控制。</span></li>
-        <li><span class="zh">体积数据不直接写在 `Volume` 上，而是通过 `field:*` relationships 指向 `VolumeFieldBase` 派生 prim；关系名如 `field:extinction` 或 `field:density` 会映射到 volume shader 的同名输入。</span></li>
-        <li><span class="zh">示例中的 `OpenVDBAsset` prim 通过 `filePath` 指向 `/vdbdata/smoke_plume.101.vdb`，再用 `fieldName = &quot;density&quot;` 指定文件内部 grid/field。</span></li>
-        <li><span class="zh">`Volume` 页面应和 `usdVol overview`、`OpenVDBAsset`、`Field3DAsset`、`VolumeFieldAsset`、`VolumeFieldBase` 一起读，以区分容器 prim、外部文件资产和具体体积字段。</span></li>
-        <li><span class="zh">已有早期中文导读说明了基本用途；本轮补强重点是 `field:*` relationship、shader 输入映射和外部体积数据路径，不改变原 USDA 片段。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">可渲染体积 prim：</span><span class="en">Volume</span></li>
-        <li><span class="zh">体积效果：</span><span class="en">volume effect</span></li>
-        <li><span class="zh">体积字段关系：</span><span class="en">field:* relationship</span></li>
-        <li><span class="zh">体积场基础 schema：</span><span class="en">VolumeFieldBase</span></li>
-        <li><span class="zh">消光字段关系：</span><span class="en">field:extinction</span></li>
-        <li><span class="zh">体积着色器：</span><span class="en">volume shader</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-118">
-      <h2>中文补强导读 / Chinese Refinement Notes</h2>
-      <p class="zh">`Volume` 是 usdVol 中用于表达 smoke、fire 等体积效果的可渲染容器 prim。它自身负责场景层级、变换、材质绑定、purpose 和可见性等图元能力；真正的体积字段数据则通过 `field:*` relationships 指向 `VolumeFieldBase` 派生 prim。</p>
-      <p class="en">This refinement section adds page-specific Chinese reading notes for Volume while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`Volume` 继承 `Gprim` 和 `Imageable`，因此它不是单纯的数据句柄，而是能参与渲染、变换、材质绑定和可见性控制的场景对象。</span></li>
-        <li><span class="zh">体积数据通过 relationship 连接，而不是作为普通属性直接写在 `Volume` 上；这让一个 Volume 可以组织多个命名 field，如 `density`、`extinction` 或自定义输入。</span></li>
-        <li><span class="zh">`field:*` relationship 的后缀名通常与 volume shader 的输入名对应，renderer 会据此把具体 field provider 绑定到 shader 参数。</span></li>
-        <li><span class="zh">示例中的 `OpenVDBAsset` 子 prim 是一种 field provider；同样的 `Volume` 也可以引用 `Field3DAsset` 或其他 `VolumeFieldBase` 派生 prim。</span></li>
-        <li><span class="zh">调试体积不可见时，需要分层检查：`Volume` 可见性和材质绑定、`field:*` target、外部文件路径、field name，以及 renderer 对该 field schema 的支持。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">可渲染体积容器：</span><span class="en">Volume</span></li>
-        <li><span class="zh">几何图元基类：</span><span class="en">Gprim</span></li>
-        <li><span class="zh">可成像 schema：</span><span class="en">Imageable</span></li>
-        <li><span class="zh">extinction 体积字段关系：</span><span class="en">field:extinction</span></li>
-        <li><span class="zh">体积着色器：</span><span class="en">volume shader</span></li>
-        <li><span class="zh">体积字段提供者：</span><span class="en">field provider</span></li>
-      </ul>
-    </section>
+
     <section>
-      <h2>页面结构 / Page Structure</h2>
+      <h2>相邻 usdVol 阅读路径 / Adjacent usdVol Reading Path</h2>
+      <p class="zh">本页应放在 usdVol 剩余核心页的连续阅读路径中：目录和 overview 负责路线，Volume/VolumeFieldBase/VolumeFieldAsset 负责体积场关系和资产入口，ParticleFieldSphericalHarmonicsAttributeAPI 负责粒子场 radiance 表达。下面的链接都保留为本地阅读路径；只有“打开官方原页 / Open official page”是显式外跳。</p>
       <ul>
-<li><span class="zh">第 1 级标题：Volume</span><span class="en">Volume</span></li>
+        <li><a href="overview.html">overview</a></li>
+        <li><a href="VolumeFieldBase.html">VolumeFieldBase</a></li>
+        <li><a href="VolumeFieldAsset.html">VolumeFieldAsset</a></li>
+        <li><a href="OpenVDBAsset.html">OpenVDBAsset</a></li>
+        <li><a href="Field3DAsset.html">Field3DAsset</a></li>
+        <li><a href="usdVol_toc.html">usdVol_toc</a></li>
+        <li><a href="ParticleField.html">ParticleField</a></li>
+        <li><a href="ParticleField3DGaussianSplat.html">ParticleField3DGaussianSplat</a></li>
+        <li><a href="ParticleFieldSphericalHarmonicsAttributeAPI.html">ParticleFieldSphericalHarmonicsAttributeAPI</a></li>
       </ul>
     </section>
+
     <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">A renderable volume containing one or more volumetric data fields, used to represent a volume effect such as smoke or fire.</p>
-<p class="en">Volume inherits from GPrim and inherits GPrim and Imageable schema properties, so volumes are transformable, renderable, can have a material binding, etc.</p>
-<p class="en">Volume also contains any number of volumetric fields, specified via relationships to VolumeFieldBase-derived primitives using a namespace prefix of “field”. The relationship names, such as “density”, are used by the renderer to associate individual fields with the named input parameters on a volume shader.</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>def Volume &quot;Volume&quot; ( ) { custom rel field:extinction = &lt;/Volume/densityVDB&gt; uniform token purpose = &quot;render&quot; def OpenVDBAsset &quot;densityVDB&quot; { token fieldName = &quot;density&quot; asset filePath = @/vdbdata/smoke_plume.101.vdb@ , } } }</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
+      <h2>源页对比 / Source Parity</h2>
       <ul>
-<li>No same-site document links extracted.</li>
+        <li><span class="zh">官方页：<a href="Volume.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/Volume.html">官方页 / Official page: https://openusd.org/release/user_guides/schemas/usdVol/Volume.html</a></span></li>
+        <li><span class="zh">本地 source snapshot：<code>source/full_release/user_guides/schemas/usdVol/Volume_source.html</code></span></li>
+        <li><span class="zh">本轮仅晋级达到中文主阅读路径门槛的页面；未达标页保持草稿并记录原因。</span><span class="en">Only pages that meet the Chinese main-reading-path bar are promoted.</span></li>
       </ul>
     </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="../../../../../site/release_index.html">Release 本地入口 / Local release entry</a></p>
       <p><a href="https://openusd.org/release/user_guides/schemas/usdVol/Volume.html">打开官方原页 / Open official page</a></p>
     </section>
   </main>

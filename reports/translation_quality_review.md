@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-08T03:14:22.091Z
+Generated: 2026-06-08T03:28:58.615Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 258
-- bilingual_complete: 148
+- bilingual_draft: 252
+- bilingual_complete: 154
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 247
-- good_bilingual: 148
+- draft_needs_translation: 241
+- good_bilingual: 154
 
 ## Current Focus Batch
 
@@ -437,7 +437,7 @@ Generated: 2026-06-08T03:14:22.091Z
 | 371 | good_bilingual | bilingual_complete | 851 | 43/14 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/FieldAsset.html` |
 | 372 | good_bilingual | bilingual_complete | 794 | 39/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/FieldBase.html` |
 | 373 | good_bilingual | bilingual_complete | 844 | 44/15 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/OpenVDBAsset.html` |
-| 374 | draft_needs_translation | bilingual_draft | 592 | 27/20 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/overview.html` |
+| 374 | good_bilingual | bilingual_complete | 1051 | 46/7 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/overview.html` |
 | 375 | good_bilingual | bilingual_complete | 955 | 45/15 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleField.html` |
 | 376 | good_bilingual | bilingual_complete | 931 | 46/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html` |
 | 377 | good_bilingual | bilingual_complete | 900 | 37/7 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelBaseAPI.html` |
@@ -450,11 +450,11 @@ Generated: 2026-06-08T03:14:22.091Z
 | 384 | good_bilingual | bilingual_complete | 1327 | 38/6 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html` |
 | 385 | good_bilingual | bilingual_complete | 1300 | 38/6 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldRadianceBaseAPI.html` |
 | 386 | good_bilingual | bilingual_complete | 1286 | 40/7 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html` |
-| 387 | draft_needs_translation | bilingual_draft | 586 | 30/23 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html` |
-| 388 | draft_needs_translation | bilingual_draft | 561 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/usdVol_toc.html` |
-| 389 | draft_needs_translation | bilingual_draft | 690 | 30/19 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/Volume.html` |
-| 390 | draft_needs_translation | bilingual_draft | 821 | 42/31 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/VolumeFieldAsset.html` |
-| 391 | draft_needs_translation | bilingual_draft | 680 | 37/24 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/VolumeFieldBase.html` |
+| 387 | good_bilingual | bilingual_complete | 1029 | 47/9 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html` |
+| 388 | good_bilingual | bilingual_complete | 1011 | 44/7 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/usdVol_toc.html` |
+| 389 | good_bilingual | bilingual_complete | 1109 | 52/15 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/Volume.html` |
+| 390 | good_bilingual | bilingual_complete | 1058 | 51/14 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/VolumeFieldAsset.html` |
+| 391 | good_bilingual | bilingual_complete | 1095 | 47/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/VolumeFieldBase.html` |
 | 392 | draft_needs_translation | bilingual_draft | 653 | 31/20 | 0 | 0 | `full_site/release/user_guides/time_and_animated_values.html` |
 | 393 | draft_needs_translation | bilingual_draft | 687 | 30/19 | 0 | 0 | `full_site/release/user_guides/variable_expressions.html` |
 | 394 | draft_needs_translation | bilingual_draft | 755 | 35/24 | 0 | 0 | `full_site/release/wp_ar2.html` |

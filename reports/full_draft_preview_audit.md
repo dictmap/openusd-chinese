@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-08T03:14:30.982Z
+Generated: 2026-06-08T03:29:08.074Z
 
-Transient base URL: `http://127.0.0.1:58663/`
+Transient base URL: `http://127.0.0.1:60245/`
 
 Result:
 
 - Passed: true
-- Draft pages: 258
-- Pages checked: 258
-- Passed pages: 258
+- Draft pages: 252
+- Pages checked: 252
+- Passed pages: 252
 - Failed pages: 0
-- Final HTML links: 258
-- Local assets checked: 258
+- Final HTML links: 252
+- Local assets checked: 252
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -254,12 +254,6 @@ Result:
 | true | full_site/release/user_guides/schemas/usdLux/usdLux_toc.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdUI/overview.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdUI/usdUI_toc.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdVol/overview.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdVol/usdVol_toc.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdVol/Volume.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdVol/VolumeFieldAsset.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdVol/VolumeFieldBase.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/time_and_animated_values.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/variable_expressions.html | 200 | true | 0 | 0 |
 | true | full_site/release/wp_ar2.html | 200 | true | 0 | 0 |

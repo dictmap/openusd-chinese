@@ -1,6 +1,6 @@
 # OpenUSD 完整双语晋级清单
 
-Generated: 2026-06-08T03:14:26.870Z
+Generated: 2026-06-08T03:29:03.631Z
 
 这份清单只记录已经从 `bilingual_draft` 晋级为 `bilingual_complete` 的页面。它是 `scripts/discover_openusd_all_pages.mjs` 识别 promoted complete 页面的审计来源，不等同于把草稿页改一个状态。
 
@@ -16,6 +16,12 @@ Generated: 2026-06-08T03:14:26.870Z
 
 | ID | 本地输出 | 官方页面 | 状态 |
 | --- | --- | --- | --- |
+| `round-411-release-usdVol-core-ParticleFieldSphericalHarmonicsAttributeAPI` | `full_site/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html` | `https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html` | bilingual_complete |
+| `round-411-release-usdVol-core-Volume` | `full_site/release/user_guides/schemas/usdVol/Volume.html` | `https://openusd.org/release/user_guides/schemas/usdVol/Volume.html` | bilingual_complete |
+| `round-411-release-usdVol-core-VolumeFieldAsset` | `full_site/release/user_guides/schemas/usdVol/VolumeFieldAsset.html` | `https://openusd.org/release/user_guides/schemas/usdVol/VolumeFieldAsset.html` | bilingual_complete |
+| `round-411-release-usdVol-core-VolumeFieldBase` | `full_site/release/user_guides/schemas/usdVol/VolumeFieldBase.html` | `https://openusd.org/release/user_guides/schemas/usdVol/VolumeFieldBase.html` | bilingual_complete |
+| `round-411-release-usdVol-core-overview` | `full_site/release/user_guides/schemas/usdVol/overview.html` | `https://openusd.org/release/user_guides/schemas/usdVol/overview.html` | bilingual_complete |
+| `round-411-release-usdVol-core-usdVol_toc` | `full_site/release/user_guides/schemas/usdVol/usdVol_toc.html` | `https://openusd.org/release/user_guides/schemas/usdVol/usdVol_toc.html` | bilingual_complete |
 | `round-410-release-usdVol-particle-ParticleFieldKernelGaussianEllipsoidAPI` | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianEllipsoidAPI.html` | `https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianEllipsoidAPI.html` | bilingual_complete |
 | `round-410-release-usdVol-particle-ParticleFieldKernelGaussianSurfletAPI` | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html` | `https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html` | bilingual_complete |
 | `round-410-release-usdVol-particle-ParticleFieldOpacityAttributeAPI` | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html` | `https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html` | bilingual_complete |

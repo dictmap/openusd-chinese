@@ -1,6 +1,6 @@
 # OpenUSD English Debt Audit
 
-Generated: 2026-06-08T03:14:22.726Z
+Generated: 2026-06-08T03:28:59.401Z
 
 Purpose:
 
@@ -12,16 +12,16 @@ Purpose:
 ## Counts
 
 - Total pages: 406
-- good_bilingual: 148
-- review_ready_zh: 85
+- good_bilingual: 154
+- review_ready_zh: 91
 - review_needs_zh_debt: 63
 - API complete: 72
 - API review_ready_zh: 12
-- Release complete: 76
-- Release review_ready_zh: 73
+- Release complete: 82
+- Release review_ready_zh: 79
 - Complete pages with high/very high ratio diagnostic: 10
-- bilingual_draft: 258
-- draft_needs_translation: 247
+- bilingual_draft: 252
+- draft_needs_translation: 241
 - draft_template_only: 11
 
 ## Complete Pages Still Carrying English Debt
@@ -88,9 +88,7 @@ Purpose:
 | 402 | `full_site/release/wp_usdaudio.html` | release | release_or_tutorial | 722 | 7/4 | 2.95 | medium | draft |
 | 365 | `full_site/release/user_guides/schemas/usdUI/overview.html` | release | release_or_tutorial | 591 | 7/4 | 2.83 | medium | draft |
 | 283 | `full_site/release/contributors.html` | release | release_or_tutorial | 678 | 6/4 | 2.69 | medium | draft |
-| 387 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html` | release | release_or_tutorial | 586 | 7/4 | 2.64 | medium | draft |
 | 323 | `full_site/release/user_guides/primvars.html` | release | release_or_tutorial | 580 | 7/4 | 2.59 | medium | draft |
-| 374 | `full_site/release/user_guides/schemas/usdVol/overview.html` | release | release_or_tutorial | 592 | 7/4 | 2.58 | medium | draft |
 | 314 | `full_site/release/tut_usd_tutorials.html` | release | release_or_tutorial | 623 | 6/4 | 2.57 | medium | draft |
 | 321 | `full_site/release/user_guides/color_user_guide.html` | release | release_or_tutorial | 657 | 7/4 | 2.52 | medium | draft |
 | 290 | `full_site/release/maxperf.html` | release | release_or_tutorial | 625 | 7/4 | 2.49 | medium | draft |
@@ -98,6 +96,8 @@ Purpose:
 | 318 | `full_site/release/usd_products.html` | release | release_or_tutorial | 544 | 6/4 | 2.44 | medium | draft |
 | 400 | `full_site/release/wp_schema_versioning.html` | release | release_or_tutorial | 674 | 7/4 | 2.38 | medium | draft |
 | 297 | `full_site/release/release_schedule.html` | release | release_or_tutorial | 632 | 6/4 | 2.35 | medium | draft |
+| 293 | `full_site/release/plugins.html` | release | release_or_tutorial | 622 | 7/4 | 2.34 | medium | draft |
+| 324 | `full_site/release/user_guides/render_user_guide.html` | release | release_or_tutorial | 625 | 7/4 | 2.34 | medium | draft |
 
 Policy:
 
