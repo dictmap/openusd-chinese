@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-08T16:21:22.545Z
+Generated: 2026-06-08T16:41:10.665Z
 
-Transient base URL: `http://127.0.0.1:64294/`
+Transient base URL: `http://127.0.0.1:52599/`
 
 Result:
 
 - Passed: true
-- Draft pages: 186
-- Pages checked: 186
-- Passed pages: 186
+- Draft pages: 185
+- Pages checked: 185
+- Passed pages: 185
 - Failed pages: 0
-- Final HTML links: 186
-- Local assets checked: 186
+- Final HTML links: 185
+- Local assets checked: 185
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -200,7 +200,6 @@ Result:
 | true | full_site/api/system_diagnostics_8h_source.html | 200 | true | 0 | 0 |
 | true | full_site/api/usd_2usd_2object_8h.html | 200 | true | 0 | 0 |
 | true | full_site/api/usd_semantics_overview.html | 200 | true | 0 | 0 |
-| true | full_site/api/usdabc_page_front.html | 200 | true | 0 | 0 |
 | true | full_site/api/usddraco_page_front.html | 200 | true | 0 | 0 |
 | true | full_site/api/var_8h_source.html | 200 | true | 0 | 0 |
 

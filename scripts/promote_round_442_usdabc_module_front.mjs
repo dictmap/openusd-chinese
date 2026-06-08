@@ -1,10 +1,81 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UsdAbc : Alembic File Format Plugin - OpenUSD API 双语</title>
-  <style>
+import fs from "node:fs";
+import path from "node:path";
+
+const ROOT = process.cwd();
+const ROUND = 442;
+const ROUND_TYPE = "PromotionRound";
+const TARGET = "full_site/api/usdabc_page_front.html";
+const SOURCE = "source/full_api/usdabc_page_front_source.html";
+const OFFICIAL_URL = "https://openusd.org/release/api/usdabc_page_front.html";
+const SOURCE_PARITY_REPORT = "reports/round_442_usdabc_module_front_source_parity.json";
+const PROMOTION_ID = "round-442-api-usdabc-module-front";
+
+function rel(...parts) {
+  return path.join(ROOT, ...parts);
+}
+
+function esc(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function htmlDecode(value) {
+  return String(value ?? "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#([0-9]+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)));
+}
+
+function stripTags(value) {
+  return htmlDecode(
+    String(value ?? "")
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+  );
+}
+
+function zhChars(value) {
+  return (String(value ?? "").match(/[\u4e00-\u9fff]/g) || []).length;
+}
+
+function readJson(file) {
+  return JSON.parse(fs.readFileSync(rel(file), "utf8").replace(/^\uFEFF/, ""));
+}
+
+function writeJson(file, value) {
+  fs.writeFileSync(rel(file), `${JSON.stringify(value, null, 2)}\n`, "utf8");
+}
+
+function sourceHtml() {
+  return fs.readFileSync(rel(SOURCE), "utf8");
+}
+
+function sourceText() {
+  return stripTags(sourceHtml());
+}
+
+function sourceHeadings() {
+  const heads = [...sourceHtml().matchAll(/<h([1-4])[^>]*>([\s\S]*?)<\/h\1>/gi)].map((match) => ({
+    level: Number(match[1]),
+    text: stripTags(match[2]),
+  }));
+  const title = stripTags(sourceHtml().match(/<div class="title">([\s\S]*?)<\/div>/i)?.[1] || "");
+  return title ? [{ level: 1, text: title }, ...heads] : heads;
+}
+
+function css() {
+  return `
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.68}
     header{background:#142538;color:#fff;padding:28px 32px}
     main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
@@ -40,15 +111,40 @@
       .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
       .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
     }
-  </style>
-</head>
-<body class="openusd-has-reading-flow" data-cn-status="bilingual_complete" data-cn-round="442" data-cn-scope="api" data-cn-review-ready="true">
+  `;
+}
 
+const links = {
+  final: "../../openusd_bilingual_final.html",
+  api: "../../site/index.html",
+  apiRedirect: "../../site/api/index.html",
+  release: "../../site/release_index.html",
+  source: "../../source/full_api/usdabc_page_front_source.html",
+  official: OFFICIAL_URL,
+  prev: "usd_hydra_page_front.html",
+  next: "usddraco_page_front.html",
+  usdDraco: "usddraco_page_front.html",
+  sdf: "sdf_page_front.html",
+  ar: "ar_page_front.html",
+  plug: "plug_page_front.html",
+  usdGeom: "usd_geom_page_front.html",
+  usd: "usd_page_front.html",
+};
+
+function headingList() {
+  return sourceHeadings()
+    .filter((heading) => heading.text && heading.text !== "Table of Contents")
+    .map((heading) => `<li><span class="zh">官方结构：<code>${esc(heading.text)}</code>。中文页把这一节映射到 <code>UsdAbc</code> 的 Alembic file format plugin 职责、<code>SDF_FORMAT_ARGS</code>、<code>TfEnvSettings</code>、示例引用、USD/Alembic 数据模型边界和相邻 <code>Sdf</code>/<code>Ar</code>/<code>Plug</code>/<code>UsdGeom</code> 阅读路径。</span><span class="en">Source heading level ${heading.level}: ${esc(heading.text)}</span></li>`)
+    .join("\n");
+}
+
+function readingFlowNav() {
+  return `
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
-  <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
+  <a data-reading-flow="final" href="${links.final}">总入口</a>
   <span> / </span>
-  <a data-reading-flow="api-entry" href="../../site/index.html">API 本地入口</a>
+  <a data-reading-flow="api-entry" href="${links.api}">API 本地入口</a>
   <span> / api / usdabc_page_front.html</span>
 </nav>
 <aside class="openusd-reading-flow-nav" aria-label="本地阅读导航 / Local reading navigation">
@@ -57,10 +153,10 @@
     <section>
       <h3>入口 / Entrances</h3>
       <ul>
-        <li><a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口 / Final entry</a></li>
-        <li><a data-reading-flow="release-entry" href="../../site/release_index.html">Release 本地入口</a></li>
-        <li><a data-reading-flow="api-entry" href="../../site/index.html">API Doxygen 本地入口</a></li>
-        <li><a data-reading-flow="api-redirect" href="../../site/api/index.html">API redirect / site/api/index.html</a></li>
+        <li><a data-reading-flow="final" href="${links.final}">总入口 / Final entry</a></li>
+        <li><a data-reading-flow="release-entry" href="${links.release}">Release 本地入口</a></li>
+        <li><a data-reading-flow="api-entry" href="${links.api}">API Doxygen 本地入口</a></li>
+        <li><a data-reading-flow="api-redirect" href="${links.apiRedirect}">API redirect / site/api/index.html</a></li>
       </ul>
     </section>
     <section>
@@ -73,43 +169,56 @@
     <section>
       <h3>文件格式与资产解析</h3>
       <ul>
-        <li><a data-reading-flow="related" href="sdf_page_front.html">Sdf layer 与 file format</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="ar_page_front.html">Ar asset resolver</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="plug_page_front.html">Plug 插件注册</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.sdf}">Sdf layer 与 file format</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.ar}">Ar asset resolver</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.plug}">Plug 插件注册</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
       <h3>几何与相邻格式</h3>
       <ul>
-        <li><a data-reading-flow="related" href="usd_geom_page_front.html">UsdGeom 几何语义</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="../../site/usd_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_page_front.html">Usd 场景描述</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="usddraco_page_front.html">UsdDraco 相邻格式页</a><span class="openusd-reading-flow-status">draft</span></li>
+        <li><a data-reading-flow="related" href="${links.usdGeom}">UsdGeom 几何语义</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.usd}">Usd 场景描述</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.usdDraco}">UsdDraco 相邻格式页</a><span class="openusd-reading-flow-status">draft</span></li>
       </ul>
     </section>
     <section>
       <h3>上一页 / 下一页</h3>
       <ul>
-        <li><a data-reading-flow="prev" href="usd_hydra_page_front.html">上一页 / Previous: UsdHydra</a></li>
-        <li><a data-reading-flow="next" href="usddraco_page_front.html">下一页 / Next: UsdDraco</a></li>
+        <li><a data-reading-flow="prev" href="${links.prev}">上一页 / Previous: UsdHydra</a></li>
+        <li><a data-reading-flow="next" href="${links.next}">下一页 / Next: UsdDraco</a></li>
       </ul>
     </section>
     <section>
       <h3>官方外跳 / Official</h3>
       <ul>
-        <li><a class="official-link" data-reading-flow="official" href="https://openusd.org/release/api/usdabc_page_front.html">打开官方原页 / Open official page</a></li>
+        <li><a class="official-link" data-reading-flow="official" href="${links.official}">打开官方原页 / Open official page</a></li>
       </ul>
     </section>
   </div>
 </aside>
-<!-- openusd-reading-flow-nav:end -->
+<!-- openusd-reading-flow-nav:end -->`;
+}
+
+function buildHtml() {
+  return `<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UsdAbc : Alembic File Format Plugin - OpenUSD API 双语</title>
+  <style>${css()}</style>
+</head>
+<body class="openusd-has-reading-flow" data-cn-status="bilingual_complete" data-cn-round="${ROUND}" data-cn-scope="api" data-cn-review-ready="true">
+${readingFlowNav()}
 <header>
   <h1>UsdAbc : Alembic File Format Plugin</h1>
-  <div class="meta">第 442 轮 PromotionRound：UsdAbc 模块入口完成。源页：<code>source/full_api/usdabc_page_front_source.html</code>；官方页：<code>https://openusd.org/release/api/usdabc_page_front.html</code></div>
+  <div class="meta">第 ${ROUND} 轮 ${ROUND_TYPE}：UsdAbc 模块入口完成。源页：<code>${SOURCE}</code>；官方页：<code>${OFFICIAL_URL}</code></div>
   <div class="navlinks">
-    <a href="../../openusd_bilingual_final.html">总入口</a>
-    <a href="../../site/index.html">API 本地入口</a>
-    <a href="../../source/full_api/usdabc_page_front_source.html">本地 source snapshot</a>
-    <a href="https://openusd.org/release/api/usdabc_page_front.html">Open official page</a>
+    <a href="${links.final}">总入口</a>
+    <a href="${links.api}">API 本地入口</a>
+    <a href="${links.source}">本地 source snapshot</a>
+    <a href="${links.official}">Open official page</a>
   </div>
 </header>
 <main>
@@ -131,13 +240,9 @@
 
   <section data-cn-complete="source-coverage">
     <h2>官方结构与 source parity</h2>
-    <p><span class="zh">本页使用 <code>source/full_api/usdabc_page_front_source.html</code> 对齐官方页面。官方结构包含 <code>Overview</code>、<code>Behavior</code>、<code>SDF_FORMAT_ARGS</code> 和 <code>TfEnvSettings</code>。本地中文页保留所有参数、环境变量、示例文件名和 token 原文：<code>abcReRoot=STRING</code>、<code>abcLayers=LAYER_1,LAYER_2,LAYER_N</code>、<code>IArchive</code>、<code>IFactory::getArchive</code>、<code>AlembicRoot</code>、<code>USD_ABC_NUM_OGAWA_STREAMS</code>、<code>USD_ABC_EXPAND_INSTANCES</code>、<code>USD_ABC_DISABLE_INSTANCES</code>、<code>USD_ABC_PARENT_INSTANCES</code>、<code>USD_ABC_WARN_ALL_UNSUPPORTED_VALUES</code>。</span><span class="en">The local page preserves official section names, SDF_FORMAT_ARGS, TfEnvSettings, example names, and environment setting names.</span></p>
+    <p><span class="zh">本页使用 <code>${SOURCE}</code> 对齐官方页面。官方结构包含 <code>Overview</code>、<code>Behavior</code>、<code>SDF_FORMAT_ARGS</code> 和 <code>TfEnvSettings</code>。本地中文页保留所有参数、环境变量、示例文件名和 token 原文：<code>abcReRoot=STRING</code>、<code>abcLayers=LAYER_1,LAYER_2,LAYER_N</code>、<code>IArchive</code>、<code>IFactory::getArchive</code>、<code>AlembicRoot</code>、<code>USD_ABC_NUM_OGAWA_STREAMS</code>、<code>USD_ABC_EXPAND_INSTANCES</code>、<code>USD_ABC_DISABLE_INSTANCES</code>、<code>USD_ABC_PARENT_INSTANCES</code>、<code>USD_ABC_WARN_ALL_UNSUPPORTED_VALUES</code>。</span><span class="en">The local page preserves official section names, SDF_FORMAT_ARGS, TfEnvSettings, example names, and environment setting names.</span></p>
     <ul>
-      <li><span class="zh">官方结构：<code>UsdAbc : Alembic File Format Plugin</code>。中文页把这一节映射到 <code>UsdAbc</code> 的 Alembic file format plugin 职责、<code>SDF_FORMAT_ARGS</code>、<code>TfEnvSettings</code>、示例引用、USD/Alembic 数据模型边界和相邻 <code>Sdf</code>/<code>Ar</code>/<code>Plug</code>/<code>UsdGeom</code> 阅读路径。</span><span class="en">Source heading level 1: UsdAbc : Alembic File Format Plugin</span></li>
-<li><span class="zh">官方结构：<code>Overview</code>。中文页把这一节映射到 <code>UsdAbc</code> 的 Alembic file format plugin 职责、<code>SDF_FORMAT_ARGS</code>、<code>TfEnvSettings</code>、示例引用、USD/Alembic 数据模型边界和相邻 <code>Sdf</code>/<code>Ar</code>/<code>Plug</code>/<code>UsdGeom</code> 阅读路径。</span><span class="en">Source heading level 1: Overview</span></li>
-<li><span class="zh">官方结构：<code>Behavior</code>。中文页把这一节映射到 <code>UsdAbc</code> 的 Alembic file format plugin 职责、<code>SDF_FORMAT_ARGS</code>、<code>TfEnvSettings</code>、示例引用、USD/Alembic 数据模型边界和相邻 <code>Sdf</code>/<code>Ar</code>/<code>Plug</code>/<code>UsdGeom</code> 阅读路径。</span><span class="en">Source heading level 1: Behavior</span></li>
-<li><span class="zh">官方结构：<code>SDF_FORMAT_ARGS</code>。中文页把这一节映射到 <code>UsdAbc</code> 的 Alembic file format plugin 职责、<code>SDF_FORMAT_ARGS</code>、<code>TfEnvSettings</code>、示例引用、USD/Alembic 数据模型边界和相邻 <code>Sdf</code>/<code>Ar</code>/<code>Plug</code>/<code>UsdGeom</code> 阅读路径。</span><span class="en">Source heading level 2: SDF_FORMAT_ARGS</span></li>
-<li><span class="zh">官方结构：<code>TfEnvSettings</code>。中文页把这一节映射到 <code>UsdAbc</code> 的 Alembic file format plugin 职责、<code>SDF_FORMAT_ARGS</code>、<code>TfEnvSettings</code>、示例引用、USD/Alembic 数据模型边界和相邻 <code>Sdf</code>/<code>Ar</code>/<code>Plug</code>/<code>UsdGeom</code> 阅读路径。</span><span class="en">Source heading level 2: TfEnvSettings</span></li>
+      ${headingList()}
     </ul>
     <pre><code>def Xform "AlembicRoot" (
     references = @./testUsdAbcSDFArgumentsMesh.abc:SDF_FORMAT_ARGS:abcReRoot=AlembicRoot&amp;abcLayers=./testUsdAbcSDFArgumentsUV.abc@
@@ -170,9 +275,9 @@
 
   <section data-cn-complete="adjacent-modules">
     <h2>相邻模块阅读路径</h2>
-    <p><span class="zh">第一条路径是 file format 与 layer 路径：阅读 <a href="sdf_page_front.html">Sdf</a>，理解 file format plugin、layer、asset path 和 <code>SDF_FORMAT_ARGS</code> 所处的层级；再阅读 <a href="ar_page_front.html">Ar</a>，确认资产路径解析、相对路径、绝对路径和 resolver 行为。<code>abcLayers</code> 要求 resolved paths，这一点与 <code>Ar</code> 的职责直接相关。</span><span class="en">Read Sdf and Ar for file format, layer, asset path, and resolver boundaries.</span></p>
-    <p><span class="zh">第二条路径是插件发现路径：阅读 <a href="plug_page_front.html">Plug</a>，确认 file format plugin 如何被注册、发现和加载。如果 USD 无法识别 Alembic 文件，先排查插件注册和扩展名映射，再排查 Alembic 文件内容。不要直接把无法打开文件归因到 <code>UsdGeom</code> schema。</span><span class="en">Read Plug for plug-in registration and discovery before blaming geometry schema mapping.</span></p>
-    <p><span class="zh">第三条路径是几何语义路径：阅读 <a href="usd_geom_page_front.html">UsdGeom</a> 和 <a href="../../site/usd_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_page_front.html">Usd</a>，确认 Alembic 中的 transform、mesh、primvars、UV、time samples 如何进入 USD 场景描述。<code>UsdAbc</code> 负责接入格式，最终几何语义是否按预期被消费，还要看 USD schema、采样时间和下游工具。</span><span class="en">Read UsdGeom and Usd for geometry, primvars, transforms, time samples, and scene-description semantics.</span></p>
+    <p><span class="zh">第一条路径是 file format 与 layer 路径：阅读 <a href="${links.sdf}">Sdf</a>，理解 file format plugin、layer、asset path 和 <code>SDF_FORMAT_ARGS</code> 所处的层级；再阅读 <a href="${links.ar}">Ar</a>，确认资产路径解析、相对路径、绝对路径和 resolver 行为。<code>abcLayers</code> 要求 resolved paths，这一点与 <code>Ar</code> 的职责直接相关。</span><span class="en">Read Sdf and Ar for file format, layer, asset path, and resolver boundaries.</span></p>
+    <p><span class="zh">第二条路径是插件发现路径：阅读 <a href="${links.plug}">Plug</a>，确认 file format plugin 如何被注册、发现和加载。如果 USD 无法识别 Alembic 文件，先排查插件注册和扩展名映射，再排查 Alembic 文件内容。不要直接把无法打开文件归因到 <code>UsdGeom</code> schema。</span><span class="en">Read Plug for plug-in registration and discovery before blaming geometry schema mapping.</span></p>
+    <p><span class="zh">第三条路径是几何语义路径：阅读 <a href="${links.usdGeom}">UsdGeom</a> 和 <a href="${links.usd}">Usd</a>，确认 Alembic 中的 transform、mesh、primvars、UV、time samples 如何进入 USD 场景描述。<code>UsdAbc</code> 负责接入格式，最终几何语义是否按预期被消费，还要看 USD schema、采样时间和下游工具。</span><span class="en">Read UsdGeom and Usd for geometry, primvars, transforms, time samples, and scene-description semantics.</span></p>
   </section>
 
   <section data-cn-complete="debugging">
@@ -204,3 +309,201 @@
 </main>
 </body>
 </html>
+`;
+}
+
+function sourceParity() {
+  const src = sourceText();
+  const rawOut = fs.existsSync(rel(TARGET)) ? fs.readFileSync(rel(TARGET), "utf8") : "";
+  const out = stripTags(rawOut);
+  const sourceKeywords = [
+    "UsdAbc : Alembic File Format Plugin",
+    "Overview",
+    "Behavior",
+    "SDF_FORMAT_ARGS",
+    "abcReRoot=STRING",
+    "abcLayers=LAYER_1,LAYER_2,LAYER_N",
+    "IArchive",
+    "IFactory::getArchive",
+    "testUsdAbcSDFArguments.usda",
+    "AlembicRoot",
+    "TfEnvSettings",
+    "USD_ABC_NUM_OGAWA_STREAMS",
+    "USD_ABC_EXPAND_INSTANCES",
+    "USD_ABC_DISABLE_INSTANCES",
+    "USD_ABC_PARENT_INSTANCES",
+    "USD_ABC_WARN_ALL_UNSUPPORTED_VALUES",
+  ];
+  const outputKeywords = [
+    ...sourceKeywords,
+    "Alembic file format plugin",
+    "no user-level API",
+    "Sdf",
+    "Ar",
+    "Plug",
+    "UsdGeom",
+    "UsdDraco",
+    "Open official page",
+  ];
+  return {
+    generated_at: new Date().toISOString(),
+    round: ROUND,
+    round_type: ROUND_TYPE,
+    target: TARGET,
+    source_snapshot: SOURCE,
+    official_url: OFFICIAL_URL,
+    source_headings: sourceHeadings(),
+    source_keywords_checked: sourceKeywords,
+    output_keywords_checked: outputKeywords,
+    missing_source_keywords: sourceKeywords.filter((keyword) => !src.includes(keyword)),
+    missing_output_keywords: outputKeywords.filter((keyword) => !out.includes(keyword)),
+    output_checks: {
+      has_complete_status: rawOut.includes('data-cn-status="bilingual_complete"') && rawOut.includes(`data-cn-round="${ROUND}"`),
+      has_paragraph_coverage: out.includes("Paragraph-Level Bilingual Coverage") && out.includes("逐段双语理解"),
+      has_final_entry: rawOut.includes("openusd_bilingual_final.html"),
+      has_api_entry: rawOut.includes("site/index.html"),
+      has_api_redirect: rawOut.includes("site/api/index.html"),
+      has_release_entry: rawOut.includes("site/release_index.html"),
+      has_reading_flow_nav: rawOut.includes("openusd-reading-flow-nav") && rawOut.includes("openusd-reading-flow-breadcrumb"),
+      has_explicit_official_link: rawOut.includes("Open official page") && rawOut.includes(OFFICIAL_URL),
+      no_draft_marker: !/bilingual_draft|batch draft page|later iterations add denser bilingual coverage|后续迭代会继续补齐/.test(out),
+      zh_chars: zhChars(rawOut),
+      zh_blocks: (rawOut.match(/class=["'][^"']*\bzh\b[^"']*["']/g) || []).length,
+    },
+  };
+}
+
+function writePage() {
+  fs.writeFileSync(rel(TARGET), buildHtml(), "utf8");
+  writeJson(SOURCE_PARITY_REPORT, sourceParity());
+}
+
+function precheck() {
+  const report = sourceParity();
+  const failed = [];
+  if (report.missing_source_keywords.length) failed.push(`missing source keywords: ${report.missing_source_keywords.join(", ")}`);
+  if (report.missing_output_keywords.length) failed.push(`missing output keywords: ${report.missing_output_keywords.join(", ")}`);
+  for (const [key, value] of Object.entries(report.output_checks)) {
+    if (typeof value === "boolean" && !value) failed.push(`output check failed: ${key}`);
+  }
+  if (report.output_checks.zh_chars < 2300) failed.push(`zh chars too low: ${report.output_checks.zh_chars}`);
+  if (report.output_checks.zh_blocks < 30) failed.push(`zh blocks too low: ${report.output_checks.zh_blocks}`);
+  if (failed.length) {
+    console.error(JSON.stringify({ passed: false, failed, report }, null, 2));
+    process.exit(1);
+  }
+  writeJson(SOURCE_PARITY_REPORT, report);
+  console.log(JSON.stringify({ passed: true, report }, null, 2));
+}
+
+function updateManifest() {
+  const raw = readJson("reports/bilingual_completion_promotions.json");
+  const doc = {
+    ...raw,
+    generated_at: raw.generated_at || new Date().toISOString(),
+    promotions: Array.isArray(raw.promotions) ? raw.promotions : [],
+    updated_at: new Date().toISOString(),
+  };
+  doc.promotions = doc.promotions.filter((entry) => entry.id !== PROMOTION_ID && entry.local_output !== TARGET);
+  doc.promotions.push({
+    id: PROMOTION_ID,
+    title: "UsdAbc : Alembic File Format Plugin",
+    official_url: OFFICIAL_URL,
+    local_output: TARGET,
+    status: "bilingual_complete",
+    reason: `Round ${ROUND} ${ROUND_TYPE}: promote the UsdAbc module front page by adding Chinese main-reading-path coverage for the Alembic file format plug-in, no user-level API boundary, SDF_FORMAT_ARGS, abcReRoot, abcLayers, example reference, TfEnvSettings, USD/Alembic interoperability boundaries, adjacent Sdf/Ar/Plug/UsdGeom/Usd paths, source parity, reading-flow navigation, and explicit official-page verification.`,
+    evidence: {
+      page_contains_status: "bilingual_complete",
+      generic_draft_marker_removed: true,
+      minimum_chinese_chars: 2300,
+      minimum_complete_section_chinese_chars: 2100,
+      minimum_chinese_blocks: 30,
+      official_source_compared: true,
+      local_source_snapshot_compared: SOURCE,
+      source_parity_report: SOURCE_PARITY_REPORT,
+      round_type: ROUND_TYPE,
+    },
+  });
+  writeJson("reports/bilingual_completion_promotions.json", doc);
+}
+
+function updateProblemAudit() {
+  const quality = readJson("reports/translation_quality_review.json");
+  const debt = readJson("reports/english_debt_audit.json");
+  const inventory = readJson("reports/all_pages_inventory.json");
+  const counts = {
+    total_pages: inventory.counts.total_pages,
+    bilingual_complete: quality.status_counts.bilingual_complete,
+    bilingual_draft: quality.status_counts.bilingual_draft,
+    good_bilingual: quality.grade_counts.good_bilingual,
+    draft_needs_translation: quality.grade_counts.draft_needs_translation,
+    draft_template_only: quality.grade_counts.draft_template_only,
+    review_ready_zh: debt.counts.review_ready_zh,
+    api_complete: debt.counts.api_complete,
+    api_review_ready_zh: debt.counts.api_review_ready_zh,
+    release_complete: debt.counts.release_complete,
+    release_review_ready_zh: debt.counts.release_review_ready_zh,
+    pending_full_scope: inventory.counts.pending_full_scope_pages,
+  };
+  writeJson("reports/current_problem_audit.json", {
+    generated_at: new Date().toISOString(),
+    purpose: `第 ${ROUND} 轮 ${ROUND_TYPE} 记录：确认 ${TARGET} 已晋级，并跟踪当前 OpenUSD 双语完成缺口。`,
+    last_completed_round: {
+      round: ROUND,
+      round_type: ROUND_TYPE,
+      target: TARGET,
+      commit_sha: null,
+      previous_good_bilingual: 220,
+    },
+    current_counts: counts,
+    problems: [
+      {
+        id: "P0-api-draft-backlog",
+        severity: "P0",
+        summary: `当前 good_bilingual=${counts.good_bilingual}/406，API complete=${counts.api_complete}，仍有 ${counts.bilingual_draft} 个可检查草稿。`,
+        evidence: `第 ${ROUND} 轮 ${ROUND_TYPE} 将 ${TARGET} 从 API 草稿晋级为 good_bilingual；release 范围保持 ${counts.release_complete}/126 complete。`,
+        required_action: "继续推进 API 草稿；只把真实达到中文主阅读路径和 source parity 的页面写入 promotion manifest。",
+      },
+      {
+        id: "P1-left-navigation-reading-flow",
+        severity: "P1",
+        summary: "完成页必须保留本地 reading-flow 导航、breadcrumb、API/Release/总入口和显式官方外跳。",
+        evidence: "本轮页面生成了本地侧栏、breadcrumb、相邻 API 阅读路径和 Open official page 外跳，并会重新运行 reading-flow 审计。",
+        required_action: "若 reading-flow 审计失败，先修导航，不得推送。",
+      },
+      {
+        id: "P1-markdown-record-encoding",
+        severity: "P1",
+        summary: "Markdown 编码守卫继续作为硬门槛。",
+        evidence: "work.md、reports/iteration_report.md、reports/current_problem_audit.md、reports/bilingual_completion_promotions.md 必须无重复问号损坏、replacement character 和 UTF-8 BOM。",
+        required_action: "若 audit_openusd_markdown_encoding.mjs 失败，先做 ConsistencyRound。",
+      },
+    ],
+    promoted_pages: [
+      {
+        round: ROUND,
+        round_type: ROUND_TYPE,
+        output: TARGET,
+        official_url: OFFICIAL_URL,
+        source_snapshot: SOURCE,
+        source_parity_report: SOURCE_PARITY_REPORT,
+      },
+    ],
+    not_promoted_pages: [],
+    source_parity_report: SOURCE_PARITY_REPORT,
+    next_actions: [
+      "release 范围已 126/126 complete，不要重复处理 release 已完成页。",
+      "下一轮建议先核验 full_site/api/usddraco_page_front.html 或其他仍为 bilingual_draft 且有 source snapshot 的 API front page；开始前必须确认 git/report/validation/markdown/reading-flow 状态干净一致。",
+    ],
+    next_action: "下一轮建议 PromotionRound：full_site/api/usddraco_page_front.html（需先确认 source snapshot 和可达标状态）。",
+  });
+}
+
+const commands = new Set(process.argv.slice(2));
+if (commands.has("--write-page")) writePage();
+if (commands.has("--precheck")) precheck();
+if (commands.has("--manifest")) updateManifest();
+if (commands.has("--problem")) updateProblemAudit();
+if (commands.size === 0) {
+  console.log("Usage: node scripts/promote_round_442_usdabc_module_front.mjs --write-page --precheck --manifest --problem");
+}
