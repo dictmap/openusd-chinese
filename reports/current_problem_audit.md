@@ -15,7 +15,17 @@ Generated: 2026-06-08T08:57:22.764Z
 - draft_template_only：10
 - promotion manifest：194
 - api_complete：76
+- api_review_ready_zh：16
 - release_complete：126
+- release_review_ready_zh：123
+
+## 最近晋级记录
+
+- round：422
+- round_type：PromotionRound
+- target：`full_site/api/usd_mtlx_page_front.html`
+- commit SHA：`bff8ada6c935fd360c2f27be641af2de2a308d07`
+- source parity：`reports/round_422_usd_mtlx_module_front_source_parity.json`
 
 ## 问题清单
 
@@ -27,4 +37,4 @@ Generated: 2026-06-08T08:57:22.764Z
 
 ## 下一步
 
-Select the next API target only after git/report/validation state is clean and consistent.
+下一轮建议目标：`full_site/api/usd_physics_page_front.html`。开始前继续核对 git、报告、validation、Markdown 编码和 reading-flow；如果该页源页或验证阻塞，停止并报告具体原因。

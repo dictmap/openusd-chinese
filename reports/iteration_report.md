@@ -1,12 +1,11 @@
 # OpenUSD Iteration Report
 
-## 第 null 轮摘要
-
-- 轮次类型：UnknownRound
-- 轮次目的：Track current OpenUSD bilingual completion blockers and named P0/P1 defects.
-- 本轮目标：命名缺陷或一致性修复
-- 结果：未晋级页面，修复命名缺陷或一致性问题。
-- 核心说明：保持审计链和人类可读记录一致。
+## 第 422 轮摘要
+- 轮次类型：PromotionRound
+- 轮次目的：将 `full_site/api/usd_mtlx_page_front.html` 从 API 可检查草稿晋级为完整双语页面，并保持报告、入口、manifest 与验证链一致。
+- 本轮目标：`full_site/api/usd_mtlx_page_front.html`
+- 结果：完成 1 个页面晋级，good_bilingual 从 201 增至 202；本次 ConsistencyRound 只修复记录层，不改变完成计数。
+- 核心说明：目标页已进入 promotion manifest；当前记录补齐第 422 轮目标、round 类型、commit SHA 和真实计数，避免继续出现旧的占位轮次文本。
 
 ## 真实计数
 
@@ -19,7 +18,9 @@
 - draft_template_only：10
 - pending_full_scope：0
 - api_complete：76
+- api_review_ready_zh：16
 - release_complete：126
+- release_review_ready_zh：123
 
 ## 验证
 
@@ -30,6 +31,7 @@
 
 ## 本轮改动文件
 
+- `full_site/api/usd_mtlx_page_front.html`
 - `openusd_bilingual_final.html`
 - `reports/all_pages_inventory.json/md`
 - `reports/translation_quality_review.json/md`
@@ -47,4 +49,4 @@
 
 ## 下一步
 
-优先选择 release/tutorial/user guide 页面，以降低 release 覆盖滞后。建议目标：`Select the next API target only after git/report/validation state is clean and consistent.`。
+下一轮建议恢复 PromotionRound，目标：`full_site/api/usd_physics_page_front.html`。开始前仍必须核对工作区干净、HEAD 等于 origin/main、报告计数一致、Markdown 编码和 reading-flow 审计通过。

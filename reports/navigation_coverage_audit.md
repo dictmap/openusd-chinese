@@ -1,6 +1,6 @@
 # OpenUSD Navigation Coverage Audit
 
-Generated: 2026-06-08T08:57:20.196Z
+Generated: 2026-06-08T09:29:20.836Z
 
 Result:
 
