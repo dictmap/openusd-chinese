@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-08T02:51:03.547Z
+Generated: 2026-06-08T03:14:22.091Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 266
-- bilingual_complete: 140
+- bilingual_draft: 258
+- bilingual_complete: 148
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 255
-- good_bilingual: 140
+- draft_needs_translation: 247
+- good_bilingual: 148
 
 ## Current Focus Batch
 
@@ -442,14 +442,14 @@ Generated: 2026-06-08T02:51:03.547Z
 | 376 | good_bilingual | bilingual_complete | 931 | 46/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html` |
 | 377 | good_bilingual | bilingual_complete | 900 | 37/7 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelBaseAPI.html` |
 | 378 | good_bilingual | bilingual_complete | 929 | 38/7 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelConstantSurfletAPI.html` |
-| 379 | draft_needs_translation | bilingual_draft | 809 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianEllipsoidAPI.html` |
-| 380 | draft_needs_translation | bilingual_draft | 741 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html` |
-| 381 | draft_needs_translation | bilingual_draft | 591 | 29/22 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html` |
-| 382 | draft_needs_translation | bilingual_draft | 582 | 29/22 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html` |
-| 383 | draft_needs_translation | bilingual_draft | 621 | 29/22 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html` |
-| 384 | draft_needs_translation | bilingual_draft | 704 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html` |
-| 385 | draft_needs_translation | bilingual_draft | 755 | 36/24 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldRadianceBaseAPI.html` |
-| 386 | draft_needs_translation | bilingual_draft | 562 | 29/22 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html` |
+| 379 | good_bilingual | bilingual_complete | 1342 | 38/6 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianEllipsoidAPI.html` |
+| 380 | good_bilingual | bilingual_complete | 1322 | 38/6 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html` |
+| 381 | good_bilingual | bilingual_complete | 1265 | 39/7 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html` |
+| 382 | good_bilingual | bilingual_complete | 1240 | 39/7 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html` |
+| 383 | good_bilingual | bilingual_complete | 1231 | 40/7 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html` |
+| 384 | good_bilingual | bilingual_complete | 1327 | 38/6 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html` |
+| 385 | good_bilingual | bilingual_complete | 1300 | 38/6 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldRadianceBaseAPI.html` |
+| 386 | good_bilingual | bilingual_complete | 1286 | 40/7 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html` |
 | 387 | draft_needs_translation | bilingual_draft | 586 | 30/23 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html` |
 | 388 | draft_needs_translation | bilingual_draft | 561 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/usdVol_toc.html` |
 | 389 | draft_needs_translation | bilingual_draft | 690 | 30/19 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/Volume.html` |

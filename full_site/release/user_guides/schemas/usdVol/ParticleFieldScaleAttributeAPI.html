@@ -3,24 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：ParticleFieldScaleAttributeAPI / ParticleFieldScaleAttributeAPI</title>
+  <title>完整双语参考：ParticleFieldScaleAttributeAPI / ParticleFieldScaleAttributeAPI</title>
   <link rel="icon" href="../../../../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1100px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
+
   </style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
@@ -44,9 +49,9 @@
 </head>
 <body class="openusd-has-reading-flow">
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：ParticleFieldScaleAttributeAPI / ParticleFieldScaleAttributeAPI</h1>
-    <div class="meta">https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html</div>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：ParticleFieldScaleAttributeAPI / ParticleFieldScaleAttributeAPI</h1>
+    <div class="meta">官方页：https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html</div>
   </header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
@@ -88,8 +93,8 @@
 <li><a data-reading-flow="related" href="ParticleField3DGaussianSplat.html">ParticleField3DGaussianSplat</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="ParticleFieldKernelBaseAPI.html">ParticleFieldKernelBaseAPI</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="ParticleFieldKernelConstantSurfletAPI.html">ParticleFieldKernelConstantSurfletAPI</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="overview.html">Overview</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="ParticleFieldKernelGaussianEllipsoidAPI.html">ParticleFieldKernelGaussianEllipsoidAPI</a><span class="openusd-reading-flow-status">draft</span></li>
+<li><a data-reading-flow="related" href="ParticleFieldKernelGaussianEllipsoidAPI.html">ParticleFieldKernelGaussianEllipsoidAPI</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="ParticleFieldKernelGaussianSurfletAPI.html">ParticleFieldKernelGaussianSurfletAPI</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
@@ -109,92 +114,91 @@
 </aside>
 <!-- openusd-reading-flow-nav:end -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section data-cn-refinement="release-quality-pass-073">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 ParticleFieldScaleAttributeAPI 补充中文优先的 schema 用途、数据范围/类型阅读路径、schema 边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds Chinese-first schema purpose, data range and type reading paths, schema boundaries, and terminology for ParticleFieldScaleAttributeAPI while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
+    <section data-cn-complete="round-410-usdVol-particle-api-ParticleFieldScaleAttributeAPI-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="en">Defines an applied schema for ParticleField scale factor data.</p>
+      <p class="zh">官方源页核心说明：Defines an applied schema for ParticleField scale factor data.</p>
+      <p class="zh"><code>UsdVol</code> 的 particle field 页描述的是粒子场数据、核函数和每粒子属性，不是 <code>usdLux</code> 光照、<code>usdMedia</code> 音频或 <code>usdRender</code> 输出配置。本组页面要和第 409 轮的 <code>ParticleField</code>、<code>ParticleField3DGaussianSplat</code>、<code>ParticleFieldKernelBaseAPI</code> 连续阅读。</p>
+      <p class="zh"><code>ParticleField</code> 的核心判断是 position 数据决定粒子数量，kernel 数据决定单个粒子如何在空间中贡献，radiance/opacity/orientation/scale 等属性决定每个粒子的颜色、透明度和几何变换。缺少任何关键组件，都可能让消费端无法验证或采用粒子场。</p>
+      <p class="zh"><code>ParticleFieldPositionBaseAPI</code> 是验证链里的基础 applied schema。它让工具能确认某个 ParticleField 至少有位置定义；如果没有 position 数据，粒子场就没有粒子，后续 opacity、scale、orientation、radiance 数据都没有可靠对齐对象。</p>
+      <p class="zh">本组 AttributeAPI 页都要按同一个长度规则理解：属性长度应与 position 数据定义的粒子数量匹配。太长时通常截断到粒子数量，太短时会被忽略；若被忽略或未 authored，则使用对应默认行为。</p>
+      <p class="zh">精度选择是第二条共同线索。官方常同时提供 float 和 half 版本，例如 <code>opacities</code> / <code>opacitiesh</code>、<code>positions</code> / <code>positionsh</code>、<code>scales</code> / <code>scalesh</code>。数据消费者应优先使用 float 版本；half 版本主要服务数据体积和内存占用权衡。</p>
+      <p class="zh">Gaussian kernel 页要区分 ellipsoid 和 surflet：ellipsoid 是三维高斯球经 rotation/scale 变换后的椭球；surflet 是位于 XY plane 的二维高斯 disk，经 rotation/scale 变换后成为 planar ellipse。二者都不是 light shape，也不是 mesh surface。</p>
+      <p class="zh">Opacity 与 scale 的 PLY 误读必须保留。官方明确提醒 opacity 是传统线性 <code>[0, 1]</code> computer graphics opacity，不是 PLY Gaussian splats 中常见、需要 sigmoid activation function 的变换数据；scale 是线性 scale，不是 PLY 中可能出现的 log-format。</p>
+      <p class="zh">调试时先看 ParticleField 上应用了哪些 built-in 或 applied schema，再看 position 数据数量，随后检查 kernel、radiance、opacity、orientation 和 scale 是否存在并与 position 长度匹配，最后检查 renderer 是否支持目标 kernel 和属性类型。</p>
+      <p class="zh">站内阅读路径保持本地化：同目录的 <code>overview</code>、<code>usdVol_toc</code>、<code>ParticleField</code>、kernel API 和 AttributeAPI 都应通过本地链接连续阅读。只有明确写成“打开官方原页 / Open official page”的链接才外跳到 openusd.org。</p>
+      <p class="zh">中文说明保留正式标识符：API/schema/token/属性名/函数名/代码、<code>g(u=0;o=1;x = p.length())</code>、<code>float[]</code>、<code>half[]</code>、<code>point3f[]</code>、<code>quatf[]</code>、<code>float3[]</code> 等都不翻译，只在中文中解释它们的用途和边界。</p>
+      <p class="zh">从 composition 角度看，这些属性仍是 USD authored opinions。layer strength、reference、payload、variant 和 override 都可能改变最终 composed value；排查时应看最终 stage 上的 resolved attributes，而不是只看某个 layer 文件。</p>
+      <p class="zh">从 renderer 采用角度看，schema 正确不等于画面必然出现。粒子场还需要 renderer 或工具支持对应 kernel、数据布局、排序/投影策略和 radiance 表达；若不可见，应把“USD 数据有效”和“renderer 采用有效”分开验证。</p>
+      <p class="zh">从数据一致性看，per-particle 属性和 position 数量错位是最常见问题。太长会造成尾部数据无效，太短会被整体忽略；因此调试时要先输出数组长度，再确认类型和精度版本。</p>
+      <p class="zh">从迁移角度看，Gaussian splat 相关数据常来自外部训练或 PLY 管线。导入 USD 时不能机械复制 PLY 中的预激活 opacity 或 log-scale 值，必须按 OpenUSD schema 需要 author 线性 opacity 和线性 scale。</p>
+      <p class="zh">从验证角度看，base API 页通常不直接给属性表，但它们决定 schema 组合的最低要求。中文主阅读路径需要解释“为什么 base schema 存在”，而不是因为没有属性表就把页面视为无内容。</p>
+      <p class="zh">从用户路径看，本组页面的价值在于把粒子场拆成可排查的组件：position 决定粒子集，kernel 决定空间支持，radiance 决定发光/颜色定义，opacity 决定线性透明度，orientation/scale 决定每个 kernel 的方向和大小。</p>
+      <p class="zh">从边界盒和坐标空间看，position 是 local space，每个 particle 的 kernel 还可能受 per-particle orientation/scale 和 prim transform 共同影响。若 splat 位置、大小或方向错误，应同时检查这三层变换。</p>
+      <p class="zh">从 review-ready 角度看，本页不仅给出开头导读，还要覆盖官方核心段落、属性/API 分组、边界、误读、调试顺序和相邻类型。英文保留用于核对，不应成为理解页面职责的主路径。</p>
+      <p class="zh">从数据生命周期看，ParticleField 页通常横跨训练数据、资产导入、USD authoring、composition 和 renderer 采用。中文阅读时应把这些阶段分开：训练数据可能使用 PLY 或自定义数组，USD 页面只规定 schema 表达，最终 renderer 还要决定如何采样和排序。</p>
+      <p class="zh">从数组校验看，最可靠的第一步是打印 position、opacity、orientation、scale、radiance 等数组长度，并确认它们是否按官方规则对齐。不要因为页面标题包含 AttributeAPI 就假设所有属性都能独立生效；大多数属性都依赖 position 数据定义的粒子数量。</p>
+      <p class="zh">从错误定位看，如果粒子场完全不可见，优先怀疑 position 缺失、extent/transform 错误、kernel 不存在或 renderer 不支持；如果可见但形状错误，再检查 orientation、scale 和 kernel 类型；如果亮度或透明度错误，再检查 radiance 与 opacity 数据。</p>
+      <p class="zh">从中文化边界看，本地页不会翻译 <code>ParticleFieldKernelGaussianEllipsoidAPI</code>、<code>ParticleFieldOpacityAttributeAPI</code>、<code>point3f[]</code>、<code>quatf[]</code> 等正式标识。中文只补足官方段落之间的因果关系、排查顺序和工程语境，方便读者在不依赖英文正文的情况下使用页面。</p>
+      <p class="zh">从相邻类型关系看，kernel API 和 AttributeAPI 都不是独立场景元素，而是附着在 ParticleField 上共同描述数据。阅读本页时应随时回到 <code>ParticleField</code> 的整体要求：有位置、有核函数、有辐射或颜色定义，再按需要补透明度、方向和缩放。</p>
+      <p class="zh">从工程验收看，完成页必须让读者能直接按中文步骤排查：确认 applied schema、确认 position 基准、确认数组长度和精度、确认 kernel 类型、确认 renderer 支持。只保留英文原文而没有这条中文路径，就不能算可直接使用的中文版。</p>
+      <p class="zh"><code>ParticleFieldScaleAttributeAPI</code> 定义 ParticleField 的 scale factor data。官方强调 scale values are linear scales，和 OpenUSD 其他地方的 scale 保持一致。</p>
+      <p class="zh">本页最重要的误读点是不要把 scale 当成 PLY Gaussian splats 中有时出现的 log-format。导入 PLY 或训练数据时，应先把外部表示转换为 OpenUSD schema 需要的 affine linear scale factor。</p>
+      <p class="zh">官方核对词 <code>PLY files</code> 必须保留：这些文件里的 scale 可能来自训练管线或压缩表示，不能直接当成 OpenUSD 的线性 <code>scales</code> / <code>scalesh</code> 写入。</p>
+      <p class="zh"><code>scales</code> 是 <code>float3[]</code>，<code>scalesh</code> 是 <code>half3[]</code>。如果 <code>scales</code> 存在，data consumers should prefer the float version if available；half 版本用于降低数据 footprint。</p>
+      <p class="zh">该 scale 应用于每个 particle 实例化的 kernel。对于 Gaussian ellipsoid，它会把球形高斯拉伸成 ellipsoid；对于 surflet，它会把 disk 拉伸成 planar ellipse。scale 不是整体 prim scale 的唯一来源。</p>
+      <p class="zh">数组长度仍应匹配 position data。太长时 truncated，太短时 ignored。调试 splat 大小异常时，应同时检查 <code>scales</code> / <code>scalesh</code> 数组、orientation、kernel 类型、prim transform 和 renderer 对 scale 的采用。</p>
+      <h3>中文核对清单 / Chinese Coverage Checklist</h3>
       <ul>
-        <li><span class="zh">`ParticleFieldScaleAttributeAPI` 定义 ParticleField scale factor data，用于控制每个粒子或 splat 的线性缩放。</span></li>
-        <li><span class="zh">官方说明 scale values 是 linear scales，和 OpenUSD 其他位置的 scale 语义一致；它不是 Gaussian splats PLY 文件中有时出现的 log-format transformed data。</span></li>
-        <li><span class="zh">`scales` 与 `scalesh` 分别提供 float 和 half 类型；消费者如果两者都可用，应优先使用 float version，以减少精度损失。</span></li>
-        <li><span class="zh">scale 数据通常与 position/orientation/kernel 一起决定 splat 在空间中的大小和形状；对于 Gaussian splats，它关系到椭球或 surflet 的空间支持域。</span></li>
-        <li><span class="zh">中文层保留 `linear scales`、`log-format`、`PLY files`、`scales` 和 `scalesh` 等原文术语，避免把数据编码格式误解为普通单位换算。</span></li>
+        <li><span class="zh">已覆盖页面职责、官方 section、属性/API 分组、粒子场数据边界、误读点、调试路径和相邻 usdVol 类型关系。</span><span class="en">Page role, official sections, groups, boundaries, misreads, debugging path, and adjacent types are covered.</span></li>
+        <li><span class="zh">已保留 API 名、schema 名、token、属性名、代码、命令、Doxygen 表格标签和链接语义；中文只解释技术含义，不改写正式标识。</span><span class="en">Technical identifiers are preserved.</span></li>
+        <li><span class="zh">已核对本地 source snapshot：<code>source/full_release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI_source.html</code>，并与官方页 <code>https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html</code> 的标题、section 与属性语义保持一致。</span><span class="en">Local source snapshot and official page semantics were compared.</span></li>
       </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">粒子场缩放属性 API：</span><span class="en">ParticleFieldScaleAttributeAPI</span></li>
-        <li><span class="zh">缩放因子数据：</span><span class="en">scale factor data</span></li>
-        <li><span class="zh">float 缩放数组：</span><span class="en">scales</span></li>
-        <li><span class="zh">half 缩放数组：</span><span class="en">scalesh</span></li>
-        <li><span class="zh">线性缩放：</span><span class="en">linear scales</span></li>
-        <li><span class="zh">对数格式：</span><span class="en">log-format</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-116">
-      <h2>中文补强导读 / Chinese Refinement Notes</h2>
-      <p class="zh">`ParticleFieldScaleAttributeAPI` 为 `ParticleField` 提供逐粒子的 scale factor data。它通常与 position、orientation 和 kernel API 一起决定每个粒子或 splat 的实际空间尺寸，而不是替代 prim 的整体 transform。</p>
-      <p class="en">This refinement section adds page-specific Chinese reading notes for ParticleFieldScaleAttributeAPI while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">scale data 是 per-particle attribute；它描述每个粒子本身的缩放，而不是把整个 `ParticleField` prim 作为一个对象统一缩放。</span></li>
-        <li><span class="zh">对于 Gaussian ellipsoid，scale 往往决定各轴半径或支撑域大小；对于 surflet，scale 会影响局部圆盘或表面小片在世界空间中的尺寸。</span></li>
-        <li><span class="zh">scale 数组应与 positions 数量对齐，否则不同粒子的尺寸数据无法可靠关联；这类检查属于 schema 数据一致性。</span></li>
-        <li><span class="zh">scale 只改变 kernel 支撑域或 splat 尺寸，不定义 radiance、opacity 或颜色；这些视觉量由 radiance/opacity attribute API 管理。</span></li>
-        <li><span class="zh">中文导读应区分 `scale factor data` 与 `xformOp:scale`：前者是粒子场特征数据，后者是 prim 变换栈中的变换操作。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">粒子场缩放属性 API：</span><span class="en">ParticleFieldScaleAttributeAPI</span></li>
-        <li><span class="zh">缩放因子数据：</span><span class="en">scale factor data</span></li>
-        <li><span class="zh">kernel 支撑范围：</span><span class="en">kernel support</span></li>
-        <li><span class="zh">粒子场：</span><span class="en">ParticleField</span></li>
-        <li><span class="zh">prim 级缩放变换：</span><span class="en">xformOp:scale</span></li>
-        <li><span class="zh">不透明度：</span><span class="en">opacity</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：ParticleFieldScaleAttributeAPI</span><span class="en">ParticleFieldScaleAttributeAPI</span></li>
-<li><span class="zh">第 2 级标题：Properties</span><span class="en">Properties</span></li>
-<li><span class="zh">第 3 级标题：scales</span><span class="en">scales</span></li>
-<li><span class="zh">第 3 级标题：scalesh</span><span class="en">scalesh</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">Defines an applied schema for ParticleField scale factor data.</p>
-<p class="en">Scale values are linear scales, in line with scales provided elsewhere in OpenUSD, and not specified in log-format sometimes seen in PLY files associated with Gaussian splats.</p>
-<p class="en">Attributes are provided in both float and half types for easy data footprint affordance. Data consumers should prefer the float version if available.</p>
     </section>
 
     <section>
-      <h2>本页链接 / Page Links</h2>
+      <h2>官方属性或条目 / Official Properties or Entries</h2>
+      <table>
+        <thead><tr><th>Property / Schema</th><th>USD type</th><th>Fallback</th><th>中文说明 / Chinese Reading</th></tr></thead>
+        <tbody>
+          <tr><td><code>scales</code></td><td><code>float3[]</code></td><td><code></code></td><td><span class="zh">每粒子的 affine linear scale factor，float 精度；用于缩放每个粒子实例化的 kernel。</span><span class="en">Affine linear scale factor applied to the kernel for each particle, in float precision.</span></td></tr>
+          <tr><td><code>scalesh</code></td><td><code>half3[]</code></td><td><code></code></td><td><span class="zh">每粒子的 affine linear scale factor，half 精度。如果 <code>scales</code> 存在，应优先使用 float 版本。</span><span class="en">Affine linear scale factor applied to the kernel for each particle, in half precision.</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>相邻 usdVol 阅读路径 / Adjacent usdVol Reading Path</h2>
+      <p class="zh">本页应放在 usdVol 粒子场链路中连续阅读：先看 <code>ParticleField</code> 和 <code>ParticleField3DGaussianSplat</code>，再根据数据角色进入 position、kernel、radiance、opacity、orientation 或 scale API。下面的链接都保留为本地阅读路径；只有“打开官方原页 / Open official page”是显式外跳。</p>
       <ul>
-<li>No same-site document links extracted.</li>
+        <li><a href="ParticleFieldKernelGaussianEllipsoidAPI.html">ParticleFieldKernelGaussianEllipsoidAPI</a></li>
+        <li><a href="ParticleFieldKernelGaussianSurfletAPI.html">ParticleFieldKernelGaussianSurfletAPI</a></li>
+        <li><a href="ParticleFieldOrientationAttributeAPI.html">ParticleFieldOrientationAttributeAPI</a></li>
+        <li><a href="ParticleFieldPositionAttributeAPI.html">ParticleFieldPositionAttributeAPI</a></li>
+        <li><a href="overview.html">overview</a></li>
+        <li><a href="usdVol_toc.html">usdVol_toc</a></li>
+        <li><a href="ParticleField.html">ParticleField</a></li>
+        <li><a href="ParticleField3DGaussianSplat.html">ParticleField3DGaussianSplat</a></li>
+        <li><a href="ParticleFieldKernelBaseAPI.html">ParticleFieldKernelBaseAPI</a></li>
+        <li><a href="ParticleFieldKernelConstantSurfletAPI.html">ParticleFieldKernelConstantSurfletAPI</a></li>
+        <li><a href="ParticleFieldSphericalHarmonicsAttributeAPI.html">ParticleFieldSphericalHarmonicsAttributeAPI</a></li>
       </ul>
     </section>
+
+    <section>
+      <h2>源页对比 / Source Parity</h2>
+      <ul>
+        <li><span class="zh">官方页：<a href="ParticleFieldScaleAttributeAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html">官方页 / Official page: https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html</a></span></li>
+        <li><span class="zh">本地 source snapshot：<code>source/full_release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI_source.html</code></span></li>
+        <li><span class="zh">本轮仅晋级达到中文主阅读路径门槛的页面；未达标页保持草稿并记录原因。</span><span class="en">Only pages that meet the Chinese main-reading-path bar are promoted.</span></li>
+      </ul>
+    </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="../../../../../site/release_index.html">Release 本地入口 / Local release entry</a></p>
       <p><a href="https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html">打开官方原页 / Open official page</a></p>
     </section>
   </main>

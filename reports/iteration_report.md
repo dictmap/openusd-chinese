@@ -1,9 +1,9 @@
 # OpenUSD Iteration Report
 
-## 第 409 轮摘要
+## 第 410 轮摘要
 
 - 轮次类型：DomainSprintRound
-- 轮次目的：Round 409 DomainSprintRound：usdVol 短页小批量冲刺。实际晋级 8 页：full_site/release/user_guides/schemas/usdVol/Field3DAsset.html、full_site/release/user_guides/schemas/usdVol/FieldAsset.html、full_site/release/user_guides/schemas/usdVol/FieldBase.html、full_site/release/user_guides/schemas/usdVol/OpenVDBAsset.html、full_site/release/user_guides/schemas/usdVol/ParticleField.html、full_site/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html、full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelBaseAPI.html、full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelConstantSurfletAPI.html。本轮从 132 个 good_bilingual 增至 140；中文主阅读路径覆盖页面职责、官方 section、体积/field/particle schema 分组、资产和 kernel 边界、误读点、调试路径、相邻 usdVol 类型关系，并保留 API 名、schema 名、token、属性名、代码、Doxygen 表格标签、链接语义和显式官方外跳。
+- 轮次目的：Round 410 DomainSprintRound：usdVol 粒子场属性/API 短页小批量冲刺。实际晋级 8 页：full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianEllipsoidAPI.html、full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html、full_site/release/user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html、full_site/release/user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html、full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html、full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html、full_site/release/user_guides/schemas/usdVol/ParticleFieldRadianceBaseAPI.html、full_site/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html。本轮从 140 个 good_bilingual 增至 148；中文主阅读路径覆盖页面职责、官方 section、ParticleField position/kernel/radiance/opacity/orientation/scale 分组、核函数和 AttributeAPI 边界、误读点、调试路径、相邻 usdVol 类型关系，并保留 API 名、schema 名、token、属性名、代码、Doxygen 表格标签、链接语义和显式官方外跳。
 - 本轮目标：命名缺陷或一致性修复
 - 结果：未晋级页面，修复命名缺陷或一致性问题。
 - 核心说明：保持审计链和人类可读记录一致。
@@ -11,22 +11,22 @@
 ## 真实计数
 
 - total_pages：406
-- good_bilingual：140
-- review_ready_zh：77
-- bilingual_complete：140
-- bilingual_draft：266
-- draft_needs_translation：255
+- good_bilingual：148
+- review_ready_zh：85
+- bilingual_complete：148
+- bilingual_draft：258
+- draft_needs_translation：247
 - draft_template_only：11
 - pending_full_scope：0
 - api_complete：72
-- release_complete：68
+- release_complete：76
 
 ## 验证
 
 - validation_report：passed=true，failed_check_count=0，required_check_count=311
-- translation_quality：good_bilingual=140
-- english_debt：review_ready_zh=77，review_needs_zh_debt=63
-- promotion manifest：132 entries
+- translation_quality：good_bilingual=148
+- english_debt：review_ready_zh=85，review_needs_zh_debt=63
+- promotion manifest：140 entries
 
 ## 本轮改动文件
 

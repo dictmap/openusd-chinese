@@ -1,6 +1,6 @@
 # OpenUSD 完整双语晋级清单
 
-Generated: 2026-06-08T02:51:51.875Z
+Generated: 2026-06-08T03:14:26.870Z
 
 这份清单只记录已经从 `bilingual_draft` 晋级为 `bilingual_complete` 的页面。它是 `scripts/discover_openusd_all_pages.mjs` 识别 promoted complete 页面的审计来源，不等同于把草稿页改一个状态。
 
@@ -16,6 +16,14 @@ Generated: 2026-06-08T02:51:51.875Z
 
 | ID | 本地输出 | 官方页面 | 状态 |
 | --- | --- | --- | --- |
+| `round-410-release-usdVol-particle-ParticleFieldKernelGaussianEllipsoidAPI` | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianEllipsoidAPI.html` | `https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianEllipsoidAPI.html` | bilingual_complete |
+| `round-410-release-usdVol-particle-ParticleFieldKernelGaussianSurfletAPI` | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html` | `https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html` | bilingual_complete |
+| `round-410-release-usdVol-particle-ParticleFieldOpacityAttributeAPI` | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html` | `https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html` | bilingual_complete |
+| `round-410-release-usdVol-particle-ParticleFieldOrientationAttributeAPI` | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html` | `https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html` | bilingual_complete |
+| `round-410-release-usdVol-particle-ParticleFieldPositionAttributeAPI` | `full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html` | `https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html` | bilingual_complete |
+| `round-410-release-usdVol-particle-ParticleFieldPositionBaseAPI` | `full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html` | `https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html` | bilingual_complete |
+| `round-410-release-usdVol-particle-ParticleFieldRadianceBaseAPI` | `full_site/release/user_guides/schemas/usdVol/ParticleFieldRadianceBaseAPI.html` | `https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldRadianceBaseAPI.html` | bilingual_complete |
+| `round-410-release-usdVol-particle-ParticleFieldScaleAttributeAPI` | `full_site/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html` | `https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html` | bilingual_complete |
 | `round-409-release-usdVol-Field3DAsset` | `full_site/release/user_guides/schemas/usdVol/Field3DAsset.html` | `https://openusd.org/release/user_guides/schemas/usdVol/Field3DAsset.html` | bilingual_complete |
 | `round-409-release-usdVol-FieldAsset` | `full_site/release/user_guides/schemas/usdVol/FieldAsset.html` | `https://openusd.org/release/user_guides/schemas/usdVol/FieldAsset.html` | bilingual_complete |
 | `round-409-release-usdVol-FieldBase` | `full_site/release/user_guides/schemas/usdVol/FieldBase.html` | `https://openusd.org/release/user_guides/schemas/usdVol/FieldBase.html` | bilingual_complete |

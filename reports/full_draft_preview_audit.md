@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-08T02:51:56.151Z
+Generated: 2026-06-08T03:14:30.982Z
 
-Transient base URL: `http://127.0.0.1:60544/`
+Transient base URL: `http://127.0.0.1:58663/`
 
 Result:
 
 - Passed: true
-- Draft pages: 266
-- Pages checked: 266
-- Passed pages: 266
+- Draft pages: 258
+- Pages checked: 258
+- Passed pages: 258
 - Failed pages: 0
-- Final HTML links: 266
-- Local assets checked: 266
+- Final HTML links: 258
+- Local assets checked: 258
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -255,14 +255,6 @@ Result:
 | true | full_site/release/user_guides/schemas/usdUI/overview.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdUI/usdUI_toc.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdVol/overview.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianEllipsoidAPI.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionAttributeAPI.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdVol/ParticleFieldPositionBaseAPI.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdVol/ParticleFieldRadianceBaseAPI.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdVol/ParticleFieldScaleAttributeAPI.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdVol/ParticleFieldSphericalHarmonicsAttributeAPI.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdVol/usdVol_toc.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdVol/Volume.html | 200 | true | 0 | 0 |
