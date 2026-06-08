@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-08T00:22:08.140Z
+Generated: 2026-06-08T00:39:55.470Z
 
-Transient base URL: `http://127.0.0.1:53519/`
+Transient base URL: `http://127.0.0.1:61452/`
 
 Result:
 
 - Passed: true
-- Draft pages: 302
-- Pages checked: 302
-- Passed pages: 302
+- Draft pages: 301
+- Pages checked: 301
+- Passed pages: 301
 - Failed pages: 0
-- Final HTML links: 302
-- Local assets checked: 302
+- Final HTML links: 301
+- Local assets checked: 301
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -251,7 +251,6 @@ Result:
 | true | full_site/release/user_guides/render_user_guide.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/index.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/BoundableLightBase.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdLux/DomeLight_1.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/GeometryLight.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/LightListAPI.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/ListAPI.html | 200 | true | 0 | 0 |

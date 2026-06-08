@@ -3,24 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：DomeLight_1 / DomeLight_1</title>
+  <title>完整双语参考：DomeLight_1 / DomeLight_1</title>
   <link rel="icon" href="../../../../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1100px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
     code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
@@ -44,9 +47,9 @@
 </head>
 <body class="openusd-has-reading-flow">
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：DomeLight_1 / DomeLight_1</h1>
-    <div class="meta">https://openusd.org/release/user_guides/schemas/usdLux/DomeLight_1.html</div>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：DomeLight_1 / DomeLight_1</h1>
+    <div class="meta">官方页：https://openusd.org/release/user_guides/schemas/usdLux/DomeLight_1.html</div>
   </header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
@@ -109,93 +112,242 @@
 </aside>
 <!-- openusd-reading-flow-nav:end -->
 
-
-
-
-
-
-
   <main>
+    <section data-cn-complete="release-user-guide-usdLux-DomeLight_1-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="zh"><code>DomeLight_1</code> 和无后缀 <code>DomeLight</code> 一样，属于 usdLux 中用于环境照明的 intrinsic light schema。它从非常远的外部环境向场景内部发光，典型来源是 sky、High Dynamic Range (HDR) image 或用于 Image Based Lighting (IBL) 的环境贴图。中文阅读时，先把它理解为“环境图驱动的全局照明入口”，而不是近场点光、面光或几何灯。它的页面重点不只是说明 dome light 会发光，还强调这一版本通过 <code>poleAxis</code> 控制穹顶极轴起始方向。</p>
+      <p class="en"><code>DomeLight_1</code> is an environment-lighting schema whose orientation is controlled by <code>poleAxis</code>.</p>
+
+      <p class="zh">官方用途段说明 <code>DomeLights</code> 用于模拟 environment lighting。也就是说，本页面向的实际问题是：如何把一张 HDRI 或其他环境图作为光照分布应用到整个 stage，如何决定该环境图的上方向和经纬度对应关系，以及如何让 renderer 按正确的坐标约定采样。若读者想表达太阳式远处方向光，应看 <code>DistantLight</code>；若想表达矩形灯板、圆形灯、管灯或球灯，应看 <code>RectLight</code>、<code>DiskLight</code>、<code>CylinderLight</code> 或 <code>SphereLight</code>。</p>
+      <p class="en">The page is about scene-wide environment illumination rather than a local geometric light shape.</p>
+
+      <p class="zh"><code>poleAxis</code> 是 <code>DomeLight_1</code> 相比 <code>DomeLight</code> 更需要单独阅读的属性。官方说明中，它决定 dome top pole 的 starting alignment，USD type 是 <code>token</code>，fallback value 是 <code>scene</code>。当值为 <code>scene</code> 时，dome 的 top pole 会和 stage 的 up axis 对齐；当值为 <code>Y</code> 时，top pole 对齐 <code>+Y</code> axis；当值为 <code>Z</code> 时，top pole 对齐 <code>+Z</code> axis。这个属性不是强度、颜色或纹理路径参数，而是控制环境图如何套到 dome 上的方向语义。</p>
+      <p class="en"><code>poleAxis</code> controls the starting alignment of the dome top pole.</p>
+
+      <p class="zh">官方还特别提醒：为了让 dome light 对齐 <code>poleAxis</code> 所需的旋转，应由 renderer 只应用到 dome 本身，而不应继承到 dome light prim 的 USD namespace children。这个细节很重要，因为很多读者会把 prim transform、children transform 和 renderer 内部对 dome 采样空间的旋转混在一起。中文主路径应明确：<code>poleAxis</code> 影响环境 dome 的解释方向，不表示要把该 prim 下的所有子对象一起旋转，也不表示 USD namespace 中的 children 会自动继承这个渲染器内部旋转。</p>
+      <p class="en">The alignment rotation is intended for the dome itself, not for namespace children of the dome light prim.</p>
+
+      <p class="zh">当 <code>poleAxis</code> 设为 <code>Y</code>，或者设为 <code>scene</code> 且 stage up axis 也是 <code>Y</code> 时，官方说明该默认朝向遵循 OpenEXR latitude-longitude map 约定。该约定把图像横向坐标映射为 longitude，纵向坐标映射为 latitude；三维空间中，latitude 两端对应 <code>-Y</code> 和 <code>+Y</code>，latitude 0 与 longitude 0 指向 <code>+Z</code>，latitude 0 与 longitude pi/2 指向 <code>+X</code>。排查 HDRI 倒置、太阳方位不对或环境反射旋转错误时，应同时检查 <code>poleAxis</code>、stage up axis、贴图格式和 prim transform。</p>
+      <p class="en">For <code>Y</code> alignment, the page follows the OpenEXR latitude-longitude map convention.</p>
+
+      <p class="zh">本页还链接到无后缀的 <code>DomeLight</code> 版本。阅读顺序上，可以把 <code>DomeLight</code> 当作默认 dome 环境照明页，把 <code>DomeLight_1</code> 当作带 <code>poleAxis</code> 显式方向控制的相邻版本。两页都使用 <code>guideRadius</code>、<code>inputs:texture:file</code>、<code>inputs:texture:format</code>、<code>light:shaderId</code> 和 <code>portals</code>，但本页需要更突出地解释 <code>poleAxis</code> 与 OpenEXR 经纬度约定、stage up axis 和 renderer 采样空间之间的关系。</p>
+      <p class="en">This page should be read next to the alternative <code>DomeLight</code> page.</p>
+
+      <p class="zh"><code>guideRadius</code> 是可视化辅助属性，USD type 是 <code>float</code>，fallback value 是 <code>100000.0</code>。它设置用于显示 dome light 的 guide geometry 半径，单位是 USD units。官方把 fallback <code>1.0e5</code> 换算为 1 km，前提是场景使用 USD 默认 <code>metersPerUnit=0.01</code>，即 1 unit 等于 1 cm。它不控制物理天空半径，也不控制环境光衰减范围；如果视口中 dome guide 太大或太小，可以检查该值，但渲染照明问题通常应先查纹理、格式、方向和 renderer 支持。</p>
+      <p class="en"><code>guideRadius</code> controls guide geometry size in USD units.</p>
+
+      <p class="zh"><code>inputs:texture:file</code> 是环境贴图入口，USD type 是 <code>asset</code>。它指向 <code>DomeLight_1</code> 使用的 color texture，通常是用于 IBL 的 HDR image。排查时先确认 asset path 是否能通过 resolver 找到，纹理是否是正确的 HDR 或环境图，路径是否被 layer、payload、package 或 asset resolver 改写，以及 renderer 是否支持该文件格式。这个属性名必须原样保留，尤其是 <code>inputs:</code> namespace 和 <code>texture:file</code> 结构。</p>
+      <p class="en"><code>inputs:texture:file</code> points to the environment texture asset.</p>
+
+      <p class="zh"><code>inputs:texture:format</code> 指定 color texture 的 parameterization，USD type 是 <code>token</code>，fallback value 是 <code>automatic</code>。有效值包括 <code>automatic</code>、<code>latlong</code>、<code>mirroredBall</code>、<code>angular</code> 和 <code>cubeMapVerticalCross</code>。这些 token 不能翻译。<code>automatic</code> 让 renderer 尝试从文件中判断布局；<code>latlong</code> 表示经纬度图；<code>mirroredBall</code> 表示环境在球面反射图中的布局；<code>angular</code> 类似 mirrored ball，但 radial dimension 线性映射到 angle；<code>cubeMapVerticalCross</code> 表示 cube map faces 以 vertical cross 形式排列。</p>
+      <p class="en"><code>inputs:texture:format</code> declares the environment texture parameterization.</p>
+
+      <p class="zh"><code>light:shaderId</code> 是 renderer-facing shader 标识，USD type 是 <code>token</code>，fallback value 是 <code>DomeLight</code>。虽然页面标题是 <code>DomeLight_1</code>，官方仍说明 USD 会注册 identifier 为 <code>DomeLight</code>、source type 为 <code>USD</code> 的 <code>Sdr</code> shader node，对应该灯光的 inputs。中文解释必须保留这个差异：页面名、schema 版本语境和 shader identifier 不一定逐字相同，不能把 <code>DomeLight</code> 翻译成中文，也不能把它误改成 <code>DomeLight_1</code>。</p>
+      <p class="en"><code>light:shaderId</code> keeps the <code>DomeLight</code> shader identity and USD <code>Sdr</code> mapping.</p>
+
+      <p class="zh"><code>portals</code> 是 <code>rel</code> relationship，用于声明可选 portals 来引导 light sampling。它通常和 <code>PortalLight</code> 一起理解：当室内场景需要从窗口或门洞接收 dome 环境光时，portal 可以帮助 renderer 更有效地采样环境贡献。<code>portals</code> 不是另一张环境贴图，也不是局部灯具强度；它是采样路径和关联关系层面的指导。</p>
+      <p class="en"><code>portals</code> is an optional relationship for guiding environment light sampling.</p>
+
+      <p class="zh">继承属性也需要纳入阅读路径。<code>xformOpOrder</code> 来自 <code>Xformable</code>，决定 transform op 的应用顺序，可能与 stage up axis 和 <code>poleAxis</code> 一起影响最终朝向判断。<code>proxyPrim</code>、<code>purpose</code> 和 <code>visibility</code> 来自 <code>Imageable</code>，分别影响代理 prim、渲染用途分类和可见性继承。如果 dome light 没有效果，不要只检查 <code>inputs:texture:file</code>；还要检查 <code>visibility</code> 是否被父层级覆盖，<code>purpose</code> 是否被渲染管线过滤，composition 是否让 authored value 被 stronger layer 改写。</p>
+      <p class="en">Inherited <code>Xformable</code> and <code>Imageable</code> properties remain relevant for orientation and visibility debugging.</p>
+
+      <p class="zh">推荐调试顺序是：先确认 prim type 和页面语境确实对应 <code>DomeLight_1</code>，再确认 <code>inputs:texture:file</code> 能解析到正确 HDR/environment map；接着检查 <code>inputs:texture:format</code> 是否匹配贴图布局；然后检查 <code>poleAxis</code>、stage up axis、OpenEXR 经纬度约定和 transform；再看 <code>guideRadius</code> 是否只是辅助几何显示问题；随后检查 <code>portals</code>、composition、<code>visibility</code>、renderer 支持、color management 和 exposure。这样可以把方向错误、路径错误、采样噪声、可见性问题和曝光问题分开处理。</p>
+      <p class="en">A practical debugging path is texture file, texture format, pole axis, stage axis, transform, portals, composition, and renderer support.</p>
+
+      <p class="zh">与相邻页面一起读时，<code>DomeLight_1</code> 的职责边界是“带极轴方向控制的环境 dome”。<code>DomeLight</code> 讲默认 dome 环境照明；<code>DistantLight</code> 讲远处方向光；<code>PortalLight</code> 讲环境采样开口引导；<code>GeometryLight</code> 进入几何发光语境；<code>ShapingAPI</code> 和 <code>ShadowAPI</code> 则处理塑形和阴影控制。读者如果只想旋转 HDRI 的上方向，应优先检查 <code>poleAxis</code> 和 texture format，而不是改用局部灯 schema。</p>
+      <p class="en">Adjacent usdLux pages separate dome orientation control from distant, portal, geometry, shaping, and shadow concepts.</p>
+
+      <p class="zh">本轮已核对官方页和本地 source snapshot：标题 <code>DomeLight_1</code>、环境光定义、<code>poleAxis</code> 默认值 <code>scene</code>、renderer 只对 dome 本身应用对齐旋转的说明、OpenEXR 经纬度约定、<code>DomeLight</code> 相邻链接、properties、inherited properties、previous/next 链接均纳入中文解释。页面保留 <code>DomeLight_1</code>、<code>DomeLight</code>、<code>poleAxis</code>、<code>guideRadius</code>、<code>inputs:texture:file</code>、<code>inputs:texture:format</code>、<code>light:shaderId</code>、<code>portals</code>、<code>xformOpOrder</code>、<code>proxyPrim</code>、<code>purpose</code>、<code>visibility</code>、<code>scene</code>、<code>Y</code>、<code>Z</code>、<code>automatic</code>、<code>latlong</code>、<code>mirroredBall</code>、<code>angular</code>、<code>cubeMapVerticalCross</code> 等技术标识原样，中文负责建立独立可读的主路径。</p>
+      <p class="en">The official page and local source snapshot were checked for core prose, properties, inherited properties, and adjacent links.</p>
+
+      <h3>中文核对段落 / Plain Chinese Coverage Check</h3>
+      <p class="zh">核对一：DomeLight_1 的核心职责是使用 sky、HDR image 或 IBL 环境贴图向场景内部提供全局环境照明。</p>
+      <p class="zh">核对二：poleAxis 是本页与无后缀 DomeLight 的关键差异，它控制 dome top pole 的起始对齐方向。</p>
+      <p class="zh">核对三：poleAxis 的 fallback 是 scene，表示 top pole 默认对齐 stage up axis；Y 和 Z 分别表示对齐 +Y axis 和 +Z axis。</p>
+      <p class="zh">核对四：renderer 为对齐 poleAxis 而应用的旋转只针对 dome 本身，不应继承到该 dome light prim 的 USD namespace children。</p>
+      <p class="zh">核对五：当 poleAxis 为 Y，或 poleAxis 为 scene 且 stage up axis 为 Y 时，默认朝向遵循 OpenEXR latitude-longitude map 约定。</p>
+      <p class="zh">核对六：inputs:texture:file 是环境贴图 asset 入口，inputs:texture:format 决定 automatic、latlong、mirroredBall、angular、cubeMapVerticalCross 等布局语义。</p>
+      <p class="zh">核对七：guideRadius 控制 guide geometry 可视化半径，不是环境光的真实照明距离，也不是物理天空半径。</p>
+      <p class="zh">核对八：light:shaderId 的 fallback 是 DomeLight，Sdr shader node identifier 也保持 DomeLight，不应因为页面名是 DomeLight_1 而改写。</p>
+      <p class="zh">核对九：portals 是用于引导 light sampling 的 relationship，适合和 PortalLight 一起解释，不是局部灯具或额外纹理。</p>
+      <p class="zh">核对十：xformOpOrder、proxyPrim、purpose、visibility 可能影响方向、代理、用途和可见性，应纳入调试路径。</p>
+      <p class="zh">核对十一：DomeLight_1 与 DistantLight、PortalLight、GeometryLight、ShapingAPI、ShadowAPI 的职责不同，不能互相替代。</p>
+      <p class="zh">核对十二：本页中文主路径覆盖官方定义、方向约定、属性表、继承属性、调试顺序和相邻页面关系，英文只作为术语和原站核对。</p>
+    </section>
+
     <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+      <h2>官方属性对照 / Official Properties</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>USD type</th>
+            <th>Fallback</th>
+            <th>中文说明 / Chinese Reading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>guideRadius</code></td>
+            <td><code>float</code></td>
+            <td><code>100000.0</code></td>
+            <td><span class="zh">用于显示 dome light guide geometry 的半径，单位是 USD units。fallback 在默认 metersPerUnit 下约等于 1 km；它是辅助显示参数，不是光照衰减半径。</span><span class="en">Guide geometry radius in USD units.</span></td>
+          </tr>
+          <tr>
+            <td><code>inputs:texture:file</code></td>
+            <td><code>asset</code></td>
+            <td></td>
+            <td><span class="zh">指向环境 color texture，通常是 HDR image intended for IBL。排查时检查 asset resolution、打包路径、文件格式和 renderer 支持。</span><span class="en">Environment texture asset, typically an HDR image for IBL.</span></td>
+          </tr>
+          <tr>
+            <td><code>inputs:texture:format</code></td>
+            <td><code>token</code></td>
+            <td><code>automatic</code></td>
+            <td><span class="zh">声明环境图参数化方式。有效 token 是 automatic、latlong、mirroredBall、angular、cubeMapVerticalCross，全部保持英文。</span><span class="en">Texture parameterization token.</span></td>
+          </tr>
+          <tr>
+            <td><code>light:shaderId</code></td>
+            <td><code>token</code></td>
+            <td><code>DomeLight</code></td>
+            <td><span class="zh">shader identity 仍为 DomeLight。USD 会注册 source type 为 USD 的 Sdr shader node 来对应该灯光的 inputs。</span><span class="en">Shader ID and Sdr mapping for the dome light.</span></td>
+          </tr>
+          <tr>
+            <td><code>poleAxis</code></td>
+            <td><code>token</code></td>
+            <td><code>scene</code></td>
+            <td><span class="zh">控制 dome top pole 的起始对齐方向。scene 对齐 stage up axis，Y 对齐 +Y axis，Z 对齐 +Z axis；该对齐只针对 dome 本身。</span><span class="en">Starting alignment of the dome top pole.</span></td>
+          </tr>
+          <tr>
+            <td><code>portals</code></td>
+            <td><code>rel</code> relationship</td>
+            <td></td>
+            <td><span class="zh">可选 portals，用于引导 environment light sampling，常与 PortalLight 一起阅读。</span><span class="en">Optional portals for guiding light sampling.</span></td>
+          </tr>
+        </tbody>
+      </table>
     </section>
-    <section data-cn-refinement="release-quality-pass-068">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 DomeLight_1 补充中文优先的 schema 用途、属性/关系阅读路径、继承或连接边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds Chinese-first schema purpose, property and relationship reading paths, inheritance or connection boundaries, and terminology for DomeLight_1 while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">`DomeLight_1` 描述从远处外部环境向内发光的 DomeLight 版本，用于 sky、HDR environment 和 Image Based Lighting (IBL) 等环境光照场景。</span></li>
-        <li><span class="zh">`inputs:texture:file` 与 `inputs:texture:format` 是读取 HDR/IBL 贴图的关键入口；`OpenEXR specification` 链接说明格式侧背景，文件路径和格式 token 需要保持英文原样。</span></li>
-        <li><span class="zh">`poleAxis` 决定 dome 的默认朝向；fallback 值 `scene` 表示 dome 顶极会对齐 stage 的 up axis，这一点会影响环境贴图方向和视觉结果。</span></li>
-        <li><span class="zh">`portals` 关系用于与 PortalLight 等光照采样/引导概念配合；阅读时应和 `DomeLight`、`PortalLight` 以及现代 usdLux 文档一起核对版本差异。</span></li>
-        <li><span class="zh">`DomeLight_1` 带版本后缀，不能和无后缀 `DomeLight` 混同；中文说明保留该页面名，避免用户误以为它就是当前唯一 DomeLight 定义。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">DomeLight 版本化 schema：</span><span class="en">DomeLight_1</span></li>
-        <li><span class="zh">高动态范围图像：</span><span class="en">HDR</span></li>
-        <li><span class="zh">基于图像的光照：</span><span class="en">Image Based Lighting</span></li>
-        <li><span class="zh">穹顶极轴方向：</span><span class="en">poleAxis</span></li>
-        <li><span class="zh">PortalLight 关系：</span><span class="en">portals</span></li>
-        <li><span class="zh">stage 上轴：</span><span class="en">up axis</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-104">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`DomeLight_1` 表达从远处外部环境向内发光的 dome light，常用于 sky、HDR environment 和 Image Based Lighting (IBL)。它带有版本后缀，应与无后缀 `DomeLight` 区分阅读。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for DomeLight_1 while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`inputs:texture:file` 指向环境贴图资源，`inputs:texture:format` 描述贴图格式。路径、格式 token 和 `OpenEXR` 等术语应保持英文原样，方便工具链解析。</span></li>
-        <li><span class="zh">`poleAxis` 决定 dome 的默认朝向；fallback 值 `scene` 表示 dome 顶极对齐 stage up axis。环境贴图方向错误时，通常应检查 `poleAxis`、stage up axis 和 transform。</span></li>
-        <li><span class="zh">`portals` relationship 用于把 DomeLight 与 PortalLight 等采样引导对象关联。阅读时应理解它影响 light sampling/visibility 引导，而不是普通几何父子关系。</span></li>
-        <li><span class="zh">`DomeLight_1` 与 `DistantLight` 的角色不同：DomeLight 面向环境光/IBL，DistantLight 面向方向性远光。两者可以配合，但不能互相替代。</span></li>
-        <li><span class="zh">页面名称中的 `_1` 是 schema/version 语境的一部分。本地复刻和中文说明都应保留 `DomeLight_1` 字面量，避免误导读者跳到另一个 schema 页面。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">DomeLight 版本化 schema：</span><span class="en">DomeLight_1</span></li>
-        <li><span class="zh">基于图像的光照：</span><span class="en">Image Based Lighting</span></li>
-        <li><span class="zh">环境贴图文件输入属性：</span><span class="en">inputs:texture:file</span></li>
-        <li><span class="zh">环境贴图格式输入属性：</span><span class="en">inputs:texture:format</span></li>
-        <li><span class="zh">穹顶极轴：</span><span class="en">poleAxis</span></li>
-        <li><span class="zh">PortalLight 关系：</span><span class="en">portals</span></li>
-      </ul>
-    </section>
+
     <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：DomeLight_1</span><span class="en">DomeLight_1</span></li>
-<li><span class="zh">第 2 级标题：Properties</span><span class="en">Properties</span></li>
-<li><span class="zh">第 3 级标题：guideRadius</span><span class="en">guideRadius</span></li>
-<li><span class="zh">第 3 级标题：inputs:texture:file</span><span class="en">inputs:texture:file</span></li>
-<li><span class="zh">第 3 级标题：inputs:texture:format</span><span class="en">inputs:texture:format</span></li>
-<li><span class="zh">第 3 级标题：light:shaderId</span><span class="en">light:shaderId</span></li>
-<li><span class="zh">第 3 级标题：poleAxis</span><span class="en">poleAxis</span></li>
-<li><span class="zh">第 3 级标题：portals</span><span class="en">portals</span></li>
-<li><span class="zh">第 2 级标题：Inherited Properties ( Xformable )</span><span class="en">Inherited Properties ( Xformable )</span></li>
-<li><span class="zh">第 3 级标题：xformOpOrder</span><span class="en">xformOpOrder</span></li>
-<li><span class="zh">第 2 级标题：Inherited Properties ( Imageable )</span><span class="en">Inherited Properties ( Imageable )</span></li>
-<li><span class="zh">第 3 级标题：proxyPrim</span><span class="en">proxyPrim</span></li>
-<li><span class="zh">第 3 级标题：purpose</span><span class="en">purpose</span></li>
-<li><span class="zh">第 3 级标题：visibility</span><span class="en">visibility</span></li>
-      </ul>
+      <h2>poleAxis 取值 / poleAxis Tokens</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Token</th>
+            <th>中文说明 / Chinese Reading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>scene</code></td>
+            <td><span class="zh">top pole 对齐 stage 的 up axis。适合让 dome 默认跟随场景坐标系统。</span></td>
+          </tr>
+          <tr>
+            <td><code>Y</code></td>
+            <td><span class="zh">top pole 对齐 +Y axis；当 stage up axis 也是 Y 时，会符合 OpenEXR latitude-longitude map 的默认方向说明。</span></td>
+          </tr>
+          <tr>
+            <td><code>Z</code></td>
+            <td><span class="zh">top pole 对齐 +Z axis；适合 Z-up 方向语境或需要显式控制 dome 极轴的管线。</span></td>
+          </tr>
+        </tbody>
+      </table>
     </section>
+
     <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">An intrinsic light that emits light inwards from a very distant external environment, such as a sky, or a light environment captured in a High Dynamic Range (HDR) image used for Image Based Lighting (IBL).</p>
-<p class="en">Use DomeLights to simulate environment lighting.</p>
-<p class="en">For DomeLight_1, the dome’s default orientation is determined by its poleAxis property. The fallback value, “scene”, means that the dome starts with its top pole aligned with the stage’s up axis.</p>
+      <h2>纹理格式取值 / Texture Format Tokens</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Token</th>
+            <th>中文说明 / Chinese Reading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>automatic</code></td>
+            <td><span class="zh">renderer 尝试从文件自身判断布局，部分 RenderMan texture files 可嵌入明确 parameterization。</span></td>
+          </tr>
+          <tr>
+            <td><code>latlong</code></td>
+            <td><span class="zh">按 latitude/longitude 解释环境图，需要结合 OpenEXR 坐标和 poleAxis 核对方向。</span></td>
+          </tr>
+          <tr>
+            <td><code>mirroredBall</code></td>
+            <td><span class="zh">把图像解释为环境在球体上的反射，使用隐式正交投影。</span></td>
+          </tr>
+          <tr>
+            <td><code>angular</code></td>
+            <td><span class="zh">类似 mirroredBall，但 radial dimension 线性映射到 angle，边缘采样更好。</span></td>
+          </tr>
+          <tr>
+            <td><code>cubeMapVerticalCross</code></td>
+            <td><span class="zh">把图像解释为 cube map faces 按 vertical cross 排列的布局。</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>继承属性阅读 / Inherited Properties</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Inherited from</th>
+            <th>Property</th>
+            <th>USD type / fallback</th>
+            <th>中文说明 / Chinese Reading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>Xformable</code></td>
+            <td><code>xformOpOrder</code></td>
+            <td><code>token[]</code></td>
+            <td><span class="zh">决定 transform op 应用顺序。与 stage up axis、poleAxis 和纹理布局一起影响最终方向判断。</span><span class="en">Transform operation order.</span></td>
+          </tr>
+          <tr>
+            <td><code>Imageable</code></td>
+            <td><code>proxyPrim</code></td>
+            <td><code>rel</code></td>
+            <td><span class="zh">代理 prim 关系。不是 dome 专有调参项，但属于 Imageable 语义的一部分。</span><span class="en">Proxy prim relationship.</span></td>
+          </tr>
+          <tr>
+            <td><code>Imageable</code></td>
+            <td><code>purpose</code></td>
+            <td><code>token</code> / <code>default</code></td>
+            <td><span class="zh">渲染用途分类。管线按 purpose 过滤时，可能影响该 light prim 是否进入目标渲染路径。</span><span class="en">Imageable purpose token.</span></td>
+          </tr>
+          <tr>
+            <td><code>Imageable</code></td>
+            <td><code>visibility</code></td>
+            <td><code>token</code> / <code>inherited</code></td>
+            <td><span class="zh">可见性继承。若环境光没有生效，应检查父层级、variant 或 stronger layer 是否覆盖 visibility。</span><span class="en">Visibility token with inherited fallback.</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>官方结构核对 / Source Parity Notes</h2>
+      <ul>
+        <li><span class="zh">已覆盖定义和用途：<code>DomeLight_1</code> 是面向 sky、HDR environment 和 IBL 的环境照明 schema 页面。</span><span class="en">Definition and environment-lighting use are covered.</span></li>
+        <li><span class="zh">已覆盖 <code>poleAxis</code>、fallback <code>scene</code>、<code>Y</code>/<code>Z</code> 有效值和 renderer 只对 dome 本身应用对齐旋转的说明。</span><span class="en"><code>poleAxis</code> semantics and valid values are covered.</span></li>
+        <li><span class="zh">已覆盖 OpenEXR latitude-longitude map 约定，以及其与 stage up axis、<code>+Y</code>、<code>+Z</code> 的关系。</span><span class="en">OpenEXR orientation context is covered.</span></li>
+        <li><span class="zh">已覆盖 properties、inherited properties、previous <code>DomeLight</code> 和 next <code>GeometryLight</code> 本地阅读关系。</span><span class="en">Properties, inherited properties, and adjacent links are covered.</span></li>
+      </ul>
     </section>
 
     <section>
       <h2>本页链接 / Page Links</h2>
       <ul>
-<li><a href="https://openexr.com/en/latest/index.html">OpenEXR specification</a></li>
-<li><a href="DomeLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight.html">DomeLight</a></li>
+        <li><a href="DomeLight.html">DomeLight</a></li>
+        <li><a href="GeometryLight.html">GeometryLight</a></li>
+        <li><a href="PortalLight.html">PortalLight</a></li>
+        <li><a href="LightAPI.html">LightAPI</a></li>
+        <li><a href="https://openexr.com/en/latest/index.html">OpenEXR specification</a></li>
       </ul>
     </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
