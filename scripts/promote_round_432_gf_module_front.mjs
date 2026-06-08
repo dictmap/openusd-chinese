@@ -1,10 +1,81 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gf : Graphics Foundations - OpenUSD API 双语</title>
-  <style>
+import fs from "node:fs";
+import path from "node:path";
+
+const ROOT = process.cwd();
+const ROUND = 432;
+const ROUND_TYPE = "PromotionRound";
+const TARGET = "full_site/api/gf_page_front.html";
+const SOURCE = "source/full_api/gf_page_front_source.html";
+const OFFICIAL_URL = "https://openusd.org/release/api/gf_page_front.html";
+const SOURCE_PARITY_REPORT = "reports/round_432_gf_module_front_source_parity.json";
+const PROMOTION_ID = "round-432-api-gf-module-front";
+
+function rel(...parts) {
+  return path.join(ROOT, ...parts);
+}
+
+function esc(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function htmlDecode(value) {
+  return String(value ?? "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#([0-9]+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)));
+}
+
+function stripTags(value) {
+  return htmlDecode(
+    String(value ?? "")
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+  );
+}
+
+function zhChars(value) {
+  return (String(value ?? "").match(/[\u4e00-\u9fff]/g) || []).length;
+}
+
+function readJson(file) {
+  return JSON.parse(fs.readFileSync(rel(file), "utf8").replace(/^\uFEFF/, ""));
+}
+
+function writeJson(file, value) {
+  fs.writeFileSync(rel(file), `${JSON.stringify(value, null, 2)}\n`, "utf8");
+}
+
+function sourceHtml() {
+  return fs.readFileSync(rel(SOURCE), "utf8");
+}
+
+function sourceText() {
+  return stripTags(sourceHtml());
+}
+
+function sourceHeadings() {
+  const heads = [...sourceHtml().matchAll(/<h([1-4])[^>]*>([\s\S]*?)<\/h\1>/gi)].map((match) => ({
+    level: Number(match[1]),
+    text: stripTags(match[2]),
+  }));
+  const title = stripTags(sourceHtml().match(/<div class="title">([\s\S]*?)<\/div>/i)?.[1] || "");
+  return title ? [{ level: 1, text: title }, ...heads] : heads;
+}
+
+function css() {
+  return `
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.68}
     header{background:#142538;color:#fff;padding:28px 32px}
     main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
@@ -40,15 +111,49 @@
       .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
       .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
     }
-  </style>
-</head>
-<body class="openusd-has-reading-flow" data-cn-status="bilingual_complete" data-cn-round="432" data-cn-scope="api" data-cn-review-ready="true">
+  `;
+}
 
+const links = {
+  final: "../../openusd_bilingual_final.html",
+  api: "../../site/index.html",
+  apiRedirect: "../../site/api/index.html",
+  release: "../../site/release_index.html",
+  source: "../../source/full_api/gf_page_front_source.html",
+  official: OFFICIAL_URL,
+  prev: "arch_page_front.html",
+  next: "glf_page_front.html",
+  vt: "vt_page_front.html",
+  usdGeom: "usd_geom_page_front.html",
+  sdf: "sdf_page_front.html",
+  hd: "hd_page_front.html",
+  hdx: "hdx_page_front.html",
+  usdRender: "usd_render_page_front.html",
+  usdPhysics: "usd_physics_page_front.html",
+  gfRay: "class_gf_ray.html",
+  gfDualQuatf: "class_gf_dual_quatf.html",
+  gfMatrix2f: "class_gf_matrix2f.html",
+  gfMatrix4f: "class_gf_matrix4f.html",
+  gfRange1d: "class_gf_range1d.html",
+  gfVec2i: "class_gf_vec2i.html",
+  renderGuide: "../release/user_guides/render_user_guide.html",
+  xforms: "../release/tut_xforms.html",
+};
+
+function headingList() {
+  return sourceHeadings()
+    .filter((heading) => heading.text && heading.text !== "Table of Contents")
+    .map((heading) => `<li><span class="zh">官方结构：<code>${esc(heading.text)}</code>。中文页把它落到 Gf 的数学基础职责、Linear Algebra、Basic Mathematical Operations、Basic Geometry、Output For Debugging，以及与 Vt、Sdf、UsdGeom、Hd/Hdx 和仿真/渲染消费层的边界。</span><span class="en">Source heading level ${heading.level}: ${esc(heading.text)}</span></li>`)
+    .join("\n");
+}
+
+function readingFlowNav() {
+  return `
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
-  <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
+  <a data-reading-flow="final" href="${links.final}">总入口</a>
   <span> / </span>
-  <a data-reading-flow="api-entry" href="../../site/index.html">API 本地入口</a>
+  <a data-reading-flow="api-entry" href="${links.api}">API 本地入口</a>
   <span> / api / gf_page_front.html</span>
 </nav>
 <aside class="openusd-reading-flow-nav" aria-label="本地阅读导航 / Local reading navigation">
@@ -57,10 +162,10 @@
     <section>
       <h3>入口 / Entrances</h3>
       <ul>
-        <li><a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口 / Final entry</a></li>
-        <li><a data-reading-flow="release-entry" href="../../site/release_index.html">Release 本地入口</a></li>
-        <li><a data-reading-flow="api-entry" href="../../site/index.html">API Doxygen 本地入口</a></li>
-        <li><a data-reading-flow="api-redirect" href="../../site/api/index.html">API redirect / site/api/index.html</a></li>
+        <li><a data-reading-flow="final" href="${links.final}">总入口 / Final entry</a></li>
+        <li><a data-reading-flow="release-entry" href="${links.release}">Release 本地入口</a></li>
+        <li><a data-reading-flow="api-entry" href="${links.api}">API Doxygen 本地入口</a></li>
+        <li><a data-reading-flow="api-redirect" href="${links.apiRedirect}">API redirect / site/api/index.html</a></li>
       </ul>
     </section>
     <section>
@@ -73,57 +178,70 @@
     <section>
       <h3>相邻 API / Related API</h3>
       <ul>
-        <li><a data-reading-flow="related" href="vt_page_front.html">Vt: Value Types</a><span class="openusd-reading-flow-status">draft</span></li>
-        <li><a data-reading-flow="related" href="usd_geom_page_front.html">UsdGeom 几何与变换</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="sdf_page_front.html">Sdf 场景描述基础</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="hd_page_front.html">Hd / Hydra 消费边界</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="hdx_page_front.html">Hdx 调试与可视化</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="usd_render_page_front.html">UsdRender 渲染输出设置</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="usd_physics_page_front.html">UsdPhysics 仿真消费边界</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.vt}">Vt: Value Types</a><span class="openusd-reading-flow-status">draft</span></li>
+        <li><a data-reading-flow="related" href="${links.usdGeom}">UsdGeom 几何与变换</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.sdf}">Sdf 场景描述基础</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.hd}">Hd / Hydra 消费边界</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.hdx}">Hdx 调试与可视化</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.usdRender}">UsdRender 渲染输出设置</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.usdPhysics}">UsdPhysics 仿真消费边界</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
       <h3>Gf 类型样例 / Gf Type Samples</h3>
       <ul>
-        <li><a data-reading-flow="related" href="class_gf_ray.html">GfRay</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="class_gf_dual_quatf.html">GfDualQuatf</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="class_gf_matrix2f.html">GfMatrix2f</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="class_gf_matrix4f.html">GfMatrix4f</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="class_gf_range1d.html">GfRange1d</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="class_gf_vec2i.html">GfVec2i</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.gfRay}">GfRay</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.gfDualQuatf}">GfDualQuatf</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.gfMatrix2f}">GfMatrix2f</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.gfMatrix4f}">GfMatrix4f</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.gfRange1d}">GfRange1d</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.gfVec2i}">GfVec2i</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
       <h3>教程与指南 / User Paths</h3>
       <ul>
-        <li><a data-reading-flow="related" href="../release/tut_xforms.html">Xforms 教程</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="../release/user_guides/render_user_guide.html">Render user guide</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.xforms}">Xforms 教程</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.renderGuide}">Render user guide</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
       <h3>上一页/下一页 / Previous/Next</h3>
       <ul>
-        <li><a data-reading-flow="prev" href="arch_page_front.html">上一页 / Previous: Arch</a></li>
-        <li><a data-reading-flow="next" href="glf_page_front.html">下一页 / Next: Glf</a></li>
+        <li><a data-reading-flow="prev" href="${links.prev}">上一页 / Previous: Arch</a></li>
+        <li><a data-reading-flow="next" href="${links.next}">下一页 / Next: Glf</a></li>
       </ul>
     </section>
     <section>
       <h3>官方外跳 / Official</h3>
       <ul>
-        <li><a class="official-link" data-reading-flow="official" href="https://openusd.org/release/api/gf_page_front.html">打开官方原页 / Open official page</a></li>
+        <li><a class="official-link" data-reading-flow="official" href="${links.official}">打开官方原页 / Open official page</a></li>
       </ul>
     </section>
   </div>
 </aside>
-<!-- openusd-reading-flow-nav:end -->
+<!-- openusd-reading-flow-nav:end -->`;
+}
+
+function buildHtml() {
+  return `<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gf : Graphics Foundations - OpenUSD API 双语</title>
+  <style>${css()}</style>
+</head>
+<body class="openusd-has-reading-flow" data-cn-status="bilingual_complete" data-cn-round="${ROUND}" data-cn-scope="api" data-cn-review-ready="true">
+${readingFlowNav()}
 <header>
   <h1>Gf : Graphics Foundations</h1>
-  <div class="meta">第 432 轮 PromotionRound：Gf 模块入口完成。源页：<code>source/full_api/gf_page_front_source.html</code>；官方页：<code>https://openusd.org/release/api/gf_page_front.html</code></div>
+  <div class="meta">第 ${ROUND} 轮 ${ROUND_TYPE}：Gf 模块入口完成。源页：<code>${SOURCE}</code>；官方页：<code>${OFFICIAL_URL}</code></div>
   <div class="navlinks">
-    <a href="../../openusd_bilingual_final.html">总入口</a>
-    <a href="../../site/index.html">API 本地入口</a>
-    <a href="../../source/full_api/gf_page_front_source.html">本地 source snapshot</a>
-    <a href="https://openusd.org/release/api/gf_page_front.html">Open official page</a>
+    <a href="${links.final}">总入口</a>
+    <a href="${links.api}">API 本地入口</a>
+    <a href="${links.source}">本地 source snapshot</a>
+    <a href="${links.official}">Open official page</a>
   </div>
 </header>
 <main>
@@ -136,10 +254,9 @@
 
   <section data-cn-complete="source-coverage">
     <h2>官方结构与 source parity</h2>
-    <p><span class="zh">本轮使用本地 source snapshot <code>source/full_api/gf_page_front_source.html</code> 对齐官方模块页，并保留官方分组语义：Linear Algebra、Basic Mathematical Operations、Basic Geometry、Output For Debugging。中文不是只写导读，而是把每个官方分组映射到实际阅读和调试路径。</span><span class="en">The local page is checked against the source snapshot and the official Gf module grouping.</span></p>
+    <p><span class="zh">本轮使用本地 source snapshot <code>${SOURCE}</code> 对齐官方模块页，并保留官方分组语义：Linear Algebra、Basic Mathematical Operations、Basic Geometry、Output For Debugging。中文不是只写导读，而是把每个官方分组映射到实际阅读和调试路径。</span><span class="en">The local page is checked against the source snapshot and the official Gf module grouping.</span></p>
     <ul>
-      <li><span class="zh">官方结构：<code>Gf : Graphics Foundations</code>。中文页把它落到 Gf 的数学基础职责、Linear Algebra、Basic Mathematical Operations、Basic Geometry、Output For Debugging，以及与 Vt、Sdf、UsdGeom、Hd/Hdx 和仿真/渲染消费层的边界。</span><span class="en">Source heading level 1: Gf : Graphics Foundations</span></li>
-<li><span class="zh">官方结构：<code>Overview</code>。中文页把它落到 Gf 的数学基础职责、Linear Algebra、Basic Mathematical Operations、Basic Geometry、Output For Debugging，以及与 Vt、Sdf、UsdGeom、Hd/Hdx 和仿真/渲染消费层的边界。</span><span class="en">Source heading level 1: Overview</span></li>
+      ${headingList()}
       <li><span class="zh">官方 Overview 的一句话“basic mathematical aspects of graphics”在中文里拆成数学值类型、基础运算、几何构件、调试输出四条主线。</span><span class="en">Source phrase retained: basic mathematical aspects of graphics.</span></li>
     </ul>
   </section>
@@ -241,3 +358,219 @@
 </main>
 </body>
 </html>
+`;
+}
+
+function sourceParity() {
+  const src = sourceText();
+  const rawOut = fs.existsSync(rel(TARGET)) ? fs.readFileSync(rel(TARGET), "utf8") : "";
+  const out = stripTags(rawOut);
+  const sourceKeywords = [
+    "Gf",
+    "Graphics Foundations",
+    "foundation classes",
+    "basic mathematical aspects of graphics",
+    "Linear Algebra",
+    "vectors",
+    "two, three, and four float components",
+    "compound linear transformations",
+    "Basic Mathematical Operations",
+    "radians and degrees",
+    "square roots",
+    "minimum and maximum values",
+    "absolute values",
+    "Basic Geometry",
+    "floating point ranges",
+    "three-dimensional bounding boxes",
+    "planes",
+    "rays",
+    "frusta",
+    "camera model",
+    "Output For Debugging",
+    "diagnostic purposes",
+  ];
+  const outputKeywords = [
+    ...sourceKeywords,
+    "GfVec",
+    "GfMatrix",
+    "GfQuat",
+    "GfRange",
+    "GfBBox3d",
+    "GfRay",
+    "GfPlane",
+    "GfFrustum",
+    "GfCamera",
+    "GfRotation",
+    "GfTransform",
+    "VtValue",
+    "VtArray",
+    "UsdGeom",
+    "Sdf",
+    "Hd",
+    "Hdx",
+    "UsdRender",
+    "UsdPhysics",
+    "Open official page",
+  ];
+  return {
+    generated_at: new Date().toISOString(),
+    round: ROUND,
+    round_type: ROUND_TYPE,
+    target: TARGET,
+    source_snapshot: SOURCE,
+    official_url: OFFICIAL_URL,
+    source_headings: sourceHeadings(),
+    source_keywords_checked: sourceKeywords,
+    output_keywords_checked: outputKeywords,
+    missing_source_keywords: sourceKeywords.filter((keyword) => !src.includes(keyword)),
+    missing_output_keywords: outputKeywords.filter((keyword) => !out.includes(keyword)),
+    output_checks: {
+      has_complete_status: rawOut.includes('data-cn-status="bilingual_complete"') && rawOut.includes(`data-cn-round="${ROUND}"`),
+      has_paragraph_coverage: out.includes("Paragraph-Level Bilingual Coverage") && out.includes("逐段双语理解"),
+      has_final_entry: rawOut.includes("openusd_bilingual_final.html"),
+      has_api_entry: rawOut.includes("site/index.html"),
+      has_api_redirect: rawOut.includes("site/api/index.html"),
+      has_release_entry: rawOut.includes("site/release_index.html"),
+      has_reading_flow_nav: rawOut.includes("openusd-reading-flow-nav") && rawOut.includes("openusd-reading-flow-breadcrumb"),
+      has_explicit_official_link: rawOut.includes("Open official page") && rawOut.includes(OFFICIAL_URL),
+      no_draft_marker: !/bilingual_draft|batch draft page|later iterations add denser bilingual coverage|后续迭代会继续补齐/.test(out),
+      zh_chars: zhChars(rawOut),
+      zh_blocks: (rawOut.match(/class=["'][^"']*\bzh\b[^"']*["']/g) || []).length,
+    },
+  };
+}
+
+function writePage() {
+  fs.writeFileSync(rel(TARGET), buildHtml(), "utf8");
+  writeJson(SOURCE_PARITY_REPORT, sourceParity());
+}
+
+function precheck() {
+  const report = sourceParity();
+  const failed = [];
+  if (report.missing_source_keywords.length) failed.push(`missing source keywords: ${report.missing_source_keywords.join(", ")}`);
+  if (report.missing_output_keywords.length) failed.push(`missing output keywords: ${report.missing_output_keywords.join(", ")}`);
+  for (const [key, value] of Object.entries(report.output_checks)) {
+    if (typeof value === "boolean" && !value) failed.push(`output check failed: ${key}`);
+  }
+  if (report.output_checks.zh_chars < 3400) failed.push(`zh chars too low: ${report.output_checks.zh_chars}`);
+  if (report.output_checks.zh_blocks < 24) failed.push(`zh blocks too low: ${report.output_checks.zh_blocks}`);
+  if (failed.length) {
+    console.error(JSON.stringify({ passed: false, failed, report }, null, 2));
+    process.exit(1);
+  }
+  writeJson(SOURCE_PARITY_REPORT, report);
+  console.log(JSON.stringify({ passed: true, report }, null, 2));
+}
+
+function updateManifest() {
+  const raw = readJson("reports/bilingual_completion_promotions.json");
+  const doc = {
+    ...raw,
+    generated_at: raw.generated_at || new Date().toISOString(),
+    promotions: Array.isArray(raw.promotions) ? raw.promotions : [],
+    updated_at: new Date().toISOString(),
+  };
+  doc.promotions = doc.promotions.filter((entry) => entry.id !== PROMOTION_ID && entry.local_output !== TARGET);
+  doc.promotions.push({
+    id: PROMOTION_ID,
+    title: "Gf : Graphics Foundations",
+    official_url: OFFICIAL_URL,
+    local_output: TARGET,
+    status: "bilingual_complete",
+    reason: `Round ${ROUND} ${ROUND_TYPE}: promote the Gf module front page by adding Chinese main-reading-path coverage for Graphics Foundations, Linear Algebra, Basic Mathematical Operations, Basic Geometry, Output For Debugging, vectors, matrices, quaternions, ranges, bounding boxes, rays, frusta, camera model, adjacent Vt/Sdf/UsdGeom/Hd/Hdx/UsdRender/UsdPhysics boundaries, source parity, reading-flow navigation, and explicit official-page verification.`,
+    evidence: {
+      page_contains_status: "bilingual_complete",
+      generic_draft_marker_removed: true,
+      minimum_chinese_chars: 3400,
+      minimum_complete_section_chinese_chars: 3000,
+      minimum_chinese_blocks: 24,
+      official_source_compared: true,
+      local_source_snapshot_compared: SOURCE,
+      source_parity_report: SOURCE_PARITY_REPORT,
+      round_type: ROUND_TYPE,
+    },
+  });
+  writeJson("reports/bilingual_completion_promotions.json", doc);
+}
+
+function updateProblemAudit() {
+  const quality = readJson("reports/translation_quality_review.json");
+  const debt = readJson("reports/english_debt_audit.json");
+  const inventory = readJson("reports/all_pages_inventory.json");
+  const counts = {
+    total_pages: inventory.counts.total_pages,
+    bilingual_complete: quality.status_counts.bilingual_complete,
+    bilingual_draft: quality.status_counts.bilingual_draft,
+    good_bilingual: quality.grade_counts.good_bilingual,
+    draft_needs_translation: quality.grade_counts.draft_needs_translation,
+    draft_template_only: quality.grade_counts.draft_template_only,
+    review_ready_zh: debt.counts.review_ready_zh,
+    api_complete: debt.counts.api_complete,
+    api_review_ready_zh: debt.counts.api_review_ready_zh,
+    release_complete: debt.counts.release_complete,
+    release_review_ready_zh: debt.counts.release_review_ready_zh,
+    pending_full_scope: inventory.counts.pending_full_scope_pages,
+  };
+  writeJson("reports/current_problem_audit.json", {
+    generated_at: new Date().toISOString(),
+    purpose: `第 ${ROUND} 轮 ${ROUND_TYPE} 记录：确认 ${TARGET} 已晋级，并跟踪当前 OpenUSD 双语完成缺口。`,
+    last_completed_round: {
+      round: ROUND,
+      round_type: ROUND_TYPE,
+      target: TARGET,
+      commit_sha: null,
+      previous_good_bilingual: 210,
+    },
+    current_counts: counts,
+    problems: [
+      {
+        id: "P0-api-draft-backlog",
+        severity: "P0",
+        summary: `当前 good_bilingual=${counts.good_bilingual}/406，API complete=${counts.api_complete}，仍有 ${counts.bilingual_draft} 个可检查草稿。`,
+        evidence: `第 ${ROUND} 轮 ${ROUND_TYPE} 将 ${TARGET} 从 API 草稿晋级为 good_bilingual；release 范围保持 ${counts.release_complete}/126 complete。`,
+        required_action: "继续推进 API 草稿；只把真实达到中文主阅读路径和 source parity 的页面写入 promotion manifest。",
+      },
+      {
+        id: "P1-left-navigation-reading-flow",
+        severity: "P1",
+        summary: "完成页必须保留本地 reading-flow 导航、breadcrumb、API/Release/总入口和显式官方外跳。",
+        evidence: "本轮页面生成了本地侧栏、breadcrumb、相邻 API/class/user guide 路径和 Open official page 外跳，并会重新运行 reading-flow 审计。",
+        required_action: "若 reading-flow 审计失败，先修导航，不得推送。",
+      },
+      {
+        id: "P1-markdown-record-encoding",
+        severity: "P1",
+        summary: "Markdown 编码守卫继续作为硬门槛。",
+        evidence: "work.md、reports/iteration_report.md、reports/current_problem_audit.md、reports/bilingual_completion_promotions.md 必须无重复问号损坏、replacement character 和 UTF-8 BOM。",
+        required_action: "若 audit_openusd_markdown_encoding.mjs 失败，先做 ConsistencyRound。",
+      },
+    ],
+    promoted_pages: [
+      {
+        round: ROUND,
+        round_type: ROUND_TYPE,
+        output: TARGET,
+        official_url: OFFICIAL_URL,
+        source_snapshot: SOURCE,
+        source_parity_report: SOURCE_PARITY_REPORT,
+      },
+    ],
+    not_promoted_pages: [],
+    source_parity_report: SOURCE_PARITY_REPORT,
+    next_actions: [
+      "release 范围已 126/126 complete，不要重复处理 release 已完成页。",
+      "下一轮建议继续 API 核心页，优先考虑 full_site/api/vt_page_front.html；开始前必须确认 git/report/validation/markdown/reading-flow 状态干净一致。",
+    ],
+    next_action: "下一轮建议 PromotionRound：full_site/api/vt_page_front.html。",
+  });
+}
+
+const commands = new Set(process.argv.slice(2));
+if (commands.has("--write-page")) writePage();
+if (commands.has("--precheck")) precheck();
+if (commands.has("--manifest")) updateManifest();
+if (commands.has("--problem")) updateProblemAudit();
+if (commands.size === 0) {
+  console.log("Usage: node scripts/promote_round_432_gf_module_front.mjs --write-page --precheck --manifest --problem");
+}

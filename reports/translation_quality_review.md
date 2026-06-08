@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-08T12:42:00.831Z
+Generated: 2026-06-08T13:07:39.933Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 196
-- bilingual_complete: 210
+- bilingual_draft: 195
+- bilingual_complete: 211
 
 ## Grade Counts
 
 - draft_template_only: 10
-- draft_needs_translation: 186
-- good_bilingual: 210
+- draft_needs_translation: 185
+- good_bilingual: 211
 
 ## Current Focus Batch
 
@@ -228,7 +228,7 @@ Generated: 2026-06-08T12:42:00.831Z
 | 162 | draft_needs_translation | bilingual_draft | 457 | 25/17 | 0 | 0 | `full_site/api/functions_z.html` |
 | 163 | draft_needs_translation | bilingual_draft | 459 | 25/17 | 0 | 0 | `full_site/api/functions.html` |
 | 164 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/geom_model_a_p_i_adapter_8h_source.html` |
-| 165 | draft_needs_translation | bilingual_draft | 764 | 38/25 | 0 | 0 | `full_site/api/gf_page_front.html` |
+| 165 | good_bilingual | bilingual_complete | 1490 | 47/47 | 0 | 0 | `full_site/api/gf_page_front.html` |
 | 166 | good_bilingual | bilingual_complete | 1640 | 40/31 | 0 | 0 | `full_site/api/glf_page_front.html` |
 | 167 | draft_needs_translation | bilingual_draft | 551 | 25/17 | 0 | 0 | `full_site/api/globals_c.html` |
 | 168 | draft_needs_translation | bilingual_draft | 716 | 32/24 | 0 | 0 | `full_site/api/globals_defs.html` |
