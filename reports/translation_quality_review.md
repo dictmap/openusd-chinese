@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-08T08:13:10.569Z
+Generated: 2026-06-08T08:36:06.715Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 206
-- bilingual_complete: 200
+- bilingual_draft: 205
+- bilingual_complete: 201
 
 ## Grade Counts
 
 - draft_template_only: 10
-- draft_needs_translation: 196
-- good_bilingual: 200
+- draft_needs_translation: 195
+- good_bilingual: 201
 
 ## Current Focus Batch
 
@@ -310,7 +310,7 @@ Generated: 2026-06-08T08:13:10.569Z
 | 244 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/riley_param_schema_8h_source.html` |
 | 245 | good_bilingual | bilingual_complete | 706 | 43/43 | 0 | 0 | `full_site/api/sdf_page_front.html` |
 | 246 | draft_needs_translation | bilingual_draft | 531 | 26/17 | 0 | 0 | `full_site/api/sdr_glslfx_page_front.html` |
-| 247 | draft_needs_translation | bilingual_draft | 708 | 39/26 | 0 | 0 | `full_site/api/sdr_page_front.html` |
+| 247 | good_bilingual | bilingual_complete | 770 | 34/34 | 0 | 0 | `full_site/api/sdr_page_front.html` |
 | 248 | draft_needs_translation | bilingual_draft | 338 | 14/11 | 0 | 0 | `full_site/api/sparse_vectorized_input_traverser_8h.html` |
 | 249 | draft_needs_translation | bilingual_draft | 387 | 29/26 | 0 | 0 | `full_site/api/struct_hgi_sampler_desc.html` |
 | 250 | draft_needs_translation | bilingual_draft | 441 | 40/37 | 0 | 0 | `full_site/api/struct_usd_geom_tokens_type.html` |

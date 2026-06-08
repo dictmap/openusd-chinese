@@ -1,6 +1,6 @@
 # Markdown Encoding Audit
 
-Generated: 2026-06-08T08:16:24.977Z
+Generated: 2026-06-08T08:36:14.514Z
 
 Result:
 
@@ -16,7 +16,7 @@ Result:
 | `work.md` | true | false | 0 | 0 | 0 | 1897 |
 | `reports/iteration_report.md` | true | false | 0 | 0 | 0 | 1641 |
 | `reports/current_problem_audit.md` | true | false | 0 | 0 | 0 | 1362 |
-| `reports/bilingual_completion_promotions.md` | true | false | 0 | 0 | 0 | 36858 |
+| `reports/bilingual_completion_promotions.md` | true | false | 0 | 0 | 0 | 37010 |
 
 Policy:
 

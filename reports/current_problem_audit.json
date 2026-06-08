@@ -1,15 +1,16 @@
 {
-  "generated_at": "2026-06-08T08:05:45.972Z",
+  "generated_at": "2026-06-08T08:36:07.702Z",
   "purpose": "Track current OpenUSD bilingual completion blockers and named P0/P1 defects.",
   "current_counts": {
     "total_pages": 406,
-    "bilingual_complete": 200,
-    "bilingual_draft": 206,
-    "good_bilingual": 200,
-    "draft_needs_translation": 196,
+    "bilingual_complete": 201,
+    "bilingual_draft": 205,
+    "good_bilingual": 201,
+    "draft_needs_translation": 195,
     "draft_template_only": 10,
-    "review_ready_zh": 137,
-    "api_complete": 74,
+    "review_ready_zh": 138,
+    "api_complete": 75,
+    "api_review_ready_zh": 15,
     "release_complete": 126,
     "release_review_ready_zh": 123,
     "pending_full_scope": 0
@@ -18,15 +19,15 @@
     {
       "id": "P0-api-draft-backlog",
       "severity": "P0",
-      "summary": "当前 good_bilingual=200/406，API complete=74，仍有 206 个可检查草稿，不是完整翻译。",
-      "evidence": "第 420 轮 PromotionRound 将 full_site/api/pcp_page_front.html 从 API 草稿晋级为 good_bilingual；release 范围保持 126/126 complete。",
+      "summary": "当前 good_bilingual=201/406，API complete=75，仍有 205 个可检查草稿，不是完整翻译。",
+      "evidence": "第 421 轮 PromotionRound 将 full_site/api/sdr_page_front.html 从 API 草稿晋级为 good_bilingual；release 范围保持 126/126 complete。",
       "required_action": "继续按 PromotionRound 或 DomainSprintRound 推进 API 草稿，只把达标页面写入 promotion manifest。"
     },
     {
       "id": "P1-left-navigation-reading-flow",
       "severity": "P1",
       "summary": "完成页必须保留本地 reading-flow 导航、breadcrumb、API/Release/总入口和显式官方外跳。",
-      "evidence": "本轮完成后需重新运行 route_openusd_internal_links_local、inject_openusd_reading_flow_navigation 和 audit_openusd_reading_flow_navigation。",
+      "evidence": "本轮完成后需重新运行 route_openusd_internal_links_local 和 audit_openusd_reading_flow_navigation；若新增页面缺导航，不得推送。",
       "required_action": "若 reading-flow 审计失败，停止并修复导航，不得推送。"
     },
     {
@@ -39,16 +40,16 @@
   ],
   "promoted_pages": [
     {
-      "round": 420,
+      "round": 421,
       "round_type": "PromotionRound",
-      "output": "full_site/api/pcp_page_front.html",
-      "official_url": "https://openusd.org/release/api/pcp_page_front.html",
-      "source_snapshot": "source/full_api/pcp_page_front_source.html",
-      "source_parity_report": "reports/round_420_pcp_module_front_source_parity.json"
+      "output": "full_site/api/sdr_page_front.html",
+      "official_url": "https://openusd.org/release/api/sdr_page_front.html",
+      "source_snapshot": "source/full_api/sdr_page_front_source.html",
+      "source_parity_report": "reports/round_421_sdr_module_front_source_parity.json"
     }
   ],
   "not_promoted_pages": [],
-  "source_parity_report": "reports/round_420_pcp_module_front_source_parity.json",
+  "source_parity_report": "reports/round_421_sdr_module_front_source_parity.json",
   "next_actions": [
     "继续推进 API 草稿；release 范围已经 126/126 complete，不要重复处理 release 已完成页。",
     "优先选择核心 API 或同域短页批量，但每轮必须保证 good_bilingual 按实际达标页增长。"
