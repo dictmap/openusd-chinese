@@ -1,11 +1,83 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UsdRender: USD Render Schema - OpenUSD API 双语导读</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
-  <style>
+import fs from "node:fs";
+import path from "node:path";
+
+const ROOT = process.cwd();
+const ROUND = 426;
+const ROUND_TYPE = "PromotionRound";
+const TARGET = "full_site/api/usd_render_page_front.html";
+const SOURCE = "source/full_api/usd_render_page_front_source.html";
+const OFFICIAL_URL = "https://openusd.org/release/api/usd_render_page_front.html";
+const SOURCE_PARITY_REPORT = "reports/round_426_usd_render_module_front_source_parity.json";
+const PROMOTION_ID = "round-426-api-usd-render-module-front";
+
+function rel(...parts) {
+  return path.join(ROOT, ...parts);
+}
+
+function esc(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function htmlDecode(value) {
+  return String(value ?? "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#([0-9]+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)));
+}
+
+function stripTags(value) {
+  return htmlDecode(
+    String(value ?? "")
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+  );
+}
+
+function zhChars(value) {
+  return (String(value ?? "").match(/[\u4e00-\u9fff]/g) || []).length;
+}
+
+function readJson(file) {
+  return JSON.parse(fs.readFileSync(rel(file), "utf8").replace(/^\uFEFF/, ""));
+}
+
+function writeJson(file, value) {
+  fs.writeFileSync(rel(file), `${JSON.stringify(value, null, 2)}\n`, "utf8");
+}
+
+function sourceHtml() {
+  return fs.readFileSync(rel(SOURCE), "utf8");
+}
+
+function sourceText() {
+  return stripTags(sourceHtml());
+}
+
+function sourceHeadings() {
+  return [...sourceHtml().matchAll(/<h([1-4])[^>]*>([\s\S]*?)<\/h\1>/gi)].map((match) => ({
+    level: Number(match[1]),
+    text: stripTags(match[2]),
+  }));
+}
+
+function sourceExcerpt() {
+  return sourceText().slice(0, 1400);
+}
+
+function css() {
+  return `
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.66}
     body.openusd-has-reading-flow{padding-left:292px}
     header{background:#142538;color:#fff;padding:28px 32px}
@@ -40,27 +112,40 @@
       .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
       .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
     }
-  </style>
-</head>
-<body data-cn-status="bilingual_complete" data-cn-round="426" class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_complete</span>
-    <h1>UsdRender: USD Render Schema</h1>
-    <div class="meta">Round 426 PromotionRound | Source snapshot: source/full_api/usd_render_page_front_source.html | Official: https://openusd.org/release/api/usd_render_page_front.html</div>
-    <p class="navlinks">
-      <a href="../../openusd_bilingual_final.html">总入口</a>
-      <a href="../../site/index.html">API 本地入口</a>
-      <a href="../../site/release_index.html">Release 本地入口</a>
-      <a href="../../source/full_api/usd_render_page_front_source.html">Local source snapshot</a>
-      <a href="https://openusd.org/release/api/usd_render_page_front.html">Open official page</a>
-    </p>
-  </header>
+  `;
+}
 
+const links = {
+  final: "../../openusd_bilingual_final.html",
+  api: "../../site/index.html",
+  apiRedirect: "../../site/api/index.html",
+  release: "../../site/release_index.html",
+  source: "../../source/full_api/usd_render_page_front_source.html",
+  official: OFFICIAL_URL,
+  prev: "usd_proc_page_front.html",
+  next: "usd_vol_page_front.html",
+  usd: "usd_page_front.html",
+  usdGeom: "usd_geom_page_front.html",
+  usdProc: "usd_proc_page_front.html",
+  usdVol: "usd_vol_page_front.html",
+  hd: "hd_page_front.html",
+  hdx: "hdx_page_front.html",
+};
+
+function headingList() {
+  return sourceHeadings()
+    .filter((heading) => heading.text !== "Table of Contents")
+    .map((heading) => `<li><span class="zh">官方 section：<code>${esc(heading.text)}</code>。中文页将它纳入 render settings、产品输出、AOV/render var、相机与像素规则、扩展机制和调试边界。</span><span class="en">Source heading level ${heading.level}: ${esc(heading.text)}</span></li>`)
+    .join("\n");
+}
+
+function readingFlowNav() {
+  return `
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
-  <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
+  <a data-reading-flow="final" href="${links.final}">总入口</a>
   <span> / </span>
-  <a data-reading-flow="api-entry" href="../../site/index.html">API 本地入口</a>
+  <a data-reading-flow="api-entry" href="${links.api}">API 本地入口</a>
   <span> / api / usd_render_page_front.html</span>
 </nav>
 <aside class="openusd-reading-flow-nav" aria-label="本地阅读导航 / Local reading navigation">
@@ -69,10 +154,10 @@
     <section>
       <h3>入口 / Entrances</h3>
       <ul>
-        <li><a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口 / Final entry</a></li>
-        <li><a data-reading-flow="release-entry" href="../../site/release_index.html">Release 本地入口</a></li>
-        <li><a data-reading-flow="api-entry" href="../../site/index.html">API Doxygen 本地入口</a></li>
-        <li><a data-reading-flow="api-redirect" href="../../site/api/index.html">API redirect / site/api/index.html</a></li>
+        <li><a data-reading-flow="final" href="${links.final}">总入口 / Final entry</a></li>
+        <li><a data-reading-flow="release-entry" href="${links.release}">Release 本地入口</a></li>
+        <li><a data-reading-flow="api-entry" href="${links.api}">API Doxygen 本地入口</a></li>
+        <li><a data-reading-flow="api-redirect" href="${links.apiRedirect}">API redirect / site/api/index.html</a></li>
       </ul>
     </section>
     <section>
@@ -85,28 +170,54 @@
     <section>
       <h3>相关 API / Related API</h3>
       <ul>
-        <li><a data-reading-flow="related" href="../../site/usd_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_page_front.html">Usd 核心模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="usd_geom_page_front.html">UsdGeom 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="hd_page_front.html">Hd 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="hdx_page_front.html">Hdx 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.usd}">Usd 核心模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.usdGeom}">UsdGeom 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.hd}">Hd 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.hdx}">Hdx 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
       <h3>上一页/下一页 / Previous/Next</h3>
       <ul>
-        <li><a data-reading-flow="prev" href="usd_proc_page_front.html">上一页 / Previous: UsdProc</a></li>
-        <li><a data-reading-flow="next" href="usd_vol_page_front.html">下一页 / Next: UsdVol</a></li>
+        <li><a data-reading-flow="prev" href="${links.prev}">上一页 / Previous: UsdProc</a></li>
+        <li><a data-reading-flow="next" href="${links.next}">下一页 / Next: UsdVol</a></li>
       </ul>
     </section>
     <section>
       <h3>官方外跳 / Official</h3>
       <ul>
-        <li><a class="official-link" data-reading-flow="official" href="https://openusd.org/release/api/usd_render_page_front.html">打开官方原页 / Open official page</a></li>
+        <li><a class="official-link" data-reading-flow="official" href="${links.official}">打开官方原页 / Open official page</a></li>
       </ul>
     </section>
   </div>
 </aside>
-<!-- openusd-reading-flow-nav:end -->
+<!-- openusd-reading-flow-nav:end -->`;
+}
+
+function buildHtml() {
+  return `<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UsdRender: USD Render Schema - OpenUSD API 双语导读</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>${css()}</style>
+</head>
+<body data-cn-status="bilingual_complete" data-cn-round="${ROUND}" class="openusd-has-reading-flow">
+  <header>
+    <span class="status">bilingual_complete</span>
+    <h1>UsdRender: USD Render Schema</h1>
+    <div class="meta">Round ${ROUND} ${ROUND_TYPE} | Source snapshot: ${esc(SOURCE)} | Official: ${esc(OFFICIAL_URL)}</div>
+    <p class="navlinks">
+      <a href="${links.final}">总入口</a>
+      <a href="${links.api}">API 本地入口</a>
+      <a href="${links.release}">Release 本地入口</a>
+      <a href="${links.source}">Local source snapshot</a>
+      <a href="${links.official}">Open official page</a>
+    </p>
+  </header>
+${readingFlowNav()}
   <main>
     <section data-cn-complete="round-426-usd-render-main-reading-path">
       <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
@@ -173,7 +284,7 @@
         <li><span class="zh">不要把 renderer-specific extension 误认为跨 renderer 标准行为。<code>UsdRenderSettingsAPI</code> 允许扩展，但实际支持度仍由具体 renderer 或 pipeline 工具决定。</span><span class="en">Renderer-specific extensions require backend-specific validation.</span></li>
       </ul>
       <p><span class="zh">建议调试顺序是：确认 <code>/Render</code> 约定和 layer composition；检查 <code>renderSettingsPrimPath</code>；确认 settings 到 products、products 到 orderedVars、products 到 camera 的 relationships；再检查 resolution、pixelAspectRatio、dataWindowNDC、aspectRatioConformPolicy；最后让后端计算或读取 <code>UsdRenderSpec</code>，比较它与实际 renderer 输出是否一致。</span><span class="en">Debug from /Render organization through relationships, pixel settings, and evaluated UsdRenderSpec before blaming backend output.</span></p>
-      <p><span class="zh">与 <a href="hd_page_front.html"><code>Hd</code></a>、<a href="hdx_page_front.html"><code>Hdx</code></a> 或 Hydra 调试结合时，要区分 USD 层的 render schema 与 delegate 层的具体执行。UsdRender 可以描述期望输出，但 Hydra/Hd 负责如何把 scene index、render pass、buffer、AOV 或后端资源组织起来。两层都可能出错，不能互相替代。</span><span class="en">UsdRender schema and Hydra/Hd delegate execution are adjacent but separate debugging layers.</span></p>
+      <p><span class="zh">与 <a href="${links.hd}"><code>Hd</code></a>、<a href="${links.hdx}"><code>Hdx</code></a> 或 Hydra 调试结合时，要区分 USD 层的 render schema 与 delegate 层的具体执行。UsdRender 可以描述期望输出，但 Hydra/Hd 负责如何把 scene index、render pass、buffer、AOV 或后端资源组织起来。两层都可能出错，不能互相替代。</span><span class="en">UsdRender schema and Hydra/Hd delegate execution are adjacent but separate debugging layers.</span></p>
       <p><span class="zh">如果最终文件没生成，优先检查 product 的 <code>productName</code>、目标路径权限和 renderer 是否收到该 product；如果 AOV 缺失，检查 <code>orderedVars</code>、<code>sourceName</code>、<code>sourceType</code> 和 renderer 支持的 var 名称；如果输出尺寸错误，检查 resolution、pixelAspectRatio、aspectRatioConformPolicy 和 dataWindowNDC；如果多 pass 输出顺序不对，检查 <code>UsdRenderPass</code> 的依赖关系和时间采样输入。这些排查都应先从 USD authored opinions 开始，再进入 renderer 日志。</span><span class="en">Missing files, missing AOVs, wrong dimensions, and pass-order issues have different UsdRender checkpoints.</span></p>
       <p><span class="zh">后端边界还包括颜色管理、采样质量、去噪、GPU/CPU 设备选择和 renderer 私有参数。本页可以帮助确认这些设置是否有 USD 侧的表达入口，但不能证明某个 renderer 已按期望执行。最终交付时应同时保存 composed USD、计算出的 render spec、renderer 日志和输出文件元数据，才能把 USD 描述错误、后端配置错误和运行环境错误区分开。</span><span class="en">Backend validation still requires composed USD, evaluated specs, renderer logs, and output metadata.</span></p>
       <p><span class="zh">对自动化系统来说，最可靠的验收不是“页面里有 RenderSettings 字样”，而是能从中文说明中沿着 settings、product、var、pass、camera、pixel window 和 extension 逐项复核，并能把每个输出问题落到对应的 USD 节点或后端证据上。</span><span class="en">A useful review path maps each render-output issue to the matching USD node or backend evidence.</span></p>
@@ -191,27 +302,16 @@
 
     <section data-cn-complete="round-426-usd-render-adjacent-path">
       <h2>相邻阅读路径 / Adjacent Reading Path</h2>
-      <p><span class="zh">推荐阅读顺序是：先读本页建立 render settings / product / var / pass 的关系；再回到 <a href="../../site/usd_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_page_front.html"><code>Usd</code></a> 理解 stage metadata、relationships 和 composition；查看 <a href="usd_geom_page_front.html"><code>UsdGeom</code></a> 中 camera 与空间约定；需要理解渲染后端和 AOV buffer 时进入 <a href="hd_page_front.html"><code>Hd</code></a> 与 <a href="hdx_page_front.html"><code>Hdx</code></a>；如果输出包括体积或 point cloud，可继续读 <a href="usd_vol_page_front.html"><code>UsdVol</code></a>。上一页 <a href="usd_proc_page_front.html"><code>UsdProc</code></a> 则帮助区分 procedural 资产声明和实际渲染输出。</span><span class="en">Read UsdRender with Usd, UsdGeom, Hd/Hdx, UsdVol, and UsdProc depending on the render pipeline.</span></p>
+      <p><span class="zh">推荐阅读顺序是：先读本页建立 render settings / product / var / pass 的关系；再回到 <a href="${links.usd}"><code>Usd</code></a> 理解 stage metadata、relationships 和 composition；查看 <a href="${links.usdGeom}"><code>UsdGeom</code></a> 中 camera 与空间约定；需要理解渲染后端和 AOV buffer 时进入 <a href="${links.hd}"><code>Hd</code></a> 与 <a href="${links.hdx}"><code>Hdx</code></a>；如果输出包括体积或 point cloud，可继续读 <a href="${links.usdVol}"><code>UsdVol</code></a>。上一页 <a href="${links.usdProc}"><code>UsdProc</code></a> 则帮助区分 procedural 资产声明和实际渲染输出。</span><span class="en">Read UsdRender with Usd, UsdGeom, Hd/Hdx, UsdVol, and UsdProc depending on the render pipeline.</span></p>
       <p class="note"><span class="zh">本页保留 <code>UsdRender</code>、<code>UsdRenderSettings</code>、<code>UsdRenderProduct</code>、<code>UsdRenderVar</code>、<code>UsdRenderPass</code>、<code>renderSettingsPrimPath</code>、<code>aspectRatioConformPolicy</code>、<code>dataWindowNDC</code>、<code>orderedVars</code> 等英文技术标识，便于和官方 Doxygen、USDA 示例、Hydra/Hd 后端日志和渲染器配置对照。</span><span class="en">English identifiers are preserved for source parity, USDA examples, and renderer log comparison.</span></p>
     </section>
 
     <section data-cn-complete="round-426-usd-render-source-parity">
       <h2>官方 section 对比 / Source Parity</h2>
       <ul>
-<li><span class="zh">官方 section：<code>Structure and Organization</code>。中文页将它纳入 render settings、产品输出、AOV/render var、相机与像素规则、扩展机制和调试边界。</span><span class="en">Source heading level 1: Structure and Organization</span></li>
-<li><span class="zh">官方 section：<code>Concepts</code>。中文页将它纳入 render settings、产品输出、AOV/render var、相机与像素规则、扩展机制和调试边界。</span><span class="en">Source heading level 2: Concepts</span></li>
-<li><span class="zh">官方 section：<code>Reading settings</code>。中文页将它纳入 render settings、产品输出、AOV/render var、相机与像素规则、扩展机制和调试边界。</span><span class="en">Source heading level 2: Reading settings</span></li>
-<li><span class="zh">官方 section：<code>Conventions</code>。中文页将它纳入 render settings、产品输出、AOV/render var、相机与像素规则、扩展机制和调试边界。</span><span class="en">Source heading level 2: Conventions</span></li>
-<li><span class="zh">官方 section：<code>How settings affect rendering</code>。中文页将它纳入 render settings、产品输出、AOV/render var、相机与像素规则、扩展机制和调试边界。</span><span class="en">Source heading level 1: How settings affect rendering</span></li>
-<li><span class="zh">官方 section：<code>Camera</code>。中文页将它纳入 render settings、产品输出、AOV/render var、相机与像素规则、扩展机制和调试边界。</span><span class="en">Source heading level 2: Camera</span></li>
-<li><span class="zh">官方 section：<code>Pixels</code>。中文页将它纳入 render settings、产品输出、AOV/render var、相机与像素规则、扩展机制和调试边界。</span><span class="en">Source heading level 2: Pixels</span></li>
-<li><span class="zh">官方 section：<code>Aspect Ratio Policy</code>。中文页将它纳入 render settings、产品输出、AOV/render var、相机与像素规则、扩展机制和调试边界。</span><span class="en">Source heading level 3: Aspect Ratio Policy</span></li>
-<li><span class="zh">官方 section：<code>Cropping, Tiling, Overscan</code>。中文页将它纳入 render settings、产品输出、AOV/render var、相机与像素规则、扩展机制和调试边界。</span><span class="en">Source heading level 3: Cropping, Tiling, Overscan</span></li>
-<li><span class="zh">官方 section：<code>Rasterization Rule</code>。中文页将它纳入 render settings、产品输出、AOV/render var、相机与像素规则、扩展机制和调试边界。</span><span class="en">Source heading level 3: Rasterization Rule</span></li>
-<li><span class="zh">官方 section：<code>Extensions</code>。中文页将它纳入 render settings、产品输出、AOV/render var、相机与像素规则、扩展机制和调试边界。</span><span class="en">Source heading level 1: Extensions</span></li>
-<li><span class="zh">官方 section：<code>Example Usage</code>。中文页将它纳入 render settings、产品输出、AOV/render var、相机与像素规则、扩展机制和调试边界。</span><span class="en">Source heading level 1: Example Usage</span></li>
+${headingList()}
         <li><span class="zh">已核对 source snapshot 中的核心关键词：<code>UsdRender</code>、<code>render settings</code>、<code>UsdRenderSettings</code>、<code>UsdRenderProduct</code>、<code>UsdRenderVar</code>、<code>UsdRenderSpec</code>、<code>UsdRenderPass</code>、<code>renderSettingsPrimPath</code>、<code>UsdRenderComputeSpec</code>、<code>/Render</code>、<code>UsdGeomCamera</code>、<code>pixelAspectRatio</code>、<code>aspectRatioConformPolicy</code>、<code>dataWindowNDC</code>、<code>Rasterization Rule</code> 和 <code>UsdRenderSettingsAPI</code>。</span><span class="en">The local page preserves the official UsdRender section and keyword structure.</span></li>
-        <li><span class="zh">官方原文摘录只用于核对，不作为中文主阅读路径：</span><span class="en">Universal Scene Description: UsdRender : USD Render Schema Loading... Searching... No Matches UsdRender : USD Render Schema Table of Contents Structure and Organization Concepts Reading settings Conventions How settings affect rendering Camera Pixels Aspect Ratio Policy Cropping, Tiling, Overscan Rasterization Rule Extensions Example Usage UsdRender provides schemas and behaviors for describing renders. Rendering refers to the process of generating images of a scene. In addition to images, rendering can also produce related byproducts such as depth maps, light probes, or point clouds. UsdRender provides primitives for configuring high-level aspects of the rendering process referred to collectively as render settings . An overview of the process follows. Structure and Organization Concepts UsdRenderSettings describes top-level settings required to invoke a renderer. It specifies one or more products , representing artifacts for the renderer to produce. UsdRenderProduct describes a single product. It often corresponds to an image, but may instead be a point cloud or other artifact produced using techniques related to image rendering. Each product inherits the top-level settings, but may additionally specify product-specific settings or overrides. UsdRenderSettingsBase represents the common settings shared by top-level settings and particular products. UsdRenderVar describes a cha</span></li>
+        <li><span class="zh">官方原文摘录只用于核对，不作为中文主阅读路径：</span><span class="en">${esc(sourceExcerpt())}</span></li>
       </ul>
     </section>
 
@@ -222,8 +322,213 @@
         <li><span class="zh">中文主阅读路径覆盖 UsdRender 模块职责、官方 section、settings/product/var/spec/pass、相机与像素规则、扩展机制、调试路径和相邻 API。</span><span class="en">Chinese coverage explains role, sections, schema groups, camera/pixel rules, extensions, debugging, and adjacent APIs.</span></li>
         <li><span class="zh">页面保留本地 reading-flow 侧栏、breadcrumb、总入口、API/Release 本地入口、相邻本地页和显式官方外跳。</span><span class="en">The page keeps local reading-flow navigation and explicit official access.</span></li>
       </ul>
-      <p><a data-reading-flow="official" href="https://openusd.org/release/api/usd_render_page_front.html">打开官方原页 / Open official page</a></p>
+      <p><a data-reading-flow="official" href="${links.official}">打开官方原页 / Open official page</a></p>
     </section>
   </main>
 </body>
 </html>
+`;
+}
+
+function sourceParity() {
+  const src = sourceText();
+  const out = fs.existsSync(rel(TARGET)) ? fs.readFileSync(rel(TARGET), "utf8") : "";
+  const sourceKeywords = [
+    "UsdRender",
+    "render settings",
+    "UsdRenderSettings",
+    "UsdRenderProduct",
+    "UsdRenderVar",
+    "UsdRenderSpec",
+    "UsdRenderPass",
+    "renderSettingsPrimPath",
+    "UsdRenderComputeSpec",
+    "/Render",
+    "UsdGeomCamera",
+    "pixelAspectRatio",
+    "aspectRatioConformPolicy",
+    "dataWindowNDC",
+    "Rasterization Rule",
+    "UsdRenderSettingsAPI",
+  ];
+  const outputKeywords = [
+    ...sourceKeywords,
+    "RenderProduct",
+    "RenderVar",
+    "Hydra",
+    "Hd",
+    "Hdx",
+    "AOV",
+    "orderedVars",
+    "Open official page",
+  ];
+  return {
+    generated_at: new Date().toISOString(),
+    round: ROUND,
+    round_type: ROUND_TYPE,
+    target: TARGET,
+    source_snapshot: SOURCE,
+    official_url: OFFICIAL_URL,
+    source_headings: sourceHeadings(),
+    source_keywords_checked: sourceKeywords,
+    output_keywords_checked: outputKeywords,
+    missing_source_keywords: sourceKeywords.filter((keyword) => !src.includes(keyword)),
+    missing_output_keywords: outputKeywords.filter((keyword) => !out.includes(keyword)),
+    output_checks: {
+      has_complete_status: out.includes('data-cn-status="bilingual_complete"') && out.includes(`data-cn-round="${ROUND}"`),
+      has_paragraph_coverage: out.includes("Paragraph-Level Bilingual Coverage") && out.includes("逐段双语理解"),
+      has_final_entry: out.includes("openusd_bilingual_final.html"),
+      has_api_entry: out.includes("site/index.html"),
+      has_api_redirect: out.includes("site/api/index.html"),
+      has_release_entry: out.includes("site/release_index.html"),
+      has_reading_flow_nav: out.includes("openusd-reading-flow-nav") && out.includes("openusd-reading-flow-breadcrumb"),
+      has_explicit_official_link: out.includes("Open official page") && out.includes(OFFICIAL_URL),
+      no_draft_marker: !/bilingual_draft|batch draft page|后续迭代会继续补齐|later iterations add denser bilingual coverage/.test(out),
+      zh_chars: zhChars(out),
+      zh_blocks: (out.match(/class=["'][^"']*\bzh\b[^"']*["']/g) || []).length,
+    },
+  };
+}
+
+function writePage() {
+  fs.writeFileSync(rel(TARGET), buildHtml(), "utf8");
+  writeJson(SOURCE_PARITY_REPORT, sourceParity());
+}
+
+function precheck() {
+  const report = sourceParity();
+  const failed = [];
+  if (report.missing_source_keywords.length) failed.push(`missing source keywords: ${report.missing_source_keywords.join(", ")}`);
+  if (report.missing_output_keywords.length) failed.push(`missing output keywords: ${report.missing_output_keywords.join(", ")}`);
+  for (const [key, value] of Object.entries(report.output_checks)) {
+    if (typeof value === "boolean" && !value) failed.push(`output check failed: ${key}`);
+  }
+  if (report.output_checks.zh_chars < 3300) failed.push(`zh chars too low: ${report.output_checks.zh_chars}`);
+  if (report.output_checks.zh_blocks < 18) failed.push(`zh blocks too low: ${report.output_checks.zh_blocks}`);
+  if (failed.length) {
+    console.error(JSON.stringify({ passed: false, failed, report }, null, 2));
+    process.exit(1);
+  }
+  writeJson(SOURCE_PARITY_REPORT, report);
+  console.log(JSON.stringify({ passed: true, report }, null, 2));
+}
+
+function updateManifest() {
+  const raw = readJson("reports/bilingual_completion_promotions.json");
+  const doc = {
+    ...raw,
+    generated_at: raw.generated_at || new Date().toISOString(),
+    promotions: Array.isArray(raw.promotions) ? raw.promotions : [],
+    updated_at: new Date().toISOString(),
+  };
+  doc.promotions = doc.promotions.filter((entry) => entry.id !== PROMOTION_ID && entry.local_output !== TARGET);
+  doc.promotions.push({
+    id: PROMOTION_ID,
+    title: "UsdRender: USD Render Schema",
+    official_url: OFFICIAL_URL,
+    local_output: TARGET,
+    status: "bilingual_complete",
+    reason: `Round ${ROUND} ${ROUND_TYPE}: promote the UsdRender module front page by adding Chinese main-reading-path coverage for render settings, render products, render vars/AOVs, UsdRenderSpec, UsdRenderPass, renderSettingsPrimPath, /Render conventions, camera and pixel rules, cropping/tiling/overscan, renderer-specific extensions, source parity, reading-flow navigation, and explicit official-page verification.`,
+    evidence: {
+      page_contains_status: "bilingual_complete",
+      generic_draft_marker_removed: true,
+      minimum_chinese_chars: 3300,
+      minimum_complete_section_chinese_chars: 2600,
+      minimum_chinese_blocks: 18,
+      official_source_compared: true,
+      local_source_snapshot_compared: SOURCE,
+      source_parity_report: SOURCE_PARITY_REPORT,
+      round_type: ROUND_TYPE,
+    },
+  });
+  writeJson("reports/bilingual_completion_promotions.json", doc);
+}
+
+function updateProblemAudit() {
+  const quality = readJson("reports/translation_quality_review.json");
+  const debt = readJson("reports/english_debt_audit.json");
+  const inventory = readJson("reports/all_pages_inventory.json");
+  const counts = {
+    total_pages: inventory.counts.total_pages,
+    bilingual_complete: quality.status_counts.bilingual_complete,
+    bilingual_draft: quality.status_counts.bilingual_draft,
+    good_bilingual: quality.grade_counts.good_bilingual,
+    draft_needs_translation: quality.grade_counts.draft_needs_translation,
+    draft_template_only: quality.grade_counts.draft_template_only,
+    review_ready_zh: debt.counts.review_ready_zh,
+    api_complete: debt.counts.api_complete,
+    api_review_ready_zh: debt.counts.api_review_ready_zh,
+    release_complete: debt.counts.release_complete,
+    release_review_ready_zh: debt.counts.release_review_ready_zh,
+    pending_full_scope: inventory.counts.pending_full_scope_pages,
+  };
+  writeJson("reports/current_problem_audit.json", {
+    generated_at: new Date().toISOString(),
+    purpose: `第 ${ROUND} 轮 ${ROUND_TYPE} 记录：确认 ${TARGET} 已晋级，并跟踪当前 OpenUSD 双语完成缺口。`,
+    last_completed_round: {
+      round: ROUND,
+      round_type: ROUND_TYPE,
+      target: TARGET,
+      commit_sha: null,
+      previous_good_bilingual: 204,
+    },
+    current_counts: counts,
+    problems: [
+      {
+        id: "P0-api-draft-backlog",
+        severity: "P0",
+        summary: `当前 good_bilingual=${counts.good_bilingual}/406，API complete=${counts.api_complete}，仍有 ${counts.bilingual_draft} 个可检查草稿，不是完整翻译。`,
+        evidence: `第 ${ROUND} 轮 ${ROUND_TYPE} 将 ${TARGET} 从 API 草稿晋级为 good_bilingual；release 范围保持 ${counts.release_complete}/126 complete。`,
+        required_action: "继续按 PromotionRound 或 DomainSprintRound 推进 API 草稿，只把达标页面写入 promotion manifest。",
+      },
+      {
+        id: "P1-left-navigation-reading-flow",
+        severity: "P1",
+        summary: "完成页必须保留本地 reading-flow 导航、breadcrumb、API/Release/总入口和显式官方外跳。",
+        evidence: "本轮完成后重新运行 route_openusd_internal_links_local 和 audit_openusd_reading_flow_navigation；新增页面有本地侧栏、breadcrumb 和官方外跳。",
+        required_action: "若 reading-flow 审计失败，停止并修复导航，不得推送。",
+      },
+      {
+        id: "P1-markdown-record-encoding",
+        severity: "P1",
+        summary: "Markdown 编码守卫继续作为硬门槛。",
+        evidence: "work.md、reports/iteration_report.md、reports/current_problem_audit.md、reports/bilingual_completion_promotions.md 必须无重复问号损坏、replacement character 和 UTF-8 BOM。",
+        required_action: "若 audit_openusd_markdown_encoding.mjs 失败，先做 ConsistencyRound。",
+      },
+    ],
+    promoted_pages: [
+      {
+        round: ROUND,
+        round_type: ROUND_TYPE,
+        output: TARGET,
+        official_url: OFFICIAL_URL,
+        source_snapshot: SOURCE,
+        source_parity_report: SOURCE_PARITY_REPORT,
+      },
+    ],
+    not_promoted_pages: [],
+    source_parity_report: SOURCE_PARITY_REPORT,
+    next_actions: [
+      "继续推进 API 草稿；release 范围已经 126/126 complete，不要重复处理 release 已完成页。",
+      "优先选择核心 API 或同域短页批量，但每轮必须保证 good_bilingual 按实际达标页增长。",
+    ],
+    next_action: "下一轮建议 PromotionRound：full_site/api/usd_vol_page_front.html；开始前必须确认 git/report/validation/markdown/reading-flow 状态干净一致。",
+  });
+}
+
+function stampCommit(sha) {
+  const problem = readJson("reports/current_problem_audit.json");
+  if (problem.last_completed_round) problem.last_completed_round.commit_sha = sha;
+  writeJson("reports/current_problem_audit.json", problem);
+}
+
+const commands = new Set(process.argv.slice(2));
+if (commands.has("--write-page")) writePage();
+if (commands.has("--precheck")) precheck();
+if (commands.has("--manifest")) updateManifest();
+if (commands.has("--problem")) updateProblemAudit();
+const stampArg = process.argv.find((arg) => arg.startsWith("--stamp-commit="));
+if (stampArg) stampCommit(stampArg.slice("--stamp-commit=".length));
+if (commands.size === 0 && !stampArg) {
+  console.log("Usage: node scripts/promote_round_426_usd_render_module_front.mjs --write-page --precheck --manifest --problem --stamp-commit=<sha>");
+}
