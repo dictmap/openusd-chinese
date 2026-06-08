@@ -1,4 +1,123 @@
-<!doctype html>
+import fs from "node:fs";
+import path from "node:path";
+
+const ROOT = process.cwd();
+const ROUND = 459;
+const ROUND_TYPE = "PromotionRound";
+const TARGET = "full_site/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html";
+const SOURCE = "source/full_api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values_source.html";
+const OFFICIAL_URL = "https://openusd.org/release/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html";
+const SOURCE_PARITY_REPORT = "reports/round_459_openexec_tutorial1_source_parity.json";
+const PROMOTION_ID = "round-459-api-openexec-tutorial1-computing-values";
+const PREVIOUS_GOOD_BILINGUAL = 232;
+const PROMOTION_COMMIT_PLACEHOLDER = "round-459-promotion-sha-to-be-stamped-after-push";
+
+const expectedKeywords = [
+  "OpenExec Tutorial 1: Computing Values",
+  "USD/extras/exec/examples/computingValues/",
+  "Overview",
+  "computeLocalToWorldTransform",
+  "UsdGeomXformable",
+  "4x4 matrix",
+  "Create a UsdStage",
+  "xformPrims.usda",
+  "ExecUsdSystem",
+  "Build an ExecUsdRequest",
+  "ExecUsdValueKey",
+  "ExecUsdSystem::BuildRequest",
+  "PrepareRequest",
+  "ExecUsdSystem::Compute",
+  "ExecUsdCacheView",
+  "ExecUsdCacheView::Get",
+  "VtValue",
+  "GfMatrix4d",
+  "Putting it all together",
+  "TF_AXIOM",
+  "GfIsClose",
+  "GfVec3d",
+];
+
+function rel(file) {
+  return path.join(ROOT, file);
+}
+
+function read(file) {
+  return fs.readFileSync(rel(file), "utf8").replace(/^\uFEFF/, "");
+}
+
+function write(file, content) {
+  fs.writeFileSync(rel(file), content, "utf8");
+}
+
+function readJson(file) {
+  return JSON.parse(read(file));
+}
+
+function writeJson(file, data) {
+  write(file, `${JSON.stringify(data, null, 2)}\n`);
+}
+
+function esc(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function decodeEntities(value) {
+  return String(value)
+    .replace(/&nbsp;/g, " ")
+    .replace(/&#160;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#([0-9]+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)));
+}
+
+function stripHtml(value) {
+  return decodeEntities(
+    String(value)
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " "),
+  )
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function sourceHtml() {
+  return read(SOURCE);
+}
+
+function sourceText() {
+  return stripHtml(sourceHtml());
+}
+
+function sourceHeadings() {
+  return [...sourceHtml().matchAll(/<h([1-6])[^>]*>([\s\S]*?)<\/h\1>/gi)].map((match) => ({
+    level: Number(match[1]),
+    text: stripHtml(match[2]),
+  }));
+}
+
+function zhCharCount(value) {
+  return (String(value).match(/[\u3400-\u9fff]/g) || []).length;
+}
+
+function blockCount(value, klass) {
+  return (String(value).match(new RegExp(`class="${klass}"`, "g")) || []).length;
+}
+
+function pageHtml() {
+  const headingItems = sourceHeadings()
+    .map((heading) => `<li><span class="zh">第 ${heading.level} 级结构：${esc(heading.text)}</span><span class="en">${esc(heading.text)}</span></li>`)
+    .join("\n");
+
+  return `<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
@@ -23,84 +142,13 @@
     pre{white-space:pre-wrap;background:#0f1720;color:#e8eef7;border-radius:6px;padding:14px;overflow:auto}
     .status{display:inline-block;background:#1f7a54;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
-<style id="openusd-reading-flow-nav-style">
-    body.openusd-has-reading-flow{padding-left:292px}
-    .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
-    .openusd-reading-flow-nav h2{font-size:17px;margin:0 0 10px;color:#17202a}
-    .openusd-reading-flow-nav h3{font-size:13px;margin:16px 0 8px;color:#516071;text-transform:none;letter-spacing:0}
-    .openusd-reading-flow-nav ul,.openusd-reading-flow-nav ol{list-style:none;margin:0;padding:0}
-    .openusd-reading-flow-nav li{margin:7px 0;line-height:1.35}
-    .openusd-reading-flow-nav a{color:#1c5d99;text-decoration:none;overflow-wrap:anywhere}
-    .openusd-reading-flow-nav a:hover{text-decoration:underline}
-    .openusd-reading-flow-status{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:999px;background:#edf2f7;color:#516071;font-size:11px}
-    .openusd-reading-flow-nav .official-link{color:#8a4b11}
-    .openusd-reading-flow-breadcrumb{max-width:1100px;margin:14px auto 0;padding:0 20px;color:#d7e3f4;font-size:14px;overflow-wrap:anywhere}
-    .openusd-reading-flow-breadcrumb a{color:#ffffff}
-    @media (max-width: 920px){
-      body.openusd-has-reading-flow{padding-left:0}
-      .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
-      .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
-    }
-  </style>
 </head>
-<body class="openusd-has-reading-flow" data-cn-status="bilingual_complete" data-cn-round="459" data-cn-source="source/full_api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values_source.html">
+<body class="openusd-has-reading-flow" data-cn-status="bilingual_complete" data-cn-round="${ROUND}" data-cn-source="${esc(SOURCE)}">
   <header>
     <span class="status">bilingual_complete</span>
     <h1>OpenExec Tutorial 1: Computing Values</h1>
-    <div class="meta">OpenUSD API 中文导读 / Source parity: source/full_api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values_source.html</div>
+    <div class="meta">OpenUSD API 中文导读 / Source parity: ${esc(SOURCE)}</div>
   </header>
-<!-- openusd-reading-flow-nav:start -->
-<nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
-  <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
-  <span> / </span>
-  <a data-reading-flow="api-entry" href="../../site/index.html">API 本地入口</a>
-  <span> / api / md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html</span>
-</nav>
-<aside class="openusd-reading-flow-nav" aria-label="本地阅读导航 / Local reading navigation">
-  <h2>本地阅读导航</h2>
-  <div class="openusd-reading-flow-columns">
-    <section>
-      <h3>入口 / Entrances</h3>
-      <ul>
-        <li><a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口 / Final entry</a></li>
-        <li><a data-reading-flow="release-entry" href="../../site/release_index.html">Release 本地入口</a></li>
-        <li><a data-reading-flow="api-entry" href="../../site/index.html">API Doxygen 本地入口</a></li>
-        <li><a data-reading-flow="api-redirect" href="../../site/api/index.html">API redirect / site/api/index.html</a></li>
-      </ul>
-    </section>
-    <section>
-      <h3>当前位置 / Current Layer</h3>
-      <ol>
-        <li>api</li>
-        <li>md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html</li>
-      </ol>
-    </section>
-    <section>
-      <h3>当前 API 上下文 / API Context</h3>
-      <ul>
-        <li><a data-reading-flow="related" href="md_pxr_exec_exec_usd_docs_overview.html">OpenExec Overview</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html">API 页面草稿：OpenExec Tutorial 2: Defining Schema Computations / OpenExec Tutorial 2: Defining Schema Computations</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="page__execution__system__design.html">API 页面草稿：OpenExec System Design / OpenExec System Design</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="md_pxr_exec_exec_usd__r_e_a_d_m_e.html">API 页面草稿：ExecUsd: Execution system for Usd / ExecUsd: Execution system for Usd</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="md_pxr_exec_vdf__r_e_a_d_m_e.html">API 页面草稿：Vdf: Vectorized Data Flow / Vdf: Vectorized Data Flow</a><span class="openusd-reading-flow-status">draft</span></li>
-      </ul>
-    </section>
-    <section>
-      <h3>上一页/下一页 / Previous/Next</h3>
-      <ul>
-        <li><a data-reading-flow="prev" href="md_pxr_exec_exec_usd_docs_overview.html">上一页 / Previous: OpenExec Overview</a></li>
-<li><a data-reading-flow="next" href="md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html">下一页 / Next: API 页面草稿：OpenExec Tutorial 2: Defining Schema Computations / OpenExec Tutorial 2: Defining Schema Computations</a></li>
-      </ul>
-    </section>
-    <section>
-      <h3>官方外跳 / Official</h3>
-      <ul>
-        <li><a class="official-link" data-reading-flow="official" href="https://openusd.org/release/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html">打开官方原页 / Open official page</a></li>
-      </ul>
-    </section>
-  </div>
-</aside>
-<!-- openusd-reading-flow-nav:end -->
 
   <main>
     <section data-cn-complete="round-459-tutorial1-main-path">
@@ -195,23 +243,16 @@ TF_AXIOM(GfIsClose(a2LocalToWorld.ExtractTranslation(), GfVec3d(1, 0, 3), 1e-6))
     <section>
       <h2>页面结构 / Page Structure</h2>
       <ul>
-<li><span class="zh">第 1 级结构：Overview</span><span class="en">Overview</span></li>
-<li><span class="zh">第 1 级结构：Create a UsdStage</span><span class="en">Create a UsdStage</span></li>
-<li><span class="zh">第 1 级结构：Create an ExecUsdSystem</span><span class="en">Create an ExecUsdSystem</span></li>
-<li><span class="zh">第 1 级结构：Build an ExecUsdRequest</span><span class="en">Build an ExecUsdRequest</span></li>
-<li><span class="zh">第 1 级结构：Prepare the request</span><span class="en">Prepare the request</span></li>
-<li><span class="zh">第 1 级结构：Compute values</span><span class="en">Compute values</span></li>
-<li><span class="zh">第 1 级结构：Extract computed values</span><span class="en">Extract computed values</span></li>
-<li><span class="zh">第 1 级结构：Putting it all together</span><span class="en">Putting it all together</span></li>
+${headingItems}
       </ul>
     </section>
 
     <section>
       <h2>源页核对 / Source Parity</h2>
       <ul>
-        <li><span class="zh">已核对 source snapshot：<code>source/full_api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values_source.html</code>。</span><span class="en">Source snapshot checked.</span></li>
+        <li><span class="zh">已核对 source snapshot：<code>${esc(SOURCE)}</code>。</span><span class="en">Source snapshot checked.</span></li>
         <li><span class="zh">保留官方标题、section 顺序、关键 API 名、代码路径、token、prim path、头文件和验证断言。</span><span class="en">Official sections, API names, code path, tokens, prim paths, headers, and assertions are preserved.</span></li>
-        <li><span class="zh">显式官方外跳：<a href="https://openusd.org/release/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html">Open official page</a>。</span><span class="en">Official external link is explicit.</span></li>
+        <li><span class="zh">显式官方外跳：<a href="${OFFICIAL_URL}">Open official page</a>。</span><span class="en">Official external link is explicit.</span></li>
       </ul>
     </section>
 
@@ -219,8 +260,194 @@ TF_AXIOM(GfIsClose(a2LocalToWorld.ExtractTranslation(), GfVec3d(1, 0, 3), 1e-6))
       <h2>导航 / Navigation</h2>
       <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
       <p><a href="../../site/index.html">API 本地入口 / Local API entry</a></p>
-      <p><a href="https://openusd.org/release/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html">打开官方原页 / Open official page</a></p>
+      <p><a href="${OFFICIAL_URL}">打开官方原页 / Open official page</a></p>
     </section>
   </main>
 </body>
 </html>
+`;
+}
+
+function writePage() {
+  write(TARGET, pageHtml());
+}
+
+function precheck() {
+  const src = sourceText();
+  const out = read(TARGET);
+  const outText = stripHtml(out);
+  const report = {
+    generated_at: new Date().toISOString(),
+    round: ROUND,
+    round_type: ROUND_TYPE,
+    target: TARGET,
+    source: SOURCE,
+    official: OFFICIAL_URL,
+    expected_keywords: expectedKeywords,
+    missing_source_keywords: expectedKeywords.filter((keyword) => !src.includes(keyword)),
+    missing_output_keywords: expectedKeywords.filter((keyword) => !outText.includes(keyword)),
+    output_checks: {
+      bilingual_complete: out.includes("bilingual_complete"),
+      no_draft_marker: !/bilingual_draft|batch draft page|later iterations add denser bilingual coverage|后续迭代/.test(outText),
+      has_main_reading_path: out.includes("中文主阅读路径") && out.includes("逐段双语理解"),
+      has_official_link: out.includes(OFFICIAL_URL),
+      has_code_path: out.includes("ExecUsdSystem execSystem") && out.includes("TF_AXIOM") && out.includes("GfIsClose"),
+      zh_chars: zhCharCount(out),
+      zh_blocks: blockCount(out, "zh"),
+      en_blocks: blockCount(out, "en"),
+    },
+    passed: false,
+  };
+  report.passed =
+    report.missing_source_keywords.length === 0 &&
+    report.missing_output_keywords.length === 0 &&
+    Object.values(report.output_checks).every((value) => value === true || (typeof value === "number" && value >= 8)) &&
+    report.output_checks.zh_chars >= 2200 &&
+    report.output_checks.zh_blocks >= 24;
+  writeJson(SOURCE_PARITY_REPORT, report);
+  if (!report.passed) {
+    console.error(JSON.stringify(report, null, 2));
+    process.exit(1);
+  }
+  console.log(JSON.stringify(report, null, 2));
+}
+
+function manifestDocument() {
+  const raw = readJson("reports/bilingual_completion_promotions.json");
+  if (Array.isArray(raw)) {
+    return { generated_at: new Date().toISOString(), promotions: raw };
+  }
+  return {
+    ...raw,
+    generated_at: new Date().toISOString(),
+    promotions: Array.isArray(raw.promotions) ? raw.promotions : [],
+  };
+}
+
+function updateManifest() {
+  const doc = manifestDocument();
+  doc.promotions = doc.promotions.filter((entry) => entry.id !== PROMOTION_ID && entry.local_output !== TARGET);
+  doc.promotions.push({
+    id: PROMOTION_ID,
+    official_url: OFFICIAL_URL,
+    local_output: TARGET,
+    status: "bilingual_complete",
+    reason: `Round ${ROUND} PromotionRound: promote OpenExec Tutorial 1 by adding Chinese main-reading-path coverage for Overview, Create a UsdStage, Create an ExecUsdSystem, Build an ExecUsdRequest, Prepare the request, Compute values, Extract computed values, Putting it all together, debugging boundaries, adjacent modules, source parity, reading-flow navigation, and explicit official-page verification.`,
+    evidence: {
+      page_contains_status: "bilingual_complete",
+      source_parity_report: SOURCE_PARITY_REPORT,
+      preserves: [
+        "OpenExec Tutorial 1: Computing Values",
+        "computeLocalToWorldTransform",
+        "UsdGeomXformable",
+        "ExecUsdSystem",
+        "ExecUsdRequest",
+        "ExecUsdValueKey",
+        "ExecUsdCacheView",
+        "VtValue",
+        "GfMatrix4d",
+        "TF_AXIOM",
+        "GfIsClose",
+        "GfVec3d",
+      ],
+    },
+  });
+  doc.updated_at = new Date().toISOString();
+  writeJson("reports/bilingual_completion_promotions.json", doc);
+}
+
+function updateProblemAudit() {
+  const inventory = readJson("reports/all_pages_inventory.json");
+  const quality = readJson("reports/translation_quality_review.json");
+  const debt = readJson("reports/english_debt_audit.json");
+  const counts = {
+    total_pages: inventory.counts.total_pages,
+    bilingual_complete: quality.status_counts.bilingual_complete,
+    bilingual_draft: quality.status_counts.bilingual_draft,
+    good_bilingual: quality.grade_counts.good_bilingual,
+    draft_needs_translation: quality.grade_counts.draft_needs_translation,
+    draft_template_only: quality.grade_counts.draft_template_only,
+    review_ready_zh: debt.counts.review_ready_zh,
+    api_complete: debt.counts.api_complete,
+    api_review_ready_zh: debt.counts.api_review_ready_zh,
+    release_complete: debt.counts.release_complete,
+    release_review_ready_zh: debt.counts.release_review_ready_zh,
+    pending_full_scope: inventory.counts.pending_full_scope_pages,
+  };
+  writeJson("reports/current_problem_audit.json", {
+    generated_at: new Date().toISOString(),
+    purpose: `第 ${ROUND} 轮 ${ROUND_TYPE} 记录：确认 ${TARGET} 已按 OpenExec Tutorial 1 source parity 晋级，并继续跟踪 OpenUSD API 草稿缺口。`,
+    last_completed_round: {
+      round: ROUND,
+      round_type: ROUND_TYPE,
+      target: TARGET,
+      commit_sha: PROMOTION_COMMIT_PLACEHOLDER,
+      previous_good_bilingual: PREVIOUS_GOOD_BILINGUAL,
+    },
+    current_counts: counts,
+    problems: [
+      {
+        id: "P0-api-draft-backlog",
+        severity: "P0",
+        summary: `当前 good_bilingual=${counts.good_bilingual}/406，API complete=${counts.api_complete}，仍有 ${counts.bilingual_draft} 个可检查草稿，不是完整翻译。`,
+        evidence: `第 ${ROUND} 轮 ${ROUND_TYPE} 将 ${TARGET} 从 API 草稿晋级为 good_bilingual；release 范围保持 ${counts.release_complete}/126 complete。`,
+        required_action: "继续推进 API 草稿；只把真实达到中文主阅读路径和 source parity 的页面写入 promotion manifest。",
+      },
+      {
+        id: "P1-openexec-click-path-quality",
+        severity: "P1",
+        summary: "OpenExec 文档页必须按官方点击顺序和 section 顺序覆盖，不能退回摘要表或随机相关页。",
+        evidence: "本轮覆盖 Overview、Create a UsdStage、Create an ExecUsdSystem、Build an ExecUsdRequest、Prepare the request、Compute values、Extract computed values、Putting it all together，并保留 Overview -> Tutorial 1 -> Tutorial 2 -> System Design 的本地点击路径。",
+        required_action: "后续 OpenExec 教程或系统设计页继续按 source snapshot 做 section-level 中文主阅读路径和点击顺序覆盖。",
+      },
+      {
+        id: "P1-click-order-reading-flow-consistency",
+        severity: "P1",
+        summary: "完成页必须保留本地 reading-flow 导航、breadcrumb、API/Release/总入口、related links、prev/next 和显式官方外跳。",
+        evidence: "本轮目标页保留 OpenExec Overview -> Tutorial 1 -> Tutorial 2/System Design 的点击顺序，并重跑 reading-flow 与 click-path 审计。",
+        required_action: "若 reading-flow 或 click-path 审计失败，先修导航和点击顺序，不得推送。",
+      },
+      {
+        id: "P1-markdown-record-encoding",
+        severity: "P1",
+        summary: "Markdown 编码守卫继续作为硬门槛。",
+        evidence: "work.md、reports/iteration_report.md、reports/current_problem_audit.md、reports/bilingual_completion_promotions.md 必须无 repeated question mark damage、replacement character 和 UTF-8 BOM。",
+        required_action: "若 audit_openusd_markdown_encoding.mjs 失败，先做 ConsistencyRound。",
+      },
+    ],
+    promoted_pages: [
+      {
+        round: ROUND,
+        round_type: ROUND_TYPE,
+        output: TARGET,
+        official_url: OFFICIAL_URL,
+        source_snapshot: SOURCE,
+        source_parity_report: SOURCE_PARITY_REPORT,
+      },
+    ],
+    not_promoted_pages: [],
+    source_parity_report: SOURCE_PARITY_REPORT,
+    next_actions: [
+      "release 范围已 126/126 complete，不要重复处理 release 已完成页。",
+      "下一轮重新读取 inventory 后选择一个仍为 bilingual_draft 且有 source snapshot 的 API/class/struct 或高价值文档页；开始前必须确认 git/report/validation/markdown/reading-flow/click-path 状态干净一致。",
+    ],
+    next_action: "下一轮建议 PromotionRound：重新读取 inventory 后选择一个仍为 bilingual_draft 且有 source snapshot 的高价值 API 页面。",
+  });
+}
+
+function stampCommit(sha) {
+  const problem = readJson("reports/current_problem_audit.json");
+  if (problem.last_completed_round) problem.last_completed_round.commit_sha = sha;
+  writeJson("reports/current_problem_audit.json", problem);
+}
+
+const commands = new Set(process.argv.slice(2));
+if (commands.has("--write-page")) writePage();
+if (commands.has("--precheck")) precheck();
+if (commands.has("--manifest")) updateManifest();
+if (commands.has("--problem")) updateProblemAudit();
+const stampArg = process.argv.find((arg) => arg.startsWith("--stamp-commit="));
+if (stampArg) stampCommit(stampArg.slice("--stamp-commit=".length));
+if (commands.size === 0 && !stampArg) {
+  console.log("Usage: node scripts/promote_round_459_openexec_tutorial1.mjs --write-page --precheck --manifest --problem --stamp-commit=<sha>");
+}

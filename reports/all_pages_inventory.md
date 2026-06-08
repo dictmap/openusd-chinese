@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-08T23:14:27.386Z
+Generated: 2026-06-08T23:48:13.992Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 232
-- Promoted complete pages: 224
-- Bilingual draft pages: 174
+- Bilingual complete pages: 233
+- Promoted complete pages: 225
+- Bilingual draft pages: 173
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -240,7 +240,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_draft | API 页面草稿：ExecIr: OpenExec implementation of invertible rigs / ExecIr: OpenExec implementation of invertible rigs | full_site/api/md_pxr_exec_exec_ir__r_e_a_d_m_e.html | https://openusd.org/release/api/md_pxr_exec_exec_ir__r_e_a_d_m_e.html |
 | api | bilingual_draft | API 页面草稿：ExecUsd: Execution system for Usd / ExecUsd: Execution system for Usd | full_site/api/md_pxr_exec_exec_usd__r_e_a_d_m_e.html | https://openusd.org/release/api/md_pxr_exec_exec_usd__r_e_a_d_m_e.html |
 | api | bilingual_complete | OpenExec Overview | full_site/api/md_pxr_exec_exec_usd_docs_overview.html | https://openusd.org/release/api/md_pxr_exec_exec_usd_docs_overview.html |
-| api | bilingual_draft | API 页面草稿：OpenExec Tutorial 1: Computing Values / OpenExec Tutorial 1: Computing Values | full_site/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html | https://openusd.org/release/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html |
+| api | bilingual_complete | https://openusd.org/release/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html | full_site/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html | https://openusd.org/release/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html |
 | api | bilingual_draft | API 页面草稿：OpenExec Tutorial 2: Defining Schema Computations / OpenExec Tutorial 2: Defining Schema Computations | full_site/api/md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html | https://openusd.org/release/api/md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html |
 | api | bilingual_draft | API 页面草稿：Vdf: Vectorized Data Flow / Vdf: Vectorized Data Flow | full_site/api/md_pxr_exec_vdf__r_e_a_d_m_e.html | https://openusd.org/release/api/md_pxr_exec_vdf__r_e_a_d_m_e.html |
 | api | bilingual_draft | API 页面草稿：Development Practices For usdview / Development Practices For usdview | full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html | https://openusd.org/release/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html |
