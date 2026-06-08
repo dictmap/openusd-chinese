@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-08T01:09:23.856Z
+Generated: 2026-06-08T01:36:00.666Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 293
-- bilingual_complete: 113
+- bilingual_draft: 286
+- bilingual_complete: 120
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 282
-- good_bilingual: 113
+- draft_needs_translation: 275
+- good_bilingual: 120
 
 ## Current Focus Batch
 
@@ -416,13 +416,13 @@ Generated: 2026-06-08T01:09:23.856Z
 | 350 | draft_needs_translation | bilingual_draft | 661 | 27/20 | 0 | 0 | `full_site/release/user_guides/schemas/usdMedia/overview.html` |
 | 351 | draft_needs_translation | bilingual_draft | 855 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdMedia/SpatialAudio.html` |
 | 352 | draft_needs_translation | bilingual_draft | 804 | 36/23 | 0 | 0 | `full_site/release/user_guides/schemas/usdMedia/usdMedia_toc.html` |
-| 353 | draft_needs_translation | bilingual_draft | 577 | 29/22 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/overview.html` |
-| 354 | draft_needs_translation | bilingual_draft | 762 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderPass.html` |
-| 355 | draft_needs_translation | bilingual_draft | 809 | 36/23 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderProduct.html` |
-| 356 | draft_needs_translation | bilingual_draft | 846 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderSettings.html` |
-| 357 | draft_needs_translation | bilingual_draft | 956 | 44/32 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderSettingsBase.html` |
-| 358 | draft_needs_translation | bilingual_draft | 1070 | 48/32 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderVar.html` |
-| 359 | draft_needs_translation | bilingual_draft | 704 | 36/23 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/usdRender_toc.html` |
+| 353 | good_bilingual | bilingual_complete | 1494 | 39/10 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/overview.html` |
+| 354 | good_bilingual | bilingual_complete | 1434 | 40/13 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderPass.html` |
+| 355 | good_bilingual | bilingual_complete | 1595 | 43/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderProduct.html` |
+| 356 | good_bilingual | bilingual_complete | 1621 | 44/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderSettings.html` |
+| 357 | good_bilingual | bilingual_complete | 1662 | 41/14 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderSettingsBase.html` |
+| 358 | good_bilingual | bilingual_complete | 1319 | 36/9 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderVar.html` |
+| 359 | good_bilingual | bilingual_complete | 1544 | 40/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/usdRender_toc.html` |
 | 360 | draft_needs_translation | bilingual_draft | 518 | 24/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/AccessibilityAPI.html` |
 | 361 | draft_needs_translation | bilingual_draft | 545 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/AttributeHints.html` |
 | 362 | draft_needs_translation | bilingual_draft | 552 | 24/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/Backdrop.html` |

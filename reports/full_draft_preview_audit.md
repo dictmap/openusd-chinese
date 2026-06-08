@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-08T01:10:09.771Z
+Generated: 2026-06-08T01:37:38.500Z
 
-Transient base URL: `http://127.0.0.1:62674/`
+Transient base URL: `http://127.0.0.1:51043/`
 
 Result:
 
 - Passed: true
-- Draft pages: 293
-- Pages checked: 293
-- Passed pages: 293
+- Draft pages: 286
+- Pages checked: 286
+- Passed pages: 286
 - Failed pages: 0
-- Final HTML links: 293
-- Local assets checked: 293
+- Final HTML links: 286
+- Local assets checked: 286
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -256,13 +256,6 @@ Result:
 | true | full_site/release/user_guides/schemas/usdMedia/overview.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdMedia/SpatialAudio.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdMedia/usdMedia_toc.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdRender/overview.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdRender/RenderPass.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdRender/RenderProduct.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdRender/RenderSettings.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdRender/RenderSettingsBase.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdRender/RenderVar.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdRender/usdRender_toc.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdUI/AccessibilityAPI.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdUI/AttributeHints.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdUI/Backdrop.html | 200 | true | 0 | 0 |

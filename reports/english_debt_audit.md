@@ -1,6 +1,6 @@
 # OpenUSD English Debt Audit
 
-Generated: 2026-06-08T01:09:24.503Z
+Generated: 2026-06-08T01:36:01.356Z
 
 Purpose:
 
@@ -12,16 +12,16 @@ Purpose:
 ## Counts
 
 - Total pages: 406
-- good_bilingual: 113
-- review_ready_zh: 50
+- good_bilingual: 120
+- review_ready_zh: 57
 - review_needs_zh_debt: 63
 - API complete: 72
 - API review_ready_zh: 12
-- Release complete: 41
-- Release review_ready_zh: 38
+- Release complete: 48
+- Release review_ready_zh: 45
 - Complete pages with high/very high ratio diagnostic: 10
-- bilingual_draft: 293
-- draft_needs_translation: 282
+- bilingual_draft: 286
+- draft_needs_translation: 275
 - draft_template_only: 11
 
 ## Complete Pages Still Carrying English Debt
@@ -80,7 +80,6 @@ Purpose:
 | --- | --- | --- | --- | ---: | ---: | ---: | --- | --- |
 | 298 | `full_site/release/search.html` | release | release_or_tutorial | 64 | 1/4 | 4.3 | high | draft |
 | 294 | `full_site/release/press_opensource_announce.html` | release | release_or_tutorial | 585 | 7/4 | 4.55 | high | draft |
-| 353 | `full_site/release/user_guides/schemas/usdRender/overview.html` | release | release_or_tutorial | 577 | 7/4 | 3.48 | medium | draft |
 | 288 | `full_site/release/intro_to_openexec.html` | release | release_or_tutorial | 608 | 7/4 | 3.36 | medium | draft |
 | 299 | `full_site/release/spec_usdpreviewsurface.html` | release | release_or_tutorial | 693 | 7/4 | 3.23 | medium | draft |
 | 322 | `full_site/release/user_guides/namespace_editing.html` | release | release_or_tutorial | 541 | 7/4 | 3.21 | medium | draft |
@@ -98,6 +97,7 @@ Purpose:
 | 382 | `full_site/release/user_guides/schemas/usdVol/ParticleFieldOrientationAttributeAPI.html` | release | release_or_tutorial | 582 | 7/4 | 2.55 | medium | draft |
 | 321 | `full_site/release/user_guides/color_user_guide.html` | release | release_or_tutorial | 657 | 7/4 | 2.52 | medium | draft |
 | 290 | `full_site/release/maxperf.html` | release | release_or_tutorial | 625 | 7/4 | 2.49 | medium | draft |
+| 375 | `full_site/release/user_guides/schemas/usdVol/ParticleField.html` | release | release_or_tutorial | 659 | 7/4 | 2.48 | medium | draft |
 
 Policy:
 

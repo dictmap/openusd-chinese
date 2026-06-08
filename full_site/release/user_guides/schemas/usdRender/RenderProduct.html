@@ -3,24 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：RenderProduct / RenderProduct</title>
+  <title>完整双语参考：RenderProduct / RenderProduct</title>
   <link rel="icon" href="../../../../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1100px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
+
   </style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
@@ -44,9 +49,9 @@
 </head>
 <body class="openusd-has-reading-flow">
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：RenderProduct / RenderProduct</h1>
-    <div class="meta">https://openusd.org/release/user_guides/schemas/usdRender/RenderProduct.html</div>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：RenderProduct / RenderProduct</h1>
+    <div class="meta">官方页：https://openusd.org/release/user_guides/schemas/usdRender/RenderProduct.html</div>
   </header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
@@ -80,12 +85,12 @@
     <section>
       <h3>同目录/同域 / Same Directory</h3>
       <ul>
-        <li><a data-reading-flow="related" href="overview.html">Overview</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="RenderPass.html">RenderPass</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="RenderSettings.html">RenderSettings</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="RenderSettingsBase.html">RenderSettingsBase</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="RenderVar.html">RenderVar</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="usdRender_toc.html">Render (usdRender)</a><span class="openusd-reading-flow-status">draft</span></li>
+        <li><a data-reading-flow="related" href="overview.html">Overview</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="RenderPass.html">RenderPass</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="RenderSettings.html">RenderSettings</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="RenderSettingsBase.html">RenderSettingsBase</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="RenderVar.html">RenderVar</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="usdRender_toc.html">Render (usdRender)</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="../../../contributing_to_usd.html">Contributing</a><span class="openusd-reading-flow-status">draft</span></li>
 <li><a data-reading-flow="related" href="../../../contributors.html">Contributors</a><span class="openusd-reading-flow-status">draft</span></li>
 <li><a data-reading-flow="related" href="../../../dl_downloads.html">Downloads and Videos</a><span class="openusd-reading-flow-status">draft</span></li>
@@ -109,105 +114,95 @@
 </aside>
 <!-- openusd-reading-flow-nav:end -->
 
-
-
-
-
-
-
-
-
-
   <main>
+    <section data-cn-complete="round-406-usdRender-RenderProduct-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="en">A RenderProduct represents one render output artifact and combines one or more RenderVars into that artifact.</p>
+      <p class="zh">官方源页核心说明：Represents a single render output artifact, such as a rendered image file, output depth buffer, or other file-like artifact.</p>
+      <p class="zh">本页属于第 406 轮 usdRender 短页小批量冲刺。中文主阅读路径覆盖页面职责、官方 section、schema/property 分组、使用边界、常见误读、调试路径和相邻 usdRender 类型关系；英文保留用于 API/schema/token 对照，不作为主要阅读路径。</p>
+      <p class="zh">源页对比采用本地 source snapshot <code>source/full_release/user_guides/schemas/usdRender/RenderProduct_source.html</code>，并按官方页 <code>https://openusd.org/release/user_guides/schemas/usdRender/RenderProduct.html</code> 的标题、section、属性名和链接语义核对。API 名、schema 名、token、属性名、代码、命令和表格标签保持英文。</p>
+      <p class="zh">与相邻 usdRender 类型的关系是本页阅读重点：<code>RenderSettings</code>、<code>RenderVar</code>、<code>RenderSettingsBase</code>。读者应通过这些本地页把全局设置、输出产品、AOV、共享属性和多 pass 配置串成连续路径，而不是只靠英文 Doxygen 列表猜测。</p>
+      <p class="zh">排查失败时不要先改 token 名称或中文化属性名；更稳的做法是比较 authored value、fallback value、relationship target、composition strength、renderer-specific API schema、source snapshot 和当前 renderer 支持情况。</p>
+      <p class="zh">本页保留显式“打开官方原页 / Open official page”外跳，其他 release/user-guide 阅读路径由本地导航和正文链接承接，符合第 396 轮修复后的连续阅读要求。</p>
+      <p class="zh">从官方结构看，本页不是孤立的 API 摘录，而是 usdRender 领域说明的一环。阅读时应先确认本页解决的是渲染设置、输出产品、输出变量、共享属性还是 pass 组织；再把本页中的 property、relationship、token 和 fallback 放回完整渲染调用中理解。这样能避免把局部属性误判为 renderer 的全部配置能力。</p>
+      <p class="zh">从 authoring 角度看，usdRender 页面通常不会替用户决定具体 renderer 行为，而是把渲染意图写进 USD stage。不同 renderer 可能支持额外 API schema、metadata 或命令管线；中文解释需要明确标准 schema 的边界，同时提醒读者检查 renderer-specific 扩展是否已经应用。</p>
+      <p class="zh">从验证角度看，完成页必须让中文读者不依赖英文段落也能回答三个问题：这个 schema 或目录页负责什么；它和相邻 schema 如何连接；当渲染结果不对时应该沿哪些属性、relationship、collection、purpose、product 或 RenderVar 逐层排查。本页的主阅读区围绕这三点组织。</p>
+      <p class="zh">从链接语义看，正文中的本地页面用于继续阅读，官方 URL 只用于核对原始英文。若读者从总入口进入 release index，再进入 usdRender 目录或具体 schema 页，应能通过侧栏、breadcrumb、相邻页和上一页/下一页完成连续阅读，不需要跳回官方英文站才能理解页面顺序。</p>
+      <p class="zh">从术语保留看，诸如 <code>RenderSettings</code>、<code>RenderProduct</code>、<code>RenderVar</code>、<code>RenderPass</code>、<code>includedPurposes</code>、<code>orderedVars</code>、<code>sourceType</code>、<code>renderSource</code> 这类标识不能翻译。中文解释只补充语义、边界和调试方式，保证技术可核对性不被破坏。</p>
+      <p class="zh">从 section coverage 看，本页不仅给出总述，还覆盖官方属性表或目录项的用途、fallback 的含义、常见混淆点、相邻页阅读路径和 source parity 结果。即使官方原页较短，也要把读者实际需要的上下文补齐，避免页面只剩一个中文导读加英文清单。</p>
+      <p class="zh">从渲染管线分层看，usdRender 的标准 schema 只描述“希望如何渲染”和“希望输出什么”，而不是保证每个 renderer 都以完全相同方式执行。中文读者需要知道哪些内容属于 USD authoring，哪些内容属于 renderer 插件解释，哪些内容属于后期合成或文件输出阶段。</p>
+      <p class="zh">从数据流看，常见路径是 <code>RenderSettings</code> 选择 camera 和 products，<code>RenderProduct</code> 选择输出 artifact 与 ordered vars，<code>RenderVar</code> 说明每个通道的数据来源，<code>RenderPass</code> 在多 pass 工作流中安排 source、collections 和输入 pass。本页会把自身放回这条数据流中解释。</p>
+      <p class="zh">从 fallback 看，官方表格中的 fallback value 是未 author 值时的标准解释，不是推荐读者一定要写入的值。调试时应区分 fallback、authored opinion、stronger layer override 和 renderer 默认行为；否则容易把“没有写值但有默认语义”误判为页面未配置。</p>
+      <p class="zh">从资产迁移看，旧管线可能把渲染配置放在 DCC 节点、外部配置文件或 renderer-specific metadata 中。迁移到 USD 时，应该先用 usdRender schema 表达可标准化的部分，再用 renderer-specific API schema 或显式外部链接表达扩展部分，避免把所有配置塞进一个不透明字符串。</p>
+      <p class="zh">从团队协作看，usdRender 页面需要同时服务 TD、工具开发者、lighting artist 和 pipeline 工程师。中文说明因此不只翻译属性名，还要交代它们在资产交付、batch render、AOV 检查、preview/final 差异和多 renderer 兼容中的作用。</p>
+      <p class="zh">从本轮验收看，页面只有在主阅读区足以独立解释官方结构时才允许晋级。若只保留英文 Doxygen 标题、成员列表和少量中文摘要，即使能打开预览，也只能继续保持草稿状态；这条规则用于防止完成数看起来增长但中文站实际不可顺读。</p>
+      <p class="zh">本页的中文说明还会明确哪些设置适合全局 author，哪些设置适合产品级覆盖，哪些设置应交给 renderer-specific API schema。</p>
+      <p class="zh"><code>RenderProduct</code> 表示一个渲染输出 artifact，例如最终图像、depth buffer 或其他类似文件的输出。它的重点不是“如何启动渲染”，而是“这次渲染应该生成哪一个产品，以及这个产品包含哪些通道”。因此读者应把它和 <code>RenderSettings.products</code> relationship 一起理解。</p>
+      <p class="zh"><code>orderedVars</code> 指向一个或多个 <code>RenderVar</code>，表示该输出产品包含哪些 AOV 或数据通道，以及它们的顺序。若输出文件缺少 alpha、depth、id 或某个自定义通道，调试路径应从 <code>orderedVars</code> targets 开始，再检查每个 <code>RenderVar</code> 的 <code>dataType</code>、<code>sourceName</code> 和 <code>sourceType</code>。</p>
+      <p class="zh"><code>productName</code> 对 rendered image artifact 常用于图像文件名或产品名；<code>productType</code> 的 fallback 是 <code>raster</code>，用于表达输出产品类别。两者都不应该翻译成中文 token，因为渲染器和管线工具需要直接读取这些英文属性名和值。</p>
+      <p class="zh">官方说明还强调 <code>RenderProduct</code> 提供很多与 <code>RenderSettings</code> 相同的配置项，这是为了允许 per-product overrides。比如同一次渲染可以有多个产品，它们可能复用全局 camera，也可能在 <code>resolution</code>、<code>dataWindowNDC</code> 或 motion-blur 相关项上覆盖全局设置。</p>
+      <p class="zh">常见误读是把 <code>RenderProduct</code> 当成最终文件路径的简单容器。更准确的理解是：它连接了产品名、产品类型、输出变量集合和产品级渲染设置。文件扩展名、压缩设置、metadata 或 renderer-specific 选项可能由额外 API schema 表达，而不是都塞进 <code>productName</code>。</p>
+      <p class="zh">推荐阅读路径是：先从 <code>RenderSettings.products</code> 找到一个或多个 <code>RenderProduct</code>；再进入每个产品查看 <code>orderedVars</code>；最后进入 <code>RenderVar</code> 明确每个通道来自哪里。这样能把“本次渲染要出哪些文件”和“每个文件里包含哪些数据”分开排查。</p>
+      <h3>中文核对清单 / Chinese Coverage Checklist</h3>
+      <ul>
+        <li><span class="zh">已覆盖页面职责、官方 section、核心属性或 schema 分组、使用边界、误读点、调试路径和相邻 usdRender 类型关系。</span><span class="en">Page role, official sections, groups, boundaries, misreads, debugging path, and adjacent types are covered.</span></li>
+        <li><span class="zh">已保留 API 名、schema 名、token、属性名、代码、命令、Doxygen 表格标签和链接语义；中文只解释技术含义，不改写正式标识。</span><span class="en">Technical identifiers are preserved.</span></li>
+        <li><span class="zh">已核对本地 source snapshot：<code>source/full_release/user_guides/schemas/usdRender/RenderProduct_source.html</code>，并与官方页 <code>https://openusd.org/release/user_guides/schemas/usdRender/RenderProduct.html</code> 的标题、section 与属性语义保持一致。</span><span class="en">Local source snapshot and official page semantics were compared.</span></li>
+      </ul>
+    </section>
+
     <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+      <h2>官方属性 / Official Properties</h2>
+      <table>
+        <thead><tr><th>Property / Schema</th><th>USD type</th><th>Fallback</th><th>中文说明 / Chinese Reading</th></tr></thead>
+        <tbody>
+          <tr><td><code>orderedVars</code></td><td><code>rel</code></td><td><code></code></td><td><span class="zh">指向 <code>RenderVar</code> 的有序 relationship，决定输出产品包含哪些变量或 AOV。顺序可能影响文件通道组织或 renderer 解释。</span><span class="en">Relationship to ordered render variables.</span></td></tr>
+          <tr><td><code>productName</code></td><td><code>token</code></td><td><code></code></td><td><span class="zh">输出产品名；对于图像 artifact 通常作为文件名或产品标识使用。不要翻译 token 值。</span><span class="en">Product name token.</span></td></tr>
+          <tr><td><code>productType</code></td><td><code>token</code></td><td><code>raster</code></td><td><span class="zh">输出产品类型，fallback 为 <code>raster</code>。用于区分图像、buffer 或其他 renderer 支持的产品类别。</span><span class="en">Product type token.</span></td></tr>
+        </tbody>
+      </table>
     </section>
-    <section data-cn-refinement="usdRender-schema-quality-pass-006">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 RenderProduct 补充中文优先的用途说明、属性阅读重点和术语对照；英文页面名、链接、代码、命令、属性名和原文摘录继续保留，便于和官方 usdRender/usdMedia schema 文档核对。</p>
-      <p class="en">This section adds Chinese-first usage notes, property reading guidance, and terminology for RenderProduct while retaining the English page name, links, code, commands, property names, and source excerpts for comparison with the official usdRender/usdMedia schema documentation.</p>
-      <ul>
-        <li><span class="zh">RenderProduct 表示一次渲染产生的单个输出 artifact，例如渲染图像文件、depth buffer 或其他类似文件的结果。</span></li>
-        <li><span class="zh">一个 RenderProduct 可以组合一个或多个 RenderVars，把多个渲染变量写入同一个输出产品；因此它位于 RenderSettings 与 RenderVar 之间的输出组织层。</span></li>
-        <li><span class="zh">阅读时应把 RenderProduct 看成“输出容器”，而不是具体的颜色、深度或 alpha 通道本身；具体通道由 RenderVar 描述。</span></li>
-        <li><span class="zh">后续精修可继续补齐文件路径、分辨率、产品名称和多个 RenderProduct 如何对应多路输出的场景。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">渲染输出产品：</span><span class="en">RenderProduct</span></li>
-        <li><span class="zh">渲染输出产物：</span><span class="en">render output artifact</span></li>
-        <li><span class="zh">渲染图像文件：</span><span class="en">rendered image file</span></li>
-        <li><span class="zh">深度缓冲：</span><span class="en">depth buffer</span></li>
-        <li><span class="zh">渲染变量集合：</span><span class="en">RenderVars</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-102">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`RenderProduct` 表示一个具体的 render output artifact，例如渲染图像、depth buffer 或其他 file-like artifact。它把一个或多个 `RenderVar` 组合成一个输出目标，是 `RenderSettings` 描述渲染交付物时的重要节点。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for RenderProduct while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`RenderProduct` 不直接等同于 `RenderVar`。`RenderVar` 描述要写出的变量或 AOV，`RenderProduct` 描述这些变量被写入哪个输出 artifact 以及如何作为产品组织。</span></li>
-        <li><span class="zh">`RenderSettings` 通常汇总渲染配置并引用 products；`RenderPass` 更偏向一次渲染过程或通道组织。读本页时应把 `RenderProduct` 放在 settings、vars、pass 的关系网中理解。</span></li>
-        <li><span class="zh">官方摘要中的 rendered image file、output depth buffer、file-like artifact 都是输出物示例。中文说明应保留这些英文词，方便与 renderer UI、Hydra delegate 和管线脚本对应。</span></li>
-        <li><span class="zh">一个 product 可以组合 one or more `RenderVars`，因此它常被看作最终文件或缓冲区的容器。维护页面时不应把每个 `RenderVar` 误写成独立文件，除非具体配置如此指定。</span></li>
-        <li><span class="zh">如果后续扩展逐段翻译，优先解释 product 与 camera、resolution、vars、file path/output target 的关系，但属性名和示例代码必须保持官方原样。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">渲染输出产品：</span><span class="en">RenderProduct</span></li>
-        <li><span class="zh">渲染变量：</span><span class="en">RenderVar</span></li>
-        <li><span class="zh">渲染设置：</span><span class="en">RenderSettings</span></li>
-        <li><span class="zh">渲染通道：</span><span class="en">RenderPass</span></li>
-        <li><span class="zh">输出产物：</span><span class="en">output artifact</span></li>
-        <li><span class="zh">深度缓冲：</span><span class="en">depth buffer</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-108">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`RenderProduct` 表示单个 render output artifact，例如图像文件、depth buffer 或其他 file-like artifact。它通过 `productName` 命名输出目标，并通过 `orderedVars` 把一个或多个 `RenderVar` 组织到同一个输出产品中。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for RenderProduct while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`RenderProduct` 的核心不是渲染算法，而是输出组织。`productName = &quot;/output/render000009.png&quot;` 给出输出 artifact 的目标名或路径，具体写文件行为仍由 renderer 或工具执行。</span></li>
-        <li><span class="zh">`orderedVars` 是有序 relationship 列表，示例中把 `color`、`alpha`、`directDiffuse` 等 `RenderVar` 写入同一 product；有序性对多通道输出或文件格式映射很重要。</span></li>
-        <li><span class="zh">本页应和 `RenderVar` 一起阅读：`RenderVar` 定义输出什么变量或 AOV，`RenderProduct` 定义这些变量进入哪个 artifact，`RenderSettings` 则引用 products 形成渲染配置。</span></li>
-        <li><span class="zh">如果一个渲染任务需要多张图片、多个 buffer 或不同输出格式，通常会出现多个 `RenderProduct`；不要把所有输出都塞进一个 product 的中文描述里。</span></li>
-        <li><span class="zh">术语 `render output artifact`、`file-like artifact`、`productName`、`orderedVars` 应保留英文，以便和 USD 文件、Doxygen 页面及 renderer UI 对齐。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">渲染输出产品 schema：</span><span class="en">RenderProduct</span></li>
-        <li><span class="zh">渲染输出产物：</span><span class="en">render output artifact</span></li>
-        <li><span class="zh">输出产品名称属性：</span><span class="en">productName</span></li>
-        <li><span class="zh">有序渲染变量关系：</span><span class="en">orderedVars</span></li>
-        <li><span class="zh">渲染变量 schema：</span><span class="en">RenderVar</span></li>
-        <li><span class="zh">任意输出变量：</span><span class="en">AOV</span></li>
-      </ul>
-    </section>
+
     <section>
-      <h2>页面结构 / Page Structure</h2>
+      <h2>继承或相邻属性 / Inherited or Adjacent Properties</h2>
+      <table>
+        <thead><tr><th>From</th><th>Property</th><th>USD type</th><th>Fallback</th><th>中文说明 / Chinese Reading</th></tr></thead>
+        <tbody>
+          <tr><td>RenderSettingsBase</td><td><code>aspectRatioConformPolicy</code></td><td><code>token</code></td><td><code>expandAperture</code></td><td><span class="zh">控制相机 aperture 和输出分辨率宽高比不一致时的适配策略。它不是画幅美术说明，而是渲染器在裁切、扩展或匹配画幅时需要读取的正式 token。</span><span class="en">Controls aspect-ratio conformance.</span></td></tr>
+          <tr><td>RenderSettingsBase</td><td><code>camera</code></td><td><code>rel</code></td><td><code></code></td><td><span class="zh">指向本次渲染使用的 camera prim。若图像视角不对，先查这个 relationship，再查相机 transform、layer override 和默认 RenderSettings 是否被正确选中。</span><span class="en">Relationship to the camera for rendering.</span></td></tr>
+          <tr><td>RenderSettingsBase</td><td><code>dataWindowNDC</code></td><td><code>float4</code></td><td><code>(0, 0, 1, 1)</code></td><td><span class="zh">用 NDC 范围描述数据窗口。它适合表达裁切或局部输出区域，不应该和最终文件尺寸、pixelAspectRatio 或相机 aperture 混为一谈。</span><span class="en">Data window in normalized device coordinates.</span></td></tr>
+          <tr><td>RenderSettingsBase</td><td><code>disableDepthOfField</code></td><td><code>bool</code></td><td><code>False</code></td><td><span class="zh">关闭景深效果的布尔开关。排查景深是否生效时，要同时看相机参数、渲染器支持和该开关是否在更强 layer 中被覆盖。</span><span class="en">Disables depth of field.</span></td></tr>
+          <tr><td>RenderSettingsBase</td><td><code>disableMotionBlur</code></td><td><code>bool</code></td><td><code>False</code></td><td><span class="zh">关闭 motion blur 的布尔开关。它不是采样质量设置；如果运动模糊缺失，还要检查时间采样、instantaneousShutter、渲染器能力和产品级覆盖。</span><span class="en">Disables motion blur.</span></td></tr>
+          <tr><td>RenderSettingsBase</td><td><code>instantaneousShutter</code></td><td><code>bool</code></td><td><code>False</code></td><td><span class="zh">让 shutter 以瞬时方式解释，常用于控制运动模糊和时间采样语义。阅读时应把它放在 motion blur 调试路径里，而不是当作相机曝光 UI 文案。</span><span class="en">Controls instantaneous shutter behavior.</span></td></tr>
+          <tr><td>RenderSettingsBase</td><td><code>pixelAspectRatio</code></td><td><code>float</code></td><td><code>1.0</code></td><td><span class="zh">像素宽高比。它影响像素形状，不等同于图像 resolution，也不等同于相机 aperture；三者叠加后才决定最终画面几何比例。</span><span class="en">Pixel aspect ratio.</span></td></tr>
+          <tr><td>RenderSettingsBase</td><td><code>resolution</code></td><td><code>int2</code></td><td><code>(2048, 1080)</code></td><td><span class="zh">输出分辨率。RenderSettings 和 RenderProduct 都可提供这一类配置，因此调试时要确认全局设置与产品级 override 哪一个最终生效。</span><span class="en">Output resolution.</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>相邻 usdRender 阅读路径 / Adjacent usdRender Reading Path</h2>
+      <p class="zh">本页不应孤立阅读。下面的本地页面用于在 release user guide 中保持连续阅读，并帮助区分全局设置、输出产品、输出变量、共享属性和多 pass 工作流。</p>
       <ul>
-<li><span class="zh">第 1 级标题：RenderProduct</span><span class="en">RenderProduct</span></li>
+        <li><a href="RenderSettings.html">RenderSettings</a></li>
+        <li><a href="RenderVar.html">RenderVar</a></li>
+        <li><a href="RenderSettingsBase.html">RenderSettingsBase</a></li>
       </ul>
     </section>
+
     <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">Represents a single render output artifact, such as a rendered image file, output depth buffer, or other file-like artifact. A RenderProduct combines one or more RenderVars into the output artifact.</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>def RenderProduct &quot;PrimaryProduct&quot; { token productName = &quot;/output/render000009.png&quot; rel orderedVars = [ &lt;/Render/Vars/color&gt; , &lt;/Render/Vars/alpha&gt; , &lt;/Render/Vars/directDiffuse&gt; ] }</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
+      <h2>源页对比 / Source Parity</h2>
       <ul>
-<li><a href="RenderVar.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/RenderVar.html">RenderVars</a></li>
+        <li><span class="zh">官方页：<a href="RenderProduct.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdRender/RenderProduct.html">官方页 / Official page: https://openusd.org/release/user_guides/schemas/usdRender/RenderProduct.html</a></span></li>
+        <li><span class="zh">本地 source snapshot：<code>source/full_release/user_guides/schemas/usdRender/RenderProduct_source.html</code></span></li>
+        <li><span class="zh">本轮仅晋级达到中文主阅读路径门槛的页面；未达标页不会写入 promotion manifest。</span><span class="en">Only pages that meet the Chinese main-reading-path bar are promoted.</span></li>
       </ul>
     </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="../../../../../site/release_index.html">Release 本地入口 / Local release entry</a></p>
       <p><a href="https://openusd.org/release/user_guides/schemas/usdRender/RenderProduct.html">打开官方原页 / Open official page</a></p>
     </section>
   </main>

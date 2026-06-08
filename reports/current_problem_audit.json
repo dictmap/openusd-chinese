@@ -1,62 +1,62 @@
 {
-  "generated_at": "2026-06-08T01:10:05.371Z",
-  "purpose": "Round 405 DomainSprintRound：usdLux 短页小批量冲刺。实际晋级 8 页：full_site/release/user_guides/schemas/usdLux/MeshLightAPI.html、full_site/release/user_guides/schemas/usdLux/LightListAPI.html、full_site/release/user_guides/schemas/usdLux/ListAPI.html、full_site/release/user_guides/schemas/usdLux/BoundableLightBase.html、full_site/release/user_guides/schemas/usdLux/NonboundableLightBase.html、full_site/release/user_guides/schemas/usdLux/GeometryLight.html、full_site/release/user_guides/schemas/usdLux/PluginLight.html、full_site/release/user_guides/schemas/usdLux/VolumeLightAPI.html。本轮从 105 个 good_bilingual 增至 113；中文主阅读路径覆盖页面职责、官方 section、API/schema/property 分组、边界、误读点、调试路径、相邻 usdLux 类型关系，并保留 API 名、schema 名、token、属性名、代码、Doxygen 表格标签、链接语义和显式官方外跳。",
+  "generated_at": "2026-06-08T01:37:33.823Z",
+  "purpose": "Round 406 DomainSprintRound：usdRender 短页小批量冲刺。实际晋级 7 页：full_site/release/user_guides/schemas/usdRender/RenderPass.html、full_site/release/user_guides/schemas/usdRender/RenderProduct.html、full_site/release/user_guides/schemas/usdRender/RenderSettings.html、full_site/release/user_guides/schemas/usdRender/RenderSettingsBase.html、full_site/release/user_guides/schemas/usdRender/RenderVar.html、full_site/release/user_guides/schemas/usdRender/overview.html、full_site/release/user_guides/schemas/usdRender/usdRender_toc.html。本轮从 113 个 good_bilingual 增至 120；中文主阅读路径覆盖页面职责、官方 section、schema/property 分组、使用边界、误读点、调试路径、相邻 usdRender 类型关系，并保留 API 名、schema 名、token、属性名、代码、Doxygen 表格标签、链接语义和显式官方外跳。",
   "current_counts": {
     "total_pages": 406,
-    "bilingual_complete": 113,
-    "bilingual_draft": 293,
-    "good_bilingual": 113,
-    "draft_needs_translation": 282,
+    "bilingual_complete": 120,
+    "bilingual_draft": 286,
+    "good_bilingual": 120,
+    "draft_needs_translation": 275,
     "draft_template_only": 11,
-    "review_ready_zh": 50,
+    "review_ready_zh": 57,
     "api_complete": 72,
-    "release_complete": 41,
-    "release_review_ready_zh": 38,
+    "release_complete": 48,
+    "release_review_ready_zh": 45,
     "pending_full_scope": 0
   },
   "problems": [
     {
       "id": "P0-completion-stalled",
       "severity": "P0",
-      "summary": "完成度已推进到 113/406，但仍有 293 个可检查草稿不是完整翻译。",
-      "evidence": "本轮 DomainSprintRound 实际晋级 8 个 usdLux release user guide 页面；translation_quality_review 报告 good_bilingual=113。",
-      "required_action": "继续只把具备中文主阅读路径、段落级结构和无草稿标记的页面写入 promotion manifest；不得把导读型草稿描述为完整翻译。"
+      "summary": "完成度已推进到 120/406，但仍有 286 个可检查草稿不是完整翻译。",
+      "evidence": "本轮 DomainSprintRound 实际晋级 7 个 usdRender release user guide 页面；translation_quality_review 报告 good_bilingual=120。",
+      "required_action": "继续只把具备中文主阅读路径、段落级结构和无草稿标记的页面写入 promotion manifest；未达标页保留 bilingual_draft 并列明原因。"
     },
     {
       "id": "P1-left-navigation-reading-flow",
       "severity": "P1",
       "summary": "第 396 轮修复的本地连续阅读路径必须覆盖本轮新晋级页。",
-      "evidence": "本轮重建 final entry、重新注入 reading-flow navigation，并运行 reading_flow_navigation_audit。",
-      "required_action": "凡是晋级页面或导航状态变化，继续运行 inject_openusd_reading_flow_navigation.mjs 和 audit_openusd_reading_flow_navigation.mjs。"
+      "evidence": "本轮重建 final entry、重新注入 reading-flow navigation，并运行 navigation coverage、reading-flow navigation 和 local link routing 审计。",
+      "required_action": "凡是晋级页面或导航状态变化，继续运行 inject_openusd_reading_flow_navigation.mjs、route_openusd_internal_links_local.mjs 和 audit_openusd_reading_flow_navigation.mjs。"
     },
     {
       "id": "P1-markdown-record-encoding",
       "severity": "P1",
       "summary": "Markdown 编码守卫仍是硬门槛，避免中文进度记录再次退化成问号或乱码。",
       "evidence": "reports/markdown_encoding_audit.json 必须无 repeated question-mark damage、replacement characters、mojibake markers 和 UTF-8 BOM。",
-      "required_action": "如果 audit_openusd_markdown_encoding.mjs 失败，立即停止晋级并用 JSON 真实源重建 Markdown。"
+      "required_action": "如果 audit_openusd_markdown_encoding.mjs 失败，立即停止晋级并从 JSON 真实源重建 Markdown。"
     },
     {
       "id": "P1-release-coverage-lag",
       "severity": "P1",
       "summary": "release/tutorial/user-guide 覆盖仍需继续推进。",
-      "evidence": "reports/english_debt_audit.json 报告 api_complete=72、release_complete=41、release_review_ready_zh=38。",
+      "evidence": "reports/english_debt_audit.json 报告 api_complete=72、release_complete=48、release_review_ready_zh=45。",
       "required_action": "继续优先 release/user-guide 中的高价值短页或教程页；批量晋级时逐页确认 source parity 和 good_bilingual。"
     }
   ],
   "promoted_pages": [
-    "full_site/release/user_guides/schemas/usdLux/MeshLightAPI.html",
-    "full_site/release/user_guides/schemas/usdLux/LightListAPI.html",
-    "full_site/release/user_guides/schemas/usdLux/ListAPI.html",
-    "full_site/release/user_guides/schemas/usdLux/BoundableLightBase.html",
-    "full_site/release/user_guides/schemas/usdLux/NonboundableLightBase.html",
-    "full_site/release/user_guides/schemas/usdLux/GeometryLight.html",
-    "full_site/release/user_guides/schemas/usdLux/PluginLight.html",
-    "full_site/release/user_guides/schemas/usdLux/VolumeLightAPI.html"
+    "full_site/release/user_guides/schemas/usdRender/RenderPass.html",
+    "full_site/release/user_guides/schemas/usdRender/RenderProduct.html",
+    "full_site/release/user_guides/schemas/usdRender/RenderSettings.html",
+    "full_site/release/user_guides/schemas/usdRender/RenderSettingsBase.html",
+    "full_site/release/user_guides/schemas/usdRender/RenderVar.html",
+    "full_site/release/user_guides/schemas/usdRender/overview.html",
+    "full_site/release/user_guides/schemas/usdRender/usdRender_toc.html"
   ],
   "not_promoted_pages": [],
+  "source_parity_report": "reports/round_406_usdRender_source_parity.json",
   "next_actions": [
-    "下一轮可继续 usdLux 剩余短页，或转向 release 用户指南中仍为 draft_needs_translation 的高频页面。",
+    "下一轮可继续选择 release/user-guide 中仍为 draft_needs_translation 的高价值短页；若导航或报告计数出现不一致，先做 DefectRound。",
     "继续固定运行 Markdown 编码、English debt、本地链接路由、navigation coverage、reading-flow navigation、full draft preview、report index 和 validation。"
   ],
   "next_action": "Continue release/user-guide promotion only if the target pages can become good_bilingual; otherwise stop and report the blocker."
