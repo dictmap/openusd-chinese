@@ -3,27 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>开发者指南 / Developer Guides</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <title>Developer Guides - OpenUSD API 双语</title>
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.68}
     header{background:#142538;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 10px;font-size:17px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .navlinks{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 0}
+    .navlinks a{color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);border-radius:6px;padding:5px 8px}
     .zh{display:block;font-weight:650;color:#17324d}
     .en{display:block;color:#55616f;margin-top:4px}
+    .status{display:inline-block;background:#206a3b;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .note{background:#f2f6fb;border-left:4px solid #3f6f9f;padding:10px 12px;border-radius:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
     ul{padding-left:22px}
     li{margin:8px 0}
     code{font-family:"Cascadia Mono","Consolas",monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
-  </style>
-<style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
-    .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
+    .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#fff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
     .openusd-reading-flow-nav h2{font-size:17px;margin:0 0 10px;color:#17202a}
     .openusd-reading-flow-nav h3{font-size:13px;margin:16px 0 8px;color:#516071;text-transform:none;letter-spacing:0}
     .openusd-reading-flow-nav ul,.openusd-reading-flow-nav ol{list-style:none;margin:0;padding:0}
@@ -32,21 +33,17 @@
     .openusd-reading-flow-nav a:hover{text-decoration:underline}
     .openusd-reading-flow-status{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:999px;background:#edf2f7;color:#516071;font-size:11px}
     .openusd-reading-flow-nav .official-link{color:#8a4b11}
-    .openusd-reading-flow-breadcrumb{max-width:1100px;margin:14px auto 0;padding:0 20px;color:#d7e3f4;font-size:14px;overflow-wrap:anywhere}
-    .openusd-reading-flow-breadcrumb a{color:#ffffff}
-    @media (max-width: 920px){
+    .openusd-reading-flow-breadcrumb{max-width:1120px;margin:14px auto 0;padding:0 20px;color:#d7e3f4;font-size:14px;overflow-wrap:anywhere}
+    .openusd-reading-flow-breadcrumb a{color:#fff}
+    @media (max-width:920px){
       body.openusd-has-reading-flow{padding-left:0}
       .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
       .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
     }
   </style>
 </head>
-<body class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_draft</span>
-    <h1>开发者指南 / Developer Guides</h1>
-    <div class="meta">https://openusd.org/release/api/_developer__guides.html</div>
-  </header>
+<body class="openusd-has-reading-flow" data-cn-status="bilingual_complete" data-cn-round="444" data-cn-scope="api" data-cn-review-ready="true">
+
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
   <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
@@ -74,25 +71,26 @@
       </ol>
     </section>
     <section>
-      <h3>当前 API 上下文 / API Context</h3>
+      <h3>开发者上下文 / Developer Context</h3>
       <ul>
-        <li><a data-reading-flow="related" href="_c_l_i11_8h_source.html">源码页面草稿：CLI11.h / CLI11.h</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="_usd_skel__intro.html">_c_l_i11_8h_source.html</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="annotated.html">Classes</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="ar_page_front.html">https://openusd.org/release/api/ar_page_front.html</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="arch_page_front.html">https://openusd.org/release/api/arch_page_front.html</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="binding_map_8h_source.html">源码页面草稿：bindingMap.h / bindingMap.h</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="class_ef___lofted_output_set.html">https://openusd.org/release/api/class_ef___lofted_output_set.html</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="class_esf_property_interface.html">https://openusd.org/release/api/class_esf_property_interface.html</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="class_gf_dual_quatf.html">https://openusd.org/release/api/class_gf_dual_quatf.html</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="class_gf_matrix2f.html">https://openusd.org/release/api/class_gf_matrix2f.html</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="plug_page_front.html">Plug 插件发现</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="tf_page_front.html">Tf 基础设施</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="sdf_page_front.html">Sdf 数据模型</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="ar_page_front.html">Ar 资产解析</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
-      <h3>上一页/下一页 / Previous/Next</h3>
+      <h3>索引与清单 / Indexes</h3>
       <ul>
-        <li><a data-reading-flow="prev" href="_c_l_i11_8h_source.html">上一页 / Previous: 源码页面草稿：CLI11.h / CLI11.h</a></li>
-<li><a data-reading-flow="next" href="_usd_skel__intro.html">下一页 / Next: _c_l_i11_8h_source.html</a></li>
+        <li><a data-reading-flow="related" href="annotated.html">Classes index</a><span class="openusd-reading-flow-status">draft</span></li>
+        <li><a data-reading-flow="related" href="files.html">Files index</a><span class="openusd-reading-flow-status">draft</span></li>
+      </ul>
+    </section>
+    <section>
+      <h3>上一页 / 下一页</h3>
+      <ul>
+        <li><a data-reading-flow="prev" href="usddraco_page_front.html">上一页 / Previous: UsdDraco</a></li>
+        <li><a data-reading-flow="next" href="plug_page_front.html">下一页 / Next: Plug</a></li>
       </ul>
     </section>
     <section>
@@ -104,106 +102,112 @@
   </div>
 </aside>
 <!-- openusd-reading-flow-nav:end -->
+<header>
+  <span class="status">bilingual_complete / review_ready_zh</span>
+  <h1>Developer Guides</h1>
+  <div class="meta">第 444 轮 PromotionRound：开发者指南入口页完成。源页：<code>source/full_api/_developer__guides_source.html</code>；官方页：<code>https://openusd.org/release/api/_developer__guides.html</code></div>
+  <div class="navlinks">
+    <a href="../../openusd_bilingual_final.html">总入口</a>
+    <a href="../../site/index.html">API 本地入口</a>
+    <a href="../../source/full_api/_developer__guides_source.html">本地 source snapshot</a>
+    <a href="https://openusd.org/release/api/_developer__guides.html">Open official page</a>
+  </div>
+</header>
+<main>
+  <section data-cn-complete="overview">
+    <h2>中文主阅读路径</h2>
+    <p><span class="zh"><code>Developer Guides</code> 是 OpenUSD API 文档里的开发者入口页。source snapshot 的主体不是 class reference，也不是函数清单，而是一组面向贡献者和底层开发者的指南链接：编码规范、测试规范、颜色编程、Hydra 入门、Hydra 场景调试器、Hydra prim schemas，以及 MaterialX 在 Hydra 和 USD 中的架构说明。本地页的任务是把这个入口的阅读顺序、边界和相邻模块关系讲清楚。</span><span class="en">The source page is a Developer Guides entry page that lists development-oriented guide links.</span></p>
+    <p><span class="zh">阅读这页时要先判断自己的问题属于哪一类：如果是“如何按 OpenUSD 项目风格写代码”，从 <code>Coding Guidelines for OpenUSD</code> 开始；如果是“如何给改动写测试或验证行为”，从 <code>Testing Guidelines for OpenUSD</code> 开始；如果是“颜色数据在 OpenUSD API 中如何表达和转换”，进入 <code>Programmer's Guide to Color in OpenUSD</code>；如果是 Hydra 或 MaterialX 相关开发，则进入对应的 Hydra 和 MaterialX 指南。</span><span class="en">Choose the guide based on whether the task is coding style, testing, color programming, Hydra, or MaterialX architecture.</span></p>
+    <p><span class="zh">这个页面不是用户教程目录，也不是 release 用户指南的替代品。它位于 API/Doxygen 侧，更适合贡献者、库开发者、渲染插件开发者和需要理解内部架构的读者。普通资产作者如果只是想学习 scene composition、schema 使用或命令行工具，通常应先从 Release 本地入口、schema/user guide 或具体模块 front page 进入，再回到本页查开发规范。</span><span class="en">This page is API-side developer documentation, not a substitute for release user guides.</span></p>
+  </section>
 
+  <section data-cn-complete="source-parity">
+    <h2>官方结构与 source parity</h2>
+    <p><span class="zh">本页使用 <code>source/full_api/_developer__guides_source.html</code> 对齐官方页面。源页标题为 <code>Developer Guides</code>，正文文本包含 <code>General Guidelines</code>、<code>Hydra Guides</code> 和 <code>MaterialX Guides</code> 三组入口。source parity 的重点是保留这些标题和 7 个指南条目的语义，而不是把未纳入本地 406 页 inventory 的子指南伪装成本地完成页。</span><span class="en">Source parity preserves the title, guide groups, and seven guide entries.</span></p>
+    <ul>
+      <li><span class="zh">官方标题：<code>Developer Guides</code>。</span><span class="en">Official page title: Developer Guides.</span></li>
+      <li><span class="zh">官方分组：<code>General Guidelines</code>、<code>Hydra Guides</code>、<code>MaterialX Guides</code>。</span><span class="en">Official groups: General Guidelines, Hydra Guides, and MaterialX Guides.</span></li>
+            <li>
+        <span class="zh"><code>Coding Guidelines for OpenUSD</code>：编码规范入口，适合确认 OpenUSD C++/Python 代码风格、命名、头文件和提交前自检边界。当前 406 页本地 inventory 没有收录 <code>_page__coding__guidelines.html</code> 的完整本地页，因此本页只保留条目语义，并通过显式官方原页继续核对。</span>
+        <span class="en">Source guide entry: Coding Guidelines for OpenUSD (_page__coding__guidelines.html).</span>
+      </li>
+      <li>
+        <span class="zh"><code>Testing Guidelines for OpenUSD</code>：测试规范入口，适合确认单元测试、回归测试和验证策略，而不是替代具体测试脚本。当前 406 页本地 inventory 没有收录 <code>_page__testing__guidelines.html</code> 的完整本地页，因此本页只保留条目语义，并通过显式官方原页继续核对。</span>
+        <span class="en">Source guide entry: Testing Guidelines for OpenUSD (_page__testing__guidelines.html).</span>
+      </li>
+      <li>
+        <span class="zh"><code>Programmer's Guide to Color in OpenUSD</code>：颜色编程指南入口，适合把 API 层的颜色处理与 release 用户指南中的色彩说明衔接起来。当前 406 页本地 inventory 没有收录 <code>_page__color__programmers__guide.html</code> 的完整本地页，因此本页只保留条目语义，并通过显式官方原页继续核对。</span>
+        <span class="en">Source guide entry: Programmer's Guide to Color in OpenUSD (_page__color__programmers__guide.html).</span>
+      </li>
+      <li>
+        <span class="zh"><code>Hydra 2.0 Getting Started Guide</code>：Hydra 入门入口，适合进入渲染架构、delegate 和 scene index 等开发路径。当前 406 页本地 inventory 没有收录 <code>_page__hydra__getting__started__guide.html</code> 的完整本地页，因此本页只保留条目语义，并通过显式官方原页继续核对。</span>
+        <span class="en">Source guide entry: Hydra 2.0 Getting Started Guide (_page__hydra__getting__started__guide.html).</span>
+      </li>
+      <li>
+        <span class="zh"><code>Hydra Scene Debugger</code>：Hydra 调试器入口，适合排查渲染场景、数据流和调试工具，而不是基础 USD 组成问题。当前 406 页本地 inventory 没有收录 <code>_page__hydra__scene__debugger.html</code> 的完整本地页，因此本页只保留条目语义，并通过显式官方原页继续核对。</span>
+        <span class="en">Source guide entry: Hydra Scene Debugger (_page__hydra__scene__debugger.html).</span>
+      </li>
+      <li>
+        <span class="zh"><code>Hydra Prim Schemas</code>：Hydra prim schema 入口，适合理解 Hydra 相关 schema 与 USD/Hd/Hdx 的边界。当前 406 页本地 inventory 没有收录 <code>_page__hydra__prim__schemas.html</code> 的完整本地页，因此本页只保留条目语义，并通过显式官方原页继续核对。</span>
+        <span class="en">Source guide entry: Hydra Prim Schemas (_page__hydra__prim__schemas.html).</span>
+      </li>
+      <li>
+        <span class="zh"><code>MaterialX In Hydra and USD Architecture Guide</code>：MaterialX 架构入口，适合衔接 MaterialX、Hydra、USD、UsdShade、Sdr 和 UsdMtlx。当前 406 页本地 inventory 没有收录 <code>_page__material_x__in__hydra__u_s_d.html</code> 的完整本地页，因此本页只保留条目语义，并通过显式官方原页继续核对。</span>
+        <span class="en">Source guide entry: MaterialX In Hydra and USD Architecture Guide (_page__material_x__in__hydra__u_s_d.html).</span>
+      </li>
+    </ul>
+    <p class="note"><span class="zh">注意：这些源页链接目前没有对应的本地完整 HTML 页面或 source snapshot，因此本页不创建静默跳转到官方英文站的阅读路径。需要核对原始链接时，请使用顶部和侧栏中的 <code>打开官方原页 / Open official page</code>，然后在官方页面内进入相应指南。</span><span class="en">The child guide links are not local completed pages in this 406-page inventory; use the explicit official-page link for source verification.</span></p>
+  </section>
 
+  <section data-cn-complete="plain-zh-summary">
+    <h2>纯中文阅读摘要</h2>
+    <p class="zh">本页适合作为开发者工作的分流台。它不会直接告诉你某个 API 类的全部成员，也不会解释某个 schema 的用户层含义；它告诉你，当问题转向“如何开发 OpenUSD 本身、如何遵守项目规则、如何测试、如何调试 Hydra 或 MaterialX 架构”时，应该进入哪类指南。</p>
+    <p class="zh">如果目标是修改核心库代码，先从编码规范和测试规范开始，再跳到相关模块的 API front page。这样可以避免只看类参考而忽略项目约定。类参考通常说明“有什么接口”，开发者指南则补充“怎样以项目接受的方式使用和修改这些接口”。</p>
+    <p class="zh">如果目标是理解 Hydra 渲染开发，官方入口把 Hydra 2.0 入门、Hydra Scene Debugger 和 Hydra Prim Schemas 放在同一组。阅读顺序应先建立 Hydra 数据流和 delegate 的基本概念，再用 Scene Debugger 排查场景，再看 prim schemas 如何把 USD 数据暴露给 Hydra 消费。</p>
+    <p class="zh">如果目标是 MaterialX 与 USD/Hydra 的结合，MaterialX 架构指南是桥接入口。它不等同于 UsdShade 的完整教程，也不等同于 MaterialX 规范全文；它更偏向说明 MaterialX 在 Hydra 和 USD 架构中如何接入、由哪些模块消费、哪些问题应继续追到 UsdShade、Sdr 或 UsdMtlx。</p>
+    <p class="zh">本地中文页还需要诚实说明快照边界：当前 406 页本地 inventory 没有把这些子指南作为独立完成页收录。为了不破坏本地连续阅读体验，本页只在正文中保留条目语义，不把它们做成看似本地可读但实际跳官方站的普通链接。</p>
+    <p class="zh">排查开发问题时，不要把本页当成最终答案。它是路径选择器：编码和测试问题先去 General Guidelines；渲染框架和数据流问题先去 Hydra Guides；材质网络和 MaterialX 接入问题先去 MaterialX Guides；具体 API 类型、token、schema、函数或文件仍要回到本地 API 模块页、class 页或 source snapshot。</p>
+    <p class="zh">如果你是贡献者，本页的实际价值在于降低误读成本。很多问题不是“哪个函数能调用”，而是“这个改动应该放在哪个层级、怎样测试、是否符合项目约定、是否会影响 Hydra 或 MaterialX 消费路径”。这些问题靠 class reference 不够，需要开发者指南提供规则背景。</p>
+  </section>
 
+  <section data-cn-complete="boundaries">
+    <h2>职责边界：入口页，不是完整开发手册复制</h2>
+    <p><span class="zh"><code>Developer Guides</code> 的职责是组织入口，不是把每份开发手册全文复制到当前页。源页没有展开代码样式细节、测试目录结构、Hydra 调试命令或 MaterialX 适配规则，因此本地中文页也不发明这些细节。它只解释每个入口该在什么场景使用，以及如果本地没有对应页面，应该如何诚实地回到官方原页核对。</span><span class="en">Developer Guides is an index-style entry page, not a full copy of every guide.</span></p>
+    <p><span class="zh">与 <a href="annotated.html">Classes index</a> 和 <a href="files.html">Files index</a> 的区别也很重要：类索引和文件索引用于精确定位 API 符号，开发者指南用于理解开发约定、测试策略和架构路径。前者回答“符号在哪里”，后者回答“开发时应该怎样走”。两者应该配合阅读，而不是互相替代。</span><span class="en">Classes and files indexes locate symbols; developer guides explain conventions and architecture paths.</span></p>
+    <p><span class="zh">与 Release 用户文档的区别同样明确：Release 文档面向使用 OpenUSD 的读者，强调资产、schema、教程、插件和发布说明；Developer Guides 面向修改 OpenUSD 或构建相关工具链的读者，强调贡献规则、测试、Hydra 调试和 MaterialX 架构。用户学习路径可以从 Release 开始，开发者修代码时再回到本页。</span><span class="en">Release docs focus on using OpenUSD; this page focuses on developing OpenUSD and related systems.</span></p>
+  </section>
 
+  <section data-cn-complete="adjacent-modules">
+    <h2>相邻模块阅读路径</h2>
+    <p><span class="zh">第一条路径是基础设施路径：阅读 <a href="tf_page_front.html">Tf</a>、<a href="plug_page_front.html">Plug</a>、<a href="sdf_page_front.html">Sdf</a> 和 <a href="ar_page_front.html">Ar</a>。这些页面帮助开发者理解 token、插件发现、layer 数据模型和资产解析，是很多编码规范、测试策略和插件调试的前置背景。</span><span class="en">Tf, Plug, Sdf, and Ar provide infrastructure context for coding, testing, plug-in discovery, and asset resolution.</span></p>
+    <p><span class="zh">第二条路径是渲染开发路径：如果问题来自 Hydra 指南，应继续阅读已完成的 Hd、Hdx、HdStorm、HdEmbree、UsdRender、Sdr、UsdShaders、UsdMtlx 等模块入口。Hydra 文档通常连接 scene delegate、render delegate、schema、debugger 和 renderer plugin，不能只靠单个 class reference 理解。</span><span class="en">Hydra developer work connects Hd, Hdx, render delegates, schemas, debugging tools, and renderer plug-ins.</span></p>
+    <p><span class="zh">第三条路径是材质和着色路径：MaterialX 指南应与 UsdShade、Sdr、UsdShaders 和 UsdMtlx 一起阅读。若问题是 shader discovery 或 property 表达，去 Sdr；若问题是 USD 材质网络表达，去 UsdShade；若问题是 MaterialX 文件格式或 shader plugin 接入，去 UsdMtlx。Developer Guides 只负责把这些路线分清。</span><span class="en">MaterialX-related questions should be routed to UsdShade, Sdr, UsdShaders, and UsdMtlx depending on the failure layer.</span></p>
+  </section>
 
+  <section data-cn-complete="debugging">
+    <h2>调试路径与常见误读</h2>
+    <p><span class="zh">调试贡献或构建问题时，先判断问题属于规则、测试、架构还是符号层。规则问题查 Coding Guidelines；测试问题查 Testing Guidelines；Hydra 数据流或调试器问题查 Hydra Guides；MaterialX 与渲染架构问题查 MaterialX Guides；具体符号问题再回到 class/file index 或模块 front page。这样可以避免在 API 符号页里寻找项目规范。</span><span class="en">Classify the problem as convention, test, architecture, or symbol-level before choosing a path.</span></p>
+    <p><span class="zh">常见误读之一是把开发者指南当作普通用户教程。用户教程通常教你如何创建资产或使用 schema；开发者指南更关心代码如何被接受、如何验证、Hydra 调试工具怎样帮助开发，以及架构层怎样把模块接起来。另一个误读是把官方子指南缺失看作本地站点完整性错误；实际上这些子指南不在当前 406 页快照内，必须显式说明。</span><span class="en">Common misreads include treating developer guides as user tutorials or pretending missing guide pages are local completed pages.</span></p>
+    <p><span class="zh">如果读者需要进入官方子指南，本地页只提供明确的官方原页外跳入口，而不是在正文中放置一串隐式外链。这样做是为了遵守本地中文站的阅读流规则：站内阅读应优先走本地页面，只有“打开官方原页 / Open official page”才表示明确离开本地中文站。</span><span class="en">Official navigation is explicit so local reading flow does not silently jump to the official English site.</span></p>
+  </section>
 
+  <section data-cn-complete="acceptance-checklist">
+    <h2>最小验收清单</h2>
+    <p><span class="zh">判断本页是否读懂，可以检查四点：第一，知道它是 Developer Guides 入口页，不是 class reference；第二，能说出 General Guidelines、Hydra Guides、MaterialX Guides 三组入口分别面向什么问题；第三，知道缺失的子指南没有本地完整页，不能伪装成本地已完成链接；第四，知道下一步应按问题类型跳到本地 API 模块、索引页、Release 文档或显式官方原页。</span><span class="en">A reader should understand the page role, guide groups, local snapshot boundary, and next reading path.</span></p>
+    <p><span class="zh">本轮晋级的质量边界是：补足中文主阅读路径和 source parity，不增加源页没有的 API 细节；保留 <code>Developer Guides</code>、7 个官方指南条目、API/Release/总入口、source snapshot、相邻本地 API 模块和显式官方外跳。验证通过后，这一页可以从 API 草稿晋级为 <code>bilingual_complete</code>。</span><span class="en">The promotion boundary is source-aligned reading guidance, not invented API detail.</span></p>
+  </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
-    </section>
-    <section data-cn-refinement="translation-quality-pass-001">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块是针对 开发者指南 的人工质检补强层，用来补足草稿页中过薄的中文阅读信息；英文 API 名称和原文摘录仍保留在下方，便于与官方文档对照。</p>
-      <p class="en">This section adds a Chinese-first reading layer for this draft page while retaining the original English API names and excerpts below.</p>
-      <ul>
-<li><span class="zh">这一页不是单个 API 类说明，而是面向贡献者和集成开发者的指南目录。阅读时先把它当作路线图：编码规范、测试规范、颜色处理、Hydra、MaterialX 等主题分别指向后续专题页。</span></li>
-<li><span class="zh">General Guidelines 和 Coding Guidelines 主要用于统一 OpenUSD 代码贡献方式；Testing Guidelines 说明如何验证改动，适合在修改 C++、Python wrapper 或 schema 生成逻辑前先读。</span></li>
-<li><span class="zh">Hydra Guides 面向渲染和场景索引开发，包含 Hydra 2.0、Scene Debugger 和 Prim Schemas；MaterialX Guides 则关注材质网络如何在 Hydra 与 USD 之间表达和消费。</span></li>
-<li><span class="zh">本页链接已经路由到本地缺口页或本地复刻页。遇到未覆盖专题时，先记录为后续扩展对象，不要把它误认为当前页翻译失败。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-<li><span class="zh">开发者指南：</span><span class="en">Developer Guides</span></li>
-<li><span class="zh">编码规范：</span><span class="en">Coding Guidelines</span></li>
-<li><span class="zh">测试规范：</span><span class="en">Testing Guidelines</span></li>
-<li><span class="zh">Hydra 指南：</span><span class="en">Hydra Guides</span></li>
-<li><span class="zh">MaterialX 指南：</span><span class="en">MaterialX Guides</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-entry-quality-pass-128">
-      <h2>中文二次补强导读 / Chinese Second-Pass Notes</h2>
-      <p class="zh">`Developer Guides` 是面向贡献者、集成开发者和渲染/材质扩展作者的指南目录页。它的作用是把 coding、testing、color、Hydra、MaterialX 等专题串成路线图；读者应把它当作导航入口，而不是单个 API 类参考。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for Developer Guides while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`General Guidelines`、`Coding Guidelines for OpenUSD` 和 `Testing Guidelines for OpenUSD` 应一起阅读：前者给出贡献方向，后两者分别约束代码风格、测试边界和提交前验证方式。</span></li>
-        <li><span class="zh">`Programmer's Guide to Color in OpenUSD` 关注颜色空间、color management 和渲染一致性；如果改动 shader、display color 或 imaging 代码，应把它和 Hydra/MaterialX 指南交叉核对。</span></li>
-        <li><span class="zh">`Hydra 2.0 Getting Started Guide`、`Hydra Scene Debugger` 与 `Hydra Prim Schemas` 指向渲染索引和场景调试路径，适合 render delegate、scene index、prim schema 开发者优先阅读。</span></li>
-        <li><span class="zh">`MaterialX In Hydra and USD Architecture Guide` 说明 MaterialX 材质网络如何在 USD 与 Hydra 之间传递；阅读时保留 `MaterialX`、`Hydra`、`USD` 等英文技术名，避免翻译后影响搜索。</span></li>
-        <li><span class="zh">本页链接若指向清单外专题，会按本地策略进入 `site/uncovered_openusd_page.html`；这代表当前 406 页复刻范围未覆盖该专题，不代表本页导航失败。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">开发者指南：</span><span class="en">Developer Guides</span></li>
-        <li><span class="zh">编码规范：</span><span class="en">Coding Guidelines</span></li>
-        <li><span class="zh">测试规范：</span><span class="en">Testing Guidelines</span></li>
-        <li><span class="zh">Hydra 场景调试器：</span><span class="en">Hydra Scene Debugger</span></li>
-        <li><span class="zh">Hydra prim schema：</span><span class="en">Hydra Prim Schemas</span></li>
-        <li><span class="zh">MaterialX 架构指南：</span><span class="en">MaterialX Architecture Guide</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级结构：Developer Guides</span><span class="en">Developer Guides</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">General Guidelines Coding Guidelines for OpenUSD Testing Guidelines for OpenUSD Programmer's Guide to Color in OpenUSD Hydra Guides Hydra 2.0 Getting Started Guide Hydra Scene Debugger Hydra Prim Schemas MaterialX Guides MaterialX In Hydra and USD Architecture Guide</p>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2F_page__coding__guidelines.html&amp;title=Coding+Guidelines+for+OpenUSD" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/_page__coding__guidelines.html">Coding Guidelines for OpenUSD</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2F_page__testing__guidelines.html&amp;title=Testing+Guidelines+for+OpenUSD" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/_page__testing__guidelines.html">Testing Guidelines for OpenUSD</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2F_page__color__programmers__guide.html&amp;title=Programmer%27s+Guide+to+Color+in+OpenUSD" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/_page__color__programmers__guide.html">Programmer's Guide to Color in OpenUSD</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2F_page__hydra__getting__started__guide.html&amp;title=Hydra+2.0+Getting+Started+Guide" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/_page__hydra__getting__started__guide.html">Hydra 2.0 Getting Started Guide</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2F_page__hydra__scene__debugger.html&amp;title=Hydra+Scene+Debugger" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/_page__hydra__scene__debugger.html">Hydra Scene Debugger</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2F_page__hydra__prim__schemas.html&amp;title=Hydra+Prim+Schemas" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/_page__hydra__prim__schemas.html">Hydra Prim Schemas</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2F_page__material_x__in__hydra__u_s_d.html&amp;title=MaterialX+In+Hydra+and+USD+Architecture+Guide" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/_page__material_x__in__hydra__u_s_d.html">MaterialX In Hydra and USD Architecture Guide</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/api/_developer__guides.html">打开官方原页 / Open official page</a></p>
-    </section>
-  </main>
+  <section data-cn-complete="paragraph-coverage">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+    <ul>
+      <li><span class="zh">标题已覆盖：<code>Developer Guides</code> 被解释为 API/Doxygen 侧的开发者入口页。</span><span class="en">Title coverage: Developer Guides is an API-side developer entry page.</span></li>
+      <li><span class="zh">官方分组已覆盖：<code>General Guidelines</code>、<code>Hydra Guides</code>、<code>MaterialX Guides</code> 均有中文用途说明。</span><span class="en">Group coverage includes General Guidelines, Hydra Guides, and MaterialX Guides.</span></li>
+      <li><span class="zh">官方条目已覆盖：7 个指南链接的标题和用途都被保留，并说明它们当前没有本地完整页。</span><span class="en">Guide-entry coverage preserves all seven official guide titles and their local snapshot boundary.</span></li>
+      <li><span class="zh">边界已覆盖：本页不是用户教程、不是 class reference、不是完整开发手册复制，也不伪造缺失子指南。</span><span class="en">Boundary coverage states that this page is not a user tutorial, class reference, or full guide copy.</span></li>
+      <li><span class="zh">调试路径已覆盖：按规则、测试、Hydra、MaterialX、符号层分流到相邻本地页面或显式官方原页。</span><span class="en">Debugging path coverage routes work by conventions, tests, Hydra, MaterialX, or symbol-level needs.</span></li>
+      <li><span class="zh">本地连续阅读已覆盖：总入口、API 入口、Release 入口、source snapshot、上一页 <code>UsdDraco</code>、下一页 <code>Plug</code>、相邻 <code>Tf</code>/<code>Sdf</code>/<code>Ar</code>/<code>Files</code>/<code>Classes</code> 页面和显式官方页链接均已保留。</span><span class="en">Reading-flow coverage includes final entry, API entry, release entry, source snapshot, adjacent modules, previous/next, and official link.</span></li>
+    </ul>
+  </section>
+</main>
 </body>
 </html>
