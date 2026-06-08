@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-08T02:15:18.199Z
+Generated: 2026-06-08T02:51:56.151Z
 
-Transient base URL: `http://127.0.0.1:63088/`
+Transient base URL: `http://127.0.0.1:60544/`
 
 Result:
 
 - Passed: true
-- Draft pages: 274
-- Pages checked: 274
-- Passed pages: 274
+- Draft pages: 266
+- Pages checked: 266
+- Passed pages: 266
 - Failed pages: 0
-- Final HTML links: 274
-- Local assets checked: 274
+- Final HTML links: 266
+- Local assets checked: 266
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -254,15 +254,7 @@ Result:
 | true | full_site/release/user_guides/schemas/usdLux/usdLux_toc.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdUI/overview.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdUI/usdUI_toc.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdVol/Field3DAsset.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdVol/FieldAsset.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdVol/FieldBase.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdVol/OpenVDBAsset.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdVol/overview.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdVol/ParticleField.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelBaseAPI.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelConstantSurfletAPI.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianEllipsoidAPI.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelGaussianSurfletAPI.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdVol/ParticleFieldOpacityAttributeAPI.html | 200 | true | 0 | 0 |

@@ -1,6 +1,6 @@
 # OpenUSD 完整双语晋级清单
 
-Generated: 2026-06-08T02:15:13.933Z
+Generated: 2026-06-08T02:51:51.875Z
 
 这份清单只记录已经从 `bilingual_draft` 晋级为 `bilingual_complete` 的页面。它是 `scripts/discover_openusd_all_pages.mjs` 识别 promoted complete 页面的审计来源，不等同于把草稿页改一个状态。
 
@@ -16,6 +16,14 @@ Generated: 2026-06-08T02:15:13.933Z
 
 | ID | 本地输出 | 官方页面 | 状态 |
 | --- | --- | --- | --- |
+| `round-409-release-usdVol-Field3DAsset` | `full_site/release/user_guides/schemas/usdVol/Field3DAsset.html` | `https://openusd.org/release/user_guides/schemas/usdVol/Field3DAsset.html` | bilingual_complete |
+| `round-409-release-usdVol-FieldAsset` | `full_site/release/user_guides/schemas/usdVol/FieldAsset.html` | `https://openusd.org/release/user_guides/schemas/usdVol/FieldAsset.html` | bilingual_complete |
+| `round-409-release-usdVol-FieldBase` | `full_site/release/user_guides/schemas/usdVol/FieldBase.html` | `https://openusd.org/release/user_guides/schemas/usdVol/FieldBase.html` | bilingual_complete |
+| `round-409-release-usdVol-OpenVDBAsset` | `full_site/release/user_guides/schemas/usdVol/OpenVDBAsset.html` | `https://openusd.org/release/user_guides/schemas/usdVol/OpenVDBAsset.html` | bilingual_complete |
+| `round-409-release-usdVol-ParticleField` | `full_site/release/user_guides/schemas/usdVol/ParticleField.html` | `https://openusd.org/release/user_guides/schemas/usdVol/ParticleField.html` | bilingual_complete |
+| `round-409-release-usdVol-ParticleField3DGaussianSplat` | `full_site/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html` | `https://openusd.org/release/user_guides/schemas/usdVol/ParticleField3DGaussianSplat.html` | bilingual_complete |
+| `round-409-release-usdVol-ParticleFieldKernelBaseAPI` | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelBaseAPI.html` | `https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldKernelBaseAPI.html` | bilingual_complete |
+| `round-409-release-usdVol-ParticleFieldKernelConstantSurfletAPI` | `full_site/release/user_guides/schemas/usdVol/ParticleFieldKernelConstantSurfletAPI.html` | `https://openusd.org/release/user_guides/schemas/usdVol/ParticleFieldKernelConstantSurfletAPI.html` | bilingual_complete |
 | `round-408-release-usdUI-AccessibilityAPI` | `full_site/release/user_guides/schemas/usdUI/AccessibilityAPI.html` | `https://openusd.org/release/user_guides/schemas/usdUI/AccessibilityAPI.html` | bilingual_complete |
 | `round-408-release-usdUI-AttributeHints` | `full_site/release/user_guides/schemas/usdUI/AttributeHints.html` | `https://openusd.org/release/user_guides/schemas/usdUI/AttributeHints.html` | bilingual_complete |
 | `round-408-release-usdUI-Backdrop` | `full_site/release/user_guides/schemas/usdUI/Backdrop.html` | `https://openusd.org/release/user_guides/schemas/usdUI/Backdrop.html` | bilingual_complete |
