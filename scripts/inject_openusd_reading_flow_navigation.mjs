@@ -38,7 +38,45 @@ function relativeHref(fromLocalOutput, toLocalOutput) {
 
 function titleOf(page) {
   const title = page.title || page.title_hints?.[0] || path.posix.basename(page.local_output, ".html");
-  return String(title).replace(/\s+/g, " ").trim();
+  const clean = String(title).replace(/\s+/g, " ").trim();
+  if (!/^https:\/\/openusd\.org\/release\//i.test(clean)) return clean;
+  return titleFromLocalOutput(page.local_output);
+}
+
+function titleFromLocalOutput(localOutput) {
+  const base = path.posix.basename(localOutput, ".html");
+  const known = {
+    "ar_page_front": "Ar asset resolution module",
+    "arch_page_front": "Arch system utilities module",
+    "glf_page_front": "Glf OpenGL utilities module",
+    "hd_page_front": "Hd Hydra core module",
+    "hd_st_page_front": "HdSt Storm implementation module",
+    "hdx_page_front": "Hdx Hydra task utilities module",
+    "hio_page_front": "Hio image I/O module",
+    "plug_page_front": "Plug plugin system module",
+    "tf_page_front": "Tf foundation utilities module",
+    "usd_geom_page_front": "UsdGeom geometry schema module",
+    "usd_lux_page_front": "UsdLux lighting schema module",
+    "usd_shade_page_front": "UsdShade shading schema module",
+    "usd_skel_page_front": "UsdSkel skeletal animation module",
+    "usd_utils_page_front": "UsdUtils utility module",
+    "usd_app_utils_page_front": "UsdAppUtils application utility module",
+    "index": "API Doxygen local index",
+  };
+  if (known[base]) return known[base];
+  return base
+    .replace(/^class_/, "Class ")
+    .replace(/^struct_/, "Struct ")
+    .replace(/^md_pxr_/, "Doc ")
+    .replace(/_page_front$/, " module")
+    .replace(/_1_1/g, "::")
+    .replace(/_a_p_i/g, "API")
+    .replace(/_g_l/g, "GL")
+    .replace(/_u_i/g, "UI")
+    .replace(/_r_e_a_d_m_e/g, "README")
+    .replace(/_+/g, " ")
+    .replace(/\b\w/g, (ch) => ch.toUpperCase())
+    .trim();
 }
 
 function pageDepthLabel(localOutput) {
@@ -79,6 +117,12 @@ function linkList(current, pages, flowName, limit = 8) {
 }
 
 function neighborLinks(current, allAreaPages) {
+  if (current.local_output === "full_site/release/intro_to_openexec.html") {
+    return [
+      `<li><a data-reading-flow="prev" href="${escapeHtml(relativeHref(current.local_output, "site/release_index.html"))}">上一层：Release 本地入口</a></li>`,
+      `<li><a data-reading-flow="next" href="#background">下一步：从 Background 开始顺读</a></li>`,
+    ].join("\n");
+  }
   const index = allAreaPages.findIndex((page) => page.local_output === current.local_output);
   const previous = index > 0 ? allAreaPages[index - 1] : null;
   const next = index >= 0 && index < allAreaPages.length - 1 ? allAreaPages[index + 1] : null;
@@ -92,43 +136,175 @@ function neighborLinks(current, allAreaPages) {
   return items.join("\n");
 }
 
-function buildRelatedPages(current, pages, areaPages) {
-  if (current.area === "release") {
-    const currentDir = path.posix.dirname(current.local_output);
-    const sameDir = pages.filter((page) => page.area === "release" && path.posix.dirname(page.local_output) === currentDir);
-    const usdLuxPriorityNames = [
+function releaseCategory(page) {
+  const local = page.local_output;
+  const base = path.posix.basename(local);
+  if (local === "full_site/release/intro_to_openexec.html") return "openexec";
+  const schemaMatch = local.match(/\/user_guides\/schemas\/([^/]+)\//);
+  if (schemaMatch) return `schema:${schemaMatch[1]}`;
+  if (local.includes("/user_guides/schemas/")) return "schema:index";
+  if (local.includes("/user_guides/")) return "user-guide";
+  if (base.startsWith("tut_")) return "tutorial";
+  if (base.startsWith("spec")) return "spec";
+  if (base.startsWith("wp")) return "proposal";
+  if (base.startsWith("plugins")) return "plugins";
+  if (["contributing_to_usd.html", "contributors.html", "dl_downloads.html", "genindex.html", "maxperf.html", "press_opensource_announce.html", "press_opensource_release.html", "ref_performance_metrics.html", "release_schedule.html", "search.html", "usd_products.html", "usdfaq.html"].includes(base)) {
+    return "support";
+  }
+  return "release";
+}
+
+function pagesByOutputs(pages, outputs) {
+  const byOutput = new Map(pages.map((page) => [page.local_output, page]));
+  return outputs.map((output) => byOutput.get(output)).filter(Boolean);
+}
+
+function nearestPages(current, pages, radius = 5) {
+  const index = pages.findIndex((page) => page.local_output === current.local_output);
+  if (index < 0) return [];
+  return pages.slice(Math.max(0, index - radius), index).concat(pages.slice(index + 1, index + 1 + radius));
+}
+
+function buildReleaseRelatedPages(current, pages, areaPages) {
+  const category = releaseCategory(current);
+  if (category === "openexec") {
+    return pagesByOutputs(pages, [
+      "full_site/api/md_pxr_exec_exec_usd_docs_overview.html",
+      "full_site/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html",
+      "full_site/api/md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html",
+      "full_site/api/page__execution__system__design.html",
+      "full_site/api/md_pxr_exec_exec_usd__r_e_a_d_m_e.html",
+      "full_site/api/md_pxr_exec_vdf__r_e_a_d_m_e.html",
+    ]);
+  }
+  if (category === "schema:index") {
+    return pagesByOutputs(pages, [
+      "full_site/release/user_guides/schemas/usdLux/overview.html",
+      "full_site/release/user_guides/schemas/usdLux/usdLux_toc.html",
+      "full_site/release/user_guides/schemas/usdRender/overview.html",
+      "full_site/release/user_guides/schemas/usdRender/usdRender_toc.html",
+      "full_site/release/user_guides/schemas/usdMedia/overview.html",
+      "full_site/release/user_guides/schemas/usdMedia/usdMedia_toc.html",
+      "full_site/release/user_guides/schemas/usdUI/overview.html",
+      "full_site/release/user_guides/schemas/usdUI/usdUI_toc.html",
+      "full_site/release/user_guides/schemas/usdVol/overview.html",
+      "full_site/release/user_guides/schemas/usdVol/usdVol_toc.html",
+    ]);
+  }
+  const currentDir = path.posix.dirname(current.local_output);
+  const sameDir = pages.filter((page) => page.area === "release" && path.posix.dirname(page.local_output) === currentDir);
+  if (category.startsWith("schema:")) {
+    const schemaPriority = [
+      "overview.html",
+      "usdLux_toc.html",
+      "usdRender_toc.html",
+      "usdMedia_toc.html",
+      "usdUI_toc.html",
+      "usdVol_toc.html",
       "LightAPI.html",
       "LightFilter.html",
       "PortalLight.html",
       "RectLight.html",
-      "MeshLightAPI.html",
-      "VolumeLightAPI.html",
-      "GeometryLight.html",
-      "PluginLight.html",
-      "BoundableLightBase.html",
-      "NonboundableLightBase.html",
+      "Volume.html",
+      "VolumeFieldBase.html",
+      "RenderSettings.html",
+      "AssetPreviewsAPI.html",
+      "AccessibilityAPI.html",
     ];
-    const priority = currentDir.endsWith("/usdLux")
-      ? usdLuxPriorityNames
-        .map((name) => sameDir.find((page) => path.posix.basename(page.local_output) === name))
-        .filter(Boolean)
-      : [];
-    const preferred = [
-      ...priority,
-      ...sameDir.filter((page) => page.status === "bilingual_complete"),
-      ...sameDir.filter((page) => page.status !== "bilingual_complete"),
-      ...areaPages,
-    ];
-    return uniquePages(preferred);
+    const priority = schemaPriority.map((name) => sameDir.find((page) => path.posix.basename(page.local_output) === name)).filter(Boolean);
+    return uniquePages([...priority, ...sameDir]);
   }
+  if (category === "user-guide") {
+    return uniquePages([
+      ...sameDir,
+      ...pagesByOutputs(pages, [
+        "full_site/release/user_guides/schemas/index.html",
+        "full_site/release/tut_usd_tutorials.html",
+        "full_site/release/usdfaq.html",
+      ]),
+    ]);
+  }
+  if (category === "tutorial") {
+    return uniquePages([
+      ...pagesByOutputs(pages, ["full_site/release/tut_usd_tutorials.html"]),
+      ...areaPages.filter((page) => path.posix.basename(page.local_output).startsWith("tut_")),
+      ...pagesByOutputs(pages, ["full_site/release/usdfaq.html"]),
+    ]);
+  }
+  if (category === "spec" || category === "proposal") {
+    return uniquePages(areaPages.filter((page) => {
+      const base = path.posix.basename(page.local_output);
+      return base.startsWith("spec") || base.startsWith("wp");
+    }));
+  }
+  if (category === "plugins") {
+    return pagesByOutputs(pages, [
+      "full_site/release/plugins.html",
+      "full_site/release/plugins_alembic.html",
+      "full_site/release/plugins_renderman.html",
+      "full_site/release/dl_downloads.html",
+      "full_site/release/contributing_to_usd.html",
+    ]);
+  }
+  if (category === "support") {
+    return pagesByOutputs(pages, [
+      "full_site/release/usdfaq.html",
+      "full_site/release/usd_products.html",
+      "full_site/release/dl_downloads.html",
+      "full_site/release/release_schedule.html",
+      "full_site/release/ref_performance_metrics.html",
+      "full_site/release/maxperf.html",
+      "full_site/release/contributing_to_usd.html",
+      "full_site/release/contributors.html",
+      "full_site/release/genindex.html",
+      "full_site/release/search.html",
+    ]);
+  }
+  return nearestPages(current, areaPages, 5);
+}
+
+function buildApiRelatedPages(current, pages, areaPages) {
+  const openExecDocs = [
+    "full_site/api/md_pxr_exec_exec_usd_docs_overview.html",
+    "full_site/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html",
+    "full_site/api/md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html",
+    "full_site/api/page__execution__system__design.html",
+    "full_site/api/md_pxr_exec_exec_usd__r_e_a_d_m_e.html",
+    "full_site/api/md_pxr_exec_vdf__r_e_a_d_m_e.html",
+  ];
+  if (openExecDocs.includes(current.local_output)) return pagesByOutputs(pages, openExecDocs);
+
+  const moduleMap = {
+    "usd_render_page_front": ["site/usd_page_front.html", "full_site/api/usd_geom_page_front.html", "full_site/api/hd_page_front.html", "full_site/api/hdx_page_front.html", "full_site/api/usd_vol_page_front.html", "full_site/release/user_guides/schemas/usdRender/overview.html"],
+    "usd_vol_page_front": ["full_site/api/usd_geom_page_front.html", "full_site/api/usd_render_page_front.html", "full_site/api/hd_page_front.html", "full_site/release/user_guides/schemas/usdVol/overview.html", "full_site/release/user_guides/schemas/usdVol/Volume.html"],
+    "usd_ri_page_front": ["full_site/api/usd_render_page_front.html", "full_site/api/usd_shade_page_front.html", "full_site/api/usd_lux_page_front.html", "full_site/api/hd_page_front.html"],
+    "usd_media_page_front": ["site/usd_page_front.html", "full_site/api/usd_geom_page_front.html", "full_site/api/usd_render_page_front.html", "full_site/api/usd_u_i_page_front.html", "full_site/release/user_guides/schemas/usdMedia/overview.html"],
+    "usd_u_i_page_front": ["site/usd_page_front.html", "full_site/api/usd_geom_page_front.html", "full_site/api/usd_media_page_front.html", "full_site/api/usd_utils_page_front.html", "full_site/release/user_guides/schemas/usdUI/overview.html"],
+    "usd_shaders_page_front": ["full_site/api/usd_shade_page_front.html", "full_site/api/sdr_page_front.html", "full_site/api/usd_mtlx_page_front.html", "full_site/api/usd_render_page_front.html", "full_site/release/spec_usdpreviewsurface.html"],
+    "gf_page_front": ["full_site/api/vt_page_front.html", "full_site/api/sdf_page_front.html", "full_site/api/usd_geom_page_front.html", "full_site/api/hd_page_front.html"],
+    "vt_page_front": ["full_site/api/gf_page_front.html", "full_site/api/sdf_page_front.html", "site/usd_page_front.html", "full_site/api/usd_geom_page_front.html"],
+    "work_page_front": ["full_site/api/trace_page_front.html", "full_site/api/tf_page_front.html", "full_site/api/hd_page_front.html"],
+    "trace_page_front": ["full_site/api/work_page_front.html", "full_site/api/tf_page_front.html", "full_site/api/hd_page_front.html", "full_site/api/hdx_page_front.html"],
+  };
+  const base = path.posix.basename(current.local_output, ".html");
+  if (moduleMap[base]) return pagesByOutputs(pages, moduleMap[base]);
+
   const context = apiContextKey(current);
   const sameContext = pages.filter((page) => page.area === "api" && apiContextKey(page) === context);
-  const preferred = [
+  const frontPages = pages.filter((page) => page.area === "api" && path.posix.basename(page.local_output, ".html").endsWith("_page_front"));
+  return uniquePages([
     ...sameContext.filter((page) => page.status === "bilingual_complete"),
     ...sameContext.filter((page) => page.status !== "bilingual_complete"),
-    ...areaPages,
-  ];
-  return uniquePages(preferred);
+    ...nearestPages(current, areaPages, 4),
+    ...frontPages,
+  ]);
+}
+
+function buildRelatedPages(current, pages, areaPages) {
+  if (current.area === "release") {
+    return buildReleaseRelatedPages(current, pages, areaPages);
+  }
+  return buildApiRelatedPages(current, pages, areaPages);
 }
 
 function navCss() {
@@ -245,11 +421,14 @@ function inject(html, navHtml) {
 }
 
 const inventory = await readJson("reports/all_pages_inventory.json");
-const pages = inventory.pages
-  .filter((page) => page.local_output?.startsWith("full_site/") && page.local_exists !== false)
+const linkPages = inventory.pages
+  .filter((page) => page.local_output && page.local_exists !== false)
   .map((page, index) => ({ ...page, index }));
-const releasePages = pages.filter((page) => page.area === "release");
-const apiPages = pages.filter((page) => page.area === "api");
+const pages = linkPages.filter((page) => page.local_output.startsWith("full_site/"));
+const releasePages = linkPages.filter((page) => page.area === "release");
+const apiPages = linkPages.filter((page) => page.area === "api");
+const processedReleasePages = pages.filter((page) => page.area === "release");
+const processedApiPages = pages.filter((page) => page.area === "api");
 const areaMap = { release: releasePages, api: apiPages };
 
 let filesChanged = 0;
@@ -260,7 +439,7 @@ for (const page of pages) {
   const fullPath = path.join(root, ...page.local_output.split("/"));
   try {
     const original = await readFile(fullPath, "utf8");
-    const navHtml = buildNav(page, pages, areaMap[page.area] || pages);
+    const navHtml = buildNav(page, linkPages, areaMap[page.area] || linkPages);
     const next = inject(original, navHtml);
     pagesProcessed += 1;
     if (next !== original) {
@@ -279,8 +458,8 @@ const report = {
   counts: {
     pages_processed: pagesProcessed,
     files_changed: filesChanged,
-    release_pages_processed: releasePages.length,
-    api_pages_processed: apiPages.length,
+    release_pages_processed: processedReleasePages.length,
+    api_pages_processed: processedApiPages.length,
     failures: failures.length,
   },
   failures,

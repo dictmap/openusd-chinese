@@ -1,6 +1,6 @@
 # OpenUSD Audit Index
 
-Generated: 2026-06-08T20:50:42.429Z
+Generated: 2026-06-08T21:19:00.639Z
 
 Scope:
 
@@ -10,11 +10,11 @@ Scope:
 Result:
 
 - Passed: true
-- Audit entries: 19
-- Audit scripts present: 19
-- Audit JSON reports present: 19
-- Audit Markdown reports present: 19
-- Audit reports passed: 19
+- Audit entries: 20
+- Audit scripts present: 20
+- Audit JSON reports present: 20
+- Audit Markdown reports present: 20
+- Audit reports passed: 20
 - Validation checks: 311
 - Validation failures: 0
 - Index checks: 7
@@ -32,6 +32,7 @@ Result:
 | term_consistency | true | `reports/term_consistency_audit.json` | `reports/term_consistency_audit.md` |
 | navigation_coverage | true | `reports/navigation_coverage_audit.json` | `reports/navigation_coverage_audit.md` |
 | reading_flow_navigation | true | `reports/reading_flow_navigation_audit.json` | `reports/reading_flow_navigation_audit.md` |
+| click_path_order | true | `reports/click_path_order_audit.json` | `reports/click_path_order_audit.md` |
 | source_provenance | true | `reports/source_provenance_audit.json` | `reports/source_provenance_audit.md` |
 | style_asset_contract | true | `reports/style_asset_contract_audit.json` | `reports/style_asset_contract_audit.md` |
 | scope_boundary | true | `reports/scope_boundary_audit.json` | `reports/scope_boundary_audit.md` |

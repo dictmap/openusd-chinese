@@ -1,0 +1,84 @@
+{
+  "generated_at": "2026-06-08T21:15:19.425Z",
+  "root": "C:\\Users\\robot\\Documents\\成长学习库\\openusd_api_cn_repro",
+  "round_type": "DefectRound",
+  "defect_id": "P1-click-order-reading-flow-consistency",
+  "purpose": "Audit semantic click order for completed OpenUSD bilingual pages. This checks that prev/next/related links are local, do not expose official URLs as reading-path text, and stay within the relevant release/API reading domain instead of random same-directory support pages.",
+  "counts": {
+    "completed_full_site_pages": 222,
+    "pages_checked": 222,
+    "passed_pages": 222,
+    "failed_pages": 0,
+    "samples": 7,
+    "samples_passed": 7,
+    "problem_counts": {}
+  },
+  "checks": [
+    {
+      "check": "click_path:all_completed_pages_pass",
+      "passed": true
+    },
+    {
+      "check": "click_path:samples_pass",
+      "passed": true
+    },
+    {
+      "check": "click_path:no_official_url_in_flow_text",
+      "passed": true
+    },
+    {
+      "check": "click_path:no_official_href_in_related_prev_next",
+      "passed": true
+    },
+    {
+      "check": "click_path:release_related_links_match_document_domain",
+      "passed": true
+    }
+  ],
+  "failed_pages": [],
+  "sample_paths": [
+    {
+      "local_output": "full_site/release/intro_to_openexec.html",
+      "title": "Introduction to OpenExec",
+      "passed": true,
+      "problems": []
+    },
+    {
+      "local_output": "full_site/release/wp_usdlux_for_geometry_lights.html",
+      "title": "Adapting UsdLux to Accommodate Geometry Lights",
+      "passed": true,
+      "problems": []
+    },
+    {
+      "local_output": "full_site/release/usdfaq.html",
+      "title": "FAQ",
+      "passed": true,
+      "problems": []
+    },
+    {
+      "local_output": "full_site/api/usd_render_page_front.html",
+      "title": "UsdRender: USD Render Schema",
+      "passed": true,
+      "problems": []
+    },
+    {
+      "local_output": "full_site/api/usd_vol_page_front.html",
+      "title": "UsdVol: USD Volume Schema",
+      "passed": true,
+      "problems": []
+    },
+    {
+      "local_output": "full_site/api/class_usd_attribute_limits.html",
+      "title": "https://openusd.org/release/api/class_usd_attribute_limits.html",
+      "passed": true,
+      "problems": []
+    },
+    {
+      "local_output": "full_site/api/struct_usd_physics_tokens_type.html",
+      "title": "UsdPhysicsTokensType Class Reference",
+      "passed": true,
+      "problems": []
+    }
+  ],
+  "passed": true
+}

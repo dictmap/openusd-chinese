@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-06-08T20:45:54.794Z",
-  "purpose": "第 452 轮 DefectRound 记录：修复 full_site/release/intro_to_openexec.html 与官方 Introduction to OpenExec 的 P1 source parity 和点击顺序缺陷；本轮不新增完成页计数。",
+  "generated_at": "2026-06-08T21:20:00.000Z",
+  "purpose": "第 453 轮 DefectRound 记录：修复 P1-click-order-reading-flow-consistency；本轮不新增完成页计数。",
   "last_completed_round": {
-    "round": 452,
+    "round": 453,
     "round_type": "DefectRound",
-    "defect_id": "P1-release-intro-openexec-source-parity",
-    "target": "full_site/release/intro_to_openexec.html",
+    "defect_id": "P1-click-order-reading-flow-consistency",
+    "target": "completed full_site release/API reading-flow navigation",
     "commit_sha": null,
     "previous_good_bilingual": 230
   },
@@ -25,57 +25,48 @@
   },
   "problems": [
     {
-      "id": "P1-release-intro-openexec-source-parity",
-      "severity": "P1",
-      "summary": "full_site/release/intro_to_openexec.html 曾被标为完成页，但未按官方 Introduction to OpenExec 正文和代码示例做 section-level source parity。",
-      "evidence": "修复后页面按 Background、Introducing OpenExec、Illustrative Example、What OpenExec Is Not、New concepts、Computations、Built-in/Plugin Computations、Computation Input Parameters、Computation Callbacks、Computation Registration、Client API、Requesting Values、Receiving Notification About Invalidation、Conclusion 顺序展开，并保留 CarDoorFrame、CarDoorRotator、ComputeTransformFromOpenness、MyCallback、VdfContext、EXEC_REGISTER_COMPUTATIONS_FOR_SCHEMA、ExecUsdSystem、ExecUsdRequest、ExecUsdCacheView、computeLocalToWorldTransform。",
-      "required_action": "本轮完成后运行 source parity、click-path、reading-flow、local link、markdown、validation 全链；good_bilingual/release_complete/api_complete 不得新增。"
-    },
-    {
       "id": "P1-click-order-reading-flow-consistency",
       "severity": "P1",
-      "summary": "用户反馈页面按点击顺序一会好一会坏，说明仅靠 good_bilingual/navigation 计数不足。",
-      "evidence": "本轮将 intro_to_openexec.html 的侧栏和正文顺序收敛到：总入口 -> Release 本地入口 -> Introduction to OpenExec -> Background -> Introducing OpenExec -> examples/concepts/client API -> 本地 OpenExec API/教程 -> 显式官方外跳。",
-      "required_action": "下一轮优先执行 ClickPathAuditRound 或 DefectRound，抽查并修复真实点击路径中的 nav/related/prev-next 混乱；click-path 审计绿了再恢复 PromotionRound。"
+      "summary": "用户反馈本地中文站按点击顺序阅读时一会好一会坏；旧 reading-flow 审计只检查侧栏、breadcrumb、入口和资产存在，不能发现 related/prev-next 随机同目录列表、官方 URL 文本泄漏和跨域点击路径混乱。",
+      "evidence": "新增 click_path_order 审计后，修复前暴露 139 个完成页失败、574 处官方 URL 作为阅读路径文字、311 处 release related 跨错文档域；修复共享注入器并重注入后 click_path_order_audit 通过，222/222 完成 full_site 页面通过，样本 7/7 通过。",
+      "required_action": "后续恢复 PromotionRound 前必须保持 click_path_order_audit passed；若 related/prev-next 再出现官方 URL 文本或跨域随机链接，先做 DefectRound。"
+    },
+    {
+      "id": "P1-release-intro-openexec-source-parity",
+      "severity": "P1",
+      "summary": "第 452 轮已修复 Introduction to OpenExec source parity，本轮继续保留其点击顺序为总入口 -> Release 本地入口 -> #background -> OpenExec API 相邻页 -> 显式官方外跳。",
+      "evidence": "intro_to_openexec.html 在新 click-path 审计样本中通过，related 只指向 OpenExec Overview、Tutorial 1、Tutorial 2、System Design、ExecUsd、Vdf。",
+      "required_action": "保持该页面作为 click-path 基准样例。"
     },
     {
       "id": "P0-api-draft-backlog",
       "severity": "P0",
-      "summary": "当前 good_bilingual=230/406，API complete=104，仍有 176 个可检查草稿，不是完整翻译。",
-      "evidence": "第 452 轮是 DefectRound，不新增页面完成数；release 范围保持 126/126 complete。",
-      "required_action": "在 P1 click-path 缺陷闭环前，不要恢复新 API 页 PromotionRound。"
+      "summary": "当前 good_bilingual=230/406，仍有 176 个可检查草稿，不是完整翻译。",
+      "evidence": "第 453 轮只修复 P1 点击路径缺陷，不新增页面完成数。",
+      "required_action": "click-path 审计绿后，下一轮可恢复 PromotionRound/DomainSprintRound。"
     },
     {
       "id": "P1-markdown-record-encoding",
       "severity": "P1",
       "summary": "Markdown 编码守卫继续作为硬门槛。",
-      "evidence": "work.md、reports/iteration_report.md、reports/current_problem_audit.md、reports/bilingual_completion_promotions.md 必须无 repeated question mark damage、replacement character 和 UTF-8 BOM。",
+      "evidence": "work.md、reports/iteration_report.md、reports/current_problem_audit.md/json 必须无 repeated question mark damage、replacement character 和 UTF-8 BOM。",
       "required_action": "若 audit_openusd_markdown_encoding.mjs 失败，先做 ConsistencyRound。"
     }
   ],
   "promoted_pages": [],
-  "not_promoted_pages": [
-    {
-      "round": 452,
-      "round_type": "DefectRound",
-      "output": "full_site/api/struct_usd_skel_tokens_type.html",
-      "reason": "监督紧急改派：第 452 轮不推进新 API 页，转入 P1-release-intro-openexec-source-parity DefectRound。"
-    }
-  ],
+  "not_promoted_pages": [],
   "fixed_defects": [
     {
-      "id": "P1-release-intro-openexec-source-parity",
-      "target": "full_site/release/intro_to_openexec.html",
-      "source_snapshot": "source/full_release/intro_to_openexec_source.html",
-      "source_parity_report": "reports/round_452_intro_openexec_source_parity.json",
-      "click_path_report": "reports/round_452_intro_openexec_click_path.json"
+      "id": "P1-click-order-reading-flow-consistency",
+      "target": "completed full_site release/API reading-flow navigation",
+      "audit_report": "reports/click_path_order_audit.json",
+      "generator": "scripts/inject_openusd_reading_flow_navigation.mjs"
     }
   ],
-  "source_parity_report": "reports/round_452_intro_openexec_source_parity.json",
-  "click_path_report": "reports/round_452_intro_openexec_click_path.json",
+  "click_path_order_report": "reports/click_path_order_audit.json",
+  "reading_flow_report": "reports/reading_flow_navigation_audit.json",
   "next_actions": [
-    "下一轮优先执行 ClickPathAuditRound 或 DefectRound，缺陷 id=P1-click-order-reading-flow-consistency，目标是按用户真实点击路径抽查并修复 release/API 页面 nav/related/prev-next 混乱。",
-    "只有 click-path 审计通过后，才恢复 PromotionRound。"
+    "click-path 审计已通过；下一轮可在重新核对 git/report/validation/markdown/reading-flow 状态后恢复 PromotionRound 或按监督员指定继续缺陷修复。"
   ],
-  "next_action": "下一轮建议 ClickPathAuditRound/DefectRound：P1-click-order-reading-flow-consistency。"
+  "next_action": "下一轮可恢复 PromotionRound，但必须先确认 click_path_order_audit、reading_flow、validation、markdown 全部 passed。"
 }

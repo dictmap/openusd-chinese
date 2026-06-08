@@ -22,7 +22,7 @@
     ul{padding-left:22px}
     li{margin:8px 0}
     code{font-family:"Cascadia Mono","Consolas",monospace}
-    body.openusd-has-reading-flow{padding-left:292px}
+    body.{padding-left:292px}
     .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#fff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
     .openusd-reading-flow-nav h2{font-size:17px;margin:0 0 10px;color:#17202a}
     .openusd-reading-flow-nav h3{font-size:13px;margin:16px 0 8px;color:#516071;text-transform:none;letter-spacing:0}
@@ -35,6 +35,25 @@
     .openusd-reading-flow-breadcrumb{max-width:1120px;margin:14px auto 0;padding:0 20px;color:#d7e3f4;font-size:14px;overflow-wrap:anywhere}
     .openusd-reading-flow-breadcrumb a{color:#fff}
     @media (max-width:920px){
+      body.{padding-left:0}
+      .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
+      .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
+    }
+  </style>
+<style id="openusd-reading-flow-nav-style">
+    body.openusd-has-reading-flow{padding-left:292px}
+    .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
+    .openusd-reading-flow-nav h2{font-size:17px;margin:0 0 10px;color:#17202a}
+    .openusd-reading-flow-nav h3{font-size:13px;margin:16px 0 8px;color:#516071;text-transform:none;letter-spacing:0}
+    .openusd-reading-flow-nav ul,.openusd-reading-flow-nav ol{list-style:none;margin:0;padding:0}
+    .openusd-reading-flow-nav li{margin:7px 0;line-height:1.35}
+    .openusd-reading-flow-nav a{color:#1c5d99;text-decoration:none;overflow-wrap:anywhere}
+    .openusd-reading-flow-nav a:hover{text-decoration:underline}
+    .openusd-reading-flow-status{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:999px;background:#edf2f7;color:#516071;font-size:11px}
+    .openusd-reading-flow-nav .official-link{color:#8a4b11}
+    .openusd-reading-flow-breadcrumb{max-width:1100px;margin:14px auto 0;padding:0 20px;color:#d7e3f4;font-size:14px;overflow-wrap:anywhere}
+    .openusd-reading-flow-breadcrumb a{color:#ffffff}
+    @media (max-width: 920px){
       body.openusd-has-reading-flow{padding-left:0}
       .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
       .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
@@ -43,6 +62,17 @@
 </head>
 <body class="openusd-has-reading-flow" data-cn-status="bilingual_complete" data-cn-round="443" data-cn-scope="api" data-cn-review-ready="true">
 
+
+<header>
+  <h1>UsdDraco : Draco File Format Plugin</h1>
+  <div class="meta">第 443 轮 PromotionRound：UsdDraco 模块入口完成。源页：<code>source/full_api/usddraco_page_front_source.html</code>；官方页：<code>https://openusd.org/release/api/usddraco_page_front.html</code></div>
+  <div class="navlinks">
+    <a href="../../openusd_bilingual_final.html">总入口</a>
+    <a href="../../site/index.html">API 本地入口</a>
+    <a href="../../source/full_api/usddraco_page_front_source.html">本地 source snapshot</a>
+    <a href="https://openusd.org/release/api/usddraco_page_front.html">Open official page</a>
+  </div>
+</header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
   <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
@@ -70,25 +100,25 @@
       </ol>
     </section>
     <section>
-      <h3>文件格式与资产解析</h3>
+      <h3>当前 API 上下文 / API Context</h3>
       <ul>
-        <li><a data-reading-flow="related" href="sdf_page_front.html">Sdf layer 与 file format</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="ar_page_front.html">Ar asset resolver</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="plug_page_front.html">Plug 插件注册</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="usd_u_i_page_front.html">UsdUI: USD UI Schemas</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="usd_utils_page_front.html">UsdUtils utility module</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="usd_vol_page_front.html">UsdVol: USD Volume Schema</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="usdabc_page_front.html">UsdAbc : Alembic File Format Plugin</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="var_8h_source.html">源码页面草稿：var.h / var.h</a><span class="openusd-reading-flow-status">draft</span></li>
+<li><a data-reading-flow="related" href="vt_page_front.html">Vt : Value Types</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="work_page_front.html">Work : Multi-threaded Dispatch</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="ar_page_front.html">Ar asset resolution module</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="arch_page_front.html">Arch system utilities module</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="gf_page_front.html">Gf : Graphics Foundations</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
-      <h3>几何与相邻格式</h3>
+      <h3>上一页/下一页 / Previous/Next</h3>
       <ul>
-        <li><a data-reading-flow="related" href="usd_geom_page_front.html">UsdGeom 几何语义</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="usdabc_page_front.html">UsdAbc Alembic 插件</a><span class="openusd-reading-flow-status">complete</span></li>
-      </ul>
-    </section>
-    <section>
-      <h3>上一页 / 下一页</h3>
-      <ul>
-        <li><a data-reading-flow="prev" href="usdabc_page_front.html">上一页 / Previous: UsdAbc</a></li>
-        <li><a data-reading-flow="next" href="sdf_page_front.html">下一页 / Next: Sdf</a></li>
+        <li><a data-reading-flow="prev" href="usdabc_page_front.html">上一页 / Previous: UsdAbc : Alembic File Format Plugin</a></li>
+<li><a data-reading-flow="next" href="var_8h_source.html">下一页 / Next: 源码页面草稿：var.h / var.h</a></li>
       </ul>
     </section>
     <section>
@@ -100,16 +130,7 @@
   </div>
 </aside>
 <!-- openusd-reading-flow-nav:end -->
-<header>
-  <h1>UsdDraco : Draco File Format Plugin</h1>
-  <div class="meta">第 443 轮 PromotionRound：UsdDraco 模块入口完成。源页：<code>source/full_api/usddraco_page_front_source.html</code>；官方页：<code>https://openusd.org/release/api/usddraco_page_front.html</code></div>
-  <div class="navlinks">
-    <a href="../../openusd_bilingual_final.html">总入口</a>
-    <a href="../../site/index.html">API 本地入口</a>
-    <a href="../../source/full_api/usddraco_page_front_source.html">本地 source snapshot</a>
-    <a href="https://openusd.org/release/api/usddraco_page_front.html">Open official page</a>
-  </div>
-</header>
+
 <main>
   <section data-cn-complete="overview">
     <span class="status">bilingual_complete / review_ready_zh</span>

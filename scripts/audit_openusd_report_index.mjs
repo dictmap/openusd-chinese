@@ -98,6 +98,15 @@ const auditChain = [
     required_count_keys: ["completed_full_site_pages", "pages_with_side_nav", "pages_with_breadcrumb", "sample_paths_passed", "official_leak_count"],
   },
   {
+    key: "click_path_order",
+    command: "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_click_path_order.mjs",
+    script: "scripts/audit_openusd_click_path_order.mjs",
+    json: "reports/click_path_order_audit.json",
+    md: "reports/click_path_order_audit.md",
+    purpose: "Checks semantic click-path order: prev/next/related links must be local, avoid official URL text, and stay within the relevant release/API reading domain.",
+    required_count_keys: ["completed_full_site_pages", "pages_checked", "passed_pages", "failed_pages", "samples_passed"],
+  },
+  {
     key: "source_provenance",
     command: "node .\\openusd_api_cn_repro\\scripts\\audit_openusd_source_provenance.mjs",
     script: "scripts/audit_openusd_source_provenance.mjs",

@@ -1,12 +1,12 @@
 # OpenUSD Iteration Report
 
-## 第 452 轮摘要
+## 第 453 轮摘要
 
 - round 类型：DefectRound
 - 阶段：S3
-- 缺陷 id：`P1-release-intro-openexec-source-parity`
-- 目标：`full_site/release/intro_to_openexec.html`
-- 结果：修复完成页 source parity 和用户点击顺序缺陷；不新增完成页计数。
+- 缺陷 id：`P1-click-order-reading-flow-consistency`
+- 目标：按用户真实点击顺序修复 completed full_site 页面的 nav/related/prev-next 混乱。
+- 结果：新增 click-path 语义审计并修复共享 reading-flow 注入器；修复后 222/222 completed full_site pages 和 7/7 样本路径通过。
 
 ## 真实计数
 
@@ -22,10 +22,11 @@
 
 ## 修复证据
 
-- source parity：`reports/round_452_intro_openexec_source_parity.json`
-- click-path report：`reports/round_452_intro_openexec_click_path.json`
-- validation、markdown_encoding、reading_flow、local_link、full_draft_preview 将在提交前全部重跑。
+- click-path order：`reports/click_path_order_audit.json`
+- reading-flow navigation：`reports/reading_flow_navigation_audit.json`
+- injection report：`reports/reading_flow_navigation_injection.json`
+- report index 已纳入 `click_path_order` 审计。
 
 ## 下一步
 
-下一轮建议 `ClickPathAuditRound` / `DefectRound`，缺陷 id=`P1-click-order-reading-flow-consistency`；先抽查并修复真实点击路径中的 nav/related/prev-next 混乱，再恢复 PromotionRound。
+click-path 审计已绿；恢复 PromotionRound 前仍必须重新确认 git/report/validation/markdown/reading-flow/local-link 状态干净一致。
