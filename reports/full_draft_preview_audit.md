@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-08T01:55:07.699Z
+Generated: 2026-06-08T02:15:18.199Z
 
-Transient base URL: `http://127.0.0.1:60180/`
+Transient base URL: `http://127.0.0.1:63088/`
 
 Result:
 
 - Passed: true
-- Draft pages: 282
-- Pages checked: 282
-- Passed pages: 282
+- Draft pages: 274
+- Pages checked: 274
+- Passed pages: 274
 - Failed pages: 0
-- Final HTML links: 282
-- Local assets checked: 282
+- Final HTML links: 274
+- Local assets checked: 274
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -252,15 +252,7 @@ Result:
 | true | full_site/release/user_guides/schemas/index.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/overview.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdLux/usdLux_toc.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdUI/AccessibilityAPI.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdUI/AttributeHints.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdUI/Backdrop.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdUI/NodeGraphNodeAPI.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdUI/ObjectHints.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdUI/overview.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdUI/PrimHints.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdUI/PropertyHints.html | 200 | true | 0 | 0 |
-| true | full_site/release/user_guides/schemas/usdUI/SceneGraphPrimAPI.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdUI/usdUI_toc.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdVol/Field3DAsset.html | 200 | true | 0 | 0 |
 | true | full_site/release/user_guides/schemas/usdVol/FieldAsset.html | 200 | true | 0 | 0 |

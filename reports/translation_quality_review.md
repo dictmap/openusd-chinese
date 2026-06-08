@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-08T01:54:18.858Z
+Generated: 2026-06-08T02:14:42.712Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 282
-- bilingual_complete: 124
+- bilingual_draft: 274
+- bilingual_complete: 132
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 271
-- good_bilingual: 124
+- draft_needs_translation: 263
+- good_bilingual: 132
 
 ## Current Focus Batch
 
@@ -423,15 +423,15 @@ Generated: 2026-06-08T01:54:18.858Z
 | 357 | good_bilingual | bilingual_complete | 1662 | 41/14 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderSettingsBase.html` |
 | 358 | good_bilingual | bilingual_complete | 1319 | 36/9 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/RenderVar.html` |
 | 359 | good_bilingual | bilingual_complete | 1544 | 40/11 | 0 | 0 | `full_site/release/user_guides/schemas/usdRender/usdRender_toc.html` |
-| 360 | draft_needs_translation | bilingual_draft | 518 | 24/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/AccessibilityAPI.html` |
-| 361 | draft_needs_translation | bilingual_draft | 545 | 24/18 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/AttributeHints.html` |
-| 362 | draft_needs_translation | bilingual_draft | 552 | 24/17 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/Backdrop.html` |
-| 363 | draft_needs_translation | bilingual_draft | 909 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/NodeGraphNodeAPI.html` |
-| 364 | draft_needs_translation | bilingual_draft | 747 | 36/24 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/ObjectHints.html` |
+| 360 | good_bilingual | bilingual_complete | 946 | 34/8 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/AccessibilityAPI.html` |
+| 361 | good_bilingual | bilingual_complete | 673 | 33/7 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/AttributeHints.html` |
+| 362 | good_bilingual | bilingual_complete | 768 | 34/8 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/Backdrop.html` |
+| 363 | good_bilingual | bilingual_complete | 723 | 39/12 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/NodeGraphNodeAPI.html` |
+| 364 | good_bilingual | bilingual_complete | 666 | 34/8 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/ObjectHints.html` |
 | 365 | draft_needs_translation | bilingual_draft | 591 | 27/20 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/overview.html` |
-| 366 | draft_needs_translation | bilingual_draft | 744 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/PrimHints.html` |
-| 367 | draft_needs_translation | bilingual_draft | 735 | 36/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/PropertyHints.html` |
-| 368 | draft_needs_translation | bilingual_draft | 758 | 36/23 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/SceneGraphPrimAPI.html` |
+| 366 | good_bilingual | bilingual_complete | 655 | 34/7 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/PrimHints.html` |
+| 367 | good_bilingual | bilingual_complete | 664 | 35/7 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/PropertyHints.html` |
+| 368 | good_bilingual | bilingual_complete | 674 | 33/7 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/SceneGraphPrimAPI.html` |
 | 369 | draft_needs_translation | bilingual_draft | 538 | 24/16 | 0 | 0 | `full_site/release/user_guides/schemas/usdUI/usdUI_toc.html` |
 | 370 | draft_needs_translation | bilingual_draft | 825 | 36/24 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/Field3DAsset.html` |
 | 371 | draft_needs_translation | bilingual_draft | 425 | 27/25 | 0 | 0 | `full_site/release/user_guides/schemas/usdVol/FieldAsset.html` |

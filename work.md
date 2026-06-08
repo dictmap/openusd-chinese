@@ -3,35 +3,35 @@
 ## 当前真实状态
 
 - 全量页面：406
-- 完整双语 / good_bilingual：124
-- 严格中文可读 / review_ready_zh：61
+- 完整双语 / good_bilingual：132
+- 严格中文可读 / review_ready_zh：69
 - API complete：72
-- Release complete：52
-- 未完整翻译草稿 / bilingual_draft：282
-- draft_needs_translation：271
+- Release complete：60
+- 未完整翻译草稿 / bilingual_draft：274
+- draft_needs_translation：263
 - draft_template_only：11
 - pending_full_scope：0
-- promotion manifest：116 项
+- promotion manifest：124 项
 - 总验证：passed=true，failed_check_count=0，required_check_count=311
 
 说明：剩余 `bilingual_draft` 是可检查草稿，不是完整翻译。API 名、类名、函数名、token、代码、属性名和链接会保留英文；真正需要治理的是草稿页和完成页里仍主要依赖英文的中文主阅读路径。
 
-## 第 407 轮：DomainSprintRound
+## 第 408 轮：DomainSprintRound
 
 - 轮次性质：流程或一致性修复，不晋级新页面。
-- 轮次目的：Round 407 DomainSprintRound：usdMedia 短页小批量冲刺。实际晋级 4 页：full_site/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html、full_site/release/user_guides/schemas/usdMedia/SpatialAudio.html、full_site/release/user_guides/schemas/usdMedia/overview.html、full_site/release/user_guides/schemas/usdMedia/usdMedia_toc.html。本轮从 120 个 good_bilingual 增至 124；中文主阅读路径覆盖页面职责、官方 section、schema/property 分组、媒体关联边界、误读点、调试路径、相邻 usdMedia 类型关系，并保留 API 名、schema 名、token、属性名、代码、Doxygen 表格标签、链接语义和显式官方外跳。
+- 轮次目的：Round 408 DomainSprintRound：usdUI 短页小批量冲刺。实际晋级 8 页：full_site/release/user_guides/schemas/usdUI/AccessibilityAPI.html、full_site/release/user_guides/schemas/usdUI/AttributeHints.html、full_site/release/user_guides/schemas/usdUI/Backdrop.html、full_site/release/user_guides/schemas/usdUI/NodeGraphNodeAPI.html、full_site/release/user_guides/schemas/usdUI/ObjectHints.html、full_site/release/user_guides/schemas/usdUI/PrimHints.html、full_site/release/user_guides/schemas/usdUI/PropertyHints.html、full_site/release/user_guides/schemas/usdUI/SceneGraphPrimAPI.html。本轮从 124 个 good_bilingual 增至 132；中文主阅读路径覆盖页面职责、官方 section、UI/schema/property 分组、节点图或 hint 边界、误读点、调试路径、相邻 usdUI 类型关系，并保留 API 名、schema 名、token、属性名、代码、Doxygen 表格标签、链接语义和显式官方外跳。
 - 本轮目标：Continue release/user-guide promotion only if the target pages can become good_bilingual; otherwise stop and report the blocker.
 - 官方页面：不适用
-- 完成数状态：good_bilingual=124；review_ready_zh=61。
+- 完成数状态：good_bilingual=132；review_ready_zh=69。
 - 固定审计：`translation_quality_review.json`、`english_debt_audit.json`、`all_pages_inventory.json`、`validation_report.json` 已重建。
 
 ## English Debt 审计结果
 
-- good_bilingual：124
-- review_ready_zh：61
+- good_bilingual：132
+- review_ready_zh：69
 - review_needs_zh_debt：63
 - API complete / review_ready_zh：72 / 12
-- Release complete / review_ready_zh：52 / 49
+- Release complete / review_ready_zh：60 / 57
 
 ## 验证结果
 

@@ -1,6 +1,6 @@
 # OpenUSD 完整双语晋级清单
 
-Generated: 2026-06-08T01:55:03.379Z
+Generated: 2026-06-08T02:15:13.933Z
 
 这份清单只记录已经从 `bilingual_draft` 晋级为 `bilingual_complete` 的页面。它是 `scripts/discover_openusd_all_pages.mjs` 识别 promoted complete 页面的审计来源，不等同于把草稿页改一个状态。
 
@@ -16,6 +16,14 @@ Generated: 2026-06-08T01:55:03.379Z
 
 | ID | 本地输出 | 官方页面 | 状态 |
 | --- | --- | --- | --- |
+| `round-408-release-usdUI-AccessibilityAPI` | `full_site/release/user_guides/schemas/usdUI/AccessibilityAPI.html` | `https://openusd.org/release/user_guides/schemas/usdUI/AccessibilityAPI.html` | bilingual_complete |
+| `round-408-release-usdUI-AttributeHints` | `full_site/release/user_guides/schemas/usdUI/AttributeHints.html` | `https://openusd.org/release/user_guides/schemas/usdUI/AttributeHints.html` | bilingual_complete |
+| `round-408-release-usdUI-Backdrop` | `full_site/release/user_guides/schemas/usdUI/Backdrop.html` | `https://openusd.org/release/user_guides/schemas/usdUI/Backdrop.html` | bilingual_complete |
+| `round-408-release-usdUI-NodeGraphNodeAPI` | `full_site/release/user_guides/schemas/usdUI/NodeGraphNodeAPI.html` | `https://openusd.org/release/user_guides/schemas/usdUI/NodeGraphNodeAPI.html` | bilingual_complete |
+| `round-408-release-usdUI-ObjectHints` | `full_site/release/user_guides/schemas/usdUI/ObjectHints.html` | `https://openusd.org/release/user_guides/schemas/usdUI/ObjectHints.html` | bilingual_complete |
+| `round-408-release-usdUI-PrimHints` | `full_site/release/user_guides/schemas/usdUI/PrimHints.html` | `https://openusd.org/release/user_guides/schemas/usdUI/PrimHints.html` | bilingual_complete |
+| `round-408-release-usdUI-PropertyHints` | `full_site/release/user_guides/schemas/usdUI/PropertyHints.html` | `https://openusd.org/release/user_guides/schemas/usdUI/PropertyHints.html` | bilingual_complete |
+| `round-408-release-usdUI-SceneGraphPrimAPI` | `full_site/release/user_guides/schemas/usdUI/SceneGraphPrimAPI.html` | `https://openusd.org/release/user_guides/schemas/usdUI/SceneGraphPrimAPI.html` | bilingual_complete |
 | `round-407-release-usdMedia-AssetPreviewsAPI` | `full_site/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html` | `https://openusd.org/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html` | bilingual_complete |
 | `round-407-release-usdMedia-SpatialAudio` | `full_site/release/user_guides/schemas/usdMedia/SpatialAudio.html` | `https://openusd.org/release/user_guides/schemas/usdMedia/SpatialAudio.html` | bilingual_complete |
 | `round-407-release-usdMedia-overview` | `full_site/release/user_guides/schemas/usdMedia/overview.html` | `https://openusd.org/release/user_guides/schemas/usdMedia/overview.html` | bilingual_complete |
