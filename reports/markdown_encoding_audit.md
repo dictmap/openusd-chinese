@@ -1,6 +1,6 @@
 # Markdown Encoding Audit
 
-Generated: 2026-06-08T11:18:09.759Z
+Generated: 2026-06-08T11:41:26.862Z
 
 Result:
 
@@ -13,10 +13,10 @@ Result:
 
 | File | Passed | Has BOM | Question Runs | Replacement Chars | Mojibake Markers | Size |
 | --- | --- | --- | --- | --- | --- | --- |
-| `work.md` | true | false | 0 | 0 | 0 | 2087 |
-| `reports/iteration_report.md` | true | false | 0 | 0 | 0 | 1984 |
-| `reports/current_problem_audit.md` | true | false | 0 | 0 | 0 | 1798 |
-| `reports/bilingual_completion_promotions.md` | true | false | 0 | 0 | 0 | 38018 |
+| `work.md` | true | false | 0 | 0 | 0 | 2097 |
+| `reports/iteration_report.md` | true | false | 0 | 0 | 0 | 1991 |
+| `reports/current_problem_audit.md` | true | false | 0 | 0 | 0 | 1802 |
+| `reports/bilingual_completion_promotions.md` | true | false | 0 | 0 | 0 | 38188 |
 
 Policy:
 

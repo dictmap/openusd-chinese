@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-08T11:11:08.070Z
+Generated: 2026-06-08T11:41:20.132Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 199
-- bilingual_complete: 207
+- bilingual_draft: 198
+- bilingual_complete: 208
 
 ## Grade Counts
 
 - draft_template_only: 10
-- draft_needs_translation: 189
-- good_bilingual: 207
+- draft_needs_translation: 188
+- good_bilingual: 208
 
 ## Current Focus Batch
 
@@ -325,7 +325,7 @@ Generated: 2026-06-08T11:11:08.070Z
 | 259 | good_bilingual | bilingual_complete | 1678 | 62/54 | 0 | 0 | `full_site/api/usd_geom_page_front.html` |
 | 260 | draft_needs_translation | bilingual_draft | 475 | 26/18 | 0 | 0 | `full_site/api/usd_hydra_page_front.html` |
 | 261 | good_bilingual | bilingual_complete | 1664 | 56/48 | 0 | 0 | `full_site/api/usd_lux_page_front.html` |
-| 262 | draft_needs_translation | bilingual_draft | 583 | 26/18 | 0 | 0 | `full_site/api/usd_media_page_front.html` |
+| 262 | good_bilingual | bilingual_complete | 929 | 38/38 | 0 | 0 | `full_site/api/usd_media_page_front.html` |
 | 263 | good_bilingual | bilingual_complete | 1190 | 37/37 | 0 | 0 | `full_site/api/usd_mtlx_page_front.html` |
 | 264 | good_bilingual | bilingual_complete | 644 | 38/92 | 0 | 0 | `site/usd_page_front.html` |
 | 265 | good_bilingual | bilingual_complete | 578 | 54/54 | 0 | 0 | `full_site/api/usd_physics_page_front.html` |
