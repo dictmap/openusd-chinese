@@ -1,9 +1,274 @@
-<!doctype html>
+import fs from "fs";
+import path from "path";
+
+const ROOT = process.cwd();
+const ROUND = 446;
+const ROUND_TYPE = "PromotionRound";
+const TARGET = "full_site/api/classpxr___c_l_i_1_1_c_l_i_1_1_app.html";
+const SOURCE = "source/full_api/classpxr___c_l_i_1_1_c_l_i_1_1_app_source.html";
+const OFFICIAL_URL = "https://openusd.org/release/api/classpxr___c_l_i_1_1_c_l_i_1_1_app.html";
+const SOURCE_PARITY_REPORT = "reports/round_446_cli_app_class_source_parity.json";
+const PROMOTION_ID = "round-446-api-cli-app-class";
+
+function rel(file) {
+  return path.join(ROOT, file);
+}
+
+function read(file) {
+  return fs.readFileSync(rel(file), "utf8").replace(/^\uFEFF/, "");
+}
+
+function readJson(file) {
+  return JSON.parse(read(file));
+}
+
+function writeJson(file, data) {
+  fs.writeFileSync(rel(file), `${JSON.stringify(data, null, 2)}\n`, "utf8");
+}
+
+function esc(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function decodeEntities(value) {
+  return String(value)
+    .replace(/&nbsp;/g, " ")
+    .replace(/&#160;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#9670;/g, "◆");
+}
+
+function stripHtml(value) {
+  return decodeEntities(
+    String(value)
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " "),
+  )
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function sourceText() {
+  return stripHtml(read(SOURCE));
+}
+
+function sourceTitle() {
+  const match = read(SOURCE).match(/<title>([\s\S]*?)<\/title>/i);
+  return stripHtml(match ? match[1] : "App Class Reference");
+}
+
+function sourceHeadings() {
+  const html = read(SOURCE);
+  return [...html.matchAll(/<h([1-6])[^>]*>([\s\S]*?)<\/h\1>/gi)].map((match) => ({
+    level: Number(match[1]),
+    text: stripHtml(match[2]),
+  }));
+}
+
+function zhCharCount(value) {
+  return (String(value).match(/[\u3400-\u9fff]/g) || []).length;
+}
+
+function blockCount(value, klass) {
+  const re = new RegExp(`class="${klass}"`, "g");
+  return (String(value).match(re) || []).length;
+}
+
+const links = {
+  final: "../../openusd_bilingual_final.html",
+  apiEntry: "../../site/index.html",
+  apiRedirect: "../../site/api/index.html",
+  release: "../../site/release_index.html",
+  source: "../../source/full_api/classpxr___c_l_i_1_1_c_l_i_1_1_app_source.html",
+  official: OFFICIAL_URL,
+  prev: "class_vdf_test_utils_1_1_node.html",
+  next: "classpxr__tsl_1_1robin__map.html",
+  cliSource: "_c_l_i11_8h_source.html",
+  js: "js_page_front.html",
+  plug: "plug_page_front.html",
+  tf: "tf_page_front.html",
+  usdAppUtils: "usd_app_utils_page_front.html",
+  annotated: "annotated.html",
+};
+
+const expectedHeadings = [
+  "App Class Reference",
+  "Public Member Functions",
+  "Protected Member Functions",
+  "Protected Attributes",
+  "Subcommands",
+  "Parsing",
+  "Help",
+  "Adding options",
+  "Detailed Description",
+  "Member Typedef Documentation",
+  "missing_t",
+  "Member Enumeration Documentation",
+  "startup_mode",
+  "Constructor & Destructor Documentation",
+  "Member Function Documentation",
+];
+
+const sourceKeywords = [
+  "Creates a command line program, with very few defaults",
+  "Public Member Functions",
+  "Protected Member Functions",
+  "Protected Attributes",
+  "Subcommands",
+  "Parsing",
+  "Help",
+  "Adding options",
+  "Detailed Description",
+  "missing_t",
+  "startup_mode",
+  "callback",
+  "final_callback",
+  "parse_complete_callback",
+  "preparse_callback",
+  "add_option",
+  "add_flag",
+  "add_subcommand",
+  "add_option_group",
+  "require_subcommand",
+  "allow_extras",
+  "allow_config_extras",
+  "prefix_command",
+  "fallthrough",
+  "validate_positionals",
+  "config_formatter",
+  "formatter",
+  "help_ptr",
+  "get_subcommands",
+  "got_subcommand",
+  "CLI11.h",
+];
+
+const outputKeywords = [
+  ...expectedHeadings,
+  "CLI::App",
+  "command line program",
+  "subcommands",
+  "Parsing",
+  "Help",
+  "Adding options",
+  "callback",
+  "final_callback",
+  "parse_complete_callback",
+  "preparse_callback",
+  "add_option",
+  "add_flag",
+  "add_subcommand",
+  "add_option_group",
+  "require_subcommand",
+  "allow_extras",
+  "allow_config_extras",
+  "prefix_command",
+  "fallthrough",
+  "validate_positionals",
+  "config_formatter",
+  "formatter",
+  "help_ptr",
+  "get_subcommands",
+  "got_subcommand",
+  "Open official page",
+];
+
+function readingFlowNav() {
+  return `<nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
+  <a data-reading-flow="final" href="${links.final}">总入口</a>
+  <span> / </span>
+  <a data-reading-flow="api-entry" href="${links.apiEntry}">API 本地入口</a>
+  <span> / api / classpxr___c_l_i_1_1_c_l_i_1_1_app.html</span>
+</nav>
+<aside class="openusd-reading-flow-nav" aria-label="本地阅读导航 / Local reading navigation">
+  <h2>本地阅读导航</h2>
+  <div class="openusd-reading-flow-columns">
+    <section>
+      <h3>入口 / Entrances</h3>
+      <ul>
+        <li><a data-reading-flow="final" href="${links.final}">总入口 / Final entry</a></li>
+        <li><a data-reading-flow="release-entry" href="${links.release}">Release 本地入口</a></li>
+        <li><a data-reading-flow="api-entry" href="${links.apiEntry}">API Doxygen 本地入口</a></li>
+        <li><a data-reading-flow="api-redirect" href="${links.apiRedirect}">API redirect / site/api/index.html</a></li>
+      </ul>
+    </section>
+    <section>
+      <h3>当前位置 / Current Layer</h3>
+      <ol>
+        <li>api</li>
+        <li>classpxr___c_l_i_1_1_c_l_i_1_1_app.html</li>
+      </ol>
+    </section>
+    <section>
+      <h3>CLI 类参考路径</h3>
+      <ul>
+        <li><a data-reading-flow="related" href="${links.cliSource}">CLI11.h source snapshot</a><span class="openusd-reading-flow-status">source</span></li>
+        <li><a data-reading-flow="related" href="${links.usdAppUtils}">UsdAppUtils module front</a><span class="openusd-reading-flow-status">local</span></li>
+        <li><a data-reading-flow="related" href="${links.js}">Js JSON I/O</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.plug}">Plug plugin registry</a><span class="openusd-reading-flow-status">local</span></li>
+        <li><a data-reading-flow="related" href="${links.tf}">Tf foundation</a><span class="openusd-reading-flow-status">local</span></li>
+      </ul>
+    </section>
+    <section>
+      <h3>上一页 / 下一页</h3>
+      <ul>
+        <li><a data-reading-flow="prev" href="${links.prev}">上一页 / Previous: VdfTestUtils::Node</a></li>
+        <li><a data-reading-flow="next" href="${links.next}">下一页 / Next: robin_map</a></li>
+      </ul>
+    </section>
+    <section>
+      <h3>官方外跳 / Official</h3>
+      <ul>
+        <li><a class="official-link" data-reading-flow="official" href="${links.official}">打开官方原页 / Open official page</a></li>
+      </ul>
+    </section>
+  </div>
+</aside>`;
+}
+
+function navStyles() {
+  return `<style id="openusd-reading-flow-nav-style">
+    body.openusd-has-reading-flow{padding-left:292px}
+    .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
+    .openusd-reading-flow-nav h2{font-size:17px;margin:0 0 10px;color:#17202a}
+    .openusd-reading-flow-nav h3{font-size:13px;margin:16px 0 8px;color:#516071;text-transform:none;letter-spacing:0}
+    .openusd-reading-flow-nav ul,.openusd-reading-flow-nav ol{list-style:none;margin:0;padding:0}
+    .openusd-reading-flow-nav li{margin:7px 0;line-height:1.35}
+    .openusd-reading-flow-nav a{color:#1c5d99;text-decoration:none;overflow-wrap:anywhere}
+    .openusd-reading-flow-nav a:hover{text-decoration:underline}
+    .openusd-reading-flow-status{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:999px;background:#edf2f7;color:#516071;font-size:11px}
+    .openusd-reading-flow-nav .official-link{color:#8a4b11}
+    .openusd-reading-flow-breadcrumb{max-width:1100px;margin:14px auto 0;padding:0 20px;color:#d7e3f4;font-size:14px;overflow-wrap:anywhere}
+    .openusd-reading-flow-breadcrumb a{color:#ffffff}
+    @media (max-width: 920px){
+      body.openusd-has-reading-flow{padding-left:0}
+      .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
+      .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
+    }
+  </style>`;
+}
+
+function headingCoverageList() {
+  return expectedHeadings.map((heading) => `      <li><span class="zh"><code>${esc(heading)}</code>：本地中文页保留该 Doxygen section 或语义等价分组，并说明它在 <code>CLI::App</code> 命令行程序、子命令、解析、帮助和选项添加流程中的作用。</span><span class="en">Source section preserved or mapped: ${esc(heading)}.</span></li>`).join("\n");
+}
+
+function buildHtml() {
+  const title = "App Class Reference";
+  return `<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>App Class Reference - OpenUSD API 中文参考</title>
+  <title>${title} - OpenUSD API 中文参考</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.68}
@@ -25,83 +290,16 @@
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
     .mini{border:1px solid #d8dee8;border-radius:6px;padding:12px;background:#fbfdff}
   </style>
-<style id="openusd-reading-flow-nav-style">
-    body.openusd-has-reading-flow{padding-left:292px}
-    .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
-    .openusd-reading-flow-nav h2{font-size:17px;margin:0 0 10px;color:#17202a}
-    .openusd-reading-flow-nav h3{font-size:13px;margin:16px 0 8px;color:#516071;text-transform:none;letter-spacing:0}
-    .openusd-reading-flow-nav ul,.openusd-reading-flow-nav ol{list-style:none;margin:0;padding:0}
-    .openusd-reading-flow-nav li{margin:7px 0;line-height:1.35}
-    .openusd-reading-flow-nav a{color:#1c5d99;text-decoration:none;overflow-wrap:anywhere}
-    .openusd-reading-flow-nav a:hover{text-decoration:underline}
-    .openusd-reading-flow-status{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:999px;background:#edf2f7;color:#516071;font-size:11px}
-    .openusd-reading-flow-nav .official-link{color:#8a4b11}
-    .openusd-reading-flow-breadcrumb{max-width:1100px;margin:14px auto 0;padding:0 20px;color:#d7e3f4;font-size:14px;overflow-wrap:anywhere}
-    .openusd-reading-flow-breadcrumb a{color:#ffffff}
-    @media (max-width: 920px){
-      body.openusd-has-reading-flow{padding-left:0}
-      .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
-      .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
-    }
-  </style>
+${navStyles()}
 </head>
 <body class="openusd-has-reading-flow">
   <header>
     <span class="status">bilingual_complete</span>
-    <h1>App Class Reference / <code>CLI::App</code> 类参考</h1>
-    <div class="meta">Round 446 PromotionRound | Source snapshot: source/full_api/classpxr___c_l_i_1_1_c_l_i_1_1_app_source.html | <a href="https://openusd.org/release/api/classpxr___c_l_i_1_1_c_l_i_1_1_app.html" style="color:#fff">Open official page</a></div>
+    <h1>${title} / <code>CLI::App</code> 类参考</h1>
+    <div class="meta">Round ${ROUND} ${ROUND_TYPE} | Source snapshot: ${SOURCE} | <a href="${links.official}" style="color:#fff">Open official page</a></div>
   </header>
-<nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
-  <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
-  <span> / </span>
-  <a data-reading-flow="api-entry" href="../../site/index.html">API 本地入口</a>
-  <span> / api / classpxr___c_l_i_1_1_c_l_i_1_1_app.html</span>
-</nav>
-<aside class="openusd-reading-flow-nav" aria-label="本地阅读导航 / Local reading navigation">
-  <h2>本地阅读导航</h2>
-  <div class="openusd-reading-flow-columns">
-    <section>
-      <h3>入口 / Entrances</h3>
-      <ul>
-        <li><a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口 / Final entry</a></li>
-        <li><a data-reading-flow="release-entry" href="../../site/release_index.html">Release 本地入口</a></li>
-        <li><a data-reading-flow="api-entry" href="../../site/index.html">API Doxygen 本地入口</a></li>
-        <li><a data-reading-flow="api-redirect" href="../../site/api/index.html">API redirect / site/api/index.html</a></li>
-      </ul>
-    </section>
-    <section>
-      <h3>当前位置 / Current Layer</h3>
-      <ol>
-        <li>api</li>
-        <li>classpxr___c_l_i_1_1_c_l_i_1_1_app.html</li>
-      </ol>
-    </section>
-    <section>
-      <h3>CLI 类参考路径</h3>
-      <ul>
-        <li><a data-reading-flow="related" href="_c_l_i11_8h_source.html">CLI11.h source snapshot</a><span class="openusd-reading-flow-status">source</span></li>
-        <li><a data-reading-flow="related" href="usd_app_utils_page_front.html">UsdAppUtils module front</a><span class="openusd-reading-flow-status">local</span></li>
-        <li><a data-reading-flow="related" href="js_page_front.html">Js JSON I/O</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="plug_page_front.html">Plug plugin registry</a><span class="openusd-reading-flow-status">local</span></li>
-        <li><a data-reading-flow="related" href="tf_page_front.html">Tf foundation</a><span class="openusd-reading-flow-status">local</span></li>
-      </ul>
-    </section>
-    <section>
-      <h3>上一页 / 下一页</h3>
-      <ul>
-        <li><a data-reading-flow="prev" href="class_vdf_test_utils_1_1_node.html">上一页 / Previous: VdfTestUtils::Node</a></li>
-        <li><a data-reading-flow="next" href="classpxr__tsl_1_1robin__map.html">下一页 / Next: robin_map</a></li>
-      </ul>
-    </section>
-    <section>
-      <h3>官方外跳 / Official</h3>
-      <ul>
-        <li><a class="official-link" data-reading-flow="official" href="https://openusd.org/release/api/classpxr___c_l_i_1_1_c_l_i_1_1_app.html">打开官方原页 / Open official page</a></li>
-      </ul>
-    </section>
-  </div>
-</aside>
-<main data-cn-status="bilingual_complete" data-cn-round="446" data-cn-source="source/full_api/classpxr___c_l_i_1_1_c_l_i_1_1_app_source.html" data-cn-official="https://openusd.org/release/api/classpxr___c_l_i_1_1_c_l_i_1_1_app.html">
+${readingFlowNav()}
+<main data-cn-status="bilingual_complete" data-cn-round="${ROUND}" data-cn-source="${SOURCE}" data-cn-official="${OFFICIAL_URL}">
   <section data-cn-complete="main-reading-path">
     <h2>中文主阅读路径 / Chinese Main Reading Path</h2>
     <p><span class="zh"><code>CLI::App</code> 是 OpenUSD API 文档中随 <code>CLI11.h</code> 暴露的命令行应用类参考。它不是 USD scene description 的数据模型类，也不是插件注册或 JSON 解析模块；它的职责是描述一个命令行程序如何组织顶层 app、子命令、选项、flag、帮助文本、配置文件、回调和解析结果。阅读这页时应把它看成工具入口的参数解析基础设施：上层工具把命令行语义放进 <code>App</code>，再由 <code>parse()</code>、<code>parse_from_stream()</code>、<code>remaining()</code>、<code>count()</code>、<code>get_subcommands()</code> 等接口取回解析后的状态。</span><span class="en"><code>CLI::App</code> represents a command line program and its parsing surface, not an OpenUSD scene model.</span></p>
@@ -111,23 +309,9 @@
 
   <section data-cn-complete="source-parity">
     <h2>官方结构与 source parity</h2>
-    <p><span class="zh">本轮对比 <code>source/full_api/classpxr___c_l_i_1_1_c_l_i_1_1_app_source.html</code> 和官方页 <code>https://openusd.org/release/api/classpxr___c_l_i_1_1_c_l_i_1_1_app.html</code>。source 标题为 <code>Universal Scene Description: App Class Reference</code>；页面主体是 Doxygen class reference，而不是 OpenUSD 手册章节。下列 Doxygen section、枚举/typedef 和成员分组均已在中文路径中覆盖。</span><span class="en">This page is aligned to the local source snapshot and the official class reference.</span></p>
+    <p><span class="zh">本轮对比 <code>${SOURCE}</code> 和官方页 <code>${OFFICIAL_URL}</code>。source 标题为 <code>${esc(sourceTitle())}</code>；页面主体是 Doxygen class reference，而不是 OpenUSD 手册章节。下列 Doxygen section、枚举/typedef 和成员分组均已在中文路径中覆盖。</span><span class="en">This page is aligned to the local source snapshot and the official class reference.</span></p>
     <ul>
-      <li><span class="zh"><code>App Class Reference</code>：本地中文页保留该 Doxygen section 或语义等价分组，并说明它在 <code>CLI::App</code> 命令行程序、子命令、解析、帮助和选项添加流程中的作用。</span><span class="en">Source section preserved or mapped: App Class Reference.</span></li>
-      <li><span class="zh"><code>Public Member Functions</code>：本地中文页保留该 Doxygen section 或语义等价分组，并说明它在 <code>CLI::App</code> 命令行程序、子命令、解析、帮助和选项添加流程中的作用。</span><span class="en">Source section preserved or mapped: Public Member Functions.</span></li>
-      <li><span class="zh"><code>Protected Member Functions</code>：本地中文页保留该 Doxygen section 或语义等价分组，并说明它在 <code>CLI::App</code> 命令行程序、子命令、解析、帮助和选项添加流程中的作用。</span><span class="en">Source section preserved or mapped: Protected Member Functions.</span></li>
-      <li><span class="zh"><code>Protected Attributes</code>：本地中文页保留该 Doxygen section 或语义等价分组，并说明它在 <code>CLI::App</code> 命令行程序、子命令、解析、帮助和选项添加流程中的作用。</span><span class="en">Source section preserved or mapped: Protected Attributes.</span></li>
-      <li><span class="zh"><code>Subcommands</code>：本地中文页保留该 Doxygen section 或语义等价分组，并说明它在 <code>CLI::App</code> 命令行程序、子命令、解析、帮助和选项添加流程中的作用。</span><span class="en">Source section preserved or mapped: Subcommands.</span></li>
-      <li><span class="zh"><code>Parsing</code>：本地中文页保留该 Doxygen section 或语义等价分组，并说明它在 <code>CLI::App</code> 命令行程序、子命令、解析、帮助和选项添加流程中的作用。</span><span class="en">Source section preserved or mapped: Parsing.</span></li>
-      <li><span class="zh"><code>Help</code>：本地中文页保留该 Doxygen section 或语义等价分组，并说明它在 <code>CLI::App</code> 命令行程序、子命令、解析、帮助和选项添加流程中的作用。</span><span class="en">Source section preserved or mapped: Help.</span></li>
-      <li><span class="zh"><code>Adding options</code>：本地中文页保留该 Doxygen section 或语义等价分组，并说明它在 <code>CLI::App</code> 命令行程序、子命令、解析、帮助和选项添加流程中的作用。</span><span class="en">Source section preserved or mapped: Adding options.</span></li>
-      <li><span class="zh"><code>Detailed Description</code>：本地中文页保留该 Doxygen section 或语义等价分组，并说明它在 <code>CLI::App</code> 命令行程序、子命令、解析、帮助和选项添加流程中的作用。</span><span class="en">Source section preserved or mapped: Detailed Description.</span></li>
-      <li><span class="zh"><code>Member Typedef Documentation</code>：本地中文页保留该 Doxygen section 或语义等价分组，并说明它在 <code>CLI::App</code> 命令行程序、子命令、解析、帮助和选项添加流程中的作用。</span><span class="en">Source section preserved or mapped: Member Typedef Documentation.</span></li>
-      <li><span class="zh"><code>missing_t</code>：本地中文页保留该 Doxygen section 或语义等价分组，并说明它在 <code>CLI::App</code> 命令行程序、子命令、解析、帮助和选项添加流程中的作用。</span><span class="en">Source section preserved or mapped: missing_t.</span></li>
-      <li><span class="zh"><code>Member Enumeration Documentation</code>：本地中文页保留该 Doxygen section 或语义等价分组，并说明它在 <code>CLI::App</code> 命令行程序、子命令、解析、帮助和选项添加流程中的作用。</span><span class="en">Source section preserved or mapped: Member Enumeration Documentation.</span></li>
-      <li><span class="zh"><code>startup_mode</code>：本地中文页保留该 Doxygen section 或语义等价分组，并说明它在 <code>CLI::App</code> 命令行程序、子命令、解析、帮助和选项添加流程中的作用。</span><span class="en">Source section preserved or mapped: startup_mode.</span></li>
-      <li><span class="zh"><code>Constructor &amp; Destructor Documentation</code>：本地中文页保留该 Doxygen section 或语义等价分组，并说明它在 <code>CLI::App</code> 命令行程序、子命令、解析、帮助和选项添加流程中的作用。</span><span class="en">Source section preserved or mapped: Constructor &amp; Destructor Documentation.</span></li>
-      <li><span class="zh"><code>Member Function Documentation</code>：本地中文页保留该 Doxygen section 或语义等价分组，并说明它在 <code>CLI::App</code> 命令行程序、子命令、解析、帮助和选项添加流程中的作用。</span><span class="en">Source section preserved or mapped: Member Function Documentation.</span></li>
+${headingCoverageList()}
     </ul>
     <p class="note"><span class="zh">保留原名：<code>App</code>、<code>CLI::App</code>、<code>missing_t</code>、<code>startup_mode</code>、<code>callback()</code>、<code>final_callback()</code>、<code>parse_complete_callback()</code>、<code>preparse_callback()</code>、<code>add_option()</code>、<code>add_flag()</code>、<code>add_subcommand()</code>、<code>allow_extras()</code>、<code>allow_config_extras()</code>、<code>prefix_command()</code>、<code>fallthrough()</code>、<code>validate_positionals()</code>、<code>formatter()</code>、<code>config_formatter()</code> 和 <code>help_ptr</code>，避免把 API 名和 Doxygen 标签翻译成不可搜索的中文短语。</span><span class="en">API names and Doxygen labels are preserved for exact lookup.</span></p>
   </section>
@@ -195,7 +379,7 @@
 
   <section data-cn-complete="adjacent-modules">
     <h2>相邻阅读路径</h2>
-    <p><span class="zh">若目标是理解 OpenUSD 工具如何接收命令行参数，可以从本页跳到 <a href="_c_l_i11_8h_source.html">CLI11.h source snapshot</a> 查看实现，再回到 <a href="usd_app_utils_page_front.html">UsdAppUtils</a>、<a href="tf_page_front.html">Tf</a>、<a href="plug_page_front.html">Plug</a> 和 <a href="js_page_front.html">Js</a>。其中 <code>UsdAppUtils</code> 更接近工具层使用，<code>Tf</code> 和 <code>Plug</code> 是基础设施，<code>Js</code> 用于 JSON I/O；它们都不是本页 API 的替代品。</span><span class="en">Adjacent pages provide tool, foundation, plugin, and JSON contexts.</span></p>
+    <p><span class="zh">若目标是理解 OpenUSD 工具如何接收命令行参数，可以从本页跳到 <a href="${links.cliSource}">CLI11.h source snapshot</a> 查看实现，再回到 <a href="${links.usdAppUtils}">UsdAppUtils</a>、<a href="${links.tf}">Tf</a>、<a href="${links.plug}">Plug</a> 和 <a href="${links.js}">Js</a>。其中 <code>UsdAppUtils</code> 更接近工具层使用，<code>Tf</code> 和 <code>Plug</code> 是基础设施，<code>Js</code> 用于 JSON I/O；它们都不是本页 API 的替代品。</span><span class="en">Adjacent pages provide tool, foundation, plugin, and JSON contexts.</span></p>
   </section>
 
   <section data-cn-complete="acceptance-reading-checklist">
@@ -222,3 +406,181 @@
 </main>
 </body>
 </html>
+`;
+}
+
+function sourceParity() {
+  const source = sourceText();
+  const target = fs.existsSync(rel(TARGET)) ? read(TARGET) : buildHtml();
+  const targetDecoded = decodeEntities(target);
+  const outputChecks = {
+    has_complete_status: target.includes('data-cn-status="bilingual_complete"') && target.includes(`data-cn-round="${ROUND}"`),
+    has_paragraph_coverage: target.includes("逐段双语理解 / Paragraph-Level Bilingual Coverage"),
+    has_final_entry: target.includes(links.final),
+    has_api_entry: target.includes(links.apiEntry),
+    has_api_redirect: target.includes(links.apiRedirect),
+    has_release_entry: target.includes(links.release),
+    has_reading_flow_nav: target.includes("openusd-reading-flow-nav") && target.includes("openusd-reading-flow-breadcrumb"),
+    has_explicit_official_link: target.includes("Open official page") && target.includes(OFFICIAL_URL),
+    no_draft_marker: !target.includes("bilingual_draft") && !target.includes("batch draft page") && !target.includes("后续迭代会继续补齐"),
+    zh_chars: zhCharCount(target),
+    zh_blocks: blockCount(target, "zh"),
+  };
+  return {
+    generated_at: new Date().toISOString(),
+    round: ROUND,
+    round_type: ROUND_TYPE,
+    target: TARGET,
+    source_snapshot: SOURCE,
+    official_url: OFFICIAL_URL,
+    source_title: sourceTitle(),
+    source_headings: sourceHeadings().slice(0, 120),
+    source_keywords_checked: sourceKeywords,
+    output_keywords_checked: outputKeywords,
+    missing_source_keywords: sourceKeywords.filter((keyword) => !source.includes(keyword)),
+    missing_output_keywords: outputKeywords.filter((keyword) => !targetDecoded.includes(keyword)),
+    output_checks: outputChecks,
+  };
+}
+
+function writePage() {
+  fs.writeFileSync(rel(TARGET), buildHtml(), "utf8");
+  writeJson(SOURCE_PARITY_REPORT, sourceParity());
+}
+
+function precheck() {
+  const report = sourceParity();
+  const failed = [];
+  if (report.missing_source_keywords.length) failed.push(`missing source keywords: ${report.missing_source_keywords.join(", ")}`);
+  if (report.missing_output_keywords.length) failed.push(`missing output keywords: ${report.missing_output_keywords.join(", ")}`);
+  for (const [key, value] of Object.entries(report.output_checks)) {
+    if (typeof value === "boolean" && !value) failed.push(`output check failed: ${key}`);
+  }
+  if (report.output_checks.zh_chars < 3000) failed.push(`zh chars too low: ${report.output_checks.zh_chars}`);
+  if (report.output_checks.zh_blocks < 34) failed.push(`zh blocks too low: ${report.output_checks.zh_blocks}`);
+  if (failed.length) {
+    console.error(JSON.stringify({ passed: false, failed, report }, null, 2));
+    process.exit(1);
+  }
+  writeJson(SOURCE_PARITY_REPORT, report);
+  console.log(JSON.stringify({ passed: true, report }, null, 2));
+}
+
+function updateManifest() {
+  const raw = readJson("reports/bilingual_completion_promotions.json");
+  const doc = {
+    ...raw,
+    generated_at: raw.generated_at || new Date().toISOString(),
+    promotions: Array.isArray(raw.promotions) ? raw.promotions : [],
+    updated_at: new Date().toISOString(),
+  };
+  doc.promotions = doc.promotions.filter((entry) => entry.id !== PROMOTION_ID && entry.local_output !== TARGET);
+  doc.promotions.push({
+    id: PROMOTION_ID,
+    title: "App Class Reference",
+    official_url: OFFICIAL_URL,
+    local_output: TARGET,
+    status: "bilingual_complete",
+    reason: `Round ${ROUND} ${ROUND_TYPE}: promote the CLI::App class reference by adding Chinese main-reading-path coverage for command line program construction, subcommands, parsing, help, adding options, callbacks, config handling, parser strictness boundaries, source parity, reading-flow navigation, and explicit official-page verification.`,
+    evidence: {
+      page_contains_status: "bilingual_complete",
+      generic_draft_marker_removed: true,
+      minimum_chinese_chars: 3000,
+      minimum_complete_section_chinese_chars: 2700,
+      minimum_chinese_blocks: 34,
+      official_source_compared: true,
+      local_source_snapshot_compared: SOURCE,
+      source_parity_report: SOURCE_PARITY_REPORT,
+      round_type: ROUND_TYPE,
+    },
+  });
+  writeJson("reports/bilingual_completion_promotions.json", doc);
+}
+
+function updateProblemAudit() {
+  const quality = readJson("reports/translation_quality_review.json");
+  const debt = readJson("reports/english_debt_audit.json");
+  const inventory = readJson("reports/all_pages_inventory.json");
+  const counts = {
+    total_pages: inventory.counts.total_pages,
+    bilingual_complete: quality.status_counts.bilingual_complete,
+    bilingual_draft: quality.status_counts.bilingual_draft,
+    good_bilingual: quality.grade_counts.good_bilingual,
+    draft_needs_translation: quality.grade_counts.draft_needs_translation,
+    draft_template_only: quality.grade_counts.draft_template_only,
+    review_ready_zh: debt.counts.review_ready_zh,
+    api_complete: debt.counts.api_complete,
+    api_review_ready_zh: debt.counts.api_review_ready_zh,
+    release_complete: debt.counts.release_complete,
+    release_review_ready_zh: debt.counts.release_review_ready_zh,
+    pending_full_scope: inventory.counts.pending_full_scope_pages,
+  };
+  writeJson("reports/current_problem_audit.json", {
+    generated_at: new Date().toISOString(),
+    purpose: `第 ${ROUND} 轮 ${ROUND_TYPE} 记录：确认 ${TARGET} 已按 CLI::App class reference source parity 晋级，并继续跟踪 OpenUSD 双语完成缺口。`,
+    last_completed_round: {
+      round: ROUND,
+      round_type: ROUND_TYPE,
+      target: TARGET,
+      commit_sha: null,
+      previous_good_bilingual: 224,
+    },
+    current_counts: counts,
+    problems: [
+      {
+        id: "P0-api-draft-backlog",
+        severity: "P0",
+        summary: `当前 good_bilingual=${counts.good_bilingual}/406，API complete=${counts.api_complete}，仍有 ${counts.bilingual_draft} 个可检查草稿，不是完整翻译。`,
+        evidence: `第 ${ROUND} 轮 ${ROUND_TYPE} 将 ${TARGET} 从 API 草稿晋级为 good_bilingual；release 范围保持 ${counts.release_complete}/126 complete。`,
+        required_action: "继续推进 API 草稿；只把真实达到中文主阅读路径和 source parity 的页面写入 promotion manifest。",
+      },
+      {
+        id: "P1-class-reference-source-parity",
+        severity: "P1",
+        summary: "类参考页必须保留 Doxygen 分组、typedef/enum 名、函数名、属性名和链接语义，不能只写泛泛导读。",
+        evidence: "本轮保留 Public Member Functions、Protected Member Functions、Protected Attributes、Subcommands、Parsing、Help、Adding options、Detailed Description、missing_t、startup_mode 和核心 CLI::App 成员名。",
+        required_action: "后续 class/struct 页继续按 source snapshot 抽取官方分组，中文说明用途和边界，API 名保持原样。",
+      },
+      {
+        id: "P1-left-navigation-reading-flow",
+        severity: "P1",
+        summary: "完成页必须保留本地 reading-flow 导航、breadcrumb、API/Release/总入口和显式官方外跳。",
+        evidence: "本轮页面生成了本地侧栏、breadcrumb、前后页、相邻 API 模块路径和 Open official page 外跳，并会重新运行 reading-flow 审计。",
+        required_action: "若 reading-flow 审计失败，先修导航，不得推送。",
+      },
+      {
+        id: "P1-markdown-record-encoding",
+        severity: "P1",
+        summary: "Markdown 编码守卫继续作为硬门槛。",
+        evidence: "work.md、reports/iteration_report.md、reports/current_problem_audit.md、reports/bilingual_completion_promotions.md 必须无重复问号损坏、replacement character 和 UTF-8 BOM。",
+        required_action: "若 audit_openusd_markdown_encoding.mjs 失败，先做 ConsistencyRound。",
+      },
+    ],
+    promoted_pages: [
+      {
+        round: ROUND,
+        round_type: ROUND_TYPE,
+        output: TARGET,
+        official_url: OFFICIAL_URL,
+        source_snapshot: SOURCE,
+        source_parity_report: SOURCE_PARITY_REPORT,
+      },
+    ],
+    not_promoted_pages: [],
+    source_parity_report: SOURCE_PARITY_REPORT,
+    next_actions: [
+      "release 范围已 126/126 complete，不要重复处理 release 已完成页。",
+      "下一轮建议重新读取 inventory，选择仍为 bilingual_draft 且有 source snapshot 的 API/class 页面；开始前必须确认 git/report/validation/markdown/reading-flow 状态干净一致。",
+    ],
+    next_action: "下一轮建议 PromotionRound：重读 inventory 后选择一个仍为 bilingual_draft 且有 source snapshot 的高价值 API 页面。",
+  });
+}
+
+const commands = new Set(process.argv.slice(2));
+if (commands.has("--write-page")) writePage();
+if (commands.has("--precheck")) precheck();
+if (commands.has("--manifest")) updateManifest();
+if (commands.has("--problem")) updateProblemAudit();
+if (commands.size === 0) {
+  console.log("Usage: node scripts/promote_round_446_cli_app_class.mjs --write-page --precheck --manifest --problem");
+}

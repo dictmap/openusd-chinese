@@ -1,6 +1,6 @@
 # OpenUSD English Debt Audit
 
-Generated: 2026-06-08T17:59:27.771Z
+Generated: 2026-06-08T18:32:04.351Z
 
 Purpose:
 
@@ -12,16 +12,16 @@ Purpose:
 ## Counts
 
 - Total pages: 406
-- good_bilingual: 224
-- review_ready_zh: 161
+- good_bilingual: 225
+- review_ready_zh: 162
 - review_needs_zh_debt: 63
-- API complete: 98
-- API review_ready_zh: 38
+- API complete: 99
+- API review_ready_zh: 39
 - Release complete: 126
 - Release review_ready_zh: 123
-- Complete pages with high/very high ratio diagnostic: 19
-- bilingual_draft: 182
-- draft_needs_translation: 172
+- Complete pages with high/very high ratio diagnostic: 20
+- bilingual_draft: 181
+- draft_needs_translation: 171
 - draft_template_only: 10
 
 ## Complete Pages Still Carrying English Debt
@@ -72,7 +72,7 @@ Purpose:
 | 228 | `full_site/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html` | api | general | 361 | 3/3 | 3.5 | medium | draft |
 | 224 | `full_site/api/md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html` | api | general | 526 | 5/3 | 3.5 | medium | draft |
 | 137 | `full_site/api/functions_vars_f.html` | api | index | 411 | 3/2 | 3.48 | medium | draft |
-| 65 | `full_site/api/classpxr___c_l_i_1_1_c_l_i_1_1_app.html` | api | general | 364 | 4/3 | 3.45 | medium | draft |
+| 249 | `full_site/api/struct_hgi_sampler_desc.html` | api | class_or_struct | 387 | 5/3 | 3.41 | medium | draft |
 
 ## Release Pages To Pull Forward
 

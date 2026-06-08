@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-08T17:59:19.628Z
+Generated: 2026-06-08T18:31:54.897Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 224
-- Promoted complete pages: 216
-- Bilingual draft pages: 182
+- Bilingual complete pages: 225
+- Promoted complete pages: 217
+- Bilingual draft pages: 181
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -82,7 +82,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_draft | 类参考草稿：Node Class / Node Class | full_site/api/class_vdf_test_utils_1_1_node.html | https://openusd.org/release/api/class_vdf_test_utils_1_1_node.html |
 | api | bilingual_complete | https://openusd.org/release/api/class_vt_value_ref.html | full_site/api/class_vt_value_ref.html | https://openusd.org/release/api/class_vt_value_ref.html |
 | api | bilingual_draft | Class Index | full_site/api/classes.html | https://openusd.org/release/api/classes.html |
-| api | bilingual_draft | API 页面草稿：App Class / App Class | full_site/api/classpxr___c_l_i_1_1_c_l_i_1_1_app.html | https://openusd.org/release/api/classpxr___c_l_i_1_1_c_l_i_1_1_app.html |
+| api | bilingual_complete | App Class Reference | full_site/api/classpxr___c_l_i_1_1_c_l_i_1_1_app.html | https://openusd.org/release/api/classpxr___c_l_i_1_1_c_l_i_1_1_app.html |
 | api | bilingual_draft | API 页面草稿：robin_map< Key, T, Hash, KeyEqual, Allocator, StoreHash, GrowthPolicy > Class Template / robin_map< Key, T, Hash, KeyEqual, Allocator, StoreHash, GrowthPolicy > Class Template | full_site/api/classpxr__tsl_1_1robin__map.html | https://openusd.org/release/api/classpxr__tsl_1_1robin__map.html |
 | api | bilingual_draft | API 页面草稿：copyUtils.h File / copyUtils.h File | full_site/api/copy_utils_8h.html | https://openusd.org/release/api/copy_utils_8h.html |
 | api | bilingual_draft | API 页面草稿：Deprecated List / Deprecated List | full_site/api/deprecated.html | https://openusd.org/release/api/deprecated.html |
