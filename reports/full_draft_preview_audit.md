@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-08T15:38:02.212Z
+Generated: 2026-06-08T16:00:32.148Z
 
-Transient base URL: `http://127.0.0.1:51634/`
+Transient base URL: `http://127.0.0.1:49684/`
 
 Result:
 
 - Passed: true
-- Draft pages: 188
-- Pages checked: 188
-- Passed pages: 188
+- Draft pages: 187
+- Pages checked: 187
+- Passed pages: 187
 - Failed pages: 0
-- Final HTML links: 188
-- Local assets checked: 188
+- Final HTML links: 187
+- Local assets checked: 187
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -191,7 +191,6 @@ Result:
 | true | full_site/api/parallel_speculation_executor_engine_8h_source.html | 200 | true | 0 | 0 |
 | true | full_site/api/pxr_display_filter_adapter_8h_source.html | 200 | true | 0 | 0 |
 | true | full_site/api/riley_param_schema_8h_source.html | 200 | true | 0 | 0 |
-| true | full_site/api/sdr_glslfx_page_front.html | 200 | true | 0 | 0 |
 | true | full_site/api/sparse_vectorized_input_traverser_8h.html | 200 | true | 0 | 0 |
 | true | full_site/api/struct_hgi_sampler_desc.html | 200 | true | 0 | 0 |
 | true | full_site/api/struct_usd_geom_tokens_type.html | 200 | true | 0 | 0 |

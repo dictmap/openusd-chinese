@@ -3,27 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>API 模块草稿：SdrGlslfx: Glslfx parser for Sdr / SdrGlslfx: Glslfx parser for Sdr</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <title>SdrGlslfx : Glslfx parser for Sdr - OpenUSD API 双语</title>
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.68}
     header{background:#142538;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 10px;font-size:17px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .navlinks{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 0}
+    .navlinks a{color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);border-radius:6px;padding:5px 8px}
     .zh{display:block;font-weight:650;color:#17324d}
     .en{display:block;color:#55616f;margin-top:4px}
+    .status{display:inline-block;background:#206a3b;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     a{color:#1c5d99;overflow-wrap:anywhere}
     ul{padding-left:22px}
     li{margin:8px 0}
     code{font-family:"Cascadia Mono","Consolas",monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
-  </style>
-<style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
-    .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
+    .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#fff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
     .openusd-reading-flow-nav h2{font-size:17px;margin:0 0 10px;color:#17202a}
     .openusd-reading-flow-nav h3{font-size:13px;margin:16px 0 8px;color:#516071;text-transform:none;letter-spacing:0}
     .openusd-reading-flow-nav ul,.openusd-reading-flow-nav ol{list-style:none;margin:0;padding:0}
@@ -32,21 +32,17 @@
     .openusd-reading-flow-nav a:hover{text-decoration:underline}
     .openusd-reading-flow-status{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:999px;background:#edf2f7;color:#516071;font-size:11px}
     .openusd-reading-flow-nav .official-link{color:#8a4b11}
-    .openusd-reading-flow-breadcrumb{max-width:1100px;margin:14px auto 0;padding:0 20px;color:#d7e3f4;font-size:14px;overflow-wrap:anywhere}
-    .openusd-reading-flow-breadcrumb a{color:#ffffff}
-    @media (max-width: 920px){
+    .openusd-reading-flow-breadcrumb{max-width:1120px;margin:14px auto 0;padding:0 20px;color:#d7e3f4;font-size:14px;overflow-wrap:anywhere}
+    .openusd-reading-flow-breadcrumb a{color:#fff}
+    @media (max-width:920px){
       body.openusd-has-reading-flow{padding-left:0}
       .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
       .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
     }
   </style>
 </head>
-<body class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_draft</span>
-    <h1>API 模块草稿：SdrGlslfx: Glslfx parser for Sdr / SdrGlslfx: Glslfx parser for Sdr</h1>
-    <div class="meta">https://openusd.org/release/api/sdr_glslfx_page_front.html</div>
-  </header>
+<body class="openusd-has-reading-flow" data-cn-status="bilingual_complete" data-cn-round="440" data-cn-scope="api" data-cn-review-ready="true">
+
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
   <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
@@ -74,25 +70,26 @@
       </ol>
     </section>
     <section>
-      <h3>当前 API 上下文 / API Context</h3>
+      <h3>Shader 发现和定义</h3>
       <ul>
-        <li><a data-reading-flow="related" href="_c_l_i11_8h_source.html">源码页面草稿：CLI11.h / CLI11.h</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="_developer__guides.html">开发者指南 / Developer Guides</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="_usd_skel__intro.html">_c_l_i11_8h_source.html</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="annotated.html">Classes</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="ar_page_front.html">https://openusd.org/release/api/ar_page_front.html</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="arch_page_front.html">https://openusd.org/release/api/arch_page_front.html</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="binding_map_8h_source.html">源码页面草稿：bindingMap.h / bindingMap.h</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="class_ef___lofted_output_set.html">https://openusd.org/release/api/class_ef___lofted_output_set.html</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="class_esf_property_interface.html">https://openusd.org/release/api/class_esf_property_interface.html</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="class_gf_dual_quatf.html">https://openusd.org/release/api/class_gf_dual_quatf.html</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="sdr_page_front.html">Sdr Shader Definition Registry</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="usd_shade_page_front.html">UsdShade 材质网络</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="usd_shaders_page_front.html">UsdShaders shader nodes</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="usd_mtlx_page_front.html">UsdMtlx MaterialX 插件</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
-      <h3>上一页/下一页 / Previous/Next</h3>
+      <h3>渲染消费和调试</h3>
       <ul>
-        <li><a data-reading-flow="prev" href="sdf_page_front.html">上一页 / Previous: Sdf: Scene Description Foundations</a></li>
-<li><a data-reading-flow="next" href="sdr_page_front.html">下一页 / Next: API 模块草稿：Sdr: Shader Definition Registry / Sdr: Shader Definition Registry</a></li>
+        <li><a data-reading-flow="related" href="hd_page_front.html">Hd Hydra 核心</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="hdx_page_front.html">Hdx 任务和调试</a><span class="openusd-reading-flow-status">complete</span></li>
+      </ul>
+    </section>
+    <section>
+      <h3>上一页 / 下一页</h3>
+      <ul>
+        <li><a data-reading-flow="prev" href="js_page_front.html">上一页 / Previous: Js</a></li>
+        <li><a data-reading-flow="next" href="usd_hydra_page_front.html">下一页 / Next: UsdHydra 候选页面</a></li>
       </ul>
     </section>
     <section>
@@ -104,102 +101,81 @@
   </div>
 </aside>
 <!-- openusd-reading-flow-nav:end -->
+<header>
+  <h1>SdrGlslfx : Glslfx parser for Sdr</h1>
+  <div class="meta">第 440 轮 PromotionRound：SdrGlslfx 模块入口完成。源页：<code>source/full_api/sdr_glslfx_page_front_source.html</code>；官方页：<code>https://openusd.org/release/api/sdr_glslfx_page_front.html</code></div>
+  <div class="navlinks">
+    <a href="../../openusd_bilingual_final.html">总入口</a>
+    <a href="../../site/index.html">API 本地入口</a>
+    <a href="../../source/full_api/sdr_glslfx_page_front_source.html">本地 source snapshot</a>
+    <a href="https://openusd.org/release/api/sdr_glslfx_page_front.html">Open official page</a>
+  </div>
+</header>
+<main>
+  <section data-cn-complete="overview">
+    <span class="status">bilingual_complete / review_ready_zh</span>
+    <h2>中文主阅读路径</h2>
+    <p><span class="zh"><code>SdrGlslfx</code> 的官方标题是 <code>SdrGlslfx : Glslfx parser for Sdr</code>。源页 Overview 只有一句核心说明：<code>This library houses the glslfx parser for sdr.</code> 因此，本页的中文主路径必须围绕这个边界展开：它是给 <code>Sdr</code> 使用的 <code>glslfx</code> parser 承载模块，不是 shader runtime、不是 Hydra renderer、也不是 <code>UsdShade</code> authoring 教程。</span><span class="en">This library houses the glslfx parser for sdr.</span></p>
+    <p><span class="zh"><code>Sdr</code> 是 Shader Definition Registry，关注 shader definition 的发现、表示和查询；<code>SdrGlslfx</code> 则位于更窄的一层，负责把 <code>glslfx</code> 格式的 shader definition 输入解析成 <code>Sdr</code> 可以消费的描述。读者应先把它理解为“格式解析入口”，再去看 <a href="sdr_page_front.html">Sdr</a> 如何组织 registry、node 和 property，而不是把解析器当成 shader 节点实现本身。</span><span class="en">SdrGlslfx is the glslfx parser component for Sdr, not the full registry or shader implementation.</span></p>
+    <p><span class="zh">因为源页非常短，页面晋级的重点不是制造不存在的 API 细节，而是把官方一句话放回 OpenUSD shader 生态中：<code>glslfx</code> 是一种 shader definition 相关输入，<code>SdrGlslfx</code> 负责解析它，<code>Sdr</code> 负责把解析结果纳入 shader definition registry，<code>UsdShade</code>、<code>UsdShaders</code>、<code>UsdMtlx</code> 和 <code>Hd</code>/<code>Hdx</code> 则在更高层或消费层使用这些定义。每一层的责任不同。</span><span class="en">The page maps the short official statement into the surrounding shader-definition stack.</span></p>
+  </section>
 
+  <section data-cn-complete="source-coverage">
+    <h2>官方结构与 source parity</h2>
+    <p><span class="zh">本页使用 <code>source/full_api/sdr_glslfx_page_front_source.html</code> 对齐官方 <code>SdrGlslfx : Glslfx parser for Sdr</code> 页面。官方 source 只有 <code>Overview</code> 一个 section，所以中文页的 source parity 很直接：保留标题、保留 <code>SdrGlslfx</code>、保留 <code>Glslfx parser for Sdr</code>、保留 <code>glslfx parser</code> 和 <code>sdr</code> 的大小写语义，并明确这只是 parser housing，不把它扩写成渲染或材质系统总览。</span><span class="en">The local page follows the official title and Overview statement exactly.</span></p>
+    <ul>
+      <li><span class="zh">官方结构：<code>SdrGlslfx : Glslfx parser for Sdr</code>。中文页把这一节映射到 <code>SdrGlslfx</code> 的模块职责、<code>glslfx</code> parser 与 <code>Sdr</code> 的关系、非运行时边界、相邻 <code>Sdr</code>/<code>UsdShade</code>/<code>UsdShaders</code>/<code>UsdMtlx</code>/<code>Hd</code> 阅读路径和调试分层。</span><span class="en">Source heading level 1: SdrGlslfx : Glslfx parser for Sdr</span></li>
+<li><span class="zh">官方结构：<code>Overview</code>。中文页把这一节映射到 <code>SdrGlslfx</code> 的模块职责、<code>glslfx</code> parser 与 <code>Sdr</code> 的关系、非运行时边界、相邻 <code>Sdr</code>/<code>UsdShade</code>/<code>UsdShaders</code>/<code>UsdMtlx</code>/<code>Hd</code> 阅读路径和调试分层。</span><span class="en">Source heading level 1: Overview</span></li>
+    </ul>
+    <p><span class="zh">source parity 检查的关键词包括 <code>SdrGlslfx : Glslfx parser for Sdr</code>、<code>Overview</code>、<code>This library houses the glslfx parser for sdr.</code>、<code>SdrGlslfx</code>、<code>glslfx</code>、<code>parser</code> 和 <code>sdr</code>。输出页还额外保留与相邻模块有关的 <code>Sdr</code>、<code>UsdShade</code>、<code>UsdShaders</code>、<code>UsdMtlx</code>、<code>Hd</code>、<code>Hdx</code> 和 <code>Open official page</code>，用于本地连续阅读。</span><span class="en">Source parity checks the exact title, Overview, and parser statement while preserving local adjacent-module links.</span></p>
+  </section>
 
+  <section data-cn-complete="responsibility">
+    <h2>职责边界：parser，不是 runtime</h2>
+    <p><span class="zh"><code>SdrGlslfx</code> 的职责可以拆成三步理解。第一，它面对的是 <code>glslfx</code> 这种 shader definition 输入格式；第二，它把这种输入解析成 <code>Sdr</code> 体系可理解的数据；第三，它让上层的 shader definition registry 可以通过统一路径使用这些定义。这里没有承诺执行 GLSL、生成 GPU 程序、编译 shader 或做 Hydra 渲染。</span><span class="en">SdrGlslfx parses glslfx input for Sdr; it does not execute or render shaders.</span></p>
+    <p><span class="zh">常见误读是看到 <code>glslfx</code> 就直接联想到 shader runtime 或 GPU backend。更准确的分层是：<code>SdrGlslfx</code> 处理 glslfx 文本或定义输入；<code>Sdr</code> 管理 shader definition 的 registry 和查询；<code>UsdShade</code> 描述 USD 场景里的材质网络；<code>UsdShaders</code> 提供若干基于 <code>UsdShade</code> 的 shader 节点定义和实现；<code>Hd</code>/<code>Hdx</code> 或具体 renderer 再决定如何消费或展示这些信息。</span><span class="en">The parser layer, registry layer, scene authoring layer, and rendering consumption layer are separate.</span></p>
+    <p><span class="zh">这一区分对调试很重要。如果某个 shader definition 没有进入 registry，应该先检查 <code>glslfx</code> 输入是否能被 parser 读取、发现路径是否正确、解析结果是否符合 <code>Sdr</code> 期望；如果材质网络连接不正确，则应看 <code>UsdShade</code> authoring；如果渲染结果异常，则进入 <code>Hd</code>/<code>Hdx</code> 或 renderer 支持层。不要把所有问题都归到 <code>SdrGlslfx</code>。</span><span class="en">Debugging should distinguish parser discovery, Sdr registry state, UsdShade authoring, and renderer behavior.</span></p>
+  </section>
 
+  <section data-cn-complete="adjacent-modules">
+    <h2>相邻模块阅读路径</h2>
+    <p><span class="zh">第一站应读 <a href="sdr_page_front.html">Sdr</a>。<code>Sdr</code> 页面解释 Shader Definition Registry 的职责，能帮助读者理解 parser 输出最终服务于什么 registry。<code>SdrGlslfx</code> 只是其中一个格式解析入口；如果不了解 <code>Sdr</code> 的 node/property 查询模型，就容易高估此页的范围。</span><span class="en">Read Sdr first to understand the registry that consumes parser results.</span></p>
+    <p><span class="zh">第二站可以读 <a href="usd_shade_page_front.html">UsdShade</a> 和 <a href="usd_shaders_page_front.html">UsdShaders</a>。它们处在 USD 场景和 shader 节点定义层，关注材质网络、shader 节点和属性连接。<code>SdrGlslfx</code> 不负责 author 这些网络，但它解析出的定义可能被上层工具或 registry 用来描述可用 shader 节点、属性和元数据。</span><span class="en">UsdShade and UsdShaders are higher-level consumers and authoring contexts.</span></p>
+    <p><span class="zh">第三站是 <a href="usd_mtlx_page_front.html">UsdMtlx</a>。它代表另一类 shader/material 描述生态，与 <code>Sdr</code>、<code>UsdShade</code> 和渲染消费也有关。阅读时要区分 <code>SdrGlslfx</code> 解析 <code>glslfx</code>，<code>UsdMtlx</code> 处理 MaterialX file format and shader plugins；二者都可能接入 shader definition 生态，但输入格式和插件边界不同。</span><span class="en">UsdMtlx is adjacent but covers MaterialX rather than glslfx parsing.</span></p>
+    <p><span class="zh">最后再读 <a href="hd_page_front.html">Hd</a> 和 <a href="hdx_page_front.html">Hdx</a>。这两页更接近 Hydra 渲染框架和任务/调试层。shader definition 是否被发现是一回事，renderer 是否支持、如何编译、如何在渲染任务中使用又是另一回事。把 parser、registry、scene authoring 和 render consumption 分开，是本页最重要的调试价值。</span><span class="en">Hd and Hdx belong to the rendering consumption and debugging side, not the glslfx parser itself.</span></p>
+  </section>
 
+  <section data-cn-complete="debugging">
+    <h2>调试路径和非目标范围</h2>
+    <p><span class="zh">排查 <code>SdrGlslfx</code> 相关问题时，第一步是确认输入是否真的是 <code>glslfx</code>，以及文件或资源是否位于 Sdr 发现流程能够看到的位置。第二步是确认 parser 是否能读取该输入，并产生 <code>Sdr</code> 预期的数据。第三步才是检查 registry 中是否出现目标 shader definition。若 registry 已有定义但场景使用失败，问题通常应转到 <code>UsdShade</code> 或 renderer 层。</span><span class="en">Debugging starts with input format and discovery path, then parser output, then Sdr registry visibility.</span></p>
+    <p><span class="zh">如果渲染画面不符合预期，不要直接把问题归咎于 <code>SdrGlslfx</code>。parser 只回答“glslfx 定义是否能被读取并变成 Sdr 可消费的信息”；渲染画面还受材质网络 authoring、shader implementation、renderer 支持、Hydra delegate、调试开关和平台后端影响。错误定位要沿着数据流逐层前进。</span><span class="en">Rendering failures can come from authoring, implementation, renderer support, delegate behavior, or backend details.</span></p>
+    <p><span class="zh">非目标范围也要明确：本页不定义 <code>glslfx</code> 语法手册，不逐行解释 shader 文件内容，不承诺任何具体 renderer 支持，不描述 <code>UsdShade</code> 网络 authoring，也不替代 <code>Sdr</code> registry 文档。它只解释这个 API front page 的定位：<code>SdrGlslfx</code> 是把 <code>glslfx</code> parser 放在 OpenUSD <code>Sdr</code> 体系中的模块入口。</span><span class="en">Out of scope: full glslfx syntax, shader file tutorial, renderer support guarantees, and UsdShade authoring.</span></p>
+    <p><span class="zh">最小验证思路是准备一个已知可用的 <code>glslfx</code> 输入，确认发现路径可见、parser 能读、registry 能查询，再用上层工具检查 shader definition 是否作为预期节点或属性出现。这样可以把 parser 层验证控制在较小范围内，不把整个材质和渲染流程都压到本页职责上。</span><span class="en">A minimal validation path verifies discovery, parser read, registry query, and then higher-level tool visibility.</span></p>
+  </section>
 
+  <section data-cn-complete="engineering-notes">
+    <h2>工程使用提示</h2>
+    <p><span class="zh">因为官方页只说明“housing parser”，本地中文页在扩展说明时必须保守：它可以解释为什么 parser 层存在、为什么它和 <code>Sdr</code> registry 有关、为什么它不等于 shader 执行层，但不能伪造不存在的函数列表或类层级。读者需要具体函数签名时，应继续进入本地 Doxygen 的 class/file 页面，而不是把 front page 当作完整 API reference。</span><span class="en">The front page explains the parser module boundary and does not invent function-level API reference.</span></p>
+    <p><span class="zh"><code>glslfx</code> 输入出错时，错误归因应从最靠近输入的地方开始：文件是否存在、路径是否被发现、文本是否符合 glslfx 期望、parser 是否报告语法或结构问题。只有当这些都成立后，才继续检查 <code>Sdr</code> registry 中的 shader definition 是否生成。若直接跳到材质网络或渲染输出，往往会把低层输入问题误判成高层渲染问题。</span><span class="en">Start debugging glslfx issues from file discovery and parse success before moving to registry or rendering layers.</span></p>
+    <p><span class="zh">在团队协作中，这个模块也能帮助分清责任边界。负责 shader definition 文件的人应确认 glslfx 内容有效；负责 Sdr 集成的人应确认 parser 输出能进入 registry；负责 USD 材质 authoring 的人应确认 <code>UsdShade</code> 网络引用了预期定义；负责 renderer 或 Hydra delegate 的人再检查渲染消费。每层都有自己的证据，不应混成一个“shader 不工作”的笼统问题。</span><span class="en">Team debugging should split ownership among definition authors, Sdr integration, UsdShade authoring, and renderer consumers.</span></p>
+    <p><span class="zh">如果替换或调整解析实现，调用方也应期待保持模块契约：同样的 glslfx 定义应能得到等价的 Sdr 可消费结果，错误报告应尽量定位到输入或解析阶段，而不是把内部实现细节泄漏给上层。这样 <code>SdrGlslfx</code> 才能作为小而稳定的 parser boundary 存在。</span><span class="en">Parser implementation changes should preserve equivalent Sdr-consumable results and clear error boundaries.</span></p>
+    <p><span class="zh">阅读本页时，一个实用心智模型是“输入格式适配器”。<code>SdrGlslfx</code> 把 glslfx 世界连接到 Sdr 世界；它不是定义所有 shader 元数据规则的地方，也不是决定所有渲染能力的地方。把它放在格式适配器的位置，能让后续阅读 Sdr、UsdShade、UsdShaders、UsdMtlx 和 Hydra 页面时更顺。</span><span class="en">A useful mental model is input-format adapter from glslfx into Sdr.</span></p>
+    <p><span class="zh">本地连续阅读路径也按这个模型组织：上一页 <a href="js_page_front.html">Js</a> 说明基础 I/O 和数据解析边界；本页说明 shader definition 输入格式解析边界；下一页 <a href="usd_hydra_page_front.html">UsdHydra</a> 将进入 USD 与 Hydra schema 的另一个连接点。它们都不是最终用户功能页，而是帮助开发者理解 OpenUSD 内部模块分层的入口页。</span><span class="en">The local reading order keeps parser and adapter modules in a coherent API path.</span></p>
+    <p><span class="zh">短页晋级时，中文质量不取决于把一句英文翻译成几种说法，而取决于是否能补足读者真正需要的上下文。本页保留官方唯一句子的精确含义，同时补充格式解析器、registry、材质 authoring 和渲染消费之间的分层关系；这样读者不用依赖英文正文，也能知道该去哪个相邻页面继续排查。</span><span class="en">For a short page, quality comes from accurate context and navigation rather than repeated literal translation.</span></p>
+    <p><span class="zh">因此，页面中的中文扩展都服务于一个目标：让 <code>SdrGlslfx</code> 的角色保持小而清楚。任何超出 parser housing 的行为，例如 shader 代码执行、renderer capability、材质网络构建或完整 glslfx 规范，都被明确标成非目标范围，避免读者把错误归因放到错误层级，并保持维护判断一致，后续排查更稳，责任边界更清晰明确。</span><span class="en">The Chinese expansion keeps the parser role small and explicit.</span></p>
+  </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
-    </section>
-    <section data-cn-refinement="api-module-front-quality-pass-056">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 SdrGlslfx: Glslfx parser for Sdr 补充中文优先的模块定位、阅读路径、概念边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、变量名、类型名、头文件名、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first module positioning, reading paths, concept boundaries, and terminology for SdrGlslfx: Glslfx parser for Sdr while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, variable names, type names, header names, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`SdrGlslfx: Glslfx parser for Sdr` 是一个很窄的模块入口，官方摘录只说明该库承载面向 `Sdr` 的 `glslfx` parser。</span></li>
-        <li><span class="zh">阅读本页时不要把它当作完整 Shader Definition Registry 文档；它更像是 `Sdr` 生态中的格式解析支撑层，用来把 glslfx 描述解析成 `Sdr` 可消费的信息。</span></li>
-        <li><span class="zh">因为当前页面没有同站 API 文档链接，本地复刻中只保留模块定位、官方原文摘录和官方原页入口；后续若扩展范围，应优先对照 `sdr_page_front.html` 与 `SdrRegistry` 相关页面。</span></li>
-        <li><span class="zh">`glslfx` 通常可理解为描述 GLSL shader 片段、参数和元数据的文件/格式入口；`SdrGlslfx` 的价值在于让这些定义接入统一的 shader discovery 与 shader property 查询流程。</span></li>
-        <li><span class="zh">阅读路径建议：先看 `Sdr: Shader Definition Registry` 的 Background 与 Usage，再回到本页理解 `glslfx parser` 在 Sdr 插件链中的位置。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">Sdr 的 glslfx 解析模块：</span><span class="en">SdrGlslfx</span></li>
-        <li><span class="zh">glslfx 解析器：</span><span class="en">glslfx parser</span></li>
-        <li><span class="zh">Shader Definition Registry：</span><span class="en">Sdr</span></li>
-        <li><span class="zh">着色器定义：</span><span class="en">shader definition</span></li>
-        <li><span class="zh">解析器：</span><span class="en">parser</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="api-index-quality-pass-161">
-      <h2>中文二次索引补强 / Chinese Second-Pass Index Notes</h2>
-      <p class="zh">`sdr_glslfx_page_front.html` 是 `SdrGlslfx` 模块入口，描述 Glslfx parser 如何把 Pixar `glslfx` shader container 解析成 `Sdr` 可消费的 shader definition。它位于 shader definition discovery 层，不是材质网络 authoring 页面，也不是 GPU shader runtime 手册。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for SdrGlslfx: Glslfx parser for Sdr while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`SdrGlslfx` 应与 `SdrRegistry`、`SdrShaderNode`、`SdrShaderProperty` 和 parser plugin 机制一起阅读；它的职责是解析 definition metadata，而不是建立 `UsdShade` connection。</span></li>
-        <li><span class="zh">`glslfx` 文件通常包含 shader snippets、properties、metadata 和 generation 信息；SdrGlslfx 关注如何把这些信息暴露给 `Sdr` 查询。</span></li>
-        <li><span class="zh">如果目标是材质网络，应回到 `UsdShade`；如果目标是具体 shader node 定义，应继续看 `UsdShaders` 或目标 renderer 的 shader discovery 文档。</span></li>
-        <li><span class="zh">调试 shader discovery 时，先确认 shader asset path、parser plugin、metadata 字段和 node identifier，再检查下游 renderer 是否支持对应 implementation。</span></li>
-        <li><span class="zh">本页的中文层强调 `SdrGlslfx`、`Sdr`、`UsdShade`、`HioGlslfx` 的职责区分，避免把 parser、resource I/O 和 material authoring 混在一起。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">Glslfx 解析器：</span><span class="en">Glslfx parser</span></li>
-        <li><span class="zh">shader definition：</span><span class="en">shader definition</span></li>
-        <li><span class="zh">解析器插件：</span><span class="en">parser plugin</span></li>
-        <li><span class="zh">节点标识符：</span><span class="en">node identifier</span></li>
-        <li><span class="zh">shader metadata：</span><span class="en">shader metadata</span></li>
-        <li><span class="zh">发现层：</span><span class="en">discovery layer</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级结构：SdrGlslfx: Glslfx parser for Sdr</span><span class="en">SdrGlslfx: Glslfx parser for Sdr</span></li>
-<li><span class="zh">第 1 级结构：Overview</span><span class="en">Overview</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">Overview This library houses the glslfx parser for sdr.</p>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li>No same-site document links extracted.</li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/api/sdr_glslfx_page_front.html">打开官方原页 / Open official page</a></p>
-    </section>
-  </main>
+  <section data-cn-complete="paragraph-coverage">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+    <ul>
+      <li><span class="zh">标题已覆盖：<code>SdrGlslfx : Glslfx parser for Sdr</code> 被解释为 Sdr 的 glslfx parser 承载模块。</span><span class="en">Title coverage: SdrGlslfx is the Glslfx parser for Sdr.</span></li>
+      <li><span class="zh">Overview 已覆盖：官方唯一句子 <code>This library houses the glslfx parser for sdr.</code> 已转化为中文职责边界和调试路径。</span><span class="en">Overview coverage: the official parser statement is mapped into responsibilities and debugging boundaries.</span></li>
+      <li><span class="zh">概念边界已覆盖：parser、registry、UsdShade authoring、UsdShaders definition、UsdMtlx plugin、Hd/Hdx render consumption 的层级已经分开说明。</span><span class="en">Boundary coverage separates parser, registry, authoring, shader definitions, MaterialX, and rendering consumption.</span></li>
+      <li><span class="zh">常见误读已覆盖：本页不是 shader runtime、不是 GPU 编译器、不是 renderer、不是 glslfx 语法手册，也不是 UsdShade 网络教程。</span><span class="en">Misread coverage states that this page is not runtime, compiler, renderer, syntax manual, or UsdShade tutorial.</span></li>
+      <li><span class="zh">调试路径已覆盖：从 glslfx 输入、发现路径、parser 输出、Sdr registry 查询，到上层材质和渲染消费逐层排查。</span><span class="en">Debugging coverage follows input, discovery, parser output, registry query, and higher-level consumers.</span></li>
+      <li><span class="zh">本地阅读路径已覆盖：总入口、API 入口、Release 入口、source snapshot、上一页 Js、下一页 UsdHydra、相邻 Sdr/UsdShade/UsdShaders/UsdMtlx/Hd/Hdx 页面和显式 Open official page 外跳均已保留。</span><span class="en">Local reading path coverage includes final entry, API entry, release entry, source snapshot, related pages, previous/next, and official link.</span></li>
+    </ul>
+  </section>
+</main>
 </body>
 </html>

@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-08T15:37:35.686Z
+Generated: 2026-06-08T15:57:28.509Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 188
-- bilingual_complete: 218
+- bilingual_draft: 187
+- bilingual_complete: 219
 
 ## Grade Counts
 
 - draft_template_only: 10
-- draft_needs_translation: 178
-- good_bilingual: 218
+- draft_needs_translation: 177
+- good_bilingual: 219
 
 ## Current Focus Batch
 
@@ -309,7 +309,7 @@ Generated: 2026-06-08T15:37:35.686Z
 | 243 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/pxr_display_filter_adapter_8h_source.html` |
 | 244 | draft_template_only | bilingual_draft | 62 | 2/4 | 0 | 0 | `full_site/api/riley_param_schema_8h_source.html` |
 | 245 | good_bilingual | bilingual_complete | 706 | 43/43 | 0 | 0 | `full_site/api/sdf_page_front.html` |
-| 246 | draft_needs_translation | bilingual_draft | 531 | 26/17 | 0 | 0 | `full_site/api/sdr_glslfx_page_front.html` |
+| 246 | good_bilingual | bilingual_complete | 626 | 32/32 | 0 | 0 | `full_site/api/sdr_glslfx_page_front.html` |
 | 247 | good_bilingual | bilingual_complete | 770 | 34/34 | 0 | 0 | `full_site/api/sdr_page_front.html` |
 | 248 | draft_needs_translation | bilingual_draft | 338 | 14/11 | 0 | 0 | `full_site/api/sparse_vectorized_input_traverser_8h.html` |
 | 249 | draft_needs_translation | bilingual_draft | 387 | 29/26 | 0 | 0 | `full_site/api/struct_hgi_sampler_desc.html` |
