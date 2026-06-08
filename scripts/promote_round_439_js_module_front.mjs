@@ -1,10 +1,81 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Js: JSON I/O - OpenUSD API 双语</title>
-  <style>
+import fs from "node:fs";
+import path from "node:path";
+
+const ROOT = process.cwd();
+const ROUND = 439;
+const ROUND_TYPE = "PromotionRound";
+const TARGET = "full_site/api/js_page_front.html";
+const SOURCE = "source/full_api/js_page_front_source.html";
+const OFFICIAL_URL = "https://openusd.org/release/api/js_page_front.html";
+const SOURCE_PARITY_REPORT = "reports/round_439_js_module_front_source_parity.json";
+const PROMOTION_ID = "round-439-api-js-module-front";
+
+function rel(...parts) {
+  return path.join(ROOT, ...parts);
+}
+
+function esc(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function htmlDecode(value) {
+  return String(value ?? "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#([0-9]+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)));
+}
+
+function stripTags(value) {
+  return htmlDecode(
+    String(value ?? "")
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+  );
+}
+
+function zhChars(value) {
+  return (String(value ?? "").match(/[\u4e00-\u9fff]/g) || []).length;
+}
+
+function readJson(file) {
+  return JSON.parse(fs.readFileSync(rel(file), "utf8").replace(/^\uFEFF/, ""));
+}
+
+function writeJson(file, value) {
+  fs.writeFileSync(rel(file), `${JSON.stringify(value, null, 2)}\n`, "utf8");
+}
+
+function sourceHtml() {
+  return fs.readFileSync(rel(SOURCE), "utf8");
+}
+
+function sourceText() {
+  return stripTags(sourceHtml());
+}
+
+function sourceHeadings() {
+  const heads = [...sourceHtml().matchAll(/<h([1-4])[^>]*>([\s\S]*?)<\/h\1>/gi)].map((match) => ({
+    level: Number(match[1]),
+    text: stripTags(match[2]),
+  }));
+  const title = stripTags(sourceHtml().match(/<div class="title">([\s\S]*?)<\/div>/i)?.[1] || "");
+  return title ? [{ level: 1, text: title }, ...heads] : heads;
+}
+
+function css() {
+  return `
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.68}
     header{background:#142538;color:#fff;padding:28px 32px}
     main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
@@ -39,15 +110,39 @@
       .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
       .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
     }
-  </style>
-</head>
-<body class="openusd-has-reading-flow" data-cn-status="bilingual_complete" data-cn-round="439" data-cn-scope="api" data-cn-review-ready="true">
+  `;
+}
 
+const links = {
+  final: "../../openusd_bilingual_final.html",
+  api: "../../site/index.html",
+  apiRedirect: "../../site/api/index.html",
+  release: "../../site/release_index.html",
+  source: "../../source/full_api/js_page_front_source.html",
+  official: OFFICIAL_URL,
+  prev: "kind_page_front.html",
+  next: "sdr_glslfx_page_front.html",
+  tf: "tf_page_front.html",
+  vt: "vt_page_front.html",
+  sdf: "sdf_page_front.html",
+  plug: "plug_page_front.html",
+  kind: "kind_page_front.html",
+};
+
+function headingList() {
+  return sourceHeadings()
+    .filter((heading) => heading.text && heading.text !== "Table of Contents")
+    .map((heading) => `<li><span class="zh">官方结构：<code>${esc(heading.text)}</code>。中文页把这一节映射到 C++ JSON parsing/writing、recursive container structures、JSON standard value abstraction、implementation hiding、repository coding standards、<code>js/json.h</code> 入口和 Python 边界。</span><span class="en">Source heading level ${heading.level}: ${esc(heading.text)}</span></li>`)
+    .join("\n");
+}
+
+function readingFlowNav() {
+  return `
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
-  <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
+  <a data-reading-flow="final" href="${links.final}">总入口</a>
   <span> / </span>
-  <a data-reading-flow="api-entry" href="../../site/index.html">API 本地入口</a>
+  <a data-reading-flow="api-entry" href="${links.api}">API 本地入口</a>
   <span> / api / js_page_front.html</span>
 </nav>
 <aside class="openusd-reading-flow-nav" aria-label="本地阅读导航 / Local reading navigation">
@@ -56,10 +151,10 @@
     <section>
       <h3>入口 / Entrances</h3>
       <ul>
-        <li><a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口 / Final entry</a></li>
-        <li><a data-reading-flow="release-entry" href="../../site/release_index.html">Release 本地入口</a></li>
-        <li><a data-reading-flow="api-entry" href="../../site/index.html">API Doxygen 本地入口</a></li>
-        <li><a data-reading-flow="api-redirect" href="../../site/api/index.html">API redirect / site/api/index.html</a></li>
+        <li><a data-reading-flow="final" href="${links.final}">总入口 / Final entry</a></li>
+        <li><a data-reading-flow="release-entry" href="${links.release}">Release 本地入口</a></li>
+        <li><a data-reading-flow="api-entry" href="${links.api}">API Doxygen 本地入口</a></li>
+        <li><a data-reading-flow="api-redirect" href="${links.apiRedirect}">API redirect / site/api/index.html</a></li>
       </ul>
     </section>
     <section>
@@ -72,42 +167,55 @@
     <section>
       <h3>数据和基础类型</h3>
       <ul>
-        <li><a data-reading-flow="related" href="tf_page_front.html">Tf 基础工具和 token</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="vt_page_front.html">Vt 值承载和数组</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="sdf_page_front.html">Sdf 场景描述数据</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.tf}">Tf 基础工具和 token</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.vt}">Vt 值承载和数组</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.sdf}">Sdf 场景描述数据</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
       <h3>配置和资产上下文</h3>
       <ul>
-        <li><a data-reading-flow="related" href="plug_page_front.html">Plug 插件配置</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="kind_page_front.html">Kind taxonomy 配置示例</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.plug}">Plug 插件配置</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.kind}">Kind taxonomy 配置示例</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
       <h3>上一页 / 下一页</h3>
       <ul>
-        <li><a data-reading-flow="prev" href="kind_page_front.html">上一页 / Previous: Kind</a></li>
-        <li><a data-reading-flow="next" href="sdr_glslfx_page_front.html">下一页 / Next: SdrGlslfx 候选页面</a></li>
+        <li><a data-reading-flow="prev" href="${links.prev}">上一页 / Previous: Kind</a></li>
+        <li><a data-reading-flow="next" href="${links.next}">下一页 / Next: SdrGlslfx 候选页面</a></li>
       </ul>
     </section>
     <section>
       <h3>官方外跳 / Official</h3>
       <ul>
-        <li><a class="official-link" data-reading-flow="official" href="https://openusd.org/release/api/js_page_front.html">打开官方原页 / Open official page</a></li>
+        <li><a class="official-link" data-reading-flow="official" href="${links.official}">打开官方原页 / Open official page</a></li>
       </ul>
     </section>
   </div>
 </aside>
-<!-- openusd-reading-flow-nav:end -->
+<!-- openusd-reading-flow-nav:end -->`;
+}
+
+function buildHtml() {
+  return `<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Js: JSON I/O - OpenUSD API 双语</title>
+  <style>${css()}</style>
+</head>
+<body class="openusd-has-reading-flow" data-cn-status="bilingual_complete" data-cn-round="${ROUND}" data-cn-scope="api" data-cn-review-ready="true">
+${readingFlowNav()}
 <header>
   <h1>Js: JSON I/O</h1>
-  <div class="meta">第 439 轮 PromotionRound：Js 模块入口完成。源页：<code>source/full_api/js_page_front_source.html</code>；官方页：<code>https://openusd.org/release/api/js_page_front.html</code></div>
+  <div class="meta">第 ${ROUND} 轮 ${ROUND_TYPE}：Js 模块入口完成。源页：<code>${SOURCE}</code>；官方页：<code>${OFFICIAL_URL}</code></div>
   <div class="navlinks">
-    <a href="../../openusd_bilingual_final.html">总入口</a>
-    <a href="../../site/index.html">API 本地入口</a>
-    <a href="../../source/full_api/js_page_front_source.html">本地 source snapshot</a>
-    <a href="https://openusd.org/release/api/js_page_front.html">Open official page</a>
+    <a href="${links.final}">总入口</a>
+    <a href="${links.api}">API 本地入口</a>
+    <a href="${links.source}">本地 source snapshot</a>
+    <a href="${links.official}">Open official page</a>
   </div>
 </header>
 <main>
@@ -121,10 +229,9 @@
 
   <section data-cn-complete="source-coverage">
     <h2>官方结构与 source parity</h2>
-    <p><span class="zh">本页使用 <code>source/full_api/js_page_front_source.html</code> 对齐官方 <code>Js: JSON I/O</code> 页面。官方 source 只有一个 <code>Overview</code> section，但其中包含所有晋级必须保留的事实：C++ JSON parse/write、recursive container structures、JSON standard value abstraction、parsing/serialization implementation hiding、repository coding standards、consistent interface for developers、顶层入口在 <code>js/json.h</code>，以及没有 Python bindings。中文页按这些事实组织，不把短页扩写成无关的 JavaScript 教程。</span><span class="en">The local page follows the official Overview and preserves C++ JSON I/O, js/json.h, and the Python-boundary statement.</span></p>
+    <p><span class="zh">本页使用 <code>${SOURCE}</code> 对齐官方 <code>Js: JSON I/O</code> 页面。官方 source 只有一个 <code>Overview</code> section，但其中包含所有晋级必须保留的事实：C++ JSON parse/write、recursive container structures、JSON standard value abstraction、parsing/serialization implementation hiding、repository coding standards、consistent interface for developers、顶层入口在 <code>js/json.h</code>，以及没有 Python bindings。中文页按这些事实组织，不把短页扩写成无关的 JavaScript 教程。</span><span class="en">The local page follows the official Overview and preserves C++ JSON I/O, js/json.h, and the Python-boundary statement.</span></p>
     <ul>
-      <li><span class="zh">官方结构：<code>Js: JSON I/O</code>。中文页把这一节映射到 C++ JSON parsing/writing、recursive container structures、JSON standard value abstraction、implementation hiding、repository coding standards、<code>js/json.h</code> 入口和 Python 边界。</span><span class="en">Source heading level 1: Js: JSON I/O</span></li>
-<li><span class="zh">官方结构：<code>Overview</code>。中文页把这一节映射到 C++ JSON parsing/writing、recursive container structures、JSON standard value abstraction、implementation hiding、repository coding standards、<code>js/json.h</code> 入口和 Python 边界。</span><span class="en">Source heading level 1: Overview</span></li>
+      ${headingList()}
     </ul>
     <p><span class="zh">source parity 的检查重点是官方标题、<code>Overview</code>、<code>Methods for parsing and writing JSON data from C++</code>、<code>converting between arbitrary recursive container structures</code>、<code>abstraction of values described by the JSON standard</code>、<code>parsing and serialization</code>、<code>implementation to change without affecting clients</code>、<code>coding standards of this repository</code>、<code>consistent interface for developers</code>、<code>top-level entrypoints are in js/json.h</code> 和 <code>No Python bindings are provided by this library</code>。这些短句全部映射到中文解释和边界说明中。</span><span class="en">Source parity checks the exact official overview facts and keeps the source URL available.</span></p>
   </section>
@@ -145,9 +252,9 @@
 
   <section data-cn-complete="adjacent-modules">
     <h2>相邻模块关系和调试路径</h2>
-    <p><span class="zh">与 <a href="plug_page_front.html">Plug</a> 的关系最直接：插件发现和 <code>plugInfo.json</code> 这类配置数据经常使用 JSON 表达。<code>Js</code> 可以作为 C++ 侧读取或写出 JSON 数据的基础库，而 <code>Plug</code> 负责解释这些数据如何参与插件注册。调试插件元数据时，要把“JSON 是否能被 parse”与“插件 registry 是否接受这些字段”分开看。</span><span class="en">Plug metadata often uses JSON; Js can parse/write JSON while Plug interprets plugin metadata.</span></p>
-    <p><span class="zh">与 <a href="tf_page_front.html">Tf</a> 和 <a href="vt_page_front.html">Vt</a> 的关系是基础设施层面的：<code>Tf</code> 提供 token、诊断和通用工具，<code>Vt</code> 提供值承载和数组语义，<code>Js</code> 则处理 JSON 值结构和文本 I/O。它们都属于较底层的支持模块，但职责并不重叠。看到 JSON 字符串、token 名或动态值时，需要先判断问题发生在文本解析、值承载还是上层语义解释。</span><span class="en">Tf, Vt, and Js are adjacent infrastructure modules with separate responsibilities.</span></p>
-    <p><span class="zh">与 <a href="sdf_page_front.html">Sdf</a> 的关系也要区分。<code>Sdf</code> 是 Scene Description Foundations，关注 USD 场景描述、layer、path、spec 等基础数据模型；<code>Js</code> 只是 JSON I/O。即使某个工具把 JSON 用作输入配置，最终写入 USD scene description 的规则也不由 <code>Js</code> 决定。排查数据流时可以先确认 JSON 文本是否有效，再确认解析结果是否符合调用方预期，最后才检查 Sdf/Usd 层写入是否正确。</span><span class="en">Js is JSON I/O; Sdf is scene description infrastructure.</span></p>
+    <p><span class="zh">与 <a href="${links.plug}">Plug</a> 的关系最直接：插件发现和 <code>plugInfo.json</code> 这类配置数据经常使用 JSON 表达。<code>Js</code> 可以作为 C++ 侧读取或写出 JSON 数据的基础库，而 <code>Plug</code> 负责解释这些数据如何参与插件注册。调试插件元数据时，要把“JSON 是否能被 parse”与“插件 registry 是否接受这些字段”分开看。</span><span class="en">Plug metadata often uses JSON; Js can parse/write JSON while Plug interprets plugin metadata.</span></p>
+    <p><span class="zh">与 <a href="${links.tf}">Tf</a> 和 <a href="${links.vt}">Vt</a> 的关系是基础设施层面的：<code>Tf</code> 提供 token、诊断和通用工具，<code>Vt</code> 提供值承载和数组语义，<code>Js</code> 则处理 JSON 值结构和文本 I/O。它们都属于较底层的支持模块，但职责并不重叠。看到 JSON 字符串、token 名或动态值时，需要先判断问题发生在文本解析、值承载还是上层语义解释。</span><span class="en">Tf, Vt, and Js are adjacent infrastructure modules with separate responsibilities.</span></p>
+    <p><span class="zh">与 <a href="${links.sdf}">Sdf</a> 的关系也要区分。<code>Sdf</code> 是 Scene Description Foundations，关注 USD 场景描述、layer、path、spec 等基础数据模型；<code>Js</code> 只是 JSON I/O。即使某个工具把 JSON 用作输入配置，最终写入 USD scene description 的规则也不由 <code>Js</code> 决定。排查数据流时可以先确认 JSON 文本是否有效，再确认解析结果是否符合调用方预期，最后才检查 Sdf/Usd 层写入是否正确。</span><span class="en">Js is JSON I/O; Sdf is scene description infrastructure.</span></p>
     <p><span class="zh">推荐调试顺序是：先用最小 JSON 输入确认 parser 是否能读；再检查 C++ 容器和值结构是否和预期一致；然后确认 writer 输出是否能被再次读取；最后再进入调用方模块，例如 <code>Plug</code>、工具配置或场景导入逻辑。这样能把 encoding、syntax、container conversion、domain validation 和 USD authoring 错误分开定位。</span><span class="en">A practical debugging path separates JSON syntax, container conversion, domain validation, and USD authoring.</span></p>
   </section>
 
@@ -186,3 +293,197 @@
 </main>
 </body>
 </html>
+`;
+}
+
+function sourceParity() {
+  const src = sourceText();
+  const rawOut = fs.existsSync(rel(TARGET)) ? fs.readFileSync(rel(TARGET), "utf8") : "";
+  const out = stripTags(rawOut);
+  const sourceKeywords = [
+    "Js: JSON I/O",
+    "Overview",
+    "Methods for parsing and writing JSON data from C++",
+    "converting between arbitrary recursive container structures",
+    "abstraction of values described by the JSON standard",
+    "parsing and serialization",
+    "implementation to change without affecting clients",
+    "coding standards of this repository",
+    "consistent interface for developers",
+    "top-level entrypoints are in js/json.h",
+    "No Python bindings are provided by this library",
+    "Python standard library 'json'",
+  ];
+  const outputKeywords = [
+    ...sourceKeywords,
+    "JavaScript",
+    "Python binding",
+    "Plug",
+    "Tf",
+    "Vt",
+    "Sdf",
+    "JSON schema validator",
+    "Open official page",
+  ];
+  return {
+    generated_at: new Date().toISOString(),
+    round: ROUND,
+    round_type: ROUND_TYPE,
+    target: TARGET,
+    source_snapshot: SOURCE,
+    official_url: OFFICIAL_URL,
+    source_headings: sourceHeadings(),
+    source_keywords_checked: sourceKeywords,
+    output_keywords_checked: outputKeywords,
+    missing_source_keywords: sourceKeywords.filter((keyword) => !src.includes(keyword)),
+    missing_output_keywords: outputKeywords.filter((keyword) => !out.includes(keyword)),
+    output_checks: {
+      has_complete_status: rawOut.includes('data-cn-status="bilingual_complete"') && rawOut.includes(`data-cn-round="${ROUND}"`),
+      has_paragraph_coverage: out.includes("Paragraph-Level Bilingual Coverage") && out.includes("逐段双语理解"),
+      has_final_entry: rawOut.includes("openusd_bilingual_final.html"),
+      has_api_entry: rawOut.includes("site/index.html"),
+      has_api_redirect: rawOut.includes("site/api/index.html"),
+      has_release_entry: rawOut.includes("site/release_index.html"),
+      has_reading_flow_nav: rawOut.includes("openusd-reading-flow-nav") && rawOut.includes("openusd-reading-flow-breadcrumb"),
+      has_explicit_official_link: rawOut.includes("Open official page") && rawOut.includes(OFFICIAL_URL),
+      no_draft_marker: !/bilingual_draft|batch draft page|later iterations add denser bilingual coverage|后续迭代会继续补齐/.test(out),
+      zh_chars: zhChars(rawOut),
+      zh_blocks: (rawOut.match(/class=["'][^"']*\bzh\b[^"']*["']/g) || []).length,
+    },
+  };
+}
+
+function writePage() {
+  fs.writeFileSync(rel(TARGET), buildHtml(), "utf8");
+  writeJson(SOURCE_PARITY_REPORT, sourceParity());
+}
+
+function precheck() {
+  const report = sourceParity();
+  const failed = [];
+  if (report.missing_source_keywords.length) failed.push(`missing source keywords: ${report.missing_source_keywords.join(", ")}`);
+  if (report.missing_output_keywords.length) failed.push(`missing output keywords: ${report.missing_output_keywords.join(", ")}`);
+  for (const [key, value] of Object.entries(report.output_checks)) {
+    if (typeof value === "boolean" && !value) failed.push(`output check failed: ${key}`);
+  }
+  if (report.output_checks.zh_chars < 2800) failed.push(`zh chars too low: ${report.output_checks.zh_chars}`);
+  if (report.output_checks.zh_blocks < 32) failed.push(`zh blocks too low: ${report.output_checks.zh_blocks}`);
+  if (failed.length) {
+    console.error(JSON.stringify({ passed: false, failed, report }, null, 2));
+    process.exit(1);
+  }
+  writeJson(SOURCE_PARITY_REPORT, report);
+  console.log(JSON.stringify({ passed: true, report }, null, 2));
+}
+
+function updateManifest() {
+  const raw = readJson("reports/bilingual_completion_promotions.json");
+  const doc = {
+    ...raw,
+    generated_at: raw.generated_at || new Date().toISOString(),
+    promotions: Array.isArray(raw.promotions) ? raw.promotions : [],
+    updated_at: new Date().toISOString(),
+  };
+  doc.promotions = doc.promotions.filter((entry) => entry.id !== PROMOTION_ID && entry.local_output !== TARGET);
+  doc.promotions.push({
+    id: PROMOTION_ID,
+    title: "Js: JSON I/O",
+    official_url: OFFICIAL_URL,
+    local_output: TARGET,
+    status: "bilingual_complete",
+    reason: `Round ${ROUND} ${ROUND_TYPE}: promote the Js module front page by adding Chinese main-reading-path coverage for C++ JSON parsing/writing, arbitrary recursive container structures, JSON standard value abstraction, parsing/serialization implementation hiding, repository coding standards, js/json.h entrypoints, no-Python-bindings boundary, Python standard library json guidance, Plug/Tf/Vt/Sdf adjacent paths, source parity, reading-flow navigation, and explicit official-page verification.`,
+    evidence: {
+      page_contains_status: "bilingual_complete",
+      generic_draft_marker_removed: true,
+      minimum_chinese_chars: 2800,
+      minimum_complete_section_chinese_chars: 2600,
+      minimum_chinese_blocks: 32,
+      official_source_compared: true,
+      local_source_snapshot_compared: SOURCE,
+      source_parity_report: SOURCE_PARITY_REPORT,
+      round_type: ROUND_TYPE,
+    },
+  });
+  writeJson("reports/bilingual_completion_promotions.json", doc);
+}
+
+function updateProblemAudit() {
+  const quality = readJson("reports/translation_quality_review.json");
+  const debt = readJson("reports/english_debt_audit.json");
+  const inventory = readJson("reports/all_pages_inventory.json");
+  const counts = {
+    total_pages: inventory.counts.total_pages,
+    bilingual_complete: quality.status_counts.bilingual_complete,
+    bilingual_draft: quality.status_counts.bilingual_draft,
+    good_bilingual: quality.grade_counts.good_bilingual,
+    draft_needs_translation: quality.grade_counts.draft_needs_translation,
+    draft_template_only: quality.grade_counts.draft_template_only,
+    review_ready_zh: debt.counts.review_ready_zh,
+    api_complete: debt.counts.api_complete,
+    api_review_ready_zh: debt.counts.api_review_ready_zh,
+    release_complete: debt.counts.release_complete,
+    release_review_ready_zh: debt.counts.release_review_ready_zh,
+    pending_full_scope: inventory.counts.pending_full_scope_pages,
+  };
+  writeJson("reports/current_problem_audit.json", {
+    generated_at: new Date().toISOString(),
+    purpose: `第 ${ROUND} 轮 ${ROUND_TYPE} 记录：确认 ${TARGET} 已晋级，并跟踪当前 OpenUSD 双语完成缺口。`,
+    last_completed_round: {
+      round: ROUND,
+      round_type: ROUND_TYPE,
+      target: TARGET,
+      commit_sha: null,
+      previous_good_bilingual: 217,
+    },
+    current_counts: counts,
+    problems: [
+      {
+        id: "P0-api-draft-backlog",
+        severity: "P0",
+        summary: `当前 good_bilingual=${counts.good_bilingual}/406，API complete=${counts.api_complete}，仍有 ${counts.bilingual_draft} 个可检查草稿。`,
+        evidence: `第 ${ROUND} 轮 ${ROUND_TYPE} 将 ${TARGET} 从 API 草稿晋级为 good_bilingual；release 范围保持 ${counts.release_complete}/126 complete。`,
+        required_action: "继续推进 API 草稿；只把真实达到中文主阅读路径和 source parity 的页面写入 promotion manifest。",
+      },
+      {
+        id: "P1-left-navigation-reading-flow",
+        severity: "P1",
+        summary: "完成页必须保留本地 reading-flow 导航、breadcrumb、API/Release/总入口和显式官方外跳。",
+        evidence: "本轮页面生成了本地侧栏、breadcrumb、相邻 API 阅读路径和 Open official page 外跳，并会重新运行 reading-flow 审计。",
+        required_action: "若 reading-flow 审计失败，先修导航，不得推送。",
+      },
+      {
+        id: "P1-markdown-record-encoding",
+        severity: "P1",
+        summary: "Markdown 编码守卫继续作为硬门槛。",
+        evidence: "work.md、reports/iteration_report.md、reports/current_problem_audit.md、reports/bilingual_completion_promotions.md 必须无重复问号损坏、replacement character 和 UTF-8 BOM。",
+        required_action: "若 audit_openusd_markdown_encoding.mjs 失败，先做 ConsistencyRound。",
+      },
+    ],
+    promoted_pages: [
+      {
+        round: ROUND,
+        round_type: ROUND_TYPE,
+        output: TARGET,
+        official_url: OFFICIAL_URL,
+        source_snapshot: SOURCE,
+        source_parity_report: SOURCE_PARITY_REPORT,
+      },
+    ],
+    not_promoted_pages: [],
+    source_parity_report: SOURCE_PARITY_REPORT,
+    next_actions: [
+      "release 范围已 126/126 complete，不要重复处理 release 已完成页。",
+      "下一轮建议先核验 full_site/api/sdr_glslfx_page_front.html 或其他仍为 bilingual_draft 的 API front page；开始前必须确认 git/report/validation/markdown/reading-flow 状态干净一致。",
+    ],
+    next_action: "下一轮建议 PromotionRound：full_site/api/sdr_glslfx_page_front.html（需先确认 source snapshot 和可达标状态）。",
+  });
+}
+
+const commands = new Set(process.argv.slice(2));
+if (commands.has("--write-page")) writePage();
+if (commands.has("--precheck")) precheck();
+if (commands.has("--manifest")) updateManifest();
+if (commands.has("--problem")) updateProblemAudit();
+if (commands.size === 0) {
+  console.log("Usage: node scripts/promote_round_439_js_module_front.mjs --write-page --precheck --manifest --problem");
+}

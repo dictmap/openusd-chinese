@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-08T15:15:44.952Z",
+  "generated_at": "2026-06-08T15:37:35.686Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 189,
-    "bilingual_complete": 217
+    "bilingual_draft": 188,
+    "bilingual_complete": 218
   },
   "grade_counts": {
     "draft_template_only": 10,
-    "draft_needs_translation": 179,
-    "good_bilingual": 217
+    "draft_needs_translation": 178,
+    "good_bilingual": 218
   },
   "focus_batch": [
     {
@@ -6699,29 +6699,29 @@
     },
     {
       "index": 213,
-      "title": "API 模块草稿：Js: JSON I/O / Js: JSON I/O",
+      "title": "Js: JSON I/O",
       "output": "full_site/api/js_page_front.html",
       "official_url": "https://openusd.org/release/api/js_page_front.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 26,
-      "enBlockCount": 18,
-      "zhChars": 543,
-      "enLetters": 1473,
-      "bodyChineseChars": 686,
+      "grade": "good_bilingual",
+      "zhBlockCount": 36,
+      "enBlockCount": 36,
+      "zhChars": 874,
+      "enLetters": 2654,
+      "bodyChineseChars": 2797,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 Js: JSON I/O 补充中文优先的用途说明、索引读法、模块边界和术语对照；英文页面名、API 名称、类名、函数名、变量名、宏名、类型名、头文件名、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`Js: JSON I/O` 是 USD 基础库中的 JSON 输入/输出模块入口，提供从 C++ 解析和写出 JSON 数据的方法，不是 JavaScript 运行时说明。"
+        "Js",
+        "这页的核心不是列出很多类，而是说明一个边界清晰的基础库：它把 JSON parsing/serialization 的实现细节封装起来，让客户端可以依赖稳定、一致的 OpenUSD C++ 接口，而不是直接绑定某个具体 JSON parser 的细节。官方文字说 it abstracts away the details of how the parsing and serialization are performed, in order to allow the implementation to change without affecting clients；中文理解就是，调用方应该面向 js/json.h",
+        "如果在 Python 中处理 JSON，官方建议使用 Python standard library json"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first purpose notes, index-reading guidance, module boundaries, and terminology for Js: JSON I/O while retaining English page names, API names, class names, function names, variable names, macro names, type names, header names, code, links, and source excerpts for comparison with the official Doxygen page."
+        "Js provides methods for parsing and writing JSON data from C++.",
+        "The library abstracts parsing and serialization details so implementation can change without affecting clients."
       ]
     },
     {
