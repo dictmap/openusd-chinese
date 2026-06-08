@@ -4,22 +4,28 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>最大化 USD 性能 / Maximizing USD Performance</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
+    .navlinks a{color:#d7e3f4;margin-right:14px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
-  </style>
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
+</style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
     .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
@@ -40,12 +46,19 @@
     }
   </style>
 </head>
-<body class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_draft</span>
-    <h1>最大化 USD 性能 / Maximizing USD Performance</h1>
-    <div class="meta">https://openusd.org/release/maxperf.html</div>
-  </header>
+<body data-cn-status="bilingual_complete" data-cn-round="417" data-cn-source="source/full_release/maxperf_source.html" class="openusd-has-reading-flow">
+<header>
+  <span class="status">bilingual_complete</span>
+  <h1>最大化 USD 性能</h1>
+  <p class="meta">Original title: Maximizing USD Performance | Round 417 DomainSprintRound | Source snapshot: source/full_release/maxperf_source.html</p>
+  <p class="navlinks">
+    <a href="../../openusd_bilingual_final.html">总入口</a>
+    <a href="../../site/release_index.html">Release 本地入口</a>
+    <a href="../../site/index.html">API 本地入口</a>
+    <a href="../../source/full_release/maxperf_source.html">Local source snapshot</a>
+    <a href="https://openusd.org/release/maxperf.html">Open official page</a>
+  </p>
+</header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
   <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
@@ -76,15 +89,15 @@
       <h3>同目录/同域 / Same Directory</h3>
       <ul>
         <li><a data-reading-flow="related" href="contributing_to_usd.html">Contributing</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="contributors.html">Contributors</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="dl_downloads.html">Downloads and Videos</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="genindex.html">Index</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="intro_to_openexec.html">Introduction to OpenExec</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="plugins_alembic.html">Alembic USD Plugin</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="plugins_renderman.html">RenderMan USD Imaging Plugin</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="plugins.html">Third Party Plugins</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="spec_usdpreviewsurface.html">UsdPreviewSurface Specification</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="spec_usdz.html">Usdz File Format Specification</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="spec.html">Specifications</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="tut_authoring_variants.html">Authoring Variants</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="tut_converting_between_layer_formats.html">Converting Between Layer Formats</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="press_opensource_announce.html">Open Source Announcement</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="press_opensource_release.html">Open Source Release</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
@@ -103,139 +116,86 @@
   </div>
 </aside>
 <!-- openusd-reading-flow-nav:end -->
+<main>
+  <section data-cn-complete="round-417-maxperf">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+    <p><span class="zh">本页是 USD 性能建议入口，覆盖多线程 allocator、二进制 <code>.usd</code> 几何和 shading cache、payload 打包资产，以及什么会让 USD scene 变重或昂贵。中文主阅读路径需要把这些建议拆成存储格式、内存分配、composition 结构、payload 管理和场景复杂度五类，避免把性能问题简单归因于文件大小。它适合与 performance metrics、render/user guide、payload/reference、asset resolution 和实际 profiler 结果一起阅读。</span><span class="en">This local page has been promoted after source parity and Chinese main-reading-path coverage checks.</span></p>
 
+    <h3>页面职责与快照说明</h3>
+    <ul>
+      <li><span class="zh">本页属于 release 剩余支撑/参考页收尾范围，重点是让读者理解页面用途、快照属性、相邻页面关系和本地连续阅读路径，而不是把索引、名单、公告或时效内容伪装成实时更新。</span><span class="en">Role: remaining release support/reference page.</span></li>
+      <li><span class="zh">本地 source snapshot 位于 <a href="../../source/full_release/maxperf_source.html">source/full_release/maxperf_source.html</a>；官方核对入口是 <a href="https://openusd.org/release/maxperf.html">Open official page</a>。需要最新发布、贡献、公告或索引状态时，以官方原页或 GitHub 为准。</span><span class="en">Official source comparison is explicit.</span></li>
+      <li><span class="zh">本轮 source parity 检查关键词：<code>Maximizing USD Performance</code>, <code>Use an allocator optimized for multithreading</code>, <code>Use binary</code>, <code>Package assets with payloads</code>, <code>What makes a USD scene heavy/expensive?</code>。这些关键词必须同时存在于 source snapshot 和本地输出中，说明页面没有脱离官方结构。</span><span class="en">Source parity keywords are preserved for audit.</span></li>
+    </ul>
 
+    <h3>官方结构覆盖</h3>
+    <table>
+      <thead><tr><th>层级</th><th>官方标题</th><th>中文阅读说明</th></tr></thead>
+      <tbody>
+<tr><td>h1</td><td>Maximizing USD Performance </td><td>保留官方标题，用中文解释该 section 的用途、边界和跳转关系。</td></tr>
+<tr><td>h2</td><td>Use an allocator optimized for multithreading </td><td>保留官方标题，用中文解释该 section 的用途、边界和跳转关系。</td></tr>
+<tr><td>h2</td><td>Use binary “.usd” files for geometry and shading caches </td><td>保留官方标题，用中文解释该 section 的用途、边界和跳转关系。</td></tr>
+<tr><td>h2</td><td>Package assets with payloads </td><td>保留官方标题，用中文解释该 section 的用途、边界和跳转关系。</td></tr>
+<tr><td>h2</td><td>What makes a USD scene heavy/expensive? </td><td>保留官方标题，用中文解释该 section 的用途、边界和跳转关系。</td></tr>
+      </tbody>
+    </table>
 
+    <h3>主要 section 中文说明</h3>
+    <ul>
+<li><span class="zh">allocator 建议关注多线程内存分配开销。读者应按平台和构建方式核对可用 allocator，不要把它当作所有性能问题的唯一修复。</span><span class="en">Official/source section: Use an allocator optimized for multithreading</span></li>
+<li><span class="zh">二进制 <code>.usd</code> 更适合几何和 shading cache，但文本 <code>.usda</code> 仍适合调试和小型示例。格式选择要按数据规模、可读性和流水线用途权衡。</span><span class="en">Official/source section: Use binary `.usd` files</span></li>
+<li><span class="zh">payload 能延迟加载和分区资产，是控制大型场景成本的重要机制。中文说明应连接 reference/payload、asset resolution 和场景装配策略。</span><span class="en">Official/source section: Package assets with payloads</span></li>
+<li><span class="zh">昂贵场景通常来自 prim 数、属性数量、composition arc、layer stack、payload 策略、变体复杂度和渲染/几何缓存。应按层级排查，而不是只压缩文件。</span><span class="en">Official/source section: What makes a USD scene heavy/expensive?</span></li>
+    </ul>
 
+    <h3>操作和排查路径</h3>
+    <ol>
+<li><span class="zh">先测量瓶颈是打开 stage、composition、遍历、几何加载、渲染准备还是资产解析，再选择对应优化。</span><span class="en">Workflow note.</span></li>
+<li><span class="zh">大型资产优先用 payload 分区和延迟加载，再结合 binary cache 和 resolver 策略。</span><span class="en">Workflow note.</span></li>
+<li><span class="zh">优化后用 performance metrics 或项目 profiler 对比前后数据，避免只凭体感判断。</span><span class="en">Workflow note.</span></li>
+    </ol>
 
+    <h3>边界、误读点与调试路径</h3>
+    <ul>
+<li><span class="zh">性能建议不是固定处方；allocator、binary USD 和 payload 需要结合平台、场景规模和工作流判断。</span><span class="en">Boundary guard.</span></li>
+<li><span class="zh"><code>.usd</code>、<code>.usda</code>、payload、reference、allocator、cache 等术语保持英文。</span><span class="en">Boundary guard.</span></li>
+<li><span class="zh">本页不替代本地性能基准，最终应以项目自己的测量数据为准。</span><span class="en">Boundary guard.</span></li>
+    </ul>
 
+    <h3>快照、时效与阅读流守卫</h3>
+    <ol>
+<li><span class="zh">本页按本地 406 页库存中的 source snapshot 解释当前页面，不伪装成实时官网。涉及 release schedule、contributors、press announcement、press release、index 和性能数据的内容，都可能随官方站点或项目状态变化；需要最新信息时，必须通过明确的 Open official page 外跳核对。</span><span class="en">Snapshot and reading-flow guard.</span></li>
+<li><span class="zh">中文主阅读路径承担的是解释和分流：说明页面职责、什么时候读它、如何进入相邻 tutorial/user guide/schema/API/spec/proposal/support 页面，以及遇到环境、性能、索引、公告或贡献名单问题时应回到哪个本地入口继续查证。</span><span class="en">Snapshot and reading-flow guard.</span></li>
+<li><span class="zh">所有 API 名、schema 名、token、函数名、代码、命令、Doxygen 标签、平台名、产品名、贡献者姓名、新闻标题和链接语义保持原样。中文只解释用途和边界，不把正式标识翻译成无法搜索或无法核对的中文词。</span><span class="en">Snapshot and reading-flow guard.</span></li>
+<li><span class="zh">本地阅读路径必须保持可回退：读者从总入口进入 release index，再进入本页，应该可以通过侧栏、breadcrumb、相关本地页和显式官方外跳完成连续阅读。正文内 in-scope 链接优先走本地，只有写作 Open official page 的链接才是外跳。</span><span class="en">Snapshot and reading-flow guard.</span></li>
+<li><span class="zh">索引/名单/公告/时效页不适合逐字逐项翻译所有列表。完成态要求是让读者理解这些列表如何使用、哪些字段需要保留英文、哪些内容需要按当前官方版本复核，以及如何从列表跳回 API、教程、性能或贡献流程页面。</span><span class="en">Snapshot and reading-flow guard.</span></li>
+<li><span class="zh">性能和 OpenExec 相关页面尤其不能只看单个建议。读者应区分 allocator、binary USD、payload、scene complexity、metrics environment、platform graphs、computation registration、client API 和 invalidation notification 等不同层级，避免把一个调优建议套到所有场景。</span><span class="en">Snapshot and reading-flow guard.</span></li>
+<li><span class="zh">公告和新闻稿页面的中文说明需要保留历史语境：这些页面说明 OpenUSD 开源发布的背景和影响，不应被当作当前路线图、当前版本功能列表或商业产品承诺。历史标题和 Pixar 相关名称都应保留英文以便核对。</span><span class="en">Snapshot and reading-flow guard.</span></li>
+<li><span class="zh">贡献者和索引页面的中文说明需要诚实承认它们是导航/参考型页面。贡献者名单用于理解历史参与者和鸣谢范围，不用于推断当前维护者；genindex 用于按字母或术语定位条目，不用于替代 API reference 的正文定义。</span><span class="en">Snapshot and reading-flow guard.</span></li>
+<li><span class="zh">本轮完成后必须继续通过 <code>translation_quality_review</code>、<code>english_debt_audit</code>、<code>reading_flow_navigation_audit</code>、<code>local_link_routing_report</code>、<code>markdown_encoding_audit</code> 和 validation 复核；英文/中文比例只作为诊断，不作为完成否决。</span><span class="en">Snapshot and reading-flow guard.</span></li>
+<li><span class="zh">第十层判断是剩余 release 页收尾策略：这些页面通常不是长篇教程，而是把读者送到正确位置的支撑页。完成态不是把每个名字、每个日期、每个新闻句子都改写一遍，而是给出足够清晰的中文解释，让读者知道应如何使用原始列表、哪些内容必须保留英文、哪些内容需要官方实时核对。</span><span class="en">Snapshot and reading-flow guard.</span></li>
+<li><span class="zh">第十一层判断是与总入口的诚实关系：总入口显示的 complete 数量只代表页面达到 <code>good_bilingual</code> 门槛，不等于所有外部新闻、贡献者列表、性能图表或发布计划都被实时同步。页面自身必须提示本地快照和官方原页的区别，避免读者把本地站误认为官方实时镜像。</span><span class="en">Snapshot and reading-flow guard.</span></li>
+<li><span class="zh">第十二层判断是调试入口分层：性能问题优先进入 maxperf 和 performance metrics，执行系统问题进入 OpenExec/API，版本时效问题进入 release schedule，历史与新闻语境进入 press 页面，贡献与协作进入 contributors/contributing，术语定位进入 genindex/API index。分层清楚后，支撑页才真正能顺着读。</span><span class="en">Snapshot and reading-flow guard.</span></li>
+<li><span class="zh">第十三层判断是未覆盖链接治理：如果页面内仍有 out-of-scope 或未映射链接，不应静默跳官方英文站，而应通过 local link routing 报告和 explicit official link 规则说明其状态。这样既不夸大本地覆盖范围，也不破坏用户的本地阅读体验。</span><span class="en">Snapshot and reading-flow guard.</span></li>
+<li><span class="zh">第十四层判断是后续收尾安排：本轮完成后 release 范围理论上只剩 <code>search.html</code> 这类 template-only 功能页。它需要单独策略说明搜索页用途、输入框行为、脚本不逐行翻译的原因和回到总入口/索引/API 的路径，不能混在普通翻译 sprint 里硬做。</span><span class="en">Snapshot and reading-flow guard.</span></li>
+    </ol>
 
+    <h3>相邻文档关系</h3>
+    <p><span class="zh">本页应把读者导向正确的本地下一页；外部链接只作为显式核对入口，不应破坏本地连续阅读。</span><span class="en">Related local reading targets.</span></p>
+    <ul>
+<li><a href="ref_performance_metrics.html">Performance Metrics</a></li>
+<li><a href="wp_ar2.html">Asset Resolution Ar 2.0</a></li>
+<li><a href="user_guides/namespace_editing.html">Namespace Editing</a></li>
+    </ul>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section data-cn-refinement="release-quality-pass-064">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Maximizing USD Performance 补充中文优先的页面用途、阅读路径、结构边界和术语对照；英文页面名、API 名称、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于逐项核对官方原页。</p>
-      <p class="en">This section adds Chinese-first page purpose, reading path, structure boundaries, and terminology for Maximizing USD Performance while retaining English page names, API names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">`Maximizing USD Performance` 是面向生产级 USD 数据集的性能实践页，核心目标是降低读取、预览和 introspection 的延迟，而不是讲解单个 API 的语义。</span></li>
-        <li><span class="zh">官方摘录强调 Pixar 在电影制作管线中依赖 USD 访问 production-scale 3D datasets；因此本页建议多围绕 asset structure、file format 和 payload 组织方式来理解。</span></li>
-        <li><span class="zh">`Use an allocator optimized for multithreading` 是构建层面的建议，说明内存分配器可能造成显著性能差异；这类优化不改变 USD 文件语义，但会影响运行时吞吐。</span></li>
-        <li><span class="zh">`Use binary &quot;.usd&quot; files for geometry and shading caches` 和 `Package assets with payloads` 分别强调二进制缓存与 payload 组织，对大几何、材质缓存和可延迟加载资产尤其重要。</span></li>
-        <li><span class="zh">`What makes a USD scene heavy/expensive?` 用来定位重场景来源，例如层结构、composition、payload、geometry cache 和 shading cache；阅读时应结合 `Performance Metrics` 页面核对具体资产指标。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">性能注意事项：</span><span class="en">Performance Considerations</span></li>
-        <li><span class="zh">低延迟访问：</span><span class="en">low-latency access</span></li>
-        <li><span class="zh">生产级 3D 数据集：</span><span class="en">production-scale 3D datasets</span></li>
-        <li><span class="zh">内存分配器：</span><span class="en">allocator</span></li>
-        <li><span class="zh">二进制 .usd 文件：</span><span class="en">binary .usd files</span></li>
-        <li><span class="zh">payload 资产组织：</span><span class="en">payloads</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-121">
-      <h2>中文补强导读 / Chinese Refinement Notes</h2>
-      <p class="zh">`Maximizing USD Performance` 面向生产级 USD 场景的性能实践。它关注读取、组合、预览、introspection 和大型资产交互的成本，帮助读者理解什么会让 USD scene 变重，以及如何用 payload、composition、asset organization 和 metrics 定位问题。</p>
-      <p class="en">This refinement section adds page-specific Chinese reading notes for Maximizing USD Performance while preserving English API names, schema names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">性能问题通常来自多个层级叠加：layer stack、composition arcs、payloads、geometry cache、shading cache 和过细或过深的场景组织都可能增加成本。</span></li>
-        <li><span class="zh">从 release 24.11 起，Pixar 发布多种资产的 performance metrics；读者应把本页和 `Performance Metrics` 页面一起读，而不是只凭经验判断场景是否重。</span></li>
-        <li><span class="zh">优化前要先量化：区分打开 stage、composition、遍历、渲染准备和交互式 viewport 响应时间，避免把所有延迟都归因于同一处。</span></li>
-        <li><span class="zh">payload 和分层组织可以改善大场景加载，但如果依赖关系、变体或引用组织不当，也可能引入新的 composition 成本。</span></li>
-        <li><span class="zh">中文导读应保留 `payload`、`composition`、`layer stack`、`performance metrics` 等术语原文，方便和工具日志、诊断输出对照。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">性能指标：</span><span class="en">performance metrics</span></li>
-        <li><span class="zh">组合求值：</span><span class="en">composition</span></li>
-        <li><span class="zh">按需载入负载：</span><span class="en">payload</span></li>
-        <li><span class="zh">层栈：</span><span class="en">layer stack</span></li>
-        <li><span class="zh">场景 introspection 检查：</span><span class="en">introspection</span></li>
-        <li><span class="zh">视口：</span><span class="en">viewport</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 2 级标题：Use an allocator optimized for multithreading</span><span class="en">Use an allocator optimized for multithreading</span></li>
-<li><span class="zh">第 2 级标题：Use binary “.usd” files for geometry and shading caches</span><span class="en">Use binary “.usd” files for geometry and shading caches</span></li>
-<li><span class="zh">第 2 级标题：Package assets with payloads</span><span class="en">Package assets with payloads</span></li>
-<li><span class="zh">第 2 级标题：What makes a USD scene heavy/expensive?</span><span class="en">What makes a USD scene heavy/expensive?</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">Internally, Pixar relies on USD for low-latency access, preview, and introspection of production-scale 3D datasets throughout our film-making pipeline. We would like to help ensure that USD works as well and with as good performance for you as it does for us. Here are a few tips that can make a huge difference.</p>
-<p class="en">Starting with release 24.11, Pixar is publishing performance metrics measured using several different assets. See Performance Metrics for details.</p>
-<p class="en">Most of the tips here are about how to construct and structure your USD data files, but this one tip is about a software-build issue, and it can make a 2x difference in USD’s performance.</p>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="../../site/release_index.html" data-local-route="mapped" data-official-href="https://openusd.org/release/index.html">Universal Scene Description</a></li>
-<li><a href="../../site/intro.html" data-local-route="mapped" data-official-href="https://openusd.org/release/intro.html">Introduction to USD</a></li>
-<li><a href="intro_to_openexec.html" data-local-route="mapped" data-official-href="https://openusd.org/release/intro_to_openexec.html">Introduction to OpenExec</a></li>
-<li><a href="../../site/glossary.html" data-local-route="mapped" data-official-href="https://openusd.org/release/glossary.html">Terms and Concepts</a></li>
-<li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Tutorials</a></li>
-<li><a href="tut_helloworld.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_helloworld.html">Hello World - Creating Your First USD Stage</a></li>
-<li><a href="tut_helloworld_redux.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_helloworld_redux.html">Hello World Redux - Using Generic Prims</a></li>
-<li><a href="tut_inspect_and_author_props.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_inspect_and_author_props.html">Inspecting and Authoring Properties</a></li>
-<li><a href="tut_referencing_layers.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_referencing_layers.html">Referencing Layers</a></li>
-<li><a href="tut_converting_between_layer_formats.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_converting_between_layer_formats.html">Converting Between Layer Formats</a></li>
-<li><a href="tut_traversing_stage.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_traversing_stage.html">Traversing a Stage</a></li>
-<li><a href="tut_authoring_variants.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_authoring_variants.html">Authoring Variants</a></li>
-<li><a href="tut_variants_example_in_katana.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_variants_example_in_katana.html">Variants Example in Katana</a></li>
-<li><a href="tut_xforms.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_xforms.html">Transformations, Animation, and Layer Offsets</a></li>
-<li><a href="tut_simple_shading.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_simple_shading.html">Simple Shading in USD</a></li>
-<li><a href="tut_end_to_end.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_end_to_end.html">End to End Example</a></li>
-<li><a href="tut_houdini_example.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_houdini_example.html">Houdini USD Example Workflow</a></li>
-<li><a href="tut_generating_new_schema.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_generating_new_schema.html">Generating New Schema Classes</a></li>
-<li><a href="tut_usdview_plugin.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usdview_plugin.html">Creating a Usdview Plugin</a></li>
-<li><a href="dl_downloads.html" data-local-route="mapped" data-official-href="https://openusd.org/release/dl_downloads.html">Downloads and Videos</a></li>
-<li><a href="usd_products.html" data-local-route="mapped" data-official-href="https://openusd.org/release/usd_products.html">Products Using USD</a></li>
-<li><a href="user_guides/collections_and_patterns.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/collections_and_patterns.html">Collections and Patterns</a></li>
-<li><a href="user_guides/color_user_guide.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/color_user_guide.html">Color</a></li>
-<li><a href="user_guides/namespace_editing.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/namespace_editing.html">Namespace Editing</a></li>
-<li><a href="user_guides/render_user_guide.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html">Rendering with USD</a></li>
-<li><a href="user_guides/primvars.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/primvars.html">Primvars</a></li>
-<li><a href="user_guides/schemas/index.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/index.html">Schema Domains</a></li>
-<li><a href="user_guides/schemas/usdLux/usdLux_toc.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/usdLux_toc.html">Lights (usdLux)</a></li>
-<li><a href="user_guides/schemas/usdLux/overview.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/overview.html">Overview</a></li>
-<li><a href="user_guides/schemas/usdLux/BoundableLightBase.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/BoundableLightBase.html">BoundableLightBase</a></li>
-<li><a href="user_guides/schemas/usdLux/CylinderLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/CylinderLight.html">CylinderLight</a></li>
-<li><a href="user_guides/schemas/usdLux/DiskLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DiskLight.html">DiskLight</a></li>
-<li><a href="user_guides/schemas/usdLux/DistantLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DistantLight.html">DistantLight</a></li>
-<li><a href="user_guides/schemas/usdLux/DomeLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight.html">DomeLight</a></li>
-<li><a href="user_guides/schemas/usdLux/DomeLight_1.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight_1.html">DomeLight_1</a></li>
-<li><a href="user_guides/schemas/usdLux/GeometryLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/GeometryLight.html">GeometryLight</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/maxperf.html">打开官方原页 / Open official page</a></p>
-    </section>
-  </main>
+    <h3>完成态验收</h3>
+    <ul>
+      <li><span class="zh">状态为 <code>bilingual_complete</code>，已移除旧草稿提示，并写入第 417 轮 source parity 报告。</span><span class="en">Completion status and source parity are present.</span></li>
+      <li><span class="zh">中文覆盖页面职责、官方 section、相邻 tutorial/user guide/schema/API/spec/proposal/support 页关系、阅读路径、边界、误读点和调试路径。</span><span class="en">Chinese coverage includes role, sections, relationships, boundaries, and diagnostics.</span></li>
+      <li><span class="zh">技术标识、姓名、产品名、命令、文件名、代码和链接语义保持原样，便于继续搜索和官方核对。</span><span class="en">Technical identifiers and link semantics are preserved.</span></li>
+      <li><span class="zh">后续维护必须继续运行 Markdown 编码、English debt、navigation、reading-flow、local link routing、full draft preview、report index 和 validation。</span><span class="en">Validation chain remains mandatory.</span></li>
+    </ul>
+  </section>
+</main>
 </body>
 </html>

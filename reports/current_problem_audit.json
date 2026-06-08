@@ -1,26 +1,33 @@
 {
-  "generated_at": "2026-06-08T05:43:05.655Z",
-  "purpose": "Round 416 DomainSprintRound：release 支撑/导航核心页小批量冲刺。实际晋级 8 页：full_site/release/tut_usd_tutorials.html、full_site/release/usdfaq.html、full_site/release/usd_products.html、full_site/release/dl_downloads.html、full_site/release/plugins.html、full_site/release/plugins_alembic.html、full_site/release/plugins_renderman.html、full_site/release/contributing_to_usd.html。本轮从 181 个 good_bilingual 推进到 189；每页补足中文主阅读路径、官方 section 覆盖、相邻 tutorial/user guide/schema/API/spec/proposal/support 页关系、边界、误读点、调试路径和 source parity。",
+  "generated_at": "2026-06-08T06:15:29.014Z",
+  "purpose": "Round 417 DomainSprintRound：release 剩余支撑/参考页收尾小批量冲刺。实际晋级 8 页：full_site/release/intro_to_openexec.html、full_site/release/maxperf.html、full_site/release/ref_performance_metrics.html、full_site/release/release_schedule.html、full_site/release/contributors.html、full_site/release/press_opensource_announce.html、full_site/release/press_opensource_release.html、full_site/release/genindex.html。本轮从 189 个 good_bilingual 推进到 197；每页补足中文主阅读路径、官方 section 覆盖、快照/时效说明、相邻 tutorial/user guide/schema/API/spec/proposal/support 页关系、边界、误读点、调试路径和 source parity。",
   "current_counts": {
     "total_pages": 406,
-    "bilingual_complete": 189,
-    "bilingual_draft": 217,
-    "good_bilingual": 189,
-    "draft_needs_translation": 206,
+    "bilingual_complete": 197,
+    "bilingual_draft": 209,
+    "good_bilingual": 197,
+    "draft_needs_translation": 198,
     "draft_template_only": 11,
-    "review_ready_zh": 126,
+    "review_ready_zh": 134,
     "api_complete": 72,
-    "release_complete": 117,
-    "release_review_ready_zh": 114,
+    "release_complete": 125,
+    "release_review_ready_zh": 122,
     "pending_full_scope": 0
   },
   "problems": [
     {
       "id": "P0-completion-stalled",
       "severity": "P0",
-      "summary": "完成度已推进到 189/406，但仍有 217 个可检查草稿，不是完整翻译。",
-      "evidence": "本轮 DomainSprintRound 实际晋级 8 个 release 支撑/导航页面；translation_quality_review 报告 good_bilingual=189。",
-      "required_action": "继续只把具备中文主阅读路径、官方 section 覆盖和无草稿标记的页面写入 promotion manifest；未达标页保留 bilingual_draft 并列明原因。"
+      "summary": "完成度已推进到 197/406，但仍有 209 个可检查草稿，不是完整翻译。",
+      "evidence": "本轮 DomainSprintRound 实际晋级 8 个 release 剩余支撑/参考页面；translation_quality_review 报告 good_bilingual=197。",
+      "required_action": "继续只把具备中文主阅读路径、官方 section 覆盖和无草稿标记的页面写入 promotion manifest；未达标页保留 draft 并列明原因。"
+    },
+    {
+      "id": "P1-release-search-template-only",
+      "severity": "P1",
+      "summary": "release 范围只剩 search.html 属于 template-only/功能页，不能和普通翻译页混在同一轮硬塞晋级。",
+      "evidence": "本轮明确暂不处理 full_site/release/search.html；如果要收尾，应单独执行 search/template-only 专项缺陷轮或明确策略。",
+      "required_action": "下一轮若继续 release，应针对 search.html 做 SearchTemplateRound/DefectRound，说明搜索页用途、功能限制、本地入口和不逐行翻译脚本的策略。"
     },
     {
       "id": "P1-left-navigation-reading-flow",
@@ -35,30 +42,23 @@
       "summary": "Markdown 编码守卫仍是硬门槛，避免中文进度记录退化为问号、replacement character 或 BOM。",
       "evidence": "reports/markdown_encoding_audit.json 必须通过，且 work.md、reports/iteration_report.md、reports/current_problem_audit.md、reports/bilingual_completion_promotions.md 均无重复问号损坏。",
       "required_action": "如果 audit_openusd_markdown_encoding.mjs 失败，立即停止晋级并从 JSON 真实源重建 Markdown。"
-    },
-    {
-      "id": "P1-release-coverage-lag",
-      "severity": "P1",
-      "summary": "release 支撑/导航页面已经补齐一批，但 release 与剩余 API 草稿仍需要继续推进。",
-      "evidence": "english_debt_audit 报告 api_complete=72、release_complete=117、release_review_ready_zh=114。",
-      "required_action": "继续优先处理 release 中仍为 draft_needs_translation 的支撑/参考页，或针对已完成但未 review_ready_zh 的页面执行 EnglishDebtRound。"
     }
   ],
   "promoted_pages": [
-    "full_site/release/tut_usd_tutorials.html",
-    "full_site/release/usdfaq.html",
-    "full_site/release/usd_products.html",
-    "full_site/release/dl_downloads.html",
-    "full_site/release/plugins.html",
-    "full_site/release/plugins_alembic.html",
-    "full_site/release/plugins_renderman.html",
-    "full_site/release/contributing_to_usd.html"
+    "full_site/release/intro_to_openexec.html",
+    "full_site/release/maxperf.html",
+    "full_site/release/ref_performance_metrics.html",
+    "full_site/release/release_schedule.html",
+    "full_site/release/contributors.html",
+    "full_site/release/press_opensource_announce.html",
+    "full_site/release/press_opensource_release.html",
+    "full_site/release/genindex.html"
   ],
   "not_promoted_pages": [],
-  "source_parity_report": "reports/round_416_release_support_source_parity.json",
+  "source_parity_report": "reports/round_417_release_remaining_source_parity.json",
   "next_actions": [
-    "下一轮重新读取 inventory，从剩余 release 草稿或高价值 API 草稿中选择同域短页；不得重复处理本轮已晋级页面。",
+    "若继续 release，单独处理 full_site/release/search.html 的 template-only 功能页策略；否则转回 API 高价值草稿或 EnglishDebtRound。",
     "继续固定运行 Markdown 编码、English debt、本地链接路由、navigation coverage、reading-flow navigation、full draft preview、report index 和 validation。"
   ],
-  "next_action": "Continue promotion only if target pages can become good_bilingual; otherwise stop and report the blocker."
+  "next_action": "Continue only if the next target can satisfy its named round gate; otherwise stop and report the blocker."
 }

@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-08T05:43:10.784Z
+Generated: 2026-06-08T06:15:33.461Z
 
-Transient base URL: `http://127.0.0.1:64297/`
+Transient base URL: `http://127.0.0.1:57990/`
 
 Result:
 
 - Passed: true
-- Draft pages: 217
-- Pages checked: 217
-- Passed pages: 217
+- Draft pages: 209
+- Pages checked: 209
+- Passed pages: 209
 - Failed pages: 0
-- Final HTML links: 217
-- Local assets checked: 217
+- Final HTML links: 209
+- Local assets checked: 209
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -225,14 +225,6 @@ Result:
 | true | full_site/api/var_8h_source.html | 200 | true | 0 | 0 |
 | true | full_site/api/vt_page_front.html | 200 | true | 0 | 0 |
 | true | full_site/api/work_page_front.html | 200 | true | 0 | 0 |
-| true | full_site/release/contributors.html | 200 | true | 0 | 0 |
-| true | full_site/release/genindex.html | 200 | true | 0 | 0 |
-| true | full_site/release/intro_to_openexec.html | 200 | true | 0 | 0 |
-| true | full_site/release/maxperf.html | 200 | true | 0 | 0 |
-| true | full_site/release/press_opensource_announce.html | 200 | true | 0 | 0 |
-| true | full_site/release/press_opensource_release.html | 200 | true | 0 | 0 |
-| true | full_site/release/ref_performance_metrics.html | 200 | true | 0 | 0 |
-| true | full_site/release/release_schedule.html | 200 | true | 0 | 0 |
 | true | full_site/release/search.html | 200 | true | 0 | 0 |
 
 Policy:

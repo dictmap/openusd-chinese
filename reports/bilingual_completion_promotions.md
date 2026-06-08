@@ -1,6 +1,6 @@
 # OpenUSD 完整双语晋级清单
 
-Generated: 2026-06-08T05:43:05.832Z
+Generated: 2026-06-08T06:15:29.165Z
 
 这份清单只记录已经从 `bilingual_draft` 晋级为 `bilingual_complete` 的页面。它是 `scripts/discover_openusd_all_pages.mjs` 识别 promoted complete 页面的审计来源，不等同于把草稿页改一个状态。
 
@@ -197,3 +197,11 @@ Generated: 2026-06-08T05:43:05.832Z
 | `round-416-release-support-plugins-alembic` | `full_site/release/plugins_alembic.html` | `https://openusd.org/release/plugins_alembic.html` | bilingual_complete |
 | `round-416-release-support-plugins-renderman` | `full_site/release/plugins_renderman.html` | `https://openusd.org/release/plugins_renderman.html` | bilingual_complete |
 | `round-416-release-support-contributing-to-usd` | `full_site/release/contributing_to_usd.html` | `https://openusd.org/release/contributing_to_usd.html` | bilingual_complete |
+| `round-417-release-remaining-intro-openexec` | `full_site/release/intro_to_openexec.html` | `https://openusd.org/release/intro_to_openexec.html` | bilingual_complete |
+| `round-417-release-remaining-maxperf` | `full_site/release/maxperf.html` | `https://openusd.org/release/maxperf.html` | bilingual_complete |
+| `round-417-release-remaining-performance-metrics` | `full_site/release/ref_performance_metrics.html` | `https://openusd.org/release/ref_performance_metrics.html` | bilingual_complete |
+| `round-417-release-remaining-release-schedule` | `full_site/release/release_schedule.html` | `https://openusd.org/release/release_schedule.html` | bilingual_complete |
+| `round-417-release-remaining-contributors` | `full_site/release/contributors.html` | `https://openusd.org/release/contributors.html` | bilingual_complete |
+| `round-417-release-remaining-press-announce` | `full_site/release/press_opensource_announce.html` | `https://openusd.org/release/press_opensource_announce.html` | bilingual_complete |
+| `round-417-release-remaining-press-release` | `full_site/release/press_opensource_release.html` | `https://openusd.org/release/press_opensource_release.html` | bilingual_complete |
+| `round-417-release-remaining-genindex` | `full_site/release/genindex.html` | `https://openusd.org/release/genindex.html` | bilingual_complete |

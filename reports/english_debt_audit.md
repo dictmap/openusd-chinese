@@ -1,6 +1,6 @@
 # OpenUSD English Debt Audit
 
-Generated: 2026-06-08T05:43:05.470Z
+Generated: 2026-06-08T06:15:28.839Z
 
 Purpose:
 
@@ -12,16 +12,16 @@ Purpose:
 ## Counts
 
 - Total pages: 406
-- good_bilingual: 189
-- review_ready_zh: 126
+- good_bilingual: 197
+- review_ready_zh: 134
 - review_needs_zh_debt: 63
 - API complete: 72
 - API review_ready_zh: 12
-- Release complete: 117
-- Release review_ready_zh: 114
+- Release complete: 125
+- Release review_ready_zh: 122
 - Complete pages with high/very high ratio diagnostic: 10
-- bilingual_draft: 217
-- draft_needs_translation: 206
+- bilingual_draft: 209
+- draft_needs_translation: 198
 - draft_template_only: 11
 
 ## Complete Pages Still Carrying English Debt
@@ -64,7 +64,6 @@ Purpose:
 | 8 | `full_site/api/binding_map_8h_source.html` | api | general | 62 | 1/3 | 6.97 | very_high | draft |
 | 251 | `full_site/api/struct_usd_lux_tokens_type.html` | api | class_or_struct | 381 | 5/3 | 4.84 | high | draft |
 | 252 | `full_site/api/struct_usd_physics_tokens_type.html` | api | class_or_struct | 411 | 5/3 | 4.68 | high | draft |
-| 294 | `full_site/release/press_opensource_announce.html` | release | release_or_tutorial | 585 | 7/4 | 4.55 | high | draft |
 | 253 | `full_site/api/struct_usd_skel_tokens_type.html` | api | class_or_struct | 397 | 6/3 | 4.37 | high | draft |
 | 298 | `full_site/release/search.html` | release | release_or_tutorial | 64 | 1/4 | 4.3 | high | draft |
 | 69 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | api | general | 66 | 1/3 | 4.12 | high | draft |
@@ -73,20 +72,13 @@ Purpose:
 | 66 | `full_site/api/classpxr__tsl_1_1robin__map.html` | api | general | 353 | 4/3 | 3.71 | medium | draft |
 | 260 | `full_site/api/usd_hydra_page_front.html` | api | module_front | 475 | 6/4 | 3.67 | medium | draft |
 | 229 | `full_site/api/md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html` | api | general | 555 | 5/3 | 3.63 | medium | draft |
+| 245 | `full_site/api/sdf_page_front.html` | api | module_front | 541 | 6/4 | 3.52 | medium | draft |
 
 ## Release Pages To Pull Forward
 
 | # | Page | Scope | Type | Complete Zh Chars | Coverage Signals | En/Zh Ratio | Ratio Diagnostic | Debt |
 | --- | --- | --- | --- | ---: | ---: | ---: | --- | --- |
 | 298 | `full_site/release/search.html` | release | release_or_tutorial | 64 | 1/4 | 4.3 | high | draft |
-| 294 | `full_site/release/press_opensource_announce.html` | release | release_or_tutorial | 585 | 7/4 | 4.55 | high | draft |
-| 288 | `full_site/release/intro_to_openexec.html` | release | release_or_tutorial | 608 | 7/4 | 3.36 | medium | draft |
-| 295 | `full_site/release/press_opensource_release.html` | release | release_or_tutorial | 625 | 7/4 | 3.07 | medium | draft |
-| 283 | `full_site/release/contributors.html` | release | release_or_tutorial | 678 | 6/4 | 2.69 | medium | draft |
-| 290 | `full_site/release/maxperf.html` | release | release_or_tutorial | 625 | 7/4 | 2.49 | medium | draft |
-| 297 | `full_site/release/release_schedule.html` | release | release_or_tutorial | 632 | 6/4 | 2.35 | medium | draft |
-| 296 | `full_site/release/ref_performance_metrics.html` | release | release_or_tutorial | 705 | 7/4 | 2.17 | medium | draft |
-| 285 | `full_site/release/genindex.html` | release | release_or_tutorial | 400 | 7/4 | 1.46 | normal | draft |
 
 Policy:
 

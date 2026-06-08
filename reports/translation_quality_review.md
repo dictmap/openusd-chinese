@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-08T05:43:04.452Z
+Generated: 2026-06-08T06:15:28.049Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 217
-- bilingual_complete: 189
+- bilingual_draft: 209
+- bilingual_complete: 197
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 206
-- good_bilingual: 189
+- draft_needs_translation: 198
+- good_bilingual: 197
 
 ## Current Focus Batch
 
@@ -54,11 +54,11 @@ Generated: 2026-06-08T05:43:04.452Z
 | 249 | draft_needs_translation | 387 | `full_site/api/struct_hgi_sampler_desc.html` | 结构体参考草稿：HgiSamplerDesc Struct / HgiSamplerDesc Struct |
 | 67 | draft_needs_translation | 395 | `full_site/api/copy_utils_8h.html` | API 页面草稿：copyUtils.h File / copyUtils.h File |
 | 253 | draft_needs_translation | 397 | `full_site/api/struct_usd_skel_tokens_type.html` | 结构体参考草稿：UsdSkelTokensType Class / UsdSkelTokensType Class |
-| 285 | draft_needs_translation | 400 | `full_site/release/genindex.html` | 索引 / Index |
 | 137 | draft_needs_translation | 411 | `full_site/api/functions_vars_f.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 | 252 | draft_needs_translation | 411 | `full_site/api/struct_usd_physics_tokens_type.html` | 结构体参考草稿：UsdPhysicsTokensType Class / UsdPhysicsTokensType Class |
 | 144 | draft_needs_translation | 424 | `full_site/api/functions_vars_m.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 | 111 | draft_needs_translation | 431 | `full_site/api/functions_i.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
+| 152 | draft_needs_translation | 431 | `full_site/api/functions_vars_u.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 
 ## All Pages
 
@@ -346,21 +346,21 @@ Generated: 2026-06-08T05:43:04.452Z
 | 280 | draft_needs_translation | bilingual_draft | 643 | 34/26 | 0 | 0 | `full_site/api/work_page_front.html` |
 | 281 | good_bilingual | bilingual_complete | 515 | 10/27 | 0 | 0 | `site/apiDocs.html` |
 | 282 | good_bilingual | bilingual_complete | 1589 | 32/32 | 0 | 0 | `full_site/release/contributing_to_usd.html` |
-| 283 | draft_needs_translation | bilingual_draft | 678 | 26/19 | 0 | 0 | `full_site/release/contributors.html` |
+| 283 | good_bilingual | bilingual_complete | 1448 | 33/33 | 0 | 0 | `full_site/release/contributors.html` |
 | 284 | good_bilingual | bilingual_complete | 1600 | 32/32 | 0 | 0 | `full_site/release/dl_downloads.html` |
-| 285 | draft_needs_translation | bilingual_draft | 400 | 18/14 | 0 | 0 | `full_site/release/genindex.html` |
+| 285 | good_bilingual | bilingual_complete | 1479 | 33/33 | 0 | 0 | `full_site/release/genindex.html` |
 | 286 | good_bilingual | bilingual_complete | 862 | 112/509 | 0 | 0 | `site/glossary.html` |
 | 287 | good_bilingual | bilingual_complete | 509 | 10/331 | 0 | 0 | `site/release_index.html` |
-| 288 | draft_needs_translation | bilingual_draft | 608 | 40/33 | 0 | 0 | `full_site/release/intro_to_openexec.html` |
+| 288 | good_bilingual | bilingual_complete | 1541 | 34/34 | 0 | 0 | `full_site/release/intro_to_openexec.html` |
 | 289 | good_bilingual | bilingual_complete | 2736 | 53/46 | 0 | 0 | `site/intro.html` |
-| 290 | draft_needs_translation | bilingual_draft | 625 | 29/22 | 0 | 0 | `full_site/release/maxperf.html` |
+| 290 | good_bilingual | bilingual_complete | 1370 | 33/33 | 0 | 0 | `full_site/release/maxperf.html` |
 | 291 | good_bilingual | bilingual_complete | 1456 | 30/30 | 0 | 0 | `full_site/release/plugins_alembic.html` |
 | 292 | good_bilingual | bilingual_complete | 1282 | 31/31 | 0 | 0 | `full_site/release/plugins_renderman.html` |
 | 293 | good_bilingual | bilingual_complete | 1467 | 30/30 | 0 | 0 | `full_site/release/plugins.html` |
-| 294 | draft_needs_translation | bilingual_draft | 585 | 28/21 | 0 | 0 | `full_site/release/press_opensource_announce.html` |
-| 295 | draft_needs_translation | bilingual_draft | 625 | 28/21 | 0 | 0 | `full_site/release/press_opensource_release.html` |
-| 296 | draft_needs_translation | bilingual_draft | 705 | 39/32 | 0 | 0 | `full_site/release/ref_performance_metrics.html` |
-| 297 | draft_needs_translation | bilingual_draft | 632 | 26/19 | 0 | 0 | `full_site/release/release_schedule.html` |
+| 294 | good_bilingual | bilingual_complete | 1422 | 33/33 | 0 | 0 | `full_site/release/press_opensource_announce.html` |
+| 295 | good_bilingual | bilingual_complete | 1412 | 33/33 | 0 | 0 | `full_site/release/press_opensource_release.html` |
+| 296 | good_bilingual | bilingual_complete | 1545 | 34/34 | 0 | 0 | `full_site/release/ref_performance_metrics.html` |
+| 297 | good_bilingual | bilingual_complete | 1491 | 33/33 | 0 | 0 | `full_site/release/release_schedule.html` |
 | 298 | draft_template_only | bilingual_draft | 64 | 2/3 | 0 | 0 | `full_site/release/search.html` |
 | 299 | good_bilingual | bilingual_complete | 1382 | 33/61 | 0 | 0 | `full_site/release/spec_usdpreviewsurface.html` |
 | 300 | good_bilingual | bilingual_complete | 1517 | 35/64 | 0 | 0 | `full_site/release/spec_usdz.html` |
