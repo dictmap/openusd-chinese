@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-08T04:32:38.857Z
+Generated: 2026-06-08T04:58:46.202Z
 
-Transient base URL: `http://127.0.0.1:64537/`
+Transient base URL: `http://127.0.0.1:54751/`
 
 Result:
 
 - Passed: true
-- Draft pages: 241
-- Pages checked: 241
-- Passed pages: 241
+- Draft pages: 233
+- Pages checked: 233
+- Passed pages: 233
 - Failed pages: 0
-- Final HTML links: 241
-- Local assets checked: 241
+- Final HTML links: 233
+- Local assets checked: 233
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -239,25 +239,17 @@ Result:
 | true | full_site/release/ref_performance_metrics.html | 200 | true | 0 | 0 |
 | true | full_site/release/release_schedule.html | 200 | true | 0 | 0 |
 | true | full_site/release/search.html | 200 | true | 0 | 0 |
-| true | full_site/release/spec_usdpreviewsurface.html | 200 | true | 0 | 0 |
-| true | full_site/release/spec_usdz.html | 200 | true | 0 | 0 |
-| true | full_site/release/spec.html | 200 | true | 0 | 0 |
 | true | full_site/release/tut_usd_tutorials.html | 200 | true | 0 | 0 |
 | true | full_site/release/usd_products.html | 200 | true | 0 | 0 |
 | true | full_site/release/usdfaq.html | 200 | true | 0 | 0 |
 | true | full_site/release/wp_ar2.html | 200 | true | 0 | 0 |
-| true | full_site/release/wp_asset_previews.html | 200 | true | 0 | 0 |
 | true | full_site/release/wp_connectable_nodes.html | 200 | true | 0 | 0 |
 | true | full_site/release/wp_coordsys.html | 200 | true | 0 | 0 |
-| true | full_site/release/wp_render_settings.html | 200 | true | 0 | 0 |
 | true | full_site/release/wp_rigid_body_physics.html | 200 | true | 0 | 0 |
 | true | full_site/release/wp_schema_versioning.html | 200 | true | 0 | 0 |
-| true | full_site/release/wp_stage_variables.html | 200 | true | 0 | 0 |
 | true | full_site/release/wp_usdaudio.html | 200 | true | 0 | 0 |
 | true | full_site/release/wp_usdlux_for_geometry_lights.html | 200 | true | 0 | 0 |
 | true | full_site/release/wp_usdlux_for_renderers.html | 200 | true | 0 | 0 |
-| true | full_site/release/wp_usdshade.html | 200 | true | 0 | 0 |
-| true | full_site/release/wp.html | 200 | true | 0 | 0 |
 
 Policy:
 

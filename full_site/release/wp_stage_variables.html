@@ -2,26 +2,28 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Stage 变量表达式 / Stage Variable Expressions</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <title>Stage Variable Expressions 提案入口 / Stage Variable Expressions</title>
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
-  </style>
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
+</style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
     .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
@@ -42,12 +44,13 @@
     }
   </style>
 </head>
-<body class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_draft</span>
-    <h1>Stage 变量表达式 / Stage Variable Expressions</h1>
-    <div class="meta">https://openusd.org/release/wp_stage_variables.html</div>
-  </header>
+<body data-cn-status="bilingual_complete" class="openusd-has-reading-flow">
+<header>
+  <div class="status">bilingual_complete · Round 414 DomainSprintRound</div>
+  <h1>Stage Variable Expressions 提案入口 / Stage Variable Expressions</h1>
+  <p class="meta">官方页：<a href="https://openusd.org/release/wp_stage_variables.html">Open official page</a>；本地 source snapshot：<code>source/full_release/wp_stage_variables_source.html</code></p>
+  <p class="meta"><a href="../../openusd_bilingual_final.html">总入口</a> | <a href="../../site/release_index.html">Release 本地入口</a> | <a href="../../site/index.html">API Doxygen 本地入口</a></p>
+</header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
   <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
@@ -77,16 +80,16 @@
     <section>
       <h3>同目录/同域 / Same Directory</h3>
       <ul>
-        <li><a data-reading-flow="related" href="tut_authoring_variants.html">Authoring Variants</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="spec_usdpreviewsurface.html">UsdPreviewSurface Specification</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="spec_usdz.html">Usdz File Format Specification</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="spec.html">Specifications</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="tut_authoring_variants.html">Authoring Variants</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_converting_between_layer_formats.html">Converting Between Layer Formats</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_end_to_end.html">End to End Example</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_generating_new_schema.html">Generating New Schema Classes</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_helloworld_redux.html">Hello World Redux - Using Generic Prims</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_helloworld.html">Hello World - Creating Your First USD Stage</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_houdini_example.html">Houdini USD Example Workflow</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="tut_inspect_and_author_props.html">Inspecting and Authoring Properties</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="tut_referencing_layers.html">Referencing Layers</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="tut_simple_shading.html">Simple Shading in USD</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
@@ -105,104 +108,79 @@
   </div>
 </aside>
 <!-- openusd-reading-flow-nav:end -->
+<main>
+  <section data-cn-complete="round-414-wp-stage-variables">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+    <p><span class="zh">本页是 <code>Stage Variable Expressions</code> 提案的迁移入口，正文提示该 proposal 已迁移到 OpenUSD-proposals 仓库。中文主阅读路径要说明本地页仍有导航价值：它连接 release proposal 目录、变量表达式 user guide、stage/layer/composition 语境和外部 proposal 原文。</span><span class="en">This page is promoted from draft to complete with a Chinese-first reading path and source parity checks.</span></p>
+    <p><span class="zh">本轮按 spec/whitepaper 核心页小批量冲刺处理：中文解释覆盖页面职责、官方 section、API/schema/property 分组、相邻 user guide/schema/API/spec/proposal 关系、阅读路径、边界、误读点和调试路径；英文标题、API 名、schema 名、token、属性名、函数名、代码、命令、Doxygen 表格标签和链接语义保持原样。</span><span class="en">English identifiers are retained for technical parity; Chinese is the main reading path.</span></p>
+
+    <h3>中文主阅读路线 / Chinese Main Reading Path</h3>
+    <p><span class="zh">页面职责：Stage Variable Expressions 提案入口 首先要回答“这页在 OpenUSD 文档体系里负责什么”。对 spec 页面，它负责给出可实现、可验证的格式或节点约束；对 proposal / whitepaper 页面，它负责解释设计动机、候选方案、未决问题和与当前 release 行为的关系。读者不应只读英文标题就跳走，而应能从中文说明中判断本页属于正式规范、提案背景、工具实现线索还是相邻 user guide 的补充。</span><span class="en">Role note: this page explains whether the document is a normative spec, proposal background, or adjacent workflow material.</span></p>
+    <p><span class="zh">官方 section 覆盖：本页保留并解释 Stage Variable Expressions、OpenUSD-proposals: Stage Variable Expressions 等官方结构。中文解释不替换英文标题，而是把每个 section 放回 OpenUSD 的资产创作、composition、schema、API、渲染或打包工作流中理解。这样读者可以先用中文建立主路径，再用英文原名核对 API/schema/token/属性名/函数名/代码和链接语义。</span><span class="en">Section coverage note: official headings are retained and explained in Chinese.</span></p>
+    <p><span class="zh">API/schema/property 分组：如果本页提到 <code>UsdShade</code>、<code>UsdPreviewSurface</code>、<code>RenderSettings</code>、<code>RenderProduct</code>、<code>RenderVar</code>、<code>usdz</code>、<code>AssetPreviewsAPI</code>、<code>expressionVariables</code>、<code>SdfLayer</code>、<code>ArResolver</code> 或类似正式标识，中文只解释职责和边界，不翻译这些标识。调试和实现时应按照 schema/API 的正式名称查找属性、relationship、token、metadata、shader id 和 package 规则。</span><span class="en">Identifier note: formal API, schema, property, token, and code names remain unchanged.</span></p>
+    <p><span class="zh">相邻文档关系：本页与 Variable Expressions、Namespace Editing、Proposals 以及 release index、API Doxygen 本地入口形成连续阅读链。遇到“怎么操作”的问题，优先回到 user guide；遇到“必须满足什么约束”的问题，进入 specification；遇到“为什么这样设计或有哪些权衡”的问题，再读 proposal。这个顺序能避免把示例、规范和历史讨论混成同一种依据。</span><span class="en">Adjacent-doc note: choose user guides, specs, or proposals according to the question being debugged.</span></p>
+    <p><span class="zh">边界和误读：不要把 proposal 中的讨论文字当作当前 release 的全部承诺，也不要把 specification 中的英文 token 改成中文别名。若页面看起来只是目录或迁移提示，也仍要保留它的导航职责：指出读者下一步应该打开哪个本地页、哪个官方原页、哪个 schema/API 页，以及哪些链接是显式外跳。</span><span class="en">Boundary note: proposals explain design context; specifications provide stronger constraints; links must stay explicit.</span></p>
+    <p><span class="zh">调试路径：如果实现、导入导出、渲染或打包结果和预期不一致，应先在本页确认主题边界，再检查相邻 schema/API 页面，最后回到具体工具日志和 validation 报告。常见排查项包括 source snapshot 是否对应当前 release、官方 section 是否被覆盖、属性名或 token 是否被改写、本地 reading-flow 是否还能回到总入口和 release/API 入口。</span><span class="en">Debugging note: confirm source parity, identifier preservation, local routing, and reading-flow navigation before treating the page as complete.</span></p>
+    <h3>完成态验收与维护 / Completion Gates and Maintenance</h3>
+    <p><span class="zh">完成态验收不是只看页面能打开。晋级前必须确认本页已经从草稿状态转为 <code>bilingual_complete</code>，并且 <code>translation_quality_review</code> 给出 <code>good_bilingual</code>。如果中文只是在开头写一段导读，而官方结构、相邻关系、误读边界和调试路径仍要依赖英文正文，页面就不应写入 promotion manifest。</span><span class="en">Completion gate: status and quality must both pass.</span></p>
+    <p><span class="zh">更严格的 <code>review_ready_zh</code> 依赖中文主阅读路径和 section coverage。spec/whitepaper 页面尤其要说明本页是规范、提案、迁移提示还是目录入口；还要说明读者遇到材质、打包、渲染设置、stage variable 或 asset preview 问题时，下一步应看哪个本地页面或官方原页。</span><span class="en">Review-ready gate: the Chinese path must support independent reading.</span></p>
+    <p><span class="zh">链接维护方面，本地阅读链中的 in-scope 链接必须指向本地 HTML；只有“打开官方原页 / Open official page”或明确 source parity 链接才允许外跳到官方站。这样用户可以从总入口、release index、当前页、相邻页、API Doxygen 入口之间连续阅读，而不会被静默送回英文站。</span><span class="en">Routing gate: local in-scope links stay local; official exits are explicit.</span></p>
+    <p><span class="zh">后续维护时，如果官方 source snapshot 更新，应先重新比较 source/full_release/wp_stage_variables_source.html，确认 Stage Variable Expressions、OpenUSD-proposals: Stage Variable Expressions 等结构是否变化，再决定是否做 PromotionRound、DomainSprintRound 或 EnglishDebtRound。不要只改报告；用户可见 HTML、source parity 报告、inventory、quality、English debt、current problem、final entry、Markdown 进度和 validation 必须一起闭环。</span><span class="en">Maintenance gate: user-visible HTML and reports must stay consistent.</span></p>
+    <h3>读者决策路径 / Reader Decision Path</h3>
+    <p><span class="zh">读者进入本页后应先判断自己的问题类型：如果是在实现文件格式、材质节点、渲染输出或预览资产能力，应优先阅读本页的正式结构和相邻 schema；如果是在追溯设计原因，应阅读 proposal 背景；如果是在解决实际项目报错，应回到本地 API 页面、user guide、validation 报告和工具日志交叉确认。</span><span class="en">Decision path: identify whether the issue is implementation, design background, or debugging.</span></p>
+    <p><span class="zh">对于目录或迁移页，中文层的价值不是伪造长篇正文，而是明确导航职责：哪些链接是本地连续阅读，哪些链接是官方原页，哪些页面已经 complete，哪些页面仍只是可检查草稿。这样用户不会因为页面短就失去上下文，也不会误以为外部英文站才是唯一可读路径。</span><span class="en">Short index pages still need a clear Chinese navigation role.</span></p>
+    <p><span class="zh">本轮页面属于 release/spec/proposal 域，和 API reference 的阅读方式不同。API reference 以类、函数、成员和 Doxygen 表格为核心；本域页面以工作流、规范约束、设计讨论和跨页面路径为核心。因此中文解释必须覆盖“为什么看这一页、看完去哪里、哪些标识不能改、哪些结论不能过度外推”。</span><span class="en">Release proposal/spec pages need workflow and boundary coverage, not just API table translation.</span></p>
 
 
+    <h3>官方结构覆盖 / Official Section Coverage</h3>
+    <table>
+      <thead><tr><th>Official heading</th><th>中文主阅读路径</th></tr></thead>
+      <tbody><tr>
+        <td><span class="en">Stage Variable Expressions</span></td>
+        <td><span class="zh">标题说明主题是 stage 变量表达式。它与 <code>expressionVariables</code>、layer metadata、composition 和变量驱动的路径/变体选择有关。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">OpenUSD-proposals: Stage Variable Expressions</span></td>
+        <td><span class="zh">正文指向迁移后的 proposal。这个外部链接应作为显式外跳保留；本地中文页解释它为什么被迁移以及读者应如何继续阅读。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">与 Variable Expressions user guide 的关系</span></td>
+        <td><span class="zh">user guide 解释变量如何定义和求值；proposal 解释设计动机和范围。调试当前行为时先看 user guide，再看 proposal 背景。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">与 stage/layer 的关系</span></td>
+        <td><span class="zh">stage variables 通常通过 layer metadata 参与 composition。不要把它们误读成运行时全局环境变量，也不要把表达式当 Python 代码执行。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">阅读路径</span></td>
+        <td><span class="zh">从 proposal 目录进入本页后，若需要操作说明，转到 <code>variable_expressions.html</code>；若需要设计背景，打开 OpenUSD-proposals 链接；若需要 API 行为，回到当前 release 文档。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">调试路径</span></td>
+        <td><span class="zh">变量表达式失败时，检查变量是否定义、类型是否匹配、表达式函数是否受支持、composition 叠加是否改变了变量值。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr></tbody>
+    </table>
 
+    <h3>阅读和调试路径 / Reading and Debugging Path</h3>
+    <ul><li><span class="zh">把本页作为迁移提示和上下文页面：先确认 proposal 已外迁，再决定是看用户指南、当前 release 行为，还是外部 proposal 仓库。</span><span class="en">Workflow note for using this spec or proposal in a local OpenUSD reading path.</span></li>
+<li><span class="zh">在资产中使用变量时，保留 <code>expressionVariables</code>、<code>if()</code>、<code>defined()</code> 等函数和 metadata 名称，不把它们翻译成中文。</span><span class="en">Workflow note for using this spec or proposal in a local OpenUSD reading path.</span></li>
+<li><span class="zh">跨 layer 排查时，按 composition 顺序确认变量定义和覆盖，而不是只看单个 layer 的文本。</span><span class="en">Workflow note for using this spec or proposal in a local OpenUSD reading path.</span></li></ul>
 
+    <h3>边界和常见误读 / Boundaries and Common Misreads</h3>
+    <ul><li><span class="zh">stage variable expression 不是 Python 脚本，也不是 shell 环境变量；它是 USD layer/composition 语境下的表达式机制。</span><span class="en">Boundary note: keep API/schema/token/property/code/link semantics intact.</span></li>
+<li><span class="zh">外部 GitHub proposal 提供设计背景，但当前可用行为仍应以 release 文档和实现版本为准。</span><span class="en">Boundary note: keep API/schema/token/property/code/link semantics intact.</span></li>
+<li><span class="zh">本地页不伪装成完整 proposal 翻译；它提供中文导读、迁移说明和阅读路径。</span><span class="en">Boundary note: keep API/schema/token/property/code/link semantics intact.</span></li></ul>
 
+    <h3>相邻文档关系 / Adjacent Documents</h3>
+    <p><span class="zh">这些链接用于把本页放回本地中文站的连续阅读路径：先从总入口到 release index，再到本页，再进入相邻规范、提案、user guide 或 API 页面。</span><span class="en">Adjacent local pages are part of the local reading flow.</span></p>
+    <ul><li><a href="user_guides/variable_expressions.html">Variable Expressions</a></li>
+<li><a href="user_guides/namespace_editing.html">Namespace Editing</a></li>
+<li><a href="wp.html">Proposals</a></li></ul>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section>
-      <h2>中文导读 / Chinese Reading Notes</h2>
-      <ul>
-<li><span class="zh">该页面是迁移提示页，说明 Stage Variable Expressions proposal 已迁移到 OpenUSD-proposals。</span></li>
-<li><span class="zh">当前本地页保留该迁移状态和官方链接，不把它伪装成完整正文已复刻。</span></li>
-<li><span class="zh">与前一轮的 USD Variable Expressions 用户指南不同，本页是 proposal 迁移入口，主要作用是把全量清单中的官方页面状态补齐。</span></li>
-<li><span class="zh">后续如需要高保真内容，应从迁移后的 OpenUSD-proposals 原文继续扩展，而不是在此页制造不存在的旧正文。</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-074">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Stage Variable Expressions 补充中文优先的概念边界、阅读顺序、语义风险和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds Chinese-first conceptual boundaries, reading order, semantic cautions, and terminology for Stage Variable Expressions while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">本页当前是 proposal 迁移提示页，正文只说明 `Stage Variable Expressions` 已迁移到 `OpenUSD-proposals`。</span></li>
-        <li><span class="zh">它不应被伪装成完整白皮书复刻；本地页保留迁移状态、官方链接和清单覆盖状态，避免制造不存在于当前 release 页面的旧正文。</span></li>
-        <li><span class="zh">它和 `USD Variable Expressions` 用户指南不是同一类页面：前者是 proposal 指针，后者是面向使用者的功能说明。</span></li>
-        <li><span class="zh">如果后续要补齐完整 proposal 内容，应以迁移后的 OpenUSD-proposals 页面为来源，再明确标注来源差异。</span></li>
-        <li><span class="zh">本轮中文精修的价值是把页面状态说清楚：该页在 406 清单内已覆盖，但可读正文依赖迁移后的官方 proposal。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">Stage 变量表达式 proposal：</span><span class="en">Stage Variable Expressions</span></li>
-        <li><span class="zh">OpenUSD proposals 仓库/页面：</span><span class="en">OpenUSD-proposals</span></li>
-        <li><span class="zh">迁移提示：</span><span class="en">migration notice</span></li>
-        <li><span class="zh">提案指针页：</span><span class="en">proposal pointer</span></li>
-        <li><span class="zh">USD 变量表达式用户指南：</span><span class="en">USD Variable Expressions</span></li>
-        <li><span class="zh">当前 release 页面：</span><span class="en">current release page</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-114">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`wp_stage_variables.html` 当前是 `Stage Variable Expressions` proposal 的迁移提示页。它说明相关 proposal 已迁移到 `OpenUSD-proposals`，本地复刻应保留这个状态，不应伪造旧 release 页面中不存在的完整正文。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for Stage Variable Expressions while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">本页和 `user_guides/variable_expressions.html` 的职责不同：用户指南解释功能如何使用，本页只是 proposal 迁移入口和历史指针。</span></li>
-        <li><span class="zh">`OpenUSD-proposals` 是继续查完整 proposal 的来源；如果后续补齐详细内容，应明确来自迁移后的 proposal 页面，而不是当前 release 页正文。</span></li>
-        <li><span class="zh">Stage variables 讨论的是 stage 级配置、表达式变量和资产路径/变体选择等可配置机制的设计动机；但当前页只保留迁移说明。</span></li>
-        <li><span class="zh">中文说明应避免把 migration notice 扩写成规范结论。可读价值在于告诉读者该 406 清单页已覆盖，但完整设计文本需要跳转到 proposal。</span></li>
-        <li><span class="zh">保留 `Stage Variable Expressions`、`OpenUSD-proposals`、`proposal` 等英文术语，方便读者用官方标题搜索和交叉引用。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">Stage 变量表达式 proposal：</span><span class="en">Stage Variable Expressions</span></li>
-        <li><span class="zh">OpenUSD proposals 仓库或页面：</span><span class="en">OpenUSD-proposals</span></li>
-        <li><span class="zh">迁移提示：</span><span class="en">migration notice</span></li>
-        <li><span class="zh">设计提案：</span><span class="en">proposal</span></li>
-        <li><span class="zh">stage 级变量：</span><span class="en">stage variables</span></li>
-        <li><span class="zh">变量表达式：</span><span class="en">variable expressions</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：Stage Variable Expressions</span><span class="en">Stage Variable Expressions</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">This proposal has been migrated to OpenUSD-proposals: Stage Variable Expressions .</p>
-    </section>
-
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="https://github.com/PixarAnimationStudios/OpenUSD-proposals/tree/main/proposals/stage_variable_expressions">OpenUSD-proposals: Stage Variable Expressions</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/wp_stage_variables.html">打开官方原页 / Open official page</a></p>
-    </section>
-  </main>
+    <h3>源页对比 / Source Parity</h3>
+    <p><span class="zh">已对比本地 source snapshot：<code>source/full_release/wp_stage_variables_source.html</code>，并保留官方页显式外跳。source parity 报告写入 <code>reports/round_414_specs_source_parity.json</code>。</span><span class="en">Official source page: <a href="https://openusd.org/release/wp_stage_variables.html">Open official source page - Stage Variable Expressions</a>.</span></p>
+    <ul><li><span class="en">h1 Stage Variable Expressions </span></li></ul>
+  </section>
+</main>
 </body>
 </html>

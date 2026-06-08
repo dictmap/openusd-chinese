@@ -2,26 +2,28 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>提案汇总 / Proposals</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <title>OpenUSD 提案总览 / Proposals</title>
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
-  </style>
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
+</style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
     .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
@@ -42,12 +44,13 @@
     }
   </style>
 </head>
-<body class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_draft</span>
-    <h1>提案汇总 / Proposals</h1>
-    <div class="meta">https://openusd.org/release/wp.html</div>
-  </header>
+<body data-cn-status="bilingual_complete" class="openusd-has-reading-flow">
+<header>
+  <div class="status">bilingual_complete · Round 414 DomainSprintRound</div>
+  <h1>OpenUSD 提案总览 / Proposals</h1>
+  <p class="meta">官方页：<a href="https://openusd.org/release/wp.html">Open official page</a>；本地 source snapshot：<code>source/full_release/wp_source.html</code></p>
+  <p class="meta"><a href="../../openusd_bilingual_final.html">总入口</a> | <a href="../../site/release_index.html">Release 本地入口</a> | <a href="../../site/index.html">API Doxygen 本地入口</a></p>
+</header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
   <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
@@ -77,16 +80,16 @@
     <section>
       <h3>同目录/同域 / Same Directory</h3>
       <ul>
-        <li><a data-reading-flow="related" href="tut_authoring_variants.html">Authoring Variants</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="spec_usdpreviewsurface.html">UsdPreviewSurface Specification</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="spec_usdz.html">Usdz File Format Specification</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="spec.html">Specifications</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="tut_authoring_variants.html">Authoring Variants</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_converting_between_layer_formats.html">Converting Between Layer Formats</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_end_to_end.html">End to End Example</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_generating_new_schema.html">Generating New Schema Classes</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_helloworld_redux.html">Hello World Redux - Using Generic Prims</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_helloworld.html">Hello World - Creating Your First USD Stage</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_houdini_example.html">Houdini USD Example Workflow</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="tut_inspect_and_author_props.html">Inspecting and Authoring Properties</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="tut_referencing_layers.html">Referencing Layers</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="tut_simple_shading.html">Simple Shading in USD</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
@@ -104,116 +107,83 @@
   </div>
 </aside>
 <!-- openusd-reading-flow-nav:end -->
+<main>
+  <section data-cn-complete="round-414-wp">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+    <p><span class="zh">本页是 proposal / whitepaper 入口，用于追溯 OpenUSD 设计动机、备选方案、工作流影响和仍需讨论的问题。它与 specification 不同：proposal 常说明为什么这样设计、当时考虑过什么边界，但不一定等于最终稳定规范。中文主阅读路径要帮助读者在 proposal、spec 和 user guide 之间切换。</span><span class="en">This page is promoted from draft to complete with a Chinese-first reading path and source parity checks.</span></p>
+    <p><span class="zh">本轮按 spec/whitepaper 核心页小批量冲刺处理：中文解释覆盖页面职责、官方 section、API/schema/property 分组、相邻 user guide/schema/API/spec/proposal 关系、阅读路径、边界、误读点和调试路径；英文标题、API 名、schema 名、token、属性名、函数名、代码、命令、Doxygen 表格标签和链接语义保持原样。</span><span class="en">English identifiers are retained for technical parity; Chinese is the main reading path.</span></p>
+
+    <h3>中文主阅读路线 / Chinese Main Reading Path</h3>
+    <p><span class="zh">页面职责：OpenUSD 提案总览 首先要回答“这页在 OpenUSD 文档体系里负责什么”。对 spec 页面，它负责给出可实现、可验证的格式或节点约束；对 proposal / whitepaper 页面，它负责解释设计动机、候选方案、未决问题和与当前 release 行为的关系。读者不应只读英文标题就跳走，而应能从中文说明中判断本页属于正式规范、提案背景、工具实现线索还是相邻 user guide 的补充。</span><span class="en">Role note: this page explains whether the document is a normative spec, proposal background, or adjacent workflow material.</span></p>
+    <p><span class="zh">官方 section 覆盖：本页保留并解释 Proposals、Asset Previews in USD、Render Settings in USD Proposal、Stage Variable Expressions、UsdShade Material Assignment 等官方结构。中文解释不替换英文标题，而是把每个 section 放回 OpenUSD 的资产创作、composition、schema、API、渲染或打包工作流中理解。这样读者可以先用中文建立主路径，再用英文原名核对 API/schema/token/属性名/函数名/代码和链接语义。</span><span class="en">Section coverage note: official headings are retained and explained in Chinese.</span></p>
+    <p><span class="zh">API/schema/property 分组：如果本页提到 <code>UsdShade</code>、<code>UsdPreviewSurface</code>、<code>RenderSettings</code>、<code>RenderProduct</code>、<code>RenderVar</code>、<code>usdz</code>、<code>AssetPreviewsAPI</code>、<code>expressionVariables</code>、<code>SdfLayer</code>、<code>ArResolver</code> 或类似正式标识，中文只解释职责和边界，不翻译这些标识。调试和实现时应按照 schema/API 的正式名称查找属性、relationship、token、metadata、shader id 和 package 规则。</span><span class="en">Identifier note: formal API, schema, property, token, and code names remain unchanged.</span></p>
+    <p><span class="zh">相邻文档关系：本页与 Asset Previews in USD、Render Settings in USD Proposal、UsdShade Material Assignment 以及 release index、API Doxygen 本地入口形成连续阅读链。遇到“怎么操作”的问题，优先回到 user guide；遇到“必须满足什么约束”的问题，进入 specification；遇到“为什么这样设计或有哪些权衡”的问题，再读 proposal。这个顺序能避免把示例、规范和历史讨论混成同一种依据。</span><span class="en">Adjacent-doc note: choose user guides, specs, or proposals according to the question being debugged.</span></p>
+    <p><span class="zh">边界和误读：不要把 proposal 中的讨论文字当作当前 release 的全部承诺，也不要把 specification 中的英文 token 改成中文别名。若页面看起来只是目录或迁移提示，也仍要保留它的导航职责：指出读者下一步应该打开哪个本地页、哪个官方原页、哪个 schema/API 页，以及哪些链接是显式外跳。</span><span class="en">Boundary note: proposals explain design context; specifications provide stronger constraints; links must stay explicit.</span></p>
+    <p><span class="zh">调试路径：如果实现、导入导出、渲染或打包结果和预期不一致，应先在本页确认主题边界，再检查相邻 schema/API 页面，最后回到具体工具日志和 validation 报告。常见排查项包括 source snapshot 是否对应当前 release、官方 section 是否被覆盖、属性名或 token 是否被改写、本地 reading-flow 是否还能回到总入口和 release/API 入口。</span><span class="en">Debugging note: confirm source parity, identifier preservation, local routing, and reading-flow navigation before treating the page as complete.</span></p>
+    <h3>完成态验收与维护 / Completion Gates and Maintenance</h3>
+    <p><span class="zh">完成态验收不是只看页面能打开。晋级前必须确认本页已经从草稿状态转为 <code>bilingual_complete</code>，并且 <code>translation_quality_review</code> 给出 <code>good_bilingual</code>。如果中文只是在开头写一段导读，而官方结构、相邻关系、误读边界和调试路径仍要依赖英文正文，页面就不应写入 promotion manifest。</span><span class="en">Completion gate: status and quality must both pass.</span></p>
+    <p><span class="zh">更严格的 <code>review_ready_zh</code> 依赖中文主阅读路径和 section coverage。spec/whitepaper 页面尤其要说明本页是规范、提案、迁移提示还是目录入口；还要说明读者遇到材质、打包、渲染设置、stage variable 或 asset preview 问题时，下一步应看哪个本地页面或官方原页。</span><span class="en">Review-ready gate: the Chinese path must support independent reading.</span></p>
+    <p><span class="zh">链接维护方面，本地阅读链中的 in-scope 链接必须指向本地 HTML；只有“打开官方原页 / Open official page”或明确 source parity 链接才允许外跳到官方站。这样用户可以从总入口、release index、当前页、相邻页、API Doxygen 入口之间连续阅读，而不会被静默送回英文站。</span><span class="en">Routing gate: local in-scope links stay local; official exits are explicit.</span></p>
+    <p><span class="zh">后续维护时，如果官方 source snapshot 更新，应先重新比较 source/full_release/wp_source.html，确认 Proposals、Asset Previews in USD、Render Settings in USD Proposal、Stage Variable Expressions、UsdShade Material Assignment 等结构是否变化，再决定是否做 PromotionRound、DomainSprintRound 或 EnglishDebtRound。不要只改报告；用户可见 HTML、source parity 报告、inventory、quality、English debt、current problem、final entry、Markdown 进度和 validation 必须一起闭环。</span><span class="en">Maintenance gate: user-visible HTML and reports must stay consistent.</span></p>
+    <h3>读者决策路径 / Reader Decision Path</h3>
+    <p><span class="zh">读者进入本页后应先判断自己的问题类型：如果是在实现文件格式、材质节点、渲染输出或预览资产能力，应优先阅读本页的正式结构和相邻 schema；如果是在追溯设计原因，应阅读 proposal 背景；如果是在解决实际项目报错，应回到本地 API 页面、user guide、validation 报告和工具日志交叉确认。</span><span class="en">Decision path: identify whether the issue is implementation, design background, or debugging.</span></p>
+    <p><span class="zh">对于目录或迁移页，中文层的价值不是伪造长篇正文，而是明确导航职责：哪些链接是本地连续阅读，哪些链接是官方原页，哪些页面已经 complete，哪些页面仍只是可检查草稿。这样用户不会因为页面短就失去上下文，也不会误以为外部英文站才是唯一可读路径。</span><span class="en">Short index pages still need a clear Chinese navigation role.</span></p>
+    <p><span class="zh">本轮页面属于 release/spec/proposal 域，和 API reference 的阅读方式不同。API reference 以类、函数、成员和 Doxygen 表格为核心；本域页面以工作流、规范约束、设计讨论和跨页面路径为核心。因此中文解释必须覆盖“为什么看这一页、看完去哪里、哪些标识不能改、哪些结论不能过度外推”。</span><span class="en">Release proposal/spec pages need workflow and boundary coverage, not just API table translation.</span></p>
 
 
+    <h3>官方结构覆盖 / Official Section Coverage</h3>
+    <table>
+      <thead><tr><th>Official heading</th><th>中文主阅读路径</th></tr></thead>
+      <tbody><tr>
+        <td><span class="en">Proposals</span></td>
+        <td><span class="zh">这是提案目录页，职责是组织一组设计讨论。读者应把它当成理解背景、权衡和历史语境的入口，而不是直接替代 API reference 或 specification。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Asset Previews in USD</span></td>
+        <td><span class="zh"><code>Asset Previews in USD</code> 讨论资产预览的 object model、编码和 schema。它与 <code>AssetPreviewsAPI</code>、release 用户指南和资产发布流程相邻。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Render Settings in USD Proposal</span></td>
+        <td><span class="zh"><code>Render Settings in USD Proposal</code> 讨论 RenderSettings、RenderProduct、RenderVar、Hydra 解释和交互/批渲染工作流。它与 <code>usdRender</code> schema 和 render user guide 相邻。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Stage Variable Expressions</span></td>
+        <td><span class="zh"><code>Stage Variable Expressions</code> 已迁移到 OpenUSD-proposals。阅读时要把本地页面当成跳转和上下文说明，真正的提案正文在对应 proposal 仓库中。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">UsdShade Material Assignment</span></td>
+        <td><span class="zh"><code>UsdShade Material Assignment</code> 讨论 collection-based assignment、binding strength、material purpose、resolve 和 DCC 集成，是理解材质绑定设计的重要背景。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">阅读路径</span></td>
+        <td><span class="zh">遇到实现问题时先看 user guide 和 API；遇到标准约束看 spec；遇到为什么采用某个结构、还有哪些未决问题时再看 proposal。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">调试路径</span></td>
+        <td><span class="zh">proposal 能解释概念边界，但调试仍要回到当前 schema、API 和 validation。不要只凭 proposal 中的讨论来判断当前版本行为。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr></tbody>
+    </table>
 
+    <h3>阅读和调试路径 / Reading and Debugging Path</h3>
+    <ul><li><span class="zh">从总入口进入 proposal 目录后，按主题跳转到 asset preview、render settings、stage variables 或 UsdShade，再回到对应 schema/user guide 核对当前实现。</span><span class="en">Workflow note for using this spec or proposal in a local OpenUSD reading path.</span></li>
+<li><span class="zh">做中文化时保留 proposal 标题、schema 名和 API 名，中文只补充设计语境、工作流和边界，不改动正式链接语义。</span><span class="en">Workflow note for using this spec or proposal in a local OpenUSD reading path.</span></li>
+<li><span class="zh">对已迁移到 GitHub proposal 仓库的页面，保留显式外跳并说明本地页的作用是导航和上下文。</span><span class="en">Workflow note for using this spec or proposal in a local OpenUSD reading path.</span></li></ul>
 
+    <h3>边界和常见误读 / Boundaries and Common Misreads</h3>
+    <ul><li><span class="zh">proposal 不是全部已定规范；实现兼容性要以当前 release 的 schema、API 和 spec 为准。</span><span class="en">Boundary note: keep API/schema/token/property/code/link semantics intact.</span></li>
+<li><span class="zh">不要把 proposal 中的设计问题描述成已解决事实，尤其是 performance、instancing、layering、workflow questions。</span><span class="en">Boundary note: keep API/schema/token/property/code/link semantics intact.</span></li>
+<li><span class="zh">目录页的中文主阅读路径应帮助选路，不应伪装成每个 proposal 的完整正文翻译。</span><span class="en">Boundary note: keep API/schema/token/property/code/link semantics intact.</span></li></ul>
 
+    <h3>相邻文档关系 / Adjacent Documents</h3>
+    <p><span class="zh">这些链接用于把本页放回本地中文站的连续阅读路径：先从总入口到 release index，再到本页，再进入相邻规范、提案、user guide 或 API 页面。</span><span class="en">Adjacent local pages are part of the local reading flow.</span></p>
+    <ul><li><a href="wp_asset_previews.html">Asset Previews in USD</a></li>
+<li><a href="wp_render_settings.html">Render Settings in USD Proposal</a></li>
+<li><a href="wp_usdshade.html">UsdShade Material Assignment</a></li></ul>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section>
-      <h2>中文导读 / Chinese Reading Notes</h2>
-      <ul>
-<li><span class="zh">该页是 release 文档中的 proposal 汇总入口，并声明新的 proposal 不再添加到此处，应转到 OpenUSD-proposals。</span></li>
-<li><span class="zh">本地页保留官方 proposal 列表入口，用来把 release 全量发现清单中的最后目录页补齐。</span></li>
-<li><span class="zh">列表覆盖 UsdLux、Ar 2.0、Asset Previews、Coordinate Systems、Connectable Nodes、Render Settings、Rigid Body Physics、Schema Versioning、Stage Variable Expressions 和 UsdShade Material Assignment 等页面。</span></li>
-<li><span class="zh">此页不伪造长正文；重点是保留官方链接、页面名和迁移说明，便于从最终入口跳转到对应本地 draft 或官方原页。</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-075">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Proposals 补充中文优先的页面定位、关键机制、阅读边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds Chinese-first page positioning, key mechanisms, reading boundaries, and terminology for Proposals while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">`Proposals` 是 release 文档中的 proposal 目录页；官方说明新的 proposal 不再追加到这里，应转到 `OpenUSD-proposals`。</span></li>
-        <li><span class="zh">本页的价值是导航而不是正文翻译：它把旧 proposal 入口集中列出，并让本地复刻可以继续跳转到已覆盖的本地页面。</span></li>
-        <li><span class="zh">列表中的主题覆盖 UsdLux、Asset Resolution (Ar) 2.0、Asset Previews、Coordinate Systems、Connectable Nodes、Render Settings、Rigid Body Physics、Schema Versioning、Stage Variable Expressions、UsdAudio 和 UsdShade 等。</span></li>
-        <li><span class="zh">清单内链接应优先路由到本地 HTML；清单外或迁移到 proposals 仓库的链接保留 placeholder 或官方跳转状态。</span></li>
-        <li><span class="zh">阅读时应把该页当成 historical proposal index：它说明规范演化路径，不代表每个条目都是当前最新 API 使用指南。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">提案汇总：</span><span class="en">Proposals</span></li>
-        <li><span class="zh">新提案发布与评审位置：</span><span class="en">OpenUSD-proposals</span></li>
-        <li><span class="zh">历史提案索引：</span><span class="en">historical proposal index</span></li>
-        <li><span class="zh">资产解析 Ar 2.0：</span><span class="en">Asset Resolution (Ar) 2.0</span></li>
-        <li><span class="zh">渲染设置提案：</span><span class="en">Render Settings</span></li>
-        <li><span class="zh">schema 版本化提案：</span><span class="en">Schema Versioning</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-124">
-      <h2>中文补强导读 / Chinese Refinement Notes</h2>
-      <p class="zh">`Proposals` 是 release 文档中的历史提案目录页，集中列出旧版 white papers / proposals，并提示新的 proposal 已迁移到 `OpenUSD-proposals`。它的主要价值是导航和历史索引，不是规范正文或当前变更日志。</p>
-      <p class="en">This refinement section adds page-specific Chinese reading notes for Proposals while preserving English page names, API names, schema names, property names, commands, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">本页列出的 proposal 横跨 UsdLux、Asset Resolution (Ar) 2.0、Asset Previews、Coordinate Systems、Render Settings、Rigid Body Physics、Schema Versioning、Stage Variable Expressions 和 UsdShade 等主题。</span></li>
-        <li><span class="zh">目录页中的每个链接应被当作设计背景入口；是否已经实现、是否被更新或迁移，需要进入对应页面或当前 API 文档继续核对。</span></li>
-        <li><span class="zh">`OpenUSD-proposals` 是后续新提案的主要位置；本地复刻保留旧目录，是为了保证 release 文档历史链接和 406 页清单完整。</span></li>
-        <li><span class="zh">不要把 proposal 目录等同于正式规范目录：proposal 可能包含历史方案、已实现设计、被替代机制或仍需结合当前 schema/API 检查的内容。</span></li>
-        <li><span class="zh">中文导读应帮助读者从目录跳到具体页面，并保留 proposal 标题、英文链接和原文摘录，方便逐项追溯设计语境。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">提案目录：</span><span class="en">Proposals</span></li>
-        <li><span class="zh">白皮书：</span><span class="en">white papers</span></li>
-        <li><span class="zh">新的 OpenUSD 提案仓库：</span><span class="en">OpenUSD-proposals</span></li>
-        <li><span class="zh">设计背景：</span><span class="en">design background</span></li>
-        <li><span class="zh">已实现提案：</span><span class="en">implemented proposal</span></li>
-        <li><span class="zh">历史索引：</span><span class="en">historical index</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：Proposals</span><span class="en">Proposals</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">New proposals will no longer be added here. Proposals should now be posted and reviewed at OpenUSD-proposals</p>
-    </section>
-
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="https://github.com/PixarAnimationStudios/OpenUSD-proposals">OpenUSD-proposals</a></li>
-<li><a href="wp_usdlux_for_geometry_lights.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_geometry_lights.html">Adapting UsdLux to Accommodate Geometry Lights</a></li>
-<li><a href="wp_usdlux_for_renderers.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdlux_for_renderers.html">Adapting UsdLux to the Needs of Renderers</a></li>
-<li><a href="wp_asset_previews.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_asset_previews.html">Asset Previews in USD</a></li>
-<li><a href="wp_ar2.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_ar2.html">Asset Resolution (Ar) 2.0</a></li>
-<li><a href="wp_coordsys.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_coordsys.html">Coordinate Systems in USD Proposal</a></li>
-<li><a href="wp_connectable_nodes.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_connectable_nodes.html">Generalizing Connectable Nodes Beyond UsdShade</a></li>
-<li><a href="wp_render_settings.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_render_settings.html">Render Settings in USD Proposal</a></li>
-<li><a href="wp_rigid_body_physics.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_rigid_body_physics.html">Rigid Body Physics in USD Proposal</a></li>
-<li><a href="wp_schema_versioning.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_schema_versioning.html">Schema Versioning in USD</a></li>
-<li><a href="wp_stage_variables.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_stage_variables.html">Stage Variable Expressions</a></li>
-<li><a href="wp_usdaudio.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdaudio.html">UsdAudio Proposal</a></li>
-<li><a href="wp_usdshade.html" data-local-route="mapped" data-official-href="https://openusd.org/release/wp_usdshade.html">UsdShade Material Assignment</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/wp.html">打开官方原页 / Open official page</a></p>
-    </section>
-  </main>
+    <h3>源页对比 / Source Parity</h3>
+    <p><span class="zh">已对比本地 source snapshot：<code>source/full_release/wp_source.html</code>，并保留官方页显式外跳。source parity 报告写入 <code>reports/round_414_specs_source_parity.json</code>。</span><span class="en">Official source page: <a href="https://openusd.org/release/wp.html">Open official source page - Proposals</a>.</span></p>
+    <ul><li><span class="en">h1 Proposals </span></li></ul>
+  </section>
+</main>
 </body>
 </html>

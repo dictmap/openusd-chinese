@@ -2,24 +2,28 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>UsdPreviewSurface 规范 / UsdPreviewSurface Specification</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
-  </style>
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
+</style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
     .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
@@ -40,12 +44,13 @@
     }
   </style>
 </head>
-<body class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_draft</span>
-    <h1>UsdPreviewSurface 规范 / UsdPreviewSurface Specification</h1>
-    <div class="meta">https://openusd.org/release/spec_usdpreviewsurface.html</div>
-  </header>
+<body data-cn-status="bilingual_complete" class="openusd-has-reading-flow">
+<header>
+  <div class="status">bilingual_complete · Round 414 DomainSprintRound</div>
+  <h1>UsdPreviewSurface 规范 / UsdPreviewSurface Specification</h1>
+  <p class="meta">官方页：<a href="https://openusd.org/release/spec_usdpreviewsurface.html">Open official page</a>；本地 source snapshot：<code>source/full_release/spec_usdpreviewsurface_source.html</code></p>
+  <p class="meta"><a href="../../openusd_bilingual_final.html">总入口</a> | <a href="../../site/release_index.html">Release 本地入口</a> | <a href="../../site/index.html">API Doxygen 本地入口</a></p>
+</header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
   <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
@@ -75,7 +80,9 @@
     <section>
       <h3>同目录/同域 / Same Directory</h3>
       <ul>
-        <li><a data-reading-flow="related" href="tut_authoring_variants.html">Authoring Variants</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="spec_usdz.html">Usdz File Format Specification</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="spec.html">Specifications</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="tut_authoring_variants.html">Authoring Variants</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_converting_between_layer_formats.html">Converting Between Layer Formats</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_end_to_end.html">End to End Example</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_generating_new_schema.html">Generating New Schema Classes</a><span class="openusd-reading-flow-status">complete</span></li>
@@ -83,8 +90,6 @@
 <li><a data-reading-flow="related" href="tut_helloworld.html">Hello World - Creating Your First USD Stage</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_houdini_example.html">Houdini USD Example Workflow</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_inspect_and_author_props.html">Inspecting and Authoring Properties</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="tut_referencing_layers.html">Referencing Layers</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="tut_simple_shading.html">Simple Shading in USD</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
@@ -103,147 +108,112 @@
   </div>
 </aside>
 <!-- openusd-reading-flow-nav:end -->
+<main>
+  <section data-cn-complete="round-414-spec-usdpreviewsurface">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+    <p><span class="zh">本页定义 <code>UsdPreviewSurface</code> 预览材质规范，目标是在不同 DCC、Hydra delegate 和 renderer 之间提供可交换的基础 PBR 表达。中文阅读重点不是把每个输入端口翻译成中文，而是说明 <code>Preview Surface</code>、<code>Texture Reader</code>、<code>Primvar Reader</code>、<code>Transform2d</code> 如何组成材质网络，以及 <code>diffuseColor</code>、<code>metallic</code>、<code>roughness</code>、<code>opacity</code>、<code>normal</code> 等输入的边界。</span><span class="en">This page is promoted from draft to complete with a Chinese-first reading path and source parity checks.</span></p>
+    <p><span class="zh">本轮按 spec/whitepaper 核心页小批量冲刺处理：中文解释覆盖页面职责、官方 section、API/schema/property 分组、相邻 user guide/schema/API/spec/proposal 关系、阅读路径、边界、误读点和调试路径；英文标题、API 名、schema 名、token、属性名、函数名、代码、命令、Doxygen 表格标签和链接语义保持原样。</span><span class="en">English identifiers are retained for technical parity; Chinese is the main reading path.</span></p>
+
+    <h3>中文主阅读路线 / Chinese Main Reading Path</h3>
+    <p><span class="zh">页面职责：UsdPreviewSurface 规范 首先要回答“这页在 OpenUSD 文档体系里负责什么”。对 spec 页面，它负责给出可实现、可验证的格式或节点约束；对 proposal / whitepaper 页面，它负责解释设计动机、候选方案、未决问题和与当前 release 行为的关系。读者不应只读英文标题就跳走，而应能从中文说明中判断本页属于正式规范、提案背景、工具实现线索还是相邻 user guide 的补充。</span><span class="en">Role note: this page explains whether the document is a normative spec, proposal background, or adjacent workflow material.</span></p>
+    <p><span class="zh">官方 section 覆盖：本页保留并解释 UsdPreviewSurface Specification、Goal、Core Nodes、Preview Surface、Texture Reader、Primvar Reader、Transform2d、USD Sample、Texture Coordinate Orientation in USD、Roughness vs Glossiness、Changes, by Version 等官方结构。中文解释不替换英文标题，而是把每个 section 放回 OpenUSD 的资产创作、composition、schema、API、渲染或打包工作流中理解。这样读者可以先用中文建立主路径，再用英文原名核对 API/schema/token/属性名/函数名/代码和链接语义。</span><span class="en">Section coverage note: official headings are retained and explained in Chinese.</span></p>
+    <p><span class="zh">API/schema/property 分组：如果本页提到 <code>UsdShade</code>、<code>UsdPreviewSurface</code>、<code>RenderSettings</code>、<code>RenderProduct</code>、<code>RenderVar</code>、<code>usdz</code>、<code>AssetPreviewsAPI</code>、<code>expressionVariables</code>、<code>SdfLayer</code>、<code>ArResolver</code> 或类似正式标识，中文只解释职责和边界，不翻译这些标识。调试和实现时应按照 schema/API 的正式名称查找属性、relationship、token、metadata、shader id 和 package 规则。</span><span class="en">Identifier note: formal API, schema, property, token, and code names remain unchanged.</span></p>
+    <p><span class="zh">相邻文档关系：本页与 Rendering with USD、Primvars、UsdShade Material Assignment 以及 release index、API Doxygen 本地入口形成连续阅读链。遇到“怎么操作”的问题，优先回到 user guide；遇到“必须满足什么约束”的问题，进入 specification；遇到“为什么这样设计或有哪些权衡”的问题，再读 proposal。这个顺序能避免把示例、规范和历史讨论混成同一种依据。</span><span class="en">Adjacent-doc note: choose user guides, specs, or proposals according to the question being debugged.</span></p>
+    <p><span class="zh">边界和误读：不要把 proposal 中的讨论文字当作当前 release 的全部承诺，也不要把 specification 中的英文 token 改成中文别名。若页面看起来只是目录或迁移提示，也仍要保留它的导航职责：指出读者下一步应该打开哪个本地页、哪个官方原页、哪个 schema/API 页，以及哪些链接是显式外跳。</span><span class="en">Boundary note: proposals explain design context; specifications provide stronger constraints; links must stay explicit.</span></p>
+    <p><span class="zh">调试路径：如果实现、导入导出、渲染或打包结果和预期不一致，应先在本页确认主题边界，再检查相邻 schema/API 页面，最后回到具体工具日志和 validation 报告。常见排查项包括 source snapshot 是否对应当前 release、官方 section 是否被覆盖、属性名或 token 是否被改写、本地 reading-flow 是否还能回到总入口和 release/API 入口。</span><span class="en">Debugging note: confirm source parity, identifier preservation, local routing, and reading-flow navigation before treating the page as complete.</span></p>
+    <h3>完成态验收与维护 / Completion Gates and Maintenance</h3>
+    <p><span class="zh">完成态验收不是只看页面能打开。晋级前必须确认本页已经从草稿状态转为 <code>bilingual_complete</code>，并且 <code>translation_quality_review</code> 给出 <code>good_bilingual</code>。如果中文只是在开头写一段导读，而官方结构、相邻关系、误读边界和调试路径仍要依赖英文正文，页面就不应写入 promotion manifest。</span><span class="en">Completion gate: status and quality must both pass.</span></p>
+    <p><span class="zh">更严格的 <code>review_ready_zh</code> 依赖中文主阅读路径和 section coverage。spec/whitepaper 页面尤其要说明本页是规范、提案、迁移提示还是目录入口；还要说明读者遇到材质、打包、渲染设置、stage variable 或 asset preview 问题时，下一步应看哪个本地页面或官方原页。</span><span class="en">Review-ready gate: the Chinese path must support independent reading.</span></p>
+    <p><span class="zh">链接维护方面，本地阅读链中的 in-scope 链接必须指向本地 HTML；只有“打开官方原页 / Open official page”或明确 source parity 链接才允许外跳到官方站。这样用户可以从总入口、release index、当前页、相邻页、API Doxygen 入口之间连续阅读，而不会被静默送回英文站。</span><span class="en">Routing gate: local in-scope links stay local; official exits are explicit.</span></p>
+    <p><span class="zh">后续维护时，如果官方 source snapshot 更新，应先重新比较 source/full_release/spec_usdpreviewsurface_source.html，确认 UsdPreviewSurface Specification、Goal、Core Nodes、Preview Surface、Texture Reader、Primvar Reader、Transform2d、USD Sample、Texture Coordinate Orientation in USD、Roughness vs Glossiness、Changes, by Version 等结构是否变化，再决定是否做 PromotionRound、DomainSprintRound 或 EnglishDebtRound。不要只改报告；用户可见 HTML、source parity 报告、inventory、quality、English debt、current problem、final entry、Markdown 进度和 validation 必须一起闭环。</span><span class="en">Maintenance gate: user-visible HTML and reports must stay consistent.</span></p>
+    <h3>读者决策路径 / Reader Decision Path</h3>
+    <p><span class="zh">读者进入本页后应先判断自己的问题类型：如果是在实现文件格式、材质节点、渲染输出或预览资产能力，应优先阅读本页的正式结构和相邻 schema；如果是在追溯设计原因，应阅读 proposal 背景；如果是在解决实际项目报错，应回到本地 API 页面、user guide、validation 报告和工具日志交叉确认。</span><span class="en">Decision path: identify whether the issue is implementation, design background, or debugging.</span></p>
+    <p><span class="zh">对于目录或迁移页，中文层的价值不是伪造长篇正文，而是明确导航职责：哪些链接是本地连续阅读，哪些链接是官方原页，哪些页面已经 complete，哪些页面仍只是可检查草稿。这样用户不会因为页面短就失去上下文，也不会误以为外部英文站才是唯一可读路径。</span><span class="en">Short index pages still need a clear Chinese navigation role.</span></p>
+    <p><span class="zh">本轮页面属于 release/spec/proposal 域，和 API reference 的阅读方式不同。API reference 以类、函数、成员和 Doxygen 表格为核心；本域页面以工作流、规范约束、设计讨论和跨页面路径为核心。因此中文解释必须覆盖“为什么看这一页、看完去哪里、哪些标识不能改、哪些结论不能过度外推”。</span><span class="en">Release proposal/spec pages need workflow and boundary coverage, not just API table translation.</span></p>
 
 
+    <h3>官方结构覆盖 / Official Section Coverage</h3>
+    <table>
+      <thead><tr><th>Official heading</th><th>中文主阅读路径</th></tr></thead>
+      <tbody><tr>
+        <td><span class="en">Goal</span></td>
+        <td><span class="zh">目标 section 说明此规范服务于可预览、可交换的材质表示。它不是 renderer 的全部 shading 模型，而是一个足够通用的基础 surface，用来减少资产在工具间移动时的材质丢失。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Core Nodes</span></td>
+        <td><span class="zh">核心节点包括 <code>UsdPreviewSurface</code>、<code>UsdUVTexture</code>、primvar reader 和 <code>Transform2d</code>。中文主阅读路径要把它们看成材质网络的节点分组，而不是孤立属性表。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Preview Surface</span></td>
+        <td><span class="zh"><code>Preview Surface</code> 定义 surface shader 的输入端口，包括 <code>diffuseColor</code>、<code>emissiveColor</code>、<code>useSpecularWorkflow</code>、<code>metallic</code>、<code>roughness</code>、<code>clearcoat</code>、<code>opacity</code>、<code>opacityMode</code>、<code>normal</code> 等。所有端口名和 token 必须保留英文。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Texture Reader</span></td>
+        <td><span class="zh"><code>Texture Reader</code> 负责从纹理文件读取颜色或数据，并把结果连接到 surface 输入。排查贴图错误时要看文件路径、色彩空间、alpha 解释和连接目标，而不是只看材质节点。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Primvar Reader</span></td>
+        <td><span class="zh"><code>Primvar Reader</code> 用于读取几何体上的 primvar，例如 UV 坐标或自定义插值数据。它与 <code>Primvars</code> user guide 直接相关，常见误读是把 primvar 当成普通 uniform 参数。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Transform2d</span></td>
+        <td><span class="zh"><code>Transform2d</code> 提供纹理坐标变换，如 scale、rotation、translation。它影响纹理采样位置，不等价于移动模型本身。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">USD Sample</span></td>
+        <td><span class="zh">USD sample 展示规范如何在 usda 中编码。代码和属性名不能翻译；中文解释应说明网络连接、输入默认值和 shader id 如何互相对应。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Texture Coordinate Orientation in USD</span></td>
+        <td><span class="zh">纹理坐标方向影响图像上下翻转和 UV 解释。跨 DCC 导入导出时，如果材质看似正确但贴图方向错误，应从这里核对约定。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Roughness vs Glossiness</span></td>
+        <td><span class="zh"><code>roughness</code> 与 glossiness 是相反语义的常见工作流差异。不要把 glossiness 数值直接塞进 <code>roughness</code>，需要按工作流转换。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Changes, by Version</span></td>
+        <td><span class="zh">版本变化说明规范演进。实现兼容时要看目标 OpenUSD 版本和变更点，不要假设所有输入端口在旧版本中都可用。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr></tbody>
+    </table>
 
+    <h3>阅读和调试路径 / Reading and Debugging Path</h3>
+    <ul><li><span class="zh">材质显示异常时，先确认 shader id 是 <code>UsdPreviewSurface</code>，再检查输入端口默认值、纹理连接、primvar reader、UV transform 和 opacity mode。</span><span class="en">Workflow note for using this spec or proposal in a local OpenUSD reading path.</span></li>
+<li><span class="zh">跨工具交换时，将此页作为端口语义核对表：保留 <code>inputs:*</code>、token、shader id 和 usda 示例，不把正式标识翻译成中文。</span><span class="en">Workflow note for using this spec or proposal in a local OpenUSD reading path.</span></li>
+<li><span class="zh">需要更高阶 shading 时，可以把此规范当作预览层基础，再让 renderer-specific material 或 <code>UsdShade</code> 网络补充细节。</span><span class="en">Workflow note for using this spec or proposal in a local OpenUSD reading path.</span></li></ul>
 
+    <h3>边界和常见误读 / Boundaries and Common Misreads</h3>
+    <ul><li><span class="zh"><code>UsdPreviewSurface</code> 不是完整的 Disney BRDF 或任一 renderer 专属 shader；它是交换和预览层的最低共同语义。</span><span class="en">Boundary note: keep API/schema/token/property/code/link semantics intact.</span></li>
+<li><span class="zh"><code>roughness</code>、<code>metallic</code>、<code>opacityMode</code>、<code>normal</code> 等输入端口不能随意重命名，工具链依赖这些英文标识解析网络。</span><span class="en">Boundary note: keep API/schema/token/property/code/link semantics intact.</span></li>
+<li><span class="zh">如果资产使用复杂节点图，不能只靠此规范判断最终渲染效果，还要结合 <code>UsdShade</code>、render context 和 renderer 实现。</span><span class="en">Boundary note: keep API/schema/token/property/code/link semantics intact.</span></li></ul>
 
+    <h3>相邻文档关系 / Adjacent Documents</h3>
+    <p><span class="zh">这些链接用于把本页放回本地中文站的连续阅读路径：先从总入口到 release index，再到本页，再进入相邻规范、提案、user guide 或 API 页面。</span><span class="en">Adjacent local pages are part of the local reading flow.</span></p>
+    <ul><li><a href="user_guides/render_user_guide.html">Rendering with USD</a></li>
+<li><a href="user_guides/primvars.html">Primvars</a></li>
+<li><a href="wp_usdshade.html">UsdShade Material Assignment</a></li></ul>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section data-cn-refinement="release-quality-pass-066">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 UsdPreviewSurface Specification 补充中文优先的页面用途、阅读边界、关键概念和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds Chinese-first page purpose, reading boundaries, key concepts, and terminology for UsdPreviewSurface Specification while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">`UsdPreviewSurface Specification` 是预览材质规范页，目标是在 film 与 game pipelines 之间提供一个可互换、可由 USD/Hydra 随附生产渲染器原生支持的基础材质节点集合。</span></li>
-        <li><span class="zh">`Goal` 与 `Core Nodes` 是阅读主线：先理解 preview material 的互换定位，再看 `Preview Surface`、`Texture Reader`、`Primvar Reader` 和 `Transform2d` 如何组成可移植材质网络。</span></li>
-        <li><span class="zh">`Preview Surface` 关注 metallic/specular workflow、roughness、opacity、normal 等通用材质输入；这些输入名属于规范字段，应保留英文原样，中文只解释视觉语义和互换边界。</span></li>
-        <li><span class="zh">`Texture Coordinate Orientation in USD` 与 `Roughness vs Glossiness` 是跨工具差异的关键说明；阅读时要把坐标方向、粗糙度/光泽度转换视为资产交换规则，而不是单个渲染器实现细节。</span></li>
-        <li><span class="zh">`Changes, by Version` 记录规范演进，尤其 `Version 2.6 - Current Head`；如果实现或工具链依赖特定输入类型，应同时核对当前版本与历史版本差异。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">UsdPreviewSurface 规范：</span><span class="en">UsdPreviewSurface Specification</span></li>
-        <li><span class="zh">预览材质：</span><span class="en">preview material</span></li>
-        <li><span class="zh">核心节点：</span><span class="en">Core Nodes</span></li>
-        <li><span class="zh">预览表面节点：</span><span class="en">Preview Surface</span></li>
-        <li><span class="zh">纹理读取节点：</span><span class="en">Texture Reader</span></li>
-        <li><span class="zh">primvar 读取节点：</span><span class="en">Primvar Reader</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-123">
-      <h2>中文补强导读 / Chinese Refinement Notes</h2>
-      <p class="zh">`UsdPreviewSurface Specification` 定义跨 film 与 game pipelines 可互换的基础预览材质节点集合。阅读主线是 Goal、Core Nodes、Preview Surface、Texture Reader、Primvar Reader 和 Transform2d，而不是某个单一渲染器的私有 shading 文档。</p>
-      <p class="en">This refinement section adds page-specific Chinese reading notes for UsdPreviewSurface Specification while preserving English page names, API names, schema names, property names, commands, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`Preview Surface` 的输入如 metallic、roughness、opacity、normal 等属于规范字段，应保留英文；中文说明只解释视觉语义和互换边界。</span></li>
-        <li><span class="zh">`Texture Reader`、`Primvar Reader` 与 `Transform2d` 共同描述纹理采样、primvar 输入和 UV 变换如何进入 preview material network。</span></li>
-        <li><span class="zh">该规范目标是提供基础互换材质，不覆盖所有 renderer-specific shading 能力；复杂材质仍可能需要 renderer-specific outputs 或完整 UsdShade 网络。</span></li>
-        <li><span class="zh">film pipeline 与 game pipeline 对实时预览、离线渲染和资产交换的需求不同；`UsdPreviewSurface` 作为共同子集，帮助工具在不同环境中保持可见结果接近。</span></li>
-        <li><span class="zh">本地中文补强保留 `UsdPreviewSurface`、节点名、输入名、token literal 和公式/参数名称，避免破坏材质网络和 API 文档之间的对应关系。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">USD 预览表面材质：</span><span class="en">UsdPreviewSurface</span></li>
-        <li><span class="zh">核心节点：</span><span class="en">Core Nodes</span></li>
-        <li><span class="zh">预览表面节点：</span><span class="en">Preview Surface</span></li>
-        <li><span class="zh">纹理读取节点：</span><span class="en">Texture Reader</span></li>
-        <li><span class="zh">primvar 读取节点：</span><span class="en">Primvar Reader</span></li>
-        <li><span class="zh">二维变换节点：</span><span class="en">Transform2d</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 2 级标题：Goal</span><span class="en">Goal</span></li>
-<li><span class="zh">第 2 级标题：Core Nodes</span><span class="en">Core Nodes</span></li>
-<li><span class="zh">第 3 级标题：Preview Surface</span><span class="en">Preview Surface</span></li>
-<li><span class="zh">第 3 级标题：Texture Reader</span><span class="en">Texture Reader</span></li>
-<li><span class="zh">第 3 级标题：Primvar Reader</span><span class="en">Primvar Reader</span></li>
-<li><span class="zh">第 3 级标题：Transform2d</span><span class="en">Transform2d</span></li>
-<li><span class="zh">第 2 级标题：USD Sample</span><span class="en">USD Sample</span></li>
-<li><span class="zh">第 2 级标题：Other Notes</span><span class="en">Other Notes</span></li>
-<li><span class="zh">第 3 级标题：Texture Coordinate Orientation in USD</span><span class="en">Texture Coordinate Orientation in USD</span></li>
-<li><span class="zh">第 3 级标题：Roughness vs Glossiness</span><span class="en">Roughness vs Glossiness</span></li>
-<li><span class="zh">第 2 级标题：Changes, by Version</span><span class="en">Changes, by Version</span></li>
-<li><span class="zh">第 3 级标题：Version 2.0 - Initial Public Specification</span><span class="en">Version 2.0 - Initial Public Specification</span></li>
-<li><span class="zh">第 3 级标题：Version 2.2 - Before Type Changes</span><span class="en">Version 2.2 - Before Type Changes</span></li>
-<li><span class="zh">第 3 级标题：Version 2.3</span><span class="en">Version 2.3</span></li>
-<li><span class="zh">第 3 级标题：Version 2.4</span><span class="en">Version 2.4</span></li>
-<li><span class="zh">第 3 级标题：Version 2.5</span><span class="en">Version 2.5</span></li>
-<li><span class="zh">第 3 级标题：Version 2.6 - Current Head</span><span class="en">Version 2.6 - Current Head</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">Version 2.0 - Initial Public Specification</p>
-<p class="en">The goal of this proposal is to have a preview material with a basic set of nodes that can be used to interchange assets from one platform to another in film and game pipelines, and which are supported natively by the production renderers that ship with USD/Hydra. The actual preview surface is intended to provide a solution for most situations and to move assets across multiple environments, the surface can work with metallic and specular workflows.</p>
-<p class="en">You will notice we have left out concepts like subsurface, anisotropic specular highlights, cloth shaders, just to mention a few. For these cases, we recommend creating a more specific surface. Our assessment is that the industry is approaching a more flexible, non-ubersurface, style of describing surfaces, as hinted by NVIDIA’s MDL , but that industry-wide adoption, especially for realtime game engines, is still a ways off. We are excited for USD/UsdShade to support such efforts (and UsdShade should already be fully capable of representing such shading networks). But our goal with this proposal is to promote interchange in the industry starting in 2018, thus this first version of a preview surface is a more constrained ubersurface that reflects what is interchangeable around 2018.</p>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="../../site/release_index.html" data-local-route="mapped" data-official-href="https://openusd.org/release/index.html">Universal Scene Description</a></li>
-<li><a href="../../site/intro.html" data-local-route="mapped" data-official-href="https://openusd.org/release/intro.html">Introduction to USD</a></li>
-<li><a href="intro_to_openexec.html" data-local-route="mapped" data-official-href="https://openusd.org/release/intro_to_openexec.html">Introduction to OpenExec</a></li>
-<li><a href="../../site/glossary.html" data-local-route="mapped" data-official-href="https://openusd.org/release/glossary.html">Terms and Concepts</a></li>
-<li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Tutorials</a></li>
-<li><a href="tut_helloworld.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_helloworld.html">Hello World - Creating Your First USD Stage</a></li>
-<li><a href="tut_helloworld_redux.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_helloworld_redux.html">Hello World Redux - Using Generic Prims</a></li>
-<li><a href="tut_inspect_and_author_props.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_inspect_and_author_props.html">Inspecting and Authoring Properties</a></li>
-<li><a href="tut_referencing_layers.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_referencing_layers.html">Referencing Layers</a></li>
-<li><a href="tut_converting_between_layer_formats.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_converting_between_layer_formats.html">Converting Between Layer Formats</a></li>
-<li><a href="tut_traversing_stage.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_traversing_stage.html">Traversing a Stage</a></li>
-<li><a href="tut_authoring_variants.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_authoring_variants.html">Authoring Variants</a></li>
-<li><a href="tut_variants_example_in_katana.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_variants_example_in_katana.html">Variants Example in Katana</a></li>
-<li><a href="tut_xforms.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_xforms.html">Transformations, Animation, and Layer Offsets</a></li>
-<li><a href="tut_simple_shading.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_simple_shading.html">Simple Shading in USD</a></li>
-<li><a href="tut_end_to_end.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_end_to_end.html">End to End Example</a></li>
-<li><a href="tut_houdini_example.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_houdini_example.html">Houdini USD Example Workflow</a></li>
-<li><a href="tut_generating_new_schema.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_generating_new_schema.html">Generating New Schema Classes</a></li>
-<li><a href="tut_usdview_plugin.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usdview_plugin.html">Creating a Usdview Plugin</a></li>
-<li><a href="dl_downloads.html" data-local-route="mapped" data-official-href="https://openusd.org/release/dl_downloads.html">Downloads and Videos</a></li>
-<li><a href="usd_products.html" data-local-route="mapped" data-official-href="https://openusd.org/release/usd_products.html">Products Using USD</a></li>
-<li><a href="user_guides/collections_and_patterns.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/collections_and_patterns.html">Collections and Patterns</a></li>
-<li><a href="user_guides/color_user_guide.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/color_user_guide.html">Color</a></li>
-<li><a href="user_guides/namespace_editing.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/namespace_editing.html">Namespace Editing</a></li>
-<li><a href="user_guides/render_user_guide.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html">Rendering with USD</a></li>
-<li><a href="user_guides/primvars.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/primvars.html">Primvars</a></li>
-<li><a href="user_guides/schemas/index.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/index.html">Schema Domains</a></li>
-<li><a href="user_guides/schemas/usdLux/usdLux_toc.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/usdLux_toc.html">Lights (usdLux)</a></li>
-<li><a href="user_guides/schemas/usdLux/overview.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/overview.html">Overview</a></li>
-<li><a href="user_guides/schemas/usdLux/BoundableLightBase.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/BoundableLightBase.html">BoundableLightBase</a></li>
-<li><a href="user_guides/schemas/usdLux/CylinderLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/CylinderLight.html">CylinderLight</a></li>
-<li><a href="user_guides/schemas/usdLux/DiskLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DiskLight.html">DiskLight</a></li>
-<li><a href="user_guides/schemas/usdLux/DistantLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DistantLight.html">DistantLight</a></li>
-<li><a href="user_guides/schemas/usdLux/DomeLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight.html">DomeLight</a></li>
-<li><a href="user_guides/schemas/usdLux/DomeLight_1.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight_1.html">DomeLight_1</a></li>
-<li><a href="user_guides/schemas/usdLux/GeometryLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/GeometryLight.html">GeometryLight</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/spec_usdpreviewsurface.html">打开官方原页 / Open official page</a></p>
-    </section>
-  </main>
+    <h3>源页对比 / Source Parity</h3>
+    <p><span class="zh">已对比本地 source snapshot：<code>source/full_release/spec_usdpreviewsurface_source.html</code>，并保留官方页显式外跳。source parity 报告写入 <code>reports/round_414_specs_source_parity.json</code>。</span><span class="en">Official source page: <a href="https://openusd.org/release/spec_usdpreviewsurface.html">Open official source page - UsdPreviewSurface Specification</a>.</span></p>
+    <ul><li><span class="en">h1 UsdPreviewSurface Specification </span></li>
+<li><span class="en">h2 Goal </span></li>
+<li><span class="en">h2 Core Nodes </span></li>
+<li><span class="en">h3 Preview Surface </span></li>
+<li><span class="en">h3 Texture Reader </span></li>
+<li><span class="en">h3 Primvar Reader </span></li>
+<li><span class="en">h3 Transform2d </span></li>
+<li><span class="en">h2 USD Sample </span></li>
+<li><span class="en">h2 Other Notes </span></li>
+<li><span class="en">h3 Texture Coordinate Orientation in USD </span></li>
+<li><span class="en">h3 Roughness vs Glossiness </span></li>
+<li><span class="en">h2 Changes, by Version </span></li>
+<li><span class="en">h3 Version 2.0 - Initial Public Specification </span></li>
+<li><span class="en">h3 Version 2.2 - Before Type Changes </span></li>
+<li><span class="en">h3 Version 2.3 </span></li>
+<li><span class="en">h3 Version 2.4 </span></li>
+<li><span class="en">h3 Version 2.5 </span></li>
+<li><span class="en">h3 Version 2.6 - Current Head </span></li></ul>
+  </section>
+</main>
 </body>
 </html>

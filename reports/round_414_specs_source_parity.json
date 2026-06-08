@@ -1,0 +1,1259 @@
+{
+  "generated_at": "2026-06-08T04:58:34.574Z",
+  "round": 414,
+  "round_type": "DomainSprintRound",
+  "target": "release spec/whitepaper 核心页小批量冲刺",
+  "source_parity": [
+    {
+      "page": "spec",
+      "title": "Specifications",
+      "output": "full_site/release/spec.html",
+      "source_snapshot": "source/full_release/spec_source.html",
+      "official_url": "https://openusd.org/release/spec.html",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Specifications "
+        }
+      ],
+      "source_keywords_checked": [
+        "Specifications",
+        "UsdPreviewSurface Specification",
+        "Usdz File Format Specification"
+      ],
+      "missing_source_keywords": [],
+      "missing_output_keywords": [],
+      "official_sections_preserved": [
+        "Specifications",
+        "UsdPreviewSurface Specification",
+        "Usdz File Format Specification",
+        "阅读路径",
+        "调试路径",
+        "相邻关系"
+      ],
+      "preserved_code_terms_sample": [
+        "OpenUSD",
+        "Specifications",
+        "bilingual_complete",
+        "Round",
+        "DomainSprintRound",
+        "Open",
+        "official",
+        "page",
+        "source",
+        "snapshot",
+        "full_release",
+        "spec_source.html",
+        "Release",
+        "API",
+        "Doxygen",
+        "Paragraph-Level",
+        "Bilingual",
+        "Coverage",
+        "release",
+        "UsdPreviewSurface",
+        "usdz",
+        "proposal",
+        "user",
+        "guide",
+        "This",
+        "promoted",
+        "from",
+        "draft",
+        "complete",
+        "with",
+        "Chinese-first",
+        "reading",
+        "path",
+        "and",
+        "parity",
+        "checks",
+        "spec",
+        "whitepaper",
+        "section",
+        "schema",
+        "property",
+        "token",
+        "English",
+        "identifiers",
+        "are",
+        "retained",
+        "for",
+        "technical",
+        "Chinese",
+        "the",
+        "main",
+        "Main",
+        "Reading",
+        "Path",
+        "Role",
+        "note",
+        "this",
+        "explains",
+        "whether",
+        "document",
+        "normative",
+        "background",
+        "adjacent",
+        "workflow",
+        "material",
+        "Specification",
+        "Usdz",
+        "File",
+        "Format",
+        "composition",
+        "Section",
+        "coverage",
+        "headings",
+        "explained",
+        "UsdShade",
+        "RenderSettings",
+        "RenderProduct",
+        "RenderVar",
+        "AssetPreviewsAPI",
+        "expressionVariables"
+      ]
+    },
+    {
+      "page": "spec-usdpreviewsurface",
+      "title": "UsdPreviewSurface Specification",
+      "output": "full_site/release/spec_usdpreviewsurface.html",
+      "source_snapshot": "source/full_release/spec_usdpreviewsurface_source.html",
+      "official_url": "https://openusd.org/release/spec_usdpreviewsurface.html",
+      "headings": [
+        {
+          "level": 1,
+          "text": "UsdPreviewSurface Specification "
+        },
+        {
+          "level": 2,
+          "text": "Goal "
+        },
+        {
+          "level": 2,
+          "text": "Core Nodes "
+        },
+        {
+          "level": 3,
+          "text": "Preview Surface "
+        },
+        {
+          "level": 3,
+          "text": "Texture Reader "
+        },
+        {
+          "level": 3,
+          "text": "Primvar Reader "
+        },
+        {
+          "level": 3,
+          "text": "Transform2d "
+        },
+        {
+          "level": 2,
+          "text": "USD Sample "
+        },
+        {
+          "level": 2,
+          "text": "Other Notes "
+        },
+        {
+          "level": 3,
+          "text": "Texture Coordinate Orientation in USD "
+        },
+        {
+          "level": 3,
+          "text": "Roughness vs Glossiness "
+        },
+        {
+          "level": 2,
+          "text": "Changes, by Version "
+        },
+        {
+          "level": 3,
+          "text": "Version 2.0 - Initial Public Specification "
+        },
+        {
+          "level": 3,
+          "text": "Version 2.2 - Before Type Changes "
+        },
+        {
+          "level": 3,
+          "text": "Version 2.3 "
+        },
+        {
+          "level": 3,
+          "text": "Version 2.4 "
+        },
+        {
+          "level": 3,
+          "text": "Version 2.5 "
+        },
+        {
+          "level": 3,
+          "text": "Version 2.6 - Current Head "
+        }
+      ],
+      "source_keywords_checked": [
+        "UsdPreviewSurface Specification",
+        "Goal",
+        "Core Nodes",
+        "Preview Surface",
+        "Texture Reader",
+        "Primvar Reader",
+        "Transform2d",
+        "USD Sample",
+        "Texture Coordinate Orientation in USD",
+        "Roughness vs Glossiness",
+        "Changes, by Version"
+      ],
+      "missing_source_keywords": [],
+      "missing_output_keywords": [],
+      "official_sections_preserved": [
+        "Goal",
+        "Core Nodes",
+        "Preview Surface",
+        "Texture Reader",
+        "Primvar Reader",
+        "Transform2d",
+        "USD Sample",
+        "Texture Coordinate Orientation in USD",
+        "Roughness vs Glossiness",
+        "Changes, by Version"
+      ],
+      "preserved_code_terms_sample": [
+        "UsdPreviewSurface",
+        "Specification",
+        "bilingual_complete",
+        "Round",
+        "DomainSprintRound",
+        "Open",
+        "official",
+        "page",
+        "source",
+        "snapshot",
+        "full_release",
+        "spec_usdpreviewsurface_source.html",
+        "Release",
+        "API",
+        "Doxygen",
+        "Paragraph-Level",
+        "Bilingual",
+        "Coverage",
+        "DCC",
+        "Hydra",
+        "delegate",
+        "renderer",
+        "PBR",
+        "Preview",
+        "Surface",
+        "Texture",
+        "Reader",
+        "Primvar",
+        "Transform2d",
+        "diffuseColor",
+        "metallic",
+        "roughness",
+        "opacity",
+        "normal",
+        "This",
+        "promoted",
+        "from",
+        "draft",
+        "complete",
+        "with",
+        "Chinese-first",
+        "reading",
+        "path",
+        "and",
+        "parity",
+        "checks",
+        "spec",
+        "whitepaper",
+        "section",
+        "schema",
+        "property",
+        "user",
+        "guide",
+        "proposal",
+        "token",
+        "English",
+        "identifiers",
+        "are",
+        "retained",
+        "for",
+        "technical",
+        "Chinese",
+        "the",
+        "main",
+        "Main",
+        "Reading",
+        "Path",
+        "OpenUSD",
+        "release",
+        "Role",
+        "note",
+        "this",
+        "explains",
+        "whether",
+        "document",
+        "normative",
+        "background",
+        "adjacent",
+        "workflow",
+        "material"
+      ]
+    },
+    {
+      "page": "spec-usdz",
+      "title": "Usdz File Format Specification",
+      "output": "full_site/release/spec_usdz.html",
+      "source_snapshot": "source/full_release/spec_usdz_source.html",
+      "official_url": "https://openusd.org/release/spec_usdz.html",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Usdz File Format Specification "
+        },
+        {
+          "level": 2,
+          "text": "Purpose "
+        },
+        {
+          "level": 2,
+          "text": "Usdz Specification "
+        },
+        {
+          "level": 3,
+          "text": "Foundation "
+        },
+        {
+          "level": 3,
+          "text": "Zip Constraints "
+        },
+        {
+          "level": 3,
+          "text": "Layout "
+        },
+        {
+          "level": 3,
+          "text": "File Types "
+        },
+        {
+          "level": 3,
+          "text": "USD Constraints "
+        },
+        {
+          "level": 3,
+          "text": "Editability "
+        },
+        {
+          "level": 3,
+          "text": "Accessibility "
+        },
+        {
+          "level": 2,
+          "text": "Packaging Considerations for Streaming and Encapsulation "
+        },
+        {
+          "level": 3,
+          "text": "File Ordering Within Package for Streaming "
+        },
+        {
+          "level": 3,
+          "text": "For Reproducible Results, Encapsulate Using Anchored Asset Paths "
+        },
+        {
+          "level": 2,
+          "text": "MIME Type "
+        },
+        {
+          "level": 2,
+          "text": "Toolset "
+        },
+        {
+          "level": 2,
+          "text": "Changes, by Version "
+        },
+        {
+          "level": 3,
+          "text": "Version 1.3 - Current Head "
+        }
+      ],
+      "source_keywords_checked": [
+        "Usdz File Format Specification",
+        "Purpose",
+        "Usdz Specification",
+        "Foundation",
+        "Zip Constraints",
+        "Layout",
+        "File Types",
+        "USD Constraints",
+        "Editability",
+        "Accessibility",
+        "Packaging Considerations for Streaming and Encapsulation",
+        "MIME Type",
+        "Toolset",
+        "Changes, by Version"
+      ],
+      "missing_source_keywords": [],
+      "missing_output_keywords": [],
+      "official_sections_preserved": [
+        "Purpose",
+        "Usdz Specification",
+        "Foundation",
+        "Zip Constraints",
+        "Layout",
+        "File Types",
+        "USD Constraints",
+        "Editability",
+        "Accessibility",
+        "Packaging Considerations for Streaming and Encapsulation",
+        "MIME Type",
+        "Toolset"
+      ],
+      "preserved_code_terms_sample": [
+        "usdz",
+        "Usdz",
+        "File",
+        "Format",
+        "Specification",
+        "bilingual_complete",
+        "Round",
+        "DomainSprintRound",
+        "Open",
+        "official",
+        "page",
+        "source",
+        "snapshot",
+        "full_release",
+        "spec_usdz_source.html",
+        "Release",
+        "API",
+        "Doxygen",
+        "Paragraph-Level",
+        "Bilingual",
+        "Coverage",
+        "package",
+        "zip",
+        "foundation",
+        "constraints",
+        "layout",
+        "file",
+        "types",
+        "USD",
+        "editability",
+        "accessibility",
+        "streaming",
+        "MIME",
+        "type",
+        "toolset",
+        "This",
+        "promoted",
+        "from",
+        "draft",
+        "complete",
+        "with",
+        "Chinese-first",
+        "reading",
+        "path",
+        "and",
+        "parity",
+        "checks",
+        "spec",
+        "whitepaper",
+        "section",
+        "schema",
+        "property",
+        "user",
+        "guide",
+        "proposal",
+        "token",
+        "English",
+        "identifiers",
+        "are",
+        "retained",
+        "for",
+        "technical",
+        "Chinese",
+        "the",
+        "main",
+        "Main",
+        "Reading",
+        "Path",
+        "OpenUSD",
+        "release",
+        "Role",
+        "note",
+        "this",
+        "explains",
+        "whether",
+        "document",
+        "normative",
+        "background",
+        "adjacent",
+        "workflow"
+      ]
+    },
+    {
+      "page": "wp",
+      "title": "Proposals",
+      "output": "full_site/release/wp.html",
+      "source_snapshot": "source/full_release/wp_source.html",
+      "official_url": "https://openusd.org/release/wp.html",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Proposals "
+        }
+      ],
+      "source_keywords_checked": [
+        "Proposals",
+        "Asset Previews in USD",
+        "Render Settings in USD Proposal",
+        "Stage Variable Expressions",
+        "UsdShade Material Assignment"
+      ],
+      "missing_source_keywords": [],
+      "missing_output_keywords": [],
+      "official_sections_preserved": [
+        "Proposals",
+        "Asset Previews in USD",
+        "Render Settings in USD Proposal",
+        "Stage Variable Expressions",
+        "UsdShade Material Assignment",
+        "阅读路径",
+        "调试路径"
+      ],
+      "preserved_code_terms_sample": [
+        "OpenUSD",
+        "Proposals",
+        "bilingual_complete",
+        "Round",
+        "DomainSprintRound",
+        "Open",
+        "official",
+        "page",
+        "source",
+        "snapshot",
+        "full_release",
+        "wp_source.html",
+        "Release",
+        "API",
+        "Doxygen",
+        "Paragraph-Level",
+        "Bilingual",
+        "Coverage",
+        "proposal",
+        "whitepaper",
+        "specification",
+        "spec",
+        "user",
+        "guide",
+        "This",
+        "promoted",
+        "from",
+        "draft",
+        "complete",
+        "with",
+        "Chinese-first",
+        "reading",
+        "path",
+        "and",
+        "parity",
+        "checks",
+        "section",
+        "schema",
+        "property",
+        "token",
+        "English",
+        "identifiers",
+        "are",
+        "retained",
+        "for",
+        "technical",
+        "Chinese",
+        "the",
+        "main",
+        "Main",
+        "Reading",
+        "Path",
+        "release",
+        "Role",
+        "note",
+        "this",
+        "explains",
+        "whether",
+        "document",
+        "normative",
+        "background",
+        "adjacent",
+        "workflow",
+        "material",
+        "Asset",
+        "Previews",
+        "USD",
+        "Render",
+        "Settings",
+        "Proposal",
+        "Stage",
+        "Variable",
+        "Expressions",
+        "UsdShade",
+        "Material",
+        "Assignment",
+        "composition",
+        "Section",
+        "coverage",
+        "headings"
+      ]
+    },
+    {
+      "page": "wp-usdshade",
+      "title": "UsdShade Material Assignment",
+      "output": "full_site/release/wp_usdshade.html",
+      "source_snapshot": "source/full_release/wp_usdshade_source.html",
+      "official_url": "https://openusd.org/release/wp_usdshade.html",
+      "headings": [
+        {
+          "level": 1,
+          "text": "UsdShade Material Assignment "
+        },
+        {
+          "level": 2,
+          "text": "Background "
+        },
+        {
+          "level": 2,
+          "text": "Basic Proposal for Collection-Based Assignment "
+        },
+        {
+          "level": 3,
+          "text": "Example Collection-Based Assignment "
+        },
+        {
+          "level": 3,
+          "text": "Refinement 1: Specifying Binding Strength "
+        },
+        {
+          "level": 3,
+          "text": "Refinement 2: Material Purpose "
+        },
+        {
+          "level": 3,
+          "text": "Material Resolve: Determining the Bound Material for any Geometry Prim "
+        },
+        {
+          "level": 3,
+          "text": "UsdShade API "
+        },
+        {
+          "level": 2,
+          "text": "Analysis of Collection-Based Binding "
+        },
+        {
+          "level": 2,
+          "text": "Integration "
+        },
+        {
+          "level": 3,
+          "text": "Katana Import "
+        },
+        {
+          "level": 3,
+          "text": "Maya I/O "
+        },
+        {
+          "level": 3,
+          "text": "Houdini "
+        },
+        {
+          "level": 2,
+          "text": "Remaining Questions "
+        },
+        {
+          "level": 3,
+          "text": "Performance "
+        },
+        {
+          "level": 3,
+          "text": "Implication on Renderer Instancing "
+        },
+        {
+          "level": 3,
+          "text": "Material Layering "
+        }
+      ],
+      "source_keywords_checked": [
+        "UsdShade Material Assignment",
+        "Background",
+        "Basic Proposal for Collection-Based Assignment",
+        "Example Collection-Based Assignment",
+        "Refinement 1: Specifying Binding Strength",
+        "Refinement 2: Material Purpose",
+        "Material Resolve",
+        "UsdShade API",
+        "Analysis of Collection-Based Binding",
+        "Integration",
+        "Remaining Questions"
+      ],
+      "missing_source_keywords": [],
+      "missing_output_keywords": [],
+      "official_sections_preserved": [
+        "Background",
+        "Basic Proposal for Collection-Based Assignment",
+        "Example Collection-Based Assignment",
+        "Refinement 1: Specifying Binding Strength",
+        "Refinement 2: Material Purpose",
+        "Material Resolve: Determining the Bound Material for any Geometry Prim",
+        "UsdShade API",
+        "Analysis of Collection-Based Binding",
+        "Integration",
+        "Remaining Questions"
+      ],
+      "preserved_code_terms_sample": [
+        "UsdShade",
+        "Material",
+        "Assignment",
+        "bilingual_complete",
+        "Round",
+        "DomainSprintRound",
+        "Open",
+        "official",
+        "page",
+        "source",
+        "snapshot",
+        "full_release",
+        "wp_usdshade_source.html",
+        "Release",
+        "API",
+        "Doxygen",
+        "Paragraph-Level",
+        "Bilingual",
+        "Coverage",
+        "collection-based",
+        "assignment",
+        "binding",
+        "strength",
+        "material",
+        "purpose",
+        "resolve",
+        "geometry",
+        "prim",
+        "collection",
+        "Katana",
+        "Maya",
+        "Houdini",
+        "DCC",
+        "This",
+        "promoted",
+        "from",
+        "draft",
+        "complete",
+        "with",
+        "Chinese-first",
+        "reading",
+        "path",
+        "and",
+        "parity",
+        "checks",
+        "spec",
+        "whitepaper",
+        "section",
+        "schema",
+        "property",
+        "user",
+        "guide",
+        "proposal",
+        "token",
+        "English",
+        "identifiers",
+        "are",
+        "retained",
+        "for",
+        "technical",
+        "Chinese",
+        "the",
+        "main",
+        "Main",
+        "Reading",
+        "Path",
+        "OpenUSD",
+        "release",
+        "Role",
+        "note",
+        "this",
+        "explains",
+        "whether",
+        "document",
+        "normative",
+        "background",
+        "adjacent",
+        "workflow",
+        "Background",
+        "Basic"
+      ]
+    },
+    {
+      "page": "wp-render-settings",
+      "title": "Render Settings in USD Proposal",
+      "output": "full_site/release/wp_render_settings.html",
+      "source_snapshot": "source/full_release/wp_render_settings_source.html",
+      "official_url": "https://openusd.org/release/wp_render_settings.html",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Render Settings in USD Proposal "
+        },
+        {
+          "level": 2,
+          "text": "Purpose and Scope "
+        },
+        {
+          "level": 2,
+          "text": "Overall Design and Concerns "
+        },
+        {
+          "level": 2,
+          "text": "Concrete Schemas "
+        },
+        {
+          "level": 3,
+          "text": "Renderer-Specific Schemas "
+        },
+        {
+          "level": 2,
+          "text": "Prim and Scene Organization "
+        },
+        {
+          "level": 3,
+          "text": "Discovering Render Settings "
+        },
+        {
+          "level": 3,
+          "text": "Selecting and Combining Render Settings "
+        },
+        {
+          "level": 3,
+          "text": "Grouping RenderVars and RenderProducts "
+        },
+        {
+          "level": 4,
+          "text": "Common RenderVars "
+        },
+        {
+          "level": 4,
+          "text": "Interpretation of RenderVar Prims in Hydra "
+        },
+        {
+          "level": 3,
+          "text": "Discovering All Potential Shader-based RenderVars "
+        },
+        {
+          "level": 2,
+          "text": "Workflow Considerations "
+        },
+        {
+          "level": 3,
+          "text": "Interactive vs. Batch Rendering "
+        },
+        {
+          "level": 2,
+          "text": "Examples "
+        },
+        {
+          "level": 2,
+          "text": "Discussion and Questions "
+        },
+        {
+          "level": 3,
+          "text": "ID variables "
+        },
+        {
+          "level": 3,
+          "text": "Stereo Rendering "
+        },
+        {
+          "level": 3,
+          "text": "Camera Exposure Curves "
+        },
+        {
+          "level": 3,
+          "text": "Denoising, Color Correction, and Tasks "
+        },
+        {
+          "level": 3,
+          "text": "Why Locality of Overrides is Valuable "
+        },
+        {
+          "level": 3,
+          "text": "Image-Mapping-Related Options on Camera or RenderSettings? "
+        },
+        {
+          "level": 3,
+          "text": "Crop Windows and Region-of-Interest "
+        }
+      ],
+      "source_keywords_checked": [
+        "Render Settings in USD Proposal",
+        "Purpose and Scope",
+        "Overall Design and Concerns",
+        "Concrete Schemas",
+        "Renderer-Specific Schemas",
+        "Prim and Scene Organization",
+        "Discovering Render Settings",
+        "Selecting and Combining Render Settings",
+        "Grouping RenderVars and RenderProducts",
+        "Workflow Considerations",
+        "Interactive vs. Batch Rendering",
+        "Examples",
+        "Discussion and Questions"
+      ],
+      "missing_source_keywords": [],
+      "missing_output_keywords": [],
+      "official_sections_preserved": [
+        "Purpose and Scope",
+        "Overall Design and Concerns",
+        "Concrete Schemas",
+        "Renderer-Specific Schemas",
+        "Prim and Scene Organization",
+        "Discovering Render Settings",
+        "Selecting and Combining Render Settings",
+        "Grouping RenderVars and RenderProducts",
+        "Workflow Considerations",
+        "Discussion and Questions"
+      ],
+      "preserved_code_terms_sample": [
+        "USD",
+        "Render",
+        "Settings",
+        "Proposal",
+        "bilingual_complete",
+        "Round",
+        "DomainSprintRound",
+        "Open",
+        "official",
+        "page",
+        "source",
+        "snapshot",
+        "full_release",
+        "wp_render_settings_source.html",
+        "Release",
+        "API",
+        "Doxygen",
+        "Paragraph-Level",
+        "Bilingual",
+        "Coverage",
+        "render",
+        "settings",
+        "RenderSettings",
+        "RenderProduct",
+        "RenderVar",
+        "renderer-specific",
+        "schemas",
+        "Hydra",
+        "stage",
+        "This",
+        "promoted",
+        "from",
+        "draft",
+        "complete",
+        "with",
+        "Chinese-first",
+        "reading",
+        "path",
+        "and",
+        "parity",
+        "checks",
+        "spec",
+        "whitepaper",
+        "section",
+        "schema",
+        "property",
+        "user",
+        "guide",
+        "proposal",
+        "token",
+        "English",
+        "identifiers",
+        "are",
+        "retained",
+        "for",
+        "technical",
+        "Chinese",
+        "the",
+        "main",
+        "Main",
+        "Reading",
+        "Path",
+        "OpenUSD",
+        "release",
+        "Role",
+        "note",
+        "this",
+        "explains",
+        "whether",
+        "document",
+        "normative",
+        "background",
+        "adjacent",
+        "workflow",
+        "material",
+        "Purpose",
+        "Scope",
+        "Overall",
+        "Design",
+        "Concerns"
+      ]
+    },
+    {
+      "page": "wp-stage-variables",
+      "title": "Stage Variable Expressions",
+      "output": "full_site/release/wp_stage_variables.html",
+      "source_snapshot": "source/full_release/wp_stage_variables_source.html",
+      "official_url": "https://openusd.org/release/wp_stage_variables.html",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Stage Variable Expressions "
+        }
+      ],
+      "source_keywords_checked": [
+        "Stage Variable Expressions",
+        "OpenUSD-proposals: Stage Variable Expressions"
+      ],
+      "missing_source_keywords": [],
+      "missing_output_keywords": [],
+      "official_sections_preserved": [
+        "Stage Variable Expressions",
+        "OpenUSD-proposals: Stage Variable Expressions",
+        "与 Variable Expressions user guide 的关系",
+        "与 stage/layer 的关系",
+        "阅读路径",
+        "调试路径"
+      ],
+      "preserved_code_terms_sample": [
+        "Stage",
+        "Variable",
+        "Expressions",
+        "bilingual_complete",
+        "Round",
+        "DomainSprintRound",
+        "Open",
+        "official",
+        "page",
+        "source",
+        "snapshot",
+        "full_release",
+        "wp_stage_variables_source.html",
+        "Release",
+        "API",
+        "Doxygen",
+        "Paragraph-Level",
+        "Bilingual",
+        "Coverage",
+        "proposal",
+        "OpenUSD-proposals",
+        "release",
+        "user",
+        "guide",
+        "stage",
+        "layer",
+        "composition",
+        "This",
+        "promoted",
+        "from",
+        "draft",
+        "complete",
+        "with",
+        "Chinese-first",
+        "reading",
+        "path",
+        "and",
+        "parity",
+        "checks",
+        "spec",
+        "whitepaper",
+        "section",
+        "schema",
+        "property",
+        "token",
+        "English",
+        "identifiers",
+        "are",
+        "retained",
+        "for",
+        "technical",
+        "Chinese",
+        "the",
+        "main",
+        "Main",
+        "Reading",
+        "Path",
+        "OpenUSD",
+        "Role",
+        "note",
+        "this",
+        "explains",
+        "whether",
+        "document",
+        "normative",
+        "background",
+        "adjacent",
+        "workflow",
+        "material",
+        "Section",
+        "coverage",
+        "headings",
+        "explained",
+        "UsdShade",
+        "UsdPreviewSurface",
+        "RenderSettings",
+        "RenderProduct",
+        "RenderVar",
+        "usdz",
+        "AssetPreviewsAPI"
+      ]
+    },
+    {
+      "page": "wp-asset-previews",
+      "title": "Asset Previews in USD",
+      "output": "full_site/release/wp_asset_previews.html",
+      "source_snapshot": "source/full_release/wp_asset_previews_source.html",
+      "official_url": "https://openusd.org/release/wp_asset_previews.html",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Asset Previews in USD "
+        },
+        {
+          "level": 2,
+          "text": "Introduction "
+        },
+        {
+          "level": 2,
+          "text": "Proposal "
+        },
+        {
+          "level": 3,
+          "text": "Object Model "
+        },
+        {
+          "level": 4,
+          "text": "Relationship to UsdGeomModel Texture Cards "
+        },
+        {
+          "level": 3,
+          "text": "Concrete Encoding "
+        },
+        {
+          "level": 2,
+          "text": "Schema "
+        }
+      ],
+      "source_keywords_checked": [
+        "Asset Previews in USD",
+        "Introduction",
+        "Proposal",
+        "Object Model",
+        "Relationship to UsdGeomModel Texture Cards",
+        "Concrete Encoding",
+        "Schema"
+      ],
+      "missing_source_keywords": [],
+      "missing_output_keywords": [],
+      "official_sections_preserved": [
+        "Introduction",
+        "Proposal",
+        "Object Model",
+        "Relationship to UsdGeomModel Texture Cards",
+        "Concrete Encoding",
+        "Schema",
+        "阅读路径",
+        "边界"
+      ],
+      "preserved_code_terms_sample": [
+        "USD",
+        "Asset",
+        "Previews",
+        "bilingual_complete",
+        "Round",
+        "DomainSprintRound",
+        "Open",
+        "official",
+        "page",
+        "source",
+        "snapshot",
+        "full_release",
+        "wp_asset_previews_source.html",
+        "Release",
+        "API",
+        "Doxygen",
+        "Paragraph-Level",
+        "Bilingual",
+        "Coverage",
+        "preview",
+        "object",
+        "model",
+        "concrete",
+        "encoding",
+        "schema",
+        "UsdGeomModel",
+        "texture",
+        "cards",
+        "AssetPreviewsAPI",
+        "This",
+        "promoted",
+        "from",
+        "draft",
+        "complete",
+        "with",
+        "Chinese-first",
+        "reading",
+        "path",
+        "and",
+        "parity",
+        "checks",
+        "spec",
+        "whitepaper",
+        "section",
+        "property",
+        "user",
+        "guide",
+        "proposal",
+        "token",
+        "English",
+        "identifiers",
+        "are",
+        "retained",
+        "for",
+        "technical",
+        "Chinese",
+        "the",
+        "main",
+        "Main",
+        "Reading",
+        "Path",
+        "OpenUSD",
+        "release",
+        "Role",
+        "note",
+        "this",
+        "explains",
+        "whether",
+        "document",
+        "normative",
+        "background",
+        "adjacent",
+        "workflow",
+        "material",
+        "Introduction",
+        "Proposal",
+        "Object",
+        "Model",
+        "Relationship",
+        "Texture"
+      ]
+    }
+  ]
+}

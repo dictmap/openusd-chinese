@@ -1,6 +1,6 @@
 # OpenUSD 完整双语晋级清单
 
-Generated: 2026-06-08T04:32:34.958Z
+Generated: 2026-06-08T04:58:42.304Z
 
 这份清单只记录已经从 `bilingual_draft` 晋级为 `bilingual_complete` 的页面。它是 `scripts/discover_openusd_all_pages.mjs` 识别 promoted complete 页面的审计来源，不等同于把草稿页改一个状态。
 
@@ -173,3 +173,11 @@ Generated: 2026-06-08T04:32:34.958Z
 | `round-331-hd-st-render-pass-state` | `full_site/api/class_hd_st_render_pass_state.html` | `https://openusd.org/release/api/class_hd_st_render_pass_state.html` | bilingual_complete |
 | `round-332-hd-st-dispatch-buffer` | `full_site/api/class_hd_st_dispatch_buffer.html` | `https://openusd.org/release/api/class_hd_st_dispatch_buffer.html` | bilingual_complete |
 | `round-333-hd-instance-registry` | `full_site/api/class_hd_instance_registry.html` | `https://openusd.org/release/api/class_hd_instance_registry.html` | bilingual_complete |
+| `round-414-release-spec-spec` | `full_site/release/spec.html` | `https://openusd.org/release/spec.html` | bilingual_complete |
+| `round-414-release-spec-spec-usdpreviewsurface` | `full_site/release/spec_usdpreviewsurface.html` | `https://openusd.org/release/spec_usdpreviewsurface.html` | bilingual_complete |
+| `round-414-release-spec-spec-usdz` | `full_site/release/spec_usdz.html` | `https://openusd.org/release/spec_usdz.html` | bilingual_complete |
+| `round-414-release-spec-wp` | `full_site/release/wp.html` | `https://openusd.org/release/wp.html` | bilingual_complete |
+| `round-414-release-spec-wp-usdshade` | `full_site/release/wp_usdshade.html` | `https://openusd.org/release/wp_usdshade.html` | bilingual_complete |
+| `round-414-release-spec-wp-render-settings` | `full_site/release/wp_render_settings.html` | `https://openusd.org/release/wp_render_settings.html` | bilingual_complete |
+| `round-414-release-spec-wp-stage-variables` | `full_site/release/wp_stage_variables.html` | `https://openusd.org/release/wp_stage_variables.html` | bilingual_complete |
+| `round-414-release-spec-wp-asset-previews` | `full_site/release/wp_asset_previews.html` | `https://openusd.org/release/wp_asset_previews.html` | bilingual_complete |

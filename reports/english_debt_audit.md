@@ -1,6 +1,6 @@
 # OpenUSD English Debt Audit
 
-Generated: 2026-06-08T04:32:02.960Z
+Generated: 2026-06-08T04:58:42.089Z
 
 Purpose:
 
@@ -12,16 +12,16 @@ Purpose:
 ## Counts
 
 - Total pages: 406
-- good_bilingual: 165
-- review_ready_zh: 102
+- good_bilingual: 173
+- review_ready_zh: 110
 - review_needs_zh_debt: 63
 - API complete: 72
 - API review_ready_zh: 12
-- Release complete: 93
-- Release review_ready_zh: 90
+- Release complete: 101
+- Release review_ready_zh: 98
 - Complete pages with high/very high ratio diagnostic: 10
-- bilingual_draft: 241
-- draft_needs_translation: 230
+- bilingual_draft: 233
+- draft_needs_translation: 222
 - draft_template_only: 11
 
 ## Complete Pages Still Carrying English Debt
@@ -81,7 +81,6 @@ Purpose:
 | 298 | `full_site/release/search.html` | release | release_or_tutorial | 64 | 1/4 | 4.3 | high | draft |
 | 294 | `full_site/release/press_opensource_announce.html` | release | release_or_tutorial | 585 | 7/4 | 4.55 | high | draft |
 | 288 | `full_site/release/intro_to_openexec.html` | release | release_or_tutorial | 608 | 7/4 | 3.36 | medium | draft |
-| 299 | `full_site/release/spec_usdpreviewsurface.html` | release | release_or_tutorial | 693 | 7/4 | 3.23 | medium | draft |
 | 295 | `full_site/release/press_opensource_release.html` | release | release_or_tutorial | 625 | 7/4 | 3.07 | medium | draft |
 | 399 | `full_site/release/wp_rigid_body_physics.html` | release | release_or_tutorial | 783 | 7/4 | 3.06 | medium | draft |
 | 402 | `full_site/release/wp_usdaudio.html` | release | release_or_tutorial | 722 | 7/4 | 2.95 | medium | draft |
@@ -93,11 +92,12 @@ Purpose:
 | 400 | `full_site/release/wp_schema_versioning.html` | release | release_or_tutorial | 674 | 7/4 | 2.38 | medium | draft |
 | 297 | `full_site/release/release_schedule.html` | release | release_or_tutorial | 632 | 6/4 | 2.35 | medium | draft |
 | 293 | `full_site/release/plugins.html` | release | release_or_tutorial | 622 | 7/4 | 2.34 | medium | draft |
-| 395 | `full_site/release/wp_asset_previews.html` | release | release_or_tutorial | 707 | 7/4 | 2.33 | medium | draft |
 | 291 | `full_site/release/plugins_alembic.html` | release | release_or_tutorial | 673 | 7/4 | 2.28 | medium | draft |
 | 404 | `full_site/release/wp_usdlux_for_renderers.html` | release | release_or_tutorial | 685 | 7/4 | 2.27 | medium | draft |
 | 296 | `full_site/release/ref_performance_metrics.html` | release | release_or_tutorial | 705 | 7/4 | 2.17 | medium | draft |
 | 292 | `full_site/release/plugins_renderman.html` | release | release_or_tutorial | 575 | 7/4 | 2.14 | medium | draft |
+| 403 | `full_site/release/wp_usdlux_for_geometry_lights.html` | release | release_or_tutorial | 773 | 7/4 | 2.11 | medium | draft |
+| 282 | `full_site/release/contributing_to_usd.html` | release | release_or_tutorial | 681 | 7/4 | 2.1 | medium | draft |
 
 Policy:
 

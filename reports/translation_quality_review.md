@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-08T04:32:02.959Z
+Generated: 2026-06-08T04:58:41.508Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 241
-- bilingual_complete: 165
+- bilingual_draft: 233
+- bilingual_complete: 173
 
 ## Grade Counts
 
 - draft_template_only: 11
-- draft_needs_translation: 230
-- good_bilingual: 165
+- draft_needs_translation: 222
+- good_bilingual: 173
 
 ## Current Focus Batch
 
@@ -362,9 +362,9 @@ Generated: 2026-06-08T04:32:02.959Z
 | 296 | draft_needs_translation | bilingual_draft | 705 | 39/32 | 0 | 0 | `full_site/release/ref_performance_metrics.html` |
 | 297 | draft_needs_translation | bilingual_draft | 632 | 26/19 | 0 | 0 | `full_site/release/release_schedule.html` |
 | 298 | draft_template_only | bilingual_draft | 64 | 2/3 | 0 | 0 | `full_site/release/search.html` |
-| 299 | draft_needs_translation | bilingual_draft | 693 | 42/35 | 0 | 0 | `full_site/release/spec_usdpreviewsurface.html` |
-| 300 | draft_needs_translation | bilingual_draft | 657 | 42/35 | 0 | 0 | `full_site/release/spec_usdz.html` |
-| 301 | draft_needs_translation | bilingual_draft | 567 | 24/16 | 0 | 0 | `full_site/release/spec.html` |
+| 299 | good_bilingual | bilingual_complete | 1382 | 33/61 | 0 | 0 | `full_site/release/spec_usdpreviewsurface.html` |
+| 300 | good_bilingual | bilingual_complete | 1517 | 35/64 | 0 | 0 | `full_site/release/spec_usdz.html` |
+| 301 | good_bilingual | bilingual_complete | 1514 | 29/36 | 0 | 0 | `full_site/release/spec.html` |
 | 302 | good_bilingual | bilingual_complete | 2519 | 157/199 | 0 | 0 | `site/toolset.html` |
 | 303 | good_bilingual | bilingual_complete | 2106 | 45/45 | 0 | 0 | `full_site/release/tut_authoring_variants.html` |
 | 304 | good_bilingual | bilingual_complete | 2127 | 37/17 | 0 | 0 | `full_site/release/tut_converting_between_layer_formats.html` |
@@ -458,16 +458,16 @@ Generated: 2026-06-08T04:32:02.959Z
 | 392 | good_bilingual | bilingual_complete | 1374 | 37/34 | 0 | 0 | `full_site/release/user_guides/time_and_animated_values.html` |
 | 393 | good_bilingual | bilingual_complete | 1362 | 56/53 | 0 | 0 | `full_site/release/user_guides/variable_expressions.html` |
 | 394 | draft_needs_translation | bilingual_draft | 755 | 35/24 | 0 | 0 | `full_site/release/wp_ar2.html` |
-| 395 | draft_needs_translation | bilingual_draft | 707 | 35/24 | 0 | 0 | `full_site/release/wp_asset_previews.html` |
+| 395 | good_bilingual | bilingual_complete | 1502 | 31/46 | 0 | 0 | `full_site/release/wp_asset_previews.html` |
 | 396 | draft_needs_translation | bilingual_draft | 789 | 40/29 | 0 | 0 | `full_site/release/wp_connectable_nodes.html` |
 | 397 | draft_needs_translation | bilingual_draft | 790 | 40/29 | 0 | 0 | `full_site/release/wp_coordsys.html` |
-| 398 | draft_needs_translation | bilingual_draft | 661 | 33/22 | 0 | 0 | `full_site/release/wp_render_settings.html` |
+| 398 | good_bilingual | bilingual_complete | 1463 | 33/66 | 0 | 0 | `full_site/release/wp_render_settings.html` |
 | 399 | draft_needs_translation | bilingual_draft | 783 | 53/42 | 0 | 0 | `full_site/release/wp_rigid_body_physics.html` |
 | 400 | draft_needs_translation | bilingual_draft | 674 | 44/33 | 0 | 0 | `full_site/release/wp_schema_versioning.html` |
-| 401 | draft_needs_translation | bilingual_draft | 736 | 30/17 | 0 | 0 | `full_site/release/wp_stage_variables.html` |
+| 401 | good_bilingual | bilingual_complete | 1446 | 29/36 | 0 | 0 | `full_site/release/wp_stage_variables.html` |
 | 402 | draft_needs_translation | bilingual_draft | 722 | 35/24 | 0 | 0 | `full_site/release/wp_usdaudio.html` |
 | 403 | draft_needs_translation | bilingual_draft | 773 | 45/34 | 0 | 0 | `full_site/release/wp_usdlux_for_geometry_lights.html` |
 | 404 | draft_needs_translation | bilingual_draft | 685 | 44/33 | 0 | 0 | `full_site/release/wp_usdlux_for_renderers.html` |
-| 405 | draft_needs_translation | bilingual_draft | 671 | 31/20 | 0 | 0 | `full_site/release/wp_usdshade.html` |
-| 406 | draft_needs_translation | bilingual_draft | 716 | 30/17 | 0 | 0 | `full_site/release/wp.html` |
+| 405 | good_bilingual | bilingual_complete | 1421 | 33/60 | 0 | 0 | `full_site/release/wp_usdshade.html` |
+| 406 | good_bilingual | bilingual_complete | 1470 | 30/38 | 0 | 0 | `full_site/release/wp.html` |
 

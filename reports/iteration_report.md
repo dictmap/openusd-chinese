@@ -1,9 +1,9 @@
 # OpenUSD Iteration Report
 
-## 第 413 轮摘要
+## 第 414 轮摘要
 
 - 轮次类型：DomainSprintRound
-- 轮次目的：Round 413 DomainSprintRound：release user guide 核心页小批量冲刺。实际晋级 6 页：full_site/release/user_guides/color_user_guide.html、full_site/release/user_guides/namespace_editing.html、full_site/release/user_guides/primvars.html、full_site/release/user_guides/render_user_guide.html、full_site/release/user_guides/time_and_animated_values.html、full_site/release/user_guides/variable_expressions.html。本轮从 159 个 good_bilingual 增至 165；中文主阅读路径覆盖官方 section、页面职责、API/schema/property 分组、相邻 user guide/schema/API 关系、阅读路径建议、边界、误读点和调试路径，并保留 API 名、schema 名、token、属性名、函数名、代码、命令、Doxygen 表格标签、链接语义和显式官方外跳。
+- 轮次目的：Round 414 DomainSprintRound：release spec/whitepaper 核心页小批量冲刺。实际晋级 8 页：full_site/release/spec.html、full_site/release/spec_usdpreviewsurface.html、full_site/release/spec_usdz.html、full_site/release/wp.html、full_site/release/wp_usdshade.html、full_site/release/wp_render_settings.html、full_site/release/wp_stage_variables.html、full_site/release/wp_asset_previews.html。本轮从 165 个 good_bilingual 增至 173；中文主阅读路径覆盖官方 section、页面职责、API/schema/property 分组、相邻 user guide/schema/API/spec/proposal 关系、阅读路径建议、边界、误读点和调试路径，并保留 API 名、schema 名、token、属性名、函数名、代码、命令、Doxygen 表格标签、链接语义和显式官方外跳。
 - 本轮目标：命名缺陷或一致性修复
 - 结果：未晋级页面，修复命名缺陷或一致性问题。
 - 核心说明：保持审计链和人类可读记录一致。
@@ -11,22 +11,22 @@
 ## 真实计数
 
 - total_pages：406
-- good_bilingual：165
-- review_ready_zh：102
-- bilingual_complete：165
-- bilingual_draft：241
-- draft_needs_translation：230
+- good_bilingual：173
+- review_ready_zh：110
+- bilingual_complete：173
+- bilingual_draft：233
+- draft_needs_translation：222
 - draft_template_only：11
 - pending_full_scope：0
 - api_complete：72
-- release_complete：93
+- release_complete：101
 
 ## 验证
 
 - validation_report：passed=true，failed_check_count=0，required_check_count=311
-- translation_quality：good_bilingual=165
-- english_debt：review_ready_zh=102，review_needs_zh_debt=63
-- promotion manifest：157 entries
+- translation_quality：good_bilingual=173
+- english_debt：review_ready_zh=110，review_needs_zh_debt=63
+- promotion manifest：165 entries
 
 ## 本轮改动文件
 
@@ -47,4 +47,4 @@
 
 ## 下一步
 
-优先选择 release/tutorial/user guide 页面，以降低 release 覆盖滞后。建议目标：`Continue release/user-guide promotion only if the target pages can become good_bilingual; otherwise stop and report the blocker.`。
+优先选择 release/tutorial/user guide 页面，以降低 release 覆盖滞后。建议目标：`Continue release/spec/proposal promotion only if the target pages can become good_bilingual; otherwise stop and report the blocker.`。

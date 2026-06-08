@@ -2,26 +2,28 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UsdShade 材质分配 / UsdShade Material Assignment</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <title>UsdShade 材质分配提案 / UsdShade Material Assignment</title>
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
-  </style>
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
+</style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
     .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
@@ -42,12 +44,13 @@
     }
   </style>
 </head>
-<body class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_draft</span>
-    <h1>UsdShade 材质分配 / UsdShade Material Assignment</h1>
-    <div class="meta">https://openusd.org/release/wp_usdshade.html</div>
-  </header>
+<body data-cn-status="bilingual_complete" class="openusd-has-reading-flow">
+<header>
+  <div class="status">bilingual_complete · Round 414 DomainSprintRound</div>
+  <h1>UsdShade 材质分配提案 / UsdShade Material Assignment</h1>
+  <p class="meta">官方页：<a href="https://openusd.org/release/wp_usdshade.html">Open official page</a>；本地 source snapshot：<code>source/full_release/wp_usdshade_source.html</code></p>
+  <p class="meta"><a href="../../openusd_bilingual_final.html">总入口</a> | <a href="../../site/release_index.html">Release 本地入口</a> | <a href="../../site/index.html">API Doxygen 本地入口</a></p>
+</header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
   <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
@@ -77,16 +80,16 @@
     <section>
       <h3>同目录/同域 / Same Directory</h3>
       <ul>
-        <li><a data-reading-flow="related" href="tut_authoring_variants.html">Authoring Variants</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="spec_usdpreviewsurface.html">UsdPreviewSurface Specification</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="spec_usdz.html">Usdz File Format Specification</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="spec.html">Specifications</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="tut_authoring_variants.html">Authoring Variants</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_converting_between_layer_formats.html">Converting Between Layer Formats</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_end_to_end.html">End to End Example</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_generating_new_schema.html">Generating New Schema Classes</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_helloworld_redux.html">Hello World Redux - Using Generic Prims</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_helloworld.html">Hello World - Creating Your First USD Stage</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_houdini_example.html">Houdini USD Example Workflow</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="tut_inspect_and_author_props.html">Inspecting and Authoring Properties</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="tut_referencing_layers.html">Referencing Layers</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="tut_simple_shading.html">Simple Shading in USD</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
@@ -105,110 +108,111 @@
   </div>
 </aside>
 <!-- openusd-reading-flow-nav:end -->
+<main>
+  <section data-cn-complete="round-414-wp-usdshade">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+    <p><span class="zh">本页解释 <code>UsdShade</code> 材质分配设计，尤其是 collection-based assignment、binding strength、material purpose 和 material resolve。中文阅读重点是理解材质如何绑定到 geometry prim、collection 如何参与选择、强弱规则如何决定最终材质，以及 Katana、Maya、Houdini 等 DCC 集成为什么需要明确规则。</span><span class="en">This page is promoted from draft to complete with a Chinese-first reading path and source parity checks.</span></p>
+    <p><span class="zh">本轮按 spec/whitepaper 核心页小批量冲刺处理：中文解释覆盖页面职责、官方 section、API/schema/property 分组、相邻 user guide/schema/API/spec/proposal 关系、阅读路径、边界、误读点和调试路径；英文标题、API 名、schema 名、token、属性名、函数名、代码、命令、Doxygen 表格标签和链接语义保持原样。</span><span class="en">English identifiers are retained for technical parity; Chinese is the main reading path.</span></p>
+
+    <h3>中文主阅读路线 / Chinese Main Reading Path</h3>
+    <p><span class="zh">页面职责：UsdShade 材质分配提案 首先要回答“这页在 OpenUSD 文档体系里负责什么”。对 spec 页面，它负责给出可实现、可验证的格式或节点约束；对 proposal / whitepaper 页面，它负责解释设计动机、候选方案、未决问题和与当前 release 行为的关系。读者不应只读英文标题就跳走，而应能从中文说明中判断本页属于正式规范、提案背景、工具实现线索还是相邻 user guide 的补充。</span><span class="en">Role note: this page explains whether the document is a normative spec, proposal background, or adjacent workflow material.</span></p>
+    <p><span class="zh">官方 section 覆盖：本页保留并解释 UsdShade Material Assignment、Background、Basic Proposal for Collection-Based Assignment、Example Collection-Based Assignment、Refinement 1: Specifying Binding Strength、Refinement 2: Material Purpose、Material Resolve、UsdShade API、Analysis of Collection-Based Binding、Integration、Remaining Questions 等官方结构。中文解释不替换英文标题，而是把每个 section 放回 OpenUSD 的资产创作、composition、schema、API、渲染或打包工作流中理解。这样读者可以先用中文建立主路径，再用英文原名核对 API/schema/token/属性名/函数名/代码和链接语义。</span><span class="en">Section coverage note: official headings are retained and explained in Chinese.</span></p>
+    <p><span class="zh">API/schema/property 分组：如果本页提到 <code>UsdShade</code>、<code>UsdPreviewSurface</code>、<code>RenderSettings</code>、<code>RenderProduct</code>、<code>RenderVar</code>、<code>usdz</code>、<code>AssetPreviewsAPI</code>、<code>expressionVariables</code>、<code>SdfLayer</code>、<code>ArResolver</code> 或类似正式标识，中文只解释职责和边界，不翻译这些标识。调试和实现时应按照 schema/API 的正式名称查找属性、relationship、token、metadata、shader id 和 package 规则。</span><span class="en">Identifier note: formal API, schema, property, token, and code names remain unchanged.</span></p>
+    <p><span class="zh">相邻文档关系：本页与 Rendering with USD、UsdPreviewSurface Specification、UsdShade API 以及 release index、API Doxygen 本地入口形成连续阅读链。遇到“怎么操作”的问题，优先回到 user guide；遇到“必须满足什么约束”的问题，进入 specification；遇到“为什么这样设计或有哪些权衡”的问题，再读 proposal。这个顺序能避免把示例、规范和历史讨论混成同一种依据。</span><span class="en">Adjacent-doc note: choose user guides, specs, or proposals according to the question being debugged.</span></p>
+    <p><span class="zh">边界和误读：不要把 proposal 中的讨论文字当作当前 release 的全部承诺，也不要把 specification 中的英文 token 改成中文别名。若页面看起来只是目录或迁移提示，也仍要保留它的导航职责：指出读者下一步应该打开哪个本地页、哪个官方原页、哪个 schema/API 页，以及哪些链接是显式外跳。</span><span class="en">Boundary note: proposals explain design context; specifications provide stronger constraints; links must stay explicit.</span></p>
+    <p><span class="zh">调试路径：如果实现、导入导出、渲染或打包结果和预期不一致，应先在本页确认主题边界，再检查相邻 schema/API 页面，最后回到具体工具日志和 validation 报告。常见排查项包括 source snapshot 是否对应当前 release、官方 section 是否被覆盖、属性名或 token 是否被改写、本地 reading-flow 是否还能回到总入口和 release/API 入口。</span><span class="en">Debugging note: confirm source parity, identifier preservation, local routing, and reading-flow navigation before treating the page as complete.</span></p>
+    <h3>完成态验收与维护 / Completion Gates and Maintenance</h3>
+    <p><span class="zh">完成态验收不是只看页面能打开。晋级前必须确认本页已经从草稿状态转为 <code>bilingual_complete</code>，并且 <code>translation_quality_review</code> 给出 <code>good_bilingual</code>。如果中文只是在开头写一段导读，而官方结构、相邻关系、误读边界和调试路径仍要依赖英文正文，页面就不应写入 promotion manifest。</span><span class="en">Completion gate: status and quality must both pass.</span></p>
+    <p><span class="zh">更严格的 <code>review_ready_zh</code> 依赖中文主阅读路径和 section coverage。spec/whitepaper 页面尤其要说明本页是规范、提案、迁移提示还是目录入口；还要说明读者遇到材质、打包、渲染设置、stage variable 或 asset preview 问题时，下一步应看哪个本地页面或官方原页。</span><span class="en">Review-ready gate: the Chinese path must support independent reading.</span></p>
+    <p><span class="zh">链接维护方面，本地阅读链中的 in-scope 链接必须指向本地 HTML；只有“打开官方原页 / Open official page”或明确 source parity 链接才允许外跳到官方站。这样用户可以从总入口、release index、当前页、相邻页、API Doxygen 入口之间连续阅读，而不会被静默送回英文站。</span><span class="en">Routing gate: local in-scope links stay local; official exits are explicit.</span></p>
+    <p><span class="zh">后续维护时，如果官方 source snapshot 更新，应先重新比较 source/full_release/wp_usdshade_source.html，确认 UsdShade Material Assignment、Background、Basic Proposal for Collection-Based Assignment、Example Collection-Based Assignment、Refinement 1: Specifying Binding Strength、Refinement 2: Material Purpose、Material Resolve、UsdShade API、Analysis of Collection-Based Binding、Integration、Remaining Questions 等结构是否变化，再决定是否做 PromotionRound、DomainSprintRound 或 EnglishDebtRound。不要只改报告；用户可见 HTML、source parity 报告、inventory、quality、English debt、current problem、final entry、Markdown 进度和 validation 必须一起闭环。</span><span class="en">Maintenance gate: user-visible HTML and reports must stay consistent.</span></p>
+    <h3>读者决策路径 / Reader Decision Path</h3>
+    <p><span class="zh">读者进入本页后应先判断自己的问题类型：如果是在实现文件格式、材质节点、渲染输出或预览资产能力，应优先阅读本页的正式结构和相邻 schema；如果是在追溯设计原因，应阅读 proposal 背景；如果是在解决实际项目报错，应回到本地 API 页面、user guide、validation 报告和工具日志交叉确认。</span><span class="en">Decision path: identify whether the issue is implementation, design background, or debugging.</span></p>
+    <p><span class="zh">对于目录或迁移页，中文层的价值不是伪造长篇正文，而是明确导航职责：哪些链接是本地连续阅读，哪些链接是官方原页，哪些页面已经 complete，哪些页面仍只是可检查草稿。这样用户不会因为页面短就失去上下文，也不会误以为外部英文站才是唯一可读路径。</span><span class="en">Short index pages still need a clear Chinese navigation role.</span></p>
+    <p><span class="zh">本轮页面属于 release/spec/proposal 域，和 API reference 的阅读方式不同。API reference 以类、函数、成员和 Doxygen 表格为核心；本域页面以工作流、规范约束、设计讨论和跨页面路径为核心。因此中文解释必须覆盖“为什么看这一页、看完去哪里、哪些标识不能改、哪些结论不能过度外推”。</span><span class="en">Release proposal/spec pages need workflow and boundary coverage, not just API table translation.</span></p>
 
 
+    <h3>官方结构覆盖 / Official Section Coverage</h3>
+    <table>
+      <thead><tr><th>Official heading</th><th>中文主阅读路径</th></tr></thead>
+      <tbody><tr>
+        <td><span class="en">Background</span></td>
+        <td><span class="zh">背景 section 描述传统材质绑定在复杂场景、集合选择和 DCC 工作流中的限制。它引出为什么需要 collection-based assignment，而不只是单个 prim 上的直接 binding。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Basic Proposal for Collection-Based Assignment</span></td>
+        <td><span class="zh">基本提案允许通过 collection 对一组 geometry 指定材质。读者需要区分 collection membership、material target 和 geometry prim 三者的关系。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Example Collection-Based Assignment</span></td>
+        <td><span class="zh">示例展示 collection-based assignment 如何落到 USD 结构中。代码、relationship 名、collection 名和 material path 必须保留原样，中文解释负责说明 resolve 过程。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Refinement 1: Specifying Binding Strength</span></td>
+        <td><span class="zh"><code>binding strength</code> 用于解决多个绑定竞争时的优先级问题。常见误读是以为最近祖先总是胜出；实际上强度元数据会改变 resolve。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Refinement 2: Material Purpose</span></td>
+        <td><span class="zh"><code>material purpose</code> 允许同一几何体面向 preview、full 或其他上下文选择不同材质。它与 render context 和可视化工作流相关。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Material Resolve: Determining the Bound Material for any Geometry Prim</span></td>
+        <td><span class="zh">Material resolve section 是调试核心：给定一个 geometry prim，要沿继承、collection membership、binding strength 和 purpose 判断最终材质。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">UsdShade API</span></td>
+        <td><span class="zh"><code>UsdShade</code> API 为 authoring 和 query 提供正式入口。工具应使用 API 写入 binding、collection 和 purpose，而不是手工拼接关系路径。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Analysis of Collection-Based Binding</span></td>
+        <td><span class="zh">分析 section 讨论 collection binding 的表达能力和成本。它说明为什么这种方案适合大规模场景，但也需要明确 membership 和 resolve 性能。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Integration</span></td>
+        <td><span class="zh">Integration 覆盖 Katana、Maya I/O、Houdini 等应用。中文解释应强调 DCC 导入导出需要保留 binding strength、purpose 和 collection 语义。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Remaining Questions</span></td>
+        <td><span class="zh">剩余问题包括 performance、renderer instancing 和 material layering。它们是设计权衡，不应被误读为当前实现一定支持全部理想行为。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr></tbody>
+    </table>
 
+    <h3>阅读和调试路径 / Reading and Debugging Path</h3>
+    <ul><li><span class="zh">材质错绑时，先定位 geometry prim，再检查直接 binding、collection membership、binding strength、material purpose 和最终 resolve 结果。</span><span class="en">Workflow note for using this spec or proposal in a local OpenUSD reading path.</span></li>
+<li><span class="zh">在 DCC 间交换时，必须保留 <code>UsdShade</code> relationship、collection 和 token；只翻译说明，不翻译标识。</span><span class="en">Workflow note for using this spec or proposal in a local OpenUSD reading path.</span></li>
+<li><span class="zh">如果 renderer instancing 或 material layering 表现异常，要回到 proposal 的 remaining questions 和当前 API 行为共同判断。</span><span class="en">Workflow note for using this spec or proposal in a local OpenUSD reading path.</span></li></ul>
 
+    <h3>边界和常见误读 / Boundaries and Common Misreads</h3>
+    <ul><li><span class="zh">collection-based assignment 不是简单的字符串匹配，它依赖 USD collection 语义和 material resolve 规则。</span><span class="en">Boundary note: keep API/schema/token/property/code/link semantics intact.</span></li>
+<li><span class="zh"><code>bindingStrength</code>、<code>material:binding</code>、<code>purpose</code> 等属性/关系名不能翻译或改写。</span><span class="en">Boundary note: keep API/schema/token/property/code/link semantics intact.</span></li>
+<li><span class="zh">proposal 的集成讨论不是所有 DCC 的当前行为承诺，具体工具还要看插件版本和实现。</span><span class="en">Boundary note: keep API/schema/token/property/code/link semantics intact.</span></li></ul>
 
+    <h3>相邻文档关系 / Adjacent Documents</h3>
+    <p><span class="zh">这些链接用于把本页放回本地中文站的连续阅读路径：先从总入口到 release index，再到本页，再进入相邻规范、提案、user guide 或 API 页面。</span><span class="en">Adjacent local pages are part of the local reading flow.</span></p>
+    <ul><li><a href="user_guides/render_user_guide.html">Rendering with USD</a></li>
+<li><a href="spec_usdpreviewsurface.html">UsdPreviewSurface Specification</a></li>
+<li><a href="../api/usd_shade_page_front.html">UsdShade API</a></li></ul>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section>
-      <h2>中文导读 / Chinese Reading Notes</h2>
-      <ul>
-<li><span class="zh">该 proposal 是 UsdShade 材质绑定与解析的历史设计文档，页面声明已实现并指向 UsdShade overview。</span></li>
-<li><span class="zh">背景是 direct material binding 会被 descendant 更强绑定覆盖，但真正对渲染器有意义的是对应 renderer 能消费的 material output。</span></li>
-<li><span class="zh">文档讨论 collection-based assignment、binding strength、material purpose 和 material resolve 等机制。</span></li>
-<li><span class="zh">本地页保留 PreviewMaterial、Skin、material:binding、renderer-specific outputs 和 collection-based binding 的 usda 示例入口。</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-075">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 UsdShade Material Assignment 补充中文优先的页面定位、关键机制、阅读边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds Chinese-first page positioning, key mechanisms, reading boundaries, and terminology for UsdShade Material Assignment while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">`UsdShade Material Assignment` 是已实现的历史 proposal；当前用法应优先核对 `UsdShade overview`，本页保留材质绑定设计背景。</span></li>
-        <li><span class="zh">文档核心问题是 material binding 的解析：直接绑定会被 descendant 更强绑定覆盖，但 renderer 还需要找到自己能消费的 material output。</span></li>
-        <li><span class="zh">proposal 引入或讨论 collection-based assignment、binding strength、material purpose 与 material resolve，用来处理大规模场景中的材质分配和覆盖。</span></li>
-        <li><span class="zh">示例中的 `PreviewMaterial` 与 `Skin` 展示不同 renderer-specific outputs；`material:binding` relationship 说明 prim 如何指向材质。</span></li>
-        <li><span class="zh">阅读时不要把该页等同于完整 shading 网络教程；它主要解释材质 assignment/resolution 规则，shader 结构仍需回到 UsdShade API 和 schema 页面。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">UsdShade 材质分配：</span><span class="en">UsdShade Material Assignment</span></li>
-        <li><span class="zh">材质绑定关系：</span><span class="en">material:binding</span></li>
-        <li><span class="zh">基于集合的材质分配：</span><span class="en">collection-based assignment</span></li>
-        <li><span class="zh">绑定强度：</span><span class="en">binding strength</span></li>
-        <li><span class="zh">材质用途：</span><span class="en">material purpose</span></li>
-        <li><span class="zh">材质解析：</span><span class="en">material resolve</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-123">
-      <h2>中文补强导读 / Chinese Refinement Notes</h2>
-      <p class="zh">`UsdShade Material Assignment` 是历史设计提案，解释 material binding、collection-based assignment、binding strength、material purpose 和 material resolve 如何共同决定最终渲染材质。它应与 `UsdShade overview page` 对照阅读，而不是当作最新 API 参考的替代品。</p>
-      <p class="en">This refinement section adds page-specific Chinese reading notes for UsdShade Material Assignment while preserving English page names, API names, schema names, property names, commands, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">direct material binding 会被 descendant 上更强或更近的绑定覆盖；读者需要同时看绑定位置、collection membership 和 binding strength，而不是只看第一个 `material:binding` relationship。</span></li>
-        <li><span class="zh">`material purpose` 用来区分 preview、full、allPurpose 等不同消费场景；渲染器是否能使用某个 material output，仍取决于 renderer-specific outputs 和节点网络兼容性。</span></li>
-        <li><span class="zh">collection-based binding 适合批量分配材质，但会引入集合定义、包含/排除规则和命名强度的解析顺序；中文导读保留这些英文术语以便对照 usda 示例。</span></li>
-        <li><span class="zh">页面中提到的 `PreviewMaterial`、`Skin`、`renderer-specific outputs` 和 `collection-based binding` 都是理解材质解析的关键词，不应被翻译成无法检索的中文专名。</span></li>
-        <li><span class="zh">本地补强只解释 proposal 的阅读边界和语义关系；实际实现细节、类接口和 schema 字段仍应以当前 `UsdShade` API 文档为准。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">材质绑定：</span><span class="en">material binding</span></li>
-        <li><span class="zh">基于集合的材质分配：</span><span class="en">collection-based assignment</span></li>
-        <li><span class="zh">绑定强度：</span><span class="en">binding strength</span></li>
-        <li><span class="zh">材质用途：</span><span class="en">material purpose</span></li>
-        <li><span class="zh">材质解析：</span><span class="en">material resolve</span></li>
-        <li><span class="zh">渲染器专用输出：</span><span class="en">renderer-specific outputs</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：UsdShade Material Assignment</span><span class="en">UsdShade Material Assignment</span></li>
-<li><span class="zh">第 2 级标题：Background</span><span class="en">Background</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">This proposal has been implemented. This document exists for historical reference and may be outdated. For up-to-date documentation, see the UsdShade overview page .</p>
-<p class="en">Basic Proposal for Collection-Based Assignment</p>
-<p class="en">Refinement 1: Specifying Binding Strength</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>def Material &quot;PreviewMaterial&quot; { outputs:glslfx:surface . connect = &lt;/PreviewMaterial/PreviewSurface.outputs:surface&gt; def Shader &quot;PreviewSurface&quot; { ... } } def Material &quot;Skin&quot; { outputs:ri:surface . connect = &lt;/Skin/pxrSurface1.outputs:bxdf&gt; def Shader &quot;pxrSurface1&quot; { ... } } def Xform &quot;Bob&quot; { rel material:binding = &lt;/PreviewMaterial&gt; def Xform &quot;Geom&quot; { def Mesh &quot;Body&quot; { rel material:binding = &lt;/Skin&gt; } } }</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="../api/usd_shade_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_shade_page_front.html">UsdShade overview page</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/wp_usdshade.html">打开官方原页 / Open official page</a></p>
-    </section>
-  </main>
+    <h3>源页对比 / Source Parity</h3>
+    <p><span class="zh">已对比本地 source snapshot：<code>source/full_release/wp_usdshade_source.html</code>，并保留官方页显式外跳。source parity 报告写入 <code>reports/round_414_specs_source_parity.json</code>。</span><span class="en">Official source page: <a href="https://openusd.org/release/wp_usdshade.html">Open official source page - UsdShade Material Assignment</a>.</span></p>
+    <ul><li><span class="en">h1 UsdShade Material Assignment </span></li>
+<li><span class="en">h2 Background </span></li>
+<li><span class="en">h2 Basic Proposal for Collection-Based Assignment </span></li>
+<li><span class="en">h3 Example Collection-Based Assignment </span></li>
+<li><span class="en">h3 Refinement 1: Specifying Binding Strength </span></li>
+<li><span class="en">h3 Refinement 2: Material Purpose </span></li>
+<li><span class="en">h3 Material Resolve: Determining the Bound Material for any Geometry Prim </span></li>
+<li><span class="en">h3 UsdShade API </span></li>
+<li><span class="en">h2 Analysis of Collection-Based Binding </span></li>
+<li><span class="en">h2 Integration </span></li>
+<li><span class="en">h3 Katana Import </span></li>
+<li><span class="en">h3 Maya I/O </span></li>
+<li><span class="en">h3 Houdini </span></li>
+<li><span class="en">h2 Remaining Questions </span></li>
+<li><span class="en">h3 Performance </span></li>
+<li><span class="en">h3 Implication on Renderer Instancing </span></li>
+<li><span class="en">h3 Material Layering </span></li></ul>
+  </section>
+</main>
 </body>
 </html>

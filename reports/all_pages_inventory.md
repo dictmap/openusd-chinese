@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-08T04:32:02.740Z
+Generated: 2026-06-08T04:58:35.499Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 165
-- Promoted complete pages: 157
-- Bilingual draft pages: 241
+- Bilingual complete pages: 173
+- Promoted complete pages: 165
+- Bilingual draft pages: 233
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true

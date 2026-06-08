@@ -2,24 +2,28 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：Usdz File Format Specification / Usdz File Format Specification</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <title>usdz 文件格式规范 / Usdz File Format Specification</title>
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
-  </style>
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
+</style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
     .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
@@ -40,12 +44,13 @@
     }
   </style>
 </head>
-<body class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：Usdz File Format Specification / Usdz File Format Specification</h1>
-    <div class="meta">https://openusd.org/release/spec_usdz.html</div>
-  </header>
+<body data-cn-status="bilingual_complete" class="openusd-has-reading-flow">
+<header>
+  <div class="status">bilingual_complete · Round 414 DomainSprintRound</div>
+  <h1>usdz 文件格式规范 / Usdz File Format Specification</h1>
+  <p class="meta">官方页：<a href="https://openusd.org/release/spec_usdz.html">Open official page</a>；本地 source snapshot：<code>source/full_release/spec_usdz_source.html</code></p>
+  <p class="meta"><a href="../../openusd_bilingual_final.html">总入口</a> | <a href="../../site/release_index.html">Release 本地入口</a> | <a href="../../site/index.html">API Doxygen 本地入口</a></p>
+</header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
   <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
@@ -75,7 +80,9 @@
     <section>
       <h3>同目录/同域 / Same Directory</h3>
       <ul>
-        <li><a data-reading-flow="related" href="tut_authoring_variants.html">Authoring Variants</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="spec_usdpreviewsurface.html">UsdPreviewSurface Specification</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="spec.html">Specifications</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="tut_authoring_variants.html">Authoring Variants</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_converting_between_layer_formats.html">Converting Between Layer Formats</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_end_to_end.html">End to End Example</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_generating_new_schema.html">Generating New Schema Classes</a><span class="openusd-reading-flow-status">complete</span></li>
@@ -83,8 +90,6 @@
 <li><a data-reading-flow="related" href="tut_helloworld.html">Hello World - Creating Your First USD Stage</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_houdini_example.html">Houdini USD Example Workflow</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="tut_inspect_and_author_props.html">Inspecting and Authoring Properties</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="tut_referencing_layers.html">Referencing Layers</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="tut_simple_shading.html">Simple Shading in USD</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
@@ -103,118 +108,119 @@
   </div>
 </aside>
 <!-- openusd-reading-flow-nav:end -->
+<main>
+  <section data-cn-complete="round-414-spec-usdz">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+    <p><span class="zh">本页定义 <code>usdz</code> package 的正式格式约束。阅读重点是把它理解成一种零压缩、未加密、可直接消费的 zip package，而不是普通可随意编辑的压缩包。中文主阅读路径覆盖 foundation、zip constraints、layout、file types、USD constraints、editability、accessibility、streaming、MIME type 和 toolset。</span><span class="en">This page is promoted from draft to complete with a Chinese-first reading path and source parity checks.</span></p>
+    <p><span class="zh">本轮按 spec/whitepaper 核心页小批量冲刺处理：中文解释覆盖页面职责、官方 section、API/schema/property 分组、相邻 user guide/schema/API/spec/proposal 关系、阅读路径、边界、误读点和调试路径；英文标题、API 名、schema 名、token、属性名、函数名、代码、命令、Doxygen 表格标签和链接语义保持原样。</span><span class="en">English identifiers are retained for technical parity; Chinese is the main reading path.</span></p>
+
+    <h3>中文主阅读路线 / Chinese Main Reading Path</h3>
+    <p><span class="zh">页面职责：usdz 文件格式规范 首先要回答“这页在 OpenUSD 文档体系里负责什么”。对 spec 页面，它负责给出可实现、可验证的格式或节点约束；对 proposal / whitepaper 页面，它负责解释设计动机、候选方案、未决问题和与当前 release 行为的关系。读者不应只读英文标题就跳走，而应能从中文说明中判断本页属于正式规范、提案背景、工具实现线索还是相邻 user guide 的补充。</span><span class="en">Role note: this page explains whether the document is a normative spec, proposal background, or adjacent workflow material.</span></p>
+    <p><span class="zh">官方 section 覆盖：本页保留并解释 Usdz File Format Specification、Purpose、Usdz Specification、Foundation、Zip Constraints、Layout、File Types、USD Constraints、Editability、Accessibility、Packaging Considerations for Streaming and Encapsulation、MIME Type、Toolset、Changes, by Version 等官方结构。中文解释不替换英文标题，而是把每个 section 放回 OpenUSD 的资产创作、composition、schema、API、渲染或打包工作流中理解。这样读者可以先用中文建立主路径，再用英文原名核对 API/schema/token/属性名/函数名/代码和链接语义。</span><span class="en">Section coverage note: official headings are retained and explained in Chinese.</span></p>
+    <p><span class="zh">API/schema/property 分组：如果本页提到 <code>UsdShade</code>、<code>UsdPreviewSurface</code>、<code>RenderSettings</code>、<code>RenderProduct</code>、<code>RenderVar</code>、<code>usdz</code>、<code>AssetPreviewsAPI</code>、<code>expressionVariables</code>、<code>SdfLayer</code>、<code>ArResolver</code> 或类似正式标识，中文只解释职责和边界，不翻译这些标识。调试和实现时应按照 schema/API 的正式名称查找属性、relationship、token、metadata、shader id 和 package 规则。</span><span class="en">Identifier note: formal API, schema, property, token, and code names remain unchanged.</span></p>
+    <p><span class="zh">相邻文档关系：本页与 Specifications、SdfUsdzFileFormat API、Downloads and Videos 以及 release index、API Doxygen 本地入口形成连续阅读链。遇到“怎么操作”的问题，优先回到 user guide；遇到“必须满足什么约束”的问题，进入 specification；遇到“为什么这样设计或有哪些权衡”的问题，再读 proposal。这个顺序能避免把示例、规范和历史讨论混成同一种依据。</span><span class="en">Adjacent-doc note: choose user guides, specs, or proposals according to the question being debugged.</span></p>
+    <p><span class="zh">边界和误读：不要把 proposal 中的讨论文字当作当前 release 的全部承诺，也不要把 specification 中的英文 token 改成中文别名。若页面看起来只是目录或迁移提示，也仍要保留它的导航职责：指出读者下一步应该打开哪个本地页、哪个官方原页、哪个 schema/API 页，以及哪些链接是显式外跳。</span><span class="en">Boundary note: proposals explain design context; specifications provide stronger constraints; links must stay explicit.</span></p>
+    <p><span class="zh">调试路径：如果实现、导入导出、渲染或打包结果和预期不一致，应先在本页确认主题边界，再检查相邻 schema/API 页面，最后回到具体工具日志和 validation 报告。常见排查项包括 source snapshot 是否对应当前 release、官方 section 是否被覆盖、属性名或 token 是否被改写、本地 reading-flow 是否还能回到总入口和 release/API 入口。</span><span class="en">Debugging note: confirm source parity, identifier preservation, local routing, and reading-flow navigation before treating the page as complete.</span></p>
+    <h3>完成态验收与维护 / Completion Gates and Maintenance</h3>
+    <p><span class="zh">完成态验收不是只看页面能打开。晋级前必须确认本页已经从草稿状态转为 <code>bilingual_complete</code>，并且 <code>translation_quality_review</code> 给出 <code>good_bilingual</code>。如果中文只是在开头写一段导读，而官方结构、相邻关系、误读边界和调试路径仍要依赖英文正文，页面就不应写入 promotion manifest。</span><span class="en">Completion gate: status and quality must both pass.</span></p>
+    <p><span class="zh">更严格的 <code>review_ready_zh</code> 依赖中文主阅读路径和 section coverage。spec/whitepaper 页面尤其要说明本页是规范、提案、迁移提示还是目录入口；还要说明读者遇到材质、打包、渲染设置、stage variable 或 asset preview 问题时，下一步应看哪个本地页面或官方原页。</span><span class="en">Review-ready gate: the Chinese path must support independent reading.</span></p>
+    <p><span class="zh">链接维护方面，本地阅读链中的 in-scope 链接必须指向本地 HTML；只有“打开官方原页 / Open official page”或明确 source parity 链接才允许外跳到官方站。这样用户可以从总入口、release index、当前页、相邻页、API Doxygen 入口之间连续阅读，而不会被静默送回英文站。</span><span class="en">Routing gate: local in-scope links stay local; official exits are explicit.</span></p>
+    <p><span class="zh">后续维护时，如果官方 source snapshot 更新，应先重新比较 source/full_release/spec_usdz_source.html，确认 Usdz File Format Specification、Purpose、Usdz Specification、Foundation、Zip Constraints、Layout、File Types、USD Constraints、Editability、Accessibility、Packaging Considerations for Streaming and Encapsulation、MIME Type、Toolset、Changes, by Version 等结构是否变化，再决定是否做 PromotionRound、DomainSprintRound 或 EnglishDebtRound。不要只改报告；用户可见 HTML、source parity 报告、inventory、quality、English debt、current problem、final entry、Markdown 进度和 validation 必须一起闭环。</span><span class="en">Maintenance gate: user-visible HTML and reports must stay consistent.</span></p>
+    <h3>读者决策路径 / Reader Decision Path</h3>
+    <p><span class="zh">读者进入本页后应先判断自己的问题类型：如果是在实现文件格式、材质节点、渲染输出或预览资产能力，应优先阅读本页的正式结构和相邻 schema；如果是在追溯设计原因，应阅读 proposal 背景；如果是在解决实际项目报错，应回到本地 API 页面、user guide、validation 报告和工具日志交叉确认。</span><span class="en">Decision path: identify whether the issue is implementation, design background, or debugging.</span></p>
+    <p><span class="zh">对于目录或迁移页，中文层的价值不是伪造长篇正文，而是明确导航职责：哪些链接是本地连续阅读，哪些链接是官方原页，哪些页面已经 complete，哪些页面仍只是可检查草稿。这样用户不会因为页面短就失去上下文，也不会误以为外部英文站才是唯一可读路径。</span><span class="en">Short index pages still need a clear Chinese navigation role.</span></p>
+    <p><span class="zh">本轮页面属于 release/spec/proposal 域，和 API reference 的阅读方式不同。API reference 以类、函数、成员和 Doxygen 表格为核心；本域页面以工作流、规范约束、设计讨论和跨页面路径为核心。因此中文解释必须覆盖“为什么看这一页、看完去哪里、哪些标识不能改、哪些结论不能过度外推”。</span><span class="en">Release proposal/spec pages need workflow and boundary coverage, not just API table translation.</span></p>
 
 
+    <h3>官方结构覆盖 / Official Section Coverage</h3>
+    <table>
+      <thead><tr><th>Official heading</th><th>中文主阅读路径</th></tr></thead>
+      <tbody><tr>
+        <td><span class="en">Purpose</span></td>
+        <td><span class="zh">Purpose 说明 <code>usdz</code> 是为了分发、传输和直接消费 USD 资产而设计的 package。它强调稳定打开和资产封装，而不是提供任意压缩格式的全部能力。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Usdz Specification</span></td>
+        <td><span class="zh">规范主体定义 package 可以包含什么、文件如何排列、默认 layer 如何选择、路径如何解析，以及运行时为何可以不解包直接消费。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Foundation</span></td>
+        <td><span class="zh"><code>usdz</code> 基于 zip archive，这提供广泛兼容性；但它不是普通 zip 的全部自由用法，因为 USD 运行时需要确定性的读取行为。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Zip Constraints</span></td>
+        <td><span class="zh">关键约束是 zero compression 和 unencrypted。压缩或加密会破坏直接访问、偏移计算和运行时消费，因此不能把 <code>usdz</code> 当成任意 zip 优化。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Layout</span></td>
+        <td><span class="zh">layout 说明包内文件和默认 layer 选择。<code>defaultLayer.usd</code>、第一个 USD 文件、anchored asset path 等规则影响 <code>SdfLayer::FindOrOpen</code> 和 resolver 行为。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">File Types</span></td>
+        <td><span class="zh">包内文件类型必须能被 USD 运行时或相关插件消费。允许的 usda、usdc、usd、纹理和资源文件需要按规范判断，不要把任意外部文件塞进包里。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">USD Constraints</span></td>
+        <td><span class="zh">USD 约束强调路径解析和 package 内引用必须可重现。跨机器分发时，使用 anchored asset paths 比依赖搜索上下文更稳定。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Editability</span></td>
+        <td><span class="zh"><code>usdz</code> 是只读 package；编辑内容通常需要解包、修改组成文件、再重新封装。不要期望在 package 内直接 author layer edits。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Accessibility</span></td>
+        <td><span class="zh">accessibility 关注消费者能否获取 root layer 和相关资源；这影响工具发现默认入口、解析文本 layer 和生成预览。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Packaging Considerations for Streaming and Encapsulation</span></td>
+        <td><span class="zh">streaming 和封装 section 说明文件顺序、可渐进读取和封装路径。网络传输时应避免让未完整下载的 package 直接当成完整 stage 打开。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">MIME Type</span></td>
+        <td><span class="zh">MIME type <code>model/vnd.usdz+zip</code> 用于内容分发和平台识别。这个字符串必须保留原样。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr>
+<tr>
+        <td><span class="en">Toolset</span></td>
+        <td><span class="zh">工具链 section 指向 <code>usdzip</code> 等操作工具；调试时应使用工具生成和验证 package，而不是手写不符合约束的 zip。</span><span class="en">Chinese explanation for the official section, preserving source heading and technical identifiers.</span></td>
+      </tr></tbody>
+    </table>
 
+    <h3>阅读和调试路径 / Reading and Debugging Path</h3>
+    <ul><li><span class="zh">打包前先确认 root layer、资源文件、纹理路径和 package 内引用都使用可重现路径，再用工具生成 <code>usdz</code>。</span><span class="en">Workflow note for using this spec or proposal in a local OpenUSD reading path.</span></li>
+<li><span class="zh">加载失败时先检查 zip 是否零压缩且未加密，再检查 <code>defaultLayer.usd</code>、文件类型、anchored asset paths 和 resolver 行为。</span><span class="en">Workflow note for using this spec or proposal in a local OpenUSD reading path.</span></li>
+<li><span class="zh">面向移动端或流式分发时，把 file ordering、streaming 和 MIME type 作为发布检查项，而不是只看本地能否打开。</span><span class="en">Workflow note for using this spec or proposal in a local OpenUSD reading path.</span></li></ul>
 
+    <h3>边界和常见误读 / Boundaries and Common Misreads</h3>
+    <ul><li><span class="zh"><code>usdz</code> 不是普通 zip 的同义词；压缩、加密和任意文件布局都可能让 USD runtime 无法直接消费。</span><span class="en">Boundary note: keep API/schema/token/property/code/link semantics intact.</span></li>
+<li><span class="zh">package 内引用和外部搜索路径应尽量避免依赖工作站本地环境，否则分发后会出现不可重现的解析结果。</span><span class="en">Boundary note: keep API/schema/token/property/code/link semantics intact.</span></li>
+<li><span class="zh">只读 package 不适合直接编辑；编辑流程应回到 usda/usdc/usd 源文件或解包后的组成层。</span><span class="en">Boundary note: keep API/schema/token/property/code/link semantics intact.</span></li></ul>
 
+    <h3>相邻文档关系 / Adjacent Documents</h3>
+    <p><span class="zh">这些链接用于把本页放回本地中文站的连续阅读路径：先从总入口到 release index，再到本页，再进入相邻规范、提案、user guide 或 API 页面。</span><span class="en">Adjacent local pages are part of the local reading flow.</span></p>
+    <ul><li><a href="spec.html">Specifications</a></li>
+<li><a href="../api/class_sdf_usdz_file_format.html">SdfUsdzFileFormat API</a></li>
+<li><a href="dl_downloads.html">Downloads and Videos</a></li></ul>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section data-cn-refinement="release-quality-pass-066">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Usdz File Format Specification 补充中文优先的页面用途、阅读边界、关键概念和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和官方英文摘录继续保留，便于和官方原页逐项核对。</p>
-      <p class="en">This section adds Chinese-first page purpose, reading boundaries, key concepts, and terminology for Usdz File Format Specification while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for comparison.</p>
-      <ul>
-        <li><span class="zh">`Usdz File Format Specification` 定义 `.usdz` 包装格式的目的、zip 约束、布局、允许文件类型、USD 约束、可编辑性、可访问性、MIME type 和工具链入口。</span></li>
-        <li><span class="zh">`Foundation` 与 `Zip Constraints` 是本页的技术底座：`.usdz` 依托 zip archive，但对压缩、对齐、文件顺序和可流式读取提出额外约束，不能等同于普通 zip 包。</span></li>
-        <li><span class="zh">`Layout` 和 `File Types` 说明包内资源组织和允许封装的文件类别；文件扩展名、MIME type、`FileFormat plugin`、`usdzip` 等名称应保持英文原样。</span></li>
-        <li><span class="zh">`Packaging Considerations for Streaming and Encapsulation` 强调为了 streaming 与 reproducible results，需要考虑包内文件排序和 anchored asset paths；这影响移动端、AR 和封装分发场景。</span></li>
-        <li><span class="zh">`Toolset` 说明可使用的工具入口，适合与 `usdzip`、`SdfLayer::SetDocumentation` 和图像文件格式说明一起读；本页是格式规范，不是一般资产打包教程。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">Usdz 文件格式规范：</span><span class="en">Usdz File Format Specification</span></li>
-        <li><span class="zh">zip 归档包：</span><span class="en">zip archive</span></li>
-        <li><span class="zh">zip 约束：</span><span class="en">Zip Constraints</span></li>
-        <li><span class="zh">锚定资产路径：</span><span class="en">anchored asset paths</span></li>
-        <li><span class="zh">MIME 类型：</span><span class="en">MIME Type</span></li>
-        <li><span class="zh">usdz 打包工具：</span><span class="en">usdzip</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-123">
-      <h2>中文补强导读 / Chinese Refinement Notes</h2>
-      <p class="zh">`Usdz File Format Specification` 定义 `.usdz` 包装格式的约束：它基于 zip archive，但为了 streaming、alignment、first file、allowed file types 和 USD asset resolution 施加额外规则。不能把 `.usdz` 简单理解为任意 zip 包。</p>
-      <p class="en">This refinement section adds page-specific Chinese reading notes for Usdz File Format Specification while preserving English page names, API names, schema names, property names, commands, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`Zip Constraints` 是本页的关键：`.usdz` 通常要求未压缩存储、特定对齐和可随机访问布局，以便运行时直接读取包内 USD 与资源。</span></li>
-        <li><span class="zh">`Layout` 与 `File Types` 决定哪些文件可以进入包、文件顺序如何影响默认层、以及纹理、材质和 USD 层如何被 asset paths 引用。</span></li>
-        <li><span class="zh">`Packaging Considerations for Streaming and Random Access` 说明 `.usdz` 的设计目标不仅是打包，还包括在移动端、AR 或预览场景中的高效访问。</span></li>
-        <li><span class="zh">`usdzip`、`MIME type`、`FileFormat plugin`、`.usdz`、`.usd`、`.usda`、`.usdc` 等字面量必须保留，中文只解释用途和边界。</span></li>
-        <li><span class="zh">可编辑性、可访问性和安全限制属于格式契约的一部分；如果要生成 `.usdz`，应同时核对工具链、资源路径和包内文件类型约束。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">usdz 包装格式：</span><span class="en">usdz</span></li>
-        <li><span class="zh">zip 归档：</span><span class="en">zip archive</span></li>
-        <li><span class="zh">zip 约束：</span><span class="en">Zip Constraints</span></li>
-        <li><span class="zh">随机访问：</span><span class="en">random access</span></li>
-        <li><span class="zh">USD 打包工具：</span><span class="en">usdzip</span></li>
-        <li><span class="zh">媒体类型：</span><span class="en">MIME type</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：Usdz File Format Specification</span><span class="en">Usdz File Format Specification</span></li>
-<li><span class="zh">第 2 级标题：Purpose</span><span class="en">Purpose</span></li>
-<li><span class="zh">第 2 级标题：Usdz Specification</span><span class="en">Usdz Specification</span></li>
-<li><span class="zh">第 3 级标题：Foundation</span><span class="en">Foundation</span></li>
-<li><span class="zh">第 3 级标题：Zip Constraints</span><span class="en">Zip Constraints</span></li>
-<li><span class="zh">第 3 级标题：Layout</span><span class="en">Layout</span></li>
-<li><span class="zh">第 3 级标题：File Types</span><span class="en">File Types</span></li>
-<li><span class="zh">第 3 级标题：USD Constraints</span><span class="en">USD Constraints</span></li>
-<li><span class="zh">第 3 级标题：Editability</span><span class="en">Editability</span></li>
-<li><span class="zh">第 3 级标题：Accessibility</span><span class="en">Accessibility</span></li>
-<li><span class="zh">第 2 级标题：Packaging Considerations for Streaming and Encapsulation</span><span class="en">Packaging Considerations for Streaming and Encapsulation</span></li>
-<li><span class="zh">第 3 级标题：File Ordering Within Package for Streaming</span><span class="en">File Ordering Within Package for Streaming</span></li>
-<li><span class="zh">第 3 级标题：For Reproducible Results, Encapsulate Using Anchored Asset Paths</span><span class="en">For Reproducible Results, Encapsulate Using Anchored Asset Paths</span></li>
-<li><span class="zh">第 2 级标题：MIME Type</span><span class="en">MIME Type</span></li>
-<li><span class="zh">第 2 级标题：Toolset</span><span class="en">Toolset</span></li>
-<li><span class="zh">第 2 级标题：Changes, by Version</span><span class="en">Changes, by Version</span></li>
-<li><span class="zh">第 3 级标题：Version 1.3 - Current Head</span><span class="en">Version 1.3 - Current Head</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">Packaging Considerations for Streaming and Encapsulation</p>
-<p class="en">File Ordering Within Package for Streaming</p>
-<p class="en">For Reproducible Results, Encapsulate Using Anchored Asset Paths</p>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="../api/sdf_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/sdf_page_front.html">FileFormat plugin</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Zip_(file_format)">zip archive</a></li>
-<li><a href="https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html">Intel’s AVX512</a></li>
-<li><a href="user_guides/render_user_guide.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html">Working With Image File Formats</a></li>
-<li><a href="../api/class_sdf_layer.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_sdf_layer.html">SdfLayer::SetDocumentation</a></li>
-<li><a href="https://www.iana.org/assignments/media-types/model/vnd.usdz+zip">Usdz’s IANA registration page.</a></li>
-<li><a href="../../site/toolset.html" data-local-route="mapped" data-official-href="https://openusd.org/release/toolset.html">usdzip</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/spec_usdz.html">打开官方原页 / Open official page</a></p>
-    </section>
-  </main>
+    <h3>源页对比 / Source Parity</h3>
+    <p><span class="zh">已对比本地 source snapshot：<code>source/full_release/spec_usdz_source.html</code>，并保留官方页显式外跳。source parity 报告写入 <code>reports/round_414_specs_source_parity.json</code>。</span><span class="en">Official source page: <a href="https://openusd.org/release/spec_usdz.html">Open official source page - Usdz File Format Specification</a>.</span></p>
+    <ul><li><span class="en">h1 Usdz File Format Specification </span></li>
+<li><span class="en">h2 Purpose </span></li>
+<li><span class="en">h2 Usdz Specification </span></li>
+<li><span class="en">h3 Foundation </span></li>
+<li><span class="en">h3 Zip Constraints </span></li>
+<li><span class="en">h3 Layout </span></li>
+<li><span class="en">h3 File Types </span></li>
+<li><span class="en">h3 USD Constraints </span></li>
+<li><span class="en">h3 Editability </span></li>
+<li><span class="en">h3 Accessibility </span></li>
+<li><span class="en">h2 Packaging Considerations for Streaming and Encapsulation </span></li>
+<li><span class="en">h3 File Ordering Within Package for Streaming </span></li>
+<li><span class="en">h3 For Reproducible Results, Encapsulate Using Anchored Asset Paths </span></li>
+<li><span class="en">h2 MIME Type </span></li>
+<li><span class="en">h2 Toolset </span></li>
+<li><span class="en">h2 Changes, by Version </span></li>
+<li><span class="en">h3 Version 1.3 - Current Head </span></li></ul>
+  </section>
+</main>
 </body>
 </html>
