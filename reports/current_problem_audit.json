@@ -1,12 +1,13 @@
 {
-  "generated_at": "2026-06-08T20:11:44.259Z",
-  "purpose": "第 451 轮 PromotionRound 记录：确认 full_site/api/struct_usd_physics_tokens_type.html 已按 UsdPhysicsTokensType source parity 晋级，并继续跟踪 OpenUSD 双语完成缺口。",
+  "generated_at": "2026-06-08T20:45:54.794Z",
+  "purpose": "第 452 轮 DefectRound 记录：修复 full_site/release/intro_to_openexec.html 与官方 Introduction to OpenExec 的 P1 source parity 和点击顺序缺陷；本轮不新增完成页计数。",
   "last_completed_round": {
-    "round": 451,
-    "round_type": "PromotionRound",
-    "target": "full_site/api/struct_usd_physics_tokens_type.html",
+    "round": 452,
+    "round_type": "DefectRound",
+    "defect_id": "P1-release-intro-openexec-source-parity",
+    "target": "full_site/release/intro_to_openexec.html",
     "commit_sha": null,
-    "previous_good_bilingual": 229
+    "previous_good_bilingual": 230
   },
   "current_counts": {
     "total_pages": 406,
@@ -24,25 +25,25 @@
   },
   "problems": [
     {
+      "id": "P1-release-intro-openexec-source-parity",
+      "severity": "P1",
+      "summary": "full_site/release/intro_to_openexec.html 曾被标为完成页，但未按官方 Introduction to OpenExec 正文和代码示例做 section-level source parity。",
+      "evidence": "修复后页面按 Background、Introducing OpenExec、Illustrative Example、What OpenExec Is Not、New concepts、Computations、Built-in/Plugin Computations、Computation Input Parameters、Computation Callbacks、Computation Registration、Client API、Requesting Values、Receiving Notification About Invalidation、Conclusion 顺序展开，并保留 CarDoorFrame、CarDoorRotator、ComputeTransformFromOpenness、MyCallback、VdfContext、EXEC_REGISTER_COMPUTATIONS_FOR_SCHEMA、ExecUsdSystem、ExecUsdRequest、ExecUsdCacheView、computeLocalToWorldTransform。",
+      "required_action": "本轮完成后运行 source parity、click-path、reading-flow、local link、markdown、validation 全链；good_bilingual/release_complete/api_complete 不得新增。"
+    },
+    {
+      "id": "P1-click-order-reading-flow-consistency",
+      "severity": "P1",
+      "summary": "用户反馈页面按点击顺序一会好一会坏，说明仅靠 good_bilingual/navigation 计数不足。",
+      "evidence": "本轮将 intro_to_openexec.html 的侧栏和正文顺序收敛到：总入口 -> Release 本地入口 -> Introduction to OpenExec -> Background -> Introducing OpenExec -> examples/concepts/client API -> 本地 OpenExec API/教程 -> 显式官方外跳。",
+      "required_action": "下一轮优先执行 ClickPathAuditRound 或 DefectRound，抽查并修复真实点击路径中的 nav/related/prev-next 混乱；click-path 审计绿了再恢复 PromotionRound。"
+    },
+    {
       "id": "P0-api-draft-backlog",
       "severity": "P0",
       "summary": "当前 good_bilingual=230/406，API complete=104，仍有 176 个可检查草稿，不是完整翻译。",
-      "evidence": "第 451 轮 PromotionRound 将 full_site/api/struct_usd_physics_tokens_type.html 从 API 草稿晋级为 good_bilingual；release 范围保持 126/126 complete。",
-      "required_action": "继续推进 API 草稿；只把真实达到中文主阅读路径和 source parity 的页面写入 promotion manifest。"
-    },
-    {
-      "id": "P1-token-struct-source-parity",
-      "severity": "P1",
-      "summary": "token 结构体参考页必须保留 Doxygen 分组、token 名、属性名、allowedTokens 语义和链接语义，不能把 physics token 字面量翻译成中文。",
-      "evidence": "本轮覆盖 Public Attributes、Detailed Description、Member Data Documentation、allTokens、UsdPhysicsTokens、TfToken、PhysicsScene、PhysicsRigidBodyAPI、PhysicsCollisionAPI、PhysicsJoint、PhysicsDriveAPI、PhysicsLimitAPI、PhysicsMassAPI、PhysicsMaterialAPI、physicsBody0、physicsBody1、physicsFilteredPairs、physicsSimulationOwner、physicsVelocity、rotX/rotY/rotZ 和 transX/transY/transZ。",
-      "required_action": "后续 token/struct 页面继续按 source snapshot 抽取官方字段，中文说明用途和边界，API/token 名保持原样。"
-    },
-    {
-      "id": "P1-left-navigation-reading-flow",
-      "severity": "P1",
-      "summary": "完成页必须保留本地 reading-flow 导航、breadcrumb、API/Release/总入口、related links 和显式官方外跳。",
-      "evidence": "本轮页面生成了本地侧栏、breadcrumb、前后页、相邻 UsdPhysics/UsdGeom/Sdf/Tf/UsdProc/UsdRender 页面、source snapshot 和 Open official page 外跳，并会重新运行 reading-flow 审计。",
-      "required_action": "若 reading-flow 审计失败，先修导航，不得推送。"
+      "evidence": "第 452 轮是 DefectRound，不新增页面完成数；release 范围保持 126/126 complete。",
+      "required_action": "在 P1 click-path 缺陷闭环前，不要恢复新 API 页 PromotionRound。"
     },
     {
       "id": "P1-markdown-record-encoding",
@@ -52,21 +53,29 @@
       "required_action": "若 audit_openusd_markdown_encoding.mjs 失败，先做 ConsistencyRound。"
     }
   ],
-  "promoted_pages": [
+  "promoted_pages": [],
+  "not_promoted_pages": [
     {
-      "round": 451,
-      "round_type": "PromotionRound",
-      "output": "full_site/api/struct_usd_physics_tokens_type.html",
-      "official_url": "https://openusd.org/release/api/struct_usd_physics_tokens_type.html",
-      "source_snapshot": "source/full_api/struct_usd_physics_tokens_type_source.html",
-      "source_parity_report": "reports/round_451_usd_physics_tokens_type_source_parity.json"
+      "round": 452,
+      "round_type": "DefectRound",
+      "output": "full_site/api/struct_usd_skel_tokens_type.html",
+      "reason": "监督紧急改派：第 452 轮不推进新 API 页，转入 P1-release-intro-openexec-source-parity DefectRound。"
     }
   ],
-  "not_promoted_pages": [],
-  "source_parity_report": "reports/round_451_usd_physics_tokens_type_source_parity.json",
-  "next_actions": [
-    "release 范围已 126/126 complete，不要重复处理 release 已完成页。",
-    "下一轮建议重新读取 inventory 后选择一个仍为 bilingual_draft 且有 source snapshot 的 API/class/struct 页面；开始前必须确认 git/report/validation/markdown/reading-flow 状态干净一致。"
+  "fixed_defects": [
+    {
+      "id": "P1-release-intro-openexec-source-parity",
+      "target": "full_site/release/intro_to_openexec.html",
+      "source_snapshot": "source/full_release/intro_to_openexec_source.html",
+      "source_parity_report": "reports/round_452_intro_openexec_source_parity.json",
+      "click_path_report": "reports/round_452_intro_openexec_click_path.json"
+    }
   ],
-  "next_action": "下一轮建议 PromotionRound：重新读取 inventory 后选择一个仍为 bilingual_draft 且有 source snapshot 的高价值 API 页面。"
+  "source_parity_report": "reports/round_452_intro_openexec_source_parity.json",
+  "click_path_report": "reports/round_452_intro_openexec_click_path.json",
+  "next_actions": [
+    "下一轮优先执行 ClickPathAuditRound 或 DefectRound，缺陷 id=P1-click-order-reading-flow-consistency，目标是按用户真实点击路径抽查并修复 release/API 页面 nav/related/prev-next 混乱。",
+    "只有 click-path 审计通过后，才恢复 PromotionRound。"
+  ],
+  "next_action": "下一轮建议 ClickPathAuditRound/DefectRound：P1-click-order-reading-flow-consistency。"
 }

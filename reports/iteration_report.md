@@ -1,11 +1,12 @@
 # OpenUSD Iteration Report
 
-## 第 451 轮摘要
-- 轮次类型：PromotionRound
-- 轮次目的：将 `full_site/api/struct_usd_physics_tokens_type.html` 从 API 可检查草稿晋级为完整双语页面，并保持报告、入口、manifest 与验证链一致。
-- 本轮目标：`full_site/api/struct_usd_physics_tokens_type.html`
-- 结果：完成 1 个页面晋级，good_bilingual 从 229 增至 230。
-- 核心说明：目标页已进入 promotion manifest；当前记录补齐本轮目标、round 类型、commit SHA 和真实计数，避免继续出现旧的占位轮次文本。
+## 第 452 轮摘要
+
+- round 类型：DefectRound
+- 阶段：S3
+- 缺陷 id：`P1-release-intro-openexec-source-parity`
+- 目标：`full_site/release/intro_to_openexec.html`
+- 结果：修复完成页 source parity 和用户点击顺序缺陷；不新增完成页计数。
 
 ## 真实计数
 
@@ -16,37 +17,15 @@
 - bilingual_draft：176
 - draft_needs_translation：166
 - draft_template_only：10
-- pending_full_scope：0
 - api_complete：104
-- api_review_ready_zh：44
 - release_complete：126
-- release_review_ready_zh：123
 
-## 验证
+## 修复证据
 
-- validation_report：passed=true，failed_check_count=0，required_check_count=311
-- translation_quality：good_bilingual=230
-- english_debt：review_ready_zh=167，review_needs_zh_debt=63
-- promotion manifest：222 entries
-
-## 本轮改动文件
-
-- `full_site/api/struct_usd_physics_tokens_type.html`
-- `openusd_bilingual_final.html`
-- `reports/all_pages_inventory.json/md`
-- `reports/translation_quality_review.json/md`
-- `reports/english_debt_audit.json/md`
-- `reports/current_problem_audit.json/md`
-- `reports/bilingual_completion_promotions.json/md`
-- `reports/navigation_coverage_audit.json/md`
-- `reports/reading_flow_navigation_audit.json/md`
-- `reports/local_link_routing_report.json/md`
-- `reports/full_draft_preview_audit.json/md`
-- `reports/audit_index.json/md`
-- `reports/validation_report.json`
-- `work.md`
-- `reports/iteration_report.md`
+- source parity：`reports/round_452_intro_openexec_source_parity.json`
+- click-path report：`reports/round_452_intro_openexec_click_path.json`
+- validation、markdown_encoding、reading_flow、local_link、full_draft_preview 将在提交前全部重跑。
 
 ## 下一步
 
-下一轮建议恢复 PromotionRound，目标：`下一轮建议 PromotionRound：重新读取 inventory 后选择一个仍为 bilingual_draft 且有 source snapshot 的高价值 API 页面。`。开始前仍必须核对工作区干净、HEAD 等于 origin/main、报告计数一致、Markdown 编码和 reading-flow 审计通过。
+下一轮建议 `ClickPathAuditRound` / `DefectRound`，缺陷 id=`P1-click-order-reading-flow-consistency`；先抽查并修复真实点击路径中的 nav/related/prev-next 混乱，再恢复 PromotionRound。

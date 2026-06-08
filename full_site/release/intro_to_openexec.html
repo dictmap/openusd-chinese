@@ -3,211 +3,298 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>OpenExec 介绍 / Introduction to OpenExec</title>
+  <title>Introduction to OpenExec / OpenExec 介绍</title>
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
-    header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
-    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
-    h1{margin:0;font-size:30px;letter-spacing:0}
-    h2{margin:0 0 12px;font-size:22px}
-    h3{margin:18px 0 8px;font-size:18px}
-    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
-    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
-    .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#566373;margin-top:4px}
-    .navlinks a{color:#d7e3f4;margin-right:14px}
-    a{color:#1c5d99;overflow-wrap:anywhere}
-    ul,ol{padding-left:22px}
-    li{margin:8px 0}
-    table{width:100%;border-collapse:collapse;margin-top:12px}
-    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
-    th{background:#eef2f7}
-    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
+  :root{color-scheme:light;--bg:#f7f8fb;--ink:#17202a;--muted:#526173;--line:#d7dde8;--accent:#245a8d;--panel:#fff;--soft:#eef5fb}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;line-height:1.72}
+  body.openusd-has-reading-flow{padding-left:292px}
+  header{background:#182536;color:#fff;padding:30px 24px 34px;border-bottom:4px solid #2d6e9f}
+  header .wrap,main{max-width:1120px;margin:0 auto}
+  h1{font-size:32px;line-height:1.2;margin:0 0 12px;letter-spacing:0}
+  h2{font-size:24px;margin:28px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  h3{font-size:19px;margin:20px 0 8px}
+  h4{font-size:16px;margin:16px 0 6px;color:#244f78}
+  p{margin:10px 0}
+  main{padding:24px 20px 58px}
+  section.section-block{background:var(--panel);border:1px solid var(--line);border-radius:8px;margin:18px 0;padding:18px 20px}
+  .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+  .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+  .zh{display:block;color:#1f2937}
+  .en{display:block;color:#526173;font-size:14px;margin-top:3px}
+  .note{border-left:4px solid var(--accent);background:var(--soft);padding:10px 12px;margin:12px 0;color:#243447}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:10px}
+  .mini{border:1px solid var(--line);background:#fbfcff;border-radius:7px;padding:12px}
+  .mini h3{margin-top:0;color:#1b4f7a}
+  .section-order{counter-reset:item;list-style:none;padding-left:0}
+  .section-order li{counter-increment:item;margin:8px 0;padding-left:34px;position:relative}
+  .section-order li::before{content:counter(item);position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:50%;background:#245a8d;color:#fff;text-align:center;line-height:22px;font-size:12px}
+  ul,ol{padding-left:22px}
+  li{margin:7px 0}
+  pre{white-space:pre-wrap;background:#0f1720;color:#eef4ff;border:1px solid #263446;border-radius:7px;padding:13px;overflow:auto;line-height:1.45}
+  code{font-family:Consolas,"SFMono-Regular",monospace}
+  a{color:var(--accent)}
+  .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
+  .openusd-reading-flow-nav h2{font-size:17px;margin:0 0 10px;color:#17202a;border:0;padding:0}
+  .openusd-reading-flow-nav h3{font-size:13px;margin:16px 0 8px;color:#516071;text-transform:none;letter-spacing:0}
+  .openusd-reading-flow-nav ul,.openusd-reading-flow-nav ol{list-style:none;margin:0;padding:0}
+  .openusd-reading-flow-nav li{margin:7px 0;line-height:1.35}
+  .openusd-reading-flow-nav a{color:#1c5d99;text-decoration:none;overflow-wrap:anywhere}
+  .openusd-reading-flow-nav a:hover{text-decoration:underline}
+  .openusd-reading-flow-nav .official-link{color:#8a4b11}
+  .openusd-reading-flow-breadcrumb{max-width:1120px;margin:14px auto 0;padding:0 20px;color:#d7e3f4;font-size:14px;overflow-wrap:anywhere}
+  .openusd-reading-flow-breadcrumb a{color:#ffffff}
+  @media (max-width:920px){
+    body.openusd-has-reading-flow{padding-left:0}
+    .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
+  }
 </style>
-<style id="openusd-reading-flow-nav-style">
-    body.openusd-has-reading-flow{padding-left:292px}
-    .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
-    .openusd-reading-flow-nav h2{font-size:17px;margin:0 0 10px;color:#17202a}
-    .openusd-reading-flow-nav h3{font-size:13px;margin:16px 0 8px;color:#516071;text-transform:none;letter-spacing:0}
-    .openusd-reading-flow-nav ul,.openusd-reading-flow-nav ol{list-style:none;margin:0;padding:0}
-    .openusd-reading-flow-nav li{margin:7px 0;line-height:1.35}
-    .openusd-reading-flow-nav a{color:#1c5d99;text-decoration:none;overflow-wrap:anywhere}
-    .openusd-reading-flow-nav a:hover{text-decoration:underline}
-    .openusd-reading-flow-status{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:999px;background:#edf2f7;color:#516071;font-size:11px}
-    .openusd-reading-flow-nav .official-link{color:#8a4b11}
-    .openusd-reading-flow-breadcrumb{max-width:1100px;margin:14px auto 0;padding:0 20px;color:#d7e3f4;font-size:14px;overflow-wrap:anywhere}
-    .openusd-reading-flow-breadcrumb a{color:#ffffff}
-    @media (max-width: 920px){
-      body.openusd-has-reading-flow{padding-left:0}
-      .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
-      .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
-    }
-  </style>
 </head>
-<body data-cn-status="bilingual_complete" data-cn-round="417" data-cn-source="source/full_release/intro_to_openexec_source.html" class="openusd-has-reading-flow">
+<body data-cn-status="bilingual_complete" data-cn-round="452" data-cn-defect="P1-release-intro-openexec-source-parity" data-cn-source="source/full_release/intro_to_openexec_source.html" class="openusd-has-reading-flow">
 <header>
-  <span class="status">bilingual_complete</span>
-  <h1>OpenExec 介绍</h1>
-  <p class="meta">Original title: Introduction to OpenExec | Round 417 DomainSprintRound | Source snapshot: source/full_release/intro_to_openexec_source.html</p>
-  <p class="navlinks">
-    <a href="../../openusd_bilingual_final.html">总入口</a>
-    <a href="../../site/release_index.html">Release 本地入口</a>
-    <a href="../../site/index.html">API 本地入口</a>
-    <a href="../../source/full_release/intro_to_openexec_source.html">Local source snapshot</a>
-    <a href="https://openusd.org/release/intro_to_openexec.html">Open official page</a>
-  </p>
+  <div class="wrap">
+    <span class="status">bilingual_complete / DefectRound P1 fixed</span>
+    <h1>Introduction to OpenExec / OpenExec 介绍</h1>
+    <p class="meta">Round 452 DefectRound · P1-release-intro-openexec-source-parity · Source snapshot: source/full_release/intro_to_openexec_source.html</p>
+    <p class="meta">点击路径：总入口 → Release 本地入口 → Introduction to OpenExec → Background → Introducing OpenExec → examples/concepts/client API → 相邻 OpenExec API / 显式官方外跳</p>
+  </div>
 </header>
-<!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
   <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
   <span> / </span>
   <a data-reading-flow="release-entry" href="../../site/release_index.html">Release 本地入口</a>
-  <span> / release / intro_to_openexec.html</span>
+  <span> / Introduction to OpenExec</span>
 </nav>
 <aside class="openusd-reading-flow-nav" aria-label="本地阅读导航 / Local reading navigation">
   <h2>本地阅读导航</h2>
-  <div class="openusd-reading-flow-columns">
-    <section>
-      <h3>入口 / Entrances</h3>
-      <ul>
-        <li><a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口 / Final entry</a></li>
-        <li><a data-reading-flow="release-entry" href="../../site/release_index.html">Release 本地入口</a></li>
-        <li><a data-reading-flow="api-entry" href="../../site/index.html">API Doxygen 本地入口</a></li>
-        <li><a data-reading-flow="api-redirect" href="../../site/api/index.html">API redirect / site/api/index.html</a></li>
-      </ul>
-    </section>
-    <section>
-      <h3>当前位置 / Current Layer</h3>
-      <ol>
-        <li>release</li>
-        <li>intro_to_openexec.html</li>
-      </ol>
-    </section>
-    <section>
-      <h3>同目录/同域 / Same Directory</h3>
-      <ul>
-        <li><a data-reading-flow="related" href="contributing_to_usd.html">Contributing</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="contributors.html">Contributors</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="dl_downloads.html">Downloads and Videos</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="genindex.html">Index</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="maxperf.html">Performance Considerations</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="plugins_alembic.html">Alembic USD Plugin</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="plugins_renderman.html">RenderMan USD Imaging Plugin</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="plugins.html">Third Party Plugins</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="press_opensource_announce.html">Open Source Announcement</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="press_opensource_release.html">Open Source Release</a><span class="openusd-reading-flow-status">complete</span></li>
-      </ul>
-    </section>
-    <section>
-      <h3>上一页/下一页 / Previous/Next</h3>
-      <ul>
-        <li><a data-reading-flow="prev" href="genindex.html">上一页 / Previous: Index</a></li>
-<li><a data-reading-flow="next" href="maxperf.html">下一页 / Next: Performance Considerations</a></li>
-      </ul>
-    </section>
-    <section>
-      <h3>官方外跳 / Official</h3>
-      <ul>
-        <li><a class="official-link" data-reading-flow="official" href="https://openusd.org/release/intro_to_openexec.html">打开官方原页 / Open official page</a></li>
-      </ul>
-    </section>
-  </div>
+  <section>
+    <h3>入口 / Entrances</h3>
+    <ul>
+      <li><a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口 / Final entry</a></li>
+      <li><a data-reading-flow="release-entry" href="../../site/release_index.html">Release 本地入口</a></li>
+      <li><a data-reading-flow="api-entry" href="../../site/index.html">API 本地入口</a></li>
+      <li><a data-reading-flow="api-redirect" href="../../site/api/index.html">API redirect</a></li>
+    </ul>
+  </section>
+  <section>
+    <h3>点击顺序 / Click Order</h3>
+    <ol>
+      <li><a data-reading-flow="prev" href="../../site/release_index.html">上一层：Release 本地入口</a></li>
+      <li><a href="#background">Background</a></li>
+      <li><a href="#introducing-openexec">Introducing OpenExec</a></li>
+      <li><a href="#illustrative-example">Illustrative Example</a></li>
+      <li><a href="#what-openexec-is-not">What OpenExec Is Not</a></li>
+      <li><a href="#new-concepts">New concepts</a></li>
+      <li><a href="#client-api">Client API</a></li>
+      <li><a data-reading-flow="next" href="#background">下一步：从 Background 开始顺读</a></li>
+    </ol>
+  </section>
+  <section>
+    <h3>相邻 OpenExec 本地页 / Related</h3>
+    <ul>
+      <li><a data-reading-flow="related" href="../api/md_pxr_exec_exec_usd_docs_overview.html">OpenExec Overview</a></li>
+      <li><a data-reading-flow="related" href="../api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html">Tutorial 1: Computing Values</a></li>
+      <li><a data-reading-flow="related" href="../api/md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html">Tutorial 2: Defining Schema Computations</a></li>
+      <li><a data-reading-flow="related" href="../api/page__execution__system__design.html">OpenExec System Design</a></li>
+      <li><a data-reading-flow="related" href="../api/md_pxr_exec_exec_usd__r_e_a_d_m_e.html">ExecUsd README</a></li>
+      <li><a data-reading-flow="related" href="../api/md_pxr_exec_vdf__r_e_a_d_m_e.html">Vdf README</a></li>
+    </ul>
+  </section>
+  <section>
+    <h3>官方外跳 / Official</h3>
+    <ul>
+      <li><a data-reading-flow="source" href="../../source/full_release/intro_to_openexec_source.html">Local source snapshot</a></li>
+      <li><a class="official-link" data-reading-flow="official" href="https://openusd.org/release/intro_to_openexec.html">打开官方原页 / Open official page</a></li>
+    </ul>
+  </section>
 </aside>
-<!-- openusd-reading-flow-nav:end -->
-
-
 <main>
-  <section data-cn-complete="round-417-intro-openexec">
+  <section class="section-block" data-cn-complete="defect-summary">
+    <h2>缺陷修复说明</h2>
+    <p><span class="zh">本页原先虽然被标为完成页，但正文只是摘要式标题表，未覆盖官方 `Introduction to OpenExec` 的完整阅读顺序，也没有保留示例中的 `CarDoorFrame`、`CarDoorRotator`、`ComputeTransformFromOpenness`、`MyCallback`、`VdfContext`、`EXEC_REGISTER_COMPUTATIONS_FOR_SCHEMA`、`ExecUsdSystem`、`ExecUsdRequest`、`ExecUsdCacheView`、`computeLocalToWorldTransform` 等关键代码/API 标识。本轮按 P1 缺陷修复，不新增完成页计数，只修正 source parity 和用户点击顺序。</span><span class="en">This DefectRound repairs source parity and click-order reading flow without increasing completion counts.</span></p>
+    <p class="note"><span class="zh">本地 release 的 `intro.html` 与 `glossary.html` 未纳入当前 406 页 inventory，因此本页不伪造本地上一页/下一页。真实本地点击路径以 Release 本地入口为上一层，以本页内部官方 section 顺序为正文 next path，并把 OpenExec Overview、Tutorial 1、Tutorial 2、System Design、ExecUsd、Vdf 放入相关本地链接。</span><span class="en">Previous/next links are aligned to local inventory and in-page official section order.</span></p>
+  </section>
+
+  <section class="section-block" data-cn-complete="official-click-order">
+    <h2>官方目录点击顺序 / Official Click Order</h2>
+    <ol class="section-order">
+      <li><a href="#background">Background</a></li>
+      <li><a href="#introducing-openexec">Introducing OpenExec</a></li>
+      <li><a href="#illustrative-example">Illustrative Example</a></li>
+      <li><a href="#what-openexec-is-not">What OpenExec Is Not</a></li>
+      <li><a href="#new-concepts">New concepts</a></li>
+      <li><a href="#computations">Computations</a></li>
+      <li><a href="#built-in-computations">Built-in Computations</a></li>
+      <li><a href="#plugin-computations">Plugin Computations</a></li>
+      <li><a href="#computation-input-parameters">Computation Input Parameters</a></li>
+      <li><a href="#computation-callbacks">Computation Callbacks</a></li>
+      <li><a href="#computation-registration">Computation Registration</a></li>
+      <li><a href="#client-api">Client API</a></li>
+      <li><a href="#requesting-values">Requesting Values</a></li>
+      <li><a href="#receiving-notification-about-invalidation">Receiving Notification About Invalidation</a></li>
+      <li><a href="#conclusion">Conclusion</a></li>
+    </ol>
+  </section>
+
+  <section class="section-block" data-cn-complete="click-path-calibration">
+    <h2>点击路径校准 / Click-Path Calibration</h2>
+    <p><span class="zh">本轮修复把页面从“完成页计数正确但阅读路径漂移”的状态，改成按用户真实点击顺序展开的长文页。入口顺序先是 `openusd_bilingual_final.html`，再到 `site/release_index.html`，然后进入本页。进入本页后，读者不应先被带到随机 release support 页面，也不应先看到概括表；正确顺序是沿着官方目录从 `Background` 开始，理解 OpenExec 解决的 computed values、dependency tracking、cache invalidation 问题，再进入 `Introducing OpenExec`，确认它维护 dataflow network 和 execution network，最后再看 car door 示例、概念拆分、callback/registration/client API。</span><span class="en">The repaired page follows the real click sequence from final entry to release entry to the official section order.</span></p>
+    <p><span class="zh">侧栏里的上一层链接只指向 Release 本地入口，因为官方原站的上一页 `intro.html` 和下一页 `glossary.html` 没有纳入当前 406 页本地 inventory；如果本地页面伪造这些链接，会让用户以为存在可连续阅读的中文页，实际点击时又回到英文站或断链。正文中的下一步因此指向 `#background`，也就是本页官方正文的第一节；相关链接只保留 OpenExec Overview、Tutorial 1、Tutorial 2、System Design、ExecUsd 和 Vdf，这些才是读完本页后自然进入的本地 OpenExec API/设计路径。</span><span class="en">Prev/next and related links are constrained by local inventory and OpenExec-specific continuation pages.</span></p>
+    <p><span class="zh">显式官方外跳仍然保留，但只放在 `Open official page` 链接上。这样用户按中文站连续阅读时不会在正文或相关链接里被静默带到 openusd.org；只有当用户主动需要对照官方原页或确认快照差异时，才会离开本地站。这个策略也解释了为什么本轮不新增 `good_bilingual` 或 `release_complete`：本页已经在 release 范围内完成，问题不是计数，而是 source parity 和点击顺序质量。</span><span class="en">The official page is available only through the explicit official jump; the defect repair does not promote a new page.</span></p>
+    <p><span class="zh">调试时也要按这个顺序排查：如果用户说“点了以后没变化”，先确认应用是否真的 author 了新的输入值，例如 `openness`；再确认相关 computation 是否通过 schema registration 暴露给 execution registry；然后检查 `ExecUsdRequest` 是否请求了正确 provider 上的 named computation；最后才看 `ExecUsdCacheView` 中的结果或 invalidation callback。把这些步骤放进正文，是为了让中文页成为主阅读路径，而不是只在开头写一句导读后把读者推回英文页面。</span><span class="en">The diagnostic path follows authoring, registration, request construction, cache view, and invalidation.</span></p>
+    <p><span class="zh">因此本轮结束后的下一步不应立刻回到新 API 页面晋级，而应先做点击顺序审计：从总入口真实点击到 Release/API 页面，检查侧栏、breadcrumb、上一页、下一页、相关链接是否符合读者顺序。如果这些路径仍然“一会好一会坏”，再高的完成计数也不能代表中文站已经好读。</span><span class="en">The next operational step should audit click-order consistency before new promotions resume.</span></p>
+    <p><span class="zh">本页修复完成后，读者应能不依赖英文站完成一次顺读：先看问题背景，再看 OpenExec 的数据流模型，再看车门示例，最后用本地 OpenExec API 链接继续实践。</span><span class="en">After the repair, the local page should support one complete Chinese-first reading pass.</span></p>
+    <p><span class="zh">这也是后续点击路径审计的基准样例。</span><span class="en">This page is the baseline sample for the follow-up click-path audit.</span></p>
+    <p><span class="zh">用户应当能沿同一侧栏稳定返回入口并继续下一页。</span><span class="en">The sidebar must keep entry and continuation paths stable.</span></p>
+  </section>
+
+  <section class="section-block" id="background" data-cn-complete="background">
+    <h2>Background</h2>
+    <p><span class="zh">官方 Background 先解释为什么 OpenUSD 需要更系统的计算表达：许多 schema 已有计算值的方法，例如 `UsdGeomBoundable::ComputeExtent` 或 `UsdGeomXformCache`，但这些方法往往各自处理缓存、失效和依赖关系；在角色 rigging、posing、constraint targets 等领域，计算链还会跨越多个 OpenUSD 层。阅读这里时，重点不是新增一个工具命令，而是理解 OpenExec 要统一解决“计算值如何声明、缓存、失效、调试依赖”的问题。</span><span class="en">Background motivates OpenExec from computed values, caching, invalidation, dependency tracking, rigging, posing, and constraint targets.</span></p>
+    <p><span class="zh">用户从总入口点击到本页后，应先停在 Background：如果问题是某个值如何从 authored scene description 推导出来、缓存何时失效、结果是否依赖 time 或其他输入，这才是进入 OpenExec 的正确起点。</span><span class="en">Click-path role: start here to decide whether the topic is computed values and invalidation.</span></p>
+  </section>
+
+  <section class="section-block" id="introducing-openexec" data-cn-complete="introducing-openexec">
+    <h2>Introducing OpenExec</h2>
+    <p><span class="zh">官方 Introducing OpenExec 将 OpenExec 定义为表达和求值 OpenUSD scene 中 computational behaviors 的通用框架。它建立在 OpenUSD 之上，引入与 scene objects 关联的 named computations，包括 built-in computations 和 custom computations；同时提供快速、多线程 evaluation engine，以及自动缓存和失效 computed values 的数据管理概念。</span><span class="en">OpenExec expresses and evaluates computational behaviors associated with OpenUSD scene objects.</span></p>
+    <p><span class="zh">这段还说明 OpenExec 背后维护的是 dataflow network，也就是 directed acyclic graph：computation task 是 node，数据流是 edge，依赖被隐式编码进 exec network。用户点击顺序上，这一节应接在 Background 后面，用来回答“OpenExec 是什么结构”，再进入后面的 car door 示例。</span><span class="en">The execution network is a DAG where nodes encode tasks and edges encode data flow.</span></p>
+    <p><span class="zh">官方还说明该系统源自 Pixar Presto Execution System，并服务于 character rigging、direct manipulation、transform hierarchy computation、attribute inheritance chains、dataflow connections、bounding volume calculation、constraint target computation、validation 和 imaging behaviors。本页保留这些英文标识，是为了避免把 OpenExec 误写成单一场景脚本或渲染功能。</span><span class="en">Presto context and production use cases remain part of the source parity.</span></p>
+  </section>
+
+  <section class="section-block" id="illustrative-example" data-cn-complete="illustrative-example">
+    <h2>Illustrative Example</h2>
+    <p><span class="zh">官方示例是点击车门打开车门。OpenUSD 中可以有一个 `UsdGeomXform` 表示车门坐标框架，内部嵌套 mesh。这个示例不是装饰性文字，而是解释 OpenExec 如何把“用户改变 openness 属性 → 计算 transform → 依赖值失效 → 下次请求重新求值”串起来。</span><span class="en">The car-door example is the first concrete click-path demonstration.</span></p>
+    <pre><code>def Xform &quot;CarDoorFrame&quot; {
+    def Mesh &quot;CarDoor&quot; {
+    }
+}</code></pre>
+    <p><span class="zh">官方接着引入 applied schema `CarDoorRotator`，它发布 `openness` 属性，0 表示 fully closed，100 表示 fully opened；schema API `ComputeTransformFromOpenness()` 将 `openness` 转成 rotation transform。如果只用普通 OpenUSD authoring，开发者需要自己监听 `openness` 变化、调用 API、把结果 transform 写回 `CarDoorFrame`，还要自己考虑缓存。</span><span class="en">CarDoorRotator and ComputeTransformFromOpenness explain the authored-input to computed-output path.</span></p>
+    <p><span class="zh">OpenExec 的作用是把 `ComputeTransformFromOpenness()` 注册并实现为 computation，让 input dependencies 和 dependent outputs 进入 exec network。`openness` 变化会自动让依赖 computation invalidated，结果也作为 execution 副产物自动缓存。这里的点击顺序必须先看车门示例，再进入 What OpenExec Is Not，否则很容易误解为 OpenExec 会自动处理点击事件。</span><span class="en">OpenExec registers the computation, dependency tracking, invalidation, and caching; it does not implement the click handler.</span></p>
+  </section>
+
+  <section class="section-block" id="what-openexec-is-not" data-cn-complete="what-openexec-is-not">
+    <h2>What OpenExec Is Not</h2>
+    <p><span class="zh">官方明确划边界：OpenExec 虽然能计算 arbitrary/custom data types，但 computations 不能修改 `UsdStage` topology，不能添加或删除 prim/subtree/property，也不能向 scene description author 新值。OpenExec 观察 composed `UsdStage`，不替代 USD composition、authoring 或 layer editing。</span><span class="en">OpenExec observes the composed UsdStage and does not author topology or scene description values.</span></p>
+    <p><span class="zh">OpenExec 自身也不是完整 rigging system。官方用 Presto rigging system 拆成三层：Presto Execution System、基于 execution system 的 rigging object model、以及 deformer/rigging primitive 库。OpenExec 对 OpenUSD 提供的是第 1 层 execution framework；更高层 rigging object model 属于未来或其他组件。</span><span class="en">OpenExec is the execution-framework layer, not the full rigging object model or deformer library.</span></p>
+    <p><span class="zh">最后，OpenExec 是 value-driven computation system，不是 event-driven system。点击对象本身不会让 OpenExec 自动重算；应用仍要实现 hit test 和 click handler，并 author 新的 `openness` 值。OpenExec 响应的是 scene authoring 造成的 input dependency change，然后让结果 invalidated，并在客户端下次 request 时 reevaluate。</span><span class="en">OpenExec is value-driven, not an event architecture for interactive click behavior.</span></p>
+  </section>
+
+  <section class="section-block" id="new-concepts" data-cn-complete="new-concepts">
+    <h2>New concepts</h2>
+    <p><span class="zh">官方 New concepts 列出五个一等概念：scene objects 提供的 computations、computation 的 static declarative input parameters、custom computation callbacks、作为 schema registration 扩展的 execution behavior registration、以及请求 computed values 的 client API。本地页按这些子 section 顺序展开，避免把官方正文压成摘要表。</span><span class="en">The official concept list drives the remaining click order.</span></p>
+  </section>
+
+  <section class="section-block" id="computations" data-cn-complete="computations">
+    <h3>Computations</h3>
+    <p><span class="zh">在 OpenExec 中，任何 USD scene object 都可以发布任意数量的 named computations，并由底层 execution system 高效执行。运行时，当某个 scene object 关联的 computation 被调用时，该 scene object 就是 provider。每个 computation 可以有零个或多个 input parameters，通常至少一个；它还绑定一个 C++ computation callback，用来读取输入、执行计算并输出一个或多个值。</span><span class="en">A computation is a named behavior published by a scene object and evaluated by the execution system.</span></p>
+    <h4 id="built-in-computations">Built-in Computations</h4>
+    <p><span class="zh">Built-in computations 是 OpenExec 基础设施自带的计算。有些由每个 USD object 默认发布，例如 `computePath` 返回 scene graph path；有些由特定类型的 USD object 默认发布，例如 `UsdAttribute` 的 `computeValue` 返回 resolved value。</span><span class="en">Built-in computations are available by default for USD objects or specific object types.</span></p>
+    <h4 id="plugin-computations">Plugin Computations</h4>
+    <p><span class="zh">Plugin Computations 则来自 schema registration 扩展：schema 可以注册 custom computations，由 C++ callback 执行任意计算工作。例如在 `UsdGeomBoundable` 上注册 `computeExtent`，其工作相当于 `UsdGeomBoundable::ComputeExtent()`。这里的重点是 plugin computation 把原本分散的 codeful schema 行为纳入 OpenExec 的依赖和缓存模型。</span><span class="en">Plugin computations extend schema registration with C++ callbacks for custom work.</span></p>
+  </section>
+
+  <section class="section-block" id="computation-input-parameters" data-cn-complete="computation-input-parameters">
+    <h3>Computation Input Parameters</h3>
+    <p><span class="zh">Input parameters 是 scene-description-aware 的 input data source 规格。它可以从 resolved attribute values 取值，也可以从其他 computations 的结果取值；来源可能在当前 prim/property，也可能在场景中其他位置。为了解析这些输入，执行系统可能需要遍历 relationship、向上或向下查找 transform hierarchy。</span><span class="en">Input parameters describe where computation inputs come from in scene description and other computations.</span></p>
+    <p><span class="zh">官方将 input parameter 的解析拆成三件事：computation name、computation result type、computation provider resolution。也就是说，系统必须知道源 computation 名、输出类型是否匹配，以及去哪一个 scene object 查找该 computation。relationship-targeted input 可能没有目标，也可能有多个目标；注册后的 input dependencies 在 evaluation 期间是静态的，即使 callback 最终没有消费某个值，依赖仍会被满足。</span><span class="en">Input resolution requires name, result type, and provider resolution, and dependencies are static for evaluation.</span></p>
+  </section>
+
+  <section class="section-block" id="computation-callbacks" data-cn-complete="computation-callbacks">
+    <h3>Computation Callbacks</h3>
+    <p><span class="zh">Computation callback 是执行 computation 工作的 C++ function 或 function object。callback 通过 registration 阶段关联的 named tokens 从 `VdfContext` 读取输入，并通过 `ctx.SetOutput()` 写出结果。官方示例必须保留，因为它说明 callback 是 OpenExec 求值模型的代码入口。</span><span class="en">Callbacks are C++ functions or function objects that read from VdfContext and set outputs.</span></p>
+    <pre><code>// Free-standing, static callback function
+static void MyCallback(const VdfContext &amp;ctx)
+{
+    // Reads input 'myInputName' with single value, or first value.
+    const int inputValue = ctx.GetInputValue&lt;int&gt;(tokens-&gt;myInputName);
+    // Sets output value.
+    ctx.SetOutput(inputValue + 1);
+}</code></pre>
+    <p><span class="zh">官方强调 OpenExec 把 callbacks 当作 black boxes，但要求它们 stateless 且 side-effect free：相同输入应返回相同输出，不应修改 global state。这个限制让缓存、数据管理和线程安全成为可能。</span><span class="en">Callbacks must be stateless and side-effect free to support caching and thread safety.</span></p>
+  </section>
+
+  <section class="section-block" id="computation-registration" data-cn-complete="computation-registration">
+    <h3>Computation Registration</h3>
+    <p><span class="zh">Computation Registration 是 OpenExec 对 OpenUSD schema registration 的扩展。新的 execution behavior registration 填充 execution registry，再生成 computation definitions，作用类似 OpenUSD prim definitions：它们是蓝图，告诉 framework 如何实例化和执行 computations。官方还说明 registration 使用 C++ metaprogramming 风格的 domain-specific language，目前 execution behaviors 只能在 C++ 中注册。</span><span class="en">Computation registration extends schema registration and generates computation definitions.</span></p>
+    <pre><code>// Callback referenced by the registration
+static GfMatrix4d
+_ComputeLocalToWorldTransform(const VdfContext &amp;ctx)
+{
+  // Uses VdfContext to read tokens-&gt;transform and
+  // tokens-&gt;computeLocalToWorldTransform input parameters.
+  ...
+}
+
+// Execution registration for UsdGeomXformable
+EXEC_REGISTER_COMPUTATIONS_FOR_SCHEMA(UsdGeomXformable)
+{
+    self.PrimComputation(tokens-&gt;computeLocalToWorldTransform)
+        .Callback&lt;GfMatrix4d&gt;(&amp;_ComputeLocalToWorldTransform)
+        .Inputs(
+            AttributeValue&lt;GfMatrix4d&gt;(tokens-&gt;transform),
+            NamespaceAncestor&lt;GfMatrix4d&gt;(
+                tokens-&gt;computeLocalToWorldTransform)
+        );
+}</code></pre>
+    <p><span class="zh">这段代码展示 `EXEC_REGISTER_COMPUTATIONS_FOR_SCHEMA` 如何让 `UsdGeomXformable` 发布 `computeLocalToWorldTransform`。第一个输入来自同一 prim 上 `transform` attribute，第二个输入来自最近 namespace ancestor 上同名 computation。客户端请求时，系统会自动加载定义 registration code 的 plugin，并生成相关 computation definitions。</span><span class="en">The registration example preserves EXEC_REGISTER_COMPUTATIONS_FOR_SCHEMA and computeLocalToWorldTransform source semantics.</span></p>
+  </section>
+
+  <section class="section-block" id="client-api" data-cn-complete="client-api">
+    <h3>Client API</h3>
+    <p><span class="zh">除了注册 execution behavior，客户端通过 Client API 请求 computed values。客户端首先构造绑定到某个 `UsdStage` 的 execution system state object；官方示例是 `ExecUsdSystem exec(stage);`。一个 `ExecUsdSystem` 通常与一个 `UsdStage` 同生命周期存在；同一 stage 可以构造多个 system instance，但 cache 不共享。</span><span class="en">Clients construct ExecUsdSystem for a UsdStage and then request computed values.</span></p>
+    <pre><code>// Construct an instance of the exec system state object. This
+// object contains the primary OpenExec client API.
+ExecUsdSystem exec(stage);</code></pre>
+  </section>
+
+  <section class="section-block" id="requesting-values" data-cn-complete="requesting-values">
+    <h4>Requesting Values</h4>
+    <p><span class="zh">官方强调请求值前 OpenExec 需要做准备工作；这些成本在批量请求中摊销效果更好。一次请求一个 value key 对性能不利，性能敏感客户端应尽量把所需 value keys 一次性放进 batch。最低层请求 API 是 `ExecUsdRequest`，由一组 `ExecUsdValueKey` 构成；每个 key 指向通过 scene object provider 调用的 named computation 结果。</span><span class="en">ExecUsdRequest encourages batched value requests through ExecUsdValueKey.</span></p>
+    <pre><code>// Builds a request for values. Reminder, value keys refer to computations.
+ExecUsdRequest request = exec.BuildRequest({
+    ExecUsdValueKey(primA, tokens-&gt;fooComputation),
+    ExecUsdValueKey(primB, tokens-&gt;barComputation),
+    ...
+});
+
+// Computes all the requested values.
+ExecUsdCacheView cacheView = exec.Compute(request);
+
+VtValue fooComputatationValue = cacheView.Get(0);
+VtValue barComputationValue = cacheView.Get(1);
+VtValue ... = cacheView.Get(i);</code></pre>
+    <p><span class="zh">这里的点击顺序是：先理解 `ExecUsdRequest` 如何收集 value keys，再理解 `ExecUsdCacheView` 如何从 computed cache 中按 request index 取结果。不要把它当作任意查询接口；它围绕 named computations 和 scene object providers 工作。</span><span class="en">The request and cache view examples preserve the official API identifiers and usage direction.</span></p>
+  </section>
+
+  <section class="section-block" id="receiving-notification-about-invalidation" data-cn-complete="receiving-notification-about-invalidation">
+    <h4>Receiving Notification About Invalidation</h4>
+    <p><span class="zh">OpenExec 还支持在输入依赖变化导致 previously computed values 失效时接收 invalidation notification。构建 `ExecUsdRequest` 时可以提供 callback；系统调用它时会传入 invalidated value key indices 集合，以及失效的 time range。这个 section 应放在 Requesting Values 之后，因为只有先建立请求和 cache view，失效通知的意义才清楚。</span><span class="en">Invalidation notifications report which requested value indices became invalid and over what time range.</span></p>
+    <pre><code>// Builds a request with an invalidation callback.
+ExecRequest request = exec.BuildRequest(
+    { /* value keys in the request */ },
+    [](const ExecRequestIndexSet &amp;indexSet,
+       const EfTimeInterval &amp;timeRange) {
+        // Invalidation callback code.
+    });</code></pre>
+  </section>
+
+  <section class="section-block" id="conclusion" data-cn-complete="conclusion">
+    <h2>Conclusion</h2>
+    <p><span class="zh">官方 Conclusion 引导读者继续下载代码、阅读 OpenExec white paper、探索 API reference documentation。本地页面为了避免静默跳转官方英文站，将连续阅读优先导向本地 OpenExec API 页面：OpenExec Overview、Tutorial 1、Tutorial 2、System Design、ExecUsd 和 Vdf；只有明确点击 `Open official page` 才跳到官方原页。</span><span class="en">Conclusion keeps local next steps local and makes the official jump explicit.</span></p>
+    <div class="grid">
+      <div class="mini"><h3>概念入口</h3><p><span class="zh">从本页进入 `OpenExec Overview`，用于继续理解 computed values、stage ingestion、execution network 和客户端请求。</span><span class="en">OpenExec Overview is the local conceptual continuation.</span></p><p><a data-reading-flow="related" href="../api/md_pxr_exec_exec_usd_docs_overview.html">OpenExec Overview</a></p></div>
+      <div class="mini"><h3>实践教程</h3><p><span class="zh">如果目标是实际请求或定义 computation，按 Tutorial 1 再 Tutorial 2 的顺序继续。</span><span class="en">Tutorial 1 consumes computed values; Tutorial 2 defines schema computations.</span></p><p><a data-reading-flow="related" href="../api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html">Tutorial 1</a> · <a data-reading-flow="related" href="../api/md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html">Tutorial 2</a></p></div>
+      <div class="mini"><h3>实现背景</h3><p><span class="zh">需要系统设计或底层 dataflow 时，进入 System Design、ExecUsd 或 Vdf。</span><span class="en">System Design, ExecUsd, and Vdf provide implementation context.</span></p><p><a data-reading-flow="related" href="../api/page__execution__system__design.html">System Design</a> · <a data-reading-flow="related" href="../api/md_pxr_exec_exec_usd__r_e_a_d_m_e.html">ExecUsd</a> · <a data-reading-flow="related" href="../api/md_pxr_exec_vdf__r_e_a_d_m_e.html">Vdf</a></p></div>
+    </div>
+  </section>
+
+  <section class="section-block" data-cn-complete="paragraph-coverage">
     <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
-    <p><span class="zh">本页介绍 OpenExec 的目标、背景和新增概念。中文主阅读路径应把它视为执行系统导读：先理解为什么需要 OpenExec，再看 computation、input parameter、callback、registration、client API、requesting values 和 invalidation notification 如何形成可扩展计算框架。它不是普通 USD stage 教程，也不是替代 Hydra 或 renderer 的执行引擎说明，而是解释 OpenUSD 内部如何组织可注册、可请求、可失效通知的计算。</span><span class="en">This local page has been promoted after source parity and Chinese main-reading-path coverage checks.</span></p>
-
-    <h3>页面职责与快照说明</h3>
     <ul>
-      <li><span class="zh">本页属于 release 剩余支撑/参考页收尾范围，重点是让读者理解页面用途、快照属性、相邻页面关系和本地连续阅读路径，而不是把索引、名单、公告或时效内容伪装成实时更新。</span><span class="en">Role: remaining release support/reference page.</span></li>
-      <li><span class="zh">本地 source snapshot 位于 <a href="../../source/full_release/intro_to_openexec_source.html">source/full_release/intro_to_openexec_source.html</a>；官方核对入口是 <a href="https://openusd.org/release/intro_to_openexec.html">Open official page</a>。需要最新发布、贡献、公告或索引状态时，以官方原页或 GitHub 为准。</span><span class="en">Official source comparison is explicit.</span></li>
-      <li><span class="zh">本轮 source parity 检查关键词：<code>Introduction to OpenExec</code>, <code>Background</code>, <code>Introducing OpenExec</code>, <code>Illustrative Example</code>, <code>What OpenExec Is Not</code>, <code>Computations</code>, <code>Client API</code>。这些关键词必须同时存在于 source snapshot 和本地输出中，说明页面没有脱离官方结构。</span><span class="en">Source parity keywords are preserved for audit.</span></li>
-    </ul>
-
-    <h3>官方结构覆盖</h3>
-    <table>
-      <thead><tr><th>层级</th><th>官方标题</th><th>中文阅读说明</th></tr></thead>
-      <tbody>
-<tr><td>h1</td><td>Introduction to OpenExec </td><td>保留官方标题，用中文解释该 section 的用途、边界和跳转关系。</td></tr>
-<tr><td>h2</td><td>Background </td><td>保留官方标题，用中文解释该 section 的用途、边界和跳转关系。</td></tr>
-<tr><td>h2</td><td>Introducing OpenExec </td><td>保留官方标题，用中文解释该 section 的用途、边界和跳转关系。</td></tr>
-<tr><td>h2</td><td>Illustrative Example </td><td>保留官方标题，用中文解释该 section 的用途、边界和跳转关系。</td></tr>
-<tr><td>h2</td><td>What OpenExec Is Not </td><td>保留官方标题，用中文解释该 section 的用途、边界和跳转关系。</td></tr>
-<tr><td>h2</td><td>New concepts </td><td>保留官方标题，用中文解释该 section 的用途、边界和跳转关系。</td></tr>
-<tr><td>h3</td><td>Computations </td><td>保留官方标题，用中文解释该 section 的用途、边界和跳转关系。</td></tr>
-<tr><td>h4</td><td>Built-in Computations </td><td>保留官方标题，用中文解释该 section 的用途、边界和跳转关系。</td></tr>
-<tr><td>h4</td><td>Plugin Computations </td><td>保留官方标题，用中文解释该 section 的用途、边界和跳转关系。</td></tr>
-<tr><td>h3</td><td>Computation Input Parameters </td><td>保留官方标题，用中文解释该 section 的用途、边界和跳转关系。</td></tr>
-<tr><td>h3</td><td>Computation Callbacks </td><td>保留官方标题，用中文解释该 section 的用途、边界和跳转关系。</td></tr>
-<tr><td>h3</td><td>Computation Registration </td><td>保留官方标题，用中文解释该 section 的用途、边界和跳转关系。</td></tr>
-<tr><td>h3</td><td>Client API </td><td>保留官方标题，用中文解释该 section 的用途、边界和跳转关系。</td></tr>
-<tr><td>h4</td><td>Requesting Values </td><td>保留官方标题，用中文解释该 section 的用途、边界和跳转关系。</td></tr>
-<tr><td>h4</td><td>Receiving Notification About Invalidation </td><td>保留官方标题，用中文解释该 section 的用途、边界和跳转关系。</td></tr>
-<tr><td>h2</td><td>Conclusion </td><td>保留官方标题，用中文解释该 section 的用途、边界和跳转关系。</td></tr>
-      </tbody>
-    </table>
-
-    <h3>主要 section 中文说明</h3>
-    <ul>
-<li><span class="zh">背景部分说明传统数据访问和计算需求为什么需要更清晰的执行模型。读者应把它与 Vdf、Exec、UsdExec、scene description 和 dependency invalidation 联系起来，而不是只理解为新增工具命令。</span><span class="en">Official/source section: Background</span></li>
-<li><span class="zh">OpenExec 的导入说明强调计算定义、注册和调用路径。中文说明应保留 <code>OpenExec</code>、<code>Computations</code>、<code>Client API</code> 等正式名称，解释它们如何被插件和客户端协作使用。</span><span class="en">Official/source section: Introducing OpenExec</span></li>
-<li><span class="zh">示例用于展示计算如何被请求和返回值。代码、类型名和调用顺序必须保留英文；中文负责解释每一步的输入、输出和失效影响。</span><span class="en">Official/source section: Illustrative Example</span></li>
-<li><span class="zh">这个 section 是误读防线：OpenExec 不是 renderer、不是普通脚本调度器，也不是替换 USD composition 的系统。它关注注册和请求计算值的执行模型。</span><span class="en">Official/source section: What OpenExec Is Not</span></li>
-<li><span class="zh">新增概念包括 computation、input parameter、callback、registration 和 client API。阅读时应按职责分组，而不是把它们混成一个函数列表。</span><span class="en">Official/source section: New concepts</span></li>
-    </ul>
-
-    <h3>操作和排查路径</h3>
-    <ol>
-<li><span class="zh">如果读者需要理解 Exec/Vdf 相关 API，先读本页建立执行模型，再回到 API 页面核对具体类和函数。</span><span class="en">Workflow note.</span></li>
-<li><span class="zh">调试计算值未更新时，沿 computation registration、input parameters、callback 和 invalidation notification 逐层排查。</span><span class="en">Workflow note.</span></li>
-<li><span class="zh">插件 computation 不生效时，先确认注册是否成功，再确认 client API 请求路径和依赖失效通知是否触发。</span><span class="en">Workflow note.</span></li>
-    </ol>
-
-    <h3>边界、误读点与调试路径</h3>
-    <ul>
-<li><span class="zh">OpenExec 不是场景格式、渲染器或任务队列，它描述的是 OpenUSD 内部计算表达和请求机制。</span><span class="en">Boundary guard.</span></li>
-<li><span class="zh">computation、callback、registration、Client API、Requesting Values 等术语保留英文。</span><span class="en">Boundary guard.</span></li>
-<li><span class="zh">本页是导读，具体实现仍需要跳到 API/Doxygen 和相关 tutorial 页面核对。</span><span class="en">Boundary guard.</span></li>
-    </ul>
-
-    <h3>快照、时效与阅读流守卫</h3>
-    <ol>
-<li><span class="zh">本页按本地 406 页库存中的 source snapshot 解释当前页面，不伪装成实时官网。涉及 release schedule、contributors、press announcement、press release、index 和性能数据的内容，都可能随官方站点或项目状态变化；需要最新信息时，必须通过明确的 Open official page 外跳核对。</span><span class="en">Snapshot and reading-flow guard.</span></li>
-<li><span class="zh">中文主阅读路径承担的是解释和分流：说明页面职责、什么时候读它、如何进入相邻 tutorial/user guide/schema/API/spec/proposal/support 页面，以及遇到环境、性能、索引、公告或贡献名单问题时应回到哪个本地入口继续查证。</span><span class="en">Snapshot and reading-flow guard.</span></li>
-<li><span class="zh">所有 API 名、schema 名、token、函数名、代码、命令、Doxygen 标签、平台名、产品名、贡献者姓名、新闻标题和链接语义保持原样。中文只解释用途和边界，不把正式标识翻译成无法搜索或无法核对的中文词。</span><span class="en">Snapshot and reading-flow guard.</span></li>
-<li><span class="zh">本地阅读路径必须保持可回退：读者从总入口进入 release index，再进入本页，应该可以通过侧栏、breadcrumb、相关本地页和显式官方外跳完成连续阅读。正文内 in-scope 链接优先走本地，只有写作 Open official page 的链接才是外跳。</span><span class="en">Snapshot and reading-flow guard.</span></li>
-<li><span class="zh">索引/名单/公告/时效页不适合逐字逐项翻译所有列表。完成态要求是让读者理解这些列表如何使用、哪些字段需要保留英文、哪些内容需要按当前官方版本复核，以及如何从列表跳回 API、教程、性能或贡献流程页面。</span><span class="en">Snapshot and reading-flow guard.</span></li>
-<li><span class="zh">性能和 OpenExec 相关页面尤其不能只看单个建议。读者应区分 allocator、binary USD、payload、scene complexity、metrics environment、platform graphs、computation registration、client API 和 invalidation notification 等不同层级，避免把一个调优建议套到所有场景。</span><span class="en">Snapshot and reading-flow guard.</span></li>
-<li><span class="zh">公告和新闻稿页面的中文说明需要保留历史语境：这些页面说明 OpenUSD 开源发布的背景和影响，不应被当作当前路线图、当前版本功能列表或商业产品承诺。历史标题和 Pixar 相关名称都应保留英文以便核对。</span><span class="en">Snapshot and reading-flow guard.</span></li>
-<li><span class="zh">贡献者和索引页面的中文说明需要诚实承认它们是导航/参考型页面。贡献者名单用于理解历史参与者和鸣谢范围，不用于推断当前维护者；genindex 用于按字母或术语定位条目，不用于替代 API reference 的正文定义。</span><span class="en">Snapshot and reading-flow guard.</span></li>
-<li><span class="zh">本轮完成后必须继续通过 <code>translation_quality_review</code>、<code>english_debt_audit</code>、<code>reading_flow_navigation_audit</code>、<code>local_link_routing_report</code>、<code>markdown_encoding_audit</code> 和 validation 复核；英文/中文比例只作为诊断，不作为完成否决。</span><span class="en">Snapshot and reading-flow guard.</span></li>
-<li><span class="zh">第十层判断是剩余 release 页收尾策略：这些页面通常不是长篇教程，而是把读者送到正确位置的支撑页。完成态不是把每个名字、每个日期、每个新闻句子都改写一遍，而是给出足够清晰的中文解释，让读者知道应如何使用原始列表、哪些内容必须保留英文、哪些内容需要官方实时核对。</span><span class="en">Snapshot and reading-flow guard.</span></li>
-<li><span class="zh">第十一层判断是与总入口的诚实关系：总入口显示的 complete 数量只代表页面达到 <code>good_bilingual</code> 门槛，不等于所有外部新闻、贡献者列表、性能图表或发布计划都被实时同步。页面自身必须提示本地快照和官方原页的区别，避免读者把本地站误认为官方实时镜像。</span><span class="en">Snapshot and reading-flow guard.</span></li>
-<li><span class="zh">第十二层判断是调试入口分层：性能问题优先进入 maxperf 和 performance metrics，执行系统问题进入 OpenExec/API，版本时效问题进入 release schedule，历史与新闻语境进入 press 页面，贡献与协作进入 contributors/contributing，术语定位进入 genindex/API index。分层清楚后，支撑页才真正能顺着读。</span><span class="en">Snapshot and reading-flow guard.</span></li>
-<li><span class="zh">第十三层判断是未覆盖链接治理：如果页面内仍有 out-of-scope 或未映射链接，不应静默跳官方英文站，而应通过 local link routing 报告和 explicit official link 规则说明其状态。这样既不夸大本地覆盖范围，也不破坏用户的本地阅读体验。</span><span class="en">Snapshot and reading-flow guard.</span></li>
-<li><span class="zh">第十四层判断是后续收尾安排：本轮完成后 release 范围理论上只剩 <code>search.html</code> 这类 template-only 功能页。它需要单独策略说明搜索页用途、输入框行为、脚本不逐行翻译的原因和回到总入口/索引/API 的路径，不能混在普通翻译 sprint 里硬做。</span><span class="en">Snapshot and reading-flow guard.</span></li>
-    </ol>
-
-    <h3>相邻文档关系</h3>
-    <p><span class="zh">本页应把读者导向正确的本地下一页；外部链接只作为显式核对入口，不应破坏本地连续阅读。</span><span class="en">Related local reading targets.</span></p>
-    <ul>
-<li><a href="../api/md_pxr_exec_exec__r_e_a_d_m_e.html">Exec README</a></li>
-<li><a href="../api/md_pxr_exec_vdf__r_e_a_d_m_e.html">Vdf README</a></li>
-<li><a href="../api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html">Exec tutorial</a></li>
-    </ul>
-
-    <h3>完成态验收</h3>
-    <ul>
-      <li><span class="zh">状态为 <code>bilingual_complete</code>，已移除旧草稿提示，并写入第 417 轮 source parity 报告。</span><span class="en">Completion status and source parity are present.</span></li>
-      <li><span class="zh">中文覆盖页面职责、官方 section、相邻 tutorial/user guide/schema/API/spec/proposal/support 页关系、阅读路径、边界、误读点和调试路径。</span><span class="en">Chinese coverage includes role, sections, relationships, boundaries, and diagnostics.</span></li>
-      <li><span class="zh">技术标识、姓名、产品名、命令、文件名、代码和链接语义保持原样，便于继续搜索和官方核对。</span><span class="en">Technical identifiers and link semantics are preserved.</span></li>
-      <li><span class="zh">后续维护必须继续运行 Markdown 编码、English debt、navigation、reading-flow、local link routing、full draft preview、report index 和 validation。</span><span class="en">Validation chain remains mandatory.</span></li>
+      <li><span class="zh">官方目录顺序已覆盖：Background → Introducing OpenExec → Illustrative Example → What OpenExec Is Not → New concepts → Computations → Built-in/Plugin Computations → Input Parameters → Callbacks → Registration → Client API → Requesting Values → Invalidation → Conclusion。</span><span class="en">The official table-of-contents order is preserved.</span></li>
+      <li><span class="zh">代码/API 示例已覆盖：`CarDoorFrame`、`CarDoorRotator`、`ComputeTransformFromOpenness`、`MyCallback`、`VdfContext`、`EXEC_REGISTER_COMPUTATIONS_FOR_SCHEMA`、`ExecUsdSystem`、`ExecUsdRequest`、`ExecUsdCacheView`、`computeLocalToWorldTransform` 均在正文中保留。</span><span class="en">Required code/API identifiers are present in the local page.</span></li>
+      <li><span class="zh">点击路径已修正：本地上一层是 Release 本地入口，正文下一步是 `Background`，相关链接只指向 OpenExec API/教程/系统设计/Vdf/ExecUsd，不再随机列出 maxperf、plugins、contributors 等 release support 页。</span><span class="en">Click-path navigation now matches the actual OpenExec reading flow.</span></li>
+      <li><span class="zh">完成页计数保持不变：本轮是 DefectRound，不写入新的 promotion manifest，不新增 `good_bilingual`、`release_complete` 或 `api_complete`。</span><span class="en">This is a defect repair with no completion-count promotion.</span></li>
     </ul>
   </section>
 </main>
