@@ -1,10 +1,81 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Trace: Performance tracking - OpenUSD API 双语</title>
-  <style>
+import fs from "node:fs";
+import path from "node:path";
+
+const ROOT = process.cwd();
+const ROUND = 435;
+const ROUND_TYPE = "PromotionRound";
+const TARGET = "full_site/api/trace_page_front.html";
+const SOURCE = "source/full_api/trace_page_front_source.html";
+const OFFICIAL_URL = "https://openusd.org/release/api/trace_page_front.html";
+const SOURCE_PARITY_REPORT = "reports/round_435_trace_module_front_source_parity.json";
+const PROMOTION_ID = "round-435-api-trace-module-front";
+
+function rel(...parts) {
+  return path.join(ROOT, ...parts);
+}
+
+function esc(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function htmlDecode(value) {
+  return String(value ?? "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#([0-9]+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)));
+}
+
+function stripTags(value) {
+  return htmlDecode(
+    String(value ?? "")
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+  );
+}
+
+function zhChars(value) {
+  return (String(value ?? "").match(/[\u4e00-\u9fff]/g) || []).length;
+}
+
+function readJson(file) {
+  return JSON.parse(fs.readFileSync(rel(file), "utf8").replace(/^\uFEFF/, ""));
+}
+
+function writeJson(file, value) {
+  fs.writeFileSync(rel(file), `${JSON.stringify(value, null, 2)}\n`, "utf8");
+}
+
+function sourceHtml() {
+  return fs.readFileSync(rel(SOURCE), "utf8");
+}
+
+function sourceText() {
+  return stripTags(sourceHtml());
+}
+
+function sourceHeadings() {
+  const heads = [...sourceHtml().matchAll(/<h([1-4])[^>]*>([\s\S]*?)<\/h\1>/gi)].map((match) => ({
+    level: Number(match[1]),
+    text: stripTags(match[2]),
+  }));
+  const title = stripTags(sourceHtml().match(/<div class="title">([\s\S]*?)<\/div>/i)?.[1] || "");
+  return title ? [{ level: 1, text: title }, ...heads] : heads;
+}
+
+function css() {
+  return `
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.68}
     header{background:#142538;color:#fff;padding:28px 32px}
     main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
@@ -39,15 +110,46 @@
       .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
       .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
     }
-  </style>
-</head>
-<body class="openusd-has-reading-flow" data-cn-status="bilingual_complete" data-cn-round="435" data-cn-scope="api" data-cn-review-ready="true">
+  `;
+}
 
+const links = {
+  final: "../../openusd_bilingual_final.html",
+  api: "../../site/index.html",
+  apiRedirect: "../../site/api/index.html",
+  release: "../../site/release_index.html",
+  source: "../../source/full_api/trace_page_front_source.html",
+  official: OFFICIAL_URL,
+  prev: "work_page_front.html",
+  next: "tf_page_front.html",
+  work: "work_page_front.html",
+  tf: "tf_page_front.html",
+  hd: "hd_page_front.html",
+  hdx: "hdx_page_front.html",
+  plug: "plug_page_front.html",
+  sdf: "sdf_page_front.html",
+  pcp: "pcp_page_front.html",
+  ar: "ar_page_front.html",
+  vt: "vt_page_front.html",
+  openexec: "../release/intro_to_openexec.html",
+  maxperf: "../release/maxperf.html",
+  perfMetrics: "../release/ref_performance_metrics.html",
+};
+
+function headingList() {
+  return sourceHeadings()
+    .filter((heading) => heading.text && heading.text !== "Table of Contents")
+    .map((heading) => `<li><span class="zh">官方结构：<code>${esc(heading.text)}</code>。中文页把这一节映射到 Trace 的事件计数、计时、插桩、collector/reporter、ASCII/Chrome report、全局 trace 开关、overhead 与 Work/Tf/Hydra/OpenExec 调试边界。</span><span class="en">Source heading level ${heading.level}: ${esc(heading.text)}</span></li>`)
+    .join("\n");
+}
+
+function readingFlowNav() {
+  return `
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
-  <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
+  <a data-reading-flow="final" href="${links.final}">总入口</a>
   <span> / </span>
-  <a data-reading-flow="api-entry" href="../../site/index.html">API 本地入口</a>
+  <a data-reading-flow="api-entry" href="${links.api}">API 本地入口</a>
   <span> / api / trace_page_front.html</span>
 </nav>
 <aside class="openusd-reading-flow-nav" aria-label="本地阅读导航 / Local reading navigation">
@@ -56,10 +158,10 @@
     <section>
       <h3>入口 / Entrances</h3>
       <ul>
-        <li><a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口 / Final entry</a></li>
-        <li><a data-reading-flow="release-entry" href="../../site/release_index.html">Release 本地入口</a></li>
-        <li><a data-reading-flow="api-entry" href="../../site/index.html">API Doxygen 本地入口</a></li>
-        <li><a data-reading-flow="api-redirect" href="../../site/api/index.html">API redirect / site/api/index.html</a></li>
+        <li><a data-reading-flow="final" href="${links.final}">总入口 / Final entry</a></li>
+        <li><a data-reading-flow="release-entry" href="${links.release}">Release 本地入口</a></li>
+        <li><a data-reading-flow="api-entry" href="${links.api}">API Doxygen 本地入口</a></li>
+        <li><a data-reading-flow="api-redirect" href="${links.apiRedirect}">API redirect / site/api/index.html</a></li>
       </ul>
     </section>
     <section>
@@ -72,47 +174,60 @@
     <section>
       <h3>相邻 API / Related API</h3>
       <ul>
-        <li><a data-reading-flow="related" href="work_page_front.html">Work 多线程调度</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="tf_page_front.html">Tf 基础设施</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="hd_page_front.html">Hd / Hydra 渲染</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="hdx_page_front.html">Hdx 调试工具</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="plug_page_front.html">Plug 插件加载</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="sdf_page_front.html">Sdf 场景数据</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="pcp_page_front.html">Pcp composition</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.work}">Work 多线程调度</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.tf}">Tf 基础设施</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.hd}">Hd / Hydra 渲染</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.hdx}">Hdx 调试工具</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.plug}">Plug 插件加载</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.sdf}">Sdf 场景数据</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.pcp}">Pcp composition</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
       <h3>性能文档 / Performance Docs</h3>
       <ul>
-        <li><a data-reading-flow="related" href="../release/intro_to_openexec.html">OpenExec introduction</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="../release/maxperf.html">Maximum Performance</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="../release/ref_performance_metrics.html">Performance Metrics</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.openexec}">OpenExec introduction</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.maxperf}">Maximum Performance</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.perfMetrics}">Performance Metrics</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
       <h3>上一页/下一页 / Previous/Next</h3>
       <ul>
-        <li><a data-reading-flow="prev" href="work_page_front.html">上一页 / Previous: Work</a></li>
-        <li><a data-reading-flow="next" href="tf_page_front.html">下一页 / Next: Tf</a></li>
+        <li><a data-reading-flow="prev" href="${links.prev}">上一页 / Previous: Work</a></li>
+        <li><a data-reading-flow="next" href="${links.next}">下一页 / Next: Tf</a></li>
       </ul>
     </section>
     <section>
       <h3>官方外跳 / Official</h3>
       <ul>
-        <li><a class="official-link" data-reading-flow="official" href="https://openusd.org/release/api/trace_page_front.html">打开官方原页 / Open official page</a></li>
+        <li><a class="official-link" data-reading-flow="official" href="${links.official}">打开官方原页 / Open official page</a></li>
       </ul>
     </section>
   </div>
 </aside>
-<!-- openusd-reading-flow-nav:end -->
+<!-- openusd-reading-flow-nav:end -->`;
+}
+
+function buildHtml() {
+  return `<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trace: Performance tracking - OpenUSD API 双语</title>
+  <style>${css()}</style>
+</head>
+<body class="openusd-has-reading-flow" data-cn-status="bilingual_complete" data-cn-round="${ROUND}" data-cn-scope="api" data-cn-review-ready="true">
+${readingFlowNav()}
 <header>
   <h1>Trace: Performance tracking</h1>
-  <div class="meta">第 435 轮 PromotionRound：Trace 模块入口完成。源页：<code>source/full_api/trace_page_front_source.html</code>；官方页：<code>https://openusd.org/release/api/trace_page_front.html</code></div>
+  <div class="meta">第 ${ROUND} 轮 ${ROUND_TYPE}：Trace 模块入口完成。源页：<code>${SOURCE}</code>；官方页：<code>${OFFICIAL_URL}</code></div>
   <div class="navlinks">
-    <a href="../../openusd_bilingual_final.html">总入口</a>
-    <a href="../../site/index.html">API 本地入口</a>
-    <a href="../../source/full_api/trace_page_front_source.html">本地 source snapshot</a>
-    <a href="https://openusd.org/release/api/trace_page_front.html">Open official page</a>
+    <a href="${links.final}">总入口</a>
+    <a href="${links.api}">API 本地入口</a>
+    <a href="${links.source}">本地 source snapshot</a>
+    <a href="${links.official}">Open official page</a>
   </div>
 </header>
 <main>
@@ -126,15 +241,9 @@
 
   <section data-cn-complete="source-coverage">
     <h2>官方结构与 source parity</h2>
-    <p><span class="zh">本页使用 <code>source/full_api/trace_page_front_source.html</code> 对齐官方 Trace 模块页，覆盖 <code>Contents</code>、<code>Overview</code>、<code>Instrumentation</code>、<code>Recording and Reporting</code>、<code>Performance Overhead</code> 和 <code>Details</code>。中文解释放在主阅读路径中，英文保留用于核对；所有 C++ 宏名、Python API、collector/reporter 方法名、报告格式和环境变量名都保持原样。</span><span class="en">The page is aligned with the official Trace sections and preserves macro names, Python APIs, report APIs, and environment variables.</span></p>
+    <p><span class="zh">本页使用 <code>${SOURCE}</code> 对齐官方 Trace 模块页，覆盖 <code>Contents</code>、<code>Overview</code>、<code>Instrumentation</code>、<code>Recording and Reporting</code>、<code>Performance Overhead</code> 和 <code>Details</code>。中文解释放在主阅读路径中，英文保留用于核对；所有 C++ 宏名、Python API、collector/reporter 方法名、报告格式和环境变量名都保持原样。</span><span class="en">The page is aligned with the official Trace sections and preserves macro names, Python APIs, report APIs, and environment variables.</span></p>
     <ul>
-      <li><span class="zh">官方结构：<code>Trace: Performance tracking</code>。中文页把这一节映射到 Trace 的事件计数、计时、插桩、collector/reporter、ASCII/Chrome report、全局 trace 开关、overhead 与 Work/Tf/Hydra/OpenExec 调试边界。</span><span class="en">Source heading level 1: Trace: Performance tracking</span></li>
-<li><span class="zh">官方结构：<code>Contents</code>。中文页把这一节映射到 Trace 的事件计数、计时、插桩、collector/reporter、ASCII/Chrome report、全局 trace 开关、overhead 与 Work/Tf/Hydra/OpenExec 调试边界。</span><span class="en">Source heading level 1: Contents</span></li>
-<li><span class="zh">官方结构：<code>Overview</code>。中文页把这一节映射到 Trace 的事件计数、计时、插桩、collector/reporter、ASCII/Chrome report、全局 trace 开关、overhead 与 Work/Tf/Hydra/OpenExec 调试边界。</span><span class="en">Source heading level 1: Overview</span></li>
-<li><span class="zh">官方结构：<code>Instrumentation</code>。中文页把这一节映射到 Trace 的事件计数、计时、插桩、collector/reporter、ASCII/Chrome report、全局 trace 开关、overhead 与 Work/Tf/Hydra/OpenExec 调试边界。</span><span class="en">Source heading level 1: Instrumentation</span></li>
-<li><span class="zh">官方结构：<code>Recording and Reporting</code>。中文页把这一节映射到 Trace 的事件计数、计时、插桩、collector/reporter、ASCII/Chrome report、全局 trace 开关、overhead 与 Work/Tf/Hydra/OpenExec 调试边界。</span><span class="en">Source heading level 1: Recording and Reporting</span></li>
-<li><span class="zh">官方结构：<code>Performance Overhead</code>。中文页把这一节映射到 Trace 的事件计数、计时、插桩、collector/reporter、ASCII/Chrome report、全局 trace 开关、overhead 与 Work/Tf/Hydra/OpenExec 调试边界。</span><span class="en">Source heading level 1: Performance Overhead</span></li>
-<li><span class="zh">官方结构：<code>Details</code>。中文页把这一节映射到 Trace 的事件计数、计时、插桩、collector/reporter、ASCII/Chrome report、全局 trace 开关、overhead 与 Work/Tf/Hydra/OpenExec 调试边界。</span><span class="en">Source heading level 1: Details</span></li>
+      ${headingList()}
     </ul>
     <p><span class="zh">source parity 的重点不是逐字翻译所有 Doxygen 导航，而是保证读者不用依赖英文正文也能理解官方结构。中文页明确说明每个 section 的用途：Overview 建立角色模型，Instrumentation 说明如何标记代码，Recording and Reporting 说明如何启动采集和导出报告，Performance Overhead 说明为什么插桩也要节制，Details 说明如何访问事件树和聚合树。</span><span class="en">Source parity is based on section coverage and semantic preservation rather than translating every navigation label.</span></p>
   </section>
@@ -178,10 +287,10 @@
 
   <section data-cn-complete="relationships">
     <h2>相邻模块关系与调试路径</h2>
-    <p><span class="zh">Trace 与 <a href="work_page_front.html">Work</a> 的关系是“观察并发工作”而不是“负责并发调度”。Work 决定任务如何分发、并发限制如何生效，Trace 记录相关 scope 的耗时和调用次数。排查 Work 性能时，可在任务提交、任务执行、等待或合并结果的位置加 Trace scope，再用 Chrome tracing format 看线程间关系。</span><span class="en">Trace observes work; Work schedules work.</span></p>
-    <p><span class="zh">Trace 与 <a href="tf_page_front.html">Tf</a> 的关系偏基础设施。Tf 提供诊断、类型和运行时基础能力，Trace 提供性能事件采集。Trace report 解释的是时间和调用关系，Tf 诊断解释的是消息、错误和运行时状态，两者经常一起用于定位复杂问题。</span><span class="en">Trace complements Tf diagnostics rather than replacing them.</span></p>
-    <p><span class="zh">Trace 与 <a href="hd_page_front.html">Hd</a>、<a href="hdx_page_front.html">Hdx</a> 和 OpenExec 的关系主要体现在渲染和执行路径排查。Hydra 场景更新、render index 同步、adapter 转换或任务执行可能包含多个线程和多个子系统；Trace 能帮助把这些阶段拆成可比较的 scope，但渲染结果正确性仍要回到 Hd/UsdRender/UsdGeom 等模块检查。</span><span class="en">Trace can help measure Hydra and OpenExec-related paths, but correctness remains in the consuming subsystem.</span></p>
-    <p><span class="zh">Trace 与 <a href="sdf_page_front.html">Sdf</a>、<a href="pcp_page_front.html">Pcp</a>、<a href="plug_page_front.html">Plug</a> 的关系常见于场景打开和 composition 变慢。Sdf 负责层和路径数据，Pcp 负责 composition 索引和 layer stack，Plug 影响插件发现与加载；Trace 可以把这些阶段的耗时串起来，帮助判断慢点来自数据规模、composition 规则、插件初始化还是下游消费。</span><span class="en">Trace can connect timing evidence across Sdf, Pcp, Plug, and downstream consumers.</span></p>
+    <p><span class="zh">Trace 与 <a href="${links.work}">Work</a> 的关系是“观察并发工作”而不是“负责并发调度”。Work 决定任务如何分发、并发限制如何生效，Trace 记录相关 scope 的耗时和调用次数。排查 Work 性能时，可在任务提交、任务执行、等待或合并结果的位置加 Trace scope，再用 Chrome tracing format 看线程间关系。</span><span class="en">Trace observes work; Work schedules work.</span></p>
+    <p><span class="zh">Trace 与 <a href="${links.tf}">Tf</a> 的关系偏基础设施。Tf 提供诊断、类型和运行时基础能力，Trace 提供性能事件采集。Trace report 解释的是时间和调用关系，Tf 诊断解释的是消息、错误和运行时状态，两者经常一起用于定位复杂问题。</span><span class="en">Trace complements Tf diagnostics rather than replacing them.</span></p>
+    <p><span class="zh">Trace 与 <a href="${links.hd}">Hd</a>、<a href="${links.hdx}">Hdx</a> 和 OpenExec 的关系主要体现在渲染和执行路径排查。Hydra 场景更新、render index 同步、adapter 转换或任务执行可能包含多个线程和多个子系统；Trace 能帮助把这些阶段拆成可比较的 scope，但渲染结果正确性仍要回到 Hd/UsdRender/UsdGeom 等模块检查。</span><span class="en">Trace can help measure Hydra and OpenExec-related paths, but correctness remains in the consuming subsystem.</span></p>
+    <p><span class="zh">Trace 与 <a href="${links.sdf}">Sdf</a>、<a href="${links.pcp}">Pcp</a>、<a href="${links.plug}">Plug</a> 的关系常见于场景打开和 composition 变慢。Sdf 负责层和路径数据，Pcp 负责 composition 索引和 layer stack，Plug 影响插件发现与加载；Trace 可以把这些阶段的耗时串起来，帮助判断慢点来自数据规模、composition 规则、插件初始化还是下游消费。</span><span class="en">Trace can connect timing evidence across Sdf, Pcp, Plug, and downstream consumers.</span></p>
   </section>
 
   <section data-cn-complete="misreads">
@@ -216,3 +325,222 @@
 </main>
 </body>
 </html>
+`;
+}
+
+function sourceParity() {
+  const src = sourceText();
+  const rawOut = fs.existsSync(rel(TARGET)) ? fs.readFileSync(rel(TARGET), "utf8") : "";
+  const out = stripTags(rawOut);
+  const sourceKeywords = [
+    "Trace",
+    "Performance tracking",
+    "counting, timing, measuring, and recording events",
+    "TraceCollector",
+    "TraceEvent",
+    "TraceReporter",
+    "Instrumentation",
+    "TRACE_FUNCTION",
+    "TRACE_SCOPE",
+    "TRACE_FUNCTION_SCOPE",
+    "Trace.TraceFunction",
+    "Trace.TraceScope",
+    "small overhead",
+    "Recording and Reporting",
+    "SetEnabled",
+    "GetInstance",
+    "GetGlobalReporter",
+    "ReportChromeTracing",
+    "ReportChromeTracingToFile",
+    "aggregated call graph",
+    "inclusive",
+    "exclusive",
+    "call count",
+    "Chrome tracing format",
+    "GetAggregateTreeRoot",
+    "GetEventTree",
+    "PXR_ENABLE_GLOBAL_TRACE",
+    "usdview HelloWorld.usda --quitAfterStartup",
+    "Performance Overhead",
+    "16 bytes of stack memory",
+    "atomic int",
+    "2 branches",
+    "100 times larger",
+    ".33ns vs 33ns",
+    "TRACE_FUNCTION_DYNAMIC",
+    "TRACE_SCOPE_DYNAMIC",
+    "constexpr data",
+    "construct strings at runtime",
+    "TRACE_ENABLE",
+    "thread-safe",
+  ];
+  const outputKeywords = [
+    ...sourceKeywords,
+    "Work",
+    "Tf",
+    "Hydra",
+    "OpenExec",
+    "Open official page",
+  ];
+  return {
+    generated_at: new Date().toISOString(),
+    round: ROUND,
+    round_type: ROUND_TYPE,
+    target: TARGET,
+    source_snapshot: SOURCE,
+    official_url: OFFICIAL_URL,
+    source_headings: sourceHeadings(),
+    source_keywords_checked: sourceKeywords,
+    output_keywords_checked: outputKeywords,
+    missing_source_keywords: sourceKeywords.filter((keyword) => !src.includes(keyword)),
+    missing_output_keywords: outputKeywords.filter((keyword) => !out.includes(keyword)),
+    output_checks: {
+      has_complete_status: rawOut.includes('data-cn-status="bilingual_complete"') && rawOut.includes(`data-cn-round="${ROUND}"`),
+      has_paragraph_coverage: out.includes("Paragraph-Level Bilingual Coverage") && out.includes("逐段双语理解"),
+      has_final_entry: rawOut.includes("openusd_bilingual_final.html"),
+      has_api_entry: rawOut.includes("site/index.html"),
+      has_api_redirect: rawOut.includes("site/api/index.html"),
+      has_release_entry: rawOut.includes("site/release_index.html"),
+      has_reading_flow_nav: rawOut.includes("openusd-reading-flow-nav") && rawOut.includes("openusd-reading-flow-breadcrumb"),
+      has_explicit_official_link: rawOut.includes("Open official page") && rawOut.includes(OFFICIAL_URL),
+      no_draft_marker: !/bilingual_draft|batch draft page|later iterations add denser bilingual coverage|后续迭代会继续补齐/.test(out),
+      zh_chars: zhChars(rawOut),
+      zh_blocks: (rawOut.match(/class=["'][^"']*\bzh\b[^"']*["']/g) || []).length,
+    },
+  };
+}
+
+function writePage() {
+  fs.writeFileSync(rel(TARGET), buildHtml(), "utf8");
+  writeJson(SOURCE_PARITY_REPORT, sourceParity());
+}
+
+function precheck() {
+  const report = sourceParity();
+  const failed = [];
+  if (report.missing_source_keywords.length) failed.push(`missing source keywords: ${report.missing_source_keywords.join(", ")}`);
+  if (report.missing_output_keywords.length) failed.push(`missing output keywords: ${report.missing_output_keywords.join(", ")}`);
+  for (const [key, value] of Object.entries(report.output_checks)) {
+    if (typeof value === "boolean" && !value) failed.push(`output check failed: ${key}`);
+  }
+  if (report.output_checks.zh_chars < 3000) failed.push(`zh chars too low: ${report.output_checks.zh_chars}`);
+  if (report.output_checks.zh_blocks < 28) failed.push(`zh blocks too low: ${report.output_checks.zh_blocks}`);
+  if (failed.length) {
+    console.error(JSON.stringify({ passed: false, failed, report }, null, 2));
+    process.exit(1);
+  }
+  writeJson(SOURCE_PARITY_REPORT, report);
+  console.log(JSON.stringify({ passed: true, report }, null, 2));
+}
+
+function updateManifest() {
+  const raw = readJson("reports/bilingual_completion_promotions.json");
+  const doc = {
+    ...raw,
+    generated_at: raw.generated_at || new Date().toISOString(),
+    promotions: Array.isArray(raw.promotions) ? raw.promotions : [],
+    updated_at: new Date().toISOString(),
+  };
+  doc.promotions = doc.promotions.filter((entry) => entry.id !== PROMOTION_ID && entry.local_output !== TARGET);
+  doc.promotions.push({
+    id: PROMOTION_ID,
+    title: "Trace: Performance tracking",
+    official_url: OFFICIAL_URL,
+    local_output: TARGET,
+    status: "bilingual_complete",
+    reason: `Round ${ROUND} ${ROUND_TYPE}: promote the Trace module front page by adding Chinese main-reading-path coverage for performance tracking, TraceCollector, TraceEvent, TraceReporter, TRACE macros, Python tracing, recording and reporting, ASCII reports, Chrome tracing reports, PXR_ENABLE_GLOBAL_TRACE, aggregated and non-aggregated call graphs, instrumentation overhead, static versus dynamic macros, Trace/Work/Tf/Hydra/OpenExec debugging boundaries, source parity, reading-flow navigation, and explicit official-page verification.`,
+    evidence: {
+      page_contains_status: "bilingual_complete",
+      generic_draft_marker_removed: true,
+      minimum_chinese_chars: 3000,
+      minimum_complete_section_chinese_chars: 2600,
+      minimum_chinese_blocks: 28,
+      official_source_compared: true,
+      local_source_snapshot_compared: SOURCE,
+      source_parity_report: SOURCE_PARITY_REPORT,
+      round_type: ROUND_TYPE,
+    },
+  });
+  writeJson("reports/bilingual_completion_promotions.json", doc);
+}
+
+function updateProblemAudit() {
+  const quality = readJson("reports/translation_quality_review.json");
+  const debt = readJson("reports/english_debt_audit.json");
+  const inventory = readJson("reports/all_pages_inventory.json");
+  const counts = {
+    total_pages: inventory.counts.total_pages,
+    bilingual_complete: quality.status_counts.bilingual_complete,
+    bilingual_draft: quality.status_counts.bilingual_draft,
+    good_bilingual: quality.grade_counts.good_bilingual,
+    draft_needs_translation: quality.grade_counts.draft_needs_translation,
+    draft_template_only: quality.grade_counts.draft_template_only,
+    review_ready_zh: debt.counts.review_ready_zh,
+    api_complete: debt.counts.api_complete,
+    api_review_ready_zh: debt.counts.api_review_ready_zh,
+    release_complete: debt.counts.release_complete,
+    release_review_ready_zh: debt.counts.release_review_ready_zh,
+    pending_full_scope: inventory.counts.pending_full_scope_pages,
+  };
+  writeJson("reports/current_problem_audit.json", {
+    generated_at: new Date().toISOString(),
+    purpose: `第 ${ROUND} 轮 ${ROUND_TYPE} 记录：确认 ${TARGET} 已晋级，并跟踪当前 OpenUSD 双语完成缺口。`,
+    last_completed_round: {
+      round: ROUND,
+      round_type: ROUND_TYPE,
+      target: TARGET,
+      commit_sha: null,
+      previous_good_bilingual: 213,
+    },
+    current_counts: counts,
+    problems: [
+      {
+        id: "P0-api-draft-backlog",
+        severity: "P0",
+        summary: `当前 good_bilingual=${counts.good_bilingual}/406，API complete=${counts.api_complete}，仍有 ${counts.bilingual_draft} 个可检查草稿。`,
+        evidence: `第 ${ROUND} 轮 ${ROUND_TYPE} 将 ${TARGET} 从 API 草稿晋级为 good_bilingual；release 范围保持 ${counts.release_complete}/126 complete。`,
+        required_action: "继续推进 API 草稿；只把真实达到中文主阅读路径和 source parity 的页面写入 promotion manifest。",
+      },
+      {
+        id: "P1-left-navigation-reading-flow",
+        severity: "P1",
+        summary: "完成页必须保留本地 reading-flow 导航、breadcrumb、API/Release/总入口和显式官方外跳。",
+        evidence: "本轮页面生成了本地侧栏、breadcrumb、相邻 API/release 性能路径和 Open official page 外跳，并会重新运行 reading-flow 审计。",
+        required_action: "若 reading-flow 审计失败，先修导航，不得推送。",
+      },
+      {
+        id: "P1-markdown-record-encoding",
+        severity: "P1",
+        summary: "Markdown 编码守卫继续作为硬门槛。",
+        evidence: "work.md、reports/iteration_report.md、reports/current_problem_audit.md、reports/bilingual_completion_promotions.md 必须无重复问号损坏、replacement character 和 UTF-8 BOM。",
+        required_action: "若 audit_openusd_markdown_encoding.mjs 失败，先做 ConsistencyRound。",
+      },
+    ],
+    promoted_pages: [
+      {
+        round: ROUND,
+        round_type: ROUND_TYPE,
+        output: TARGET,
+        official_url: OFFICIAL_URL,
+        source_snapshot: SOURCE,
+        source_parity_report: SOURCE_PARITY_REPORT,
+      },
+    ],
+    not_promoted_pages: [],
+    source_parity_report: SOURCE_PARITY_REPORT,
+    next_actions: [
+      "release 范围已 126/126 complete，不要重复处理 release 已完成页。",
+      "下一轮建议继续 API 基础设施或 Hydra 相邻页，开始前必须确认 git/report/validation/markdown/reading-flow 状态干净一致。",
+    ],
+    next_action: "下一轮建议 PromotionRound：full_site/api/hd_storm_page_front.html。",
+  });
+}
+
+const commands = new Set(process.argv.slice(2));
+if (commands.has("--write-page")) writePage();
+if (commands.has("--precheck")) precheck();
+if (commands.has("--manifest")) updateManifest();
+if (commands.has("--problem")) updateProblemAudit();
+if (commands.size === 0) {
+  console.log("Usage: node scripts/promote_round_435_trace_module_front.mjs --write-page --precheck --manifest --problem");
+}

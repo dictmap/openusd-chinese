@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-08T13:41:01.323Z",
+  "generated_at": "2026-06-08T14:02:47.478Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 193,
-    "bilingual_complete": 213
+    "bilingual_draft": 192,
+    "bilingual_complete": 214
   },
   "grade_counts": {
     "draft_template_only": 10,
-    "draft_needs_translation": 183,
-    "good_bilingual": 213
+    "draft_needs_translation": 182,
+    "good_bilingual": 214
   },
   "focus_batch": [
     {
@@ -7856,29 +7856,29 @@
     },
     {
       "index": 256,
-      "title": "API 模块草稿：Trace: Performance tracking / Trace: Performance tracking",
+      "title": "Trace: Performance tracking",
       "output": "full_site/api/trace_page_front.html",
       "official_url": "https://openusd.org/release/api/trace_page_front.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 43,
-      "enBlockCount": 30,
-      "zhChars": 730,
-      "enLetters": 1978,
-      "bodyChineseChars": 881,
+      "grade": "good_bilingual",
+      "zhBlockCount": 47,
+      "enBlockCount": 47,
+      "zhChars": 1369,
+      "enLetters": 3336,
+      "bodyChineseChars": 3092,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 Trace: Performance tracking 补充中文优先的页面定位、阅读路径、概念边界和术语对照；英文页面名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、枚举值、函数名、变量名、类型名、头文件名、token 字面量、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`Trace: Performance tracking` 是 OpenUSD 的性能跟踪模块入口，用于 counting、timing、measuring 和 recording events。"
+        "Trace 是 OpenUSD 的 Performance tracking",
+        "官方 Overview 中最重要的边界是 TraceCollector",
+        "Trace 的价值在于给复杂系统提供可对齐的性能证据。OpenUSD 里很多慢路径跨越 Sdf、Pcp、Usd、Hydra、插件加载、资源解析和多线程调度；单靠日志通常只能看到“发生了什么”，而 Trace 可以补上“在哪里花了多久、调用了多少次、哪些 scope 包含了哪些子 scope”。因此它更适合作为性能排查和回归比较工具，而不是替代 profiler、benchmark 或业务日志。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first page positioning, reading paths, concept boundaries, and terminology for Trace: Performance tracking while retaining English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and source excerpts for comparison with the official Doxygen page."
+        "Trace defines utility classes for counting, timing, measuring, and recording events.",
+        "TraceCollector records TraceEvent objects, while TraceReporter generates reports on events gathered by the collector."
       ]
     },
     {
