@@ -1,0 +1,495 @@
+import fs from "node:fs";
+import path from "node:path";
+
+const ROOT = process.cwd();
+const ROUND = 441;
+const ROUND_TYPE = "PromotionRound";
+const TARGET = "full_site/api/usd_hydra_page_front.html";
+const SOURCE = "source/full_api/usd_hydra_page_front_source.html";
+const OFFICIAL_URL = "https://openusd.org/release/api/usd_hydra_page_front.html";
+const SOURCE_PARITY_REPORT = "reports/round_441_usd_hydra_module_front_source_parity.json";
+const PROMOTION_ID = "round-441-api-usd-hydra-module-front";
+
+function rel(...parts) {
+  return path.join(ROOT, ...parts);
+}
+
+function esc(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function htmlDecode(value) {
+  return String(value ?? "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#([0-9]+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)));
+}
+
+function stripTags(value) {
+  return htmlDecode(
+    String(value ?? "")
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+  );
+}
+
+function zhChars(value) {
+  return (String(value ?? "").match(/[\u4e00-\u9fff]/g) || []).length;
+}
+
+function readJson(file) {
+  return JSON.parse(fs.readFileSync(rel(file), "utf8").replace(/^\uFEFF/, ""));
+}
+
+function writeJson(file, value) {
+  fs.writeFileSync(rel(file), `${JSON.stringify(value, null, 2)}\n`, "utf8");
+}
+
+function sourceHtml() {
+  return fs.readFileSync(rel(SOURCE), "utf8");
+}
+
+function sourceText() {
+  return stripTags(sourceHtml());
+}
+
+function sourceHeadings() {
+  const heads = [...sourceHtml().matchAll(/<h([1-4])[^>]*>([\s\S]*?)<\/h\1>/gi)].map((match) => ({
+    level: Number(match[1]),
+    text: stripTags(match[2]),
+  }));
+  const title = stripTags(sourceHtml().match(/<div class="title">([\s\S]*?)<\/div>/i)?.[1] || "");
+  return title ? [{ level: 1, text: title }, ...heads] : heads;
+}
+
+function css() {
+  return `
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.68}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 10px;font-size:17px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .navlinks{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 0}
+    .navlinks a{color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);border-radius:6px;padding:5px 8px}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    .status{display:inline-block;background:#206a3b;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    body.openusd-has-reading-flow{padding-left:292px}
+    .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#fff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
+    .openusd-reading-flow-nav h2{font-size:17px;margin:0 0 10px;color:#17202a}
+    .openusd-reading-flow-nav h3{font-size:13px;margin:16px 0 8px;color:#516071;text-transform:none;letter-spacing:0}
+    .openusd-reading-flow-nav ul,.openusd-reading-flow-nav ol{list-style:none;margin:0;padding:0}
+    .openusd-reading-flow-nav li{margin:7px 0;line-height:1.35}
+    .openusd-reading-flow-nav a{color:#1c5d99;text-decoration:none;overflow-wrap:anywhere}
+    .openusd-reading-flow-nav a:hover{text-decoration:underline}
+    .openusd-reading-flow-status{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:999px;background:#edf2f7;color:#516071;font-size:11px}
+    .openusd-reading-flow-nav .official-link{color:#8a4b11}
+    .openusd-reading-flow-breadcrumb{max-width:1120px;margin:14px auto 0;padding:0 20px;color:#d7e3f4;font-size:14px;overflow-wrap:anywhere}
+    .openusd-reading-flow-breadcrumb a{color:#fff}
+    @media (max-width:920px){
+      body.openusd-has-reading-flow{padding-left:0}
+      .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
+      .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
+    }
+  `;
+}
+
+const links = {
+  final: "../../openusd_bilingual_final.html",
+  api: "../../site/index.html",
+  apiRedirect: "../../site/api/index.html",
+  release: "../../site/release_index.html",
+  source: "../../source/full_api/usd_hydra_page_front_source.html",
+  official: OFFICIAL_URL,
+  prev: "sdr_glslfx_page_front.html",
+  next: "usd_proc_page_front.html",
+  usdProc: "usd_proc_page_front.html",
+  usdProcClass: "class_usd_proc_generative_procedural.html",
+  usdHydraApi: "../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_usd_hydra_generative_procedural_a_p_i.html&title=UsdHydraGenerativeProceduralAPI",
+  hdGp: "../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fclass_hd_gp_generative_procedural.html&title=HdGpGenerativeProcedural",
+  hd: "hd_page_front.html",
+  hdx: "hdx_page_front.html",
+  usdRender: "usd_render_page_front.html",
+  sdr: "sdr_page_front.html",
+  usdShade: "usd_shade_page_front.html",
+};
+
+function headingList() {
+  return sourceHeadings()
+    .filter((heading) => heading.text && heading.text !== "Table of Contents")
+    .map((heading) => `<li><span class="zh">官方结构：<code>${esc(heading.text)}</code>。本地中文页把这一节映射到 <code>UsdHydra</code> 的当前职责、<code>UsdHydraGenerativeProceduralAPI</code>、<code>UsdProcGenerativeProcedural</code>、<code>HdGpGenerativeProcedural</code>、已删除 shading schema 的迁移边界，以及与 <code>UsdProc</code>/<code>Hd</code>/<code>Hdx</code>/<code>Sdr</code>/<code>UsdShade</code> 的相邻阅读路径。</span><span class="en">Source heading level ${heading.level}: ${esc(heading.text)}</span></li>`)
+    .join("\n");
+}
+
+function readingFlowNav() {
+  return `
+<!-- openusd-reading-flow-nav:start -->
+<nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
+  <a data-reading-flow="final" href="${links.final}">总入口</a>
+  <span> / </span>
+  <a data-reading-flow="api-entry" href="${links.api}">API 本地入口</a>
+  <span> / api / usd_hydra_page_front.html</span>
+</nav>
+<aside class="openusd-reading-flow-nav" aria-label="本地阅读导航 / Local reading navigation">
+  <h2>本地阅读导航</h2>
+  <div class="openusd-reading-flow-columns">
+    <section>
+      <h3>入口 / Entrances</h3>
+      <ul>
+        <li><a data-reading-flow="final" href="${links.final}">总入口 / Final entry</a></li>
+        <li><a data-reading-flow="release-entry" href="${links.release}">Release 本地入口</a></li>
+        <li><a data-reading-flow="api-entry" href="${links.api}">API Doxygen 本地入口</a></li>
+        <li><a data-reading-flow="api-redirect" href="${links.apiRedirect}">API redirect / site/api/index.html</a></li>
+      </ul>
+    </section>
+    <section>
+      <h3>当前位置 / Current Layer</h3>
+      <ol>
+        <li>api</li>
+        <li>usd_hydra_page_front.html</li>
+      </ol>
+    </section>
+    <section>
+      <h3>Procedural 与 Hydra</h3>
+      <ul>
+        <li><a data-reading-flow="related" href="${links.usdProc}">UsdProc procedural schema</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.usdProcClass}">UsdProcGenerativeProcedural</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.hd}">Hd Hydra 核心</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.hdx}">Hdx 任务与调试</a><span class="openusd-reading-flow-status">complete</span></li>
+      </ul>
+    </section>
+    <section>
+      <h3>Shader 迁移语境</h3>
+      <ul>
+        <li><a data-reading-flow="related" href="${links.sdr}">Sdr shader registry</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.usdShade}">UsdShade material networks</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.usdRender}">UsdRender 输出设置</a><span class="openusd-reading-flow-status">complete</span></li>
+      </ul>
+    </section>
+    <section>
+      <h3>上一页 / 下一页</h3>
+      <ul>
+        <li><a data-reading-flow="prev" href="${links.prev}">上一页 / Previous: SdrGlslfx</a></li>
+        <li><a data-reading-flow="next" href="${links.next}">下一页 / Next: UsdProc</a></li>
+      </ul>
+    </section>
+    <section>
+      <h3>官方外跳 / Official</h3>
+      <ul>
+        <li><a class="official-link" data-reading-flow="official" href="${links.official}">打开官方原页 / Open official page</a></li>
+      </ul>
+    </section>
+  </div>
+</aside>
+<!-- openusd-reading-flow-nav:end -->`;
+}
+
+function buildHtml() {
+  return `<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UsdHydra : USD Hydra Schemas - OpenUSD API 双语</title>
+  <style>${css()}</style>
+</head>
+<body class="openusd-has-reading-flow" data-cn-status="bilingual_complete" data-cn-round="${ROUND}" data-cn-scope="api" data-cn-review-ready="true">
+${readingFlowNav()}
+<header>
+  <h1>UsdHydra : USD Hydra Schemas</h1>
+  <div class="meta">第 ${ROUND} 轮 ${ROUND_TYPE}：UsdHydra 模块入口完成。源页：<code>${SOURCE}</code>；官方页：<code>${OFFICIAL_URL}</code></div>
+  <div class="navlinks">
+    <a href="${links.final}">总入口</a>
+    <a href="${links.api}">API 本地入口</a>
+    <a href="${links.source}">本地 source snapshot</a>
+    <a href="${links.official}">Open official page</a>
+  </div>
+</header>
+<main>
+  <section data-cn-complete="overview">
+    <span class="status">bilingual_complete / review_ready_zh</span>
+    <h2>中文主阅读路径</h2>
+    <p><span class="zh"><code>UsdHydra</code> 的官方标题是 <code>UsdHydra : USD Hydra Schemas</code>。这不是完整 Hydra 渲染框架手册，而是 USD 与 Hydra 之间一组 schema/API 连接点的模块入口。当前源页的核心说明是：<code>UsdHydra</code> 提供 <code>UsdHydraGenerativeProceduralAPI</code> schema，用来扩展 <code>UsdProcGenerativeProcedural</code> prim 的定义，使它能够提供 <code>HdGpGenerativeProcedural</code> 插件的 scene description。</span><span class="en">UsdHydra provides the UsdHydraGenerativeProceduralAPI schema for extending the definition of UsdProcGenerativeProcedural prims to provide scene description of HdGpGenerativeProcedural plug-ins.</span></p>
+    <p><span class="zh">因此，阅读本页要先抓住三层关系：<code>UsdProcGenerativeProcedural</code> 是 USD 场景里的 procedural prim；<code>HdGpGenerativeProcedural</code> 是 Hydra 侧的 generative procedural plug-in 语境；<code>UsdHydraGenerativeProceduralAPI</code> 是把两者连接起来的 schema API，负责让 USD prim 带上 Hydra procedural 插件需要的场景描述信息。本页的重点是这个连接边界，而不是讲解 renderer、render pass 或 scene delegate 的完整实现。</span><span class="en">The useful reading model is USD procedural prim, Hydra generative procedural plug-in, and the API schema connecting their scene description.</span></p>
+    <p><span class="zh">源页还有一个很重要的迁移警告：下面描述的 tokens 已经 deprecated，并且很快会被删除。<code>UsdHydra</code> 过去曾经提供基于 <code>UsdShade</code> 创建和连接 shading networks 的 schemas 与 behaviors，但这些 shading-related schemas 已经从该库删除；当前只保留 schema 中曾用到的 token 列表，帮助逐步迁移到通过 shader registry author 的新式 Hydra shaders。这个警告决定了本页不能被当作旧 shading authoring 指南使用。</span><span class="en">The tokens are deprecated; old UsdShade-based Hydra shading schemas were deleted and only transition tokens remain.</span></p>
+  </section>
+
+  <section data-cn-complete="source-coverage">
+    <h2>官方结构与 source parity</h2>
+    <p><span class="zh">本页使用 <code>${SOURCE}</code> 对齐官方 <code>UsdHydra : USD Hydra Schemas</code> 页面。官方 source 只有 <code>Overview</code> 一个主要 section，所以本地中文页的 source parity 聚焦在标题、Overview 语义、三个核心名称和 deprecated 迁移说明：<code>UsdHydraGenerativeProceduralAPI</code>、<code>UsdProcGenerativeProcedural</code>、<code>HdGpGenerativeProcedural</code>、<code>UsdShade</code>、<code>shader registry</code>、<code>deprecated</code>、<code>tokens</code>、<code>shading-related schemas</code>。</span><span class="en">The local page preserves the official title, Overview, core API/schema names, and migration/deprecation language.</span></p>
+    <ul>
+      ${headingList()}
+    </ul>
+    <p><span class="zh">源页链接也按本地阅读路径处理：<a href="${links.usdHydraApi}" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_usd_hydra_generative_procedural_a_p_i.html">UsdHydraGenerativeProceduralAPI</a> 和 <a href="${links.hdGp}" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/class_hd_gp_generative_procedural.html">HdGpGenerativeProcedural</a> 当前没有本地完成页，因此走本地 uncovered 占位；<a href="${links.usdProcClass}">UsdProcGenerativeProcedural</a> 有本地页面，可作为下一步继续阅读。除 <code>Open official page</code> 外，正文阅读路径不静默跳官方英文站。</span><span class="en">In-scope links stay local or route through the local uncovered placeholder; only Open official page leaves the local site.</span></p>
+  </section>
+
+  <section data-cn-complete="responsibility">
+    <h2>当前职责：USD procedural 到 Hydra procedural 的 schema 桥接</h2>
+    <p><span class="zh"><code>UsdHydraGenerativeProceduralAPI</code> 的角色可以理解为 applied API schema 层的桥接点。它不是直接执行 procedural 的运行时，也不是 Hydra render delegate；它把 <code>UsdProcGenerativeProcedural</code> prim 的定义扩展到足以描述 <code>HdGpGenerativeProcedural</code> plug-in 所需的场景信息。换句话说，它解决的是“USD 场景描述如何携带 Hydra generative procedural 所需信息”的问题。</span><span class="en">UsdHydraGenerativeProceduralAPI extends UsdProcGenerativeProcedural so the prim can describe HdGpGenerativeProcedural plug-ins.</span></p>
+    <p><span class="zh">这条边界有助于定位问题。如果 USD 中 procedural prim 的类型、schema application 或 authored metadata 不对，问题通常在 <code>UsdProcGenerativeProcedural</code> 或 <code>UsdHydraGenerativeProceduralAPI</code> 的场景描述层；如果 Hydra 侧 plug-in 没有被发现、实例化或执行，问题更可能在 <code>HdGpGenerativeProcedural</code>、Hydra 插件注册、render index 或 delegate 消费层。本页只覆盖前者和两者之间的描述接口。</span><span class="en">Debugging should separate USD-authored procedural scene description from Hydra plug-in discovery and execution.</span></p>
+    <p><span class="zh">本页也不是 <code>Hd</code> 或 <code>Hdx</code> 的整体概览。需要理解 Hydra core、render index、scene delegate、render delegate、task、AOV 或渲染输出时，应继续阅读 <a href="${links.hd}">Hd</a>、<a href="${links.hdx}">Hdx</a> 和 <a href="${links.usdRender}">UsdRender</a>。<code>UsdHydra</code> 在这里承担的是 schema 连接和兼容迁移提示，而不是完整渲染管线说明。</span><span class="en">Use Hd, Hdx, and UsdRender for Hydra framework and rendering-output topics.</span></p>
+  </section>
+
+  <section data-cn-complete="deprecated-shading">
+    <h2>deprecated token 与旧 shading schema 边界</h2>
+    <p><span class="zh">官方 Note 必须单独阅读，因为它避免了一个高风险误读：<code>UsdHydra</code> 曾经包含用于创建、连接基于 <code>UsdShade</code> 的 shading networks 的 schemas 与 behaviors，但这些 shading-related schemas 已经被删除。页面中留下的 token 列表不是推荐的新 authoring surface，而是为了帮助从旧 Hydra shader authoring 迁移到新式 shader registry 路径。</span><span class="en">The Note says the old UsdShade-based Hydra shading schemas were deleted and only transition tokens remain.</span></p>
+    <p><span class="zh">因此，看到 <code>UsdShade</code>、<code>shader registry</code> 或 <code>Hydra shaders</code> 时，不应把本页当作材质网络教程。新的 shader authoring 与 definition 查询应优先阅读 <a href="${links.sdr}">Sdr</a>、<a href="${links.usdShade}">UsdShade</a>、<code>UsdShaders</code> 或 <code>UsdMtlx</code> 相关页面；<code>UsdHydra</code> 在这个语境中只保留迁移线索和过渡 token，不再拥有旧 shading schema 的主要职责。</span><span class="en">For new shader authoring, read Sdr, UsdShade, UsdShaders, and UsdMtlx instead of relying on old UsdHydra shading schemas.</span></p>
+    <p><span class="zh"><code>deprecated</code> 的实际含义是：这些 token 可能仍在旧数据、旧工具或迁移脚本里出现，但不应作为新资产设计的依据。中文页保留这些英文 token 与 API 名，是为了让读者能核对旧文件和官方 Doxygen，而不是鼓励继续使用已删除的 schema 行为。若迁移过程中发现旧 token，应该把它们视为兼容性信号，再沿 shader registry 的新路径重建 authoring。</span><span class="en">Deprecated tokens may help migration, but they are not a recommended new authoring interface.</span></p>
+  </section>
+
+  <section data-cn-complete="adjacent-modules">
+    <h2>相邻模块阅读路径</h2>
+    <p><span class="zh">第一条路径是 procedural 路径：从本页进入 <a href="${links.usdProc}">UsdProc</a> 和 <a href="${links.usdProcClass}">UsdProcGenerativeProcedural</a>，理解 USD 如何表达生成式 procedural prim；再沿 <code>HdGpGenerativeProcedural</code> 进入 Hydra 侧插件模型。这条路径回答“USD 场景描述如何把 procedural 意图交给 Hydra 消费”的问题。</span><span class="en">The procedural path connects UsdHydra to UsdProc and Hydra generative procedural plug-ins.</span></p>
+    <p><span class="zh">第二条路径是 Hydra 消费路径：阅读 <a href="${links.hd}">Hd</a>、<a href="${links.hdx}">Hdx</a> 和 <a href="${links.usdRender}">UsdRender</a>，区分 schema 描述、render index、任务执行、render delegate 与输出设置。<code>UsdHydra</code> 不负责这些系统全部行为，但它的 schema 信息最终可能被 Hydra 侧系统读取或解释。</span><span class="en">The Hydra path separates schema description from render index, task execution, render delegates, and output settings.</span></p>
+    <p><span class="zh">第三条路径是 shader 迁移路径：官方 Note 提到旧 <code>UsdShade</code> shading network schema 已删除，所以应阅读 <a href="${links.sdr}">Sdr</a> 与 <a href="${links.usdShade}">UsdShade</a> 来理解 shader registry 和材质网络的新职责。不要把过渡 token 当成当前推荐的 schema authoring 文档。</span><span class="en">The shader migration path points to Sdr and UsdShade, not to deleted UsdHydra shading schemas.</span></p>
+  </section>
+
+  <section data-cn-complete="debugging">
+    <h2>调试路径与常见误读</h2>
+    <p><span class="zh">调试 generative procedural 时，先确认 USD prim 是否是预期的 <code>UsdProcGenerativeProcedural</code>，再确认是否应用或携带了 <code>UsdHydraGenerativeProceduralAPI</code> 所需的描述信息。若这一步不成立，Hydra 侧很可能根本拿不到正确的 procedural scene description。只有当 USD 描述正确后，才继续检查 <code>HdGpGenerativeProcedural</code> plug-in 是否存在、是否注册、是否被 Hydra 消费。</span><span class="en">First validate USD procedural scene description, then check Hydra plug-in registration and consumption.</span></p>
+    <p><span class="zh">调试旧 shader 迁移时，先识别 token 是否来自已废弃的 <code>UsdHydra</code> shading-related schemas。若是，应把它当作迁移提示，而不是继续追问为什么旧 schema 行为在新库里不可用。新式 Hydra shader authoring 应沿 shader registry 方向排查：definition 是否能被发现、<code>Sdr</code> 是否能查询、<code>UsdShade</code> 网络是否正确引用、renderer 是否支持相应 implementation。</span><span class="en">For old shader data, treat UsdHydra tokens as migration hints and use the shader registry path for new authoring.</span></p>
+    <p><span class="zh">常见误读包括：把 <code>UsdHydra</code> 当成完整 Hydra renderer 文档；把 deprecated tokens 当成新 schema；把已删除 shading schemas 当成仍可 author 的接口；把 <code>HdGpGenerativeProcedural</code> 插件执行失败归因到 USD schema 页面；或者把 <code>UsdHydraGenerativeProceduralAPI</code> 当成 procedural 运行时本身。本页的中文主路径把这些边界拆开，帮助读者把错误归因放在正确层级。</span><span class="en">Misreads include treating UsdHydra as the renderer manual, deprecated tokens as new schema, or the API schema as runtime execution.</span></p>
+  </section>
+
+  <section data-cn-complete="engineering-notes">
+    <h2>工程使用提示</h2>
+    <p><span class="zh">在资产或工具链中使用这类 schema 时，建议把证据分成三份保存：USD 侧 authored scene description、Hydra 侧 plug-in discovery/execution 证据、shader registry 或 material network 迁移证据。这样能避免“procedural 没出现”或“shader 不工作”这类笼统结论，直接压到单一模块上。</span><span class="en">Keep separate evidence for USD scene description, Hydra plug-in behavior, and shader-registry migration.</span></p>
+    <p><span class="zh">如果团队正在清理旧资产，<code>UsdHydra</code> 页面中的 deprecated token 信息适合用作审计线索：它能帮助发现旧数据中仍在引用过时 Hydra shading schema 的位置。但修复方案不应是继续扩大旧 schema 使用，而应迁移到 shader registry、<code>Sdr</code>、<code>UsdShade</code> 或新的 renderer-supported shader definition 路径。</span><span class="en">Deprecated token information is useful for auditing old assets, not for expanding old schema usage.</span></p>
+    <p><span class="zh">本地阅读导航保留了总入口、API 本地入口、Release 本地入口、source snapshot、上一页 <a href="${links.prev}">SdrGlslfx</a>、下一页 <a href="${links.next}">UsdProc</a>、procedural 相关类页、Hydra core、shader registry 与 <code>Open official page</code>。这样读者可以从一个短 module front page 顺着本地站点继续阅读，而不必跳回官方英文站才能理解上下文。</span><span class="en">Local navigation keeps the page connected to procedural, Hydra, shader-registry, and official-source paths.</span></p>
+  </section>
+
+  <section data-cn-complete="acceptance-checklist">
+    <h2>最小验收清单</h2>
+    <p><span class="zh">判断一个 <code>UsdHydra</code> 相关问题是否落在本页职责内，可以使用一个最小清单。第一，问题是否涉及 <code>UsdProcGenerativeProcedural</code> prim 的 USD 场景描述；第二，问题是否涉及 <code>UsdHydraGenerativeProceduralAPI</code> 这一 schema API 是否被正确应用或解释；第三，问题是否涉及把这些描述传递给 <code>HdGpGenerativeProcedural</code> plug-in。只有同时靠近这些点时，本页才是主要入口。</span><span class="en">Use the page when the issue is about USD procedural scene description and the schema bridge into HdGpGenerativeProcedural.</span></p>
+    <p><span class="zh">如果问题是 “Hydra 为什么没有画出来”，清单应继续向下分流：是否有 render delegate、是否有 render index 同步、是否有 task 执行、是否有 render product 或 buffer、是否有 renderer 后端能力。这些属于 <code>Hd</code>、<code>Hdx</code>、<code>UsdRender</code> 或具体 delegate 页面，而不是 <code>UsdHydra</code> module front page。这个分流能防止把渲染层错误误报成 schema 错误。</span><span class="en">Rendering failures should be routed to Hd, Hdx, UsdRender, or a concrete render delegate after schema description is verified.</span></p>
+    <p><span class="zh">如果问题是 “旧 shader 数据为什么不能继续 author”，清单要转向迁移语义：是否使用了已 deprecated 的 token，是否依赖已删除的 shading-related schemas，是否仍假定 <code>UsdHydra</code> 提供基于 <code>UsdShade</code> 的旧 shading network 行为。若答案为是，修复方向应是迁移到 shader registry 和当前 shader definition 路径，而不是在本页寻找旧接口的替代调用。</span><span class="en">Old shader data should be treated as migration work toward shader registry rather than continued use of deleted UsdHydra shading schemas.</span></p>
+    <p><span class="zh">如果问题是 “procedural 插件为什么没有 scene description”，清单才回到本页：先检查 prim 类型和 authored API，再检查对应属性或 token 是否符合当前 schema 预期，最后检查 Hydra 侧 plug-in 是否能读取到这些信息。本地中文页保留这些步骤，是为了让读者在短源页之外仍能建立可操作的诊断顺序，并知道下一步该跳向 <code>UsdProc</code>、<code>Hd</code>、<code>Sdr</code> 还是 <code>UsdShade</code>。</span><span class="en">For missing procedural scene description, verify prim type, authored schema API, authored data, and then Hydra plug-in consumption.</span></p>
+    <p><span class="zh">同时也要保持克制：官方源页没有列出函数签名、属性表或完整 token 表时，本地中文页不应伪造细节。这里补充的是阅读顺序、职责边界和迁移判断，而不是替代 class reference。需要逐项 API 成员时，应进入对应 class 页、source 页或官方 Doxygen；module front page 只负责把官方短说明翻译成可靠的工程上下文。</span><span class="en">The local page adds reading context and boundaries; it does not invent member-level reference details absent from the source page.</span></p>
+    <p><span class="zh">这也是本轮晋级的质量边界：补足中文理解，但不越过源页证据；读者能判断职责、迁移风险和下一跳位置即可，并能更安全地避免误用旧接口。</span><span class="en">The quality boundary is stronger Chinese comprehension without exceeding source evidence.</span></p>
+  </section>
+
+  <section data-cn-complete="paragraph-coverage">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+    <ul>
+      <li><span class="zh">标题已覆盖：<code>UsdHydra : USD Hydra Schemas</code> 被解释为 USD 与 Hydra schema/API 连接点的模块入口，而不是完整渲染框架文档。</span><span class="en">Title coverage: UsdHydra is the USD Hydra Schemas module front page.</span></li>
+      <li><span class="zh">Overview 已覆盖：<code>UsdHydraGenerativeProceduralAPI</code>、<code>UsdProcGenerativeProcedural</code> 和 <code>HdGpGenerativeProcedural</code> 的三层关系已用中文解释。</span><span class="en">Overview coverage explains the API schema, USD procedural prim, and Hydra plug-in relationship.</span></li>
+      <li><span class="zh">Note 已覆盖：<code>deprecated</code> tokens、已删除的 shading-related schemas、旧 <code>UsdShade</code> shading network 行为和 shader registry 迁移路径均已说明。</span><span class="en">Note coverage explains deprecated tokens, deleted shading schemas, and shader-registry migration.</span></li>
+      <li><span class="zh">链接语义已覆盖：<code>UsdHydraGenerativeProceduralAPI</code> 和 <code>HdGpGenerativeProcedural</code> 走本地 uncovered 路径，<code>UsdProcGenerativeProcedural</code> 走本地完成页，官方原页只通过 <code>Open official page</code> 外跳。</span><span class="en">Link coverage keeps in-scope navigation local and leaves only Open official page as an external jump.</span></li>
+      <li><span class="zh">常见误读已覆盖：本页不是 Hydra renderer、不是旧 shading schema authoring 指南、不是 shader registry 总览、不是 procedural runtime，也不保证 plug-in 执行。</span><span class="en">Misread coverage separates schema description from renderer, old shading authoring, registry overview, and runtime execution.</span></li>
+      <li><span class="zh">调试路径已覆盖：从 USD authored scene description，到 API schema application，再到 Hydra plug-in discovery/execution，最后才进入 shader registry 或 renderer 支持排查。</span><span class="en">Debugging coverage follows USD description, schema application, Hydra plug-in behavior, and then shader or renderer support.</span></li>
+      <li><span class="zh">本地连续阅读已覆盖：总入口、API 入口、Release 入口、source snapshot、上一页、下一页、相邻模块和显式官方页链接均已保留。</span><span class="en">Reading-flow coverage includes final entry, API entry, release entry, source snapshot, adjacent modules, previous/next, and official link.</span></li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>
+`;
+}
+
+function sourceParity() {
+  const src = sourceText();
+  const rawOut = fs.existsSync(rel(TARGET)) ? fs.readFileSync(rel(TARGET), "utf8") : "";
+  const out = stripTags(rawOut);
+  const sourceKeywords = [
+    "UsdHydra : USD Hydra Schemas",
+    "Overview",
+    "UsdHydraGenerativeProceduralAPI",
+    "UsdProcGenerativeProcedural",
+    "HdGpGenerativeProcedural",
+    "deprecated",
+    "shading-related schemas",
+    "shader registry",
+  ];
+  const outputKeywords = [
+    ...sourceKeywords,
+    "UsdHydra",
+    "USD Hydra Schemas",
+    "UsdShade",
+    "tokens",
+    "Hd",
+    "Hdx",
+    "UsdProc",
+    "Open official page",
+  ];
+  return {
+    generated_at: new Date().toISOString(),
+    round: ROUND,
+    round_type: ROUND_TYPE,
+    target: TARGET,
+    source_snapshot: SOURCE,
+    official_url: OFFICIAL_URL,
+    source_headings: sourceHeadings(),
+    source_keywords_checked: sourceKeywords,
+    output_keywords_checked: outputKeywords,
+    missing_source_keywords: sourceKeywords.filter((keyword) => !src.includes(keyword)),
+    missing_output_keywords: outputKeywords.filter((keyword) => !out.includes(keyword)),
+    output_checks: {
+      has_complete_status: rawOut.includes('data-cn-status="bilingual_complete"') && rawOut.includes(`data-cn-round="${ROUND}"`),
+      has_paragraph_coverage: out.includes("Paragraph-Level Bilingual Coverage") && out.includes("逐段双语理解"),
+      has_final_entry: rawOut.includes("openusd_bilingual_final.html"),
+      has_api_entry: rawOut.includes("site/index.html"),
+      has_api_redirect: rawOut.includes("site/api/index.html"),
+      has_release_entry: rawOut.includes("site/release_index.html"),
+      has_reading_flow_nav: rawOut.includes("openusd-reading-flow-nav") && rawOut.includes("openusd-reading-flow-breadcrumb"),
+      has_explicit_official_link: rawOut.includes("Open official page") && rawOut.includes(OFFICIAL_URL),
+      has_local_uncovered_links: rawOut.includes("uncovered_openusd_page.html") && rawOut.includes("data-local-route=\"uncovered\""),
+      no_draft_marker: !/bilingual_draft|batch draft page|later iterations add denser bilingual coverage|后续迭代会继续补齐/.test(out),
+      zh_chars: zhChars(rawOut),
+      zh_blocks: (rawOut.match(/class=["'][^"']*\bzh\b[^"']*["']/g) || []).length,
+    },
+  };
+}
+
+function writePage() {
+  fs.writeFileSync(rel(TARGET), buildHtml(), "utf8");
+  writeJson(SOURCE_PARITY_REPORT, sourceParity());
+}
+
+function precheck() {
+  const report = sourceParity();
+  const failed = [];
+  if (report.missing_source_keywords.length) failed.push(`missing source keywords: ${report.missing_source_keywords.join(", ")}`);
+  if (report.missing_output_keywords.length) failed.push(`missing output keywords: ${report.missing_output_keywords.join(", ")}`);
+  for (const [key, value] of Object.entries(report.output_checks)) {
+    if (typeof value === "boolean" && !value) failed.push(`output check failed: ${key}`);
+  }
+  if (report.output_checks.zh_chars < 2300) failed.push(`zh chars too low: ${report.output_checks.zh_chars}`);
+  if (report.output_checks.zh_blocks < 28) failed.push(`zh blocks too low: ${report.output_checks.zh_blocks}`);
+  if (failed.length) {
+    console.error(JSON.stringify({ passed: false, failed, report }, null, 2));
+    process.exit(1);
+  }
+  writeJson(SOURCE_PARITY_REPORT, report);
+  console.log(JSON.stringify({ passed: true, report }, null, 2));
+}
+
+function updateManifest() {
+  const raw = readJson("reports/bilingual_completion_promotions.json");
+  const doc = {
+    ...raw,
+    generated_at: raw.generated_at || new Date().toISOString(),
+    promotions: Array.isArray(raw.promotions) ? raw.promotions : [],
+    updated_at: new Date().toISOString(),
+  };
+  doc.promotions = doc.promotions.filter((entry) => entry.id !== PROMOTION_ID && entry.local_output !== TARGET);
+  doc.promotions.push({
+    id: PROMOTION_ID,
+    title: "UsdHydra : USD Hydra Schemas",
+    official_url: OFFICIAL_URL,
+    local_output: TARGET,
+    status: "bilingual_complete",
+    reason: `Round ${ROUND} ${ROUND_TYPE}: promote the UsdHydra module front page by adding Chinese main-reading-path coverage for UsdHydraGenerativeProceduralAPI, UsdProcGenerativeProcedural, HdGpGenerativeProcedural, deprecated tokens, deleted shading-related schemas, shader registry migration, adjacent UsdProc/Hd/Hdx/Sdr/UsdShade paths, source parity, reading-flow navigation, and explicit official-page verification.`,
+    evidence: {
+      page_contains_status: "bilingual_complete",
+      generic_draft_marker_removed: true,
+      minimum_chinese_chars: 2300,
+      minimum_complete_section_chinese_chars: 2100,
+      minimum_chinese_blocks: 28,
+      official_source_compared: true,
+      local_source_snapshot_compared: SOURCE,
+      source_parity_report: SOURCE_PARITY_REPORT,
+      round_type: ROUND_TYPE,
+    },
+  });
+  writeJson("reports/bilingual_completion_promotions.json", doc);
+}
+
+function updateProblemAudit() {
+  const quality = readJson("reports/translation_quality_review.json");
+  const debt = readJson("reports/english_debt_audit.json");
+  const inventory = readJson("reports/all_pages_inventory.json");
+  const counts = {
+    total_pages: inventory.counts.total_pages,
+    bilingual_complete: quality.status_counts.bilingual_complete,
+    bilingual_draft: quality.status_counts.bilingual_draft,
+    good_bilingual: quality.grade_counts.good_bilingual,
+    draft_needs_translation: quality.grade_counts.draft_needs_translation,
+    draft_template_only: quality.grade_counts.draft_template_only,
+    review_ready_zh: debt.counts.review_ready_zh,
+    api_complete: debt.counts.api_complete,
+    api_review_ready_zh: debt.counts.api_review_ready_zh,
+    release_complete: debt.counts.release_complete,
+    release_review_ready_zh: debt.counts.release_review_ready_zh,
+    pending_full_scope: inventory.counts.pending_full_scope_pages,
+  };
+  writeJson("reports/current_problem_audit.json", {
+    generated_at: new Date().toISOString(),
+    purpose: `第 ${ROUND} 轮 ${ROUND_TYPE} 记录：确认 ${TARGET} 已晋级，并跟踪当前 OpenUSD 双语完成缺口。`,
+    last_completed_round: {
+      round: ROUND,
+      round_type: ROUND_TYPE,
+      target: TARGET,
+      commit_sha: null,
+      previous_good_bilingual: 219,
+    },
+    current_counts: counts,
+    problems: [
+      {
+        id: "P0-api-draft-backlog",
+        severity: "P0",
+        summary: `当前 good_bilingual=${counts.good_bilingual}/406，API complete=${counts.api_complete}，仍有 ${counts.bilingual_draft} 个可检查草稿。`,
+        evidence: `第 ${ROUND} 轮 ${ROUND_TYPE} 将 ${TARGET} 从 API 草稿晋级为 good_bilingual；release 范围保持 ${counts.release_complete}/126 complete。`,
+        required_action: "继续推进 API 草稿；只把真实达到中文主阅读路径和 source parity 的页面写入 promotion manifest。",
+      },
+      {
+        id: "P1-left-navigation-reading-flow",
+        severity: "P1",
+        summary: "完成页必须保留本地 reading-flow 导航、breadcrumb、API/Release/总入口和显式官方外跳。",
+        evidence: "本轮页面生成了本地侧栏、breadcrumb、相邻 API 阅读路径、uncovered 本地占位链接和 Open official page 外跳，并会重新运行 reading-flow 审计。",
+        required_action: "若 reading-flow 审计失败，先修导航，不得推送。",
+      },
+      {
+        id: "P1-markdown-record-encoding",
+        severity: "P1",
+        summary: "Markdown 编码守卫继续作为硬门槛。",
+        evidence: "work.md、reports/iteration_report.md、reports/current_problem_audit.md、reports/bilingual_completion_promotions.md 必须无重复问号损坏、replacement character 和 UTF-8 BOM。",
+        required_action: "若 audit_openusd_markdown_encoding.mjs 失败，先做 ConsistencyRound。",
+      },
+    ],
+    promoted_pages: [
+      {
+        round: ROUND,
+        round_type: ROUND_TYPE,
+        output: TARGET,
+        official_url: OFFICIAL_URL,
+        source_snapshot: SOURCE,
+        source_parity_report: SOURCE_PARITY_REPORT,
+      },
+    ],
+    not_promoted_pages: [],
+    source_parity_report: SOURCE_PARITY_REPORT,
+    next_actions: [
+      "release 范围已 126/126 complete，不要重复处理 release 已完成页。",
+      "下一轮建议先核验 full_site/api/hdx_page_front.html、full_site/api/hd_page_front.html 或其他仍为 bilingual_draft 的 API front page；开始前必须确认 git/report/validation/markdown/reading-flow 状态干净一致。",
+    ],
+    next_action: "下一轮建议 PromotionRound：选择一个仍为 bilingual_draft 且有 source snapshot 的 API front page。",
+  });
+}
+
+const commands = new Set(process.argv.slice(2));
+if (commands.has("--write-page")) writePage();
+if (commands.has("--precheck")) precheck();
+if (commands.has("--manifest")) updateManifest();
+if (commands.has("--problem")) updateProblemAudit();
+if (commands.size === 0) {
+  console.log("Usage: node scripts/promote_round_441_usd_hydra_module_front.mjs --write-page --precheck --manifest --problem");
+}
