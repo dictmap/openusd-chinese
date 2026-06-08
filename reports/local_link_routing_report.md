@@ -1,6 +1,6 @@
 # OpenUSD Local Link Routing Report
 
-Generated: 2026-06-08T22:46:30.485Z
+Generated: 2026-06-08T23:15:13.039Z
 
 ## Counts
 
@@ -23,7 +23,7 @@ Generated: 2026-06-08T22:46:30.485Z
 | Local output | Mapped local links | Uncovered placeholder links | Explicit official links |
 |---|---:|---:|---:|
 | site/glossary.html | 654 | 118 | 0 |
-| openusd_bilingual_final.html | 637 | 0 | 9 |
+| openusd_bilingual_final.html | 638 | 0 | 9 |
 | site/intro.html | 611 | 5 | 0 |
 | site/release_index.html | 604 | 0 | 0 |
 | site/toolset.html | 601 | 1 | 0 |
