@@ -1,37 +1,37 @@
 # OpenUSD Iteration Report
 
-## 第 448 轮摘要
+## 第 449 轮摘要
 - 轮次类型：PromotionRound
-- 轮次目的：将 `full_site/api/struct_hgi_sampler_desc.html` 从 API 可检查草稿晋级为完整双语页面，并保持报告、入口、manifest 与验证链一致。
-- 本轮目标：`full_site/api/struct_hgi_sampler_desc.html`
-- 结果：完成 1 个页面晋级，good_bilingual 从 226 增至 227。
+- 轮次目的：将 `full_site/api/struct_usd_geom_tokens_type.html` 从 API 可检查草稿晋级为完整双语页面，并保持报告、入口、manifest 与验证链一致。
+- 本轮目标：`full_site/api/struct_usd_geom_tokens_type.html`
+- 结果：完成 1 个页面晋级，good_bilingual 从 227 增至 228。
 - 核心说明：目标页已进入 promotion manifest；当前记录补齐本轮目标、round 类型、commit SHA 和真实计数，避免继续出现旧的占位轮次文本。
 
 ## 真实计数
 
 - total_pages：406
-- good_bilingual：227
-- review_ready_zh：164
-- bilingual_complete：227
-- bilingual_draft：179
-- draft_needs_translation：169
+- good_bilingual：228
+- review_ready_zh：165
+- bilingual_complete：228
+- bilingual_draft：178
+- draft_needs_translation：168
 - draft_template_only：10
 - pending_full_scope：0
-- api_complete：101
-- api_review_ready_zh：41
+- api_complete：102
+- api_review_ready_zh：42
 - release_complete：126
 - release_review_ready_zh：123
 
 ## 验证
 
 - validation_report：passed=true，failed_check_count=0，required_check_count=311
-- translation_quality：good_bilingual=227
-- english_debt：review_ready_zh=164，review_needs_zh_debt=63
-- promotion manifest：219 entries
+- translation_quality：good_bilingual=228
+- english_debt：review_ready_zh=165，review_needs_zh_debt=63
+- promotion manifest：220 entries
 
 ## 本轮改动文件
 
-- `full_site/api/struct_hgi_sampler_desc.html`
+- `full_site/api/struct_usd_geom_tokens_type.html`
 - `openusd_bilingual_final.html`
 - `reports/all_pages_inventory.json/md`
 - `reports/translation_quality_review.json/md`

@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-08T19:08:05.019Z
+Generated: 2026-06-08T19:27:33.210Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 179
-- bilingual_complete: 227
+- bilingual_draft: 178
+- bilingual_complete: 228
 
 ## Grade Counts
 
 - draft_template_only: 10
-- draft_needs_translation: 169
-- good_bilingual: 227
+- draft_needs_translation: 168
+- good_bilingual: 228
 
 ## Current Focus Batch
 
@@ -313,7 +313,7 @@ Generated: 2026-06-08T19:08:05.019Z
 | 247 | good_bilingual | bilingual_complete | 770 | 34/34 | 0 | 0 | `full_site/api/sdr_page_front.html` |
 | 248 | draft_needs_translation | bilingual_draft | 338 | 14/11 | 0 | 0 | `full_site/api/sparse_vectorized_input_traverser_8h.html` |
 | 249 | good_bilingual | bilingual_complete | 1974 | 44/43 | 0 | 0 | `full_site/api/struct_hgi_sampler_desc.html` |
-| 250 | draft_needs_translation | bilingual_draft | 441 | 40/37 | 0 | 0 | `full_site/api/struct_usd_geom_tokens_type.html` |
+| 250 | good_bilingual | bilingual_complete | 2164 | 44/44 | 0 | 0 | `full_site/api/struct_usd_geom_tokens_type.html` |
 | 251 | draft_needs_translation | bilingual_draft | 381 | 40/37 | 0 | 0 | `full_site/api/struct_usd_lux_tokens_type.html` |
 | 252 | draft_needs_translation | bilingual_draft | 411 | 40/37 | 0 | 0 | `full_site/api/struct_usd_physics_tokens_type.html` |
 | 253 | draft_needs_translation | bilingual_draft | 397 | 40/37 | 0 | 0 | `full_site/api/struct_usd_skel_tokens_type.html` |

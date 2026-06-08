@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-08T19:07:29.815Z
+Generated: 2026-06-08T19:24:22.523Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 227
-- Promoted complete pages: 219
-- Bilingual draft pages: 179
+- Bilingual complete pages: 228
+- Promoted complete pages: 220
+- Bilingual draft pages: 178
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -267,4 +267,4 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_complete | Sdr: Shader Definition Registry | full_site/api/sdr_page_front.html | https://openusd.org/release/api/sdr_page_front.html |
 | api | bilingual_draft | API 页面草稿：sparseVectorizedInputTraverser.h File / sparseVectorizedInputTraverser.h File | full_site/api/sparse_vectorized_input_traverser_8h.html | https://openusd.org/release/api/sparse_vectorized_input_traverser_8h.html |
 | api | bilingual_complete | HgiSamplerDesc Struct Reference | full_site/api/struct_hgi_sampler_desc.html | https://openusd.org/release/api/struct_hgi_sampler_desc.html |
-| api | bilingual_draft | 结构体参考草稿：UsdGeomTokensType Class / UsdGeomTokensType Class | full_site/api/struct_usd_geom_tokens_type.html | https://openusd.org/release/api/struct_usd_geom_tokens_type.html |
+| api | bilingual_complete | UsdGeomTokensType Class Reference | full_site/api/struct_usd_geom_tokens_type.html | https://openusd.org/release/api/struct_usd_geom_tokens_type.html |
