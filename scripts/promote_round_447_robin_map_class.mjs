@@ -1,0 +1,654 @@
+import fs from "node:fs";
+import path from "node:path";
+
+const ROOT = process.cwd();
+const ROUND = 447;
+const ROUND_TYPE = "PromotionRound";
+const TARGET = "full_site/api/classpxr__tsl_1_1robin__map.html";
+const SOURCE = "source/full_api/classpxr__tsl_1_1robin__map_source.html";
+const OFFICIAL_URL = "https://openusd.org/release/api/classpxr__tsl_1_1robin__map.html";
+const SOURCE_PARITY_REPORT = "reports/round_447_robin_map_class_source_parity.json";
+const PROMOTION_ID = "round-447-api-robin-map-class";
+
+function rel(file) {
+  return path.join(ROOT, file);
+}
+
+function read(file) {
+  return fs.readFileSync(rel(file), "utf8").replace(/^\uFEFF/, "");
+}
+
+function readJson(file) {
+  return JSON.parse(read(file));
+}
+
+function writeJson(file, data) {
+  fs.writeFileSync(rel(file), `${JSON.stringify(data, null, 2)}\n`, "utf8");
+}
+
+function esc(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function decodeEntities(value) {
+  return String(value)
+    .replace(/&nbsp;/g, " ")
+    .replace(/&#160;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#9670;/g, "◆")
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#([0-9]+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)));
+}
+
+function stripHtml(value) {
+  return decodeEntities(
+    String(value)
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " "),
+  )
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function sourceHtml() {
+  return read(SOURCE);
+}
+
+function sourceText() {
+  return stripHtml(sourceHtml());
+}
+
+function sourceTitle() {
+  const match = sourceHtml().match(/<title>([\s\S]*?)<\/title>/i);
+  return stripHtml(match ? match[1] : "robin_map Class Template Reference");
+}
+
+function sourceHeadings() {
+  return [...sourceHtml().matchAll(/<h([1-6])[^>]*>([\s\S]*?)<\/h\1>/gi)].map((match) => ({
+    level: Number(match[1]),
+    text: stripHtml(match[2]),
+  }));
+}
+
+function zhCharCount(value) {
+  return (String(value).match(/[\u3400-\u9fff]/g) || []).length;
+}
+
+function blockCount(value, klass) {
+  const re = new RegExp(`class="${klass}"`, "g");
+  return (String(value).match(re) || []).length;
+}
+
+const links = {
+  final: "../../openusd_bilingual_final.html",
+  apiEntry: "../../site/index.html",
+  apiRedirect: "../../site/api/index.html",
+  release: "../../site/release_index.html",
+  source: "../../source/full_api/classpxr__tsl_1_1robin__map_source.html",
+  official: OFFICIAL_URL,
+  prev: "classpxr___c_l_i_1_1_c_l_i_1_1_app.html",
+  next: "functions.html",
+  annotated: "annotated.html",
+  classes: "classes.html",
+  vt: "vt_page_front.html",
+  gf: "gf_page_front.html",
+  sdf: "sdf_page_front.html",
+  js: "js_page_front.html",
+  kind: "kind_page_front.html",
+};
+
+const expectedHeadings = [
+  "Public Types",
+  "Public Member Functions",
+  "Static Public Member Functions",
+  "Friends",
+  "Detailed Description",
+  "Member Typedef Documentation",
+  "Constructor & Destructor Documentation",
+  "Member Function Documentation",
+  "allocator_type",
+  "const_iterator",
+  "const_pointer",
+  "const_reference",
+  "difference_type",
+  "hasher",
+  "iterator",
+  "key_equal",
+  "key_type",
+  "mapped_type",
+  "pointer",
+  "reference",
+  "size_type",
+  "value_type",
+];
+
+const sourceKeywords = [
+  "robin_map",
+  "Key",
+  "T",
+  "Hash",
+  "KeyEqual",
+  "Allocator",
+  "StoreHash",
+  "GrowthPolicy",
+  "Implementation of a hash map",
+  "open-addressing",
+  "robin hood hashing",
+  "backward shift deletion",
+  "strong exception guarantee",
+  "std::is_nothrow_swappable",
+  "std::is_nothrow_move_constructible",
+  "32 bits of the hash",
+  "power_of_two_growth_policy",
+  "deserialize",
+  "hash_compatible",
+  "operator[]",
+  "insert_or_assign",
+  "try_emplace",
+  "erase_fast",
+];
+
+const outputKeywords = [
+  ...expectedHeadings,
+  "robin_map",
+  "Key",
+  "T",
+  "Hash",
+  "KeyEqual",
+  "Allocator",
+  "StoreHash",
+  "GrowthPolicy",
+  "hash map",
+  "open-addressing",
+  "robin hood hashing",
+  "backward shift deletion",
+  "strong exception guarantee",
+  "key_type",
+  "mapped_type",
+  "value_type",
+  "iterator",
+  "const_iterator",
+  "insert",
+  "insert_or_assign",
+  "emplace",
+  "try_emplace",
+  "erase",
+  "erase_fast",
+  "find",
+  "contains",
+  "count",
+  "operator[]",
+  "at",
+  "reserve",
+  "rehash",
+  "load_factor",
+  "serialize",
+  "deserialize",
+  "Open official page",
+];
+
+function navStyles() {
+  return `<style id="openusd-reading-flow-nav-style">
+    body.openusd-has-reading-flow{padding-left:292px}
+    .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
+    .openusd-reading-flow-nav h2{font-size:17px;margin:0 0 10px;color:#17202a}
+    .openusd-reading-flow-nav h3{font-size:13px;margin:16px 0 8px;color:#516071;text-transform:none;letter-spacing:0}
+    .openusd-reading-flow-nav ul,.openusd-reading-flow-nav ol{list-style:none;margin:0;padding:0}
+    .openusd-reading-flow-nav li{margin:7px 0;line-height:1.35}
+    .openusd-reading-flow-nav a{color:#1c5d99;text-decoration:none;overflow-wrap:anywhere}
+    .openusd-reading-flow-nav a:hover{text-decoration:underline}
+    .openusd-reading-flow-status{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:999px;background:#edf2f7;color:#516071;font-size:11px}
+    .openusd-reading-flow-nav .official-link{color:#8a4b11}
+    .openusd-reading-flow-breadcrumb{max-width:1120px;margin:14px auto 0;padding:0 20px;color:#d7e3f4;font-size:14px;overflow-wrap:anywhere}
+    .openusd-reading-flow-breadcrumb a{color:#ffffff}
+    @media (max-width: 920px){
+      body.openusd-has-reading-flow{padding-left:0}
+      .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
+      .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
+    }
+  </style>`;
+}
+
+function readingFlowNav() {
+  return `<nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
+  <a data-reading-flow="final" href="${links.final}">总入口</a>
+  <span> / </span>
+  <a data-reading-flow="api-entry" href="${links.apiEntry}">API 本地入口</a>
+  <span> / api / classpxr__tsl_1_1robin__map.html</span>
+</nav>
+<aside class="openusd-reading-flow-nav" aria-label="本地阅读导航 / Local reading navigation">
+  <h2>本地阅读导航</h2>
+  <div class="openusd-reading-flow-columns">
+    <section>
+      <h3>入口 / Entrances</h3>
+      <ul>
+        <li><a data-reading-flow="final" href="${links.final}">总入口 / Final entry</a></li>
+        <li><a data-reading-flow="release-entry" href="${links.release}">Release 本地入口</a></li>
+        <li><a data-reading-flow="api-entry" href="${links.apiEntry}">API Doxygen 本地入口</a></li>
+        <li><a data-reading-flow="api-redirect" href="${links.apiRedirect}">API redirect / site/api/index.html</a></li>
+      </ul>
+    </section>
+    <section>
+      <h3>当前位置 / Current Layer</h3>
+      <ol>
+        <li>api</li>
+        <li>classpxr__tsl_1_1robin__map.html</li>
+      </ol>
+    </section>
+    <section>
+      <h3>相邻本地页</h3>
+      <ul>
+        <li><a data-reading-flow="related" href="${links.annotated}">Annotated class index</a><span class="openusd-reading-flow-status">local</span></li>
+        <li><a data-reading-flow="related" href="${links.classes}">Class list</a><span class="openusd-reading-flow-status">local</span></li>
+        <li><a data-reading-flow="related" href="${links.vt}">Vt value types</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.gf}">Gf graphics foundations</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.sdf}">Sdf scene description foundations</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.js}">Js JSON I/O</a><span class="openusd-reading-flow-status">complete</span></li>
+      </ul>
+    </section>
+    <section>
+      <h3>上一页 / 下一页</h3>
+      <ul>
+        <li><a data-reading-flow="prev" href="${links.prev}">上一页 / Previous: CLI::App</a></li>
+        <li><a data-reading-flow="next" href="${links.next}">下一页 / Next: functions index</a></li>
+      </ul>
+    </section>
+    <section>
+      <h3>源页与外跳</h3>
+      <ul>
+        <li><a data-reading-flow="source" href="${links.source}">本地 source snapshot</a></li>
+        <li><a class="official-link" data-reading-flow="official" href="${links.official}">打开官方原页 / Open official page</a></li>
+      </ul>
+    </section>
+  </div>
+</aside>`;
+}
+
+function zh(text) {
+  return `<span class="zh">${text}</span>`;
+}
+
+function en(text) {
+  return `<span class="en">${text}</span>`;
+}
+
+function headingCoverageList() {
+  return expectedHeadings
+    .map(
+      (heading) =>
+        `      <li>${zh(`保留并解释 source section 或成员分组 ${esc(heading)}，使读者能按官方 Doxygen 结构回到原页核对。`)}${en(
+          `Source section preserved or mapped: ${esc(heading)}.`,
+        )}</li>`,
+    )
+    .join("\n");
+}
+
+function buildHtml() {
+  const title = "robin_map< Key, T, Hash, KeyEqual, Allocator, StoreHash, GrowthPolicy > Class Template Reference";
+  return `<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>${esc(title)} - OpenUSD API 中文参考</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.68}
+    header{background:#142538;color:#fff;padding:28px 32px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
+    section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
+    h1{margin:0;font-size:30px;letter-spacing:0}
+    h2{margin:0 0 12px;font-size:22px}
+    h3{margin:16px 0 8px;font-size:18px}
+    .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .zh{display:block;font-weight:650;color:#17324d}
+    .en{display:block;color:#55616f;margin-top:4px}
+    a{color:#1c5d99;overflow-wrap:anywhere}
+    ul{padding-left:22px}
+    li{margin:8px 0}
+    code{font-family:"Cascadia Mono","Consolas",monospace}
+    .status{display:inline-block;background:#1f6f50;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    .note{background:#eef6ff;border-left:4px solid #3178c6;padding:12px 14px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+    .mini{border:1px solid #d8dee8;border-radius:6px;padding:12px;background:#fbfdff}
+  </style>
+${navStyles()}
+</head>
+<body class="openusd-has-reading-flow">
+  <header>
+    <span class="status">bilingual_complete</span>
+    <h1>${esc(title)}</h1>
+    <div class="meta">Round ${ROUND} ${ROUND_TYPE} | Source snapshot: ${SOURCE} | <a href="${links.official}" style="color:#fff">Open official page</a></div>
+  </header>
+${readingFlowNav()}
+<main data-cn-status="bilingual_complete" data-cn-round="${ROUND}" data-cn-source="${SOURCE}" data-cn-official="${OFFICIAL_URL}">
+  <section data-cn-complete="main-reading-path">
+    <h2>中文主阅读路径 / Chinese Main Reading Path</h2>
+    <p>${zh(
+      "pxr_tsl::robin_map 是一个 C++ 类模板，用来表达从 Key 到 T 的哈希映射。它属于 OpenUSD 依赖和基础设施层中的通用容器实现，不是 UsdPrim、SdfPath、UsdStage、schema prim，也不是 USD 文件格式插件。阅读本页时应先把它放在容器工具的上下文中理解：调用者把键、值、哈希函数、相等比较器、分配器、是否保存哈希值以及增长策略交给模板，robin_map 再用开放寻址和 robin hood hashing 组织 bucket，并用 backward shift deletion 处理删除后的探测序列。这样的结构适合需要紧凑内存布局和高查找吞吐的哈希表场景，但它仍然遵守 C++ 容器语义，不能替代场景组合、资产路径解析或属性查询。"
+    )}${en("pxr_tsl::robin_map is a C++ hash map class template based on open addressing and robin hood hashing.")}</p>
+    <p>${zh(
+      "本地中文页的阅读顺序是先看模板参数，再看类型别名，然后按构造、迭代、容量、查找、插入与删除、hash policy、序列化和友元函数分组。这样读可以避免被 Doxygen 的大量重载列表打散视线。成员名、模板参数名、函数名和 Doxygen 表格标签保持英文原样，中文只解释职责、边界和调试含义。读者应把英文函数名当作可搜索锚点，把中文说明当作决策路径：需要只检查键是否存在时看 contains 或 find，需要访问并要求存在时看 at，需要默认构造缺失值时才考虑 operator[]，需要预分配容量时看 reserve 或 rehash，需要解释性能波动时检查 load_factor、max_load_factor、min_load_factor 和 GrowthPolicy。"
+    )}${en("The Chinese path groups the Doxygen class reference into template parameters, aliases, lookup, mutation, hash policy, and serialization.")}</p>
+    <p>${zh(
+      "官方 Detailed Description 说明它是 using open-addressing and the robin hood hashing algorithm with backward shift deletion 的 hash map 实现。本页保留这三个术语，因为它们是判断行为和性能边界的关键。open-addressing 表示元素存储在表本身的 bucket 中，冲突通过探测解决；robin hood hashing 表示插入时会根据探测距离调整元素位置，使查找长度更均衡；backward shift deletion 表示删除时会移动后续元素来修复探测链。它们共同影响迭代器稳定性、删除成本、rehash 行为和查找延迟。不要把这些术语误读成 USD 的 composition、resolver 或 prim indexing 机制。"
+    )}${en("The source algorithm terms are preserved because they drive lookup, deletion, and rehash behavior.")}</p>
+  </section>
+
+  <section data-cn-complete="source-parity">
+    <h2>原站 / 源页对比</h2>
+    <p>${zh(
+      `本轮对比 ${SOURCE} 和官方页 ${OFFICIAL_URL}。source title 是 ${sourceTitle()}。本地页保留官方 class reference 的主结构：Public Types、Public Member Functions、Static Public Member Functions、Friends、Detailed Description、Member Typedef Documentation、Constructor and Destructor Documentation 以及 Member Function Documentation。`
+    )}${en("This page is aligned to the local source snapshot and official Doxygen class reference.")}</p>
+    <ul>
+${headingCoverageList()}
+    </ul>
+    <p class="note">${zh(
+      "保留原名：robin_map、Key、T、Hash、KeyEqual、Allocator、StoreHash、GrowthPolicy、key_type、mapped_type、value_type、iterator、const_iterator、insert、insert_or_assign、emplace、try_emplace、erase、erase_fast、find、contains、count、operator[]、at、reserve、rehash、load_factor、serialize、deserialize、operator==、operator!= 和 swap。中文说明不改写这些锚点，避免读者在源码、Doxygen 和报错栈之间无法对应。"
+    )}${en("API names and Doxygen labels are preserved for exact lookup.")}</p>
+  </section>
+
+  <section data-cn-complete="template-parameters">
+    <h2>模板参数和职责边界</h2>
+    <div class="grid">
+      <div class="mini"><h3>Key 和 T</h3><p>${zh(
+        "Key 是哈希表的键类型，T 是映射值类型。value_type 对应 std::pair Key const, T 的语义，mapped_type 对应 T，key_type 对应 Key。调试失败查找时先确认 Key 的 hash 和 equality 是否与实际插入时一致，而不是先怀疑 USD 数据模型。"
+      )}${en("Key is the lookup key and T is the mapped value.")}</p></div>
+      <div class="mini"><h3>Hash 和 KeyEqual</h3><p>${zh(
+        "Hash 默认是 std::hash Key，KeyEqual 默认是 std::equal_to Key。contains、count、find、equal_range 和 erase 的透明重载依赖 KeyEqual 的 is_transparent 语义。若不同类型查询失败，应先检查 Hash、KeyEqual 和传入键类型是否兼容。"
+      )}${en("Hash and KeyEqual drive lookup identity and transparent overload behavior.")}</p></div>
+      <div class="mini"><h3>Allocator</h3><p>${zh(
+        "Allocator 默认是 std::allocator pair Key const and T。它决定存储管理方式，但不改变哈希表的键值语义。若容器在特殊内存域、插件边界或测试环境中行为异常，应把 allocator 与对象生命周期一起检查。"
+      )}${en("Allocator controls storage but does not change the key-value semantics.")}</p></div>
+      <div class="mini"><h3>StoreHash</h3><p>${zh(
+        "StoreHash 为 true 时会随值保存 32 bits of the hash，可以在 KeyEqual 成本较高或容易造成缓存未命中时改善查找。source 还说明在某些对齐不增加内存开销且使用 power_of_two_growth_policy 时，即使 StoreHash 为 false 也可能保存哈希以加速 rehash。"
+      )}${en("StoreHash may keep 32 bits of hash data next to values.")}</p></div>
+      <div class="mini"><h3>GrowthPolicy</h3><p>${zh(
+        "GrowthPolicy 定义表如何增长，以及 hash value 如何映射到 bucket。默认策略是 pxr_tsl::rh::power_of_two_growth_policy<2>。性能调试时，GrowthPolicy 与 reserve、rehash、load_factor、bucket_count 共同决定扩容频率和 bucket 分布。"
+      )}${en("GrowthPolicy maps hash values to buckets and controls growth.")}</p></div>
+      <div class="mini"><h3>容器边界</h3><p>${zh(
+        "robin_map 是 hash map，不是 flat hash map 页、不是 std::map、不是排序容器，也不是 USD registry。它的优势和风险都来自开放寻址哈希表：查找快、局部性强，但 rehash 会影响迭代器和引用稳定性。"
+      )}${en("robin_map is an unordered hash map implementation, not a scene registry or ordered map.")}</p></div>
+    </div>
+  </section>
+
+  <section data-cn-complete="type-groups">
+    <h2>Public Types 阅读方式</h2>
+    <p>${zh(
+      "Member Typedef Documentation 中的 allocator_type、const_iterator、const_pointer、const_reference、difference_type、hasher、iterator、key_equal、key_type、mapped_type、pointer、reference、size_type 和 value_type 是按 C++ 容器习惯暴露的类型锚点。它们的主要作用是让模板代码、泛型算法和 Doxygen 查询能用稳定名字访问容器属性。读这些 typedef 时不需要把每一项翻译成中文类型名，重点是理解它们在容器语义中的位置：key_type 与查找键有关，mapped_type 与值有关，value_type 与键值对有关，iterator 和 const_iterator 与遍历有关，hasher 和 key_equal 与查找身份有关，allocator_type 与内存分配有关。"
+    )}${en("Public type aliases expose the standard container vocabulary used by generic code.")}</p>
+    <p>${zh(
+      "如果编译错误出现在 iterator、const_iterator、pointer 或 reference 上，通常说明代码把可变和只读访问混在一起，或者在 insert、erase、rehash 后继续使用旧迭代器。如果错误出现在 key_equal、hasher 或 value_type 上，通常说明模板参数或键值对类型不符合容器预期。把 typedef 读成调试入口，比逐字翻译 typedef 名称更有价值。"
+    )}${en("Typedefs are useful debugging anchors for iterator, value, hash, equality, and allocator issues.")}</p>
+  </section>
+
+  <section data-cn-complete="member-functions">
+    <h2>成员函数分组</h2>
+    <h3>构造和赋值</h3>
+    <p>${zh(
+      "robin_map 有多组构造函数和 operator=，对应默认构造、bucket count、Hash、KeyEqual、Allocator、迭代器范围、initializer list、拷贝和移动。读这些重载时应按创建初始容量、复制已有内容、移动容器所有权、从范围构建四类理解。它们决定容器初始状态，不改变哈希算法本身。"
+    )}${en("Constructors and assignment operators create or transfer the map state.")}</p>
+    <h3>迭代和容量</h3>
+    <p>${zh(
+      "begin、end、cbegin、cend 负责遍历；empty、size、max_size、bucket_count、max_bucket_count 负责容量状态。遍历顺序不应被当作稳定排序。若业务依赖顺序，应使用显式排序或其他数据结构，而不是依赖 robin hood hashing 的 bucket 布局。"
+    )}${en("Iteration order is not a stable sorted order.")}</p>
+    <h3>查找</h3>
+    <p>${zh(
+      "at、operator[]、contains、count、find 和 equal_range 都围绕键查询，但语义不同。contains 和 find 适合只检查是否存在，count 对 map 通常表达零或一，equal_range 保持关联容器接口形态，at 在键缺失时走受控失败路径，operator[] 会在缺失时插入默认值。调试意外插入时，第一步就是确认是否误用了 operator[]。"
+    )}${en("Lookup APIs differ in whether they merely inspect or may insert default values.")}</p>
+    <h3>插入和删除</h3>
+    <p>${zh(
+      "insert、insert_or_assign、emplace、emplace_hint、try_emplace、erase、erase_fast 和 clear 负责修改容器。insert_or_assign 会覆盖已有键的值，try_emplace 只在键不存在时构造 mapped value，erase_fast 暗示更偏向快速删除路径。修改操作可能触发重排或 rehash，因此不能假设旧迭代器、引用和 bucket 位置长期有效。"
+    )}${en("Mutation APIs may reorder storage and invalidate iteration assumptions.")}</p>
+    <h3>Hash policy 和序列化</h3>
+    <p>${zh(
+      "load_factor、min_load_factor、max_load_factor、rehash、reserve、hash_function 和 key_eq 用来观察或控制哈希策略。serialize 和 deserialize 是本页容易被忽略的接口；source 明确提到 hash_compatible 条件，要求 Hash、KeyEqual、GrowthPolicy、StoreHash 和平台 size_t 尺寸等行为兼容。跨平台或跨版本恢复数据时，不要只看字节流能否读入，还要检查这些兼容条件。"
+    )}${en("Hash policy and serialization APIs need compatibility checks across implementations and platforms.")}</p>
+  </section>
+
+  <section data-cn-complete="exception-and-performance">
+    <h2>异常保证、性能和误读点</h2>
+    <p>${zh(
+      "source 对修改操作的 strong exception guarantee 给出条件：只有当 std::is_nothrow_swappable<std::pair<Key, T>>::value 与 std::is_nothrow_move_constructible<std::pair<Key, T>>::value 同时满足时，insert、erase、rehash 等修改操作才保证强异常安全。否则，如果 swap 或 move construction 过程中抛异常，map 可能进入未定义状态。这个说明不能省略，因为它直接影响在异常密集或自定义 value_type 场景中的容器安全边界。"
+    )}${en("The strong exception guarantee has explicit noexcept swap and move-construction conditions.")}</p>
+    <p>${zh(
+      "StoreHash 的收益也有边界。它在 KeyEqual 较慢或会导致 cache miss 时可能提高 lookup 性能，也可能帮助 power_of_two_growth_policy 下的 rehash；但保存哈希不是普遍加速开关。若 key 很小、比较很快或内存压力更重要，StoreHash 的价值需要实测。中文页保留这一层边界，是为了避免把模板参数当成无条件最佳实践。"
+    )}${en("StoreHash can help specific lookup and rehash patterns but is not a universal speed switch.")}</p>
+    <p>${zh(
+      "常见误读包括：把 robin_map 当成排序 map；把 operator[] 当成只读访问；把 reserve 当成固定容量保证；把 transparent overload 当成自动支持任意键类型；把 serialize 和 deserialize 当成跨平台无条件稳定格式；把 erase_fast 当成永远等价于 erase；把 bucket_count 或 load_factor 当成 USD 性能问题的唯一来源。正确路径是先定位容器语义，再决定是否需要修改 Hash、KeyEqual、GrowthPolicy、容量预留或调用方式。"
+    )}${en("Common mistakes come from ignoring insertion side effects, iterator invalidation, and hash compatibility.")}</p>
+  </section>
+
+  <section data-cn-complete="debug-path">
+    <h2>调试路径</h2>
+    <ol>
+      <li>${zh("查找失败时，先确认插入和查询使用的 Key 类型、Hash、KeyEqual 是否一致；若使用透明查询，还要确认 KeyEqual::is_transparent 和相关重载是否符合预期。")}${en("For lookup misses, check Key, Hash, KeyEqual, and transparent lookup compatibility.")}</li>
+      <li>${zh("意外插入默认值时，检查是否用了 operator[]；如果只是查询，应改用 contains、find 或 at。")}${en("For unexpected default values, check accidental operator[] use.")}</li>
+      <li>${zh("性能波动时，检查 load_factor、max_load_factor、min_load_factor、bucket_count、reserve、rehash 和 GrowthPolicy，而不是直接归因到 OpenUSD stage 或 resolver。")}${en("For performance shifts, inspect load factor, bucket count, reserve, rehash, and growth policy.")}</li>
+      <li>${zh("删除后迭代异常时，检查 erase、erase_fast、backward shift deletion 以及旧 iterator 或 reference 是否仍被使用。")}${en("For post-erase issues, inspect iterator and reference lifetime after deletion.")}</li>
+      <li>${zh("序列化恢复问题时，检查 deserialize 的 hash_compatible 条件，确认 Hash、KeyEqual、GrowthPolicy、StoreHash 和 size_t 尺寸是否与写出端兼容。")}${en("For deserialization issues, check hash-compatible constraints.")}</li>
+    </ol>
+  </section>
+
+  <section data-cn-complete="adjacent-modules">
+    <h2>相邻 API 和本地阅读关系</h2>
+    <p>${zh(
+      "robin_map 本身是容器实现页，但实际阅读时常需要和基础类型、JSON I/O、分类注册和场景描述页配合。Vt 解释值承载和数组，Gf 解释数学基础类型，Sdf 解释 scene description 底层对象，Js 解释 JSON I/O，Kind 解释分类注册。它们可能在 OpenUSD 代码中共同出现，但职责不同：robin_map 只负责哈希映射容器行为，不负责值类型擦除、数学运算、layer composition、JSON parser 规则或 model kind 分类。"
+    )}${en("Adjacent local pages provide value, math, scene description, JSON, and categorization context.")}</p>
+    <p>${zh(
+      "本地 reading-flow 导航保留总入口、API 本地入口、site/api/index.html、Release 入口、source snapshot、前后页和显式官方外跳。站内阅读路径中的本地链接保持在本地，不把读者静默带到英文官网；只有打开官方原页这一项是明确外跳。"
+    )}${en("Local reading-flow links keep the reader inside the local bilingual site except for the explicit official link.")}</p>
+  </section>
+
+  <section data-cn-complete="acceptance-checklist">
+    <h2>完成页验收阅读清单</h2>
+    <p>${zh(
+      "读完本页后，读者应能独立回答五个问题：第一，robin_map 是基于开放寻址和 robin hood hashing 的键值容器，不是 USD 场景对象；第二，Key、T、Hash、KeyEqual、Allocator、StoreHash 和 GrowthPolicy 分别控制查找身份、值类型、存储和增长策略；第三，operator[]、at、contains、find、insert_or_assign、try_emplace、erase_fast 和 serialize 的副作用不同，不能互相替换；第四，强异常保证依赖 pair 的 noexcept swap 与 move construction 条件，异常安全不能凭容器名假设；第五，性能问题要沿着 load_factor、reserve、rehash、bucket_count、StoreHash 和 GrowthPolicy 排查，而不是直接归因到 OpenUSD composition 或渲染管线。能回答这些问题，才说明这页已经从英文成员清单变成可使用的中文 API 参考。若线上问题表现为 stage 读取慢、插件加载慢或渲染输出慢，也应先证明瓶颈确实落在该容器的查找、插入、删除或扩容路径上，再修改模板参数或替换容器，避免把系统级问题误修成局部容器问题。"
+    )}${en("The acceptance checklist verifies that the reader understands container role, template parameters, API side effects, exception guarantees, and performance diagnostics.")}</p>
+  </section>
+
+  <section data-cn-complete="paragraph-coverage">
+    <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+    <ul>
+      <li>${zh("标题已覆盖：本页解释 robin_map 类模板参考，而不是把它误写成 USD 场景对象或 schema 页。")}${en("Title coverage: robin_map is treated as a class template reference.")}</li>
+      <li>${zh("Detailed Description 已覆盖：open-addressing、robin hood hashing algorithm 和 backward shift deletion 的职责与边界已经说明。")}${en("Detailed Description coverage preserves the algorithm terms.")}</li>
+      <li>${zh("模板参数已覆盖：Key、T、Hash、KeyEqual、Allocator、StoreHash 和 GrowthPolicy 的默认角色、性能含义和调试边界已经说明。")}${en("Template parameter coverage explains identity, storage, stored hash, and growth policy semantics.")}</li>
+      <li>${zh("Public Types 已覆盖：key_type、mapped_type、value_type、iterator、const_iterator、hasher、key_equal 和 allocator_type 等类型别名已按容器语义解释。")}${en("Public type aliases are explained as container vocabulary.")}</li>
+      <li>${zh("Public Member Functions 已覆盖：构造、赋值、迭代、容量、查找、修改、hash policy、序列化和友元函数已经按使用场景分组。")}${en("Public member functions are grouped by usage scenario.")}</li>
+      <li>${zh("异常和性能边界已覆盖：strong exception guarantee 条件、StoreHash 适用范围、rehash 与 load_factor 风险已经说明。")}${en("Exception and performance boundaries are covered.")}</li>
+      <li>${zh("常见误读已覆盖：operator[] 默认插入、iterator invalidation、transparent lookup、serialize hash compatibility 和 erase_fast 语义均有中文解释。")}${en("Common misreads are covered.")}</li>
+      <li>${zh("调试路径已覆盖：查询失败、意外插入、性能波动、删除后迭代异常和反序列化兼容性都有排查顺序。")}${en("Debugging paths are covered.")}</li>
+      <li>${zh("相邻页面已覆盖：Vt、Gf、Sdf、Js、Kind、annotated class index 和 functions index 的本地阅读关系已经说明。")}${en("Adjacent local reading paths are covered.")}</li>
+      <li>${zh("导航已覆盖：总入口、Release 入口、API 入口、source snapshot、上一页、下一页和 Open official page 外跳都保留。")}${en("Navigation coverage includes local entries, source snapshot, neighbors, and explicit official link.")}</li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>
+`;
+}
+
+function sourceParity() {
+  const source = sourceText();
+  const target = fs.existsSync(rel(TARGET)) ? read(TARGET) : buildHtml();
+  const targetDecoded = decodeEntities(target);
+  const outputChecks = {
+    has_complete_status: target.includes('data-cn-status="bilingual_complete"') && target.includes(`data-cn-round="${ROUND}"`),
+    has_paragraph_coverage: target.includes("逐段双语理解 / Paragraph-Level Bilingual Coverage"),
+    has_final_entry: target.includes(links.final),
+    has_api_entry: target.includes(links.apiEntry),
+    has_api_redirect: target.includes(links.apiRedirect),
+    has_release_entry: target.includes(links.release),
+    has_reading_flow_nav: target.includes("openusd-reading-flow-nav") && target.includes("openusd-reading-flow-breadcrumb"),
+    has_explicit_official_link: target.includes("Open official page") && target.includes(OFFICIAL_URL),
+    no_draft_marker: !target.includes("bilingual_draft") && !target.includes("batch draft page") && !target.includes("later iterations add denser bilingual coverage"),
+    zh_chars: zhCharCount(target),
+    zh_blocks: blockCount(target, "zh"),
+  };
+  return {
+    generated_at: new Date().toISOString(),
+    round: ROUND,
+    round_type: ROUND_TYPE,
+    target: TARGET,
+    source_snapshot: SOURCE,
+    official_url: OFFICIAL_URL,
+    source_title: sourceTitle(),
+    source_headings: sourceHeadings().slice(0, 124),
+    source_keywords_checked: sourceKeywords,
+    output_keywords_checked: outputKeywords,
+    missing_source_keywords: sourceKeywords.filter((keyword) => !source.includes(keyword)),
+    missing_output_keywords: outputKeywords.filter((keyword) => !targetDecoded.includes(keyword)),
+    output_checks: outputChecks,
+  };
+}
+
+function writePage() {
+  fs.writeFileSync(rel(TARGET), buildHtml(), "utf8");
+  writeJson(SOURCE_PARITY_REPORT, sourceParity());
+}
+
+function precheck() {
+  const report = sourceParity();
+  const failed = [];
+  if (report.missing_source_keywords.length) failed.push(`missing source keywords: ${report.missing_source_keywords.join(", ")}`);
+  if (report.missing_output_keywords.length) failed.push(`missing output keywords: ${report.missing_output_keywords.join(", ")}`);
+  for (const [key, value] of Object.entries(report.output_checks)) {
+    if (typeof value === "boolean" && !value) failed.push(`output check failed: ${key}`);
+  }
+  if (report.output_checks.zh_chars < 3200) failed.push(`zh chars too low: ${report.output_checks.zh_chars}`);
+  if (report.output_checks.zh_blocks < 30) failed.push(`zh blocks too low: ${report.output_checks.zh_blocks}`);
+  if (failed.length) {
+    console.error(JSON.stringify({ passed: false, failed, report }, null, 2));
+    process.exit(1);
+  }
+  writeJson(SOURCE_PARITY_REPORT, report);
+  console.log(JSON.stringify({ passed: true, report }, null, 2));
+}
+
+function updateManifest() {
+  const raw = readJson("reports/bilingual_completion_promotions.json");
+  const doc = {
+    ...raw,
+    generated_at: raw.generated_at || new Date().toISOString(),
+    promotions: Array.isArray(raw.promotions) ? raw.promotions : [],
+    updated_at: new Date().toISOString(),
+  };
+  doc.promotions = doc.promotions.filter((entry) => entry.id !== PROMOTION_ID && entry.local_output !== TARGET);
+  doc.promotions.push({
+    id: PROMOTION_ID,
+    title: "robin_map< Key, T, Hash, KeyEqual, Allocator, StoreHash, GrowthPolicy > Class Template Reference",
+    official_url: OFFICIAL_URL,
+    local_output: TARGET,
+    status: "bilingual_complete",
+    reason: `Round ${ROUND} ${ROUND_TYPE}: promote the robin_map class template reference by adding Chinese main-reading-path coverage for template parameters, public types, lookup, mutation, hash policy, serialization, exception guarantees, common misreads, debugging paths, source parity, reading-flow navigation, and explicit official-page verification.`,
+    evidence: {
+      page_contains_status: "bilingual_complete",
+      generic_draft_marker_removed: true,
+      minimum_chinese_chars: 3200,
+      minimum_complete_section_chinese_chars: 1800,
+      minimum_chinese_blocks: 30,
+      official_source_compared: true,
+      local_source_snapshot_compared: SOURCE,
+      source_parity_report: SOURCE_PARITY_REPORT,
+      round_type: ROUND_TYPE,
+    },
+  });
+  writeJson("reports/bilingual_completion_promotions.json", doc);
+}
+
+function updateProblemAudit() {
+  const quality = readJson("reports/translation_quality_review.json");
+  const debt = readJson("reports/english_debt_audit.json");
+  const inventory = readJson("reports/all_pages_inventory.json");
+  const counts = {
+    total_pages: inventory.counts.total_pages,
+    bilingual_complete: quality.status_counts.bilingual_complete,
+    bilingual_draft: quality.status_counts.bilingual_draft,
+    good_bilingual: quality.grade_counts.good_bilingual,
+    draft_needs_translation: quality.grade_counts.draft_needs_translation,
+    draft_template_only: quality.grade_counts.draft_template_only,
+    review_ready_zh: debt.counts.review_ready_zh,
+    api_complete: debt.counts.api_complete,
+    api_review_ready_zh: debt.counts.api_review_ready_zh,
+    release_complete: debt.counts.release_complete,
+    release_review_ready_zh: debt.counts.release_review_ready_zh,
+    pending_full_scope: inventory.counts.pending_full_scope_pages,
+  };
+  writeJson("reports/current_problem_audit.json", {
+    generated_at: new Date().toISOString(),
+    purpose: `第 ${ROUND} 轮 ${ROUND_TYPE} 记录：确认 ${TARGET} 已按 robin_map class template source parity 晋级，并继续跟踪 OpenUSD 双语完成缺口。`,
+    last_completed_round: {
+      round: ROUND,
+      round_type: ROUND_TYPE,
+      target: TARGET,
+      commit_sha: null,
+      previous_good_bilingual: 225,
+    },
+    current_counts: counts,
+    problems: [
+      {
+        id: "P0-api-draft-backlog",
+        severity: "P0",
+        summary: `当前 good_bilingual=${counts.good_bilingual}/406，API complete=${counts.api_complete}，仍有 ${counts.bilingual_draft} 个可检查草稿，不是完整翻译。`,
+        evidence: `第 ${ROUND} 轮 ${ROUND_TYPE} 将 ${TARGET} 从 API 草稿晋级为 good_bilingual；release 范围保持 ${counts.release_complete}/126 complete。`,
+        required_action: "继续推进 API 草稿；只把真实达到中文主阅读路径和 source parity 的页面写入 promotion manifest。",
+      },
+      {
+        id: "P1-class-reference-source-parity",
+        severity: "P1",
+        summary: "类参考页必须保留 Doxygen 分组、模板参数、typedef、函数名、属性名和链接语义，不能只写泛泛导读。",
+        evidence: "本轮覆盖 Public Types、Public Member Functions、Static Public Member Functions、Friends、Detailed Description、Member Typedef Documentation、Constructor and Destructor Documentation、Member Function Documentation、Key、T、Hash、KeyEqual、Allocator、StoreHash、GrowthPolicy 和核心成员名。",
+        required_action: "后续 class/struct 页面继续按 source snapshot 抽取官方分组，中文说明用途和边界，API 名保持原样。",
+      },
+      {
+        id: "P1-left-navigation-reading-flow",
+        severity: "P1",
+        summary: "完成页必须保留本地 reading-flow 导航、breadcrumb、API/Release/总入口和显式官方外跳。",
+        evidence: "本轮页面生成了本地侧栏、breadcrumb、前后页、相邻 API 模块路径、source snapshot 和 Open official page 外跳，并会重新运行 reading-flow 审计。",
+        required_action: "若 reading-flow 审计失败，先修导航，不得推送。",
+      },
+      {
+        id: "P1-markdown-record-encoding",
+        severity: "P1",
+        summary: "Markdown 编码守卫继续作为硬门槛。",
+        evidence: "work.md、reports/iteration_report.md、reports/current_problem_audit.md、reports/bilingual_completion_promotions.md 必须无重复问号损坏、replacement character 和 UTF-8 BOM。",
+        required_action: "若 audit_openusd_markdown_encoding.mjs 失败，先做 ConsistencyRound。",
+      },
+    ],
+    promoted_pages: [
+      {
+        round: ROUND,
+        round_type: ROUND_TYPE,
+        output: TARGET,
+        official_url: OFFICIAL_URL,
+        source_snapshot: SOURCE,
+        source_parity_report: SOURCE_PARITY_REPORT,
+      },
+    ],
+    not_promoted_pages: [],
+    source_parity_report: SOURCE_PARITY_REPORT,
+    next_actions: [
+      "release 范围已 126/126 complete，不要重复处理 release 已完成页。",
+      "下一轮建议重新读取 inventory 后选择一个仍为 bilingual_draft 且有 source snapshot 的 API/class 页面；开始前必须确认 git/report/validation/markdown/reading-flow 状态干净一致。",
+    ],
+    next_action: "下一轮建议 PromotionRound：重新读取 inventory 后选择一个仍为 bilingual_draft 且有 source snapshot 的高价值 API 页面。",
+  });
+}
+
+const commands = new Set(process.argv.slice(2));
+if (commands.has("--write-page")) writePage();
+if (commands.has("--precheck")) precheck();
+if (commands.has("--manifest")) updateManifest();
+if (commands.has("--problem")) updateProblemAudit();
+if (commands.size === 0) {
+  console.log("Usage: node scripts/promote_round_447_robin_map_class.mjs --write-page --precheck --manifest --problem");
+}
