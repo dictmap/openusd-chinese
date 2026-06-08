@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-08T17:17:53.193Z
+Generated: 2026-06-08T17:59:19.628Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 223
-- Promoted complete pages: 215
-- Bilingual draft pages: 183
+- Bilingual complete pages: 224
+- Promoted complete pages: 216
+- Bilingual draft pages: 182
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -21,7 +21,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_draft | 源码页面草稿：CLI11.h / CLI11.h | full_site/api/_c_l_i11_8h_source.html | https://openusd.org/release/api/_c_l_i11_8h_source.html |
 | api | bilingual_complete | Developer Guides | full_site/api/_developer__guides.html | https://openusd.org/release/api/_developer__guides.html |
 | api | bilingual_complete | USD's purpose and overall architecture | site/_usd__overview_and_purpose.html | https://openusd.org/release/api/_usd__overview_and_purpose.html |
-| api | bilingual_draft | _c_l_i11_8h_source.html | full_site/api/_usd_skel__intro.html | https://openusd.org/release/api/_usd_skel__intro.html |
+| api | bilingual_complete | _c_l_i11_8h_source.html | full_site/api/_usd_skel__intro.html | https://openusd.org/release/api/_usd_skel__intro.html |
 | api | bilingual_draft | Classes | full_site/api/annotated.html | https://openusd.org/release/api/annotated.html |
 | api | bilingual_complete | https://openusd.org/release/api/ar_page_front.html | full_site/api/ar_page_front.html | https://openusd.org/release/api/ar_page_front.html |
 | api | bilingual_complete | https://openusd.org/release/api/arch_page_front.html | full_site/api/arch_page_front.html | https://openusd.org/release/api/arch_page_front.html |

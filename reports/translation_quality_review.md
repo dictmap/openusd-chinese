@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-08T17:23:41.738Z
+Generated: 2026-06-08T17:59:26.525Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 183
-- bilingual_complete: 223
+- bilingual_draft: 182
+- bilingual_complete: 224
 
 ## Grade Counts
 
 - draft_template_only: 10
-- draft_needs_translation: 173
-- good_bilingual: 223
+- draft_needs_translation: 172
+- good_bilingual: 224
 
 ## Current Focus Batch
 
@@ -20,10 +20,10 @@ Generated: 2026-06-08T17:23:41.738Z
 | --- | --- | --- | ---: | ---: | --- | --- |
 | 1 | draft_template_only | bilingual_draft | 62 | 2/3 | `full_site/api/_c_l_i11_8h_source.html` | Mostly a draft shell: Chinese is limited to the shared scope note and structure labels. |
 | 3 | good_bilingual | bilingual_complete | 769 | 63/63 | `site/_usd__overview_and_purpose.html` | Chinese and English are paired densely enough for a reference page. |
-| 4 | draft_needs_translation | bilingual_draft | 546 | 31/24 | `full_site/api/_usd_skel__intro.html` | Has Chinese guidance, but still relies mainly on English excerpts. |
 | 5 | draft_needs_translation | bilingual_draft | 557 | 24/17 | `full_site/api/annotated.html` | Has Chinese guidance, but still relies mainly on English excerpts. |
 | 8 | draft_template_only | bilingual_draft | 62 | 2/3 | `full_site/api/binding_map_8h_source.html` | Mostly a draft shell: Chinese is limited to the shared scope note and structure labels. |
 | 62 | draft_needs_translation | bilingual_draft | 533 | 40/32 | `full_site/api/class_vdf_test_utils_1_1_node.html` | Has Chinese guidance, but still relies mainly on English excerpts. |
+| 64 | draft_needs_translation | bilingual_draft | 501 | 24/16 | `full_site/api/classes.html` | Has Chinese guidance, but still relies mainly on English excerpts. |
 
 ## Next Priority Queue
 
@@ -67,7 +67,7 @@ Generated: 2026-06-08T17:23:41.738Z
 | 1 | draft_template_only | bilingual_draft | 62 | 2/3 | 0 | 0 | `full_site/api/_c_l_i11_8h_source.html` |
 | 2 | good_bilingual | bilingual_complete | 1564 | 38/31 | 0 | 0 | `full_site/api/_developer__guides.html` |
 | 3 | good_bilingual | bilingual_complete | 769 | 63/63 | 0 | 0 | `site/_usd__overview_and_purpose.html` |
-| 4 | draft_needs_translation | bilingual_draft | 546 | 31/24 | 0 | 0 | `full_site/api/_usd_skel__intro.html` |
+| 4 | good_bilingual | bilingual_complete | 2219 | 58/45 | 0 | 0 | `full_site/api/_usd_skel__intro.html` |
 | 5 | draft_needs_translation | bilingual_draft | 557 | 24/17 | 0 | 0 | `full_site/api/annotated.html` |
 | 6 | good_bilingual | bilingual_complete | 1674 | 43/36 | 0 | 0 | `full_site/api/ar_page_front.html` |
 | 7 | good_bilingual | bilingual_complete | 1623 | 37/30 | 0 | 0 | `full_site/api/arch_page_front.html` |

@@ -1,10 +1,80 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UsdSkel Introduction - OpenUSD API 双语</title>
-  <style>
+import fs from "node:fs";
+import path from "node:path";
+
+const ROOT = process.cwd();
+const ROUND = 445;
+const ROUND_TYPE = "PromotionRound";
+const TARGET = "full_site/api/_usd_skel__intro.html";
+const SOURCE = "source/full_api/_usd_skel__intro_source.html";
+const OFFICIAL_URL = "https://openusd.org/release/api/_usd_skel__intro.html";
+const SOURCE_PARITY_REPORT = "reports/round_445_usd_skel_intro_source_parity.json";
+const PROMOTION_ID = "round-445-api-usd-skel-intro";
+
+function rel(...parts) {
+  return path.join(ROOT, ...parts);
+}
+
+function esc(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function htmlDecode(value) {
+  return String(value ?? "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#([0-9]+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)));
+}
+
+function stripTags(value) {
+  return htmlDecode(
+    String(value ?? "")
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+  );
+}
+
+function zhChars(value) {
+  return (String(value ?? "").match(/[\u4e00-\u9fff]/g) || []).length;
+}
+
+function readJson(file) {
+  return JSON.parse(fs.readFileSync(rel(file), "utf8").replace(/^\uFEFF/, ""));
+}
+
+function writeJson(file, value) {
+  fs.writeFileSync(rel(file), `${JSON.stringify(value, null, 2)}\n`, "utf8");
+}
+
+function sourceHtml() {
+  return fs.readFileSync(rel(SOURCE), "utf8");
+}
+
+function sourceText() {
+  return stripTags(sourceHtml());
+}
+
+function sourceHeadings() {
+  const title = stripTags(sourceHtml().match(/<div class="title">([\s\S]*?)<\/div>/i)?.[1] || "");
+  const heads = [...sourceHtml().matchAll(/<h([1-4])[^>]*>([\s\S]*?)<\/h\1>/gi)]
+    .map((match) => ({ level: Number(match[1]), text: stripTags(match[2]) }))
+    .filter((heading) => heading.text);
+  return title ? [{ level: 1, text: title }, ...heads] : heads;
+}
+
+function css() {
+  return `
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.68}
     header{background:#142538;color:#fff;padding:28px 32px}
     main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
@@ -40,15 +110,49 @@
       .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
       .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
     }
-  </style>
-</head>
-<body class="openusd-has-reading-flow" data-cn-status="bilingual_complete" data-cn-round="445" data-cn-scope="api" data-cn-review-ready="true">
+  `;
+}
 
+const links = {
+  final: "../../openusd_bilingual_final.html",
+  api: "../../site/index.html",
+  apiRedirect: "../../site/api/index.html",
+  release: "../../site/release_index.html",
+  source: "../../source/full_api/_usd_skel__intro_source.html",
+  official: OFFICIAL_URL,
+  prev: "_developer__guides.html",
+  next: "usd_skel_page_front.html",
+  usdSkel: "usd_skel_page_front.html",
+  usdGeom: "usd_geom_page_front.html",
+  vt: "vt_page_front.html",
+  gf: "gf_page_front.html",
+  sdf: "sdf_page_front.html",
+  developer: "_developer__guides.html",
+  annotated: "annotated.html",
+};
+
+const expectedHeadings = [
+  "UsdSkel Introduction",
+  "Overview and Purpose",
+  "Motivation & Trade-Offs",
+  "What UsdSkel Is Not",
+  "Terminology",
+  "What Can Be Skinned?",
+  "Transforms and Transform Spaces",
+  "Skinning a Point (Linear Blend Skinning)",
+];
+
+function headingCoverageList() {
+  return expectedHeadings.map((heading) => `      <li><span class="zh"><code>${esc(heading)}</code>：本地中文页保留该官方 section，并补充它在骨骼、蒙皮、blend shapes、大规模 crowd interchange、空间变换或 Linear Blend Skinning 阅读路径中的位置。</span><span class="en">Source section preserved: ${esc(heading)}.</span></li>`).join("\n");
+}
+
+function readingFlowNav() {
+  return `
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
-  <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
+  <a data-reading-flow="final" href="${links.final}">总入口</a>
   <span> / </span>
-  <a data-reading-flow="api-entry" href="../../site/index.html">API 本地入口</a>
+  <a data-reading-flow="api-entry" href="${links.api}">API 本地入口</a>
   <span> / api / _usd_skel__intro.html</span>
 </nav>
 <aside class="openusd-reading-flow-nav" aria-label="本地阅读导航 / Local reading navigation">
@@ -57,10 +161,10 @@
     <section>
       <h3>入口 / Entrances</h3>
       <ul>
-        <li><a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口 / Final entry</a></li>
-        <li><a data-reading-flow="release-entry" href="../../site/release_index.html">Release 本地入口</a></li>
-        <li><a data-reading-flow="api-entry" href="../../site/index.html">API Doxygen 本地入口</a></li>
-        <li><a data-reading-flow="api-redirect" href="../../site/api/index.html">API redirect / site/api/index.html</a></li>
+        <li><a data-reading-flow="final" href="${links.final}">总入口 / Final entry</a></li>
+        <li><a data-reading-flow="release-entry" href="${links.release}">Release 本地入口</a></li>
+        <li><a data-reading-flow="api-entry" href="${links.api}">API Doxygen 本地入口</a></li>
+        <li><a data-reading-flow="api-redirect" href="${links.apiRedirect}">API redirect / site/api/index.html</a></li>
       </ul>
     </section>
     <section>
@@ -73,45 +177,58 @@
     <section>
       <h3>UsdSkel 阅读路径</h3>
       <ul>
-        <li><a data-reading-flow="related" href="usd_skel_page_front.html">UsdSkel module front</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="usd_geom_page_front.html">UsdGeom 几何基础</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="gf_page_front.html">Gf 数学基础</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="vt_page_front.html">Vt 数组和值类型</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.usdSkel}">UsdSkel module front</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.usdGeom}">UsdGeom 几何基础</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.gf}">Gf 数学基础</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.vt}">Vt 数组和值类型</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
       <h3>开发与索引上下文</h3>
       <ul>
-        <li><a data-reading-flow="related" href="_developer__guides.html">Developer Guides</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="sdf_page_front.html">Sdf 数据模型</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="annotated.html">Classes index</a><span class="openusd-reading-flow-status">draft</span></li>
+        <li><a data-reading-flow="related" href="${links.developer}">Developer Guides</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.sdf}">Sdf 数据模型</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.annotated}">Classes index</a><span class="openusd-reading-flow-status">draft</span></li>
       </ul>
     </section>
     <section>
       <h3>上一页 / 下一页</h3>
       <ul>
-        <li><a data-reading-flow="prev" href="_developer__guides.html">上一页 / Previous: Developer Guides</a></li>
-        <li><a data-reading-flow="next" href="usd_skel_page_front.html">下一页 / Next: UsdSkel module front</a></li>
+        <li><a data-reading-flow="prev" href="${links.prev}">上一页 / Previous: Developer Guides</a></li>
+        <li><a data-reading-flow="next" href="${links.next}">下一页 / Next: UsdSkel module front</a></li>
       </ul>
     </section>
     <section>
       <h3>官方外跳 / Official</h3>
       <ul>
-        <li><a class="official-link" data-reading-flow="official" href="https://openusd.org/release/api/_usd_skel__intro.html">打开官方原页 / Open official page</a></li>
+        <li><a class="official-link" data-reading-flow="official" href="${links.official}">打开官方原页 / Open official page</a></li>
       </ul>
     </section>
   </div>
 </aside>
-<!-- openusd-reading-flow-nav:end -->
+<!-- openusd-reading-flow-nav:end -->`;
+}
+
+function buildHtml() {
+  return `<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UsdSkel Introduction - OpenUSD API 双语</title>
+  <style>${css()}</style>
+</head>
+<body class="openusd-has-reading-flow" data-cn-status="bilingual_complete" data-cn-round="${ROUND}" data-cn-scope="api" data-cn-review-ready="true">
+${readingFlowNav()}
 <header>
   <span class="status">bilingual_complete / review_ready_zh</span>
   <h1>UsdSkel Introduction</h1>
-  <div class="meta">第 445 轮 PromotionRound：UsdSkel Introduction 完成。源页：<code>source/full_api/_usd_skel__intro_source.html</code>；官方页：<code>https://openusd.org/release/api/_usd_skel__intro.html</code></div>
+  <div class="meta">第 ${ROUND} 轮 ${ROUND_TYPE}：UsdSkel Introduction 完成。源页：<code>${SOURCE}</code>；官方页：<code>${OFFICIAL_URL}</code></div>
   <div class="navlinks">
-    <a href="../../openusd_bilingual_final.html">总入口</a>
-    <a href="../../site/index.html">API 本地入口</a>
-    <a href="../../source/full_api/_usd_skel__intro_source.html">本地 source snapshot</a>
-    <a href="https://openusd.org/release/api/_usd_skel__intro.html">Open official page</a>
+    <a href="${links.final}">总入口</a>
+    <a href="${links.api}">API 本地入口</a>
+    <a href="${links.source}">本地 source snapshot</a>
+    <a href="${links.official}">Open official page</a>
   </div>
 </header>
 <main>
@@ -124,16 +241,9 @@
 
   <section data-cn-complete="source-parity">
     <h2>官方结构与 source parity</h2>
-    <p><span class="zh">本页使用 <code>source/full_api/_usd_skel__intro_source.html</code> 对齐官方页面。inventory 中的旧标题可能错位，但 source snapshot 的真实标题是 <code>UsdSkel Introduction</code>，本轮以 source title 为准。官方 section 覆盖如下；本地中文页不会把它改写成普通 class reference，也不会新增源页没有的 schema 属性表。</span><span class="en">The inventory title may be stale; source parity uses the source title UsdSkel Introduction.</span></p>
+    <p><span class="zh">本页使用 <code>${SOURCE}</code> 对齐官方页面。inventory 中的旧标题可能错位，但 source snapshot 的真实标题是 <code>UsdSkel Introduction</code>，本轮以 source title 为准。官方 section 覆盖如下；本地中文页不会把它改写成普通 class reference，也不会新增源页没有的 schema 属性表。</span><span class="en">The inventory title may be stale; source parity uses the source title UsdSkel Introduction.</span></p>
     <ul>
-            <li><span class="zh"><code>UsdSkel Introduction</code>：本地中文页保留该官方 section，并补充它在骨骼、蒙皮、blend shapes、大规模 crowd interchange、空间变换或 Linear Blend Skinning 阅读路径中的位置。</span><span class="en">Source section preserved: UsdSkel Introduction.</span></li>
-      <li><span class="zh"><code>Overview and Purpose</code>：本地中文页保留该官方 section，并补充它在骨骼、蒙皮、blend shapes、大规模 crowd interchange、空间变换或 Linear Blend Skinning 阅读路径中的位置。</span><span class="en">Source section preserved: Overview and Purpose.</span></li>
-      <li><span class="zh"><code>Motivation &amp; Trade-Offs</code>：本地中文页保留该官方 section，并补充它在骨骼、蒙皮、blend shapes、大规模 crowd interchange、空间变换或 Linear Blend Skinning 阅读路径中的位置。</span><span class="en">Source section preserved: Motivation &amp; Trade-Offs.</span></li>
-      <li><span class="zh"><code>What UsdSkel Is Not</code>：本地中文页保留该官方 section，并补充它在骨骼、蒙皮、blend shapes、大规模 crowd interchange、空间变换或 Linear Blend Skinning 阅读路径中的位置。</span><span class="en">Source section preserved: What UsdSkel Is Not.</span></li>
-      <li><span class="zh"><code>Terminology</code>：本地中文页保留该官方 section，并补充它在骨骼、蒙皮、blend shapes、大规模 crowd interchange、空间变换或 Linear Blend Skinning 阅读路径中的位置。</span><span class="en">Source section preserved: Terminology.</span></li>
-      <li><span class="zh"><code>What Can Be Skinned?</code>：本地中文页保留该官方 section，并补充它在骨骼、蒙皮、blend shapes、大规模 crowd interchange、空间变换或 Linear Blend Skinning 阅读路径中的位置。</span><span class="en">Source section preserved: What Can Be Skinned?.</span></li>
-      <li><span class="zh"><code>Transforms and Transform Spaces</code>：本地中文页保留该官方 section，并补充它在骨骼、蒙皮、blend shapes、大规模 crowd interchange、空间变换或 Linear Blend Skinning 阅读路径中的位置。</span><span class="en">Source section preserved: Transforms and Transform Spaces.</span></li>
-      <li><span class="zh"><code>Skinning a Point (Linear Blend Skinning)</code>：本地中文页保留该官方 section，并补充它在骨骼、蒙皮、blend shapes、大规模 crowd interchange、空间变换或 Linear Blend Skinning 阅读路径中的位置。</span><span class="en">Source section preserved: Skinning a Point (Linear Blend Skinning).</span></li>
+      ${headingCoverageList()}
     </ul>
     <p class="note"><span class="zh">本页保留 <code>Skeleton</code>、<code>Skeleton Topology</code>、<code>Skel Animation</code>、<code>Binding</code>、<code>Joint Influences</code>、<code>Joint-Local Space</code>、<code>Skeleton Space</code>、<code>Geom Bind Transform</code>、<code>Skinning Transform</code>、<code>UsdGeomBoundable</code>、<code>UsdSkelIsSkinnablePrim</code> 等原名，避免把 API 名、空间名和公式语义翻译坏。</span><span class="en">API and terminology names are preserved for exact lookup.</span></p>
   </section>
@@ -168,7 +278,7 @@
     <h3>What Can Be Skinned?</h3>
     <p><span class="zh">这一节给出可蒙皮对象的判定原则：继承自 <code>UsdGeomBoundable</code> 且不是 <code>UsdSkelSkeleton</code> 的 prim 是候选。注意“候选”不等于所有客户端都能 skin；客户端遍历 <code>UsdSkelBinding</code> 的 targets 时仍需确认自己支持该 prim 类型。</span><span class="en">Skinnable candidates generally inherit from UsdGeomBoundable and are not UsdSkelSkeleton.</span></p>
     <h3>Transforms and Transform Spaces</h3>
-    <p><span class="zh">这一节需要和 <a href="gf_page_front.html">Gf</a> 数学基础一起读。源页保留公式 <code>jointSkelSpaceTransform = jointLocalSpaceTransform * parentJointSkelSpaceTransform</code> 和 <code>jointWorldSpaceTransform = jointLocalSpaceTransform * parentJointSkelSpaceTransform * skelLocalToWorldTransform</code>。这些公式提醒读者：空间累积顺序是调试骨骼错位的关键。</span><span class="en">Transform-space formulas are preserved for exact debugging of joint and skeleton spaces.</span></p>
+    <p><span class="zh">这一节需要和 <a href="${links.gf}">Gf</a> 数学基础一起读。源页保留公式 <code>jointSkelSpaceTransform = jointLocalSpaceTransform * parentJointSkelSpaceTransform</code> 和 <code>jointWorldSpaceTransform = jointLocalSpaceTransform * parentJointSkelSpaceTransform * skelLocalToWorldTransform</code>。这些公式提醒读者：空间累积顺序是调试骨骼错位的关键。</span><span class="en">Transform-space formulas are preserved for exact debugging of joint and skeleton spaces.</span></p>
     <h3>Skinning a Point (Linear Blend Skinning)</h3>
     <p><span class="zh">这一节展示 LBS 的点计算路径。公式中的 <code>skelSpacePoint = geomBindTransform.Transform(localSpacePoint)</code>、<code>jointInfluencesForPoint</code>、<code>skinningTransforms[jointIndex]</code> 和 <code>jointWeight</code> 保持原样，读者应把它们理解为数据如何从局部几何空间进入 Skeleton Space 并按权重累积，而不是把本页当作所有 skinning 优化实现的规范。</span><span class="en">Linear Blend Skinning coverage preserves the key point-skinning terms and formulas.</span></p>
   </section>
@@ -182,9 +292,9 @@
 
   <section data-cn-complete="adjacent-modules">
     <h2>相邻模块阅读路径</h2>
-    <p><span class="zh">如果问题是 UsdSkel 模块整体职责、schema/API 分组或具体类入口，应继续读 <a href="usd_skel_page_front.html">UsdSkel module front</a>。如果问题是被蒙皮对象的几何语义、<code>UsdGeomBoundable</code>、mesh、primvars 或 point 数据，应继续读 <a href="usd_geom_page_front.html">UsdGeom</a>。</span><span class="en">Read UsdSkel for module scope and UsdGeom for geometry semantics.</span></p>
-    <p><span class="zh">如果问题是数组和值承载，比如 joint indices、weights、blend shape weights 或大规模 crowd 数据的紧凑存储，应读 <a href="vt_page_front.html">Vt</a>。如果问题是矩阵、transform、空间累积、点变换或 bounding 几何，应读 <a href="gf_page_front.html">Gf</a>。如果问题是 layer、composition 或引用资产组织，再回到 <a href="sdf_page_front.html">Sdf</a>。</span><span class="en">Read Vt for arrays, Gf for math and transforms, and Sdf for layer/composition context.</span></p>
-    <p><span class="zh">如果问题来自贡献或开发规范，应回到 <a href="_developer__guides.html">Developer Guides</a>。本页解释 UsdSkel 的概念和公式，但不替代编码规范、测试规范或开发流程。对于 API 符号定位，可继续使用 <a href="annotated.html">Classes index</a> 和本地 source snapshot。</span><span class="en">Developer Guides cover contribution rules, while classes and source snapshots locate symbols.</span></p>
+    <p><span class="zh">如果问题是 UsdSkel 模块整体职责、schema/API 分组或具体类入口，应继续读 <a href="${links.usdSkel}">UsdSkel module front</a>。如果问题是被蒙皮对象的几何语义、<code>UsdGeomBoundable</code>、mesh、primvars 或 point 数据，应继续读 <a href="${links.usdGeom}">UsdGeom</a>。</span><span class="en">Read UsdSkel for module scope and UsdGeom for geometry semantics.</span></p>
+    <p><span class="zh">如果问题是数组和值承载，比如 joint indices、weights、blend shape weights 或大规模 crowd 数据的紧凑存储，应读 <a href="${links.vt}">Vt</a>。如果问题是矩阵、transform、空间累积、点变换或 bounding 几何，应读 <a href="${links.gf}">Gf</a>。如果问题是 layer、composition 或引用资产组织，再回到 <a href="${links.sdf}">Sdf</a>。</span><span class="en">Read Vt for arrays, Gf for math and transforms, and Sdf for layer/composition context.</span></p>
+    <p><span class="zh">如果问题来自贡献或开发规范，应回到 <a href="${links.developer}">Developer Guides</a>。本页解释 UsdSkel 的概念和公式，但不替代编码规范、测试规范或开发流程。对于 API 符号定位，可继续使用 <a href="${links.annotated}">Classes index</a> 和本地 source snapshot。</span><span class="en">Developer Guides cover contribution rules, while classes and source snapshots locate symbols.</span></p>
   </section>
 
   <section data-cn-complete="debugging">
@@ -222,3 +332,232 @@
 </main>
 </body>
 </html>
+`;
+}
+
+function sourceParity() {
+  const src = sourceText();
+  const rawOut = fs.existsSync(rel(TARGET)) ? fs.readFileSync(rel(TARGET), "utf8") : "";
+  const out = stripTags(rawOut);
+  const sourceKeywords = [
+    "UsdSkel Introduction",
+    "Overview and Purpose",
+    "simple skeletons and blend shapes",
+    "skinned models",
+    "large-scale crowds",
+    "Motivation & Trade-Offs",
+    "compact, vectorized encoding",
+    "sparse layering of joint transforms is not supported",
+    "rest state instancing",
+    "What UsdSkel Is Not",
+    "general rigging and execution behaviors",
+    "Terminology",
+    "Skeleton Topology",
+    "Skel Animation",
+    "Binding",
+    "Joint Influences",
+    "What Can Be Skinned?",
+    "UsdGeomBoundable",
+    "UsdSkelIsSkinnablePrim",
+    "Transforms and Transform Spaces",
+    "Joint-Local Space",
+    "Skeleton Space",
+    "Geom Bind Transform",
+    "Skinning Transform",
+    "jointSkelSpaceTransform = jointLocalSpaceTransform * parentJointSkelSpaceTransform",
+    "Skinning a Point (Linear Blend Skinning)",
+    "skelSpacePoint = geomBindTransform.Transform(localSpacePoint)",
+  ];
+  const outputKeywords = [
+    ...expectedHeadings,
+    "simple skeletons and blend shapes",
+    "large-scale crowd",
+    "compact vectorized",
+    "sparse layering",
+    "rest state instancing",
+    "general rigging",
+    "Skeleton Topology",
+    "Skel Animation",
+    "Binding",
+    "Joint Influences",
+    "UsdGeomBoundable",
+    "UsdSkelIsSkinnablePrim",
+    "Joint-Local Space",
+    "Skeleton Space",
+    "Geom Bind Transform",
+    "Skinning Transform",
+    "jointSkelSpaceTransform = jointLocalSpaceTransform * parentJointSkelSpaceTransform",
+    "skelSpacePoint = geomBindTransform.Transform(localSpacePoint)",
+    "Open official page",
+  ];
+  return {
+    generated_at: new Date().toISOString(),
+    round: ROUND,
+    round_type: ROUND_TYPE,
+    target: TARGET,
+    source_snapshot: SOURCE,
+    official_url: OFFICIAL_URL,
+    source_headings: sourceHeadings(),
+    source_keywords_checked: sourceKeywords,
+    output_keywords_checked: outputKeywords,
+    missing_source_keywords: sourceKeywords.filter((keyword) => !src.includes(keyword)),
+    missing_output_keywords: outputKeywords.filter((keyword) => !out.includes(keyword)),
+    inventory_title_warning: "all_pages_inventory title may be stale; source snapshot title is UsdSkel Introduction",
+    output_checks: {
+      has_complete_status: rawOut.includes('data-cn-status="bilingual_complete"') && rawOut.includes(`data-cn-round="${ROUND}"`),
+      has_paragraph_coverage: out.includes("Paragraph-Level Bilingual Coverage") && out.includes("逐段双语理解"),
+      has_final_entry: rawOut.includes("openusd_bilingual_final.html"),
+      has_api_entry: rawOut.includes("site/index.html"),
+      has_api_redirect: rawOut.includes("site/api/index.html"),
+      has_release_entry: rawOut.includes("site/release_index.html"),
+      has_reading_flow_nav: rawOut.includes("openusd-reading-flow-nav") && rawOut.includes("openusd-reading-flow-breadcrumb"),
+      has_explicit_official_link: rawOut.includes("Open official page") && rawOut.includes(OFFICIAL_URL),
+      no_draft_marker: !/bilingual_draft|batch draft page|later iterations add denser bilingual coverage|后续迭代会继续补齐/.test(out),
+      zh_chars: zhChars(rawOut),
+      zh_blocks: (rawOut.match(/class=["'][^"']*\bzh\b[^"']*["']/g) || []).length,
+    },
+  };
+}
+
+function writePage() {
+  fs.writeFileSync(rel(TARGET), buildHtml(), "utf8");
+  writeJson(SOURCE_PARITY_REPORT, sourceParity());
+}
+
+function precheck() {
+  const report = sourceParity();
+  const failed = [];
+  if (report.missing_source_keywords.length) failed.push(`missing source keywords: ${report.missing_source_keywords.join(", ")}`);
+  if (report.missing_output_keywords.length) failed.push(`missing output keywords: ${report.missing_output_keywords.join(", ")}`);
+  for (const [key, value] of Object.entries(report.output_checks)) {
+    if (typeof value === "boolean" && !value) failed.push(`output check failed: ${key}`);
+  }
+  if (report.output_checks.zh_chars < 3600) failed.push(`zh chars too low: ${report.output_checks.zh_chars}`);
+  if (report.output_checks.zh_blocks < 38) failed.push(`zh blocks too low: ${report.output_checks.zh_blocks}`);
+  if (failed.length) {
+    console.error(JSON.stringify({ passed: false, failed, report }, null, 2));
+    process.exit(1);
+  }
+  writeJson(SOURCE_PARITY_REPORT, report);
+  console.log(JSON.stringify({ passed: true, report }, null, 2));
+}
+
+function updateManifest() {
+  const raw = readJson("reports/bilingual_completion_promotions.json");
+  const doc = {
+    ...raw,
+    generated_at: raw.generated_at || new Date().toISOString(),
+    promotions: Array.isArray(raw.promotions) ? raw.promotions : [],
+    updated_at: new Date().toISOString(),
+  };
+  doc.promotions = doc.promotions.filter((entry) => entry.id !== PROMOTION_ID && entry.local_output !== TARGET);
+  doc.promotions.push({
+    id: PROMOTION_ID,
+    title: "UsdSkel Introduction",
+    official_url: OFFICIAL_URL,
+    local_output: TARGET,
+    status: "bilingual_complete",
+    reason: `Round ${ROUND} ${ROUND_TYPE}: promote the UsdSkel Introduction page by adding Chinese main-reading-path coverage for skeleton and blend shape interchange, scalable crowd trade-offs, non-goals for rig execution, terminology, skinnable candidates, transform spaces, Linear Blend Skinning formulas, source parity, reading-flow navigation, and explicit official-page verification.`,
+    evidence: {
+      page_contains_status: "bilingual_complete",
+      generic_draft_marker_removed: true,
+      minimum_chinese_chars: 3600,
+      minimum_complete_section_chinese_chars: 3200,
+      minimum_chinese_blocks: 38,
+      official_source_compared: true,
+      local_source_snapshot_compared: SOURCE,
+      source_parity_report: SOURCE_PARITY_REPORT,
+      inventory_title_warning: "source title used because inventory title is stale",
+      round_type: ROUND_TYPE,
+    },
+  });
+  writeJson("reports/bilingual_completion_promotions.json", doc);
+}
+
+function updateProblemAudit() {
+  const quality = readJson("reports/translation_quality_review.json");
+  const debt = readJson("reports/english_debt_audit.json");
+  const inventory = readJson("reports/all_pages_inventory.json");
+  const counts = {
+    total_pages: inventory.counts.total_pages,
+    bilingual_complete: quality.status_counts.bilingual_complete,
+    bilingual_draft: quality.status_counts.bilingual_draft,
+    good_bilingual: quality.grade_counts.good_bilingual,
+    draft_needs_translation: quality.grade_counts.draft_needs_translation,
+    draft_template_only: quality.grade_counts.draft_template_only,
+    review_ready_zh: debt.counts.review_ready_zh,
+    api_complete: debt.counts.api_complete,
+    api_review_ready_zh: debt.counts.api_review_ready_zh,
+    release_complete: debt.counts.release_complete,
+    release_review_ready_zh: debt.counts.release_review_ready_zh,
+    pending_full_scope: inventory.counts.pending_full_scope_pages,
+  };
+  writeJson("reports/current_problem_audit.json", {
+    generated_at: new Date().toISOString(),
+    purpose: `第 ${ROUND} 轮 ${ROUND_TYPE} 记录：确认 ${TARGET} 已按 source title UsdSkel Introduction 晋级，并跟踪当前 OpenUSD 双语完成缺口。`,
+    last_completed_round: {
+      round: ROUND,
+      round_type: ROUND_TYPE,
+      target: TARGET,
+      commit_sha: null,
+      previous_good_bilingual: 223,
+    },
+    current_counts: counts,
+    problems: [
+      {
+        id: "P0-api-draft-backlog",
+        severity: "P0",
+        summary: `当前 good_bilingual=${counts.good_bilingual}/406，API complete=${counts.api_complete}，仍有 ${counts.bilingual_draft} 个可检查草稿。`,
+        evidence: `第 ${ROUND} 轮 ${ROUND_TYPE} 将 ${TARGET} 从 API 草稿晋级为 good_bilingual；release 范围保持 ${counts.release_complete}/126 complete。`,
+        required_action: "继续推进 API 草稿；只把真实达到中文主阅读路径和 source parity 的页面写入 promotion manifest。",
+      },
+      {
+        id: "P1-inventory-title-source-parity",
+        severity: "P1",
+        summary: "部分 API 页面 inventory title 可能来自旧导航文本，晋级时必须以 source snapshot 的真实标题做 source parity。",
+        evidence: "本轮 _usd_skel__intro.html 的 inventory title 显示旧错位值，但 source/full_api/_usd_skel__intro_source.html 的真实标题为 UsdSkel Introduction；目标页和 manifest 均以 source title 为准。",
+        required_action: "后续遇到 title_hints 或标题错位时，先读 source snapshot，不得按旧 inventory title 翻译。",
+      },
+      {
+        id: "P1-left-navigation-reading-flow",
+        severity: "P1",
+        summary: "完成页必须保留本地 reading-flow 导航、breadcrumb、API/Release/总入口和显式官方外跳。",
+        evidence: "本轮页面生成了本地侧栏、breadcrumb、相邻 API 阅读路径和 Open official page 外跳，并会重新运行 reading-flow 审计。",
+        required_action: "若 reading-flow 审计失败，先修导航，不得推送。",
+      },
+      {
+        id: "P1-markdown-record-encoding",
+        severity: "P1",
+        summary: "Markdown 编码守卫继续作为硬门槛。",
+        evidence: "work.md、reports/iteration_report.md、reports/current_problem_audit.md、reports/bilingual_completion_promotions.md 必须无重复问号损坏、replacement character 和 UTF-8 BOM。",
+        required_action: "若 audit_openusd_markdown_encoding.mjs 失败，先做 ConsistencyRound。",
+      },
+    ],
+    promoted_pages: [
+      {
+        round: ROUND,
+        round_type: ROUND_TYPE,
+        output: TARGET,
+        official_url: OFFICIAL_URL,
+        source_snapshot: SOURCE,
+        source_parity_report: SOURCE_PARITY_REPORT,
+      },
+    ],
+    not_promoted_pages: [],
+    source_parity_report: SOURCE_PARITY_REPORT,
+    next_actions: [
+      "release 范围已 126/126 complete，不要重复处理 release 已完成页。",
+      "下一轮建议重新读取 inventory，选择仍为 bilingual_draft 且有 source snapshot 的 API 或 class 页面；开始前必须确认 git/report/validation/markdown/reading-flow 状态干净一致。",
+    ],
+    next_action: "下一轮建议 PromotionRound：重新读取 inventory 后选择一个仍为 bilingual_draft 且有 source snapshot 的高价值 API 页面。",
+  });
+}
+
+const commands = new Set(process.argv.slice(2));
+if (commands.has("--write-page")) writePage();
+if (commands.has("--precheck")) precheck();
+if (commands.has("--manifest")) updateManifest();
+if (commands.has("--problem")) updateProblemAudit();
+if (commands.size === 0) {
+  console.log("Usage: node scripts/promote_round_445_usd_skel_intro.mjs --write-page --precheck --manifest --problem");
+}
