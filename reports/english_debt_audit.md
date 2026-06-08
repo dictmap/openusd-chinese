@@ -1,6 +1,6 @@
 # OpenUSD English Debt Audit
 
-Generated: 2026-06-08T08:36:07.579Z
+Generated: 2026-06-08T08:57:22.598Z
 
 Purpose:
 
@@ -12,16 +12,16 @@ Purpose:
 ## Counts
 
 - Total pages: 406
-- good_bilingual: 201
-- review_ready_zh: 138
+- good_bilingual: 202
+- review_ready_zh: 139
 - review_needs_zh_debt: 63
-- API complete: 75
-- API review_ready_zh: 15
+- API complete: 76
+- API review_ready_zh: 16
 - Release complete: 126
 - Release review_ready_zh: 123
 - Complete pages with high/very high ratio diagnostic: 13
-- bilingual_draft: 205
-- draft_needs_translation: 195
+- bilingual_draft: 204
+- draft_needs_translation: 194
 - draft_template_only: 10
 
 ## Complete Pages Still Carrying English Debt
@@ -67,12 +67,12 @@ Purpose:
 | 253 | `full_site/api/struct_usd_skel_tokens_type.html` | api | class_or_struct | 397 | 6/3 | 4.37 | high | draft |
 | 69 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | api | general | 66 | 1/3 | 4.12 | high | draft |
 | 257 | `full_site/api/usd_2usd_2object_8h.html` | api | general | 332 | 6/3 | 3.82 | medium | draft |
-| 263 | `full_site/api/usd_mtlx_page_front.html` | api | module_front | 470 | 6/4 | 3.74 | medium | draft |
 | 66 | `full_site/api/classpxr__tsl_1_1robin__map.html` | api | general | 353 | 4/3 | 3.71 | medium | draft |
 | 260 | `full_site/api/usd_hydra_page_front.html` | api | module_front | 475 | 6/4 | 3.67 | medium | draft |
 | 229 | `full_site/api/md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html` | api | general | 555 | 5/3 | 3.63 | medium | draft |
 | 228 | `full_site/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html` | api | general | 361 | 3/3 | 3.5 | medium | draft |
 | 224 | `full_site/api/md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html` | api | general | 526 | 5/3 | 3.5 | medium | draft |
+| 137 | `full_site/api/functions_vars_f.html` | api | index | 411 | 3/2 | 3.48 | medium | draft |
 
 ## Release Pages To Pull Forward
 

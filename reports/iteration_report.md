@@ -11,22 +11,22 @@
 ## 真实计数
 
 - total_pages：406
-- good_bilingual：201
-- review_ready_zh：138
-- bilingual_complete：201
-- bilingual_draft：205
-- draft_needs_translation：195
+- good_bilingual：202
+- review_ready_zh：139
+- bilingual_complete：202
+- bilingual_draft：204
+- draft_needs_translation：194
 - draft_template_only：10
 - pending_full_scope：0
-- api_complete：75
+- api_complete：76
 - release_complete：126
 
 ## 验证
 
 - validation_report：passed=true，failed_check_count=0，required_check_count=311
-- translation_quality：good_bilingual=201
-- english_debt：review_ready_zh=138，review_needs_zh_debt=63
-- promotion manifest：193 entries
+- translation_quality：good_bilingual=202
+- english_debt：review_ready_zh=139，review_needs_zh_debt=63
+- promotion manifest：194 entries
 
 ## 本轮改动文件
 
