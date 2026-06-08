@@ -14,3 +14,11 @@
 ## 下一步
 
 click-path 审计已绿；下一轮恢复 PromotionRound 前仍必须先核对 git/report/validation/markdown/reading-flow 状态。
+
+## 第 454 轮 ConsistencyRound
+
+- 缺陷 id：`P1-round-453-commit-sha-record-consistency`
+- 阶段：S3 报告一致性
+- 修复范围：只修复第 453 轮问题审计记录，把 `reports/current_problem_audit.json` 中 `last_completed_round.commit_sha` 从空记录补为真实已推送 SHA `bd8a4625c9401c48d46f987fd37167b59878735e`。
+- 计数约束：不翻译新页，不处理 `full_site/api/struct_usd_skel_tokens_type.html`，不修改 promotion manifest，不改变 good_bilingual、review_ready_zh、api_complete、release_complete 或 bilingual_draft。
+- 验收要求：validation、markdown_encoding、reading-flow、click_path_order 继续保持 passed；第 453 轮记录不得再出现 `commit_sha:null`。
