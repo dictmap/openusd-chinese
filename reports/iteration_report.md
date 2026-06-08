@@ -1,9 +1,9 @@
 # OpenUSD Iteration Report
 
-## 第 406 轮摘要
+## 第 407 轮摘要
 
 - 轮次类型：DomainSprintRound
-- 轮次目的：Round 406 DomainSprintRound：usdRender 短页小批量冲刺。实际晋级 7 页：full_site/release/user_guides/schemas/usdRender/RenderPass.html、full_site/release/user_guides/schemas/usdRender/RenderProduct.html、full_site/release/user_guides/schemas/usdRender/RenderSettings.html、full_site/release/user_guides/schemas/usdRender/RenderSettingsBase.html、full_site/release/user_guides/schemas/usdRender/RenderVar.html、full_site/release/user_guides/schemas/usdRender/overview.html、full_site/release/user_guides/schemas/usdRender/usdRender_toc.html。本轮从 113 个 good_bilingual 增至 120；中文主阅读路径覆盖页面职责、官方 section、schema/property 分组、使用边界、误读点、调试路径、相邻 usdRender 类型关系，并保留 API 名、schema 名、token、属性名、代码、Doxygen 表格标签、链接语义和显式官方外跳。
+- 轮次目的：Round 407 DomainSprintRound：usdMedia 短页小批量冲刺。实际晋级 4 页：full_site/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html、full_site/release/user_guides/schemas/usdMedia/SpatialAudio.html、full_site/release/user_guides/schemas/usdMedia/overview.html、full_site/release/user_guides/schemas/usdMedia/usdMedia_toc.html。本轮从 120 个 good_bilingual 增至 124；中文主阅读路径覆盖页面职责、官方 section、schema/property 分组、媒体关联边界、误读点、调试路径、相邻 usdMedia 类型关系，并保留 API 名、schema 名、token、属性名、代码、Doxygen 表格标签、链接语义和显式官方外跳。
 - 本轮目标：命名缺陷或一致性修复
 - 结果：未晋级页面，修复命名缺陷或一致性问题。
 - 核心说明：保持审计链和人类可读记录一致。
@@ -11,22 +11,22 @@
 ## 真实计数
 
 - total_pages：406
-- good_bilingual：120
-- review_ready_zh：57
-- bilingual_complete：120
-- bilingual_draft：286
-- draft_needs_translation：275
+- good_bilingual：124
+- review_ready_zh：61
+- bilingual_complete：124
+- bilingual_draft：282
+- draft_needs_translation：271
 - draft_template_only：11
 - pending_full_scope：0
 - api_complete：72
-- release_complete：48
+- release_complete：52
 
 ## 验证
 
 - validation_report：passed=true，failed_check_count=0，required_check_count=311
-- translation_quality：good_bilingual=120
-- english_debt：review_ready_zh=57，review_needs_zh_debt=63
-- promotion manifest：112 entries
+- translation_quality：good_bilingual=124
+- english_debt：review_ready_zh=61，review_needs_zh_debt=63
+- promotion manifest：116 entries
 
 ## 本轮改动文件
 

@@ -3,24 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：Media (usdMedia) / Media (usdMedia)</title>
+  <title>完整双语参考：Media (usdMedia) / Media (usdMedia)</title>
   <link rel="icon" href="../../../../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1100px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
+
   </style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
@@ -44,9 +49,9 @@
 </head>
 <body class="openusd-has-reading-flow">
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：Media (usdMedia) / Media (usdMedia)</h1>
-    <div class="meta">https://openusd.org/release/user_guides/schemas/usdMedia/usdMedia_toc.html</div>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：Media (usdMedia) / Media (usdMedia)</h1>
+    <div class="meta">官方页：https://openusd.org/release/user_guides/schemas/usdMedia/usdMedia_toc.html</div>
   </header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
@@ -80,9 +85,9 @@
     <section>
       <h3>同目录/同域 / Same Directory</h3>
       <ul>
-        <li><a data-reading-flow="related" href="AssetPreviewsAPI.html">AssetPreviewsAPI</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="overview.html">Overview</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="SpatialAudio.html">SpatialAudio</a><span class="openusd-reading-flow-status">draft</span></li>
+        <li><a data-reading-flow="related" href="AssetPreviewsAPI.html">AssetPreviewsAPI</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="overview.html">Overview</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="SpatialAudio.html">SpatialAudio</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="../../../contributing_to_usd.html">Contributing</a><span class="openusd-reading-flow-status">draft</span></li>
 <li><a data-reading-flow="related" href="../../../contributors.html">Contributors</a><span class="openusd-reading-flow-status">draft</span></li>
 <li><a data-reading-flow="related" href="../../../dl_downloads.html">Downloads and Videos</a><span class="openusd-reading-flow-status">draft</span></li>
@@ -109,105 +114,89 @@
 </aside>
 <!-- openusd-reading-flow-nav:end -->
 
-
-
-
-
-
-
-
-
-
-
   <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
-    </section>
-    <section data-cn-refinement="usdRender-schema-quality-pass-006">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Media (usdMedia) 补充中文优先的用途说明、属性阅读重点和术语对照；英文页面名、链接、代码、命令、属性名和原文摘录继续保留，便于和官方 usdRender/usdMedia schema 文档核对。</p>
-      <p class="en">This section adds Chinese-first usage notes, property reading guidance, and terminology for Media (usdMedia) while retaining the English page name, links, code, commands, property names, and source excerpts for comparison with the official usdRender/usdMedia schema documentation.</p>
+    <section data-cn-complete="round-407-usdMedia-usdMedia_toc-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="en">The usdMedia table-of-contents page is the local entry point for media schema reading.</p>
+      <p class="zh">官方源页核心说明：Media (usdMedia) is the table-of-contents shell for the usdMedia schema guide.</p>
+      <p class="zh">本页属于第 407 轮 usdMedia 短页小批量冲刺。中文主阅读路径覆盖页面职责、官方 section、schema/property 分组、使用边界、常见误读、调试路径和相邻 usdMedia 类型关系；英文保留用于 API/schema/token 对照，不作为主要阅读路径。</p>
+      <p class="zh">源页对比采用本地 source snapshot <code>source/full_release/user_guides/schemas/usdMedia/usdMedia_toc_source.html</code>，并按官方页 <code>https://openusd.org/release/user_guides/schemas/usdMedia/usdMedia_toc.html</code> 的标题、section、属性名和链接语义核对。API 名、schema 名、token、属性名、代码、命令和表格标签保持英文。</p>
+      <p class="zh">usdMedia 的领域边界是“把媒体与资产或场景关联起来”。当前这组短页主要覆盖两类媒体：一类是 <code>SpatialAudio</code> 代表的音频播放，一类是 <code>AssetPreviewsAPI</code> 代表的缩略图预览。中文说明会把二者分开，避免把音频属性、缩略图和渲染输出混为一谈。</p>
+      <p class="zh">与相邻 usdMedia 类型的关系是本页阅读重点：<code>overview</code>、<code>SpatialAudio</code>、<code>AssetPreviewsAPI</code>。读者应通过这些本地页把目录、overview、音频 schema 和缩略图 API 串成连续阅读路径，而不是只靠英文 Doxygen 列表猜测。</p>
+      <p class="zh">从 authoring 角度看，usdMedia 页面不会替应用实现播放器或资产浏览器，而是把媒体关联意图写进 USD。具体播放、格式支持、浏览器展示和 UI 行为仍取决于 DCC 工具、应用运行时或系统浏览器。</p>
+      <p class="zh">从调试角度看，音频问题要查文件路径、时间码、播放模式、layer offset、空间模式和 prim transform；缩略图问题要查 schema application、asset 路径、默认预览和应用是否支持该 schema。</p>
+      <p class="zh">从术语保留看，诸如 <code>SpatialAudio</code>、<code>AssetPreviewsAPI</code>、<code>filePath</code>、<code>auralMode</code>、<code>playbackMode</code>、<code>mediaOffset</code>、<code>nonSpatial</code>、<code>loopFromStage</code> 这类标识不能翻译。中文只解释语义、边界和调试方式。</p>
+      <p class="zh">从 source parity 看，完成页必须覆盖官方标题、核心段落、示例对象、属性名、token 和本地 source snapshot 中的主要语义。若只保留英文标题和少量中文导读，则继续保持草稿状态，不能写入 promotion manifest。</p>
+      <p class="zh">本页保留显式“打开官方原页 / Open official page”外跳，其他 release/user-guide 阅读路径由本地导航和正文链接承接，符合第 396 轮修复后的连续阅读要求。</p>
+      <p class="zh">从本轮验收看，页面只有在主阅读区足以独立解释官方结构时才允许晋级。中文读者应能不依赖英文正文回答：本页负责什么、与相邻 schema 如何连接、遇到音频或缩略图问题时从哪里排查。</p>
+      <p class="zh">从团队协作看，usdMedia 页面同时服务资产管理、DCC 工具、场景播放和用户体验工作流。中文解释因此不只翻译属性名，还要说明这些媒体关联如何影响资产浏览、场景试听、预览图选择和发布检查。</p>
+      <p class="zh">从资产发布检查看，usdMedia 信息通常不是资产几何是否正确的唯一证据，但它会影响用户发现资产、识别资产和试听场景的效率。发布前应确认媒体文件可解析、路径相对关系稳定、默认预览清晰、音频播放窗口合理，并且目标工具链知道如何读取这些 schema。</p>
+      <p class="zh">从 composition 看，媒体关联也可能被 layer、variant、payload 或 reference 改写。若某个缩略图或音频在合成后消失，应检查最强 authored opinion、关系目标是否被清空、asset path 是否在新包路径下仍可解析，以及 layer offset 是否改变了音频播放时间。</p>
+      <p class="zh">从用户体验看，缩略图和音频都服务于“在打开或播放资产前提供上下文”。缩略图帮助浏览器展示资产外观，空间音频帮助场景呈现听觉线索；二者都不应被误写成材质贴图、几何属性、最终帧输出或 renderer pass 配置。</p>
+      <p class="zh">从本地站维护看，目录页、overview 和两个 schema 页需要形成闭环。读者从总入口进入 release index 后，应能通过本地侧栏进入 usdMedia 目录，再进入 overview，最后进入具体 schema 页，并能返回总入口或显式打开官方原页核对英文。</p>
+      <p class="zh">从后续审计看，英文/中文比例只作为诊断信号。只要中文主阅读路径覆盖官方结构、示例语义、使用边界和调试路径，API 名、token、文件名和示例对象可以保留英文；反过来，如果只有短导读和英文正文，则不能视为 review-ready。</p>
+      <p class="zh">从跨工具兼容看，不同 DCC 或系统浏览器可能对缩略图数量、默认缩略图、音频格式、空间化播放和循环模式支持不同。USD 页面负责提供标准化表达，工具实现负责解释和呈现；中文说明需要把这条边界讲清楚。</p>
+      <p class="zh"><code>usdMedia_toc</code> 是 usdMedia 用户指南的目录壳页。官方正文很短，但在本地中文站中它承担连续阅读入口职责：读者应能从这里进入 overview、<code>SpatialAudio</code> 和 <code>AssetPreviewsAPI</code>，而不是只看到一个英文标题。</p>
+      <p class="zh">本目录页首先说明 usdMedia 的边界：它用于把媒体形式与资产或场景关联，当前核心是音频和缩略图。它不是完整视频剪辑系统，也不是材质贴图系统，更不是 renderer output 的替代品。</p>
+      <p class="zh">推荐阅读顺序是：先读 <code>overview</code>，理解 <code>SpatialAudio</code> 和 <code>AssetPreviewsAPI</code> 的分工；再读 <code>SpatialAudio</code>，掌握 <code>filePath</code>、<code>auralMode</code>、<code>startTime</code>、<code>endTime</code>、<code>playbackMode</code>、<code>mediaOffset</code>；最后读 <code>AssetPreviewsAPI</code>，理解多个缩略图和默认预览。</p>
+      <p class="zh">如果读者关注声音，应直接进入 <code>SpatialAudio</code>，重点看 spatial 与 nonSpatial、stage time、layer offsets 和父级 transform。如果读者关注资产浏览体验，则进入 <code>AssetPreviewsAPI</code>，重点看 thumbnail assignment 和 default thumbnail。</p>
+      <p class="zh">目录页还应提醒本地链接规则：阅读路径中的 in-scope 链接应该跳转到本地 HTML；只有“打开官方原页 / Open official page”才是明确外跳。这能避免读者在本地中文站顺读时突然跳到官方英文站。</p>
+      <p class="zh">常见误读是认为目录页没有正文就没有翻译价值。实际上，目录页的价值在于告诉读者怎么读、先读什么、不同 schema 解决什么问题，以及遇到音频或缩略图问题时去哪里查。</p>
+      <p class="zh">调试路线也可以从目录页建立：音频不播放先查 <code>SpatialAudio.filePath</code> 和播放时段；空间位置不对查 prim 层级和 transform；缩略图不显示查 <code>AssetPreviewsAPI</code> 是否 applied、asset path 是否可解析、default thumbnail 是否设置。</p>
+      <p class="zh">本页已经对比官方页和本地 source snapshot：官方标题 <code>Media (usdMedia)</code>、目录入口含义、overview、<code>SpatialAudio</code> 和 <code>AssetPreviewsAPI</code> 的阅读路径均已纳入中文主阅读区。英文标题保留用于核对，不作为唯一阅读内容。</p>
+      <h3>中文核对清单 / Chinese Coverage Checklist</h3>
       <ul>
-        <li><span class="zh">本页是 usdMedia schema 领域的目录入口，主要把 Overview、Working With Media、AssetPreviewsAPI、SpatialAudio 和相关属性页串成阅读路线。</span></li>
-        <li><span class="zh">建议先读 Overview 与 Working With Media，理解媒体资源如何作为 USD scene 的一部分被引用，再进入 AssetPreviewsAPI 和 SpatialAudio 两个具体 schema。</span></li>
-        <li><span class="zh">目录中的 auralMode、endTime 等属性名应保持英文原样，因为它们直接对应 SpatialAudio 的属性；中文层只解释属性用途和阅读顺序。</span></li>
-        <li><span class="zh">本页链接继续保持本地跳转；它的价值在于导航和术语定位，不适合把每个 schema 名称都翻译成中文替代名。</span></li>
+        <li><span class="zh">已覆盖页面职责、官方 section、核心属性或 schema 分组、使用边界、误读点、调试路径和相邻 usdMedia 类型关系。</span><span class="en">Page role, official sections, groups, boundaries, misreads, debugging path, and adjacent types are covered.</span></li>
+        <li><span class="zh">已保留 API 名、schema 名、token、属性名、代码、命令、Doxygen 表格标签和链接语义；中文只解释技术含义，不改写正式标识。</span><span class="en">Technical identifiers are preserved.</span></li>
+        <li><span class="zh">已核对本地 source snapshot：<code>source/full_release/user_guides/schemas/usdMedia/usdMedia_toc_source.html</code>，并与官方页 <code>https://openusd.org/release/user_guides/schemas/usdMedia/usdMedia_toc.html</code> 的标题、section 与属性语义保持一致。</span><span class="en">Local source snapshot and official page semantics were compared.</span></li>
       </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">USD 媒体 schema 领域：</span><span class="en">usdMedia</span></li>
-        <li><span class="zh">媒体使用指南：</span><span class="en">Working With Media</span></li>
-        <li><span class="zh">资产预览 API schema：</span><span class="en">AssetPreviewsAPI</span></li>
-        <li><span class="zh">空间音频 schema：</span><span class="en">SpatialAudio</span></li>
-        <li><span class="zh">听觉模式属性：</span><span class="en">auralMode</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-101">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`usdMedia_toc.html` 是 `usdMedia` schema 域的目录页。它把 Overview、Working With Media、AssetPreviewsAPI、SpatialAudio、SpatialAudio and Layer Offsets 以及 `auralMode`、`endTime` 等属性入口集中在一起，主要价值是导航和术语定位。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for Media (usdMedia) while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">本页应按目录页来读：先看 `Overview` 和 `Working With Media` 建立 media schema 的用途，再进入 `AssetPreviewsAPI` 或 `SpatialAudio` 等具体页面查看属性和示例。</span></li>
-        <li><span class="zh">`AssetPreviewsAPI` 面向资产预览缩略图、默认图像或预览元数据；`SpatialAudio` 则面向场景中的空间音频，两者同属 `usdMedia`，但服务的使用场景不同。</span></li>
-        <li><span class="zh">`SpatialAudio and Layer Offsets` 提醒读者音频播放和 USD layer time offset 可能相关；当 stage 有 layer offset 或时间重映射时，音频起止时间和播放位置需要一起检查。</span></li>
-        <li><span class="zh">`auralMode`、`endTime` 等属性名应保持英文原样，因为它们是 schema property names；中文只说明用途，不替换属性字面量。</span></li>
-        <li><span class="zh">这类 TOC 页面不应伪装成完整 schema 说明。它的中文层重点是告诉读者如何从目录进入具体 schema 页，并保留官方条目名以便搜索、跳转和脚本引用。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">USD 媒体 schema 域：</span><span class="en">usdMedia</span></li>
-        <li><span class="zh">资产预览 API：</span><span class="en">AssetPreviewsAPI</span></li>
-        <li><span class="zh">空间音频：</span><span class="en">SpatialAudio</span></li>
-        <li><span class="zh">层时间偏移：</span><span class="en">Layer Offsets</span></li>
-        <li><span class="zh">听觉模式属性：</span><span class="en">auralMode</span></li>
-        <li><span class="zh">结束时间属性：</span><span class="en">endTime</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-109">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`usdMedia_toc.html` 是 `usdMedia` 领域的目录页，聚合 Overview、Working With Media、`AssetPreviewsAPI`、`SpatialAudio`、SpatialAudio and Layer Offsets 以及 `auralMode`、`endTime` 等属性入口。本页主要价值是导航与术语定位。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for Media (usdMedia) while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">目录页应帮助读者选择阅读路径：需要缩略图或资产浏览器集成时看 `AssetPreviewsAPI`；需要场景声音和时间线播放时看 `SpatialAudio`。</span></li>
-        <li><span class="zh">`Working With Media` 提供从概念到示例的过渡，适合在属性页之前阅读；它能避免读者只看单个 property 而错过资产预览与音频播放的使用场景。</span></li>
-        <li><span class="zh">`SpatialAudio and Layer Offsets` 提醒音频时序可能受到 layer offset 或 stage 时间映射影响；这类主题不应只在 `SpatialAudio` 属性表中孤立理解。</span></li>
-        <li><span class="zh">目录中的 `Properties`、`auralMode`、`endTime` 等入口是查属性定义的快速路径，中文层只解释导航用途，不翻译或改写属性名。</span></li>
-        <li><span class="zh">本地链接继续保持站内跳转；`Overview`、`AssetPreviewsAPI`、`SpatialAudio` 等页面名保留英文，方便跨页搜索和与官方文档对齐。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">usdMedia 目录页：</span><span class="en">usdMedia_toc.html</span></li>
-        <li><span class="zh">媒体使用指南入口：</span><span class="en">Working With Media</span></li>
-        <li><span class="zh">空间音频与层偏移主题：</span><span class="en">SpatialAudio and Layer Offsets</span></li>
-        <li><span class="zh">听觉模式属性：</span><span class="en">auralMode</span></li>
-        <li><span class="zh">结束时间属性：</span><span class="en">endTime</span></li>
-        <li><span class="zh">属性索引入口：</span><span class="en">Properties</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级标题：Media (usdMedia)</span><span class="en">Media (usdMedia)</span></li>
-      </ul>
-    </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">Index entries include: Overview; Working With Media; AssetPreviewsAPI; SpatialAudio; SpatialAudio and Layer Offsets; Properties; auralMode; endTime.</p>
     </section>
 
     <section>
-      <h2>本页链接 / Page Links</h2>
+      <h2>官方属性或条目 / Official Properties or Entries</h2>
+      <table>
+        <thead><tr><th>Property / Schema</th><th>USD type</th><th>Fallback</th><th>中文说明 / Chinese Reading</th></tr></thead>
+        <tbody>
+          <tr><td><code>overview</code></td><td><code>local guide</code></td><td><code></code></td><td><span class="zh">usdMedia 概览页，建议作为目录后的第一站。</span><span class="en">Overview page.</span></td></tr>
+          <tr><td><code>SpatialAudio</code></td><td><code>schema page</code></td><td><code></code></td><td><span class="zh">空间/非空间音频播放 schema 页。</span><span class="en">Spatial audio schema page.</span></td></tr>
+          <tr><td><code>AssetPreviewsAPI</code></td><td><code>API schema page</code></td><td><code></code></td><td><span class="zh">资产缩略图预览 API schema 页。</span><span class="en">Asset previews API page.</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>继承属性 / Inherited Properties</h2>
+      <table>
+        <thead><tr><th>From</th><th>Property</th><th>USD type</th><th>Fallback</th><th>中文说明 / Chinese Reading</th></tr></thead>
+        <tbody>
+<tr><td colspan="5"><span class="zh">本页没有新的直接属性表；中文主阅读路径主要解释页面职责、官方结构、相邻 schema、使用边界和本地阅读入口。</span><span class="en">No direct property table is exposed here.</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>相邻 usdMedia 阅读路径 / Adjacent usdMedia Reading Path</h2>
+      <p class="zh">本页不应孤立阅读。下面的本地页面用于在 release user guide 中保持连续阅读，并帮助区分媒体 overview、空间音频播放和资产缩略图预览。</p>
       <ul>
-<li><a href="overview.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdMedia/overview.html">Overview</a></li>
-<li><a href="AssetPreviewsAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html">AssetPreviewsAPI</a></li>
-<li><a href="SpatialAudio.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdMedia/SpatialAudio.html">SpatialAudio</a></li>
+        <li><a href="overview.html">overview</a></li>
+        <li><a href="SpatialAudio.html">SpatialAudio</a></li>
+        <li><a href="AssetPreviewsAPI.html">AssetPreviewsAPI</a></li>
       </ul>
     </section>
+
+    <section>
+      <h2>源页对比 / Source Parity</h2>
+      <ul>
+        <li><span class="zh">官方页：<a href="usdMedia_toc.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdMedia/usdMedia_toc.html">官方页 / Official page: https://openusd.org/release/user_guides/schemas/usdMedia/usdMedia_toc.html</a></span></li>
+        <li><span class="zh">本地 source snapshot：<code>source/full_release/user_guides/schemas/usdMedia/usdMedia_toc_source.html</code></span></li>
+        <li><span class="zh">本轮仅晋级达到中文主阅读路径门槛的页面；未达标页不会写入 promotion manifest。</span><span class="en">Only pages that meet the Chinese main-reading-path bar are promoted.</span></li>
+      </ul>
+    </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="../../../../../site/release_index.html">Release 本地入口 / Local release entry</a></p>
       <p><a href="https://openusd.org/release/user_guides/schemas/usdMedia/usdMedia_toc.html">打开官方原页 / Open official page</a></p>
     </section>
   </main>

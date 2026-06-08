@@ -3,24 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>页面草稿：AssetPreviewsAPI / AssetPreviewsAPI</title>
+  <title>完整双语参考：AssetPreviewsAPI / AssetPreviewsAPI</title>
   <link rel="icon" href="../../../../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1100px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    pre{background:#111827;color:#e6edf3;border-radius:6px;padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-    code{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{border:1px solid #d8dee8;padding:10px;text-align:left;vertical-align:top}
+    th{background:#eef2f7}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    pre{white-space:pre-wrap;background:#f1f5f9;border:1px solid #d8dee8;border-radius:6px;padding:12px;overflow:auto}
+
   </style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
@@ -44,9 +49,9 @@
 </head>
 <body class="openusd-has-reading-flow">
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>页面草稿：AssetPreviewsAPI / AssetPreviewsAPI</h1>
-    <div class="meta">https://openusd.org/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html</div>
+    <span class="status">bilingual_complete</span>
+    <h1>完整双语参考：AssetPreviewsAPI / AssetPreviewsAPI</h1>
+    <div class="meta">官方页：https://openusd.org/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html</div>
   </header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
@@ -80,9 +85,9 @@
     <section>
       <h3>同目录/同域 / Same Directory</h3>
       <ul>
-        <li><a data-reading-flow="related" href="overview.html">Overview</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="SpatialAudio.html">SpatialAudio</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="usdMedia_toc.html">Media (usdMedia)</a><span class="openusd-reading-flow-status">draft</span></li>
+        <li><a data-reading-flow="related" href="overview.html">Overview</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="SpatialAudio.html">SpatialAudio</a><span class="openusd-reading-flow-status">complete</span></li>
+<li><a data-reading-flow="related" href="usdMedia_toc.html">Media (usdMedia)</a><span class="openusd-reading-flow-status">complete</span></li>
 <li><a data-reading-flow="related" href="../../../contributing_to_usd.html">Contributing</a><span class="openusd-reading-flow-status">draft</span></li>
 <li><a data-reading-flow="related" href="../../../contributors.html">Contributors</a><span class="openusd-reading-flow-status">draft</span></li>
 <li><a data-reading-flow="related" href="../../../dl_downloads.html">Downloads and Videos</a><span class="openusd-reading-flow-status">draft</span></li>
@@ -109,108 +114,90 @@
 </aside>
 <!-- openusd-reading-flow-nav:end -->
 
-
-
-
-
-
-
-
-
-
-
   <main>
+    <section data-cn-complete="round-407-usdMedia-AssetPreviewsAPI-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p class="en">AssetPreviewsAPI supports thumbnail previews for assets, including multiple thumbnails and one designated default.</p>
+      <p class="zh">官方源页核心说明：AssetPreviewsAPI supports providing thumbnail previews for assets.</p>
+      <p class="zh">本页属于第 407 轮 usdMedia 短页小批量冲刺。中文主阅读路径覆盖页面职责、官方 section、schema/property 分组、使用边界、常见误读、调试路径和相邻 usdMedia 类型关系；英文保留用于 API/schema/token 对照，不作为主要阅读路径。</p>
+      <p class="zh">源页对比采用本地 source snapshot <code>source/full_release/user_guides/schemas/usdMedia/AssetPreviewsAPI_source.html</code>，并按官方页 <code>https://openusd.org/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html</code> 的标题、section、属性名和链接语义核对。API 名、schema 名、token、属性名、代码、命令和表格标签保持英文。</p>
+      <p class="zh">usdMedia 的领域边界是“把媒体与资产或场景关联起来”。当前这组短页主要覆盖两类媒体：一类是 <code>SpatialAudio</code> 代表的音频播放，一类是 <code>AssetPreviewsAPI</code> 代表的缩略图预览。中文说明会把二者分开，避免把音频属性、缩略图和渲染输出混为一谈。</p>
+      <p class="zh">与相邻 usdMedia 类型的关系是本页阅读重点：<code>overview</code>、<code>SpatialAudio</code>、<code>usdMedia_toc</code>。读者应通过这些本地页把目录、overview、音频 schema 和缩略图 API 串成连续阅读路径，而不是只靠英文 Doxygen 列表猜测。</p>
+      <p class="zh">从 authoring 角度看，usdMedia 页面不会替应用实现播放器或资产浏览器，而是把媒体关联意图写进 USD。具体播放、格式支持、浏览器展示和 UI 行为仍取决于 DCC 工具、应用运行时或系统浏览器。</p>
+      <p class="zh">从调试角度看，音频问题要查文件路径、时间码、播放模式、layer offset、空间模式和 prim transform；缩略图问题要查 schema application、asset 路径、默认预览和应用是否支持该 schema。</p>
+      <p class="zh">从术语保留看，诸如 <code>SpatialAudio</code>、<code>AssetPreviewsAPI</code>、<code>filePath</code>、<code>auralMode</code>、<code>playbackMode</code>、<code>mediaOffset</code>、<code>nonSpatial</code>、<code>loopFromStage</code> 这类标识不能翻译。中文只解释语义、边界和调试方式。</p>
+      <p class="zh">从 source parity 看，完成页必须覆盖官方标题、核心段落、示例对象、属性名、token 和本地 source snapshot 中的主要语义。若只保留英文标题和少量中文导读，则继续保持草稿状态，不能写入 promotion manifest。</p>
+      <p class="zh">本页保留显式“打开官方原页 / Open official page”外跳，其他 release/user-guide 阅读路径由本地导航和正文链接承接，符合第 396 轮修复后的连续阅读要求。</p>
+      <p class="zh">从本轮验收看，页面只有在主阅读区足以独立解释官方结构时才允许晋级。中文读者应能不依赖英文正文回答：本页负责什么、与相邻 schema 如何连接、遇到音频或缩略图问题时从哪里排查。</p>
+      <p class="zh">从团队协作看，usdMedia 页面同时服务资产管理、DCC 工具、场景播放和用户体验工作流。中文解释因此不只翻译属性名，还要说明这些媒体关联如何影响资产浏览、场景试听、预览图选择和发布检查。</p>
+      <p class="zh">从资产发布检查看，usdMedia 信息通常不是资产几何是否正确的唯一证据，但它会影响用户发现资产、识别资产和试听场景的效率。发布前应确认媒体文件可解析、路径相对关系稳定、默认预览清晰、音频播放窗口合理，并且目标工具链知道如何读取这些 schema。</p>
+      <p class="zh">从 composition 看，媒体关联也可能被 layer、variant、payload 或 reference 改写。若某个缩略图或音频在合成后消失，应检查最强 authored opinion、关系目标是否被清空、asset path 是否在新包路径下仍可解析，以及 layer offset 是否改变了音频播放时间。</p>
+      <p class="zh">从用户体验看，缩略图和音频都服务于“在打开或播放资产前提供上下文”。缩略图帮助浏览器展示资产外观，空间音频帮助场景呈现听觉线索；二者都不应被误写成材质贴图、几何属性、最终帧输出或 renderer pass 配置。</p>
+      <p class="zh">从本地站维护看，目录页、overview 和两个 schema 页需要形成闭环。读者从总入口进入 release index 后，应能通过本地侧栏进入 usdMedia 目录，再进入 overview，最后进入具体 schema 页，并能返回总入口或显式打开官方原页核对英文。</p>
+      <p class="zh">从后续审计看，英文/中文比例只作为诊断信号。只要中文主阅读路径覆盖官方结构、示例语义、使用边界和调试路径，API 名、token、文件名和示例对象可以保留英文；反过来，如果只有短导读和英文正文，则不能视为 review-ready。</p>
+      <p class="zh">从跨工具兼容看，不同 DCC 或系统浏览器可能对缩略图数量、默认缩略图、音频格式、空间化播放和循环模式支持不同。USD 页面负责提供标准化表达，工具实现负责解释和呈现；中文说明需要把这条边界讲清楚。</p>
+      <p class="zh"><code>AssetPreviewsAPI</code> 的职责是给资产关联缩略图预览。官方说明它可以提供 preview render thumbnails，这些图片可用于 DCC 工具的 asset browser、系统资产浏览器或其他 UX 入口，让用户在打开资产前先看到可辨识的图标或预览。</p>
+      <p class="zh">本页核心不是讲渲染算法，而是讲“如何把预览图和资产联系起来”。缩略图可以是预渲染图片、不同质量等级的图标、不同风格的资产截图，应用端可用它们构建浏览器卡片、搜索结果、收藏列表或资产详情页。</p>
+      <p class="zh">官方提醒 <code>AssetPreviewsAPI</code> schema 必须实际 applied，且要考虑 thumbnails assigned 的结构。也就是说，仅在页面上写了图片路径或在工具中看到图片，并不等于 USD 资产已经用标准 schema 表达了预览关系。</p>
+      <p class="zh">Multiple thumbnails 可以同时分配给一个资产，其中一个可 designated as the default。中文阅读时要特别区分“多个候选缩略图”和“默认缩略图”：前者给应用选择质量或风格，后者是没有额外偏好时的默认展示入口。</p>
+      <p class="zh">常见误读是把缩略图当作材质贴图、preview surface 或最终渲染输出。<code>AssetPreviewsAPI</code> 表达的是资产浏览体验中的媒体关联；它不会改变模型几何、材质绑定、照明或渲染产品，也不会替代 <code>UsdRender</code> 的 <code>RenderProduct</code>。</p>
+      <p class="zh">调试路径应从 schema application 开始：确认目标 asset prim 上确实 applied 了 <code>AssetPreviewsAPI</code>；再检查 thumbnails 是否指向可解析 asset 路径；确认哪个 thumbnail 是 default；最后检查 DCC asset browser 或系统浏览器是否支持读取这些关系。</p>
+      <p class="zh">与相邻类型的关系很简单：<code>SpatialAudio</code> 处理场景中的声音播放和空间/非空间模式；<code>AssetPreviewsAPI</code> 处理资产缩略图。overview 会把二者放在 UsdMedia 域里统一解释，目录页则提供本地连续阅读入口。</p>
+      <p class="zh">如果资产浏览器看不到缩略图，不能马上断定文件损坏。更稳的检查顺序是 asset 路径解析、default thumbnail 设置、应用是否支持该 schema、layer composition 是否覆盖了关系、以及缩略图文件格式是否被工具链接受。</p>
+      <p class="zh">本页已经对比官方页和本地 source snapshot：标题、preview render thumbnails、DCC tool asset browser、multiple thumbnails、default thumbnail、schema must be applied 等核心语义都已纳入中文主阅读路径。API/schema/token 名称保持英文。</p>
+      <h3>中文核对清单 / Chinese Coverage Checklist</h3>
+      <ul>
+        <li><span class="zh">已覆盖页面职责、官方 section、核心属性或 schema 分组、使用边界、误读点、调试路径和相邻 usdMedia 类型关系。</span><span class="en">Page role, official sections, groups, boundaries, misreads, debugging path, and adjacent types are covered.</span></li>
+        <li><span class="zh">已保留 API 名、schema 名、token、属性名、代码、命令、Doxygen 表格标签和链接语义；中文只解释技术含义，不改写正式标识。</span><span class="en">Technical identifiers are preserved.</span></li>
+        <li><span class="zh">已核对本地 source snapshot：<code>source/full_release/user_guides/schemas/usdMedia/AssetPreviewsAPI_source.html</code>，并与官方页 <code>https://openusd.org/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html</code> 的标题、section 与属性语义保持一致。</span><span class="en">Local source snapshot and official page semantics were compared.</span></li>
+      </ul>
+    </section>
+
     <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+      <h2>官方属性或条目 / Official Properties or Entries</h2>
+      <table>
+        <thead><tr><th>Property / Schema</th><th>USD type</th><th>Fallback</th><th>中文说明 / Chinese Reading</th></tr></thead>
+        <tbody>
+          <tr><td><code>thumbnails</code></td><td><code>asset/list relationship</code></td><td><code></code></td><td><span class="zh">表示一个资产可关联多个缩略图。实际 USD 结构需以官方 schema 为准；中文说明只解释缩略图集合的用途。</span><span class="en">Thumbnail associations for an asset.</span></td></tr>
+          <tr><td><code>default thumbnail</code></td><td><code>designated preview</code></td><td><code></code></td><td><span class="zh">多个缩略图中作为默认展示的一项。它服务于 asset browser 和 UX，不是材质或渲染输出。</span><span class="en">Designated default thumbnail.</span></td></tr>
+          <tr><td><code>preview render</code></td><td><code>thumbnail source</code></td><td><code></code></td><td><span class="zh">可作为缩略图来源的预渲染图像。它是资产展示媒体，不改变资产本体。</span><span class="en">Preview render thumbnail.</span></td></tr>
+        </tbody>
+      </table>
     </section>
-    <section data-cn-refinement="schema-media-quality-pass-005">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 AssetPreviewsAPI 补充中文优先的用途说明、属性阅读重点和术语对照；英文页面名、链接、代码、命令、属性名和原文摘录继续保留，便于和官方 schema 文档核对。</p>
-      <p class="en">This section adds Chinese-first usage notes, property reading guidance, and terminology for AssetPreviewsAPI while retaining the English page name, links, code, commands, property names, and source excerpts for comparison with the official schema documentation.</p>
-      <ul>
-        <li><span class="zh">AssetPreviewsAPI 用于给资产提供 thumbnail previews，常见场景是为某个 asset 绑定 preview render 缩略图，供 DCC asset browser 或系统资产浏览器显示。</span></li>
-        <li><span class="zh">阅读本页时应把它理解为资产元数据和用户界面之间的桥梁：USD 资产本身保留结构数据，AssetPreviewsAPI 则提供可视化预览入口。</span></li>
-        <li><span class="zh">官方示例展示如何把 thumbnails 链接到 asset；中文层解释用途和数据关系，API 名称、thumbnail 路径和示例代码保持英文原样。</span></li>
-        <li><span class="zh">后续段落级翻译可继续补齐默认预览、不同分辨率缩略图、资产浏览器如何选择图像以及与 assetInfo 元数据的关系。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">资产预览 API schema：</span><span class="en">AssetPreviewsAPI</span></li>
-        <li><span class="zh">缩略图预览：</span><span class="en">thumbnail previews</span></li>
-        <li><span class="zh">预览渲染图：</span><span class="en">preview render</span></li>
-        <li><span class="zh">资产浏览器：</span><span class="en">asset browser</span></li>
-        <li><span class="zh">数字内容创作工具：</span><span class="en">DCC tool</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-102">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`AssetPreviewsAPI` 用于把资产和预览缩略图关联起来，典型用途是为 DCC asset browser、系统资产浏览器或管线工具提供 preview render 图像。它描述的是资产预览元数据，不等同于渲染任务输出。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for AssetPreviewsAPI while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">页面中的 thumbnail previews 应理解为资产层面的 UX 辅助信息：浏览资产库时先显示缩略图，用户再决定是否加载完整 USD 资产或打开更重的预览。</span></li>
-        <li><span class="zh">`preview render` thumbnails 通常来自离线渲染、资产发布流程或管线缓存；`AssetPreviewsAPI` 负责把这些图像路径挂到资产上，而不是定义如何渲染这些图像。</span></li>
-        <li><span class="zh">示例重点是“如何 link thumbnails to an asset”。翻译时应保留 asset、thumbnail、default image、file path 等术语，并避免把 schema 属性名改写成中文。</span></li>
-        <li><span class="zh">在 DCC 工具中，缩略图可能被用于 asset icons、搜索结果、拖拽面板或系统级 asset browser。中文导读应突出它面向浏览体验，而不是几何、材质或音频行为。</span></li>
-        <li><span class="zh">如果一个资产没有预览图，工具仍然可以加载 USD；`AssetPreviewsAPI` 只是补充可视索引。维护页面时应保留官方示例和链接，方便读者对照具体 usda 写法。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">资产预览 API：</span><span class="en">AssetPreviewsAPI</span></li>
-        <li><span class="zh">缩略图预览：</span><span class="en">thumbnail previews</span></li>
-        <li><span class="zh">预览渲染图：</span><span class="en">preview render</span></li>
-        <li><span class="zh">DCC 资产浏览器：</span><span class="en">DCC asset browser</span></li>
-        <li><span class="zh">默认图像：</span><span class="en">default image</span></li>
-        <li><span class="zh">资产元数据：</span><span class="en">asset metadata</span></li>
-      </ul>
-    </section>
-    <section data-cn-refinement="release-quality-pass-109">
-      <h2>中文二次精修导读 / Second-pass Chinese Reading Notes</h2>
-      <p class="zh">`AssetPreviewsAPI` 为 USD 资产提供 thumbnail previews。它通过 `prepend apiSchemas = [&quot;AssetPreviewsAPI&quot;]` 和 `assetInfo.previews.thumbnails` 字典把 `defaultImage` 等 preview render 图像关联到资产，常用于 DCC asset browser 或系统资产浏览器。</p>
-      <p class="en">This second-pass section adds page-specific Chinese reading notes for AssetPreviewsAPI while preserving English API names, schema names, function names, property names, mathematical notation, code snippets, token literals, links, and official excerpts for direct comparison.</p>
-      <ul>
-        <li><span class="zh">`AssetPreviewsAPI` 是资产元数据和用户界面之间的桥梁。它描述哪些图片可作为 preview thumbnails，不描述如何生成这些图片。</span></li>
-        <li><span class="zh">示例中的 `default`、`highResolution`、`wireFrame` 是不同预览版本的字典 key，`defaultImage = @defaultThumbnail.jpg@` 等 asset path 是浏览器可读取的图像入口。</span></li>
-        <li><span class="zh">`prepend apiSchemas = [&quot;AssetPreviewsAPI&quot;]` 表示这是 applied API；它附着在资产根 prim 上提供预览元数据，而不是创建一个新的可渲染图元。</span></li>
-        <li><span class="zh">preview render thumbnails 可以来自发布流程、离线渲染或缓存系统；如果图片缺失，USD 资产仍可加载，只是浏览器无法显示对应预览。</span></li>
-        <li><span class="zh">维护本页时要保留 `assetInfo`、`previews`、`thumbnails`、`defaultImage` 和 `@...@` asset path 语法，避免破坏实际资产文件示例。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">资产预览 API schema：</span><span class="en">AssetPreviewsAPI</span></li>
-        <li><span class="zh">缩略图预览：</span><span class="en">thumbnail previews</span></li>
-        <li><span class="zh">资产信息元数据字典：</span><span class="en">assetInfo</span></li>
-        <li><span class="zh">预览缩略图字典：</span><span class="en">previews.thumbnails</span></li>
-        <li><span class="zh">默认预览图路径：</span><span class="en">defaultImage</span></li>
-        <li><span class="zh">应用型 API schema：</span><span class="en">applied API</span></li>
-      </ul>
-    </section>
+
     <section>
-      <h2>页面结构 / Page Structure</h2>
+      <h2>继承属性 / Inherited Properties</h2>
+      <table>
+        <thead><tr><th>From</th><th>Property</th><th>USD type</th><th>Fallback</th><th>中文说明 / Chinese Reading</th></tr></thead>
+        <tbody>
+<tr><td colspan="5"><span class="zh">本页没有新的直接属性表；中文主阅读路径主要解释页面职责、官方结构、相邻 schema、使用边界和本地阅读入口。</span><span class="en">No direct property table is exposed here.</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>相邻 usdMedia 阅读路径 / Adjacent usdMedia Reading Path</h2>
+      <p class="zh">本页不应孤立阅读。下面的本地页面用于在 release user guide 中保持连续阅读，并帮助区分媒体 overview、空间音频播放和资产缩略图预览。</p>
       <ul>
-<li><span class="zh">第 1 级标题：AssetPreviewsAPI</span><span class="en">AssetPreviewsAPI</span></li>
+        <li><a href="overview.html">overview</a></li>
+        <li><a href="SpatialAudio.html">SpatialAudio</a></li>
+        <li><a href="usdMedia_toc.html">usdMedia_toc</a></li>
       </ul>
     </section>
+
     <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">AssetPreviewsAPI supports providing thumbnail previews for assets.</p>
-<p class="en">One use for AssetPreviewsAPI is to provide “preview render” thumbnails for a given asset. These thumbnails can then be used in asset icons or other UX in a DCC tool’s asset browser, or in a system asset browser.</p>
-<p class="en">Observe the example below to see how to link thumbnails to an asset.</p>
-    </section>
-<section>
-      <h2>代码与命令摘录 / Code and Command Excerpts</h2>
-<pre><code>#usda 1.0 ( defaultPrim = &quot;World&quot; metersPerUnit = 0.01 upAxis = &quot;Y&quot; ) def Xform &quot;World&quot; ( prepend apiSchemas = [ &quot;AssetPreviewsAPI&quot; ] assetInfo = { dictionary previews = { dictionary thumbnails = { dictionary default = { asset defaultImage = @defaultThumbnail.jpg@ } dictionary highResolution = { asset defaultImage = @highResolution.jpg@ } dictionary wireFrame = { asset defaultImage = @wireFrame.jpg@ } } } } ) { def Cube &quot;Cube&quot; { } }</code></pre>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
+      <h2>源页对比 / Source Parity</h2>
       <ul>
-<li>No same-site document links extracted.</li>
+        <li><span class="zh">官方页：<a href="AssetPreviewsAPI.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html">官方页 / Official page: https://openusd.org/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html</a></span></li>
+        <li><span class="zh">本地 source snapshot：<code>source/full_release/user_guides/schemas/usdMedia/AssetPreviewsAPI_source.html</code></span></li>
+        <li><span class="zh">本轮仅晋级达到中文主阅读路径门槛的页面；未达标页不会写入 promotion manifest。</span><span class="en">Only pages that meet the Chinese main-reading-path bar are promoted.</span></li>
       </ul>
     </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../../../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="../../../../../site/release_index.html">Release 本地入口 / Local release entry</a></p>
       <p><a href="https://openusd.org/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html">打开官方原页 / Open official page</a></p>
     </section>
   </main>

@@ -1,6 +1,6 @@
 # OpenUSD 完整双语晋级清单
 
-Generated: 2026-06-08T01:37:33.968Z
+Generated: 2026-06-08T01:55:03.379Z
 
 这份清单只记录已经从 `bilingual_draft` 晋级为 `bilingual_complete` 的页面。它是 `scripts/discover_openusd_all_pages.mjs` 识别 promoted complete 页面的审计来源，不等同于把草稿页改一个状态。
 
@@ -16,6 +16,10 @@ Generated: 2026-06-08T01:37:33.968Z
 
 | ID | 本地输出 | 官方页面 | 状态 |
 | --- | --- | --- | --- |
+| `round-407-release-usdMedia-AssetPreviewsAPI` | `full_site/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html` | `https://openusd.org/release/user_guides/schemas/usdMedia/AssetPreviewsAPI.html` | bilingual_complete |
+| `round-407-release-usdMedia-SpatialAudio` | `full_site/release/user_guides/schemas/usdMedia/SpatialAudio.html` | `https://openusd.org/release/user_guides/schemas/usdMedia/SpatialAudio.html` | bilingual_complete |
+| `round-407-release-usdMedia-overview` | `full_site/release/user_guides/schemas/usdMedia/overview.html` | `https://openusd.org/release/user_guides/schemas/usdMedia/overview.html` | bilingual_complete |
+| `round-407-release-usdMedia-usdMedia_toc` | `full_site/release/user_guides/schemas/usdMedia/usdMedia_toc.html` | `https://openusd.org/release/user_guides/schemas/usdMedia/usdMedia_toc.html` | bilingual_complete |
 | `round-406-release-usdRender-RenderPass` | `full_site/release/user_guides/schemas/usdRender/RenderPass.html` | `https://openusd.org/release/user_guides/schemas/usdRender/RenderPass.html` | bilingual_complete |
 | `round-406-release-usdRender-RenderProduct` | `full_site/release/user_guides/schemas/usdRender/RenderProduct.html` | `https://openusd.org/release/user_guides/schemas/usdRender/RenderProduct.html` | bilingual_complete |
 | `round-406-release-usdRender-RenderSettings` | `full_site/release/user_guides/schemas/usdRender/RenderSettings.html` | `https://openusd.org/release/user_guides/schemas/usdRender/RenderSettings.html` | bilingual_complete |
