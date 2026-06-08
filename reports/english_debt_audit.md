@@ -1,6 +1,6 @@
 # OpenUSD English Debt Audit
 
-Generated: 2026-06-08T06:15:28.839Z
+Generated: 2026-06-08T07:20:56.314Z
 
 Purpose:
 
@@ -12,17 +12,17 @@ Purpose:
 ## Counts
 
 - Total pages: 406
-- good_bilingual: 197
-- review_ready_zh: 134
+- good_bilingual: 198
+- review_ready_zh: 135
 - review_needs_zh_debt: 63
 - API complete: 72
 - API review_ready_zh: 12
-- Release complete: 125
-- Release review_ready_zh: 122
+- Release complete: 126
+- Release review_ready_zh: 123
 - Complete pages with high/very high ratio diagnostic: 10
-- bilingual_draft: 209
+- bilingual_draft: 208
 - draft_needs_translation: 198
-- draft_template_only: 11
+- draft_template_only: 10
 
 ## Complete Pages Still Carrying English Debt
 
@@ -65,7 +65,6 @@ Purpose:
 | 251 | `full_site/api/struct_usd_lux_tokens_type.html` | api | class_or_struct | 381 | 5/3 | 4.84 | high | draft |
 | 252 | `full_site/api/struct_usd_physics_tokens_type.html` | api | class_or_struct | 411 | 5/3 | 4.68 | high | draft |
 | 253 | `full_site/api/struct_usd_skel_tokens_type.html` | api | class_or_struct | 397 | 6/3 | 4.37 | high | draft |
-| 298 | `full_site/release/search.html` | release | release_or_tutorial | 64 | 1/4 | 4.3 | high | draft |
 | 69 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | api | general | 66 | 1/3 | 4.12 | high | draft |
 | 257 | `full_site/api/usd_2usd_2object_8h.html` | api | general | 332 | 6/3 | 3.82 | medium | draft |
 | 263 | `full_site/api/usd_mtlx_page_front.html` | api | module_front | 470 | 6/4 | 3.74 | medium | draft |
@@ -73,12 +72,13 @@ Purpose:
 | 260 | `full_site/api/usd_hydra_page_front.html` | api | module_front | 475 | 6/4 | 3.67 | medium | draft |
 | 229 | `full_site/api/md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html` | api | general | 555 | 5/3 | 3.63 | medium | draft |
 | 245 | `full_site/api/sdf_page_front.html` | api | module_front | 541 | 6/4 | 3.52 | medium | draft |
+| 228 | `full_site/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html` | api | general | 361 | 3/3 | 3.5 | medium | draft |
 
 ## Release Pages To Pull Forward
 
 | # | Page | Scope | Type | Complete Zh Chars | Coverage Signals | En/Zh Ratio | Ratio Diagnostic | Debt |
 | --- | --- | --- | --- | ---: | ---: | ---: | --- | --- |
-| 298 | `full_site/release/search.html` | release | release_or_tutorial | 64 | 1/4 | 4.3 | high | draft |
+
 
 Policy:
 

@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-08T06:15:33.461Z
+Generated: 2026-06-08T07:21:01.471Z
 
-Transient base URL: `http://127.0.0.1:57990/`
+Transient base URL: `http://127.0.0.1:64219/`
 
 Result:
 
 - Passed: true
-- Draft pages: 209
-- Pages checked: 209
-- Passed pages: 209
+- Draft pages: 208
+- Pages checked: 208
+- Passed pages: 208
 - Failed pages: 0
-- Final HTML links: 209
-- Local assets checked: 209
+- Final HTML links: 208
+- Local assets checked: 208
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -225,7 +225,6 @@ Result:
 | true | full_site/api/var_8h_source.html | 200 | true | 0 | 0 |
 | true | full_site/api/vt_page_front.html | 200 | true | 0 | 0 |
 | true | full_site/api/work_page_front.html | 200 | true | 0 | 0 |
-| true | full_site/release/search.html | 200 | true | 0 | 0 |
 
 Policy:
 

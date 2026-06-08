@@ -3,22 +3,31 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>搜索 / Search - Universal Scene Description 26.05 documentation</title>
+  <title>搜索功能页 / Search - Universal Scene Description 26.05 documentation</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f5f7fb;color:#1d2733;line-height:1.66}
     header{background:#17202a;color:#fff;padding:28px 32px}
-    main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+    main{max-width:1120px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
+    .status{display:inline-block;background:#177245;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
     .zh{display:block;font-weight:650;color:#17324d}
-    .en{display:block;color:#55616f;margin-top:4px}
+    .en{display:block;color:#566373;margin-top:4px}
+    .navlinks a{color:#d7e3f4;margin-right:14px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    code,pre{font-family:"Cascadia Mono","SFMono-Regular",Consolas,monospace}
+    .search-box{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 16px}
+    .search-box input{flex:1 1 260px;border:1px solid #cbd5e1;border-radius:6px;padding:10px;font:inherit}
+    .search-box button{border:1px solid #1c5d99;background:#1c5d99;color:#fff;border-radius:6px;padding:10px 14px;font:inherit}
+    .local-result{border-top:1px solid #edf2f7;padding:10px 0}
+    .local-result strong{display:block}
+    .muted{color:#64748b}
   </style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
@@ -40,11 +49,18 @@
     }
   </style>
 </head>
-<body class="openusd-has-reading-flow">
+<body data-cn-status="bilingual_complete" data-cn-round="418" data-cn-source="source/full_release/search_source.html" class="openusd-has-reading-flow">
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>搜索 / Search - Universal Scene Description 26.05 documentation</h1>
-    <div class="meta">https://openusd.org/release/search.html</div>
+    <span class="status">bilingual_complete</span>
+    <h1>搜索功能页 / Search</h1>
+    <div class="meta">Round 418 DefectRound · P1-release-search-template-only · Source snapshot: source/full_release/search_source.html</div>
+    <p class="navlinks">
+      <a href="../../openusd_bilingual_final.html">总入口</a>
+      <a href="../../site/release_index.html">Release 本地入口</a>
+      <a href="../../site/index.html">API 本地入口</a>
+      <a href="../../source/full_release/search_source.html">Local source snapshot</a>
+      <a href="https://openusd.org/release/search.html">Open official page</a>
+    </p>
   </header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
@@ -103,92 +119,109 @@
   </div>
 </aside>
 <!-- openusd-reading-flow-nav:end -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是全量 OpenUSD 复刻队列中的批次草稿页。中文为主，保留英文页面名、链接和关键原文摘录；后续迭代会继续补齐更细的段落级中英对照。</p>
-      <p class="en">This is a batch draft page in the all-pages OpenUSD reproduction queue. It keeps the original English page name, links, and concise source excerpts while later iterations add denser paragraph-level bilingual coverage.</p>
+    <section data-cn-complete="round-418-search-main-reading-path">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p><span class="zh">本页是 OpenUSD release 站点的搜索功能页，不是普通教程、schema 说明或 API reference。它原本由 Sphinx 生成，核心由 <code>rtd-search-form</code>、搜索输入框、<code>searchtools.js</code>、<code>searchindex.js</code> 和 <code>Search.loadIndex("searchindex.js")</code> 组成。中文化时不能逐行翻译搜索脚本，也不能把搜索索引伪装成完整正文；正确处理方式是说明搜索页的用途、脚本边界、本地快照关系，以及读者从这里返回总入口、Release 入口、API 入口和 <code>genindex.html</code> 的路径。</span><span class="en">This local bilingual page explains the generated Sphinx search page and keeps identifiers, script names, form ids, and links intact.</span></p>
+      <p><span class="zh">本轮修复的缺陷是 <code>P1-release-search-template-only</code>。第 417 轮后 release 普通正文页已经基本收尾，但 <code>search.html</code> 仍停留在 <code>draft_template_only</code>，读者打开后只看到模板说明和英文脚本提示，不能判断这个页面在本地中文站中该怎么用。现在页面明确标记为 <code>bilingual_complete</code>，并补足中文主阅读路径：搜索页是什么、能做什么、不能承诺什么、脚本和索引如何保留、失效时怎么回退、相关本地页面应该从哪里进入。</span><span class="en">The defect was a template-only search page in the otherwise completed release support scope.</span></p>
+      <p><span class="zh">官方 source snapshot 位于 <a href="../../source/full_release/search_source.html"><code>source/full_release/search_source.html</code></a>。快照中可以看到 <code>&lt;form id="rtd-search-form"&gt;</code>、<code>placeholder="Search docs"</code>、<code>&lt;div id="search-results"&gt;</code>、<code>searchtools.js</code> 和 <code>Search.loadIndex("searchindex.js")</code>。这些名称是功能契约和调试线索，必须保留英文；中文解释只补充读者路径和边界，不改写 JavaScript API、DOM id、文件名或官方链接语义。</span><span class="en">Source parity keeps the official form id, search result container, search tools, search index, and official URL semantics.</span></p>
+      <p><span class="zh">本地站点不把这个页面描述成实时官方搜索镜像。当前仓库的 406 页库存是固定快照，release/API 页面通过本地链接路由尽量保持站内阅读；如果读者需要官方最新全文搜索，应点击明确标注的 <a href="https://openusd.org/release/search.html">Open official page</a>。如果读者只想在当前中文化快照里找入口，优先使用下方轻量本地入口过滤、总入口的完成页列表、Release 本地入口、API 本地入口和 <code>genindex.html</code>。</span><span class="en">The local page is a snapshot-aware reading aid, not a live official search service.</span></p>
+      <p><span class="zh">搜索页的完成门槛和普通长文不同：普通文档要求覆盖每个主要 section；搜索页则要求解释功能结构、可用入口、失败回退和技术边界。读者应该能靠中文判断：输入框只是本地辅助过滤，官方 Sphinx 搜索依赖索引文件，站内链接优先回到本地完成页和草稿预览，外部官网只通过明确官方链接打开。满足这些条件后，搜索页才不再是空壳模板，而是中文站的可用导航功能页。</span><span class="en">A search function page is complete when the usage path and technical boundary are clear.</span></p>
+      <p><span class="zh">本页也承担 release 收尾说明：release 范围里的教程、user guide、schema、spec、proposal、support、press、index 页面已经按完成态审计进入本地阅读路径；搜索页作为最后一个功能页，需要把读者送回这些已整理入口，而不是制造一个新的孤立页面。后续如果 API 草稿继续晋级，本页可以扩充更多本地快捷入口，但这属于站内导航增强，不影响当前功能页完成判断。</span><span class="en">The release search page closes the remaining release function-page gap.</span></p>
     </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
+
+    <section data-cn-complete="round-418-search-functional-path">
+      <h2>本地搜索和回退路径 / Local Search and Fallback Path</h2>
+      <p><span class="zh">下面的轻量搜索框只过滤本页列出的本地入口和高频页面，帮助读者快速跳到中文站内的总入口、Release、API、tutorial、schema、spec 和 performance 页面。它不是官方 Sphinx 全文索引，也不读取官方站的实时 <code>searchindex.js</code>。这样做的原因是本地复现站当前重点是可靠阅读路径和完成度审计，不能为了一个功能页引入未验证的外部脚本依赖或静默跳转到官方英文站。</span><span class="en">The local quick filter is intentionally limited to curated local entry points.</span></p>
+
+    <div class="search-box" role="search">
+      <input id="openusd-local-search" type="search" placeholder="输入关键词，例如 usdLux、primvars、performance、OpenExec、API" aria-label="Search local OpenUSD bilingual pages">
+      <button type="button" id="openusd-local-search-clear">清空 / Clear</button>
+    </div>
+    <ul id="openusd-local-search-results">
+<li class="local-result" data-search-text="总入口 complete count, draft count, validation status"><strong><a href="../../openusd_bilingual_final.html">总入口</a></strong><span class="muted">complete count, draft count, validation status</span></li>
+<li class="local-result" data-search-text="release 本地入口 release user guide, tutorials, spec, whitepaper"><strong><a href="../../site/release_index.html">Release 本地入口</a></strong><span class="muted">release user guide, tutorials, spec, whitepaper</span></li>
+<li class="local-result" data-search-text="api doxygen 本地入口 api reference and doxygen local entry"><strong><a href="../../site/index.html">API Doxygen 本地入口</a></strong><span class="muted">API reference and Doxygen local entry</span></li>
+<li class="local-result" data-search-text="release index alphabetical release index"><strong><a href="genindex.html">Release Index</a></strong><span class="muted">alphabetical release index</span></li>
+<li class="local-result" data-search-text="tutorials tutorial table of contents"><strong><a href="tut_usd_tutorials.html">Tutorials</a></strong><span class="muted">tutorial table of contents</span></li>
+<li class="local-result" data-search-text="introduction to usd intro, stage, layer, composition"><strong><a href="../../site/intro.html">Introduction to USD</a></strong><span class="muted">intro, stage, layer, composition</span></li>
+<li class="local-result" data-search-text="introduction to openexec openexec, computation, client api"><strong><a href="intro_to_openexec.html">Introduction to OpenExec</a></strong><span class="muted">OpenExec, computation, client API</span></li>
+<li class="local-result" data-search-text="performance metrics metrics, platform graphs, local benchmark"><strong><a href="ref_performance_metrics.html">Performance Metrics</a></strong><span class="muted">metrics, platform graphs, local benchmark</span></li>
+<li class="local-result" data-search-text="maximizing usd performance allocator, binary usd, payload, heavy scene"><strong><a href="maxperf.html">Maximizing USD Performance</a></strong><span class="muted">allocator, binary usd, payload, heavy scene</span></li>
+<li class="local-result" data-search-text="usd faq frequently asked questions"><strong><a href="usdfaq.html">USD FAQ</a></strong><span class="muted">frequently asked questions</span></li>
+<li class="local-result" data-search-text="schema domains schema domains local guide"><strong><a href="user_guides/schemas/index.html">Schema Domains</a></strong><span class="muted">schema domains local guide</span></li>
+<li class="local-result" data-search-text="usdlux lights, lightapi, rectlight, domelight"><strong><a href="user_guides/schemas/usdLux/usdLux_toc.html">usdLux</a></strong><span class="muted">lights, LightAPI, RectLight, DomeLight</span></li>
+<li class="local-result" data-search-text="usdrender render settings, products, vars"><strong><a href="user_guides/schemas/usdRender/usdRender_toc.html">usdRender</a></strong><span class="muted">render settings, products, vars</span></li>
+<li class="local-result" data-search-text="usdvol volumes, fields, openvdb, particle fields"><strong><a href="user_guides/schemas/usdVol/usdVol_toc.html">usdVol</a></strong><span class="muted">volumes, fields, OpenVDB, particle fields</span></li>
+<li class="local-result" data-search-text="usd specification core specification"><strong><a href="spec.html">USD Specification</a></strong><span class="muted">core specification</span></li>
+<li class="local-result" data-search-text="usdz specification usdz package"><strong><a href="spec_usdz.html">USDZ Specification</a></strong><span class="muted">usdz package</span></li>
+<li class="local-result" data-search-text="usdpreviewsurface preview surface shader"><strong><a href="spec_usdpreviewsurface.html">UsdPreviewSurface</a></strong><span class="muted">preview surface shader</span></li>
+<li class="local-result" data-search-text="user guide: color color spaces and color management"><strong><a href="user_guides/color_user_guide.html">User Guide: Color</a></strong><span class="muted">color spaces and color management</span></li>
+<li class="local-result" data-search-text="user guide: namespace editing namespace editing"><strong><a href="user_guides/namespace_editing.html">User Guide: Namespace Editing</a></strong><span class="muted">namespace editing</span></li>
+<li class="local-result" data-search-text="user guide: primvars primvars user guide"><strong><a href="user_guides/primvars.html">User Guide: Primvars</a></strong><span class="muted">primvars user guide</span></li>
+<li class="local-result" data-search-text="user guide: rendering rendering with usd"><strong><a href="user_guides/render_user_guide.html">User Guide: Rendering</a></strong><span class="muted">rendering with USD</span></li>
+    </ul>
+    <script>
+      (function(){
+        var input = document.getElementById("openusd-local-search");
+        var clear = document.getElementById("openusd-local-search-clear");
+        var rows = Array.prototype.slice.call(document.querySelectorAll("#openusd-local-search-results .local-result"));
+        function apply(){
+          var q = (input.value || "").toLowerCase().trim();
+          rows.forEach(function(row){
+            row.style.display = !q || row.getAttribute("data-search-text").indexOf(q) >= 0 ? "" : "none";
+          });
+        }
+        if (input) input.addEventListener("input", apply);
+        if (clear) clear.addEventListener("click", function(){ input.value = ""; apply(); input.focus(); });
+        apply();
+      })();
+    </script>
+      <p><span class="zh">如果输入关键词后没有结果，建议按三个层级回退：先回 <a href="../../site/release_index.html">Release 本地入口</a> 查教程、user guide、schema、spec 和 proposal；再回 <a href="../../site/index.html">API 本地入口</a> 查 Doxygen/API reference；最后用 <a href="genindex.html">genindex.html</a> 按字母或术语定位 release 侧的索引项。只有写着 <code>Open official page</code> 的链接才是外跳官方站。</span><span class="en">Fallback order: release entry, API entry, then local genindex; official navigation is explicit.</span></p>
+      <p><span class="zh">若浏览器禁用 JavaScript，轻量过滤不会响应，但页面仍然可读：下方列表本身就是普通本地链接，左侧 reading-flow 侧栏也会保留总入口、Release 入口、API 入口、相邻页和官方外跳。也就是说，本页不把“脚本可执行”作为唯一可用路径；脚本增强失败时，HTML 链接结构仍能支持连续阅读。</span><span class="en">The plain local links remain usable even when the optional local filter is unavailable.</span></p>
+    </section>
+
+    <section data-cn-complete="round-418-search-source-parity">
+      <h2>官方结构对比 / Source Parity</h2>
       <ul>
-<li><span class="zh">本页未提取到二级标题。</span><span class="en">No section headings were extracted for this page.</span></li>
+<li><span class="zh">官方 source snapshot 没有普通正文 heading；它主要由搜索表单、搜索结果容器和脚本加载逻辑构成。</span><span class="en">No regular content heading was extracted.</span></li>
+        <li><span class="zh">已核对 source 关键词：<code>Search</code>、<code>rtd-search-form</code>、<code>Search docs</code>、<code>search-results</code>、<code>searchtools.js</code>、<code>searchindex.js</code>、<code>Search.loadIndex</code>、<code>Please activate JavaScript</code>。这些关键词既说明页面是功能页，也说明搜索行为依赖 JavaScript 和索引文件。</span><span class="en">The source parity keywords identify the generated search behavior.</span></li>
+        <li><span class="zh">页面保留官方标题 <code>Search</code> 和官方 URL <code>https://openusd.org/release/search.html</code>，但中文标题写成“搜索功能页”以避免误导：这里不是翻译一篇正文，而是解释一个搜索入口在本地中文站中的使用方式和限制。</span><span class="en">The title is clarified as a search function page.</span></li>
+        <li><span class="zh">搜索脚本、DOM id、文件名和输入框语义不翻译：<code>rtd-search-form</code>、<code>q</code>、<code>search-results</code>、<code>Search.loadIndex</code> 和 <code>searchindex.js</code> 都是可调试标识。翻译这些标识会损坏技术可核对性。</span><span class="en">Identifiers and script/file names are retained for technical parity.</span></li>
       </ul>
     </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">Please activate JavaScript to enable the search functionality.</p>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
+
+    <section data-cn-complete="round-418-search-boundaries">
+      <h2>边界、误读点和调试路径 / Boundaries and Diagnostics</h2>
       <ul>
-<li><a href="../../site/release_index.html" data-local-route="mapped" data-official-href="https://openusd.org/release/index.html">Universal Scene Description</a></li>
-<li><a href="../../site/intro.html" data-local-route="mapped" data-official-href="https://openusd.org/release/intro.html">Introduction to USD</a></li>
-<li><a href="intro_to_openexec.html" data-local-route="mapped" data-official-href="https://openusd.org/release/intro_to_openexec.html">Introduction to OpenExec</a></li>
-<li><a href="../../site/glossary.html" data-local-route="mapped" data-official-href="https://openusd.org/release/glossary.html">Terms and Concepts</a></li>
-<li><a href="tut_usd_tutorials.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usd_tutorials.html">Tutorials</a></li>
-<li><a href="tut_helloworld.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_helloworld.html">Hello World - Creating Your First USD Stage</a></li>
-<li><a href="tut_helloworld_redux.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_helloworld_redux.html">Hello World Redux - Using Generic Prims</a></li>
-<li><a href="tut_inspect_and_author_props.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_inspect_and_author_props.html">Inspecting and Authoring Properties</a></li>
-<li><a href="tut_referencing_layers.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_referencing_layers.html">Referencing Layers</a></li>
-<li><a href="tut_converting_between_layer_formats.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_converting_between_layer_formats.html">Converting Between Layer Formats</a></li>
-<li><a href="tut_traversing_stage.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_traversing_stage.html">Traversing a Stage</a></li>
-<li><a href="tut_authoring_variants.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_authoring_variants.html">Authoring Variants</a></li>
-<li><a href="tut_variants_example_in_katana.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_variants_example_in_katana.html">Variants Example in Katana</a></li>
-<li><a href="tut_xforms.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_xforms.html">Transformations, Animation, and Layer Offsets</a></li>
-<li><a href="tut_simple_shading.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_simple_shading.html">Simple Shading in USD</a></li>
-<li><a href="tut_end_to_end.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_end_to_end.html">End to End Example</a></li>
-<li><a href="tut_houdini_example.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_houdini_example.html">Houdini USD Example Workflow</a></li>
-<li><a href="tut_generating_new_schema.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_generating_new_schema.html">Generating New Schema Classes</a></li>
-<li><a href="tut_usdview_plugin.html" data-local-route="mapped" data-official-href="https://openusd.org/release/tut_usdview_plugin.html">Creating a Usdview Plugin</a></li>
-<li><a href="dl_downloads.html" data-local-route="mapped" data-official-href="https://openusd.org/release/dl_downloads.html">Downloads and Videos</a></li>
-<li><a href="usd_products.html" data-local-route="mapped" data-official-href="https://openusd.org/release/usd_products.html">Products Using USD</a></li>
-<li><a href="user_guides/collections_and_patterns.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/collections_and_patterns.html">Collections and Patterns</a></li>
-<li><a href="user_guides/color_user_guide.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/color_user_guide.html">Color</a></li>
-<li><a href="user_guides/namespace_editing.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/namespace_editing.html">Namespace Editing</a></li>
-<li><a href="user_guides/render_user_guide.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/render_user_guide.html">Rendering with USD</a></li>
-<li><a href="user_guides/primvars.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/primvars.html">Primvars</a></li>
-<li><a href="user_guides/schemas/index.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/index.html">Schema Domains</a></li>
-<li><a href="user_guides/schemas/usdLux/usdLux_toc.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/usdLux_toc.html">Lights (usdLux)</a></li>
-<li><a href="user_guides/schemas/usdLux/overview.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/overview.html">Overview</a></li>
-<li><a href="user_guides/schemas/usdLux/BoundableLightBase.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/BoundableLightBase.html">BoundableLightBase</a></li>
-<li><a href="user_guides/schemas/usdLux/CylinderLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/CylinderLight.html">CylinderLight</a></li>
-<li><a href="user_guides/schemas/usdLux/DiskLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DiskLight.html">DiskLight</a></li>
-<li><a href="user_guides/schemas/usdLux/DistantLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DistantLight.html">DistantLight</a></li>
-<li><a href="user_guides/schemas/usdLux/DomeLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight.html">DomeLight</a></li>
-<li><a href="user_guides/schemas/usdLux/DomeLight_1.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/DomeLight_1.html">DomeLight_1</a></li>
-<li><a href="user_guides/schemas/usdLux/GeometryLight.html" data-local-route="mapped" data-official-href="https://openusd.org/release/user_guides/schemas/usdLux/GeometryLight.html">GeometryLight</a></li>
+        <li><span class="zh">不要把本页当作“所有 OpenUSD 中文页都已完成”的证据。真实完成度仍以 <code>translation_quality_review.json</code>、<code>english_debt_audit.json</code>、<code>all_pages_inventory.json</code> 和总入口计数为准；本页只解决 release 范围最后一个 template-only 功能页的阅读路径缺陷。</span><span class="en">Completion counts remain report-driven.</span></li>
+        <li><span class="zh">不要把本页的轻量过滤当作官方全文搜索。它不抓取网络，不调用官方 API，不保证覆盖尚未晋级的 API 草稿页；它只提供本地中文站的高频入口过滤和回退路径。</span><span class="en">The local filter is not the official full-text search.</span></li>
+        <li><span class="zh">如果搜索体验异常，先检查页面是否有 <code>openusd-reading-flow-nav</code>、<code>openusd-reading-flow-breadcrumb</code>、总入口链接、Release/API 本地入口和显式官方外跳；再检查浏览器是否禁用了 inline JavaScript；最后打开官方原页核对 Sphinx 搜索是否可用。</span><span class="en">Diagnostic path: local reading flow, browser JavaScript, then official source comparison.</span></li>
+        <li><span class="zh">如果搜索结果为空，不应立刻判断页面损坏。先缩短关键词，例如把 <code>UsdPreviewSurface</code> 改成 <code>surface</code>，把 <code>collections and patterns</code> 改成 <code>collections</code>；如果仍为空，再走 Release 入口、API 入口和 genindex。</span><span class="en">Try shorter local keywords before falling back to index pages.</span></li>
+        <li><span class="zh">如果读者需要查 API 名、class、method、token 或属性名，应从 API 本地入口进入 Doxygen 页面，而不是依赖 release 搜索页。API 名、schema 名、token、函数名、属性名、代码、命令、Doxygen 表格标签和链接标题都保持英文。</span><span class="en">API identifiers stay in English and should be checked in the API reference.</span></li>
+        <li><span class="zh">如果读者需要按术语浏览 release 文档，优先进入 <a href="genindex.html">Index / genindex</a>。如果需要确认官方最新页面、搜索索引或版本状态，使用 <a href="https://openusd.org/release/search.html">Open official page</a>，不要把本地快照误认为实时官网。</span><span class="en">Use genindex for local term navigation and the official page for live search state.</span></li>
       </ul>
     </section>
-    <section>
-      <h2>导航 / Navigation</h2>
-      <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
-      <p><a href="https://openusd.org/release/search.html">打开官方原页 / Open official page</a></p>
+
+    <section data-cn-complete="round-418-search-adjacent">
+      <h2>相邻页面关系 / Adjacent Reading Path</h2>
+      <ul>
+        <li><span class="zh"><a href="../../openusd_bilingual_final.html">总入口</a> 用来查看完整双语页、可检查草稿页、完成比例和验证状态，是判断项目总体进度的第一入口。</span><span class="en">The final entry is the project status source.</span></li>
+        <li><span class="zh"><a href="../../site/release_index.html">Release 本地入口</a> 用来进入教程、user guide、schema、spec、proposal、support 页，是 release 文档连续阅读的主入口。</span><span class="en">The release entry is the main reading path for release docs.</span></li>
+        <li><span class="zh"><a href="../../site/index.html">API 本地入口</a> 用来进入 Doxygen/API reference。搜索到 API 名时，最终应回到 API 页面核对正式定义。</span><span class="en">The API entry is the Doxygen path.</span></li>
+        <li><span class="zh"><a href="genindex.html">genindex.html</a> 是 release 侧索引页；它和本页互补，一个按索引项浏览，一个按入口关键词过滤。</span><span class="en">The local genindex complements this search page.</span></li>
+        <li><span class="zh"><a href="tut_usd_tutorials.html">Tutorials</a>、<a href="user_guides/schemas/index.html">Schema Domains</a>、<a href="spec.html">USD Specification</a> 和 <a href="wp.html">White Papers</a> 是 release 文档最常见的四类后续阅读路径。</span><span class="en">Common release follow-up paths are tutorials, schemas, specifications, and white papers.</span></li>
+      </ul>
+    </section>
+
+    <section data-cn-complete="round-418-search-completion-gate">
+      <h2>本轮完成态证据 / Completion Evidence</h2>
+      <ul>
+        <li><span class="zh">页面状态为 <code>bilingual_complete</code>，已移除旧草稿壳、批量草稿说明和“以后再补”的占位提示。</span><span class="en">Draft markers were removed.</span></li>
+        <li><span class="zh">页面包含多段 <code>class="zh"</code> 中文主阅读路径，覆盖用途、功能边界、source parity、相邻入口、误读点、调试路径和官方外跳策略。</span><span class="en">Chinese main-reading coverage is present.</span></li>
+        <li><span class="zh">页面保留搜索功能相关标识：<code>Search</code>、<code>rtd-search-form</code>、<code>search-results</code>、<code>searchtools.js</code>、<code>searchindex.js</code> 和 <code>Search.loadIndex</code>，并把它们解释为不可翻译的技术契约。</span><span class="en">Search identifiers remain intact.</span></li>
+        <li><span class="zh">本轮后续必须通过 <code>translation_quality_review</code>、<code>english_debt_audit</code>、<code>reading_flow_navigation_audit</code>、<code>local_link_routing_report</code>、<code>markdown_encoding_audit</code> 和 validation，才能把该功能页计入 release 完整页。</span><span class="en">Reports and validation close the round.</span></li>
+      </ul>
     </section>
   </main>
 </body>

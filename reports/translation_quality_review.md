@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-08T06:15:28.049Z
+Generated: 2026-06-08T07:20:55.079Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 209
-- bilingual_complete: 197
+- bilingual_draft: 208
+- bilingual_complete: 198
 
 ## Grade Counts
 
-- draft_template_only: 11
+- draft_template_only: 10
 - draft_needs_translation: 198
-- good_bilingual: 197
+- good_bilingual: 198
 
 ## Current Focus Batch
 
@@ -38,7 +38,6 @@ Generated: 2026-06-08T06:15:28.049Z
 | 244 | draft_template_only | 62 | `full_site/api/riley_param_schema_8h_source.html` | 源码页面草稿：rileyParamSchema.h / rileyParamSchema.h |
 | 254 | draft_template_only | 62 | `full_site/api/system_diagnostics_8h_source.html` | 源码页面草稿：systemDiagnostics.h / systemDiagnostics.h |
 | 278 | draft_template_only | 62 | `full_site/api/var_8h_source.html` | 源码页面草稿：var.h / var.h |
-| 298 | draft_template_only | 64 | `full_site/release/search.html` | 搜索 / Search - Universal Scene Description 26.05 documentation |
 | 69 | draft_template_only | 66 | `full_site/api/dir_aa3bf17f9d6f68169ce0fa9df97655e9.html` | API 页面草稿：hf Directory / hf Directory |
 | 257 | draft_needs_translation | 332 | `full_site/api/usd_2usd_2object_8h.html` | API 页面草稿：object.h File / object.h File |
 | 212 | draft_needs_translation | 336 | `full_site/api/journal_8h.html` | API 页面草稿：journal.h File / journal.h File |
@@ -59,6 +58,7 @@ Generated: 2026-06-08T06:15:28.049Z
 | 144 | draft_needs_translation | 424 | `full_site/api/functions_vars_m.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 | 111 | draft_needs_translation | 431 | `full_site/api/functions_i.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
 | 152 | draft_needs_translation | 431 | `full_site/api/functions_vars_u.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
+| 149 | draft_needs_translation | 433 | `full_site/api/functions_vars_r.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 
 ## All Pages
 
@@ -361,7 +361,7 @@ Generated: 2026-06-08T06:15:28.049Z
 | 295 | good_bilingual | bilingual_complete | 1412 | 33/33 | 0 | 0 | `full_site/release/press_opensource_release.html` |
 | 296 | good_bilingual | bilingual_complete | 1545 | 34/34 | 0 | 0 | `full_site/release/ref_performance_metrics.html` |
 | 297 | good_bilingual | bilingual_complete | 1491 | 33/33 | 0 | 0 | `full_site/release/release_schedule.html` |
-| 298 | draft_template_only | bilingual_draft | 64 | 2/3 | 0 | 0 | `full_site/release/search.html` |
+| 298 | good_bilingual | bilingual_complete | 876 | 28/28 | 0 | 0 | `full_site/release/search.html` |
 | 299 | good_bilingual | bilingual_complete | 1382 | 33/61 | 0 | 0 | `full_site/release/spec_usdpreviewsurface.html` |
 | 300 | good_bilingual | bilingual_complete | 1517 | 35/64 | 0 | 0 | `full_site/release/spec_usdz.html` |
 | 301 | good_bilingual | bilingual_complete | 1514 | 29/36 | 0 | 0 | `full_site/release/spec.html` |

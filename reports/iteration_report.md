@@ -1,9 +1,9 @@
 # OpenUSD Iteration Report
 
-## 第 417 轮摘要
+## 第 null 轮摘要
 
-- 轮次类型：DomainSprintRound
-- 轮次目的：Round 417 DomainSprintRound：release 剩余支撑/参考页收尾小批量冲刺。实际晋级 8 页：full_site/release/intro_to_openexec.html、full_site/release/maxperf.html、full_site/release/ref_performance_metrics.html、full_site/release/release_schedule.html、full_site/release/contributors.html、full_site/release/press_opensource_announce.html、full_site/release/press_opensource_release.html、full_site/release/genindex.html。本轮从 189 个 good_bilingual 推进到 197；每页补足中文主阅读路径、官方 section 覆盖、快照/时效说明、相邻 tutorial/user guide/schema/API/spec/proposal/support 页关系、边界、误读点、调试路径和 source parity。
+- 轮次类型：UnknownRound
+- 轮次目的：Track current OpenUSD bilingual completion blockers and named P0/P1 defects.
 - 本轮目标：命名缺陷或一致性修复
 - 结果：未晋级页面，修复命名缺陷或一致性问题。
 - 核心说明：保持审计链和人类可读记录一致。
@@ -11,22 +11,22 @@
 ## 真实计数
 
 - total_pages：406
-- good_bilingual：197
-- review_ready_zh：134
-- bilingual_complete：197
-- bilingual_draft：209
+- good_bilingual：198
+- review_ready_zh：135
+- bilingual_complete：198
+- bilingual_draft：208
 - draft_needs_translation：198
-- draft_template_only：11
+- draft_template_only：10
 - pending_full_scope：0
 - api_complete：72
-- release_complete：125
+- release_complete：126
 
 ## 验证
 
 - validation_report：passed=true，failed_check_count=0，required_check_count=311
-- translation_quality：good_bilingual=197
-- english_debt：review_ready_zh=134，review_needs_zh_debt=63
-- promotion manifest：189 entries
+- translation_quality：good_bilingual=198
+- english_debt：review_ready_zh=135，review_needs_zh_debt=63
+- promotion manifest：190 entries
 
 ## 本轮改动文件
 
