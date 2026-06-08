@@ -1,37 +1,37 @@
 # OpenUSD Iteration Report
 
-## 第 429 轮摘要
+## 第 430 轮摘要
 - 轮次类型：PromotionRound
-- 轮次目的：将 `full_site/api/usd_media_page_front.html` 从 API 可检查草稿晋级为完整双语页面，并保持报告、入口、manifest 与验证链一致。
-- 本轮目标：`full_site/api/usd_media_page_front.html`
-- 结果：完成 1 个页面晋级，good_bilingual 从 207 增至 208。
+- 轮次目的：将 `full_site/api/usd_u_i_page_front.html` 从 API 可检查草稿晋级为完整双语页面，并保持报告、入口、manifest 与验证链一致。
+- 本轮目标：`full_site/api/usd_u_i_page_front.html`
+- 结果：完成 1 个页面晋级，good_bilingual 从 208 增至 209。
 - 核心说明：目标页已进入 promotion manifest；当前记录补齐本轮目标、round 类型、commit SHA 和真实计数，避免继续出现旧的占位轮次文本。
 
 ## 真实计数
 
 - total_pages：406
-- good_bilingual：208
-- review_ready_zh：145
-- bilingual_complete：208
-- bilingual_draft：198
-- draft_needs_translation：188
+- good_bilingual：209
+- review_ready_zh：146
+- bilingual_complete：209
+- bilingual_draft：197
+- draft_needs_translation：187
 - draft_template_only：10
 - pending_full_scope：0
-- api_complete：82
-- api_review_ready_zh：22
+- api_complete：83
+- api_review_ready_zh：23
 - release_complete：126
 - release_review_ready_zh：123
 
 ## 验证
 
 - validation_report：passed=true，failed_check_count=0，required_check_count=311
-- translation_quality：good_bilingual=208
-- english_debt：review_ready_zh=145，review_needs_zh_debt=63
-- promotion manifest：200 entries
+- translation_quality：good_bilingual=209
+- english_debt：review_ready_zh=146，review_needs_zh_debt=63
+- promotion manifest：201 entries
 
 ## 本轮改动文件
 
-- `full_site/api/usd_media_page_front.html`
+- `full_site/api/usd_u_i_page_front.html`
 - `openusd_bilingual_final.html`
 - `reports/all_pages_inventory.json/md`
 - `reports/translation_quality_review.json/md`
@@ -49,4 +49,4 @@
 
 ## 下一步
 
-下一轮建议恢复 PromotionRound，目标：`full_site/api/usd_u_i_page_front.html`。开始前仍必须核对工作区干净、HEAD 等于 origin/main、报告计数一致、Markdown 编码和 reading-flow 审计通过。
+下一轮建议恢复 PromotionRound，目标：`full_site/api/usd_shaders_page_front.html`。开始前仍必须核对工作区干净、HEAD 等于 origin/main、报告计数一致、Markdown 编码和 reading-flow 审计通过。

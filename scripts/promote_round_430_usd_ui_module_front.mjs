@@ -1,11 +1,83 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UsdUI: USD UI Schemas - OpenUSD API 双语导读</title>
-  <link rel="icon" href="../../site/images/USDIcon.ico">
-  <style>
+import fs from "node:fs";
+import path from "node:path";
+
+const ROOT = process.cwd();
+const ROUND = 430;
+const ROUND_TYPE = "PromotionRound";
+const TARGET = "full_site/api/usd_u_i_page_front.html";
+const SOURCE = "source/full_api/usd_u_i_page_front_source.html";
+const OFFICIAL_URL = "https://openusd.org/release/api/usd_u_i_page_front.html";
+const SOURCE_PARITY_REPORT = "reports/round_430_usd_ui_module_front_source_parity.json";
+const PROMOTION_ID = "round-430-api-usd-ui-module-front";
+
+function rel(...parts) {
+  return path.join(ROOT, ...parts);
+}
+
+function esc(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function htmlDecode(value) {
+  return String(value ?? "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#([0-9]+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)));
+}
+
+function stripTags(value) {
+  return htmlDecode(
+    String(value ?? "")
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+  );
+}
+
+function zhChars(value) {
+  return (String(value ?? "").match(/[\u4e00-\u9fff]/g) || []).length;
+}
+
+function readJson(file) {
+  return JSON.parse(fs.readFileSync(rel(file), "utf8").replace(/^\uFEFF/, ""));
+}
+
+function writeJson(file, value) {
+  fs.writeFileSync(rel(file), `${JSON.stringify(value, null, 2)}\n`, "utf8");
+}
+
+function sourceHtml() {
+  return fs.readFileSync(rel(SOURCE), "utf8");
+}
+
+function sourceText() {
+  return stripTags(sourceHtml());
+}
+
+function sourceHeadings() {
+  return [...sourceHtml().matchAll(/<h([1-4])[^>]*>([\s\S]*?)<\/h\1>/gi)].map((match) => ({
+    level: Number(match[1]),
+    text: stripTags(match[2]),
+  }));
+}
+
+function sourceExcerpt() {
+  return sourceText().slice(0, 1500);
+}
+
+function css() {
+  return `
     body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.66}
     body.openusd-has-reading-flow{padding-left:292px}
     header{background:#142538;color:#fff;padding:28px 32px}
@@ -40,27 +112,47 @@
       .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
       .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
     }
-  </style>
-</head>
-<body data-cn-status="bilingual_complete" data-cn-round="430" class="openusd-has-reading-flow">
-  <header>
-    <span class="status">bilingual_complete</span>
-    <h1>UsdUI: USD UI Schemas</h1>
-    <div class="meta">Round 430 PromotionRound | Source snapshot: source/full_api/usd_u_i_page_front_source.html | Official: https://openusd.org/release/api/usd_u_i_page_front.html</div>
-    <p class="navlinks">
-      <a href="../../openusd_bilingual_final.html">总入口</a>
-      <a href="../../site/index.html">API 本地入口</a>
-      <a href="../../site/release_index.html">Release 本地入口</a>
-      <a href="../../source/full_api/usd_u_i_page_front_source.html">Local source snapshot</a>
-      <a href="https://openusd.org/release/api/usd_u_i_page_front.html">Open official page</a>
-    </p>
-  </header>
+  `;
+}
 
+const links = {
+  final: "../../openusd_bilingual_final.html",
+  api: "../../site/index.html",
+  apiRedirect: "../../site/api/index.html",
+  release: "../../site/release_index.html",
+  source: "../../source/full_api/usd_u_i_page_front_source.html",
+  official: OFFICIAL_URL,
+  prev: "usd_media_page_front.html",
+  next: "usd_utils_page_front.html",
+  usd: "usd_page_front.html",
+  usdGeom: "usd_geom_page_front.html",
+  usdMedia: "usd_media_page_front.html",
+  usdShade: "usd_shade_page_front.html",
+  usdUtils: "usd_utils_page_front.html",
+  accessibilityGuide: "../release/user_guides/schemas/usdUI/AccessibilityAPI.html",
+  attributeHintsGuide: "../release/user_guides/schemas/usdUI/AttributeHints.html",
+  nodeGraphGuide: "../release/user_guides/schemas/usdUI/NodeGraphNodeAPI.html",
+  primHintsGuide: "../release/user_guides/schemas/usdUI/PrimHints.html",
+  propertyHintsGuide: "../release/user_guides/schemas/usdUI/PropertyHints.html",
+  sceneGraphGuide: "../release/user_guides/schemas/usdUI/SceneGraphPrimAPI.html",
+  usdUIOverview: "../release/user_guides/schemas/usdUI/overview.html",
+  usdUIToc: "../release/user_guides/schemas/usdUI/usdUI_toc.html",
+};
+
+function headingList() {
+  return sourceHeadings()
+    .filter((heading) => heading.text !== "Table of Contents")
+    .map((heading) => `<li><span class="zh">官方 section：<code>${esc(heading.text)}</code>。中文页把它纳入 UI 工具展示、assistive UI、<code>uiHints</code> metadata、<code>displayName</code>/<code>displayGroup</code>/<code>shownIf</code>、value labels、property order 和相邻 schema 页面。</span><span class="en">Source heading level ${heading.level}: ${esc(heading.text)}</span></li>`)
+    .join("\n");
+}
+
+function readingFlowNav() {
+  return `
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
-  <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
+  <a data-reading-flow="final" href="${links.final}">总入口</a>
   <span> / </span>
-  <a data-reading-flow="api-entry" href="../../site/index.html">API 本地入口</a>
+  <a data-reading-flow="api-entry" href="${links.api}">API 本地入口</a>
   <span> / api / usd_u_i_page_front.html</span>
 </nav>
 <aside class="openusd-reading-flow-nav" aria-label="本地阅读导航 / Local reading navigation">
@@ -69,10 +161,10 @@
     <section>
       <h3>入口 / Entrances</h3>
       <ul>
-        <li><a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口 / Final entry</a></li>
-        <li><a data-reading-flow="release-entry" href="../../site/release_index.html">Release 本地入口</a></li>
-        <li><a data-reading-flow="api-entry" href="../../site/index.html">API Doxygen 本地入口</a></li>
-        <li><a data-reading-flow="api-redirect" href="../../site/api/index.html">API redirect / site/api/index.html</a></li>
+        <li><a data-reading-flow="final" href="${links.final}">总入口 / Final entry</a></li>
+        <li><a data-reading-flow="release-entry" href="${links.release}">Release 本地入口</a></li>
+        <li><a data-reading-flow="api-entry" href="${links.api}">API Doxygen 本地入口</a></li>
+        <li><a data-reading-flow="api-redirect" href="${links.apiRedirect}">API redirect / site/api/index.html</a></li>
       </ul>
     </section>
     <section>
@@ -85,40 +177,66 @@
     <section>
       <h3>相关 API / Related API</h3>
       <ul>
-        <li><a data-reading-flow="related" href="../../site/usd_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_page_front.html">Usd 核心 API</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="usd_geom_page_front.html">UsdGeom 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="usd_media_page_front.html">UsdMedia 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="usd_shade_page_front.html">UsdShade 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="usd_utils_page_front.html">UsdUtils 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.usd}">Usd 核心 API</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.usdGeom}">UsdGeom 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.usdMedia}">UsdMedia 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.usdShade}">UsdShade 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.usdUtils}">UsdUtils 模块入口</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
       <h3>Release schema / User Guide</h3>
       <ul>
-        <li><a data-reading-flow="related" href="../release/user_guides/schemas/usdUI/AccessibilityAPI.html">AccessibilityAPI 用户指南</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="../release/user_guides/schemas/usdUI/NodeGraphNodeAPI.html">NodeGraphNodeAPI 用户指南</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="../release/user_guides/schemas/usdUI/PrimHints.html">PrimHints 用户指南</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="../release/user_guides/schemas/usdUI/PropertyHints.html">PropertyHints 用户指南</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="../release/user_guides/schemas/usdUI/AttributeHints.html">AttributeHints 用户指南</a><span class="openusd-reading-flow-status">complete</span></li>
-        <li><a data-reading-flow="related" href="../release/user_guides/schemas/usdUI/usdUI_toc.html">usdUI toc</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.accessibilityGuide}">AccessibilityAPI 用户指南</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.nodeGraphGuide}">NodeGraphNodeAPI 用户指南</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.primHintsGuide}">PrimHints 用户指南</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.propertyHintsGuide}">PropertyHints 用户指南</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.attributeHintsGuide}">AttributeHints 用户指南</a><span class="openusd-reading-flow-status">complete</span></li>
+        <li><a data-reading-flow="related" href="${links.usdUIToc}">usdUI toc</a><span class="openusd-reading-flow-status">complete</span></li>
       </ul>
     </section>
     <section>
       <h3>上一页/下一页 / Previous/Next</h3>
       <ul>
-        <li><a data-reading-flow="prev" href="usd_media_page_front.html">上一页 / Previous: UsdMedia</a></li>
-        <li><a data-reading-flow="next" href="usd_utils_page_front.html">下一页 / Next: UsdUtils</a></li>
+        <li><a data-reading-flow="prev" href="${links.prev}">上一页 / Previous: UsdMedia</a></li>
+        <li><a data-reading-flow="next" href="${links.next}">下一页 / Next: UsdUtils</a></li>
       </ul>
     </section>
     <section>
       <h3>官方外跳 / Official</h3>
       <ul>
-        <li><a class="official-link" data-reading-flow="official" href="https://openusd.org/release/api/usd_u_i_page_front.html">打开官方原页 / Open official page</a></li>
+        <li><a class="official-link" data-reading-flow="official" href="${links.official}">打开官方原页 / Open official page</a></li>
       </ul>
     </section>
   </div>
 </aside>
-<!-- openusd-reading-flow-nav:end -->
+<!-- openusd-reading-flow-nav:end -->`;
+}
+
+function buildHtml() {
+  return `<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UsdUI: USD UI Schemas - OpenUSD API 双语导读</title>
+  <link rel="icon" href="../../site/images/USDIcon.ico">
+  <style>${css()}</style>
+</head>
+<body data-cn-status="bilingual_complete" data-cn-round="${ROUND}" class="openusd-has-reading-flow">
+  <header>
+    <span class="status">bilingual_complete</span>
+    <h1>UsdUI: USD UI Schemas</h1>
+    <div class="meta">Round ${ROUND} ${ROUND_TYPE} | Source snapshot: ${esc(SOURCE)} | Official: ${esc(OFFICIAL_URL)}</div>
+    <p class="navlinks">
+      <a href="${links.final}">总入口</a>
+      <a href="${links.api}">API 本地入口</a>
+      <a href="${links.release}">Release 本地入口</a>
+      <a href="${links.source}">Local source snapshot</a>
+      <a href="${links.official}">Open official page</a>
+    </p>
+  </header>
+${readingFlowNav()}
   <main>
     <section data-cn-complete="round-430-usd-ui-main-reading-path">
       <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
@@ -178,8 +296,8 @@
 
     <section data-cn-complete="round-430-usd-ui-adjacent-reading">
       <h2>相邻阅读路径 / Adjacent Reading Path</h2>
-      <p><span class="zh">建议先读本页建立 <code>UsdUI</code> 的模块边界，再进入 release schema 页面：<a href="../release/user_guides/schemas/usdUI/AccessibilityAPI.html"><code>AccessibilityAPI</code></a> 处理辅助功能三元组；<a href="../release/user_guides/schemas/usdUI/NodeGraphNodeAPI.html"><code>NodeGraphNodeAPI</code></a> 处理节点图布局；<a href="../release/user_guides/schemas/usdUI/PrimHints.html"><code>PrimHints</code></a>、<a href="../release/user_guides/schemas/usdUI/PropertyHints.html"><code>PropertyHints</code></a>、<a href="../release/user_guides/schemas/usdUI/AttributeHints.html"><code>AttributeHints</code></a> 处理不同对象层级上的 UI hints。</span><span class="en">Read the module page with the release schema pages for AccessibilityAPI, NodeGraphNodeAPI, PrimHints, PropertyHints, and AttributeHints.</span></p>
-      <p><span class="zh">如果问题涉及 stage、prim、property、attribute 或 metadata 的核心对象模型，应回到 <a href="../../site/usd_page_front.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/usd_page_front.html"><code>Usd</code></a>；如果问题涉及空间层级和 transform，应看 <a href="usd_geom_page_front.html"><code>UsdGeom</code></a>；如果问题涉及 asset preview 或音频媒体在工具界面中的展示，可结合 <a href="usd_media_page_front.html"><code>UsdMedia</code></a>；如果问题涉及 shading network 的节点图语义，应结合 <a href="usd_shade_page_front.html"><code>UsdShade</code></a>，但把布局 hints 和 shader 语义分开。</span><span class="en">Use Usd, UsdGeom, UsdMedia, and UsdShade for adjacent concerns.</span></p>
+      <p><span class="zh">建议先读本页建立 <code>UsdUI</code> 的模块边界，再进入 release schema 页面：<a href="${links.accessibilityGuide}"><code>AccessibilityAPI</code></a> 处理辅助功能三元组；<a href="${links.nodeGraphGuide}"><code>NodeGraphNodeAPI</code></a> 处理节点图布局；<a href="${links.primHintsGuide}"><code>PrimHints</code></a>、<a href="${links.propertyHintsGuide}"><code>PropertyHints</code></a>、<a href="${links.attributeHintsGuide}"><code>AttributeHints</code></a> 处理不同对象层级上的 UI hints。</span><span class="en">Read the module page with the release schema pages for AccessibilityAPI, NodeGraphNodeAPI, PrimHints, PropertyHints, and AttributeHints.</span></p>
+      <p><span class="zh">如果问题涉及 stage、prim、property、attribute 或 metadata 的核心对象模型，应回到 <a href="${links.usd}"><code>Usd</code></a>；如果问题涉及空间层级和 transform，应看 <a href="${links.usdGeom}"><code>UsdGeom</code></a>；如果问题涉及 asset preview 或音频媒体在工具界面中的展示，可结合 <a href="${links.usdMedia}"><code>UsdMedia</code></a>；如果问题涉及 shading network 的节点图语义，应结合 <a href="${links.usdShade}"><code>UsdShade</code></a>，但把布局 hints 和 shader 语义分开。</span><span class="en">Use Usd, UsdGeom, UsdMedia, and UsdShade for adjacent concerns.</span></p>
       <p><span class="zh">对工具开发者来说，<code>UsdUI</code> 不是替代 schema 文档的“中文显示层”，而是读取 USD 数据时的一个额外提示源。实现属性浏览器时，可以先从 schema registry、property definitions 和 authored metadata 建立基础列表；再合并 <code>propertyOrder</code>、<code>displayGroup</code>、<code>hidden</code>、<code>shownIf</code>、<code>valueLabels</code> 等展示提示；最后再处理用户偏好、插件覆盖和本地化文案。这样即使某个 hint 无法解析，工具也能退回到稳定的 USD 名称和 schema 信息，而不是让整页 UI 失效。</span><span class="en">Tool implementations should merge UsdUI hints with schema definitions and user preferences while preserving stable fallbacks.</span></p>
       <p><span class="zh">对资产作者来说，建议把 <code>UsdUI</code> 当作“可读性增强”，而不是“语义补丁”。如果某个属性没有清晰 schema 名或文档，仅靠 <code>displayName</code> 让它看起来友好，后续脚本和跨工具交换仍会困难；如果一个属性必须满足取值范围，应优先在 schema 或 metadata 中表达 <code>limits</code>、<code>allowedTokens</code> 或 <code>arraySizeConstraint</code>，再用 <code>valueLabels</code> 优化展示。中文读者掌握这条顺序，才能把 UI hints 用在提高阅读和操作效率上，而不是掩盖模型设计问题。</span><span class="en">Asset authors should use UsdUI to improve readability, not to compensate for unclear schema modeling.</span></p>
       <p class="note"><span class="zh">本页保留 <code>UsdUI</code>、<code>UsdUINodeGraphNodeAPI</code>、<code>UsdUIObjectHints</code>、<code>UsdUIPrimHints</code>、<code>UsdUIPropertyHints</code>、<code>UsdUIAttributeHints</code>、<code>AccessibilityAPI</code>、<code>uiHints</code>、<code>displayName</code>、<code>displayGroup</code>、<code>shownIf</code>、<code>valueLabels</code>、<code>propertyOrder</code> 等英文标识，便于和官方 Doxygen、schema registry、release user guide、源码和工具日志核对。</span><span class="en">English identifiers are preserved for source parity and debugging against Doxygen, schema registry, user guides, source, and tool logs.</span></p>
@@ -196,11 +314,9 @@
     <section data-cn-complete="round-430-usd-ui-source-parity">
       <h2>官方 section 对比 / Source Parity</h2>
       <ul>
-<li><span class="zh">官方 section：<code>Overview</code>。中文页把它纳入 UI 工具展示、assistive UI、<code>uiHints</code> metadata、<code>displayName</code>/<code>displayGroup</code>/<code>shownIf</code>、value labels、property order 和相邻 schema 页面。</span><span class="en">Source heading level 1: Overview</span></li>
-<li><span class="zh">官方 section：<code>Accessibility Information</code>。中文页把它纳入 UI 工具展示、assistive UI、<code>uiHints</code> metadata、<code>displayName</code>/<code>displayGroup</code>/<code>shownIf</code>、value labels、property order 和相邻 schema 页面。</span><span class="en">Source heading level 1: Accessibility Information</span></li>
-<li><span class="zh">官方 section：<code>UI Hints</code>。中文页把它纳入 UI 工具展示、assistive UI、<code>uiHints</code> metadata、<code>displayName</code>/<code>displayGroup</code>/<code>shownIf</code>、value labels、property order 和相邻 schema 页面。</span><span class="en">Source heading level 1: UI Hints</span></li>
+${headingList()}
         <li><span class="zh">已核对 source snapshot 中的核心关键词：<code>UsdUI</code>、<code>user interface</code>、<code>UsdStage</code>、<code>UsdUINodeGraphNodeAPI</code>、<code>UsdUIObjectHints</code>、<code>UsdUIPrimHints</code>、<code>UsdUIPropertyHints</code>、<code>UsdUIAttributeHints</code>、<code>uiHints</code>、<code>AccessibilityAPI</code>、<code>label</code>、<code>description</code>、<code>priority</code>、<code>displayName</code>、<code>hidden</code>、<code>displayGroup</code>、<code>shownIf</code>、<code>valueLabels</code>、<code>valueLabelsOrder</code>、<code>displayGroupsExpanded</code>、<code>displayGroupsShownIf</code>、<code>userDoc</code>、<code>allowedTokens</code>、<code>propertyOrder</code>、<code>limits</code> 和 <code>arraySizeConstraint</code>。</span><span class="en">The local page preserves the official UsdUI section and keyword structure.</span></li>
-        <li><span class="zh">官方原文摘录仅用于核对，不作为中文主阅读路径；中文主体已经覆盖模块职责、官方 section、schema/API 分组、边界、误读点、调试路径和相邻 API/release user guide 关系。</span><span class="en">Universal Scene Description: UsdUI: USD UI Schemas Loading... Searching... No Matches UsdUI: USD UI Schemas Overview This module provides schemas for encoding information on USD prims for client graphical user interface tools to use in deciding how to organize and present the prims in UI layouts. This information does not guide the 3D rendering of data contained in a scene, rather it's about how to visualize the nodes in the graph that comprises a UsdStage . The primary classes are: UsdUINodeGraphNodeAPI - Encodes layout information for prims that participate in an interconnected (via relationships) graph, as would prims in a shading network. UsdUIObjectHints - Provides API for reading and writing fields in UsdObject 's uiHints metadata dictionary. UsdUIPrimHints - Provides API for reading and writing fields in UsdPrim 's uiHints metadata dictionary. UsdUIPropertyHints - Provides API for reading and writing fields in UsdProperty 's uiHints metadata dictionary. UsdUIAttributeHints - Provides API for reading and writing fields in UsdAttribute 's uiHints metadata dictionary. UsdUI additionally has schemas that describe accessibility information used in assistive UI, and UI hints that provide hints on how prims and properties should be presented in a UI. Accessibility Information The AccessibilityAPI schema describes accessibility information on a prim that may be surfaced to a given runtime's accessibility frameworks. This information may be used by assistive features in tools, </span></li>
+        <li><span class="zh">官方原文摘录仅用于核对，不作为中文主阅读路径；中文主体已经覆盖模块职责、官方 section、schema/API 分组、边界、误读点、调试路径和相邻 API/release user guide 关系。</span><span class="en">${esc(sourceExcerpt())}</span></li>
       </ul>
     </section>
 
@@ -211,8 +327,215 @@
         <li><span class="zh">中文主阅读路径覆盖 <code>UsdUI</code> 模块职责、<code>AccessibilityAPI</code>、<code>UI Hints</code>、<code>uiHints</code> metadata、hint 字段、非 <code>uiHints</code> UI-relevant metadata、调试路径和相邻 API。</span><span class="en">Chinese coverage explains module role, accessibility, UI hints, metadata fields, debugging, and adjacent APIs.</span></li>
         <li><span class="zh">页面保留本地 reading-flow 侧栏、breadcrumb、总入口、API/Release 本地入口、相邻本地页和显式官方外跳。</span><span class="en">The page keeps local reading-flow navigation and explicit official access.</span></li>
       </ul>
-      <p><a data-reading-flow="official" href="https://openusd.org/release/api/usd_u_i_page_front.html">打开官方原页 / Open official page</a></p>
+      <p><a data-reading-flow="official" href="${links.official}">打开官方原页 / Open official page</a></p>
     </section>
   </main>
 </body>
 </html>
+`;
+}
+
+function sourceParity() {
+  const src = sourceText();
+  const out = fs.existsSync(rel(TARGET)) ? fs.readFileSync(rel(TARGET), "utf8") : "";
+  const sourceKeywords = [
+    "UsdUI",
+    "client graphical user interface tools",
+    "3D rendering",
+    "UsdStage",
+    "UsdUINodeGraphNodeAPI",
+    "UsdUIObjectHints",
+    "UsdUIPrimHints",
+    "UsdUIPropertyHints",
+    "UsdUIAttributeHints",
+    "uiHints",
+    "AccessibilityAPI",
+    "label",
+    "description",
+    "priority",
+    "multiple-apply schema",
+    "displayName",
+    "hidden",
+    "displayGroup",
+    "shownIf",
+    "valueLabels",
+    "valueLabelsOrder",
+    "displayGroupsExpanded",
+    "displayGroupsShownIf",
+    "userDoc",
+    "allowedTokens",
+    "propertyOrder",
+    "limits",
+    "arraySizeConstraint",
+  ];
+  const outputKeywords = [
+    ...sourceKeywords,
+    "UI Hints",
+    "Accessibility Information",
+    "UsdGeom",
+    "UsdMedia",
+    "UsdShade",
+    "Open official page",
+  ];
+  return {
+    generated_at: new Date().toISOString(),
+    round: ROUND,
+    round_type: ROUND_TYPE,
+    target: TARGET,
+    source_snapshot: SOURCE,
+    official_url: OFFICIAL_URL,
+    source_headings: sourceHeadings(),
+    source_keywords_checked: sourceKeywords,
+    output_keywords_checked: outputKeywords,
+    missing_source_keywords: sourceKeywords.filter((keyword) => !src.includes(keyword)),
+    missing_output_keywords: outputKeywords.filter((keyword) => !out.includes(keyword)),
+    output_checks: {
+      has_complete_status: out.includes('data-cn-status="bilingual_complete"') && out.includes(`data-cn-round="${ROUND}"`),
+      has_paragraph_coverage: out.includes("Paragraph-Level Bilingual Coverage") && out.includes("逐段双语理解"),
+      has_final_entry: out.includes("openusd_bilingual_final.html"),
+      has_api_entry: out.includes("site/index.html"),
+      has_api_redirect: out.includes("site/api/index.html"),
+      has_release_entry: out.includes("site/release_index.html"),
+      has_reading_flow_nav: out.includes("openusd-reading-flow-nav") && out.includes("openusd-reading-flow-breadcrumb"),
+      has_explicit_official_link: out.includes("Open official page") && out.includes(OFFICIAL_URL),
+      no_draft_marker: !/bilingual_draft|batch draft page|后续迭代会继续补齐|later iterations add denser bilingual coverage/.test(out),
+      zh_chars: zhChars(out),
+      zh_blocks: (out.match(/class=["'][^"']*\bzh\b[^"']*["']/g) || []).length,
+    },
+  };
+}
+
+function writePage() {
+  fs.writeFileSync(rel(TARGET), buildHtml(), "utf8");
+  writeJson(SOURCE_PARITY_REPORT, sourceParity());
+}
+
+function precheck() {
+  const report = sourceParity();
+  const failed = [];
+  if (report.missing_source_keywords.length) failed.push(`missing source keywords: ${report.missing_source_keywords.join(", ")}`);
+  if (report.missing_output_keywords.length) failed.push(`missing output keywords: ${report.missing_output_keywords.join(", ")}`);
+  for (const [key, value] of Object.entries(report.output_checks)) {
+    if (typeof value === "boolean" && !value) failed.push(`output check failed: ${key}`);
+  }
+  if (report.output_checks.zh_chars < 3800) failed.push(`zh chars too low: ${report.output_checks.zh_chars}`);
+  if (report.output_checks.zh_blocks < 24) failed.push(`zh blocks too low: ${report.output_checks.zh_blocks}`);
+  if (failed.length) {
+    console.error(JSON.stringify({ passed: false, failed, report }, null, 2));
+    process.exit(1);
+  }
+  writeJson(SOURCE_PARITY_REPORT, report);
+  console.log(JSON.stringify({ passed: true, report }, null, 2));
+}
+
+function updateManifest() {
+  const raw = readJson("reports/bilingual_completion_promotions.json");
+  const doc = {
+    ...raw,
+    generated_at: raw.generated_at || new Date().toISOString(),
+    promotions: Array.isArray(raw.promotions) ? raw.promotions : [],
+    updated_at: new Date().toISOString(),
+  };
+  doc.promotions = doc.promotions.filter((entry) => entry.id !== PROMOTION_ID && entry.local_output !== TARGET);
+  doc.promotions.push({
+    id: PROMOTION_ID,
+    title: "UsdUI: USD UI Schemas",
+    official_url: OFFICIAL_URL,
+    local_output: TARGET,
+    status: "bilingual_complete",
+    reason: `Round ${ROUND} ${ROUND_TYPE}: promote the UsdUI module front page by adding Chinese main-reading-path coverage for UI tool presentation metadata, UsdUINodeGraphNodeAPI, UsdUIObjectHints/PrimHints/PropertyHints/AttributeHints, AccessibilityAPI, uiHints dictionaries, displayName/hidden/displayGroup/shownIf/valueLabels metadata, non-uiHints UI-relevant metadata, adjacent Usd/UsdGeom/UsdMedia/UsdShade/release schema pages, source parity, reading-flow navigation, and explicit official-page verification.`,
+    evidence: {
+      page_contains_status: "bilingual_complete",
+      generic_draft_marker_removed: true,
+      minimum_chinese_chars: 3800,
+      minimum_complete_section_chinese_chars: 3000,
+      minimum_chinese_blocks: 24,
+      official_source_compared: true,
+      local_source_snapshot_compared: SOURCE,
+      source_parity_report: SOURCE_PARITY_REPORT,
+      round_type: ROUND_TYPE,
+    },
+  });
+  writeJson("reports/bilingual_completion_promotions.json", doc);
+}
+
+function updateProblemAudit() {
+  const quality = readJson("reports/translation_quality_review.json");
+  const debt = readJson("reports/english_debt_audit.json");
+  const inventory = readJson("reports/all_pages_inventory.json");
+  const counts = {
+    total_pages: inventory.counts.total_pages,
+    bilingual_complete: quality.status_counts.bilingual_complete,
+    bilingual_draft: quality.status_counts.bilingual_draft,
+    good_bilingual: quality.grade_counts.good_bilingual,
+    draft_needs_translation: quality.grade_counts.draft_needs_translation,
+    draft_template_only: quality.grade_counts.draft_template_only,
+    review_ready_zh: debt.counts.review_ready_zh,
+    api_complete: debt.counts.api_complete,
+    api_review_ready_zh: debt.counts.api_review_ready_zh,
+    release_complete: debt.counts.release_complete,
+    release_review_ready_zh: debt.counts.release_review_ready_zh,
+    pending_full_scope: inventory.counts.pending_full_scope_pages,
+  };
+  writeJson("reports/current_problem_audit.json", {
+    generated_at: new Date().toISOString(),
+    purpose: `第 ${ROUND} 轮 ${ROUND_TYPE} 记录：确认 ${TARGET} 已晋级，并跟踪当前 OpenUSD 双语完成缺口。`,
+    last_completed_round: {
+      round: ROUND,
+      round_type: ROUND_TYPE,
+      target: TARGET,
+      commit_sha: null,
+      previous_good_bilingual: 208,
+    },
+    current_counts: counts,
+    problems: [
+      {
+        id: "P0-api-draft-backlog",
+        severity: "P0",
+        summary: `当前 good_bilingual=${counts.good_bilingual}/406，API complete=${counts.api_complete}，仍有 ${counts.bilingual_draft} 个可检查草稿，不是完整翻译。`,
+        evidence: `第 ${ROUND} 轮 ${ROUND_TYPE} 将 ${TARGET} 从 API 草稿晋级为 good_bilingual；release 范围保持 ${counts.release_complete}/126 complete。`,
+        required_action: "继续按 PromotionRound 或 DomainSprintRound 推进 API 草稿，只把达标页面写入 promotion manifest。",
+      },
+      {
+        id: "P1-left-navigation-reading-flow",
+        severity: "P1",
+        summary: "完成页必须保留本地 reading-flow 导航、breadcrumb、API/Release/总入口和显式官方外跳。",
+        evidence: "本轮完成后重新运行 route_openusd_internal_links_local 和 audit_openusd_reading_flow_navigation；新增页面有本地侧栏、breadcrumb 和官方外跳。",
+        required_action: "若 reading-flow 审计失败，停止并修复导航，不得推送。",
+      },
+      {
+        id: "P1-markdown-record-encoding",
+        severity: "P1",
+        summary: "Markdown 编码守卫继续作为硬门槛。",
+        evidence: "work.md、reports/iteration_report.md、reports/current_problem_audit.md、reports/bilingual_completion_promotions.md 必须无重复问号损坏、replacement character 和 UTF-8 BOM。",
+        required_action: "若 audit_openusd_markdown_encoding.mjs 失败，先做 ConsistencyRound。",
+      },
+    ],
+    promoted_pages: [
+      {
+        round: ROUND,
+        round_type: ROUND_TYPE,
+        output: TARGET,
+        official_url: OFFICIAL_URL,
+        source_snapshot: SOURCE,
+        source_parity_report: SOURCE_PARITY_REPORT,
+      },
+    ],
+    not_promoted_pages: [],
+    source_parity_report: SOURCE_PARITY_REPORT,
+    next_actions: [
+      "继续推进 API 草稿；release 范围已经 126/126 complete，不要重复处理 release 已完成页。",
+      "优先选择核心 API 或同域短页批量，但每轮必须保证 good_bilingual 按实际达标页增长。",
+    ],
+    next_action: "下一轮建议 PromotionRound：full_site/api/usd_shaders_page_front.html；开始前必须确认 git/report/validation/markdown/reading-flow 状态干净一致。",
+  });
+}
+
+const commands = new Set(process.argv.slice(2));
+if (commands.has("--write-page")) writePage();
+if (commands.has("--precheck")) precheck();
+if (commands.has("--manifest")) updateManifest();
+if (commands.has("--problem")) updateProblemAudit();
+if (commands.size === 0) {
+  console.log("Usage: node scripts/promote_round_430_usd_ui_module_front.mjs --write-page --precheck --manifest --problem");
+}
