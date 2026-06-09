@@ -10,7 +10,7 @@ const OFFICIAL_URL = "https://openusd.org/release/api/md_pxr_exec_exec_ir__r_e_a
 const SOURCE_PARITY_REPORT = "reports/round_479_exec_ir_readme_source_parity.json";
 const PROMOTION_ID = "round-479-api-exec-ir-readme";
 const PREVIOUS_GOOD_BILINGUAL = 242;
-const PROMOTION_COMMIT_PLACEHOLDER = "round-479-promotion-commit-sha-before-push";
+const PROMOTION_COMMIT_PLACEHOLDER = "06dd2d11ba7fbcf1f67a9375352ac46b2c0f34c8";
 
 const expectedKeywords = [
   "ExecIr: OpenExec implementation of invertible rigs",
