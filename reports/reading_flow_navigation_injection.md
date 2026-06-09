@@ -1,6 +1,6 @@
 # OpenUSD Reading Flow Navigation Injection
 
-Generated: 2026-06-09T02:05:46.352Z
+Generated: 2026-06-09T02:28:25.427Z
 
 - Passed: true
 - Pages processed: 398

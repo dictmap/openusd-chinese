@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-09T02:05:42.224Z
+Generated: 2026-06-09T02:28:21.463Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 239
-- Promoted complete pages: 231
-- Bilingual draft pages: 167
+- Bilingual complete pages: 240
+- Promoted complete pages: 232
+- Bilingual draft pages: 166
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -233,7 +233,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_complete | Js: JSON I/O | full_site/api/js_page_front.html | https://openusd.org/release/api/js_page_front.html |
 | api | bilingual_complete | Kind : Extensible Categorization | full_site/api/kind_page_front.html | https://openusd.org/release/api/kind_page_front.html |
 | api | bilingual_complete | Ef: Execution Foundation | full_site/api/md_pxr_exec_ef__r_e_a_d_m_e.html | https://openusd.org/release/api/md_pxr_exec_ef__r_e_a_d_m_e.html |
-| api | bilingual_draft | API 页面草稿：Esf: Execution Scene Foundation / Esf: Execution Scene Foundation | full_site/api/md_pxr_exec_esf__r_e_a_d_m_e.html | https://openusd.org/release/api/md_pxr_exec_esf__r_e_a_d_m_e.html |
+| api | bilingual_complete | Esf: Execution Scene Foundation | full_site/api/md_pxr_exec_esf__r_e_a_d_m_e.html | https://openusd.org/release/api/md_pxr_exec_esf__r_e_a_d_m_e.html |
 | api | bilingual_draft | API 页面草稿：EsfUsd: Execution Scene Foundation for Usd / EsfUsd: Execution Scene Foundation for Usd | full_site/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html | https://openusd.org/release/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html |
 | api | bilingual_complete | Exec: Execution sytem core | full_site/api/md_pxr_exec_exec__r_e_a_d_m_e.html | https://openusd.org/release/api/md_pxr_exec_exec__r_e_a_d_m_e.html |
 | api | bilingual_draft | API 页面草稿：ExecGeom: Execution for UsdGeom / ExecGeom: Execution for UsdGeom | full_site/api/md_pxr_exec_exec_geom__r_e_a_d_m_e.html | https://openusd.org/release/api/md_pxr_exec_exec_geom__r_e_a_d_m_e.html |
