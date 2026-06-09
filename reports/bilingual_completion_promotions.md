@@ -1,6 +1,6 @@
 # OpenUSD 完整双语晋级清单
 
-Generated: 2026-06-08T23:50:52.486Z
+Generated: 2026-06-09T00:15:44.651Z
 
 这份清单只记录已经从 `bilingual_draft` 晋级为 `bilingual_complete` 的页面。它是 `scripts/discover_openusd_all_pages.mjs` 识别 promoted complete 页面的审计来源，不等同于把草稿页改一个状态。
 
@@ -241,3 +241,4 @@ Generated: 2026-06-08T23:50:52.486Z
 | `round-455-api-usd-skel-tokens-type` | `full_site/api/struct_usd_skel_tokens_type.html` | `https://openusd.org/release/api/struct_usd_skel_tokens_type.html` | bilingual_complete |
 | `round-457-api-openexec-overview` | `full_site/api/md_pxr_exec_exec_usd_docs_overview.html` | `https://openusd.org/release/api/md_pxr_exec_exec_usd_docs_overview.html` | bilingual_complete |
 | `round-459-api-openexec-tutorial1-computing-values` | `full_site/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html` | `https://openusd.org/release/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html` | bilingual_complete |
+| `round-461-api-openexec-tutorial2-defining-computations` | `full_site/api/md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html` | `https://openusd.org/release/api/md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html` | bilingual_complete |

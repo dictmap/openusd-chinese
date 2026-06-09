@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-08T23:48:24.627Z
+Generated: 2026-06-09T00:15:52.830Z
 
-Transient base URL: `http://127.0.0.1:60917/`
+Transient base URL: `http://127.0.0.1:53608/`
 
 Result:
 
 - Passed: true
-- Draft pages: 173
-- Pages checked: 173
-- Passed pages: 173
+- Draft pages: 172
+- Pages checked: 172
+- Passed pages: 172
 - Failed pages: 0
-- Final HTML links: 173
-- Local assets checked: 173
+- Final HTML links: 172
+- Local assets checked: 172
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -166,7 +166,6 @@ Result:
 | true | full_site/api/md_pxr_exec_exec_geom__r_e_a_d_m_e.html | 200 | true | 0 | 0 |
 | true | full_site/api/md_pxr_exec_exec_ir__r_e_a_d_m_e.html | 200 | true | 0 | 0 |
 | true | full_site/api/md_pxr_exec_exec_usd__r_e_a_d_m_e.html | 200 | true | 0 | 0 |
-| true | full_site/api/md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html | 200 | true | 0 | 0 |
 | true | full_site/api/md_pxr_exec_vdf__r_e_a_d_m_e.html | 200 | true | 0 | 0 |
 | true | full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html | 200 | true | 0 | 0 |
 | true | full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html | 200 | true | 0 | 0 |
