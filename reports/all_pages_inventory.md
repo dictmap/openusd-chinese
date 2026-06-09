@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-09T03:08:08.424Z
+Generated: 2026-06-09T03:47:18.826Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 242
-- Promoted complete pages: 234
-- Bilingual draft pages: 164
+- Bilingual complete pages: 243
+- Promoted complete pages: 235
+- Bilingual draft pages: 163
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -237,7 +237,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_complete | EsfUsd: Execution Scene Foundation for Usd | full_site/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html | https://openusd.org/release/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html |
 | api | bilingual_complete | Exec: Execution sytem core | full_site/api/md_pxr_exec_exec__r_e_a_d_m_e.html | https://openusd.org/release/api/md_pxr_exec_exec__r_e_a_d_m_e.html |
 | api | bilingual_complete | ExecGeom: Execution for UsdGeom | full_site/api/md_pxr_exec_exec_geom__r_e_a_d_m_e.html | https://openusd.org/release/api/md_pxr_exec_exec_geom__r_e_a_d_m_e.html |
-| api | bilingual_draft | API 页面草稿：ExecIr: OpenExec implementation of invertible rigs / ExecIr: OpenExec implementation of invertible rigs | full_site/api/md_pxr_exec_exec_ir__r_e_a_d_m_e.html | https://openusd.org/release/api/md_pxr_exec_exec_ir__r_e_a_d_m_e.html |
+| api | bilingual_complete | ExecIr: OpenExec implementation of invertible rigs | full_site/api/md_pxr_exec_exec_ir__r_e_a_d_m_e.html | https://openusd.org/release/api/md_pxr_exec_exec_ir__r_e_a_d_m_e.html |
 | api | bilingual_complete | ExecUsd: Execution system for Usd | full_site/api/md_pxr_exec_exec_usd__r_e_a_d_m_e.html | https://openusd.org/release/api/md_pxr_exec_exec_usd__r_e_a_d_m_e.html |
 | api | bilingual_complete | OpenExec Overview | full_site/api/md_pxr_exec_exec_usd_docs_overview.html | https://openusd.org/release/api/md_pxr_exec_exec_usd_docs_overview.html |
 | api | bilingual_complete | https://openusd.org/release/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html | full_site/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html | https://openusd.org/release/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html |
