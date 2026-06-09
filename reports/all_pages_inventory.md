@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-09T00:15:42.650Z
+Generated: 2026-06-09T00:42:48.394Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 234
-- Promoted complete pages: 226
-- Bilingual draft pages: 172
+- Bilingual complete pages: 235
+- Promoted complete pages: 227
+- Bilingual draft pages: 171
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -252,7 +252,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_draft | Typedefs | full_site/api/namespacemembers_type.html | https://openusd.org/release/api/namespacemembers_type.html |
 | api | bilingual_draft | Namespace Members | full_site/api/namespacemembers.html | https://openusd.org/release/api/namespacemembers.html |
 | api | bilingual_draft | Namespaces | full_site/api/namespaces.html | https://openusd.org/release/api/namespaces.html |
-| api | bilingual_draft | API 页面草稿：OpenExec System Design / OpenExec System Design | full_site/api/page__execution__system__design.html | https://openusd.org/release/api/page__execution__system__design.html |
+| api | bilingual_complete | OpenExec System Design | full_site/api/page__execution__system__design.html | https://openusd.org/release/api/page__execution__system__design.html |
 | api | bilingual_draft | API 页面草稿：Regressive Splines in USD / Regressive Splines in USD | full_site/api/page_ts_regression.html | https://openusd.org/release/api/page_ts_regression.html |
 | api | bilingual_draft | API 页面草稿：USD Anim Project Status / USD Anim Project Status | full_site/api/page_ts_status.html | https://openusd.org/release/api/page_ts_status.html |
 | api | bilingual_draft | API 页面草稿：The TsTest Framework / The TsTest Framework | full_site/api/page_ts_ts_test.html | https://openusd.org/release/api/page_ts_ts_test.html |
