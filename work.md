@@ -24,7 +24,7 @@
 - 本轮目标：`full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html`
 - 官方页面：`https://openusd.org/release/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html`
 - source parity：`reports/round_489_usdviewq_readme_source_parity.json`
-- commit SHA：`round-489-promotion-commit-sha-before-push`
+- commit SHA：`66f2c22c125326cbb06f0655a9b0b454fc8e2ee4`
 - 完成数状态：good_bilingual=248；review_ready_zh=185。
 - 固定审计：`translation_quality_review.json`、`english_debt_audit.json`、`all_pages_inventory.json`、`validation_report.json` 已重建并一致。
 

@@ -10,7 +10,7 @@ const OFFICIAL_URL = "https://openusd.org/release/api/md_pxr_usd_imaging_usdview
 const SOURCE_PARITY_REPORT = "reports/round_489_usdviewq_readme_source_parity.json";
 const PROMOTION_ID = "round-489-api-usdviewq-readme";
 const PREVIOUS_GOOD_BILINGUAL = 247;
-const PROMOTION_COMMIT_PLACEHOLDER = "round-489-promotion-commit-sha-before-push";
+const PROMOTION_COMMIT_PLACEHOLDER = "66f2c22c125326cbb06f0655a9b0b454fc8e2ee4";
 
 const expectedKeywords = [
   "Development Practices For usdview",
