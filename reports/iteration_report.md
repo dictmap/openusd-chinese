@@ -1,10 +1,10 @@
 # OpenUSD Iteration Report
 
-## 第 489 轮摘要
-- 轮次类型：PromotionRound
-- 轮次目的：将 `full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html` 从 API 可检查草稿晋级为完整双语页面，并保持报告、入口、manifest 与验证链一致。
-- 本轮目标：`full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html`
-- 结果：完成 1 个页面晋级，good_bilingual 从 247 增至 248。
+## 第 491 轮摘要
+- 轮次类型：DefectRound
+- 轮次目的：将 `full_site/release/user_guides/color_user_guide.html` 从 API 可检查草稿晋级为完整双语页面，并保持报告、入口、manifest 与验证链一致。
+- 本轮目标：`full_site/release/user_guides/color_user_guide.html`
+- 结果：本轮不晋级页面，只修复命名一致性问题。
 - 核心说明：目标页已进入 promotion manifest；当前记录补齐本轮目标、round 类型、commit SHA 和真实计数，避免继续出现旧的占位轮次文本。
 
 ## 真实计数
@@ -31,7 +31,6 @@
 
 ## 本轮改动文件
 
-- `full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html`
 - `openusd_bilingual_final.html`
 - `reports/all_pages_inventory.json/md`
 - `reports/translation_quality_review.json/md`
@@ -49,4 +48,4 @@
 
 ## 下一步
 
-下一轮建议恢复 PromotionRound，目标：`下一轮建议 PromotionRound：基于 live reports 选择一个仍为 bilingual_draft 且有 source snapshot 的 API 高价值页面。`。开始前仍必须核对工作区干净、HEAD 等于 origin/main、报告计数一致、Markdown 编码和 reading-flow 审计通过。
+下一轮建议恢复 PromotionRound，目标：`full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html`。开始前仍必须核对工作区干净、HEAD 等于 origin/main、报告计数一致、Markdown 编码和 reading-flow 审计通过。

@@ -1,6 +1,6 @@
 # Current OpenUSD Problem Audit
 
-Generated: 2026-06-09T07:59:38.871Z
+Generated: 2026-06-09T08:24:02.393Z
 
 本报告是当前自动化的真实问题清单。它区分“可检查草稿”和“完整双语”，并额外记录 `review_ready_zh`，防止完成页仍主要依赖英文。
 
@@ -21,21 +21,21 @@ Generated: 2026-06-09T07:59:38.871Z
 
 ## 最近晋级记录
 
-- round：489
-- round_type：PromotionRound
-- target：`full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html`
-- commit SHA：`66f2c22c125326cbb06f0655a9b0b454fc8e2ee4`
-- source parity：`reports/round_489_usdviewq_readme_source_parity.json`
+- round：491
+- round_type：DefectRound
+- target：`full_site/release/intro_to_openexec.html`
+- commit SHA：`round-491-defect-commit-sha-before-push`
+- source parity：`reports/round_491_intro_openexec_visible_click_order_source_parity.json`
 
 ## 问题清单
 
 | ID | Severity | Summary | Required Action |
 | --- | --- | --- | --- |
-| `P0-api-draft-backlog` | P0 | 当前 good_bilingual=248/406，API complete=122，仍有 158 个可检查草稿，不是完整翻译。 | 继续推进 API 可检查草稿；只把真实达到中文主阅读路径和 source parity 的页面写入 promotion manifest。 |
-| `P1-usdviewq-source-parity` | P1 | Development Practices For usdview 页面必须按官方 Modifying GUI 和 Testing 两个 section 覆盖 .ui/qdesigner5/testusdview/blackBoxTesting.md 边界，不能只保留摘要。 | 后续 usdview/testing/imaging 相关页面继续按 source snapshot 做中文主阅读路径、调试路径和点击顺序覆盖。 |
-| `P1-click-order-reading-flow-consistency` | P1 | 完成页必须保留本地 reading-flow 导航、breadcrumb、API/Release/总入口、related links、prev/next 和显式官方外跳。 | 若 reading-flow 或 click-path 审计失败，先修导航和点击顺序，不得推送。 |
+| `P1-release-intro-openexec-visible-click-order` | P1 | 用户打开 full_site/release/intro_to_openexec.html 时先看到重复本地导航和缺陷修复说明，而不是官方 Background 起始正文，浏览体验与官方点击顺序不一致。 | 本轮完成后运行 source parity、click-path、reading-flow、local link、markdown、validation 全链；good_bilingual/release_complete/api_complete 不得新增。 |
+| `P1-release-intro-openexec-visible-click-order` | P1 | 该页曾同时包含手写 reading-flow 导航和全站注入导航，导致左侧导航、正文入口和样式行为不稳定。 | 后续若修改 reading-flow，应避免页面内手写 openusd-reading-flow-nav 结构，统一由注入脚本维护。 |
+| `P0-api-draft-backlog` | P0 | 当前 good_bilingual=248/406，API complete=122，仍有 158 个可检查草稿，不是完整翻译。 | 本 P1 可见缺陷闭环后，再按 heartbeat 默认候选恢复 PromotionRound。 |
 | `P1-markdown-record-encoding` | P1 | Markdown 编码守卫继续作为硬门槛。 | 若 audit_openusd_markdown_encoding.mjs 失败，先做 ConsistencyRound。 |
 
 ## 下一步
 
-下一轮建议目标：`下一轮建议 PromotionRound：基于 live reports 选择一个仍为 bilingual_draft 且有 source snapshot 的 API 高价值页面。`。开始前继续核对 git、报告、validation、Markdown 编码和 reading-flow；如果该页源页或验证阻塞，停止并报告具体原因。
+下一轮建议目标：`full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html`。开始前继续核对 git、报告、validation、Markdown 编码和 reading-flow；如果该页源页或验证阻塞，停止并报告具体原因。

@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "generated_at": "2026-06-09T07:51:06.120Z",
+  "generated_at": "2026-06-09T08:26:32.501Z",
   "total_pages": 406,
   "status_counts": {
     "bilingual_draft": 158,
@@ -7033,7 +7033,7 @@
       "enBlockCount": 32,
       "zhChars": 725,
       "enLetters": 1833,
-      "bodyChineseChars": 1961,
+      "bodyChineseChars": 1957,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
       "genericDraft": false,
@@ -7060,7 +7060,7 @@
       "enBlockCount": 28,
       "zhChars": 504,
       "enLetters": 1598,
-      "bodyChineseChars": 2021,
+      "bodyChineseChars": 2082,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
       "genericDraft": false,
@@ -7087,7 +7087,7 @@
       "enBlockCount": 22,
       "zhChars": 576,
       "enLetters": 1709,
-      "bodyChineseChars": 698,
+      "bodyChineseChars": 694,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
       "genericDraft": true,
@@ -7168,7 +7168,7 @@
       "enBlockCount": 17,
       "zhChars": 550,
       "enLetters": 1367,
-      "bodyChineseChars": 676,
+      "bodyChineseChars": 672,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
       "genericDraft": true,
@@ -8725,23 +8725,23 @@
       "status": "bilingual_complete",
       "exists": true,
       "grade": "good_bilingual",
-      "zhBlockCount": 43,
-      "enBlockCount": 43,
-      "zhChars": 2483,
-      "enLetters": 3207,
-      "bodyChineseChars": 2670,
+      "zhBlockCount": 33,
+      "enBlockCount": 33,
+      "zhChars": 1659,
+      "enLetters": 2419,
+      "bodyChineseChars": 1751,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
       "genericDraft": false,
       "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "本页原先虽然被标为完成页，但正文只是摘要式标题表，未覆盖官方 `Introduction to OpenExec` 的完整阅读顺序，也没有保留示例中的 `CarDoorFrame`、`CarDoorRotator`、`ComputeTransformFromOpenness`、`MyCallback`、`VdfContext`、`EXEC_REGISTER_COMPUTATIONS_FOR_SCHEMA`、`ExecUsdSystem`、`ExecUsdRequest`、`ExecUsdCacheView`、`computeLocalToWorldTransform` 等关键代码/API 标识。本轮按 P1 缺陷修复，不新增完成页计数，只修正 source parity 和用户点击顺序。",
-        "本地 release 的 `intro.html` 与 `glossary.html` 未纳入当前 406 页 inventory，因此本页不伪造本地上一页/下一页。真实本地点击路径以 Release 本地入口为上一层，以本页内部官方 section 顺序为正文 next path，并把 OpenExec Overview、Tutorial 1、Tutorial 2、System Design、ExecUsd、Vdf 放入相关本地链接。",
-        "本轮修复把页面从“完成页计数正确但阅读路径漂移”的状态，改成按用户真实点击顺序展开的长文页。入口顺序先是 `openusd_bilingual_final.html`，再到 `site/release_index.html`，然后进入本页。进入本页后，读者不应先被带到随机 release support 页面，也不应先看到概括表；正确顺序是沿着官方目录从 `Background` 开始，理解 OpenExec 解决的 computed values、dependency tracking、cache invalidation 问题，再进入 `Introducing OpenExec`，确认它维护 dataflow network 和 execution network，最后再看 car door 示例、概念拆分、callback/registration/client API。"
+        "官方 Background 先解释为什么 OpenUSD 需要更系统的计算表达：许多 schema 已有计算值的方法，例如 `UsdGeomBoundable::ComputeExtent` 或 `UsdGeomXformCache`，但这些方法往往各自处理缓存、失效和依赖关系；在角色 rigging、posing、constraint targets 等领域，计算链还会跨越多个 OpenUSD 层。阅读这里时，重点不是新增一个工具命令，而是理解 OpenExec 要统一解决“计算值如何声明、缓存、失效、调试依赖”的问题。",
+        "用户从总入口点击到本页后，应先停在 Background：如果问题是某个值如何从 authored scene description 推导出来、缓存何时失效、结果是否依赖 time 或其他输入，这才是进入 OpenExec 的正确起点。",
+        "官方 Introducing OpenExec 将 OpenExec 定义为表达和求值 OpenUSD scene 中 computational behaviors 的通用框架。它建立在 OpenUSD 之上，引入与 scene objects 关联的 named computations，包括 built-in computations 和 custom computations；同时提供快速、多线程 evaluation engine，以及自动缓存和失效 computed values 的数据管理概念。"
       ],
       "sampleEn": [
-        "This DefectRound repairs source parity and click-order reading flow without increasing completion counts.",
-        "Previous/next links are aligned to local inventory and in-page official section order."
+        "Background motivates OpenExec from computed values, caching, invalidation, dependency tracking, rigging, posing, and constraint targets.",
+        "Click-path role: start here to decide whether the topic is computed values and invalidation."
       ]
     },
     {

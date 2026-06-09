@@ -1,12 +1,13 @@
 {
-  "generated_at": "2026-06-09T07:59:38.871Z",
-  "purpose": "第 489 轮 PromotionRound 记录：确认 full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html 已按 usdviewq source parity 晋级，并继续追踪 OpenUSD API 可检查草稿缺口。",
+  "generated_at": "2026-06-09T08:24:02.393Z",
+  "purpose": "第 491 轮 DefectRound 记录：修复 full_site/release/intro_to_openexec.html 的用户可见点击顺序缺陷；移除重复 reading-flow 侧栏、首屏缺陷日志和样式残留，保持官方正文顺序为主路径；本轮不新增完成页计数。",
   "last_completed_round": {
-    "round": 489,
-    "round_type": "PromotionRound",
-    "target": "full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html",
-    "commit_sha": "66f2c22c125326cbb06f0655a9b0b454fc8e2ee4",
-    "previous_good_bilingual": 247
+    "round": 491,
+    "round_type": "DefectRound",
+    "defect_id": "P1-release-intro-openexec-visible-click-order",
+    "target": "full_site/release/intro_to_openexec.html",
+    "commit_sha": "round-491-defect-commit-sha-before-push",
+    "previous_good_bilingual": 248
   },
   "current_counts": {
     "total_pages": 406,
@@ -24,25 +25,25 @@
   },
   "problems": [
     {
+      "id": "P1-release-intro-openexec-visible-click-order",
+      "severity": "P1",
+      "summary": "用户打开 full_site/release/intro_to_openexec.html 时先看到重复本地导航和缺陷修复说明，而不是官方 Background 起始正文，浏览体验与官方点击顺序不一致。",
+      "evidence": "修复后页面只保留全站注入的一套 reading-flow 导航；主内容第一节即 Background，并继续按 Introducing OpenExec、Illustrative Example、What OpenExec Is Not、New concepts、Computations、Client API、Conclusion 顺序展开。",
+      "required_action": "本轮完成后运行 source parity、click-path、reading-flow、local link、markdown、validation 全链；good_bilingual/release_complete/api_complete 不得新增。"
+    },
+    {
+      "id": "P1-release-intro-openexec-visible-click-order",
+      "severity": "P1",
+      "summary": "该页曾同时包含手写 reading-flow 导航和全站注入导航，导致左侧导航、正文入口和样式行为不稳定。",
+      "evidence": "本轮删除页面内手写侧栏，只由 inject_openusd_reading_flow_navigation.mjs 生成 breadcrumb/side-nav；正文内保留本地相关链接和显式官方外跳。",
+      "required_action": "后续若修改 reading-flow，应避免页面内手写 openusd-reading-flow-nav 结构，统一由注入脚本维护。"
+    },
+    {
       "id": "P0-api-draft-backlog",
       "severity": "P0",
       "summary": "当前 good_bilingual=248/406，API complete=122，仍有 158 个可检查草稿，不是完整翻译。",
-      "evidence": "第 489 轮 PromotionRound 将 full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html 从 API 草稿晋级为 good_bilingual；release 范围保持 126/126 complete。",
-      "required_action": "继续推进 API 可检查草稿；只把真实达到中文主阅读路径和 source parity 的页面写入 promotion manifest。"
-    },
-    {
-      "id": "P1-usdviewq-source-parity",
-      "severity": "P1",
-      "summary": "Development Practices For usdview 页面必须按官方 Modifying GUI 和 Testing 两个 section 覆盖 .ui/qdesigner5/testusdview/blackBoxTesting.md 边界，不能只保留摘要。",
-      "evidence": "本轮覆盖 .ui files、qt XML fragility、cross-platform bad constructs、qdesigner5 修改和保存回写流程、pxr/usdImaging/bin/testusdview、blackBoxTesting.md 和无法由 testusdview 覆盖的 feature 记录路径。",
-      "required_action": "后续 usdview/testing/imaging 相关页面继续按 source snapshot 做中文主阅读路径、调试路径和点击顺序覆盖。"
-    },
-    {
-      "id": "P1-click-order-reading-flow-consistency",
-      "severity": "P1",
-      "summary": "完成页必须保留本地 reading-flow 导航、breadcrumb、API/Release/总入口、related links、prev/next 和显式官方外跳。",
-      "evidence": "本轮目标页保留 API entry -> Development Practices For usdview -> Usdview Black Box Testing 的点击路径，并重跑 reading-flow 与 click-path 审计。",
-      "required_action": "若 reading-flow 或 click-path 审计失败，先修导航和点击顺序，不得推送。"
+      "evidence": "第 491 轮是 DefectRound，不新增页面完成数；release 范围保持 126/126 complete。",
+      "required_action": "本 P1 可见缺陷闭环后，再按 heartbeat 默认候选恢复 PromotionRound。"
     },
     {
       "id": "P1-markdown-record-encoding",
@@ -52,21 +53,29 @@
       "required_action": "若 audit_openusd_markdown_encoding.mjs 失败，先做 ConsistencyRound。"
     }
   ],
-  "promoted_pages": [
+  "promoted_pages": [],
+  "not_promoted_pages": [
     {
-      "round": 489,
-      "round_type": "PromotionRound",
-      "output": "full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html",
-      "official_url": "https://openusd.org/release/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html",
-      "source_snapshot": "source/full_api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e_source.html",
-      "source_parity_report": "reports/round_489_usdviewq_readme_source_parity.json"
+      "round": 491,
+      "round_type": "DefectRound",
+      "output": "full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html",
+      "reason": "用户明确要求先修 release/intro_to_openexec.html，因此本轮不推进新的 API PromotionRound。"
     }
   ],
-  "not_promoted_pages": [],
-  "source_parity_report": "reports/round_489_usdviewq_readme_source_parity.json",
-  "next_actions": [
-    "release 范围已 126/126 complete，不要重复处理 release 已完成页。",
-    "下一轮重新读取 inventory 后选择一个仍为 bilingual_draft 且有 source snapshot 的 API/class/struct 或高价值文档页；开始前必须确认 git/report/validation/markdown/reading-flow/click-path 状态干净一致。"
+  "fixed_defects": [
+    {
+      "id": "P1-release-intro-openexec-visible-click-order",
+      "target": "full_site/release/intro_to_openexec.html",
+      "source_snapshot": "source/full_release/intro_to_openexec_source.html",
+      "source_parity_report": "reports/round_491_intro_openexec_visible_click_order_source_parity.json",
+      "click_path_report": "reports/round_491_intro_openexec_visible_click_order.json"
+    }
   ],
-  "next_action": "下一轮建议 PromotionRound：基于 live reports 选择一个仍为 bilingual_draft 且有 source snapshot 的 API 高价值页面。"
+  "source_parity_report": "reports/round_491_intro_openexec_visible_click_order_source_parity.json",
+  "click_path_report": "reports/round_491_intro_openexec_visible_click_order.json",
+  "next_actions": [
+    "下一轮若无新的 DefectRound/ClickPathAuditRound/ConsistencyRound 指令，可恢复默认 PromotionRound，目标 full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html。",
+    "继续保持 click_path_order_audit、reading_flow_navigation_audit、local_link_routing_report 和 validation 全链通过。"
+  ],
+  "next_action": "若无新 P1 指令，恢复默认 PromotionRound：full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html。"
 }

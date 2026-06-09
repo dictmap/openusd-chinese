@@ -120,7 +120,11 @@ function neighborLinks(current, allAreaPages) {
   if (current.local_output === "full_site/release/intro_to_openexec.html") {
     return [
       `<li><a data-reading-flow="prev" href="${escapeHtml(relativeHref(current.local_output, "site/release_index.html"))}">上一层：Release 本地入口</a></li>`,
-      `<li><a data-reading-flow="next" href="#background">下一步：从 Background 开始顺读</a></li>`,
+      `<li><a data-reading-flow="next" href="#background">1. Background</a></li>`,
+      `<li><a data-reading-flow="next" href="#introducing-openexec">2. Introducing OpenExec</a></li>`,
+      `<li><a data-reading-flow="next" href="#illustrative-example">3. Illustrative Example</a></li>`,
+      `<li><a data-reading-flow="next" href="#new-concepts">4. New concepts</a></li>`,
+      `<li><a data-reading-flow="next" href="#client-api">5. Client API</a></li>`,
     ].join("\n");
   }
   const index = allAreaPages.findIndex((page) => page.local_output === current.local_output);

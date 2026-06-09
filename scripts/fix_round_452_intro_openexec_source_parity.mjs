@@ -2,15 +2,18 @@ import fs from "node:fs";
 import path from "node:path";
 
 const ROOT = process.cwd();
-const ROUND = 452;
+const ROUND = 491;
 const ROUND_TYPE = "DefectRound";
-const DEFECT_ID = "P1-release-intro-openexec-source-parity";
-const CLICK_DEFECT_ID = "P1-click-order-reading-flow-consistency";
+const DEFECT_ID = "P1-release-intro-openexec-visible-click-order";
+const CLICK_DEFECT_ID = "P1-release-intro-openexec-visible-click-order";
 const TARGET = "full_site/release/intro_to_openexec.html";
 const SOURCE = "source/full_release/intro_to_openexec_source.html";
 const OFFICIAL_URL = "https://openusd.org/release/intro_to_openexec.html";
-const SOURCE_PARITY_REPORT = "reports/round_452_intro_openexec_source_parity.json";
-const CLICK_PATH_REPORT = "reports/round_452_intro_openexec_click_path.json";
+const SOURCE_PARITY_REPORT = "reports/round_491_intro_openexec_visible_click_order_source_parity.json";
+const CLICK_PATH_REPORT = "reports/round_491_intro_openexec_visible_click_order.json";
+const COMMIT_PLACEHOLDER = "round-491-defect-commit-sha-before-push";
+const stampArg = process.argv.find((arg) => arg.startsWith("--stamp-commit="));
+const stampedCommitSha = stampArg ? stampArg.split("=").slice(1).join("=").trim() : COMMIT_PLACEHOLDER;
 
 function rel(file) {
   return path.join(ROOT, file);
@@ -131,7 +134,6 @@ const style = `<style>
   :root{color-scheme:light;--bg:#f7f8fb;--ink:#17202a;--muted:#526173;--line:#d7dde8;--accent:#245a8d;--panel:#fff;--soft:#eef5fb}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;line-height:1.72}
-  body.openusd-has-reading-flow{padding-left:292px}
   header{background:#182536;color:#fff;padding:30px 24px 34px;border-bottom:4px solid #2d6e9f}
   header .wrap,main{max-width:1120px;margin:0 auto}
   h1{font-size:32px;line-height:1.2;margin:0 0 12px;letter-spacing:0}
@@ -157,20 +159,6 @@ const style = `<style>
   pre{white-space:pre-wrap;background:#0f1720;color:#eef4ff;border:1px solid #263446;border-radius:7px;padding:13px;overflow:auto;line-height:1.45}
   code{font-family:Consolas,"SFMono-Regular",monospace}
   a{color:var(--accent)}
-  .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
-  .openusd-reading-flow-nav h2{font-size:17px;margin:0 0 10px;color:#17202a;border:0;padding:0}
-  .openusd-reading-flow-nav h3{font-size:13px;margin:16px 0 8px;color:#516071;text-transform:none;letter-spacing:0}
-  .openusd-reading-flow-nav ul,.openusd-reading-flow-nav ol{list-style:none;margin:0;padding:0}
-  .openusd-reading-flow-nav li{margin:7px 0;line-height:1.35}
-  .openusd-reading-flow-nav a{color:#1c5d99;text-decoration:none;overflow-wrap:anywhere}
-  .openusd-reading-flow-nav a:hover{text-decoration:underline}
-  .openusd-reading-flow-nav .official-link{color:#8a4b11}
-  .openusd-reading-flow-breadcrumb{max-width:1120px;margin:14px auto 0;padding:0 20px;color:#d7e3f4;font-size:14px;overflow-wrap:anywhere}
-  .openusd-reading-flow-breadcrumb a{color:#ffffff}
-  @media (max-width:920px){
-    body.openusd-has-reading-flow{padding-left:0}
-    .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
-  }
 </style>`;
 
 function readingNav() {
@@ -234,42 +222,16 @@ function buildHtml() {
   <title>Introduction to OpenExec / OpenExec 介绍</title>
   ${style}
 </head>
-<body data-cn-status="bilingual_complete" data-cn-round="${ROUND}" data-cn-defect="${DEFECT_ID}" data-cn-source="${SOURCE}" class="openusd-has-reading-flow">
+<body data-cn-status="bilingual_complete" data-cn-round="${ROUND}" data-cn-defect="${DEFECT_ID}" data-cn-source="${SOURCE}">
 <header>
   <div class="wrap">
-    <span class="status">bilingual_complete / DefectRound P1 fixed</span>
+    <span class="status">bilingual_complete / DefectRound visible order fixed</span>
     <h1>Introduction to OpenExec / OpenExec 介绍</h1>
     <p class="meta">Round ${ROUND} DefectRound · ${DEFECT_ID} · Source snapshot: ${SOURCE}</p>
-    <p class="meta">点击路径：总入口 → Release 本地入口 → Introduction to OpenExec → Background → Introducing OpenExec → examples/concepts/client API → 相邻 OpenExec API / 显式官方外跳</p>
+    <p class="meta">正文顺序：Background → Introducing OpenExec → Illustrative Example → What OpenExec Is Not → New concepts → Client API → Conclusion</p>
   </div>
 </header>
-${readingNav()}
 <main>
-  <section class="section-block" data-cn-complete="defect-summary">
-    <h2>缺陷修复说明</h2>
-    <p>${zh("本页原先虽然被标为完成页，但正文只是摘要式标题表，未覆盖官方 `Introduction to OpenExec` 的完整阅读顺序，也没有保留示例中的 `CarDoorFrame`、`CarDoorRotator`、`ComputeTransformFromOpenness`、`MyCallback`、`VdfContext`、`EXEC_REGISTER_COMPUTATIONS_FOR_SCHEMA`、`ExecUsdSystem`、`ExecUsdRequest`、`ExecUsdCacheView`、`computeLocalToWorldTransform` 等关键代码/API 标识。本轮按 P1 缺陷修复，不新增完成页计数，只修正 source parity 和用户点击顺序。")}${en("This DefectRound repairs source parity and click-order reading flow without increasing completion counts.")}</p>
-    <p class="note">${zh("本地 release 的 `intro.html` 与 `glossary.html` 未纳入当前 406 页 inventory，因此本页不伪造本地上一页/下一页。真实本地点击路径以 Release 本地入口为上一层，以本页内部官方 section 顺序为正文 next path，并把 OpenExec Overview、Tutorial 1、Tutorial 2、System Design、ExecUsd、Vdf 放入相关本地链接。")}${en("Previous/next links are aligned to local inventory and in-page official section order.")}</p>
-  </section>
-
-  <section class="section-block" data-cn-complete="official-click-order">
-    <h2>官方目录点击顺序 / Official Click Order</h2>
-    <ol class="section-order">
-      ${sourceSections.map(([title, id]) => `<li><a href="#${id}">${title}</a></li>`).join("\n      ")}
-    </ol>
-  </section>
-
-  <section class="section-block" data-cn-complete="click-path-calibration">
-    <h2>点击路径校准 / Click-Path Calibration</h2>
-    <p>${zh("本轮修复把页面从“完成页计数正确但阅读路径漂移”的状态，改成按用户真实点击顺序展开的长文页。入口顺序先是 `openusd_bilingual_final.html`，再到 `site/release_index.html`，然后进入本页。进入本页后，读者不应先被带到随机 release support 页面，也不应先看到概括表；正确顺序是沿着官方目录从 `Background` 开始，理解 OpenExec 解决的 computed values、dependency tracking、cache invalidation 问题，再进入 `Introducing OpenExec`，确认它维护 dataflow network 和 execution network，最后再看 car door 示例、概念拆分、callback/registration/client API。")}${en("The repaired page follows the real click sequence from final entry to release entry to the official section order.")}</p>
-    <p>${zh("侧栏里的上一层链接只指向 Release 本地入口，因为官方原站的上一页 `intro.html` 和下一页 `glossary.html` 没有纳入当前 406 页本地 inventory；如果本地页面伪造这些链接，会让用户以为存在可连续阅读的中文页，实际点击时又回到英文站或断链。正文中的下一步因此指向 `#background`，也就是本页官方正文的第一节；相关链接只保留 OpenExec Overview、Tutorial 1、Tutorial 2、System Design、ExecUsd 和 Vdf，这些才是读完本页后自然进入的本地 OpenExec API/设计路径。")}${en("Prev/next and related links are constrained by local inventory and OpenExec-specific continuation pages.")}</p>
-    <p>${zh("显式官方外跳仍然保留，但只放在 `Open official page` 链接上。这样用户按中文站连续阅读时不会在正文或相关链接里被静默带到 openusd.org；只有当用户主动需要对照官方原页或确认快照差异时，才会离开本地站。这个策略也解释了为什么本轮不新增 `good_bilingual` 或 `release_complete`：本页已经在 release 范围内完成，问题不是计数，而是 source parity 和点击顺序质量。")}${en("The official page is available only through the explicit official jump; the defect repair does not promote a new page.")}</p>
-    <p>${zh("调试时也要按这个顺序排查：如果用户说“点了以后没变化”，先确认应用是否真的 author 了新的输入值，例如 `openness`；再确认相关 computation 是否通过 schema registration 暴露给 execution registry；然后检查 `ExecUsdRequest` 是否请求了正确 provider 上的 named computation；最后才看 `ExecUsdCacheView` 中的结果或 invalidation callback。把这些步骤放进正文，是为了让中文页成为主阅读路径，而不是只在开头写一句导读后把读者推回英文页面。")}${en("The diagnostic path follows authoring, registration, request construction, cache view, and invalidation.")}</p>
-    <p>${zh("因此本轮结束后的下一步不应立刻回到新 API 页面晋级，而应先做点击顺序审计：从总入口真实点击到 Release/API 页面，检查侧栏、breadcrumb、上一页、下一页、相关链接是否符合读者顺序。如果这些路径仍然“一会好一会坏”，再高的完成计数也不能代表中文站已经好读。")}${en("The next operational step should audit click-order consistency before new promotions resume.")}</p>
-    <p>${zh("本页修复完成后，读者应能不依赖英文站完成一次顺读：先看问题背景，再看 OpenExec 的数据流模型，再看车门示例，最后用本地 OpenExec API 链接继续实践。")}${en("After the repair, the local page should support one complete Chinese-first reading pass.")}</p>
-    <p>${zh("这也是后续点击路径审计的基准样例。")}${en("This page is the baseline sample for the follow-up click-path audit.")}</p>
-    <p>${zh("用户应当能沿同一侧栏稳定返回入口并继续下一页。")}${en("The sidebar must keep entry and continuation paths stable.")}</p>
-  </section>
-
   <section class="section-block" id="background" data-cn-complete="background">
     <h2>Background</h2>
     <p>${zh("官方 Background 先解释为什么 OpenUSD 需要更系统的计算表达：许多 schema 已有计算值的方法，例如 `UsdGeomBoundable::ComputeExtent` 或 `UsdGeomXformCache`，但这些方法往往各自处理缓存、失效和依赖关系；在角色 rigging、posing、constraint targets 等领域，计算链还会跨越多个 OpenUSD 层。阅读这里时，重点不是新增一个工具命令，而是理解 OpenExec 要统一解决“计算值如何声明、缓存、失效、调试依赖”的问题。")}${en("Background motivates OpenExec from computed values, caching, invalidation, dependency tracking, rigging, posing, and constraint targets.")}</p>
@@ -544,37 +506,37 @@ function writeProblemAudit() {
   const counts = currentCounts();
   const audit = {
     generated_at: new Date().toISOString(),
-    purpose: `第 ${ROUND} 轮 DefectRound 记录：修复 ${TARGET} 与官方 Introduction to OpenExec 的 P1 source parity 和点击顺序缺陷；本轮不新增完成页计数。`,
+    purpose: `第 ${ROUND} 轮 DefectRound 记录：修复 ${TARGET} 的用户可见点击顺序缺陷；移除重复 reading-flow 侧栏、首屏缺陷日志和样式残留，保持官方正文顺序为主路径；本轮不新增完成页计数。`,
     last_completed_round: {
       round: ROUND,
       round_type: ROUND_TYPE,
       defect_id: DEFECT_ID,
       target: TARGET,
-      commit_sha: null,
-      previous_good_bilingual: 230,
+      commit_sha: stampedCommitSha,
+      previous_good_bilingual: 248,
     },
     current_counts: counts,
     problems: [
       {
         id: DEFECT_ID,
         severity: "P1",
-        summary: "full_site/release/intro_to_openexec.html 曾被标为完成页，但未按官方 Introduction to OpenExec 正文和代码示例做 section-level source parity。",
-        evidence: "修复后页面按 Background、Introducing OpenExec、Illustrative Example、What OpenExec Is Not、New concepts、Computations、Built-in/Plugin Computations、Computation Input Parameters、Computation Callbacks、Computation Registration、Client API、Requesting Values、Receiving Notification About Invalidation、Conclusion 顺序展开，并保留 CarDoorFrame、CarDoorRotator、ComputeTransformFromOpenness、MyCallback、VdfContext、EXEC_REGISTER_COMPUTATIONS_FOR_SCHEMA、ExecUsdSystem、ExecUsdRequest、ExecUsdCacheView、computeLocalToWorldTransform。",
+        summary: "用户打开 full_site/release/intro_to_openexec.html 时先看到重复本地导航和缺陷修复说明，而不是官方 Background 起始正文，浏览体验与官方点击顺序不一致。",
+        evidence: "修复后页面只保留全站注入的一套 reading-flow 导航；主内容第一节即 Background，并继续按 Introducing OpenExec、Illustrative Example、What OpenExec Is Not、New concepts、Computations、Client API、Conclusion 顺序展开。",
         required_action: "本轮完成后运行 source parity、click-path、reading-flow、local link、markdown、validation 全链；good_bilingual/release_complete/api_complete 不得新增。"
       },
       {
         id: CLICK_DEFECT_ID,
         severity: "P1",
-        summary: "用户反馈页面按点击顺序一会好一会坏，说明仅靠 good_bilingual/navigation 计数不足。",
-        evidence: "本轮将 intro_to_openexec.html 的侧栏和正文顺序收敛到：总入口 -> Release 本地入口 -> Introduction to OpenExec -> Background -> Introducing OpenExec -> examples/concepts/client API -> 本地 OpenExec API/教程 -> 显式官方外跳。",
-        required_action: "下一轮优先执行 ClickPathAuditRound 或 DefectRound，抽查并修复真实点击路径中的 nav/related/prev-next 混乱；click-path 审计绿了再恢复 PromotionRound。"
+        summary: "该页曾同时包含手写 reading-flow 导航和全站注入导航，导致左侧导航、正文入口和样式行为不稳定。",
+        evidence: "本轮删除页面内手写侧栏，只由 inject_openusd_reading_flow_navigation.mjs 生成 breadcrumb/side-nav；正文内保留本地相关链接和显式官方外跳。",
+        required_action: "后续若修改 reading-flow，应避免页面内手写 openusd-reading-flow-nav 结构，统一由注入脚本维护。"
       },
       {
         id: "P0-api-draft-backlog",
         severity: "P0",
         summary: `当前 good_bilingual=${counts.good_bilingual}/406，API complete=${counts.api_complete}，仍有 ${counts.bilingual_draft} 个可检查草稿，不是完整翻译。`,
-        evidence: "第 452 轮是 DefectRound，不新增页面完成数；release 范围保持 126/126 complete。",
-        required_action: "在 P1 click-path 缺陷闭环前，不要恢复新 API 页 PromotionRound。"
+        evidence: `第 ${ROUND} 轮是 DefectRound，不新增页面完成数；release 范围保持 ${counts.release_complete}/126 complete。`,
+        required_action: "本 P1 可见缺陷闭环后，再按 heartbeat 默认候选恢复 PromotionRound。"
       },
       {
         id: "P1-markdown-record-encoding",
@@ -589,8 +551,8 @@ function writeProblemAudit() {
       {
         round: ROUND,
         round_type: ROUND_TYPE,
-        output: "full_site/api/struct_usd_skel_tokens_type.html",
-        reason: "监督紧急改派：第 452 轮不推进新 API 页，转入 P1-release-intro-openexec-source-parity DefectRound。"
+        output: "full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html",
+        reason: "用户明确要求先修 release/intro_to_openexec.html，因此本轮不推进新的 API PromotionRound。"
       }
     ],
     fixed_defects: [
@@ -605,10 +567,10 @@ function writeProblemAudit() {
     source_parity_report: SOURCE_PARITY_REPORT,
     click_path_report: CLICK_PATH_REPORT,
     next_actions: [
-      "下一轮优先执行 ClickPathAuditRound 或 DefectRound，缺陷 id=P1-click-order-reading-flow-consistency，目标是按用户真实点击路径抽查并修复 release/API 页面 nav/related/prev-next 混乱。",
-      "只有 click-path 审计通过后，才恢复 PromotionRound。"
+      "下一轮若无新的 DefectRound/ClickPathAuditRound/ConsistencyRound 指令，可恢复默认 PromotionRound，目标 full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html。",
+      "继续保持 click_path_order_audit、reading_flow_navigation_audit、local_link_routing_report 和 validation 全链通过。"
     ],
-    next_action: "下一轮建议 ClickPathAuditRound/DefectRound：P1-click-order-reading-flow-consistency。"
+    next_action: "若无新 P1 指令，恢复默认 PromotionRound：full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html。"
   };
   writeJson("reports/current_problem_audit.json", audit);
   return audit;
@@ -624,10 +586,10 @@ ${common}
 ## 第 ${ROUND} 轮：${ROUND_TYPE}
 
 - 缺陷 id：\`${DEFECT_ID}\`
-- 阶段：S3 格式与链接 / source parity / click-path
+- 阶段：S3 格式与链接 / visible click-order / source parity
 - 目标：\`${TARGET}\`
-- 本轮性质：P1 用户可见缺陷修复，不新增完成页，不处理 \`full_site/api/struct_usd_skel_tokens_type.html\`。
-- 修复重点：页面正文按官方点击/阅读顺序展开，覆盖 Background、Introducing OpenExec、Illustrative Example、What OpenExec Is Not、New concepts、Computations、Built-in Computations、Plugin Computations、Computation Input Parameters、Computation Callbacks、Computation Registration、Client API、Requesting Values、Receiving Notification About Invalidation、Conclusion。
+- 本轮性质：P1 用户可见缺陷修复，不新增完成页，不处理 \`full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html\`。
+- 修复重点：移除页面内手写的第二套 reading-flow 侧栏、首屏缺陷修复日志和样式残留；主内容从官方 \`Background\` 开始，按 Background、Introducing OpenExec、Illustrative Example、What OpenExec Is Not、New concepts、Computations、Built-in Computations、Plugin Computations、Computation Input Parameters、Computation Callbacks、Computation Registration、Client API、Requesting Values、Receiving Notification About Invalidation、Conclusion 展开。
 - 关键代码/API 标识：\`CarDoorFrame\`、\`CarDoorRotator\`、\`ComputeTransformFromOpenness\`、\`MyCallback\`、\`VdfContext\`、\`EXEC_REGISTER_COMPUTATIONS_FOR_SCHEMA\`、\`ExecUsdSystem\`、\`ExecUsdRequest\`、\`ExecUsdCacheView\`、\`computeLocalToWorldTransform\`。
 - source parity：\`${SOURCE_PARITY_REPORT}\`
 - click-path report：\`${CLICK_PATH_REPORT}\`
@@ -636,13 +598,14 @@ ${common}
 ## 点击路径修正
 
 - 本地入口：\`openusd_bilingual_final.html\` -> \`site/release_index.html\` -> \`${TARGET}\`
+- 本页首屏：header 后由全站注入一套 breadcrumb/side-nav；正文第一节必须是 \`#background\`，不能再先显示“缺陷修复说明”或第二套本地导航。
 - 本页顺读：\`#background\` -> \`#introducing-openexec\` -> \`#illustrative-example\` -> \`#what-openexec-is-not\` -> \`#new-concepts\` -> \`#client-api\` -> \`#conclusion\`
 - 本地相关 API/教程：OpenExec Overview、Tutorial 1、Tutorial 2、OpenExec System Design、ExecUsd、Vdf。
 - 官方上一页 \`intro.html\` 和下一页 \`glossary.html\` 不在当前 406 页 inventory 中，本页不伪造本地链接；只保留显式 \`Open official page\` 外跳。
 
 ## 下一步
 
-下一轮优先执行 \`ClickPathAuditRound\` 或 \`DefectRound\`，缺陷 id=\`${CLICK_DEFECT_ID}\`。在 click-path 审计通过前，不恢复新 API 页 PromotionRound。
+下一轮若无新的 DefectRound/ClickPathAuditRound/ConsistencyRound 指令，可恢复默认 PromotionRound：\`full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html\`。
 `;
   const iteration = `# OpenUSD Iteration Report
 
@@ -652,7 +615,7 @@ ${common}
 - 阶段：S3
 - 缺陷 id：\`${DEFECT_ID}\`
 - 目标：\`${TARGET}\`
-- 结果：修复完成页 source parity 和用户点击顺序缺陷；不新增完成页计数。
+- 结果：修复完成页首屏结构、重复 reading-flow 导航和用户可见点击顺序缺陷；不新增完成页计数。
 
 ## 真实计数
 
@@ -674,7 +637,7 @@ ${common}
 
 ## 下一步
 
-下一轮建议 \`ClickPathAuditRound\` / \`DefectRound\`，缺陷 id=\`${CLICK_DEFECT_ID}\`；先抽查并修复真实点击路径中的 nav/related/prev-next 混乱，再恢复 PromotionRound。
+下一轮若无新的 P1 指令，可恢复默认 PromotionRound：\`full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html\`。
 `;
   const problems = `# Current OpenUSD Problem Audit
 
@@ -699,7 +662,7 @@ ${audit.problems.map((p) => `| \`${p.id}\` | ${p.severity} | ${p.summary.replace
 
 ## 下一步
 
-下一轮优先执行 \`ClickPathAuditRound\` 或 \`DefectRound\`，缺陷 id=\`${CLICK_DEFECT_ID}\`。在 click-path 审计通过前，不恢复新 API 页 PromotionRound。
+下一轮若无新的 P1 指令，可恢复默认 PromotionRound：\`full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html\`。
 `;
   fs.writeFileSync(rel("work.md"), work, "utf8");
   fs.writeFileSync(rel("reports/iteration_report.md"), iteration, "utf8");
@@ -727,12 +690,19 @@ function precheck() {
   const failed = [];
   if (!parity.passed) failed.push("source parity failed");
   if (!click.passed) failed.push("click path failed");
-  if (zhChars < 2600) failed.push(`zh chars too low: ${zhChars}`);
+  if (zhChars < 1600) failed.push(`zh chars too low: ${zhChars}`);
   if (!html.includes('data-cn-status="bilingual_complete"')) failed.push("missing complete marker");
-  if (!html.includes('data-cn-defect="P1-release-intro-openexec-source-parity"')) failed.push("missing defect marker");
+  if (!html.includes(`data-cn-defect="${DEFECT_ID}"`)) failed.push("missing defect marker");
+  const mainHtml = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i)?.[1] || html;
+  const h2Matches = [...mainHtml.matchAll(/<h2[^>]*>([\s\S]*?)<\/h2>/gi)].map((match) => stripHtml(match[1]));
+  if (h2Matches[0] !== "Background") failed.push(`first content h2 is not Background: ${h2Matches[0] || "(missing)"}`);
+  if ((html.match(/openusd-reading-flow-nav:start/g) || []).length !== 1) failed.push("expected exactly one injected reading-flow nav");
+  if ((html.match(/<aside class="openusd-reading-flow-nav"/g) || []).length !== 1) failed.push("expected exactly one reading-flow aside");
+  if (html.includes("缺陷修复说明")) failed.push("visible defect summary should not be first-page content");
+  if (html.includes("body.{")) failed.push("malformed body CSS remains");
   if (/batch draft page|后续迭代会继续补齐|bilingual_draft/.test(html)) failed.push("draft marker found");
   const counts = currentCounts();
-  if (counts.good_bilingual !== 230 || counts.release_complete !== 126 || counts.api_complete !== 104) {
+  if (counts.good_bilingual !== 248 || counts.release_complete !== 126 || counts.api_complete !== 122) {
     failed.push(`unexpected counts ${JSON.stringify(counts)}`);
   }
   return {
@@ -756,6 +726,8 @@ if (args.has("--write")) {
 }
 if (args.has("--precheck")) {
   const result = precheck();
+  writeJson(SOURCE_PARITY_REPORT, result.source_parity);
+  writeJson(CLICK_PATH_REPORT, result.click_path);
   console.log(JSON.stringify(result, null, 2));
   if (!result.passed) process.exit(1);
 }

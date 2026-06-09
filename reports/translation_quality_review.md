@@ -1,6 +1,6 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-09T07:51:06.120Z
+Generated: 2026-06-09T08:26:32.501Z
 
 ## Summary
 
@@ -351,7 +351,7 @@ Generated: 2026-06-09T07:51:06.120Z
 | 285 | good_bilingual | bilingual_complete | 1479 | 33/33 | 0 | 0 | `full_site/release/genindex.html` |
 | 286 | good_bilingual | bilingual_complete | 862 | 112/509 | 0 | 0 | `site/glossary.html` |
 | 287 | good_bilingual | bilingual_complete | 509 | 10/331 | 0 | 0 | `site/release_index.html` |
-| 288 | good_bilingual | bilingual_complete | 2483 | 43/43 | 0 | 0 | `full_site/release/intro_to_openexec.html` |
+| 288 | good_bilingual | bilingual_complete | 1659 | 33/33 | 0 | 0 | `full_site/release/intro_to_openexec.html` |
 | 289 | good_bilingual | bilingual_complete | 2736 | 53/46 | 0 | 0 | `site/intro.html` |
 | 290 | good_bilingual | bilingual_complete | 1370 | 33/33 | 0 | 0 | `full_site/release/maxperf.html` |
 | 291 | good_bilingual | bilingual_complete | 1456 | 30/30 | 0 | 0 | `full_site/release/plugins_alembic.html` |
