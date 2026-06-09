@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-09T06:28:59.284Z",
+  "generated_at": "2026-06-09T07:10:19.426Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 160,
-    "bilingual_complete": 246
+    "bilingual_draft": 159,
+    "bilingual_complete": 247
   },
   "grade_counts": {
     "draft_template_only": 10,
-    "good_bilingual": 246,
-    "draft_needs_translation": 150
+    "good_bilingual": 247,
+    "draft_needs_translation": 149
   },
   "focus_batch": [
     {
@@ -7087,7 +7087,7 @@
       "enBlockCount": 22,
       "zhChars": 576,
       "enLetters": 1709,
-      "bodyChineseChars": 702,
+      "bodyChineseChars": 698,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
       "genericDraft": true,
@@ -7114,7 +7114,7 @@
       "enBlockCount": 36,
       "zhChars": 624,
       "enLetters": 2170,
-      "bodyChineseChars": 1872,
+      "bodyChineseChars": 1937,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
       "genericDraft": false,
@@ -7131,29 +7131,29 @@
     },
     {
       "index": 229,
-      "title": "API 页面草稿：Validation / Validation",
+      "title": "Validation",
       "output": "full_site/api/md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html",
       "official_url": "https://openusd.org/release/api/md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 47,
-      "enBlockCount": 39,
-      "zhChars": 555,
-      "enLetters": 2016,
-      "bodyChineseChars": 677,
+      "grade": "good_bilingual",
+      "zhBlockCount": 62,
+      "enBlockCount": 62,
+      "zhChars": 1102,
+      "enLetters": 4039,
+      "bodyChineseChars": 3011,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。",
-        "本区块针对 Validation 补充中文优先的用途说明、流程/概念边界、阅读顺序和术语对照；英文模块名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、类型名、头文件名、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。",
-        "`Validation` 页面描述 OpenUSD Validation framework，用于验证 assets 是否满足 core rules、schema rules 和 client-provided plugin rules，从而提升 USD workflows 之间的稳健性与可互换性。"
+        "本页说明 OpenUSD Validation framework 如何验证 assets，覆盖 core rules、schema rules 和 client-provided rules via plugins，目标是让资产在不同 USD workflows 之间更稳健、更可互换。阅读时先把它和普通 schema authoring 区分开：schema 定义可写入的数据模型，Validation 定义运行时或发布前要执行的检查规则；validator 可以报告问题和给出 fixer，但不会自动改写 layer、prim 或 property。",
+        "官方正文的对象层级是： UsdValidationValidator",
+        "本地中文页按用户点击和官方 section 顺序展开：先讲 validators、metadata、context、registry、errors 与 fixers，再讲 Running Validator Tests，然后讲 C++ custom validators 的 plugin/explicit 注册路径、fixers，最后讲 Python validators 的性能、签名、显式注册、插件加载、运行和 suite 分组。这样读者从 API 入口点击到本页后，可以按官方目录逐段理解，而不是只看到摘要表。"
       ],
       "sampleEn": [
-        "This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.",
-        "This section adds Chinese-first purpose notes, workflow and concept boundaries, reading order, and terminology for Validation while retaining English module names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, type names, header names, links, and source excerpts for comparison with the official Doxygen page."
+        "The OpenUSD Validation framework provides a system to validate assets, verifying core rules, schema rules, and client-provided rules via plugins.",
+        "A single UsdValidationValidator instance represents a single validation test that can result in zero or more named validation errors when run."
       ]
     },
     {
@@ -7168,7 +7168,7 @@
       "enBlockCount": 17,
       "zhChars": 550,
       "enLetters": 1367,
-      "bodyChineseChars": 688,
+      "bodyChineseChars": 684,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
       "genericDraft": true,
@@ -7195,7 +7195,7 @@
       "enBlockCount": 17,
       "zhChars": 587,
       "enLetters": 1823,
-      "bodyChineseChars": 723,
+      "bodyChineseChars": 719,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
       "genericDraft": true,
@@ -7222,7 +7222,7 @@
       "enBlockCount": 17,
       "zhChars": 623,
       "enLetters": 1245,
-      "bodyChineseChars": 759,
+      "bodyChineseChars": 755,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
       "genericDraft": true,

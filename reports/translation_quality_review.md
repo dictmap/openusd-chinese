@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-09T06:28:59.284Z
+Generated: 2026-06-09T07:10:19.426Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 160
-- bilingual_complete: 246
+- bilingual_draft: 159
+- bilingual_complete: 247
 
 ## Grade Counts
 
 - draft_template_only: 10
-- draft_needs_translation: 150
-- good_bilingual: 246
+- draft_needs_translation: 149
+- good_bilingual: 247
 
 ## Current Focus Batch
 
@@ -292,7 +292,7 @@ Generated: 2026-06-09T06:28:59.284Z
 | 226 | draft_needs_translation | bilingual_draft | 560 | 27/19 | 0 | 0 | `full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html` |
 | 227 | draft_needs_translation | bilingual_draft | 576 | 30/22 | 0 | 0 | `full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html` |
 | 228 | good_bilingual | bilingual_complete | 624 | 36/36 | 0 | 0 | `full_site/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html` |
-| 229 | draft_needs_translation | bilingual_draft | 555 | 47/39 | 0 | 0 | `full_site/api/md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html` |
+| 229 | good_bilingual | bilingual_complete | 1102 | 62/62 | 0 | 0 | `full_site/api/md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html` |
 | 230 | draft_needs_translation | bilingual_draft | 550 | 25/17 | 0 | 0 | `full_site/api/modules.html` |
 | 231 | draft_needs_translation | bilingual_draft | 587 | 25/17 | 0 | 0 | `full_site/api/namespacemembers_func.html` |
 | 232 | draft_needs_translation | bilingual_draft | 623 | 25/17 | 0 | 0 | `full_site/api/namespacemembers_type.html` |

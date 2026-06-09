@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-09T06:29:17.753Z
+Generated: 2026-06-09T07:10:48.729Z
 
-Transient base URL: `http://127.0.0.1:55010/`
+Transient base URL: `http://127.0.0.1:54102/`
 
 Result:
 
 - Passed: true
-- Draft pages: 160
-- Pages checked: 160
-- Passed pages: 160
+- Draft pages: 159
+- Pages checked: 159
+- Passed pages: 159
 - Failed pages: 0
-- Final HTML links: 160
-- Local assets checked: 160
+- Final HTML links: 159
+- Local assets checked: 159
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -160,7 +160,6 @@ Result:
 | true | full_site/api/journal_8h.html | 200 | true | 0 | 0 |
 | true | full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html | 200 | true | 0 | 0 |
 | true | full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html | 200 | true | 0 | 0 |
-| true | full_site/api/md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html | 200 | true | 0 | 0 |
 | true | full_site/api/modules.html | 200 | true | 0 | 0 |
 | true | full_site/api/namespacemembers_func.html | 200 | true | 0 | 0 |
 | true | full_site/api/namespacemembers_type.html | 200 | true | 0 | 0 |
