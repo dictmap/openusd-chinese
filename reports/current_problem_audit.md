@@ -1,6 +1,6 @@
 # Current OpenUSD Problem Audit
 
-Generated: 2026-06-09T02:05:43.802Z
+Generated: 2026-06-09T02:08:11.167Z
 
 本报告是当前自动化的真实问题清单。它区分“可检查草稿”和“完整双语”，并额外记录 `review_ready_zh`，防止完成页仍主要依赖英文。
 
@@ -24,7 +24,7 @@ Generated: 2026-06-09T02:05:43.802Z
 - round：471
 - round_type：PromotionRound
 - target：`full_site/api/md_pxr_exec_ef__r_e_a_d_m_e.html`
-- commit SHA：`round-471-promotion-commit-sha-before-push`
+- commit SHA：`b42f48f1f10dcd70216e21856d74978f07851371`
 - source parity：`reports/round_471_ef_readme_source_parity.json`
 
 ## 问题清单

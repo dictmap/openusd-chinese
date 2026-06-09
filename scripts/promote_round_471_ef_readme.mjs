@@ -10,7 +10,7 @@ const OFFICIAL_URL = "https://openusd.org/release/api/md_pxr_exec_ef__r_e_a_d_m_
 const SOURCE_PARITY_REPORT = "reports/round_471_ef_readme_source_parity.json";
 const PROMOTION_ID = "round-471-api-ef-readme";
 const PREVIOUS_GOOD_BILINGUAL = 238;
-const PROMOTION_COMMIT_PLACEHOLDER = "round-471-promotion-commit-sha-before-push";
+const PROMOTION_COMMIT_PLACEHOLDER = "b42f48f1f10dcd70216e21856d74978f07851371";
 
 const expectedKeywords = [
   "Ef: Execution Foundation",
