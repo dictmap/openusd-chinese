@@ -24,7 +24,7 @@
 - 本轮目标：`full_site/api/page__execution__system__design.html`
 - 官方页面：`https://openusd.org/release/api/page__execution__system__design.html`
 - source parity：`reports/round_463_openexec_system_design_source_parity.json`
-- commit SHA：`round-463-promotion-commit-sha-before-push`
+- commit SHA：`03386b7861989988dd80d7c7c51cfec316f742c4`
 - 完成数状态：good_bilingual=235；review_ready_zh=172。
 - 固定审计：`translation_quality_review.json`、`english_debt_audit.json`、`all_pages_inventory.json`、`validation_report.json` 已重建并一致。
 

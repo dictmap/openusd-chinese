@@ -10,7 +10,7 @@ const OFFICIAL_URL = "https://openusd.org/release/api/page__execution__system__d
 const SOURCE_PARITY_REPORT = "reports/round_463_openexec_system_design_source_parity.json";
 const PROMOTION_ID = "round-463-api-openexec-system-design";
 const PREVIOUS_GOOD_BILINGUAL = 234;
-const PROMOTION_COMMIT_PLACEHOLDER = "round-463-promotion-commit-sha-before-push";
+const PROMOTION_COMMIT_PLACEHOLDER = "03386b7861989988dd80d7c7c51cfec316f742c4";
 
 const expectedKeywords = [
   "OpenExec",
