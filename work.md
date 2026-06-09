@@ -24,7 +24,7 @@
 - 本轮目标：`full_site/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html`
 - 官方页面：`https://openusd.org/release/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html`
 - source parity：`reports/round_485_boolean_expressions_source_parity.json`
-- commit SHA：`round-485-promotion-commit-sha-before-push`
+- commit SHA：`592f84551a7811e1ff361e57c3d54165a6217822`
 - 完成数状态：good_bilingual=246；review_ready_zh=183。
 - 固定审计：`translation_quality_review.json`、`english_debt_audit.json`、`all_pages_inventory.json`、`validation_report.json` 已重建并一致。
 

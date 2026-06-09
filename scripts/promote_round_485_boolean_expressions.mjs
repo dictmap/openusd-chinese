@@ -10,7 +10,7 @@ const OFFICIAL_URL = "https://openusd.org/release/api/md_pxr_usd_sdf_doxygen_boo
 const SOURCE_PARITY_REPORT = "reports/round_485_boolean_expressions_source_parity.json";
 const PROMOTION_ID = "round-485-api-boolean-expressions";
 const PREVIOUS_GOOD_BILINGUAL = 245;
-const PROMOTION_COMMIT_PLACEHOLDER = "round-485-promotion-commit-sha-before-push";
+const PROMOTION_COMMIT_PLACEHOLDER = "592f84551a7811e1ff361e57c3d54165a6217822";
 
 const expectedKeywords = [
   "Boolean Expressions",
