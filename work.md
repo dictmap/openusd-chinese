@@ -24,7 +24,7 @@
 - 本轮目标：`full_site/release/user_guides/color_user_guide.html`
 - 官方页面：`https://openusd.org/release/user_guides/color_user_guide.html`
 - source parity：`reports/round_413_user_guides_source_parity.json`
-- commit SHA：`round-491-defect-commit-sha-before-push`
+- commit SHA：`85f2d897e9bd74b5ceab69cae308ed963bdeb1ce`
 - 完成数状态：good_bilingual=248；review_ready_zh=185。
 - 固定审计：`translation_quality_review.json`、`english_debt_audit.json`、`all_pages_inventory.json`、`validation_report.json` 已重建并一致。
 
