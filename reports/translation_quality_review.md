@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-09T04:42:53.650Z
+Generated: 2026-06-09T05:12:43.137Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 162
-- bilingual_complete: 244
+- bilingual_draft: 161
+- bilingual_complete: 245
 
 ## Grade Counts
 
 - draft_template_only: 10
-- draft_needs_translation: 152
-- good_bilingual: 244
+- draft_needs_translation: 151
+- good_bilingual: 245
 
 ## Current Focus Batch
 
@@ -52,13 +52,13 @@ Generated: 2026-06-09T04:42:53.650Z
 | 111 | draft_needs_translation | 431 | `full_site/api/functions_i.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
 | 152 | draft_needs_translation | 431 | `full_site/api/functions_vars_u.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 | 149 | draft_needs_translation | 433 | `full_site/api/functions_vars_r.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
-| 269 | draft_needs_translation | 436 | `full_site/api/usd_semantics_overview.html` | API 页面草稿：UsdSemantics: Semantic Labeling of Scenes / UsdSemantics: Semantic Labeling of Scenes |
 | 134 | draft_needs_translation | 439 | `full_site/api/functions_vars_c.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 | 96 | draft_needs_translation | 441 | `full_site/api/functions_func_o.html` | API 页面草稿：Universal Scene Description: Class Members - Functions / Universal Scene Description: Class Members - Functions |
 | 133 | draft_needs_translation | 445 | `full_site/api/functions_vars_b.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 | 150 | draft_needs_translation | 445 | `full_site/api/functions_vars_s.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 | 116 | draft_needs_translation | 447 | `full_site/api/functions_n.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
 | 114 | draft_needs_translation | 449 | `full_site/api/functions_l.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
+| 139 | draft_needs_translation | 457 | `full_site/api/functions_vars_h.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 
 ## All Pages
 
@@ -332,7 +332,7 @@ Generated: 2026-06-09T04:42:53.650Z
 | 266 | good_bilingual | bilingual_complete | 1136 | 33/33 | 0 | 0 | `full_site/api/usd_proc_page_front.html` |
 | 267 | good_bilingual | bilingual_complete | 861 | 66/66 | 0 | 0 | `full_site/api/usd_render_page_front.html` |
 | 268 | good_bilingual | bilingual_complete | 773 | 45/45 | 0 | 0 | `full_site/api/usd_ri_page_front.html` |
-| 269 | draft_needs_translation | bilingual_draft | 436 | 27/24 | 0 | 0 | `full_site/api/usd_semantics_overview.html` |
+| 269 | good_bilingual | bilingual_complete | 2292 | 46/46 | 0 | 0 | `full_site/api/usd_semantics_overview.html` |
 | 270 | good_bilingual | bilingual_complete | 1629 | 59/51 | 0 | 0 | `full_site/api/usd_shade_page_front.html` |
 | 271 | good_bilingual | bilingual_complete | 1358 | 47/47 | 0 | 0 | `full_site/api/usd_shaders_page_front.html` |
 | 272 | good_bilingual | bilingual_complete | 1630 | 45/37 | 0 | 0 | `full_site/api/usd_skel_page_front.html` |
