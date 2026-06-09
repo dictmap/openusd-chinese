@@ -1,15 +1,15 @@
 # OpenUSD Reading Flow Navigation Audit
 
-Generated: 2026-06-09T01:28:55.717Z
+Generated: 2026-06-09T01:44:55.074Z
 
 - Passed: true
-- Completed full_site pages checked: 229
-- Pages with side navigation: 229
-- Pages with breadcrumb: 229
+- Completed full_site pages checked: 230
+- Pages with side navigation: 230
+- Pages with breadcrumb: 230
 - Release pages with release entry: 121/121
-- API pages with API entry: 108/108
-- Pages with related links: 229
-- Pages with previous/next: 229
+- API pages with API entry: 109/109
+- Pages with related links: 230
+- Pages with previous/next: 230
 - Official leak count: 0
 - Sample paths passed: 8/8
 - Failed checks: 0
