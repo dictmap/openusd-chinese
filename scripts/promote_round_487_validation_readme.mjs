@@ -10,7 +10,7 @@ const OFFICIAL_URL = "https://openusd.org/release/api/md_pxr_usd_validation_usd_
 const SOURCE_PARITY_REPORT = "reports/round_487_validation_readme_source_parity.json";
 const PROMOTION_ID = "round-487-api-validation-readme";
 const PREVIOUS_GOOD_BILINGUAL = 246;
-const PROMOTION_COMMIT_PLACEHOLDER = "round-487-promotion-commit-sha-before-push";
+const PROMOTION_COMMIT_PLACEHOLDER = "fc4e5613c30c7983fd6ac2b6667442b85e85919f";
 
 const expectedKeywords = [
   "Validation",

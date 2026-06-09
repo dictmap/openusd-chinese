@@ -24,7 +24,7 @@
 - 本轮目标：`full_site/api/md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html`
 - 官方页面：`https://openusd.org/release/api/md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html`
 - source parity：`reports/round_487_validation_readme_source_parity.json`
-- commit SHA：`round-487-promotion-commit-sha-before-push`
+- commit SHA：`fc4e5613c30c7983fd6ac2b6667442b85e85919f`
 - 完成数状态：good_bilingual=247；review_ready_zh=184。
 - 固定审计：`translation_quality_review.json`、`english_debt_audit.json`、`all_pages_inventory.json`、`validation_report.json` 已重建并一致。
 
