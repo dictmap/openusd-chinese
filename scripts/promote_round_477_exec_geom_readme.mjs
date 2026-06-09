@@ -10,7 +10,7 @@ const OFFICIAL_URL = "https://openusd.org/release/api/md_pxr_exec_exec_geom__r_e
 const SOURCE_PARITY_REPORT = "reports/round_477_exec_geom_readme_source_parity.json";
 const PROMOTION_ID = "round-477-api-exec-geom-readme";
 const PREVIOUS_GOOD_BILINGUAL = 241;
-const PROMOTION_COMMIT_PLACEHOLDER = "round-477-promotion-commit-sha-before-push";
+const PROMOTION_COMMIT_PLACEHOLDER = "81b22b41d653bd9bfa7987e0f79466762927f9da";
 
 const expectedKeywords = [
   "ExecGeom: Execution for UsdGeom",

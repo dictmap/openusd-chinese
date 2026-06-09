@@ -24,7 +24,7 @@
 - 本轮目标：`full_site/api/md_pxr_exec_exec_geom__r_e_a_d_m_e.html`
 - 官方页面：`https://openusd.org/release/api/md_pxr_exec_exec_geom__r_e_a_d_m_e.html`
 - source parity：`reports/round_477_exec_geom_readme_source_parity.json`
-- commit SHA：`round-477-promotion-commit-sha-before-push`
+- commit SHA：`81b22b41d653bd9bfa7987e0f79466762927f9da`
 - 完成数状态：good_bilingual=242；review_ready_zh=179。
 - 固定审计：`translation_quality_review.json`、`english_debt_audit.json`、`all_pages_inventory.json`、`validation_report.json` 已重建并一致。
 
