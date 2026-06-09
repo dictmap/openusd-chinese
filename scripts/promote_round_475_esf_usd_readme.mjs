@@ -1,4 +1,81 @@
-<!doctype html>
+import fs from "node:fs";
+import path from "node:path";
+
+const ROOT = process.cwd();
+const ROUND = 475;
+const ROUND_TYPE = "PromotionRound";
+const TARGET = "full_site/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html";
+const SOURCE = "source/full_api/md_pxr_exec_esf_usd__r_e_a_d_m_e_source.html";
+const OFFICIAL_URL = "https://openusd.org/release/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html";
+const SOURCE_PARITY_REPORT = "reports/round_475_esf_usd_readme_source_parity.json";
+const PROMOTION_ID = "round-475-api-esf-usd-readme";
+const PREVIOUS_GOOD_BILINGUAL = 240;
+const PROMOTION_COMMIT_PLACEHOLDER = "round-475-promotion-commit-sha-before-push";
+
+const expectedKeywords = [
+  "EsfUsd: Execution Scene Foundation for Usd",
+  "not meant for public use",
+  "esfUsd library",
+  "built on top of",
+  "esf",
+  "interfaces",
+  "execution system",
+  "access scene objects defined on a UsdStage",
+  "build and evaluate execution networks",
+];
+
+function rel(file) {
+  return path.join(ROOT, file);
+}
+
+function read(file) {
+  return fs.readFileSync(rel(file), "utf8").replace(/^\uFEFF/, "");
+}
+
+function write(file, content) {
+  fs.writeFileSync(rel(file), content, "utf8");
+}
+
+function readJson(file) {
+  return JSON.parse(read(file));
+}
+
+function writeJson(file, data) {
+  write(file, `${JSON.stringify(data, null, 2)}\n`);
+}
+
+function esc(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function stripHtml(value) {
+  return String(value)
+    .replace(/<script[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style[\s\S]*?<\/style>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&zwj;/g, "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function zhCharCount(value) {
+  return (String(value).match(/[\u3400-\u9fff]/g) || []).length;
+}
+
+function blockCount(value, klass) {
+  return (String(value).match(new RegExp(`class="${klass}"`, "g")) || []).length;
+}
+
+function pageHtml() {
+  return `<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
@@ -23,89 +100,13 @@
     pre{white-space:pre-wrap;background:#0f1720;color:#e8eef7;border-radius:6px;padding:14px;overflow:auto}
     .status{display:inline-block;background:#1f7a54;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
-<style id="openusd-reading-flow-nav-style">
-    body.openusd-has-reading-flow{padding-left:292px}
-    .openusd-reading-flow-nav{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#ffffff;border-right:1px solid #d8dee8;box-shadow:0 0 20px rgba(17,24,39,.08);z-index:50;padding:18px 16px;color:#1d2733;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif}
-    .openusd-reading-flow-nav h2{font-size:17px;margin:0 0 10px;color:#17202a}
-    .openusd-reading-flow-nav h3{font-size:13px;margin:16px 0 8px;color:#516071;text-transform:none;letter-spacing:0}
-    .openusd-reading-flow-nav ul,.openusd-reading-flow-nav ol{list-style:none;margin:0;padding:0}
-    .openusd-reading-flow-nav li{margin:7px 0;line-height:1.35}
-    .openusd-reading-flow-nav a{color:#1c5d99;text-decoration:none;overflow-wrap:anywhere}
-    .openusd-reading-flow-nav a:hover{text-decoration:underline}
-    .openusd-reading-flow-status{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:999px;background:#edf2f7;color:#516071;font-size:11px}
-    .openusd-reading-flow-nav .official-link{color:#8a4b11}
-    .openusd-reading-flow-breadcrumb{max-width:1100px;margin:14px auto 0;padding:0 20px;color:#d7e3f4;font-size:14px;overflow-wrap:anywhere}
-    .openusd-reading-flow-breadcrumb a{color:#ffffff}
-    @media (max-width: 920px){
-      body.openusd-has-reading-flow{padding-left:0}
-      .openusd-reading-flow-nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid #d8dee8;box-shadow:none}
-      .openusd-reading-flow-nav .openusd-reading-flow-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px}
-    }
-  </style>
 </head>
-<body class="openusd-has-reading-flow" data-cn-status="bilingual_complete" data-cn-round="475" data-cn-source="source/full_api/md_pxr_exec_esf_usd__r_e_a_d_m_e_source.html">
+<body class="openusd-has-reading-flow" data-cn-status="bilingual_complete" data-cn-round="${ROUND}" data-cn-source="${esc(SOURCE)}">
   <header>
     <span class="status">bilingual_complete</span>
     <h1>EsfUsd: Execution Scene Foundation for Usd</h1>
-    <div class="meta">OpenUSD API 中文导读 / Source parity: source/full_api/md_pxr_exec_esf_usd__r_e_a_d_m_e_source.html</div>
+    <div class="meta">OpenUSD API 中文导读 / Source parity: ${esc(SOURCE)}</div>
   </header>
-<!-- openusd-reading-flow-nav:start -->
-<nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
-  <a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口</a>
-  <span> / </span>
-  <a data-reading-flow="api-entry" href="../../site/index.html">API 本地入口</a>
-  <span> / api / md_pxr_exec_esf_usd__r_e_a_d_m_e.html</span>
-</nav>
-<aside class="openusd-reading-flow-nav" aria-label="本地阅读导航 / Local reading navigation">
-  <h2>本地阅读导航</h2>
-  <div class="openusd-reading-flow-columns">
-    <section>
-      <h3>入口 / Entrances</h3>
-      <ul>
-        <li><a data-reading-flow="final" href="../../openusd_bilingual_final.html">总入口 / Final entry</a></li>
-        <li><a data-reading-flow="release-entry" href="../../site/release_index.html">Release 本地入口</a></li>
-        <li><a data-reading-flow="api-entry" href="../../site/index.html">API Doxygen 本地入口</a></li>
-        <li><a data-reading-flow="api-redirect" href="../../site/api/index.html">API redirect / site/api/index.html</a></li>
-      </ul>
-    </section>
-    <section>
-      <h3>当前位置 / Current Layer</h3>
-      <ol>
-        <li>api</li>
-        <li>md_pxr_exec_esf_usd__r_e_a_d_m_e.html</li>
-      </ol>
-    </section>
-    <section>
-      <h3>当前 API 上下文 / API Context</h3>
-      <ul>
-        <li><a data-reading-flow="related" href="md_pxr_exec_ef__r_e_a_d_m_e.html">Ef: Execution Foundation</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="md_pxr_exec_esf__r_e_a_d_m_e.html">Esf: Execution Scene Foundation</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="md_pxr_exec_exec__r_e_a_d_m_e.html">Exec: Execution sytem core</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="md_pxr_exec_exec_usd__r_e_a_d_m_e.html">ExecUsd: Execution system for Usd</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="md_pxr_exec_exec_usd_docs_overview.html">OpenExec Overview</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html">Doc Exec Exec Usd Docs Tutorial1 Computing Values</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html">OpenExec Tutorial 2: Defining Schema Computations</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="md_pxr_exec_vdf__r_e_a_d_m_e.html">Vdf: Vectorized Data Flow</a><span class="openusd-reading-flow-status">complete</span></li>
-<li><a data-reading-flow="related" href="md_pxr_exec_exec_geom__r_e_a_d_m_e.html">API 页面草稿：ExecGeom: Execution for UsdGeom / ExecGeom: Execution for UsdGeom</a><span class="openusd-reading-flow-status">draft</span></li>
-<li><a data-reading-flow="related" href="md_pxr_exec_exec_ir__r_e_a_d_m_e.html">API 页面草稿：ExecIr: OpenExec implementation of invertible rigs / ExecIr: OpenExec implementation of invertible rigs</a><span class="openusd-reading-flow-status">draft</span></li>
-      </ul>
-    </section>
-    <section>
-      <h3>上一页/下一页 / Previous/Next</h3>
-      <ul>
-        <li><a data-reading-flow="prev" href="md_pxr_exec_esf__r_e_a_d_m_e.html">上一页 / Previous: Esf: Execution Scene Foundation</a></li>
-<li><a data-reading-flow="next" href="md_pxr_exec_exec__r_e_a_d_m_e.html">下一页 / Next: Exec: Execution sytem core</a></li>
-      </ul>
-    </section>
-    <section>
-      <h3>官方外跳 / Official</h3>
-      <ul>
-        <li><a class="official-link" data-reading-flow="official" href="https://openusd.org/release/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html">打开官方原页 / Open official page</a></li>
-      </ul>
-    </section>
-  </div>
-</aside>
-<!-- openusd-reading-flow-nav:end -->
 
   <main>
     <section data-cn-complete="round-475-esf-usd-main-path">
@@ -181,11 +182,11 @@
     <section data-cn-complete="round-475-esf-usd-source-parity">
       <h2>源页核对 / Source Parity</h2>
       <ul>
-        <li><span class="zh">已核对 source snapshot：source/full_api/md_pxr_exec_esf_usd__r_e_a_d_m_e_source.html。</span><span class="en">Source snapshot checked.</span></li>
+        <li><span class="zh">已核对 source snapshot：${esc(SOURCE)}。</span><span class="en">Source snapshot checked.</span></li>
         <li><span class="zh">保留并解释官方关键词：EsfUsd: Execution Scene Foundation for Usd、not meant for public use、esfUsd library、built on top of、esf、interfaces、execution system、access scene objects defined on a UsdStage、build and evaluate execution networks。</span><span class="en">Official terms and boundaries are preserved.</span></li>
         <li><span class="zh">显式官方外跳：Open official page。其他阅读路径优先指向本地页面，避免用户点击顺序被官方 URL 文本泄漏打断。</span><span class="en">The official external jump is explicit.</span></li>
       </ul>
-      <p><a href="https://openusd.org/release/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html">Open official page</a></p>
+      <p><a href="${OFFICIAL_URL}">Open official page</a></p>
     </section>
 
     <section data-cn-complete="round-475-esf-usd-reader-checklist">
@@ -200,8 +201,209 @@
       <p><a href="../../site/api/index.html">API 本地入口 / Local API entry</a></p>
       <p><a href="md_pxr_exec_esf__r_e_a_d_m_e.html">上一页：Esf README</a></p>
       <p><a href="md_pxr_exec_exec_geom__r_e_a_d_m_e.html">下一步：ExecGeom README</a></p>
-      <p><a href="https://openusd.org/release/api/md_pxr_exec_esf_usd__r_e_a_d_m_e.html">打开官方原页 / Open official page</a></p>
+      <p><a href="${OFFICIAL_URL}">打开官方原页 / Open official page</a></p>
     </section>
   </main>
 </body>
 </html>
+`;
+}
+
+function sourceParity(html) {
+  const src = stripHtml(read(SOURCE));
+  const outputText = stripHtml(html);
+  const srcLower = src.toLowerCase();
+  const outputLower = outputText.toLowerCase();
+  const missingSourceKeywords = expectedKeywords.filter((keyword) => !srcLower.includes(keyword.toLowerCase()));
+  const missingOutputKeywords = expectedKeywords.filter((keyword) => !outputLower.includes(keyword.toLowerCase()));
+  return {
+    generated_at: new Date().toISOString(),
+    round: ROUND,
+    round_type: ROUND_TYPE,
+    target: TARGET,
+    source: SOURCE,
+    official: OFFICIAL_URL,
+    expected_keywords: expectedKeywords,
+    missing_source_keywords: missingSourceKeywords,
+    missing_output_keywords: missingOutputKeywords,
+    output_checks: {
+      bilingual_complete: html.includes('data-cn-status="bilingual_complete"') && html.includes("bilingual_complete"),
+      no_draft_marker: !/bilingual_draft|batch draft page|后续迭代会继续补齐/.test(html),
+      has_main_reading_path: html.includes("中文主阅读路径") && html.includes("逐段双语理解"),
+      has_official_link: html.includes(OFFICIAL_URL),
+      has_code_path:
+        html.includes("UsdStage") &&
+        html.includes("built on top of esf") &&
+        html.includes("access scene objects defined on a UsdStage") &&
+        html.includes("build and evaluate execution networks"),
+      zh_chars: zhCharCount(html),
+      zh_blocks: blockCount(html, "zh"),
+      en_blocks: blockCount(html, "en"),
+    },
+  };
+}
+
+function checkReport(report) {
+  const checks = report.output_checks;
+  const passed =
+    report.missing_source_keywords.length === 0 &&
+    report.missing_output_keywords.length === 0 &&
+    checks.bilingual_complete &&
+    checks.no_draft_marker &&
+    checks.has_main_reading_path &&
+    checks.has_official_link &&
+    checks.has_code_path &&
+    checks.zh_chars >= 1800 &&
+    checks.zh_blocks >= 22;
+  return { ...report, passed };
+}
+
+function writePage() {
+  const html = pageHtml();
+  const report = checkReport(sourceParity(html));
+  writeJson(SOURCE_PARITY_REPORT, report);
+  if (!report.passed) throw new Error(`Source parity failed: ${JSON.stringify(report, null, 2)}`);
+  write(TARGET, html);
+  console.log(JSON.stringify(report, null, 2));
+}
+
+function precheck() {
+  const html = read(TARGET);
+  const report = checkReport(sourceParity(html));
+  writeJson(SOURCE_PARITY_REPORT, report);
+  if (!report.passed) throw new Error(`Precheck failed: ${JSON.stringify(report, null, 2)}`);
+  console.log(JSON.stringify(report, null, 2));
+}
+
+function updateManifest() {
+  const raw = readJson("reports/bilingual_completion_promotions.json");
+  const doc = {
+    ...raw,
+    generated_at: raw.generated_at || new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    promotions: Array.isArray(raw.promotions) ? raw.promotions : [],
+  };
+  doc.promotions = doc.promotions.filter((entry) => entry.id !== PROMOTION_ID && entry.local_output !== TARGET);
+  doc.promotions.push({
+    id: PROMOTION_ID,
+    title: "EsfUsd: Execution Scene Foundation for Usd",
+    official_url: OFFICIAL_URL,
+    local_output: TARGET,
+    status: "bilingual_complete",
+    reason: `Round ${ROUND} ${ROUND_TYPE}: promote the EsfUsd README/API entry page by adding Chinese main-reading-path coverage for the internal-use note, Esf dependency, USD stage scene-object interfaces, execution-network build/evaluate semantics, Esf/EsfUsd/ExecUsd/Vdf/Ef boundaries, debugging path, click-path navigation, source parity, and explicit official-page verification.`,
+    evidence: {
+      page_contains_status: "bilingual_complete",
+      generic_draft_marker_removed: true,
+      minimum_chinese_chars: 1800,
+      minimum_chinese_blocks: 22,
+      official_source_compared: true,
+      local_source_snapshot_compared: SOURCE,
+      source_parity_report: SOURCE_PARITY_REPORT,
+      round_type: ROUND_TYPE,
+      preserves: expectedKeywords,
+    },
+  });
+  writeJson("reports/bilingual_completion_promotions.json", doc);
+}
+
+function updateProblemAudit() {
+  const quality = readJson("reports/translation_quality_review.json");
+  const debt = readJson("reports/english_debt_audit.json");
+  const inventory = readJson("reports/all_pages_inventory.json");
+  const counts = {
+    total_pages: inventory.counts.total_pages,
+    bilingual_complete: quality.status_counts.bilingual_complete,
+    bilingual_draft: quality.status_counts.bilingual_draft,
+    good_bilingual: quality.grade_counts.good_bilingual,
+    draft_needs_translation: quality.grade_counts.draft_needs_translation,
+    draft_template_only: quality.grade_counts.draft_template_only,
+    review_ready_zh: debt.counts.review_ready_zh,
+    api_complete: debt.counts.api_complete,
+    api_review_ready_zh: debt.counts.api_review_ready_zh,
+    release_complete: debt.counts.release_complete,
+    release_review_ready_zh: debt.counts.release_review_ready_zh,
+    pending_full_scope: inventory.counts.pending_full_scope_pages,
+  };
+  writeJson("reports/current_problem_audit.json", {
+    generated_at: new Date().toISOString(),
+    purpose: `第 ${ROUND} 轮 ${ROUND_TYPE} 记录：确认 ${TARGET} 已按 EsfUsd README source parity 晋级，并继续追踪 OpenUSD API 可检查草稿缺口。`,
+    last_completed_round: {
+      round: ROUND,
+      round_type: ROUND_TYPE,
+      target: TARGET,
+      commit_sha: PROMOTION_COMMIT_PLACEHOLDER,
+      previous_good_bilingual: PREVIOUS_GOOD_BILINGUAL,
+    },
+    current_counts: counts,
+    problems: [
+      {
+        id: "P0-api-draft-backlog",
+        severity: "P0",
+        summary: `当前 good_bilingual=${counts.good_bilingual}/406，API complete=${counts.api_complete}，仍有 ${counts.bilingual_draft} 个可检查草稿，不是完整翻译。`,
+        evidence: `第 ${ROUND} 轮 ${ROUND_TYPE} 将 ${TARGET} 从 API 草稿晋级为 good_bilingual；release 范围保持 ${counts.release_complete}/126 complete。`,
+        required_action: "继续推进 API 可检查草稿；只把真实达到中文主阅读路径和 source parity 的页面写入 promotion manifest。",
+      },
+      {
+        id: "P1-openexec-click-path-quality",
+        severity: "P1",
+        summary: "OpenExec/Esf/EsfUsd 文档页必须按官方职责和真实点击顺序覆盖，不能退化成摘要表或随机相关链接。",
+        evidence: "本轮覆盖 EsfUsd README 的 internal-use note、built on top of esf、UsdStage scene objects、build/evaluate execution networks，并保留 Overview -> Tutorial -> System Design -> ExecUsd -> Vdf -> Exec -> Ef -> Esf -> EsfUsd 的本地点击路径。",
+        required_action: "后续 ExecGeom/ExecIr 等页面继续按 source snapshot 做中文主阅读路径和点击顺序覆盖。",
+      },
+      {
+        id: "P1-click-order-reading-flow-consistency",
+        severity: "P1",
+        summary: "完成页必须保留本地 reading-flow 导航、breadcrumb、API/Release/总入口、related links、prev/next 和显式官方外跳。",
+        evidence: "本轮目标页保留 OpenExec 系列点击路径，并重跑 reading-flow 与 click-path 审计。",
+        required_action: "若 reading-flow 或 click-path 审计失败，先修导航和点击顺序，不得推送。",
+      },
+      {
+        id: "P1-markdown-record-encoding",
+        severity: "P1",
+        summary: "Markdown 编码守卫继续作为硬门槛。",
+        evidence: "work.md、reports/iteration_report.md、reports/current_problem_audit.md、reports/bilingual_completion_promotions.md 必须无 repeated question mark damage、replacement character 和 UTF-8 BOM。",
+        required_action: "若 audit_openusd_markdown_encoding.mjs 失败，先做 ConsistencyRound。",
+      },
+    ],
+    promoted_pages: [
+      {
+        round: ROUND,
+        round_type: ROUND_TYPE,
+        output: TARGET,
+        official_url: OFFICIAL_URL,
+        source_snapshot: SOURCE,
+        source_parity_report: SOURCE_PARITY_REPORT,
+      },
+    ],
+    not_promoted_pages: [],
+    source_parity_report: SOURCE_PARITY_REPORT,
+    next_actions: [
+      "release 范围已 126/126 complete，不要重复处理 release 已完成页。",
+      "下一轮重新读取 inventory 后选择一个仍为 bilingual_draft 且有 source snapshot 的 API/class/struct 或高价值文档页；开始前必须确认 git/report/validation/markdown/reading-flow/click-path 状态干净一致。",
+    ],
+    next_action: "下一轮建议 PromotionRound：沿 OpenExec 点击路径继续检查 ExecGeom/ExecIr 等仍为 bilingual_draft 且有 source snapshot 的页面。",
+  });
+}
+
+function stampCommit(sha) {
+  const script = "scripts/promote_round_475_esf_usd_readme.mjs";
+  const current = read(script);
+  if (current.includes(PROMOTION_COMMIT_PLACEHOLDER)) {
+    write(script, current.replaceAll(PROMOTION_COMMIT_PLACEHOLDER, sha));
+  }
+  const problem = readJson("reports/current_problem_audit.json");
+  if (problem.last_completed_round) problem.last_completed_round.commit_sha = sha;
+  writeJson("reports/current_problem_audit.json", problem);
+}
+
+const args = process.argv.slice(2);
+const commands = new Set(args);
+if (commands.has("--write-page")) writePage();
+if (commands.has("--precheck")) precheck();
+if (commands.has("--manifest")) updateManifest();
+if (commands.has("--problem")) updateProblemAudit();
+const stampArg = args.find((arg) => arg.startsWith("--stamp-commit="));
+if (stampArg) stampCommit(stampArg.slice("--stamp-commit=".length));
+if (commands.size === 0 && !stampArg) {
+  console.log("Usage: node scripts/promote_round_475_esf_usd_readme.mjs --write-page --precheck --manifest --problem --stamp-commit=<sha>");
+}
