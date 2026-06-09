@@ -10,7 +10,7 @@ const OFFICIAL_URL = "https://openusd.org/release/api/usd_semantics_overview.htm
 const SOURCE_PARITY_REPORT = "reports/round_483_usd_semantics_overview_source_parity.json";
 const PROMOTION_ID = "round-483-api-usd-semantics-overview";
 const PREVIOUS_GOOD_BILINGUAL = 244;
-const PROMOTION_COMMIT_PLACEHOLDER = "round-483-promotion-commit-sha-before-push";
+const PROMOTION_COMMIT_PLACEHOLDER = "c2e2c6314c451bcec14b2601fbe388e429f6e44d";
 
 const expectedKeywords = [
   "UsdSemantics : Semantic Labeling of Scenes",

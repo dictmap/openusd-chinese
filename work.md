@@ -24,7 +24,7 @@
 - 本轮目标：`full_site/api/usd_semantics_overview.html`
 - 官方页面：`https://openusd.org/release/api/usd_semantics_overview.html`
 - source parity：`reports/round_483_usd_semantics_overview_source_parity.json`
-- commit SHA：`round-483-promotion-commit-sha-before-push`
+- commit SHA：`c2e2c6314c451bcec14b2601fbe388e429f6e44d`
 - 完成数状态：good_bilingual=245；review_ready_zh=182。
 - 固定审计：`translation_quality_review.json`、`english_debt_audit.json`、`all_pages_inventory.json`、`validation_report.json` 已重建并一致。
 
