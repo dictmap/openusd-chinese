@@ -1,10 +1,10 @@
 # OpenUSD Click-Path Order Audit
 
-Generated: 2026-06-09T02:48:59.446Z
+Generated: 2026-06-09T03:08:51.598Z
 
 - Passed: true
-- Completed full_site pages checked: 233
-- Passed pages: 233
+- Completed full_site pages checked: 234
+- Passed pages: 234
 - Failed pages: 0
 - Samples passed: 7/7
 

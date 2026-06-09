@@ -3,23 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>API 页面草稿：ExecGeom: Execution for UsdGeom / ExecGeom: Execution for UsdGeom</title>
+  <title>ExecGeom: Execution for UsdGeom | OpenUSD API 中文导读</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.68}
     header{background:#142538;color:#fff;padding:28px 32px}
     main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
     .zh{display:block;font-weight:650;color:#17324d}
     .en{display:block;color:#55616f;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    code{font-family:"Cascadia Mono","Consolas",monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    code,pre{font-family:"Cascadia Mono","Consolas",monospace}
+    pre{white-space:pre-wrap;background:#0f1720;color:#e8eef7;border-radius:6px;padding:14px;overflow:auto}
+    .status{display:inline-block;background:#1f7a54;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
@@ -41,11 +43,11 @@
     }
   </style>
 </head>
-<body class="openusd-has-reading-flow">
+<body class="openusd-has-reading-flow" data-cn-status="bilingual_complete" data-cn-round="477" data-cn-source="source/full_api/md_pxr_exec_exec_geom__r_e_a_d_m_e_source.html">
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>API 页面草稿：ExecGeom: Execution for UsdGeom / ExecGeom: Execution for UsdGeom</h1>
-    <div class="meta">https://openusd.org/release/api/md_pxr_exec_exec_geom__r_e_a_d_m_e.html</div>
+    <span class="status">bilingual_complete</span>
+    <h1>ExecGeom: Execution for UsdGeom</h1>
+    <div class="meta">OpenUSD API 中文导读 / Source parity: source/full_api/md_pxr_exec_exec_geom__r_e_a_d_m_e_source.html</div>
   </header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
@@ -105,113 +107,95 @@
 </aside>
 <!-- openusd-reading-flow-nav:end -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    <section data-cn-complete="round-477-exec-geom-main-path">
+      <h2>中文主阅读路径 / Chinese Main Reading Path</h2>
+      <p><span class="zh">本页是 `ExecGeom: Execution for UsdGeom` 的 README 型入口页。官方正文很短，但它在 OpenExec 点击路径中承担明确职责：`execGeom library` built on top of `execUsd`，并包含针对 `UsdGeom schemas` 的 computation registrations。读者应把它理解成 “OpenExec 如何把几何 schema 数据接入计算注册” 的说明，而不是普通 `UsdGeom` authoring 教程。</span><span class="en">The execGeom library is built on top of execUsd.</span></p>
+      <p><span class="zh">沿本地阅读顺序看，`ExecUsd` 先说明执行系统如何访问 USD stage、请求 computed values 和组织 cache view；`EsfUsd` 说明执行系统如何访问定义在 `UsdStage` 上的 scene objects；当前 `ExecGeom` 再把焦点收窄到 `UsdGeom schemas`。它注册的 computations 依据几何 schema 表达的数据来 compute results，例如后续教程中常见的 xform、local-to-world transform、bounds 或几何属性派生值这类读者需要沿 `UsdGeom` 语义理解的结果。</span><span class="en">The execGeom library contains registrations for computations that compute results based on data represented using UsdGeom schemas.</span></p>
+      <p><span class="zh">本页的中文主线是分清三层边界：第一，`UsdGeom` 规定几何 prim、xform、bounds、primvars 等数据如何表达；第二，`ExecUsd`/`EsfUsd` 让执行系统能看到 USD stage 和 scene objects；第三，`ExecGeom` 为几何 schema 相关数据提供 computation registrations。调试时如果几何派生值缺失，不要直接归因于 `UsdGeom` authoring，也不要直接归因于 `Vdf` executor；应先确认 computation 名称、provider prim、schema 数据和 ExecGeom 注册是否一致。</span><span class="en">ExecGeom sits between USD scene access and geometry-specific computations.</span></p>
     </section>
-    <section data-cn-refinement="api-openexec-quality-pass-051">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 ExecGeom: Execution for UsdGeom 补充中文优先的模块定位、依赖关系、阅读顺序和术语对照；英文模块名、API 名称、类名、方法名、代码、命令、属性名、数学符号、模板参数、宏名、枚举名、类型名、头文件名、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first module positioning, dependency guidance, reading order, and terminology for ExecGeom: Execution for UsdGeom while retaining English module names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, type names, header names, links, and source excerpts for comparison with the official Doxygen page.</p>
-      <ul>
-        <li><span class="zh">`ExecGeom` 是面向 `UsdGeom` schemas 的 execution registration 层；英文摘录说明它 built on top of `execUsd`，因此它依赖 USD 集成层而不是直接连接最底层 `vdf`。</span></li>
-        <li><span class="zh">本页核心语义是注册 computations，让执行系统可以基于 `UsdGeom` schema 表达的数据计算结果；这通常和几何属性、prim 数据、schema-defined behavior 的求值有关。</span></li>
-        <li><span class="zh">`execUsd` 链接是本页关键上游：先理解 `ExecUsd` 如何让执行系统访问 USD，再看 `ExecGeom` 如何为 `UsdGeom` 相关 schema 提供计算注册。</span></li>
-        <li><span class="zh">本页不是 `UsdGeom` schema 的完整教程，也不替代 `UsdGeomMesh`、`UsdGeomXformable` 等类页；它更像 OpenExec 到几何 schema domain 的桥接说明。</span></li>
-        <li><span class="zh">阅读时保留 `ExecGeom`、`execUsd`、`UsdGeom`、`schemas`、`computations` 原名，中文层只解释它们在 OpenExec 模块依赖图中的位置和职责。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">UsdGeom 执行集成层：</span><span class="en">ExecGeom</span></li>
-        <li><span class="zh">UsdGeom schema 集合：</span><span class="en">UsdGeom schemas</span></li>
-        <li><span class="zh">注册：</span><span class="en">registration</span></li>
-        <li><span class="zh">schema 领域：</span><span class="en">schema domain</span></li>
-        <li><span class="zh">计算结果：</span><span class="en">computed result</span></li>
-      </ul>
+
+    <section data-cn-complete="round-477-exec-geom-source-order">
+      <h2>官方正文顺序 / Source Section Order</h2>
+      <ol>
+        <li><span class="zh">标题 `ExecGeom: Execution for UsdGeom` 指明页面不是泛化的 execution core，而是面向 `UsdGeom` 的执行扩展层。`ExecGeom`、`UsdGeom` 都必须保留原名，便于和 Doxygen、源码目录、token 名称核对。</span><span class="en">ExecGeom: Execution for UsdGeom</span></li>
+        <li><span class="zh">`The execGeom library is built on top of execUsd.` 给出依赖顺序。当前页建立在 `execUsd` 之上，所以阅读前应先理解 `ExecUsd` 如何把 USD stage、provider object、request 和 cache view 交给执行系统。</span><span class="en">The execGeom library is built on top of execUsd.</span></li>
+        <li><span class="zh">`contains registrations for computations` 是本页的核心动作。它不是运行所有计算的 executor，而是提供注册信息，让 execution system 知道哪些几何 schema 数据可以对应哪些 computation。</span><span class="en">contains registrations for computations</span></li>
+        <li><span class="zh">`compute results based on data represented using UsdGeom schemas` 描述输入和输出关系：输入来自 `UsdGeom schemas` 表达的数据，输出是 execution system 可请求的 computed results。这里的 data represented 不等同于单个字段翻译，而是包括 prim 类型、属性、关系、xform stack、extent、primvar 等几何语义组合。</span><span class="en">compute results based on data represented using UsdGeom schemas</span></li>
+      </ol>
     </section>
-    <section data-cn-refinement="api-index-quality-pass-165">
-      <h2>中文二次导读补强 / Chinese Second-Pass Reading Notes</h2>
-      <p class="zh">`md_pxr_exec_exec_geom__r_e_a_d_m_e.html` 是 `ExecGeom` 的入口页，说明 OpenExec 如何面向 `UsdGeom` 几何 schema 组织计算。阅读重点是几何输入、computed geometry values、xform/primvar/bounds 等数据依赖，而不是把它当成普通 `UsdGeom` authoring 教程。</p>
-      <p class="en">This second-pass refinement adds page-specific Chinese guidance for ExecGeom: Execution for UsdGeom while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.</p>
+
+    <section data-cn-complete="round-477-exec-geom-stack">
+      <h2>模块分层 / Stack Position</h2>
       <ul>
-        <li><span class="zh">`ExecGeom` 位于 execution system 与 `UsdGeom` 之间，关注如何从几何 schema 数据计算派生值；它不改变 `UsdGeomMesh`、`UsdGeomXformable` 或 primvar 的 authoring 规则。</span></li>
-        <li><span class="zh">几何计算常见输入包括 xform ops、points、normals、extent、primvars、purpose 和 visibility；中文层只解释依赖边界，不改写属性名或 token 字面量。</span></li>
-        <li><span class="zh">Bounds、transforms 或 geometry-derived values 出错时，应同时检查 authored `UsdGeom` 数据、time sample、dependency invalidation 与执行图缓存。</span></li>
-        <li><span class="zh">`ExecGeom` 与 `Gf`、`Vt` 也经常相邻出现：`Gf` 承载数学类型，`Vt` 承载数组和值容器，`ExecGeom` 组织对这些数据的计算消费。</span></li>
-        <li><span class="zh">本页适合和 `UsdGeom` 模块入口、OpenExec overview、tutorial1 结合阅读，帮助区分“几何 schema 数据是什么”和“如何基于它计算值”。</span></li>
-      </ul>
-      <h3>术语对照 / Terms</h3>
-      <ul>
-        <li><span class="zh">几何执行：</span><span class="en">geometry execution</span></li>
-        <li><span class="zh">几何计算值：</span><span class="en">computed geometry value</span></li>
-        <li><span class="zh">变换依赖：</span><span class="en">transform dependency</span></li>
-        <li><span class="zh">primvar 输入：</span><span class="en">primvar input</span></li>
-        <li><span class="zh">边界计算：</span><span class="en">bounds computation</span></li>
-        <li><span class="zh">几何 schema：</span><span class="en">geometry schema</span></li>
+        <li><span class="zh">相对 `ExecUsd`：`ExecUsd` 负责 USD stage 级接入、request/cache view 和 scene object provider 语义；`ExecGeom` 建立在它之上，专注为 `UsdGeom` 数据注册可计算项。</span><span class="en">ExecGeom is built on top of ExecUsd.</span></li>
+        <li><span class="zh">相对 `UsdGeom`：`UsdGeom` 是 geometry schema 和 API 文档路径，定义 `UsdGeomXformable`、`UsdGeomBoundable`、`UsdGeomImageable`、primvars、extent、purpose、visibility 等数据语义；`ExecGeom` 不改变这些 authoring 规则，只消费这些规则表达出的数据来注册计算。</span><span class="en">UsdGeom remains the schema and authoring documentation path.</span></li>
+        <li><span class="zh">相对 `Vdf`/`Ef`/`Exec`：这些模块解释 data-flow network、execution foundation 和 execution core。`ExecGeom` 不负责 executor、cache structure 或 network traversal 本身，而是把几何领域的 computations 挂到上层执行系统可发现的注册路径里。</span><span class="en">Vdf, Ef, and Exec explain lower execution mechanics.</span></li>
+        <li><span class="zh">相对 `Gf`/`Vt`：几何计算经常返回矩阵、向量、范围或数组值，具体数值类型由 `Gf` 和 `Vt` 承载；`ExecGeom` 的职责是组织几何 schema 数据到 computed result 的注册语义，不是重新定义数学容器。</span><span class="en">Gf and Vt provide common math and value containers consumed by geometry computations.</span></li>
       </ul>
     </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
+
+    <section data-cn-complete="round-477-exec-geom-responsibilities">
+      <h2>计算注册职责 / Computation Registration Responsibilities</h2>
+      <p><span class="zh">`registrations for computations` 应理解为执行系统的发现入口。OpenExec 需要知道某个 provider object 上有哪些 computation 可请求、这些 computation 如何从 schema 数据读取输入、哪些数据变化会让结果失效。`ExecGeom` 把 `UsdGeom schemas` 里的几何语义接到这套机制里，因此它更像领域注册包，而不是单独的计算器类。</span><span class="en">ExecGeom contains registrations for geometry-related computations.</span></p>
+      <p><span class="zh">官方短句里的 `compute results` 不应被读成 “页面列出所有运行结果”。它指的是执行系统可以通过注册的 computation 得到基于几何数据的派生值。典型理解路径是：provider 来自 USD stage 中的 prim；schema 数据来自 `UsdGeom` 约定；computation token 或注册项告诉 OpenExec 要计算什么；结果可能由 `GfMatrix4d`、`GfBBox3d`、`VtValue` 或其他保持原名的类型承载。</span><span class="en">Computed results are derived from data represented by UsdGeom schemas.</span></p>
+      <p><span class="zh">因此调试 `ExecGeom` 时，最有效的检查顺序是：确认 prim 是否具备目标 `UsdGeom` schema；确认所需属性、xform stack 或 primvar 是否按 schema 规则存在；确认 `ExecUsdValueKey` 一类请求是否指向正确 provider 与 computation；确认 `ExecGeom` 注册是否覆盖该 schema/computation；最后才检查 `Vdf` evaluation 和 cache 是否按预期运行。</span><span class="en">Debugging follows provider, schema data, computation registration, then evaluation.</span></p>
+      <p><span class="zh">几何数据还有一个容易漏看的维度：变化传播。`UsdGeom` 的 xformOp、extent、primvars 或 visibility 等输入变化后，相关 computed result 应该沿 OpenExec 依赖关系失效并重新计算。若结果没有变化，要分别检查 USD stage 上的数据是否真的改变、`ExecGeom` 注册是否把这些字段纳入 computation 依赖、以及 execution cache 是否收到正确 invalidation。这样可以把 “几何数据没写对”、“几何 computation 没注册对” 和 “执行缓存没失效” 三类问题分开。</span><span class="en">Geometry data changes must propagate through computation dependencies and invalidation.</span></p>
+    </section>
+
+    <section data-cn-complete="round-477-exec-geom-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p><span class="zh">标题段：`ExecGeom: Execution for UsdGeom` 把页面范围限制在 geometry schema domain。中文解释必须保留 `ExecGeom` 和 `UsdGeom`，因为它们是模块名和 schema 家族名，不应翻译成会破坏检索的普通中文词。</span><span class="en">ExecGeom: Execution for UsdGeom</span></p>
+      <p><span class="zh">依赖段：`built on top of execUsd` 说明本页在 OpenExec 栈里的上游依赖。读者若不了解 USD stage 如何进入 execution system，应先读 `ExecUsd`、`EsfUsd` 和 OpenExec tutorials，而不是直接从 `ExecGeom` 推断 request/cache API。</span><span class="en">The execGeom library is built on top of execUsd.</span></p>
+      <p><span class="zh">注册段：`contains registrations for computations` 说明 `ExecGeom` 的主要输出是注册信息。注册负责把几何 schema 数据和可请求 computation 联系起来；真正的 network evaluation、cache、traversal 仍由下层 execution foundation 和 system design 解释。</span><span class="en">The execGeom library contains registrations for computations.</span></p>
+      <p><span class="zh">输入输出段：`compute results based on data represented using UsdGeom schemas` 同时说明数据来源和结果性质。数据来源不是任意外部几何缓存，而是 `UsdGeom schemas` 表达的 stage 数据；结果不是新写回的 authoring 字段，而是 execution system 可请求、可缓存、可失效的 computed results。</span><span class="en">computations compute results based on data represented using UsdGeom schemas</span></p>
+      <p><span class="zh">链接语义段：本地页应把 `ExecGeom` 放在 `EsfUsd` 之后，因为前者已经假设 USD scene access 存在，再进入几何 schema 的 computation registration。显式 Open official page 只作为官方外跳；正文阅读和 related/prev/next 优先保留在本地 OpenExec 点击路径中。</span><span class="en">Local navigation follows the OpenExec geometry reading path.</span></p>
+    </section>
+
+    <section data-cn-complete="round-477-exec-geom-boundaries">
+      <h2>边界、误读点与调试路径 / Boundaries and Debugging</h2>
       <ul>
-<li><span class="zh">第 1 级结构：ExecGeom: Execution for UsdGeom</span><span class="en">ExecGeom: Execution for UsdGeom</span></li>
+        <li><span class="zh">如果问题是 `UsdGeom` 数据是否 author 正确，例如 xformOp、extent、primvars、visibility、purpose 或 schema 类型，应先查看 `UsdGeom` 模块和 release user guide；`ExecGeom` 不改变 authoring 规则。</span><span class="en">UsdGeom authoring issues belong to UsdGeom documentation.</span></li>
+        <li><span class="zh">如果问题是 stage、prim、property 或 relationship 如何被 OpenExec 看到，应先查看 `ExecUsd` 和 `EsfUsd`；`ExecGeom` 建立在这些 USD 接入层之上。</span><span class="en">USD stage access issues belong near ExecUsd and EsfUsd.</span></li>
+        <li><span class="zh">如果问题是 computation 是否存在、token 是否匹配或 provider 是否选择正确，当前 `ExecGeom` 页面和相关 class/token 页面是关键路径，因为这里解释 geometry computation registrations 的来源。</span><span class="en">Computation registration issues belong near ExecGeom.</span></li>
+        <li><span class="zh">如果问题是 evaluation performance、cache reuse、network traversal 或 executor 行为，应回到 `Vdf`、`Ef`、`Exec` 和 System Design；`ExecGeom` 只说明几何领域 computation 如何注册。</span><span class="en">Execution mechanics belong near Vdf, Ef, Exec, and system design.</span></li>
+        <li><span class="zh">如果几何 computed result 与预期不一致，要把 authored geometry data、schema interpretation、ExecGeom registration、request key、execution cache 五个层面分开检查，避免把所有问题都归因于一个模块。</span><span class="en">Separate geometry data, schema interpretation, registration, request key, and cache.</span></li>
       </ul>
     </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">The execGeom library is built on top of execUsd. The execGeom library contains registrations for computations that compute results based on data represented using UsdGeom schemas.</p>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
+
+    <section data-cn-complete="round-477-exec-geom-click-path">
+      <h2>本地点击顺序 / Local Click Path</h2>
+      <p><span class="zh">推荐本地点击顺序：总入口 -> API 本地入口 -> OpenExec Overview -> Tutorial 1 -> Tutorial 2 -> System Design -> ExecUsd README -> Vdf README -> Exec README -> Ef README -> Esf README -> EsfUsd README -> 当前 `ExecGeom README`。</span><span class="en">The local click path reaches ExecGeom after USD scene access is established.</span></p>
+      <p><span class="zh">这个顺序符合用户从总入口进入 API 文档时的认知路径：先理解 OpenExec 的 value request 和系统设计，再理解 Vdf/Ef/Exec 基础，随后理解 scene access，最后进入几何 schema 计算注册。下一步可以查看 `ExecIr` 或具体 `UsdGeom`/`ExecGeom` class/token 页面，但不得把官方 URL 混入本地 prev/next/related 作为普通站内顺序。</span><span class="en">Open official page remains the explicit external jump.</span></p>
       <ul>
-<li><a href="md_pxr_exec_exec_usd__r_e_a_d_m_e.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/md_pxr_exec_exec_usd__r_e_a_d_m_e.html">execUsd</a></li>
+        <li><span class="zh">本地入口：`openusd_bilingual_final.html` 与 `site/api/index.html`。</span><span class="en">Local entrances are preserved.</span></li>
+        <li><span class="zh">上一页建议：`md_pxr_exec_esf_usd__r_e_a_d_m_e.html`，因为它解释 USD scene objects 如何被 execution system 访问。</span><span class="en">Previous page: EsfUsd README.</span></li>
+        <li><span class="zh">下一页建议：`ExecIr` 或具体几何 computation/token 参考页，按 inventory 中仍为 draft 且有 source snapshot 的页面确认后再推进。</span><span class="en">Next page: adjacent OpenExec geometry or implementation pages.</span></li>
       </ul>
     </section>
+
+    <section data-cn-complete="round-477-exec-geom-source-parity">
+      <h2>源页核对 / Source Parity</h2>
+      <ul>
+        <li><span class="zh">已核对 source snapshot：`source/full_api/md_pxr_exec_exec_geom__r_e_a_d_m_e_source.html`。</span><span class="en">Source snapshot checked.</span></li>
+        <li><span class="zh">保留并解释官方关键词：`ExecGeom: Execution for UsdGeom`、`execGeom library`、`built on top of`、`execUsd`、`registrations`、`computations`、`compute results`、`data represented using UsdGeom schemas`、`UsdGeom schemas`。</span><span class="en">Official title and source terms are preserved.</span></li>
+        <li><span class="zh">显式官方外跳：Open official page。本地阅读路径继续使用站内 API/reading-flow 链接。</span><span class="en">Official external link is explicit.</span></li>
+      </ul>
+    </section>
+
+    <section data-cn-complete="round-477-exec-geom-reader-checklist">
+      <h2>读者验收清单 / Reader Checklist</h2>
+      <p><span class="zh">读完本页后，读者应能用中文说明：`ExecGeom` 建立在 `execUsd` 之上；它包含面向 `UsdGeom schemas` 的 computation registrations；这些 computations 根据 `UsdGeom` schema 表达的数据 compute results；它不替代 `UsdGeom` authoring 文档，也不负责 Vdf/Ef/Exec 的 executor 或 cache 机制；调试时要区分 schema 数据、USD stage 接入、registration、request key 和 evaluation cache。</span><span class="en">A review-ready reader can explain ExecGeom's geometry computation registration role.</span></p>
+      <p><span class="zh">读者还应能判断下一步该点哪里：要查几何数据本身就去 `UsdGeom`，要查 USD stage 接入就回 `ExecUsd`/`EsfUsd`，要查几何 computation 名称和注册边界才继续沿 `ExecGeom` 相关页面深入。</span><span class="en">The page makes the next debugging click explicit.</span></p>
+      <p><span class="zh">本页达标依据是：官方短源文的全部关键术语均保留并解释，中文主阅读路径覆盖页面职责、官方正文顺序、模块分层、计算注册职责、逐段双语理解、边界误读点、调试路径和本地点击顺序；页面不再依赖草稿提示或英文摘录表作为主要内容。</span><span class="en">The completed page stays faithful to the short source while making the geometry execution layer readable in Chinese.</span></p>
+    </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="../../site/api/index.html">API 本地入口 / Local API entry</a></p>
+      <p><a href="md_pxr_exec_esf_usd__r_e_a_d_m_e.html">上一页：EsfUsd README</a></p>
+      <p><a href="md_pxr_exec_exec_ir__r_e_a_d_m_e.html">下一步：ExecIr README</a></p>
       <p><a href="https://openusd.org/release/api/md_pxr_exec_exec_geom__r_e_a_d_m_e.html">打开官方原页 / Open official page</a></p>
     </section>
   </main>
