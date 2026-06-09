@@ -10,7 +10,7 @@ const OFFICIAL_URL = "https://openusd.org/release/api/md_pxr_exec_esf_usd__r_e_a
 const SOURCE_PARITY_REPORT = "reports/round_475_esf_usd_readme_source_parity.json";
 const PROMOTION_ID = "round-475-api-esf-usd-readme";
 const PREVIOUS_GOOD_BILINGUAL = 240;
-const PROMOTION_COMMIT_PLACEHOLDER = "round-475-promotion-commit-sha-before-push";
+const PROMOTION_COMMIT_PLACEHOLDER = "6c1347834905442e14640524453a79237b05d4c7";
 
 const expectedKeywords = [
   "EsfUsd: Execution Scene Foundation for Usd",
