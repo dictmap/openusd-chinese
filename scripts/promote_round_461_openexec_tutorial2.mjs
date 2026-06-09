@@ -10,7 +10,7 @@ const OFFICIAL_URL = "https://openusd.org/release/api/md_pxr_exec_exec_usd_docs_
 const SOURCE_PARITY_REPORT = "reports/round_461_openexec_tutorial2_source_parity.json";
 const PROMOTION_ID = "round-461-api-openexec-tutorial2-defining-computations";
 const PREVIOUS_GOOD_BILINGUAL = 233;
-const PROMOTION_COMMIT_PLACEHOLDER = "round-461-promotion-commit-sha-before-push";
+const PROMOTION_COMMIT_PLACEHOLDER = "3c00c24bf669d51e32ea442c4d3f0432b4a1009c";
 
 const expectedKeywords = [
   "OpenExec Tutorial 2: Defining Schema Computations",
