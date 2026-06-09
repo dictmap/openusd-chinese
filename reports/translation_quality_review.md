@@ -1,18 +1,18 @@
 # OpenUSD Translation Quality Review
 
-Generated: 2026-06-09T05:12:43.137Z
+Generated: 2026-06-09T06:28:59.284Z
 
 ## Summary
 
 - Total pages: 406
-- bilingual_draft: 161
-- bilingual_complete: 245
+- bilingual_draft: 160
+- bilingual_complete: 246
 
 ## Grade Counts
 
 - draft_template_only: 10
-- draft_needs_translation: 151
-- good_bilingual: 245
+- draft_needs_translation: 150
+- good_bilingual: 246
 
 ## Current Focus Batch
 
@@ -43,7 +43,6 @@ Generated: 2026-06-09T05:12:43.137Z
 | 212 | draft_needs_translation | 336 | `full_site/api/journal_8h.html` | API 页面草稿：journal.h File / journal.h File |
 | 248 | draft_needs_translation | 338 | `full_site/api/sparse_vectorized_input_traverser_8h.html` | API 页面草稿：sparseVectorizedInputTraverser.h File / sparseVectorizedInputTraverser.h File |
 | 70 | draft_needs_translation | 352 | `full_site/api/executor_invalidation_data_8h.html` | API 页面草稿：executorInvalidationData.h File / executorInvalidationData.h File |
-| 228 | draft_needs_translation | 361 | `full_site/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html` | API 页面草稿：Boolean Expressions / Boolean Expressions |
 | 158 | draft_needs_translation | 371 | `full_site/api/functions_vars.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
 | 189 | draft_needs_translation | 371 | `full_site/api/globals_l.html` | API 页面草稿：Universal Scene Description: File Members / Universal Scene Description: File Members |
 | 67 | draft_needs_translation | 395 | `full_site/api/copy_utils_8h.html` | API 页面草稿：copyUtils.h File / copyUtils.h File |
@@ -59,6 +58,7 @@ Generated: 2026-06-09T05:12:43.137Z
 | 116 | draft_needs_translation | 447 | `full_site/api/functions_n.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
 | 114 | draft_needs_translation | 449 | `full_site/api/functions_l.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
 | 139 | draft_needs_translation | 457 | `full_site/api/functions_vars_h.html` | API 页面草稿：Universal Scene Description: Class Members - Variables / Universal Scene Description: Class Members - Variables |
+| 162 | draft_needs_translation | 457 | `full_site/api/functions_z.html` | API 页面草稿：Universal Scene Description: Class Members / Universal Scene Description: Class Members |
 
 ## All Pages
 
@@ -291,7 +291,7 @@ Generated: 2026-06-09T05:12:43.137Z
 | 225 | good_bilingual | bilingual_complete | 725 | 32/32 | 0 | 0 | `full_site/api/md_pxr_exec_vdf__r_e_a_d_m_e.html` |
 | 226 | draft_needs_translation | bilingual_draft | 560 | 27/19 | 0 | 0 | `full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html` |
 | 227 | draft_needs_translation | bilingual_draft | 576 | 30/22 | 0 | 0 | `full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html` |
-| 228 | draft_needs_translation | bilingual_draft | 361 | 21/18 | 0 | 0 | `full_site/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html` |
+| 228 | good_bilingual | bilingual_complete | 624 | 36/36 | 0 | 0 | `full_site/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html` |
 | 229 | draft_needs_translation | bilingual_draft | 555 | 47/39 | 0 | 0 | `full_site/api/md_pxr_usd_validation_usd_validation__r_e_a_d_m_e.html` |
 | 230 | draft_needs_translation | bilingual_draft | 550 | 25/17 | 0 | 0 | `full_site/api/modules.html` |
 | 231 | draft_needs_translation | bilingual_draft | 587 | 25/17 | 0 | 0 | `full_site/api/namespacemembers_func.html` |

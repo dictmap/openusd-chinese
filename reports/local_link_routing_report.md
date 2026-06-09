@@ -1,6 +1,6 @@
 # OpenUSD Local Link Routing Report
 
-Generated: 2026-06-09T05:13:22.473Z
+Generated: 2026-06-09T06:29:10.415Z
 
 ## Counts
 
@@ -8,7 +8,7 @@ Generated: 2026-06-09T05:13:22.473Z
 - Files changed: 0
 - Links routed to existing local pages: 4504
 - Links routed to local uncovered placeholder: 4556
-- Explicit official/original links preserved: 879
+- Explicit official/original links preserved: 880
 - Inventory pages: 406
 - Existing local inventory outputs: 406
 
@@ -23,7 +23,7 @@ Generated: 2026-06-09T05:13:22.473Z
 | Local output | Mapped local links | Uncovered placeholder links | Explicit official links |
 |---|---:|---:|---:|
 | site/glossary.html | 654 | 118 | 0 |
-| openusd_bilingual_final.html | 651 | 0 | 9 |
+| openusd_bilingual_final.html | 652 | 0 | 9 |
 | site/intro.html | 611 | 5 | 0 |
 | site/release_index.html | 604 | 0 | 0 |
 | site/toolset.html | 601 | 1 | 0 |
