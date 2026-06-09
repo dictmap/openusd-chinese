@@ -10,7 +10,7 @@ const OFFICIAL_URL = "https://openusd.org/release/api/md_pxr_exec_exec_usd__r_e_
 const SOURCE_PARITY_REPORT = "reports/round_465_execusd_readme_source_parity.json";
 const PROMOTION_ID = "round-465-api-execusd-readme";
 const PREVIOUS_GOOD_BILINGUAL = 235;
-const PROMOTION_COMMIT_PLACEHOLDER = "round-465-promotion-commit-sha-before-push";
+const PROMOTION_COMMIT_PLACEHOLDER = "d29433f930b5746ed7891faa5d02cc6bc6d41a84";
 
 const expectedKeywords = [
   "ExecUsd: Execution system for Usd",
