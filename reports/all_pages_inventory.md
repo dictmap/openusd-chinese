@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-09T01:06:06.567Z
+Generated: 2026-06-09T01:26:25.253Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 236
-- Promoted complete pages: 228
-- Bilingual draft pages: 170
+- Bilingual complete pages: 237
+- Promoted complete pages: 229
+- Bilingual draft pages: 169
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -242,7 +242,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_complete | OpenExec Overview | full_site/api/md_pxr_exec_exec_usd_docs_overview.html | https://openusd.org/release/api/md_pxr_exec_exec_usd_docs_overview.html |
 | api | bilingual_complete | https://openusd.org/release/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html | full_site/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html | https://openusd.org/release/api/md_pxr_exec_exec_usd_docs_tutorial1_computing_values.html |
 | api | bilingual_complete | OpenExec Tutorial 2: Defining Schema Computations | full_site/api/md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html | https://openusd.org/release/api/md_pxr_exec_exec_usd_docs_tutorial2_defining_computations.html |
-| api | bilingual_draft | API 页面草稿：Vdf: Vectorized Data Flow / Vdf: Vectorized Data Flow | full_site/api/md_pxr_exec_vdf__r_e_a_d_m_e.html | https://openusd.org/release/api/md_pxr_exec_vdf__r_e_a_d_m_e.html |
+| api | bilingual_complete | Vdf: Vectorized Data Flow | full_site/api/md_pxr_exec_vdf__r_e_a_d_m_e.html | https://openusd.org/release/api/md_pxr_exec_vdf__r_e_a_d_m_e.html |
 | api | bilingual_draft | API 页面草稿：Development Practices For usdview / Development Practices For usdview | full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html | https://openusd.org/release/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html |
 | api | bilingual_draft | API 页面草稿：Usdview Black Box Testing / Usdview Black Box Testing | full_site/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html | https://openusd.org/release/api/md_pxr_usd_imaging_usdviewq_black_box_testing.html |
 | api | bilingual_draft | API 页面草稿：Boolean Expressions / Boolean Expressions | full_site/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html | https://openusd.org/release/api/md_pxr_usd_sdf_doxygen_boolean_expressions.html |
