@@ -1,15 +1,15 @@
 {
   "passed": true,
-  "generated_at": "2026-06-09T07:10:19.426Z",
+  "generated_at": "2026-06-09T07:51:06.120Z",
   "total_pages": 406,
   "status_counts": {
-    "bilingual_draft": 159,
-    "bilingual_complete": 247
+    "bilingual_draft": 158,
+    "bilingual_complete": 248
   },
   "grade_counts": {
     "draft_template_only": 10,
-    "good_bilingual": 247,
-    "draft_needs_translation": 149
+    "good_bilingual": 248,
+    "draft_needs_translation": 148
   },
   "focus_batch": [
     {
@@ -7050,29 +7050,29 @@
     },
     {
       "index": 226,
-      "title": "API 页面草稿：Development Practices For usdview / Development Practices For usdview",
+      "title": "Development Practices For usdview",
       "output": "full_site/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html",
       "official_url": "https://openusd.org/release/api/md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html",
-      "status": "bilingual_draft",
+      "status": "bilingual_complete",
       "exists": true,
-      "grade": "draft_needs_translation",
-      "zhBlockCount": 27,
-      "enBlockCount": 19,
-      "zhChars": 560,
-      "enLetters": 1624,
-      "bodyChineseChars": 682,
+      "grade": "good_bilingual",
+      "zhBlockCount": 28,
+      "enBlockCount": 28,
+      "zhChars": 504,
+      "enLetters": 1598,
+      "bodyChineseChars": 2021,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
-      "genericDraft": true,
-      "note": "Has Chinese guidance, but still relies mainly on English excerpts.",
+      "genericDraft": false,
+      "note": "Chinese and English are paired densely enough for a reference page.",
       "sampleZh": [
-        "`md_pxr_usd_imaging_usdviewq__r_e_a_d_m_e.html` 是 usdview / `usdviewq` 开发实践入口页，适合理解 UI 代码、Qt 层、stage inspection、plugin hooks 和测试约定。它偏向 contributor workflow，不是普通用户的 usdview 操作手册。",
-        "`usdviewq` 是 usdview 的 UI 和工具实现区域，阅读时要区分 end-user command behavior、Qt widget code、viewer state、stage data access 和 imaging delegate interaction。",
-        "开发实践页通常会说明代码组织、测试方式、review 注意事项或运行约定；这些内容应和实际 class/module API 页面一起看，不能替代 API reference。"
+        "本页是 usdview",
+        "本页的中文主线可以按一次真实代码评审来读：如果改动触碰 usdview 的界面文件，首要问题不是功能是否看起来可用，而是 Qt 生成的点 ui 文件是否仍能被 qdesigner5 正常加载、保存并由下一个开发者继续维护；如果改动触碰 usdview 的交互行为，首要问题也不是人工点选是否通过，而是 pxr/usdImaging/bin/testusdview 是否覆盖了可自动化的回归路径，无法自动化表达的功能是否补充到 blackBoxTesting.md。这样阅读时能明确区分文件格式安全、viewer 行为正确性、自动化测试覆盖和黑盒验证记录四类责任，也能让审查者快速判断证据是否完整，并减少返工成本。",
+        "这页的核心边界是 contributor workflow。它不解释如何加载 stage、如何操作 viewport，也不描述 Hydra 或 imaging delegate 的渲染行为；它只约束 usdview UI 层和测试层的提交实践。若读者正在修改 viewer state、菜单、面板、selection 显示、plugin hook 或 Qt widget，这页告诉你改动如何保持可审查、可被下一个开发者用 qdesigner5"
       ],
       "sampleEn": [
-        "This second-pass refinement adds page-specific Chinese guidance for Development Practices For usdview while preserving English page names, API names, class names, method names, code, commands, property names, mathematical symbols, template parameters, macro names, enum names, enum values, function names, variable names, type names, header names, token literals, links, and official English excerpts for direct comparison.",
-        "development practices"
+        "Development Practices For usdview.",
+        "The Chinese main path frames the page as a contributor review checklist."
       ]
     },
     {
@@ -7114,7 +7114,7 @@
       "enBlockCount": 36,
       "zhChars": 624,
       "enLetters": 2170,
-      "bodyChineseChars": 1937,
+      "bodyChineseChars": 1933,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
       "genericDraft": false,
@@ -7141,7 +7141,7 @@
       "enBlockCount": 62,
       "zhChars": 1102,
       "enLetters": 4039,
-      "bodyChineseChars": 3011,
+      "bodyChineseChars": 3068,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
       "genericDraft": false,
@@ -7168,7 +7168,7 @@
       "enBlockCount": 17,
       "zhChars": 550,
       "enLetters": 1367,
-      "bodyChineseChars": 684,
+      "bodyChineseChars": 676,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
       "genericDraft": true,
@@ -7195,7 +7195,7 @@
       "enBlockCount": 17,
       "zhChars": 587,
       "enLetters": 1823,
-      "bodyChineseChars": 719,
+      "bodyChineseChars": 715,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
       "genericDraft": true,
@@ -7222,7 +7222,7 @@
       "enBlockCount": 17,
       "zhChars": 623,
       "enLetters": 1245,
-      "bodyChineseChars": 755,
+      "bodyChineseChars": 751,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
       "genericDraft": true,
@@ -7249,7 +7249,7 @@
       "enBlockCount": 17,
       "zhChars": 541,
       "enLetters": 1518,
-      "bodyChineseChars": 679,
+      "bodyChineseChars": 675,
       "badEncodingCount": 0,
       "unexpectedOfficialLinks": 0,
       "genericDraft": true,
