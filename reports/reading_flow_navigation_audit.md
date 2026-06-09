@@ -1,6 +1,6 @@
 # OpenUSD Reading Flow Navigation Audit
 
-Generated: 2026-06-09T04:41:58.796Z
+Generated: 2026-06-09T04:44:23.864Z
 
 - Passed: true
 - Completed full_site pages checked: 236

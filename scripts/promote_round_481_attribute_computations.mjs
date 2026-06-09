@@ -10,7 +10,7 @@ const OFFICIAL_URL = "https://openusd.org/release/api/group__group___exec___attr
 const SOURCE_PARITY_REPORT = "reports/round_481_attribute_computations_source_parity.json";
 const PROMOTION_ID = "round-481-api-attribute-computations";
 const PREVIOUS_GOOD_BILINGUAL = 243;
-const PROMOTION_COMMIT_PLACEHOLDER = "round-481-promotion-commit-sha-before-push";
+const PROMOTION_COMMIT_PLACEHOLDER = "ca1ddd9e1f2f37660621a337f31d5dad0ee0d2b7";
 
 const expectedKeywords = [
   "Attribute Computations",
