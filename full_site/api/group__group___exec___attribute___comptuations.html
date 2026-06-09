@@ -3,23 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>API 页面草稿：Attribute Computations Builtin Exec Computations / Attribute Computations Builtin Exec Computations</title>
+  <title>Attribute Computations | OpenUSD API 中文导读</title>
   <link rel="icon" href="../../site/images/USDIcon.ico">
   <style>
-    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.65}
+    body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:#f6f8fb;color:#1d2733;line-height:1.68}
     header{background:#142538;color:#fff;padding:28px 32px}
     main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
     section{background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px;margin:0 0 18px}
     h1{margin:0;font-size:30px;letter-spacing:0}
     h2{margin:0 0 12px;font-size:22px}
+    h3{margin:18px 0 8px;font-size:18px}
     .meta{color:#d7e3f4;margin-top:8px;overflow-wrap:anywhere}
     .zh{display:block;font-weight:650;color:#17324d}
     .en{display:block;color:#55616f;margin-top:4px}
     a{color:#1c5d99;overflow-wrap:anywhere}
-    ul{padding-left:22px}
+    ul,ol{padding-left:22px}
     li{margin:8px 0}
-    code{font-family:"Cascadia Mono","Consolas",monospace}
-    .status{display:inline-block;background:#8a6416;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
+    code,pre{font-family:"Cascadia Mono","Consolas",monospace}
+    pre{white-space:pre-wrap;background:#0f1720;color:#e8eef7;border-radius:6px;padding:14px;overflow:auto}
+    .status{display:inline-block;background:#1f7a54;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;margin-bottom:12px}
   </style>
 <style id="openusd-reading-flow-nav-style">
     body.openusd-has-reading-flow{padding-left:292px}
@@ -41,11 +43,11 @@
     }
   </style>
 </head>
-<body class="openusd-has-reading-flow">
+<body class="openusd-has-reading-flow" data-cn-status="bilingual_complete" data-cn-round="481" data-cn-source="source/full_api/group__group___exec___attribute___comptuations_source.html">
   <header>
-    <span class="status">bilingual_draft</span>
-    <h1>API 页面草稿：Attribute Computations Builtin Exec Computations / Attribute Computations Builtin Exec Computations</h1>
-    <div class="meta">https://openusd.org/release/api/group__group___exec___attribute___comptuations.html</div>
+    <span class="status">bilingual_complete</span>
+    <h1>Attribute Computations</h1>
+    <div class="meta">OpenUSD API 中文导读 / Source parity: source/full_api/group__group___exec___attribute___comptuations_source.html</div>
   </header>
 <!-- openusd-reading-flow-nav:start -->
 <nav class="openusd-reading-flow-breadcrumb" aria-label="Breadcrumb" data-reading-flow="breadcrumb">
@@ -105,110 +107,123 @@
 </aside>
 <!-- openusd-reading-flow-nav:end -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <main>
-    <section>
-      <h2>范围说明 / Scope Note</h2>
-      <p class="zh">这是 OpenUSD API 全量队列中的批次草稿页。页面以中文说明为主，保留英文 API 名称、页面名、链接和有限英文原文摘录；后续迭代会继续补齐更细的中英对照。</p>
-      <p class="en">This is a batch draft page in the full OpenUSD API queue. It keeps original API names, page names, links, and limited English source excerpts while later iterations add denser bilingual coverage.</p>
+    <section data-cn-complete="round-481-attribute-computations-main-path">
+      <h2>中文主阅读路径 / Chinese Main Reading Path</h2>
+      <p><span class="zh">本页是 `Builtin Exec Computations` 组里的 `Attribute Computations` 页面。官方一句话定义为 `Builtin computations for computing information about attributes.`，也就是为 attribute provider 提供内建计算 token。读者应先把它放回 OpenExec 点击路径：前面的 overview/tutorial/system design 解释 execution network 和 request；`ExecUsd` 解释 USD provider 接入；本页则聚焦属性这个 provider 类型能直接请求哪些内建 computation。</span><span class="en">Builtin computations for computing information about attributes.</span></p>
+      <p><span class="zh">页面主体不是普通函数列表，而是 Doxygen group 中的 `Variables`：三个 `const TfToken` 分别是 `computeValue`、`computeResolvedValue` 和 `computePath`。这些 token 被注册在 `ExecBuiltinComputations` 上，用于在 `self.PrimComputation` 或输入依赖中声明要从 attribute provider 取得的派生值。它们是 OpenExec 的声明式 computation 名称，不是直接调用的 C++ 函数。</span><span class="en">Variables: computeValue, computeResolvedValue, computePath.</span></p>
+      <p><span class="zh">调试时要区分三个层面：`computeValue` 请求 provider attribute 的值，可能受到 attribute expression 影响；`computeResolvedValue` 始终取 scene description 中 authored/resolved 的属性值，即使 attribute 已注册 expression；`computePath` 取 provider object 的 `SdfPath`。如果结果类型或值不符合预期，先确认 provider 确实是 attribute，再检查 attribute expression、scalar value type、request 的输入依赖和 `VdfContext` 取值路径。</span><span class="en">The computation provider must be an attribute.</span></p>
     </section>
-    <section data-cn-refinement="api-index-group-quality-pass-047">
-      <h2>中文精修导读 / Chinese Reading Notes</h2>
-      <p class="zh">本区块针对 Attribute Computations Builtin Exec Computations 补充中文优先的用途说明、索引读法、API 分组边界和术语对照；英文页面名、API 名称、类名、函数名、宏名、枚举名、枚举值、template 参数、数学符号、代码、链接和原文摘录继续保留，便于与官方 Doxygen 页面核对。</p>
-      <p class="en">This section adds Chinese-first purpose notes, index-reading guidance, API grouping boundaries, and terminology for Attribute Computations Builtin Exec Computations while retaining English page names, API names, class names, function names, macro names, enum names, enumerator values, template parameters, math symbols, code, links, and source excerpts for comparison with the official Doxygen page.</p>
+
+    <section data-cn-complete="round-481-attribute-computations-source-order">
+      <h2>官方正文顺序 / Source Section Order</h2>
+      <ol>
+        <li><span class="zh">标题 `Attribute Computations` 和分组 `Builtin Exec Computations` 说明本页属于 OpenExec 内建计算 token 的 attribute 子组，不是通用属性 API 参考页。</span><span class="en">Attribute Computations in Builtin Exec Computations.</span></li>
+        <li><span class="zh">Detailed Description 只有一句：`Builtin computations for computing information about attributes.`。中文页据此保持窄职责，不扩写成完整 attribute authoring 教程。</span><span class="en">Builtin computations for computing information about attributes.</span></li>
+        <li><span class="zh">`Variables` 列出三个 `TfToken`：`computeValue`、`computeResolvedValue`、`computePath`。这些是注册/请求 computation 时引用的 token，必须原样保留。</span><span class="en">Variables: const TfToken computeValue, computeResolvedValue, computePath.</span></li>
+        <li><span class="zh">`computePath` 文档写明 `Computes the provider's scene path.`，返回 provider object 的路径，类型是 `SdfPath`；示例通过 `VdfContext` 和 `ExecBuiltinComputations-&gt;computePath` 取值后转为 string。</span><span class="en">computePath computes the provider's scene path and returns SdfPath.</span></li>
+        <li><span class="zh">`computeResolvedValue` 文档写明 `Computes the provider attribute's resolved value as authored in scene description.`。它强调即使 attribute 注册了 `attribute expression`，也始终产生 scene description 中解析出的 authored/resolved value。</span><span class="en">computeResolvedValue returns the resolved value as authored in scene description.</span></li>
+        <li><span class="zh">`computeValue` 文档写明 `Computes the provider attribute's value.`，返回 provider attribute 的 scalar value type；如果 attribute 注册了 `attribute expression`，它可能产生 any type。官方 note 还强调 `The computation provider must be an attribute.`</span><span class="en">computeValue may be affected by an attribute expression.</span></li>
+      </ol>
+    </section>
+
+    <section data-cn-complete="round-481-attribute-computations-variable-groups">
+      <h2>变量分组和语义 / Variables and Semantics</h2>
+      <h3>computePath</h3>
+      <p><span class="zh">`computePath` 用于从 provider 取 scene path。示例中的 `self.PrimComputation(_tokens-&gt;pathAsString)` 注册一个字符串结果；callback 通过 `ctx.GetInputValue&lt;SdfPath&gt;(ExecBuiltinComputations-&gt;computePath).GetString()` 读取 `SdfPath` 并转换为 string。这里的关键是：path 来自 provider object，本页没有要求读者手写路径解析逻辑。</span><span class="en">Computes the provider's scene path.</span></p>
+      <pre>self.PrimComputation(_tokens-&gt;pathAsString)
+    .Callback&lt;std::string&gt;(+[](const VdfContext &amp;ctx) {
+        return ctx.GetInputValue&lt;SdfPath&gt;(
+            ExecBuiltinComputations-&gt;computePath).GetString();
+    })
+    .Inputs(
+        Computation(ExecBuiltinComputations-&gt;computePath)
+    );</pre>
+      <h3>computeResolvedValue</h3>
+      <p><span class="zh">`computeResolvedValue` 适合需要绕开 attribute expression、直接取得 authored/resolved scene description 值的场景。官方说它 `always produces the resolved value of an attribute`，这意味着排查表达式影响时可以把它作为对照输入：如果 `computeResolvedValue` 与 `computeValue` 不同，差异很可能来自 attribute expression 或执行层的表达式计算。</span><span class="en">This computation always produces the resolved value of an attribute, even if an attribute has registered an attribute expression.</span></p>
+      <pre>self.PrimComputation(_tokens-&gt;myComputation)
+    .Callback&lt;double&gt;(&amp;_MyCallback)
+    .Inputs(
+        Attribute(_tokens-&gt;myAttribute)
+            .Computation(ExecBuiltinComputations-&gt;computeResolvedValue)
+    );</pre>
+      <h3>computeValue</h3>
+      <p><span class="zh">`computeValue` 是读取 provider attribute value 的内建 computation。官方返回说明保留了一个重要边界：默认返回 provider attribute 的 scalar value type，但如果 attribute 注册了 `attribute expression`，结果可能是 any type。因此示例中的 `.Computation&lt;double&gt;(ExecBuiltinComputations-&gt;computeValue)` 和 `.Required()` 不只是语法片段，也说明请求方应对类型和必需输入做明确约束。</span><span class="en">Returns a value whose type is the provider attribute's scalar value type.</span></p>
+      <pre>self.PrimComputation(_tokens-&gt;myComputation)
+    .Callback&lt;double&gt;(&amp;_MyCallback)
+    .Inputs(
+        Attribute(_tokens-&gt;myAttribute)
+            .Computation&lt;double&gt;(ExecBuiltinComputations-&gt;computeValue)
+            .Required()
+    );</pre>
+    </section>
+
+    <section data-cn-complete="round-481-attribute-computations-selection-model">
+      <h2>如何选择内建计算 / Choosing a Built-in Computation</h2>
+      <p><span class="zh">实际编写 OpenExec computation 时，先问自己需要的是“属性对象的位置”、“场景描述中解析出的属性值”，还是“执行系统按当前规则计算出的属性值”。如果只是想知道当前 provider object 在 stage/layer 中的位置，选择 `computePath`，并把返回的 `SdfPath` 继续传给 callback 或转成 string。这个选择不会读取 attribute 的 authored value，也不会触发 attribute expression 的值语义。</span><span class="en">Use computePath when the needed information is the provider scene path.</span></p>
+      <p><span class="zh">如果需要对照 scene description 中的 authored/resolved value，选择 `computeResolvedValue`。它适合排查表达式覆盖、执行时派生值和原始属性值之间的差异，因为官方明确说明即使 attribute has registered an attribute expression，它也 always produces the resolved value of an attribute。中文页强调这一点，是为了避免把 expression 之后的执行结果误认为 layer 中直接 authored 的属性值。</span><span class="en">Use computeResolvedValue to compare against the value authored in scene description.</span></p>
+      <p><span class="zh">如果需要让 computation 依赖 attribute 的当前执行值，选择 `computeValue`。这时要同时关注 provider attribute 的 scalar value type、是否存在 `attribute expression`、请求处是否写了类型模板参数，以及输入是否标记为 `Required`。当 callback 拿到的类型和预期不一致时，优先检查这四项，而不是直接修改 callback 逻辑。</span><span class="en">Use computeValue when the computation should depend on the current attribute value.</span></p>
+    </section>
+
+    <section data-cn-complete="round-481-attribute-computations-paragraph-coverage">
+      <h2>逐段双语理解 / Paragraph-Level Bilingual Coverage</h2>
+      <p><span class="zh">标题段：`Attribute Computations` 表明本页关注 attribute provider 上可用的内建计算，而不是所有 attribute authoring API。它隶属于 `Builtin Exec Computations`，因此应和 OpenExec computation registration、request、provider、callback 一起阅读。</span><span class="en">Attribute Computations, Builtin Exec Computations.</span></p>
+      <p><span class="zh">描述段：`Builtin computations for computing information about attributes.` 是页面职责的完整边界。中文解释只围绕 attribute 的值、resolved 值和路径三类信息展开，不把它扩展为 UsdAttribute 全功能说明。</span><span class="en">Builtin computations for computing information about attributes.</span></p>
+      <p><span class="zh">变量表段：`Variables` 下的三个 `TfToken` 是本页真正的 API 表面。`computeValue`、`computeResolvedValue`、`computePath` 都应作为 token 名保留，读者在源码中会通过 `ExecBuiltinComputations` 引用它们。</span><span class="en">Variables list the TfToken entries used by ExecBuiltinComputations.</span></p>
+      <p><span class="zh">示例段：官方示例都从 `self.PrimComputation` 开始，使用 callback 和 input dependency 描述计算。它们展示的是如何把内建 computation 接入自定义 computation，而不是展示属性值立即求值的普通函数调用。</span><span class="en">Examples attach built-in computations to a PrimComputation.</span></p>
+      <p><span class="zh">定义位置段：三个变量都定义在 `builtinComputations.h`，对应行号分别在 source snapshot 中列出。中文页保留该头文件名，方便读者从 Doxygen 页面跳回源码。</span><span class="en">Definitions are in builtinComputations.h.</span></p>
+    </section>
+
+    <section data-cn-complete="round-481-attribute-computations-example-flow">
+      <h2>示例代码阅读顺序 / Example Reading Order</h2>
+      <p><span class="zh">三个官方示例的结构是一致的：先用 `self.PrimComputation(_tokens-&gt;...)` 声明当前 prim 上要注册的 computation 名称，再用 `.Callback` 指定计算逻辑，最后用 `.Inputs` 声明该 callback 依赖哪些内建 computation 或 attribute input。阅读时不要先盯着 callback 里的返回语句，而应先确认 inputs 声明是否把正确的 provider 信息接入了 execution network。</span><span class="en">Examples read as PrimComputation, Callback, then Inputs.</span></p>
+      <p><span class="zh">`computePath` 示例的 input 是 `Computation(ExecBuiltinComputations-&gt;computePath)`，说明它直接依赖 provider path 这个内建 computation；`computeResolvedValue` 和 `computeValue` 示例的 input 都从 `Attribute(_tokens-&gt;myAttribute)` 开始，说明 computation provider 是具体 attribute。这个差异决定了调试入口：path 问题先查 provider object，value 问题先查 attribute、expression 和类型。</span><span class="en">Path and value examples use different input declaration shapes.</span></p>
+      <p><span class="zh">如果自定义 computation 返回错误，建议先把示例代码分成四行检查：token 名是否正确、callback 返回类型是否与声明一致、input 是否引用 `ExecBuiltinComputations` 中正确的 token、required input 是否真的存在。这样能保持本页的 Doxygen group 语义，不把问题误扩散到不相关的 UsdGeom、UsdShade 或 Hydra 渲染调试路径。</span><span class="en">Debug token, callback type, input token, and required input separately.</span></p>
+    </section>
+
+    <section data-cn-complete="round-481-attribute-computations-boundaries">
+      <h2>边界、误读点与调试路径 / Boundaries and Debugging</h2>
       <ul>
-        <li><span class="zh">本页是 Exec 系统的 group 页面，标题中的 `Attribute Computations Builtin Exec Computations` 指内置属性计算函数集合；文件名里的 `comptuations` 是上游生成路径拼写，应保留不改。</span></li>
-        <li><span class="zh">页面结构列出 `Variables`、`Detailed Description` 和 `Variable Documentation`，说明本页重点不是类继承，而是几个内置 computation 变量/函数条目的用途。</span></li>
-        <li><span class="zh">`computeValue` 用来计算 provider attribute 的值；`computeResolvedValue` 用来计算 scene description 中 authored/resolved 后的值；`computePath` 用来得到 provider 的 scene path。</span></li>
-        <li><span class="zh">这些条目应放在 Exec runtime 的依赖计算语境中理解：它们为 attribute provider 暴露常用信息，使执行网络中的计算节点可以读取属性值、已解析值或路径，而不直接重新实现 USD 解析逻辑。</span></li>
-        <li><span class="zh">阅读本页时保留 `computeValue`、`computeResolvedValue`、`computePath` 名称原样；中文说明只解释它们在 attribute computation 中分别代表 value、resolved authored value 和 scene path。</span></li>
+        <li><span class="zh">不要把 `computeValue` 和 `computeResolvedValue` 混用：前者代表 provider attribute 的当前 value，可能受 `attribute expression` 影响；后者始终取 scene description 中 authored/resolved 的值。</span><span class="en">computeValue and computeResolvedValue have different expression behavior.</span></li>
+        <li><span class="zh">不要把这些 token 当成可直接调用的函数。它们是 `ExecBuiltinComputations` 上的 token，用于 `Attribute(_tokens-&gt;myAttribute).Computation(...)` 或 `Computation(...)` 输入声明。</span><span class="en">These are tokens used in computation declarations.</span></li>
+        <li><span class="zh">如果出现类型不匹配，先看返回说明：普通路径返回 provider attribute 的 scalar value type；有 attribute expression 时 `computeValue` may produce a value of any type。必要时在 computation 声明里像示例一样显式写 `&lt;double&gt;`。</span><span class="en">Attribute expressions can change the value type produced by computeValue.</span></li>
+        <li><span class="zh">如果 provider 不是 attribute，`computeValue` 的官方 note 已经给出硬边界：`The computation provider must be an attribute.`。这类问题应优先排查 provider 类型，而不是 callback 本身。</span><span class="en">The computation provider must be an attribute.</span></li>
+        <li><span class="zh">如果 path 字符串不符合预期，排查 `computePath`、`SdfPath`、provider object 和 `VdfContext` 输入，而不是把问题归因到字符串格式化。示例中 path 转 string 发生在 callback 内。</span><span class="en">computePath returns SdfPath before the callback converts it to a string.</span></li>
       </ul>
-      <h3>术语对照 / Terms</h3>
+      <p><span class="zh">推荐排错顺序是：先确认当前 computation provider 是 attribute；再确认输入声明使用的是 `Attribute(_tokens-&gt;myAttribute)` 还是普通 `Computation(...)`；然后比较 `computeValue` 与 `computeResolvedValue` 的输出差异；最后再进入 `VdfContext`、callback 返回类型和 request/cache 层。这样能把 provider 选择、属性表达式、类型约束和 execution graph 的问题拆开，避免在一个回调里同时猜测所有原因。</span><span class="en">Debug in provider, declaration, value semantics, callback, and execution-cache order.</span></p>
+      <p><span class="zh">本页也不替代 `UsdAttribute`、`SdfPath` 或完整 OpenExec 注册文档。它只说明这些内建 token 在 attribute provider 场景下怎样被引用、返回什么语义，以及官方示例怎样把 token 放进 `self.PrimComputation` 的 inputs。需要修改 schema、author attribute、注册新 computation 或理解全局 invalidation 时，应跳回对应的 API 模块页和 OpenExec system design。</span><span class="en">This group page does not replace UsdAttribute, SdfPath, or OpenExec registration docs.</span></p>
+    </section>
+
+    <section data-cn-complete="round-481-attribute-computations-click-path">
+      <h2>本地点击顺序 / Local Click Path</h2>
+      <p><span class="zh">推荐点击顺序：总入口 -> API 本地入口 -> OpenExec Overview -> Tutorial 1 -> Tutorial 2 -> System Design -> ExecUsd README -> Exec README -> 当前 `Attribute Computations`。这样读者先建立 request/provider/callback 背景，再进入 attribute built-in computations。</span><span class="en">The local click path reaches Attribute Computations after the OpenExec conceptual pages.</span></p>
+      <p><span class="zh">相邻阅读建议：若要理解 token 如何注册，返回 `Exec README`、`System Design` 和 computation registration 相关页面；若要理解属性值本身，跳转到 `UsdAttribute`、`SdfPath` 或 `VdfContext`。本页保留显式官方外跳，但用户主路径仍使用本地 API/reading-flow 链接。</span><span class="en">Related links should serve the real OpenExec and attribute debugging path.</span></p>
+    </section>
+
+    <section data-cn-complete="round-481-attribute-computations-source-parity">
+      <h2>源页核对 / Source Parity</h2>
       <ul>
-        <li><span class="zh">Exec 执行系统：</span><span class="en">Exec</span></li>
-        <li><span class="zh">属性计算：</span><span class="en">attribute computation</span></li>
-        <li><span class="zh">提供方属性：</span><span class="en">provider attribute</span></li>
-        <li><span class="zh">已解析值：</span><span class="en">resolved value</span></li>
-        <li><span class="zh">场景路径：</span><span class="en">scene path</span></li>
+        <li><span class="zh">已核对 source snapshot：`source/full_api/group__group___exec___attribute___comptuations_source.html`。</span><span class="en">Source snapshot checked.</span></li>
+        <li><span class="zh">保留并解释官方关键词：`Attribute Computations`、`Builtin Exec Computations`、`Builtin computations for computing information about attributes.`、`Variables`、`computeValue`、`computeResolvedValue`、`computePath`、`attribute expression`、`ExecBuiltinComputations`、`VdfContext`、`SdfPath`、`self.PrimComputation`、`Attribute(_tokens-&gt;myAttribute)`、`builtinComputations.h`。</span><span class="en">Official group title, variables, examples, and source file names are preserved.</span></li>
+        <li><span class="zh">显式官方外跳：Open official page。本地阅读继续保留总入口、API 入口、breadcrumb、side navigation 和 reading-flow。</span><span class="en">Official external link is explicit.</span></li>
       </ul>
     </section>
-    <section>
-      <h2>页面结构 / Page Structure</h2>
-      <ul>
-<li><span class="zh">第 1 级结构：Attribute Computations Builtin Exec Computations</span><span class="en">Attribute Computations Builtin Exec Computations</span></li>
-<li><span class="zh">第 2 级结构：Variables</span><span class="en">Variables</span></li>
-<li><span class="zh">第 2 级结构：Detailed Description</span><span class="en">Detailed Description</span></li>
-<li><span class="zh">第 2 级结构：Variable Documentation</span><span class="en">Variable Documentation</span></li>
-<li><span class="zh">第 2 级结构：◆ computePath</span><span class="en">◆ computePath</span></li>
-<li><span class="zh">第 1 级结构：Example</span><span class="en">Example</span></li>
-<li><span class="zh">第 2 级结构：◆ computeResolvedValue</span><span class="en">◆ computeResolvedValue</span></li>
-<li><span class="zh">第 2 级结构：◆ computeValue</span><span class="en">◆ computeValue</span></li>
-      </ul>
+
+    <section data-cn-complete="round-481-attribute-computations-reader-checklist">
+      <h2>读者验收清单 / Reader Checklist</h2>
+      <p><span class="zh">读完本页后，读者应能用中文说明：`Attribute Computations` 是 `Builtin Exec Computations` 中面向 attribute provider 的内建计算组；`computePath` 返回 provider object 的 `SdfPath`；`computeResolvedValue` 返回 scene description authored/resolved 值；`computeValue` 读取 provider attribute value，但可能受 `attribute expression` 影响；这些 token 通过 `ExecBuiltinComputations`、`self.PrimComputation`、callback 和 input dependency 接入 execution network。</span><span class="en">A review-ready reader can distinguish the three Attribute Computations tokens.</span></p>
+      <p><span class="zh">读者还应能判断何时离开本页：provider 类型、callback 依赖和内建 token 选择问题留在本页；attribute authoring 细节回到 `UsdAttribute`；路径语义回到 `SdfPath`；execution invalidation、cache 和调度问题回到 OpenExec system design。这个边界能防止把一个 token 页面误当作完整执行系统手册。</span><span class="en">A review-ready reader can choose the right adjacent document for the next debugging step.</span></p>
+      <p><span class="zh">本页达标依据是：官方 Doxygen group 的标题、分组、Detailed Description、Variables、三个变量说明、returns/note、示例代码、`builtinComputations.h` 定义位置和 OpenExec 点击路径均已覆盖；API token、类名、示例表达式、头文件名和链接语义保持原样。</span><span class="en">The completed page preserves the Doxygen group terms and example code semantics.</span></p>
     </section>
-    <section>
-      <h2>原文摘录 / English Source Excerpts</h2>
-<p class="en">Member entries include: computeValue: Computes the provider attribute's value.; computeResolvedValue: Computes the provider attribute's resolved value as authored in scene description.; computePath: Computes the provider's scene path..</p>
-<p class="en">Builtin computations for computing information about attributes. More...</p>
-    </section>
-    <section>
-      <h2>本页链接 / Page Links</h2>
-      <ul>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fgroup__group___exec___builtin___computations.html&amp;title=Builtin+Exec+Computations" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/group__group___exec___builtin___computations.html">Builtin Exec Computations</a></li>
-<li><a href="class_tf_token.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_tf_token.html">TfToken</a></li>
-<li><a href="group__group___exec___attribute___comptuations.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/group__group___exec___attribute___comptuations.html">computeValue</a></li>
-<li><a href="class_sdf_path.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_sdf_path.html">SdfPath</a></li>
-<li><a href="class_vdf_context.html" data-local-route="mapped" data-official-href="https://openusd.org/release/api/class_vdf_context.html">VdfContext</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fpath_8h_source.html&amp;title=path.h%3A281" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/path_8h_source.html">path.h:281</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fexec_2vdf_2context_8h_source.html&amp;title=context.h%3A40" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/exec_2vdf_2context_8h_source.html">context.h:40</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fbuiltin_computations_8h_source.html&amp;title=146" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/builtin_computations_8h_source.html">146</a></li>
-<li><a href="../../site/uncovered_openusd_page.html?official=https%3A%2F%2Fopenusd.org%2Frelease%2Fapi%2Fgroup__group___exec___computation_registrations.html&amp;title=attribute+expression" data-local-route="uncovered" data-official-href="https://openusd.org/release/api/group__group___exec___computation_registrations.html">attribute expression</a></li>
-      </ul>
-    </section>
+
     <section>
       <h2>导航 / Navigation</h2>
       <p><a href="../../openusd_bilingual_final.html">返回最终 HTML 总入口 / Back to final HTML entry</a></p>
+      <p><a href="../../site/api/index.html">API 本地入口 / Local API entry</a></p>
+      <p><a href="md_pxr_exec_exec__r_e_a_d_m_e.html">相邻：Exec README</a></p>
+      <p><a href="md_pxr_exec_exec_usd_docs_overview.html">相邻：OpenExec Overview</a></p>
+      <p><a href="class_vdf_context.html">相邻：VdfContext</a></p>
+      <p><a href="class_sdf_path.html">相邻：SdfPath</a></p>
       <p><a href="https://openusd.org/release/api/group__group___exec___attribute___comptuations.html">打开官方原页 / Open official page</a></p>
     </section>
   </main>

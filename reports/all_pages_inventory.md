@@ -1,15 +1,15 @@
 # OpenUSD All Pages Inventory
 
-Generated: 2026-06-09T03:47:18.826Z
+Generated: 2026-06-09T04:41:13.667Z
 
 Scope mode: local 406 release/API HTML pages. This is not a high-value adjacent-page filter.
 
 - Total pages: 406
 - Release pages: 126
 - API pages: 280
-- Bilingual complete pages: 243
-- Promoted complete pages: 235
-- Bilingual draft pages: 163
+- Bilingual complete pages: 244
+- Promoted complete pages: 236
+- Bilingual draft pages: 162
 - Pending full-scope pages: 0
 - Discovery sources: 12
 - Passed: true
@@ -217,7 +217,7 @@ The table below shows the first 250 pages; the JSON report contains the complete
 | api | bilingual_draft | Variables | full_site/api/globals_vars.html | https://openusd.org/release/api/globals_vars.html |
 | api | bilingual_draft | w | full_site/api/globals_w.html | https://openusd.org/release/api/globals_w.html |
 | api | bilingual_draft | File Members | full_site/api/globals.html | https://openusd.org/release/api/globals.html |
-| api | bilingual_draft | API 页面草稿：Attribute Computations Builtin Exec Computations / Attribute Computations Builtin Exec Computations | full_site/api/group__group___exec___attribute___comptuations.html | https://openusd.org/release/api/group__group___exec___attribute___comptuations.html |
+| api | bilingual_complete | Attribute Computations | full_site/api/group__group___exec___attribute___comptuations.html | https://openusd.org/release/api/group__group___exec___attribute___comptuations.html |
 | api | bilingual_draft | API 页面草稿：Hydra Collection Predicate API / Hydra Collection Predicate API | full_site/api/group__group__hd__collection_predicates.html | https://openusd.org/release/api/group__group__hd__collection_predicates.html |
 | api | bilingual_complete | HdEmbree : Embree-based hydra renderer plugin. | full_site/api/hd_embree_page_front.html | https://openusd.org/release/api/hd_embree_page_front.html |
 | api | bilingual_complete | https://openusd.org/release/api/hd_page_front.html | full_site/api/hd_page_front.html | https://openusd.org/release/api/hd_page_front.html |

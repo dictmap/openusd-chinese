@@ -1,18 +1,18 @@
 # OpenUSD Full Draft Preview Audit
 
-Generated: 2026-06-09T03:48:04.921Z
+Generated: 2026-06-09T04:42:03.465Z
 
-Transient base URL: `http://127.0.0.1:54935/`
+Transient base URL: `http://127.0.0.1:64973/`
 
 Result:
 
 - Passed: true
-- Draft pages: 163
-- Pages checked: 163
-- Passed pages: 163
+- Draft pages: 162
+- Pages checked: 162
+- Passed pages: 162
 - Failed pages: 0
-- Final HTML links: 163
-- Local assets checked: 163
+- Final HTML links: 162
+- Local assets checked: 162
 - Failed local assets: 0
 
 | Passed | Local output | HTTP status | Linked from final HTML | Missing markers | Failed assets |
@@ -153,7 +153,6 @@ Result:
 | true | full_site/api/globals_vars.html | 200 | true | 0 | 0 |
 | true | full_site/api/globals_w.html | 200 | true | 0 | 0 |
 | true | full_site/api/globals.html | 200 | true | 0 | 0 |
-| true | full_site/api/group__group___exec___attribute___comptuations.html | 200 | true | 0 | 0 |
 | true | full_site/api/group__group__hd__collection_predicates.html | 200 | true | 0 | 0 |
 | true | full_site/api/hgi_2shader_program_8h_source.html | 200 | true | 0 | 0 |
 | true | full_site/api/hierarchy.html | 200 | true | 0 | 0 |
