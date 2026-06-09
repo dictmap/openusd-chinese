@@ -10,7 +10,7 @@ const OFFICIAL_URL = "https://openusd.org/release/api/md_pxr_exec_vdf__r_e_a_d_m
 const SOURCE_PARITY_REPORT = "reports/round_467_vdf_readme_source_parity.json";
 const PROMOTION_ID = "round-467-api-vdf-readme";
 const PREVIOUS_GOOD_BILINGUAL = 236;
-const PROMOTION_COMMIT_PLACEHOLDER = "round-467-promotion-commit-sha-before-push";
+const PROMOTION_COMMIT_PLACEHOLDER = "3edd057290dcd14d4c8dda66bd557204afb9efa4";
 
 const expectedKeywords = [
   "Vdf: Vectorized Data Flow",
